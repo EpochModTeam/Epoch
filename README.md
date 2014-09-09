@@ -1,4 +1,6 @@
-Epoch
+Arma 3 Epoch
 =====
 
-Public bug reports and feedback
+http://epochmod.com
+
+This github is for public bug reports and feedback related to A3 Epoch.
