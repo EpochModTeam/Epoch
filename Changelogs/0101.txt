@@ -1,0 +1,24 @@
+[Added] Test adding mineral spawns at a 30% chance to earthquakes epicenters.
+[Added] Added spawning of semi-secure lockbox storage (shared with your group) (only owner can pack).
+[Added] Loot added to Sapper and Cultist (press "T" to loot dead body).
+[Fixed] Incorrect path for snake corpse model.
+[Fixed] Fixed double chickens.
+[Fixed] Frequency jammer (Plot pole) now works for both owner and group members.
+[Fixed] Group invite system.
+[Fixed] Missing alert sound added to Sapper.
+[Fixed] fixed description for .22 ruger.
+[Fixed] Check for invalid player data and revert to default (fixes some bugged players issues with joining servers).
+[Fixed] fixed AI cleanup on player disconnect.
+[Changed] Reduced multi gun ammo count to 10 from 99.
+[Changed] Increased crafting requirements on many base items (it was kept low for testing).
+[Changed] Lower chances to spawn Dogs and lowered animal spawn limit from 6 to 3.
+[Changed] Shipping containers now have more loot and (building mats & backpacks).
+[Changed] Removed ammo and weapons from Fridge and stove.
+[Changed] Increased cultist and sapper armor levels.
+[Changed] Try to find a better place to spawn purchased vehicles.
+[Changed] Player must be local (last driver) to sell a vehicle.
+[Changed] Increased range for buying and selling vehicles.
+[Changed] Lowered volume on Dog and Chicken sounds.
+[Changed] Server side tax rate on NPC trader purchases (currently 10%).
+[Changed] Manipulating base objects now have varying energy consumption.
+[Optimize] Disable simulation on any ThingX props at trader cities.
