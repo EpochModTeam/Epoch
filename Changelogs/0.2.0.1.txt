@@ -1,0 +1,17 @@
+[New] Added crafting of Salvage Metal from Iron Ore found at mineral veins.
+[New] Added proper ghost models for TiPi and shelf.
+[Changed] Updated Red Gull Texture and Icon.
+[Changed] Increased chance to find Mortar Buckets.
+[Changed] Ctrl+T now used for Trade requests to other players.
+[Fixed] Traders spawning smoke grenades after selling them.
+[Fixed] Just built base objects now use player direction for initial object direction.
+[Fixed] Player logs out while dead will now correctly spawn fresh on login.
+[Fixed] Global setdamage event on powerlines.
+[Fixed] Traders can no longer spawn on top of each other.
+[Fixed] Multiple players could double spawn loot in the same building.
+[Fixed] Can now build Frequency Jammer properly.
+[Fixed] Player rollback after revive and relog.
+[Fixed] Many server side fixes.
+
+[Known Issues] Weapon attachments get wiped when player to player trading. (workaround for now take the items off the weapon first).
+[Known Issues] Moving a painted corrugated wall causes it to loose its color.
