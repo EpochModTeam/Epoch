@@ -1,0 +1,39 @@
+[New] Custom single seater "Mosquito" Light helicopter.
+[New] Consumables can now give the player multiple attributes on use.
+[New] Honey can now be consumed and an empty jar is returned.
+[New] Empty Food cooler added. To be used with food crafting.
+[New] Metal Scraps added and can be found in many places as well as crafted into Salvage Metal.
+[New] 3 new Soda cans some with unique attributes.
+[New] Player Krypto account added. Accessed by pressing the Inventory key next to a phonebooth or an ATM. Larger the transaction the longer it takes.
+[New] Custom Weapons: AK47, M14, m249, m107, m4a3 ported from Arma 2.
+[New] Camo version of female wetsuit.
+[New] Female Ghillie Suits Tan, Light Green, Dark Green.
+[New] SteamAPI support added for future features and VAC ban check system.
+[New] In-game Admin Panel cleanup and features added: Spawn Menu, 3D ESP, Map ESP, Basic Admin levels.
+
+[Changed] Removed all "Take" and "Rearm" actions to prevent taking items from locked vehicles. A new take option will be added soon to allow item access underwater.
+[Changed] Sledge Hammer damage increased 2x.
+[Changed] Loot now spawns more readily.
+[Changed] Loot table tweaks to increase building materials.
+[Changed] setTimeMultiplier 4x enabled by default. Can be changed with timeMultiplier in epochconfig.
+[Changed] Shelf, tipi, and Frequency Jammer are now built using the physx build mode.
+[Changed] Combat Logging: Players now leave a Doppelganger behind for 60 seconds after disconnect. This can be changed or disabled in epochconfig.hpp server side.
+[Changed] Death trigger now spawns shark if player is killed at sea.
+[Changed] Added Override vars to epochconfig that control object expiry. vehicle, building, storage (7 days), players (30 days).
+[Changed] Vehicle slots limit now based directly on total of per vehicle counts in allowed vehicles list.
+[Changed] Reworked backend of NPC trader mechanism to be more accurate and optimized.
+[Changed] Land vehicles now spawn in cities near roads instead of anywhere on roads.
+[Changed] Many performance and security changes server side.
+[Changed] Vehicle save queue system for better performance.
+[Changed] Seasonal items like Meeps and Halloween masks removed from loot tables.
+
+[Fixed] UAV's are no longer static and now move like they are supposed to.
+[Fixed] Fully disabled thermal equipment for all vehicles.
+[Fixed] Geometry of walls changed to help reduce glitching.
+[Fixed] Disallow Holster and GetOver action near base walls, to reduce wall glitching.
+[Fixed] Global setdamage event with Communication towers.
+
+[Info] Reworked server configs. InstanceID is now set in EpochServer.ini and the rest in epochconfig.hpp now found in @EpochHive folder.
+
+[Known Issues] Weapon attachments get wiped when player to player trading. (workaround for now take the items off the weapon first).
+[Known Issues] Moving a painted corrugated wall causes it to loose its color.
