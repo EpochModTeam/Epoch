@@ -5,5 +5,5 @@ copyToClipboard str _unknownCfgPatches;
 
 
 
-// Use above code in editor debug console with custom mods loaded. The output will be send to your clipboard, simply Ctrl+V or paste the result and combine with the your existing antihack_whitelistedCfgPatches array.
+// Use above code in editor debug console with custom mods loaded. The output will be sent to your clipboard, simply Ctrl+V or paste the result and combine with the your existing antihack_whitelistedCfgPatches array.
 // For Epoch Mod 0.2.5.2
