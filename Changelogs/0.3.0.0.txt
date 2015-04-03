@@ -1,0 +1,86 @@
+[Added] Wood and cinder base objects now show damage state when over 50% damaged.
+[Added] Car Jack item added to every fresh spawned vehicle.
+[Added] Can now loot a dead UAV Drone and in return get Electronic components.
+[Added] Ability to specify starter items for freshly spawned traders via epochconfig.
+[Added] New custom epoch weapons: SR-25 and L85A2 (Grenade Launcher and Pink Painted) by Kiory.
+[Added] Vehicle lock time is now stored in hive and will persist across server restarts.
+[Added] 3d interaction visuals to show you when an action is available.
+[Added] New loot bias system with nestable tables and overall loot balance.
+[Added] LootMultiplier in epochconfig, (0.5 default, 1 = high loot, 0.1 = low loot).
+[Added] Goldenseal plant can be consumed to reduce toxicity.
+[Added] Pumpkin food item can be harvested from pumpkin patches on Chernarus and found randomly.
+[Added] Dynamic Air Supply Drop Event. Use smoke grenades to signal.
+[Added] Trader mission accessed with "Talk" on trader: Pikes Peak Express.
+[Added] Ability to eat raw foods but at the risk of toxicity.
+[Added] New items (Rock, Stick, and Rope) for crafting and added to trash loot.
+[Added] New craftable primitive melee weapons: Crude Hatchet, Wood Club, Maul Hammer.
+[Added] Keesha default character now has shoes.
+[Added] Crafting of Rope from Hemp.
+[Added] Harvest Sticks from a bush using a Hatchet.
+[Added] Mining of Iron Ore and Rocks with sledgehammer.
+[Added] Removal with refund of Base building items. Respects Jammer Owner and group.
+[Added] Most base building items now use a hybrid Static/Physx system with ghost preview on first placement.
+[Added] Epoch Events 2.0. All server time based events moved to server settings pbo. Scripts are executed with execVM using a simple timer. New events and timers can be changed via epochconfig.
+[Added] New "Boss" Sapper variant with a larger bang.
+[Added] Both Sapper variants put off toxic gas if killed without blowing up.
+[Added] Player can now select gender after each death.
+[Added] Frequency Jammer now required by default to build a base. Can be controlled with desc.ext mission variable: buildingRequireJammer.
+[Added] Building limit (default: 100) added to Frequency Jammer. Change with desc.ext mission variable: buildingCountLimit.
+[Added] Building Jammer Range (default: 75m). Change with desc.ext mission variable: buildingJammerRange.
+[Added] Hive weather control system as well as Static override var WeatherStaticForecast via epochconfig.
+[Added] Trader purchased vehicle position can now be controlled with a smoke grenade or a chemlight within 50m of trader.
+[Added] Wood foundations can be crafted with 8x lumber.
+[Added] Bornholm Support: Custom a2 building classes for loot spawns and mission file and config support from http://urogaming.co.uk/
+[Added] Base building objects now persist damage and armor increased substantially.
+[Added] Suppress loot spawn within the range of a Frequency Jammer.
+[Added] Blocked base building areas for Chernarus.
+[Added] Logging of building, storage, and vehicle killed events to hive log. (StorageKilled, VehicleKilled, BuildingKilled)
+[Added] Offroad MG Pickup. (Classname: B_G_Offroad_01_armed_EPOCH)
+[Added] Server FPS to the debug monitor. (Max: 50, recommend fps are >15 to keep the game stable)
+[Added] Chance to spawn Lockbox and Backpacks in lockers or wardrobes.
+[Added] Variable when Loadingscreen finish. (EPOCH_loadingScreenDone change from nil to true)
+[Added] Base object interact menu (Remove,Move,Upgrade) shown only in build mode after targeting object with Space Bar.
+[Changed] Toxicity increase from consuming a toxic food item is now random.
+[Changed] Increased default antagonist spawn chances.
+[Changed] NPC Trader inventory menu now stacks like items and shows quantity.
+[Changed] Players are now sent to the lobby after dead, simply press ok to respawn.
+[Changed] Can now sell and buy uniforms from traders.
+[Changed] NPC trader data (AI_ITEMS) will now expire in 7 days if no changes are made within that time. Change this with expiresAIdata in epochconfig.
+[Changed] Added chance to spawn Lockbox and Backpacks in lockers, wardrobes, shipping containers.
+[Changed] Fireplace recipe changed to require 2 Rocks and 1 Stick to make empty fireplace. Then upgrade with 1 Wood Log to start the fire.
+[Changed] Player names saved to a separate data set on player connect. 
+[Changed] Deathlog now logs distance and position.
+[Changed] Sapper brain reworked.
+[Changed] Display of personal Crypto balance when opening bank interface.
+[Changed] Loot Balance: Lowered heavy muzzles count & increased pistol muzzle.
+[Changed] Increased loot bias for Ferris Wheel and corrected z height on loot positions.
+[Changed] Improve Cleanup System on Server.
+[Changed] Behavior changed on UAV troop support.
+[Changed] Dog to glitch less, reduced whines and more chance to wander.
+[Fixed] Accuracy and fire rates of custom ported A2 weapons fixed (M107, AKM, M4A3, M16, M14, M249).
+[Fixed] Sharks not spawning off shipwrecks.
+[Fixed] Black icons on admin panel spawn menu.
+[Fixed] Soiled and Wet calculation corrected.
+[Fixed] Pumpkin patches on Chernarus now payout proper loot.
+[Fixed] Traders now only allow one vehicle per trade.
+[Fixed] Alpha transparency issue with empty clone vats.
+[Fixed] Attempt to prevent vehicle damage during server startup.
+[Fixed] Removed fireplace sound for now due to Arma issues with sound cleanup.
+[Fixed] Frequency Jammer can not be built or placed within 3x Jammer radius. (default 225m)
+[Fixed] GUI scale issues with additional button menu (Group Menu, Requests) on inventory.
+[Fixed] Missing sounds on Ruger pistol and removed ability to use silencer.
+[Fixed] Dupe fixes for backpacks, vests, uniforms.
+[Fixed] Player revive did not work even after respawn.
+[Fixed] zasleh1_proxy.p3d error with M4A3.
+[Fixed] Prevent loot objects from spawning under the ground.
+[Fixed] Group kick and mod options did not work.
+[Fixed] Cleanup and removal of unneeded rpt debug logs.
+[Fixed] Removed spoiler button in Welcome Screen.
+[Fixed] Misspelling in debug monitor (crypto).
+[Fixed] Welcome screen will be now displayed only once after a major patch (eg. 0.3/0.4/0.5).
+[Info] Requires Arma version 1.40 or higher.
+
+Admin Tool:
+[Added] Different Map Marker for Vehicles, AI, Player, Loot, Base Building and Dead Player.
+[Added] Different 3D Tools for: Player, Vehicles and Loot.
+[Added] Features: God Mode, Spawn Loot, Teleport Infront.
