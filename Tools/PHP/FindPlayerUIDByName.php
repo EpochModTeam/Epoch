@@ -5,10 +5,10 @@
     EpochMod.com by [VB]AWOL
 */
 
-$search = 'Bob Jones';
+$search = 'Mr. Jones';
 
 $redis = new Redis();
-$redis->pconnect(122.99.21.122, 6379, 2.5, "Server1");
+$redis->pconnect(127.0.0.1, 6379, 2.5, "Server1");
 $redis->auth("yourlongasspasswordhere");
     
 $playerNames = $redis->keys('PlayerData:*');
