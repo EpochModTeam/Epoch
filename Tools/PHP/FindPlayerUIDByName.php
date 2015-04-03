@@ -19,6 +19,7 @@ foreach ($playerNames as $key => $value) {
     if (stripos($data, $search) !== false) {
         $key = explode(":", $value);
         echo "<p>" . $key[1] . "</p>" ;
+        break;
     }
 }
 
