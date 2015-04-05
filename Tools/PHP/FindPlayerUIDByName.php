@@ -2,7 +2,10 @@
 /*
     Example PHP code - Case-insensitive search for player Name returns UID's.
     Requires: PHP5 and https://github.com/phpredis/phpredis installed
-    EpochMod.com by [VB]AWOL
+    by [VB]AWOL - EpochMod.com
+    
+    This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.
+    http://creativecommons.org/licenses/by-sa/4.0/
 */
 
 $search = 'Mr. Jones';
@@ -19,7 +22,7 @@ foreach ($playerNames as $key => $value) {
     if (stripos($data, $search) !== false) {
         $key = explode(":", $value);
         echo "<p>" . $key[1] . "</p>" ;
-        break;
+        break; // comment out this line if you want all matches and not just the first.
     }
 }
 
