@@ -14,14 +14,15 @@ $redis = new Redis();
 $redis->pconnect(127.0.0.1, 6379, 2.5, "Server1");
 $redis->auth("yourlongasspasswordhere");
     
+// get all players names in database
 $playerNames = $redis->keys('PlayerData:*');
 
 // print all UID's matching player name
 foreach ($playerNames as $key => $value) {
     $data =  $redis->get($value);
     if (stripos($data, $search) !== false) {
-        $key = explode(":", $value);
-        echo "<p>" . $key[1] . "</p>" ;
+        $UID_raw = explode(":", $value);
+        echo "<p>" . $UID_raw[1] . "</p>" ;
         break; // comment out this line if you want all matches and not just the first.
     }
 }
