@@ -14,6 +14,7 @@ $redis = new Redis();
 $redis->pconnect(127.0.0.1, 6379, 2.5, "Server1");
 $redis->auth("yourlongasspasswordhere");
     
+// get online players UID array
 $data = $redis->get('PLAYERS:' . $instance);
 $onlineUIDs = json_decode($data);
 
