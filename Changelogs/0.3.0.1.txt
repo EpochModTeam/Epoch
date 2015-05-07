@@ -1,0 +1,34 @@
+[Added] Owner of a Frequency Jammer device can now remove and get full refund of Jammer kit.
+[Added] Ability to remove normal storage devices (Shelf and Tipi). Items will be dumped on the ground along with a partial refund of crafting materials.
+[Added] Edit or add Trader prices "CfgPricing" via the missionConfigFile. (Documentation link)
+[Added] Edit or add Crafting recipes "CfgCrafting" via the missionConfigFile. (Documentation link)
+[Added] Antagonists spawn system overhaul with spawn bias system. (Documentation link)
+[Changed] Server settings "CfgEpoch" configs are now split based on the map for better clarity.
+[Changed] Crypto is now only tracked and stored via the server.
+[Changed] Moved loot configs to epoch server settings pbo. (Documentation link)
+[Changed] Chance to spawn sapper every 5 minutes (max of 3 within 800m). Chances increase while in a city and if the player is soiled.
+[Changed] Chance to spawn drone when player fires weapon (max of 3 within 800m). Chances increase while in a city and are reduced if player uses a silencer.
+[Changed] Initial Sapper spawn distance increased.
+[Changed] SR-25 and L85a2 use existing ammo now.
+[Changed] Increased damage for speargun x2.
+[Changed] Updated 3d interact system with new icons (Unknown, Dead Body).
+[Fixed] UAV drone now spawns correctly at a distance so that it is longer audible on spawn.
+[Fixed] Incorrect text output if trader is at max limit for item.
+[Fixed] rvmat texture path issues with Pink L85A2
+[Fixed] Mission document payout now uses unified loot spawn function.
+[Fixed] Lower example NPC starter items to 50.
+[Fixed] Removed developer debug from AH admin.
+[Info] Updated example server.cfg for 1.40.
+
+
+0.3.0.x Server Build 13
+[Changed] Marker colors for loot events changed to orange.
+[Changed] lower default NPC starter items.
+
+0.3.0.x Server Build 12
+[Fixed] Vehicles didn't spawn in Citys on Bornholm. (Thanks to DarthRogue)
+
+0.3.0.x Server Build 11
+[Added] Damage level of base building objects now based on expiry time.
+[Changed] Persistance of damage of Base Building and storage objects removed.
+[Changed] Balance loot and increased chances for explosives.

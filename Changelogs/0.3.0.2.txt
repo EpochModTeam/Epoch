@@ -1,0 +1,28 @@
+Client 0.3.0.2 Rolling Changelog
+
+[Added] Filter invalid database data input for better security.*
+[Fixed] Multiple NPC missions started at the same time caused dupe.
+[Fixed] Typo in killed event handler caused false BE kick.
+[Fixed] Group names may only contain alphanumeric characters - or _.
+[Changed] Uniforms now store items again.
+
+Server Admins:
+[Info] *pcre3.dll must be installed into the Arma 3 root directory.
+
+
+Build 16:
+[Added] Server side function "EPOCH_serverCommand" can use the following BE commands: shutdown, lock, unlock, message, kick, ban.
+[Added] Battleye integration of loadbans and loadevents so (BEC + watchdog) should no longer be required.
+[Added] Scripted server restarts now broadcast a message 5 minutes before restart lock the server and message every 1 minute, then kicks everyone with the message "server restarting" before forcing a restart.
+[Added] Linux support added.
+[Added] Modified linux start script by BIstudio and Nasdero.
+[Added] Major Epoch Anti Hack updates to make more config based.
+[Added] Experimental learning mode to EAH whitelist variable check. Disabled by default as it requires some setup to prevent false positives.
+[Added] Battleye integration within the DLL now. (requires battleye IP,port,password in epochserver.ini)
+[Changed] Disabled MD5 check.
+[Changed] Optimized when writing/reading more than 8K chars to database.
+[Changed] Traders now move to work and home by default forceStaticTraders = false.
+[Fixed] Server side trade FSM updated to fix direction issues.
+[Fixed] Marker should now move with trader as they move from work to home.
+[Fixed] Removed srifle_DMR_03_spotter_F from loots.h as it is missing textures.
+[Fixed] Issue with occasional data corruption when saving more than 8k chars.
