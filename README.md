@@ -5,8 +5,8 @@ http://epochmod.com
 
 This github is for public bug reports and feedback related to A3 Epoch.
 
-Lastest Stable Server Files are now available on the releases page: 
-https://github.com/EpochModTeam/Epoch/releases
+Lastest Stable Server Files:
+https://github.com/EpochModTeam/Epoch/archive/master.zip
 
 License:
 =====
