@@ -1,0 +1,9 @@
+Epoch Mod - http://www.epochmod.com
+Arma 3: Epoch Mod is currently licensed under:
+
+Epoch Mod by Epoch Mod Team is licensed under a Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License. 
+http://creativecommons.org/licenses/by-nc-nd/4.0/
+
+You must also abide by all license and game usage restrictions from BI: 
+Arma 3: End User License: https://www.bistudio.com/community/licenses/arma3-end-user-license
+Arma 3: Game Content Rules: https://www.bistudio.com/community/game-content-usage-rules

@@ -1,0 +1,97 @@
+7 "BIS_fnc_" !"setTaskLocal_customData" !"initDisplay" !"selectRandom" !"getCfgSubClasses" !"animalBehaviour" !"guiEffectTiles_coef" !"GUImessage" !"guiEffectTiles" !"param" !"setIDCStreamFriendly" !"overviewauthor" !"diagAARrecord" !"diagKey" !"feedbackMain" !"missionHandlers" !"getServerVariable" !"missionFlow" !"initParams" !"initRespawn" !"missionTasksLocal" !"missionConversationsLocal" !"missionCon" !"preload" !"logFormat" !"recompile" !"moduleInit" !"feedback_allowPP" !"feedback_allowDeathScreen" !"feedbackInit" !"initMultiplayer" !"MP" !"displayMission" !"feedback_fatiguePP" !"respawnBase" !"dirTo" !"secondsToString" !"guiMessage_status" !"selectRespawnTemplate" !"guiMessage_defaultPositions" !"startLoadingScreen_ids" !"damageChanged" !"incapacitatedEffect" !"invRemove" !"relpos" !"inString" !"findSafePos" !"isPosBlacklisted" !"timeToString" !"distance2D" !"effectKilled" !"dynamictext" !"inAngleSector" !="_this call (uinamespace getvariable 'BIS_fnc_effectFired');"
+7 "BIS_fnc_dynamictext" !", 0, 1, 5, 2, 0, 1] spawn bis_fnc_dynamictext;" !", 0, 0.4, 5, 2, 0, 2] spawn bis_fnc_dynamictext;" !", 0, 1, 6, 2, 0, 1] spawn bis_fnc_dynamictext;" !"snil '_fnc_scriptName') then {_fnc_scriptName}"
+7 forceRespawn
+7 setFriend
+7 setAmmo
+7 RscDebugConsole_watch
+7 enableFatigue
+7 setUnitRecoilCoefficient
+7 setWeaponReloadingTime
+7 allMissionObjects
+7 callExtension
+7 showCommandingMenu
+7 moveIn !="\"A3\functions_f\Misc\fn_moveIn.sqf\"" !="\"A3\functions_f\arrays\fn_removeIndex.sqf\"" !="player moveInAny _vehicle;\nEPOCH_antiWallCount = EPOCH_antiWallCount + 1;" !="[\"I_UAV_AI\", position _unit, [], 0, \"CAN_COLLIDE\"];\n_driver moveInAny _unit;" !="_driver moveInAny Epoch_mission_uav;" !="axeVIP moveInDriver vehicle axeVIP;" !="axeVIP moveInCargo vehicle axeVIP; !="_driver moveInDriver _axeCopter;" !="_unit moveInGunner _axeCopter;" !="axeVIP moveInDriver vehicle axeVIP;" !="axeVIP moveInCargo vehicle axeVIP;"
+7 attachTo !="EP_light attachTo [player];" !="_bomb attachTo [_unit, [0,0,0],\"Pelvis\"];" !="_dogHolder attachTo [_dog, [-0.2,1.2,0.7]];" !="EPOCH_target attachTo[player];" !="_sapperSmoke attachTo [_sapper,[0,0,-0.4]];"" !="_cage attachTo [_cage2,[0,1.3,0]];"
+7 enableCollisionWith
+7 hideObject !="_dogHolder hideobject true;" !="_dogHolder hideobject false;"
+7 setvelocity !="_bolt setPosATL _pos;\n_bolt setVelocity [0, 0, -10];" !="EPOCH_target setvelocitytransformation" !="_currentTarget setVelocity [0,0,-0.01];" !="_head setVelocity [\n(sin _dir * _speed), \n(cos _dir * _speed)" !="_vel = velocity this; _dir = getDir player; this setVelocity[(_vel select 0)+(sin _dir * 2),(_vel select 1)+(cos _dir * 2),(_vel select 2)];" !="_head setVelocity [random 2,random 2,10];"
+7 assignAs !="assignAsCargo" !="_unit assignAsGunner _axeCopter;" !="_driver assignAsDriver _axeCopter;" !="axeVIP assignAsDriver vehicle axeVIP;"
+7 assignAsCargo !="_x assignAsCargo axeGeneralsBoat;" !="axeVIP assignAsCargo vehicle player;" !="axeVIP assignAsCargo vehicle axeVIP;"
+7 playableunits !="getDir _x, name _x];};}forEach playableUnits;};if" !"{getplayeruid _x == _ownerVar} count playableunits" !="lbSetData[21500, _index, netId _x];\n} forEach(playableUnits - [player]);"
+7 allUnits !="allUnits-playableUnits;};if" !="{_x allowFleeing 0} forEach allUnits;" !="EPOCH_ESPMAP_TARGETS = allUnits + vehicles;"
+7 allowDamage !="player allowDamage true;vehicle player allowDamage true;" !="player allowDamage false;{missionNamespace setVariable[format['EPOCH_player%1"
+7 exec !="<execute expression=" !"RscDebugConsole_execute" !"execFSM" !"_executeStackedEventHandler" !"fn_execVM" !"fn_moduleExecute" !"fn_execRemote" !"fn_MPexec" !"bis_fnc_moduleExecute_activate" !"fn_tridentExecute" !"randomize_civ1" !"executed from" !"EPOCH_DebugGUI_exec" !"_handle = [_display] execVM _script;" !"execVM \"\A3\Structures_F\scripts" !="execVM \"\A3\Structures_F_EPC\Civ\PlayGround\scripts\Carousel_spin.sqf\"" !="reviveExecuteTemplates"
+7 addWeaponCargo !="_acceptHolder addWeaponCargo [_wWeapon, 1] ;"
+7 onMapSingleClick !="onMapSingleClick '';"
+7 addMagazine !"addMagazineCargo" !="player addMagazine _craftItem;" !="player addMagazine \"jerrycanE_epoch\";" !="player addMagazine \"emptyjar_epoch\";" !="player addMagazine \"jerrycan_epoch\";" !="player addMagazine \"Hatchet_swing\";" !="player addMagazine [(_x select 0),(_x select 1)]" !="player addMagazine _x;" !="if !(player canAdd (_x select 0)) exitWith {};\nplayer addMagazine[_x select 0, _x select 1];"
+7 addMagazineCargo !"_dogHolder addMagazineCargo [\"RabbitCarcass_EPOCH\", 1]" !"_dogHolder addMagazineCargo [\"Pelt_EPOCH\", 1]" !"_dogHolder addMagazineCargo [\"Venom_EPOCH\", 1]" !"_dogHolder addMagazineCargo [\"SnakeCarcass_EPOCH\", 1]" !"_dogHolder addMagazineCargo [\"ChickenCarcass_EPOCH\", 1]" !="_acceptHolder addMagazineCargo [_wAmmo, 1] ;"
+7 addItem !="player addItem _craftItem;" !="player addItem _x;" !="_plyr addItemToVest _missionItem;" !="axeVIP addItemToVest _item;" !="_plyr  addItemToVest _missionItem;"
+7 addBackPack
+7 removeAllWeapons !="removeAllWeapons axeGeneral;"
+7 removeAllItems
+7 removeAllActions
+7 setTerrainGrid !="setTerrainGrid 25;"
+7 setViewDistance !"setViewDistance 1600"
+7 createGroup !="_grp = createGroup RESISTANCE;" !="if (isserver) then {\n_group = creategroup sidelogic;" !="grpVIPGeneral = createGroup RESISTANCE;" !="_grp = createGroup side _plyr;" !="_grp = createGroup side player;" !="_grp = createGroup _side;" !="_grp = createGroup (side _plyr);"
+7 createVehicleCrew
+7 createVehicleLocal !"\"#particlesource\" createVehicleLocal" !"\"#lightpoint\" createVehicleLocal" !"\"BloodSplat\" createVehicleLocal" !"[\"lightning1_F\", \"lightning2_F\"] call BIS_fnc_selectRandom;\n_lighting = _class createVehicleLocal"
+7 createUnit !="_unit = _grp createUnit[(_arrUnits select _i), _pos, [], 0, \"FORM\"];" !="_driver = _grp createUnit[\"I_UAV_AI\", position _unit, [], 0, \"CAN_COLLIDE\"];" !="axeGeneral = grpVIPGeneral createUnit ["I_officer_F", axeGeneralPos, [], 1, "CAN_COLLIDE"];"
+7 createAgent !="_unit = createAgent[_unitClass, _targetPos, [], 256, \"FORM\"];" !="_unit = createAgent [_unitClass, _targetPos, [], 120, \"FORM\"];" !="_animal = createAgent[_randomAIClass, _animalPos, [], 5, \"NONE\"];" !="_unit = createAgent [\"Epoch_Cloak_F\", _pos, [], 0, \"CAN_COLLIDE\"];" !="_unit = createAgent [\"Epoch_Sapper_F\", _targetPos, [], 180, \"FORM\"];" !="_sapper = createAgent ["Epoch_Sapper_F", getPos _cage2, [], 0, "FORM"];"
+7 createTeam
+7 createDialog !="createDialog \"QuickTake\";" !="createDialog \"InteractBank\";" !="createdialog \"SelectGender\";" !="_handled = createdialog _dialog;" !="if (!dialog) then {createDialog 'Skaronator_AdminMenu'};" !="if !(createdialog \"InteractItem\") exitWith {};" !="createDialog \"TapOut\";" !="if !(createdialog \"Trade\") exitWith {};" !="_ok = createdialog \"Interact\";" !="_ok = createdialog \"TradeNPCMenu\";" !="createDialog \"Epoch_myGroup\";" !="createDialog (if ((Epoch_my_GroupUID == \"\") && (Epoch_my_Group isEqualTo [])) then {\"EPOCH_createGrp\"} else {\"Epoch_myGroup\"});" !="createDialog \"GroupRequests\";" !="_ok = createdialog \"MissionSelect\";"
+7 deleteMarker
+7 setMarker
+7 createMarker
+7 assignItem !="axeVIP assignItem _item;"
+7 forceAddUniform
+7 removeAllMPEventHandlers
+7 setDamage !="_sapper setDamage 1;\n_sBomb setDamage 1;" !="_this setdamage 1;"
+7 setDammage
+7 displaySetEventHandler
+7 ctrlSetEventHandler !"BIS_fnc_guiMessage_status"
+7 addMPEventHandler
+7 addEventHandler !"displayAddEventHandler" !"ctrlAddEventHandler" !"FiredNear" !"EpeContactStart" !"InventoryClosed" !"GetOut" !"InventoryOpened" !"local" !"Respawn" !"Put" !"Take" !"Fired" !"Killed" !" [\"PostReset\",{BIS_EnginePPReset = true;} ];" !"_logic addeventhandler [\n\"local\""
+7 displayAddEventHandler !"[_display] call _fnc_animate;" !"tVersion select 4) == \"Development\") then" !"_display displayaddeventhandler\n[\n\"mousemoving\"," !"(findDisplay 46) displayAddEventHandler [\"KeyDown\",\"true\"];" !"(findDisplay 46) displayAddEventHandler [\"KeyDown\",\"_this call EPOCH_KeyDown\"];" !"_display displayaddeventhandler [\"unload\",\"uinamespace setvariable ['BIS_fnc_guiMess" !="findDisplay -1337 displayAddEventHandler ['Unload'"
+7 ctrlAddEventHandler !"rCfg >> \"refreshDelay\");" !" [\n\"draw\"," !" [\"buttonclick\"," !="(uiNamespace getVariable 'ESP_map') ctrlAddEventHandler['Draw', '_esp_targets = EPOCH_ESPMAP_TARGETS;"
+7 removeAllEventHandlers !="ctrlRemoveAllEventHandlers" !="_vehicle removeAllEventHandlers \"GetOut\";" !="_sapper removeAllEventHandlers \"Hit\";\n_sapper removeAllEventHandlers \"FiredNear\";"
+7 removeAllMissionEventHandlers
+7 ctrlRemoveAllEventHandlers !="(uiNamespace getVariable 'ESP_map') ctrlRemoveAllEventHandlers 'Draw';"
+7 removeEventHandler !="displayRemoveEventHandler" !="player removeEventHandler ['Fired', 0];" !"_currentTarget removeEventHandler[\"EpeContactStart\", _onContactEH]" !" [_adminVar,objnull];\npublicvariable _adminVar;\nplayer removeeventhandler [\"respawn\",_respawn];" !="_plyr removeEventHandler [\"FiredNear\", _smokeEH];"
+7 displayRemoveEventHandler !"BIS_fnc_guiMessage_status"
+7 switchCamera
+7 remoteControl !"fn_moduleRemoteControl.sqf"
+7 drawIcon3D !="drawIcon3D[\"\x\addons\a3_epoch_code\Data\Member.paa\",_color,_pos,1,1,0,_text,1,0.025,\"PuristaMedium\"];\n}forEach EPOCH_ESP_TARGETS;" !"drawIcon3D[format[\"\x\addons\a3_epoch_code\Data\UI\loading_bar_%1.paa\",_stability],_color,(getPosATL EPOCH_stabilityTarget),5,5,0,\"\",1,0.05,\"PuristaMedium\"];" !"drawIcon3D[format[\"\x\addons\a3_epoch_code\Data\UI\loading_bar_%1.paa\",_num],_color,_pos,4,4,0,\"\",1,0.05,\"PuristaMedium\"];" !"EPOCH_drawIcon3dStability" !"EPOCH_drawIcon3d" !"if (_condition) then {\ndrawIcon3D [_icon, _color, _position, _sizeX, _sizeY, _angle, _text," !="drawIcon3D [\"\A3\UI_F_MP_Mark\Data\Tasks\Misc\background.paa\""
+7 drawLine3D !"{\nfor [{_i = 1}, {_i < count _x}, {_i = _i + 1}] do {\ndrawLine3D [_x select (_i - 1), _x select _i, ((BIS_tracedShooter getVari"
+7 ctrlCreate
+7 ctrlDelete
+7 ctrlClassName
+7 ctrlModel
+7 ctrlModelDirection
+7 ctrlModelSide
+7 ctrlModelUp
+7 ctrlSetDirection
+7 ctrlSetModel
+7 deleteVehicleCrew !="[\"A3\functions_f\MP\fn_deleteVehicleCrew.sqf\",\".sqf\",0,false,false,false,\"A3\",\"MP\",\"deleteVehicleCrew\"]"
+7 loadFile
+7 selectPlayer !="selectPlayer _playerObject;"
+7 setGroupIconsVisible
+7 setGroupIconsSelectable
+7 setGroupIconParams
+7 addGroupIcon
+7 EPOCH_whitelist
+7 EPOCH_defaultVars_SEPXVar
+7 EPOCH_group_upgrade_lvl_SVar
+7 EPOCH_GROUP_Delete_PVS !="EPOCH_GROUP_Delete_PVS = [player,Epoch_personalToken];"
+7 Dayz_GUI_R
+7 dayz_originalPlayer
+7 zZombie_Base
+7 infiSTAR
+7 GodMode
+7 shazbot
+7 _typeofHookMonky
+7 _allocMemory
+7 _d3d9multipliervariable
+7 _runASM
+7 _addGFX_hookD3D9eventhandler
+7 _BEhookBYPASSBOB
+7 JJMMEE_INIT_MENU

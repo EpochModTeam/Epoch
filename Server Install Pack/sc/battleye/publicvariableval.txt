@@ -1,0 +1,8 @@
+5 "call"
+5 "compile"
+5 "spawn"
+5 "exec"
+5 "loadFile"
+5 "preprocessFile"
+5 "tostring"
+5 "\.sqf"

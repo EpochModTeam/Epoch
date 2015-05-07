@@ -1,0 +1,1 @@
+5 "" !WeaponHolderSimulated !Shot !"(LockBox|FirePlace|PlotPole|Jack)_EPOCH" !"Jack_SIM_EPOCH" !"LockBox_Ghost_EPOCH" !"CinderWallHalf_Ghost_EPOCH" !"(Tipi|StorageShelf|WoodFloor|WoodLargeWall|WoodStairs|WoodRamp)_Ghost_EPOCH" !"Foundation_Ghost_EPOCH" !"Land_Cages_F" !"Epoch_Sapper_F"

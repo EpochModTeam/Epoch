@@ -1,0 +1,1 @@
+START redis-server.exe redis.conf
