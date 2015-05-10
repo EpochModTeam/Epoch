@@ -3,7 +3,7 @@ Arma 3 Epoch
 
 http://epochmod.com
 
-This github is for public bug reports and feedback related to A3 Epoch.
+This github is for the latest server files, public bug reports, and feedback related to A3 Epoch.
 
 Lastest Stable Server Files:
 https://github.com/EpochModTeam/Epoch/archive/master.zip
