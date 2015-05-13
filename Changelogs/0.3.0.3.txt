@@ -1,0 +1,4 @@
+Client 0.3.0.3 Rolling Changelog
+
+Build 6:
+[Fixed] Force save of building to fix issue with data expiring while in play.
