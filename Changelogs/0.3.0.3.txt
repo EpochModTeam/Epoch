@@ -1,4 +1,6 @@
 Client 0.3.0.3 Rolling Changelog
 
 Build 6:
+[Added] propsPos config can now take an array with [vectorDir,vectorUp] instead of just direction for more exact placement. Passing a 4th param (true) will disable simulation (should be
+used on objects without doors or other animations)
 [Fixed] Force save of building to fix issue with data expiring while in play.
