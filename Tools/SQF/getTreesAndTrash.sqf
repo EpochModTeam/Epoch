@@ -47,6 +47,11 @@ EPOCH_KeyDownCustom = {
             if (_ctrl) then {
             	hint "Saved to clipboard";
                 copyToClipboard call EPOCH_dbg_saveMapConfig;
+
+                EP_modesExport = [];
+				{
+				  	EP_modesExport pushBack (missionNamespace getVariable [_x,[]]);
+				} forEach EP_modes;
             };
         };
 
@@ -151,13 +156,14 @@ onEachFrame {
 						_color = EP_modeColors select _foreachindex;
 					};
 				} forEach EP_modes;
-				drawIcon3D ["\x\addons\a3_epoch_code\Data\Member.paa", _color, getPos _x, 1, 1, 45, _p3dName, 1, 0.04, "PuristaMedium"];
+				drawIcon3D ["a3\weapons_f\data\clear_empty.paa", _color, getPos _x, 1, 1, 45, _p3dName, 1, 0.04, "PuristaMedium"];
 			};
 		};
 	} forEach _all;
 	_lineColor = EP_modeColors select Epoch_selectedIndex;
 	drawLine3D [ASLtoATL eyePos player, screenToWorld [0.5,0.5], _lineColor];
 };
+
 
 
 

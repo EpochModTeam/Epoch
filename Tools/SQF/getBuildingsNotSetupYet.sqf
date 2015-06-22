@@ -2,7 +2,7 @@
 EP_notSetup = [];
 EP_setup = [];
 
-_all = nearestObjects [player, ["building"], 200];
+_all = nearestObjects [player, ["building"], 20000];
 {
 	_typeOf = typeof _x;
 	
