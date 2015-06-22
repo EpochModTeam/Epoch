@@ -5,6 +5,12 @@
 
  This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.
  http://creativecommons.org/licenses/by-sa/4.0/
+ 
+ pageup/down toggle modes
+space selects target
+delete remove target from data set
+ctrl+c fills clipboard with config data
+ 
 */
 
 player allowDamage false;
