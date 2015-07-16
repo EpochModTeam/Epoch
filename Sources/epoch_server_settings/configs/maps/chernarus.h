@@ -3,9 +3,13 @@ class Chernarus : Default
 	worldSize = 12000;
 	traderBlds[] = { "Land_A_FuelStation_Build", "Land_A_GeneralStore_01", "Land_A_GeneralStore_01a", "Land_A_Office01", "Land_Ind_Garage01", "Land_Ind_Workshop01_04", "Land_Ind_Workshop01_L", "Land_Shed_Ind02", "Land_Tovarna2", "Land_sara_hasic_zbroj" };
 	telePos[] = {
-			{ "Transport_W_EPOCH", { 1009.76, 2023.75, 0.224995 }, "", { 4569.52, 4524.24, 0.201431 } }, // South West
-			{ "Transport_E_EPOCH", { 1040.27, 2023.47, 0.224995 }, "", { 12077.8, 5121.92, 0.00144958 } }, // South East
-			{ "Transport_N_EPOCH", { 1024.91, 2031.31, 0.224995 }, "", { 10688.6, 9428.98, 0.00144958 } } // North East
+		// N [-0.286865,8.17383,-10.3098]
+		// S [-0.415527,-7.05298,-10.3098]
+		// E [13.5127,0.410156,-10.3098]
+		// W [-14.4316,0.112793,-10.3098]
+			{ "Transport_W_EPOCH", { -14.4316, 0.112793, -10.3098 }, "", { 4569.52, 4524.24, 0.201431 } }, // South West
+			{ "Transport_E_EPOCH", { 13.5127, 0.410156, -10.3098 }, "", { 12077.8, 5121.92, 0.00144958 } }, // South East
+			{ "Transport_N_EPOCH", { -0.286865, 8.17383, -10.3098 }, "", { 10688.6, 9428.98, 0.00144958 } } // North East
 	};
 	propsPos[] = {
 			//debug lights

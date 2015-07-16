@@ -6,6 +6,10 @@ class CfgSecConf
 {
     debug = false;
     
+    class limits {
+        playerCrypto = 25000;
+    };
+
     class learning {
         mode = false; // true = only trust uids below, false = trust everyone (use only with a passworded server and trusted players)
         trustedUsers[] = {};

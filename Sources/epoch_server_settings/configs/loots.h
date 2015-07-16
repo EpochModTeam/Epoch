@@ -8,10 +8,10 @@ class CfgMainTable
 		LootMax = 1;
 		tables[] = { "Food" };
 		antagonists[] = {
-				{ "UAV", 50 },
-				{ "Cloak", 20 }, // Night = Epoch_Cloak_F, Day = Epoch_Sapper_F
-				{ "Sapper", 20 },
-				{ "SapperB", 5 },
+				{ "UAV", 30 },
+				{ "Cloak", 25 }, // Night = Epoch_Cloak_F, Day = Epoch_Sapper_F
+				{ "Sapper", 25 },
+				{ "SapperB", 15 },
 				{ "PHANTOM", 5 }
 		};
 	};
@@ -48,10 +48,10 @@ class CfgMainTable
 				{ "GenericLarge", 18 }
 		};
 		antagonists[] = {
-				{ "UAV", 50 }, // I_UAV_01_F
-				{ "Cloak", 20 }, // Night = Epoch_Cloak_F, Day = Epoch_Sapper_F
-				{ "Sapper", 20 }, // Epoch_Sapper_F
-				{ "SapperB", 10 }  // Epoch_SapperB_F
+				{ "UAV", 30 }, // I_UAV_01_F
+				{ "Cloak", 30 }, // Night = Epoch_Cloak_F, Day = Epoch_Sapper_F
+				{ "Sapper", 25 }, // Epoch_Sapper_F
+				{ "SapperB", 15 }  // Epoch_SapperB_F
 		};
 	};
 	class TrashSmall : Default
@@ -147,9 +147,9 @@ class CfgMainTable
 				{ "GenericAuto", 6 },
 				{ "Machinegun", 4 },
 				{ "MachinegunAmmo", 4 },
-				{ "Rifle", 4 },
+				{ "Rifle", 5 },
 				{ "RifleAmmo", 4 },
-				{ "SniperRifle", 4 },
+				{ "SniperRifle", 3 },
 				{ "SniperRifleAmmo", 4 },
 				{ "Hand", 4 },
 				{ "Grenades", 2 },
@@ -197,7 +197,7 @@ class CfgMainTable
 				{ "Equipment", 8 },
 				{ "Pistols", 4 },
 				{ "PistolAmmo", 5 },
-				{ "Rifle", 3 },
+				{ "Rifle", 1 },
 				{ "MachinegunAmmo", 6 },
 				{ "RifleAmmo", 6 },
 				{ "Grenades", 5 },
@@ -205,9 +205,9 @@ class CfgMainTable
 				{ "Vests", 6 },
 				{ "Headgear", 6 },
 				{ "Hand", 9 },
-				{ "Generic", 10 },
+				{ "Generic", 11 },
 				{ "GenericBed", 6 },
-				{ "Backpack", 6 },
+				{ "Backpack", 7 },
 				{ "HighExplosives", 5 }
 		};
 	};
@@ -249,21 +249,19 @@ class CfgMainTable
 		lootMin = 3;
 		LootMax = 6;
 		tables[] = {
-				{ "Items", 6 },
-				{ "Equipment", 4 },
-				{ "Pistols", 5 },
-				{ "PistolAmmo", 6 },
-				{ "MachinegunAmmo", 6 },
-				{ "RifleAmmo", 6 },
-				{ "SniperRifleAmmo", 6 },
+				{ "Items", 7 },
+				{ "Equipment", 5 },
+				{ "Pistols", 6 },
+				{ "PistolAmmo", 8 },
+				{ "MachinegunAmmo", 5 },
+				{ "RifleAmmo", 8 },
+				{ "SniperRifleAmmo", 5 },
 				{ "Scopes", 4 },
-				{ "Muzzles", 4 },
+				{ "Muzzles", 5 },
 				{ "Uniforms", 4 },
-				{ "Vests", 4 },
-				{ "Headgear", 4 },
-				{ "Machinegun", 3 },
-				{ "Rifle", 4 },
-				{ "SniperRifle", 2 },
+				{ "Vests", 5 },
+				{ "Headgear", 5 },
+				{ "Rifle", 1 },
 				{ "Hand", 4 },
 				{ "Explosives", 11 },
 				{ "Generic", 10 },
@@ -310,8 +308,7 @@ class CfgMainTable
 				{ "Uniforms", 6 },
 				{ "Vests", 6 },
 				{ "Headgear", 8 },
-				{ "Food", 6 },
-				{ "Rifle", 3 },
+				{ "Food", 9 },
 				{ "RifleAmmo", 7 },
 				{ "MachinegunAmmo", 3 },
 				{ "SniperRifleAmmo", 2 },
@@ -336,17 +333,17 @@ class CfgMainTable
 				{ "Uniforms", 5 },
 				{ "Vests", 5 },
 				{ "Headgear", 5 },
-				{ "Food", 4 },
-				{ "Machinegun", 2 },
+				{ "Food", 8 },
+				{ "Rifle", 2 },
+				{ "RifleAmmo", 4 },
+				{ "Machinegun", 1 },
+				{ "MachinegunAmmo", 4 },
 				{ "SniperRifle", 1 },
-				{ "Rifle", 5 },
-				{ "RifleAmmo", 6 },
-				{ "MachinegunAmmo", 5 },
-				{ "SniperRifleAmmo", 4 },
-				{ "Hand", 5 },
-				{ "Generic", 5 },
+				{ "SniperRifleAmmo", 3 },
+				{ "Hand", 6 },
+				{ "Generic", 7 },
 				{ "GenericBed", 9 },
-				{ "Backpack", 5 },
+				{ "Backpack", 6 },
 				{ "HighExplosives", 2 }
 		};
 	};
@@ -357,15 +354,14 @@ class CfgMainTable
 		tables[] = {
 				{ "Items", 6 },
 				{ "Equipment", 6 },
-				{ "Pistols", 4 },
+				{ "Pistols", 5 },
 				{ "PistolAmmo", 5 },
 				{ "Scopes", 5 },
 				{ "Muzzles", 5 },
 				{ "Uniforms", 7 },
 				{ "Vests", 5 },
 				{ "Headgear", 13 },
-				{ "Food", 10 },
-				{ "Rifle", 2 },
+				{ "Food", 11 },
 				{ "RifleAmmo", 8 },
 				{ "MachinegunAmmo", 6 },
 				{ "Hand", 8 },
@@ -453,16 +449,16 @@ class CfgMainTable
 		lootMin = 1;
 		LootMax = 3;
 		tables[] = {
-				{ "Food", 4 },
-				{ "Items", 6 },
-				{ "Equipment", 8 },
-				{ "Pistols", 8 },
-				{ "PistolAmmo", 8 },
+				{ "Food", 5 },
+				{ "Items", 7 },
+				{ "Equipment", 9 },
+				{ "PistolAmmo", 10 },
 				{ "Scopes", 8 },
 				{ "Muzzles", 8 },
-				{ "Explosives", 10 },
-				{ "RifleAmmo", 7 },
-				{ "SniperRifleAmmo", 8 },
+				{ "Explosives", 11 },
+				{ "RifleAmmo", 8 },
+				{ "SniperRifleAmmo", 6 },
+				{ "MachinegunAmmo", 3 },
 				{ "Hand", 10 },
 				{ "Generic", 10 },
 				{ "Grenades", 5 }
@@ -473,17 +469,16 @@ class CfgMainTable
 		lootMin = 3;
 		LootMax = 6;
 		tables[] = {
-				{ "Items", 5 },
-				{ "Equipment", 5 },
-				{ "Pistols", 5 },
+				{ "Items", 6 },
+				{ "Equipment", 6 },
+				{ "Pistols", 7 },
 				{ "PistolAmmo", 10 },
 				{ "Scopes", 5 },
 				{ "Muzzles", 5 },
 				{ "Uniforms", 10 },
-				{ "Vests", 5 },
+				{ "Vests", 6 },
 				{ "Headgear", 5 },
-				{ "Food", 8 },
-				{ "Rifle", 5 },
+				{ "Food", 9 },
 				{ "RifleAmmo", 5 },
 				{ "MachinegunAmmo", 3 },
 				{ "SniperRifleAmmo", 2 },
@@ -499,7 +494,6 @@ class CfgMainTable
 		tables[] = {
 				{ "GenericLarge", 60 },
 				{ "GenericAuto", 30 },
-
 				{ "Machinegun", 3 },
 				{ "Rifle", 5 },
 				{ "SniperRifle", 2 }
@@ -1468,6 +1462,8 @@ class CfgLootTable
 				{ { "B_AssaultPack_ocamo", "backpack" }, 5 },
 				{ { "B_AssaultPack_rgr", "backpack" }, 5 },
 				{ { "B_AssaultPack_sgg", "backpack" }, 5 },
+				{ { "B_AssaultPack_blk", "backpack" }, 5 },
+				
 
 				{ { "B_Carryall_cbr", "backpack" }, 1 },
 				{ { "B_Carryall_khk", "backpack" }, 1 },

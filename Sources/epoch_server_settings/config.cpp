@@ -1,5 +1,5 @@
 /****************************************************************************
-Copyright (C) 2015 - ARMA 3 EPOCH MOD [EpochMod.com] (v0.3.0.1)
+Copyright (C) 2015 - ARMA 3 EPOCH MOD [EpochMod.com] (v0.3.0.4)
 *****************************************************************************/
 
 #define _ARMA_
@@ -9,7 +9,7 @@ class CfgPatches {
 		units[] = {};
 		weapons[] = {};
 		requiredVersion = 0.1;
-		epochVersion = "0.3.0.3";
+		epochVersion = "0.3.0.4";
 		requiredAddons[] = {};
 	};
 };
@@ -41,4 +41,7 @@ class CfgEpoch
 	#include "configs\maps\stratis.h"
 	#include "configs\maps\altis.h"
 	#include "configs\maps\chernarus.h"
+	#include "configs\maps\australia.h"
+	#include "configs\maps\takistan.h"
+	#include "configs\maps\esseker.h"
 };
