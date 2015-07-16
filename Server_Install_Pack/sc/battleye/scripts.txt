@@ -19,7 +19,7 @@
 7 assignAsCargo !="_x assignAsCargo axeGeneralsBoat;" !="axeVIP assignAsCargo vehicle player;" !="axeVIP assignAsCargo vehicle axeVIP;"
 7 playableunits !="getDir _x, name _x];};}forEach playableUnits;};if" !"{getplayeruid _x == _ownerVar} count playableunits" !="lbSetData[21500, _index, netId _x];\n} forEach(playableUnits - [player]);"
 7 allUnits !="allUnits-playableUnits;};if" !="{_x allowFleeing 0} forEach allUnits;" !="EPOCH_ESPMAP_TARGETS = allUnits + vehicles;"
-7 allowDamage !="player allowDamage true;vehicle player allowDamage true;" !="player allowDamage false;{missionNamespace setVariable[format['EPOCH_player%1"
+7 allowDamage !="_unit allowDamage false;" !="_unit allowDamage true;" !="player allowDamage true;vehicle player allowDamage true;" !="player allowDamage false;{missionNamespace setVariable[format['EPOCH_player%1"
 7 exec !="<execute expression=" !"RscDebugConsole_execute" !"execFSM" !"_executeStackedEventHandler" !"fn_execVM" !"fn_moduleExecute" !"fn_execRemote" !"fn_MPexec" !"bis_fnc_moduleExecute_activate" !"fn_tridentExecute" !"randomize_civ1" !"executed from" !"EPOCH_DebugGUI_exec" !"_handle = [_display] execVM _script;" !"execVM \"\A3\Structures_F\scripts" !="execVM \"\A3\Structures_F_EPC\Civ\PlayGround\scripts\Carousel_spin.sqf\"" !="reviveExecuteTemplates"
 7 addWeaponCargo !="_acceptHolder addWeaponCargo [_wWeapon, 1] ;"
 7 onMapSingleClick !="onMapSingleClick '';"
@@ -30,7 +30,6 @@
 7 removeAllWeapons !="removeAllWeapons axeGeneral;"
 7 removeAllItems
 7 removeAllActions
-7 setTerrainGrid !="setTerrainGrid 25;"
 7 setViewDistance !"setViewDistance 1600"
 7 createGroup !="_grp = createGroup RESISTANCE;" !="if (isserver) then {\n_group = creategroup sidelogic;" !="grpVIPGeneral = createGroup RESISTANCE;" !="_grp = createGroup side _plyr;" !="_grp = createGroup side player;" !="_grp = createGroup _side;" !="_grp = createGroup (side _plyr);"
 7 createVehicleCrew
@@ -45,7 +44,7 @@
 7 assignItem !="axeVIP assignItem _item;"
 7 forceAddUniform
 7 removeAllMPEventHandlers
-7 setDamage !="_sapper setDamage 1;\n_sBomb setDamage 1;" !="_this setdamage 1;"
+7 setDamage
 7 setDammage
 7 displaySetEventHandler
 7 ctrlSetEventHandler !"BIS_fnc_guiMessage_status"

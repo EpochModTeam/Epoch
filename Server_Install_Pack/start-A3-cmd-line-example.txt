@@ -1,1 +1,1 @@
--mod=@Epoch;@EpochHive; -config=C:\arma3server\SC\config.cfg -ip=192.168.71.234 -port=2302 -profiles=SC -cfg=C:\arma3server\SC\basic.cfg -name=SC
+-mod=@Epoch; -serverMod=@EpochHive; -config=C:\arma3server\SC\config.cfg -ip=192.168.71.234 -port=2302 -profiles=SC -cfg=C:\arma3server\SC\basic.cfg -name=SC

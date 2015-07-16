@@ -10,6 +10,7 @@ timeDifference = 0; // Server uses real time this will allow you to offset just 
 timeMultiplier = 4; // Sets a time multiplier for in-game time. The command range is now capped at 0.1 - 120 to avoid performance problems.
 lootMultiplier = 0.5; // 1 = max loot bias. This controls how much loot can payout per Epoch loot container.
 // Events
+airDrops = false; // TBA
 WeatherChangeTime = 1200; // This controls how fast the weather changes as well as how fast shipping containers and earthquakes happen.
 WeatherStaticForecast[] = {}; // Default: {75.5,0,{0,0,0},0,{1,1}}; // Clear day; {19,1,{1,1,40},1,{5,5}}; // Cold Foggy Rainy Overcast Windy; Format: {temp <scalar>,rain <scalar>,fog <array>,overcast <scalar>,wind <array>} 
 events[] = {
@@ -28,6 +29,7 @@ antagonistChanceLoot = 0.09; //9% chance when player click "SEARCH" on a loot ob
 cloneCost = 100; // debt incurred on player death
 
 // vehicles - Max vehicle slots is calculated from per vehicle limits below. Warning! Higher the number lower the performance.
+simulationHandler = false; // When enabled this feature disables simulation on vehicles that are not near players. Can help improve client fps at the cost of server fps. (This is disabled by default now that Arma has fixed the original issue)
 vehicleLockTime = 1800; // Controls how many seconds it takes to allow another person/group to unlock vehicle.
 allowedVehiclesList[] = {
     {"C_Offroad_01_EPOCH",8},
@@ -76,7 +78,7 @@ allowedVehiclesList[] = {
 taxRate = 0.1; // controls the price increase for purchases
 starterTraderItems[] = { { "ItemSodaBurst", "meatballs_epoch", "MortarBucket", "CinderBlocks", "VehicleRepair", "CircuitParts", "ItemCorrugated", "PartPlankPack", "ItemRock", "ItemRope", "ItemStick" }, { 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5 } }; // Starter Items for fresh spawned trader first array is classnames second is quantity.
 NPCSlotsLimit = 50; // Max number of traders static or dynamic. Warning! Higher the number lower performance.
-forceStaticTraders = false; // disables traders moving from work to home
+forceStaticTraders = true; // disables traders moving from work to home
 
 // Markers
 showEarthQuakes = true; // show mineral viens caused by earthquakes
