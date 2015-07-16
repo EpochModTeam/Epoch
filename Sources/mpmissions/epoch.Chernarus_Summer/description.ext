@@ -44,7 +44,7 @@ class CfgEpochClient
 	
 	sapperRngChance = 100; // increase number to reduce chances and reduce to increase. Default 100 = 1% - 55% if soiled (+ 2% if in city) chance to spawn sapper
 	droneRngChance = 100; // increase number to reduce chances and reduce to increase. Default 100 = // 2% chance (+ 4% chance if in city) (1% - 2% Half if using silencer) to spawn drone if shot fired
-	
+
 	buildingNearbyMilitary = 0; //1 to allow building nearby
 	buildingNearbyMilitaryRange = 300; //Define radius of blocked area
 
@@ -53,171 +53,138 @@ class CfgEpochClient
 	buildingJammerRange = 75; // jammer range in meters 
 	
 	EPOCH_news[] = {"Word is that Sappers have a new boss.","Dogs will often lure them monsters away.","My dog was blown up. I miss him.."};
-	
-	class Altis {
-		blockedArea[] = { //[POS],radius
-				{ { 16085, 16997, 0 }, 250 }, //South Telos
-				{ { 12844, 16714, 0 }, 120 }, //Soldner Base 
-				{ { 3085, 13184, 0 }, 300 }, //Kavalar Carstel
-				{ { 13493, 12013, 0 }, 450 }, //Makrynisi (Island)
-				{ { 17439, 13165, 0 }, 165 }, //Pyrgorsk Military
-				{ { 20084, 6728, 0 }, 55 }, //West of Selakano
-				{ { 25303, 21807, 0 }, 100 } //Sofia	
+
+	class Chernarus_Summer {
+		blockedArea[] = {
+				{ { 10203, 1886, 0 }, 430 }, //South Electro
+				{ { 6822, 2498, 0 }, 600 }, //Cherno
+				{ { 4612, 9670, 0 }, 140 }, //NWAF south barack
+				{ { 4907, 10117, 0 }, 250 }, //NWAF NE hangas
+				{ { 4707, 10384, 0 }, 200 }, //NWAF north barack
+				{ { 4069, 10778, 0 }, 75 }, //NWAF west hangas
+				{ { 4553, 10722, 0 }, 150 }, //NWAF NW hangas
+				{ { 12279, 9505, 0 }, 350 }, //Berenzino Mid
+				{ { 12816, 9816, 0 }, 400 }, //Berenzino SE
+				{ { 12991, 10147, 0 }, 375 }, //Berenzino Docs
+				{ { 2693, 5138, 0 }, 200 }, //Zeleno
+				{ { 11467, 7508, 0 }, 150 }, //Polana Factory
+				{ { 13092, 7096, 0 }, 140 } //Solnichniy Factory
 		};
 		Rocks[] = {
-			"sharpstone_03_lc.p3d",
-			"sharpstone_02_lc.p3d",
-			"sharpstone_01_lc.p3d",
-			"sharpstone_02.p3d",
-			"sharpstone_03.p3d",
-			"sharprock_monolith.p3d",
-			"sharprock_apart.p3d",
-			"sharpstones_erosion.p3d",
-			"bluntstone_01_lc.p3d",
-			"bluntstone_02_lc.p3d",
-			"bluntstone_03_lc.p3d",
-			"bluntstones_erosion.p3d",
-			"bluntstone_01.p3d",
-			"bluntstone_03.p3d",
-			"sharprock_spike.p3d",
-			"sharprock_wallh.p3d",
-			"w_sharpstone_03.p3d",
-			"w_sharpstone_02.p3d",
-			"w_sharpstone_01.p3d",
-			"bluntrock_apart.p3d",
-			"bluntstone_02.p3d",
-			"bluntrock_monolith.p3d",
-			"bluntrock_wallh.p3d",
-			"sharprock_wallv.p3d",
-			"stonesharp_medium.p3d",
-			"stone_medium_f.p3d",
-			"stonesharp_big.p3d",
-			"stonesharp_small.p3d",
-			"small_stone_02_f.p3d",
-			"stone_small_f.p3d",
-			"stone_big_f.p3d",
-			"bluntrock_spike.p3d"
+			"r2_boulder1.p3d",
+			"r2_boulder2.p3d",
+			"r2_rock1.p3d",
+			"r2_rocktower.p3d",
+			"r2_rockwall.p3d"
 		};
 		ATM[] = {
-			"atm_01_f.p3d",
-			"phonebooth_01_f.p3d",
-			"atm_02_f.p3d",
-			"phonebooth_02_f.p3d"
+			"nastenka.p3d",
+			"nastenka2.p3d",
+			"nastenka3.p3d"
 		};
 		Water[] = {
-			"barrelwater_f.p3d",
-			"water_source_f.p3d",
-			"waterbarrel_f.p3d",
-			"canisterplastic_f.p3d",
-			"watertank_f.p3d"
+			"misc_well.p3d",
+			"misc_wellpump.p3d"
 		};
 		Trash[] = {
-			"sack_f.p3d",
-			"garbagebags_f.p3d",
-			"pallets_f.p3d",
-			"junkpile_f.p3d",
-			"garbagepallet_f.p3d",
-			"garbagewashingmachine_f.p3d",
-			"basket_f.p3d",
-			"sacks_goods_f.p3d",
-			"crateswooden_f.p3d",
-			"cratesplastic_f.p3d",
-			"garbagebin_01_f.p3d",
-			"barrelsand_f.p3d",
-			"garbagecontainer_closed_f.p3d",
-			"cratesshabby_f.p3d",
-			"bucket_f.p3d",
-			"garbagebarrel_01_f.p3d",
-			"tyres_f.p3d",
-			"cargobox_v1_f.p3d",
-			"metalbarrel_f.p3d",
-			"sacks_heap_f.p3d",
-			"woodenbox_f.p3d",
-			"grave_v1_f.p3d",
-			"grave_v2_f.p3d",
-			"calvary_02_v2_f.p3d",
-			"fishinggear_02_f.p3d",
-			"fishinggear_01_f.p3d",
-			"humanskull_f.p3d",
-			"calvary_02_v1_f.p3d",
-			"rack_f.p3d",
-			"wreck_uaz_f.p3d",
-			"humanskeleton_f.p3d",
-			"shelvesmetal_f.p3d",
-			"kiosk_blueking_ruins_f.p3d",
-			"cargo20_white_f.p3d",
-			"cargo20_yellow_f.p3d",
-			"cargo20_military_green_f.p3d",
-			"cargo40_blue_f.p3d",
-			"cargo40_grey_f.p3d",
-			"cargo40_light_green_f.p3d",
-			"cargo40_light_blue_f.p3d",
-			"cargo40_orange_f.p3d",
-			"cargo20_orange_f.p3d",
-			"cargo20_brick_red_f.p3d"
+			"p_pumpkin_summer.p3d",
+			"pumpkin.p3d",
+			"misc_postbox.p3d",
+			"popelnice.p3d",
+			"garbage_misc.p3d",
+			"paletyc.p3d",
+			"junkpile.p3d",
+			"kontejner.p3d",
+			"misc_chickencoop.p3d",
+			"misc_boogieman.p3d",
+			"misc_hutch.p3d",
+			"garbage_paleta.p3d",
+			"misc_cargo1a.p3d",
+			"misc_cargo2a.p3d",
+			"misc_greenhouse.p3d",
+			"zastavka_stojan.p3d"
 		};
 		Trees[] = {
-			"t_ficusb1s_f.p3d",
-			"t_oleae1s_f.p3d",
-			"t_ficusb2s_f.p3d",
-			"t_broussonetiap1s_f.p3d",
-			"t_pinuss2s_f.p3d",
-			"t_pinuss2s_b_f.p3d",
-			"t_pinuss1s_f.p3d",
-			"t_oleae2s_f.p3d",
-			"i_house_big_01_v2_f.p3d",
-			"i_house_big_02_v1_f.p3d",
-			"i_addon_02_v1_f.p3d",
-			"t_fraxinusav2s_f.p3d",
-			"t_pinusp3s_f.p3d",
-			"t_poplar2f_dead_f.p3d",
-			"t_populusn3s_f.p3d",
-			"t_phoenixc1s_f.p3d"
+			"t_populus3s.p3d",
+			"t_fagus2w.p3d",
+			"t_betula2s.p3d",
+			"t_fagus2s.p3d",
+			"t_fagus2f.p3d",
+			"t_sorbus2s.p3d",
+			"t_fraxinus2w.p3d",
+			"t_salix2s.p3d",
+			"t_malus1s.p3d",
+			"t_betula1f.p3d",
+			"t_pinusn2s.p3d",
+			"t_picea2s.p3d",
+			"t_larix3s.p3d",
+			"t_picea3f.p3d",
+			"t_picea1s.p3d",
+			"misc_fallentree2.p3d",
+			"misc_stub2.p3d",
+			"t_fraxinus2s.p3d",
+			"t_quercus2f.p3d",
+			"misc_trunk_water.p3d",
+			"misc_trunk_torzo.p3d",
+			"t_alnus2s.p3d",
+			"misc_fallentree1.p3d",
+			"t_betula2f.p3d",
+			"t_pinusn1s.p3d",
+			"t_pinuss2f.p3d",
+			"t_quercus3s.p3d",
+			"t_carpinus2s.p3d",
+			"misc_fallenspruce.p3d",
+			"t_stub_picea.p3d",
+			"misc_stub1.p3d",
+			"t_acer2s.p3d",
+			"t_betula2w.p3d",
+			"t_fagus2s_summer.p3d",
+			"t_fagus2f_summer.p3d",
+			"t_betula2s_summer.p3d"
 		};
 		Bushes[] = {
-			"b_ficusc2d_f.p3d",
-			"b_ficusc1s_f.p3d",
-			"b_neriumo2d_f.p3d",
-			"b_arundod2s_f.p3d",
-			"b_arundod3s_f.p3d",
-			"b_ficusc2s_f.p3d"
+			"b_craet1.p3d",
+			"b_craet2.p3d",
+			"b_corylus.p3d",
+			"b_corylus2s.p3d",
+			"b_betulahumilis.p3d",
+			"b_sambucus.p3d",
+			"b_salix2s.p3d",
+			"b_canina2s.p3d",
+			"b_pmugo.p3d",
+			"b_prunus.p3d",
+			"b_corylus2s_summer.p3d",
+			"b_craet1_summer.p3d",
+			"b_betula2w_summer.p3d",
+			"b_canina2s_summer.p3d"
 		};
 		Wrecks[] = {
+			"wall_fen1_5_pole.p3d",
+			"wall_fen1_5_2.p3d",
 			"wall_tin_4_2.p3d",
-			"mil_wiredfence_f.p3d",
-			"cages_f.p3d",
-			"wreck_car_f.p3d",
-			"pipes_small_f.p3d",
-			"pipe_fence_4m_f.p3d",
-			"spp_tower_f.p3d",
-			"wreck_ural_f.p3d",
-			"wreck_car3_f.p3d",
-			"ironpipes_f.p3d",
-			"pipes_large_f.p3d",
-			"coil_f.p3d",
-			"cinderblocks_f.p3d",
-			"wreck_offroad_f.p3d",
-			"wreck_offroad2_f.p3d",
-			"crabcages_f.p3d",
-			"metalbarrel_empty_f.p3d",
-			"net_fenced_8m_f.p3d",
-			"net_fence_8m_f.p3d",
-			"wavepowerplantbroken_f.p3d",
-			"wreck_truck_dropside_f.p3d",
-			"wavepowerplant_f.p3d",
-			"wreck_traw_f.p3d",
-			"wreck_slammer_f.p3d",
-			"maroula_f.p3d",
-			"indfnc_9_f.p3d",
-			"indfnc_3_f.p3d",
-			"indfnc_3_d_f.p3d",
-			"wreck_car2_f.p3d",
-			"net_fence_4m_f.p3d",
-			"wreck_truck_f.p3d",
-			"wreck_hunter_f.p3d",
-			"wreck_slammer_hull_f.p3d"
+			"wall_fen1_5.p3d",
+			"wall_indfnc_3.p3d",
+			"wall_indfnc_9.p3d",
+			"wall_indfnc_corner.p3d",
+			"misc_concrete_high.p3d",
+			"plot_vlnplech2.p3d",
+			"misc_g_pipes.p3d",
+			"wall_tincom_9.p3d",
+			"wall_tin_4.p3d",
+			"plot_vlnplech1.p3d",
+			"wall_tincom_9_2.p3d",
+			"wall_tincom_3.p3d",
+			"wall_tincom_pole.p3d",
+			"datsun01t.p3d",
+			"datsun02t.p3d",
+			"skodovka_wrecked.p3d",
+			"lada_wrecked.p3d",
+			"hiluxt.p3d",
+			"uaz_wrecked.p3d",
+			"ural_wrecked.p3d"
 		};
 	};
+	
 };
 
 class CfgEpochSapper

@@ -1,0 +1,238 @@
+author = "Epoch Mod Team";
+class Header
+{
+ gameType = Sandbox;
+ minPlayers = 1;
+ maxPlayers = 100;
+};
+respawn = "BASE";
+respawnDelay = 600;
+respawnDialog = 0;
+
+onLoadMission= "Epoch";
+OnLoadIntro = "Welcome to Epoch Mod";
+loadScreen = "\x\addons\a3_epoch_assets\pictures\loadScreen_ca.paa"; 
+OnLoadIntroTime = False;
+OnLoadMissionTime = False;
+onLoadName = "Epoch Mod";
+disabledAI = true;
+scriptedPlayer = 1;
+disableChannels[]={0,1,2,6};
+enableItemsDropping = 0;
+briefing = 0;
+debriefing = 0;
+enableDebugConsole = 0;
+joinUnassigned = 0;
+respawnOnStart = 0;
+forceRotorLibSimulation = 0;
+
+corpseManagerMode = 1;
+corpseLimit = 10;
+corpseRemovalMinTime = 1200;
+corpseRemovalMaxTime = 3600;
+
+wreckManagerMode = 1;
+wreckLimit = 2;
+wreckRemovalMinTime = 60;
+wreckRemovalMaxTime = 360;
+
+class CfgRemoteExecCommands {};
+
+class CfgEpochClient
+{
+	epochVersion = "0.3.0.4";
+	
+	sapperRngChance = 100; // increase number to reduce chances and reduce to increase. Default 100 = 1% - 55% if soiled (+ 2% if in city) chance to spawn sapper
+	droneRngChance = 100; // increase number to reduce chances and reduce to increase. Default 100 = // 2% chance (+ 4% chance if in city) (1% - 2% Half if using silencer) to spawn drone if shot fired
+	
+	buildingNearbyMilitary = 0; //1 to allow building nearby
+	buildingNearbyMilitaryRange = 300; //Define radius of blocked area
+
+	buildingRequireJammer = 0; // 1 = to allow building without a jammer 
+	buildingCountLimit = 200; // how many objects can be built within range of a jammer 
+	buildingJammerRange = 75; // jammer range in meters 
+	
+	EPOCH_news[] = {"Word is that Sappers have a new boss.","Dogs will often lure them monsters away.","My dog was blown up. I miss him.."};
+
+	class Esseker {
+		blockedArea[] = {
+				{ { 208.778,353.779,0 }, 300 }, //Cave
+				{ { 1997.77,4177.22,0 }, 200 }, //Krupa
+				{ { 2710.82,4577.82,0 }, 300 }, //Kupress
+				{ { 6698.04,3901.16,0 }, 220 }, //Plava Vrana Military
+				{ { 9441.22,4768.86,0 }, 500 }, //Adela AF West
+				{ { 10336,4809.92,0 }, 280 }, //Adela AF East
+				{ { 6453.85,5454.12,0 }, 200 }, //Neptune resort
+				{ { 5237.39,4756.58,0 }, 200 }, //Power station
+				{ { 5034.75,5126.94,0 }, 300 }, //Kula
+				{ { 6317.04,6194.92,0 }, 200 }, //Gulash
+				{ { 3023.79,6078.66,0 }, 400 }, //Danilov Grad
+				{ { 8665.26,5643.09,0 }, 600 }, //Old Esseker (West)
+				{ { 9676.37,5592.46,0 }, 600 }, //Esseker (Central)
+				{ { 10547.4,5465.63,0 }, 600 }, //Lower Esseker (East)
+				{ { 11896.2,7941.4,0 }, 200 }, //Novi Grad
+				{ { 10136.3,7917,0 }, 60 }, //Chardak Resort
+				{ { 9054.67,7902.84,0 }, 150 }, //Pilana Sawmill
+				{ { 7780.88,6914.07,0 }, 200 }, //Posestra
+				{ { 6199.98,6919.69,0 }, 150 }, //Lug
+				{ { 3503.95,6888.93,0 }, 170 }, //Melina
+				{ { 1953.28,7815.1,0 }, 210 }, //Rama
+				{ { 4791.52,8074.88,0 }, 200 }, //Chokory
+				{ { 3967.84,9242.61,0 }, 120 }, //ES Petrol
+				{ { 1171.25,10280.1,0 }, 150 }, //Camp Spencer
+				{ { 7169.08,9298.94,0 }, 150 }, //Tuk
+				{ { 7676.77,10152.7,0 }, 100 }, //Igman Military Base
+				{ { 10060.6,9901.3,0 }, 200 } //Borosh
+				};
+		Rocks[] = {
+        "sharpstones_erosion.p3d",
+        "sharprock_spike.p3d",
+        "sharprock_wallh.p3d",
+        "w_sharpstones_erosion.p3d",
+        "bluntstone_02.p3d",
+        "bluntstone_03.p3d",
+        "sharpstone_02.p3d",
+		"decal_rock_dark.p3d"
+		};
+		ATM[] = {
+        "atm_02_f.p3d",
+		"atm_01_f.p3d",
+        "phonebooth_01_f.p3d",
+		"phonebooth_02_f.p3d"
+		};
+		Water[] = {
+	    "rasman_pond.p3d",
+		"misc_well.p3d",
+		"misc_wellpump.p3d",
+		"water_source_f.p3d",
+		"kasna_new.p3d"
+		};
+		Trash[] = {
+		"tyres_f.p3d",
+        "junkpile_f.p3d",
+        "garbagewashingmachine_f.p3d",
+        "garbagebags_f.p3d",
+        "kontejner.p3d",
+        "garbagepallet_f.p3d",
+        "popelnice.p3d"
+		};
+		Trees[] = {
+		"str osika.p3d",
+		"cwr2_a2_t_sorbus2s.p3d",
+        "ind_pec_03.p3d",
+        "t_populusb2s_ep1.p3d",
+        "t_populusf2s_ep1.p3d",
+        "str lipa.p3d",
+        "t_picea2s.p3d",
+        "hrusen2.p3d",
+        "cwr2_a2_t_fagus2w.p3d",
+        "cwr2_a2_t_alnus2s.p3d",
+        "dd_borovice02.p3d",
+        "t_picea3f.p3d",
+        "t_pinuss2f.p3d",
+        "t_pinuss1s_f.p3d",
+        "t_carpinus2s.p3d",
+        "t_quercusir2s_f.p3d",
+        "jablon.p3d",
+        "mb_t_ulmus_large.p3d",
+        "cwr_aleppopine.p3d",
+        "t_fagus2f_summer.p3d",
+        "t_fagus2f.p3d",
+        "t_populus3s.p3d",
+        "t_pinusn2s.p3d",
+        "t_picea1s.p3d",
+        "cwr2_a2_t_quercus3s.p3d",
+        "str kastan.p3d",
+        "t_populusn3s_f.p3d",
+        "cwr2_a2_t_fraxinus2s.p3d",
+        "t_poplar2f_dead_f.p3d",
+        "misc_fallentree2.p3d",
+        "t_oleae1s_f.p3d",
+        "t_fraxinusav2s_f.p3d",
+        "t_oleae2s_f.p3d",
+        "t_prunuss2s_ep1.p3d"
+		};
+		Bushes[] = {
+        "krovi_long.p3d",
+        "cwr2_a2_b_canina2s.p3d",
+        "b_salix2s.p3d",
+        "cwr2_a2_b_craet1.p3d",
+        "str krovisko vysoke.p3d",
+        "krovi2.p3d",
+        "ker s bobulema.p3d",
+        "t_malus1s.p3d",
+        "cwr2_a2_b_prunus.p3d",
+        "b_ficusc1s_f.p3d",
+        "hospital_side1_f.p3d",
+        "b_craet1_summer.p3d",
+        "b_neriumo2s_f.p3d",
+        "b_neriumo2s_white_f.p3d",
+        "cwr2_a2_b_sambucus.p3d"
+		};
+		Wrecks[] = {
+        "wreck_ural_f.p3d",
+        "rubble_metal_plates_04.p3d",
+        "rubble_metal_plates_02.p3d",
+        "wreck_car2_f.p3d",
+        "rubble_metal_plates_01.p3d",
+        "wreck_truck_dropside_f.p3d",
+        "wreck_brdm2_f.p3d",
+        "wreck_bmp2_f.p3d",
+        "wreck_heli_attack_01_f.p3d",
+        "bmp_break.p3d",
+        "wreck_t72_hull_f.p3d",
+        "wreck_t72_turret_f.p3d",
+        "wreck_uaz_f.p3d",
+        "wreck_hmmwv_f.p3d",
+        "kamaz_bort.p3d",
+        "wreck_van_f.p3d",
+        "kamaz_awtobas.p3d",
+        "wreck_offroad_f.p3d",
+        "wreck_car3_f.p3d",
+        "maz.p3d",
+        "wreck_offroad2_f.p3d",
+        "wreck_car_f.p3d",
+        "wreck_skodovka_f.p3d",
+        "wreck_cardismantled_f.p3d",
+        "wreck_truck_f.p3d",
+        "kamaz_pozarka.p3d",
+        "zaporosez.p3d",
+        "kamaz_tent.p3d",
+        "uaz_wrecked.p3d",
+        "ural_wrecked.p3d"
+		};
+	};	
+	
+};
+
+class CfgEpochSapper
+{
+	detonateDistMax = 8; //Random distance between 3m and this number at which sapper detonates. Min value = 4
+	groanTrig = 16; //Percentage chance of a groan. Min value = 4
+	sRange = 300; //Distance from target over which sapper will dispose. Range within which sapper code will be aware of targets. Distance up to which sapper will attempt to find a spot to hide in. Min Value = 150.
+	smellDist = 24; //Distance up to which sapper can smell. Used to decide if sapper can see target when deciding to charge and influences target selection. Is influenced by wind direction. Min Value = 8.
+};
+
+class CfgEpochUAV
+{
+	UAVMinDist = 48; //Minimum distance to choose next position when roaming. Min Value = 8.
+	UAVMaxDist = 180; //Maximum distance to choose next position when roaming. Min Value = 42 / Max Value = 400.
+	UAVHeight = 100; //Set height when roaming, slight randomness is applied to this value. UAV will choose own height when locked onto target. Min Value = 42 / Max Value = 280. UAV can still spot targets from height !
+};
+
+class CfgEpochAirDrop
+{
+	AirDropFreq = 1200; //AirDropChance, to decide if Air drop occurs, will only be checked once per AirDropFreq time period, for each player. Min value = 120.
+	AirDropChance = 6; //Percentage chance of air drop, for current player. Checked every AirDropFreq and upon antagonists spawn trigger. -1 To disable.
+};
+
+class CfgEpochCloak
+{
+	cRange = 300; //Distance, from target, at which Cloak will dispose. Cloak is also aware of players within this range. (Min: 60 / Max: 600)
+	cAggression = 75; //Percentage chance of attack, currently a psychological attack (Cultist spooky voice). (Min: 1 / Max: 100)
+	attackFrequency = 120; //One attack only per this period. (Min: 120)
+	attackDistance = 38; // Distance, from target, up to which Cloak will attack. Lower for less vocals. (Min: 16)
+	targetChangeFrequency = 42; //Cloak will only attempt to change target once per this period. Make Higher to stick to first target player. (Min: 42)
+	teleportChance = 66; //Chance for cloak to teleport. (Min: 1)
+	hoverFrequency = 1280; //Cloak has new hover attack. When player is above cloak, and at a distance, cloak will float to player and teleport attack. Only perform one of these moves per this period. (Min: 240)
+};
