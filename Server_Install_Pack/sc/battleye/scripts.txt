@@ -16,8 +16,6 @@
 7 setvelocity !="_bolt setPosATL _pos;\n_bolt setVelocity [0, 0, -10];" !="EPOCH_target setvelocitytransformation" !="_currentTarget setVelocity [0,0,-0.01];" !="_head setVelocity [\n(sin _dir * _speed), \n(cos _dir * _speed)" !="_vel = velocity this; _dir = getDir player; this setVelocity[(_vel select 0)+(sin _dir * 2),(_vel select 1)+(cos _dir * 2),(_vel select 2)];" !="_head setVelocity [random 2,random 2,10];"
 7 assignAs !="assignAsCargo" !="_unit assignAsGunner _axeCopter;" !="_driver assignAsDriver _axeCopter;" !="axeVIP assignAsDriver vehicle axeVIP;"
 7 assignAsCargo !="_x assignAsCargo axeGeneralsBoat;" !="axeVIP assignAsCargo vehicle player;" !="axeVIP assignAsCargo vehicle axeVIP;"
-7 playableunits !="getDir _x, name _x];};}forEach playableUnits;};if" !"{getplayeruid _x == _ownerVar} count playableunits" !="lbSetData[21500, _index, netId _x];\n} forEach(playableUnits - [player]);"
-7 allUnits !="allUnits-playableUnits;};if" !="{_x allowFleeing 0} forEach allUnits;" !="EPOCH_ESPMAP_TARGETS = allUnits + vehicles;"
 7 allowDamage !="_unit allowDamage false;" !="_unit allowDamage true;" !="player allowDamage true;vehicle player allowDamage true;" !="player allowDamage false;{missionNamespace setVariable[format['EPOCH_player%1"
 7 exec !="<execute expression=" !"RscDebugConsole_execute" !"execFSM" !"_executeStackedEventHandler" !"fn_execVM" !"fn_moduleExecute" !"fn_execRemote" !"fn_MPexec" !"bis_fnc_moduleExecute_activate" !"fn_tridentExecute" !"randomize_civ1" !"executed from" !"EPOCH_DebugGUI_exec" !"_handle = [_display] execVM _script;" !"execVM \"\A3\Structures_F\scripts" !="execVM \"\A3\Structures_F_EPC\Civ\PlayGround\scripts\Carousel_spin.sqf\"" !="reviveExecuteTemplates"
 7 addWeaponCargo !="_acceptHolder addWeaponCargo [_wWeapon, 1] ;"
