@@ -15,7 +15,8 @@ WeatherChangeTime = 1200; // This controls how fast the weather changes as well 
 WeatherStaticForecast[] = {}; // Default: {75.5,0,{0,0,0},0,{1,1}}; // Clear day; {19,1,{1,1,40},1,{5,5}}; // Cold Foggy Rainy Overcast Windy; Format: {temp <scalar>,rain <scalar>,fog <array>,overcast <scalar>,wind <array>} 
 events[] = {
     { 3600, "CarnivalSpawner" }, // SECOND <scalar>, EVENT <string>
-    { 1200, "EarthQuake" },
+    { 2400, "EarthQuake" },
+	{ 1800, "ChangeWeather" },
     { 1200, "ContainerSpawner" },
     { 300, "PlantSpawner" } //No comma on last Entry
 };
