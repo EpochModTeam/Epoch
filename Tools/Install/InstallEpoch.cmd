@@ -7,6 +7,8 @@ SET ARMAAPPID=107410
 SET ARMAWORKSHOPID=455221958
 :: remove mod folder
 rd /s/q "%ARMASVRPATH%\@Epoch"
+:: remove cache C:\Users\Administrator\Downloads\steamcmd\steamapps\workshop
+del "steamapps\workshop\appworkshop_%ARMAAPPID%.acf"
 :: update workshop mod
 START "" /WAIT steamcmd.exe +login %STEAMUN% %STEAMPW% +workshop_download_item %ARMAAPPID% %ARMAWORKSHOPID% +quit
 :: copy files back to server 
