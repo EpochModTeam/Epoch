@@ -5,7 +5,7 @@
 [Added] Weather code migrated into an Epoch Event and code moved to settings pbo.
 [Fixed] Fixed "no config.bin SmokeShellWhite" error when sapper off gasses.
 [Fixed] Environment sounds had been disabled. Removed enableEnvironment false; from client init.
-[Fixed] Can't chop down tall trees. Converted to check to 2d Distance.
+[Fixed] Can't chop down tall trees. Converted to 2d Distance check.
 [Fixed] Shipping container doors did not open and threw error. Updated to the 1.48 way of opening doors using functions.
 [Fixed] Shoeboxes added to more building on Takistan and any other maps that use the same building classes.
 [Fixed] Vehicle storage space has been normalized. Thanks to Uro1!
@@ -15,3 +15,4 @@
 [Changed] Land_Laptop_device_F can now be used as a Bank terminal.
 [Updated] Config.cfg requiredBuild and hostname for A3 1.48
 [Updated] Added bornholm blocked areas to main config and description.ext. Thanks to DarthRogue!
+[Info] Server pbo is no longer obfuscated.
