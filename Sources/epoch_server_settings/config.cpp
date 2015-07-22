@@ -9,7 +9,7 @@ class CfgPatches {
 		units[] = {};
 		weapons[] = {};
 		requiredVersion = 0.1;
-		epochVersion = "0.3.0.4";
+		epochVersion = "0.3.1.0";
 		requiredAddons[] = {};
 	};
 };
