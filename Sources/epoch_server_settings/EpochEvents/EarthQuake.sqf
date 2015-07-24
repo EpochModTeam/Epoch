@@ -1,4 +1,11 @@
-
+/*
+  Earthquake and Mineral Deposit Event
+	by Aaron Clark - EpochMod.com
+	This work is licensed under a Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License.
+	http://creativecommons.org/licenses/by-nc-nd/4.0/
+	Improvements and or bugfixes and other contributions are welcome via the github:
+	https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_server_settings/EpochEvents/Earthquake.sqf
+*/
 _position = [epoch_centerMarkerPosition, 0, EPOCH_dynamicVehicleArea, 10, 0, 1000, 0] call BIS_fnc_findSafePos;
 if ((count _position) == 2) then{
 	_plyrsNearEpicenter = _position nearEntities[["Epoch_Male_F", "Epoch_Female_F"], 1000];
