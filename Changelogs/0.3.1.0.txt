@@ -1,8 +1,10 @@
 [Added] Experimental Sapper Migration Event.
-[Added] 2x increase in precision of positions stored in database for Bases, Vehicles, and storage. By storing both a Low and a High precision array and adding them back together when needed.
+[Added] Increased precision of positions stored in database for Bases, Vehicles, and storage.
 [Added] More variations of soldier classes and loadouts (from drone detection).
 [Added] CfgBuildingLootPos can be now overridden via missionConfig.
 [Added] Weather code migrated into an Epoch Event and code moved to settings pbo.
+[Fixed] Added checks to make sure you can only P2P trade while not in a vehicle.
+[Fixed] Re-add missing AiA TP and Bornholm loot positions.
 [Fixed] Fixed "no config.bin SmokeShellWhite" error when sapper off gasses.
 [Fixed] Environment sounds had been disabled. Removed enableEnvironment false; from client init.
 [Fixed] Can't chop down tall trees. Converted to 2d Distance check.
