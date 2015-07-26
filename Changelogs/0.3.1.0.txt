@@ -3,6 +3,7 @@
 [Added] More variations of soldier classes and loadouts (from drone detection).
 [Added] CfgBuildingLootPos can be now overridden via missionConfig.
 [Added] Weather code migrated into an Epoch Event and code moved to settings pbo.
+[Fixed] Typo in esseker.h position only had 2 elements of the needed 3 for setposATL.
 [Fixed] Added checks to make sure you can only P2P trade while not in a vehicle.
 [Fixed] Re-add missing AiA TP and Bornholm loot positions.
 [Fixed] Fixed "no config.bin SmokeShellWhite" error when sapper off gasses.
