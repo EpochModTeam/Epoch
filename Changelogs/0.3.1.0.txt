@@ -12,6 +12,11 @@
 [Fixed] Shoeboxes added to more building on Takistan and any other maps that use the same building classes.
 [Fixed] Vehicle storage space has been normalized. Thanks to Uro1!
 [Fixed] Missing function compile for helicopter Air Drop.
+[Changed] Removed epoch setWaves sync code as it should no longer be needed after 1.46.
+[Changed] Female Ghillies armor, weight, storage now match CSAT male variants.
+[Changed] Female Wetsuits armor, weight, storage now match CSAT male variants.
+[Changed] Female Camo Clothes armor, weight, storage now match "Guerilla" gear, like "U_OG_Guerilla2_2".
+[Changed] Increased loot position bias for all buildings from 15 to 25%.
 [Changed] Enabled Air Drops.
 [Changed] Added small chance for primary weapons to be found under green military beds.
 [Changed] Land_Laptop_device_F can now be used as a Bank terminal.
