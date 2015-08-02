@@ -84,7 +84,7 @@ class CfgEpochClient
 			"bo_r2_boulder1.p3d",
 			"bo_r2_boulder2.p3d",
 			"bo_r2_rock1.p3d",
-			"bo_r2_rocktower.p3d",w
+			"bo_r2_rocktower.p3d",
 			"bo_r2_rockwall.p3d"
 		};
 		ATM[] = {
