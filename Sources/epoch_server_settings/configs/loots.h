@@ -499,6 +499,31 @@ class CfgMainTable
 				{ "SniperRifle", 2 }
 		};
 	};
+	class AirDrop_Payout1
+	{
+		lootMin = 7;
+		LootMax = 10;
+		tables[] = { 
+				{ "Equipment", 6 },
+				{ "Pistols", 8 },
+				{ "PistolAmmo", 10 },
+				{ "Scopes", 4 },
+				{ "Muzzles", 4 },
+				{ "Uniforms", 12 },
+				{ "Vests", 5 },
+				{ "Headgear", 4 },
+				{ "Food", 11 },
+				{ "RifleAmmo", 5 },
+				{ "MachinegunAmmo", 3 },
+				{ "SniperRifleAmmo", 2 },
+				{ "Hand", 2 },
+				{ "Tools", 8 },
+				{ "Generic", 3 },
+				{ "GenericLarge", 5 },
+				{ "BaseBuilding", 6 },
+				{ "Grenades", 2 }
+		};
+	};
 	class Mission_Payout1
 	{
 		lootMin = 4;
@@ -677,7 +702,7 @@ class CfgLootTable
 				{ { "20Rnd_762x51_Mag", "magazine" }, 1 },
 				{ { "SniperRifleAmmo_5Rnd_127x108_Mag", "CfgLootTable" }, 1 },
 				{ { "7Rnd_408_Mag", "magazine" }, 1 },
-				{ { "10Rnd_762x51_Mag", "magazine" }, 1 },
+				{ { "10Rnd_762x54_Mag", "magazine" }, 1 },
 				{ { "10Rnd_338_Mag", "magazine" }, 1 },
 				{ { "10Rnd_93x64_DMR_05_Mag", "magazine" }, 1 },
 				{ { "10Rnd_127x54_Mag", "magazine" }, 1 }
@@ -1295,7 +1320,7 @@ class CfgLootTable
 				{ { "KitWoodFoundation", "magazine" }, 14 }
 		};
 	};
-
+	
 	class Mission_Payout1
 	{
 		items[] = {
