@@ -274,6 +274,12 @@ class CfgMainTable
 		LootMax = 6;
 		tables[] = { "Food" };
 	};
+	class Cabinet_EPOCH : Default
+	{
+		lootMin = 2;
+		LootMax = 4;
+		tables[] = { "Medical" };
+	};
 	class Freezer_EPOCH : Default
 	{
 		lootMin = 3;
@@ -585,6 +591,12 @@ class CfgMainTable
 		tables[] = { "I_UAV_01_F" };
 	};
 	class Snake_random_EPOCH
+	{
+		lootMin = 1;
+		LootMax = 1;
+		tables[] = { "Snake_random_EPOCH" };
+	};
+	class Snake2_random_EPOCH
 	{
 		lootMin = 1;
 		LootMax = 1;
@@ -1303,6 +1315,15 @@ class CfgLootTable
 				{ { "ItemCoolerE", "magazine" }, 4 },
 				{ { "Sodas", "CfgLootTable" }, 47 },
 				{ { "CanFood", "CfgLootTable" }, 49 }
+		};
+	};
+	class Medical
+	{
+		items[] = {
+				{ { "FAK", "item" }, 97 },
+				{ { "Heal_EPOCH", "item" }, 2 },
+				{ { "Defib_EPOCH", "item" }, 1 },
+				{ { "EnergyPack", "magazine" }, 1 }
 		};
 	};
 	class BaseBuilding

@@ -1,0 +1,12 @@
+[New] Please welcome our newest team member SteamPunkGears http://www.twitch.tv/steampunkgears
+[Added] New custom wood log model. @SteamPunkGears
+[Added] New Medicine cabinet loot object that spawns mostly medical loot. @SteamPunkGears
+[Added] Custom Epoch Client function compiler, allows for all client side functions to be overwritten.
+[Fixed] Incorrect class for snake prevented killing snakes and looting them.
+[Fixed] Use init eventhandler to remove local snakes and rabbits on spawning as other than Altis or Stratis often spawn randomly.
+[Fixed] Dog brain targeting updates for prey like snakes and chickens.
+[Fixed] AirDrops now have there own loot table with better loot payout.
+[Fixed] Bornholm loot environmental loot configs had incorrect p3d names. Thanks to Robio!
+[Fixed] Missing price value added for M-900 helicopter.
+[Fixed] Swap all references of old Rahim 10Rnd 762x51 to 10Rnd 762x54.
+[Info] Removed old bikey and added new one for 0320.
