@@ -46,7 +46,7 @@
 7 ctrlSetEventHandler !"BIS_fnc_guiMessage_status" !"ctrlSetEventHandler ['LBDblClick', '_this call" !="_buttonRespawn ctrlseteventhandler [\"buttonclick\",\"with uinamespace do {['buttonRespawn',"
 7 addMPEventHandler
 7 addEventHandler !"displayAddEventHandler" !"ctrlAddEventHandler" !"FiredNear" !"EpeContactStart" !"InventoryClosed" !"GetOut" !"InventoryOpened" !"local" !"Respawn" !"Put" !"Take" !"Fired" !"Killed" !" [\"PostReset\",{BIS_EnginePPReset = true;} ];" !"_logic addeventhandler [\n\"local\""
-7 displayAddEventHandler !"[_display] call _fnc_animate;" !"tVersion select 4) == \"Development\") then" !"_display displayaddeventhandler\n[\n\"mousemoving\"," !"(findDisplay 46) displayAddEventHandler [\"KeyDown\",\"true\"];" !"(findDisplay 46) displayAddEventHandler [\"KeyDown\",\"_this call EPOCH_KeyDown\"];" !="_addCase = _display46 displayAddEventHandler ['KeyDown',{_this call EPOCH_KeyDown;}];" !"_display displayaddeventhandler [\"unload\",\"uinamespace setvariable ['BIS_fnc_guiMess" !="findDisplay -1337 displayAddEventHandler ['Unload'"
+7 displayAddEventHandler !"[_display] call _fnc_animate;" !"tVersion select 4) == \"Development\") then" !"_display displayaddeventhandler\n[\n\"mousemoving\"," !"(findDisplay 46) displayAddEventHandler [\"KeyDown\",\"true\"];" !"(findDisplay 46) displayAddEventHandler [\"KeyDown\",\"_this call EPOCH_KeyDown\"];" !="_addCase = _display46 displayAddEventHandler ['KeyDown',{_this call EPOCH_KeyDown;}];" !"_display displayaddeventhandler [\"unload\",\"uinamespace setvariable ['BIS_fnc_guiMess" !="findDisplay -1337 displayAddEventHandler ['Unload'" !="_display displayaddeventhandler [\"keydown\",\"with uinamespace do {['keyDown'"
 7 ctrlAddEventHandler !"rCfg >> \"refreshDelay\");" !" [\n\"draw\"," !" [\"buttonclick\"," !="(uiNamespace getVariable 'ESP_map') ctrlAddEventHandler['Draw', '_esp_targets = EPOCH_ESPMAP_TARGETS;" !="ctrlAddEventHandler ['MouseButtonDown'" !="(_display displayctrl _idc) ctrlAddEventHandler [\"LBSelChanged\","
 7 removeAllEventHandlers !="ctrlRemoveAllEventHandlers" !="_vehicle removeAllEventHandlers \"GetOut\";" !="_sapper removeAllEventHandlers \"Hit\";\n_sapper removeAllEventHandlers \"FiredNear\";" !="_display46 displayRemoveAllEventHandlers 'KeyDown';"
 7 removeAllMissionEventHandlers
@@ -57,7 +57,7 @@
 7 remoteControl !"fn_moduleRemoteControl.sqf" !="\"BIS_fnc_moduleRemoteControl"\"
 7 drawIcon3D !="drawIcon3D[\"\x\addons\a3_epoch_code\Data\Member.paa\",_color,_pos,1,1,0,_text,1,0.025,\"PuristaMedium\"];\n}forEach EPOCH_ESP_TARGETS;" !"drawIcon3D[format[\"\x\addons\a3_epoch_code\Data\UI\loading_bar_%1.paa\",_stability],_color,(getPosATL EPOCH_stabilityTarget),5,5,0,\"\",1,0.05,\"PuristaMedium\"];" !"drawIcon3D[format[\"\x\addons\a3_epoch_code\Data\UI\loading_bar_%1.paa\",_num],_color,_pos,4,4,0,\"\",1,0.05,\"PuristaMedium\"];" !"EPOCH_drawIcon3dStability" !"EPOCH_drawIcon3d" !"if (_condition) then {\ndrawIcon3D [_icon, _color, _position, _sizeX, _sizeY, _angle, _text," !="drawIcon3D [\"\A3\UI_F_MP_Mark\Data\Tasks\Misc\background.paa\""
 7 drawLine3D !"{\nfor [{_i = 1}, {_i < count _x}, {_i = _i + 1}] do {\ndrawLine3D [_x select (_i - 1), _x select _i, ((BIS_tracedShooter getVari"
-7 ctrlCreate !="_ListGroup = _display ctrlCreate [\"RscControlsGroupNoHScrollbars\", 		21903	];"
+7 ctrlCreate !="_ListGroup = _display ctrlCreate [\"RscControlsGroupNoHScrollbars\""
 7 ctrlDelete !="ctrlDelete _ListGroup;"
 7 ctrlClassName
 7 ctrlModel
