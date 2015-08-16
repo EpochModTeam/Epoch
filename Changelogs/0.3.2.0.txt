@@ -1,4 +1,6 @@
 [New] Please welcome our newest team member SteamPunkGears http://www.twitch.tv/steampunkgears
+[Added] Armor stats for Uniforms, Vests, and Headgear now visible on inventory GUI.
+[Added] Consume and Craft buttons added to inventory GUI, allows quicker action and identification of craftable items.
 [Added] New custom wood log model. @SteamPunkGears
 [Added] New Medicine cabinet loot object that spawns mostly medical loot. @SteamPunkGears
 [Added] Custom Epoch Client function compiler.
