@@ -1,9 +1,14 @@
 [New] Please welcome our newest team member SteamPunkGears http://www.twitch.tv/steampunkgears
+[Added] New food tiem Tactical Bacon gives 500 hunger.
+[Added] Revamped upgraded wood stair model. @SteamPunkGears
 [Added] Armor stats for Uniforms, Vests, and Headgear now visible on inventory GUI.
 [Added] Consume and Craft buttons added to inventory GUI, allows quicker action and identification of craftable items.
 [Added] New custom wood log model. @SteamPunkGears
 [Added] New Medicine cabinet loot object that spawns mostly medical loot. @SteamPunkGears
 [Added] Custom Epoch Client function compiler.
+[Changed] Random chance to heal yourself when eating and not thirsty.
+[Changed] Increased hunger and thirst loss a bit and you can now die from prolonged lack of hunger or thirst.
+[Changed] Tweaked stats UI thresholds so that players will now see notifications sooner. Icons are now colorized and flash when at critical level.
 [Fixed] Incorrect class for snake prevented killing snakes and looting them.
 [Fixed] Use init eventhandler to remove local snakes and rabbits on spawning as maps other than Altis or Stratis spawn them randomly.
 [Fixed] Dog brain targeting updates for prey like snakes and chickens.
