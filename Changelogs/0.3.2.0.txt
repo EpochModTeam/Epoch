@@ -17,4 +17,5 @@
 [Fixed] Missing price value for M-900 helicopter.
 [Fixed] Swap all references of old Rahim 10Rnd 762x51 to 10Rnd 762x54.
 [ServerInfo] Removed old .bikey and added new one for 0320.
+[ServerInfo] Added //new2 to the top of scripts.txt to enable kicking again.
 [Info] version.txt added to client files to aid file mirrors.
