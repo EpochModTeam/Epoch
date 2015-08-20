@@ -1,0 +1,21 @@
+[New] Please welcome our newest team member SteamPunkGears http://www.twitch.tv/steampunkgears
+[Added] New food item Tactical Bacon gives 500 hunger.
+[Added] Revamped upgraded wood stair model. @SteamPunkGears
+[Added] Armor stats for Uniforms, Vests, and Headgear now visible on inventory GUI.
+[Added] Consume and Craft buttons added to inventory GUI, allows quicker action and identification of craftable items.
+[Added] New custom wood log model. @SteamPunkGears
+[Added] New Medicine cabinet loot object that spawns mostly medical loot. @SteamPunkGears
+[Added] Custom Epoch Client function compiler.
+[Changed] Lowered armor on certain base building objects that had way too much armor.
+[Changed] Increased hunger and thirst loss a bit and you can now die from prolonged lack of hunger or thirst.
+[Changed] Tweaked stats UI thresholds so that players will now see notifications sooner. Icons are now colorized and flash when at critical level.
+[Fixed] Incorrect class for snake prevented killing snakes and looting them.
+[Fixed] Use init eventhandler to remove local snakes and rabbits on spawning as maps other than Altis or Stratis spawn them randomly.
+[Fixed] Dog brain targeting updates for prey like snakes and chickens.
+[Fixed] AirDrops now have there own loot table with better loot payout.
+[Fixed] Bornholm environmental loot configs had incorrect p3d names. Thanks to Robio!
+[Fixed] Missing price value for M-900 helicopter.
+[Fixed] Swap all references of old Rahim 10Rnd 762x51 to 10Rnd 762x54.
+[ServerInfo] Removed old .bikey and added new one for 0320.
+[ServerInfo] Added //new2 to the top of scripts.txt to enable kicking again.
+[Info] version.txt added to client files to aid file mirrors.

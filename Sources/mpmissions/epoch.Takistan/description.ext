@@ -11,7 +11,7 @@ respawnDialog = 0;
 
 onLoadMission= "Epoch";
 OnLoadIntro = "Welcome to Epoch Mod";
-loadScreen = "\x\addons\a3_epoch_assets\pictures\loadScreen_ca.paa"; 
+loadScreen = "\x\addons\a3_epoch_assets\pictures\loadScreen_ca.paa";
 OnLoadIntroTime = False;
 OnLoadMissionTime = False;
 onLoadName = "Epoch Mod";
@@ -40,100 +40,22 @@ class CfgRemoteExecCommands {};
 
 class CfgEpochClient
 {
-	epochVersion = "0.3.1.0";
-	
+	epochVersion = "0.3.2.0";
+
 	sapperRngChance = 100; // increase number to reduce chances and reduce to increase. Default 100 = 1% - 55% if soiled (+ 2% if in city) chance to spawn sapper
 	droneRngChance = 100; // increase number to reduce chances and reduce to increase. Default 100 = // 2% chance (+ 4% chance if in city) (1% - 2% Half if using silencer) to spawn drone if shot fired
-	
+
 	buildingNearbyMilitary = 0; //1 to allow building nearby
 	buildingNearbyMilitaryRange = 300; //Define radius of blocked area
 
-	buildingRequireJammer = 0; // 1 = to allow building without a jammer 
-	buildingCountLimit = 200; // how many objects can be built within range of a jammer 
-	buildingJammerRange = 75; // jammer range in meters 
-	
+	buildingRequireJammer = 0; // 1 = to allow building without a jammer
+	buildingCountLimit = 200; // how many objects can be built within range of a jammer
+	buildingJammerRange = 75; // jammer range in meters
+
 	EPOCH_news[] = {"Word is that Sappers have a new boss.","Dogs will often lure them monsters away.","My dog was blown up. I miss him.."};
 
-	class Takistan {
-		blockedArea[] = {};
-		Rocks[] = {
-			"r_tk_stone_01_ep1.p3d",
-			"r_tk_stone_02_ep1.p3d",
-			"r_tk_rock_03_ep1.p3d",
-			"r_tk_boulder_03_ep1.p3d",
-			"r_tk_rock_02_ep1.p3d",
-			"r_tk_boulder_01_ep1.p3d",
-			"r_tk_boulder_02_ep1.p3d",
-			"r_tk_rock_01_ep1.p3d"
-		};
-		ATM[] = {
-		};
-		Water[] = {
-			"misc_well_c_ep1.p3d",
-			"misc_well_l_ep1.p3d",
-			"stand_water_ep1.p3d",
-			"misc_concbox_ep1.p3d"
-		};
-		Trash[] = {
-			"misc_rubble_ep1.p3d",
-			"bags_stack_ep1.p3d",
-			"kiosk_ep1.p3d",
-			"tires_ep1.p3d",
-			"garbage_misc.p3d",
-			"garbage_paleta.p3d",
-			"paletyc.p3d",
-			"crates_ep1.p3d",
-			"cages_ep1.p3d",
-			"junkpile.p3d",
-			"crates_stack_ep1.p3d",
-			"transport_cart_ep1.p3d",
-			"stand_small_ep1.p3d",
-			"stand_meat_ep1.p3d",
-			"bags_ep1.p3d",
-			"misc_garb_heap_ep1.p3d",
-			"house_k_1_ruins_ep1.p3d"
-		};
-		Trees[] = {
-			"t_populusf2s_ep1.p3d",
-			"t_pistacial2s_ep1.p3d",
-			"misc_trunk_torzo_ep1.p3d",
-			"t_populusb2s_ep1.p3d",
-			"t_amygdalusc2s_ep1.p3d",
-			"t_pinuse2s_ep1.p3d",
-			"t_ficusb2s_ep1.p3d",
-			"t_juniperusc2s_ep1.p3d",
-			"t_pinuss3s_ep1.p3d",
-			"misc_trunk_water_ep1.p3d",
-			"t_prunuss2s_ep1.p3d"
-		};
-		Bushes[] = {
-			"b_amygdalusn1s_ep1.p3d",
-			"b_pistacial1s_ep1.p3d",
-			"b_pinusm1s_ep1.p3d"
-		};
-		Wrecks[] = {
-			"wall_indfnc_9.p3d",
-			"wall_indfnc_pole.p3d",
-			"wall_tincom_9.p3d",
-			"wall_tincom_pole.p3d",
-			"ural_wrecked.p3d",
-			"uaz_wrecked.p3d",
-			"datsun02t.p3d",
-			"hiluxt.p3d",
-			"datsun01t.p3d",
-			"wall_tin_4.p3d",
-			"wall_indfnc_3_d.p3d",
-			"wall_indfnc_3.p3d",
-			"wall_indfnc_3_hole.p3d",
-			"skodovka_wrecked.p3d",
-			"lada_wrecked.p3d",
-			"misc_concrete_high.p3d",
-			"t72_wrecked.p3d",
-			"t72_wrecked_turret.p3d"
-		};
-	};
-
-	
+  #include "\x\addons\a3_epoch_config\Configs\CfgEpochClient\Takistan.hpp"
+  	
 };
 
 class CfgEpochSapper

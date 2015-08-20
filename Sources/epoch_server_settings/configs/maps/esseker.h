@@ -2,7 +2,7 @@ class Esseker : Default
 {
 	worldSize = 12000;
 	traderBlds[] = { "Land_i_House_Big_02_V3_dam_F", "Land_A_GeneralStore_01", "Land_A_GeneralStore_01a", "Land_sara_domek_zluty", "Land_Tovarna2", "Land_Shed_Ind02", "Land_i_House_Big_01_V3_dam_F", "Land_HouseV2_02_Interier", "Land_i_House_Small_01_V3_dam_F", "Land_HouseV_1I4", "Land_dum_rasovna", "Land_FuelStation_Build_F", "Land_CarService_F", "Land_u_House_Small_02_V1_F", "Land_i_Stone_HouseSmall_V1_F", "Land_i_Stone_Shed_V1_F"};
-	
+
 	containerPos[] = {};
 
 	telePos[] = {
@@ -28,7 +28,7 @@ class Esseker : Default
     {"Land_PhoneBooth_02_F", {11867.5, 7928.89, 0}, 0},
     {"Land_PhoneBooth_02_F", {1954.29, 7823.96, 0}, 19.5454},
     {"Land_PhoneBooth_02_F", {7229.75, 9369.1, 0}, 2.72723},
-	// Turbines			
+	// Turbines
 	{"Land_wpp_Turbine_V2_F", {660.226, 10060.1, 0}, 0},
     {"Land_wpp_Turbine_V2_F", {638.57, 10022.9, 0}, 0},
     {"Land_wpp_Turbine_V2_F", {619.792, 9992.28, 0}, 0},
@@ -122,11 +122,11 @@ class Esseker : Default
     // Protection Domes
 	{ "ProtectionZone_Invisible_F", { 5073.31, 8903.09, 0 }, 0, true },
 	{ "ProtectionZone_Invisible_F", { 4407.77, 6054.78, 0 }, 0, true },
-	{ "ProtectionZone_Invisible_F", { 8692.93, 3854.72 }, 0, true }
+	{ "ProtectionZone_Invisible_F", { 8692.93, 3854.72, 0 }, 0, true }
 	};
 
 	staticNpcPos[] = {
-		    //South 
+		    //South
 			{ "C_man_hunter_1_F", {8700.09, 3859.75, -0.0334778}, 241},
 			//West
 			{ "C_man_w_worker_F", {4411.08, 6058.25, 0}, 24.5455},
@@ -134,5 +134,3 @@ class Esseker : Default
 			{ "C_man_shorts_4_F_asia", {5068.45, 8893.52, 0}, 30}
 	};
 };
-
-

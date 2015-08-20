@@ -274,6 +274,12 @@ class CfgMainTable
 		LootMax = 6;
 		tables[] = { "Food" };
 	};
+	class Cabinet_EPOCH : Default
+	{
+		lootMin = 2;
+		LootMax = 4;
+		tables[] = { "Medical" };
+	};
 	class Freezer_EPOCH : Default
 	{
 		lootMin = 3;
@@ -499,6 +505,31 @@ class CfgMainTable
 				{ "SniperRifle", 2 }
 		};
 	};
+	class AirDrop_Payout1
+	{
+		lootMin = 7;
+		LootMax = 10;
+		tables[] = { 
+				{ "Equipment", 6 },
+				{ "Pistols", 8 },
+				{ "PistolAmmo", 10 },
+				{ "Scopes", 4 },
+				{ "Muzzles", 4 },
+				{ "Uniforms", 12 },
+				{ "Vests", 5 },
+				{ "Headgear", 4 },
+				{ "Food", 11 },
+				{ "RifleAmmo", 5 },
+				{ "MachinegunAmmo", 3 },
+				{ "SniperRifleAmmo", 2 },
+				{ "Hand", 2 },
+				{ "Tools", 8 },
+				{ "Generic", 3 },
+				{ "GenericLarge", 5 },
+				{ "BaseBuilding", 6 },
+				{ "Grenades", 2 }
+		};
+	};
 	class Mission_Payout1
 	{
 		lootMin = 4;
@@ -565,6 +596,12 @@ class CfgMainTable
 		LootMax = 1;
 		tables[] = { "Snake_random_EPOCH" };
 	};
+	class Snake2_random_EPOCH
+	{
+		lootMin = 1;
+		LootMax = 1;
+		tables[] = { "Snake_random_EPOCH" };
+	};
 	class SeaFood
 	{
 		lootMin = 1;
@@ -601,7 +638,16 @@ class CfgLootTable
 		items[] = {
 				{ { "ItemCompass", "item" }, 20 },
 				{ { "ItemGPS", "item" }, 10 },
-				{ { "EpochRadio0", "item" }, 20 },
+				{ { "EpochRadio0", "item" }, 3 },
+				{ { "EpochRadio1", "item" }, 3 },
+				{ { "EpochRadio2", "item" }, 3 },
+				{ { "EpochRadio3", "item" }, 2 },
+				{ { "EpochRadio4", "item" }, 2 },
+				{ { "EpochRadio5", "item" }, 2 },
+				{ { "EpochRadio6", "item" }, 2 },
+				{ { "EpochRadio7", "item" }, 1 },
+				{ { "EpochRadio8", "item" }, 1 },
+				{ { "EpochRadio9", "item" }, 1 },
 				{ { "ItemWatch", "item" }, 30 },
 				{ { "FAK", "item" }, 20 }
 		};
@@ -677,7 +723,7 @@ class CfgLootTable
 				{ { "20Rnd_762x51_Mag", "magazine" }, 1 },
 				{ { "SniperRifleAmmo_5Rnd_127x108_Mag", "CfgLootTable" }, 1 },
 				{ { "7Rnd_408_Mag", "magazine" }, 1 },
-				{ { "10Rnd_762x51_Mag", "magazine" }, 1 },
+				{ { "10Rnd_762x54_Mag", "magazine" }, 1 },
 				{ { "10Rnd_338_Mag", "magazine" }, 1 },
 				{ { "10Rnd_93x64_DMR_05_Mag", "magazine" }, 1 },
 				{ { "10Rnd_127x54_Mag", "magazine" }, 1 }
@@ -739,11 +785,13 @@ class CfgLootTable
 				{ { "honey_epoch", "magazine" }, 5 },
 				{ { "emptyjar_epoch", "magazine" }, 13 },
 				{ { "FoodBioMeat", "magazine" }, 13 },
-				{ { "sardines_epoch", "magazine" }, 12 },
-				{ { "meatballs_epoch", "magazine" }, 15 },
-				{ { "scam_epoch", "magazine" }, 16 },
-				{ { "sweetcorn_epoch", "magazine" }, 16 },
-				{ { "FoodSnooter", "magazine" }, 10 }
+				{ { "sardines_epoch", "magazine" }, 11 },
+				{ { "meatballs_epoch", "magazine" }, 14 },
+				{ { "scam_epoch", "magazine" }, 15 },
+				{ { "sweetcorn_epoch", "magazine" }, 15 },
+				{ { "FoodSnooter", "magazine" }, 9 },
+				{ { "TacticalBacon", "magazine" }, 5 }
+				
 		};
 	};
 
@@ -1280,6 +1328,15 @@ class CfgLootTable
 				{ { "CanFood", "CfgLootTable" }, 49 }
 		};
 	};
+	class Medical
+	{
+		items[] = {
+				{ { "FAK", "item" }, 97 },
+				{ { "Heal_EPOCH", "item" }, 2 },
+				{ { "Defib_EPOCH", "item" }, 1 },
+				{ { "EnergyPack", "magazine" }, 1 }
+		};
+	};
 	class BaseBuilding
 	{
 		items[] = {
@@ -1295,7 +1352,7 @@ class CfgLootTable
 				{ { "KitWoodFoundation", "magazine" }, 14 }
 		};
 	};
-
+	
 	class Mission_Payout1
 	{
 		items[] = {
