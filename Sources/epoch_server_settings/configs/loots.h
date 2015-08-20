@@ -638,7 +638,16 @@ class CfgLootTable
 		items[] = {
 				{ { "ItemCompass", "item" }, 20 },
 				{ { "ItemGPS", "item" }, 10 },
-				{ { "EpochRadio0", "item" }, 20 },
+				{ { "EpochRadio0", "item" }, 3 },
+				{ { "EpochRadio1", "item" }, 3 },
+				{ { "EpochRadio2", "item" }, 3 },
+				{ { "EpochRadio3", "item" }, 2 },
+				{ { "EpochRadio4", "item" }, 2 },
+				{ { "EpochRadio5", "item" }, 2 },
+				{ { "EpochRadio6", "item" }, 2 },
+				{ { "EpochRadio7", "item" }, 1 },
+				{ { "EpochRadio8", "item" }, 1 },
+				{ { "EpochRadio9", "item" }, 1 },
 				{ { "ItemWatch", "item" }, 30 },
 				{ { "FAK", "item" }, 20 }
 		};
@@ -776,11 +785,13 @@ class CfgLootTable
 				{ { "honey_epoch", "magazine" }, 5 },
 				{ { "emptyjar_epoch", "magazine" }, 13 },
 				{ { "FoodBioMeat", "magazine" }, 13 },
-				{ { "sardines_epoch", "magazine" }, 12 },
-				{ { "meatballs_epoch", "magazine" }, 15 },
-				{ { "scam_epoch", "magazine" }, 16 },
-				{ { "sweetcorn_epoch", "magazine" }, 16 },
-				{ { "FoodSnooter", "magazine" }, 10 }
+				{ { "sardines_epoch", "magazine" }, 11 },
+				{ { "meatballs_epoch", "magazine" }, 14 },
+				{ { "scam_epoch", "magazine" }, 15 },
+				{ { "sweetcorn_epoch", "magazine" }, 15 },
+				{ { "FoodSnooter", "magazine" }, 9 },
+				{ { "TacticalBacon", "magazine" }, 5 }
+				
 		};
 	};
 
