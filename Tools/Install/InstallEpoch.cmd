@@ -4,7 +4,7 @@ SET STEAMPW=chamgeme
 SET ARMASVRPATH=C:\Arma3Server
 SET ARMAAPPID=107410
 :: Workshop IDs: EpochExperimental = 455221958, Normal Epoch = 421839251
-SET ARMAWORKSHOPID=455221958
+SET ARMAWORKSHOPID=421839251
 :: remove mod folder
 rd /s/q "%ARMASVRPATH%\@Epoch"
 :: remove cache C:\Users\Administrator\Downloads\steamcmd\steamapps\workshop

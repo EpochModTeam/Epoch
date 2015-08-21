@@ -1,0 +1,35 @@
+[Added] Support for Esseker map.
+[Added] Support for Takistan and loot positions for more AiA TP buildings.
+[Added] Support for Australia Terrain Thanks to the communites of http://uk-gaming-zone.co.uk/, http://thewild.zone, http://www.utomnia.com/
+[Added] More loot positions for AiA TP buildings and updates to existing positions to add pallets and freezers.
+[Added] Female characters now have uniform storage once again.
+[Added] Server side config for max player Krypto limits.
+[Added] Environmental loot checks recoded and now allow for config via description.ext.
+[Added] Drone spawn chances reduced.
+[Added] Client spawning Sapper and Drone chance can now be controlled via description.ext.
+[Added] Server side version check added to CfgEpochClient.
+[Changed] Reduce payouts on scrap metal farming.
+[Changed] Disabled Vehicle Simulation Handler by default as it does not seem to be needed anymore. re-enable vehicle simulation handler with simulationHandler = true in epochconfig.hpp.
+[Changed] lower primary weapon spawn chances.
+[Changed] Lower Krypto value for metal salvage and scraps.
+[Changed] Disable moving traders by default again (Needs recoding in fsm)
+[Changed] Increased weight of Cinder Blocks and Mortar Buckets.
+[Changed] Revert workaround for 1.46 crash fix requires 1.46 build 131265 or higher.
+[Changed] telepos array now uses modelToWorld offsets instead of world space positions.
+[Changed] Increased delay between antagonist spawns to 10 minutes.
+[Fixed] Increase range on proximity checks for gear should help with loot target issues.
+[Fixed] Krypto device will now only drop if player actually had Krypto.
+[Fixed] Added missing backpack B_AssaultPack_blk to loot table and pricing.
+[Fixed] Teleport issues on Stratis or any other map with one or less teleport pad.
+[Fixed] Added prevention of using tactical view.
+[Fixed] Unable to sell new 762x54 150Rnd ammo box.
+[Fixed] Energy, krypto stats shown and mouse auto centers once again when opening inventory.
+[Fixed] Recoil_default error on first use of hatchet.
+[Fixed] Weight added to SR-25 and L85A2 rifles.
+[Fixed] Lower base armor on characters to Arma defaults, should fix issues with damage reporting.
+[Info] Updated windows command line example to show usage of -serverMod
+[Info] Updated description.ext and mission pbo's for new cultist configs.
+ 
+WIP:
+[Changed] Helicopter air drop event code disabled by default as it needs more work.
+[Fixed] Cultist should now spawn correctly and also has a totally reworked code structure.
