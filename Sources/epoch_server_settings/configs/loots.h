@@ -1341,7 +1341,8 @@ class CfgLootTable
 	{
 		items[] = {
 				{ { "KitPlotPole", "magazine" }, 5 },
-				{ { "KitStudWall", "magazine" }, 15 },
+				{ { "KitSolarGen", "magazine" }, 2 },
+				{ { "KitStudWall", "magazine" }, 13 },
 				{ { "KitShelf", "magazine" }, 11 },
 				{ { "KitWoodFloor", "magazine" }, 15 },
 				{ { "KitWoodStairs", "magazine" }, 12 },
