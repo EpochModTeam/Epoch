@@ -1,5 +1,5 @@
-[Added] Solar Generator base item can be crafted from items found in the world. @steampunkgears
-[Added] New loot/crafting items (Solar Panels, Wire Cables, Battery Box) added to loot tables. @steampunkgears
+[Added] Solar Generator base item can be crafted from items found in the world. When placed gives passive power within 75m.
+[Added] New loot/crafting items (Solar Panels, Wire Cables, Battery Box) added to loot tables.
 [Changed] Increase max payout of Air Drop event loot.
 [Changed] Make use of new command getAllHitPointsDamage in A3 1.50 to increase performance of hitpoint data storage.
 [Changed] Use new A3 command setHitIndex instead of setHitPointDamage so we can use all hitpoints regardless of name.
