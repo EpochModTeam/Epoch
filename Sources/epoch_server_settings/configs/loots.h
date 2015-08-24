@@ -508,7 +508,7 @@ class CfgMainTable
 	class AirDrop_Payout1
 	{
 		lootMin = 7;
-		LootMax = 10;
+		LootMax = 14;
 		tables[] = { 
 				{ "Equipment", 6 },
 				{ "Pistols", 8 },
@@ -831,11 +831,14 @@ class CfgLootTable
 	class GenericLarge
 	{
 		items[] = {
-				{ { "MortarBucket", "magazine" }, 20 },
-				{ { "CinderBlocks", "magazine" }, 20 },
-				{ { "VehicleRepair", "magazine" }, 20 },
-				{ { "CircuitParts", "magazine" }, 20 },
-				{ { "ItemCorrugated", "magazine" }, 20 }
+				{ { "MortarBucket", "magazine" }, 17 },
+				{ { "CinderBlocks", "magazine" }, 17 },
+				{ { "VehicleRepair", "magazine" }, 17 },
+				{ { "CircuitParts", "magazine" }, 17 },
+				{ { "ItemCorrugated", "magazine" }, 17 },
+				{ { "ItemSolar", "magazine" }, 5 },
+				{ { "ItemBattery", "magazine" }, 5 },
+				{ { "ItemCables", "magazine" }, 5 }
 		};
 	};
 
@@ -849,10 +852,13 @@ class CfgLootTable
 				{ { "VehicleRepair", "magazine" }, 11 },
 				{ { "ItemCorrugated", "magazine" }, 11 },
 				{ { "CinderBlocks", "magazine" }, 12 },
-				{ { "JackKit", "magazine" }, 13 },
-				{ { "ItemCoolerE", "magazine" }, 14 },
-				{ { "ItemScraps", "magazine" }, 14 },
-				{ { "lighter_epoch", "magazine" }, 1 }
+				{ { "JackKit", "magazine" }, 9 },
+				{ { "ItemCoolerE", "magazine" }, 13 },
+				{ { "ItemScraps", "magazine" }, 13 },
+				{ { "lighter_epoch", "magazine" }, 1 },
+				{ { "ItemSolar", "magazine" }, 3 },
+				{ { "ItemBattery", "magazine" }, 3 },
+				{ { "ItemCables", "magazine" }, 3 }
 		};
 	};
 
