@@ -56,6 +56,26 @@ class CfgEpochClient
 
 	// #include "\x\addons\a3_epoch_config\Configs\CfgEpochClient\VR.hpp"
 
+  class vr {
+  	Rocks[] = {
+  	};
+  	ATM[] = {
+  	};
+  	Water[] = {
+  	};
+  	Trash[] = {
+  	};
+  	Trees[] = {
+  	};
+  	Bushes[] = {
+  	};
+  	Cinder[] = {
+  	};
+  	Wrecks[] = {
+  	};
+  };
+
+
 };
 
 class CfgEpochSapper
