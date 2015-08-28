@@ -23,7 +23,7 @@ class cfgFunctions
 			class server_hiveSETEX  		{};
 			class server_hiveEXPIRE 		{};
 			class server_hiveGET  			{};
-			class server_hiveGETRANGexperimental branchE  	{};
+			class server_hiveGETRANGE  	{};
 			class server_hiveGETBIT 	 	{};
 			class server_hiveGETTTL    	{};
 			class server_hiveDEL       	{};
