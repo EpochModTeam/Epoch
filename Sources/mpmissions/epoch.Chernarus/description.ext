@@ -36,7 +36,18 @@ wreckLimit = 2;
 wreckRemovalMinTime = 60;
 wreckRemovalMaxTime = 360;
 
-class CfgRemoteExecCommands {};
+class CfgRemoteExec
+{
+        class Functions
+        {
+                mode = 0;
+                jip = 0;
+        };
+        class Commands
+        {
+                mode=0;
+        };
+};
 
 class CfgEpochClient
 {
