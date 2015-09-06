@@ -4,13 +4,14 @@
 [Added] Wood Tower that can be crafted from a Wood Floor and 4x lumber.
 [Added] Solar Generator base item can be crafted from items found in the world. When placed gives passive power within 75m.
 [Added] New loot/crafting items (Solar Panels, Wire Cables, Battery Box) added to loot tables.
+[Changed] Base building upgrade recipes and remove payouts now have dedicated config "CfgBaseBuilding" and code supports over-loading via description.ext.
 [Changed] Removed base object "Move" in 3d option in favor of a more refined ghost snap mode.
 [Changed] Server side database functions renamed and now use cfgFunctions via a new pbo "epoch_server_core".
 [Changed] Increase max payout of Air Drop event loot.
 [Changed] Make use of new command getAllHitPointsDamage in A3 1.50 to increase performance of hitpoint data storage.
 [Changed] Use new A3 command setHitIndex instead of setHitPointDamage so we can use all hitpoints regardless of name.
 [Changed] Change BIS_fnc_distance2D usage over to distance2D command that was added with A3 1.50 for better performance.
-[Fixed] Loot position code for "CfgBuildingLootPos" now use EPOCH_returnConfig to allow loading via description.ext if exists.
+[Fixed] Loot code for "CfgBuildingLootPos" now uses EPOCH_returnConfig to allow over-loading via description.ext.
 [Fixed] Error in rpt "No geometry and no visual shape" with Poppy and Goldenseal plants models.
 [Fixed] JetSki sinking like a rock since Arma 1.44, fix was to add buoyancy=1 property to GEO lod.
 [Fixed] Angle of snapping was incorrect when building on angles.
