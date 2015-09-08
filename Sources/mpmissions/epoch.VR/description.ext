@@ -38,15 +38,16 @@ wreckRemovalMaxTime = 360;
 
 class CfgRemoteExec
 {
-        class Functions
-        {
-                mode = 0;
-                jip = 0;
-        };
-        class Commands
-        {
-                mode=0;
-        };
+  class Functions
+  {
+    mode = 1;
+    jip = 0;
+    class EPOCH_server_save_vehicles {
+      allowedTargets=2;
+      jip = 0;
+    };
+  };
+  class Commands {mode=0;};
 };
 
 class CfgEpochClient
