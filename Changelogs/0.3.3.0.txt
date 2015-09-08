@@ -11,6 +11,7 @@
 [Changed] Make use of new command getAllHitPointsDamage in A3 1.50 to increase performance of hitpoint data storage.
 [Changed] Use new A3 command setHitIndex instead of setHitPointDamage so we can use all hitpoints regardless of name.
 [Changed] Change BIS_fnc_distance2D usage over to distance2D command that was added with A3 1.50 for better performance.
+[Fixed] Normalized snap memory points for wood tower and stairs.
 [Fixed] Loot code for "CfgBuildingLootPos" now uses EPOCH_returnConfig to allow over-loading via description.ext.
 [Fixed] Error in rpt "No geometry and no visual shape" with Poppy and Goldenseal plants models.
 [Fixed] JetSki sinking like a rock since Arma 1.44, fix was to add buoyancy=1 property to GEO lod.
