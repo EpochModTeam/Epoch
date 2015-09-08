@@ -32,3 +32,9 @@ Andrew Gregory - Axeman - AI Code - http://thefreezer.co.uk
 Florian Kinder - Fank - DLL Code
 
 Denis Erygin - devd - Linux DLL Support
+
+Richie - Map Support
+
+SteamPunkGears - Models
+
+Raymix - UI and Code
