@@ -36,6 +36,26 @@ wreckLimit = 2;
 wreckRemovalMinTime = 60;
 wreckRemovalMaxTime = 360;
 
+class cfgFunctions
+{
+	class A3E
+	{
+		tag = "EPOCH";
+		class Client
+		{
+			file = "\x\addons\a3_epoch_code\init";
+			class init
+			{
+				preInit = 1;
+			};
+			class postinit
+			{
+				postInit = 1;
+			};
+		};
+	};
+};
+
 class CfgRemoteExec
 {
   class Functions

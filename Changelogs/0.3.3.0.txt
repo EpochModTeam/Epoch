@@ -1,9 +1,14 @@
-[Added] New upgrade system for Wood Tower.
+[Added] Basic energy capacity system, controls how much power is available based on the type of energy source.
+[Added] New upgrade system for Wood Tower, add two lumber packs to add windowed wall.
 [Added] 4 new plywood walls as first level base walls.
 [Added] Wood Ladder that can be crafted from 4x lumber.
 [Added] Wood Tower that can be crafted from a Wood Floor and 4x lumber.
-[Added] Solar Generator base item can be crafted from items found in the world. When placed gives passive power within 75m.
+[Added] Solar Generator base item can be crafted from items found in the world. When placed gives passive power within (75m Default).
 [Added] New loot/crafting items (Solar Panels, Wire Cables, Battery Box) added to loot tables.
+[Added] NightVision now use a static rate of 3 per 10 seconds. This can be changed with 'energyCostNV' variable via CfgEpochClient.
+[Added] Max rate of energy gain can be controlled with 'energyRegenMax' variable via CfgEpochClient.
+[Added] Max range of energy gain can be controlled with 'energyRange' variable via CfgEpochClient.
+[Changed] Moved client gamemode and CfgFunctions init to mission file.
 [Changed] Base building upgrade recipes and remove payouts now have dedicated config "CfgBaseBuilding" and code supports over-loading via description.ext.
 [Changed] Removed base object "Move" in 3d option in favor of a more refined ghost snap mode.
 [Changed] Server side database functions renamed and now use cfgFunctions via a new pbo "epoch_server_core".
@@ -11,6 +16,8 @@
 [Changed] Make use of new command getAllHitPointsDamage in A3 1.50 to increase performance of hitpoint data storage.
 [Changed] Use new A3 command setHitIndex instead of setHitPointDamage so we can use all hitpoints regardless of name.
 [Changed] Change BIS_fnc_distance2D usage over to distance2D command that was added with A3 1.50 for better performance.
+[Fixed] Can now press '2' to disable building snap mode and 1 to re-enable.
+[Fixed] Can now disable base building by pressing Esc or 'gear' menu.
 [Fixed] Normalized snap memory points for wood tower and stairs.
 [Fixed] Loot code for "CfgBuildingLootPos" now uses EPOCH_returnConfig to allow over-loading via description.ext.
 [Fixed] Error in rpt "No geometry and no visual shape" with Poppy and Goldenseal plants models.
