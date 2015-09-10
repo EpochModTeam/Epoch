@@ -8,6 +8,7 @@
 [Added] NightVision now use a static rate of 3 per 10 seconds. This can be changed with 'energyCostNV' variable via CfgEpochClient.
 [Added] Max rate of energy gain can be controlled with 'energyRegenMax' variable via CfgEpochClient.
 [Added] Max range of energy gain can be controlled with 'energyRange' variable via CfgEpochClient.
+[Added] Standard base building upgrade system now supports multiple options and has a basic UI. 
 [Changed] Moved client gamemode and CfgFunctions init to mission file.
 [Changed] Base building upgrade recipes and remove payouts now have dedicated config "CfgBaseBuilding" and code supports over-loading via description.ext.
 [Changed] Removed base object "Move" in 3d option in favor of a more refined ghost snap mode.
