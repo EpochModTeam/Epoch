@@ -8,7 +8,7 @@
 [Added] NightVision now use a static rate of 3 per 10 seconds. This can be changed with 'energyCostNV' variable via CfgEpochClient.
 [Added] Max rate of energy gain can be controlled with 'energyRegenMax' variable via CfgEpochClient.
 [Added] Max range of energy gain can be controlled with 'energyRange' variable via CfgEpochClient.
-[Added] Standard base building upgrade system now supports multiple options and has a basic UI. 
+[Added] Standard base building upgrade system now supports multiple options and has a basic UI.
 [Changed] Moved client gamemode and CfgFunctions init to mission file.
 [Changed] Base building upgrade recipes and remove payouts now have dedicated config "CfgBaseBuilding" and code supports over-loading via description.ext.
 [Changed] Removed base object "Move" in 3d option in favor of a more refined ghost snap mode.
@@ -17,6 +17,7 @@
 [Changed] Make use of new command getAllHitPointsDamage in A3 1.50 to increase performance of hitpoint data storage.
 [Changed] Use new A3 command setHitIndex instead of setHitPointDamage so we can use all hitpoints regardless of name.
 [Changed] Change BIS_fnc_distance2D usage over to distance2D command that was added with A3 1.50 for better performance.
+[Fixed] Cultist are now fixed.
 [Fixed] Can now press '2' to disable building snap mode and 1 to re-enable.
 [Fixed] Can now disable base building by pressing Esc or 'gear' menu.
 [Fixed] Normalized snap memory points for wood tower and stairs.
