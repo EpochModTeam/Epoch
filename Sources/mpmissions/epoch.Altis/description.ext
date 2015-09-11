@@ -36,7 +36,24 @@ wreckLimit = 2;
 wreckRemovalMinTime = 60;
 wreckRemovalMaxTime = 360;
 
+<<<<<<< HEAD
 class cfgFunctions
+=======
+class CfgRemoteExec
+{
+        class Functions
+        {
+                mode = 0;
+                jip = 0;
+        };
+        class Commands
+        {
+                mode=0;
+        };
+};
+
+class CfgEpochClient
+>>>>>>> master
 {
 	class A3E
 	{
