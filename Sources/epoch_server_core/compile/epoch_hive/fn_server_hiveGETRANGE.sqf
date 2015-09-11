@@ -1,0 +1,68 @@
+/*
+    Hive Getrange
+    by Aaron Clark - EpochMod.com
+
+    This work is licensed under a Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License.
+    http://creativecommons.org/licenses/by-nc-nd/4.0/
+
+    Improvements and or bugfixes and other contributions are welcome via the github:
+    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_server_core/compile/epoch_hive/fn_server_hiveGETRANGE.sqf
+*/
+
+private["_hiveResponse", "_hiveStatus", "_hiveMessage", "_currentIndex", "_hiveMakeCall", "_data"];
+// GetRange
+//_PREFIX = _this select 0;
+//_KEY = _this select 1;
+
+_hiveMessage = "";
+_hiveStatus = 0;
+
+_currentIndex = 0;
+
+_hiveMakeCall = true;
+while {_hiveMakeCall} do {
+
+	_hiveMakeCall = false;
+
+	// get 8k chars
+	_currentIndexMax = _currentIndex + 8000;
+	_hiveResponse = "epochserver" callExtension format["220|%1:%2|%3|%4", _this select 0, _this select 1, _currentIndex, (_currentIndexMax-1)];
+
+	//0 _hiveResponse: [1,""]
+	//diag_log format["%2:%3 _hiveResponse: %1", _hiveResponse, _currentIndex, count _hiveResponse];
+
+	if (_hiveResponse != "") then {
+
+		_hiveResponse = call compile _hiveResponse;
+		if !(isNil "_hiveResponse") then{
+
+			if (typeName _hiveResponse == "ARRAY" && !(_hiveResponse isEqualTo[])) then{
+
+				_hiveStatus = _hiveResponse select 0;
+				if (_hiveStatus == 1) then{
+
+					_data = _hiveResponse select 1;
+
+					if !(_data isEqualTo []) then{
+
+						// add data to string
+						_hiveMessage = _hiveMessage + _data;
+
+						// if data returned is exactly 8k chars then we likely need to make another call
+						if (count _data == 8000) then{
+							_currentIndex = _currentIndexMax;
+							_hiveMakeCall = true;
+						};
+					};
+				};
+			};
+		};
+	};
+};
+
+if (_hiveStatus == 1) then{
+	_hiveMessage = call compile _hiveMessage;
+	if (isNil "_hiveMessage") then{ _hiveMessage = []; }
+};
+
+[_hiveStatus, _hiveMessage]

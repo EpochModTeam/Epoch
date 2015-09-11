@@ -24,7 +24,7 @@ debriefing = 0;
 enableDebugConsole = 0;
 joinUnassigned = 0;
 respawnOnStart = 0;
-forceRotorLibSimulation = 0;
+forceRotorLibSimulation = 1;
 
 corpseManagerMode = 1;
 corpseLimit = 10;
@@ -36,24 +36,7 @@ wreckLimit = 2;
 wreckRemovalMinTime = 60;
 wreckRemovalMaxTime = 360;
 
-<<<<<<< HEAD
 class cfgFunctions
-=======
-class CfgRemoteExec
-{
-        class Functions
-        {
-                mode = 0;
-                jip = 0;
-        };
-        class Commands
-        {
-                mode=0;
-        };
-};
-
-class CfgEpochClient
->>>>>>> master
 {
 	class A3E
 	{
@@ -73,7 +56,6 @@ class CfgEpochClient
 	};
 };
 
-
 class CfgRemoteExec
 {
   class Functions
@@ -86,6 +68,46 @@ class CfgRemoteExec
     };
   };
   class Commands {mode=0;};
+};
+
+class CfgEpochClient
+{
+	epochVersion = "0.3.3.0";
+
+	sapperRngChance = 100; // increase number to reduce chances and reduce to increase. Default 100 = 1% - 55% if soiled (+ 2% if in city) chance to spawn sapper
+	droneRngChance = 100; // increase number to reduce chances and reduce to increase. Default 100 = // 2% chance (+ 4% chance if in city) (1% - 2% Half if using silencer) to spawn drone if shot fired
+
+	buildingNearbyMilitary = 0; //1 to allow building nearby
+	buildingNearbyMilitaryRange = 300; //Define radius of blocked area
+
+	buildingRequireJammer = 0; // 1 = to allow building without a jammer
+	buildingCountLimit = 200; // how many objects can be built within range of a jammer
+	buildingJammerRange = 75; // jammer range in meters
+
+	EPOCH_news[] = {"Word is that Sappers have a new boss.","Dogs will often lure them monsters away.","My dog was blown up. I miss him.."};
+
+	// #include "\x\addons\a3_epoch_config\Configs\CfgEpochClient\VR.hpp"
+
+  class vr {
+  	Rocks[] = {
+  	};
+  	ATM[] = {
+  	};
+  	Water[] = {
+  	};
+  	Trash[] = {
+  	};
+  	Trees[] = {
+  	};
+  	Bushes[] = {
+  	};
+  	Cinder[] = {
+  	};
+  	Wrecks[] = {
+  	};
+  };
+
+
 };
 
 class CfgEpochSapper
