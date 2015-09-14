@@ -1,0 +1,1129 @@
+/*%FSM<COMPILE "C:\Program Files (x86)\Bohemia Interactive\Tools\FSM Editor Personal Edition\scriptedFSM.cfg, vip">*/
+/*%FSM<HEAD>*/
+/*
+item0[] = {"vip",0,250,-50.000000,-475.000000,50.000000,-425.000000,0.000000,"vip"};
+item1[] = {"no_instinct",4,218,50.000000,-150.000000,150.000000,-100.000000,80.000000,"no instinct"};
+item2[] = {"instinct",2,250,150.000000,-200.000000,250.000000,-150.000000,0.000000,"instinct"};
+item3[] = {"action",2,250,150.000000,25.000000,250.000000,75.000000,0.000000,"action"};
+item4[] = {"dispose",4,218,75.000000,-325.000000,175.000000,-275.000000,90.000000,"dispose"};
+item5[] = {"_",8,218,175.000000,275.000000,225.000000,300.000000,0.000000,""};
+item6[] = {"reset___checks",2,250,-50.000000,-200.000000,50.000000,-150.000000,0.000000,"reset / checks"};
+item7[] = {"_",8,218,-25.000000,-400.000000,25.000000,-375.000000,0.000000,""};
+item8[] = {"complete",4,218,-100.000000,-100.000000,0.000000,-50.000000,100.000000,"complete"};
+item9[] = {"end",1,250,400.000000,-125.000000,500.000000,-75.000000,0.000000,"end"};
+item10[] = {"dispose",4,218,275.000000,-125.000000,375.000000,-75.000000,95.000000,"dispose"};
+item11[] = {"instinct_done",4,218,150.000000,-125.000000,250.000000,-75.000000,100.000000,"instinct done"};
+item12[] = {"follow",4,218,150.000000,-350.000000,250.000000,-300.000000,70.000000,"follow"};
+item13[] = {"do_instinct",4,218,50.000000,-250.000000,150.000000,-200.000000,80.000000,"do instinct"};
+item14[] = {"follow",4,218,325.000000,75.000000,425.000000,125.000000,0.000000,"follow"};
+item15[] = {"do_follow",2,250,325.000000,250.000000,425.000000,300.000000,0.000000,"do follow"};
+item16[] = {"get_in",4,218,225.000000,-375.000000,325.000000,-325.000000,60.000000,"get in"};
+item17[] = {"get_in",4,218,-25.000000,75.000000,75.000000,125.000000,0.000000,"get in"};
+item18[] = {"do_get_in",2,250,-25.000000,250.000000,75.000000,300.000000,0.000000,"do get in"};
+item19[] = {"get_out",4,218,350.000000,-375.000000,450.000000,-325.000000,50.000000,"get out"};
+item20[] = {"get_out",4,218,-100.000000,25.000000,0.000000,75.000000,0.000000,"get out"};
+item21[] = {"do_get_out",2,250,-100.000000,325.000000,0.000000,375.000000,0.000000,"do get out"};
+item22[] = {"drive_follow",4,218,400.000000,-325.000000,500.000000,-275.000000,40.000000,"drive follow"};
+item23[] = {"drive_follow",4,218,225.000000,100.000000,325.000000,150.000000,0.000000,"drive follow"};
+item24[] = {"drive_transport",2,250,225.000000,175.000000,325.000000,225.000000,0.000000,"drive transport"};
+item25[] = {"scoot_over",4,218,425.000000,-275.000000,525.000000,-225.000000,30.000000,"scoot over"};
+item26[] = {"scoot",4,218,75.000000,100.000000,175.000000,150.000000,0.000000,"scoot"};
+item27[] = {"scoot_over",2,250,75.000000,175.000000,175.000000,225.000000,0.000000,"scoot over"};
+item28[] = {"vehicle_damaged",4,218,400.000000,-225.000000,500.000000,-175.000000,20.000000,"vehicle damaged"};
+item29[] = {"abandon_vehicle",4,218,400.000000,25.000000,500.000000,75.000000,0.000000,"abandon vehicle"};
+item30[] = {"do_abandon",2,250,400.000000,325.000000,500.000000,375.000000,0.000000,"do abandon"};
+item31[] = {"accomplished",4,218,325.000000,-175.000000,425.000000,-125.000000,80.000000,"accomplished"};
+item32[] = {"accomplished",4,218,500.000000,-25.000000,600.000000,25.000000,0.000000,"accomplished"};
+item33[] = {"mission_accompli",2,250,500.000000,425.000000,600.000000,475.000000,0.000000,"mission" \n "accomplished"};
+item34[] = {"intro",2,4346,-50.000000,-350.000000,50.000000,-300.000000,0.000000,"intro"};
+item35[] = {"_",8,218,-25.000000,-275.000000,25.000000,-250.000000,0.000000,""};
+item36[] = {"long_checks",2,250,-275.000000,-100.000000,-175.000000,-50.000000,0.000000,"long checks"};
+item37[] = {"done_long_checks",4,218,-275.000000,-200.000000,-175.000000,-150.000000,100.000000,"done long checks"};
+item38[] = {"not_complete",4,218,75.000000,-75.000000,175.000000,-25.000000,0.000000,"not complete"};
+item39[] = {"spawn_general",4,218,-200.000000,-25.000000,-100.000000,25.000000,0.000000,"spawn general"};
+item40[] = {"spawn_general_and",2,250,-200.000000,425.000000,-100.000000,475.000000,0.000000,"spawn general" \n "and crew"};
+item41[] = {"find_boat",2,250,-200.000000,150.000000,-100.000000,200.000000,0.000000,"find boat"};
+item42[] = {"not_found",4,218,-375.000000,150.000000,-275.000000,200.000000,10.000000,"not found"};
+item43[] = {"found",4,218,-200.000000,275.000000,-100.000000,325.000000,20.000000,"found"};
+link0[] = {0,7};
+link1[] = {1,6};
+link2[] = {2,1};
+link3[] = {2,4};
+link4[] = {2,11};
+link5[] = {2,12};
+link6[] = {2,16};
+link7[] = {2,19};
+link8[] = {2,22};
+link9[] = {2,25};
+link10[] = {2,28};
+link11[] = {2,31};
+link12[] = {3,8};
+link13[] = {3,10};
+link14[] = {3,14};
+link15[] = {3,17};
+link16[] = {3,20};
+link17[] = {3,23};
+link18[] = {3,26};
+link19[] = {3,29};
+link20[] = {3,32};
+link21[] = {3,38};
+link22[] = {3,39};
+link23[] = {4,2};
+link24[] = {5,3};
+link25[] = {6,13};
+link26[] = {7,34};
+link27[] = {8,36};
+link28[] = {10,9};
+link29[] = {11,3};
+link30[] = {12,2};
+link31[] = {13,2};
+link32[] = {14,15};
+link33[] = {15,5};
+link34[] = {16,2};
+link35[] = {17,18};
+link36[] = {18,5};
+link37[] = {19,2};
+link38[] = {20,21};
+link39[] = {21,5};
+link40[] = {22,2};
+link41[] = {23,24};
+link42[] = {24,5};
+link43[] = {25,2};
+link44[] = {26,27};
+link45[] = {27,5};
+link46[] = {28,2};
+link47[] = {29,30};
+link48[] = {30,5};
+link49[] = {31,2};
+link50[] = {32,33};
+link51[] = {33,5};
+link52[] = {34,35};
+link53[] = {35,6};
+link54[] = {36,37};
+link55[] = {37,6};
+link56[] = {38,3};
+link57[] = {39,41};
+link58[] = {40,5};
+link59[] = {41,42};
+link60[] = {41,43};
+link61[] = {42,41};
+link62[] = {43,40};
+globals[] = {25.000000,1,0,0,16777215,640,480,1,215,6316128,1,-396.858002,689.865723,568.440063,-450.015076,780,731,1};
+window[] = {2,-1,-1,-1,-1,625,100,1125,100,3,798};
+*//*%FSM</HEAD>*/
+class FSM
+{
+  fsmName = "vip";
+  class States
+  {
+    /*%FSM<STATE "vip">*/
+    class vip
+    {
+      name = "vip";
+      init = /*%FSM<STATEINIT""">*/"_plyr = player;" \n
+       "_missionName = ""MissionDriver"";" \n
+       "" \n
+       "//settings" \n
+       "axeVIPLife = 3360;" \n
+       "_freqCheck = 1.5;//Check every x ticks." \n
+       "_msgMaxFrequency = 30;//Only show message every x ticks." \n
+       "" \n
+       "//vars" \n
+       "_doDispose = false;" \n
+       "_plyr = player;" \n
+       "_plyrVeh = vehicle _plyr;" \n
+       "this = objNull;" \n
+       "_inHouse = false;" \n
+       "_tStart = diag_tickTime;" \n
+       "_callDispose = false;" \n
+       "_house = objNull;" \n
+       "_dist = 0;" \n
+       "_doCOmplete = false;" \n
+       "_completeDone = false;" \n
+       "_m = diag_tickTime;" \n
+       "_axeMessage = """";" \n
+       "_wDiag = """";" \n
+       "_wDiag2 = """";" \n
+       "_missionTimer = diag_tickTime;" \n
+       "_sanityCheck = 0;" \n
+       "" \n
+       "//Brain Vars" \n
+       "_criteria =""(false)"";" \n
+       "_criteriaMetAction = nil;" \n
+       "_actionDone = false;" \n
+       "_decisionMade = false;" \n
+       "_sWait = 0;" \n
+       "_nc = _missionTimer;" \n
+       "" \n
+       "//Follow" \n
+       "_doFollow = false;" \n
+       "_moveTo = [0,0,0];" \n
+       "_driveFollow = false;" \n
+       "" \n
+       "//Vehicle" \n
+       "_transport = objNull;" \n
+       "_plyrInVeh = false;" \n
+       "_vipInVeh = false;" \n
+       "_plyrIsDriver = false;" \n
+       "_vipIsDriver = false;" \n
+       "_vipOut = false;" \n
+       "_vipIn = false;" \n
+       "_vehRunning = false;" \n
+       "_doScoot = false;" \n
+       "_abandonVeh = false;" \n
+       "" \n
+       "//The General" \n
+       "_doGeneralSpawn = false;" \n
+       "_generalSpawned = false;" \n
+       "_generalsBoat = objNull;" \n
+       "_grpGeneral = grpNull;" \n
+       "_generalsInfo = [_generalsBoat, _grpGeneral];" \n
+       "_warnCount = 0;" \n
+       "_warnStarted = false;" \n
+       "_reOrderEmbark = false;" \n
+       "_generalLeft = 0;" \n
+       "axeGeneralsBoat = objNull;" \n
+       "axeGeneralsPosArr = [[22650.2,6868.35,0.00152194],[9289.64,22814.5,0.677413],[3564.18,13976.6,1.01361],[28065.1,23761,0.00155544]];" \n
+       "axeGeneralBoatPosArr = [[22664.8,6840.91,-0.939753],[9362.45,22783,-0.938808],[3492.48,13964.6,-0.943063],[28023.1,23801.9,-0.919816]];" \n
+       "axeGeneralBoatFinArr = [[25248.5,3968.91,0],[17251.7,28554.2,0],[733.202,16893.8,0],[30364.1,26509.3,0]];" \n
+       "axeGeneralPosIndex = floor random count axeGeneralsPosArr;" \n
+       "" \n
+       "axeGeneralBoatPos = axeGeneralBoatPosArr select axeGeneralPosIndex;" \n
+       "axeGeneralPos = axeGeneralsPosArr select axeGeneralPosIndex; " \n
+       "_genPosX = [axeGeneralsPosArr select axeGeneralPosIndex select 0,2] call EPOCH_fnc_stringLeft;" \n
+       "_genPosY = [axeGeneralsPosArr select axeGeneralPosIndex select 1,3] call EPOCH_fnc_stringLeft;" \n
+       "_endAlert = 0;" \n
+       "//Setup" \n
+       "" \n
+       "" \n
+       "_nickName = ""Son"";" \n
+       "" \n
+       "if (_plyr iskindof ""Epoch_Female_base_F"") then {" \n
+       "_nickName = ""Young Lady"";" \n
+       "};" \n
+       "" \n
+       "//In Mission Events" \n
+       "_doMission1 = false;" \n
+       "_doMission2 = false;" \n
+       "_doMission3 = false;" \n
+       "_imCondition1 =  getText ( configFile >> ""TraderMissions"" >> _missionName >> ""inmission1"" >> ""condition"");" \n
+       "_imCondition2 =  getText ( configFile >> ""TraderMissions"" >> _missionName >> ""inmission2"" >> ""condition"");" \n
+       "_imCondition3 =  getText ( configFile >> ""TraderMissions"" >> _missionName >> ""inmission3"" >> ""condition"");" \n
+       "" \n
+       "" \n
+       "	EPOCH_VIP_Mission_Accomplished = {" \n
+       "" \n
+       "	[axeVIP] join group axeGeneral;" \n
+       "	{" \n
+       "		_x assignAsCargo axeGeneralsBoat;" \n
+       "	}forEach units grpVIPGeneral;" \n
+       "" \n
+       "	axeGeneral assignAsCommander axeGeneralsBoat;" \n
+       "	axeGBoatDriver = units grpVIPGeneral select 1;" \n
+       "	axeGBoatDriver assignAsDriver axeGeneralsBoat;" \n
+       "	units grpVIPGeneral orderGetIn true;" \n
+       "" \n
+       "	};" \n
+       "" \n
+       ""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "_">*/
+        class _
+        {
+          priority = 0.000000;
+          to="intro";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "instinct">*/
+    class instinct
+    {
+      name = "instinct";
+      init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "instinct_done">*/
+        class instinct_done
+        {
+          priority = 100.000000;
+          to="action";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_decisionMade;"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "dispose">*/
+        class dispose
+        {
+          priority = 90.000000;
+          to="instinct";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!alive _plyr || _callDispose;"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/"_doDispose = true;" \n
+           "_decisionMade = true;" \n
+           "_actionDone = false;"/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "no_instinct">*/
+        class no_instinct
+        {
+          priority = 80.000000;
+          to="reset___checks";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!_decisionMade && diag_tickTime - _t > _freqCheck;"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "accomplished">*/
+        class accomplished
+        {
+          priority = 80.000000;
+          to="instinct";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_completeDist < 10 && !_doCOmplete;"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/"_doCOmplete = true;" \n
+           "_decisionMade = true;"/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "follow">*/
+        class follow
+        {
+          priority = 70.000000;
+          to="instinct";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!_vipInVeh && _dist > 4 && !_plyrInVeh && !_completeDone;" \n
+           ""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/"_doFollow = true;" \n
+           "_decisionMade = true;"/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "get_in">*/
+        class get_in
+        {
+          priority = 60.000000;
+          to="instinct";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_plyrInVeh && _plyrIsDriver && !_vipInVeh && !_completeDone;" \n
+           ""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/"_vipIn = true;" \n
+           "_decisionMade = true;"/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "get_out">*/
+        class get_out
+        {
+          priority = 50.000000;
+          to="instinct";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!_plyrInVeh && !_vehRunning &&  _vipInVeh && !_completeDone;"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/"_vipOut = true;" \n
+           "_decisionMade = true;"/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "drive_follow">*/
+        class drive_follow
+        {
+          priority = 40.000000;
+          to="instinct";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_dist > 50 && _vipInVeh && _vehRunning && !_completeDone;"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/"_driveFollow = true;" \n
+           "_decisionMade = true;"/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "scoot_over">*/
+        class scoot_over
+        {
+          priority = 30.000000;
+          to="instinct";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_vipIsDriver && _dist < 6;"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/"_doScoot = true;" \n
+           "_decisionMade = true;"/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "vehicle_damaged">*/
+        class vehicle_damaged
+        {
+          priority = 20.000000;
+          to="instinct";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_transportDisabled && _vehDist < 42;"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/"_abandonVeh = true;" \n
+           "_decisionMade = true;"/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "action">*/
+    class action
+    {
+      name = "action";
+      init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "complete">*/
+        class complete
+        {
+          priority = 100.000000;
+          to="long_checks";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_actionDone && ((call compile _criteria) || (diag_tickTime > (_t + _sWait)));"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/"" \n
+           "if (!isNil ""_criteriaMetAction"") then {" \n
+           "call _criteriaMetAction;" \n
+           "};" \n
+           "" \n
+           "//Brain Vars" \n
+           "_criteria =""(false)"";" \n
+           "_criteriaMetAction = nil;" \n
+           "_actionDone = false;" \n
+           "_decisionMade = false;" \n
+           "_sWait = 0;" \n
+           "" \n
+           "_sanityCheck > 0;" \n
+           "" \n
+           "" \n
+           "" \n
+           "" \n
+           "" \n
+           "" \n
+           ""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "dispose">*/
+        class dispose
+        {
+          priority = 95.000000;
+          to="end";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_doDispose;"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "get_in">*/
+        class get_in
+        {
+          priority = 0.000000;
+          to="do_get_in";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_vipIn;"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/"_vipIn = false;"/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "get_out">*/
+        class get_out
+        {
+          priority = 0.000000;
+          to="do_get_out";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_vipOut;"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/"_vipOut = false;"/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "follow">*/
+        class follow
+        {
+          priority = 0.000000;
+          to="do_follow";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_doFollow;"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/"_doFollow = false;"/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "drive_follow">*/
+        class drive_follow
+        {
+          priority = 0.000000;
+          to="drive_transport";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_driveFollow;"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/"_driveFollow = false;"/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "scoot">*/
+        class scoot
+        {
+          priority = 0.000000;
+          to="scoot_over";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_doScoot;"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/"_doScoot = false;"/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "abandon_vehicle">*/
+        class abandon_vehicle
+        {
+          priority = 0.000000;
+          to="do_abandon";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_abandonVeh"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/"_abandonVeh = false;"/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "accomplished">*/
+        class accomplished
+        {
+          priority = 0.000000;
+          to="mission_accompli";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_doCOmplete && !_completeDone;"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "not_complete">*/
+        class not_complete
+        {
+          priority = 0.000000;
+          to="action";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"diag_tickTime - _nc > 3;"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/"_nc = diag_tickTime;"/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "spawn_general">*/
+        class spawn_general
+        {
+          priority = 0.000000;
+          to="find_boat";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_doGeneralSpawn;"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/"_doGeneralSpawn = false;" \n
+           "_boats = [];" \n
+           "_findTimer = diag_TickTime;" \n
+           "" \n
+           "EPOCH_createObject_PVS = [player,Epoch_personalToken,""I_Boat_Armed_01_minigun_F"",true,axeGeneralBoatPos,""CAN_COLLIDE"","""","""","""","""",true];" \n
+           "publicVariableServer ""EPOCH_createObject_PVS"";" \n
+           "" \n
+           "" \n
+           ""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "reset___checks">*/
+    class reset___checks
+    {
+      name = "reset___checks";
+      init = /*%FSM<STATEINIT""">*/"_rnd = floor random 100;" \n
+       "_dist = axeVIP distance _plyr;" \n
+       "_plyrVeh = vehicle _plyr;" \n
+       "_plyrInVeh = vehicle player != player;" \n
+       "_vipInVeh = vehicle axeVIP != axeVIP;" \n
+       "_plyrIsDriver = (driver vehicle player == player) && _plyrInVeh;" \n
+       "_vehRunning = (_vipInVeh && isEngineOn vehicle axeVIP);" \n
+       "_vipIsDriver = (driver vehicle axeVIP == axeVIP) &&_vipInVeh;" \n
+       "_completeDist = axeVIP distance axeGeneralPos;" \n
+       "_transportDisabled = (!canmove _transport);" \n
+       "_vehDist = axeVIP distance _transport;" \n
+       "_t = diag_tickTime;" \n
+       "" \n
+       "if!(_generalSpawned) then {" \n
+       "" \n
+       "	if (axeGeneralPos distance _plyr < 500) then {" \n
+       "	_doGeneralSpawn = true;" \n
+       "	_decisionMade = true;" \n
+       "	};" \n
+       "" \n
+       "};" \n
+       "" \n
+       "if (_completeDone) then {" \n
+       "" \n
+       "		if (_plyr distance axeGeneralsBoat > 500) then {" \n
+       "		_callDispose = true;" \n
+       "		};" \n
+       "		" \n
+       "		if (count crew axegeneralsboat >= ({alive _x} count units grpVIPGeneral) && _generalLeft < 1) then {" \n
+       "		_generalLeft = _generalLeft + 1;" \n
+       "			[] spawn {" \n
+       "			uiSleep 30;" \n
+       "			(driver axeGeneralsBoat) doMove (axeGeneralBoatFinArr select axeGeneralPosIndex);" \n
+       "			};" \n
+       "		};" \n
+       "	};" \n
+       "" \n
+       "" \n
+       "" \n
+       "if (_plyr in (crew axeGeneralsBoat)) then {" \n
+       "playSound3D [""A3\Sounds_F\sfx\alarm.wss"", _plyr];" \n
+       "" \n
+       "if!(_warnStarted) then {" \n
+       "_leaveMsgs = [""Leave the transport immediately !"",format[""%1, I suggest you leave that boat..\nRight Now !"",_nickName],format[""If you value your life %1 disembark.\nRight Now !"",_nickName]];" \n
+       "_leaveMsg = _leaveMsgs select floor (random (count _leaveMsgs));" \n
+       "titleText [_leaveMsg,""PLAIN"",3];" \n
+       "_warnStarted = true;" \n
+       "};" \n
+       "_warnCount = _warnCount + 1;" \n
+       "if (_warnCount > 3) then {" \n
+       "_plyr action [""Eject"", vehicle _plyr];" \n
+       "_warnStarted = false;" \n
+       "_reOrderEmbark = true;" \n
+       "};" \n
+       "};" \n
+       "" \n
+       "//Redoing stuff the player breaks" \n
+       "" \n
+       "if (_reOrderEmbark) then {" \n
+       "[] spawn EPOCH_VIP_Mission_Accomplished;" \n
+       "_reOrderEmbark = false;" \n
+       "};" \n
+       "" \n
+       "" \n
+       "" \n
+       "//Messaging" \n
+       "" \n
+       "//Player out of running vehicle message" \n
+       "//Maybe move to long checks - if they work.." \n
+       "" \n
+       "if (!_plyrInVeh && _vehRunning &&  _vipInVeh && !_completeDone) then {" \n
+       "_wInDiag = getArray ( configFile >> ""TraderMissions"" >> _missionName >> ""missioncheck"" >> ""gotout"" >> ""dialogue"");" \n
+       "_wInDiag2 = getArray ( configFile >> ""TraderMissions"" >> _missionName >> ""missioncheck"" >> ""gotout"" >> ""dialogue2"");" \n
+       "" \n
+       "_rndWChoice = floor (random (count _wInDiag));" \n
+       "" \n
+       " _wDiag = _wInDiag select _rndWChoice;" \n
+       " _wDiag2 = _wInDiag2 select _rndWChoice;" \n
+       "};" \n
+       "" \n
+       "" \n
+       "" \n
+       "if (_t - _m > _msgMaxFrequency) then {" \n
+       "" \n
+       "if (_wDiag != """") then {" \n
+       "titleText [_wDiag,""PLAIN"",6];" \n
+       "};" \n
+       "" \n
+       "if (_wDiag2 != """") then {" \n
+       "" \n
+       "_wDiag2 spawn {" \n
+       "uiSleep 6;" \n
+       "titleText [_this,""PLAIN"",6];" \n
+       "};" \n
+       "" \n
+       "};" \n
+       "" \n
+       "_wDiag = """";" \n
+       "_wDiag2 = """";" \n
+       "_m = _t;" \n
+       "};" \n
+       "" \n
+       ""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "do_instinct">*/
+        class do_instinct
+        {
+          priority = 80.000000;
+          to="instinct";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "end">*/
+    class end
+    {
+      name = "end";
+      init = /*%FSM<STATEINIT""">*/"{" \n
+       "deleteVehicle _x;" \n
+       "}forEach units grpVIPGeneral;" \n
+       "" \n
+       "deleteVehicle axeGeneralsBoat;" \n
+       "" \n
+       ""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "do_follow">*/
+    class do_follow
+    {
+      name = "do_follow";
+      init = /*%FSM<STATEINIT""">*/"if (behaviour axeVIP !=""AWARE"") then {" \n
+       "_grp setBehaviour ""AWARE"";" \n
+       "};" \n
+       "_moveTo = [getPosATL _plyr, 3, floor (random 360)] call BIS_fnc_relPos;" \n
+       "axeVIP doMove _moveTo;" \n
+       "" \n
+       "_sWait = axeVIP distance _moveTo;" \n
+       "_actionDone = true;" \n
+       "_t = diag_tickTime;" \n
+       "_criteria = ""((axeVIP distance _moveTo < 2) || (axeVIP distance _plyr < 4))"";"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "_">*/
+        class _
+        {
+          priority = 0.000000;
+          to="action";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "do_get_in">*/
+    class do_get_in
+    {
+      name = "do_get_in";
+      init = /*%FSM<STATEINIT""">*/"if (isNull _transport) then {" \n
+       "_transport = vehicle player;" \n
+       "};" \n
+       "" \n
+       "axeVIP assignAsCargo vehicle player;" \n
+       "[axeVIP] orderGetIn true;" \n
+       "" \n
+       "_sWait = 1.5;" \n
+       "_actionDone = true;" \n
+       "_t = diag_tickTime;" \n
+       "_criteria = ""(false)"";"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "_">*/
+        class _
+        {
+          priority = 0.000000;
+          to="action";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "do_get_out">*/
+    class do_get_out
+    {
+      name = "do_get_out";
+      init = /*%FSM<STATEINIT""">*/"axeVIP action [""Eject"", vehicle axeVIP];" \n
+       "unassignVehicle axeVIP;" \n
+       "" \n
+       "_sWait = 1.5;" \n
+       "_actionDone = true;" \n
+       "_t = diag_tickTime;" \n
+       "_criteria = ""(false)"";"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "_">*/
+        class _
+        {
+          priority = 0.000000;
+          to="action";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "drive_transport">*/
+    class drive_transport
+    {
+      name = "drive_transport";
+      init = /*%FSM<STATEINIT""">*/"_nrRoads = getPos _plyr nearRoads _dist; " \n
+       "if (count _nrRoads > 0) then {" \n
+       "" \n
+       "if (behaviour axeVIP !=""SAFE"") then {" \n
+       "_grp setBehaviour ""SAFE"";" \n
+       "};" \n
+       "axeVIP assignAsDriver vehicle axeVIP;" \n
+       "axeVIP moveInDriver vehicle axeVIP;" \n
+       "_nrstRoads = [_nrRoads, getPosATL _plyr] call Epoch_SortArrayByDistance;" \n
+       "_moveTo = getPosATL (_nrstRoads select 0);" \n
+       "axeVIP doMove _moveTo;" \n
+       "};" \n
+       "" \n
+       "_sWait = axeVIP distance _moveTo;" \n
+       "_actionDone = true;" \n
+       "_t = diag_tickTime;" \n
+       "_criteria = ""((axeVIP distance _moveTo < 12) || (axeVIP distance _plyr < 12))"";"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "_">*/
+        class _
+        {
+          priority = 0.000000;
+          to="action";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "scoot_over">*/
+    class scoot_over
+    {
+      name = "scoot_over";
+      init = /*%FSM<STATEINIT""">*/"axeVIP assignAsCargo vehicle axeVIP;" \n
+       "axeVIP moveInCargo vehicle axeVIP;" \n
+       "" \n
+       "_sWait = 1.5;" \n
+       "_actionDone = true;" \n
+       "_t = diag_tickTime;" \n
+       "_criteria = ""(false)"";"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "_">*/
+        class _
+        {
+          priority = 0.000000;
+          to="action";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "do_abandon">*/
+    class do_abandon
+    {
+      name = "do_abandon";
+      init = /*%FSM<STATEINIT""">*/"unassignVehicle axeVIP;" \n
+       "_transport = objNull;" \n
+       "" \n
+       "_wInDiag = getArray ( configFile >> ""TraderMissions"" >> _missionName >> ""missioncheck"" >> ""vehlost"" >> ""dialogue"");" \n
+       "_wInDiag2 = getArray ( configFile >> ""TraderMissions"" >> _missionName >> ""missioncheck"" >> ""vehlost"" >> ""dialogue2"");" \n
+       "" \n
+       "_rndWChoice = floor (random (count _wInDiag));" \n
+       "" \n
+       " _wDiag = _wInDiag select _rndWChoice;" \n
+       " _wDiag2 = _wInDiag2 select _rndWChoice;" \n
+       "" \n
+       "_sWait = 1.5;" \n
+       "_actionDone = true;" \n
+       "_t = diag_tickTime;" \n
+       "_criteria = ""(false)"";"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "_">*/
+        class _
+        {
+          priority = 0.000000;
+          to="action";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "mission_accompli">*/
+    class mission_accompli
+    {
+      name = "mission_accompli";
+      init = /*%FSM<STATEINIT""">*/"[] spawn EPOCH_VIP_Mission_Accomplished;" \n
+       "_completeDone = true;" \n
+       "" \n
+       "{" \n
+       "if (_x != axeGeneral && _x != axeVIP) then {" \n
+       "_x setBehaviour ""AWARE"";" \n
+       "};" \n
+       "}forEach units group axeGeneral;" \n
+       "" \n
+       "_wInDiag = getArray ( configFile >> ""TraderMissions"" >> _missionName >> ""completed"" >> ""dialogue"");" \n
+       "_wInDiag2 = getArray ( configFile >> ""TraderMissions"" >> _missionName >> ""completed"" >> ""dialogue2"");" \n
+       "" \n
+       "_rndWChoice = floor (random (count _wInDiag));" \n
+       "" \n
+       " _wDiag = _wInDiag select _rndWChoice;" \n
+       " _wDiag2 = _wInDiag2 select _rndWChoice;" \n
+       "" \n
+       "" \n
+       "if (_wDiag != """") then {" \n
+       "titleText [_wDiag,""PLAIN"",6];" \n
+       "};" \n
+       "" \n
+       "if (_wDiag2 != """") then {" \n
+       "" \n
+       "_wDiag2 spawn {" \n
+       "uiSleep 6;" \n
+       "titleText [_this,""PLAIN"",6];" \n
+       "};" \n
+       "" \n
+       "};" \n
+       "" \n
+       "_wDiag = """";" \n
+       "_wDiag2 = """";" \n
+       "" \n
+       "EPOCH_FillContainer_PVS = [_plyr,Epoch_personalToken,axeGeneralsBoat,false,25];" \n
+       "publicVariableServer ""EPOCH_FillContainer_PVS"";" \n
+       "" \n
+       "_sWait = 1.5;" \n
+       "_actionDone = true;" \n
+       "_t = diag_tickTime;" \n
+       "_criteria = ""(false)"";"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "_">*/
+        class _
+        {
+          priority = 0.000000;
+          to="action";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "intro">*/
+    class intro
+    {
+      name = "intro";
+      init = /*%FSM<STATEINIT""">*/"" \n
+       "" \n
+       "_pos = (getPosATL player) findEmptyPosition [25,100,""Epoch_Female_CamoRed_F""];" \n
+       "if (_pos isEqualTo []) then {" \n
+       "_pos = getPosATL player;" \n
+       "};" \n
+       "_grp = createGroup (side _plyr);" \n
+       "axeVIP = _grp createUnit [""Epoch_Female_CamoRed_F"",_pos,[],0,""FORM""];" \n
+       "" \n
+       "if !(isNull axeVIP) then {" \n
+       "	EPOCH_TEMPOBJ_PVS = axeVIP;" \n
+       "	publicVariableServer ""EPOCH_TEMPOBJ_PVS"";" \n
+       "};" \n
+       "" \n
+       "_grp setCombatMode ""BLUE"";" \n
+       "_grp setBehaviour ""AWARE"";" \n
+       "axeVIP setUnitPos ""UP"";" \n
+       "" \n
+       "axeVIP setSkill [""endurance"", 1];" \n
+       "axeVIP setSkill [""spotDistance"", 1];" \n
+       "axeVIP setSkill [""spotTime"", 1];" \n
+       "axeVIP setSkill [""courage"", 0.9];" \n
+       "axeVIP setSkill [""general"", 1];" \n
+       "" \n
+       "" \n
+       "_item=""H_Cap_red"";" \n
+       "axeVIP addItemToVest _item;" \n
+       "axeVIP assignItem _item;" \n
+       "" \n
+       "_item=""G_Tactical_Black"";" \n
+       "axeVIP addItemToVest _item;" \n
+       "axeVIP assignItem _item;" \n
+       "" \n
+       "_wInDiag = getArray ( configFile >> ""traderMissions"" >> _missionName >> ""welcome"" >> ""dialogue"");" \n
+       "_wInDiag2 = getArray ( configFile >> ""traderMissions"" >> _missionName >> ""welcome"" >> ""dialogue2"");" \n
+       "_wInItem = getArray ( configFile >> ""traderMissions"" >> _missionName >> ""welcome"" >> ""item"");" \n
+       "" \n
+       "_rndWChoice = floor (random (count _wInDiag));" \n
+       "" \n
+       " _wDiag = _wInDiag select _rndWChoice;" \n
+       " _wDiag2 = _wInDiag2 select _rndWChoice;" \n
+       "" \n
+       "titleText [_wDiag,""PLAIN"",6];" \n
+       "if (_wDiag2 != """") then {" \n
+       "_wDiag2 spawn {" \n
+       "uiSleep 6;" \n
+       "titleText [_this,""PLAIN"",3];" \n
+       "};" \n
+       "" \n
+       "};" \n
+       "" \n
+       "//Give player end location" \n
+       "[_genPosX,_genPosY] spawn {" \n
+       "uiSleep 12;" \n
+       "_endPosY = format[""0%1"",_this select 0];" \n
+       "titleText [format[""**IMPORTANT**\nThe pickup is at map location %1 - %2"", _endPosY,_this select 1],""PLAIN"",6];" \n
+       "" \n
+       "};" \n
+       "" \n
+       "_wDiag = """";" \n
+       "_wDiag2 = """";" \n
+       "" \n
+       "_wItem = _wInItem select _rndWChoice;" \n
+       "if!(_wItem in assignedItems _plyr) then {" \n
+       "_plyr addItemToVest _wItem;" \n
+       "_plyr assignItem _wItem;" \n
+       "};" \n
+       "" \n
+       "" \n
+       ""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "_">*/
+        class _
+        {
+          priority = 0.000000;
+          to="reset___checks";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "long_checks">*/
+    class long_checks
+    {
+      name = "long_checks";
+      init = /*%FSM<STATEINIT""">*/"if (diag_tickTime - _missionTimer > 1200) then {" \n
+       "titleText [""Are you lost ?\nI will check the drop off point for you, wait one."",""PLAIN"",3];" \n
+       "" \n
+       "[_genPosX,_genPosY] spawn {" \n
+       "uiSleep 12;" \n
+       "_endPosY = format[""0%1"",_this select 0];" \n
+       "titleText [format[""**IMPORTANT**\nThe pickup is at map location %1 - %2"", _endPosY,_this select 1],""PLAIN"",6];" \n
+       "" \n
+       "};" \n
+       "" \n
+       "_missionTimer = diag_tickTime;" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "done_long_checks">*/
+        class done_long_checks
+        {
+          priority = 100.000000;
+          to="reset___checks";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_sanityCheck < 1;"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "spawn_general_and">*/
+    class spawn_general_and
+    {
+      name = "spawn_general_and";
+      init = /*%FSM<STATEINIT""">*/"" \n
+       "" \n
+       "	grpVIPGeneral = createGroup RESISTANCE;" \n
+       "" \n
+       "	axeGeneral = grpVIPGeneral createUnit [""I_Soldier_EPOCH"", axeGeneralPos, [], 1, ""CAN_COLLIDE""];" \n
+       "	axeGeneral setUnitPos ""UP"";" \n
+       "	axeGeneralsBoat setDir ([axeGeneral, axeGeneralsBoat] call BIS_fnc_dirTo);" \n
+       "	axeGeneral addEventHandler [""FiredNear"", ""group (_this select 0) setVariable[""""shotsFired"""",[(_this select 1),(_this select 2)]]""];" \n
+       "	axeGeneral addEventHandler [""Killed"", ""group (_this select 0) setVariable[""""killer"""",_this select 1]""];" \n
+       "	removeAllWeapons axeGeneral;" \n
+       "" \n
+       "if !(isNull axeGeneral) then {" \n
+       "	EPOCH_TEMPOBJ_PVS = axeGeneral;" \n
+       "	publicVariableServer ""EPOCH_TEMPOBJ_PVS"";" \n
+       "};" \n
+       "" \n
+       "	 for ""_i"" from 1 to 3 step 1 do" \n
+       "	{ " \n
+       "	_startPos = getPosATL axeGeneral; " \n
+       "	" \n
+       "	_unit = grpVIPGeneral createUnit [""I_Soldier_EPOCH"", _startPos, [], 20, ""CAN_COLLIDE""];" \n
+       "	_unit setBehaviour ""COMBAT"";" \n
+       "	_unit addEventHandler [""FiredNear"", ""group (_this select 0) setVariable[""""shotsFired"""",[(_this select 1),(_this select 2)]]""];" \n
+       "	_unit addEventHandler [""Killed"", ""group (_this select 0) setVariable[""""killer"""",_this select 1]""];" \n
+       "	if !(isNull _unit) then {" \n
+       "	EPOCH_TEMPOBJ_PVS = _unit;" \n
+       "	publicVariableServer ""EPOCH_TEMPOBJ_PVS"";" \n
+       "	};" \n
+       "	[_unit,axeGeneral] execFSM ""\x\addons\a3_epoch_code\System\Mission_VIP_Militia.fsm"";" \n
+       "" \n
+       "	};" \n
+       "" \n
+       "grpVIPGeneral setCombatMode ""BLUE""; " \n
+       "" \n
+       "_generalSpawned = true;" \n
+       "_sWait = 0;" \n
+       "_actionDone = true;" \n
+       "_t = diag_tickTime;" \n
+       "_criteria = ""(false)"";"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "_">*/
+        class _
+        {
+          priority = 0.000000;
+          to="action";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "find_boat">*/
+    class find_boat
+    {
+      name = "find_boat";
+      init = /*%FSM<STATEINIT""">*/"_boats = nearestObjects [axeGeneralBoatPos, [""I_Boat_Armed_01_minigun_F""], 250];" \n
+       "if (count _boats > 0) then {" \n
+       "axeGeneralsBoat =  _boats select 0;" \n
+       "};" \n
+       "" \n
+       "if!(isNull axeGeneralsBoat) then {" \n
+       "axeGeneralsBoat setVehicleLock ""LOCKEDPLAYER""; " \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "found">*/
+        class found
+        {
+          priority = 20.000000;
+          to="spawn_general_and";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!(isNull axeGeneralsBoat);"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "not_found">*/
+        class not_found
+        {
+          priority = 10.000000;
+          to="find_boat";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"isNull axeGeneralsBoat || diag_tickTime - _findTimer > 0.5;"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+  };
+  initState="vip";
+  finalStates[] =
+  {
+    "end"
+  };
+};
+/*%FSM</COMPILE>*/

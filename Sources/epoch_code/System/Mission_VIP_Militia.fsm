@@ -1,0 +1,600 @@
+/*%FSM<COMPILE "C:\Program Files (x86)\Bohemia Interactive\Tools\FSM Editor Personal Edition\scriptedFSM.cfg, mission militia">*/
+/*%FSM<HEAD>*/
+/*
+item0[] = {"unit",0,250,-306.490601,-197.039688,-216.490692,-147.039795,0.000000,"unit"};
+item1[] = {"_",8,218,62.332706,-185.990021,114.284866,-157.584717,0.000000,""};
+item2[] = {"decision",2,250,165.295456,-196.723892,255.295410,-146.723892,0.000000,"decision"};
+item3[] = {"decision_made",4,218,165.267090,-51.429611,255.267059,-1.429623,100.000000,"decision made"};
+item4[] = {"action",2,250,47.264793,131.320435,137.264771,181.320496,0.000000,"action"};
+item5[] = {"actioning",4,218,-162.750412,131.241440,-72.750221,181.241470,100.000000,"actioning"};
+item6[] = {"dispose",4,218,93.860703,-298.416321,183.860764,-248.416351,90.000000,"dispose"};
+item7[] = {"_",8,218,64.556534,392.347595,116.508629,420.752838,0.000000,""};
+item8[] = {"reset_vars",2,250,-57.248745,-196.860123,32.751255,-146.860138,0.000000,"reset vars"};
+item9[] = {"_",8,218,-150.031967,-184.788101,-98.079796,-156.382797,0.000000,""};
+item10[] = {"met",4,218,-162.962280,-131.504044,-72.962013,-81.504021,10.000000,"met"};
+item11[] = {"end",1,250,411.966034,1.474794,501.966095,51.474747,0.000000,"end"};
+item12[] = {"dispose",4,218,231.223953,1.285551,321.223938,51.285561,80.000000,"dispose"};
+item13[] = {"criteria",2,250,-163.749939,-26.246429,-73.749825,23.753551,0.000000,"criteria"};
+item14[] = {"killer",4,218,127.015411,237.161896,217.015411,287.161896,70.000000,"killer"};
+item15[] = {"target_player",2,4346,413.247467,254.265167,503.247498,304.265198,0.000000,"target player"};
+item16[] = {"no_decisiion",4,218,43.658752,-253.423935,133.658752,-203.423874,10.000000,"no decisiion"};
+item17[] = {"shots_fired",4,218,147.160431,-334.624023,237.160416,-284.624023,80.000000,"shots fired"};
+item18[] = {"shots",4,218,182.845428,129.080032,272.845428,179.080032,60.000000,"shots"};
+item19[] = {"move_to_target",2,250,410.018951,130.038605,500.018982,180.038589,0.000000,"move to target"};
+item20[] = {"unit_killed",4,218,223.288681,-349.805725,313.288727,-299.805695,70.000000,"unit killed"};
+item21[] = {"wander",4,218,333.247833,-280.119446,423.247833,-230.119507,50.000000,"wander"};
+item22[] = {"wander",4,218,93.557777,292.853455,183.557755,342.853455,40.000000,"wander"};
+item23[] = {"have_a_walk",2,250,411.888062,317.006439,501.887848,367.006439,0.000000,"have a walk"};
+item24[] = {"investigate",4,218,287.399384,-317.514160,377.399384,-267.514221,60.000000,"investigate"};
+item25[] = {"investigate",4,218,155.482483,186.267166,245.482468,236.267166,50.000000,"investigate"};
+item26[] = {"do_investigate",2,250,411.768799,191.716263,501.768799,241.716248,0.000000,"do investigate"};
+item27[] = {"pause",4,218,46.354713,-25.566845,136.354721,24.433178,5.000000,"pause"};
+link0[] = {0,9};
+link1[] = {1,2};
+link2[] = {2,3};
+link3[] = {2,6};
+link4[] = {2,16};
+link5[] = {2,17};
+link6[] = {2,20};
+link7[] = {2,21};
+link8[] = {2,24};
+link9[] = {3,4};
+link10[] = {4,5};
+link11[] = {4,12};
+link12[] = {4,14};
+link13[] = {4,18};
+link14[] = {4,22};
+link15[] = {4,25};
+link16[] = {5,13};
+link17[] = {6,2};
+link18[] = {7,4};
+link19[] = {8,1};
+link20[] = {9,8};
+link21[] = {10,8};
+link22[] = {12,11};
+link23[] = {13,10};
+link24[] = {13,27};
+link25[] = {14,15};
+link26[] = {15,7};
+link27[] = {16,2};
+link28[] = {17,2};
+link29[] = {18,19};
+link30[] = {19,7};
+link31[] = {20,2};
+link32[] = {21,2};
+link33[] = {22,23};
+link34[] = {23,7};
+link35[] = {24,2};
+link36[] = {25,26};
+link37[] = {26,7};
+link38[] = {27,4};
+globals[] = {0.000000,0,0,0,16777215,640,480,1,107,6316128,1,-474.878845,682.424866,490.488190,-417.225372,932,731,1};
+window[] = {2,-1,-1,-1,-1,725,200,1224,200,3,950};
+*//*%FSM</HEAD>*/
+class FSM
+{
+  fsmName = "mission militia";
+  class States
+  {
+    /*%FSM<STATE "unit">*/
+    class unit
+    {
+      name = "unit";
+      init = /*%FSM<STATEINIT""">*/"_unit = _this select 0;" \n
+       "_trgt = _this select 1;" \n
+       "_unitGrp = group _unit;" \n
+       "" \n
+       "" \n
+       "_unit setBehaviour ""CARELESS"";" \n
+       "_unit setCombatMode ""BLUE"";" \n
+       "" \n
+       "_unitNames=[""Aaron"",""Kenneth"",""Paul"",""Darren"",""Damian"",""Niklas"",""Andrew"",""Nigel"",""Harry"",""Phil"",""Antony"",""Dave"",""Hammish"",""Dickie"",""Peter"",""Conor""];" \n
+       "_unitName = _unitNames select (floor(random count _unitNames));" \n
+       "" \n
+       "_trgtArray = [""Epoch_Male_F"",""Epoch_Female_F"",""Epoch_Female_Camo_F""];" \n
+       "_vehArray = [""Car""];" \n
+       "_tRange = 20;" \n
+       "_sRange = 10;" \n
+       "_vRange = 50;" \n
+       "_maxTravelTime = 8;" \n
+       "" \n
+       "_count = 0;" \n
+       "" \n
+       "_nrBodies = [];" \n
+       "_onBoat = false;" \n
+       "" \n
+       "" \n
+       "" \n
+       "" \n
+       "" \n
+       "" \n
+       ""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "_">*/
+        class _
+        {
+          priority = 0.000000;
+          to="reset_vars";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "decision">*/
+    class decision
+    {
+      name = "decision";
+      init = /*%FSM<STATEINIT""">*/"_unitPos = getPosATL _unit;" \n
+       "_daytime = daytime;" \n
+       "_nrPlyrs = _unit nearEntities [_trgtArray, 300];" \n
+       "_killer = _unitGrp getVariable [""killer"",objNull];" \n
+       "_investigate = _unitGrp getVariable [""investigate"",objNull];" \n
+       "_shotsFired = _unitGrp getVariable [""shotsFired"",[objNull,0]];" \n
+       "_t = diag_tickTime;" \n
+       "" \n
+       "" \n
+       "" \n
+       "" \n
+       ""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "decision_made">*/
+        class decision_made
+        {
+          priority = 100.000000;
+          to="action";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_decisionMade;"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "dispose">*/
+        class dispose
+        {
+          priority = 90.000000;
+          to="decision";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!alive _unit || (isNull axeGeneralsBoat);"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/"_doDispose = true;" \n
+           "_decisionMade = true;"/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "shots_fired">*/
+        class shots_fired
+        {
+          priority = 80.000000;
+          to="decision";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(_shotsFired select 1) > 0 && (isPlayer (_shotsFired select 0));"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/"_doShots = true;" \n
+           "_decisionMade = true;"/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "unit_killed">*/
+        class unit_killed
+        {
+          priority = 70.000000;
+          to="decision";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(!isNull _killer);"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/"_doKiller = true;" \n
+           "_decisionMade = true;"/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "investigate">*/
+        class investigate
+        {
+          priority = 60.000000;
+          to="decision";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!isNull _investigate && !_onBoat;"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/"_doInvestigate = true;" \n
+           "_decisionMade = true;"/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "wander">*/
+        class wander
+        {
+          priority = 50.000000;
+          to="decision";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!_decisionMade && diag_tickTime - _w > 60 && !_onBoat;"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/"_doWander = true;" \n
+           "_decisionMade = true;"/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "no_decisiion">*/
+        class no_decisiion
+        {
+          priority = 10.000000;
+          to="decision";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!_decisionMade && diag_tickTime - _t > 3;"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "action">*/
+    class action
+    {
+      name = "action";
+      init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "actioning">*/
+        class actioning
+        {
+          priority = 100.000000;
+          to="criteria";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_actionDone;"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "dispose">*/
+        class dispose
+        {
+          priority = 80.000000;
+          to="end";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_doDispose;"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/"axeDo = ""Dispose"";"/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "killer">*/
+        class killer
+        {
+          priority = 70.000000;
+          to="target_player";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_doKiller;"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/"_doKiller = false;"/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "shots">*/
+        class shots
+        {
+          priority = 60.000000;
+          to="move_to_target";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_doShots;"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "investigate">*/
+        class investigate
+        {
+          priority = 50.000000;
+          to="do_investigate";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_doInvestigate;"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "wander">*/
+        class wander
+        {
+          priority = 40.000000;
+          to="have_a_walk";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_doWander;"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/"_doWander = false;"/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "reset_vars">*/
+    class reset_vars
+    {
+      name = "reset_vars";
+      init = /*%FSM<STATEINIT""">*/"//Default Vars" \n
+       "" \n
+       "" \n
+       "_rnd = 0;" \n
+       "_actionDone = false;" \n
+       "_decisionMade = false;" \n
+       "_sWait = 0;" \n
+       "_doDispose = false;" \n
+       "_chooseTarget = false;" \n
+       "_criteria = Nil;" \n
+       "_criteriaMet = false;" \n
+       "_allowInterrupt = false;" \n
+       "_w = diag_tickTime;" \n
+       "" \n
+       "" \n
+       "_unitPos=[0,0,0];" \n
+       "_nrPlyrs = [];" \n
+       "_seePlyr = false;" \n
+       "_override = false;" \n
+       "_trade = false;" \n
+       "_useVeh = false;" \n
+       "" \n
+       "_criteriaMetAction = nil;" \n
+       "" \n
+       "_shotsFired = [objNull,0];" \n
+       "" \n
+       "" \n
+       "_doShots = false;" \n
+       "_killer = objNull;" \n
+       "_doKiller = false;" \n
+       "_doWander = false;" \n
+       "_doInvestigate = false;" \n
+       "" \n
+       "_onBoat = _unit in (crew axeGeneralsBoat);" \n
+       "" \n
+       ""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "_">*/
+        class _
+        {
+          priority = 0.000000;
+          to="decision";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "end">*/
+    class end
+    {
+      name = "end";
+      init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "criteria">*/
+    class criteria
+    {
+      name = "criteria";
+      init = /*%FSM<STATEINIT""">*/"_i = diag_tickTime;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "met">*/
+        class met
+        {
+          priority = 10.000000;
+          to="reset_vars";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(call compile _criteria) || (diag_tickTime > (_t + _sWait));"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/"if (!isNil ""_criteriaMetAction"") then {" \n
+           "call _criteriaMetAction;" \n
+           "};"/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "pause">*/
+        class pause
+        {
+          priority = 5.000000;
+          to="action";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"diag_tickTime - _i > 1;"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "target_player">*/
+    class target_player
+    {
+      name = "target_player";
+      init = /*%FSM<STATEINIT""">*/"_trgt = _killer;" \n
+       "" \n
+       "_trgtPos = getPos _trgt;" \n
+       "" \n
+       "_unitGrp setBehaviour ""COMBAT"";" \n
+       "_unitGrp setCombatMode ""RED"";" \n
+       "" \n
+       "if (_onBoat) then {" \n
+       "" \n
+       "{" \n
+       "	 if (_x != driver axegeneralsboat && _x != commander axegeneralsboat) then {" \n
+       "		if (isnull gunner axegeneralsboat) then {" \n
+       "		_x assignAsGunner axegeneralsboat;" \n
+       "		};" \n
+       "	};" \n
+       "} forEach crew axegeneralsboat;" \n
+       "" \n
+       "" \n
+       "};" \n
+       "" \n
+       "" \n
+       "_unit commandTarget _trgt;" \n
+       "_unit doTarget _trgt;" \n
+       "_unit doFire _trgt;" \n
+       "" \n
+       "" \n
+       "" \n
+       "_sWait = 120;" \n
+       "_actionDone = true;" \n
+       "_t = diag_tickTime;" \n
+       "_criteria = ""(!alive _trgt)"";" \n
+       "" \n
+       "_criteriaMetAction = {" \n
+       "" \n
+       "	if (!(alive _trgt)) then {" \n
+       "	_unitGrp setVariable [""killer"",objNull];" \n
+       "	_unit setBehaviour ""CARELESS"";" \n
+       "	_unit setCombatMode ""BLUE"";" \n
+       "	};" \n
+       "" \n
+       "" \n
+       "" \n
+       "};" \n
+       ""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "_">*/
+        class _
+        {
+          priority = 0.000000;
+          to="action";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "move_to_target">*/
+    class move_to_target
+    {
+      name = "move_to_target";
+      init = /*%FSM<STATEINIT""">*/"" \n
+       "_trgt = _shotsFired select 0;" \n
+       "_trgtPos = getPosATL _trgt;" \n
+       "" \n
+       "if (_onBoat) then {" \n
+       "_unitGrp setBehaviour ""COMBAT"";" \n
+       "_unitGrp setCombatMode ""RED"";" \n
+       "{" \n
+       "	 if (_x != driver axegeneralsboat && _x != commander axegeneralsboat) then {" \n
+       "		if (isnull gunner axegeneralsboat) then {" \n
+       "		_x assignAsGunner axegeneralsboat;" \n
+       "		};" \n
+       "	};" \n
+       "} forEach crew axegeneralsboat;" \n
+       "" \n
+       "_unit commandTarget _trgt;" \n
+       "_unit doTarget _trgt;" \n
+       "_unit doFire _trgt;" \n
+       "" \n
+       "_criteria = ""(false)"";" \n
+       "" \n
+       "}else{" \n
+       "_moveTo =[_trgtPos, floor random 20 max 8, floor random 360] call BIS_fnc_relPos;" \n
+       "" \n
+       "_unit doMove _moveTo;" \n
+       "_unitGrp setVariable [""shotsFired"",[objNull,0]];" \n
+       "_unit doWatch _trgt;" \n
+       "_unitGrp setVariable [""investigate"",_trgt];" \n
+       "_criteria = ""(_unit distance _moveTo < 2)"";" \n
+       "};" \n
+       "" \n
+       "" \n
+       "" \n
+       "_sWait = _maxTravelTime;" \n
+       "_actionDone = true;" \n
+       "_t = diag_tickTime;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "_">*/
+        class _
+        {
+          priority = 0.000000;
+          to="action";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "have_a_walk">*/
+    class have_a_walk
+    {
+      name = "have_a_walk";
+      init = /*%FSM<STATEINIT""">*/"" \n
+       "" \n
+       "_moveTo =[getPos _trgt, (floor random 36) max 18, floor random 360] call BIS_fnc_relPos;" \n
+       "" \n
+       "_unit doMove _moveTo;" \n
+       "" \n
+       "_criteria = ""(_unit distance _moveTo < 6)"";" \n
+       "_sWait = _maxTravelTime;" \n
+       "_actionDone = true;" \n
+       "_t = diag_tickTime;" \n
+       "" \n
+       "axeDo = ""Wander"";"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "_">*/
+        class _
+        {
+          priority = 0.000000;
+          to="action";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "do_investigate">*/
+    class do_investigate
+    {
+      name = "do_investigate";
+      init = /*%FSM<STATEINIT""">*/"" \n
+       "_nrBodies = nearestObjects [getPos _investigate,_trgtArray , 25];" \n
+       "" \n
+       "if (count _nrBodies > 0) then {" \n
+       "" \n
+       "{" \n
+       "if (!alive _x) then {" \n
+       "_unitGrp setVariable [""killer"",_investigate];" \n
+       "};" \n
+       "}forEach _nrBodies;" \n
+       "" \n
+       "_unit doMove getPos (_nrBodies select (floor random (count _nrBodies)));" \n
+       "};" \n
+       "" \n
+       "_criteriaMetAction = {" \n
+       "_unitGrp setVariable [""investigate"",objNull]; //add to timer to stop bothering player ?" \n
+       "_doInvestigate = false;" \n
+       "};" \n
+       "" \n
+       "" \n
+       "" \n
+       "_criteria = ""(false)"";" \n
+       "_sWait = 6;" \n
+       "_actionDone = true;" \n
+       "_t = diag_tickTime;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "_">*/
+        class _
+        {
+          priority = 0.000000;
+          to="action";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+  };
+  initState="unit";
+  finalStates[] =
+  {
+    "end"
+  };
+};
+/*%FSM</COMPILE>*/

@@ -1,0 +1,477 @@
+/*%FSM<COMPILE "F:\Program Files (x86)\Bohemia Interactive\Tools\FSM Editor Personal Edition\scriptedFSM.cfg, ai leader">*/
+/*%FSM<HEAD>*/
+/*
+item0[] = {"ai_leader",0,250,319.059235,-127.649353,409.059235,-77.649399,0.000000,"ai leader"};
+item1[] = {"_",8,218,338.523376,-10.716812,390.475464,17.688435,0.000000,""};
+item2[] = {"update",2,250,319.499451,93.657814,409.499451,143.657806,0.000000,"update"};
+item3[] = {"near_destination",4,218,408.573456,158.579071,498.573456,208.579102,100.000000,"near" \n "destination"};
+item4[] = {"player_in_sight",4,218,502.524200,39.617886,592.524170,89.617889,40.000000,"player" \n "in sight"};
+item5[] = {"player_hidden",4,218,445.323975,-4.438395,535.323608,45.561600,30.000000,"player" \n "hidden"};
+item6[] = {"dest_copter",2,250,583.815979,-26.369762,673.815979,23.630268,0.000000,"dest copter"};
+item7[] = {"dest_player",2,250,706.111816,0.834900,796.111816,50.834904,0.000000,"dest player"};
+item8[] = {"_",8,218,724.422119,104.861000,776.374146,133.266235,0.000000,""};
+item9[] = {"wait_start",2,250,584.072021,93.724655,674.072021,143.724655,0.000000,"wait start"};
+item10[] = {"wait",4,218,468.203522,93.278336,558.203247,143.278381,1.000000,"wait"};
+item11[] = {"new_position",2,250,584.680847,298.649109,674.680847,348.649109,0.000000,"new position"};
+item12[] = {"target_lost",4,218,18.489220,94.627281,108.489197,144.627258,50.000000,"target lost"};
+item13[] = {"nearest_house",2,250,17.506531,-5.606630,107.506561,44.393475,0.000000,"nearest house"};
+item14[] = {"end",1,250,314.447540,-310.915253,404.447571,-260.915253,0.000000,"end"};
+item15[] = {"leader_dead",4,218,319.214050,212.361969,409.214050,262.361969,60.000000,"leader dead"};
+item16[] = {"promotion",2,4346,319.214050,300.148834,409.214355,350.148834,0.000000,"promotion"};
+item17[] = {"player_gone",4,218,198.134048,272.603302,288.134033,322.603271,45.000000,"player gone"};
+item18[] = {"no_room",4,218,158.053757,-5.606592,248.053741,44.393425,1.000000,"no room"};
+item19[] = {"next_house",2,250,158.030380,-96.996155,248.030426,-46.996162,0.000000,"next house"};
+item20[] = {"new_player",2,250,319.869293,412.538513,409.869354,462.538452,0.000000,"new player"};
+item21[] = {"_",8,218,36.839310,-86.383507,88.791382,-57.978252,0.000000,""};
+item22[] = {"garrison",2,250,17.812634,-164.813538,107.812653,-114.813522,0.000000,"garrison"};
+item23[] = {"no_room",4,218,158.053757,-180.290115,248.053741,-130.290115,1.000000,"no room"};
+item24[] = {"Wait_240sec",4,218,151.791382,-310.784332,241.791382,-260.784332,0.000000,"Wait" \n "240sec"};
+link0[] = {0,1};
+link1[] = {1,2};
+link2[] = {2,3};
+link3[] = {2,4};
+link4[] = {2,5};
+link5[] = {2,12};
+link6[] = {2,15};
+link7[] = {2,17};
+link8[] = {3,11};
+link9[] = {4,7};
+link10[] = {5,6};
+link11[] = {6,8};
+link12[] = {7,8};
+link13[] = {8,9};
+link14[] = {9,10};
+link15[] = {10,2};
+link16[] = {11,8};
+link17[] = {12,13};
+link18[] = {13,18};
+link19[] = {13,21};
+link20[] = {15,16};
+link21[] = {16,8};
+link22[] = {17,20};
+link23[] = {18,19};
+link24[] = {19,21};
+link25[] = {19,23};
+link26[] = {20,8};
+link27[] = {21,22};
+link28[] = {22,24};
+link29[] = {23,19};
+link30[] = {24,14};
+globals[] = {0.000000,0,0,0,0,640,480,1,41,6316128,1,-74.395943,883.356445,550.082520,-244.601898,881,731,1};
+window[] = {2,-1,-1,-1,-1,853,125,1163,125,3,899};
+*//*%FSM</HEAD>*/
+class FSM
+{
+  fsmName = "ai leader";
+  class States
+  {
+    /*%FSM<STATE "ai_leader">*/
+    class ai_leader
+    {
+      name = "ai_leader";
+      init = /*%FSM<STATEINIT""">*/"_leaderMoveTo = _this select 0;" \n
+       "_copter = _this select 1;" \n
+       "_plyr = _this select 2;" \n
+       "_leader = _this select 3;" \n
+       "_grp = group _leader;" \n
+       "_lastSeen = time;" \n
+       "axeAIGarrison = false;" \n
+       "" \n
+       "_trgt = _copter;" \n
+       "_trgtPos = getPos _trgt;" \n
+       "" \n
+       "_leaderMinDist = 20;" \n
+       "_leaderMaxDist = 60;" \n
+       "" \n
+       "//debug" \n
+       "if (isNil ""axeDebug"") then {axeDebug = false;};" \n
+       ""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "_">*/
+        class _
+        {
+          priority = 0.000000;
+          to="update";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "update">*/
+    class update
+    {
+      name = "update";
+      init = /*%FSM<STATEINIT""">*/"_leaderPosActual = getPosATL _leader;" \n
+       "_canSeePlyr = (!lineIntersects [aimPos _plyr, eyePos _leader, _plyr, _leader]);" \n
+       "_2dDistPlyr = _plyr distance2D (getPos _leader);" \n
+       "_2DDistCopter = _copter distance2D (getPos _leader);" \n
+       "_nrPlayers = _leaderPosActual nearEntities[[""Epoch_Male_F"", ""Epoch_Female_F""], 250];" \n
+       "" \n
+       "//debug" \n
+       "if (axeDebug) then {" \n
+       "axePositionFind = 0;" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "near_destination">*/
+        class near_destination
+        {
+          priority = 100.000000;
+          to="new_position";
+          precondition = /*%FSM<CONDPRECONDITION""">*/"_2dDistMove = _leaderMoveTo distance2D (getPos _leader);"/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_2dDistMove < 12;"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "leader_dead">*/
+        class leader_dead
+        {
+          priority = 60.000000;
+          to="promotion";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!alive _leader;"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "target_lost">*/
+        class target_lost
+        {
+          priority = 50.000000;
+          to="nearest_house";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(_2dDistPlyr > 250) || (axeDebug && axeAIGarrison);"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "player_gone">*/
+        class player_gone
+        {
+          priority = 45.000000;
+          to="new_player";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(_2dDistPlyr > 800) && (count _nrPlayers > 0) && ((time -_lastSeen) > 480 );"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "player_in_sight">*/
+        class player_in_sight
+        {
+          priority = 40.000000;
+          to="dest_player";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_canSeePlyr;"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "player_hidden">*/
+        class player_hidden
+        {
+          priority = 30.000000;
+          to="dest_copter";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!_canSeePlyr;"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "dest_copter">*/
+    class dest_copter
+    {
+      name = "dest_copter";
+      init = /*%FSM<STATEINIT""">*/"_trgt =_copter;" \n
+       "_trgtPos = getPos _copter;" \n
+       "_leaderMinDist = 10;" \n
+       "_leaderMaxDist = 60;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "_">*/
+        class _
+        {
+          priority = 0.000000;
+          to="wait_start";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "dest_player">*/
+    class dest_player
+    {
+      name = "dest_player";
+      init = /*%FSM<STATEINIT""">*/"_trgt = _plyr;" \n
+       "_trgtPos = getPos _plyr;" \n
+       "_leaderMinDist = 20;" \n
+       "_leaderMaxDist = 80;" \n
+       "_lastSeen = time;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "_">*/
+        class _
+        {
+          priority = 0.000000;
+          to="wait_start";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "wait_start">*/
+    class wait_start
+    {
+      name = "wait_start";
+      init = /*%FSM<STATEINIT""">*/"_t = time;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "wait">*/
+        class wait
+        {
+          priority = 1.000000;
+          to="update";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"time > _t + (1 + random 1);"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "new_position">*/
+    class new_position
+    {
+      name = "new_position";
+      init = /*%FSM<STATEINIT""">*/"_leaderMoveTo = [_trgtPos,_leaderMinDist,_leaderMaxDist,5,0,5,0] call BIS_fnc_findSafePos;" \n
+       "_leaderLastPos = getPosATL _leader;" \n
+       "" \n
+       "" \n
+       "{" \n
+       "_x doMove _leaderMoveTo;" \n
+       "}forEach units _grp;" \n
+       "" \n
+       "//debug" \n
+       "if (axeDebug) then {" \n
+       "axePositionFind = axePositionFind +1;" \n
+       "hint ""Leader Moving"";" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "_">*/
+        class _
+        {
+          priority = 0.000000;
+          to="wait_start";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "nearest_house">*/
+    class nearest_house
+    {
+      name = "nearest_house";
+      init = /*%FSM<STATEINIT""">*/"_nrBuild = nearestBuilding _leader;" \n
+       "_garrisonPos = getPos _nrBuild;" \n
+       "" \n
+       "" \n
+       "" \n
+       "_arrGarr = [];" \n
+       "_garrCount = 0;" \n
+       "while {format [""%1"", _nrBuild buildingPos (_garrCount)] != ""[0,0,0]"" } do {" \n
+       "_arrGarr pushBack _garrCount;" \n
+       "_garrCount = _garrCount + 1;" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "no_room">*/
+        class no_room
+        {
+          priority = 1.000000;
+          to="next_house";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(count _arrGarr) <= ({alive _x} count (units _grp));"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "_">*/
+        class _
+        {
+          priority = 0.000000;
+          to="garrison";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "end">*/
+    class end
+    {
+      name = "end";
+      init = /*%FSM<STATEINIT""">*/"{" \n
+       "deleteVehicle _x;" \n
+       "}forEach units _grp;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "promotion">*/
+    class promotion
+    {
+      name = "promotion";
+      init = /*%FSM<STATEINIT""">*/"{" \n
+       " if (alive _x)exitWith{ _leader = _x;_x enableAI ""AUTOTARGET"";};" \n
+       "}forEach units _grp;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "_">*/
+        class _
+        {
+          priority = 0.000000;
+          to="wait_start";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "next_house">*/
+    class next_house
+    {
+      name = "next_house";
+      init = /*%FSM<STATEINIT""">*/"_nrBuilds = nearestObjects [_leaderPosActual,[""house""],250];" \n
+       "_nrBuild = _nrBuilds select (floor(random (count _nrBuilds)));" \n
+       "" \n
+       "" \n
+       "_arrGarr = [];" \n
+       "_garrCount = 0;" \n
+       "while {format [""%1"", _nrBuild buildingPos (_garrCount)] != ""[0,0,0]"" } do {" \n
+       "_arrGarr pushBack _garrCount;" \n
+       "_garrCount = _garrCount + 1;" \n
+       "};" \n
+       ""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "no_room">*/
+        class no_room
+        {
+          priority = 1.000000;
+          to="next_house";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(count _arrGarr) <= ({alive _x} count (units _grp));"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "_">*/
+        class _
+        {
+          priority = 0.000000;
+          to="garrison";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "new_player">*/
+    class new_player
+    {
+      name = "new_player";
+      init = /*%FSM<STATEINIT""">*/"_trgt = _nrPlayers select (floor(random (count _nrPlayers)));" \n
+       "_plyr = _trgt;" \n
+       "" \n
+       "//debug" \n
+       "if (axeDebug) then {" \n
+       "axeDebugProcedure=""select new target"";" \n
+       "axeNewTargets = axeNewTargets + 1;" \n
+       "};" \n
+       "" \n
+       "//" \n
+       "// A GOOD PLACE TO DEAL WITH OWNERSHIP TRANSFER.. (TODO: EPOCH_server_changeOwner;)" \n
+       "// New Owner from _nrPlayers" \n
+       "//"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "_">*/
+        class _
+        {
+          priority = 0.000000;
+          to="wait_start";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "garrison">*/
+    class garrison
+    {
+      name = "garrison";
+      init = /*%FSM<STATEINIT""">*/"_grp setBehaviour ""CARELESS "";" \n
+       "_grp setCombatMode ""GREEN"";" \n
+       "_garrIndex = 0;" \n
+       "{" \n
+       "_garrPos =  (_nrBuild buildingPos  (_arrGarr select _garrIndex));" \n
+       "_x doMove _garrPos;" \n
+       "_garrIndex = _garrIndex + 1;" \n
+       "}forEach units _grp;" \n
+       "" \n
+       "_t = diag_tickTime;" \n
+       ""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Wait_240sec">*/
+        class Wait_240sec
+        {
+          priority = 0.000000;
+          to="end";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(diag_tickTime - _t) > 240;"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+  };
+  initState="ai_leader";
+  finalStates[] =
+  {
+    "end"
+  };
+};
+/*%FSM</COMPILE>*/

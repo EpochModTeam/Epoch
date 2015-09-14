@@ -1,0 +1,1524 @@
+/*%FSM<COMPILE "C:\Program Files (x86)\Bohemia Interactive\Tools\FSM Editor Personal Edition\scriptedFSM.cfg, trader mission delivery">*/
+/*%FSM<HEAD>*/
+/*
+item0[] = {"mission",0,250,-292.494934,-346.793884,-202.494995,-296.794006,0.000000,"mission"};
+item1[] = {"_",8,218,62.332706,-185.990021,114.284866,-157.584717,0.000000,""};
+item2[] = {"instinct",2,250,191.105453,-225.114914,281.105408,-175.114914,0.000000,"instinct"};
+item3[] = {"action",2,250,164.446381,121.731827,254.446365,171.731903,0.000000,"action"};
+item4[] = {"dispose",4,218,20.438301,-279.382568,110.438431,-229.382599,90.000000,"dispose"};
+item5[] = {"_",8,218,184.126175,442.503937,236.078262,470.909149,0.000000,""};
+item6[] = {"reset_vars",2,250,-57.248745,-196.860123,32.751255,-146.860138,0.000000,"reset vars"};
+item7[] = {"_",8,218,-273.564545,-262.966431,-221.612381,-234.561172,0.000000,""};
+item8[] = {"complete",4,218,-56.810909,-93.101501,33.189354,-43.101486,100.000000,"complete"};
+item9[] = {"welcome",4,218,73.352470,-323.856232,163.352539,-273.856232,80.000000,"welcome"};
+item10[] = {"end",1,250,-370.691071,10.611027,-280.691071,60.611038,0.000000,"end"};
+item11[] = {"dispose",4,218,-102.640427,11.797817,-2.640434,61.797813,140.000000,"dispose"};
+item12[] = {"mission_event_1",4,218,402.723938,-312.757385,492.723938,-262.757324,60.000000,"mission event 1"};
+item13[] = {"no_decision",4,218,330.494629,-141.685272,420.494568,-91.685326,10.000000,"no decision"};
+item14[] = {"instinct_done",4,218,164.237518,-54.324181,254.237457,-4.324169,100.000000,"instinct done"};
+item15[] = {"completed",4,218,207.167007,-379.790894,297.167053,-329.790894,70.000000,"completed"};
+item16[] = {"load_mission",2,250,-292.180725,-196.146988,-202.180710,-146.146988,0.000000,"load mission"};
+item17[] = {"_",8,218,-162.998352,-185.990021,-111.046211,-157.584717,0.000000,""};
+item18[] = {"welcome",4,218,295.219086,199.253082,385.219025,249.253082,0.000000,"welcome"};
+item19[] = {"do_welcome",2,250,437.430695,199.688446,537.430664,249.688416,0.000000,"do welcome"};
+item20[] = {"interrupt",4,218,51.666336,-72.125519,141.666382,-22.125553,120.000000,"interrupt"};
+item21[] = {"mission_event_2",4,218,399.193695,-257.488159,489.193604,-207.488113,50.000000,"mission event 2"};
+item22[] = {"mission_event_3",4,218,399.829254,-201.420883,489.829010,-151.420898,40.000000,"mission event 3"};
+item23[] = {"mission_event_1",4,218,14.473431,177.857178,104.473343,227.857162,0.000000,"mission event 1"};
+item24[] = {"in_mission_1",2,250,-135.305969,264.247803,-45.305984,314.247803,0.000000,"in mission 1"};
+item25[] = {"mission_event_2",4,218,59.082150,218.902466,149.082092,268.902527,0.000000,"mission event 2"};
+item26[] = {"mission_event_3",4,218,104.461388,258.831085,194.461349,308.830994,0.000000,"mission event 3"};
+item27[] = {"in_mission_1_1",2,250,-134.509277,332.141968,-44.509247,382.141968,0.000000,"in mission 1"};
+item28[] = {"in_mission_1_2",2,250,-135.272766,397.347107,-45.272724,447.347107,0.000000,"in mission 1"};
+item29[] = {"complete_1",4,218,-11.056295,127.654327,78.943771,177.654495,0.000000,"complete"};
+item30[] = {"complete",2,4346,-137.496185,183.663330,-47.496330,233.663330,0.000000,"complete"};
+item31[] = {"mission_check",4,218,338.559967,54.346359,428.559814,104.346336,110.000000,"mission check"};
+item32[] = {"checking_status",2,250,675.000000,-50.000000,775.000000,0.000000,0.000000,"checking status"};
+item33[] = {"items_player",4,218,525.000000,-125.000000,625.000000,-75.000000,90.000000,"items player"};
+item34[] = {"checked",4,218,625.000000,25.000000,725.000000,75.000000,10.000000,"checked"};
+item35[] = {"done",4,218,450.000000,-50.000000,550.000000,0.000000,100.000000,"done"};
+item36[] = {"player_status",4,218,600.000000,-175.000000,700.000000,-125.000000,80.000000,"player status"};
+item37[] = {"accepted",4,218,136.335068,-357.773987,226.335129,-307.773987,75.000000,"accepted"};
+item38[] = {"return",2,250,324.819244,-48.579079,414.819275,1.420918,0.000000,"return"};
+item39[] = {"to_action",4,218,241.671967,3.543102,331.671967,53.543098,10.000000,"to action"};
+item40[] = {"to_instinct",4,218,251.599976,-118.075302,341.599976,-68.075302,5.000000,"to instinct"};
+item41[] = {"accept",4,218,243.062256,251.914124,333.062256,301.914124,0.000000,"accept"};
+item42[] = {"accept_mission",2,250,362.788879,361.609375,452.789001,411.609375,0.000000,"accept mission"};
+item43[] = {"give_mission",4,218,725.000000,-175.000000,825.000000,-125.000000,70.000000,"give mission"};
+item44[] = {"abandoned",4,218,272.889526,-355.696106,362.889526,-305.696106,65.000000,"abandoned"};
+item45[] = {"abandoned",4,218,-100.000000,-50.000000,0.000000,0.000000,160.000000,"abandoned"};
+item46[] = {"abandoned",2,250,-251.320206,-49.915840,-151.320221,0.084147,0.000000,"abandoned"};
+item47[] = {"wait",4,218,-250.899475,-138.286346,-150.899460,-88.286331,5.000000,"wait"};
+item48[] = {"call_revenge",2,250,-370.813080,-137.218597,-280.813080,-87.218597,0.000000,"call revenge"};
+item49[] = {"check",4,218,566.066467,161.357407,666.066467,211.357407,5.000000,"check"};
+item50[] = {"continue",4,218,441.737213,121.630814,531.737183,171.630829,10.000000,"continue"};
+item51[] = {"items_player",4,218,567.278381,231.959915,667.278381,281.959961,10.000000,"items player"};
+item52[] = {"clean_up",4,218,800.000000,-150.000000,900.000000,-100.000000,60.000000,"clean up"};
+item53[] = {"mission_status",4,218,750.000000,25.000000,850.000000,75.000000,20.000000,"mission status"};
+item54[] = {"near_characters",4,218,850.000000,-25.000000,950.000000,25.000000,30.000000,"near characters"};
+item55[] = {"mission_vars",4,218,850.000000,-100.000000,950.000000,-50.000000,50.000000,"mission vars"};
+item56[] = {"check_items",2,250,710.006836,199.688446,810.006836,249.688446,0.000000,"check items"};
+item57[] = {"alert",4,218,-50.000000,75.000000,50.000000,125.000000,150.000000,"alert"};
+item58[] = {"do_alert",2,250,-147.601227,110.981712,-47.601219,160.981720,0.000000,"do alert"};
+item59[] = {"_",8,218,-351.789581,-56.608616,-299.837433,-28.203323,0.000000,""};
+item60[] = {"____FAKE____",9,2400,0.000000,0.000000,0.000000,0.000000,0.000000,"____FAKE____"};
+link0[] = {0,7};
+link1[] = {1,2};
+link2[] = {2,4};
+link3[] = {2,9};
+link4[] = {2,12};
+link5[] = {2,13};
+link6[] = {2,14};
+link7[] = {2,15};
+link8[] = {2,21};
+link9[] = {2,22};
+link10[] = {2,37};
+link11[] = {2,44};
+link12[] = {3,8};
+link13[] = {3,11};
+link14[] = {3,18};
+link15[] = {3,20};
+link16[] = {3,23};
+link17[] = {3,25};
+link18[] = {3,26};
+link19[] = {3,29};
+link20[] = {3,31};
+link21[] = {3,41};
+link22[] = {3,45};
+link23[] = {3,57};
+link24[] = {4,2};
+link25[] = {5,3};
+link26[] = {6,1};
+link27[] = {7,16};
+link28[] = {8,6};
+link29[] = {9,2};
+link30[] = {11,10};
+link31[] = {12,2};
+link32[] = {13,32};
+link33[] = {14,3};
+link34[] = {15,2};
+link35[] = {16,17};
+link36[] = {17,6};
+link37[] = {18,19};
+link38[] = {19,49};
+link39[] = {19,50};
+link40[] = {20,2};
+link41[] = {21,2};
+link42[] = {22,2};
+link43[] = {23,24};
+link44[] = {24,5};
+link45[] = {25,27};
+link46[] = {26,28};
+link47[] = {27,5};
+link48[] = {28,5};
+link49[] = {29,30};
+link50[] = {30,5};
+link51[] = {31,32};
+link52[] = {32,33};
+link53[] = {32,34};
+link54[] = {32,35};
+link55[] = {32,36};
+link56[] = {32,52};
+link57[] = {32,53};
+link58[] = {32,54};
+link59[] = {32,55};
+link60[] = {33,32};
+link61[] = {34,32};
+link62[] = {35,38};
+link63[] = {36,32};
+link64[] = {37,2};
+link65[] = {38,39};
+link66[] = {38,40};
+link67[] = {39,3};
+link68[] = {40,2};
+link69[] = {41,42};
+link70[] = {42,5};
+link71[] = {43,32};
+link72[] = {44,2};
+link73[] = {45,46};
+link74[] = {46,47};
+link75[] = {47,48};
+link76[] = {48,59};
+link77[] = {49,56};
+link78[] = {50,3};
+link79[] = {51,19};
+link80[] = {52,32};
+link81[] = {53,32};
+link82[] = {54,32};
+link83[] = {55,32};
+link84[] = {56,51};
+link85[] = {57,58};
+link86[] = {58,5};
+link87[] = {59,10};
+link88[] = {60,43};
+globals[] = {0.000000,0,0,0,16777215,640,480,1,214,6316128,1,-427.373627,810.022095,485.764771,-422.404175,996,731,1};
+window[] = {2,-1,-1,-1,-1,448,42,842,18,3,1014};
+*//*%FSM</HEAD>*/
+class FSM
+{
+  fsmName = "trader mission delivery";
+  class States
+  {
+    /*%FSM<STATE "mission">*/
+    class mission
+    {
+      name = "mission";
+      init = /*%FSM<STATEINIT""">*/"_plyr = _this select 0;" \n
+       "_trader = _this select 1;" \n
+       "_missionName = ""MissionDelivery"";" \n
+       "_handle = ""NOT SET"";" \n
+       "_plyrArray =  [""Epoch_Male_F"",""Epoch_Female_F""];" \n
+       "_vehArray = [""Car""];" \n
+       "_tRange = 20;" \n
+       "_sRange = 200;" \n
+       "_vRange = 50;" \n
+       "" \n
+       "_maxTravelTime = 480;" \n
+       "_trgtZ = 0;" \n
+       "_t =  diag_tickTime;" \n
+       "_u = _t;" \n
+       "_m1 = _t;" \n
+       "_m2 = _m1;" \n
+       "_m3 = _m2;" \n
+       "_dropped = _m3;" \n
+       "" \n
+       "_missionStart = _m3;" \n
+       "_nrPlyrs = [];" \n
+       "Epoch_mission_uav = objNull;" \n
+       "_nrEnts = [];" \n
+       "_plyrPos = [0,0,0];" \n
+       "_newTrader = objNull;" \n
+       "_rnd = random 100;" \n
+       "" \n
+       "" \n
+       "//Mission Vars" \n
+       "_callWelcome = true;//call mission on startup from menu" \n
+       "_doWelcome = false;" \n
+       "_doDispose = false;" \n
+       "_doComplete = false;" \n
+       "_doMission1 = false;" \n
+       "_doMission2 = false;" \n
+       "_doMission3 = false;" \n
+       "_doAccepted = false;" \n
+       "_doAbandon = false;" \n
+       "_nrEnts = [];" \n
+       "_wDiag = """";" \n
+       "_rndWChoice = 0;" \n
+       "_welcomeDone = false;" \n
+       "_packageFound = false;" \n
+       "" \n
+       "_checkEntry = """";" \n
+       "_doDispose = false;" \n
+       "_callComplete = false;" \n
+       "_callAbandoned = false;" \n
+       "_callDispose = false;" \n
+       "" \n
+       "_doAccept = false;" \n
+       "_acceptDone = false;" \n
+       "_missionItem = """";" \n
+       "_inMission = false;" \n
+       "_missionTimer = _t;" \n
+       "" \n
+       "_startHolder = objNull;" \n
+       "_cargo = objNull;" \n
+       "_cargoCheck = [];" \n
+       "" \n
+       "_doAlert = false;" \n
+       "_alertMessage = [""""];" \n
+       "_alert = _m3 - 60;" \n
+       "_dropped = _alert - 60;" \n
+       "_lostCount = 0;" \n
+       "" \n
+       " //Events" \n
+       "_airDropChance = random 100;" \n
+       "_airDropDone = false;" \n
+       "_dropTimer = _t;" \n
+       "" \n
+       "//Testing - Bounty System" \n
+       "_seenPlayers = _trader getVariable [""seenPlayers"",[]];" \n
+       "_seenPlayers pushBack name _plyr;" \n
+       "_trader setVariable [""seenPlayers"",_seenPlayers];" \n
+       "" \n
+       "//DEBUG" \n
+       "_doDebug = false;" \n
+       "_debugDo = format[""INIT | %1"", _plyr];" \n
+       "" \n
+       "" \n
+       "" \n
+       "" \n
+       "" \n
+       "" \n
+       ""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "_">*/
+        class _
+        {
+          priority = 0.000000;
+          to="load_mission";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "instinct">*/
+    class instinct
+    {
+      name = "instinct";
+      init = /*%FSM<STATEINIT""">*/"_t = diag_tickTime;" \n
+       "" \n
+       "" \n
+       "" \n
+       "" \n
+       "" \n
+       ""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "instinct_done">*/
+        class instinct_done
+        {
+          priority = 100.000000;
+          to="action";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_decisionMade;"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/"_t = diag_tickTime;" \n
+           "_u = _t;"/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "dispose">*/
+        class dispose
+        {
+          priority = 90.000000;
+          to="instinct";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!(alive _plyr) || _doDispose || _callDispose;"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/"_doDispose = true;" \n
+           "_decisionMade = true;"/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "welcome">*/
+        class welcome
+        {
+          priority = 80.000000;
+          to="instinct";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_callWelcome && !_welcomeDone;"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/"_doWelcome = true;" \n
+           "_callWelcome = false;" \n
+           "_decisionMade = true;"/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "accepted">*/
+        class accepted
+        {
+          priority = 75.000000;
+          to="instinct";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(_inMission || _skipWelcomeCheck) && !_acceptDone;"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/"_skipWelcomeCheck = false;" \n
+           "_doAccept = true;" \n
+           "_decisionMade = true;"/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "completed">*/
+        class completed
+        {
+          priority = 70.000000;
+          to="instinct";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_callComplete && _inMission;"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/"_doComplete = true;" \n
+           "_decisionMade = true;"/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "abandoned">*/
+        class abandoned
+        {
+          priority = 65.000000;
+          to="instinct";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_callAbandoned && _inMission;" \n
+           ""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/"_callAbandoned = false;" \n
+           "_doAbandon = true;" \n
+           "_decisionMade = true;"/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "mission_event_1">*/
+        class mission_event_1
+        {
+          priority = 60.000000;
+          to="instinct";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(call compile _imCondition1) && diag_tickTime - _m1 > _freq1 && _inMission;"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/"if (_freq1 < 1) then {" \n
+           "_freq1 = getNumber ( configFile >> ""TraderMissions"" >> _missionName >> ""inmission1"" >> ""frequency"");" \n
+           "};" \n
+           "_doMission1 = true;" \n
+           "_decisionMade = true;"/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "mission_event_2">*/
+        class mission_event_2
+        {
+          priority = 50.000000;
+          to="instinct";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(call compile _imCondition2)  && diag_tickTime -_m2 > _freq2 && _inMission;"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/"if (_freq2 < 1) then {" \n
+           "_freq2 = getNumber ( configFile >> ""TraderMissions"" >> _missionName >> ""inmission2"" >> ""frequency"");" \n
+           "};" \n
+           "_doMission2 = true;" \n
+           "_decisionMade = true;"/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "mission_event_3">*/
+        class mission_event_3
+        {
+          priority = 40.000000;
+          to="instinct";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(call compile _imCondition3) && diag_tickTime - _m3 > _freq3 && _inMission;"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/"if (_freq3 < 1) then {" \n
+           "_freq3 = getNumber ( configFile >> ""TraderMissions"" >> _missionName >> ""inmission3"" >> ""frequency"");" \n
+           "};" \n
+           "_doMission3 = true;" \n
+           "_decisionMade = true;"/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "no_decision">*/
+        class no_decision
+        {
+          priority = 10.000000;
+          to="checking_status";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!_decisionMade && diag_tickTime - _t > 3;"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/"_checkEntry = ""instinct"";" \n
+           "_sanityCheck = 100;"/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "action">*/
+    class action
+    {
+      name = "action";
+      init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "abandoned">*/
+        class abandoned
+        {
+          priority = 160.000000;
+          to="abandoned";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_doAbandon;"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/"" \n
+           "_wInDiag = getArray ( configFile >> ""TraderMissions"" >> _missionName >> ""missioncheck"" >> ""abandoned"" >> ""dialogue"");" \n
+           "_wInDiag2 = getArray ( configFile >> ""TraderMissions"" >> _missionName >> ""missioncheck"" >> ""abandoned"" >> ""dialogue2"");" \n
+           "_rndWChoice = floor (random (count _wInDiag));" \n
+           "" \n
+           " _wDiag = _wInDiag select _rndWChoice;" \n
+           " _wDiag2 = _wInDiag2 select _rndWChoice;" \n
+           "" \n
+           "_act = getText ( configFile >> ""TraderMissions"" >> _missionName >> ""missioncheck"" >> ""abandoned"" >> ""action"");" \n
+           "_aWait = getNumber  ( configFile >> ""TraderMissions"" >> _missionName >> ""missioncheck"" >> ""abandoned"" >> ""delay"");" \n
+           "_doAbandon = false;" \n
+           "_t = diag_tickTime;"/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "alert">*/
+        class alert
+        {
+          priority = 150.000000;
+          to="do_alert";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_doAlert && diag_tickTime - _alert > 30;"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/"_doAlert = false"/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "dispose">*/
+        class dispose
+        {
+          priority = 140.000000;
+          to="end";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_doDispose;"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "interrupt">*/
+        class interrupt
+        {
+          priority = 120.000000;
+          to="instinct";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_allowInterrupt && (call compile _interruptReason);"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "mission_check">*/
+        class mission_check
+        {
+          priority = 110.000000;
+          to="checking_status";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_actionDone && diag_tickTime > _u + 4;"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/"_checkEntry = ""action"";" \n
+           "_sanityCheck = 100;"/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "complete">*/
+        class complete
+        {
+          priority = 100.000000;
+          to="reset_vars";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_actionDone && ((call compile _criteria) || (diag_tickTime > (_t + _sWait)));"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/"if (!isNil ""_criteriaMetAction"") then {" \n
+           "call compile _criteriaMetAction;" \n
+           "};" \n
+           "" \n
+           ""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "complete_1">*/
+        class complete_1
+        {
+          priority = 0.000000;
+          to="complete";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_doComplete;"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/"_doComplete = false;" \n
+           "" \n
+           "_wInDiag = getArray ( configFile >> ""TraderMissions"" >> _missionName >> ""completed"" >> ""dialogue"");" \n
+           "_wInDiag2 = getArray ( configFile >> ""TraderMissions"" >> _missionName >> ""completed"" >> ""dialogue2"");" \n
+           "_wInCrypto = getArray ( configFile >> ""TraderMissions"" >> _missionName >> ""completed"" >> ""crypto"");" \n
+           "_wInWeap =  getArray ( configFile >> ""TraderMissions"" >> _missionName >> ""completed"" >> ""weapon"");" \n
+           "_wInAmmo =  getArray ( configFile >> ""TraderMissions"" >> _missionName >> ""completed"" >> ""magazine"");" \n
+           "_act = getText ( configFile >> ""TraderMissions"" >> _missionName >> ""completed"" >> ""action"");" \n
+           "" \n
+           "_rndWChoice = floor (random (count _wInDiag));" \n
+           " _wDiag = _wInDiag select _rndWChoice;" \n
+           " _wDiag2 = _wInDiag2 select _rndWChoice;" \n
+           " _wCrypto = _wInCrypto select _rndWChoice;" \n
+           " _wWeapon = _wInWeap select _rndWChoice;" \n
+           " _wAmmo = _wInAmmo select _rndWChoice;" \n
+           " _wItem = _wInItem select _rndWChoice;" \n
+           "" \n
+           ""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "mission_event_1">*/
+        class mission_event_1
+        {
+          priority = 0.000000;
+          to="in_mission_1";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_doMission1;"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/"" \n
+           "_wInDiag = getArray ( configFile >> ""TraderMissions"" >> _missionName >> ""inmission1"" >> ""dialogue"");" \n
+           "_rndWChoice = floor (random (count _wInDiag));" \n
+           "" \n
+           " _wDiag = _wInDiag select _rndWChoice;" \n
+           "_act = getText ( configFile >> ""TraderMissions"" >> _missionName >> ""inmission1"" >> ""action"");" \n
+           "_doMission1 = false;"/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "accept">*/
+        class accept
+        {
+          priority = 0.000000;
+          to="accept_mission";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_doAccept;"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/"" \n
+           "" \n
+           "_wInDiag = getArray ( configFile >> ""TraderMissions"" >> _missionName >> ""accept"" >> ""dialogue"");" \n
+           "_wInDiag2 = getArray ( configFile >> ""TraderMissions"" >> _missionName >> ""accept"" >> ""dialogue2"");" \n
+           "_wInCrypto = getArray ( configFile >> ""TraderMissions"" >> _missionName >> ""accept"" >> ""crypto"");" \n
+           "_wInWeap =  getArray ( configFile >> ""TraderMissions"" >> _missionName >> ""accept"" >> ""weapon"");" \n
+           "_wInAmmo =  getArray ( configFile >> ""TraderMissions"" >> _missionName >> ""accept"" >> ""magazine"");" \n
+           "_wInItem =  getArray ( configFile >> ""TraderMissions"" >> _missionName >> ""accept"" >> ""item"");" \n
+           "_act = getText  ( configFile >> ""TraderMissions"" >> _missionName >> ""accept"" >> ""action"");" \n
+           "" \n
+           "//_rndWChoice = floor (random (count _wInDiag));" \n
+           "" \n
+           " _wDiag = _wInDiag select _rndWChoice;" \n
+           " _wDiag2 = _wInDiag2 select _rndWChoice;" \n
+           "// _wCrypto = _wInCrypto select _rndWChoice;" \n
+           " _wCrypto = 0;" \n
+           " _wWeapon = _wInWeap select _rndWChoice;" \n
+           " _wAmmo = _wInAmmo select _rndWChoice;" \n
+           " _wItem = _wInItem select _rndWChoice;" \n
+           "" \n
+           "" \n
+           "_doAccept = false;"/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "welcome">*/
+        class welcome
+        {
+          priority = 0.000000;
+          to="do_welcome";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_doWelcome && !_welcomeDone;"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/"" \n
+           "_wInDiag = getArray ( configFile >> ""TraderMissions"" >> _missionName >> ""welcome"" >> ""dialogue"");" \n
+           "_wInDiag2 = getArray ( configFile >> ""TraderMissions"" >> _missionName >> ""welcome"" >> ""dialogue2"");" \n
+           "_wInItem =  getArray ( configFile >> ""TraderMissions"" >> _missionName >> ""welcome"" >> ""item"");" \n
+           "_act = getText  ( configFile >> ""TraderMissions"" >> _missionName >> ""welcome"" >> ""action"");" \n
+           "" \n
+           "_rndWChoice = floor (random (count _wInDiag));" \n
+           "" \n
+           " _wDiag = _wInDiag select _rndWChoice;" \n
+           " _wDiag2 = _wInDiag2 select _rndWChoice;" \n
+           " _wItem = _wInItem select _rndWChoice;" \n
+           "//_wItem = ""ItemDocumentMission"";" \n
+           "" \n
+           "_doWelcome = false;" \n
+           "_skipMIssion = false;" \n
+           "_packageFound = false;" \n
+           "_t = diag_tickTime;" \n
+           "" \n
+           "if (_plyr getVariable[""inMission"",["""",""""]] select 0 == ""true"") then {" \n
+           "_formatMsg = format[""<t size='0.8' shadow='0' color='#99ffffff'>%1</t>"",""You must finish the mission you are on first.""];" \n
+           "_dt = [_formatMsg, 0, 1, 6, 2, 0, 1] spawn bis_fnc_dynamictext;" \n
+           "_callDispose = true;" \n
+           "_doDispose = true;" \n
+           "};" \n
+           ""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "mission_event_2">*/
+        class mission_event_2
+        {
+          priority = 0.000000;
+          to="in_mission_1_1";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_doMission2;"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/"_wInDiag = getArray ( configFile >> ""TraderMissions"" >> _missionName >> ""inmission2"" >> ""dialogue"");" \n
+           "_rndWChoice = floor (random (count _wInDiag));" \n
+           " _wDiag = _wInDiag select _rndWChoice;" \n
+           "_act = getText ( configFile >> ""TraderMissions"" >> _missionName >> ""inmission2"" >> ""action"");" \n
+           "" \n
+           "_doMission2 = false;"/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "mission_event_3">*/
+        class mission_event_3
+        {
+          priority = 0.000000;
+          to="in_mission_1_2";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_doMission3;"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/"_wInDiag = getArray ( configFile >> ""TraderMissions"" >> _missionName >> ""inmission3"" >> ""dialogue"");" \n
+           "_rndWChoice = floor (random (count _wInDiag));" \n
+           " _wDiag = _wInDiag select _rndWChoice;" \n
+           "_act = getText ( configFile >> ""TraderMissions"" >> _missionName >> ""inmission3"" >> ""action"");" \n
+           "_doMission3 = false;"/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "reset_vars">*/
+    class reset_vars
+    {
+      name = "reset_vars";
+      init = /*%FSM<STATEINIT""">*/"//Default Vars" \n
+       "_rnd = 0;" \n
+       "_actionDone = false;" \n
+       "_decisionMade = false;" \n
+       "_sWait = 0;" \n
+       "_doDispose = false;" \n
+       "_chooseTarget = false;" \n
+       "_criteria = Nil;" \n
+       "_criteriaMet = false;" \n
+       "_allowInterrupt = false;" \n
+       "_interruptReason = ""(false)"";" \n
+       "" \n
+       "" \n
+       "_moveTo = [0,0,0];" \n
+       "" \n
+       "//Brain Vars" \n
+       "_override = false;" \n
+       "_criteria =""(false)"";" \n
+       "_criteriaMetAction = nil;" \n
+       "" \n
+       "" \n
+       "//Mission Vars" \n
+       "_wDiag = """";" \n
+       "_wDiag2 = """";" \n
+       "_wAction = """";" \n
+       "_wCrypto = 0;" \n
+       "_wWeapon = """";" \n
+       "_wAmmo = """";" \n
+       "_wItem = """";" \n
+       "_act = """";" \n
+       "" \n
+       "" \n
+       "" \n
+       "" \n
+       "" \n
+       "" \n
+       ""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "_">*/
+        class _
+        {
+          priority = 0.000000;
+          to="instinct";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "end">*/
+    class end
+    {
+      name = "end";
+      init = /*%FSM<STATEINIT""">*/"//hint format[""dispose %1"", axeMissionHandle];"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "load_mission">*/
+    class load_mission
+    {
+      name = "load_mission";
+      init = /*%FSM<STATEINIT""">*/"//Welcome" \n
+       "" \n
+       "_wCondition = getText ( configFile >> ""traderMissions"" >> _missionName >> ""welcome"" >> ""condition"");" \n
+       "" \n
+       "_imCondition1 = getText ( configFile >> ""TraderMissions"" >> _missionName >> ""inmission1"" >> ""condition"");" \n
+       "_imCondition2 = getText ( configFile >> ""TraderMissions"" >> _missionName >> ""inmission2"" >> ""condition"");" \n
+       "_imCondition3 = getText ( configFile >> ""TraderMissions"" >> _missionName >> ""inmission3"" >> ""condition"");" \n
+       "" \n
+       "_mAccepted = getText ( configFile >> ""TraderMissions"" >> _missionName >> ""accept"" >> ""condition"");" \n
+       "_skipWelcomeCheck = call compile _mAccepted;" \n
+       "" \n
+       "_freq1 = 0;" \n
+       "_freq2 = 0;" \n
+       "_freq3 = 0;" \n
+       "" \n
+       "_wAbandon = getText ( configFile >> ""TraderMissions"" >> _missionName >> ""missioncheck"" >> ""abandoned"" >> ""condition"");" \n
+       "" \n
+       "_wComplete = getText ( configFile >> ""TraderMissions"" >> _missionName >> ""completed"" >> ""condition"");" \n
+       "" \n
+       "" \n
+       "_dialogueCount = 0;" \n
+       "" \n
+       "" \n
+       "" \n
+       "" \n
+       "_callWelcome = true;" \n
+       ""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "_">*/
+        class _
+        {
+          priority = 0.000000;
+          to="reset_vars";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "do_welcome">*/
+    class do_welcome
+    {
+      name = "do_welcome";
+      init = /*%FSM<STATEINIT""">*/"" \n
+       "" \n
+       "" \n
+       "if (!_skipMIssion && !_callDispose) then {" \n
+       "" \n
+       "_formatMsg = format[""<t size='0.8' shadow='0' color='#99ffffff'>%1</t>"",_wDiag];" \n
+       "_dt = [_formatMsg, 0, 1, 6, 2, 0, 1] spawn bis_fnc_dynamictext;" \n
+       "" \n
+       "if (_wDiag2 != """") then {" \n
+       "" \n
+       "_wDiag2 spawn {" \n
+       "	uiSleep 6;" \n
+       "	_formatMsg2 = format[""<t size='0.8' shadow='0' color='#99ffffff'>%1</t>"",_this];" \n
+       "_dt = [_formatMsg2, 0, 1, 6, 2, 0, 1] call bis_fnc_dynamictext;" \n
+       "	uiSleep 12;" \n
+       "};" \n
+       "" \n
+       "};" \n
+       "" \n
+       "" \n
+       "if ( _wItem != """") then {" \n
+       "_missionItem = _wItem;" \n
+       "" \n
+       "if!(_missionItem in Items _plyr && !_packageFound) then {" \n
+       "_plyr addItemToVest _missionItem;" \n
+       "" \n
+       "_plyr setVariable [""inMission"",[""true"",_missionName],false];" \n
+       "" \n
+       "" \n
+       "};" \n
+       "" \n
+       "};" \n
+       "" \n
+       "if (_act != """") then {" \n
+       "call compile _act;" \n
+       "};" \n
+       "" \n
+       "if (_doDebug) then {" \n
+       "_debugDo = ""Welcome"";" \n
+       "axeItem = _missionItem;" \n
+       "};" \n
+       "_skipMIssion = true;" \n
+       "};" \n
+       "" \n
+       "" \n
+       "" \n
+       "" \n
+       "" \n
+       "" \n
+       ""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "continue">*/
+        class continue
+        {
+          priority = 10.000000;
+          to="action";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/" _packageFound || _callDispose || _inMission || _skipWelcomeCheck;"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/"_welcomeDone = true;" \n
+           "_sWait = 6;" \n
+           "_actionDone = true;" \n
+           "_criteria = ""(false)"";" \n
+           "_inMission = true;" \n
+           "" \n
+           ""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "check">*/
+        class check
+        {
+          priority = 5.000000;
+          to="check_items";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(diag_tickTime - _t > 12) && !_packageFound;"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "in_mission_1">*/
+    class in_mission_1
+    {
+      name = "in_mission_1";
+      init = /*%FSM<STATEINIT""">*/"if (_wDiag != """") then {" \n
+       "" \n
+       "_formatMsg = format[""<t size='0.8' shadow='0' color='#99ffffff'>%1</t>"",_wDiag];" \n
+       "_dt = [_formatMsg, 0, 1, 6, 2, 0, 1] spawn bis_fnc_dynamictext;" \n
+       "};" \n
+       "" \n
+       "if (_act != """") then {" \n
+       "call compile _act;" \n
+       "};" \n
+       "" \n
+       "_sWait = 6;" \n
+       "_actionDone = true;" \n
+       "_t = diag_tickTime;" \n
+       "_m1 = _t;" \n
+       "_criteria = ""(false)"";" \n
+       "" \n
+       "if (_doDebug) then {" \n
+       "_debugDo = ""In MIssion 1"";" \n
+       "};" \n
+       ""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "_">*/
+        class _
+        {
+          priority = 0.000000;
+          to="action";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "in_mission_1_1">*/
+    class in_mission_1_1
+    {
+      name = "in_mission_1_1";
+      init = /*%FSM<STATEINIT""">*/"if (_wDiag != """") then {" \n
+       "_formatMsg = format[""<t size='0.8' shadow='0' color='#99ffffff'>%1</t>"",_wDiag];" \n
+       "_dt = [_formatMsg, 0, 1, 6, 2, 0, 1] spawn bis_fnc_dynamictext;" \n
+       "};" \n
+       "" \n
+       "if (_act != """") then {" \n
+       "call compile _act;" \n
+       "};" \n
+       "" \n
+       "" \n
+       "_sWait = 6;" \n
+       "_actionDone = true;" \n
+       "_t = diag_tickTime;" \n
+       "_m2 = _t;" \n
+       "_criteria = ""(false)"";" \n
+       "" \n
+       "" \n
+       "if (_doDebug) then {" \n
+       "_debugDo = ""In MIssion 2"";" \n
+       "};" \n
+       ""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "_">*/
+        class _
+        {
+          priority = 0.000000;
+          to="action";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "in_mission_1_2">*/
+    class in_mission_1_2
+    {
+      name = "in_mission_1_2";
+      init = /*%FSM<STATEINIT""">*/"if (_wDiag != """") then {" \n
+       "_formatMsg = format[""<t size='0.8' shadow='0' color='#99ffffff'>%1</t>"",_wDiag];" \n
+       "_dt = [_formatMsg, 0, 1, 6, 2, 0, 1] spawn bis_fnc_dynamictext;" \n
+       "};" \n
+       "" \n
+       "if (_act != """") then {" \n
+       "call compile _act;" \n
+       "};" \n
+       "" \n
+       "" \n
+       "_sWait = 6;" \n
+       "_actionDone = true;" \n
+       "_t = diag_tickTime;" \n
+       "_criteria = ""(false)"";" \n
+       "_m3 = _t;" \n
+       "" \n
+       "" \n
+       "if (_doDebug) then {" \n
+       "_debugDo = ""In Mission 3"";" \n
+       "};" \n
+       ""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "_">*/
+        class _
+        {
+          priority = 0.000000;
+          to="action";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "complete">*/
+    class complete
+    {
+      name = "complete";
+      init = /*%FSM<STATEINIT""">*/"_formatMsg = format[""<t size='0.8' shadow='0' color='#99ffffff'>%1</t>"",_wDiag];" \n
+       "_dt = [_formatMsg, 0, 1, 6, 2, 0, 1] spawn bis_fnc_dynamictext;" \n
+       "" \n
+       "{" \n
+       "if (_x == _missionItem) then {" \n
+       "_plyr removeItem _x; " \n
+       "};" \n
+       "" \n
+       "}forEach items player;" \n
+       "" \n
+       "{" \n
+       "if (_x == _missionItem) then {" \n
+       "_plyr removeMagazine  _x;" \n
+       "};" \n
+       "}forEach magazines player;" \n
+       "" \n
+       "_plyr spawn {" \n
+       "uiSleep 12;" \n
+       "EPOCH_FillContainer_PVS = [_this,Epoch_personalToken,objNull,false,15];" \n
+       "publicVariableServer ""EPOCH_FillContainer_PVS"";" \n
+       "//hint ""Paying Out"";" \n
+       "};" \n
+       "" \n
+       "" \n
+       "" \n
+       "if (_act != """") then {" \n
+       "call compile _act;" \n
+       "};" \n
+       "" \n
+       "if (_wDiag2 != """") then {" \n
+       "" \n
+       "_wDiag2 spawn {" \n
+       "	uiSleep 6;" \n
+       "	_formatMsg2 = format[""<t size='0.8' shadow='0' color='#99ffffff'>%1</t>"",_this];" \n
+       "_dt = [_formatMsg2, 0, 1, 6, 2, 0, 1] call bis_fnc_dynamictext;" \n
+       "	uiSleep 12;" \n
+       "};" \n
+       "" \n
+       "};" \n
+       "" \n
+       "_plyr setVariable[""inMission"",["""",""""]];" \n
+       "_inMission = false;" \n
+       "_callDispose = true;" \n
+       "_sWait = 6;" \n
+       "_actionDone = true;" \n
+       "_t = diag_tickTime;" \n
+       "_criteria = ""(false)"";" \n
+       "" \n
+       "if (_doDebug) then {" \n
+       "_debugDo = ""Complete"";" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "_">*/
+        class _
+        {
+          priority = 0.000000;
+          to="action";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "checking_status">*/
+    class checking_status
+    {
+      name = "checking_status";
+      init = /*%FSM<STATEINIT""">*/"if (_doDebug) then {" \n
+       "//systemchat format [""S:%1"",diag_tickTime];" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "done">*/
+        class done
+        {
+          priority = 100.000000;
+          to="return";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_sanityCheck < 1;"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/"_u = diag_tickTime;" \n
+           "" \n
+           ""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "items_player">*/
+        class items_player
+        {
+          priority = 90.000000;
+          to="checking_status";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_sanityCheck > 90;"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/"_packageFound = false;" \n
+           "" \n
+           "{" \n
+           "if (_x == _missionItem) then {" \n
+           "_packageFound = true;" \n
+           "};" \n
+           "" \n
+           "}forEach items player;" \n
+           "" \n
+           "{" \n
+           "if (_x == _missionItem) then {" \n
+           "_packageFound = true;" \n
+           "};" \n
+           "}forEach magazines player;" \n
+           "" \n
+           "" \n
+           "_sanityCheck = 90;" \n
+           ""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "player_status">*/
+        class player_status
+        {
+          priority = 80.000000;
+          to="checking_status";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_sanityCheck > 80;"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/"" \n
+           "" \n
+           "" \n
+           "_plyrPos = getPosATL _plyr;" \n
+           "" \n
+           "_damageHelp = false;" \n
+           "" \n
+           "if (damage player > 0.3) then {" \n
+           "_damageHelp = true;" \n
+           "};" \n
+           "" \n
+           "_sanityCheck = 80;" \n
+           ""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "clean_up">*/
+        class clean_up
+        {
+          priority = 60.000000;
+          to="checking_status";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_sanityCheck > 60;"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/"" \n
+           "" \n
+           "_sanityCheck = 60;"/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "mission_vars">*/
+        class mission_vars
+        {
+          priority = 50.000000;
+          to="checking_status";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_sanityCheck > 50;"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/"_rnd = random 100;" \n
+           "" \n
+           "if (diag_tickTime - _missionTimer > 2400) then {" \n
+           "" \n
+           "_wInDiag = getArray ( configFile >> ""TraderMissions"" >> _missionName >> ""inmission3"" >> ""dialogue"");" \n
+           "_rndWChoice = floor (random (count _wInDiag));" \n
+           " _wDiag = _wInDiag select _rndWChoice;" \n
+           "" \n
+           "_formatMsg = format[""<t size='0.8' shadow='0' color='#99ffffff'>%1</t>"",_wDiag];" \n
+           "_dt = [_formatMsg, 0, 1, 6, 2, 0, 1] spawn bis_fnc_dynamictext;" \n
+           "" \n
+           "_missionTimer = diag_tickTime;" \n
+           "};" \n
+           "" \n
+           "if (diag_tickTime - _dropTimer > 1200 && !_airDropDone && _airDropChance < 25) then {" \n
+           "" \n
+           "if (_rnd < 25) then {" \n
+           "[] execFSM ""\x\addons\a3_epoch_code\System\Event_Air_Drop.fsm"";" \n
+           "_airDropDone = true;" \n
+           "};" \n
+           "" \n
+           "_dropTimer = diag_tickTime;" \n
+           "};" \n
+           "" \n
+           "_sanityCheck = 50;"/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "near_characters">*/
+        class near_characters
+        {
+          priority = 30.000000;
+          to="checking_status";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_sanityCheck > 30;"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/"_nrEnts = nearestObjects [_plyr, [""Man""], 20];" \n
+           "" \n
+           "{" \n
+           "	if ((_x getVariable [""AI_SLOT"", -1 ] > -1) && _x != _trader) then {" \n
+           "" \n
+           "	_newTrader = _x;" \n
+           "	};" \n
+           "" \n
+           "	if!(alive _x) then {" \n
+           "	_doAlert = true;" \n
+           "	_alertMessage = getArray  (  configFile >> ""TraderMissions"" >> _missionName >> ""missioncheck"" >> ""characters"" >> ""dialogue"");" \n
+           "" \n
+           "	};" \n
+           "" \n
+           "}forEach _nrEnts;" \n
+           "" \n
+           "_sanityCheck = 30;"/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "mission_status">*/
+        class mission_status
+        {
+          priority = 20.000000;
+          to="checking_status";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_sanityCheck > 20;"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/"if (_inMission) then {" \n
+           "" \n
+           "_cargo =  nearestObjects [_plyr, [""GroundWeaponHolder""],50];" \n
+           "if (count _cargo > 0) then {" \n
+           "" \n
+           "{" \n
+           "" \n
+           "if (_missionItem in MagazineCargo _x) then {" \n
+           "" \n
+           "if (_plyr distance _x > 100) then {" \n
+           "_callAbandoned = true;" \n
+           "};" \n
+           "" \n
+           "};" \n
+           "" \n
+           "}forEach _cargo;" \n
+           "" \n
+           "};" \n
+           "" \n
+           "};" \n
+           "" \n
+           "" \n
+           "if!(isNull _newTrader) then {" \n
+           "" \n
+           "	if (_newTrader distance _trader > 450) then {" \n
+           "	if (_newTrader distance _plyr < 6) then {" \n
+           "	_callComplete = true;" \n
+           "	};" \n
+           "};" \n
+           "" \n
+           "};" \n
+           "" \n
+           "" \n
+           "" \n
+           "_sanityCheck = 20;"/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "checked">*/
+        class checked
+        {
+          priority = 10.000000;
+          to="checking_status";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_sanityCheck > 10;"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/"" \n
+           "if (_packageFound && !_inMission) then {_inMission = true;};" \n
+           "" \n
+           "//Dropped message" \n
+           "if (!_packageFound && _inMission && diag_tickTime - _dropped> 60) then {" \n
+           "_droppedMessage = getArray  (  configFile >> ""TraderMissions"" >> _missionName >> ""missioncheck"" >> ""itemlost"" >> ""dialogue"");" \n
+           "_droppedMessage2 = getArray  (  configFile >> ""TraderMissions"" >> _missionName >> ""missioncheck"" >> ""itemlost"" >> ""dialogue2"");" \n
+           "_message = _droppedMessage select floor (random count _droppedMessage);" \n
+           "_message2 = _droppedMessage2 select floor (random count _droppedMessage2);" \n
+           "" \n
+           "_formatMsg = format[""<t size='0.8' shadow='0' color='#99ffffff'>%1</t>"",_message];" \n
+           "_dt = [_formatMsg, 0, 1, 6, 2, 0, 1] spawn bis_fnc_dynamictext;" \n
+           "_dropped = diag_tickTime;" \n
+           "" \n
+           "" \n
+           "if (_message2 != """") then {" \n
+           "" \n
+           "_message2 spawn {" \n
+           "	uiSleep 6;" \n
+           "	_formatMsg = format[""<t size='0.8' shadow='0' color='#99ffffff'>%1</t>"",_this];" \n
+           "_dt = [_formatMsg, 0, 1, 6, 2, 0, 1] spawn bis_fnc_dynamictext;" \n
+           "};" \n
+           "" \n
+           "};" \n
+           "" \n
+           "_lostCount = _lostCount + 1;" \n
+           "};" \n
+           "" \n
+           "if (_lostCount > 4) then {" \n
+           "_callAbandoned = true;" \n
+           "};" \n
+           "" \n
+           "_sanityCheck = 0 ;" \n
+           "" \n
+           "if (_doDebug) then {" \n
+           "//hint format [""%1\nCrypto:%4\Rand:%5\nWeap:%6\nPackage:%7\nDist: %8"",_debugDo,_wDiag,_imCondition1,_wCrypto,_rndWChoice,_wWeapon, _packageFound, player distance _trader];" \n
+           "};" \n
+           "" \n
+           "" \n
+           ""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "return">*/
+    class return
+    {
+      name = "return";
+      init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "to_action">*/
+        class to_action
+        {
+          priority = 10.000000;
+          to="action";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_checkEntry == ""action"";"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/"_checkEntry = """";" \n
+           ""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "to_instinct">*/
+        class to_instinct
+        {
+          priority = 5.000000;
+          to="instinct";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_checkEntry == ""instinct"";"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/"_checkEntry = """";" \n
+           ""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "accept_mission">*/
+    class accept_mission
+    {
+      name = "accept_mission";
+      init = /*%FSM<STATEINIT""">*/"" \n
+       "_formatMsg = format[""<t size='0.8' shadow='0' color='#99ffffff'>%1</t>"",_wDiag];" \n
+       "_dt = [_formatMsg, 0, 1, 6, 2, 0, 1] spawn bis_fnc_dynamictext;" \n
+       "" \n
+       "" \n
+       "if (_act != """") then {" \n
+       "call compile _act;" \n
+       "};" \n
+       "" \n
+       "if (_wDiag2 != """") then {" \n
+       "" \n
+       "_wDiag2 spawn {" \n
+       "	uiSleep 6;" \n
+       "	_formatMsg2 = format[""<t size='0.8' shadow='0' color='#99ffffff'>%1</t>"",_this];" \n
+       "_dt = [_formatMsg2, 0, 1, 6, 2, 0, 1] call bis_fnc_dynamictext;" \n
+       "	uiSleep 12;" \n
+       "};" \n
+       "" \n
+       "};" \n
+       "" \n
+       "" \n
+       "_plyr setVariable [""inMission"",[""true"",_missionName],false];" \n
+       "_inMission = true;" \n
+       "" \n
+       "_acceptDone = true;" \n
+       "_sWait = 12;" \n
+       "_actionDone = true;" \n
+       "_t = diag_tickTime;" \n
+       "_criteriaMetAction = """";" \n
+       "_criteria = ""(true)"";" \n
+       "" \n
+       "" \n
+       "if (_doDebug) then {" \n
+       "_debugDo = ""Accept"";" \n
+       "};" \n
+       ""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "_">*/
+        class _
+        {
+          priority = 0.000000;
+          to="action";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "abandoned">*/
+    class abandoned
+    {
+      name = "abandoned";
+      init = /*%FSM<STATEINIT""">*/"" \n
+       "_formatMsg = format[""<t size='0.8' shadow='0' color='#99ffffff'>%1</t>"",_wDiag];" \n
+       "_dt = [_formatMsg, 0, 1, 6, 2, 0, 1] spawn bis_fnc_dynamictext;" \n
+       "" \n
+       "if (_wDiag2 != """") then {" \n
+       "" \n
+       "_wDiag2 spawn {" \n
+       "	uiSleep 6;" \n
+       "	_formatMsg = format[""<t size='0.8' shadow='0' color='#99ffffff'>%1</t>"",_this];" \n
+       "_dt = [_formatMsg, 0, 1, 6, 2, 0, 1] spawn bis_fnc_dynamictext;" \n
+       "};" \n
+       "" \n
+       "};" \n
+       "" \n
+       "" \n
+       "if (_doDebug) then {" \n
+       "_debugDo = ""Abandoned"";" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "wait">*/
+        class wait
+        {
+          priority = 5.000000;
+          to="call_revenge";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(diag_tickTime - _t > _aWait);"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/"call compile _act;" \n
+           "_punished = true;" \n
+           "_doDispose = true;" \n
+           "" \n
+           "" \n
+           "" \n
+           ""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "call_revenge">*/
+    class call_revenge
+    {
+      name = "call_revenge";
+      init = /*%FSM<STATEINIT""">*/"""I_UAV_01_F"" call EPOCH_unitSpawn;" \n
+       "_plyr setVariable [""inMission"",[""abandon"",_missionName],false];"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "_">*/
+        class _
+        {
+          priority = 0.000000;
+          to="end";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "check_items">*/
+    class check_items
+    {
+      name = "check_items";
+      init = /*%FSM<STATEINIT""">*/"{" \n
+       "if (_x == _missionItem) then {" \n
+       "_packageFound = true;" \n
+       "};" \n
+       "" \n
+       "}forEach items player;" \n
+       "" \n
+       "{" \n
+       "if (_x == _missionItem) then {" \n
+       "_packageFound = true;" \n
+       "};" \n
+       "}forEach magazines player;" \n
+       "" \n
+       "" \n
+       "if ((diag_tickTime - _missionStart > 30 || _plyr distance _trader > 12)&& !_packageFound) then {" \n
+       "_callDispose = true;" \n
+       "_wDiag = getArray ( configFile >> ""TraderMissions"" >> _missionName >> ""accept"" >> ""missionDeclined"");" \n
+       "_formatMsg = format[""<t size='0.8' shadow='0' color='#99ffffff'>%1</t>"",_wDiag select _rndWChoice];" \n
+       "_dt = [_formatMsg, 0, 1, 6, 2, 0, 1] spawn bis_fnc_dynamictext;" \n
+       "_wDiag = """";" \n
+       "_plyr removeItemFromVest _missionItem; " \n
+       "};" \n
+       ""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "items_player">*/
+        class items_player
+        {
+          priority = 10.000000;
+          to="do_welcome";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/"_t = diag_tickTime;" \n
+           "" \n
+           ""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "do_alert">*/
+    class do_alert
+    {
+      name = "do_alert";
+      init = /*%FSM<STATEINIT""">*/"_message = _alertMessage select floor (random (count _alertMessage));" \n
+       "_formatMsg = format[""<t size='0.8' shadow='0' color='#99ffffff'>%1</t>"",_message];" \n
+       "_dt = [_formatMsg, 0, 1, 6, 2, 0, 1] spawn bis_fnc_dynamictext;" \n
+       "_message = """";" \n
+       "_alertMessage = [""""];" \n
+       "_alert = diag_tickTime;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "_">*/
+        class _
+        {
+          priority = 0.000000;
+          to="action";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "____FAKE____">*/
+    class ____FAKE____
+    {
+      name = "____FAKE____";
+      init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "give_mission">*/
+        class give_mission
+        {
+          priority = 70.000000;
+          to="checking_status";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_sanityCheck > 70;"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/"//Test for future passing of mission to other players" \n
+           "" \n
+           "_passMission = false;" \n
+           "_missionPassed = false;" \n
+           "" \n
+           "_sanityCheck = 70;"/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+  };
+  initState="mission";
+  finalStates[] =
+  {
+    "end"
+  };
+};
+/*%FSM</COMPILE>*/

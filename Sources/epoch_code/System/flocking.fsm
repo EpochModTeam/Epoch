@@ -1,0 +1,443 @@
+/*%FSM<COMPILE "C:\Program Files (x86)\Bohemia Interactive\Tools\FSM Editor Personal Edition\scriptedFSM.cfg, flock">*/
+/*%FSM<HEAD>*/
+/*
+item0[] = {"flock_member",0,250,-50.000000,-150.000000,50.000000,-100.000000,0.000000,"flock member"};
+item1[] = {"pre_vars",4,218,75.000000,0.000000,175.000000,50.000000,90.000000,"pre vars"};
+item2[] = {"do",2,250,-50.000000,0.000000,50.000000,50.000000,0.000000,"do"};
+item3[] = {"start",8,218,-50.000000,-75.000000,50.000000,-25.000000,0.000000,"start"};
+item4[] = {"cohesion",4,218,-50.000000,75.000000,50.000000,125.000000,70.000000,"cohesion"};
+item5[] = {"separation",4,218,-175.000000,75.000000,-75.000000,125.000000,60.000000,"separation"};
+item6[] = {"alignment",4,218,75.000000,75.000000,175.000000,125.000000,80.000000,"alignment"};
+item7[] = {"apply",4,4314,-175.000000,0.000000,-75.000000,50.000000,50.000000,"apply"};
+item8[] = {"end",1,250,-175.000000,-150.000000,-75.000000,-100.000000,0.000000,"end"};
+item9[] = {"dead",4,218,-175.000000,-75.000000,-75.000000,-25.000000,100.000000,"dead"};
+item10[] = {"debug",4,218,75.000000,-75.000000,175.000000,-25.000000,0.000000,"debug"};
+link0[] = {0,3};
+link1[] = {1,2};
+link2[] = {2,1};
+link3[] = {2,4};
+link4[] = {2,5};
+link5[] = {2,6};
+link6[] = {2,7};
+link7[] = {2,9};
+link8[] = {2,10};
+link9[] = {3,2};
+link10[] = {4,2};
+link11[] = {5,2};
+link12[] = {6,2};
+link13[] = {7,2};
+link14[] = {9,8};
+link15[] = {10,2};
+globals[] = {25.000000,1,0,0,0,640,480,1,15,6316128,1,-290.597351,361.043304,268.212158,-321.329132,808,731,1};
+window[] = {2,-1,-1,-1,-1,775,150,1350,150,3,826};
+*//*%FSM</HEAD>*/
+class FSM
+{
+  fsmName = "flock";
+  class States
+  {
+    /*%FSM<STATE "flock_member">*/
+    class flock_member
+    {
+      name = "flock_member";
+      init = /*%FSM<STATEINIT""">*/"//" \n
+       "//Flocking Behaviour AI" \n
+       "//" \n
+       "//An attempt to make UAVs fly with flock /  bird like behaviour." \n
+       "//" \n
+       "//" \n
+       "//CONTROLS:" \n
+       "//" \n
+       "//INS / DEL - Alignment Up / Down" \n
+       "//Home / End - Cohesion Up / Down" \n
+       "//PG Up / Pg Dn - Separate up / Down" \n
+       "//Up / Down Arrow - Speed Up / Down" \n
+       "//Left / Right Arrow - Script Speed Up / Down" \n
+       "" \n
+       "_unit = _this select 0;" \n
+       "_trgt = player;" \n
+       "_doCheck = 100;" \n
+       "_zPos = 48;" \n
+       "_neighborzone = [0,6];" \n
+       "_relativeZone = [6,800];" \n
+       "_t = diag_tickTime;" \n
+       "_running =false;" \n
+       "_inclPlayer = false;" \n
+       "" \n
+       "_defaultAlign = 0.08;" \n
+       "_defaultCohese = 0.24;" \n
+       "_defaultSeparate = 0.66;" \n
+       "_defaultSpeed = 5.5 ;" \n
+       "_defaultResponse = 0.8;" \n
+       "" \n
+       "//Control Vars" \n
+       "if (isNil ""axeLoopTime"")then{" \n
+       "axeLoopTime = _defaultResponse;" \n
+       "};" \n
+       "" \n
+       "_loopTimeRand = random (axeLoopTime / 10);" \n
+       "" \n
+       "if (isNil ""axeSpeed"")then{" \n
+       "axeSpeed = _defaultSpeed;" \n
+       "};" \n
+       "if (isNil ""axeWeightAlign"")then{" \n
+       "axeWeightAlign = _defaultAlign;" \n
+       "};" \n
+       "if (isNil ""axeWeightCohese"")then{" \n
+       "axeWeightCohese = _defaultCohese;" \n
+       "};" \n
+       "if (isNil ""axeWeightSpearate"")then{" \n
+       "axeWeightSpearate =_defaultSeparate;" \n
+       "};" \n
+       "" \n
+       "" \n
+       "_rtrnVectorDist = {" \n
+       "_v1 = _this select 0;" \n
+       "_v2 = _this select 1;" \n
+       "_out = sqrt (((_v2 select 0) - (_v1 select 0)) ^ 2 + ((_v2 select 1) - (_v1 select 1)) ^ 2 + ((_v2 select 2) - (_v1 select 2)) ^ 2);" \n
+       "_out" \n
+       "};" \n
+       "" \n
+       "" \n
+       "" \n
+       "" \n
+       "" \n
+       "//Debug" \n
+       "_debugDo = true;" \n
+       "_debugTime = 1;" \n
+       "_d = _t;" \n
+       "_debugMrkrName = """";" \n
+       "" \n
+       "" \n
+       ""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "start">*/
+        class start
+        {
+          priority = 0.000000;
+          to="do";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"true"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "do">*/
+    class do
+    {
+      name = "do";
+      init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "dead">*/
+        class dead
+        {
+          priority = 100.000000;
+          to="end";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!alive _unit"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "pre_vars">*/
+        class pre_vars
+        {
+          priority = 90.000000;
+          to="do";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_doCheck > 90 && diag_tickTime - _t  > (axeLoopTime + _loopTimeRand) && !_running"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/"" \n
+           "_running = true;" \n
+           "_neighbourCount = 0;" \n
+           "_validNeighbourCount = 0;" \n
+           "" \n
+           "_allElements = [];" \n
+           "_neighboursIn = nearestObjects [_unit,[""UAV_01_base_F""],_neighborzone select 1];" \n
+           "_neighbours = [];" \n
+           "_relativesIn = nearestObjects [_unit,[""UAV_01_base_F""],_relativeZone select 1];" \n
+           "_relatives = [];" \n
+           "" \n
+           "if(_inclPlayer)then{" \n
+           "_neighboursIn pushBack player;" \n
+           "_relativesIn pushBack player;" \n
+           "};" \n
+           "" \n
+           "//Clean Zones" \n
+           "" \n
+           "{" \n
+           "" \n
+           "	if(_x distance _unit > (_neighborzone select 0))then{" \n
+           "	_neighbours pushBack _x;" \n
+           "	};" \n
+           "" \n
+           "	" \n
+           "" \n
+           "}forEach _neighboursIn;" \n
+           "" \n
+           "{" \n
+           "" \n
+           "	if(_x distance _unit > (_relativeZone select 0))then{" \n
+           "	_relatives pushBack _x;" \n
+           "	};" \n
+           "" \n
+           "_allElements pushBack _x;" \n
+           "" \n
+           "}forEach _relativesIn;" \n
+           "" \n
+           "" \n
+           "" \n
+           "" \n
+           "_neighbourCount = count _neighbours;" \n
+           "_relativeCount = count _relatives;" \n
+           "" \n
+           "_unitPos = getPosATL _unit;" \n
+           "axeLineStart = _unitPos;" \n
+           "_posZ = _unitPos select 2;" \n
+           "" \n
+           "//Alignment" \n
+           "_vectorAlOut = [0,0,0];" \n
+           "_vectorAl = [0,0,0];" \n
+           "_velXal = 0;" \n
+           "_velYal = 0;" \n
+           "//Additional" \n
+           "_dirTo = 0;" \n
+           "" \n
+           "//Cohesion" \n
+           "_vectorCoh = [0,0,0];" \n
+           "_posXco = 0;" \n
+           "_posYco = 0;" \n
+           "" \n
+           "//Separation" \n
+           "_vectorSep = [0,0,0];" \n
+           "_vectorDist = [];" \n
+           "_vectorSepOut = [];" \n
+           "_posXSe = 0;" \n
+           "_posYSe = 0;" \n
+           "_posZSe = 0;" \n
+           "" \n
+           "//Output" \n
+           "_velX = 0;" \n
+           "_velY = 0;" \n
+           "_velOut = [];" \n
+           "_velocity = nil;" \n
+           "" \n
+           "_doCheck = 90;" \n
+           ""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "alignment">*/
+        class alignment
+        {
+          priority = 80.000000;
+          to="do";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_doCheck > 80 && _running"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/"_validNeighbourCount = 0;" \n
+           "if(_relativeCount > 0)then{" \n
+           "" \n
+           "	{" \n
+           "" \n
+           "		if(_x != _unit)then{" \n
+           "			" \n
+           "			if(alive _x)then{" \n
+           "			" \n
+           "				_velXal = _velXal + ((velocity _x) select 0);" \n
+           "				_velYal = _velYal + ((velocity _x) select 1);" \n
+           "				_validNeighbourCount = _validNeighbourCount + 1;" \n
+           "				_dirTo = _dirTo + ([getPosATL _unit, getPosATL _x] call BIS_fnc_dirTo);" \n
+           "" \n
+           "			};" \n
+           "" \n
+           "		};" \n
+           "	" \n
+           "	}forEach _allElements;" \n
+           "" \n
+           "_velXal = _velXal / _validNeighbourCount;" \n
+           "_velYal = _velYal / _validNeighbourCount;" \n
+           "" \n
+           "_dirTo = _dirTo / _validNeighbourCount;//Experiment with direction" \n
+           "" \n
+           "_vectorAlOut set [0, _velXal];" \n
+           "_vectorAlOut set [1, _velYal];" \n
+           "" \n
+           "_vectorAl = vectorNormalized _vectorAlOut; " \n
+           "" \n
+           "};" \n
+           "" \n
+           "" \n
+           "" \n
+           "_doCheck = 80;"/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "cohesion">*/
+        class cohesion
+        {
+          priority = 70.000000;
+          to="do";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_doCheck > 70 && _running"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/"	_validNeighbourCount = 0;" \n
+           "if(_relativeCount > 0)then{" \n
+           "" \n
+           "	{" \n
+           "" \n
+           "		if(_x != _unit)then{" \n
+           "			" \n
+           "			if(alive _x)then{" \n
+           "				" \n
+           "				_posXco = _posXco + (getPosATL _x select 0);" \n
+           "				_posYco = _posYco + (getPosATL _x select 1);" \n
+           "				_validNeighbourCount = _validNeighbourCount + 1;" \n
+           "				" \n
+           "			};" \n
+           "" \n
+           "		};" \n
+           "	" \n
+           "	}forEach _relatives;" \n
+           "" \n
+           "_posXco = _posXco / _validNeighbourCount;" \n
+           "_posYco = _posYco / _validNeighbourCount;" \n
+           "" \n
+           "_vectorCoh = [_unitPos select 0,_unitPos select 1,_posZ] vectorDiff [_posXco,_posYco,_posZ];" \n
+           "" \n
+           "};" \n
+           "" \n
+           "" \n
+           " " \n
+           "_doCheck = 70;"/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "separation">*/
+        class separation
+        {
+          priority = 60.000000;
+          to="do";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_doCheck > 60 && _running"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/"" \n
+           "if(count _neighbours > 0)then{" \n
+           "" \n
+           "	{" \n
+           "" \n
+           "		if(_x != _unit)then{" \n
+           "			" \n
+           "			if(alive _x)then{" \n
+           "" \n
+           "				_posXse = _posXse + (getPosATL _x select 0);" \n
+           "				_posYse = _posYse + (getPosATL _x select 1);" \n
+           "				_validNeighbourCount = _validNeighbourCount + 1;" \n
+           "			};" \n
+           "" \n
+           "		};" \n
+           "	" \n
+           "	}forEach _neighbours;" \n
+           "" \n
+           "_posXse = _posXse / _validNeighbourCount;" \n
+           "_posYse = _posYse / _validNeighbourCount;" \n
+           "" \n
+           "_posXse =_posXse * -1;" \n
+           "_posYse =_posYse * -1;" \n
+           "_posZSe =_posZSe * -1;" \n
+           "" \n
+           "_vectorSep = [_unitPos select 0,_unitPos select 1,_posZ] vectorDiff [_posXse,_posYse,_posZSe];" \n
+           "" \n
+           "};" \n
+           "" \n
+           "" \n
+           "_doCheck = 60;"/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "apply">*/
+        class apply
+        {
+          priority = 50.000000;
+          to="do";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_doCheck > 50 && _running"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/"" \n
+           "_velX = ((_vectorAl select 0) * axeWeightAlign) + ((_vectorCoh select 0) * axeWeightCohese) +  ((_vectorSep select 0) * axeWeightSpearate);" \n
+           "_velY = ((_vectorAl select 1) * axeWeightAlign) + ((_vectorCoh select 1) * axeWeightCohese) +  ((_vectorSep select 1) * axeWeightSpearate);" \n
+           "_velZ = 0;" \n
+           "" \n
+           "if(_unitPos select 2 < 6)then{" \n
+           "_velZ = 10;" \n
+           "};" \n
+           "_velOut = [_velX, _velY, _velZ];" \n
+           "_velocity = vectorNormalized _velOut;  " \n
+           "" \n
+           "//Speed" \n
+           "" \n
+           "_velocity set [0, (_velocity select 0) * axeSpeed];" \n
+           "_velocity set [1, (_velocity select 1) * axeSpeed];" \n
+           "" \n
+           "" \n
+           "_unit setDir _dirTo;//Additional - Trying to fix the spreading issue" \n
+           "" \n
+           "" \n
+           "//_unit limitSpeed axeSpeed; " \n
+           "//_unit setVelocity  (_unit  modelToWorld _velOut);" \n
+           "_unit setVelocity ( (velocity _unit)  vectorDiff _velocity);" \n
+           "" \n
+           "_doCheck = 100;" \n
+           "_t = diag_tickTime;" \n
+           "_loopTimeRand = random (axeLoopTime / 3);" \n
+           "_running = false;" \n
+           "" \n
+           "" \n
+           "//DEBUG" \n
+           "//systemchat format [""%1 | %2"", ( (getposatl _unit)  vectorDiff _velocity), _velocity];" \n
+           "axeLineFinish =  (_unit modelToWorld _velocity);"/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "debug">*/
+        class debug
+        {
+          priority = 0.000000;
+          to="do";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_debugDo && diag_ticKtime - _d > _debugTime"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/"" \n
+           "" \n
+           "_pos = getPosATl _unit;" \n
+           "deleteMarkerLocal _debugMrkrName;" \n
+           "_debugMrkrName = format[""axe%1"", name _unit];" \n
+           "_mkr = createMarkerLocal  [_debugMrkrName, _pos];" \n
+           "_debugMrkrName setMarkerShapeLocal ""ICON"";" \n
+           "_debugMrkrName setMarkerTypeLocal ""mil_dot"";" \n
+           "_debugMrkrName setMarkerColorLocal ""COLORGREEN"";" \n
+           "_debugMrkrName setMarkerSizeLocal [0.9,0.9];" \n
+           "" \n
+           "" \n
+           "_d = diag_tickTime;"/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "end">*/
+    class end
+    {
+      name = "end";
+      init = /*%FSM<STATEINIT""">*/"" \n
+       "" \n
+       "deleteVehicle _unit;" \n
+       "deleteMarkerLocal _debugMrkrName;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+      };
+    };
+    /*%FSM</STATE>*/
+  };
+  initState="flock_member";
+  finalStates[] =
+  {
+    "end"
+  };
+};
+/*%FSM</COMPILE>*/

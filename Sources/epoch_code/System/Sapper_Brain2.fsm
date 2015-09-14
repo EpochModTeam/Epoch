@@ -1,0 +1,1419 @@
+/*%FSM<COMPILE "C:\Program Files (x86)\Bohemia Interactive\Tools\FSM Editor Personal Edition\scriptedFSM.cfg, sapperAlt">*/
+/*%FSM<HEAD>*/
+/*
+item0[] = {"sapper",0,250,-225.000000,-325.000000,-125.000000,-275.000000,0.000000,"sapper"};
+item1[] = {"_",8,218,75.000000,-200.000000,125.000000,-175.000000,0.000000,""};
+item2[] = {"instinct",2,250,150.000000,-200.000000,250.000000,-150.000000,0.000000,"instinct"};
+item3[] = {"no_decision",4,218,375.000000,-125.000000,475.000000,-75.000000,10.000000,"no decision"};
+item4[] = {"action",2,250,150.000000,125.000000,250.000000,175.000000,0.000000,"action"};
+item5[] = {"dispose",4,218,75.000000,-325.000000,175.000000,-275.000000,80.000000,"dispose"};
+item6[] = {"_",8,218,125.406227,636.108887,177.358261,664.513977,0.000000,""};
+item7[] = {"reset_vars",2,250,-50.000000,-200.000000,50.000000,-150.000000,0.000000,"reset vars"};
+item8[] = {"complete",4,218,56.428787,-94.767609,146.429047,-44.767593,110.000000,"complete"};
+item9[] = {"stalk",4,218,-50.000000,0.000000,50.000000,50.000000,50.000000,"stalk"};
+item10[] = {"pre_boom",2,250,525.000000,225.000000,625.000000,275.000000,0.000000,"pre boom"};
+item11[] = {"dispose",4,218,375.000000,125.000000,475.000000,175.000000,95.000000,"dispose"};
+item12[] = {"loiter_large",4,218,250.000000,350.000000,350.000000,400.000000,30.000000,"loiter large"};
+item13[] = {"check_threat",4,218,725.000000,-125.000000,825.000000,-75.000000,80.000000,"check threat"};
+item14[] = {"instinct_done",4,218,150.000000,-100.000000,250.000000,-50.000000,100.000000,"instinct done"};
+item15[] = {"charge",4,218,225.000000,-350.000000,325.000000,-300.000000,50.000000,"charge"};
+item16[] = {"wait_action",4,218,375.000000,25.000000,475.000000,75.000000,100.000000,"wait action"};
+item17[] = {"checking_status",2,250,625.000000,-50.000000,725.000000,0.000000,0.000000,"checking status"};
+item18[] = {"choose_target",4,218,675.000000,-150.000000,775.000000,-100.000000,90.000000,"choose target"};
+item19[] = {"final_checks",4,218,725.000000,25.000000,825.000000,75.000000,10.000000,"final checks"};
+item20[] = {"done",4,218,475.000000,-50.000000,575.000000,0.000000,100.000000,"done"};
+item21[] = {"loiter",4,218,325.000000,-300.000000,425.000000,-250.000000,30.000000,"loiter"};
+item22[] = {"return",2,250,350.000000,-50.000000,450.000000,0.000000,0.000000,"return"};
+item23[] = {"to_action",4,218,275.000000,25.000000,375.000000,75.000000,10.000000,"to action"};
+item24[] = {"to_instinct",4,218,275.000000,-125.000000,375.000000,-75.000000,5.000000,"to instinct"};
+item25[] = {"boom",4,218,375.000000,175.000000,475.000000,225.000000,90.000000,"boom"};
+item26[] = {"reset",2,250,100.000000,500.000000,200.000000,550.000000,0.000000,"reset"};
+item27[] = {"loiter_small",4,218,300.000000,325.000000,400.000000,375.000000,20.000000,"loiter small"};
+item28[] = {"groan",4,218,175.000000,-375.000000,275.000000,-325.000000,60.000000,"groan"};
+item29[] = {"charge",4,218,-50.000000,175.000000,50.000000,225.000000,70.000000,"charge"};
+item30[] = {"stalking",4,218,-50.000000,50.000000,50.000000,100.000000,5.000000,"stalking"};
+item31[] = {"Wait_random",4,218,-225.000000,-200.000000,-125.000000,-150.000000,10.000000,"Wait random"};
+item32[] = {"groan",4,218,200.000000,375.000000,300.000000,425.000000,5.000000,"groan"};
+item33[] = {"detonate",4,218,125.000000,-350.000000,225.000000,-300.000000,70.000000,"detonate"};
+item34[] = {"end",1,250,975.000000,0.000000,1075.000000,50.000000,0.000000,"end"};
+item35[] = {"Wait_to_delete",4,218,975.000000,150.000000,1075.000000,200.000000,10.000000,"Wait to delete"};
+item36[] = {"handle_dispose",2,250,525.000000,125.000000,625.000000,175.000000,0.000000,"handle dispose"};
+item37[] = {"Wait_1_5_sec",4,218,650.000000,300.000000,750.000000,350.000000,0.000000,"Wait" \n "1.5 sec"};
+item38[] = {"do_boom",2,4346,650.000000,225.000000,750.000000,275.000000,0.000000,"do boom"};
+item39[] = {"_",8,218,800.000000,300.000000,850.000000,325.000000,0.000000,""};
+item40[] = {"do_groan",2,250,225.000000,500.000000,325.000000,550.000000,0.000000,"do groan"};
+item41[] = {"do_stalk",2,250,-200.000000,50.000000,-100.000000,100.000000,0.000000,"do stalk"};
+item42[] = {"do_loiter_big",2,250,350.000000,500.000000,450.000000,550.000000,0.000000,"do loiter big"};
+item43[] = {"do_loiter_small",2,250,475.000000,500.000000,575.000000,550.000000,0.000000,"do loiter small"};
+item44[] = {"do_charge",2,250,-200.000000,225.000000,-100.000000,275.000000,0.000000,"do charge"};
+item45[] = {"hide",4,218,25.000000,325.000000,125.000000,375.000000,60.000000,"hide"};
+item46[] = {"check_target",4,218,775.000000,-100.000000,875.000000,-50.000000,60.000000,"check target"};
+item47[] = {"hide",4,218,275.000000,-325.000000,375.000000,-275.000000,40.000000,"hide"};
+item48[] = {"find_spot",2,250,-200.000000,400.000000,-100.000000,450.000000,0.000000,"find spot"};
+item49[] = {"not_safe",4,218,-250.000000,500.000000,-150.000000,550.000000,10.000000,"not safe"};
+item50[] = {"is_safe",4,218,-150.000000,500.000000,-50.000000,550.000000,5.000000,"is safe"};
+item51[] = {"do_hide",2,250,-150.000000,625.000000,-50.000000,675.000000,0.000000,"do hide"};
+item52[] = {"smoke",2,250,775.000000,150.000000,875.000000,200.000000,0.000000,"smoke"};
+item53[] = {"charged",4,218,-50.000000,275.000000,50.000000,325.000000,10.000000,"charged"};
+item54[] = {"_",8,218,125.000000,375.000000,175.000000,400.000000,0.000000,""};
+item55[] = {"circled",4,218,-50.000000,100.000000,50.000000,150.000000,10.000000,"circled"};
+item56[] = {"stuck",4,218,775.000000,0.000000,875.000000,50.000000,30.000000,"stuck"};
+item57[] = {"shot",4,218,650.000000,150.000000,750.000000,200.000000,5.000000,"shot"};
+item58[] = {"feeling",4,218,775.000000,-50.000000,875.000000,0.000000,50.000000,"feeling"};
+item59[] = {"charging",4,218,-50.000000,225.000000,50.000000,275.000000,5.000000,"charging"};
+item60[] = {"stalk",4,218,375.000000,-275.000000,475.000000,-225.000000,20.000000,"stalk"};
+item61[] = {"not_shot",4,218,900.000000,125.000000,1000.000000,175.000000,10.000000,"not shot"};
+item62[] = {"finished_boom",2,250,900.000000,225.000000,1000.000000,275.000000,0.000000,"finished boom"};
+link0[] = {0,31};
+link1[] = {1,2};
+link2[] = {2,3};
+link3[] = {2,5};
+link4[] = {2,14};
+link5[] = {2,15};
+link6[] = {2,21};
+link7[] = {2,28};
+link8[] = {2,33};
+link9[] = {2,47};
+link10[] = {2,60};
+link11[] = {3,17};
+link12[] = {4,8};
+link13[] = {4,9};
+link14[] = {4,11};
+link15[] = {4,12};
+link16[] = {4,16};
+link17[] = {4,25};
+link18[] = {4,27};
+link19[] = {4,29};
+link20[] = {4,32};
+link21[] = {4,45};
+link22[] = {5,2};
+link23[] = {6,26};
+link24[] = {7,1};
+link25[] = {8,7};
+link26[] = {9,41};
+link27[] = {10,37};
+link28[] = {11,36};
+link29[] = {12,42};
+link30[] = {13,17};
+link31[] = {14,4};
+link32[] = {15,2};
+link33[] = {16,17};
+link34[] = {17,13};
+link35[] = {17,18};
+link36[] = {17,19};
+link37[] = {17,20};
+link38[] = {17,46};
+link39[] = {17,56};
+link40[] = {17,58};
+link41[] = {18,17};
+link42[] = {19,17};
+link43[] = {20,22};
+link44[] = {21,2};
+link45[] = {22,23};
+link46[] = {22,24};
+link47[] = {23,4};
+link48[] = {24,2};
+link49[] = {25,10};
+link50[] = {26,54};
+link51[] = {27,43};
+link52[] = {28,2};
+link53[] = {29,44};
+link54[] = {30,4};
+link55[] = {31,7};
+link56[] = {32,40};
+link57[] = {33,2};
+link58[] = {35,34};
+link59[] = {36,57};
+link60[] = {36,61};
+link61[] = {37,38};
+link62[] = {38,39};
+link63[] = {39,62};
+link64[] = {40,6};
+link65[] = {41,30};
+link66[] = {41,55};
+link67[] = {42,6};
+link68[] = {43,6};
+link69[] = {44,53};
+link70[] = {44,59};
+link71[] = {45,48};
+link72[] = {46,17};
+link73[] = {47,2};
+link74[] = {48,49};
+link75[] = {48,50};
+link76[] = {49,48};
+link77[] = {50,51};
+link78[] = {51,6};
+link79[] = {52,39};
+link80[] = {53,4};
+link81[] = {54,4};
+link82[] = {55,4};
+link83[] = {56,17};
+link84[] = {57,52};
+link85[] = {58,17};
+link86[] = {59,4};
+link87[] = {60,2};
+link88[] = {61,62};
+link89[] = {62,35};
+globals[] = {25.000000,1,0,0,16777215,640,480,1,248,6316128,1,-343.543304,1069.998291,679.913574,-353.385406,1000,731,1};
+window[] = {2,-1,-1,-1,-1,542,56,1081,17,3,1018};
+*//*%FSM</HEAD>*/
+class FSM
+{
+  fsmName = "sapperAlt";
+  class States
+  {
+    /*%FSM<STATE "sapper">*/
+    class sapper
+    {
+      name = "sapper";
+      init = /*%FSM<STATEINIT""">*/"_sapper = _this select 0;" \n
+       "_sBomb = _this select 1;" \n
+       "_head = objNull;" \n
+       "_lastAlert = diag_tickTime;" \n
+       "_trgt = player;" \n
+       "" \n
+       "_sapper setBehaviour ""STEALTH"";" \n
+       "_sapper setUnitPos ""UP""; " \n
+       "" \n
+       "_entsArr = [""Epoch_Male_F"",""Epoch_Female_F"",""Epoch_Sapper_F"",""Fin_random_EPOCH"",""Alsatian_Random_EPOCH"",""Epoch_cloak_F"",""b_survivor_F"",""Epoch_Female_Camo_F""];" \n
+       "_trgtArr = [""Epoch_Male_F"",""Epoch_Female_F"",""b_survivor_F"",""Epoch_Female_Camo_F"",""C_man_hunter_1_F"",""Construct_F""];" \n
+       "" \n
+       "" \n
+       "//Behaviour Vars" \n
+       "_detonateDistMax = 8;//Random distance between 3 and this at which to detonate" \n
+       "_groanTrig = 16;//Percentage chance of groan." \n
+       "_sRange = 500;//Escape distance, range for sapper to look for current target(s)" \n
+       "_sHideTrig = 72;//Sapper will hide if fear rises above this level." \n
+       "_chargeTrig = 54;//Charges at this level of anger" \n
+       "_sHardness = floor (random 6) max 1;//LEvel to drop anger and fear as sapper calms down" \n
+       "_checkFreq = 2.5;//Frequency of live status check. Lower makes sapper quicker to respond to new stimulus." \n
+       "_welcomeWait = floor (random 18);//Random pause before sapper announces his presence" \n
+       "" \n
+       "_vehArray = [""Car""];" \n
+       "_trgt = player;" \n
+       "_requestDispose = false;" \n
+       "" \n
+       "_nrstTrgt = objNull;" \n
+       "_lowDist = 0;" \n
+       "_currDist = 0;" \n
+       "_filterBuilds = [""Land_i_Addon_03_V1_F"",""Land_Offices_01_V1_F""];" \n
+       "_t =  diag_tickTime;" \n
+       "_u = _t;" \n
+       "_c = _u;" \n
+       "_f = _c;" \n
+       "_h = _f;" \n
+       "_d2 = _h;" \n
+       "" \n
+       "//MIssion Vars" \n
+       "_traderDispose = false;" \n
+       "" \n
+       "_dirTo = 0;" \n
+       "_lDist = 0;" \n
+       "_checkEntry = """";" \n
+       "" \n
+       "_decisionMade = false;" \n
+       "_actionDone = false;" \n
+       "_sapperPos=[0,0,0];" \n
+       "_trgtPos=[0,0,0];" \n
+       "_hidePos = [0,0,0];" \n
+       "_nrPlyrs = [];" \n
+       "_circlePos = [0,0,0];" \n
+       "_behindPos = [0,0,0];" \n
+       "_lastPos = [0,0,0];" \n
+       "_spottedPos = [0,0,0];" \n
+       "_lastAction = """";" \n
+       "_maxStalkDist = 48;" \n
+       "_doWander = false;" \n
+       "_callHide = false;" \n
+       "_callBoom = false;" \n
+       "_callCharge = false;" \n
+       "_doneBoom = false;" \n
+       "" \n
+       "//Feeling vars" \n
+       "_sAnger = 50;" \n
+       "_sFear = 50;" \n
+       "_threateLevel = 0;" \n
+       "_addThreat = 0;" \n
+       "_sHit = [objNull, 0];" \n
+       "_sFiredNear = [objNull, 0];" \n
+       "" \n
+       "_stuckCount = 0;" \n
+       "" \n
+       "//Nest vars" \n
+       "" \n
+       "_nrBuild = nearestBuilding _sapper;" \n
+       "_doNest = false;" \n
+       "_nrBuild = objNull;" \n
+       "_nrBuild = [];" \n
+       "" \n
+       "" \n
+       "" \n
+       "_doMove = false;" \n
+       "_sanityCheckDone = false;" \n
+       "_canSee = (!lineIntersects [aimPos _sapper, eyePos _trgt, _sapper, _trgt]);" \n
+       "_nrTrgts = [];" \n
+       "_threatLevel = 0;" \n
+       "_trgtDist = _trgt distance _sapper;" \n
+       "_sanityCheck = 0;" \n
+       "" \n
+       "" \n
+       "_doHide = false;" \n
+       "_doAttack = false;" \n
+       "_firedNear = 0;" \n
+       "" \n
+       "_randomGroan = {" \n
+       "_sounds = [""sapper_groan0"",""sapper_groan1"",""sapper_groan2""];" \n
+       "_sound = _sounds select (floor (random (count _sounds)));" \n
+       "" \n
+       "_sapper say3D _sound;" \n
+       "EPOCH_say3D_PVS = [player, _sapper,(EPOCH_sounds find _sound), Epoch_personalToken];" \n
+       "publicVariableServer ""EPOCH_say3D_PVS"";" \n
+       "};" \n
+       "" \n
+       "_doInterrupt = {" \n
+       "_actionDone = true;" \n
+       "_criteria = ""(true)"";" \n
+       "};" \n
+       "" \n
+       "" \n
+       "" \n
+       "" \n
+       "" \n
+       "" \n
+       "" \n
+       "" \n
+       "" \n
+       ""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Wait_random">*/
+        class Wait_random
+        {
+          priority = 10.000000;
+          to="reset_vars";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(diag_tickTime - _t) > _welcomeWait;"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/"call _randomGroan;"/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "instinct">*/
+    class instinct
+    {
+      name = "instinct";
+      init = /*%FSM<STATEINIT""">*/"_t = diag_tickTime;" \n
+       "" \n
+       "" \n
+       "" \n
+       ""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "instinct_done">*/
+        class instinct_done
+        {
+          priority = 100.000000;
+          to="action";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_decisionMade;"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/"_t = diag_tickTime;" \n
+           "_decisionMade = false;" \n
+           "_actionDone = false;" \n
+           ""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "dispose">*/
+        class dispose
+        {
+          priority = 80.000000;
+          to="instinct";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"((_trgt distance _sapper) > (_sRange * 4)) || !(alive _sapper) || _traderDispose;"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/"_doDispose = true;" \n
+           "_decisionMade = true;" \n
+           "_actionDone = false;" \n
+           ""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "detonate">*/
+        class detonate
+        {
+          priority = 70.000000;
+          to="instinct";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_callBoom || ((_trgtDist < _detonateDist) && _canSee);"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/"_decisionMade = true;" \n
+           "_doBoom = true;"/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "groan">*/
+        class groan
+        {
+          priority = 60.000000;
+          to="instinct";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_groanRnd < _groanTrig;"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/"_doGroan = true;" \n
+           "_decisionMade = true;" \n
+           ""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "charge">*/
+        class charge
+        {
+          priority = 50.000000;
+          to="instinct";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_callCharge || (_canSee && (_sAnger > _chargeTrig || _trgtDist < 22));"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/"_doCharge = true;" \n
+           "_decisionMade = true;"/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "hide">*/
+        class hide
+        {
+          priority = 40.000000;
+          to="instinct";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_callHide || (_sFear > _sHideTrig);"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/"_doHide = true;" \n
+           "_decisionMade = true;"/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "loiter">*/
+        class loiter
+        {
+          priority = 30.000000;
+          to="instinct";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_sFear < _sHideTrig && _trgtDist < 25 && !_canSee;"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/"_doLoiter = true;" \n
+           "_loiterType = random 66;" \n
+           "_decisionMade = true;"/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "stalk">*/
+        class stalk
+        {
+          priority = 20.000000;
+          to="instinct";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!_canSee;"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/"_doStalk= true;" \n
+           "_decisionMade = true;" \n
+           ""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "no_decision">*/
+        class no_decision
+        {
+          priority = 10.000000;
+          to="checking_status";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!_decisionMade && (diag_tickTime > _u + _checkFreq);"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/"_checkEntry = ""instinct"";" \n
+           "_sanityCheck = 100;" \n
+           "" \n
+           ""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "action">*/
+    class action
+    {
+      name = "action";
+      init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "complete">*/
+        class complete
+        {
+          priority = 110.000000;
+          to="reset_vars";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_actionDone && (call compile _criteria || (diag_tickTime > (_t + _sWait)));"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/"" \n
+           "if (!isNil ""_criteriaMetAction"") then {" \n
+           "call _criteriaMetAction;" \n
+           "};" \n
+           "" \n
+           "" \n
+           "" \n
+           ""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "wait_action">*/
+        class wait_action
+        {
+          priority = 100.000000;
+          to="checking_status";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"diag_tickTime > _u + _checkFreq;"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/"_checkEntry = ""action"";" \n
+           "_sanityCheck = 100;" \n
+           "" \n
+           "" \n
+           ""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "dispose">*/
+        class dispose
+        {
+          priority = 95.000000;
+          to="handle_dispose";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(_doDispose || !(alive _sapper));"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "boom">*/
+        class boom
+        {
+          priority = 90.000000;
+          to="pre_boom";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_doBoom;"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "charge">*/
+        class charge
+        {
+          priority = 70.000000;
+          to="do_charge";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_doCharge || _charging;" \n
+           ""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/"_doCharge = false;" \n
+           "_callCharge = false;" \n
+           "_lastAction = ""charge"";" \n
+           "" \n
+           ""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "hide">*/
+        class hide
+        {
+          priority = 60.000000;
+          to="find_spot";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_doHide;"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/"_doHide = false;" \n
+           "_callHide = false;" \n
+           "_posSafe = false;" \n
+           "_lastAction = ""hide"";" \n
+           "_sapper setBehaviour ""CARELESS"";"/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "stalk">*/
+        class stalk
+        {
+          priority = 50.000000;
+          to="do_stalk";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_doStalk || _stalking;"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/"_doStalk = false;" \n
+           "_lastAction = ""stalk"";" \n
+           ""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "loiter_large">*/
+        class loiter_large
+        {
+          priority = 30.000000;
+          to="do_loiter_big";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_doLoiter &&  (_loiterType > 33);"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/"_doLoiter = false;" \n
+           "_lastAction = ""loiter"";" \n
+           ""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "loiter_small">*/
+        class loiter_small
+        {
+          priority = 20.000000;
+          to="do_loiter_small";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_doLoiter && (_loiterType < 34);" \n
+           "" \n
+           ""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/"_doLoiter = false;" \n
+           "_lastAction = ""loiter"";"/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "groan">*/
+        class groan
+        {
+          priority = 5.000000;
+          to="do_groan";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_doGroan;" \n
+           ""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/"_doGroan = false;" \n
+           "_lastAction = ""groan"";" \n
+           ""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "reset_vars">*/
+    class reset_vars
+    {
+      name = "reset_vars";
+      init = /*%FSM<STATEINIT""">*/"//Saper Vars" \n
+       "_doStalk = false;" \n
+       "_stalking = false;" \n
+       "" \n
+       "_doLoiter = false;" \n
+       "_loiterType = 0;" \n
+       "" \n
+       "_doCharge = false;" \n
+       "_charging = false;" \n
+       "_chargeCount = 0;" \n
+       "_attempts = 0;" \n
+       "" \n
+       "_doBoom = false;" \n
+       "_doGroan = false;" \n
+       "" \n
+       "_rnd = 0;" \n
+       "_sWait = 0;" \n
+       "_doDispose = false;" \n
+       "_chooseTarget = false;" \n
+       "_t = diag_tickTime;" \n
+       "_detonateDist = (floor(random _detonateDistMax)) max 4;" \n
+       "_groanRnd = random 100;" \n
+       "_hideRnd = random 100;" \n
+       "_nrTrgts=[];" \n
+       "_doHide = false;" \n
+       "_moveTo = [0,0,0];" \n
+       "" \n
+       "" \n
+       "//Brain Vars" \n
+       "_override = false;" \n
+       "_criteria =""(false)"";" \n
+       "_criteriaMet = false;" \n
+       "_criteriaMetAction = nil;" \n
+       "_allowInterrupt = false;" \n
+       "_interruptReason = ""(false)"";" \n
+       "" \n
+       "" \n
+       "" \n
+       "" \n
+       ""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "_">*/
+        class _
+        {
+          priority = 0.000000;
+          to="instinct";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "pre_boom">*/
+    class pre_boom
+    {
+      name = "pre_boom";
+      init = /*%FSM<STATEINIT""">*/"_t = diag_tickTime;" \n
+       "" \n
+       "_sound = ""sapper_explode"";" \n
+       "_sapper say3D _sound;" \n
+       "EPOCH_say3D_PVS = [player,_sapper,(EPOCH_sounds find _sound),Epoch_personalToken];" \n
+       "publicVariableServer ""EPOCH_say3D_PVS"";" \n
+       "_sapper playMoveNow ""Unconscious"";" \n
+       "" \n
+       ""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Wait_1_5_sec">*/
+        class Wait_1_5_sec
+        {
+          priority = 0.000000;
+          to="do_boom";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(diag_tickTime - _t) > 1.5"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "checking_status">*/
+    class checking_status
+    {
+      name = "checking_status";
+      init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "done">*/
+        class done
+        {
+          priority = 100.000000;
+          to="return";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_sanityCheck < 1;"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "choose_target">*/
+        class choose_target
+        {
+          priority = 90.000000;
+          to="checking_status";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_sanityCheck > 90;"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/"_nrstTrgt = objNull;" \n
+           "_nrTrgts = getPos _sapper nearEntities [_trgtArr, _sRange];" \n
+           "_lowDist = _sRange;" \n
+           "" \n
+           "{" \n
+           "if (alive _x) then {" \n
+           "_currDist = _x distance _sapper;" \n
+           "	if (_currDist < _lowDist) then {" \n
+           "	_nrstTrgt = _x;" \n
+           "	_lowDist = _currDist;" \n
+           "	};" \n
+           "};" \n
+           "}forEach _nrTrgts;" \n
+           "" \n
+           "if (!isNull _nrstTrgt) then {" \n
+           "_trgt = _nrstTrgt;" \n
+           "};" \n
+           "_sanityCheck = 90;"/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "check_threat">*/
+        class check_threat
+        {
+          priority = 80.000000;
+          to="checking_status";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_sanityCheck > 80;"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/"_avDist = 0;" \n
+           "_tDist = 0;" \n
+           "_wepCount = 0;" \n
+           "_addThreat = 0;" \n
+           "" \n
+           "_nrTrgtCount = (count _nrTrgts);" \n
+           "if (_nrTrgtCount>0) then {" \n
+           "{" \n
+           "	if ((typeof _x) in _trgtArr) then {" \n
+           "" \n
+           "		if!((currentWeapon _x) == """") then {" \n
+           "		_tDist = _tDist + (_x distance _sapper);" \n
+           "" \n
+           "			if!(lineIntersects [aimPos _sapper, eyePos _x, _sapper, _x]) then {" \n
+           "			_wepCount = _wepCount + 1;" \n
+           "			};" \n
+           "" \n
+           "		};" \n
+           "" \n
+           "	};" \n
+           "}forEach _nrTrgts;" \n
+           "" \n
+           "_avDist = _tDist / _nrTrgtCount;" \n
+           "_addThreat = _wepCount;" \n
+           "" \n
+           "" \n
+           "};" \n
+           "" \n
+           "" \n
+           "_sanityCheck = 80;" \n
+           ""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "check_target">*/
+        class check_target
+        {
+          priority = 60.000000;
+          to="checking_status";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_sanityCheck > 60;" \n
+           "" \n
+           "" \n
+           ""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/"_canSee = (!lineIntersects [aimPos _sapper, eyePos _trgt, _sapper, _trgt]);" \n
+           "_trgtDist = _sapper distance _trgt;" \n
+           "" \n
+           "_sanityCheck = 60;" \n
+           "" \n
+           ""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "feeling">*/
+        class feeling
+        {
+          priority = 50.000000;
+          to="checking_status";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_sanityCheck > 50;" \n
+           "" \n
+           "" \n
+           ""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/"" \n
+           "if (_sFiredNear select 1 >0 && _sFiredNear select 1 < 50) then {" \n
+           "_sAnger = _sAnger + 6;" \n
+           "_sFear = _sFear + 4;" \n
+           "if (isPlayer (_sHit select 0)) then {" \n
+           "_trgt = _sHit select 0;" \n
+           "};" \n
+           "};" \n
+           "" \n
+           "if (_sHit select 1>0) then {" \n
+           "_sAnger = _sAnger + 12;" \n
+           "_sFear = _sFear + 8;" \n
+           "if (isPlayer (_sHit select 0)) then {" \n
+           "_trgt = _sHit select 0;" \n
+           "};" \n
+           "};" \n
+           "" \n
+           "//Can see target grrr" \n
+           "if (_canSee) then {" \n
+           "_sAnger = _sAnger + 2;" \n
+           "};" \n
+           "" \n
+           "//can see armed targets" \n
+           "if (_addThreat > 0) then {" \n
+           "_sFear = _sFear + _addThreat;" \n
+           "};" \n
+           "" \n
+           "//calm down calm down" \n
+           "if (diag_tickTime > _f + 60) then {" \n
+           "_sAnger = _sAnger - _sHardness;" \n
+           "_sFear = _sFear - _sHardness;" \n
+           "_f = diag_tickTime;" \n
+           "};" \n
+           "" \n
+           "" \n
+           "_sanityCheck = 50;" \n
+           "" \n
+           ""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "stuck">*/
+        class stuck
+        {
+          priority = 30.000000;
+          to="checking_status";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_sanityCheck > 30;" \n
+           "" \n
+           "" \n
+           ""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/"if (_lastPos isEqualTo (getPos _sapper)) then {" \n
+           "" \n
+           "if (!(_moveTo isEqualTo [0,0,0])) then {" \n
+           "_sapper moveTo _moveTo;" \n
+           "};" \n
+           "" \n
+           "_stuckCount = _stuckCount + 1;" \n
+           "}else{" \n
+           "" \n
+           "_lastPos = getPos _sapper;" \n
+           "" \n
+           "};" \n
+           "_sanityCheck = 30;"/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "final_checks">*/
+        class final_checks
+        {
+          priority = 10.000000;
+          to="checking_status";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_sanityCheck > 10;"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/"_sFiredNear = [objNull, 0];" \n
+           "_sHit = [objNull, 0];" \n
+           "" \n
+           "_sAnger =_sAnger min 100 max 0;" \n
+           "_sFear =_sFear min 100 max 0;" \n
+           "" \n
+           "//Interrupt cuurent action" \n
+           "//if (_sAnger > 80) then {" \n
+           "//_actionDone = true;" \n
+           "//_cirteria = ""(true)"";" \n
+           "//};" \n
+           "" \n
+           "" \n
+           "//Blow up if stuck" \n
+           "if (_stuckCount > 12 && _sWait < 1) then {" \n
+           "_callBoom = true;" \n
+           "call _doInterrupt;" \n
+           "//Call another sapper in here ?" \n
+           "};" \n
+           "" \n
+           "//Charge if player suddenly in view and anger at correct level" \n
+           "if (_lastAction!=""charge"" && _trgtDist > _detonateDist && _canSee && _sAnger > _chargeTrig) then {" \n
+           "call _randomGroan;" \n
+           "_callCharge = true;" \n
+           "call _doInterrupt;" \n
+           "};" \n
+           "" \n
+           "" \n
+           "//Detonate near very close player" \n
+           "if (_trgtDist < _detonateDist && _canSee) then {" \n
+           "_callBoom = true;" \n
+           "call _doInterrupt;" \n
+           "};" \n
+           "" \n
+           "//Interrupt and hide if scared and player suddenly in view" \n
+           "if (_lastAction!=""hide"" && _trgtDist > _detonateDist && _canSee && _sFear > _sHideTrig) then {" \n
+           "call _randomGroan;" \n
+           "_callHide = true;" \n
+           "call _doInterrupt;" \n
+           "};" \n
+           "" \n
+           "" \n
+           "//Change pathfinding" \n
+           "if (_trgtDist>25) then {" \n
+           "_sapper setBehaviour ""CARELESS"";" \n
+           "}else{" \n
+           "_sapper setBehaviour ""STEALTH"";" \n
+           "};" \n
+           "" \n
+           "//Change anger at distance" \n
+           "//if (_trgtDist>48) then {" \n
+           "//_sAnger = _sAnger + 1;" \n
+           "//};" \n
+           "" \n
+           "//Hiding makes him angry" \n
+           "if (_lastAction == ""hide"") then {" \n
+           "_sAnger = _sAnger + 2;" \n
+           "};" \n
+           "" \n
+           "//Log last seen position for stalking" \n
+           "if (_canSee) then {" \n
+           "_spottedPos = getPos _trgt;" \n
+           "};" \n
+           "" \n
+           "//Set stalking distance based on fear." \n
+           "if (_sFear > 48) then {" \n
+           "_maxStalkDist = 68;" \n
+           "}else{" \n
+           "_maxStalkDist = 42;" \n
+           "};" \n
+           "_sanityCheck = 0;" \n
+           "" \n
+           "" \n
+           "" \n
+           ""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "return">*/
+    class return
+    {
+      name = "return";
+      init = /*%FSM<STATEINIT""">*/"" \n
+       "_u = diag_tickTime;" \n
+       ""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "to_action">*/
+        class to_action
+        {
+          priority = 10.000000;
+          to="action";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(_checkEntry == ""action"");"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/"_checkEntry = """";" \n
+           "" \n
+           "" \n
+           ""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "to_instinct">*/
+        class to_instinct
+        {
+          priority = 5.000000;
+          to="instinct";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(_checkEntry == ""instinct"");"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/"_checkEntry = """";" \n
+           ""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "reset">*/
+    class reset
+    {
+      name = "reset";
+      init = /*%FSM<STATEINIT""">*/"_t = diag_tickTime;" \n
+       "" \n
+       "//Check for not found safe Pos" \n
+       "" \n
+       "if (_sWait > 100) then {" \n
+       "_sWait = 12;" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "_">*/
+        class _
+        {
+          priority = 0.000000;
+          to="action";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "end">*/
+    class end
+    {
+      name = "end";
+      init = /*%FSM<STATEINIT""">*/"if (!isNull _sapper) then {" \n
+       "_sapper removeAllEventHandlers ""Hit"";" \n
+       "_sapper removeAllEventHandlers ""FiredNear"";" \n
+       "" \n
+       "if!(_traderDispose) then {" \n
+       "deleteVehicle _sapper;" \n
+       "};" \n
+       "};" \n
+       "if (!isNull _sBomb) then {" \n
+       "deleteVehicle _sBomb;" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "handle_dispose">*/
+    class handle_dispose
+    {
+      name = "handle_dispose";
+      init = /*%FSM<STATEINIT""">*/"_t = diag_tickTime;" \n
+       "" \n
+       ""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "not_shot">*/
+        class not_shot
+        {
+          priority = 10.000000;
+          to="finished_boom";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"isNull _sBomb;"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "shot">*/
+        class shot
+        {
+          priority = 5.000000;
+          to="smoke";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!isNull _sBomb;"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "do_boom">*/
+    class do_boom
+    {
+      name = "do_boom";
+      init = /*%FSM<STATEINIT""">*/"EPOCH_SapperObjs_PVS = [_sBomb, player, Epoch_personalToken,_sapper,_sapper];" \n
+       "publicVariableServer ""EPOCH_SapperObjs_PVS"";" \n
+       "" \n
+       "_sBomb = objNull;" \n
+       "" \n
+       "deleteVehicle _sapper;" \n
+       "" \n
+       "_doneBoom = true;" \n
+       ""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "_">*/
+        class _
+        {
+          priority = 0.000000;
+          to="finished_boom";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "do_groan">*/
+    class do_groan
+    {
+      name = "do_groan";
+      init = /*%FSM<STATEINIT""">*/"" \n
+       "" \n
+       "call _randomGroan;" \n
+       "" \n
+       "_actionDone = true;" \n
+       "_criteria = ""(true)"";" \n
+       "_sWait = 1;" \n
+       ""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "_">*/
+        class _
+        {
+          priority = 0.000000;
+          to="reset";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "do_stalk">*/
+    class do_stalk
+    {
+      name = "do_stalk";
+      init = /*%FSM<STATEINIT""">*/"" \n
+       "_circleDone = false;" \n
+       "_sWait = 0;" \n
+       "" \n
+       "if (!_stalking) then {" \n
+       "" \n
+       "if (_spottedPos select 0 > 0) then {" \n
+       "_moveTo = _spottedPos;" \n
+       "_spottedPos=[0,0,0];" \n
+       "}else{" \n
+       "_moveTo = [_maxStalkDist,22,120,_trgt] call EPOCH_fnc_findRandomPosBehind;" \n
+       "};" \n
+       "" \n
+       "_sapper forceSpeed 4;" \n
+       "_sapper moveTo _moveTo;" \n
+       "_stalking = true;" \n
+       "_c = diag_tickTime;" \n
+       "" \n
+       "};" \n
+       "" \n
+       "" \n
+       "_sDist = _sapper distance _moveTo;" \n
+       "if (_sWait < 1) then {" \n
+       "_sWait = _sDist;" \n
+       "};" \n
+       "" \n
+       "" \n
+       "" \n
+       "" \n
+       ""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "circled">*/
+        class circled
+        {
+          priority = 10.000000;
+          to="action";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"moveToCompleted _sapper || diag_tickTime > _c + _sWait;"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/"" \n
+           "_stalking = false;" \n
+           "_actionDone = true;" \n
+           "_sWait = 0;" \n
+           "_criteria = ""(true)"";" \n
+           "_t = diag_tickTime;" \n
+           "" \n
+           "" \n
+           ""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "stalking">*/
+        class stalking
+        {
+          priority = 5.000000;
+          to="action";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_sDist > 6;"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "do_loiter_big">*/
+    class do_loiter_big
+    {
+      name = "do_loiter_big";
+      init = /*%FSM<STATEINIT""">*/"_sapperPos = getPos _sapper;" \n
+       "_moveTo = [_sapperPos,10,28,5,0,5,0] call BIS_fnc_findSafePos;" \n
+       "_sapper moveTo _moveTo;" \n
+       "_sapper forceSpeed 2;" \n
+       "" \n
+       "" \n
+       "_actionDone = true;" \n
+       "_sWait = (_sapper distance _moveTo) max 1;" \n
+       "_criteria = ""(moveToCompleted _sapper)"";" \n
+       "" \n
+       ""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "_">*/
+        class _
+        {
+          priority = 0.000000;
+          to="reset";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "do_loiter_small">*/
+    class do_loiter_small
+    {
+      name = "do_loiter_small";
+      init = /*%FSM<STATEINIT""">*/"_dirTo = (random 360) min 10;" \n
+       "_moveTo = [_sapper, 12, _dirTo] call BIS_fnc_relPos;" \n
+       "_sapper forceSpeed 2;" \n
+       "_sapper moveTo _moveTo;" \n
+       "" \n
+       "" \n
+       "_actionDone = true;" \n
+       "_sWait = (_sapper distance _moveTo) max 1;" \n
+       "_criteria = ""(moveToCompleted _sapper)"";" \n
+       "" \n
+       ""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "_">*/
+        class _
+        {
+          priority = 0.000000;
+          to="reset";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "do_charge">*/
+    class do_charge
+    {
+      name = "do_charge";
+      init = /*%FSM<STATEINIT""">*/"" \n
+       "//At a distance sapper will weave, when close aims staright for target" \n
+       "if (_trgtDist > _detonateDist * 2) then {" \n
+       "_moveTo = [_detonateDist * 2,_detonateDist,80,_trgt] call EPOCH_fnc_findRandomPosBehind;" \n
+       "}else{" \n
+       "_moveTo = getPosATL _trgt;" \n
+       "};" \n
+       "" \n
+       "_sapper forceSpeed 5;" \n
+       "_sapper moveTo _moveTo;" \n
+       "_attempts = _attempts +1;" \n
+       "" \n
+       "" \n
+       "" \n
+       "" \n
+       "" \n
+       "" \n
+       "" \n
+       ""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "charged">*/
+        class charged
+        {
+          priority = 10.000000;
+          to="action";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_attempts > 17 || (_sapper distance _trgt) < (_detonateDist / 2) || (!_canSee && _sAnger < _chargeTrig && _attempts > 6);" \n
+           "//Experimental stop charging if can not see and anger dropped.."/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/"_charging = false;" \n
+           "_actionDone = true;" \n
+           "_sWait = 0;" \n
+           "_criteria = ""(true)"";" \n
+           "" \n
+           "" \n
+           "" \n
+           "if (diag_tickTime - _lastAlert > 60) then {" \n
+           "	_lastAlert = diag_tickTime;" \n
+           "	_sound = ""sapper_groan2"";" \n
+           "	_sapper say3D _sound;" \n
+           "     	EPOCH_say3D_PVS = [player, _sapper,(EPOCH_sounds find _sound), Epoch_personalToken];" \n
+           "	publicVariableServer ""EPOCH_say3D_PVS"";" \n
+           "};" \n
+           ""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "charging">*/
+        class charging
+        {
+          priority = 5.000000;
+          to="action";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(moveToCompleted _sapper && _attempts < 18) || diag_tickTime > _c + ((_trgtDist / 2) max 2) ;"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/"_charging = true;" \n
+           "_lastPos = getPosATL _sapper;" \n
+           "_c = diag_tickTime;" \n
+           ""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "find_spot">*/
+    class find_spot
+    {
+      name = "find_spot";
+      init = /*%FSM<STATEINIT""">*/"try{" \n
+       "_h = diag_tickTime;" \n
+       "_moveTo = ATLToASL  ([(getPosATL _sapper), (floor (random 30) + 12), floor random 360] call BIS_fnc_relPos);" \n
+       "_posSafe = true;" \n
+       "_nrTrgts = _sapper nearEntities [_trgtArr, _sRange];" \n
+       "" \n
+       "{" \n
+       "	if (!lineIntersects [aimPos _x, _moveTo, _x, _sapper]) then {_posSafe = false;};" \n
+       "" \n
+       "} forEach  _nrTrgts;" \n
+       "" \n
+       "_moveTo = ASLToATL _moveTo;" \n
+       "" \n
+       "}catch{" \n
+       "_posSafe = true;" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "not_safe">*/
+        class not_safe
+        {
+          priority = 10.000000;
+          to="find_spot";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!_posSafe;"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "is_safe">*/
+        class is_safe
+        {
+          priority = 5.000000;
+          to="do_hide";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_posSafe;"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "do_hide">*/
+    class do_hide
+    {
+      name = "do_hide";
+      init = /*%FSM<STATEINIT""">*/"_sapper forceSpeed 5;" \n
+       "_sapper moveTo _moveTo;" \n
+       "_sWait =  (_sapper distance _moveTo) max 1;" \n
+       "_actionDone = true;" \n
+       "_criteria = ""(moveToCompleted _sapper)"";" \n
+       "" \n
+       "if (_trgtDist<25) then {" \n
+       "_sapper setBehaviour ""CARELESS"";" \n
+       "};" \n
+       ""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "_">*/
+        class _
+        {
+          priority = 0.000000;
+          to="reset";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "smoke">*/
+    class smoke
+    {
+      name = "smoke";
+      init = /*%FSM<STATEINIT""">*/"_sapperSmoke = ""SmokeShellCustom"" createVehicle [(getPosATL _sapper) select 0, (getPosATL _sapper) select 1, -0.2];" \n
+       "_sapperSmoke attachTo [_sapper,[0,0,-0.4]];"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "_">*/
+        class _
+        {
+          priority = 0.000000;
+          to="finished_boom";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "finished_boom">*/
+    class finished_boom
+    {
+      name = "finished_boom";
+      init = /*%FSM<STATEINIT""">*/"(typeOf _sapper) call EPOCH_unitSpawnDecrease;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Wait_to_delete">*/
+        class Wait_to_delete
+        {
+          priority = 10.000000;
+          to="end";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(diag_tickTime - _t) > 480;"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+  };
+  initState="sapper";
+  finalStates[] =
+  {
+    "end"
+  };
+};
+/*%FSM</COMPILE>*/
