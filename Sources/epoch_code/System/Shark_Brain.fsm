@@ -1,0 +1,726 @@
+/*%FSM<COMPILE "F:\Program Files (x86)\Bohemia Interactive\Tools\FSM Editor Personal Edition\scriptedFSM.cfg, sharky">*/
+/*%FSM<HEAD>*/
+/*
+item0[] = {"shark",0,250,-306.490601,-197.039688,-216.490692,-147.039795,0.000000,"shark"};
+item1[] = {"_",8,218,62.332706,-185.990021,114.284866,-157.584717,0.000000,""};
+item2[] = {"decision",2,250,165.295456,-196.723892,255.295410,-146.723892,0.000000,"decision"};
+item3[] = {"decision_made",4,218,45.967728,-38.050251,135.967682,11.949742,100.000000,"decision made"};
+item4[] = {"action",2,250,45.978439,130.034073,135.978394,180.034134,0.000000,"action"};
+item5[] = {"track",4,218,331.340027,-278.502258,421.340027,-228.502335,70.000000,"track"};
+item6[] = {"dispose",4,218,110.636703,-324.560150,200.636765,-274.560181,90.000000,"dispose"};
+item7[] = {"_",8,218,64.556534,392.347595,116.508629,420.752838,0.000000,""};
+item8[] = {"reset_vars",2,250,-57.248745,-196.860123,32.751255,-146.860138,0.000000,"reset vars"};
+item9[] = {"_",8,218,-150.031967,-184.788101,-98.079796,-156.382797,0.000000,""};
+item10[] = {"complete",4,218,-57.042290,-38.963421,32.957973,11.036604,100.000000,"complete"};
+item11[] = {"wander",4,218,266.070313,121.058060,356.070313,171.058060,50.000000,"wander"};
+item12[] = {"end",1,4346,411.966034,1.474794,501.966095,51.474747,0.000000,"end"};
+item13[] = {"dispose",4,218,231.223953,1.285551,321.223938,51.285561,40.000000,"dispose"};
+item14[] = {"change_depth",4,218,-142.086060,128.815338,-52.086075,178.815338,90.000000,"change depth"};
+item15[] = {"do_wander",2,250,406.553650,119.943130,496.553680,169.943130,0.000000,"do wander"};
+item16[] = {"move_in",4,218,198.982819,220.184677,288.982819,270.184692,70.000000,"move in"};
+item17[] = {"do_depth",2,250,-229.825836,21.577888,-139.825836,71.577896,0.000000,"do depth"};
+item18[] = {"say_hello",2,250,358.588074,300.680511,448.588074,350.680511,0.000000,"say hello"};
+item19[] = {"track",4,218,255.761963,177.402420,345.761963,227.402405,60.000000,"track"};
+item20[] = {"do_track",2,250,397.290466,211.894135,487.290497,261.894165,0.000000,"do track"};
+item21[] = {"no_decision",4,218,38.858673,-279.436768,128.858643,-229.436798,10.000000,"no decision"};
+item22[] = {"attack",4,218,128.071564,257.443115,218.071564,307.443115,80.000000,"attack"};
+item23[] = {"bite",2,250,300.995148,381.324310,390.995178,431.324310,0.000000,"bite"};
+item24[] = {"depth_done",4,218,-198.412857,-87.825989,-108.412857,-37.825996,0.000000,"depth done"};
+item25[] = {"move_in_wander",4,218,365.802948,-214.545197,455.802948,-164.545197,60.000000,"move in wander"};
+item26[] = {"attack",4,218,194.155518,-351.191406,284.155518,-301.191376,85.000000,"attack"};
+item27[] = {"do_depth",4,218,267.835510,-322.582855,357.835510,-272.582855,80.000000,"do depth"};
+item28[] = {"on_beach",4,218,-55.429527,242.552032,34.570473,292.552032,90.000000,"on beach"};
+item29[] = {"random_sea_pos",2,250,-190.830399,350.872742,-100.830383,400.872742,0.000000,"random sea pos"};
+link0[] = {0,9};
+link1[] = {1,2};
+link2[] = {2,3};
+link3[] = {2,5};
+link4[] = {2,6};
+link5[] = {2,21};
+link6[] = {2,25};
+link7[] = {2,26};
+link8[] = {2,27};
+link9[] = {3,4};
+link10[] = {4,10};
+link11[] = {4,11};
+link12[] = {4,13};
+link13[] = {4,14};
+link14[] = {4,16};
+link15[] = {4,19};
+link16[] = {4,22};
+link17[] = {4,28};
+link18[] = {5,2};
+link19[] = {6,2};
+link20[] = {7,4};
+link21[] = {8,1};
+link22[] = {9,8};
+link23[] = {10,8};
+link24[] = {11,15};
+link25[] = {13,12};
+link26[] = {14,17};
+link27[] = {15,7};
+link28[] = {16,18};
+link29[] = {17,24};
+link30[] = {18,7};
+link31[] = {19,20};
+link32[] = {20,7};
+link33[] = {21,2};
+link34[] = {22,23};
+link35[] = {23,7};
+link36[] = {24,8};
+link37[] = {25,2};
+link38[] = {26,2};
+link39[] = {27,2};
+link40[] = {28,29};
+link41[] = {29,7};
+globals[] = {0.000000,0,0,0,16777215,640,480,1,113,6316128,1,-323.378784,541.908020,588.921448,-376.164001,789,880,1};
+window[] = {2,-1,-1,-1,-1,551,1706,2731,26,3,807};
+*//*%FSM</HEAD>*/
+class FSM
+{
+  fsmName = "sharky";
+  class States
+  {
+    /*%FSM<STATE "shark">*/
+    class shark
+    {
+      name = "shark";
+      init = /*%FSM<STATEINIT""">*/"_shark = _this select 0;" \n
+       "_trgt = player;" \n
+       "" \n
+       "_shark disableAI ""FSM"";" \n
+       "_shark setSkill 0;" \n
+       "" \n
+       "_sharkNames=[""Jaws"",""Angel"",""Bull"",""Blue"",""Cookie"",""Coral"",""Dusky"",""White"",""Hammer"",""Mako"",""Smalltooth""];" \n
+       "_sharkName = _sharkNames select (floor(random count _sharkNames));" \n
+       "" \n
+       "_trgtArray = [""Epoch_Male_F"",""Epoch_Female_F""];" \n
+       "_vehArray = [""Car""];" \n
+       "_tRange = 20;" \n
+       "_sRange = 500;" \n
+       "_vRange = 50;" \n
+       "_maxTravelTime = 480;" \n
+       "_trgtZ = 0;" \n
+       "" \n
+       "_sharkPos=[0,0,0];" \n
+       "_trgtPos=[0,0,0];" \n
+       "_nrPlyrs = [];" \n
+       "_plyrDist = 0;" \n
+       "" \n
+       "_doDepth = false;" \n
+       "_doTrack = false;" \n
+       "_movIn = false;" \n
+       "_doAttack = false;" \n
+       "_doWander = false;" \n
+       "_inWater = true;" \n
+       "_doSurface = false;" \n
+       "_zPos = (getPos _shark) select 2;" \n
+       "_wanderDist = 0;" \n
+       "_onBeach = false;" \n
+       "" \n
+       "//Test" \n
+       "_nrSharks = [];" \n
+       "_disposeWait = 960;" \n
+       "" \n
+       "" \n
+       "//DEBUG" \n
+       "_doDebug = false;" \n
+       "//_count = 0;" \n
+       "_debugDo = ""INIT"";" \n
+       "//_mkrName = """";" \n
+       "" \n
+       "" \n
+       "" \n
+       "" \n
+       "" \n
+       "" \n
+       "" \n
+       "" \n
+       ""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "_">*/
+        class _
+        {
+          priority = 0.000000;
+          to="reset_vars";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "decision">*/
+    class decision
+    {
+      name = "decision";
+      init = /*%FSM<STATEINIT""">*/"_sharkPos = getPos _shark;" \n
+       "_inWater = surfaceIsWater _sharkPos;" \n
+       "_nrPlyrs = _shark nearEntities [_trgtArray, _sRange];" \n
+       "_sharkPos = getPos _shark;" \n
+       "_dist = _trgt distance _shark;" \n
+       "_zPos = (getPos _shark) select 2;" \n
+       "_trgtZ = (getPos _trgt) select 2;" \n
+       "_t = diag_tickTime;" \n
+       "_plyrPos = getPos _trgt;" \n
+       "" \n
+       "if (_doDebug) then {" \n
+       "systemChat format [""D:%1"",diag_tickTime];" \n
+       "hint format [""Decision\nCriteria: %1\nTime:%2\nCount:%3\n%4\nWait:%5\nDistance:%6\nDepth Diff:%7\nPlayer Depth: %8"",(call compile _criteria), (diag_tickTime > (_t + _sWait)),_count,_debugDo,_sWait,_shark distance _trgt,abs (_trgtZ - _zPos), getPos player select 2];" \n
+       "};" \n
+       "" \n
+       "" \n
+       "" \n
+       ""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "decision_made">*/
+        class decision_made
+        {
+          priority = 100.000000;
+          to="action";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_decisionMade;"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/"_t = diag_tickTime;"/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "dispose">*/
+        class dispose
+        {
+          priority = 90.000000;
+          to="decision";
+          precondition = /*%FSM<CONDPRECONDITION""">*/"_nrSharks = _sharkPos nearEntities [""GreatWhite_F"", 500];"/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!(alive _shark) || (_trgt distance _shark > (_sRange * 2)) || (!_inWater) || (count _nrSharks) > 2;"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/"_doDispose = true;" \n
+           "_decisionMade = true;" \n
+           "" \n
+           "if (count _nrSharks > 2) then {" \n
+           "{" \n
+           "deleteVehicle _x;" \n
+           "}forEach _nrSharks;" \n
+           "};" \n
+           "" \n
+           "if (_doDebug) then {" \n
+           "axeDO = ""Dispose"";" \n
+           "};"/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "attack">*/
+        class attack
+        {
+          priority = 85.000000;
+          to="decision";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(abs(_trgtZ - _zPos) < 2.5) && (_dist < 8) && (_trgt == vehicle _trgt);"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/"" \n
+           "_rnd = floor(random 100);" \n
+           "if (_rnd < 45) then {" \n
+           "_doAttack = true;" \n
+           "}else{" \n
+           "_movIn = true;" \n
+           "};" \n
+           "" \n
+           "" \n
+           "" \n
+           "_decisionMade = true;"/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "do_depth">*/
+        class do_depth
+        {
+          priority = 80.000000;
+          to="decision";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(abs(_trgtZ - _zPos) > 0.6) && (_dist > 26 && _dist < 36);"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/"_doDepth = true;" \n
+           "_decisionMade = true;"/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "track">*/
+        class track
+        {
+          priority = 70.000000;
+          to="decision";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_dist > 24;"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/"_doTrack = true;" \n
+           "_decisionMade = true;"/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "move_in_wander">*/
+        class move_in_wander
+        {
+          priority = 60.000000;
+          to="decision";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_dist > 12;"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/"" \n
+           "_rnd = floor(random 100);" \n
+           "if (_rnd < 80) then {" \n
+           "_doWander = true;" \n
+           "}else{" \n
+           "_movIn = true;" \n
+           "};" \n
+           "" \n
+           "_decisionMade = true;"/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "no_decision">*/
+        class no_decision
+        {
+          priority = 10.000000;
+          to="decision";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!_decisionMade && (diag_tickTime - _t) > 6;"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "action">*/
+    class action
+    {
+      name = "action";
+      init = /*%FSM<STATEINIT""">*/"_t = diag_tickTime;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "complete">*/
+        class complete
+        {
+          priority = 100.000000;
+          to="reset_vars";
+          precondition = /*%FSM<CONDPRECONDITION""">*/"_plyrDist = _shark distance _trgt;" \n
+           "" \n
+           "if (_doDebug) then {" \n
+           "" \n
+           "_dist = _trgt  distance2D _sharkPos;" \n
+           "_zPos = (getPos _shark) select 2;" \n
+           "_trgtZ = (getPos _trgt) select 2;" \n
+           "hint format [""Decision\nCriteria: %1\nTime:%2\nCount:%3\n%4\nWait:%5\nDistance:%6\nDepth Diff:%7\nPlayer Depth: %8\nSHark Depth: %9"",(call compile _criteria), (diag_tickTime > (_t + _sWait)),_count,_debugDo,_sWait,_shark distance _trgt,abs (_trgtZ - _zPos), getPos player select 2, getpos _shark select 2];" \n
+           "};"/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_actionDone && (call compile _criteria || (diag_tickTime > (_t + _sWait)));"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/"if (!isNil ""_criteriaMetAction"") then {" \n
+           "call compile _criteriaMetAction;" \n
+           "};"/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "on_beach">*/
+        class on_beach
+        {
+          priority = 90.000000;
+          to="random_sea_pos";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_onBeach;"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/"_onBeach = false;"/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "change_depth">*/
+        class change_depth
+        {
+          priority = 90.000000;
+          to="do_depth";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_doDepth;"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/"_doDepth = false;"/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "attack">*/
+        class attack
+        {
+          priority = 80.000000;
+          to="bite";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_doAttack;"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/"_doAttack = false;"/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "move_in">*/
+        class move_in
+        {
+          priority = 70.000000;
+          to="say_hello";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_movIn;"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/"_movIn = false;"/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "track">*/
+        class track
+        {
+          priority = 60.000000;
+          to="do_track";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_doTrack;"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/"_doTrack = false;"/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "wander">*/
+        class wander
+        {
+          priority = 50.000000;
+          to="do_wander";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_doWander;"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/"_doWander = false;"/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "dispose">*/
+        class dispose
+        {
+          priority = 40.000000;
+          to="end";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_doDispose && (diag_tickTime - _t) > _disposeWait;"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "reset_vars">*/
+    class reset_vars
+    {
+      name = "reset_vars";
+      init = /*%FSM<STATEINIT""">*/"//Default Vars" \n
+       "" \n
+       "" \n
+       "_rnd = 0;" \n
+       "_actionDone = false;" \n
+       "_decisionMade = false;" \n
+       "_sWait = 0;" \n
+       "_doDispose = false;" \n
+       "_chooseTarget = false;" \n
+       "_criteria = Nil;" \n
+       "_criteriaMet = false;" \n
+       "_allowInterrupt = false;" \n
+       "_t = diag_tickTime;" \n
+       "_moveTo = [0,0,0];" \n
+       "" \n
+       "" \n
+       "" \n
+       "" \n
+       "_override = false;" \n
+       "" \n
+       "_criteria =""(false)"";" \n
+       "_criteriaMetAction = nil;" \n
+       "" \n
+       "" \n
+       ""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "_">*/
+        class _
+        {
+          priority = 0.000000;
+          to="decision";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "end">*/
+    class end
+    {
+      name = "end";
+      init = /*%FSM<STATEINIT""">*/"_shark spawn {" \n
+       "	uiSleep 60;" \n
+       "	(typeOf _this) call EPOCH_unitSpawnDecrease;" \n
+       "	deleteVehicle _this;" \n
+       "};" \n
+       "" \n
+       "" \n
+       "if (_doDebug) then {" \n
+       "_debugDo = ""Dispose"";" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "do_wander">*/
+    class do_wander
+    {
+      name = "do_wander";
+      init = /*%FSM<STATEINIT""">*/"_shark forceSpeed 7;" \n
+       "_dirTo = (random 360);" \n
+       "_wanderDist = floor (random 12) + 24;" \n
+       "_moveTo = [_shark, _wanderDist, _dirTo] call BIS_fnc_relPos;" \n
+       "" \n
+       "if ( surfaceIsWater _moveTo) then {" \n
+       "_shark moveTo _moveTo;" \n
+       "_sWait = _shark distance _moveTo;" \n
+       "_actionDone = true;" \n
+       "_t = diag_tickTime;" \n
+       "_criteria = ""(_shark  distance2D _moveTo < 2)"";" \n
+       "}else{" \n
+       "_onBeach = true;" \n
+       "};" \n
+       "" \n
+       "" \n
+       "" \n
+       "" \n
+       "if (_doDebug) then {" \n
+       "_debugDo = ""Wander"";" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "_">*/
+        class _
+        {
+          priority = 0.000000;
+          to="action";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "do_depth">*/
+    class do_depth
+    {
+      name = "do_depth";
+      init = /*%FSM<STATEINIT""">*/"_depthRate = -0.01;" \n
+       "if (_trgtZ > _zPos) then {_depthRate = abs _depthRate};" \n
+       "" \n
+       "_shark forceSpeed 7;" \n
+       "_dirTo = (random 360);" \n
+       "_wanderDist = floor (random 10) + 12;" \n
+       "_moveTo = [_shark, _wanderDist, _dirTo] call BIS_fnc_relPos;" \n
+       "" \n
+       "if (_doDebug) then {" \n
+       "_debugDo = ""Do Depth"";" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "depth_done">*/
+        class depth_done
+        {
+          priority = 0.000000;
+          to="reset_vars";
+          precondition = /*%FSM<CONDPRECONDITION""">*/"_trgtZ = (getPos _trgt) select 2;" \n
+           "_zPos = (getPos _shark) select 2;" \n
+           "_zPos =_zPos + _depthRate;" \n
+           "depthPos = _sharkPos;" \n
+           "_shark forceSpeed 6;" \n
+           "_zPos = _zPos min -0.55;" \n
+           "depthPos set [2,_zPos];" \n
+           "_shark setPos depthPos;" \n
+           "" \n
+           "" \n
+           "if (_doDebug) then {" \n
+           "hint format [""Depth\nCriteria: %1\nTime:%2\nCount:%3\n%4\nWait:%5\nDistance:%6\nDepth Diff:%7\nPlayer Depth: %8"",(call compile _criteria), (diag_tickTime > (_t + _sWait)),_count,_debugDo,_sWait,_shark distance _trgt,abs (_trgtZ - _zPos), getPos player select 2];" \n
+           "};" \n
+           ""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(abs (_trgtZ - _zPos) < 2.5) || (!surfaceIsWater depthPos) || (_sharkPos select 2 > -0.50);"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "say_hello">*/
+    class say_hello
+    {
+      name = "say_hello";
+      init = /*%FSM<STATEINIT""">*/"_side = floor(random 180)-90;" \n
+       "if (_side < 0) then {_side = -90;}else{_side = 90;};" \n
+       "" \n
+       "_moveTo = [16,8,60,_trgt,_side] call EPOCH_fnc_findRandomPosBehind;" \n
+       "" \n
+       "_moveTo set [2,(getPos _trgt) select 2];" \n
+       "" \n
+       "" \n
+       "" \n
+       "if ( surfaceIsWater _moveTo) then {" \n
+       "_shark moveTo _moveTo;" \n
+       "_sWait = _shark distance _trgt;" \n
+       "_actionDone = true;" \n
+       "_movIn = false;" \n
+       "_t = diag_tickTime;" \n
+       "_criteria = ""(_shark distance2D _moveTo < 2)"";" \n
+       "}else{" \n
+       "_onBeach = true;" \n
+       "};" \n
+       "" \n
+       "" \n
+       "" \n
+       "if (_doDebug) then {" \n
+       "_debugDo = ""Move In"";" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "_">*/
+        class _
+        {
+          priority = 0.000000;
+          to="action";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "do_track">*/
+    class do_track
+    {
+      name = "do_track";
+      init = /*%FSM<STATEINIT""">*/"_moveTo = [24,4,142,_trgt] call EPOCH_fnc_findRandomPosBehind;" \n
+       "_shark forceSpeed 6;" \n
+       "_moveTo set [2,_zPos];" \n
+       "" \n
+       "" \n
+       "if ( surfaceIsWater _moveTo) then {" \n
+       "_shark moveTo _moveTo;" \n
+       "_sWait =  _shark distance _moveTo;" \n
+       "_actionDone = true;" \n
+       "_doTrack = false;" \n
+       "_t = diag_tickTime;" \n
+       "_criteria = ""(_shark  distance2D _moveTo < 2)"";" \n
+       "}else{" \n
+       "_onBeach = true;" \n
+       "};" \n
+       "" \n
+       "" \n
+       "if (_doDebug) then {" \n
+       "_debugDo = ""Track"";" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "_">*/
+        class _
+        {
+          priority = 0.000000;
+          to="action";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "bite">*/
+    class bite
+    {
+      name = "bite";
+      init = /*%FSM<STATEINIT""">*/"_dirTo = (random 360);" \n
+       "_wanderDist = floor (random 12) + 24;" \n
+       "_moveTo = [_shark, 6, _dirTo] call BIS_fnc_relPos;" \n
+       "" \n
+       "_shark forceSpeed 6;" \n
+       "_shark moveTo _moveTo;" \n
+       "" \n
+       "_dirTo =  [_shark, getPos _trgt] call BIS_fnc_dirTo;" \n
+       "" \n
+       "_shark setDir _dirTo;" \n
+       "_shark playMove ""Sharks_Stop"";" \n
+       "" \n
+       "if (_trgt == player) then {" \n
+       "	_shark call EPOCH_client_bitePlayer;" \n
+       "};" \n
+       "" \n
+       "_sWait = 12;" \n
+       "_criteria = ""(false)"";" \n
+       "" \n
+       "_actionDone = true;" \n
+       "_doAttack = false;" \n
+       "_t = diag_tickTime;" \n
+       "" \n
+       "" \n
+       "if (_doDebug) then {" \n
+       "_debugDo = ""Bite"";" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "_">*/
+        class _
+        {
+          priority = 0.000000;
+          to="action";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "random_sea_pos">*/
+    class random_sea_pos
+    {
+      name = "random_sea_pos";
+      init = /*%FSM<STATEINIT""">*/"_shark forceSpeed 7;" \n
+       "_dirTo = (random 360);" \n
+       "_wanderDist = floor (random 20) + 24;" \n
+       "_moveTo = [_shark, _wanderDist, _dirTo] call BIS_fnc_relPos;" \n
+       "" \n
+       "if ( surfaceIsWater _moveTo) then {" \n
+       "" \n
+       "_criteriaMetAction=""" \n
+       "_sharkPos = getPos _shark;" \n
+       "_zPos =  -0.55;" \n
+       "_sharkPos set [2,_zPos];" \n
+       "_shark setPos _sharkPos;" \n
+       """;" \n
+       "" \n
+       "_shark moveTo _moveTo;" \n
+       "_sWait = _shark distance _moveTo;" \n
+       "_actionDone = true;" \n
+       "_t = diag_tickTime;" \n
+       "_criteria = ""(_shark distance2D _moveTo < 2)"";" \n
+       "}else{" \n
+       "_sWait = 0;" \n
+       "_actionDone = true;" \n
+       "_criteria = ""(true)"";" \n
+       "};" \n
+       "" \n
+       "" \n
+       "" \n
+       "" \n
+       "if (_doDebug) then {" \n
+       "_debugDo = ""On Beach"";" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "_">*/
+        class _
+        {
+          priority = 0.000000;
+          to="action";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+  };
+  initState="shark";
+  finalStates[] =
+  {
+    "end"
+  };
+};
+/*%FSM</COMPILE>*/

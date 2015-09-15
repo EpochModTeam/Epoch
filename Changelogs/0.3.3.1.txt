@@ -1,0 +1,12 @@
+Client:
+[Fixed] Energy was incorrectly allowed to fall below 0.
+[Fixed] Typo that prevented small vehicle repair kits from working.
+[Fixed] Issue that caused the wrong base building upgrade-in-place option to be selected.
+[Fixed] Targeting issues with trash, snakes, and dead sappers.
+[Fixed] Three male vests had invisible texture issues.
+
+Server Side:
+[Fixed] Added check for getAllHitPointsDamage returning a blank array when loading buildings.
+[Fixed] Error in rpt when spawning vehicles if no class was selected.
+[Fixed] EAH was banning revived players incorrectly due to token changed check.
+[Info] Removed old .bikey and added new one for 0331.
