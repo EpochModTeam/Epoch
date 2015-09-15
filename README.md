@@ -21,6 +21,8 @@ Kenneth Bente - Axle - Public Relations
 
 Paul Tomany - Sequisha - Models, Textures
 
+Dan - OrangeSherbet - Tester, Videos, Wiki Editor
+
 Darren Harrison - Kiory - Models, Textures
 
 Damian Clark - [VB]GREEN - Graphics
