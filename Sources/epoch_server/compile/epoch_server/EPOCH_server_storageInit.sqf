@@ -1,0 +1,2 @@
+_this addMPEventHandler["MPKilled", { _this call EPOCH_server_save_killedStorage }];
+// _this addMPEventHandler["MPHit", { if !((_this select 0) in EPOCH_saveStorQueue) then { EPOCH_saveStorQueue pushBack(_this select 0) } }];
