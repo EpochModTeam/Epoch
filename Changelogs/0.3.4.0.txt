@@ -1,0 +1,6 @@
+Client:
+[Fixed] Client fps lag when first joining the server.
+
+Server:
+[Changed] Use new sort command instead of BIS_fncSortBy.
+[Changed] Use new worldSize command as default if maps worldSize setting in CfgEpoch does not exist.
