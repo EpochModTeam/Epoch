@@ -8,7 +8,7 @@ if !([_plyr,  _this select 3] call EPOCH_server_getPToken) exitWith{};
 if (_plyr distance _vehicle > 20) exitWith{};
 // if (vehicle _plyr != _plyr) exitWith{};
 
-if ((_value select 0) == "ALL") then {
+if ((_value select 0) isEqualTo "ALL") then {
 	_vehicle setDamage 0;
 } else {
 	if (local _vehicle) then {
