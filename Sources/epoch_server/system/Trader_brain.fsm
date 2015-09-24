@@ -1,0 +1,559 @@
+/*%FSM<COMPILE "F:\Program Files (x86)\Bohemia Interactive\Tools\FSM Editor Personal Edition\scriptedFSM.cfg, traders">*/
+/*%FSM<HEAD>*/
+/*
+item0[] = {"trader",0,250,-200.000000,-275.000000,-100.000000,-225.000000,0.000000,"trader"};
+item1[] = {"_",8,218,50.000000,375.000000,150.000000,425.000000,5.000000,""};
+item2[] = {"decision",2,250,175.000000,-200.000000,275.000000,-150.000000,0.000000,"decision"};
+item3[] = {"decision_made",4,218,175.000000,-25.000000,275.000000,25.000000,100.000000,"decision made"};
+item4[] = {"action",2,250,50.000000,125.000000,150.000000,175.000000,0.000000,"action"};
+item5[] = {"actioned",4,218,-200.000000,125.000000,-100.000000,175.000000,100.000000,"actioned"};
+item6[] = {"dispose",4,218,125.000000,-325.000000,225.000000,-275.000000,90.000000,"dispose"};
+item7[] = {"reset_vars",2,250,-75.000000,-200.000000,25.000000,-150.000000,0.000000,"reset vars"};
+item8[] = {"_",8,218,-75.000000,-25.000000,25.000000,25.000000,5.000000,""};
+item9[] = {"met",4,218,-200.000000,-125.000000,-100.000000,-75.000000,10.000000,"met"};
+item10[] = {"_",8,218,50.000000,50.000000,150.000000,100.000000,5.000000,""};
+item11[] = {"end",1,250,425.000000,25.000000,525.000000,75.000000,0.000000,"end"};
+item12[] = {"dispose",4,218,250.000000,25.000000,350.000000,75.000000,80.000000,"dispose"};
+item13[] = {"criteria",2,250,-200.000000,-25.000000,-100.000000,25.000000,0.000000,"criteria"};
+item14[] = {"interrupt_action",2,250,50.000000,-25.000000,150.000000,25.000000,0.000000,"interrupt action"};
+item15[] = {"player",4,218,50.000000,-125.000000,150.000000,-75.000000,10.000000,"player"};
+item16[] = {"_",8,218,50.000000,-200.000000,150.000000,-150.000000,5.000000,""};
+item17[] = {"go_work",4,218,307.360077,-260.220886,397.360077,-210.220947,70.000000,"go work"};
+item18[] = {"go_home",4,218,350.000000,-200.000000,450.000000,-150.000000,60.000000,"go home"};
+item19[] = {"work",4,218,175.000000,250.000000,275.000000,300.000000,60.000000,"work"};
+item20[] = {"move_to_work",2,4346,425.000000,250.000000,525.000000,300.000000,0.000000,"move to work"};
+item21[] = {"home",4,218,100.000000,300.000000,200.000000,350.000000,50.000000,"home"};
+item22[] = {"move_to_home",2,250,425.000000,325.000000,525.000000,375.000000,0.000000,"move to home"};
+item23[] = {"look_at",4,218,225.000000,-300.000000,325.000000,-250.000000,80.000000,"look at"};
+item24[] = {"serve",4,218,225.000000,175.000000,325.000000,225.000000,70.000000,"serve"};
+item25[] = {"look_at",2,250,425.000000,175.000000,525.000000,225.000000,0.000000,"look at"};
+item26[] = {"no_decisiion",4,218,50.000000,-275.000000,150.000000,-225.000000,85.000000,"no decisiion"};
+item27[] = {"interrupt",4,218,250.000000,100.000000,350.000000,150.000000,75.000000,"interrupt"};
+item28[] = {"trade",2,250,425.000000,100.000000,525.000000,150.000000,0.000000,"trade"};
+item29[] = {"_",8,218,-200.000000,-200.000000,-100.000000,-150.000000,5.000000,""};
+link0[] = {0,29};
+link1[] = {1,4};
+link2[] = {2,3};
+link3[] = {2,6};
+link4[] = {2,17};
+link5[] = {2,18};
+link6[] = {2,23};
+link7[] = {2,26};
+link8[] = {3,4};
+link9[] = {4,5};
+link10[] = {4,12};
+link11[] = {4,19};
+link12[] = {4,21};
+link13[] = {4,24};
+link14[] = {4,27};
+link15[] = {5,13};
+link16[] = {6,2};
+link17[] = {7,16};
+link18[] = {8,14};
+link19[] = {9,7};
+link20[] = {10,4};
+link21[] = {12,11};
+link22[] = {13,8};
+link23[] = {13,9};
+link24[] = {14,10};
+link25[] = {14,15};
+link26[] = {15,2};
+link27[] = {16,2};
+link28[] = {17,2};
+link29[] = {18,2};
+link30[] = {19,20};
+link31[] = {20,1};
+link32[] = {21,22};
+link33[] = {22,1};
+link34[] = {23,2};
+link35[] = {24,25};
+link36[] = {25,1};
+link37[] = {26,7};
+link38[] = {27,28};
+link39[] = {28,1};
+link40[] = {29,7};
+globals[] = {25.000000,1,0,0,16777215,640,480,1,92,6316128,1,-256.926910,577.747742,523.678101,-359.150879,832,880,1};
+window[] = {2,-1,-1,-1,-1,603,1758,2783,78,3,850};
+*//*%FSM</HEAD>*/
+class FSM
+{
+  fsmName = "traders";
+  class States
+  {
+    /*%FSM<STATE "trader">*/
+    class trader
+    {
+      name = "trader";
+      init = /*%FSM<STATEINIT""">*/"_trader = _this select 0;" \n
+       "_home = _this select 1;" \n
+       "_work = _this select 2 select 0;" \n
+       "_schedule = _this select 2 select 1;" \n
+       "_trgt = objNull;" \n
+       "" \n
+       "_trader disableAI ""FSM"";" \n
+       "_trader disableAI ""TARGET"";" \n
+       "_trader disableAI ""AUTOTARGET"";" \n
+       "_trader setBehaviour ""CARELESS"";" \n
+       "_trader setCombatMode ""BLUE"";" \n
+       "" \n
+       "_traderNames=[""Aaron"",""Kenneth"",""Paul"",""Darren"",""Damian"",""Niklas"",""Andrew"",""Nigel"",""Harry"",""Phil"",""Antony"",""Dave"",""Hammish"",""Richard"",""Peter"",""Conor""];" \n
+       "_traderName = _traderNames select (floor(random count _traderNames));" \n
+       "" \n
+       "_trgtArray = [""Epoch_Man_base_F"",""Epoch_Female_base_F""];" \n
+       "_tRange = 20;//Travel Range - Pause if players within range when travelling home" \n
+       "_sRange = 10;//Serve Range - Look at players within this distance" \n
+       "_maxTravelTime = 480;//Max time before process times out and continues, after moving. moveToCompleted will timeout before this." \n
+       "_atWork = false;" \n
+       "_atHome = true;" \n
+       "_lastDir = getDir _trader;" \n
+       "_l = diag_tickTime;" \n
+       "" \n
+       "" \n
+       "" \n
+       "" \n
+       "" \n
+       ""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "_">*/
+        class _
+        {
+          priority = 5.000000;
+          to="reset_vars";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/"_doneCheck = false;"/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "decision">*/
+    class decision
+    {
+      name = "decision";
+      init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "decision_made">*/
+        class decision_made
+        {
+          priority = 100.000000;
+          to="action";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_decisionMade;"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "dispose">*/
+        class dispose
+        {
+          priority = 90.000000;
+          to="decision";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!(alive _trader)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/"_doDispose = true;" \n
+           "_decisionMade = true;"/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "no_decisiion">*/
+        class no_decisiion
+        {
+          priority = 85.000000;
+          to="reset_vars";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!_decisionMade && diag_tickTime - _t > 3;"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "look_at">*/
+        class look_at
+        {
+          priority = 80.000000;
+          to="decision";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"count _nrPlyrs >0 && diag_tickTime - _l > 3;"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/"_servePlyr = true;" \n
+           "_decisionMade = true;" \n
+           "_trgt = _nrPlyrs select 0;"/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "go_work">*/
+        class go_work
+        {
+          priority = 70.000000;
+          to="decision";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(!_atWork) && (_daytime > (_schedule select 0) && _daytime < (_schedule select 1));"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/"_goWork = true;" \n
+           "_decisionMade = true;"/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "go_home">*/
+        class go_home
+        {
+          priority = 60.000000;
+          to="decision";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(!_atHome) && (!(_daytime > (_schedule select 0) && _daytime < (_schedule select 1)));"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/"_goHome = true;" \n
+           "_decisionMade = true;"/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "action">*/
+    class action
+    {
+      name = "action";
+      init = /*%FSM<STATEINIT""">*/"_nrPlyrs = _trader nearEntities [_trgtArray, _tRange];"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "actioned">*/
+        class actioned
+        {
+          priority = 100.000000;
+          to="criteria";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_actionDone;"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "dispose">*/
+        class dispose
+        {
+          priority = 80.000000;
+          to="end";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_doDispose;"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "interrupt">*/
+        class interrupt
+        {
+          priority = 75.000000;
+          to="trade";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_override;"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "serve">*/
+        class serve
+        {
+          priority = 70.000000;
+          to="look_at";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_servePlyr;"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "work">*/
+        class work
+        {
+          priority = 60.000000;
+          to="move_to_work";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_goWork && !_override;"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "home">*/
+        class home
+        {
+          priority = 50.000000;
+          to="move_to_home";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_goHome && !_override;"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "reset_vars">*/
+    class reset_vars
+    {
+      name = "reset_vars";
+      init = /*%FSM<STATEINIT""">*/"//Default Vars" \n
+       "" \n
+       "" \n
+       "_rnd = 0;" \n
+       "_actionDone = false;" \n
+       "_decisionMade = false;" \n
+       "_sWait = 0;" \n
+       "_doDispose = false;" \n
+       "_chooseTarget = false;" \n
+       "_criteria = Nil;" \n
+       "_criteriaMet = false;" \n
+       "_allowInterrupt = false;" \n
+       "_t = diag_tickTime;" \n
+       "" \n
+       "" \n
+       "_traderPos=[0,0,0];" \n
+       "_goWork = false;" \n
+       "_goHome = false;" \n
+       "_nrPlyrs = [];" \n
+       "_servePlyr = false;" \n
+       "_override = false;" \n
+       "" \n
+       "_criteriaMetAction = nil;" \n
+       "" \n
+       "_traderPos = getPosATL _trader;" \n
+       "_daytime = daytime;" \n
+       "_nrPlyrs = _trader nearEntities [_trgtArray, _sRange];"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "_">*/
+        class _
+        {
+          priority = 5.000000;
+          to="decision";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/"_doneCheck = false;"/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "end">*/
+    class end
+    {
+      name = "end";
+      init = /*%FSM<STATEINIT""">*/"diag_log format[""KILLED TRADER: %1"", (!alive _trader)];"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "criteria">*/
+    class criteria
+    {
+      name = "criteria";
+      init = /*%FSM<STATEINIT""">*/"//intentionally left blank"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "met">*/
+        class met
+        {
+          priority = 10.000000;
+          to="reset_vars";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(call compile _criteria) || (diag_tickTime > (_t + _sWait));"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/"if (!isNil ""_criteriaMetAction"") then {" \n
+           "call compile _criteriaMetAction;" \n
+           "};"/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "_">*/
+        class _
+        {
+          priority = 5.000000;
+          to="interrupt_action";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/"_doneCheck = false;"/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "interrupt_action">*/
+    class interrupt_action
+    {
+      name = "interrupt_action";
+      init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "player">*/
+        class player
+        {
+          priority = 10.000000;
+          to="decision";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(count _nrPlyrs > 0) && _allowInterrupt;"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/"_trader moveTo getPos _trader;" \n
+           "_override = true;" \n
+           "_actionDone = false;"/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "_">*/
+        class _
+        {
+          priority = 5.000000;
+          to="action";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/"_doneCheck = false;"/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "move_to_work">*/
+    class move_to_work
+    {
+      name = "move_to_work";
+      init = /*%FSM<STATEINIT""">*/"_trader moveTo _work;" \n
+       "_sWait = _maxTravelTime;" \n
+       "_actionDone = true;" \n
+       "_t = diag_tickTime;" \n
+       "_criteria = format[""moveToCompleted %1"",""_trader""];" \n
+       "_criteriaMetAction = format [""_atWork = %1"",true];" \n
+       "_atHome = false;" \n
+       "_allowInterrupt = true;" \n
+       "" \n
+       "_marker = _trader getVariable[""MARKER_REF"",""""];" \n
+       "if (_marker != """") then {" \n
+       "	deleteMarker _marker;" \n
+       "	_pos = getPosATL _trader;" \n
+       "	_marker = createMarker [str(_pos), (_pos)];" \n
+       "	_marker setMarkerShape ""ICON"";" \n
+       "	_marker setMarkerType ""mil_dot"";" \n
+       "	_marker setMarkerColor ""ColorBrown"";" \n
+       "	_trader setVariable[""MARKER_REF"", _marker];" \n
+       "};" \n
+       ""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "_">*/
+        class _
+        {
+          priority = 5.000000;
+          to="action";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/"_doneCheck = false;"/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "move_to_home">*/
+    class move_to_home
+    {
+      name = "move_to_home";
+      init = /*%FSM<STATEINIT""">*/"_trader moveTo _home;" \n
+       "_sWait = _maxTravelTime;" \n
+       "_actionDone = true;" \n
+       "_t = diag_tickTime;" \n
+       "_criteria = format[""moveToCompleted %1"",""_trader""];" \n
+       "_criteriaMetAction = format [""_atHome = %1"",true];" \n
+       "_atWork = false;" \n
+       "_allowInterrupt = true;" \n
+       "" \n
+       "_marker = _trader getVariable[""MARKER_REF"",""""];" \n
+       "if (_marker != """") then {" \n
+       "	deleteMarker _marker;" \n
+       "	_pos = getPosATL _trader;" \n
+       "	_marker = createMarker [str(_pos), (_pos)];" \n
+       "	_marker setMarkerShape ""ICON"";" \n
+       "	_marker setMarkerType ""mil_dot"";" \n
+       "	_marker setMarkerColor ""ColorBrown"";" \n
+       "	_trader setVariable[""MARKER_REF"", _marker];" \n
+       "};" \n
+       ""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "_">*/
+        class _
+        {
+          priority = 5.000000;
+          to="action";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/"_doneCheck = false;"/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "look_at">*/
+    class look_at
+    {
+      name = "look_at";
+      init = /*%FSM<STATEINIT""">*/"if !(isNull _trgt) then {" \n
+       "_dir = [_trader, _trgt] call BIS_fnc_dirTo;" \n
+       "if(_lastDir != _dir)then{" \n
+       "	_trader setDir _dir;" \n
+       "	_lastDir = _dir;" \n
+       "};" \n
+       "};" \n
+       "_sWait = 1;" \n
+       "_actionDone = true;" \n
+       "_t = diag_tickTime;" \n
+       "_criteria = format [""%1"", true ];" \n
+       "_l = diag_tickTime;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "_">*/
+        class _
+        {
+          priority = 5.000000;
+          to="action";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/"_doneCheck = false;"/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "trade">*/
+    class trade
+    {
+      name = "trade";
+      init = /*%FSM<STATEINIT""">*/"if !(isNull _trgt) then {" \n
+       "	_trader setDir ([_trader, _trgt] call BIS_fnc_dirTo);" \n
+       "};" \n
+       "_sWait = 480;" \n
+       "_actionDone = true;" \n
+       "_t = diag_tickTime;" \n
+       "_allowInterrupt = true;" \n
+       "_criteria = format [""count %1 < %2"",""_nrPlyrs"",1];" \n
+       "" \n
+       "if (_goHome) then {" \n
+       "_criteriaMetAction = format [""%1 moveTo %2"",""_trader"",""_home""];" \n
+       "};" \n
+       "" \n
+       "if (_goWork) then {" \n
+       "_criteriaMetAction = format [""%1 moveTo %2"",""_trader"",""_work""];" \n
+       "};" \n
+       ""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "_">*/
+        class _
+        {
+          priority = 5.000000;
+          to="action";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/"_doneCheck = false;"/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+  };
+  initState="trader";
+  finalStates[] =
+  {
+    "end"
+  };
+};
+/*%FSM</COMPILE>*/

@@ -190,8 +190,8 @@ link97[] = {85,79};
 link98[] = {86,16};
 link99[] = {86,22};
 link100[] = {87,31};
-globals[] = {25.000000,1,0,0,0,640,480,1,244,6316128,1,-631.407898,509.397247,1639.671997,811.364685,1212,880,1};
-window[] = {2,-1,-1,-1,-1,808,78,1118,78,3,1230};
+globals[] = {25.000000,1,0,0,0,640,480,1,244,6316128,1,-506.837463,384.823669,1593.480103,946.069397,1212,880,1};
+window[] = {2,-1,-1,-1,-1,860,-1550,-510,130,3,1230};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -245,7 +245,6 @@ class FSM
        "" \n
        "" \n
        "player enableSimulation true;" \n
-       "// player switchMove """";" \n
        "" \n
        "titleCut ["""", ""BLACK IN"", 1];" \n
        "1338 cutText ["""",""PLAIN"",0]; " \n
@@ -253,7 +252,9 @@ class FSM
        "progressLoadingScreen 1.0;" \n
        "" \n
        "endLoadingScreen;" \n
-       "EPOCH_loadingScreenDone = true;"/*%FSM</STATEINIT""">*/;
+       "EPOCH_loadingScreenDone = true;" \n
+       "" \n
+       "player switchMove """";"/*%FSM</STATEINIT""">*/;
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
       class Links
       {
@@ -458,7 +459,6 @@ class FSM
        """Loading Player Variables... Please wait!"" call Epoch_updateLoadingScreen;" \n
        "" \n
        "EPOCH_lastPlayerPos = getPosATL vehicle player;" \n
-       "" \n
        "" \n
        "progressLoadingScreen 0.7;" \n
        "" \n
@@ -932,7 +932,7 @@ class FSM
           priority = 0.000000;
           to="FINISH";
           precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"true"/*%FSM</CONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"preloadCamera (getposATL player)"/*%FSM</CONDITION""">*/;
           action=/*%FSM<ACTION""">*/"call compile _playerGroupOnline;"/*%FSM</ACTION""">*/;
         };
         /*%FSM</LINK>*/
@@ -1022,7 +1022,9 @@ class FSM
       name = "Check_New_Player";
       init = /*%FSM<STATEINIT""">*/"_myTime = diag_tickTime;" \n
        "" \n
-       "player reveal [_playerObject, 4];" \n
+       "// player reveal [_playerObject, 4];" \n
+       "" \n
+       "" \n
        """Loading Player Inventory... Please wait!"" call Epoch_updateLoadingScreen;" \n
        "progressLoadingScreen 0.6;" \n
        ""/*%FSM</STATEINIT""">*/;
