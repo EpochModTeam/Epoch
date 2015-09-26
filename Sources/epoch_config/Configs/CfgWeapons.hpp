@@ -1110,6 +1110,25 @@ class CfgWeapons
 		hiddenSelections[] = {};
 		hitpointName = "HitHead";
 	};
+
+	class clown_mask_epoch : ItemCore
+	{
+		scope = 2;
+		weaponPoolAvailable = 1;
+		displayName = "Clown Mask";
+		picture = "\x\addons\a3_epoch_assets_3\CfgVehicles\Characters\gear_wolfmask_x_ca.paa";
+		model = "\x\addons\a3_epoch_assets_3\CfgVehicles\Characters\clown.p3d";
+		class ItemInfo : HeadgearItem
+		{
+			mass = 40;
+			uniformModel = "\x\addons\a3_epoch_assets_3\CfgVehicles\Characters\clown.p3d";
+			modelSides[] = { 3, 2, 1 };
+			// armor = 400;
+			passThrough = 0.5;
+			// hiddenSelections[] = { "camo" };
+		};
+	};
+
 	class H_F0_EPOCH: ItemCore
 	{
 		scope = 2;

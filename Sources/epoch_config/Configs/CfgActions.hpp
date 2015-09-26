@@ -45,6 +45,10 @@ class CfgActions
 	{
 		show = 0;
 	};
+	class AddBag : None
+	{
+		show = 0;
+	};
 	class TakeMine : None
 	{
 		show = 0;
