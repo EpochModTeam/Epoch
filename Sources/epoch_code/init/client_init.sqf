@@ -1,4 +1,5 @@
 //Variables
+EPOCH_CraftingItem = "";
 EPOCH_ESP_TARGETS = [];
 EPOCH_ESPMAP_TARGETS = [];
 EPOCH_ESPGROUPS = [];

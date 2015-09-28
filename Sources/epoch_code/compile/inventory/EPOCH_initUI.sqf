@@ -12,7 +12,7 @@ EPOCH_lastContainer = _this select 1;
 waitUntil {!isNull findDisplay 602};
 _display = (findDisplay 602);
 
-{(_display displayCtrl _x) ctrlEnable false} forEach [-13,-14];
+(_display displayCtrl -13) ctrlEnable false;
 
 _totalArmor = 0;
 _totalArmorMax = EPOCH_MAX_ARMOR select 3;

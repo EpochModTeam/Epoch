@@ -134,10 +134,7 @@ class CfgClientFunctions
 			class niteLight {};
 			class LootIT {};
 			class supportCopter {};
-			class itemInteract {};
 			class consumeItem {};
-			class craftItemPreview {};
-			class craftItem {};
 			class unitSpawn {};
 			class antiWall {};
 			class onEachFrame {};
@@ -211,6 +208,7 @@ class CfgClientFunctions
 			class fnc_findSafePos {};
 
 			class pushCustomVar {};
+			class itemData {};
 			class itemPicture {};
 			class itemDisplayName {};
 			class SortArrayByDistance {};
@@ -255,12 +253,35 @@ class CfgClientFunctions
 		};
 
 		class gui {
-				file = "\x\addons\a3_epoch_code\gui\scripts";
-				class onPause {};
-				class interactVehicle {};
-				class showStats {};
+			file = "\x\addons\a3_epoch_code\gui\scripts";
+			class onPause {};
+			class interactVehicle {};
+			class showStats {};
+			class dynamicMenu {};
+			class dynamicMenuCleanup {};
+			class 3DctrlPitchYaw {};
+			class 3DctrlSpin {};
+			class 3DctrlYaw {};
 		};
 
+		class gui_craft {
+			file = "\x\addons\a3_epoch_code\gui\scripts\craftingv2";
+			class crafting_animate {};
+			class crafting_ctrl_collector {};
+			class crafting_dev_toggle {};
+			class crafting_getConfig {};
+			class crafting_checkGear {};
+			class crafting_checkNearby {};
+			class crafting_checkResources {};
+			class crafting_craft {};
+			class crafting_progress {};
+			class crafting_load {};
+			class crafting_unload {};
+			class crafting_LB_click {};
+			class crafting_LB_defaults {};
+			class crafting_LB_doubleClick {};
+			class crafting_colorScheme {};
+		};	
 		class group {
 			file = "\x\addons\a3_epoch_code\gui\scripts\group";
 			class Group_invitePlayer {};
@@ -291,7 +312,12 @@ class CfgClientFunctions
 			class mission_refresh {};
 			class mission_description {};
 		};
-
+		class gui_postProcessing {
+			file = "\x\addons\a3_epoch_code\gui\scripts\post_process";
+			class postprocessCreate {};
+			class postprocessAdjust {};
+			class postprocessDestroy {};
+		};
 	};
 };
 #include "\x\addons\a3_epoch_code\gui\Epoch_GUI_Config.hpp"

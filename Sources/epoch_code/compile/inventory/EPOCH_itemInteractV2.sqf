@@ -8,25 +8,11 @@ _text = _control lbText _index;
 _data = _control lbData _index;
 _pic = _control lbPicture _index;
 
-_craftingArray = [];
-_craftingArrayNames = [];
-
 if (_data == "") then {
   _confData = "getText (_x >> 'displayName') == _text" configClasses(configFile >> "CfgWeapons");
   if !(_confData isEqualTo[]) then {
     _data = configName(_confData select 0);
   };
-};
-
-_config = 'CfgCrafting' call EPOCH_returnConfig;
-_craftingConfig = _config >> _data;
-
-if (isClass (_craftingConfig)) then {
-  _usedIn = [] + getArray (_craftingConfig >> "usedIn");
-  {
-    _craftingArray pushBack (_x call EPOCH_itemPicture);
-    _craftingArrayNames pushBack (_x call EPOCH_itemDisplayName);
-  } forEach _usedIn;
 };
 
 EPOCH_InteractedItem = [_text,_data,_pic];
@@ -55,8 +41,15 @@ if (_buttonTXT != "") then {
 };
 
 _useBtn = _display displayCtrl -14;
-if !(_craftingArray isEqualTo []) then {
-  _useBtn ctrlEnable true;
+_useBtn ctrlEnable true;
+
+_config = 'CfgCrafting' call EPOCH_returnConfig;
+_craftingConfig = _config >> _data;
+
+if (isClass (_craftingConfig)) then {
+  _useBtn ctrlSetTextColor [0,1,0,1];
+  EPOCH_CraftingItem = EPOCH_InteractedItem select 0;
 } else {
-  _useBtn ctrlEnable false;
+  _useBtn ctrlSetTextColor [1,0,0,1];
+  EPOCH_CraftingItem = "";
 };

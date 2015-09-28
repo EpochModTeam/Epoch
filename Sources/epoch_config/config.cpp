@@ -43,6 +43,9 @@ class CfgAddons
 #include "\x\addons\a3_epoch_config\Configs\CfgBaseBuilding.hpp"
 #include "\x\addons\a3_epoch_config\Configs\CfgBuildingLootPos.hpp"
 
+//gitmerge fix
+#include "\x\addons\a3_epoch_config\Configs\CfgDynamicMenu.hpp"
+
 class DefaultEventhandlers;
 class WeaponFireGun;
 class WeaponCloudsGun;
