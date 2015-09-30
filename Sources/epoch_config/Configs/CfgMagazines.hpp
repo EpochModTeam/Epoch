@@ -58,6 +58,22 @@ class CfgMagazines
 		interactText = "BUILD";
 		buildClass = "LockBox_SIM_EPOCH";
 	};
+	class ItemSafe : CA_Magazine
+	{
+		scope = 2;
+		count = 1;
+		type = 256;
+		displayName = "Safe";
+		model = "\x\addons\a3_epoch_assets_1\models\safe_onside.p3d";
+		picture = "\x\addons\a3_epoch_assets_1\pictures\equip_safe_CA.paa";
+		descriptionShort = "Secure Safe";
+		mass = 50;
+		interactAction = 3;
+		interactText = "BUILD";
+		buildClass = "Safe_SIM_EPOCH";
+	};
+	
+
 	class PartPlankPack: CA_Magazine
 	{
 		scope = 2;

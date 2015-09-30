@@ -7,7 +7,7 @@ if (isNull _unit) exitWith{};
 if (_plyr distance _unit > 20) exitWith{};
 
 _type = typeOf _unit;
-if (_type in ["LockBox_EPOCH","LockBoxProxy_EPOCH"]) then {
+if (getNumber(configFile >> "CfgVehicles" >> _type >> "isSecureStorage") == 1) then{
 
 	_parentID = _unit getVariable ["EPOCH_secureStorage", "-1"];
 	_weaponHolder = missionNamespace getVariable [format ["EPOCH_STORAGE_%1",_parentID], objNull];

@@ -5,7 +5,8 @@ if !([_plyr, _this select 2] call EPOCH_server_getPToken) exitWith{};
 if (isNull _unit) exitWith{};
 if (_plyr distance _unit > 20) exitWith{};
 
-if (typeOf _unit == "LockBox_EPOCH") then {
+_class = typeOf _unit;
+if (_class isKindOf 'Constructions_lockedstatic_F') then{
 	_parentID = _unit getVariable["EPOCH_secureStorage", "-1"];
 	_weaponHolder = missionNamespace getVariable[format["EPOCH_STORAGE_%1", _parentID], objNull];
 	if (!isNull _weaponHolder) then {
@@ -40,7 +41,11 @@ if (typeOf _unit == "LockBox_EPOCH") then {
 				
 			_gwh = createVehicle["groundWeaponHolder", _posWH, [], 0, "CAN_COLLIDE"];
 			_gwh setPosATL _posWH;
-			_gwh addMagazineCargoGlobal["ItemLockbox", 1];
+
+			_returnItems = getArray(configFile >> "CfgVehicles" >> _class >> "returnOnPack");
+			{
+				_gwh addMagazineCargoGlobal _x;
+			} forEach _returnItems;
 
 			{
 				_objType = _forEachIndex;

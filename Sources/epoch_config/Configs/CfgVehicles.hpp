@@ -1927,6 +1927,21 @@ class CfgVehicles
 		class TransportItems{};
 		class Eventhandlers{};
 	};
+
+	class I_MRAP_03_F;
+	class I_MRAP_03_EPOCH : I_MRAP_03_F
+	{
+		scope = 2;
+		crew = "";
+		side = 3;
+		armor = 75;
+		faction = "CIV_F";
+		maximumLoad = 3500;
+		typicalCargo[] = {};
+		class TransportItems{};
+		class Eventhandlers{};
+	};
+
 	class B_Truck_01_transport_F;
 	class B_Truck_01_transport_EPOCH: B_Truck_01_transport_F
 	{
@@ -2339,8 +2354,8 @@ class CfgVehicles
 		model = "\x\addons\a3_epoch_assets_3\CfgVehicles\Characters\Sapper_corpse.p3d";
 		displayName = "Sapper Corpse";
 	};
-
-	class LockBox_SIM_EPOCH : Constructions_modular_F
+	class Secure_Storage_Temp : Constructions_modular_F {};
+	class LockBox_SIM_EPOCH : Secure_Storage_Temp
 	{
 		scope = 2;
 		model = "\x\addons\a3_epoch_assets_1\models\lockbox.p3d";
@@ -2348,6 +2363,17 @@ class CfgVehicles
 		simulClass = "LockBox_SIM_EPOCH";
 		staticClass = "LockBox_EPOCH";
 		GhostPreview = "LockBox_EPOCH";
+		limitNearby = 2;
+		bypassJammer = 1;
+	};
+	class Safe_SIM_EPOCH : Secure_Storage_Temp
+	{
+		scope = 2;
+		model = "\x\addons\a3_epoch_assets_1\models\safe.p3d";
+		displayName = "Safe";
+		simulClass = "Safe_SIM_EPOCH";
+		staticClass = "Safe_EPOCH";
+		GhostPreview = "Safe_EPOCH";
 		limitNearby = 2;
 		bypassJammer = 1;
 	};
@@ -3560,6 +3586,46 @@ class CfgVehicles
 		armor = 5000;
 		bypassJammer = 1;
 		limitNearby = 2;
+		isSecureStorage = 1;
+		returnOnPack[] = { { "ItemLockbox", 1 } };
+		class UserActions
+		{
+			class Unlock
+			{
+				displayName = "Unlock";
+				onlyforplayer = 1;
+				position = "Door_knopf";
+				radius = 3;
+				condition = "this getVariable [""EPOCH_Locked"",true]";
+				statement = "EPOCH_lockStorage_PVS = [this,false,player,Epoch_personalToken]; publicVariableServer ""EPOCH_lockStorage_PVS"";";
+			};
+			class Pack
+			{
+				displayName = "Pack";
+				onlyforplayer = 1;
+				position = "Door_knopf";
+				radius = 3;
+				condition = "this getVariable [""EPOCH_Locked"",true]";
+				statement = "EPOCH_packStorage_PVS = [this,player,Epoch_personalToken]; publicVariableServer ""EPOCH_packStorage_PVS"";";
+			};
+		};
+	};
+
+
+	class Safe_EPOCH : Constructions_lockedstatic_F
+	{
+		scope = 2;
+		model = "\x\addons\a3_epoch_assets_1\models\safe.p3d";
+		displayName = "Lockbox";
+		simulClass = "Safe_SIM_EPOCH";
+		staticClass = "Safe_EPOCH";
+		weaponHolderProxy = "SafeProxy_EPOCH";
+		GhostPreview = "Safe_EPOCH";
+		armor = 15000;
+		bypassJammer = 1;
+		limitNearby = 2;
+		isSecureStorage = 1;
+		returnOnPack[] = { { "ItemSafe", 1 } };
 		class UserActions
 		{
 			class Unlock
@@ -4866,7 +4932,8 @@ class CfgVehicles
 		};
 	};
 
-	class LockBoxProxy_EPOCH : WeaponHolder
+	class Secure_Storage_Proxy : WeaponHolder {};
+	class LockBoxProxy_EPOCH : Secure_Storage_Proxy
 	{
 		scope = 2;
 		model = "\A3\Weapons_f\dummyweapon.p3d";
@@ -4875,6 +4942,32 @@ class CfgVehicles
 		showWeaponCargo = 0;
 		forceSupply = 0;
 		maximumLoad = 600;
+		isSecureStorage = 1;
+
+		class UserActions
+		{
+			class Lock
+			{
+				displayName = "Lock";
+				onlyforplayer = 1;
+				position = "Door_knopf";
+				radius = 3;
+				condition = "this == this";
+				statement = "EPOCH_lockStorage_PVS = [this,true,player,Epoch_personalToken]; publicVariableServer ""EPOCH_lockStorage_PVS"";";
+			};
+		};
+	};
+
+	class SafeProxy_EPOCH : Secure_Storage_Proxy
+	{
+		scope = 2;
+		model = "\A3\Weapons_f\dummyweapon.p3d";
+		displayName = "Safe WH";
+		isGround = 0;
+		showWeaponCargo = 0;
+		forceSupply = 0;
+		maximumLoad = 3600;
+		isSecureStorage = 1;
 
 		class UserActions
 		{

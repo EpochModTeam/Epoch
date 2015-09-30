@@ -5,6 +5,7 @@ class CfgPricing
 	class ItemCoolerE {price = 50;};
 	class JackKit {price = 25;};
 	class ItemLockbox {price = 250; tax = 0.5;};
+	class ItemSafe { price = 1250; tax = 0.5; };
 	class ItemCompass {price = 3;};
 	class ItemGPS {price = 20;};
 
@@ -632,6 +633,7 @@ class CfgPricing
 	class H_104_EPOCH {price = 3;};
 	class wolf_mask_epoch {price = 30;};
 	class pkin_mask_epoch {price = 30;};
+	class clown_mask_epoch {price = 30;};
 
 	class C_Offroad_01_EPOCH {price = 750;};
 	class C_Quadbike_01_EPOCH {price = 500;};
@@ -650,6 +652,7 @@ class CfgPricing
 	class B_Heli_Light_01_EPOCH {price = 2500;};
 	class B_SDV_01_EPOCH {price = 1000;};
 	class B_MRAP_01_EPOCH {price = 2500;};
+	class I_MRAP_03_EPOCH { price = 2500; };
 	class B_G_Offroad_01_armed_EPOCH {price = 2500;};
 	class B_Truck_01_transport_EPOCH {price = 1000;};
 	class B_Truck_01_covered_EPOCH {price = 1000;};

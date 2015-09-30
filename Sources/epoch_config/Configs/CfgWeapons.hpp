@@ -1116,7 +1116,7 @@ class CfgWeapons
 		scope = 2;
 		weaponPoolAvailable = 1;
 		displayName = "Clown Mask";
-		picture = "\x\addons\a3_epoch_assets_3\CfgVehicles\Characters\gear_wolfmask_x_ca.paa";
+		picture = "\x\addons\a3_epoch_assets_3\CfgVehicles\Characters\gear_clownmask_ca.paa";
 		model = "\x\addons\a3_epoch_assets_3\CfgVehicles\Characters\clown.p3d";
 		class ItemInfo : HeadgearItem
 		{
@@ -2217,6 +2217,24 @@ class CfgWeapons
 		descriptionShort = "Sledge Hammer";
 
 	};
+	class MeleeSword : MeleeWeapon
+	{
+		scope = 2;
+		type = 4;
+		primary = 0;
+		reloadAction = "ReloadRPG";
+		autoreload = 1;
+		magazineReloadTime = 0;
+		model = "\x\addons\a3_epoch_assets_3\CfgWeapons\sword_weaponized.p3d";
+		//TODO ICON
+		picture = "\x\addons\a3_epoch_assets\textures\Sledge\equip_sledge_CA.paa";
+		displayName = "Sword";
+		magazines[] = { "sledge_swing" };
+		handAnim[] = { "OFP2_ManSkeleton", "\x\addons\a3_epoch_assets_3\CfgVehicles\Characters\Sledge_hold.rtm" };
+		descriptionShort = "Sword";
+
+	};
+
 	class MeleeMaul : MeleeWeapon
 	{
 		scope = 2;
@@ -2247,6 +2265,22 @@ class CfgWeapons
 		magazines[] = { "stick_swing" };
 		handAnim[] = { "OFP2_ManSkeleton", "\x\addons\a3_epoch_assets_3\CfgVehicles\Characters\Sledge_hold.rtm" };
 		descriptionShort = "Wood Club";
+	};
+	class MeleeRod : MeleeWeapon
+	{
+		scope = 2;
+		type = 4;
+		primary = 0;
+		reloadAction = "ReloadRPG";
+		autoreload = 1;
+		magazineReloadTime = 0;
+		model = "\x\addons\a3_epoch_assets_3\CfgWeapons\fishingpole_weaponized.p3d";
+		// TODO
+		picture = "\x\addons\a3_epoch_assets\textures\improv_weapon\gear_stick_ca.paa";
+		displayName = "Fishing Rod";
+		magazines[] = { "stick_swing" };
+		handAnim[] = { "OFP2_ManSkeleton", "\x\addons\a3_epoch_assets_3\CfgVehicles\Characters\Sledge_hold.rtm" };
+		descriptionShort = "Fishing Rod";
 	};
 	class Plunger : MeleeWeapon
 	{

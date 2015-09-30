@@ -1,5 +1,12 @@
 Client:
-[Fixed] Client fps lag when first joining the server.
+[Added] New secure storage device: Safe 
+[Added] New crafting UI and system by Raymix.
+[Added] Epoch variant of the unarmed Strider vehicle. (I_MRAP_03_EPOCH)
+[Added] Melee weapons: a Broad Sword and Fishing Pole.
+[Added] Halloween Clown mask.
+[Fixed] Reduce client fps lag when first joining the server.
+[Changed] Wolf/Pumpkin masks and Meeps Candy re-added to loot tables for Halloween.
+
 
 Server:
 [Fixed] Error Generic error in expression in EPOCH_server_repairVehicle.

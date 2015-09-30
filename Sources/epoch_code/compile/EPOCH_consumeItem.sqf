@@ -96,7 +96,7 @@ switch _interactOption do {
 
 			_isOk = if (_isStorage == 1) then { EPOCH_StorageSlotsCount > 0 } else { EPOCH_BuildingSlotCount > 0 };
 
-			if (_buildClass == "LockBox_SIM_EPOCH") then {
+			if (_buildClass isKindOf "Secure_Storage_Temp") then {
 				_isOk = (EPOCH_StorageSlotsCount > 0 && EPOCH_BuildingSlotCount > 0);
 			};
 			if (isNil "EPOCH_simulSwap_Lock") then {

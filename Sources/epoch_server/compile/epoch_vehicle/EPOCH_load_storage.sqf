@@ -76,9 +76,7 @@ for "_i" from 1 to _this do {
 
 			if (count _arr >= 6) then {
 				_vehicle setVariable ["STORAGE_OWNERS", _arr select 5];
-
-				if (_class == "LockBoxProxy_EPOCH") then {
-
+				if (_class isKindOf 'Secure_Storage_Proxy') then{
 					if ((_arr select 6) != -1) then {
 						_vehicle setVariable ["EPOCH_secStorParent", _arr select 6];
 						_location set [2, -10];

@@ -29,7 +29,7 @@ for "_i" from 1 to _this do {
 			_class = _arr select 0;
 			_worldspace = _arr select 1;
 			_damage = _arr select 2;
-			
+
 			if (_class != "" && _damage < 1) then {
 				_location = _worldspace deleteAt 0;
 
@@ -41,7 +41,7 @@ for "_i" from 1 to _this do {
 					};
 
 					EPOCH_VehicleSlots deleteAt _vehicleSlotIndex;
-					
+
 					// temp for changes in class names
 					_found = ["O_Heli_Transport_04_F","O_Heli_Transport_04_bench_F","O_Heli_Transport_04_box_F","O_Heli_Transport_04_covered_F","B_Heli_Transport_03_unarmed_F","O_Truck_03_covered_F"] find _class;
 					if (_found != -1) then {
@@ -49,13 +49,13 @@ for "_i" from 1 to _this do {
 					};
 
 					_vehicle = createVehicle [_class, _location, [], 0, "CAN_COLLIDE"];
-					
-					
+
 					_allVehicles pushBack _vehicle;
 
 					_vehicle call EPOCH_server_setVToken;
 
 					_vehicle setposATL _location;
+					
 					_vehicle setVectorDirAndUp _worldspace;
 
 					_vehicle setDamage _damage;
@@ -80,7 +80,7 @@ for "_i" from 1 to _this do {
 					};
 
 					_vehicle setFuel (_arr select 4);
-					
+
 					_vehicle call EPOCH_server_vehicleInit;
 
 					_config = configFile >> "CfgVehicles" >> _class >> "availableColors";
@@ -129,7 +129,7 @@ for "_i" from 1 to _this do {
 								case 0: {
 									if (typeName _x == "ARRAY") then {
 										if ((count _x) >= 4) then {
-											
+
 											_vehicle addWeaponCargoGlobal[_x deleteAt 0, 1];
 
 											_attachments = [];
@@ -150,7 +150,7 @@ for "_i" from 1 to _this do {
 												};
 											} forEach _x;
 
-											// add all attachments to vehicle 
+											// add all attachments to vehicle
 											// TODO replace with adding attachments directly to gun (Arma feature dependant)
 											{
 												_vehicle addItemCargoGlobal[_x, 1];
@@ -161,7 +161,7 @@ for "_i" from 1 to _this do {
 													_vehicle addMagazineAmmoCargo[_wMagsArray select 0, 1, _wMagsArray select 1];
 												};
 											};
-											
+
 										};
 									};
 								};
@@ -229,8 +229,8 @@ for "_i" from 1 to _this do {
 						_vehicle enableSimulationGlobal false;
 					};
 
-					
-					
+
+
 				};
 			};
 		};

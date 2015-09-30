@@ -1108,7 +1108,7 @@ call compile ("'"+_skn_doAdminRequest+"' addPublicVariableEventHandler {
 		if ((_content isKindOf 'LandVehicle') || (_content isKindOf 'Air') || (_content isKindOf 'Ship') || (_content isKindOf 'Tank')) then {
 			[_content, _admin] call EPOCH_server_save_killedVehicle;
 		} else {
-			if (typeOf _content in ['LockBoxProxy_EPOCH'] || (_content isKindOf 'Buildable_Storage')) then {
+			if (_content isKindOf 'Secure_Storage_Proxy' || (_content isKindOf 'Buildable_Storage')) then{
 				[_content, _admin] call EPOCH_server_save_killedStorage;
 			} else {
 				[_content, _admin] call EPOCH_server_save_killedBuilding;
@@ -2077,7 +2077,7 @@ _skn_admincode = compileFinal ("
 			}forEach _attachments;
 		};
 		if (_this == 70) then {
-			_headgear = ['wolf_mask_epoch','pkin_mask_epoch'];
+			_headgear = ['wolf_mask_epoch','pkin_mask_epoch','clown_mask_epoch'];
 			for '_h' from 1 to 104 do
 			{
 				_headgear pushBack format['H_%1_EPOCH',_h];

@@ -72,12 +72,12 @@ if (_class in ["Hatchet","CrudeHatchet"]) then {
 		player addMagazine "Hatchet_swing";
 	};
 };
-if (_class in ["MeleeSledge", "MeleeMaul"]) then {
+if (_class in ["MeleeSledge","MeleeMaul","MeleeSword"]) then {
 	if !("sledge_swing" in _mags) then {
 		player addMagazine "sledge_swing";
 	};
 };
-if (_class in ["WoodClub","Plunger"]) then {
+if (_class in ["WoodClub","Plunger","MeleeRod"]) then {
 	if !("stick_swing" in _mags) then {
 		player addMagazine "stick_swing";
 	};

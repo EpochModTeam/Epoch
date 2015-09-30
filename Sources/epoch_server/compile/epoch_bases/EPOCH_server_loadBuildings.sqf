@@ -82,7 +82,8 @@ for "_i" from 0 to _this do {
 					_marker setMarkerColor "ColorBlue";
 				};
 			};
-			if (_class == "LockBox_EPOCH") then {
+
+			if (_class isKindOf 'Constructions_lockedstatic_F') then{
 				if ((_location select 2) < 0) then {
 					_location set [2, 0];
 					_baseObj setposATL _location;

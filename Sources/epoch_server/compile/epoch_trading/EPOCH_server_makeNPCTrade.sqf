@@ -185,9 +185,9 @@ if (_slot != -1) then {
 										};
 									};
 									// select available slot
-									_slot = EPOCH_VehicleSlots select 0;
+									_vehslot = EPOCH_VehicleSlots select 0;
 									// Remove from available slots
-									EPOCH_VehicleSlots = EPOCH_VehicleSlots - [_slot];
+									EPOCH_VehicleSlots = EPOCH_VehicleSlots - [_vehslot];
 									EPOCH_VehicleSlotCount = count EPOCH_VehicleSlots;
 									publicVariable "EPOCH_VehicleSlotCount";
 
@@ -203,7 +203,7 @@ if (_slot != -1) then {
 										_lockOwner = _plyrGroup;
 									};
 
-									_vehObj = [_item,_position,random 360,true,_slot,_lockOwner,"NONE",false] call EPOCH_fnc_spawn_vehicle;
+									_vehObj = [_item,_position,random 360,true,_vehslot,_lockOwner,"NONE",false] call EPOCH_fnc_spawn_vehicle;
 
 
 									_returnOut pushBack _item;
