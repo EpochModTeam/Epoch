@@ -244,7 +244,9 @@ class CfgPricing
 	class Hatchet {price = 25;};
 	class MultiGun {price = 100;};
 	class MeleeSledge {price = 50;};
-
+	class MeleeSword { price = 1111; };
+	class MeleeRod { price = 100; };
+	
 	class CrudeHatchet { price = 5; };
 	class MeleeMaul { price = 10; };
 	class WoodClub { price = 5; };
