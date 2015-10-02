@@ -1,14 +1,26 @@
 Client:
-[Added] New secure storage device: Safe 
-[Added] New crafting UI and system by Raymix.
+[Added] New secure storage device: Safe
+[Added] Totally new crafting system and UI.
 [Added] Epoch variant of the unarmed Strider vehicle. (I_MRAP_03_EPOCH)
 [Added] Melee weapons: a Broad Sword and Fishing Pole.
 [Added] Halloween Clown mask.
 [Fixed] Reduce client fps lag when first joining the server.
-[Changed] Wolf/Pumpkin masks and Meeps Candy re-added to loot tables for Halloween.
-
+[Fixed] Being unable to removal of solar generator.
+[Changed] Removed debug hint text for 3d rotation of objects.
+[Changed] Re-enable Move button.
+[Changed] Halloween Wolf/Pumpkin masks and Meeps Candy re-added to loot tables.
 
 Server:
+[Added] Example code: Epoch Event provides an example on how to broadcast a message to all players using BE.
+[Added] 'CfgTraderLimits' config can control stock limit per trader per item. Default is 100 per item class per trader.
+[Added] storedVehicleLimit variable in CfgEpochServer can now control the total max allowed vehicles on traders. Default limit is 20.
+[Fixed] Issue with trading vehicles that caused the trader data not to save or to save to the wrong slot.
+[Fixed] Added missing prices for female vests.
 [Fixed] Error Generic error in expression in EPOCH_server_repairVehicle.
 [Changed] Use new sort command instead of BIS_fncSortBy.
 [Changed] Use new worldSize command as default if maps worldSize setting in CfgEpoch does not exist.
+[Info] Removed old .bikey and added new one for 0331.
+[Info] The source code for the a3_epoch_server.pbo is now on the GitHub.
+
+
+MORE TBA

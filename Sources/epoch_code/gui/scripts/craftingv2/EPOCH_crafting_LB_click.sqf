@@ -51,9 +51,9 @@ if !(_usedIn isEqualTo []) then {
 	_ingredientCTRL lbSetColor [_idx,(rmx_var_crafting_colorScheme select 9 select 1)];
 	
 	{
-		if !(typeName _x isEqualTo typeName []) then {_x = [_x,1]};
-		_data = ([(_cfg >> (_x select 0))] call EPOCH_crafting_getConfig) select 0;
-		_idx = _ingredientCTRL lbAdd format ["%2 x %1",(_data select 1),_x select 1];
+		//if !(typeName _x isEqualTo typeName []) then {_x = [_x,1]};
+		_data = ([(_cfg >> _x)] call EPOCH_crafting_getConfig) select 0;
+		_idx = _ingredientCTRL lbAdd format ["%1",(_data select 1)];
 		_ingredientCTRL lbSetPictureRight [_idx,(_data select 2)];
 		_ingredientCTRL lbSetData [_idx, (_data select 1)];
 		_ingredientCTRL lbSetColor [_idx,(rmx_var_crafting_colorScheme select 14)];

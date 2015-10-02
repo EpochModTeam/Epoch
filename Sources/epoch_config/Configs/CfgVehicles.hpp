@@ -2493,7 +2493,7 @@ class CfgVehicles
 	{
 		scope = 2;
 		model = "\x\addons\a3_epoch_assets\models\cGarage_SIM.p3d";
-		displayName = "Cinder Block Wall";
+		displayName = "Cinder Block Garage";
 		simulClass = "CinderWallGarage_SIM_EPOCH";
 		staticClass = "CinderWallGarage_EPOCH";
 		GhostPreview = "CinderWallGarage_EPOCH";
@@ -3440,7 +3440,7 @@ class CfgVehicles
 		ladders[] = {};
 	};
 
-	class SolarGen_EPOCH : NonStrategic
+	class SolarGen_EPOCH : Constructions_static_F
 	{
 		mapSize = 1.27;
 		author = "Epoch: SteamPunkGears";
@@ -3705,7 +3705,7 @@ class CfgVehicles
 	{
 		scope = 2;
 		model = "\x\addons\a3_epoch_assets\models\cGarage.p3d";
-		displayName = "Cinder Block Wall";
+		displayName = "Cinder Block Garage";
 		simulClass = "CinderWallGarage_SIM_EPOCH";
 		staticClass = "CinderWallGarage_EPOCH";
 		GhostPreview = "CinderWallGarage_EPOCH";
@@ -4961,7 +4961,7 @@ class CfgVehicles
 	class SafeProxy_EPOCH : Secure_Storage_Proxy
 	{
 		scope = 2;
-		model = "\A3\Weapons_f\dummyweapon.p3d";
+		model = "\x\addons\a3_epoch_assets_1\models\safe_proxy.p3d";
 		displayName = "Safe WH";
 		isGround = 0;
 		showWeaponCargo = 0;

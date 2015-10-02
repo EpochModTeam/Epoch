@@ -34,7 +34,7 @@ class CfgCrafting
 		
 		{"Recipes", 			{0,0,0,0.8}},
 		{"Ingredients",			{0,0,0,0.8}},
-		{"Preview",				{1,0.6,0.01,0.8}},
+		{"Preview",				{0.76,0.5,0.07,0.8}},
 		{"Resources",			{0,0,0,0.8}},
 		{"Description",			{0,0,0,0.8}},
 		{" -- Requires -- ",	{0.99,0.53,0.03,1}},
@@ -44,18 +44,18 @@ class CfgCrafting
 		{0,1,0,1},		//Ingredients LB, Has items on player
 		{1,1,0,1},		//Ingredients LB, Has items nearby
 		{1,0,0,1}, 		//Ingredients LB, Missing items
-		{0.5,0.5,0.5,1},//Ingredients LB, Items used in...
+		{1,1,1,1},		//Ingredients LB, Items used in...
 		{0,0,0,0.1},	//Background color
 		{0,0,0,1},		//Frame color
 		{0,0,0,0},		//description ST
 		{0,0,0,0},		//Recipe LB
 		{0,0,0,0},		//Ingredients LB
 		
-		{1,1,1,1},		//progress bar
-		{0,0,0,0.3},	//progress background
-		"#FC170F",		//progress text HTML color
+		{0.76,0.5,0.07,0.8},	//progress bar
+		{0,0,0,0.3},			//progress background
+		"#FFFFFF",				//progress text HTML color
 		
-		{1,0.6,0.01,1}	//QTY color
+		{1,0.6,0.01,1}		//QTY color
 	};
 
 	/** --------- Don't edit --------- **/
@@ -600,6 +600,7 @@ class CfgCrafting
 		previewPosition[] = {0.797837,1,0.288258};
 		previewScale = 0.2;
 		previewVector = 1;
+		craftTime = 2;
 	};
 	class KitFirePlace : Kit
 	{

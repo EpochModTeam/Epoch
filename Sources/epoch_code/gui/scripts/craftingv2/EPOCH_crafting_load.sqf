@@ -94,6 +94,7 @@ rmx_var_crafting_PP_DB = ["dynamicBlur",11] call epoch_postProcessCreate;
 			_searchTextTEMP = ctrlText _searchCTRL;
 			call EPOCH_crafting_LB_defaults;
 			(rmx_var_crafting_ctrl_main select 0) lbSetCurSel 0;
+			ctrlSetFocus _searchCTRL;
 		};
 	};
 };

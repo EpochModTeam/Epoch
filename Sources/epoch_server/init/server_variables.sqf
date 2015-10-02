@@ -26,7 +26,7 @@ _configArray = [
     ["antagonistChanceTrash", 0.09],
     ["antagonistChancePDeath", 0.33],
     ["antagonistChanceLoot", 0.09],
-    ["allowedVehiclesList", 
+    ["allowedVehiclesList",
         [
             ["C_Offroad_01_EPOCH", 8],
             ["C_Quadbike_01_EPOCH", 8],
@@ -45,7 +45,7 @@ _configArray = [
             ["B_Heli_Light_01_EPOCH", 2],
             ["B_SDV_01_EPOCH", 2],
             ["B_MRAP_01_EPOCH", 3],
-			["I_MRAP_03_EPOCH", 3],
+						["I_MRAP_03_EPOCH", 3],
             ["B_Truck_01_transport_EPOCH", 1],
             ["B_Truck_01_covered_EPOCH", 2],
             ["B_Truck_01_mover_EPOCH", 1],
@@ -69,7 +69,7 @@ _configArray = [
             ["K04", 2],
             ["ebike_epoch", 7],
             ["mosquito_epoch", 5],
-			["C_Heli_Light_01_civil_EPOCH",5]
+						["C_Heli_Light_01_civil_EPOCH",5]
         ]
     ],
     ["taxRate", 0.1],

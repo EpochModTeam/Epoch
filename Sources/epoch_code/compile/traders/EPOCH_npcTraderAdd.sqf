@@ -22,8 +22,8 @@ if !(isNull EPOCH_lastNPCtradeTarget) then {
 				// find item and get current qty
 				_qtyIndex = _itemClasses find _uiItem;
 				if (_qtyIndex != -1) then {
-					// TODO allow config here 
-					if (_itemQtys select _qtyIndex >= 100) then {
+					_limit = ["CfgTraderLimits", _uiItem, 100] call EPOCH_fnc_returnConfigEntryV2;
+					if (_itemQtys select _qtyIndex >= _limit) then{
 						_stockLimit = true;
 						_allowAdd = false;
 					};

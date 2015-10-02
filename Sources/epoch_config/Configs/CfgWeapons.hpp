@@ -1116,7 +1116,7 @@ class CfgWeapons
 		scope = 2;
 		weaponPoolAvailable = 1;
 		displayName = "Clown Mask";
-		picture = "\x\addons\a3_epoch_assets_3\CfgVehicles\Characters\gear_clownmask_ca.paa";
+		picture = "\x\addons\a3_epoch_assets_3\CfgVehicles\Characters\clown\gear_clownmask_ca.paa";
 		model = "\x\addons\a3_epoch_assets_3\CfgVehicles\Characters\clown.p3d";
 		class ItemInfo : HeadgearItem
 		{

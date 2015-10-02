@@ -12,6 +12,9 @@ _staticTradersArray = getArray(configFile >> "CfgEpoch" >> worldName >> "staticN
 _staticTradersArrCount = count _staticTradersArray;
 _aiTables = ["U_OG_leader", "U_C_Poloshirt_stripped", "U_C_Poloshirt_blue", "U_C_Poloshirt_burgundy", "U_C_Poloshirt_tricolour", "U_C_Poloshirt_salmon", "U_C_Poloshirt_redwhite", "U_C_Poor_1", "U_C_WorkerCoveralls", "U_C_Journalist", "U_C_Scientist", "U_OrestesBody"];
 
+_serverSettingsConfig = configFile >> "CfgEpochServer";
+_storedVehicleLimit = [_serverSettingsConfig, "storedVehicleLimit", 20] call EPOCH_fnc_returnConfigEntry;
+
 EPOCH_storedVehicleCount = 0;
 
 for "_i" from 0 to _this do {
@@ -54,12 +57,37 @@ for "_i" from 0 to _this do {
 				_arr = [[], []];
 			};
 
+			_toBeRemoved = [];
 			// count vehicles
 			{
+				_limit = ["CfgTraderLimits", _x, 100] call EPOCH_fnc_returnConfigEntryV2;
+				if (_limit == 0) then {
+					// mark for removal since limit is 0
+					_toBeRemoved pushBack _forEachIndex;
+				} else {
+					// lower to limit current qty is over limit
+					_currentStock = (_arr select 1) select _forEachIndex;
+					if (_currentStock > _limit) then {
+						(_arr select 1) set [_forEachIndex,_limit];
+						_currentStock = _limit;
+					};
+				};
 				if (_x isKindOf "Air" || _x isKindOf "Ship" || _x isKindOf "LandVehicle" || _x isKindOf "Tank") then {
-					EPOCH_storedVehicleCount = EPOCH_storedVehicleCount + ((_arr select 1) select _forEachIndex);
+					if (EPOCH_storedVehicleCount <= _storedVehicleLimit) then {
+						EPOCH_storedVehicleCount = EPOCH_storedVehicleCount + _currentStock;
+					} else {
+						_toBeRemoved pushBack _forEachIndex;
+					};
+
 				};
 			} forEach (_arr select 0);
+
+			// remove any marked for removal
+			{
+					(_arr select 0) deleteAt _x;
+					(_arr select 1) deleteAt _x
+			} forEach _toBeRemoved;
+
 		};
 
 		if (_arr isEqualTo [[], []]) then{

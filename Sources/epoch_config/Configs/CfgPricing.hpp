@@ -488,6 +488,14 @@ class CfgPricing
 	class U_C_Driver_1_yellow {price = 5;};
 	class U_C_Driver_1_orange {price = 5;};
 
+	
+	class V_F0_EPOCH { price = 5; };
+	class V_F1_EPOCH { price = 5; };
+	class V_F2_EPOCH { price = 5; };
+	class V_F3_EPOCH { price = 5; };
+	class V_F4_EPOCH { price = 5; };
+	class V_F5_EPOCH { price = 5; };
+
 	class V_1_EPOCH {price = 5;};
 	class V_2_EPOCH {price = 5;};
 	class V_3_EPOCH {price = 5;};

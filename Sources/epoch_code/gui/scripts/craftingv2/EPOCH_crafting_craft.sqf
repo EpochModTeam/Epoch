@@ -31,7 +31,7 @@ if (rmx_var_craftQTYOut isEqualTo 0) exitWith {closeDialog 0;};
 	_itemCraftTime = _craftItem select 6;
 	_itemRecipeItems = _craftItem select 7;
 	_itemType = _craftItem select 13;
-	
+
 	for "_c" from 1 to rmx_var_craftQTYOut do {
 		false call _fnc_UILock;
 		_hasNearby = false call EPOCH_crafting_checkResources;
@@ -39,13 +39,15 @@ if (rmx_var_craftQTYOut isEqualTo 0) exitWith {closeDialog 0;};
 		_canCraft = [format ["Crafting: %1, %2 seconds",_itemName,_itemCraftTime],_itemCraftTime] call  EPOCH_crafting_progress;
 	
 		if !(_canCraft && _hasNearby && rmx_var_craftingLOOPS) exitWith {}; //{hint "Crafting canceled";};
-	
+
+		{
+			if !(typeName _x isEqualTo typeName []) then {_x = [_x,1]};
+			for "_r" from 1 to (_x select 1) do {
+				player removeItem (_x select 0); //removes any type of item, but only if not in special slots
+			};
+		} forEach _itemRecipeItems;
+		
 		if (player canAdd _item) then { //Puts in a weaponholder nearby if can't add to inventory
-			{
-				for "_r" from 1 to (_x select 1) do {
-					player removeItem (_x select 0); //removes any type of item, but only if not in special slots
-				};
-			} forEach _itemRecipeItems;
 		
 			player addItem _item; //adds any type of item, but does not assign
 
@@ -64,9 +66,9 @@ if (rmx_var_craftQTYOut isEqualTo 0) exitWith {closeDialog 0;};
 			};
 			_wh addItemCargoGlobal [_item,1];
 		};
-		call EPOCH_crafting_LB_defaults;
 		call EPOCH_crafting_LB_click;
 	};
+	call EPOCH_crafting_LB_defaults;
 	true call _fnc_UILock;
 	rmx_var_craftInProgress = false;
 };

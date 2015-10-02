@@ -2249,7 +2249,6 @@ class InteractBaseBuilding
 			action = "closeDialog 0";
 		};
 
-		/*
 		class RscButtonMenu_2402 : RscButtonMenu
 		{
 			idc = 2402;
@@ -2260,7 +2259,7 @@ class InteractBaseBuilding
 			h = 0.08;
 			action = "closeDialog 0; cursorTarget call EPOCH_fnc_SelectTargetBuild;";
 		};
-		*/
+		
 	};
 };
 /*

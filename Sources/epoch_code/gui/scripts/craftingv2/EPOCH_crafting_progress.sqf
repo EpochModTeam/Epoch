@@ -19,6 +19,11 @@ _layer = str _idc call BIS_fnc_rscLayer;
 _layer cutRsc ["rmx_CraftingProgress","PLAIN",0,false];
 _display = uiNamespace getVariable "rmx_var_CraftingProgressDisplay";
 
+_ctrl3 = _display ctrlCreate ["RscText",_idc + 3];
+_ctrl3 ctrlSetPosition [_posX,_posY,_w,_h];
+_ctrl3 ctrlCommit 0;
+_ctrl3 ctrlSetBackgroundColor  (rmx_var_crafting_colorScheme select 21);
+
 _ctrl = _display ctrlCreate ["RscProgress",_idc + 1];
 _ctrl ctrlSetPosition [_posX,_posY,_w,_h];
 _ctrl ctrlCommit 0;
@@ -28,11 +33,6 @@ _ctrl2 = _display ctrlCreate ["RscStructuredText",_idc + 2];
 _ctrl2 ctrlSetPosition [_posX + _w / 2 - (count _txt / 2) / 100,_posY + 0.005,_w,_h];
 _ctrl2 ctrlCommit 0;
 _ctrl2 ctrlSetStructuredText parseText format ["<t shadow='1'><t color='%2'>%1</t>",_txt,_stColor];
-
-_ctrl3 = _display ctrlCreate ["RscText",_idc + 3];
-_ctrl3 ctrlSetPosition [_posX,_posY,_w,_h];
-_ctrl3 ctrlCommit 0;
-_ctrl3 ctrlSetBackgroundColor  (rmx_var_crafting_colorScheme select 21);
 
 _tick = diag_tickTime;
 
