@@ -1,14 +1,13 @@
 Client:
-[Added] New secure storage device: Safe
+[Added] New secure storage device: The Epoch Safe.
 [Added] Totally new crafting system and UI.
 [Added] Epoch variant of the unarmed Strider vehicle. (I_MRAP_03_EPOCH)
 [Added] Melee weapons: a Broad Sword and Fishing Pole.
-[Added] Halloween Clown mask.
+[Added] Halloween Clown mask and Wolf/Pumpkin masks as well as Meeps Candy re-added to loot tables.
 [Fixed] Reduce client fps lag when first joining the server.
 [Fixed] Being unable to removal of solar generator.
 [Changed] Removed debug hint text for 3d rotation of objects.
 [Changed] Re-enable Move button.
-[Changed] Halloween Wolf/Pumpkin masks and Meeps Candy re-added to loot tables.
 
 Server:
 [Added] Example code: Epoch Event provides an example on how to broadcast a message to all players using BE.
