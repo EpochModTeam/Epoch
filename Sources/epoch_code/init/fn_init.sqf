@@ -1,7 +1,7 @@
 if !(isNil "Epoch_CStart") exitWith { false };
 Epoch_CStart = true;
 
-if (!isDedicated) then {
+if (!isDedicated && hasInterface) then {
 	call compile preprocessFileLineNumbers "\x\addons\a3_epoch_code\init\both_init.sqf";
 
 	// Epoch Client Only function compiler
