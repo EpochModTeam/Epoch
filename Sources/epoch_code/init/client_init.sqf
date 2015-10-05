@@ -49,22 +49,7 @@ if(EPOCH_AirDropChance < 0)then{EPOCH_AirDropChance = 101;EPOCH_AirDropCheck = 9
 EPOCH_droneRndChance = 100;
 
 // Custom Keys
-EPOCH_keysBuildMode1 = profileNamespace getVariable["EPOCH_BuildMode1", 2]; // 2 = 1
-EPOCH_keysBuildMode2 = profileNamespace getVariable["EPOCH_BuildMode2", 3]; // 3 = 2
-EPOCH_keysBuildDir = profileNamespace getVariable["EPOCH_BuildDir", 4]; // 4 = 3
-EPOCH_keysBuildStatic = profileNamespace getVariable["EPOCH_BuildStatic", 5]; // 5 = 4
-EPOCH_keysHolster = profileNamespace getVariable["EPOCH_Holster", 35]; // 35 = H
-EPOCH_keysDebugMon = profileNamespace getVariable["EPOCH_DebugMon", 41]; // 41 = ~
-EPOCH_keysBuildMovUp = profileNamespace getVariable["EPOCH_BuildMovUp", 0xC9]; // PgUp
-EPOCH_keysBuildMovDn = profileNamespace getVariable["EPOCH_BuildMovDn", 0xD1]; // PgDown
-EPOCH_keysBuildMovFwd = profileNamespace getVariable["EPOCH_BuildMovFwd", 0xC7]; // Home
-EPOCH_keysBuildMovBak = profileNamespace getVariable["EPOCH_BuildMovBak", 0xCF]; // End
-EPOCH_keysBuildMovL = profileNamespace getVariable["EPOCH_BuildMovL", 0xD2]; // Left
-EPOCH_keysBuildMovR = profileNamespace getVariable["EPOCH_BuildMovR", 0xD3]; // Right
-EPOCH_keysBuildRotL = profileNamespace getVariable["EPOCH_BuildRotL", 0x12]; // E
-EPOCH_keysBuildRotR = profileNamespace getVariable["EPOCH_BuildRotR", 0x10]; // Q
-EPOCH_keysBuildIt = profileNamespace getVariable["EPOCH_BuildIt", 0x39]; // Space
-EPOCH_keysAcceptTrade = profileNamespace getVariable["EPOCH_AcceptTrade", 0x14]; // T
+0 call EPOCH_clientKeyMap;
 
 //ON INIT and RESPAWN
 call EPOCH_clientInit;

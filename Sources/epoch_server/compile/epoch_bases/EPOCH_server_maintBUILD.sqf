@@ -48,7 +48,7 @@ if (typeOf _object == "PlotPole_EPOCH") then {
 							_object call EPOCH_fnc_saveBuilding;
 						};
 					};
-					if (_counter >= _maintCount) exitWith{};
+					if (_counter > _maintCount) exitWith{};
 				} forEach nearestObjects[_object, ["Constructions_static_F","Constructions_foundation_F"], _buildingJammerRange];
 
 				// effect crypto

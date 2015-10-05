@@ -3,14 +3,26 @@ Client:
 [Added] Totally new crafting system and UI.
 [Added] Epoch variant of the unarmed Strider vehicle. (I_MRAP_03_EPOCH)
 [Added] Melee weapons: a Broad Sword and Fishing Pole.
-[Added] Halloween Clown mask and Wolf/Pumpkin masks as well as Meeps Candy re-added to loot tables.
-[Fixed] Reduce client fps lag when first joining the server.
-[Fixed] Being unable to removal of solar generator.
-[Changed] Removed debug hint text for 3d rotation of objects.
-[Changed] Re-enable Move button.
+[Added] Halloween Clown mask and re-added to loot tables: Wolf/Pumpkin masks as well as Meeps Candy.
+[Fixed] Dog not taming due to var reset in wrong place / BIS animal update.
+[Fixed] Reduce client fps lag when first joining the server by preloading objects before exiting loadig screen.
+[Fixed] Being unable to remove a solar generator.
+[Changed] Removed debug hint text for 3d rotation of objects as it was not needed.
+[Changed] Re-enable Move button, this system will stay and be refined in the next few patches.
+
+**Improved Dog AI Dog Brain by Axeman**
+[FIXED] Dog not taming due to var reset in wrong place / BIS animal update.
+[UPDATED] Dog text format updated.
+[UPDATED] Dog whine, instead of bark, when alerting of other nearby players (When player crouched).
+[UPDATED] Dog prey kills now use animal looting system. i.e. Dog will loot dead animals, and other objects, then will fetch loot.
+[UPDATED] Attached weapon (loot) holder is now dropped if dog finds a new one. Needs update.
+[ADDED] New Quiet dog bark and whine.
+[UPDATED] Make dog sounds global and use quieter sounds to alert player once dog is tamed. Untamed dog or when attacking is still loud.
+[UPDATED] Add occasional quiet dog whine when other players in the area.
+[UPDATED] General Dog timeout tweaks to compensate for Arma Animals 'doing their own thing'
 
 Server:
-[Added] Example code: Epoch Event provides an example on how to broadcast a message to all players using BE.
+[Added] Example "Epoch Event" Code to provide an example on how to broadcast a message to all players using BE.
 [Added] 'CfgTraderLimits' config can control stock limit per trader per item. Default is 100 per item class per trader.
 [Added] storedVehicleLimit variable in CfgEpochServer can now control the total max allowed vehicles on traders. Default limit is 20.
 [Fixed] Issue with trading vehicles that caused the trader data not to save or to save to the wrong slot.
@@ -18,8 +30,5 @@ Server:
 [Fixed] Error Generic error in expression in EPOCH_server_repairVehicle.
 [Changed] Use new sort command instead of BIS_fncSortBy.
 [Changed] Use new worldSize command as default if maps worldSize setting in CfgEpoch does not exist.
-[Info] Removed old .bikey and added new one for 0331.
+[Info] Removed old .bikey and added new one for 0340.
 [Info] The source code for the a3_epoch_server.pbo is now on the GitHub.
-
-
-MORE TBA

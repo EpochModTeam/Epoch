@@ -45,6 +45,7 @@ class CfgAddons
 
 //gitmerge fix
 #include "\x\addons\a3_epoch_config\Configs\CfgDynamicMenu.hpp"
+#include "\x\addons\a3_epoch_config\Configs\CfgEpochConfiguration.hpp"
 
 class DefaultEventhandlers;
 class WeaponFireGun;

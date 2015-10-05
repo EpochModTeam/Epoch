@@ -188,6 +188,7 @@ class CfgClientFunctions
 			class clientRespawn {};
 			class clientRevive {};
 			class client_rejectPlayer {};
+			class clientKeyMap {};
 		};
 
 		class p2p_trading
@@ -262,8 +263,14 @@ class CfgClientFunctions
 			class 3DctrlPitchYaw {};
 			class 3DctrlSpin {};
 			class 3DctrlYaw {};
+			class InterruptConfig {};
+			class InterruptConfigActions {};
 		};
 
+		class config {
+			file = "\x\addons\a3_epoch_code\gui\scripts\config";
+			class config_keymap {};
+		};
 		class gui_craft {
 			file = "\x\addons\a3_epoch_code\gui\scripts\craftingv2";
 			class crafting_animate {};
