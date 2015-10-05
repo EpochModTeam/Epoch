@@ -60,7 +60,7 @@
 7 drawIcon3D !="drawIcon3D[\"\x\addons\a3_epoch_code\Data\Member.paa\",_color,_pos,1,1,0,_text,1,0.025,\"PuristaMedium\"];\n}forEach EPOCH_ESP_TARGETS;" !"drawIcon3D[format[\"\x\addons\a3_epoch_code\Data\UI\loading_bar_%1.paa\",_stability],_color,(getPosATL EPOCH_stabilityTarget),5,5,0,\"\",1,0.05,\"PuristaMedium\"];" !"drawIcon3D[format[\"\x\addons\a3_epoch_code\Data\UI\loading_bar_%1.paa\",_num],_color,_pos,4,4,0,\"\",1,0.05,\"PuristaMedium\"];" !"EPOCH_drawIcon3dStability" !"EPOCH_drawIcon3d" !"if (_condition) then {\ndrawIcon3D [_icon, _color, _position, _sizeX, _sizeY, _angle, _text," !="drawIcon3D [\"\A3\UI_F_MP_Mark\Data\Tasks\Misc\background.paa\""
 7 drawLine3D !"{\nfor [{_i = 1}, {_i < count _x}, {_i = _i + 1}] do {\ndrawLine3D [_x select (_i - 1), _x select _i, ((BIS_tracedShooter getVari"
 7 ctrlCreate !="_ctrl = _display ctrlCreate [\"RscProgress\",_idc + 1];" !="_display ctrlCreate [\"rmx_rscControlsGroup\"" !="_ListGroup = _display ctrlCreate [\"RscControlsGroupNoHScrollbars\"" !="_ctrl = _display ctrlCreate [_x,call _getIDC];" !="_mainGrp = _display ctrlCreate [\"Epoch_main_config_group\",_value];"
-7 ctrlDelete !="ctrlDelete _ListGroup;" !="ctrlDelete (rmx_var_crafting_ctrl_GROUP select 0);"
+7 ctrlDelete !="ctrlDelete _ListGroup;" !="ctrlDelete (rmx_var_crafting_ctrl_GROUP select 0);" !="ctrlDelete _mainGrp;"
 7 ctrlClassName
 7 ctrlModel
 7 ctrlModelDirection
