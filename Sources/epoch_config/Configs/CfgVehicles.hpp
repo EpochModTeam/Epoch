@@ -3025,6 +3025,17 @@ class CfgVehicles
 		bypassJammer = 1;
 	};
 
+	class WorkBench_SIM_EPOCH : Constructions_modular_F
+	{
+		scope = 2;
+		model = "\x\addons\a3_epoch_assets_1\models\workbench.p3d";
+		displayName = "WorkBench (SIM)";
+		staticClass = "WorkBench_EPOCH";
+		simulClass = "WorkBench_SIM_EPOCH";
+		limitNearby = 5;
+		bypassJammer = 1;
+	};
+
 	class Tarp_SIM_EPOCH : Constructions_modular_F
 	{
 		scope = 2;
@@ -3883,6 +3894,14 @@ class CfgVehicles
 		staticClass = "StorageShelf_EPOCH";
 		ladders[] = {};
 	};
+	class WorkBench_Ghost_EPOCH : Const_Ghost_EPOCH
+	{
+		scope = 2;
+		model = "\x\addons\a3_epoch_assets_1\models\workbench.p3d";
+		displayName = "WorkBench Ghost";
+		staticClass = "WorkBench_EPOCH";
+		ladders[] = {};
+	};
 
 	class WoodLargeWall_Ghost_EPOCH : Const_Ghost_EPOCH
 	{
@@ -4513,7 +4532,6 @@ class CfgVehicles
 		maximumLoad = 1200;
 		staticClass = "Tipi_EPOCH";
 		simulClass = "Tipi_SIM_EPOCH";
-		removeParts[] = { { "Pelt_EPOCH", 2 }, { "PartPlankPack", 1 } };
 		limitNearby = 2;
 		bypassJammer = 1;
 		interactMode = 4;
@@ -4527,7 +4545,19 @@ class CfgVehicles
 		maximumLoad = 800;
 		staticClass = "StorageShelf_EPOCH";
 		simulClass = "StorageShelf_SIM_EPOCH";
-		removeParts[] = { { "ItemCorrugated", 2 } };
+		limitNearby = 5;
+		bypassJammer = 1;
+		interactMode = 4;
+	};
+	class WorkBench_EPOCH : Buildable_Storage
+	{
+		scope = 2;
+		model = "\x\addons\a3_epoch_assets_1\models\workbench.p3d";
+		displayName = "WorkBench";
+		GhostPreview = "WorkBench_Ghost_EPOCH";
+		maximumLoad = 800;
+		staticClass = "WorkBench_EPOCH";
+		simulClass = "WorkBench_SIM_EPOCH";
 		limitNearby = 5;
 		bypassJammer = 1;
 		interactMode = 4;

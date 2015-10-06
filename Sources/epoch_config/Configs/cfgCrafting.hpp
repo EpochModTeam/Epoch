@@ -595,7 +595,7 @@ class CfgCrafting
 	};
 	class PartPlankPack : Kit
 	{
-		usedIn[] = {"KitStudWall","KitWoodFloor","KitWoodFoundation","KitWoodStairs","KitWoodRamp","KitWoodLadder","KitWoodTower","KitTiPi"};
+		usedIn[] = {"KitStudWall","KitWoodFloor","KitWoodFoundation","KitWoodStairs","KitWoodRamp","KitWoodLadder","KitWoodTower","KitTiPi","KitWorkbench"};
 		recipe[] = {{"WoodLog_EPOCH",2}};
 		previewPosition[] = {0.797837,1,0.288258};
 		previewScale = 0.2;
@@ -672,6 +672,14 @@ class CfgCrafting
 		recipe[] = {{"ItemCorrugated",3}};
 		model = "\x\addons\a3_epoch_assets\models\shelf.p3d";
 		previewPosition[] = {0.803749,1,0.448515};
+		previewScale = 0.17;
+		previewVector = 0;
+	};
+	class KitWorkbench : Kit
+	{
+		recipe[] = { { "PartPlankPack", 2 } };
+		model = "\x\addons\a3_epoch_assets_1\models\workbench.p3d";
+		previewPosition[] = { 0.803749, 1, 0.448515 };
 		previewScale = 0.17;
 		previewVector = 0;
 	};

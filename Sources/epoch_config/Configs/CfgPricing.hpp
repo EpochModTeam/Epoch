@@ -361,6 +361,8 @@ class CfgPricing
 	class KitFirePlace {price = 4;};
 	class KitTiPi {price = 10;};
 	class KitShelf {price = 90;};
+	class KitWorkbench { price = 10; };
+	
 	class KitWoodFoundation { price = 20; };
 	class KitFoundation {price = 90;};
 	class KitPlotPole {price = 300;};

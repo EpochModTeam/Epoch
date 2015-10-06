@@ -117,4 +117,8 @@ class CfgBaseBuilding {
 	{
 		removeParts[] = { { "ItemCorrugated", 2 } };
 	};
+	class Workbench_EPOCH : Default
+	{
+		removeParts[] = { { "PartPlankPack", 2 } };
+	};
 };
