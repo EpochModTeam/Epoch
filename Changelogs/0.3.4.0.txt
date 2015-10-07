@@ -1,13 +1,13 @@
 Client:
 [Added] New secure storage device: The Epoch Safe.
-[Added] Totally new crafting system and UI.
+[Added] Totally new crafting system and UI by Raymix.
 [Added] Epoch variant of the unarmed Strider vehicle. (I_MRAP_03_EPOCH)
 [Added] Melee weapons: a Broad Sword and Fishing Pole.
 [Added] Halloween Clown mask and re-added to loot tables: Wolf/Pumpkin masks as well as Meeps Candy.
-[Fixed] Dog not taming due to var reset in wrong place / BIS animal update.
-[Fixed] Reduce client fps lag when first joining the server by preloading objects before exiting loadig screen.
-[Fixed] Being unable to remove a solar generator.
+[Fixed] Group members unable to lock a Lockbox or Safe that was placed by the group leader.
 [Fixed] Shadow artifact at top of Jammer.
+[Fixed] Reduce client fps lag when first joining the server by preloading objects before exiting loading screen.
+[Fixed] Being unable to remove a solar generator.
 [Changed] Removed debug hint text for 3d rotation of objects as it was not needed.
 [Changed] Re-enable Move button, this system will stay and be refined in the next few patches.
 
