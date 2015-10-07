@@ -1189,6 +1189,20 @@ class CfgMagazines
 		buildClass = "StorageShelf_SIM_EPOCH";
 		isStorage = 1;
 	};
+	class KitWorkbench : CA_Magazine
+	{
+		model = "\x\addons\a3_epoch_assets_1\models\supply_crate.p3d";
+		picture = "\x\addons\a3_epoch_assets_1\pictures\equip_wooden_crate_ca.paa";
+		displayName = "Workbench Kit";
+		scope = 2;
+		descriptionShort = "Workbench";
+		count = 1;
+		mass = 20;
+		interactAction = 3; // 0 = examine, 1 = eat, 2 = drink, 3 = build
+		interactText = "BUILD";
+		buildClass = "Workbench_SIM_EPOCH";
+		isStorage = 1;
+	};
 	class KitFoundation : CA_Magazine
 	{
 		model = "\x\addons\a3_epoch_assets_1\models\supply_crate.p3d";

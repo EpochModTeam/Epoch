@@ -7,6 +7,7 @@ Client:
 [Fixed] Dog not taming due to var reset in wrong place / BIS animal update.
 [Fixed] Reduce client fps lag when first joining the server by preloading objects before exiting loadig screen.
 [Fixed] Being unable to remove a solar generator.
+[Fixed] Shadow artifact at top of Jammer.
 [Changed] Removed debug hint text for 3d rotation of objects as it was not needed.
 [Changed] Re-enable Move button, this system will stay and be refined in the next few patches.
 

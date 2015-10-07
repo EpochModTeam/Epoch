@@ -1,8 +1,12 @@
 /*
-Load Buildings
+    Load Buildings
+    by Aaron Clark - EpochMod.com
 
-Epoch Mod - EpochMod.com
-All Rights Reserved.
+    This work is licensed under a Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License.
+    http://creativecommons.org/licenses/by-nc-nd/4.0/
+
+    Improvements and or bugfixes and other contributions are welcome via the github:
+    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_server/compile/epoch_bases/EPOCH_server_loadBuildings.sqf
 */
 
 _maxTTL = parseNumber EPOCH_expiresBuilding;

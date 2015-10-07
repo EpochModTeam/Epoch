@@ -59,23 +59,29 @@ if (getNumber(configFile >> "CfgVehicles" >> _type >> "isSecureStorage") == 1) t
 		_plyrUID = getPlayerUID _plyr;
 		_plyrGroup = _plyr getVariable ["GROUP",""];
 		if (_plyrGroup != "") then {
-			_response = ["Group", _plyrGroup] call EPOCH_fnc_server_hiveGETRANGE;
-			if ((_response select 0) == 1 && typeName (_response select 1) == "ARRAY") then {
-				_gArray = _response select 1;
-				diag_log format["_gArray2 %1 _plyrUID %2 _plyrGroup %3", _gArray, _plyrUID, _plyrGroup];
-				if (
-					{(_x select 0) in _owners}count(_gArray select 3) > 0 ||
-					{(_x select 0) in _owners}count(_gArray select 4) > 0 ||
-					_plyrUID in _owners
-				) then {
-					_parent setVariable ["EPOCH_Locked", _lockStatus, true];
-					_currentPos = getPosATL _unit;
-					_currentPos set[2, -10];
-					_unit setPosATL _currentPos;
+			if (_plyrGroup in _owners) then {
+				_parent setVariable ["EPOCH_Locked", _lockStatus, true];
+				_currentPos = getPosATL _unit;
+				_currentPos set[2, -10];
+				_unit setPosATL _currentPos;
+			} else {
+				_response = ["Group", _plyrGroup] call EPOCH_fnc_server_hiveGETRANGE;
+				if ((_response select 0) == 1 && typeName (_response select 1) == "ARRAY") then {
+					_gArray = _response select 1;
+					diag_log format["_gArray2 %1 _plyrUID %2 _plyrGroup %3", _gArray, _plyrUID, _plyrGroup];
+					if (
+						{(_x select 0) in _owners}count(_gArray select 3) > 0 ||
+						{(_x select 0) in _owners}count(_gArray select 4) > 0 ||
+						_plyrUID in _owners
+					) then {
+						_parent setVariable ["EPOCH_Locked", _lockStatus, true];
+						_currentPos = getPosATL _unit;
+						_currentPos set[2, -10];
+						_unit setPosATL _currentPos;
+					};
 				};
 			};
-		}
-		else {
+		} else {
 			if (_plyrUID in _owners) then {
 				_parent setVariable ["EPOCH_Locked", _lockStatus, true];
 				_currentPos = getPosATL _unit;
