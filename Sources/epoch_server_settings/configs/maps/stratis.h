@@ -1,6 +1,19 @@
 class Stratis : Default
 {
 	worldSize = 6000;
+	vehicleSpawnTypes[] = {
+		{"FlatAreaCity",1},
+		{"FlatAreaCitySmall",1},
+		{"NameCity",2},
+		{"NameVillage",1},
+		{"NameCityCapital",4},
+		{"Airport",5},
+		{"NameLocal",2},
+		{"StrongpointArea",1},
+		{"VegetationBroadleaf",1},
+		{"VegetationFir",1},
+		{"ViewPoint",1}
+	};
 	traderBlds[] = { "Land_Kiosk_blueking_F", "Land_FuelStation_Build_F", "Land_CarService_F", "Land_i_Garage_V1_F", "Land_i_Shed_Ind_F", "Land_i_Shop_01_V1_F" };
 	containerPos[] = {
 			{ 2583.59, 6024.51, 0 },

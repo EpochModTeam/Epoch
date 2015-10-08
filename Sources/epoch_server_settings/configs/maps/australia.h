@@ -1,6 +1,19 @@
 class Australia : Default
 {
 	worldSize = 55000;
+	vehicleSpawnTypes[] = {
+		{"FlatAreaCity",1},
+		{"FlatAreaCitySmall",1},
+		{"NameCity",2},
+		{"NameVillage",1},
+		{"NameCityCapital",4},
+		{"Airport",5},
+		{"NameLocal",2},
+		{"StrongpointArea",1},
+		{"VegetationBroadleaf",1},
+		{"VegetationFir",1},
+		{"ViewPoint",1}
+	};
 	traderBlds[] = { "Land_A_FuelStation_Build", "Land_A_GeneralStore_01", "Land_A_GeneralStore_01a", "Land_A_Office01", "Land_Ind_Garage01", "Land_Ind_Workshop01_04", "Land_Ind_Workshop01_L", "Land_Shed_Ind02", "Land_Tovarna2", "Land_sara_hasic_zbroj" };
 	telePos[] = {
 		// N [-0.286865,8.17383,-10.3098]
@@ -198,7 +211,7 @@ class Australia : Default
 
     {"Land_Tank_rust_F", {4039.04, 19377.9, 0}, 0},
 
-    
+
 
     {"HMMWVWreck", {4066.81, 19391.8, 0.00606537}, 115.432},
 

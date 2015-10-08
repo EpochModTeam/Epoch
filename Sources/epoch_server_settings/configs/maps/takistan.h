@@ -1,8 +1,21 @@
 class Takistan : Default
 {
 	worldSize = 12000;
+	vehicleSpawnTypes[] = {
+		{"FlatAreaCity",1},
+		{"FlatAreaCitySmall",1},
+		{"NameCity",2},
+		{"NameVillage",1},
+		{"NameCityCapital",4},
+		{"Airport",5},
+		{"NameLocal",2},
+		{"StrongpointArea",1},
+		{"VegetationBroadleaf",1},
+		{"VegetationFir",1},
+		{"ViewPoint",1}
+	};
 	traderBlds[] = { "Land_Kiosk_blueking_F", "Land_FuelStation_Build_F", "Land_CarService_F", "Land_i_Garage_V1_F", "Land_i_Shed_Ind_F", "Land_i_Shop_01_V1_F" };
-	
+
 	containerPos[] = {};
 
 	telePos[] = {
@@ -171,7 +184,7 @@ class Takistan : Default
 			{ "Land_InvisibleBarrier_F", {6051.98,1118.6,-3.05176e-005}, {{0.630672,0.775946,0.0126463},{0.0271672,-0.0383609,0.998895}}, true },
 			{ "Land_InvisibleBarrier_F", {6052.1,1110.34,0}, {{-0.792943,0.609278,0.004677},{-0.00639553,-0.0159986,0.999852}}, true },
 			{ "Land_InvisibleBarrier_F", {6054.44,1116.41,0}, {{0.630672,0.775946,0.0126463},{0.0271672,-0.0383609,0.998895}}, true },
-			
+
 			//North Takistan Trader City//
 			{ "Land_FieldToilet_F", {4692.69,9216.02,0.00186157}, {{-0.181867,0.983211,-0.0148318},{-0.0384089,0.00796881,0.99923}}, true },
 			{ "Land_WoodenTable_large_F", {4699.68,9209.76,-0.000869751}, {{0.000108613,0.999872,0.0160187},{-0.00918588,-0.0160171,0.99983}}, true },
@@ -324,7 +337,7 @@ class Takistan : Default
 			{ "Land_WoodPile_F", {6830.02,5007.43,-0.0032959}, {{0.964708,-0.261382,0.0318968},{-0.039955,-0.0255718,0.998874}}, true },
 			{ "Land_WoodPile_F", {6828.34,5007.86,0.00384521}, {{-0.935741,0.351541,-0.02843},{-0.039955,-0.0255718,0.998874}}, true },
 			//North Airfield//
-			
+
 			{ "Land_Dome_Big_F", {5687.97,11165,0}, 222.826 },
 			{ "Land_Research_HQ_F", {5694.74,11152,0}, 317.013 },
 			{ "Land_Cargo_House_V3_F", {5689.55,11182.2,0}, 0 },
@@ -403,5 +416,3 @@ class Takistan : Default
 			{ "C_man_hunter_1_F", { 6829.11,5004.53,0.00158691 }, 179.875 },
 	};
 };
-
-
