@@ -1,4 +1,5 @@
 Client:
+[Added] Workbench storage device also added as a nearby crafting requirement for most Kit based crafting options.
 [Added] New secure storage device: The Epoch Safe.
 [Added] Totally new crafting system and UI by Raymix.
 [Added] Epoch variant of the unarmed Strider vehicle. (I_MRAP_03_EPOCH)

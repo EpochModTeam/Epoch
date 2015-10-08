@@ -1,5 +1,5 @@
 /*
-nearby[] = 
+nearby[] =
 {
 	{
 		"Fire",			//Name of field, anything
@@ -14,7 +14,7 @@ nearby[] =
 };
 
 //Can be multiple requirements like this, example requires both fire and water (unlimited, but requires mouse scroll if more than 8 elements):
-nearby[] = 
+nearby[] =
 {
 	{"Fire", "", "fire", {1,{"ALL"}}, 3, 1, 1, 0},
 	{"Water source","","water",{0,{"barrelwater_f.p3d", "water_source_f.p3d", "pumpa.p3d", "misc_wellpump.p3d"}},3,1,0,0}
@@ -24,14 +24,14 @@ nearby[] =
 class CfgCrafting
 {
 	DeveloperMode = 0; //used for 3D preview position and scale, set to 0 for live server!
-	
+
 	//You can customize basic theme of crafting UI here:
-	colorScheme[] = 
+	colorScheme[] =
 	{
 		"\x\addons\a3_epoch_code\Data\UI\crafting\cancel.paa",
 		"\x\addons\a3_epoch_code\Data\UI\crafting\craft.paa",
 		"\x\addons\a3_epoch_code\Data\UI\crafting\close.paa",
-		
+
 		{"Recipes", 			{0,0,0,0.8}},
 		{"Ingredients",			{0,0,0,0.8}},
 		{"Preview",				{0.76,0.5,0.07,0.8}},
@@ -50,11 +50,11 @@ class CfgCrafting
 		{0,0,0,0},		//description ST
 		{0,0,0,0},		//Recipe LB
 		{0,0,0,0},		//Ingredients LB
-		
+
 		{0.76,0.5,0.07,0.8},	//progress bar
 		{0,0,0,0.3},			//progress background
 		"#FFFFFF",				//progress text HTML color
-		
+
 		{1,0.6,0.01,1}		//QTY color
 	};
 
@@ -62,19 +62,19 @@ class CfgCrafting
 	class Default //className, any object or item
 	{
 		craftTime = 1; //time it takes to craft
-		
+
 		recipe[] = {}; //nested arrays, {{"item", 1}};
 		nearby[] = {}; //nearby requirements - fire, water source, object
 		usedIn[] = {}; //item is an ingredient
-		
+
 		previewPosition[] = {0.8125,1,0.285}; //XzY
 		previewScale = 1;
 		previewVector = 0; //vector rotation multiplier
-		
+
 		priority = 0; //Recipe list priority, items with 0 are on top followed by order in config file.
 		type = 0; //After crafting, item is added: [0 - to inventory], [1 - in weapon holder], [2 - as vehicle]
 		descriptionFull = ""; //Structured text, added on new line after descriptionShort
-		
+
 		/** --------- Config Overrides --------- **/
 		//displayName = "";
 		//picture = "";
@@ -98,7 +98,7 @@ class CfgCrafting
 		offset[] = {0,5,0}; //local space
 		craftTime = 10;
 		descriptionFull = "Demo: Should be used for vehicles only";
-	};	
+	};
 	class Kit: Default //base building kits gets higher priority on the list
 	{
 		priority = 1;
@@ -117,8 +117,8 @@ class CfgCrafting
 	};
 
 	/** --------- RECIPES BELOW --------- **/
-	
-	// items 
+
+	// items
 	class ItemCoolerE : Part
 	{
 		 usedIn[] = { "ItemCooler0", "ItemCooler1", "ItemCooler2", "ItemCooler3", "ItemCooler4" };
@@ -226,7 +226,7 @@ class CfgCrafting
 		previewPosition[] = {0.796267,1,0.322762};
 		previewScale = 0.9;
 		previewVector = 1.4;
-	};	
+	};
 	class ItemRope : Item
 	{
 		usedIn[] = { "WoodClub", "MeleeMaul", "CrudeHatchet" };
@@ -254,7 +254,7 @@ class CfgCrafting
 		previewScale = 0.35;
 		previewVector = 2.4;
 	};
-	
+
 	class WoodLog_EPOCH : Part
 	{
 		usedIn[] = { "PartPlankPack", "ItemStick" };
@@ -306,7 +306,7 @@ class CfgCrafting
 		previewVector = 4.9;
 	};
 
-	
+
 
 	class VehicleRepair : Part
 	{
@@ -413,62 +413,62 @@ class CfgCrafting
 		previewScale = 0.45;
 		previewVector = -3.9;
 	};
-	
+
 	//Gems
-	class ItemGarnet : Part 
+	class ItemGarnet : Part
 	{
 		usedIn[] = {"EpochRadio1"};
 		previewPosition[] = {0.801697,1,0.379502};
 		previewScale = 3;
 	};
-	class ItemCitrine : Part 
+	class ItemCitrine : Part
 	{
 		usedIn[] = {"EpochRadio2"};
 		previewPosition[] = {0.796925,1,0.285847};
 		previewScale = 3.5;
 		previewVector = 2.7;
 	};
-	class ItemAmethyst : Part 
+	class ItemAmethyst : Part
 	{
 		usedIn[] = {"EpochRadio3"};
 		previewPosition[] = {0.798082,1,0.277137};
 		previewScale = 3;
 		previewVector = 2.9;
 	};
-	class ItemTopaz : Part 
+	class ItemTopaz : Part
 	{
 		usedIn[] = {"EpochRadio4"};
 		previewPosition[] = {0.79555,1,0.393739};
 		previewScale = 3;
 	};
-	class ItemSapphire : Part 
+	class ItemSapphire : Part
 	{
 		usedIn[] = {"EpochRadio5"};
 		previewPosition[] = {0.804014,1,0.283865};
 		previewScale = 3;
 		previewVector = 3.3;
 	};
-	class ItemOnyx : Part 
+	class ItemOnyx : Part
 	{
 		usedIn[] = {"EpochRadio6"};
 		previewPosition[] = {0.799376,1,0.283337};
 		previewScale = 3;
 		previewVector = 3.1;
 	};
-	class ItemEmerald : Part 
+	class ItemEmerald : Part
 	{
 		usedIn[] = {"EpochRadio7"};
 		previewPosition[] = {0.805568,1,0.293134};
 		previewScale = 3;
 		previewVector = 2.5;
 	};
-	class ItemRuby : Part 
+	class ItemRuby : Part
 	{
 		usedIn[] = {"EpochRadio8"};
 		previewPosition[] = {0.79555,1,0.393739};
 		previewScale = 3;
 	};
-	class ItemJade : Part 
+	class ItemJade : Part
 	{
 		usedIn[] = {"EpochRadio9"};
 		previewPosition[] = {0.796903,1,0.369781};
@@ -576,7 +576,7 @@ class CfgCrafting
 		displayName = "Clean Water";
 	};
 
-	// recipes 
+	// recipes
 	class CSGAS : Kit
 	{
 		recipe[] = { "ItemMixOil", "jerrycan_epoch" };
@@ -589,6 +589,7 @@ class CfgCrafting
 	{
 		usedIn[] = { "VehicleRepairLg", "KitPlotPole" };
 		recipe[] = { { "ItemCorrugated", 3 } };
+		nearby[] = {{"Workbench", "", "workbench", {1,{"workbench_epoch"}}, 3, 1, 1, 0}};
 		previewPosition[] = {0.797491,1,0.32899};
 		previewScale = 0.25;
 		previewVector = 0.5;
@@ -614,6 +615,7 @@ class CfgCrafting
 	{
 		recipe[] = {{"PartPlankPack",4}};
 		model = "\x\addons\a3_epoch_assets\models\Wooden_Wall_SIM.p3d";
+		nearby[] = {{"Workbench", "", "workbench", {1,{"workbench_epoch"}}, 3, 1, 1, 0}};
 		previewPosition[] = {0.797675,1,0.398882};
 		previewScale = 0.07;
 		previewVector = 0;
@@ -622,6 +624,7 @@ class CfgCrafting
 	{
 		usedIn[] = { "KitWoodTower" };
 		recipe[] = {{"PartPlankPack",4}};
+		nearby[] = {{"Workbench", "", "workbench", {1,{"workbench_epoch"}}, 3, 1, 1, 0}};
 		model = "\x\addons\a3_epoch_assets\models\Wooden_Floor.p3d";
 		previewPosition[] = {0.800198,1,0.262418};
 		previewScale = 0.055;
@@ -630,6 +633,7 @@ class CfgCrafting
 	class KitWoodLadder : Kit
 	{
 		recipe[] = { { "PartPlankPack", 4 } };
+		nearby[] = {{"Workbench", "", "workbench", {1,{"workbench_epoch"}}, 3, 1, 1, 0}};
 		model = "\x\addons\a3_epoch_assets_3\CfgVehicles\Ladder\wood_ladder.p3d";
 		previewPosition[] = {0.798736,1,0.441696};
 		previewScale = 0.08;
@@ -638,6 +642,7 @@ class CfgCrafting
 	class KitWoodRamp : Kit
 	{
 		recipe[] = { { "PartPlankPack", 6 } };
+		nearby[] = {{"Workbench", "", "workbench", {1,{"workbench_epoch"}}, 3, 1, 1, 0}};
 		model = "\x\addons\a3_epoch_assets\models\Wood_Ramp.p3d";
 		previewPosition[] = {0.799137,1,0.350575};
 		previewScale = 0.05;
@@ -646,6 +651,7 @@ class CfgCrafting
 	class KitWoodStairs : Kit
 	{
 		recipe[] = {{"PartPlankPack",4}};
+		nearby[] = {{"Workbench", "", "workbench", {1,{"workbench_epoch"}}, 3, 1, 1, 0}};
 		model = "\x\addons\a3_epoch_assets\models\Wood_stairs.p3d";
 		previewPosition[] = {0.795037,1,0.377922};
 		previewScale = 0.054;
@@ -654,6 +660,7 @@ class CfgCrafting
 	class KitWoodTower : Kit
 	{
 		recipe[] = { {"KitWoodFloor", 1}, { "PartPlankPack", 4 } };
+		nearby[] = {{"Workbench", "", "workbench", {1,{"workbench_epoch"}}, 3, 1, 1, 0}};
 		model = "\x\addons\a3_epoch_assets_3\CfgVehicles\Tower\Tower\Base_Tower_Frame.p3d";
 		previewPosition[] = {0.800653,1,0.378749};
 		previewScale = 0.05;
@@ -662,6 +669,7 @@ class CfgCrafting
 	class KitTiPi : Kit
 	{
 		recipe[] = { { "Pelt_EPOCH", 4 }, { "PartPlankPack", 2 } };
+		nearby[] = {{"Workbench", "", "workbench", {1,{"workbench_epoch"}}, 3, 1, 1, 0}};
 		model = "\x\addons\a3_epoch_assets\models\tp.p3d";
 		previewPosition[] = {0.801503,1,0.433758};
 		previewScale = 0.06;
@@ -670,6 +678,7 @@ class CfgCrafting
 	class KitShelf : Kit
 	{
 		recipe[] = {{"ItemCorrugated",3}};
+		nearby[] = {{"Workbench", "", "workbench", {1,{"workbench_epoch"}}, 3, 1, 1, 0}};
 		model = "\x\addons\a3_epoch_assets\models\shelf.p3d";
 		previewPosition[] = {0.803749,1,0.448515};
 		previewScale = 0.17;
@@ -686,6 +695,7 @@ class CfgCrafting
 	class KitFoundation : Kit
 	{
 		recipe[] = {{"MortarBucket",4}};
+		nearby[] = {{"Workbench", "", "workbench", {1,{"workbench_epoch"}}, 3, 1, 1, 0}};
 		model = "\x\addons\a3_epoch_assets\models\Concrete_Col.p3d";
 		previewPosition[] = {0.796787,1,0.211457};
 		previewScale = 0.047;
@@ -694,15 +704,17 @@ class CfgCrafting
 	class KitWoodFoundation : Kit
 	{
 		recipe[] = {{"PartPlankPack",8}};
+		nearby[] = {{"Workbench", "", "workbench", {1,{"workbench_epoch"}}, 3, 1, 1, 0}};
 		model = "\x\addons\a3_epoch_assets\models\Wood_Col.p3d";
 		previewPosition[] = {0.796787,1,0.211457};
 		previewScale = 0.047;
 		previewVector = 0;
 	};
-	
+
 	class KitCinderWall : Kit
 	{
 		recipe[] = {{"CinderBlocks",2},{"MortarBucket",2}};
+		nearby[] = {{"Workbench", "", "workbench", {1,{"workbench_epoch"}}, 3, 1, 1, 0}};
 		model = "\x\addons\a3_epoch_assets\models\cinder_half.p3d";
 		previewPosition[] = {0.797638,1,0.341915};
 		previewScale = 0.07;
@@ -711,6 +723,7 @@ class CfgCrafting
 	class KitPlotPole : Kit
 	{
 		recipe[] = {{"ItemCorrugatedLg",2}, {"CircuitParts",2} };
+		nearby[] = {{"Workbench", "", "workbench", {1,{"workbench_epoch"}}, 3, 1, 1, 0}};
 		model = "\x\addons\a3_epoch_assets\models\jammer.p3d";
 		previewPosition[] = {0.801378,1,0.464834};
 		previewScale = 0.055;
@@ -742,10 +755,11 @@ class CfgCrafting
 	{
 		// TODO recipe
 		recipe[] = { { "ItemSolar", 1 }, { "ItemCables", 1 }, { "ItemBattery", 1 }, { "ItemCorrugatedLg", 2 }, { "CircuitParts", 2 } };
+		nearby[] = {{"Workbench", "", "workbench", {1,{"workbench_epoch"}}, 3, 1, 1, 0}};
 		model = "\x\addons\a3_epoch_assets_3\CfgVehicles\Solar_Generator_Complete\Solar_generator.p3d";
 		previewPosition[] = {0.804979,1,0.39189};
 		previewScale = 0.11;
 		previewVector = 0;
 	};
-	
+
 };
