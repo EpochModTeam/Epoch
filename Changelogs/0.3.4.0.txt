@@ -29,6 +29,7 @@ Server:
 [Fixed] Issue with trading vehicles that caused the trader data not to save or to save to the wrong slot.
 [Fixed] Added missing prices for female vests.
 [Fixed] Error Generic error in expression in EPOCH_server_repairVehicle.
+[Changed] Base building maintain option now also maintains storage devices.
 [Changed] Vehicle spawn config that controls how many vehicles can spawn at different location types. See vehicleSpawnTypes array in the Map config in the server settings pbo.
 [Changed] Use new sort command instead of BIS_fncSortBy.
 [Changed] Use new worldSize command as default if maps worldSize setting in CfgEpoch does not exist.

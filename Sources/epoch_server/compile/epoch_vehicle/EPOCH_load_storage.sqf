@@ -38,7 +38,9 @@ for "_i" from 1 to _this do {
 			};
 
 			_vehicle = createVehicle [_class, _location, [], 0, "CAN_COLLIDE"];
-			// _vehicle setDamage _damage;
+
+			// temp set damage to mark for maint
+			_vehicle setDamage 0.99;
 			_vehicle setDir _dir;
 
 			diag_log format ["STORAGE: created storage %1 at %2", _class, _location];
@@ -130,7 +132,7 @@ for "_i" from 1 to _this do {
 											};
 										} forEach _x;
 
-										// add all attachments to vehicle 
+										// add all attachments to vehicle
 										// TODO replace with adding attachments directly to gun (Arma feature dependant)
 										{
 											_vehicle addItemCargoGlobal[_x, 1];

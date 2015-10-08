@@ -34,8 +34,12 @@ if (_ctrl && _dikCode == 0x0C) then {
 if (_dikCode == 0x01) then {
 
 	if !(isNull EPOCH_Target) then {
+		if !(_vehicle isKindOf "ThingX") then {
 			deleteVehicle EPOCH_Target;
-			_dt = ["<t size = '0.8' shadow = '0' color = '#99ffffff'>Build Canceled</t>", 0, 1, 5, 2, 0, 1] spawn bis_fnc_dynamictext;
+		} else {
+			EPOCH_Target = objNull;
+		};
+		_dt = ["<t size = '0.8' shadow = '0' color = '#99ffffff'>Build Canceled</t>", 0, 1, 5, 2, 0, 1] spawn bis_fnc_dynamictext;
 	};
 
 	if !(EPOCH_arr_interactedObjs isEqualTo[]) then {
@@ -228,8 +232,12 @@ if (vehicle player == player) then {
 
 	if (_dikCode in(actionKeys "Gear")) then {
 		if !(isNull EPOCH_Target) then {
+			if !(_vehicle isKindOf "ThingX") then {
 				deleteVehicle EPOCH_Target;
-				_dt = ["<t size = '0.8' shadow = '0' color = '#99ffffff'>Build Canceled</t>", 0, 1, 5, 2, 0, 1] spawn bis_fnc_dynamictext;
+			} else {
+				EPOCH_Target = objNull;
+			};
+			_dt = ["<t size = '0.8' shadow = '0' color = '#99ffffff'>Build Canceled</t>", 0, 1, 5, 2, 0, 1] spawn bis_fnc_dynamictext;
 		};
 		if (isTouchingGround player) then {
 			_handled = call EPOCH_lootTrash;

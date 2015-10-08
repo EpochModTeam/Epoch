@@ -7,7 +7,12 @@ if (!isNull _this) then {
 	if (_vehSlot != "ABORT") then {
 
 		_vehHiveKey = format ["%1:%2", (call EPOCH_fn_InstanceID),_vehSlot];
-		_damage = damage _vehicle;
+
+		// default to 0 damage as we are not using it this way
+		_damage = 0;
+
+		// set damage to 0
+		_vehicle setDamage 0;
 
 		_pos = getposATL _vehicle call EPOCH_precisionPos;
 		_dir = getDir _vehicle;
@@ -65,6 +70,7 @@ if (!isNull _this) then {
 			};
 		};
 		*/
+
 
 		_VAL = [_class, _worldspace, _damage, _inventory, _colorSlot, _storageOwners, _storageParent];
 		["Storage", _vehHiveKey, EPOCH_expiresBuilding, _VAL] call EPOCH_fnc_server_hiveSETEX;
