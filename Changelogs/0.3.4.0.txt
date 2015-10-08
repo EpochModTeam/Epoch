@@ -31,7 +31,7 @@ Server:
 [Fixed] Added missing prices for female vests.
 [Fixed] Error Generic error in expression in EPOCH_server_repairVehicle.
 [Changed] Base building maintain option now also maintains storage devices.
-[Changed] Vehicle spawn config that controls how many vehicles can spawn at different location types. See vehicleSpawnTypes array in the Map config in the server settings pbo.
+[Changed] Moved vehicle spawn config that controls how many vehicles can spawn at different location types to settings pbo. See new vehicleSpawnTypes array in the (WorldName).hpp config.
 [Changed] Use new sort command instead of BIS_fncSortBy.
 [Changed] Use new worldSize command as default if maps worldSize setting in CfgEpoch does not exist.
 [Info] Removed old .bikey and added new one for 0340.

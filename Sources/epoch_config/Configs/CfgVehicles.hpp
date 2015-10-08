@@ -1927,10 +1927,12 @@ class CfgVehicles
 		class TransportItems{};
 		class Eventhandlers{};
 	};
-
+	
 	class I_MRAP_03_F;
 	class I_MRAP_03_EPOCH : I_MRAP_03_F
 	{
+		author = "$STR_A3_Bohemia_Interactive";
+		_generalMacro = "I_MRAP_03_EPOCH";
 		scope = 2;
 		crew = "";
 		side = 3;
@@ -1940,6 +1942,59 @@ class CfgVehicles
 		typicalCargo[] = {};
 		class TransportItems{};
 		class Eventhandlers{};
+		
+		class RenderTargets
+		{
+			class commander_display
+			{
+				renderTarget = "rendertarget0";
+				class CameraView1
+				{
+					pointPosition = "PIP0_pos";
+					pointDirection = "PIP0_dir";
+					renderVisionMode = 0;
+					renderQuality = 2;
+					fov = 0.5;
+				};
+			};
+			class driver_display
+			{
+				renderTarget = "rendertarget2";
+				class CameraView1
+				{
+					pointPosition = "PIP2_pos";
+					pointDirection = "PIP2_dir";
+					renderVisionMode = 0;
+					renderQuality = 2;
+					fov = 0.6;
+				};
+			};
+			class mirrorL
+			{
+				renderTarget = "rendertarget4";
+				class CameraView1
+				{
+					pointPosition = "PIP4_pos";
+					pointDirection = "PIP4_dir";
+					renderVisionMode = 4;
+					renderQuality = 2;
+					fov = 0.35;
+				};
+			};
+			class mirrorR
+			{
+				renderTarget = "rendertarget5";
+				class CameraView1
+				{
+					pointPosition = "PIP5_pos";
+					pointDirection = "PIP5_dir";
+					renderVisionMode = 4;
+					renderQuality = 2;
+					fov = 0.35;
+				};
+			};
+		};
+
 	};
 
 	class B_Truck_01_transport_F;
