@@ -1,0 +1,60 @@
+<html>
+<head>
+
+<meta http-equiv="Content-Type"
+content="text/html; charset=windows-1250">
+<meta name="GENERATOR" content="ofp">
+
+<title>PageTitle</title>
+</head>
+<body>
+<br>
+<p align="center"><img src="\x\addons\a3_epoch_code\Data\EpochLogo.paa" width="256" height="64"></p>
+
+<h1>Epoch Mod 0.3.4</h1>
+
+<p>Client:
+
+[Added] Workbench storage device also added as a nearby crafting requirement for most Kit based crafting options.<br>
+[Added] New secure storage device: The Epoch Safe.<br>
+[Added] Totally new crafting system and UI by Raymix.<br>
+[Added] Epoch variant of the unarmed Strider vehicle. (I_MRAP_03_EPOCH)<br>
+[Added] Melee weapons: a Broad Sword and Fishing Pole.<br>
+[Added] Halloween Clown mask and re-added to loot tables: Wolf/Pumpkin masks as well as Meeps Candy.<br>
+[Fixed] Group members unable to lock a Lockbox or Safe that was placed by the group leader.<br>
+[Fixed] Shadow artifact at top of Jammer.<br>
+[Fixed] Reduce client fps lag when first joining the server by preloading objects before exiting loading screen.<br>
+[Fixed] Being unable to remove a solar generator.<br>
+[Changed] Removed debug hint text for 3d rotation of objects as it was not needed.<br>
+[Changed] Re-enable Move button, this system will stay and be refined in the next few patches.<br>
+**Improved Dog AI Dog Brain by Axeman**<br>
+[FIXED] Dog not taming due to var reset in wrong place / BIS animal update.<br>
+[UPDATED] Dog text format updated.<br>
+[UPDATED] Dog whine, instead of bark, when alerting of other nearby players (When player crouched).<br>
+[UPDATED] Dog prey kills now use animal looting system. i.e. Dog will loot dead animals, and other objects, then will fetch loot.<br>
+[UPDATED] Attached weapon (loot) holder is now dropped if dog finds a new one. Needs update.<br>
+[ADDED] New Quiet dog bark and whine.<br>
+[UPDATED] Make dog sounds global and use quieter sounds to alert player once dog is tamed. Untamed dog or when attacking is still loud.<br>
+[UPDATED] Add occasional quiet dog whine when other players in the area.<br>
+[UPDATED] General Dog timeout tweaks to compensate for Arma Animals 'doing their own thing'<br>
+
+</p>
+
+<p>Server:
+[Added] Example "Epoch Event" Code to provide an example on how to broadcast a message to all players using BE.<br>
+[Added] 'CfgTraderLimits' config can control stock limit per trader per item. Default is 100 per item class per trader.<br>
+[Added] storedVehicleLimit variable in CfgEpochServer can now control the total max allowed vehicles on traders. Default limit is 20.<br>
+[Fixed] Issue with trading vehicles that caused the trader data not to save or to save to the wrong slot.<br>
+[Fixed] Added missing prices for female vests.<br>
+[Fixed] Error Generic error in expression in EPOCH_server_repairVehicle.<br>
+[Changed] Base building maintain option now also maintains storage devices.<br>
+[Changed] Moved vehicle spawn config that controls how many vehicles can spawn at different location types to settings pbo. See new vehicleSpawnTypes array in the (WorldName).hpp config.<br>
+[Changed] Use new sort command instead of BIS_fncSortBy.<br>
+[Changed] Use new worldSize command as default if maps worldSize setting in CfgEpoch does not exist.<br>
+[Info] Removed old .bikey and added new one for 0340.<br>
+[Info] The source code for the a3_epoch_server.pbo is now on the GitHub.<br>
+
+</p>
+
+</body>
+</html>
