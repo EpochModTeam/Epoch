@@ -1,4 +1,5 @@
 Client:
+[Added] Epoch ocean fishing.
 [Added] Workbench storage device added and used as a nearby crafting requirement for most Kit based crafting options.
 [Added] New secure storage device: The Epoch Safe.
 [Added] Totally new crafting system and UI by Raymix.
@@ -30,6 +31,7 @@ Server:
 [Fixed] Issue with trading vehicles that caused the trader data not to save or to save to the wrong slot.
 [Fixed] Added missing prices for female vests.
 [Fixed] Error Generic error in expression in EPOCH_server_repairVehicle.
+[Changed] Reworked secure data storage system to be more reliable.
 [Changed] Base building maintain option now also maintains storage devices.
 [Changed] Moved vehicle spawn config that controls how many vehicles can spawn at different location types to settings pbo. See new vehicleSpawnTypes array in the (WorldName).hpp config.
 [Changed] Use new sort command instead of BIS_fncSortBy.
