@@ -519,6 +519,56 @@ class CfgCrafting
 		previewPosition[] = {0.796141,1,0.340971};
 		previewScale = 0.9;
 	};
+
+	class ItemTuna : Part
+	{
+		usedIn[] = { "ItemTunaCooked" };
+		previewPosition[] = {0.796141,1,0.27};
+		previewScale = 0.4;
+		previewVector = 2.1;
+	};
+	class ItemSeaBass : Part
+	{
+		usedIn[] = { "ItemSeaBassCooked" };
+		previewPosition[] = {0.796141,1,0.27};
+		previewScale = 0.4;
+		previewVector = 2.1;
+	};
+	class ItemTrout : Part
+	{
+		usedIn[] = { "ItemTroutCooked" };
+		previewPosition[] = {0.796141,1,0.27};
+		previewScale = 0.4;
+		previewVector = 2.1;
+	};
+	class ItemTunaCooked : Item
+	{
+		usedIn[] = {};
+		nearby[] = {{"Fire", "", "fire", {1,{"ALL"}}, 3, 1, 1, 0}};
+		recipe[] = { "ItemTuna" };
+		previewPosition[] = {0.796141,1,0.27};
+		previewScale = 0.4;
+		previewVector = 2;
+	};
+	class ItemSeaBass : Item
+	{
+		usedIn[] = {};
+		nearby[] = {{"Fire", "", "fire", {1,{"ALL"}}, 3, 1, 1, 0}};
+		recipe[] = { "ItemSeaBass" };
+		previewPosition[] = {0.796141,1,0.27};
+		previewScale = 0.4;
+		previewVector = 2;
+	};
+	class ItemTroutCooked : Item
+	{
+		usedIn[] = {};
+		nearby[] = {{"Fire", "", "fire", {1,{"ALL"}}, 3, 1, 1, 0}};
+		recipe[] = { "ItemTrout" };
+		previewPosition[] = {0.796141,1,0.27};
+		previewScale = 0.4;
+		previewVector = 2;
+	};
+
 	class GoatCarcass_EPOCH : Part
 	{
 		usedIn[] = { "CookedGoat_EPOCH" };
