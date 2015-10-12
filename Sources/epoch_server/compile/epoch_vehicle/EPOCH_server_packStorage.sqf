@@ -7,8 +7,10 @@ if (_plyr distance _unit > 20) exitWith{};
 
 _class = typeOf _unit;
 if (_class isKindOf 'Constructions_lockedstatic_F') then{
-	_parentID = _unit getVariable["EPOCH_secureStorage", "-1"];
-	_weaponHolder = missionNamespace getVariable[format["EPOCH_STORAGE_%1", _parentID], objNull];
+
+	_weaponHolder = _unit getVariable["EPOCH_secStorParent", objNull];
+	diag_log format["DEBUG: Pack _weaponHolder %1", _weaponHolder];
+
 	if (!isNull _weaponHolder) then {
 		_owners = _weaponHolder getVariable["STORAGE_OWNERS", []];
 		if ((getPlayerUID _plyr) in _owners) then {
@@ -27,7 +29,7 @@ if (_class isKindOf 'Constructions_lockedstatic_F') then{
 				_magsAmmoCargo = [];
 			};
 
-			// dump items on ground 
+			// dump items on ground
 			_inventory = [
 				_wepsItemsCargo,
 				_magsAmmoCargo,
@@ -35,10 +37,10 @@ if (_class isKindOf 'Constructions_lockedstatic_F') then{
 				getItemCargo _weaponHolder
 			];
 
-			
+
 			[_weaponHolder, _plyr] call EPOCH_server_save_killedStorage;
 			deleteVehicle _weaponHolder;
-				
+
 			_gwh = createVehicle["groundWeaponHolder", _posWH, [], 0, "CAN_COLLIDE"];
 			_gwh setPosATL _posWH;
 
@@ -84,8 +86,8 @@ if (_class isKindOf 'Constructions_lockedstatic_F') then{
 										};
 									};
 								} forEach _x;
-								
-								// add all attachments to vehicle 
+
+								// add all attachments to vehicle
 								// TODO replace with adding attachments directly to gun (Arma feature dependant)
 								{
 									_gwh addItemCargoGlobal[_x, 1];

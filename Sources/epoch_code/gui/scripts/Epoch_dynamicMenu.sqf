@@ -1,3 +1,5 @@
+#include <\x\Addons\rmx_init\defines.inc>
+
 //TODO: read key press from global var (profileNamespace config)
 //TODO: admin choice to use missionConfigFile
 //TODO: (Ask team) suffix code to close dialog when button pressed
@@ -9,10 +11,8 @@
 //TODO: prevent from opening and instantly close if known display is on
 
 if !(isNil "rmx_var_dynamicMenuInProgress") exitWith {};
-if (isNil "rmx_var_dynamicMenuCat") then {rmx_var_dynamicMenuCat = "";};
 
-
-if (rmx_var_dynamicMenuCat isEqualTo "" && !isNil "rmx_var_dynamicMenuHOLD") exitWith {};
+if !(isNil "rmx_var_dynamicMenuHOLD") exitWith {};
 
 private ["_display","_cfg","_cat","_buttonSettings","_configs","_subclasses","_action","_entries","_img","_img2","_center","_defaultScaleX","_defaultScaleY","_distance","_scaleLargeX","_scaleLargeY","_scaleSmallX","_scaleSmallY","_scaleSelectedX","_scaleSelectedY","_points","_positions","_positions2","_positions3","_x","_y"];
 disableSerialization;
@@ -23,17 +23,17 @@ _display = (findDisplay 46) createDisplay "rmx_dynamenu";
 _display displaySetEventHandler ["keyUp", "[false,_this select 1] call Epoch_dynamicMenuCleanup;"];
 
 //TODO: config choice based on global variable or dynamic config update (slower)
-_cfg = configFile;
+_cfg = param [0,"cfgDynamicMenu" call EPOCH_returnConfig,[configFile]];
 
 /** Variable Defines **/
 {
 	call compile (format ["%1 = %2;",configName _x,getText _x]);
-} count (configProperties [(_cfg >> "cfgDynamicMenu" >> "variableDefines"),"true",false]);
+} count (configProperties [(_cfg >> "variableDefines"),"true",false]);
 
-_cat = if (rmx_var_dynamicMenuCat isEqualTo "") then {
-		(_cfg >> "cfgDynamicMenu" >> "dynaButtons")
+_cat = if (isClass _cfg >> "dynaButtons") then {
+		(_cfg >> "dynaButtons")
 	} else {
-		(_cfg >> "cfgDynamicMenu" >> "dynaButtons" >> rmx_var_dynamicMenuCat)
+		_cfg
 	};
 
 /** Button configs **/
@@ -48,7 +48,7 @@ _configs = "true" configClasses (_cat);
 		_action = if (_subclasses isEqualTo []) then {
 			compile (format ["%1",getText(_x >> "action")])
 		} else {
-			compile (format ["[true,57] call Epoch_dynamicMenuCleanup; rmx_var_dynamicMenuCat = '%1'; %2",(configName _x),getText(_x >> "action")])
+			compile (format ["[true,57] call Epoch_dynamicMenuCleanup; %2",getText(_x >> "action")])
 		};
 		//diag_log _action;
 		_buttonSettings pushBack [
@@ -132,7 +132,6 @@ for "_e" from 0 to (_entries - 1) do {
 /** Variable Cleanup **/
 {
 	call compile (format ["%1 = nil;",configName _x]);
-} count (configProperties [(_cfg >> "cfgDynamicMenu" >> "variableDefines"),"true",false]);
+} count (configProperties [(_cfg >> "variableDefines"),"true",false]);
 rmx_var_dynamicMenuInProgress = nil;
-rmx_var_dynamicMenuCat = "";
 true

@@ -47,9 +47,11 @@ _config = 'CfgCrafting' call EPOCH_returnConfig;
 _craftingConfig = _config >> _data;
 
 if (isClass (_craftingConfig)) then {
-  _useBtn ctrlSetTextColor [0,1,0,1];
-  EPOCH_CraftingItem = EPOCH_InteractedItem select 0;
+	_useBtn ctrlSetTextColor [0,1,0,1];
+	EPOCH_CraftingItem = EPOCH_InteractedItem select 0;
 } else {
-  _useBtn ctrlSetTextColor [1,0,0,1];
-  EPOCH_CraftingItem = "";
+	_useBtn ctrlSetTextColor [1,0,0,1];
+	EPOCH_CraftingItem = "";
 };
+
+true

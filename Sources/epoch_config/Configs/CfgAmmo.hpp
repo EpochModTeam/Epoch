@@ -1,7 +1,7 @@
 class CfgAmmo
 {
 	class BulletBase;
-	class B_Test_45ACP_Ball: BulletBase
+	class B_EnergyPack: BulletBase
 	{
 		hit = 0;
 		indirectHit = 0;

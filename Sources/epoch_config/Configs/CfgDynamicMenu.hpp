@@ -2,10 +2,11 @@
 
 class cfgDynamicMenu 
 {
+	dyna_displayWhitelist[] = {};
+	
 	/** GLOBAL VARIABLES ONLY - removed automatically **/
 	class variableDefines //must be global, nil when menu closes
 	{
-		dyna_displayWhitelist[] = {};
 		dyna_cursorTarget = "cursorTarget";
 		dyna_typeOfCursorTarget = "typeOf cursorTarget";
 		

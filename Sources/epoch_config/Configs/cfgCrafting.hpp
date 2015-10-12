@@ -589,7 +589,7 @@ class CfgCrafting
 	{
 		usedIn[] = { "VehicleRepairLg", "KitPlotPole" };
 		recipe[] = { { "ItemCorrugated", 3 } };
-		nearby[] = {{"Workbench", "", "workbench", {1,{"workbench_epoch"}}, 3, 1, 1, 0}};
+		nearby[] = {{"Workbench", "", "workbench", {1,{"WorkBench_EPOCH"}}, 3, 1, 0, 1}};
 		previewPosition[] = {0.797491,1,0.32899};
 		previewScale = 0.25;
 		previewVector = 0.5;
@@ -615,7 +615,7 @@ class CfgCrafting
 	{
 		recipe[] = {{"PartPlankPack",4}};
 		model = "\x\addons\a3_epoch_assets\models\Wooden_Wall_SIM.p3d";
-		nearby[] = {{"Workbench", "", "workbench", {1,{"workbench_epoch"}}, 3, 1, 1, 0}};
+		nearby[] = {{"Workbench", "", "workbench", {1,{"WorkBench_EPOCH"}}, 3, 1, 0, 1}};
 		previewPosition[] = {0.797675,1,0.398882};
 		previewScale = 0.07;
 		previewVector = 0;
@@ -624,7 +624,7 @@ class CfgCrafting
 	{
 		usedIn[] = { "KitWoodTower" };
 		recipe[] = {{"PartPlankPack",4}};
-		nearby[] = {{"Workbench", "", "workbench", {1,{"workbench_epoch"}}, 3, 1, 1, 0}};
+		nearby[] = {{"Workbench", "", "workbench", {1,{"WorkBench_EPOCH"}}, 3, 1, 0, 1}};
 		model = "\x\addons\a3_epoch_assets\models\Wooden_Floor.p3d";
 		previewPosition[] = {0.800198,1,0.262418};
 		previewScale = 0.055;
@@ -633,7 +633,7 @@ class CfgCrafting
 	class KitWoodLadder : Kit
 	{
 		recipe[] = { { "PartPlankPack", 4 } };
-		nearby[] = {{"Workbench", "", "workbench", {1,{"workbench_epoch"}}, 3, 1, 1, 0}};
+		nearby[] = {{"Workbench", "", "workbench", {1,{"WorkBench_EPOCH"}}, 3, 1, 0, 1}};
 		model = "\x\addons\a3_epoch_assets_3\CfgVehicles\Ladder\wood_ladder.p3d";
 		previewPosition[] = {0.798736,1,0.441696};
 		previewScale = 0.08;
@@ -642,7 +642,7 @@ class CfgCrafting
 	class KitWoodRamp : Kit
 	{
 		recipe[] = { { "PartPlankPack", 6 } };
-		nearby[] = {{"Workbench", "", "workbench", {1,{"workbench_epoch"}}, 3, 1, 1, 0}};
+		nearby[] = {{"Workbench", "", "workbench", {1,{"WorkBench_EPOCH"}}, 3, 1, 0, 1}};
 		model = "\x\addons\a3_epoch_assets\models\Wood_Ramp.p3d";
 		previewPosition[] = {0.799137,1,0.350575};
 		previewScale = 0.05;
@@ -651,7 +651,7 @@ class CfgCrafting
 	class KitWoodStairs : Kit
 	{
 		recipe[] = {{"PartPlankPack",4}};
-		nearby[] = {{"Workbench", "", "workbench", {1,{"workbench_epoch"}}, 3, 1, 1, 0}};
+		nearby[] = {{"Workbench", "", "workbench", {1,{"WorkBench_EPOCH"}}, 3, 1, 0, 1}};
 		model = "\x\addons\a3_epoch_assets\models\Wood_stairs.p3d";
 		previewPosition[] = {0.795037,1,0.377922};
 		previewScale = 0.054;
@@ -660,7 +660,7 @@ class CfgCrafting
 	class KitWoodTower : Kit
 	{
 		recipe[] = { {"KitWoodFloor", 1}, { "PartPlankPack", 4 } };
-		nearby[] = {{"Workbench", "", "workbench", {1,{"workbench_epoch"}}, 3, 1, 1, 0}};
+		nearby[] = {{"Workbench", "", "workbench", {1,{"WorkBench_EPOCH"}}, 3, 1, 0, 1}};
 		model = "\x\addons\a3_epoch_assets_3\CfgVehicles\Tower\Tower\Base_Tower_Frame.p3d";
 		previewPosition[] = {0.800653,1,0.378749};
 		previewScale = 0.05;
@@ -669,7 +669,7 @@ class CfgCrafting
 	class KitTiPi : Kit
 	{
 		recipe[] = { { "Pelt_EPOCH", 4 }, { "PartPlankPack", 2 } };
-		nearby[] = {{"Workbench", "", "workbench", {1,{"workbench_epoch"}}, 3, 1, 1, 0}};
+		nearby[] = {{"Workbench", "", "workbench", {1,{"WorkBench_EPOCH"}}, 3, 1, 0, 1}};
 		model = "\x\addons\a3_epoch_assets\models\tp.p3d";
 		previewPosition[] = {0.801503,1,0.433758};
 		previewScale = 0.06;
@@ -678,7 +678,7 @@ class CfgCrafting
 	class KitShelf : Kit
 	{
 		recipe[] = {{"ItemCorrugated",3}};
-		nearby[] = {{"Workbench", "", "workbench", {1,{"workbench_epoch"}}, 3, 1, 1, 0}};
+		nearby[] = {{"Workbench", "", "workbench", {1,{"WorkBench_EPOCH"}}, 3, 1, 0, 1}};
 		model = "\x\addons\a3_epoch_assets\models\shelf.p3d";
 		previewPosition[] = {0.803749,1,0.448515};
 		previewScale = 0.17;
@@ -695,7 +695,7 @@ class CfgCrafting
 	class KitFoundation : Kit
 	{
 		recipe[] = {{"MortarBucket",4}};
-		nearby[] = {{"Workbench", "", "workbench", {1,{"workbench_epoch"}}, 3, 1, 1, 0}};
+		nearby[] = {{"Workbench", "", "workbench", {1,{"WorkBench_EPOCH"}}, 3, 1, 0, 1}};
 		model = "\x\addons\a3_epoch_assets\models\Concrete_Col.p3d";
 		previewPosition[] = {0.796787,1,0.211457};
 		previewScale = 0.047;
@@ -704,7 +704,7 @@ class CfgCrafting
 	class KitWoodFoundation : Kit
 	{
 		recipe[] = {{"PartPlankPack",8}};
-		nearby[] = {{"Workbench", "", "workbench", {1,{"workbench_epoch"}}, 3, 1, 1, 0}};
+		nearby[] = {{"Workbench", "", "workbench", {1,{"WorkBench_EPOCH"}}, 3, 1, 0, 1}};
 		model = "\x\addons\a3_epoch_assets\models\Wood_Col.p3d";
 		previewPosition[] = {0.796787,1,0.211457};
 		previewScale = 0.047;
@@ -714,7 +714,7 @@ class CfgCrafting
 	class KitCinderWall : Kit
 	{
 		recipe[] = {{"CinderBlocks",2},{"MortarBucket",2}};
-		nearby[] = {{"Workbench", "", "workbench", {1,{"workbench_epoch"}}, 3, 1, 1, 0}};
+		nearby[] = {{"Workbench", "", "workbench", {1,{"WorkBench_EPOCH"}}, 3, 1, 0, 1}};
 		model = "\x\addons\a3_epoch_assets\models\cinder_half.p3d";
 		previewPosition[] = {0.797638,1,0.341915};
 		previewScale = 0.07;
@@ -723,7 +723,7 @@ class CfgCrafting
 	class KitPlotPole : Kit
 	{
 		recipe[] = {{"ItemCorrugatedLg",2}, {"CircuitParts",2} };
-		nearby[] = {{"Workbench", "", "workbench", {1,{"workbench_epoch"}}, 3, 1, 1, 0}};
+		nearby[] = {{"Workbench", "", "workbench", {1,{"WorkBench_EPOCH"}}, 3, 1, 0, 1}};
 		model = "\x\addons\a3_epoch_assets\models\jammer.p3d";
 		previewPosition[] = {0.801378,1,0.464834};
 		previewScale = 0.055;
@@ -755,7 +755,7 @@ class CfgCrafting
 	{
 		// TODO recipe
 		recipe[] = { { "ItemSolar", 1 }, { "ItemCables", 1 }, { "ItemBattery", 1 }, { "ItemCorrugatedLg", 2 }, { "CircuitParts", 2 } };
-		nearby[] = {{"Workbench", "", "workbench", {1,{"workbench_epoch"}}, 3, 1, 1, 0}};
+		nearby[] = {{"Workbench", "", "workbench", {1,{"WorkBench_EPOCH"}}, 3, 1, 0, 1}};
 		model = "\x\addons\a3_epoch_assets_3\CfgVehicles\Solar_Generator_Complete\Solar_generator.p3d";
 		previewPosition[] = {0.804979,1,0.39189};
 		previewScale = 0.11;

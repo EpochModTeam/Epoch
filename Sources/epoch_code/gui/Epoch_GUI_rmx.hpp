@@ -357,8 +357,8 @@ class rmx_craftingUI {
 			h = 0.08;
 			
 			onLoad = "[(_this select 0),[0.6,0.92,0,0.08],[0.6,0.92,0.3,0.08]] call EPOCH_crafting_animate; (_this select 0) ctrlEnable true;";
-			onMouseMoving = "if (rmx_var_crafting_progressClicked && rmx_var_craftQTY != 0) then {(_this select 0) progressSetPosition (((_this select 1)-0.6)*3.3 );};";
-			onMouseHolding = "if (rmx_var_crafting_progressClicked && rmx_var_craftQTY != 0) then {(_this select 0) progressSetPosition (((_this select 1)-0.6)*3.3 );};";
+			onMouseMoving = "if (rmx_var_crafting_progressClicked && rmx_var_craftQTY != 0) then {_c = _this select 0; _p = ctrlPosition _c; _c progressSetPosition (linearConversion [_p select 0, (_p select 0)+ (_p select 2), (_this select 1), 0, 1, false]);};";
+			onMouseHolding = "if (rmx_var_crafting_progressClicked && rmx_var_craftQTY != 0) then {_c = _this select 0; _p = ctrlPosition _c; _c progressSetPosition (linearConversion [_p select 0, (_p select 0)+ (_p select 2), (_this select 1), 0, 1, false]);};";
 			onMouseButtonDown = "rmx_var_crafting_progressClicked = true;";
 			onMouseButtonUp = "rmx_var_crafting_progressClicked = false;";
 		};
@@ -377,6 +377,27 @@ class rmx_craftingUI {
 			onLoad = "[(_this select 0),[0.6,0.92,0,0.08],[0.6,0.92,0.3,0.08]] call EPOCH_crafting_animate;";
 		};
 
+		//Progressbar + / -
+		class rmx_cUI_img_plus: RscPicture
+		{
+			idc = 77805;
+			text = "x\addons\a3_epoch_code\Data\UI\craftqty_arr_right.paa";
+			x = 0.84;
+			y = 0.92;
+			w = 0.06;
+			h = 0.08;
+			onLoad = "_c = _this select 0; _c ctrlSetFade 1; _c ctrlCommit 0; _c ctrlSetFade 0; _c ctrlCommit 1;";
+		};
+		class rmx_cUI_img_minus: RscPicture
+		{
+			idc = 77806;
+			text = "x\addons\a3_epoch_code\Data\UI\craftqty_arr_left.paa";
+			x = 0.6;
+			y = 0.92;
+			w = 0.06;
+			h = 0.08;
+			onLoad = "_c = _this select 0; _c ctrlSetFade 1; _c ctrlCommit 0; _c ctrlSetFade 0; _c ctrlCommit 1;";
+		};
 
 		//edit
 		class rmx_cUI_edit_searchField: RscEdit
@@ -545,20 +566,19 @@ class rmx_craftingUI {
 class Epoch_main_config_group: RscControlsGroupNoScrollbars
 {
 	idc = -1;
-	x = 0.208156 * safezoneW + safezoneX;
-	y = 0.511 * safezoneH + safezoneY;
-	w = 0.4135 * safezoneW;
-	h = 0.4246 * safezoneH;
-	
+	x = 17 * GUI_GRID_W + GUI_GRID_X;
+	y = 2.5 * GUI_GRID_H + GUI_GRID_Y;
+	w = 40 * GUI_GRID_W;
+	h = 19.5 * GUI_GRID_H;
 	class controls{};
 };
 class Epoch_main_config_title: RscText
 {
 	idc = -1;
-	x = 0.208156 * safezoneW + safezoneX;
-	y = 0.4604 * safezoneH + safezoneY; //4582 0.4604
-	w = 0.4135 * safezoneW;
-	h = 0.0242 * safezoneH;
+	x = 17 * GUI_GRID_W + GUI_GRID_X;
+	y = 0.5 * GUI_GRID_H + GUI_GRID_Y;
+	w = 40 * GUI_GRID_W;
+	h = 1 * GUI_GRID_H;
 	text = "Epoch Configuration";
 	colorBackground[] = {0.76,0.5,0.07,0.8};
 	colorText[] = {1,1,1,1};
@@ -568,10 +588,10 @@ class Epoch_main_config_title: RscText
 class Epoch_main_config_combo: RscCombo
 {
 	idc = -1;
-	x = 0.208156 * safezoneW + safezoneX;
-	y = 0.4868 * safezoneH + safezoneY;
-	w = 0.4135 * safezoneW;
-	h = 0.0242 * safezoneH;
+	x = 17 * GUI_GRID_W + GUI_GRID_X;
+	y = 1.5 * GUI_GRID_H + GUI_GRID_Y;
+	w = 40 * GUI_GRID_W;
+	h = 1 * GUI_GRID_H;
 	colorSelect[] = {0.1,0.1,0.1,1};
 	colorText[] = {1,1,1,1.0};
 	colorBackground[] = {0.1,0.1,0.1,1};

@@ -14,9 +14,8 @@ if (!isNull _this) then {
 		// set damage to 0
 		_vehicle setDamage 0;
 
-		_pos = getposATL _vehicle call EPOCH_precisionPos;
-		_dir = getDir _vehicle;
-		_worldspace = [_dir,_pos];
+		// get current location
+		_vehiclePos = getposATL _vehicle;
 
 		// may not be needed but should prevent <null> in DB.
 		_wepsItemsCargo = weaponsItemsCargo _vehicle;
@@ -52,31 +51,23 @@ if (!isNull _this) then {
 		_colorSlot = _vehicle getVariable ["STORAGE_TEXTURE",0];
 
 		_storageOwners = _vehicle getVariable["STORAGE_OWNERS",[]];
-		_storageParent = _vehicle getVariable["EPOCH_secStorParent",-1];
 
-		_parentID = _vehicle getVariable["EPOCH_secStorParent", -1];
-		_parent = missionNamespace getVariable[format["EPOCH_BUILD_%1", _parentID], objNull];
+		_locked = if (_vehicle getVariable["EPOCH_Locked", true]) then {1} else {-1};
 
-		/*
-		if (!isNull _parent) then {
-			_objSlot = _parent getVariable["BUILD_SLOT", -1];
-			if (_objSlot != -1) then {
-				_objHiveKey = format["%1:%2", (call EPOCH_fn_InstanceID), _objSlot];
-				_VAL2 = [typeOf _parent, [(getposATL _parent call EPOCH_precisionPos), vectordir _parent, vectorup _parent], _vehSlot, _parent getVariable["BUILD_OWNER", "-1"], _parent getVariable["TEXTURE_SLOT", 0]];
-
-				_parent call EPOCH_fnc_saveBuilding;
-
-				["Building", _objHiveKey, EPOCH_expiresBuilding, _VAL2] call EPOCH_fnc_server_hiveSETEX;
-			};
+		// get position of dummy safe instead of proxy position
+		_storageChild = _vehicle getVariable["EPOCH_secStorChild",objNull];
+		if !(isNull _storageChild) then {
+					_vehiclePos = getposATL _storageChild;
+					_vehicle = _storageChild;
 		};
-		*/
 
+		_worldspace = [(_vehiclePos call EPOCH_precisionPos), vectordir _vehicle, vectorup _vehicle];
 
-		_VAL = [_class, _worldspace, _damage, _inventory, _colorSlot, _storageOwners, _storageParent];
+		_VAL = [_class, _worldspace, _damage, _inventory, _colorSlot, _storageOwners, _locked];
 		["Storage", _vehHiveKey, EPOCH_expiresBuilding, _VAL] call EPOCH_fnc_server_hiveSETEX;
 		//["Storage", _vehHiveKey, _VAL] call EPOCH_fnc_server_hiveSET;
 
-		diag_log format["STORAGE: saved to hive %1 Pos %2 Owners %3 Parent %4", _class, _worldspace, _storageOwners, _storageParent];
+		diag_log format["STORAGE: saved to hive %1 Pos %2 Owners %3 Parent %4 Locked %5", _class, _worldspace, _storageOwners, _storageParent, _locked];
 	};
 
 };

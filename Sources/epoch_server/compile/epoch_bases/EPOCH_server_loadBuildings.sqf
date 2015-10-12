@@ -9,6 +9,7 @@
     https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_server/compile/epoch_bases/EPOCH_server_loadBuildings.sqf
 */
 
+
 _maxTTL = parseNumber EPOCH_expiresBuilding;
 _config = 'CfgEpochClient' call EPOCH_returnConfig;
 _buildingJammerRange = getNumber(_config >> "buildingJammerRange");
@@ -62,7 +63,8 @@ for "_i" from 0 to _this do {
 			_location = (_location select 0) vectorAdd (_location select 1);
 		};
 
-		if (isClass (configFile >> "CfgVehicles" >> _class) && (_damage < 1)) then {
+		// remove old safes on && !(_class isKindOf 'Constructions_lockedstatic_F')
+		if (isClass (configFile >> "CfgVehicles" >> _class) && (_damage < 1) && !(_class isKindOf 'Constructions_lockedstatic_F')) then {
 			_baseObj = createVehicle [_class, _location, [], 0, "CAN_COLLIDE"];
 
 			_baseObj setVectorDirAndUp _worldspace;
@@ -87,18 +89,6 @@ for "_i" from 0 to _this do {
 				};
 			};
 
-			if (_class isKindOf 'Constructions_lockedstatic_F') then{
-				if ((_location select 2) < 0) then {
-					_location set [2, 0];
-					_baseObj setposATL _location;
-				};
-
-				if (_storageSlot != "-1") then {
-					_baseObj setVariable ["EPOCH_secureStorage", _storageSlot];
-					_baseObj setVariable ["EPOCH_Locked", true, true];
-				};
-			};
-
 			_baseObj setDamage _damage;
 			_baseObj call EPOCH_server_buildingInit;
 			_baseObj setVariable ["BUILD_SLOT", _i, true];
@@ -115,8 +105,6 @@ for "_i" from 0 to _this do {
 					_baseObj setVariable ["TEXTURE_SLOT", _textureSlot, true];
 				};
 			};
-
-			missionNamespace setVariable [format ["EPOCH_BUILD_%1",_i], _baseObj];
 
 			EPOCH_BuildingSlots set [_i,1];
 			if (EPOCH_DEBUG_VEH) then {

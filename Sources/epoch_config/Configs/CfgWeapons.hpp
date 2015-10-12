@@ -2227,10 +2227,10 @@ class CfgWeapons
 		magazineReloadTime = 0;
 		model = "\x\addons\a3_epoch_assets_3\CfgWeapons\sword_weaponized.p3d";
 		picture = "\x\addons\a3_epoch_assets\textures\sword\equip_sword_ca.paa";
-		displayName = "Sword";
+		displayName = "Kruhm";
 		magazines[] = { "sledge_swing" };
 		handAnim[] = { "OFP2_ManSkeleton", "\x\addons\a3_epoch_assets_3\CfgVehicles\Characters\Sledge_hold.rtm" };
-		descriptionShort = "Sword";
+		descriptionShort = "Powerful Atlantean Sword";
 
 	};
 

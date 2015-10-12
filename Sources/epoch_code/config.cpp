@@ -128,6 +128,7 @@ class CfgClientFunctions
 			class debugMonitor {};
 			class interact {};
 			class chopWood {};
+			class fish {};
 			class mineRocks {};
 			class UnisexCheck {};
 			class PutHandler {};
@@ -207,6 +208,7 @@ class CfgClientFunctions
 			class fnc_isInsideBuilding {};
 			class fnc_Weather {};
 			class fnc_findSafePos {};
+			class fnc_addItemOverflow {};
 
 			class pushCustomVar {};
 			class itemData {};
@@ -244,7 +246,8 @@ class CfgClientFunctions
 
 		class inventory {
 			class selectInventoryItem {};
-			class itemInteractV2 {};
+			class itemInteractClick {};
+			class itemInteractDblClick {};
 			class uniformArmorCalc {};
 			class gearArmorCalc {};
 			class factorArmor {};
@@ -258,13 +261,17 @@ class CfgClientFunctions
 			class onPause {};
 			class interactVehicle {};
 			class showStats {};
-			class dynamicMenu {};
-			class dynamicMenuCleanup {};
+			//class dynamicMenu {};
+			//class dynamicMenuCleanup {};
 			class 3DctrlPitchYaw {};
 			class 3DctrlSpin {};
 			class 3DctrlYaw {};
 			class InterruptConfig {};
 			class InterruptConfigActions {};
+			class gui3DCooldown {};
+			class gui3DWorldPos {};
+			class gui3DModelPos {};
+			class getIDC {};
 		};
 
 		class config {
@@ -327,4 +334,5 @@ class CfgClientFunctions
 		};
 	};
 };
+#include "\A3\ui_f\hpp\defineCommonGrids.inc"
 #include "\x\addons\a3_epoch_code\gui\Epoch_GUI_Config.hpp"

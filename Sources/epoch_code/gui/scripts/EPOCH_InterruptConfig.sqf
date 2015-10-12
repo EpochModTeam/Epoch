@@ -1,15 +1,17 @@
+#include "\A3\ui_f\hpp\defineCommonGrids.inc"
+
 disableSerialization;
 _display = param [0,displayNull];
 
-if (isNull _display) exitWith {false};
+//if (isNull _display) exitWith {false};
 
 private ["_offset","_cfg","_configs","_idc","_getIDC","_mainCTRLS"];
 
-_offset = if (isServer) then { 0.496012 * safezoneW + safezoneX } else {
+_offset = if (isServer) then {40 * GUI_GRID_W + GUI_GRID_X;} else {
 	if (getNumber (missionConfigFile >> "enableDebugConsole") > 0) then {
-		0.496012 * safezoneW + safezoneX
+		40 * GUI_GRID_W + GUI_GRID_X;
 	} else {
-		0.208156 * safezoneW + safezoneX
+		17 * GUI_GRID_W + GUI_GRID_X;
 	};
 };
 

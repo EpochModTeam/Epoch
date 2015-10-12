@@ -2345,6 +2345,25 @@ class CfgVehicles
 	};
 
 	class ThingX;
+	class FloatingStructure_F;
+	class Bobber_EPOCH : FloatingStructure_F
+	{
+		author = "Axle - EpochMod";
+		_generalMacro = "Bobber_EPOCH";
+		scope = 2;
+		displayName = "Bobber";
+		model = "\x\addons\a3_epoch_assets_3\fishing\bobber.p3d";
+
+		canFloat = 1;
+		waterLeakiness = 0;
+		waterResistanceCoef = 0.8;
+		waterAngularDampingCoef = 10;
+		destrType = "DestructNo";
+		
+		mapSize = 0.14;
+		icon = "iconObject_2x3";
+		cost = 1000;
+	};
 
 	class Land_MPS_EPOCH : ThingX
 	{
@@ -2354,7 +2373,7 @@ class CfgVehicles
 		scope = 2;
 		displayName = "$STR_A3_cfgVehicles_Land_MobilePhone_smart_F0";
 		model = "\A3\Structures_F\Items\Electronics\MobilePhone_smart_F.p3d";
-
+		destrType = "DestructNo";
 		icon = "iconObject_2x3";
 		cost = 1000;
 		hiddenSelections[] = { "camo" };
@@ -3659,11 +3678,12 @@ class CfgVehicles
 			class Unlock
 			{
 				displayName = "Unlock";
+				displayNameDefault = "<img image='\A3\Ui_f\data\IGUI\Cfg\Actions\open_door_ca.paa' size='2.5' />";
 				onlyforplayer = 1;
 				position = "Door_knopf";
 				radius = 3;
 				condition = "this getVariable [""EPOCH_Locked"",true]";
-				statement = "EPOCH_lockStorage_PVS = [this,false,player,Epoch_personalToken]; publicVariableServer ""EPOCH_lockStorage_PVS"";";
+				statement = "EPOCH_lockStorage_PVS = [this,false,player,Epoch_personalToken]; publicVariableServer ""EPOCH_lockStorage_PVS""; [getpos this, 5, 5] call Epoch_gui3DCooldown;";
 			};
 			class Pack
 			{
@@ -3672,7 +3692,7 @@ class CfgVehicles
 				position = "Door_knopf";
 				radius = 3;
 				condition = "this getVariable [""EPOCH_Locked"",true]";
-				statement = "EPOCH_packStorage_PVS = [this,player,Epoch_personalToken]; publicVariableServer ""EPOCH_packStorage_PVS"";";
+				statement = "EPOCH_packStorage_PVS = [this,player,Epoch_personalToken]; publicVariableServer ""EPOCH_packStorage_PVS""; [getpos this, 5, 5] call Epoch_gui3DCooldown;";
 			};
 		};
 	};
@@ -3697,11 +3717,12 @@ class CfgVehicles
 			class Unlock
 			{
 				displayName = "Unlock";
+				displayNameDefault = "<img image='\A3\Ui_f\data\IGUI\Cfg\Actions\open_door_ca.paa' size='2.5' />";
 				onlyforplayer = 1;
 				position = "Door_knopf";
 				radius = 3;
-				condition = "this getVariable [""EPOCH_Locked"",true]";
-				statement = "EPOCH_lockStorage_PVS = [this,false,player,Epoch_personalToken]; publicVariableServer ""EPOCH_lockStorage_PVS"";";
+				condition = "(this getVariable[""EPOCH_secStorParent"", objNull]) getVariable [""EPOCH_Locked"",true]";
+				statement = "EPOCH_lockStorage_PVS = [this,false,player,Epoch_personalToken]; publicVariableServer ""EPOCH_lockStorage_PVS""; [getpos this, 5, 5] call Epoch_gui3DCooldown;";
 			};
 			class Pack
 			{
@@ -3709,8 +3730,8 @@ class CfgVehicles
 				onlyforplayer = 1;
 				position = "Door_knopf";
 				radius = 3;
-				condition = "this getVariable [""EPOCH_Locked"",true]";
-				statement = "EPOCH_packStorage_PVS = [this,player,Epoch_personalToken]; publicVariableServer ""EPOCH_packStorage_PVS"";";
+				condition = "(this getVariable[""EPOCH_secStorParent"", objNull]) getVariable [""EPOCH_Locked"",true]";
+				statement = "EPOCH_packStorage_PVS = [this,player,Epoch_personalToken]; publicVariableServer ""EPOCH_packStorage_PVS""; [getpos this, 5, 5] call Epoch_gui3DCooldown;";
 			};
 		};
 	};
@@ -5028,17 +5049,19 @@ class CfgVehicles
 		forceSupply = 0;
 		maximumLoad = 600;
 		isSecureStorage = 1;
+		parentClass = "LockBox_EPOCH";
 
 		class UserActions
 		{
 			class Lock
 			{
 				displayName = "Lock";
+				displayNameDefault = "<img image='\A3\Ui_f\data\IGUI\Cfg\Actions\open_door_ca.paa' size='2.5' />";
 				onlyforplayer = 1;
 				position = "Door_knopf";
 				radius = 3;
 				condition = "this == this";
-				statement = "EPOCH_lockStorage_PVS = [this,true,player,Epoch_personalToken]; publicVariableServer ""EPOCH_lockStorage_PVS"";";
+				statement = "EPOCH_lockStorage_PVS = [this,true,player,Epoch_personalToken]; publicVariableServer ""EPOCH_lockStorage_PVS""; [getpos this, 5, 5] call Epoch_gui3DCooldown;";
 			};
 		};
 	};
@@ -5053,17 +5076,19 @@ class CfgVehicles
 		forceSupply = 0;
 		maximumLoad = 3600;
 		isSecureStorage = 1;
+		parentClass = "Safe_EPOCH";
 
 		class UserActions
 		{
 			class Lock
 			{
 				displayName = "Lock";
+				displayNameDefault = "<img image='\A3\Ui_f\data\IGUI\Cfg\Actions\open_door_ca.paa' size='2.5' />";
 				onlyforplayer = 1;
 				position = "Door_knopf";
 				radius = 3;
 				condition = "this == this";
-				statement = "EPOCH_lockStorage_PVS = [this,true,player,Epoch_personalToken]; publicVariableServer ""EPOCH_lockStorage_PVS"";";
+				statement = "EPOCH_lockStorage_PVS = [this,true,player,Epoch_personalToken]; publicVariableServer ""EPOCH_lockStorage_PVS""; [getpos this, 5, 5] call Epoch_gui3DCooldown;";
 			};
 		};
 	};

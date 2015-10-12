@@ -184,7 +184,7 @@ if (EPOCH_ESP_PLAYER || EPOCH_ESP_VEHICLES) then {
 					}
 					else {
 						_name = [];
-						{if (alive _x && isPlayer _x) then { _name pushBack(name _x) }} count crew vehicle _x;
+						{if (alive _x && isPlayer _x) then { _id = _name pushBack(name _x) }} count crew vehicle _x;
 						_text = format['%1 (%2m) - %3', _name, _distance, getText(configFile >> "CfgVehicles" >> typeOf vehicle _x >> "displayName")];
 					};
 					drawIcon3D['', [1, 0, 0, abs((_distance) / _viewDistance - 1)], _pos, 0.2, 0.2, 0, _text, 1, 0.03, "PuristaMedium"];

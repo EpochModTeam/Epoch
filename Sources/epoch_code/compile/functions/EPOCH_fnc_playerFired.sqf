@@ -8,7 +8,7 @@ _magazine =		_this select 5;
 _projectile = 	_this select 6;
 
 switch true do {
-	case (_ammo isKindOf "B_Test_45ACP_Ball"): {
+	case (_ammo isKindOf "B_EnergyPack"): {
 		// diag_log format["DEBUG AMMO: %1", _ammo];
 		if (!isNull cursorTarget) then {
 			_cursorTarget = cursorTarget;
@@ -69,7 +69,7 @@ switch true do {
 		};
 	};
 
-	case (_ammo isKindOf "B_Hatchet"): {	
+	case (_ammo isKindOf "B_Hatchet"): {
 		_gesture = ["GestureSwing0", "GestureSwing1", "GestureSwing2"] select (floor(random 3));
 		player playActionNow _gesture;
 		call EPOCH_chopWood;
@@ -78,13 +78,19 @@ switch true do {
 	case (_ammo isKindOf "B_Swing" || _ammo isKindOf "B_Stick") : {
 		player playActionNow "SledgeSwing";
 		call EPOCH_mineRocks;
+		if (_weapon isEqualTo "MeleeSword") then {
+			call EPOCH_chopWood;
+		};
+		if (_weapon isEqualTo "MeleeRod") then {
+			call EPOCH_fish;
+		};
 	};
 
 	case (_ammo isKindOf "ChainSaw_Bullet"): {
 		call EPOCH_chopWood;
 	};
 
-	default { 
+	default {
 		_droneChance = 2;
 		if !(EPOCH_nearestLocations isEqualTo[]) then{
 			_droneChance = _droneChance * 2;

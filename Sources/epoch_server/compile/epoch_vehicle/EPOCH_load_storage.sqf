@@ -29,31 +29,72 @@ for "_i" from 1 to _this do {
 
 			if (typeName(_inventory) != "ARRAY") then { _inventory = []; };
 
-			_dir = _arr select 1 select 0;
-			_location = _arr select 1 select 1;
+			_worldspace = _arr select 1;
+			_wsCount = count _worldspace;
+			diag_log format ["DEBUG: _wsCount %1 _worldspace %2", _wsCount, _worldspace];
+
+			// new worldspace format
+			if (_wsCount == 3) then {
+				_location = _worldspace deleteAt 0;
+				_dir = _worldspace;
+			} else {
+				_dir = _worldspace select 0;
+				_location = _worldspace select 1;
+			};
 
 			// increased position precision
 			if (count _location == 2) then{
 				_location = (_location select 0) vectorAdd(_location select 1);
 			};
 
-			_vehicle = createVehicle [_class, _location, [], 0, "CAN_COLLIDE"];
 
-			// temp set damage to mark for maint
-			_vehicle setDamage 0.99;
-			_vehicle setDir _dir;
-
-			diag_log format ["STORAGE: created storage %1 at %2", _class, _location];
-
+			// set to ground if only x,y
 			if (count _location == 2) then {
 				_location set [2, 0];
 			};
+
+ 			// try to recover from negitive z
+			if ((_location select 2) < 0) then {
+				_location set [2, 0];
+			};
+
+			_vehicle = createVehicle[_class, _location, [], 0, "CAN_COLLIDE"];
+
+			// if proxy create visable safe
+			if (_class isKindOf "Secure_Storage_Proxy") then {
+				_dummyClass = getText(configFile >> "CfgVehicles" >> _class >> "parentClass");
+				_dummyVehicle = createVehicle [_dummyClass, _location, [], 0, "CAN_COLLIDE"];
+
+				if (typeName _dir == "ARRAY") then {
+					_dummyVehicle setVectorDirAndUp _dir;
+				} else {
+					_dummyVehicle setDir _dir;
+				};
+
+				_dummyVehicle setposATL _location;
+
+				// used on save to get ref to storage object
+				_dummyVehicle setVariable ["EPOCH_secStorParent", _vehicle];
+				// used on save to get loction of dummy object
+				_vehicle setVariable["EPOCH_secStorChild",_dummyVehicle];
+			};
+
+			if (typeName _dir == "ARRAY") then {
+				_vehicle setVectorDirAndUp _dir;
+			} else {
+				_vehicle setDir _dir;
+			};
+
+			// temp set damage to mark for maint
+			_vehicle setDamage 0.99;
 
 			_vehicle setposATL _location;
 
 			_vehicle setVariable ["STORAGE_SLOT", str(_i), true];
 
-			missionNamespace setVariable [format ["EPOCH_STORAGE_%1", _i], _vehicle];
+			// missionNamespace setVariable [format ["EPOCH_STORAGE_%1", _i], _vehicle];
+
+			diag_log format ["STORAGE: created storage %1 at %2", _class, _location];
 
 			_vehicle call EPOCH_server_storageInit;
 
@@ -79,10 +120,12 @@ for "_i" from 1 to _this do {
 			if (count _arr >= 6) then {
 				_vehicle setVariable ["STORAGE_OWNERS", _arr select 5];
 				if (_class isKindOf 'Secure_Storage_Proxy') then{
+
+					// TODO: could be used to unlock safe?
 					if ((_arr select 6) != -1) then {
-						_vehicle setVariable ["EPOCH_secStorParent", _arr select 6];
 						_location set [2, -10];
 						_vehicle setPosATL _location;
+						_vehicle setVariable["EPOCH_Locked", true, true];
 					};
 				};
 			};

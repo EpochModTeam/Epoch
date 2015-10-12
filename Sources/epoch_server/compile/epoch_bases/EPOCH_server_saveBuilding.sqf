@@ -80,8 +80,6 @@ if (isText _config) then {
 
 				_newVehicle = [_vehicle, false] call EPOCH_server_simulSwap;
 
-				missionNamespace setVariable[format["EPOCH_BUILD_%1", _objSlot], _newVehicle];
-
 				_newVehicle setVariable["BUILD_OWNER", _plyrUID, true];
 
 				_slot = "-1";
@@ -108,13 +106,15 @@ if (isText _config) then {
 
 								//diag_log format["building lockbox found slot %1", _slot];
 
-								missionNamespace setVariable[format["EPOCH_STORAGE_%1", _slot], _storageObj];
+								// missionNamespace setVariable[format["EPOCH_STORAGE_%1", _slot], _storageObj];
 
 								_newVehicle setVariable["EPOCH_secureStorage", _slot];
+
 								_newVehicle setVariable["EPOCH_Locked", false, true];
 
 								_storageObj setVariable["STORAGE_OWNERS", [_plyrUID]];
-								_storageObj setVariable["EPOCH_secStorParent", _objSlot];
+
+								// _storageObj setVariable["EPOCH_secStorParent", _objSlot];
 								_storageObj setVariable["STORAGE_SLOT", _slot, true];
 
 								_storageObj call EPOCH_server_save_storage;
@@ -128,13 +128,10 @@ if (isText _config) then {
 							};
 						};
 					};
+				} else {
+					_newVehicle call EPOCH_fnc_saveBuilding;
 				};
 
-				_newVehicle call EPOCH_fnc_saveBuilding;
-
-				// _VAL = [_staticClass, _worldspace, _slot, _plyrUID, _textureSlot, _animPhases];
-				// ["Building", _objHiveKey, EPOCH_expiresBuilding, _VAL] call EPOCH_fnc_server_hiveSETEX;
-				//_return = ["Building", _objHiveKey, _VAL] call EPOCH_fnc_server_hiveSET;
 			};
 
 		} else {

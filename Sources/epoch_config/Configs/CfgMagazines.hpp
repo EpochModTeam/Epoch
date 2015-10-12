@@ -784,7 +784,7 @@ class CfgMagazines
 		picture = "\A3\Weapons_F\Data\UI\M_battery_CA.paa";
 		displayName = "Small energy pack";
 		scope = 2;
-		ammo = "B_Test_45ACP_Ball";
+		ammo = "B_EnergyPack";
 		sound[] = {"A3\sounds_f\dummysound",31.622776,1,1600};
 		reloadMagazineSound[] = {"A3\sounds_f\dummysound",0.01,1,10};
 		descriptionShort = "Two part container filled with enough energy and matter for one use";
@@ -801,7 +801,7 @@ class CfgMagazines
 		picture = "\A3\Weapons_F\Data\UI\M_battery_CA.paa";
 		displayName = "Large energy pack";
 		scope = 2;
-		ammo = "B_Test_45ACP_Ball";
+		ammo = "B_EnergyPack";
 		sound[] = { "A3\sounds_f\dummysound", 31.622776, 1, 1600 };
 		reloadMagazineSound[] = { "A3\sounds_f\dummysound", 0.01, 1, 10 };
 		descriptionShort = "Large two part container filled with enough energy and matter 10 uses";

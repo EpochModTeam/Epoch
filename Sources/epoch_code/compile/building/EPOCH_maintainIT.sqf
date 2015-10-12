@@ -3,7 +3,7 @@ if (EPOCH_playerCrypto > 0) then {
   _buildingJammerRange = getNumber(_config >> "buildingJammerRange");
   if (_buildingJammerRange == 0) then { _buildingJammerRange = 75; };
 
-  _maintainCount = {(damage _x) > 0} count nearestObjects[_this, ["Constructions_static_F","Constructions_foundation_F","Constructions_lockedstatic_F","Buildable_Storage","Secure_Storage_Proxy"], _buildingJammerRange];
+  _maintainCount = {(damage _x) > 0} count nearestObjects[_this, ["Constructions_static_F","Constructions_foundation_F","Buildable_Storage","Secure_Storage_Proxy"], _buildingJammerRange];
 
   if (EPOCH_playerCrypto < _maintainCount) then {
     _maintainCount = EPOCH_playerCrypto;

@@ -34,14 +34,17 @@ class Epoch_main_config_template: RscControlsGroup
 	idc = -1;
 	x = 0; //keep x and y absolute
 	y = 0;
-	w = 0.4135 * safezoneW;
-	h = 0.4202 * safezoneH;
+	w = 40 * GUI_GRID_W;
+	h = 19.5 * GUI_GRID_H;
 	class controls {};
 };
 
 class Epoch_main_config_changelog: Epoch_main_config_template
 {
-	onLoad = "((findDisplay 49) displayCtrl 71000) htmlLoad 'x\addons\a3_epoch_code\gui\changelog.html';";
+	w = 0.425 * safezoneW;
+	
+	//onLoad = "((findDisplay 49) displayCtrl 71000) htmlLoad 'x\addons\a3_epoch_code\gui\changelog.html';";
+	onLoad = "((findDisplay 49) displayCtrl 71000) htmlLoad 'https://raw.githubusercontent.com/epochmodteam/epoch/test/changelog.html';";
 	class controls
 	{
 		class Epoch_main_config_html: RscHtml //https://community.bistudio.com/wiki/DialogControls-Text#CT_HTML.3D9
@@ -51,8 +54,8 @@ class Epoch_main_config_changelog: Epoch_main_config_template
 			style = 0x00;
 			x = 0; //keep x and y absolute
 			y = 0;
-			w = 0.4135 * safezoneW;
-			h = 0.4202 * safezoneH;
+			w = 0.425 * safezoneW;
+			h = 1.4 * safezoneH;
 			filename = "changelog.html";
 			text="test";
 

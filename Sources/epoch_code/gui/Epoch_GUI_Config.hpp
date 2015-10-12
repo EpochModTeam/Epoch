@@ -3099,8 +3099,8 @@ class RscDisplayInventory
 
 		class UniformContainer : GroundContainer
 		{
-			//onLBDblClick = "_this call EPOCH_itemInteract";
-			onLBSelChanged = "_this call EPOCH_itemInteractV2";
+			onLBSelChanged = "_this call EPOCH_itemInteractClick";
+			onLBDblClick = "_this call EPOCH_itemInteractDblClick";
 
 			idc = 633;
 			x = "15.1 * 					(			((safezoneW / safezoneH) min 1.2) / 40) + 		(safezoneX + (safezoneW - 					((safezoneW / safezoneH) min 1.2))/2)";
