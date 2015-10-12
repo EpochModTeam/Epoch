@@ -1,5 +1,5 @@
 Client:
-[Added] Epoch ocean fishing.
+[Added] Epoch ocean fishing, also added crafting recipes to allow cooking.
 [Added] Workbench storage device added and used as a nearby crafting requirement for most Kit based crafting options.
 [Added] New secure storage device: The Epoch Safe.
 [Added] Totally new crafting system and UI by Raymix.

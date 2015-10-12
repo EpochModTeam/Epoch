@@ -550,7 +550,7 @@ class CfgCrafting
 		previewScale = 0.4;
 		previewVector = 2;
 	};
-	class ItemSeaBass : Item
+	class ItemSeaBassCooked : Item
 	{
 		usedIn[] = {};
 		nearby[] = {{"Fire", "", "fire", {1,{"ALL"}}, 3, 1, 1, 0}};

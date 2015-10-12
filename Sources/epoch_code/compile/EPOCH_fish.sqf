@@ -1,7 +1,7 @@
 // EPOCH fishing
 private ["_bob","_fishes","_fish","_randomChance","_bobber","_nearByBobbers","_objects","_currentPos"];
 
-_currentPos = player modelToWorld[0, 5, 0];
+_currentPos = player modelToWorld[0, 5 + (random 5), 0];
 if (surfaceIsWater _currentPos) then {
 
   _objects = lineIntersectsObjs[eyePos player, _currentPos, player, objNull, true, 2];
