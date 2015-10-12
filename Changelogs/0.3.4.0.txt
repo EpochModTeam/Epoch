@@ -1,10 +1,10 @@
 Client:
-[Added] Epoch ocean fishing, also added crafting recipes to allow cooking.
+[Added] Fishing Pole and ocean fishing, also added crafting recipes to allow cooking fish.
 [Added] Workbench storage device added and used as a nearby crafting requirement for most Kit based crafting options.
 [Added] New secure storage device: The Epoch Safe.
 [Added] Totally new crafting system and UI by Raymix.
 [Added] Epoch variant of the unarmed Strider vehicle. (I_MRAP_03_EPOCH)
-[Added] Melee weapons: a Broad Sword and Fishing Pole.
+[Added] Broad Sword Melee weapon that can chop down trees and mine rocks.
 [Added] Halloween Clown mask and re-added to loot tables: Wolf/Pumpkin masks as well as Meeps Candy.
 [Fixed] Group members unable to lock a Lockbox or Safe that was placed by the group leader.
 [Fixed] Shadow artifact at top of Jammer.
@@ -31,7 +31,7 @@ Server:
 [Fixed] Issue with trading vehicles that caused the trader data not to save or to save to the wrong slot.
 [Fixed] Added missing prices for female vests.
 [Fixed] Error Generic error in expression in EPOCH_server_repairVehicle.
-[Changed] Reworked secure data storage system to be more reliable.
+[Changed] Reworked secure data storage system to be more reliable. (NOTE: this may cause issues with existing lockboxes spawning on the ground.)
 [Changed] Base building maintain option now also maintains storage devices.
 [Changed] Moved vehicle spawn config that controls how many vehicles can spawn at different location types to settings pbo. See new vehicleSpawnTypes array in the (WorldName).hpp config.
 [Changed] Use new sort command instead of BIS_fncSortBy.
