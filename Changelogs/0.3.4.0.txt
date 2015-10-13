@@ -30,7 +30,8 @@ Server:
 [Added] Example "Epoch Event" Code to provide an example on how to broadcast a message to all players using BE.
 [Added] 'CfgTraderLimits' config can control stock limit per trader per item. Default is 100 per item class per trader.
 [Added] storedVehicleLimit variable in CfgEpochServer can now control the total max allowed vehicles on traders. Default limit is 20.
-[Fixed] Issue with trading vehicles that caused the trader data not to save or to save to the wrong slot.
+[Fixed] Logging to the database was not working due to missing function.
+[Fixed] Issue when trading vehicles that caused the trader data to save data to the wrong slot.
 [Fixed] Added missing prices for female vests.
 [Fixed] Error Generic error in expression in EPOCH_server_repairVehicle.
 [Changed] Reworked secure data storage system to be more reliable. (NOTE: This may cause issues with existing lockboxes spawn on the ground with incorrect orientation.)
