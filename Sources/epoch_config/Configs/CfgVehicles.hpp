@@ -2607,6 +2607,7 @@ class CfgVehicles
 			class Open_left
 			{
 				displayName = "Open";
+				displayNameDefault = "<img image='\A3\Ui_f\data\IGUI\Cfg\Actions\open_door_ca.paa' size='2.5' />";
 				onlyforplayer = 1;
 				position = "Door_knopf";
 				radius = 3;
@@ -2623,6 +2624,7 @@ class CfgVehicles
 			class Lock_cGarage
 			{
 				displayName = "Lock";
+				displayNameDefault = "<img image='\A3\modules_f\data\iconlock_ca.paa' size='2.5' />";
 				onlyforplayer = 1;
 				position = "Door_knopf";
 				radius = 3;
@@ -2632,6 +2634,7 @@ class CfgVehicles
 			class Unlock_cGarage : Lock_cGarage
 			{
 				displayName = "Unlock";
+				displayNameDefault = "<img image='\A3\modules_f\data\iconunlock_ca.paa' size='2.5' />";
 				condition = "(this animationPhase ""open_left"" < 0.5) && (this animationPhase ""lock_cGarage"" >= 0.5)";
 				statement = "this animate [""lock_cGarage"", 0];";
 			};
@@ -2772,6 +2775,7 @@ class CfgVehicles
 			class Open_door
 			{
 				displayName = "Open";
+				displayNameDefault = "<img image='\A3\Ui_f\data\IGUI\Cfg\Actions\open_door_ca.paa' size='2.5' />";
 				onlyforplayer = 1;
 				position = "Door_knopf";
 				radius = 3;
@@ -2820,6 +2824,7 @@ class CfgVehicles
 			class Open_door
 			{
 				displayName = "Open";
+				displayNameDefault = "<img image='\A3\Ui_f\data\IGUI\Cfg\Actions\open_door_ca.paa' size='2.5' />";
 				onlyforplayer = 1;
 				position = "Door_knopf";
 				radius = 3;
@@ -2876,6 +2881,7 @@ class CfgVehicles
 			class Open_door
 			{
 				displayName = "Open";
+				displayNameDefault = "<img image='\A3\Ui_f\data\IGUI\Cfg\Actions\open_door_ca.paa' size='2.5' />";
 				onlyforplayer = 1;
 				position = "Door_knopf";
 				radius = 3;
@@ -2892,6 +2898,7 @@ class CfgVehicles
 			class Lock_Door
 			{
 				displayName = "Lock";
+				displayNameDefault = "<img image='\A3\modules_f\data\iconlock_ca.paa' size='2.5' />";
 				onlyforplayer = 1;
 				position = "Door_knopf";
 				radius = 3;
@@ -2901,6 +2908,7 @@ class CfgVehicles
 			class Unlock_Door : Lock_Door
 			{
 				displayName = "Unlock";
+				displayNameDefault = "<img image='\A3\modules_f\data\iconunlock_ca.paa' size='2.5' />";
 				condition = "!(call EPOCH_lockCheck) && (this animationPhase ""Open_Door"" == 0) && (this animationPhase ""lock_Door"" == 1)";
 				statement = "this animate [""lock_Door"", 0];";
 			};
@@ -2946,6 +2954,7 @@ class CfgVehicles
 			class Open_door
 			{
 				displayName = "Open";
+				displayNameDefault = "<img image='\A3\Ui_f\data\IGUI\Cfg\Actions\open_door_ca.paa' size='2.5' />";
 				onlyforplayer = 1;
 				position = "Door_knopf";
 				radius = 3;
@@ -2962,6 +2971,7 @@ class CfgVehicles
 			class Lock_Door
 			{
 				displayName = "Lock";
+				displayNameDefault = "<img image='\A3\modules_f\data\iconlock_ca.paa' size='2.5' />";
 				onlyforplayer = 1;
 				position = "Door_knopf";
 				radius = 3;
@@ -2971,6 +2981,7 @@ class CfgVehicles
 			class Unlock_Door : Lock_Door
 			{
 				displayName = "Unlock";
+				displayNameDefault = "<img image='\A3\modules_f\data\iconunlock_ca.paa' size='2.5' />";
 				condition = "!(call EPOCH_lockCheck) && (this animationPhase ""Open_Door"" == 0) && (this animationPhase ""lock_Door"" == 1)";
 				statement = "this animate [""lock_Door"", 0];";
 			};
@@ -3227,6 +3238,7 @@ class CfgVehicles
 			class Open_bot
 			{
 				displayName = "Open Bottom";
+				displayNameDefault = "<img image='\A3\Ui_f\data\IGUI\Cfg\Actions\open_door_ca.paa' size='2.5' />";
 				onlyforplayer = 1;
 				position = "Door_knopf";
 				radius = 3;
@@ -3242,6 +3254,7 @@ class CfgVehicles
 			class Open_top
 			{
 				displayName = "Open Top";
+				displayNameDefault = "<img image='\A3\Ui_f\data\IGUI\Cfg\Actions\open_door_ca.paa' size='2.5' />";
 				onlyforplayer = 1;
 				position = "Door_knopf";
 				radius = 3;
@@ -3340,6 +3353,7 @@ class CfgVehicles
 			class Open_top
 			{
 				displayName = "Search";
+				displayNameDefault = "<img image='\A3\ui_f\data\map\VehicleIcons\iconvehicle_ca.paa' size='2.5' />";
 				onlyforplayer = 1;
 				position = "Door_knopf";
 				radius = 3;
@@ -3578,6 +3592,7 @@ class CfgVehicles
 			class MaintainIT
 			{
 				displayName = "Maintain";
+				displayNameDefault = "<img image='\A3\ui_f\data\gui\Rsc\RscDisplayArcadeMap\icon_saveas_ca.paa' size='2.5' />";
 				onlyforplayer = 1;
 				position = "Door_knopf";
 				radius = 10;
@@ -3678,7 +3693,7 @@ class CfgVehicles
 			class Unlock
 			{
 				displayName = "Unlock";
-				displayNameDefault = "<img image='\A3\Ui_f\data\IGUI\Cfg\Actions\open_door_ca.paa' size='2.5' />";
+				displayNameDefault = "<img image='\A3\modules_f\data\iconunlock_ca.paa' size='2.5' />";
 				onlyforplayer = 1;
 				position = "Door_knopf";
 				radius = 3;
@@ -3717,7 +3732,7 @@ class CfgVehicles
 			class Unlock
 			{
 				displayName = "Unlock";
-				displayNameDefault = "<img image='\A3\Ui_f\data\IGUI\Cfg\Actions\open_door_ca.paa' size='2.5' />";
+				displayNameDefault = "<img image='\A3\modules_f\data\iconunlock_ca.paa' size='2.5' />";
 				onlyforplayer = 1;
 				position = "Door_knopf";
 				radius = 3;
@@ -3833,6 +3848,7 @@ class CfgVehicles
 			class Open_left
 			{
 				displayName = "Open";
+				displayNameDefault = "<img image='\A3\Ui_f\data\IGUI\Cfg\Actions\open_door_ca.paa' size='2.5' />";
 				onlyforplayer = 1;
 				position = "Door_knopf";
 				radius = 3;
@@ -3849,6 +3865,7 @@ class CfgVehicles
 			class Lock_cGarage
 			{
 				displayName = "Lock";
+				displayNameDefault = "<img image='\A3\modules_f\data\iconlock_ca.paa' size='2.5' />";
 				onlyforplayer = 1;
 				position = "Door_knopf";
 				radius = 3;
@@ -3858,6 +3875,7 @@ class CfgVehicles
 			class Unlock_cGarage : Lock_cGarage
 			{
 				displayName = "Unlock";
+				displayNameDefault = "<img image='\A3\modules_f\data\iconunlock_ca.paa' size='2.5' />";
 				condition = "!(call EPOCH_lockCheck) && (this animationPhase ""open_left"" < 0.5) && (this animationPhase ""lock_cGarage"" >= 0.5)";
 				statement = "this animate [""lock_cGarage"", 0];";
 			};
@@ -4211,6 +4229,7 @@ class CfgVehicles
 			class Open_door
 			{
 				displayName = "Open";
+				displayNameDefault = "<img image='\A3\Ui_f\data\IGUI\Cfg\Actions\open_door_ca.paa' size='2.5' />";
 				onlyforplayer = 1;
 				position = "Door_knopf";
 				radius = 3;
@@ -4260,6 +4279,7 @@ class CfgVehicles
 			class Open_door
 			{
 				displayName = "Open";
+				displayNameDefault = "<img image='\A3\Ui_f\data\IGUI\Cfg\Actions\open_door_ca.paa' size='2.5' />";
 				onlyforplayer = 1;
 				position = "Door_knopf";
 				radius = 3;
@@ -4321,6 +4341,7 @@ class CfgVehicles
 			class Open_door
 			{
 				displayName = "Open";
+				displayNameDefault = "<img image='\A3\Ui_f\data\IGUI\Cfg\Actions\open_door_ca.paa' size='2.5' />";
 				onlyforplayer = 1;
 				position = "Door_knopf";
 				radius = 3;
@@ -4337,6 +4358,7 @@ class CfgVehicles
 			class Lock_Door
 			{
 				displayName = "Lock";
+				displayNameDefault = "<img image='\A3\modules_f\data\iconlock_ca.paa' size='2.5' />";
 				onlyforplayer = 1;
 				position = "Door_knopf";
 				radius = 3;
@@ -4346,6 +4368,7 @@ class CfgVehicles
 			class Unlock_Door : Lock_Door
 			{
 				displayName = "Unlock";
+				displayNameDefault = "<img image='\A3\modules_f\data\iconunlock_ca.paa' size='2.5' />";
 				condition = "!(call EPOCH_lockCheck) && (this animationPhase ""Open_Door"" == 0) && (this animationPhase ""lock_Door"" == 1)";
 				statement = "this animate [""lock_Door"", 0];";
 			};
@@ -4393,6 +4416,7 @@ class CfgVehicles
 			class Open_door
 			{
 				displayName = "Open";
+				displayNameDefault = "<img image='\A3\Ui_f\data\IGUI\Cfg\Actions\open_door_ca.paa' size='2.5' />";
 				onlyforplayer = 1;
 				position = "Door_knopf";
 				radius = 3;
@@ -4409,6 +4433,7 @@ class CfgVehicles
 			class Lock_Door
 			{
 				displayName = "Lock";
+				displayNameDefault = "<img image='\A3\modules_f\data\iconlock_ca.paa' size='2.5' />";
 				onlyforplayer = 1;
 				position = "Door_knopf";
 				radius = 3;
@@ -4418,6 +4443,7 @@ class CfgVehicles
 			class Unlock_Door : Lock_Door
 			{
 				displayName = "Unlock";
+				displayNameDefault = "<img image='\A3\modules_f\data\iconunlock_ca.paa' size='2.5' />";
 				condition = "!(call EPOCH_lockCheck) && (this animationPhase ""Open_Door"" == 0) && (this animationPhase ""lock_Door"" == 1)";
 				statement = "this animate [""lock_Door"", 0];";
 			};
@@ -4714,6 +4740,7 @@ class CfgVehicles
 			class LootIT
 			{
 				displayName = "Search";
+				displayNameDefault = "<img image='\A3\ui_f\data\map\VehicleIcons\iconvehicle_ca.paa' size='2.5' />";
 				onlyforplayer = 1;
 				position = "Door_knopf";
 				radius = 3;
@@ -4755,6 +4782,7 @@ class CfgVehicles
 			class LootIT
 			{
 				displayName = "Search";
+				displayNameDefault = "<img image='\A3\ui_f\data\map\VehicleIcons\iconvehicle_ca.paa' size='2.5' />";
 				onlyforplayer = 1;
 				position = "Door_knopf";
 				radius = 3;
@@ -4785,6 +4813,7 @@ class CfgVehicles
 			class LootIT
 			{
 				displayName = "Search";
+				displayNameDefault = "<img image='\A3\ui_f\data\map\VehicleIcons\iconvehicle_ca.paa' size='2.5' />";
 				onlyforplayer = 1;
 				position = "Door_knopf";
 				radius = 3;
@@ -4819,6 +4848,7 @@ class CfgVehicles
 			class Open_top
 			{
 				displayName = "Search";
+				displayNameDefault = "<img image='\A3\ui_f\data\map\VehicleIcons\iconvehicle_ca.paa' size='2.5' />";
 				onlyforplayer = 1;
 				position = "Door_knopf";
 				radius = 3;
@@ -4863,6 +4893,7 @@ class CfgVehicles
 			class Open_bot
 			{
 				displayName = "Search";
+				displayNameDefault = "<img image='\A3\ui_f\data\map\VehicleIcons\iconvehicle_ca.paa' size='2.5' />";
 				onlyforplayer = 1;
 				position = "actionPoint";
 				radius = 3;
@@ -4904,6 +4935,7 @@ class CfgVehicles
 			class Open_bot
 			{
 				displayName = "Search";
+				displayNameDefault = "<img image='\A3\ui_f\data\map\VehicleIcons\iconvehicle_ca.paa' size='2.5' />";
 				onlyforplayer = 1;
 				position = "Door_knopf";
 				radius = 3;
@@ -4958,6 +4990,7 @@ class CfgVehicles
 			class Open_top
 			{
 				displayName = "Search";
+				displayNameDefault = "<img image='\A3\ui_f\data\map\VehicleIcons\iconvehicle_ca.paa' size='2.5' />";
 				onlyforplayer = 1;
 				position = "Door_knopf";
 				radius = 3;
@@ -5001,6 +5034,7 @@ class CfgVehicles
 			class FlipMattress
 			{
 				displayName = "Search";
+				displayNameDefault = "<img image='\A3\ui_f\data\map\VehicleIcons\iconvehicle_ca.paa' size='2.5' />";
 				onlyforplayer = 1;
 				position = "Door_knopf";
 				radius = 3;
@@ -5029,6 +5063,7 @@ class CfgVehicles
 			class FlipMattress
 			{
 				displayName = "Search";
+				displayNameDefault = "<img image='\A3\ui_f\data\map\VehicleIcons\iconvehicle_ca.paa' size='2.5' />";
 				onlyforplayer = 1;
 				position = "Door_knopf";
 				radius = 3;
@@ -5056,7 +5091,7 @@ class CfgVehicles
 			class Lock
 			{
 				displayName = "Lock";
-				displayNameDefault = "<img image='\A3\Ui_f\data\IGUI\Cfg\Actions\open_door_ca.paa' size='2.5' />";
+				displayNameDefault = "<img image='\A3\modules_f\data\iconlock_ca.paa' size='2.5' />";
 				onlyforplayer = 1;
 				position = "Door_knopf";
 				radius = 3;
@@ -5083,7 +5118,7 @@ class CfgVehicles
 			class Lock
 			{
 				displayName = "Lock";
-				displayNameDefault = "<img image='\A3\Ui_f\data\IGUI\Cfg\Actions\open_door_ca.paa' size='2.5' />";
+				displayNameDefault = "<img image='\A3\modules_f\data\iconlock_ca.paa' size='2.5' />";
 				onlyforplayer = 1;
 				position = "Door_knopf";
 				radius = 3;
@@ -5119,6 +5154,7 @@ class CfgVehicles
 			class SearchCouch
 			{
 				displayName = "Search";
+				displayNameDefault = "<img image='\A3\ui_f\data\map\VehicleIcons\iconvehicle_ca.paa' size='2.5' />";
 				onlyforplayer = 1;
 				position = "Door_knopf";
 				radius = 3;
@@ -5146,6 +5182,7 @@ class CfgVehicles
 			class SearchCouch
 			{
 				displayName = "Search";
+				displayNameDefault = "<img image='\A3\ui_f\data\map\VehicleIcons\iconvehicle_ca.paa' size='2.5' />";
 				onlyforplayer = 1;
 				position = "Door_knopf";
 				radius = 3;
@@ -5191,6 +5228,7 @@ class CfgVehicles
 			class FlipMattress
 			{
 				displayName = "Search";
+				displayNameDefault = "<img image='\A3\ui_f\data\map\VehicleIcons\iconvehicle_ca.paa' size='2.5' />";
 				onlyforplayer = 1;
 				position = "Door_knopf";
 				radius = 3;
@@ -5227,6 +5265,7 @@ class CfgVehicles
 			class LootIT
 			{
 				displayName = "Search";
+				displayNameDefault = "<img image='\A3\ui_f\data\map\VehicleIcons\iconvehicle_ca.paa' size='2.5' />";
 				onlyforplayer = 1;
 				position = "Door_knopf";
 				radius = 3;
@@ -5273,6 +5312,7 @@ class CfgVehicles
 			class OpenCabinet
 			{
 				displayName = "Search";
+				displayNameDefault = "<img image='\A3\ui_f\data\map\VehicleIcons\iconvehicle_ca.paa' size='2.5' />";
 				onlyforplayer = 1;
 				position = "Door_knopf";
 				radius = 3;
@@ -5311,6 +5351,7 @@ class CfgVehicles
 			class OpenCabinet
 			{
 				displayName = "Search";
+				displayNameDefault = "<img image='\A3\ui_f\data\map\VehicleIcons\iconvehicle_ca.paa' size='2.5' />";
 				onlyforplayer = 1;
 				position = "Door_knopf";
 				radius = 3;
