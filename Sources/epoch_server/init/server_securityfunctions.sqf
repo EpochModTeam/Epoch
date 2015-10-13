@@ -812,7 +812,7 @@ _skn_code_antihack = compileFinal ("
 
 			_addCase = addMissionEventHandler ['Draw3D', {}];
 			removeMissionEventHandler ['Draw3D',0];
-			if (_addCase > 0) then {
+			if (_addCase > 1) then {
 				[format['MEH: Draw3D %1',_addCase],0] call "+_sknBanANDSleep+";
 			};
 			
