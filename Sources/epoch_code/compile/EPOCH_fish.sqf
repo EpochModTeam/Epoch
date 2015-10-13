@@ -8,17 +8,28 @@ if (surfaceIsWater _currentPos) then {
 
   if (_objects isEqualTo []) then{
 
-    _nearByBobbers = nearestObjects [position player,["Bobber_EPOCH"],12];
-    if (_nearByBobbers isEqualTo []) then {
+    _nearByBobbers = nearestObjects [player,["Bobber_EPOCH"],12];
+    _nearByBobbersLocal = [];
+    {
+      if (local _x) then {
+        _nearByBobbersLocal pushBack _x
+      };
+    } forEach _nearByBobbers;
+
+    if (_nearByBobbersLocal isEqualTo []) then {
 
       // Cast
       _bobber = createVehicle ["Bobber_EPOCH",_currentPos, [], 0, "CAN_COLLIDE"];
+
+      EPOCH_TEMPOBJ_PVS = [_bobber];
+      publicVariableServer "EPOCH_TEMPOBJ_PVS"
+
       _bobber setPosASL _currentPos;
       _bobber setVariable ["EPOCH_bobberTime", diag_tickTime];
 
     } else {
 
-      _bobber = _nearByBobbers select 0;
+      _bobber = _nearByBobbersLocal select 0;
       // Reel in and delete Bobber
       if !(isNull _bobber) then {
 
