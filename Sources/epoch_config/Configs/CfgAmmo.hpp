@@ -66,7 +66,7 @@ class CfgAmmo
 		maxRangeProbab = 2.5;
 		explosive = 0;
 		simulationStep = 0.001;
-		timeToLive = 0.004;
+		timeToLive = 0.005;
 		soundHit[] = {"","db-90",1};
 		soundEngine[] = {"","db-80",4};
 	};
