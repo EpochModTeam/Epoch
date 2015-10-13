@@ -8,6 +8,10 @@ class CfgBaseBuilding {
 		upgradeBuilding[] = { { "FirePlaceOn_EPOCH", { { "WoodLog_EPOCH", 1 } } } };
 		removeParts[] = { { "ItemRock", 2 } };
 	};
+	class FirePlaceOn_EPOCH : Default
+	{
+		removeParts[] = { { "ItemRock", 2 } };
+	};
 	class Foundation_EPOCH : Default
 	{
 		removeParts[] = { { "ItemRock", 4 } };
