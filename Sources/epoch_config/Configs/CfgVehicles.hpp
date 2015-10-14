@@ -3698,7 +3698,7 @@ class CfgVehicles
 				position = "Door_knopf";
 				radius = 3;
 				condition = "this getVariable [""EPOCH_Locked"",true]";
-				statement = "EPOCH_lockStorage_PVS = [this,false,player,Epoch_personalToken]; publicVariableServer ""EPOCH_lockStorage_PVS""; [getpos this, 5, 5] call Epoch_gui3DCooldown;";
+				statement = "EPOCH_lockStorage_PVS = [this,false,player,Epoch_personalToken]; publicVariableServer ""EPOCH_lockStorage_PVS"";";
 			};
 			class Pack
 			{
@@ -3707,7 +3707,7 @@ class CfgVehicles
 				position = "Door_knopf";
 				radius = 3;
 				condition = "this getVariable [""EPOCH_Locked"",true]";
-				statement = "EPOCH_packStorage_PVS = [this,player,Epoch_personalToken]; publicVariableServer ""EPOCH_packStorage_PVS""; [getpos this, 5, 5] call Epoch_gui3DCooldown;";
+				statement = "EPOCH_packStorage_PVS = [this,player,Epoch_personalToken]; publicVariableServer ""EPOCH_packStorage_PVS"";";
 			};
 		};
 	};
@@ -3737,7 +3737,7 @@ class CfgVehicles
 				position = "Door_knopf";
 				radius = 3;
 				condition = "(this getVariable[""EPOCH_secStorParent"", objNull]) getVariable [""EPOCH_Locked"",true]";
-				statement = "EPOCH_lockStorage_PVS = [this,false,player,Epoch_personalToken]; publicVariableServer ""EPOCH_lockStorage_PVS""; [getpos this, 5, 5] call Epoch_gui3DCooldown;";
+				statement = "EPOCH_lockStorage_PVS = [this,false,player,Epoch_personalToken]; publicVariableServer ""EPOCH_lockStorage_PVS"";";
 			};
 			class Pack
 			{
@@ -3746,7 +3746,7 @@ class CfgVehicles
 				position = "Door_knopf";
 				radius = 3;
 				condition = "(this getVariable[""EPOCH_secStorParent"", objNull]) getVariable [""EPOCH_Locked"",true]";
-				statement = "EPOCH_packStorage_PVS = [this,player,Epoch_personalToken]; publicVariableServer ""EPOCH_packStorage_PVS""; [getpos this, 5, 5] call Epoch_gui3DCooldown;";
+				statement = "EPOCH_packStorage_PVS = [this,player,Epoch_personalToken]; publicVariableServer ""EPOCH_packStorage_PVS"";";
 			};
 		};
 	};
@@ -5096,7 +5096,7 @@ class CfgVehicles
 				position = "Door_knopf";
 				radius = 3;
 				condition = "this == this";
-				statement = "EPOCH_lockStorage_PVS = [this,true,player,Epoch_personalToken]; publicVariableServer ""EPOCH_lockStorage_PVS""; [getpos this, 5, 5] call Epoch_gui3DCooldown;";
+				statement = "EPOCH_lockStorage_PVS = [this,true,player,Epoch_personalToken]; publicVariableServer ""EPOCH_lockStorage_PVS"";";
 			};
 		};
 	};
@@ -5123,7 +5123,7 @@ class CfgVehicles
 				position = "Door_knopf";
 				radius = 3;
 				condition = "this == this";
-				statement = "EPOCH_lockStorage_PVS = [this,true,player,Epoch_personalToken]; publicVariableServer ""EPOCH_lockStorage_PVS""; [getpos this, 5, 5] call Epoch_gui3DCooldown;";
+				statement = "EPOCH_lockStorage_PVS = [this,true,player,Epoch_personalToken]; publicVariableServer ""EPOCH_lockStorage_PVS"";";
 			};
 		};
 	};
