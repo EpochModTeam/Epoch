@@ -13,6 +13,7 @@ Client:
 [Fixed] Being unable to remove a solar generator.
 [Fixed] Angry Pumpkin mask was incorrectly visible in first person.
 [Fixed] Issue with Headless clients being treated as players. @dayzai/Face
+[Changed] Fixed boats spawning on land and added 3d waypoint to purchased vehicle location.
 [Changed] Removed debug hint text for 3d rotation of objects as it was not needed.
 [Changed] Re-enable Move button, this system will stay and be refined in the next few patches.
 **Improved Dog AI Dog Brain by Axeman**
