@@ -61,12 +61,13 @@ for "_i" from 0 to _this do {
 			// count vehicles
 			{
 				_limit = ["CfgTraderLimits", _x, 100] call EPOCH_fnc_returnConfigEntryV2;
+				_currentStock = (_arr select 1) param[_forEachIndex, 0];
 				if (_limit == 0) then {
 					// mark for removal since limit is 0
 					_toBeRemoved pushBack _forEachIndex;
+					_currentStock = 0;
 				} else {
 					// lower to limit current qty is over limit
-					_currentStock = (_arr select 1) select _forEachIndex;
 					if (_currentStock > _limit) then {
 						(_arr select 1) set [_forEachIndex,_limit];
 						_currentStock = _limit;

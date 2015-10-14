@@ -36,7 +36,7 @@ if (getNumber(configFile >> "CfgVehicles" >> _type >> "isSecureStorage") == 1) t
 	if (_type isKindOf "Secure_Storage_Proxy") then {
 
 		_owners = _unit getVariable["STORAGE_OWNERS", []];
-		diag_log format["_owners2 %1", _owners];
+		//diag_log format["_owners2 %1", _owners];
 
 		// allow group members and owner access
 		if (_plyrGroup != "") then {
@@ -68,11 +68,11 @@ if (getNumber(configFile >> "CfgVehicles" >> _type >> "isSecureStorage") == 1) t
 	} else {
 
 		_weaponHolder = _unit getVariable["EPOCH_secStorParent", objNull];
-		diag_log format["DEBUG: SecStor _weaponHolder %1", _weaponHolder];
+		//diag_log format["DEBUG: SecStor _weaponHolder %1", _weaponHolder];
 
 		if (!isNull _weaponHolder) then {
 			_owners = _weaponHolder getVariable["STORAGE_OWNERS", []];
-			diag_log format["_owners %1", _owners];
+			//diag_log format["_owners %1", _owners];
 
 			// allow group members and owner access
 			if (_plyrGroup != "") then {

@@ -9,7 +9,7 @@ _class = typeOf _unit;
 if (_class isKindOf 'Constructions_lockedstatic_F') then{
 
 	_weaponHolder = _unit getVariable["EPOCH_secStorParent", objNull];
-	diag_log format["DEBUG: Pack _weaponHolder %1", _weaponHolder];
+	//diag_log format["DEBUG: Pack _weaponHolder %1", _weaponHolder];
 
 	if (!isNull _weaponHolder) then {
 		_owners = _weaponHolder getVariable["STORAGE_OWNERS", []];

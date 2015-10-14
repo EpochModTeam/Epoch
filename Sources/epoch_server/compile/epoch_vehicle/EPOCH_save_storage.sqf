@@ -67,7 +67,7 @@ if (!isNull _this) then {
 		["Storage", _vehHiveKey, EPOCH_expiresBuilding, _VAL] call EPOCH_fnc_server_hiveSETEX;
 		//["Storage", _vehHiveKey, _VAL] call EPOCH_fnc_server_hiveSET;
 
-		diag_log format["STORAGE: saved to hive %1 Pos %2 Owners %3 Parent %4 Locked %5", _class, _worldspace, _storageOwners, _storageParent, _locked];
+		diag_log format["STORAGE: saved to hive %1 Pos %2 Owners %3 Locked %4", _class, _worldspace, _storageOwners, _locked];
 	};
 
 };

@@ -15,6 +15,7 @@ _vehicleBought = false;
 
 _returnIn = [];
 _returnOut = [];
+_final_location = [];
 
 if (isNull _trader) exitWith{};
 if !([_plyr,_this select 4] call EPOCH_server_getPToken) exitWith {};
@@ -34,7 +35,7 @@ if (_slot != -1) then {
 	_current_crypto = _vars select _cIndex;
 	_current_cryptoRaw = _current_crypto;
 
-	// diag_log format["_current_crypto: %1 _cIndex:%2", _current_crypto, _cIndex];
+	//diag_log format["_current_crypto: %1 _cIndex:%2 %3", _current_crypto, _cIndex, _this];
 
 	// SELL ITEMS TO TRADER
 	_aiItems = _trader getVariable["AI_ITEMS", [[], []]];
@@ -113,14 +114,14 @@ if (_slot != -1) then {
 		_item = _x;
 		_itemQty = 1;
 
-		// diag_log format["_item: %1", _item];
+		 //diag_log format["_item: %1", _item];
 		if (isClass (_config >> _item)) then{
 			_itemWorth = getNumber(_config >> _item >> "price");
 			_itemTax = getNumber(_config >> _item >> "tax");
 			_tax = _itemWorth * (EPOCH_taxRate + _itemTax);
 			_itemWorth = ceil(_itemWorth + _tax);
 
-			// diag_log format["_itemWorth: %1", _itemWorth];
+			//diag_log format["_itemWorth: %1", _itemWorth];
 
 			_qtyIndex = _itemClasses find _item;
 			// add items to array
@@ -128,7 +129,7 @@ if (_slot != -1) then {
 
 				_currQty = _itemQtys select _qtyIndex;
 
-				// diag_log format["_currQty: %1 >= %2", _currQty, _itemQty];
+				//diag_log format["_currQty: %1 >= %2", _currQty, _itemQty];
 
 				if (_currQty >= _itemQty) then {
 
@@ -142,14 +143,30 @@ if (_slot != -1) then {
 									_position = getPosATL _plyr;
 
 									_helipad = nearestObjects[_position, ["Land_HelipadEmpty_F", "Land_HelipadCircle_F"], 100];
+									_helipads = [];
 									_smoke = nearestObject[_position, "SmokeShell"];
 									if (!isNull _smoke) then {
 										_helipad pushBack _smoke;
 									};
 
+									// water check 
+									if (_item isKindOf "Ship") then {
+										{
+											if (surfaceIsWater (getposATL _x)) then {
+												_helipads pushBack _x;
+											}
+										} forEach _helipad;
+									} else {
+										{
+											if !(surfaceIsWater (getposATL _x)) then {
+												_helipads pushBack _x;
+											}
+										} forEach _helipad;
+									};
+
 									// diag_log format["DEBUG: helipad: %1", _helipad];
 
-									if !(_helipad isEqualTo[]) then {
+									if !(_helipads isEqualTo[]) then {
 
 										_foundSmoke = false;
 										{
@@ -168,9 +185,9 @@ if (_slot != -1) then {
 												};
 											};
 											if (_foundSmoke) exitWith {};
-										} forEach _helipad;
+										} forEach _helipads;
 										if !(_foundSmoke) then {
-											_position = getPosATL (_helipad select 0);
+											_position = getPosATL (_helipads select 0);
 										};
 									} else {
 										_tmpposition = [];
@@ -181,6 +198,10 @@ if (_slot != -1) then {
 											_tmpposition = [_position, 20, 120, 20, 0, 2000, 0] call BIS_fnc_findSafePos;
 										};
 										if ((count _tmpposition) == 2) then {
+											_tmpposition set [2, 0];
+											if (surfaceIsWater _tmpposition) then {
+												_tmpposition = ATLtoASL _tmpposition;
+											};
 											_position = _tmpposition;
 										};
 									};
@@ -204,7 +225,11 @@ if (_slot != -1) then {
 									};
 
 									_vehObj = [_item,_position,random 360,true,_vehslot,_lockOwner,"NONE",false] call EPOCH_fnc_spawn_vehicle;
-
+									_final_location = getPosATL _vehObj;
+									
+									_group = group _plyr;
+									_wp = _group addWaypoint [_final_location, 0];
+									deleteWaypoint [_group, 0];
 
 									_returnOut pushBack _item;
 
@@ -212,6 +237,8 @@ if (_slot != -1) then {
 									_tradeTotal = _tradeTotal - _itemWorth;
 									_current_crypto = _current_crypto - _itemWorth;
 									_tradeQtyTotal = _tradeQtyTotal + _itemQty;
+								} else {
+									diag_log "DEBUG: no slots found to spawn vehicle";
 								};
 							};
 						} else {
