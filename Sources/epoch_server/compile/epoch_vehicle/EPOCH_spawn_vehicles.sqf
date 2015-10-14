@@ -24,17 +24,17 @@ if (_allowedVehiclesList isEqualTo []) exitWith {
 };
 
 _spawnPositionSizeDefaults = [
-      ["FlatAreaCity",1],
-      ["FlatAreaCitySmall",1],
-      ["NameCity",2],
-      ["NameVillage",1],
-      ["NameCityCapital",4],
-      ["Airport",5],
-			["NameLocal",2],
-			["StrongpointArea",1],
-			["VegetationBroadleaf",1],
-			["VegetationFir",1],
-			["ViewPoint",1]
+	["FlatAreaCity",1],
+	["FlatAreaCitySmall",1],
+	["NameCity",2],
+	["NameVillage",1],
+	["NameCityCapital",4],
+	["Airport",5],
+	["NameLocal",2],
+	["StrongpointArea",1],
+	["VegetationBroadleaf",1],
+	["VegetationFir",1],
+	["ViewPoint",1]
 ];
 _serverMapConfig = configFile >> "CfgEpoch" >> worldName;
 _spawnPositionSize = [_serverMapConfig, "vehicleSpawnTypes", _spawnPositionSizeDefaults] call EPOCH_fnc_returnConfigEntry;
@@ -61,93 +61,87 @@ _allCitysDync = [];
     };
 } forEach _allCitys;
 
-
 _position = [0,0,0];
 
+_spawnCount = (count EPOCH_VehicleSlots - EPOCH_storedVehicleCount) - 1;
 
-{
-  if (count EPOCH_VehicleSlots <= EPOCH_storedVehicleCount) exitWith{};
+diag_log format["DEBUG: count EPOCH_VehicleSlots: %1 EPOCH_storedVehicleCount: %2 _spawnCount %3", (count EPOCH_VehicleSlots), EPOCH_storedVehicleCount, _spawnCount];
 
-  _vehCount = count _allowedVehiclesList;
-  if (_vehCount <= 0) exitWith{};
+for "_i" from 1 to _spawnCount do {
 
-  _vehClass = _allowedVehiclesList deleteAt(floor(random(_vehCount)));
-  if (isNil "_vehClass") exitWith{};
+	_slot = EPOCH_VehicleSlots deleteAt 0;
 
-  _direction = random 360;
-  _position = [0,0,0];
-  _getRandomPos = true;
+	_vehCount = count _allowedVehiclesList;
+	_vehClass = _allowedVehiclesList deleteAt(floor(random(_vehCount)));
+	if (isNil "_vehClass") exitWith{diag_log "DEBUG: Failed to find vehicle class"};
 
+	_direction = random 360;
+	_position = [0,0,0];
+	_getRandomPos = true;
 
-  _preferedPos = getArray(configFile >> "CfgEpoch" >> worldname >> "whitelistedVehiclePos" >> _vehClass);
-  if !(_preferedPos isEqualTo []) then{
-    _newPosition = _preferedPos select(floor(random(count _preferedPos)));
-    if ((nearestObjects[(_newPosition select 0), ["LandVehicle", "Ship", "Air", "Tank"], 50]) isEqualTo []) then{
-      _position = _newPosition select 0;
-      _direction = _newPosition select 1;
-      _getRandomPos = false;
-    };
-  };
-
-
-  if (_getRandomPos) then{
-    _isShip = _vehClass isKindOf "Ship";
-    if (_isShip || (_vehClass isKindOf "Air")) then{
-      if (_isShip) then{
-        _position = [epoch_centerMarkerPosition, 0, EPOCH_dynamicVehicleArea, 10, 0, 4000, 1] call BIS_fnc_findSafePos;
-        _position = [_position, 0, 100, 10, 2, 4000, 0] call BIS_fnc_findSafePos;
-      } else {
-        _position = [epoch_centerMarkerPosition, 0, EPOCH_dynamicVehicleArea, 10, 0, 1000, 0] call BIS_fnc_findSafePos;
-      };
-    } else {
-
-      if (_allCitysDync isEqualTo []) then {
-        _position = [epoch_centerMarkerPosition, 0, EPOCH_dynamicVehicleArea, 10, 0, 1000, 0] call BIS_fnc_findSafePos;
-      } else {
-        _selectedCity = _allCitysDync deleteAt (floor random(count _allCitysDync));
-        _cityPos = getArray(_selectedCity >> "position");
-        _range = getNumber(_selectedCity >> "radiusA") * 1.3;
-
-        _roads = _cityPos nearRoads _range;
-				if !(_roads isEqualTo []) then {
-					_road = _roads select(floor random(count _roads));
-	        _position = getPosATL _road;
-	        _position deleteAt 2;
-				};
-      };
-    };
-  };
-
-  if ((count _position == 2 && _getRandomPos) || !_getRandomPos) then{
-
-
-			_collide = "CAN_COLLIDE";
-			if (_getRandomPos) then{
-				_collide = "NONE";
-				_position set[2, 0];
-				if (surfaceIsWater _position) then{
-					_position = ASLToATL _position;
-				};
-			};
-
-			_vehObj = [_vehClass,_position,_direction,true,_x,"",_collide,true] call EPOCH_fnc_spawn_vehicle;
-
-
-			if (EPOCH_DEBUG_VEH) then {
-				_marker = createMarker [str(_position) , _position];
-				_marker setMarkerShape "ICON";
-				_marker setMarkerType "mil_dot";
-				_marker setMarkerText _vehClass;
-				_marker setMarkerColor "ColorBlue";
-			};
-
-
-			EPOCH_VehicleSlots set[_forEachIndex, "REM"];
+	_preferedPos = getArray(configFile >> "CfgEpoch" >> worldname >> "whitelistedVehiclePos" >> _vehClass);
+	if !(_preferedPos isEqualTo []) then{
+		_newPosition = _preferedPos select(floor(random(count _preferedPos)));
+		if ((nearestObjects[(_newPosition select 0), ["LandVehicle", "Ship", "Air", "Tank"], 50]) isEqualTo []) then{
+			_position = _newPosition select 0;
+			_direction = _newPosition select 1;
+			_getRandomPos = false;
+		};
 	};
 
-} forEach EPOCH_VehicleSlots;
 
-EPOCH_VehicleSlots = EPOCH_VehicleSlots - ["REM"];
+	if (_getRandomPos) then{
+		_isShip = _vehClass isKindOf "Ship";
+		if (_isShip || (_vehClass isKindOf "Air")) then{
+			if (_isShip) then{
+			_position = [epoch_centerMarkerPosition, 0, EPOCH_dynamicVehicleArea, 10, 0, 4000, 1] call BIS_fnc_findSafePos;
+			_position = [_position, 0, 100, 10, 2, 4000, 0] call BIS_fnc_findSafePos;
+			} else {
+			_position = [epoch_centerMarkerPosition, 0, EPOCH_dynamicVehicleArea, 10, 0, 1000, 0] call BIS_fnc_findSafePos;
+			};
+		} else {
+
+			if (_allCitysDync isEqualTo []) then {
+				_position = [epoch_centerMarkerPosition, 0, EPOCH_dynamicVehicleArea, 10, 0, 1000, 0] call BIS_fnc_findSafePos;
+			} else {
+				_selectedCity = _allCitysDync deleteAt (floor random(count _allCitysDync));
+				_cityPos = getArray(_selectedCity >> "position");
+				_range = getNumber(_selectedCity >> "radiusA") * 1.3;
+
+				_roads = _cityPos nearRoads _range;
+				if !(_roads isEqualTo []) then {
+					_road = _roads select(floor random(count _roads));
+					_position = getPosATL _road;
+					_position deleteAt 2;
+				};
+			};
+		};
+	};
+
+	if ((count _position == 2 && _getRandomPos) || !_getRandomPos) then{
+
+		_collide = "CAN_COLLIDE";
+		if (_getRandomPos) then{
+			_collide = "NONE";
+			_position set[2, 0];
+			if (surfaceIsWater _position) then{
+				_position = ASLToATL _position;
+			};
+		};
+
+		_vehObj = [_vehClass,_position,_direction,true,_slot,"",_collide,true] call EPOCH_fnc_spawn_vehicle;
+
+		if (EPOCH_DEBUG_VEH) then {
+			_marker = createMarker [str(_position) , _position];
+			_marker setMarkerShape "ICON";
+			_marker setMarkerType "mil_dot";
+			_marker setMarkerText _vehClass;
+			_marker setMarkerColor "ColorBlue";
+		};
+
+	};
+
+};
 
 EPOCH_VehicleSlotCount = count EPOCH_VehicleSlots;
 publicVariable "EPOCH_VehicleSlotCount";

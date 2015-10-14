@@ -91,7 +91,7 @@ if (isText _config) then {
 
 					if (!isNull _newVehicle) then {
 
-						diag_log format["building lockbox !isnull %1", _newVehicle];
+						//diag_log format["building lockbox !isnull %1", _newVehicle];
 
 						if !(EPOCH_StorageSlots isEqualTo []) then {
 

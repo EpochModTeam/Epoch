@@ -31,7 +31,7 @@ for "_i" from 1 to _this do {
 
 			_worldspace = _arr select 1;
 			_wsCount = count _worldspace;
-			diag_log format ["DEBUG: _wsCount %1 _worldspace %2", _wsCount, _worldspace];
+			//diag_log format ["DEBUG: _wsCount %1 _worldspace %2", _wsCount, _worldspace];
 
 			// new worldspace format
 			if (_wsCount == 3) then {
@@ -94,7 +94,7 @@ for "_i" from 1 to _this do {
 
 			// missionNamespace setVariable [format ["EPOCH_STORAGE_%1", _i], _vehicle];
 
-			diag_log format ["STORAGE: created storage %1 at %2", _class, _location];
+			// diag_log format ["STORAGE: created storage %1 at %2", _class, _location];
 
 			_vehicle call EPOCH_server_storageInit;
 

@@ -126,7 +126,7 @@ class FSM
        "			_list = _this nearEntities[[""Epoch_Male_F"", ""Epoch_Female_F"", ""LandVehicle"", ""Ship"", ""Air"", ""Tank""], 45];" \n
        "			if ({ isPlayer _x }count _list == 0) then {" \n
        "				_this setVariable [""LAST_CHECK"",nil];" \n
-       "				diag_log format[""DEBUG: _cleanIT del %1"", _this];" \n
+       "				//diag_log format[""DEBUG: _cleanIT del %1"", _this];" \n
        "				deleteVehicle _this;" \n
        "" \n
        "			};" \n
@@ -149,7 +149,7 @@ class FSM
        "					deleteVehicle _x;" \n
        "				}forEach nearestObjects[_this, [""WeaponHolder""], 2];" \n
        "				_this setVariable [""LAST_CHECK"",nil];" \n
-       "								diag_log format[""DEBUG: _cleanIT2 del %1"", _this];" \n
+       "				//diag_log format[""DEBUG: _cleanIT2 del %1"", _this];" \n
        "				deleteVehicle _this;" \n
        "				_removed = true;" \n
        "			};" \n
@@ -328,7 +328,7 @@ class FSM
            "							_activeVehicles pushBack _x;" \n
            "						};" \n
            "					} else {" \n
-		   "						diag_log format[""DEBUG: vtoken del %1"",_x];" \n
+		   "						//diag_log format[""DEBUG: vtoken del %1"",_x];" \n
            "						deleteVehicle _x;" \n
            "					};" \n
            "				};" \n
