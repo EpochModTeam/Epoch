@@ -528,12 +528,12 @@ class FSM
                                          "" \n
                                          "	};" \n
                                          "" \n
-                                         "deleteMarkerLocal _mkrName4;" \n
-                                         "_mkrName4 = format[""axeD%1"", _unit];" \n
-                                         "_mkr2 = createMarkerLocal  [_mkrName4, _nextPos];" \n
-                                         "_mkrName4 setMarkerShapeLocal ""ICON"";" \n
-                                         "_mkrName4 setMarkerTypeLocal ""mil_dot"";" \n
-                                         "_mkrName4 setMarkerColorLocal ""COLORYELLOW"";" \n
+                                         "//deleteMarkerLocal _mkrName4;" \n
+                                         "//_mkrName4 = format[""axeD%1"", _unit];" \n
+                                         "//_mkr2 = createMarkerLocal  [_mkrName4, _nextPos];" \n
+                                         "//_mkrName4 setMarkerShapeLocal ""ICON"";" \n
+                                         "//_mkrName4 setMarkerTypeLocal ""mil_dot"";" \n
+                                         "//_mkrName4 setMarkerColorLocal ""COLORYELLOW"";" \n
                                          "};" \n
                                          "" \n
                                          "" \n

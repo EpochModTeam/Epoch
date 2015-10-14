@@ -23,24 +23,21 @@ if (_allowedVehiclesList isEqualTo []) exitWith {
 	diag_log "DEBUG: All vehicles over limit";
 };
 
-_spawnPositionSize = [
+_spawnPositionSizeDefaults = [
       ["FlatAreaCity",1],
       ["FlatAreaCitySmall",1],
       ["NameCity",2],
       ["NameVillage",1],
       ["NameCityCapital",4],
-      ["Airport",5]
+      ["Airport",5],
+			["NameLocal",2],
+			["StrongpointArea",1],
+			["VegetationBroadleaf",1],
+			["VegetationFir",1],
+			["ViewPoint",1]
 ];
-if (worldName in ["Bornholm","Australia"]) then {
-      _spawnPositionSize append [
-            ["NameLocal",2],
-            ["StrongpointArea",1],
-            ["VegetationBroadleaf",1],
-            ["VegetationFir",1],
-            ["ViewPoint",1]
-      ];
-};
-
+_serverMapConfig = configFile >> "CfgEpoch" >> worldName;
+_spawnPositionSize = [_serverMapConfig, "vehicleSpawnTypes", _spawnPositionSizeDefaults] call EPOCH_fnc_returnConfigEntry;
 
 _allowedTypes = [];
 {
@@ -73,7 +70,7 @@ _position = [0,0,0];
 
   _vehCount = count _allowedVehiclesList;
   if (_vehCount <= 0) exitWith{};
-  
+
   _vehClass = _allowedVehiclesList deleteAt(floor(random(_vehCount)));
   if (isNil "_vehClass") exitWith{};
 

@@ -1,6 +1,6 @@
 class MissionList{
 	traderMissionNames[] = {"Mission - Pikes Peak Express","Mission - Animal Control","Mission - Track a Raider","Mission - VIP Chauffeur","What's the time ?","Who is near by ?","What's New ?","What is your name ?"};
-	traderMissionDisabled[] = { 1, 2, 3 };
+	traderMissionDisabled[] = {};
 	traderMissionActiveNames[] = {"Intercept Package","","","VIP Capture"};
 	traderMissionLongDesc[] = {"Deliver an important message to another trader.","I need a wild animal bringing back here.","Take control of an UAV and track down a bounty.","Deliver a person safely to another location.","ASk the trader the local time.","Find out information about nearby people.","Ask the trader for any news.","Find out the traders name."};
 	traderMissionActiveLongDesc[] = {"Intercept a mission delivery and bring me the message.","","","Capture a VIP being driven."};

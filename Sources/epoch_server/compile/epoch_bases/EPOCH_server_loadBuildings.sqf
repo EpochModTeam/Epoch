@@ -1,9 +1,14 @@
 /*
-Load Buildings
+    Load Buildings
+    by Aaron Clark - EpochMod.com
 
-Epoch Mod - EpochMod.com
-All Rights Reserved.
+    This work is licensed under a Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License.
+    http://creativecommons.org/licenses/by-nc-nd/4.0/
+
+    Improvements and or bugfixes and other contributions are welcome via the github:
+    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_server/compile/epoch_bases/EPOCH_server_loadBuildings.sqf
 */
+
 
 _maxTTL = parseNumber EPOCH_expiresBuilding;
 _config = 'CfgEpochClient' call EPOCH_returnConfig;
@@ -58,7 +63,8 @@ for "_i" from 0 to _this do {
 			_location = (_location select 0) vectorAdd (_location select 1);
 		};
 
-		if (isClass (configFile >> "CfgVehicles" >> _class) && (_damage < 1)) then {
+		// remove old safes on && !(_class isKindOf 'Constructions_lockedstatic_F')
+		if (isClass (configFile >> "CfgVehicles" >> _class) && (_damage < 1) && !(_class isKindOf 'Constructions_lockedstatic_F')) then {
 			_baseObj = createVehicle [_class, _location, [], 0, "CAN_COLLIDE"];
 
 			_baseObj setVectorDirAndUp _worldspace;
@@ -82,17 +88,6 @@ for "_i" from 0 to _this do {
 					_marker setMarkerColor "ColorBlue";
 				};
 			};
-			if (_class == "LockBox_EPOCH") then {
-				if ((_location select 2) < 0) then {
-					_location set [2, 0];
-					_baseObj setposATL _location;
-				};
-
-				if (_storageSlot != "-1") then {
-					_baseObj setVariable ["EPOCH_secureStorage", _storageSlot];
-					_baseObj setVariable ["EPOCH_Locked", true, true];
-				};
-			};
 
 			_baseObj setDamage _damage;
 			_baseObj call EPOCH_server_buildingInit;
@@ -110,8 +105,6 @@ for "_i" from 0 to _this do {
 					_baseObj setVariable ["TEXTURE_SLOT", _textureSlot, true];
 				};
 			};
-
-			missionNamespace setVariable [format ["EPOCH_BUILD_%1",_i], _baseObj];
 
 			EPOCH_BuildingSlots set [_i,1];
 			if (EPOCH_DEBUG_VEH) then {

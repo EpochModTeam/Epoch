@@ -10,6 +10,7 @@ class RscCombo;
 class RscProgress;
 class RscButton;
 class RscButtonMenu;
+class RscShortcutButton;
 class RscObject;
 class RscStandardDisplay;
 class RscStructuredText;
@@ -37,6 +38,14 @@ class RscDisplayGetReady;
 class IGUIBack;
 class CA_Title;
 class ScrollBar;
+
+#include "Epoch_GUI_ClientConfigs.hpp"
+#include "Epoch_GUI_rmx.hpp"
+
+class RscTitles 
+{
+	#include "Epoch_RscTitles.hpp"
+};
 
 class RscCustomProgress : RscProgress
 {
@@ -76,162 +85,6 @@ class SKN_RscEdit
 	tooltipColorText[] = { 1, 1, 1, 1 };
 	tooltipColorBox[] = { 1, 1, 1, 1 };
 	tooltipColorShade[] = { 0, 0, 0, 0.65 };
-};
-
-class RscTitles
-{
-	class EpochGameUI
-	{
-		idd = -2;
-		duration = 999999;
-		onLoad = "uiNamespace setVariable ['EPOCH_EpochGameUI', _this select 0];";
-		class controls
-		{
-
-			class custom_picture: RscPicture
-			{
-				style = 48 + 0x800;
-			};
-			class icon1: custom_picture
-			{
-				idc = 21201;
-				text = "\x\addons\a3_epoch_code\Data\UI\thirst_ca.paa";
-				x = "10 * 					(			((safezoneW / safezoneH) min 1.2) / 40) + 		(profilenamespace getvariable [""IGUI_GRID_WEAPON_X"",		((safezoneX + safezoneW) - 		(12.4 * 			(			((safezoneW / safezoneH) min 1.2) / 40)) - 0.5 * 			(			((safezoneW / safezoneH) min 1.2) / 40))])";
-				y = "0 * 					(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25) + 		(profilenamespace getvariable [""IGUI_GRID_WEAPON_Y"",		(safezoneY + 0.5 * 			(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25))])";
-				w = "2.5 * 					(			((safezoneW / safezoneH) min 1.2) / 40)";
-				h = "2.5 * 					(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25)";
-
-			};
-			class icon2: custom_picture
-			{
-				idc = 21202;
-				text = "\x\addons\a3_epoch_code\Data\UI\hunger_ca.paa";
-				x = "7.5 * 					(			((safezoneW / safezoneH) min 1.2) / 40) + 		(profilenamespace getvariable [""IGUI_GRID_WEAPON_X"",		((safezoneX + safezoneW) - 		(12.4 * 			(			((safezoneW / safezoneH) min 1.2) / 40)) - 0.5 * 			(			((safezoneW / safezoneH) min 1.2) / 40))])";
-				y = "0 * 					(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25) + 		(profilenamespace getvariable [""IGUI_GRID_WEAPON_Y"",		(safezoneY + 0.5 * 			(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25))])";
-				w = "2.5 * 					(			((safezoneW / safezoneH) min 1.2) / 40)";
-				h = "2.5 * 					(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25)";
-
-			};
-			class icon3: custom_picture
-			{
-				idc = 21203;
-				text = "\x\addons\a3_epoch_code\Data\UI\broken_ca.paa";
-				x = "5 * 					(			((safezoneW / safezoneH) min 1.2) / 40) + 		(profilenamespace getvariable [""IGUI_GRID_WEAPON_X"",		((safezoneX + safezoneW) - 		(12.4 * 			(			((safezoneW / safezoneH) min 1.2) / 40)) - 0.5 * 			(			((safezoneW / safezoneH) min 1.2) / 40))])";
-				y = "0 * 					(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25) + 		(profilenamespace getvariable [""IGUI_GRID_WEAPON_Y"",		(safezoneY + 0.5 * 			(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25))])";
-				w = "2.5 * 					(			((safezoneW / safezoneH) min 1.2) / 40)";
-				h = "2.5 * 					(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25)";
-
-			};
-			class icon4: custom_picture
-			{
-				idc = 21204;
-				text = "\x\addons\a3_epoch_code\Data\UI\oxygen_ca.paa";
-				x = "2.5 * 					(			((safezoneW / safezoneH) min 1.2) / 40) + 		(profilenamespace getvariable [""IGUI_GRID_WEAPON_X"",		((safezoneX + safezoneW) - 		(12.4 * 			(			((safezoneW / safezoneH) min 1.2) / 40)) - 0.5 * 			(			((safezoneW / safezoneH) min 1.2) / 40))])";
-				y = "0 * 					(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25) + 		(profilenamespace getvariable [""IGUI_GRID_WEAPON_Y"",		(safezoneY + 0.5 * 			(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25))])";
-				w = "2.5 * 					(			((safezoneW / safezoneH) min 1.2) / 40)";
-				h = "2.5 * 					(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25)";
-
-			};
-			class icon5: custom_picture
-			{
-				idc = 21205;
-				text = "\x\addons\a3_epoch_code\Data\UI\hazzard_ca.paa";
-				x = "0 * 					(			((safezoneW / safezoneH) min 1.2) / 40) + 		(profilenamespace getvariable [""IGUI_GRID_WEAPON_X"",		((safezoneX + safezoneW) - 		(12.4 * 			(			((safezoneW / safezoneH) min 1.2) / 40)) - 0.5 * 			(			((safezoneW / safezoneH) min 1.2) / 40))])";
-				y = "0 * 					(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25) + 		(profilenamespace getvariable [""IGUI_GRID_WEAPON_Y"",		(safezoneY + 0.5 * 			(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25))])";
-				w = "2.5 * 					(			((safezoneW / safezoneH) min 1.2) / 40)";
-				h = "2.5 * 					(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25)";
-
-			};
-			class icon6: custom_picture
-			{
-				idc = 21206;
-				text = "\x\addons\a3_epoch_code\Data\UI\bleeding_ca.paa";
-				x = "-2.5 * 					(			((safezoneW / safezoneH) min 1.2) / 40) + 		(profilenamespace getvariable [""IGUI_GRID_WEAPON_X"",		((safezoneX + safezoneW) - 		(12.4 * 			(			((safezoneW / safezoneH) min 1.2) / 40)) - 0.5 * 			(			((safezoneW / safezoneH) min 1.2) / 40))])";
-				y = "0 * 					(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25) + 		(profilenamespace getvariable [""IGUI_GRID_WEAPON_Y"",		(safezoneY + 0.5 * 			(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25))])";
-				w = "2.5 * 					(			((safezoneW / safezoneH) min 1.2) / 40)";
-				h = "2.5 * 					(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25)";
-
-			};
-		};
-	};
-
-	class EpochGameUI2
-	{
-		idd = -3;
-		duration = 10;
-		onLoad = "uiNamespace setVariable ['EPOCH_EpochGameUI2', _this select 0];";
-		class controls
-		{
-
-			class custom_picture : RscPicture
-			{
-				style = 48 + 0x800;
-			};
-			class icon1 : custom_picture
-			{
-				idc = 21207;
-				text = "\x\addons\a3_epoch_code\Data\UI\cc_ca.paa";
-				x = "0 * 					(			((safezoneW / safezoneH) min 1.2) / 40) + 		(profilenamespace getvariable [""IGUI_GRID_VEHICLE_X"",		(safezoneX + 0.5 * 			(			((safezoneW / safezoneH) min 1.2) / 40))])";
-				y = "-2.1 * 			(		(		((safezoneW / safezoneH) min 1.2) / 1.2) / 20) + 			(safezoneY + safezoneH - 		(		((safezoneW / safezoneH) min 1.2) / 1.2)) +  			18 * 			(		(		((safezoneW / safezoneH) min 1.2) / 1.2) / 20) - (1 * 			(		(		((safezoneW / safezoneH) min 1.2) / 1.2) / 20))";
-				w = "2.5 * 					(			((safezoneW / safezoneH) min 1.2) / 40)";
-				h = "2.5 * 					(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25)";
-
-			};
-			class RscCryptoText : RscText
-			{
-				idc = 21208;
-				text = "";
-				colorText[] = { 1, 1, 1, 0.5 };
-				shadow = 0;
-				sizeEx = 0.08;
-				x = "2.1 * 					(			((safezoneW / safezoneH) min 1.2) / 40) + 		(profilenamespace getvariable [""IGUI_GRID_VEHICLE_X"",		(safezoneX + 0.5 * 			(			((safezoneW / safezoneH) min 1.2) / 40))])";
-				y = "-2.2 * 			(		(		((safezoneW / safezoneH) min 1.2) / 1.2) / 20) + 			(safezoneY + safezoneH - 		(		((safezoneW / safezoneH) min 1.2) / 1.2)) +  			18 * 			(		(		((safezoneW / safezoneH) min 1.2) / 1.2) / 20) - (1 * 			(		(		((safezoneW / safezoneH) min 1.2) / 1.2) / 20))";
-				w = "15 * 					(			((safezoneW / safezoneH) min 1.2) / 40)";
-				h = "2.5 * 					(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25)";
-
-			};
-
-		};
-	};
-
-	class EpochGameUI3
-	{
-		idd = -4;
-		duration = 10;
-		onLoad = "uiNamespace setVariable ['EPOCH_EpochGameUI3', _this select 0];";
-		class controls
-		{
-
-			class custom_picture : RscPicture
-			{
-				style = 48 + 0x800;
-			};
-			class icon1 : custom_picture
-			{
-				idc = 21209;
-				text = "\x\addons\a3_epoch_code\Data\UI\battery_ca.paa";
-				x = "0 * 					(			((safezoneW / safezoneH) min 1.2) / 40) + 		(profilenamespace getvariable [""IGUI_GRID_VEHICLE_X"",		(safezoneX + 0.5 * 			(			((safezoneW / safezoneH) min 1.2) / 40))])";
-				y = "0 * 			(		(		((safezoneW / safezoneH) min 1.2) / 1.2) / 20) + 			(safezoneY + safezoneH - 		(		((safezoneW / safezoneH) min 1.2) / 1.2)) +  			18 * 			(		(		((safezoneW / safezoneH) min 1.2) / 1.2) / 20) - (1 * 			(		(		((safezoneW / safezoneH) min 1.2) / 1.2) / 20))";
-				w = "2.5 * 					(			((safezoneW / safezoneH) min 1.2) / 40)";
-				h = "2.5 * 					(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25)";
-
-			};
-			class RscEnergyText : RscText
-			{
-				idc = 21210;
-				text = "";
-				colorText[] = { 1, 1, 1, 0.5 };
-				shadow = 0;
-				sizeEx = 0.08;
-				x = "2.1 * 					(			((safezoneW / safezoneH) min 1.2) / 40) + 		(profilenamespace getvariable [""IGUI_GRID_VEHICLE_X"",		(safezoneX + 0.5 * 			(			((safezoneW / safezoneH) min 1.2) / 40))])";
-				y = "-0.1 * 			(		(		((safezoneW / safezoneH) min 1.2) / 1.2) / 20) + 			(safezoneY + safezoneH - 		(		((safezoneW / safezoneH) min 1.2) / 1.2)) +  			18 * 			(		(		((safezoneW / safezoneH) min 1.2) / 1.2) / 20) - (1 * 			(		(		((safezoneW / safezoneH) min 1.2) / 1.2) / 20))";
-				w = "15 * 					(			((safezoneW / safezoneH) min 1.2) / 40)";
-				h = "2.5 * 					(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25)";
-
-			};
-		};
-	};
-
 };
 
 /*
@@ -1679,7 +1532,6 @@ class InteractBaseBuilding
 			action = "closeDialog 0";
 		};
 
-		/*
 		class RscButtonMenu_2402 : RscButtonMenu
 		{
 			idc = 2402;
@@ -1690,10 +1542,10 @@ class InteractBaseBuilding
 			h = 0.08;
 			action = "closeDialog 0; cursorTarget call EPOCH_fnc_SelectTargetBuild;";
 		};
-		*/
+		
 	};
 };
-
+/*
 class InteractItem
 {
 	idd = -15;
@@ -2256,7 +2108,7 @@ class InteractItem
 
 	};
 };
-
+*/
 class Trade
 {
 	idd = -1900;
@@ -2546,6 +2398,7 @@ class RscDisplayInventory_DLCTemplate
 		};
 	};
 };
+		
 
 class RscDisplayInventory
 {
@@ -3246,10 +3099,8 @@ class RscDisplayInventory
 
 		class UniformContainer : GroundContainer
 		{
-			onLBDblClick = "_this call EPOCH_itemInteract";
-			onLBSelChanged = "_this call EPOCH_itemInteractV2";
-			onLBDrag = "";
-			onLBSelChanged = "";
+			onLBSelChanged = "_this call EPOCH_itemInteractClick";
+			onLBDblClick = "_this call EPOCH_itemInteractDblClick";
 
 			idc = 633;
 			x = "15.1 * 					(			((safezoneW / safezoneH) min 1.2) / 40) + 		(safezoneX + (safezoneW - 					((safezoneW / safezoneH) min 1.2))/2)";
@@ -3384,13 +3235,13 @@ class RscDisplayInventory
 		class EpochBtnBG : IGUIBack
 		{
 			idc = -10;
-			/*
+			
 
-			x = 0.433468 * safezoneW + safezoneX;
-			y = 0.75872 * safezoneH + safezoneY;
-			w = 0.30231 * safezoneW;
-			h = 0.0337482 * safezoneH;
-			*/
+			//x = 0.433468 * safezoneW + safezoneX;
+			//y = 0.75872 * safezoneH + safezoneY;
+			//w = 0.30231 * safezoneW;
+			//h = 0.0337482 * safezoneH;
+			
 			x = "14.5 * 					(			((safezoneW / safezoneH) min 1.2) / 40) + 		(safezoneX + (safezoneW - 					((safezoneW / safezoneH) min 1.2))/2)";
 			y = "23.9 * 					(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25) + 		(safezoneY + (safezoneH - 					(			((safezoneW / safezoneH) min 1.2) / 1.2))/2)";
 			w = "24.5 * 					(			((safezoneW / safezoneH) min 1.2) / 40)";
@@ -3403,12 +3254,12 @@ class RscDisplayInventory
 			idc = -11;
 			text = "Group Menu";
 			onMouseButtonDown = "_this call EPOCH_Inventory_Group";
-			/*
-			x = 0.437079 * safezoneW + safezoneX;
-			y = 0.764 * safezoneH + safezoneY;
-			w = 0.0711741 * safezoneW;
-			h = 0.022 * safezoneH;
-			*/
+			
+			//x = 0.437079 * safezoneW + safezoneX;
+			//y = 0.764 * safezoneH + safezoneY;
+			//w = 0.0711741 * safezoneW;
+			//h = 0.022 * safezoneH;
+			
 			x = "33.2 * 					(			((safezoneW / safezoneH) min 1.2) / 40) + 		(safezoneX + (safezoneW - 					((safezoneW / safezoneH) min 1.2))/2)";
 			y = "24 * 					(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25) + 		(safezoneY + (safezoneH - 					(			((safezoneW / safezoneH) min 1.2) / 1.2))/2)";
 			w = "6 * 					(			((safezoneW / safezoneH) min 1.2) / 40)";
@@ -3419,12 +3270,12 @@ class RscDisplayInventory
 			idc = -12;
 			text = "Requests";
 			onMouseButtonDown = "_this call EPOCH_Inventory_iGroup";
-			/*
-			x = 0.511347 * safezoneW + safezoneX;
-			y = 0.764 * safezoneH + safezoneY;
-			w = 0.0711741 * safezoneW;
-			h = 0.022 * safezoneH;
-			*/
+			
+			//x = 0.511347 * safezoneW + safezoneX;
+			//y = 0.764 * safezoneH + safezoneY;
+			//w = 0.0711741 * safezoneW;
+			//h = 0.022 * safezoneH;
+			
 			x = "27.0 * 					(			((safezoneW / safezoneH) min 1.2) / 40) + 		(safezoneX + (safezoneW - 					((safezoneW / safezoneH) min 1.2))/2)";
 			y = "24 * 					(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25) + 		(safezoneY + (safezoneH - 					(			((safezoneW / safezoneH) min 1.2) / 1.2))/2)";
 			w = "6 * 					(			((safezoneW / safezoneH) min 1.2) / 40)";
@@ -3435,12 +3286,12 @@ class RscDisplayInventory
 			idc = -13;
 			text = "EXAMINE";
 			onMouseButtonDown = "call EPOCH_consumeItem";
-			/*
-			x = 0.585617 * safezoneW + safezoneX;
-			y = 0.764 * safezoneH + safezoneY;
-			w = 0.0711741 * safezoneW;
-			h = 0.022 * safezoneH;
-			*/
+			
+			//x = 0.585617 * safezoneW + safezoneX;
+			//y = 0.764 * safezoneH + safezoneY;
+			//w = 0.0711741 * safezoneW;
+			//h = 0.022 * safezoneH;
+			
 			x = "14.62 * 					(			((safezoneW / safezoneH) min 1.2) / 40) + 		(safezoneX + (safezoneW - 					((safezoneW / safezoneH) min 1.2))/2)";
 			y = "24 * 					(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25) + 		(safezoneY + (safezoneH - 					(			((safezoneW / safezoneH) min 1.2) / 1.2))/2)";
 			w = "6 * 					(			((safezoneW / safezoneH) min 1.2) / 40)";
@@ -3450,13 +3301,13 @@ class RscDisplayInventory
 		{
 			idc = -14;
 			text = "CRAFT";
-			onMouseButtonDown = "true call EPOCH_itemInteract";
-			/*
-			x = 0.659883 * safezoneW + safezoneX;
-			y = 0.764 * safezoneH + safezoneY;
-			w = 0.0711741 * safezoneW;
-			h = 0.022 * safezoneH;
-			*/
+			onMouseButtonDown = "EPOCH_CraftingItem call EPOCH_crafting_load;";
+			
+			//x = 0.659883 * safezoneW + safezoneX;
+			//y = 0.764 * safezoneH + safezoneY;
+			//w = 0.0711741 * safezoneW;
+			//h = 0.022 * safezoneH;
+			
 			x = "20.8 * 					(			((safezoneW / safezoneH) min 1.2) / 40) + 		(safezoneX + (safezoneW - 					((safezoneW / safezoneH) min 1.2))/2)";
 			y = "24 * 					(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25) + 		(safezoneY + (safezoneH - 					(			((safezoneW / safezoneH) min 1.2) / 1.2))/2)";
 			w = "6 * 					(			((safezoneW / safezoneH) min 1.2) / 40)";
@@ -3466,10 +3317,14 @@ class RscDisplayInventory
 		};
 	};
 };
+class RscDisplayInterrupt: RscStandardDisplay //convert to preprocessFileNumbers
+{
+	onLoad = "[""onLoad"",_this,""RscDisplayInterrupt"",'GUI'] call (uinamespace getvariable 'BIS_fnc_initDisplay'); _this call EPOCH_InterruptConfig;";
+};
 
 class RscDisplayMPInterrupt: RscStandardDisplay
 {
-	onLoad = "[""onLoad"",_this,""Epoch_onPause"",'Epoch'] call compile preprocessfilelinenumbers ""A3\ui_f\scripts\initDisplay.sqf"";[""onLoad"",_this,""RscDisplayMPInterrupt"",'Epoch'] call compile preprocessfilelinenumbers ""A3\ui_f\scripts\initDisplay.sqf""";
+	onLoad = "[""onLoad"",_this,""Epoch_onPause"",'Epoch'] call compile preprocessfilelinenumbers ""A3\ui_f\scripts\initDisplay.sqf"";[""onLoad"",_this,""RscDisplayMPInterrupt"",'Epoch'] call compile preprocessfilelinenumbers ""A3\ui_f\scripts\initDisplay.sqf"";_this call EPOCH_InterruptConfig;";
 	//onLoad = "[""onLoad"",_this,""RscDisplayMPInterrupt"",'GUI'] call compile preprocessfilelinenumbers ""A3\ui_f\scripts\initDisplay.sqf""";
 	onUnload = "[""onUnload"",_this,""RscDisplayMPInterrupt"",'Epoch'] call compile preprocessfilelinenumbers ""A3\ui_f\scripts\initDisplay.sqf""";
 };

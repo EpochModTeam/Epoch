@@ -5,6 +5,7 @@ class CfgPricing
 	class ItemCoolerE {price = 50;};
 	class JackKit {price = 25;};
 	class ItemLockbox {price = 250; tax = 0.5;};
+	class ItemSafe { price = 1250; tax = 0.5; };
 	class ItemCompass {price = 3;};
 	class ItemGPS {price = 20;};
 
@@ -243,7 +244,9 @@ class CfgPricing
 	class Hatchet {price = 25;};
 	class MultiGun {price = 100;};
 	class MeleeSledge {price = 50;};
-
+	class MeleeSword { price = 1111; };
+	class MeleeRod { price = 100; };
+	
 	class CrudeHatchet { price = 5; };
 	class MeleeMaul { price = 10; };
 	class WoodClub { price = 5; };
@@ -358,6 +361,8 @@ class CfgPricing
 	class KitFirePlace {price = 4;};
 	class KitTiPi {price = 10;};
 	class KitShelf {price = 90;};
+	class KitWorkbench { price = 10; };
+	
 	class KitWoodFoundation { price = 20; };
 	class KitFoundation {price = 90;};
 	class KitPlotPole {price = 300;};
@@ -484,6 +489,14 @@ class CfgPricing
 	class U_C_Driver_1_white {price = 5;};
 	class U_C_Driver_1_yellow {price = 5;};
 	class U_C_Driver_1_orange {price = 5;};
+
+	
+	class V_F0_EPOCH { price = 5; };
+	class V_F1_EPOCH { price = 5; };
+	class V_F2_EPOCH { price = 5; };
+	class V_F3_EPOCH { price = 5; };
+	class V_F4_EPOCH { price = 5; };
+	class V_F5_EPOCH { price = 5; };
 
 	class V_1_EPOCH {price = 5;};
 	class V_2_EPOCH {price = 5;};
@@ -632,6 +645,7 @@ class CfgPricing
 	class H_104_EPOCH {price = 3;};
 	class wolf_mask_epoch {price = 30;};
 	class pkin_mask_epoch {price = 30;};
+	class clown_mask_epoch {price = 30;};
 
 	class C_Offroad_01_EPOCH {price = 750;};
 	class C_Quadbike_01_EPOCH {price = 500;};
@@ -650,6 +664,7 @@ class CfgPricing
 	class B_Heli_Light_01_EPOCH {price = 2500;};
 	class B_SDV_01_EPOCH {price = 1000;};
 	class B_MRAP_01_EPOCH {price = 2500;};
+	class I_MRAP_03_EPOCH { price = 2500; };
 	class B_G_Offroad_01_armed_EPOCH {price = 2500;};
 	class B_Truck_01_transport_EPOCH {price = 1000;};
 	class B_Truck_01_covered_EPOCH {price = 1000;};

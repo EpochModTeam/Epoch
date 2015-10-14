@@ -58,6 +58,22 @@ class CfgMagazines
 		interactText = "BUILD";
 		buildClass = "LockBox_SIM_EPOCH";
 	};
+	class ItemSafe : CA_Magazine
+	{
+		scope = 2;
+		count = 1;
+		type = 256;
+		displayName = "Safe";
+		model = "\x\addons\a3_epoch_assets_1\models\safe_onside.p3d";
+		picture = "\x\addons\a3_epoch_assets_1\pictures\equip_safe_CA.paa";
+		descriptionShort = "Secure Safe";
+		mass = 50;
+		interactAction = 3;
+		interactText = "BUILD";
+		buildClass = "Safe_SIM_EPOCH";
+	};
+	
+
 	class PartPlankPack: CA_Magazine
 	{
 		scope = 2;
@@ -768,7 +784,7 @@ class CfgMagazines
 		picture = "\A3\Weapons_F\Data\UI\M_battery_CA.paa";
 		displayName = "Small energy pack";
 		scope = 2;
-		ammo = "B_Test_45ACP_Ball";
+		ammo = "B_EnergyPack";
 		sound[] = {"A3\sounds_f\dummysound",31.622776,1,1600};
 		reloadMagazineSound[] = {"A3\sounds_f\dummysound",0.01,1,10};
 		descriptionShort = "Two part container filled with enough energy and matter for one use";
@@ -785,7 +801,7 @@ class CfgMagazines
 		picture = "\A3\Weapons_F\Data\UI\M_battery_CA.paa";
 		displayName = "Large energy pack";
 		scope = 2;
-		ammo = "B_Test_45ACP_Ball";
+		ammo = "B_EnergyPack";
 		sound[] = { "A3\sounds_f\dummysound", 31.622776, 1, 1600 };
 		reloadMagazineSound[] = { "A3\sounds_f\dummysound", 0.01, 1, 10 };
 		descriptionShort = "Large two part container filled with enough energy and matter 10 uses";
@@ -1171,6 +1187,20 @@ class CfgMagazines
 		interactAction = 3; // 0 = examine, 1 = eat, 2 = drink, 3 = build
 		interactText = "BUILD";
 		buildClass = "StorageShelf_SIM_EPOCH";
+		isStorage = 1;
+	};
+	class KitWorkbench : CA_Magazine
+	{
+		model = "\x\addons\a3_epoch_assets_1\models\supply_crate.p3d";
+		picture = "\x\addons\a3_epoch_assets_1\pictures\equip_wooden_crate_ca.paa";
+		displayName = "Workbench Kit";
+		scope = 2;
+		descriptionShort = "Workbench";
+		count = 1;
+		mass = 20;
+		interactAction = 3; // 0 = examine, 1 = eat, 2 = drink, 3 = build
+		interactText = "BUILD";
+		buildClass = "Workbench_SIM_EPOCH";
 		isStorage = 1;
 	};
 	class KitFoundation : CA_Magazine

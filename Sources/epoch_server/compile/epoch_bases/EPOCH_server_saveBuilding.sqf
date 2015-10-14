@@ -80,17 +80,14 @@ if (isText _config) then {
 
 				_newVehicle = [_vehicle, false] call EPOCH_server_simulSwap;
 
-				missionNamespace setVariable[format["EPOCH_BUILD_%1", _objSlot], _newVehicle];
-
 				_newVehicle setVariable["BUILD_OWNER", _plyrUID, true];
 
 				_slot = "-1";
-				// TODO change to config based classes
-				if (_oemType == "LockBox_SIM_EPOCH") then {
+				if (getNumber(configFile >> "CfgVehicles" >> _staticClass >> "isSecureStorage") == 1) then{
 
 					//diag_log format["building lockbox %1", _oemType];
 
-					_buildClass = "LockBoxProxy_EPOCH";
+					_buildClass = getText(configFile >> "CfgVehicles" >> _staticClass >> "weaponHolderProxy");
 
 					if (!isNull _newVehicle) then {
 
@@ -99,41 +96,42 @@ if (isText _config) then {
 						if !(EPOCH_StorageSlots isEqualTo []) then {
 
 							//diag_log format["building lockbox findslot %1", _newVehicle];
+							if (_buildClass != "") then{
 
-							// TODO need some sanity checks here
-							_storageObj = createVehicle[_buildClass, _vehiclePos, [], 0.0, "CAN_COLLIDE"];
+								// TODO need some sanity checks here
+								_storageObj = createVehicle[_buildClass, _vehiclePos, [], 0.0, "CAN_COLLIDE"];
 
-							_slot = EPOCH_StorageSlots select 0;
-							EPOCH_StorageSlots = EPOCH_StorageSlots - [_slot];
+								_slot = EPOCH_StorageSlots select 0;
+								EPOCH_StorageSlots = EPOCH_StorageSlots - [_slot];
 
-							//diag_log format["building lockbox found slot %1", _slot];
+								//diag_log format["building lockbox found slot %1", _slot];
 
-							missionNamespace setVariable[format["EPOCH_STORAGE_%1", _slot], _storageObj];
+								// missionNamespace setVariable[format["EPOCH_STORAGE_%1", _slot], _storageObj];
 
-							_newVehicle setVariable["EPOCH_secureStorage", _slot];
-							_newVehicle setVariable["EPOCH_Locked", false, true];
+								_newVehicle setVariable["EPOCH_secureStorage", _slot];
 
-							_storageObj setVariable["STORAGE_OWNERS", [_plyrUID]];
-							_storageObj setVariable["EPOCH_secStorParent", _objSlot];
-							_storageObj setVariable["STORAGE_SLOT", _slot, true];
+								_newVehicle setVariable["EPOCH_Locked", false, true];
 
-							_storageObj call EPOCH_server_save_storage;
+								_storageObj setVariable["STORAGE_OWNERS", [_plyrUID]];
 
-							_storageObj call EPOCH_server_storageInit;
+								// _storageObj setVariable["EPOCH_secStorParent", _objSlot];
+								_storageObj setVariable["STORAGE_SLOT", _slot, true];
 
-							diag_log format["STORAGE: %1 created storage %2 at %3", _plyrUID, _buildClass, _pos];
+								_storageObj call EPOCH_server_save_storage;
 
-							EPOCH_StorageSlotsCount = count EPOCH_StorageSlots;
-							publicVariable "EPOCH_StorageSlotsCount";
+								_storageObj call EPOCH_server_storageInit;
+
+								diag_log format["STORAGE: %1 created storage %2 at %3", _plyrUID, _buildClass, _pos];
+
+								EPOCH_StorageSlotsCount = count EPOCH_StorageSlots;
+								publicVariable "EPOCH_StorageSlotsCount";
+							};
 						};
 					};
+				} else {
+					_newVehicle call EPOCH_fnc_saveBuilding;
 				};
 
-				_newVehicle call EPOCH_fnc_saveBuilding;
-
-				// _VAL = [_staticClass, _worldspace, _slot, _plyrUID, _textureSlot, _animPhases];
-				// ["Building", _objHiveKey, EPOCH_expiresBuilding, _VAL] call EPOCH_fnc_server_hiveSETEX;
-				//_return = ["Building", _objHiveKey, _VAL] call EPOCH_fnc_server_hiveSET;
 			};
 
 		} else {

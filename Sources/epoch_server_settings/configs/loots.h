@@ -790,7 +790,9 @@ class CfgLootTable
 				{ { "scam_epoch", "magazine" }, 15 },
 				{ { "sweetcorn_epoch", "magazine" }, 15 },
 				{ { "FoodSnooter", "magazine" }, 9 },
-				{ { "TacticalBacon", "magazine" }, 5 }
+				{ { "TacticalBacon", "magazine" }, 5 },
+				{ { "FoodMeeps", "magazine" }, 1 }
+				
 				
 		};
 	};
@@ -831,25 +833,28 @@ class CfgLootTable
 	class GenericLarge
 	{
 		items[] = {
-				{ { "MortarBucket", "magazine" }, 17 },
+				{ { "MortarBucket", "magazine" }, 16 },
 				{ { "CinderBlocks", "magazine" }, 17 },
 				{ { "VehicleRepair", "magazine" }, 17 },
 				{ { "CircuitParts", "magazine" }, 17 },
 				{ { "ItemCorrugated", "magazine" }, 17 },
 				{ { "ItemSolar", "magazine" }, 5 },
 				{ { "ItemBattery", "magazine" }, 5 },
-				{ { "ItemCables", "magazine" }, 5 }
+				{ { "ItemCables", "magazine" }, 5 },
+				{ { "ItemSafe", "magazine" }, 1 }
+				
 		};
 	};
 
 	class GenericAuto
 	{
 		items[] = {
+				{ { "ItemSafe", "magazine" }, 1 },
 				{ { "ItemLockbox", "magazine" }, 4 },
 				{ { "jerrycan_epoch", "magazine" }, 5 },
 				{ { "CircuitParts", "magazine" }, 6 },
 				{ { "MortarBucket", "magazine" }, 9 },
-				{ { "VehicleRepair", "magazine" }, 11 },
+				{ { "VehicleRepair", "magazine" }, 10 },
 				{ { "ItemCorrugated", "magazine" }, 11 },
 				{ { "CinderBlocks", "magazine" }, 12 },
 				{ { "JackKit", "magazine" }, 9 },
@@ -1148,10 +1153,12 @@ class CfgLootTable
 	class Tools
 	{
 		items[] = {
-				{ { "Hatchet", "weapon" }, 65 },
+				{ { "Hatchet", "weapon" }, 62 },
 				{ { "MeleeSledge", "weapon" }, 20 },
 				{ { "ChainSaw", "weapon" }, 10 },
 				{ { "Plunger", "weapon" }, 4 },
+				{ { "MeleeSword", "weapon" }, 1 },
+				{ { "MeleeRod", "weapon" }, 2 },
 				{ { "lighter_epoch", "magazine" }, 1 }
 		};
 	};
@@ -1349,7 +1356,8 @@ class CfgLootTable
 				{ { "KitPlotPole", "magazine" }, 5 },
 				{ { "KitSolarGen", "magazine" }, 2 },
 				{ { "KitStudWall", "magazine" }, 13 },
-				{ { "KitShelf", "magazine" }, 11 },
+				{ { "KitShelf", "magazine" }, 9 },
+				{ { "KitWorkbench", "magazine" }, 2 },
 				{ { "KitWoodFloor", "magazine" }, 12 },
 				{ { "KitWoodStairs", "magazine" }, 10 },
 				{ { "KitWoodTower", "magazine" }, 5 },
@@ -1358,7 +1366,8 @@ class CfgLootTable
 				{ { "KitFirePlace", "magazine" }, 8 },
 				{ { "KitCinderWall", "magazine" }, 5 },
 				{ { "KitFoundation", "magazine" }, 5 },
-				{ { "KitWoodFoundation", "magazine" }, 14 }
+				{ { "KitWoodFoundation", "magazine" }, 14 },
+				{ { "ItemSafe", "magazine" }, 1 }
 		};
 	};
 	
@@ -1369,8 +1378,9 @@ class CfgLootTable
 				{ { "Sodas", "CfgLootTable" }, 6 },
 				{ { "CanFood", "CfgLootTable" }, 8 },
 				{ { "BaseBuilding", "CfgLootTable" }, 20 },
-				{ { "GenericLarge", "CfgLootTable" }, 25 },
+				{ { "GenericLarge", "CfgLootTable" }, 24 },
 				{ { "ItemLockbox", "magazine" }, 4 },
+				{ { "ItemSafe", "magazine" }, 1 },
 				{ { "Generic", "CfgLootTable" }, 10 },
 				{ { "Tools", "CfgLootTable" }, 19 }
 		};
@@ -1834,9 +1844,11 @@ class CfgLootTable
 				{ { "H_90_EPOCH", "item" }, 1 },
 				{ { "H_91_EPOCH", "item" }, 1 },
 				{ { "H_92_EPOCH", "item" }, 1 },
-				{ { "H_104_EPOCH", "item" }, 1 }
-				// { { "wolf_mask_epoch", "item" }, 1 },
-				// { { "pkin_mask_epoch", "item" }, 1 }
+				{ { "H_104_EPOCH", "item" }, 1 },
+				{ { "wolf_mask_epoch", "item" }, 1 },
+				{ { "pkin_mask_epoch", "item" }, 1 },
+				{ { "clown_mask_epoch", "item" }, 1 }
+				
 		};
 	};
 };

@@ -16,7 +16,7 @@ class CfgMods
 		hidePicture = 0;
 		hideName = 0;
 		action = "http://www.epochmod.com";
-		version = "0.3.3.1";
+		version = "0.3.4.0";
 		majorVersion = 0.3; //MUST BE A NUMBER!; Change this if we release a new major version, don't change if we push just push a hotfix
 		ArmAVersion = 150;
 		overview = "Open world survival mod set in the year 2035, Just two years after the mass extinction of billions of people. Those that remain are left with remnants of a once technological society. Try to survive, build, or explore your way through the harsh dynamic environment.";
@@ -27,20 +27,20 @@ class Epoch
 	class Version
 	{
 		//Version System, Check if PBO Version is compatible with Code
-		A3_epoch_assets = "0.3.3.0";
-		A3_epoch_assets_1 = "0.3.3.0";
-		epoch_objects = "0.3.3.0";
-		A3_epoch_assets_3 = "0.3.3.0";
-		A3_epoch_config = "0.3.3.1";
-		A3_epoch_language = "0.3.3.0";
-		Underground_Epoch = "0.3.3.0";
-		A3_epoch_vehicles = "0.3.3.0";
-		a3_epoch_weapons = "0.3.3.0";
-		a2_epoch_weapons = "0.3.3.0";
-		a3_epoch_structures = "0.3.3.0";
-		A3_epoch_functions = "0.3.3.0";
-		A3_epoch_vehicles_1 = "0.3.3.0";
-		Enhanced_Epoch_AiASupport = "0.3.3.0";
+		A3_epoch_assets = "0.3.4.0";
+		A3_epoch_assets_1 = "0.3.4.0";
+		epoch_objects = "0.3.4.0";
+		A3_epoch_assets_3 = "0.3.4.0";
+		A3_epoch_config = "0.3.4.0";
+		A3_epoch_language = "0.3.4.0";
+		Underground_Epoch = "0.3.4.0";
+		A3_epoch_vehicles = "0.3.4.0";
+		a3_epoch_weapons = "0.3.4.0";
+		a2_epoch_weapons = "0.3.4.0";
+		a3_epoch_structures = "0.3.4.0";
+		A3_epoch_functions = "0.3.4.0";
+		A3_epoch_vehicles_1 = "0.3.4.0";
+		Enhanced_Epoch_AiASupport = "0.3.4.0";
 
 	};
 };
@@ -128,16 +128,14 @@ class CfgClientFunctions
 			class debugMonitor {};
 			class interact {};
 			class chopWood {};
+			class fish {};
 			class mineRocks {};
 			class UnisexCheck {};
 			class PutHandler {};
 			class niteLight {};
 			class LootIT {};
 			class supportCopter {};
-			class itemInteract {};
 			class consumeItem {};
-			class craftItemPreview {};
-			class craftItem {};
 			class unitSpawn {};
 			class antiWall {};
 			class onEachFrame {};
@@ -191,6 +189,7 @@ class CfgClientFunctions
 			class clientRespawn {};
 			class clientRevive {};
 			class client_rejectPlayer {};
+			class clientKeyMap {};
 		};
 
 		class p2p_trading
@@ -209,8 +208,10 @@ class CfgClientFunctions
 			class fnc_isInsideBuilding {};
 			class fnc_Weather {};
 			class fnc_findSafePos {};
+			class fnc_addItemOverflow {};
 
 			class pushCustomVar {};
+			class itemData {};
 			class itemPicture {};
 			class itemDisplayName {};
 			class SortArrayByDistance {};
@@ -245,7 +246,8 @@ class CfgClientFunctions
 
 		class inventory {
 			class selectInventoryItem {};
-			class itemInteractV2 {};
+			class itemInteractClick {};
+			class itemInteractDblClick {};
 			class uniformArmorCalc {};
 			class gearArmorCalc {};
 			class factorArmor {};
@@ -255,12 +257,45 @@ class CfgClientFunctions
 		};
 
 		class gui {
-				file = "\x\addons\a3_epoch_code\gui\scripts";
-				class onPause {};
-				class interactVehicle {};
-				class showStats {};
+			file = "\x\addons\a3_epoch_code\gui\scripts";
+			class onPause {};
+			class interactVehicle {};
+			class showStats {};
+			//class dynamicMenu {};
+			//class dynamicMenuCleanup {};
+			class 3DctrlPitchYaw {};
+			class 3DctrlSpin {};
+			class 3DctrlYaw {};
+			class InterruptConfig {};
+			class InterruptConfigActions {};
+			class gui3DCooldown {};
+			class gui3DWorldPos {};
+			class gui3DModelPos {};
+			class getIDC {};
 		};
 
+		class config {
+			file = "\x\addons\a3_epoch_code\gui\scripts\config";
+			class config_keymap {};
+		};
+		class gui_craft {
+			file = "\x\addons\a3_epoch_code\gui\scripts\craftingv2";
+			class crafting_animate {};
+			class crafting_ctrl_collector {};
+			class crafting_dev_toggle {};
+			class crafting_getConfig {};
+			class crafting_checkGear {};
+			class crafting_checkNearby {};
+			class crafting_checkResources {};
+			class crafting_craft {};
+			class crafting_progress {};
+			class crafting_load {};
+			class crafting_unload {};
+			class crafting_LB_click {};
+			class crafting_LB_defaults {};
+			class crafting_LB_doubleClick {};
+			class crafting_colorScheme {};
+		};	
 		class group {
 			file = "\x\addons\a3_epoch_code\gui\scripts\group";
 			class Group_invitePlayer {};
@@ -291,7 +326,13 @@ class CfgClientFunctions
 			class mission_refresh {};
 			class mission_description {};
 		};
-
+		class gui_postProcessing {
+			file = "\x\addons\a3_epoch_code\gui\scripts\post_process";
+			class postprocessCreate {};
+			class postprocessAdjust {};
+			class postprocessDestroy {};
+		};
 	};
 };
+#include "\A3\ui_f\hpp\defineCommonGrids.inc"
 #include "\x\addons\a3_epoch_code\gui\Epoch_GUI_Config.hpp"

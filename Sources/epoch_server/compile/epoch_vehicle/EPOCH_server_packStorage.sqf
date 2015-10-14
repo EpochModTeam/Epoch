@@ -5,9 +5,12 @@ if !([_plyr, _this select 2] call EPOCH_server_getPToken) exitWith{};
 if (isNull _unit) exitWith{};
 if (_plyr distance _unit > 20) exitWith{};
 
-if (typeOf _unit == "LockBox_EPOCH") then {
-	_parentID = _unit getVariable["EPOCH_secureStorage", "-1"];
-	_weaponHolder = missionNamespace getVariable[format["EPOCH_STORAGE_%1", _parentID], objNull];
+_class = typeOf _unit;
+if (_class isKindOf 'Constructions_lockedstatic_F') then{
+
+	_weaponHolder = _unit getVariable["EPOCH_secStorParent", objNull];
+	diag_log format["DEBUG: Pack _weaponHolder %1", _weaponHolder];
+
 	if (!isNull _weaponHolder) then {
 		_owners = _weaponHolder getVariable["STORAGE_OWNERS", []];
 		if ((getPlayerUID _plyr) in _owners) then {
@@ -26,7 +29,7 @@ if (typeOf _unit == "LockBox_EPOCH") then {
 				_magsAmmoCargo = [];
 			};
 
-			// dump items on ground 
+			// dump items on ground
 			_inventory = [
 				_wepsItemsCargo,
 				_magsAmmoCargo,
@@ -34,13 +37,17 @@ if (typeOf _unit == "LockBox_EPOCH") then {
 				getItemCargo _weaponHolder
 			];
 
-			
+
 			[_weaponHolder, _plyr] call EPOCH_server_save_killedStorage;
 			deleteVehicle _weaponHolder;
-				
+
 			_gwh = createVehicle["groundWeaponHolder", _posWH, [], 0, "CAN_COLLIDE"];
 			_gwh setPosATL _posWH;
-			_gwh addMagazineCargoGlobal["ItemLockbox", 1];
+
+			_returnItems = getArray(configFile >> "CfgVehicles" >> _class >> "returnOnPack");
+			{
+				_gwh addMagazineCargoGlobal _x;
+			} forEach _returnItems;
 
 			{
 				_objType = _forEachIndex;
@@ -79,8 +86,8 @@ if (typeOf _unit == "LockBox_EPOCH") then {
 										};
 									};
 								} forEach _x;
-								
-								// add all attachments to vehicle 
+
+								// add all attachments to vehicle
 								// TODO replace with adding attachments directly to gun (Arma feature dependant)
 								{
 									_gwh addItemCargoGlobal[_x, 1];

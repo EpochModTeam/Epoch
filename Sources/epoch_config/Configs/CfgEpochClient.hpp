@@ -1,6 +1,6 @@
 class CfgEpochClient
 {
-	epochVersion = "0.3.3.1";
+	epochVersion = "0.3.4.0";
 
 	sapperRngChance = 100; // increase number to reduce chances and reduce to increase. Default 100 = 1% - 55% if soiled (+ 2% if in city) chance to spawn sapper
 	droneRngChance = 100; // increase number to reduce chances and reduce to increase. Default 100 = // 2% chance (+ 4% chance if in city) (1% - 2% Half if using silencer) to spawn drone if shot fired

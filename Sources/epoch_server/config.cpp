@@ -44,7 +44,7 @@ class cfgFunctions
 };
 class CfgServerVersion
 {
-	client = "0.3.3.1";
-	config = "0.3.3.1";
+	client = "0.3.4.0";
+	config = "0.3.4.0";
 	hive = "0.5.1.7";
 };

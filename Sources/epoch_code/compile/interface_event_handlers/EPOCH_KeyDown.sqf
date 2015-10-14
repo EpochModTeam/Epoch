@@ -34,8 +34,12 @@ if (_ctrl && _dikCode == 0x0C) then {
 if (_dikCode == 0x01) then {
 
 	if !(isNull EPOCH_Target) then {
+		if !(_vehicle isKindOf "ThingX") then {
 			deleteVehicle EPOCH_Target;
-			_dt = ["<t size = '0.8' shadow = '0' color = '#99ffffff'>Build Canceled</t>", 0, 1, 5, 2, 0, 1] spawn bis_fnc_dynamictext;
+		} else {
+			EPOCH_Target = objNull;
+		};
+		_dt = ["<t size = '0.8' shadow = '0' color = '#99ffffff'>Build Canceled</t>", 0, 1, 5, 2, 0, 1] spawn bis_fnc_dynamictext;
 	};
 
 	if !(EPOCH_arr_interactedObjs isEqualTo[]) then {
@@ -145,8 +149,8 @@ if (vehicle player == player) then {
 			case EPOCH_keysBuildMovBak: { EPOCH_Y_OFFSET = (EPOCH_Y_OFFSET - 0.1) max 2; _handled = true };
 			case EPOCH_keysBuildMovL: { EPOCH_X_OFFSET = (EPOCH_X_OFFSET + 0.1) min 5; _handled = true };
 			case EPOCH_keysBuildMovR: { EPOCH_X_OFFSET = (EPOCH_X_OFFSET - 0.1) max - 5; _handled = true };
-			case EPOCH_keysBuildRotL: { EPOCH_buildDirection = (EPOCH_buildDirection + 1) min 360; EPOCH_space = true; hintsilent str(EPOCH_buildDirection); _handled = true };
-			case EPOCH_keysBuildRotR: { EPOCH_buildDirection = (EPOCH_buildDirection - 1) max 0; EPOCH_space = true; hintsilent str(EPOCH_buildDirection); _handled = true };
+			case EPOCH_keysBuildRotL: { EPOCH_buildDirection = (EPOCH_buildDirection + 1) min 360; EPOCH_space = true; _handled = true };
+			case EPOCH_keysBuildRotR: { EPOCH_buildDirection = (EPOCH_buildDirection - 1) max 0; EPOCH_space = true; _handled = true };
 			case EPOCH_keysBuildIt: { cursorTarget call EPOCH_fnc_SelectTarget; _handled = true };
 			};
 		};
@@ -228,8 +232,12 @@ if (vehicle player == player) then {
 
 	if (_dikCode in(actionKeys "Gear")) then {
 		if !(isNull EPOCH_Target) then {
+			if !(_vehicle isKindOf "ThingX") then {
 				deleteVehicle EPOCH_Target;
-				_dt = ["<t size = '0.8' shadow = '0' color = '#99ffffff'>Build Canceled</t>", 0, 1, 5, 2, 0, 1] spawn bis_fnc_dynamictext;
+			} else {
+				EPOCH_Target = objNull;
+			};
+			_dt = ["<t size = '0.8' shadow = '0' color = '#99ffffff'>Build Canceled</t>", 0, 1, 5, 2, 0, 1] spawn bis_fnc_dynamictext;
 		};
 		if (isTouchingGround player) then {
 			_handled = call EPOCH_lootTrash;

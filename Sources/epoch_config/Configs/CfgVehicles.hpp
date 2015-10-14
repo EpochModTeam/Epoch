@@ -1927,6 +1927,76 @@ class CfgVehicles
 		class TransportItems{};
 		class Eventhandlers{};
 	};
+	
+	class I_MRAP_03_F;
+	class I_MRAP_03_EPOCH : I_MRAP_03_F
+	{
+		author = "$STR_A3_Bohemia_Interactive";
+		_generalMacro = "I_MRAP_03_EPOCH";
+		scope = 2;
+		crew = "";
+		side = 3;
+		armor = 75;
+		faction = "CIV_F";
+		maximumLoad = 3500;
+		typicalCargo[] = {};
+		class TransportItems{};
+		class Eventhandlers{};
+		
+		class RenderTargets
+		{
+			class commander_display
+			{
+				renderTarget = "rendertarget0";
+				class CameraView1
+				{
+					pointPosition = "PIP0_pos";
+					pointDirection = "PIP0_dir";
+					renderVisionMode = 0;
+					renderQuality = 2;
+					fov = 0.5;
+				};
+			};
+			class driver_display
+			{
+				renderTarget = "rendertarget2";
+				class CameraView1
+				{
+					pointPosition = "PIP2_pos";
+					pointDirection = "PIP2_dir";
+					renderVisionMode = 0;
+					renderQuality = 2;
+					fov = 0.6;
+				};
+			};
+			class mirrorL
+			{
+				renderTarget = "rendertarget4";
+				class CameraView1
+				{
+					pointPosition = "PIP4_pos";
+					pointDirection = "PIP4_dir";
+					renderVisionMode = 4;
+					renderQuality = 2;
+					fov = 0.35;
+				};
+			};
+			class mirrorR
+			{
+				renderTarget = "rendertarget5";
+				class CameraView1
+				{
+					pointPosition = "PIP5_pos";
+					pointDirection = "PIP5_dir";
+					renderVisionMode = 4;
+					renderQuality = 2;
+					fov = 0.35;
+				};
+			};
+		};
+
+	};
+
 	class B_Truck_01_transport_F;
 	class B_Truck_01_transport_EPOCH: B_Truck_01_transport_F
 	{
@@ -2275,6 +2345,25 @@ class CfgVehicles
 	};
 
 	class ThingX;
+	class FloatingStructure_F;
+	class Bobber_EPOCH : FloatingStructure_F
+	{
+		author = "Axle - EpochMod";
+		_generalMacro = "Bobber_EPOCH";
+		scope = 2;
+		displayName = "Bobber";
+		model = "\x\addons\a3_epoch_assets_3\fishing\bobber.p3d";
+
+		canFloat = 1;
+		waterLeakiness = 0;
+		waterResistanceCoef = 0.8;
+		waterAngularDampingCoef = 10;
+		destrType = "DestructNo";
+		
+		mapSize = 0.14;
+		icon = "iconObject_2x3";
+		cost = 1000;
+	};
 
 	class Land_MPS_EPOCH : ThingX
 	{
@@ -2284,7 +2373,7 @@ class CfgVehicles
 		scope = 2;
 		displayName = "$STR_A3_cfgVehicles_Land_MobilePhone_smart_F0";
 		model = "\A3\Structures_F\Items\Electronics\MobilePhone_smart_F.p3d";
-
+		destrType = "DestructNo";
 		icon = "iconObject_2x3";
 		cost = 1000;
 		hiddenSelections[] = { "camo" };
@@ -2339,8 +2428,8 @@ class CfgVehicles
 		model = "\x\addons\a3_epoch_assets_3\CfgVehicles\Characters\Sapper_corpse.p3d";
 		displayName = "Sapper Corpse";
 	};
-
-	class LockBox_SIM_EPOCH : Constructions_modular_F
+	class Secure_Storage_Temp : Constructions_modular_F {};
+	class LockBox_SIM_EPOCH : Secure_Storage_Temp
 	{
 		scope = 2;
 		model = "\x\addons\a3_epoch_assets_1\models\lockbox.p3d";
@@ -2348,6 +2437,17 @@ class CfgVehicles
 		simulClass = "LockBox_SIM_EPOCH";
 		staticClass = "LockBox_EPOCH";
 		GhostPreview = "LockBox_EPOCH";
+		limitNearby = 2;
+		bypassJammer = 1;
+	};
+	class Safe_SIM_EPOCH : Secure_Storage_Temp
+	{
+		scope = 2;
+		model = "\x\addons\a3_epoch_assets_1\models\safe.p3d";
+		displayName = "Safe";
+		simulClass = "Safe_SIM_EPOCH";
+		staticClass = "Safe_EPOCH";
+		GhostPreview = "Safe_EPOCH";
 		limitNearby = 2;
 		bypassJammer = 1;
 	};
@@ -2467,7 +2567,7 @@ class CfgVehicles
 	{
 		scope = 2;
 		model = "\x\addons\a3_epoch_assets\models\cGarage_SIM.p3d";
-		displayName = "Cinder Block Wall";
+		displayName = "Cinder Block Garage";
 		simulClass = "CinderWallGarage_SIM_EPOCH";
 		staticClass = "CinderWallGarage_EPOCH";
 		GhostPreview = "CinderWallGarage_EPOCH";
@@ -2507,6 +2607,7 @@ class CfgVehicles
 			class Open_left
 			{
 				displayName = "Open";
+				displayNameDefault = "<img image='\A3\Ui_f\data\IGUI\Cfg\Actions\open_door_ca.paa' size='2.5' />";
 				onlyforplayer = 1;
 				position = "Door_knopf";
 				radius = 3;
@@ -2523,6 +2624,7 @@ class CfgVehicles
 			class Lock_cGarage
 			{
 				displayName = "Lock";
+				displayNameDefault = "<img image='\A3\modules_f\data\iconlock_ca.paa' size='2.5' />";
 				onlyforplayer = 1;
 				position = "Door_knopf";
 				radius = 3;
@@ -2532,6 +2634,7 @@ class CfgVehicles
 			class Unlock_cGarage : Lock_cGarage
 			{
 				displayName = "Unlock";
+				displayNameDefault = "<img image='\A3\modules_f\data\iconunlock_ca.paa' size='2.5' />";
 				condition = "(this animationPhase ""open_left"" < 0.5) && (this animationPhase ""lock_cGarage"" >= 0.5)";
 				statement = "this animate [""lock_cGarage"", 0];";
 			};
@@ -2672,6 +2775,7 @@ class CfgVehicles
 			class Open_door
 			{
 				displayName = "Open";
+				displayNameDefault = "<img image='\A3\Ui_f\data\IGUI\Cfg\Actions\open_door_ca.paa' size='2.5' />";
 				onlyforplayer = 1;
 				position = "Door_knopf";
 				radius = 3;
@@ -2720,6 +2824,7 @@ class CfgVehicles
 			class Open_door
 			{
 				displayName = "Open";
+				displayNameDefault = "<img image='\A3\Ui_f\data\IGUI\Cfg\Actions\open_door_ca.paa' size='2.5' />";
 				onlyforplayer = 1;
 				position = "Door_knopf";
 				radius = 3;
@@ -2776,6 +2881,7 @@ class CfgVehicles
 			class Open_door
 			{
 				displayName = "Open";
+				displayNameDefault = "<img image='\A3\Ui_f\data\IGUI\Cfg\Actions\open_door_ca.paa' size='2.5' />";
 				onlyforplayer = 1;
 				position = "Door_knopf";
 				radius = 3;
@@ -2792,6 +2898,7 @@ class CfgVehicles
 			class Lock_Door
 			{
 				displayName = "Lock";
+				displayNameDefault = "<img image='\A3\modules_f\data\iconlock_ca.paa' size='2.5' />";
 				onlyforplayer = 1;
 				position = "Door_knopf";
 				radius = 3;
@@ -2801,6 +2908,7 @@ class CfgVehicles
 			class Unlock_Door : Lock_Door
 			{
 				displayName = "Unlock";
+				displayNameDefault = "<img image='\A3\modules_f\data\iconunlock_ca.paa' size='2.5' />";
 				condition = "!(call EPOCH_lockCheck) && (this animationPhase ""Open_Door"" == 0) && (this animationPhase ""lock_Door"" == 1)";
 				statement = "this animate [""lock_Door"", 0];";
 			};
@@ -2846,6 +2954,7 @@ class CfgVehicles
 			class Open_door
 			{
 				displayName = "Open";
+				displayNameDefault = "<img image='\A3\Ui_f\data\IGUI\Cfg\Actions\open_door_ca.paa' size='2.5' />";
 				onlyforplayer = 1;
 				position = "Door_knopf";
 				radius = 3;
@@ -2862,6 +2971,7 @@ class CfgVehicles
 			class Lock_Door
 			{
 				displayName = "Lock";
+				displayNameDefault = "<img image='\A3\modules_f\data\iconlock_ca.paa' size='2.5' />";
 				onlyforplayer = 1;
 				position = "Door_knopf";
 				radius = 3;
@@ -2871,6 +2981,7 @@ class CfgVehicles
 			class Unlock_Door : Lock_Door
 			{
 				displayName = "Unlock";
+				displayNameDefault = "<img image='\A3\modules_f\data\iconunlock_ca.paa' size='2.5' />";
 				condition = "!(call EPOCH_lockCheck) && (this animationPhase ""Open_Door"" == 0) && (this animationPhase ""lock_Door"" == 1)";
 				statement = "this animate [""lock_Door"", 0];";
 			};
@@ -2999,6 +3110,17 @@ class CfgVehicles
 		bypassJammer = 1;
 	};
 
+	class WorkBench_SIM_EPOCH : Constructions_modular_F
+	{
+		scope = 2;
+		model = "\x\addons\a3_epoch_assets_1\models\workbench.p3d";
+		displayName = "WorkBench (SIM)";
+		staticClass = "WorkBench_EPOCH";
+		simulClass = "WorkBench_SIM_EPOCH";
+		limitNearby = 5;
+		bypassJammer = 1;
+	};
+
 	class Tarp_SIM_EPOCH : Constructions_modular_F
 	{
 		scope = 2;
@@ -3116,6 +3238,7 @@ class CfgVehicles
 			class Open_bot
 			{
 				displayName = "Open Bottom";
+				displayNameDefault = "<img image='\A3\Ui_f\data\IGUI\Cfg\Actions\open_door_ca.paa' size='2.5' />";
 				onlyforplayer = 1;
 				position = "Door_knopf";
 				radius = 3;
@@ -3131,6 +3254,7 @@ class CfgVehicles
 			class Open_top
 			{
 				displayName = "Open Top";
+				displayNameDefault = "<img image='\A3\Ui_f\data\IGUI\Cfg\Actions\open_door_ca.paa' size='2.5' />";
 				onlyforplayer = 1;
 				position = "Door_knopf";
 				radius = 3;
@@ -3229,6 +3353,7 @@ class CfgVehicles
 			class Open_top
 			{
 				displayName = "Search";
+				displayNameDefault = "<img image='\A3\ui_f\data\map\VehicleIcons\iconvehicle_ca.paa' size='2.5' />";
 				onlyforplayer = 1;
 				position = "Door_knopf";
 				radius = 3;
@@ -3414,7 +3539,7 @@ class CfgVehicles
 		ladders[] = {};
 	};
 
-	class SolarGen_EPOCH : NonStrategic
+	class SolarGen_EPOCH : Constructions_static_F
 	{
 		mapSize = 1.27;
 		author = "Epoch: SteamPunkGears";
@@ -3467,6 +3592,7 @@ class CfgVehicles
 			class MaintainIT
 			{
 				displayName = "Maintain";
+				displayNameDefault = "<img image='\A3\ui_f\data\gui\Rsc\RscDisplayArcadeMap\icon_saveas_ca.paa' size='2.5' />";
 				onlyforplayer = 1;
 				position = "Door_knopf";
 				radius = 10;
@@ -3560,11 +3686,14 @@ class CfgVehicles
 		armor = 5000;
 		bypassJammer = 1;
 		limitNearby = 2;
+		isSecureStorage = 1;
+		returnOnPack[] = { { "ItemLockbox", 1 } };
 		class UserActions
 		{
 			class Unlock
 			{
 				displayName = "Unlock";
+				displayNameDefault = "<img image='\A3\modules_f\data\iconunlock_ca.paa' size='2.5' />";
 				onlyforplayer = 1;
 				position = "Door_knopf";
 				radius = 3;
@@ -3578,6 +3707,45 @@ class CfgVehicles
 				position = "Door_knopf";
 				radius = 3;
 				condition = "this getVariable [""EPOCH_Locked"",true]";
+				statement = "EPOCH_packStorage_PVS = [this,player,Epoch_personalToken]; publicVariableServer ""EPOCH_packStorage_PVS"";";
+			};
+		};
+	};
+
+
+	class Safe_EPOCH : Constructions_lockedstatic_F
+	{
+		scope = 2;
+		model = "\x\addons\a3_epoch_assets_1\models\safe.p3d";
+		displayName = "Lockbox";
+		simulClass = "Safe_SIM_EPOCH";
+		staticClass = "Safe_EPOCH";
+		weaponHolderProxy = "SafeProxy_EPOCH";
+		GhostPreview = "Safe_EPOCH";
+		armor = 15000;
+		bypassJammer = 1;
+		limitNearby = 2;
+		isSecureStorage = 1;
+		returnOnPack[] = { { "ItemSafe", 1 } };
+		class UserActions
+		{
+			class Unlock
+			{
+				displayName = "Unlock";
+				displayNameDefault = "<img image='\A3\modules_f\data\iconunlock_ca.paa' size='2.5' />";
+				onlyforplayer = 1;
+				position = "Door_knopf";
+				radius = 3;
+				condition = "(this getVariable[""EPOCH_secStorParent"", objNull]) getVariable [""EPOCH_Locked"",true]";
+				statement = "EPOCH_lockStorage_PVS = [this,false,player,Epoch_personalToken]; publicVariableServer ""EPOCH_lockStorage_PVS"";";
+			};
+			class Pack
+			{
+				displayName = "Pack";
+				onlyforplayer = 1;
+				position = "Door_knopf";
+				radius = 3;
+				condition = "(this getVariable[""EPOCH_secStorParent"", objNull]) getVariable [""EPOCH_Locked"",true]";
 				statement = "EPOCH_packStorage_PVS = [this,player,Epoch_personalToken]; publicVariableServer ""EPOCH_packStorage_PVS"";";
 			};
 		};
@@ -3639,7 +3807,7 @@ class CfgVehicles
 	{
 		scope = 2;
 		model = "\x\addons\a3_epoch_assets\models\cGarage.p3d";
-		displayName = "Cinder Block Wall";
+		displayName = "Cinder Block Garage";
 		simulClass = "CinderWallGarage_SIM_EPOCH";
 		staticClass = "CinderWallGarage_EPOCH";
 		GhostPreview = "CinderWallGarage_EPOCH";
@@ -3680,6 +3848,7 @@ class CfgVehicles
 			class Open_left
 			{
 				displayName = "Open";
+				displayNameDefault = "<img image='\A3\Ui_f\data\IGUI\Cfg\Actions\open_door_ca.paa' size='2.5' />";
 				onlyforplayer = 1;
 				position = "Door_knopf";
 				radius = 3;
@@ -3696,6 +3865,7 @@ class CfgVehicles
 			class Lock_cGarage
 			{
 				displayName = "Lock";
+				displayNameDefault = "<img image='\A3\modules_f\data\iconlock_ca.paa' size='2.5' />";
 				onlyforplayer = 1;
 				position = "Door_knopf";
 				radius = 3;
@@ -3705,6 +3875,7 @@ class CfgVehicles
 			class Unlock_cGarage : Lock_cGarage
 			{
 				displayName = "Unlock";
+				displayNameDefault = "<img image='\A3\modules_f\data\iconunlock_ca.paa' size='2.5' />";
 				condition = "!(call EPOCH_lockCheck) && (this animationPhase ""open_left"" < 0.5) && (this animationPhase ""lock_cGarage"" >= 0.5)";
 				statement = "this animate [""lock_cGarage"", 0];";
 			};
@@ -3815,6 +3986,14 @@ class CfgVehicles
 		model = "\x\addons\a3_epoch_assets\models\shelf_ghost.p3d";
 		displayName = "Shelf Ghost";
 		staticClass = "StorageShelf_EPOCH";
+		ladders[] = {};
+	};
+	class WorkBench_Ghost_EPOCH : Const_Ghost_EPOCH
+	{
+		scope = 2;
+		model = "\x\addons\a3_epoch_assets_1\models\workbench.p3d";
+		displayName = "WorkBench Ghost";
+		staticClass = "WorkBench_EPOCH";
 		ladders[] = {};
 	};
 
@@ -4050,6 +4229,7 @@ class CfgVehicles
 			class Open_door
 			{
 				displayName = "Open";
+				displayNameDefault = "<img image='\A3\Ui_f\data\IGUI\Cfg\Actions\open_door_ca.paa' size='2.5' />";
 				onlyforplayer = 1;
 				position = "Door_knopf";
 				radius = 3;
@@ -4099,6 +4279,7 @@ class CfgVehicles
 			class Open_door
 			{
 				displayName = "Open";
+				displayNameDefault = "<img image='\A3\Ui_f\data\IGUI\Cfg\Actions\open_door_ca.paa' size='2.5' />";
 				onlyforplayer = 1;
 				position = "Door_knopf";
 				radius = 3;
@@ -4160,6 +4341,7 @@ class CfgVehicles
 			class Open_door
 			{
 				displayName = "Open";
+				displayNameDefault = "<img image='\A3\Ui_f\data\IGUI\Cfg\Actions\open_door_ca.paa' size='2.5' />";
 				onlyforplayer = 1;
 				position = "Door_knopf";
 				radius = 3;
@@ -4176,6 +4358,7 @@ class CfgVehicles
 			class Lock_Door
 			{
 				displayName = "Lock";
+				displayNameDefault = "<img image='\A3\modules_f\data\iconlock_ca.paa' size='2.5' />";
 				onlyforplayer = 1;
 				position = "Door_knopf";
 				radius = 3;
@@ -4185,6 +4368,7 @@ class CfgVehicles
 			class Unlock_Door : Lock_Door
 			{
 				displayName = "Unlock";
+				displayNameDefault = "<img image='\A3\modules_f\data\iconunlock_ca.paa' size='2.5' />";
 				condition = "!(call EPOCH_lockCheck) && (this animationPhase ""Open_Door"" == 0) && (this animationPhase ""lock_Door"" == 1)";
 				statement = "this animate [""lock_Door"", 0];";
 			};
@@ -4232,6 +4416,7 @@ class CfgVehicles
 			class Open_door
 			{
 				displayName = "Open";
+				displayNameDefault = "<img image='\A3\Ui_f\data\IGUI\Cfg\Actions\open_door_ca.paa' size='2.5' />";
 				onlyforplayer = 1;
 				position = "Door_knopf";
 				radius = 3;
@@ -4248,6 +4433,7 @@ class CfgVehicles
 			class Lock_Door
 			{
 				displayName = "Lock";
+				displayNameDefault = "<img image='\A3\modules_f\data\iconlock_ca.paa' size='2.5' />";
 				onlyforplayer = 1;
 				position = "Door_knopf";
 				radius = 3;
@@ -4257,6 +4443,7 @@ class CfgVehicles
 			class Unlock_Door : Lock_Door
 			{
 				displayName = "Unlock";
+				displayNameDefault = "<img image='\A3\modules_f\data\iconunlock_ca.paa' size='2.5' />";
 				condition = "!(call EPOCH_lockCheck) && (this animationPhase ""Open_Door"" == 0) && (this animationPhase ""lock_Door"" == 1)";
 				statement = "this animate [""lock_Door"", 0];";
 			};
@@ -4447,7 +4634,6 @@ class CfgVehicles
 		maximumLoad = 1200;
 		staticClass = "Tipi_EPOCH";
 		simulClass = "Tipi_SIM_EPOCH";
-		removeParts[] = { { "Pelt_EPOCH", 2 }, { "PartPlankPack", 1 } };
 		limitNearby = 2;
 		bypassJammer = 1;
 		interactMode = 4;
@@ -4461,7 +4647,19 @@ class CfgVehicles
 		maximumLoad = 800;
 		staticClass = "StorageShelf_EPOCH";
 		simulClass = "StorageShelf_SIM_EPOCH";
-		removeParts[] = { { "ItemCorrugated", 2 } };
+		limitNearby = 5;
+		bypassJammer = 1;
+		interactMode = 4;
+	};
+	class WorkBench_EPOCH : Buildable_Storage
+	{
+		scope = 2;
+		model = "\x\addons\a3_epoch_assets_1\models\workbench.p3d";
+		displayName = "WorkBench";
+		GhostPreview = "WorkBench_Ghost_EPOCH";
+		maximumLoad = 800;
+		staticClass = "WorkBench_EPOCH";
+		simulClass = "WorkBench_SIM_EPOCH";
 		limitNearby = 5;
 		bypassJammer = 1;
 		interactMode = 4;
@@ -4542,6 +4740,7 @@ class CfgVehicles
 			class LootIT
 			{
 				displayName = "Search";
+				displayNameDefault = "<img image='\A3\ui_f\data\map\VehicleIcons\iconvehicle_ca.paa' size='2.5' />";
 				onlyforplayer = 1;
 				position = "Door_knopf";
 				radius = 3;
@@ -4583,6 +4782,7 @@ class CfgVehicles
 			class LootIT
 			{
 				displayName = "Search";
+				displayNameDefault = "<img image='\A3\ui_f\data\map\VehicleIcons\iconvehicle_ca.paa' size='2.5' />";
 				onlyforplayer = 1;
 				position = "Door_knopf";
 				radius = 3;
@@ -4613,6 +4813,7 @@ class CfgVehicles
 			class LootIT
 			{
 				displayName = "Search";
+				displayNameDefault = "<img image='\A3\ui_f\data\map\VehicleIcons\iconvehicle_ca.paa' size='2.5' />";
 				onlyforplayer = 1;
 				position = "Door_knopf";
 				radius = 3;
@@ -4647,6 +4848,7 @@ class CfgVehicles
 			class Open_top
 			{
 				displayName = "Search";
+				displayNameDefault = "<img image='\A3\ui_f\data\map\VehicleIcons\iconvehicle_ca.paa' size='2.5' />";
 				onlyforplayer = 1;
 				position = "Door_knopf";
 				radius = 3;
@@ -4691,6 +4893,7 @@ class CfgVehicles
 			class Open_bot
 			{
 				displayName = "Search";
+				displayNameDefault = "<img image='\A3\ui_f\data\map\VehicleIcons\iconvehicle_ca.paa' size='2.5' />";
 				onlyforplayer = 1;
 				position = "actionPoint";
 				radius = 3;
@@ -4732,6 +4935,7 @@ class CfgVehicles
 			class Open_bot
 			{
 				displayName = "Search";
+				displayNameDefault = "<img image='\A3\ui_f\data\map\VehicleIcons\iconvehicle_ca.paa' size='2.5' />";
 				onlyforplayer = 1;
 				position = "Door_knopf";
 				radius = 3;
@@ -4786,6 +4990,7 @@ class CfgVehicles
 			class Open_top
 			{
 				displayName = "Search";
+				displayNameDefault = "<img image='\A3\ui_f\data\map\VehicleIcons\iconvehicle_ca.paa' size='2.5' />";
 				onlyforplayer = 1;
 				position = "Door_knopf";
 				radius = 3;
@@ -4829,6 +5034,7 @@ class CfgVehicles
 			class FlipMattress
 			{
 				displayName = "Search";
+				displayNameDefault = "<img image='\A3\ui_f\data\map\VehicleIcons\iconvehicle_ca.paa' size='2.5' />";
 				onlyforplayer = 1;
 				position = "Door_knopf";
 				radius = 3;
@@ -4857,6 +5063,7 @@ class CfgVehicles
 			class FlipMattress
 			{
 				displayName = "Search";
+				displayNameDefault = "<img image='\A3\ui_f\data\map\VehicleIcons\iconvehicle_ca.paa' size='2.5' />";
 				onlyforplayer = 1;
 				position = "Door_knopf";
 				radius = 3;
@@ -4866,7 +5073,8 @@ class CfgVehicles
 		};
 	};
 
-	class LockBoxProxy_EPOCH : WeaponHolder
+	class Secure_Storage_Proxy : WeaponHolder {};
+	class LockBoxProxy_EPOCH : Secure_Storage_Proxy
 	{
 		scope = 2;
 		model = "\A3\Weapons_f\dummyweapon.p3d";
@@ -4875,12 +5083,42 @@ class CfgVehicles
 		showWeaponCargo = 0;
 		forceSupply = 0;
 		maximumLoad = 600;
+		isSecureStorage = 1;
+		parentClass = "LockBox_EPOCH";
 
 		class UserActions
 		{
 			class Lock
 			{
 				displayName = "Lock";
+				displayNameDefault = "<img image='\A3\modules_f\data\iconlock_ca.paa' size='2.5' />";
+				onlyforplayer = 1;
+				position = "Door_knopf";
+				radius = 3;
+				condition = "this == this";
+				statement = "EPOCH_lockStorage_PVS = [this,true,player,Epoch_personalToken]; publicVariableServer ""EPOCH_lockStorage_PVS"";";
+			};
+		};
+	};
+
+	class SafeProxy_EPOCH : Secure_Storage_Proxy
+	{
+		scope = 2;
+		model = "\x\addons\a3_epoch_assets_1\models\safe_proxy.p3d";
+		displayName = "Safe WH";
+		isGround = 0;
+		showWeaponCargo = 0;
+		forceSupply = 0;
+		maximumLoad = 3600;
+		isSecureStorage = 1;
+		parentClass = "Safe_EPOCH";
+
+		class UserActions
+		{
+			class Lock
+			{
+				displayName = "Lock";
+				displayNameDefault = "<img image='\A3\modules_f\data\iconlock_ca.paa' size='2.5' />";
 				onlyforplayer = 1;
 				position = "Door_knopf";
 				radius = 3;
@@ -4916,6 +5154,7 @@ class CfgVehicles
 			class SearchCouch
 			{
 				displayName = "Search";
+				displayNameDefault = "<img image='\A3\ui_f\data\map\VehicleIcons\iconvehicle_ca.paa' size='2.5' />";
 				onlyforplayer = 1;
 				position = "Door_knopf";
 				radius = 3;
@@ -4943,6 +5182,7 @@ class CfgVehicles
 			class SearchCouch
 			{
 				displayName = "Search";
+				displayNameDefault = "<img image='\A3\ui_f\data\map\VehicleIcons\iconvehicle_ca.paa' size='2.5' />";
 				onlyforplayer = 1;
 				position = "Door_knopf";
 				radius = 3;
@@ -4988,6 +5228,7 @@ class CfgVehicles
 			class FlipMattress
 			{
 				displayName = "Search";
+				displayNameDefault = "<img image='\A3\ui_f\data\map\VehicleIcons\iconvehicle_ca.paa' size='2.5' />";
 				onlyforplayer = 1;
 				position = "Door_knopf";
 				radius = 3;
@@ -5024,6 +5265,7 @@ class CfgVehicles
 			class LootIT
 			{
 				displayName = "Search";
+				displayNameDefault = "<img image='\A3\ui_f\data\map\VehicleIcons\iconvehicle_ca.paa' size='2.5' />";
 				onlyforplayer = 1;
 				position = "Door_knopf";
 				radius = 3;
@@ -5070,6 +5312,7 @@ class CfgVehicles
 			class OpenCabinet
 			{
 				displayName = "Search";
+				displayNameDefault = "<img image='\A3\ui_f\data\map\VehicleIcons\iconvehicle_ca.paa' size='2.5' />";
 				onlyforplayer = 1;
 				position = "Door_knopf";
 				radius = 3;
@@ -5108,6 +5351,7 @@ class CfgVehicles
 			class OpenCabinet
 			{
 				displayName = "Search";
+				displayNameDefault = "<img image='\A3\ui_f\data\map\VehicleIcons\iconvehicle_ca.paa' size='2.5' />";
 				onlyforplayer = 1;
 				position = "Door_knopf";
 				radius = 3;

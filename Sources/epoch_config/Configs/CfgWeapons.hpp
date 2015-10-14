@@ -1110,6 +1110,25 @@ class CfgWeapons
 		hiddenSelections[] = {};
 		hitpointName = "HitHead";
 	};
+
+	class clown_mask_epoch : ItemCore
+	{
+		scope = 2;
+		weaponPoolAvailable = 1;
+		displayName = "Clown Mask";
+		picture = "\x\addons\a3_epoch_assets_3\CfgVehicles\Characters\clown\gear_clownmask_ca.paa";
+		model = "\x\addons\a3_epoch_assets_3\CfgVehicles\Characters\clown.p3d";
+		class ItemInfo : HeadgearItem
+		{
+			mass = 40;
+			uniformModel = "\x\addons\a3_epoch_assets_3\CfgVehicles\Characters\clown.p3d";
+			modelSides[] = { 3, 2, 1 };
+			// armor = 400;
+			passThrough = 0.5;
+			// hiddenSelections[] = { "camo" };
+		};
+	};
+
 	class H_F0_EPOCH: ItemCore
 	{
 		scope = 2;
@@ -2198,6 +2217,23 @@ class CfgWeapons
 		descriptionShort = "Sledge Hammer";
 
 	};
+	class MeleeSword : MeleeWeapon
+	{
+		scope = 2;
+		type = 4;
+		primary = 0;
+		reloadAction = "ReloadRPG";
+		autoreload = 1;
+		magazineReloadTime = 0;
+		model = "\x\addons\a3_epoch_assets_3\CfgWeapons\sword_weaponized.p3d";
+		picture = "\x\addons\a3_epoch_assets\textures\sword\equip_sword_ca.paa";
+		displayName = "Kruhm";
+		magazines[] = { "sledge_swing" };
+		handAnim[] = { "OFP2_ManSkeleton", "\x\addons\a3_epoch_assets_3\CfgVehicles\Characters\Sledge_hold.rtm" };
+		descriptionShort = "Powerful Atlantean Sword";
+
+	};
+
 	class MeleeMaul : MeleeWeapon
 	{
 		scope = 2;
@@ -2228,6 +2264,21 @@ class CfgWeapons
 		magazines[] = { "stick_swing" };
 		handAnim[] = { "OFP2_ManSkeleton", "\x\addons\a3_epoch_assets_3\CfgVehicles\Characters\Sledge_hold.rtm" };
 		descriptionShort = "Wood Club";
+	};
+	class MeleeRod : MeleeWeapon
+	{
+		scope = 2;
+		type = 4;
+		primary = 0;
+		reloadAction = "ReloadRPG";
+		autoreload = 1;
+		magazineReloadTime = 0;
+		model = "\x\addons\a3_epoch_assets_3\CfgWeapons\fishingpole_weaponized.p3d";
+		picture = "\x\addons\a3_epoch_assets\textures\fishing\equip_fishingRod_ca.paa";
+		displayName = "Fishing Rod";
+		magazines[] = { "stick_swing" };
+		handAnim[] = { "OFP2_ManSkeleton", "\x\addons\a3_epoch_assets_3\CfgVehicles\Characters\Sledge_hold.rtm" };
+		descriptionShort = "Fishing Rod";
 	};
 	class Plunger : MeleeWeapon
 	{
