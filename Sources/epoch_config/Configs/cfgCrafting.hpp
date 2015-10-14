@@ -524,7 +524,7 @@ class CfgCrafting
 	{
 		usedIn[] = { "ItemTunaCooked" };
 		previewPosition[] = {0.796141,1,0.27};
-		previewScale = 0.4;
+		previewScale = 0.2;
 		previewVector = 2.1;
 	};
 	class ItemSeaBass : Part
@@ -547,7 +547,7 @@ class CfgCrafting
 		nearby[] = {{"Fire", "", "fire", {1,{"ALL"}}, 3, 1, 1, 0}};
 		recipe[] = { "ItemTuna" };
 		previewPosition[] = {0.796141,1,0.27};
-		previewScale = 0.4;
+		previewScale = 0.2;
 		previewVector = 2;
 	};
 	class ItemSeaBassCooked : Item
