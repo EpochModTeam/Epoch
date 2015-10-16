@@ -55,7 +55,7 @@ if (isText _config) then {
 						_storageObj setposATL _vehiclePos;
 
 						// set reference to storage object on dummy object
-						_newVehicle = setVariable["EPOCH_secStorParent", _storageObj];
+						_newVehicle setVariable["EPOCH_secStorParent", _storageObj];
 
 						_storageObj setVariable["EPOCH_Locked", false, true];
 						_storageObj setVariable["STORAGE_OWNERS", [_plyrUID]];
