@@ -17,37 +17,77 @@ _plyrUID = getPlayerUID _plyr;
 if (!isNull ropeAttachedTo _vehicle) exitWith{};
 
 _oemType = typeOf _vehicle;
+
 _config = (configFile >> "CfgVehicles" >> _oemType >> "staticClass");
 if (isText _config) then {
+	
 	_staticClass = getText(_config);
 
-	if (_staticClass isKindOf "Buildable_Storage") then {
+	if (_staticClass isKindOf "Buildable_Storage" || _staticClass isKindOf "Constructions_lockedstatic_F") then{
 
 		if !(EPOCH_StorageSlots isEqualTo[]) then {
 
-			_config = (configFile >> "CfgVehicles" >> _oemType >> "staticClass");
-			if (isText(_config)) then {
+			_slot = EPOCH_StorageSlots deleteAt 0;
+			EPOCH_StorageSlotsCount = count EPOCH_StorageSlots;
+			publicVariable "EPOCH_StorageSlotsCount";
 
-				_slot = EPOCH_StorageSlots select 0;
-				EPOCH_StorageSlots = EPOCH_StorageSlots - [_slot];
+			// Secure storage
+			if (getNumber(configFile >> "CfgVehicles" >> _staticClass >> "isSecureStorage") == 1) then{
 
+				// remove sim 
 				_vehiclePos = getposATL _vehicle;
-				_worldspace = [(_vehiclePos call EPOCH_precisionPos), vectordir _vehicle, vectorup _vehicle];
+				_vectorDirAndUp = [vectordir _vehicle, vectorup _vehicle];
 				deleteVehicle _vehicle;
 
-				_storageObj = createVehicle[_staticClass, _vehiclePos, [], 0, "CAN_COLLIDE"];
-				_storageObj setVariable["STORAGE_SLOT", _slot, true];
+				// create static dummy placeholder for secure storage
+				_newVehicle = createVehicle[_staticClass, _vehiclePos, [], 0, "CAN_COLLIDE"];
+				_newVehicle setVectorDirAndUp _vectorDirAndUp;
+				_newVehicle setposATL _vehiclePos;
 
-				_storageObj setVectorDirAndUp[_worldspace select 1, _worldspace select 2];
+				if (!isNull _newVehicle) then{
+					
+					_buildClass = getText(configFile >> "CfgVehicles" >> _staticClass >> "weaponHolderProxy");
+					if (_buildClass != "") then{
+		
+						// TODO need some sanity checks here
+						_storageObj = createVehicle[_buildClass, _vehiclePos, [], 0.0, "CAN_COLLIDE"];
+						_storageObj setVectorDirAndUp _vectorDirAndUp;
+						_storageObj setposATL _vehiclePos;
+
+						// set reference to storage object on dummy object
+						_newVehicle setVariable["EPOCH_secStorParent", _storageObj];
+
+						_storageObj setVariable["EPOCH_Locked", false, true];
+						_storageObj setVariable["STORAGE_OWNERS", [_plyrUID]];
+						_storageObj setVariable["STORAGE_SLOT", _slot, true];
+
+						_storageObj call EPOCH_server_save_storage;
+						_storageObj call EPOCH_server_storageInit;
+
+						diag_log format["STORAGE: %1 created storage %2 at %3", _plyrUID, _buildClass, _pos];
+
+					};
+				};
+				
+			// insecure storage
+			} else {
+
+				_vehiclePos = getposATL _vehicle;
+				_vectorDirAndUp = [vectordir _vehicle, vectorup _vehicle];
+				deleteVehicle _vehicle;
+
+				_storageObj = createVehicle[_staticClass, _vehiclePos, [], 0, "CAN_COLLIDE"];				
+				_storageObj setVectorDirAndUp _vectorDirAndUp;
 				_storageObj setposATL _vehiclePos;
+
+				_storageObj setVariable["STORAGE_OWNERS", [_plyrUID]];
+				_storageObj setVariable["STORAGE_SLOT", _slot, true];
 
 				_storageObj call EPOCH_server_save_storage;
 				_storageObj call EPOCH_server_storageInit;
 
-				diag_log format["STORAGE: %1 created storage %2 at %3", getPlayerUID _plyr, _staticClass, _vehiclePos];
+				diag_log format["STORAGE: %1 created storage %2 at %3", _plyrUID, _staticClass, _vehiclePos];
 
-				EPOCH_StorageSlotsCount = count EPOCH_StorageSlots;
-				publicVariable "EPOCH_StorageSlotsCount";
 			};
 		};
 
@@ -57,81 +97,22 @@ if (isText _config) then {
 		if (_vehicle isKindOf "ThingX" || _vehicle isKindOf "Const_Ghost_EPOCH" || _vehicle isKindOf "PlotPole_EPOCH") then {
 
 			_objSlot = _vehicle getVariable["BUILD_SLOT", -1];
-			if (_objSlot == -1) then {
+			if (_objSlot == -1) then{
 				_findnextslot = EPOCH_BuildingSlots find 0;
-				if (_findnextslot != -1) then {
+				if (_findnextslot != -1) then{
 					_objSlot = _findnextslot;
-					EPOCH_BuildingSlots set [_findnextslot,1];
+					EPOCH_BuildingSlots set[_findnextslot, 1];
 					_vehicle setVariable["BUILD_SLOT", _findnextslot, true];
 				};
 			};
 
-			// get texture slot index
-			_textureSlot = _vehicle getVariable["TEXTURE_SLOT", 0];
-
 			EPOCH_BuildingSlotCount = { _x == 0 } count EPOCH_BuildingSlots;
 			publicVariable "EPOCH_BuildingSlotCount";
 
-
 			if (_objSlot != -1) then {
-				_vehiclePos = getposATL _vehicle;
-				// _worldspace = [(_vehiclePos call EPOCH_precisionPos), vectordir _vehicle, vectorup _vehicle];
-				// _objHiveKey = format["%1:%2", (call EPOCH_fn_InstanceID), _objSlot];
-
 				_newVehicle = [_vehicle, false] call EPOCH_server_simulSwap;
-
 				_newVehicle setVariable["BUILD_OWNER", _plyrUID, true];
-
-				_slot = "-1";
-				if (getNumber(configFile >> "CfgVehicles" >> _staticClass >> "isSecureStorage") == 1) then{
-
-					//diag_log format["building lockbox %1", _oemType];
-
-					_buildClass = getText(configFile >> "CfgVehicles" >> _staticClass >> "weaponHolderProxy");
-
-					if (!isNull _newVehicle) then {
-
-						//diag_log format["building lockbox !isnull %1", _newVehicle];
-
-						if !(EPOCH_StorageSlots isEqualTo []) then {
-
-							//diag_log format["building lockbox findslot %1", _newVehicle];
-							if (_buildClass != "") then{
-
-								// TODO need some sanity checks here
-								_storageObj = createVehicle[_buildClass, _vehiclePos, [], 0.0, "CAN_COLLIDE"];
-
-								_slot = EPOCH_StorageSlots select 0;
-								EPOCH_StorageSlots = EPOCH_StorageSlots - [_slot];
-
-								//diag_log format["building lockbox found slot %1", _slot];
-
-								// missionNamespace setVariable[format["EPOCH_STORAGE_%1", _slot], _storageObj];
-
-								_newVehicle setVariable["EPOCH_secureStorage", _slot];
-
-								_newVehicle setVariable["EPOCH_Locked", false, true];
-
-								_storageObj setVariable["STORAGE_OWNERS", [_plyrUID]];
-
-								// _storageObj setVariable["EPOCH_secStorParent", _objSlot];
-								_storageObj setVariable["STORAGE_SLOT", _slot, true];
-
-								_storageObj call EPOCH_server_save_storage;
-
-								_storageObj call EPOCH_server_storageInit;
-
-								diag_log format["STORAGE: %1 created storage %2 at %3", _plyrUID, _buildClass, _pos];
-
-								EPOCH_StorageSlotsCount = count EPOCH_StorageSlots;
-								publicVariable "EPOCH_StorageSlotsCount";
-							};
-						};
-					};
-				} else {
-					_newVehicle call EPOCH_fnc_saveBuilding;
-				};
-
+				_newVehicle call EPOCH_fnc_saveBuilding;
 			};
 
 		} else {
