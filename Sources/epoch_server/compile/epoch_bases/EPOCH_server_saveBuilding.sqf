@@ -20,7 +20,7 @@ _oemType = typeOf _vehicle;
 
 _config = (configFile >> "CfgVehicles" >> _oemType >> "staticClass");
 if (isText _config) then {
-	
+
 	_staticClass = getText(_config);
 
 	if (_staticClass isKindOf "Buildable_Storage" || _staticClass isKindOf "Constructions_lockedstatic_F") then{
@@ -34,7 +34,7 @@ if (isText _config) then {
 			// Secure storage
 			if (getNumber(configFile >> "CfgVehicles" >> _staticClass >> "isSecureStorage") == 1) then{
 
-				// remove sim 
+				// remove sim
 				_vehiclePos = getposATL _vehicle;
 				_vectorDirAndUp = [vectordir _vehicle, vectorup _vehicle];
 				deleteVehicle _vehicle;
@@ -45,10 +45,10 @@ if (isText _config) then {
 				_newVehicle setposATL _vehiclePos;
 
 				if (!isNull _newVehicle) then{
-					
+
 					_buildClass = getText(configFile >> "CfgVehicles" >> _staticClass >> "weaponHolderProxy");
 					if (_buildClass != "") then{
-		
+
 						// TODO need some sanity checks here
 						_storageObj = createVehicle[_buildClass, _vehiclePos, [], 0.0, "CAN_COLLIDE"];
 						_storageObj setVectorDirAndUp _vectorDirAndUp;
@@ -56,6 +56,7 @@ if (isText _config) then {
 
 						// set reference to storage object on dummy object
 						_newVehicle setVariable["EPOCH_secStorParent", _storageObj];
+						_storageObj setVariable["EPOCH_secStorChild",_newVehicle];
 
 						_storageObj setVariable["EPOCH_Locked", false, true];
 						_storageObj setVariable["STORAGE_OWNERS", [_plyrUID]];
@@ -68,7 +69,7 @@ if (isText _config) then {
 
 					};
 				};
-				
+
 			// insecure storage
 			} else {
 
@@ -76,7 +77,7 @@ if (isText _config) then {
 				_vectorDirAndUp = [vectordir _vehicle, vectorup _vehicle];
 				deleteVehicle _vehicle;
 
-				_storageObj = createVehicle[_staticClass, _vehiclePos, [], 0, "CAN_COLLIDE"];				
+				_storageObj = createVehicle[_staticClass, _vehiclePos, [], 0, "CAN_COLLIDE"];
 				_storageObj setVectorDirAndUp _vectorDirAndUp;
 				_storageObj setposATL _vehiclePos;
 
