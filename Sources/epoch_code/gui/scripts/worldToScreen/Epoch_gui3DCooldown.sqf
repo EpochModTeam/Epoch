@@ -13,7 +13,7 @@
 */
 
 _this spawn {
-	private ["_error","_pos","_time","_distance","_bool","_display","_ctrlPos","_ctrlGrp","_ctrl","_partTime","_ct","_cl"];
+	private ["_error","_pos","_time","_distance","_bool","_display","_ctrlPos","_ctrlGrp","_rnd","_var","_id","_ctrl","_partTime","_ct","_cl"];
 	disableSerialization;
 	params 
 	[
@@ -35,21 +35,11 @@ _this spawn {
 	_ctrlGrp ctrlSetPosition _ctrlPos;
 	_ctrlGrp ctrlCommit 0;
 
-	_id = call compile format 
-	[
-	"
-		missionNamespace setVariable ['rmx_var_3DCD_temp%1',[_ctrlGrp, _distance, _pos]];
-		_id = addMissionEventHandler ['Draw3D',{
-			_arr = missionNamespace getVariable 'rmx_var_3DCD_temp%1';
-			_scale = linearConversion [0, (_arr select 1), player distance (_arr select 2), 0, 1, false];
-			(_arr select 0) ctrlSetPosition (worldToScreen (_arr select 2));
-			(_arr select 0) ctrlSetFade _scale;
-			(_arr select 0) ctrlCommit 0;
-		}];
-		[_id,'rmx_var_3DCD_temp%1']
-	"
-	,floor random 10000
-	];
+	_rnd = format ["rmx_var_temp%1%2",floor random 100, ["A","B","C","D","E","F"] select random 5];
+	uiNamespace setVariable [_rnd,[_ctrlGrp, _pos,(ctrlPosition _ctrlGrp),_distance/2]];
+	_var = format ["uiNamespace getVariable '%1'",_rnd];
+	
+	_id = addMissionEventHandler ['Draw3D',_var + "call Epoch_gui3DCooldownEH;"];
 	
 	_ctrl = [];
 	for "_i" from 0 to 9 do {
@@ -87,8 +77,8 @@ _this spawn {
 		
 		if !(_continue) exitWith {};
 	};
-	removeMissionEventHandler ["Draw3D", _id select 0];
-	missionNamespace setVariable [_id select 1, nil];
+	removeMissionEventHandler ["Draw3D", _id];
+	uiNamespace setVariable [_rnd, nil];
 	{
 		_x call epoch_getIDC;
 		ctrlDelete _x;

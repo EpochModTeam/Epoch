@@ -93,6 +93,7 @@ for "_i" from 0 to _this do {
 
 		if (_arr isEqualTo [[], []]) then{
 			_arr = EPOCH_starterTraderItems;
+			["AI_ITEMS", _objHiveKey, EPOCH_expiresAIdata, _arr] call EPOCH_fnc_server_hiveSETEX;
 		};
 
 		_agent setVariable ["AI_ITEMS", _arr, true];
@@ -162,8 +163,46 @@ for "_i" from 0 to _this do {
 					_arr = (_response select 1);
 
 					if (_arr isEqualTo []) then {
-						_arr = [[],[]];
+						_arr = [[], []];
 					};
+
+					_toBeRemoved = [];
+					// count vehicles
+					{
+						_limit = ["CfgTraderLimits", _x, 100] call EPOCH_fnc_returnConfigEntryV2;
+						_currentStock = (_arr select 1) param[_forEachIndex, 0];
+						if (_limit == 0) then {
+							// mark for removal since limit is 0
+							_toBeRemoved pushBack _forEachIndex;
+							_currentStock = 0;
+						} else {
+							// lower to limit current qty is over limit
+							if (_currentStock > _limit) then {
+								(_arr select 1) set [_forEachIndex,_limit];
+								_currentStock = _limit;
+							};
+						};
+						if (_x isKindOf "Air" || _x isKindOf "Ship" || _x isKindOf "LandVehicle" || _x isKindOf "Tank") then {
+							if (EPOCH_storedVehicleCount <= _storedVehicleLimit) then {
+								EPOCH_storedVehicleCount = EPOCH_storedVehicleCount + _currentStock;
+							} else {
+								_toBeRemoved pushBack _forEachIndex;
+							};
+
+						};
+					} forEach (_arr select 0);
+
+					// remove any marked for removal
+					{
+							(_arr select 0) deleteAt _x;
+							(_arr select 1) deleteAt _x
+					} forEach _toBeRemoved;
+
+					if (_arr isEqualTo [[], []]) then{
+						_arr = EPOCH_starterTraderItems;
+						["AI_ITEMS", _objHiveKey, EPOCH_expiresAIdata, _arr] call EPOCH_fnc_server_hiveSETEX;
+					};
+
 				};
 				_agent setVariable ["AI_ITEMS", _arr, true];
 

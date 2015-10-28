@@ -129,7 +129,7 @@ rmx_var_crafting_PP_DB = ["dynamicBlur",11] call epoch_postProcessCreate;
 	private "_pos";
 	_pos = position player;
 	while {rmx_var_craftingLOOPS} do {
-		if ((_pos distance (position player)) > 0) exitWith {closeDialog 0;};
+		if ((_pos distance (position player)) > 1) exitWith {closeDialog 0;};
 	};
 };
 true 

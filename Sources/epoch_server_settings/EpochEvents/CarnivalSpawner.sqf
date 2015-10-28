@@ -6,7 +6,7 @@
 	Improvements and or bugfixes and other contributions are welcome via the github:
 	https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_server_settings/EpochEvents/CarnivalSpawner.sqf
 */
-
+private ["_item","_marker","_ferrisPosition"];
 _ferrisPosition = [epoch_centerMarkerPosition, 0, EPOCH_dynamicVehicleArea, 10, 0, 4000, 0] call BIS_fnc_findSafePos;
 if ((count _ferrisPosition) == 2) then{
 	_item = createVehicle["ferrisWheel_EPOCH", _ferrisPosition, [], 0.0, "CAN_COLLIDE"];

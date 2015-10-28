@@ -1,0 +1,10 @@
+[Added] Persistent Spike traps.
+[Added] New interaction system.
+[Added] Documentation on server core framework functions and hive calls.
+[Added] Custom Epoch Tank trap.
+[Added] New version of the Fishing Rod.
+[Added] muzzle_snds_338_sand to loot and pricing tables.
+[Changed] Overhaul of secure storage system with support for new UI.
+[Fixed] Force trader data save to save when loading starter items.
+[Fixed] Dynamic traders did not correctly track the stored vehicle count and limits.
+[Fixed] .rpt error after gutting animal added by adding isNull check to animal brain.

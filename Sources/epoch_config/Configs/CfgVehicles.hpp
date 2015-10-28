@@ -1927,7 +1927,7 @@ class CfgVehicles
 		class TransportItems{};
 		class Eventhandlers{};
 	};
-	
+
 	class I_MRAP_03_F;
 	class I_MRAP_03_EPOCH : I_MRAP_03_F
 	{
@@ -1942,7 +1942,7 @@ class CfgVehicles
 		typicalCargo[] = {};
 		class TransportItems{};
 		class Eventhandlers{};
-		
+
 		class RenderTargets
 		{
 			class commander_display
@@ -2359,7 +2359,7 @@ class CfgVehicles
 		waterResistanceCoef = 0.8;
 		waterAngularDampingCoef = 10;
 		destrType = "DestructNo";
-		
+
 		mapSize = 0.14;
 		icon = "iconObject_2x3";
 		cost = 1000;
@@ -2408,14 +2408,43 @@ class CfgVehicles
 		cost = 1000;
 		interactMode = 1;
 	};
-	/*
-	class Sword_SIM_EPOCH: Constructions_modular_F
+
+	class Spike_TRAP_SIM_EPOCH: Constructions_modular_F
 	{
 		scope = 2;
-		model = "\x\addons\a3_epoch_assets\models\sword.p3d";
-		displayName = "Sword";
+		model = "\x\addons\a3_epoch_assets\models\stick.p3d";
+		displayName = "Spike Trap (SIM)";
+		simulClass = "Spike_TRAP_SIM_EPOCH";
+		staticClass = "Spike_TRAP_EPOCH";
+		GhostPreview = "Spike_TRAP_EPOCH";
+		limitNearby = 1;
+		bypassJammer = 1;
 	};
-	*/
+
+	class Metal_TRAP_SIM_EPOCH: Constructions_modular_F
+	{
+		scope = 2;
+		model = "\x\addons\a3_epoch_assets\models\stick.p3d";
+		displayName = "Metal Trap (SIM)";
+		simulClass = "Metal_TRAP_SIM_EPOCH";
+		staticClass = "Metal_TRAP_EPOCH";
+		GhostPreview = "Metal_TRAP_EPOCH";
+		limitNearby = 1;
+		bypassJammer = 1;
+	};
+
+	class TankTrap_SIM_EPOCH: Constructions_modular_F
+	{
+		scope = 2;
+		model = "\x\addons\a3_epoch_assets_3\CfgVehicles\Defense\tank_trap.p3d";
+		displayName = "Tank Trap";
+		simulClass = "TankTrap_SIM_EPOCH";
+		staticClass = "TankTrap_EPOCH";
+		GhostPreview = "TankTrap_EPOCH";
+		limitNearby = 4;
+		bypassJammer = 1;
+	};
+
 	class SapperHead_SIM_EPOCH: Constructions_modular_F
 	{
 		scope = 2;
@@ -3587,6 +3616,7 @@ class CfgVehicles
 		simulClass = "PlotPole_SIM_EPOCH";
 
 		model = "\x\addons\a3_epoch_assets\models\jammer.p3d";
+		/*
 		class UserActions
 		{
 			class MaintainIT
@@ -3600,6 +3630,7 @@ class CfgVehicles
 				statement = "this call EPOCH_maintainIT";
 			};
 		};
+		*/
 		removeParts[] = { { "KitPlotPole", 1 } };
 		bypassJammer = 1;
 		interactMode = 1;
@@ -3659,7 +3690,7 @@ class CfgVehicles
 	};
 	*/
 
-	class Constructions_lockedstatic_F : NonStrategic
+	class Constructions_lockedstatic_F : WeaponHolder
 	{
 		mapSize = 1.27;
 		author = "Epoch";
@@ -3672,6 +3703,12 @@ class CfgVehicles
 		vehicleclass = "Epoch_objects";
 		destrType = "DestructBuilding";
 		cost = 1000;
+		// storage defaults
+		isGround = 0;
+		showWeaponCargo = 0;
+		forceSupply = 0;
+		maximumLoad = 600;
+		isSecureStorage = 1;
 	};
 
 	class LockBox_EPOCH : Constructions_lockedstatic_F
@@ -3684,10 +3721,12 @@ class CfgVehicles
 		weaponHolderProxy = "LockBoxProxy_EPOCH";
 		GhostPreview = "LockBox_EPOCH";
 		armor = 5000;
+		maximumLoad = 600;
 		bypassJammer = 1;
 		limitNearby = 2;
 		isSecureStorage = 1;
 		returnOnPack[] = { { "ItemLockbox", 1 } };
+		/*
 		class UserActions
 		{
 			class Unlock
@@ -3710,6 +3749,7 @@ class CfgVehicles
 				statement = "EPOCH_packStorage_PVS = [this,player,Epoch_personalToken]; publicVariableServer ""EPOCH_packStorage_PVS"";";
 			};
 		};
+		*/
 	};
 
 
@@ -3723,12 +3763,15 @@ class CfgVehicles
 		weaponHolderProxy = "SafeProxy_EPOCH";
 		GhostPreview = "Safe_EPOCH";
 		armor = 15000;
+		maximumLoad = 3600;
 		bypassJammer = 1;
 		limitNearby = 2;
 		isSecureStorage = 1;
 		returnOnPack[] = { { "ItemSafe", 1 } };
+		/*
 		class UserActions
 		{
+
 			class Unlock
 			{
 				displayName = "Unlock";
@@ -3739,6 +3782,7 @@ class CfgVehicles
 				condition = "(this getVariable[""EPOCH_secStorParent"", objNull]) getVariable [""EPOCH_Locked"",true]";
 				statement = "EPOCH_lockStorage_PVS = [this,false,player,Epoch_personalToken]; publicVariableServer ""EPOCH_lockStorage_PVS"";";
 			};
+
 			class Pack
 			{
 				displayName = "Pack";
@@ -3748,7 +3792,37 @@ class CfgVehicles
 				condition = "(this getVariable[""EPOCH_secStorParent"", objNull]) getVariable [""EPOCH_Locked"",true]";
 				statement = "EPOCH_packStorage_PVS = [this,player,Epoch_personalToken]; publicVariableServer ""EPOCH_packStorage_PVS"";";
 			};
+
 		};
+		*/
+
+	};
+
+
+	class TankTrap_EPOCH: Constructions_static_F
+	{
+		scope = 2;
+		model = "\x\addons\a3_epoch_assets_3\CfgVehicles\Defense\tank_trap.p3d";
+		displayName = "Tank Trap";
+		simulClass = "TankTrap_SIM_EPOCH";
+		staticClass = "TankTrap_EPOCH";
+		GhostPreview = "TankTrap_EPOCH";
+		energyCost = 0.2;
+		limitNearby = 4;
+		bypassJammer = 1;
+	};
+
+	class Hesco3_EPOCH: Constructions_static_F
+	{
+		scope = 2;
+		model = "\x\addons\a3_epoch_assets_3\CfgVehicles\Defense\hesco.p3d";
+		displayName = "Hesco Wide";
+		simulClass = "Hesco3_SIM_EPOCH";
+		staticClass = "Hesco3_EPOCH";
+		GhostPreview = "Hesco3_EPOCH";
+		energyCost = 0.2;
+		limitNearby = 4;
+		bypassJammer = 1;
 	};
 
 	class WoodRamp_EPOCH : Constructions_static_F
@@ -5073,60 +5147,9 @@ class CfgVehicles
 		};
 	};
 
-	class Secure_Storage_Proxy : WeaponHolder {};
-	class LockBoxProxy_EPOCH : Secure_Storage_Proxy
-	{
-		scope = 2;
-		model = "\A3\Weapons_f\dummyweapon.p3d";
-		displayName = "Lockbox WH";
-		isGround = 0;
-		showWeaponCargo = 0;
-		forceSupply = 0;
-		maximumLoad = 600;
-		isSecureStorage = 1;
-		parentClass = "LockBox_EPOCH";
-
-		class UserActions
-		{
-			class Lock
-			{
-				displayName = "Lock";
-				displayNameDefault = "<img image='\A3\modules_f\data\iconlock_ca.paa' size='2.5' />";
-				onlyforplayer = 1;
-				position = "Door_knopf";
-				radius = 3;
-				condition = "this == this";
-				statement = "EPOCH_lockStorage_PVS = [this,true,player,Epoch_personalToken]; publicVariableServer ""EPOCH_lockStorage_PVS"";";
-			};
-		};
-	};
-
-	class SafeProxy_EPOCH : Secure_Storage_Proxy
-	{
-		scope = 2;
-		model = "\x\addons\a3_epoch_assets_1\models\safe_proxy.p3d";
-		displayName = "Safe WH";
-		isGround = 0;
-		showWeaponCargo = 0;
-		forceSupply = 0;
-		maximumLoad = 3600;
-		isSecureStorage = 1;
-		parentClass = "Safe_EPOCH";
-
-		class UserActions
-		{
-			class Lock
-			{
-				displayName = "Lock";
-				displayNameDefault = "<img image='\A3\modules_f\data\iconlock_ca.paa' size='2.5' />";
-				onlyforplayer = 1;
-				position = "Door_knopf";
-				radius = 3;
-				condition = "this == this";
-				statement = "EPOCH_lockStorage_PVS = [this,true,player,Epoch_personalToken]; publicVariableServer ""EPOCH_lockStorage_PVS"";";
-			};
-		};
-	};
+	// class Secure_Storage_Proxy : WeaponHolder {};
+	class LockBoxProxy_EPOCH : LockBox_EPOCH {};
+	class SafeProxy_EPOCH : Safe_EPOCH {};
 
 	class CouchProxy_EPOCH: WeaponHolder
 	{

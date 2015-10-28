@@ -1,6 +1,101 @@
 class CfgCloudlets
 {
 	class Default;
+
+	class SpikeCraterEffect: Default
+	{
+		interval = 0.001;
+    circleRadius = 0;
+    circleVelocity[] = {0,0,0};
+    particleShape = "\x\addons\a3_epoch_assets_3\CfgVehicles\Defense\spike.p3d";
+    particleFSNtieth = 0;
+    particleFSIndex = 1;
+    particleFSFrameCount = 0;
+    particleFSLoop = 0;
+    angleVar = 1;
+    animationName = "";
+    particleType = "spaceobject";
+    timerPeriod = 1;
+    lifeTime = 20;
+    moveVelocity[] = {0,0,0};
+    rotationVelocity = 1;
+    weight = 5;
+    volume = 1;
+    rubbing = 0.01;
+    size[] = {1,1};
+    color[] = {{1,1,1,1},{1,1,1,0}};
+		animationSpeed[] = {0};
+		animationSpeedCoef = 1;
+		randomDirectionPeriod = 0.1;
+		randomDirectionIntensity = 0.05;
+    onTimerScript = "";
+    beforeDestroyScript = "";
+    destroyOnWaterSurface = 1;
+    destroyOnWaterSurfaceOffset = -0.1;
+    lifeTimeVar = 0;
+		position[] = {0, 0, 0};
+		positionVar[] = {1,1,1};
+		moveVelocityVar[] = {2,2,2};
+		positionVarConst[] = {0, 0, 0};
+
+    rotationVelocityVar = 360;
+    sizeVar = 0;
+    colorVar[] = {0,0,0,0};
+    randomDirectionPeriodVar = 0;
+    randomDirectionIntensityVar = 0;
+
+		bounceOnSurface = 0.01;
+		bounceOnSurfaceVar = 0.01;
+
+	};
+
+	class ScrapsCraterEffect: Default
+	{
+		interval = 0.002;
+    circleRadius = 0;
+    circleVelocity[] = {0,0,0};
+		particleShape = "\x\addons\a3_epoch_assets\models\scraps.p3d";
+    particleFSNtieth = 0;
+    particleFSIndex = 1;
+    particleFSFrameCount = 0;
+    particleFSLoop = 0;
+    angleVar = 1;
+    animationName = "";
+    particleType = "spaceobject";
+    timerPeriod = 1;
+    lifeTime = 20;
+    moveVelocity[] = {0,0,0};
+    rotationVelocity = 1;
+    weight = 5;
+    volume = 1;
+    rubbing = 0.01;
+    size[] = {1,1};
+    color[] = {{1,1,1,1},{1,1,1,0}};
+		animationSpeed[] = {0};
+		animationSpeedCoef = 1;
+		randomDirectionPeriod = 0.1;
+		randomDirectionIntensity = 0.05;
+    onTimerScript = "";
+    beforeDestroyScript = "";
+    destroyOnWaterSurface = 1;
+    destroyOnWaterSurfaceOffset = -0.1;
+    lifeTimeVar = 0;
+		position[] = {0, 0, 0};
+		positionVar[] = {1,1,1};
+		moveVelocityVar[] = {2,2,2};
+		positionVarConst[] = {0, 0, 0};
+
+    rotationVelocityVar = 360;
+    sizeVar = 0;
+    colorVar[] = {0,0,0,0};
+    randomDirectionPeriodVar = 0;
+    randomDirectionIntensityVar = 0;
+
+		bounceOnSurface = 0.01;
+		bounceOnSurfaceVar = 0.01;
+
+	};
+
 	class ObjectDestructionFire1SmallxG: Default
 	{
 		interval = 0.01;
@@ -210,7 +305,7 @@ class CfgCloudlets
 		constantDistance = 1.0;
 		damageType = "Fire";
 	};
-	
+
 	/*
 	class Blood1 : Default
 	{

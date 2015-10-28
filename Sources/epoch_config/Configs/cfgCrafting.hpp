@@ -270,7 +270,7 @@ class CfgCrafting
 	};
 	class ItemScraps : Item
 	{
-		usedIn[] = { "ItemCorrugated" };
+		usedIn[] = { "ItemCorrugated", "KitMetalTrap"};
 		nearby[] = {{"Fire", "", "fire", {1,{"ALL"}}, 3, 1, 1, 0}};
 		recipe[] = { { "PartOre", 2 } };
 		previewPosition[] = {0.797144,1,0.309158};
@@ -637,16 +637,17 @@ class CfgCrafting
 	};
 	class ItemCorrugatedLg : Kit
 	{
-		usedIn[] = { "VehicleRepairLg", "KitPlotPole" };
+		usedIn[] = { "VehicleRepairLg", "KitPlotPole", "KitTankTrap" };
 		recipe[] = { { "ItemCorrugated", 3 } };
 		nearby[] = {{"Workbench", "", "workbench", {1,{"WorkBench_EPOCH"}}, 3, 1, 0, 1}};
 		previewPosition[] = {0.797491,1,0.32899};
 		previewScale = 0.25;
 		previewVector = 0.5;
 	};
+
 	class PartPlankPack : Kit
 	{
-		usedIn[] = {"KitStudWall","KitWoodFloor","KitWoodFoundation","KitWoodStairs","KitWoodRamp","KitWoodLadder","KitWoodTower","KitTiPi","KitWorkbench"};
+		usedIn[] = {"KitStudWall","KitWoodFloor","KitWoodFoundation","KitWoodStairs","KitWoodRamp","KitWoodLadder","KitWoodTower","KitTiPi","KitWorkbench","KitSpikeTrap","KitMetalTrap"};
 		recipe[] = {{"WoodLog_EPOCH",2}};
 		previewPosition[] = {0.797837,1,0.288258};
 		previewScale = 0.2;
@@ -661,6 +662,29 @@ class CfgCrafting
 		previewScale = 0.2;
 		previewVector = 1.5;
 	};
+
+
+
+	class KitSpikeTrap : Kit
+	{
+		recipe[] = {{"PartPlankPack",4}};
+		model = "\x\addons\a3_epoch_assets_1\models\supply_crate.p3d";
+		nearby[] = {{"Workbench", "", "workbench", {1,{"WorkBench_EPOCH"}}, 3, 1, 0, 1}};
+		previewPosition[] = {0.797675,1,0.398882};
+		previewScale = 0.07;
+		previewVector = 0;
+	};
+	class KitMetalTrap : Kit
+	{
+		recipe[] = {{"PartPlankPack",4}, {"ItemScraps",2}};
+		model = "\x\addons\a3_epoch_assets_1\models\supply_crate.p3d";
+		nearby[] = {{"Workbench", "", "workbench", {1,{"WorkBench_EPOCH"}}, 3, 1, 0, 1}};
+		previewPosition[] = {0.797675,1,0.398882};
+		previewScale = 0.07;
+		previewVector = 0;
+	};
+
+
 	class KitStudWall : Kit
 	{
 		recipe[] = {{"PartPlankPack",4}};
@@ -696,6 +720,15 @@ class CfgCrafting
 		model = "\x\addons\a3_epoch_assets\models\Wood_Ramp.p3d";
 		previewPosition[] = {0.799137,1,0.350575};
 		previewScale = 0.05;
+		previewVector = 0;
+	};
+	class KitTankTrap : Kit
+	{
+		recipe[] = { { "ItemCorrugatedLg", 1 } };
+		nearby[] = {{"Workbench", "", "workbench", {1,{"WorkBench_EPOCH"}}, 3, 1, 0, 1}};
+		model = "\x\addons\a3_epoch_assets_3\CfgVehicles\Defense\tank_trap.p3d";
+		previewPosition[] = { 0.803749, 1, 0.448515 };
+		previewScale = 0.17;
 		previewVector = 0;
 	};
 	class KitWoodStairs : Kit

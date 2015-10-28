@@ -1,4 +1,4 @@
-/*%FSM<COMPILE "X:\ArmA\Tools\FSM Editor Personal Edition\scriptedFSM.cfg, animals">*/
+/*%FSM<COMPILE "F:\Program Files (x86)\Bohemia Interactive\Tools\FSM Editor Personal Edition\scriptedFSM.cfg, animals">*/
 /*%FSM<HEAD>*/
 /*
 item0[] = {"init",0,250,375.000000,-225.000000,475.000000,-175.000000,0.000000,"init"};
@@ -22,37 +22,41 @@ item17[] = {"Not_Too_Far",4,218,250.000000,325.000000,350.000000,375.000000,0.00
 item18[] = {"Process_1",2,250,575.000000,250.000000,675.000000,300.000000,0.000000,"Process"};
 item19[] = {"Fight",4,218,625.000000,325.000000,725.000000,375.000000,0.000000,"Fight"};
 item20[] = {"Flight",4,218,500.000000,325.000000,600.000000,375.000000,0.000000,"Flight"};
-item21[] = {"Fight",2,4346,625.000000,425.000000,725.000000,475.000000,0.000000,"Fight"};
+item21[] = {"Fight",2,250,625.000000,425.000000,725.000000,475.000000,0.000000,"Fight"};
 item22[] = {"Delete_1",1,250,675.000000,-25.000000,775.000000,25.000000,0.000000,"Delete"};
 item23[] = {"Too_many",4,218,525.000000,-25.000000,625.000000,25.000000,0.000000,"Too many"};
+item24[] = {"IsNull",4,4314,525.000000,-125.000000,625.000000,-75.000000,0.000000,"IsNull"};
+item25[] = {"Exit_",1,250,675.000000,-125.000000,775.000000,-75.000000,0.000000,"" \n "Exit" \n ""};
 link0[] = {0,1};
 link1[] = {1,2};
 link2[] = {2,6};
 link3[] = {2,23};
-link4[] = {3,15};
-link5[] = {4,18};
-link6[] = {5,14};
-link7[] = {6,9};
-link8[] = {7,8};
-link9[] = {8,2};
-link10[] = {9,3};
-link11[] = {9,4};
-link12[] = {9,11};
-link13[] = {10,7};
-link14[] = {11,12};
-link15[] = {13,10};
-link16[] = {15,5};
-link17[] = {15,17};
-link18[] = {16,10};
-link19[] = {17,16};
-link20[] = {18,19};
-link21[] = {18,20};
-link22[] = {19,21};
-link23[] = {20,13};
-link24[] = {21,10};
-link25[] = {23,22};
-globals[] = {25.000000,1,0,0,0,640,480,1,60,6316128,1,65.053413,836.813538,684.337891,-110.918762,853,911,1};
-window[] = {2,-1,-1,-1,-1,753,25,1063,25,3,871};
+link4[] = {2,24};
+link5[] = {3,15};
+link6[] = {4,18};
+link7[] = {5,14};
+link8[] = {6,9};
+link9[] = {7,8};
+link10[] = {8,2};
+link11[] = {9,3};
+link12[] = {9,4};
+link13[] = {9,11};
+link14[] = {10,7};
+link15[] = {11,12};
+link16[] = {13,10};
+link17[] = {15,5};
+link18[] = {15,17};
+link19[] = {16,10};
+link20[] = {17,16};
+link21[] = {18,19};
+link22[] = {18,20};
+link23[] = {19,21};
+link24[] = {20,13};
+link25[] = {21,10};
+link26[] = {23,22};
+link27[] = {24,25};
+globals[] = {25.000000,1,0,0,0,640,480,1,62,6316128,1,65.053413,836.813538,420.713287,-149.285370,853,630,1};
+window[] = {2,-1,-1,-1,-1,884,156,1194,156,3,871};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -112,6 +116,16 @@ class FSM
           precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
           condition=/*%FSM<CONDITION""">*/"(count(_animalAgent nearEntities[""Animal_Base_F"", 30])) > 2" \n
            "					"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "IsNull">*/
+        class IsNull
+        {
+          priority = 0.000000;
+          to="Exit_";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"isNull _animalAgent"/*%FSM</CONDITION""">*/;
           action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
         };
         /*%FSM</LINK>*/
@@ -396,13 +410,25 @@ class FSM
       };
     };
     /*%FSM</STATE>*/
+    /*%FSM<STATE "Exit_">*/
+    class Exit_
+    {
+      name = "Exit_";
+      init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+      };
+    };
+    /*%FSM</STATE>*/
   };
   initState="init";
   finalStates[] =
   {
-    "Dead"    ,
-    "Delete"    ,
-    "Delete_1"
+    "Dead",
+    "Delete",
+    "Delete_1",
+    "Exit_",
   };
 };
 /*%FSM</COMPILE>*/

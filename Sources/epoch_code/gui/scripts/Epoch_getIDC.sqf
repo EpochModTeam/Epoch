@@ -4,7 +4,7 @@
 */
 private ["_in","_list","_out","_find"];
 _in = param [0,controlNull,[controlNull]];
-_list = uiNamespace getVariable ["rmx_var_uniqueIDC",[]];
+_list = missionNamespace getVariable ["rmx_var_uniqueIDC",[]];
 
 if (ctrlIDC _in isEqualTo -1) then {
 	_out = -90000 - (count _list);
@@ -14,6 +14,6 @@ if (ctrlIDC _in isEqualTo -1) then {
 	_list deleteAt _find;
 	_out = true;
 };
-uiNamespace setVariable ["rmx_var_uniqueIDC",_list];
+missionNamespace setVariable ["rmx_var_uniqueIDC",_list];
 
 _out

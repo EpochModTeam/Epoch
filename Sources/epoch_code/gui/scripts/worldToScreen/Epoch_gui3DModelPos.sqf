@@ -4,7 +4,7 @@
 */
 #include "\A3\ui_f\hpp\defineCommonGrids.inc"
 _this spawn {
-	private ["_obj","_loc","_time","_pic","_txt","_dst","_bool","_display","_ctrl","_imgParsed","_txtParsed","_id","_tick"];
+	private ["_obj","_loc","_time","_pic","_txt","_dst","_bool","_display","_ctrl","_rnd","_var","_imgParsed","_txtParsed","_id","_tick"];
 	disableSerialization;
 	params
 	[
@@ -30,22 +30,11 @@ _this spawn {
 	
 	_ctrl ctrlSetStructuredText (composeText [_imgParsed, parseText "<br>", _txtParsed]);
 	
-	_id = call compile format 
-	[
-	"
-		missionNamespace setVariable ['rmx_var_3DMP_temp%1',[_ctrl, _dst, _obj, _loc]];
-		_id = addMissionEventHandler ['Draw3D',{
-			_arr = missionNamespace getVariable 'rmx_var_3DMP_temp%1';
-			_pos = worldToScreen ((_arr select 2) modelToWorld (_arr select 3));
-			(_arr select 0) ctrlSetPosition _pos;
-			(_arr select 0) ctrlCommit 0;
-			_scale = linearConversion [0, (_arr select 1), player distance ((_arr select 2) modelToWorld (_arr select 3)), 1, 0, false];
-			[(_arr select 0), _scale, 0] call BIS_fnc_ctrlSetScale;
-		}];
-		[_id,'rmx_var_3DMP_temp%1']
-	"
-	,floor random 10000
-	];
+	_rnd = format ["rmx_var_temp%1%2",floor random 100, ["A","B","C","D","E","F"] select random 5];
+	uiNamespace setVariable [_rnd,[_ctrl, _obj, _loc, (ctrlPosition _ctrl),_dst/2]];
+	_var = format ["uiNamespace getVariable '%1'",_rnd];
+	
+	_id = addMissionEventHandler ['Draw3D',_var + "call epoch_gui3dModelPosEH;"];
 	
 	_tick = diag_tickTime;
 	while {(diag_tickTime - _tick) < _time} do {
@@ -53,8 +42,8 @@ _this spawn {
 		if ((player distance (_obj modelToWorld _loc)) > _dst) exitWith {};
 	};
 	
-	removeMissionEventHandler ["Draw3D", _id select 0];
-	missionNamespace setVariable [_id select 1, nil];
+	removeMissionEventHandler ["Draw3D", _id];
+	uiNamespace setVariable [_rnd, nil];
 	_ctrl call epoch_getIDC;
 	ctrlDelete _ctrl;
 };

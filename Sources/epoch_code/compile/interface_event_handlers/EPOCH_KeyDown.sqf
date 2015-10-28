@@ -1,8 +1,6 @@
 private["_dikCode", "_handled"];
-_dikCode = _this select 1;
-_shift = _this select 2;
-_ctrl = _this select 3;
-_alt = _this select 4;
+params ["_display","_dikCode","_shift","_ctrl","_alt"];
+
 _handled = false;
 
 // Developer Debug
@@ -17,14 +15,14 @@ if (_dikCode in [0x02,0x03,0x04,0x58,0x57,0x44,0x43,0x42,0x41,0x40,0x3F,0x3E,0x3
 	_handled = true;
 };
 
-// rasie vol
-if (_ctrl && _dikCode == 0x0D) then {
+// increase vol
+if (_ctrl && _dikCode == EPOCH_keysVolumeUp) then {
 	EPOCH_soundLevel = (EPOCH_soundLevel + 0.1) min 1;
 	5 fadeSound EPOCH_soundLevel;
 	_dt = [format["<t size = '0.8' shadow = '0' color = '#99ffffff'>Internal sound level: %1%2 </t>", EPOCH_soundLevel * 100, "%"], 0, 1, 5, 2, 0, 1] spawn bis_fnc_dynamictext;
 };
 // lower vol
-if (_ctrl && _dikCode == 0x0C) then {
+if (_ctrl && _dikCode == EPOCH_keysVolumeDown) then {
 	EPOCH_soundLevel = (EPOCH_soundLevel - 0.1) max 0.1;
 	5 fadeSound EPOCH_soundLevel;
 	_dt = [format["<t size = '0.8' shadow = '0' color = '#99ffffff'>Internal sound level: %1%2 </t>", EPOCH_soundLevel * 100,"%"], 0, 1, 5, 2, 0, 1] spawn bis_fnc_dynamictext;
@@ -61,9 +59,24 @@ if (_dikCode == EPOCH_keysDebugMon) then {
 	_handled = true;
 };
 
+//Action Menu
+if (_dikCode == EPOCH_keysAction) then {
+	if !(EPOCH_keysActionPressed) then {
+		EPOCH_keysActionPressed = true;
+		if (cursorTarget isKindOf "AllVehicles") then {
+			call epoch_dynamicMenu;
+		} else {
+			[] spawn {
+				uiSleep 0.2;
+				if (EPOCH_keysActionPressed) then {call epoch_dynamicMenu};
+			};
+		};
+	};
+};
+
 // Player only code
 if (vehicle player == player) then {
-
+	
 	if (_dikCode == EPOCH_keysBuildMode1) then {
 		if (EPOCH_buildMode == 1) then {
 			EPOCH_buildMode = 0;
@@ -151,7 +164,7 @@ if (vehicle player == player) then {
 			case EPOCH_keysBuildMovR: { EPOCH_X_OFFSET = (EPOCH_X_OFFSET - 0.1) max - 5; _handled = true };
 			case EPOCH_keysBuildRotL: { EPOCH_buildDirection = (EPOCH_buildDirection + 1) min 360; EPOCH_space = true; _handled = true };
 			case EPOCH_keysBuildRotR: { EPOCH_buildDirection = (EPOCH_buildDirection - 1) max 0; EPOCH_space = true; _handled = true };
-			case EPOCH_keysBuildIt: { cursorTarget call EPOCH_fnc_SelectTarget; _handled = true };
+			//case EPOCH_keysBuildIt: { cursorTarget call EPOCH_fnc_SelectTarget; _handled = true };
 			};
 		};
 	};

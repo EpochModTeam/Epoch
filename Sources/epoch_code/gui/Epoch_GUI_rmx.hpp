@@ -3,6 +3,7 @@ class rmx_dynamenu {
 	enableSimulation = 1;
 	movingEnable = 1;
 	onLoad = "setMousePosition [0.5, 0.5];";
+	onKeyUp = "_this call epoch_keyUp";
 	class controls {};
 };
 
@@ -620,4 +621,22 @@ class Epoch_main_config_combo: RscCombo
 	};
 
 	onLBSelChanged = "_this call EPOCH_InterruptConfigActions;";
+};
+
+class rmx_ST1: RscStructuredText
+{
+	text = "";
+	size = "(			(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 1)";
+	colorText[] = {1,1,1,1.0};
+	shadow = 2;
+	class Attributes
+	{
+		font = "PuristaMedium";
+		color = "#ffffff";
+		colorLink = "#D09B43";
+		align = "center";
+		valign = "middle";
+		size = "2";
+		shadow = 2;
+	};
 };

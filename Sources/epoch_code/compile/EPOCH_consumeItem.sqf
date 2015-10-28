@@ -94,11 +94,8 @@ switch _interactOption do {
 		if (_buildClass != "") then {
 			_isStorage = getNumber(configfile >> "CfgMagazines" >> _item >> "isStorage");
 
-			_isOk = if (_isStorage == 1) then { EPOCH_StorageSlotsCount > 0 } else { EPOCH_BuildingSlotCount > 0 };
+			_isOk = if (_isStorage == 1 || _buildClass isKindOf "Secure_Storage_Temp") then { EPOCH_StorageSlotsCount > 0 } else { EPOCH_BuildingSlotCount > 0 };
 
-			if (_buildClass isKindOf "Secure_Storage_Temp") then {
-				_isOk = (EPOCH_StorageSlotsCount > 0 && EPOCH_BuildingSlotCount > 0);
-			};
 			if (isNil "EPOCH_simulSwap_Lock") then {
 				if !(isNil "_isOk") then {
 					if (_isOk) then {

@@ -47,7 +47,7 @@ class CfgPricing
 	class 130Rnd_338_Mag{ price = 2; tax = 0.9; };
 	class 10Rnd_93x64_DMR_05_Mag { price = 2; tax = 0.9; };
 	class 10Rnd_127x54_Mag { price = 2; tax = 0.9; };
-	
+
 	// Paint
 	class PaintCanClear {price = 1;};
 	class PaintCanBlk {price = 1;};
@@ -104,7 +104,7 @@ class CfgPricing
 	class Towelette {price = 1;};
 	class HeatPack {price = 2;};
 	class ColdPack {price = 2;};
-	
+
 	class sr25_epoch { price = 50; };
 	class l85a2_epoch { price = 50; };
 	class l85a2_pink_epoch { price = 50; };
@@ -213,7 +213,7 @@ class CfgPricing
 	class M14Grn_EPOCH {price = 150;};
 	class m4a3_EPOCH {price = 100;};
 	class AKM_EPOCH {price = 100;};
-	
+
 	// new magazines kiory
 	class 30rnd_556_magazine{ price = 5; tax = 0.9; };
 	class 20rnd_762_magazine{ price = 5; tax = 0.9; };
@@ -246,12 +246,12 @@ class CfgPricing
 	class MeleeSledge {price = 50;};
 	class MeleeSword { price = 1111; };
 	class MeleeRod { price = 100; };
-	
+
 	class CrudeHatchet { price = 5; };
 	class MeleeMaul { price = 10; };
 	class WoodClub { price = 5; };
 	class Plunger { price = 15; };
-	
+
 	class 16Rnd_9x21_Mag {price = 2; tax = 0.9;};
 	class 30Rnd_9x21_Mag {price = 3; tax = 0.9;};
 	class 9Rnd_45ACP_Mag {price = 1; tax = 0.9;};
@@ -319,6 +319,8 @@ class CfgPricing
 	// DLC muzzles
 	class muzzle_snds_338_black { price = 3; };
 	class muzzle_snds_338_green { price = 3; };
+	class muzzle_snds_338_sand { price = 3; };
+	
 	class muzzle_snds_93mmg { price = 3; };
 	class muzzle_snds_93mmg_tan { price = 3; };
 
@@ -356,13 +358,14 @@ class CfgPricing
 	class KitWoodStairs {price = 10;};
 	class KitWoodTower {price = 10;};
 	class KitWoodRamp {price = 14;};
+	class KitTankTrap {price = 25;};
 	class KitWoodLadder { price = 10; };
-	
+
 	class KitFirePlace {price = 4;};
 	class KitTiPi {price = 10;};
 	class KitShelf {price = 90;};
 	class KitWorkbench { price = 10; };
-	
+
 	class KitWoodFoundation { price = 20; };
 	class KitFoundation {price = 90;};
 	class KitPlotPole {price = 300;};
@@ -490,7 +493,7 @@ class CfgPricing
 	class U_C_Driver_1_yellow {price = 5;};
 	class U_C_Driver_1_orange {price = 5;};
 
-	
+
 	class V_F0_EPOCH { price = 5; };
 	class V_F1_EPOCH { price = 5; };
 	class V_F2_EPOCH { price = 5; };
@@ -692,7 +695,7 @@ class CfgPricing
 	class K02 {price = 300;};
 	class K03 {price = 300;};
 	class K04 {price = 300;};
-	
+
 	//Mission Items
 	class B_UavTerminal {price = 10;};
 	class O_UavTerminal {price = 10;};

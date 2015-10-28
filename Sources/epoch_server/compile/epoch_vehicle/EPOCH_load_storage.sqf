@@ -23,9 +23,15 @@ for "_i" from 1 to _this do {
 
 			EPOCH_StorageSlots deleteAt _storageSlotIndex;
 
-			_class = _arr select 0;
+			_class_raw = _arr select 0;
 			_damage = _arr select 2;
 			_inventory = _arr select 3;
+
+			_class = switch (_class_raw) do {
+			    case "LockBoxProxy_EPOCH": { "LockBox_EPOCH" };
+			    case "SafeProxy_EPOCH": { "Safe_EPOCH" };
+			    default { _class_raw };
+			};
 
 			if (typeName(_inventory) != "ARRAY") then { _inventory = []; };
 
@@ -47,7 +53,6 @@ for "_i" from 1 to _this do {
 				_location = (_location select 0) vectorAdd(_location select 1);
 			};
 
-
 			// set to ground if only x,y
 			if (count _location == 2) then {
 				_location set [2, 0];
@@ -59,25 +64,6 @@ for "_i" from 1 to _this do {
 			};
 
 			_vehicle = createVehicle[_class, _location, [], 0, "CAN_COLLIDE"];
-
-			// if proxy create visable safe
-			if (_class isKindOf "Secure_Storage_Proxy") then {
-				_dummyClass = getText(configFile >> "CfgVehicles" >> _class >> "parentClass");
-				_dummyVehicle = createVehicle [_dummyClass, _location, [], 0, "CAN_COLLIDE"];
-
-				if (typeName _dir == "ARRAY") then {
-					_dummyVehicle setVectorDirAndUp _dir;
-				} else {
-					_dummyVehicle setDir _dir;
-				};
-
-				_dummyVehicle setposATL _location;
-
-				// used on save to get ref to storage object
-				_dummyVehicle setVariable ["EPOCH_secStorParent", _vehicle];
-				// used on save to get loction of dummy object
-				_vehicle setVariable["EPOCH_secStorChild",_dummyVehicle];
-			};
 
 			if (typeName _dir == "ARRAY") then {
 				_vehicle setVectorDirAndUp _dir;
@@ -119,12 +105,9 @@ for "_i" from 1 to _this do {
 
 			if (count _arr >= 6) then {
 				_vehicle setVariable ["STORAGE_OWNERS", _arr select 5];
-				if (_class isKindOf 'Secure_Storage_Proxy') then{
-
-					// TODO: could be used to unlock safe?
+				if (_class isKindOf 'Constructions_lockedstatic_F') then{
+					// set locked state of secure storage
 					if ((_arr select 6) != -1) then {
-						_location set [2, -10];
-						_vehicle setPosATL _location;
 						_vehicle setVariable["EPOCH_Locked", true, true];
 					};
 				};
@@ -240,6 +223,6 @@ for "_i" from 1 to _this do {
 EPOCH_StorageSlotsCount = count EPOCH_StorageSlots;
 publicVariable "EPOCH_StorageSlotsCount";
 
-diag_log format ["Storage SPAWN TIMER %1", diag_tickTime - _diag];
+diag_log format ["Storage SPAWN TIMER: %1 slots left: %2", diag_tickTime - _diag, EPOCH_StorageSlotsCount];
 
 true

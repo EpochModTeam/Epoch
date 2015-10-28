@@ -6,7 +6,7 @@
 	Improvements and or bugfixes and other contributions are welcome via the github:
 	https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_server_settings/EpochEvents/PlantSpawner.sqf
 */
-
+private ["_displayName","_marker","_plants","_plant","_item","_plantPosition"];
 _plantPosition = [epoch_centerMarkerPosition, 0, EPOCH_dynamicVehicleArea, 10, 0, 4000, 0] call BIS_fnc_findSafePos;
 if ((count _plantPosition) == 2) then{
 

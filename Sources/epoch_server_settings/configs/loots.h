@@ -509,7 +509,7 @@ class CfgMainTable
 	{
 		lootMin = 7;
 		LootMax = 14;
-		tables[] = { 
+		tables[] = {
 				{ "Equipment", 6 },
 				{ "Pistols", 8 },
 				{ "PistolAmmo", 10 },
@@ -662,7 +662,7 @@ class CfgLootTable
 				{ { "acc_pointer_IR", "item" }, 20 },
 				// Marksman DLC
 				{ { "Bipods", "CfgLootTable" }, 5 }
-				
+
 		};
 	};
 
@@ -670,7 +670,7 @@ class CfgLootTable
 	{
 		items[] = {
 				{ { "SniperRiflem107", "CfgLootTable" }, 8 },
-				
+
 				// Marksman DLC
 				{ { "SniperRifleMarkDLC", "CfgLootTable" }, 10 },
 
@@ -727,7 +727,7 @@ class CfgLootTable
 				{ { "10Rnd_338_Mag", "magazine" }, 1 },
 				{ { "10Rnd_93x64_DMR_05_Mag", "magazine" }, 1 },
 				{ { "10Rnd_127x54_Mag", "magazine" }, 1 }
-				
+
 		};
 	};
 
@@ -792,8 +792,8 @@ class CfgLootTable
 				{ { "FoodSnooter", "magazine" }, 9 },
 				{ { "TacticalBacon", "magazine" }, 5 },
 				{ { "FoodMeeps", "magazine" }, 1 }
-				
-				
+
+
 		};
 	};
 
@@ -842,7 +842,7 @@ class CfgLootTable
 				{ { "ItemBattery", "magazine" }, 5 },
 				{ { "ItemCables", "magazine" }, 5 },
 				{ { "ItemSafe", "magazine" }, 1 }
-				
+
 		};
 	};
 
@@ -1269,12 +1269,14 @@ class CfgLootTable
 				{ { "Muzzles_93mmgMarkDLC", "CfgLootTable" }, 1 }
 		};
 	};
-	
+
 	class Muzzles_338MarkDLC
 	{
 		items[] = {
 				{ { "muzzle_snds_338_black", "item" }, 1 },
-				{ { "muzzle_snds_338_green", "item" }, 1 }
+				{ { "muzzle_snds_338_green", "item" }, 1 },
+				{ { "muzzle_snds_338_sand", "item" }, 1 }
+				
 		};
 	};
 	class Muzzles_93mmgMarkDLC
@@ -1358,10 +1360,11 @@ class CfgLootTable
 				{ { "KitStudWall", "magazine" }, 13 },
 				{ { "KitShelf", "magazine" }, 9 },
 				{ { "KitWorkbench", "magazine" }, 2 },
-				{ { "KitWoodFloor", "magazine" }, 12 },
-				{ { "KitWoodStairs", "magazine" }, 10 },
+				{ { "KitWoodFloor", "magazine" }, 11 },
+				{ { "KitWoodStairs", "magazine" }, 9 },
 				{ { "KitWoodTower", "magazine" }, 5 },
 				{ { "KitWoodRamp", "magazine" }, 5 },
+				{ { "KitTankTrap", "magazine" }, 2 },
 				{ { "KitWoodLadder", "magazine" }, 5 },
 				{ { "KitFirePlace", "magazine" }, 8 },
 				{ { "KitCinderWall", "magazine" }, 5 },
@@ -1370,7 +1373,7 @@ class CfgLootTable
 				{ { "ItemSafe", "magazine" }, 1 }
 		};
 	};
-	
+
 	class Mission_Payout1
 	{
 		items[] = {
@@ -1539,7 +1542,7 @@ class CfgLootTable
 				{ { "B_AssaultPack_rgr", "backpack" }, 5 },
 				{ { "B_AssaultPack_sgg", "backpack" }, 5 },
 				{ { "B_AssaultPack_blk", "backpack" }, 5 },
-				
+
 
 				{ { "B_Carryall_cbr", "backpack" }, 1 },
 				{ { "B_Carryall_khk", "backpack" }, 1 },
@@ -1848,7 +1851,7 @@ class CfgLootTable
 				{ { "wolf_mask_epoch", "item" }, 1 },
 				{ { "pkin_mask_epoch", "item" }, 1 },
 				{ { "clown_mask_epoch", "item" }, 1 }
-				
+
 		};
 	};
 };

@@ -31,65 +31,27 @@ if (isText _config) then {
 			EPOCH_StorageSlotsCount = count EPOCH_StorageSlots;
 			publicVariable "EPOCH_StorageSlotsCount";
 
-			// Secure storage
+			// Secure and insecure storage
+			_vehiclePos = getposATL _vehicle;
+			_vectorDirAndUp = [vectordir _vehicle, vectorup _vehicle];
+			deleteVehicle _vehicle;
+
+			_storageObj = createVehicle[_staticClass, _vehiclePos, [], 0, "CAN_COLLIDE"];
+			_storageObj setVectorDirAndUp _vectorDirAndUp;
+			_storageObj setposATL _vehiclePos;
+
 			if (getNumber(configFile >> "CfgVehicles" >> _staticClass >> "isSecureStorage") == 1) then{
-
-				// remove sim
-				_vehiclePos = getposATL _vehicle;
-				_vectorDirAndUp = [vectordir _vehicle, vectorup _vehicle];
-				deleteVehicle _vehicle;
-
-				// create static dummy placeholder for secure storage
-				_newVehicle = createVehicle[_staticClass, _vehiclePos, [], 0, "CAN_COLLIDE"];
-				_newVehicle setVectorDirAndUp _vectorDirAndUp;
-				_newVehicle setposATL _vehiclePos;
-
-				if (!isNull _newVehicle) then{
-
-					_buildClass = getText(configFile >> "CfgVehicles" >> _staticClass >> "weaponHolderProxy");
-					if (_buildClass != "") then{
-
-						// TODO need some sanity checks here
-						_storageObj = createVehicle[_buildClass, _vehiclePos, [], 0.0, "CAN_COLLIDE"];
-						_storageObj setVectorDirAndUp _vectorDirAndUp;
-						_storageObj setposATL _vehiclePos;
-
-						// set reference to storage object on dummy object
-						_newVehicle setVariable["EPOCH_secStorParent", _storageObj];
-						_storageObj setVariable["EPOCH_secStorChild",_newVehicle];
-
-						_storageObj setVariable["EPOCH_Locked", false, true];
-						_storageObj setVariable["STORAGE_OWNERS", [_plyrUID]];
-						_storageObj setVariable["STORAGE_SLOT", _slot, true];
-
-						_storageObj call EPOCH_server_save_storage;
-						_storageObj call EPOCH_server_storageInit;
-
-						diag_log format["STORAGE: %1 created storage %2 at %3", _plyrUID, _buildClass, _pos];
-
-					};
-				};
-
-			// insecure storage
-			} else {
-
-				_vehiclePos = getposATL _vehicle;
-				_vectorDirAndUp = [vectordir _vehicle, vectorup _vehicle];
-				deleteVehicle _vehicle;
-
-				_storageObj = createVehicle[_staticClass, _vehiclePos, [], 0, "CAN_COLLIDE"];
-				_storageObj setVectorDirAndUp _vectorDirAndUp;
-				_storageObj setposATL _vehiclePos;
-
-				_storageObj setVariable["STORAGE_OWNERS", [_plyrUID]];
-				_storageObj setVariable["STORAGE_SLOT", _slot, true];
-
-				_storageObj call EPOCH_server_save_storage;
-				_storageObj call EPOCH_server_storageInit;
-
-				diag_log format["STORAGE: %1 created storage %2 at %3", _plyrUID, _staticClass, _vehiclePos];
-
+				_storageObj setVariable["EPOCH_Locked", false, true];
 			};
+
+			_storageObj setVariable["STORAGE_OWNERS", [_plyrUID]];
+
+			_storageObj setVariable["STORAGE_SLOT", _slot, true];
+
+			_storageObj call EPOCH_server_save_storage;
+			_storageObj call EPOCH_server_storageInit;
+
+			diag_log format["STORAGE: %1 created storage %2 at %3 with slot %4", _plyrUID, _staticClass, _vehiclePos, _slot];
 		};
 
 	} else {

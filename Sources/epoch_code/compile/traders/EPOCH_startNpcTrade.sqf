@@ -2,6 +2,7 @@ private["_item", "_currQty", "_tradeType", "_itemWorth", "_aiItems", "_itemClass
 
 if (!isNil "EPOCH_TRADE_COMPLETE") exitWith {};
 if (!isNil "EPOCH_TRADE_STARTED") exitWith{};
+if (EPOCH_playerCrypto <= 0) exitWith {};
 
 if (!isNull _this) then {
 
@@ -19,8 +20,8 @@ if (!isNull _this) then {
 			_item = lbData[41501, _i];
 
 			if (isClass (_config >> _item)) then{
-						
-				// test remove items to be sold and add to array 
+
+				// test remove items to be sold and add to array
 				if ([_item, "CfgWeapons"] call EPOCH_fnc_isAny) then {
 					if (_item in items player) then {
 						player removeItem _item;
@@ -48,10 +49,10 @@ if (!isNull _this) then {
 						};
 					};
 				};
-				// test 
+				// test
 
-				
-				
+
+
 			};
 		};
 	};
@@ -107,18 +108,14 @@ if (!isNull _this) then {
 			if !((EPOCH_TRADE_COMPLETE select 1) isEqualTo[]) then {
 				if ((EPOCH_TRADE_COMPLETE select 1) isEqualTo(_this select 1)) then {
 
-					_errorMsg = 'Items Purchased';
-
+					_errorMsg = 'Items Purchased: ';
 					// add purchased items
 					{
 						if ([_x, "CfgWeapons"] call EPOCH_fnc_isAny) then {
-							if (player canAdd _x) then {
-								player addItem _x;
-							}
-							else {
-								_type = getNumber(configfile >> "CfgWeapons" >> (_x) >> "type");
-								_addWeaponToHands = false;
-								switch (_type) do {
+							_errorMsg = _errorMsg + format["%1, ", getText(configfile >> "CfgWeapons" >> (_x) >> "displayName")];
+							_type = getNumber(configfile >> "CfgWeapons" >> (_x) >> "type");
+							_addWeaponToHands = false;
+							switch (_type) do {
 								case 1: {
 									if (primaryWeapon player == "") then {
 										_addWeaponToHands = true;
@@ -134,24 +131,18 @@ if (!isNull _this) then {
 										_addWeaponToHands = true;
 									};
 								};
-								};
-								if (_addWeaponToHands) then {
-									player addWeapon _x;
-								}
-								else {
-									_errorMsg = "Not enough space";
-								};
 							};
-
-						}
-						else {
+							if (_addWeaponToHands) then {
+								player addWeapon _x;
+							} else {
+								_x call EPOCH_fnc_addItemOverflow;
+							};
+						} else {
 							if ([_x, "CfgMagazines"] call EPOCH_fnc_isAny) then {
-								if (player canAdd _x) then {
-									player addMagazine _x;
-								}
-								else {
-									_errorMsg = "Not enough space";
-								};
+								_errorMsg = _errorMsg + format["%1, ", getText(configfile >> "CfgMagazines" >> (_x) >> "displayName")];
+								_x call EPOCH_fnc_addItemOverflow;
+							} else {
+								_errorMsg = _errorMsg + format["%1, ", getText(configfile >> "CfgVehicles" >> (_x) >> "displayName")];
 							};
 						};
 					} forEach(_this select 1);

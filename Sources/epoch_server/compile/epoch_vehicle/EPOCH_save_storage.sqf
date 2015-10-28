@@ -54,13 +54,6 @@ if (!isNull _this) then {
 
 		_locked = if (_vehicle getVariable["EPOCH_Locked", true]) then {1} else {-1};
 
-		// get position of dummy safe instead of proxy position
-		_storageChild = _vehicle getVariable["EPOCH_secStorChild",objNull];
-		if !(isNull _storageChild) then {
-					_vehiclePos = getposATL _storageChild;
-					_vehicle = _storageChild;
-		};
-
 		_worldspace = [(_vehiclePos call EPOCH_precisionPos), vectordir _vehicle, vectorup _vehicle];
 
 		_VAL = [_class, _worldspace, _damage, _inventory, _colorSlot, _storageOwners, _locked];

@@ -296,7 +296,7 @@ class FSM
        "" \n
        "_arrGarr = [];" \n
        "_garrCount = 0;" \n
-       "while {format [""%1"", _nrBuild buildingPos (_garrCount)] != ""[0,0,0]"" } do {" \n
+       "while {!((_nrBuild buildingPos _garrCount) isEqualTo [0,0,0])} do {" \n
        "_arrGarr pushBack _garrCount;" \n
        "_garrCount = _garrCount + 1;" \n
        "};"/*%FSM</STATEINIT""">*/;
@@ -372,7 +372,7 @@ class FSM
        "" \n
        "_arrGarr = [];" \n
        "_garrCount = 0;" \n
-       "while {format [""%1"", _nrBuild buildingPos (_garrCount)] != ""[0,0,0]"" } do {" \n
+       "while {!((_nrBuild buildingPos _garrCount) isEqualTo [0,0,0])} do {" \n
        "_arrGarr pushBack _garrCount;" \n
        "_garrCount = _garrCount + 1;" \n
        "};" \n

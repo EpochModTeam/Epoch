@@ -32,19 +32,19 @@ if (!isNull EPOCH_currentTarget && vehicle player == player) then {
 
 		_stability = 0;
 		_color = [1, 1, 1, 0.7];
-		_text = "";
+		_text = format ["Press (%1)",EPOCH_keysAction call BIS_fnc_keyCode];
 		_icon = "\x\addons\a3_epoch_code\Data\UI\ui_question_ca.paa";
 
 		_interactOption = getNumber(configFile >> "cfgVehicles" >> typeOf _currentTarget >> "interactMode");
 
 		switch _interactOption do {
 			case 0: {
-				_text = "Press (Inventory)";
 				_stability = 100 - round(damage _currentTarget) * 10;
 				_icon = "\x\addons\a3_epoch_code\Data\UI\loading_bar_%1.paa";
+				_text = "Press (Inventory)";
 			};
 			case 1: {
-				_text = if (EPOCH_buildMode > 0) then[{"Press (Space)"}, { "Enable Build - Press (1)" }];
+				_text = if (EPOCH_buildMode > 0) then[{_text}, { format ["Enable Build - Press (%1)",EPOCH_keysBuildMode1 call BIS_fnc_keyCode] }];
 				_stability = _currentTarget getVariable["stability", 100];
 				_icon = "\x\addons\a3_epoch_code\Data\UI\loading_bar_%1.paa";
 
@@ -57,7 +57,7 @@ if (!isNull EPOCH_currentTarget && vehicle player == player) then {
 			};
 			case 2: {
 				if (alive _currentTarget) then{
-					_text = format["%1 - Press (Ctrl+T)", if (isStreamFriendlyUIEnabled) then[{"Player"}, { name _currentTarget }]];
+					_text = format["%1 - Press (Ctrl+%2)", if (isStreamFriendlyUIEnabled) then[{"Player"}, { name _currentTarget }],EPOCH_keysAcceptTrade call BIS_fnc_keyCode];
 					_stability = 100 - round(damage _currentTarget) * 10;
 					_icon = "\x\addons\a3_epoch_code\Data\UI\loading_bar_%1.paa";
 
@@ -69,18 +69,18 @@ if (!isNull EPOCH_currentTarget && vehicle player == player) then {
 					};
 
 				} else {
-					_text = "Press (Inventory)";
+					//_text = "Press (Inventory)";
 					_icon = "\x\addons\a3_epoch_code\Data\UI\ui_crossbones_ca.paa";
 				};
 			};
 			case 3: {
 				if (!alive _currentTarget && _distance < 2) then{
-					_text = "Gut Animal - Press (Inventory)";
+					_text = format ["Gut Animal - %1",_text];
 					_icon = "\x\addons\a3_epoch_code\Data\UI\ui_crossbones_ca.paa";
 				};
 			};
 			case 4: {
-				_text = if (EPOCH_buildMode > 0) then[{"Press (Space)"}, { "Press (Inventory)" }];
+				//_text = if (EPOCH_buildMode > 0) then[{"Press (Space)"}, { "Press (Inventory)" }];
 				_stability = _currentTarget getVariable["stability", 100];
 				_icon = "\x\addons\a3_epoch_code\Data\UI\loading_bar_%1.paa";
 

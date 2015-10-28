@@ -23,16 +23,18 @@ if (isNull _target) then {
 if (!isNull _target) then {
 	
 	if (alive _target) then {
+		/*
 		if ((_target isKindOf "LandVehicle") || (_target isKindOf "Air") || (_target isKindOf "Ship") || (_target isKindOf "Tank")) then {
 			_dialog = "InteractVehicle";	
 		};
-		/*
+		
 		if (_ctrl) then {
 			if (_target isKindOf "Constructions_static_F" || _target isKindOf "Constructions_foundation_F") then {
 				_dialog = "InteractBaseBuilding";
 			};
 		};
 		*/
+		/*
 		if (_target isKindOf "Man") then {
 			if (_target != player) then {
 				if (!isPlayer _target) then {
@@ -42,6 +44,7 @@ if (!isNull _target) then {
 				};
 			};
 		};
+		*/
 	};
 	
 	if (_forceGear) then {

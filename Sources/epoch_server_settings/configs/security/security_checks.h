@@ -5,7 +5,7 @@
 class CfgSecConf
 {
     debug = false;
-    
+
     class limits {
         playerCrypto = 25000;
     };
@@ -54,17 +54,17 @@ class CfgSecConf
         };
         mode = "Standard";
     };
-    
+
     class displayAddEventHandler {
         keyDown = "_this call EPOCH_KeyDown;";
-        keyUp   = "";
+        keyUp   = "_this call EPOCH_KeyUp;";
     };
-    
+
     class addEventHandler {
         checks[] = {"Fired","InventoryClosed","InventoryOpened","Killed","HandleDamage","HandleHeal","Dammaged","Hit","HitPart"};
         Fired           = "_this call EPOCH_fnc_playerFired;";
-		InventoryClosed = "if !(EPOCH_arr_interactedObjs isEqualTo[]) then {EPOCH_arr_interactedObjs remoteExec['EPOCH_server_save_vehicles', 2]; EPOCH_arr_interactedObjs = [];};";
-        InventoryOpened = "_this spawn EPOCH_initUI; (locked (_this select 1) in [2, 3])";
+        InventoryClosed = "if !(EPOCH_arr_interactedObjs isEqualTo[]) then {EPOCH_arr_interactedObjs remoteExec['EPOCH_server_save_vehicles', 2]; EPOCH_arr_interactedObjs = [];};";
+        InventoryOpened = "_this spawn EPOCH_initUI; (locked (_this select 1) in [2, 3] || (_this select 1) getVariable['EPOCH_Locked;, false])";
         Killed          = "_this call EPOCH_fnc_playerDeath;";
         HandleDamage    = "";
         HandleHeal      = "";
@@ -75,18 +75,18 @@ class CfgSecConf
 
     class variables {
         class whitelist {
-            #include "data\custom_vars.h" // whitelisted variables 
+            #include "data\custom_vars.h" // whitelisted variables
         };
         badVars[] = {"ESP_map","ESP_mainMap","ESP_adminMap","AntiAntiAntiAntiHax","fnc_usec_damageHandler","fnc_usec_unconscious","VAGINA_secret","yolo","VERSION","life_fnc_handleDamage","EPOCH_spawnVehicle_PVS","CLASS911_Menu","nuke_vars","JJMMEE_INIT_MENU","PLAYERON","PLAYERNEXT2","ALTISLIFEON","LY_Menu","PLAY","LY_SwaggerLikeUs","BIS_fnc_dbg_reminder_value","BIS_fnc_dbg_reminder"};
         nilVars[] = {"EPOCH_antiWallCount","EPOCH_playerEnergy","EPOCH_playerHunger","EPOCH_playerStamina","EPOCH_playerCrypto","EPOCH_target","EPOCH_ESP_TARGETS","EPOCH_ESPMAP_TARGETS","EPOCH_taxRate","EPOCH_ESP_VEHICLEPLAYER","EPOCH_ESP_PLAYER","EPOCH_ESP_VEHICLES"};
     };
-    
+
     class commandMenu {
         menus[] = {"","RscSelectTeam","RscTeam","RscMoveHigh","#GETIN","#RscStatus","#WATCH0","RscCombatMode","RscMenuReply","RscCallSupport","#CUSTOM_RADIO","#User:BIS_fnc_addCommMenuItem_menu","RscRadio","RscReply","#ACTION","RscMenuFormations","#WATCH","RscGroupRootMenu","RscMainMenu","RscMenuMove","RscWatchDir","RscWatchMoveDir","#User:BIS_Menu_GroupCommunication","RscMenuStatus","RscFormations"};
     };
-    
-    // RscDisplay (onload, unload) scanning is automatic and will ensure data matches the server. 
-    // Using the extra whitelist arrays this check can be extended to allow modifications client side that do not exist server side. 
+
+    // RscDisplay (onload, unload) scanning is automatic and will ensure data matches the server.
+    // Using the extra whitelist arrays this check can be extended to allow modifications client side that do not exist server side.
     class displayOnload {
         // Format: {rscDisplayConfigname, extra whitelisted onload data (array of string), extra whitelisted unload data (array of string)}
         // The extra onload whitelist for RscDisplayConfigure is for CBA

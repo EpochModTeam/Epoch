@@ -9,6 +9,8 @@
 	https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_server_settings/EpochEvents/ChangeWeather.sqf
 */
 
+private ["_tempOVRD","_rainOVRD","_fogOVRD","_overcastOVRD","_windOVRD","_arr","_response","_windValX","_windValZ","_WeatherChangeTime","_force","_rnd_temp","_fog","_rain","_overcast"];
+
 // Initalize variable for tracking time between runs.
 if (isNil "EPOCH_lastWeatherChange") then {
 	EPOCH_lastWeatherChange = diag_tickTime;
@@ -69,7 +71,7 @@ if (_rain > 0.5) then {
 	_windValZ = random 20 - 10;
 };
 
-if !(isNil "_windOVRD") then { 
+if !(isNil "_windOVRD") then {
 	_windValX = _windOVRD select 0;
 	_windValZ = _windOVRD select 1;
 };

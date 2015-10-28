@@ -1,0 +1,28 @@
+class CfgActionMenu
+{
+	class variableDefines //must be global, nil when menu closes
+	{
+		dyna_cursorTarget = "cursorTarget";
+		dyna_cursorTargetType = "typeOf cursorTarget";
+		dyna_inVehicle = "vehicle player != player";
+		dyna_itemsPlayer = "items player";
+		dyna_distance = "(player distance dyna_cursorTarget) < 5";
+		
+		dyna_buildMode = "cursorTarget call EPOCH_checkBuild;";
+		dyna_isVehicle = "if !(isNull dyna_cursorTarget && alive dyna_cursorTarget) then {((dyna_cursorTarget isKindOf 'LandVehicle') || (dyna_cursorTarget isKindOf 'Air') || (dyna_cursorTarget isKindOf 'Ship') || (dyna_cursorTarget isKindOf 'Tank'))} else {false}";
+		dyna_isTrader = "if !(isNull dyna_cursorTarget && alive dyna_cursorTarget) then {((dyna_cursorTarget isKindOf 'Man') && (dyna_cursorTarget != player) && (!isPlayer dyna_cursorTarget) && ((dyna_cursorTarget getVariable['AI_SLOT', -1]) != -1))} else {false}";
+		dyna_locked = "locked dyna_cursorTarget in [2,3]";
+		dyna_lockedInVehicle = "locked vehicle player in [2,3]";
+	};
+	
+	class self
+	{
+		#include "CfgActionMenu_self.hpp"
+	};
+	
+	class target
+	{
+		#include "CfgActionMenu_target.hpp"
+	};
+};
+

@@ -514,8 +514,14 @@ while {alive player} do {
 					};
 					_totalCapacity = _totalCapacity + _powerCap;
 			} forEach _powerSources;
-			_players = player nearEntities[["Epoch_Male_F", "Epoch_Female_F"], _energyRange];
-			EPOCH_chargeRate = ceil(_totalCapacity / (count _players));
+			if (_totalCapacity > 0) then {
+				_players = player nearEntities[["Epoch_Male_F", "Epoch_Female_F"], _energyRange];
+				if (_players isEqualTo []) then {
+					EPOCH_chargeRate = ceil _totalCapacity;
+				} else {
+					EPOCH_chargeRate = ceil (_totalCapacity / (count _players));
+				};
+			};
 			EPOCH_nearPower = true;
 		} else {
 			EPOCH_nearPower = false;
@@ -553,7 +559,6 @@ while {alive player} do {
 		} forEach EPOCH_playerSpawnArray;
 
 		// test spawning one antagonist every 10 minutes select one unit at random to spawn
-
 		if !(_spawnUnits isEqualTo[]) then{
 			(_spawnUnits select(floor random(count _spawnUnits))) call EPOCH_unitSpawn;
 		};
