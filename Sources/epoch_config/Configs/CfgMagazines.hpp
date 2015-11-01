@@ -1158,6 +1158,19 @@ class CfgMagazines
 		interactText = "BUILD";
 		buildClass = "TankTrap_SIM_EPOCH";
 	};
+	class KitHesco3 : CA_Magazine
+	{
+		model = "\x\addons\a3_epoch_assets_1\models\supply_crate.p3d";
+		picture = "\x\addons\a3_epoch_assets_1\pictures\equip_wooden_crate_ca.paa";
+		displayName = "Hesco Wide";
+		scope = 2;
+		descriptionShort = "Hesco Wide";
+		count = 1;
+		mass = 20;
+		interactAction = 3; // 0 = examine, 1 = eat, 2 = drink, 3 = build
+		interactText = "BUILD";
+		buildClass = "Hesco3_EPOCH";
+	};
 	class KitWoodLadder : CA_Magazine
 	{
 		model = "\x\addons\a3_epoch_assets_1\models\supply_crate.p3d";

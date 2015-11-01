@@ -4,7 +4,8 @@ _close = param [0,false,[false]];
 _cleanupVars = {
 	_cfg = "CfgActionMenu" call EPOCH_returnConfig;
 	{
-		call compile (format ["%1 = nil;",configName _x]);
+		// call compile (format ["%1 = nil;",configName _x]);
+		missionNamespace setVariable [configName _x,nil];
 	} count (configProperties [(_cfg >> "variableDefines"),"true",false]);
 };
 
@@ -18,7 +19,7 @@ if (uiNamespace getVariable ["rmx_var_dynamicMenuInProgress",false]) then {
 
 	call _cleanupVars;
 
-	
+
 	[rmx_var_dynamenuPPHandle, 1, [0]] call epoch_postprocessAdjust;
 	rmx_var_dynaControls = nil;
 	rmx_var_dynamenuPPHandle call epoch_postprocessDestroy;

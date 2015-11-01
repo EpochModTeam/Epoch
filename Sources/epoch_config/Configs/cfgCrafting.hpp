@@ -263,7 +263,7 @@ class CfgCrafting
 	};
 	class MortarBucket : Part
 	{
-		usedIn[] = {"KitFoundation","KitCinderWall"};
+		usedIn[] = {"KitFoundation","KitCinderWall", "KitHesco3"};
 		previewPosition[] = {0.799442,1,0.426761};
 		previewScale = 0.6;
 		previewVector = 0;
@@ -637,7 +637,7 @@ class CfgCrafting
 	};
 	class ItemCorrugatedLg : Kit
 	{
-		usedIn[] = { "VehicleRepairLg", "KitPlotPole", "KitTankTrap" };
+		usedIn[] = { "VehicleRepairLg", "KitPlotPole", "KitTankTrap", "KitHesco3" };
 		recipe[] = { { "ItemCorrugated", 3 } };
 		nearby[] = {{"Workbench", "", "workbench", {1,{"WorkBench_EPOCH"}}, 3, 1, 0, 1}};
 		previewPosition[] = {0.797491,1,0.32899};
@@ -729,6 +729,15 @@ class CfgCrafting
 		model = "\x\addons\a3_epoch_assets_3\CfgVehicles\Defense\tank_trap.p3d";
 		previewPosition[] = { 0.803749, 1, 0.448515 };
 		previewScale = 0.17;
+		previewVector = 0;
+	};
+	class KitHesco3 : Kit
+	{
+		recipe[] = { { "MortarBucket", 2 }, { "ItemCorrugatedLg", 2 } };
+		nearby[] = { { "Workbench", "", "workbench", { 1, { "WorkBench_EPOCH" } }, 3, 1, 0, 1 } };
+		model = "\x\addons\a3_epoch_assets_3\CfgVehicles\Defense\hesco.p3d";
+		previewPosition[] = { 0.803749, 1, 0.448515 };
+		previewScale = 0.02;
 		previewVector = 0;
 	};
 	class KitWoodStairs : Kit

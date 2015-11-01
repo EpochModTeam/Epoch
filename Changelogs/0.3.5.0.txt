@@ -1,3 +1,4 @@
+[Added] Hesco barrier.
 [Added] Persistent Spike traps.
 [Added] New interaction system.
 [Added] Documentation on server core framework functions and hive calls.

@@ -30,7 +30,7 @@ if (EPOCH_playerCrypto > 0) then {
 
     _dt = [format["<t size=""0.8"" shadow=""0"" color=""#99ffffff"">Cost %1 Krypto to maintain base.</t>", _maintainCount], 0, 1, 5, 2, 0, 1] spawn bis_fnc_dynamictext;
   } else {
-    _dt = ["<t size=""0.8"" shadow=""0"" color=""#99ffffff"">Nothing needs maintained.</t>", 0, 1, 5, 2, 0, 1] spawn bis_fnc_dynamictext;
+    _dt = ["<t size=""0.8"" shadow=""0"" color=""#99ffffff"">Nothing needs Maintaining</t>", 0, 1, 5, 2, 0, 1] spawn bis_fnc_dynamictext;
   };
 } else {
   _dt = ["<t size=""0.8"" shadow=""0"" color=""#99ffffff"">You need Krypto to maintain a base.</t>", 0, 1, 5, 2, 0, 1] spawn bis_fnc_dynamictext;

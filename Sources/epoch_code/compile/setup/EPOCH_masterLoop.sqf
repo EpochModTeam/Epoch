@@ -185,6 +185,8 @@ _fadeUI = {
 	};
 };
 
+_cursorTarget = objNull;
+
 // Master Loop Start
 while {alive player} do {
 
@@ -198,17 +200,15 @@ while {alive player} do {
 		// current target
 
 		_currentTarget = objNull;
-		if (!isNull cursorTarget && !(EPOCH_target isEqualTo cursorTarget)) then {
-			_distance = player distance cursorTarget;
-			if (_distance < 9) then {
-				if (cursorTarget isKindOf "ThingX" || cursorTarget isKindOf "Constructions_static_F" || cursorTarget isKindOf "Constructions_foundation_F" || cursorTarget isKindOf "WeaponHolder" || cursorTarget isKindOf "AllVehicles" || cursorTarget isKindOf "PlotPole_EPOCH") then{
-					if (cursorTarget isKindOf "Animal_Base_F") then {
-						if !(alive cursorTarget) then {
-							_currentTarget = cursorTarget;
-						};
-					} else {
-						_currentTarget = cursorTarget;
+		_cursorTarget = ([10] call EPOCH_fnc_cursorTarget);
+		if (!isNull _cursorTarget && {!(EPOCH_target isEqualTo _cursorTarget)}) then {
+			if (_cursorTarget isKindOf "ThingX" || _cursorTarget isKindOf "Constructions_static_F" || _cursorTarget isKindOf "Constructions_foundation_F" || _cursorTarget isKindOf "WeaponHolder" || _cursorTarget isKindOf "AllVehicles" || _cursorTarget isKindOf "PlotPole_EPOCH") then{
+				if (_cursorTarget isKindOf "Animal_Base_F") then {
+					if !(alive _cursorTarget) then {
+						_currentTarget = _cursorTarget;
 					};
+				} else {
+					_currentTarget = _cursorTarget;
 				};
 			};
 		};

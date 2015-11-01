@@ -359,8 +359,8 @@ class CfgPricing
 	class KitWoodTower {price = 10;};
 	class KitWoodRamp {price = 14;};
 	class KitTankTrap {price = 25;};
+	class KitHesco3 { price = 25; };
 	class KitWoodLadder { price = 10; };
-
 	class KitFirePlace {price = 4;};
 	class KitTiPi {price = 10;};
 	class KitShelf {price = 90;};

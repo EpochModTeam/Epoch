@@ -94,7 +94,7 @@ if (!isNull EPOCH_currentTarget && vehicle player == player) then {
 		};
 
 		if (!isNull EPOCH_stabilityTarget) then {
-			if (cursorTarget != EPOCH_stabilityTarget) then {
+			if (([10] call EPOCH_fnc_cursorTarget) != EPOCH_stabilityTarget) then {
 				EPOCH_stabilityTarget = objNull;
 			}
 			else {

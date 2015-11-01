@@ -21,7 +21,7 @@ if (isNull _display) then {
 		findDisplay 46 createDisplay "rmx_dynamenu";
 	};
 };
- 
+
 _selfOrTarget = if !(_hasTarget) then {"self"} else {"target"};
 _checkConfigs = {
 
@@ -42,7 +42,7 @@ _checkConfigs = {
 			{
 				_c = _c + (format [" >> '%1'",_x]);
 			} forEach _arr;
-			
+
 			(call compile _c)
 		};
 	};
@@ -51,7 +51,7 @@ _checkConfigs = {
 		case "build_upgrade":
 		{
 			if !(isClass _config) exitWith {_in = "";};
-			
+
 			{
 				_dName = getText(configfile >> "CfgVehicles" >> (_x select 0) >> "DisplayName");
 				_tTip = "";
@@ -62,30 +62,30 @@ _checkConfigs = {
 					_tTip = _tTip + format ["[%1 x %2] ", _x select 1, getText(_c >> "DisplayName")];
 					if (_icon isEqualTo "") then {_icon = getText (_c >> "picture")};
 				} forEach (_x select 1);
-				
+
 				_tooltip = format ["%1 >> %2 ",_dName,_tTip];
 				_action = format ["[dyna_cursorTarget,%1] call EPOCH_upgradeBUILDv2; true call Epoch_dynamicMenuCleanup;",_forEachIndex];
-				
+
 				_buttonSettings pushBack [
 					_icon,
 					_tooltip,
 					_action
 				];
-				
+
 			} forEach (getArray (_config >> "upgradeBuilding"));
-			
-			
+
+
 		};
 		default
 		{
 			_configs = "true" configClasses _config;
 			{
 				if (call compile (getText(_x >> "condition"))) then {
-				
+
 					if (_selfOrTarget isEqualTo "self" || dyna_distance) then {
-					
+
 						_subclasses = configProperties [_x, "isClass _x",true];
-						
+
 						_action = if (_subclasses isEqualTo []) then {
 							format ["%1; true call Epoch_dynamicMenuCleanup;",getText(_x >> "action")]
 						} else {

@@ -60,7 +60,7 @@ class CfgAmmo
 		hit = 10;
 		indirectHit = 5;
 		indirectHitRange = 3;
-		model = "\x\addons\a3_epoch_assets\models\stick.p3d";
+		model = "\x\addons\a3_epoch_assets\models\sticks.p3d";
 		mineModelDisabled = "\x\addons\a3_epoch_assets\models\sticks.p3d";
 		defaultMagazine = "APERSTripMine_Wire_Mag";
 		icon = "iconExplosiveAP";
@@ -91,7 +91,7 @@ class CfgAmmo
 		hit = 15;
 		indirectHit = 8;
 		indirectHitRange = 4;
-		model = "\x\addons\a3_epoch_assets\models\stick.p3d";
+		model = "\x\addons\a3_epoch_assets\models\sticks.p3d";
 		mineModelDisabled = "\x\addons\a3_epoch_assets\models\sticks.p3d";
 		defaultMagazine = "APERSTripMine_Wire_Mag";
 		icon = "iconExplosiveAP";

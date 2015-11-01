@@ -2412,7 +2412,7 @@ class CfgVehicles
 	class Spike_TRAP_SIM_EPOCH: Constructions_modular_F
 	{
 		scope = 2;
-		model = "\x\addons\a3_epoch_assets\models\stick.p3d";
+		model = "\x\addons\a3_epoch_assets\models\sticks.p3d";
 		displayName = "Spike Trap (SIM)";
 		simulClass = "Spike_TRAP_SIM_EPOCH";
 		staticClass = "Spike_TRAP_EPOCH";
@@ -2424,7 +2424,7 @@ class CfgVehicles
 	class Metal_TRAP_SIM_EPOCH: Constructions_modular_F
 	{
 		scope = 2;
-		model = "\x\addons\a3_epoch_assets\models\stick.p3d";
+		model = "\x\addons\a3_epoch_assets\models\sticks.p3d";
 		displayName = "Metal Trap (SIM)";
 		simulClass = "Metal_TRAP_SIM_EPOCH";
 		staticClass = "Metal_TRAP_EPOCH";
@@ -2437,12 +2437,36 @@ class CfgVehicles
 	{
 		scope = 2;
 		model = "\x\addons\a3_epoch_assets_3\CfgVehicles\Defense\tank_trap.p3d";
-		displayName = "Tank Trap";
+		displayName = "Tank Trap (SIM)";
 		simulClass = "TankTrap_SIM_EPOCH";
 		staticClass = "TankTrap_EPOCH";
 		GhostPreview = "TankTrap_EPOCH";
 		limitNearby = 4;
 		bypassJammer = 1;
+	};
+
+	class Hesco3_SIM_EPOCH : Constructions_modular_F
+	{
+		scope = 2;
+		model = "\x\addons\a3_epoch_assets_3\CfgVehicles\Defense\hesco.p3d";
+		displayName = "Hesco Wide (SIM)";
+		simulClass = "Hesco3_SIM_EPOCH";
+		staticClass = "Hesco3_EPOCH";
+		GhostPreview = "Hesco3_Ghost_EPOCH";
+		snapType = "snapPointsPara";
+		snapPointsPara[] = { "C", "E", "W" };
+		allowedSnapPoints[] = { "C", "E", "W" };
+		allowedSnapObjects[] = { "Hesco3_EPOCH" };
+		energyCost = 0.4;
+		slingLoadCargoMemoryPoints[] = {};
+		limitNearby = 4;
+		bypassJammer = 1;
+
+		/*
+		hiddenSelections[] = { "Camo" };
+		hiddenSelectionsTextures[] = { "\x\addons\a3_epoch_assets\textures\hesco\hesco_co.paa" };
+		hiddenSelectionsMaterials[] = { "\x\addons\a3_epoch_assets\textures\hesco\hesco.rvmat" };
+		*/
 	};
 
 	class SapperHead_SIM_EPOCH: Constructions_modular_F
@@ -3819,10 +3843,28 @@ class CfgVehicles
 		displayName = "Hesco Wide";
 		simulClass = "Hesco3_SIM_EPOCH";
 		staticClass = "Hesco3_EPOCH";
-		GhostPreview = "Hesco3_EPOCH";
+		GhostPreview = "Hesco3_Ghost_EPOCH";
+		snapType = "snapPointsPara";
+		snapPointsPara[] = { "C", "E", "W" };
+		allowedSnapPoints[] = { "C", "E", "W" };
 		energyCost = 0.2;
 		limitNearby = 4;
 		bypassJammer = 1;
+
+		/*
+		hiddenSelections[] = { "Camo" };
+		hiddenSelectionsTextures[] = { "\x\addons\a3_epoch_assets\textures\hesco\hesco_co.paa" };
+		hiddenSelectionsMaterials[] = { "\x\addons\a3_epoch_assets\textures\hesco\hesco.rvmat" };
+		*/
+
+		/*
+		selectionDamage = "zbytek";
+		class Damage
+		{
+			tex[] = {};
+			mat[] = { "x\addons\a3_epoch_assets\textures\cinder\cinder.rvmat", "x\addons\a3_epoch_assets\textures\cinder\cinder_destruct50.rvmat", "x\addons\a3_epoch_assets\textures\cinder\cinder_destruct50.rvmat" };
+		};
+		*/
 	};
 
 	class WoodRamp_EPOCH : Constructions_static_F
@@ -3866,7 +3908,7 @@ class CfgVehicles
 		scope = 2;
 		model = "\x\addons\a3_epoch_assets\models\cinder.p3d";
 		displayName = "Cinder Block Wall";
-		upgradeBuilding[] = { "CinderWallGarage_EPOCH", { { "ItemCorrugatedLg", 1 }, { "CircuitParts", 1 }  } };
+		// upgradeBuilding[] = { "CinderWallGarage_EPOCH", { { "ItemCorrugatedLg", 1 }, { "CircuitParts", 1 }  } };
 		simulClass = "CinderWall_SIM_EPOCH";
 		staticClass = "CinderWall_EPOCH";
 		GhostPreview = "CinderWall_EPOCH";
@@ -3875,7 +3917,7 @@ class CfgVehicles
 		allowedSnapPoints[] = { "N", "S", "E", "W" };
 		energyCost = 0.4;
 		armor = 10000;
-		removeParts[] = { { "CinderBlocks", 4 }, { "ItemRock", 2 } };
+
 	};
 	class CinderWallGarage_EPOCH : Const_Cinder_static_F
 	{
@@ -4151,6 +4193,22 @@ class CfgVehicles
 		snapPointsPerp[] = {};
 		allowedSnapPoints[] = { "NF", "SF", "EF", "WF", "CB" };
 		allowedSnapObjects[] = { "Const_floors_static_F", "Constructions_foundation_F" };
+
+		ladders[] = {};
+	};
+
+
+	class Hesco3_Ghost_EPOCH : Const_Ghost_EPOCH
+	{
+		scope = 2;
+		model = "\x\addons\a3_epoch_assets_3\CfgVehicles\Defense\hesco_ghost.p3d";
+		displayName = "Hesco Wide (Ghost)";
+		staticClass = "Hesco3_EPOCH";
+
+		snapPointsPara[] = {};
+		snapPointsPerp[] = {};
+		allowedSnapPoints[] = { "C", "E", "W" };
+		allowedSnapObjects[] = { "Hesco3_EPOCH" };
 
 		ladders[] = {};
 	};

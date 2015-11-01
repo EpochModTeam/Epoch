@@ -220,6 +220,8 @@ class CfgClientFunctions
 			class fnc_stringLeft {};
 			class fnc_findSapperStalkLocation {};
 			class fnc_dirToFuzzy {};
+
+			class fnc_cursorTarget {};
 		};
 
 		class environment
@@ -276,14 +278,14 @@ class CfgClientFunctions
 			file = "\x\addons\a3_epoch_code\gui\scripts\config";
 			class config_keymap {};
 		};
-		
+
 		class dynamenu {
 			file = "\x\addons\a3_epoch_code\gui\scripts\dynamenu";
 			class dynamicMenu {};
 			class dynamicMenuPopulate {};
 			class dynamicMenuCleanup {};
 		};
-		
+
 		class gui_craft {
 			file = "\x\addons\a3_epoch_code\gui\scripts\craftingv2";
 			class crafting_animate {};
@@ -301,7 +303,7 @@ class CfgClientFunctions
 			class crafting_LB_defaults {};
 			class crafting_LB_doubleClick {};
 			class crafting_colorScheme {};
-		};	
+		};
 		class group {
 			file = "\x\addons\a3_epoch_code\gui\scripts\group";
 			class Group_invitePlayer {};
