@@ -931,7 +931,7 @@ class FSM
                          "	}forEach EPOCH_playerHitPoints;" \n
                          "};" \n
                          "" \n
-                         "[] spawn EPOCH_masterLoop;" \n
+                         "[] spawn EPOCH_masterLoop_v2;" \n
                          "true call EPOCH_fnc_Weather;" \n
                          "[5,100] spawn EPOCH_niteLight;" \n
                          "" \n

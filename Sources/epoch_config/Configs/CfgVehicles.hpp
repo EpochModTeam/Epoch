@@ -2709,6 +2709,21 @@ class CfgVehicles
 		energyCost = 0.2;
 		slingLoadCargoMemoryPoints[] = { "N", "S", "E", "W" };
 	};
+	class MetalFloor_SIM_EPOCH : Constructions_modular_F
+	{
+		scope = 2;
+		model = "\x\addons\a3_epoch_assets_1\models\metal_floor.p3d";
+		displayName = "Metal Floor";
+		simulClass = "MetalFloor_SIM_EPOCH";
+		staticClass = "MetalFloor_EPOCH";
+		GhostPreview = "MetalFloor_Ghost_EPOCH";
+		snapPointsPara[] = { "NF", "SF", "EF", "WF", "C", "CB" };
+		snapPointsPerp[] = { "N", "S", "E", "W", "CinN", "CinS", "CinE", "CinW" };
+		allowedSnapPoints[] = { "NF", "SF", "EF", "WF", "C" };
+		allowedSnapObjects[] = { "Const_floors_static_F", "Constructions_foundation_F" };
+		energyCost = 0.5;
+		slingLoadCargoMemoryPoints[] = { "N", "S", "E", "W" };
+	};
 
 	class WoodLargeWall_SIM_EPOCH: Constructions_modular_F
 	{
@@ -4064,7 +4079,19 @@ class CfgVehicles
 		snapPointsPerp[] = {"N","S","E","W","CinN","CinS","CinE","CinW"};
 		allowedSnapPoints[] = {"NF","SF","EF","WF","C"};
 		energyCost = 0.2;
-		removeParts[] = { { "PartPlankPack", 2 } };
+	};
+	class MetalFloor_EPOCH : Const_floors_static_F
+	{
+		scope = 2;
+		model = "\x\addons\a3_epoch_assets_1\models\metal_floor.p3d";
+		displayName = "Metal Floor";
+		simulClass = "MetalFloor_SIM_EPOCH";
+		staticClass = "MetalFloor_EPOCH";
+		GhostPreview = "MetalFloor_Ghost_EPOCH";
+		snapPointsPara[] = { "NF", "SF", "EF", "WF", "C", "CB" };
+		snapPointsPerp[] = { "N", "S", "E", "W", "CinN", "CinS", "CinE", "CinW" };
+		allowedSnapPoints[] = { "NF", "SF", "EF", "WF", "C" };
+		energyCost = 0.5;
 	};
 
 	// Wood wall seed item lvl 0
@@ -4132,6 +4159,20 @@ class CfgVehicles
 		model = "\x\addons\a3_epoch_assets\models\Wooden_Floor_Ghost.p3d";
 		displayName = "Wood Floor Ghost";
 		staticClass = "WoodFloor_EPOCH";
+
+		snapPointsPara[] = { "NF", "SF", "EF", "WF", "C", "CB" };
+		snapPointsPerp[] = { "N", "S", "E", "W", "CinN", "CinS", "CinE", "CinW" };
+		allowedSnapPoints[] = { "NF", "SF", "EF", "WF", "C" };
+		allowedSnapObjects[] = { "Const_floors_static_F", "Constructions_foundation_F" };
+
+		ladders[] = {};
+	};
+	class MetalFloor_Ghost_EPOCH : Const_Ghost_EPOCH
+	{
+		scope = 2;
+		model = "\x\addons\a3_epoch_assets_1\models\metal_floor_ghost.p3d";
+		displayName = "Metal Floor Ghost";
+		staticClass = "MetalFloor_EPOCH";
 
 		snapPointsPara[] = { "NF", "SF", "EF", "WF", "C", "CB" };
 		snapPointsPerp[] = { "N", "S", "E", "W", "CinN", "CinS", "CinE", "CinW" };

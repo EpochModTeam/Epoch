@@ -218,7 +218,9 @@ while {alive player} do {
 		_vehicle = vehicle player;
 		if (_vehicle == player) then {
 			_val = log(abs(speed player));
-			if (_val>0.7) then {
+			_staminaThreshold = 0.7;
+			if (EPOCH_playerIsSwimming) then {_staminaThreshold = 0.3};
+			if (_val>_staminaThreshold) then {
 				EPOCH_playerStamina = (EPOCH_playerStamina - (_val/4)) max 0;
 			} else {
 				_increaseStamina = true;
@@ -478,6 +480,7 @@ while {alive player} do {
 		_position = getPosATL player;
 
 		EPOCH_nearestLocations = nearestLocations[player, ["NameCityCapital", "NameCity", "Airport"], 300];
+		EPOCH_playerIsSwimming = false;
 
 		if !(surfaceIsWater _position) then {
 			if (EPOCH_nearestLocations isEqualTo []) then{
@@ -489,12 +492,19 @@ while {alive player} do {
 		} else {
 			// spawn shark if player is deep water and not in vehicle
 			if (vehicle player == player) then{
-				if (((_position vectorDiff getPosASL player) select 2) > 50) then {
+				_offsetZ = ((_position vectorDiff getPosASL player) select 2);
+				if (_offsetZ > 1.7) then {
+					EPOCH_playerIsSwimming = true;
+				};
+				if (_offsetZ > 50) then {
 					"GreatWhite_F" call EPOCH_unitSpawn;
 				};
 			};
 		};
 
+		// default power state
+		EPOCH_nearPower = false;
+		EPOCH_chargeRate = 0;
 
 		// energy Charge from nearby power plants
 		_powerSources = nearestObjects[player, ["Land_spp_Tower_F","Land_wpp_Turbine_V2_F","Land_wpp_Turbine_V1_F","SolarGen_EPOCH"], _energyRange];
@@ -521,11 +531,8 @@ while {alive player} do {
 				} else {
 					EPOCH_chargeRate = ceil (_totalCapacity / (count _players));
 				};
+				EPOCH_nearPower = true;
 			};
-			EPOCH_nearPower = true;
-		} else {
-			EPOCH_nearPower = false;
-			EPOCH_chargeRate = 0;
 		};
 
 		EPOCH_playerAliveTime = round(EPOCH_playerAliveTime + (_tickTime - EPOCH_clientAliveTimer));

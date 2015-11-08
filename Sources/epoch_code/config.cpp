@@ -185,6 +185,7 @@ class CfgClientFunctions
 		{
 			class client_publicEH {};
 			class masterLoop {};
+			class masterLoop_v2 {};
 			class clientInit {};
 			class clientRespawn {};
 			class clientRevive {};
@@ -339,6 +340,7 @@ class CfgClientFunctions
 			class postprocessCreate {};
 			class postprocessAdjust {};
 			class postprocessDestroy {};
+			class setDrunk {}; //needs a better name
 		};
 		class worldToScreen {
 			file = "\x\addons\a3_epoch_code\gui\scripts\worldToScreen";

@@ -5,28 +5,19 @@ _EPOCH_lastSave = missionNamespace getVariable["EPOCH_lastSave", diag_tickTime];
 
 if ((diag_tickTime - _EPOCH_lastSave) >= _time) then {
 
-	missionNamespace setVariable["EPOCH_lastSave", diag_tickTime];
+	// manually set hitpoints array
+	EPOCH_playerHitPoints = ((getAllHitPointsDamage player) param [2,[]]);
 
-	missionNamespace setVariable ["EPOCH_pushPlayer_PVS",
-		[	player,
-			[
-				missionNamespace getVariable "EPOCH_playerTemp",
-				missionNamespace getVariable "EPOCH_playerHunger",
-				missionNamespace getVariable "EPOCH_playerThirst",
-				missionNamespace getVariable "EPOCH_playerAliveTime",
-				missionNamespace getVariable "EPOCH_playerEnergy",
-				missionNamespace getVariable "EPOCH_playerWet",
-				missionNamespace getVariable "EPOCH_playerSoiled",
-				missionNamespace getVariable "EPOCH_playerImmunity",
-				missionNamespace getVariable "EPOCH_playerToxicity",
-				missionNamespace getVariable "EPOCH_playerStamina",
-				missionNamespace getVariable "EPOCH_playerCrypto",
-				((getAllHitPointsDamage player) param [2,[]]),
-				missionNamespace getVariable "EPOCH_playerBloodP",
-				missionNamespace getVariable "EPOCH_playerSpawnArray"
-			],
-			missionNamespace getVariable "Epoch_personalToken"
-		]
-	];
+	// Get all custom variables
+	_customVars = [];
+	_customVarsInit = ["CfgEpochClient", "customVarsDefaults", missionNamespace getVariable["EPOCH_customVarsDefaults", []]] call EPOCH_fnc_returnConfigEntryV2;
+	{
+		_customVars pushBack (missionNamespace getVariable format["EPOCH_player%1",_x select 0]);
+	} forEach _customVarsInit;
+
+	// TODO: use remoteExec here
+	missionNamespace setVariable ["EPOCH_pushPlayer_PVS",[player,_customVars,missionNamespace getVariable "Epoch_personalToken"]];
 	publicVariableServer "EPOCH_pushPlayer_PVS";
+
+	missionNamespace setVariable["EPOCH_lastSave", diag_tickTime];
 };

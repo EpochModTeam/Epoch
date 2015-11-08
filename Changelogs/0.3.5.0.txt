@@ -1,11 +1,24 @@
-[Added] Hesco barrier.
-[Added] Persistent Spike traps.
+[Added] Metal Floors as upgrade in-place option for wood floors.
+[Added] Gender selection screen improvements.
 [Added] New interaction system.
 [Added] Documentation on server core framework functions and hive calls.
-[Added] Custom Epoch Tank trap.
-[Added] New version of the Fishing Rod.
+[Added] Persistent wood and metal spike traps.
+[Added] New custom 3x wide hesco type barrier.
+[Added] New custom tank trap.
+[Added] Updated version of the Fishing Rod.
 [Added] muzzle_snds_338_sand to loot and pricing tables.
-[Changed] Overhaul of secure storage system with support for new UI.
+[Added] Client side master loop is now fully config (CfgMasterLoop) based.
+[Changed] Final overhaul of secure storage system with support for new UI.
+[Changed] Increased reverse token check timeout from 90 to 180 seconds.
+[Changed] Server pack Tools folder now contains InstalEpoch.cmd that is an updated version of the command line download Epoch client files download script for steam workshop.
+[Fixed] Was unable to use cursorTarget underwater, added new function EPOCH_fnc_cursorTarget that works everywhere.
+[Fixed] NPC item trades that cannot fit in the players inventory will be placed at the feet of the player.
+[Fixed] If player started a trade with a zero Krypto and then obtained Krypto they had to relog to be able to trade again.
+[Fixed] Removed forced weather sync on server startup from server init phase so weather changes are now solely dependent on Epoch Events weather script.
+[Fixed] Added private array to all Epoch Event scripts due to feedback.
+[Fixed] Not loosing Stamina while swimming.
+[Fixed] Removed extra roadway on top of columns.
 [Fixed] Force trader data save to save when loading starter items.
 [Fixed] Dynamic traders did not correctly track the stored vehicle count and limits.
+[Fixed] Error Zero divisor in master loop.
 [Fixed] .rpt error after gutting animal added by adding isNull check to animal brain.

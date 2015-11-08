@@ -45,7 +45,7 @@ for "_p" from 0 to 360 step _points do {
 	_positions2 pushBack [_x + (_center - (_scaleSmallX / 2)),_y + (_center - (_scaleSmallY / 2)),_scaleSmallX,_scaleSmallY];
 };
 
-rmx_var_dynaControls = [];
+missionNamespace setVariable ["rmx_var_dynaControls",[]];
 //_buttonSettings [icon,tooltip,action]
 for "_e" from 0 to (_entries - 1) do {
 	private ["_ctrl","_ctrl2"];
@@ -71,8 +71,9 @@ for "_e" from 0 to (_entries - 1) do {
 	_ctrl2 ctrlSetPosition (_positions2 select _e);
 	_ctrl2 ctrlCommit 0.1;
 	
-	rmx_var_dynaControls pushBack _ctrl;
-	rmx_var_dynaControls pushBack _ctrl2;
+	_arr = missionNamespace getVariable ["rmx_var_dynaControls",[]];
+	_arr append [_ctrl,_ctrl2];
+	missionNamespace setVariable ["rmx_var_dynaControls",_arr];
 };
 
 true

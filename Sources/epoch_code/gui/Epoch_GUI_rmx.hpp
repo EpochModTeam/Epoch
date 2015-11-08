@@ -48,6 +48,136 @@ class rmx_rscObject
 	};
 };
 
+class rmx_rscContainer
+{
+ 
+	idd = 99440;
+	movingEnable = 0;
+	enableSimulation = 1;
+	enableDisplay = 0;
+	
+	class Objects 
+	{
+		class _CT_OBJECT_CONTAINER
+		{
+			access = 0; // Control access (0 - ReadAndWrite, 1 - ReadAndCreate, 2 - ReadOnly, 3 - ReadOnlyVerified)
+			idc = 99441; // Control identification (without it, the control won't be displayed)
+			type = 82; // Type
+			style = ST_LEFT; // Style
+			blinkingPeriod = 0; // Time in which control will fade out and back in. Use 0 to disable the effect.
+
+			//model = "\A3\Misc_F\Helpers\UserTexture1m.p3d"; // Displayed model
+			//model = "\x\addons\a3_epoch_code\gui\terminal2.p3d"; // Displayed model
+			model = "\x\addons\a3_epoch_assets_3\CfgVehicles\center_plane.p3d";
+			scale = 0.2; // Model scale
+
+			x = 26 * GUI_GRID_CENTER_W + GUI_GRID_CENTER_X; // Horizontal coordinates
+			y = 21 * GUI_GRID_CENTER_H + GUI_GRID_CENTER_Y; // Vertical coordinates
+			z = 1; // Depth coordinates
+			//position[] = {0,0,1}; // Alternative XYZ coordinates, where XY is center of the screen
+
+			xBack = 25 * GUI_GRID_CENTER_W + GUI_GRID_CENTER_X; // Horizontal background coordinates
+			yBack = 12 * GUI_GRID_CENTER_H + GUI_GRID_CENTER_Y; // Vertical background coordinates
+			zBack = 2; // Depth background coordinates
+			//positionBack[] = {0,0,2}; // Alternative XYZ coordinates, where XY is center of the screen
+
+			enableZoom = 1; // Allow foreground/background transformation
+			zoomDuration = 0.5; // Speed of foreground/background transformation
+			inBack = 0; // Start in back (Back coordinates are used)
+
+			direction[] = {1,0,0.5}; // Model vector dir
+			up[] = {0.5,1,0}; // Model vector up
+
+			tooltip = "CT_OBJECT"; // Tooltip text
+			tooltipColorShade[] = {0,0,0,1}; // Tooltip background color
+			tooltipColorText[] = {1,1,1,1}; // Tooltip text color
+			tooltipColorBox[] = {1,1,1,1}; // Tooltip frame color
+
+			class Areas // Configurable UI areas. Normally interactive controls (buttons, listboxes, ...) are not interactive here.
+			{
+				class UserTextureL
+				{
+					selection = "usertextureL"; // Model selection on which the UI will be rendered
+					class Controls
+					{
+						class _CT_STATIC
+						{
+							idc = 1100; // Control identification (without it, the control won't be displayed)
+							type = CT_STATIC; // Type
+							style = ST_LEFT + ST_CENTER + ST_MULTI; // Style
+
+							x = 0; // Horizontal coordinates (relative to the selection area)
+							y = 0; // Vertical coordinates (relative to the selection area)
+							w = 1; // Width (relative to the selection area)
+							h = 1; // Height (relative to the selection area)
+
+							colorBackground[] = {0,0,0,1}; // Fill color
+
+							text = "\nCT_OBJECT\n_CONTAINER"; // Displayed text
+							sizeEx = 6 * GUI_GRID_CENTER_H; // Text size
+							font = "VT323"; // Font from CfgFontFamilies
+							colorText[] = {1,0,0,1}; // Text color
+							lineSpacing = 1; // When ST_MULTI style is used, this defines distance between lines (1 is text height)
+						};
+					};
+				};
+				class UserTexture
+				{
+					selection = "usertexture"; // Model selection on which the UI will be rendered
+					class Controls
+					{
+						class _CT_STATIC
+						{
+							idc = 11002; // Control identification (without it, the control won't be displayed)
+							type = CT_STATIC; // Type
+							style = ST_LEFT + ST_CENTER + ST_MULTI; // Style
+
+							x = 0; // Horizontal coordinates (relative to the selection area)
+							y = 0; // Vertical coordinates (relative to the selection area)
+							w = 1; // Width (relative to the selection area)
+							h = 1; // Height (relative to the selection area)
+
+							colorBackground[] = {0,0,0,1}; // Fill color
+
+							text = "\nCT_OBJECT\n_CONTAINER"; // Displayed text
+							sizeEx = 6 * GUI_GRID_CENTER_H; // Text size
+							font = "VT323"; // Font from CfgFontFamilies
+							colorText[] = {1,0,0,1}; // Text color
+							lineSpacing = 1; // When ST_MULTI style is used, this defines distance between lines (1 is text height)
+						};
+					};
+				};
+				class UserTextureR
+				{
+					selection = "usertextureR"; // Model selection on which the UI will be rendered
+					class Controls
+					{
+						class _CT_STATIC
+						{
+							idc = 11001; // Control identification (without it, the control won't be displayed)
+							type = CT_STATIC; // Type
+							style = ST_LEFT + ST_CENTER + ST_MULTI; // Style
+
+							x = 0; // Horizontal coordinates (relative to the selection area)
+							y = 0; // Vertical coordinates (relative to the selection area)
+							w = 1; // Width (relative to the selection area)
+							h = 1; // Height (relative to the selection area)
+
+							colorBackground[] = {0,0,0,1}; // Fill color
+
+							text = "\nCT_OBJECT\n_CONTAINER"; // Displayed text
+							sizeEx = 6 * GUI_GRID_CENTER_H; // Text size
+							font = "VT323"; // Font from CfgFontFamilies
+							colorText[] = {1,0,0,1}; // Text color
+							lineSpacing = 1; // When ST_MULTI style is used, this defines distance between lines (1 is text height)
+						};
+					};
+				};
+			};
+		};
+	};
+};
+
 class rmx_rscControlsGroup: RscControlsGroup
 {
 	idc = -1;

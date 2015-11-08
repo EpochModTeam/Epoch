@@ -34,7 +34,12 @@ class CfgBaseBuilding {
 	};
 	class WoodFloor_EPOCH : Default
 	{
+		upgradeBuilding[] = { { "MetalFloor_EPOCH", { { "ItemCorrugatedLg", 2 } } } };
 		removeParts[] = { { "PartPlankPack", 2 } };
+	};
+	class MetalFloor_EPOCH : Default
+	{
+		removeParts[] = { { "ItemCorrugatedLg", 2 } };
 	};
 	class CinderWallGarage_EPOCH : Default
 	{

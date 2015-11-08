@@ -2,7 +2,6 @@ private["_item", "_currQty", "_tradeType", "_itemWorth", "_aiItems", "_itemClass
 
 if (!isNil "EPOCH_TRADE_COMPLETE") exitWith {};
 if (!isNil "EPOCH_TRADE_STARTED") exitWith{};
-if (EPOCH_playerCrypto <= 0) exitWith {};
 
 if (!isNull _this) then {
 

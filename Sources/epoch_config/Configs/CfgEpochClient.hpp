@@ -38,7 +38,10 @@ class CfgEpochClient
 		{"Crypto",0},
 		{"HitPoints",{0,0,0,0}},
 		{"BloodP",100},
-		{"SpawnArray",{}}
+		{"SpawnArray",{}},
+		{"Karma",0},
+		{"Alcohol",0},
+		{"Radiation",0}
 	};
 
 	// controls max group limit and cost
@@ -63,7 +66,7 @@ class CfgEpochClient
 		{ "cabinetPos", "Cabinet_EPOCH", false }
 	};
 
-	
+
 	#include "CfgEpochClient\takistan.hpp"
 	#include "CfgEpochClient\australia.hpp"
 	#include "CfgEpochClient\ProvingGrounds_PMC.hpp"

@@ -48,7 +48,7 @@ class FSM
       init = /*%FSM<STATEINIT""">*/"diag_log ""Loaded Server FSM"";" \n
        "" \n
        "_serverSettingsConfig = configFile >> ""CfgEpochServer"";" \n
-       "_ahInitAuthCfg = [_serverSettingsConfig, ""antihack_ahInitAuthCfg"", [0,90]] call EPOCH_fnc_returnConfigEntry;" \n
+       "_ahInitAuthCfg = [_serverSettingsConfig, ""antihack_ahInitAuthCfg"", [0,180]] call EPOCH_fnc_returnConfigEntry;" \n
        "_events = [_serverSettingsConfig, ""events"", [[3600, ""CarnivalSpawner""], [2400, ""EarthQuake""], [1800, ""ChangeWeather""], [1200, ""ContainerSpawner""], [300, ""PlantSpawner""]]] call EPOCH_fnc_returnConfigEntry;" \n
        "_simulationHandler = [_serverSettingsConfig, ""simulationHandler"", false] call EPOCH_fnc_returnConfigEntry;" \n
        "" \n

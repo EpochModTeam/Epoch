@@ -12,7 +12,7 @@ if !(alive player && alive _playerObject && !isPlayer _playerObject) then {
 	Epoch_personalToken = _this select 1;
 
 	// call EPOCH_clientInit;
-	[] spawn EPOCH_masterLoop;
+	[] spawn EPOCH_masterLoop_v2;
 	[5, 100] call EPOCH_niteLight;
 
 	closeDialog 0;
