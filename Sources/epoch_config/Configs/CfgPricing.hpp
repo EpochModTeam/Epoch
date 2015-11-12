@@ -320,7 +320,7 @@ class CfgPricing
 	class muzzle_snds_338_black { price = 3; };
 	class muzzle_snds_338_green { price = 3; };
 	class muzzle_snds_338_sand { price = 3; };
-	
+
 	class muzzle_snds_93mmg { price = 3; };
 	class muzzle_snds_93mmg_tan { price = 3; };
 
@@ -358,6 +358,8 @@ class CfgPricing
 	class KitWoodStairs {price = 10;};
 	class KitWoodTower {price = 10;};
 	class KitWoodRamp {price = 14;};
+	class KitSpikeTrap {price = 25;};
+	class KitMetalTrap {price = 25;};
 	class KitTankTrap {price = 25;};
 	class KitHesco3 { price = 25; };
 	class KitWoodLadder { price = 10; };

@@ -21,6 +21,7 @@ if (_energyCost == 0) then {
 _class = getText(configfile >> "cfgVehicles" >> _objType >> "GhostPreview");
 _maxHeight = getNumber(configfile >> "cfgVehicles" >> _objType >> "maxHeight");
 _simulClass = getText(configFile >> "CfgVehicles" >> _objType >> "simulClass");
+_snapChecks = getArray(configFile >> "CfgSnapChecks" >> _objType >> "nails");
 _maxSnapDistance = 1;
 _lastCheckTime = diag_tickTime;
 _stabilityCheck = false;
@@ -107,6 +108,13 @@ if (_class != "") then {
 
 			EPOCH_target setposATL _pos2ATL;
 			EPOCH_target attachTo[player];
+		};
+
+		if (EPOCH_space) then {
+			_dir2 = [vectorDir player, EPOCH_buildDirection] call EPOCH_returnVector;
+			_up2 = (vectorUp player);
+			EPOCH_space = false;
+			EPOCH_target setVectorDirAndUp [_dir2,_up2];
 		};
 
 		{
@@ -282,37 +290,27 @@ if (_class != "") then {
 				_offsetZPos = [_currentPos select 0, _currentPos select 1, (_currentPos select 2) - 0.5];
 				if !(terrainIntersect[_currentPos, _offsetZPos]) then {
 
-					// check below for static object
-					if (lineintersectsobjs[ATLtoASL _currentPos, ATLtoASL _offsetZPos, _currentTarget, objNull, false, 2] isEqualTo[]) then {
+					_numberOfContacts = 0;
+					{
+				        _pos1 = _currentTarget modelToWorld (_x select 0);
+				        _pos2 = _currentTarget modelToWorld (_x select 1);
+				        _ins = lineIntersectsSurfaces [AGLToASL _pos1, AGLToASL _pos2,player,_currentTarget,true,1,"VIEW","FIRE"];
+				        if (count _ins > 0) then {
+				            _numberOfContacts = _numberOfContacts + 1;
+				        };
+				    } forEach _snapChecks;
 
-						_currentDir = getDir _currentTarget;
-						_objSize = sizeOf _objType / 3.5;
-						_numberOfContacts = 0;
-						{
-							// check all four sides (must have two or more)
-							if !(lineintersectsobjs[ATLtoASL _currentPos, ATLtoASL([_currentTarget, _objSize, _currentDir + _x] call BIS_fnc_relPos), _currentTarget, objNull, false, 2] isEqualTo[]) then {
-								_numberOfContacts = _numberOfContacts + 1;
-							};
-						} forEach[0, 90, 180, 270];
-
-						if (_numberOfContacts < 2) then {
-
-							// TODO: foundations need to be handled
-
-							// change to sim
-							_worldspace = [getposATL _currentTarget, vectordir _currentTarget, vectorup _currentTarget];
-
-							deleteVehicle _currentTarget;
-
-							_currentTarget = createVehicle[_simulClass, (_worldspace select 0), [], 0, "CAN_COLLIDE"];
-							_currentTarget setVectorDirAndUp[_worldspace select 1, _worldspace select 2];
-							_currentTarget setposATL(_worldspace select 0);
-
-						};
+					if (_numberOfContacts < 2) then {
+						// TODO: foundations need to be handled
+						// change to sim
+						_worldspace = [getposATL _currentTarget, vectordir _currentTarget, vectorup _currentTarget];
+						deleteVehicle _currentTarget;
+						_currentTarget = createVehicle[_simulClass, (_worldspace select 0), [], 0, "CAN_COLLIDE"];
+						_currentTarget setVectorDirAndUp[_worldspace select 1, _worldspace select 2];
+						_currentTarget setposATL(_worldspace select 0);
 					};
 				};
 			};
-
 			_currentTarget spawn EPOCH_countdown;
 		};
 	};

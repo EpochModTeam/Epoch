@@ -42,6 +42,7 @@ class CfgAddons
 #include "\x\addons\a3_epoch_config\Configs\CfgEpochClient.hpp"
 #include "\x\addons\a3_epoch_config\Configs\CfgMasterLoop.hpp"
 #include "\x\addons\a3_epoch_config\Configs\CfgBaseBuilding.hpp"
+#include "\x\addons\a3_epoch_config\Configs\CfgSnapChecks.hpp"
 #include "\x\addons\a3_epoch_config\Configs\CfgBuildingLootPos.hpp"
 #include "\x\addons\a3_epoch_config\Configs\CfgActionMenu\CfgActionMenu_core.hpp"
 #include "\x\addons\a3_epoch_config\Configs\CfgEpochConfiguration.hpp"

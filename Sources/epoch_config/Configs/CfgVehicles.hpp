@@ -3851,7 +3851,7 @@ class CfgVehicles
 		bypassJammer = 1;
 	};
 
-	class Hesco3_EPOCH: Constructions_static_F
+	class Hesco3_EPOCH: Const_All_Walls_F
 	{
 		scope = 2;
 		model = "\x\addons\a3_epoch_assets_3\CfgVehicles\Defense\hesco.p3d";
@@ -4092,6 +4092,15 @@ class CfgVehicles
 		snapPointsPerp[] = { "N", "S", "E", "W", "CinN", "CinS", "CinE", "CinW" };
 		allowedSnapPoints[] = { "NF", "SF", "EF", "WF", "C" };
 		energyCost = 0.5;
+		armor = 15000;
+
+		selectionDamage = "zbytek";
+		class Damage
+		{
+			tex[] = {};
+			// TODO: make seperate rvmat for destruction check for issues due to camo zbytek applying to all mats
+			mat[] = { "x\addons\a3_epoch_assets_1\textures\metal_floor.rvmat", "x\addons\a3_epoch_assets\textures\PlyPlank_destruct50.rvmat", "x\addons\a3_epoch_assets\textures\PlyPlank_destruct50.rvmat" };
+		};
 	};
 
 	// Wood wall seed item lvl 0

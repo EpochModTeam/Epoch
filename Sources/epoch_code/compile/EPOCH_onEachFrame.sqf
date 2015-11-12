@@ -32,14 +32,14 @@ if (!isNull EPOCH_currentTarget && vehicle player == player) then {
 
 		_stability = 0;
 		_color = [1, 1, 1, 0.7];
-		_text = format ["Press (%1)",EPOCH_keysAction call BIS_fnc_keyCode];
+		_text = format ["Hold (%1)",EPOCH_keysAction call BIS_fnc_keyCode];
 		_icon = "\x\addons\a3_epoch_code\Data\UI\ui_question_ca.paa";
 
 		_interactOption = getNumber(configFile >> "cfgVehicles" >> typeOf _currentTarget >> "interactMode");
 
 		switch _interactOption do {
 			case 0: {
-				_stability = 100 - round(damage _currentTarget) * 10;
+				_stability = 100 - round(damage _currentTarget * 10);
 				_icon = "\x\addons\a3_epoch_code\Data\UI\loading_bar_%1.paa";
 				_text = "Press (Inventory)";
 			};
@@ -58,7 +58,7 @@ if (!isNull EPOCH_currentTarget && vehicle player == player) then {
 			case 2: {
 				if (alive _currentTarget) then{
 					_text = format["%1 - Press (Ctrl+%2)", if (isStreamFriendlyUIEnabled) then[{"Player"}, { name _currentTarget }],EPOCH_keysAcceptTrade call BIS_fnc_keyCode];
-					_stability = 100 - round(damage _currentTarget) * 10;
+					_stability = 100 - round(damage _currentTarget * 10);
 					_icon = "\x\addons\a3_epoch_code\Data\UI\loading_bar_%1.paa";
 
 					if (_stability < 50) then{
