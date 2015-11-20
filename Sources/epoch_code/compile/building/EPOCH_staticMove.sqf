@@ -22,6 +22,7 @@ _class = getText(configfile >> "cfgVehicles" >> _objType >> "GhostPreview");
 _maxHeight = getNumber(configfile >> "cfgVehicles" >> _objType >> "maxHeight");
 _simulClass = getText(configFile >> "CfgVehicles" >> _objType >> "simulClass");
 _snapChecks = getArray(configFile >> "CfgSnapChecks" >> _objType >> "nails");
+diag_log format["DEBUG: _snapChecks %1",_snapChecks];
 _maxSnapDistance = 1;
 _lastCheckTime = diag_tickTime;
 _stabilityCheck = false;
@@ -137,6 +138,7 @@ if (_class != "") then {
 				_baselineSnapPos = _nearestObject modelToWorldVisual [0,0,0];
 
 				if (EPOCH_buildMode == 1) then {
+
 					{
 						if (_x in _allowedSnapPoints) then {
 							_pOffset = _nearestObject selectionPosition _x;
@@ -239,6 +241,16 @@ if (_class != "") then {
 
 						_currentTarget setVectorDirAndUp[_dir2, (vectorUp _nearestObject)];
 						_currentTarget setposATL _snapPosition;
+
+						{
+					        _pos1_snap = _currentTarget modelToWorldVisual (_x select 0);
+					        _pos2_snap = _currentTarget modelToWorldVisual (_x select 1);
+					        _ins = lineIntersectsSurfaces [AGLToASL _pos1_snap, AGLToASL _pos2_snap,player,_currentTarget,true,1,"VIEW","FIRE"];
+					        if (count _ins > 0) then {
+								[ASLToATL (_ins select 0 select 0),1,"x\addons\a3_epoch_code\Data\UI\snap_ca.paa", "",20] call epoch_gui3dWorldPos;
+					        };
+					    } forEach _snapChecks;
+
 					};
 
 				} else {
@@ -292,11 +304,11 @@ if (_class != "") then {
 
 					_numberOfContacts = 0;
 					{
-				        _pos1 = _currentTarget modelToWorld (_x select 0);
-				        _pos2 = _currentTarget modelToWorld (_x select 1);
-				        _ins = lineIntersectsSurfaces [AGLToASL _pos1, AGLToASL _pos2,player,_currentTarget,true,1,"VIEW","FIRE"];
+				        _pos1_snap = _currentTarget modelToWorldVisual (_x select 0);
+				        _pos2_snap = _currentTarget modelToWorldVisual (_x select 1);
+				        _ins = lineIntersectsSurfaces [AGLToASL _pos1_snap, AGLToASL _pos2_snap,player,_currentTarget,true,1,"VIEW","FIRE"];
 				        if (count _ins > 0) then {
-				            _numberOfContacts = _numberOfContacts + 1;
+							_numberOfContacts = _numberOfContacts + 1;
 				        };
 				    } forEach _snapChecks;
 

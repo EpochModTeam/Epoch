@@ -5,7 +5,8 @@
 [Added] Persistent wood and metal spike traps.
 [Added] New custom 3x wide hesco type barrier.
 [Added] New custom tank trap.
-[Added] Updated version of the Fishing Rod.
+[Added] Updated version of the Fishing Rod. Reel was to small.
+[Changed] Refine ghost preview base building snap checks.
 [Changed] Players now start with a Quartz radio by default.
 [Changed] Overhaul of secure storage system to make it faster.
 [Fixed] Was unable to use cursorTarget underwater, fixed using new custom made function.

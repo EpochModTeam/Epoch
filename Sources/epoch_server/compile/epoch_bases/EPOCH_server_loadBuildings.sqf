@@ -49,10 +49,6 @@ for "_i" from 0 to _this do {
 			_textureSlot = _arr select 4;
 		};
 
-
-
-
-
 		// experiment with damage factor based on time only for now.
 		_damage = ((1 - (_ttl / _maxTTL)) min 1) max 0;
 
@@ -65,11 +61,22 @@ for "_i" from 0 to _this do {
 
 		// remove old safes on && !(_class isKindOf 'Constructions_lockedstatic_F')
 		if (isClass (configFile >> "CfgVehicles" >> _class) && (_damage < 1) && !(_class isKindOf 'Constructions_lockedstatic_F')) then {
-			_baseObj = createVehicle [_class, _location, [], 0, "CAN_COLLIDE"];
 
+			_baseObj = createVehicle [_class, _location, [], 0, "CAN_COLLIDE"];
 			_baseObj setVectorDirAndUp _worldspace;
 			_baseObj setposATL _location;
 
+			// spawn additional object for trap
+			_ammoClass = (configFile >> "CfgVehicles" >> _class >> "ammoClass");
+			if(isText _ammoClass) then {
+				_ammoClass = getText _ammoClass;
+				_ammoObj = createVehicle [_ammoClass, _location, [], 0, "CAN_COLLIDE"];
+				_ammoObj setVectorDirAndUp _worldspace;
+				_ammoObj setposATL _location;
+				_baseObj setVariable ["EPOCH_TRAP_OBJ",_ammoObj];
+			};
+
+			// set persistent Animations
 			if (_arrCount >= 6) then{
 				_anims = _arr param[5, [], [[]]];
 				{
@@ -77,8 +84,8 @@ for "_i" from 0 to _this do {
 				} foreach(getArray(configFile >> "CfgVehicles" >> _class >> "persistAnimations"));
 			};
 
-			// TODO make config based
-			if (_class == "PlotPole_EPOCH") then {
+			// Handle Jammers and create marker if EPOCH_SHOW_JAMMERS set true.
+			if (_class isKindOf "PlotPole_EPOCH") then {
 				if (EPOCH_SHOW_JAMMERS) then {
 					_marker = createMarker[str(_location), _location];
 					_marker setMarkerShape "ICON";

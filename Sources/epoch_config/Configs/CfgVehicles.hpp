@@ -2512,6 +2512,7 @@ class CfgVehicles
 		simulClass = "Fireplace_SIM_EPOCH";
 		staticClass = "Fireplace_EPOCH";
 		GhostPreview = "Fireplace_EPOCH";
+		isTemporary = 1;
 	};
 	class Jack_SIM_EPOCH : Constructions_modular_F
 	{
@@ -3849,6 +3850,37 @@ class CfgVehicles
 		energyCost = 0.2;
 		limitNearby = 4;
 		bypassJammer = 1;
+	};
+
+	class TRAP_EPOCH : Constructions_static_F {};
+	class Spike_TRAP_EPOCH: Constructions_static_F
+	{
+		scope = 2;
+		model = "\x\addons\a3_epoch_assets\models\sticks.p3d";
+		displayName = "Spike Trap (SIM)";
+		simulClass = "Spike_TRAP_SIM_EPOCH";
+		staticClass = "Spike_TRAP_EPOCH";
+		GhostPreview = "Spike_TRAP_EPOCH";
+		ammoClass = "Spike_TRAP_AMMO_EPOCH";
+		energyCost = 0.2;
+		limitNearby = 2;
+		bypassJammer = 1;
+		armor = 0.1
+	};
+
+	class Metal_TRAP_EPOCH: Constructions_static_F
+	{
+		scope = 2;
+		model = "\x\addons\a3_epoch_assets\models\sticks.p3d";
+		displayName = "Metal Trap (SIM)";
+		simulClass = "Metal_TRAP_SIM_EPOCH";
+		staticClass = "Metal_TRAP_EPOCH";
+		GhostPreview = "Metal_TRAP_EPOCH";
+		ammoClass = "Metal_TRAP_AMMO_EPOCH";
+		energyCost = 0.4;
+		limitNearby = 2;
+		bypassJammer = 1;
+		armor = 0.1
 	};
 
 	class Hesco3_EPOCH: Const_All_Walls_F

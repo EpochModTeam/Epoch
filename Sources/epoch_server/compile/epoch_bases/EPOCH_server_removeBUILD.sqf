@@ -43,7 +43,7 @@ if (_vehSlot != -1 || _storageSlot != "ABORT" || _isTemporary == 1) then{
 
 			// if normal storage device dump items on ground.
 			if (_building isKindOf "Buildable_Storage") then {
-			
+
 				// may not be needed but should prevent <null> in DB.
 				_wepsItemsCargo = weaponsItemsCargo _building;
 				if (isNil "_wepsItemsCargo") then{
@@ -54,7 +54,7 @@ if (_vehSlot != -1 || _storageSlot != "ABORT" || _isTemporary == 1) then{
 					_magsAmmoCargo = [];
 				};
 
-				// dump items on ground 
+				// dump items on ground
 				_inventory = [
 					_wepsItemsCargo,
 					_magsAmmoCargo,
@@ -103,7 +103,7 @@ if (_vehSlot != -1 || _storageSlot != "ABORT" || _isTemporary == 1) then{
 										};
 									} forEach _x;
 
-									// add all attachments to vehicle 
+									// add all attachments to vehicle
 									// TODO replace with adding attachments directly to gun (Arma feature dependant)
 									{
 										_gwh addItemCargoGlobal[_x, 1];
@@ -148,6 +148,12 @@ if (_vehSlot != -1 || _storageSlot != "ABORT" || _isTemporary == 1) then{
 
 			} else {
 
+				// Remove trap object
+				_ammoObj = _building getVariable ["EPOCH_TRAP_OBJ",objNull];
+				if !(isNull _ammoObj) then {
+					deleteVehicle _ammoObj;
+				};
+
 				[_building, _player] call EPOCH_server_save_killedBuilding;
 				deleteVehicle _building;
 			};
@@ -158,7 +164,7 @@ if (_vehSlot != -1 || _storageSlot != "ABORT" || _isTemporary == 1) then{
 				_gwh addMagazineCargoGlobal[_x select 0, _x select 1];
 			} forEach _removeParts;
 		};
-	
+
 	};
 
 };

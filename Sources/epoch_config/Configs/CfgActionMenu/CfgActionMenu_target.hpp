@@ -51,7 +51,7 @@ class tra_talk
 {
 	condition = "dyna_isTrader";
 	action = "dyna_cursorTarget call EPOCH_startInteractNPC;";
-	icon = "x\addons\a3_epoch_code\Data\UI\buttons\talk_green.paa";
+	icon = "x\addons\a3_epoch_code\Data\UI\buttons\talk_blue.paa";
 	tooltip = "Talk";
 };
 class tra_shop
@@ -105,13 +105,13 @@ class pack_lockbox
 {
 	condition = "(dyna_cursorTargetType in ['LockBox_EPOCH','LockBoxProxy_EPOCH']) && (dyna_cursorTarget getVariable ['EPOCH_Locked',false])";
 	action = "EPOCH_packStorage_PVS = [dyna_cursorTarget,player,Epoch_personalToken]; publicVariableServer 'EPOCH_packStorage_PVS';";
-	icon = "#(rgb,8,8,3)color(1,0,1,0.5)";
+	icon = "x\addons\a3_epoch_code\Data\UI\buttons\build_pack.paa";
 	tooltip = "Pack Lockbox";
 };
 class pack_safe
 {
 	condition = "(dyna_cursorTargetType in ['Safe_EPOCH','SafeProxy_EPOCH']) && (dyna_cursorTarget getVariable ['EPOCH_Locked',false])";
 	action = "EPOCH_packStorage_PVS = [dyna_cursorTarget,player,Epoch_personalToken]; publicVariableServer 'EPOCH_packStorage_PVS';";
-	icon = "#(rgb,8,8,3)color(1,0,1,0.5)";
+	icon = "x\addons\a3_epoch_code\Data\UI\buttons\build_pack.paa";
 	tooltip = "Pack Safe";
 };
