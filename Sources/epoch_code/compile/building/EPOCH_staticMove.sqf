@@ -73,6 +73,7 @@ if (_class != "") then {
 	_isSnap = false;
 
 	_EPOCH_1 = diag_tickTime;
+	_EPOCH_2 = diag_tickTime;
 	_nearestObjects = [];
 
 	while {EPOCH_target == _currentTarget} do {
@@ -242,19 +243,29 @@ if (_class != "") then {
 						_currentTarget setVectorDirAndUp[_dir2, (vectorUp _nearestObject)];
 						_currentTarget setposATL _snapPosition;
 
-						{
-					        _pos1_snap = _currentTarget modelToWorldVisual (_x select 0);
-					        _pos2_snap = _currentTarget modelToWorldVisual (_x select 1);
-					        _ins = lineIntersectsSurfaces [AGLToASL _pos1_snap, AGLToASL _pos2_snap,player,_currentTarget,true,1,"VIEW","FIRE"];
-					        if (count _ins > 0) then {
-								[ASLToATL (_ins select 0 select 0),1,"x\addons\a3_epoch_code\Data\UI\snap_ca.paa", "",20] call epoch_gui3dWorldPos;
-					        };
-					    } forEach _snapChecks;
+						if ((diag_tickTime - _EPOCH_2) > 2) then {
+							_EPOCH_2 = diag_tickTime;
+							EPOCH_arr_snapPoints = [];
+							{
+						        _pos1_snap = _currentTarget modelToWorldVisual (_x select 0);
+						        _pos2_snap = _currentTarget modelToWorldVisual (_x select 1);
+						        _ins = lineIntersectsSurfaces [AGLToASL _pos1_snap, AGLToASL _pos2_snap,player,_currentTarget,true,1,"VIEW","FIRE"];
+						        if (count _ins > 0) then {
+									if (surfaceIsWater _snapPosition) then {
+										EPOCH_arr_snapPoints pushBack (_ins select 0 select 0);
+									} else {
+										EPOCH_arr_snapPoints pushBack ASLToATL(_ins select 0 select 0);
+									};
+						        };
+								if (count EPOCH_arr_snapPoints >= 2) exitWith {}
+						    } forEach _snapChecks;
+						};
 
 					};
 
 				} else {
 
+					EPOCH_arr_snapPoints = [];
 					if !(attachedObjects player isEqualTo[]) then {
 						_offSet = [EPOCH_X_OFFSET, EPOCH_Y_OFFSET, EPOCH_Z_OFFSET];
 						_pos1 = player modelToWorldVisual _offSet;
@@ -272,11 +283,15 @@ if (_class != "") then {
 
 		if ((diag_tickTime - _EPOCH_1) > 1) then {
 			_EPOCH_1 = diag_tickTime;
-			_nearestObjects = nearestObjects[EPOCH_target, _allowedSnapObjects, 12];
-			EPOCH_playerEnergy = (EPOCH_playerEnergy - _energyCost) max 0;
+			if !(isNull EPOCH_target) then {
+				_nearestObjects = nearestObjects[EPOCH_target, _allowedSnapObjects, 12];
+				EPOCH_playerEnergy = (EPOCH_playerEnergy - _energyCost) max 0;
+			};
 		};
 
 	};
+
+	EPOCH_arr_snapPoints = [];
 
 	{
 		detach _x;

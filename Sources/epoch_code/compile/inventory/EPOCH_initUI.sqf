@@ -2,20 +2,12 @@ private ["_bar","_uniformArmor","_totalArmor","_finalArmor","_vestArmor","_headg
 disableSerialization;
 
 EPOCH_InteractedItem = [];
-
-if (isNil "EPOCH_MAX_ARMOR") then {
-    call EPOCH_maxArmorInit;
-};
-
 EPOCH_lastContainer = _this select 1;
 
 waitUntil {!isNull findDisplay 602};
 _display = (findDisplay 602);
 
 (_display displayCtrl -13) ctrlEnable false;
-
-_totalArmor = 0;
-_totalArmorMax = EPOCH_MAX_ARMOR select 3;
 
 _color = [0.6,0.6,0.6,1];
 _colorCompare = [0.4,0.6,1,0.4];

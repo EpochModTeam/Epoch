@@ -61,6 +61,7 @@ if (_dikCode == EPOCH_keysDebugMon) then {
 
 //Action Menu
 if (_dikCode == EPOCH_keysAction) then {
+	_handled = true;
 	if !(EPOCH_keysActionPressed) then {
 		EPOCH_keysActionPressed = true;
 		if (cursorTarget isKindOf "AllVehicles") then {
@@ -76,7 +77,7 @@ if (_dikCode == EPOCH_keysAction) then {
 
 // Player only code
 if (vehicle player == player) then {
-	
+
 	if (_dikCode == EPOCH_keysBuildMode1) then {
 		if (EPOCH_buildMode == 1) then {
 			EPOCH_buildMode = 0;

@@ -40,7 +40,7 @@ for "_p" from 0 to 360 step _points do {
 
 	_x = cos _p * (0.3 * _distance);
 	_y = sin _p * (0.4 * _distance);
-	
+
 	_positions pushBack [_x + (_center - (_scaleLargeX / 2)),_y + (_center - (_scaleLargeY / 2)),_scaleLargeX,_scaleLargeY];
 	_positions2 pushBack [_x + (_center - (_scaleSmallX / 2)),_y + (_center - (_scaleSmallY / 2)),_scaleSmallX,_scaleSmallY];
 };
@@ -50,19 +50,19 @@ missionNamespace setVariable ["rmx_var_dynaControls",[]];
 for "_e" from 0 to (_entries - 1) do {
 	private ["_ctrl","_ctrl2"];
 	_ctrl = _display ctrlCreate ["rmx_rscPicture",(66600 + _e)];
-	_ctrl ctrlSetText "x\addons\a3_epoch_code\Data\UI\buttons\dm_selection.paa";
+	_ctrl ctrlSetText "x\addons\a3_epoch_code\Data\UI\buttons\dm_selection_b1.paa";
 	_ctrl ctrlSetPosition (_positions select _e);
 	_ctrl ctrlSetFade 1;
 	_ctrl ctrlCommit 0;
 	_ctrl ctrlSetTooltip (_buttonSettings select _e select 1);
-	
+
 	_ctrl ctrlSetTooltipColorBox [0, 0, 0, 0];
 	_ctrl ctrlSetTooltipColorShade [0, 0, 0, 0];
 	_ctrl ctrlSetEventHandler ["mouseEnter", "_c = _this select 0; _c ctrlSetFade 0; [_c,0.85,0.1] call BIS_fnc_ctrlSetScale"];
 	_ctrl ctrlSetEventHandler ["mouseExit", "_c = _this select 0; _c ctrlSetFade 1; [_c,1,0.1] call BIS_fnc_ctrlSetScale"];
 	_ctrl ctrlSetEventHandler ["mouseButtonDown", (_buttonSettings select _e select 2)];
 	_ctrl ctrlEnable true;
-	
+
 	_ctrl2 = _display ctrlCreate ["rmx_rscPicture",-(66600 + _e)];
 	_ctrl2 ctrlSetTooltip (_buttonSettings select _e select 1);
 	_ctrl2 ctrlSetTooltipColorBox [0, 0, 0, 0];
@@ -70,7 +70,7 @@ for "_e" from 0 to (_entries - 1) do {
 	_ctrl2 ctrlSetText (_buttonSettings select _e select 0);
 	_ctrl2 ctrlSetPosition (_positions2 select _e);
 	_ctrl2 ctrlCommit 0.1;
-	
+
 	_arr = missionNamespace getVariable ["rmx_var_dynaControls",[]];
 	_arr append [_ctrl,_ctrl2];
 	missionNamespace setVariable ["rmx_var_dynaControls",_arr];

@@ -15,7 +15,7 @@ class veh_unLock
 class player_inspect
 {
 	condition = "true";
-	action = "hint 'Detective is on the case'";
+	action = "call EPOCH_lootTrash;";
 	icon = "x\addons\a3_epoch_code\Data\UI\buttons\player_inspect.paa";
 	tooltip = "Examine";
 };

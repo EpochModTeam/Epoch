@@ -20,6 +20,14 @@ class CfgBaseBuilding {
 	{
 		removeParts[] = { { "PartPlankPack", 4 } };
 	};
+	class Hesco3_EPOCH : Default
+	{
+		removeParts[] = { { "KitHesco3", 1 } };
+	};
+	class TankTrap_EPOCH : Default
+	{
+		removeParts[] = { { "KitTankTrap", 1 } };
+	};
 	class SolarGen_EPOCH : Default
 	{
 		removeParts[] = { { "KitSolarGen", 1 } };

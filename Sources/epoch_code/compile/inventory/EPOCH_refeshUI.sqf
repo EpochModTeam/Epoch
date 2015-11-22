@@ -7,6 +7,10 @@ if (!isNull findDisplay 602) then {
     _selectedClass = EPOCH_InteractedItem select 1;
   };
 
+  if (isNil "EPOCH_MAX_ARMOR") then {
+      call EPOCH_maxArmorInit;
+  };
+
   _totalArmor = 0;
   _totalArmorMax = EPOCH_MAX_ARMOR select 3;
 
