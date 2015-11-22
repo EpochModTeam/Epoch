@@ -15,7 +15,7 @@ EPOCH_target = objNull;
 EPOCH_Z_OFFSET = 0;
 EPOCH_X_OFFSET = 0;
 EPOCH_Y_OFFSET = 5;
-EPOCH_snapVisArray = [];
+EPOCH_arr_snapPoints = [];
 EPOCH_prevTarget = objNull;
 EPOCH_interactOption = 0;
 
