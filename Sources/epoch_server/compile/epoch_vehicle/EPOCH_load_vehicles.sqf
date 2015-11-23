@@ -55,7 +55,7 @@ for "_i" from 1 to _this do {
 					_vehicle call EPOCH_server_setVToken;
 
 					_vehicle setposATL _location;
-					
+
 					_vehicle setVectorDirAndUp _worldspace;
 
 					_vehicle setDamage _damage;
@@ -248,6 +248,6 @@ if (_immuneVehicleSpawn) then{
 
 addToRemainsCollector _allVehicles;
 
-diag_log format ["VEH SPAWN TIMER %1, LOADED 2% VEHICLES", diag_tickTime - _diag, count _allVehicles];
+diag_log format ["VEH SPAWN TIMER %1, LOADED %2 VEHICLES", diag_tickTime - _diag, count _allVehicles];
 
 true

@@ -1,5 +1,5 @@
 /****************************************************************************
-Copyright (C) 2015 - ARMA 3 EPOCH MOD [EpochMod.com] (v0.3.4.0)
+Copyright (C) 2015 - ARMA 3 EPOCH MOD [EpochMod.com] (v0.3.5.0)
 *****************************************************************************/
 
 #define _ARMA_
@@ -9,7 +9,7 @@ class CfgPatches {
 		units[] = {};
 		weapons[] = {};
 		requiredVersion = 0.1;
-		epochVersion = "0.3.4.0";
+		epochVersion = "0.3.5.0";
 		requiredAddons[] = {};
 	};
 };

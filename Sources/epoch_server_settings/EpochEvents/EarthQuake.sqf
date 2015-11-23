@@ -6,6 +6,7 @@
 	Improvements and or bugfixes and other contributions are welcome via the github:
 	https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_server_settings/EpochEvents/Earthquake.sqf
 */
+private ["_marker","_minerals","_randomIndex","_item","_plyrsNearEpicenter","_position"];
 _position = [epoch_centerMarkerPosition, 0, EPOCH_dynamicVehicleArea, 10, 0, 1000, 0] call BIS_fnc_findSafePos;
 if ((count _position) == 2) then{
 	_plyrsNearEpicenter = _position nearEntities[["Epoch_Male_F", "Epoch_Female_F"], 1000];

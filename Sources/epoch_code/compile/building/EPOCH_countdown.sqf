@@ -39,16 +39,18 @@ if (!isNull _this) then {
 
 		EPOCH_arr_countdown = EPOCH_arr_countdown - [_this];
 		EPOCH_drawIcon3d = !(EPOCH_arr_countdown isEqualTo []);
-		
-		if (typeOf _this == "Fireplace_SIM_EPOCH") then {
 
+		_objClass = typeOf _this;
+		// Spawn temporary static item insead of saving.
+		if (getNumber(configfile >> "CfgVehicles" >> _objClass >> "isTemporary") == 1) then {
 			_worldspace = [getposATL _this, vectordir _this, vectorup _this];
 			deleteVehicle _this;
-
+			_class = getText(configfile >> "CfgVehicles" >> _objClass >> "staticClass");
 			_newObj = createVehicle["Fireplace_EPOCH", (_worldspace select 0), [], 0, "CAN_COLLIDE"];
 			_newObj setVectorDirAndUp[_worldspace select 1, _worldspace select 2];
 			_newObj setposATL(_worldspace select 0);
 
+		// proceed to send save to server
 		} else {
 			if (_saveCheck) then {
 				EPOCH_SAVEBUILD = [_this, player, Epoch_personalToken];

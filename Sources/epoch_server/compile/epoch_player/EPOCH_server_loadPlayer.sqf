@@ -4,11 +4,32 @@
 	Epoch Mod - EpochMod.com
 	All Rights Reserved.
 */
-private["_reject", "_plyr", "_instanceID", "_plyrNetID", "_plyrUID", "_response", "_arr", "_defaultUniform", "_class", "_vest", "_medical", "_alreadyDead", "_worldspace", "_dir", "_location", "_prevInstance", "_plyrGroup", "_canBeRevived", "_vars", "_hitpoints", "_group", "_newPlyr", "_currWeap", "_apperance", "_goggles", "_headgear", "_backpack", "_uniform", "_weaponsAndItems", "_equipped", "_weapon", "_type", "_attachments", "_attachment", "_wMags", "_itemSlot", "_itemqtys", "_found", "_contentArray", "_deadPlayer"];
+private ["_arr","_uniform","_class","_vest","_vars","_canBeRevived","_dir","_location","_group","_apperance","_goggles","_headgear","_backpack","_weaponsAndItems","_linkedItems","_normalMagazines","_itemsInContainers","_weaponsInContainers","_wMags","_wMagsArray","_equipped","_weapon","_type","_attachments","_currWeap","_found","_contentArray","_plyrGroup","_response","_reject","_fnc_addItemToX","_worldspace","_prevInstance","_medical","_server_vars","_hitpoints","_deadPlayer","_alreadyDead","_newPlyr","_plyrUID","_serverSettingsConfig","_plyr","_instanceID","_plyrNetID"];
 
 _reject = true;
 
+_fnc_addItemToX = {
+	private ["_itemSlot","_itemqtys","_newPlyr"];
+	_newPlyr = _this select 0;
+	{
+		_itemSlot = _forEachIndex;
+		_itemqtys = _x select 1;
+		{
+			for "_i" from 1 to (_itemqtys select _forEachIndex) do {
+				switch _itemSlot do {
+					case 0: { _newPlyr addItemToUniform _x };
+					case 1: { _newPlyr addItemToVest _x };
+					case 2: { _newPlyr addItemToBackpack _x };
+				};
+			};
+		} forEach(_x select 0);
+	} forEach (_this select 1);
+};
+
 if (typename _this == "ARRAY") then {
+
+	// load server settings
+	_serverSettingsConfig = configFile >> "CfgEpochServer";
 
 	_plyr = _this select 0;
 
@@ -26,31 +47,43 @@ if (typename _this == "ARRAY") then {
 			if ((_response select 0) == 1 && typeName(_response select 1) == "ARRAY") then {
 				_arr = (_response select 1);
 			};
-			_defaultUniform = "U_Test_uniform";
+
+			// Apperance defaults
+			_uniform = [_serverSettingsConfig, "defaultUniformFemale", "U_Test_uniform"] call EPOCH_fnc_returnConfigEntry;
 			_class = "Epoch_Female_F";
-			_vest = "V_F41_EPOCH";
+			_vest = [_serverSettingsConfig, "defaultVestFemale", "V_F41_EPOCH"] call EPOCH_fnc_returnConfigEntry;
 			if (_this select 1) then { //true == male
-				_defaultUniform = "U_Test1_uniform";
+				_uniform = [_serverSettingsConfig, "defaultUniformMale", "U_Test1_uniform"] call EPOCH_fnc_returnConfigEntry;
 				_class = "Epoch_Male_F";
-				_vest = "V_41_EPOCH";
+				_vest = [_serverSettingsConfig, "defaultVestMale", "V_41_EPOCH"] call EPOCH_fnc_returnConfigEntry;
 			};
+			_goggles = [_serverSettingsConfig, "defaultGoggles", ""] call EPOCH_fnc_returnConfigEntry;
+			_headgear = [_serverSettingsConfig, "defaultHeadgear", ""] call EPOCH_fnc_returnConfigEntry;
+			_backpack = [_serverSettingsConfig, "defaultBackpack", ""] call EPOCH_fnc_returnConfigEntry;
+
+			// Inventory defaults
+			_linkedItems = [_serverSettingsConfig, "linkedItems", ["ItemMap","EpochRadio0"]] call EPOCH_fnc_returnConfigEntry;
+			_itemsInContainers = [_serverSettingsConfig, "itemsInContainers", []] call EPOCH_fnc_returnConfigEntry;
+			_weaponsInContainers = [_serverSettingsConfig, "weaponsInContainers", []] call EPOCH_fnc_returnConfigEntry;
+			_normalMagazines = [_serverSettingsConfig, "normalMagazines", []] call EPOCH_fnc_returnConfigEntry;
+			_weaponsAndItems = [_serverSettingsConfig, "weaponsAndItems", ["", []]] call EPOCH_fnc_returnConfigEntry;
+
+			diag_log format["DEBUG (Load Player) _linkedItems 1: %1", _linkedItems];
 
 			if (count _arr < 11) then { // invaild format attempt to override
-				_arr = [[0, [], _instanceID], [0, 0, 1, 0, []], ["", "", _vest, "", _defaultUniform, _class], [""], [] + EPOCH_defaultVars_SEPXVar, ["", []], ["ItemMap"], [], [], [], "", true];
+				_arr = [[0, [], _instanceID], [0, 0, 1, 0, []], [_goggles, _headgear, _vest, _backpack, _uniform, _class], [""], [] + EPOCH_defaultVars_SEPXVar, _weaponsAndItems, _linkedItems, _normalMagazines, _itemsInContainers, _weaponsInContainers, "", true];
 			};
 
 			_worldspace = _arr select 0;
 			_dir = _worldspace select 0;
 			_location = _worldspace select 1;
 			_prevInstance = _worldspace select 2;
-
 			_medical = _arr select 1;
+			_server_vars = _arr select 3;
+			_vars = _arr select 4;
 
 			_plyrGroup = _arr select 10;
 			_canBeRevived = _arr select 11;
-			
-			_server_vars = _arr select 3;
-			_vars = _arr select 4;
 
 			_hitpoints = _vars select 11;
 
@@ -76,12 +109,13 @@ if (typename _this == "ARRAY") then {
 				};
 			} forEach allUnits;
 
+			// find existing group
 			if (_plyrGroup != "") then {
-					{
-						if ((_x getVariable["GROUP", ""]) == _plyrGroup) exitWith{
-							_group = group _x;
-						};
-					} forEach playableUnits;
+				{
+					if ((_x getVariable["GROUP", ""]) == _plyrGroup) exitWith{
+						_group = group _x;
+					};
+				} forEach playableUnits;
 			};
 
 			if (isNull _group) then {
@@ -117,63 +151,64 @@ if (typename _this == "ARRAY") then {
 					_backpack = _apperance select 3;
 					_uniform = _apperance select 4;
 
-					if (_uniform != "") then {
-						_newPlyr addUniform _uniform;
-					};
-					if (_backpack != "") then {
-						_newPlyr addBackpack _backpack;
-					};
-					if (_goggles != "") then {
-						_newPlyr addGoggles _goggles;
-					};
-					if (_headgear != "") then {
-						_newPlyr addHeadgear _headgear;
-					};
-					if (_vest != "") then {
-						_newPlyr addVest _vest;
-					};
-
 					// Weapons
 					_weaponsAndItems = _arr select 5;
-					if (count _weaponsAndItems >= 2) then {
+					_linkedItems = _arr select 6;
+					_normalMagazines = _arr select 7;
+					_itemsInContainers = _arr select 8;
+					_weaponsInContainers = _arr select 9;
+				};
 
-						_equipped = _weaponsAndItems select 2;
+				// Load Apperance START
+				if (_uniform != "") then {
+					_newPlyr addUniform _uniform;
+				};
+				if (_backpack != "") then {
+					_newPlyr addBackpack _backpack;
+				};
+				if (_goggles != "") then {
+					_newPlyr addGoggles _goggles;
+				};
+				if (_headgear != "") then {
+					_newPlyr addHeadgear _headgear;
+				};
+				if (_vest != "") then {
+					_newPlyr addVest _vest;
+				};
+				// Load Apperance END
+
+				// Load inventory + defaults START
+				if (count _weaponsAndItems >= 2) then {
+					_equipped = _weaponsAndItems select 2;
+					{
+						_weapon = _x deleteAt 0;
+						_type = getNumber(configfile >> "cfgweapons" >> _weapon >> "type");
+						_attachments = [];
+						_wMags = false;
+						_wMagsArray = [];
+						// suppressor, laser, optics, magazines(array), bipods
 						{
-							_weapon = _x deleteAt 0;
-							_type = getNumber(configfile >> "cfgweapons" >> _weapon >> "type");
-
-							_attachments = [];
-							_wMags = false;
-							_wMagsArray = [];
-							// suppressor, laser, optics, magazines(array), bipods
-							{
-								// magazines
-								if (typeName(_x) == "ARRAY") then{
-									_wMags = true;
-									_wMagsArray = _x;
-								}
-								else {
-									// attachments
-									if (_x != "") then{
-										_attachments pushBack _x;
-									};
+							// magazines
+							if (typeName(_x) == "ARRAY") then{
+								_wMags = true;
+								_wMagsArray = _x;
+							} else {
+								// attachments
+								if (_x != "") then{
+									_attachments pushBack _x;
 								};
-							} forEach _x;
-
-							// add weapon if equiped
-							if (_weapon in _equipped) then {
-
-								_equipped = _equipped - [_weapon];
-
-								if (_wMags) then {
-									_newPlyr addMagazine _wMagsArray;
-								};
-
-								if (_weapon != "") then {
-									_newPlyr addWeapon _weapon;
-								};
-
-								switch _type do {
+							};
+						} forEach _x;
+						// add weapon if equiped
+						if (_weapon in _equipped) then {
+							_equipped = _equipped - [_weapon];
+							if (_wMags) then {
+								_newPlyr addMagazine _wMagsArray;
+							};
+							if (_weapon != "") then {
+								_newPlyr addWeapon _weapon;
+							};
+							switch _type do {
 								case 1: { // primary
 									removeAllPrimaryWeaponItems _newPlyr;
 									{ _newPlyr addPrimaryWeaponItem _x } forEach _attachments;
@@ -187,69 +222,41 @@ if (typename _this == "ARRAY") then {
 									{
 										_newPlyr removeSecondaryWeaponItem _x;
 									} forEach (secondaryWeaponItems _newPlyr);
+
 									{ _newPlyr addSecondaryWeaponItem _x } forEach _attachments;
 								};
-								};
-							} 
-							else { // overflow need to add these items to storage
-									{
-										_newPlyr addItem _x;
-									} forEach _attachments;
-
-									if (_wMags) then {
-										_newPlyr addMagazine _wMagsArray;
-									};
 							};
-						} forEach(_weaponsAndItems select 1);
-
-						_currWeap = _weaponsAndItems select 0;
-					};
-
-					// Linked items
-					{
-						if (_x in["Binocular", "Rangefinder"]) then {
-							_newPlyr addWeapon _x;
-						}
-						else {
-							_newPlyr linkItem _x;
+						} else {
+							// overflow need to add these items to storage
+							{
+								_newPlyr addItem _x;
+							} forEach _attachments;
+							if (_wMags) then {
+								_newPlyr addMagazine _wMagsArray;
+							};
 						};
-					} forEach(_arr select 6);
-
-					// add items to containers
-					{
-						_itemSlot = _forEachIndex;
-						_itemqtys = _x select 1;
-						{
-							for "_i" from 1 to(_itemqtys select _forEachIndex) do {
-								switch _itemSlot do {
-								case 0: { _newPlyr addItemToUniform _x };
-								case 1: { _newPlyr addItemToVest _x };
-								case 2: { _newPlyr addItemToBackpack _x };
-								};
-							};
-						} forEach(_x select 0);
-					} forEach(_arr select 8);
-
-					// add weapons to containers
-					{
-						_itemSlot = _forEachIndex;
-						_itemqtys = _x select 1;
-						{
-							for "_i" from 1 to(_itemqtys select _forEachIndex) do {
-								switch _itemSlot do {
-								case 0: { _newPlyr addItemToUniform _x };
-								case 1: { _newPlyr addItemToVest _x };
-								case 2: { _newPlyr addItemToBackpack _x };
-								};
-							};
-						} forEach(_x select 0);
-					} forEach(_arr select 9);
-
-					// Add magazines
-					{
-						_newPlyr addMagazine _x;
-					} forEach(_arr select 7);
+					} forEach(_weaponsAndItems select 1);
+					_currWeap = _weaponsAndItems select 0;
 				};
+				// Linked items
+				{
+					if (_x in["Binocular", "Rangefinder"]) then {
+						_newPlyr addWeapon _x;
+					} else {
+						_newPlyr linkItem _x;
+					};
+				} forEach _linkedItems;
+				diag_log format["DEBUG (Load Player) _linkedItems: %1", _linkedItems];
+
+				// add items to containers
+				[_newPlyr, _itemsInContainers] call _fnc_addItemToX;
+
+				// add weapons to containers
+				[_newPlyr, _weaponsInContainers] call _fnc_addItemToX;
+
+				// Add magazines
+				{_newPlyr addMagazine _x} forEach _normalMagazines;
+				// Load inventory + defaults END
 
 				// Final Push
 				if (isNull _plyr) then {
@@ -292,9 +299,6 @@ if (typename _this == "ARRAY") then {
 						};
 						diag_log format["DEBUG (Load Player) Set Group: %1", _plyrGroup];
 					};
-					
-					// may not be needed, just here to see if we can force the data to sync quicker
-					// _plyr setPosATL _location;
 
 					_newPlyr setVariable["SETUP", true];
 					_newPlyr setVariable["PUID", _plyrUID];

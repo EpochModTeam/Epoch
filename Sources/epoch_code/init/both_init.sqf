@@ -1,7 +1,7 @@
 // Init Custom vars
 EPOCH_customVars = [];
 EPOCH_defaultVars = [];
-_customVarsDefaults = [
+EPOCH_customVarsDefaults = [
 	["Temp",98.6],
 	["Hunger",5000],
 	["Thirst",2500],
@@ -15,9 +15,12 @@ _customVarsDefaults = [
 	["Crypto",0],
 	["HitPoints",[0,0,0,0]],
 	["BloodP",100],
-	["SpawnArray",[]]
+	["SpawnArray",[]],
+	["Karma",0],
+	["Alcohol",0],
+	["Radiation",0]
 ];
-_customVarsInit = ["CfgEpochClient", "customVarsDefaults", _customVarsDefaults] call EPOCH_fnc_returnConfigEntryV2;
+_customVarsInit = ["CfgEpochClient", "customVarsDefaults", EPOCH_customVarsDefaults] call EPOCH_fnc_returnConfigEntryV2;
 {
 	EPOCH_customVars pushBack (_x select 0);
 	EPOCH_defaultVars pushBack (_x select 1);

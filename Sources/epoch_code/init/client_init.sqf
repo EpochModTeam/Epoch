@@ -11,6 +11,7 @@ EPOCH_group_level_img = ["x\addons\a3_epoch_code\data\owner.paa", "x\addons\a3_e
 if (isNil 'EPOCH_diag_fps') then {
 	EPOCH_diag_fps = 0;
 };
+EPOCH_playerIsSwimming = false;
 EPOCH_lastTrash = diag_tickTime;
 EPOCH_tradeDone = false;
 EPOCH_bankBalance = 0;
@@ -49,6 +50,7 @@ if(EPOCH_AirDropChance < 0)then{EPOCH_AirDropChance = 101;EPOCH_AirDropCheck = 9
 EPOCH_droneRndChance = 100;
 
 // Custom Keys
+EPOCH_keysActionPressed = false; //prevents EH spam
 0 call EPOCH_clientKeyMap;
 
 //ON INIT and RESPAWN

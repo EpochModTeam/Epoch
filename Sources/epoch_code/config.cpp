@@ -16,7 +16,7 @@ class CfgMods
 		hidePicture = 0;
 		hideName = 0;
 		action = "http://www.epochmod.com";
-		version = "0.3.4.0";
+		version = "0.3.5.0";
 		majorVersion = 0.3; //MUST BE A NUMBER!; Change this if we release a new major version, don't change if we push just push a hotfix
 		ArmAVersion = 150;
 		overview = "Open world survival mod set in the year 2035, Just two years after the mass extinction of billions of people. Those that remain are left with remnants of a once technological society. Try to survive, build, or explore your way through the harsh dynamic environment.";
@@ -27,20 +27,20 @@ class Epoch
 	class Version
 	{
 		//Version System, Check if PBO Version is compatible with Code
-		A3_epoch_assets = "0.3.4.0";
-		A3_epoch_assets_1 = "0.3.4.0";
-		epoch_objects = "0.3.4.0";
-		A3_epoch_assets_3 = "0.3.4.0";
-		A3_epoch_config = "0.3.4.0";
-		A3_epoch_language = "0.3.4.0";
-		Underground_Epoch = "0.3.4.0";
-		A3_epoch_vehicles = "0.3.4.0";
-		a3_epoch_weapons = "0.3.4.0";
-		a2_epoch_weapons = "0.3.4.0";
-		a3_epoch_structures = "0.3.4.0";
-		A3_epoch_functions = "0.3.4.0";
-		A3_epoch_vehicles_1 = "0.3.4.0";
-		Enhanced_Epoch_AiASupport = "0.3.4.0";
+		A3_epoch_assets = "0.3.5.0";
+		A3_epoch_assets_1 = "0.3.5.0";
+		epoch_objects = "0.3.5.0";
+		A3_epoch_assets_3 = "0.3.5.0";
+		A3_epoch_config = "0.3.5.0";
+		A3_epoch_language = "0.3.5.0";
+		Underground_Epoch = "0.3.5.0";
+		A3_epoch_vehicles = "0.3.5.0";
+		a3_epoch_weapons = "0.3.5.0";
+		a2_epoch_weapons = "0.3.5.0";
+		a3_epoch_structures = "0.3.5.0";
+		A3_epoch_functions = "0.3.5.0";
+		A3_epoch_vehicles_1 = "0.3.5.0";
+		Enhanced_Epoch_AiASupport = "0.3.5.0";
 
 	};
 };
@@ -146,7 +146,6 @@ class CfgClientFunctions
 			class maintainIT {};
 			class lockCheck {};
 			class countdown {};
-			class fnc_SelectTarget {};
 			class fnc_SelectTargetBuild {};
 			class isBuildAllowed {};
 			class simulSwap {};
@@ -156,7 +155,7 @@ class CfgClientFunctions
 			class upgradeBUILDv2 {};
 			class removeBUILD {};
 			class changeWallState {};
-			class QuickUpgrade {};
+			class checkBuild {};
 		};
 
 		class traders
@@ -178,6 +177,7 @@ class CfgClientFunctions
 		class interface_event_handlers
 		{
 			class KeyDown {};
+			class KeyUp {};
 			class onChar {};
 		};
 
@@ -185,6 +185,7 @@ class CfgClientFunctions
 		{
 			class client_publicEH {};
 			class masterLoop {};
+			class masterLoop_v2 {};
 			class clientInit {};
 			class clientRespawn {};
 			class clientRevive {};
@@ -220,6 +221,8 @@ class CfgClientFunctions
 			class fnc_stringLeft {};
 			class fnc_findSapperStalkLocation {};
 			class fnc_dirToFuzzy {};
+
+			class fnc_cursorTarget {};
 		};
 
 		class environment
@@ -259,25 +262,31 @@ class CfgClientFunctions
 		class gui {
 			file = "\x\addons\a3_epoch_code\gui\scripts";
 			class onPause {};
-			class interactVehicle {};
 			class showStats {};
-			//class dynamicMenu {};
-			//class dynamicMenuCleanup {};
 			class 3DctrlPitchYaw {};
 			class 3DctrlSpin {};
 			class 3DctrlYaw {};
 			class InterruptConfig {};
 			class InterruptConfigActions {};
-			class gui3DCooldown {};
-			class gui3DWorldPos {};
-			class gui3DModelPos {};
 			class getIDC {};
+			class guiObjHP {};
+			class secureStorageHandler {};
+			class dynamicText {};
+			class genderSelection {};
 		};
 
 		class config {
 			file = "\x\addons\a3_epoch_code\gui\scripts\config";
 			class config_keymap {};
 		};
+
+		class dynamenu {
+			file = "\x\addons\a3_epoch_code\gui\scripts\dynamenu";
+			class dynamicMenu {};
+			class dynamicMenuPopulate {};
+			class dynamicMenuCleanup {};
+		};
+
 		class gui_craft {
 			file = "\x\addons\a3_epoch_code\gui\scripts\craftingv2";
 			class crafting_animate {};
@@ -295,7 +304,7 @@ class CfgClientFunctions
 			class crafting_LB_defaults {};
 			class crafting_LB_doubleClick {};
 			class crafting_colorScheme {};
-		};	
+		};
 		class group {
 			file = "\x\addons\a3_epoch_code\gui\scripts\group";
 			class Group_invitePlayer {};
@@ -331,6 +340,16 @@ class CfgClientFunctions
 			class postprocessCreate {};
 			class postprocessAdjust {};
 			class postprocessDestroy {};
+			class setDrunk {}; //needs a better name
+		};
+		class worldToScreen {
+			file = "\x\addons\a3_epoch_code\gui\scripts\worldToScreen";
+			class gui3DCooldown {};
+			class gui3DCooldownEH {};
+			class gui3DWorldPos {};
+			class gui3DWorldPosEH {};
+			class gui3DModelPos {};
+			class gui3DModelPosEH {};
 		};
 	};
 };

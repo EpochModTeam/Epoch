@@ -1,0 +1,34 @@
+**Client**
+[Added] Metal Floors as upgrade in-place option for wood floors.
+[Added] Gender selection screen improvements.
+[Added] New interaction system.
+[Added] Persistent wood and metal spike traps.
+[Added] New custom 3x wide hesco type barrier.
+[Added] New custom tank trap.
+[Added] Updated version of the Fishing Rod. Reel was to small.
+[Changed] Made wood ramp shorter by about 30% and slightly reduced height of wood towers and stairs.
+[Changed] Refine ghost preview base building snap checks.
+[Changed] Players now start with a Quartz radio by default.
+[Changed] Overhaul of secure storage system to make it faster.
+[Fixed] Selection ring now correctly shows damage/decay level of target when build mode is disabled.
+[Fixed] Was unable to use cursorTarget underwater, fixed using new custom made function.
+[Fixed] NPC item trades that cannot fit in the players inventory will be placed at the feet of the player.
+[Fixed] Not loosing Stamina while swimming.
+[Fixed] Removed extra roadway on top of columns.
+[Fixed] Error Zero divisor in client side master loop.
+[Fixed] .rpt error after gutting animal.
+
+**Server**
+[Added] Documentation on server core framework functions and hive calls.
+[Added] muzzle_snds_338_sand to loot and pricing tables.
+[Added] Client side master loop is now fully config (CfgMasterLoop) based.
+[Added] Ability to fully change default player loadouts via CfgEpochServer configs:
+(defaultGoggles, defaultHeadgear, defaultBackpack, defaultVestFemale, defaultVestMale, defaultUniformFemale, defaultUniformMale, itemsInContainers, weaponsInContainers, normalMagazines, weaponsAndItems)
+[Changed] Increased reverse token check timeout from 90 to 180 seconds.
+[Fixed] Dynamic traders did not correctly track the stored vehicle count and limits.
+[Fixed] Force trader data save to save when loading starter items.
+[Fixed] Added private array to all Epoch Event scripts due to feedback.
+[Fixed] Removed forced weather sync on server startup from server init phase so weather changes are now solely dependent on Epoch Events weather script.
+[Fixed] EPOCH_fnc_returnConfigEntry and V2 functions did not use defaults properly.
+[Info] Server pack Tools folder now contains InstalEpoch.cmd that is an updated version of the command line download Epoch client files download script for steam workshop.
+[Info] Removed old .bikey and added new one for 0350.

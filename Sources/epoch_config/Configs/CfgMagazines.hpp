@@ -72,7 +72,7 @@ class CfgMagazines
 		interactText = "BUILD";
 		buildClass = "Safe_SIM_EPOCH";
 	};
-	
+
 
 	class PartPlankPack: CA_Magazine
 	{
@@ -1052,6 +1052,33 @@ class CfgMagazines
 		interactAttributes[] = {0,3000,0,0,0,0,0,0,0,0};
 	};
 
+	class KitSpikeTrap: CA_Magazine
+	{
+		model = "\x\addons\a3_epoch_assets_1\models\supply_crate.p3d";
+		picture = "\x\addons\a3_epoch_assets_1\pictures\equip_wooden_crate_ca.paa";
+		displayName = "Wooden Spike Trap";
+		scope = 2;
+		descriptionShort = "Wooden Spike Trap";
+		count = 1;
+		mass = 20;
+		interactAction = 3; // 0 = examine, 1 = eat, 2 = drink, 3 = build
+		interactText = "BUILD";
+		buildClass = "Spike_TRAP_SIM_EPOCH";
+	};
+	class KitMetalTrap: CA_Magazine
+	{
+		model = "\x\addons\a3_epoch_assets_1\models\supply_crate.p3d";
+		picture = "\x\addons\a3_epoch_assets_1\pictures\equip_wooden_crate_ca.paa";
+		displayName = "Metal Spike Trap";
+		scope = 2;
+		descriptionShort = "Metal Spike Trap";
+		count = 1;
+		mass = 20;
+		interactAction = 3; // 0 = examine, 1 = eat, 2 = drink, 3 = build
+		interactText = "BUILD";
+		buildClass = "Metal_TRAP_SIM_EPOCH";
+	};
+
 	class KitStudWall: CA_Magazine
 	{
 		model = "\x\addons\a3_epoch_assets_1\models\supply_crate.p3d";
@@ -1117,6 +1144,32 @@ class CfgMagazines
 		interactAction = 3; // 0 = examine, 1 = eat, 2 = drink, 3 = build
 		interactText = "BUILD";
 		buildClass = "WoodRamp_EPOCH";
+	};
+	class KitTankTrap : CA_Magazine
+	{
+		model = "\x\addons\a3_epoch_assets_1\models\supply_crate.p3d";
+		picture = "\x\addons\a3_epoch_assets_1\pictures\equip_wooden_crate_ca.paa";
+		displayName = "Tank Trap";
+		scope = 2;
+		descriptionShort = "Tank Trap";
+		count = 1;
+		mass = 20;
+		interactAction = 3; // 0 = examine, 1 = eat, 2 = drink, 3 = build
+		interactText = "BUILD";
+		buildClass = "TankTrap_SIM_EPOCH";
+	};
+	class KitHesco3 : CA_Magazine
+	{
+		model = "\x\addons\a3_epoch_assets_1\models\supply_crate.p3d";
+		picture = "\x\addons\a3_epoch_assets_1\pictures\equip_wooden_crate_ca.paa";
+		displayName = "Hesco Wide";
+		scope = 2;
+		descriptionShort = "Hesco Wide";
+		count = 1;
+		mass = 20;
+		interactAction = 3; // 0 = examine, 1 = eat, 2 = drink, 3 = build
+		interactText = "BUILD";
+		buildClass = "Hesco3_EPOCH";
 	};
 	class KitWoodLadder : CA_Magazine
 	{

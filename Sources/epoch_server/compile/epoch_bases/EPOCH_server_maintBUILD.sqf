@@ -60,7 +60,7 @@ if (typeOf _object == "PlotPole_EPOCH") then {
 						};
 					};
 					if (_counter > _maintCount) exitWith{};
-				} forEach nearestObjects[_object, ["Constructions_static_F","Constructions_foundation_F","Buildable_Storage","Secure_Storage_Proxy"], _buildingJammerRange];
+				} forEach nearestObjects[_object, ["Constructions_static_F","Constructions_foundation_F","Buildable_Storage","Constructions_lockedstatic_F"], _buildingJammerRange];
 
 				// effect crypto
 				_playerCryptoLimit = [(configFile >> "CfgSecConf" >> "limits"), "playerCrypto", 25000] call EPOCH_fnc_returnConfigEntry;

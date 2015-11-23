@@ -18,7 +18,7 @@ class CfgPatches
 		requiredAddons[] = { "a3_map_altis", "a3_map_stratis", "A3_epoch_assets_3", "a3_epoch_weapons", "epoch_objects", "A3_epoch_vehicles", "A3_epoch_assets_1", "A3_epoch_assets", "A3_Soft_F", "A3_Characters_F", "A3_Characters_F_Beta", "A3_Characters_F_EPA", "A3_Characters_F_EPB", "A3_Structures_F", "A3_Armor_F_Beta", "A3_Data_F", "A3_Weapons_F", "A3_Characters_F_Kart", "A3_Soft_F_Kart_Kart_01", "a2_epoch_weapons", "A3_Air_F_Gamma_UAV_01", "A3_Soft_F_Car", "A3_Soft_F_Heli_Car", "A3_Soft_F_Offroad_01", "A3_Soft_F_Quadbike", "A3_Soft_F_Heli_Quadbike", "A3_Soft_F_SUV", "A3_Soft_F_Heli_SUV", "A3_Boat_F_Boat_Transport_01", "A3_Soft_F_Truck", "A3_Soft_F_Heli_Truck", "A3_Soft_F_Bootcamp_Truck", "A3_Boat_F_Civilian_Boat", "A3_Air_F_Heli_Light_01", "A3_Air_F_Heli_Heli_Light_01", "A3_Air_F_Beta_Heli_Transport_01", "A3_Boat_F_SDV_01", "A3_Boat_F_Heli_SDV_01", "A3_Soft_F_MRAP_01", "A3_Soft_F_Heli_MRAP_01", "A3_Soft_F_HEMTT", "A3_Soft_F_Gamma_HEMTT", "A3_Soft_F_TruckHeavy", "A3_Soft_F_Gamma_TruckHeavy", "A3_Soft_F_EPC_Truck_03", "A3_Air_F_Heli_Light_02", "A3_Air_F_Beta_Heli_Transport_02", "A3_Air_F_EPB_Heli_Light_03", "A3_Air_F_Heli_Heli_Transport_04", "A3_Air_F_Heli_Heli_Transport_03", "A3_Animals_F_Dog", "A3_Animals_F_Rabbit", "A3_Animals_F_Chicken", "A3_Characters_F_Common", "A3_Structures_F_Ind_Transmitter_Tower", "a3_epoch_structures" };
 		magazines[] = { "30Rnd_test_mag", "5Rnd_rollins_mag", "CSGAS", "sledge_swing", "30Rnd_test_mag_Tracer", "EnergyPack", "1Rnd_Soda", "1Rnd_Food", "WoodLog_EPOCH", "PaintCanBlk", "PaintCanBlu", "PaintCanBrn", "PaintCanGrn", "PaintCanOra", "PaintCanPur", "PaintCanRed", "PaintCanTeal", "PaintCanYel" };
 		ammo[] = { "B_EnergyPack", "B_Swing", "Sapper_Charge_Ammo", "SapperB_Charge_Ammo", "B_Soda", "B_Food", "B_Test_Caseless", "ChainSaw_Bullet", "SmokeShellCustom" };
-		epochVersion = "0.3.4.0";
+		epochVersion = "0.3.5.0";
 	};
 };
 
@@ -40,11 +40,11 @@ class CfgAddons
 #include "\x\addons\a3_epoch_config\Configs\cfgCrafting.hpp"
 #include "\x\addons\a3_epoch_config\Configs\cfgPricing.hpp"
 #include "\x\addons\a3_epoch_config\Configs\CfgEpochClient.hpp"
+#include "\x\addons\a3_epoch_config\Configs\CfgMasterLoop.hpp"
 #include "\x\addons\a3_epoch_config\Configs\CfgBaseBuilding.hpp"
+#include "\x\addons\a3_epoch_config\Configs\CfgSnapChecks.hpp"
 #include "\x\addons\a3_epoch_config\Configs\CfgBuildingLootPos.hpp"
-
-//gitmerge fix
-#include "\x\addons\a3_epoch_config\Configs\CfgDynamicMenu.hpp"
+#include "\x\addons\a3_epoch_config\Configs\CfgActionMenu\CfgActionMenu_core.hpp"
 #include "\x\addons\a3_epoch_config\Configs\CfgEpochConfiguration.hpp"
 
 class DefaultEventhandlers;
@@ -105,8 +105,18 @@ class CfgAnimationSourceSounds
 class CfgCommands
 {
 	// allowedHTMLLoadURIs[] += // think this adds to an existing array
-	allowedHTMLLoadURIs[] = 
+	allowedHTMLLoadURIs[] =
 	{
 		"https://raw.githubusercontent.com/epochmodteam/epoch/test/changelog.html" //there are some issues with capitalization used in github links
+	};
+};
+
+class CfgFontFamilies
+{
+	class VT323
+	{
+		fonts[] = {"x\addons\a3_epoch_config\Data\Fonts\VT323\VT3236","x\addons\a3_epoch_config\Data\Fonts\VT323\VT3237","x\addons\a3_epoch_config\Data\Fonts\VT323\VT3238","x\addons\a3_epoch_config\Data\Fonts\VT323\VT3239","x\addons\a3_epoch_config\Data\Fonts\VT323\VT32310","x\addons\a3_epoch_config\Data\Fonts\VT323\VT32311","x\addons\a3_epoch_config\Data\Fonts\VT323\VT32312","x\addons\a3_epoch_config\Data\Fonts\VT323\VT32313","x\addons\a3_epoch_config\Data\Fonts\VT323\VT32314","x\addons\a3_epoch_config\Data\Fonts\VT323\VT32315","x\addons\a3_epoch_config\Data\Fonts\VT323\VT32316","x\addons\a3_epoch_config\Data\Fonts\VT323\VT32317","x\addons\a3_epoch_config\Data\Fonts\VT323\VT32318","x\addons\a3_epoch_config\Data\Fonts\VT323\VT32319","x\addons\a3_epoch_config\Data\Fonts\VT323\VT32320","x\addons\a3_epoch_config\Data\Fonts\VT323\VT32321","x\addons\a3_epoch_config\Data\Fonts\VT323\VT32322","x\addons\a3_epoch_config\Data\Fonts\VT323\VT32323","x\addons\a3_epoch_config\Data\Fonts\VT323\VT32324","x\addons\a3_epoch_config\Data\Fonts\VT323\VT32325","x\addons\a3_epoch_config\Data\Fonts\VT323\VT32326","x\addons\a3_epoch_config\Data\Fonts\VT323\VT32327","x\addons\a3_epoch_config\Data\Fonts\VT323\VT32328","x\addons\a3_epoch_config\Data\Fonts\VT323\VT32329","x\addons\a3_epoch_config\Data\Fonts\VT323\VT32330","x\addons\a3_epoch_config\Data\Fonts\VT323\VT32331","x\addons\a3_epoch_config\Data\Fonts\VT323\VT32334","x\addons\a3_epoch_config\Data\Fonts\VT323\VT32335","x\addons\a3_epoch_config\Data\Fonts\VT323\VT32337","x\addons\a3_epoch_config\Data\Fonts\VT323\VT32346"};
+		spaceWidth = 0.7;
+		spacing = 0.2;
 	};
 };

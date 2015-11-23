@@ -42,7 +42,7 @@ class ScrollBar;
 #include "Epoch_GUI_ClientConfigs.hpp"
 #include "Epoch_GUI_rmx.hpp"
 
-class RscTitles 
+class RscTitles
 {
 	#include "Epoch_RscTitles.hpp"
 };
@@ -116,7 +116,7 @@ class TradeRequest
 	};
 };
 */
-
+/*
 class QuickUpgrade
 {
 	idd = -15;
@@ -169,7 +169,7 @@ class QuickUpgrade
 
 	};
 };
-
+*/
 class QuickTake
 {
 	idd = -5;
@@ -275,7 +275,7 @@ class TapOut
 };
 
 
-
+/*
 class SelectGender
 {
 	idd = -7;
@@ -315,6 +315,78 @@ class SelectGender
 			w = 0.1125;
 			h = 0.08;
 			action = "closeDialog 0; EPOCH_PlayerIsMale = false;";
+		};
+	};
+};
+*/
+
+class SelectGender
+{
+
+	idd = -7;
+	movingEnable = 0;
+	enableSimulation = 1;
+	onLoad = "['Select your gender',10] call Epoch_dynamicText; setMousePosition [0.5, 0.5];";
+	class ControlsBackground
+	{
+		class Background: RscPicture //Replace with custom background
+		{
+			idc = 88800;
+			text = "x\addons\a3_epoch_code\Data\gender_selection.paa";
+			x = safezoneX - safezoneW * 0.1;
+			y = safezoneY - safezoneH * 0.1;
+			w = safezoneW + safezoneW * 0.3;
+			h = safezoneH + safezoneH * 0.3;
+		};
+	};
+	class Objects
+	{
+		class female
+		{
+
+			idc = 88801;
+			type = 82;
+			model = "\x\addons\a3_epoch_assets\models\clone_female.p3d";
+			scale = 0.5;
+
+			direction[] = {0, 1, 0};
+			up[] = {0, 0, 1};
+
+			x = -1;
+			z = 1;
+			y = 1.8;
+
+			xBack = -1;
+			zBack = 1;
+			yBack = 1.8;
+
+			inBack = 0;
+			enableZoom = 0;
+			zoomDuration = 0.001;
+			onMouseButtonDown = "closeDialog 0; EPOCH_PlayerIsMale = false;";
+			onLoad = "(_this select 0) ctrlSetModelDirAndUp [[0,1,0],[0,0,1]];";
+		};
+		class male: female
+		{
+			idc = 88802;
+			model = "\x\addons\a3_epoch_assets\models\clone_male.p3d";
+			x = 2;
+			xBack = 2;
+			onMouseButtonDown = "closeDialog 0; EPOCH_PlayerIsMale = true;";
+		};
+	};
+ 	class controls
+	{
+		class overlay: RscPicture
+		{
+			idc = 88803;
+			text = "#(argb,8,8,3)color(0,0,0,0)";
+			x = safezoneX + 0.4 * safezoneW;
+			y = safezoneY;
+			w = safezoneW * 0.2;
+			h = safezoneH;
+			onMouseMoving = "(_this select 1) call epoch_genderSelection;";
+			onLoad = "(_this select 0) ctrlEnable true;";
 		};
 	};
 };
@@ -390,6 +462,7 @@ class TradeNPCMenu
 				h = 0.282151 * safezoneH;
 				onLBDblClick = "[41501,_this] call EPOCH_npcTraderAdd";
 				onLBDrop = "[41501,_this] call EPOCH_npcTraderAdd";
+				onLoad = "ctrlSetFocus (_this select 0)";
 		};
 		class RscListbox_playerOffer: RscListbox
 		{
@@ -1191,7 +1264,7 @@ class CraftItem
 	};
 };
 
-
+/*
 class InteractVehicle
 {
 	idd = -11;
@@ -1241,7 +1314,7 @@ class InteractVehicle
 		};
 	};
 };
-
+*/
 /*
 class InteractPlayer
 {
@@ -1273,7 +1346,7 @@ class InteractPlayer
 	};
 };
 */
-
+/*
 class InteractNPC
 {
 	idd = -12;
@@ -1302,7 +1375,7 @@ class InteractNPC
 			h = 0.08;
 			action = "call EPOCH_startNPCTraderMenu;";
 		};
-		/*
+
 		class RscButtonMenu_2403: RscButtonMenu
 		{
 			idc = 2403;
@@ -1313,7 +1386,7 @@ class InteractNPC
 			h = 0.08;
 			action = "closeDialog 0; player action [""Gear"", cursorTarget];";
 		};
-		*/
+
 		class RscButtonMenu_2404: RscButtonMenu
 		{
 			idc = 2405;
@@ -1326,6 +1399,7 @@ class InteractNPC
 		};
 	};
 };
+*/
 
 /*
 class InteractBuilding
@@ -1492,6 +1566,7 @@ class InteractBank
 		};
 	};
 };
+/*
 class InteractBaseBuilding
 {
 	idd = -14;
@@ -1542,9 +1617,10 @@ class InteractBaseBuilding
 			h = 0.08;
 			action = "closeDialog 0; cursorTarget call EPOCH_fnc_SelectTargetBuild;";
 		};
-		
+
 	};
 };
+*/
 /*
 class InteractItem
 {
@@ -2398,7 +2474,7 @@ class RscDisplayInventory_DLCTemplate
 		};
 	};
 };
-		
+
 
 class RscDisplayInventory
 {
@@ -3235,13 +3311,13 @@ class RscDisplayInventory
 		class EpochBtnBG : IGUIBack
 		{
 			idc = -10;
-			
+
 
 			//x = 0.433468 * safezoneW + safezoneX;
 			//y = 0.75872 * safezoneH + safezoneY;
 			//w = 0.30231 * safezoneW;
 			//h = 0.0337482 * safezoneH;
-			
+
 			x = "14.5 * 					(			((safezoneW / safezoneH) min 1.2) / 40) + 		(safezoneX + (safezoneW - 					((safezoneW / safezoneH) min 1.2))/2)";
 			y = "23.9 * 					(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25) + 		(safezoneY + (safezoneH - 					(			((safezoneW / safezoneH) min 1.2) / 1.2))/2)";
 			w = "24.5 * 					(			((safezoneW / safezoneH) min 1.2) / 40)";
@@ -3254,12 +3330,12 @@ class RscDisplayInventory
 			idc = -11;
 			text = "Group Menu";
 			onMouseButtonDown = "_this call EPOCH_Inventory_Group";
-			
+
 			//x = 0.437079 * safezoneW + safezoneX;
 			//y = 0.764 * safezoneH + safezoneY;
 			//w = 0.0711741 * safezoneW;
 			//h = 0.022 * safezoneH;
-			
+
 			x = "33.2 * 					(			((safezoneW / safezoneH) min 1.2) / 40) + 		(safezoneX + (safezoneW - 					((safezoneW / safezoneH) min 1.2))/2)";
 			y = "24 * 					(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25) + 		(safezoneY + (safezoneH - 					(			((safezoneW / safezoneH) min 1.2) / 1.2))/2)";
 			w = "6 * 					(			((safezoneW / safezoneH) min 1.2) / 40)";
@@ -3270,12 +3346,12 @@ class RscDisplayInventory
 			idc = -12;
 			text = "Requests";
 			onMouseButtonDown = "_this call EPOCH_Inventory_iGroup";
-			
+
 			//x = 0.511347 * safezoneW + safezoneX;
 			//y = 0.764 * safezoneH + safezoneY;
 			//w = 0.0711741 * safezoneW;
 			//h = 0.022 * safezoneH;
-			
+
 			x = "27.0 * 					(			((safezoneW / safezoneH) min 1.2) / 40) + 		(safezoneX + (safezoneW - 					((safezoneW / safezoneH) min 1.2))/2)";
 			y = "24 * 					(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25) + 		(safezoneY + (safezoneH - 					(			((safezoneW / safezoneH) min 1.2) / 1.2))/2)";
 			w = "6 * 					(			((safezoneW / safezoneH) min 1.2) / 40)";
@@ -3286,12 +3362,12 @@ class RscDisplayInventory
 			idc = -13;
 			text = "EXAMINE";
 			onMouseButtonDown = "call EPOCH_consumeItem";
-			
+
 			//x = 0.585617 * safezoneW + safezoneX;
 			//y = 0.764 * safezoneH + safezoneY;
 			//w = 0.0711741 * safezoneW;
 			//h = 0.022 * safezoneH;
-			
+
 			x = "14.62 * 					(			((safezoneW / safezoneH) min 1.2) / 40) + 		(safezoneX + (safezoneW - 					((safezoneW / safezoneH) min 1.2))/2)";
 			y = "24 * 					(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25) + 		(safezoneY + (safezoneH - 					(			((safezoneW / safezoneH) min 1.2) / 1.2))/2)";
 			w = "6 * 					(			((safezoneW / safezoneH) min 1.2) / 40)";
@@ -3302,12 +3378,12 @@ class RscDisplayInventory
 			idc = -14;
 			text = "CRAFT";
 			onMouseButtonDown = "EPOCH_CraftingItem call EPOCH_crafting_load;";
-			
+
 			//x = 0.659883 * safezoneW + safezoneX;
 			//y = 0.764 * safezoneH + safezoneY;
 			//w = 0.0711741 * safezoneW;
 			//h = 0.022 * safezoneH;
-			
+
 			x = "20.8 * 					(			((safezoneW / safezoneH) min 1.2) / 40) + 		(safezoneX + (safezoneW - 					((safezoneW / safezoneH) min 1.2))/2)";
 			y = "24 * 					(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25) + 		(safezoneY + (safezoneH - 					(			((safezoneW / safezoneH) min 1.2) / 1.2))/2)";
 			w = "6 * 					(			((safezoneW / safezoneH) min 1.2) / 40)";

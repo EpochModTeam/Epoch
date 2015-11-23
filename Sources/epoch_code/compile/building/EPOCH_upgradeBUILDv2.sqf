@@ -1,5 +1,8 @@
-if (isNull _this) exitWith{ false };
 _return = false;
+_object = param [0,objNull,[objNull]];
+_index = param [1,-1,[0]]; //EPOCH_UpgradeIndex
+if !(_index isEqualTo -1) then {Epoch_upgradeIndex = _index};
+if (isNull _object) exitWith {false};
 
 _buildingAllowed = true;
 _ownedJammerExists = false;
@@ -14,19 +17,7 @@ if (_buildingCountLimit == 0) then { _buildingCountLimit = 200; };
 
 EPOCH_buildOption = 1;
 
-_object = _this;
 
-// get index from UI
-_index = lbCurSel 1500;
-
-if (isNil "EPOCH_UpgradeIndex") then {
-  EPOCH_UpgradeIndex = 0;
-};
-if (_index != -1) then {
-  // close UI
-  closeDialog 0;
-  EPOCH_UpgradeIndex = _index;
-};
 
 // check if another player has target
 _targeter = _object getVariable["last_targeter", objNull];
@@ -40,10 +31,6 @@ if (_stability > 0) exitWith{
 		EPOCH_stabilityTarget = _object;
 	};
 };
-
-
-
-
 
 _jammer = nearestObjects[player, ["PlotPole_EPOCH"], _buildingJammerRange];
 
@@ -66,16 +53,16 @@ if !(_jammer isEqualTo[]) then {
 };
 if !(_buildingAllowed)exitWith{ false };
 
-if (_this isKindOf "Constructions_static_F") then {
+if (_object isKindOf "Constructions_static_F") then {
 
 	// take upgrade item from player here
 	_config = 'CfgBaseBuilding' call EPOCH_returnConfig;
 
-	_upgrades = getArray(_config >> (typeOf _this) >> "upgradeBuilding");
+	_upgrades = getArray(_config >> (typeOf _object) >> "upgradeBuilding");
 	if !(_upgrades isEqualTo []) then {
 
     // get selected upgrade
-    _upgrade = _upgrades param [EPOCH_UpgradeIndex,[]];
+    _upgrade = _upgrades param [Epoch_upgradeIndex,[]];
 
 		_upgradeParts = _upgrade select 1;
 
@@ -112,8 +99,9 @@ if (_this isKindOf "Constructions_static_F") then {
 
 			if (_canUpgradePartCount == _removedPartCount) then {
 				// send to server for upgrade
-				EPOCH_UPBUILD = [_this,player,EPOCH_UpgradeIndex,Epoch_personalToken];
+				EPOCH_UPBUILD = [_object,player,Epoch_upgradeIndex,Epoch_personalToken];
 				publicVariableServer "EPOCH_UPBUILD";
+				Epoch_upgradeIndex = nil;
 				_return = true;
 				_dt = ["<t size='0.8' shadow='0' color='#99ffffff'>Upgraded</t>", 0, 1, 5, 2, 0, 1] spawn bis_fnc_dynamictext;
 			};

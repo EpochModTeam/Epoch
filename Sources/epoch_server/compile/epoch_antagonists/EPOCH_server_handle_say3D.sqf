@@ -8,12 +8,12 @@ private["_range", "_nearBy", "_target", "_soundIndex", "_sound"];
 
 if !([_this select 0, _this select 3] call EPOCH_server_getPToken) exitWith{};
 
-_target = _this select 1;
+_target = param [1,objNull];
 if (isNull _target) exitWith {};
-_soundIndex = _this select 2;
-_sound = EPOCH_sounds select _soundIndex;
+_soundIndex =  param [2,-1];
+_sound = EPOCH_sounds param [_soundIndex,-1];
 
-if (!isNil "_sound") then {
+if !(_sound isEqualTo -1) then {
 	_range = getNumber(configFile >> "CfgSay3Dhandler" >> _sound >> "distance");
 	_nearBy = _target nearEntities [["Epoch_Male_F","Epoch_Female_F","LandVehicle","Ship","Air","Tank"], _range];
 	{

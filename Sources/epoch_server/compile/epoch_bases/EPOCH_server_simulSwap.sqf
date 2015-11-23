@@ -43,6 +43,16 @@ if (_objSlot != -1) then {
 				};
 			};
 
+			// spawn additional object for trap
+			_ammoClass = (configFile >> "CfgVehicles" >> _class >> "ammoClass");
+			if (isText _ammoClass) then {
+				_ammoClass = getText _ammoClass;
+				_ammoObj = createVehicle [_ammoClass, _worldspace select 0, [], 0, "CAN_COLLIDE"];
+				_ammoObj setVectorDirAndUp [(_worldspace select 1),(_worldspace select 2)];
+				_ammoObj setposATL (_worldspace select 0);
+				_newObj setVariable ["EPOCH_TRAP_OBJ",_ammoObj];
+			};
+
 			_newObj setVectorDirAndUp [(_worldspace select 1),(_worldspace select 2)];
 			_newObj setposATL (_worldspace select 0);
 			_newObj	setDamage _damage;

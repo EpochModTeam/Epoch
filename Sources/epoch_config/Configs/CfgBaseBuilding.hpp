@@ -20,6 +20,14 @@ class CfgBaseBuilding {
 	{
 		removeParts[] = { { "PartPlankPack", 4 } };
 	};
+	class Hesco3_EPOCH : Default
+	{
+		removeParts[] = { { "KitHesco3", 1 } };
+	};
+	class TankTrap_EPOCH : Default
+	{
+		removeParts[] = { { "KitTankTrap", 1 } };
+	};
 	class SolarGen_EPOCH : Default
 	{
 		removeParts[] = { { "KitSolarGen", 1 } };
@@ -34,7 +42,12 @@ class CfgBaseBuilding {
 	};
 	class WoodFloor_EPOCH : Default
 	{
+		upgradeBuilding[] = { { "MetalFloor_EPOCH", { { "ItemCorrugatedLg", 2 } } } };
 		removeParts[] = { { "PartPlankPack", 2 } };
+	};
+	class MetalFloor_EPOCH : Default
+	{
+		removeParts[] = { { "ItemCorrugatedLg", 2 } };
 	};
 	class CinderWallGarage_EPOCH : Default
 	{

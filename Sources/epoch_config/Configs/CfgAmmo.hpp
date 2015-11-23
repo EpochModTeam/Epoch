@@ -1,5 +1,122 @@
+class CraterSpike {
+	class CraterSmokeCustom1
+	{
+		simulation = "particles";
+		type = "SpikeCraterEffect"; // CraterSmokeCustom
+		position[] = {0,0,0};
+    intensity = 1;
+    interval = 0.1;
+    lifeTime = 0.5;
+	};
+	class CraterSmokeCustom4
+	{
+		simulation = "particles";
+		type = "WoodChippings3"; // CraterSmokeCustom
+		position[] = {0,0,0};
+    intensity = 1;
+    interval = 1;
+    lifeTime = 0.5;
+	};
+
+};
+
+class CraterMetal {
+	class CraterSmokeCustom1
+	{
+		simulation = "particles";
+		type = "SpikeCraterEffect"; // CraterSmokeCustom
+		position[] = {0,0,0};
+    intensity = 1;
+    interval = 0.1;
+    lifeTime = 0.5;
+	};
+	class CraterSmokeCustom2
+	{
+		simulation = "particles";
+		type = "ScrapsCraterEffect"; // CraterSmokeCustom
+		position[] = {0,0,0};
+    intensity = 1;
+    interval = 0.1;
+    lifeTime = 0.5;
+	};
+	class CraterSmokeCustom3
+	{
+		simulation = "particles";
+		type = "WoodChippings3"; // CraterSmokeCustom
+		position[] = {0,0,0};
+    intensity = 1;
+    interval = 1;
+    lifeTime = 0.5;
+	};
+
+};
+
 class CfgAmmo
 {
+
+	class DirectionalBombBase;
+	class Spike_TRAP_AMMO_EPOCH: DirectionalBombBase
+	{
+		hit = 10;
+		indirectHit = 5;
+		indirectHitRange = 3;
+		model = "\x\addons\a3_epoch_assets_3\CfgVehicles\swing_box.p3d";
+		mineModelDisabled = "\x\addons\a3_epoch_assets_3\CfgVehicles\swing_box.p3d";
+		defaultMagazine = "APERSTripMine_Wire_Mag";
+		icon = "iconExplosiveAP";
+
+		soundHit[] = {"a3\sounds_f\characters\movements\bodyfalls\bodyfall_concrete_2",2.5,1,150};
+		soundTrigger[] = {"a3\sounds_f\arsenal\sfx\bullet_hits\body_08",0.56234133,1,40};
+		soundActivation[] = {"",1,1,40};
+
+		minimumSafeZone = 0;
+		explosionAngle = 360;
+		explosionEffects = "";
+		CraterEffects = "CraterSpike";
+		whistleDist = 8;
+		cost = 200;
+		mineTrigger = "RangeTriggerBounding";
+		mineInconspicuousness = 100;
+
+		class CamShakeHit
+		{
+			power = 1;
+			duration = 1;
+			frequency = 20;
+		};
+	};
+
+	class Metal_TRAP_AMMO_EPOCH: DirectionalBombBase
+	{
+		hit = 15;
+		indirectHit = 8;
+		indirectHitRange = 4;
+		model = "\x\addons\a3_epoch_assets_3\CfgVehicles\swing_box.p3d";
+		mineModelDisabled = "\x\addons\a3_epoch_assets_3\CfgVehicles\swing_box.p3d";
+		defaultMagazine = "APERSTripMine_Wire_Mag";
+		icon = "iconExplosiveAP";
+
+		soundHit[] = {"a3\sounds_f\characters\movements\bodyfalls\bodyfall_concrete_2",2.5,1,150};
+		soundTrigger[] = {"a3\sounds_f\arsenal\sfx\bullet_hits\body_08",0.56234133,1,40};
+		soundActivation[] = {"a3\sounds_f\vehicles\boat\noises\Light_metal_boat_crash_wood_02",1,1,40};
+
+		minimumSafeZone = 0;
+		explosionAngle = 360;
+		explosionEffects = "";
+		CraterEffects = "CraterMetal";
+		whistleDist = 8;
+		cost = 200;
+		mineTrigger = "RangeTriggerBounding";
+		mineInconspicuousness = 100;
+
+		class CamShakeHit
+		{
+			power = 1.2;
+			duration = 1;
+			frequency = 20;
+		};
+	};
+
 	class BulletBase;
 	class B_EnergyPack: BulletBase
 	{
@@ -150,13 +267,13 @@ class CfgAmmo
 		timeToLive = 60;
 		fuseDistance = 0;
 		soundHit[] = { "", 0, 1 };
-		
+
 		SmokeShellSoundLoop1[] = { "A3\Sounds_F\weapons\smokeshell\smoke_loop1", 0.12589253, 1, 70 };
 		SmokeShellSoundLoop2[] = { "A3\Sounds_F\weapons\smokeshell\smoke_loop2", 0.12589253, 1, 70 };
 
 		grenadeFireSound[] = {};
 		grenadeBurningSound[] = { "SmokeShellSoundLoop1", 0.5, "SmokeShellSoundLoop2", 0.5 };
-		
+
 		impactGroundSoft[] = {};
 		impactGroundHard[] = {};
 		impactIron[] = {};
@@ -173,12 +290,12 @@ class CfgAmmo
 		impactMetal[] = {};
 		impactMetalplate[] = {};
 		impactWater[] = {};
-		
+
 		effectsSmoke = "SmokeShellWhiteEffect";
 		whistleDist = 0;
 		smokeColor[] = { 0.039, 0.278, 0, 0.5 };
 	};
-	
+
 	class B_Test_Caseless: BulletBase
 	{
 		hit = 10;

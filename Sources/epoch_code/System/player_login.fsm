@@ -1,4 +1,4 @@
-/*%FSM<COMPILE "F:\Program Files (x86)\Bohemia Interactive\Tools\FSM Editor Personal Edition\scriptedFSM.cfg, Epoch Login">*/
+/*%FSM<COMPILE "P:\FSMEditor\scriptedFSM.cfg, Epoch Login">*/
 /*%FSM<HEAD>*/
 /*
 item0[] = {"INIT",0,250,-25.000000,-375.000000,75.000000,-325.000000,0.000000,"INIT"};
@@ -190,1208 +190,1298 @@ link97[] = {85,79};
 link98[] = {86,16};
 link99[] = {86,22};
 link100[] = {87,31};
-globals[] = {25.000000,1,0,0,0,640,480,1,244,6316128,1,-506.837463,384.823669,1593.480103,946.069397,1212,880,1};
-window[] = {2,-1,-1,-1,-1,860,-1550,-510,130,3,1230};
+globals[] = {0.000000,0,0,0,0,640,480,1,244,6316128,1,-494.255402,984.732300,1761.360352,737.509033,585,832,1};
+window[] = {0,-1,-1,-1,-1,1079,713,2114,75,1,603};
 *//*%FSM</HEAD>*/
 class FSM
 {
-  fsmName = "Epoch Login";
-  class States
-  {
-    /*%FSM<STATE "INIT">*/
-    class INIT
-    {
-      name = "INIT";
-      init = /*%FSM<STATEINIT""">*/"titleCut ["""", ""BLACK FADED"", 1337];" \n
-       "0 fadeSound 0;" \n
-       "player enableSimulation false;" \n
-       "" \n
-       "_debug = true;" \n
-       "_myTime = diag_tickTime;" \n
-       "if (_debug) then {" \n
-       "	diag_log ""EPOCH-LOGIN: Init"";" \n
-       "};" \n
-       ""/*%FSM</STATEINIT""">*/;
-      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
-      class Links
-      {
-        /*%FSM<LINK "true">*/
-        class true
+        fsmName = "Epoch Login";
+        class States
         {
-          priority = 0.000000;
-          to="Process_1";
-          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"true"/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                /*%FSM<STATE "INIT">*/
+                class INIT
+                {
+                        name = "INIT";
+                        itemno = 0;
+                        init = /*%FSM<STATEINIT""">*/"titleCut ["""", ""BLACK FADED"", 1337];" \n
+                         "0 fadeSound 0;" \n
+                         "player enableSimulation false;" \n
+                         "" \n
+                         "_debug = true;" \n
+                         "_myTime = diag_tickTime;" \n
+                         "if (_debug) then {" \n
+                         "	diag_log ""EPOCH-LOGIN: Init"";" \n
+                         "};" \n
+                         ""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "true">*/
+                                class true
+                                {
+                                        itemno = 62;
+                                        priority = 0.000000;
+                                        to="Process_1";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"true"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "FINISH">*/
+                class FINISH
+                {
+                        name = "FINISH";
+                        itemno = 1;
+                        init = /*%FSM<STATEINIT""">*/"[] spawn {" \n
+                         "   waitUntil{!isNull (findDisplay 46)};" \n
+                         "   (findDisplay 46) displayAddEventHandler [""KeyDown"",""_this call EPOCH_KeyDown""];" \n
+                         "	(findDisplay 46) displayAddEventHandler [""KeyUp"",""_this call EPOCH_KeyUp""];" \n
+                         "};" \n
+                         "" \n
+                         "3 fadeSound 1;" \n
+                         "" \n
+                         "if (_debug) then {" \n
+                         "	diag_log ""EPOCH-LOGIN: Finish!"";" \n
+                         "};" \n
+                         "" \n
+                         "" \n
+                         "player enableSimulation true;" \n
+                         "" \n
+                         "titleCut ["""", ""BLACK IN"", 1];" \n
+                         "1338 cutText ["""",""PLAIN"",0]; " \n
+                         "" \n
+                         "progressLoadingScreen 1.0;" \n
+                         "" \n
+                         "endLoadingScreen;" \n
+                         "EPOCH_loadingScreenDone = true;" \n
+                         "" \n
+                         "player switchMove """";"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "Version_Check">*/
+                class Version_Check
+                {
+                        name = "Version_Check";
+                        itemno = 3;
+                        init = /*%FSM<STATEINIT""">*/"if (_debug) then {" \n
+                         "	diag_log ""EPOCH-LOGIN: Version Check"";" \n
+                         "};" \n
+                         "" \n
+                         "// SHOULD BE:" \n
+                         "_epoch_assets0 = getText(configFile >> ""Epoch"" >> ""Version"" >> ""A3_epoch_assets"");" \n
+                         "_epoch_assets1 = getText(configFile >> ""Epoch"" >> ""Version"" >> ""A3_epoch_assets_1"");" \n
+                         "_epoch_assets2 = getText(configFile >> ""Epoch"" >> ""Version"" >> ""epoch_objects"");" \n
+                         "_epoch_assets3 = getText(configFile >> ""Epoch"" >> ""Version"" >> ""A3_epoch_assets_3"");" \n
+                         "_epoch_config = getText(configFile >> ""Epoch"" >> ""Version"" >> ""A3_epoch_config"");" \n
+                         "_epoch_language = getText(configFile >> ""Epoch"" >> ""Version"" >> ""A3_epoch_language"");" \n
+                         "_epoch_underground = getText(configFile >> ""Epoch"" >> ""Version"" >> ""Underground_Epoch"");" \n
+                         "_epoch_vehicles = getText(configFile >> ""Epoch"" >> ""Version"" >> ""A3_epoch_vehicles"");" \n
+                         "_epoch_weapons = getText(configFile >> ""Epoch"" >> ""Version"" >> ""a3_epoch_weapons"");" \n
+                         "" \n
+                         "" \n
+                         "// IS:" \n
+                         "_my_epoch_assets0 = getText(configFile >> ""CfgPatches"" >> ""A3_epoch_assets"" >> ""epochVersion"");" \n
+                         "_my_epoch_assets1 = getText(configFile >> ""CfgPatches"" >> ""A3_epoch_assets_1"" >> ""epochVersion"");" \n
+                         "_my_epoch_assets2 = getText(configFile >> ""CfgPatches"" >> ""epoch_objects"" >> ""epochVersion"");" \n
+                         "_my_epoch_assets3 = getText(configFile >> ""CfgPatches"" >> ""A3_epoch_assets_3"" >> ""epochVersion"");" \n
+                         "_my_epoch_config = getText(configFile >> ""CfgPatches"" >> ""A3_epoch_config"" >> ""epochVersion"");" \n
+                         "_my_epoch_language = getText(configFile >> ""CfgPatches"" >> ""A3_epoch_language"" >> ""epochVersion"");" \n
+                         "_my_epoch_underground = getText(configFile >> ""CfgPatches"" >> ""Underground_Epoch"" >> ""epochVersion"");" \n
+                         "_my_epoch_vehicles = getText(configFile >> ""CfgPatches"" >> ""A3_epoch_vehicles"" >> ""epochVersion"");" \n
+                         "_my_epoch_weapons = getText(configFile >> ""CfgPatches"" >> ""a3_epoch_weapons"" >> ""epochVersion"");" \n
+                         "" \n
+                         "progressLoadingScreen 0.1;" \n
+                         ""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "Wrong_Version">*/
+                                class Wrong_Version
+                                {
+                                        itemno = 7;
+                                        priority = 10.000000;
+                                        to="ERROR_Wrong_Version";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"_epoch_assets0 != _epoch_assets0 ||" \n
+                                         "_my_epoch_assets1 != _epoch_assets1 ||" \n
+                                         "_my_epoch_assets2 != _epoch_assets2 ||" \n
+                                         "_my_epoch_assets3 != _epoch_assets3 ||" \n
+                                         "_my_epoch_config != _epoch_config ||" \n
+                                         "_my_epoch_language != _epoch_language ||" \n
+                                         "_my_epoch_underground != _epoch_underground ||" \n
+                                         "_my_epoch_vehicles != _epoch_vehicles ||" \n
+                                         "_my_epoch_weapons != _epoch_weapons"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "true">*/
+                                class true
+                                {
+                                        itemno = 44;
+                                        priority = 0.000000;
+                                        to="Arma_Version_Che";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "Check_Player_UID">*/
+                class Check_Player_UID
+                {
+                        name = "Check_Player_UID";
+                        itemno = 5;
+                        init = /*%FSM<STATEINIT""">*/"if (_debug) then {" \n
+                         "	diag_log ""EPOCH-LOGIN: Check PlayerUID"";" \n
+                         "};" \n
+                         "" \n
+                         "_playerUID = getPlayerUID player;" \n
+                         "" \n
+                         "progressLoadingScreen 0.2;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "PlayerUID_Okay">*/
+                                class PlayerUID_Okay
+                                {
+                                        itemno = 6;
+                                        priority = 10.000000;
+                                        to="Check_Server_1";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/"!isNil ""_playerUID"""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"_playerUID != """""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "Empty_PlayerUID">*/
+                                class Empty_PlayerUID
+                                {
+                                        itemno = 12;
+                                        priority = 0.000000;
+                                        to="ERROR_PlayerUID";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"true"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "ERROR_Wrong_Version">*/
+                class ERROR_Wrong_Version
+                {
+                        name = "ERROR_Wrong_Version";
+                        itemno = 9;
+                        init = /*%FSM<STATEINIT""">*/"_msg = ""You have an outdated version of Epoch"";" \n
+                         "_msg call Epoch_updateLoadingScreen;" \n
+                         "diag_log _msg;" \n
+                         "" \n
+                         "_rejectPlayer = {" \n
+                         "	PLAYER_REJECT_EPOCHVERSION = true;" \n
+                         "	publicVariableServer ""PLAYER_REJECT_EPOCHVERSION"";" \n
+                         "};"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "true">*/
+                                class true
+                                {
+                                        itemno = 32;
+                                        priority = 0.000000;
+                                        to="Display_Message";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"true"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "Disconnect">*/
+                class Disconnect
+                {
+                        name = "Disconnect";
+                        itemno = 10;
+                        init = /*%FSM<STATEINIT""">*/"endLoadingScreen;" \n
+                         "1338 cutText [_msg,""PLAIN"",0]; " \n
+                         "deleteVehicle player;" \n
+                         "call _rejectPlayer;" \n
+                         "diag_log format [""(%1) %2"",diag_tickTime,_msg];" \n
+                         "_myTime = diag_tickTime;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "Check_if_Player">*/
+                                class Check_if_Player
+                                {
+                                        itemno = 28;
+                                        priority = 0.000000;
+                                        to="Reject_without_B";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"(diag_tickTime - _myTime) > 2"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "ERROR_PlayerUID">*/
+                class ERROR_PlayerUID
+                {
+                        name = "ERROR_PlayerUID";
+                        itemno = 13;
+                        init = /*%FSM<STATEINIT""">*/"_msg = ""Can not setup Player Object! (Error 01)"";" \n
+                         "_msg call Epoch_updateLoadingScreen;" \n
+                         "diag_log _msg;" \n
+                         "" \n
+                         "_rejectPlayer = {" \n
+                         "	PLAYER_REJECT_UID = true;" \n
+                         "	publicVariableServer ""PLAYER_REJECT_UID"";" \n
+                         "};"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "true">*/
+                                class true
+                                {
+                                        itemno = 32;
+                                        priority = 0.000000;
+                                        to="Display_Message";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"true"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "Setup_Player_Var">*/
+                class Setup_Player_Var
+                {
+                        name = "Setup_Player_Var";
+                        itemno = 17;
+                        init = /*%FSM<STATEINIT""">*/"diag_log format[""DEBUG TIME WAITED: %1"", (diag_tickTime - _myTime)];" \n
+                         "{" \n
+                         "	missionNamespace setVariable[(format[""EPOCH_player%1"", EPOCH_customVars select _forEachIndex]), _x];" \n
+                         "} forEach _playerVariables;" \n
+                         "" \n
+                         """Loading Player Variables... Please wait!"" call Epoch_updateLoadingScreen;" \n
+                         "" \n
+                         "EPOCH_lastPlayerPos = getPosATL vehicle player;" \n
+                         "" \n
+                         "progressLoadingScreen 0.7;" \n
+                         "" \n
+                         "if (_debug) then {" \n
+                         "	diag_log ""EPOCH-LOGIN: Setup Player Variables"";" \n
+                         "};" \n
+                         ""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "true">*/
+                                class true
+                                {
+                                        itemno = 24;
+                                        priority = 0.000000;
+                                        to="Setup_EH_s_and_H";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"true"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "Request_Hive">*/
+                class Request_Hive
+                {
+                        name = "Request_Hive";
+                        itemno = 18;
+                        init = /*%FSM<STATEINIT""">*/"_myTime = diag_tickTime;" \n
+                         "" \n
+                         "Epoch_my_Group = [];" \n
+                         "" \n
+                         "EPOCH_checkPlayer_PVS = player;" \n
+                         "publicVariableServer  ""EPOCH_checkPlayer_PVS"";" \n
+                         "" \n
+                         "" \n
+                         """Loading Player Data... Please wait!"" call Epoch_updateLoadingScreen;" \n
+                         "progressLoadingScreen 0.5;" \n
+                         ""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "Hive_Response">*/
+                                class Hive_Response
+                                {
+                                        itemno = 78;
+                                        priority = 0.000000;
+                                        to="Process_2";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""EPOCH_checkPlayer_PVC"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/"_newChar = EPOCH_checkPlayer_PVC;" \n
+                                         "EPOCH_checkPlayer_PVC = nil;"/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "Timeout_No_Respo">*/
+                                class Timeout_No_Respo
+                                {
+                                        itemno = 19;
+                                        priority = 0.000000;
+                                        to="ERROR_Server_not_3";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"(diag_tickTime - _myTime) > 120"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "ERROR_Server_not">*/
+                class ERROR_Server_not
+                {
+                        name = "ERROR_Server_not";
+                        itemno = 20;
+                        init = /*%FSM<STATEINIT""">*/"_msg = ""Authentication Failed, Disconnect and try again"";" \n
+                         "_msg call Epoch_updateLoadingScreen;" \n
+                         "diag_log _msg;" \n
+                         "" \n
+                         "_rejectPlayer = {" \n
+                         "	PLAYER_REJECT_NoResponse2 = true;" \n
+                         "	publicVariableServer ""PLAYER_REJECT_NoResponse2"";" \n
+                         "};"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "true">*/
+                                class true
+                                {
+                                        itemno = 32;
+                                        priority = 0.000000;
+                                        to="Display_Message";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"true"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "ERROR_Wrong_Server">*/
+                class ERROR_Wrong_Server
+                {
+                        name = "ERROR_Wrong_Server";
+                        itemno = 25;
+                        init = /*%FSM<STATEINIT""">*/"_msg = format[""Server and Client running with different Version! (You: %1 // Server: %2)"",getText(configFile >> ""CfgMods"" >> ""Epoch"" >> ""version""),_serverVersion];" \n
+                         "_msg call Epoch_updateLoadingScreen;" \n
+                         "diag_log _msg;" \n
+                         "" \n
+                         "_rejectPlayer = {" \n
+                         "	PLAYER_REJECT_ServerVersion = true;" \n
+                         "	publicVariableServer ""PLAYER_REJECT_ServerVersion"";" \n
+                         "};"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "true">*/
+                                class true
+                                {
+                                        itemno = 32;
+                                        priority = 0.000000;
+                                        to="Display_Message";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"true"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "Setup_Player_Obj">*/
+                class Setup_Player_Obj
+                {
+                        name = "Setup_Player_Obj";
+                        itemno = 27;
+                        init = /*%FSM<STATEINIT""">*/"_ply = player;" \n
+                         "_group = group player;" \n
+                         "selectPlayer _playerObject;" \n
+                         "" \n
+                         "deleteVehicle _ply;" \n
+                         "deleteGroup _group;" \n
+                         "" \n
+                         """Loading Player Body... Please wait!"" call Epoch_updateLoadingScreen;" \n
+                         "progressLoadingScreen 0.8;" \n
+                         "" \n
+                         "if (_debug) then {" \n
+                         "	diag_log ""EPOCH-LOGIN: Setup Player Object"";" \n
+                         "};" \n
+                         "" \n
+                         "_myTime = diag_tickTime;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "Timeout_">*/
+                                class Timeout_
+                                {
+                                        itemno = 69;
+                                        priority = 0.000000;
+                                        to="ERROR_Player_Setup";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"(diag_tickTime - _myTime) > 60"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "new_player_____p">*/
+                                class new_player_____p
+                                {
+                                        itemno = 49;
+                                        priority = 0.000000;
+                                        to="Setup_Player_Var";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"_playerObject == player"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "Display_Message">*/
+                class Display_Message
+                {
+                        name = "Display_Message";
+                        itemno = 33;
+                        init = /*%FSM<STATEINIT""">*/"[] spawn {" \n
+                         "   waitUntil{!isNull (findDisplay 46)};" \n
+                         "   (findDisplay 46) displayAddEventHandler [""KeyDown"",""true""];" \n
+                         "	(findDisplay 46) displayAddEventHandler [""KeyUp"",""true""];" \n
+                         "};" \n
+                         "diag_log format [""(%1) %2"",diag_tickTime,_msg];" \n
+                         "_myTime = diag_tickTime;" \n
+                         ""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "Display_Message">*/
+                                class Display_Message
+                                {
+                                        itemno = 26;
+                                        priority = 0.000000;
+                                        to="Disconnect";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"(diag_tickTime - _myTime) > 10"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "Check_Server">*/
+                class Check_Server
+                {
+                        name = "Check_Server";
+                        itemno = 35;
+                        init = /*%FSM<STATEINIT""">*/"_myTime = diag_tickTime;" \n
+                         "if (_debug) then {" \n
+                         "	diag_log ""EPOCH-LOGIN: Check Server"";" \n
+                         "};" \n
+                         """Checking Server... Please wait!"" call Epoch_updateLoadingScreen;" \n
+                         "progressLoadingScreen 0.4;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "Server_not_worki">*/
+                                class Server_not_worki
+                                {
+                                        itemno = 36;
+                                        priority = 10.000000;
+                                        to="ERROR_Server_not_1";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""EPOCH_BADHIVE""" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "Server_Okay">*/
+                                class Server_Okay
+                                {
+                                        itemno = 11;
+                                        priority = 0.000000;
+                                        to="Server_Version_C";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""Epoch_ServerVersion"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "ERROR_Server_not_1">*/
+                class ERROR_Server_not_1
+                {
+                        name = "ERROR_Server_not_1";
+                        itemno = 37;
+                        init = /*%FSM<STATEINIT""">*/"_msg = ""Server not Ready (Error 03)"";" \n
+                         "_msg call Epoch_updateLoadingScreen;" \n
+                         "diag_log _msg;" \n
+                         "" \n
+                         "_rejectPlayer = {" \n
+                         "	PLAYER_REJECT_NotReady2 = true;" \n
+                         "	publicVariableServer ""PLAYER_REJECT_NotReady2"";" \n
+                         "};"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "true">*/
+                                class true
+                                {
+                                        itemno = 32;
+                                        priority = 0.000000;
+                                        to="Display_Message";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"true"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "Check_Server_1">*/
+                class Check_Server_1
+                {
+                        name = "Check_Server_1";
+                        itemno = 39;
+                        init = /*%FSM<STATEINIT""">*/"progressLoadingScreen 0.3;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "Timeout_No_Respo">*/
+                                class Timeout_No_Respo
+                                {
+                                        itemno = 40;
+                                        priority = 0.000000;
+                                        to="ERROR_Server_not_2";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"(diag_tickTime - _myTime) > 180"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "freshServer">*/
+                                class freshServer
+                                {
+                                        itemno = 66;
+                                        priority = 0.000000;
+                                        to="Update_Loadingscreen";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"uiNamespace getVariable ['Epoch_freshServer', false]"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "Server_Ready">*/
+                                class Server_Ready
+                                {
+                                        itemno = 34;
+                                        priority = 0.000000;
+                                        to="Check_Server";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""EPOCH_SERVER"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/"_serverUptime = EPOCH_SERVER;" \n
+                                         "EPOCH_SERVER = nil;"/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "ERROR_Server_not_2">*/
+                class ERROR_Server_not_2
+                {
+                        name = "ERROR_Server_not_2";
+                        itemno = 41;
+                        init = /*%FSM<STATEINIT""">*/"_msg = ""Server not Ready (Error 02)"";" \n
+                         "_msg call Epoch_updateLoadingScreen;" \n
+                         "diag_log _msg;" \n
+                         "" \n
+                         "_rejectPlayer = {" \n
+                         "	PLAYER_REJECT_NotReady1 = true;" \n
+                         "	publicVariableServer ""PLAYER_REJECT_NotReady1"";" \n
+                         "};"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "true">*/
+                                class true
+                                {
+                                        itemno = 32;
+                                        priority = 0.000000;
+                                        to="Display_Message";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"true"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "Reject_without_B">*/
+                class Reject_without_B
+                {
+                        name = "Reject_without_B";
+                        itemno = 43;
+                        init = /*%FSM<STATEINIT""">*/"[] spawn {" \n
+                         "	waitUntil{!isNull (findDisplay 46)};" \n
+                         "	waitUntil {" \n
+                         "		(findDisplay 46) closeDisplay 0;" \n
+                         "		isNull (findDisplay 46)" \n
+                         "	};" \n
+                         "};"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "Arma_Version_Che">*/
+                class Arma_Version_Che
+                {
+                        name = "Arma_Version_Che";
+                        itemno = 45;
+                        init = /*%FSM<STATEINIT""">*/"progressLoadingScreen 0.15;" \n
+                         ""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "Outdated_Version">*/
+                                class Outdated_Version
+                                {
+                                        itemno = 46;
+                                        priority = 10.000000;
+                                        to="ERROR_Wrong_Version_1";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"productVersion select 2 < getNumber(configFile >> ""CfgMods"" >> ""Epoch"" >> ""ArmAVersion"")"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "Player_Object_Re">*/
+                                class Player_Object_Re
+                                {
+                                        itemno = 4;
+                                        priority = 0.000000;
+                                        to="Check_Player_UID";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/"!isNull player"/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"player == player"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "ERROR_Wrong_Version_1">*/
+                class ERROR_Wrong_Version_1
+                {
+                        name = "ERROR_Wrong_Version_1";
+                        itemno = 47;
+                        init = /*%FSM<STATEINIT""">*/"_msg = ""You have an outdated version of ArmA 3"";" \n
+                         "_msg call Epoch_updateLoadingScreen;" \n
+                         "diag_log _msg;" \n
+                         "" \n
+                         "_rejectPlayer = {" \n
+                         "	PLAYER_REJECT_ARMAVERSION = true;" \n
+                         "	publicVariableServer ""PLAYER_REJECT_ARMAVERSION"";" \n
+                         "};"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "true">*/
+                                class true
+                                {
+                                        itemno = 32;
+                                        priority = 0.000000;
+                                        to="Display_Message";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"true"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "Setup_EH_s_and_H">*/
+                class Setup_EH_s_and_H
+                {
+                        name = "Setup_EH_s_and_H";
+                        itemno = 50;
+                        init = /*%FSM<STATEINIT""">*/"player addEventHandler [""Respawn"", {(_this select 0) call EPOCH_clientRespawn}];" \n
+                         "player addEventHandler [""Put"", {(_this select 1) call EPOCH_interact;_this call EPOCH_PutHandler}];" \n
+                         "player addEventHandler [""Take"", {(_this select 1) call EPOCH_interact;_this call EPOCH_UnisexCheck}];" \n
+                         "player addEventHandler [""InventoryClosed"", {if !(EPOCH_arr_interactedObjs isEqualTo[]) then {EPOCH_arr_interactedObjs remoteExec[""EPOCH_server_save_vehicles"", 2]; EPOCH_arr_interactedObjs = [];};}];" \n
+                         "player addEventHandler [""InventoryOpened"", {_this spawn EPOCH_initUI; (locked (_this select 1) in [2, 3] || (_this select 1) getVariable[""EPOCH_Locked"", false])}];" \n
+                         "player addEventHandler [""Fired"", {_this call EPOCH_fnc_playerFired}];" \n
+                         "player addEventHandler [""Killed"", {_this call EPOCH_fnc_playerDeath}];" \n
+                         "" \n
+                         "if (count EPOCH_playerHitPoints isEqualTo count ((getAllHitPointsDamage player) param [0,[]])) then {" \n
+                         "	{" \n
+                         "		player setHitIndex [_forEachIndex, _x];" \n
+                         "	}forEach EPOCH_playerHitPoints;" \n
+                         "};" \n
+                         "" \n
+                         "[] spawn EPOCH_masterLoop_v2;" \n
+                         "true call EPOCH_fnc_Weather;" \n
+                         "[5,100] spawn EPOCH_niteLight;" \n
+                         "" \n
+                         "if (_debug) then {" \n
+                         "	diag_log ""EPOCH-LOGIN: Setup EH's"";" \n
+                         "};" \n
+                         "" \n
+                         """Loading... Please wait!"" call Epoch_updateLoadingScreen;" \n
+                         "progressLoadingScreen 0.9;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "Has_Current_Weap">*/
+                                class Has_Current_Weap
+                                {
+                                        itemno = 53;
+                                        priority = 10.000000;
+                                        to="Find_Active_Weap";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"_currentWeapon != """""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "no_weapons">*/
+                                class no_weapons
+                                {
+                                        itemno = 51;
+                                        priority = 0.000000;
+                                        to="Process";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"_currentWeapon == """""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "Process">*/
+                class Process
+                {
+                        name = "Process";
+                        itemno = 52;
+                        init = /*%FSM<STATEINIT""">*/"progressLoadingScreen 0.975;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "Preload_done">*/
+                                class Preload_done
+                                {
+                                        itemno = 29;
+                                        priority = 0.000000;
+                                        to="FINISH";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"preloadCamera (getposATL player)"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/"call compile _playerGroupOnline;"/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "Find_Active_Weap">*/
+                class Find_Active_Weap
+                {
+                        name = "Find_Active_Weap";
+                        itemno = 54;
+                        init = /*%FSM<STATEINIT""">*/"_activeWeapon = currentWeapon player;" \n
+                         "progressLoadingScreen 0.95;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "Current_Weapon_S">*/
+                                class Current_Weapon_S
+                                {
+                                        itemno = 56;
+                                        priority = 0.000000;
+                                        to="Do_nothing";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"_activeWeapon == _currentWeapon"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "Current_Weapon_Not">*/
+                                class Current_Weapon_Not
+                                {
+                                        itemno = 55;
+                                        priority = 0.000000;
+                                        to="Select_Weapon";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"_activeWeapon != _currentWeapon"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "Select_Weapon">*/
+                class Select_Weapon
+                {
+                        name = "Select_Weapon";
+                        itemno = 57;
+                        init = /*%FSM<STATEINIT""">*/"_currentWeapon spawn {" \n
+                         "	uiSleep 1; " \n
+                         "	player selectWeapon _this;" \n
+                         "};"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "true">*/
+                                class true
+                                {
+                                        itemno = 58;
+                                        priority = 0.000000;
+                                        to="Process";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"true"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "Do_nothing">*/
+                class Do_nothing
+                {
+                        name = "Do_nothing";
+                        itemno = 59;
+                        init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "true">*/
+                                class true
+                                {
+                                        itemno = 58;
+                                        priority = 0.000000;
+                                        to="Process";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"true"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "Check_New_Player">*/
+                class Check_New_Player
+                {
+                        name = "Check_New_Player";
+                        itemno = 60;
+                        init = /*%FSM<STATEINIT""">*/"_myTime = diag_tickTime;" \n
+                         "" \n
+                         "// player reveal [_playerObject, 4];" \n
+                         "" \n
+                         "" \n
+                         """Loading Player Inventory... Please wait!"" call Epoch_updateLoadingScreen;" \n
+                         "progressLoadingScreen 0.6;" \n
+                         ""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "Wait_mag_count_m">*/
+                                class Wait_mag_count_m
+                                {
+                                        itemno = 61;
+                                        priority = 0.000000;
+                                        to="Setup_Player_Obj";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"_magCount == count (magazines _playerObject)"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "Timeout_No_Respo">*/
+                                class Timeout_No_Respo
+                                {
+                                        itemno = 15;
+                                        priority = 0.000000;
+                                        to="ERROR_Server_not";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"(diag_tickTime - _myTime) > 120"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "Process_1">*/
+                class Process_1
+                {
+                        name = "Process_1";
+                        itemno = 63;
+                        init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "Wait_ArmA_Loading">*/
+                                class Wait_ArmA_Loading
+                                {
+                                        itemno = 64;
+                                        priority = 0.000000;
+                                        to="Start_Loading_Sc";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"{!isnull _x} count ((uinamespace getvariable ""loading_displays"") - [finddisplay 18]) == 0"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "Start_Loading_Sc">*/
+                class Start_Loading_Sc
+                {
+                        name = "Start_Loading_Sc";
+                        itemno = 65;
+                        init = /*%FSM<STATEINIT""">*/"startLoadingScreen ["""",""EpochLoadingScreen""];" \n
+                         "if (_debug) then {" \n
+                         "	diag_log ""EPOCH-LOGIN: Start Loadingscreen"";" \n
+                         "};" \n
+                         """Starting Epoch... Please wait!"" call Epoch_updateLoadingScreen;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "true">*/
+                                class true
+                                {
+                                        itemno = 2;
+                                        priority = 0.000000;
+                                        to="Version_Check";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"true"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "Update_Loadingscreen">*/
+                class Update_Loadingscreen
+                {
+                        name = "Update_Loadingscreen";
+                        itemno = 67;
+                        init = /*%FSM<STATEINIT""">*/"uiNamespace setVariable ['Epoch_freshServer', false];" \n
+                         "" \n
+                         """Server initializing... Please wait!"" call Epoch_updateLoadingScreen;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "true">*/
+                                class true
+                                {
+                                        itemno = 68;
+                                        priority = 0.000000;
+                                        to="Check_Server_1";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "ERROR_Player_Setup">*/
+                class ERROR_Player_Setup
+                {
+                        name = "ERROR_Player_Setup";
+                        itemno = 70;
+                        init = /*%FSM<STATEINIT""">*/"_msg = ""Problem setting up player"";" \n
+                         "_msg call Epoch_updateLoadingScreen;" \n
+                         "diag_log _msg;" \n
+                         "" \n
+                         "_rejectPlayer = {" \n
+                         "	PLAYER_REJECT_InvaildSetup = true;" \n
+                         "	publicVariableServer ""PLAYER_REJECT_InvaildSetup"";" \n
+                         "};"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "true">*/
+                                class true
+                                {
+                                        itemno = 32;
+                                        priority = 0.000000;
+                                        to="Display_Message";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"true"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "Server_Version_C">*/
+                class Server_Version_C
+                {
+                        name = "Server_Version_C";
+                        itemno = 72;
+                        init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "Wrong_Server_Ver">*/
+                                class Wrong_Server_Ver
+                                {
+                                        itemno = 23;
+                                        priority = 10.000000;
+                                        to="ERROR_Wrong_Server";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"Epoch_ServerVersion != getText(configFile >> ""CfgMods"" >> ""Epoch"" >> ""version"")"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "Version_Okay">*/
+                                class Version_Okay
+                                {
+                                        itemno = 73;
+                                        priority = 0.000000;
+                                        to="Request_Hive";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "ERROR_Server_not_3">*/
+                class ERROR_Server_not_3
+                {
+                        name = "ERROR_Server_not_3";
+                        itemno = 75;
+                        init = /*%FSM<STATEINIT""">*/"_msg = ""Authentication Failed, Disconnect and try again"";" \n
+                         "_msg call Epoch_updateLoadingScreen;" \n
+                         "diag_log _msg;" \n
+                         "" \n
+                         "_rejectPlayer = {" \n
+                         "	PLAYER_REJECT_HiveNotResponse = true;" \n
+                         "	publicVariableServer ""PLAYER_REJECT_HiveNotResponse"";" \n
+                         "};"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "true">*/
+                                class true
+                                {
+                                        itemno = 32;
+                                        priority = 0.000000;
+                                        to="Display_Message";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"true"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "Process_2">*/
+                class Process_2
+                {
+                        name = "Process_2";
+                        itemno = 80;
+                        init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "new_character">*/
+                                class new_character
+                                {
+                                        itemno = 77;
+                                        priority = 10.000000;
+                                        to="Open_Gender_Selection";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"_newChar"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/"endLoadingScreen;" \n
+                                         "_myGenderTime = diag_tickTime;"/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "load_old_charact">*/
+                                class load_old_charact
+                                {
+                                        itemno = 79;
+                                        priority = 0.000000;
+                                        to="Process_3";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/"_myTime = diag_tickTime;"/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "Open_Gender_Selection">*/
+                class Open_Gender_Selection
+                {
+                        name = "Open_Gender_Selection";
+                        itemno = 81;
+                        init = /*%FSM<STATEINIT""">*/"createdialog ""SelectGender"";"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "Gender_Selected">*/
+                                class Gender_Selected
+                                {
+                                        itemno = 83;
+                                        priority = 10.000000;
+                                        to="Send_character_s";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""EPOCH_PlayerIsMale"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "Timeout">*/
+                                class Timeout
+                                {
+                                        itemno = 84;
+                                        priority = 0.000000;
+                                        to="Send_character_s";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"((diag_tickTime - _myGenderTime) > 30)"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/"EPOCH_PlayerIsMale = true;" \n
+                                         "closeDialog 0;"/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "Reopen_when_client">*/
+                                class Reopen_when_client
+                                {
+                                        itemno = 82;
+                                        priority = 0.000000;
+                                        to="Open_Gender_Selection";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!dialog && isNil ""EPOCH_PlayerIsMale"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "Send_character_s">*/
+                class Send_character_s
+                {
+                        name = "Send_character_s";
+                        itemno = 85;
+                        init = /*%FSM<STATEINIT""">*/"startLoadingScreen ["""",""EpochLoadingScreen""];" \n
+                         """Gender Selected... Please wait!"" call Epoch_updateLoadingScreen;" \n
+                         "" \n
+                         "" \n
+                         "EPOCH_selectedGender_PVS = [player,EPOCH_PlayerIsMale];" \n
+                         "publicVariableServer ""EPOCH_selectedGender_PVS"";" \n
+                         "EPOCH_selectedGender_PVS = nil;" \n
+                         "EPOCH_PlayerIsMale = nil;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "load_old_charact">*/
+                                class load_old_charact
+                                {
+                                        itemno = 79;
+                                        priority = 0.000000;
+                                        to="Process_3";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/"_myTime = diag_tickTime;"/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "Process_3">*/
+                class Process_3
+                {
+                        name = "Process_3";
+                        itemno = 86;
+                        init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "Timeout_No_Respo">*/
+                                class Timeout_No_Respo
+                                {
+                                        itemno = 22;
+                                        priority = 0.000000;
+                                        to="ERROR_Server_not_4";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"(diag_tickTime - _myTime) > 120"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "Response">*/
+                                class Response
+                                {
+                                        itemno = 16;
+                                        priority = 0.000000;
+                                        to="Check_New_Player";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""EPOCH_C_SET"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/"_array = EPOCH_C_SET;" \n
+                                         "EPOCH_C_SET = nil;" \n
+                                         "_playerObject = _array deleteAt 0;" \n
+                                         "_playerVariables = _array deleteAt 0;" \n
+                                         "_currentWeapon = _array deleteAt 0;" \n
+                                         "_magCount = _array deleteAt 0;" \n
+                                         "Epoch_my_GroupUID = _array deleteAt 0;" \n
+                                         "Epoch_canBeRevived = _array deleteAt 0;" \n
+                                         "Epoch_personalToken = _array deleteAt 0;" \n
+                                         "reverse _serverUptime;" \n
+                                         "_serverUptime pushBack (_array deleteAt 0);" \n
+                                         "reverse _serverUptime;" \n
+                                         "_serverUptime call EPOCH_client_publicEH;" \n
+                                         "_playerGroupOnline = _array deleteAt 0;" \n
+                                         "" \n
+                                         ""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "ERROR_Server_not_4">*/
+                class ERROR_Server_not_4
+                {
+                        name = "ERROR_Server_not_4";
+                        itemno = 87;
+                        init = /*%FSM<STATEINIT""">*/"_msg = ""Authentication Failed, Disconnect and try again"";" \n
+                         "_msg call Epoch_updateLoadingScreen;" \n
+                         "diag_log _msg;" \n
+                         "" \n
+                         "_rejectPlayer = {" \n
+                         "	PLAYER_REJECT_HiveLoadChar = true;" \n
+                         "	publicVariableServer ""PLAYER_REJECT_HiveLoadChar"";" \n
+                         "};"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "true">*/
+                                class true
+                                {
+                                        itemno = 32;
+                                        priority = 0.000000;
+                                        to="Display_Message";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"true"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
         };
-        /*%FSM</LINK>*/
-      };
-    };
-    /*%FSM</STATE>*/
-    /*%FSM<STATE "FINISH">*/
-    class FINISH
-    {
-      name = "FINISH";
-      init = /*%FSM<STATEINIT""">*/"[] spawn {" \n
-       "   waitUntil{!isNull (findDisplay 46)};" \n
-       "   (findDisplay 46) displayAddEventHandler [""KeyDown"",""_this call EPOCH_KeyDown""];" \n
-       "};" \n
-       "" \n
-       "3 fadeSound 1;" \n
-       "" \n
-       "if (_debug) then {" \n
-       "	diag_log ""EPOCH-LOGIN: Finish!"";" \n
-       "};" \n
-       "" \n
-       "" \n
-       "player enableSimulation true;" \n
-       "" \n
-       "titleCut ["""", ""BLACK IN"", 1];" \n
-       "1338 cutText ["""",""PLAIN"",0]; " \n
-       "" \n
-       "progressLoadingScreen 1.0;" \n
-       "" \n
-       "endLoadingScreen;" \n
-       "EPOCH_loadingScreenDone = true;" \n
-       "" \n
-       "player switchMove """";"/*%FSM</STATEINIT""">*/;
-      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
-      class Links
-      {
-      };
-    };
-    /*%FSM</STATE>*/
-    /*%FSM<STATE "Version_Check">*/
-    class Version_Check
-    {
-      name = "Version_Check";
-      init = /*%FSM<STATEINIT""">*/"if (_debug) then {" \n
-       "	diag_log ""EPOCH-LOGIN: Version Check"";" \n
-       "};" \n
-       "" \n
-       "// SHOULD BE:" \n
-       "_epoch_assets0 = getText(configFile >> ""Epoch"" >> ""Version"" >> ""A3_epoch_assets"");" \n
-       "_epoch_assets1 = getText(configFile >> ""Epoch"" >> ""Version"" >> ""A3_epoch_assets_1"");" \n
-       "_epoch_assets2 = getText(configFile >> ""Epoch"" >> ""Version"" >> ""epoch_objects"");" \n
-       "_epoch_assets3 = getText(configFile >> ""Epoch"" >> ""Version"" >> ""A3_epoch_assets_3"");" \n
-       "_epoch_config = getText(configFile >> ""Epoch"" >> ""Version"" >> ""A3_epoch_config"");" \n
-       "_epoch_language = getText(configFile >> ""Epoch"" >> ""Version"" >> ""A3_epoch_language"");" \n
-       "_epoch_underground = getText(configFile >> ""Epoch"" >> ""Version"" >> ""Underground_Epoch"");" \n
-       "_epoch_vehicles = getText(configFile >> ""Epoch"" >> ""Version"" >> ""A3_epoch_vehicles"");" \n
-       "_epoch_weapons = getText(configFile >> ""Epoch"" >> ""Version"" >> ""a3_epoch_weapons"");" \n
-       "" \n
-       "" \n
-       "// IS:" \n
-       "_my_epoch_assets0 = getText(configFile >> ""CfgPatches"" >> ""A3_epoch_assets"" >> ""epochVersion"");" \n
-       "_my_epoch_assets1 = getText(configFile >> ""CfgPatches"" >> ""A3_epoch_assets_1"" >> ""epochVersion"");" \n
-       "_my_epoch_assets2 = getText(configFile >> ""CfgPatches"" >> ""epoch_objects"" >> ""epochVersion"");" \n
-       "_my_epoch_assets3 = getText(configFile >> ""CfgPatches"" >> ""A3_epoch_assets_3"" >> ""epochVersion"");" \n
-       "_my_epoch_config = getText(configFile >> ""CfgPatches"" >> ""A3_epoch_config"" >> ""epochVersion"");" \n
-       "_my_epoch_language = getText(configFile >> ""CfgPatches"" >> ""A3_epoch_language"" >> ""epochVersion"");" \n
-       "_my_epoch_underground = getText(configFile >> ""CfgPatches"" >> ""Underground_Epoch"" >> ""epochVersion"");" \n
-       "_my_epoch_vehicles = getText(configFile >> ""CfgPatches"" >> ""A3_epoch_vehicles"" >> ""epochVersion"");" \n
-       "_my_epoch_weapons = getText(configFile >> ""CfgPatches"" >> ""a3_epoch_weapons"" >> ""epochVersion"");" \n
-       "" \n
-       "progressLoadingScreen 0.1;" \n
-       ""/*%FSM</STATEINIT""">*/;
-      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
-      class Links
-      {
-        /*%FSM<LINK "Wrong_Version">*/
-        class Wrong_Version
+        initState="INIT";
+        finalStates[] =
         {
-          priority = 10.000000;
-          to="ERROR_Wrong_Version";
-          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"_epoch_assets0 != _epoch_assets0 ||" \n
-           "_my_epoch_assets1 != _epoch_assets1 ||" \n
-           "_my_epoch_assets2 != _epoch_assets2 ||" \n
-           "_my_epoch_assets3 != _epoch_assets3 ||" \n
-           "_my_epoch_config != _epoch_config ||" \n
-           "_my_epoch_language != _epoch_language ||" \n
-           "_my_epoch_underground != _epoch_underground ||" \n
-           "_my_epoch_vehicles != _epoch_vehicles ||" \n
-           "_my_epoch_weapons != _epoch_weapons"/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                "FINISH",
+                "Reject_without_B",
         };
-        /*%FSM</LINK>*/
-        /*%FSM<LINK "true">*/
-        class true
-        {
-          priority = 0.000000;
-          to="Arma_Version_Che";
-          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-        };
-        /*%FSM</LINK>*/
-      };
-    };
-    /*%FSM</STATE>*/
-    /*%FSM<STATE "Check_Player_UID">*/
-    class Check_Player_UID
-    {
-      name = "Check_Player_UID";
-      init = /*%FSM<STATEINIT""">*/"if (_debug) then {" \n
-       "	diag_log ""EPOCH-LOGIN: Check PlayerUID"";" \n
-       "};" \n
-       "" \n
-       "_playerUID = getPlayerUID player;" \n
-       "" \n
-       "progressLoadingScreen 0.2;"/*%FSM</STATEINIT""">*/;
-      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
-      class Links
-      {
-        /*%FSM<LINK "PlayerUID_Okay">*/
-        class PlayerUID_Okay
-        {
-          priority = 10.000000;
-          to="Check_Server_1";
-          precondition = /*%FSM<CONDPRECONDITION""">*/"!isNil ""_playerUID"""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"_playerUID != """""/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-        };
-        /*%FSM</LINK>*/
-        /*%FSM<LINK "Empty_PlayerUID">*/
-        class Empty_PlayerUID
-        {
-          priority = 0.000000;
-          to="ERROR_PlayerUID";
-          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"true"/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-        };
-        /*%FSM</LINK>*/
-      };
-    };
-    /*%FSM</STATE>*/
-    /*%FSM<STATE "ERROR_Wrong_Version">*/
-    class ERROR_Wrong_Version
-    {
-      name = "ERROR_Wrong_Version";
-      init = /*%FSM<STATEINIT""">*/"_msg = ""You have an outdated version of Epoch"";" \n
-       "_msg call Epoch_updateLoadingScreen;" \n
-       "diag_log _msg;" \n
-       "" \n
-       "_rejectPlayer = {" \n
-       "	PLAYER_REJECT_EPOCHVERSION = true;" \n
-       "	publicVariableServer ""PLAYER_REJECT_EPOCHVERSION"";" \n
-       "};"/*%FSM</STATEINIT""">*/;
-      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
-      class Links
-      {
-        /*%FSM<LINK "true">*/
-        class true
-        {
-          priority = 0.000000;
-          to="Display_Message";
-          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"true"/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-        };
-        /*%FSM</LINK>*/
-      };
-    };
-    /*%FSM</STATE>*/
-    /*%FSM<STATE "Disconnect">*/
-    class Disconnect
-    {
-      name = "Disconnect";
-      init = /*%FSM<STATEINIT""">*/"endLoadingScreen;" \n
-       "1338 cutText [_msg,""PLAIN"",0]; " \n
-       "deleteVehicle player;" \n
-       "call _rejectPlayer;" \n
-       "diag_log format [""(%1) %2"",diag_tickTime,_msg];" \n
-       "_myTime = diag_tickTime;"/*%FSM</STATEINIT""">*/;
-      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
-      class Links
-      {
-        /*%FSM<LINK "Check_if_Player">*/
-        class Check_if_Player
-        {
-          priority = 0.000000;
-          to="Reject_without_B";
-          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"(diag_tickTime - _myTime) > 2"/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-        };
-        /*%FSM</LINK>*/
-      };
-    };
-    /*%FSM</STATE>*/
-    /*%FSM<STATE "ERROR_PlayerUID">*/
-    class ERROR_PlayerUID
-    {
-      name = "ERROR_PlayerUID";
-      init = /*%FSM<STATEINIT""">*/"_msg = ""Can not setup Player Object! (Error 01)"";" \n
-       "_msg call Epoch_updateLoadingScreen;" \n
-       "diag_log _msg;" \n
-       "" \n
-       "_rejectPlayer = {" \n
-       "	PLAYER_REJECT_UID = true;" \n
-       "	publicVariableServer ""PLAYER_REJECT_UID"";" \n
-       "};"/*%FSM</STATEINIT""">*/;
-      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
-      class Links
-      {
-        /*%FSM<LINK "true">*/
-        class true
-        {
-          priority = 0.000000;
-          to="Display_Message";
-          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"true"/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-        };
-        /*%FSM</LINK>*/
-      };
-    };
-    /*%FSM</STATE>*/
-    /*%FSM<STATE "Setup_Player_Var">*/
-    class Setup_Player_Var
-    {
-      name = "Setup_Player_Var";
-      init = /*%FSM<STATEINIT""">*/"diag_log format[""DEBUG TIME WAITED: %1"", (diag_tickTime - _myTime)];" \n
-       "{" \n
-       "	missionNamespace setVariable[(format[""EPOCH_player%1"", EPOCH_customVars select _forEachIndex]), _x];" \n
-       "} forEach _playerVariables;" \n
-       "" \n
-       """Loading Player Variables... Please wait!"" call Epoch_updateLoadingScreen;" \n
-       "" \n
-       "EPOCH_lastPlayerPos = getPosATL vehicle player;" \n
-       "" \n
-       "progressLoadingScreen 0.7;" \n
-       "" \n
-       "if (_debug) then {" \n
-       "	diag_log ""EPOCH-LOGIN: Setup Player Variables"";" \n
-       "};" \n
-       ""/*%FSM</STATEINIT""">*/;
-      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
-      class Links
-      {
-        /*%FSM<LINK "true">*/
-        class true
-        {
-          priority = 0.000000;
-          to="Setup_EH_s_and_H";
-          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"true"/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-        };
-        /*%FSM</LINK>*/
-      };
-    };
-    /*%FSM</STATE>*/
-    /*%FSM<STATE "Request_Hive">*/
-    class Request_Hive
-    {
-      name = "Request_Hive";
-      init = /*%FSM<STATEINIT""">*/"_myTime = diag_tickTime;" \n
-       "" \n
-       "Epoch_my_Group = [];" \n
-       "" \n
-       "EPOCH_checkPlayer_PVS = player;" \n
-       "publicVariableServer  ""EPOCH_checkPlayer_PVS"";" \n
-       "" \n
-       "" \n
-       """Loading Player Data... Please wait!"" call Epoch_updateLoadingScreen;" \n
-       "progressLoadingScreen 0.5;" \n
-       ""/*%FSM</STATEINIT""">*/;
-      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
-      class Links
-      {
-        /*%FSM<LINK "Hive_Response">*/
-        class Hive_Response
-        {
-          priority = 0.000000;
-          to="Process_2";
-          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"!isNil ""EPOCH_checkPlayer_PVC"""/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/"_newChar = EPOCH_checkPlayer_PVC;" \n
-           "EPOCH_checkPlayer_PVC = nil;"/*%FSM</ACTION""">*/;
-        };
-        /*%FSM</LINK>*/
-        /*%FSM<LINK "Timeout_No_Respo">*/
-        class Timeout_No_Respo
-        {
-          priority = 0.000000;
-          to="ERROR_Server_not_3";
-          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"(diag_tickTime - _myTime) > 120"/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-        };
-        /*%FSM</LINK>*/
-      };
-    };
-    /*%FSM</STATE>*/
-    /*%FSM<STATE "ERROR_Server_not">*/
-    class ERROR_Server_not
-    {
-      name = "ERROR_Server_not";
-      init = /*%FSM<STATEINIT""">*/"_msg = ""Authentication Failed, Disconnect and try again"";" \n
-       "_msg call Epoch_updateLoadingScreen;" \n
-       "diag_log _msg;" \n
-       "" \n
-       "_rejectPlayer = {" \n
-       "	PLAYER_REJECT_NoResponse2 = true;" \n
-       "	publicVariableServer ""PLAYER_REJECT_NoResponse2"";" \n
-       "};"/*%FSM</STATEINIT""">*/;
-      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
-      class Links
-      {
-        /*%FSM<LINK "true">*/
-        class true
-        {
-          priority = 0.000000;
-          to="Display_Message";
-          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"true"/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-        };
-        /*%FSM</LINK>*/
-      };
-    };
-    /*%FSM</STATE>*/
-    /*%FSM<STATE "ERROR_Wrong_Server">*/
-    class ERROR_Wrong_Server
-    {
-      name = "ERROR_Wrong_Server";
-      init = /*%FSM<STATEINIT""">*/"_msg = format[""Server and Client running with different Version! (You: %1 // Server: %2)"",getText(configFile >> ""CfgMods"" >> ""Epoch"" >> ""version""),_serverVersion];" \n
-       "_msg call Epoch_updateLoadingScreen;" \n
-       "diag_log _msg;" \n
-       "" \n
-       "_rejectPlayer = {" \n
-       "	PLAYER_REJECT_ServerVersion = true;" \n
-       "	publicVariableServer ""PLAYER_REJECT_ServerVersion"";" \n
-       "};"/*%FSM</STATEINIT""">*/;
-      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
-      class Links
-      {
-        /*%FSM<LINK "true">*/
-        class true
-        {
-          priority = 0.000000;
-          to="Display_Message";
-          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"true"/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-        };
-        /*%FSM</LINK>*/
-      };
-    };
-    /*%FSM</STATE>*/
-    /*%FSM<STATE "Setup_Player_Obj">*/
-    class Setup_Player_Obj
-    {
-      name = "Setup_Player_Obj";
-      init = /*%FSM<STATEINIT""">*/"_ply = player;" \n
-       "_group = group player;" \n
-       "selectPlayer _playerObject;" \n
-       "" \n
-       "deleteVehicle _ply;" \n
-       "deleteGroup _group;" \n
-       "" \n
-       """Loading Player Body... Please wait!"" call Epoch_updateLoadingScreen;" \n
-       "progressLoadingScreen 0.8;" \n
-       "" \n
-       "if (_debug) then {" \n
-       "	diag_log ""EPOCH-LOGIN: Setup Player Object"";" \n
-       "};" \n
-       "" \n
-       "_myTime = diag_tickTime;"/*%FSM</STATEINIT""">*/;
-      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
-      class Links
-      {
-        /*%FSM<LINK "Timeout_">*/
-        class Timeout_
-        {
-          priority = 0.000000;
-          to="ERROR_Player_Setup";
-          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"(diag_tickTime - _myTime) > 60"/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-        };
-        /*%FSM</LINK>*/
-        /*%FSM<LINK "new_player_____p">*/
-        class new_player_____p
-        {
-          priority = 0.000000;
-          to="Setup_Player_Var";
-          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"_playerObject == player"/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-        };
-        /*%FSM</LINK>*/
-      };
-    };
-    /*%FSM</STATE>*/
-    /*%FSM<STATE "Display_Message">*/
-    class Display_Message
-    {
-      name = "Display_Message";
-      init = /*%FSM<STATEINIT""">*/"[] spawn {" \n
-       "   waitUntil{!isNull (findDisplay 46)};" \n
-       "   (findDisplay 46) displayAddEventHandler [""KeyDown"",""true""];" \n
-       "};" \n
-       "diag_log format [""(%1) %2"",diag_tickTime,_msg];" \n
-       "_myTime = diag_tickTime;" \n
-       ""/*%FSM</STATEINIT""">*/;
-      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
-      class Links
-      {
-        /*%FSM<LINK "Display_Message">*/
-        class Display_Message
-        {
-          priority = 0.000000;
-          to="Disconnect";
-          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"(diag_tickTime - _myTime) > 10"/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-        };
-        /*%FSM</LINK>*/
-      };
-    };
-    /*%FSM</STATE>*/
-    /*%FSM<STATE "Check_Server">*/
-    class Check_Server
-    {
-      name = "Check_Server";
-      init = /*%FSM<STATEINIT""">*/"_myTime = diag_tickTime;" \n
-       "if (_debug) then {" \n
-       "	diag_log ""EPOCH-LOGIN: Check Server"";" \n
-       "};" \n
-       """Checking Server... Please wait!"" call Epoch_updateLoadingScreen;" \n
-       "progressLoadingScreen 0.4;"/*%FSM</STATEINIT""">*/;
-      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
-      class Links
-      {
-        /*%FSM<LINK "Server_not_worki">*/
-        class Server_not_worki
-        {
-          priority = 10.000000;
-          to="ERROR_Server_not_1";
-          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"!isNil ""EPOCH_BADHIVE""" \n
-           ""/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-        };
-        /*%FSM</LINK>*/
-        /*%FSM<LINK "Server_Okay">*/
-        class Server_Okay
-        {
-          priority = 0.000000;
-          to="Server_Version_C";
-          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"!isNil ""Epoch_ServerVersion"""/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-        };
-        /*%FSM</LINK>*/
-      };
-    };
-    /*%FSM</STATE>*/
-    /*%FSM<STATE "ERROR_Server_not_1">*/
-    class ERROR_Server_not_1
-    {
-      name = "ERROR_Server_not_1";
-      init = /*%FSM<STATEINIT""">*/"_msg = ""Server not Ready (Error 03)"";" \n
-       "_msg call Epoch_updateLoadingScreen;" \n
-       "diag_log _msg;" \n
-       "" \n
-       "_rejectPlayer = {" \n
-       "	PLAYER_REJECT_NotReady2 = true;" \n
-       "	publicVariableServer ""PLAYER_REJECT_NotReady2"";" \n
-       "};"/*%FSM</STATEINIT""">*/;
-      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
-      class Links
-      {
-        /*%FSM<LINK "true">*/
-        class true
-        {
-          priority = 0.000000;
-          to="Display_Message";
-          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"true"/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-        };
-        /*%FSM</LINK>*/
-      };
-    };
-    /*%FSM</STATE>*/
-    /*%FSM<STATE "Check_Server_1">*/
-    class Check_Server_1
-    {
-      name = "Check_Server_1";
-      init = /*%FSM<STATEINIT""">*/"progressLoadingScreen 0.3;"/*%FSM</STATEINIT""">*/;
-      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
-      class Links
-      {
-        /*%FSM<LINK "Timeout_No_Respo">*/
-        class Timeout_No_Respo
-        {
-          priority = 0.000000;
-          to="ERROR_Server_not_2";
-          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"(diag_tickTime - _myTime) > 180"/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-        };
-        /*%FSM</LINK>*/
-        /*%FSM<LINK "freshServer">*/
-        class freshServer
-        {
-          priority = 0.000000;
-          to="Update_Loadingscreen";
-          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"uiNamespace getVariable ['Epoch_freshServer', false]"/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-        };
-        /*%FSM</LINK>*/
-        /*%FSM<LINK "Server_Ready">*/
-        class Server_Ready
-        {
-          priority = 0.000000;
-          to="Check_Server";
-          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"!isNil ""EPOCH_SERVER"""/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/"_serverUptime = EPOCH_SERVER;" \n
-           "EPOCH_SERVER = nil;"/*%FSM</ACTION""">*/;
-        };
-        /*%FSM</LINK>*/
-      };
-    };
-    /*%FSM</STATE>*/
-    /*%FSM<STATE "ERROR_Server_not_2">*/
-    class ERROR_Server_not_2
-    {
-      name = "ERROR_Server_not_2";
-      init = /*%FSM<STATEINIT""">*/"_msg = ""Server not Ready (Error 02)"";" \n
-       "_msg call Epoch_updateLoadingScreen;" \n
-       "diag_log _msg;" \n
-       "" \n
-       "_rejectPlayer = {" \n
-       "	PLAYER_REJECT_NotReady1 = true;" \n
-       "	publicVariableServer ""PLAYER_REJECT_NotReady1"";" \n
-       "};"/*%FSM</STATEINIT""">*/;
-      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
-      class Links
-      {
-        /*%FSM<LINK "true">*/
-        class true
-        {
-          priority = 0.000000;
-          to="Display_Message";
-          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"true"/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-        };
-        /*%FSM</LINK>*/
-      };
-    };
-    /*%FSM</STATE>*/
-    /*%FSM<STATE "Reject_without_B">*/
-    class Reject_without_B
-    {
-      name = "Reject_without_B";
-      init = /*%FSM<STATEINIT""">*/"[] spawn {" \n
-       "	waitUntil{!isNull (findDisplay 46)};" \n
-       "	waitUntil {" \n
-       "		(findDisplay 46) closeDisplay 0;" \n
-       "		isNull (findDisplay 46)" \n
-       "	};" \n
-       "};"/*%FSM</STATEINIT""">*/;
-      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
-      class Links
-      {
-      };
-    };
-    /*%FSM</STATE>*/
-    /*%FSM<STATE "Arma_Version_Che">*/
-    class Arma_Version_Che
-    {
-      name = "Arma_Version_Che";
-      init = /*%FSM<STATEINIT""">*/"progressLoadingScreen 0.15;" \n
-       ""/*%FSM</STATEINIT""">*/;
-      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
-      class Links
-      {
-        /*%FSM<LINK "Outdated_Version">*/
-        class Outdated_Version
-        {
-          priority = 10.000000;
-          to="ERROR_Wrong_Version_1";
-          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"productVersion select 2 < getNumber(configFile >> ""CfgMods"" >> ""Epoch"" >> ""ArmAVersion"")"/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-        };
-        /*%FSM</LINK>*/
-        /*%FSM<LINK "Player_Object_Re">*/
-        class Player_Object_Re
-        {
-          priority = 0.000000;
-          to="Check_Player_UID";
-          precondition = /*%FSM<CONDPRECONDITION""">*/"!isNull player"/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"player == player"/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-        };
-        /*%FSM</LINK>*/
-      };
-    };
-    /*%FSM</STATE>*/
-    /*%FSM<STATE "ERROR_Wrong_Version_1">*/
-    class ERROR_Wrong_Version_1
-    {
-      name = "ERROR_Wrong_Version_1";
-      init = /*%FSM<STATEINIT""">*/"_msg = ""You have an outdated version of ArmA 3"";" \n
-       "_msg call Epoch_updateLoadingScreen;" \n
-       "diag_log _msg;" \n
-       "" \n
-       "_rejectPlayer = {" \n
-       "	PLAYER_REJECT_ARMAVERSION = true;" \n
-       "	publicVariableServer ""PLAYER_REJECT_ARMAVERSION"";" \n
-       "};"/*%FSM</STATEINIT""">*/;
-      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
-      class Links
-      {
-        /*%FSM<LINK "true">*/
-        class true
-        {
-          priority = 0.000000;
-          to="Display_Message";
-          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"true"/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-        };
-        /*%FSM</LINK>*/
-      };
-    };
-    /*%FSM</STATE>*/
-    /*%FSM<STATE "Setup_EH_s_and_H">*/
-    class Setup_EH_s_and_H
-    {
-      name = "Setup_EH_s_and_H";
-      init = /*%FSM<STATEINIT""">*/"player addEventHandler [""Respawn"", {(_this select 0) call EPOCH_clientRespawn}];" \n
-       "player addEventHandler [""Put"", {(_this select 1) call EPOCH_interact;_this call EPOCH_PutHandler}];" \n
-       "player addEventHandler [""Take"", {(_this select 1) call EPOCH_interact;_this call EPOCH_UnisexCheck}];" \n
-       "player addEventHandler [""InventoryClosed"", {if !(EPOCH_arr_interactedObjs isEqualTo[]) then {EPOCH_arr_interactedObjs remoteExec[""EPOCH_server_save_vehicles"", 2]; EPOCH_arr_interactedObjs = [];};}];" \n
-       "player addEventHandler [""InventoryOpened"", {_this spawn EPOCH_initUI; (locked (_this select 1) in [2, 3])}];" \n
-       "player addEventHandler [""Fired"", {_this call EPOCH_fnc_playerFired}];" \n
-       "player addEventHandler [""Killed"", {_this call EPOCH_fnc_playerDeath}];" \n
-       "" \n
-       "if (count EPOCH_playerHitPoints isEqualTo count ((getAllHitPointsDamage player) param [0,[]])) then {" \n
-       "	{" \n
-       "		player setHitIndex [_forEachIndex, _x];" \n
-       "	}forEach EPOCH_playerHitPoints;" \n
-       "};" \n
-       "" \n
-       "[] spawn EPOCH_masterLoop;" \n
-       "true call EPOCH_fnc_Weather;" \n
-       "[5,100] spawn EPOCH_niteLight;" \n
-       "" \n
-       "if (_debug) then {" \n
-       "	diag_log ""EPOCH-LOGIN: Setup EH's"";" \n
-       "};" \n
-       "" \n
-       """Loading... Please wait!"" call Epoch_updateLoadingScreen;" \n
-       "progressLoadingScreen 0.9;"/*%FSM</STATEINIT""">*/;
-      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
-      class Links
-      {
-        /*%FSM<LINK "Has_Current_Weap">*/
-        class Has_Current_Weap
-        {
-          priority = 10.000000;
-          to="Find_Active_Weap";
-          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"_currentWeapon != """""/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-        };
-        /*%FSM</LINK>*/
-        /*%FSM<LINK "no_weapons">*/
-        class no_weapons
-        {
-          priority = 0.000000;
-          to="Process";
-          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"_currentWeapon == """""/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-        };
-        /*%FSM</LINK>*/
-      };
-    };
-    /*%FSM</STATE>*/
-    /*%FSM<STATE "Process">*/
-    class Process
-    {
-      name = "Process";
-      init = /*%FSM<STATEINIT""">*/"progressLoadingScreen 0.975;"/*%FSM</STATEINIT""">*/;
-      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
-      class Links
-      {
-        /*%FSM<LINK "Preload_done">*/
-        class Preload_done
-        {
-          priority = 0.000000;
-          to="FINISH";
-          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"preloadCamera (getposATL player)"/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/"call compile _playerGroupOnline;"/*%FSM</ACTION""">*/;
-        };
-        /*%FSM</LINK>*/
-      };
-    };
-    /*%FSM</STATE>*/
-    /*%FSM<STATE "Find_Active_Weap">*/
-    class Find_Active_Weap
-    {
-      name = "Find_Active_Weap";
-      init = /*%FSM<STATEINIT""">*/"_activeWeapon = currentWeapon player;" \n
-       "progressLoadingScreen 0.95;"/*%FSM</STATEINIT""">*/;
-      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
-      class Links
-      {
-        /*%FSM<LINK "Current_Weapon_S">*/
-        class Current_Weapon_S
-        {
-          priority = 0.000000;
-          to="Do_nothing";
-          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"_activeWeapon == _currentWeapon"/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-        };
-        /*%FSM</LINK>*/
-        /*%FSM<LINK "Current_Weapon_Not">*/
-        class Current_Weapon_Not
-        {
-          priority = 0.000000;
-          to="Select_Weapon";
-          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"_activeWeapon != _currentWeapon"/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-        };
-        /*%FSM</LINK>*/
-      };
-    };
-    /*%FSM</STATE>*/
-    /*%FSM<STATE "Select_Weapon">*/
-    class Select_Weapon
-    {
-      name = "Select_Weapon";
-      init = /*%FSM<STATEINIT""">*/"_currentWeapon spawn {" \n
-       "	uiSleep 1; " \n
-       "	player selectWeapon _this;" \n
-       "};"/*%FSM</STATEINIT""">*/;
-      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
-      class Links
-      {
-        /*%FSM<LINK "true">*/
-        class true
-        {
-          priority = 0.000000;
-          to="Process";
-          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"true"/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-        };
-        /*%FSM</LINK>*/
-      };
-    };
-    /*%FSM</STATE>*/
-    /*%FSM<STATE "Do_nothing">*/
-    class Do_nothing
-    {
-      name = "Do_nothing";
-      init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
-      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
-      class Links
-      {
-        /*%FSM<LINK "true">*/
-        class true
-        {
-          priority = 0.000000;
-          to="Process";
-          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"true"/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-        };
-        /*%FSM</LINK>*/
-      };
-    };
-    /*%FSM</STATE>*/
-    /*%FSM<STATE "Check_New_Player">*/
-    class Check_New_Player
-    {
-      name = "Check_New_Player";
-      init = /*%FSM<STATEINIT""">*/"_myTime = diag_tickTime;" \n
-       "" \n
-       "// player reveal [_playerObject, 4];" \n
-       "" \n
-       "" \n
-       """Loading Player Inventory... Please wait!"" call Epoch_updateLoadingScreen;" \n
-       "progressLoadingScreen 0.6;" \n
-       ""/*%FSM</STATEINIT""">*/;
-      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
-      class Links
-      {
-        /*%FSM<LINK "Wait_mag_count_m">*/
-        class Wait_mag_count_m
-        {
-          priority = 0.000000;
-          to="Setup_Player_Obj";
-          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"_magCount == count (magazines _playerObject)"/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-        };
-        /*%FSM</LINK>*/
-        /*%FSM<LINK "Timeout_No_Respo">*/
-        class Timeout_No_Respo
-        {
-          priority = 0.000000;
-          to="ERROR_Server_not";
-          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"(diag_tickTime - _myTime) > 120"/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-        };
-        /*%FSM</LINK>*/
-      };
-    };
-    /*%FSM</STATE>*/
-    /*%FSM<STATE "Process_1">*/
-    class Process_1
-    {
-      name = "Process_1";
-      init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
-      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
-      class Links
-      {
-        /*%FSM<LINK "Wait_ArmA_Loading">*/
-        class Wait_ArmA_Loading
-        {
-          priority = 0.000000;
-          to="Start_Loading_Sc";
-          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"{!isnull _x} count ((uinamespace getvariable ""loading_displays"") - [finddisplay 18]) == 0"/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-        };
-        /*%FSM</LINK>*/
-      };
-    };
-    /*%FSM</STATE>*/
-    /*%FSM<STATE "Start_Loading_Sc">*/
-    class Start_Loading_Sc
-    {
-      name = "Start_Loading_Sc";
-      init = /*%FSM<STATEINIT""">*/"startLoadingScreen ["""",""EpochLoadingScreen""];" \n
-       "if (_debug) then {" \n
-       "	diag_log ""EPOCH-LOGIN: Start Loadingscreen"";" \n
-       "};" \n
-       """Starting Epoch... Please wait!"" call Epoch_updateLoadingScreen;"/*%FSM</STATEINIT""">*/;
-      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
-      class Links
-      {
-        /*%FSM<LINK "true">*/
-        class true
-        {
-          priority = 0.000000;
-          to="Version_Check";
-          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"true"/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-        };
-        /*%FSM</LINK>*/
-      };
-    };
-    /*%FSM</STATE>*/
-    /*%FSM<STATE "Update_Loadingscreen">*/
-    class Update_Loadingscreen
-    {
-      name = "Update_Loadingscreen";
-      init = /*%FSM<STATEINIT""">*/"uiNamespace setVariable ['Epoch_freshServer', false];" \n
-       "" \n
-       """Server initializing... Please wait!"" call Epoch_updateLoadingScreen;"/*%FSM</STATEINIT""">*/;
-      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
-      class Links
-      {
-        /*%FSM<LINK "true">*/
-        class true
-        {
-          priority = 0.000000;
-          to="Check_Server_1";
-          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-        };
-        /*%FSM</LINK>*/
-      };
-    };
-    /*%FSM</STATE>*/
-    /*%FSM<STATE "ERROR_Player_Setup">*/
-    class ERROR_Player_Setup
-    {
-      name = "ERROR_Player_Setup";
-      init = /*%FSM<STATEINIT""">*/"_msg = ""Problem setting up player"";" \n
-       "_msg call Epoch_updateLoadingScreen;" \n
-       "diag_log _msg;" \n
-       "" \n
-       "_rejectPlayer = {" \n
-       "	PLAYER_REJECT_InvaildSetup = true;" \n
-       "	publicVariableServer ""PLAYER_REJECT_InvaildSetup"";" \n
-       "};"/*%FSM</STATEINIT""">*/;
-      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
-      class Links
-      {
-        /*%FSM<LINK "true">*/
-        class true
-        {
-          priority = 0.000000;
-          to="Display_Message";
-          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"true"/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-        };
-        /*%FSM</LINK>*/
-      };
-    };
-    /*%FSM</STATE>*/
-    /*%FSM<STATE "Server_Version_C">*/
-    class Server_Version_C
-    {
-      name = "Server_Version_C";
-      init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
-      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
-      class Links
-      {
-        /*%FSM<LINK "Wrong_Server_Ver">*/
-        class Wrong_Server_Ver
-        {
-          priority = 10.000000;
-          to="ERROR_Wrong_Server";
-          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"Epoch_ServerVersion != getText(configFile >> ""CfgMods"" >> ""Epoch"" >> ""version"")"/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-        };
-        /*%FSM</LINK>*/
-        /*%FSM<LINK "Version_Okay">*/
-        class Version_Okay
-        {
-          priority = 0.000000;
-          to="Request_Hive";
-          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-        };
-        /*%FSM</LINK>*/
-      };
-    };
-    /*%FSM</STATE>*/
-    /*%FSM<STATE "ERROR_Server_not_3">*/
-    class ERROR_Server_not_3
-    {
-      name = "ERROR_Server_not_3";
-      init = /*%FSM<STATEINIT""">*/"_msg = ""Authentication Failed, Disconnect and try again"";" \n
-       "_msg call Epoch_updateLoadingScreen;" \n
-       "diag_log _msg;" \n
-       "" \n
-       "_rejectPlayer = {" \n
-       "	PLAYER_REJECT_HiveNotResponse = true;" \n
-       "	publicVariableServer ""PLAYER_REJECT_HiveNotResponse"";" \n
-       "};"/*%FSM</STATEINIT""">*/;
-      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
-      class Links
-      {
-        /*%FSM<LINK "true">*/
-        class true
-        {
-          priority = 0.000000;
-          to="Display_Message";
-          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"true"/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-        };
-        /*%FSM</LINK>*/
-      };
-    };
-    /*%FSM</STATE>*/
-    /*%FSM<STATE "Process_2">*/
-    class Process_2
-    {
-      name = "Process_2";
-      init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
-      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
-      class Links
-      {
-        /*%FSM<LINK "new_character">*/
-        class new_character
-        {
-          priority = 10.000000;
-          to="Open_Gender_Selection";
-          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"_newChar"/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/"endLoadingScreen;" \n
-           "_myGenderTime = diag_tickTime;"/*%FSM</ACTION""">*/;
-        };
-        /*%FSM</LINK>*/
-        /*%FSM<LINK "load_old_charact">*/
-        class load_old_charact
-        {
-          priority = 0.000000;
-          to="Process_3";
-          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/"_myTime = diag_tickTime;"/*%FSM</ACTION""">*/;
-        };
-        /*%FSM</LINK>*/
-      };
-    };
-    /*%FSM</STATE>*/
-    /*%FSM<STATE "Open_Gender_Selection">*/
-    class Open_Gender_Selection
-    {
-      name = "Open_Gender_Selection";
-      init = /*%FSM<STATEINIT""">*/"createdialog ""SelectGender"";"/*%FSM</STATEINIT""">*/;
-      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
-      class Links
-      {
-        /*%FSM<LINK "Gender_Selected">*/
-        class Gender_Selected
-        {
-          priority = 10.000000;
-          to="Send_character_s";
-          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"!isNil ""EPOCH_PlayerIsMale"""/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-        };
-        /*%FSM</LINK>*/
-        /*%FSM<LINK "Timeout">*/
-        class Timeout
-        {
-          priority = 0.000000;
-          to="Send_character_s";
-          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"((diag_tickTime - _myGenderTime) > 30)"/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/"EPOCH_PlayerIsMale = true;" \n
-           "closeDialog 0;"/*%FSM</ACTION""">*/;
-        };
-        /*%FSM</LINK>*/
-        /*%FSM<LINK "Reopen_when_client">*/
-        class Reopen_when_client
-        {
-          priority = 0.000000;
-          to="Open_Gender_Selection";
-          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"!dialog && isNil ""EPOCH_PlayerIsMale"""/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-        };
-        /*%FSM</LINK>*/
-      };
-    };
-    /*%FSM</STATE>*/
-    /*%FSM<STATE "Send_character_s">*/
-    class Send_character_s
-    {
-      name = "Send_character_s";
-      init = /*%FSM<STATEINIT""">*/"startLoadingScreen ["""",""EpochLoadingScreen""];" \n
-       """Gender Selected... Please wait!"" call Epoch_updateLoadingScreen;" \n
-       "" \n
-       "" \n
-       "EPOCH_selectedGender_PVS = [player,EPOCH_PlayerIsMale];" \n
-       "publicVariableServer ""EPOCH_selectedGender_PVS"";" \n
-       "EPOCH_selectedGender_PVS = nil;" \n
-       "EPOCH_PlayerIsMale = nil;"/*%FSM</STATEINIT""">*/;
-      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
-      class Links
-      {
-        /*%FSM<LINK "load_old_charact">*/
-        class load_old_charact
-        {
-          priority = 0.000000;
-          to="Process_3";
-          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/"_myTime = diag_tickTime;"/*%FSM</ACTION""">*/;
-        };
-        /*%FSM</LINK>*/
-      };
-    };
-    /*%FSM</STATE>*/
-    /*%FSM<STATE "Process_3">*/
-    class Process_3
-    {
-      name = "Process_3";
-      init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
-      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
-      class Links
-      {
-        /*%FSM<LINK "Timeout_No_Respo">*/
-        class Timeout_No_Respo
-        {
-          priority = 0.000000;
-          to="ERROR_Server_not_4";
-          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"(diag_tickTime - _myTime) > 120"/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-        };
-        /*%FSM</LINK>*/
-        /*%FSM<LINK "Response">*/
-        class Response
-        {
-          priority = 0.000000;
-          to="Check_New_Player";
-          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"!isNil ""EPOCH_C_SET"""/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/"_array = EPOCH_C_SET;" \n
-           "EPOCH_C_SET = nil;" \n
-           "_playerObject = _array deleteAt 0;" \n
-           "_playerVariables = _array deleteAt 0;" \n
-           "_currentWeapon = _array deleteAt 0;" \n
-           "_magCount = _array deleteAt 0;" \n
-           "Epoch_my_GroupUID = _array deleteAt 0;" \n
-           "Epoch_canBeRevived = _array deleteAt 0;" \n
-           "Epoch_personalToken = _array deleteAt 0;" \n
-           "reverse _serverUptime;" \n
-           "_serverUptime pushBack (_array deleteAt 0);" \n
-           "reverse _serverUptime;" \n
-           "_serverUptime call EPOCH_client_publicEH;" \n
-           "_playerGroupOnline = _array deleteAt 0;" \n
-           "" \n
-           ""/*%FSM</ACTION""">*/;
-        };
-        /*%FSM</LINK>*/
-      };
-    };
-    /*%FSM</STATE>*/
-    /*%FSM<STATE "ERROR_Server_not_4">*/
-    class ERROR_Server_not_4
-    {
-      name = "ERROR_Server_not_4";
-      init = /*%FSM<STATEINIT""">*/"_msg = ""Authentication Failed, Disconnect and try again"";" \n
-       "_msg call Epoch_updateLoadingScreen;" \n
-       "diag_log _msg;" \n
-       "" \n
-       "_rejectPlayer = {" \n
-       "	PLAYER_REJECT_HiveLoadChar = true;" \n
-       "	publicVariableServer ""PLAYER_REJECT_HiveLoadChar"";" \n
-       "};"/*%FSM</STATEINIT""">*/;
-      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
-      class Links
-      {
-        /*%FSM<LINK "true">*/
-        class true
-        {
-          priority = 0.000000;
-          to="Display_Message";
-          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"true"/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-        };
-        /*%FSM</LINK>*/
-      };
-    };
-    /*%FSM</STATE>*/
-  };
-  initState="INIT";
-  finalStates[] =
-  {
-    "FINISH",
-    "Reject_without_B",
-  };
 };
 /*%FSM</COMPILE>*/

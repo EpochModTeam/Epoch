@@ -11,10 +11,10 @@ if (isClass(_config)) then{
 	_finalconfig = _config >> (_this select 1);
 	if (configName(_finalconfig) == (_this select 1)) then{
 		_varData = switch (typeName _defaultData) do {
-			case "SCALAR": {getNumber _finalconfig};
-			case "BOOL": {(getNumber _finalconfig) == 1};
-			case "ARRAY": {getArray _finalconfig};
-			case "STRING": {getText _finalconfig};
+			case "SCALAR": {if (isNumber (_finalconfig)) then { getNumber _finalconfig } else {_defaultData} };
+			case "BOOL": {if (isText (_finalconfig)) then { (getText _finalconfig) isEqualTo "true" } else {_defaultData} };
+			case "ARRAY": {if (isArray (_finalconfig)) then { getArray _finalconfig } else {_defaultData} };
+			case "STRING": {if (isText (_finalconfig)) then { getText _finalconfig } else {_defaultData} };
 			default {_defaultData};
 		};
 	} else {

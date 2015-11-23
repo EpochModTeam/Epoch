@@ -37,7 +37,7 @@ _skn_nilVarCheckArray = [_cfg_variablesConfig, "nilVars", ['EPOCH_antiWallCount'
 _skn_commandMenuArray = [(_config >> "commandMenu"), "menus",['','RscSelectTeam','RscTeam','RscMoveHigh','#GETIN','#RscStatus','#WATCH0','RscCombatMode','RscMenuReply','RscCallSupport','#CUSTOM_RADIO','#User:BIS_fnc_addCommMenuItem_menu','RscRadio','RscReply','#ACTION','RscMenuFormations','#WATCH','RscGroupRootMenu','RscMainMenu','RscMenuMove','RscWatchDir','RscWatchMoveDir','#User:BIS_Menu_GroupCommunication','RscMenuStatus','RscFormations']] call EPOCH_fnc_returnConfigEntry;
 
 _skn_displayAddEHKeyDown = [(_config >> "displayAddEventHandler"), "keyDown",'_this call EPOCH_KeyDown'] call EPOCH_fnc_returnConfigEntry;
-_skn_displayAddEHKeyUp   = [(_config >> "displayAddEventHandler"), "keyUp",''] call EPOCH_fnc_returnConfigEntry;
+_skn_displayAddEHKeyUp   = [(_config >> "displayAddEventHandler"), "keyUp",'_this call EPOCH_KeyUp'] call EPOCH_fnc_returnConfigEntry;
 
 _skn_addEHConfig		= (_config >> "addEventHandler");
 _skn_displayAddEHChecks = [_skn_addEHConfig, "checks",[]] call EPOCH_fnc_returnConfigEntry;
@@ -137,7 +137,7 @@ switch (_this select 0) do {
 		case 'message': { 'epochserver' callExtension format['901|%1', _this select 1] };
 		case 'lock': { 'epochserver' callExtension '931' };
 		case 'unlock': { 'epochserver' callExtension '930' };
-		case 'kick': { 
+		case 'kick': {
 			_playerUID = _this select 1;
 			if (typeName _playerUID == 'OBJECT') then{
 				if (!isNull(_playerUID)) then{
@@ -175,7 +175,7 @@ if (!_skn_enableAntihack) exitWith {
 	EPOCH_server_kickToLobby = compileFinal("true");
 };
 
-// Check AH init code 
+// Check AH init code
 _skn_AH_rndVarAHInitCheck = _skn_rndVA deleteAt 0;
 // Init as array
 call compile(_skn_AH_rndVarAHInitCheck+"=[];");
@@ -298,7 +298,7 @@ EPOCH_server_disconnect = compileFinal("
 		" +_skn_AH_rndVarAHInitCheck + " deleteAt _index;
 		_ret = true;
 	};
-	_ret 
+	_ret
 ");
 
 _stringInArray = {
@@ -381,7 +381,7 @@ _case = _skn_adminMenuOwnerSetting; //All Cfg for Owner Menu
 for "_i" from 1 to 3 do {
 	_temp = "[['=============== MAIN MENU ===============',[],'','1',[]]";
 	if (["PLAYER-TELEPORT","MAP-TELEPORT","INFRONT-TELEPORT"] call _stringInArray) then {
-		
+
 		if ("PLAYER-TELEPORT" in _case) then {
 			_temp = _temp + "
 				,['  Player To Admin',[],{[101,_this select 1] call "+_skn_adminRequest_PVC+"},'4',[]]
@@ -467,7 +467,7 @@ for "_i" from 1 to 3 do {
 		_temp = _temp + ",['Old Visualisation Tools', [],'','1',[]]";
 		if ("OLD-ESP" in _case) then {
 			_temp = _temp + ",['  3D ESP', [], "+_skn_old_esp+", '2', []]";
-		};  
+		};
 		if ("OLD-MAP" in _case) then {
 			_temp = _temp + ",['  MAP ESP', [], "+_skn_old_espMap+", '2', []]";
 		};
@@ -658,7 +658,7 @@ call compile ("'"+_skn_doKickBan+"' addPublicVariableEventHandler {
 			_trusted	= "+_str_learningModeCheck+";
 			if !(_unknownVar in _safeVars) then{
 				if (_trusted) then {
-					
+
 					_safeVars pushBack _unknownVar;
 					missionNamespace setVariable ["+str _skn_whitelistVars+",_safeVars];
 					publicVariable "+str _skn_whitelistVars+";
@@ -804,18 +804,12 @@ _skn_code_antihack = compileFinal ("
 			if !(commandingMenu in "+str _skn_commandMenuArray+") then {
 				[format['Menu: commandMenu: %1',commandingMenu],0] call "+_sknBanANDSleep+";
 			};
-			
+
 			onMapSingleClick '';
 			player allowDamage true;
 			vehicle player allowDamage true;
 			onEachFrame EPOCH_onEachFrame;
 
-			_addCase = addMissionEventHandler ['Draw3D', {}];
-			removeMissionEventHandler ['Draw3D',0];
-			if (_addCase > 0) then {
-				[format['MEH: Draw3D %1',_addCase],0] call "+_sknBanANDSleep+";
-			};
-			
 			{
 				_ehKey = _x select 0;
 				if (_x select 2) then {
@@ -831,7 +825,7 @@ _skn_code_antihack = compileFinal ("
 					[format['EH: %1 %2',_ehKey,_addCase],0] call "+_sknBanANDSleep+";
 				};
 			} forEach "+str _skn_addEHArray+";
-			
+
 			uiSleep 0.01;
 		};
 	};
@@ -845,7 +839,7 @@ _skn_code_antihack = compileFinal ("
 		_personalToken = Epoch_personalToken;
 		_antiWallCount = 0;
 		waitUntil{!isNull (findDisplay 46)};
-		setViewDistance "+str _skn_viewDistance+"; 
+		setViewDistance "+str _skn_viewDistance+";
 		setObjectViewDistance["+str _skn_viewDistanceObects+", 100];
 		setTerrainGrid "+str _skn_terrainGrid+";
 		uiSleep 5;
@@ -950,7 +944,7 @@ _skn_code_antihack = compileFinal ("
 							vehicle player setPosATL _lastPos;
 							_cntBan = _cntBan + 1;
 							if (_cntBan > 4) then {
-								
+
 							};
 						} else {
 							uiSleep 10;
@@ -1108,7 +1102,7 @@ call compile ("'"+_skn_doAdminRequest+"' addPublicVariableEventHandler {
 		if ((_content isKindOf 'LandVehicle') || (_content isKindOf 'Air') || (_content isKindOf 'Ship') || (_content isKindOf 'Tank')) then {
 			[_content, _admin] call EPOCH_server_save_killedVehicle;
 		} else {
-			if (_content isKindOf 'Secure_Storage_Proxy' || (_content isKindOf 'Buildable_Storage')) then{
+			if (_content isKindOf 'Constructions_lockedstatic_F' || (_content isKindOf 'Buildable_Storage')) then{
 				[_content, _admin] call EPOCH_server_save_killedStorage;
 			} else {
 				[_content, _admin] call EPOCH_server_save_killedBuilding;
@@ -1229,7 +1223,7 @@ call compile ("'"+_skn_doAdminRequest+"' addPublicVariableEventHandler {
 
 					_vehLockHiveKey = format['%1:%2', (call EPOCH_fn_InstanceID), _slot];
 					['VehicleLock', _vehLockHiveKey, EPOCH_vehicleLockTime, [_lockOwner]] call EPOCH_fnc_server_hiveSETEX;
-					
+
 					_config = (configFile >> 'CfgVehicles' >> _item >> 'availableColors');
 					if (isArray(_config)) then {
 						_textureSelectionIndex = configFile >> 'CfgVehicles' >> _item >> 'textureSelectionIndex';
@@ -1335,7 +1329,7 @@ _skn_admincode = compileFinal ("
 					if (isPlayer _x) then {
 						_display drawIcon [
 							getText (configFile >> 'CfgVehicles' >> typeOf _x >> 'Icon'), _x call _getDmgColor, visiblePosition _x, _size, _size, getDir _x, name _x
-						];	
+						];
 					};
 				}forEach playableUnits;
 			};
@@ -1343,7 +1337,7 @@ _skn_admincode = compileFinal ("
 				_size = (1/ctrlMapScale _display) max 20;
 				{
 					if (!isNull _x) then {
-						_color = [1,1,1,1]; 
+						_color = [1,1,1,1];
 						_display drawIcon [
 							getText (configFile >> 'CfgVehicles' >> typeOf _x >> 'Icon'), _color, visiblePosition _x, _size, _size, getDir _x, typeOf _x
 						];
@@ -1353,7 +1347,7 @@ _skn_admincode = compileFinal ("
 			if ("+_skn_tg_map_loot+") then {
 				{
 					if (!isNull _x) then {
-						_color = [1,1,1,1]; 
+						_color = [1,1,1,1];
 						_display drawRectangle [
 							visiblePosition _x,
 							5,
@@ -1368,7 +1362,7 @@ _skn_admincode = compileFinal ("
 			if ("+_skn_tg_map_vehicle+") then {
 				_size = (1/ctrlMapScale _display) max 20;
 				{
-					if (alive _x) then {			
+					if (alive _x) then {
 						_display drawIcon [
 							getText (configFile >> 'CfgVehicles' >> typeOf _x >> 'Icon'), _x call _getDmgColor, visiblePosition _x, _size, _size, getDir _x,
 							getText (configFile >> 'CfgVehicles' >> typeOf _x >> 'displayName')
@@ -1379,7 +1373,7 @@ _skn_admincode = compileFinal ("
 			if ("+_skn_tg_map_ai+") then {
 				_size = (0.5/ctrlMapScale _display) max 20;
 				{
-					if (isPlayer _x) then {		 
+					if (isPlayer _x) then {
 						_display drawIcon [
 							getText (configFile >> 'CfgVehicles' >> typeOf _x >> 'Icon'), _x call _getDmgColor, visiblePosition _x, _size, _size, getDir _x,
 							getText (configFile >> 'CfgVehicles' >> typeOf _x >> 'displayName')
@@ -1415,7 +1409,7 @@ _skn_admincode = compileFinal ("
 							};
 						};
 					};
-				}forEach EPOCH_ESPMAP_TARGETS; 
+				}forEach EPOCH_ESPMAP_TARGETS;
 			};
 		}];
 	}forEach ['ESP_mainMap','ESP_adminMap'];
@@ -1669,7 +1663,7 @@ _skn_admincode = compileFinal ("
 				if (surfaceIsWater _pos) then [{vehicle player setPosASL _pos},{vehicle player setPosATL _pos}];
 			} else {
 				[109,_pos] call "+_skn_adminRequest_PVC+";
-			};		  
+			};
 			if (!dialog) then {openMap [false, false]};
 		};
 	};

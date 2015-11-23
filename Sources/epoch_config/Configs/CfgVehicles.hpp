@@ -1927,7 +1927,7 @@ class CfgVehicles
 		class TransportItems{};
 		class Eventhandlers{};
 	};
-	
+
 	class I_MRAP_03_F;
 	class I_MRAP_03_EPOCH : I_MRAP_03_F
 	{
@@ -1942,7 +1942,7 @@ class CfgVehicles
 		typicalCargo[] = {};
 		class TransportItems{};
 		class Eventhandlers{};
-		
+
 		class RenderTargets
 		{
 			class commander_display
@@ -2359,7 +2359,7 @@ class CfgVehicles
 		waterResistanceCoef = 0.8;
 		waterAngularDampingCoef = 10;
 		destrType = "DestructNo";
-		
+
 		mapSize = 0.14;
 		icon = "iconObject_2x3";
 		cost = 1000;
@@ -2408,14 +2408,67 @@ class CfgVehicles
 		cost = 1000;
 		interactMode = 1;
 	};
-	/*
-	class Sword_SIM_EPOCH: Constructions_modular_F
+
+	class Spike_TRAP_SIM_EPOCH: Constructions_modular_F
 	{
 		scope = 2;
-		model = "\x\addons\a3_epoch_assets\models\sword.p3d";
-		displayName = "Sword";
+		model = "\x\addons\a3_epoch_assets\models\sticks.p3d";
+		displayName = "Spike Trap (SIM)";
+		simulClass = "Spike_TRAP_SIM_EPOCH";
+		staticClass = "Spike_TRAP_EPOCH";
+		GhostPreview = "Spike_TRAP_EPOCH";
+		limitNearby = 1;
+		bypassJammer = 1;
 	};
-	*/
+
+	class Metal_TRAP_SIM_EPOCH: Constructions_modular_F
+	{
+		scope = 2;
+		model = "\x\addons\a3_epoch_assets\models\sticks.p3d";
+		displayName = "Metal Trap (SIM)";
+		simulClass = "Metal_TRAP_SIM_EPOCH";
+		staticClass = "Metal_TRAP_EPOCH";
+		GhostPreview = "Metal_TRAP_EPOCH";
+		limitNearby = 1;
+		bypassJammer = 1;
+	};
+
+	class TankTrap_SIM_EPOCH: Constructions_modular_F
+	{
+		scope = 2;
+		model = "\x\addons\a3_epoch_assets_3\CfgVehicles\Defense\tank_trap.p3d";
+		displayName = "Tank Trap (SIM)";
+		simulClass = "TankTrap_SIM_EPOCH";
+		staticClass = "TankTrap_EPOCH";
+		GhostPreview = "TankTrap_EPOCH";
+		limitNearby = 4;
+		bypassJammer = 1;
+	};
+
+	class Hesco3_SIM_EPOCH : Constructions_modular_F
+	{
+		scope = 2;
+		model = "\x\addons\a3_epoch_assets_3\CfgVehicles\Defense\hesco.p3d";
+		displayName = "Hesco Wide (SIM)";
+		simulClass = "Hesco3_SIM_EPOCH";
+		staticClass = "Hesco3_EPOCH";
+		GhostPreview = "Hesco3_Ghost_EPOCH";
+		snapType = "snapPointsPara";
+		snapPointsPara[] = { "C", "E", "W" };
+		allowedSnapPoints[] = { "C", "E", "W" };
+		allowedSnapObjects[] = { "Hesco3_EPOCH" };
+		energyCost = 0.4;
+		slingLoadCargoMemoryPoints[] = {};
+		limitNearby = 4;
+		bypassJammer = 1;
+
+		/*
+		hiddenSelections[] = { "Camo" };
+		hiddenSelectionsTextures[] = { "\x\addons\a3_epoch_assets\textures\hesco\hesco_co.paa" };
+		hiddenSelectionsMaterials[] = { "\x\addons\a3_epoch_assets\textures\hesco\hesco.rvmat" };
+		*/
+	};
+
 	class SapperHead_SIM_EPOCH: Constructions_modular_F
 	{
 		scope = 2;
@@ -2459,6 +2512,7 @@ class CfgVehicles
 		simulClass = "Fireplace_SIM_EPOCH";
 		staticClass = "Fireplace_EPOCH";
 		GhostPreview = "Fireplace_EPOCH";
+		isTemporary = 1;
 	};
 	class Jack_SIM_EPOCH : Constructions_modular_F
 	{
@@ -2654,6 +2708,21 @@ class CfgVehicles
 		allowedSnapPoints[] = {"NF","SF","EF","WF","C"};
 		allowedSnapObjects[] = {"Const_floors_static_F","Constructions_foundation_F"};
 		energyCost = 0.2;
+		slingLoadCargoMemoryPoints[] = { "N", "S", "E", "W" };
+	};
+	class MetalFloor_SIM_EPOCH : Constructions_modular_F
+	{
+		scope = 2;
+		model = "\x\addons\a3_epoch_assets_1\models\metal_floor.p3d";
+		displayName = "Metal Floor";
+		simulClass = "MetalFloor_SIM_EPOCH";
+		staticClass = "MetalFloor_EPOCH";
+		GhostPreview = "MetalFloor_Ghost_EPOCH";
+		snapPointsPara[] = { "NF", "SF", "EF", "WF", "C", "CB" };
+		snapPointsPerp[] = { "N", "S", "E", "W", "CinN", "CinS", "CinE", "CinW" };
+		allowedSnapPoints[] = { "NF", "SF", "EF", "WF", "C" };
+		allowedSnapObjects[] = { "Const_floors_static_F", "Constructions_foundation_F" };
+		energyCost = 0.5;
 		slingLoadCargoMemoryPoints[] = { "N", "S", "E", "W" };
 	};
 
@@ -3587,6 +3656,7 @@ class CfgVehicles
 		simulClass = "PlotPole_SIM_EPOCH";
 
 		model = "\x\addons\a3_epoch_assets\models\jammer.p3d";
+		/*
 		class UserActions
 		{
 			class MaintainIT
@@ -3600,6 +3670,7 @@ class CfgVehicles
 				statement = "this call EPOCH_maintainIT";
 			};
 		};
+		*/
 		removeParts[] = { { "KitPlotPole", 1 } };
 		bypassJammer = 1;
 		interactMode = 1;
@@ -3659,7 +3730,7 @@ class CfgVehicles
 	};
 	*/
 
-	class Constructions_lockedstatic_F : NonStrategic
+	class Constructions_lockedstatic_F : WeaponHolder
 	{
 		mapSize = 1.27;
 		author = "Epoch";
@@ -3672,6 +3743,12 @@ class CfgVehicles
 		vehicleclass = "Epoch_objects";
 		destrType = "DestructBuilding";
 		cost = 1000;
+		// storage defaults
+		isGround = 0;
+		showWeaponCargo = 0;
+		forceSupply = 0;
+		maximumLoad = 600;
+		isSecureStorage = 1;
 	};
 
 	class LockBox_EPOCH : Constructions_lockedstatic_F
@@ -3684,10 +3761,12 @@ class CfgVehicles
 		weaponHolderProxy = "LockBoxProxy_EPOCH";
 		GhostPreview = "LockBox_EPOCH";
 		armor = 5000;
+		maximumLoad = 600;
 		bypassJammer = 1;
 		limitNearby = 2;
 		isSecureStorage = 1;
 		returnOnPack[] = { { "ItemLockbox", 1 } };
+		/*
 		class UserActions
 		{
 			class Unlock
@@ -3710,6 +3789,7 @@ class CfgVehicles
 				statement = "EPOCH_packStorage_PVS = [this,player,Epoch_personalToken]; publicVariableServer ""EPOCH_packStorage_PVS"";";
 			};
 		};
+		*/
 	};
 
 
@@ -3723,12 +3803,15 @@ class CfgVehicles
 		weaponHolderProxy = "SafeProxy_EPOCH";
 		GhostPreview = "Safe_EPOCH";
 		armor = 15000;
+		maximumLoad = 3600;
 		bypassJammer = 1;
 		limitNearby = 2;
 		isSecureStorage = 1;
 		returnOnPack[] = { { "ItemSafe", 1 } };
+		/*
 		class UserActions
 		{
+
 			class Unlock
 			{
 				displayName = "Unlock";
@@ -3739,6 +3822,7 @@ class CfgVehicles
 				condition = "(this getVariable[""EPOCH_secStorParent"", objNull]) getVariable [""EPOCH_Locked"",true]";
 				statement = "EPOCH_lockStorage_PVS = [this,false,player,Epoch_personalToken]; publicVariableServer ""EPOCH_lockStorage_PVS"";";
 			};
+
 			class Pack
 			{
 				displayName = "Pack";
@@ -3748,7 +3832,86 @@ class CfgVehicles
 				condition = "(this getVariable[""EPOCH_secStorParent"", objNull]) getVariable [""EPOCH_Locked"",true]";
 				statement = "EPOCH_packStorage_PVS = [this,player,Epoch_personalToken]; publicVariableServer ""EPOCH_packStorage_PVS"";";
 			};
+
 		};
+		*/
+
+	};
+
+
+	class TankTrap_EPOCH: Constructions_static_F
+	{
+		scope = 2;
+		model = "\x\addons\a3_epoch_assets_3\CfgVehicles\Defense\tank_trap.p3d";
+		displayName = "Tank Trap";
+		simulClass = "TankTrap_SIM_EPOCH";
+		staticClass = "TankTrap_EPOCH";
+		GhostPreview = "TankTrap_EPOCH";
+		energyCost = 0.2;
+		limitNearby = 4;
+		bypassJammer = 1;
+	};
+
+	class TRAP_EPOCH : Constructions_static_F {};
+	class Spike_TRAP_EPOCH: Constructions_static_F
+	{
+		scope = 2;
+		model = "\x\addons\a3_epoch_assets\models\sticks.p3d";
+		displayName = "Spike Trap (SIM)";
+		simulClass = "Spike_TRAP_SIM_EPOCH";
+		staticClass = "Spike_TRAP_EPOCH";
+		GhostPreview = "Spike_TRAP_EPOCH";
+		ammoClass = "Spike_TRAP_AMMO_EPOCH";
+		energyCost = 0.2;
+		limitNearby = 2;
+		bypassJammer = 1;
+		armor = 0.1
+	};
+
+	class Metal_TRAP_EPOCH: Constructions_static_F
+	{
+		scope = 2;
+		model = "\x\addons\a3_epoch_assets\models\sticks.p3d";
+		displayName = "Metal Trap (SIM)";
+		simulClass = "Metal_TRAP_SIM_EPOCH";
+		staticClass = "Metal_TRAP_EPOCH";
+		GhostPreview = "Metal_TRAP_EPOCH";
+		ammoClass = "Metal_TRAP_AMMO_EPOCH";
+		energyCost = 0.4;
+		limitNearby = 2;
+		bypassJammer = 1;
+		armor = 0.1
+	};
+
+	class Hesco3_EPOCH: Const_All_Walls_F
+	{
+		scope = 2;
+		model = "\x\addons\a3_epoch_assets_3\CfgVehicles\Defense\hesco.p3d";
+		displayName = "Hesco Wide";
+		simulClass = "Hesco3_SIM_EPOCH";
+		staticClass = "Hesco3_EPOCH";
+		GhostPreview = "Hesco3_Ghost_EPOCH";
+		snapType = "snapPointsPara";
+		snapPointsPara[] = { "C", "E", "W" };
+		allowedSnapPoints[] = { "C", "E", "W" };
+		energyCost = 0.2;
+		limitNearby = 4;
+		bypassJammer = 1;
+
+		/*
+		hiddenSelections[] = { "Camo" };
+		hiddenSelectionsTextures[] = { "\x\addons\a3_epoch_assets\textures\hesco\hesco_co.paa" };
+		hiddenSelectionsMaterials[] = { "\x\addons\a3_epoch_assets\textures\hesco\hesco.rvmat" };
+		*/
+
+		/*
+		selectionDamage = "zbytek";
+		class Damage
+		{
+			tex[] = {};
+			mat[] = { "x\addons\a3_epoch_assets\textures\cinder\cinder.rvmat", "x\addons\a3_epoch_assets\textures\cinder\cinder_destruct50.rvmat", "x\addons\a3_epoch_assets\textures\cinder\cinder_destruct50.rvmat" };
+		};
+		*/
 	};
 
 	class WoodRamp_EPOCH : Constructions_static_F
@@ -3792,7 +3955,7 @@ class CfgVehicles
 		scope = 2;
 		model = "\x\addons\a3_epoch_assets\models\cinder.p3d";
 		displayName = "Cinder Block Wall";
-		upgradeBuilding[] = { "CinderWallGarage_EPOCH", { { "ItemCorrugatedLg", 1 }, { "CircuitParts", 1 }  } };
+		// upgradeBuilding[] = { "CinderWallGarage_EPOCH", { { "ItemCorrugatedLg", 1 }, { "CircuitParts", 1 }  } };
 		simulClass = "CinderWall_SIM_EPOCH";
 		staticClass = "CinderWall_EPOCH";
 		GhostPreview = "CinderWall_EPOCH";
@@ -3801,7 +3964,7 @@ class CfgVehicles
 		allowedSnapPoints[] = { "N", "S", "E", "W" };
 		energyCost = 0.4;
 		armor = 10000;
-		removeParts[] = { { "CinderBlocks", 4 }, { "ItemRock", 2 } };
+
 	};
 	class CinderWallGarage_EPOCH : Const_Cinder_static_F
 	{
@@ -3948,7 +4111,28 @@ class CfgVehicles
 		snapPointsPerp[] = {"N","S","E","W","CinN","CinS","CinE","CinW"};
 		allowedSnapPoints[] = {"NF","SF","EF","WF","C"};
 		energyCost = 0.2;
-		removeParts[] = { { "PartPlankPack", 2 } };
+	};
+	class MetalFloor_EPOCH : Const_floors_static_F
+	{
+		scope = 2;
+		model = "\x\addons\a3_epoch_assets_1\models\metal_floor.p3d";
+		displayName = "Metal Floor";
+		simulClass = "MetalFloor_SIM_EPOCH";
+		staticClass = "MetalFloor_EPOCH";
+		GhostPreview = "MetalFloor_Ghost_EPOCH";
+		snapPointsPara[] = { "NF", "SF", "EF", "WF", "C", "CB" };
+		snapPointsPerp[] = { "N", "S", "E", "W", "CinN", "CinS", "CinE", "CinW" };
+		allowedSnapPoints[] = { "NF", "SF", "EF", "WF", "C" };
+		energyCost = 0.5;
+		armor = 15000;
+
+		selectionDamage = "zbytek";
+		class Damage
+		{
+			tex[] = {};
+			// TODO: make seperate rvmat for destruction check for issues due to camo zbytek applying to all mats
+			mat[] = { "x\addons\a3_epoch_assets_1\textures\metal_floor.rvmat", "x\addons\a3_epoch_assets\textures\PlyPlank_destruct50.rvmat", "x\addons\a3_epoch_assets\textures\PlyPlank_destruct50.rvmat" };
+		};
 	};
 
 	// Wood wall seed item lvl 0
@@ -4024,6 +4208,20 @@ class CfgVehicles
 
 		ladders[] = {};
 	};
+	class MetalFloor_Ghost_EPOCH : Const_Ghost_EPOCH
+	{
+		scope = 2;
+		model = "\x\addons\a3_epoch_assets_1\models\metal_floor_ghost.p3d";
+		displayName = "Metal Floor Ghost";
+		staticClass = "MetalFloor_EPOCH";
+
+		snapPointsPara[] = { "NF", "SF", "EF", "WF", "C", "CB" };
+		snapPointsPerp[] = { "N", "S", "E", "W", "CinN", "CinS", "CinE", "CinW" };
+		allowedSnapPoints[] = { "NF", "SF", "EF", "WF", "C" };
+		allowedSnapObjects[] = { "Const_floors_static_F", "Constructions_foundation_F" };
+
+		ladders[] = {};
+	};
 
 	class WoodLadder_Ghost_EPOCH : Const_Ghost_EPOCH
 	{
@@ -4077,6 +4275,22 @@ class CfgVehicles
 		snapPointsPerp[] = {};
 		allowedSnapPoints[] = { "NF", "SF", "EF", "WF", "CB" };
 		allowedSnapObjects[] = { "Const_floors_static_F", "Constructions_foundation_F" };
+
+		ladders[] = {};
+	};
+
+
+	class Hesco3_Ghost_EPOCH : Const_Ghost_EPOCH
+	{
+		scope = 2;
+		model = "\x\addons\a3_epoch_assets_3\CfgVehicles\Defense\hesco_ghost.p3d";
+		displayName = "Hesco Wide (Ghost)";
+		staticClass = "Hesco3_EPOCH";
+
+		snapPointsPara[] = {};
+		snapPointsPerp[] = {};
+		allowedSnapPoints[] = { "C", "E", "W" };
+		allowedSnapObjects[] = { "Hesco3_EPOCH" };
 
 		ladders[] = {};
 	};
@@ -5073,60 +5287,9 @@ class CfgVehicles
 		};
 	};
 
-	class Secure_Storage_Proxy : WeaponHolder {};
-	class LockBoxProxy_EPOCH : Secure_Storage_Proxy
-	{
-		scope = 2;
-		model = "\A3\Weapons_f\dummyweapon.p3d";
-		displayName = "Lockbox WH";
-		isGround = 0;
-		showWeaponCargo = 0;
-		forceSupply = 0;
-		maximumLoad = 600;
-		isSecureStorage = 1;
-		parentClass = "LockBox_EPOCH";
-
-		class UserActions
-		{
-			class Lock
-			{
-				displayName = "Lock";
-				displayNameDefault = "<img image='\A3\modules_f\data\iconlock_ca.paa' size='2.5' />";
-				onlyforplayer = 1;
-				position = "Door_knopf";
-				radius = 3;
-				condition = "this == this";
-				statement = "EPOCH_lockStorage_PVS = [this,true,player,Epoch_personalToken]; publicVariableServer ""EPOCH_lockStorage_PVS"";";
-			};
-		};
-	};
-
-	class SafeProxy_EPOCH : Secure_Storage_Proxy
-	{
-		scope = 2;
-		model = "\x\addons\a3_epoch_assets_1\models\safe_proxy.p3d";
-		displayName = "Safe WH";
-		isGround = 0;
-		showWeaponCargo = 0;
-		forceSupply = 0;
-		maximumLoad = 3600;
-		isSecureStorage = 1;
-		parentClass = "Safe_EPOCH";
-
-		class UserActions
-		{
-			class Lock
-			{
-				displayName = "Lock";
-				displayNameDefault = "<img image='\A3\modules_f\data\iconlock_ca.paa' size='2.5' />";
-				onlyforplayer = 1;
-				position = "Door_knopf";
-				radius = 3;
-				condition = "this == this";
-				statement = "EPOCH_lockStorage_PVS = [this,true,player,Epoch_personalToken]; publicVariableServer ""EPOCH_lockStorage_PVS"";";
-			};
-		};
-	};
+	// class Secure_Storage_Proxy : WeaponHolder {};
+	class LockBoxProxy_EPOCH : LockBox_EPOCH {};
+	class SafeProxy_EPOCH : Safe_EPOCH {};
 
 	class CouchProxy_EPOCH: WeaponHolder
 	{

@@ -45,7 +45,7 @@ _configArray = [
             ["B_Heli_Light_01_EPOCH", 2],
             ["B_SDV_01_EPOCH", 2],
             ["B_MRAP_01_EPOCH", 3],
-						["I_MRAP_03_EPOCH", 3],
+			["I_MRAP_03_EPOCH", 3],
             ["B_Truck_01_transport_EPOCH", 1],
             ["B_Truck_01_covered_EPOCH", 2],
             ["B_Truck_01_mover_EPOCH", 1],
@@ -69,7 +69,7 @@ _configArray = [
             ["K04", 2],
             ["ebike_epoch", 7],
             ["mosquito_epoch", 5],
-						["C_Heli_Light_01_civil_EPOCH",5]
+			["C_Heli_Light_01_civil_EPOCH",5]
         ]
     ],
     ["taxRate", 0.1],
@@ -94,13 +94,13 @@ _configArray = [
 EPOCH_fnc_returnConfigEntry = {
     private["_defaultData", "_config", "_varData"];
     _defaultData = _this select 2;
-	_config      = (_this select 0) >> (_this select 1);
 	if (isClass(_this select 0)) then{
+		_config = (_this select 0) >> (_this select 1);
 		_varData = switch (typeName _defaultData) do {
-			case "SCALAR": {getNumber _config};
-			case "BOOL": {(getNumber _config) == 1};
-			case "ARRAY": {getArray _config};
-			case "STRING": {getText _config};
+			case "SCALAR": {if (isNumber (_config)) then { getNumber _config } else {_defaultData} };
+			case "BOOL": {if (isText (_config)) then { (getText _config) isEqualTo "true" } else {_defaultData} };
+			case "ARRAY": {if (isArray (_config)) then { getArray _config } else {_defaultData} };
+			case "STRING": {if (isText (_config)) then { getText _config } else {_defaultData} };
 			default {_defaultData};
 		};
 	} else {

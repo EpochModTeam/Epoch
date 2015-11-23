@@ -7,6 +7,13 @@ if (!isNull _building) then {
 
 	_vehSlot = _building getVariable["BUILD_SLOT", -1];
 	if (_vehSlot != -1) then {
+
+		// Set off trap object
+		_ammoObj = _building getVariable ["EPOCH_TRAP_OBJ",objNull];
+		if !(isNull _ammoObj) then {
+			_ammoObj setDamage 1;
+		};
+
 		_vehHiveKey = format ["%1:%2", (call EPOCH_fn_InstanceID), _vehSlot];
 		["Building", _vehHiveKey, []] call EPOCH_fnc_server_hiveSET;
 		EPOCH_BuildingSlots set [_vehSlot, 0];

@@ -1,4 +1,3 @@
-
 if (EPOCH_velTransform) then {
 	if (EPOCH_playerEnergy > 0) then {
 		_pos1 = getPosASL EPOCH_target;
@@ -23,7 +22,6 @@ if (EPOCH_velTransform) then {
 		EPOCH_velTransform = false;
 	};
 };
-
 if (!isNull EPOCH_currentTarget && vehicle player == player) then {
 	_currentTarget = EPOCH_currentTarget;
 
@@ -32,20 +30,27 @@ if (!isNull EPOCH_currentTarget && vehicle player == player) then {
 
 		_stability = 0;
 		_color = [1, 1, 1, 0.7];
-		_text = "";
+		_text = format ["Hold (%1)",EPOCH_keysAction call BIS_fnc_keyCode];
 		_icon = "\x\addons\a3_epoch_code\Data\UI\ui_question_ca.paa";
 
 		_interactOption = getNumber(configFile >> "cfgVehicles" >> typeOf _currentTarget >> "interactMode");
 
 		switch _interactOption do {
 			case 0: {
-				_text = "Press (Inventory)";
-				_stability = 100 - round(damage _currentTarget) * 10;
+				_stability = 100 - round(damage _currentTarget * 100);
 				_icon = "\x\addons\a3_epoch_code\Data\UI\loading_bar_%1.paa";
+				_text = "Press (Inventory)";
+
+				if (_stability < 50) then {
+					_color = [1, 0.5, 0, 0.7];
+					if (_stability < 25) then {
+						_color = [1, 0, 0, 0.7];
+					};
+				};
 			};
 			case 1: {
-				_text = if (EPOCH_buildMode > 0) then[{"Press (Space)"}, { "Enable Build - Press (1)" }];
-				_stability = _currentTarget getVariable["stability", 100];
+				_text = if (EPOCH_buildMode > 0) then[{_text}, { format ["Press (%1)",EPOCH_keysBuildMode1 call BIS_fnc_keyCode] }];
+				_stability = if (EPOCH_buildMode > 0) then[{_currentTarget getVariable["stability", 100]}, {100 - round(damage _currentTarget * 100)}];
 				_icon = "\x\addons\a3_epoch_code\Data\UI\loading_bar_%1.paa";
 
 				if (_stability < 50) then {
@@ -57,8 +62,8 @@ if (!isNull EPOCH_currentTarget && vehicle player == player) then {
 			};
 			case 2: {
 				if (alive _currentTarget) then{
-					_text = format["%1 - Press (Ctrl+T)", if (isStreamFriendlyUIEnabled) then[{"Player"}, { name _currentTarget }]];
-					_stability = 100 - round(damage _currentTarget) * 10;
+					_text = format["%1 - Press (Ctrl+%2)", if (isStreamFriendlyUIEnabled) then[{"Player"}, { name _currentTarget }],EPOCH_keysAcceptTrade call BIS_fnc_keyCode];
+					_stability = 100 - round(damage _currentTarget * 100);
 					_icon = "\x\addons\a3_epoch_code\Data\UI\loading_bar_%1.paa";
 
 					if (_stability < 50) then{
@@ -69,19 +74,20 @@ if (!isNull EPOCH_currentTarget && vehicle player == player) then {
 					};
 
 				} else {
-					_text = "Press (Inventory)";
+					//_text = "Press (Inventory)";
 					_icon = "\x\addons\a3_epoch_code\Data\UI\ui_crossbones_ca.paa";
 				};
 			};
 			case 3: {
 				if (!alive _currentTarget && _distance < 2) then{
-					_text = "Gut Animal - Press (Inventory)";
+					_text = format ["Gut Animal - %1",_text];
 					_icon = "\x\addons\a3_epoch_code\Data\UI\ui_crossbones_ca.paa";
 				};
 			};
 			case 4: {
-				_text = if (EPOCH_buildMode > 0) then[{"Press (Space)"}, { "Press (Inventory)" }];
-				_stability = _currentTarget getVariable["stability", 100];
+				//_text = if (EPOCH_buildMode > 0) then[{"Press (Space)"}, { "Press (Inventory)" }];
+				_text = if (EPOCH_buildMode > 0) then[{_text}, { format ["Press (%1) or (Inventory)",EPOCH_keysBuildMode1 call BIS_fnc_keyCode] }];
+				_stability = if (EPOCH_buildMode > 0) then[{_currentTarget getVariable["stability", 100]}, {100 - round(damage _currentTarget * 100)}];
 				_icon = "\x\addons\a3_epoch_code\Data\UI\loading_bar_%1.paa";
 
 				if (_stability < 50) then{
@@ -94,7 +100,7 @@ if (!isNull EPOCH_currentTarget && vehicle player == player) then {
 		};
 
 		if (!isNull EPOCH_stabilityTarget) then {
-			if (cursorTarget != EPOCH_stabilityTarget) then {
+			if (([10] call EPOCH_fnc_cursorTarget) != EPOCH_stabilityTarget) then {
 				EPOCH_stabilityTarget = objNull;
 			}
 			else {
@@ -120,13 +126,14 @@ if (!isNull EPOCH_currentTarget && vehicle player == player) then {
 		_pos = visiblePositionASL _currentTarget;
 		_pos set[2, (_currentTarget modelToWorld[0, 0, 0]) select 2];
 
-		_size = 3;
+		_size = 2.5;
 		drawIcon3D[format[_icon, _stability], _color, _pos, _size, _size, 0, _text, 0, _size / 60, "PuristaMedium"];
 	};
 }
 else {
 	EPOCH_stabilityTarget = objNull;
 };
+
 
 if (EPOCH_drawIcon3d) then {
 		{
@@ -146,6 +153,17 @@ if (EPOCH_drawIcon3d) then {
 			};
 		}forEach EPOCH_arr_countdown;
 };
+
+{
+	_distance = player distance _x;
+	if (_distance < 9) then {
+		_pos = _x;
+		_color = [1, 1, 1, 0.7];
+		_size = 1;
+		drawIcon3D["x\addons\a3_epoch_code\Data\UI\snap_ca.paa", _color, _pos, _size, _size, 0, "", 1, _size / 60, "PuristaMedium"];
+	};
+}forEach EPOCH_arr_snapPoints;
+
 {
 	if (!isNull _x) then {
 		_pos = visiblePositionASL _x;

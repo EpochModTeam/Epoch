@@ -92,8 +92,8 @@ if (epoch_centerMarkerPosition isEqualTo [0,0,0]) then {
 };
 EPOCH_dynamicVehicleArea = _worldSize / 2;
 
-diag_log "Epoch: Set Weather";
-true call EPOCH_server_setWeather;
+// diag_log "Epoch: Set Weather";
+// true call EPOCH_server_setWeather;
 
 // custom radio channels
 EPOCH_customChannels = [];

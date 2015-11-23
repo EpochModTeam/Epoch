@@ -1,4 +1,9 @@
 private ["_warming","_isNearFire","_airTemp","_waterTemp","_playerPosATL"];
+
+if (isNil "EPOCH_CURRENT_WEATHER") then {
+	EPOCH_CURRENT_WEATHER = 75;
+};
+
 _airTemp = EPOCH_CURRENT_WEATHER;
 _waterTemp = EPOCH_CURRENT_WEATHER/2;
 _warming = true;

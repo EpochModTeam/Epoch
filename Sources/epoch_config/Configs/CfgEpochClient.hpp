@@ -1,6 +1,6 @@
 class CfgEpochClient
 {
-	epochVersion = "0.3.4.0";
+	epochVersion = "0.3.5.0";
 
 	sapperRngChance = 100; // increase number to reduce chances and reduce to increase. Default 100 = 1% - 55% if soiled (+ 2% if in city) chance to spawn sapper
 	droneRngChance = 100; // increase number to reduce chances and reduce to increase. Default 100 = // 2% chance (+ 4% chance if in city) (1% - 2% Half if using silencer) to spawn drone if shot fired
@@ -38,7 +38,10 @@ class CfgEpochClient
 		{"Crypto",0},
 		{"HitPoints",{0,0,0,0}},
 		{"BloodP",100},
-		{"SpawnArray",{}}
+		{"SpawnArray",{}},
+		{"Karma",0},
+		{"Alcohol",0},
+		{"Radiation",0}
 	};
 
 	// controls max group limit and cost
@@ -63,7 +66,7 @@ class CfgEpochClient
 		{ "cabinetPos", "Cabinet_EPOCH", false }
 	};
 
-	
+
 	#include "CfgEpochClient\takistan.hpp"
 	#include "CfgEpochClient\australia.hpp"
 	#include "CfgEpochClient\ProvingGrounds_PMC.hpp"

@@ -250,7 +250,7 @@ class FSM
        "player addEventHandler [""Put"", {(_this select 1) call EPOCH_interact;_this call EPOCH_PutHandler}];" \n
        "player addEventHandler [""Take"", {(_this select 1) call EPOCH_interact;_this call EPOCH_UnisexCheck}];" \n
        "player addEventHandler [""InventoryClosed"", {if !(EPOCH_arr_interactedObjs isEqualTo[]) then {EPOCH_arr_interactedObjs remoteExec[""EPOCH_server_save_vehicles"", 2]; EPOCH_arr_interactedObjs = [];};}];" \n
-       "player addEventHandler [""InventoryOpened"", {_this spawn EPOCH_initUI; (locked (_this select 1) in [2, 3])}];" \n
+       "player addEventHandler [""InventoryOpened"", {_this spawn EPOCH_initUI; (locked (_this select 1) in [2, 3] || (_this select 1) getVariable[""EPOCH_Locked"", false])}];" \n
        "player addEventHandler [""Fired"", {_this call EPOCH_fnc_playerFired}];" \n
        "player addEventHandler [""Killed"", {_this call EPOCH_fnc_playerDeath}];"/*%FSM</STATEINIT""">*/;
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;

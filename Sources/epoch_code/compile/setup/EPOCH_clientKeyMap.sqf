@@ -4,6 +4,13 @@ params [["_args",0],["_input",0]];
 _keyMap =
 [
 	//["Name", "Variable name", Default value],
+	["Action","EPOCH_keysAction",0x39],
+	["Holster Weapon", "EPOCH_keysHolster", 35],
+	["Debug Monitor", "EPOCH_keysDebugMon", 41],
+	["Trade", "EPOCH_keysAcceptTrade", 0x14],
+	
+	["Volume + (ctrl)","EPOCH_keysVolumeUp",0x0D],
+	["Volume - (ctrl)","EPOCH_keysVolumeDown",0x0C],
 	["Build: Mode 1", "EPOCH_keysBuildMode1", 2],
 	["Build: Mode 2", "EPOCH_keysBuildMode2", 3],
 	["Build: Direction", "EPOCH_keysBuildDir", 4],
@@ -15,11 +22,7 @@ _keyMap =
 	["Build: Move LEFT", "EPOCH_keysBuildMovL", 0xD2],
 	["Build: Move RIGHT", "EPOCH_keysBuildMovR", 0xD3],
 	["Build: Rotate LEFT", "EPOCH_keysBuildRotL", 0x12],
-	["Build: Rotate RIGHT", "EPOCH_keysBuildRotR", 0x10],
-	["Build: BUILD", "EPOCH_keysBuildIt", 0x39],
-	["Trade", "EPOCH_keysAcceptTrade", 0x14],
-	["Holster Weapon", "EPOCH_keysHolster", 35],
-	["Debug Monitor", "EPOCH_keysDebugMon", 41]
+	["Build: Rotate RIGHT", "EPOCH_keysBuildRotR", 0x10]
 ];
 
 switch (_args) do {
