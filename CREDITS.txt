@@ -1,0 +1,29 @@
+=== Epoch Mod Credits ===
+The entire Epoch Mod Team wants to thank all those that have helped along the way!
+
+== Contributors ==
+Poul Andersen - Poulmba - Wiki Editor - https://www.youtube.com/user/poulmba
+Tobias Solem - - Tester / Server Host - http://whatthepoch.com/
+More TBA
+
+== Top Donators to EpochMod.com ==
+GTXGAMING
+SurvivalServers.com
+dean4310
+Robio
+rhinoCRUNCH
+B3nzi
+Madman2077
+Axle
+orangesherbet
+
+== Active GSP Supporters ==
+GTXGaming - Dedicated Server - http://www.gtxgaming.co.uk
+Survival Servers - Dedicated Server - https://www.survivalservers.com
+Vilayer - Dedicated Server - https://www.vilayer.com
+Nitrado - Dedicated Server - https://server.nitrado.net
+Vert Hosting - Shared Arma 2 and 3 servers - https://verthosting.com
+
+== Past GSP Supporters ==
+Gportal - Dedicated Server - https://www.g-portal.com
+Arctic Servers - Shared Arma 3 server -  http://arcticservers.co.uk
