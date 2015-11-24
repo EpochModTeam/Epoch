@@ -3865,7 +3865,7 @@ class CfgVehicles
 		energyCost = 0.2;
 		limitNearby = 2;
 		bypassJammer = 1;
-		armor = 0.1
+		armor = 0.1;
 	};
 
 	class Metal_TRAP_EPOCH: Constructions_static_F
@@ -3880,7 +3880,7 @@ class CfgVehicles
 		energyCost = 0.4;
 		limitNearby = 2;
 		bypassJammer = 1;
-		armor = 0.1
+		armor = 0.1;
 	};
 
 	class Hesco3_EPOCH: Const_All_Walls_F

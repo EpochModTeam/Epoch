@@ -64,7 +64,7 @@ class CfgSecConf
         checks[] = {"Fired","InventoryClosed","InventoryOpened","Killed","HandleDamage","HandleHeal","Dammaged","Hit","HitPart"};
         Fired           = "_this call EPOCH_fnc_playerFired;";
         InventoryClosed = "if !(EPOCH_arr_interactedObjs isEqualTo[]) then {EPOCH_arr_interactedObjs remoteExec['EPOCH_server_save_vehicles', 2]; EPOCH_arr_interactedObjs = [];};";
-        InventoryOpened = "_this spawn EPOCH_initUI; (locked (_this select 1) in [2, 3] || (_this select 1) getVariable['EPOCH_Locked;, false])";
+        InventoryOpened = "_this spawn EPOCH_initUI; (locked (_this select 1) in [2, 3] || (_this select 1) getVariable['EPOCH_Locked', false])";
         Killed          = "_this call EPOCH_fnc_playerDeath;";
         HandleDamage    = "";
         HandleHeal      = "";
