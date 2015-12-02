@@ -64,7 +64,8 @@ class CfgSecConf
         checks[] = {"Fired","InventoryClosed","InventoryOpened","Killed","HandleDamage","HandleHeal","Dammaged","Hit","HitPart"};
         Fired           = "_this call EPOCH_fnc_playerFired;";
         InventoryClosed = "if !(EPOCH_arr_interactedObjs isEqualTo[]) then {EPOCH_arr_interactedObjs remoteExec['EPOCH_server_save_vehicles', 2]; EPOCH_arr_interactedObjs = [];};";
-        InventoryOpened = "_this spawn EPOCH_initUI;_container = _this select 1; _lockedNear = false;if (_container isKindOf 'GroundWeaponHolder') then {{if (locked _x in [2, 3] || _x getVariable['EPOCH_Locked', false]) exitWith {_lockedNear = true}} forEach (player nearSupplies 5);};(locked _container in [2, 3] || _container getVariable['EPOCH_Locked', false] || _lockedNear)";
+        InventoryOpened = "_this spawn EPOCH_initUI; (locked (_this select 1) in [2, 3] || (_this select 1) getVariable['EPOCH_Locked', false])";
+        // InventoryOpened = "_this spawn EPOCH_initUI;_container = _this select 1; _lockedNear = false;if (_container isKindOf 'GroundWeaponHolder') then {{if (locked _x in [2, 3] || _x getVariable['EPOCH_Locked', false]) exitWith {_lockedNear = true}} forEach (player nearSupplies 5);};(locked _container in [2, 3] || _container getVariable['EPOCH_Locked', false] || _lockedNear)";
         Killed          = "_this call EPOCH_fnc_playerDeath;";
         HandleDamage    = "";
         HandleHeal      = "";
