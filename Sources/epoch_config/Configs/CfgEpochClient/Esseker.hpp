@@ -51,7 +51,7 @@ class Esseker {
 		"water_source_f.p3d",
 		"kasna_new.p3d"
 	};
-	// main config 
+	// main config
 	TrashClasses[] = { "Trash", "TrashSmall", "TrashVehicle", "PumpkinPatch", "TrashFood" };
 
 	TrashSmall[] = {
@@ -60,7 +60,7 @@ class Esseker {
 	};
 	PumpkinPatch[] = {
 		"p_pumpkin_summer.p3d",
-		"pumpkin.p3d",
+		"pumpkin.p3d"
 	};
 	TrashFood[] = {
 	};

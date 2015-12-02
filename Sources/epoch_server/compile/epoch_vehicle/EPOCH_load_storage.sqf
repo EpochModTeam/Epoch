@@ -72,7 +72,7 @@ for "_i" from 1 to _this do {
 			};
 
 			// temp set damage to mark for maint
-			_vehicle setDamage 0.99;
+			_vehicle setDamage 0.01;
 
 			_vehicle setposATL _location;
 
@@ -109,6 +109,7 @@ for "_i" from 1 to _this do {
 					// set locked state of secure storage
 					if ((_arr select 6) != -1) then {
 						_vehicle setVariable["EPOCH_Locked", true, true];
+						_vehicle enableSimulationGlobal false;
 					};
 				};
 			};

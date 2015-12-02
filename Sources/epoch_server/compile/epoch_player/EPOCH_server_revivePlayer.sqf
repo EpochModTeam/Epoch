@@ -90,6 +90,8 @@ if (!local _plyr) then {
 
 				_newPlyr = _group createUnit[_class, _location, [], 0, "CAN_COLLIDE"];
 
+				addToRemainsCollector[_newPlyr];
+
 				_newPlyr allowDammage false;
 				{
 					_newPlyr disableAI _x;
