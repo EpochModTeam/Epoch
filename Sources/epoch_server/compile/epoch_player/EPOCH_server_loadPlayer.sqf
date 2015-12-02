@@ -123,8 +123,9 @@ if (typename _this == "ARRAY") then {
 			};
 
 			_newPlyr = _group createUnit[_class, _location, [], 0, "CAN_COLLIDE"];
-
 			if !(isNull _newPlyr) then {
+
+				addToRemainsCollector[_newPlyr];
 
 				//diag_log format ["DEBUG Created New Player: %1", _newPlyr];
 				{
