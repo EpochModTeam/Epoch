@@ -32,3 +32,9 @@
 [Fixed] EPOCH_fnc_returnConfigEntry and V2 functions did not use defaults properly.
 [Info] Server pack Tools folder now contains InstalEpoch.cmd that is an updated version of the command line download Epoch client files download script for steam workshop.
 [Info] Removed old .bikey and added new one for 0350.
+
+Build 052-055
+[Fixed] Typo in server side AH event handler code and repacked a3_server_settings.pbo.
+[Fixed] Storage was incorrectly set to set damage to 99% instead of 1% to temp force maintenance option after restart.
+[Fixed] Add player objects to remains collector, this should allow for proper corpse cleanup.
+[Changed] Disable simulation of locked storage devices. This also prevents removal of items until device is unlocked/re-simulated.
