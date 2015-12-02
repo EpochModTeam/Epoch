@@ -1,0 +1,9 @@
+**Client**
+[Fixed] Reduce run speed of Sappers since 1.54 update.
+
+**Server**
+[Fixed] Typo in server side AH event handler code and repacked a3_server_settings.pbo.
+[Fixed] Storage was incorrectly set to set damage to 99% instead of 1% to temp force maintenance option after restart.
+[Fixed] Add player objects to remains collector, this should allow for proper corpse cleanup.
+[Changed] Disable simulation of locked storage devices. This also prevents removal of items until device is unlocked/re-simulated.
+[Info] Removed old .bikey and added new one for 0360.
