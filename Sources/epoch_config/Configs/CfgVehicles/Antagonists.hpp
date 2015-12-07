@@ -53,32 +53,129 @@ class Epoch_Char_base_F : Civilian
 			};
 		};
 	};
-	class HitPoints : HitPoints
+	class HitPoints
 	{
-		class HitHead : HitHead
+		class HitFace
 		{
-			armor = "0.3*2.5";
+			armor = 1;
+			material = -1;
+			name = "face_hub";
+			passThrough = 0.1;
+			radius = 0.08;
+			explosionShielding = 0.1;
+			minimalHit = 0.01;
 		};
-		class HitBody : HitBody
+		class HitNeck: HitFace
 		{
-			armor = "0.5*10";
+			armor = 1;
+			material = -1;
+			name = "neck";
+			passThrough = 0.1;
+			radius = 0.1;
+			explosionShielding = 0.5;
+			minimalHit = 0.01;
 		};
-		class HitHands : HitHands
+		class HitHead: HitNeck
 		{
-			armor = "0.8*5";
+			armor = 1;
+			material = -1;
+			name = "head";
+			passThrough = 0.1;
+			radius = 0.2;
+			explosionShielding = 0.5;
+			minimalHit = 0.01;
+			depends = "HitFace max HitNeck";
 		};
-		class HitLegs : HitLegs
+		class HitPelvis
 		{
-			armor = "0.8*5";
+			armor = 1;
+			material = -1;
+			name = "pelvis";
+			passThrough = 0.1;
+			radius = 0.2;
+			explosionShielding = 1;
+			visual = "injury_body";
+			minimalHit = 0.01;
 		};
-		class HitFace : HitFace {};
-		class HitNeck : HitNeck {};
-		class HitPelvis : HitPelvis {};
-		class HitAbdomen : HitAbdomen {};
-		class HitDiaphragm : HitDiaphragm {};
-		class HitChest : HitChest {};
-		class HitArms : HitArms {};
-
+		class HitAbdomen: HitPelvis
+		{
+			armor = 1;
+			material = -1;
+			name = "spine1";
+			passThrough = 0.1;
+			radius = 0.15;
+			explosionShielding = 1;
+			visual = "injury_body";
+			minimalHit = 0.01;
+		};
+		class HitDiaphragm: HitAbdomen
+		{
+			armor = 1;
+			material = -1;
+			name = "spine2";
+			passThrough = 0.1;
+			radius = 0.15;
+			explosionShielding = 6;
+			visual = "injury_body";
+			minimalHit = 0.01;
+		};
+		class HitChest: HitDiaphragm
+		{
+			armor = 1;
+			material = -1;
+			name = "spine3";
+			passThrough = 0.1;
+			radius = 0.15;
+			explosionShielding = 6;
+			visual = "injury_body";
+			minimalHit = 0.01;
+		};
+		class HitBody: HitChest
+		{
+			armor = 1000;
+			material = -1;
+			name = "body";
+			passThrough = 0.1;
+			radius = 0.2;
+			explosionShielding = 6;
+			visual = "injury_body";
+			minimalHit = 0.01;
+			depends = "HitPelvis max HitAbdomen max HitDiaphragm max HitChest";
+		};
+		class HitArms
+		{
+			armor = 1;
+			material = -1;
+			name = "arms";
+			passThrough = 1;
+			radius = 0.1;
+			explosionShielding = 1;
+			visual = "injury_hands";
+			minimalHit = 0.01;
+		};
+		class HitHands: HitArms
+		{
+			armor = 1;
+			material = -1;
+			name = "hands";
+			passThrough = 1;
+			radius = 0.1;
+			explosionShielding = 1;
+			visual = "injury_hands";
+			minimalHit = 0.01;
+			depends = "HitArms";
+		};
+		class HitLegs
+		{
+			armor = 1;
+			material = -1;
+			name = "legs";
+			passThrough = 1;
+			radius = 0.12;
+			explosionShielding = 1;
+			visual = "injury_legs";
+			minimalHit = 0.01;
+		};
 	};
 	weapons[] = { "Throw", "Put" };
 	respawnWeapons[] = { "Throw", "Put" };
@@ -128,32 +225,129 @@ class Epoch_Sapper_base_F: Civilian2
 			};
 		};
 	};
-	class HitPoints: HitPoints
+	class HitPoints
 	{
-		class HitHead: HitHead
+		class HitFace
 		{
-			armor = "0.3*2.5";
+			armor = 1;
+			material = -1;
+			name = "face_hub";
+			passThrough = 0.1;
+			radius = 0.08;
+			explosionShielding = 0.1;
+			minimalHit = 0.01;
 		};
-		class HitBody: HitBody
+		class HitNeck: HitFace
 		{
-			armor = "0.5*10";
+			armor = 1;
+			material = -1;
+			name = "neck";
+			passThrough = 0.1;
+			radius = 0.1;
+			explosionShielding = 0.5;
+			minimalHit = 0.01;
 		};
-		class HitHands: HitHands
+		class HitHead: HitNeck
 		{
-			armor = "0.8*5";
+			armor = 1;
+			material = -1;
+			name = "head";
+			passThrough = 0.1;
+			radius = 0.2;
+			explosionShielding = 0.5;
+			minimalHit = 0.01;
+			depends = "HitFace max HitNeck";
 		};
-		class HitLegs: HitLegs
+		class HitPelvis
 		{
-			armor = "0.8*5";
+			armor = 1;
+			material = -1;
+			name = "pelvis";
+			passThrough = 0.1;
+			radius = 0.2;
+			explosionShielding = 1;
+			visual = "injury_body";
+			minimalHit = 0.01;
 		};
-		class HitFace : HitFace {};
-		class HitNeck : HitNeck {};
-		class HitPelvis : HitPelvis {};
-		class HitAbdomen : HitAbdomen {};
-		class HitDiaphragm : HitDiaphragm {};
-		class HitChest : HitChest {};
-		class HitArms : HitArms {};
-
+		class HitAbdomen: HitPelvis
+		{
+			armor = 1;
+			material = -1;
+			name = "spine1";
+			passThrough = 0.1;
+			radius = 0.15;
+			explosionShielding = 1;
+			visual = "injury_body";
+			minimalHit = 0.01;
+		};
+		class HitDiaphragm: HitAbdomen
+		{
+			armor = 1;
+			material = -1;
+			name = "spine2";
+			passThrough = 0.1;
+			radius = 0.15;
+			explosionShielding = 6;
+			visual = "injury_body";
+			minimalHit = 0.01;
+		};
+		class HitChest: HitDiaphragm
+		{
+			armor = 1;
+			material = -1;
+			name = "spine3";
+			passThrough = 0.1;
+			radius = 0.15;
+			explosionShielding = 6;
+			visual = "injury_body";
+			minimalHit = 0.01;
+		};
+		class HitBody: HitChest
+		{
+			armor = 1000;
+			material = -1;
+			name = "body";
+			passThrough = 0.1;
+			radius = 0.2;
+			explosionShielding = 6;
+			visual = "injury_body";
+			minimalHit = 0.01;
+			depends = "HitPelvis max HitAbdomen max HitDiaphragm max HitChest";
+		};
+		class HitArms
+		{
+			armor = 1;
+			material = -1;
+			name = "arms";
+			passThrough = 1;
+			radius = 0.1;
+			explosionShielding = 1;
+			visual = "injury_hands";
+			minimalHit = 0.01;
+		};
+		class HitHands: HitArms
+		{
+			armor = 1;
+			material = -1;
+			name = "hands";
+			passThrough = 1;
+			radius = 0.1;
+			explosionShielding = 1;
+			visual = "injury_hands";
+			minimalHit = 0.01;
+			depends = "HitArms";
+		};
+		class HitLegs
+		{
+			armor = 1;
+			material = -1;
+			name = "legs";
+			passThrough = 1;
+			radius = 0.12;
+			explosionShielding = 1;
+			visual = "injury_legs";
+			minimalHit = 0.01;
+		};
 	};
 	weapons[] = {"Throw","Put"};
 	respawnWeapons[] = {"Throw","Put"};
@@ -219,32 +413,129 @@ class Epoch_Sapper_F: Epoch_Sapper_base_F
 	magazines[] = {};
 	respawnMagazines[] = {};
 
-	class HitPoints : HitPoints
+	class HitPoints
 	{
-		class HitHead : HitHead
+		class HitFace
 		{
-			armor = 4;
+			armor = 3;
+			material = -1;
+			name = "face_hub";
+			passThrough = 0.1;
+			radius = 0.08;
+			explosionShielding = 0.1;
+			minimalHit = 0.01;
 		};
-		class HitBody : HitBody
+		class HitNeck: HitFace
 		{
-			armor = 7;
+			armor = 3;
+			material = -1;
+			name = "neck";
+			passThrough = 0.1;
+			radius = 0.1;
+			explosionShielding = 0.5;
+			minimalHit = 0.01;
 		};
-		class HitHands : HitHands
+		class HitHead: HitNeck
+		{
+			armor = 3;
+			material = -1;
+			name = "head";
+			passThrough = 0.1;
+			radius = 0.2;
+			explosionShielding = 0.5;
+			minimalHit = 0.01;
+			depends = "HitFace max HitNeck";
+		};
+		class HitPelvis
+		{
+			armor = 3;
+			material = -1;
+			name = "pelvis";
+			passThrough = 0.1;
+			radius = 0.2;
+			explosionShielding = 1;
+			visual = "injury_body";
+			minimalHit = 0.01;
+		};
+		class HitAbdomen: HitPelvis
+		{
+			armor = 3;
+			material = -1;
+			name = "spine1";
+			passThrough = 0.1;
+			radius = 0.15;
+			explosionShielding = 1;
+			visual = "injury_body";
+			minimalHit = 0.01;
+		};
+		class HitDiaphragm: HitAbdomen
+		{
+			armor = 3;
+			material = -1;
+			name = "spine2";
+			passThrough = 0.1;
+			radius = 0.15;
+			explosionShielding = 6;
+			visual = "injury_body";
+			minimalHit = 0.01;
+		};
+		class HitChest: HitDiaphragm
+		{
+			armor = 3;
+			material = -1;
+			name = "spine3";
+			passThrough = 0.1;
+			radius = 0.15;
+			explosionShielding = 6;
+			visual = "injury_body";
+			minimalHit = 0.01;
+		};
+		class HitBody: HitChest
 		{
 			armor = 1000;
+			material = -1;
+			name = "body";
+			passThrough = 0.1;
+			radius = 0.2;
+			explosionShielding = 6;
+			visual = "injury_body";
+			minimalHit = 0.01;
+			depends = "HitPelvis max HitAbdomen max HitDiaphragm max HitChest";
 		};
-		class HitLegs : HitLegs
+		class HitArms
 		{
-			armor = 9;
+			armor = 1000;
+			material = -1;
+			name = "arms";
+			passThrough = 1;
+			radius = 0.1;
+			explosionShielding = 1;
+			visual = "injury_hands";
+			minimalHit = 0.01;
 		};
-		class HitFace : HitFace {};
-		class HitNeck : HitNeck {};
-		class HitPelvis : HitPelvis {};
-		class HitAbdomen : HitAbdomen {};
-		class HitDiaphragm : HitDiaphragm {};
-		class HitChest : HitChest {};
-		class HitArms : HitArms {};
-
+		class HitHands: HitArms
+		{
+			armor = 1000;
+			material = -1;
+			name = "hands";
+			passThrough = 1;
+			radius = 0.1;
+			explosionShielding = 1;
+			visual = "injury_hands";
+			minimalHit = 0.01;
+			depends = "HitArms";
+		};
+		class HitLegs
+		{
+			armor = 8;
+			material = -1;
+			name = "legs";
+			passThrough = 1;
+			radius = 0.12;
+			explosionShielding = 1;
+			visual = "injury_legs";
+			minimalHit = 0.01;
+		};
 	};
 };
 class Epoch_SapperB_F : Epoch_Sapper_base_F
@@ -263,32 +554,130 @@ class Epoch_SapperB_F : Epoch_Sapper_base_F
 	magazines[] = {};
 	respawnMagazines[] = {};
 
-	class HitPoints : HitPoints
+
+	class HitPoints
 	{
-		class HitHead : HitHead
+		class HitFace
 		{
-			armor = 4;
+			armor = 3;
+			material = -1;
+			name = "face_hub";
+			passThrough = 0.1;
+			radius = 0.08;
+			explosionShielding = 0.1;
+			minimalHit = 0.01;
 		};
-		class HitBody : HitBody
+		class HitNeck: HitFace
 		{
-			armor = 7;
+			armor = 3;
+			material = -1;
+			name = "neck";
+			passThrough = 0.1;
+			radius = 0.1;
+			explosionShielding = 0.5;
+			minimalHit = 0.01;
 		};
-		class HitHands : HitHands
+		class HitHead: HitNeck
+		{
+			armor = 3;
+			material = -1;
+			name = "head";
+			passThrough = 0.1;
+			radius = 0.2;
+			explosionShielding = 0.5;
+			minimalHit = 0.01;
+			depends = "HitFace max HitNeck";
+		};
+		class HitPelvis
+		{
+			armor = 3;
+			material = -1;
+			name = "pelvis";
+			passThrough = 0.1;
+			radius = 0.2;
+			explosionShielding = 1;
+			visual = "injury_body";
+			minimalHit = 0.01;
+		};
+		class HitAbdomen: HitPelvis
+		{
+			armor = 3;
+			material = -1;
+			name = "spine1";
+			passThrough = 0.1;
+			radius = 0.15;
+			explosionShielding = 1;
+			visual = "injury_body";
+			minimalHit = 0.01;
+		};
+		class HitDiaphragm: HitAbdomen
+		{
+			armor = 3;
+			material = -1;
+			name = "spine2";
+			passThrough = 0.1;
+			radius = 0.15;
+			explosionShielding = 6;
+			visual = "injury_body";
+			minimalHit = 0.01;
+		};
+		class HitChest: HitDiaphragm
+		{
+			armor = 3;
+			material = -1;
+			name = "spine3";
+			passThrough = 0.1;
+			radius = 0.15;
+			explosionShielding = 6;
+			visual = "injury_body";
+			minimalHit = 0.01;
+		};
+		class HitBody: HitChest
 		{
 			armor = 1000;
+			material = -1;
+			name = "body";
+			passThrough = 0.1;
+			radius = 0.2;
+			explosionShielding = 6;
+			visual = "injury_body";
+			minimalHit = 0.01;
+			depends = "HitPelvis max HitAbdomen max HitDiaphragm max HitChest";
 		};
-		class HitLegs : HitLegs
+		class HitArms
 		{
-			armor = 9;
+			armor = 1000;
+			material = -1;
+			name = "arms";
+			passThrough = 1;
+			radius = 0.1;
+			explosionShielding = 1;
+			visual = "injury_hands";
+			minimalHit = 0.01;
 		};
-		class HitFace : HitFace {};
-		class HitNeck : HitNeck {};
-		class HitPelvis : HitPelvis {};
-		class HitAbdomen : HitAbdomen {};
-		class HitDiaphragm : HitDiaphragm {};
-		class HitChest : HitChest {};
-		class HitArms : HitArms {};
-
+		class HitHands: HitArms
+		{
+			armor = 1000;
+			material = -1;
+			name = "hands";
+			passThrough = 1;
+			radius = 0.1;
+			explosionShielding = 1;
+			visual = "injury_hands";
+			minimalHit = 0.01;
+			depends = "HitArms";
+		};
+		class HitLegs
+		{
+			armor = 8;
+			material = -1;
+			name = "legs";
+			passThrough = 1;
+			radius = 0.12;
+			explosionShielding = 1;
+			visual = "injury_legs";
+			minimalHit = 0.01;
+		};
 	};
 };
 

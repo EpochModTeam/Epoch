@@ -233,35 +233,133 @@ class Epoch_Female_wetsuit_F : Epoch_Female_base_F
 	handgunAmmoCoef = 0.2;
 
 	// O_Soldier_diver_base_F
-	class HitPoints: HitPoints
+	class HitPoints
 	{
-		class HitHead: HitHead
+		class HitFace
 		{
-			armor = 2;
+			armor = 1;
+			material = -1;
+			name = "face_hub";
+			passThrough = 0.1;
+			radius = 0.08;
+			explosionShielding = 0.1;
+			minimalHit = 0.01;
 		};
-		class HitBody: HitBody
+		class HitNeck: HitFace
 		{
-			armor = 2;
+			armor = 1;
+			material = -1;
+			name = "neck";
+			passThrough = 0.1;
+			radius = 0.1;
+			explosionShielding = 0.5;
+			minimalHit = 0.01;
 		};
-		class HitHands: HitHands
+		class HitHead: HitNeck
 		{
-			armor = 2;
+			armor = 1;
+			material = -1;
+			name = "head";
+			passThrough = 0.1;
+			radius = 0.2;
+			explosionShielding = 0.5;
+			minimalHit = 0.01;
+			depends = "HitFace max HitNeck";
 		};
-		class HitLegs: HitLegs
+		class HitPelvis
 		{
-			armor = 2;
+			armor = 1;
+			material = -1;
+			name = "pelvis";
+			passThrough = 0.1;
+			radius = 0.2;
+			explosionShielding = 1;
+			visual = "injury_body";
+			minimalHit = 0.01;
 		};
-		class HitFace : HitFace {};
-		class HitNeck : HitNeck {};
-		class HitPelvis : HitPelvis {};
-		class HitAbdomen : HitAbdomen {};
-		class HitDiaphragm : HitDiaphragm {};
-		class HitChest : HitChest {};
-		class HitArms : HitArms {};
-
+		class HitAbdomen: HitPelvis
+		{
+			armor = 1;
+			material = -1;
+			name = "spine1";
+			passThrough = 0.1;
+			radius = 0.15;
+			explosionShielding = 1;
+			visual = "injury_body";
+			minimalHit = 0.01;
+		};
+		class HitDiaphragm: HitAbdomen
+		{
+			armor = 1;
+			material = -1;
+			name = "spine2";
+			passThrough = 0.1;
+			radius = 0.15;
+			explosionShielding = 6;
+			visual = "injury_body";
+			minimalHit = 0.01;
+		};
+		class HitChest: HitDiaphragm
+		{
+			armor = 1;
+			material = -1;
+			name = "spine3";
+			passThrough = 0.1;
+			radius = 0.15;
+			explosionShielding = 6;
+			visual = "injury_body";
+			minimalHit = 0.01;
+		};
+		class HitBody: HitChest
+		{
+			armor = 1000;
+			material = -1;
+			name = "body";
+			passThrough = 0.1;
+			radius = 0.2;
+			explosionShielding = 6;
+			visual = "injury_body";
+			minimalHit = 0.01;
+			depends = "HitPelvis max HitAbdomen max HitDiaphragm max HitChest";
+		};
+		class HitArms
+		{
+			armor = 1;
+			material = -1;
+			name = "arms";
+			passThrough = 1;
+			radius = 0.1;
+			explosionShielding = 1;
+			visual = "injury_hands";
+			minimalHit = 0.01;
+		};
+		class HitHands: HitArms
+		{
+			armor = 1;
+			material = -1;
+			name = "hands";
+			passThrough = 1;
+			radius = 0.1;
+			explosionShielding = 1;
+			visual = "injury_hands";
+			minimalHit = 0.01;
+			depends = "HitArms";
+		};
+		class HitLegs
+		{
+			armor = 1;
+			material = -1;
+			name = "legs";
+			passThrough = 1;
+			radius = 0.12;
+			explosionShielding = 1;
+			visual = "injury_legs";
+			minimalHit = 0.01;
+		};
 	};
 	armor = 2;
-	armorStructural = 5;
+	armorStructural = 0.5;
+	explosionShielding = 0.05;
 
 	// O_Soldier_base_F
 	sensitivity = 3;
@@ -340,43 +438,133 @@ class Epoch_Female_Ghillie1_F : Epoch_Female_base_F
 	handgunAmmoCoef = 0.1;
 
 	// O_Soldier_base_F
-	class HitPoints: HitPoints
+	class HitPoints
 	{
-		class HitHead: HitHead
+		class HitFace
 		{
 			armor = 1;
-			passThrough = 1;
-			explosionShielding = 0.5;
+			material = -1;
+			name = "face_hub";
+			passThrough = 0.1;
+			radius = 0.08;
+			explosionShielding = 0.1;
+			minimalHit = 0.01;
 		};
-		class HitBody: HitBody
+		class HitNeck: HitFace
+		{
+			armor = 4;
+			material = -1;
+			name = "neck";
+			passThrough = 0.1;
+			radius = 0.1;
+			explosionShielding = 0.5;
+			minimalHit = 0.01;
+		};
+		class HitHead: HitNeck
+		{
+			armor = 1;
+			material = -1;
+			name = "head";
+			passThrough = 0.1;
+			radius = 0.2;
+			explosionShielding = 0.5;
+			minimalHit = 0.01;
+			depends = "HitFace max HitNeck";
+		};
+		class HitPelvis
 		{
 			armor = 6;
-			passThrough = 0.5;
+			material = -1;
+			name = "pelvis";
+			passThrough = 0.04;
+			radius = 0.2;
+			explosionShielding = 1;
+			visual = "injury_body";
+			minimalHit = 0.01;
+		};
+		class HitAbdomen: HitPelvis
+		{
+			armor = 6;
+			material = -1;
+			name = "spine1";
+			passThrough = 0.04;
+			radius = 0.15;
+			explosionShielding = 1;
+			visual = "injury_body";
+			minimalHit = 0.01;
+		};
+		class HitDiaphragm: HitAbdomen
+		{
+			armor = 6;
+			material = -1;
+			name = "spine2";
+			passThrough = 0.04;
+			radius = 0.15;
 			explosionShielding = 1.5;
+			visual = "injury_body";
+			minimalHit = 0.01;
 		};
-		class HitHands: HitHands
+		class HitChest: HitDiaphragm
+		{
+			armor = 6;
+			material = -1;
+			name = "spine3";
+			passThrough = 0.04;
+			radius = 0.15;
+			explosionShielding = 1.5;
+			visual = "injury_body";
+			minimalHit = 0.01;
+		};
+		class HitBody: HitChest
+		{
+			armor = 1000;
+			material = -1;
+			name = "body";
+			passThrough = 0.04;
+			radius = 0.16;
+			explosionShielding = 1.5;
+			visual = "injury_body";
+			minimalHit = 0.01;
+			depends = "HitPelvis max HitAbdomen max HitDiaphragm max HitChest";
+		};
+		class HitArms
 		{
 			armor = 8;
-			passThrough = 0.5;
+			material = -1;
+			name = "arms";
+			passThrough = 0.6;
+			radius = 0.1;
 			explosionShielding = 0.8;
+			visual = "injury_hands";
+			minimalHit = 0.01;
 		};
-		class HitLegs: HitLegs
+		class HitHands: HitArms
 		{
 			armor = 8;
-			passThrough = 0.5;
+			material = -1;
+			name = "hands";
+			passThrough = 0.6;
+			radius = 0.1;
 			explosionShielding = 0.8;
+			visual = "injury_hands";
+			minimalHit = 0.01;
+			depends = "HitArms";
 		};
-		class HitFace : HitFace {};
-		class HitNeck : HitNeck {};
-		class HitPelvis : HitPelvis {};
-		class HitAbdomen : HitAbdomen {};
-		class HitDiaphragm : HitDiaphragm {};
-		class HitChest : HitChest {};
-		class HitArms : HitArms {};
-
+		class HitLegs
+		{
+			armor = 8;
+			material = -1;
+			name = "legs";
+			passThrough = 0.6;
+			radius = 0.12;
+			explosionShielding = 0.8;
+			visual = "injury_legs";
+			minimalHit = 0.01;
+		};
 	};
 	armor = 2;
-	armorStructural = 5;
+	armorStructural = 0.5;
+	explosionShielding = 0.05;
 
 	// O_sniper_F
 	threat[] = {1,0.6,0.6};
@@ -662,7 +850,8 @@ class Epoch_Man_base_F : O_Soldier_base_F
 		};
 	};
 	armor = 2;
-	armorStructural = 5;
+	armorStructural = 0.5;
+	explosionShielding = 0.05;
 
 
 };
