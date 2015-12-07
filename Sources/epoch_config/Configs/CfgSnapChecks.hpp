@@ -1,4 +1,18 @@
-// Snap Checks - EpochMod.com
+/*
+	Author: Aaron Clark - EpochMod.com
+
+    Contributors:
+
+	Description:
+	Snap check offsets
+
+    Licence:
+    Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
+
+    Github:
+    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_config/Configs/CfgSnapChecks.hpp
+*/
+
 class CfgSnapChecks {
     class Hesco3_EPOCH {
         nails[] = {

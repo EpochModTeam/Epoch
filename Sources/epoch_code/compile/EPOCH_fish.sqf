@@ -1,4 +1,17 @@
-// EPOCH fishing
+/*
+	Author: Aaron Clark - EpochMod.com
+
+    Contributors:
+
+	Description:
+	Epoch fishing function
+
+    Licence:
+    Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
+
+    Github:
+    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_code/compile/EPOCH_fish.sqf
+*/
 private ["_bob","_fishes","_fish","_randomChance","_bobber","_nearByBobbers","_objects","_currentPos"];
 
 _currentPos = player modelToWorld[0, 5 + (random 5), 0];

@@ -1,3 +1,18 @@
+/*
+	Author: BI
+
+    Contributors:
+
+	Description:
+	Stock CfgMovesBasic from 1.54
+
+    Licence:
+    Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
+
+    Github:
+    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_config/Configs/CfgMovesBasic.hpp
+*/
+
 class CfgMovesBasic
 {
 	access = 0;

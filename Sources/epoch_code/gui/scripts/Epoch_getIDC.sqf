@@ -3,7 +3,9 @@
 	Pass the control to unregister or just call fnc to get a unique IDC
 */
 private ["_in","_list","_out","_find"];
-_in = param [0,controlNull,[controlNull]];
+//_in = _this param [0,controlNull,[controlNull]];
+_in = [_this, 0, controlNull, [controlNull]] call BIS_fnc_param;
+
 _list = missionNamespace getVariable ["rmx_var_uniqueIDC",[]];
 
 if (ctrlIDC _in isEqualTo -1) then {

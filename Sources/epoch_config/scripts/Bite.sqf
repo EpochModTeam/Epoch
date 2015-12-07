@@ -1,5 +1,5 @@
 /*
-_object = _this;
+params ["_object"];
 _pos01 = getPosATL _object;
 
 

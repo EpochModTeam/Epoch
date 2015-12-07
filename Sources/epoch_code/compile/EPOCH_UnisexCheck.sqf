@@ -1,3 +1,17 @@
+/*
+	Author: Aaron Clark - EpochMod.com
+
+    Contributors:
+
+	Description:
+	Unisex check for vests, gives swing ammo and performs radio changed check
+
+    Licence:
+    Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
+
+    Github:
+    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_code/compile/EPOCH_UnisexCheck.sqf
+*/
 private ["_femaleVariant","_vest","_class","_config","_woman","_maleVariant"];
 _woman = getNumber(configFile >> "CfgVehicles" >> (typeOf player) >> "woman");
 _class = _this select 2;

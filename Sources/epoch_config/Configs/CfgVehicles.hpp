@@ -1,3 +1,18 @@
+/*
+	Author: Aaron Clark - EpochMod.com
+
+    Contributors:
+
+	Description:
+	Main CfgVehicles config file
+
+    Licence:
+    Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
+
+    Github:
+    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_config/Configs/CfgVehicles.hpp
+*/
+
 class UniformSlotInfo;
 class CfgVehicles
 {
@@ -19,6 +34,145 @@ class CfgVehicles
 			class HitLegs;
 		};
 	};
+
+
+	class EPOCH_CAManBase: CAManBase
+	{
+		class HitPoints: HitPoints
+		{
+			class HitFace: HitHead
+			{
+				armor               = 1; // Keep constant so that the hit point armor remains on the same scale
+				material            = -1;
+				name                = "face_hub"; // Selection name
+				passThrough         = 0.1; // Damage resistance
+				radius              = 0.08;
+				explosionShielding  = 0.1; // Protection against explosive damage
+				minimalHit          = 0.01; // Minimal damage value that can be applied
+			}
+			class HitNeck: HitFace
+			{
+				armor               = 1;
+				material            = -1;
+				name                = "neck";
+				passThrough         = 0.1;
+				radius              = 0.1;
+				explosionShielding  = 0.5;
+				minimalHit          = 0.01;
+			}
+			class HitHead: HitNeck
+			{
+				armor               = 1;
+				material            = -1;
+				name                = "head";
+				passThrough         = 0.1;
+				radius              = 0.2;
+				explosionShielding  = 0.5;
+				minimalHit          = 0.01;
+				depends             = "HitFace max HitNeck"; // Returns the greater of HitFace and HitNeck.
+			};
+			class HitPelvis: HitBody
+			{
+				armor               = 1;
+				material            = -1;
+				name                = "pelvis";
+				passThrough         = 0.1;
+				radius              = 0.2;
+				explosionShielding  = 1;
+				visual              = "injury_body";
+				minimalHit          = 0.01;
+			};
+			class HitAbdomen: HitPelvis
+			{
+				armor               = 1;
+				material            = -1;
+				name                = "spine1";
+				passThrough         = 0.1;
+				radius              = 0.15;
+				explosionShielding  = 1;
+				visual              = "injury_body";
+				minimalHit          = 0.01;
+			};
+			class HitDiaphragm: HitAbdomen
+			{
+				armor               = 1;
+				material            = -1;
+				name                = "spine2";
+				passThrough         = 0.1;
+				radius              = 0.15;
+				explosionShielding  = 6;
+				visual              = "injury_body";
+				minimalHit          = 0.01;
+			}
+			class HitChest: HitDiaphragm
+			{
+				armor               = 1;
+				material            = -1;
+				name                = "spine3";
+				passThrough         = 0.1;
+				radius              = 0.15;
+				explosionShielding  = 6;
+				visual              = "injury_body";
+				minimalHit          = 0.01;
+			};
+			class HitBody: HitChest
+			{
+				armor               = 1000; //not supposed to take damage directly
+				material            = -1;
+				name                = "body";
+				passThrough         = 0.1;
+				radius              = 0.16;
+				explosionShielding  = 6;
+				visual              = "injury_body";
+				minimalHit          = 0.01;
+				depends             = "HitPelvis max HitAbdomen max HitDiaphragm max HitChest";
+			};
+			class HitArms: HitHands
+			{
+				armor               = 1;
+				material            = -1;
+				name                = "arms";
+				passThrough         = 1;
+				radius              = 0.1;
+				explosionShielding  = 1;
+				visual              = "injury_hands";
+				minimalHit          = 0.01;
+			};
+			class HitHands: HitArms
+			{
+				armor               = 1;
+				material            = -1;
+				name                = "hands";
+				passThrough         = 1;
+				radius              = 0.1;
+				explosionShielding  = 1;
+				visual              = "injury_hands";
+				minimalHit          = 0.01;
+				depends             = "HitArms";
+			};
+			class HitLegs: HitLegs
+			{
+				armor               = 1;
+				material            = -1;
+				name                = "legs";
+				passThrough         = 1;
+				radius              = 0.12;
+				explosionShielding  = 1;
+				visual              = "injury_legs";
+				minimalHit          = 0.01;
+			};
+		};
+
+		armor= 2;//keep constant so that the hit point armor remains on the same scale
+		armorStructural= 0.4;// [*] must be adjusted for each model to achieve consistent total damage results
+		explosionShielding = 0.04;// [*] for consistent explosive damage after adjusting = ( armorStructural / 10 )
+		minTotalDamageThreshold = 0.001;//minimalHit for total damage
+		impactDamageMultiplier= 0.5;//multiplier for falling damage
+		// * adjusted for each model
+	};
+
+
+
 	class CAManBase2: CAManBase
 	{
 		author = "$STR_A3_Bohemia_Interactive";
@@ -75,37 +229,115 @@ class CfgVehicles
 		ISanimMod[] = {0.03,0.06,0.04};
 		class HitPoints
 		{
-			class HitHead
+			class HitFace
+			{
+				armor = 1;
+				material = -1;
+				name = "face_hub";
+				passThrough = 0.1;
+				radius = 0.08;
+				explosionShielding = 0.1;
+				minimalHit = 0.01;
+			};
+			class HitNeck: HitFace
+			{
+				armor = 1;
+				material = -1;
+				name = "neck";
+				passThrough = 0.1;
+				radius = 0.1;
+				explosionShielding = 0.5;
+				minimalHit = 0.01;
+			};
+			class HitHead: HitNeck
 			{
 				armor = 1;
 				material = -1;
 				name = "head";
-				passThrough = 1;
-				radius = 0.1;
+				passThrough = 0.1;
+				radius = 0.2;
 				explosionShielding = 0.5;
-				minimalHit = 0;
+				minimalHit = 0.01;
+				depends = "HitFace max HitNeck";
 			};
-			class HitBody
+			class HitPelvis
 			{
 				armor = 1;
 				material = -1;
-				name = "body";
-				passThrough = 1;
+				name = "pelvis";
+				passThrough = 0.1;
+				radius = 0.2;
+				explosionShielding = 1;
+				visual = "injury_body";
+				minimalHit = 0.01;
+			};
+			class HitAbdomen: HitPelvis
+			{
+				armor = 1;
+				material = -1;
+				name = "spine1";
+				passThrough = 0.1;
+				radius = 0.15;
+				explosionShielding = 1;
+				visual = "injury_body";
+				minimalHit = 0.01;
+			};
+			class HitDiaphragm: HitAbdomen
+			{
+				armor = 1;
+				material = -1;
+				name = "spine2";
+				passThrough = 0.1;
 				radius = 0.15;
 				explosionShielding = 6;
 				visual = "injury_body";
-				minimalHit = 0;
+				minimalHit = 0.01;
 			};
-			class HitHands
+			class HitChest: HitDiaphragm
+			{
+				armor = 1;
+				material = -1;
+				name = "spine3";
+				passThrough = 0.1;
+				radius = 0.15;
+				explosionShielding = 6;
+				visual = "injury_body";
+				minimalHit = 0.01;
+			};
+			class HitBody: HitChest
+			{
+				armor = 1000;
+				material = -1;
+				name = "body";
+				passThrough = 0.1;
+				radius = 0.16;
+				explosionShielding = 6;
+				visual = "injury_body";
+				minimalHit = 0.01;
+				depends = "HitPelvis max HitAbdomen max HitDiaphragm max HitChest";
+			};
+			class HitArms
+			{
+				armor = 1;
+				material = -1;
+				name = "arms";
+				passThrough = 1;
+				radius = 0.1;
+				explosionShielding = 1;
+				visual = "injury_hands";
+				minimalHit = 0.01;
+			};
+			class HitHands: HitArms
 			{
 				armor = 1;
 				material = -1;
 				name = "hands";
 				passThrough = 1;
-				radius = 0.08;
+				radius = 0.1;
 				explosionShielding = 1;
 				visual = "injury_hands";
-				minimalHit = 0;
+				minimalHit = 0.01;
+				depends = "HitArms";
 			};
 			class HitLegs
 			{
@@ -113,10 +345,10 @@ class CfgVehicles
 				material = -1;
 				name = "legs";
 				passThrough = 1;
-				radius = 0.1;
+				radius = 0.12;
 				explosionShielding = 1;
 				visual = "injury_legs";
-				minimalHit = 0;
+				minimalHit = 0.01;
 			};
 		};
 		armor = 2;
@@ -398,6 +630,14 @@ class CfgVehicles
 			{
 				armor = 2;
 			};
+			class HitFace : HitFace {};
+			class HitNeck : HitNeck {};
+			class HitPelvis : HitPelvis {};
+			class HitAbdomen : HitAbdomen {};
+			class HitDiaphragm : HitDiaphragm {};
+			class HitChest : HitChest {};
+			class HitArms : HitArms {};
+
 		};
 		accuracy = 1.6;
 		camouflage = 1.2;
@@ -418,6 +658,8 @@ class CfgVehicles
 		secondaryAmmoCoef = 0.0;
 		handgunAmmoCoef = 0.0;
 	};
+
+
 	class Civilian: CAManBase
 	{
 		class SpeechVariants
@@ -436,23 +678,128 @@ class CfgVehicles
 		side = 3;
 		scope = 0;
 		displayName = "$STR_DN_CIVILIAN";
-		class HitPoints: HitPoints
+		class HitPoints
 		{
-			class HitHead: HitHead
+			class HitFace
 			{
 				armor = 1;
+				material = -1;
+				name = "face_hub";
+				passThrough = 0.1;
+				radius = 0.08;
+				explosionShielding = 0.1;
+				minimalHit = 0.01;
 			};
-			class HitBody: HitBody
+			class HitNeck: HitFace
 			{
-				armor = 2;
+				armor = 1;
+				material = -1;
+				name = "neck";
+				passThrough = 0.1;
+				radius = 0.1;
+				explosionShielding = 0.5;
+				minimalHit = 0.01;
 			};
-			class HitHands: HitHands
+			class HitHead: HitNeck
 			{
-				armor = 2;
+				armor = 1;
+				material = -1;
+				name = "head";
+				passThrough = 0.1;
+				radius = 0.2;
+				explosionShielding = 0.5;
+				minimalHit = 0.01;
+				depends = "HitFace max HitNeck";
 			};
-			class HitLegs: HitLegs
+			class HitPelvis
 			{
-				armor = 2;
+				armor = 1;
+				material = -1;
+				name = "pelvis";
+				passThrough = 0.1;
+				radius = 0.2;
+				explosionShielding = 1;
+				visual = "injury_body";
+				minimalHit = 0.01;
+			};
+			class HitAbdomen: HitPelvis
+			{
+				armor = 1;
+				material = -1;
+				name = "spine1";
+				passThrough = 0.1;
+				radius = 0.15;
+				explosionShielding = 1;
+				visual = "injury_body";
+				minimalHit = 0.01;
+			};
+			class HitDiaphragm: HitAbdomen
+			{
+				armor = 1;
+				material = -1;
+				name = "spine2";
+				passThrough = 0.1;
+				radius = 0.15;
+				explosionShielding = 6;
+				visual = "injury_body";
+				minimalHit = 0.01;
+			};
+			class HitChest: HitDiaphragm
+			{
+				armor = 1;
+				material = -1;
+				name = "spine3";
+				passThrough = 0.1;
+				radius = 0.15;
+				explosionShielding = 6;
+				visual = "injury_body";
+				minimalHit = 0.01;
+			};
+			class HitBody: HitChest
+			{
+				armor = 1000;
+				material = -1;
+				name = "body";
+				passThrough = 0.1;
+				radius = 0.16;
+				explosionShielding = 6;
+				visual = "injury_body";
+				minimalHit = 0.01;
+				depends = "HitPelvis max HitAbdomen max HitDiaphragm max HitChest";
+			};
+			class HitArms
+			{
+				armor = 1;
+				material = -1;
+				name = "arms";
+				passThrough = 1;
+				radius = 0.1;
+				explosionShielding = 1;
+				visual = "injury_hands";
+				minimalHit = 0.01;
+			};
+			class HitHands: HitArms
+			{
+				armor = 1;
+				material = -1;
+				name = "hands";
+				passThrough = 1;
+				radius = 0.1;
+				explosionShielding = 1;
+				visual = "injury_hands";
+				minimalHit = 0.01;
+				depends = "HitArms";
+			};
+			class HitLegs
+			{
+				armor = 1;
+				material = -1;
+				name = "legs";
+				passThrough = 1;
+				radius = 0.12;
+				explosionShielding = 1;
+				visual = "injury_legs";
+				minimalHit = 0.01;
 			};
 		};
 		accuracy = 1.6;
@@ -587,892 +934,11 @@ class CfgVehicles
 		respawnLinkedItems[] = { "V_24_EPOCH", "H_89_EPOCH", "ItemMap", "ItemCompass", "ItemWatch", "EpochRadio0" };
 	};
 
-	class B_Soldier_base_F;
-	class Epoch_Female_base_F : B_Soldier_base_F
-	{
-		identityTypes[] = { "Woman", "NoGlasses" };
+	#include "CfgVehicles\Players.hpp"
+	#include "CfgVehicles\Antagonists.hpp"
 
-		faceType = "Man_A3";
-		woman = 1;
-		side = 1;
-		engineer = 1;
-		vehicleClass = "Women";
-		scope = 0;
+	#include "CfgVehicles\Fixes.hpp"
 
-		// fix and normalize base classes
-		cost = 40000;
-		headgearProbability = 100;
-		allowedHeadgear[] = {};
-		class HitPoints
-		{
-			class HitHead
-			{
-				armor = 1;
-				material = -1;
-				name = "head";
-				passThrough = 1;
-				radius = 0.1;
-				explosionShielding = 0.5;
-				minimalHit = 0;
-			};
-			class HitBody
-			{
-				armor = 1;
-				material = -1;
-				name = "body";
-				passThrough = 1;
-				radius = 0.15;
-				explosionShielding = 10;
-				visual = "injury_body";
-				minimalHit = 0;
-			};
-			class HitHands
-			{
-				armor = 1;
-				material = -1;
-				name = "hands";
-				passThrough = 1;
-				radius = 0.08;
-				explosionShielding = 1;
-				visual = "injury_hands";
-				minimalHit = 0;
-			};
-			class HitLegs
-			{
-				armor = 1;
-				material = -1;
-				name = "legs";
-				passThrough = 1;
-				radius = 0.1;
-				explosionShielding = 1;
-				visual = "injury_legs";
-				minimalHit = 0;
-			};
-		};
-		armor = 2;
-		armorStructural = 5;
-
-		class Wounds
-		{
-			tex[] = {};
-			mat[] = { "x\addons\a3_epoch_assets\textures\camo\female_camoDark.rvmat", "x\addons\a3_epoch_assets\textures\camo\female_camoinjury.rvmat", "x\addons\a3_epoch_assets\textures\camo\female_camoinjury.rvmat" };
-		};
-		model = "\x\addons\a3_epoch_assets_3\CfgVehicles\Characters\Keesha_character.p3d";
-		modelSides[] = {1};
-		nakedUniform = "U_BasicBodyFemale";
-		uniformClass = "U_Test_uniform";
-		weapons[] = {"Throw","Put"};
-		respawnWeapons[] = {"Throw","Put"};
-		Items[] = {};
-		RespawnItems[] = {};
-		magazines[] = {};
-		respawnMagazines[] = {};
-		linkedItems[] = { "V_F41_EPOCH", "ItemMap"};
-		respawnLinkedItems[] = { "V_F41_EPOCH", "ItemMap" };
-	};
-
-
-
-	class Underwear_F;
-	class FemaleUnderwear_F: Underwear_F
-	{
-		author = "Epoch";
-		_generalMacro = "FemaleUnderwear_F";
-		scope = 1;
-		scopeCurator = 0;
-		displayName = "TEST: Underwear";
-		model = "\x\addons\a3_epoch_assets_3\CfgVehicles\Characters\Keesha_character.p3d";
-		uniformClass = "U_BasicBodyFemale";
-		weapons[] = {};
-		magazines[] = {};
-		respawnWeapons[] = {};
-		respawnMagazines[] = {};
-	};
-
-
-	class Epoch_Female_wetsuit_F : Epoch_Female_base_F
-	{
-		faceType = "Man_A3";
-		woman = 1;
-		side = 1;
-		engineer = 1;
-		vehicleClass = "Women";
-		displayName = "Female Wetsuit";
-		scope = 2;
-
-		hiddenSelections[] = { "Camo" };
-		hiddenSelectionsTextures[] = { "\x\addons\a3_epoch_assets\textures\wetsuit\wetsuit_co.paa" };
-
-		class Wounds
-		{
-			tex[] = {};
-			mat[] = { "x\addons\a3_epoch_assets\textures\wetsuit\wetsuit.rvmat", "x\addons\a3_epoch_assets\textures\wetsuit\wetsuit_Injury.rvmat", "x\addons\a3_epoch_assets\textures\wetsuit\wetsuit_Injury.rvmat" };
-		};
-		model = "\x\addons\a3_epoch_assets_3\CfgVehicles\Characters\Female_WetSuit.p3d";
-
-		hiddenUnderwaterSelections[] = { "hide" };
-		shownUnderwaterSelections[] = { "unhide", "unhide2" };
-
-		hiddenUnderwaterSelectionsTextures[] = { "\x\addons\a3_epoch_assets\textures\wetsuit\wetsuit_co.paa", "\x\addons\a3_epoch_assets\textures\wetsuit\wetsuit_co.paa", "\A3\characters_f\data\visors_ca.paa" };
-
-		modelSides[] = {1};
-		nakedUniform = "U_BasicBodyFemale";
-		uniformClass = "U_Wetsuit_uniform";
-		weapons[] = {"Throw","Put"};
-		respawnWeapons[] = {"Throw","Put"};
-		Items[] = {};
-		RespawnItems[] = {};
-		magazines[] = {};
-		respawnMagazines[] = {};
-
-		primaryAmmoCoef = 0.4;
-		secondaryAmmoCoef = 0.1;
-		handgunAmmoCoef = 0.2;
-
-		// O_Soldier_diver_base_F
-		class HitPoints: HitPoints
-		{
-			class HitHead: HitHead
-			{
-				armor = 2;
-			};
-			class HitBody: HitBody
-			{
-				armor = 2;
-			};
-			class HitHands: HitHands
-			{
-				armor = 2;
-			};
-			class HitLegs: HitLegs
-			{
-				armor = 2;
-			};
-		};
-		armor = 2;
-		armorStructural = 5;
-
-		// O_Soldier_base_F
-		sensitivity = 3;
-		threat[] = {1,0.1,0.1};
-		camouflage = 1.4;
-
-	};
-	class Epoch_Female_wetsuitW_F : Epoch_Female_wetsuit_F
-	{
-		displayName = "Female Wetsuit (white)";
-		scope = 2;
-		hiddenSelections[] = { "Camo" };
-		hiddenSelectionsTextures[] = { "\x\addons\a3_epoch_assets\textures\wetsuit\wetsuitWhite_co.paa" };
-		hiddenSelectionsMaterials[] = { "\x\addons\a3_epoch_assets\textures\wetsuit\wetsuitWhite.rvmat" };
-
-		class Wounds
-		{
-			tex[] = {};
-			mat[] = { "x\addons\a3_epoch_assets\textures\wetsuit\wetsuitWhite.rvmat", "x\addons\a3_epoch_assets\textures\wetsuit\wetsuit_Injury.rvmat", "x\addons\a3_epoch_assets\textures\wetsuit\wetsuit_Injury.rvmat" };
-		};
-
-		modelSides[] = { 1 };
-		uniformClass = "U_Wetsuit_White";
-		hiddenUnderwaterSelectionsTextures[] = { "\x\addons\a3_epoch_assets\textures\wetsuit\wetsuitWhite_co.paa", "\x\addons\a3_epoch_assets\textures\wetsuit\wetsuitWhite_co.paa", "\A3\characters_f\data\visors_ca.paa" };
-
-	};
-	class Epoch_Female_wetsuitB_F : Epoch_Female_wetsuit_F
-	{
-		displayName = "Female Wetsuit (blue)";
-		scope = 2;
-		hiddenSelections[] = { "Camo" };
-		hiddenSelectionsTextures[] = { "\x\addons\a3_epoch_assets\textures\wetsuit\wetsuitBlue_co.paa" };
-		modelSides[] = { 1 };
-		uniformClass = "U_Wetsuit_Blue";
-		hiddenUnderwaterSelectionsTextures[] = { "\x\addons\a3_epoch_assets\textures\wetsuit\wetsuitBlue_co.paa", "\x\addons\a3_epoch_assets\textures\wetsuit\wetsuitBlue_co.paa", "\A3\characters_f\data\visors_ca.paa" };
-	};
-	class Epoch_Female_wetsuitP_F : Epoch_Female_wetsuit_F
-	{
-		displayName = "Female Wetsuit (purple)";
-		scope = 2;
-		hiddenSelections[] = { "Camo" };
-		hiddenSelectionsTextures[] = { "\x\addons\a3_epoch_assets\textures\wetsuit\wetsuitPurp_co.paa" };
-		modelSides[] = { 1 };
-		uniformClass = "U_Wetsuit_Purp";
-		hiddenUnderwaterSelectionsTextures[] = { "\x\addons\a3_epoch_assets\textures\wetsuit\wetsuitPurp_co.paa", "\x\addons\a3_epoch_assets\textures\wetsuit\wetsuitPurp_co.paa", "\A3\characters_f\data\visors_ca.paa" };
-	};
-	class Epoch_Female_wetsuitC_F : Epoch_Female_wetsuit_F
-	{
-		displayName = "Female Wetsuit (camo)";
-		scope = 2;
-		hiddenSelections[] = { "Camo" };
-		hiddenSelectionsTextures[] = { "\x\addons\a3_epoch_assets\textures\wetsuit\wetsuitCamo_co.paa" };
-		modelSides[] = { 1 };
-		uniformClass = "U_Wetsuit_Camo";
-		hiddenUnderwaterSelectionsTextures[] = { "\x\addons\a3_epoch_assets\textures\wetsuit\wetsuitCamo_co.paa", "\x\addons\a3_epoch_assets\textures\wetsuit\wetsuitCamo_co.paa", "\A3\characters_f\data\visors_ca.paa" };
-
-		camouflage = 1.0;
-	};
-
-	class Epoch_Female_Ghillie1_F : Epoch_Female_base_F
-	{
-		displayName = "Female Ghillie (tan)";
-		scope = 2;
-		model = "\x\addons\a3_epoch_assets_3\CfgVehicles\Characters\female_ghillie.p3d";
-
-		hiddenSelections[] = { "Camo" };
-		hiddenSelectionsTextures[] = { "\a3\characters_f\common\data\ghillie_3_ca.paa" };
-		// hiddenSelectionsMaterials[] = { "\x\addons\a3_epoch_assets\textures\camo\female_camoDark.rvmat" };
-
-		modelSides[] = { 1 };
-		uniformClass = "U_ghillie1_uniform";
-
-		// O_Soldier_sniper_base_F
-		primaryAmmoCoef = 0.2;
-		secondaryAmmoCoef = 0.05;
-		handgunAmmoCoef = 0.1;
-
-		// O_Soldier_base_F
-		class HitPoints: HitPoints
-		{
-			class HitHead: HitHead
-			{
-				armor = 1;
-				passThrough = 1;
-				explosionShielding = 0.5;
-			};
-			class HitBody: HitBody
-			{
-				armor = 6;
-				passThrough = 0.5;
-				explosionShielding = 1.5;
-			};
-			class HitHands: HitHands
-			{
-				armor = 8;
-				passThrough = 0.5;
-				explosionShielding = 0.8;
-			};
-			class HitLegs: HitLegs
-			{
-				armor = 8;
-				passThrough = 0.5;
-				explosionShielding = 0.8;
-			};
-		};
-		armor = 2;
-		armorStructural = 5;
-
-		// O_sniper_F
-		threat[] = {1,0.6,0.6};
-		camouflage = 0.4;
-		sensitivity = 3.3;
-	};
-	class Epoch_Female_Ghillie2_F : Epoch_Female_Ghillie1_F
-	{
-		displayName = "Female Ghillie (light green)";
-		scope = 2;
-		model = "\x\addons\a3_epoch_assets_3\CfgVehicles\Characters\female_ghillie.p3d";
-
-		hiddenSelections[] = { "Camo" };
-		hiddenSelectionsTextures[] = { "\a3\characters_f\common\data\ghillie_2_ca.paa" };
-		// hiddenSelectionsMaterials[] = { "\x\addons\a3_epoch_assets\textures\camo\female_camoDark.rvmat" };
-
-		modelSides[] = { 1 };
-		uniformClass = "U_ghillie2_uniform";
-	};
-	class Epoch_Female_Ghillie3_F : Epoch_Female_Ghillie1_F
-	{
-		displayName = "Female Ghillie (green)";
-		scope = 2;
-		model = "\x\addons\a3_epoch_assets_3\CfgVehicles\Characters\female_ghillie.p3d";
-
-		hiddenSelections[] = { "Camo" };
-		hiddenSelectionsTextures[] = { "\a3\characters_f\common\data\ghillie_1_ca.paa" };
-		// hiddenSelectionsMaterials[] = { "\x\addons\a3_epoch_assets\textures\camo\female_camoDark.rvmat" };
-
-		modelSides[] = { 1 };
-		uniformClass = "U_ghillie3_uniform";
-	};
-
-	class Epoch_Female_Camo_F : Epoch_Female_base_F
-	{
-		displayName = "Female Camo";
-		scope = 2;
-		model = "\x\addons\a3_epoch_assets_3\CfgVehicles\Characters\female_camo.p3d";
-		hiddenSelections[] = { "Camo" };
-		hiddenSelectionsTextures[] = { "\x\addons\a3_epoch_assets\textures\camo\camoDark_co.paa" };
-		hiddenSelectionsMaterials[] = { "\x\addons\a3_epoch_assets\textures\camo\female_camoDark.rvmat" };
-
-		class Wounds
-		{
-			tex[] = {};
-			mat[] = { "x\addons\a3_epoch_assets\textures\camo\female_camoDark.rvmat", "x\addons\a3_epoch_assets\textures\camo\female_camoinjury.rvmat", "x\addons\a3_epoch_assets\textures\camo\female_camoinjury.rvmat" };
-		};
-
-		modelSides[] = { 1 };
-		uniformClass = "U_Camo_uniform";
-
-	};
-	class Epoch_Female_CamoBlue_F : Epoch_Female_Camo_F
-	{
-		displayName = "Female Camo (Blue)";
-		scope = 2;
-		model = "\x\addons\a3_epoch_assets_3\CfgVehicles\Characters\female_camo.p3d";
-		hiddenSelections[] = { "Camo" };
-		hiddenSelectionsTextures[] = { "\x\addons\a3_epoch_assets\textures\camo\camoBlue_co.paa" };
-		hiddenSelectionsMaterials[] = { "\x\addons\a3_epoch_assets\textures\camo\female_camoBlue.rvmat" };
-
-		class Wounds
-		{
-			tex[] = {};
-			mat[] = { "x\addons\a3_epoch_assets\textures\camo\female_camoBlue.rvmat", "x\addons\a3_epoch_assets\textures\camo\female_camoinjury.rvmat", "x\addons\a3_epoch_assets\textures\camo\female_camoinjury.rvmat" };
-		};
-
-		modelSides[] = { 1 };
-		uniformClass = "U_CamoBlue_uniform";
-	};
-	class Epoch_Female_CamoBrn_F : Epoch_Female_Camo_F
-	{
-		displayName = "Female Camo (Brown)";
-		scope = 2;
-		model = "\x\addons\a3_epoch_assets_3\CfgVehicles\Characters\female_camo.p3d";
-		hiddenSelections[] = { "Camo" };
-		hiddenSelectionsTextures[] = { "\x\addons\a3_epoch_assets\textures\camo\camoBrown_co.paa" };
-		hiddenSelectionsMaterials[] = { "\x\addons\a3_epoch_assets\textures\camo\female_camoBrown.rvmat" };
-
-		class Wounds
-		{
-			tex[] = {};
-			mat[] = { "x\addons\a3_epoch_assets\textures\camo\female_camoBrown.rvmat", "x\addons\a3_epoch_assets\textures\camo\female_camoinjury.rvmat", "x\addons\a3_epoch_assets\textures\camo\female_camoinjury.rvmat" };
-		};
-
-		modelSides[] = { 1 };
-		uniformClass = "U_CamoBrn_uniform";
-	};
-	class Epoch_Female_CamoRed_F : Epoch_Female_Camo_F
-	{
-		displayName = "Female Camo (Red)";
-		scope = 2;
-		model = "\x\addons\a3_epoch_assets_3\CfgVehicles\Characters\female_camo.p3d";
-		hiddenSelections[] = { "Camo" };
-		hiddenSelectionsTextures[] = { "\x\addons\a3_epoch_assets\textures\camo\camoRed_co.paa" };
-		hiddenSelectionsMaterials[] = { "\x\addons\a3_epoch_assets\textures\camo\female_camoRed.rvmat" };
-
-		class Wounds
-		{
-			tex[] = {};
-			mat[] = { "x\addons\a3_epoch_assets\textures\camo\female_camoRed.rvmat", "x\addons\a3_epoch_assets\textures\camo\female_camoinjury.rvmat", "x\addons\a3_epoch_assets\textures\camo\female_camoinjury.rvmat" };
-		};
-
-		modelSides[] = { 1 };
-		uniformClass = "U_CamoRed_uniform";
-	};
-
-	class O_Soldier_base_F;
-	class Epoch_Man_base_F : O_Soldier_base_F
-	{
-		identityTypes[] = { "Kerry", "NoGlasses" };
-
-		faceType = "Man_A3";
-		side = 0;
-		vehicleClass = "Men";
-		engineer = 1;
-		scope = 0;
-		class Wounds
-		{
-			tex[] = {};
-			mat[] = {"A3\Characters_F\Common\Data\basicbody.rvmat","A3\Characters_F\Common\Data\basicbody_injury.rvmat","A3\Characters_F\Common\Data\basicbody_injury.rvmat","A3\Characters_F\Heads\Data\hl_white_bald_muscular.rvmat","A3\Characters_F\Heads\Data\hl_white_bald_muscular_injury.rvmat","A3\Characters_F\Heads\Data\hl_white_bald_muscular_injury.rvmat","A3\Characters_F\Heads\Data\hl_black_bald_muscular.rvmat","A3\Characters_F\Heads\Data\hl_black_bald_muscular_injury.rvmat","A3\Characters_F\Heads\Data\hl_black_bald_muscular_injury.rvmat","A3\Characters_F\Heads\Data\hl_white_hairy_muscular.rvmat","A3\Characters_F\Heads\Data\hl_white_hairy_muscular_injury.rvmat","A3\Characters_F\Heads\Data\hl_white_hairy_muscular_injury.rvmat","A3\Characters_F\Heads\Data\hl_white_old.rvmat","A3\Characters_F\Heads\Data\hl_white_old_injury.rvmat","A3\Characters_F\Heads\Data\hl_white_old_injury.rvmat","A3\Characters_F\Heads\Data\hl_asian_bald_muscular.rvmat","A3\Characters_F\Heads\Data\hl_asian_bald_muscular_injury.rvmat","A3\Characters_F\Heads\Data\hl_asian_bald_muscular_injury.rvmat"};
-		};
-		model = "\A3\Characters_F\Common\basicbody";
-		modelSides[] = {0};
-		nakedUniform = "U_BasicBody";
-		uniformClass = "U_Test1_uniform";
-		weapons[] = {"Throw","Put"};
-		respawnWeapons[] = {"Throw","Put"};
-		Items[] = {};
-		RespawnItems[] = {};
-		magazines[] = {};
-		respawnMagazines[] = {};
-		linkedItems[] = { "V_41_EPOCH", "ItemMap" };
-		respawnLinkedItems[] = { "V_41_EPOCH", "ItemMap" };
-
-		// fix and normalize base classes
-		cost = 40000;
-		headgearProbability = 100;
-		allowedHeadgear[] = {};
-		class HitPoints
-		{
-			class HitHead
-			{
-				armor = 1;
-				material = -1;
-				name = "head";
-				passThrough = 1;
-				radius = 0.1;
-				explosionShielding = 0.5;
-				minimalHit = 0;
-			};
-			class HitBody
-			{
-				armor = 1;
-				material = -1;
-				name = "body";
-				passThrough = 1;
-				radius = 0.15;
-				explosionShielding = 10;
-				visual = "injury_body";
-				minimalHit = 0;
-			};
-			class HitHands
-			{
-				armor = 1;
-				material = -1;
-				name = "hands";
-				passThrough = 1;
-				radius = 0.08;
-				explosionShielding = 1;
-				visual = "injury_hands";
-				minimalHit = 0;
-			};
-			class HitLegs
-			{
-				armor = 1;
-				material = -1;
-				name = "legs";
-				passThrough = 1;
-				radius = 0.1;
-				explosionShielding = 1;
-				visual = "injury_legs";
-				minimalHit = 0;
-			};
-		};
-		armor = 2;
-		armorStructural = 5;
-
-
-	};
-	class Epoch_Char_base_F : Civilian
-	{
-		faceType = "Man_A3";
-		side = 4;
-		faction = "CIV_F";
-		genericNames = "GreekMen";
-		vehicleClass = "Men";
-		scope = 0;
-		class Wounds
-		{
-			tex[] = {};
-			mat[] = { "A3\Characters_F\Common\Data\basicbody.rvmat", "A3\Characters_F\Common\Data\basicbody_injury.rvmat", "A3\Characters_F\Common\Data\basicbody_injury.rvmat", "A3\Characters_F\Heads\Data\hl_white_bald_muscular.rvmat", "A3\Characters_F\Heads\Data\hl_white_bald_muscular_injury.rvmat", "A3\Characters_F\Heads\Data\hl_white_bald_muscular_injury.rvmat", "A3\Characters_F\Heads\Data\hl_black_bald_muscular.rvmat", "A3\Characters_F\Heads\Data\hl_black_bald_muscular_injury.rvmat", "A3\Characters_F\Heads\Data\hl_black_bald_muscular_injury.rvmat", "A3\Characters_F\Heads\Data\hl_white_hairy_muscular.rvmat", "A3\Characters_F\Heads\Data\hl_white_hairy_muscular_injury.rvmat", "A3\Characters_F\Heads\Data\hl_white_hairy_muscular_injury.rvmat", "A3\Characters_F\Heads\Data\hl_white_old.rvmat", "A3\Characters_F\Heads\Data\hl_white_old_injury.rvmat", "A3\Characters_F\Heads\Data\hl_white_old_injury.rvmat", "A3\Characters_F\Heads\Data\hl_asian_bald_muscular.rvmat", "A3\Characters_F\Heads\Data\hl_asian_bald_muscular_injury.rvmat", "A3\Characters_F\Heads\Data\hl_asian_bald_muscular_injury.rvmat" };
-		};
-		model = "\A3\Characters_F\Common\basicbody";
-		modelSides[] = {4};
-		//nakedUniform = "U_Char_uniform";
-		//uniformClass = "U_Char_uniform";
-		class UniformInfo
-		{
-			class SlotsInfo
-			{
-				class NVG : UniformSlotInfo
-				{
-					slotType = 602;
-				};
-				class Scuba : UniformSlotInfo
-				{
-					slotType = "SCUBA_SLOT";
-				};
-				class Googles : UniformSlotInfo
-				{
-					slotType = 603;
-				};
-				class Headgear : UniformSlotInfo
-				{
-					slotType = 605;
-				};
-			};
-		};
-		class HitPoints : HitPoints
-		{
-			class HitHead : HitHead
-			{
-				armor = "0.3*2.5";
-			};
-			class HitBody : HitBody
-			{
-				armor = "0.5*10";
-			};
-			class HitHands : HitHands
-			{
-				armor = "0.8*5";
-			};
-			class HitLegs : HitLegs
-			{
-				armor = "0.8*5";
-			};
-		};
-		weapons[] = { "Throw", "Put" };
-		respawnWeapons[] = { "Throw", "Put" };
-		Items[] = {};
-		RespawnItems[] = {};
-		magazines[] = {};
-		respawnMagazines[] = {};
-		linkedItems[] = {};
-		respawnLinkedItems[] = {};
-	};
-	class Epoch_Sapper_base_F: Civilian2
-	{
-		faceType = "Default";
-		side = 4;
-		faction = "CIV_F";
-		genericNames = "GreekMen";
-		vehicleClass = "Men";
-		scope = 0;
-		class Wounds
-		{
-			tex[] = {};
-			mat[] = {"A3\Characters_F\Common\Data\basicbody.rvmat","A3\Characters_F\Common\Data\basicbody_injury.rvmat","A3\Characters_F\Common\Data\basicbody_injury.rvmat","A3\Characters_F\Heads\Data\hl_white_bald_muscular.rvmat","A3\Characters_F\Heads\Data\hl_white_bald_muscular_injury.rvmat","A3\Characters_F\Heads\Data\hl_white_bald_muscular_injury.rvmat","A3\Characters_F\Heads\Data\hl_black_bald_muscular.rvmat","A3\Characters_F\Heads\Data\hl_black_bald_muscular_injury.rvmat","A3\Characters_F\Heads\Data\hl_black_bald_muscular_injury.rvmat","A3\Characters_F\Heads\Data\hl_white_hairy_muscular.rvmat","A3\Characters_F\Heads\Data\hl_white_hairy_muscular_injury.rvmat","A3\Characters_F\Heads\Data\hl_white_hairy_muscular_injury.rvmat","A3\Characters_F\Heads\Data\hl_white_old.rvmat","A3\Characters_F\Heads\Data\hl_white_old_injury.rvmat","A3\Characters_F\Heads\Data\hl_white_old_injury.rvmat","A3\Characters_F\Heads\Data\hl_asian_bald_muscular.rvmat","A3\Characters_F\Heads\Data\hl_asian_bald_muscular_injury.rvmat","A3\Characters_F\Heads\Data\hl_asian_bald_muscular_injury.rvmat"};
-		};
-		model = "\A3\Characters_F\Common\basicbody";
-		modelSides[] = {4};
-		//nakedUniform = "U_Sapper_uniform";
-		//uniformClass = "U_Sapper_uniform";
-		class UniformInfo
-		{
-			class SlotsInfo
-			{
-				class NVG: UniformSlotInfo
-				{
-					slotType = 602;
-				};
-				class Scuba: UniformSlotInfo
-				{
-					slotType = "SCUBA_SLOT";
-				};
-				class Googles: UniformSlotInfo
-				{
-					slotType = 603;
-				};
-				class Headgear: UniformSlotInfo
-				{
-					slotType = 605;
-				};
-			};
-		};
-		class HitPoints: HitPoints
-		{
-			class HitHead: HitHead
-			{
-				armor = "0.3*2.5";
-			};
-			class HitBody: HitBody
-			{
-				armor = "0.5*10";
-			};
-			class HitHands: HitHands
-			{
-				armor = "0.8*5";
-			};
-			class HitLegs: HitLegs
-			{
-				armor = "0.8*5";
-			};
-		};
-		weapons[] = {"Throw","Put"};
-		respawnWeapons[] = {"Throw","Put"};
-		Items[] = {};
-		RespawnItems[] = {};
-		magazines[] = {};
-		respawnMagazines[] = {};
-		linkedItems[] = {};
-		respawnLinkedItems[] = {};
-	};
-	class Epoch_Female_F: Epoch_Female_base_F
-	{
-		woman = 1;
-		scope = 2;
-		displayName = "Female";
-		interactMode = 2;
-	};
-	class Epoch_Male_F: Epoch_Man_base_F
-	{
-		scope = 2;
-		displayName = "Male";
-		interactMode = 2;
-	};
-	class Epoch_Cloak_F : Epoch_Char_base_F
-	{
-		scope = 2;
-		faceType = "Default";
-		displayName = "Cloak";
-		model = "\x\addons\a3_epoch_assets_3\CfgVehicles\Characters\Cloak_Character.p3d";
-		glassesEnabled = 0;
-		modelSides[] = {6};
-		armor = 10;
-		armorStructural = 20;
-		class HitPoints : HitPoints
-		{
-			class HitHead : HitHead
-			{
-				armor = 10;
-			};
-			class HitBody : HitBody
-			{
-				armor = 10;
-			};
-			class HitHands : HitHands
-			{
-				armor = 10;
-			};
-			class HitLegs : HitLegs
-			{
-				armor = 10;
-			};
-		};
-	};
-	class Epoch_Sapper_F: Epoch_Sapper_base_F
-	{
-		scope = 2;
-		faceType = "Default";
-		displayName = "Sapper";
-		model = "\x\addons\a3_epoch_assets_3\CfgVehicles\Characters\Sapper_Character.p3d";
-		hiddenSelections[] = {"sapper","remains"};
-		hiddenSelectionsTextures[] = {"x\addons\a3_epoch_assets\textures\sapper\sapper_eco.paa",""};
-		glassesEnabled = 0;
-		modelSides[] = {6};
-		armor = 6;
-		armorStructural = 13;
-
-		magazines[] = {};
-		respawnMagazines[] = {};
-
-		class HitPoints : HitPoints
-		{
-			class HitHead : HitHead
-			{
-				armor = 4;
-			};
-			class HitBody : HitBody
-			{
-				armor = 7;
-			};
-			class HitHands : HitHands
-			{
-				armor = 1000;
-			};
-			class HitLegs : HitLegs
-			{
-				armor = 9;
-			};
-		};
-	};
-	class Epoch_SapperB_F : Epoch_Sapper_base_F
-	{
-		scope = 2;
-		faceType = "Default";
-		displayName = "Sapper (Bloated)";
-		model = "\x\addons\a3_epoch_assets_3\CfgVehicles\Characters\Sapper_Bloated.p3d";
-		//hiddenSelections[] = { "sapper", "remains" };
-		//hiddenSelectionsTextures[] = { "x\addons\a3_epoch_assets\textures\sapper\sapper_eco.paa", "" };
-		glassesEnabled = 0;
-		modelSides[] = { 6 };
-		armor = 9;
-		armorStructural = 13;
-
-		magazines[] = {};
-		respawnMagazines[] = {};
-
-		class HitPoints : HitPoints
-		{
-			class HitHead : HitHead
-			{
-				armor = 4;
-			};
-			class HitBody : HitBody
-			{
-				armor = 7;
-			};
-			class HitHands : HitHands
-			{
-				armor = 1000;
-			};
-			class HitLegs : HitLegs
-			{
-				armor = 9;
-			};
-		};
-	};
-
-	/*
-	class Epoch_Ent_Small_F : Epoch_Char_base_F
-	{
-		scope = 2;
-		faceType = "Default";
-		model = "\x\addons\a3_epoch_assets_3\CfgVehicles\Characters\Elemental_Small.p3d";
-		displayName = "Ent (small)";
-		glassesEnabled = 0;
-		modelSides[] = {6};
-		class HitPoints: HitPoints
-		{
-			class HitHead: HitHead
-			{
-				armor = 100;
-			};
-			class HitBody: HitBody
-			{
-				armor = 200;
-			};
-			class HitHands: HitHands
-			{
-				armor = 200;
-			};
-			class HitLegs: HitLegs
-			{
-				armor = 200;
-			};
-		};
-	};
-	class Epoch_Ent_Med_F : Epoch_Char_base_F
-	{
-		scope = 2;
-		faceType = "Default";
-		model = "\x\addons\a3_epoch_assets_3\CfgVehicles\Characters\Elemental_Med.p3d";
-		displayName = "Ent (medium)";
-		extCameraPosition[] = {0,1.5,-9};
-		glassesEnabled = 0;
-		modelSides[] = {6};
-		class HitPoints: HitPoints
-		{
-			class HitHead: HitHead
-			{
-				armor = 200;
-			};
-			class HitBody: HitBody
-			{
-				armor = 300;
-			};
-			class HitHands: HitHands
-			{
-				armor = 300;
-			};
-			class HitLegs: HitLegs
-			{
-				armor = 300;
-			};
-		};
-	};
-	class Epoch_Ent_Large_F : Epoch_Char_base_F
-	{
-		scope = 2;
-		faceType = "Default";
-		model = "\x\addons\a3_epoch_assets_3\CfgVehicles\Characters\Elemental_Large.p3d";
-		displayName = "Ent (large)";
-		extCameraPosition[] = {0,1.5,-18};
-		glassesEnabled = 0;
-		modelSides[] = {6};
-		class HitPoints: HitPoints
-		{
-			class HitHead: HitHead
-			{
-				armor = 250;
-			};
-			class HitBody: HitBody
-			{
-				armor = 500;
-			};
-			class HitHands: HitHands
-			{
-				armor = 500;
-			};
-			class HitLegs: HitLegs
-			{
-				armor = 500;
-			};
-		};
-	};
-	*/
-	class House;
-	class House_F: House
-	{
-		class DestructionEffects;
-	};
-	class House_Small_F;
-	class Ruins_F;
-
-	class PowerLines_base_F : House_F
-	{
-		mapSize = 2.35;
-		author = "$STR_A3_Bohemia_Interactive";
-		_generalMacro = "PowerLines_base_F";
-		scope = 0;
-		scopeCurator = 0;
-		displayName = "";
-		model = "\A3\Weapons_F\empty.p3d";
-		vehicleClass = "Structures_Infrastructure";
-		cost = 100;
-		compatibleWires[] = {};
-		class EventHandlers
-		{
-			killed = "if (isServer) then {this call compile preprocessFileLineNumbers ""\A3\Structures_F\Ind\PowerLines\Scripts\column_ruins.sqf""};";
-		};
-	};
-
-	class PowerLines_Small_base_F : House_Small_F
-	{
-		mapSize = 2.79;
-		author = "$STR_A3_Bohemia_Interactive";
-		_generalMacro = "PowerLines_Small_base_F";
-		scope = 0;
-		scopeCurator = 0;
-		displayName = "";
-		model = "\A3\Weapons_F\empty.p3d";
-		vehicleClass = "Structures_Infrastructure";
-		compatibleWires[] = {};
-		cost = 100;
-		class EventHandlers
-		{
-			killed = "if (isServer) then {this call compile preprocessFileLineNumbers ""\A3\Structures_F\Ind\PowerLines\Scripts\column_ruins.sqf""};";
-		};
-	};
-
-	class Land_Communication_anchor_F : House_F
-	{
-		mapSize = 9.73;
-		author = "$STR_A3_Bohemia_Interactive";
-		_generalMacro = "Land_Communication_anchor_F";
-		scope = 1;
-		scopeCurator = 2;
-		displayName = "$STR_A3_CfgVehicles_Land_Communication_anchor_F0";
-		model = "\A3\Structures_F\Ind\Transmitter_Tower\Communication_anchor_F.p3d";
-		vehicleClass = "Structures_Infrastructure";
-		class DestructionEffects
-		{
-			class DestroyPhase1
-			{
-				simulation = "destroy";
-				type = "DelayedDestruction";
-				lifeTime = 1;
-				position = "";
-				intensity = 1;
-				interval = 1;
-			};
-		};
-		class EventHandlers
-		{
-			killed = "if (isServer) then {this call compile preprocessFileLineNumbers ""\A3\Structures_F\Ind\Transmitter_Tower\Scripts\anchor_ruins.sqf""};";
-		};
-	};
-	class Land_Communication_F : House_F
-	{
-		mapSize = 4.53;
-		author = "$STR_A3_Bohemia_Interactive";
-		_generalMacro = "Land_Communication_F";
-		scope = 1;
-		scopeCurator = 2;
-		displayName = "$STR_A3_CfgVehicles_Land_Communication_F0";
-		model = "\A3\Structures_F\Ind\Transmitter_Tower\Communication_F.p3d";
-		vehicleClass = "Structures_Infrastructure";
-		cost = 40000;
-		class EventHandlers
-		{
-			killed = "if (isServer) then {this call compile preprocessFileLineNumbers ""\A3\Structures_F\Ind\Transmitter_Tower\Scripts\tower_ruins.sqf""};";
-		};
-	};
 
 	class Car;
 	class Car_F: Car

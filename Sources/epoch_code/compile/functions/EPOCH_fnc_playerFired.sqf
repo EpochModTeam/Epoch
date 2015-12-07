@@ -1,3 +1,33 @@
+/*
+	Author: Aaron Clark - EpochMod.com
+
+    Contributors:
+
+	Description:
+	Weapon fired handler
+
+    Licence:
+    Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
+
+    Github:
+    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_code/compile/functions/EPOCH_fnc_playerFired.sqf
+
+    Example:
+    player addEventHandler ["Fired", {_this call EPOCH_fnc_playerFired}];
+
+    Parameter(s):
+		_this select 0: unit: Object - Object the event handler is assigned to
+		_this select 1: weapon: String - Fired weapon
+		_this select 2: muzzle: String - Muzzle that was used
+		_this select 3: mode: String - Current mode of the fired weapon
+		_this select 4: ammo: String - Ammo used
+		_this select 5: magazine: String - magazine name which was used
+		_this select 6: projectile: Object - Object of the projectile that was shot (Arma 2: OA and onwards)
+
+	Returns:
+	NOTHING
+*/
+
 private ["_highestDMG","_currentHIT","_currentDMG","_attachments","_newDMG","_cursorTarget","_repaired","_unit","_weapon","_ammo","_projectile"];
 _unit = 		_this select 0;
 _weapon = 		_this select 1;

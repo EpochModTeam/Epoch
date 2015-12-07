@@ -1,3 +1,17 @@
+/*
+	Author: Aaron Clark - EpochMod.com
+
+    Contributors:
+
+	Description:
+	Epoch consume item function
+
+    Licence:
+    Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
+
+    Github:
+    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_code/compile/EPOCH_consumeItem.sqf
+*/
 private ["_type","_interactOption","_previewClass","_object","_isStorage","_isOk","_buildClass","_vehicle","_currentFuel","_canCapacity","_fuelCapacity","_newFuel","_vehicles","_highestDMG","_currentHIT","_currentDMG","_newDMG","_paintCanIndex","_paintCanColor","_msg","_color","_text","_item","_pic","_removeItem"];
 
 _text = EPOCH_InteractedItem select 0;

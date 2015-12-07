@@ -12,7 +12,7 @@ if (_buildingCountLimit == 0) then { _buildingCountLimit = 200; };
 
 EPOCH_buildOption = 0;
 
-_object = _this;
+params ["_object"];
 _objType = typeOf _object;
 
 // check if another player has target

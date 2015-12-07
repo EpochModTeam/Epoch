@@ -1,3 +1,17 @@
+/*
+	Author: Aaron Clark - EpochMod.com
+
+    Contributors:
+
+	Description:
+	Epoch debug monitor
+
+    Licence:
+    Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
+
+    Github:
+    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_code/compile/EPOCH_debugMonitor.sqf
+*/
 private["_hours"];
 _hours = floor(servertime/60/60);
 
@@ -57,4 +71,3 @@ hintSilent parseText format ["
 	round((serverTime/60)-(_hours*60)),
 	if (typeName EPOCH_diag_fps == "SCALAR") then [{EPOCH_diag_fps},{"MANIPULATED"}]
 ];
-

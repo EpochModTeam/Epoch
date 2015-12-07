@@ -1,3 +1,18 @@
+/*
+	Author: Aaron Clark - EpochMod.com
+
+    Contributors:
+
+	Description:
+	Epoch gamemode config for Altis
+
+    Licence:
+    Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
+
+    Github:
+    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_config/Configs/CfgEpochClient/Altis.hpp
+*/
+
 class Altis {
 	blockedArea[] = { //[POS],radius
 			{ { 16085, 16997, 0 }, 250 }, //South Telos
@@ -55,7 +70,7 @@ class Altis {
 		"canisterplastic_f.p3d",
 		"watertank_f.p3d"
 	};
-	// main config 
+	// main config
 	TrashClasses[] = { "Trash", "TrashSmall", "TrashVehicle", "PumpkinPatch", "TrashFood" };
 
 	TrashSmall[] = {

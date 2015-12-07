@@ -1,8 +1,17 @@
-// Bornholm config created by Uro [www.UroGaming.co.uk] for ARMA 3 EPOCH MOD [EpochMod.com]
-//
-// Updated with some minor tweaks 20/01/2015
-// Updated for new telepos positions 7/22/2015
+/*
+	Author: Aaron Clark - EpochMod.com
 
+    Contributors: Uro1, Robio
+
+	Description:
+	Epoch gamemode server Side map specific configs for bornholm.
+
+    Licence:
+    Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
+
+    Github:
+    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_server_settngs/configs/maps/bornholm.h
+*/
 class Bornholm : Default
 {
 	worldSize = 25000;

@@ -1,4 +1,19 @@
-_object = _this;
+/*
+	Author: Aaron Clark - EpochMod.com
+
+    Contributors:
+
+	Description:
+	Custom Fire Effect emitter (not in use)
+
+    Licence:
+    Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
+
+    Github:
+    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_config/scripts/fireB.sqf
+*/
+
+params ["_object"];
 _pos01 = getPos _object;
 
 /*

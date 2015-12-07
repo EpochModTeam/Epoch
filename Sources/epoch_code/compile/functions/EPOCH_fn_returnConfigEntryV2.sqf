@@ -1,3 +1,28 @@
+/*
+	Author: Aaron Clark - EpochMod.com
+
+    Contributors:
+
+	Description:
+	Return configFile or missionConfigFile data if exists else return default variable
+
+    Licence:
+    Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
+
+    Github:
+    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_code/compile/functions/EPOCH_fn_returnConfigEntryV2.sqf
+
+    Example:
+    _sapperRndChance = ["CfgEpochClient", "sapperRngChance", 100] call EPOCH_fnc_returnConfigEntryV2;
+
+    Parameter(s):
+		_this select 0: STRING - Config Class
+        _this select 1: STRING - Variable Name
+		_this select 2: STRING - Default Variable
+
+	Returns:
+	MIXED
+*/
 private["_defaultData", "_config", "_varData","_missionconfig","_finalconfig"];
 _defaultData = _this select 2;
 _config = (configfile >> (_this select 0));

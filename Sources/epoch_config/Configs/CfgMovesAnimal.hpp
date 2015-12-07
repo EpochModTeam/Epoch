@@ -1,4 +1,17 @@
+/*
+	Author: Aaron Clark - EpochMod.com
 
+    Contributors: Paul Tomany (.rtm Animation)
+
+	Description:
+	Custom Epoch animal animations configs Sharks,(Bear,Constuct)TBA
+
+    Licence:
+    Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
+
+    Github:
+    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_config/Configs/CfgMovesAnimal.hpp
+*/
 class CfgMovesAnimal_Base_F
 {
 	access = 1;

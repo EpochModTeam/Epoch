@@ -1,3 +1,26 @@
+/*
+	Author: Aaron Clark - EpochMod.com
+
+    Contributors:
+
+	Description:
+	Initalize player variables
+
+    Licence:
+    Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
+
+    Github:
+    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_code/compile/setup/EPOCH_clientInit.sqf
+
+    Example:
+    call EPOCH_clientInit;
+
+    Parameter(s):
+		NONE
+
+	Returns:
+	NOTHING
+*/
 EPOCH_buildMode = 0;
 EPOCH_buildDirection = 0;
 EPOCH_debugMode = false;

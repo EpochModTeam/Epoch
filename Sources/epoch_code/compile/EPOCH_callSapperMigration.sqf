@@ -1,3 +1,17 @@
+/*
+	Author: Andrew Gregory - EpochMod.com
+
+    Contributors:
+
+	Description:
+	A3 Epoch call sapper migration
+
+    Licence:
+    Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
+
+    Github:
+    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_code/compile/EPOCH_callSapperMigration.sqf
+*/
 private["_notReady","_abortAfter","_start","_finish","_dirTo","_nrPlyrs","_i","_pos","_trgt","_sapperCount"];
  _disableAI = {
 	{_this disableAI _x}forEach["TARGET","AUTOTARGET","FSM"];

@@ -1,9 +1,24 @@
+/*
+	Author: Aaron Clark - EpochMod.com
+
+    Contributors: Paul Tomany (.rtm Animation)
+
+	Description:
+	Adds custom animation "epoch_unarmed_jump"
+
+    Licence:
+    Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
+
+    Github:
+    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_config/Configs/CfgMovesMaleSdr.hpp
+*/
+
 class CfgMovesMaleSdr : CfgMovesBasic
 {
 	skeletonName = "OFP2_ManSkeleton";
 	gestures = "CfgGesturesMale";
 	class States {
-		
+
 		class AovrPercMstpSnonWnonDf;
 		class epoch_unarmed_jump : AovrPercMstpSnonWnonDf
 		{

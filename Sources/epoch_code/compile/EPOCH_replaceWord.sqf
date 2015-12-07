@@ -1,3 +1,17 @@
+/*
+	Author: Aaron Clark - EpochMod.com
+
+    Contributors:
+
+	Description:
+	test code to replace string in word (old)
+
+    Licence:
+    Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
+
+    Github:
+    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_code/compile/EPOCH_replaceWord.sqf
+*/
 private["_nextChar2", "_nextChar1", "_nextChar", "_replaceArray", "_STRING", "_needle", "_replace"];
 _replaceArray = [];
 

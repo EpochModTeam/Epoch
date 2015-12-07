@@ -1,3 +1,17 @@
+/*
+	Author: Aaron Clark - EpochMod.com
+
+    Contributors:
+
+	Description:
+	Epoch display kyrpto changes
+
+    Licence:
+    Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
+
+    Github:
+    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_code/compile/EPOCH_effectCrypto.sqf
+*/
 if (typeName _this == "SCALAR") then {
   EPOCH_playerCrypto = _this;
   9992 cutRsc["EpochGameUI2", "PLAIN", 2, false];

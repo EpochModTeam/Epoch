@@ -1,3 +1,17 @@
+/*
+	Author: Aaron Clark - EpochMod.com
+
+    Contributors: Richie
+
+	Description:
+	Epoch gamemode config for Esseker
+
+    Licence:
+    Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
+
+    Github:
+    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_config/Configs/CfgEpochClient/Esseker.hpp
+*/
 class Esseker {
 	blockedArea[] = {
 			{ { 208.778, 353.779, 0 }, 300 }, //Cave

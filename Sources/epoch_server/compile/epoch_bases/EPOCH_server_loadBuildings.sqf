@@ -1,14 +1,17 @@
 /*
-    Load Buildings
-    by Aaron Clark - EpochMod.com
+	Author: Aaron Clark - EpochMod.com
 
-    This work is licensed under a Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License.
-    http://creativecommons.org/licenses/by-nc-nd/4.0/
+    Contributors:
 
-    Improvements and or bugfixes and other contributions are welcome via the github:
+	Description:
+	Load Buildings from Epoch Hive
+
+    Licence:
+    Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
+
+    Github:
     https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_server/compile/epoch_bases/EPOCH_server_loadBuildings.sqf
 */
-
 
 _maxTTL = parseNumber EPOCH_expiresBuilding;
 _config = 'CfgEpochClient' call EPOCH_returnConfig;

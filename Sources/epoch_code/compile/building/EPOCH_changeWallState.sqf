@@ -1,6 +1,29 @@
 /*
- Epoch Change wall state
- By Aaron Clark
+	Author: Aaron Clark - EpochMod.com
+
+    Contributors:
+
+	Description:
+	Epoch Change wall state
+
+    Licence:
+    Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
+
+    Github:
+    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_code/compile/building/EPOCH_changeWallState.sqf
+
+    Example:
+    [_this,"NWall",1] call EPOCH_changeWallState;
+
+    Parameter(s):
+		_this select 0: OBJECT - Base building object
+        _this select 1: STRING - Name of animation
+        _this select 1: SCALAR - state
+            0: true = add wall
+            1: false = remove wall
+
+	Returns:
+	NOTHING
 */
 _object = param [0,objNull];
 _anim = param [1,""];

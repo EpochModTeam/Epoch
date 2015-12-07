@@ -1,6 +1,17 @@
-/****************************************************************************
-Copyright (C) 2015 - ARMA 3 EPOCH MOD [EpochMod.com] (v0.3.6.0)
-*****************************************************************************/
+/*
+	Author: Aaron Clark - EpochMod.com
+
+    Contributors:
+
+	Description:
+	Epoch Server Settings Config
+
+    Licence:
+    Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
+
+    Github:
+    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_server_settngs/config.cpp
+*/
 
 #define _ARMA_
 

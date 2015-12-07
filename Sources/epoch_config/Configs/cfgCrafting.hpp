@@ -1,24 +1,38 @@
 /*
-nearby[] =
-{
-	{
-		"Fire",			//Name of field, anything
-		"",				//image folder path (ie "\x\addons\a3_epoch_code\Data\UI\crafting\"), empty for Epoch default
-		"fire",			//image prefix, suffix will be added by code. 2 possible suffixes: [_true.paa, _false.paa]
-		{1,{"ALL"}},	//ARRAY of p3D {0,{"filename.p3d","filename.p3d"}} or ARRAY of logic classes {1,{"AIR","LAND","className"}}. Integer to switch array mode
-		3,				//distance to check in meters
-		1,				//count
-		1,				//BOOL: object has to be on fire
-		0				//BOOL: object has to be alive (not destroyed)
-	};
-};
+	Author: Aaron Clark - EpochMod.com
 
-//Can be multiple requirements like this, example requires both fire and water (unlimited, but requires mouse scroll if more than 8 elements):
-nearby[] =
-{
-	{"Fire", "", "fire", {1,{"ALL"}}, 3, 1, 1, 0},
-	{"Water source","","water",{0,{"barrelwater_f.p3d", "water_source_f.p3d", "pumpa.p3d", "misc_wellpump.p3d"}},3,1,0,0}
-};
+    Contributors: Raimonds Virtoss (v2 Crafting)
+
+	Description:
+	Main Crafting configs
+
+    Licence:
+    Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
+
+    Github:
+    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_config/Configs/CfgCrafting.hpp
+
+	USAGE:
+	nearby[] =
+	{
+		{
+			"Fire",			//Name of field, anything
+			"",				//image folder path (ie "\x\addons\a3_epoch_code\Data\UI\crafting\"), empty for Epoch default
+			"fire",			//image prefix, suffix will be added by code. 2 possible suffixes: [_true.paa, _false.paa]
+			{1,{"ALL"}},	//ARRAY of p3D {0,{"filename.p3d","filename.p3d"}} or ARRAY of logic classes {1,{"AIR","LAND","className"}}. Integer to switch array mode
+			3,				//distance to check in meters
+			1,				//count
+			1,				//BOOL: object has to be on fire
+			0				//BOOL: object has to be alive (not destroyed)
+		};
+	};
+
+	//Can be multiple requirements like this, example requires both fire and water (unlimited, but requires mouse scroll if more than 8 elements):
+	nearby[] =
+	{
+		{"Fire", "", "fire", {1,{"ALL"}}, 3, 1, 1, 0},
+		{"Water source","","water",{0,{"barrelwater_f.p3d", "water_source_f.p3d", "pumpa.p3d", "misc_wellpump.p3d"}},3,1,0,0}
+	};
 */
 
 class CfgCrafting

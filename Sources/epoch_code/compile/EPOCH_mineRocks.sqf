@@ -1,3 +1,17 @@
+/*
+	Author: Aaron Clark - EpochMod.com
+
+    Contributors:
+
+	Description:
+	Request mine rocks and scrap metal
+
+    Licence:
+    Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
+
+    Github:
+    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_code/compile/EPOCH_mineRocks.sqf
+*/
 private ["_object","_foundIndex","_found","_str","_objects","_lootables","_currentPos","_p3dName","_findStart","_config","_cinderList","_rocksList"];
 
 if ((diag_tickTime - EPOCH_lastMineRocks) >= 2) then {

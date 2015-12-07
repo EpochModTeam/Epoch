@@ -1,5 +1,7 @@
 disableSerialization;
-_in = param [0, "", [""]];
+//_in = _this param [0, "", [""]];
+_in = [_this, 0, "", [""]] call BIS_fnc_param;
+
 _display = findDisplay 66600;
 _cfg = "CfgActionMenu" call EPOCH_returnConfig;
 _arr = [];

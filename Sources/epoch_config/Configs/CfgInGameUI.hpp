@@ -1,3 +1,18 @@
+/*
+	Author: Niklas Wagner - EpochMod.com
+
+    Contributors:
+
+	Description:
+	Removes termal from nightstalker UI
+
+    Licence:
+    Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
+
+    Github:
+    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_config/Configs/CfgInGameUI.hpp
+*/
+
 class RscUnitInfo;
 class RscText;
 class RscControlsGroup;

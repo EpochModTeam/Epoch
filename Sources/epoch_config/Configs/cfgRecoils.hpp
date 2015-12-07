@@ -1,3 +1,18 @@
+/*
+	Author: Aaron Clark - EpochMod.com
+
+    Contributors: Paul Tomany
+
+	Description:
+	Custom recoils for Rollins rifle
+
+    Licence:
+    Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
+
+    Github:
+    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_config/Configs/CfgWorlds.hpp
+*/
+
 class cfgRecoils
 {
 	recoil_single_Test_rifle_01[] = {0,0,0,0.03,"36.943*((0.001))*(0.3)","3.587*((0.004))*(3)",0.03,"31.817*((0.001))*(0.5)","1.251*((0.004))*(3.4)",0.03,"19.755*((0.001))*(0.7)","0.764*((0.004))*(3.8)",0.06,"7.388*((0.001))*(0.9)","0.285*((0.004))*(4.2)",0.06,"-2.402*((0.001))*(0.3)","-0.096*((0.004))*(7)",0.06,"-3.53*((0.001))*(0.5)","-0.141*((0.004))*(5)",0.06,"-3.677*((0.001))*(0.5)","-0.147*((0.004))*(3)",0.06,"-3.138*((0.001))*(0.3)","-0.125*((0.004))*(1)",0.06,0,0};

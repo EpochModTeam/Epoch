@@ -1,3 +1,26 @@
+/*
+	Author: Aaron Clark - EpochMod.com
+
+    Contributors:
+
+	Description:
+	Calculates weather related player stats
+
+    Licence:
+    Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
+
+    Github:
+    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_code/compile/functions/EPOCH_fnc_Weather.sqf
+
+    Example:
+    call EPOCH_fnc_Weather;
+
+    Parameter(s):
+		NONE
+
+	Returns:
+	NOTHING
+*/
 private ["_warming","_isNearFire","_airTemp","_waterTemp","_playerPosATL"];
 
 if (isNil "EPOCH_CURRENT_WEATHER") then {

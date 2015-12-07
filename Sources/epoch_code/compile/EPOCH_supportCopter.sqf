@@ -1,3 +1,17 @@
+/*
+	Author: Andrew Gregory - EpochMod.com
+
+    Contributors: Aaron Clark
+
+	Description:
+	Spawn drone function
+
+    Licence:
+    Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
+
+    Github:
+    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_code/compile/EPOCH_supportCopter.sqf
+*/
 private["_pos","_copter","_plyr","_unit","_copterSupportGrp","_arrUnits","_arrSkills","_aiskill"];
 _pos = _this select 0;
 _copter = _this select 1;

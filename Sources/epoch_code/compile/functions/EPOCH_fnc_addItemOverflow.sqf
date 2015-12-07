@@ -1,4 +1,26 @@
-// Epoch add item with overflow
+/*
+	Author: Aaron Clark - EpochMod.com
+
+    Contributors:
+
+	Description:
+	Epoch add item with overflow
+
+    Licence:
+    Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
+
+    Github:
+    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_code/compile/functions/EPOCH_fnc_addItemOverflow.sqf
+
+    Example:
+    _fish call EPOCH_fnc_addItemOverflow;
+
+    Parameter(s):
+		_this: STRING - Item Class
+
+	Returns:
+	NOTHING
+*/
 private ["_wHPos","_wH","_nearByHolder","_item"];
 _item = _this;
 if (player canAdd _item) then {

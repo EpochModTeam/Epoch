@@ -1,3 +1,17 @@
+/*
+	Author: Aaron Clark - EpochMod.com
+
+    Contributors:
+
+	Description:
+	Epoch gamemode config for Chernarus_Summer
+
+    Licence:
+    Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
+
+    Github:
+    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_config/Configs/CfgEpochClient/Chernarus_Summer.hpp
+*/
 class Chernarus_Summer {
 	blockedArea[] = {
 			{ { 10203, 1886, 0 }, 430 }, //South Electro
@@ -30,7 +44,7 @@ class Chernarus_Summer {
 		"misc_well.p3d",
 		"misc_wellpump.p3d"
 	};
-	// main config 
+	// main config
 	TrashClasses[] = { "Trash", "TrashSmall", "TrashVehicle", "PumpkinPatch", "TrashFood" };
 
 	TrashSmall[] = {
