@@ -369,33 +369,6 @@ class Epoch_Cloak_F : Epoch_Char_base_F
 	modelSides[] = {6};
 	armor = 10;
 	armorStructural = 20;
-	class HitPoints : HitPoints
-	{
-		class HitHead : HitHead
-		{
-			armor = 10;
-		};
-		class HitBody : HitBody
-		{
-			armor = 10;
-		};
-		class HitHands : HitHands
-		{
-			armor = 10;
-		};
-		class HitLegs : HitLegs
-		{
-			armor = 10;
-		};
-		class HitFace : HitFace {};
-		class HitNeck : HitNeck {};
-		class HitPelvis : HitPelvis {};
-		class HitAbdomen : HitAbdomen {};
-		class HitDiaphragm : HitDiaphragm {};
-		class HitChest : HitChest {};
-		class HitArms : HitArms {};
-
-	};
 };
 class Epoch_Sapper_F: Epoch_Sapper_base_F
 {

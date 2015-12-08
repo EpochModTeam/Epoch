@@ -153,9 +153,9 @@ class Epoch_Female_base_F : B_Soldier_base_F
 			minimalHit = 0.01;
 		};
 	};
-
 	armor = 2;
-	armorStructural = 5;
+	armorStructural = 0.5;
+	explosionShielding = 0.05;
 
 	class Wounds
 	{
