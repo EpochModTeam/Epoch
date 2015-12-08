@@ -64,7 +64,7 @@ if !(isNull _object) then{
 						case "magazine": {
 							//_object addMagazineCargoGlobal [_randomItem, _quan];
 							_magazineSize = getNumber (configFile >> "CfgMagazines" >> _randomItem >> "count");
-							_object addMagazineAmmoCargo[_randomItem, _quan, ceil(random(_magazineSize))]];
+							_object addMagazineAmmoCargo[_randomItem, _quan, ceil(random(_magazineSize))];
 
 							_loop = false;
 						};
