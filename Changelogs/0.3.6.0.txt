@@ -1,4 +1,5 @@
 **Client**
+
 [Fixed] Updated Hitpoints to 1.54 for all custom Epoch characters, this fixes the hitpoint .rpt errors since 1.54 as well.
 [Fixed] Reduce run speed of Sappers since 1.54 update.
 
@@ -6,5 +7,7 @@
 [Fixed] Typo in server side AH event handler code and repacked a3_server_settings.pbo.
 [Fixed] Storage was incorrectly set to set damage to 99% instead of 1% to temp force maintenance option after restart.
 [Fixed] Add player objects to remains collector, this should allow for proper corpse cleanup.
+[Changed] Weapons will now only spawn with a single magazine and a random ammo count.
+[Changed] Magazines now spawn with a random ammo count.
 [Changed] Disable simulation of locked storage devices. This also prevents removal of items until device is unlocked/re-simulated.
 [Info] Removed old .bikey and added new one for 0360.
