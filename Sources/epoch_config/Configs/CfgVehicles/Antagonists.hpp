@@ -188,6 +188,8 @@ class Epoch_Char_base_F : Civilian
 };
 class Epoch_Sapper_base_F: Civilian2
 {
+	moves = "CfgMovesMaleSdr2";
+	gestures = "CfgGesturesSapper";
 	faceType = "Default";
 	side = 4;
 	faction = "CIV_F";
