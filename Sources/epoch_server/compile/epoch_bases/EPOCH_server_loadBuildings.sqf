@@ -18,6 +18,8 @@ _config = 'CfgEpochClient' call EPOCH_returnConfig;
 _buildingJammerRange = getNumber(_config >> "buildingJammerRange");
 if (_buildingJammerRange == 0) then { _buildingJammerRange = 75; };
 
+_VAL = ["", [], "", "", 0, []];
+
 for "_i" from 0 to _this do {
 	_vehHiveKey = format ["%1:%2", (call EPOCH_fn_InstanceID),_i];
 	_response = ["Building", _vehHiveKey] call EPOCH_fnc_server_hiveGETTTL;
@@ -25,6 +27,11 @@ for "_i" from 0 to _this do {
 	if ((_response select 0) == 1 && typeName (_response select 1) == "ARRAY" && !((_response select 1) isEqualTo [])) then {
 		_arr = _response select 1;
 		_ttl = _response select 2;
+
+		// DEBUG to see if this command works
+		if !(_arr isEqualTypeParams _VAL) then {
+			diag_log format["DEBUG: Data does not match schema: %1 vs %2",_arr,_VAL];
+		};
 
 		_arrCount = count _arr;
 
@@ -80,8 +87,14 @@ for "_i" from 0 to _this do {
 			};
 
 			// set persistent Animations
-			if (_arrCount >= 6) then{
-				_anims = _arr param[5, [], [[]]];
+			if (_arrCount >= 6) then {
+				_anims = [];
+				_animsData = _arr select 5;
+				// check that we have an array to prevent any errors
+				if (_animsData isEqualType _anims) then {
+					_anims = _animsData;
+				};
+
 				{
 					_baseObj animate [_x, _anims param [_forEachIndex,0], true]
 				} foreach(getArray(configFile >> "CfgVehicles" >> _class >> "persistAnimations"));

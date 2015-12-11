@@ -2,6 +2,7 @@
 
 [Fixed] Updated Hitpoints to 1.54 for all custom Epoch characters, this fixes the hitpoint .rpt errors since 1.54 as well.
 [Fixed] Reduce run speed of Sappers since 1.54 update.
+[Fixed] Wood tower "add/remove wall" options are now only available when build mode is enabled.
 
 **Server**
 [Fixed] Typo in server side AH event handler code and repacked a3_server_settings.pbo.

@@ -3799,14 +3799,14 @@ class CfgVehicles
 				onlyforplayer = 1;
 				position = "NWall_trigger";
 				radius = 2.5;
-				condition = "!(call EPOCH_lockCheck) && (this animationPhase ""NWall"" < 0.5)";
+				condition = "!(EPOCH_buildMode > 0) && !(call EPOCH_lockCheck) && (this animationPhase ""NWall"" < 0.5)";
 				statement = "[this,""NWall"",1] call EPOCH_changeWallState";
 			};
 			class remove_nwall : add_nwall
 			{
 				displayName = "Remove Wall";
 				position = "NWall_trigger";
-				condition = "!(call EPOCH_lockCheck) && (this animationPhase ""NWall"" >= 0.5)";
+				condition = "(EPOCH_buildMode > 0) && !(call EPOCH_lockCheck) && (this animationPhase ""NWall"" >= 0.5)";
 				statement = "[this,""NWall"",0] call EPOCH_changeWallState";
 			};
 
@@ -3814,14 +3814,14 @@ class CfgVehicles
 			{
 				displayName = "Add Wall";
 				position = "EWall_trigger";
-				condition = "!(call EPOCH_lockCheck) && (this animationPhase ""EWall"" < 0.5)";
+				condition = "(EPOCH_buildMode > 0) && !(call EPOCH_lockCheck) && (this animationPhase ""EWall"" < 0.5)";
 				statement = "[this,""EWall"",1] call EPOCH_changeWallState";
 			};
 			class remove_ewall : add_nwall
 			{
 				displayName = "Remove Wall";
 				position = "EWall_trigger";
-				condition = "!(call EPOCH_lockCheck) && (this animationPhase ""EWall"" >= 0.5)";
+				condition = "(EPOCH_buildMode > 0) && !(call EPOCH_lockCheck) && (this animationPhase ""EWall"" >= 0.5)";
 				statement = "[this,""EWall"",0] call EPOCH_changeWallState";
 			};
 
@@ -3829,14 +3829,14 @@ class CfgVehicles
 			{
 				displayName = "Add Wall";
 				position = "SWall_trigger";
-				condition = "!(call EPOCH_lockCheck) && (this animationPhase ""SWall"" < 0.5)";
+				condition = "(EPOCH_buildMode > 0) && !(call EPOCH_lockCheck) && (this animationPhase ""SWall"" < 0.5)";
 				statement = "[this,""SWall"",1] call EPOCH_changeWallState";
 			};
 			class remove_swall : add_nwall
 			{
 				displayName = "Remove Wall";
 				position = "SWall_trigger";
-				condition = "!(call EPOCH_lockCheck) && (this animationPhase ""SWall"" >= 0.5)";
+				condition = "(EPOCH_buildMode > 0) && !(call EPOCH_lockCheck) && (this animationPhase ""SWall"" >= 0.5)";
 				statement = "[this,""SWall"",0] call EPOCH_changeWallState";
 			};
 
@@ -3844,14 +3844,14 @@ class CfgVehicles
 			{
 				displayName = "Add Wall";
 				position = "WWall_trigger";
-				condition = "!(call EPOCH_lockCheck) && (this animationPhase ""WWall"" < 0.5)";
+				condition = "(EPOCH_buildMode > 0) && !(call EPOCH_lockCheck) && (this animationPhase ""WWall"" < 0.5)";
 				statement = "[this,""WWall"",1] call EPOCH_changeWallState";
 			};
 			class remove_wwall : add_nwall
 			{
 				displayName = "Remove Wall";
 				position = "WWall_trigger";
-				condition = "!(call EPOCH_lockCheck) && (this animationPhase ""WWall"" >= 0.5)";
+				condition = "(EPOCH_buildMode > 0) && !(call EPOCH_lockCheck) && (this animationPhase ""WWall"" >= 0.5)";
 				statement = "[this,""WWall"",0] call EPOCH_changeWallState";
 			};
 		};
