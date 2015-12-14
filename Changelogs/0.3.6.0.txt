@@ -1,5 +1,6 @@
 **Client**
-
+[Added] Added ability to sell Primary weapon from hands and empty backpacks. Thanks to @He-Man
+[Fixed] Unable to sell after attempting to sell a temporary vehicle. Thanks to @He-Man
 [Fixed] Updated Hitpoints to 1.54 for all custom Epoch characters, this fixes the hitpoint .rpt errors since 1.54 as well.
 [Fixed] Reduce run speed of Sappers since 1.54 update.
 [Fixed] Wood tower "add/remove wall" options are now only available when build mode is enabled.
