@@ -1,5 +1,13 @@
 **Client**
+[Added-TBA] Previous assets re-added:
+    Hotwire Kit,
+    Key Makers Kit,
+    Keys in colors: (Black,Red,Green,Blue,Yellow),
+    55 Gallon Fuel Barrel (Full/Empty),
+    Metal Pipes
+    Documents (Trash,Vehicle Upgrades),
 [Added] Added ability to sell Primary weapon from hands and empty backpacks. Thanks to @He-Man
+[Changed] Increased max player load from 1000 to 2000.
 [Fixed] Unable to sell after attempting to sell a temporary vehicle. Thanks to @He-Man
 [Fixed] Updated Hitpoints to 1.54 for all custom Epoch characters, this fixes the hitpoint .rpt errors since 1.54 as well.
 [Fixed] Reduce run speed of Sappers since 1.54 update.

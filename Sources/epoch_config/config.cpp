@@ -99,7 +99,10 @@ class PointerSlot;
 
 #include "\x\addons\a3_epoch_config\Configs\CfgWeapons.hpp"
 
-
+class CfgInventoryGlobalVariable
+{
+	maxSoldierLoad = 2000;
+};
 
 class CfgAnimationSourceSounds
 {
