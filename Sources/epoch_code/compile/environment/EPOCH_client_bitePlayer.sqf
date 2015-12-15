@@ -1,21 +1,44 @@
+/*
+	Author: Aaron Clark - EpochMod.com
+
+    Contributors:
+
+	Description:
+	Performs damage related effects
+
+    Licence:
+    Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
+
+    Github:
+    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_code/compile/environment/EPOCH_client_bitePlayer.sqf
+
+    Example:
+    [cursorTarget,_index] call EPOCH_upgradeBUILD;
+
+    Parameter(s):
+		_this: OBJECT - Player
+
+	Returns:
+	NOTHING
+*/
 if !(isNull _this && alive _this) then {
-	
+
 	_distance = 5;
 	_toxicChance = 0.1;
 	_bleedChance = 1;
 	_bloodpChance = 0;
 	_fatigueChance = 0.1;
-	
+
 	_bleedAmount = 30;
 	_bloodpAmount = 2;
-	
+
 	_soundEffect = -1;
 	_soundEffectGlobal = false;
 	_canSee = false;
 	_ppEffect = 0;
 
 	switch (typeOf _this) do {
-		case "Snake_random_EPOCH": { 
+		case "Snake_random_EPOCH": {
 			_distance = 3;
 			_toxicChance = 0.2;
 			_bloodpChance = 1;

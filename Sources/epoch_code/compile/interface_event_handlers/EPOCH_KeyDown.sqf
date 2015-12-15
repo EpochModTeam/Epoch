@@ -1,4 +1,31 @@
-private["_dikCode", "_handled"];
+/*
+	Author: Aaron Clark - EpochMod.com
+
+    Contributors:
+
+	Description:
+	Key Down EH functions
+
+    Licence:
+    Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
+
+    Github:
+    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_code/compile/interface_event_handlers/EPOCH_KeyDown.sqf
+
+    Example:
+    _this call EPOCH_KeyDown;
+
+    Parameter(s):
+		_this select 0: CONTROL - _display
+		_this select 1: NUMBER - _dikcode
+		_this select 2: BOOL - Shift State
+		_this select 3: BOOL - Ctrl State
+		_this select 4: BOOL - Alt State
+
+	Returns:
+	BOOL
+*/
+private["_handled"];
 params ["_display","_dikCode","_shift","_ctrl","_alt"];
 
 _handled = false;

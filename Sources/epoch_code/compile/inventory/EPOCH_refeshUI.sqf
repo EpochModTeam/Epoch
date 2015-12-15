@@ -1,3 +1,26 @@
+/*
+	Author: Aaron Clark - EpochMod.com
+
+    Contributors:
+
+	Description:
+	Gear armor stats UI refresh code
+
+    Licence:
+    Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
+
+    Github:
+    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_code/compile/inventory/EPOCH_refeshUI.sqf
+
+    Example:
+        0 call EPOCH_refeshUI;
+
+    Parameter(s):
+	   None
+
+	Returns:
+	NOTHING
+*/
 private ["_newArmor","_totalArmor","_totalArmorMax","_selectedClass","_selectedItem","_bar","_uniformArmor","_finalArmor","_vestArmor","_headgearArmor","_totalArmorUI","_bar_compare"];
 disableSerialization;
 if (!isNull findDisplay 602) then {
@@ -62,5 +85,4 @@ if (!isNull findDisplay 602) then {
   _bar_compare = _totalArmorUI select 1;
   _finalArmor = linearConversion [0,_totalArmorMax,_newArmor,0.01,1,true];
   _bar_compare progressSetPosition _finalArmor;
-
 };

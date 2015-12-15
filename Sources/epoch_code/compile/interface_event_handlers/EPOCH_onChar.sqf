@@ -1,3 +1,27 @@
+/*
+	Author: Aaron Clark - EpochMod.com
+
+    Contributors:
+
+	Description:
+	removes any non numeric chars and inforce number to max limit to a control.
+
+    Licence:
+    Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
+
+    Github:
+    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_code/compile/interface_event_handlers/EPOCH_onChar.sqf
+
+    Example:
+    [_control,_maxLimit] call EPOCH_onChar;
+
+    Parameter(s):
+		_this select 0: CONTROL - _display
+		_this select 0: NUMBER - max limit
+
+	Returns:
+	NOTHING
+*/
 _control = _this select 0;
 _textArr = toArray(ctrlText(_control select 0));
 {

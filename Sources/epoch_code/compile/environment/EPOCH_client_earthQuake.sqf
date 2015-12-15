@@ -1,3 +1,26 @@
+/*
+	Author: Aaron Clark - EpochMod.com
+
+    Contributors:
+
+	Description:
+	Triggers earthquake with increasing intensity the closer the player
+
+    Licence:
+    Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
+
+    Github:
+    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_code/compile/environment/EPOCH_client_earthQuake.sqf
+
+    Example:
+    _location call EPOCH_client_earthQuake
+
+    Parameter(s):
+		_this: ARRAY - Locaton of epicenter
+
+	Returns:
+	Script handle
+*/
 _epicenter = _this;
 _distance = player distance _epicenter;
 _intensity = 1;
