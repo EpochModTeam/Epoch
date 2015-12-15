@@ -421,7 +421,7 @@ class CfgPricing
 	class SLAMDirectionalMine_Wire_Mag {price = 40;};
 	class APERSTripMine_Wire_Mag {price = 30;};
 
-
+	// Backpacks
 	class B_AssaultPack_cbr {price = 10;};
 	class B_AssaultPack_dgtl {price = 10;};
 	class B_AssaultPack_khk {price = 10;};
@@ -430,32 +430,32 @@ class CfgPricing
 	class B_AssaultPack_rgr {price = 10;};
 	class B_AssaultPack_sgg {price = 10;};
 	class B_AssaultPack_blk { price = 10; };
-	class B_Carryall_cbr {price = 1;};
-	class B_Carryall_khk {price = 10;};
-	class B_Carryall_mcamo {price = 10;};
-	class B_Carryall_ocamo {price = 10;};
-	class B_Carryall_oli {price = 10;};
-	class B_Carryall_oucamo {price = 10;};
-	class B_FieldPack_blk {price = 10;};
-	class B_FieldPack_cbr {price = 10;};
-	class B_FieldPack_khk {price = 10;};
-	class B_FieldPack_ocamo {price = 10;};
-	class B_FieldPack_oli {price = 10;};
-	class B_FieldPack_oucamo {price = 10;};
-	class B_Kitbag_cbr {price = 10;};
-	class B_Kitbag_mcamo {price = 10;};
-	class B_Kitbag_rgr {price = 10;};
-	class B_Kitbag_sgg {price = 10;};
-	class B_Parachute {price = 15;};
-	class B_TacticalPack_blk {price = 10;};
-	class B_TacticalPack_mcamo {price = 10;};
-	class B_TacticalPack_ocamo {price = 10;};
-	class B_TacticalPack_oli {price = 10;};
-	class B_TacticalPack_rgr {price = 10;};
-	class smallbackpack_red_epoch {price = 10;};
-	class smallbackpack_green_epoch {price = 10;};
-	class smallbackpack_teal_epoch {price = 10;};
-	class smallbackpack_pink_epoch {price = 10;};
+	class B_Carryall_cbr {price = 40;};
+	class B_Carryall_khk {price = 40;};
+	class B_Carryall_mcamo {price = 40;};
+	class B_Carryall_ocamo {price = 40;};
+	class B_Carryall_oli {price = 40;};
+	class B_Carryall_oucamo {price = 40;};
+	class B_FieldPack_blk {price = 15;};
+	class B_FieldPack_cbr {price = 15;};
+	class B_FieldPack_khk {price = 15;};
+	class B_FieldPack_ocamo {price = 15;};
+	class B_FieldPack_oli {price = 15;};
+	class B_FieldPack_oucamo {price = 15;};
+	class B_Kitbag_cbr {price = 25;};
+	class B_Kitbag_mcamo {price = 25;};
+	class B_Kitbag_rgr {price = 25;};
+	class B_Kitbag_sgg {price = 25;};
+	class B_Parachute {price = 25;};
+	class B_TacticalPack_blk {price = 20;};
+	class B_TacticalPack_mcamo {price = 20;};
+	class B_TacticalPack_ocamo {price = 20;};
+	class B_TacticalPack_oli {price = 20;};
+	class B_TacticalPack_rgr {price = 20;};
+	class smallbackpack_red_epoch {price = 22;};
+	class smallbackpack_green_epoch {price = 22;};
+	class smallbackpack_teal_epoch {price = 22;};
+	class smallbackpack_pink_epoch {price = 22;};
 
 	// Marksman DLC
 	class U_O_FullGhillie_lsh { price = 7; };

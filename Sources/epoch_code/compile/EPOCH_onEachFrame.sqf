@@ -127,7 +127,7 @@ if (!isNull EPOCH_currentTarget && vehicle player == player) then {
 				if (_stability == 0) then {
 					switch EPOCH_buildOption do {
 						case 0: {EPOCH_stabilityTarget call EPOCH_removeBUILD};
-						case 1: {EPOCH_stabilityTarget call EPOCH_upgradeBUILDv2};
+						case 1: {EPOCH_stabilityTarget call EPOCH_upgradeBUILD};
 						case 2: {EPOCH_stabilityTarget call EPOCH_fnc_SelectTargetBuild};
 					};
 

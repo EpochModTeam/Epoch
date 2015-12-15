@@ -1,4 +1,27 @@
-private["_buildingAllowed", "_jammer", "_restricted", "_restrictedLocations", "_myPosATL"];
+/*
+	Author: Aaron Clark - EpochMod.com
+
+    Contributors:
+
+	Description:
+	Base building maintain base code
+
+    Licence:
+    Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
+
+    Github:
+    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_code/compile/building/EPOCH_removeBUILD.sqf
+
+    Example:
+    cursorTarget call EPOCH_removeBUILD;
+
+    Parameter(s):
+		_this: OBJECT - Base building object
+
+	Returns:
+	BOOL - true if removed
+*/
+private ["_buildingAllowed","_jammer","_buildingJammerRange","_buildingCountLimit","_dt","_nearestJammer","_ownedJammerExists","_return","_config","_objType","_object","_targeter","_stability","_removeParts"];
 _buildingAllowed = true;
 _ownedJammerExists = false;
 _nearestJammer = objNull;
@@ -33,7 +56,7 @@ if (_objType == "PlotPole_EPOCH") then {
 		_buildingAllowed = false;
 		_dt = ["<t size = '0.8' shadow = '0' color = '#99ffffff'>Remove Disallowed: Frequency Blocked</t>", 0, 1, 5, 2, 0, 1] spawn bis_fnc_dynamictext;
 	};
-} 
+}
 else {
 	_jammer = nearestObjects[player, ["PlotPole_EPOCH"], _buildingJammerRange];
 	if !(_jammer isEqualTo[]) then{

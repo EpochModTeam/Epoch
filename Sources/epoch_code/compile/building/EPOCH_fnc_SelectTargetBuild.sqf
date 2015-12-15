@@ -21,7 +21,7 @@
 	Returns:
 	BOOL
 */
-private ["_targeter","_stability"];
+private ["_targeter","_stability","_dt","_object"];
 
 if !(isNil "EPOCH_simulSwap_Lock") exitWith{ false };
 if !(isNull EPOCH_Target) exitWith{ false };

@@ -1,8 +1,30 @@
-private [
-	"_cfgClass","_class","_worldspace","_objSlot","_newObj","_playerOffset","_bbr","_p1","_p2","_maxWidth","_maxLength","_maxHeight","_pos2","_vel2","_dir2","_up2","_pos1","_vel1","_dir1","_up1","_interval","_velocityTransformation","_object","_status","_return","_oemType","_config","_currentTarget"];
+/*
+	Author: Aaron Clark - EpochMod.com
+
+    Contributors:
+
+	Description:
+	Base building base building with physics
+
+    Licence:
+    Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
+
+    Github:
+    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_code/compile/building/EPOCH_simulSwap.sqf
+
+    Example:
+    [_object] spawn EPOCH_simulSwap;
+
+    Parameter(s):
+		_this select 0: OBJECT - Base building object
+
+	Returns:
+	NOTHING
+*/
+private ["_class","_worldspace","_objSlot","_newObj","_pos2","_vel2","_dir2","_up2","_velocityTransformation","_object","_return","_oemType","_config","_currentTarget","_dt","_energyCost","_allowedSnapObjects","_textureSlot","_lastCheckTime","_rejectMove","_nearestObject","_nearestObjectRaw","_distanceNear","_previousDistanceNear","_pOffset","_snapPos","_isSnap","_snapPosition","_snapType","_snapDistance","_prevSnapDistance","_snapPointsPara","_snapPointsPerp","_snapArrayPara","_snapArrayPerp","_direction","_distance","_plyrdistance","_create","_allowedSnapPoints","_snapObjects","_onContactEH","_offset","_disallowed","_objType","_distanceMod"];
 if !(isNil "EPOCH_simulSwap_Lock") exitWith{};
 
-_object = _this select 0;
+_object = param [0,objNull];
 if (isNull _object) exitWith{ EPOCH_target = objNull; };
 
 _objType = typeOf _object;
@@ -89,7 +111,7 @@ if (isText(_config)) then {
 			if (EPOCH_Y_OFFSET < 3.6) then {
 				EPOCH_Y_OFFSET = EPOCH_Y_OFFSET + 0.1;
 			};
-			
+
 			_pos2 = player modelToWorld[EPOCH_X_OFFSET, EPOCH_Y_OFFSET, EPOCH_Z_OFFSET];
 			_distance = _pos2 distance EPOCH_target;
 			if (EPOCH_buildMode == 1) then {
@@ -174,7 +196,7 @@ if (isText(_config)) then {
 					if (_direction < 0) then {
 						_direction = 360 + _direction;
 					};
-					_dir2 = [vectorDir _nearestObject, _direction] call EPOCH_returnVector;
+					_dir2 = [vectorDir _nearestObject, _direction] call BIS_fnc_returnVector;
 					_up2 = (vectorUp _nearestObject);
 					EP_velocityTransformation = [_pos2,_vel2,_dir2,_up2];
 				};
@@ -185,7 +207,7 @@ if (isText(_config)) then {
 				};
 				if (EPOCH_space) then {
 					_vel2 = (velocity player);
-					_dir2 = [vectorDir player, EPOCH_buildDirection] call EPOCH_returnVector;
+					_dir2 = [vectorDir player, EPOCH_buildDirection] call BIS_fnc_returnVector;
 					_up2 = (vectorUp player);
 					EPOCH_space = false;
 					EP_velocityTransformation = [_pos2,_vel2,_dir2,_up2];

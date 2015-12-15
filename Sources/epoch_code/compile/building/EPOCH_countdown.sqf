@@ -21,7 +21,7 @@
 	Returns:
 	NOTHING
 */
-private["_color", "_distance", "_previous"];
+private ["_posObj","_savedBuildPos","_previousBuildPos","_saveCheck","_endTime","_worldspace","_class","_newObj","_startTime","_objClass"];
 
 if (!isNull _this) then {
 

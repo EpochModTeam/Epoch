@@ -21,6 +21,7 @@
 	Returns:
 	ARRAY of BOOLs
 */
+private ["_dt","_out","_object","_objType","_config"];
 _out = [false, false, false];
 
 if !(isNil "EPOCH_simulSwap_Lock") exitWith{ _out };

@@ -2206,6 +2206,14 @@ class CfgWeapons
 		class WeaponSlotsInfo;
 		class GunParticles;
 	};
+	class Rifle_Long_Base_F: Rifle_Base_F
+	{
+		class WeaponSlotsInfo: WeaponSlotsInfo
+		{
+			allowedSlots[] = {901};
+		};
+	};
+
 	class UGL_F;
 	class Epoch_weapon_01_Base_F: Rifle_Base_F
 	{
@@ -3080,13 +3088,7 @@ class CfgWeapons
 		};
 	};*/
 
-	class Rifle_Long_Base_F : Rifle_Base_F
-	{
-		class WeaponSlotsInfo : WeaponSlotsInfo
-		{
-			allowedSlots[] = {901};
-		};
-	};
+
 
 	class ItemRadio;
 	class EpochRadio0 : ItemRadio {

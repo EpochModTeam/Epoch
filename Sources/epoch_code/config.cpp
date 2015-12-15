@@ -100,6 +100,13 @@ class cfgFunctions
 			class initMultiplayer {
 				file = "\x\addons\a3_epoch_code\compile\bis_functions\MP\fn_initMultiplayer.sqf";
 			};
+
+		};
+		class functions {
+			// custom Epoch - BIS_fnc_returnVector
+			class returnVector {
+				file = "\x\addons\a3_epoch_code\compile\bis_functions\returnVector.sqf";
+			};
 		};
 	};
 	class EPOCH
@@ -112,6 +119,10 @@ class cfgFunctions
 			class isAny {
 				file = "\x\addons\a3_epoch_code\compile\both\EPOCH_isAny.sqf"
 			};
+			class isAny {
+				file = "\x\addons\a3_epoch_code\compile\both\EPOCH_isAny.sqf"
+			};
+
 		};
 	};
 };
@@ -161,9 +172,7 @@ class CfgClientFunctions
 			class isBuildAllowed {};
 			class simulSwap {};
 			class staticMove {};
-			class returnVector {};
 			class upgradeBUILD {};
-			class upgradeBUILDv2 {};
 			class removeBUILD {};
 			class changeWallState {};
 			class checkBuild {};

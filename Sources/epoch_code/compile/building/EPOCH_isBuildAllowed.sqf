@@ -4,7 +4,7 @@
     Contributors: Raimonds Virtoss
 
 	Description:
-	Epoch build select target
+	check if building is allowed
 
     Licence:
     Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike

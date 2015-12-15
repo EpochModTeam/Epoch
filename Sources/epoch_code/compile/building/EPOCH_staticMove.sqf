@@ -1,9 +1,38 @@
-private["_allowedSnapObjects", "_currentZoffset", "_nearestObject", "_pOffset", "_snapPos", "_snapPosition", "_snapType", "_snapDistance", "_prevSnapDistance", "_pos2", "_dir", "_snapPointsPara", "_snapPointsPerp", "_distance", "_objSlot", "_currentTarget", "_allowedSnapPoints", "_snapObjects", "_class", "_buildingPos"];
+/*
+	Author: Aaron Clark - EpochMod.com
+
+    Contributors:
+
+	Description:
+	Base building base building with ghost preview.
+
+    Licence:
+    Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
+
+    Github:
+    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_code/compile/building/EPOCH_simulSwap.sqf
+
+    Example:
+    [_object] spawn EPOCH_simulSwap;
+
+    Parameter(s):
+		_this select 0: OBJECT - Base building object
+		_this select 1: STRING - Item to consume on build finalization
+
+	Returns:
+	NOTHING
+*/
+private ["_allowedSnapObjects","_nearestObject","_pOffset","_snapPos","_snapPosition","_snapType","_snapDistance","_pos2","_snapPointsPara","_snapPointsPerp","_distance","_objSlot","_currentTarget","_allowedSnapPoints","_class","_dt","_energyCost","_maxHeight","_stabilityCheck","_pos2ATL","_lastCheckTime","_rejectMove","_currentOffSet","_dir2","_up2","_isSnap","_snapPos1","_pos_snapObj","_direction","_pos1_snap","_pos2_snap","_ins","_EPOCH_2","_arr_snapPoints","_pos1","_offSet","_snapConfig","_baselineSnapPos","_nearestObjects","_EPOCH_1","_numberOfContacts","_worldspace","_offsetZPos","_currentPos","_object","_item","_objType","_simulClass","_snapChecks","_maxSnapDistance"];
 if !(isNil "EPOCH_simulSwap_Lock") exitWith{};
 
-_object = _this select 0;
-_item = _this select 1;
+// inputs
+_object = param [0,objNull];
+_item = param [1,""];
+
+// exit if object is nulll
 if (isNull _object) exitWith{ EPOCH_target = objNull; };
+// exit if item is not given
+if (_item == "") exitWith{ EPOCH_target = objNull; };
 
 if (EPOCH_playerEnergy <= 0) exitWith{
 	_dt = ["<t size = '0.8' shadow = '0' color = '#99ffffff'>Need Energy</t>", 0, 1, 5, 2, 0, 1] spawn bis_fnc_dynamictext;
@@ -113,7 +142,7 @@ if (_class != "") then {
 		};
 
 		if (EPOCH_space) then {
-			_dir2 = [vectorDir player, EPOCH_buildDirection] call EPOCH_returnVector;
+			_dir2 = [vectorDir player, EPOCH_buildDirection] call BIS_fnc_returnVector;
 			_up2 = (vectorUp player);
 			EPOCH_space = false;
 			EPOCH_target setVectorDirAndUp [_dir2,_up2];
@@ -231,7 +260,7 @@ if (_class != "") then {
 							_direction = 360 + _direction;
 						};
 
-						_dir2 = [vectorDir _nearestObject, _direction] call EPOCH_returnVector;
+						_dir2 = [vectorDir _nearestObject, _direction] call BIS_fnc_returnVector;
 
 						if (_pos2 select 2 > _maxHeight) then {
 							_pos2 set[2, _maxHeight];
