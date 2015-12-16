@@ -174,38 +174,37 @@ if (!isNull _this) then {
 							else {
 								_x call EPOCH_fnc_addItemOverflow;
 							};
-						}
-						else {
-							_backpack = ["backpack", _x] call BIS_fnc_inString;
-							_Assaultpack = ["Assaultpack", _x] call BIS_fnc_inString;
-							_Assault_Diver = ["Assault_Diver", _x] call BIS_fnc_inString;
-							_TacticalPack = ["TacticalPack", _x] call BIS_fnc_inString;
-							_FieldPack = ["FieldPack", _x] call BIS_fnc_inString;
-							_Carryall = ["Carryall", _x] call BIS_fnc_inString;
-							_OutdoorPack = ["OutdoorPack", _x] call BIS_fnc_inString;
-							_Bergen = ["Bergen", _x] call BIS_fnc_inString;
-							_bag = ["bag", _x] call BIS_fnc_inString;
-							_parachute = ["Parachute", _x] call BIS_fnc_inString;
-							if (_backpack || _Assaultpack || _Assault_Diver || _TacticalPack || _FieldPack || _Carryall || _OutdoorPack || _Bergen || _bag || _parachute) then {
+						} else {
+							//
+							if (_x isKindOf "Bag_Base") then {
+								// add to players back
 								if (backpack player == "") then {
 									player addbackpack _x;
-								}
-								else {
-									_x createvehicle getpos player;
+								} else {
+									// add to the ground
+									_wH = objNull;
+									_nearByHolder = nearestObjects [position player,["groundWeaponHolder"],3];
+									if (_nearByHolder isEqualTo []) then {
+									  _wHPos = player modelToWorld [0,1,0];
+									  if (surfaceIsWater _wHPos) then {
+										_wHPos = ASLToATL _wHPos;
+									  };
+									  _wH = createVehicle ["groundWeaponHolder",_wHPos, [], 0, "CAN_COLLIDE"];
+									} else {
+									  _wH = _nearByHolder select 0;
+									};
+									_wh addBackpackCargoGlobal [_x,1];
 								};
-							}
-							else {
-							if ([_x, "CfgMagazines"] call EPOCH_fnc_isAny) then {
-								_errorMsg = _errorMsg + format["%1, ", getText(configfile >> "CfgMagazines" >> (_x) >> "displayName")];
-								_x call EPOCH_fnc_addItemOverflow;
-								}
-								else {
-								_errorMsg = _errorMsg + format["%1, ", getText(configfile >> "CfgVehicles" >> (_x) >> "displayName")];
+							} else {
+								if ([_x, "CfgMagazines"] call EPOCH_fnc_isAny) then {
+									_errorMsg = _errorMsg + format["%1, ", getText(configfile >> "CfgMagazines" >> (_x) >> "displayName")];
+									_x call EPOCH_fnc_addItemOverflow;
+								} else {
+									_errorMsg = _errorMsg + format["%1, ", getText(configfile >> "CfgVehicles" >> (_x) >> "displayName")];
+								};
 							};
 						};
-						};
 					} forEach(_this select 1);
-
 
 					_dt = [format["<t size='0.8' shadow='0' color='#99ffffff'>%1</t>", _errorMsg], 0, 0.4, 5, 2, 0, 2] spawn bis_fnc_dynamictext;
 				}
