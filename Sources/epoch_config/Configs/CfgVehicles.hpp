@@ -3799,7 +3799,7 @@ class CfgVehicles
 				onlyforplayer = 1;
 				position = "NWall_trigger";
 				radius = 2.5;
-				condition = "!(EPOCH_buildMode > 0) && !(call EPOCH_lockCheck) && (this animationPhase ""NWall"" < 0.5)";
+				condition = "(EPOCH_buildMode > 0) && !(call EPOCH_lockCheck) && (this animationPhase ""NWall"" < 0.5)";
 				statement = "[this,""NWall"",1] call EPOCH_changeWallState";
 			};
 			class remove_nwall : add_nwall

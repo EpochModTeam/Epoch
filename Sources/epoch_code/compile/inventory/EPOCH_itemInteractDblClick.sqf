@@ -1,3 +1,27 @@
+/*
+	Author: Aaron Clark - EpochMod.com
+
+    Contributors: Raimonds Virtoss
+
+	Description:
+	Epoch Item Interact when double clicked
+
+    Licence:
+    Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
+
+    Github:
+    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_code/compile/inventory/EPOCH_itemInteractDblClick.sqf
+
+    Example:
+        onLBDblClick = "_this call EPOCH_itemInteractDblClick";
+
+    Parameter(s):
+		_this select 0: CONTROL - control
+        _this select 1: NUMBER - listbox index
+
+	Returns:
+	NOTHING
+*/
 EPOCH_InteractedItem = [];
 _control = _this select 0;
 _index = _this select 1;

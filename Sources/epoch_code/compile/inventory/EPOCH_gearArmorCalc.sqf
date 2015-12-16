@@ -16,7 +16,7 @@
     _vestArmor = (vest player) call EPOCH_gearArmorCalc;
 
     Parameter(s):
-		_this select 0: STRING - Vest or Headhear classname
+		_this: STRING - Vest or Headhear classname
 
 	Returns:
 	NUMBER

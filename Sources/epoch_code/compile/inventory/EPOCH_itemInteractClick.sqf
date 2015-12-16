@@ -1,3 +1,27 @@
+/*
+	Author: Aaron Clark - EpochMod.com
+
+    Contributors: Raimonds Virtoss
+
+	Description:
+	Epoch Item Interact
+
+    Licence:
+    Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
+
+    Github:
+    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_code/compile/inventory/EPOCH_itemInteractClick.sqf
+
+    Example:
+        onLBSelChanged = "_this call EPOCH_itemInteractClick";
+
+    Parameter(s):
+		_this select 0: CONTROL - control
+        _this select 1: NUMBER - listbox index
+
+	Returns:
+	BOOL - allways returns true
+*/
 private ["_data","_confData","_usedIn","_type","_interactOption","_buttonTXT","_control","_index","_text","_pic","_craftingArray","_craftingArrayNames","_config","_craftingConfig","_display","_useBtn"];
 
 EPOCH_InteractedItem = [];

@@ -593,6 +593,7 @@ class CfgWeapons
 		displayName = "$STR_A3_V_PlateCarrier1_rgr0";
 		picture = "\A3\characters_f\Data\UI\icon_V_plate_carrier_1_CA.paa";
 		model = "\x\addons\a3_epoch_assets\models\parcel.p3d";
+		descriptionShort = "$STR_A3_SP_AL_III";
 		class ItemInfo : ItemInfo
 		{
 			uniformModel = "\A3\Characters_F\BLUFOR\equip_b_vest02";
@@ -634,6 +635,7 @@ class CfgWeapons
 		displayName = "$STR_A3_V_PlateCarrier2_rgr0";
 		picture = "\A3\characters_f\Data\UI\icon_V_plate_carrier_2_CA.paa";
 		model = "\x\addons\a3_epoch_assets\models\parcel.p3d";
+		descriptionShort = "$STR_A3_SP_AL_IV";
 		class ItemInfo : ItemInfo
 		{
 			uniformModel = "\A3\Characters_F\BLUFOR\equip_b_vest01";
@@ -675,6 +677,7 @@ class CfgWeapons
 		displayName = "$STR_A3_V_PlateCarrier2_rgr0";
 		picture = "\A3\characters_f\Data\UI\icon_V_plate_carrier_2_CA.paa";
 		model = "\x\addons\a3_epoch_assets\models\parcel.p3d";
+		descriptionShort = "$STR_A3_SP_AL_IV";
 		class ItemInfo : ItemInfo
 		{
 			uniformModel = "\A3\Characters_F\BLUFOR\equip_b_vest01.p3d";
@@ -718,6 +721,7 @@ class CfgWeapons
 		model = "\x\addons\a3_epoch_assets\models\parcel.p3d";
 		hiddenSelections[] = {"camo"};
 		hiddenSelectionsTextures[] = {"\A3\Characters_F_Mark\BLUFOR\Data\carrier_gl_rig_grn_co.paa"};
+		descriptionShort = "$STR_A3_SP_ER";
 		class ItemInfo : ItemInfo
 		{
 			uniformModel = "\A3\Characters_F\BLUFOR\equip_b_carrier_gl_rig.p3d";

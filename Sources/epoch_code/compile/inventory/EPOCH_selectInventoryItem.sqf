@@ -1,3 +1,27 @@
+/*
+	Author: Aaron Clark - EpochMod.com
+
+    Contributors:
+
+	Description:
+	workaround for weapons not returning class in the inventory listboxes
+
+    Licence:
+    Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
+
+    Github:
+    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_code/compile/inventory/EPOCH_selectInventoryItem.sqf
+
+    Example:
+        [_control,_index] call EPOCH_selectInventoryItem;
+
+    Parameter(s):
+		_this select 0: CONTROL - control
+        _this select 1: NUMBER - listbox index
+
+	Returns:
+	NOTHING
+*/
 private ["_index","_data","_control","_text","_pic","_craftingArray","_craftingArrayNames"];
 
 EPOCH_InteractedItem = [];
@@ -16,9 +40,8 @@ _pic = _control lbPicture _index;
 _craftingArray = [];
 _craftingArrayNames = [];
 
-comment 'Not ideal This is needed as weapons do not return a class in the UI';
-comment 'This test is to over come an issue that causes the wrong class selected';
-comment 'when more than two classes share the same displayName';
+// This test is to over come an issue that causes the wrong class selected
+// when more than two classes share the same displayName
 if (_data == "") then {
   {
     _name = configName(_x);
