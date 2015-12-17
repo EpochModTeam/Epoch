@@ -1,5 +1,16 @@
 /*
+	Author: Aaron Clark - EpochMod.com
+
+    Contributors:
+
+	Description:
 	A3 Epoch Anti-Vehicle Wall glitch
+
+    Licence:
+    Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
+
+    Github:
+    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_code/compile/EPOCH_antiWall.sqf
 */
 _vehicle = _this select 0;
 _position = _this select 1;
@@ -36,7 +47,7 @@ onEachFrame{ drawLine3D[EP_front, EP_front2, [1, 0, 0, 1]]; };
 		if (vehicle player != player) then {
 			if (isNull EPOCH_currentVehicle) then {
 				EPOCH_currentVehicle = (vehicle player);
-				EPOCH_currentVehicle addEventHandler ["GetOut", "_this call EPOCH_antiWall"];	
+				EPOCH_currentVehicle addEventHandler ["GetOut", "_this call EPOCH_antiWall"];
 				hint format ['selected %1',EPOCH_currentVehicle];
 			};
 		};
@@ -45,13 +56,13 @@ onEachFrame{ drawLine3D[EP_front, EP_front2, [1, 0, 0, 1]]; };
 };
 
 // older stuff
-EP = getText (configFile >> "cfgVehicles" >> typeOf cursortarget >> "memoryPointsGetInDriver");    
-EP_modelPos = cursortarget selectionPosition EP;      
+EP = getText (configFile >> "cfgVehicles" >> typeOf cursortarget >> "memoryPointsGetInDriver");
+EP_modelPos = cursortarget selectionPosition EP;
 EP_worldPos = cursorTarget modelToWorld EP_modelPos;
-EP1 = getText (configFile >> "cfgVehicles" >> typeOf cursortarget >> "memoryPointsGetInDriverDir");  
+EP1 = getText (configFile >> "cfgVehicles" >> typeOf cursortarget >> "memoryPointsGetInDriverDir");
 
-EP1_modelPos = cursortarget selectionPosition EP1;     
-EP1_worldPos = cursorTarget modelToWorld EP1_modelPos;                                                                                                              
+EP1_modelPos = cursortarget selectionPosition EP1;
+EP1_worldPos = cursorTarget modelToWorld EP1_modelPos;
 
 EP_worldPos set [2, 1];
 EP1_worldPos set [2, 1];
@@ -59,13 +70,13 @@ EP1_worldPos set [2, 1];
 onEachFrame {   drawLine3D [EP_worldPos, EP1_worldPos, [1,0,0,1]];  };
 
 
-EP = getText (configFile >> "cfgVehicles" >> typeOf cursortarget >> "memoryPointsGetInCargo");    
-EP_modelPos = cursortarget selectionPosition EP;      
+EP = getText (configFile >> "cfgVehicles" >> typeOf cursortarget >> "memoryPointsGetInCargo");
+EP_modelPos = cursortarget selectionPosition EP;
 EP_worldPos = cursorTarget modelToWorld EP_modelPos;
-EP1 = getText (configFile >> "cfgVehicles" >> typeOf cursortarget >> "memoryPointsGetInCargoDir");  
+EP1 = getText (configFile >> "cfgVehicles" >> typeOf cursortarget >> "memoryPointsGetInCargoDir");
 
-EP1_modelPos = cursortarget selectionPosition EP1;     
-EP1_worldPos = cursorTarget modelToWorld EP1_modelPos;                                                                                                              
+EP1_modelPos = cursortarget selectionPosition EP1;
+EP1_worldPos = cursorTarget modelToWorld EP1_modelPos;
 
 EP_worldPos set [2, 1];
 EP1_worldPos set [2, 1];

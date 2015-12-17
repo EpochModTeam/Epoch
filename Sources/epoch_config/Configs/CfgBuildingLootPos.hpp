@@ -1,3 +1,18 @@
+/*
+	Author: Aaron Clark - EpochMod.com
+
+    Contributors: Kenneth Bente
+
+	Description:
+	Loot container offsets for Epoch loot system
+
+    Licence:
+    Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
+
+    Github:
+    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_config/Configs/CfgBuildingLootPos.hpp
+*/
+
 class CfgBuildingLootPos
 {
 	class Default

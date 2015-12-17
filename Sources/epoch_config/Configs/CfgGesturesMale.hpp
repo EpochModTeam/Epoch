@@ -1,3 +1,18 @@
+/*
+	Author: Aaron Clark - EpochMod.com
+
+    Contributors: Paul Tomany (rtm animations)
+
+	Description:
+	Custom hatchet and sledge swing sesture animations as well as a one finger salute.
+
+    Licence:
+    Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
+
+    Github:
+    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_config/Configs/CfgGesturesMale.hpp
+*/
+
 class CfgGesturesMale
 {
 	skeletonName = "OFP2_ManSkeleton";
@@ -124,7 +139,7 @@ class CfgGesturesMale
 			leftHandIKBeg = 0;
 			leftHandIKEnd = 0;
 		};
-		
+
 	};
 	class BlendAnims
 	{
@@ -132,7 +147,7 @@ class CfgGesturesMale
 	};
 };
 
-class CfgGesturesSapper : CfgGesturesMale 
+class CfgGesturesSapper : CfgGesturesMale
 {
 	skeletonName = "SapperSkeleton";
 };

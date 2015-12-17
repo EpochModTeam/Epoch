@@ -1,3 +1,28 @@
+/*
+	Author: Aaron Clark - EpochMod.com
+
+    Contributors:
+
+	Description:
+	Player death handler
+
+    Licence:
+    Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
+
+    Github:
+    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_code/compile/functions/EPOCH_fnc_playerDeath.sqf
+
+    Example:
+    player addEventHandler ["Killed", {_this call EPOCH_fnc_playerDeath}];
+
+    Parameter(s):
+		_this select 0: OBJECT - player
+		_this select 1: OBJECT - killer
+
+	Returns:
+	BOOL
+*/
+
 private["_unit", "_killer"];
 _unit = _this select 0;
 _killer = _this select 1;

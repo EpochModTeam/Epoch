@@ -1,4 +1,17 @@
-// store all interacted vehicles for update
+/*
+	Author: Aaron Clark - EpochMod.com
+
+    Contributors:
+
+	Description:
+	store all interacted vehicles for update
+
+    Licence:
+    Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
+
+    Github:
+    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_code/compile/EPOCH_interact.sqf
+*/
 private ["_vehSlot"];
 0 call EPOCH_refeshUI;
 if (!isNull _this) then {

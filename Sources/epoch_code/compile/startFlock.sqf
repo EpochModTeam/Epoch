@@ -1,3 +1,18 @@
+/*
+	Author: Andrew Gregory - EpochMod.com
+
+    Contributors:
+
+	Description:
+	test code to spawn flocks (unused)
+
+    Licence:
+    Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
+
+    Github:
+    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_code/compile/startFlock.sqf
+*/
+
 //
 //Flocking (Emergent) Behaviour AI Test / Demo
 //

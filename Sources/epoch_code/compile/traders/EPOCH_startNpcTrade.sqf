@@ -1,3 +1,26 @@
+/*
+	Author: Aaron Clark - EpochMod.com
+
+    Contributors: He-Man
+
+	Description:
+	NPC trade code
+
+    Licence:
+    Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
+
+    Github:
+    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_code/traders/EPOCH_startNpcTrade.sqf
+
+    Example:
+    cursorTarget call EPOCH_startNpcTrade;
+
+    Parameter(s):
+		_this: OBJECT
+
+	Returns:
+	NOTHING
+*/
 private["_item", "_currQty", "_tradeType", "_itemWorth", "_aiItems", "_itemClasses", "_itemQtys", "_qtyIndex", "_tradeTotal", "_tradeQtyTotal", "_errorMsg", "_target", "_sizeOut", "_array", "_makeTrade", "_vehSlot", "_vehicle", "_vehicles", "_display", "_addWeaponToHands", "_type", "_tax"];
 
 if (!isNil "EPOCH_TRADE_COMPLETE") exitWith {};
@@ -5,7 +28,6 @@ if (!isNil "EPOCH_TRADE_STARTED") exitWith{};
 
 if (!isNull _this) then {
 
-	EPOCH_TRADE_STARTED = true;
 
 	_config = 'CfgPricing' call EPOCH_returnConfig;
 
@@ -25,18 +47,28 @@ if (!isNull _this) then {
 					if (_item in items player) then {
 						player removeItem _item;
 						_arrayIn pushBack _item;
+					} else {
+						if (_item == primaryweapon player) then {
+							player removeweapon _item;
+							_arrayIn pushBack _item;
+						};
 					};
 				} else {
 					if ([_item, "CfgVehicles"] call EPOCH_fnc_isAny) then {
-						_vehicles = _this nearEntities[[_item], 30];
-						if (!(_vehicles isEqualTo[])) then {
-							_vehicle = _vehicles select 0;
-							if (!isNull _vehicle) then {
-								if (local _vehicle) then {
-									_vehSlot = _vehicle getVariable["VEHICLE_SLOT", "ABORT"];
-									if (_vehSlot != "ABORT") then {
-										_arrayIn pushBack _item;
-										// will be removed server side
+						if (_item == backpack player) then {
+							removeBackpack player;
+							_arrayIn pushBack _item;
+						} else {
+							_vehicles = _this nearEntities[[_item], 30];
+							if (!(_vehicles isEqualTo[])) then {
+								_vehicle = _vehicles select 0;
+								if (!isNull _vehicle) then {
+									if (local _vehicle) then {
+										_vehSlot = _vehicle getVariable["VEHICLE_SLOT", "ABORT"];
+										if (_vehSlot != "ABORT") then {
+											_arrayIn pushBack _item;
+											// will be removed server side
+										};
 									};
 								};
 							};
@@ -78,6 +110,7 @@ if (!isNull _this) then {
 	};
 
 	if (!(_arrayIn isEqualTo[]) || !(_arrayOut isEqualTo[])) then {
+		EPOCH_TRADE_STARTED = true;
 
 		// make trade
 		EPOCH_MAKENPCTRADE = [_this, _arrayIn, _arrayOut, player, Epoch_personalToken];
@@ -133,7 +166,8 @@ if (!isNull _this) then {
 							};
 							if (_addWeaponToHands) then {
 								player addWeapon _x;
-							} else {
+							}
+							else {
 								_x call EPOCH_fnc_addItemOverflow;
 							};
 						} else {
@@ -145,7 +179,6 @@ if (!isNull _this) then {
 							};
 						};
 					} forEach(_this select 1);
-
 
 					_dt = [format["<t size='0.8' shadow='0' color='#99ffffff'>%1</t>", _errorMsg], 0, 0.4, 5, 2, 0, 2] spawn bis_fnc_dynamictext;
 				}

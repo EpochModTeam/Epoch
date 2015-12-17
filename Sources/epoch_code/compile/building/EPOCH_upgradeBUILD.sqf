@@ -1,5 +1,33 @@
-if (isNull _this) exitWith{ false };
+/*
+	Author: Aaron Clark - EpochMod.com
+
+    Contributors:
+
+	Description:
+	Base building upgrade code
+
+    Licence:
+    Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
+
+    Github:
+    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_code/compile/building/EPOCH_upgradeBUILD.sqf
+
+    Example:
+    [cursorTarget,_index] call EPOCH_upgradeBUILD;
+
+    Parameter(s):
+		_this select 0: OBJECT - Base building object
+		_this select 1: NUMBER - index of array from (CfgBaseBuilding >> "upgradeBuilding")
+
+	Returns:
+	NOTHING
+*/
+private ["_buildingJammerRange","_buildingCountLimit","_nearestJammer","_ownedJammerExists","_buildingAllowed","_dt","_missingCount","_canUpgrade","_missingParts","_part","_req","_partCheck","_canUpgradePartCount","_removedPartCount","_return","_upgrade","_upgradeParts","_config","_upgrades","_object","_index","_targeter","_stability","_jammer"];
 _return = false;
+_object = param [0,objNull,[objNull]];
+_index = param [1,-1,[0]]; //EPOCH_UpgradeIndex
+if !(_index isEqualTo -1) then {Epoch_upgradeIndex = _index};
+if (isNull _object) exitWith {false};
 
 _buildingAllowed = true;
 _ownedJammerExists = false;
@@ -14,7 +42,7 @@ if (_buildingCountLimit == 0) then { _buildingCountLimit = 200; };
 
 EPOCH_buildOption = 1;
 
-_object = _this;
+
 
 // check if another player has target
 _targeter = _object getVariable["last_targeter", objNull];
@@ -28,10 +56,6 @@ if (_stability > 0) exitWith{
 		EPOCH_stabilityTarget = _object;
 	};
 };
-
-
-
-
 
 _jammer = nearestObjects[player, ["PlotPole_EPOCH"], _buildingJammerRange];
 
@@ -54,18 +78,22 @@ if !(_jammer isEqualTo[]) then {
 };
 if !(_buildingAllowed)exitWith{ false };
 
-if (_this isKindOf "Constructions_static_F") then {
+if (_object isKindOf "Constructions_static_F") then {
 
 	// take upgrade item from player here
 	_config = 'CfgBaseBuilding' call EPOCH_returnConfig;
-	_upgrade = getArray(_config >> (typeOf _this) >> "upgradeBuilding");
-	if !(_upgrade isEqualTo []) then {
+
+	_upgrades = getArray(_config >> (typeOf _object) >> "upgradeBuilding");
+	if !(_upgrades isEqualTo []) then {
+
+    // get selected upgrade
+    _upgrade = _upgrades param [Epoch_upgradeIndex,[]];
 
 		_upgradeParts = _upgrade select 1;
 
 		_canUpgrade = true;
 		_canUpgradePartCount = 0;
-		_missingParts = [];
+		_missingParts = "";
 		{
 			_part = _x select 0;
 			_req = _x select 1;
@@ -78,7 +106,7 @@ if (_this isKindOf "Constructions_static_F") then {
 				//diag_log format["DEBUG: _missingCount %1", _missingCount];
 
 				_canUpgrade = false;
-				_missingParts pushBack format["Missing %1 %2", _missingCount, (_part call EPOCH_itemDisplayName)];
+				_missingParts = _missingParts + format["Missing %1 %2, ", _missingCount, (_part call EPOCH_itemDisplayName)];
 			};
 			_canUpgradePartCount = _canUpgradePartCount + _req;
 		} forEach _upgradeParts;
@@ -96,8 +124,9 @@ if (_this isKindOf "Constructions_static_F") then {
 
 			if (_canUpgradePartCount == _removedPartCount) then {
 				// send to server for upgrade
-				EPOCH_UPBUILD = [_this,player,Epoch_personalToken];
+				EPOCH_UPBUILD = [_object,player,Epoch_upgradeIndex,Epoch_personalToken];
 				publicVariableServer "EPOCH_UPBUILD";
+				Epoch_upgradeIndex = nil;
 				_return = true;
 				_dt = ["<t size='0.8' shadow='0' color='#99ffffff'>Upgraded</t>", 0, 1, 5, 2, 0, 1] spawn bis_fnc_dynamictext;
 			};

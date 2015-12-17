@@ -1,3 +1,17 @@
+/*
+	Author: Aaron Clark - EpochMod.com
+
+    Contributors: Uro1, Robio
+
+	Description:
+	Epoch gamemode server Side map specific configs for chernarus.
+
+    Licence:
+    Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
+
+    Github:
+    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_server_settngs/configs/maps/chernarus.h
+*/
 class Chernarus : Default
 {
 	worldSize = 12000;

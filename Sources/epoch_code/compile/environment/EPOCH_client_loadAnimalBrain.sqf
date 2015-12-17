@@ -1,3 +1,26 @@
+/*
+	Author: Aaron Clark - EpochMod.com
+
+    Contributors:
+
+	Description:
+	Creates animals with custom Epoch fsm AI "brain"
+
+    Licence:
+    Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
+
+    Github:
+    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_code/compile/environment/EPOCH_client_loadAnimalBrain.sqf
+
+    Example:
+    call EPOCH_client_loadAnimalBrain;
+
+    Parameter(s):
+		None
+
+	Returns:
+	NOTHING
+*/
 private["_fightOrFlight", "_id", "_animal", "_tryAnimalPos", "_animalPos", "_randomIndex", "_randomAIClass", "_aiTables", "_plyrPos"];
 
 if (count(player nearEntities["Animal_Base_F", 200]) >= 1) exitWith{};

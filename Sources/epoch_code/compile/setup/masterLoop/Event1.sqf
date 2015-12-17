@@ -71,14 +71,14 @@
 		_thirst ctrlShow (EPOCH_playerThirst <= 625);
 		if (ctrlShown _thirst) then {
 			[_thirst,_thirsty] call _fadeUI;
-			_thirstScale = linearConversion [0,EPOCH_playerThirst,2500,0.01,1];
+			_thirstScale = linearConversion [0,EPOCH_playerThirst,2500,0.01,1,true];
 			_thirst ctrlSetTextColor [_thirstScale, _thirstScale, 0.9, 1];
 		};
 
 		_hunger ctrlShow (EPOCH_playerHunger <= 1250);
 		if (ctrlShown _hunger) then {
 			[_hunger,_hungry] call _fadeUI;
-			_hungerScale = linearConversion [0,EPOCH_playerHunger,5000,0.01,1];
+			_hungerScale = linearConversion [0,EPOCH_playerHunger,5000,0.01,1,true];
 			_hunger ctrlSetTextColor [1, _hungerScale, _hungerScale, 1];
 		};
 
@@ -92,7 +92,7 @@
 		_hazzard ctrlShow (EPOCH_playerToxicity > 1);
 		if (ctrlShown _hazzard) then {
 			[_hazzard,(EPOCH_playerToxicity >= 55)] call _fadeUI;
-			_toxicScale = 1-linearConversion [0,EPOCH_playerToxicity,100,0.01,1];
+			_toxicScale = 1-linearConversion [0,EPOCH_playerToxicity,100,0.01,1,true];
 			_hazzard ctrlSetTextColor [_toxicScale, 1, _toxicScale, 1];
 		};
 
@@ -122,7 +122,7 @@
 		_emergency ctrlShow _critical;
 		if (ctrlShown _emergency) then {
 			[_emergency,(EPOCH_playerBloodP > 140)] call _fadeUI;
-			_emergencyScale = 1-linearConversion [0,EPOCH_playerBloodP,180,0.01,1];
+			_emergencyScale = 1-linearConversion [0,EPOCH_playerBloodP,180,0.01,1,true];
 			_emergency ctrlSetTextColor [1, _emergencyScale, _emergencyScale, 1];
 		};
 

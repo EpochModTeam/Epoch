@@ -1,6 +1,21 @@
+/*
+	Author: BI
+
+    Contributors:
+
+	Description:
+	Stock CfgMovesBasic from 1.54
+
+    Licence:
+    Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
+
+    Github:
+    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_config/Configs/CfgMovesBasic.hpp
+*/
+
 class CfgMovesBasic
 {
-	access = 1;
+	access = 0;
 	skeletonName = "";
 	collisionVertexPattern[] = {"1a","2a","3a","4a","5a","6a","7a","8a","9a","10a","11a","12a","13a","14a","15a","16a","17a","18a","19a","20a","21a","22a","23a","24a","25a","26a","27a","28a","29a","30a","31a","32a","33a","34a","1c","2c","3c","4c","5c","6c","7c","8c"};
 	collisionGeomCompPattern[] = {1,3};
@@ -8,6 +23,7 @@ class CfgMovesBasic
 	{
 		GetOutPara = "";
 		weaponLowered = 0;
+		weaponObstructed = 0;
 		canBlendStep = 0;
 		idle = "idleDefault";
 		access = 3;
@@ -33,6 +49,7 @@ class CfgMovesBasic
 		visibleSize = 0.75012;
 		aimPrecision = 1;
 		camShakeFire = 1;
+		static = 0;
 		relSpeedMin = 1;
 		relSpeedMax = 1;
 		soundEnabled = 1;
@@ -68,7 +85,7 @@ class CfgMovesBasic
 		collisionShape = "A3\anims_f\Data\Geom\Sdr\Perc_Wrfl.p3d";
 		hasCollShapeSafe = 0;
 		collisionShapeSafe = "";
-		boundingSphere = 1.0;
+		boundingSphere = 1;
 		enableAutoActions = 0;
 		leftHandIKEnd = 0;
 		leftHandIKBeg = 0;
@@ -130,7 +147,7 @@ class CfgMovesBasic
 		AdjustLB = "";
 		AdjustRB = "";
 		AdjustRF = "";
-		dooraction = "amovpercmwlksnonwnondf";
+		dooraction = "AmovPercMwlkSnonWnonDf";
 		GestureLegPush = "";
 		agonyStart = "AinjPpneMstpSnonWnonDnon";
 		agonyStop = "AmovPpneMstpSnonWnonDnon";
@@ -268,6 +285,7 @@ class CfgMovesBasic
 		GetInLow = "";
 		GetInMedium = "";
 		GetInHigh = "";
+		GetInVertical = "";
 		GetInSDV = "";
 		GetInHeli_Attack_01Pilot = "";
 		GetInHeli_Attack_01Gunner = "";
@@ -285,6 +303,8 @@ class CfgMovesBasic
 		GetOutSDV = "";
 		GetOutHeli_Attack_01Pilot = "";
 		GetOutHeli_Attack_01Gunner = "";
+		GetInBoat = "";
+		GetOutBoat = "";
 		TakeFlag = "";
 		HandGunOn = "";
 		gestureAttack = "";
@@ -321,9 +341,12 @@ class CfgMovesBasic
 		GestureReloadMXCompact = "";
 		GestureReloadMXSniper = "";
 		GestureReloadMk20 = "";
+		GestureReloadMk20UGL = "";
+		GestureReloadMXUGL = "";
 		GestureReloadTRG = "";
 		GestureReloadTRGUGL = "";
 		GestureReloadKatiba = "";
+		GestureReloadKatibaUGL = "";
 		GestureReloadM200 = "";
 		GestureReloadLRR = "";
 		GestureReloadEBR = "";
@@ -336,6 +359,13 @@ class CfgMovesBasic
 		GestureReloadSMG_01 = "";
 		GestureReloadSDAR = "";
 		GestureReloadDMR = "";
+		GestureReloadDMR02 = "";
+		GestureReloadDMR03 = "";
+		GestureReloadDMR04 = "";
+		GestureReloadDMR05 = "";
+		GestureReloadDMR06 = "";
+		GestureReloadMMG01 = "";
+		GestureReloadMMG02 = "";
 		MountOptic = "";
 		DismountOptic = "";
 		MountSide = "";
@@ -354,11 +384,8 @@ class CfgMovesBasic
 		PrimaryWeapon = "";
 		SecondaryWeapon = "";
 		Binoculars = "";
-		GestureSwing0 = "";
-		GestureSwing1 = "";
-		GestureSwing2 = "";
-		GestureFinger = "";
-		SledgeSwing = "";
+		FDStart = "";
+		Obstructed = "";
 	};
 	class Actions
 	{
@@ -394,11 +421,14 @@ class CfgMovesBasic
 			GestureSpasm5weak[] = {"GestureSpasm5weak","Gesture"};
 			GestureSpasm6weak[] = {"GestureSpasm6weak","Gesture"};
 			GestureReloadMk20[] = {"GestureReloadMk20","Gesture"};
+			GestureReloadMk20UGL[] = {"GestureReloadMk20UGL","Gesture"};
+			GestureReloadMXUGL[] = {"GestureReloadMXUGL","Gesture"};
 			GestureReloadMX[] = {"GestureReloadMX","Gesture"};
 			GestureReloadMXCompact[] = {"GestureReloadMXCompact","Gesture"};
 			GestureReloadMXSniper[] = {"GestureReloadMXSniper","Gesture"};
 			GestureReloadTRG[] = {"GestureReloadTRG","Gesture"};
 			GestureReloadTRGUGL[] = {"GestureReloadTRGUGL","Gesture"};
+			GestureReloadKatibaUGL[] = {"GestureReloadKatibaUGL","Gesture"};
 			GestureReloadKatiba[] = {"GestureReloadKatiba","Gesture"};
 			GestureReloadM200[] = {"GestureReloadM200","Gesture"};
 			GestureReloadLRR[] = {"GestureReloadLRR","Gesture"};
@@ -411,15 +441,17 @@ class CfgMovesBasic
 			GestureReloadSMG_01[] = {"GestureReloadSMG_01","Gesture"};
 			GestureReloadSDAR[] = {"GestureReloadSDAR","Gesture"};
 			GestureReloadDMR[] = {"GestureReloadDMR","Gesture"};
+			GestureReloadDMR02[] = {"GestureReloadDMR02","Gesture"};
+			GestureReloadDMR03[] = {"GestureReloadDMR03","Gesture"};
+			GestureReloadDMR04[] = {"GestureReloadDMR04","Gesture"};
+			GestureReloadDMR05[] = {"GestureReloadDMR05","Gesture"};
+			GestureReloadDMR06[] = {"GestureReloadDMR06","Gesture"};
+			GestureReloadMMG01[] = {"GestureReloadMMG01","Gesture"};
+			GestureReloadMMG02[] = {"GestureReloadMMG02","Gesture"};
 			GestureReloadM4SSAS[] = {"GestureReloadM4SSAS","Gesture"};
 			GestureMountMuzzle[] = {"GestureMountMuzzle","Gesture"};
 			GestureDismountMuzzle[] = {"GestureDismountMuzzle","Gesture"};
 			grabCarried = "AinjPfalMstpSnonWrflDnon_carried_Up";
-			GestureSwing0[] = {"GestureSwing0","Gesture"};
-			GestureSwing1[] = { "GestureSwing1", "Gesture" };
-			GestureSwing2[] = { "GestureSwing2", "Gesture" };
-			GestureFinger[] = {"GestureFinger","Gesture"};
-			SledgeSwing[] = { "SledgeSwing", "Gesture" };
 		};
 		class DeadActions: NoActions
 		{
@@ -454,7 +486,6 @@ class CfgMovesBasic
 			TestDriverOut = "";
 			TestGunner = "";
 			Die = "DeadState";
-			stop = "HubBriefing_Player";
 		};
 		class StaticCutsceneLoopPlayerWalk: NoActions
 		{
@@ -579,8 +610,8 @@ class CfgMovesBasic
 			PlayerTactLB = "AmovPercMtacSlowWrflDbl";
 			PlayerTactRB = "AmovPercMtacSlowWrflDbr";
 			PlayerTactB = "AmovPercMtacSlowWrflDb";
-			EvasiveLeft = "AmovPercMstpSlowWrflDnon_AmovPercMevaSrasWrflDl";
-			EvasiveRight = "AmovPercMstpSlowWrflDnon_AmovPercMevaSrasWrflDr";
+			EvasiveLeft = "";
+			EvasiveRight = "";
 			down = "AmovPpneMstpSrasWrflDnon";
 			up = "AmovPknlMstpSlowWrflDnon";
 			weaponOn = "AmovPknlMstpSrasWlnrDnon";
@@ -591,7 +622,7 @@ class CfgMovesBasic
 			takeFlag = "AinvPknlMstpSlayWrflDnon";
 			putDown = "AmovPknlMstpSrasWrflDnon_explo";
 			medic = "AinvPknlMstpSlayWrflDnon_medic";
-			medicOther = "AinvPknlMstpSlayWrflDnon_medic";
+			medicOther = "AinvPknlMstpSlayWrflDnon_medicOther";
 			medicUp = "AinvPknlMstpSlayWrflDnon_medicUp";
 			treated = "AinvPknlMstpSlayWrflDnon_healed";
 			PlayerStand = "AmovPercMstpSlowWrflDnon";
@@ -611,8 +642,9 @@ class CfgMovesBasic
 			GetInLow = "AmovPercMstpSnonWnonDnon_AcrgPknlMstpSnonWnonDnon_getInLow";
 			GetInMedium = "AmovPercMstpSnonWnonDnon_AcrgPknlMstpSnonWnonDnon_getInMedium";
 			GetInHigh = "AmovPercMstpSnonWnonDnon_AcrgPknlMstpSnonWnonDnon_getInHigh";
+			GetInVertical = "GetIn_Vertical_Rifle";
 			GetInSDV = "AmovPercMstpSnonWnonDnon_AcrgPknlMstpSnonWnonDnon_getInHigh";
-			GetOutPara = "aparpercmstpsnonwnondnon_amovppnemstpsnonwnondnon";
+			GetOutPara = "AparPercMstpSnonWnonDnon_AmovPpneMstpSnonWnonDnon";
 			GetOutLow = "AcrgPknlMstpSnonWnonDnon_AmovPercMstpSrasWrflDnon_getOutLow";
 			GetOutMedium = "AcrgPknlMstpSnonWnonDnon_AmovPercMstpSrasWrflDnon_getOutMedium";
 			GetOutHigh = "AcrgPknlMstpSnonWnonDnon_AmovPercMstpSrasWrflDnon_getOutHigh";
@@ -668,6 +700,8 @@ class CfgMovesBasic
 			Gear = "AinvPercMstpSrasWrflDnon";
 			StopRelaxed = "AmovPercMstpSlowWrflDnon";
 			putDown = "AmovPercMstpSrasWrflDnon_AinvPercMstpSrasWrflDnon_Putdown";
+			GetInBoat = "GetInHeli_Transport_01Cargo";
+			GetOutBoat = "AcrgPknlMstpSnonWnonDnon_AmovPercMstpSrasWrflDnon_getOutLow";
 		};
 		class RifleLowStandActionsNoAdjust: RifleLowStandActions
 		{
@@ -973,8 +1007,8 @@ class CfgMovesBasic
 			PlayerTactLB = "AmovPercMtacSrasWrflDbl";
 			PlayerTactRB = "AmovPercMtacSrasWrflDbr";
 			PlayerTactB = "AmovPercMtacSrasWrflDb";
-			EvasiveLeft = "AmovPercMstpSrasWrflDnon_AmovPercMevaSrasWrflDl";
-			EvasiveRight = "AmovPercMstpSrasWrflDnon_AmovPercMevaSrasWrflDr";
+			EvasiveLeft = "";
+			EvasiveRight = "";
 			up = "AmovPknlMstpSrasWrflDnon";
 			getOver = "AovrPercMstpSrasWrflDf";
 			salute = "AmovPercMstpSrasWrflDnon_salute";
@@ -982,10 +1016,12 @@ class CfgMovesBasic
 			upDegree = "ManPosCombat";
 			PlayerCrouch = "AmovPknlMstpSrasWrflDnon";
 			Stand = "AmovPercMstpSlowWrflDnon";
-			WeaponOn = "amovpercmstpsraswlnrdnon";
+			WeaponOn = "AmovPercMstpSrasWlnrDnon";
 			Crouch = "AmovPknlMstpSrasWrflDnon";
 			CanNotMove = "AmovPercMstpSlowWrflDnon";
 			saluteOff = "AmovPercMstpSrasWrflDnon";
+			GetInBoat = "GetInHeli_Transport_01Cargo";
+			GetOutBoat = "AcrgPknlMstpSnonWnonDnon_AmovPercMstpSrasWrflDnon_getOutLow";
 		};
 		class RifleStandActions: RifleBaseStandActions
 		{
@@ -1306,7 +1342,7 @@ class CfgMovesBasic
 			salute = "AmovPercMstpSrasWrflDnon";
 			sitDown = "";
 		};
-		class RifleLowSiTactions: RifleBaseLowStandActions
+		class RifleLowSitActions: RifleBaseLowStandActions
 		{
 			turnL = "";
 			turnR = "";
@@ -1319,7 +1355,7 @@ class CfgMovesBasic
 			GetOver = "";
 			stance = "ManStanceCrouch";
 		};
-		class RifleSiTactions: RifleBaseStandActions
+		class RifleSitActions: RifleBaseStandActions
 		{
 			turnSpeed = 0;
 			turnL = "";
@@ -1333,7 +1369,7 @@ class CfgMovesBasic
 			GetOver = "";
 			stance = "ManStanceCrouch";
 		};
-		class RifleSiTactionTest: RifleSiTactions
+		class RifleSitactionTest: RifleSitActions
 		{
 			Stop = "sitRfl_R_BidleLoopTest";
 			StopRelaxed = "sitRfl_R_BidleLoopTest";
@@ -1526,16 +1562,16 @@ class CfgMovesBasic
 		};
 		class RifleKneelActionsRunL: RifleKneelActionsNoAdjust
 		{
-			PlayerStand = "AmovPercMrunSrasWrfldl";
+			PlayerStand = "AmovPercMrunSrasWrflDl";
 			PlayerCrouch = "AmovPknlMtacSrasWrflDl";
-			Up = "AmovPercMrunSrasWrfldl";
+			Up = "AmovPercMrunSrasWrflDl";
 			AdjustL = "";
 			Stand = "AmovPknlMrunSlowWrflDl";
 		};
 		class RifleKneelActionsWlkL: RifleKneelActionsNoAdjust
 		{
-			PlayerStand = "AmovPercMwlkSrasWrfldl";
-			Up = "AmovPercMwlkSrasWrfldl";
+			PlayerStand = "AmovPercMwlkSrasWrflDl";
+			Up = "AmovPercMwlkSrasWrflDl";
 			AdjustL = "";
 			Stand = "AmovPknlMwlkSlowWrflDl";
 		};
@@ -1623,8 +1659,8 @@ class CfgMovesBasic
 		};
 		class RifleKneelActionsTacL: RifleKneelActionsNoAdjust
 		{
-			PlayerStand = "AmovPercMTacSrasWrfldl";
-			Up = "AmovPercMTacSrasWrfldl";
+			PlayerStand = "AmovPercMTacSrasWrflDl";
+			Up = "AmovPercMTacSrasWrflDl";
 			AdjustL = "";
 			Stand = "AmovPknlMtacSlowWrflDl";
 		};
@@ -1956,8 +1992,8 @@ class CfgMovesBasic
 		};
 		class RifleKneelLowActionsTacL: RifleKneelLowActionsNoAdjust
 		{
-			PlayerStand = "AmovPercMTacSlowWrfldl";
-			Up = "AmovPercMTacSlowWrfldl";
+			PlayerStand = "AmovPercMTacSlowWrflDl";
+			Up = "AmovPercMTacSlowWrflDl";
 			AdjustL = "";
 			Stand = "AmovPknlMtacSrasWrflDl";
 		};
@@ -4359,8 +4395,8 @@ class CfgMovesBasic
 		};
 		class RifleAdjustBKneelEvasiveActionsF: RifleAdjustBKneelActions
 		{
-			PlayerStand = "AadjPercMevaSrasWrflDf_left";
-			Up = "AadjPercMevaSrasWrflDf_left";
+			PlayerStand = "AadjPercMevaSrasWrflDf_down";
+			Up = "AadjPercMevaSrasWrflDf_down";
 			AdjustF = "";
 			AdjustB = "";
 			AdjustL = "";
@@ -4368,8 +4404,8 @@ class CfgMovesBasic
 		};
 		class RifleAdjustBKneelEvasiveActionsFR: RifleAdjustBKneelActions
 		{
-			PlayerStand = "AadjPercMevaSrasWrflDfr_left";
-			Up = "AadjPercMevaSrasWrflDfr_left";
+			PlayerStand = "AadjPercMevaSrasWrflDfr_down";
+			Up = "AadjPercMevaSrasWrflDfr_down";
 			AdjustF = "";
 			AdjustB = "";
 			AdjustL = "";
@@ -4377,8 +4413,8 @@ class CfgMovesBasic
 		};
 		class RifleAdjustBKneelEvasiveActionsFL: RifleAdjustBKneelActions
 		{
-			PlayerStand = "AadjPercMevaSrasWrflDfl_left";
-			Up = "AadjPercMevaSrasWrflDfl_left";
+			PlayerStand = "AadjPercMevaSrasWrflDfl_down";
+			Up = "AadjPercMevaSrasWrflDfl_down";
 			AdjustF = "";
 			AdjustB = "";
 			AdjustL = "";
@@ -4715,11 +4751,14 @@ class CfgMovesBasic
 			gestureAdvance[] = {"GestureAdvanceProne","Gesture"};
 			GestureReloadM200 = "RifleReloadProneM200";
 			GestureReloadMk20 = "RifleReloadProneMk20";
+			GestureReloadMk20UGL = "RifleReloadProneMk20UGL";
+			GestureReloadMXUGL = "RifleReloadProneMXUGL";
 			GestureReloadMX = "RifleReloadProneMX";
 			GestureReloadMXCompact = "RifleReloadProneMXCompact";
 			GestureReloadMXSniper = "RifleReloadProneMXSniper";
 			GestureReloadTRG = "RifleReloadProneTRG";
 			GestureReloadKatiba = "RifleReloadProneKatiba";
+			GestureReloadKatibaUGL = "RifleReloadProneKatibaUGL";
 			GestureReloadTRGUGL = "RifleReloadProneTRGUGL";
 			GestureReloadLRR = "RifleReloadProneLRR";
 			GestureReloadEBR = "RifleReloadProneEBR";
@@ -4728,6 +4767,13 @@ class CfgMovesBasic
 			GestureReloadSMG_01 = "RifleReloadProneSMG_01";
 			GestureReloadSDAR = "RifleReloadProneSDAR";
 			GestureReloadDMR = "RifleReloadProneDMR";
+			GestureReloadDMR02 = "RifleReloadProneDMR02";
+			GestureReloadDMR03 = "RifleReloadProneDMR03";
+			GestureReloadDMR04 = "RifleReloadProneDMR04";
+			GestureReloadDMR05 = "RifleReloadProneDMR05";
+			GestureReloadDMR06 = "RifleReloadProneDMR06";
+			GestureReloadMMG01 = "RifleReloadProneMMG01";
+			GestureReloadMMG02 = "RifleReloadProneMMG02";
 			GestureReloadM4SSAS = "RifleReloadProneM4SSAS";
 			ReloadGM6 = "RifleReloadProneGM6";
 			GestureReloadPistol = "PistolReloadProne";
@@ -4832,6 +4878,7 @@ class CfgMovesBasic
 			sitDown = "";
 			salute = "";
 			medic = "AinvPpneMstpSlayWrflDnon_medic";
+			medicOther = "AinvPpneMstpSlayWrflDnon_medicOther";
 			turnSpeed = 2.5;
 			leanRRot = 0;
 			leanRShift = 0;
@@ -4839,7 +4886,7 @@ class CfgMovesBasic
 			leanLShift = 0;
 			upDegree = "ManPosLying";
 			stance = "ManStanceProne";
-			Stand = "AmovPercMstpSlowWrflDnon";
+			Stand = "AmovPercMstpSrasWrflDnon";
 			Diary = "";
 			PlayerProne = "";
 			Gear = "AinvPpneMstpSrasWrflDnon";
@@ -4866,10 +4913,10 @@ class CfgMovesBasic
 			stop = "AadjPpneMstpSrasWrflDdown";
 			default = "AadjPpneMstpSrasWrflDdown";
 			stopRelaxed = "AadjPpneMstpSrasWrflDdown";
-			turnL = "AadjPpneMstpSrasWrflDdown_turnl";
-			turnR = "AadjPpneMstpSrasWrflDdown_turnr";
-			turnLRelaxed = "AadjPpneMstpSrasWrflDdown_turnl";
-			turnRRelaxed = "AadjPpneMstpSrasWrflDdown_turnr";
+			turnL = "AadjPpneMstpSrasWrflDdown_turnL";
+			turnR = "AadjPpneMstpSrasWrflDdown_turnR";
+			turnLRelaxed = "AadjPpneMstpSrasWrflDdown_turnL";
+			turnRRelaxed = "AadjPpneMstpSrasWrflDdown_turnR";
 			ReloadGM6[] = {"GestureReloadGM6","Gesture"};
 			reloadMGun = "";
 			reloadMortar = "";
@@ -4952,11 +4999,14 @@ class CfgMovesBasic
 			gestureUp = "";
 			gestureAdvance[] = {"GestureAdvance","Gesture"};
 			GestureReloadMk20[] = {"GestureReloadMk20Context","Gesture"};
+			GestureReloadMk20UGL[] = {"GestureReloadMk20UGLContext","Gesture"};
+			GestureReloadMXUGL[] = {"GestureReloadMXUGLContext","Gesture"};
 			GestureReloadMX[] = {"GestureReloadMXContext","Gesture"};
 			GestureReloadMXCompact[] = {"GestureReloadMXCompactContext","Gesture"};
 			GestureReloadMXSniper[] = {"GestureReloadMXSniperContext","Gesture"};
 			GestureReloadTRG[] = {"GestureReloadTRGContext","Gesture"};
 			GestureReloadTRGUGL[] = {"GestureReloadTRGUGLContext","Gesture"};
+			GestureReloadKatibaUGL[] = {"GestureReloadKatibaUGLContext","Gesture"};
 			GestureReloadKatiba[] = {"GestureReloadKatibaContext","Gesture"};
 			GestureReloadLRR[] = {"GestureReloadLRRContext","Gesture"};
 			GestureReloadEBR[] = {"GestureReloadEBRContext","Gesture"};
@@ -4968,6 +5018,13 @@ class CfgMovesBasic
 			GestureReloadSMG_01[] = {"GestureReloadSMG_01Context","Gesture"};
 			GestureReloadSDAR[] = {"GestureReloadSDARContext","Gesture"};
 			GestureReloadDMR[] = {"GestureReloadDMRContext","Gesture"};
+			GestureReloadDMR02[] = {"GestureReloadDMR02Context","Gesture"};
+			GestureReloadDMR03[] = {"GestureReloadDMR03Context","Gesture"};
+			GestureReloadDMR04[] = {"GestureReloadDMR04Context","Gesture"};
+			GestureReloadDMR05[] = {"GestureReloadDMR05Context","Gesture"};
+			GestureReloadDMR06[] = {"GestureReloadDMR06Context","Gesture"};
+			GestureReloadMMG01[] = {"GestureReloadMMG01Context","Gesture"};
+			GestureReloadMMG02[] = {"GestureReloadMMG02Context","Gesture"};
 			GestureReloadM4SSAS[] = {"GestureReloadM4SSASContext","Gesture"};
 			GestureMountMuzzle[] = {"GestureMountMuzzle","Gesture"};
 			GestureDismountMuzzle[] = {"GestureDismountMuzzle","Gesture"};
@@ -4988,60 +5045,60 @@ class CfgMovesBasic
 			reloadMortar = "";
 			throwPrepare = "";
 			WalkF = "AadjPpneMwlkSrasWrflDup_f";
-			WalkLF = "";
-			WalkRF = "";
+			WalkLF = "AadjPpneMwlkSrasWrflDup_fl";
+			WalkRF = "AadjPpneMwlkSrasWrflDup_fr";
 			WalkL = "AadjPpneMwlkSrasWrflDup_l";
 			WalkR = "AadjPpneMwlkSrasWrflDup_r";
-			WalkLB = "";
-			WalkRB = "";
+			WalkLB = "AadjPpneMwlkSrasWrflDup_bl";
+			WalkRB = "AadjPpneMwlkSrasWrflDup_br";
 			WalkB = "AadjPpneMwlkSrasWrflDup_b";
 			PlayerWalkF = "AadjPpneMwlkSrasWrflDup_f";
-			PlayerWalkLF = "";
-			PlayerWalkRF = "";
+			PlayerWalkLF = "AadjPpneMwlkSrasWrflDup_fl";
+			PlayerWalkRF = "AadjPpneMwlkSrasWrflDup_fr";
 			PlayerWalkL = "AadjPpneMwlkSrasWrflDup_l";
 			PlayerWalkR = "AadjPpneMwlkSrasWrflDup_r";
-			PlayerWalkLB = "";
-			PlayerWalkRB = "";
+			PlayerWalkLB = "AadjPpneMwlkSrasWrflDup_bl";
+			PlayerWalkRB = "AadjPpneMwlkSrasWrflDup_br";
 			PlayerWalkB = "AadjPpneMwlkSrasWrflDup_b";
 			SlowF = "AadjPpneMwlkSrasWrflDup_f";
-			SlowLF = "";
-			SlowRF = "";
+			SlowLF = "AadjPpneMwlkSrasWrflDup_fl";
+			SlowRF = "AadjPpneMwlkSrasWrflDup_fr";
 			SlowL = "AadjPpneMwlkSrasWrflDup_l";
 			SlowR = "AadjPpneMwlkSrasWrflDup_r";
-			SlowLB = "";
-			SlowRB = "";
+			SlowLB = "AadjPpneMwlkSrasWrflDup_bl";
+			SlowRB = "AadjPpneMwlkSrasWrflDup_br";
 			SlowB = "AadjPpneMwlkSrasWrflDup_b";
 			PlayerSlowF = "AadjPpneMwlkSrasWrflDup_f";
-			PlayerSlowLF = "";
-			PlayerSlowRF = "";
+			PlayerSlowLF = "AadjPpneMwlkSrasWrflDup_fl";
+			PlayerSlowRF = "AadjPpneMwlkSrasWrflDup_fr";
 			PlayerSlowL = "AadjPpneMwlkSrasWrflDup_l";
 			PlayerSlowR = "AadjPpneMwlkSrasWrflDup_r";
-			PlayerSlowLB = "";
-			PlayerSlowRB = "";
+			PlayerSlowLB = "AadjPpneMwlkSrasWrflDup_bl";
+			PlayerSlowRB = "AadjPpneMwlkSrasWrflDup_br";
 			PlayerSlowB = "AadjPpneMwlkSrasWrflDup_b";
 			FastF = "AadjPpneMwlkSrasWrflDup_f";
-			FastLF = "";
-			FastRF = "";
+			FastLF = "AadjPpneMwlkSrasWrflDup_fl";
+			FastRF = "AadjPpneMwlkSrasWrflDup_fr";
 			FastL = "AadjPpneMwlkSrasWrflDup_l";
 			FastR = "AadjPpneMwlkSrasWrflDup_r";
-			FastLB = "";
-			FastRB = "";
-			FastB = "";
+			FastLB = "AadjPpneMwlkSrasWrflDup_bl";
+			FastRB = "AadjPpneMwlkSrasWrflDup_br";
+			FastB = "AadjPpneMwlkSrasWrflDup_b";
 			TactF = "AadjPpneMwlkSrasWrflDup_f";
-			TactLF = "";
-			TactRF = "";
+			TactLF = "AadjPpneMwlkSrasWrflDup_fl";
+			TactRF = "AadjPpneMwlkSrasWrflDup_fr";
 			TactL = "AadjPpneMwlkSrasWrflDup_l";
 			TactR = "AadjPpneMwlkSrasWrflDup_r";
-			TactLB = "";
-			TactRB = "";
+			TactLB = "AadjPpneMwlkSrasWrflDup_bl";
+			TactRB = "AadjPpneMwlkSrasWrflDup_br";
 			TactB = "AadjPpneMwlkSrasWrflDup_b";
 			PlayerTactF = "AadjPpneMwlkSrasWrflDup_f";
-			PlayerTactLF = "";
-			PlayerTactRF = "";
+			PlayerTactLF = "AadjPpneMwlkSrasWrflDup_fl";
+			PlayerTactRF = "AadjPpneMwlkSrasWrflDup_fr";
 			PlayerTactL = "AadjPpneMwlkSrasWrflDup_l";
 			PlayerTactR = "AadjPpneMwlkSrasWrflDup_r";
-			PlayerTactLB = "";
-			PlayerTactRB = "";
+			PlayerTactLB = "AadjPpneMwlkSrasWrflDup_bl";
+			PlayerTactRB = "AadjPpneMwlkSrasWrflDup_br";
 			PlayerTactB = "AadjPpneMwlkSrasWrflDup_b";
 			EvasiveLeft = "";
 			EvasiveRight = "";
@@ -5065,11 +5122,14 @@ class CfgMovesBasic
 			gestureUp = "";
 			gestureAdvance[] = {"GestureAdvance","Gesture"};
 			GestureReloadMk20[] = {"GestureReloadMk20Context","Gesture"};
+			GestureReloadMk20UGL[] = {"GestureReloadMk20UGLContext","Gesture"};
+			GestureReloadMXUGL[] = {"GestureReloadMXUGLContext","Gesture"};
 			GestureReloadMX[] = {"GestureReloadMXContext","Gesture"};
 			GestureReloadMXCompact[] = {"GestureReloadMXCompactContext","Gesture"};
 			GestureReloadMXSniper[] = {"GestureReloadMXSniperContext","Gesture"};
 			GestureReloadTRG[] = {"GestureReloadTRGContext","Gesture"};
 			GestureReloadTRGUGL[] = {"GestureReloadTRGUGLContext","Gesture"};
+			GestureReloadKatibaUGL[] = {"GestureReloadKatibaUGLContext","Gesture"};
 			GestureReloadKatiba[] = {"GestureReloadKatibaContext","Gesture"};
 			GestureReloadLRR[] = {"GestureReloadLRRContext","Gesture"};
 			GestureReloadEBR[] = {"GestureReloadEBRContext","Gesture"};
@@ -5081,6 +5141,13 @@ class CfgMovesBasic
 			GestureReloadSMG_01[] = {"GestureReloadSMG_01Context","Gesture"};
 			GestureReloadSDAR[] = {"GestureReloadSDARContext","Gesture"};
 			GestureReloadDMR[] = {"GestureReloadDMRContext","Gesture"};
+			GestureReloadDMR02[] = {"GestureReloadDMR02Context","Gesture"};
+			GestureReloadDMR03[] = {"GestureReloadDMR03Context","Gesture"};
+			GestureReloadDMR04[] = {"GestureReloadDMR04Context","Gesture"};
+			GestureReloadDMR05[] = {"GestureReloadDMR05Context","Gesture"};
+			GestureReloadDMR06[] = {"GestureReloadDMR06Context","Gesture"};
+			GestureReloadMMG01[] = {"GestureReloadMMG01Context","Gesture"};
+			GestureReloadMMG02[] = {"GestureReloadMMG02Context","Gesture"};
 			GestureReloadM4SSAS[] = {"GestureReloadM4SSASContext","Gesture"};
 			GestureMountMuzzle[] = {"GestureMountMuzzle","Gesture"};
 			GestureDismountMuzzle[] = {"GestureDismountMuzzle","Gesture"};
@@ -5175,24 +5242,34 @@ class CfgMovesBasic
 			gestureFreeze = "";
 			gestureUp = "";
 			gestureAdvance[] = {"GestureAdvance","Gesture"};
-			GestureReloadMk20[] = {"GestureReloadMk20Context","Gesture"};
-			GestureReloadMX[] = {"GestureReloadMXContext","Gesture"};
-			GestureReloadMXCompact[] = {"GestureReloadMXCompactContext","Gesture"};
-			GestureReloadMXSniper[] = {"GestureReloadMXSniperContext","Gesture"};
-			GestureReloadTRGContext[] = {"GestureReloadTRGContext","Gesture"};
-			GestureReloadTRGUGL[] = {"GestureReloadTRGUGLContext","Gesture"};
-			GestureReloadKatiba[] = {"GestureReloadKatibaContext","Gesture"};
-			GestureReloadLRR[] = {"GestureReloadLRRContext","Gesture"};
-			GestureReloadEBR[] = {"GestureReloadEBRContext","Gesture"};
-			GestureReloadSMG_02[] = {"GestureReloadSMG_02Context","Gesture"};
-			GestureReloadSMG_03[] = {"GestureReloadSMG_03Context","Gesture"};
-			GestureReloadPistol[] = {"GestureReloadPistolContext","Gesture"};
-			GestureReloadPistolHeavy02[] = {"GestureReloadPistolHeavy02Context","Gesture"};
-			GestureReloadFlaregun[] = {"GestureReloadFlaregunContext","Gesture"};
-			GestureReloadSMG_01[] = {"GestureReloadSMG_01Context","Gesture"};
-			GestureReloadSDAR[] = {"GestureReloadSDARContext","Gesture"};
-			GestureReloadDMR[] = {"GestureReloadDMRContext","Gesture"};
-			GestureReloadM4SSAS[] = {"GestureReloadM4SSASContext","Gesture"};
+			GestureReloadMk20[] = {"GestureReloadMk20ContextAnimDrive","Gesture"};
+			GestureReloadMk20UGL[] = {"GestureReloadMk20UGLContextAnimDrive","Gesture"};
+			GestureReloadMXUGL[] = {"GestureReloadMXUGLContextAnimDrive","Gesture"};
+			GestureReloadMX[] = {"GestureReloadMXContextAnimDrive","Gesture"};
+			GestureReloadMXCompact[] = {"GestureReloadMXCompactContextAnimDrive","Gesture"};
+			GestureReloadMXSniper[] = {"GestureReloadMXSniperContextAnimDrive","Gesture"};
+			GestureReloadTRG[] = {"GestureReloadTRGContextAnimDrive","Gesture"};
+			GestureReloadTRGUGL[] = {"GestureReloadTRGUGLContextAnimDrive","Gesture"};
+			GestureReloadKatibaUGL[] = {"GestureReloadKatibaUGLContextAnimDrive","Gesture"};
+			GestureReloadKatiba[] = {"GestureReloadKatibaContextAnimDrive","Gesture"};
+			GestureReloadLRR[] = {"GestureReloadLRRContextAnimDrive","Gesture"};
+			GestureReloadEBR[] = {"GestureReloadEBRContextAnimDrive","Gesture"};
+			GestureReloadSMG_02[] = {"GestureReloadSMG_02ContextAnimDrive","Gesture"};
+			GestureReloadSMG_03[] = {"GestureReloadSMG_03ContextAnimDrive","Gesture"};
+			GestureReloadPistol[] = {"GestureReloadPistolContextAnimDrive","Gesture"};
+			GestureReloadPistolHeavy02[] = {"GestureReloadPistolHeavy02ContextAnimDrive","Gesture"};
+			GestureReloadFlaregun[] = {"GestureReloadFlaregunContextAnimDrive","Gesture"};
+			GestureReloadSMG_01[] = {"GestureReloadSMG_01ContextAnimDrive","Gesture"};
+			GestureReloadSDAR[] = {"GestureReloadSDARContextAnimDrive","Gesture"};
+			GestureReloadDMR[] = {"GestureReloadDMRContextAnimDrive","Gesture"};
+			GestureReloadDMR02[] = {"GestureReloadDMR02ContextAnimDrive","Gesture"};
+			GestureReloadDMR03[] = {"GestureReloadDMR03ContextAnimDrive","Gesture"};
+			GestureReloadDMR04[] = {"GestureReloadDMR04ContextAnimDrive","Gesture"};
+			GestureReloadDMR05[] = {"GestureReloadDMR05ContextAnimDrive","Gesture"};
+			GestureReloadDMR06[] = {"GestureReloadDMR06ContextAnimDrive","Gesture"};
+			GestureReloadMMG01[] = {"GestureReloadMMG01ContextAnimDrive","Gesture"};
+			GestureReloadMMG02[] = {"GestureReloadMMG02ContextAnimDrive","Gesture"};
+			GestureReloadM4SSAS[] = {"GestureReloadM4SSASContextAnimDrive","Gesture"};
 			GestureMountMuzzle[] = {"GestureMountMuzzle","Gesture"};
 			GestureDismountMuzzle[] = {"GestureDismountMuzzle","Gesture"};
 			MountOptic = "";
@@ -5376,8 +5453,9 @@ class CfgMovesBasic
 			binocOff = "AmovPercMstpSrasWpstDnon";
 			handGunOn = "AmovPercMstpSrasWrflDnon";
 			takeFlag = "AinvPknlMstpSnonWnonDnon_1";
-			putDown = "AmovPercMstpSraswpstDnon_AinvPercMstpSraswpstDnon_Putdown";
+			putDown = "AmovPercMstpSrasWpstDnon_AinvPercMstpSrasWpstDnon_Putdown";
 			medic = "AinvPknlMstpSlayWpstDnon_medic";
+			medicOther = "AinvPknlMstpSlayWpstDnon_medicOther";
 			treated = "AinvPknlMstpSnonWnonDnon_healed_1";
 			Combat = "AmovPercMstpSrasWrflDnon";
 			Lying = "AmovPpneMstpSrasWpstDnon";
@@ -5391,6 +5469,7 @@ class CfgMovesBasic
 			GetInLow = "AmovPercMstpSnonWnonDnon_AcrgPknlMstpSnonWnonDnon_getInLow";
 			GetInMedium = "AmovPercMstpSnonWnonDnon_AcrgPknlMstpSnonWnonDnon_getInMedium";
 			GetInHigh = "AmovPercMstpSnonWnonDnon_AcrgPknlMstpSnonWnonDnon_getInHigh";
+			GetInVertical = "GetIn_Vertical_Pistol";
 			GetInSDV = "AmovPercMstpSnonWnonDnon_AcrgPknlMstpSnonWnonDnon_getInHigh";
 			GetOutLow = "AcrgPknlMstpSnonWnonDnon_AmovPercMstpSrasWpstDnon_getOutLow";
 			GetOutMedium = "AcrgPknlMstpSnonWnonDnon_AmovPercMstpSrasWpstDnon_getOutMedium";
@@ -5443,6 +5522,8 @@ class CfgMovesBasic
 			PrimaryWeapon = "AmovPercMstpSrasWrflDnon";
 			SecondaryWeapon = "AmovPercMstpSrasWlnrDnon";
 			Binoculars = "AmovPercMstpSoptWbinDnon";
+			GetInBoat = "GetInHeli_Transport_01Cargo";
+			GetOutBoat = "AcrgPknlMstpSnonWnonDnon_AmovPercMstpSrasWrflDnon_getOutLow";
 		};
 		class PistolStandActionsNoAdjust: PistolStandActions
 		{
@@ -6045,7 +6126,7 @@ class CfgMovesBasic
 			salute = "";
 			sitDown = "";
 		};
-		class PistolSiTactions: PistolStandActions
+		class PistolSitActions: PistolStandActions
 		{
 			turnL = "";
 			turnR = "";
@@ -6391,6 +6472,7 @@ class CfgMovesBasic
 			AdjustB = "";
 			AdjustL = "";
 			AdjustR = "";
+			handGunOn = "AmovPknlMstpSrasWpstDnon";
 		};
 		class PistolLowKneelActionsNoAdjust: PistolLowKneelActions
 		{
@@ -6665,12 +6747,15 @@ class CfgMovesBasic
 			gestureFollow[] = {"","Gesture"};
 			gestureAdvance[] = {"GestureAdvanceProne","Gesture"};
 			GestureReloadMk20 = "RifleReloadProneMk20";
+			GestureReloadMk20UGL = "RifleReloadProneMk20UGL";
+			GestureReloadMXUGL = "RifleReloadProneMXUGL";
 			GestureReloadMX = "RifleReloadProneMX";
 			GestureReloadMXCompact = "RifleReloadProneMXCompact";
 			GestureReloadMXSniper = "RifleReloadProneMXSniper";
 			GestureReloadTRG = "RifleReloadProneTRG";
 			GestureReloadTRGUGL = "RifleReloadProneTRGUGL";
 			GestureReloadKatiba = "RifleReloadProneKatiba";
+			GestureReloadKatibaUGL = "RifleReloadProneKatibaUGL";
 			GestureReloadLRR = "RifleReloadProneLRR";
 			GestureReloadEBR = "RifleReloadProneEBR";
 			GestureReloadSMG_03 = "RifleReloadProneSMG_03";
@@ -6678,6 +6763,13 @@ class CfgMovesBasic
 			GestureReloadSMG_01 = "RifleReloadProneSMG_01";
 			GestureReloadSDAR = "RifleReloadProneSDAR";
 			GestureReloadDMR = "RifleReloadProneDMR";
+			GestureReloadDMR02 = "RifleReloadProneDMR02";
+			GestureReloadDMR03 = "RifleReloadProneDMR03";
+			GestureReloadDMR04 = "RifleReloadProneDMR04";
+			GestureReloadDMR05 = "RifleReloadProneDMR05";
+			GestureReloadDMR06 = "RifleReloadProneDMR06";
+			GestureReloadMMG01 = "RifleReloadProneMMG01";
+			GestureReloadMMG02 = "RifleReloadProneMMG02";
 			GestureReloadM4SSAS = "RifleReloadProneM4SSAS";
 			GestureReloadPistol = "PistolReloadProne";
 			GestureReloadPistolHeavy02 = "PistolHeavy02ReloadProne";
@@ -6778,6 +6870,7 @@ class CfgMovesBasic
 			stance = "ManStanceProne";
 			Civil = "AmovPpneMstpSnonWnonDnon";
 			medic = "AinvPpneMstpSlayWpstDnon_medic";
+			medicOther = "AinvPpneMstpSlayWpstDnon_medicOther";
 			GetOver = "";
 			Stand = "";
 			AdjustL = "AadjPpneMstpSrasWpstDleft";
@@ -6814,10 +6907,10 @@ class CfgMovesBasic
 			stop = "AadjPpneMstpSrasWpstDup";
 			default = "AadjPpneMstpSrasWpstDup";
 			stopRelaxed = "AadjPpneMstpSrasWpstDup";
-			turnL = "AadjPpneMstpSrasWpstDup_turnl";
-			turnR = "AadjPpneMstpSrasWpstDup_turnr";
-			turnLRelaxed = "AadjPpneMstpSrasWpstDup_turnl";
-			turnRRelaxed = "AadjPpneMstpSrasWpstDup_turnr";
+			turnL = "AadjPpneMstpSrasWpstDup_turnL";
+			turnR = "AadjPpneMstpSrasWpstDup_turnR";
+			turnLRelaxed = "AadjPpneMstpSrasWpstDup_turnL";
+			turnRRelaxed = "AadjPpneMstpSrasWpstDup_turnR";
 			reloadMGun = "AadjPpneMstpSrasWpstDup";
 			reloadMortar = "AadjPpneMstpSrasWpstDup";
 			WalkF = "AadjPpneMwlkSrasWpstDup_f";
@@ -6893,10 +6986,10 @@ class CfgMovesBasic
 			stop = "AadjPpneMstpSrasWpstDdown";
 			default = "AadjPpneMstpSrasWpstDdown";
 			stopRelaxed = "AadjPpneMstpSrasWpstDdown";
-			turnL = "AadjPpneMstpSrasWpstDdown_turnl";
-			turnR = "AadjPpneMstpSrasWpstDdown_turnr";
-			turnLRelaxed = "AadjPpneMstpSrasWpstDdown_turnl";
-			turnRRelaxed = "AadjPpneMstpSrasWpstDdown_turnr";
+			turnL = "AadjPpneMstpSrasWpstDdown_turnL";
+			turnR = "AadjPpneMstpSrasWpstDdown_turnR";
+			turnLRelaxed = "AadjPpneMstpSrasWpstDdown_turnL";
+			turnRRelaxed = "AadjPpneMstpSrasWpstDdown_turnR";
 			reloadMGun = "AadjPpneMstpSrasWpstDdown";
 			reloadMortar = "AadjPpneMstpSrasWpstDdown";
 			WalkF = "AadjPpneMstpSrasWpstDdown";
@@ -7222,6 +7315,7 @@ class CfgMovesBasic
 			takeFlag = "AinvPknlMstpSnonWnonDnon_3";
 			putDown = "AmovPercMstpSnonWnonDnon_AinvPercMstpSnonWnonDnon_Putdown";
 			medic = "AinvPknlMstpSlayWnonDnon_medic";
+			medicOther = "AinvPknlMstpSlayWnonDnon_medicOther";
 			treated = "AinvPknlMstpSnonWnonDnon_healed_2";
 			PlayerCrouch = "AmovPknlMstpSnonWnonDnon";
 			PlayerProne = "AmovPpneMstpSnonWnonDnon";
@@ -7237,6 +7331,7 @@ class CfgMovesBasic
 			GetInLow = "AmovPercMstpSnonWnonDnon_AcrgPknlMstpSnonWnonDnon_getInLow";
 			GetInMedium = "AmovPercMstpSnonWnonDnon_AcrgPknlMstpSnonWnonDnon_getInMedium";
 			GetInHigh = "AmovPercMstpSnonWnonDnon_AcrgPknlMstpSnonWnonDnon_getInHigh";
+			GetInVertical = "GetIn_Vertical_Unarmed";
 			GetInSDV = "AmovPercMstpSnonWnonDnon_AcrgPknlMstpSnonWnonDnon_getInHigh";
 			GetOutLow = "AcrgPknlMstpSnonWnonDnon_AmovPercMstpSnonWnonDnon_getOutLow";
 			GetOutMedium = "AcrgPknlMstpSnonWnonDnon_AmovPercMstpSnonWnonDnon_getOutMedium";
@@ -7281,10 +7376,24 @@ class CfgMovesBasic
 			PrimaryWeapon = "AmovPercMstpSrasWrflDnon";
 			SecondaryWeapon = "AmovPercMstpSrasWlnrDnon";
 			Binoculars = "AmovPercMstpSoptWbinDnon";
+			GetInBoat = "GetInHeli_Transport_01Cargo";
+			GetOutBoat = "AcrgPknlMstpSnonWnonDnon_AmovPercMstpSrasWrflDnon_getOutLow";
+			AdjustF = "AmovPercMstpSnonWnonDnon";
+			AdjustB = "AmovPercMstpSnonWnonDnon";
+			AdjustL = "AmovPercMstpSnonWnonDnon";
+			AdjustR = "AmovPercMstpSnonWnonDnon";
+			AdjustLF = "AmovPercMstpSnonWnonDnon";
+			AdjustLB = "AmovPercMstpSnonWnonDnon";
+			AdjustRB = "AmovPercMstpSnonWnonDnon";
+			AdjustRF = "AmovPercMstpSnonWnonDnon";
 		};
 		class CivilStandActions_noSalute: CivilStandActions
 		{
 			Salute = "";
+		};
+		class CivilExerciseActions: CivilStandActions
+		{
+			GetOver = "";
 		};
 		class CivilRunActions: CivilStandActions
 		{
@@ -7411,7 +7520,7 @@ class CfgMovesBasic
 			salute = "";
 			sitDown = "";
 		};
-		class CivilSiTactions: CivilStandActions
+		class CivilSitActions: CivilStandActions
 		{
 			turnL = "";
 			turnR = "";
@@ -7478,6 +7587,9 @@ class CfgMovesBasic
 			FastLB = "AmovPknlMrunSnonWnonDbl";
 			FastRB = "AmovPknlMrunSnonWnonDbr";
 			FastB = "AmovPknlMrunSnonWnonDb";
+			FastF = "AmovPknlMevaSnonWnonDf";
+			FastLF = "AmovPknlMevaSnonWnonDfl";
+			FastRF = "AmovPknlMevaSnonWnonDfr";
 			TactF = "AmovPknlMwlkSnonWnonDf";
 			TactLF = "AmovPknlMwlkSnonWnonDfl";
 			TactRF = "AmovPknlMwlkSnonWnonDfr";
@@ -7644,6 +7756,10 @@ class CfgMovesBasic
 			StopRelaxed = "AinvPknlMstpSnonWnonDnon_4";
 			default = "AinvPknlMstpSnonWnonDnon_4";
 		};
+		class CivilEvasiveKneelActions: CivilKneelActions
+		{
+			limitFast = 5.5;
+		};
 		class CivilProneActions: CivilStandActions
 		{
 			stop = "AmovPpneMstpSnonWnonDnon";
@@ -7746,6 +7862,7 @@ class CfgMovesBasic
 			PlayerStand = "AmovPercMstpSnonWnonDnon";
 			Relax = "AmovPpneMstpSnonWnonDnon_relax";
 			medic = "AinvPpneMstpSlayWnonDnon_medic";
+			medicOther = "AinvPpneMstpSlayWnonDnon_medicOther";
 			StartFreefall = "AfalPpneMstpSnonWnonDnon";
 			PrimaryWeapon = "AmovPpneMstpSrasWrflDnon";
 			SecondaryWeapon = "AmovPpneMstpSrasWlnrDnon";
@@ -7766,11 +7883,11 @@ class CfgMovesBasic
 			handGunOn = "AmovPknlMstpSrasWpstDnon";
 			reloadMagazine[] = {"LauncherMagazineReloadStand","gesture"};
 			throwGrenade[] = {"GestureThrowGrenadeLauncher","Gesture"};
-			Up = "amovpercmstpsraswlnrdnon";
-			PlayerStand = "amovpercmstpsraswlnrdnon";
+			Up = "AmovPercMstpSrasWlnrDnon";
+			PlayerStand = "AmovPercMstpSrasWlnrDnon";
 			Combat = "AmovPercMstpSrasWlnrDnon";
 			Lying = "AmovPknlMstpSrasWrflDnon";
-			Stand = "amovpercmstpsraswlnrdnon";
+			Stand = "AmovPercMstpSrasWlnrDnon";
 			Crouch = "AmovPknlMstpSrasWlnrDnon";
 			ReloadRPG = "ReloadRPGKneel";
 			Civil = "AmovPknlMstpSnonWnonDnon";
@@ -7853,7 +7970,8 @@ class CfgMovesBasic
 			EvasiveRight = "AmovPercMevaSlowWlnrDfr";
 			Diary = "";
 			Surrender = "AmovPercMstpSsurWnonDnon";
-			medic = "AinvPknlMstpSnonWnonDnon_medic_1";
+			medic = "AinvPknlMstpSlayWnonDnon_medic";
+			medicOther = "AinvPknlMstpSlayWlnrDnon_medicOther";
 			Relax = "AmovPknlMstpSrasWlnrDnon_relax";
 			Gear = "AinvPknlMstpSrasWlnrDnon";
 			putDown = "AmovPknlMstpSrasWlnrDnon_AinvPknlMstpSrasWlnrDnon_Putdown";
@@ -7863,150 +7981,152 @@ class CfgMovesBasic
 			PrimaryWeapon = "AmovPknlMstpSrasWrflDnon";
 			SecondaryWeapon = "AmovPknlMstpSrasWlnrDnon";
 			Binoculars = "AmovPknlMstpSoptWbinDnon";
+			GetInBoat = "GetInHeli_Transport_01Cargo";
+			GetOutBoat = "AcrgPknlMstpSnonWnonDnon_AmovPercMstpSrasWrflDnon_getOutLow";
 		};
 		class LauncherKneelActionsRunF: LauncherKneelActions
 		{
-			PlayerStand = "amovpercmrunsraswlnrdf";
-			Stand = "amovpercmrunsraswlnrdf";
-			Up = "amovpercmrunsraswlnrdf";
+			PlayerStand = "AmovPercMrunSrasWlnrDf";
+			Stand = "AmovPercMrunSrasWlnrDf";
+			Up = "AmovPercMrunSrasWlnrDf";
 		};
 		class LauncherKneelActionsRunFL: LauncherKneelActionsRunF
 		{
-			Up = "amovpercmrunsraswlnrdfl";
-			PlayerStand = "amovpercmrunsraswlnrdfl";
-			Stand = "amovpercmrunsraswlnrdfl";
+			Up = "AmovPercMrunSrasWlnrDfl";
+			PlayerStand = "AmovPercMrunSrasWlnrDfl";
+			Stand = "AmovPercMrunSrasWlnrDfl";
 		};
 		class LauncherKneelActionsRunL: LauncherKneelActionsRunF
 		{
-			Up = "amovpercmrunsraswlnrdl";
-			PlayerStand = "amovpercmrunsraswlnrdl";
-			Stand = "amovpercmrunsraswlnrdl";
+			Up = "AmovPercMrunSrasWlnrDl";
+			PlayerStand = "AmovPercMrunSrasWlnrDl";
+			Stand = "AmovPercMrunSrasWlnrDl";
 		};
 		class LauncherKneelActionsRunBL: LauncherKneelActionsRunF
 		{
-			PlayerStand = "amovpercmrunsraswlnrdbl";
-			Up = "amovpercmrunsraswlnrdbl";
-			Stand = "amovpercmrunsraswlnrdbl";
+			PlayerStand = "AmovPercMrunSrasWlnrDbl";
+			Up = "AmovPercMrunSrasWlnrDbl";
+			Stand = "AmovPercMrunSrasWlnrDbl";
 		};
 		class LauncherKneelActionsRunB: LauncherKneelActionsRunF
 		{
-			PlayerStand = "amovpercmrunsraswlnrdb";
-			Up = "amovpercmrunsraswlnrdb";
-			Stand = "amovpercmrunsraswlnrdb";
+			PlayerStand = "AmovPercMrunSrasWlnrDb";
+			Up = "AmovPercMrunSrasWlnrDb";
+			Stand = "AmovPercMrunSrasWlnrDb";
 		};
 		class LauncherKneelActionsRunBR: LauncherKneelActionsRunF
 		{
-			Stand = "amovpercmrunsraswlnrdbr";
-			PlayerStand = "amovpercmrunsraswlnrdbr";
-			Up = "amovpercmrunsraswlnrdbr";
+			Stand = "AmovPercMrunSrasWlnrDbr";
+			PlayerStand = "AmovPercMrunSrasWlnrDbr";
+			Up = "AmovPercMrunSrasWlnrDbr";
 		};
 		class LauncherKneelActionsRunR: LauncherKneelActionsRunF
 		{
-			Up = "amovpercmrunsraswlnrdr";
-			PlayerStand = "amovpercmrunsraswlnrdr";
-			Stand = "amovpercmrunsraswlnrdr";
+			Up = "AmovPercMrunSrasWlnrDr";
+			PlayerStand = "AmovPercMrunSrasWlnrDr";
+			Stand = "AmovPercMrunSrasWlnrDr";
 		};
 		class LauncherKneelActionsRunFR: LauncherKneelActionsRunF
 		{
-			PlayerStand = "amovpercmrunsraswlnrdfr";
-			Up = "amovpercmrunsraswlnrdfr";
-			Stand = "amovpercmrunsraswlnrdfr";
+			PlayerStand = "AmovPercMrunSrasWlnrDfr";
+			Up = "AmovPercMrunSrasWlnrDfr";
+			Stand = "AmovPercMrunSrasWlnrDfr";
 		};
 		class LauncherKneelActionsTacF: LauncherKneelActions
 		{
-			PlayerStand = "amovpercmTacsraswlnrdf";
-			Stand = "amovpercmTacsraswlnrdf";
-			Up = "amovpercmTacsraswlnrdf";
+			PlayerStand = "AmovPercMtacSrasWlnrDf";
+			Stand = "AmovPercMtacSrasWlnrDf";
+			Up = "AmovPercMtacSrasWlnrDf";
 		};
 		class LauncherKneelActionsTacFL: LauncherKneelActionsTacF
 		{
-			PlayerStand = "amovpercmTacsraswlnrdfl";
-			Up = "amovpercmTacsraswlnrdfl";
-			Stand = "amovpercmTacsraswlnrdfl";
+			PlayerStand = "AmovPercMtacSrasWlnrDfl";
+			Up = "AmovPercMtacSrasWlnrDfl";
+			Stand = "AmovPercMtacSrasWlnrDfl";
 		};
 		class LauncherKneelActionsTacL: LauncherKneelActionsTacF
 		{
-			Stand = "amovpercmTacsraswlnrdl";
-			PlayerStand = "amovpercmTacsraswlnrdl";
-			Up = "amovpercmTacsraswlnrdl";
+			Stand = "AmovPercMtacSrasWlnrDl";
+			PlayerStand = "AmovPercMtacSrasWlnrDl";
+			Up = "AmovPercMtacSrasWlnrDl";
 		};
 		class LauncherKneelActionsTacBL: LauncherKneelActionsTacF
 		{
-			PlayerStand = "amovpercmTacsraswlnrdbl";
-			Up = "amovpercmTacsraswlnrdbl";
-			Stand = "amovpercmTacsraswlnrdbl";
+			PlayerStand = "AmovPercMtacSrasWlnrDbl";
+			Up = "AmovPercMtacSrasWlnrDbl";
+			Stand = "AmovPercMtacSrasWlnrDbl";
 		};
 		class LauncherKneelActionsTacB: LauncherKneelActionsTacF
 		{
-			PlayerStand = "amovpercmTacsraswlnrdb";
-			Up = "amovpercmTacsraswlnrdb";
-			Stand = "amovpercmTacsraswlnrdb";
+			PlayerStand = "AmovPercMtacSrasWlnrDb";
+			Up = "AmovPercMtacSrasWlnrDb";
+			Stand = "AmovPercMtacSrasWlnrDb";
 		};
 		class LauncherKneelActionsTacBR: LauncherKneelActionsTacF
 		{
-			Stand = "amovpercmTacsraswlnrdbr";
-			PlayerStand = "amovpercmTacsraswlnrdbr";
-			Up = "amovpercmTacsraswlnrdbr";
+			Stand = "AmovPercMtacSrasWlnrDbr";
+			PlayerStand = "AmovPercMtacSrasWlnrDbr";
+			Up = "AmovPercMtacSrasWlnrDbr";
 		};
 		class LauncherKneelActionsTacR: LauncherKneelActionsTacF
 		{
-			Stand = "amovpercmTacsraswlnrdr";
-			PlayerStand = "amovpercmTacsraswlnrdr";
-			Up = "amovpercmTacsraswlnrdr";
+			Stand = "AmovPercMtacSrasWlnrDr";
+			PlayerStand = "AmovPercMtacSrasWlnrDr";
+			Up = "AmovPercMtacSrasWlnrDr";
 		};
 		class LauncherKneelActionsTacFR: LauncherKneelActionsTacF
 		{
-			PlayerStand = "amovpercmTacsraswlnrdfr";
-			Up = "amovpercmTacsraswlnrdfr";
-			Stand = "amovpercmTacsraswlnrdfr";
+			PlayerStand = "AmovPercMtacSrasWlnrDfr";
+			Up = "AmovPercMtacSrasWlnrDfr";
+			Stand = "AmovPercMtacSrasWlnrDfr";
 		};
 		class LauncherKneelActionsWlkF: LauncherKneelActions
 		{
-			PlayerStand = "amovpercmwlksraswlnrdf";
-			Stand = "amovpercmwlksraswlnrdf";
-			Up = "amovpercmwlksraswlnrdf";
+			PlayerStand = "AmovPercMwlkSrasWlnrDf";
+			Stand = "AmovPercMwlkSrasWlnrDf";
+			Up = "AmovPercMwlkSrasWlnrDf";
 		};
 		class LauncherKneelActionsWlkFL: LauncherKneelActionsWlkF
 		{
-			PlayerStand = "amovpercmwlksraswlnrdfl";
-			Up = "amovpercmwlksraswlnrdfl";
-			Stand = "amovpercmwlksraswlnrdfl";
+			PlayerStand = "AmovPercMwlkSrasWlnrDfl";
+			Up = "AmovPercMwlkSrasWlnrDfl";
+			Stand = "AmovPercMwlkSrasWlnrDfl";
 		};
 		class LauncherKneelActionsWlkL: LauncherKneelActionsWlkF
 		{
-			Stand = "amovpercmwlksraswlnrdl";
-			PlayerStand = "amovpercmwlksraswlnrdl";
-			Up = "amovpercmwlksraswlnrdl";
+			Stand = "AmovPercMwlkSrasWlnrDl";
+			PlayerStand = "AmovPercMwlkSrasWlnrDl";
+			Up = "AmovPercMwlkSrasWlnrDl";
 		};
 		class LauncherKneelActionsWlkBL: LauncherKneelActionsWlkF
 		{
-			PlayerStand = "amovpercmwlksraswlnrdbl";
-			Up = "amovpercmwlksraswlnrdbl";
-			Stand = "amovpercmwlksraswlnrdbl";
+			PlayerStand = "AmovPercMwlkSrasWlnrDbl";
+			Up = "AmovPercMwlkSrasWlnrDbl";
+			Stand = "AmovPercMwlkSrasWlnrDbl";
 		};
 		class LauncherKneelActionsWlkB: LauncherKneelActionsWlkF
 		{
-			PlayerStand = "amovpercmwlksraswlnrdb";
-			Up = "amovpercmwlksraswlnrdb";
-			Stand = "amovpercmwlksraswlnrdb";
+			PlayerStand = "AmovPercMwlkSrasWlnrDb";
+			Up = "AmovPercMwlkSrasWlnrDb";
+			Stand = "AmovPercMwlkSrasWlnrDb";
 		};
 		class LauncherKneelActionsWlkBR: LauncherKneelActionsWlkF
 		{
-			Stand = "amovpercmwlksraswlnrdbr";
-			PlayerStand = "amovpercmwlksraswlnrdbr";
-			Up = "amovpercmwlksraswlnrdbr";
+			Stand = "AmovPercMwlkSrasWlnrDbr";
+			PlayerStand = "AmovPercMwlkSrasWlnrDbr";
+			Up = "AmovPercMwlkSrasWlnrDbr";
 		};
 		class LauncherKneelActionsWlkR: LauncherKneelActionsWlkF
 		{
-			Stand = "amovpercmwlksraswlnrdr";
-			PlayerStand = "amovpercmwlksraswlnrdr";
-			Up = "amovpercmwlksraswlnrdr";
+			Stand = "AmovPercMwlkSrasWlnrDr";
+			PlayerStand = "AmovPercMwlkSrasWlnrDr";
+			Up = "AmovPercMwlkSrasWlnrDr";
 		};
 		class LauncherKneelActionsWlkFR: LauncherKneelActionsWlkF
 		{
-			PlayerStand = "amovpercmwlksraswlnrdfr";
-			Up = "amovpercmwlksraswlnrdfr";
-			Stand = "amovpercmwlksraswlnrdfr";
+			PlayerStand = "AmovPercMwlkSrasWlnrDfr";
+			Up = "AmovPercMwlkSrasWlnrDfr";
+			Stand = "AmovPercMwlkSrasWlnrDfr";
 		};
 		class LauncherKneelRunFActions: LauncherKneelActions{};
 		class LauncherKneelRunBActions: LauncherKneelRunFActions{};
@@ -8020,10 +8140,10 @@ class CfgMovesBasic
 			PlayerCrouch = "AmovPknlMstpSrasWlnrDnon";
 			PlayerProne = "AmovPpneMstpSnonWnonDnon";
 			Down = "AmovPpneMstpSnonWnonDnon";
-			TurnL = "amovpercmstpsraswlnrdnon_turnl";
-			TurnLRelaxed = "amovpercmstpsraswlnrdnon_turnl";
-			TurnR = "amovpercmstpSraswlnrdnon_turnr";
-			TurnRRelaxed = "amovpercmstpSraswlnrdnon_turnr";
+			TurnL = "AmovPercMstpSrasWlnrDnon_turnL";
+			TurnLRelaxed = "AmovPercMstpSrasWlnrDnon_turnL";
+			TurnR = "AmovPercMstpSrasWlnrDnon_turnR";
+			TurnRRelaxed = "AmovPercMstpSrasWlnrDnon_turnR";
 			Stop = "AmovPercMstpSrasWlnrDnon";
 			WalkB = "AmovPercMwlkSrasWlnrDb";
 			WalkRB = "AmovPercMwlkSrasWlnrDbr";
@@ -8248,10 +8368,10 @@ class CfgMovesBasic
 			Combat = "AmovPpneMstpSrasWlnrDnon";
 			Stand = "AmovPercMstpSrasWrflDnon";
 			Up = "AmovPknlMstpSrasWlnrDnon";
-			TurnL = "amovpercmstpsraswlnrdnon_turnl";
-			TurnLRelaxed = "amovpercmstpsraswlnrdnon_turnl";
-			TurnR = "amovpercmstpSraswlnrdnon_turnr";
-			TurnRRelaxed = "amovpercmstpSraswlnrdnon_turnr";
+			TurnL = "AmovPercMstpSrasWlnrDnon_turnL";
+			TurnLRelaxed = "AmovPercMstpSrasWlnrDnon_turnL";
+			TurnR = "AmovPercMstpSrasWlnrDnon_turnR";
+			TurnRRelaxed = "AmovPercMstpSrasWlnrDnon_turnR";
 			Stop = "AmovPpneMstpSrasWlnrDnon";
 			WalkB = "AmovPpneMrunSrasWlnrDb";
 			WalkRB = "AmovPpneMrunSrasWlnrDbr";
@@ -8320,11 +8440,11 @@ class CfgMovesBasic
 		};
 		class LauncherStandLowStpActions: LauncherStandActions
 		{
-			Stop = "amovpercmstpSlowwlnrdnon";
-			TurnL = "amovpercmstpSlowwlnrdnon_turnl";
-			TurnR = "amovpercmstpSlowwlnrdnon_turnr";
-			TurnLRelaxed = "amovpercmstpSlowwlnrdnon_turnl";
-			TurnRRelaxed = "amovpercmstpSlowwlnrdnon_turnr";
+			Stop = "AmovPercMstpSlowWlnrDnon";
+			TurnL = "AmovPercMstpSlowWlnrDnon_turnL";
+			TurnR = "AmovPercMstpSlowWlnrDnon_turnR";
+			TurnLRelaxed = "AmovPercMstpSlowWlnrDnon_turnL";
+			TurnRRelaxed = "AmovPercMstpSlowWlnrDnon_turnR";
 			WalkF = "AmovPercMwlkSlowWlnrDf";
 			WalkLF = "AmovPercMwlkSlowWlnrDfl";
 			WalkRF = "AmovPercMwlkSlowWlnrDfr";
@@ -8341,8 +8461,8 @@ class CfgMovesBasic
 			PlayerWalkLB = "AmovPercMwlkSlowWlnrDbl";
 			PlayerWalkRB = "AmovPercMwlkSlowWlnrDbr";
 			PlayerWalkB = "AmovPercMwlkSlowWlnrDb";
-			PlayerStand = "amovpercmstpsraswlnrdnon";
-			FireNotPossible = "amovpercmstpsraswlnrdnon";
+			PlayerStand = "AmovPercMstpSrasWlnrDnon";
+			FireNotPossible = "AmovPercMstpSrasWlnrDnon";
 			SlowF = "AmovPercMwlkSlowWlnrDf";
 			SlowLF = "AmovPercMwlkSlowWlnrDfl";
 			SlowRF = "AmovPercMwlkSlowWlnrDfr";
@@ -8441,6 +8561,7 @@ class CfgMovesBasic
 			turnL = "AswmPercMstpSnonWnonDnon";
 			turnR = "AswmPercMstpSnonWnonDnon";
 			putDown = "AswmPercMstpSnonWnonDnon_AswmPercMstpSnonWnonDnon_putDown";
+			medic = "AswmPercMstpSnonWnonDnon_AswmPercMstpSnonWnonDnon_putDown";
 			WalkF = "AswmPercMwlkSnonWnonDf";
 			WalkLF = "AswmPercMwlkSnonWnonDfl";
 			WalkRF = "AswmPercMwlkSnonWnonDfr";
@@ -8500,8 +8621,11 @@ class CfgMovesBasic
 			stopSwim = "AmovPercMstpSnonWnonDnon";
 			swimUp = "AswmPercMstpSnonWnonDnon_goup";
 			swimDown = "AswmPercMstpSnonWnonDnon_goDown";
+			GetOutPara = "AswmPercMstpSnonWnonDnon";
 			upDegree = "ManPosSwimming";
 			limitFast = 2;
+			GetInBoat = "AmovPercMstpSnonWnonDnon_AcrgPknlMstpSnonWnonDnon_getInHigh";
+			GetOutBoat = "AcrgPknlMstpSnonWnonDnon_AmovPercMstpSrasWrflDnon_getOutHigh";
 		};
 		class SwimmingActionsRunF: SwimmingActions
 		{
@@ -8826,9 +8950,10 @@ class CfgMovesBasic
 			PrimaryWeapon = "AdvePercMstpSnonWrflDnon";
 			default = "AdvePercMstpSnonWnonDnon";
 			stopRelaxed = "AdvePercMstpSnonWnonDnon";
-			turnL = "AdvePercMstpSnonWnonDnon_turnl";
-			turnR = "AdvePercMstpSnonWnonDnon_turnr";
+			turnL = "AdvePercMstpSnonWnonDnon_turnL";
+			turnR = "AdvePercMstpSnonWnonDnon_turnR";
 			putDown = "AdvePercMstpSnonWnonDnon_AdvePercMstpSnonWnonDnon_putDown";
+			medic = "AdvePercMstpSnonWnonDnon_AdvePercMstpSnonWnonDnon_putDown";
 			WalkF = "AdvePercMwlkSnonWnonDf";
 			WalkLF = "AdvePercMwlkSnonWnonDfl";
 			WalkRF = "AdvePercMwlkSnonWnonDfr";
@@ -8888,12 +9013,17 @@ class CfgMovesBasic
 			stopDive = "AmovPercMstpSnonWnonDnon";
 			SurfaceDive = "AsdvPercMstpSnonWnonDnon";
 			BottomDive = "AbdvPercMstpSnonWnonDnon";
+			SurfaceSwim = "AsswPercMstpSnonWnonDnon";
+			BottomSwim = "AbswPercMstpSnonWnonDnon";
 			swimUp = "AdvePercMstpSnonWnonDnon_goup";
 			swimDown = "AdvePercMstpSnonWnonDnon_goDown";
 			GetInSDV = "AdvePercMstpSnonWnonDnon_GetInSDV";
 			GetOutSDV = "AdvePercMstpSnonWnonDnon_GetOutSDV";
+			GetOutPara = "AdvePercMstpSnonWnonDnon";
 			upDegree = "ManPosDiving";
 			limitFast = 3.2;
+			GetInBoat = "AmovPercMstpSnonWnonDnon_AcrgPknlMstpSnonWnonDnon_getInHigh";
+			GetOutBoat = "AcrgPknlMstpSnonWnonDnon_AmovPercMstpSrasWrflDnon_getOutHigh";
 		};
 		class DivingActionsGoingOut: DivingActions
 		{
@@ -9058,8 +9188,8 @@ class CfgMovesBasic
 			stop = "AdvePercMstpSnonWrflDnon";
 			default = "AdvePercMstpSnonWrflDnon";
 			stopRelaxed = "AdvePercMstpSnonWrflDnon";
-			turnL = "AdvePercMstpSnonWrflDnon_turnl";
-			turnR = "AdvePercMstpSnonWrflDnon_turnr";
+			turnL = "AdvePercMstpSnonWrflDnon_turnL";
+			turnR = "AdvePercMstpSnonWrflDnon_turnR";
 			putDown = "AdvePercMstpSnonWrflDnon_AdvePercMstpSnonWrflDnon_putDown";
 			WalkF = "AdvePercMwlkSnonWrflDf";
 			WalkLF = "AdvePercMwlkSnonWrflDfl";
@@ -9290,8 +9420,8 @@ class CfgMovesBasic
 			PrimaryWeapon = "AsdvPercMstpSnonWrflDnon";
 			default = "AsdvPercMstpSnonWnonDnon";
 			stopRelaxed = "AsdvPercMstpSnonWnonDnon";
-			turnL = "AsdvPercMstpSnonWnonDnon_turnl";
-			turnR = "AsdvPercMstpSnonWnonDnon_turnr";
+			turnL = "AsdvPercMstpSnonWnonDnon_turnL";
+			turnR = "AsdvPercMstpSnonWnonDnon_turnR";
 			putDown = "AsdvPercMstpSnonWnonDnon_AsdvPercMstpSnonWnonDnon_putDown";
 			WalkF = "AsdvPercMwlkSnonWnonDf";
 			WalkLF = "AsdvPercMwlkSnonWnonDfl";
@@ -9358,6 +9488,8 @@ class CfgMovesBasic
 			GetOutSDV = "AsdvPercMstpSnonWnonDnon_GetOutSDV";
 			upDegree = "ManPosSurfaceDiving";
 			limitFast = 3.2;
+			GetInBoat = "AmovPercMstpSnonWnonDnon_AcrgPknlMstpSnonWnonDnon_getInHigh";
+			GetOutBoat = "AcrgPknlMstpSnonWnonDnon_AmovPercMstpSrasWrflDnon_getOutHigh";
 		};
 		class SurfaceDivingActionsGoingOut: SurfaceDivingActions
 		{
@@ -9522,8 +9654,8 @@ class CfgMovesBasic
 			stop = "AsdvPercMstpSnonWrflDnon";
 			default = "AsdvPercMstpSnonWrflDnon";
 			stopRelaxed = "AsdvPercMstpSnonWrflDnon";
-			turnL = "AsdvPercMstpSnonWrflDnon_turnl";
-			turnR = "AsdvPercMstpSnonWrflDnon_turnr";
+			turnL = "AsdvPercMstpSnonWrflDnon_turnL";
+			turnR = "AsdvPercMstpSnonWrflDnon_turnR";
 			putDown = "AsdvPercMstpSnonWrflDnon_AsdvPercMstpSnonWrflDnon_putDown";
 			WalkF = "AsdvPercMwlkSnonWrflDf";
 			WalkLF = "AsdvPercMwlkSnonWrflDfl";
@@ -9754,8 +9886,8 @@ class CfgMovesBasic
 			PrimaryWeapon = "AbdvPercMstpSnonWrflDnon";
 			default = "AbdvPercMstpSnonWnonDnon";
 			stopRelaxed = "AbdvPercMstpSnonWnonDnon";
-			turnL = "AbdvPercMstpSnonWnonDnon_turnl";
-			turnR = "AbdvPercMstpSnonWnonDnon_turnr";
+			turnL = "AbdvPercMstpSnonWnonDnon_turnL";
+			turnR = "AbdvPercMstpSnonWnonDnon_turnR";
 			putDown = "AbdvPercMstpSnonWnonDnon_AbdvPercMstpSnonWnonDnon_putDown";
 			WalkF = "AbdvPercMwlkSnonWnonDf";
 			WalkLF = "AbdvPercMwlkSnonWnonDfl";
@@ -9822,6 +9954,8 @@ class CfgMovesBasic
 			GetOutSDV = "AbdvPercMstpSnonWnonDnon_GetOutSDV";
 			upDegree = "ManPosBottomDiving";
 			limitFast = 3.2;
+			GetInBoat = "AmovPercMstpSnonWnonDnon_AcrgPknlMstpSnonWnonDnon_getInHigh";
+			GetOutBoat = "AcrgPknlMstpSnonWnonDnon_AmovPercMstpSrasWrflDnon_getOutHigh";
 		};
 		class BottomDivingActionsGoingOut: BottomDivingActions
 		{
@@ -9986,8 +10120,8 @@ class CfgMovesBasic
 			stop = "AbdvPercMstpSnonWrflDnon";
 			default = "AbdvPercMstpSnonWrflDnon";
 			stopRelaxed = "AbdvPercMstpSnonWrflDnon";
-			turnL = "AbdvPercMstpSnonWrflDnon_turnl";
-			turnR = "AbdvPercMstpSnonWrflDnon_turnr";
+			turnL = "AbdvPercMstpSnonWrflDnon_turnL";
+			turnR = "AbdvPercMstpSnonWrflDnon_turnR";
 			putDown = "AbdvPercMstpSnonWrflDnon_AbdvPercMstpSnonWrflDnon_putDown";
 			WalkF = "AbdvPercMwlkSnonWrflDf";
 			WalkLF = "AbdvPercMwlkSnonWrflDfl";
@@ -10215,6 +10349,7 @@ class CfgMovesBasic
 		{
 			gestureGo[] = {"GestureGoBStand","Gesture"};
 			binocOn = "";
+			putDown = "AmovPercMstpSoptWbinDnon_AinvPercMstpSoptWbinDnon_Putdown";
 			down = "AmovPpneMstpSoptWbinDnon";
 			up = "AmovPknlMstpSoptWbinDnon";
 			stop = "AmovPercMstpSoptWbinDnon";
@@ -10291,7 +10426,7 @@ class CfgMovesBasic
 			AdjustR = "";
 			Diary = "";
 			Gear = "";
-			GetOver = "";
+			GetOver = "AovrPercMstpSoptWbinDf";
 		};
 		class BinocStandActionsWlkF: BinocStandActions
 		{
@@ -10397,6 +10532,7 @@ class CfgMovesBasic
 			binocOn = "";
 			down = "AmovPpneMstpSoptWbinDnon";
 			up = "AmovPercMstpSoptWbinDnon";
+			putDown = "AmovPknlMstpSoptWbinDnon_AinvPknlMstpSoptWbinDnon_Putdown";
 			stop = "AmovPknlMstpSoptWbinDnon";
 			stopRelaxed = "AmovPknlMstpSoptWbinDnon";
 			default = "AmovPknlMstpSoptWbinDnon";
@@ -10582,6 +10718,7 @@ class CfgMovesBasic
 			PlayerCrouch = "AmovPknlMstpSoptWbinDnon";
 			PlayerProne = "AmovPpneMstpSoptWbinDnon";
 			upDegree = "ManPosBinocLying";
+			putDown = "AmovPpneMstpSoptWbinDnon_AinvPpneMstpSoptWbinDnon_Putdown";
 			down = "AmovPercMstpSoptWbinDnon";
 			up = "AmovPknlMstpSoptWbinDnon";
 			TurnL = "AmovPpneMstpSoptWbinDnon_turnL";
@@ -10644,8 +10781,8 @@ class CfgMovesBasic
 			PlayerTactLB = "AmovPpneMwlkSoptWbinDbl";
 			PlayerTactRB = "AmovPpneMwlkSoptWbinDbr";
 			PlayerTactB = "AmovPpneMwlkSoptWbinDb";
-			EvasiveRight = "";
-			EvasiveLeft = "";
+			EvasiveRight = "AmovPpneMstpSoptWbinDnon_AmovPpneMevaSoptWbinDr";
+			EvasiveLeft = "AmovPpneMstpSoptWbinDnon_AmovPpneMevaSoptWbinDl";
 		};
 		class BinocProneActionsWlkF: BinocProneActions{};
 		class BinocProneActionsWlkFL: BinocProneActions{};
@@ -12572,7 +12709,7 @@ class CfgMovesBasic
 			Down = "";
 			Lying = "";
 			Stand = "";
-			Combat = "amovpercmstpsraswrfldnon";
+			Combat = "AmovPercMstpSrasWrflDnon";
 			Crouch = "";
 			CanNotMove = "";
 			Civil = "";
@@ -12622,6 +12759,13 @@ class CfgMovesBasic
 			medicStop = "AmovPpneMstpSrasWrflDnon";
 			medicStartUp = "AmovPpneMstpSrasWrflDnon";
 		};
+		class HealSelfLauncherActionBase: HealActionBase
+		{
+			Stop = "AmovPknlMstpSrasWlnrDnon";
+			StopRelaxed = "AmovPknlMstpSrasWlnrDnon";
+			medicStop = "AmovPknlMstpSrasWlnrDnon";
+			medicStartUp = "AmovPknlMstpSrasWlnrDnon";
+		};
 		class HealSelfPistolActionBase: HealActionBase
 		{
 			Stop = "AmovPknlMstpSrasWpstDnon";
@@ -12638,19 +12782,19 @@ class CfgMovesBasic
 		};
 		class HealSelfCivilActionBase: HealActionBase
 		{
-			Stop = "AmovPknlMstpsnonWnonDnon";
-			StopRelaxed = "AmovPknlMstpsnonWnonDnon";
-			medicStop = "AmovPknlMstpsnonWnonDnon";
-			medicStartUp = "AmovPknlMstpsnonWnonDnon";
-			Civil = "AmovPknlMstpsnonWnonDnon";
+			Stop = "AmovPknlMstpSnonWnonDnon";
+			StopRelaxed = "AmovPknlMstpSnonWnonDnon";
+			medicStop = "AmovPknlMstpSnonWnonDnon";
+			medicStartUp = "AmovPknlMstpSnonWnonDnon";
+			Civil = "AmovPknlMstpSnonWnonDnon";
 		};
 		class HealSelfCivilActionProne: HealSelfCivilActionBase
 		{
-			Stop = "AmovPpneMstpsnonWnonDnon";
-			StopRelaxed = "AmovPpneMstpsnonWnonDnon";
-			medicStop = "AmovPpneMstpsnonWnonDnon";
-			medicStartUp = "AmovPpneMstpsnonWnonDnon";
-			Civil = "AmovPpneMstpsnonWnonDnon";
+			Stop = "AmovPpneMstpSnonWnonDnon";
+			StopRelaxed = "AmovPpneMstpSnonWnonDnon";
+			medicStop = "AmovPpneMstpSnonWnonDnon";
+			medicStartUp = "AmovPpneMstpSnonWnonDnon";
+			Civil = "AmovPpneMstpSnonWnonDnon";
 		};
 		class HealActionBaseDr: HealActionBase
 		{
@@ -16108,7 +16252,7 @@ class CfgMovesBasic
 			Default = "AinvPercMstpSrasWrflDnon";
 			PlayerStand = "AmovPercMstpSrasWrflDnon";
 			Civil = "AinvPercMstpSnonWnonDnon";
-			HandGunOn = "AinvPercMstpSraswpstDnon";
+			HandGunOn = "AinvPercMstpSrasWpstDnon";
 		};
 		class RifleKneelActions_inv: RifleKneelLowActions
 		{
@@ -16117,7 +16261,7 @@ class CfgMovesBasic
 			Default = "AinvPknlMstpSrasWrflDnon";
 			PlayerCrouch = "AmovPknlMstpSrasWrflDnon";
 			Civil = "AinvPknlMstpSnonWnonDnon";
-			HandGunOn = "AinvPknlMstpSraswpstDnon";
+			HandGunOn = "AinvPknlMstpSrasWpstDnon";
 		};
 		class RifleProneActions_inv: RifleProneActions
 		{
@@ -16126,28 +16270,28 @@ class CfgMovesBasic
 			Default = "AinvPpneMstpSrasWrflDnon";
 			PlayerProne = "AmovPpneMstpSrasWrflDnon";
 			Civil = "AinvPpneMstpSnonWnonDnon";
-			HandGunOn = "AinvPpneMstpSraswpstDnon";
+			HandGunOn = "AinvPpneMstpSrasWpstDnon";
 		};
 		class PistolStandActions_inv: PistolStandActions
 		{
-			Stop = "AinvPercMstpSraswpstDnon";
-			StopRelaxed = "AinvPercMstpSraswpstDnon";
-			Default = "AinvPercMstpSraswpstDnon";
-			PlayerStand = "AmovPercMstpSraswpstDnon";
+			Stop = "AinvPercMstpSrasWpstDnon";
+			StopRelaxed = "AinvPercMstpSrasWpstDnon";
+			Default = "AinvPercMstpSrasWpstDnon";
+			PlayerStand = "AmovPercMstpSrasWpstDnon";
 			Civil = "AinvPercMstpSnonWnonDnon";
 		};
 		class PistolKneelActions_inv: PistolKneelActions
 		{
-			Stop = "AinvPknlMstpSraswpstDnon";
-			StopRelaxed = "AinvPknlMstpSraswpstDnon";
-			Default = "AinvPknlMstpSraswpstDnon";
+			Stop = "AinvPknlMstpSrasWpstDnon";
+			StopRelaxed = "AinvPknlMstpSrasWpstDnon";
+			Default = "AinvPknlMstpSrasWpstDnon";
 			Civil = "AinvPknlMstpSnonWnonDnon";
 		};
 		class PistolProneActions_inv: PistolProneActions
 		{
-			Stop = "AinvPpneMstpSraswpstDnon";
-			StopRelaxed = "AinvPpneMstpSraswpstDnon";
-			Default = "AinvPpneMstpSraswpstDnon";
+			Stop = "AinvPpneMstpSrasWpstDnon";
+			StopRelaxed = "AinvPpneMstpSrasWpstDnon";
+			Default = "AinvPpneMstpSrasWpstDnon";
 			PlayerProne = "AinvPpneMstpSnonWnonDnon";
 			Civil = "AmovPknlMstpSnonWnonDnon_gear";
 		};
@@ -16157,7 +16301,7 @@ class CfgMovesBasic
 			StopRelaxed = "AinvPercMstpSnonWnonDnon";
 			Default = "AinvPercMstpSnonWnonDnon";
 			PlayerStand = "AmovPercMstpSnonWnonDnon";
-			HandGunOn = "AinvPercMstpSraswpstDnon";
+			HandGunOn = "AinvPercMstpSrasWpstDnon";
 		};
 		class CivilKneelActions_inv: CivilKneelActions
 		{
@@ -16165,31 +16309,31 @@ class CfgMovesBasic
 			StopRelaxed = "AinvPknlMstpSnonWnonDnon";
 			Default = "AinvPknlMstpSnonWnonDnon";
 			PlayerCrouch = "AmovPknlMstpSnonWnonDnon";
-			HandGunOn = "AinvPknlMstpSraswpstDnon";
+			HandGunOn = "AinvPknlMstpSrasWpstDnon";
 		};
 		class CivilProneActions_inv: CivilProneActions
 		{
 			Stop = "AinvPpneMstpSnonWnonDnon";
 			StopRelaxed = "AinvPpneMstpSnonWnonDnon";
 			Default = "AinvPpneMstpSnonWnonDnon";
-			HandGunOn = "AinvPpneMstpSraswpstDnon";
+			HandGunOn = "AinvPpneMstpSrasWpstDnon";
 		};
 		class LauncherStandActions_inv: LauncherStandActions
 		{
-			Stop = "AinvPercMstpsraswlnrDnon";
-			StopRelaxed = "AinvPercMstpsraswlnrDnon";
-			Default = "AinvPercMstpsraswlnrDnon";
-			PlayerStand = "AmovPercMstpsraswlnrDnon";
+			Stop = "AinvPercMstpSrasWlnrDnon";
+			StopRelaxed = "AinvPercMstpSrasWlnrDnon";
+			Default = "AinvPercMstpSrasWlnrDnon";
+			PlayerStand = "AmovPercMstpSrasWlnrDnon";
 			Civil = "AinvPercMstpSnonWnonDnon";
-			HandGunOn = "AinvPercMstpSraswpstDnon";
+			HandGunOn = "AinvPercMstpSrasWpstDnon";
 		};
 		class LauncherKneelActions_inv: LauncherKneelActions
 		{
-			Stop = "AinvPknlMstpsraswlnrDnon";
-			StopRelaxed = "AinvPknlMstpsraswlnrDnon";
-			Default = "AinvPknlMstpsraswlnrDnon";
+			Stop = "AinvPknlMstpSrasWlnrDnon";
+			StopRelaxed = "AinvPknlMstpSrasWlnrDnon";
+			Default = "AinvPknlMstpSrasWlnrDnon";
 			Civil = "AinvPknlMstpSnonWnonDnon";
-			HandGunOn = "AinvPknlMstpSraswpstDnon";
+			HandGunOn = "AinvPknlMstpSrasWpstDnon";
 		};
 		class Acts_SittingJumpingSaluting_actions: RifleBaseLowStandActions
 		{
@@ -16233,6 +16377,14 @@ class CfgMovesBasic
 			Default = "Acts_ShowingTheRightWay_loop";
 			Combat = "Acts_ShowingTheRightWay_loop";
 		};
+		class Acts_CarFixingWheel_actions: RifleStandActions
+		{
+			Stop = "AmovPknlMstpSnonWnonDnon";
+			StopRelaxed = "AmovPknlMstpSnonWnonDnon";
+			Default = "Acts_carFixingWheel";
+			PlayerStand = "";
+			PrimaryWeapon = "AmovPknlMstpSlowWrflDnon";
+		};
 		class Acts_ShieldFromSun_actions: RifleLowStandActions
 		{
 			Stop = "Acts_ShieldFromSun_loop";
@@ -16253,6 +16405,1656 @@ class CfgMovesBasic
 			StopRelaxed = "Acts_UnconsciousStandUp_part1";
 			Combat = "Acts_UnconsciousStandUp_part1";
 			Default = "Acts_UnconsciousStandUp_part1";
+		};
+		class Acts_SittingWounded_actions: RifleLowStandActions
+		{
+			Stop = "Acts_SittingWounded_loop";
+			StopRelaxed = "Acts_SittingWounded_loop";
+			Combat = "Acts_SittingWounded_loop";
+			Default = "Acts_SittingWounded_loop";
+		};
+		class Acts_starterPistol_loop: PistolStandActions
+		{
+			Stop = "Acts_starterPistol_loop";
+			StopRelaxed = "Acts_starterPistol_loop";
+			Combat = "Acts_starterPistol_loop";
+			Default = "Acts_starterPistol_loop";
+		};
+		class Acts_Helicargo_actions: RifleLowSitActions
+		{
+			Stop = "Acts_HeliCargo_loop";
+			StopRelaxed = "Acts_HeliCargo_loop";
+			Default = "Acts_HeliCargo_loop";
+			Combat = "Acts_HeliCargo_loop";
+		};
+		class Acts_HelicargoTalking_actions: RifleLowSitActions
+		{
+			Stop = "Acts_HeliCargoTalking_loop";
+			StopRelaxed = "Acts_HeliCargoTalking_loop";
+			Default = "Acts_HeliCargoTalking_loop";
+			Combat = "Acts_HeliCargoTalking_loop";
+		};
+		class Acts_Kore_IdleNoWeapon_actions: RifleLowStandActions
+		{
+			Stop = "Acts_Kore_IdleNoWeapon_loop";
+			StopRelaxed = "Acts_Kore_IdleNoWeapon_loop";
+			Combat = "Acts_Kore_IdleNoWeapon_loop";
+			Default = "Acts_Kore_IdleNoWeapon_loop";
+		};
+		class Acts_Kore_TalkingOverRadio_actions: RifleLowStandActions
+		{
+			Stop = "Acts_Kore_TalkingOverRadio_loop";
+			StopRelaxed = "Acts_Kore_TalkingOverRadio_loop";
+			Combat = "Acts_Kore_TalkingOverRadio_loop";
+			Default = "Acts_Kore_TalkingOverRadio_loop";
+		};
+		class Acts_SittingTiedHands_actions: CivilSitActions
+		{
+			Stop = "Acts_AidlPsitMstpSsurWnonDnon_loop";
+			StopRelaxed = "Acts_AidlPsitMstpSsurWnonDnon_loop";
+			Combat = "Acts_AidlPsitMstpSsurWnonDnon_loop";
+			Default = "Acts_AidlPsitMstpSsurWnonDnon_loop";
+			agonyStart = "";
+			agonyStop = "";
+			medicStop = "";
+			medicStart = "";
+			medicStartUp = "";
+			grabCarry = "";
+			grabCarried = "";
+			grabDrag = "";
+			grabDragged = "";
+			carriedStill = "";
+			TurnLRelaxed = "";
+			TurnRRelaxed = "";
+			ReloadMagazine = "";
+			reloadGM6 = "";
+			ReloadMGun = "";
+			ReloadRPG = "";
+			ReloadMortar = "";
+			WalkF = "";
+			WalkLF = "";
+			WalkRF = "";
+			WalkL = "";
+			WalkR = "";
+			WalkLB = "";
+			WalkRB = "";
+			WalkB = "";
+			PlayerWalkF = "";
+			PlayerWalkLF = "";
+			PlayerWalkRF = "";
+			PlayerWalkR = "";
+			PlayerWalkL = "";
+			PlayerWalkLB = "";
+			PlayerWalkRB = "";
+			PlayerWalkB = "";
+			SlowF = "";
+			SlowLF = "";
+			SlowRF = "";
+			SlowL = "";
+			SlowR = "";
+			SlowLB = "";
+			SlowRB = "";
+			SlowB = "";
+			PlayerSlowF = "";
+			PlayerSlowLF = "";
+			PlayerSlowRF = "";
+			PlayerSlowL = "";
+			PlayerSlowR = "";
+			PlayerSlowLB = "";
+			PlayerSlowRB = "";
+			PlayerSlowB = "";
+			FastF = "";
+			FastLF = "";
+			FastRF = "";
+			FastL = "";
+			FastR = "";
+			FastLB = "";
+			FastRB = "";
+			FastB = "";
+			TactF = "";
+			TactLF = "";
+			TactRF = "";
+			TactL = "";
+			TactR = "";
+			TactLB = "";
+			TactB = "";
+			TactRB = "";
+			PlayerTactF = "";
+			PlayerTactLF = "";
+			PlayerTactRF = "";
+			PlayerTactR = "";
+			PlayerTactL = "";
+			PlayerTactLB = "";
+			PlayerTactRB = "";
+			PlayerTactB = "";
+			EvasiveLeft = "";
+			EvasiveRight = "";
+			startSwim = "";
+			surfaceSwim = "";
+			bottomSwim = "";
+			startDive = "";
+			SurfaceDive = "";
+			BottomDive = "";
+			Down = "";
+			Up = "";
+			PlayerCrouch = "";
+			PlayerProne = "";
+			Lying = "";
+			Stand = "";
+			Crouch = "";
+			CanNotMove = "";
+			Civil = "";
+			CivilLying = "";
+			FireNotPossible = "";
+			WeaponOn = "";
+			WeaponOff = "";
+			StrokeGun = "";
+			Salute = "";
+			SitDown = "";
+			saluteOff = "";
+			Surrender = "";
+			Gear = "";
+			BinocOn = "";
+			BinocOff = "";
+			PutDown = "";
+			Medic = "";
+			Treated = "";
+			LadderOnDown = "";
+			LadderOnUp = "";
+			GetInLow = "";
+			GetInMedium = "";
+			GetInVertical = "";
+			GetInHigh = "";
+			GetInSDV = "";
+			GetInHelicopterCargo = "";
+			GetInMRAP_01 = "";
+			GetOutMRAP_01 = "";
+			GetInMRAP_01_cargo = "";
+			GetOutMRAP_01_cargo = "";
+			GetOutHelicopterCargo = "";
+			GetOutLow = "";
+			GetOutMedium = "";
+			GetOutHigh = "";
+			GetOutHighZamak = "";
+			GetOutHighHemtt = "";
+			GetOutSDV = "";
+			GetInBoat = "";
+			GetOutBoat = "";
+			TakeFlag = "";
+			HandGunOn = "";
+			TestDriver = "";
+			TestDriverOut = "";
+			TestGunner = "";
+			Relax = "";
+			StartFreefall = "";
+			PrimaryWeapon = "";
+			SecondaryWeapon = "";
+			Binoculars = "";
+		};
+		class Acts_WarmUp_actions: RifleLowStandActions
+		{
+			Stop = "Acts_AidlPercMstpSlowWrflDnon_warmup_loop";
+			Default = "Acts_AidlPercMstpSlowWrflDnon_warmup_loop";
+			WalkF = "";
+			WalkLF = "";
+			WalkRF = "";
+			WalkL = "";
+			WalkR = "";
+			WalkLB = "";
+			WalkRB = "";
+			WalkB = "";
+			PlayerWalkF = "";
+			PlayerWalkLF = "";
+			PlayerWalkRF = "";
+			PlayerWalkL = "";
+			TurnL = "";
+			TurnR = "";
+			PlayerWalkR = "";
+			PlayerWalkLB = "";
+			PlayerWalkRB = "";
+			PlayerWalkB = "";
+			SlowF = "";
+			SlowLF = "";
+			SlowRF = "";
+			SlowL = "";
+			SlowR = "";
+			SlowLB = "";
+			SlowRB = "";
+			SlowB = "";
+			PlayerSlowF = "";
+			PlayerSlowLF = "";
+			PlayerSlowRF = "";
+			PlayerSlowL = "";
+			PlayerSlowR = "";
+			PlayerSlowLB = "";
+			PlayerSlowRB = "";
+			PlayerSlowB = "";
+			FastF = "";
+			FastLF = "";
+			FastRF = "";
+			FastL = "";
+			FastR = "";
+			FastLB = "";
+			FastRB = "";
+			FastB = "";
+			TactF = "";
+			TactLF = "";
+			TactRF = "";
+			TactL = "";
+			TactR = "";
+			TactLB = "";
+			TactRB = "";
+			TactB = "";
+			PlayerTactF = "";
+			PlayerTactLF = "";
+			PlayerTactRF = "";
+			PlayerTactL = "";
+			PlayerTactR = "";
+			PlayerTactLB = "";
+			PlayerTactRB = "";
+			PlayerTactB = "";
+			Down = "";
+			Up = "";
+			Stand = "";
+			Combat = "";
+			Gear = "";
+			HandGunOn = "";
+			PrimaryWeapon = "";
+			SecondaryWeapon = "";
+			Binoculars = "";
+			GetOver = "";
+			CivilLying = "";
+			Civil = "";
+			FireNotPossible = "";
+			upDegree = "ManPosNoWeapon";
+			PlayerCrouch = "";
+			PlayerProne = "";
+			SitDown = "";
+			Salute = "";
+			PutDown = "";
+			BinocOn = "";
+			BinocOff = "";
+			Medic = "";
+			MedicOther = "";
+			Treated = "";
+			LadderOnDown = "";
+			LadderOnUp = "";
+			Surrender = "";
+			saluteOff = "";
+			StrokeGun = "";
+			WeaponOff = "";
+			WeaponOn = "";
+			CanNotMove = "";
+			Crouch = "";
+			Lying = "";
+			startSwim = "";
+			surfaceSwim = "";
+			bottomSwim = "";
+			startDive = "";
+			SurfaceDive = "";
+			BottomDive = "";
+			TurnLRelaxed = "";
+			TurnRRelaxed = "";
+			dooraction = "";
+			agonyStart = "";
+			agonyStop = "";
+			medicStop = "";
+			medicStart = "";
+			medicStartUp = "";
+			medicStartRightSide = "";
+			grabCarry = "";
+			grabCarried = "";
+			grabDrag = "";
+			grabDragged = "";
+			carriedStill = "";
+			StopRelaxed = "";
+			StartFreefall = "";
+			Relax = "";
+			healedStop = "";
+			healedStart = "";
+		};
+		class FiringDrillsRifleStandActions: RifleStandActions
+		{
+			FDStart = "AmovPercMstpSrasWrflDnon";
+			PlayerWalkF = "AfdsPercMstpSrasWrflDnon";
+			PlayerWalkLF = "AfdsPercMstpSrasWrflDnon";
+			PlayerWalkRF = "AfdsPercMstpSrasWrflDnon";
+			PlayerWalkL = "AfdsPercMstpSrasWrflDnon";
+			PlayerWalkR = "AfdsPercMstpSrasWrflDnon";
+			PlayerWalkLB = "AfdsPercMstpSrasWrflDnon";
+			PlayerWalkRB = "AfdsPercMstpSrasWrflDnon";
+			PlayerWalkB = "AfdsPercMstpSrasWrflDnon";
+			PlayerSlowF = "AfdsPercMstpSrasWrflDnon";
+			PlayerSlowLF = "AfdsPercMstpSrasWrflDnon";
+			PlayerSlowRF = "AfdsPercMstpSrasWrflDnon";
+			PlayerSlowL = "AfdsPercMstpSrasWrflDnon";
+			PlayerSlowR = "AfdsPercMstpSrasWrflDnon";
+			PlayerSlowRB = "AfdsPercMstpSrasWrflDnon";
+			PlayerSlowLB = "AfdsPercMstpSrasWrflDnon";
+			PlayerSlowB = "AfdsPercMstpSrasWrflDnon";
+			PlayerTactF = "AfdsPercMstpSrasWrflDnon";
+			PlayerTactLF = "AfdsPercMstpSrasWrflDnon";
+			PlayerTactRF = "AfdsPercMstpSrasWrflDnon";
+			PlayerTactL = "AfdsPercMstpSrasWrflDnon";
+			PlayerTactR = "AfdsPercMstpSrasWrflDnon";
+			PlayerTactLB = "AfdsPercMstpSrasWrflDnon";
+			PlayerTactRB = "AfdsPercMstpSrasWrflDnon";
+			PlayerTactB = "AfdsPercMstpSrasWrflDnon";
+			Default = "AfdsPercMstpSrasWrflDnon";
+			PrimaryWeapon = "AfdsPercMstpSrasWrflDnon";
+			Stand = "AfdsPercMstpSlowWrflDnon";
+			Stop = "AfdsPercMstpSrasWrflDnon";
+			Combat = "AfdsPercMstpSrasWrflDnon";
+			HandGunOn = "AfdsPercMstpSrasWpstDnon";
+			Up = "AfdsPknlMstpSrasWrflDnon";
+			Down = "AfdsPpneMstpSrasWrflDnon";
+			TurnL = "AfdsPercMstpSrasWrflDnon_turnL";
+			TurnR = "AfdsPercMstpSrasWrflDnon_turnR";
+			WalkF = "AfdsPercMstpSrasWrflDnon";
+			WalkLF = "AfdsPercMstpSrasWrflDnon";
+			WalkRF = "AfdsPercMstpSrasWrflDnon";
+			WalkL = "AfdsPercMstpSrasWrflDnon";
+			WalkR = "AfdsPercMstpSrasWrflDnon";
+			WalkLB = "AfdsPercMstpSrasWrflDnon";
+			WalkRB = "AfdsPercMstpSrasWrflDnon";
+			WalkB = "AfdsPercMstpSrasWrflDnon";
+			SlowF = "AfdsPercMstpSrasWrflDnon";
+			SlowLF = "AfdsPercMstpSrasWrflDnon";
+			SlowRF = "AfdsPercMstpSrasWrflDnon";
+			SlowL = "AfdsPercMstpSrasWrflDnon";
+			SlowR = "AfdsPercMstpSrasWrflDnon";
+			SlowLB = "AfdsPercMstpSrasWrflDnon";
+			SlowRB = "AfdsPercMstpSrasWrflDnon";
+			SlowB = "AfdsPercMstpSrasWrflDnon";
+			FastF = "AfdsPercMstpSrasWrflDnon";
+			FastLF = "AfdsPercMstpSrasWrflDnon";
+			FastRF = "AfdsPercMstpSrasWrflDnon";
+			FastL = "AfdsPercMstpSrasWrflDnon";
+			FastR = "AfdsPercMstpSrasWrflDnon";
+			FastLB = "AfdsPercMstpSrasWrflDnon";
+			FastRB = "AfdsPercMstpSrasWrflDnon";
+			FastB = "AfdsPercMstpSrasWrflDnon";
+			TactF = "AfdsPercMstpSrasWrflDnon";
+			TactLF = "AfdsPercMstpSrasWrflDnon";
+			TactRF = "AfdsPercMstpSrasWrflDnon";
+			TactL = "AfdsPercMstpSrasWrflDnon";
+			TactR = "AfdsPercMstpSrasWrflDnon";
+			TactLB = "AfdsPercMstpSrasWrflDnon";
+			TactRB = "AfdsPercMstpSrasWrflDnon";
+			TactB = "AfdsPercMstpSrasWrflDnon";
+			Lying = "AfdsPpneMstpSrasWrflDnon";
+			Crouch = "AfdsPknlMstpSrasWrflDnon";
+			Gear = "AfdsPercMstpSrasWrflDnon_inv";
+			Civil = "AfdsPercMstpSnonWnonDnon";
+			CivilLying = "AfdsPpneMstpSnonWnonDnon";
+			EvasiveLeft = "AfdsPercMstpSrasWrflDnon";
+			EvasiveRight = "AfdsPercMstpSrasWrflDnon";
+			GetOver = "";
+			Binoculars = "AfdsPercMstpSoptWbinDnon";
+			AdjustF = "";
+			AdjustB = "";
+			AdjustL = "";
+			AdjustR = "";
+			FireNotPossible = "AfdsPercMstpSrasWrflDnon";
+		};
+		class FiringDrillsRifleLowStandActions: FiringDrillsRifleStandActions
+		{
+			Stop = "AfdsPercMstpSlowWrflDnon";
+			Default = "AfdsPercMstpSlowWrflDnon";
+			Up = "AfdsPknlMstpSlowWrflDnon";
+			FDStart = "AmovPercMstpSlowWrflDnon";
+			Crouch = "AfdsPknlMstpSlowWrflDnon";
+			Gear = "AfdsPercMstpSlowWrflDnon_inv";
+			upDegree = "ManPosStand";
+			Stand = "AfdsPercMstpSrasWrflDnon";
+			WalkF = "AfdsPercMstpSlowWrflDnon";
+			WalkLF = "AfdsPercMstpSlowWrflDnon";
+			WalkRF = "AfdsPercMstpSlowWrflDnon";
+			WalkL = "AfdsPercMstpSlowWrflDnon";
+			WalkR = "AfdsPercMstpSlowWrflDnon";
+			WalkLB = "AfdsPercMstpSlowWrflDnon";
+			WalkRB = "AfdsPercMstpSlowWrflDnon";
+			WalkB = "AfdsPercMstpSlowWrflDnon";
+			PlayerWalkF = "AfdsPercMstpSlowWrflDnon";
+			PlayerWalkLF = "AfdsPercMstpSlowWrflDnon";
+			PlayerWalkRF = "AfdsPercMstpSlowWrflDnon";
+			PlayerWalkL = "AfdsPercMstpSlowWrflDnon";
+			PlayerWalkR = "AfdsPercMstpSlowWrflDnon";
+			PlayerWalkLB = "AfdsPercMstpSlowWrflDnon";
+			PlayerWalkRB = "AfdsPercMstpSlowWrflDnon";
+			PlayerWalkB = "AfdsPercMstpSlowWrflDnon";
+			SlowF = "AfdsPercMstpSlowWrflDnon";
+			SlowLF = "AfdsPercMstpSlowWrflDnon";
+			SlowRF = "AfdsPercMstpSlowWrflDnon";
+			SlowL = "AfdsPercMstpSlowWrflDnon";
+			SlowR = "AfdsPercMstpSlowWrflDnon";
+			SlowLB = "AfdsPercMstpSlowWrflDnon";
+			SlowRB = "AfdsPercMstpSlowWrflDnon";
+			SlowB = "AfdsPercMstpSlowWrflDnon";
+			PlayerSlowF = "AfdsPercMstpSlowWrflDnon";
+			PlayerSlowLF = "AfdsPercMstpSlowWrflDnon";
+			PlayerSlowRF = "AfdsPercMstpSlowWrflDnon";
+			PlayerSlowL = "AfdsPercMstpSlowWrflDnon";
+			PlayerSlowR = "AfdsPercMstpSlowWrflDnon";
+			PlayerSlowLB = "AfdsPercMstpSlowWrflDnon";
+			PlayerSlowRB = "AfdsPercMstpSlowWrflDnon";
+			PlayerSlowB = "AfdsPercMstpSlowWrflDnon";
+			FastF = "AfdsPercMstpSlowWrflDnon";
+			FastLF = "AfdsPercMstpSlowWrflDnon";
+			FastRF = "AfdsPercMstpSlowWrflDnon";
+			FastL = "AfdsPercMstpSlowWrflDnon";
+			FastR = "AfdsPercMstpSlowWrflDnon";
+			FastLB = "AfdsPercMstpSlowWrflDnon";
+			FastRB = "AfdsPercMstpSlowWrflDnon";
+			FastB = "AfdsPercMstpSlowWrflDnon";
+			TactF = "AfdsPercMstpSlowWrflDnon";
+			TactLF = "AfdsPercMstpSlowWrflDnon";
+			TactRF = "AfdsPercMstpSlowWrflDnon";
+			TactL = "AfdsPercMstpSlowWrflDnon";
+			TactR = "AfdsPercMstpSlowWrflDnon";
+			TactLB = "AfdsPercMstpSlowWrflDnon";
+			TactRB = "AfdsPercMstpSlowWrflDnon";
+			TactB = "AfdsPercMstpSlowWrflDnon";
+			PlayerTactF = "AfdsPercMstpSlowWrflDnon";
+			PlayerTactLF = "AfdsPercMstpSlowWrflDnon";
+			PlayerTactRF = "AfdsPercMstpSlowWrflDnon";
+			PlayerTactL = "AfdsPercMstpSlowWrflDnon";
+			PlayerTactR = "AfdsPercMstpSlowWrflDnon";
+			PlayerTactLB = "AfdsPercMstpSlowWrflDnon";
+			PlayerTactRB = "AfdsPercMstpSlowWrflDnon";
+			PlayerTactB = "AfdsPercMstpSlowWrflDnon";
+			EvasiveLeft = "AfdsPercMstpSlowWrflDnon";
+			EvasiveRight = "AfdsPercMstpSlowWrflDnon";
+			TurnL = "AfdsPercMstpSlowWrflDnon_turnL";
+			TurnR = "AfdsPercMstpSlowWrflDnon_turnR";
+		};
+		class FiringDrillsRifleKneelActions: RifleKneelActions
+		{
+			GetOver = "";
+			PlayerWalkF = "AfdsPknlMstpSrasWrflDnon";
+			PlayerWalkLF = "AfdsPknlMstpSrasWrflDnon";
+			PlayerWalkRF = "AfdsPknlMstpSrasWrflDnon";
+			PlayerWalkL = "AfdsPknlMstpSrasWrflDnon";
+			PlayerWalkR = "AfdsPknlMstpSrasWrflDnon";
+			PlayerWalkLB = "AfdsPknlMstpSrasWrflDnon";
+			PlayerWalkRB = "AfdsPknlMstpSrasWrflDnon";
+			PlayerWalkB = "AfdsPknlMstpSrasWrflDnon";
+			PlayerSlowF = "AfdsPknlMstpSrasWrflDnon";
+			PlayerSlowLF = "AfdsPknlMstpSrasWrflDnon";
+			PlayerSlowRF = "AfdsPknlMstpSrasWrflDnon";
+			PlayerSlowL = "AfdsPknlMstpSrasWrflDnon";
+			PlayerSlowR = "AfdsPknlMstpSrasWrflDnon";
+			PlayerSlowLB = "AfdsPknlMstpSrasWrflDnon";
+			PlayerSlowRB = "AfdsPknlMstpSrasWrflDnon";
+			PlayerSlowB = "AfdsPknlMstpSrasWrflDnon";
+			Stop = "AfdsPknlMstpSrasWrflDnon";
+			Stand = "AfdsPknlMstpSlowWrflDnon";
+			Combat = "AfdsPknlMstpSrasWrflDnon";
+			FDStart = "AmovPknlMstpSrasWrflDnon";
+			HandGunOn = "AfdsPknlMstpSrasWpstDnon";
+			Up = "AfdsPercMstpSrasWrflDnon";
+			Down = "AfdsPpneMstpSrasWrflDnon";
+			Default = "AfdsPknlMstpSrasWrflDnon";
+			TurnL = "AfdsPknlMstpSrasWrflDnon_turnL";
+			TurnR = "AfdsPknlMstpSrasWrflDnon_turnR";
+			WalkF = "AfdsPknlMstpSrasWrflDnon";
+			WalkLF = "AfdsPknlMstpSrasWrflDnon";
+			WalkRF = "AfdsPknlMstpSrasWrflDnon";
+			WalkL = "AfdsPknlMstpSrasWrflDnon";
+			WalkR = "AfdsPknlMstpSrasWrflDnon";
+			WalkLB = "AfdsPknlMstpSrasWrflDnon";
+			WalkRB = "AfdsPknlMstpSrasWrflDnon";
+			WalkB = "AfdsPknlMstpSrasWrflDnon";
+			SlowF = "AfdsPknlMstpSrasWrflDnon";
+			SlowRF = "AfdsPknlMstpSrasWrflDnon";
+			SlowLF = "AfdsPknlMstpSrasWrflDnon";
+			SlowR = "AfdsPknlMstpSrasWrflDnon";
+			SlowL = "AfdsPknlMstpSrasWrflDnon";
+			SlowLB = "AfdsPknlMstpSrasWrflDnon";
+			SlowRB = "AfdsPknlMstpSrasWrflDnon";
+			SlowB = "AfdsPknlMstpSrasWrflDnon";
+			FastF = "AfdsPknlMstpSrasWrflDnon";
+			FastLF = "AfdsPknlMstpSrasWrflDnon";
+			FastL = "AfdsPknlMstpSrasWrflDnon";
+			FastRF = "AfdsPknlMstpSrasWrflDnon";
+			FastR = "AfdsPknlMstpSrasWrflDnon";
+			FastLB = "AfdsPknlMstpSrasWrflDnon";
+			FastRB = "AfdsPknlMstpSrasWrflDnon";
+			FastB = "AfdsPknlMstpSrasWrflDnon";
+			TactF = "AfdsPknlMstpSrasWrflDnon";
+			TactLF = "AfdsPknlMstpSrasWrflDnon";
+			TactRF = "AfdsPknlMstpSrasWrflDnon";
+			TactL = "AfdsPknlMstpSrasWrflDnon";
+			TactR = "AfdsPknlMstpSrasWrflDnon";
+			TactLB = "AfdsPknlMstpSrasWrflDnon";
+			TactRB = "AfdsPknlMstpSrasWrflDnon";
+			TactB = "AfdsPknlMstpSrasWrflDnon";
+			PlayerTactF = "AfdsPknlMstpSrasWrflDnon";
+			PlayerTactLF = "AfdsPknlMstpSrasWrflDnon";
+			PlayerTactRF = "AfdsPknlMstpSrasWrflDnon";
+			PlayerTactL = "AfdsPknlMstpSrasWrflDnon";
+			PlayerTactR = "AfdsPknlMstpSrasWrflDnon";
+			PlayerTactLB = "AfdsPknlMstpSrasWrflDnon";
+			PlayerTactRB = "AfdsPknlMstpSrasWrflDnon";
+			PlayerTactB = "AfdsPknlMstpSrasWrflDnon";
+			PlayerStand = "AfdsPercMstpSrasWrflDnon";
+			PlayerProne = "AfdsPpneMstpSrasWrflDnon";
+			Lying = "AfdsPpneMstpSrasWrflDnon";
+			Crouch = "AfdsPknlMstpSrasWrflDnon";
+			EvasiveLeft = "AfdsPknlMstpSrasWrflDnon";
+			EvasiveRight = "AfdsPknlMstpSrasWrflDnon";
+			Civil = "AfdsPknlMstpSnonWnonDnon";
+			CivilLying = "AfdsPpneMstpSnonWnonDnon";
+			Gear = "AfdsPknlMstpSrasWrflDnon_inv";
+			PrimaryWeapon = "AfdsPknlMstpSrasWrflDnon";
+			Binoculars = "AfdsPknlMstpSoptWbinDnon";
+			AdjustF = "";
+			AdjustB = "";
+			AdjustL = "";
+			AdjustR = "";
+			FireNotPossible = "AfdsPknlMstpSrasWrflDnon";
+		};
+		class FiringDrillsRifleLowKneelActions: FiringDrillsRifleKneelActions
+		{
+			Stop = "AfdsPknlMstpSlowWrflDnon";
+			Default = "AfdsPknlMstpSlowWrflDnon";
+			Combat = "AfdsPknlMstpSrasWrflDnon";
+			Up = "AfdsPercMstpSlowWrflDnon";
+			PlayerStand = "AfdsPercMstpSlowWrflDnon";
+			FDStart = "AmovPknlMstpSlowWrflDnon";
+			TurnL = "AfdsPknlMstpSlowWrflDnon_turnL";
+			TurnR = "AfdsPknlMstpSlowWrflDnon_turnR";
+			Stand = "AfdsPknlMstpSrasWrflDnon";
+			WalkF = "AfdsPknlMstpSlowWrflDnon";
+			WalkLF = "AfdsPknlMstpSlowWrflDnon";
+			WalkRF = "AfdsPknlMstpSlowWrflDnon";
+			WalkL = "AfdsPknlMstpSlowWrflDnon";
+			WalkR = "AfdsPknlMstpSlowWrflDnon";
+			WalkLB = "AfdsPknlMstpSlowWrflDnon";
+			WalkRB = "AfdsPknlMstpSlowWrflDnon";
+			WalkB = "AfdsPknlMstpSlowWrflDnon";
+			PlayerWalkF = "AfdsPknlMstpSlowWrflDnon";
+			PlayerWalkLF = "AfdsPknlMstpSlowWrflDnon";
+			PlayerWalkRF = "AfdsPknlMstpSlowWrflDnon";
+			PlayerWalkL = "AfdsPknlMstpSlowWrflDnon";
+			PlayerWalkR = "AfdsPknlMstpSlowWrflDnon";
+			PlayerWalkLB = "AfdsPknlMstpSlowWrflDnon";
+			PlayerWalkRB = "AfdsPknlMstpSlowWrflDnon";
+			PlayerWalkB = "AfdsPknlMstpSlowWrflDnon";
+			SlowF = "AfdsPknlMstpSlowWrflDnon";
+			SlowLF = "AfdsPknlMstpSlowWrflDnon";
+			SlowRF = "AfdsPknlMstpSlowWrflDnon";
+			SlowL = "AfdsPknlMstpSlowWrflDnon";
+			SlowR = "AfdsPknlMstpSlowWrflDnon";
+			SlowLB = "AfdsPknlMstpSlowWrflDnon";
+			SlowRB = "AfdsPknlMstpSlowWrflDnon";
+			SlowB = "AfdsPknlMstpSlowWrflDnon";
+			PlayerSlowF = "AfdsPknlMstpSlowWrflDnon";
+			PlayerSlowLF = "AfdsPknlMstpSlowWrflDnon";
+			PlayerSlowRF = "AfdsPknlMstpSlowWrflDnon";
+			PlayerSlowL = "AfdsPknlMstpSlowWrflDnon";
+			PlayerSlowR = "AfdsPknlMstpSlowWrflDnon";
+			PlayerSlowLB = "AfdsPknlMstpSlowWrflDnon";
+			PlayerSlowRB = "AfdsPknlMstpSlowWrflDnon";
+			PlayerSlowB = "AfdsPknlMstpSlowWrflDnon";
+			FastF = "AfdsPknlMstpSlowWrflDnon";
+			FastLF = "AfdsPknlMstpSlowWrflDnon";
+			FastRF = "AfdsPknlMstpSlowWrflDnon";
+			FastL = "AfdsPknlMstpSlowWrflDnon";
+			FastR = "AfdsPknlMstpSlowWrflDnon";
+			FastLB = "AfdsPknlMstpSlowWrflDnon";
+			FastRB = "AfdsPknlMstpSlowWrflDnon";
+			FastB = "AfdsPknlMstpSlowWrflDnon";
+			TactF = "AfdsPknlMstpSlowWrflDnon";
+			TactLF = "AfdsPknlMstpSlowWrflDnon";
+			TactRF = "AfdsPknlMstpSlowWrflDnon";
+			TactL = "AfdsPknlMstpSlowWrflDnon";
+			TactR = "AfdsPknlMstpSlowWrflDnon";
+			TactLB = "AfdsPknlMstpSlowWrflDnon";
+			TactRB = "AfdsPknlMstpSlowWrflDnon";
+			TactB = "AfdsPknlMstpSlowWrflDnon";
+			PlayerTactF = "AfdsPknlMstpSlowWrflDnon";
+			PlayerTactLF = "AfdsPknlMstpSlowWrflDnon";
+			PlayerTactRF = "AfdsPknlMstpSlowWrflDnon";
+			PlayerTactL = "AfdsPknlMstpSlowWrflDnon";
+			PlayerTactR = "AfdsPknlMstpSlowWrflDnon";
+			PlayerTactLB = "AfdsPknlMstpSlowWrflDnon";
+			PlayerTactRB = "AfdsPknlMstpSlowWrflDnon";
+			PlayerTactB = "AfdsPknlMstpSlowWrflDnon";
+			EvasiveLeft = "AfdsPknlMstpSlowWrflDnon";
+			EvasiveRight = "AfdsPknlMstpSlowWrflDnon";
+		};
+		class FiringDrillsRifleProneActions: RifleProneActions
+		{
+			PlayerWalkF = "AfdsPpneMstpSrasWrflDnon";
+			PlayerWalkLF = "AfdsPpneMstpSrasWrflDnon";
+			PlayerWalkRF = "AfdsPpneMstpSrasWrflDnon";
+			PlayerWalkL = "AfdsPpneMstpSrasWrflDnon";
+			PlayerWalkR = "AfdsPpneMstpSrasWrflDnon";
+			PlayerWalkLB = "AfdsPpneMstpSrasWrflDnon";
+			PlayerWalkRB = "AfdsPpneMstpSrasWrflDnon";
+			PlayerWalkB = "AfdsPpneMstpSrasWrflDnon";
+			PlayerSlowF = "AfdsPpneMstpSrasWrflDnon";
+			PlayerSlowLF = "AfdsPpneMstpSrasWrflDnon";
+			PlayerSlowRF = "AfdsPpneMstpSrasWrflDnon";
+			PlayerSlowL = "AfdsPpneMstpSrasWrflDnon";
+			PlayerSlowR = "AfdsPpneMstpSrasWrflDnon";
+			PlayerSlowLB = "AfdsPpneMstpSrasWrflDnon";
+			PlayerSlowRB = "AfdsPpneMstpSrasWrflDnon";
+			PlayerSlowB = "AfdsPpneMstpSrasWrflDnon";
+			PlayerTactF = "AfdsPpneMstpSrasWrflDnon";
+			PlayerTactLF = "AfdsPpneMstpSrasWrflDnon";
+			PlayerTactRF = "AfdsPpneMstpSrasWrflDnon";
+			PlayerTactL = "AfdsPpneMstpSrasWrflDnon";
+			PlayerTactLB = "AfdsPpneMstpSrasWrflDnon";
+			PlayerTactR = "AfdsPpneMstpSrasWrflDnon";
+			PlayerTactRB = "AfdsPpneMstpSrasWrflDnon";
+			PlayerTactB = "AfdsPpneMstpSrasWrflDnon";
+			Stop = "AfdsPpneMstpSrasWrflDnon";
+			Stand = "AfdsPercMstpSlowWrflDnon";
+			Combat = "AfdsPercMstpSrasWrflDnon";
+			TurnL = "AfdsPpneMstpSrasWrflDnon_turnL";
+			TurnR = "AfdsPpneMstpSrasWrflDnon_turnR";
+			FDStart = "AmovPpneMstpSrasWrflDnon";
+			WalkF = "AfdsPpneMstpSrasWrflDnon";
+			WalkLF = "AfdsPpneMstpSrasWrflDnon";
+			WalkRF = "AfdsPpneMstpSrasWrflDnon";
+			WalkL = "AfdsPpneMstpSrasWrflDnon";
+			WalkR = "AfdsPpneMstpSrasWrflDnon";
+			WalkLB = "AfdsPpneMstpSrasWrflDnon";
+			WalkRB = "AfdsPpneMstpSrasWrflDnon";
+			WalkB = "AfdsPpneMstpSrasWrflDnon";
+			SlowLF = "AfdsPpneMstpSrasWrflDnon";
+			SlowF = "AfdsPpneMstpSrasWrflDnon";
+			SlowRF = "AfdsPpneMstpSrasWrflDnon";
+			SlowL = "AfdsPpneMstpSrasWrflDnon";
+			SlowR = "AfdsPpneMstpSrasWrflDnon";
+			SlowLB = "AfdsPpneMstpSrasWrflDnon";
+			SlowRB = "AfdsPpneMstpSrasWrflDnon";
+			SlowB = "AfdsPpneMstpSrasWrflDnon";
+			FastF = "AfdsPpneMstpSrasWrflDnon";
+			FastLF = "AfdsPpneMstpSrasWrflDnon";
+			FastRF = "AfdsPpneMstpSrasWrflDnon";
+			FastL = "AfdsPpneMstpSrasWrflDnon";
+			FastR = "AfdsPpneMstpSrasWrflDnon";
+			FastLB = "AfdsPpneMstpSrasWrflDnon";
+			FastRB = "AfdsPpneMstpSrasWrflDnon";
+			FastB = "AfdsPpneMstpSrasWrflDnon";
+			TactF = "AfdsPpneMstpSrasWrflDnon";
+			TactLF = "AfdsPpneMstpSrasWrflDnon";
+			TactRF = "AfdsPpneMstpSrasWrflDnon";
+			TactL = "AfdsPpneMstpSrasWrflDnon";
+			TactR = "AfdsPpneMstpSrasWrflDnon";
+			TactLB = "AfdsPpneMstpSrasWrflDnon";
+			TactRB = "AfdsPpneMstpSrasWrflDnon";
+			TactB = "AfdsPpneMstpSrasWrflDnon";
+			Up = "AfdsPknlMstpSrasWrflDnon";
+			Down = "AfdsPercMstpSrasWrflDnon";
+			PlayerStand = "AfdsPercMstpSrasWrflDnon";
+			PlayerCrouch = "AfdsPknlMstpSrasWrflDnon";
+			Crouch = "AfdsPknlMstpSrasWrflDnon";
+			HandGunOn = "AfdsPpneMstpSrasWpstDnon";
+			EvasiveLeft = "AfdsPpneMstpSrasWrflDnon";
+			EvasiveRight = "AfdsPpneMstpSrasWrflDnon";
+			Civil = "AfdsPercMstpSnonWnonDnon";
+			CivilLying = "AfdsPpneMstpSnonWnonDnon";
+			Default = "AfdsPpneMstpSrasWrflDnon";
+			Lying = "AfdsPpneMstpSrasWrflDnon";
+			PrimaryWeapon = "AfdsPpneMstpSrasWrflDnon";
+			Gear = "AfdsPpneMstpSrasWrflDnon_inv";
+			Binoculars = "AfdsPpneMstpSoptWbinDnon";
+			AdjustF = "";
+			AdjustB = "";
+			AdjustL = "";
+			AdjustR = "";
+			FireNotPossible = "AfdsPpneMstpSrasWrflDnon";
+		};
+		class FiringDrillsPistolStandActions: PistolStandActions
+		{
+			PrimaryWeapon = "AfdsPercMstpSrasWrflDnon";
+			Default = "AfdsPercMstpSrasWpstDnon";
+			Combat = "AfdsPercMstpSrasWrflDnon";
+			Stand = "AfdsPercMstpSlowWpstDnon";
+			Stop = "AfdsPercMstpSrasWpstDnon";
+			Up = "AfdsPknlMstpSrasWpstDnon";
+			Down = "AfdsPpneMstpSrasWpstDnon";
+			FDStart = "AmovPercMstpSrasWpstDnon";
+			TurnL = "AfdsPercMstpSrasWpstDnon_turnL";
+			TurnR = "AfdsPercMstpSrasWpstDnon_turnR";
+			HandGunOn = "AfdsPercMstpSrasWrflDnon";
+			PlayerStand = "AfdsPercMstpSlowWpstDnon";
+			PlayerCrouch = "AfdsPknlMstpSrasWpstDnon";
+			PlayerProne = "AfdsPpneMstpSrasWpstDnon";
+			Crouch = "AfdsPknlMstpSrasWpstDnon";
+			GetOver = "";
+			Civil = "AfdsPercMstpSnonWnonDnon";
+			CivilLying = "AfdsPpneMstpSnonWnonDnon";
+			Lying = "AfdsPpneMstpSrasWpstDnon";
+			WalkF = "AfdsPercMstpSrasWpstDnon";
+			WalkLF = "AfdsPercMstpSrasWpstDnon";
+			WalkRF = "AfdsPercMstpSrasWpstDnon";
+			WalkL = "AfdsPercMstpSrasWpstDnon";
+			WalkR = "AfdsPercMstpSrasWpstDnon";
+			WalkLB = "AfdsPercMstpSrasWpstDnon";
+			WalkRB = "AfdsPercMstpSrasWpstDnon";
+			WalkB = "AfdsPercMstpSrasWpstDnon";
+			PlayerWalkF = "AfdsPercMstpSrasWpstDnon";
+			PlayerWalkLF = "AfdsPercMstpSrasWpstDnon";
+			PlayerWalkRF = "AfdsPercMstpSrasWpstDnon";
+			PlayerWalkL = "AfdsPercMstpSrasWpstDnon";
+			PlayerWalkR = "AfdsPercMstpSrasWpstDnon";
+			PlayerWalkLB = "AfdsPercMstpSrasWpstDnon";
+			PlayerWalkRB = "AfdsPercMstpSrasWpstDnon";
+			PlayerWalkB = "AfdsPercMstpSrasWpstDnon";
+			SlowF = "AfdsPercMstpSrasWpstDnon";
+			SlowLF = "AfdsPercMstpSrasWpstDnon";
+			SlowRF = "AfdsPercMstpSrasWpstDnon";
+			SlowL = "AfdsPercMstpSrasWpstDnon";
+			SlowR = "AfdsPercMstpSrasWpstDnon";
+			SlowLB = "AfdsPercMstpSrasWpstDnon";
+			SlowRB = "AfdsPercMstpSrasWpstDnon";
+			SlowB = "AfdsPercMstpSrasWpstDnon";
+			PlayerSlowF = "AfdsPercMstpSrasWpstDnon";
+			PlayerSlowLF = "AfdsPercMstpSrasWpstDnon";
+			PlayerSlowRF = "AfdsPercMstpSrasWpstDnon";
+			PlayerSlowL = "AfdsPercMstpSrasWpstDnon";
+			PlayerSlowR = "AfdsPercMstpSrasWpstDnon";
+			PlayerSlowLB = "AfdsPercMstpSrasWpstDnon";
+			PlayerSlowRB = "AfdsPercMstpSrasWpstDnon";
+			PlayerSlowB = "AfdsPercMstpSrasWpstDnon";
+			FastF = "AfdsPercMstpSrasWpstDnon";
+			FastLF = "AfdsPercMstpSrasWpstDnon";
+			FastRF = "AfdsPercMstpSrasWpstDnon";
+			FastL = "AfdsPercMstpSrasWpstDnon";
+			FastR = "AfdsPercMstpSrasWpstDnon";
+			FastLB = "AfdsPercMstpSrasWpstDnon";
+			FastRB = "AfdsPercMstpSrasWpstDnon";
+			FastB = "AfdsPercMstpSrasWpstDnon";
+			TactF = "AfdsPercMstpSrasWpstDnon";
+			TactLF = "AfdsPercMstpSrasWpstDnon";
+			TactRF = "AfdsPercMstpSrasWpstDnon";
+			TactL = "AfdsPercMstpSrasWpstDnon";
+			TactR = "AfdsPercMstpSrasWpstDnon";
+			TactLB = "AfdsPercMstpSrasWpstDnon";
+			TactRB = "AfdsPercMstpSrasWpstDnon";
+			TactB = "AfdsPercMstpSrasWpstDnon";
+			PlayerTactF = "AfdsPercMstpSrasWpstDnon";
+			PlayerTactLF = "AfdsPercMstpSrasWpstDnon";
+			PlayerTactRF = "AfdsPercMstpSrasWpstDnon";
+			PlayerTactL = "AfdsPercMstpSrasWpstDnon";
+			PlayerTactR = "AfdsPercMstpSrasWpstDnon";
+			PlayerTactLB = "AfdsPercMstpSrasWpstDnon";
+			PlayerTactRB = "AfdsPercMstpSrasWpstDnon";
+			PlayerTactB = "AfdsPercMstpSrasWpstDnon";
+			EvasiveLeft = "AfdsPercMstpSrasWpstDnon";
+			EvasiveRight = "AfdsPercMstpSrasWpstDnon";
+			Gear = "AfdsPercMstpSrasWpstDnon_inv";
+			Binoculars = "AfdsPercMstpSoptWbinDnon";
+			AdjustF = "";
+			AdjustB = "";
+			AdjustL = "";
+			AdjustR = "";
+			FireNotPossible = "AfdsPercMstpSrasWpstDnon";
+		};
+		class FiringDrillsPistolLowStandActions: FiringDrillsPistolStandActions
+		{
+			Stop = "AfdsPercMstpSlowWpstDnon";
+			Default = "AfdsPercMstpSlowWpstDnon";
+			HandGunOn = "AfdsPercMstpSrasWpstDnon";
+			FDStart = "AmovPercMstpSlowWpstDnon";
+			Up = "AfdsPknlMstpSlowWpstDnon";
+			TurnL = "AfdsPercMstpSlowWpstDnon_turnL";
+			TurnR = "AfdsPercMstpSlowWpstDnon_turnR";
+			Stand = "AfdsPercMstpSrasWpstDnon";
+			WalkF = "AfdsPercMstpSlowWpstDnon";
+			WalkLF = "AfdsPercMstpSlowWpstDnon";
+			WalkRF = "AfdsPercMstpSlowWpstDnon";
+			WalkL = "AfdsPercMstpSlowWpstDnon";
+			WalkR = "AfdsPercMstpSlowWpstDnon";
+			WalkLB = "AfdsPercMstpSlowWpstDnon";
+			WalkRB = "AfdsPercMstpSlowWpstDnon";
+			WalkB = "AfdsPercMstpSlowWpstDnon";
+			PlayerWalkF = "AfdsPercMstpSlowWpstDnon";
+			PlayerWalkLF = "AfdsPercMstpSlowWpstDnon";
+			PlayerWalkRF = "AfdsPercMstpSlowWpstDnon";
+			PlayerWalkL = "AfdsPercMstpSlowWpstDnon";
+			PlayerWalkR = "AfdsPercMstpSlowWpstDnon";
+			PlayerWalkLB = "AfdsPercMstpSlowWpstDnon";
+			PlayerWalkRB = "AfdsPercMstpSlowWpstDnon";
+			PlayerWalkB = "AfdsPercMstpSlowWpstDnon";
+			SlowF = "AfdsPercMstpSlowWpstDnon";
+			SlowLF = "AfdsPercMstpSlowWpstDnon";
+			SlowRF = "AfdsPercMstpSlowWpstDnon";
+			SlowL = "AfdsPercMstpSlowWpstDnon";
+			SlowR = "AfdsPercMstpSlowWpstDnon";
+			SlowLB = "AfdsPercMstpSlowWpstDnon";
+			SlowRB = "AfdsPercMstpSlowWpstDnon";
+			SlowB = "AfdsPercMstpSlowWpstDnon";
+			PlayerSlowF = "AfdsPercMstpSlowWpstDnon";
+			PlayerSlowLF = "AfdsPercMstpSlowWpstDnon";
+			PlayerSlowRF = "AfdsPercMstpSlowWpstDnon";
+			PlayerSlowL = "AfdsPercMstpSlowWpstDnon";
+			PlayerSlowR = "AfdsPercMstpSlowWpstDnon";
+			PlayerSlowLB = "AfdsPercMstpSlowWpstDnon";
+			PlayerSlowRB = "AfdsPercMstpSlowWpstDnon";
+			PlayerSlowB = "AfdsPercMstpSlowWpstDnon";
+			FastF = "AfdsPercMstpSlowWpstDnon";
+			FastLF = "AfdsPercMstpSlowWpstDnon";
+			FastRF = "AfdsPercMstpSlowWpstDnon";
+			FastL = "AfdsPercMstpSlowWpstDnon";
+			FastR = "AfdsPercMstpSlowWpstDnon";
+			FastLB = "AfdsPercMstpSlowWpstDnon";
+			FastRB = "AfdsPercMstpSlowWpstDnon";
+			FastB = "AfdsPercMstpSlowWpstDnon";
+			TactF = "AfdsPercMstpSlowWpstDnon";
+			TactLF = "AfdsPercMstpSlowWpstDnon";
+			TactRF = "AfdsPercMstpSlowWpstDnon";
+			TactL = "AfdsPercMstpSlowWpstDnon";
+			TactR = "AfdsPercMstpSlowWpstDnon";
+			TactLB = "AfdsPercMstpSlowWpstDnon";
+			TactRB = "AfdsPercMstpSlowWpstDnon";
+			TactB = "AfdsPercMstpSlowWpstDnon";
+			PlayerTactF = "AfdsPercMstpSlowWpstDnon";
+			PlayerTactLF = "AfdsPercMstpSlowWpstDnon";
+			PlayerTactRF = "AfdsPercMstpSlowWpstDnon";
+			PlayerTactL = "AfdsPercMstpSlowWpstDnon";
+			PlayerTactR = "AfdsPercMstpSlowWpstDnon";
+			PlayerTactLB = "AfdsPercMstpSlowWpstDnon";
+			PlayerTactRB = "AfdsPercMstpSlowWpstDnon";
+			PlayerTactB = "AfdsPercMstpSlowWpstDnon";
+			EvasiveLeft = "AfdsPercMstpSlowWpstDnon";
+			EvasiveRight = "AfdsPercMstpSlowWpstDnon";
+		};
+		class FiringDrillsPistolKneelActions: PistolKneelActions
+		{
+			Stop = "AfdsPknlMstpSrasWpstDnon";
+			TurnL = "AfdsPknlMstpSrasWpstDnon_turnL";
+			PlayerWalkF = "AfdsPknlMstpSrasWpstDnon";
+			PlayerWalkLF = "AfdsPknlMstpSrasWpstDnon";
+			PlayerWalkRF = "AfdsPknlMstpSrasWpstDnon";
+			PlayerWalkL = "AfdsPknlMstpSrasWpstDnon";
+			PlayerWalkR = "AfdsPknlMstpSrasWpstDnon";
+			PlayerWalkLB = "AfdsPknlMstpSrasWpstDnon";
+			PlayerWalkRB = "AfdsPknlMstpSrasWpstDnon";
+			PlayerWalkB = "AfdsPknlMstpSrasWpstDnon";
+			PlayerSlowF = "AfdsPknlMstpSrasWpstDnon";
+			PlayerSlowLF = "AfdsPknlMstpSrasWpstDnon";
+			PlayerSlowRF = "AfdsPknlMstpSrasWpstDnon";
+			PlayerSlowL = "AfdsPknlMstpSrasWpstDnon";
+			PlayerSlowR = "AfdsPknlMstpSrasWpstDnon";
+			PlayerSlowLB = "AfdsPknlMstpSrasWpstDnon";
+			PlayerSlowRB = "AfdsPknlMstpSrasWpstDnon";
+			PlayerSlowB = "AfdsPknlMstpSrasWpstDnon";
+			PlayerTactF = "AfdsPknlMstpSrasWpstDnon";
+			PlayerTactLF = "AfdsPknlMstpSrasWpstDnon";
+			PlayerTactRF = "AfdsPknlMstpSrasWpstDnon";
+			PlayerTactL = "AfdsPknlMstpSrasWpstDnon";
+			PlayerTactR = "AfdsPknlMstpSrasWpstDnon";
+			PlayerTactLB = "AfdsPknlMstpSrasWpstDnon";
+			PlayerTactRB = "AfdsPknlMstpSrasWpstDnon";
+			PlayerTactB = "AfdsPknlMstpSrasWpstDnon";
+			TurnR = "AfdsPknlMstpSrasWpstDnon_turnR";
+			Down = "AfdsPpneMstpSrasWpstDnon";
+			Up = "AfdsPercMstpSrasWpstDnon";
+			Combat = "AfdsPknlMstpSrasWrflDnon";
+			Default = "AfdsPknlMstpSrasWpstDnon";
+			PrimaryWeapon = "AfdsPknlMstpSrasWrflDnon";
+			Gear = "AfdsPknlMstpSrasWpstDnon_inv";
+			FDStart = "AmovPknlMstpSrasWpstDnon";
+			HandGunOn = "AfdsPknlMstpSrasWrflDnon";
+			Stand = "AfdsPknlMstpSlowWpstDnon";
+			WalkF = "AfdsPknlMstpSrasWpstDnon";
+			WalkLF = "AfdsPknlMstpSrasWpstDnon";
+			WalkRF = "AfdsPknlMstpSrasWpstDnon";
+			WalkL = "AfdsPknlMstpSrasWpstDnon";
+			WalkR = "AfdsPknlMstpSrasWpstDnon";
+			WalkLB = "AfdsPknlMstpSrasWpstDnon";
+			WalkRB = "AfdsPknlMstpSrasWpstDnon";
+			WalkB = "AfdsPknlMstpSrasWpstDnon";
+			SlowF = "AfdsPknlMstpSrasWpstDnon";
+			SlowLF = "AfdsPknlMstpSrasWpstDnon";
+			SlowRF = "AfdsPknlMstpSrasWpstDnon";
+			SlowL = "AfdsPknlMstpSrasWpstDnon";
+			SlowR = "AfdsPknlMstpSrasWpstDnon";
+			SlowLB = "AfdsPknlMstpSrasWpstDnon";
+			SlowRB = "AfdsPknlMstpSrasWpstDnon";
+			SlowB = "AfdsPknlMstpSrasWpstDnon";
+			FastF = "AfdsPknlMstpSrasWpstDnon";
+			FastLF = "AfdsPknlMstpSrasWpstDnon";
+			FastRF = "AfdsPknlMstpSrasWpstDnon";
+			FastL = "AfdsPknlMstpSrasWpstDnon";
+			FastR = "AfdsPknlMstpSrasWpstDnon";
+			FastLB = "AfdsPknlMstpSrasWpstDnon";
+			FastRB = "AfdsPknlMstpSrasWpstDnon";
+			FastB = "AfdsPknlMstpSrasWpstDnon";
+			TactF = "AfdsPknlMstpSrasWpstDnon";
+			TactLF = "AfdsPknlMstpSrasWpstDnon";
+			TactRF = "AfdsPknlMstpSrasWpstDnon";
+			TactL = "AfdsPknlMstpSrasWpstDnon";
+			TactR = "AfdsPknlMstpSrasWpstDnon";
+			TactLB = "AfdsPknlMstpSrasWpstDnon";
+			TactRB = "AfdsPknlMstpSrasWpstDnon";
+			TactB = "AfdsPknlMstpSrasWpstDnon";
+			PlayerStand = "AfdsPercMstpSrasWpstDnon";
+			PlayerCrouch = "AfdsPknlMstpSrasWpstDnon";
+			PlayerProne = "AfdsPpneMstpSrasWpstDnon";
+			Crouch = "AfdsPknlMstpSrasWpstDnon";
+			EvasiveLeft = "AfdsPknlMstpSrasWpstDnon";
+			EvasiveRight = "AfdsPknlMstpSrasWpstDnon";
+			Civil = "AfdsPknlMstpSnonWnonDnon";
+			CivilLying = "AfdsPpneMstpSnonWnonDnon";
+			Lying = "AfdsPpneMstpSrasWpstDnon";
+			GetOver = "";
+			Binoculars = "AfdsPknlMstpSoptWbinDnon";
+			AdjustF = "";
+			AdjustB = "";
+			AdjustL = "";
+			AdjustR = "";
+			FireNotPossible = "AfdsPknlMstpSrasWpstDnon";
+		};
+		class FiringDrillsPistolLowKneelActions: FiringDrillsPistolKneelActions
+		{
+			Stop = "AfdsPknlMstpSlowWpstDnon";
+			Up = "AfdsPercMstpSlowWpstDnon";
+			FDStart = "AmovPknlMstpSlowWpstDnon";
+			Default = "AfdsPknlMstpSlowWpstDnon";
+			PlayerStand = "AfdsPercMstpSlowWpstDnon";
+			HandGunOn = "AfdsPknlMstpSrasWpstDnon";
+			TurnL = "AfdsPknlMstpSlowWpstDnon_turnL";
+			TurnR = "AfdsPknlMstpSlowWpstDnon_turnR";
+			Stand = "AfdsPknlMstpSrasWpstDnon";
+			WalkF = "AfdsPknlMstpSlowWpstDnon";
+			WalkLF = "AfdsPknlMstpSlowWpstDnon";
+			WalkRF = "AfdsPknlMstpSlowWpstDnon";
+			WalkL = "AfdsPknlMstpSlowWpstDnon";
+			WalkR = "AfdsPknlMstpSlowWpstDnon";
+			WalkLB = "AfdsPknlMstpSlowWpstDnon";
+			WalkRB = "AfdsPknlMstpSlowWpstDnon";
+			WalkB = "AfdsPknlMstpSlowWpstDnon";
+			PlayerWalkF = "AfdsPknlMstpSlowWpstDnon";
+			PlayerWalkLF = "AfdsPknlMstpSlowWpstDnon";
+			PlayerWalkRF = "AfdsPknlMstpSlowWpstDnon";
+			PlayerWalkL = "AfdsPknlMstpSlowWpstDnon";
+			PlayerWalkR = "AfdsPknlMstpSlowWpstDnon";
+			PlayerWalkLB = "AfdsPknlMstpSlowWpstDnon";
+			PlayerWalkRB = "AfdsPknlMstpSlowWpstDnon";
+			PlayerWalkB = "AfdsPknlMstpSlowWpstDnon";
+			SlowF = "AfdsPknlMstpSlowWpstDnon";
+			SlowLF = "AfdsPknlMstpSlowWpstDnon";
+			SlowRF = "AfdsPknlMstpSlowWpstDnon";
+			SlowL = "AfdsPknlMstpSlowWpstDnon";
+			SlowR = "AfdsPknlMstpSlowWpstDnon";
+			SlowLB = "AfdsPknlMstpSlowWpstDnon";
+			SlowRB = "AfdsPknlMstpSlowWpstDnon";
+			SlowB = "AfdsPknlMstpSlowWpstDnon";
+			PlayerSlowF = "AfdsPknlMstpSlowWpstDnon";
+			PlayerSlowLF = "AfdsPknlMstpSlowWpstDnon";
+			PlayerSlowRF = "AfdsPknlMstpSlowWpstDnon";
+			PlayerSlowL = "AfdsPknlMstpSlowWpstDnon";
+			PlayerSlowR = "AfdsPknlMstpSlowWpstDnon";
+			PlayerSlowLB = "AfdsPknlMstpSlowWpstDnon";
+			PlayerSlowRB = "AfdsPknlMstpSlowWpstDnon";
+			PlayerSlowB = "AfdsPknlMstpSlowWpstDnon";
+			FastF = "AfdsPknlMstpSlowWpstDnon";
+			FastLF = "AfdsPknlMstpSlowWpstDnon";
+			FastRF = "AfdsPknlMstpSlowWpstDnon";
+			FastL = "AfdsPknlMstpSlowWpstDnon";
+			FastR = "AfdsPknlMstpSlowWpstDnon";
+			FastLB = "AfdsPknlMstpSlowWpstDnon";
+			FastRB = "AfdsPknlMstpSlowWpstDnon";
+			FastB = "AfdsPknlMstpSlowWpstDnon";
+			TactF = "AfdsPknlMstpSlowWpstDnon";
+			TactLF = "AfdsPknlMstpSlowWpstDnon";
+			TactRF = "AfdsPknlMstpSlowWpstDnon";
+			TactL = "AfdsPknlMstpSlowWpstDnon";
+			TactR = "AfdsPknlMstpSlowWpstDnon";
+			TactLB = "AfdsPknlMstpSlowWpstDnon";
+			TactRB = "AfdsPknlMstpSlowWpstDnon";
+			TactB = "AfdsPknlMstpSlowWpstDnon";
+			PlayerTactF = "AfdsPknlMstpSlowWpstDnon";
+			PlayerTactLF = "AfdsPknlMstpSlowWpstDnon";
+			PlayerTactRF = "AfdsPknlMstpSlowWpstDnon";
+			PlayerTactL = "AfdsPknlMstpSlowWpstDnon";
+			PlayerTactR = "AfdsPknlMstpSlowWpstDnon";
+			PlayerTactLB = "AfdsPknlMstpSlowWpstDnon";
+			PlayerTactRB = "AfdsPknlMstpSlowWpstDnon";
+			PlayerTactB = "AfdsPknlMstpSlowWpstDnon";
+			EvasiveLeft = "AfdsPknlMstpSlowWpstDnon";
+			EvasiveRight = "AfdsPknlMstpSlowWpstDnon";
+		};
+		class FiringDrillsPistolProneActions: PistolProneActions
+		{
+			TurnL = "AfdsPpneMstpSrasWpstDnon_turnL";
+			TurnR = "AfdsPpneMstpSrasWpstDnon_turnR";
+			Stop = "AfdsPpneMstpSrasWpstDnon";
+			WalkF = "AfdsPpneMstpSrasWpstDnon";
+			WalkLF = "AfdsPpneMstpSrasWpstDnon";
+			WalkRF = "AfdsPpneMstpSrasWpstDnon";
+			WalkL = "AfdsPpneMstpSrasWpstDnon";
+			WalkR = "AfdsPpneMstpSrasWpstDnon";
+			WalkLB = "AfdsPpneMstpSrasWpstDnon";
+			WalkRB = "AfdsPpneMstpSrasWpstDnon";
+			WalkB = "AfdsPpneMstpSrasWpstDnon";
+			PlayerWalkF = "AfdsPpneMstpSrasWpstDnon";
+			PlayerWalkLF = "AfdsPpneMstpSrasWpstDnon";
+			PlayerWalkRF = "AfdsPpneMstpSrasWpstDnon";
+			PlayerWalkL = "AfdsPpneMstpSrasWpstDnon";
+			PlayerWalkR = "AfdsPpneMstpSrasWpstDnon";
+			PlayerWalkLB = "AfdsPpneMstpSrasWpstDnon";
+			PlayerWalkRB = "AfdsPpneMstpSrasWpstDnon";
+			PlayerWalkB = "AfdsPpneMstpSrasWpstDnon";
+			SlowF = "AfdsPpneMstpSrasWpstDnon";
+			SlowLF = "AfdsPpneMstpSrasWpstDnon";
+			SlowL = "AfdsPpneMstpSrasWpstDnon";
+			SlowRF = "AfdsPpneMstpSrasWpstDnon";
+			SlowR = "AfdsPpneMstpSrasWpstDnon";
+			SlowLB = "AfdsPpneMstpSrasWpstDnon";
+			SlowRB = "AfdsPpneMstpSrasWpstDnon";
+			SlowB = "AfdsPpneMstpSrasWpstDnon";
+			PlayerSlowF = "AfdsPpneMstpSrasWpstDnon";
+			PlayerSlowLF = "AfdsPpneMstpSrasWpstDnon";
+			PlayerSlowRF = "AfdsPpneMstpSrasWpstDnon";
+			PlayerSlowL = "AfdsPpneMstpSrasWpstDnon";
+			PlayerSlowLB = "AfdsPpneMstpSrasWpstDnon";
+			PlayerSlowR = "AfdsPpneMstpSrasWpstDnon";
+			PlayerSlowRB = "AfdsPpneMstpSrasWpstDnon";
+			PlayerSlowB = "AfdsPpneMstpSrasWpstDnon";
+			FastF = "AfdsPpneMstpSrasWpstDnon";
+			FastLF = "AfdsPpneMstpSrasWpstDnon";
+			FastRF = "AfdsPpneMstpSrasWpstDnon";
+			FastL = "AfdsPpneMstpSrasWpstDnon";
+			FastR = "AfdsPpneMstpSrasWpstDnon";
+			FastLB = "AfdsPpneMstpSrasWpstDnon";
+			FastRB = "AfdsPpneMstpSrasWpstDnon";
+			FastB = "AfdsPpneMstpSrasWpstDnon";
+			TactF = "AfdsPpneMstpSrasWpstDnon";
+			TactLF = "AfdsPpneMstpSrasWpstDnon";
+			TactRF = "AfdsPpneMstpSrasWpstDnon";
+			TactL = "AfdsPpneMstpSrasWpstDnon";
+			TactR = "AfdsPpneMstpSrasWpstDnon";
+			TactLB = "AfdsPpneMstpSrasWpstDnon";
+			TactRB = "AfdsPpneMstpSrasWpstDnon";
+			TactB = "AfdsPpneMstpSrasWpstDnon";
+			PlayerTactF = "AfdsPpneMstpSrasWpstDnon";
+			PlayerTactLF = "AfdsPpneMstpSrasWpstDnon";
+			PlayerTactRF = "AfdsPpneMstpSrasWpstDnon";
+			PlayerTactR = "AfdsPpneMstpSrasWpstDnon";
+			PlayerTactL = "AfdsPpneMstpSrasWpstDnon";
+			PlayerTactLB = "AfdsPpneMstpSrasWpstDnon";
+			PlayerTactB = "AfdsPpneMstpSrasWpstDnon";
+			PlayerTactRB = "AfdsPpneMstpSrasWpstDnon";
+			Up = "AfdsPknlMstpSrasWpstDnon";
+			Down = "AfdsPercMstpSrasWpstDnon";
+			PlayerStand = "AfdsPercMstpSrasWpstDnon";
+			PlayerCrouch = "AfdsPknlMstpSrasWpstDnon";
+			PlayerProne = "AfdsPpneMstpSrasWpstDnon";
+			Lying = "AfdsPpneMstpSrasWpstDnon";
+			Combat = "AfdsPpneMstpSrasWrflDnon";
+			Crouch = "AfdsPknlMstpSrasWpstDnon";
+			Default = "AfdsPpneMstpSrasWpstDnon";
+			HandGunOn = "AfdsPpneMstpSrasWrflDnon";
+			PrimaryWeapon = "AfdsPpneMstpSrasWrflDnon";
+			FDStart = "AmovPpneMstpSrasWpstDnon";
+			EvasiveLeft = "AfdsPpneMstpSrasWpstDnon";
+			EvasiveRight = "AfdsPpneMstpSrasWpstDnon";
+			Civil = "AfdsPpneMstpSnonWnonDnon";
+			CivilLying = "AfdsPpneMstpSnonWnonDnon";
+			Stand = "AfdsPercMstpSlowWpstDnon";
+			Binoculars = "AfdsPpneMstpSoptWbinDnon";
+			FireNotPossible = "AfdsPpneMstpSrasWpstDnon";
+		};
+		class FiringDrillsCivilStandActions: CivilStandActions
+		{
+			Stop = "AfdsPercMstpSnonWnonDnon";
+			TurnL = "AfdsPercMstpSnonWnonDnon_turnL";
+			TurnR = "AfdsPercMstpSnonWnonDnon_turnR";
+			WalkF = "AfdsPercMstpSnonWnonDnon";
+			WalkLF = "AfdsPercMstpSnonWnonDnon";
+			WalkRF = "AfdsPercMstpSnonWnonDnon";
+			WalkL = "AfdsPercMstpSnonWnonDnon";
+			WalkR = "AfdsPercMstpSnonWnonDnon";
+			WalkLB = "AfdsPercMstpSnonWnonDnon";
+			WalkRB = "AfdsPercMstpSnonWnonDnon";
+			WalkB = "AfdsPercMstpSnonWnonDnon";
+			PlayerWalkF = "AfdsPercMstpSnonWnonDnon";
+			PlayerWalkLF = "AfdsPercMstpSnonWnonDnon";
+			PlayerWalkRF = "AfdsPercMstpSnonWnonDnon";
+			PlayerWalkL = "AfdsPercMstpSnonWnonDnon";
+			PlayerWalkR = "AfdsPercMstpSnonWnonDnon";
+			PlayerWalkLB = "AfdsPercMstpSnonWnonDnon";
+			PlayerWalkRB = "AfdsPercMstpSnonWnonDnon";
+			PlayerWalkB = "AfdsPercMstpSnonWnonDnon";
+			SlowF = "AfdsPercMstpSnonWnonDnon";
+			SlowLF = "AfdsPercMstpSnonWnonDnon";
+			SlowRF = "AfdsPercMstpSnonWnonDnon";
+			SlowL = "AfdsPercMstpSnonWnonDnon";
+			SlowR = "AfdsPercMstpSnonWnonDnon";
+			SlowLB = "AfdsPercMstpSnonWnonDnon";
+			SlowRB = "AfdsPercMstpSnonWnonDnon";
+			SlowB = "AfdsPercMstpSnonWnonDnon";
+			PlayerSlowF = "AfdsPercMstpSnonWnonDnon";
+			PlayerSlowLF = "AfdsPercMstpSnonWnonDnon";
+			PlayerSlowRF = "AfdsPercMstpSnonWnonDnon";
+			PlayerSlowL = "AfdsPercMstpSnonWnonDnon";
+			PlayerSlowR = "AfdsPercMstpSnonWnonDnon";
+			PlayerSlowLB = "AfdsPercMstpSnonWnonDnon";
+			PlayerSlowRB = "AfdsPercMstpSnonWnonDnon";
+			PlayerSlowB = "AfdsPercMstpSnonWnonDnon";
+			FastF = "AfdsPercMstpSnonWnonDnon";
+			FastLF = "AfdsPercMstpSnonWnonDnon";
+			FastRF = "AfdsPercMstpSnonWnonDnon";
+			FastL = "AfdsPercMstpSnonWnonDnon";
+			FastR = "AfdsPercMstpSnonWnonDnon";
+			FastLB = "AfdsPercMstpSnonWnonDnon";
+			FastRB = "AfdsPercMstpSnonWnonDnon";
+			FastB = "AfdsPercMstpSnonWnonDnon";
+			TactF = "AfdsPercMstpSnonWnonDnon";
+			TactLF = "AfdsPercMstpSnonWnonDnon";
+			TactRF = "AfdsPercMstpSnonWnonDnon";
+			TactL = "AfdsPercMstpSnonWnonDnon";
+			TactR = "AfdsPercMstpSnonWnonDnon";
+			TactLB = "AfdsPercMstpSnonWnonDnon";
+			TactRB = "AfdsPercMstpSnonWnonDnon";
+			TactB = "AfdsPercMstpSnonWnonDnon";
+			PlayerTactF = "AfdsPercMstpSnonWnonDnon";
+			PlayerTactLF = "AfdsPercMstpSnonWnonDnon";
+			PlayerTactRF = "AfdsPercMstpSnonWnonDnon";
+			PlayerTactL = "AfdsPercMstpSnonWnonDnon";
+			PlayerTactR = "AfdsPercMstpSnonWnonDnon";
+			PlayerTactLB = "AfdsPercMstpSnonWnonDnon";
+			PlayerTactRB = "AfdsPercMstpSnonWnonDnon";
+			PlayerTactB = "AfdsPercMstpSnonWnonDnon";
+			EvasiveLeft = "AfdsPercMstpSnonWnonDnon";
+			EvasiveRight = "AfdsPercMstpSnonWnonDnon";
+			Stand = "AfdsPercMstpSnonWnonDnon";
+			Up = "AfdsPknlMstpSnonWnonDnon";
+			Down = "AfdsPpneMstpSnonWnonDnon";
+			Combat = "AfdsPercMstpSrasWrflDnon";
+			Crouch = "AfdsPknlMstpSnonWnonDnon";
+			Civil = "AfdsPercMstpSnonWnonDnon";
+			CivilLying = "AfdsPpneMstpSnonWnonDnon";
+			GetOver = "";
+			HandGunOn = "AfdsPercMstpSrasWpstDnon";
+			PrimaryWeapon = "AfdsPercMstpSrasWrflDnon";
+			FDStart = "AmovPercMstpSnonWnonDnon";
+			Lying = "AfdsPpneMstpSnonWnonDnon";
+			Binoculars = "AfdsPercMstpSoptWbinDnon";
+		};
+		class FiringDrillsCivilKneelActions: CivilKneelActions
+		{
+			Stop = "AfdsPknlMstpSnonWnonDnon";
+			TurnL = "AfdsPknlMstpSnonWnonDnon_turnL";
+			TurnR = "AfdsPknlMstpSnonWnonDnon_turnR";
+			WalkF = "AfdsPknlMstpSnonWnonDnon";
+			WalkLF = "AfdsPknlMstpSnonWnonDnon";
+			WalkRF = "AfdsPknlMstpSnonWnonDnon";
+			WalkL = "AfdsPknlMstpSnonWnonDnon";
+			WalkR = "AfdsPknlMstpSnonWnonDnon";
+			WalkLB = "AfdsPknlMstpSnonWnonDnon";
+			WalkRB = "AfdsPknlMstpSnonWnonDnon";
+			WalkB = "AfdsPknlMstpSnonWnonDnon";
+			PlayerWalkF = "AfdsPknlMstpSnonWnonDnon";
+			PlayerWalkLF = "AfdsPknlMstpSnonWnonDnon";
+			PlayerWalkRF = "AfdsPknlMstpSnonWnonDnon";
+			PlayerWalkL = "AfdsPknlMstpSnonWnonDnon";
+			PlayerWalkR = "AfdsPknlMstpSnonWnonDnon";
+			PlayerWalkLB = "AfdsPknlMstpSnonWnonDnon";
+			PlayerWalkRB = "AfdsPknlMstpSnonWnonDnon";
+			PlayerWalkB = "AfdsPknlMstpSnonWnonDnon";
+			SlowF = "AfdsPknlMstpSnonWnonDnon";
+			SlowLF = "AfdsPknlMstpSnonWnonDnon";
+			SlowRF = "AfdsPknlMstpSnonWnonDnon";
+			SlowL = "AfdsPknlMstpSnonWnonDnon";
+			SlowR = "AfdsPknlMstpSnonWnonDnon";
+			SlowLB = "AfdsPknlMstpSnonWnonDnon";
+			SlowRB = "AfdsPknlMstpSnonWnonDnon";
+			SlowB = "AfdsPknlMstpSnonWnonDnon";
+			PlayerSlowF = "AfdsPknlMstpSnonWnonDnon";
+			PlayerSlowLF = "AfdsPknlMstpSnonWnonDnon";
+			PlayerSlowRF = "AfdsPknlMstpSnonWnonDnon";
+			PlayerSlowL = "AfdsPknlMstpSnonWnonDnon";
+			PlayerSlowR = "AfdsPknlMstpSnonWnonDnon";
+			PlayerSlowLB = "AfdsPknlMstpSnonWnonDnon";
+			PlayerSlowRB = "AfdsPknlMstpSnonWnonDnon";
+			PlayerSlowB = "AfdsPknlMstpSnonWnonDnon";
+			FastF = "AfdsPknlMstpSnonWnonDnon";
+			FastLF = "AfdsPknlMstpSnonWnonDnon";
+			FastRF = "AfdsPknlMstpSnonWnonDnon";
+			FastL = "AfdsPknlMstpSnonWnonDnon";
+			FastR = "AfdsPknlMstpSnonWnonDnon";
+			FastLB = "AfdsPknlMstpSnonWnonDnon";
+			FastRB = "AfdsPknlMstpSnonWnonDnon";
+			FastB = "AfdsPknlMstpSnonWnonDnon";
+			TactF = "AfdsPknlMstpSnonWnonDnon";
+			TactLF = "AfdsPknlMstpSnonWnonDnon";
+			TactRF = "AfdsPknlMstpSnonWnonDnon";
+			TactL = "AfdsPknlMstpSnonWnonDnon";
+			TactR = "AfdsPknlMstpSnonWnonDnon";
+			TactLB = "AfdsPknlMstpSnonWnonDnon";
+			TactRB = "AfdsPknlMstpSnonWnonDnon";
+			TactB = "AfdsPknlMstpSnonWnonDnon";
+			PlayerTactF = "AfdsPknlMstpSnonWnonDnon";
+			PlayerTactLF = "AfdsPknlMstpSnonWnonDnon";
+			PlayerTactRF = "AfdsPknlMstpSnonWnonDnon";
+			PlayerTactL = "AfdsPknlMstpSnonWnonDnon";
+			PlayerTactR = "AfdsPknlMstpSnonWnonDnon";
+			PlayerTactLB = "AfdsPknlMstpSnonWnonDnon";
+			PlayerTactRB = "AfdsPknlMstpSnonWnonDnon";
+			PlayerTactB = "AfdsPknlMstpSnonWnonDnon";
+			EvasiveLeft = "AfdsPknlMstpSnonWnonDnon";
+			EvasiveRight = "AfdsPknlMstpSnonWnonDnon";
+			Lying = "AfdsPpneMstpSnonWnonDnon";
+			Stand = "AfdsPercMstpSlowWrflDnon";
+			Combat = "AfdsPknlMstpSrasWrflDnon";
+			Crouch = "AfdsPknlMstpSnonWnonDnon";
+			Civil = "AfdsPercMstpSnonWnonDnon";
+			CivilLying = "AfdsPpneMstpSnonWnonDnon";
+			GetOver = "";
+			PrimaryWeapon = "AfdsPknlMstpSrasWrflDnon";
+			FDStart = "AmovPknlMstpSnonWnonDnon";
+			Binoculars = "AfdsPknlMstpSoptWbinDnon";
+		};
+		class FiringDrillsCivilProneActions: CivilProneActions
+		{
+			Stop = "AfdsPpneMstpSnonWnonDnon";
+			TurnL = "AfdsPpneMstpSnonWnonDnon_turnL";
+			TurnR = "AfdsPpneMstpSnonWnonDnon_turnR";
+			WalkF = "AfdsPpneMstpSnonWnonDnon";
+			WalkLF = "AfdsPpneMstpSnonWnonDnon";
+			WalkRF = "AfdsPpneMstpSnonWnonDnon";
+			WalkL = "AfdsPpneMstpSnonWnonDnon";
+			WalkR = "AfdsPpneMstpSnonWnonDnon";
+			WalkLB = "AfdsPpneMstpSnonWnonDnon";
+			WalkRB = "AfdsPpneMstpSnonWnonDnon";
+			WalkB = "AfdsPpneMstpSnonWnonDnon";
+			PlayerWalkF = "AfdsPpneMstpSnonWnonDnon";
+			PlayerWalkLF = "AfdsPpneMstpSnonWnonDnon";
+			PlayerWalkRF = "AfdsPpneMstpSnonWnonDnon";
+			PlayerWalkL = "AfdsPpneMstpSnonWnonDnon";
+			PlayerWalkR = "AfdsPpneMstpSnonWnonDnon";
+			PlayerWalkLB = "AfdsPpneMstpSnonWnonDnon";
+			PlayerWalkRB = "AfdsPpneMstpSnonWnonDnon";
+			PlayerWalkB = "AfdsPpneMstpSnonWnonDnon";
+			SlowF = "AfdsPpneMstpSnonWnonDnon";
+			SlowLF = "AfdsPpneMstpSnonWnonDnon";
+			SlowRF = "AfdsPpneMstpSnonWnonDnon";
+			SlowL = "AfdsPpneMstpSnonWnonDnon";
+			SlowR = "AfdsPpneMstpSnonWnonDnon";
+			SlowLB = "AfdsPpneMstpSnonWnonDnon";
+			SlowRB = "AfdsPpneMstpSnonWnonDnon";
+			SlowB = "AfdsPpneMstpSnonWnonDnon";
+			PlayerSlowF = "AfdsPpneMstpSnonWnonDnon";
+			PlayerSlowLF = "AfdsPpneMstpSnonWnonDnon";
+			PlayerSlowRF = "AfdsPpneMstpSnonWnonDnon";
+			PlayerSlowL = "AfdsPpneMstpSnonWnonDnon";
+			PlayerSlowR = "AfdsPpneMstpSnonWnonDnon";
+			PlayerSlowLB = "AfdsPpneMstpSnonWnonDnon";
+			PlayerSlowRB = "AfdsPpneMstpSnonWnonDnon";
+			PlayerSlowB = "AfdsPpneMstpSnonWnonDnon";
+			FastF = "AfdsPpneMstpSnonWnonDnon";
+			FastLF = "AfdsPpneMstpSnonWnonDnon";
+			FastRF = "AfdsPpneMstpSnonWnonDnon";
+			FastL = "AfdsPpneMstpSnonWnonDnon";
+			FastR = "AfdsPpneMstpSnonWnonDnon";
+			FastLB = "AfdsPpneMstpSnonWnonDnon";
+			FastRB = "AfdsPpneMstpSnonWnonDnon";
+			FastB = "AfdsPpneMstpSnonWnonDnon";
+			TactF = "AfdsPpneMstpSnonWnonDnon";
+			TactLF = "AfdsPpneMstpSnonWnonDnon";
+			TactRF = "AfdsPpneMstpSnonWnonDnon";
+			TactL = "AfdsPpneMstpSnonWnonDnon";
+			TactR = "AfdsPpneMstpSnonWnonDnon";
+			TactLB = "AfdsPpneMstpSnonWnonDnon";
+			TactRB = "AfdsPpneMstpSnonWnonDnon";
+			TactB = "AfdsPpneMstpSnonWnonDnon";
+			PlayerTactF = "AfdsPpneMstpSnonWnonDnon";
+			PlayerTactLF = "AfdsPpneMstpSnonWnonDnon";
+			PlayerTactRF = "AfdsPpneMstpSnonWnonDnon";
+			PlayerTactL = "AfdsPpneMstpSnonWnonDnon";
+			PlayerTactR = "AfdsPpneMstpSnonWnonDnon";
+			PlayerTactLB = "AfdsPpneMstpSnonWnonDnon";
+			PlayerTactRB = "AfdsPpneMstpSnonWnonDnon";
+			PlayerTactB = "AfdsPpneMstpSnonWnonDnon";
+			EvasiveLeft = "AfdsPpneMstpSnonWnonDnon";
+			EvasiveRight = "AfdsPpneMstpSnonWnonDnon";
+			Lying = "AfdsPpneMstpSrasWrflDnon";
+			Stand = "AfdsPercMstpSnonWnonDnon";
+			Combat = "AfdsPercMstpSrasWrflDnon";
+			Crouch = "AfdsPpneMstpSnonWnonDnon";
+			Civil = "AfdsPercMstpSnonWnonDnon";
+			CivilLying = "AfdsPpneMstpSnonWnonDnon";
+			PrimaryWeapon = "AfdsPpneMstpSrasWrflDnon";
+			FDStart = "AmovPpneMstpSnonWnonDnon";
+			Binoculars = "AfdsPpneMstpSoptWbinDnon";
+		};
+		class FiringDrillsBinocStandActions: BinocStandActions
+		{
+			Stop = "AfdsPercMstpSoptWbinDnon";
+			TurnL = "AfdsPercMstpSoptWbinDnon_turnL";
+			TurnR = "AfdsPercMstpSoptWbinDnon_turnR";
+			WalkF = "AfdsPercMstpSoptWbinDnon";
+			WalkLF = "AfdsPercMstpSoptWbinDnon";
+			WalkRF = "AfdsPercMstpSoptWbinDnon";
+			WalkL = "AfdsPercMstpSoptWbinDnon";
+			WalkR = "AfdsPercMstpSoptWbinDnon";
+			WalkLB = "AfdsPercMstpSoptWbinDnon";
+			WalkRB = "AfdsPercMstpSoptWbinDnon";
+			WalkB = "AfdsPercMstpSoptWbinDnon";
+			PlayerWalkF = "AfdsPercMstpSoptWbinDnon";
+			PlayerWalkLF = "AfdsPercMstpSoptWbinDnon";
+			PlayerWalkRF = "AfdsPercMstpSoptWbinDnon";
+			PlayerWalkL = "AfdsPercMstpSoptWbinDnon";
+			PlayerWalkR = "AfdsPercMstpSoptWbinDnon";
+			PlayerWalkLB = "AfdsPercMstpSoptWbinDnon";
+			PlayerWalkRB = "AfdsPercMstpSoptWbinDnon";
+			PlayerWalkB = "AfdsPercMstpSoptWbinDnon";
+			SlowF = "AfdsPercMstpSoptWbinDnon";
+			SlowLF = "AfdsPercMstpSoptWbinDnon";
+			SlowRF = "AfdsPercMstpSoptWbinDnon";
+			SlowL = "AfdsPercMstpSoptWbinDnon";
+			SlowR = "AfdsPercMstpSoptWbinDnon";
+			SlowLB = "AfdsPercMstpSoptWbinDnon";
+			SlowRB = "AfdsPercMstpSoptWbinDnon";
+			SlowB = "AfdsPercMstpSoptWbinDnon";
+			PlayerSlowF = "AfdsPercMstpSoptWbinDnon";
+			PlayerSlowLF = "AfdsPercMstpSoptWbinDnon";
+			PlayerSlowRF = "AfdsPercMstpSoptWbinDnon";
+			PlayerSlowL = "AfdsPercMstpSoptWbinDnon";
+			PlayerSlowR = "AfdsPercMstpSoptWbinDnon";
+			PlayerSlowLB = "AfdsPercMstpSoptWbinDnon";
+			PlayerSlowRB = "AfdsPercMstpSoptWbinDnon";
+			PlayerSlowB = "AfdsPercMstpSoptWbinDnon";
+			FastF = "AfdsPercMstpSoptWbinDnon";
+			FastLF = "AfdsPercMstpSoptWbinDnon";
+			FastRF = "AfdsPercMstpSoptWbinDnon";
+			FastL = "AfdsPercMstpSoptWbinDnon";
+			FastR = "AfdsPercMstpSoptWbinDnon";
+			FastLB = "AfdsPercMstpSoptWbinDnon";
+			FastRB = "AfdsPercMstpSoptWbinDnon";
+			FastB = "AfdsPercMstpSoptWbinDnon";
+			TactF = "AfdsPercMstpSoptWbinDnon";
+			TactLF = "AfdsPercMstpSoptWbinDnon";
+			TactRF = "AfdsPercMstpSoptWbinDnon";
+			TactL = "AfdsPercMstpSoptWbinDnon";
+			TactR = "AfdsPercMstpSoptWbinDnon";
+			TactLB = "AfdsPercMstpSoptWbinDnon";
+			TactRB = "AfdsPercMstpSoptWbinDnon";
+			TactB = "AfdsPercMstpSoptWbinDnon";
+			PlayerTactF = "AfdsPercMstpSoptWbinDnon";
+			PlayerTactLF = "AfdsPercMstpSoptWbinDnon";
+			PlayerTactRF = "AfdsPercMstpSoptWbinDnon";
+			PlayerTactL = "AfdsPercMstpSoptWbinDnon";
+			PlayerTactR = "AfdsPercMstpSoptWbinDnon";
+			PlayerTactLB = "AfdsPercMstpSoptWbinDnon";
+			PlayerTactRB = "AfdsPercMstpSoptWbinDnon";
+			PlayerTactB = "AfdsPercMstpSoptWbinDnon";
+			EvasiveLeft = "AfdsPercMstpSoptWbinDnon";
+			EvasiveRight = "AfdsPercMstpSoptWbinDnon";
+			Down = "AfdsPpneMstpSoptWbinDnon";
+			Up = "AfdsPknlMstpSoptWbinDnon";
+			Stand = "AfdsPercMstpSlowWrflDnon";
+			Combat = "AfdsPercMstpSrasWrflDnon";
+			Crouch = "AfdsPknlMstpSrasWrflDnon";
+			Civil = "AfdsPercMstpSnonWnonDnon";
+			CivilLying = "AfdsPpneMstpSnonWnonDnon";
+			Lying = "AfdsPpneMstpSrasWrflDnon";
+			HandGunOn = "AfdsPercMstpSrasWpstDnon";
+			PrimaryWeapon = "AfdsPercMstpSrasWrflDnon";
+			Binoculars = "AfdsPercMstpSoptWbinDnon";
+			FDStart = "AmovPercMstpSoptWbinDnon";
+			Default = "AfdsPercMstpSoptWbinDnon";
+		};
+		class FiringDrillsBinocKneelActions: BinocKneelActions
+		{
+			Stop = "AfdsPknlMstpSoptWbinDnon";
+			TurnL = "AfdsPknlMstpSoptWbinDnon_turnL";
+			TurnR = "AfdsPknlMstpSoptWbinDnon_turnR";
+			WalkF = "AfdsPknlMstpSoptWbinDnon";
+			WalkLF = "AfdsPknlMstpSoptWbinDnon";
+			WalkRF = "AfdsPknlMstpSoptWbinDnon";
+			WalkL = "AfdsPknlMstpSoptWbinDnon";
+			WalkR = "AfdsPknlMstpSoptWbinDnon";
+			WalkLB = "AfdsPknlMstpSoptWbinDnon";
+			WalkRB = "AfdsPknlMstpSoptWbinDnon";
+			WalkB = "AfdsPknlMstpSoptWbinDnon";
+			PlayerWalkF = "AfdsPknlMstpSoptWbinDnon";
+			PlayerWalkLF = "AfdsPknlMstpSoptWbinDnon";
+			PlayerWalkRF = "AfdsPknlMstpSoptWbinDnon";
+			PlayerWalkL = "AfdsPknlMstpSoptWbinDnon";
+			PlayerWalkR = "AfdsPknlMstpSoptWbinDnon";
+			PlayerWalkLB = "AfdsPknlMstpSoptWbinDnon";
+			PlayerWalkRB = "AfdsPknlMstpSoptWbinDnon";
+			PlayerWalkB = "AfdsPknlMstpSoptWbinDnon";
+			SlowF = "AfdsPknlMstpSoptWbinDnon";
+			SlowLF = "AfdsPknlMstpSoptWbinDnon";
+			SlowRF = "AfdsPknlMstpSoptWbinDnon";
+			SlowL = "AfdsPknlMstpSoptWbinDnon";
+			SlowR = "AfdsPknlMstpSoptWbinDnon";
+			SlowLB = "AfdsPknlMstpSoptWbinDnon";
+			SlowRB = "AfdsPknlMstpSoptWbinDnon";
+			SlowB = "AfdsPknlMstpSoptWbinDnon";
+			PlayerSlowF = "AfdsPknlMstpSoptWbinDnon";
+			PlayerSlowLF = "AfdsPknlMstpSoptWbinDnon";
+			PlayerSlowRF = "AfdsPknlMstpSoptWbinDnon";
+			PlayerSlowL = "AfdsPknlMstpSoptWbinDnon";
+			PlayerSlowR = "AfdsPknlMstpSoptWbinDnon";
+			PlayerSlowLB = "AfdsPknlMstpSoptWbinDnon";
+			PlayerSlowRB = "AfdsPknlMstpSoptWbinDnon";
+			PlayerSlowB = "AfdsPknlMstpSoptWbinDnon";
+			FastF = "AfdsPknlMstpSoptWbinDnon";
+			FastLF = "AfdsPknlMstpSoptWbinDnon";
+			FastRF = "AfdsPknlMstpSoptWbinDnon";
+			FastL = "AfdsPknlMstpSoptWbinDnon";
+			FastR = "AfdsPknlMstpSoptWbinDnon";
+			FastLB = "AfdsPknlMstpSoptWbinDnon";
+			FastRB = "AfdsPknlMstpSoptWbinDnon";
+			FastB = "AfdsPknlMstpSoptWbinDnon";
+			TactF = "AfdsPknlMstpSoptWbinDnon";
+			TactLF = "AfdsPknlMstpSoptWbinDnon";
+			TactRF = "AfdsPknlMstpSoptWbinDnon";
+			TactL = "AfdsPknlMstpSoptWbinDnon";
+			TactR = "AfdsPknlMstpSoptWbinDnon";
+			TactLB = "AfdsPknlMstpSoptWbinDnon";
+			TactRB = "AfdsPknlMstpSoptWbinDnon";
+			TactB = "AfdsPknlMstpSoptWbinDnon";
+			PlayerTactF = "AfdsPknlMstpSoptWbinDnon";
+			PlayerTactLF = "AfdsPknlMstpSoptWbinDnon";
+			PlayerTactRF = "AfdsPknlMstpSoptWbinDnon";
+			PlayerTactL = "AfdsPknlMstpSoptWbinDnon";
+			PlayerTactR = "AfdsPknlMstpSoptWbinDnon";
+			PlayerTactLB = "AfdsPknlMstpSoptWbinDnon";
+			PlayerTactRB = "AfdsPknlMstpSoptWbinDnon";
+			PlayerTactB = "AfdsPknlMstpSoptWbinDnon";
+			EvasiveLeft = "AfdsPknlMstpSoptWbinDnon";
+			EvasiveRight = "AfdsPknlMstpSoptWbinDnon";
+			Down = "AfdsPpneMstpSoptWbinDnon";
+			Up = "AfdsPercMstpSoptWbinDnon";
+			Lying = "AfdsPpneMstpSrasWrflDnon";
+			Stand = "AfdsPknlMstpSlowWrflDnon";
+			Combat = "AfdsPercMstpSrasWrflDnon";
+			Crouch = "AfdsPknlMstpSrasWrflDnon";
+			Civil = "AfdsPercMstpSnonWnonDnon";
+			CivilLying = "AfdsPpneMstpSnonWnonDnon";
+			GetOver = "";
+			FDStart = "AmovPknlMstpSoptWbinDnon";
+			Binoculars = "AfdsPknlMstpSoptWbinDnon";
+			PrimaryWeapon = "AfdsPknlMstpSrasWrflDnon";
+			Default = "AfdsPknlMstpSoptWbinDnon";
+		};
+		class FiringDrillsBinocProneActions: BinocProneActions
+		{
+			Stop = "AfdsPpneMstpSoptWbinDnon";
+			TurnL = "AfdsPpneMstpSoptWbinDnon_turnL";
+			TurnR = "AfdsPpneMstpSoptWbinDnon_turnR";
+			WalkF = "AfdsPpneMstpSoptWbinDnon";
+			WalkLF = "AfdsPpneMstpSoptWbinDnon";
+			WalkRF = "AfdsPpneMstpSoptWbinDnon";
+			WalkL = "AfdsPpneMstpSoptWbinDnon";
+			WalkR = "AfdsPpneMstpSoptWbinDnon";
+			WalkLB = "AfdsPpneMstpSoptWbinDnon";
+			WalkRB = "AfdsPpneMstpSoptWbinDnon";
+			WalkB = "AfdsPpneMstpSoptWbinDnon";
+			PlayerWalkF = "AfdsPpneMstpSoptWbinDnon";
+			PlayerWalkLF = "AfdsPpneMstpSoptWbinDnon";
+			PlayerWalkRF = "AfdsPpneMstpSoptWbinDnon";
+			PlayerWalkL = "AfdsPpneMstpSoptWbinDnon";
+			PlayerWalkR = "AfdsPpneMstpSoptWbinDnon";
+			PlayerWalkLB = "AfdsPpneMstpSoptWbinDnon";
+			PlayerWalkRB = "AfdsPpneMstpSoptWbinDnon";
+			PlayerWalkB = "AfdsPpneMstpSoptWbinDnon";
+			SlowF = "AfdsPpneMstpSoptWbinDnon";
+			SlowLF = "AfdsPpneMstpSoptWbinDnon";
+			SlowRF = "AfdsPpneMstpSoptWbinDnon";
+			SlowL = "AfdsPpneMstpSoptWbinDnon";
+			SlowR = "AfdsPpneMstpSoptWbinDnon";
+			SlowLB = "AfdsPpneMstpSoptWbinDnon";
+			SlowRB = "AfdsPpneMstpSoptWbinDnon";
+			SlowB = "AfdsPpneMstpSoptWbinDnon";
+			PlayerSlowF = "AfdsPpneMstpSoptWbinDnon";
+			PlayerSlowLF = "AfdsPpneMstpSoptWbinDnon";
+			PlayerSlowRF = "AfdsPpneMstpSoptWbinDnon";
+			PlayerSlowL = "AfdsPpneMstpSoptWbinDnon";
+			PlayerSlowR = "AfdsPpneMstpSoptWbinDnon";
+			PlayerSlowLB = "AfdsPpneMstpSoptWbinDnon";
+			PlayerSlowRB = "AfdsPpneMstpSoptWbinDnon";
+			PlayerSlowB = "AfdsPpneMstpSoptWbinDnon";
+			FastF = "AfdsPpneMstpSoptWbinDnon";
+			FastLF = "AfdsPpneMstpSoptWbinDnon";
+			FastRF = "AfdsPpneMstpSoptWbinDnon";
+			FastL = "AfdsPpneMstpSoptWbinDnon";
+			FastR = "AfdsPpneMstpSoptWbinDnon";
+			FastLB = "AfdsPpneMstpSoptWbinDnon";
+			FastRB = "AfdsPpneMstpSoptWbinDnon";
+			FastB = "AfdsPpneMstpSoptWbinDnon";
+			TactF = "AfdsPpneMstpSoptWbinDnon";
+			TactLF = "AfdsPpneMstpSoptWbinDnon";
+			TactRF = "AfdsPpneMstpSoptWbinDnon";
+			TactL = "AfdsPpneMstpSoptWbinDnon";
+			TactR = "AfdsPpneMstpSoptWbinDnon";
+			TactLB = "AfdsPpneMstpSoptWbinDnon";
+			TactRB = "AfdsPpneMstpSoptWbinDnon";
+			TactB = "AfdsPpneMstpSoptWbinDnon";
+			PlayerTactF = "AfdsPpneMstpSoptWbinDnon";
+			PlayerTactLF = "AfdsPpneMstpSoptWbinDnon";
+			PlayerTactRF = "AfdsPpneMstpSoptWbinDnon";
+			PlayerTactL = "AfdsPpneMstpSoptWbinDnon";
+			PlayerTactR = "AfdsPpneMstpSoptWbinDnon";
+			PlayerTactLB = "AfdsPpneMstpSoptWbinDnon";
+			PlayerTactRB = "AfdsPpneMstpSoptWbinDnon";
+			PlayerTactB = "AfdsPpneMstpSoptWbinDnon";
+			EvasiveLeft = "AfdsPpneMstpSoptWbinDnon";
+			EvasiveRight = "AfdsPpneMstpSoptWbinDnon";
+			Down = "AfdsPercMstpSoptWbinDnon";
+			Up = "AfdsPknlMstpSoptWbinDnon";
+			Lying = "AfdsPpneMstpSrasWrflDnon";
+			Stand = "AfdsPercMstpSlowWrflDnon";
+			Combat = "AfdsPercMstpSrasWrflDnon";
+			Crouch = "AfdsPknlMstpSrasWrflDnon";
+			Civil = "AfdsPercMstpSnonWnonDnon";
+			CivilLying = "AfdsPpneMstpSnonWnonDnon";
+			Default = "AfdsPpneMstpSoptWbinDnon";
+			FDStart = "AmovPpneMstpSoptWbinDnon";
+			PrimaryWeapon = "AfdsPpneMstpSrasWrflDnon";
+			Binoculars = "AfdsPpneMstpSoptWbinDnon";
+			Gear = "AfdsPpneMstpSrasWrflDnon_inv";
+		};
+		class FiringDrillsRifleStandActions_inv: FiringDrillsRifleStandActions
+		{
+			Stop = "AfdsPercMstpSrasWrflDnon_inv";
+			Default = "AfdsPercMstpSrasWrflDnon_inv";
+			HandGunOn = "AfdsPercMstpSrasWpstDnon_inv";
+			PlayerStand = "AfdsPercMstpSrasWrflDnon";
+		};
+		class FiringDrillsRifleLowStandActions_inv: FiringDrillsRifleLowStandActions
+		{
+			Stop = "AfdsPercMstpSlowWrflDnon_inv";
+			Default = "AfdsPercMstpSlowWrflDnon_inv";
+			PlayerStand = "AfdsPercMstpSlowWrflDnon";
+			HandGunOn = "AfdsPercMstpSrasWpstDnon_inv";
+		};
+		class FiringDrillsRifleKneelActions_inv: FiringDrillsRifleKneelActions
+		{
+			Stop = "AfdsPknlMstpSrasWrflDnon_inv";
+			Default = "AfdsPknlMstpSrasWrflDnon_inv";
+		};
+		class FiringDrillsRifleLowKneelActions_inv: FiringDrillsRifleLowKneelActions
+		{
+			Stop = "AfdsPknlMstpSlowWrflDnon_inv";
+			Default = "AfdsPknlMstpSlowWrflDnon_inv";
+		};
+		class FiringDrillsRifleProneActions_inv: FiringDrillsRifleProneActions
+		{
+			Stop = "AfdsPpneMstpSrasWrflDnon_inv";
+			Default = "AfdsPpneMstpSrasWrflDnon_inv";
+		};
+		class FiringDrillsPistolStandActions_inv: FiringDrillsPistolStandActions
+		{
+			Stop = "AfdsPercMstpSrasWpstDnon_inv";
+			PlayerStand = "AfdsPercMstpSrasWpstDnon";
+			Default = "AfdsPercMstpSrasWpstDnon_inv";
+		};
+		class FiringDrillsPistolLowStandActions_inv: FiringDrillsPistolStandActions
+		{
+			Stop = "AfdsPercMstpSrasWpstDnon_inv";
+			Default = "AfdsPercMstpSrasWpstDnon_inv";
+		};
+		class FiringDrillsPistolKneelActions_inv: FiringDrillsPistolKneelActions
+		{
+			Stop = "AfdsPknlMstpSrasWpstDnon_inv";
+			Stand = "AfdsPknlMstpSlowWpstDnon_inv";
+			Default = "AfdsPknlMstpSrasWpstDnon_inv";
+		};
+		class FiringDrillsPistolLowKneelActions_inv: FiringDrillsPistolLowKneelActions
+		{
+			Stop = "AfdsPknlMstpSlowWpstDnon_inv";
+			Stand = "AfdsPknlMstpSlowWpstDnon_inv";
+			Default = "AfdsPknlMstpSlowWpstDnon_inv";
+		};
+		class FiringDrillsPistolProneActions_inv: FiringDrillsPistolProneActions
+		{
+			Stop = "AfdsPpneMstpSrasWpstDnon_inv";
+			Default = "AfdsPpneMstpSrasWpstDnon_inv";
+		};
+		class FiringDrillsCivilStandActions_inv: FiringDrillsCivilStandActions
+		{
+			Stop = "AfdsPercMstpSnonWnonDnon_inv";
+			Default = "AfdsPercMstpSnonWnonDnon_inv";
+		};
+		class FiringDrillsCivilKneelActions_inv: FiringDrillsCivilKneelActions{};
+		class FiringDrillsCivilProneActions_inv: FiringDrillsCivilProneActions{};
+		class DeployedProneActions: RifleProneActions
+		{
+			GestureReloadM200[] = {"RifleReloadDeployedM200","Gesture"};
+			GestureReloadMk20[] = {"RifleReloadDeployedMk20","Gesture"};
+			GestureReloadMk20UGL[] = {"RifleReloadDeployedMk20UGL","Gesture"};
+			GestureReloadMXUGL[] = {"RifleReloadDeployedMXUGL","Gesture"};
+			GestureReloadMX[] = {"RifleReloadDeployedMX","Gesture"};
+			GestureReloadMXCompact[] = {"RifleReloadDeployedMXCompact","Gesture"};
+			GestureReloadMXSniper[] = {"RifleReloadDeployedMXSniper","Gesture"};
+			GestureReloadTRG[] = {"RifleReloadDeployedTRG","Gesture"};
+			GestureReloadKatiba[] = {"RifleReloadDeployedKatiba","Gesture"};
+			GestureReloadKatibaUGL[] = {"RifleReloadDeployedKatibaUGL","Gesture"};
+			GestureReloadTRGUGL[] = {"RifleReloadDeployedTRGUGL","Gesture"};
+			GestureReloadLRR[] = {"RifleReloadDeployedLRR","Gesture"};
+			GestureReloadEBR[] = {"RifleReloadDeployedEBR","Gesture"};
+			GestureReloadSMG_03[] = {"RifleReloadDeployedSMG_03","Gesture"};
+			GestureReloadSMG_02[] = {"RifleReloadDeployedSMG_02","Gesture"};
+			GestureReloadSMG_01[] = {"RifleReloadDeployedSMG_01","Gesture"};
+			GestureReloadSDAR[] = {"RifleReloadDeployedSDAR","Gesture"};
+			GestureReloadDMR[] = {"RifleReloadDeployedDMR","Gesture"};
+			GestureReloadDMR02[] = {"RifleReloadDeployedDMR02","Gesture"};
+			GestureReloadDMR03[] = {"RifleReloadDeployedDMR03","Gesture"};
+			GestureReloadDMR04[] = {"RifleReloadDeployedDMR04","Gesture"};
+			GestureReloadDMR05[] = {"RifleReloadDeployedDMR05","Gesture"};
+			GestureReloadDMR06[] = {"RifleReloadDeployedDMR06","Gesture"};
+			GestureReloadMMG01[] = {"RifleReloadDeployedMMG01","Gesture"};
+			GestureReloadMMG02[] = {"RifleReloadDeployedMMG02","Gesture"};
+			GestureReloadM4SSAS[] = {"RifleReloadDeployedM4SSAS","Gesture"};
+			ReloadGM6[] = {"RifleReloadDeployedGM6","Gesture"};
+		};
+		class MortarActions: CivilStandActions
+		{
+			Gear = "";
 		};
 	};
 	primaryActionMaps[] = {"RifleProneActions_injured","DeadActions","LauncherKneelActions","BinocProneRflActions","BinocProneCivilActions","RifleProneActions","PistolProneActions","RifleKneelActions","PistolKneelActions","RifleStandActions","PistolStandActions","RifleLowStandActions","SwimmingActions","CivilStandActions","BinocKneelRflActions","BinocStandRflActions"};

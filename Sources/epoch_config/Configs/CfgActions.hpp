@@ -1,3 +1,18 @@
+/*
+	Author: Aaron Clark - EpochMod.com
+
+    Contributors:
+
+	Description:
+	Disable some default actions on Arma 3.
+
+    Licence:
+    Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
+
+    Github:
+    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_config/Configs/CfgActions.hpp
+*/
+
 class CfgActions
 {
 	class None;
@@ -16,7 +31,7 @@ class CfgActions
 	class Rearm : None
 	{
 		show = 0;
-	}; 
+	};
 	class TakeMagazine : None
 	{
 		show = 0;
@@ -53,7 +68,7 @@ class CfgActions
 	{
 		show = 0;
 	};
-	
+
 
 
 };

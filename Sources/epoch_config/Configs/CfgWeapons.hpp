@@ -1,3 +1,18 @@
+/*
+	Author: Aaron Clark - EpochMod.com
+
+    Contributors:
+
+	Description:
+	Main CfgWeapons config file
+
+    Licence:
+    Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
+
+    Github:
+    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_config/Configs/CfgWeapons.hpp
+*/
+
 class CfgWeapons
 {
 	class InventoryItem_Base_F;
@@ -284,60 +299,65 @@ class CfgWeapons
 
 
 
-	class VestItem : InventoryItem_Base_F
+
+
+	class VestItem: InventoryItem_Base_F
 	{
 		author = "$STR_A3_Bohemia_Interactive";
 		_generalMacro = "VestItem";
 		type = 701;
 		uniformType = "Default";
 		hiddenSelections[] = {};
-		armor = 0;
-		passThrough = 1;
-		hitpointName = "HitBody";
-		overlaySelectionsInfo[] = { "Ghillie_hide" };
+		class HitpointsProtectionInfo
+		{
+			class Body
+			{
+				hitpointName = "HitBody";
+				armor = 0;
+				passThrough = 1;
+			};
+		};
+		overlaySelectionsInfo[] = {"Ghillie_hide"};
 		showHolsteredPistol = 0;
 	};
-	class Vest_Camo_Base : ItemCore
+	class Vest_Camo_Base: ItemCore
 	{
 		author = "$STR_A3_Bohemia_Interactive";
 		_generalMacro = "Vest_Camo_Base";
 		scope = 0;
 		weaponPoolAvailable = 1;
-		allowedSlots[] = { 901 };
+		allowedSlots[] = {901};
 		picture = "\A3\characters_f\Data\UI\icon_V_BandollierB_CA.paa";
 		model = "\x\addons\a3_epoch_assets\models\parcel.p3d";
-		hiddenSelections[] = { "camo" };
-		class ItemInfo : VestItem
+		hiddenSelections[] = {"camo"};
+		descriptionShort = "$STR_A3_SP_NOARMOR";
+		class ItemInfo: VestItem
 		{
 			uniformModel = "\A3\Characters_F\BLUFOR\equip_b_bandolier";
-			hiddenSelections[] = { "camo" };
+			hiddenSelections[] = {"camo"};
 			containerClass = "Supply0";
 			mass = 0;
-			armor = 0;
-			passThrough = 1;
 		};
 	};
-	class Vest_NoCamo_Base : ItemCore
+	class Vest_NoCamo_Base: ItemCore
 	{
 		author = "$STR_A3_Bohemia_Interactive";
 		_generalMacro = "Vest_NoCamo_Base";
 		scope = 0;
 		weaponPoolAvailable = 1;
-		allowedSlots[] = { 901 };
+		allowedSlots[] = {901};
 		picture = "\A3\characters_f\Data\UI\icon_V_BandollierB_CA.paa";
 		model = "\x\addons\a3_epoch_assets\models\parcel.p3d";
 		hiddenSelections[] = {};
-		class ItemInfo : VestItem
+		descriptionShort = "$STR_A3_SP_NOARMOR";
+		class ItemInfo: VestItem
 		{
 			uniformModel = "\A3\Characters_F\BLUFOR\equip_b_bandolier";
 			hiddenSelections[] = {};
 			containerClass = "Supply0";
 			mass = 0;
-			armor = 0;
-			passThrough = 1;
 		};
 	};
-
 
 	class V_F0_EPOCH: Vest_Camo_Base
 	{
@@ -347,13 +367,38 @@ class CfgWeapons
 		picture = "\A3\characters_f\Data\UI\icon_V_TacVest_blk_CA.paa";
 		model = "\x\addons\a3_epoch_assets\models\parcel.p3d";
 		hiddenSelectionsTextures[] = {"\a3\characters_f\common\data\tacticalvest_black_co.paa"};
+		descriptionShort = "$STR_A3_SP_AL_I";
 		class ItemInfo: ItemInfo
 		{
 			uniformModel = "\x\addons\a3_epoch_assets_3\CfgVehicles\Characters\female_tactVest.p3d";
 			containerClass = "Supply100";
 			mass = 40;
-			armor = 20;
-			passThrough = 1;
+			class HitpointsProtectionInfo
+			{
+				class Chest
+				{
+					hitpointName = "HitChest";
+					armor = 8;
+					passThrough = 0.5;
+				};
+				class Diaphragm
+				{
+					hitpointName = "HitDiaphragm";
+					armor = 8;
+					passThrough = 0.5;
+				};
+				class Abdomen
+				{
+					hitpointName = "HitAbdomen";
+					armor = 8;
+					passThrough = 0.5;
+				};
+				class Body
+				{
+					hitpointName = "HitBody";
+					passThrough = 0.5;
+				};
+			};
 		};
 	};
 	class V_F1_EPOCH: V_F0_EPOCH
@@ -391,13 +436,38 @@ class CfgWeapons
 		picture = "\A3\Characters_F\data\ui\icon_V_TacVest_camo_CA.paa";
 		hiddenSelectionsTextures[] = {"\A3\Characters_F\Common\Data\tacticalvest_camo_co.paa"};
 		model = "\x\addons\a3_epoch_assets\models\parcel.p3d";
+		descriptionShort = "$STR_A3_SP_AL_I";
 		class ItemInfo: ItemInfo
 		{
-			uniformModel = "\x\addons\a3_epoch_assets_3\CfgVehicles\Characters\female_tactVest.p3d";
+			uniformModel = "A3\Characters_F\Common\equip_tacticalvest";
 			containerClass = "Supply100";
 			mass = 40;
-			armor = 20;
-			passThrough = 1;
+			class HitpointsProtectionInfo
+			{
+				class Chest
+				{
+					hitpointName = "HitChest";
+					armor = 8;
+					passThrough = 0.5;
+				};
+				class Diaphragm
+				{
+					hitpointName = "HitDiaphragm";
+					armor = 8;
+					passThrough = 0.5;
+				};
+				class Abdomen
+				{
+					hitpointName = "HitAbdomen";
+					armor = 8;
+					passThrough = 0.5;
+				};
+				class Body
+				{
+					hitpointName = "HitBody";
+					passThrough = 0.5;
+				};
+			};
 		};
 	};
 	class V_F5_EPOCH: Vest_Camo_Base
@@ -408,13 +478,38 @@ class CfgWeapons
 		picture = "\A3\characters_f\Data\UI\icon_V_TacVest_blk_police_CA.paa";
 		hiddenSelectionsTextures[] = {"\A3\Characters_F\Common\Data\tacticalvest_police_co.paa"};
 		model = "\x\addons\a3_epoch_assets\models\parcel.p3d";
+		descriptionShort = "$STR_A3_SP_AL_II";
 		class ItemInfo: ItemInfo
 		{
-			uniformModel = "\x\addons\a3_epoch_assets_3\CfgVehicles\Characters\female_tactVest.p3d";
+			uniformModel = "A3\Characters_F\Common\equip_tacticalvest";
 			containerClass = "Supply100";
-			mass = 60;
-			armor = 100;
-			passThrough = 0.7;
+			mass = 50;
+			class HitpointsProtectionInfo
+			{
+				class Chest
+				{
+					hitpointName = "HitChest";
+					armor = 12;
+					passThrough = 0.4;
+				};
+				class Diaphragm
+				{
+					hitpointName = "HitDiaphragm";
+					armor = 12;
+					passThrough = 0.4;
+				};
+				class Abdomen
+				{
+					hitpointName = "HitAbdomen";
+					armor = 12;
+					passThrough = 0.4;
+				};
+				class Body
+				{
+					hitpointName = "HitBody";
+					passThrough = 0.4;
+				};
+			};
 		};
 	};
 
@@ -431,7 +526,7 @@ class CfgWeapons
 		{
 			uniformModel = "\A3\Characters_F\BLUFOR\equip_b_belt";
 			containerClass = "Supply40";
-			mass = 10;
+			mass = 5;
 			armor = 0;
 			passThrough = 1;
 		};
@@ -450,7 +545,7 @@ class CfgWeapons
 		{
 			uniformModel = "\A3\Characters_F\BLUFOR\equip_b_bandolier";
 			containerClass = "Supply80";
-			mass = 15;
+			mass = 10;
 			armor = 0;
 			passThrough = 1;
 		};
@@ -498,13 +593,38 @@ class CfgWeapons
 		displayName = "$STR_A3_V_PlateCarrier1_rgr0";
 		picture = "\A3\characters_f\Data\UI\icon_V_plate_carrier_1_CA.paa";
 		model = "\x\addons\a3_epoch_assets\models\parcel.p3d";
+		descriptionShort = "$STR_A3_SP_AL_III";
 		class ItemInfo : ItemInfo
 		{
 			uniformModel = "\A3\Characters_F\BLUFOR\equip_b_vest02";
 			containerClass = "Supply140";
 			mass = 80;
-			armor = 20;
-			passThrough = 0.5;
+			class HitpointsProtectionInfo
+			{
+				class Chest
+				{
+					HitpointName = "HitChest";
+					armor = 16;
+					PassThrough = 0.3;
+				};
+				class Diaphragm
+				{
+					HitpointName = "HitDiaphragm";
+					armor = 16;
+					PassThrough = 0.3;
+				};
+				class Abdomen
+				{
+					hitpointName = "HitAbdomen";
+					armor = 16;
+					passThrough = 0.3;
+				};
+				class Body
+				{
+					hitpointName = "HitBody";
+					passThrough = 0.3;
+				};
+			};
 		};
 	};
 	class V_7_EPOCH : V_6_EPOCH // V_PlateCarrier2_rgr
@@ -515,13 +635,38 @@ class CfgWeapons
 		displayName = "$STR_A3_V_PlateCarrier2_rgr0";
 		picture = "\A3\characters_f\Data\UI\icon_V_plate_carrier_2_CA.paa";
 		model = "\x\addons\a3_epoch_assets\models\parcel.p3d";
+		descriptionShort = "$STR_A3_SP_AL_IV";
 		class ItemInfo : ItemInfo
 		{
 			uniformModel = "\A3\Characters_F\BLUFOR\equip_b_vest01";
 			containerClass = "Supply140";
 			mass = 100;
-			armor = 30;
-			passThrough = 0.5;
+			class HitpointsProtectionInfo
+			{
+				class Chest
+				{
+					HitpointName = "HitChest";
+					armor = 20;
+					PassThrough = 0.2;
+				};
+				class Diaphragm
+				{
+					HitpointName = "HitDiaphragm";
+					armor = 20;
+					PassThrough = 0.2;
+				};
+				class Abdomen
+				{
+					hitpointName = "HitAbdomen";
+					armor = 20;
+					passThrough = 0.2;
+				};
+				class Body
+				{
+					hitpointName = "HitBody";
+					passThrough = 0.2;
+				};
+			};
 		};
 	};
 	class V_8_EPOCH : Vest_NoCamo_Base // V_PlateCarrier3_rgr
@@ -532,13 +677,38 @@ class CfgWeapons
 		displayName = "$STR_A3_V_PlateCarrier2_rgr0";
 		picture = "\A3\characters_f\Data\UI\icon_V_plate_carrier_2_CA.paa";
 		model = "\x\addons\a3_epoch_assets\models\parcel.p3d";
+		descriptionShort = "$STR_A3_SP_AL_IV";
 		class ItemInfo : ItemInfo
 		{
 			uniformModel = "\A3\Characters_F\BLUFOR\equip_b_vest01.p3d";
 			containerClass = "Supply140";
 			mass = 100;
-			armor = 30;
-			passThrough = 0.5;
+			class HitpointsProtectionInfo
+			{
+				class Chest
+				{
+					HitpointName = "HitChest";
+					armor = 20;
+					PassThrough = 0.2;
+				};
+				class Diaphragm
+				{
+					HitpointName = "HitDiaphragm";
+					armor = 20;
+					PassThrough = 0.2;
+				};
+				class Abdomen
+				{
+					hitpointName = "HitAbdomen";
+					armor = 20;
+					passThrough = 0.2;
+				};
+				class Body
+				{
+					hitpointName = "HitBody";
+					passThrough = 0.2;
+				};
+			};
 		};
 	};
 	class V_9_EPOCH : Vest_NoCamo_Base // V_PlateCarrierGL_rgr
@@ -551,14 +721,57 @@ class CfgWeapons
 		model = "\x\addons\a3_epoch_assets\models\parcel.p3d";
 		hiddenSelections[] = {"camo"};
 		hiddenSelectionsTextures[] = {"\A3\Characters_F_Mark\BLUFOR\Data\carrier_gl_rig_grn_co.paa"};
+		descriptionShort = "$STR_A3_SP_ER";
 		class ItemInfo : ItemInfo
 		{
 			uniformModel = "\A3\Characters_F\BLUFOR\equip_b_carrier_gl_rig.p3d";
 			containerClass = "Supply140";
 			mass = 100;
-			armor = 100;
-			passThrough = 0.7;
-			hiddenSelections[] = { "camo" };
+			hiddenSelections[] = {"camo"};
+			class HitpointsProtectionInfo
+			{
+				class Neck
+				{
+					hitpointName = "HitNeck";
+					armor = 8;
+					passThrough = 0.5;
+				};
+				class Arms
+				{
+					hitpointName = "HitArms";
+					armor = 8;
+					passThrough = 0.5;
+				};
+				class Chest
+				{
+					hitpointName = "HitChest";
+					armor = 78;
+					passThrough = 0.6;
+				};
+				class Diaphragm
+				{
+					hitpointName = "HitDiaphragm";
+					armor = 78;
+					passThrough = 0.6;
+				};
+				class Abdomen
+				{
+					hitpointName = "HitAbdomen";
+					armor = 16;
+					passThrough = 0.3;
+				};
+				class Pelvis
+				{
+					hitpointName = "HitPelvis";
+					armor = 16;
+					passThrough = 0.3;
+				};
+				class Body
+				{
+					hitpointName = "HitBody";
+					passThrough = 0.6;
+				};
+			};
 		};
 	};
 	class V_10_EPOCH : Vest_Camo_Base // V_Chestrig_khk
@@ -571,14 +784,12 @@ class CfgWeapons
 		model = "\x\addons\a3_epoch_assets\models\parcel.p3d";
 		hiddenSelections[] = { "Camo1", "Camo2" };
 		hiddenSelectionsTextures[] = { "\A3\Characters_F\Common\Data\equip_chestrig_khk_co.paa", "\A3\Characters_F\BLUFOR\Data\vests_khk_co.paa" };
-		class ItemInfo : ItemInfo
+		class ItemInfo: ItemInfo
 		{
 			uniformModel = "\A3\Characters_F\Common\equip_chestrig.p3d";
 			containerClass = "Supply140";
 			mass = 20;
-			armor = 0;
-			passThrough = 1;
-			hiddenSelections[] = { "camo1", "camo2" };
+			hiddenSelections[] = {"camo1","camo2"};
 		};
 	};
 	class V_11_EPOCH : V_10_EPOCH // V_Chestrig_rgr
@@ -611,13 +822,38 @@ class CfgWeapons
 		picture = "\A3\characters_f\Data\UI\icon_V_TacVest_khk_CA.paa";
 		model = "\x\addons\a3_epoch_assets\models\parcel.p3d";
 		hiddenSelectionsTextures[] = { "\A3\Characters_F\Common\Data\tacticalvest_khaki_co.paa" };
-		class ItemInfo : ItemInfo
+		descriptionShort = "$STR_A3_SP_AL_I";
+		class ItemInfo: ItemInfo
 		{
 			uniformModel = "A3\Characters_F\Common\equip_tacticalvest";
 			containerClass = "Supply100";
 			mass = 40;
-			armor = 20;
-			passThrough = 1;
+			class HitpointsProtectionInfo
+			{
+				class Chest
+				{
+					hitpointName = "HitChest";
+					armor = 8;
+					passThrough = 0.5;
+				};
+				class Diaphragm
+				{
+					hitpointName = "HitDiaphragm";
+					armor = 8;
+					passThrough = 0.5;
+				};
+				class Abdomen
+				{
+					hitpointName = "HitAbdomen";
+					armor = 8;
+					passThrough = 0.5;
+				};
+				class Body
+				{
+					hitpointName = "HitBody";
+					passThrough = 0.5;
+				};
+			};
 		};
 	};
 	class V_14_EPOCH : V_13_EPOCH //V_TacVest_brn
@@ -660,8 +896,6 @@ class CfgWeapons
 			uniformModel = "\A3\Characters_F\OPFOR\equip_o_vest01";
 			containerClass = "Supply160";
 			mass = 30;
-			armor = 0;
-			passThrough = 0.5;
 		};
 	};
 	class V_18_EPOCH : Vest_NoCamo_Base // V_HarnessOGL_brn
@@ -672,13 +906,11 @@ class CfgWeapons
 		displayName = "$STR_A3_V_HarnessOGL_brn0";
 		picture = "\A3\characters_f\Data\UI\icon_V_HarnessOGL_brn_CA.paa";
 		model = "\x\addons\a3_epoch_assets\models\parcel.p3d";
-		class ItemInfo : ItemInfo
+		class ItemInfo: ItemInfo
 		{
 			uniformModel = "\A3\Characters_F\OPFOR\equip_o_vest_gl";
 			containerClass = "Supply120";
-			mass = 20;
-			armor = 0;
-			passThrough = 0.5;
+			mass = 15;
 		};
 	};
 	class V_19_EPOCH : Vest_Camo_Base // V_RebreatherB
@@ -693,17 +925,42 @@ class CfgWeapons
 		shownUnderwaterSelections[] = { "unhide", "unhide2" };
 		hiddenUnderwaterSelectionsTextures[] = { "\A3\characters_f\common\data\diver_equip_nato_co.paa", "\A3\characters_f\common\data\diver_equip_nato_co.paa", "\A3\characters_f\data\visors_ca.paa" };
 		hiddenSelectionsTextures[] = { "\A3\characters_f\common\data\diver_equip_nato_co.paa" };
+		descriptionShort = "$STR_A3_SP_AL_I";
 		class ItemInfo : ItemInfo
 		{
 			uniformModel = "\A3\Characters_F\Common\equip_rebreather";
 			containerClass = "Supply80";
 			mass = 80;
 			vestType = "Rebreather";
-			hiddenUnderwaterSelections[] = { "hide" };
-			shownUnderwaterSelections[] = { "unhide", "unhide2" };
-			hiddenUnderwaterSelectionsTextures[] = { "\A3\characters_f\common\data\diver_equip_nato_co.paa", "\A3\characters_f\common\data\diver_equip_nato_co.paa", "\A3\characters_f\data\visors_ca.paa" };
-			armor = 20;
-			passThrough = 1;
+			hiddenUnderwaterSelections[] = {"hide"};
+			shownUnderwaterSelections[] = {"unhide","unhide2"};
+			hiddenUnderwaterSelectionsTextures[] = {"\A3\characters_f\common\data\diver_equip_nato_co.paa","\A3\characters_f\common\data\diver_equip_nato_co.paa","\A3\characters_f\data\visors_ca.paa"};
+			class HitpointsProtectionInfo
+			{
+				class Diaphragm
+				{
+					hitpointName = "HitDiaphragm";
+					armor = 8;
+					passThrough = 0.5;
+				};
+				class Abdomen
+				{
+					hitpointName = "HitAbdomen";
+					armor = 8;
+					passThrough = 0.5;
+				};
+				class Pelvis
+				{
+					hitpointName = "HitPelvis";
+					armor = 8;
+					passThrough = 0.5;
+				};
+				class Body
+				{
+					hitpointName = "HitBody";
+					passThrough = 0.5;
+				};
+			};
 		};
 	};
 	class V_20_EPOCH : V_19_EPOCH // V_RebreatherIR
@@ -738,13 +995,38 @@ class CfgWeapons
 		displayName = "$STR_A3_V_PlateCarrier1_blk0";
 		hiddenSelectionsTextures[] = { "\A3\Characters_F\BLUFOR\Data\vests_blk_co.paa" };
 		model = "\x\addons\a3_epoch_assets\models\parcel.p3d";
-		class ItemInfo : ItemInfo
+		descriptionShort = "$STR_A3_SP_AL_III";
+		class ItemInfo: ItemInfo
 		{
 			uniformModel = "\A3\Characters_F\BLUFOR\equip_b_vest02.p3d";
 			containerClass = "Supply140";
 			mass = 80;
-			armor = 20;
-			passThrough = 0.5;
+			class HitpointsProtectionInfo
+			{
+				class Chest
+				{
+					HitpointName = "HitChest";
+					armor = 16;
+					PassThrough = 0.3;
+				};
+				class Diaphragm
+				{
+					HitpointName = "HitDiaphragm";
+					armor = 16;
+					PassThrough = 0.3;
+				};
+				class Abdomen
+				{
+					hitpointName = "HitAbdomen";
+					armor = 16;
+					passThrough = 0.3;
+				};
+				class Body
+				{
+					hitpointName = "HitBody";
+					passThrough = 0.3;
+				};
+			};
 		};
 	};
 	class V_23_EPOCH : Vest_NoCamo_Base // V_PlateCarrierSpec_rgr
@@ -755,16 +1037,54 @@ class CfgWeapons
 		displayName = "$STR_A3_V_PlateCarrierSpec_rgr0";
 		picture = "\A3\characters_f\Data\UI\icon_V_plate_carrier_1_CA.paa";
 		model = "\x\addons\a3_epoch_assets\models\parcel.p3d";
+		DLC = "Mark";
+		descriptionShort = "$STR_A3_SP_AL_V";
 		hiddenSelections[] = {"camo"};
 		hiddenSelectionsTextures[] = {"\A3\Characters_F_Mark\BLUFOR\Data\carrier_gl_rig_grn_co.paa"};
-		class ItemInfo : ItemInfo
+		class ItemInfo: ItemInfo
 		{
 			uniformModel = "\A3\Characters_F\BLUFOR\equip_b_carrier_spec_rig.p3d";
 			containerClass = "Supply100";
 			mass = 120;
-			armor = 40;
-			passThrough = 0.1;
-			hiddenSelections[] = { "camo" };
+			hiddenSelections[] = {"camo"};
+			class HitpointsProtectionInfo
+			{
+				class Neck
+				{
+					hitpointName = "HitNeck";
+					armor = 8;
+					passThrough = 0.5;
+				};
+				class Arms
+				{
+					hitpointName = "HitArms";
+					armor = 8;
+					passThrough = 0.5;
+				};
+				class Chest
+				{
+					hitpointName = "HitChest";
+					armor = 24;
+					passThrough = 0.1;
+				};
+				class Diaphragm
+				{
+					hitpointName = "HitDiaphragm";
+					armor = 24;
+					passThrough = 0.1;
+				};
+				class Abdomen
+				{
+					hitpointName = "HitAbdomen";
+					armor = 24;
+					passThrough = 0.1;
+				};
+				class Body
+				{
+					hitpointName = "HitBody";
+					passThrough = 0.1;
+				};
+			};
 		};
 	};
 	class V_24_EPOCH : Vest_Camo_Base // V_Chestrig_oli
@@ -782,9 +1102,7 @@ class CfgWeapons
 			uniformModel = "\A3\Characters_F\Common\equip_chestrig.p3d";
 			containerClass = "Supply140";
 			mass = 20;
-			armor = 0;
-			passThrough = 1;
-			hiddenSelections[] = { "Camo1", "Camo2" };
+			hiddenSelections[] = {"Camo1","Camo2"};
 		};
 	};
 	class V_25_EPOCH : Vest_Camo_Base // V_TacVest_camo
@@ -797,13 +1115,38 @@ class CfgWeapons
 		model = "\x\addons\a3_epoch_assets\models\parcel.p3d";
 		picture = "\A3\Characters_F\data\ui\icon_V_TacVest_camo_CA.paa";
 		hiddenSelectionsTextures[] = { "\A3\Characters_F_Bootcamp\Common\Data\tacticalvest_camo_co.paa" };
-		class ItemInfo : ItemInfo
+		descriptionShort = "$STR_A3_SP_AL_I";
+		class ItemInfo: ItemInfo
 		{
 			uniformModel = "A3\Characters_F\Common\equip_tacticalvest";
 			containerClass = "Supply100";
 			mass = 40;
-			armor = 20;
-			passThrough = 1;
+			class HitpointsProtectionInfo
+			{
+				class Chest
+				{
+					hitpointName = "HitChest";
+					armor = 8;
+					passThrough = 0.5;
+				};
+				class Diaphragm
+				{
+					hitpointName = "HitDiaphragm";
+					armor = 8;
+					passThrough = 0.5;
+				};
+				class Abdomen
+				{
+					hitpointName = "HitAbdomen";
+					armor = 8;
+					passThrough = 0.5;
+				};
+				class Body
+				{
+					hitpointName = "HitBody";
+					passThrough = 0.5;
+				};
+			};
 		};
 	};
 	class V_26_EPOCH : Vest_Camo_Base // V_TacVest_blk_POLICE
@@ -816,13 +1159,38 @@ class CfgWeapons
 		picture = "\A3\characters_f\Data\UI\icon_V_TacVest_blk_police_CA.paa";
 		hiddenSelectionsTextures[] = { "\A3\Characters_F\Common\Data\tacticalvest_police_co.paa" };
 		model = "\x\addons\a3_epoch_assets\models\parcel.p3d";
-		class ItemInfo : ItemInfo
+		descriptionShort = "$STR_A3_SP_AL_II";
+		class ItemInfo: ItemInfo
 		{
 			uniformModel = "A3\Characters_F\Common\equip_tacticalvest";
 			containerClass = "Supply100";
-			mass = 60;
-			armor = 100;
-			passThrough = 0.7;
+			mass = 50;
+			class HitpointsProtectionInfo
+			{
+				class Chest
+				{
+					hitpointName = "HitChest";
+					armor = 12;
+					passThrough = 0.4;
+				};
+				class Diaphragm
+				{
+					hitpointName = "HitDiaphragm";
+					armor = 12;
+					passThrough = 0.4;
+				};
+				class Abdomen
+				{
+					hitpointName = "HitAbdomen";
+					armor = 12;
+					passThrough = 0.4;
+				};
+				class Body
+				{
+					hitpointName = "HitBody";
+					passThrough = 0.4;
+				};
+			};
 		};
 	};
 	class V_27_EPOCH : Vest_NoCamo_Base // V_TacVestIR_blk
@@ -833,13 +1201,38 @@ class CfgWeapons
 		displayName = "$STR_A3_V_TacVestIR_blk0";
 		picture = "\A3\characters_f\Data\UI\icon_V_TacVestIR_blk_CA.paa";
 		model = "\x\addons\a3_epoch_assets\models\parcel.p3d";
-		class ItemInfo : VestItem
+		descriptionShort = "$STR_A3_SP_AL_I";
+		class ItemInfo: VestItem
 		{
 			uniformModel = "\A3\Characters_F_Beta\INDEP\equip_ir_vest01";
-			containerClass = "Supply100";
+			containerClass = "Supply140";
 			mass = 50;
-			armor = 20;
-			passThrough = 0.5;
+			class HitpointsProtectionInfo
+			{
+				class Chest
+				{
+					hitpointName = "HitChest";
+					armor = 8;
+					passThrough = 0.5;
+				};
+				class Diaphragm
+				{
+					hitpointName = "HitDiaphragm";
+					armor = 8;
+					passThrough = 0.5;
+				};
+				class Abdomen
+				{
+					hitpointName = "HitAbdomen";
+					armor = 8;
+					passThrough = 0.5;
+				};
+				class Body
+				{
+					hitpointName = "HitBody";
+					passThrough = 0.5;
+				};
+			};
 		};
 	};
 	class V_28_EPOCH : Vest_Camo_Base // V_TacVestCamo_khk
@@ -852,15 +1245,40 @@ class CfgWeapons
 		picture = "\A3\characters_f\Data\UI\icon_V_TacVest_Camo_CA.paa";
 		hiddenSelectionsTextures[] = { "\A3\Characters_F_Bootcamp\Common\Data\tacticalvest_camo_co.paa" };
 		model = "\x\addons\a3_epoch_assets\models\parcel.p3d";
-		class ItemInfo : VestItem
+		descriptionShort = "$STR_A3_SP_AL_I";
+		class ItemInfo: VestItem
 		{
 			uniformModel = "A3\Characters_F\Common\equip_tacticalvest";
-			hiddenSelections[] = { "camo" };
-			hiddenSelectionsTextures[] = { "\A3\Characters_F_Bootcamp\Common\Data\tacticalvest_camo_co.paa" };
+			hiddenSelections[] = {"camo"};
+			hiddenSelectionsTextures[] = {"\A3\Characters_F_Bootcamp\Common\Data\tacticalvest_camo_co.paa"};
 			containerClass = "Supply100";
 			mass = 40;
-			armor = 20;
-			passThrough = 1;
+			class HitpointsProtectionInfo
+			{
+				class Chest
+				{
+					hitpointName = "HitChest";
+					armor = 8;
+					passThrough = 0.5;
+				};
+				class Diaphragm
+				{
+					hitpointName = "HitDiaphragm";
+					armor = 8;
+					passThrough = 0.5;
+				};
+				class Abdomen
+				{
+					hitpointName = "HitAbdomen";
+					armor = 8;
+					passThrough = 0.5;
+				};
+				class Body
+				{
+					hitpointName = "HitBody";
+					passThrough = 0.5;
+				};
+			};
 		};
 	};
 	class V_29_EPOCH : V_17_EPOCH // V_HarnessO_gry
@@ -877,9 +1295,7 @@ class CfgWeapons
 			uniformModel = "\A3\Characters_F\OPFOR\equip_o_vest01";
 			containerClass = "Supply160";
 			mass = 30;
-			armor = 0;
-			passThrough = 0.5;
-			hiddenSelections[] = { "Camo1", "Camo2" };
+			hiddenSelections[] = {"Camo1","Camo2"};
 		};
 	};
 	class V_30_EPOCH : V_29_EPOCH // V_HarnessOGL_gry
@@ -888,15 +1304,13 @@ class CfgWeapons
 		_generalMacro = "V_HarnessOGL_gry";
 		picture = "\A3\characters_f_beta\Data\UI\icon_V_HarnessOUGL_gry_CA.paa";
 		displayName = "$STR_A3_V_HarnessOGL_gry0";
-		class ItemInfo : ItemInfo
+		class ItemInfo: ItemInfo
 		{
 			uniformModel = "\A3\Characters_F\OPFOR\equip_o_vest_gl";
 			containerClass = "Supply120";
-			mass = 20;
-			armor = 0;
-			passThrough = 0.5;
-			hiddenSelections[] = { "Camo1", "Camo2" };
-		};
+			mass = 15;
+			hiddenSelections[] = {"Camo1","Camo2"};
+		};;
 	};
 	class V_31_EPOCH : V_17_EPOCH // V_HarnessOSpec_brn
 	{
@@ -906,13 +1320,11 @@ class CfgWeapons
 		displayName = "$STR_A3_V_HarnessOSpec_brn0";
 		picture = "\A3\characters_f\Data\UI\icon_V_HarnessO_brn_CA.paa";
 		model = "\x\addons\a3_epoch_assets\models\parcel.p3d";
-		class ItemInfo : VestItem
+		class ItemInfo: VestItem
 		{
 			uniformModel = "\A3\Characters_F\OPFOR\equip_o_vest01";
 			containerClass = "Supply160";
 			mass = 30;
-			armor = 0;
-			passThrough = 0.5;
 		};
 	};
 	class V_32_EPOCH : V_29_EPOCH // V_HarnessOSpec_gry
@@ -921,14 +1333,12 @@ class CfgWeapons
 		_generalMacro = "V_HarnessOSpec_gry";
 		picture = "\A3\characters_f_beta\Data\UI\icon_V_HarnessOU_gry_CA.paa";
 		displayName = "$STR_A3_V_HarnessOSpec_gry0";
-		class ItemInfo : ItemInfo
+		class ItemInfo: ItemInfo
 		{
 			uniformModel = "\A3\Characters_F\OPFOR\equip_o_vest01";
 			containerClass = "Supply160";
 			mass = 30;
-			armor = 0;
-			passThrough = 0.5;
-			hiddenSelections[] = { "Camo1", "Camo2" };
+			hiddenSelections[] = {"Camo1","Camo2"};
 		};
 	};
 	class V_33_EPOCH : Vest_NoCamo_Base // V_PlateCarrierIA1_dgtl
@@ -939,13 +1349,38 @@ class CfgWeapons
 		displayName = "$STR_A3_V_PlateCarrierIA1_dgtl0";
 		picture = "\A3\characters_f_Beta\Data\UI\icon_V_I_Vest_01_ca.paa";
 		model = "\x\addons\a3_epoch_assets\models\parcel.p3d";
-		class ItemInfo : VestItem
+		descriptionShort = "$STR_A3_SP_AL_III";
+		class ItemInfo: VestItem
 		{
 			uniformModel = "A3\Characters_F_Beta\INDEP\equip_ia_vest01";
 			containerClass = "Supply120";
 			mass = 60;
-			armor = 20;
-			passThrough = 0.5;
+			class HitpointsProtectionInfo
+			{
+				class Chest
+				{
+					hitpointName = "HitChest";
+					armor = 16;
+					passThrough = 0.3;
+				};
+				class Diaphragm
+				{
+					hitpointName = "HitDiaphragm";
+					armor = 16;
+					passThrough = 0.3;
+				};
+				class Abdomen
+				{
+					hitpointName = "HitAbdomen";
+					armor = 16;
+					passThrough = 0.3;
+				};
+				class Body
+				{
+					hitpointName = "HitBody";
+					passThrough = 0.3;
+				};
+			};
 		};
 	};
 	class V_34_EPOCH : V_33_EPOCH // V_PlateCarrierIA2_dgtl
@@ -955,13 +1390,44 @@ class CfgWeapons
 		displayName = "$STR_A3_V_PlateCarrierIA2_dgtl0";
 		picture = "\A3\characters_f_Beta\Data\UI\icon_V_I_Vest_02_ca.paa";
 		model = "\x\addons\a3_epoch_assets\models\parcel.p3d";
-		class ItemInfo : VestItem
+		descriptionShort = "$STR_A3_SP_AL_III";
+		class ItemInfo: VestItem
 		{
 			uniformModel = "A3\Characters_F_Beta\INDEP\equip_ia_vest02";
-			containerClass = "Supply180";
-			mass = 60;
-			armor = 15;
-			passThrough = 0.5;
+			containerClass = "Supply120";
+			mass = 80;
+			class HitpointsProtectionInfo
+			{
+				class Chest
+				{
+					hitpointName = "HitChest";
+					armor = 16;
+					passThrough = 0.3;
+				};
+				class Diaphragm
+				{
+					hitpointName = "HitDiaphragm";
+					armor = 16;
+					passThrough = 0.3;
+				};
+				class Abdomen
+				{
+					hitpointName = "HitAbdomen";
+					armor = 16;
+					passThrough = 0.3;
+				};
+				class Pelvis
+				{
+					hitpointName = "HitPelvis";
+					armor = 16;
+					passThrough = 0.3;
+				};
+				class Body
+				{
+					hitpointName = "HitBody";
+					passThrough = 0.3;
+				};
+			};
 		};
 	};
 	class V_35_EPOCH : V_34_EPOCH // V_PlateCarrierIAGL_dgtl
@@ -970,19 +1436,62 @@ class CfgWeapons
 		_generalMacro = "V_PlateCarrierIAGL_dgtl";
 		scope = 2;
 		displayName = "$STR_A3_V_PlateCarrierIAGL_dgtl0";
-		picture = "\A3\Characters_F_Beta\Data\UI\icon_V_I_Vest_02_ca.paa";
+		picture = "\A3\Characters_F_Mark\Data\UI\icon_ga_carrier_gl_rig_digi.paa";
 		model = "\x\addons\a3_epoch_assets\models\parcel.p3d";
 		DLC = "Mark";
 		hiddenSelections[] = {"camo1","camo2"};
 		hiddenSelectionsTextures[] = {"\A3\Characters_F_Beta\INDEP\Data\equip_ia_vest01_co.paa","\A3\Characters_F_Mark\INDEP\Data\ga_carrier_gl_rig_digi_co.paa"};
-		class ItemInfo : VestItem
+		descriptionShort = "$STR_A3_SP_ER";
+		class ItemInfo: VestItem
 		{
 			uniformModel = "\A3\Characters_F_beta\INDEP\equip_ia_ga_carrier_gl_rig.p3d";
 			containerClass = "Supply120";
 			mass = 80;
-			armor = 100;
-			passThrough = 0.7;
-			hiddenSelections[] = { "camo1", "camo2" };
+			hiddenSelections[] = {"camo1","camo2"};
+			class HitpointsProtectionInfo
+			{
+				class Neck
+				{
+					hitpointName = "HitNeck";
+					armor = 8;
+					passThrough = 0.5;
+				};
+				class Arms
+				{
+					hitpointName = "HitArms";
+					armor = 8;
+					passThrough = 0.5;
+				};
+				class Chest
+				{
+					hitpointName = "HitChest";
+					armor = 78;
+					passThrough = 0.6;
+				};
+				class Diaphragm
+				{
+					hitpointName = "HitDiaphragm";
+					armor = 78;
+					passThrough = 0.6;
+				};
+				class Abdomen
+				{
+					hitpointName = "HitAbdomen";
+					armor = 16;
+					passThrough = 0.3;
+				};
+				class Pelvis
+				{
+					hitpointName = "HitPelvis";
+					armor = 16;
+					passThrough = 0.3;
+				};
+				class Body
+				{
+					hitpointName = "HitBody";
+					passThrough = 0.6;
+				};
+			};
 		};
 	};
 	class V_36_EPOCH : V_19_EPOCH // V_RebreatherIA
@@ -1005,10 +1514,6 @@ class CfgWeapons
 		class ItemInfo : ItemInfo
 		{
 			uniformModel = "\A3\Characters_F_EPA\BLUFOR\equip_b_vest_kerry.p3d";
-			containerClass = "Supply140";
-			mass = 80;
-			armor = 30;
-			passThrough = 0.5;
 		};
 	};
 	class V_38_EPOCH : V_6_EPOCH // V_PlateCarrierL_CTRG
@@ -1019,14 +1524,10 @@ class CfgWeapons
 		displayName = "$STR_A3_V_PlateCarrierL_CTRG0";
 		hiddenSelections[] = { "camo" };
 		hiddenSelectionsTextures[] = { "\A3\Characters_F_EPA\BLUFOR\Data\vests_snake_co.paa" };
-		class ItemInfo : ItemInfo
+		class ItemInfo: ItemInfo
 		{
 			uniformModel = "\A3\Characters_F\BLUFOR\equip_b_vest02.p3d";
-			containerClass = "Supply140";
-			mass = 80;
-			armor = 20;
-			passThrough = 0.5;
-			hiddenSelections[] = { "camo" };
+			hiddenSelections[] = {"camo"};
 		};
 	};
 	class V_39_EPOCH : V_7_EPOCH // V_PlateCarrierH_CTRG
@@ -1037,14 +1538,10 @@ class CfgWeapons
 		displayName = "$STR_A3_V_PlateCarrierH_CTRG0";
 		hiddenSelections[] = { "camo" };
 		hiddenSelectionsTextures[] = { "\A3\Characters_F_EPA\BLUFOR\Data\vests_snake_co.paa" };
-		class ItemInfo : ItemInfo
+		class ItemInfo: ItemInfo
 		{
 			uniformModel = "\A3\Characters_F\BLUFOR\equip_b_vest01.p3d";
-			containerClass = "Supply140";
-			mass = 100;
-			armor = 30;
-			passThrough = 0.5;
-			hiddenSelections[] = { "camo" };
+			hiddenSelections[] = {"camo"};
 		};
 	};
 	class V_40_EPOCH : V_25_EPOCH // V_I_G_resistanceLeader_F
@@ -1105,14 +1602,15 @@ class CfgWeapons
 
 	class HeadgearItem: InventoryItem_Base_F
 	{
+		_generalMacro = "HeadgearItem";
 		allowedSlots[] = {901,605};
 		type = 605;
 		hiddenSelections[] = {};
-		hitpointName = "HitHead";
 	};
 
 	class clown_mask_epoch : ItemCore
 	{
+		author = "Aaron Clark";
 		scope = 2;
 		weaponPoolAvailable = 1;
 		displayName = "Clown Mask";
@@ -1133,6 +1631,7 @@ class CfgWeapons
 	{
 		scope = 2;
 		displayName = "Red Beret";
+		author = "Paul Tomany";
 		picture = "\A3\characters_f\Data\UI\icon_H_Cap_blk_CA.paa";
 		model = "\x\addons\a3_epoch_assets\models\parcel.p3d";
 		hiddenSelections[] = {"camo"};
@@ -1711,8 +2210,16 @@ class CfgWeapons
 		class WeaponSlotsInfo;
 		class GunParticles;
 	};
+	class Rifle_Long_Base_F: Rifle_Base_F
+	{
+		class WeaponSlotsInfo: WeaponSlotsInfo
+		{
+			allowedSlots[] = {901};
+		};
+	};
+
 	class UGL_F;
-	class Test_weapon_01_Base_F: Rifle_Base_F
+	class Epoch_weapon_01_Base_F: Rifle_Base_F
 	{
 		magazines[] = {"30Rnd_test_mag_Tracer","30Rnd_test_mag"};
 		reloadAction = "GestureReloadMX";
@@ -1847,7 +2354,7 @@ class CfgWeapons
 		drySound[] = {"A3\sounds_f\weapons\Other\dry_1","db-5",1,10};
 		reloadMagazineSound[] = {"A3\sounds_f\weapons\reloads\new_MX","db-8",1,30};
 	};
-	class Rollins_F: Test_weapon_01_Base_F
+	class Rollins_F: Epoch_weapon_01_Base_F
 	{
 		scope = 2;
 		displayName = "Rollins Rifle";
@@ -1905,7 +2412,7 @@ class CfgWeapons
 		drySound[] = {"A3\sounds_f\weapons\Other\dry_1","db-5",1,10};
 		reloadMagazineSound[] = {"A3\sounds_f\weapons\reloads\new_MX","db-8",1,30};
 	};
-	class ChainSaw: Test_weapon_01_Base_F
+	class ChainSaw: Epoch_weapon_01_Base_F
 	{
 		scope = 2;
 		model = "\x\addons\a3_epoch_assets_1\models\chainsaw.p3d";
@@ -2585,13 +3092,7 @@ class CfgWeapons
 		};
 	};*/
 
-	class Rifle_Long_Base_F : Rifle_Base_F
-	{
-		class WeaponSlotsInfo : WeaponSlotsInfo
-		{
-			allowedSlots[] = {901};
-		};
-	};
+
 
 	class ItemRadio;
 	class EpochRadio0 : ItemRadio {

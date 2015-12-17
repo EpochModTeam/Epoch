@@ -164,7 +164,7 @@ class QuickUpgrade
 			y = 0.622266 * safezoneH + safezoneY;
 			w = 0.05875 * safezoneW;
 			h = 0.0282151 * safezoneH;
-			action = "cursorTarget call EPOCH_upgradeBUILDv2";
+			action = "cursorTarget call EPOCH_upgradeBUILD";
 		};
 
 	};
@@ -2582,39 +2582,47 @@ class RscDisplayInventory
 			idc = 1243;
 			x = "26.6 * 					(			((safezoneW / safezoneH) min 1.2) / 40) + 		(safezoneX + (safezoneW - 					((safezoneW / safezoneH) min 1.2))/2)";
 			y = "9.1 * 					(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25) + 		(safezoneY + (safezoneH - 					(			((safezoneW / safezoneH) min 1.2) / 1.2))/2)";
-			w = "2.3 * 					(			((safezoneW / safezoneH) min 1.2) / 40)";
+			w = "1.9 * 					(			((safezoneW / safezoneH) min 1.2) / 40)";
 			h = "2 * 					(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25)";
 		};
 		class BackgroundSlotPrimaryUnderBarrel : BackgroundSlotPrimary
 		{
 			idc = 1200;
-			x = "29 * 					(			((safezoneW / safezoneH) min 1.2) / 40) + 		(safezoneX + (safezoneW - 					((safezoneW / safezoneH) min 1.2))/2)";
+			x = "28.6 * 					(			((safezoneW / safezoneH) min 1.2) / 40) + 		(safezoneX + (safezoneW - 					((safezoneW / safezoneH) min 1.2))/2)";
 			y = "9.1 * 					(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25) + 		(safezoneY + (safezoneH - 					(			((safezoneW / safezoneH) min 1.2) / 1.2))/2)";
-			w = "2.3 * 					(			((safezoneW / safezoneH) min 1.2) / 40)";
+			w = "1.9 * 					(			((safezoneW / safezoneH) min 1.2) / 40)";
 			h = "2 * 					(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25)";
 		};
 		class BackgroundSlotPrimaryFlashlight : BackgroundSlotPrimary
 		{
 			idc = 1244;
-			x = "31.4 * 					(			((safezoneW / safezoneH) min 1.2) / 40) + 		(safezoneX + (safezoneW - 					((safezoneW / safezoneH) min 1.2))/2)";
+			x = "30.6 * 					(			((safezoneW / safezoneH) min 1.2) / 40) + 		(safezoneX + (safezoneW - 					((safezoneW / safezoneH) min 1.2))/2)";
 			y = "9.2 * 					(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25) + 		(safezoneY + (safezoneH - 					(			((safezoneW / safezoneH) min 1.2) / 1.2))/2)";
-			w = "2.3 * 					(			((safezoneW / safezoneH) min 1.2) / 40)";
+			w = "1.9 * 					(			((safezoneW / safezoneH) min 1.2) / 40)";
 			h = "2 * 					(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25)";
 		};
 		class BackgroundSlotPrimaryOptics : BackgroundSlotPrimary
 		{
 			idc = 1245;
-			x = "33.8 * 					(			((safezoneW / safezoneH) min 1.2) / 40) + 		(safezoneX + (safezoneW - 					((safezoneW / safezoneH) min 1.2))/2)";
+			x = "32.6 * 					(			((safezoneW / safezoneH) min 1.2) / 40) + 		(safezoneX + (safezoneW - 					((safezoneW / safezoneH) min 1.2))/2)";
 			y = "9.1 * 					(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25) + 		(safezoneY + (safezoneH - 					(			((safezoneW / safezoneH) min 1.2) / 1.2))/2)";
-			w = "2.3 * 					(			((safezoneW / safezoneH) min 1.2) / 40)";
+			w = "1.9 * 					(			((safezoneW / safezoneH) min 1.2) / 40)";
+			h = "2 * 					(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25)";
+		};
+		class BackgroundSlotPrimaryMagazineGL: BackgroundSlotPrimary
+		{
+			idc = 1267;
+			x = "34.6 * 					(			((safezoneW / safezoneH) min 1.2) / 40) + 		(safezoneX + (safezoneW - 					((safezoneW / safezoneH) min 1.2))/2)";
+			y = "9.1 * 					(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25) + 		(safezoneY + (safezoneH - 					(			((safezoneW / safezoneH) min 1.2) / 1.2))/2)";
+			w = "1.9 * 					(			((safezoneW / safezoneH) min 1.2) / 40)";
 			h = "2 * 					(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25)";
 		};
 		class BackgroundSlotPrimaryMagazine : BackgroundSlotPrimary
 		{
 			idc = 1246;
-			x = "36.2 * 					(			((safezoneW / safezoneH) min 1.2) / 40) + 		(safezoneX + (safezoneW - 					((safezoneW / safezoneH) min 1.2))/2)";
+			x = "36.6 * 					(			((safezoneW / safezoneH) min 1.2) / 40) + 		(safezoneX + (safezoneW - 					((safezoneW / safezoneH) min 1.2))/2)";
 			y = "9.1 * 					(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25) + 		(safezoneY + (safezoneH - 					(			((safezoneW / safezoneH) min 1.2) / 1.2))/2)";
-			w = "2.3 * 					(			((safezoneW / safezoneH) min 1.2) / 40)";
+			w = "1.9 * 					(			((safezoneW / safezoneH) min 1.2) / 40)";
 			h = "2 * 					(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25)";
 		};
 		class BackgroundSlotSecondary : BackgroundSlotPrimary
@@ -2896,43 +2904,52 @@ class RscDisplayInventory
 			idc = 620;
 			x = "26.6 * 					(			((safezoneW / safezoneH) min 1.2) / 40) + 		(safezoneX + (safezoneW - 					((safezoneW / safezoneH) min 1.2))/2)";
 			y = "9.1 * 					(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25) + 		(safezoneY + (safezoneH - 					(			((safezoneW / safezoneH) min 1.2) / 1.2))/2)";
-			w = "2.3 * 					(			((safezoneW / safezoneH) min 1.2) / 40)";
+			w = "1.9 * 					(			((safezoneW / safezoneH) min 1.2) / 40)";
 			h = "2 * 					(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25)";
 			colorText[] = { 0, 0, 0, 0.5 };
 		};
 		class SlotPrimaryUnderBarrel : SlotPrimary
 		{
 			idc = 641;
-			x = "29 * 					(			((safezoneW / safezoneH) min 1.2) / 40) + 		(safezoneX + (safezoneW - 					((safezoneW / safezoneH) min 1.2))/2)";
+			x = "28.6 * 					(			((safezoneW / safezoneH) min 1.2) / 40) + 		(safezoneX + (safezoneW - 					((safezoneW / safezoneH) min 1.2))/2)";
 			y = "9.1 * 					(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25) + 		(safezoneY + (safezoneH - 					(			((safezoneW / safezoneH) min 1.2) / 1.2))/2)";
-			w = "2.3 * 					(			((safezoneW / safezoneH) min 1.2) / 40)";
+			w = "1.9 * 					(			((safezoneW / safezoneH) min 1.2) / 40)";
 			h = "2 * 					(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25)";
 			colorText[] = { 0, 0, 0, 0.5 };
 		};
 		class SlotPrimaryFlashlight : SlotPrimary
 		{
 			idc = 622;
-			x = "31.4 * 					(			((safezoneW / safezoneH) min 1.2) / 40) + 		(safezoneX + (safezoneW - 					((safezoneW / safezoneH) min 1.2))/2)";
+			x = "30.6 * 					(			((safezoneW / safezoneH) min 1.2) / 40) + 		(safezoneX + (safezoneW - 					((safezoneW / safezoneH) min 1.2))/2)";
 			y = "9.1 * 					(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25) + 		(safezoneY + (safezoneH - 					(			((safezoneW / safezoneH) min 1.2) / 1.2))/2)";
-			w = "2.3 * 					(			((safezoneW / safezoneH) min 1.2) / 40)";
+			w = "1.9 * 					(			((safezoneW / safezoneH) min 1.2) / 40)";
 			h = "2 * 					(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25)";
 			colorText[] = { 0, 0, 0, 0.5 };
 		};
 		class SlotPrimaryOptics : SlotPrimary
 		{
 			idc = 621;
-			x = "33.8 * 					(			((safezoneW / safezoneH) min 1.2) / 40) + 		(safezoneX + (safezoneW - 					((safezoneW / safezoneH) min 1.2))/2)";
+			x = "32.6 * 					(			((safezoneW / safezoneH) min 1.2) / 40) + 		(safezoneX + (safezoneW - 					((safezoneW / safezoneH) min 1.2))/2)";
 			y = "9.1 * 					(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25) + 		(safezoneY + (safezoneH - 					(			((safezoneW / safezoneH) min 1.2) / 1.2))/2)";
-			w = "2.3 * 					(			((safezoneW / safezoneH) min 1.2) / 40)";
+			w = "1.9 * 					(			((safezoneW / safezoneH) min 1.2) / 40)";
 			h = "2 * 					(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25)";
 			colorText[] = { 0, 0, 0, 0.5 };
+		};
+		class SlotPrimaryMagazineGL: SlotPrimary
+		{
+			idc = 644;
+			x = "34.6 * 					(			((safezoneW / safezoneH) min 1.2) / 40) + 		(safezoneX + (safezoneW - 					((safezoneW / safezoneH) min 1.2))/2)";
+			y = "9.1 * 					(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25) + 		(safezoneY + (safezoneH - 					(			((safezoneW / safezoneH) min 1.2) / 1.2))/2)";
+			w = "1.9 * 					(			((safezoneW / safezoneH) min 1.2) / 40)";
+			h = "2 * 					(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25)";
+			colorText[] = {0,0,0,0.5};
 		};
 		class SlotPrimaryMagazine : SlotPrimary
 		{
 			idc = 623;
-			x = "36.2 * 					(			((safezoneW / safezoneH) min 1.2) / 40) + 		(safezoneX + (safezoneW - 					((safezoneW / safezoneH) min 1.2))/2)";
+			x = "36.6 * 					(			((safezoneW / safezoneH) min 1.2) / 40) + 		(safezoneX + (safezoneW - 					((safezoneW / safezoneH) min 1.2))/2)";
 			y = "9.1 * 					(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25) + 		(safezoneY + (safezoneH - 					(			((safezoneW / safezoneH) min 1.2) / 1.2))/2)";
-			w = "2.3 * 					(			((safezoneW / safezoneH) min 1.2) / 40)";
+			w = "1.9 * 					(			((safezoneW / safezoneH) min 1.2) / 40)";
 			h = "2 * 					(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25)";
 			colorText[] = { 0, 0, 0, 0.5 };
 		};
@@ -3393,6 +3410,9 @@ class RscDisplayInventory
 		};
 	};
 };
+
+
+
 class RscDisplayInterrupt: RscStandardDisplay //convert to preprocessFileNumbers
 {
 	onLoad = "[""onLoad"",_this,""RscDisplayInterrupt"",'GUI'] call (uinamespace getvariable 'BIS_fnc_initDisplay'); _this call EPOCH_InterruptConfig;";

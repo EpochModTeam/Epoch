@@ -1,3 +1,27 @@
+/*
+	Author: Aaron Clark - EpochMod.com
+
+    Contributors: He-Man
+
+	Description:
+	NPC trade filter code
+
+    Licence:
+    Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
+
+    Github:
+    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_code/traders/EPOCH_NPCTraderMenuFilter.sqf
+
+    Example:
+    onLBSelChanged = "_this call EPOCH_NPCTraderMenuFilter";
+
+    Parameter(s):
+		_this select 0: CONTROL
+        _this select 1: NUMBER - Index ID
+
+	Returns:
+	NOTHING
+*/
 private ["_item","_index","_itemCount","_itemOfferCount","_config","_name","_picture","_type","_vehicles","_sizeOut","_offerArray","_itemName","_itemIcon","_qty","_items","_qtys","_aiItems","_filterArray","_filterWeapons","_filterMagazines","_filterItems","_filterVehicle","_slot","_control","_isPlayerFilter"];
 
 disableSerialization;
@@ -54,7 +78,7 @@ if !(isNull EPOCH_lastNPCtradeTarget) then {
 					};
 				} forEach magazines player;
 			};
-		
+
 			/* not used currently
 			if (_filterWeapons) then {
 			};
@@ -72,6 +96,20 @@ if !(isNull EPOCH_lastNPCtradeTarget) then {
 						lbSetPicture [41500, _index, _x call EPOCH_itemPicture];
 					};
 				} forEach items player;
+				if (primaryWeapon player != "") then {
+					_wpn = primaryWeapon player;
+					_offerArray pushback _wpn;
+					_index = lbAdd [41500, _wpn call EPOCH_itemDisplayName];
+					lbSetData [41500, _index, _wpn];
+					lbSetPicture [41500, _index, _wpn call EPOCH_itemPicture];
+				};
+				if (count backpackItems player == 0 && count backpackmagazines player == 0 && backpack player != "") then {
+					_bpck = Backpack player;
+					_offerArray pushback _bpck;
+					_index = lbAdd [41500, _bpck call EPOCH_itemDisplayName];
+					lbSetData [41500, _index, _bpck];
+					lbSetPicture [41500, _index, _bpck call EPOCH_itemPicture];
+				};
 			};
 
 			if (_filterVehicle) then {
@@ -98,7 +136,7 @@ if !(isNull EPOCH_lastNPCtradeTarget) then {
 			};
 
 		} else {
-		
+
 			lbClear 41503;
 
 			_sizeOut = lbSize 41502;

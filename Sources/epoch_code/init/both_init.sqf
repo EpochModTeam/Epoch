@@ -1,3 +1,18 @@
+/*
+	Author: Aaron Clark - EpochMod.com
+
+    Contributors:
+
+	Description:
+	Initalize variables used client side and server side
+
+    Licence:
+    Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
+
+    Github:
+    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_code/init/both_init.sqf
+*/
+
 // Init Custom vars
 EPOCH_customVars = [];
 EPOCH_defaultVars = [];

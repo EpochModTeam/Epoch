@@ -1,4 +1,27 @@
-private["_color", "_distance", "_previous"];
+/*
+	Author: Aaron Clark - EpochMod.com
+
+    Contributors: Raimonds Virtoss
+
+	Description:
+	Epoch build countdown
+
+    Licence:
+    Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
+
+    Github:
+    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_code/compile/building/EPOCH_countdown.sqf
+
+    Example:
+    _currentTarget spawn EPOCH_countdown;
+
+    Parameter(s):
+		_this select 0: OBJECT - Base building object
+
+	Returns:
+	NOTHING
+*/
+private ["_posObj","_savedBuildPos","_previousBuildPos","_saveCheck","_endTime","_worldspace","_class","_newObj","_startTime","_objClass"];
 
 if (!isNull _this) then {
 

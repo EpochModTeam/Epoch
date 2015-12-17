@@ -1,3 +1,28 @@
+/*
+	Author: Aaron Clark - EpochMod.com
+
+    Contributors:
+
+	Description:
+	Init epoch gear armor stats.
+
+    Licence:
+    Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
+
+    Github:
+    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_code/compile/inventory/EPOCH_initUI.sqf
+
+    Example:
+    player addEventHandler ["InventoryOpened", {
+        _this spawn EPOCH_initUI;
+    }];
+
+    Parameter(s):
+        None
+
+	Returns:
+	NOHTING
+*/
 private ["_bar","_uniformArmor","_totalArmor","_finalArmor","_vestArmor","_headgearArmor","_bar_pos","_bar_compare","_color","_colorCompare","_display","_totalArmorMax"];
 disableSerialization;
 

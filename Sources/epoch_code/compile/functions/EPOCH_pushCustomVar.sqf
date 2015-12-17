@@ -1,3 +1,26 @@
+/*
+	Author: Aaron Clark - EpochMod.com
+
+    Contributors:
+
+	Description:
+	Sends message server to save custom variables from player
+
+    Licence:
+    Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
+
+    Github:
+    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_code/compile/functions/EPOCH_pushCustomVar.sqf
+
+    Example:
+    true call EPOCH_pushCustomVar;
+
+    Parameter(s):
+		_this: BOOL - true = fast save, false = slow save window
+
+	Returns:
+	NOTHING
+*/
 private ["_tempVars","_tempVal","_tempIndex","_time"];
 _time = if (_this) then [{15},{80}];
 

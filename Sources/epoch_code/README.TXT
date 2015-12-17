@@ -1,3 +1,0 @@
-All content in this PBO was made exclusively for A3 Epoch mod.
-
-To use/edit/distribute any of the content in this mod please contact vbawol@veteranbastards.com or ptomany@gmail.com

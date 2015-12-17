@@ -1,3 +1,27 @@
+/*
+	Author: Aaron Clark - EpochMod.com
+
+    Contributors:
+
+	Description:
+	Base building maintain base code
+
+    Licence:
+    Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
+
+    Github:
+    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_code/compile/building/EPOCH_maintainIT.sqf
+
+    Example:
+    cursorTarget call EPOCH_maintainIT;
+
+    Parameter(s):
+		_this: OBJECT - Base building object ("Constructions_static_F","Constructions_foundation_F","Buildable_Storage","Constructions_lockedstatic_F")
+
+	Returns:
+	NOTHING
+*/
+private ["_dt","_buildingJammerRange","_maintainCount","_rnd","_config"];
 if !(isNil "EPOCH_maintainLockout") exitWith {_dt = ["<t size=""0.8"" shadow=""0"" color=""#99ffffff"">Already Maintaining a base.</t>", 0, 1, 5, 2, 0, 1] spawn bis_fnc_dynamictext;};
 if (EPOCH_playerCrypto > 0) then {
   _config = "CfgEpochClient" call EPOCH_returnConfig;

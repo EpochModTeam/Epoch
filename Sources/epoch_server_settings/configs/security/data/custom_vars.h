@@ -1,3 +1,18 @@
+/*
+	Author: Aaron Clark - EpochMod.com
+
+    Contributors:
+
+	Description:
+	Epoch AH config for whistlisted gvars
+
+    Licence:
+    Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
+
+    Github:
+    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_server_settngs/configs/securty/data/custom_vars.h
+*/
+
 // all var names must be lowercase
 custom[] = {};
 bis[] = {
@@ -109,7 +124,7 @@ bis[] = {
 };
 epoch[] = {
     "epoch_localcleanup","epoch_client_publiceh","epoch_clientinit","epoch_oneachframe","epoch_masterloop","epoch_client_rejectplayer","epoch_clientrespawn","epoch_clientrevive","epoch_starttradereq","epoch_starttrade","epoch_traderequest","epoch_tradeloop","epoch_countdown",
-    "epoch_fnc_selecttarget","epoch_fnc_selecttargetbuild","epoch_isbuildallowed","epoch_simulswap","epoch_staticmove","epoch_returnvector","epoch_upgradebuild","epoch_removebuild","epoch_startinteract","epoch_startinteractnpc","epoch_interactnpc","epoch_npctraderadd",
+    "epoch_fnc_selecttarget","epoch_fnc_selecttargetbuild","epoch_isbuildallowed","epoch_simulswap","epoch_staticmove","BIS_fnc_returnVector","epoch_upgradebuild","epoch_removebuild","epoch_startinteract","epoch_startinteractnpc","epoch_interactnpc","epoch_npctraderadd",
     "epoch_npctraderadd2","epoch_npctraderadd3","epoch_startnpctradermenu","epoch_npctradermenufilter","epoch_startnpctrade","epoch_makep2ptrade","epoch_tradefilter","epoch_takecrypto","epoch_startbanktransfer","epoch_keydown","epoch_onchar",
     "epoch_fnc_playerdeath","epoch_fnc_playerfired","epoch_fnc_isinsidebuilding","epoch_fnc_weather","epoch_fnc_findsafepos","epoch_pushcustomvar","epoch_itempicture","epoch_itemdisplayname","epoch_fnc_findrandomposbehind","epoch_fnc_stringleft",
     "epoch_sortarraybydistance","epoch_client_earthquake","epoch_client_loadanimalbrain","epoch_client_biteplayer","epoch_client_repairvehicle","epoch_client_lockvehicle","epoch_client_fillvehicle","epoch_client_gearvehicle","epoch_mission_accept","epoch_mission_hover_uav",

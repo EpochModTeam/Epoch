@@ -1,3 +1,18 @@
+/*
+	Author: Aaron Clark - EpochMod.com
+
+    Contributors:
+
+	Description:
+	Disable snakes and rabbits on Altis and Stratis
+
+    Licence:
+    Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
+
+    Github:
+    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_config/Configs/CfgWorlds.hpp
+*/
+
 class CfgWorlds
 {
 	class CAWorld;
@@ -157,7 +172,7 @@ class CfgWorlds
 					};
 				};
 			};
-			
+
 		};
 	};
 	class Stratis : CAWorld

@@ -1,6 +1,30 @@
+/*
+	Author: Aaron Clark - EpochMod.com
+
+    Contributors: Raimonds Virtoss
+
+	Description:
+	check if building is allowed
+
+    Licence:
+    Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
+
+    Github:
+    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_code/compile/building/EPOCH_isBuildAllowed.sqf
+
+    Example:
+    _isAllowed = "" call EPOCH_isBuildAllowed;
+	_isAllowed = _objType call EPOCH_isBuildAllowed;
+
+    Parameter(s):
+		_this select 0: OBJECT - Base building object
+
+	Returns:
+	BOOL
+*/
 private ["_buildingAllowed","_jammer","_restricted","_restrictedLocations","_myPosATL"];
 _buildingAllowed = true;
-_ownedJammerExists = false; 
+_ownedJammerExists = false;
 _nearestJammer = objNull;
 
 // defaults
@@ -10,14 +34,17 @@ _buildingCountLimit = getNumber(_config >> "buildingCountLimit");
 if (_buildingJammerRange == 0) then { _buildingJammerRange = 75; };
 if (_buildingCountLimit == 0) then { _buildingCountLimit = 200; };
 
-_staticClass = getText(configfile >> "CfgVehicles" >> _this >> "staticClass");
-_simulClass = getText(configfile >> "CfgVehicles" >> _this >> "simulClass");
+// input
+params ["_objType"];
+
+_staticClass = getText(configfile >> "CfgVehicles" >> _objType >> "staticClass");
+_simulClass = getText(configfile >> "CfgVehicles" >> _objType >> "simulClass");
 _bypassJammer = getNumber(configfile >> "CfgVehicles" >> _staticClass >> "bypassJammer");
 
 // Jammer
 _jammer = nearestObjects[player, ["PlotPole_EPOCH"], _buildingJammerRange*3];
 if !(_jammer isEqualTo []) then {
-	if (_this in ["PlotPole_EPOCH", "PlotPole_SIM_EPOCH"]) then {
+	if (_objType in ["PlotPole_EPOCH", "PlotPole_SIM_EPOCH"]) then {
 		{
 			if (alive _x) exitWith{
 				_buildingAllowed = false;
@@ -25,7 +52,7 @@ if !(_jammer isEqualTo []) then {
 			};
 		} foreach _jammer;
 	} else {
-		
+
 		{
 			if (alive _x && (_x distance player) <= _buildingJammerRange) exitWith{
 				_nearestJammer = _x;
@@ -64,7 +91,7 @@ if !(_buildingAllowed)exitWith{ false };
 
 // require jammer check if not found as owner of jammer
 if (getNumber(_config >> "buildingRequireJammer") == 0 && _bypassJammer == 0) then{
-	if !(_this in ["PlotPole_EPOCH", "PlotPole_SIM_EPOCH"]) then {
+	if !(_objType in ["PlotPole_EPOCH", "PlotPole_SIM_EPOCH"]) then {
 		_buildingAllowed = _ownedJammerExists;
 		if !(_buildingAllowed) then {
 			_dt = ["<t size = '0.8' shadow = '0' color = '#99ffffff'>Building Disallowed: Frequency Jammer Needed</t>", 0, 1, 5, 2, 0, 1] spawn bis_fnc_dynamictext;

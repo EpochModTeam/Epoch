@@ -1,3 +1,18 @@
+/*
+	Author: Aaron Clark - EpochMod.com
+
+    Contributors:
+
+	Description:
+	CfgSounds config and CfgSay3Dhandler
+
+    Licence:
+    Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
+
+    Github:
+    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_config/Configs/CfgSounds.hpp
+*/
+
 class CfgSounds
 {
 	class dog_bark
@@ -52,6 +67,7 @@ class CfgSounds
 	};
 };
 
+// Custom Epoch config for say3d broadcsting
 class CfgSay3Dhandler {
 	class snake_bite0 {
 		distance = 100;

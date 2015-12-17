@@ -1,0 +1,7 @@
+WIP
+[Added] Hotwire Kit
+[Added] Key Makers Kit
+[Added] Keys in colors: (Black,Red,Green,Blue,Yellow)
+[Added] 55 Gallon Fuel Barrel (Full/Empty)
+[Added] Metal Pipes
+[Added] Documents (Trash,Vehicle Upgrades)

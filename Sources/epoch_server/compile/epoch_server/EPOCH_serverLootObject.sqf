@@ -32,17 +32,17 @@ if !(isNull _object) then{
 			_lootItemWeightedArray = [_x, "CfgLootTable", "items"] call EPOCH_weightedArray;
 
 			// diag_log format["%1: lootItemWeightedArray1 %2", __FILE__, _lootItemWeightedArray];
-		
+
 			_lootItemArray = _lootItemWeightedArray select 0;
 			if !(_lootItemArray isEqualTo[]) then {
 				_weightedItemArray = _lootItemWeightedArray select 1;
 				_weightedItemArrayCount = _lootItemWeightedArray select 2;
 
 				_randomItemArray = _lootItemArray select (_weightedItemArray select floor(random _weightedItemArrayCount));
-		
+
 				_randomItem = _randomItemArray select 0;
 				_type = _randomItemArray select 1;
-		
+
 				_quan = 1;
 
 				/*
@@ -62,7 +62,10 @@ if !(isNull _object) then{
 							_loop = false;
 						};
 						case "magazine": {
-							_object addMagazineCargoGlobal [_randomItem, _quan];
+							//_object addMagazineCargoGlobal [_randomItem, _quan];
+							_magazineSize = getNumber (configFile >> "CfgMagazines" >> _randomItem >> "count");
+							_object addMagazineAmmoCargo[_randomItem, _quan, ceil(random(_magazineSize))];
+
 							_loop = false;
 						};
 						case "backpack": {
@@ -72,19 +75,19 @@ if !(isNull _object) then{
 						case "weapon": {
 							_object addWeaponCargoGlobal [_randomItem, _quan];
 							_mags = getArray (configFile >> "CfgWeapons" >> _randomItem >> "magazines");
-					
+
 							if !(_mags isEqualTo []) then {
-								_object addMagazineCargoGlobal [_mags select 0, ceil(random 2)];	
+								// add only one free magazine with random ammo count
+								_magazineSize = getNumber (configFile >> "CfgMagazines" >> (_mags select 0) >> "count");
+								_object addMagazineAmmoCargo[_mags select 0, 1, ceil(random(_magazineSize))];
 							};
 							_loop = false;
 						};
 						case "CfgLootTable": {
-				
-							// go down the rabit hole 
+
+							// go down the rabit hole
 							_lootItemWeightedArray = [_randomItem, "CfgLootTable", "items"] call EPOCH_weightedArray;
 
-							// diag_log format["%1: lootItemWeightedArray2 %2", __FILE__, _lootItemWeightedArray];
-		
 							_lootItemArray = _lootItemWeightedArray select 0;
 							if !(_lootItemArray isEqualTo[]) then {
 

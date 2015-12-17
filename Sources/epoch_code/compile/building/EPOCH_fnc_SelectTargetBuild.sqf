@@ -1,19 +1,39 @@
-private [];
+/*
+	Author: Aaron Clark - EpochMod.com
+
+    Contributors: Raimonds Virtoss
+
+	Description:
+	Epoch build select target
+
+    Licence:
+    Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
+
+    Github:
+    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_code/compile/building/EPOCH_fnc_SelectTargetBuild.sqf
+
+    Example:
+    cursorTarget call EPOCH_fnc_SelectTargetBuild;
+
+    Parameter(s):
+		_this select 0: OBJECT - Base building object
+
+	Returns:
+	BOOL
+*/
+private ["_targeter","_stability","_dt","_object"];
+
 if !(isNil "EPOCH_simulSwap_Lock") exitWith{ false };
-
 if !(isNull EPOCH_Target) exitWith{ false };
-
 if (EPOCH_playerEnergy <= 0) exitWith{ _dt = ["<t size='0.8' shadow='0' color='#99ffffff'>Need energy</t>", 0, 1, 5, 2, 0, 1] spawn bis_fnc_dynamictext; false };
 
-_object = _this;
+params ["_object"];
 
 EPOCH_buildOption = 2;
 
 if (isNull _object) exitWith{ false };
 if ((player distance _object) > 9) exitWith { false };
-
 if (!(_object isKindOf "ThingX") && !(_object isKindOf "Constructions_static_F") && !(_object isKindOf "Constructions_foundation_F")) exitWith{ false };
-
 
 // check if another player has target
 _targeter = _object getVariable["last_targeter", objNull];

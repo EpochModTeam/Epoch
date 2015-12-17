@@ -92,3 +92,6 @@
 		call _lootBubble;
 
 		EPOCH_playerStaminaMax = (100 * (round(EPOCH_playerAliveTime/360)/10)) min 2500;
+
+		//player setAnimSpeedCoef 0.75;
+		//player setCustomAimCoef 1;

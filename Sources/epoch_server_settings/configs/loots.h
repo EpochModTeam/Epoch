@@ -1,4 +1,17 @@
+/*
+	Author: Aaron Clark - EpochMod.com
 
+    Contributors:
+
+	Description:
+	Epoch Server side loot table configs
+
+    Licence:
+    Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
+
+    Github:
+    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_server_settngs/configs/loots.h
+*/
 class CfgMainTable
 {
 	class Default
@@ -1276,7 +1289,7 @@ class CfgLootTable
 				{ { "muzzle_snds_338_black", "item" }, 1 },
 				{ { "muzzle_snds_338_green", "item" }, 1 },
 				{ { "muzzle_snds_338_sand", "item" }, 1 }
-				
+
 		};
 	};
 	class Muzzles_93mmgMarkDLC

@@ -1,3 +1,17 @@
+/*
+	Author: Aaron Clark - EpochMod.com
+
+    Contributors:
+
+	Description:
+	code that executes onEachFrame is used for 3d movment, ESP, and 3d icons.
+
+    Licence:
+    Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
+
+    Github:
+    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_code/compile/EPOCH_onEachFrame.sqf
+*/
 if (EPOCH_velTransform) then {
 	if (EPOCH_playerEnergy > 0) then {
 		_pos1 = getPosASL EPOCH_target;
@@ -113,7 +127,7 @@ if (!isNull EPOCH_currentTarget && vehicle player == player) then {
 				if (_stability == 0) then {
 					switch EPOCH_buildOption do {
 						case 0: {EPOCH_stabilityTarget call EPOCH_removeBUILD};
-						case 1: {EPOCH_stabilityTarget call EPOCH_upgradeBUILDv2};
+						case 1: {EPOCH_stabilityTarget call EPOCH_upgradeBUILD};
 						case 2: {EPOCH_stabilityTarget call EPOCH_fnc_SelectTargetBuild};
 					};
 

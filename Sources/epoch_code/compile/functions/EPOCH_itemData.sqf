@@ -1,11 +1,29 @@
 /*
-Returns string if only one element in second param, otherwise returns array
+	Author: Raimonds Virtoss - EpochMod.com
 
-	_displayName = _item call epoch_itemData; // string
-	_pic = [_item,["Picture"]] call epoch_itemData; //string
-	_data = [_item,["picture","model","displayName"]] call epoch_itemData; //array
+    Contributors:
+
+	Description:
+	Sorts an array based on distance to input array. (unused)
+
+    Licence:
+    Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
+
+    Github:
+    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_code/compile/functions/Epoch_SortArrayByDistance.sqf
+
+    Example(s):
+		_displayName = _item call epoch_itemData; // string
+		_pic = [_item,["Picture"]] call epoch_itemData; //string
+		_data = [_item,["picture","model","displayName"]] call epoch_itemData; //array
+
+    Parameter(s):
+		_this select 0: STRING - Vehicle, Weapon, or Magazine config class name
+		_this select 1: STRING or ARRAY of config variables
+
+	Returns:
+	Returns STRING if only one element in second param, otherwise returns ARRAY
 */
-
 private ["_item","_entries","_single","_arr","_return"];
 _item = param [0,""];
 _entries = param [1,["DisplayName"],[[]]];

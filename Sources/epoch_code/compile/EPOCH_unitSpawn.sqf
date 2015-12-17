@@ -1,3 +1,17 @@
+/*
+	Author: Aaron Clark - EpochMod.com
+
+    Contributors:
+
+	Description:
+	Antagonist spawn function
+
+    Licence:
+    Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
+
+    Github:
+    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_code/compile/EPOCH_unitSpawn.sqf
+*/
 private ["_unit","_group","_bomb","_unitClass","_targetPos","_disableAI","_nonJammer","_nonTrader","_jammerRange","_jammers","_restricted","_sapperNum"];
 
 _unitClass = _this;
@@ -49,7 +63,7 @@ switch _unitClass do {
 				_unit = createAgent[_unitClass, _targetPos, [], 120, "FORM"];
 				_unit call _disableAI;
 				[_unit] execFSM "\x\addons\a3_epoch_code\System\Shark_Brain.fsm";
-			}; 
+			};
 		};
 	};
 	case "Epoch_Sapper_F": {

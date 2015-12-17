@@ -1,5 +1,19 @@
+/*
+	Author: Aaron Clark - EpochMod.com
+
+    Contributors:
+
+	Description:
+	Epoch gamemode config for Stratis
+
+    Licence:
+    Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
+
+    Github:
+    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_config/Configs/CfgEpochClient/Stratis.hpp
+*/
 class Stratis {
-	blockedArea[] = {}; 
+	blockedArea[] = {};
 	Rocks[] = {
 		"sharpstone_03_lc.p3d",
 		"sharpstone_02_lc.p3d",
@@ -47,7 +61,7 @@ class Stratis {
 		"canisterplastic_f.p3d",
 		"watertank_f.p3d"
 	};
-	// main config 
+	// main config
 	TrashClasses[] = { "Trash", "TrashSmall", "TrashVehicle", "PumpkinPatch", "TrashFood" };
 
 	TrashSmall[] = {

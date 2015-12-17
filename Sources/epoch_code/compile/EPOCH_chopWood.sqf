@@ -1,4 +1,19 @@
-private["_currentPos", "_object", "_type", "_objects", "_sel_object"]; 
+/*
+	Author: Aaron Clark - EpochMod.com
+
+    Contributors:
+
+	Description:
+	Epoch Chopwood function
+
+    Licence:
+    Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
+
+    Github:
+    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_code/compile/EPOCH_chopWood.sqf
+*/
+
+private["_currentPos", "_object", "_type", "_objects", "_sel_object"];
 
 _currentPos = player modelToWorld[0, 5, 0];
 if !(surfaceIsWater _currentPos) then {
@@ -15,7 +30,7 @@ _bushesLootList = getArray(_config >> worldname >> "Bushes");
 
 {
     _strObj = str _x;
-	_sel_object = _x;	
+	_sel_object = _x;
 	_findStart = _strObj find ": ";
 	if (_findStart != -1) then{
 		_p3dName = _strObj select[_findStart + 2, 999];

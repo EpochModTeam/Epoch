@@ -1,3 +1,17 @@
+/*
+	Author: Aaron Clark - EpochMod.com
+
+    Contributors: uro1, Robio
+
+	Description:
+	Epoch gamemode config for Bornholm
+
+    Licence:
+    Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
+
+    Github:
+    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_config/Configs/CfgEpochClient/Bornholm.hpp
+*/
 class Bornholm {
 	blockedArea[] = {
 			{ { 1433, 8071, 0 }, 250 }, //Roenne NorthEast
@@ -40,9 +54,9 @@ class Bornholm {
 		"misc_well.p3d",
 		"misc_wellpump.p3d",
 		"kasna_new.p3d"
-	};	
+	};
 
-	// main config 
+	// main config
 	TrashClasses[] = {"Trash","TrashSmall","TrashVehicle","PumpkinPatch","TrashFood"};
 
 	TrashSmall[] = {

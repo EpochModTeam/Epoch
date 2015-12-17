@@ -1,3 +1,18 @@
+/*
+	Author: Raimonds Virtoss - EpochMod.com
+
+    Contributors:
+
+	Description:
+	Config for Epoch Configuration system
+
+    Licence:
+    Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
+
+    Github:
+    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_config/Configs/CfgEpochConfiguration.hpp
+*/
+
 class CfgEpochConfiguration
 {
 	/** class order here decides order of buttons on gui **/

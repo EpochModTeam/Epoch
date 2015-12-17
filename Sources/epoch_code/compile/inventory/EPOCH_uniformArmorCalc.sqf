@@ -1,3 +1,26 @@
+/*
+	Author: Aaron Clark - EpochMod.com
+
+    Contributors:
+
+	Description:
+	Uniform Gear armor calculation
+
+    Licence:
+    Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
+
+    Github:
+    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_code/compile/inventory/EPOCH_uniformArmorCalc.sqf
+
+    Example:
+        _newArmor = _selectedClass call EPOCH_uniformArmorCalc;
+
+    Parameter(s):
+	   _this: STRING - CfgWeapons class name of uniform
+
+	Returns:
+	NUMBER
+*/
 private ["_uniformClass","_uniformArmor","_uniformConfig","_uniformArmorStructural"];
 
 _uniformClass = _this;

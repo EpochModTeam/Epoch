@@ -1,5 +1,7 @@
 disableSerialization;
-_in = param [0, "", [""]];
+//_in = _this param [0, "", [""]];
+_in = [_this, 0, "", [""]] call BIS_fnc_param;
+
 _display = findDisplay 66600;
 _cfg = "CfgActionMenu" call EPOCH_returnConfig;
 _arr = [];
@@ -64,7 +66,7 @@ _checkConfigs = {
 				} forEach (_x select 1);
 
 				_tooltip = format ["%1 >> %2 ",_dName,_tTip];
-				_action = format ["[dyna_cursorTarget,%1] call EPOCH_upgradeBUILDv2; true call Epoch_dynamicMenuCleanup;",_forEachIndex];
+				_action = format ["[dyna_cursorTarget,%1] call EPOCH_upgradeBUILD; true call Epoch_dynamicMenuCleanup;",_forEachIndex];
 
 				_buttonSettings pushBack [
 					_icon,

@@ -1,3 +1,18 @@
+/*
+	Author: Niklas Wagner - EpochMod.com
+
+    Contributors: Aaron Clark
+
+	Description:
+	Epoch Intro
+
+    Licence:
+    Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
+
+    Github:
+    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_config/scenes/Epoch_Intro.Altis/initIntro.sqf
+*/
+
 titleCut ["", "BLACK FADED", 10e10];
 
 0 fadeMusic 0.5;
@@ -172,4 +187,3 @@ if (true) then  {
 	_camera camCommit 10;
 };
 */
-

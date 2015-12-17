@@ -5,7 +5,7 @@ class CfgActionMenu
 	{
 		dyna_cursorTarget = "cursorTarget";
 		dyna_typeOfCursorTarget = "typeOf cursorTarget";
-		
+
 		dyna_player = "vehicle player";
 		dyna_itemsPlayer = "items player";
 	};
@@ -21,7 +21,7 @@ class CfgActionMenu
 			tooltip = "Crafting V2";
 		};
 	};
-	
+
 	/** Has cursor target **/
 	class CfgActionMenu_target
 	{
@@ -37,34 +37,34 @@ class CfgActionMenu
 
 /** Sub-category example **/
 /*
-class CAT_pad 
+class CAT_pad
 {
 	condition = "true"; //must be value
 	action = ""; //can be empty for categories
 	icon = "#(rgb,8,8,3)color(1,0,1,0.5)";
 	tooltip = "Main cat";
-	
+
 	class SUB_CAT_test1
 	{
 		condition = "true"; //must be value
 		action = ""; //can be empty for categories
 		icon = "#(rgb,8,8,3)color(1,1,1,0.5)";
 		tooltip = "Subcat1";
-		
+
 		class SUB_CAT_test2
 		{
 			condition = "true"; //must be value
 			action = ""; //can be empty for categories
 			icon = "#(rgb,8,8,3)color(1,0,0,0.5)";
 			tooltip = "Subcat2";
-			
+
 			class SUB_CAT_test3
 			{
 				condition = "true"; //must be value
 				action = ""; //can be empty for categories
 				icon = "#(rgb,8,8,3)color(0,1,1,0.5)";
 				tooltip = "Subcat3";
-				
+
 				class SUB_CAT_test4
 				{
 					condition = "true"; //must be value

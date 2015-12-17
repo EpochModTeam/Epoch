@@ -1,7 +1,17 @@
 /*
-	EAH 2.0
-*/
+	Author: Aaron Clark - EpochMod.com
 
+    Contributors:
+
+	Description:
+	Epoch Server side securty checks config
+
+    Licence:
+    Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
+
+    Github:
+    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_server_settngs/configs/securty/security_checks.h
+*/
 class CfgSecConf
 {
     debug = false;

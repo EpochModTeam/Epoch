@@ -1,19 +1,24 @@
 /*
-    Load Buildings
-    by Aaron Clark - EpochMod.com
+	Author: Aaron Clark - EpochMod.com
 
-    This work is licensed under a Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License.
-    http://creativecommons.org/licenses/by-nc-nd/4.0/
+    Contributors:
 
-    Improvements and or bugfixes and other contributions are welcome via the github:
+	Description:
+	Load Buildings from Epoch Hive
+
+    Licence:
+    Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
+
+    Github:
     https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_server/compile/epoch_bases/EPOCH_server_loadBuildings.sqf
 */
-
 
 _maxTTL = parseNumber EPOCH_expiresBuilding;
 _config = 'CfgEpochClient' call EPOCH_returnConfig;
 _buildingJammerRange = getNumber(_config >> "buildingJammerRange");
 if (_buildingJammerRange == 0) then { _buildingJammerRange = 75; };
+
+_VAL = ["", [], "", "", 0, []];
 
 for "_i" from 0 to _this do {
 	_vehHiveKey = format ["%1:%2", (call EPOCH_fn_InstanceID),_i];
@@ -22,6 +27,11 @@ for "_i" from 0 to _this do {
 	if ((_response select 0) == 1 && typeName (_response select 1) == "ARRAY" && !((_response select 1) isEqualTo [])) then {
 		_arr = _response select 1;
 		_ttl = _response select 2;
+
+		// DEBUG to see if this command works
+		if !(_arr isEqualTypeParams _VAL) then {
+			diag_log format["DEBUG: Data does not match schema: %1 vs %2",_arr,_VAL];
+		};
 
 		_arrCount = count _arr;
 
@@ -77,8 +87,14 @@ for "_i" from 0 to _this do {
 			};
 
 			// set persistent Animations
-			if (_arrCount >= 6) then{
-				_anims = _arr param[5, [], [[]]];
+			if (_arrCount >= 6) then {
+				_anims = [];
+				_animsData = _arr select 5;
+				// check that we have an array to prevent any errors
+				if (_animsData isEqualType _anims) then {
+					_anims = _animsData;
+				};
+
 				{
 					_baseObj animate [_x, _anims param [_forEachIndex,0], true]
 				} foreach(getArray(configFile >> "CfgVehicles" >> _class >> "persistAnimations"));
