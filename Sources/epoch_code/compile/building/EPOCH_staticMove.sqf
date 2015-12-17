@@ -141,10 +141,10 @@ if (_class != "") then {
 			EPOCH_target attachTo[player];
 		};
 
-		if (EPOCH_space) then {
+		if (EPOCH_doRotate) then {
 			_dir2 = [vectorDir player, EPOCH_buildDirection] call BIS_fnc_returnVector;
 			_up2 = (vectorUp player);
-			EPOCH_space = false;
+			EPOCH_doRotate = false;
 			EPOCH_target setVectorDirAndUp [_dir2,_up2];
 		};
 

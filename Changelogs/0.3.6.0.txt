@@ -2,6 +2,8 @@
 [Added] Ability to sell Primary weapon from hands and empty backpacks. Thanks to @He-Man
 [Changed] Increased max player load 2x to compensate for the new stamina system in 1.54.
 [Changed] Increased backpack storage limits to allow carrying long weapons.
+[Fixed] cursorTarget function to only use new Epoch method while underwater. Should help with targeting issues on land.
+[Fixed] Canceling build mode did not remove the ghost object as it should have.
 [Fixed] Updated Epoch armor stats UI system to support new changes since 1.54.
 [Fixed] Changes to default Arma weapon configs to allow long (Lynx,etc) weapons to be stored in backpacks.
 [Fixed] Unable to sell after attempting to sell a temporary vehicle. Thanks to @He-Man

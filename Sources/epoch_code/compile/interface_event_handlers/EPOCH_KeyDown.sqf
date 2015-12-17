@@ -1,7 +1,7 @@
 /*
-	Author: Aaron Clark - EpochMod.com
+	Author: Aaron Clark - EpochMod.com - @vbawol
 
-    Contributors:
+    Contributors: @Skaronator @raymix @Fank
 
 	Description:
 	Key Down EH functions
@@ -36,7 +36,7 @@ _handled = false;
 
 if !(alive player) exitWith{ false };
 
-EPOCH_space = false;
+EPOCH_doRotate = false;
 
 if (_dikCode in [0x02,0x03,0x04,0x58,0x57,0x44,0x43,0x42,0x41,0x40,0x3F,0x3E,0x3D,0x3C,0x3B,0x0B,0x0A,0x09,0x08,0x07,0x06,0x05,0x0E]) then {
 	_handled = true;
@@ -57,18 +57,15 @@ if (_ctrl && _dikCode == EPOCH_keysVolumeDown) then {
 
 // ESC default to cancel
 if (_dikCode == 0x01) then {
-
 	if !(isNull EPOCH_Target) then {
-		if !(_vehicle isKindOf "ThingX") then {
+		if !(EPOCH_Target isKindOf "ThingX") then {
 			deleteVehicle EPOCH_Target;
 		} else {
 			EPOCH_Target = objNull;
 		};
 		_dt = ["<t size = '0.8' shadow = '0' color = '#99ffffff'>Build Canceled</t>", 0, 1, 5, 2, 0, 1] spawn bis_fnc_dynamictext;
 	};
-
 	if !(EPOCH_arr_interactedObjs isEqualTo[]) then {
-
 		EPOCH_arr_interactedObjs remoteExec["EPOCH_server_save_vehicles", 2];
 		EPOCH_arr_interactedObjs = [];
 	};
@@ -190,8 +187,8 @@ if (vehicle player == player) then {
 			case EPOCH_keysBuildMovBak: { EPOCH_Y_OFFSET = (EPOCH_Y_OFFSET - 0.1) max 2; _handled = true };
 			case EPOCH_keysBuildMovL: { EPOCH_X_OFFSET = (EPOCH_X_OFFSET + 0.1) min 5; _handled = true };
 			case EPOCH_keysBuildMovR: { EPOCH_X_OFFSET = (EPOCH_X_OFFSET - 0.1) max - 5; _handled = true };
-			case EPOCH_keysBuildRotL: { EPOCH_buildDirection = (EPOCH_buildDirection + 1) min 360; EPOCH_space = true; _handled = true };
-			case EPOCH_keysBuildRotR: { EPOCH_buildDirection = (EPOCH_buildDirection - 1) max 0; EPOCH_space = true; _handled = true };
+			case EPOCH_keysBuildRotL: { EPOCH_buildDirection = (EPOCH_buildDirection + 1) min 360; EPOCH_doRotate = true; _handled = true };
+			case EPOCH_keysBuildRotR: { EPOCH_buildDirection = (EPOCH_buildDirection - 1) max 0; EPOCH_doRotate = true; _handled = true };
 			//case EPOCH_keysBuildIt: { cursorTarget call EPOCH_fnc_SelectTarget; _handled = true };
 			};
 		};
@@ -273,7 +270,7 @@ if (vehicle player == player) then {
 
 	if (_dikCode in(actionKeys "Gear")) then {
 		if !(isNull EPOCH_Target) then {
-			if !(_vehicle isKindOf "ThingX") then {
+			if !(EPOCH_Target isKindOf "ThingX") then {
 				deleteVehicle EPOCH_Target;
 			} else {
 				EPOCH_Target = objNull;

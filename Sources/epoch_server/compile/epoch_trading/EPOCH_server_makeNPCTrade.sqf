@@ -149,7 +149,7 @@ if (_slot != -1) then {
 										_helipad pushBack _smoke;
 									};
 
-									// water check 
+									// water check
 									if (_item isKindOf "Ship") then {
 										{
 											if (surfaceIsWater (getposATL _x)) then {
@@ -226,7 +226,7 @@ if (_slot != -1) then {
 
 									_vehObj = [_item,_position,random 360,true,_vehslot,_lockOwner,"NONE",false] call EPOCH_fnc_spawn_vehicle;
 									_final_location = getPosATL _vehObj;
-									
+
 									_group = group _plyr;
 									_wp = _group addWaypoint [_final_location, 0];
 									deleteWaypoint [_group, 0];
@@ -242,6 +242,33 @@ if (_slot != -1) then {
 								};
 							};
 						} else {
+
+							if (_item isKindOf "Bag_Base") then {
+								// add to players back
+								/*
+								if (backpack _plyr == "") then {
+									_plyr addBackpackGlobal _item;
+									diag_log "backpack added to players back";
+								} else {
+								*/
+									//diag_log "backpack added to players feet";
+									// add to the ground
+									_wH = objNull;
+									_nearByHolder = nearestObjects [position _plyr,["groundWeaponHolder"],3];
+									if (_nearByHolder isEqualTo []) then {
+									  _wHPos = _plyr modelToWorld [0,1,0];
+									  if (surfaceIsWater _wHPos) then {
+										_wHPos = ASLToATL _wHPos;
+									  };
+									  _wH = createVehicle ["groundWeaponHolder",_wHPos, [], 0, "CAN_COLLIDE"];
+									} else {
+									  _wH = _nearByHolder select 0;
+									};
+									//diag_log "backpack added to container";
+									_wh addBackpackCargoGlobal [_item,1];
+								//};
+							};
+
 							_returnOut pushBack _item;
 
 							_itemQtys set[_qtyIndex, (_currQty - _itemQty)];

@@ -47,37 +47,33 @@ if (!isNull _this) then {
 					if (_item in items player) then {
 						player removeItem _item;
 						_arrayIn pushBack _item;
-					}
-					else {
+					} else {
 						if (_item == primaryweapon player) then {
 							player removeweapon _item;
 							_arrayIn pushBack _item;
+						};
 					};
-					};
-				}
-				else {
+				} else {
 					if ([_item, "CfgVehicles"] call EPOCH_fnc_isAny) then {
 						if (_item == backpack player) then {
 							removeBackpack player;
 							_arrayIn pushBack _item;
-						}
-						else {
-						_vehicles = _this nearEntities[[_item], 30];
-						if (!(_vehicles isEqualTo[])) then {
-							_vehicle = _vehicles select 0;
-							if (!isNull _vehicle) then {
-								if (local _vehicle) then {
-									_vehSlot = _vehicle getVariable["VEHICLE_SLOT", "ABORT"];
-									if (_vehSlot != "ABORT") then {
-										_arrayIn pushBack _item;
-										// will be removed server side
+						} else {
+							_vehicles = _this nearEntities[[_item], 30];
+							if (!(_vehicles isEqualTo[])) then {
+								_vehicle = _vehicles select 0;
+								if (!isNull _vehicle) then {
+									if (local _vehicle) then {
+										_vehSlot = _vehicle getVariable["VEHICLE_SLOT", "ABORT"];
+										if (_vehSlot != "ABORT") then {
+											_arrayIn pushBack _item;
+											// will be removed server side
+										};
 									};
 								};
 							};
 						};
-						};
-					}
-					else {
+					} else {
 						if (_item in magazines player) then {
 							player removeMagazine _item;
 							_arrayIn pushBack _item;
@@ -175,33 +171,11 @@ if (!isNull _this) then {
 								_x call EPOCH_fnc_addItemOverflow;
 							};
 						} else {
-							//
-							if (_x isKindOf "Bag_Base") then {
-								// add to players back
-								if (backpack player == "") then {
-									player addbackpack _x;
-								} else {
-									// add to the ground
-									_wH = objNull;
-									_nearByHolder = nearestObjects [position player,["groundWeaponHolder"],3];
-									if (_nearByHolder isEqualTo []) then {
-									  _wHPos = player modelToWorld [0,1,0];
-									  if (surfaceIsWater _wHPos) then {
-										_wHPos = ASLToATL _wHPos;
-									  };
-									  _wH = createVehicle ["groundWeaponHolder",_wHPos, [], 0, "CAN_COLLIDE"];
-									} else {
-									  _wH = _nearByHolder select 0;
-									};
-									_wh addBackpackCargoGlobal [_x,1];
-								};
+							if ([_x, "CfgMagazines"] call EPOCH_fnc_isAny) then {
+								_errorMsg = _errorMsg + format["%1, ", getText(configfile >> "CfgMagazines" >> (_x) >> "displayName")];
+								_x call EPOCH_fnc_addItemOverflow;
 							} else {
-								if ([_x, "CfgMagazines"] call EPOCH_fnc_isAny) then {
-									_errorMsg = _errorMsg + format["%1, ", getText(configfile >> "CfgMagazines" >> (_x) >> "displayName")];
-									_x call EPOCH_fnc_addItemOverflow;
-								} else {
-									_errorMsg = _errorMsg + format["%1, ", getText(configfile >> "CfgVehicles" >> (_x) >> "displayName")];
-								};
+								_errorMsg = _errorMsg + format["%1, ", getText(configfile >> "CfgVehicles" >> (_x) >> "displayName")];
 							};
 						};
 					} forEach(_this select 1);

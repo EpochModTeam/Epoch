@@ -205,11 +205,11 @@ if (isText(_config)) then {
 				if !(surfaceIsWater _pos2) then {
 					_pos2 = ATLtoASL _pos2;
 				};
-				if (EPOCH_space) then {
+				if (EPOCH_doRotate) then {
 					_vel2 = (velocity player);
 					_dir2 = [vectorDir player, EPOCH_buildDirection] call BIS_fnc_returnVector;
 					_up2 = (vectorUp player);
-					EPOCH_space = false;
+					EPOCH_doRotate = false;
 					EP_velocityTransformation = [_pos2,_vel2,_dir2,_up2];
 				} else {
 					EP_velocityTransformation = [];
