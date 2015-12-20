@@ -109,7 +109,7 @@ for "_i" from 1 to _this do {
 					// set locked state of secure storage
 					if ((_arr select 6) != -1) then {
 						_vehicle setVariable["EPOCH_Locked", true, true];
-						_vehicle enableSimulationGlobal false;
+						//_vehicle enableSimulationGlobal false;
 					};
 				};
 			};

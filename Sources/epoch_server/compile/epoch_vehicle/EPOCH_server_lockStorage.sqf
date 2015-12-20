@@ -16,11 +16,11 @@ _fnc_lock = {
 	_this setVariable ["EPOCH_Locked", true, true];
 	// force save on lock
 	if !(_this in EPOCH_saveStorQueue) then { EPOCH_saveStorQueue pushBack _this };
-	_this enableSimulationGlobal false;
+	//_this enableSimulationGlobal false;
 };
 _fnc_unlock = {
 	_this setVariable ["EPOCH_Locked", false, true];
-	_this enableSimulationGlobal true;
+	//_this enableSimulationGlobal true;
 };
 // functions
 

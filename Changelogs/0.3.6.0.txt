@@ -19,3 +19,6 @@
 [Changed] Magazines now spawn with a random ammo count.
 [Changed] Disable simulation of locked storage devices. This also prevents removal of items until device is unlocked/re-simulated.
 [Info] Removed old .bikey and added new one for 0360.
+
+**Server Build 025**
+[Fixed] New workaround for inventoryOpened and locked storage protection.
