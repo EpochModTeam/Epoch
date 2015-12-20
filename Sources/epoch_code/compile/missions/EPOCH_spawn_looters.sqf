@@ -1,9 +1,9 @@
 
 private["_unit"];
 
-for "_i" from 0 to 4 step 1 do { 
+for "_i" from 0 to 4 step 1 do {
 	_unit =  createGroup RESISTANCE createUnit ["Epoch_Female_F", getPos player, [], 400, "CAN_COLLIDE"];
-	_unit addBackPack "B_Kitbag_Base";
+	_unit addBackPack "B_FieldPack_blk";
 	_unit addWeapon "Hatchet";
 	_unit addMagazine "hatchet_swing";
 	{_unit disableAI _x}count["TARGET","AUTOTARGET","FSM"];
