@@ -47,7 +47,6 @@ _bushesLootList = getArray(_config >> worldname >> "Bushes");
 
 if (!isNull _object) then {
     if (alive _object) then {
-        EPOCH_knockDownTree = [_object,_type,player,EPOCH_personalToken];
-        publicVariableServer "EPOCH_knockDownTree";
+        [_object,_type,player,EPOCH_personalToken] remoteExec ["EPOCH_server_knockDownTree",2];
     };
 };

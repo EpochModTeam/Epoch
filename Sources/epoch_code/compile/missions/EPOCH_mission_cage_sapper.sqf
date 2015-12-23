@@ -10,7 +10,7 @@ _cage2 setVectorDirAndUp [[0,0,1],[0,1,0]];
 _cage attachTo [_cage2,[0,1.3,0]];
 
 EPOCH_TEMPOBJ_PVS = [_cage,_cage2];
-publicVariableServer "EPOCH_TEMPOBJ_PVS";
+EPOCH_TEMPOBJ_PVS remoteExec ["EPOCH_localCleanup",2];
 
 
 _startCage = diag_tickTime;
@@ -28,11 +28,10 @@ _sapper forcespeed 0;
 
 if !(isNull _sapper) then {
 	EPOCH_TEMPOBJ_PVS = _sapper;
-	publicVariableServer "EPOCH_TEMPOBJ_PVS";
+	EPOCH_TEMPOBJ_PVS remoteExec ["EPOCH_localCleanup",2];
 };
 
-EPOCH_FillContainer_PVS = [player,Epoch_personalToken,objNull,false,25];
-publicVariableServer "EPOCH_FillContainer_PVS";
+[player,Epoch_personalToken,objNull,false,25] remoteExec ["EPOCH_server_fillContainer",2];
 
 
 while {player distance _sapper < 100 && alive player} do {
@@ -41,7 +40,7 @@ while {player distance _sapper < 100 && alive player} do {
 		_sound = _sounds select (floor (random (count _sounds)));
 		_sapper say3D _sound;
 		EPOCH_say3D_PVS = [player, _sapper,(EPOCH_sounds find _sound), Epoch_personalToken];
-		publicVariableServer "EPOCH_say3D_PVS";
+		EPOCH_say3D_PVS remoteExec ["EPOCH_server_handle_say3D",2];
 	};
 	uiSleep 0.5;
 };

@@ -1021,8 +1021,8 @@ class FSM
       init = /*%FSM<STATEINIT""">*/"titleText [_wDiag,""PLAIN"", 6];" \n
        "" \n
        "" \n
-       "EPOCH_FillContainer_PVS = [_plyr,Epoch_personalToken,objNull,false,25];" \n
-       "publicVariableServer ""EPOCH_FillContainer_PVS"";" \n
+       "" \n
+       "[_plyr,Epoch_personalToken,objNull,false,25] remoteExec [""EPOCH_server_fillContainer"",2];" \n
        "" \n
        "if (_act != """") then {" \n
        "call compile _act;" \n

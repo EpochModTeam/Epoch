@@ -58,8 +58,7 @@ if (!isNull EPOCH_p2ptradeTarget) then {
 		}forEach _array;
 
 		if (_removeCount == count _array) then {
-			EPOCH_MAKETRADE = [player, EPOCH_p2ptradeTarget, _array, _tradeOffer, Epoch_personalToken];
-			publicVariableServer "EPOCH_MAKETRADE";
+			[player, EPOCH_p2ptradeTarget, _array, _tradeOffer, Epoch_personalToken] remoteExec ["EPOCH_server_makeTrade",2];
 		};
 
 		(findDisplay -1900) closeDisplay 1;

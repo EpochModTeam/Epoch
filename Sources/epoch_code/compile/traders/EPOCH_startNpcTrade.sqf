@@ -113,8 +113,7 @@ if (!isNull _this) then {
 		EPOCH_TRADE_STARTED = true;
 
 		// make trade
-		EPOCH_MAKENPCTRADE = [_this, _arrayIn, _arrayOut, player, Epoch_personalToken];
-		publicVariableServer "EPOCH_MAKENPCTRADE";
+		[_this, _arrayIn, _arrayOut, player, Epoch_personalToken] remoteExec ["EPOCH_server_makeNPCTrade",2];
 
 		// close menu
 		closeDialog 0;

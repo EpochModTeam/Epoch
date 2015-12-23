@@ -32,8 +32,7 @@ if (vehicle _unit != _unit) then {
 	_unit action["Eject", vehicle _unit];
 };
 
-EPOCH_deadPlayer_PVS = [player,_killer,toArray profileName,Epoch_personalToken];
-publicVariableServer  "EPOCH_deadPlayer_PVS";
+[player,_killer,toArray profileName,Epoch_personalToken] remoteExec ["EPOCH_server_deadPlayer",2];
 
 // disable build mode
 EPOCH_buildMode = 0;

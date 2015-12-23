@@ -76,9 +76,7 @@ if (!isNull _this) then {
 		// proceed to send save to server
 		} else {
 			if (_saveCheck) then {
-				EPOCH_SAVEBUILD = [_this, player, Epoch_personalToken];
-				publicVariableServer "EPOCH_SAVEBUILD";
-				//diag_log format["DEBUG SAVE: %1", _this];
+				[_this, player, Epoch_personalToken] remoteExec["EPOCH_server_saveBuilding", 2];
 			};
 		};
 	};

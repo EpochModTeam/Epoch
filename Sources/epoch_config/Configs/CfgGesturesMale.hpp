@@ -34,7 +34,8 @@ class CfgGesturesMale
 		file = "";
 		looped = 1;
 		speed = 0.5;
-		relSpeedMin = 0.5;
+		static = 0;
+		relSpeedMin = 1;
 		relSpeedMax = 1;
 		soundEnabled = 0;
 		soundOverride = "";

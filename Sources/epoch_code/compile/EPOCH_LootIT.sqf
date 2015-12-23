@@ -13,8 +13,7 @@
     https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_code/compile/EPOCH_LootIT.sqf
 */
 if (!isNull _this) then {
-	EPOCH_lootContainer = [_this,player,Epoch_personalToken];
-	publicVariableServer "EPOCH_lootContainer";
+	[_this,player,Epoch_personalToken] remoteExec ["EPOCH_server_lootContainer",2];
 
 	if (typeof _this == "wardrobe_EPOCH") then {
 		if !(_this getVariable["MIRROR_SETUP", false]) then {

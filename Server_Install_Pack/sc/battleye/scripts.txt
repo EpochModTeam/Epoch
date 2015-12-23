@@ -1,6 +1,5 @@
 //new2
 7 EPOCH_C_SET !="!isNil \"EPOCH_C_SET\"" !="_array = EPOCH_C_SET;" !="EPOCH_C_SET = nil;"
-7 EPOCH_GROUP_Delete_PVS !="EPOCH_GROUP_Delete_PVS = [player,Epoch_personalToken];"
 7 "BIS_fnc_dynamictext" !="\"BIS_fnc_dynamictext"\" !", 0, 1, 5, 2, 0, 1] spawn bis_fnc_dynamictext;" !", 0, 0.4, 5, 2, 0, 2] spawn bis_fnc_dynamictext;" !", 0, 1, 6, 2, 0, 1] spawn bis_fnc_dynamictext;" !"snil '_fnc_scriptName') then {_fnc_scriptName}"
 7 forceRespawn
 7 setFriend

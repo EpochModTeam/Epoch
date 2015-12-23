@@ -1470,7 +1470,6 @@ class InteractBank
 			y = 0.9;
 			w = 0.2375;
 			h = 0.08;
-			// action = "closeDialog 0; EPOCH_storeCrypto_PVS = [player,[parseNumber(ctrlText 1401),parseNumber(ctrlText 1402),[parseNumber(ctrlText 1400),(lbData [21500, (lbCurSel 21500)])]],Epoch_personalToken]; publicVariableServer 'EPOCH_storeCrypto_PVS'; ";
 			action = "call EPOCH_startBankTransfer;";
 		};
 		class RscEdit_deposit : RscEdit

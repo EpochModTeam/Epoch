@@ -79,20 +79,17 @@ if (diag_tickTime - EPOCH_lastTrash > 2)  then {
 	}forEach _objects;
 
 	if (!isNull _lootAnimalObj) then {
-		EPOCH_lootAnimal = [_lootAnimalObj, player, Epoch_personalToken];
 		_bloodPos = getPosATL _lootAnimalObj;
 		_blood = "BloodSplat" createVehicleLocal _bloodPos;
 		_blood setPosATL _bloodPos;
 		EPOCH_playerSoiled = (EPOCH_playerSoiled + 1) min 100;
-		publicVariableServer "EPOCH_lootAnimal";
+		// send
+		[_lootAnimalObj, player, Epoch_personalToken] remoteExec ["EPOCH_server_lootAnimal",2];
 		_return = true;
 		_dt = ["<t size='0.8' shadow='0' color='#99ffffff'>Object Looted</t>", 0, 1, 5, 2, 0, 1] spawn bis_fnc_dynamictext;
 	};
 	if (!isNull _destroyTrashObj) then {
-
-		EPOCH_destroyTrash = [_destroyTrashObj, _trashType, player, Epoch_personalToken];
-		// hint str EPOCH_destroyTrash;
-		publicVariableServer "EPOCH_destroyTrash";
+		[_destroyTrashObj, _trashType, player, Epoch_personalToken] remoteExec ["EPOCH_server_destroyTrash",2];
 		EPOCH_playerSoiled = (EPOCH_playerSoiled + 1) min 100;
 		_return = true;
 		_dt = ["<t size='0.8' shadow='0' color='#99ffffff'>Object Looted</t>", 0, 1, 5, 2, 0, 1] spawn bis_fnc_dynamictext;
@@ -111,14 +108,14 @@ if (diag_tickTime - EPOCH_lastTrash > 2)  then {
 				_animals pushBack _animal;
 			};
 			EPOCH_TEMPOBJ_PVS = _animals;
-			publicVariableServer "EPOCH_TEMPOBJ_PVS";
+			EPOCH_TEMPOBJ_PVS remoteExec ["EPOCH_localCleanup",2];
 		};
 	};
 	if (!isNull EPOCH_bankTerminal) then {
 		// make balance request
 		if (isNil "EPOCH_bankTransferActive") then {
-			EPOCH_storeCrypto_PVS = [player, [], Epoch_personalToken];
-			publicVariableServer "EPOCH_storeCrypto_PVS";
+			[player, [], Epoch_personalToken] remoteExec ["EPOCH_server_storeCrypto",2];
+
 			closeDialog 0;
 			createDialog "InteractBank";
 

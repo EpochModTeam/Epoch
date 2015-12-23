@@ -7,8 +7,7 @@ if (getPlayerUID player == Epoch_my_GroupUID) then {
 	_txt spawn {
 		_ret = [_this,"Epoch Group Menu",true,true] call BIS_fnc_GUImessage;
 		if (_ret) then {
-			EPOCH_GROUP_Delete_PVS = [player,Epoch_personalToken];
-			publicVariableServer "EPOCH_GROUP_Delete_PVS";
+			[player,Epoch_personalToken] remoteExec ["EPOCH_server_deleteGroup",2];
 		};
 	};
 } else {
@@ -16,8 +15,7 @@ if (getPlayerUID player == Epoch_my_GroupUID) then {
 	_txt spawn {
 		_ret = [_this,"Epoch Group Menu",true,true] call BIS_fnc_GUImessage;
 		if (_ret) then {
-			EPOCH_GROUP_Player_PVS = [Epoch_my_GroupUID,getPlayerUID player,false,false,player,Epoch_personalToken];
-			publicVariableServer "EPOCH_GROUP_Player_PVS";
+			[Epoch_my_GroupUID,getPlayerUID player,false,false,player,Epoch_personalToken] remoteExec ["EPOCH_server_updatePlayerGroup",2];
 		};
 	};
 };

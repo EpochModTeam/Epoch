@@ -248,14 +248,12 @@ if (vehicle player == player) then {
 				if (isTouchingGround player && speed player > 10) then {
 					if ((primaryWeapon player != "") && (currentWeapon player == primaryWeapon player)) then {
 						player switchMove "AovrPercMrunSrasWrflDf";
-						EPOCH_switchMove_PVS = [player, 1, Epoch_personalToken];
-						publicVariableServer "EPOCH_switchMove_PVS";
+						[player, 1, Epoch_personalToken] remoteExec ["EPOCH_server_handle_switchMove",2];
 						_handled = true;
 					} else {
 						if (currentWeapon player == "") then {
 							player switchMove "epoch_unarmed_jump";
-							EPOCH_switchMove_PVS = [player, 2, Epoch_personalToken];
-							publicVariableServer "EPOCH_switchMove_PVS";
+							[player, 2, Epoch_personalToken] remoteExec ["EPOCH_server_handle_switchMove",2];
 							_handled = true;
 						};
 					};

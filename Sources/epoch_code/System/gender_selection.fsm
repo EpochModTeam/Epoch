@@ -156,8 +156,8 @@ class FSM
     class Send_To_Server
     {
       name = "Send_To_Server";
-      init = /*%FSM<STATEINIT""">*/"EPOCH_respawnPlayer_PVS = [player, Epoch_personalToken];" \n
-       "publicVariableServer ""EPOCH_respawnPlayer_PVS"";"/*%FSM</STATEINIT""">*/;
+      init = /*%FSM<STATEINIT""">*/"[player, Epoch_personalToken] remoteExec [""EPOCH_server_respawnPlayer"",2];" \n
+      "";"/*%FSM</STATEINIT""">*/;
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
       class Links
       {
@@ -190,8 +190,8 @@ class FSM
     class Send_new_selection
     {
       name = "Send_new_selection";
-      init = /*%FSM<STATEINIT""">*/"EPOCH_respawnPlayer_PVS = [player, Epoch_personalToken,EPOCH_PlayerIsMale];" \n
-       "publicVariableServer ""EPOCH_respawnPlayer_PVS"";"/*%FSM</STATEINIT""">*/;
+      init = /*%FSM<STATEINIT""">*/"[player, Epoch_personalToken,EPOCH_PlayerIsMale] remoteExec [""EPOCH_server_respawnPlayer"",2];" \n
+       ""/*%FSM</STATEINIT""">*/;
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
       class Links
       {

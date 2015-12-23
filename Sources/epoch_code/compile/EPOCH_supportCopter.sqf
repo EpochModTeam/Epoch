@@ -59,4 +59,4 @@ for "_i" from 0 to ((count _arrUnits)-1) do {
 
 // cleanup units or (transfer ownership) if player logs out
 EPOCH_TEMPOBJ_PVS = _units;
-publicVariableServer "EPOCH_TEMPOBJ_PVS";
+EPOCH_TEMPOBJ_PVS remoteExec ["EPOCH_localCleanup",2];

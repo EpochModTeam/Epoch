@@ -974,8 +974,8 @@ class FSM
        "" \n
        "_plyr spawn {" \n
        "uiSleep 12;" \n
-       "EPOCH_FillContainer_PVS = [_this,Epoch_personalToken,objNull,false,15];" \n
-       "publicVariableServer ""EPOCH_FillContainer_PVS"";" \n
+       "" \n
+       "[_this,Epoch_personalToken,objNull,false,15] remoteExec [""EPOCH_server_fillContainer"",2];" \n
        "//hint ""Paying Out"";" \n
        "};" \n
        "" \n

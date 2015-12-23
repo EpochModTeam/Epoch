@@ -509,8 +509,7 @@ class FSM
                          "" \n
                          "Epoch_my_Group = [];" \n
                          "" \n
-                         "EPOCH_checkPlayer_PVS = player;" \n
-                         "publicVariableServer  ""EPOCH_checkPlayer_PVS"";" \n
+                         "player remoteExec [""EPOCH_server_checkPlayer"",2];" \n
                          "" \n
                          "" \n
                          """Loading Player Data... Please wait!"" call Epoch_updateLoadingScreen;" \n
@@ -1375,10 +1374,7 @@ class FSM
                         init = /*%FSM<STATEINIT""">*/"startLoadingScreen ["""",""EpochLoadingScreen""];" \n
                          """Gender Selected... Please wait!"" call Epoch_updateLoadingScreen;" \n
                          "" \n
-                         "" \n
-                         "EPOCH_selectedGender_PVS = [player,EPOCH_PlayerIsMale];" \n
-                         "publicVariableServer ""EPOCH_selectedGender_PVS"";" \n
-                         "EPOCH_selectedGender_PVS = nil;" \n
+                         "[player,EPOCH_PlayerIsMale] remoteExec [""EPOCH_server_loadPlayer"",2];" \n
                          "EPOCH_PlayerIsMale = nil;"/*%FSM</STATEINIT""">*/;
                         precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
                         class Links

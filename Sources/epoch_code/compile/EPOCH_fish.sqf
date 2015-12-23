@@ -35,7 +35,7 @@ if (surfaceIsWater _currentPos) then {
       _bobber = createVehicle ["Bobber_EPOCH",_currentPos, [], 0, "CAN_COLLIDE"];
 
       EPOCH_TEMPOBJ_PVS = [_bobber];
-      publicVariableServer "EPOCH_TEMPOBJ_PVS";
+      EPOCH_TEMPOBJ_PVS remoteExec ["EPOCH_localCleanup",2];
 
       _bobber setPosASL _currentPos;
       _bobber setVariable ["EPOCH_bobberTime", diag_tickTime];

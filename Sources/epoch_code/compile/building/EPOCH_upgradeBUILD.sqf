@@ -124,8 +124,7 @@ if (_object isKindOf "Constructions_static_F") then {
 
 			if (_canUpgradePartCount == _removedPartCount) then {
 				// send to server for upgrade
-				EPOCH_UPBUILD = [_object,player,Epoch_upgradeIndex,Epoch_personalToken];
-				publicVariableServer "EPOCH_UPBUILD";
+				[_object,player,Epoch_upgradeIndex,Epoch_personalToken] remoteExec ["EPOCH_server_upgradeBUILD",2];
 				Epoch_upgradeIndex = nil;
 				_return = true;
 				_dt = ["<t size='0.8' shadow='0' color='#99ffffff'>Upgraded</t>", 0, 1, 5, 2, 0, 1] spawn bis_fnc_dynamictext;

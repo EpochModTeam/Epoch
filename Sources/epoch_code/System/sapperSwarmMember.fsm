@@ -50,7 +50,7 @@ class FSM
                          "" \n
                          "if !(isNull _unit) then {" \n
                          "	EPOCH_TEMPOBJ_PVS = _unit;" \n
-                         "	publicVariableServer ""EPOCH_TEMPOBJ_PVS"";" \n
+                         "	EPOCH_TEMPOBJ_PVS remoteExec [""EPOCH_localCleanup"",2];" \n
                          "};" \n
                          "" \n
                          "_randomGroan = {" \n
@@ -59,7 +59,7 @@ class FSM
                          "" \n
                          "_unit say3D _sound;" \n
                          "EPOCH_say3D_PVS = [player, _unit,(EPOCH_sounds find _sound), Epoch_personalToken];" \n
-                         "publicVariableServer ""EPOCH_say3D_PVS"";" \n
+                         "EPOCH_say3D_PVS remoteExec [""EPOCH_server_handle_say3D"",2];" \n
                          "};" \n
                          "" \n
                          "_sMarker = objNull;" \n

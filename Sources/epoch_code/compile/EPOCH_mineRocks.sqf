@@ -53,8 +53,7 @@ if ((diag_tickTime - EPOCH_lastMineRocks) >= 2) then {
 
 		if (!isNull _object) then {
 			if (alive _object) then {
-				EPOCH_mineRocks_PVS = [_object, _foundIndex, player, Epoch_personalToken];
-				publicVariableServer "EPOCH_mineRocks_PVS";
+				[_object, _foundIndex, player, Epoch_personalToken] remoteExec ["EPOCH_server_mineRocks",2];
 			};
 		};
 	};

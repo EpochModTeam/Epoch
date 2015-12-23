@@ -51,7 +51,7 @@ if!(isNil "_animalPos") then {
 	// diag_log format["DEBUG: spawned %1", _randomAIClass];
 
 	EPOCH_TEMPOBJ_PVS = _animal;
-	publicVariableServer "EPOCH_TEMPOBJ_PVS";
+	EPOCH_TEMPOBJ_PVS remoteExec ["EPOCH_localCleanup",2];
 
 	{
 		_animal disableAI _x;

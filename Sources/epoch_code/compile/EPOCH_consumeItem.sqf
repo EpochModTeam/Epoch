@@ -166,8 +166,9 @@ switch _interactOption do {
 
 			if (_item call _removeItem) then {
 				player addMagazine "jerrycanE_epoch";
-				EPOCH_fillVehicle_PVS = [_vehicle,_newFuel,player,Epoch_personalToken];
-				publicVariableServer "EPOCH_fillVehicle_PVS";
+				// send
+				[_vehicle,_newFuel,player,Epoch_personalToken] remoteExec ["EPOCH_server_fillVehicle",2];
+
 				_dt = ["<t size='0.8' shadow='0' color='#99ffffff'>Fuel Added</t>", 0, 1, 5, 2, 0, 1] spawn bis_fnc_dynamictext;
 			};
 		};
@@ -184,8 +185,7 @@ switch _interactOption do {
 			if (_newFuel > 0) then {
 				if (_item call _removeItem) then {
 					player addMagazine "jerrycan_epoch";
-					EPOCH_fillVehicle_PVS = [_vehicle,_newFuel,player,Epoch_personalToken];
-					publicVariableServer "EPOCH_fillVehicle_PVS";
+					[_vehicle,_newFuel,player,Epoch_personalToken] remoteExec ["EPOCH_server_fillVehicle",2];
 					_dt = ["<t size='0.8' shadow='0' color='#99ffffff'>Fuel Siphoned</t>", 0, 1, 5, 2, 0, 1] spawn bis_fnc_dynamictext;
 				};
 			} else {
@@ -222,15 +222,13 @@ switch _interactOption do {
 					if (local _vehicle) then {
 						[_vehicle, [_currentHIT, _newDMG]] call EPOCH_client_repairVehicle;
 					} else {
-						EPOCH_repairVehicle_PVS = [_vehicle,[_currentHIT,_newDMG],player,Epoch_personalToken];
-						publicVariableServer "EPOCH_repairVehicle_PVS";
+						[_vehicle,[_currentHIT,_newDMG],player,Epoch_personalToken] remoteExec ["EPOCH_server_repairVehicle",2];
 					};
 
 					//diag_log format["DEBUG HITPOINT REPAIRED: %1 %2 %3", _currentHIT, _newDMG, _item];
 				} else {
 					if ((damage _vehicle) > 0) then {
-						EPOCH_repairVehicle_PVS = [_vehicle,["ALL",0],player,Epoch_personalToken];
-						publicVariableServer "EPOCH_repairVehicle_PVS";
+						[_vehicle,["ALL",0],player,Epoch_personalToken] remoteExec ["EPOCH_server_repairVehicle",2];
 					};
 				};
 				_dt = ["<t size='0.8' shadow='0' color='#99ffffff'>Vehicle Partially Repaired</t>", 0, 1, 5, 2, 0, 1] spawn bis_fnc_dynamictext;
@@ -242,8 +240,7 @@ switch _interactOption do {
 		_vehicle = cursorTarget;
 		if (_vehicle in _vehicles) then {
 			if (_item call _removeItem) then {
-				EPOCH_repairVehicle_PVS = [_vehicle,["ALL",0],player,Epoch_personalToken];
-				publicVariableServer "EPOCH_repairVehicle_PVS";
+				[_vehicle,["ALL",0],player,Epoch_personalToken] remoteExec ["EPOCH_server_repairVehicle",2];
 				_dt = ["<t size='0.8' shadow='0' color='#99ffffff'>Vehicle Fully Repaired</t>", 0, 1, 5, 2, 0, 1] spawn bis_fnc_dynamictext;
 			};
 		};
@@ -265,8 +262,7 @@ switch _interactOption do {
 						_paintCanIndex = getNumber(configfile >> "CfgMagazines" >> _item >> "textureIndex");
 						_paintCanColor = getText(configfile >> "CfgMagazines" >> _item >> "colorName");
 
-						EPOCH_PAINTBUILD = [_vehicle,_paintCanIndex,player,Epoch_personalToken];
-						publicVariableServer "EPOCH_PAINTBUILD";
+						[_vehicle,_paintCanIndex,player,Epoch_personalToken] remoteExec ["EPOCH_server_paintBUILD",2];
 
 						_msg = format["Wall Painted %1", _paintCanColor];
 						_dt = [format["<t size='0.8' shadow='0' color='#99ffffff'>%1</t>", _msg], 0, 1, 5, 2, 0, 1] spawn bis_fnc_dynamictext;
@@ -285,16 +281,14 @@ switch _interactOption do {
 		if (_vehicle in _vehicles) then {
 			if (damage _vehicle != 0) then {
 				if (_item call _removeItem) then {
-					EPOCH_repairVehicle_PVS = [_vehicle,["ALL",0],player,Epoch_personalToken];
-					publicVariableServer "EPOCH_repairVehicle_PVS";
+					[_vehicle,["ALL",0],player,Epoch_personalToken] remoteExec ["EPOCH_server_repairVehicle",2];
 					_dt = ["<t size = '0.8' shadow = '0' color = '#99ffffff'>Healed other player</t>", 0, 1, 5, 2, 0, 1] spawn bis_fnc_dynamictext;
 				};
 			};
 		} else {
 			if (damage player != 0) then {
 				if (_item call _removeItem) then {
-					EPOCH_repairVehicle_PVS = [player,["ALL",0],player,Epoch_personalToken];
-					publicVariableServer "EPOCH_repairVehicle_PVS";
+					[player,["ALL",0],player,Epoch_personalToken] remoteExec ["EPOCH_server_repairVehicle",2];
 					_dt = ["<t size = '0.8' shadow = '0' color = '#99ffffff'>Healed yourself</t>", 0, 1, 5, 2, 0, 1] spawn bis_fnc_dynamictext;
 				};
 			};

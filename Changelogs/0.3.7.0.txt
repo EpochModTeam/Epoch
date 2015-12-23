@@ -1,3 +1,4 @@
+[Fixed] Custom epoch swing animations for Hatchet and sledge now work correctly.
 WIP
 [Added] Hotwire Kit
 [Added] Key Makers Kit

@@ -1607,7 +1607,7 @@ class CfgVehicles
 				position = "Door_knopf";
 				radius = 3;
 				condition = "this animationPhase ""raise"" == 0";
-				statement = "EPOCH_packJack_PVS = [this,player,Epoch_personalToken]; publicVariableServer ""EPOCH_packJack_PVS"";";
+				statement = "[this,player,Epoch_personalToken] remoteExec ['EPOCH_server_packJack',2];";
 			};
 		};
 
@@ -2820,7 +2820,7 @@ class CfgVehicles
 				position = "Door_knopf";
 				radius = 3;
 				condition = "this getVariable [""EPOCH_Locked"",true]";
-				statement = "EPOCH_lockStorage_PVS = [this,false,player,Epoch_personalToken]; publicVariableServer ""EPOCH_lockStorage_PVS"";";
+				statement = "[this,false,player,Epoch_personalToken] remoteExec ["EPOCH_server_lockStorage",2];";
 			};
 			class Pack
 			{
@@ -2829,7 +2829,7 @@ class CfgVehicles
 				position = "Door_knopf";
 				radius = 3;
 				condition = "this getVariable [""EPOCH_Locked"",true]";
-				statement = "EPOCH_packStorage_PVS = [this,player,Epoch_personalToken]; publicVariableServer ""EPOCH_packStorage_PVS"";";
+				statement = "[this,player,Epoch_personalToken] remoteExec ["EPOCH_server_lockStorage",2];";
 			};
 		};
 		*/
@@ -2863,7 +2863,7 @@ class CfgVehicles
 				position = "Door_knopf";
 				radius = 3;
 				condition = "(this getVariable[""EPOCH_secStorParent"", objNull]) getVariable [""EPOCH_Locked"",true]";
-				statement = "EPOCH_lockStorage_PVS = [this,false,player,Epoch_personalToken]; publicVariableServer ""EPOCH_lockStorage_PVS"";";
+				statement = "[this,false,player,Epoch_personalToken] remoteExec ["EPOCH_server_lockStorage",2];";
 			};
 
 			class Pack
@@ -2873,7 +2873,7 @@ class CfgVehicles
 				position = "Door_knopf";
 				radius = 3;
 				condition = "(this getVariable[""EPOCH_secStorParent"", objNull]) getVariable [""EPOCH_Locked"",true]";
-				statement = "EPOCH_packStorage_PVS = [this,player,Epoch_personalToken]; publicVariableServer ""EPOCH_packStorage_PVS"";";
+				statement = "[this,player,Epoch_personalToken] remoteExec ["EPOCH_server_lockStorage",2];";
 			};
 
 		};
