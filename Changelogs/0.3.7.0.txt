@@ -1,8 +1,12 @@
+**Client**
+[Changed] Change all publicVariableServer calls to use remoteExec calls for better performance.
 [Fixed] Custom epoch swing animations for Hatchet and sledge now work correctly.
-WIP
-[Added] Hotwire Kit
-[Added] Key Makers Kit
-[Added] Keys in colors: (Black,Red,Green,Blue,Yellow)
-[Added] 55 Gallon Fuel Barrel (Full/Empty)
-[Added] Metal Pipes
-[Added] Documents (Trash,Vehicle Upgrades)
+[WIP] Hotwire Kit
+[WIP] Key Makers Kit
+[WIP] Keys in colors: (Black,Red,Green,Blue,Yellow)
+[WIP] 55 Gallon Fuel Barrel (Full/Empty)
+[WIP] Metal Pipes
+[WIP] Documents (Trash,Vehicle Upgrades)
+**Server**
+[Updated] New Battleye remoteExec.txt for added remoteExec calls.
+[Info] Removed old .bikey and added new one for 0370.

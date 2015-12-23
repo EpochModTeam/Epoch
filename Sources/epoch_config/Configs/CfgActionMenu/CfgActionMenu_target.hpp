@@ -119,7 +119,7 @@ class lock_safe
 class pack_lockbox
 {
 	condition = "(dyna_cursorTargetType in ['LockBox_EPOCH','LockBoxProxy_EPOCH']) && (dyna_cursorTarget getVariable ['EPOCH_Locked',false])";
-	action = "[dyna_cursorTarget,player,Epoch_personalToken] remoteExec ['EPOCH_server_lockStorage',2];";
+	action = "[dyna_cursorTarget,player,Epoch_personalToken] remoteExec ['EPOCH_server_packStorage',2];";
 	icon = "x\addons\a3_epoch_code\Data\UI\buttons\build_pack.paa";
 	tooltip = "Pack Lockbox";
 };
