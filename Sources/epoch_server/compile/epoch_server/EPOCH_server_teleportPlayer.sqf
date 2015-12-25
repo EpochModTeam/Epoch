@@ -5,7 +5,7 @@ _teleporter = _this select 1;
 
 if !([_player, _this select 2] call EPOCH_server_getPToken) exitWith{};
 if (isNull _teleporter) exitWith{};
-if (_plyr distance _teleporter > 20) exitWith{};
+if (_player distance _teleporter > 20) exitWith{};
 
 _tp = _teleporter getVariable["ParentBuilding", []];
 if !(_tp isEqualTo []) then {
