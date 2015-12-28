@@ -73,8 +73,8 @@ if (_class != "") then {
 	_pos2 = player modelToWorldVisual[EPOCH_X_OFFSET, EPOCH_Y_OFFSET, EPOCH_Z_OFFSET];
 
 	EPOCH_target = createVehicle[_class, _pos2, [], 0, "CAN_COLLIDE"];
-	EPOCH_TEMPOBJ_PVS = EPOCH_target;
-	EPOCH_TEMPOBJ_PVS remoteExec ["EPOCH_localCleanup",2];
+	// send to server
+	[EPOCH_target] remoteExec ["EPOCH_localCleanup",2];
 
 	if (_pos2 select 2 > _maxHeight) then {
 		_pos2 set[2, _maxHeight];

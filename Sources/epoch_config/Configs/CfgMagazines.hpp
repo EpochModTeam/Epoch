@@ -18,6 +18,9 @@ class CfgMagazines
 	class Default;
 	class CA_Magazine;
 
+	#include "CfgMagazines\Custom.hpp"
+	// 037 custom end
+
 	class 1Rnd_Soda: CA_Magazine
 	{
 		picture = "";

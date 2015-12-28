@@ -914,8 +914,8 @@ class FSM
        "axeVIP = _grp createUnit [""Epoch_Female_CamoRed_F"",_pos,[],0,""FORM""];" \n
        "" \n
        "if !(isNull axeVIP) then {" \n
-       "	EPOCH_TEMPOBJ_PVS = axeVIP;" \n
-       "	EPOCH_TEMPOBJ_PVS remoteExec [""EPOCH_localCleanup"",2];" \n
+       "" \n
+       "	[axeVIP] remoteExec [""EPOCH_localCleanup"",2];" \n
        "};" \n
        "" \n
        "_grp setCombatMode ""BLUE"";" \n
@@ -1038,8 +1038,8 @@ class FSM
        "	removeAllWeapons axeGeneral;" \n
        "" \n
        "if !(isNull axeGeneral) then {" \n
-       "	EPOCH_TEMPOBJ_PVS = axeGeneral;" \n
-       "	EPOCH_TEMPOBJ_PVS remoteExec [""EPOCH_localCleanup"",2];" \n
+       "" \n
+       "	[axeGeneral] remoteExec [""EPOCH_localCleanup"",2];" \n
        "};" \n
        "" \n
        "	 for ""_i"" from 1 to 3 step 1 do" \n
@@ -1051,8 +1051,8 @@ class FSM
        "	_unit addEventHandler [""FiredNear"", ""group (_this select 0) setVariable[""""shotsFired"""",[(_this select 1),(_this select 2)]]""];" \n
        "	_unit addEventHandler [""Killed"", ""group (_this select 0) setVariable[""""killer"""",_this select 1]""];" \n
        "	if !(isNull _unit) then {" \n
-       "	EPOCH_TEMPOBJ_PVS = _unit;" \n
-       "	EPOCH_TEMPOBJ_PVS remoteExec [""EPOCH_localCleanup"",2];" \n
+       "" \n
+       "	[_unit] remoteExec [""EPOCH_localCleanup"",2];" \n
        "	};" \n
        "	[_unit,axeGeneral] execFSM ""\x\addons\a3_epoch_code\System\Mission_VIP_Militia.fsm"";" \n
        "" \n

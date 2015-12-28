@@ -15,6 +15,46 @@
 
 class CfgPricing
 {
+
+	// 037
+	class ItemHotwire {
+        price = 15;
+    };
+    class ItemKeyKit { 
+        price = 15;
+    };
+    class ItemBarrelF {
+        price = 150;
+    };
+    class ItemBarrelE {
+        price = 150;
+    };
+    class ItemPipe {
+        price = 10;
+    };
+    class ItemKey {
+        price = 10;
+    };
+    class ItemKeyBlue {
+        price = 10;
+    };
+    class ItemKeyGreen {
+        price = 10;
+    };
+    class ItemKeyRed {
+        price = 10;
+    };
+    class ItemKeyYellow {
+        price = 10;
+    };
+    class ItemDoc1 {
+        price = 10;
+    };
+    class ItemDoc2 {
+        price = 10;
+    };
+	// 037
+
 	class ChainSaw {price = 125;};
 	class CircuitParts {price = 50;};
 	class ItemCoolerE {price = 50;};

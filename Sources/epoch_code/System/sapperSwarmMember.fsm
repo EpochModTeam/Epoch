@@ -49,8 +49,8 @@ class FSM
                          "" \n
                          "" \n
                          "if !(isNull _unit) then {" \n
-                         "	EPOCH_TEMPOBJ_PVS = _unit;" \n
-                         "	EPOCH_TEMPOBJ_PVS remoteExec [""EPOCH_localCleanup"",2];" \n
+                         "" \n
+                         "	[_unit] remoteExec [""EPOCH_localCleanup"",2];" \n
                          "};" \n
                          "" \n
                          "_randomGroan = {" \n

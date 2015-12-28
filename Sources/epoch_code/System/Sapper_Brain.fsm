@@ -1206,8 +1206,8 @@ class FSM
        "_bomb = createVehicle [""Sapper_Charge_Ammo"", (getposATL _nestMate), [], 0, ""CAN_COLLIDE""] ; " \n
        "_bomb attachTo [_nestMate, [0,0,0],""Pelvis""];" \n
        "_nestMate setVariable [""bomb"",_bomb];" \n
-       "EPOCH_TEMPOBJ_PVS = _nestMate;" \n
-       "EPOCH_TEMPOBJ_PVS remoteExec [""EPOCH_localCleanup"",2];" \n
+       "" \n
+       "[_nestMate] remoteExec [""EPOCH_localCleanup"",2];" \n
        "_nestMate disableAI ""TARGET"";" \n
        "_nestMate disableAI ""AUTOTARGET"";" \n
        "_nestMate disableAI ""FSM"";" \n

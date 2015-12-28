@@ -107,8 +107,7 @@ if (diag_tickTime - EPOCH_lastTrash > 2)  then {
 				_id = [_animal, true] execFSM "\x\addons\a3_epoch_code\System\Animal_brain.fsm";
 				_animals pushBack _animal;
 			};
-			EPOCH_TEMPOBJ_PVS = _animals;
-			EPOCH_TEMPOBJ_PVS remoteExec ["EPOCH_localCleanup",2];
+			_animals remoteExec ["EPOCH_localCleanup",2];
 		};
 	};
 	if (!isNull EPOCH_bankTerminal) then {

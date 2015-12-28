@@ -1,12 +1,16 @@
 **Client**
+[ADDED] Hotwire Kit (ItemHotwire)
+[ADDED] Key Makers Kit (ItemKeyKit)
+[ADDED] Keys in colors: (Black ItemKey,ItemKeyRed,ItemKeyGreen,ItemKeyBlue,ItemKeyYellow)
+[ADDED] 55 Gallon Fuel Barrel (Full - ItemBarrelF | Empty - ItemBarrelE)
+[ADDED] Metal Pipes (ItemPipe)
+[WIP] Light Bulb (ItemBulb)
+[WIP] Burlap (ItemBurlap)
+[WIP] Briefcase (Empty - ItemBriefcaseE)
+[WIP] Documents (Trash,Books,Vehicle Upgrades) (ItemDoc1, ItemDoc2)
 [Changed] Change all publicVariableServer calls to use remoteExec calls for better performance.
 [Fixed] Custom epoch swing animations for Hatchet and sledge now work correctly.
-[WIP] Hotwire Kit
-[WIP] Key Makers Kit
-[WIP] Keys in colors: (Black,Red,Green,Blue,Yellow)
-[WIP] 55 Gallon Fuel Barrel (Full/Empty)
-[WIP] Metal Pipes
-[WIP] Documents (Trash,Vehicle Upgrades)
 **Server**
 [Updated] New Battleye remoteExec.txt for added remoteExec calls.
+[Changed] Driver or passengers of a driverless can now control vehicle locks.
 [Info] Removed old .bikey and added new one for 0370.

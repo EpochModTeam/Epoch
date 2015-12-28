@@ -9,8 +9,8 @@ _cage2 = createVehicle ["Land_Cages_F", _cagePos, [], 2, "CAN_COLLIDE"] ;
 _cage2 setVectorDirAndUp [[0,0,1],[0,1,0]];
 _cage attachTo [_cage2,[0,1.3,0]];
 
-EPOCH_TEMPOBJ_PVS = [_cage,_cage2];
-EPOCH_TEMPOBJ_PVS remoteExec ["EPOCH_localCleanup",2];
+// send to server
+[_cage,_cage2] remoteExec ["EPOCH_localCleanup",2];
 
 
 _startCage = diag_tickTime;
@@ -27,8 +27,8 @@ _sapper setVectorDirAndUp [[0,0,1],[0,1,0]];
 _sapper forcespeed 0;
 
 if !(isNull _sapper) then {
-	EPOCH_TEMPOBJ_PVS = _sapper;
-	EPOCH_TEMPOBJ_PVS remoteExec ["EPOCH_localCleanup",2];
+	// send to server
+	[_sapper] remoteExec ["EPOCH_localCleanup",2];
 };
 
 [player,Epoch_personalToken,objNull,false,25] remoteExec ["EPOCH_server_fillContainer",2];
