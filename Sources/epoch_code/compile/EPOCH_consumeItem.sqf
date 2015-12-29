@@ -100,6 +100,37 @@ _unifiedInteract = {
 };
 
 switch _interactOption do {
+	case 0: {
+		_magCount = getNumber (_config >> "count");
+		// allow repack for all magazines with greater than 1 bullet
+		if (_magCount > 1) then {
+
+			_ammoTotal = 0;
+			_magazinesAmmoFull = magazinesAmmoFull player;
+			{
+				if (_item isEqualTo (_x select 0)) then {
+					_ammoTotal = _ammoTotal + (_x select 1);
+				};
+			} forEach _magazinesAmmoFull;
+
+			_magazineSize = _ammoTotal;
+			_magazineSizeMax = _magCount;
+
+			// remove all
+			player removeMagazines _item;
+
+			// Add full magazines back to player
+			for "_i" from 1 to floor (_magazineSize / _magazineSizeMax) do
+			{
+			    player addMagazine [_item, _magazineSizeMax];
+			};
+			// Add last non full magazine
+			if ((_magazineSize % _magazineSizeMax) > 0) then {
+				player addMagazine [_item, floor (_magazineSize % _magazineSizeMax)];
+			};
+			_dt = ["<t size='0.8' shadow='0' color='#99ffffff'>Ammo Repacked</t>", 0, 1, 5, 2, 0, 1] spawn bis_fnc_dynamictext;
+		};
+	};
 	case 1: _unifiedInteract; // Eat 1
 	case 2: _unifiedInteract; //Drink 2
 	case 3: { // Build 3

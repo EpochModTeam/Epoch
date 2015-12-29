@@ -1,13 +1,14 @@
 **Client**
-[ADDED] Hotwire Kit (ItemHotwire)
-[ADDED] Key Makers Kit (ItemKeyKit)
-[ADDED] Keys in colors: (Black ItemKey,ItemKeyRed,ItemKeyGreen,ItemKeyBlue,ItemKeyYellow)
-[ADDED] 55 Gallon Fuel Barrel (Full - ItemBarrelF | Empty - ItemBarrelE)
-[ADDED] Metal Pipes (ItemPipe)
+[ADDED] Repack magazines option.
+[ADDED-WIP] Hotwire Kit (ItemHotwire)
+[ADDED-WIP] Key Makers Kit (ItemKeyKit)
+[ADDED-WIP] Keys in colors: (Black ItemKey,ItemKeyRed,ItemKeyGreen,ItemKeyBlue,ItemKeyYellow)
+[ADDED-WIP] 55 Gallon Fuel Barrel (Full - ItemBarrelF | Empty - ItemBarrelE)
+[ADDED-WIP] Metal Pipes (ItemPipe)
+[ADDED-WIP] Documents (Trash,Books,Vehicle Upgrades) (ItemDoc1, ItemDoc2)
 [WIP] Light Bulb (ItemBulb)
 [WIP] Burlap (ItemBurlap)
 [WIP] Briefcase (Empty - ItemBriefcaseE)
-[WIP] Documents (Trash,Books,Vehicle Upgrades) (ItemDoc1, ItemDoc2)
 [Changed] Change all publicVariableServer calls to use remoteExec calls for better performance.
 [Fixed] Custom epoch swing animations for Hatchet and sledge now work correctly.
 **Server**
