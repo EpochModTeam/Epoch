@@ -1,17 +1,22 @@
 **Client**
-[ADDED] Repack magazines option.
-[ADDED-WIP] Hotwire Kit (ItemHotwire)
-[ADDED-WIP] Key Makers Kit (ItemKeyKit)
-[ADDED-WIP] Keys in colors: (Black ItemKey,ItemKeyRed,ItemKeyGreen,ItemKeyBlue,ItemKeyYellow)
-[ADDED-WIP] 55 Gallon Fuel Barrel (Full - ItemBarrelF | Empty - ItemBarrelE)
-[ADDED-WIP] Metal Pipes (ItemPipe)
-[ADDED-WIP] Documents (Trash,Books,Vehicle Upgrades) (ItemDoc1, ItemDoc2)
-[WIP] Light Bulb (ItemBulb)
-[WIP] Burlap (ItemBurlap)
-[WIP] Briefcase (Empty - ItemBriefcaseE)
+[ADDED] Repack magazines. Select a magazine and press the "Repack" button.
+[ADDED-WIP] Hotwire Kit (ItemHotwire).
+[ADDED-WIP] Key Makers Kit (ItemKeyKit).
+[ADDED-WIP] Keys in colors: (Black ItemKey,ItemKeyRed,ItemKeyGreen,ItemKeyBlue,ItemKeyYellow).
+[ADDED-WIP] 55 Gallon Fuel Barrel (Full - ItemBarrelF,Empty - ItemBarrelE).
+[ADDED-WIP] Metal Pipes (ItemPipe).
+[ADDED-WIP] Documents (Trash,Books,Vehicle Upgrades) (ItemDoc1-8, ItemVehDoc1-4).
+[ADDED-WIP] Light Bulb (ItemBulb).
+[ADDED-WIP] Burlap (ItemBurlap).
+[ADDED-WIP] Briefcase (Empty - ItemBriefcaseE).
+[ADDED-WIP] Aluminum Bars (ItemAluminumBar,ItemAluminumBar10oz).
+[ADDED-WIP] Copper Bars (ItemCopperBar,ItemCopperBar10oz).
+[ADDED-WIP] Tin Bars (ItemTinBar,ItemTinBar10oz).
+[ADDED-WIP] Plywood sheets in small and large stacks (ItemPlywood,ItemPlywoodPack).
 [Changed] Change all publicVariableServer calls to use remoteExec calls for better performance.
 [Fixed] Custom epoch swing animations for Hatchet and sledge now work correctly.
 **Server**
-[Updated] New Battleye remoteExec.txt for added remoteExec calls.
 [Changed] Driver or passengers of a driverless can now control vehicle locks.
+[Changed] Commented out Halloween masks from loot tables.
+[Updated] New Battleye remoteExec.txt for added remoteExec calls.
 [Info] Removed old .bikey and added new one for 0370.
