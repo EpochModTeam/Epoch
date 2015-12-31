@@ -16,7 +16,8 @@
 [Changed] Change all publicVariableServer calls to use remoteExec calls for better performance.
 [Fixed] Custom epoch swing animations for Hatchet and sledge now work correctly.
 **Server**
-[Changed] Driver or passengers of a driverless can now control vehicle locks.
+[Added] Setting to control random magazine ammo counts in loot spawner. CfgEpochClient -> randomizeMagazineAmmoCount (default: true)
+[Changed] Driver or passengers of a driverless can now control vehicle locks. Also only the owner can control locks from outside of a occupied vehicle.
 [Changed] Commented out Halloween masks from loot tables.
 [Updated] New Battleye remoteExec.txt for added remoteExec calls.
 [Info] Removed old .bikey and added new one for 0370.
