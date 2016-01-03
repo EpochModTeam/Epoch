@@ -7,7 +7,7 @@
 // "EPOCH_checkPlayer_PVS"		addPublicVariableEventHandler{(_this select 1)call EPOCH_server_checkPlayer};
 // "EPOCH_respawnPlayer_PVS"	addPublicVariableEventHandler{(_this select 1)call EPOCH_server_respawnPlayer};
 // "EPOCH_S_S_VEHICLES"		   addPublicVariableEventHandler{(_this select 1)call EPOCH_server_save_vehicles};
-"EPOCH_pushPlayer_PVS"		addPublicVariableEventHandler{if([_this select 1 select 0,_this select 1 select 2]call EPOCH_server_getPToken)then{(_this select 1)call EPOCH_server_savePlayer}};
+// "EPOCH_pushPlayer_PVS"		addPublicVariableEventHandler{(_this select 1) call EPOCH_fnc_savePlayer};
 // "EPOCH_deadPlayer_PVS"		addPublicVariableEventHandler{(_this select 1)call EPOCH_server_deadPlayer};
 // "EPOCH_destroyTrash"		   addPublicVariableEventHandler{(_this select 1)call EPOCH_server_destroyTrash};
 // "EPOCH_knockDownTree"		addPublicVariableEventHandler{(_this select 1)call EPOCH_server_knockDownTree};
@@ -46,4 +46,4 @@
 // "EPOCH_FillContainer_PVS" 	addPublicVariableEventHandler{(_this select 1)call EPOCH_server_fillContainer};
 // "EPOCH_SapperObjs_PVS"	 	addPublicVariableEventHandler{(_this select 1)call EPOCH_server_handle_sapperObjs};
 // "EPOCH_createAirDrop_PVS" 	addPublicVariableEventHandler{ (_this select 1)call EPOCH_Server_createAirDrop };
-"EPOCH_airDropCrate_PVS" 	addPublicVariableEventHandler{ (_this select 1)call EPOCH_server_airDropCrate };
+// "EPOCH_airDropCrate_PVS" 	addPublicVariableEventHandler{ (_this select 1)call EPOCH_server_airDropCrate };

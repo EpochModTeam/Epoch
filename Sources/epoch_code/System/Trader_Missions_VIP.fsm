@@ -502,8 +502,8 @@ class FSM
            "_boats = [];" \n
            "_findTimer = diag_TickTime;" \n
            "" \n
-           "EPOCH_createObject_PVS = [player,Epoch_personalToken,""I_Boat_Armed_01_minigun_F"",true,axeGeneralBoatPos,""CAN_COLLIDE"","""","""","""","""",true];" \n
-           "publicVariableServer ""EPOCH_createObject_PVS"";" \n
+           "" \n
+           "[player,Epoch_personalToken,""I_Boat_Armed_01_minigun_F"",true,axeGeneralBoatPos,""CAN_COLLIDE"","""","""","""","""",true] remoteExec [""EPOCH_Server_createObject"",2];" \n
            "" \n
            "" \n
            ""/*%FSM</ACTION""">*/;

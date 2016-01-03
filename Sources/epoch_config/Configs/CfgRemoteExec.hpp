@@ -183,6 +183,15 @@ class CfgRemoteExec
       allowedTargets=2;
       jip = 0;
     };
+    class EPOCH_Server_createObject {
+      allowedTargets=2;
+      jip = 0;
+    };
+    class EPOCH_fnc_savePlayer {
+      allowedTargets=2;
+      jip = 0;
+    };
+
   };
   class Commands {mode=0;};
 };

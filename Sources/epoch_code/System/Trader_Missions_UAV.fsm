@@ -1319,8 +1319,8 @@ class FSM
        "" \n
        "_copterPos = (getPosATL _plyr) findEmptyPosition [1,500,""I_Heli_light_03_unarmed_EPOCH""];" \n
        "" \n
-       "EPOCH_createObject_PVS = [player,Epoch_personalToken,_uavclass,true,_copterPos,""CAN_COLLIDE"","""","""","""","""",true];" \n
-       "publicVariableServer ""EPOCH_createObject_PVS"";" \n
+       "" \n
+       "[player,Epoch_personalToken,_uavclass,true,_copterPos,""CAN_COLLIDE"","""","""","""","""",true] remoteExec [""EPOCH_Server_createObject"",2];" \n
        "" \n
        "" \n
        "" \n

@@ -39,6 +39,11 @@ class cfgFunctions
 				file = "\x\addons\a3_epoch_server\compile\epoch_bases\fn_saveBuilding.sqf";
 			};
 		};
+		class players {
+			class savePlayer {
+				file = "\x\addons\a3_epoch_server\compile\epoch_player\fn_savePlayer.sqf";
+			};
+		};
 	};
 
 };
