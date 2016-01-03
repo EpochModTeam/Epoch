@@ -20,4 +20,5 @@
 [Changed] Driver or passengers of a driverless can now control vehicle locks. Also only the owner can control locks from outside of a occupied vehicle.
 [Changed] Commented out Halloween masks from loot tables.
 [Updated] New Battleye remoteExec.txt for added remoteExec calls.
+[Fixed] When killed instead of saving blank array delete (object,trader,vehicle) data from database.
 [Info] Removed old .bikey and added new one for 0370.
