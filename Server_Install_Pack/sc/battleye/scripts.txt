@@ -31,7 +31,7 @@
 7 removeAllItems
 7 removeAllActions
 7 setViewDistance !"setViewDistance 1600"
-7 createGroup !="_grp = createGroup RESISTANCE;" !="if (isserver) then {\n_group = creategroup sidelogic;" !="grpVIPGeneral = createGroup RESISTANCE;" !="_grp = createGroup side _plyr;" !="_grp = createGroup side player;" !="_grp = createGroup _side;" !="_grp = createGroup (side _plyr);" !="createcenter sidelogic;\n_grpLogic = creategroup sidelogic;\nbis_functions_mainscope"
+7 createGroup !="EPOCH_server_createGroup" !="_grp = createGroup RESISTANCE;" !="if (isserver) then {\n_group = creategroup sidelogic;" !="grpVIPGeneral = createGroup RESISTANCE;" !="_grp = createGroup side _plyr;" !="_grp = createGroup side player;" !="_grp = createGroup _side;" !="_grp = createGroup (side _plyr);" !="createcenter sidelogic;\n_grpLogic = creategroup sidelogic;\nbis_functions_mainscope"
 7 createVehicleCrew
 7 createVehicleLocal !"\"#particlesource\" createVehicleLocal" !"\"#lightpoint\" createVehicleLocal" !"\"BloodSplat\" createVehicleLocal" !"[\"lightning1_F\", \"lightning2_F\"] call BIS_fnc_selectRandom;\n_lighting = _class createVehicleLocal"
 7 createUnit !="_unit = _grp createUnit[(_arrUnits select _i), _pos, [], 0, \"FORM\"];" !="_driver = _grp createUnit[\"I_UAV_AI\", position _unit, [], 0, \"CAN_COLLIDE\"];" !="axeGeneral = grpVIPGeneral createUnit ["I_officer_F", axeGeneralPos, [], 1, "CAN_COLLIDE"];"
