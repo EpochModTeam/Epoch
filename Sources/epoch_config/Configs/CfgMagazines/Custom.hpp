@@ -30,6 +30,8 @@ class ItemBarrelF : CA_Magazine {
     mass = 25;
     interactAction = 2;
     interactText = "USE";
+    interactAttributes[] = {210};
+    interactReturnOnUse = "ItemBarrelE";
 };
 class ItemBarrelE : CA_Magazine { 
     picture = "\x\addons\a3_epoch_assets_1\pictures\equip_oildrum_e_CA.paa";
@@ -41,6 +43,8 @@ class ItemBarrelE : CA_Magazine {
     mass = 25;
     interactAction = 2;
     interactText = "USE";
+    interactAttributes[] = {210};
+    interactReturnOnUse = "ItemBarrelF";
 };
 class ItemPipe : CA_Magazine { 
     picture = "\x\addons\a3_epoch_assets_1\pictures\equip_pipe_CA.paa";
@@ -195,15 +199,6 @@ class ItemAluminumBar : CA_Magazine {
     count = 1;
     mass = 1;
 };
-class ItemAluminumBar10oz : CA_Magazine { 
-    picture = "\x\addons\a3_epoch_assets_1\pictures\equip_alum_bar_10oz_CA.paa";
-    displayName = "$STR_EPOCH_AluminumBar10oz_19"; // Aluminum Bar (10oz)
-    scope = 2;
-    model = "\x\addons\a3_epoch_assets_1\models\aluminum_bar_10oz.p3d";
-    descriptionShort = "$STR_EPOCH_AluminumBar10oz_19"; // Aluminum Bar (10oz)
-    count = 1;
-    mass = 1;
-};
 class ItemCopperBar : CA_Magazine { 
     picture = "\x\addons\a3_epoch_assets_1\pictures\equip_copper_bar_CA.paa";
     displayName = "$STR_EPOCH_CopperBar1oz_16"; // Copper Bar (1oz)
@@ -213,30 +208,12 @@ class ItemCopperBar : CA_Magazine {
     count = 1;
     mass = 1;
 };
-class ItemCopperBar10oz : CA_Magazine { 
-    picture = "\x\addons\a3_epoch_assets_1\pictures\equip_copper_bar_10oz_CA.paa";
-    displayName = "$STR_EPOCH_CopperBar10oz_17"; // Copper Bar (10oz)
-    scope = 2;
-    model = "\x\addons\a3_epoch_assets_1\models\copper_bar_10oz.p3d";
-    descriptionShort = "$STR_EPOCH_CopperBar10oz_17"; // Copper Bar (10oz)
-    count = 1;
-    mass = 1;
-};
 class ItemTinBar : CA_Magazine { 
     picture = "\x\addons\a3_epoch_assets_1\pictures\equip_tin_bar_CA.paa";
     displayName = "$STR_EPOCH_TinBar1oz_13"; // Tin Bar (1oz)
     scope = 2;
     model = "\x\addons\a3_epoch_assets_1\models\tin_bar.p3d";
     descriptionShort = "$STR_EPOCH_TinBar1oz_13"; // Tin Bar (1oz)
-    count = 1;
-    mass = 1;
-};
-class ItemTinBar10oz : CA_Magazine { 
-    picture = "\x\addons\a3_epoch_assets_1\pictures\equip_tin_bar_10oz_CA.paa";
-    displayName = "$STR_EPOCH_TinBar10oz_14"; // Tin Bar (10oz)
-    scope = 2;
-    model = "\x\addons\a3_epoch_assets_1\models\tin_bar_10oz.p3d";
-    descriptionShort = "$STR_EPOCH_TinBar10oz_14"; // Tin Bar (10oz)
     count = 1;
     mass = 1;
 };
@@ -266,4 +243,400 @@ class ItemComboLock : CA_Magazine {
     descriptionShort = "$STR_EPOCH_CombinationLock_16"; // Combination Lock
     count = 1;
     mass = 1;
+};
+class Item_AssaultPack_cbr : CA_Magazine { 
+    picture = "\x\addons\a3_epoch_assets\textures\backpack\gear_packedBag_ca.paa";
+    displayName = "$STR_A3_B_AssaultPack_cbr0";
+    scope = 2;
+    model = "\x\addons\a3_epoch_assets\models\PackedBag.p3d";
+    descriptionShort = "$STR_EPOCH_PackedBackpack_15"; // Packed Backpack
+    count = 1;
+    mass = 20;
+    interactAction = 14;
+    interactText = "UNPACK";
+    interactReturnOnUse = "B_AssaultPack_cbr";
+};
+class Item_AssaultPack_dgtl : CA_Magazine { 
+    picture = "\x\addons\a3_epoch_assets\textures\backpack\gear_packedBag_ca.paa";
+    displayName = "$STR_A3_B_AssaultPack_dgtl0";
+    scope = 2;
+    model = "\x\addons\a3_epoch_assets\models\PackedBag.p3d";
+    descriptionShort = "$STR_EPOCH_PackedBackpack_15"; // Packed Backpack
+    count = 1;
+    mass = 20;
+    interactAction = 14;
+    interactText = "UNPACK";
+    interactReturnOnUse = "B_AssaultPack_dgtl";
+};
+class Item_AssaultPack_khk : CA_Magazine { 
+    picture = "\x\addons\a3_epoch_assets\textures\backpack\gear_packedBag_ca.paa";
+    displayName = "$STR_A3_B_AssaultPack_khk0";
+    scope = 2;
+    model = "\x\addons\a3_epoch_assets\models\PackedBag.p3d";
+    descriptionShort = "$STR_EPOCH_PackedBackpack_15"; // Packed Backpack
+    count = 1;
+    mass = 20;
+    interactAction = 14;
+    interactText = "UNPACK";
+    interactReturnOnUse = "B_AssaultPack_khk";
+};
+class Item_AssaultPack_mcamo : CA_Magazine { 
+    picture = "\x\addons\a3_epoch_assets\textures\backpack\gear_packedBag_ca.paa";
+    displayName = "$STR_A3_B_AssaultPack_mcamo0";
+    scope = 2;
+    model = "\x\addons\a3_epoch_assets\models\PackedBag.p3d";
+    descriptionShort = "$STR_EPOCH_PackedBackpack_15"; // Packed Backpack
+    count = 1;
+    mass = 20;
+    interactAction = 14;
+    interactText = "UNPACK";
+    interactReturnOnUse = "B_AssaultPack_mcamo";
+};
+class Item_AssaultPack_ocamo : CA_Magazine { 
+    picture = "\x\addons\a3_epoch_assets\textures\backpack\gear_packedBag_ca.paa";
+    displayName = "$STR_A3_B_AssaultPack_ocamo0";
+    scope = 2;
+    model = "\x\addons\a3_epoch_assets\models\PackedBag.p3d";
+    descriptionShort = "$STR_EPOCH_PackedBackpack_15"; // Packed Backpack
+    count = 1;
+    mass = 20;
+    interactAction = 14;
+    interactText = "UNPACK";
+    interactReturnOnUse = "B_AssaultPack_ocamo";
+};
+class Item_AssaultPack_rgr : CA_Magazine { 
+    picture = "\x\addons\a3_epoch_assets\textures\backpack\gear_packedBag_ca.paa";
+    displayName = "$STR_A3_B_AssaultPack_rgr0";
+    scope = 2;
+    model = "\x\addons\a3_epoch_assets\models\PackedBag.p3d";
+    descriptionShort = "$STR_EPOCH_PackedBackpack_15"; // Packed Backpack
+    count = 1;
+    mass = 20;
+    interactAction = 14;
+    interactText = "UNPACK";
+    interactReturnOnUse = "B_AssaultPack_rgr";
+};
+class Item_AssaultPack_sgg : CA_Magazine { 
+    picture = "\x\addons\a3_epoch_assets\textures\backpack\gear_packedBag_ca.paa";
+    displayName = "$STR_A3_B_AssaultPack_sgg0";
+    scope = 2;
+    model = "\x\addons\a3_epoch_assets\models\PackedBag.p3d";
+    descriptionShort = "$STR_EPOCH_PackedBackpack_15"; // Packed Backpack
+    count = 1;
+    mass = 20;
+    interactAction = 14;
+    interactText = "UNPACK";
+    interactReturnOnUse = "B_AssaultPack_sgg";
+};
+class Item_AssaultPack_blk : CA_Magazine { 
+    picture = "\x\addons\a3_epoch_assets\textures\backpack\gear_packedBag_ca.paa";
+    displayName = "$STR_A3_B_AssaultPack_blk0";
+    scope = 2;
+    model = "\x\addons\a3_epoch_assets\models\PackedBag.p3d";
+    descriptionShort = "$STR_EPOCH_PackedBackpack_15"; // Packed Backpack
+    count = 1;
+    mass = 20;
+    interactAction = 14;
+    interactText = "UNPACK";
+    interactReturnOnUse = "B_AssaultPack_blk";
+};
+class Item_Carryall_cbr : CA_Magazine { 
+    picture = "\x\addons\a3_epoch_assets\textures\backpack\gear_packedBag_ca.paa";
+    displayName = "$STR_A3_B_Carryall_cbr0";
+    scope = 2;
+    model = "\x\addons\a3_epoch_assets\models\PackedBag.p3d";
+    descriptionShort = "$STR_EPOCH_PackedBackpack_15"; // Packed Backpack
+    count = 1;
+    mass = 60;
+    interactAction = 14;
+    interactText = "UNPACK";
+    interactReturnOnUse = "B_Carryall_cbr";
+};
+class Item_Carryall_khk : CA_Magazine { 
+    picture = "\x\addons\a3_epoch_assets\textures\backpack\gear_packedBag_ca.paa";
+    displayName = "$STR_A3_B_Carryall_khk0";
+    scope = 2;
+    model = "\x\addons\a3_epoch_assets\models\PackedBag.p3d";
+    descriptionShort = "$STR_EPOCH_PackedBackpack_15"; // Packed Backpack
+    count = 1;
+    mass = 60;
+    interactAction = 14;
+    interactText = "UNPACK";
+    interactReturnOnUse = "B_Carryall_khk";
+};
+class Item_Carryall_mcamo : CA_Magazine { 
+    picture = "\x\addons\a3_epoch_assets\textures\backpack\gear_packedBag_ca.paa";
+    displayName = "$STR_A3_B_Carryall_mcamo0";
+    scope = 2;
+    model = "\x\addons\a3_epoch_assets\models\PackedBag.p3d";
+    descriptionShort = "$STR_EPOCH_PackedBackpack_15"; // Packed Backpack
+    count = 1;
+    mass = 60;
+    interactAction = 14;
+    interactText = "UNPACK";
+    interactReturnOnUse = "B_Carryall_mcamo";
+};
+class Item_Carryall_ocamo : CA_Magazine { 
+    picture = "\x\addons\a3_epoch_assets\textures\backpack\gear_packedBag_ca.paa";
+    displayName = "$STR_A3_B_Carryall_ocamo0";
+    scope = 2;
+    model = "\x\addons\a3_epoch_assets\models\PackedBag.p3d";
+    descriptionShort = "$STR_EPOCH_PackedBackpack_15"; // Packed Backpack
+    count = 1;
+    mass = 60;
+    interactAction = 14;
+    interactText = "UNPACK";
+    interactReturnOnUse = "B_Carryall_ocamo";
+};
+class Item_Carryall_oli : CA_Magazine { 
+    picture = "\x\addons\a3_epoch_assets\textures\backpack\gear_packedBag_ca.paa";
+    displayName = "$STR_A3_B_Carryall_oli0";
+    scope = 2;
+    model = "\x\addons\a3_epoch_assets\models\PackedBag.p3d";
+    descriptionShort = "$STR_EPOCH_PackedBackpack_15"; // Packed Backpack
+    count = 1;
+    mass = 60;
+    interactAction = 14;
+    interactText = "UNPACK";
+    interactReturnOnUse = "B_Carryall_oli";
+};
+class Item_Carryall_oucamo : CA_Magazine { 
+    picture = "\x\addons\a3_epoch_assets\textures\backpack\gear_packedBag_ca.paa";
+    displayName = "$STR_A3_B_Carryall_oucamo0";
+    scope = 2;
+    model = "\x\addons\a3_epoch_assets\models\PackedBag.p3d";
+    descriptionShort = "$STR_EPOCH_PackedBackpack_15"; // Packed Backpack
+    count = 1;
+    mass = 60;
+    interactAction = 14;
+    interactText = "UNPACK";
+    interactReturnOnUse = "B_Carryall_oucamo";
+};
+class Item_FieldPack_blk : CA_Magazine { 
+    picture = "\x\addons\a3_epoch_assets\textures\backpack\gear_packedBag_ca.paa";
+    displayName = "$STR_A3_B_FieldPack_blk0";
+    scope = 2;
+    model = "\x\addons\a3_epoch_assets\models\PackedBag.p3d";
+    descriptionShort = "$STR_EPOCH_PackedBackpack_15"; // Packed Backpack
+    count = 1;
+    mass = 30;
+    interactAction = 14;
+    interactText = "UNPACK";
+    interactReturnOnUse = "B_FieldPack_blk";
+};
+class Item_FieldPack_cbr : CA_Magazine { 
+    picture = "\x\addons\a3_epoch_assets\textures\backpack\gear_packedBag_ca.paa";
+    displayName = "$STR_A3_B_FieldPack_cbr0";
+    scope = 2;
+    model = "\x\addons\a3_epoch_assets\models\PackedBag.p3d";
+    descriptionShort = "$STR_EPOCH_PackedBackpack_15"; // Packed Backpack
+    count = 1;
+    mass = 30;
+    interactAction = 14;
+    interactText = "UNPACK";
+    interactReturnOnUse = "B_FieldPack_cbr";
+};
+class Item_FieldPack_khk : CA_Magazine { 
+    picture = "\x\addons\a3_epoch_assets\textures\backpack\gear_packedBag_ca.paa";
+    displayName = "$STR_A3_B_FieldPack_khk0";
+    scope = 2;
+    model = "\x\addons\a3_epoch_assets\models\PackedBag.p3d";
+    descriptionShort = "$STR_EPOCH_PackedBackpack_15"; // Packed Backpack
+    count = 1;
+    mass = 30;
+    interactAction = 14;
+    interactText = "UNPACK";
+    interactReturnOnUse = "B_FieldPack_khk";
+};
+class Item_FieldPack_ocamo : CA_Magazine { 
+    picture = "\x\addons\a3_epoch_assets\textures\backpack\gear_packedBag_ca.paa";
+    displayName = "$STR_A3_B_FieldPack_ocamo0";
+    scope = 2;
+    model = "\x\addons\a3_epoch_assets\models\PackedBag.p3d";
+    descriptionShort = "$STR_EPOCH_PackedBackpack_15"; // Packed Backpack
+    count = 1;
+    mass = 30;
+    interactAction = 14;
+    interactText = "UNPACK";
+    interactReturnOnUse = "B_FieldPack_ocamo";
+};
+class Item_FieldPack_oli : CA_Magazine { 
+    picture = "\x\addons\a3_epoch_assets\textures\backpack\gear_packedBag_ca.paa";
+    displayName = "$STR_A3_B_FieldPack_oli0";
+    scope = 2;
+    model = "\x\addons\a3_epoch_assets\models\PackedBag.p3d";
+    descriptionShort = "$STR_EPOCH_PackedBackpack_15"; // Packed Backpack
+    count = 1;
+    mass = 30;
+    interactAction = 14;
+    interactText = "UNPACK";
+    interactReturnOnUse = "B_FieldPack_oli";
+};
+class Item_FieldPack_oucamo : CA_Magazine { 
+    picture = "\x\addons\a3_epoch_assets\textures\backpack\gear_packedBag_ca.paa";
+    displayName = "$STR_A3_B_FieldPack_oucamo0";
+    scope = 2;
+    model = "\x\addons\a3_epoch_assets\models\PackedBag.p3d";
+    descriptionShort = "$STR_EPOCH_PackedBackpack_15"; // Packed Backpack
+    count = 1;
+    mass = 30;
+    interactAction = 14;
+    interactText = "UNPACK";
+    interactReturnOnUse = "B_FieldPack_oucamo";
+};
+class Item_Kitbag_cbr : CA_Magazine { 
+    picture = "\x\addons\a3_epoch_assets\textures\backpack\gear_packedBag_ca.paa";
+    displayName = "$STR_A3_B_Kitback_cbr0";
+    scope = 2;
+    model = "\x\addons\a3_epoch_assets\models\PackedBag.p3d";
+    descriptionShort = "$STR_EPOCH_PackedBackpack_15"; // Packed Backpack
+    count = 1;
+    mass = 50;
+    interactAction = 14;
+    interactText = "UNPACK";
+    interactReturnOnUse = "B_Kitbag_cbr";
+};
+class Item_Kitbag_mcamo : CA_Magazine { 
+    picture = "\x\addons\a3_epoch_assets\textures\backpack\gear_packedBag_ca.paa";
+    displayName = "$STR_A3_B_Kitback_mcamo0";
+    scope = 2;
+    model = "\x\addons\a3_epoch_assets\models\PackedBag.p3d";
+    descriptionShort = "$STR_EPOCH_PackedBackpack_15"; // Packed Backpack
+    count = 1;
+    mass = 50;
+    interactAction = 14;
+    interactText = "UNPACK";
+    interactReturnOnUse = "B_Kitbag_mcamo";
+};
+class Item_Kitbag_rgr : CA_Magazine { 
+    picture = "\x\addons\a3_epoch_assets\textures\backpack\gear_packedBag_ca.paa";
+    displayName = "$STR_A3_B_Kitback_rgr0";
+    scope = 2;
+    model = "\x\addons\a3_epoch_assets\models\PackedBag.p3d";
+    descriptionShort = "$STR_EPOCH_PackedBackpack_15"; // Packed Backpack
+    count = 1;
+    mass = 50;
+    interactAction = 14;
+    interactText = "UNPACK";
+    interactReturnOnUse = "B_Kitbag_rgr";
+};
+class Item_Kitbag_sgg : CA_Magazine { 
+    picture = "\x\addons\a3_epoch_assets\textures\backpack\gear_packedBag_ca.paa";
+    displayName = "$STR_A3_B_Kitback_sgg0";
+    scope = 2;
+    model = "\x\addons\a3_epoch_assets\models\PackedBag.p3d";
+    descriptionShort = "$STR_EPOCH_PackedBackpack_15"; // Packed Backpack
+    count = 1;
+    mass = 50;
+    interactAction = 14;
+    interactText = "UNPACK";
+    interactReturnOnUse = "B_Kitbag_sgg";
+};
+class Item_TacticalPack_blk : CA_Magazine { 
+    picture = "\x\addons\a3_epoch_assets\textures\backpack\gear_packedBag_ca.paa";
+    displayName = "$STR_A3_B_TacticalPack_blk0";
+    scope = 2;
+    model = "\x\addons\a3_epoch_assets\models\PackedBag.p3d";
+    descriptionShort = "$STR_EPOCH_PackedBackpack_15"; // Packed Backpack
+    count = 1;
+    mass = 40;
+    interactAction = 14;
+    interactText = "UNPACK";
+    interactReturnOnUse = "B_TacticalPack_blk";
+};
+class Item_TacticalPack_mcamo : CA_Magazine { 
+    picture = "\x\addons\a3_epoch_assets\textures\backpack\gear_packedBag_ca.paa";
+    displayName = "$STR_A3_B_TacticalPack_mcamo0";
+    scope = 2;
+    model = "\x\addons\a3_epoch_assets\models\PackedBag.p3d";
+    descriptionShort = "$STR_EPOCH_PackedBackpack_15"; // Packed Backpack
+    count = 1;
+    mass = 40;
+    interactAction = 14;
+    interactText = "UNPACK";
+    interactReturnOnUse = "B_TacticalPack_mcamo";
+};
+class Item_TacticalPack_ocamo : CA_Magazine { 
+    picture = "\x\addons\a3_epoch_assets\textures\backpack\gear_packedBag_ca.paa";
+    displayName = "$STR_A3_B_TacticalPack_ocamo0";
+    scope = 2;
+    model = "\x\addons\a3_epoch_assets\models\PackedBag.p3d";
+    descriptionShort = "$STR_EPOCH_PackedBackpack_15"; // Packed Backpack
+    count = 1;
+    mass = 40;
+    interactAction = 14;
+    interactText = "UNPACK";
+    interactReturnOnUse = "B_TacticalPack_ocamo";
+};
+class Item_TacticalPack_oli : CA_Magazine { 
+    picture = "\x\addons\a3_epoch_assets\textures\backpack\gear_packedBag_ca.paa";
+    displayName = "$STR_A3_B_TacticalPack_oli0";
+    scope = 2;
+    model = "\x\addons\a3_epoch_assets\models\PackedBag.p3d";
+    descriptionShort = "$STR_EPOCH_PackedBackpack_15"; // Packed Backpack
+    count = 1;
+    mass = 40;
+    interactAction = 14;
+    interactText = "UNPACK";
+    interactReturnOnUse = "B_TacticalPack_oli";
+};
+class Item_TacticalPack_rgr : CA_Magazine { 
+    picture = "\x\addons\a3_epoch_assets\textures\backpack\gear_packedBag_ca.paa";
+    displayName = "$STR_A3_B_TacticalPack_rgr0";
+    scope = 2;
+    model = "\x\addons\a3_epoch_assets\models\PackedBag.p3d";
+    descriptionShort = "$STR_EPOCH_PackedBackpack_15"; // Packed Backpack
+    count = 1;
+    mass = 40;
+    interactAction = 14;
+    interactText = "UNPACK";
+    interactReturnOnUse = "B_TacticalPack_rgr";
+};
+class Item_smallbackpack_red : CA_Magazine { 
+    picture = "\x\addons\a3_epoch_assets\textures\backpack\gear_packedBag_ca.paa";
+    displayName = "$STR_EPOCH_SmallBackpackRe_20"; // Small Backpack (Red)
+    scope = 2;
+    model = "\x\addons\a3_epoch_assets\models\PackedBag.p3d";
+    descriptionShort = "$STR_EPOCH_PackedBackpack_15"; // Packed Backpack
+    count = 1;
+    mass = 25;
+    interactAction = 14;
+    interactText = "UNPACK";
+    interactReturnOnUse = "smallbackpack_red_epoch";
+};
+class Item_smallbackpack_green : CA_Magazine { 
+    picture = "\x\addons\a3_epoch_assets\textures\backpack\gear_packedBag_ca.paa";
+    displayName = "$STR_EPOCH_SmallBackpackGr_22"; // Small Backpack (Green)
+    scope = 2;
+    model = "\x\addons\a3_epoch_assets\models\PackedBag.p3d";
+    descriptionShort = "$STR_EPOCH_PackedBackpack_15"; // Packed Backpack
+    count = 1;
+    mass = 25;
+    interactAction = 14;
+    interactText = "UNPACK";
+    interactReturnOnUse = "smallbackpack_green_epoch";
+};
+class Item_smallbackpack_teal : CA_Magazine { 
+    picture = "\x\addons\a3_epoch_assets\textures\backpack\gear_packedBag_ca.paa";
+    displayName = "$STR_EPOCH_SmallBackpackTe_21"; // Small Backpack (Teal)
+    scope = 2;
+    model = "\x\addons\a3_epoch_assets\models\PackedBag.p3d";
+    descriptionShort = "$STR_EPOCH_PackedBackpack_15"; // Packed Backpack
+    count = 1;
+    mass = 25;
+    interactAction = 14;
+    interactText = "UNPACK";
+    interactReturnOnUse = "smallbackpack_teal_epoch";
+};
+class Item_smallbackpack_pink : CA_Magazine { 
+    picture = "\x\addons\a3_epoch_assets\textures\backpack\gear_packedBag_ca.paa";
+    displayName = "$STR_EPOCH_SmallBackpackPi_21"; // Small Backpack (Pink)
+    scope = 2;
+    model = "\x\addons\a3_epoch_assets\models\PackedBag.p3d";
+    descriptionShort = "$STR_EPOCH_PackedBackpack_15"; // Packed Backpack
+    count = 1;
+    mass = 25;
+    interactAction = 14;
+    interactText = "UNPACK";
+    interactReturnOnUse = "smallbackpack_pink_epoch";
 };

@@ -190,14 +190,14 @@ switch _interactOption do {
 		if (cursorTarget in _vehicles) then {
 			_vehicle = cursorTarget;
 			_currentFuel = fuel _vehicle;
-			_canCapacity = 10;
+			_canCapacity = _interactAttributes param [0,10];
 			_fuelCapacity = getNumber (configfile >> "CfgVehicles" >> (typeOf _vehicle) >> "fuelCapacity");
 			_currentFuel = _currentFuel * _fuelCapacity;
 			_newFuel = _currentFuel + _canCapacity;
 			_newFuel = _newFuel / _fuelCapacity;
 
 			if (_item call _removeItem) then {
-				player addMagazine "jerrycanE_epoch";
+				player addMagazine _interactReturnOnUse;
 				// send
 				[_vehicle,_newFuel,player,Epoch_personalToken] remoteExec ["EPOCH_server_fillVehicle",2];
 
@@ -207,17 +207,32 @@ switch _interactOption do {
 	};
 	case 5: {
 		_vehicles = player nearEntities [["LandVehicle","Ship","Air","Tank"], 6];
+		_canCapacity = _interactAttributes param [0,10];
+
 		if (cursorTarget in _vehicles) then {
 			_vehicle = cursorTarget;
-			_canCapacity = 10;
 			_fuelCapacity = getNumber (configfile >> "CfgVehicles" >> (typeOf _vehicle) >> "fuelCapacity");
 			_newFuel = (((fuel _vehicle) * _fuelCapacity) - _canCapacity) / _fuelCapacity;
-
-			//diag_log format["FIND fill _newFuel %1 capacity: %2 current: %3",_newFuel,_fuelCapacity,_currentFuel];
 			if (_newFuel > 0) then {
 				if (_item call _removeItem) then {
-					player addMagazine "jerrycan_epoch";
+					player addMagazine _interactReturnOnUse;
 					[_vehicle,_newFuel,player,Epoch_personalToken] remoteExec ["EPOCH_server_fillVehicle",2];
+					_dt = ["<t size='0.8' shadow='0' color='#99ffffff'>Fuel Siphoned</t>", 0, 1, 5, 2, 0, 1] spawn bis_fnc_dynamictext;
+				};
+			} else {
+				_dt = ["<t size='0.8' shadow='0' color='#99ffffff'>Not Enough Fuel</t>", 0, 1, 5, 2, 0, 1] spawn bis_fnc_dynamictext;
+			};
+		} else {
+
+			// find any other nearby fuel sources
+			_transportFuel = 0;
+			{
+				_transportFuel = _transportFuel + getNumber (configFile >> "CfgVehicles" >> (typeOf _x) >> "transportFuel");
+			} forEach (player nearObjects["ALL", 6]);
+
+			if (_transportFuel > _canCapacity) then {
+				if (_item call _removeItem) then {
+					player addMagazine _interactReturnOnUse;
 					_dt = ["<t size='0.8' shadow='0' color='#99ffffff'>Fuel Siphoned</t>", 0, 1, 5, 2, 0, 1] spawn bis_fnc_dynamictext;
 				};
 			} else {
@@ -324,6 +339,13 @@ switch _interactOption do {
 					_dt = ["<t size = '0.8' shadow = '0' color = '#99ffffff'>Healed yourself</t>", 0, 1, 5, 2, 0, 1] spawn bis_fnc_dynamictext;
 				};
 			};
+		};
+	};
+
+	case 14: { // Unpack Backpack
+		if (_item call _removeItem) then {
+			[_interactReturnOnUse,player,Epoch_personalToken] remoteExec ["EPOCH_server_unpackBackpack",2];
+			_dt = ["<t size = '0.8' shadow = '0' color = '#99ffffff'>Unpacked backpack</t>", 0, 1, 5, 2, 0, 1] spawn bis_fnc_dynamictext;
 		};
 	};
 

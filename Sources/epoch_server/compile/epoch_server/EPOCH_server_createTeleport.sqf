@@ -17,7 +17,6 @@ for "_i" from 5 to 8 do {
 	_debug1 setDir 90;
 };
 
-
 _config = configFile >> "CfgEpoch";
 
 // spawn area props
@@ -34,7 +33,7 @@ _config = configFile >> "CfgEpoch";
 	};
 
 	_ep = createVehicle[_class, _pos, [], 0, "CAN_COLLIDE"];
-	
+
 	_ep allowDamage false;
 	if (typeName _dir == "ARRAY") then{
 		_ep setVectorDirAndUp _dir;
@@ -51,7 +50,16 @@ _config = configFile >> "CfgEpoch";
 
 {
 	_enterClass = _x select 0;
-	_pos1 = _debug modelToWorld (_x select 1);
+
+	_useWorldPos = false;
+	if (count _x >= 5) then {
+		_useWorldPos = (_x select 4) isEqualTo "true";
+	};
+	_pos1 = _x select 1;
+	if !(_useWorldPos) then {
+		_pos1 = _debug modelToWorld (_x select 1);
+	};
+
 	_exitClass = _x select 2;
 	_pos = _x select 3;
 

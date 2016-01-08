@@ -450,12 +450,13 @@ class CfgPricing
 	class B_Kitbag_mcamo {price = 25;};
 	class B_Kitbag_rgr {price = 25;};
 	class B_Kitbag_sgg {price = 25;};
-	class B_Parachute {price = 25;};
+	class B_Parachute {price = 25;}; // no packed option
 	class B_TacticalPack_blk {price = 20;};
 	class B_TacticalPack_mcamo {price = 20;};
 	class B_TacticalPack_ocamo {price = 20;};
 	class B_TacticalPack_oli {price = 20;};
 	class B_TacticalPack_rgr {price = 20;};
+
 	class smallbackpack_red_epoch {price = 22;};
 	class smallbackpack_green_epoch {price = 22;};
 	class smallbackpack_teal_epoch {price = 22;};

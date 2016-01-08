@@ -25,7 +25,7 @@ private["_item", "_currQty", "_tradeType", "_itemWorth", "_aiItems", "_itemClass
 
 if (!isNil "EPOCH_TRADE_COMPLETE") exitWith {};
 if (!isNil "EPOCH_TRADE_STARTED") exitWith{};
-if (!isNull _this) exitWith{};
+if (isNull _this) exitWith{};
 
 if (alive _this) then {
 

@@ -848,13 +848,15 @@ class CfgLootTable
 		items[] = {
 				{ { "MortarBucket", "magazine" }, 16 },
 				{ { "CinderBlocks", "magazine" }, 17 },
-				{ { "VehicleRepair", "magazine" }, 17 },
+				{ { "VehicleRepair", "magazine" }, 16 },
 				{ { "CircuitParts", "magazine" }, 17 },
 				{ { "ItemCorrugated", "magazine" }, 17 },
 				{ { "ItemSolar", "magazine" }, 5 },
 				{ { "ItemBattery", "magazine" }, 5 },
 				{ { "ItemCables", "magazine" }, 5 },
-				{ { "ItemSafe", "magazine" }, 1 }
+				{ { "ItemSafe", "magazine" }, 1 },
+				{ { "ItemBarrelE", "magazine" }, 1 }
+
 
 		};
 	};
@@ -870,13 +872,14 @@ class CfgLootTable
 				{ { "VehicleRepair", "magazine" }, 10 },
 				{ { "ItemCorrugated", "magazine" }, 11 },
 				{ { "CinderBlocks", "magazine" }, 12 },
-				{ { "JackKit", "magazine" }, 9 },
+				{ { "JackKit", "magazine" }, 8 },
 				{ { "ItemCoolerE", "magazine" }, 13 },
 				{ { "ItemScraps", "magazine" }, 13 },
 				{ { "lighter_epoch", "magazine" }, 1 },
 				{ { "ItemSolar", "magazine" }, 3 },
 				{ { "ItemBattery", "magazine" }, 3 },
-				{ { "ItemCables", "magazine" }, 3 }
+				{ { "ItemCables", "magazine" }, 3 },
+				{ { "ItemBarrelE", "magazine" }, 1 }
 		};
 	};
 

@@ -191,7 +191,10 @@ class CfgRemoteExec
       allowedTargets=2;
       jip = 0;
     };
-
+    class EPOCH_server_unpackBackpack {
+      allowedTargets=2;
+      jip = 0;
+    };
   };
   class Commands {mode=0;};
 };

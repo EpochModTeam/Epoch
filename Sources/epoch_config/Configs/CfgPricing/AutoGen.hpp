@@ -5,7 +5,7 @@ class ItemKeyKit {
     price = 15;
 };
 class ItemBarrelF { 
-    price = 150;
+    price = 200;
 };
 class ItemBarrelE { 
     price = 150;
@@ -76,20 +76,11 @@ class ItemBriefcaseE {
 class ItemAluminumBar { 
     price = 10;
 };
-class ItemAluminumBar10oz { 
-    price = 100;
-};
 class ItemCopperBar { 
     price = 100;
 };
-class ItemCopperBar10oz { 
-    price = 1000;
-};
 class ItemTinBar { 
     price = 1;
-};
-class ItemTinBar10oz { 
-    price = 10;
 };
 class ItemPlywood { 
     price = 10;
@@ -99,4 +90,103 @@ class ItemPlywoodPack {
 };
 class ItemComboLock { 
     price = 45;
+};
+class Item_AssaultPack_cbr { 
+    price = 10;
+};
+class Item_AssaultPack_dgtl { 
+    price = 10;
+};
+class Item_AssaultPack_khk { 
+    price = 10;
+};
+class Item_AssaultPack_mcamo { 
+    price = 10;
+};
+class Item_AssaultPack_ocamo { 
+    price = 10;
+};
+class Item_AssaultPack_rgr { 
+    price = 10;
+};
+class Item_AssaultPack_sgg { 
+    price = 10;
+};
+class Item_AssaultPack_blk { 
+    price = 10;
+};
+class Item_Carryall_cbr { 
+    price = 40;
+};
+class Item_Carryall_khk { 
+    price = 40;
+};
+class Item_Carryall_mcamo { 
+    price = 40;
+};
+class Item_Carryall_ocamo { 
+    price = 40;
+};
+class Item_Carryall_oli { 
+    price = 40;
+};
+class Item_Carryall_oucamo { 
+    price = 40;
+};
+class Item_FieldPack_blk { 
+    price = 15;
+};
+class Item_FieldPack_cbr { 
+    price = 15;
+};
+class Item_FieldPack_khk { 
+    price = 15;
+};
+class Item_FieldPack_ocamo { 
+    price = 15;
+};
+class Item_FieldPack_oli { 
+    price = 15;
+};
+class Item_FieldPack_oucamo { 
+    price = 15;
+};
+class Item_Kitbag_cbr { 
+    price = 25;
+};
+class Item_Kitbag_mcamo { 
+    price = 25;
+};
+class Item_Kitbag_rgr { 
+    price = 25;
+};
+class Item_Kitbag_sgg { 
+    price = 25;
+};
+class Item_TacticalPack_blk { 
+    price = 20;
+};
+class Item_TacticalPack_mcamo { 
+    price = 20;
+};
+class Item_TacticalPack_ocamo { 
+    price = 20;
+};
+class Item_TacticalPack_oli { 
+    price = 20;
+};
+class Item_TacticalPack_rgr { 
+    price = 20;
+};
+class Item_smallbackpack_red { 
+    price = 22;
+};
+class Item_smallbackpack_green { 
+    price = 22;
+};
+class Item_smallbackpack_teal { 
+    price = 22;
+};
+class Item_smallbackpack_pink { 
+    price = 22;
 };
