@@ -43,6 +43,9 @@ if !(alive player && alive _playerObject && !isPlayer _playerObject) then {
 	{
 		player addEventHandler [_x,(["CfgEpochClient", _x, ""] call EPOCH_fnc_returnConfigEntryV2)];
 	} forEach (["CfgEpochClient", "addEventHandler", []] call EPOCH_fnc_returnConfigEntryV2);
+
+	// reset blood Pressure to warning level
+	EPOCH_playerBloodP = 120;
 } else {
 	deleteVehicle _playerObject;
 };
