@@ -53,7 +53,7 @@ if (!isNull EPOCH_currentTarget && vehicle player == player) then {
 			case 0: {
 				_stability = 100 - round(damage _currentTarget * 100);
 				_icon = "\x\addons\a3_epoch_code\Data\UI\loading_bar_%1.paa";
-				_text = "Press (Inventory)";
+				_text = "";
 
 				if (_stability < 50) then {
 					_color = [1, 0.5, 0, 0.7];

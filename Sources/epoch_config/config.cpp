@@ -115,10 +115,10 @@ class CfgAnimationSourceSounds
 
 class CfgCommands
 {
-	// allowedHTMLLoadURIs[] += // think this adds to an existing array
-	allowedHTMLLoadURIs[] =
+	// allowedHTMLLoadURIs[] += // think this adds to an existing array?
+	allowedHTMLLoadURIs[] +=
 	{
-		"https://raw.githubusercontent.com/epochmodteam/epoch/test/changelog.html" //there are some issues with capitalization used in github links
+		"http://epochmod.com*"
 	};
 };
 

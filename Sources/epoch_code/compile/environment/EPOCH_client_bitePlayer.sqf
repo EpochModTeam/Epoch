@@ -46,7 +46,7 @@ if !(isNull _this && alive _this) then {
 			_bleedAmount = 30;
 			_bloodpAmount = 3;
 			_soundEffect = "snake_bite0";
-			_canSee = true;
+			_canSee = !(lineIntersects[eyePos _this, aimPos player, _this, player]);
 			_ppEffect = 0;
 		};
 		case "Snake2_random_EPOCH": {
@@ -57,7 +57,7 @@ if !(isNull _this && alive _this) then {
 			_bleedAmount = 30;
 			_bloodpAmount = 3;
 			_soundEffect = "snake_bite0";
-			_canSee = true;
+			_canSee = !(lineIntersects[eyePos _this, aimPos player, _this, player]);
 			_ppEffect = 0;
 		};
 		case "GreatWhite_F": {

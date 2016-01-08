@@ -14,9 +14,13 @@
 [ADDED-WIP] Tin Bars (ItemTinBar,ItemTinBar10oz).
 [ADDED-WIP] Plywood sheets in small and large stacks (ItemPlywood,ItemPlywoodPack).
 [Changed] Change all publicVariableServer calls to use remoteExec calls for better performance.
+[Fixed] Incorrectly being able to sell/buy items from a dead trader.
+[Fixed] Snakes now require line of sight to bite player.
 [Fixed] Custom epoch swing animations for Hatchet and sledge now work correctly.
+[Fixed] Boss Sapper incorrectly cleaned up before detonation.
 **Server**
 [Added] Setting to control random magazine ammo counts in loot spawner. CfgEpochClient -> randomizeMagazineAmmoCount (default: true)
+[Changed] Earthquakes with mineral veins spawn chances increased with less players.
 [Changed] Driver or passengers of a driverless can now control vehicle locks. Also only the owner can control locks from outside of a occupied vehicle.
 [Changed] Commented out Halloween masks from loot tables.
 [Updated] New Battleye remoteExec.txt for added remoteExec calls.

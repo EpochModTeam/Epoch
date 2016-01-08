@@ -513,6 +513,13 @@ class Epoch_Sapper_F: Epoch_Sapper_base_F
 		};
 	};
 };
+class Epoch_SapperG_F : Epoch_Sapper_F {
+	scope = 2;
+	displayName = "Sapper (Toxic)";
+	moves = "CfgMovesMaleSdr3";
+	hiddenSelections[] = {"camo","remains"};
+	hiddenSelectionsTextures[] = {"x\addons\a3_epoch_assets\textures\sapper\sapper_green_eco.paa",""};
+};
 class Epoch_SapperB_F : Epoch_Sapper_base_F
 {
 	scope = 2;
