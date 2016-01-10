@@ -8,7 +8,7 @@ class ItemBarrelF {
     price = 200;
 };
 class ItemBarrelE { 
-    price = 150;
+    price = 50;
 };
 class ItemPipe { 
     price = 10;
