@@ -1,0 +1,1036 @@
+<Project name="Epoch">
+    <Package name="ArmA">
+        <Key ID="str_epoch_abort">
+            <Original>Abort in %1</Original>
+            <English>Abort in %1</English>
+            <German>Abbrechen in %1</German>
+            <Czech>Přerušit (%1)</Czech>
+            <French>Abandonner (%1)</French>
+            <Italian>Abbandona (%1)</Italian>
+            <Polish>Przerwij (%1)</Polish>
+            <Portuguese>Abortar (%1)</Portuguese>
+            <Russian>Отмена (%1)</Russian>
+            <Spanish>Abandonar misión (%1)</Spanish>
+        </Key>
+        <Key ID="str_epoch_restart_in">
+            <Original>Server restart in %1 minutes.</Original>
+            <English>Server restart in %1 minutes.</English>
+            <German>Server restart in %1 minutes.</German>
+            <Czech>Server restart in %1 minutes.</Czech>
+            <French>Server restart in %1 minutes.</French>
+            <Italian>Server restart in %1 minutes.</Italian>
+            <Polish>Server restart in %1 minutes.</Polish>
+            <Portuguese>Server restart in %1 minutes.</Portuguese>
+            <Russian>Server restart in %1 minutes.</Russian>
+            <Spanish>Server restart in %1 minutes.</Spanish>
+        </Key>
+        <Key ID="str_epoch_ItemHotwire_displayName">
+            <Original>Vehicle Hotwire Kit</Original>
+            <English>Vehicle Hotwire Kit</English>
+            <German>Vehicle Hotwire Kit</German>
+            <Czech>Vehicle Hotwire Kit</Czech>
+            <French>Vehicle Hotwire Kit</French>
+            <Italian>Vehicle Hotwire Kit</Italian>
+            <Polish>Vehicle Hotwire Kit</Polish>
+            <Portuguese>Vehicle Hotwire Kit</Portuguese>
+            <Russian>Vehicle Hotwire Kit</Russian>
+            <Spanish>Vehicle Hotwire Kit</Spanish>
+        </Key>
+        <Key ID="str_epoch_ItemHotwire_descriptionShort">
+            <Original>Used to unlock vehicles.</Original>
+            <English>Used to unlock vehicles.</English>
+            <German>Used to unlock vehicles.</German>
+            <Czech>Used to unlock vehicles.</Czech>
+            <French>Used to unlock vehicles.</French>
+            <Italian>Used to unlock vehicles.</Italian>
+            <Polish>Used to unlock vehicles.</Polish>
+            <Portuguese>Used to unlock vehicles.</Portuguese>
+            <Russian>Used to unlock vehicles.</Russian>
+            <Spanish>Used to unlock vehicles.</Spanish>
+        </Key>
+        <Key ID="str_epoch_ItemKeyKit_displayName">
+            <Original>Key Makers Kit</Original>
+            <English>Key Makers Kit</English>
+            <German>Key Makers Kit</German>
+            <Czech>Key Makers Kit</Czech>
+            <French>Key Makers Kit</French>
+            <Italian>Key Makers Kit</Italian>
+            <Polish>Key Makers Kit</Polish>
+            <Portuguese>Key Makers Kit</Portuguese>
+            <Russian>Key Makers Kit</Russian>
+            <Spanish>Key Makers Kit</Spanish>
+        </Key>
+        <Key ID="str_epoch_ItemKeyKit_descriptionShort">
+            <Original>Used to craft duplicate keys.</Original>
+            <English>Used to craft duplicate keys.</English>
+            <German>Used to craft duplicate keys.</German>
+            <Czech>Used to craft duplicate keys.</Czech>
+            <French>Used to craft duplicate keys.</French>
+            <Italian>Used to craft duplicate keys.</Italian>
+            <Polish>Used to craft duplicate keys.</Polish>
+            <Portuguese>Used to craft duplicate keys.</Portuguese>
+            <Russian>Used to craft duplicate keys.</Russian>
+            <Spanish>Used to craft duplicate keys.</Spanish>
+        </Key>
+        <Key ID="str_epoch_ItemBarrelF_displayName">
+            <Original>Fuel Barrel (Full)</Original>
+            <English>Fuel Barrel (Full)</English>
+            <German>Fuel Barrel (Full)</German>
+            <Czech>Fuel Barrel (Full)</Czech>
+            <French>Fuel Barrel (Full)</French>
+            <Italian>Fuel Barrel (Full)</Italian>
+            <Polish>Fuel Barrel (Full)</Polish>
+            <Portuguese>Fuel Barrel (Full)</Portuguese>
+            <Russian>Fuel Barrel (Full)</Russian>
+            <Spanish>Fuel Barrel (Full)</Spanish>
+        </Key>
+        <Key ID="str_epoch_ItemBarrelF_descriptionShort">
+            <Original>55 gallon fuel barrel.</Original>
+            <English>55 gallon fuel barrel.</English>
+            <German>55 gallon fuel barrel.</German>
+            <Czech>55 gallon fuel barrel.</Czech>
+            <French>55 gallon fuel barrel.</French>
+            <Italian>55 gallon fuel barrel.</Italian>
+            <Polish>55 gallon fuel barrel.</Polish>
+            <Portuguese>55 gallon fuel barrel.</Portuguese>
+            <Russian>55 gallon fuel barrel.</Russian>
+            <Spanish>55 gallon fuel barrel.</Spanish>
+        </Key>
+        <Key ID="str_epoch_ItemBarrelE_displayName">
+            <Original>Fuel Barrel (Empty)</Original>
+            <English>Fuel Barrel (Empty)</English>
+            <German>Fuel Barrel (Empty)</German>
+            <Czech>Fuel Barrel (Empty)</Czech>
+            <French>Fuel Barrel (Empty)</French>
+            <Italian>Fuel Barrel (Empty)</Italian>
+            <Polish>Fuel Barrel (Empty)</Polish>
+            <Portuguese>Fuel Barrel (Empty)</Portuguese>
+            <Russian>Fuel Barrel (Empty)</Russian>
+            <Spanish>Fuel Barrel (Empty)</Spanish>
+        </Key>
+        <Key ID="str_epoch_ItemBarrelE_descriptionShort">
+            <Original>Empty 55 gallon fuel barrel.</Original>
+            <English>Empty 55 gallon fuel barrel.</English>
+            <German>Empty 55 gallon fuel barrel.</German>
+            <Czech>Empty 55 gallon fuel barrel.</Czech>
+            <French>Empty 55 gallon fuel barrel.</French>
+            <Italian>Empty 55 gallon fuel barrel.</Italian>
+            <Polish>Empty 55 gallon fuel barrel.</Polish>
+            <Portuguese>Empty 55 gallon fuel barrel.</Portuguese>
+            <Russian>Empty 55 gallon fuel barrel.</Russian>
+            <Spanish>Empty 55 gallon fuel barrel.</Spanish>
+        </Key>
+        <Key ID="str_epoch_ItemPipe_displayName">
+            <Original>Pipes</Original>
+            <English>Pipes</English>
+            <German>Pipes</German>
+            <Czech>Pipes</Czech>
+            <French>Pipes</French>
+            <Italian>Pipes</Italian>
+            <Polish>Pipes</Polish>
+            <Portuguese>Pipes</Portuguese>
+            <Russian>Pipes</Russian>
+            <Spanish>Pipes</Spanish>
+        </Key>
+        <Key ID="str_epoch_ItemPipe_descriptionShort">
+            <Original>Small pile of metal pipes.</Original>
+            <English>Small pile of metal pipes.</English>
+            <German>Small pile of metal pipes.</German>
+            <Czech>Small pile of metal pipes.</Czech>
+            <French>Small pile of metal pipes.</French>
+            <Italian>Small pile of metal pipes.</Italian>
+            <Polish>Small pile of metal pipes.</Polish>
+            <Portuguese>Small pile of metal pipes.</Portuguese>
+            <Russian>Small pile of metal pipes.</Russian>
+            <Spanish>Small pile of metal pipes.</Spanish>
+        </Key>
+        <Key ID="str_epoch_ItemKey_displayName">
+            <Original>Key</Original>
+            <English>Key</English>
+            <German>Key</German>
+            <Czech>Key</Czech>
+            <French>Key</French>
+            <Italian>Key</Italian>
+            <Polish>Key</Polish>
+            <Portuguese>Key</Portuguese>
+            <Russian>Key</Russian>
+            <Spanish>Key</Spanish>
+        </Key>
+        <Key ID="str_epoch_ItemKey_descriptionShort">
+            <Original>Key used in a lock.</Original>
+            <English>Key used in a lock.</English>
+            <German>Key used in a lock.</German>
+            <Czech>Key used in a lock.</Czech>
+            <French>Key used in a lock.</French>
+            <Italian>Key used in a lock.</Italian>
+            <Polish>Key used in a lock.</Polish>
+            <Portuguese>Key used in a lock.</Portuguese>
+            <Russian>Key used in a lock.</Russian>
+            <Spanish>Key used in a lock.</Spanish>
+        </Key>
+        <Key ID="str_epoch_ItemKeyBlue_displayName">
+            <Original>Key (Blue)</Original>
+            <English>Key (Blue)</English>
+            <German>Key (Blue)</German>
+            <Czech>Key (Blue)</Czech>
+            <French>Key (Blue)</French>
+            <Italian>Key (Blue)</Italian>
+            <Polish>Key (Blue)</Polish>
+            <Portuguese>Key (Blue)</Portuguese>
+            <Russian>Key (Blue)</Russian>
+            <Spanish>Key (Blue)</Spanish>
+        </Key>
+        <Key ID="str_epoch_ItemKeyGreen_displayName">
+            <Original>Key (Green)</Original>
+            <English>Key (Green)</English>
+            <German>Key (Green)</German>
+            <Czech>Key (Green)</Czech>
+            <French>Key (Green)</French>
+            <Italian>Key (Green)</Italian>
+            <Polish>Key (Green)</Polish>
+            <Portuguese>Key (Green)</Portuguese>
+            <Russian>Key (Green)</Russian>
+            <Spanish>Key (Green)</Spanish>
+        </Key>
+        <Key ID="str_epoch_ItemKeyRed_displayName">
+            <Original>Key (Red)</Original>
+            <English>Key (Red)</English>
+            <German>Key (Red)</German>
+            <Czech>Key (Red)</Czech>
+            <French>Key (Red)</French>
+            <Italian>Key (Red)</Italian>
+            <Polish>Key (Red)</Polish>
+            <Portuguese>Key (Red)</Portuguese>
+            <Russian>Key (Red)</Russian>
+            <Spanish>Key (Red)</Spanish>
+        </Key>
+        <Key ID="str_epoch_ItemKeyYellow_displayName">
+            <Original>Key (Yellow)</Original>
+            <English>Key (Yellow)</English>
+            <German>Key (Yellow)</German>
+            <Czech>Key (Yellow)</Czech>
+            <French>Key (Yellow)</French>
+            <Italian>Key (Yellow)</Italian>
+            <Polish>Key (Yellow)</Polish>
+            <Portuguese>Key (Yellow)</Portuguese>
+            <Russian>Key (Yellow)</Russian>
+            <Spanish>Key (Yellow)</Spanish>
+        </Key>
+        <Key ID="str_epoch_ItemDoc1_displayName">
+            <Original>Book</Original>
+            <English>Book</English>
+            <German>Book</German>
+            <Czech>Book</Czech>
+            <French>Book</French>
+            <Italian>Book</Italian>
+            <Polish>Book</Polish>
+            <Portuguese>Book</Portuguese>
+            <Russian>Book</Russian>
+            <Spanish>Book</Spanish>
+        </Key>
+        <Key ID="str_epoch_ItemDoc1_descriptionShort">
+            <Original>Book</Original>
+            <English>Book</English>
+            <German>Book</German>
+            <Czech>Book</Czech>
+            <French>Book</French>
+            <Italian>Book</Italian>
+            <Polish>Book</Polish>
+            <Portuguese>Book</Portuguese>
+            <Russian>Book</Russian>
+            <Spanish>Book</Spanish>
+        </Key>
+        <Key ID="str_epoch_ItemDoc2_displayName">
+            <Original>Book</Original>
+            <English>Book</English>
+            <German>Book</German>
+            <Czech>Book</Czech>
+            <French>Book</French>
+            <Italian>Book</Italian>
+            <Polish>Book</Polish>
+            <Portuguese>Book</Portuguese>
+            <Russian>Book</Russian>
+            <Spanish>Book</Spanish>
+        </Key>
+        <Key ID="str_epoch_ItemDoc3_displayName">
+            <Original>Book</Original>
+            <English>Book</English>
+            <German>Book</German>
+            <Czech>Book</Czech>
+            <French>Book</French>
+            <Italian>Book</Italian>
+            <Polish>Book</Polish>
+            <Portuguese>Book</Portuguese>
+            <Russian>Book</Russian>
+            <Spanish>Book</Spanish>
+        </Key>
+        <Key ID="str_epoch_ItemDoc4_displayName">
+            <Original>Book</Original>
+            <English>Book</English>
+            <German>Book</German>
+            <Czech>Book</Czech>
+            <French>Book</French>
+            <Italian>Book</Italian>
+            <Polish>Book</Polish>
+            <Portuguese>Book</Portuguese>
+            <Russian>Book</Russian>
+            <Spanish>Book</Spanish>
+        </Key>
+        <Key ID="str_epoch_ItemDoc5_displayName">
+            <Original>Letter</Original>
+            <English>Letter</English>
+            <German>Letter</German>
+            <Czech>Letter</Czech>
+            <French>Letter</French>
+            <Italian>Letter</Italian>
+            <Polish>Letter</Polish>
+            <Portuguese>Letter</Portuguese>
+            <Russian>Letter</Russian>
+            <Spanish>Letter</Spanish>
+        </Key>
+        <Key ID="str_epoch_ItemDoc6_displayName">
+            <Original>Book</Original>
+            <English>Book</English>
+            <German>Book</German>
+            <Czech>Book</Czech>
+            <French>Book</French>
+            <Italian>Book</Italian>
+            <Polish>Book</Polish>
+            <Portuguese>Book</Portuguese>
+            <Russian>Book</Russian>
+            <Spanish>Book</Spanish>
+        </Key>
+        <Key ID="str_epoch_ItemDoc7_displayName">
+            <Original>Letter</Original>
+            <English>Letter</English>
+            <German>Letter</German>
+            <Czech>Letter</Czech>
+            <French>Letter</French>
+            <Italian>Letter</Italian>
+            <Polish>Letter</Polish>
+            <Portuguese>Letter</Portuguese>
+            <Russian>Letter</Russian>
+            <Spanish>Letter</Spanish>
+        </Key>
+        <Key ID="str_epoch_ItemDoc8_displayName">
+            <Original>Letter</Original>
+            <English>Letter</English>
+            <German>Letter</German>
+            <Czech>Letter</Czech>
+            <French>Letter</French>
+            <Italian>Letter</Italian>
+            <Polish>Letter</Polish>
+            <Portuguese>Letter</Portuguese>
+            <Russian>Letter</Russian>
+            <Spanish>Letter</Spanish>
+        </Key>
+        <Key ID="str_epoch_ItemVehDoc1_displayName">
+            <Original>Vehicle Manual I</Original>
+            <English>Vehicle Manual I</English>
+            <German>Vehicle Manual I</German>
+            <Czech>Vehicle Manual I</Czech>
+            <French>Vehicle Manual I</French>
+            <Italian>Vehicle Manual I</Italian>
+            <Polish>Vehicle Manual I</Polish>
+            <Portuguese>Vehicle Manual I</Portuguese>
+            <Russian>Vehicle Manual I</Russian>
+            <Spanish>Vehicle Manual I</Spanish>
+        </Key>
+        <Key ID="str_epoch_ItemVehDoc2_displayName">
+            <Original>Vehicle Manual II</Original>
+            <English>Vehicle Manual II</English>
+            <German>Vehicle Manual II</German>
+            <Czech>Vehicle Manual II</Czech>
+            <French>Vehicle Manual II</French>
+            <Italian>Vehicle Manual II</Italian>
+            <Polish>Vehicle Manual II</Polish>
+            <Portuguese>Vehicle Manual II</Portuguese>
+            <Russian>Vehicle Manual II</Russian>
+            <Spanish>Vehicle Manual II</Spanish>
+        </Key>
+        <Key ID="str_epoch_ItemVehDoc3_displayName">
+            <Original>Vehicle Manual III</Original>
+            <English>Vehicle Manual III</English>
+            <German>Vehicle Manual III</German>
+            <Czech>Vehicle Manual III</Czech>
+            <French>Vehicle Manual III</French>
+            <Italian>Vehicle Manual III</Italian>
+            <Polish>Vehicle Manual III</Polish>
+            <Portuguese>Vehicle Manual III</Portuguese>
+            <Russian>Vehicle Manual III</Russian>
+            <Spanish>Vehicle Manual III</Spanish>
+        </Key>
+        <Key ID="str_epoch_ItemVehDoc4_displayName">
+            <Original>Vehicle Manual IV</Original>
+            <English>Vehicle Manual IV</English>
+            <German>Vehicle Manual IV</German>
+            <Czech>Vehicle Manual IV</Czech>
+            <French>Vehicle Manual IV</French>
+            <Italian>Vehicle Manual IV</Italian>
+            <Polish>Vehicle Manual IV</Polish>
+            <Portuguese>Vehicle Manual IV</Portuguese>
+            <Russian>Vehicle Manual IV</Russian>
+            <Spanish>Vehicle Manual IV</Spanish>
+        </Key>
+        <Key ID="str_epoch_ItemBulb_displayName">
+            <Original>Light Bulb</Original>
+            <English>Light Bulb</English>
+            <German>Light Bulb</German>
+            <Czech>Light Bulb</Czech>
+            <French>Light Bulb</French>
+            <Italian>Light Bulb</Italian>
+            <Polish>Light Bulb</Polish>
+            <Portuguese>Light Bulb</Portuguese>
+            <Russian>Light Bulb</Russian>
+            <Spanish>Light Bulb</Spanish>
+        </Key>
+        <Key ID="str_epoch_ItemBulb_descriptionShort">
+            <Original>Light Bulb in factory package. Gives off light when powered.</Original>
+            <English>Light Bulb in factory package. Gives off light when powered.</English>
+            <German>Light Bulb in factory package. Gives off light when powered.</German>
+            <Czech>Light Bulb in factory package. Gives off light when powered.</Czech>
+            <French>Light Bulb in factory package. Gives off light when powered.</French>
+            <Italian>Light Bulb in factory package. Gives off light when powered.</Italian>
+            <Polish>Light Bulb in factory package. Gives off light when powered.</Polish>
+            <Portuguese>Light Bulb in factory package. Gives off light when powered.</Portuguese>
+            <Russian>Light Bulb in factory package. Gives off light when powered.</Russian>
+            <Spanish>Light Bulb in factory package. Gives off light when powered.</Spanish>
+        </Key>
+        <Key ID="str_epoch_ItemBurlap_displayName">
+            <Original>Burlap</Original>
+            <English>Burlap</English>
+            <German>Burlap</German>
+            <Czech>Burlap</Czech>
+            <French>Burlap</French>
+            <Italian>Burlap</Italian>
+            <Polish>Burlap</Polish>
+            <Portuguese>Burlap</Portuguese>
+            <Russian>Burlap</Russian>
+            <Spanish>Burlap</Spanish>
+        </Key>
+        <Key ID="str_epoch_ItemBurlap_descriptionShort">
+            <Original>Woven fabric made from plant fibers.</Original>
+            <English>Woven fabric made from plant fibers.</English>
+            <German>Woven fabric made from plant fibers.</German>
+            <Czech>Woven fabric made from plant fibers.</Czech>
+            <French>Woven fabric made from plant fibers.</French>
+            <Italian>Woven fabric made from plant fibers.</Italian>
+            <Polish>Woven fabric made from plant fibers.</Polish>
+            <Portuguese>Woven fabric made from plant fibers.</Portuguese>
+            <Russian>Woven fabric made from plant fibers.</Russian>
+            <Spanish>Woven fabric made from plant fibers.</Spanish>
+        </Key>
+        <Key ID="str_epoch_ItemBriefcaseE_displayName">
+            <Original>Empty Briefcase</Original>
+            <English>Empty Briefcase</English>
+            <German>Empty Briefcase</German>
+            <Czech>Empty Briefcase</Czech>
+            <French>Empty Briefcase</French>
+            <Italian>Empty Briefcase</Italian>
+            <Polish>Empty Briefcase</Polish>
+            <Portuguese>Empty Briefcase</Portuguese>
+            <Russian>Empty Briefcase</Russian>
+            <Spanish>Empty Briefcase</Spanish>
+        </Key>
+        <Key ID="str_epoch_ItemBriefcaseE_descriptionShort">
+            <Original>A rectangular container, for carrying books and papers.</Original>
+            <English>A rectangular container, for carrying books and papers.</English>
+            <German>A rectangular container, for carrying books and papers.</German>
+            <Czech>A rectangular container, for carrying books and papers.</Czech>
+            <French>A rectangular container, for carrying books and papers.</French>
+            <Italian>A rectangular container, for carrying books and papers.</Italian>
+            <Polish>A rectangular container, for carrying books and papers.</Polish>
+            <Portuguese>A rectangular container, for carrying books and papers.</Portuguese>
+            <Russian>A rectangular container, for carrying books and papers.</Russian>
+            <Spanish>A rectangular container, for carrying books and papers.</Spanish>
+        </Key>
+        <Key ID="str_epoch_ItemAluminumBar_displayName">
+            <Original>Aluminum Bar (1oz)</Original>
+            <English>Aluminum Bar (1oz)</English>
+            <German>Aluminum Bar (1oz)</German>
+            <Czech>Aluminum Bar (1oz)</Czech>
+            <French>Aluminum Bar (1oz)</French>
+            <Italian>Aluminum Bar (1oz)</Italian>
+            <Polish>Aluminum Bar (1oz)</Polish>
+            <Portuguese>Aluminum Bar (1oz)</Portuguese>
+            <Russian>Aluminum Bar (1oz)</Russian>
+            <Spanish>Aluminum Bar (1oz)</Spanish>
+        </Key>
+        <Key ID="str_epoch_ItemAluminumBar_descriptionShort">
+            <Original>Aluminum Bar (1oz)</Original>
+            <English>Aluminum Bar (1oz)</English>
+            <German>Aluminum Bar (1oz)</German>
+            <Czech>Aluminum Bar (1oz)</Czech>
+            <French>Aluminum Bar (1oz)</French>
+            <Italian>Aluminum Bar (1oz)</Italian>
+            <Polish>Aluminum Bar (1oz)</Polish>
+            <Portuguese>Aluminum Bar (1oz)</Portuguese>
+            <Russian>Aluminum Bar (1oz)</Russian>
+            <Spanish>Aluminum Bar (1oz)</Spanish>
+        </Key>
+        <Key ID="str_epoch_ItemCopperBar_displayName">
+            <Original>Copper Bar (1oz)</Original>
+            <English>Copper Bar (1oz)</English>
+            <German>Copper Bar (1oz)</German>
+            <Czech>Copper Bar (1oz)</Czech>
+            <French>Copper Bar (1oz)</French>
+            <Italian>Copper Bar (1oz)</Italian>
+            <Polish>Copper Bar (1oz)</Polish>
+            <Portuguese>Copper Bar (1oz)</Portuguese>
+            <Russian>Copper Bar (1oz)</Russian>
+            <Spanish>Copper Bar (1oz)</Spanish>
+        </Key>
+        <Key ID="str_epoch_ItemCopperBar_descriptionShort">
+            <Original>Copper Bar (1oz)</Original>
+            <English>Copper Bar (1oz)</English>
+            <German>Copper Bar (1oz)</German>
+            <Czech>Copper Bar (1oz)</Czech>
+            <French>Copper Bar (1oz)</French>
+            <Italian>Copper Bar (1oz)</Italian>
+            <Polish>Copper Bar (1oz)</Polish>
+            <Portuguese>Copper Bar (1oz)</Portuguese>
+            <Russian>Copper Bar (1oz)</Russian>
+            <Spanish>Copper Bar (1oz)</Spanish>
+        </Key>
+        <Key ID="str_epoch_ItemTinBar_displayName">
+            <Original>Tin Bar (1oz)</Original>
+            <English>Tin Bar (1oz)</English>
+            <German>Tin Bar (1oz)</German>
+            <Czech>Tin Bar (1oz)</Czech>
+            <French>Tin Bar (1oz)</French>
+            <Italian>Tin Bar (1oz)</Italian>
+            <Polish>Tin Bar (1oz)</Polish>
+            <Portuguese>Tin Bar (1oz)</Portuguese>
+            <Russian>Tin Bar (1oz)</Russian>
+            <Spanish>Tin Bar (1oz)</Spanish>
+        </Key>
+        <Key ID="str_epoch_ItemTinBar_descriptionShort">
+            <Original>Tin Bar (1oz)</Original>
+            <English>Tin Bar (1oz)</English>
+            <German>Tin Bar (1oz)</German>
+            <Czech>Tin Bar (1oz)</Czech>
+            <French>Tin Bar (1oz)</French>
+            <Italian>Tin Bar (1oz)</Italian>
+            <Polish>Tin Bar (1oz)</Polish>
+            <Portuguese>Tin Bar (1oz)</Portuguese>
+            <Russian>Tin Bar (1oz)</Russian>
+            <Spanish>Tin Bar (1oz)</Spanish>
+        </Key>
+        <Key ID="str_epoch_ItemPlywood_displayName">
+            <Original>Plywood</Original>
+            <English>Plywood</English>
+            <German>Plywood</German>
+            <Czech>Plywood</Czech>
+            <French>Plywood</French>
+            <Italian>Plywood</Italian>
+            <Polish>Plywood</Polish>
+            <Portuguese>Plywood</Portuguese>
+            <Russian>Plywood</Russian>
+            <Spanish>Plywood</Spanish>
+        </Key>
+        <Key ID="str_epoch_ItemPlywood_descriptionShort">
+            <Original>Plywood Sheets</Original>
+            <English>Plywood Sheets</English>
+            <German>Plywood Sheets</German>
+            <Czech>Plywood Sheets</Czech>
+            <French>Plywood Sheets</French>
+            <Italian>Plywood Sheets</Italian>
+            <Polish>Plywood Sheets</Polish>
+            <Portuguese>Plywood Sheets</Portuguese>
+            <Russian>Plywood Sheets</Russian>
+            <Spanish>Plywood Sheets</Spanish>
+        </Key>
+        <Key ID="str_epoch_ItemPlywoodPack_displayName">
+            <Original>Plywood Pack</Original>
+            <English>Plywood Pack</English>
+            <German>Plywood Pack</German>
+            <Czech>Plywood Pack</Czech>
+            <French>Plywood Pack</French>
+            <Italian>Plywood Pack</Italian>
+            <Polish>Plywood Pack</Polish>
+            <Portuguese>Plywood Pack</Portuguese>
+            <Russian>Plywood Pack</Russian>
+            <Spanish>Plywood Pack</Spanish>
+        </Key>
+        <Key ID="str_epoch_ItemPlywoodPack_descriptionShort">
+            <Original>Stack of Plywood Sheets</Original>
+            <English>Stack of Plywood Sheets</English>
+            <German>Stack of Plywood Sheets</German>
+            <Czech>Stack of Plywood Sheets</Czech>
+            <French>Stack of Plywood Sheets</French>
+            <Italian>Stack of Plywood Sheets</Italian>
+            <Polish>Stack of Plywood Sheets</Polish>
+            <Portuguese>Stack of Plywood Sheets</Portuguese>
+            <Russian>Stack of Plywood Sheets</Russian>
+            <Spanish>Stack of Plywood Sheets</Spanish>
+        </Key>
+        <Key ID="str_epoch_ItemComboLock_displayName">
+            <Original>Combination Lock</Original>
+            <English>Combination Lock</English>
+            <German>Combination Lock</German>
+            <Czech>Combination Lock</Czech>
+            <French>Combination Lock</French>
+            <Italian>Combination Lock</Italian>
+            <Polish>Combination Lock</Polish>
+            <Portuguese>Combination Lock</Portuguese>
+            <Russian>Combination Lock</Russian>
+            <Spanish>Combination Lock</Spanish>
+        </Key>
+        <Key ID="str_epoch_ItemComboLock_descriptionShort">
+            <Original>Combination Lock</Original>
+            <English>Combination Lock</English>
+            <German>Combination Lock</German>
+            <Czech>Combination Lock</Czech>
+            <French>Combination Lock</French>
+            <Italian>Combination Lock</Italian>
+            <Polish>Combination Lock</Polish>
+            <Portuguese>Combination Lock</Portuguese>
+            <Russian>Combination Lock</Russian>
+            <Spanish>Combination Lock</Spanish>
+        </Key>
+        <Key ID="str_epoch_Item_AssaultPack_cbr_descriptionShort">
+            <Original>Packed Backpack</Original>
+            <English>Packed Backpack</English>
+            <German>Packed Backpack</German>
+            <Czech>Packed Backpack</Czech>
+            <French>Packed Backpack</French>
+            <Italian>Packed Backpack</Italian>
+            <Polish>Packed Backpack</Polish>
+            <Portuguese>Packed Backpack</Portuguese>
+            <Russian>Packed Backpack</Russian>
+            <Spanish>Packed Backpack</Spanish>
+        </Key>
+        <Key ID="str_epoch_Item_AssaultPack_dgtl_descriptionShort">
+            <Original>Packed Backpack</Original>
+            <English>Packed Backpack</English>
+            <German>Packed Backpack</German>
+            <Czech>Packed Backpack</Czech>
+            <French>Packed Backpack</French>
+            <Italian>Packed Backpack</Italian>
+            <Polish>Packed Backpack</Polish>
+            <Portuguese>Packed Backpack</Portuguese>
+            <Russian>Packed Backpack</Russian>
+            <Spanish>Packed Backpack</Spanish>
+        </Key>
+        <Key ID="str_epoch_Item_AssaultPack_khk_descriptionShort">
+            <Original>Packed Backpack</Original>
+            <English>Packed Backpack</English>
+            <German>Packed Backpack</German>
+            <Czech>Packed Backpack</Czech>
+            <French>Packed Backpack</French>
+            <Italian>Packed Backpack</Italian>
+            <Polish>Packed Backpack</Polish>
+            <Portuguese>Packed Backpack</Portuguese>
+            <Russian>Packed Backpack</Russian>
+            <Spanish>Packed Backpack</Spanish>
+        </Key>
+        <Key ID="str_epoch_Item_AssaultPack_mcamo_descriptionShort">
+            <Original>Packed Backpack</Original>
+            <English>Packed Backpack</English>
+            <German>Packed Backpack</German>
+            <Czech>Packed Backpack</Czech>
+            <French>Packed Backpack</French>
+            <Italian>Packed Backpack</Italian>
+            <Polish>Packed Backpack</Polish>
+            <Portuguese>Packed Backpack</Portuguese>
+            <Russian>Packed Backpack</Russian>
+            <Spanish>Packed Backpack</Spanish>
+        </Key>
+        <Key ID="str_epoch_Item_AssaultPack_ocamo_descriptionShort">
+            <Original>Packed Backpack</Original>
+            <English>Packed Backpack</English>
+            <German>Packed Backpack</German>
+            <Czech>Packed Backpack</Czech>
+            <French>Packed Backpack</French>
+            <Italian>Packed Backpack</Italian>
+            <Polish>Packed Backpack</Polish>
+            <Portuguese>Packed Backpack</Portuguese>
+            <Russian>Packed Backpack</Russian>
+            <Spanish>Packed Backpack</Spanish>
+        </Key>
+        <Key ID="str_epoch_Item_AssaultPack_rgr_descriptionShort">
+            <Original>Packed Backpack</Original>
+            <English>Packed Backpack</English>
+            <German>Packed Backpack</German>
+            <Czech>Packed Backpack</Czech>
+            <French>Packed Backpack</French>
+            <Italian>Packed Backpack</Italian>
+            <Polish>Packed Backpack</Polish>
+            <Portuguese>Packed Backpack</Portuguese>
+            <Russian>Packed Backpack</Russian>
+            <Spanish>Packed Backpack</Spanish>
+        </Key>
+        <Key ID="str_epoch_Item_AssaultPack_sgg_descriptionShort">
+            <Original>Packed Backpack</Original>
+            <English>Packed Backpack</English>
+            <German>Packed Backpack</German>
+            <Czech>Packed Backpack</Czech>
+            <French>Packed Backpack</French>
+            <Italian>Packed Backpack</Italian>
+            <Polish>Packed Backpack</Polish>
+            <Portuguese>Packed Backpack</Portuguese>
+            <Russian>Packed Backpack</Russian>
+            <Spanish>Packed Backpack</Spanish>
+        </Key>
+        <Key ID="str_epoch_Item_AssaultPack_blk_descriptionShort">
+            <Original>Packed Backpack</Original>
+            <English>Packed Backpack</English>
+            <German>Packed Backpack</German>
+            <Czech>Packed Backpack</Czech>
+            <French>Packed Backpack</French>
+            <Italian>Packed Backpack</Italian>
+            <Polish>Packed Backpack</Polish>
+            <Portuguese>Packed Backpack</Portuguese>
+            <Russian>Packed Backpack</Russian>
+            <Spanish>Packed Backpack</Spanish>
+        </Key>
+        <Key ID="str_epoch_Item_Carryall_cbr_descriptionShort">
+            <Original>Packed Backpack</Original>
+            <English>Packed Backpack</English>
+            <German>Packed Backpack</German>
+            <Czech>Packed Backpack</Czech>
+            <French>Packed Backpack</French>
+            <Italian>Packed Backpack</Italian>
+            <Polish>Packed Backpack</Polish>
+            <Portuguese>Packed Backpack</Portuguese>
+            <Russian>Packed Backpack</Russian>
+            <Spanish>Packed Backpack</Spanish>
+        </Key>
+        <Key ID="str_epoch_Item_Carryall_khk_descriptionShort">
+            <Original>Packed Backpack</Original>
+            <English>Packed Backpack</English>
+            <German>Packed Backpack</German>
+            <Czech>Packed Backpack</Czech>
+            <French>Packed Backpack</French>
+            <Italian>Packed Backpack</Italian>
+            <Polish>Packed Backpack</Polish>
+            <Portuguese>Packed Backpack</Portuguese>
+            <Russian>Packed Backpack</Russian>
+            <Spanish>Packed Backpack</Spanish>
+        </Key>
+        <Key ID="str_epoch_Item_Carryall_mcamo_descriptionShort">
+            <Original>Packed Backpack</Original>
+            <English>Packed Backpack</English>
+            <German>Packed Backpack</German>
+            <Czech>Packed Backpack</Czech>
+            <French>Packed Backpack</French>
+            <Italian>Packed Backpack</Italian>
+            <Polish>Packed Backpack</Polish>
+            <Portuguese>Packed Backpack</Portuguese>
+            <Russian>Packed Backpack</Russian>
+            <Spanish>Packed Backpack</Spanish>
+        </Key>
+        <Key ID="str_epoch_Item_Carryall_ocamo_descriptionShort">
+            <Original>Packed Backpack</Original>
+            <English>Packed Backpack</English>
+            <German>Packed Backpack</German>
+            <Czech>Packed Backpack</Czech>
+            <French>Packed Backpack</French>
+            <Italian>Packed Backpack</Italian>
+            <Polish>Packed Backpack</Polish>
+            <Portuguese>Packed Backpack</Portuguese>
+            <Russian>Packed Backpack</Russian>
+            <Spanish>Packed Backpack</Spanish>
+        </Key>
+        <Key ID="str_epoch_Item_Carryall_oli_descriptionShort">
+            <Original>Packed Backpack</Original>
+            <English>Packed Backpack</English>
+            <German>Packed Backpack</German>
+            <Czech>Packed Backpack</Czech>
+            <French>Packed Backpack</French>
+            <Italian>Packed Backpack</Italian>
+            <Polish>Packed Backpack</Polish>
+            <Portuguese>Packed Backpack</Portuguese>
+            <Russian>Packed Backpack</Russian>
+            <Spanish>Packed Backpack</Spanish>
+        </Key>
+        <Key ID="str_epoch_Item_Carryall_oucamo_descriptionShort">
+            <Original>Packed Backpack</Original>
+            <English>Packed Backpack</English>
+            <German>Packed Backpack</German>
+            <Czech>Packed Backpack</Czech>
+            <French>Packed Backpack</French>
+            <Italian>Packed Backpack</Italian>
+            <Polish>Packed Backpack</Polish>
+            <Portuguese>Packed Backpack</Portuguese>
+            <Russian>Packed Backpack</Russian>
+            <Spanish>Packed Backpack</Spanish>
+        </Key>
+        <Key ID="str_epoch_Item_FieldPack_blk_descriptionShort">
+            <Original>Packed Backpack</Original>
+            <English>Packed Backpack</English>
+            <German>Packed Backpack</German>
+            <Czech>Packed Backpack</Czech>
+            <French>Packed Backpack</French>
+            <Italian>Packed Backpack</Italian>
+            <Polish>Packed Backpack</Polish>
+            <Portuguese>Packed Backpack</Portuguese>
+            <Russian>Packed Backpack</Russian>
+            <Spanish>Packed Backpack</Spanish>
+        </Key>
+        <Key ID="str_epoch_Item_FieldPack_cbr_descriptionShort">
+            <Original>Packed Backpack</Original>
+            <English>Packed Backpack</English>
+            <German>Packed Backpack</German>
+            <Czech>Packed Backpack</Czech>
+            <French>Packed Backpack</French>
+            <Italian>Packed Backpack</Italian>
+            <Polish>Packed Backpack</Polish>
+            <Portuguese>Packed Backpack</Portuguese>
+            <Russian>Packed Backpack</Russian>
+            <Spanish>Packed Backpack</Spanish>
+        </Key>
+        <Key ID="str_epoch_Item_FieldPack_khk_descriptionShort">
+            <Original>Packed Backpack</Original>
+            <English>Packed Backpack</English>
+            <German>Packed Backpack</German>
+            <Czech>Packed Backpack</Czech>
+            <French>Packed Backpack</French>
+            <Italian>Packed Backpack</Italian>
+            <Polish>Packed Backpack</Polish>
+            <Portuguese>Packed Backpack</Portuguese>
+            <Russian>Packed Backpack</Russian>
+            <Spanish>Packed Backpack</Spanish>
+        </Key>
+        <Key ID="str_epoch_Item_FieldPack_ocamo_descriptionShort">
+            <Original>Packed Backpack</Original>
+            <English>Packed Backpack</English>
+            <German>Packed Backpack</German>
+            <Czech>Packed Backpack</Czech>
+            <French>Packed Backpack</French>
+            <Italian>Packed Backpack</Italian>
+            <Polish>Packed Backpack</Polish>
+            <Portuguese>Packed Backpack</Portuguese>
+            <Russian>Packed Backpack</Russian>
+            <Spanish>Packed Backpack</Spanish>
+        </Key>
+        <Key ID="str_epoch_Item_FieldPack_oli_descriptionShort">
+            <Original>Packed Backpack</Original>
+            <English>Packed Backpack</English>
+            <German>Packed Backpack</German>
+            <Czech>Packed Backpack</Czech>
+            <French>Packed Backpack</French>
+            <Italian>Packed Backpack</Italian>
+            <Polish>Packed Backpack</Polish>
+            <Portuguese>Packed Backpack</Portuguese>
+            <Russian>Packed Backpack</Russian>
+            <Spanish>Packed Backpack</Spanish>
+        </Key>
+        <Key ID="str_epoch_Item_FieldPack_oucamo_descriptionShort">
+            <Original>Packed Backpack</Original>
+            <English>Packed Backpack</English>
+            <German>Packed Backpack</German>
+            <Czech>Packed Backpack</Czech>
+            <French>Packed Backpack</French>
+            <Italian>Packed Backpack</Italian>
+            <Polish>Packed Backpack</Polish>
+            <Portuguese>Packed Backpack</Portuguese>
+            <Russian>Packed Backpack</Russian>
+            <Spanish>Packed Backpack</Spanish>
+        </Key>
+        <Key ID="str_epoch_Item_Kitbag_cbr_descriptionShort">
+            <Original>Packed Backpack</Original>
+            <English>Packed Backpack</English>
+            <German>Packed Backpack</German>
+            <Czech>Packed Backpack</Czech>
+            <French>Packed Backpack</French>
+            <Italian>Packed Backpack</Italian>
+            <Polish>Packed Backpack</Polish>
+            <Portuguese>Packed Backpack</Portuguese>
+            <Russian>Packed Backpack</Russian>
+            <Spanish>Packed Backpack</Spanish>
+        </Key>
+        <Key ID="str_epoch_Item_Kitbag_mcamo_descriptionShort">
+            <Original>Packed Backpack</Original>
+            <English>Packed Backpack</English>
+            <German>Packed Backpack</German>
+            <Czech>Packed Backpack</Czech>
+            <French>Packed Backpack</French>
+            <Italian>Packed Backpack</Italian>
+            <Polish>Packed Backpack</Polish>
+            <Portuguese>Packed Backpack</Portuguese>
+            <Russian>Packed Backpack</Russian>
+            <Spanish>Packed Backpack</Spanish>
+        </Key>
+        <Key ID="str_epoch_Item_Kitbag_rgr_descriptionShort">
+            <Original>Packed Backpack</Original>
+            <English>Packed Backpack</English>
+            <German>Packed Backpack</German>
+            <Czech>Packed Backpack</Czech>
+            <French>Packed Backpack</French>
+            <Italian>Packed Backpack</Italian>
+            <Polish>Packed Backpack</Polish>
+            <Portuguese>Packed Backpack</Portuguese>
+            <Russian>Packed Backpack</Russian>
+            <Spanish>Packed Backpack</Spanish>
+        </Key>
+        <Key ID="str_epoch_Item_Kitbag_sgg_descriptionShort">
+            <Original>Packed Backpack</Original>
+            <English>Packed Backpack</English>
+            <German>Packed Backpack</German>
+            <Czech>Packed Backpack</Czech>
+            <French>Packed Backpack</French>
+            <Italian>Packed Backpack</Italian>
+            <Polish>Packed Backpack</Polish>
+            <Portuguese>Packed Backpack</Portuguese>
+            <Russian>Packed Backpack</Russian>
+            <Spanish>Packed Backpack</Spanish>
+        </Key>
+        <Key ID="str_epoch_Item_TacticalPack_blk_descriptionShort">
+            <Original>Packed Backpack</Original>
+            <English>Packed Backpack</English>
+            <German>Packed Backpack</German>
+            <Czech>Packed Backpack</Czech>
+            <French>Packed Backpack</French>
+            <Italian>Packed Backpack</Italian>
+            <Polish>Packed Backpack</Polish>
+            <Portuguese>Packed Backpack</Portuguese>
+            <Russian>Packed Backpack</Russian>
+            <Spanish>Packed Backpack</Spanish>
+        </Key>
+        <Key ID="str_epoch_Item_TacticalPack_mcamo_descriptionShort">
+            <Original>Packed Backpack</Original>
+            <English>Packed Backpack</English>
+            <German>Packed Backpack</German>
+            <Czech>Packed Backpack</Czech>
+            <French>Packed Backpack</French>
+            <Italian>Packed Backpack</Italian>
+            <Polish>Packed Backpack</Polish>
+            <Portuguese>Packed Backpack</Portuguese>
+            <Russian>Packed Backpack</Russian>
+            <Spanish>Packed Backpack</Spanish>
+        </Key>
+        <Key ID="str_epoch_Item_TacticalPack_ocamo_descriptionShort">
+            <Original>Packed Backpack</Original>
+            <English>Packed Backpack</English>
+            <German>Packed Backpack</German>
+            <Czech>Packed Backpack</Czech>
+            <French>Packed Backpack</French>
+            <Italian>Packed Backpack</Italian>
+            <Polish>Packed Backpack</Polish>
+            <Portuguese>Packed Backpack</Portuguese>
+            <Russian>Packed Backpack</Russian>
+            <Spanish>Packed Backpack</Spanish>
+        </Key>
+        <Key ID="str_epoch_Item_TacticalPack_oli_descriptionShort">
+            <Original>Packed Backpack</Original>
+            <English>Packed Backpack</English>
+            <German>Packed Backpack</German>
+            <Czech>Packed Backpack</Czech>
+            <French>Packed Backpack</French>
+            <Italian>Packed Backpack</Italian>
+            <Polish>Packed Backpack</Polish>
+            <Portuguese>Packed Backpack</Portuguese>
+            <Russian>Packed Backpack</Russian>
+            <Spanish>Packed Backpack</Spanish>
+        </Key>
+        <Key ID="str_epoch_Item_TacticalPack_rgr_descriptionShort">
+            <Original>Packed Backpack</Original>
+            <English>Packed Backpack</English>
+            <German>Packed Backpack</German>
+            <Czech>Packed Backpack</Czech>
+            <French>Packed Backpack</French>
+            <Italian>Packed Backpack</Italian>
+            <Polish>Packed Backpack</Polish>
+            <Portuguese>Packed Backpack</Portuguese>
+            <Russian>Packed Backpack</Russian>
+            <Spanish>Packed Backpack</Spanish>
+        </Key>
+        <Key ID="str_epoch_Item_smallbackpack_red_displayName">
+            <Original>Small Backpack (Red)</Original>
+            <English>Small Backpack (Red)</English>
+            <German>Small Backpack (Red)</German>
+            <Czech>Small Backpack (Red)</Czech>
+            <French>Small Backpack (Red)</French>
+            <Italian>Small Backpack (Red)</Italian>
+            <Polish>Small Backpack (Red)</Polish>
+            <Portuguese>Small Backpack (Red)</Portuguese>
+            <Russian>Small Backpack (Red)</Russian>
+            <Spanish>Small Backpack (Red)</Spanish>
+        </Key>
+        <Key ID="str_epoch_Item_smallbackpack_red_descriptionShort">
+            <Original>Packed Backpack</Original>
+            <English>Packed Backpack</English>
+            <German>Packed Backpack</German>
+            <Czech>Packed Backpack</Czech>
+            <French>Packed Backpack</French>
+            <Italian>Packed Backpack</Italian>
+            <Polish>Packed Backpack</Polish>
+            <Portuguese>Packed Backpack</Portuguese>
+            <Russian>Packed Backpack</Russian>
+            <Spanish>Packed Backpack</Spanish>
+        </Key>
+        <Key ID="str_epoch_Item_smallbackpack_green_displayName">
+            <Original>Small Backpack (Green)</Original>
+            <English>Small Backpack (Green)</English>
+            <German>Small Backpack (Green)</German>
+            <Czech>Small Backpack (Green)</Czech>
+            <French>Small Backpack (Green)</French>
+            <Italian>Small Backpack (Green)</Italian>
+            <Polish>Small Backpack (Green)</Polish>
+            <Portuguese>Small Backpack (Green)</Portuguese>
+            <Russian>Small Backpack (Green)</Russian>
+            <Spanish>Small Backpack (Green)</Spanish>
+        </Key>
+        <Key ID="str_epoch_Item_smallbackpack_green_descriptionShort">
+            <Original>Packed Backpack</Original>
+            <English>Packed Backpack</English>
+            <German>Packed Backpack</German>
+            <Czech>Packed Backpack</Czech>
+            <French>Packed Backpack</French>
+            <Italian>Packed Backpack</Italian>
+            <Polish>Packed Backpack</Polish>
+            <Portuguese>Packed Backpack</Portuguese>
+            <Russian>Packed Backpack</Russian>
+            <Spanish>Packed Backpack</Spanish>
+        </Key>
+        <Key ID="str_epoch_Item_smallbackpack_teal_displayName">
+            <Original>Small Backpack (Teal)</Original>
+            <English>Small Backpack (Teal)</English>
+            <German>Small Backpack (Teal)</German>
+            <Czech>Small Backpack (Teal)</Czech>
+            <French>Small Backpack (Teal)</French>
+            <Italian>Small Backpack (Teal)</Italian>
+            <Polish>Small Backpack (Teal)</Polish>
+            <Portuguese>Small Backpack (Teal)</Portuguese>
+            <Russian>Small Backpack (Teal)</Russian>
+            <Spanish>Small Backpack (Teal)</Spanish>
+        </Key>
+        <Key ID="str_epoch_Item_smallbackpack_teal_descriptionShort">
+            <Original>Packed Backpack</Original>
+            <English>Packed Backpack</English>
+            <German>Packed Backpack</German>
+            <Czech>Packed Backpack</Czech>
+            <French>Packed Backpack</French>
+            <Italian>Packed Backpack</Italian>
+            <Polish>Packed Backpack</Polish>
+            <Portuguese>Packed Backpack</Portuguese>
+            <Russian>Packed Backpack</Russian>
+            <Spanish>Packed Backpack</Spanish>
+        </Key>
+        <Key ID="str_epoch_Item_smallbackpack_pink_displayName">
+            <Original>Small Backpack (Pink)</Original>
+            <English>Small Backpack (Pink)</English>
+            <German>Small Backpack (Pink)</German>
+            <Czech>Small Backpack (Pink)</Czech>
+            <French>Small Backpack (Pink)</French>
+            <Italian>Small Backpack (Pink)</Italian>
+            <Polish>Small Backpack (Pink)</Polish>
+            <Portuguese>Small Backpack (Pink)</Portuguese>
+            <Russian>Small Backpack (Pink)</Russian>
+            <Spanish>Small Backpack (Pink)</Spanish>
+        </Key>
+        <Key ID="str_epoch_Item_smallbackpack_pink_descriptionShort">
+            <Original>Packed Backpack</Original>
+            <English>Packed Backpack</English>
+            <German>Packed Backpack</German>
+            <Czech>Packed Backpack</Czech>
+            <French>Packed Backpack</French>
+            <Italian>Packed Backpack</Italian>
+            <Polish>Packed Backpack</Polish>
+            <Portuguese>Packed Backpack</Portuguese>
+            <Russian>Packed Backpack</Russian>
+            <Spanish>Packed Backpack</Spanish>
+        </Key>
+    </Package>
+</Project>
