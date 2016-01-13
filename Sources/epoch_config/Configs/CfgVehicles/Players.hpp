@@ -18,6 +18,9 @@ class Epoch_Female_base_F : B_Soldier_base_F
 {
 	identityTypes[] = { "Woman", "NoGlasses" };
 
+	// minGunElev = -80;
+	maxGunElev = 80; // test increased aim up angle
+
 	faceType = "Man_A3";
 	woman = 1;
 	side = 1;
@@ -697,6 +700,8 @@ class O_Soldier_base_F;
 class Epoch_Man_base_F : O_Soldier_base_F
 {
 	identityTypes[] = { "Kerry", "NoGlasses" };
+
+	maxGunElev = 80; // test increased aim up angle
 
 	faceType = "Man_A3";
 	side = 0;

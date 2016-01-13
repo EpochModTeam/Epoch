@@ -251,7 +251,7 @@ class CfgCrafting
 	class ItemBurlap : Item
 	{
 		usedIn[] = { "KitHesco3" };
-		recipe[] = { { "ItemKiloHemp", 1 } };
+		recipe[] = { { "ItemKiloHemp", 2 } };
 		previewPosition[] = {0.8,1,0.35};
 		previewScale = 4;
 	};
