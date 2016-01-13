@@ -68,7 +68,7 @@ if (typename _this == "ARRAY") then {
 			_normalMagazines = [_serverSettingsConfig, "normalMagazines", []] call EPOCH_fnc_returnConfigEntry;
 			_weaponsAndItems = [_serverSettingsConfig, "weaponsAndItems", ["", []]] call EPOCH_fnc_returnConfigEntry;
 
-			diag_log format["DEBUG (Load Player) _linkedItems 1: %1", _linkedItems];
+
 
 			if (count _arr < 11) then { // invaild format attempt to override
 				_arr = [[0, [], _instanceID], [0, 0, 1, 0, []], [_goggles, _headgear, _vest, _backpack, _uniform, _class], [""], [] + EPOCH_defaultVars_SEPXVar, _weaponsAndItems, _linkedItems, _normalMagazines, _itemsInContainers, _weaponsInContainers, "", true];
@@ -77,10 +77,18 @@ if (typename _this == "ARRAY") then {
 			_worldspace = _arr select 0;
 			_dir = _worldspace select 0;
 			_location = _worldspace select 1;
+
+			if (count _location == 2) then{
+				_location = (_location select 0) vectorAdd (_location select 1);
+			};
+
 			_prevInstance = _worldspace select 2;
 			_medical = _arr select 1;
 			_server_vars = _arr select 3;
 			_vars = _arr select 4;
+
+			diag_log format["DEBUG (Load Player) _worldspace 1: %1", _worldspace];
+			diag_log format["DEBUG (Load Player) _location 1: %1", _location];
 
 			_plyrGroup = _arr select 10;
 			_canBeRevived = _arr select 11;
@@ -257,6 +265,7 @@ if (typename _this == "ARRAY") then {
 
 				// Add magazines
 				{_newPlyr addMagazine _x} forEach _normalMagazines;
+				diag_log format["DEBUG (Load Player) _normalMagazines 1: %1", _normalMagazines];
 				// Load inventory + defaults END
 
 				// Final Push

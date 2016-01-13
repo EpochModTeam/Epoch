@@ -61,8 +61,6 @@ _giveAttributes = {
 				_return = format["Immunity: %1%2 (%3/%4)<br />", _addPlus, _data, EPOCH_playerImmunity, 100];
 			};
 			case 6: {
-				// EPOCH_playerToxicity = ((EPOCH_playerToxicity + _data) min 100) max 0;
-				// new random tox
 				_randomData = round(random _data);
 				EPOCH_playerToxicity = ((EPOCH_playerToxicity + _randomData) min 100) max 0;
 				_return = format["Toxicity: %1%2 (%3/%4)<br />", _addPlus, _randomData, EPOCH_playerToxicity, 100];
@@ -72,6 +70,7 @@ _giveAttributes = {
 				_return = format["Stamina: %1%2 (%3/%4)<br />", _addPlus, _data, EPOCH_playerStamina, EPOCH_playerStaminaMax];
 			};
 			case 8: {
+				// this is handled server side
 				//EPOCH_playerCrypto = ((EPOCH_playerCrypto + _data) min 25000) max 0;
 				//_return = format["Krypto: %1%2 (%3)<br />", _addPlus, _data, EPOCH_playerCrypto];
 			};
@@ -79,6 +78,20 @@ _giveAttributes = {
 				EPOCH_playerBloodP = ((EPOCH_playerBloodP + _data) min 190) max 0;
 				_return = format["Blood Pressure: %1%2 (%3/%4)<br />", _addPlus, _data, EPOCH_playerBloodP, 100];
 			};
+			case 10: {
+				EPOCH_playerKarma = ((EPOCH_playerKarma + _data) min 50000) max -50000;
+				_return = format["Karma: %1%2 (%3/%4)<br />", _addPlus, _data, EPOCH_playerKarma, 50000];
+			};
+			case 11: {
+				EPOCH_playerAlcohol = ((EPOCH_playerAlcohol + _data) min 100) max 0;
+				_return = format["Alcohol: %1%2 (%3/%4)<br />", _addPlus, _data, EPOCH_playerAlcohol, 100];
+			};
+			case 12: {
+				EPOCH_playerRadiation = ((EPOCH_playerRadiation + _data) min 100) max 0;
+				_return = format["Radiation: %1%2 (%3/%4)<br />", _addPlus, _data, EPOCH_playerRadiation, 100];
+			};
+
+
 		};
 	};
 	_return

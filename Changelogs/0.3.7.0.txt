@@ -2,6 +2,7 @@
 [Added] Repack magazines feature. Simply select a magazine and press the "Repack" button.
 [Added] 55 Gallon (210 liters) Fuel Barrel that can be used to refill/siphon vehicles. (Full - ItemBarrelF,Empty - ItemBarrelE).
 [Added] Ability to siphon fuel from other fuel sources like gas stations and gas tanks.
+[Added] Crafting Burlap from Hemp.
 [ADDED-WIP] Pack/unpack empty backpacks into carryable magazine items.
 [ADDED-WIP] Hotwire Kit (ItemHotwire).
 [ADDED-WIP] Key Makers Kit (ItemKeyKit).
@@ -15,6 +16,9 @@
 [ADDED-WIP] Copper Bars (ItemCopperBar).
 [ADDED-WIP] Tin Bars (ItemTinBar).
 [ADDED-WIP] Plywood sheets in small and large stacks (ItemPlywood,ItemPlywoodPack).
+[Changed] Drinking Alcohol increases the new "Alcohol" stat instead of directly effecting blood pressure.
+[Changed] Crafting Hesco barrier now require 3x Burlap.
+[Changed] Crafting wood and meta spike traps now require 2x Sticks.
 [Changed] Change all publicVariableServer calls to use remoteExec calls for better performance.
 [Fixed] Prevented death just after revive due still having high blood pressure.
 [Fixed] Incorrectly being able to sell/buy items from a dead trader.
@@ -29,5 +33,6 @@
 [Changed] Driver or passengers of a driverless can now control vehicle locks. Also only the owner can control locks from outside of a occupied vehicle.
 [Changed] Commented out Halloween masks from loot tables.
 [Updated] New Battleye remoteExec.txt for added remoteExec calls.
+[Fixed] Player positions in database now use Epoch precision position functions this fixes loading issues noticed in testing.
 [Fixed] When killed instead of saving blank array delete (object,trader,vehicle) data from database.
 [Info] Removed old .bikey and added new one for 0370.

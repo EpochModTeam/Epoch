@@ -60,10 +60,10 @@ if (typeName _vars == "ARRAY") then {
 			_group = _plyr getVariable ["GROUP", ""];
 			_revive = _plyr getVariable ["REVIVE", true];
 
-			_pos = getPosATL _plyr;
+			_pos = (getposATL _plyr call EPOCH_precisionPos);
 
 			if (vehicle _plyr != _plyr) then {
-				
+
 				_staticTraderLocationsDistances = [];
 				{
 					_staticTraderLocationsDistances pushBack [_x distance player, _x]

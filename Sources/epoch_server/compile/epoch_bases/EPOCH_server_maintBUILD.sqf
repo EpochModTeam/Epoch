@@ -1,14 +1,31 @@
 /*
-    Building Maintain
-    by Aaron Clark - EpochMod.com
+	Author: Aaron Clark - EpochMod.com
 
-    This work is licensed under a Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License.
-    http://creativecommons.org/licenses/by-nc-nd/4.0/
+    Contributors: Skaronator
 
-    Improvements and or bugfixes and other contributions are welcome via the github:
+	Description:
+	Building Maintain
+
+    Licence:
+    Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
+
+    Github:
     https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_server/compile/epoch_bases/EPOCH_server_maintBUILD.sqf
+
+    Example:
+    	// Client RE
+		[_this, player, _maintainCount, Epoch_personalToken] remoteExec ["EPOCH_server_maintBUILD",2];
+
+    Parameter(s):
+		_this select 0: OBJECT - Jammer object
+        _this select 1: STRING - Player Object
+		_this select 2: STRING - Maintain count
+		_this select 3: STRING - Epoch Personal Token
+
+	Returns:
+	NOTHING
 */
-private["_object", "_plyr", "_maintCount", "_plyrUID", "_counter", "_objSlot", "_objHiveKey", "_buildingJammerRange", "_current_crypto", "_cIndex", "_vars"];
+private ["_object","_plyr","_maintCount","_plyrUID","_counter","_objSlot","_buildingJammerRange","_current_crypto","_cIndex","_vars","_storSlot","_playerCryptoLimit","_config"];
 
 _object = _this select 0;
 _plyr = _this select 1;

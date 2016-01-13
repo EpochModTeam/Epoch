@@ -1,0 +1,9 @@
+Epoch Mod for Arma 3 
+http://epochmod.com
+by Epoch Mod Team
+https://github.com/EpochModTeam/Epoch
+
+The contents of this pbo are under the following license:
+http://www.bistudio.com/community/licenses/arma-public-license-share-alike
+
+Keep this file and file headers with attribution intact for proper use.

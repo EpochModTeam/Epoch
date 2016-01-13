@@ -1,7 +1,7 @@
 /*
 	Author: Aaron Clark - EpochMod.com
 
-    Contributors:
+    Contributors: Skaronator
 
 	Description:
 	Load Buildings from Epoch Hive

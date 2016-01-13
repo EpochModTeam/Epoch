@@ -228,7 +228,7 @@ class CfgCrafting
 	};
 	class ItemStick : Item
 	{
-		usedIn[] = { "WoodClub","MeleeMaul", "CrudeHatchet", "KitFirePlace" };
+		usedIn[] = { "WoodClub", "MeleeMaul", "CrudeHatchet", "KitFirePlace" , "KitSpikeTrap" , "KitMetalTrap" };
 		recipe[] = { { "WoodLog_EPOCH", 1 } };
 		previewPosition[] = {0.8,1,0.25};
 		previewScale = 0.4;
@@ -236,7 +236,7 @@ class CfgCrafting
 	};
 	class ItemKiloHemp : Part
 	{
-		usedIn[] = { "ItemRope" };
+		usedIn[] = { "ItemRope", "ItemBurlap" };
 		previewPosition[] = {0.796267,1,0.322762};
 		previewScale = 0.9;
 		previewVector = 1.4;
@@ -244,6 +244,13 @@ class CfgCrafting
 	class ItemRope : Item
 	{
 		usedIn[] = { "WoodClub", "MeleeMaul", "CrudeHatchet" };
+		recipe[] = { { "ItemKiloHemp", 1 } };
+		previewPosition[] = {0.8,1,0.35};
+		previewScale = 4;
+	};
+	class ItemBurlap : Item
+	{
+		usedIn[] = { "KitHesco3" };
 		recipe[] = { { "ItemKiloHemp", 1 } };
 		previewPosition[] = {0.8,1,0.35};
 		previewScale = 4;
@@ -681,7 +688,7 @@ class CfgCrafting
 
 	class KitSpikeTrap : Kit
 	{
-		recipe[] = {{"PartPlankPack",4}};
+		recipe[] = {{"PartPlankPack",4},{"ItemStick",2}};
 		model = "\x\addons\a3_epoch_assets_1\models\supply_crate.p3d";
 		nearby[] = {{"Workbench", "", "workbench", {1,{"WorkBench_EPOCH"}}, 3, 1, 0, 1}};
 		previewPosition[] = {0.797675,1,0.398882};
@@ -690,7 +697,7 @@ class CfgCrafting
 	};
 	class KitMetalTrap : Kit
 	{
-		recipe[] = {{"PartPlankPack",4}, {"ItemScraps",2}};
+		recipe[] = {{"PartPlankPack",4}, {"ItemStick",2}, {"ItemScraps",2}};
 		model = "\x\addons\a3_epoch_assets_1\models\supply_crate.p3d";
 		nearby[] = {{"Workbench", "", "workbench", {1,{"WorkBench_EPOCH"}}, 3, 1, 0, 1}};
 		previewPosition[] = {0.797675,1,0.398882};
@@ -747,7 +754,7 @@ class CfgCrafting
 	};
 	class KitHesco3 : Kit
 	{
-		recipe[] = { { "MortarBucket", 2 }, { "ItemCorrugatedLg", 2 } };
+		recipe[] = {  { "ItemBurlap", 3 }, { "MortarBucket", 2 }, { "ItemCorrugatedLg", 2 } };
 		nearby[] = { { "Workbench", "", "workbench", { 1, { "WorkBench_EPOCH" } }, 3, 1, 0, 1 } };
 		model = "\x\addons\a3_epoch_assets_3\CfgVehicles\Defense\hesco.p3d";
 		previewPosition[] = { 0.803749, 1, 0.448515 };
