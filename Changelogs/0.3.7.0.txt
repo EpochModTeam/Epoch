@@ -15,11 +15,13 @@
 [ADDED-WIP] Copper Bars (ItemCopperBar).
 [ADDED-WIP] Tin Bars (ItemTinBar).
 [ADDED-WIP] Plywood sheets in small and large stacks (ItemPlywood,ItemPlywoodPack).
+[Changed] Debug monitor now shows all custom stats dynamically based on config.
 [Changed] Increased angle that the player is able to aim up.
 [Changed] Drinking Alcohol increases the new "Alcohol" stat instead of directly effecting blood pressure.
 [Changed] Crafting Hesco barrier now require 3x Burlap.
-[Changed] Crafting wood and meta spike traps now require 2x Sticks.
+[Changed] Crafting wood and metal spike traps now require 2x Sticks.
 [Changed] Change all publicVariableServer calls to use remoteExec calls for better performance.
+[Fixed] Reworked login to prevent getting stuck at "waiting for inventory".
 [Fixed] Prevented death just after revive due still having high blood pressure.
 [Fixed] Incorrectly being able to sell/buy items from a dead trader.
 [Fixed] Snakes now require line of sight to bite player.

@@ -210,7 +210,7 @@ switch _interactOption do {
 			_newFuel = _newFuel / _fuelCapacity;
 
 			if (_item call _removeItem) then {
-				player addMagazine _interactReturnOnUse;
+				_interactReturnOnUse call EPOCH_fnc_addItemOverflow;
 				// send
 				[_vehicle,_newFuel,player,Epoch_personalToken] remoteExec ["EPOCH_server_fillVehicle",2];
 
@@ -228,7 +228,9 @@ switch _interactOption do {
 			_newFuel = (((fuel _vehicle) * _fuelCapacity) - _canCapacity) / _fuelCapacity;
 			if (_newFuel > 0) then {
 				if (_item call _removeItem) then {
-					player addMagazine _interactReturnOnUse;
+
+					_interactReturnOnUse call EPOCH_fnc_addItemOverflow;
+
 					[_vehicle,_newFuel,player,Epoch_personalToken] remoteExec ["EPOCH_server_fillVehicle",2];
 					_dt = ["<t size='0.8' shadow='0' color='#99ffffff'>Fuel Siphoned</t>", 0, 1, 5, 2, 0, 1] spawn bis_fnc_dynamictext;
 				};

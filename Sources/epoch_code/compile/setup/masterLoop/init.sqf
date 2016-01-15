@@ -13,6 +13,7 @@ _energyRegenMax = ["CfgEpochClient", "energyRegenMax", 5] call EPOCH_fnc_returnC
 _energyRange = ["CfgEpochClient", "energyRange", 75] call EPOCH_fnc_returnConfigEntryV2;
 
 EPOCH_chargeRate = 0;
+EPOCH_playerIsSwimming = false;
 
 // default data if mismatch
 if (count EPOCH_playerSpawnArray != count EPOCH_spawnIndex) then{
