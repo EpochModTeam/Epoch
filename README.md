@@ -10,8 +10,8 @@ https://github.com/EpochModTeam/Epoch/releases
 
 License:
 =====
-Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License.
-http://creativecommons.org/licenses/by-nc-nd/4.0/
+Arma Public License Share Alike (APL-SA).
+http://www.bistudio.com/community/licenses/arma-public-license-share-alike
 
 Developers
 =====
