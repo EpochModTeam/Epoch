@@ -11,6 +11,7 @@ _slot = _this select 4;
 _lockOwner  =  param [5, ""];
 _can_collide = param [6, "CAN_COLLIDE"];
 _spawnLoot = param [7, false];
+_spawnDamaged = param [8, true];
 
 //diag_log format["DEBUG: spawn_vehicle %1", _this];
 
@@ -44,6 +45,14 @@ if !(isNull _vehObj) then{
 
 	// randomize fuel TODO push min max to config
 	_vehObj setFuel ((random 1 max 0.1) min 0.9);
+
+	// add random damage to vehicles (avoid setting engine or fuel to 100% damage to prevent instant destruction)
+	if (_spawnDamaged) then {
+		{
+			_maxDamage = if (_x in ["HitEngine","HitFuel"]) then {0.9} else {1};
+			_vehObj setHitIndex [_forEachIndex,random(_maxDamage)];
+		} forEach ((getAllHitPointsDamage _vehObj) param [0,[]]);
+	};
 
 	// get colors from config
 	_config = (configFile >> "CfgVehicles" >> _vehClass >> "availableColors");

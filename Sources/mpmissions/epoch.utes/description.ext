@@ -1,0 +1,89 @@
+author = "Epoch Mod Team";
+class Header
+{
+ gameType = Sandbox;
+ minPlayers = 1;
+ maxPlayers = 100;
+};
+respawn = "BASE";
+respawnDelay = 600;
+respawnDialog = 0;
+
+onLoadMission= "Epoch";
+OnLoadIntro = "Welcome to Epoch Mod";
+loadScreen = "\x\addons\a3_epoch_assets\pictures\loadScreen_ca.paa";
+OnLoadIntroTime = False;
+OnLoadMissionTime = False;
+onLoadName = "Epoch Mod";
+disabledAI = true;
+scriptedPlayer = 1;
+disableChannels[]={0,1,2,6};
+enableItemsDropping = 0;
+briefing = 0;
+debriefing = 0;
+enableDebugConsole = 0;
+joinUnassigned = 0;
+respawnOnStart = 0;
+forceRotorLibSimulation = 1;
+
+corpseManagerMode = 1;
+corpseLimit = 10;
+corpseRemovalMinTime = 1200;
+corpseRemovalMaxTime = 3600;
+
+wreckManagerMode = 1;
+wreckLimit = 2;
+wreckRemovalMinTime = 60;
+wreckRemovalMaxTime = 360;
+
+class cfgFunctions
+{
+	class A3E
+	{
+		tag = "EPOCH";
+		class Client
+		{
+			file = "\x\addons\a3_epoch_code\init";
+			class init
+			{
+				preInit = 1;
+			};
+			class postinit
+			{
+				postInit = 1;
+			};
+		};
+	};
+};
+
+class CfgEpochSapper
+{
+	detonateDistMax = 8; //Random distance between 3m and this number at which sapper detonates. Min value = 4
+	groanTrig = 16; //Percentage chance of a groan. Min value = 4
+	sRange = 300; //Distance from target over which sapper will dispose. Range within which sapper code will be aware of targets. Distance up to which sapper will attempt to find a spot to hide in. Min Value = 150.
+	smellDist = 24; //Distance up to which sapper can smell. Used to decide if sapper can see target when deciding to charge and influences target selection. Is influenced by wind direction. Min Value = 8.
+};
+
+class CfgEpochUAV
+{
+	UAVMinDist = 48; //Minimum distance to choose next position when roaming. Min Value = 8.
+	UAVMaxDist = 180; //Maximum distance to choose next position when roaming. Min Value = 42 / Max Value = 400.
+	UAVHeight = 100; //Set height when roaming, slight randomness is applied to this value. UAV will choose own height when locked onto target. Min Value = 42 / Max Value = 280. UAV can still spot targets from height !
+};
+
+class CfgEpochAirDrop
+{
+	AirDropFreq = 1200; //AirDropChance, to decide if Air drop occurs, will only be checked once per AirDropFreq time period, for each player. Min value = 120.
+	AirDropChance = 6; //Percentage chance of air drop, for current player. Checked every AirDropFreq and upon antagonists spawn trigger. -1 To disable.
+};
+
+class CfgEpochCloak
+{
+	cRange = 300; //Distance, from target, at which Cloak will dispose. Cloak is also aware of players within this range. (Min: 60 / Max: 600)
+	cAggression = 75; //Percentage chance of attack, currently a psychological attack (Cultist spooky voice). (Min: 1 / Max: 100)
+	attackFrequency = 120; //One attack only per this period. (Min: 120)
+	attackDistance = 38; // Distance, from target, up to which Cloak will attack. Lower for less vocals. (Min: 16)
+	targetChangeFrequency = 42; //Cloak will only attempt to change target once per this period. Make Higher to stick to first target player. (Min: 42)
+	teleportChance = 66; //Chance for cloak to teleport. (Min: 1)
+	hoverFrequency = 1280; //Cloak has new hover attack. When player is above cloak, and at a distance, cloak will float to player and teleport attack. Only perform one of these moves per this period. (Min: 240)
+};

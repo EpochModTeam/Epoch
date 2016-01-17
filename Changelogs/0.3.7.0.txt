@@ -28,6 +28,7 @@
 [Fixed] Custom epoch swing animations for Hatchet and sledge now work correctly.
 [Fixed] Boss Sapper incorrectly cleaned up before detonation.
 **Server**
+[Added] Newly world spawned vehicles now have randomized damage.
 [Added] telePos array can now use world position for tele pads if 5th array element is true.
 [Added] Setting to control random magazine ammo counts in loot spawner. CfgEpochClient -> randomizeMagazineAmmoCount (default: true)
 [Changed] Empty fuel barrel added to large trash and vehicle loot tables.

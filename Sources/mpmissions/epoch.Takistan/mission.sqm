@@ -11,7 +11,7 @@ class Mission
 		"A3_Air_F_Heli_Light_01",
 		"A3_Air_F_Heli_Heli_Transport_04",
 		"A3_Air_F_Heli_Heli_Transport_03",
-		"aia_takistan_config",
+		"cup_takistan_config",
 		"a3_characters_f_gamma",
 		"A3_Characters_F_OPFOR",
 		"A3_Characters_F_INDEP",
@@ -22,7 +22,7 @@ class Mission
 	addOnsAuto[]=
 	{
 		"a3_epoch_config",
-		"aia_takistan_config"
+		"cup_takistan_config"
 	};
 	randomSeed=12032465;
 	class Intel
@@ -2078,11 +2078,11 @@ class Intro
 {
 	addOns[]=
 	{
-		"aia_takistan_config"
+		"cup_takistan_config"
 	};
 	addOnsAuto[]=
 	{
-		"aia_takistan_config"
+		"cup_takistan_config"
 	};
 	randomSeed=13802307;
 	class Intel
@@ -2108,11 +2108,11 @@ class OutroWin
 {
 	addOns[]=
 	{
-		"aia_takistan_config"
+		"cup_takistan_config"
 	};
 	addOnsAuto[]=
 	{
-		"aia_takistan_config"
+		"cup_takistan_config"
 	};
 	randomSeed=4712975;
 	class Intel
@@ -2138,11 +2138,11 @@ class OutroLoose
 {
 	addOns[]=
 	{
-		"aia_takistan_config"
+		"cup_takistan_config"
 	};
 	addOnsAuto[]=
 	{
-		"aia_takistan_config"
+		"cup_takistan_config"
 	};
 	randomSeed=10755213;
 	class Intel

@@ -10,7 +10,7 @@
 version = 12;
 class Mission
 {
-	addOns[] = {"A3_Soft_F_Car","A3_Soft_F_Quadbike","a3_soft_f_beta_quadbike","A3_Boat_F_Civilian_Boat","A3_Boat_F_Boat_Transport_01","A3_Air_F_Heli_Light_01","A3_Air_F_Heli_Heli_Transport_04","A3_Air_F_Heli_Heli_Transport_03","aia_chernarus_config","a3_characters_f_gamma","A3_Characters_F_OPFOR","A3_Characters_F_INDEP","A3_Characters_F_Civil","A3_epoch_config","A3_Modules_F_Curator_Curator","a3_characters_f","A3_Data_F_Curator_Virtual","australia"};
+	addOns[] = {"A3_Soft_F_Car","A3_Soft_F_Quadbike","a3_soft_f_beta_quadbike","A3_Boat_F_Civilian_Boat","A3_Boat_F_Boat_Transport_01","A3_Air_F_Heli_Light_01","A3_Air_F_Heli_Heli_Transport_04","A3_Air_F_Heli_Heli_Transport_03","cup_chernarus_config","a3_characters_f_gamma","A3_Characters_F_OPFOR","A3_Characters_F_INDEP","A3_Characters_F_Civil","A3_epoch_config","A3_Modules_F_Curator_Curator","a3_characters_f","A3_Data_F_Curator_Virtual","australia"};
 	addOnsAuto[] = {"a3_epoch_config","australia"};
 	randomSeed = 12032465;
 	class Intel
