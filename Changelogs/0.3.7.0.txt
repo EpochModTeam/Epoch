@@ -21,6 +21,7 @@
 [Changed] Crafting Hesco barrier now require 3x Burlap.
 [Changed] Crafting wood and metal spike traps now require 2x Sticks.
 [Changed] Change all publicVariableServer calls to use remoteExec calls for better performance.
+[Fixed] Secure storage locking mechanism improvments should prevent any unwanted intrusions.
 [Fixed] Reworked login to prevent getting stuck at "waiting for inventory".
 [Fixed] Prevented death just after revive due still having high blood pressure.
 [Fixed] Incorrectly being able to sell/buy items from a dead trader.
@@ -33,7 +34,8 @@
 [Added] Newly world spawned vehicles now have randomized damage.
 [Added] telePos array can now use world position for tele pads if 5th array element is true.
 [Added] Setting to control random magazine ammo counts in loot spawner. CfgEpochClient -> randomizeMagazineAmmoCount (default: true)
-[Changed] CUP terrain pack support added:
+[Added] Debug box now dynamically spawns with flood lights to help players see inside the box at night.
+[Added] CUP terrain pack support added:
 - Sahrani
 - Southern Sahrani
 - United Sahrani
@@ -54,7 +56,7 @@
 [Changed] Earthquakes with mineral veins spawn chances increased with less players.
 [Changed] Driver or passengers of a driverless can now control vehicle locks. Also only the owner can control locks from outside of a occupied vehicle.
 [Changed] Commented out Halloween masks from loot tables.
+[Changed] Player positions in database now use Epoch precision position functions.
 [Updated] New Battleye remoteExec.txt for added remoteExec calls.
-[Fixed] Player positions in database now use Epoch precision position functions this fixes loading issues noticed in testing.
 [Fixed] When killed instead of saving blank array delete (object,trader,vehicle) data from database.
 [Info] Removed old .bikey and added new one for 0370.

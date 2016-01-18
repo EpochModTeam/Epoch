@@ -36,5 +36,9 @@ if (_dikCode == EPOCH_keysAction) then {
 	true call Epoch_dynamicMenuCleanup;
 };
 
+if (_dikCode in(actionKeys "Gear")) then {
+	EPOCH_gearKeyPressed = false;
+};
+
 
 _handled

@@ -266,7 +266,8 @@ if (vehicle player == player) then {
 		};
 	};
 
-	if (_dikCode in(actionKeys "Gear")) then {
+	if (_dikCode in(actionKeys "Gear") && !EPOCH_gearKeyPressed) then {
+		EPOCH_gearKeyPressed = true;
 		if !(isNull EPOCH_Target) then {
 			if !(EPOCH_Target isKindOf "ThingX") then {
 				deleteVehicle EPOCH_Target;
@@ -277,14 +278,6 @@ if (vehicle player == player) then {
 		};
 		if (isTouchingGround player) then {
 			_handled = call EPOCH_lootTrash;
-		};
-		if !(_handled) then {
-			if (!isNull(findDisplay 602)) then { //Inventory Open?
-				(findDisplay 602) closeDisplay 3000;
-			}
-			else {
-				_handled = _ctrl call EPOCH_startInteract;
-			};
 		};
 	};
 

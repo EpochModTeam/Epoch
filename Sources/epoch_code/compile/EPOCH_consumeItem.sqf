@@ -99,9 +99,7 @@ _giveAttributes = {
 
 _unifiedInteract = {
 	if (_item call _removeItem) then {
-		if (_interactReturnOnUse != "") then {
-			player addMagazine _interactReturnOnUse;
-		};
+		_interactReturnOnUse call EPOCH_fnc_addItemOverflow;
 		_output = "";
 		{
 			_output = _output + ([_forEachIndex, _x] call _giveAttributes);

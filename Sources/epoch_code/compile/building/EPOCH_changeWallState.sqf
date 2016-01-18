@@ -134,15 +134,15 @@ if !(isNull _object) then {
     };
 
     {
-      _craftItem = _x;
-      _craftQty = 1;
-      if (typeName _x == "ARRAY") then {
-        _craftItem = _x select 0;
-        _craftQty = _x select 1;
-      };
-      for "_i" from 1 to _craftQty do {
-        player addMagazine _craftItem;
-      };
+        _craftItem = _x;
+        _craftQty = 1;
+        if (typeName _x == "ARRAY") then {
+            _craftItem = _x select 0;
+            _craftQty = _x select 1;
+        };
+        for "_i" from 1 to _craftQty do {
+            _craftItem call EPOCH_fnc_addItemOverflow;
+        };
     }forEach _recipe;
 
     _dt = [format["<t size='0.8' shadow='0' color='#99ffffff'>%1 part on %2</t>","Removed",_objClass call EPOCH_itemDisplayName], 0, 1, 5, 2, 0, 1] spawn bis_fnc_dynamictext;

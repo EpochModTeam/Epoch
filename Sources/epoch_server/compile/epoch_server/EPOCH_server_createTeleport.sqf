@@ -17,6 +17,14 @@ for "_i" from 5 to 8 do {
 	_debug1 setDir 90;
 };
 
+// spawn lights
+{
+	_lightLocation = _debug modelToWorld _x;
+	_light = createVehicle["Land_PortableLight_double_F", _lightLocation, [], 0, "CAN_COLLIDE"];
+	_light setDir ([_debugLocation,_lightLocation] call BIS_fnc_dirTo);
+	_light setpos _lightLocation;
+} forEach [[-16.623,-8.50195,-10.5417],[15.0352,-9.08594,-10.5417]];
+
 _config = configFile >> "CfgEpoch";
 
 // spawn area props
