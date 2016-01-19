@@ -21,6 +21,7 @@
 [Changed] Crafting Hesco barrier now require 3x Burlap.
 [Changed] Crafting wood and metal spike traps now require 2x Sticks.
 [Changed] Change all publicVariableServer calls to use remoteExec calls for better performance.
+[Fixed] Male(Female) characters lose vest items after equipping opposite sex's vest.
 [Fixed] Secure storage locking mechanism improvments should prevent any unwanted intrusions.
 [Fixed] Reworked login to prevent getting stuck at "waiting for inventory".
 [Fixed] Prevented death just after revive due still having high blood pressure.
@@ -35,7 +36,7 @@
 [Added] telePos array can now use world position for tele pads if 5th array element is true.
 [Added] Setting to control random magazine ammo counts in loot spawner. CfgEpochClient -> randomizeMagazineAmmoCount (default: true)
 [Added] Debug box now dynamically spawns with flood lights to help players see inside the box at night.
-[Added] CUP terrain pack support added:
+[Added-WIP] CUP terrain pack support added:
 - Sahrani
 - Southern Sahrani
 - United Sahrani
@@ -51,12 +52,13 @@
 - Bukovina
 - Bystrica
 - Takistan Mountains
-[Changed] Removed support for Aia terrain pack in favor of CUP terrain pack.
+[Changed] Removed support for AIA terrain pack in favor of CUP terrain pack.
 [Changed] Empty fuel barrel added to large trash and vehicle loot tables.
 [Changed] Earthquakes with mineral veins spawn chances increased with less players.
 [Changed] Driver or passengers of a driverless can now control vehicle locks. Also only the owner can control locks from outside of a occupied vehicle.
 [Changed] Commented out Halloween masks from loot tables.
 [Changed] Player positions in database now use Epoch precision position functions.
 [Updated] New Battleye remoteExec.txt for added remoteExec calls.
+[Fixed] Static propPos campfires not working on Takistan due to disabled simulation.
 [Fixed] When killed instead of saving blank array delete (object,trader,vehicle) data from database.
 [Info] Removed old .bikey and added new one for 0370.

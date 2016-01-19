@@ -87,9 +87,6 @@ if (typename _this == "ARRAY") then {
 			_server_vars = _arr select 3;
 			_vars = _arr select 4;
 
-			diag_log format["DEBUG (Load Player) _worldspace 1: %1", _worldspace];
-			diag_log format["DEBUG (Load Player) _location 1: %1", _location];
-
 			_plyrGroup = _arr select 10;
 			_canBeRevived = _arr select 11;
 
@@ -255,7 +252,6 @@ if (typename _this == "ARRAY") then {
 						_newPlyr linkItem _x;
 					};
 				} forEach _linkedItems;
-				diag_log format["DEBUG (Load Player) _linkedItems: %1", _linkedItems];
 
 				// add items to containers
 				[_newPlyr, _itemsInContainers] call _fnc_addItemToX;
@@ -265,7 +261,6 @@ if (typename _this == "ARRAY") then {
 
 				// Add magazines
 				{_newPlyr addMagazine _x} forEach _normalMagazines;
-				diag_log format["DEBUG (Load Player) _normalMagazines 1: %1", _normalMagazines];
 				// Load inventory + defaults END
 
 				// Final Push
