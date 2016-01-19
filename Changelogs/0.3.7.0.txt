@@ -22,7 +22,7 @@
 [Changed] Crafting wood and metal spike traps now require 2x Sticks.
 [Changed] Change all publicVariableServer calls to use remoteExec calls for better performance.
 [Fixed] Male(Female) characters lose vest items after equipping opposite sex's vest.
-[Fixed] Secure storage locking mechanism improvments should prevent any unwanted intrusions.
+[Fixed] Secure storage locking mechanism improvements should prevent any unwanted intrusions.
 [Fixed] Reworked login to prevent getting stuck at "waiting for inventory".
 [Fixed] Prevented death just after revive due still having high blood pressure.
 [Fixed] Incorrectly being able to sell/buy items from a dead trader.
@@ -59,6 +59,7 @@
 [Changed] Commented out Halloween masks from loot tables.
 [Changed] Player positions in database now use Epoch precision position functions.
 [Updated] New Battleye remoteExec.txt for added remoteExec calls.
+[Fixed] Admin tools map AI markers not working. 
 [Fixed] Static propPos campfires not working on Takistan due to disabled simulation.
 [Fixed] When killed instead of saving blank array delete (object,trader,vehicle) data from database.
 [Info] Removed old .bikey and added new one for 0370.

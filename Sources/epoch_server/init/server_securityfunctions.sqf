@@ -1373,13 +1373,12 @@ _skn_admincode = compileFinal ("
 			if ("+_skn_tg_map_ai+") then {
 				_size = (0.5/ctrlMapScale _display) max 20;
 				{
-					if (isPlayer _x) then {
-						_display drawIcon [
-							getText (configFile >> 'CfgVehicles' >> typeOf _x >> 'Icon'), _x call _getDmgColor, visiblePosition _x, _size, _size, getDir _x,
-							getText (configFile >> 'CfgVehicles' >> typeOf _x >> 'displayName')
-						];
-					};
-				}forEach allUnits-playableUnits;
+					_agent = agent _x;
+					_display drawIcon [
+						getText (configFile >> 'CfgVehicles' >> typeOf _agent >> 'Icon'), _agent call _getDmgColor, visiblePosition _agent, _size, _size, getDir _agent,
+						getText (configFile >> 'CfgVehicles' >> typeOf _agent >> 'displayName')
+					];
+				}forEach agents;
 			};
 			if ("+_skn_tg_map_basebuilding+") then {
 
