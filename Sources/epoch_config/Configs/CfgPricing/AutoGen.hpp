@@ -82,9 +82,6 @@ class ItemCopperBar {
 class ItemTinBar { 
     price = 1;
 };
-class ItemPlywood { 
-    price = 10;
-};
 class ItemPlywoodPack { 
     price = 100;
 };

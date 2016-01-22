@@ -192,16 +192,24 @@ class CfgCrafting
 	class EnergyPack : Item
 	{
 		usedIn[] = { "EnergyPackLg" };
-		nearby[] = {{"Fire", "", "fire", {1,{"ALL"}}, 3, 1, 1, 0}};
-		recipe[] = { { "CircuitParts", 1 }, { "clean_water_epoch", 1 } };
+		nearby[] = {{"Fire", "", "fire", {1,{"ALL"}}, 3, 1, 1, 0},{"Workbench", "", "workbench", {1,{"WorkBench_EPOCH"}}, 3, 1, 0, 1}};
+		recipe[] = {  { "CircuitParts", 1 }, { "ItemCopperBar", 1 }, { "clean_water_epoch", 1 } };
 		previewPosition[] = {0.8,1,0.29};
 		previewScale = 1.75;
 		previewVector = 2.8;
 	};
 	class EnergyPackLg : Item
 	{
-		nearby[] = {{"Fire", "", "fire", {1,{"ALL"}}, 3, 1, 1, 0}};
-		recipe[] = { { "EnergyPack", 3 }, { "CircuitParts", 1 } };
+		nearby[] = {{"Workbench", "", "workbench", {1,{"WorkBench_EPOCH"}}, 3, 1, 0, 1}};
+		recipe[] = { { "EnergyPack", 3 }, { "ItemGoldBar", 1 }, { "CircuitParts", 1 } };
+		previewPosition[] = {0.8,1,0.29};
+		previewScale = 1.75;
+		previewVector = 2.8;
+	};
+	class ItemBattery : Item
+	{
+		nearby[] = {{"Workbench", "", "workbench", {1,{"WorkBench_EPOCH"}}, 3, 1, 0, 1}};
+		recipe[] = { { "EnergyPackLg", 3 }, { "CircuitParts", 1 } };
 		previewPosition[] = {0.8,1,0.29};
 		previewScale = 1.75;
 		previewVector = 2.8;
@@ -233,6 +241,13 @@ class CfgCrafting
 		previewPosition[] = {0.8,1,0.25};
 		previewScale = 0.4;
 		previewVector = 1;
+	};
+	class JackKit : Part
+	{
+		usedIn[] = { "KitSpikeTrap" , "KitMetalTrap"  };
+		previewPosition[] = {0.796267,1,0.322762};
+		previewScale = 0.9;
+		previewVector = 1.4;
 	};
 	class ItemKiloHemp : Part
 	{
@@ -278,7 +293,7 @@ class CfgCrafting
 
 	class WoodLog_EPOCH : Part
 	{
-		usedIn[] = { "PartPlankPack", "ItemStick" };
+		usedIn[] = { "PartPlankPack", "ItemStick", "ItemPlywoodPack" };
 		previewPosition[] = {0.800064,1,0.25};
 		previewScale = 0.3;
 	};
@@ -675,6 +690,17 @@ class CfgCrafting
 		previewVector = 1;
 		craftTime = 2;
 	};
+	class ItemPlywoodPack : Item
+	{
+		usedIn[] = {};
+		recipe[] = {{"WoodLog_EPOCH",3}};
+		previewPosition[] = {0.797837,1,0.288258};
+		previewScale = 0.2;
+		previewVector = 1;
+		craftTime = 2;
+	};
+
+
 	class KitFirePlace : Kit
 	{
 		recipe[] = {{"ItemRock",2},{"ItemStick",1}};
@@ -686,9 +712,10 @@ class CfgCrafting
 
 
 
+
 	class KitSpikeTrap : Kit
 	{
-		recipe[] = {{"PartPlankPack",4},{"ItemStick",2}};
+		recipe[] = {{"PartPlankPack",4},{"ItemStick",1},{"JackKit",1}};
 		model = "\x\addons\a3_epoch_assets_1\models\supply_crate.p3d";
 		nearby[] = {{"Workbench", "", "workbench", {1,{"WorkBench_EPOCH"}}, 3, 1, 0, 1}};
 		previewPosition[] = {0.797675,1,0.398882};
@@ -697,7 +724,7 @@ class CfgCrafting
 	};
 	class KitMetalTrap : Kit
 	{
-		recipe[] = {{"PartPlankPack",4}, {"ItemStick",2}, {"ItemScraps",2}};
+		recipe[] = {{"PartPlankPack",4},{"ItemStick",1},{"ItemScraps",2},{"JackKit",1}};
 		model = "\x\addons\a3_epoch_assets_1\models\supply_crate.p3d";
 		nearby[] = {{"Workbench", "", "workbench", {1,{"WorkBench_EPOCH"}}, 3, 1, 0, 1}};
 		previewPosition[] = {0.797675,1,0.398882};

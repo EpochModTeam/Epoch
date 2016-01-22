@@ -135,8 +135,6 @@ class CfgMagazines
 		picture = "\x\addons\a3_epoch_assets_1\pictures\equip_kilohemp_CA.paa";
 		type = 256;
 		mass = 1;
-
-
 	};
 
 	class ItemSodaRbull : 1Rnd_Soda{

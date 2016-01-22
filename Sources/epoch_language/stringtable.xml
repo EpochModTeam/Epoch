@@ -25,8 +25,8 @@
             <Spanish>Server restart in %1 minutes.</Spanish>
         </Key>
         <Key ID="str_epoch_ItemHotwire_displayName">
-            <Original>Vehicle Hotwire Kit</Original>
-            <English>Vehicle Hotwire Kit</English>
+            <Original>Hotwire Kit</Original>
+            <English>Hotwire Kit</English>
             <German>Vehicle Hotwire Kit</German>
             <Czech>Vehicle Hotwire Kit</Czech>
             <French>Vehicle Hotwire Kit</French>
@@ -37,8 +37,8 @@
             <Spanish>Vehicle Hotwire Kit</Spanish>
         </Key>
         <Key ID="str_epoch_ItemHotwire_descriptionShort">
-            <Original>Used to unlock vehicles.</Original>
-            <English>Used to unlock vehicles.</English>
+            <Original>Used to hack open door locks.</Original>
+            <English>Used to hack open door locks.</English>
             <German>Used to unlock vehicles.</German>
             <Czech>Used to unlock vehicles.</Czech>
             <French>Used to unlock vehicles.</French>
@@ -541,8 +541,8 @@
             <Spanish>Plywood Sheets</Spanish>
         </Key>
         <Key ID="str_epoch_ItemPlywoodPack_displayName">
-            <Original>Plywood Pack</Original>
-            <English>Plywood Pack</English>
+            <Original>Plywood</Original>
+            <English>Plywood</English>
             <German>Plywood Pack</German>
             <Czech>Plywood Pack</Czech>
             <French>Plywood Pack</French>
