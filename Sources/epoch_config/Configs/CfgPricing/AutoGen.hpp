@@ -1,3 +1,12 @@
+class ItemEmptyTin { 
+    price = 1;
+};
+class ItemSodaEmpty { 
+    price = 1;
+};
+class ItemSodaAlpineDude { 
+    price = 5;
+};
 class ItemHotwire { 
     price = 15;
 };
@@ -72,6 +81,9 @@ class ItemBurlap {
 };
 class ItemBriefcaseE { 
     price = 10;
+};
+class ItemBriefcaseGold100oz { 
+    price = 10000;
 };
 class ItemAluminumBar { 
     price = 10;

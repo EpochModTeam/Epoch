@@ -27,7 +27,10 @@ class CfgPatches {
 
 // inport loot tables
 #include "configs\Loots.h"
+// security checks
 #include "configs\security\security_checks.h"
+// props template
+#include "configs\templates\CfgPropTemplate.h"
 
 // import settings
 class CfgEpochServer
@@ -52,7 +55,9 @@ class CfgEpoch
 	#include "configs\maps\stratis.h"
 	#include "configs\maps\altis.h"
 	#include "configs\maps\chernarus.h"
+	#include "configs\maps\chernarus_summer.h"
 	#include "configs\maps\australia.h"
 	#include "configs\maps\takistan.h"
+	#include "configs\maps\zargabad.h"
 	#include "configs\maps\esseker.h"
 };

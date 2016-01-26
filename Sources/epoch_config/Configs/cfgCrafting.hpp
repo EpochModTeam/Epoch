@@ -206,14 +206,41 @@ class CfgCrafting
 		previewScale = 1.75;
 		previewVector = 2.8;
 	};
-	class ItemBattery : Item
+
+
+	class ItemSodaEmpty : Part
 	{
-		nearby[] = {{"Workbench", "", "workbench", {1,{"WorkBench_EPOCH"}}, 3, 1, 0, 1}};
-		recipe[] = { { "EnergyPackLg", 3 }, { "CircuitParts", 1 } };
-		previewPosition[] = {0.8,1,0.29};
-		previewScale = 1.75;
+		usedIn[] = { "ItemAluminumBar" };
+		previewPosition[] = {0.799961,1,0.27};
+		previewScale = 1.25;
+	};
+	class ItemAluminumBar : Item
+	{
+		usedIn[] = {};
+		nearby[] = {{"Fire", "", "fire", {1,{"ALL"}}, 3, 1, 1, 0}};
+		recipe[] = { { "ItemSodaEmpty", 6 }, {"water_epoch", 1}};
+		previewPosition[] = {0.797144,1,0.309158};
+		previewScale = 1;
 		previewVector = 2.8;
 	};
+
+	class ItemEmptyTin : Part
+	{
+		usedIn[] = { "ItemTinBar" };
+		previewPosition[] = {0.799961,1,0.27};
+		previewScale = 1.25;
+	};
+	class ItemTinBar : Item
+	{
+		usedIn[] = {};
+		nearby[] = {{"Fire", "", "fire", {1,{"ALL"}}, 3, 1, 1, 0}};
+		recipe[] = { { "ItemEmptyTin", 6 }, {"water_epoch", 1}};
+		previewPosition[] = {0.797144,1,0.309158};
+		previewScale = 1;
+		previewVector = 2.8;
+	};
+
+
 
 	class PartOre : Part
 	{
@@ -221,6 +248,19 @@ class CfgCrafting
 		previewPosition[] = {0.799961,1,0.27};
 		previewScale = 1.25;
 	};
+	class PartOreSilver : Part
+	{
+		usedIn[] = { "ItemSilverBar" };
+		previewPosition[] = {0.799961,1,0.27};
+		previewScale = 1.25;
+	};
+	class PartOreGold : Part
+	{
+		usedIn[] = { "ItemGoldBar" };
+		previewPosition[] = {0.799961,1,0.27};
+		previewScale = 1.25;
+	};
+
 	class Pelt_EPOCH : Part
 	{
 		usedIn[] = { "KitTiPi" };
@@ -259,6 +299,7 @@ class CfgCrafting
 	class ItemRope : Item
 	{
 		usedIn[] = { "WoodClub", "MeleeMaul", "CrudeHatchet" };
+		nearby[] = {{"Workbench", "", "workbench", {1,{"WorkBench_EPOCH"}}, 3, 1, 0, 1}};
 		recipe[] = { { "ItemKiloHemp", 1 } };
 		previewPosition[] = {0.8,1,0.35};
 		previewScale = 4;
@@ -266,6 +307,7 @@ class CfgCrafting
 	class ItemBurlap : Item
 	{
 		usedIn[] = { "KitHesco3" };
+		nearby[] = {{"Workbench", "", "workbench", {1,{"WorkBench_EPOCH"}}, 3, 1, 0, 1}};
 		recipe[] = { { "ItemKiloHemp", 2 } };
 		previewPosition[] = {0.8,1,0.35};
 		previewScale = 4;
@@ -663,7 +705,7 @@ class CfgCrafting
 	};
 
 	// recipes
-	class CSGAS : Kit
+	class CSGAS : Item
 	{
 		recipe[] = { "ItemMixOil", "jerrycan_epoch" };
 		model = "\x\addons\a3_epoch_assets_2\jerrycan.p3d";
@@ -671,7 +713,7 @@ class CfgCrafting
 		previewScale = 0.6;
 		previewVector = 4.9;
 	};
-	class ItemCorrugatedLg : Kit
+	class ItemCorrugatedLg : Item
 	{
 		usedIn[] = { "VehicleRepairLg", "KitPlotPole", "KitTankTrap", "KitHesco3" };
 		recipe[] = { { "ItemCorrugated", 3 } };
@@ -681,7 +723,7 @@ class CfgCrafting
 		previewVector = 0.5;
 	};
 
-	class PartPlankPack : Kit
+	class PartPlankPack : Item
 	{
 		usedIn[] = {"KitStudWall","KitWoodFloor","KitWoodFoundation","KitWoodStairs","KitWoodRamp","KitWoodLadder","KitWoodTower","KitTiPi","KitWorkbench","KitSpikeTrap","KitMetalTrap"};
 		recipe[] = {{"WoodLog_EPOCH",2}};
@@ -862,7 +904,7 @@ class CfgCrafting
 	};
 	class KitPlotPole : Kit
 	{
-		recipe[] = {{"ItemCorrugatedLg",2}, {"CircuitParts",2} };
+		recipe[] = {{ "ItemCables", 1 }, { "ItemBattery", 1 }, {"ItemCorrugatedLg",2}, {"CircuitParts",2} };
 		nearby[] = {{"Workbench", "", "workbench", {1,{"WorkBench_EPOCH"}}, 3, 1, 0, 1}};
 		model = "\x\addons\a3_epoch_assets\models\jammer.p3d";
 		previewPosition[] = {0.801378,1,0.464834};
@@ -878,16 +920,74 @@ class CfgCrafting
 		previewVector = 3.3;
 
 	};
-	class ItemCables : Part
+	class ItemCables : Item
 	{
-		usedIn[] = { "KitSolarGen" };
+		usedIn[] = { "KitSolarGen", "KitPlotPole", "ItemCopperBar" };
+		nearby[] = {{"Workbench", "", "workbench", {1,{"WorkBench_EPOCH"}}, 3, 1, 0, 1}};
+		// TODO add rubber/plasic
+		recipe[] = { { "ItemCopperBar", 1 } };
 		previewPosition[] = {0.802374,1,0.26};
 		previewScale = 0.3;
 		previewVector = 2.8;
 	};
-	class ItemBattery : Part
+
+	class ItemCopperBar : Item
 	{
-		usedIn[] = { "KitSolarGen" };
+		usedIn[] = {"ItemCables"};
+		nearby[] = {{"Fire", "", "fire", {1,{"ALL"}}, 3, 1, 1, 0}};
+		recipe[] = { { "ItemCables", 1 }, {"water_epoch", 1}};
+		previewPosition[] = {0.797144,1,0.309158};
+		previewScale = 1;
+		previewVector = 2.8;
+	};
+
+	class ItemGoldBar : Item
+	{
+		usedIn[] = { "ItemGoldBar10oz" };
+		nearby[] = {{"Fire", "", "fire", {1,{"ALL"}}, 3, 1, 1, 0}};
+		recipe[] = { { "PartOreGold", 2 }, {"water_epoch", 1} };
+		previewPosition[] = {0.797144,1,0.309158};
+		previewScale = 1;
+		previewVector = 2.8;
+	};
+	class ItemSilverBar : Item
+	{
+		usedIn[] = {};
+		nearby[] = {{"Fire", "", "fire", {1,{"ALL"}}, 3, 1, 1, 0}};
+		recipe[] = { { "PartOreSilver", 2 }, {"water_epoch", 1} };
+		previewPosition[] = {0.797144,1,0.309158};
+		previewScale = 1;
+		previewVector = 2.8;
+	};
+
+	class ItemGoldBar10oz : Item
+	{
+		usedIn[] = {"ItemBriefcaseGold100oz"};
+		nearby[] = {{"Fire", "", "fire", {1,{"ALL"}}, 3, 1, 1, 0}};
+		recipe[] = { { "ItemGoldBar", 10 }, {"water_epoch", 1}};
+		previewPosition[] = {0.797144,1,0.309158};
+		previewScale = 1;
+		previewVector = 2.8;
+	};
+
+	class ItemBriefcaseGold100oz : Item
+	{
+		usedIn[] = {};
+		nearby[] = {};
+		recipe[] = { { "ItemGoldBar10oz", 10 }, {"ItemBriefcaseE", 1}};
+		previewPosition[] = {0.797144,1,0.309158};
+		previewScale = 1;
+		previewVector = 2.8;
+	};
+
+
+
+
+	class ItemBattery : Item
+	{
+		usedIn[] = { "KitSolarGen", "KitPlotPole" };
+		nearby[] = {{"Workbench", "", "workbench", {1,{"WorkBench_EPOCH"}}, 3, 1, 0, 1}};
+		recipe[] = { { "EnergyPackLg", 3 }, { "CircuitParts", 1 } };
 		previewPosition[] = {0.802374,1,0.276733};
 		previewScale = 0.4;
 	};

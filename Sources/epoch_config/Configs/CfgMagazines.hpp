@@ -18,9 +18,6 @@ class CfgMagazines
 	class Default;
 	class CA_Magazine;
 
-	#include "CfgMagazines\Custom.hpp"
-	// 037 custom end
-
 	class 1Rnd_Soda: CA_Magazine
 	{
 		picture = "";
@@ -47,6 +44,10 @@ class CfgMagazines
 		//Temp,Hunger,Thirst,Energy,Soiled,Immunity,Toxicity,Stamina,Crypto,BloodP,Karma,Alcohol,Radiation
 		interactAttributes[] = {0,600,0,0,0,0,0,0,0,0};
 	};
+
+	// 037 custom auto generated start
+	#include "CfgMagazines\Custom.hpp"
+	// 037 custom auto generated end
 
 	class FAK : CA_Magazine
 	{
@@ -145,6 +146,7 @@ class CfgMagazines
 		mass = 1;
 		//Temp,Hunger,Thirst,Energy,Soiled,Immunity,Toxicity,Stamina,Crypto,BloodP,Karma,Alcohol,Radiation
 		interactAttributes[] = {0,0,1000,0,0,0,0,100,0,0};
+		interactReturnOnUse = "ItemSodaEmpty";
 	};
 	class ItemSodaOrangeSherbet : 1Rnd_Soda{
 		displayName = "Orange Sherbet";
@@ -154,6 +156,7 @@ class CfgMagazines
 		mass = 1;
 		//Temp,Hunger,Thirst,Energy,Soiled,Immunity,Toxicity,Stamina,Crypto,BloodP,Karma,Alcohol,Radiation
 		interactAttributes[] = {0,0,800,0,0,0,0,75,0,0};
+		interactReturnOnUse = "ItemSodaEmpty";
 	};
 
 	class ItemSodaPurple : 1Rnd_Soda{
@@ -164,6 +167,7 @@ class CfgMagazines
 		mass = 1;
 		//Temp,Hunger,Thirst,Energy,Soiled,Immunity,Toxicity,Stamina,Crypto,BloodP,Karma,Alcohol,Radiation
 		interactAttributes[] = { 0, 0, 800, 0, 0, 0, 0, 75, 0, 0 };
+		interactReturnOnUse = "ItemSodaEmpty";
 	};
 	class ItemSodaMocha : 1Rnd_Soda{
 		displayName = "Mocha Cola";
@@ -173,6 +177,7 @@ class CfgMagazines
 		mass = 1;
 		//Temp,Hunger,Thirst,Energy,Soiled,Immunity,Toxicity,Stamina,Crypto,BloodP,Karma,Alcohol,Radiation
 		interactAttributes[] = { 0, 0, 650, 0, 0, 0, 0, 150, 0, 0 };
+		interactReturnOnUse = "ItemSodaEmpty";
 	};
 	class ItemSodaBurst : 1Rnd_Soda{
 		displayName = "Burst Koke";
@@ -182,6 +187,7 @@ class CfgMagazines
 		mass = 1;
 		//Temp,Hunger,Thirst,Energy,Soiled,Immunity,Toxicity,Stamina,Crypto,BloodP,Karma,Alcohol,Radiation
 		interactAttributes[] = { 0, 0, 800, 0, 0, 0, 0, 75, 0, 0 };
+		interactReturnOnUse = "ItemSodaEmpty";
 	};
 
 
@@ -254,6 +260,7 @@ class CfgMagazines
 		descriptionShort = "Bio Meat: A very good source of nutrition, and a very high chance of infection. Eat at own risk.";
 		//Temp,Hunger,Thirst,Energy,Soiled,Immunity,Toxicity,Stamina,Crypto,BloodP,Karma,Alcohol,Radiation
 		interactAttributes[] = {0,1000,0,0,0,0,7,0,0,0};
+		interactReturnOnUse = "ItemEmptyTin";
 	};
 
 	class FoodMeeps : 1Rnd_Food{
@@ -282,6 +289,7 @@ class CfgMagazines
 		descriptionShort = "Stuck walkin' grab a Walk N' Sons Soda";
 		//Temp,Hunger,Thirst,Energy,Soiled,Immunity,Toxicity,Stamina,Crypto,BloodP,Karma,Alcohol,Radiation
 		interactAttributes[] = {0,0,1200,0,0,0,0,150,0,0};
+		interactReturnOnUse = "ItemSodaEmpty";
 	};
 
 	class ItemTopaz : CA_Magazine {

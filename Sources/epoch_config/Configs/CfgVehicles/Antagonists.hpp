@@ -371,6 +371,130 @@ class Epoch_Cloak_F : Epoch_Char_base_F
 	modelSides[] = {6};
 	armor = 10;
 	armorStructural = 20;
+	class HitPoints
+	{
+		class HitFace
+		{
+			armor = 1000;
+			material = -1;
+			name = "face_hub";
+			passThrough = 0.1;
+			radius = 0.08;
+			explosionShielding = 0.1;
+			minimalHit = 0.01;
+		};
+		class HitNeck: HitFace
+		{
+			armor = 10;
+			material = -1;
+			name = "neck";
+			passThrough = 0.1;
+			radius = 0.1;
+			explosionShielding = 0.5;
+			minimalHit = 0.01;
+		};
+		class HitHead: HitNeck
+		{
+			armor = 10;
+			material = -1;
+			name = "head";
+			passThrough = 0.1;
+			radius = 0.2;
+			explosionShielding = 0.5;
+			minimalHit = 0.01;
+			depends = "HitFace max HitNeck";
+		};
+		class HitPelvis
+		{
+			armor = 10;
+			material = -1;
+			name = "pelvis";
+			passThrough = 0.1;
+			radius = 0.2;
+			explosionShielding = 1;
+			visual = "injury_body";
+			minimalHit = 0.01;
+		};
+		class HitAbdomen: HitPelvis
+		{
+			armor = 10;
+			material = -1;
+			name = "spine1";
+			passThrough = 0.1;
+			radius = 0.15;
+			explosionShielding = 1;
+			visual = "injury_body";
+			minimalHit = 0.01;
+		};
+		class HitDiaphragm: HitAbdomen
+		{
+			armor = 10;
+			material = -1;
+			name = "spine2";
+			passThrough = 0.1;
+			radius = 0.15;
+			explosionShielding = 6;
+			visual = "injury_body";
+			minimalHit = 0.01;
+		};
+		class HitChest: HitDiaphragm
+		{
+			armor = 10;
+			material = -1;
+			name = "spine3";
+			passThrough = 0.1;
+			radius = 0.15;
+			explosionShielding = 6;
+			visual = "injury_body";
+			minimalHit = 0.01;
+		};
+		class HitBody: HitChest
+		{
+			armor = 10;
+			material = -1;
+			name = "body";
+			passThrough = 0.1;
+			radius = 0.2;
+			explosionShielding = 6;
+			visual = "injury_body";
+			minimalHit = 0.01;
+			depends = "HitPelvis max HitAbdomen max HitDiaphragm max HitChest";
+		};
+		class HitArms
+		{
+			armor = 10;
+			material = -1;
+			name = "arms";
+			passThrough = 1;
+			radius = 0.1;
+			explosionShielding = 1;
+			visual = "injury_hands";
+			minimalHit = 0.01;
+		};
+		class HitHands: HitArms
+		{
+			armor = 10;
+			material = -1;
+			name = "hands";
+			passThrough = 1;
+			radius = 0.1;
+			explosionShielding = 1;
+			visual = "injury_hands";
+			minimalHit = 0.01;
+			depends = "HitArms";
+		};
+		class HitLegs
+		{
+			armor = 10;
+			material = -1;
+			name = "legs";
+			passThrough = 1;
+			radius = 0.12;
+			explosionShielding = 1;
+			visual = "injury_legs";
+			minimalHit = 0.01;
+		};
+	};
 };
 class Epoch_Sapper_F: Epoch_Sapper_base_F
 {
@@ -605,7 +729,7 @@ class Epoch_SapperB_F : Epoch_Sapper_base_F
 		};
 		class HitChest: HitDiaphragm
 		{
-			armor = 3;
+			armor = 9;
 			material = -1;
 			name = "spine3";
 			passThrough = 0.1;

@@ -1,8 +1,16 @@
 **Client**
+[Added] Drinking a Soda now returns a Empty Soda Can (ItemSodaEmpty).
+[Added] Eating a can of food now returns a Empty Tin Can (ItemEmptyTin).
 [Added] Repack magazines feature. Simply select a magazine and press the "Repack" button.
 [Added] 55 Gallon (210 liters) Fuel Barrel that can be used to refill/siphon vehicles. (Full - ItemBarrelF,Empty - ItemBarrelE).
-[Added] Ability to siphon fuel from other fuel sources like gas stations and gas tanks.
-[Added] Crafting Burlap (ItemBurlap) from 2x Hemp (ItemHemp).
+[Added] Ability to siphon fuel from other fuel sources like gas stations and gas tanks (transportFuel > 0).
+[Added] Crafting Burlap (ItemBurlap) from 2x Hemp (ItemKiloHemp) while at a workbench.
+[Added] Crafting of Plywood sheets (ItemPlywoodPack) from 3x Wood Log (WoodLog_EPOCH).
+[Added] Crafting of Aluminum Bars (ItemAluminumBar) from 6x Empty Soda Cans (ItemSodaEmpty) and one jar of water (water_epoch). Also requires a fire nearby.
+[Added] Crafting of Tin Bars (ItemTinBar) from 6x Empty Soda Cans (ItemEmptyTin) and one jar of water (water_epoch). Also requires a fire nearby.
+[Added] Copper Bars (ItemCopperBar) that can be crafted from cables (ItemCables) nearby a fire. Cables can also be made from Copper Bars at a workbench.
+[Added] Briefcase Full (ItemBriefcaseGold100oz) crafted from ten 10oz Gold bars and a Empty Briefcase (ItemBriefcaseE).
+[Added] Crafting of Bars (ItemGoldBar and ItemSilverBar) from Gold (PartOreGold) and Silver (PartOreSilver) Ores.
 [ADDED-WIP] Pack/unpack empty backpacks into carryable magazine items.
 [ADDED-WIP] Hotwire Kit (ItemHotwire).
 [ADDED-WIP] Key Makers Kit (ItemKeyKit).
@@ -10,17 +18,14 @@
 [ADDED-WIP] Metal Pipes (ItemPipe).
 [ADDED-WIP] Documents (Trash,Books,Vehicle Upgrades) (ItemDoc1-8, ItemVehDoc1-4).
 [ADDED-WIP] Light Bulb (ItemBulb).
-[ADDED-WIP] Briefcase (Empty - ItemBriefcaseE).
-[ADDED-WIP] Aluminum Bars (ItemAluminumBar).
-[ADDED-WIP] Copper Bars (ItemCopperBar).
-[ADDED-WIP] Tin Bars (ItemTinBar).
-[ADDED-WIP] Plywood sheets in small and large stacks (ItemPlywood,ItemPlywoodPack).
-[Changed] Debug monitor now shows all custom stats dynamically based on config.
+[Changed] Upgrading wood Stud wall and Tower to Plywood covered versions requires Plywood (ItemPlywoodPack).
+[Changed] Debug monitor now shows all custom stats dynamically based on 'customVarsDefaults' config.
 [Changed] Increased angle that the player is able to aim up.
 [Changed] Drinking Alcohol increases the new "Alcohol" stat instead of directly effecting blood pressure.
 [Changed] Crafting Hesco barrier now require 3x Burlap.
-[Changed] Crafting wood and metal spike traps now require 2x Sticks.
+[Changed] Crafting wood and metal spike traps now also require Sticks and a Hydraulic Jack.
 [Changed] Change all publicVariableServer calls to use remoteExec calls for better performance.
+[Fixed] Previous patch had incorrectly reduced armor values of the Cultist.
 [Fixed] Male(Female) characters lose vest items after equipping opposite sex's vest.
 [Fixed] Secure storage locking mechanism improvements should prevent any unwanted intrusions.
 [Fixed] Reworked login to prevent getting stuck at "waiting for inventory".
@@ -33,7 +38,7 @@
 
 **Server**
 [Added] Newly world spawned vehicles now have randomized damage.
-[Added] telePos array can now use world position for tele pads if 5th array element is true.
+[Added] if 5th array element is true 'telePos' config array can now use world position for teleport pads location.
 [Added] Setting to control random magazine ammo counts in loot spawner. CfgEpochClient -> randomizeMagazineAmmoCount (default: true)
 [Added] Debug box now dynamically spawns with flood lights to help players see inside the box at night.
 [Added-WIP] CUP terrain pack support added:
@@ -59,7 +64,7 @@
 [Changed] Commented out Halloween masks from loot tables.
 [Changed] Player positions in database now use Epoch precision position functions.
 [Updated] New Battleye remoteExec.txt for added remoteExec calls.
-[Fixed] Admin tools map AI markers not working. 
+[Fixed] Admin tools map AI markers not working.
 [Fixed] Static propPos campfires not working on Takistan due to disabled simulation.
 [Fixed] When killed instead of saving blank array delete (object,trader,vehicle) data from database.
 [Info] Removed old .bikey and added new one for 0370.

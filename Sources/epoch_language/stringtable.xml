@@ -433,8 +433,8 @@
             <Spanish>Empty Briefcase</Spanish>
         </Key>
         <Key ID="str_epoch_ItemBriefcaseE_descriptionShort">
-            <Original>A rectangular container, for carrying books and papers.</Original>
-            <English>A rectangular container, for carrying books and papers.</English>
+            <Original>A rectangular container, good for carrying books and papers.</Original>
+            <English>A rectangular container, good for carrying books and papers.</English>
             <German>A rectangular container, for carrying books and papers.</German>
             <Czech>A rectangular container, for carrying books and papers.</Czech>
             <French>A rectangular container, for carrying books and papers.</French>
@@ -1031,6 +1031,102 @@
             <Portuguese>Packed Backpack</Portuguese>
             <Russian>Packed Backpack</Russian>
             <Spanish>Packed Backpack</Spanish>
+        </Key>
+        <Key ID="str_epoch_ItemSodaAlpineDude_displayName">
+            <Original>Alpine Dude Soda</Original>
+            <English>Alpine Dude Soda</English>
+            <German>Alpine Dude Soda</German>
+            <Czech>Alpine Dude Soda</Czech>
+            <French>Alpine Dude Soda</French>
+            <Italian>Alpine Dude Soda</Italian>
+            <Polish>Alpine Dude Soda</Polish>
+            <Portuguese>Alpine Dude Soda</Portuguese>
+            <Russian>Alpine Dude Soda</Russian>
+            <Spanish>Alpine Dude Soda</Spanish>
+        </Key>
+        <Key ID="str_epoch_ItemSodaAlpineDude_descriptionShort">
+            <Original>Do the dude!</Original>
+            <English>Do the dude!</English>
+            <German>Do the dude!</German>
+            <Czech>Do the dude!</Czech>
+            <French>Do the dude!</French>
+            <Italian>Do the dude!</Italian>
+            <Polish>Do the dude!</Polish>
+            <Portuguese>Do the dude!</Portuguese>
+            <Russian>Do the dude!</Russian>
+            <Spanish>Do the dude!</Spanish>
+        </Key>
+        <Key ID="str_epoch_ItemSodaEmpty_displayName">
+            <Original>Empty Soda Can</Original>
+            <English>Empty Soda Can</English>
+            <German>Empty Soda Can</German>
+            <Czech>Empty Soda Can</Czech>
+            <French>Empty Soda Can</French>
+            <Italian>Empty Soda Can</Italian>
+            <Polish>Empty Soda Can</Polish>
+            <Portuguese>Empty Soda Can</Portuguese>
+            <Russian>Empty Soda Can</Russian>
+            <Spanish>Empty Soda Can</Spanish>
+        </Key>
+        <Key ID="str_epoch_ItemSodaEmpty_descriptionShort">
+            <Original>Empty Aluminum Soda Can</Original>
+            <English>Empty Aluminum Soda Can</English>
+            <German>Empty Aluminum Soda Can</German>
+            <Czech>Empty Aluminum Soda Can</Czech>
+            <French>Empty Aluminum Soda Can</French>
+            <Italian>Empty Aluminum Soda Can</Italian>
+            <Polish>Empty Aluminum Soda Can</Polish>
+            <Portuguese>Empty Aluminum Soda Can</Portuguese>
+            <Russian>Empty Aluminum Soda Can</Russian>
+            <Spanish>Empty Aluminum Soda Can</Spanish>
+        </Key>
+        <Key ID="str_epoch_ItemEmptyTin_displayName">
+            <Original>Empty Tin Can</Original>
+            <English>Empty Tin Can</English>
+            <German>Empty Tin Can</German>
+            <Czech>Empty Tin Can</Czech>
+            <French>Empty Tin Can</French>
+            <Italian>Empty Tin Can</Italian>
+            <Polish>Empty Tin Can</Polish>
+            <Portuguese>Empty Tin Can</Portuguese>
+            <Russian>Empty Tin Can</Russian>
+            <Spanish>Empty Tin Can</Spanish>
+        </Key>
+        <Key ID="str_epoch_ItemEmptyTin_descriptionShort">
+            <Original>Empty Tin Can</Original>
+            <English>Empty Tin Can</English>
+            <German>Empty Tin Can</German>
+            <Czech>Empty Tin Can</Czech>
+            <French>Empty Tin Can</French>
+            <Italian>Empty Tin Can</Italian>
+            <Polish>Empty Tin Can</Polish>
+            <Portuguese>Empty Tin Can</Portuguese>
+            <Russian>Empty Tin Can</Russian>
+            <Spanish>Empty Tin Can</Spanish>
+        </Key>
+        <Key ID="str_epoch_ItemBriefcaseGold100oz_displayName">
+            <Original>Full Briefcase (Gold)</Original>
+            <English>Full Briefcase (Gold)</English>
+            <German>Full Briefcase (Gold)</German>
+            <Czech>Full Briefcase (Gold)</Czech>
+            <French>Full Briefcase (Gold)</French>
+            <Italian>Full Briefcase (Gold)</Italian>
+            <Polish>Full Briefcase (Gold)</Polish>
+            <Portuguese>Full Briefcase (Gold)</Portuguese>
+            <Russian>Full Briefcase (Gold)</Russian>
+            <Spanish>Full Briefcase (Gold)</Spanish>
+        </Key>
+        <Key ID="str_epoch_ItemBriefcaseGold100oz_descriptionShort">
+            <Original>Briefcase that contains ten 10oz (100oz) Gold Bars.</Original>
+            <English>Briefcase that contains ten 10oz (100oz) Gold Bars.</English>
+            <German>Briefcase that contains ten 10oz (100oz) Gold Bars.</German>
+            <Czech>Briefcase that contains ten 10oz (100oz) Gold Bars.</Czech>
+            <French>Briefcase that contains ten 10oz (100oz) Gold Bars.</French>
+            <Italian>Briefcase that contains ten 10oz (100oz) Gold Bars.</Italian>
+            <Polish>Briefcase that contains ten 10oz (100oz) Gold Bars.</Polish>
+            <Portuguese>Briefcase that contains ten 10oz (100oz) Gold Bars.</Portuguese>
+            <Russian>Briefcase that contains ten 10oz (100oz) Gold Bars.</Russian>
+            <Spanish>Briefcase that contains ten 10oz (100oz) Gold Bars.</Spanish>
         </Key>
     </Package>
 </Project>

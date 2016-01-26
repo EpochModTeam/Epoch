@@ -1,4 +1,38 @@
-private ["_pos1","_pos","_veh","_veh1","_veh2"];
+/*
+	Author: Aaron Clark - EpochMod.com
+
+    Contributors:
+
+	Description:
+	Creates inital teleport zones and sets up trader city props.
+
+    Licence:
+    Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
+
+    Github:
+    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_server/compile/epoch_server/EPOCH_server_createTeleport.sqf
+*/
+
+private ["_class","_debug1","_lightLocation","_light","_deSimulate","_pos","_dir","_ep","_useWorldPos","_pos1","_markerName","_loadBaseTemplateConfig","_pro2","_veh2","_enterClass","_exitClass","_pro1","_veh1","_debugLocation","_debug","_protection","_config","_loadBaseTemplateConfig"];
+
+_loadBaseTemplateConfig = {
+	private ["_partPos","_part","_array","_pos","_center"];
+    _array = getArray(configfile >> "CfgPropTemplate" >> (_this select 1));
+    _pos = _this select 2;
+    _center = createVehicle [_this select 0, _pos, [], 0, "CAN_COLLIDE"];
+    {
+        _partPos = _center modelToWorld (_x select 1);
+        _part = createVehicle [_x select 0, _partPos, [], 0, "CAN_COLLIDE"];
+        _part setDir (_x select 2);
+        _part setPos _partPos;
+
+		// disable simulation if true
+		if (_x param [3,false]) then{
+			_part enableSimulationGlobal false;
+		};
+
+    } forEach _array;
+};
 
 _debugLocation = getMarkerPos "respawn_west";
 _debugLocation set[2, 0];
@@ -36,7 +70,6 @@ _config = configFile >> "CfgEpoch";
 
 	_deSimulate = _class isKindOf "ThingX";
 	if (count _x >= 4) then {
-
 		_deSimulate = (_x select 3) isEqualTo "true";
 	};
 
@@ -71,6 +104,16 @@ _config = configFile >> "CfgEpoch";
 	_exitClass = _x select 2;
 	_pos = _x select 3;
 
+	// if _pos is given a string we expect is to be a markerName
+	if (_pos isEqualType "") then {
+		_markerName = _pos;
+		_pos = getMarkerPos _markerName;
+		// load template props for marker location
+		["ProtectionZone_Invisible_F",_markerName,_pos] call _loadBaseTemplateConfig;
+	} else {
+		_pro2 = createVehicle ["ProtectionZone_Invisible_F", _pos, [], 0, "CAN_COLLIDE"];
+	};
+
 	_pro1 = createVehicle ["ProtectionZone_Invisible_F", _pos1, [], 0, "CAN_COLLIDE"];
 	_veh1 = createVehicle[_enterClass, _pos1, [], 0, "CAN_COLLIDE"];
 	_veh1 enableSimulationGlobal false;
@@ -87,6 +130,6 @@ _config = configFile >> "CfgEpoch";
 		_veh2 setDir 0;
 		_veh2 setposATL _pos;
 	};
-	_pro2 = createVehicle ["ProtectionZone_Invisible_F", _pos, [], 0, "CAN_COLLIDE"];
+
 	EPOCH_staticTraderLocations pushBack _pos;
 } foreach (getArray(_config >> worldname >> "telePos"));

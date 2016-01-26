@@ -784,10 +784,11 @@ class CfgLootTable
 	{
 		items[] = {
 				{ { "WhiskeyNoodle", "magazine" }, 5 },
-				{ { "ItemSodaOrangeSherbet", "magazine" }, 16 },
-				{ { "ItemSodaPurple", "magazine" }, 15 },
+				{ { "ItemSodaOrangeSherbet", "magazine" }, 14 },
+				{ { "ItemSodaAlpineDude", "magazine" }, 6 },
+				{ { "ItemSodaPurple", "magazine" }, 13 },
 				{ { "ItemSodaMocha", "magazine" }, 14 },
-				{ { "ItemSodaBurst", "magazine" }, 23 },
+				{ { "ItemSodaBurst", "magazine" }, 21 },
 				{ { "ItemSodaRbull", "magazine" }, 13 },
 				{ { "FoodWalkNSons", "magazine" }, 14 }
 		};
@@ -1442,7 +1443,12 @@ class CfgLootTable
 	class Epoch_Sapper_F
 	{
 		items[] = {
-				{ { "ItemGoldBar", "magazine" }, 6 },
+				{ { "ItemGoldBar", "magazine" }, 1 },
+
+				{ { "ItemAluminumBar", "magazine" }, 2 },
+				{ { "ItemCopperBar", "magazine" }, 2 },
+				{ { "ItemTinBar", "magazine" }, 1 },
+
 				{ { "WhiskeyNoodle", "magazine" }, 11 },
 				{ { "ItemKiloHemp", "magazine" }, 16 },
 				{ { "ItemSilverBar", "magazine" }, 18 },
