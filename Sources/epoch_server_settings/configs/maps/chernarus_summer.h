@@ -12,7 +12,7 @@
     Github:
     https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_server_settngs/configs/maps/chernarus.h
 */
-class Chernarus : Default
+class Chernarus_Summer : Default
 {
 	worldSize = 12000;
 	vehicleSpawnTypes[] = {

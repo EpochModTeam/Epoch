@@ -12,7 +12,7 @@
     Github:
     https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_server_settngs/configs/maps/zargabad.h
 */
-class Takistan : Default
+class Zargabad : Default
 {
 	worldSize = 0; // 0 = default to worldSize command
 	vehicleSpawnTypes[] = {
@@ -40,7 +40,7 @@ class Takistan : Default
 			{ "Transport_N_EPOCH", { -0.286865, 8.17383, -10.3098 }, "", "north" },
 			{ "Transport_W_EPOCH", { -14.4316, 0.112793, -10.3098 }, "", "west" },
 			{ "Transport_E_EPOCH", { 13.5127,0.410156,-10.3098 }, "", "east" },
-			{ "Transport_C_EPOCH", { 13.5127, 0.410156, -10.3098 }, "", "center" }
+			{ "Transport_C_EPOCH", { 13.5127, 0.410156, -10.3098 }, "", "south" }
 	};
 
 	propsPos[] = {
