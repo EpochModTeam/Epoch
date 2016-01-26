@@ -26,8 +26,13 @@ _loadBaseTemplateConfig = {
         _part setDir (_x select 2);
         _part setPos _partPos;
 
+		_deSimulate = _class isKindOf "ThingX";
 		// disable simulation if true
-		if (_x param [3,false]) then{
+		if (count _x >= 4) then {
+			_deSimulate = (_x select 3) isEqualTo "true";
+		};
+		
+		if (_deSimulate) then{
 			_part enableSimulationGlobal false;
 		};
 
