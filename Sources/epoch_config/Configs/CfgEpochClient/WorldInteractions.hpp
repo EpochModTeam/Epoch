@@ -426,7 +426,6 @@ class WorldInteractions  {
 	class brg_banana_4_p3d : Bushes {};
     class bo_b_craet1_p3d : Bushes {};
 	class bo_b_craet2_p3d : Bushes {};
-	class bo_b_corylus_p3d : Bushes {};
 	class bo_b_corylus2s_p3d : Bushes {};
 	class bo_b_betulahumilis_p3d : Bushes {};
 	class bo_b_sambucus_p3d : Bushes {};
@@ -535,7 +534,6 @@ class WorldInteractions  {
 	class kamaz_tent_p3d : Wrecks {};
     class budova5_p3d : Wrecks {};
     class pletivo_dira_p3d : Wrecks {};
-    class plot_vlnplech2_p3d : Wrecks {};
     class pletivo_p3d : Wrecks {};
     class wall_indfnc_pole_p3d : Wrecks {};
     class wall_indfnc_3_d_p3d : Wrecks {};
