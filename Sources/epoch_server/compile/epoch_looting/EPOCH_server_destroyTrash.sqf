@@ -11,11 +11,8 @@ if (!(_object isKindOf "All")) then {
 
 	if (alive _object) then {
 
-		if (isNil "EPOCH_trashLootClasses") then{
-			_config = 'CfgEpochClient' call EPOCH_returnConfig;
-			EPOCH_trashLootClasses = getArray(_config >> worldname >> "TrashClasses");
-		};
-		_payout = EPOCH_trashLootClasses param [_type, "Trash"];
+		_config = 'CfgEpochClient' call EPOCH_returnConfig;
+		_payout = getArray(_config >> worldname >> "TrashClasses") param [_type, "Trash"];
 
 		_posWH = getPosATL _player;
 		_object setdamage 1;
@@ -29,7 +26,7 @@ if (!(_object isKindOf "All")) then {
 				[_item, _payout] call EPOCH_serverLootObject;
 			};
 		};
-		
+
 		// TODO move to server config
 		if ((random 1) <= EPOCH_antagonistChanceTrash) then {
 			_nearPlayers = _posWH nearEntities[["Epoch_Male_F", "Epoch_Female_F"], 50];

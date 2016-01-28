@@ -2051,7 +2051,7 @@ class Mission
 	};
 	class Markers
 	{
-		items=4;
+		items=5;
 		class Item0
 		{
 			position[]={4135.0137,17.095903,4039.3584};
@@ -2074,8 +2074,14 @@ class Mission
 		};
 		class Item3
 		{
-			position[]={2999.5986,6.6424584,247.24414};
+			position[]={3257.1497,13.147415,1079.2324};
 			name="south";
+			type="Empty";
+		};
+		class Item4
+		{
+			position[]={3154.1616,28.781305,5169.5229};
+			name="north";
 			type="Empty";
 		};
 	};

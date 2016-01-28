@@ -16,26 +16,33 @@
 private ["_class","_debug1","_lightLocation","_light","_deSimulate","_pos","_dir","_ep","_useWorldPos","_pos1","_markerName","_loadBaseTemplateConfig","_pro2","_veh2","_enterClass","_exitClass","_pro1","_veh1","_debugLocation","_debug","_protection","_config","_loadBaseTemplateConfig"];
 
 _loadBaseTemplateConfig = {
-	private ["_partPos","_part","_array","_pos","_center"];
+	private ["_partPos","_part","_array","_pos","_center","_deSimulate"];
     _array = getArray(configfile >> "CfgPropTemplate" >> (_this select 1));
     _pos = _this select 2;
+	_pos set [2,0];
     _center = createVehicle [_this select 0, _pos, [], 0, "CAN_COLLIDE"];
+	// diag_log format ["DEBUG 24 _pos: %1 %2",_pos, getpos _center];
     {
         _partPos = _center modelToWorld (_x select 1);
-        _part = createVehicle [_x select 0, _partPos, [], 0, "CAN_COLLIDE"];
-        _part setDir (_x select 2);
-        _part setPos _partPos;
+		_partPos set [2,0];
+		if ((_x select 0) isKindOf "Man") then {
+			// { "C_man_hunter_1_F", { 4585.05, 4516.51, 0.201431 }, 273.197 },
+			EPOCH_staticNPCTraderPos pushBack [(_x select 0), _partPos, (_x select 2)];
+		} else {
+			_part = createVehicle [_x select 0, _partPos, [], 0, "CAN_COLLIDE"];
+	        _part setDir (_x select 2);
+	        _part setPos _partPos;
 
-		_deSimulate = _class isKindOf "ThingX";
-		// disable simulation if true
-		if (count _x >= 4) then {
-			_deSimulate = (_x select 3) isEqualTo "true";
-		};
-		
-		if (_deSimulate) then{
-			_part enableSimulationGlobal false;
-		};
+			_deSimulate = _class isKindOf "ThingX";
+			// disable simulation if true
+			if (count _x >= 4) then {
+				_deSimulate = (_x select 3) isEqualTo "true";
+			};
 
+			if (_deSimulate) then{
+				_part enableSimulationGlobal false;
+			};
+		};
     } forEach _array;
 };
 
@@ -113,6 +120,7 @@ _config = configFile >> "CfgEpoch";
 	if (_pos isEqualType "") then {
 		_markerName = _pos;
 		_pos = getMarkerPos _markerName;
+		// diag_log format ["DEBUG _pos: %1",_pos];
 		// load template props for marker location
 		["ProtectionZone_Invisible_F",_markerName,_pos] call _loadBaseTemplateConfig;
 	} else {

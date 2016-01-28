@@ -84,7 +84,7 @@ class CfgEpochClient
 	displayAddEventHandler[] = {"keyDown","keyUp"};
     keyDown = "_this call EPOCH_KeyDown;";
     keyUp   = "_this call EPOCH_KeyUp;";
-    
+
 	addEventHandler[] = {"Respawn","Put","Take","InventoryClosed","InventoryOpened","Fired","Killed"};
 	Respawn = "(_this select 0) call EPOCH_clientRespawn";
 	Put = "(_this select 1) call EPOCH_interact;_this call EPOCH_PutHandler";
@@ -105,6 +105,8 @@ class CfgEpochClient
 	#include "CfgEpochClient\Chernarus.hpp"
 	#include "CfgEpochClient\Stratis.hpp"
 	#include "CfgEpochClient\Esseker.hpp"
+
+	#include "CfgEpochClient\WorldInteractions.hpp"
 
 };
 

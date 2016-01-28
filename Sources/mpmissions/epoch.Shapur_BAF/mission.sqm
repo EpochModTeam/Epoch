@@ -2051,7 +2051,7 @@ class Mission
 	};
 	class Markers
 	{
-		items=3;
+		items=4;
 		class Item0
 		{
 			position[]={993.37225,55.231731,1032.3983};
@@ -2072,6 +2072,13 @@ class Mission
 			type="Empty";
 			angle=23.608498;
 		};
+		class Item3
+		{
+			position[]={429.01022,43.600964,1078.9574};
+			name="south";
+			type="Empty";
+		};
+		
 	};
 };
 class Intro

@@ -41,7 +41,8 @@
 [Added] if 5th array element is true 'telePos' config array can now use world position for teleport pads location.
 [Added] Setting to control random magazine ammo counts in loot spawner. CfgEpochClient -> randomizeMagazineAmmoCount (default: true)
 [Added] Debug box now dynamically spawns with flood lights to help players see inside the box at night.
-[Added-WIP] CUP terrain pack support added:
+[Added] CfgEpochClient 'WorldInteractions' config now stores all environmental loot classes and types for all supported maps.  
+[Added] CUP terrain pack support added:
 - Sahrani
 - Southern Sahrani
 - United Sahrani
@@ -57,6 +58,7 @@
 - Bukovina
 - Bystrica
 - Takistan Mountains
+[Info] For CUP, use double quotes around mod for spaces in folder Example: -mod="@Epoch;@CUP Terrains - Core;@CUP Terrains - Maps;"
 [Changed] Removed support for AIA terrain pack in favor of CUP terrain pack.
 [Changed] Empty fuel barrel added to large trash and vehicle loot tables.
 [Changed] Earthquakes with mineral veins spawn chances increased with less players.

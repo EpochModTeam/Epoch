@@ -2051,7 +2051,7 @@ class Mission
 	};
 	class Markers
 	{
-		items=3;
+		items=7;
 		class Item0
 		{
 			position[]={3142.9163,516.2464,3143.6187};
@@ -2071,6 +2071,30 @@ class Mission
 			name="respawn_west";
 			type="Empty";
 			angle=23.608498;
+		};
+		class Item3
+		{
+			position[]={4499.1489,179.04671,6384.4321};
+			name="north";
+			type="Empty";
+		};
+		class Item4
+		{
+			position[]={5992.3813,371.16095,4527.5952};
+			name="east";
+			type="Empty";
+		};
+		class Item5
+		{
+			position[]={4.1384859,242.85356,2824.0986};
+			name="west";
+			type="Empty";
+		};
+		class Item6
+		{
+			position[]={3163.2278,337.64359,575.92761};
+			name="south";
+			type="Empty";
 		};
 	};
 };

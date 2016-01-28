@@ -15,25 +15,14 @@
 private["_found", "_return", "_foundLocalAnimal", "_str", "_blood", "_foundTerminal", "_index"];
 
 _return = false;
-
-if (isNil "EPOCH_trashLootList") then{
-	_config = 'CfgEpochClient' call EPOCH_returnConfig;
-	EPOCH_trashLootList = [];
-	{
-		EPOCH_trashLootList pushBack getArray(_config >> worldname >> _x);
-	} forEach(getArray(_config >> worldname >> "TrashClasses"));
-};
-if (isNil "EPOCH_atmList") then{
-	_config = 'CfgEpochClient' call EPOCH_returnConfig;
-	EPOCH_atmList = getArray(_config >> worldname >> "ATM");
-};
+_config = 'CfgEpochClient' call EPOCH_returnConfig;
 
 if (diag_tickTime - EPOCH_lastTrash > 2)  then {
 	EPOCH_lastTrash = diag_tickTime;
 
 	_destroyTrashObj = objNull;
 	_lootAnimalObj = objNull;
-	EPOCH_bankTerminal = objNull;
+	_bankTerminal = objNull;
 	_trashType = 0;
 
 	_objects = nearestObjects[player, [], 2];
@@ -47,19 +36,28 @@ if (diag_tickTime - EPOCH_lastTrash > 2)  then {
 				_str = str(_x);
 				_findStart = _str find ": ";
 				if (_findStart != -1) then {
-					_p3dName = _str select[_findStart + 2, 999];
+
+					_start = _findStart + 2;
+					_end = (_str find ".") - _start;
+					_p3dName = _str select[_start, _end];
+					if (_p3dName find " " != -1) then {
+						(_p3dName splitString " ") joinString "_"; // replace spaces with underscores
+					};
+					_finalConfig = (_config >> "WorldInteractions" >> (_p3dName + "_p3d"));
+
 					{
-						_found = _p3dName in _x;
+						_found = (getNumber(_finalConfig >> _x) == 1);
 						if (_found) exitWith{ _trashType = _forEachIndex };
-					} forEach EPOCH_trashLootList;
-					_foundTerminal = _p3dName in EPOCH_atmList;
+					} forEach getArray(_config >> worldname >> "TrashClasses");
+					// TrashClasses[] = { "Trash", "TrashSmall", "TrashVehicle", "PumpkinPatch", "TrashFood" };
+
+					//_foundTerminal = _p3dName in EPOCH_atmList;
+					_foundTerminal = (getNumber(_finalConfig >> "bankTerminal") == 1);
 				};
 			};
 		} else {
 			if (alive _x) then {
-				if ((typeOf _x) in["Land_PhoneBooth_02_F", "Land_PhoneBooth_01_F", "Land_Atm_01_F", "Land_Atm_02_F", "Land_Laptop_device_F"]) then {
-					_foundTerminal = true
-				};
+				_foundTerminal = (getNumber(_config >> "WorldInteractions" >> (typeOf _x) >> "bankTerminal") == 1);
 				if (_x isKindOf "Snake_random_EPOCH") then {
 					_foundLocalAnimal = true;
 					if (random 1 < 0.1) then {
@@ -74,7 +72,7 @@ if (diag_tickTime - EPOCH_lastTrash > 2)  then {
 		};
 		if (_found) exitWith{ _destroyTrashObj = _x };
 		if (_foundLocalAnimal) exitWith{ _lootAnimalObj = _x };
-		if (_foundTerminal) exitWith{ EPOCH_bankTerminal = _x };
+		if (_foundTerminal) exitWith{ _bankTerminal = _x };
 
 	}forEach _objects;
 
@@ -110,7 +108,7 @@ if (diag_tickTime - EPOCH_lastTrash > 2)  then {
 			_animals remoteExec ["EPOCH_localCleanup",2];
 		};
 	};
-	if (!isNull EPOCH_bankTerminal) then {
+	if (!isNull _bankTerminal) then {
 		// make balance request
 		if (isNil "EPOCH_bankTransferActive") then {
 			[player, [], Epoch_personalToken] remoteExec ["EPOCH_server_storeCrypto",2];

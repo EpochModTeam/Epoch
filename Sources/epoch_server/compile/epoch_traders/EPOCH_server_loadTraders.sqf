@@ -8,7 +8,9 @@ private [
 	,"_home","_work","_schedule"
 ];
 
-_staticTradersArray = getArray(configFile >> "CfgEpoch" >> worldName >> "staticNpcPos");
+_staticTradersArray = [] + EPOCH_staticNPCTraderPos;
+EPOCH_staticNPCTraderPos = nil;
+_staticTradersArray append getArray(configFile >> "CfgEpoch" >> worldName >> "staticNpcPos");
 _staticTradersArrCount = count _staticTradersArray;
 _aiTables = ["U_OG_leader", "U_C_Poloshirt_stripped", "U_C_Poloshirt_blue", "U_C_Poloshirt_burgundy", "U_C_Poloshirt_tricolour", "U_C_Poloshirt_salmon", "U_C_Poloshirt_redwhite", "U_C_Poor_1", "U_C_WorkerCoveralls", "U_C_Journalist", "U_C_Scientist", "U_OrestesBody"];
 

@@ -13,31 +13,7 @@
     https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_config/Configs/CfgEpochClient/vr.hpp
 */
 class vr {
-	Rocks[] = {
-	};
-	ATM[] = {
-	};
-	Water[] = {
-	};
+	blockedArea[] = {};
 	// main config
 	TrashClasses[] = { "Trash", "TrashSmall", "TrashVehicle", "PumpkinPatch", "TrashFood" };
-
-	TrashSmall[] = {
-	};
-	TrashVehicle[] = {
-	};
-	PumpkinPatch[] = {
-	};
-	TrashFood[] = {
-	};
-	Trash[] = {
-	};
-	Trees[] = {
-	};
-	Bushes[] = {
-	};
-	Cinder[] = {
-	};
-	Wrecks[] = {
-	};
 };
