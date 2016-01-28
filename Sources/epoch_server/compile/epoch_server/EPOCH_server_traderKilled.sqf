@@ -11,6 +11,6 @@ if (!isNull (_this select 0)) then {
 		[(_this select 1), "UAV"] call EPOCH_server_triggerEvent;
 
 		_objHiveKey = format ["%1:%2", (call EPOCH_fn_InstanceID), _slot];
-		["AI", _objHiveKey, []] call EPOCH_fnc_server_hiveSET;
+		["AI", _objHiveKey] call EPOCH_fnc_server_hiveDEL;
 	};
 };

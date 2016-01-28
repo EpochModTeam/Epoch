@@ -78,7 +78,7 @@ class CfgBaseBuilding {
 	};
 	class WoodLargeWall_EPOCH : Default{
 		upgradeBuilding[] = {
-				{ "WoodWall1_EPOCH", { { "PartPlankPack", 1 } } },
+				{ "WoodWall1_EPOCH", { { "ItemPlywoodPack", 1 } } },
 				{ "WoodLargeWallCor_EPOCH", { { "ItemCorrugated", 1 } } }
 		};
 		removeParts[] = { { "PartPlankPack", 2 } };
@@ -96,10 +96,10 @@ class CfgBaseBuilding {
 	};
 	class WoodWall2_EPOCH : Default{
 		upgradeBuilding[] = {
-				{ "WoodWall3_EPOCH", { { "PartPlankPack", 1 } } },
+				{ "WoodWall3_EPOCH", { { "ItemPlywoodPack", 1 }, { "PartPlankPack", 1 } } },
 				{ "WoodLargeWallDoor_EPOCH", { { "ItemCorrugated", 1 }, { "PartPlankPack", 1 } } },
 		};
-		removeParts[] = { { "PartPlankPack", 2 } };
+		removeParts[] = { { "ItemPlywoodPack", 1 }, { "PartPlankPack", 2 }  };
 	};
 	class WoodLargeWallDoorway_EPOCH : Default{
 		upgradeBuilding[] = { { "WoodLargeWallDoor_EPOCH", { { "ItemCorrugated", 1 }, { "PartPlankPack", 1 } } } };
@@ -110,14 +110,14 @@ class CfgBaseBuilding {
 				{ "WoodWall4_EPOCH", { { "CircuitParts", 1 } } },
 				{ "WoodLargeWallDoorL_EPOCH", { { "ItemCorrugated", 1 }, { "CircuitParts", 1 } } },
 		};
-		removeParts[] = { { "PartPlankPack", 2 } };
+		removeParts[] = { { "ItemPlywoodPack", 1 }, { "PartPlankPack", 2 }  };
 	};
 	class WoodLargeWallDoor_EPOCH : Default{
 		upgradeBuilding[] = { { "WoodLargeWallDoorL_EPOCH", { { "ItemCorrugated", 1 }, { "CircuitParts", 1 } } } };
 		removeParts[] = { { "PartPlankPack", 2 }, { "ItemCorrugated", 1 } };
 	};
 	class WoodWall4_EPOCH : Default {
-		removeParts[] = { { "PartPlankPack", 2 }, { "CircuitParts", 1 } };
+		removeParts[] = {  { "ItemPlywoodPack", 1 }, { "PartPlankPack", 2 }, { "CircuitParts", 1 } };
 	};
 	class WoodLargeWallDoorL_EPOCH : Default
 	{
@@ -134,8 +134,8 @@ class CfgBaseBuilding {
 	class WoodTower_EPOCH : Default
 	{
 		removeParts[] = { { "PartPlankPack", 4 } };
-		upgradeBuildingPart[] = { { "PartPlankPack", 2 } };
-		removeBuildingPart[] = { { "PartPlankPack", 1 } };
+		upgradeBuildingPart[] = { { "ItemPlywoodPack", 1 }, { "PartPlankPack", 2 } };
+		removeBuildingPart[] = { { "ItemPlywoodPack", 1 }, { "PartPlankPack", 2 } };
 	};
 	class WoodLadder_EPOCH : Default
 	{

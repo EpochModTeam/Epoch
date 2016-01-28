@@ -25,9 +25,9 @@ private["_item", "_currQty", "_tradeType", "_itemWorth", "_aiItems", "_itemClass
 
 if (!isNil "EPOCH_TRADE_COMPLETE") exitWith {};
 if (!isNil "EPOCH_TRADE_STARTED") exitWith{};
+if (isNull _this) exitWith{};
 
-if (!isNull _this) then {
-
+if (alive _this) then {
 
 	_config = 'CfgPricing' call EPOCH_returnConfig;
 
@@ -113,8 +113,7 @@ if (!isNull _this) then {
 		EPOCH_TRADE_STARTED = true;
 
 		// make trade
-		EPOCH_MAKENPCTRADE = [_this, _arrayIn, _arrayOut, player, Epoch_personalToken];
-		publicVariableServer "EPOCH_MAKENPCTRADE";
+		[_this, _arrayIn, _arrayOut, player, Epoch_personalToken] remoteExec ["EPOCH_server_makeNPCTrade",2];
 
 		// close menu
 		closeDialog 0;

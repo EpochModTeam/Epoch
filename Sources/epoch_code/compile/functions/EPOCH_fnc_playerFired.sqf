@@ -55,8 +55,7 @@ switch true do {
 
 					if ("Defib_EPOCH" in _attachments) then {
 						if (!alive _cursorTarget) then {
-							EPOCH_revivePlayer_PVS = [_cursorTarget,player,Epoch_personalToken];
-							publicVariableServer "EPOCH_revivePlayer_PVS";
+							[_cursorTarget,player,Epoch_personalToken] remoteExec ["EPOCH_server_revivePlayer",2];
 						};
 					};
 				} else {
@@ -83,15 +82,13 @@ switch true do {
 						if (local _cursorTarget) then {
 							[_cursorTarget,[_currentHIT,_newDMG]] call EPOCH_client_repairVehicle;
 						} else {
-							EPOCH_repairVehicle_PVS = [_cursorTarget,[_currentHIT,_newDMG],player,Epoch_personalToken];
-							publicVariableServer "EPOCH_repairVehicle_PVS";
+							[_cursorTarget,[_currentHIT,_newDMG],player,Epoch_personalToken] remoteExec ["EPOCH_server_repairVehicle",2];
 						};
 
 						//diag_log format["DEBUG HITPOINT REPAIRED: %1 %2 %3", _currentHIT, _newDMG, _attachments];
 					} else {
 						if ((damage _cursorTarget) > 0) then {
-							EPOCH_repairVehicle_PVS = [_cursorTarget,["ALL",0],player,Epoch_personalToken];
-							publicVariableServer "EPOCH_repairVehicle_PVS";
+							[_cursorTarget,["ALL",0],player,Epoch_personalToken] remoteExec ["EPOCH_server_repairVehicle",2];
 						};
 					};
 				};

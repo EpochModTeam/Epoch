@@ -15,8 +15,7 @@ if (getPlayerUID player == Epoch_my_GroupUID) then {
 			[_playerUID,_isMember,_txt] spawn {
 				_ret = [_this select 2,"Epoch Group Menu",true,true] call BIS_fnc_GUImessage;
 				if (_ret) then {
-					EPOCH_GROUP_Player_PVS = [Epoch_my_GroupUID,_this select 0,true,_this select 1,player,Epoch_personalToken];
-					publicVariableServer "EPOCH_GROUP_Player_PVS";
+					[Epoch_my_GroupUID,_this select 0,true,_this select 1,player,Epoch_personalToken] remoteExec ["EPOCH_server_updatePlayerGroup",2];
 				};
 			};
 		};

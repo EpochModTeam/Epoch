@@ -387,8 +387,8 @@ class FSM
     {
       name = "do_drop";
       init = /*%FSM<STATEINIT""">*/"" \n
-       "EPOCH_airDropCrate_PVS = [_axeCopter,_plyr,Epoch_personalToken];" \n
-       "publicVariableServer ""EPOCH_airDropCrate_PVS"";" \n
+       "" \n
+       "[_axeCopter,_plyr,Epoch_personalToken] remoteExec [""EPOCH_server_airDropCrate"",2];" \n
        "" \n
        "_dropDone = true;" \n
        "" \n
@@ -467,8 +467,8 @@ class FSM
        "" \n
        "_dropPos = _plyrPos;" \n
        "" \n
-       "EPOCH_createAirDrop_PVS = [player,Epoch_personalToken,_startPos];" \n
-       "publicVariableServer ""EPOCH_createAirDrop_PVS"";" \n
+       "" \n
+       "[player,Epoch_personalToken,_startPos] remoteExec [""EPOCH_Server_createAirDrop"",2];" \n
        "" \n
        "" \n
        "_axeCopter = objNull;" \n

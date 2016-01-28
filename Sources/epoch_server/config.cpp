@@ -39,12 +39,17 @@ class cfgFunctions
 				file = "\x\addons\a3_epoch_server\compile\epoch_bases\fn_saveBuilding.sqf";
 			};
 		};
+		class players {
+			class savePlayer {
+				file = "\x\addons\a3_epoch_server\compile\epoch_player\fn_savePlayer.sqf";
+			};
+		};
 	};
 
 };
 class CfgServerVersion
 {
-	client = "0.3.6.0";
-	config = "0.3.6.0";
+	client = "0.3.7.0";
+	config = "0.3.7.0";
 	hive = "0.5.1.7";
 };

@@ -49,14 +49,14 @@ class veh_gear
 class veh_lock
 {
 	condition = "dyna_isVehicle && !dyna_locked";
-	action = "EPOCH_lockVehicle_PVS = [dyna_cursorTarget, true, player, Epoch_personalToken]; publicVariableServer 'EPOCH_lockVehicle_PVS';";
+	action = "[dyna_cursorTarget, true, player, Epoch_personalToken] remoteExec ['EPOCH_server_lockVehicle',2];";
 	icon = "x\addons\a3_epoch_code\Data\UI\buttons\pad_cannot_lock.paa";
 	tooltip = "Lock";
 };
 class veh_unLock
 {
 	condition = "dyna_isVehicle && dyna_locked";
-	action = "EPOCH_lockVehicle_PVS = [dyna_cursorTarget, false, player, Epoch_personalToken]; publicVariableServer 'EPOCH_lockVehicle_PVS';";
+	action = "[dyna_cursorTarget, false, player, Epoch_personalToken] remoteExec ['EPOCH_server_lockVehicle',2];";
 	icon = "x\addons\a3_epoch_code\Data\UI\buttons\pad_can_unlock.paa";
 	tooltip = "Unlock";
 };
@@ -119,14 +119,14 @@ class lock_safe
 class pack_lockbox
 {
 	condition = "(dyna_cursorTargetType in ['LockBox_EPOCH','LockBoxProxy_EPOCH']) && (dyna_cursorTarget getVariable ['EPOCH_Locked',false])";
-	action = "EPOCH_packStorage_PVS = [dyna_cursorTarget,player,Epoch_personalToken]; publicVariableServer 'EPOCH_packStorage_PVS';";
+	action = "[dyna_cursorTarget,player,Epoch_personalToken] remoteExec ['EPOCH_server_packStorage',2];";
 	icon = "x\addons\a3_epoch_code\Data\UI\buttons\build_pack.paa";
 	tooltip = "Pack Lockbox";
 };
 class pack_safe
 {
 	condition = "(dyna_cursorTargetType in ['Safe_EPOCH','SafeProxy_EPOCH']) && (dyna_cursorTarget getVariable ['EPOCH_Locked',false])";
-	action = "EPOCH_packStorage_PVS = [dyna_cursorTarget,player,Epoch_personalToken]; publicVariableServer 'EPOCH_packStorage_PVS';";
+	action = "[dyna_cursorTarget,player,Epoch_personalToken] remoteExec ['EPOCH_server_packStorage',2];";
 	icon = "x\addons\a3_epoch_code\Data\UI\buttons\build_pack.paa";
 	tooltip = "Pack Safe";
 };

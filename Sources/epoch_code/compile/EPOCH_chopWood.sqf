@@ -25,19 +25,26 @@ _object  = objNull;
 _type    = 0;
 
 _config = 'CfgEpochClient' call EPOCH_returnConfig;
-_treesLootList = getArray(_config >> worldname >> "Trees");
-_bushesLootList = getArray(_config >> worldname >> "Bushes");
 
 {
-    _strObj = str _x;
+    _str = str _x;
 	_sel_object = _x;
-	_findStart = _strObj find ": ";
+	_findStart = _str find ": ";
 	if (_findStart != -1) then{
-		_p3dName = _strObj select[_findStart + 2, 999];
-		if (_p3dName in _treesLootList) then{
+
+        _start = _findStart + 2;
+        _end = (_str find ".") - _start;
+        _p3dName = _str select[_start, _end];
+        // diag_log format ["DEBUG: _p3dName %1",_p3dName];
+        if (_p3dName find " " != -1) then {
+            (_p3dName splitString " ") joinString "_"; // replace spaces with underscores
+        };
+        _finalConfig = (_config >> "WorldInteractions" >> (_p3dName + "_p3d"));
+
+		if (getNumber(_finalConfig >> "tree") == 1) then{
 			_object = _sel_object;
 		};
-		if (_p3dName in _bushesLootList) then{
+		if (getNumber(_finalConfig >> "bush") == 1) then{
 			_type = 1;
 			_object = _sel_object;
 		};
@@ -47,7 +54,6 @@ _bushesLootList = getArray(_config >> worldname >> "Bushes");
 
 if (!isNull _object) then {
     if (alive _object) then {
-        EPOCH_knockDownTree = [_object,_type,player,EPOCH_personalToken];
-        publicVariableServer "EPOCH_knockDownTree";
+        [_object,_type,player,EPOCH_personalToken] remoteExec ["EPOCH_server_knockDownTree",2];
     };
 };

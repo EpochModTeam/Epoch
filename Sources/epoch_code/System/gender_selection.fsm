@@ -1,4 +1,4 @@
-/*%FSM<COMPILE "X:\ArmA\Tools\FSM Editor Personal Edition\scriptedFSM.cfg, Gender Selection">*/
+/*%FSM<COMPILE "F:\Program Files (x86)\Bohemia Interactive\Tools\FSM Editor Personal Edition\scriptedFSM.cfg, Gender Selection">*/
 /*%FSM<HEAD>*/
 /*
 item0[] = {"INIT",0,250,-250.000000,-150.000000,-150.000000,-100.000000,0.000000,"INIT"};
@@ -12,12 +12,12 @@ item7[] = {"Process",2,250,-400.000000,75.000000,-300.000000,125.000000,0.000000
 item8[] = {"same_gender",4,218,-250.000000,75.000000,-150.000000,125.000000,10.000000,"same" \n "gender"};
 item9[] = {"other_gender",4,218,-400.000000,150.000000,-300.000000,200.000000,0.000000,"other" \n "gender"};
 item10[] = {"Send_To_Server",3,250,-125.000000,75.000000,-25.000000,125.000000,0.000000,"Send To Server"};
-item11[] = {"TODO__ADD_TIMEOUT",4,4314,-275.000000,250.000000,-175.000000,300.000000,0.000000,"TODO:" \n "ADD TIMEOUT" \n "AND LOBBY KICK"};
+item11[] = {"TODO__ADD_TIMEOUT",4,218,-275.000000,250.000000,-175.000000,300.000000,0.000000,"TODO:" \n "ADD TIMEOUT" \n "AND LOBBY KICK"};
 item12[] = {"END",1,250,0.000000,450.000000,100.000000,500.000000,0.000000,"END"};
 item13[] = {"Send_new_selection",2,250,-400.000000,250.000000,-300.000000,300.000000,0.000000,"Send new" \n "selection to" \n "server"};
 item14[] = {"Select_Model",2,250,-400.000000,350.000000,-300.000000,400.000000,0.000000,"Select Model"};
 item15[] = {"new_model____pla",4,218,-525.000000,400.000000,-425.000000,450.000000,0.000000,"new model" \n "==" \n "player"};
-item16[] = {"Setup_EH",2,250,-400.000000,450.000000,-300.000000,500.000000,0.000000,"Setup EH"};
+item16[] = {"Setup_EH",2,4346,-400.000000,450.000000,-300.000000,500.000000,0.000000,"Setup EH"};
 item17[] = {"true",8,218,-125.000000,450.000000,-25.000000,500.000000,0.000000,"true"};
 item18[] = {"____FAKE____",9,720,0.000000,0.000000,0.000000,0.000000,0.000000,"____FAKE____"};
 link0[] = {0,2};
@@ -41,8 +41,8 @@ link17[] = {15,16};
 link18[] = {16,17};
 link19[] = {17,12};
 link20[] = {11,18};
-globals[] = {25.000000,1,0,0,0,640,480,1,250,6316128,1,-786.968628,194.189285,571.765747,-266.728790,1066,911,1};
-window[] = {2,-1,-1,-1,-1,753,25,1063,25,3,1084};
+globals[] = {25.000000,1,0,0,0,640,480,1,250,6316128,1,-825.287720,232.508224,685.682007,60.530540,687,630,1};
+window[] = {2,-1,-1,-1,-1,884,156,1194,156,3,705};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -156,8 +156,8 @@ class FSM
     class Send_To_Server
     {
       name = "Send_To_Server";
-      init = /*%FSM<STATEINIT""">*/"EPOCH_respawnPlayer_PVS = [player, Epoch_personalToken];" \n
-       "publicVariableServer ""EPOCH_respawnPlayer_PVS"";"/*%FSM</STATEINIT""">*/;
+      init = /*%FSM<STATEINIT""">*/"[player, Epoch_personalToken] remoteExec [""EPOCH_server_respawnPlayer"",2];" \n
+       """;"/*%FSM</STATEINIT""">*/;
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
       class Links
       {
@@ -190,8 +190,8 @@ class FSM
     class Send_new_selection
     {
       name = "Send_new_selection";
-      init = /*%FSM<STATEINIT""">*/"EPOCH_respawnPlayer_PVS = [player, Epoch_personalToken,EPOCH_PlayerIsMale];" \n
-       "publicVariableServer ""EPOCH_respawnPlayer_PVS"";"/*%FSM</STATEINIT""">*/;
+      init = /*%FSM<STATEINIT""">*/"[player, Epoch_personalToken,EPOCH_PlayerIsMale] remoteExec [""EPOCH_server_respawnPlayer"",2];" \n
+       ""/*%FSM</STATEINIT""">*/;
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
       class Links
       {
@@ -246,13 +246,9 @@ class FSM
     class Setup_EH
     {
       name = "Setup_EH";
-      init = /*%FSM<STATEINIT""">*/"player addEventHandler [""Respawn"", {(_this select 0) call EPOCH_clientRespawn}];" \n
-       "player addEventHandler [""Put"", {(_this select 1) call EPOCH_interact;_this call EPOCH_PutHandler}];" \n
-       "player addEventHandler [""Take"", {(_this select 1) call EPOCH_interact;_this call EPOCH_UnisexCheck}];" \n
-       "player addEventHandler [""InventoryClosed"", {if !(EPOCH_arr_interactedObjs isEqualTo[]) then {EPOCH_arr_interactedObjs remoteExec[""EPOCH_server_save_vehicles"", 2]; EPOCH_arr_interactedObjs = [];};}];" \n
-       "player addEventHandler [""InventoryOpened"", {_this spawn EPOCH_initUI; (locked (_this select 1) in [2, 3] || (_this select 1) getVariable[""EPOCH_Locked"", false])}];" \n
-       "player addEventHandler [""Fired"", {_this call EPOCH_fnc_playerFired}];" \n
-       "player addEventHandler [""Killed"", {_this call EPOCH_fnc_playerDeath}];"/*%FSM</STATEINIT""">*/;
+      init = /*%FSM<STATEINIT""">*/"{" \n
+       "	player addEventHandler [_x,([""CfgEpochClient"", _x, """"] call EPOCH_fnc_returnConfigEntryV2)];" \n
+       "} forEach ([""CfgEpochClient"", ""addEventHandler"", []] call EPOCH_fnc_returnConfigEntryV2);"/*%FSM</STATEINIT""">*/;
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
       class Links
       {
@@ -284,7 +280,7 @@ class FSM
   initState="INIT";
   finalStates[] =
   {
-    "END"
+    "END",
   };
 };
 /*%FSM</COMPILE>*/

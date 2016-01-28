@@ -17,7 +17,7 @@ class Mission
 		"A3_Characters_F_OPFOR",
 		"A3_Characters_F_INDEP",
 		"A3_Characters_F_Civil",
-		"aia_chernarus_config",
+		"cup_chernarus_config",
 		"A3_Modules_F_Curator_Curator",
 		"a3_characters_f",
 		"A3_Data_F_Curator_Virtual"
@@ -2079,7 +2079,7 @@ class Intro
 	addOns[]=
 	{
 		"esseker",
-		"aia_chernarus_config"
+		"cup_chernarus_config"
 	};
 	addOnsAuto[]=
 	{
@@ -2108,7 +2108,7 @@ class OutroWin
 	addOns[]=
 	{
 		"esseker",
-		"aia_chernarus_config"
+		"cup_chernarus_config"
 	};
 	addOnsAuto[]=
 	{
@@ -2137,7 +2137,7 @@ class OutroLoose
 	addOns[]=
 	{
 		"esseker",
-		"aia_chernarus_config"
+		"cup_chernarus_config"
 	};
 	addOnsAuto[]=
 	{

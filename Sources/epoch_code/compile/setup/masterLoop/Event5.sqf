@@ -1,6 +1,7 @@
 _position = getPosATL player;
 
 EPOCH_nearestLocations = nearestLocations[player, ["NameCityCapital", "NameCity", "Airport"], 300];
+
 EPOCH_playerIsSwimming = false;
 
 if !(surfaceIsWater _position) then {
@@ -14,9 +15,7 @@ if !(surfaceIsWater _position) then {
 	// spawn shark if player is deep water and not in vehicle
 	if (vehicle player == player) then{
 		_offsetZ = ((_position vectorDiff getPosASL player) select 2);
-		if (_offsetZ > 1.7) then {
-			EPOCH_playerIsSwimming = true;
-		};
+		EPOCH_playerIsSwimming = (_offsetZ > 1.7);
 		if (_offsetZ > 50) then {
 			"GreatWhite_F" call EPOCH_unitSpawn;
 		};
@@ -55,6 +54,8 @@ if !(_powerSources isEqualTo[]) then {
 		EPOCH_nearPower = true;
 	};
 };
+// downtick Alcohol
+EPOCH_playerAlcohol = ((EPOCH_playerAlcohol - 1) min 100) max 0;
 
 EPOCH_playerAliveTime = round(EPOCH_playerAliveTime + (_tickTime - EPOCH_clientAliveTimer));
 EPOCH_clientAliveTimer = _tickTime;

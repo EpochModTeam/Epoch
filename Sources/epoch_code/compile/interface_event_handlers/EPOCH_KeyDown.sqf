@@ -248,14 +248,12 @@ if (vehicle player == player) then {
 				if (isTouchingGround player && speed player > 10) then {
 					if ((primaryWeapon player != "") && (currentWeapon player == primaryWeapon player)) then {
 						player switchMove "AovrPercMrunSrasWrflDf";
-						EPOCH_switchMove_PVS = [player, 1, Epoch_personalToken];
-						publicVariableServer "EPOCH_switchMove_PVS";
+						[player, 1, Epoch_personalToken] remoteExec ["EPOCH_server_handle_switchMove",2];
 						_handled = true;
 					} else {
 						if (currentWeapon player == "") then {
 							player switchMove "epoch_unarmed_jump";
-							EPOCH_switchMove_PVS = [player, 2, Epoch_personalToken];
-							publicVariableServer "EPOCH_switchMove_PVS";
+							[player, 2, Epoch_personalToken] remoteExec ["EPOCH_server_handle_switchMove",2];
 							_handled = true;
 						};
 					};
@@ -268,7 +266,8 @@ if (vehicle player == player) then {
 		};
 	};
 
-	if (_dikCode in(actionKeys "Gear")) then {
+	if (_dikCode in(actionKeys "Gear") && !EPOCH_gearKeyPressed) then {
+		EPOCH_gearKeyPressed = true;
 		if !(isNull EPOCH_Target) then {
 			if !(EPOCH_Target isKindOf "ThingX") then {
 				deleteVehicle EPOCH_Target;
@@ -279,14 +278,6 @@ if (vehicle player == player) then {
 		};
 		if (isTouchingGround player) then {
 			_handled = call EPOCH_lootTrash;
-		};
-		if !(_handled) then {
-			if (!isNull(findDisplay 602)) then { //Inventory Open?
-				(findDisplay 602) closeDisplay 3000;
-			}
-			else {
-				_handled = _ctrl call EPOCH_startInteract;
-			};
 		};
 	};
 

@@ -688,7 +688,7 @@ class FSM
        "if((random 100) < (_countNrPlyrs * 10))then{" \n
        "[_dog, _plyr] say3D ""dog_cry"";" \n
        "EPOCH_say3D_PVS = [player, _dog, 17,Epoch_personalToken];" \n
-       "publicVariableServer ""EPOCH_say3D_PVS"";" \n
+       "EPOCH_say3D_PVS remoteExec [""EPOCH_server_handle_say3D"",2];" \n
        "};" \n
        "" \n
        ""/*%FSM</STATEINIT""">*/;
@@ -730,7 +730,7 @@ class FSM
        "if (floor(random 100)< 8) then {" \n
        "[_dog, _plyr] say3D ""dog_cry"";" \n
        "EPOCH_say3D_PVS = [player, _dog, 17,Epoch_personalToken];" \n
-       "publicVariableServer ""EPOCH_say3D_PVS"";" \n
+       "EPOCH_say3D_PVS remoteExec [""EPOCH_server_handle_say3D"",2];" \n
        "_hunger = _hunger + 2;" \n
        "};" \n
        "" \n
@@ -790,7 +790,7 @@ class FSM
        "if (floor(random 100)<_dogNoise) then {" \n
        "[_dog, _plyr] say3D ""dog_cry"";" \n
        "EPOCH_say3D_PVS = [player, _dog, 17,Epoch_personalToken];" \n
-       "publicVariableServer ""EPOCH_say3D_PVS"";" \n
+       "EPOCH_say3D_PVS remoteExec [""EPOCH_server_handle_say3D"",2];" \n
        "};" \n
        "" \n
        "" \n
@@ -850,7 +850,7 @@ class FSM
        "if (floor(random 100) < 6) then {" \n
        "[_dog, _plyr] say3D ""dog_bark"";" \n
        "EPOCH_say3D_PVS = [player, _dog, 2,Epoch_personalToken];" \n
-       "publicVariableServer ""EPOCH_say3D_PVS"";" \n
+       "EPOCH_say3D_PVS remoteExec [""EPOCH_server_handle_say3D"",2];" \n
        "};" \n
        "" \n
        "if (floor(random 100)<_forgive) then {" \n
@@ -976,7 +976,7 @@ class FSM
        "if (floor(random 100)<_dogNoise) then {" \n
        "[_dog, _plyr] say3D ""dog_cry"";" \n
        "EPOCH_say3D_PVS = [player, _dog, 17,Epoch_personalToken];" \n
-       "publicVariableServer ""EPOCH_say3D_PVS"";" \n
+       "EPOCH_say3D_PVS remoteExec [""EPOCH_server_handle_say3D"",2];" \n
        "};" \n
        "" \n
        "_criteria = ""(moveToCompleted _dog) || (_dog distance _moveTo < 1.5)"";" \n
@@ -1052,7 +1052,7 @@ class FSM
        "if (floor(random 75)<_dogNoise) then {" \n
        "[_dog, _plyr] say3D ""dog_cry_quiet"";" \n
        "EPOCH_say3D_PVS = [player, _dog, 17,Epoch_personalToken];" \n
-       "publicVariableServer ""EPOCH_say3D_PVS"";" \n
+       "EPOCH_say3D_PVS remoteExec [""EPOCH_server_handle_say3D"",2];" \n
        "};" \n
        "" \n
        "_dirTo =  [_dog, getPos (_nrPlyrs select 1)] call BIS_fnc_dirTo;" \n
@@ -1092,7 +1092,7 @@ class FSM
        "if (_rnd < 42) then {" \n
        "[_dog, _plyr] say3D ""dog_bark"";" \n
        "EPOCH_say3D_PVS = [player, _dog, 18,Epoch_personalToken];" \n
-       "publicVariableServer ""EPOCH_say3D_PVS"";" \n
+       "EPOCH_say3D_PVS remoteExec [""EPOCH_server_handle_say3D"",2];" \n
        "};" \n
        "" \n
        "if (_rnd < 6) then {" \n
@@ -1226,20 +1226,20 @@ class FSM
        "if (_rnd< 12) then {" \n
        "[_dog, _plyr] say3D ""dog_bark"";" \n
        "EPOCH_say3D_PVS = [player, _dog, 2,Epoch_personalToken];" \n
-       "publicVariableServer ""EPOCH_say3D_PVS"";" \n
+       "EPOCH_say3D_PVS remoteExec [""EPOCH_server_handle_say3D"",2];" \n
        "};" \n
        "" \n
        "if (_rnd < 6) then {" \n
        "_hunger = _hunger + 1;" \n
        "[_dog, _plyr] say3D ""dog_cry"";" \n
        "EPOCH_say3D_PVS = [player, _dog, 3,Epoch_personalToken];" \n
-       "publicVariableServer ""EPOCH_say3D_PVS"";" \n
+       "EPOCH_say3D_PVS remoteExec [""EPOCH_server_handle_say3D"",2];" \n
        "};" \n
        "" \n
        "if ((_hunger > 56) && (_rnd < 48)) then {" \n
        "[_dog, _plyr] say3D ""dog_cry"";" \n
        "EPOCH_say3D_PVS = [player, _dog, 2,Epoch_personalToken];" \n
-       "publicVariableServer ""EPOCH_say3D_PVS"";" \n
+       "EPOCH_say3D_PVS remoteExec [""EPOCH_server_handle_say3D"",2];" \n
        "};" \n
        "" \n
        "" \n
@@ -1319,8 +1319,8 @@ class FSM
       init = /*%FSM<STATEINIT""">*/"{" \n
        "	if !(alive _x) then {" \n
        "		if ((_x isKindOf ""Animal_Base_F"" && !(_x isKindOf ""Dog_Base_F"")) || (typeOf _x) in[""Epoch_Sapper_F"", ""Epoch_SapperB_F"", ""Epoch_Cloak_F"", ""I_UAV_01_F""]) then {" \n
-       "			EPOCH_lootAnimal = [_x, player, Epoch_personalToken];" \n
-       "			publicVariableServer ""EPOCH_lootAnimal"";" \n
+       "			[_x, player, Epoch_personalToken] remoteExec [""EPOCH_server_lootAnimal"",2];" \n
+       "" \n
        "		};" \n
        "	};" \n
        "" \n

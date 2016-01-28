@@ -2,6 +2,8 @@ private["_randomItemArray", "_quan", "_randomLootClass", "_type", "_randomItem",
 _object = _this select 0;
 _type = _this select 1;
 
+_randomizeMagazineAmmoCount = ["CfgEpochClient", "randomizeMagazineAmmoCount", true] call EPOCH_fnc_returnConfigEntryV2;
+
 if !(isNull _object) then{
 
 	_lootTable = [_type, "CfgMainTable", "tables"] call EPOCH_weightedArray;
@@ -62,10 +64,14 @@ if !(isNull _object) then{
 							_loop = false;
 						};
 						case "magazine": {
-							//_object addMagazineCargoGlobal [_randomItem, _quan];
-							_magazineSize = getNumber (configFile >> "CfgMagazines" >> _randomItem >> "count");
-							_object addMagazineAmmoCargo[_randomItem, _quan, ceil(random(_magazineSize))];
-
+							if (_randomizeMagazineAmmoCount) then {
+								// spawn a single Magazine with a random ammo count
+								_magazineSize = getNumber (configFile >> "CfgMagazines" >> _randomItem >> "count");
+								_object addMagazineAmmoCargo[_randomItem, _quan, ceil(random(_magazineSize))];
+							} else {
+								// spawn a single full Magazine
+								_object addMagazineCargoGlobal [_randomItem, _quan];
+							};
 							_loop = false;
 						};
 						case "backpack": {
@@ -77,9 +83,14 @@ if !(isNull _object) then{
 							_mags = getArray (configFile >> "CfgWeapons" >> _randomItem >> "magazines");
 
 							if !(_mags isEqualTo []) then {
-								// add only one free magazine with random ammo count
-								_magazineSize = getNumber (configFile >> "CfgMagazines" >> (_mags select 0) >> "count");
-								_object addMagazineAmmoCargo[_mags select 0, 1, ceil(random(_magazineSize))];
+								if (_randomizeMagazineAmmoCount) then {
+									// spawn a single Magazine with a random ammo count
+									_magazineSize = getNumber (configFile >> "CfgMagazines" >> (_mags select 0) >> "count");
+									_object addMagazineAmmoCargo[_mags select 0, 1, ceil(random(_magazineSize))];
+								} else {
+									// spawn a single full Magazine with weapon
+									_object addMagazineCargoGlobal [_mags select 0, 1];
+								};
 							};
 							_loop = false;
 						};

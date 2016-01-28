@@ -72,8 +72,7 @@ if (isText(_config)) then {
 		_newObj setposATL (_worldspace select 0);
 
 		if (_textureSlot != 0) then {
-			EPOCH_PAINTBUILD = [_newObj, _textureSlot, player, Epoch_personalToken];
-			publicVariableServer "EPOCH_PAINTBUILD";
+			[_newObj, _textureSlot, player, Epoch_personalToken] remoteExec ["EPOCH_server_paintBUILD",2];
 		};
 	};
 	EP_velocityTransformation = [];

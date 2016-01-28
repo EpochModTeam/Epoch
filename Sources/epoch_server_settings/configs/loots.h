@@ -766,7 +766,11 @@ class CfgLootTable
 				{ { "Sodas", "CfgLootTable" }, 8 },
 				{ { "CanFood", "CfgLootTable" }, 8 },
 				{ { "Primitive", "CfgLootTable" }, 21 },
-				{ { "lighter_epoch", "magazine" }, 1 }
+				{ { "lighter_epoch", "magazine" }, 1 },
+
+				{ { "ItemAluminumBar", "magazine" }, 2 },
+				{ { "ItemCopperBar", "magazine" }, 2 },
+				{ { "ItemTinBar", "magazine" }, 1 },
 		};
 	};
 
@@ -784,12 +788,14 @@ class CfgLootTable
 	{
 		items[] = {
 				{ { "WhiskeyNoodle", "magazine" }, 5 },
-				{ { "ItemSodaOrangeSherbet", "magazine" }, 16 },
-				{ { "ItemSodaPurple", "magazine" }, 15 },
-				{ { "ItemSodaMocha", "magazine" }, 14 },
-				{ { "ItemSodaBurst", "magazine" }, 23 },
+				{ { "ItemSodaOrangeSherbet", "magazine" }, 13 },
+				{ { "ItemSodaAlpineDude", "magazine" }, 6 },
+				{ { "ItemSodaPurple", "magazine" }, 13 },
+				{ { "ItemSodaMocha", "magazine" }, 12 },
+				{ { "ItemSodaBurst", "magazine" }, 15 },
 				{ { "ItemSodaRbull", "magazine" }, 13 },
-				{ { "FoodWalkNSons", "magazine" }, 14 }
+				{ { "FoodWalkNSons", "magazine" }, 13 },
+				{ { "ItemSodaEmpty", "magazine" }, 11 }
 		};
 	};
 	class CanFood
@@ -797,16 +803,15 @@ class CfgLootTable
 		items[] = {
 				{ { "honey_epoch", "magazine" }, 5 },
 				{ { "emptyjar_epoch", "magazine" }, 13 },
-				{ { "FoodBioMeat", "magazine" }, 13 },
+				{ { "FoodBioMeat", "magazine" }, 11 },
 				{ { "sardines_epoch", "magazine" }, 11 },
-				{ { "meatballs_epoch", "magazine" }, 14 },
-				{ { "scam_epoch", "magazine" }, 15 },
-				{ { "sweetcorn_epoch", "magazine" }, 15 },
+				{ { "meatballs_epoch", "magazine" }, 13 },
+				{ { "scam_epoch", "magazine" }, 14 },
+				{ { "sweetcorn_epoch", "magazine" }, 14 },
 				{ { "FoodSnooter", "magazine" }, 9 },
 				{ { "TacticalBacon", "magazine" }, 5 },
-				{ { "FoodMeeps", "magazine" }, 1 }
-
-
+				{ { "FoodMeeps", "magazine" }, 1 },
+				{ { "ItemEmptyTin", "magazine" }, 5 }
 		};
 	};
 
@@ -848,13 +853,15 @@ class CfgLootTable
 		items[] = {
 				{ { "MortarBucket", "magazine" }, 16 },
 				{ { "CinderBlocks", "magazine" }, 17 },
-				{ { "VehicleRepair", "magazine" }, 17 },
+				{ { "VehicleRepair", "magazine" }, 16 },
 				{ { "CircuitParts", "magazine" }, 17 },
 				{ { "ItemCorrugated", "magazine" }, 17 },
 				{ { "ItemSolar", "magazine" }, 5 },
 				{ { "ItemBattery", "magazine" }, 5 },
 				{ { "ItemCables", "magazine" }, 5 },
-				{ { "ItemSafe", "magazine" }, 1 }
+				{ { "ItemSafe", "magazine" }, 1 },
+				{ { "ItemBarrelE", "magazine" }, 1 }
+
 
 		};
 	};
@@ -870,13 +877,14 @@ class CfgLootTable
 				{ { "VehicleRepair", "magazine" }, 10 },
 				{ { "ItemCorrugated", "magazine" }, 11 },
 				{ { "CinderBlocks", "magazine" }, 12 },
-				{ { "JackKit", "magazine" }, 9 },
+				{ { "JackKit", "magazine" }, 8 },
 				{ { "ItemCoolerE", "magazine" }, 13 },
 				{ { "ItemScraps", "magazine" }, 13 },
 				{ { "lighter_epoch", "magazine" }, 1 },
 				{ { "ItemSolar", "magazine" }, 3 },
 				{ { "ItemBattery", "magazine" }, 3 },
-				{ { "ItemCables", "magazine" }, 3 }
+				{ { "ItemCables", "magazine" }, 3 },
+				{ { "ItemBarrelE", "magazine" }, 1 }
 		};
 	};
 
@@ -1314,14 +1322,23 @@ class CfgLootTable
 	{
 		items[] = {
 				{ { "Gems", "CfgLootTable" }, 5 },
-				{ { "ItemGoldBar10oz", "magazine" }, 6 },
-				{ { "ItemGoldBar", "magazine" }, 9 },
+				{ { "MetalBars", "CfgLootTable" }, 26 },
 				{ { "PartOreGold", "magazine" }, 10 },
-				{ { "ItemSilverBar", "magazine" }, 11 },
 				{ { "PartOreSilver", "magazine" }, 13 },
 				{ { "ItemKiloHemp", "magazine" }, 12 },
 				{ { "ItemScraps", "magazine" }, 16 },
 				{ { "PartOre", "magazine" }, 18 }
+		};
+	};
+	class MetalBars
+	{
+		items[] = {
+				{ { "ItemGoldBar10oz", "magazine" }, 1 },
+				{ { "ItemGoldBar", "magazine" }, 9 },
+				{ { "ItemSilverBar", "magazine" }, 20 },
+				{ { "ItemCopperBar", "magazine" }, 20 },
+				{ { "ItemAluminumBar", "magazine" }, 20 },
+				{ { "ItemTinBar", "magazine" }, 30 },
 		};
 	};
 	class Gems
@@ -1439,7 +1456,7 @@ class CfgLootTable
 	class Epoch_Sapper_F
 	{
 		items[] = {
-				{ { "ItemGoldBar", "magazine" }, 6 },
+				{ { "MetalBars", "CfgLootTable" }, 6 },
 				{ { "WhiskeyNoodle", "magazine" }, 11 },
 				{ { "ItemKiloHemp", "magazine" }, 16 },
 				{ { "ItemSilverBar", "magazine" }, 18 },
@@ -1862,9 +1879,9 @@ class CfgLootTable
 				{ { "H_91_EPOCH", "item" }, 1 },
 				{ { "H_92_EPOCH", "item" }, 1 },
 				{ { "H_104_EPOCH", "item" }, 1 },
-				{ { "wolf_mask_epoch", "item" }, 1 },
-				{ { "pkin_mask_epoch", "item" }, 1 },
-				{ { "clown_mask_epoch", "item" }, 1 }
+				//{ { "wolf_mask_epoch", "item" }, 1 },
+				//{ { "pkin_mask_epoch", "item" }, 1 },
+				//{ { "clown_mask_epoch", "item" }, 1 }
 
 		};
 	};

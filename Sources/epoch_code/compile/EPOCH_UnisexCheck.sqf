@@ -17,67 +17,6 @@ _woman = getNumber(configFile >> "CfgVehicles" >> (typeOf player) >> "woman");
 _class = _this select 2;
 _config = configfile >> "cfgweapons" >> _class;
 
-/*
-_sleepAndCheck = {
-	_good = true;
-	_failcount = 0;
-	switch _this do {
-		case 0: {
-			while {true} do {
-				if !(local(backpackContainer player)) then {
-					_good = false;
-					_failcount = _failcount + 1;
-				} else {
-					_good = true;
-				};
-				if (_good) exitWith {};
-				if (_failcount > 5) exitWith { removeBackpack player; };
-				sleep 0.5;
-			};
-		};
-		case 1: {
-			while {true} do {
-				if !(local(vestContainer player)) then {
-					_good = false;
-					_failcount = _failcount + 1;
-				} else {
-					_good = true;
-				};
-				if (_good) exitWith{};
-				if (_failcount > 5) exitWith{ removeVest player; };
-				sleep 0.5;
-			};
-		};
-		case 2: {
-			while {true} do {
-				if !(local(uniformContainer player)) then {
-					_good = false;
-					_failcount = _failcount + 1;
-				} else {
-					_good = true;
-				};
-				if (_good) exitWith{};
-				if (_failcount > 5) exitWith{ removeUniform player; };
-				sleep 0.5;
-			};
-		};
-	};
-};
-
-
-if (isclass _config) then {
-	_infoType = getnumber(_config >> "itemInfo" >> "type");
-	switch _infoType do {
-		case 701: { 1 spawn _sleepAndCheck; };
-		case 801: { 2 spawn _sleepAndCheck; };
-	};
-} else {
-	if (getNumber(configFile >> "CfgVehicles" >> _class >> "isbackpack") == 1) then {
-		0 spawn _sleepAndCheck;
-	};
-};
-*/
-
 _mags = (magazines player) + (handgunMagazine player);
 
 // TODO optimize
@@ -115,28 +54,14 @@ if (_woman == 1) then {
 			_vest = vest player;
 			if (_class == _vest) then {
 				if (_femaleVariant != _vest) then {
-
-					/* // everyContainer not working in 1.20
-					_holder = _this select 1;
-					_containers = (everyContainer _holder) select 0;
-					_mags = magazinesAmmoFull _container;
-					_weps = weaponCargo vestContainer _container;
-					_item = itemCargo vestContainer _container;
-					*/
+					// get items in existing vest
+					_vestItems = vestItems player;
+					// remove vest
 					removeVest player;
+					// replace with female variant
 					player addVest _femaleVariant;
-					/*
-					{
-						if ((_x select 4) == "Vest") then {
-							player addMagazine [(_x select 0),(_x select 1)]
-						}
-					} forEach _mags;
-
-					{
-						player addItemToVest _x;
-					} forEach (_weps+_item);
-					*/
-
+					// readd items to players vest
+					{player addItemToVest _x} forEach _vestItems;
 				};
 			};
 		};

@@ -27,25 +27,32 @@ if ((diag_tickTime - EPOCH_lastMineRocks) >= 2) then {
 		_object = objNull;
 
 		_config = 'CfgEpochClient' call EPOCH_returnConfig;
-		_lootables = getArray(_config >> worldname >> "Wrecks");
-		_cinderList = getArray(_config >> worldname >> "Cinder");
-		_rocksList = getArray(_config >> worldname >> "Rocks");
 
 		_found = false;
 		_foundIndex = -1;
 		{
-			_str = str(_x);
-			_findStart = _str find ": ";
-			if (_findStart != -1) then{
-				_p3dName = _str select[_findStart + 2, 999];
-				_found = _p3dName in _rocksList;
-				if (_p3dName in _lootables) then{
-					_found = true;
-					_foundIndex = 1;
-				};
-				if (_p3dName in _cinderList) then{
-					_found = true;
-					_foundIndex = 0;
+			if !(_x isKindOf "All") then {
+				_str = str(_x);
+				_findStart = _str find ": ";
+				if (_findStart != -1) then{
+
+					_start = _findStart + 2;
+					_end = (_str find ".") - _start;
+					_p3dName = _str select[_start, _end];
+					if (_p3dName find " " != -1) then {
+						(_p3dName splitString " ") joinString "_"; // replace spaces with underscores
+					};
+					_finalConfig = (_config >> "WorldInteractions" >> (_p3dName + "_p3d"));
+
+					_found = (getNumber(_finalConfig >> "rock") == 1);
+					if (getNumber(_finalConfig >> "wreck") == 1) then{
+						_found = true;
+						_foundIndex = 1;
+					};
+					if (getNumber(_finalConfig >> "cinder") == 1) then{
+						_found = true;
+						_foundIndex = 0;
+					};
 				};
 			};
 			if (_found)exitWith{_object = _x};
@@ -53,8 +60,7 @@ if ((diag_tickTime - EPOCH_lastMineRocks) >= 2) then {
 
 		if (!isNull _object) then {
 			if (alive _object) then {
-				EPOCH_mineRocks_PVS = [_object, _foundIndex, player, Epoch_personalToken];
-				publicVariableServer "EPOCH_mineRocks_PVS";
+				[_object, _foundIndex, player, Epoch_personalToken] remoteExec ["EPOCH_server_mineRocks",2];
 			};
 		};
 	};

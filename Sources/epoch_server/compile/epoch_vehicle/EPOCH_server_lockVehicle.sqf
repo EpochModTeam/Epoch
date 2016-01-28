@@ -9,7 +9,7 @@ if (isNull _vehicle) exitWith {};
 if !([_player,_this select 3] call EPOCH_server_getPToken) exitWith {};
 if (_player distance _vehicle > 20) exitWith {};
 
-// Group access 
+// Group access
 _plyrUID = getPlayerUID _player;
 _plyrGroup = _player getVariable["GROUP", ""];
 
@@ -28,10 +28,34 @@ if (_vehSlot != "ABORT") then {
 	};
 };
 
+// get locked state
 _isLocked = locked _vehicle in[2, 3];
 
+_driver = driver _vehicle;
+_crew = [];
+{
+	// only get alive crew
+	if (alive _x) then {
+		_crew pushBack _x;
+	};
+} forEach (crew _vehicle);
+
+// if vehicle has a crew and player is not inside vehicle only allow locking if already owner
+_logic = if !(_crew isEqualTo []) then {
+	if (_player in _crew) then {
+		// allow unlock if player is the driver or is inside the vehicle with out a driver.
+		(_player isEqualTo _driver || isNull(_driver))
+	} else {
+		// allow only if player is already the owner as they are not inside the occupied vehicle.
+		(_lockedOwner == _lockOwner)
+	};
+} else {
+	// vehicle has no crew, so allow only if: unlocked, is already the owner, vehicle has no owner.
+	(!_isLocked || _lockedOwner == _lockOwner || _lockedOwner == "-1")
+};
+
 // Lockout mech
-if (!_isLocked || _lockedOwner == _lockOwner || _lockedOwner == "-1") then {
+if (_logic) then {
 
 	_value = _this select 1;
 

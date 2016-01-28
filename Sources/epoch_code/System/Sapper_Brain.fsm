@@ -320,7 +320,7 @@ class FSM
        "" \n
        "_sapper say3D _sound;" \n
        "EPOCH_say3D_PVS = [player, _sapper,(EPOCH_sounds find _sound), Epoch_personalToken];" \n
-       "publicVariableServer ""EPOCH_say3D_PVS"";" \n
+       "EPOCH_say3D_PVS remoteExec [""EPOCH_server_handle_say3D"",2];" \n
        "};" \n
        "" \n
        "_doInterrupt = {" \n
@@ -739,7 +739,7 @@ class FSM
        "_sound = ""sapper_explode"";" \n
        "_sapper say3D _sound;" \n
        "EPOCH_say3D_PVS = [player,_sapper,(EPOCH_sounds find _sound),Epoch_personalToken];" \n
-       "publicVariableServer ""EPOCH_say3D_PVS"";" \n
+       "EPOCH_say3D_PVS remoteExec [""EPOCH_server_handle_say3D"",2];" \n
        "_sapper playMoveNow ""Unconscious"";" \n
        "" \n
        ""/*%FSM</STATEINIT""">*/;
@@ -1206,8 +1206,8 @@ class FSM
        "_bomb = createVehicle [""Sapper_Charge_Ammo"", (getposATL _nestMate), [], 0, ""CAN_COLLIDE""] ; " \n
        "_bomb attachTo [_nestMate, [0,0,0],""Pelvis""];" \n
        "_nestMate setVariable [""bomb"",_bomb];" \n
-       "EPOCH_TEMPOBJ_PVS = _nestMate;" \n
-       "publicVariableServer ""EPOCH_TEMPOBJ_PVS"";" \n
+       "" \n
+       "[_nestMate] remoteExec [""EPOCH_localCleanup"",2];" \n
        "_nestMate disableAI ""TARGET"";" \n
        "_nestMate disableAI ""AUTOTARGET"";" \n
        "_nestMate disableAI ""FSM"";" \n
@@ -1246,8 +1246,8 @@ class FSM
        "" \n
        "[_nrBuild, _sapper] spawn {" \n
        "sleep 6;" \n
-       "EPOCH_SapperObjs_PVS = [_this select 0, player, Epoch_personalToken,_this select 1];" \n
-       "publicVariableServer ""EPOCH_SapperObjs_PVS"";" \n
+       "" \n
+       "[_this select 0, player, Epoch_personalToken,_this select 1] remoteExec [""EPOCH_server_handle_sapperObjs"",2];" \n
        "};" \n
        "" \n
        "{" \n
@@ -1255,15 +1255,15 @@ class FSM
        "_sound = ""sapper_explode"";" \n
        "_x say3D _sound;" \n
        "EPOCH_say3D_PVS = [player,_x,(EPOCH_sounds find _sound),Epoch_personalToken];" \n
-       "publicVariableServer ""EPOCH_say3D_PVS"";" \n
+       "EPOCH_say3D_PVS remoteExec [""EPOCH_server_handle_say3D"",2];" \n
        "_x playMoveNow ""Unconscious"";" \n
        "" \n
        "_x spawn {" \n
        "sleep floor (random 3);" \n
        "_sBomb = _this getVariable [""bomb"",objNull];" \n
        "" \n
-       "EPOCH_SapperObjs_PVS = [_sBomb, player, Epoch_personalToken,_this,_this];" \n
-       "publicVariableServer ""EPOCH_SapperObjs_PVS"";" \n
+       "" \n
+       "[_sBomb, player, Epoch_personalToken,_this,_this] remoteExec [""EPOCH_server_handle_sapperObjs"",2];" \n
        "" \n
        "_finalPos = getPosATL _this;" \n
        "_finalDir = getDir _this;" \n
@@ -1369,8 +1369,8 @@ class FSM
     class do_boom
     {
       name = "do_boom";
-      init = /*%FSM<STATEINIT""">*/"EPOCH_SapperObjs_PVS = [_sBomb, player, Epoch_personalToken,_sapper,_sapper];" \n
-       "publicVariableServer ""EPOCH_SapperObjs_PVS"";" \n
+      init = /*%FSM<STATEINIT""">*/"" \n
+       "[_sBomb, player, Epoch_personalToken,_sapper,_sapper] remoteExec [""EPOCH_server_handle_sapperObjs"",2];" \n
        "" \n
        "_sBomb = objNull;" \n
        "_finalPos = getPosATL _sapper;" \n
@@ -1636,7 +1636,7 @@ class FSM
            "	_sound = ""sapper_groan2"";" \n
            "	_sapper say3D _sound;" \n
            "     	EPOCH_say3D_PVS = [player, _sapper,(EPOCH_sounds find _sound), Epoch_personalToken];" \n
-           "	publicVariableServer ""EPOCH_say3D_PVS"";" \n
+           "	EPOCH_say3D_PVS remoteExec [""EPOCH_server_handle_say3D"",2];" \n
            "};" \n
            ""/*%FSM</ACTION""">*/;
         };

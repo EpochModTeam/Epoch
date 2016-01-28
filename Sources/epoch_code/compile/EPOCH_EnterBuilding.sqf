@@ -13,6 +13,5 @@
     https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_code/compile/EPOCH_EnterBuilding.sqf
 */
 if !(isNull _this) then{
-	EPOCH_oneWayTP = [player,_this,Epoch_personalToken];
-	publicVariableServer "EPOCH_oneWayTP";
+	[player,_this,Epoch_personalToken] remoteExec ["EPOCH_server_teleportPlayer",2];
 };

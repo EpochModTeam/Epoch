@@ -38,9 +38,7 @@ if ((diag_tickTime - _EPOCH_lastSave) >= _time) then {
 		_customVars pushBack (missionNamespace getVariable format["EPOCH_player%1",_x select 0]);
 	} forEach _customVarsInit;
 
-	// TODO: use remoteExec here
-	missionNamespace setVariable ["EPOCH_pushPlayer_PVS",[player,_customVars,missionNamespace getVariable "Epoch_personalToken"]];
-	publicVariableServer "EPOCH_pushPlayer_PVS";
+	[player,_customVars,missionNamespace getVariable "Epoch_personalToken"] remoteExec ["EPOCH_fnc_savePlayer",2];
 
 	missionNamespace setVariable["EPOCH_lastSave", diag_tickTime];
 };

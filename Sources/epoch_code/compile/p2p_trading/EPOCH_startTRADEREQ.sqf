@@ -9,8 +9,8 @@ if (!isNull _otherPlyr) then {
 		// restict to only players not in vehicles
 		if (vehicle player == player && vehicle _otherPlyr == _otherPlyr) then {
 
-			EPOCH_MAKETRADEREQ = _this;
-			publicVariableServer "EPOCH_MAKETRADEREQ";
+			// send
+			_this remoteExec ["EPOCH_server_tradeRequest",2];
 
 			// target other player
 			EPOCH_p2ptradeTarget = _otherPlyr;

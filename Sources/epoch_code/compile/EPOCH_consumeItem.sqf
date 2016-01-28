@@ -61,8 +61,6 @@ _giveAttributes = {
 				_return = format["Immunity: %1%2 (%3/%4)<br />", _addPlus, _data, EPOCH_playerImmunity, 100];
 			};
 			case 6: {
-				// EPOCH_playerToxicity = ((EPOCH_playerToxicity + _data) min 100) max 0;
-				// new random tox
 				_randomData = round(random _data);
 				EPOCH_playerToxicity = ((EPOCH_playerToxicity + _randomData) min 100) max 0;
 				_return = format["Toxicity: %1%2 (%3/%4)<br />", _addPlus, _randomData, EPOCH_playerToxicity, 100];
@@ -72,6 +70,7 @@ _giveAttributes = {
 				_return = format["Stamina: %1%2 (%3/%4)<br />", _addPlus, _data, EPOCH_playerStamina, EPOCH_playerStaminaMax];
 			};
 			case 8: {
+				// this is handled server side
 				//EPOCH_playerCrypto = ((EPOCH_playerCrypto + _data) min 25000) max 0;
 				//_return = format["Krypto: %1%2 (%3)<br />", _addPlus, _data, EPOCH_playerCrypto];
 			};
@@ -79,6 +78,20 @@ _giveAttributes = {
 				EPOCH_playerBloodP = ((EPOCH_playerBloodP + _data) min 190) max 0;
 				_return = format["Blood Pressure: %1%2 (%3/%4)<br />", _addPlus, _data, EPOCH_playerBloodP, 100];
 			};
+			case 10: {
+				EPOCH_playerKarma = ((EPOCH_playerKarma + _data) min 50000) max -50000;
+				_return = format["Karma: %1%2 (%3/%4)<br />", _addPlus, _data, EPOCH_playerKarma, 50000];
+			};
+			case 11: {
+				EPOCH_playerAlcohol = ((EPOCH_playerAlcohol + _data) min 100) max 0;
+				_return = format["Alcohol: %1%2 (%3/%4)<br />", _addPlus, _data, EPOCH_playerAlcohol, 100];
+			};
+			case 12: {
+				EPOCH_playerRadiation = ((EPOCH_playerRadiation + _data) min 100) max 0;
+				_return = format["Radiation: %1%2 (%3/%4)<br />", _addPlus, _data, EPOCH_playerRadiation, 100];
+			};
+
+
 		};
 	};
 	_return
@@ -86,9 +99,7 @@ _giveAttributes = {
 
 _unifiedInteract = {
 	if (_item call _removeItem) then {
-		if (_interactReturnOnUse != "") then {
-			player addMagazine _interactReturnOnUse;
-		};
+		_interactReturnOnUse call EPOCH_fnc_addItemOverflow;
 		_output = "";
 		{
 			_output = _output + ([_forEachIndex, _x] call _giveAttributes);
@@ -100,6 +111,38 @@ _unifiedInteract = {
 };
 
 switch _interactOption do {
+	case 0: {
+		_magazineSizeMax = getNumber (_config >> "count");
+		// allow repack for all magazines with greater than 1 bullet
+		if (_magazineSizeMax > 1) then {
+
+			_magazineSize = 0;
+			_magazinesAmmoFull = magazinesAmmoFull player;
+			{
+				if (_item isEqualTo (_x select 0)) then {
+					if (!(_x select 2)) then {
+						_magazineSize = _magazineSize + (_x select 1);
+					};
+				};
+			} forEach _magazinesAmmoFull;
+
+			// remove all
+			player removeMagazines _item;
+
+			// Add full magazines back to player
+			for "_i" from 1 to floor (_magazineSize / _magazineSizeMax) do
+			{
+			    player addMagazine [_item, _magazineSizeMax];
+				//diag_log format ["DEBUG: added full mag %1", _magazineSizeMax];
+			};
+			// Add last non full magazine
+			if ((_magazineSize % _magazineSizeMax) > 0) then {
+				player addMagazine [_item, floor (_magazineSize % _magazineSizeMax)];
+				//diag_log format ["DEBUG: added remainder %1", floor (_magazineSize % _magazineSizeMax)];
+			};
+ 			_dt = ["<t size='0.8' shadow='0' color='#99ffffff'>Ammo Repacked</t>", 0, 1, 5, 2, 0, 1] spawn bis_fnc_dynamictext;
+		};
+	};
 	case 1: _unifiedInteract; // Eat 1
 	case 2: _unifiedInteract; //Drink 2
 	case 3: { // Build 3
@@ -158,34 +201,49 @@ switch _interactOption do {
 		if (cursorTarget in _vehicles) then {
 			_vehicle = cursorTarget;
 			_currentFuel = fuel _vehicle;
-			_canCapacity = 10;
+			_canCapacity = _interactAttributes param [0,10];
 			_fuelCapacity = getNumber (configfile >> "CfgVehicles" >> (typeOf _vehicle) >> "fuelCapacity");
 			_currentFuel = _currentFuel * _fuelCapacity;
 			_newFuel = _currentFuel + _canCapacity;
 			_newFuel = _newFuel / _fuelCapacity;
 
 			if (_item call _removeItem) then {
-				player addMagazine "jerrycanE_epoch";
-				EPOCH_fillVehicle_PVS = [_vehicle,_newFuel,player,Epoch_personalToken];
-				publicVariableServer "EPOCH_fillVehicle_PVS";
+				_interactReturnOnUse call EPOCH_fnc_addItemOverflow;
+				// send
+				[_vehicle,_newFuel,player,Epoch_personalToken] remoteExec ["EPOCH_server_fillVehicle",2];
+
 				_dt = ["<t size='0.8' shadow='0' color='#99ffffff'>Fuel Added</t>", 0, 1, 5, 2, 0, 1] spawn bis_fnc_dynamictext;
 			};
 		};
 	};
 	case 5: {
 		_vehicles = player nearEntities [["LandVehicle","Ship","Air","Tank"], 6];
+		_canCapacity = _interactAttributes param [0,10];
+
 		if (cursorTarget in _vehicles) then {
 			_vehicle = cursorTarget;
-			_canCapacity = 10;
 			_fuelCapacity = getNumber (configfile >> "CfgVehicles" >> (typeOf _vehicle) >> "fuelCapacity");
 			_newFuel = (((fuel _vehicle) * _fuelCapacity) - _canCapacity) / _fuelCapacity;
-
-			//diag_log format["FIND fill _newFuel %1 capacity: %2 current: %3",_newFuel,_fuelCapacity,_currentFuel];
 			if (_newFuel > 0) then {
 				if (_item call _removeItem) then {
-					player addMagazine "jerrycan_epoch";
-					EPOCH_fillVehicle_PVS = [_vehicle,_newFuel,player,Epoch_personalToken];
-					publicVariableServer "EPOCH_fillVehicle_PVS";
+					_interactReturnOnUse call EPOCH_fnc_addItemOverflow;
+					[_vehicle,_newFuel,player,Epoch_personalToken] remoteExec ["EPOCH_server_fillVehicle",2];
+					_dt = ["<t size='0.8' shadow='0' color='#99ffffff'>Fuel Siphoned</t>", 0, 1, 5, 2, 0, 1] spawn bis_fnc_dynamictext;
+				};
+			} else {
+				_dt = ["<t size='0.8' shadow='0' color='#99ffffff'>Not Enough Fuel</t>", 0, 1, 5, 2, 0, 1] spawn bis_fnc_dynamictext;
+			};
+		} else {
+
+			// find any other nearby fuel sources
+			_transportFuel = 0;
+			{
+				_transportFuel = _transportFuel + getNumber (configFile >> "CfgVehicles" >> (typeOf _x) >> "transportFuel");
+			} forEach (player nearObjects["ALL", 6]);
+
+			if (_transportFuel > _canCapacity) then {
+				if (_item call _removeItem) then {
+					_interactReturnOnUse call EPOCH_fnc_addItemOverflow;
 					_dt = ["<t size='0.8' shadow='0' color='#99ffffff'>Fuel Siphoned</t>", 0, 1, 5, 2, 0, 1] spawn bis_fnc_dynamictext;
 				};
 			} else {
@@ -222,15 +280,13 @@ switch _interactOption do {
 					if (local _vehicle) then {
 						[_vehicle, [_currentHIT, _newDMG]] call EPOCH_client_repairVehicle;
 					} else {
-						EPOCH_repairVehicle_PVS = [_vehicle,[_currentHIT,_newDMG],player,Epoch_personalToken];
-						publicVariableServer "EPOCH_repairVehicle_PVS";
+						[_vehicle,[_currentHIT,_newDMG],player,Epoch_personalToken] remoteExec ["EPOCH_server_repairVehicle",2];
 					};
 
 					//diag_log format["DEBUG HITPOINT REPAIRED: %1 %2 %3", _currentHIT, _newDMG, _item];
 				} else {
 					if ((damage _vehicle) > 0) then {
-						EPOCH_repairVehicle_PVS = [_vehicle,["ALL",0],player,Epoch_personalToken];
-						publicVariableServer "EPOCH_repairVehicle_PVS";
+						[_vehicle,["ALL",0],player,Epoch_personalToken] remoteExec ["EPOCH_server_repairVehicle",2];
 					};
 				};
 				_dt = ["<t size='0.8' shadow='0' color='#99ffffff'>Vehicle Partially Repaired</t>", 0, 1, 5, 2, 0, 1] spawn bis_fnc_dynamictext;
@@ -242,8 +298,7 @@ switch _interactOption do {
 		_vehicle = cursorTarget;
 		if (_vehicle in _vehicles) then {
 			if (_item call _removeItem) then {
-				EPOCH_repairVehicle_PVS = [_vehicle,["ALL",0],player,Epoch_personalToken];
-				publicVariableServer "EPOCH_repairVehicle_PVS";
+				[_vehicle,["ALL",0],player,Epoch_personalToken] remoteExec ["EPOCH_server_repairVehicle",2];
 				_dt = ["<t size='0.8' shadow='0' color='#99ffffff'>Vehicle Fully Repaired</t>", 0, 1, 5, 2, 0, 1] spawn bis_fnc_dynamictext;
 			};
 		};
@@ -265,8 +320,7 @@ switch _interactOption do {
 						_paintCanIndex = getNumber(configfile >> "CfgMagazines" >> _item >> "textureIndex");
 						_paintCanColor = getText(configfile >> "CfgMagazines" >> _item >> "colorName");
 
-						EPOCH_PAINTBUILD = [_vehicle,_paintCanIndex,player,Epoch_personalToken];
-						publicVariableServer "EPOCH_PAINTBUILD";
+						[_vehicle,_paintCanIndex,player,Epoch_personalToken] remoteExec ["EPOCH_server_paintBUILD",2];
 
 						_msg = format["Wall Painted %1", _paintCanColor];
 						_dt = [format["<t size='0.8' shadow='0' color='#99ffffff'>%1</t>", _msg], 0, 1, 5, 2, 0, 1] spawn bis_fnc_dynamictext;
@@ -285,19 +339,24 @@ switch _interactOption do {
 		if (_vehicle in _vehicles) then {
 			if (damage _vehicle != 0) then {
 				if (_item call _removeItem) then {
-					EPOCH_repairVehicle_PVS = [_vehicle,["ALL",0],player,Epoch_personalToken];
-					publicVariableServer "EPOCH_repairVehicle_PVS";
+					[_vehicle,["ALL",0],player,Epoch_personalToken] remoteExec ["EPOCH_server_repairVehicle",2];
 					_dt = ["<t size = '0.8' shadow = '0' color = '#99ffffff'>Healed other player</t>", 0, 1, 5, 2, 0, 1] spawn bis_fnc_dynamictext;
 				};
 			};
 		} else {
 			if (damage player != 0) then {
 				if (_item call _removeItem) then {
-					EPOCH_repairVehicle_PVS = [player,["ALL",0],player,Epoch_personalToken];
-					publicVariableServer "EPOCH_repairVehicle_PVS";
+					[player,["ALL",0],player,Epoch_personalToken] remoteExec ["EPOCH_server_repairVehicle",2];
 					_dt = ["<t size = '0.8' shadow = '0' color = '#99ffffff'>Healed yourself</t>", 0, 1, 5, 2, 0, 1] spawn bis_fnc_dynamictext;
 				};
 			};
+		};
+	};
+
+	case 14: { // Unpack Backpack
+		if (_item call _removeItem) then {
+			[_interactReturnOnUse,player,Epoch_personalToken] remoteExec ["EPOCH_server_unpackBackpack",2];
+			_dt = ["<t size = '0.8' shadow = '0' color = '#99ffffff'>Unpacked backpack</t>", 0, 1, 5, 2, 0, 1] spawn bis_fnc_dynamictext;
 		};
 	};
 

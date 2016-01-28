@@ -1021,8 +1021,8 @@ class FSM
       init = /*%FSM<STATEINIT""">*/"titleText [_wDiag,""PLAIN"", 6];" \n
        "" \n
        "" \n
-       "EPOCH_FillContainer_PVS = [_plyr,Epoch_personalToken,objNull,false,25];" \n
-       "publicVariableServer ""EPOCH_FillContainer_PVS"";" \n
+       "" \n
+       "[_plyr,Epoch_personalToken,objNull,false,25] remoteExec [""EPOCH_server_fillContainer"",2];" \n
        "" \n
        "if (_act != """") then {" \n
        "call compile _act;" \n
@@ -1319,8 +1319,8 @@ class FSM
        "" \n
        "_copterPos = (getPosATL _plyr) findEmptyPosition [1,500,""I_Heli_light_03_unarmed_EPOCH""];" \n
        "" \n
-       "EPOCH_createObject_PVS = [player,Epoch_personalToken,_uavclass,true,_copterPos,""CAN_COLLIDE"","""","""","""","""",true];" \n
-       "publicVariableServer ""EPOCH_createObject_PVS"";" \n
+       "" \n
+       "[player,Epoch_personalToken,_uavclass,true,_copterPos,""CAN_COLLIDE"","""","""","""","""",true] remoteExec [""EPOCH_Server_createObject"",2];" \n
        "" \n
        "" \n
        "" \n

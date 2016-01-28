@@ -11,11 +11,11 @@ private ["_level","_speed"];
 params [["_level",0,[0]],["_speed",0,[0]]];
 
 if (isNil "rmx_var_drunkHandles") then {
-	
+
 	_priority = 15;
 	_wd = ["wetdistortion",_priority] call epoch_postProcessCreate;
 	_db = ["dynamicBlur",_priority] call epoch_postProcessCreate;
-	
+
 	rmx_var_drunkHandles = [_wd,_db];
 };
 

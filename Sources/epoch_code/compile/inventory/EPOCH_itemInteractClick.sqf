@@ -43,6 +43,7 @@ EPOCH_InteractedItem = [_text,_data,_pic];
 
 _interactOption = 0;
 _buttonTXT = "";
+_magCount = 1;
 if (isClass (configfile >> "cfgweapons" >> _data)) then {
   _type = getNumber (configfile >> "CfgWeapons" >> _data >> "type");
   _interactOption = getNumber (configfile >> "CfgWeapons" >> _data >> "interactAction");
@@ -51,6 +52,7 @@ if (isClass (configfile >> "cfgweapons" >> _data)) then {
   _type = getNumber (configfile >> "CfgMagazines" >> _data >> "type");
   _interactOption = getNumber (configfile >> "CfgMagazines" >> _data >> "interactAction");
   _buttonTXT = getText(configfile >> "CfgMagazines" >> _data >> "interactText");
+  _magCount = getNumber (configfile >> "CfgMagazines" >> _data >> "count");
 };
 
 _display = (findDisplay 602);
@@ -60,8 +62,13 @@ if (_buttonTXT != "") then {
   _useBtn ctrlSetText _buttonTXT;
   _useBtn ctrlEnable true;
 } else {
-  _useBtn ctrlSetText "EXAMINE";
-  _useBtn ctrlEnable false;
+  if (_magCount > 1) then {
+      _useBtn ctrlEnable true;
+      _useBtn ctrlSetText "REPACK";
+  } else {
+      _useBtn ctrlSetText "EXAMINE";
+      _useBtn ctrlEnable false;
+  };
 };
 
 _useBtn = _display displayCtrl -14;

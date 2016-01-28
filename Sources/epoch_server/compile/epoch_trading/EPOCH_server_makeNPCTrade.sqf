@@ -224,7 +224,7 @@ if (_slot != -1) then {
 										_lockOwner = _plyrGroup;
 									};
 
-									_vehObj = [_item,_position,random 360,true,_vehslot,_lockOwner,"NONE",false] call EPOCH_fnc_spawn_vehicle;
+									_vehObj = [_item,_position,random 360,true,_vehslot,_lockOwner,"NONE",false,false] call EPOCH_fnc_spawn_vehicle;
 									_final_location = getPosATL _vehObj;
 
 									_group = group _plyr;

@@ -451,7 +451,7 @@ class FSM
        "" \n
        "_copter say3D ""drone_alert0"";" \n
        "EPOCH_say3D_PVS = [player, _copter, 10,Epoch_personalToken];" \n
-       "publicVariableServer ""EPOCH_say3D_PVS"";" \n
+       "EPOCH_say3D_PVS remoteExec [""EPOCH_server_handle_say3D"",2];" \n
        "" \n
        "_troopsOnGround = true;" \n
        "(driver _copter) action [""lightOn"", _copter];" \n

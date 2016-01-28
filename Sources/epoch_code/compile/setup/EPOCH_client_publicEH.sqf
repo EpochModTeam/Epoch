@@ -44,7 +44,7 @@ call compile ("
 			case "+str(_this select 16)+": { Epoch_my_GroupUID = _data };
 			case "+str(_this select 17)+": { _data call EPOCH_Group_invitePlayer };
 			case "+str(_this select 18)+": { _data call EPOCH_handleServerMessage };
-			case "+str(_this select 19)+": { {missionNamespace setVariable[format['EPOCH_player%1', _x], EPOCH_defaultVars select(EPOCH_customVars find _x)]} forEach['Temp','Hunger','Thirst','Toxicity','Stamina','HitPoints','BloodP']};
+			case "+str(_this select 19)+": { {missionNamespace setVariable[format['EPOCH_player%1', _x], EPOCH_defaultVars select(EPOCH_customVars find _x)]} forEach['Temp','Hunger','Thirst','Toxicity','Stamina','HitPoints','BloodP','Alcohol','Radiation']};
 			case "+str(_this select 20)+": { _data call EPOCH_mission_returnObj };
 		};
 	};

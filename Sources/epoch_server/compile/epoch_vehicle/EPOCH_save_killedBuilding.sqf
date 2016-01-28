@@ -15,7 +15,8 @@ if (!isNull _building) then {
 		};
 
 		_vehHiveKey = format ["%1:%2", (call EPOCH_fn_InstanceID), _vehSlot];
-		["Building", _vehHiveKey, []] call EPOCH_fnc_server_hiveSET;
+		["Building", _vehHiveKey] call EPOCH_fnc_server_hiveDEL;
+
 		EPOCH_BuildingSlots set [_vehSlot, 0];
 
 		EPOCH_BuildingSlotCount = { _x == 0 } count EPOCH_BuildingSlots;

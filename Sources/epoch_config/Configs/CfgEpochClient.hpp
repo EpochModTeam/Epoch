@@ -15,7 +15,7 @@
 
 class CfgEpochClient
 {
-	epochVersion = "0.3.6.0";
+	epochVersion = "0.3.7.0";
 
 	sapperRngChance = 100; // increase number to reduce chances and reduce to increase. Default 100 = 1% - 55% if soiled (+ 2% if in city) chance to spawn sapper
 	droneRngChance = 100; // increase number to reduce chances and reduce to increase. Default 100 = // 2% chance (+ 4% chance if in city) (1% - 2% Half if using silencer) to spawn drone if shot fired
@@ -81,6 +81,18 @@ class CfgEpochClient
 		{ "cabinetPos", "Cabinet_EPOCH", false }
 	};
 
+	displayAddEventHandler[] = {"keyDown","keyUp"};
+    keyDown = "_this call EPOCH_KeyDown;";
+    keyUp   = "_this call EPOCH_KeyUp;";
+
+	addEventHandler[] = {"Respawn","Put","Take","InventoryClosed","InventoryOpened","Fired","Killed"};
+	Respawn = "(_this select 0) call EPOCH_clientRespawn";
+	Put = "(_this select 1) call EPOCH_interact;_this call EPOCH_PutHandler";
+  	Take = "(_this select 1) call EPOCH_interact;_this call EPOCH_UnisexCheck";
+    Fired           = "_this call EPOCH_fnc_playerFired;";
+    InventoryClosed = "if !(EPOCH_arr_interactedObjs isEqualTo[]) then {EPOCH_arr_interactedObjs remoteExec['EPOCH_server_save_vehicles', 2]; EPOCH_arr_interactedObjs = [];};";
+	InventoryOpened = "_this spawn EPOCH_initUI;_container = _this select 1;_lockedNear = false;if (_container isKindOf 'GroundWeaponHolder' || _container isKindOf 'WeaponHolderSimulated') then {{if (locked _x in [2, 3] ||_x getVariable['EPOCH_Locked', false]) exitWith {_lockedNear = true}} forEach (player nearSupplies 10);};if (locked _container in [2, 3] || _container getVariable['EPOCH_Locked', false] || _lockedNear) then {[] spawn {disableSerialization;waitUntil {!isNull findDisplay 602};_display = findDisplay 602;_ctrl_cargo = _display displayCtrl 6401;_ctrl_ground = _display displayCtrl 6321;_ctrl_cargo ctrlEnable  false;ctrlSetFocus _ctrl_ground;ctrlActivate _ctrl_ground;};};";
+    Killed          = "_this call EPOCH_fnc_playerDeath;";
 
 	#include "CfgEpochClient\takistan.hpp"
 	#include "CfgEpochClient\australia.hpp"
@@ -93,6 +105,8 @@ class CfgEpochClient
 	#include "CfgEpochClient\Chernarus.hpp"
 	#include "CfgEpochClient\Stratis.hpp"
 	#include "CfgEpochClient\Esseker.hpp"
+
+	#include "CfgEpochClient\WorldInteractions.hpp"
 
 };
 

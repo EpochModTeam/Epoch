@@ -114,6 +114,6 @@ switch _unitClass do {
 };
 
 if !(isNull _unit) then {
-	EPOCH_TEMPOBJ_PVS = _unit;
-	publicVariableServer "EPOCH_TEMPOBJ_PVS";
+	// send to server
+	[_unit] remoteExec ["EPOCH_localCleanup",2];
 };

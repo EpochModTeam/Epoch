@@ -32,6 +32,7 @@ EPOCH_server_deadPlayer          = compileFinal preprocessFileLineNumbers "\x\ad
 EPOCH_server_revivePlayer        = compileFinal preprocessFileLineNumbers "\x\addons\a3_epoch_server\compile\epoch_player\EPOCH_server_revivePlayer.sqf";
 EPOCH_server_storeCrypto         = compileFinal preprocessFileLineNumbers "\x\addons\a3_epoch_server\compile\epoch_player\EPOCH_server_storeCrypto.sqf";
 EPOCH_server_equippedItem        = compileFinal preprocessFileLineNumbers "\x\addons\a3_epoch_server\compile\epoch_player\EPOCH_server_equippedItem.sqf";
+EPOCH_server_unpackBackpack      = compileFinal preprocessFileLineNumbers "\x\addons\a3_epoch_server\compile\epoch_player\EPOCH_server_unpackBackpack.sqf";
 EPOCH_server_loadTraders         = compileFinal preprocessFileLineNumbers "\x\addons\a3_epoch_server\compile\epoch_traders\EPOCH_server_loadTraders.sqf";
 EPOCH_server_spawnTraders        = compileFinal preprocessFileLineNumbers "\x\addons\a3_epoch_server\compile\epoch_traders\EPOCH_server_spawnTraders.sqf";
 EPOCH_server_makeTrade           = compileFinal preprocessFileLineNumbers "\x\addons\a3_epoch_server\compile\epoch_trading\EPOCH_server_makeTrade.sqf";
@@ -62,9 +63,9 @@ EPOCH_server_traderKilled        = compileFinal preprocessFileLineNumbers "\x\ad
 EPOCH_localCleanup               = compileFinal preprocessFileLineNumbers "\x\addons\a3_epoch_server\compile\epoch_server\EPOCH_localCleanup.sqf";
 EPOCH_server_createTeleport      = compileFinal preprocessFileLineNumbers "\x\addons\a3_epoch_server\compile\epoch_server\EPOCH_server_createTeleport.sqf";
 EPOCH_server_teleportPlayer      = compileFinal preprocessFileLineNumbers "\x\addons\a3_epoch_server\compile\epoch_server\EPOCH_server_teleportPlayer.sqf";
-EPOCH_Server_createObject        = compile preprocessFileLineNumbers "\x\addons\a3_epoch_server\compile\epoch_missions\EPOCH_Server_createObject.sqf";
-EPOCH_server_airDropCrate        = compile preprocessFileLineNumbers "\x\addons\a3_epoch_server\compile\epoch_missions\EPOCH_server_airDropCrate.sqf";
-EPOCH_server_fillContainer       = compile preprocessFileLineNumbers "\x\addons\a3_epoch_server\compile\epoch_missions\EPOCH_Server_fillContainer.sqf";
+EPOCH_Server_createObject        = compileFinal preprocessFileLineNumbers "\x\addons\a3_epoch_server\compile\epoch_missions\EPOCH_Server_createObject.sqf";
+EPOCH_server_airDropCrate        = compileFinal preprocessFileLineNumbers "\x\addons\a3_epoch_server\compile\epoch_missions\EPOCH_server_airDropCrate.sqf";
+EPOCH_server_fillContainer       = compileFinal preprocessFileLineNumbers "\x\addons\a3_epoch_server\compile\epoch_missions\EPOCH_Server_fillContainer.sqf";
 EPOCH_server_handle_sapperObjs   = compileFinal preprocessFileLineNumbers "\x\addons\a3_epoch_server\compile\epoch_antagonists\EPOCH_server_handle_sapperObjs.sqf";
 EPOCH_Server_createAirDrop       = compileFinal preprocessFileLineNumbers "\x\addons\a3_epoch_server\compile\epoch_missions\EPOCH_Server_createAirDrop.sqf";
 
@@ -74,7 +75,7 @@ EPOCH_weightedArray = compileFinal '
     _configName = _this select 1;
     _arrayName  = _this select 2;
     _return     = missionNamespace getVariable[format["EPOCH_LT_%1_%2_%3",_configName,_keyName,_arrayName],[]];
-    if(_return isEqualTo[]) then { 
+    if(_return isEqualTo[]) then {
         _lootTableArray = [];
         _weightedArray  = [];
         {

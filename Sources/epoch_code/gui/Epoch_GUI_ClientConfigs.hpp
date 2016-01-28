@@ -1,7 +1,7 @@
 /*
-The x and y coords of the child control are relative to the parent class, the height and width are not 
-If the height and / or width of the child control are greater than the parent control then scrollbars will be seen 
-This allows the creation of scrollable active text controls etc 
+The x and y coords of the child control are relative to the parent class, the height and width are not
+If the height and / or width of the child control are greater than the parent control then scrollbars will be seen
+This allows the creation of scrollable active text controls etc
 The entire child class needs to be defined in the parents subclass class Controls {};
 
 External parent classes:
@@ -42,9 +42,9 @@ class Epoch_main_config_template: RscControlsGroup
 class Epoch_main_config_changelog: Epoch_main_config_template
 {
 	w = 0.425 * safezoneW;
-	
-	//onLoad = "((findDisplay 49) displayCtrl 71000) htmlLoad 'x\addons\a3_epoch_code\gui\changelog.html';";
-	onLoad = "((findDisplay 49) displayCtrl 71000) htmlLoad 'https://raw.githubusercontent.com/epochmodteam/epoch/test/changelog.html';";
+
+	onLoad = "((findDisplay 49) displayCtrl 71000) htmlLoad 'x\addons\a3_epoch_code\gui\changelog.html';";
+	//onLoad = "((findDisplay 49) displayCtrl 71000) htmlLoad 'https://raw.githubusercontent.com/epochmodteam/epoch/test/changelog.html';";
 	class controls
 	{
 		class Epoch_main_config_html: RscHtml //https://community.bistudio.com/wiki/DialogControls-Text#CT_HTML.3D9
@@ -63,7 +63,7 @@ class Epoch_main_config_changelog: Epoch_main_config_template
 			colorBold[] = {0.76,0.5,0.07,0.8};
 			colorLink[] = {1,1,1,0.75};
 			colorLinkActive[] = {1,1,1,1.0};
-			
+
 			colorBackground[] = {0.2,0.2,0.2,1};
 
 			colorPicture[] = {1, 1, 1, 1};

@@ -40,8 +40,7 @@ if (EPOCH_playerCrypto > 0) then {
 
     EPOCH_maintainLockout = true;
 
-    EPOCH_MAINTBUILD = [_this, player, _maintainCount, Epoch_personalToken];
-    publicVariableServer "EPOCH_MAINTBUILD";
+    [_this, player, _maintainCount, Epoch_personalToken] remoteExec ["EPOCH_server_maintBUILD",2];
 
     [_rnd,_maintainCount] spawn {
       params ["_rnd","_maintainCount"];

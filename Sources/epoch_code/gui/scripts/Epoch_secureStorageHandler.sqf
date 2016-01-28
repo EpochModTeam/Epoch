@@ -9,8 +9,7 @@ _out = switch (typeName _in) do {
 	};
 	case "OBJECT":
 	{
-		EPOCH_lockStorage_PVS = [_in,(_in getVariable ["EPOCH_Locked",false]),player,Epoch_personalToken];
-		publicVariableServer "EPOCH_lockStorage_PVS";
+		[_in,(_in getVariable ["EPOCH_Locked",false]),player,Epoch_personalToken] remoteExec ["EPOCH_server_lockStorage",2];
 		true
 	};
 	default {false};

@@ -82,8 +82,7 @@ if !(_buildingAllowed)exitWith{false};
 
 _removeParts = getArray(('CfgBaseBuilding' call EPOCH_returnConfig) >> _objType >> "removeParts");
 if !(_removeParts isEqualTo[]) then{
-	EPOCH_REMBUILD = [_this, player, Epoch_personalToken];
-	publicVariableServer "EPOCH_REMBUILD";
+	[_this, player, Epoch_personalToken] remoteExec ["EPOCH_server_removeBUILD",2];
 	_return = true;
 	_dt = ["<t size='0.8' shadow='0' color='#99ffffff'>Removed</t>", 0, 1, 5, 2, 0, 1] spawn bis_fnc_dynamictext;
 };

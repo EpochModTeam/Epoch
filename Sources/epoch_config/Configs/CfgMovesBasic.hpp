@@ -386,11 +386,26 @@ class CfgMovesBasic
 		Binoculars = "";
 		FDStart = "";
 		Obstructed = "";
+		// Custom Start
+		GestureSwing0 = "";
+		GestureSwing1 = "";
+		GestureSwing2 = "";
+		GestureFinger = "";
+		SledgeSwing = "";
+		// Custom End
 	};
 	class Actions
 	{
 		class NoActions: ManActions
 		{
+			// Custom Start
+			GestureSwing0[] = {"GestureSwing0","Gesture"};
+			GestureSwing1[] = {"GestureSwing1","Gesture"};
+			GestureSwing2[] = {"GestureSwing2","Gesture"};
+			GestureFinger[] = {"GestureFinger","Gesture"};
+			SledgeSwing[] = {"SledgeSwing","Gesture"};
+			// Custom End
+
 			GestureLegPush[] = {"GestureLegPush","Gesture"};
 			GestureNod[] = {"GestureNod","Gesture"};
 			GestureAgonyCargo[] = {"GestureAgonyCargo","Gesture"};

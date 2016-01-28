@@ -1,4 +1,4 @@
-/*%FSM<COMPILE "C:\Program Files (x86)\Bohemia Interactive\Tools\FSM Editor Personal Edition\scriptedFSM.cfg, sapperAlt">*/
+/*%FSM<COMPILE "F:\Program Files (x86)\Bohemia Interactive\Tools\FSM Editor Personal Edition\scriptedFSM.cfg, sapperAlt">*/
 /*%FSM<HEAD>*/
 /*
 item0[] = {"sapper",0,250,-225.000000,-325.000000,-125.000000,-275.000000,0.000000,"sapper"};
@@ -35,12 +35,12 @@ item30[] = {"stalking",4,218,-50.000000,50.000000,50.000000,100.000000,5.000000,
 item31[] = {"Wait_random",4,218,-225.000000,-200.000000,-125.000000,-150.000000,10.000000,"Wait random"};
 item32[] = {"groan",4,218,200.000000,375.000000,300.000000,425.000000,5.000000,"groan"};
 item33[] = {"detonate",4,218,125.000000,-350.000000,225.000000,-300.000000,70.000000,"detonate"};
-item34[] = {"end",1,250,975.000000,0.000000,1075.000000,50.000000,0.000000,"end"};
-item35[] = {"Wait_to_delete",4,218,975.000000,150.000000,1075.000000,200.000000,10.000000,"Wait to delete"};
+item34[] = {"end",1,250,1050.000000,-25.000000,1150.000000,25.000000,0.000000,"end"};
+item35[] = {"Wait_to_delete",4,218,1050.000000,125.000000,1150.000000,175.000000,10.000000,"Wait to delete"};
 item36[] = {"handle_dispose",2,250,525.000000,125.000000,625.000000,175.000000,0.000000,"handle dispose"};
-item37[] = {"Wait_1_5_sec",4,218,650.000000,300.000000,750.000000,350.000000,0.000000,"Wait" \n "1.5 sec"};
-item38[] = {"do_boom",2,4346,650.000000,225.000000,750.000000,275.000000,0.000000,"do boom"};
-item39[] = {"_",8,218,800.000000,300.000000,850.000000,325.000000,0.000000,""};
+item37[] = {"Wait_1_5_sec",4,218,525.000000,350.000000,625.000000,400.000000,0.000000,"Wait" \n "1.5 sec"};
+item38[] = {"do_boom",2,250,650.000000,225.000000,750.000000,275.000000,0.000000,"do boom"};
+item39[] = {"_",8,218,800.000000,225.000000,875.000000,275.000000,0.000000,""};
 item40[] = {"do_groan",2,250,225.000000,500.000000,325.000000,550.000000,0.000000,"do groan"};
 item41[] = {"do_stalk",2,250,-200.000000,50.000000,-100.000000,100.000000,0.000000,"do stalk"};
 item42[] = {"do_loiter_big",2,250,350.000000,500.000000,450.000000,550.000000,0.000000,"do loiter big"};
@@ -63,7 +63,9 @@ item58[] = {"feeling",4,218,775.000000,-50.000000,875.000000,0.000000,50.000000,
 item59[] = {"charging",4,218,-50.000000,225.000000,50.000000,275.000000,5.000000,"charging"};
 item60[] = {"stalk",4,218,375.000000,-275.000000,475.000000,-225.000000,20.000000,"stalk"};
 item61[] = {"not_shot",4,218,900.000000,125.000000,1000.000000,175.000000,10.000000,"not shot"};
-item62[] = {"finished_boom",2,250,900.000000,225.000000,1000.000000,275.000000,0.000000,"finished boom"};
+item62[] = {"finished_boom",2,250,900.000000,300.000000,1000.000000,350.000000,0.000000,"finished boom"};
+item63[] = {"Wait_for_Explosi",4,218,650.000000,350.000000,750.000000,400.000000,0.000000,"Wait for Explosion"};
+item64[] = {"Remove_corpse",2,4346,775.000000,300.000000,875.000000,350.000000,0.000000,"Remove corpse"};
 link0[] = {0,31};
 link1[] = {1,2};
 link2[] = {2,3};
@@ -126,7 +128,7 @@ link58[] = {35,34};
 link59[] = {36,57};
 link60[] = {36,61};
 link61[] = {37,38};
-link62[] = {38,39};
+link62[] = {38,63};
 link63[] = {39,62};
 link64[] = {40,6};
 link65[] = {41,30};
@@ -154,8 +156,10 @@ link86[] = {59,4};
 link87[] = {60,2};
 link88[] = {61,62};
 link89[] = {62,35};
-globals[] = {25.000000,1,0,0,16777215,640,480,1,248,6316128,1,-343.543304,1069.998291,679.913574,-353.385406,1000,731,1};
-window[] = {2,-1,-1,-1,-1,542,56,1081,17,3,1018};
+link90[] = {63,64};
+link91[] = {64,39};
+globals[] = {25.000000,1,0,0,16777215,640,480,1,253,6316128,1,-209.204178,1204.337524,679.913574,-353.385406,1000,880,1};
+window[] = {2,-1,-1,-1,-1,655,130,1155,130,3,1018};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -267,7 +271,7 @@ class FSM
        "" \n
        "_sapper say3D _sound;" \n
        "EPOCH_say3D_PVS = [player, _sapper,(EPOCH_sounds find _sound), Epoch_personalToken];" \n
-       "publicVariableServer ""EPOCH_say3D_PVS"";" \n
+       "EPOCH_say3D_PVS remoteExec [""EPOCH_server_handle_say3D"",2];" \n
        "};" \n
        "" \n
        "_doInterrupt = {" \n
@@ -633,7 +637,7 @@ class FSM
        "_sound = ""sapper_explode"";" \n
        "_sapper say3D _sound;" \n
        "EPOCH_say3D_PVS = [player,_sapper,(EPOCH_sounds find _sound),Epoch_personalToken];" \n
-       "publicVariableServer ""EPOCH_say3D_PVS"";" \n
+       "EPOCH_say3D_PVS remoteExec [""EPOCH_server_handle_say3D"",2];" \n
        "_sapper playMoveNow ""Unconscious"";" \n
        "" \n
        ""/*%FSM</STATEINIT""">*/;
@@ -1040,25 +1044,19 @@ class FSM
     class do_boom
     {
       name = "do_boom";
-      init = /*%FSM<STATEINIT""">*/"EPOCH_SapperObjs_PVS = [_sBomb, player, Epoch_personalToken,_sapper,_sapper];" \n
-       "publicVariableServer ""EPOCH_SapperObjs_PVS"";" \n
-       "" \n
-       "_sBomb = objNull;" \n
-       "" \n
-       "deleteVehicle _sapper;" \n
-       "" \n
+      init = /*%FSM<STATEINIT""">*/"[_sBomb, player, Epoch_personalToken,_sapper,_sapper] remoteExec [""EPOCH_server_handle_sapperObjs"",2];" \n
        "_doneBoom = true;" \n
        ""/*%FSM</STATEINIT""">*/;
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
       class Links
       {
-        /*%FSM<LINK "_">*/
-        class _
+        /*%FSM<LINK "Wait_for_Explosi">*/
+        class Wait_for_Explosi
         {
           priority = 0.000000;
-          to="finished_boom";
+          to="Remove_corpse";
           precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"isNull(_sBomb)"/*%FSM</CONDITION""">*/;
           action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
         };
         /*%FSM</LINK>*/
@@ -1269,7 +1267,7 @@ class FSM
            "	_sound = ""sapper_groan2"";" \n
            "	_sapper say3D _sound;" \n
            "     	EPOCH_say3D_PVS = [player, _sapper,(EPOCH_sounds find _sound), Epoch_personalToken];" \n
-           "	publicVariableServer ""EPOCH_say3D_PVS"";" \n
+           "	EPOCH_say3D_PVS remoteExec [""EPOCH_server_handle_say3D"",2];" \n
            "};" \n
            ""/*%FSM</ACTION""">*/;
         };
@@ -1409,11 +1407,32 @@ class FSM
       };
     };
     /*%FSM</STATE>*/
+    /*%FSM<STATE "Remove_corpse">*/
+    class Remove_corpse
+    {
+      name = "Remove_corpse";
+      init = /*%FSM<STATEINIT""">*/"deleteVehicle _sapper;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "_">*/
+        class _
+        {
+          priority = 0.000000;
+          to="finished_boom";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
   };
   initState="sapper";
   finalStates[] =
   {
-    "end"
+    "end",
   };
 };
 /*%FSM</COMPILE>*/

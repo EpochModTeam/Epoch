@@ -28,7 +28,7 @@ class CfgMagazines
 		mass = 1;
 		interactAction = 2;
 		interactText = "DRINK";
-		//Temp,Hunger,Thirst,Energy,Soiled,Immunity,Toxicity,Stamina,Crypto,BloodP
+		//Temp,Hunger,Thirst,Energy,Soiled,Immunity,Toxicity,Stamina,Crypto,BloodP,Karma,Alcohol,Radiation
 		interactAttributes[] = {0,0,500,0,0,0,0,0,0,0};
 	};
 	class 1Rnd_Food: CA_Magazine
@@ -41,9 +41,13 @@ class CfgMagazines
 		mass = 1;
 		interactAction = 1;
 		interactText = "EAT";
-		//Temp,Hunger,Thirst,Energy,Soiled,Immunity,Toxicity,Stamina,Crypto,BloodP
+		//Temp,Hunger,Thirst,Energy,Soiled,Immunity,Toxicity,Stamina,Crypto,BloodP,Karma,Alcohol,Radiation
 		interactAttributes[] = {0,600,0,0,0,0,0,0,0,0};
 	};
+
+	// 037 custom auto generated start
+	#include "CfgMagazines\Custom.hpp"
+	// 037 custom auto generated end
 
 	class FAK : CA_Magazine
 	{
@@ -132,8 +136,6 @@ class CfgMagazines
 		picture = "\x\addons\a3_epoch_assets_1\pictures\equip_kilohemp_CA.paa";
 		type = 256;
 		mass = 1;
-
-
 	};
 
 	class ItemSodaRbull : 1Rnd_Soda{
@@ -142,8 +144,9 @@ class CfgMagazines
 		model = "\x\addons\a3_epoch_assets_1\models\soda_redbull.p3d";
 		picture = "\x\addons\a3_epoch_assets_1\pictures\equip_soda_rbull_CA.paa";
 		mass = 1;
-		//Temp,Hunger,Thirst,Energy,Soiled,Immunity,Toxicity,Stamina,Crypto,BloodP
+		//Temp,Hunger,Thirst,Energy,Soiled,Immunity,Toxicity,Stamina,Crypto,BloodP,Karma,Alcohol,Radiation
 		interactAttributes[] = {0,0,1000,0,0,0,0,100,0,0};
+		interactReturnOnUse = "ItemSodaEmpty";
 	};
 	class ItemSodaOrangeSherbet : 1Rnd_Soda{
 		displayName = "Orange Sherbet";
@@ -151,8 +154,9 @@ class CfgMagazines
 		model = "\x\addons\a3_epoch_assets_1\models\soda_sherbet.p3d";
 		picture = "\x\addons\a3_epoch_assets_1\pictures\soda_orangesherbet_ca.paa";
 		mass = 1;
-		//Temp,Hunger,Thirst,Energy,Soiled,Immunity,Toxicity,Stamina,Crypto,BloodP
+		//Temp,Hunger,Thirst,Energy,Soiled,Immunity,Toxicity,Stamina,Crypto,BloodP,Karma,Alcohol,Radiation
 		interactAttributes[] = {0,0,800,0,0,0,0,75,0,0};
+		interactReturnOnUse = "ItemSodaEmpty";
 	};
 
 	class ItemSodaPurple : 1Rnd_Soda{
@@ -161,8 +165,9 @@ class CfgMagazines
 		model = "\x\addons\a3_epoch_assets_1\models\soda_purple.p3d";
 		picture = "\x\addons\a3_epoch_assets_1\pictures\soda_purple_equip_ca.paa";
 		mass = 1;
-		//Temp,Hunger,Thirst,Energy,Soiled,Immunity,Toxicity,Stamina,Crypto,BloodP
+		//Temp,Hunger,Thirst,Energy,Soiled,Immunity,Toxicity,Stamina,Crypto,BloodP,Karma,Alcohol,Radiation
 		interactAttributes[] = { 0, 0, 800, 0, 0, 0, 0, 75, 0, 0 };
+		interactReturnOnUse = "ItemSodaEmpty";
 	};
 	class ItemSodaMocha : 1Rnd_Soda{
 		displayName = "Mocha Cola";
@@ -170,8 +175,9 @@ class CfgMagazines
 		model = "\x\addons\a3_epoch_assets_1\models\soda_mocha.p3d";
 		picture = "\x\addons\a3_epoch_assets_1\pictures\soda_mocha_equip_ca.paa";
 		mass = 1;
-		//Temp,Hunger,Thirst,Energy,Soiled,Immunity,Toxicity,Stamina,Crypto,BloodP
+		//Temp,Hunger,Thirst,Energy,Soiled,Immunity,Toxicity,Stamina,Crypto,BloodP,Karma,Alcohol,Radiation
 		interactAttributes[] = { 0, 0, 650, 0, 0, 0, 0, 150, 0, 0 };
+		interactReturnOnUse = "ItemSodaEmpty";
 	};
 	class ItemSodaBurst : 1Rnd_Soda{
 		displayName = "Burst Koke";
@@ -179,8 +185,9 @@ class CfgMagazines
 		model = "\x\addons\a3_epoch_assets_1\models\soda_burst.p3d";
 		picture = "\x\addons\a3_epoch_assets_1\pictures\soda_burst_equip_ca.paa";
 		mass = 1;
-		//Temp,Hunger,Thirst,Energy,Soiled,Immunity,Toxicity,Stamina,Crypto,BloodP
+		//Temp,Hunger,Thirst,Energy,Soiled,Immunity,Toxicity,Stamina,Crypto,BloodP,Karma,Alcohol,Radiation
 		interactAttributes[] = { 0, 0, 800, 0, 0, 0, 0, 75, 0, 0 };
+		interactReturnOnUse = "ItemSodaEmpty";
 	};
 
 
@@ -191,7 +198,7 @@ class CfgMagazines
 		model = "\x\addons\a3_epoch_assets_1\models\trout.p3d";
 		picture = "\x\addons\a3_epoch_assets_1\pictures\equip_rainbowtrout_CA.paa";
 		mass = 5;
-		//Temp,Hunger,Thirst,Energy,Soiled,Immunity,Toxicity,Stamina,Crypto,BloodP
+		//Temp,Hunger,Thirst,Energy,Soiled,Immunity,Toxicity,Stamina,Crypto,BloodP,Karma,Alcohol,Radiation
 		interactAttributes[] = { 0, 300, 0, 0, 0, 0, 5, 0, 0, 0 };
 	};
 	class ItemSeaBass : 1Rnd_Food{
@@ -201,7 +208,7 @@ class CfgMagazines
 		model = "\x\addons\a3_epoch_assets_1\models\seabass.p3d";
 		picture = "\x\addons\a3_epoch_assets_1\pictures\equip_seabass_CA.paa";
 		mass = 10;
-		//Temp,Hunger,Thirst,Energy,Soiled,Immunity,Toxicity,Stamina,Crypto,BloodP
+		//Temp,Hunger,Thirst,Energy,Soiled,Immunity,Toxicity,Stamina,Crypto,BloodP,Karma,Alcohol,Radiation
 		interactAttributes[] = { 0, 500, 0, 0, 0, 0, 10, 0, 0, 0 };
 	};
 	class ItemTuna : 1Rnd_Food{
@@ -211,7 +218,7 @@ class CfgMagazines
 		model = "\x\addons\a3_epoch_assets_1\models\tuna.p3d";
 		picture = "\x\addons\a3_epoch_assets_1\pictures\equip_tuna_CA.paa";
 		mass = 50;
-		//Temp,Hunger,Thirst,Energy,Soiled,Immunity,Toxicity,Stamina,Crypto,BloodP
+		//Temp,Hunger,Thirst,Energy,Soiled,Immunity,Toxicity,Stamina,Crypto,BloodP,Karma,Alcohol,Radiation
 		interactAttributes[] = { 0, 2500, 0, 0, 0, 0, 0, 0, 0, 0 };
 	};
 	class ItemTroutCooked : 1Rnd_Food{
@@ -221,7 +228,7 @@ class CfgMagazines
 		model = "\x\addons\a3_epoch_assets_1\models\trout_cooked.p3d";
 		picture = "\x\addons\a3_epoch_assets_1\pictures\equip_trout_cooked_CA.paa";
 		mass = 5;
-		//Temp,Hunger,Thirst,Energy,Soiled,Immunity,Toxicity,Stamina,Crypto,BloodP
+		//Temp,Hunger,Thirst,Energy,Soiled,Immunity,Toxicity,Stamina,Crypto,BloodP,Karma,Alcohol,Radiation
 		interactAttributes[] = { 0, 600, 0, 0, 0, 0, 0, 0, 0, 0 };
 	};
 	class ItemSeaBassCooked : 1Rnd_Food{
@@ -231,7 +238,7 @@ class CfgMagazines
 		model = "\x\addons\a3_epoch_assets_1\models\seabass_cooked.p3d";
 		picture = "\x\addons\a3_epoch_assets_1\pictures\equip_seabass_cooked_CA.paa";
 		mass = 10;
-		//Temp,Hunger,Thirst,Energy,Soiled,Immunity,Toxicity,Stamina,Crypto,BloodP
+		//Temp,Hunger,Thirst,Energy,Soiled,Immunity,Toxicity,Stamina,Crypto,BloodP,Karma,Alcohol,Radiation
 		interactAttributes[] = { 0, 1200, 0, 0, 0, 0, 0, 0, 0, 0 };
 	};
 	class ItemTunaCooked : 1Rnd_Food{
@@ -241,7 +248,7 @@ class CfgMagazines
 		model = "\x\addons\a3_epoch_assets_1\models\tuna_cooked.p3d";
 		picture = "\x\addons\a3_epoch_assets_1\pictures\equip_tuna_cooked_CA.paa";
 		mass = 50;
-		//Temp,Hunger,Thirst,Energy,Soiled,Immunity,Toxicity,Stamina,Crypto,BloodP
+		//Temp,Hunger,Thirst,Energy,Soiled,Immunity,Toxicity,Stamina,Crypto,BloodP,Karma,Alcohol,Radiation
 		interactAttributes[] = { 0, 5000, 0, 0, 0, 0, 0, 0, 0, 0 };
 	};
 
@@ -251,8 +258,9 @@ class CfgMagazines
 		model = "\x\addons\a3_epoch_assets_1\models\biomeat_can.p3d";
 		picture = "\x\addons\a3_epoch_assets_1\pictures\equip_biomeat_CA.paa";
 		descriptionShort = "Bio Meat: A very good source of nutrition, and a very high chance of infection. Eat at own risk.";
-		//Temp,Hunger,Thirst,Energy,Soiled,Immunity,Toxicity,Stamina,Crypto,BloodP
+		//Temp,Hunger,Thirst,Energy,Soiled,Immunity,Toxicity,Stamina,Crypto,BloodP,Karma,Alcohol,Radiation
 		interactAttributes[] = {0,1000,0,0,0,0,7,0,0,0};
+		interactReturnOnUse = "ItemEmptyTin";
 	};
 
 	class FoodMeeps : 1Rnd_Food{
@@ -261,7 +269,7 @@ class CfgMagazines
 		model = "\x\addons\a3_epoch_assets\models\meeps.p3d";
 		picture = "\x\addons\a3_epoch_assets\textures\candy\equip_meeps_ca.paa";
 		descriptionShort = "Pumpkin marshmallow candy";
-		//Temp,Hunger,Thirst,Energy,Soiled,Immunity,Toxicity,Stamina,Crypto,BloodP
+		//Temp,Hunger,Thirst,Energy,Soiled,Immunity,Toxicity,Stamina,Crypto,BloodP,Karma,Alcohol,Radiation
 		interactAttributes[] = {0,500,0,0,0,0,0,0,0,0};
 	};
 	class FoodSnooter : 1Rnd_Food{
@@ -270,7 +278,7 @@ class CfgMagazines
 		model = "\x\addons\a3_epoch_assets\models\snooter.p3d";
 		picture = "\x\addons\a3_epoch_assets\textures\candy\equip_snooters_ca.paa";
 		descriptionShort = "Not hungry? grab a Snooters";
-		//Temp,Hunger,Thirst,Energy,Soiled,Immunity,Toxicity,Stamina,Crypto,BloodP
+		//Temp,Hunger,Thirst,Energy,Soiled,Immunity,Toxicity,Stamina,Crypto,BloodP,Karma,Alcohol,Radiation
 		interactAttributes[] = {0,500,0,0,0,0,0,50,0,0};
 	};
 	class FoodWalkNSons : 1Rnd_Soda{
@@ -279,8 +287,9 @@ class CfgMagazines
 		model = "\x\addons\a3_epoch_assets\models\walkinson.p3d";
 		picture = "\x\addons\a3_epoch_assets\textures\candy\equip_walkinson_ca.paa";
 		descriptionShort = "Stuck walkin' grab a Walk N' Sons Soda";
-		//Temp,Hunger,Thirst,Energy,Soiled,Immunity,Toxicity,Stamina,Crypto,BloodP
+		//Temp,Hunger,Thirst,Energy,Soiled,Immunity,Toxicity,Stamina,Crypto,BloodP,Karma,Alcohol,Radiation
 		interactAttributes[] = {0,0,1200,0,0,0,0,150,0,0};
+		interactReturnOnUse = "ItemSodaEmpty";
 	};
 
 	class ItemTopaz : CA_Magazine {
@@ -490,7 +499,7 @@ class CfgMagazines
 		interactReturnOnUse = "ItemCoolerE";
 		interactAction = 1;
 		interactText = "EAT";
-		//Temp,Hunger,Thirst,Energy,Soiled,Immunity,Toxicity,Stamina,Crypto,BloodP
+		//Temp,Hunger,Thirst,Energy,Soiled,Immunity,Toxicity,Stamina,Crypto,BloodP,Karma,Alcohol,Radiation
 		interactAttributes[] = { 0, 5000, 0, 0, 0, 0, 0, 0, 0, 0 };
 	};
 
@@ -808,7 +817,7 @@ class CfgMagazines
 		mass = 4;
 		interactAction = 9;
 		interactText = "USE";
-		//Temp,Hunger,Thirst,Energy,Soiled,Immunity,Toxicity,Stamina,Crypto,BloodP
+		//Temp,Hunger,Thirst,Energy,Soiled,Immunity,Toxicity,Stamina,Crypto,BloodP,Karma,Alcohol,Radiation
 		interactAttributes[] = {0,0,0,100,0,0,0,0,0,0};
 	};
 	class EnergyPackLg : CA_Magazine
@@ -825,7 +834,7 @@ class CfgMagazines
 		mass = 40;
 		interactAction = 9;
 		interactText = "USE";
-		//Temp,Hunger,Thirst,Energy,Soiled,Immunity,Toxicity,Stamina,Crypto,BloodP
+		//Temp,Hunger,Thirst,Energy,Soiled,Immunity,Toxicity,Stamina,Crypto,BloodP,Karma,Alcohol,Radiation
 		interactAttributes[] = {0,0,0,1000,0,0,0,0,0,0};
 	};
 
@@ -850,8 +859,8 @@ class CfgMagazines
 		mass = 1;
 		interactAction = 2;
 		interactText = "DRINK";
-		//Temp,Hunger,Thirst,Energy,Soiled,Immunity,Toxicity,Stamina,Crypto,BloodP
-		interactAttributes[] = {0,0,800,0,0,0,-5,50,0,20};
+		//Temp,Hunger,Thirst,Energy,Soiled,Immunity,Toxicity,Stamina,Crypto,BloodP,Karma,Alcohol,Radiation
+		interactAttributes[] = {0,0,800,0,0,0,-5,50,0,0,0,10,0};
 	};
 
 	class CircuitParts : CA_Magazine
@@ -911,7 +920,7 @@ class CfgMagazines
 		mass = 1;
 		interactAction = 1;
 		interactText = "EAT";
-		//Temp,Hunger,Thirst,Energy,Soiled,Immunity,Toxicity,Stamina,Crypto,BloodP
+		//Temp,Hunger,Thirst,Energy,Soiled,Immunity,Toxicity,Stamina,Crypto,BloodP,Karma,Alcohol,Radiation
 		interactAttributes[] = {0,0,0,0,0,0,20,0,0,0};
 	};
 	class SnakeCarcass_EPOCH : CA_Magazine
@@ -925,7 +934,7 @@ class CfgMagazines
 		mass = 5;
 		interactAction = 1;
 		interactText = "EAT";
-		//Temp,Hunger,Thirst,Energy,Soiled,Immunity,Toxicity,Stamina,Crypto,BloodP
+		//Temp,Hunger,Thirst,Energy,Soiled,Immunity,Toxicity,Stamina,Crypto,BloodP,Karma,Alcohol,Radiation
 		interactAttributes[] = { 0, 300, 0, 0, 0, 0, 10, 0, 0, 0 };
 	};
 	/*
@@ -951,7 +960,7 @@ class CfgMagazines
 		mass = 5;
 		interactAction = 1;
 		interactText = "EAT";
-		//Temp,Hunger,Thirst,Energy,Soiled,Immunity,Toxicity,Stamina,Crypto,BloodP
+		//Temp,Hunger,Thirst,Energy,Soiled,Immunity,Toxicity,Stamina,Crypto,BloodP,Karma,Alcohol,Radiation
 		interactAttributes[] = {0,1200,0,0,0,0,0,0,0,0};
 	};
 	class RabbitCarcass_EPOCH : CA_Magazine
@@ -965,7 +974,7 @@ class CfgMagazines
 		mass = 5;
 		interactAction = 1;
 		interactText = "EAT";
-		//Temp,Hunger,Thirst,Energy,Soiled,Immunity,Toxicity,Stamina,Crypto,BloodP
+		//Temp,Hunger,Thirst,Energy,Soiled,Immunity,Toxicity,Stamina,Crypto,BloodP,Karma,Alcohol,Radiation
 		interactAttributes[] = { 0, 300, 0, 0, 0, 0, 10, 0, 0, 0 };
 	};
 	class CookedRabbit_EPOCH : CA_Magazine
@@ -979,7 +988,7 @@ class CfgMagazines
 		mass = 5;
 		interactAction = 1;
 		interactText = "EAT";
-		//Temp,Hunger,Thirst,Energy,Soiled,Immunity,Toxicity,Stamina,Crypto,BloodP
+		//Temp,Hunger,Thirst,Energy,Soiled,Immunity,Toxicity,Stamina,Crypto,BloodP,Karma,Alcohol,Radiation
 		interactAttributes[] = {0,1200,0,0,0,0,0,0,0,0};
 	};
 	class ChickenCarcass_EPOCH : CA_Magazine
@@ -993,7 +1002,7 @@ class CfgMagazines
 		mass = 10;
 		interactAction = 1;
 		interactText = "EAT";
-		//Temp,Hunger,Thirst,Energy,Soiled,Immunity,Toxicity,Stamina,Crypto,BloodP
+		//Temp,Hunger,Thirst,Energy,Soiled,Immunity,Toxicity,Stamina,Crypto,BloodP,Karma,Alcohol,Radiation
 		interactAttributes[] = { 0, 500, 0, 0, 0, 0, 25, 0, 0, 0 };
 	};
 	class CookedChicken_EPOCH : CA_Magazine
@@ -1007,7 +1016,7 @@ class CfgMagazines
 		mass = 10;
 		interactAction = 1;
 		interactText = "EAT";
-		//Temp,Hunger,Thirst,Energy,Soiled,Immunity,Toxicity,Stamina,Crypto,BloodP
+		//Temp,Hunger,Thirst,Energy,Soiled,Immunity,Toxicity,Stamina,Crypto,BloodP,Karma,Alcohol,Radiation
 		interactAttributes[] = {0,2000,0,0,0,0,0,0,0,0};
 	};
 	class GoatCarcass_EPOCH : CA_Magazine
@@ -1021,7 +1030,7 @@ class CfgMagazines
 		mass = 20;
 		interactAction = 1;
 		interactText = "EAT";
-		//Temp,Hunger,Thirst,Energy,Soiled,Immunity,Toxicity,Stamina,Crypto,BloodP
+		//Temp,Hunger,Thirst,Energy,Soiled,Immunity,Toxicity,Stamina,Crypto,BloodP,Karma,Alcohol,Radiation
 		interactAttributes[] = { 0, 500, 0, 0, 0, 0, 15, 0, 0, 0 };
 	};
 	class CookedGoat_EPOCH : CA_Magazine
@@ -1035,7 +1044,7 @@ class CfgMagazines
 		mass = 20;
 		interactAction = 1;
 		interactText = "EAT";
-		//Temp,Hunger,Thirst,Energy,Soiled,Immunity,Toxicity,Stamina,Crypto,BloodP
+		//Temp,Hunger,Thirst,Energy,Soiled,Immunity,Toxicity,Stamina,Crypto,BloodP,Karma,Alcohol,Radiation
 		interactAttributes[] = {0,3000,0,0,0,0,0,0,0,0};
 	};
 	class SheepCarcass_EPOCH : CA_Magazine
@@ -1049,7 +1058,7 @@ class CfgMagazines
 		mass = 20;
 		interactAction = 1;
 		interactText = "EAT";
-		//Temp,Hunger,Thirst,Energy,Soiled,Immunity,Toxicity,Stamina,Crypto,BloodP
+		//Temp,Hunger,Thirst,Energy,Soiled,Immunity,Toxicity,Stamina,Crypto,BloodP,Karma,Alcohol,Radiation
 		interactAttributes[] = { 0, 500, 0, 0, 0, 0, 15, 0, 0, 0 };
 	};
 	class CookedSheep_EPOCH : CA_Magazine
@@ -1063,7 +1072,7 @@ class CfgMagazines
 		mass = 20;
 		interactAction = 1;
 		interactText = "EAT";
-		//Temp,Hunger,Thirst,Energy,Soiled,Immunity,Toxicity,Stamina,Crypto,BloodP
+		//Temp,Hunger,Thirst,Energy,Soiled,Immunity,Toxicity,Stamina,Crypto,BloodP,Karma,Alcohol,Radiation
 		interactAttributes[] = {0,3000,0,0,0,0,0,0,0,0};
 	};
 
@@ -1435,7 +1444,7 @@ class CfgMagazines
 		mass = 1;
 		interactAction = 6;
 		interactText = "USE";
-		//Temp,Hunger,Thirst,Energy,Soiled,Immunity,Toxicity,Stamina,Crypto,BloodP
+		//Temp,Hunger,Thirst,Energy,Soiled,Immunity,Toxicity,Stamina,Crypto,BloodP,Karma,Alcohol,Radiation
 		interactAttributes[] = { 0, 0, 0, 0, 0, 10, 0, -100, 0, -10 };
 	};
 
@@ -1450,7 +1459,7 @@ class CfgMagazines
 		mass = 1;
 		interactAction = 6;
 		interactText = "USE";
-		//Temp,Hunger,Thirst,Energy,Soiled,Immunity,Toxicity,Stamina,Crypto,BloodP
+		//Temp,Hunger,Thirst,Energy,Soiled,Immunity,Toxicity,Stamina,Crypto,BloodP,Karma,Alcohol,Radiation
 		interactAttributes[] = { 0, 0, 0, 0, 0, 0, -50, 0, 0, 0 };
 	};
 
@@ -1465,7 +1474,7 @@ class CfgMagazines
 		mass = 1;
 		interactAction = 6;
 		interactText = "USE";
-		//Temp,Hunger,Thirst,Energy,Soiled,Immunity,Toxicity,Stamina,Crypto,BloodP
+		//Temp,Hunger,Thirst,Energy,Soiled,Immunity,Toxicity,Stamina,Crypto,BloodP,Karma,Alcohol,Radiation
 		interactAttributes[] = { 0, 500, 0, 0, 0, 0, 0, 50, 0, 0 };
 	};
 
@@ -1480,7 +1489,7 @@ class CfgMagazines
 		mass = 1;
 		interactAction = 6;
 		interactText = "USE";
-		//Temp,Hunger,Thirst,Energy,Soiled,Immunity,Toxicity,Stamina,Crypto,BloodP
+		//Temp,Hunger,Thirst,Energy,Soiled,Immunity,Toxicity,Stamina,Crypto,BloodP,Karma,Alcohol,Radiation
 		interactAttributes[] = {0,0,0,0,-25,0,0,0,0,0};
 	};
 	class HeatPack: CA_Magazine
@@ -1494,7 +1503,7 @@ class CfgMagazines
 		mass = 1;
 		interactAction = 7;
 		interactText = "USE";
-		//Temp,Hunger,Thirst,Energy,Soiled,Immunity,Toxicity,Stamina,Crypto,BloodP
+		//Temp,Hunger,Thirst,Energy,Soiled,Immunity,Toxicity,Stamina,Crypto,BloodP,Karma,Alcohol,Radiation
 		interactAttributes[] = {1,0,0,0,0,0,0,0,0,0};
 	};
 	class ColdPack : CA_Magazine
@@ -1508,7 +1517,7 @@ class CfgMagazines
 		mass = 1;
 		interactAction = 8;
 		interactText = "USE";
-		//Temp,Hunger,Thirst,Energy,Soiled,Immunity,Toxicity,Stamina,Crypto,BloodP
+		//Temp,Hunger,Thirst,Energy,Soiled,Immunity,Toxicity,Stamina,Crypto,BloodP,Karma,Alcohol,Radiation
 		interactAttributes[] = {-1,0,0,0,0,0,0,0,0,0};
 	};
 };
