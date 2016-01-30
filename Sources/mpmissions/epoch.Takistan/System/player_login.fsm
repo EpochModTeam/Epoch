@@ -261,7 +261,7 @@ class FSM
        "endLoadingScreen;" \n
        "EPOCH_loadingScreenDone = true;" \n
        "" \n
-       "hintSilent ""Worked"" "/*%FSM</STATEINIT""">*/;
+       " "/*%FSM</STATEINIT""">*/;
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
       class Links
       {
