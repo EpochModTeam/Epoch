@@ -24,7 +24,7 @@ debriefing = 0;
 enableDebugConsole = 0;
 joinUnassigned = 0;
 respawnOnStart = 0;
-forceRotorLibSimulation = 0;
+forceRotorLibSimulation = 1;
 
 corpseManagerMode = 1;
 corpseLimit = 10;
@@ -50,6 +50,7 @@ class cfgFunctions
 			};
 			class postinit
 			{
+				file = "init\fn_postinit.sqf";
 				postInit = 1;
 			};
 		};
