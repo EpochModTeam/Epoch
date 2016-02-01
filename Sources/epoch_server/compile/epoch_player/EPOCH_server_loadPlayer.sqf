@@ -305,9 +305,8 @@ if (typename _this == "ARRAY") then {
 						diag_log format["DEBUG (Load Player) Set Group: %1", _plyrGroup];
 					};
 
-					_newPlyr setVariable["SETUP", true];
-					_newPlyr setVariable["PUID", _plyrUID];
 
+					_newPlyr setVariable["PUID", _plyrUID];
 
 					if !(_vars isEqualTo[]) then {
 						_newPlyr setVariable["VARS", _vars];
@@ -321,6 +320,8 @@ if (typename _this == "ARRAY") then {
 						_newPlyr setVariable["REVIVE", _canBeRevived]
 					};
 					[_plyrNetID, _plyrUID, [_newPlyr, _vars, _currWeap, count(magazines _newPlyr), _plyrGroup, _canBeRevived, _newPlyr call EPOCH_server_setPToken]] call EPOCH_server_pushPlayer;
+
+					_newPlyr setVariable["SETUP", true, true];
 				};
 			} else {
 				diag_log format["LOGIN FAILED UNIT NULL: %1 [%2|%3]", _plyr, _group, count allgroups];

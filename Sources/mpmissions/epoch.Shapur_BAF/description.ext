@@ -50,6 +50,7 @@ class cfgFunctions
 			};
 			class postinit
 			{
+				file = "init\fn_postinit.sqf";
 				postInit = 1;
 			};
 		};
