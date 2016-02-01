@@ -190,8 +190,8 @@ link97[] = {85,79};
 link98[] = {86,16};
 link99[] = {86,22};
 link100[] = {87,31};
-globals[] = {0.000000,0,0,0,0,640,480,1,244,6316128,1,-207.564026,582.257507,1746.772461,560.692383,586,880,1};
-window[] = {2,-1,-1,-1,-1,994,182,1474,182,3,604};
+globals[] = {0.000000,0,0,0,0,640,480,1,244,6316128,1,-184.651276,605.171021,1613.338623,764.213013,586,880,1};
+window[] = {2,-1,-1,-1,-1,1046,234,1526,234,3,604};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -248,6 +248,8 @@ class FSM
        "if (_debug) then {" \n
        "	diag_log ""EPOCH-LOGIN: Finish!"";" \n
        "};" \n
+       "" \n
+       "" \n
        "" \n
        "player enableSimulation true;" \n
        "" \n
@@ -404,7 +406,7 @@ class FSM
        "1338 cutText [_msg,""PLAIN"",0]; " \n
        "deleteVehicle player;" \n
        "call _rejectPlayer;" \n
-       "diag_log format [""(%1) %2"",diag_tickTime,_msg];" \n
+       "// diag_log format [""(%1) %2"",diag_tickTime,_msg];" \n
        "_myTime = diag_tickTime;"/*%FSM</STATEINIT""">*/;
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
       class Links
@@ -640,7 +642,7 @@ class FSM
        "   (findDisplay 46) displayAddEventHandler [""KeyDown"",""true""];" \n
        "	(findDisplay 46) displayAddEventHandler [""KeyUp"",""true""];" \n
        "};" \n
-       "diag_log format [""(%1) %2"",diag_tickTime,_msg];" \n
+       "// diag_log format [""(%1) %2"",diag_tickTime,_msg];" \n
        "_myTime = diag_tickTime;" \n
        ""/*%FSM</STATEINIT""">*/;
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
@@ -1037,7 +1039,7 @@ class FSM
           priority = 0.000000;
           to="Setup_Player_Obj";
           precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"!(isNull _playerObject) && {_playerObject getVariable [""SETUP"",false]}"/*%FSM</CONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!(isNull _playerObject) && {_playerObject getVariable [""SETUP"",false]} && {_magCount == count(magazines player)}"/*%FSM</CONDITION""">*/;
           action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
         };
         /*%FSM</LINK>*/
