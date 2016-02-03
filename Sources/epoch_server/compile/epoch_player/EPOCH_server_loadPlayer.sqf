@@ -319,7 +319,7 @@ if (typename _this == "ARRAY") then {
 					if (!_canBeRevived) then {
 						_newPlyr setVariable["REVIVE", _canBeRevived]
 					};
-					[_plyrNetID, _plyrUID, [_newPlyr, _vars, _currWeap, count(magazines _newPlyr), _plyrGroup, _canBeRevived, _newPlyr call EPOCH_server_setPToken]] call EPOCH_server_pushPlayer;
+					[_plyrNetID, _plyrUID, [_newPlyr, _vars, _currWeap, loadAbs _newPlyr, _plyrGroup, _canBeRevived, _newPlyr call EPOCH_server_setPToken]] call EPOCH_server_pushPlayer;
 
 					_newPlyr setVariable["SETUP", true, true];
 				};
