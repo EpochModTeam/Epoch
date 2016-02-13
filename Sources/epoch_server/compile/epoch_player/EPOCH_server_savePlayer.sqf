@@ -66,7 +66,7 @@ if (typeName _vars == "ARRAY") then {
 
 				_staticTraderLocationsDistances = [];
 				{
-					_staticTraderLocationsDistances pushBack [_x distance player, _x]
+					_staticTraderLocationsDistances pushBack [_x distance _plyr, _x]
 				} forEach EPOCH_staticTraderLocations;
 
 				if !(_staticTraderLocationsDistances isEqualTo []) then{
