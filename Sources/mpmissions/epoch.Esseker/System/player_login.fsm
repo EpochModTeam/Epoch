@@ -190,8 +190,8 @@ link97[] = {85,79};
 link98[] = {86,16};
 link99[] = {86,22};
 link100[] = {87,31};
-globals[] = {0.000000,0,0,0,0,640,480,1,244,6316128,1,-213.844360,425.695953,479.928528,-482.114990,585,880,1};
-window[] = {2,-1,-1,-1,-1,968,156,1448,156,3,603};
+globals[] = {0.000000,0,0,0,0,640,480,1,244,6316128,1,-213.844360,425.695953,1213.486816,524.751038,585,630,1};
+window[] = {2,-1,-1,-1,-1,767,-7,1285,0,3,603};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -211,7 +211,14 @@ class FSM
        "if (_debug) then {" \n
        "	diag_log ""EPOCH-LOGIN: Init"";" \n
        "};" \n
-       ""/*%FSM</STATEINIT""">*/;
+       "" \n
+       "" \n
+       "_finalPlayerObjectCheck = {" \n
+       "	_logic1 = (_mass == (loadAbs _playerObject));" \n
+       "	_timeout = (diag_tickTime - _myTime) > 30);" \n
+       "	diag_log format [""LOGIN-DEBUG mass match: %1  in %2 seconds, timeout: %3"", _logic1,(diag_tickTime - _myTime),_timeout];" \n
+       "	(_logic1 || _timeout)" \n
+       "};"/*%FSM</STATEINIT""">*/;
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
       class Links
       {
@@ -1041,7 +1048,7 @@ class FSM
           priority = 0.000000;
           to="Setup_Player_Obj";
           precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"!(isNull _playerObject) && {_playerObject getVariable [""SETUP"",false]} && {_playerPos nearObjectsReady 10}"/*%FSM</CONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!(isNull _playerObject) && {_playerObject getVariable [""SETUP"",false]} && {_playerPos nearObjectsReady 10} && {call _finalPlayerObjectCheck}"/*%FSM</CONDITION""">*/;
           action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
         };
         /*%FSM</LINK>*/
