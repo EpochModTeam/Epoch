@@ -190,8 +190,8 @@ link97[] = {85,79};
 link98[] = {86,16};
 link99[] = {86,22};
 link100[] = {87,31};
-globals[] = {0.000000,0,0,0,0,640,480,1,244,6316128,1,-213.844360,425.695953,1213.486816,524.751038,585,630,1};
-window[] = {2,-1,-1,-1,-1,767,-7,1285,0,3,603};
+globals[] = {0.000000,0,0,0,0,640,480,1,244,6316128,1,-393.771362,605.622620,785.848206,-717.513611,585,880,1};
+window[] = {2,-1,-1,-1,-1,949,182,1474,182,3,603};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -215,7 +215,7 @@ class FSM
        "" \n
        "_finalPlayerObjectCheck = {" \n
        "	_logic1 = (_mass == (loadAbs _playerObject));" \n
-       "	_timeout = (diag_tickTime - _myTime) > 30);" \n
+       "	_timeout = ((diag_tickTime - _myTime) > 30);" \n
        "	diag_log format [""LOGIN-DEBUG mass match: %1  in %2 seconds, timeout: %3"", _logic1,(diag_tickTime - _myTime),_timeout];" \n
        "	(_logic1 || _timeout)" \n
        "};"/*%FSM</STATEINIT""">*/;
