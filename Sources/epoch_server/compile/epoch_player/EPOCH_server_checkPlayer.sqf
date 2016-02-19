@@ -22,7 +22,7 @@ if (typename _this == "OBJECT") then {
 				_arr = (_response select 1);
 			};
 
-			if (count _arr < 11) then { 
+			if (count _arr < 11) then {
 				_dead = true;
 			} else {
 				_medical = _arr select 1;
@@ -43,8 +43,7 @@ if (typename _this == "OBJECT") then {
 			};
 			/* true => New Char
 			   false => load old Char */
-			EPOCH_checkPlayer_PVC = _dead;
-			(owner _plyrObj) publicVariableClient "EPOCH_checkPlayer_PVC";
+			['_checkPlayer_PVC', _dead] remoteExec ['EPOCH_playerLoginInit',_plyrObj];
 
 			if (!_dead) then { //Load old Char
 				[_plyrObj, _isMale] call EPOCH_server_loadPlayer;
