@@ -168,7 +168,7 @@ EPOCH_server_getPToken = compileFinal ("private['_ret','_var'];_ret = false;if (
 EPOCH_server_setPToken = compileFinal ("private '_var';_var = 'epochserver' callExtension '810';_this setVariable ['"+_skn_AH_rndVarPlayer+"',_var];_var");
 
 if (!_skn_enableAntihack) exitWith {
-	EPOCH_server_pushPlayer = compileFinal ("EPOCH_C_SET = _this select 2;EPOCH_C_SET pushBack '"+_skn_PVC_INDEX+"';EPOCH_C_SET pushBack '';(_this select 0) publicVariableClient 'EPOCH_C_SET'");
+	EPOCH_server_pushPlayer = compileFinal ("_C_SET = _this select 2;_C_SET pushBack '"+_skn_PVC_INDEX+"';_C_SET pushBack '';['_C_SET', _C_SET] remoteExec ['EPOCH_playerLoginInit',(_this select 0)];");
 	EPOCH_server_isPAdmin = compileFinal ("false");
 	EPOCH_server_Authed = compileFinal ("true");
 	EPOCH_server_disconnect = compileFinal("true");
@@ -550,18 +550,18 @@ if (_skn_PVSPrefix == "") then {
 };
 
 EPOCH_server_pushPlayer = compileFinal ("
-	EPOCH_C_SET = _this select 2;
+	_C_SET = _this select 2;
 	if (_this select 1 in "+ str _skn_adminUIDArray+") then {
 		(_this select 0) publicVariableClient '"+_skn_Admin_Code+"';
 		(_this select 0) publicVariableClient '"+_skn_pv_adminLog+"';
 		(_this select 0) publicVariableClient '"+_skn_pv_hackerLog+"';
-		EPOCH_C_SET pushBack '"+_skn_PVC_INDEX+"';
-		EPOCH_C_SET pushBack '[] spawn "+_skn_Admin_Init+"';
+		_C_SET pushBack '"+_skn_PVC_INDEX+"';
+		_C_SET pushBack '[] spawn "+_skn_Admin_Init+"';
 	} else {
-		EPOCH_C_SET pushBack '"+_skn_PVC_INDEX+"';
-		EPOCH_C_SET pushBack '[] spawn "+_skn_AH_Init+"';
+		_C_SET pushBack '"+_skn_PVC_INDEX+"';
+		_C_SET pushBack '[] spawn "+_skn_AH_Init+"';
 	};
-	(_this select 0) publicVariableClient 'EPOCH_C_SET';
+	['_C_SET', _C_SET] remoteExec ['EPOCH_playerLoginInit',(_this select 0)];
 	true
 ");
 EPOCH_server_isPAdmin = compileFinal ("if (isNull _this) then {false} else {getPlayerUID _this in "+str _skn_adminUIDArray+"}");
