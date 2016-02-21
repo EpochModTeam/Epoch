@@ -50,9 +50,7 @@ if (_stability > 0) exitWith{
 
 /*
 if (_object isKindOf "Infostand_base_F") then {
-	if (!(_object in EPOCH_SURVEY)) then {
-		EPOCH_SURVEY pushBack _object;
-	};
+	EPOCH_SURVEY pushBackUnique  _object;
 };
 */
 

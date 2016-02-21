@@ -50,7 +50,7 @@ class cfgFunctions
 			};
 			class postinit
 			{
-				file = "init\fn_postinit.sqf";
+				// file = "init\fn_postinit.sqf"; // uncomment to use mission file
 				postInit = 1;
 			};
 		};

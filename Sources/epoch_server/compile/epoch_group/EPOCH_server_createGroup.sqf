@@ -34,10 +34,11 @@ _upgradePrice = parseNumber (EPOCH_group_upgrade_lvl_SEPXVar select 1);
 
 if (_current_crypto >= _upgradePrice) then {
 	if (_groupName != "") then {
-		
-		_playerCryptoLimit = [(configFile >> "CfgSecConf" >> "limits"), "playerCrypto", 25000] call EPOCH_fnc_returnConfigEntry;
+
+		_playerCryptoLimit = [(configFile >> "CfgSecConf" >> "limits"), "playerCrypto", 250000] call EPOCH_fnc_returnConfigEntry;
 		_current_crypto = ((_current_crypto - _upgradePrice) min _playerCryptoLimit) max 0;
-		[["effectCrypto", _current_crypto], (owner _leader)] call EPOCH_sendPublicVariableClient;
+		//[["effectCrypto", _current_crypto], (owner _leader)] call EPOCH_sendPublicVariableClient;
+		_current_crypto remoteExec ['EPOCH_effectCrypto',(owner _leader)];
 		_vars set[_cIndex, _current_crypto];
 		_leader setVariable["VARS", _vars];
 
@@ -47,7 +48,7 @@ if (_current_crypto >= _upgradePrice) then {
 		_leaderName = if (alive _leader) then {name _leader} else {"Dead Player"};
 
 		_contentArray = [_groupName, _leaderName, EPOCH_group_upgrade_lvl_SEPXVar select 0, [], []];
-		
+
 		[["groupUpdate", _contentArray], (owner _leader)] call EPOCH_sendPublicVariableClient;
 		[["groupUidUpdate", _groupID], (owner _leader)] call EPOCH_sendPublicVariableClient;
 

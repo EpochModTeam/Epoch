@@ -1,4 +1,4 @@
-// Epoch Mod - Server isde take crypto 
+// Epoch Mod - Server isde take crypto
 
 private ["_cIndex","_vars","_current_crypto","_change","_player","_object","_player1","_player2","_getCrypto"];
 
@@ -20,11 +20,12 @@ if (_getCrypto > 0) then {
 	_cIndex = EPOCH_customVars find "Crypto";
 	_vars = _player getVariable["VARS", [] + EPOCH_defaultVars_SEPXVar];
 	_current_crypto = _vars select _cIndex;
-	
-	_playerCryptoLimit = [(configFile >> "CfgSecConf" >> "limits"), "playerCrypto", 25000] call EPOCH_fnc_returnConfigEntry;
+
+	_playerCryptoLimit = [(configFile >> "CfgSecConf" >> "limits"), "playerCrypto", 250000] call EPOCH_fnc_returnConfigEntry;
 
 	_current_crypto = ((_current_crypto + _getCrypto) min _playerCryptoLimit) max 0;
-	[["effectCrypto", _current_crypto], (owner _player)] call EPOCH_sendPublicVariableClient;
+	//[["effectCrypto", _current_crypto], (owner _player)] call EPOCH_sendPublicVariableClient;
+	_current_crypto remoteExec ['EPOCH_effectCrypto',(owner _player)];
 	_vars set[_cIndex, _current_crypto];
 	_player setVariable["VARS", _vars];
 };

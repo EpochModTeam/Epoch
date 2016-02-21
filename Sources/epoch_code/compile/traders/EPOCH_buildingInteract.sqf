@@ -17,9 +17,9 @@ if (isclass _class) then {
 			_displayname = gettext (_action >> "displayname");
 
 			_position = gettext (_action >> "position");
-			if !(_position in _uniqueActions) then {
-				_uniqueActions pushBack _position;
-			};
+
+			_uniqueActions pushBackUnique _position;
+
 
 			_condition = gettext (_action >> "condition");
 			_statement = gettext (_action >> "statement");

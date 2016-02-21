@@ -15,7 +15,7 @@ _plyrGroup = _plyr getVariable ["GROUP",""];
 _fnc_lock = {
 	_this setVariable ["EPOCH_Locked", true, true];
 	// force save on lock
-	if !(_this in EPOCH_saveStorQueue) then { EPOCH_saveStorQueue pushBack _this };
+	EPOCH_saveStorQueue pushBackUnique _this;
 	//_this enableSimulationGlobal false;
 };
 _fnc_unlock = {

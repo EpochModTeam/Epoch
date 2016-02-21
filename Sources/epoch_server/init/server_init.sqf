@@ -4,9 +4,9 @@ EPOCH_SERVER = [];
 diag_log format["Epoch: Starting ArmA3 Epoch Server, Version %1",Epoch_ServerVersion];
 
 _abortAndError = {
-    publicVariable "EPOCH_SERVER";
-    EPOCH_BADHIVE = true; //Kick all player
-    publicVariable "EPOCH_BADHIVE";
+    // kick all players with reverse BE kicks
+    true remoteExec ['EPOCH_client_rejectPlayer',-2, true];
+    // flood server rpt with reason
     for "_i" from 0 to 15 do {
         diag_log _this;
     };

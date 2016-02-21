@@ -282,9 +282,9 @@ if (_class != "") then {
 						        _ins = lineIntersectsSurfaces [AGLToASL _pos1_snap, AGLToASL _pos2_snap,player,_currentTarget,true,1,"VIEW","FIRE"];
 						        if (count _ins > 0) then {
 									if (surfaceIsWater _snapPosition) then {
-										_arr_snapPoints pushBack (_ins select 0 select 0);
+										_arr_snapPoints pushBackUnique (_ins select 0 select 0);
 									} else {
-										_arr_snapPoints pushBack ASLToATL(_ins select 0 select 0);
+										_arr_snapPoints pushBackUnique ASLToATL(_ins select 0 select 0);
 									};
 						        };
 								if (count _arr_snapPoints >= 2) exitWith { EPOCH_arr_snapPoints = _arr_snapPoints; }

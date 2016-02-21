@@ -10,6 +10,7 @@ if (!isNull _vehicle) then {
 	if (local _vehicle) then {
 		_vehicle setFuel _value;
 	} else {
-		[["fillVehicle", [_vehicle, _value]], (owner _vehicle)] call EPOCH_sendPublicVariableClient;
+		// [["fillVehicle", [_vehicle, _value]], (owner _vehicle)] call EPOCH_sendPublicVariableClient;
+		[_vehicle, _value] remoteExec ['EPOCH_client_fillVehicle',(owner _vehicle)];
 	};
 };

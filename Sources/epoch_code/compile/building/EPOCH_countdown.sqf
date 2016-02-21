@@ -43,9 +43,8 @@ if (!isNull _this) then {
 
 		_this setVariable["EPOCH_endTime", _endTime];
 
-		if !(_this in EPOCH_arr_countdown) then {
-			EPOCH_arr_countdown pushBack _this;
-		};
+		EPOCH_arr_countdown pushBackUnique  _this;
+
 
 		_saveCheck = true;
 

@@ -71,8 +71,6 @@ _giveAttributes = {
 			};
 			case 8: {
 				// this is handled server side
-				//EPOCH_playerCrypto = ((EPOCH_playerCrypto + _data) min 25000) max 0;
-				//_return = format["Krypto: %1%2 (%3)<br />", _addPlus, _data, EPOCH_playerCrypto];
 			};
 			case 9: {
 				EPOCH_playerBloodP = ((EPOCH_playerBloodP + _data) min 190) max 0;

@@ -3,26 +3,26 @@ _target = _this select 0;
 if (!isNull _target) then {
 	switch (_this select 1) do {
 		case "UAV": {
-			[["unitSpawn", "I_UAV_01_F"], (owner _target)] call EPOCH_sendPublicVariableClient;
+			"I_UAV_01_F" remoteExec ['EPOCH_unitSpawnIncrease',(owner _target)];
 		};
 		case "Cloak": {
 			if (sunOrMoon < 1) then {
-				[["unitSpawn", "Epoch_Cloak_F"], (owner _target)] call EPOCH_sendPublicVariableClient;
+				"Epoch_Cloak_F" remoteExec ['EPOCH_unitSpawnIncrease',(owner _target)];
 			} else {
-				[["unitSpawn", "Epoch_Sapper_F"], (owner _target)] call EPOCH_sendPublicVariableClient;
+				"Epoch_Sapper_F" remoteExec ['EPOCH_unitSpawnIncrease',(owner _target)];
 			};
 		};
 		case "Sapper": {
-			[["unitSpawn", "Epoch_Sapper_F"], (owner _target)] call EPOCH_sendPublicVariableClient;
+			"Epoch_Sapper_F" remoteExec ['EPOCH_unitSpawnIncrease',(owner _target)];
 		};
 		case "GreatWhite": {
-			[["unitSpawn", "GreatWhite_F"], (owner _target)] call EPOCH_sendPublicVariableClient;
+			"GreatWhite_F" remoteExec ['EPOCH_unitSpawnIncrease',(owner _target)];
 		};
 		case "SapperB": {
-			[["unitSpawn", "Epoch_SapperB_F"], (owner _target)] call EPOCH_sendPublicVariableClient;
+			"Epoch_SapperB_F" remoteExec ['EPOCH_unitSpawnIncrease',(owner _target)];
 		};
 		case "PHANTOM": {
-			[["unitSpawn", "PHANTOM"], (owner _target)] call EPOCH_sendPublicVariableClient;
+			"PHANTOM" remoteExec ['EPOCH_unitSpawnIncrease',(owner _target)];
 		};
 	};
 };

@@ -17,7 +17,7 @@ class CfgSecConf
     debug = false;
 
     class limits {
-        playerCrypto = 25000;
+        playerCrypto = 250000;
     };
 
     class learning {

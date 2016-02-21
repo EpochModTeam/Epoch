@@ -11,4 +11,6 @@ _tradeKey = floor(diag_tickTime + random 9999);
 _source setVariable["currentTradeKey", _tradeKey];
 _target setVariable["currentTradeKey", _tradeKey];
 
-[["tradeRequest", _source], (owner _target)] call EPOCH_sendPublicVariableClient;
+// [["tradeRequest", _source], (owner _target)] call EPOCH_sendPublicVariableClient;
+// make RE to player
+_source remoteExec ['EPOCH_tradeRequest',_target];

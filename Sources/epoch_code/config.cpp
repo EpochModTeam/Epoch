@@ -30,9 +30,9 @@ class CfgMods
 		hidePicture = 0;
 		hideName = 0;
 		action = "http://www.epochmod.com";
-		version = "0.3.7.0";
+		version = "0.3.8.0";
 		majorVersion = 0.3; //MUST BE A NUMBER!; Change this if we release a new major version, don't change if we push just push a hotfix
-		ArmAVersion = 150;
+		ArmAVersion = 156;
 		overview = "Open world survival mod set in the year 2035, Just two years after the mass extinction of billions of people. Those that remain are left with remnants of a once technological society. Try to survive, build, or explore your way through the harsh dynamic environment.";
 	};
 };
@@ -41,20 +41,20 @@ class Epoch
 	class Version
 	{
 		//Version System, Check if PBO Version is compatible with Code
-		A3_epoch_assets = "0.3.7.0";
-		A3_epoch_assets_1 = "0.3.7.0";
-		epoch_objects = "0.3.7.0";
-		A3_epoch_assets_3 = "0.3.7.0";
-		A3_epoch_config = "0.3.7.0";
-		A3_epoch_language = "0.3.7.0";
-		Underground_Epoch = "0.3.7.0";
-		A3_epoch_vehicles = "0.3.7.0";
-		a3_epoch_weapons = "0.3.7.0";
-		a2_epoch_weapons = "0.3.7.0";
-		a3_epoch_structures = "0.3.7.0";
-		A3_epoch_functions = "0.3.7.0";
-		A3_epoch_vehicles_1 = "0.3.7.0";
-		Enhanced_Epoch_AiASupport = "0.3.7.0";
+		A3_epoch_assets = "0.3.8.0";
+		A3_epoch_assets_1 = "0.3.8.0";
+		epoch_objects = "0.3.8.0";
+		A3_epoch_assets_3 = "0.3.8.0";
+		A3_epoch_config = "0.3.8.0";
+		A3_epoch_language = "0.3.8.0";
+		Underground_Epoch = "0.3.8.0";
+		A3_epoch_vehicles = "0.3.8.0";
+		a3_epoch_weapons = "0.3.8.0";
+		a2_epoch_weapons = "0.3.8.0";
+		a3_epoch_structures = "0.3.8.0";
+		A3_epoch_functions = "0.3.8.0";
+		A3_epoch_vehicles_1 = "0.3.8.0";
+		Enhanced_Epoch_AiASupport = "0.3.8.0";
 
 	};
 };
@@ -88,22 +88,8 @@ class cfgFunctions
 	class A3
 	{
 		tag = "BIS";
-		class MP
-		{
-			file = "A3\functions_f\MP";
-			class MP {
-				file = "\x\addons\a3_epoch_code\compile\bis_functions\MP\fn_mp.sqf";
-			};
-			class MPexec {
-				file = "\x\addons\a3_epoch_code\compile\bis_functions\MP\fn_MPexec.sqf";
-			};
-			class initMultiplayer {
-				file = "\x\addons\a3_epoch_code\compile\bis_functions\MP\fn_initMultiplayer.sqf";
-			};
-
-		};
 		class functions {
-			// custom Epoch - BIS_fnc_returnVector
+			// BIS_fnc_returnVector
 			class returnVector {
 				file = "\x\addons\a3_epoch_code\compile\bis_functions\returnVector.sqf";
 			};

@@ -133,7 +133,7 @@ if (isText(_config)) then {
 							_pOffset = _nearestObject selectionPosition _x;
 							_snapPos = _nearestObject modelToWorld _pOffset;
 							if ((_pos2 distance _snapPos) < 3) then {
-								_snapArrayPara pushBack _snapPos;
+								_snapArrayPara pushBackUnique _snapPos;
 							};
 						};
 					} forEach _snapPointsPara;
@@ -143,7 +143,7 @@ if (isText(_config)) then {
 							_pOffset = _nearestObject selectionPosition _x;
 							_snapPos = _nearestObject modelToWorld _pOffset;
 							if ((_pos2 distance _snapPos) < 3) then {
-								_snapArrayPerp pushBack _snapPos;
+								_snapArrayPerp pushBackUnique _snapPos;
 							};
 						};
 					} forEach _snapPointsPerp;

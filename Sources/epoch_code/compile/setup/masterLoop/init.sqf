@@ -85,8 +85,8 @@ _lootBubble = {
 							_lootBiasPos = getNumber(_config >> "lootBiasPos");
 							_lootType = getText(_config >> "lootType");
 
-							EPOCH_LootedBlds pushBack _building;
-							if (count EPOCH_LootedBlds >= 20) then {
+							EPOCH_LootedBlds pushBackUnique _building;
+							if (count EPOCH_LootedBlds >= 100) then {
 								EPOCH_LootedBlds deleteAt 0;
 							};
 

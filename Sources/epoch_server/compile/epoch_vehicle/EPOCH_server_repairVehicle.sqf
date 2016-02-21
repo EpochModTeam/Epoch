@@ -15,7 +15,7 @@ if ((_value select 0) isEqualTo "ALL") then {
 		_vehicle setHitIndex _value;
 		//diag_log format["REPAIR VEHICLE: %1 server local", _vehicle];
 	} else {
-		[["repairVehicle", [_vehicle, _value]], (owner _vehicle)] call EPOCH_sendPublicVariableClient;
+		[_vehicle, _value] remoteExec ['EPOCH_client_repairVehicle',(owner _vehicle)];
 		//diag_log format["REPAIR VEHICLE: %1 owner: %2", _vehicle, owner _vehicle];
 	};
 };

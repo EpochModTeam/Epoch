@@ -1,6 +1,6 @@
 /*
 	Player Respawn
-	
+
 	Epoch Mod - EpochMod.com - All Rights Reserved.
 */
 private["_defaultUniform", "_class", "_vest", "_dir", "_location", "_plyrObj", "_plyr"];
@@ -34,8 +34,10 @@ if (count _this == 3) then {
 	_plyrObj setDir _dir;
 	_plyrObj setPosATL _location;
 
-	EPOCH_switchPlayer_PVC = _plyrObj;
-	(owner _plyr) publicVariableClient "EPOCH_switchPlayer_PVC";
+	// send player object to player
+	["_switchPlayer_PVC",_plyrObj] remoteExec ['EPOCH_playerGenderInit',_plyr];
+
+
 };
 
 

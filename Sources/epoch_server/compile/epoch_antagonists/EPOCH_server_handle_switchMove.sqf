@@ -14,19 +14,19 @@ _range = 0;
 _move = "";
 
 switch (_this select 1) do {
-	case 1: { 
+	case 1: {
 		_range = 1000;
-		_move = "AovrPercMrunSrasWrflDf"; 
+		_move = "AovrPercMrunSrasWrflDf";
 	};
-	case 2: { 
+	case 2: {
 		_range = 1000;
-		_move = "epoch_unarmed_jump"; 
+		_move = "epoch_unarmed_jump";
 	};
 };
 
 if (_range > 0 && _move != "") then {
 	_nearBy = _target nearEntities [["Epoch_Male_F","Epoch_Female_F"], _range];
 	{
-		[["switchMove", [_target, _move]], (owner _x)] call EPOCH_sendPublicVariableClient;
+		[_target, _move] remoteExec ['switchMove',_x];
 	}forEach (_nearBy - [_target]); //_target == the caller, already plays the animation locally!
 };

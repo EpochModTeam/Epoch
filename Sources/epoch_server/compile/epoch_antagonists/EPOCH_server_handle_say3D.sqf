@@ -18,7 +18,8 @@ if !(_sound isEqualTo -1) then {
 	_nearBy = _target nearEntities [["Epoch_Male_F","Epoch_Female_F","LandVehicle","Ship","Air","Tank"], _range];
 	{
 		if (isPlayer _x) then {
-			[["say3D", [_target, _soundIndex]], owner _x] call EPOCH_sendPublicVariableClient
+			// [["say3D", [_target, _soundIndex]], owner _x] call EPOCH_sendPublicVariableClient
+			[_target,_sound] remoteExec ['say3D',_x];
 		}
 	}forEach (_nearBy - [_this select 0]); //_this select 0 == the caller, play the sound already locally!
 };

@@ -4,7 +4,7 @@
 item0[] = {"INIT",0,250,-250.000000,-150.000000,-150.000000,-100.000000,0.000000,"INIT"};
 item1[] = {"Respone",4,218,-500.000000,300.000000,-400.000000,350.000000,0.000000,"Respone"};
 item2[] = {"true",8,218,-250.000000,-75.000000,-150.000000,-25.000000,0.000000,"true"};
-item3[] = {"Open_Gender_Selection",2,250,-400.000000,-75.000000,-300.000000,-25.000000,0.000000,"Open Gender" \n "Selection Dialog"};
+item3[] = {"Open_Gender_Selection",2,4346,-400.000000,-75.000000,-300.000000,-25.000000,0.000000,"Open Gender" \n "Selection Dialog"};
 item4[] = {"Reopen_when_client",4,218,-400.000000,-150.000000,-300.000000,-100.000000,0.000000,"Reopen" \n "when client hit" \n "escape"};
 item5[] = {"Gender_Selected",4,218,-450.000000,0.000000,-350.000000,50.000000,10.000000,"Gender" \n "Selected"};
 item6[] = {"Timeout",4,218,-350.000000,0.000000,-250.000000,50.000000,0.000000,"Timeout"};
@@ -17,7 +17,7 @@ item12[] = {"END",1,250,0.000000,450.000000,100.000000,500.000000,0.000000,"END"
 item13[] = {"Send_new_selection",2,250,-400.000000,250.000000,-300.000000,300.000000,0.000000,"Send new" \n "selection to" \n "server"};
 item14[] = {"Select_Model",2,250,-400.000000,350.000000,-300.000000,400.000000,0.000000,"Select Model"};
 item15[] = {"new_model____pla",4,218,-525.000000,400.000000,-425.000000,450.000000,0.000000,"new model" \n "==" \n "player"};
-item16[] = {"Setup_EH",2,4346,-400.000000,450.000000,-300.000000,500.000000,0.000000,"Setup EH"};
+item16[] = {"Setup_EH",2,250,-400.000000,450.000000,-300.000000,500.000000,0.000000,"Setup EH"};
 item17[] = {"true",8,218,-125.000000,450.000000,-25.000000,500.000000,0.000000,"true"};
 item18[] = {"____FAKE____",9,720,0.000000,0.000000,0.000000,0.000000,0.000000,"____FAKE____"};
 link0[] = {0,2};
@@ -41,8 +41,8 @@ link17[] = {15,16};
 link18[] = {16,17};
 link19[] = {17,12};
 link20[] = {11,18};
-globals[] = {25.000000,1,0,0,0,640,480,1,250,6316128,1,-825.287720,232.508224,685.682007,60.530540,687,630,1};
-window[] = {2,-1,-1,-1,-1,884,156,1194,156,3,705};
+globals[] = {25.000000,1,0,0,0,640,480,1,250,6316128,1,-825.287720,232.508224,859.170471,-455.760681,687,854,1};
+window[] = {2,-1,-1,-1,-1,832,1784,2822,104,3,705};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -57,7 +57,14 @@ class FSM
        "0 fadeSound 0;" \n
        "EPOCH_PlayerIsMale = nil;" \n
        "" \n
-       "_myGenderTime = diag_tickTime;"/*%FSM</STATEINIT""">*/;
+       "_myGenderTime = diag_tickTime;" \n
+       "" \n
+       "EPOCH_genderFSM = _thisFSM;" \n
+       "EPOCH_playerGenderInit = {" \n
+       "	diag_log format[""DEBUG: %1, %2"",_this, EPOCH_genderFSM];" \n
+       "	EPOCH_genderFSM setFSMVariable [_this select 0, _this select 1];" \n
+       "};" \n
+       ""/*%FSM</STATEINIT""">*/;
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
       class Links
       {
@@ -179,7 +186,7 @@ class FSM
     {
       name = "END";
       init = /*%FSM<STATEINIT""">*/"titleCut ["""", ""BLACK IN"", 1];" \n
-       ""/*%FSM</STATEINIT""">*/;
+       "EPOCH_genderFSM = nil;"/*%FSM</STATEINIT""">*/;
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
       class Links
       {
@@ -211,9 +218,9 @@ class FSM
           priority = 0.000000;
           to="Select_Model";
           precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"!isNil ""EPOCH_switchPlayer_PVC"""/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/"_playerObject = EPOCH_switchPlayer_PVC;" \n
-           "EPOCH_switchPlayer_PVC = nil;"/*%FSM</ACTION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!isNil ""_switchPlayer_PVC"""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/"_playerObject = _switchPlayer_PVC;" \n
+           "_switchPlayer_PVC = nil;"/*%FSM</ACTION""">*/;
         };
         /*%FSM</LINK>*/
       };

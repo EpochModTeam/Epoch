@@ -9,9 +9,8 @@ if (isNull _object) exitWith{};
 if !(alive _object) exitWith{};
 if (_player distance _object > 20) exitWith{};
 
-
 if !(_object in EPOCH_cleanupQueue) then {
-	
+
 	EPOCH_cleanupQueue pushBack _object;
 
 	_type = typeOf _object;
@@ -34,7 +33,7 @@ if !(_object in EPOCH_cleanupQueue) then {
 			_object setDir _dir;
 			_object setPosATL _pos;
 		};
-		
+
 		[_object, _type] call EPOCH_serverLootObject;
 	} else {
 		[_object, "Food"] call EPOCH_serverLootObject;
@@ -51,7 +50,7 @@ if !(_object in EPOCH_cleanupQueue) then {
 			_weightedArrayCount = _antagTable select 2;
 
 			_triggerType = _antagTableArray select(_weightedArray select floor(random _weightedArrayCount));
-			
+
 			[_player, _triggerType] call EPOCH_server_triggerEvent;
 		};
 	};

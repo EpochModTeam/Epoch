@@ -293,8 +293,8 @@ if (typename _this == "ARRAY") then {
 									}forEach(_contentArray select 3);
 							};
 							if (_found) then {
-								Epoch_my_Group = _contentArray;
-								_plyrNetID publicVariableClient "Epoch_my_Group";
+								// send group data to player
+								[["groupUpdate", _contentArray], _plyrNetID] call EPOCH_sendPublicVariableClient;
 								_newPlyr setVariable["GROUP", _plyrGroup];
 							};
 						};
@@ -332,8 +332,7 @@ if (typename _this == "ARRAY") then {
 
 if (_reject) then {
 	diag_log format ["DEBUG PLAYER NOT SETUP OR INVAILD: %1", _plyr];
-	BAD_HIVE = true;
-	_plyrNetID publicVariableClient "BAD_HIVE";
+	true remoteExec ['EPOCH_client_rejectPlayer',_plyr];
 };
 
 true

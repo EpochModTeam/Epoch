@@ -1,19 +1,16 @@
 /*%FSM<COMPILE "F:\Program Files (x86)\Bohemia Interactive\Tools\FSM Editor Personal Edition\scriptedFSM.cfg, SPVEH">*/
 /*%FSM<HEAD>*/
 /*
-item0[] = {"Init",0,250,-300.000000,-225.000000,-200.000000,-175.000000,0.000000,"Init"};
+item0[] = {"Init",0,4346,-300.000000,-225.000000,-200.000000,-175.000000,0.000000,"Init"};
 item1[] = {"_",8,218,-300.000000,-150.000000,-200.000000,-100.000000,0.000000,""};
 item2[] = {"Process",2,250,-300.000000,-75.000000,-200.000000,-25.000000,0.000000,"Process"};
-item3[] = {"BAD_HIVE",4,218,-300.000000,50.000000,-200.000000,100.000000,1.000000,"BAD HIVE"};
-item4[] = {"Camera_View_Chec",4,4314,-125.000000,-75.000000,-25.000000,-25.000000,0.000000,"Camera View" \n "Checks"};
+item3[] = {"Camera_View_Chec",4,218,-300.000000,50.000000,-200.000000,100.000000,0.000000,"Camera View" \n "Checks"};
 link0[] = {0,1};
 link1[] = {1,2};
 link2[] = {2,3};
-link3[] = {2,4};
-link4[] = {3,2};
-link5[] = {4,2};
-globals[] = {25.000000,1,0,0,16777215,640,480,1,125,6316128,1,-408.109894,77.792206,142.419571,-234.573410,812,880,1};
-window[] = {2,-1,-1,-1,-1,763,26,1051,26,3,830};
+link3[] = {3,2};
+globals[] = {25.000000,1,0,0,16777215,640,480,1,125,6316128,1,-408.109894,77.792206,142.419571,-234.573410,812,854,1};
+window[] = {2,-1,-1,-1,-1,763,1706,2731,26,3,830};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -24,11 +21,8 @@ class FSM
     class Init
     {
       name = "Init";
-      init = /*%FSM<STATEINIT""">*/"diag_log ""Loaded Client Secure PVEH"";" \n
-       "if (isNil ""BAD_HIVE"") then {" \n
-       "	BAD_HIVE = false;" \n
-       "};" \n
-       "_prevBAD_HIVE = false;"/*%FSM</STATEINIT""">*/;
+      init = /*%FSM<STATEINIT""">*/"diag_log ""Loaded Camera View Checks"";" \n
+       "// TODO: this is just temporary till proper workaround is made."/*%FSM</STATEINIT""">*/;
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
       class Links
       {
@@ -53,18 +47,6 @@ class FSM
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
       class Links
       {
-        /*%FSM<LINK "BAD_HIVE">*/
-        class BAD_HIVE
-        {
-          priority = 1.000000;
-          to="Process";
-          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"!(BAD_HIVE isEqualTo _prevBAD_HIVE)"/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/"_prevBAD_HIVE = true;" \n
-           "PLAYER_BADHIVE = true;" \n
-           "publicVariableServer ""PLAYER_BADHIVE"";"/*%FSM</ACTION""">*/;
-        };
-        /*%FSM</LINK>*/
         /*%FSM<LINK "Camera_View_Chec">*/
         class Camera_View_Chec
         {

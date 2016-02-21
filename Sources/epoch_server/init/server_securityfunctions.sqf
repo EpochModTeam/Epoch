@@ -15,7 +15,7 @@ _skn_systemDebug4 = getText(_cfg_systemDebug >> "systemChat4");
 _skn_systemDebug5 = getText(_cfg_systemDebug >> "systemChat5");
 
 _cfg_limits = (_config >> "limits");
-_skn_playerCryptoLimit = [_cfg_limits, "playerCrypto", 25000] call EPOCH_fnc_returnConfigEntry;
+_skn_playerCryptoLimit = [_cfg_limits, "playerCrypto", 250000] call EPOCH_fnc_returnConfigEntry;
 
 _cfg_learning		  = (_config >> "learning");
 _skn_trustedUsers	  = [_cfg_learning,"trustedUsers",[]] call EPOCH_fnc_returnConfigEntry;
@@ -83,7 +83,7 @@ _skn_customVariablesCheck = [_serverSettingsConfig, "antihack_customVariablesChe
 _skn_customVariables = [_serverSettingsConfig, "antihack_customVariables", []] call EPOCH_fnc_returnConfigEntry;
 _loots = ["CfgEpochClient", "lootClasses", EPOCH_lootClasses] call EPOCH_fnc_returnConfigEntryV2;
 
-_skn_PVC_NAMES = ['tradeRequest', 'repairVehicle', 'lockVehicle', 'unlockVehicle', 'fillVehicle', 'clientRevive', 'earthQuake', 'unitSpawn', 'say3D', 'switchMove', 'bankBalance', 'effectCrypto', 'resetGroup', 'BADHIVE', 'groupUpdate', 'groupUidUpdate', 'groupInvitePlayer', 'serverMessage', 'healPlayer', 'airDrop'];
+_skn_PVC_NAMES = ['bankBalance', 'resetGroup', 'groupUpdate', 'groupUidUpdate', 'healPlayer','tradeComplete'];
 _rndVAR_Count = 83 + (count _skn_PVC_NAMES); // 82 = number of (_skn_rndVA deleteAt 0) uses + _skn_PVC_NAMES count
 _skn_rndVA = call compile('epochserver' callExtension format['810|%1', _rndVAR_Count]);
 
@@ -114,8 +114,7 @@ EPOCH_sendPublicVariableClient = compileFinal ("
 	private '_index';
 	_index = "+str _skn_PVC_NAMES+" find (_this select 0 select 0);
 	if (_index != -1) then {
-		"+_skn_PVC_INDEX+" = ["+str EPOCH_SERVER+" select _index, _this select 0 select 1];
-		(_this select 1) publicVariableClient '"+_skn_PVC_INDEX+"';
+		["+str EPOCH_SERVER+" select _index, _this select 0 select 1] remoteExec ['EPOCH_"+_skn_PVC_INDEX+"',(_this select 1)];
 	};
 ");
 // [["serverMessage",["str_epoch_restart_in",5]]]
@@ -123,8 +122,7 @@ EPOCH_sendPublicVariableAll = compileFinal("
 private '_index';
 _index = "+str _skn_PVC_NAMES+" find(_this select 0 select 0);
 if (_index != -1) then{
-	"+_skn_PVC_INDEX+" = ["+str EPOCH_SERVER+" select _index, _this select 0 select 1];
-	publicVariable '"+_skn_PVC_INDEX+"';
+	["+str EPOCH_SERVER+" select _index, _this select 0 select 1] remoteExec ['"+_skn_PVC_INDEX+"',-2, true];
 };
 ");
 
@@ -1120,7 +1118,7 @@ call compile ("'"+_skn_doAdminRequest+"' addPublicVariableEventHandler {
 			_cIndex = EPOCH_customVars find 'Crypto';
 			_vars = _player getVariable['VARS', [] + EPOCH_defaultVars_SEPXVar];
 			_current_crypto = (((_vars select _cIndex) + (_content select 1)) min "+str _skn_playerCryptoLimit+") max 0;
-			[['effectCrypto', _current_crypto], (owner _player)] call EPOCH_sendPublicVariableClient;
+			_current_crypto remoteExec ['EPOCH_effectCrypto',(owner _player)];
 			_vars set[_cIndex, _current_crypto];
 			_player setVariable['VARS', _vars];
 			if (_player == _admin) then {
@@ -1138,7 +1136,7 @@ call compile ("'"+_skn_doAdminRequest+"' addPublicVariableEventHandler {
 			if (local _content) then {
 				_content setFuel 1;
 			} else {
-				[['fillVehicle', [_content, 1]], owner _admin] call EPOCH_sendPublicVariableClient;
+				[_content, 1] remoteExec ['EPOCH_client_fillVehicle',_admin];
 			};
 			_content call EPOCH_server_save_vehicle;
 		};

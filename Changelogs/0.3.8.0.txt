@@ -1,0 +1,13 @@
+**Client**
+[Changed] Repacked all pbo's and bumped versions to 0.3.8.0. The P3D binarization process now uses 32-bit vertex indices and now produces binarized models (P3D) at version 70. https://dev.arma3.com/post/techrep-00026
+[Changed] Increased the amount of Krypto a player can hold from 25k to 250k.
+[Fixed] Force player to lobby if the player did not tapout after respawn timer runs out.
+[Fixed] Buildings had a chance to loot again too soon after the last try.
+[Fixed] Removed BIS MP init override and added remoteExec BE filter rule for initPlayerServer.sqf usage.
+[Fixed] Reworked player login, fixes issues with players logging in without gear (when one or more players are logging in at the same time, IE. server startup)
+
+**Server**
+[Changed] Removed init and system fixes folders as fixes are now a part of the main mod.
+[Changed] PVC calls moved to remoteExec.
+[Info] Removed old .bikey and added new one for 0380.
+[Info] Required Arma 3 version is now 1.56 or higher.

@@ -17,7 +17,8 @@ if ((count _position) == 2) then{
 		if ((random 1) > _chance) then {
 			// send earthquake to each player in zone
 			{
-				[["earthQuake", _position], (owner _x)] call EPOCH_sendPublicVariableClient;
+				// [["earthQuake", _position], (owner _x)] call EPOCH_sendPublicVariableClient;
+				_position remoteExec ['EPOCH_client_earthQuake',(owner _x)];
 			}forEach _plyrsNearEpicenter;
 
 			_minerals = ["MineralDepositCopper_EPOCH", "MineralDepositGold_EPOCH", "MineralDepositSilver_EPOCH"];

@@ -109,9 +109,8 @@ if !(isNull _object) then {
       // [_object] remoteExec ["EPOCH_server_save_vehicles",2];
 
       // push interacted object to save queue to save later
-      if !(_object in EPOCH_arr_interactedObjs) then{
-    	  EPOCH_arr_interactedObjs pushBack _object;
-      };
+      EPOCH_arr_interactedObjs pushBackUnique _object;
+
 
       _dt = [format["<t size='0.8' shadow='0' color='#99ffffff'>%1 part on %2</t>","Added",_objClass call EPOCH_itemDisplayName], 0, 1, 5, 2, 0, 1] spawn bis_fnc_dynamictext;
 
@@ -129,9 +128,7 @@ if !(isNull _object) then {
     _object animate [_anim, _state, true];
 
     // push interacted object to save queue to save later
-    if !(_object in EPOCH_arr_interactedObjs) then{
-      EPOCH_arr_interactedObjs pushBack _object;
-    };
+    EPOCH_arr_interactedObjs pushBackUnique  _object;
 
     {
         _craftItem = _x;

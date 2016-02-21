@@ -25,7 +25,7 @@ if (surfaceIsWater _currentPos) then {
     _nearByBobbersLocal = [];
     {
       if (local _x) then {
-        _nearByBobbersLocal pushBack _x
+        _nearByBobbersLocal pushBackUnique _x
       };
     } forEach _nearByBobbers;
 

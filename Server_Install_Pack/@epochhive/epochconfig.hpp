@@ -49,7 +49,7 @@ allowedVehiclesList[] = {
     {"B_Heli_Light_01_EPOCH",2},
     {"B_SDV_01_EPOCH",2},
     {"B_MRAP_01_EPOCH",3},
-	{"I_MRAP_03_EPOCH", 3},	
+	{"I_MRAP_03_EPOCH", 3},
     {"B_Truck_01_transport_EPOCH",1},
     {"B_Truck_01_covered_EPOCH",2},
     {"B_Truck_01_mover_EPOCH",1},
@@ -79,7 +79,7 @@ allowedVehiclesList[] = {
 // Traders
 taxRate = 0.1; // controls the price increase for purchases
 starterTraderItems[] = { { "ItemSodaBurst", "meatballs_epoch", "MortarBucket", "CinderBlocks", "VehicleRepair", "CircuitParts", "ItemCorrugated", "PartPlankPack", "ItemRock", "ItemRope", "ItemStick" }, { 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5 } }; // Starter Items for fresh spawned trader first array is classnames second is quantity.
-NPCSlotsLimit = 50; // Max number of traders static or dynamic. Warning! Higher the number lower performance.
+NPCSlotsLimit = 20; // Max number of traders static or dynamic. Warning! Higher the number lower performance.
 forceStaticTraders = true; // disables traders moving from work to home
 
 // Markers

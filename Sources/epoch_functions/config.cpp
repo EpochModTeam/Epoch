@@ -22,14 +22,12 @@ class CfgPatches
 		units[] = {};
 		weapons[] = {};
 		requiredVersion = 0.1;
-		requiredAddons[] = {"A3_Functions_F","A3_epoch_code"};
-		epochVersion = "0.3.7.0";
+		requiredAddons[] = {"A3_epoch_code"};
+		epochVersion = "0.3.8.0";
 	};
 };
 class cfgFunctions
 {
-	version = 4;
-	init = "x\addons\a3_epoch_code\compile\bis_functions\initFunctions.sqf";
 	class A3
 	{
 		tag = "BIS";

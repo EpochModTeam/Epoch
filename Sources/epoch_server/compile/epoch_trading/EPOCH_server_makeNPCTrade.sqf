@@ -296,14 +296,14 @@ if (_slot != -1) then {
 		// diag_log format["ADMIN: %1 TRADETOTAL:%2", _plyr, _tradeTotal];
 
 		// push crypto changes to player
-		_playerCryptoLimit = [(configFile >> "CfgSecConf" >> "limits"), "playerCrypto", 25000] call EPOCH_fnc_returnConfigEntry;
+		_playerCryptoLimit = [(configFile >> "CfgSecConf" >> "limits"), "playerCrypto", 250000] call EPOCH_fnc_returnConfigEntry;
 		_current_crypto = ((_current_cryptoRaw + _tradeTotal) min _playerCryptoLimit) max 0;
-		[["effectCrypto", _current_crypto], (owner _plyr)] call EPOCH_sendPublicVariableClient;
+		//[["effectCrypto", _current_crypto], (owner _plyr)] call EPOCH_sendPublicVariableClient;
+		_current_crypto remoteExec ['EPOCH_effectCrypto',(owner _plyr)];
 		_vars set[_cIndex, _current_crypto];
 		_plyr setVariable["VARS", _vars];
 	};
 
 	// Send completed trade back to player
-	EPOCH_TRADE_COMPLETE = [_returnIn, _returnOut];
-	(owner _plyr) publicVariableClient "EPOCH_TRADE_COMPLETE";
+	[["tradeComplete", [_returnIn, _returnOut]], _plyr] call EPOCH_sendPublicVariableClient;
 };

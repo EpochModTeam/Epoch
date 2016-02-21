@@ -67,9 +67,11 @@ if (_logic) then {
 		_vehicle lock _value;
 	} else {
 		if (_value) then {
-			[["lockVehicle", _vehicle], (owner _vehicle)] call EPOCH_sendPublicVariableClient;
+			// [["lockVehicle", _vehicle], (owner _vehicle)] call EPOCH_sendPublicVariableClient;
+			[_vehicle, true] remoteExec ['EPOCH_client_lockVehicle',(owner _vehicle)];
 		} else {
-			[["unlockVehicle", _vehicle], (owner _vehicle)] call EPOCH_sendPublicVariableClient;
+			// [["unlockVehicle", _vehicle], (owner _vehicle)] call EPOCH_sendPublicVariableClient;		   
+			[_vehicle, false] remoteExec ['EPOCH_client_lockVehicle',(owner _vehicle)];
 		};
 	};
 };

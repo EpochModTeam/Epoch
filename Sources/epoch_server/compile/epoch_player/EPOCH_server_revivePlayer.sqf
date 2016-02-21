@@ -245,7 +245,8 @@ if (!local _plyr) then {
 				// Final Push
 				_token = _newPlyr call EPOCH_server_setPToken;
 
-				[["clientRevive", [_newPlyr, _token]], _owner] call EPOCH_sendPublicVariableClient;
+				//[["clientRevive", [_newPlyr, _token]], _owner] call EPOCH_sendPublicVariableClient;
+				[_newPlyr, _token] remoteExec ['EPOCH_client_fillVehicle',_owner];
 			};
 		};
 	};

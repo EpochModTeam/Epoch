@@ -56,7 +56,8 @@ if (typeOf _object == "PlotPole_EPOCH") then {
 
 			// maintain jammer
 			_counter = _counter + 1;
-			if !(_object in EPOCH_saveBuildQueue) then{EPOCH_saveBuildQueue pushBack _object};
+			EPOCH_saveBuildQueue pushBackUnique _object;
+
 
 			if (_maintCount > 1) then {
 
@@ -66,24 +67,27 @@ if (typeOf _object == "PlotPole_EPOCH") then {
 					if (_storSlot != "ABORT") then {
 						if ((damage _x) > 0) then {
 							_counter = _counter + 1;
-							if !(_x in EPOCH_saveStorQueue) then { EPOCH_saveStorQueue pushBack _x };
+							EPOCH_saveStorQueue pushBackUnique _x;
 						};
 					};
 					_objSlot = _x getVariable["BUILD_SLOT", -1];
 					if (_objSlot != -1) then{
 						if ((damage _x) > 0) then {
 							_counter = _counter + 1;
-							if !(_x in EPOCH_saveBuildQueue) then{ EPOCH_saveBuildQueue pushBack _x };
+							EPOCH_saveBuildQueue pushBackUnique _x;
 						};
 					};
 					if (_counter > _maintCount) exitWith{};
 				} forEach nearestObjects[_object, ["Constructions_static_F","Constructions_foundation_F","Buildable_Storage","Constructions_lockedstatic_F"], _buildingJammerRange];
 
 				// effect crypto
-				_playerCryptoLimit = [(configFile >> "CfgSecConf" >> "limits"), "playerCrypto", 25000] call EPOCH_fnc_returnConfigEntry;
+				_playerCryptoLimit = [(configFile >> "CfgSecConf" >> "limits"), "playerCrypto", 250000] call EPOCH_fnc_returnConfigEntry;
 
 				_current_crypto = ((_current_crypto - _counter) min _playerCryptoLimit) max 0;
-				[["effectCrypto", _current_crypto], (owner _plyr)] call EPOCH_sendPublicVariableClient;
+
+				//[["effectCrypto", _current_crypto], (owner _plyr)] call EPOCH_sendPublicVariableClient;
+				_current_crypto remoteExec ['EPOCH_effectCrypto',(owner _plyr)];
+
 				_vars set[_cIndex, _current_crypto];
 				_plyr setVariable["VARS", _vars];
 

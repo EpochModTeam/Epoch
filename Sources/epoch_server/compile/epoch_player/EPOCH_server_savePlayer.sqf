@@ -29,9 +29,7 @@ if !(alive _plyr) exitWith{
 // add vehicle to update queue
 _vehiclePlyr = vehicle _plyr;
 if (_vehiclePlyr != _plyr) then {
-	if !(_vehiclePlyr in EPOCH_saveVehQueue) then {
-		EPOCH_saveVehQueue pushBack _vehiclePlyr;
-	};
+	EPOCH_saveVehQueue pushBackUnique  _vehiclePlyr;
 };
 
 if (typeName _vars == "ARRAY") then {

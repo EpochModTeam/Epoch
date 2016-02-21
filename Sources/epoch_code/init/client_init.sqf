@@ -41,6 +41,7 @@ Epoch_invited_GroupUID = "";
 Epoch_invited_GroupName = "";
 Epoch_invited_GroupUIDs = [];
 Epoch_invited_GroupUIDsPrev = [];
+Epoch_my_Group = [];
 EPOCH_lastPlayerPos = [0,0,0];
 EPOCH_prevOffer = [];
 EPOCH_drawIcon3d = false;
