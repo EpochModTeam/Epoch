@@ -35,7 +35,6 @@ _config = 'CfgEpochClient' call EPOCH_returnConfig;
         _start = _findStart + 2;
         _end = (_str find ".") - _start;
         _p3dName = _str select[_start, _end];
-        // diag_log format ["DEBUG: _p3dName %1",_p3dName];
         if (_p3dName find " " != -1) then {
             (_p3dName splitString " ") joinString "_"; // replace spaces with underscores
         };

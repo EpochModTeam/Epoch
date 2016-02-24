@@ -32,11 +32,11 @@ if (_vehiclePlyr != _plyr) then {
 	EPOCH_saveVehQueue pushBackUnique  _vehiclePlyr;
 };
 
-if (typeName _vars == "ARRAY") then {
+if (_vars isEqualType []) then {
 	if (count _vars == EPOCH_customVarCount) then{
 		_allowSave = true;
 		{
-			if (typeName (_vars select _forEachIndex) != typeName _x) exitWith { _allowSave = false };
+			if !((_vars select _forEachIndex) isEqualType _x) exitWith { _allowSave = false };
 		} forEach EPOCH_defaultVars;
 
 		if (_allowSave) then{

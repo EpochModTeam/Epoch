@@ -10,11 +10,6 @@ if (damage player != _damagePlayer) then {
 	};
 };
 
-// this fixes issues with players being unable to ride in the same vehicle
-if ((rating player) < 0) then {
-	player addRating abs(rating player);
-};
-
 // calculate total available power
 // 1. number of power production devices within range 75m
 
@@ -39,7 +34,6 @@ if (currentVisionMode player == 1) then { //NV enabled
 if (EPOCH_playerAlcohol > 20) then {
 	_drunkVal = linearConversion [0,100,EPOCH_playerAlcohol,0.1,1,true];
 	[(round(_drunkVal * 10)/10), 2] call epoch_setDrunk;
-	diag_log format["DEBUG: _drunkVal: %1",_drunkVal];
 } else {
 	[0, 2] call epoch_setDrunk;
 };

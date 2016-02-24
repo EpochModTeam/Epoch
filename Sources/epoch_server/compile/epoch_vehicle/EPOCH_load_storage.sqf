@@ -16,7 +16,7 @@ for "_i" from 1 to _this do {
 
 	// diag_log format["STORAGE _response %1",_response];
 
-	if ((_response select 0) == 1 && typeName (_response select 1) == "ARRAY") then {
+	if ((_response select 0) == 1 && (_response select 1) isEqualType []) then {
 
 		_arr = _response select 1;
 		if !(_arr isEqualTo []) then {
@@ -33,7 +33,7 @@ for "_i" from 1 to _this do {
 			    default { _class_raw };
 			};
 
-			if (typeName(_inventory) != "ARRAY") then { _inventory = []; };
+			if !(_inventory isEqualType []) then { _inventory = []; };
 
 			_worldspace = _arr select 1;
 			_wsCount = count _worldspace;
@@ -65,7 +65,7 @@ for "_i" from 1 to _this do {
 
 			_vehicle = createVehicle[_class, _location, [], 0, "CAN_COLLIDE"];
 
-			if (typeName _dir == "ARRAY") then {
+			if (_dir isEqualType []) then {
 				_vehicle setVectorDirAndUp _dir;
 			} else {
 				_vehicle setDir _dir;
@@ -137,7 +137,7 @@ for "_i" from 1 to _this do {
 						switch _objType do {
 							// Weapon cargo
 							case 0: {
-								if (typeName _x == "ARRAY") then {
+								if (_x isEqualType []) then {
 									if ((count _x) >= 4) then {
 										_vehicle addWeaponCargoGlobal[_x deleteAt 0, 1];
 
@@ -147,7 +147,7 @@ for "_i" from 1 to _this do {
 										// suppressor, laser, optics, magazines(array), bipods
 										{
 											// magazines
-											if (typeName(_x) == "ARRAY") then{
+											if (_x isEqualType []) then{
 												_wMags = true;
 												_wMagsArray = _x;
 											}
@@ -166,7 +166,7 @@ for "_i" from 1 to _this do {
 										} forEach _attachments;
 
 										if (_wMags) then{
-											if (typeName _wMagsArray == "ARRAY" && (count _wMagsArray) >= 2) then{
+											if (_wMagsArray isEqualType [] && (count _wMagsArray) >= 2) then{
 												_vehicle addMagazineAmmoCargo[_wMagsArray select 0, 1, _wMagsArray select 1];
 											};
 										};
@@ -179,7 +179,7 @@ for "_i" from 1 to _this do {
 								_magazineName = _x;
 								_magazineSize = _objQty select _forEachIndex;
 
-								if ((typeName _magazineName == "STRING") && (typeName _magazineSize == "SCALAR")) then {
+								if ((_magazineName isEqualType "STRING") && (_magazineSize isEqualType 0)) then {
 									_magazineSizeMax = getNumber (configFile >> "CfgMagazines" >> _magazineName >> "count");
 
 									// Add full magazines cargo
@@ -193,14 +193,14 @@ for "_i" from 1 to _this do {
 							};
 							// Backpack cargo
 							case 2: {
-								if (typeName _x == "STRING") then {
+								if (_x isEqualType "STRING") then {
 									_qty = _objQty select _forEachIndex;
 									_vehicle addBackpackCargoGlobal [_x, _qty];
 								};
 							};
 							// Item cargo
 							case 3: {
-								if (typeName _x == "STRING") then {
+								if (_x isEqualType "STRING") then {
 									_qty = _objQty select _forEachIndex;
 									_vehicle addItemCargoGlobal [_x, _qty];
 								};

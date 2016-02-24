@@ -6,7 +6,7 @@ All Rights Reserved.
 */
 private["_arr", "_dead", "_isMale", "_medical", "_apperance", "_class", "_vars", "_hitpoints", "_deadPlayer", "_response", "_plyrUID", "_plyrObj"];
 
-if (typename _this == "OBJECT") then {
+if (_this isEqualType objNull) then {
 	_plyrObj = _this;
 	if (!isNull _plyrObj) then {
 		_plyrUID = getPlayerUID _plyrObj;
@@ -18,7 +18,7 @@ if (typename _this == "OBJECT") then {
 			_isMale = true;
 
 			_arr = [];
-			if ((_response select 0) == 1 && typeName(_response select 1) == "ARRAY") then {
+			if ((_response select 0) == 1 && (_response select 1) isEqualType []) then {
 				_arr = (_response select 1);
 			};
 

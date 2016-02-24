@@ -24,5 +24,5 @@ class Altis {
 			{ { 25303, 21807, 0 }, 100 } //Sofia
 	};
 	// Trash config
-	TrashClasses[] = { "Trash", "TrashSmall", "TrashVehicle", "PumpkinPatch", "TrashFood" };
+	TrashClasses[] = { "Trash", "TrashSmall", "TrashVehicle", "PumpkinPatch", "TrashFood", "HempFiber" };
 };

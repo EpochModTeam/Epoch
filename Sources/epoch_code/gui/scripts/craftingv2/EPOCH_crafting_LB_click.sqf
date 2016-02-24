@@ -7,7 +7,7 @@ _ingredientCTRL = rmx_var_crafting_ctrl_main select 1;
 _STdesc = rmx_var_crafting_ctrl_main select 2;
 _3DCTRL = rmx_var_crafting_ctrl_DEVMisc select 0;
 _selection = lbCurSel (rmx_var_crafting_ctrl_main select 0);
-_ingredientData = rmx_var_crafting_SearchConfigData select _selection; 
+_ingredientData = rmx_var_crafting_SearchConfigData select _selection;
 _recipes = _ingredientData select 7;
 _usedIn = _ingredientData select 9;
 
@@ -20,18 +20,18 @@ if !(_recipes isEqualTo []) then {
 	_idx = _ingredientCTRL lbAdd (rmx_var_crafting_colorScheme select 8 select 0);
 	_ingredientCTRL lbSetColor [_idx,(rmx_var_crafting_colorScheme select 8 select 1)];
 	{
-		if !(typeName _x isEqualTo typeName []) then {_x = [_x,1]};
+		if !(_x isEqualType []) then {_x = [_x,1]};
 		_data = ([(_cfg >> (_x select 0))] call EPOCH_crafting_getConfig) select 0;
 		_idx = _ingredientCTRL lbAdd format ["%2 x %1",(_data select 1),_x select 1];
 		_ingredientCTRL lbSetPictureRight [_idx,(_data select 2)];
 		_ingredientCTRL lbSetData [_idx, (_data select 1)];
-		
+
 		_countData = _nearbyCount select _forEachIndex;
 		_itemsPlayer = _countData select 0;
 		_itemsNearby = _countData select 1;
 		_itemsRequired = _countData select 2;
 		_ingredientCTRL lbSetTooltip [_idx,format ["On player: [%1/%2], Nearby: [%3/%2], Crafting time: %4 second(s)",_itemsPlayer,_itemsRequired,_itemsNearby,_ingredientData select 6]];
-		
+
 		_lbColor = if (_itemsPlayer >= _itemsRequired) then {
 			rmx_var_crafting_colorScheme select 11
 		} else {
@@ -42,16 +42,16 @@ if !(_recipes isEqualTo []) then {
 			};
 		};
 		_ingredientCTRL lbSetColor [_idx,_lbColor];
-		
+
 	} forEach _recipes;
 };
 if !(_usedIn isEqualTo []) then {
 	_ingredientCTRL lbAdd "";
 	_idx = _ingredientCTRL lbAdd (rmx_var_crafting_colorScheme select 9 select 0);
 	_ingredientCTRL lbSetColor [_idx,(rmx_var_crafting_colorScheme select 9 select 1)];
-	
+
 	{
-		//if !(typeName _x isEqualTo typeName []) then {_x = [_x,1]};
+		//if !(_x isEqualType []) then {_x = [_x,1]};
 		_data = ([(_cfg >> _x)] call EPOCH_crafting_getConfig) select 0;
 		_idx = _ingredientCTRL lbAdd format ["%1",(_data select 1)];
 		_ingredientCTRL lbSetPictureRight [_idx,(_data select 2)];

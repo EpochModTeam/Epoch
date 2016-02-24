@@ -15,6 +15,7 @@
 class ProvingGrounds_PMC : Default
 {
 	worldSize = 0; // 0 = default to worldSize command
+	plantLimit = 5;
 	vehicleSpawnTypes[] = {
 		{"FlatAreaCity",1},
 		{"FlatAreaCitySmall",1},

@@ -760,7 +760,7 @@ class FSM
        "if (count _seenPlayers > 1) then {" \n
        "" \n
        "" \n
-       "titleText [format[""Hey %1, we've seen %2 round these parts, in case you were interested."",name player,_seenPlayers select (floor random (count _seenPlayers))],""PLAIN""];" \n
+       "titleText [format[""Hey %1, we've seen %2 round these parts, in case you were interested."",name player,selectRandom _seenPlayers],""PLAIN""];" \n
        "};" \n
        "};" \n
        "" \n
@@ -791,7 +791,7 @@ class FSM
        "		_bomb = createVehicle [""Sapper_Charge_Ammo"", _targetPos, [], 0, ""CAN_COLLIDE""];" \n
        "		_bomb attachTo [_unit, [0,0,0],""Pelvis""];" \n
        "		_unit call _disableAI;" \n
-       "		_sapperHandle = [_unit, _bomb] execFSM ""\x\addons\a3_epoch_code\System\Sapper_Brain.fsm"";" \n
+       "		_sapperHandle = [_unit, _bomb] execFSM ""epoch_code\System\Sapper_Brain.fsm"";" \n
        "_sapperHandle" \n
        "};" \n
        ""/*%FSM</STATEINIT""">*/;
@@ -1463,7 +1463,7 @@ class FSM
     class do_alert
     {
       name = "do_alert";
-      init = /*%FSM<STATEINIT""">*/"_message = _alertMessage select floor (random (count _alertMessage));" \n
+      init = /*%FSM<STATEINIT""">*/"_message = selectRandom _alertMessage;" \n
        "titletext [_message,""PLAIN"",6];" \n
        "_message = """";" \n
        "_alertMessage = [""""];" \n

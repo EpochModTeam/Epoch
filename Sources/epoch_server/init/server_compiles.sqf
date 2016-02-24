@@ -79,7 +79,7 @@ EPOCH_weightedArray = compileFinal '
         _lootTableArray = [];
         _weightedArray  = [];
         {
-            if(typeName _x == "ARRAY") then {
+            if(_x isEqualType []) then {
                 _lootTableArray pushBack(_x select 0);
                 for "_i" from 1 to(_x select 1) do {
                     _weightedArray pushBack _forEachIndex;

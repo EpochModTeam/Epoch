@@ -17,7 +17,7 @@ class CfgActionMenu
 		{
 			condition = "true";
 			action = "call EPOCH_crafting_load;";
-			icon = "x\addons\a3_epoch_code\Data\UI\buttons\build_maintain.paa";
+			icon = "x\addons\a3_epoch_icons\Data\UI\buttons\build_maintain.paa";
 			tooltip = "Crafting V2";
 		};
 	};
@@ -29,7 +29,7 @@ class CfgActionMenu
 		{
 			condition = "dyna_typeOfCursorTarget isEqualTo 'someClassName'";
 			action = "hint 'Detective is on the case'";
-			icon = "x\addons\a3_epoch_code\Data\UI\buttons\player_inspect.paa";
+			icon = "x\addons\a3_epoch_icons\Data\UI\buttons\player_inspect.paa";
 			tooltip = "Examine";
 		};
 	};

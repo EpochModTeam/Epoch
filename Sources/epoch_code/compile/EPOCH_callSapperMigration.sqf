@@ -46,7 +46,7 @@ if(_abortAfter < 42)then{
 	_axeSapper = createAgent ["Epoch_Sapper_F", _pos, [], 12, "FORM"];
 	waitUntil {_axeSapper == _axeSapper};
 	_axeSapper call _disableAI;
-	EPOCHSapperMigrationHandle = [_axeSapper,_finish] execFSM "\x\addons\a3_epoch_code\System\sapperSwarmMember.fsm";
+	EPOCHSapperMigrationHandle = [_axeSapper,_finish] execFSM "epoch_code\System\sapperSwarmMember.fsm";
 	uiSleep 0.75;
 	};
 Epoch_axeMigrationRunning = true;

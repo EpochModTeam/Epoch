@@ -56,7 +56,7 @@ if (_class isKindOf 'Constructions_lockedstatic_F') then {
 			{
 				switch _objType do {
 				case 0: {
-					if (typeName _x == "ARRAY") then {
+					if (_x isEqualType []) then {
 						_arrCount = count _x;
 						if (_arrCount >= 4) then {
 
@@ -68,7 +68,7 @@ if (_class isKindOf 'Constructions_lockedstatic_F') then {
 							// suppressor, laser, optics, magazines(array), bipods
 							{
 								// magazines
-								if (typeName(_x) == "ARRAY") then{
+								if (_x isEqualType []) then{
 									_wMags = true;
 									_wMagsArray = _x;
 								}
@@ -87,7 +87,7 @@ if (_class isKindOf 'Constructions_lockedstatic_F') then {
 							} forEach _attachments;
 
 							if (_wMags) then{
-								if (typeName _wMagsArray == "ARRAY" && (count _wMagsArray) >= 2) then{
+								if (_wMagsArray isEqualType [] && (count _wMagsArray) >= 2) then{
 									_gwh addMagazineAmmoCargo[_wMagsArray select 0, 1, _wMagsArray select 1];
 								};
 							};
@@ -96,25 +96,25 @@ if (_class isKindOf 'Constructions_lockedstatic_F') then {
 					};
 				};
 				case 1: {
-					if (typeName _x == "ARRAY") then {
+					if (_x isEqualType []) then {
 						if ((count _x) == 2) then {
 							_magazineName = _x select 0;
 							_magazineSize = _x select 1;
 
-							if ((typeName _magazineName == "STRING") && (typeName _magazineSize == "SCALAR")) then {
+							if ((_magazineName isEqualType "STRING") && (_magazineSize isEqualType 0)) then {
 								_gwh addMagazineAmmoCargo[_magazineName, 1, _magazineSize];
 							};
 						};
 					};
 				};
 				case 2: {
-					if (typeName _x == "STRING") then {
+					if (_x isEqualType "STRING") then {
 						_qty = _objQty select _forEachIndex;
 						_gwh addBackpackCargoGlobal[_x, _qty];
 					};
 				};
 				case 3: {
-					if (typeName _x == "STRING") then {
+					if (_x isEqualType "STRING") then {
 						_qty = _objQty select _forEachIndex;
 						_gwh addItemCargoGlobal[_x, _qty];
 					};

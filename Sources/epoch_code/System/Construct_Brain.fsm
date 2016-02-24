@@ -101,7 +101,7 @@ class FSM
        "//_construct setBehaviour ""COMBAT"";" \n
        "" \n
        "_constructNames=[""Rocky"",""Miner"",""Plate""];" \n
-       "_constructName = _constructNames select (floor(random count _constructNames));" \n
+       "_constructName = selectRandom _constructNames;" \n
        "" \n
        "_entsArr = [""Epoch_Male_F"",""Epoch_Female_F"",""Epoch_Sapper_F"",""Fin_random_EPOCH"",""Alsatian_Random_EPOCH"",""Epoch_cloak_F"",""b_survivor_F"",""Epoch_Female_Camo_F""];" \n
        "_plyArr = [""Epoch_Male_F"",""Epoch_Female_F"",""b_survivor_F"",""Epoch_Female_Camo_F""];" \n

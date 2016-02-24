@@ -45,14 +45,14 @@ if (!isNull EPOCH_currentTarget && vehicle player == player) then {
 		_stability = 0;
 		_color = [1, 1, 1, 0.7];
 		_text = format ["Hold (%1)",EPOCH_keysAction call BIS_fnc_keyCode];
-		_icon = "\x\addons\a3_epoch_code\Data\UI\ui_question_ca.paa";
+		_icon = "\x\addons\a3_epoch_icons\Data\UI\ui_question_ca.paa";
 
 		_interactOption = getNumber(configFile >> "cfgVehicles" >> typeOf _currentTarget >> "interactMode");
 
 		switch _interactOption do {
 			case 0: {
 				_stability = 100 - round(damage _currentTarget * 100);
-				_icon = "\x\addons\a3_epoch_code\Data\UI\loading_bar_%1.paa";
+				_icon = "\x\addons\a3_epoch_icons\Data\UI\loading_bar_%1.paa";
 				_text = "";
 
 				if (_stability < 50) then {
@@ -65,7 +65,7 @@ if (!isNull EPOCH_currentTarget && vehicle player == player) then {
 			case 1: {
 				_text = if (EPOCH_buildMode > 0) then[{_text}, { format ["Press (%1)",EPOCH_keysBuildMode1 call BIS_fnc_keyCode] }];
 				_stability = if (EPOCH_buildMode > 0) then[{_currentTarget getVariable["stability", 100]}, {100 - round(damage _currentTarget * 100)}];
-				_icon = "\x\addons\a3_epoch_code\Data\UI\loading_bar_%1.paa";
+				_icon = "\x\addons\a3_epoch_icons\Data\UI\loading_bar_%1.paa";
 
 				if (_stability < 50) then {
 					_color = [1, 0.5, 0, 0.7];
@@ -78,7 +78,7 @@ if (!isNull EPOCH_currentTarget && vehicle player == player) then {
 				if (alive _currentTarget) then{
 					_text = format["%1 - Press (Ctrl+%2)", if (isStreamFriendlyUIEnabled) then[{"Player"}, { name _currentTarget }],EPOCH_keysAcceptTrade call BIS_fnc_keyCode];
 					_stability = 100 - round(damage _currentTarget * 100);
-					_icon = "\x\addons\a3_epoch_code\Data\UI\loading_bar_%1.paa";
+					_icon = "\x\addons\a3_epoch_icons\Data\UI\loading_bar_%1.paa";
 
 					if (_stability < 50) then{
 						_color = [1, 0.5, 0, 0.7];
@@ -89,20 +89,20 @@ if (!isNull EPOCH_currentTarget && vehicle player == player) then {
 
 				} else {
 					//_text = "Press (Inventory)";
-					_icon = "\x\addons\a3_epoch_code\Data\UI\ui_crossbones_ca.paa";
+					_icon = "\x\addons\a3_epoch_icons\Data\UI\ui_crossbones_ca.paa";
 				};
 			};
 			case 3: {
 				if (!alive _currentTarget && _distance < 2) then{
 					_text = format ["Gut Animal - %1",_text];
-					_icon = "\x\addons\a3_epoch_code\Data\UI\ui_crossbones_ca.paa";
+					_icon = "\x\addons\a3_epoch_icons\Data\UI\ui_crossbones_ca.paa";
 				};
 			};
 			case 4: {
 				//_text = if (EPOCH_buildMode > 0) then[{"Press (Space)"}, { "Press (Inventory)" }];
 				_text = if (EPOCH_buildMode > 0) then[{_text}, { format ["Press (%1) or (Inventory)",EPOCH_keysBuildMode1 call BIS_fnc_keyCode] }];
 				_stability = if (EPOCH_buildMode > 0) then[{_currentTarget getVariable["stability", 100]}, {100 - round(damage _currentTarget * 100)}];
-				_icon = "\x\addons\a3_epoch_code\Data\UI\loading_bar_%1.paa";
+				_icon = "\x\addons\a3_epoch_icons\Data\UI\loading_bar_%1.paa";
 
 				if (_stability < 50) then{
 					_color = [1, 0.5, 0, 0.7];
@@ -163,7 +163,7 @@ if (EPOCH_drawIcon3d) then {
 						_color = [1, 0, 0, 0.7];
 					};
 				};
-				drawIcon3D[format["\x\addons\a3_epoch_code\Data\UI\loading_bar_%1.paa", _num], _color, _pos, 4, 4, 0, "", 1, 0.05, "PuristaMedium"];
+				drawIcon3D[format["\x\addons\a3_epoch_icons\Data\UI\loading_bar_%1.paa", _num], _color, _pos, 4, 4, 0, "", 1, 0.05, "PuristaMedium"];
 			};
 		}forEach EPOCH_arr_countdown;
 };
@@ -174,7 +174,7 @@ if (EPOCH_drawIcon3d) then {
 		_pos = _x;
 		_color = [1, 1, 1, 0.7];
 		_size = 1;
-		drawIcon3D["x\addons\a3_epoch_code\Data\UI\snap_ca.paa", _color, _pos, _size, _size, 0, "", 1, _size / 60, "PuristaMedium"];
+		drawIcon3D["x\addons\a3_epoch_icons\Data\UI\snap_ca.paa", _color, _pos, _size, _size, 0, "", 1, _size / 60, "PuristaMedium"];
 	};
 }forEach EPOCH_arr_snapPoints;
 
@@ -197,7 +197,7 @@ if (EPOCH_drawIcon3d) then {
 		else {
 			_text = format['%1 : %2m', typeOf _x, round(player distance _x)];
 		};
-		drawIcon3D["\x\addons\a3_epoch_code\Data\Member.paa", _color, _pos, 1, 1, 0, _text, 1, 0.025, "PuristaMedium"];
+		drawIcon3D["\x\addons\a3_epoch_icons\Data\Member.paa", _color, _pos, 1, 1, 0, _text, 1, 0.025, "PuristaMedium"];
 	};
 }forEach EPOCH_ESP_TARGETS;
 

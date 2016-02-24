@@ -49,7 +49,7 @@ _outPos = [(_inPos select 0) + (sin _rDir) * _rDist, (_inPos select 1) + (cos _r
 if (_onRoad) then {
 	_nrRoads = _outPos nearRoads 250;
 	if (count _nrRoads > 0) then {
-		_nrRoad = _nrRoads select (floor(random (count _nrRoads)));
+		_nrRoad = selectRandom _nrRoads;
 		_outPos = getPosATL _nrRoad;
 	};
 };

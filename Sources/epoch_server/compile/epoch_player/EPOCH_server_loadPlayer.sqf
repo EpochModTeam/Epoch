@@ -26,7 +26,7 @@ _fnc_addItemToX = {
 	} forEach (_this select 1);
 };
 
-if (typename _this == "ARRAY") then {
+if (_this isEqualType []) then {
 
 	// load server settings
 	_serverSettingsConfig = configFile >> "CfgEpochServer";
@@ -44,7 +44,7 @@ if (typename _this == "ARRAY") then {
 			// Make Hive call
 			_response = ["Player", _plyrUID] call EPOCH_fnc_server_hiveGETRANGE;
 			_arr = [];
-			if ((_response select 0) == 1 && typeName(_response select 1) == "ARRAY") then {
+			if ((_response select 0) == 1 && (_response select 1) isEqualType []) then {
 				_arr = (_response select 1);
 			};
 
@@ -95,7 +95,7 @@ if (typename _this == "ARRAY") then {
 			_deadPlayer = ["PlayerStats", _plyrUID, 0] call EPOCH_fnc_server_hiveGETBIT;
 			_alreadyDead = (_deadPlayer || (_medical select 3 == 1) || (_hitpoints select 2 == 1) || (_hitpoints select 3 == 1) || (_vars select 12 >= 180));
 
-			if (_alreadyDead || _prevInstance != _instanceID || (count _location) < 3 || typeName _location != "ARRAY") then {
+			if (_alreadyDead || _prevInstance != _instanceID || (count _location) < 3 || !(_location isEqualType [])) then {
 				_dir = random 360;
 				_location = getMarkerPos "respawn_west";
 				_location set[2, 0];
@@ -132,7 +132,6 @@ if (typename _this == "ARRAY") then {
 
 				addToRemainsCollector[_newPlyr];
 
-				//diag_log format ["DEBUG Created New Player: %1", _newPlyr];
 				{
 					_newPlyr disableAI _x;
 				} forEach["FSM", "MOVE", "AUTOTARGET", "TARGET"];
@@ -195,7 +194,7 @@ if (typename _this == "ARRAY") then {
 						// suppressor, laser, optics, magazines(array), bipods
 						{
 							// magazines
-							if (typeName(_x) == "ARRAY") then{
+							if (_x isEqualType []) then{
 								_wMags = true;
 								_wMagsArray = _x;
 							} else {
@@ -273,9 +272,8 @@ if (typename _this == "ARRAY") then {
 
 					if (_plyrGroup != "") then {
 						_response = ["Group", _plyrGroup] call EPOCH_fnc_server_hiveGETRANGE;
-						diag_log format["DEBUG (Load Player) Group Content: %1", _response];
 						_found = false;
-						if ((_response select 0) == 1 && typeName(_response select 1) == "ARRAY" && !((_response select 1) isEqualTo[])) then {
+						if ((_response select 0) == 1 && (_response select 1) isEqualType [] && !((_response select 1) isEqualTo[])) then {
 							_contentArray = _response select 1;
 							_found = _plyrGroup == _plyrUID;
 							if (!_found) then {

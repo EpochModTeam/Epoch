@@ -3,8 +3,6 @@ disableSerialization;
 _display = findDisplay -1300;
 _BtnInvite = _display displayCtrl 30;
 
-diag_log format["%1 %2", Epoch_my_Group, Epoch_my_GroupUID];
-
 _GroupMemberList = _display displayCtrl 40;
 _InvitePlayerCombo = _display displayCtrl 41;
 

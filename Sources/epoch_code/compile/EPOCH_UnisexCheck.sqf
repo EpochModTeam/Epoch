@@ -39,16 +39,12 @@ if (_class in ["WoodClub","Plunger","MeleeRod"]) then {
 //Radio Check
 if (configName(inheritsFrom(configFile >> "CfgWeapons" >> _class)) == "ItemRadio") then {
 	if (_class in(assignedItems player)) then {
-		//diag_log "EQUPPED RADIO";
 		EPOCH_equippedItem_PVS = [_class,true,player];
 	};
 };
 
 if (_woman == 1) then {
 	if (isClass _config) then {
-
-		//diag_log format["DEBUG EPOCH_UnisexCheck: %1", _this];
-
 		if (isText (_config >> "femaleVest")) then {
 			_femaleVariant = getText (_config >> "femaleVest");
 			_vest = vest player;
@@ -68,8 +64,6 @@ if (_woman == 1) then {
 	};
 } else {
 	if (isClass _config) then {
-		//diag_log format["DEBUG EPOCH_UnisexCheck: %1", _this];
-
 		if (isText (_config >> "maleVest")) then {
 			_maleVariant = getText (_config >> "maleVest");
 			_vest = vest player;

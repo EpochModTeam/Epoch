@@ -35,8 +35,6 @@ if (_objSlot != -1) then {
 		_newObj setposATL _objectPos;
 
 		_newObj call EPOCH_fnc_saveBuilding;
-
-		diag_log format["DEBUG upgrade BUILD : %1 slot %2", _object, _objSlot];
 	};
 } else {
 	_objType = typeOf _object;
@@ -55,8 +53,6 @@ if (_objSlot != -1) then {
 			_newObj = createVehicle[_class, (_worldspace select 0), [], 0, "CAN_COLLIDE"];
 			_newObj setVectorDirAndUp[(_worldspace select 1), (_worldspace select 2)];
 			_newObj setposATL(_worldspace select 0);
-
-			diag_log format["DEBUG upgrade BUILD : %1 slot %2", _object, _objSlot];
 		};
 	};
 };

@@ -37,7 +37,7 @@ if !(isNull _sapper) then {
 while {player distance _sapper < 100 && alive player} do {
 	if ((random 100) < 0.5) then {
 		_sounds = ["sapper_groan0","sapper_groan1","sapper_groan2"];
-		_sound = _sounds select (floor (random (count _sounds)));
+		_sound = selectRandom _sounds;
 		_sapper say3D _sound;
 		EPOCH_say3D_PVS = [player, _sapper,(EPOCH_sounds find _sound), Epoch_personalToken];
 		EPOCH_say3D_PVS remoteExec ["EPOCH_server_handle_say3D",2];

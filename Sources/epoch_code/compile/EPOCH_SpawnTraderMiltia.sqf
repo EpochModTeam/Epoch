@@ -23,7 +23,7 @@ for "_i" from 1 to 3 step 1 do
 	_startPos = [];
     while {count _startPos < 1} do {
     _garrCount = 0;
-    _rndHouse = _nrBuilds select (floor random(count _nrBuilds));
+    _rndHouse = selectRandom _nrBuilds;
 
         while {format ["%1", _rndHouse buildingPos (_garrCount)] != "[0,0,0]" } do {
         _garrCount = _garrCount + 1;
@@ -37,5 +37,5 @@ for "_i" from 1 to 3 step 1 do
 	_unit = _grp createUnit["B_G_Soldier_F", _startPos, [], 0, "CAN_COLLIDE"];
 	_unit addEventHandler ["FiredNear", "group (_this select 0) setVariable[""shotsFired"",[(_this select 1),(_this select 2)]]"];
 	_unit addEventHandler ["Killed", "group (_this select 0) setVariable[""killer"",_this select 1]"];
-	[_unit] execFSM "\x\addons\a3_epoch_code\System\Trader_Militia.fsm";
+	[_unit] execFSM "epoch_code\System\Trader_Militia.fsm";
 };

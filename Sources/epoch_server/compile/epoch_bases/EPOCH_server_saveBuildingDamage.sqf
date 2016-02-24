@@ -15,7 +15,7 @@ if (alive _vehicle) then {
 		_bldHiveKey = format["%1:%2", (call EPOCH_fn_InstanceID), _slot];
 		_response = ["Building", _bldHiveKey] call EPOCH_fnc_server_hiveGETRANGE;
 
-		if ((_response select 0) == 1 && typeName(_response select 1) == "ARRAY" && !((_response select 1) isEqualTo[])) then {
+		if ((_response select 0) == 1 && (_response select 1) isEqualType [] && !((_response select 1) isEqualTo[])) then {
 			_arr = _response select 1;
 			_arrCount = count _arr;
 
@@ -24,7 +24,7 @@ if (alive _vehicle) then {
 
 			_storageSlot = "-1";
 			if (_arrCount >= 3) then {
-				if ((typeName(_arr select 2)) == "SCALAR") then {
+				if ((_arr select 2) isEqualType 0) then {
 					_storageSlot = str(_arr select 2);
 				} else {
 					_storageSlot = _arr select 2;
@@ -43,7 +43,7 @@ if (alive _vehicle) then {
 
 			_VAL = [_class, _worldspace, _storageSlot, _owner, _textureSlot, damage _vehicle];
 			["Building", _bldHiveKey, EPOCH_expiresBuilding, _VAL] call EPOCH_fnc_server_hiveSETEX;
-		
+
 		};
 	};
 };

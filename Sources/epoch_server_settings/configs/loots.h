@@ -116,6 +116,14 @@ class CfgMainTable
 		tables[] = { "Pumpkin" };
 	};
 
+	class HempFiber : Default
+	{
+		chance = 1;
+		lootMin = 1;
+		LootMax = 3;
+		tables[] = { "Hemp" };
+	};
+
 	class VehicleBoat : Default
 	{
 		lootMin = 3;
@@ -643,6 +651,13 @@ class CfgLootTable
 	{
 		items[] = {
 				{ { "Pumpkin", "magazine" }, 1 }
+		};
+	};
+
+	class Hemp
+	{
+		items[] = {
+				{ { "ItemKiloHemp", "magazine" }, 1 }
 		};
 	};
 

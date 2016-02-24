@@ -59,7 +59,7 @@ _respawnButton ctrlEnable false;
 [_display] spawn {
 	disableSerialization;
 	_display = _this select 0;
-	_pushCustomVar = compile preprocessFileLineNumbers "\x\addons\a3_epoch_code\compile\functions\EPOCH_pushCustomVar.sqf";
+	_pushCustomVar = compile preprocessFileLineNumbers "epoch_code\compile\functions\EPOCH_pushCustomVar.sqf";
 	false call _pushCustomVar;
 
 	_startTime = diag_tickTime+5;

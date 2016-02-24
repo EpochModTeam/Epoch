@@ -22,12 +22,12 @@ if !(_object isKindOf "All") then {
 			};
 		} else {
 			_lootables = [["PartOre", 2], ["ItemRock", 4]];
-			_selectedPayout = _lootables select(floor random(count _lootables));
+			_selectedPayout = selectRandom _lootables;
 		};
 
 		_payout = _selectedPayout select 0;
 		_payoutQty = _selectedPayout select 1;
-		
+
 		_object setdamage ((damage _object) + (1/_payoutQty)) min 1;
 
 		_nearbyWH = nearestObjects[_posWH, ["groundWeaponHolder"], 2];

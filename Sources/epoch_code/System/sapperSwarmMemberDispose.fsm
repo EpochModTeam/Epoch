@@ -275,7 +275,7 @@ class FSM
                                         to="check";
                                         precondition = "";
                                         condition="count _nrTrgts > 0";
-                                        action="_trgt = _nrTrgts select floor (random (count _nrTrgts));";
+                                        action="_trgt = selectRandom _nrTrgts;";
                                 };
                         };
                 };

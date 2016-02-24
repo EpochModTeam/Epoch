@@ -216,13 +216,11 @@ class FSM
        "_finalPlayerObjectCheck = {" \n
        "	_logic1 = (_mass == (loadAbs _playerObject));" \n
        "	_timeout = ((diag_tickTime - _myTime) > 30);" \n
-       "	diag_log format [""LOGIN-DEBUG mass match: %1  in %2 seconds, timeout: %3"", _logic1,(diag_tickTime - _myTime),_timeout];" \n
        "	(_logic1 || _timeout)" \n
        "};" \n
        "" \n
        "EPOCH_loginFSM = _thisFSM;" \n
        "EPOCH_playerLoginInit = {" \n
-       "	diag_log format[""DEBUG: %1, %2"",_this, EPOCH_loginFSM];" \n
        "	EPOCH_loginFSM setFSMVariable [_this select 0, _this select 1];" \n
        "};" \n
        ""/*%FSM</STATEINIT""">*/;
@@ -421,7 +419,6 @@ class FSM
        "1338 cutText [_msg,""PLAIN"",0]; " \n
        "deleteVehicle player;" \n
        "call _rejectPlayer;" \n
-       "// diag_log format [""(%1) %2"",diag_tickTime,_msg];" \n
        "_myTime = diag_tickTime;"/*%FSM</STATEINIT""">*/;
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
       class Links
@@ -651,7 +648,6 @@ class FSM
        "   (findDisplay 46) displayAddEventHandler [""KeyDown"",""true""];" \n
        "	(findDisplay 46) displayAddEventHandler [""KeyUp"",""true""];" \n
        "};" \n
-       "// diag_log format [""(%1) %2"",diag_tickTime,_msg];" \n
        "_myTime = diag_tickTime;" \n
        ""/*%FSM</STATEINIT""">*/;
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;

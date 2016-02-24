@@ -31,15 +31,12 @@ while {_hiveMakeCall} do {
 	_currentIndexMax = _currentIndex + 8000;
 	_hiveResponse = "epochserver" callExtension format["220|%1:%2|%3|%4", _this select 0, _this select 1, _currentIndex, (_currentIndexMax-1)];
 
-	//0 _hiveResponse: [1,""]
-	//diag_log format["%2:%3 _hiveResponse: %1", _hiveResponse, _currentIndex, count _hiveResponse];
-
 	if (_hiveResponse != "") then {
 
 		_hiveResponse = call compile _hiveResponse;
 		if !(isNil "_hiveResponse") then{
 
-			if (typeName _hiveResponse == "ARRAY" && !(_hiveResponse isEqualTo[])) then{
+			if (_hiveResponse isEqualType [] && !(_hiveResponse isEqualTo[])) then{
 
 				_hiveStatus = _hiveResponse select 0;
 				if (_hiveStatus == 1) then{

@@ -92,7 +92,7 @@ class FSM
        "_shark setSkill 0;" \n
        "" \n
        "_sharkNames=[""Jaws"",""Angel"",""Bull"",""Blue"",""Cookie"",""Coral"",""Dusky"",""White"",""Hammer"",""Mako"",""Smalltooth""];" \n
-       "_sharkName = _sharkNames select (floor(random count _sharkNames));" \n
+       "_sharkName = selectRandom _sharkNames;" \n
        "" \n
        "_trgtArray = [""Epoch_Male_F"",""Epoch_Female_F""];" \n
        "_vehArray = [""Car""];" \n

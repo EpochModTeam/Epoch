@@ -98,12 +98,9 @@ if (_object isKindOf "Constructions_static_F") then {
 			_part = _x select 0;
 			_req = _x select 1;
 			_partCheck = {_x == _part} count (magazines player);
-			//diag_log format["DEBUG: _partCheck %1", _partCheck];
-			//diag_log format["DEBUG: _x %1", _x];
+
 			if (_partCheck < _req) then {
 				_missingCount = _req - _partCheck;
-
-				//diag_log format["DEBUG: _missingCount %1", _missingCount];
 
 				_canUpgrade = false;
 				_missingParts = _missingParts + format["Missing %1 %2, ", _missingCount, (_part call EPOCH_itemDisplayName)];

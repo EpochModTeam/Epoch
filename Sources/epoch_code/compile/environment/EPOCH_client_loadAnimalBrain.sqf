@@ -31,7 +31,7 @@ _randomAIClass = _animalAiTables select _randomIndex;
 _animalPos = nil;
 _plyrPos = position player;
 
-if (typeName _randomAIClass == "ARRAY") then {
+if (_randomAIClass isEqualType []) then {
 	_randomIndex = floor(random(count _randomAIClass));
 	_randomAIClass = _randomAIClass select _randomIndex;
 };
@@ -44,11 +44,8 @@ for "_i" from 1 to 3 step 1 do {
 };
 
 if!(isNil "_animalPos") then {
-	// diag_log format["DEBUG: Spawning animal at %1.",_animalPos];
 	_animal = createAgent[_randomAIClass, _animalPos, [], 5, "NONE"];
 	_animal setVariable["BIS_fnc_animalBehaviour_disable", true];
-
-	// diag_log format["DEBUG: spawned %1", _randomAIClass];
 
 	// send to server
 	[_animal] remoteExec ["EPOCH_localCleanup",2];
@@ -58,8 +55,8 @@ if!(isNil "_animalPos") then {
 	}forEach ["TARGET","AUTOTARGET","FSM"];
 
 	if (_randomAIClass in ["Fin_random_EPOCH", "Alsatian_Random_EPOCH"]) then {
-			_id = [_animal] execFSM "\x\addons\a3_epoch_code\System\Dog_Brain.fsm";
+			_id = [_animal] execFSM "epoch_code\System\Dog_Brain.fsm";
 	}else{
-			_id = [_animal, _randomAIClass in ["Snake_random_EPOCH","Snake2_random_EPOCH"]] execFSM "\x\addons\a3_epoch_code\System\Animal_brain.fsm";
+			_id = [_animal, _randomAIClass in ["Snake_random_EPOCH","Snake2_random_EPOCH"]] execFSM "epoch_code\System\Animal_brain.fsm";
 	};
 };

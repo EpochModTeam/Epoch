@@ -67,7 +67,7 @@ _lootBubble = {
 
 		if (!(_objects isEqualTo[]) && (_jammer isEqualTo[])) then {
 
-			_building = _objects select(floor(random(count _objects)));
+			_building = selectRandom _objects;
 
 			if !(_building in EPOCH_LootedBlds) then {
 
@@ -103,8 +103,8 @@ _lootBubble = {
 
 											if (nearestObjects[_pos, ["WH_Loot", "Animated_Loot"], 2] isEqualTo[]) then {
 
-												if ((typeName _class) == "ARRAY") then {
-													_class = _class select(floor(random(count _class)));
+												if (_class isEqualType []) then {
+													_class = selectRandom _class;
 												};
 
 												_dir = (_x select 1) + (getDir _building);
@@ -131,14 +131,14 @@ _lootBubble = {
 													_item setPosATL _pos;
 												};
 
-												if (typeName _randomColor isEqualTo "STRING") then {
+												if (_randomColor isEqualType "STRING") then {
 													_randomColor = _randomColor isEqualTo "true";
 												};
 
 												if (_randomColor) then {
 													_colors = [] + getArray(configFile >> "CfgVehicles" >> _class >> "availableTextures");
 													if !(_colors isEqualTo[]) then {
-														_color = _colors select floor(random(count _colors));
+														_color = selectRandom _colors;
 														_item setObjectTextureGlobal[0, _color];
 													};
 												};

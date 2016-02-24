@@ -37,8 +37,6 @@ if (isclass _class) then {
 			_doorIndex = _forEachIndex + 1;
 			_disabledDoor = EPCH getVariable [format["bis_disabled_Door_%1",_doorIndex],0];
 
-			//diag_log format["DEBUG DOORS: %1 %2", _doorIndex, _disabledDoor];
-
 			if (_disabledDoor == 0) then {
 				_index = lbAdd[1550,"Lock Door"];
 				_unlock = format["EPCH setVariable ['bis_disabled_Door_%1',1,true];",_doorIndex];

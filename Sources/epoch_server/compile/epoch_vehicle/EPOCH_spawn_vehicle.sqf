@@ -23,7 +23,7 @@ if !(isNull _vehObj) then{
 	_vehObj call EPOCH_server_setVToken;
 
 	// Set Direction
-	if (typeName _direction == "ARRAY") then{
+	if (_direction isEqualType []) then{
 	  _vehObj setVectorDirAndUp _direction;
 	} else {
 	  _vehObj setdir _direction;

@@ -60,5 +60,5 @@ hintSilent parseText format ["
 	round diag_fps,
 	_hours,
 	round((serverTime/60)-(_hours*60)),
-	if (typeName EPOCH_diag_fps == "SCALAR") then [{EPOCH_diag_fps},{"MANIPULATED"}]
+	if (EPOCH_diag_fps isEqualType 0) then [{EPOCH_diag_fps},{"MANIPULATED"}]
 ];

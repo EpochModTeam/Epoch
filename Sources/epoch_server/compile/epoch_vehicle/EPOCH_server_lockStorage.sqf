@@ -38,7 +38,7 @@ if (getNumber(configFile >> "CfgVehicles" >> _type >> "isSecureStorage") == 1) t
 			} else {
 
 				_response = ["Group", _plyrGroup] call EPOCH_fnc_server_hiveGETRANGE;
-				if ((_response select 0) == 1 && typeName (_response select 1) == "ARRAY") then {
+				if ((_response select 0) == 1 && (_response select 1) isEqualType []) then {
 					_gArray = _response select 1;
 					if (
 						{(_x select 0) in _owners}count(_gArray select 3) > 0 ||
@@ -65,7 +65,7 @@ if (getNumber(configFile >> "CfgVehicles" >> _type >> "isSecureStorage") == 1) t
 				_unit call _fnc_unlock;
 			} else {
 				_response = ["Group", _plyrGroup] call EPOCH_fnc_server_hiveGETRANGE;
-				if ((_response select 0) == 1 && typeName(_response select 1) == "ARRAY") then {
+				if ((_response select 0) == 1 && (_response select 1) isEqualType []) then {
 					_gArray = _response select 1;
 					if (
 						{(_x select 0) in _owners }count(_gArray select 3) > 0 ||

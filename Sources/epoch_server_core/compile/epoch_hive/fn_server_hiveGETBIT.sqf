@@ -23,7 +23,7 @@ _hiveResponse = "epochserver" callExtension format["240|%1:%2|%3", _this select 
 if (_hiveResponse != "") then {
 	_hiveResponse = call compile _hiveResponse;
 	if !(isNil "_hiveResponse") then {
-		if (typeName _hiveResponse == "ARRAY" && !(_hiveResponse isEqualTo[])) then {
+		if (_hiveResponse isEqualType [] && !(_hiveResponse isEqualTo[])) then {
 			if ((_hiveResponse select 0) == 1) then {
 				_hiveMessage = ((_hiveResponse select 1) == "1");
 			};

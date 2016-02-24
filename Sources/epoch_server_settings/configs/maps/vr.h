@@ -15,6 +15,7 @@
 class VR : Default
 {
 	worldSize = 10000;
+	plantLimit = 0;
 	vehicleSpawnTypes[] = {
 		{"FlatAreaCity",1},
 		{"FlatAreaCitySmall",1},

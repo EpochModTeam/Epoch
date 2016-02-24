@@ -560,7 +560,7 @@ class FSM
        "" \n
        "if!(_warnStarted) then {" \n
        "_leaveMsgs = [""Leave the transport immediately !"",format[""%1, I suggest you leave that boat..\nRight Now !"",_nickName],format[""If you value your life %1 disembark.\nRight Now !"",_nickName]];" \n
-       "_leaveMsg = _leaveMsgs select floor (random (count _leaveMsgs));" \n
+       "_leaveMsg = selectRandom _leaveMsgs;" \n
        "titleText [_leaveMsg,""PLAIN"",3];" \n
        "_warnStarted = true;" \n
        "};" \n
@@ -1054,7 +1054,7 @@ class FSM
        "" \n
        "	[_unit] remoteExec [""EPOCH_localCleanup"",2];" \n
        "	};" \n
-       "	[_unit,axeGeneral] execFSM ""\x\addons\a3_epoch_code\System\Mission_VIP_Militia.fsm"";" \n
+       "	[_unit,axeGeneral] execFSM ""epoch_code\System\Mission_VIP_Militia.fsm"";" \n
        "" \n
        "	};" \n
        "" \n

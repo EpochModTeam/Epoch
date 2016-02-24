@@ -126,7 +126,7 @@ class FSM
        "_looter setBehaviour ""COMBAT"";" \n
        "" \n
        "_looterNames=[""Jaws"",""Angel"",""Bull"",""Blue"",""Cookie"",""Coral"",""Dusky"",""White"",""Hammer"",""Mako"",""Smalltooth""];" \n
-       "_looterName = _looterNames select (floor(random count _looterNames));" \n
+       "_looterName = selectRandom _looterNames;" \n
        "" \n
        "_entsArr = [""Epoch_Male_F"",""Epoch_Female_F"",""Epoch_Sapper_F"",""Fin_random_EPOCH"",""Alsatian_Random_EPOCH"",""Epoch_cloak_F"",""b_survivor_F"",""Epoch_Female_Camo_F""];" \n
        "_plyArr = [""Epoch_Male_F"",""Epoch_Female_F"",""b_survivor_F"",""Epoch_Female_Camo_F""];" \n
@@ -882,7 +882,7 @@ class FSM
        "doStop _looter;" \n
        "_looter forceSpeed 0;" \n
        "" \n
-       "_gesture = [""GestureSwing0"", ""GestureSwing1"", ""GestureSwing2""] select (floor(random 3));" \n
+       "_gesture = selectRandom [""GestureSwing0"", ""GestureSwing1"", ""GestureSwing2""];" \n
        "_looter playActionNow _gesture; " \n
        "_looter call EPOCH_client_bitePlayer;" \n
        "" \n

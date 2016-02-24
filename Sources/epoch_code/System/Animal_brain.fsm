@@ -219,7 +219,7 @@ class FSM
        "if (_isChicken) then {" \n
        "	if (random 1 < 0.3) then {" \n
        "	 	_sounds = [""hed_cluck0"",""hed_cluck1"",""hed_cluck2""];" \n
-       "		_sound = _sounds select (floor (random (count _sounds)));" \n
+       "		_sound = selectRandom _sounds;" \n
        "		_animalAgent say3D _sound;" \n
        "		EPOCH_say3D_PVS = [player, _animalAgent, (EPOCH_sounds find _sound),Epoch_personalToken];" \n
        "		EPOCH_say3D_PVS remoteExec [""EPOCH_server_handle_say3D"",2];" \n

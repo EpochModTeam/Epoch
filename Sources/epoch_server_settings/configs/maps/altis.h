@@ -15,6 +15,7 @@
 class Altis : Default
 {
 	worldSize = 20000;
+	plantLimit = 10;
 	vehicleSpawnTypes[] = {
 		{"FlatAreaCity",1},
 		{"FlatAreaCitySmall",1},

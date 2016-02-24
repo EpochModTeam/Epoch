@@ -29,7 +29,7 @@ EPOCH_InteractedItem = [];
 _control = _this select 0;
 _index = _this select 1;
 
-if (typeName _index == "ARRAY") then {
+if (_index isEqualType []) then {
   _index = (_index select 0) select 1;
 };
 

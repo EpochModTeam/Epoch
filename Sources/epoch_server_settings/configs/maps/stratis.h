@@ -15,6 +15,7 @@
 class Stratis : Default
 {
 	worldSize = 6000;
+	plantLimit = 5;
 	vehicleSpawnTypes[] = {
 		{"FlatAreaCity",1},
 		{"FlatAreaCitySmall",1},

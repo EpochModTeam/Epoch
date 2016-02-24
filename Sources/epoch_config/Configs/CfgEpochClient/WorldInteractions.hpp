@@ -115,6 +115,11 @@ class WorldInteractions  {
     class r_tk_boulder_02_ep1_p3d : Rocks {};
     class r_tk_rock_01_ep1_p3d : Rocks {};
 
+    class HempFiber {
+        HempFiber = 1;
+    };
+    class p_fiberplant_ep1 : HempFiber {};
+
     class PumpkinPatch {
         PumpkinPatch = 1;
     };

@@ -39,7 +39,6 @@ _projectile = 	_this select 6;
 
 switch true do {
 	case (_ammo isKindOf "B_EnergyPack"): {
-		// diag_log format["DEBUG AMMO: %1", _ammo];
 		if (!isNull cursorTarget) then {
 			_cursorTarget = cursorTarget;
 			_repaired = false;
@@ -84,8 +83,6 @@ switch true do {
 						} else {
 							[_cursorTarget,[_currentHIT,_newDMG],player,Epoch_personalToken] remoteExec ["EPOCH_server_repairVehicle",2];
 						};
-
-						//diag_log format["DEBUG HITPOINT REPAIRED: %1 %2 %3", _currentHIT, _newDMG, _attachments];
 					} else {
 						if ((damage _cursorTarget) > 0) then {
 							[_cursorTarget,["ALL",0],player,Epoch_personalToken] remoteExec ["EPOCH_server_repairVehicle",2];
@@ -97,7 +94,7 @@ switch true do {
 	};
 
 	case (_ammo isKindOf "B_Hatchet"): {
-		_gesture = ["GestureSwing0", "GestureSwing1", "GestureSwing2"] select (floor(random 3));
+		_gesture = selectRandom ["GestureSwing0", "GestureSwing1", "GestureSwing2"];
 		player playActionNow _gesture;
 		call EPOCH_chopWood;
 	};

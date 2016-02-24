@@ -7,12 +7,21 @@
 	https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_server_settings/EpochEvents/PlantSpawner.sqf
 */
 private ["_displayName","_marker","_plants","_plant","_item","_plantPosition"];
+
+_serverMapConfig = configFile >> "CfgEpoch" >> worldName;
+_plantLimit = [_serverMapConfig, "plantLimit", _spawnPositionSizeDefaults] call EPOCH_fnc_returnConfigEntry;
+if (isNil "EPOCH_plantCounter") then {
+	EPOCH_plantCounter = 0;
+} else {
+	EPOCH_plantCounter = EPOCH_plantCounter + 1;
+};
+if (EPOCH_plantCounter >= _plantLimit) exitWith {diag_log "DEBUG: suppressed plant spawn over limit"};
+
 _plantPosition = [epoch_centerMarkerPosition, 0, EPOCH_dynamicVehicleArea, 10, 0, 4000, 0] call BIS_fnc_findSafePos;
+
 if ((count _plantPosition) == 2) then{
-
 	_plants = ["Goldenseal_EPOCH", "Poppy_EPOCH", "Pumpkin_EPOCH"];
-	_plant = _plants select(floor random(count _plants));
-
+	_plant = selectRandom _plants;
 	_item = createVehicle[_plant, _plantPosition, [], 0.0, "CAN_COLLIDE"];
 	if (EPOCH_showShippingContainers) then{
 		_displayName = getText(configfile >> "CfgVehicles" >> typeOf _item >> "DisplayName");
@@ -22,5 +31,4 @@ if ((count _plantPosition) == 2) then{
 		// _marker setMarkerText _displayName;
 		_marker setMarkerColor "ColorGreen";
 	};
-
 };

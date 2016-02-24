@@ -51,7 +51,7 @@ if !(isNull EPOCH_lastNPCtradeTarget) then {
 						};
 					};
 				};
-				// disallow adding item to list of already one 
+				// disallow adding item to list of already one
 			};
 		};
 
@@ -77,16 +77,13 @@ if !(isNull EPOCH_lastNPCtradeTarget) then {
 
 			_cryptoCount = 0;
 			_sizeOut = lbSize 41502;
-			//_array = [];
 			if (_sizeOut > 0) then {
 				for "_i" from 0 to(_sizeOut - 1) do {
 					_item = lbData[41502, _i];
-					//_array pushBack _item;
 					_itemWorth = getNumber(_config >> _item >> "price");
 					_itemTax = getNumber(_config >> _item >> "tax");
 					_tax = _itemWorth * (EPOCH_taxRate + _itemTax);
 					_itemWorth = ceil(_itemWorth + _tax);
-					//diag_log format["_finalWorth %1", _finalWorth];
 					_cryptoCount = _cryptoCount + _itemWorth;
 				};
 			};

@@ -18,7 +18,6 @@ if !(_object in EPOCH_cleanupQueue) then {
 	_animated = configFile >> "CfgVehicles" >> _type >> "Destruction" >> "animations";
 	if (isArray _animated) then {
 		_object setDamage 1;
-		//diag_log format["DEBUG: lootContainer %1", _object];
 	};
 	_config = (configFile >> "CfgMainTable" >> _type);
 	_lootClasses = getArray(_config >> "tables");

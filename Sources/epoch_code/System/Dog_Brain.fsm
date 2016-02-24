@@ -162,7 +162,7 @@ class FSM
        "_plyr = player;" \n
        "" \n
        "_dogNames=[""Fido"",""Prince"",""Wolf"",""Foxy"",""Max"",""Bailey"",""Buddy"",""Charlie"",""Rocky"",""Jake"",""Buster"",""Riley"",""Sam"",""Bear"",""Oscar"",""Rusty""];" \n
-       "_dogName = _dogNames select (floor(random count _dogNames));" \n
+       "_dogName = selectRandom _dogNames;" \n
        "_dog setName _dogName;" \n
        "" \n
        "_trgtArray = [""Epoch_Male_F"",""Epoch_Female_F"",""Epoch_Female_CamoBlue_F""];" \n

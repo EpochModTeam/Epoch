@@ -1130,7 +1130,7 @@ class FSM
            "if (diag_tickTime - _dropTimer > 1200 && !_airDropDone && _airDropChance < 25) then {" \n
            "" \n
            "if (_rnd < 25) then {" \n
-           "[] execFSM ""\x\addons\a3_epoch_code\System\Event_Air_Drop.fsm"";" \n
+           "[] execFSM ""epoch_code\System\Event_Air_Drop.fsm"";" \n
            "_airDropDone = true;" \n
            "};" \n
            "" \n
@@ -1224,8 +1224,8 @@ class FSM
            "if (!_packageFound && _inMission && diag_tickTime - _dropped> 60) then {" \n
            "_droppedMessage = getArray  (  configFile >> ""TraderMissions"" >> _missionName >> ""missioncheck"" >> ""itemlost"" >> ""dialogue"");" \n
            "_droppedMessage2 = getArray  (  configFile >> ""TraderMissions"" >> _missionName >> ""missioncheck"" >> ""itemlost"" >> ""dialogue2"");" \n
-           "_message = _droppedMessage select floor (random count _droppedMessage);" \n
-           "_message2 = _droppedMessage2 select floor (random count _droppedMessage2);" \n
+           "_message = selectRandom _droppedMessage;" \n
+           "_message2 = selectRandom _droppedMessage2;" \n
            "" \n
            "_formatMsg = format[""<t size='0.8' shadow='0' color='#99ffffff'>%1</t>"",_message];" \n
            "_dt = [_formatMsg, 0, 1, 6, 2, 0, 1] spawn bis_fnc_dynamictext;" \n
@@ -1466,7 +1466,7 @@ class FSM
     class do_alert
     {
       name = "do_alert";
-      init = /*%FSM<STATEINIT""">*/"_message = _alertMessage select floor (random (count _alertMessage));" \n
+      init = /*%FSM<STATEINIT""">*/"_message = selectRandom _alertMessage;" \n
        "_formatMsg = format[""<t size='0.8' shadow='0' color='#99ffffff'>%1</t>"",_message];" \n
        "_dt = [_formatMsg, 0, 1, 6, 2, 0, 1] spawn bis_fnc_dynamictext;" \n
        "_message = """";" \n

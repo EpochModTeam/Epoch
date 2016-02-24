@@ -91,3 +91,6 @@ EPOCH_lootClasses = [
 	["freezerPos", "Freezer_EPOCH", false],
 	["cabinetPos", "Cabinet_EPOCH", false]
 ];
+
+// disable remote sensors on server and client as all Epoch AI is local to the side controlling it.
+disableRemoteSensors (["CfgEpochClient", "disableRemoteSensors", true] call EPOCH_fnc_returnConfigEntryV2);

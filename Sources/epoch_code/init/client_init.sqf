@@ -21,7 +21,7 @@ EPOCH_ESPGROUPCOLORS = [];
 EPOCH_ESP_PLAYER = false;
 EPOCH_ESP_VEHICLES = false;
 EPOCH_ESP_VEHICLEPLAYER = [];
-EPOCH_group_level_img = ["x\addons\a3_epoch_code\data\owner.paa", "x\addons\a3_epoch_code\data\mod.paa", "x\addons\a3_epoch_code\data\member.paa"];
+EPOCH_group_level_img = ["x\addons\a3_epoch_icons\Data\owner.paa", "x\addons\a3_epoch_icons\Data\mod.paa", "x\addons\a3_epoch_icons\Data\member.paa"];
 if (isNil 'EPOCH_diag_fps') then {
 	EPOCH_diag_fps = 0;
 };
@@ -71,7 +71,7 @@ EPOCH_keysActionPressed = false; //prevents EH spam
 //ON INIT and RESPAWN
 call EPOCH_clientInit;
 
-[] execFSM "\x\addons\a3_epoch_code\system\SPVEH.fsm";
-[] execFSM "\x\addons\a3_epoch_code\system\player_login.fsm";
+[] execFSM "epoch_code\system\SPVEH.fsm";
+[] execFSM "epoch_code\system\player_login.fsm";
 
 true

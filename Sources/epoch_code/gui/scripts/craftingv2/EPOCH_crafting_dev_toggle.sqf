@@ -9,7 +9,7 @@ switch (ctrlShown (rmx_var_crafting_ctrl_DEV select 0)) do {
 		{
 			_x ctrlShow false;
 		} forEach rmx_var_crafting_ctrl_DEV;
-		_mainDevBtn ctrlSetText "x\addons\a3_epoch_code\Data\UI\dev_mode_off.paa";
+		_mainDevBtn ctrlSetText "x\addons\a3_epoch_icons\Data\UI\dev_mode_off.paa";
 		_3DCTRL ctrlEnable false;
 		_3DCTRL ctrlRemoveAllEventHandlers "MouseButtonUp";
 		rmx_fnc_craftingExport = nil;
@@ -22,7 +22,7 @@ switch (ctrlShown (rmx_var_crafting_ctrl_DEV select 0)) do {
 		{
 			_x ctrlShow true;
 		} forEach rmx_var_crafting_ctrl_DEV;
-		_mainDevBtn ctrlSetText "x\addons\a3_epoch_code\Data\UI\dev_mode_on.paa";
+		_mainDevBtn ctrlSetText "x\addons\a3_epoch_icons\Data\UI\dev_mode_on.paa";
 		
 		private ["_devBtnSetScale","_devBtnExport","_devBtnSetPos"];
 		_devBtnSetScale = rmx_var_crafting_ctrl_DEV select 1;

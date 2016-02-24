@@ -17,10 +17,21 @@ if !(isNil "Epoch_CStart") exitWith { false };
 Epoch_CStart = true;
 
 if (!isDedicated && hasInterface) then {
-	call compile preprocessFileLineNumbers "\x\addons\a3_epoch_code\init\both_init.sqf";
+	call compile preprocessFileLineNumbers "epoch_code\init\both_init.sqf";
 
 	// Epoch Client Only function compiler
-	_config = (configFile >> "CfgClientFunctions");
+
+	_returnConfig = {
+		private["_return", "_config"];
+		_return = (configfile >> _this);
+		_config = (missionConfigFile >> _this);
+		if (isClass _config) then{
+		  _return = _config;
+		};
+		_return
+	};
+
+	_config = 'CfgClientFunctions' call _returnConfig;
 	_version = getNumber(_config >> "version");
 	if (_version == 1) then {
 		{
@@ -48,7 +59,6 @@ if (!isDedicated && hasInterface) then {
 							};
 							_itemCompile = compileFinal preprocessFileLineNumbers _fnc_path;
 							missionNamespace setvariable [_var_name,_itemCompile];
-							diag_log format["CfgClientFunctions compileFinal: %1", _var_name];
 						} forEach ("isclass _x" configClasses (_x));
 					}
 				} forEach ("isclass _x" configClasses (_x));

@@ -50,8 +50,8 @@ if (_energyCost == 0) then {
 _class = getText(configfile >> "cfgVehicles" >> _objType >> "GhostPreview");
 _maxHeight = getNumber(configfile >> "cfgVehicles" >> _objType >> "maxHeight");
 _simulClass = getText(configFile >> "CfgVehicles" >> _objType >> "simulClass");
-_snapChecks = getArray(configFile >> "CfgSnapChecks" >> _objType >> "nails");
-diag_log format["DEBUG: _snapChecks %1",_snapChecks];
+_snapChecks = getArray(("CfgSnapChecks" call EPOCH_returnConfig) >> _objType >> "nails");
+
 _maxSnapDistance = 1;
 _lastCheckTime = diag_tickTime;
 _stabilityCheck = false;

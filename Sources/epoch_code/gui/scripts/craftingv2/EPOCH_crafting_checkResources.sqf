@@ -49,7 +49,7 @@ if !(_nearbyArr isEqualTo []) then {
 		_color = if (_chck) then {"#00FF00"} else {"#FF0000"};
 		
 		_img = if (_x select 1 isEqualTo "") then {
-			format ["\x\addons\a3_epoch_code\Data\UI\crafting\%1_%2.paa",(_x select 2),_chck]
+			format ["\x\addons\a3_epoch_icons\Data\UI\crafting\%1_%2.paa",(_x select 2),_chck]
 		} else {
 			format ["%1%2_%3",(_x select 1),(_x select 2),_chck]
 		};

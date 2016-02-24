@@ -33,10 +33,9 @@ if ((diag_tickTime - _EPOCH_lastSave) >= _time) then {
 
 	// Get all custom variables
 	_customVars = [];
-	_customVarsInit = ["CfgEpochClient", "customVarsDefaults", missionNamespace getVariable["EPOCH_customVarsDefaults", []]] call EPOCH_fnc_returnConfigEntryV2;
 	{
-		_customVars pushBack (missionNamespace getVariable format["EPOCH_player%1",_x select 0]);
-	} forEach _customVarsInit;
+		_customVars pushBack (missionNamespace getVariable format["EPOCH_player%1",_x]);
+	} forEach (missionNamespace getVariable["EPOCH_customVars", []]);
 
 	[player,_customVars,missionNamespace getVariable "Epoch_personalToken"] remoteExec ["EPOCH_fnc_savePlayer",2];
 

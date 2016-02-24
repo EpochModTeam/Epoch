@@ -13,7 +13,7 @@ _near = []; _out = [];
 _player = (magazines player) + (items player) + (weapons player);
 
 {
-	_recipe = if (typeName _x isEqualTo "STRING") then {[_x,1]} else {_x};
+	_recipe = if (_x isEqualType "STRING") then {[_x,1]} else {_x};
 	_cP = {_x == (_recipe select 0)} count _player;
 	_cN = {_x == (_recipe select 0)} count _near;
 	_out pushBack [_cP, _cN, _recipe select 1];

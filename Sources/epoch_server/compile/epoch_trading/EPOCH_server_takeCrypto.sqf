@@ -24,7 +24,7 @@ if (_getCrypto > 0) then {
 	_playerCryptoLimit = [(configFile >> "CfgSecConf" >> "limits"), "playerCrypto", 250000] call EPOCH_fnc_returnConfigEntry;
 
 	_current_crypto = ((_current_crypto + _getCrypto) min _playerCryptoLimit) max 0;
-	//[["effectCrypto", _current_crypto], (owner _player)] call EPOCH_sendPublicVariableClient;
+	// send to player
 	_current_crypto remoteExec ['EPOCH_effectCrypto',(owner _player)];
 	_vars set[_cIndex, _current_crypto];
 	_player setVariable["VARS", _vars];

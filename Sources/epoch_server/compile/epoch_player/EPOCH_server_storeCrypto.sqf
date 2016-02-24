@@ -17,7 +17,7 @@ _plyrUID = getPlayerUID _plyr;
 // load players account
 _response = ["Bank", _plyrUID] call EPOCH_fnc_server_hiveGETRANGE;
 
-if ((_response select 0) == 1 && typeName(_response select 1) == "ARRAY") then {
+if ((_response select 0) == 1 && (_response select 1) isEqualType []) then {
 
 	_plyrNetID = owner _plyr;
 
@@ -51,13 +51,9 @@ if ((_response select 0) == 1 && typeName(_response select 1) == "ARRAY") then {
 		_playerCryptoLimit = [(configFile >> "CfgSecConf" >> "limits"), "playerCrypto", 250000] call EPOCH_fnc_returnConfigEntry;
 
 		if (_transferAmountIn > 0) then {
-
-			// diag_log format["Store: _current_crypto: %1 _cIndex:%2", _current_crypto, _cIndex];
-
 			if (_current_crypto >= _transferAmountIn) then {
 				_bankBalance = _bankBalance + _transferAmountIn;
 				_current_crypto = ((_current_crypto - _transferAmountIn) min _playerCryptoLimit) max 0;
-				//[["effectCrypto", _current_crypto], _plyrNetID] call EPOCH_sendPublicVariableClient;
 				_current_crypto remoteExec ['EPOCH_effectCrypto',_plyrNetID];
 				_vars set[_cIndex, _current_crypto];
 				_plyr setVariable["VARS", _vars];
@@ -68,7 +64,7 @@ if ((_response select 0) == 1 && typeName(_response select 1) == "ARRAY") then {
 			if (_bankBalance >= _transferAmountOut) then {
 				_bankBalance = _bankBalance - _transferAmountOut;
 				_current_crypto = ((_current_crypto + _transferAmountOut) min _playerCryptoLimit) max 0;
-				//[["effectCrypto", _current_crypto], _plyrNetID] call EPOCH_sendPublicVariableClient;
+				// send to player
 				_current_crypto remoteExec ['EPOCH_effectCrypto',_plyrNetID];
 				_vars set[_cIndex, _current_crypto];
 				_plyr setVariable["VARS", _vars];
@@ -83,7 +79,7 @@ if ((_response select 0) == 1 && typeName(_response select 1) == "ARRAY") then {
 				_transferTargetUID = getPlayerUID _transferTarget;
 				_transferResponse = ["Bank", _transferTargetUID] call EPOCH_fnc_server_hiveGETRANGE;
 
-				if ((_transferResponse select 0) == 1 && typeName(_transferResponse select 1) == "ARRAY") then {
+				if ((_transferResponse select 0) == 1 && (_transferResponse select 1) isEqualType []) then {
 
 					_transferBankData = _transferResponse select 1;
 					_transferBankBalance = 0;

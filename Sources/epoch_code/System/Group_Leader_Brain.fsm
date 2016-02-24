@@ -367,7 +367,7 @@ class FSM
     {
       name = "next_house";
       init = /*%FSM<STATEINIT""">*/"_nrBuilds = nearestObjects [_leaderPosActual,[""house""],250];" \n
-       "_nrBuild = _nrBuilds select (floor(random (count _nrBuilds)));" \n
+       "_nrBuild = selectRandom _nrBuilds;" \n
        "" \n
        "" \n
        "_arrGarr = [];" \n
@@ -407,7 +407,7 @@ class FSM
     class new_player
     {
       name = "new_player";
-      init = /*%FSM<STATEINIT""">*/"_trgt = _nrPlayers select (floor(random (count _nrPlayers)));" \n
+      init = /*%FSM<STATEINIT""">*/"_trgt = selectRandom _nrPlayers;" \n
        "_plyr = _trgt;" \n
        "" \n
        "//debug" \n

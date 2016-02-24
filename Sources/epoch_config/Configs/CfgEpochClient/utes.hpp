@@ -17,5 +17,5 @@ class utes {
 		"misc_wellpump.p3d"
 	};
 	// main config
-	TrashClasses[] = { "Trash", "TrashSmall", "TrashVehicle", "PumpkinPatch", "TrashFood" };
+	TrashClasses[] = { "Trash", "TrashSmall", "TrashVehicle", "PumpkinPatch", "TrashFood", "HempFiber" };
 };

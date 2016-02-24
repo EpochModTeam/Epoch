@@ -267,7 +267,7 @@ class FSM
        "" \n
        "_randomGroan = {" \n
        "_sounds = [""sapper_groan0"",""sapper_groan1"",""sapper_groan2""];" \n
-       "_sound = _sounds select (floor (random (count _sounds)));" \n
+       "_sound = selectRandom _sounds;" \n
        "" \n
        "_sapper say3D _sound;" \n
        "EPOCH_say3D_PVS = [player, _sapper,(EPOCH_sounds find _sound), Epoch_personalToken];" \n

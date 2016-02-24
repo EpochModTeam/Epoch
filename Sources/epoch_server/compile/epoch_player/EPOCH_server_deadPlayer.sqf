@@ -22,9 +22,9 @@ if (_playerObj != _killer) then {
 		[_killer, "Sapper"] call EPOCH_server_triggerEvent;
 	};
 
-	// backwards compat for now - 
+	// backwards compat for now -
 	_playerName = _this select 2;
-	if (typeName _playerName == "ARRAY") then{
+	if (_playerName isEqualType []) then{
 		_playerName = toString (_this select 2);
 	};
 
@@ -47,7 +47,7 @@ if (_current_crypto > 0) then{
 // death cost
 if (EPOCH_cloneCost > 0) then {
 	_response = ["Bank", _plyrUID] call EPOCH_fnc_server_hiveGETRANGE;
-	if ((_response select 0) == 1 && typeName(_response select 1) == "ARRAY") then {
+	if ((_response select 0) == 1 && (_response select 1) isEqualType []) then {
 		_bankData = _response select 1;
 		_bankBalance = 0;
 

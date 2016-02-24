@@ -59,7 +59,7 @@ _checkConfigs = {
 				_tTip = "";
 				_icon = "";
 				{
-					if !(typeName _x isEqualTo "ARRAY") then {_x = [_x, 1]};
+					if !(_x isEqualType []) then {_x = [_x, 1]};
 					_c = configfile >> "CfgMagazines" >> (_x select 0);
 					_tTip = _tTip + format ["[%1 x %2] ", _x select 1, getText(_c >> "DisplayName")];
 					if (_icon isEqualTo "") then {_icon = getText (_c >> "picture")};

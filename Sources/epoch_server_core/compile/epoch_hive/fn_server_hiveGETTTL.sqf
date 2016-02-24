@@ -33,7 +33,7 @@ while {_hiveStatus < 0 || _hiveStatus == 2} do {
 	if (_hiveResponse != "") then {
 		_hiveResponse = call compile _hiveResponse;
 		if !(isNil "_hiveResponse") then {
-			if (typeName _hiveResponse == "ARRAY" && !(_hiveResponse isEqualTo [])) then {
+			if (_hiveResponse isEqualType [] && !(_hiveResponse isEqualTo [])) then {
 				_hiveStatus = _hiveResponse select 0;
 				if (_hiveStatus >= 1) then {
 					if (_whileCount == 0) then {

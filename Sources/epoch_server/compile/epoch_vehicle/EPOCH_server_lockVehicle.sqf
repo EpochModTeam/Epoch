@@ -23,7 +23,7 @@ _vehSlot = _vehicle getVariable["VEHICLE_SLOT", "ABORT"];
 _vehLockHiveKey = format["%1:%2", (call EPOCH_fn_InstanceID), _vehSlot];
 if (_vehSlot != "ABORT") then {
 	_response = ["VehicleLock", _vehLockHiveKey] call EPOCH_fnc_server_hiveGETRANGE;
-	if ((_response select 0) == 1 && typeName(_response select 1) == "ARRAY" && !((_response select 1) isEqualTo[])) then {
+	if ((_response select 0) == 1 && (_response select 1) isEqualType [] && !((_response select 1) isEqualTo[])) then {
 		_lockedOwner = _response select 1 select 0;
 	};
 };
@@ -67,10 +67,10 @@ if (_logic) then {
 		_vehicle lock _value;
 	} else {
 		if (_value) then {
-			// [["lockVehicle", _vehicle], (owner _vehicle)] call EPOCH_sendPublicVariableClient;
+			// send to player
 			[_vehicle, true] remoteExec ['EPOCH_client_lockVehicle',(owner _vehicle)];
 		} else {
-			// [["unlockVehicle", _vehicle], (owner _vehicle)] call EPOCH_sendPublicVariableClient;		   
+			// send to player
 			[_vehicle, false] remoteExec ['EPOCH_client_lockVehicle',(owner _vehicle)];
 		};
 	};

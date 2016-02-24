@@ -89,7 +89,7 @@ class FSM
        "_unit setCombatMode ""BLUE"";" \n
        "" \n
        "_unitNames=[""Aaron"",""Kenneth"",""Paul"",""Darren"",""Damian"",""Niklas"",""Andrew"",""Nigel"",""Harry"",""Phil"",""Antony"",""Dave"",""Hammish"",""Dickie"",""Peter"",""Conor""];" \n
-       "_unitName = _unitNames select (floor(random count _unitNames));" \n
+       "_unitName = selectRandom _unitNames;" \n
        "" \n
        "_trgtArray = [""Epoch_Male_F"",""Epoch_Female_F"",""Epoch_Female_Camo_F""];" \n
        "_vehArray = [""Car""];" \n
@@ -560,7 +560,7 @@ class FSM
        "};" \n
        "}forEach _nrBodies;" \n
        "" \n
-       "_unit doMove getPos (_nrBodies select (floor random (count _nrBodies)));" \n
+       "_unit doMove getPos (selectRandom _nrBodies);" \n
        "};" \n
        "" \n
        "_criteriaMetAction = {" \n

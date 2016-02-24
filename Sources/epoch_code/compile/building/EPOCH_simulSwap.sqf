@@ -56,7 +56,6 @@ if (isText(_config)) then {
 	if (isArray(_snapObjects)) then {
 		_allowedSnapObjects = getArray(_snapObjects);
 	};
-	// diag_log format["DEBUG ALLOWED SNAP OBJECTS: %1", _allowedSnapObjects];
 	_newObj = _object;
 	if (_create) then {
 		_worldspace = [(getposATL _object),(vectordir _object),(vectorup _object)];

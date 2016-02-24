@@ -545,7 +545,7 @@ class FSM
     {
       name = "do_sound";
       init = /*%FSM<STATEINIT""">*/"" \n
-       "_soundName = _soundNames select (floor random (count _soundNames));" \n
+       "_soundName = selectRandom _soundNames;" \n
        "" \n
        "[_house,_soundName] spawn{" \n
        "" \n

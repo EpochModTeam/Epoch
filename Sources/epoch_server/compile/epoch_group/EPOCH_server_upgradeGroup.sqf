@@ -18,7 +18,7 @@ _current_crypto = _vars select _cIndex;
 
 // [_groupName, _leaderName, _groupSize, _modArray, _memberArray]
 _response = ["Group", _groupID] call EPOCH_fnc_server_hiveGETRANGE;
-if ((_response select 0) == 1 && typeName (_response select 1) == "ARRAY") then {
+if ((_response select 0) == 1 && (_response select 1) isEqualType []) then {
 	_contentArray = (_response select 1);
 	_found = EPOCH_group_upgrade_lvl_SEPXVar find (_contentArray select 2);
 
@@ -31,7 +31,7 @@ if ((_response select 0) == 1 && typeName (_response select 1) == "ARRAY") then 
 
 			_playerCryptoLimit = [(configFile >> "CfgSecConf" >> "limits"), "playerCrypto", 250000] call EPOCH_fnc_returnConfigEntry;
 			_current_crypto = ((_current_crypto - _upgradePrice) min _playerCryptoLimit) max 0;
-			//[["effectCrypto", _current_crypto], (owner _player)] call EPOCH_sendPublicVariableClient;
+			// send to player
 			_current_crypto remoteExec ['EPOCH_effectCrypto',(owner _player)];
 			_vars set[_cIndex, _current_crypto];
 			_player setVariable["VARS", _vars];

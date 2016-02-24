@@ -43,15 +43,12 @@ if (_valueLength > _charLimit) then{
 	while {_valueLength > _charLimit} do {
 		_valueLength = _valueLength - _charLimit;
 		"epochserver" callExtension format["%1|%2:%3|%4|%5", _callStack, _prefix, _key, EPOCH_hiveCallID, _value select[_index, _charLimit]];
-		//diag_log format["Append: %1", [_index, _callStack, _prefix, _key, EPOCH_hiveCallID, _value select[_index, _charLimit]]];
 		_index = _index + _charLimit;
 	};
 
 	"epochserver" callExtension format["%1|%2:%3|%4|%5", _call, _prefix, _key, EPOCH_hiveCallID, _value select[_index, _charLimit]];
-	//diag_log format["Large: %1", [_index, _call, _prefix, _key, EPOCH_hiveCallID, _value select[_index, _charLimit]]];
 
 }
 else {
 	"epochserver" callExtension format["%1|%2:%3|%4|%5", _call, _prefix, _key, "", _value select[_index, _charLimit]];
-	//diag_log format["Small: %1", [_index, _call, _prefix, _key, _value select[_index, _charLimit]]];
 };

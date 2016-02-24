@@ -107,7 +107,7 @@ _plyrUID = getPlayerUID _playerObject;
 // Get data using prefix:key. "PlayerMYCustomKey" is the prefix and "_plyrUID" unique key.
 _response = ["PlayerMYCustomKey", _plyrUID] call EPOCH_server_hiveGET;
 
-if ((_response select 0) == 1 && typeName(_response select 1) == "ARRAY") then {
+if ((_response select 0) == 1 && (_response select 1) isEqualType []) then {
    _status = _response select 0;
    _arr = _response select 1;
    // do something with _arr data here
@@ -131,7 +131,7 @@ _plyrUID = getPlayerUID _playerObject;
 // Get data and ttl using prefix:key. "PlayerMYCustomKey" is the prefix and "_plyrUID" unique key.
 _response = ["PlayerMYCustomKey", _plyrUID] call EPOCH_server_hiveGETTTL;
 
-if ((_response select 0) == 1 && typeName (_response select 1) == "ARRAY" && !((_response select 1) isEqualTo [])) then {
+if ((_response select 0) == 1 && (_response select 1) isEqualType [] && !((_response select 1) isEqualTo [])) then {
    _status = _response select 0;
    _arr = _response select 1;
    _ttl = _response select 2;
@@ -182,7 +182,7 @@ _plyrUID = getPlayerUID _playerObject;
 // PlayerMYCustomKey is the prefix and _plyrUID unique key
 _response = ["PlayerMYCustomKey", _plyrUID] call EPOCH_server_hiveGETRANGE;
 
-if ((_response select 0) == 1 && typeName(_response select 1) == "ARRAY") then {
+if ((_response select 0) == 1 && (_response select 1) isEqualType []) then {
    _status = _response select 0;
    _arr = _response select 1;
    // do something with data here

@@ -35,5 +35,5 @@ class australia {
 			{ { 35364.5, 8453.59, 0 }, 200 } //Eden
 	};
 	// main config
-	TrashClasses[] = { "Trash", "TrashSmall", "TrashVehicle", "PumpkinPatch", "TrashFood" };
+	TrashClasses[] = { "Trash", "TrashSmall", "TrashVehicle", "PumpkinPatch", "TrashFood", "HempFiber" };
 };

@@ -15,6 +15,7 @@
 class Australia : Default
 {
 	worldSize = 55000;
+	plantLimit = 20;
 	vehicleSpawnTypes[] = {
 		{"FlatAreaCity",1},
 		{"FlatAreaCitySmall",1},

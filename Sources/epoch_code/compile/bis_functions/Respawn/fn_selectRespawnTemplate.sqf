@@ -80,7 +80,7 @@ if (ismultiplayer || _mode in ["initRespawn","initRespawnStart","initRespawnEnd"
 	_respawnTemplates = [missionconfigfile,"respawnTemplates",_respawnTemplates] call bis_fnc_returnconfigentry;
 	_respawnTemplates = [missionconfigfile,"respawnTemplates" + _playerside,_respawnTemplates] call bis_fnc_returnconfigentry;
 };
-if (typename _respawnTemplates != typename []) then {_respawnTemplates = [_respawnTemplates];};
+if !(_respawnTemplates isEqualType []) then {_respawnTemplates = [_respawnTemplates];};
 
 //--- Forced respawn
 
@@ -190,7 +190,7 @@ if !(_isDeath) then {
 	[] spawn {
 		"bis_fnc_selectRespawnTemplate" call bis_fnc_endloadingscreen;
 	};
-	
+
 	// -- Changed by Skaronator
 	/*
 	if !(player getvariable ["bis_fnc_selectRespawnTemplate_respawned",false]) then {

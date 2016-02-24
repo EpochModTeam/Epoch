@@ -15,6 +15,7 @@
 class Bornholm : Default
 {
 	worldSize = 25000;
+	plantLimit = 10;
 	vehicleSpawnTypes[] = {
 		{"FlatAreaCity",1},
 		{"FlatAreaCitySmall",1},

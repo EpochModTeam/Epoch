@@ -50,7 +50,7 @@ missionNamespace setVariable ["rmx_var_dynaControls",[]];
 for "_e" from 0 to (_entries - 1) do {
 	private ["_ctrl","_ctrl2"];
 	_ctrl = _display ctrlCreate ["rmx_rscPicture",(66600 + _e)];
-	_ctrl ctrlSetText "x\addons\a3_epoch_code\Data\UI\buttons\dm_selection_b1.paa";
+	_ctrl ctrlSetText "x\addons\a3_epoch_icons\Data\UI\buttons\dm_selection_b1.paa";
 	_ctrl ctrlSetPosition (_positions select _e);
 	_ctrl ctrlSetFade 1;
 	_ctrl ctrlCommit 0;

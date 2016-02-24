@@ -32,7 +32,7 @@ if (!(_object isKindOf "All")) then {
 			_nearPlayers = _posWH nearEntities[["Epoch_Male_F", "Epoch_Female_F"], 50];
 
 			if (!(_nearPlayers isEqualTo[])) then {
-				_target = _nearPlayers select floor(random(count _nearPlayers));
+				_target = selectRandom _nearPlayers;
 
 				_antagTable = ["Trash", "CfgMainTable", "antagonists"] call EPOCH_weightedArray;
 

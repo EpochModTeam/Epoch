@@ -8,9 +8,9 @@ _uiItem = (_selected select 0) lnbData[(_selected select 1), 0];
 
 _config = 'CfgPricing' call EPOCH_returnConfig;
 if (isClass (_config >> _uiItem)) then{
-	
+
 	if (_uiItem isKindOf "Air" || _uiItem isKindOf "Ship" || _uiItem isKindOf "LandVehicle" || _uiItem isKindOf "Tank") then {
-		
+
 		// check if a vehicle is already on the list
 		_sizeOut = lbSize 41501;
 		//_array = [];
@@ -33,7 +33,7 @@ if (isClass (_config >> _uiItem)) then{
 				};
 			};
 		};
-		// disallow adding item to list of already one 
+		// disallow adding item to list of already one
 
 
 	};
@@ -45,7 +45,7 @@ if (isClass (_config >> _uiItem)) then{
 
 		_itemIcon = (_selected select 0) lnbPicture [(_selected select 1), 0];
 		lbSetPicture [_control, _index, _itemIcon];
-	
+
 		_uiQty = (_selected select 0) lnbValue [(_selected select 1), 0];
 		if (_uiQty <= 1) then {
 			(_selected select 0) lnbDeleteRow (_selected select 1);
@@ -54,7 +54,7 @@ if (isClass (_config >> _uiItem)) then{
 			lnbSetText[41503, [(_selected select 1), 1], str(_qty)];
 			lnbSetValue[41503, [(_selected select 1), 0], _qty];
 		};
-	
+
 		_cryptoCount = 0;
 		_sizeOut = lbSize 41501;
 		//_array = [];
@@ -70,16 +70,13 @@ if (isClass (_config >> _uiItem)) then{
 
 		_cryptoCount = 0;
 		_sizeOut = lbSize 41502;
-		//_array = [];
 		if (_sizeOut > 0) then {
 			for "_i" from 0 to (_sizeOut - 1) do {
 				_item = lbData [41502, _i];
-				//_array pushBack _item;
 				_itemWorth = getNumber(_config >> _item >> "price");
 				_itemTax = getNumber(_config >> _item >> "tax");
 				_tax = _itemWorth * (EPOCH_taxRate + _itemTax);
 				_itemWorth = ceil(_itemWorth + _tax);
-				//diag_log format["_finalWorth %1", _finalWorth];
 				_cryptoCount = _cryptoCount + _itemWorth;
 			};
 		};

@@ -131,12 +131,10 @@ switch _interactOption do {
 			for "_i" from 1 to floor (_magazineSize / _magazineSizeMax) do
 			{
 			    player addMagazine [_item, _magazineSizeMax];
-				//diag_log format ["DEBUG: added full mag %1", _magazineSizeMax];
 			};
 			// Add last non full magazine
 			if ((_magazineSize % _magazineSizeMax) > 0) then {
 				player addMagazine [_item, floor (_magazineSize % _magazineSizeMax)];
-				//diag_log format ["DEBUG: added remainder %1", floor (_magazineSize % _magazineSizeMax)];
 			};
  			_dt = ["<t size='0.8' shadow='0' color='#99ffffff'>Ammo Repacked</t>", 0, 1, 5, 2, 0, 1] spawn bis_fnc_dynamictext;
 		};
@@ -281,7 +279,6 @@ switch _interactOption do {
 						[_vehicle,[_currentHIT,_newDMG],player,Epoch_personalToken] remoteExec ["EPOCH_server_repairVehicle",2];
 					};
 
-					//diag_log format["DEBUG HITPOINT REPAIRED: %1 %2 %3", _currentHIT, _newDMG, _item];
 				} else {
 					if ((damage _vehicle) > 0) then {
 						[_vehicle,["ALL",0],player,Epoch_personalToken] remoteExec ["EPOCH_server_repairVehicle",2];
@@ -365,6 +362,3 @@ switch _interactOption do {
 		// _dt = ["<t size='0.8' shadow='0' color='#99ffffff'>text</t>", 0, 0.4, 5, 2, 0, 2] spawn bis_fnc_dynamictext;
 	};
 };
-
-
-// diag_log format["DEBUG: EPOCH_consumeItem %1 type: %2",_item,_type];

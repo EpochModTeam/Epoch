@@ -14,7 +14,7 @@ _message = "<br />";
 
 switch _case do {
 	case "Welcome": {
-		_message = _message + "<t align='center' size='6' shadow='0'><img image='\x\addons\a3_epoch_code\Data\EpochLogo' /></t><br />";
+		_message = _message + "<t align='center' size='6' shadow='0'><img image='\x\addons\a3_epoch_icons\Data\EpochLogo' /></t><br />";
 		_message = _message + "<t color='" + _colorHighlight + "'>NEW TO EPOCH?</t><br />";
 		_message = _message + "Epoch is a <t color='" + _colorHighlight + "'>open world survival mod</t> set in the year 2035, Just two years after the mass extinction of billions of people.
 		Those that remain are left with remnants of a once technological society. Try to <t color='" + _colorHighlight + "'>survive, build, or explore</t> your way through the <t color='" + _colorHighlight + "'>harsh dynamic environment</t>.<br /><br />";

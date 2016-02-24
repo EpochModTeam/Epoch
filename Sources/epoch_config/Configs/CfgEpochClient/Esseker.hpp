@@ -43,5 +43,5 @@ class Esseker {
 			{ { 10060.6, 9901.3, 0 }, 200 } //Borosh
 	};
 	// main config
-	TrashClasses[] = { "Trash", "TrashSmall", "TrashVehicle", "PumpkinPatch", "TrashFood" };
+	TrashClasses[] = { "Trash", "TrashSmall", "TrashVehicle", "PumpkinPatch", "TrashFood", "HempFiber" };
 };

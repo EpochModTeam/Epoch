@@ -81,7 +81,7 @@ for "_i" from 1 to _spawnCount do {
 
 	_preferedPos = getArray(configFile >> "CfgEpoch" >> worldname >> "whitelistedVehiclePos" >> _vehClass);
 	if !(_preferedPos isEqualTo []) then{
-		_newPosition = _preferedPos select(floor(random(count _preferedPos)));
+		_newPosition = selectRandom _preferedPos;
 		if ((nearestObjects[(_newPosition select 0), ["LandVehicle", "Ship", "Air", "Tank"], 50]) isEqualTo []) then{
 			_position = _newPosition select 0;
 			_direction = _newPosition select 1;
@@ -110,7 +110,7 @@ for "_i" from 1 to _spawnCount do {
 
 				_roads = _cityPos nearRoads _range;
 				if !(_roads isEqualTo []) then {
-					_road = _roads select(floor random(count _roads));
+					_road = selectRandom _roads;
 					_position = getPosATL _road;
 					_position deleteAt 2;
 				};

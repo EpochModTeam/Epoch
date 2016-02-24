@@ -17,7 +17,7 @@
 	{
 		{
 			"Fire",			//Name of field, anything
-			"",				//image folder path (ie "\x\addons\a3_epoch_code\Data\UI\crafting\"), empty for Epoch default
+			"",				//image folder path (ie "\x\addons\a3_epoch_icons\Data\UI\crafting\"), empty for Epoch default
 			"fire",			//image prefix, suffix will be added by code. 2 possible suffixes: [_true.paa, _false.paa]
 			{1,{"ALL"}},	//ARRAY of p3D {0,{"filename.p3d","filename.p3d"}} or ARRAY of logic classes {1,{"AIR","LAND","className"}}. Integer to switch array mode
 			3,				//distance to check in meters
@@ -42,9 +42,9 @@ class CfgCrafting
 	//You can customize basic theme of crafting UI here:
 	colorScheme[] =
 	{
-		"\x\addons\a3_epoch_code\Data\UI\crafting\cancel.paa",
-		"\x\addons\a3_epoch_code\Data\UI\crafting\craft.paa",
-		"\x\addons\a3_epoch_code\Data\UI\crafting\close.paa",
+		"\x\addons\a3_epoch_icons\Data\UI\crafting\cancel.paa",
+		"\x\addons\a3_epoch_icons\Data\UI\crafting\craft.paa",
+		"\x\addons\a3_epoch_icons\Data\UI\crafting\close.paa",
 
 		{"Recipes", 			{0,0,0,0.8}},
 		{"Ingredients",			{0,0,0,0.8}},

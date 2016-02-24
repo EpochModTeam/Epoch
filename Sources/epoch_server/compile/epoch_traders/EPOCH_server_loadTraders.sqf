@@ -53,7 +53,7 @@ for "_i" from 0 to _this do {
 		_response = ["AI_ITEMS", _objHiveKey] call EPOCH_fnc_server_hiveGETRANGE;
 		// diag_log format ["TRADER LOAD DATA: %1", _response];
 
-		if ((_response select 0) == 1 && typeName (_response select 1) == "ARRAY") then {
+		if ((_response select 0) == 1 && (_response select 1) isEqualType []) then {
 			_arr = (_response select 1);
 			if (_arr isEqualTo []) then {
 				_arr = [[], []];
@@ -115,19 +115,19 @@ for "_i" from 0 to _this do {
 	else {
 		_objHiveKey = format ["%1:%2", (call EPOCH_fn_InstanceID), _i];
 		_response = ["AI", _objHiveKey] call EPOCH_fnc_server_hiveGETRANGE;
-		if ((_response select 0) == 1 && typeName (_response select 1) == "ARRAY" && !((_response select 1) isEqualTo [])) then {
+		if ((_response select 0) == 1 && (_response select 1) isEqualType [] && !((_response select 1) isEqualTo [])) then {
 			_arr = (_response select 1);
 
 			_class = _arr select 0; //"C_man_1"
 			_home = _arr select 1;
 			_work = _arr select 2;
 
-			if (typeName _home == "ARRAY" && typeName _work == "ARRAY") then {
+			if (_home isEqualType [] && _work isEqualType []) then {
 				// check schedule
 				_pos = _home;
 
 				_schedule = [9, 17];
-				if (typeName(_work select 1) == "ARRAY") then {
+				if ((_work select 1) isEqualType []) then {
 					_schedule = _work select 1;
 				}
 				else {
@@ -161,7 +161,7 @@ for "_i" from 0 to _this do {
 				_response = ["AI_ITEMS", _objHiveKey] call EPOCH_fnc_server_hiveGETRANGE;
 				//diag_log format ["TRADER LOAD DATA: %1", _response];
 
-				if ((_response select 0) == 1 && typeName (_response select 1) == "ARRAY") then {
+				if ((_response select 0) == 1 && (_response select 1) isEqualType []) then {
 					_arr = (_response select 1);
 
 					if (_arr isEqualTo []) then {

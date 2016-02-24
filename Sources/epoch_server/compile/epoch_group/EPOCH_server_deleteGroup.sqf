@@ -10,10 +10,8 @@ if !([_player, _this select 1] call EPOCH_server_getPToken) exitWith{};
 
 _groupID = getPlayerUID _player;
 
-diag_log format ["GROUP: Delete %1",_this];
-
 _response = ["Group", _groupID] call EPOCH_fnc_server_hiveGETRANGE;
-if ((_response select 0) == 1 && typeName (_response select 1) == "ARRAY") then {
+if ((_response select 0) == 1 && (_response select 1) isEqualType []) then {
 	{
 		if ((_x getVariable["GROUP", ""]) == _groupID) exitWith {
 			{

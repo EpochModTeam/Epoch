@@ -387,7 +387,7 @@ class FSM
        "//Walking" \n
        "if(_cloakWalkHandle < 0)then{" \n
        "_startLoad = diag_tickTime;" \n
-       "_cloakWalkHandle = [_unit, _trgt] execFSM ""\x\addons\a3_epoch_code\System\cloakOnFoot.fsm"";" \n
+       "_cloakWalkHandle = [_unit, _trgt] execFSM ""epoch_code\System\cloakOnFoot.fsm"";" \n
        "axeWalkHandle = _cloakWalkHandle;" \n
        "//systemchat format[""Call Walking in %1"",diag_tickTime - _startLoad];" \n
        "};" \n
@@ -509,7 +509,7 @@ class FSM
            "if(diag_tickTime - _lastTrgt > _trgtChangeFreq)then{" \n
            "//Target Random Player" \n
            "if(_avDist < _trgtDist)then{" \n
-           "_trgt = _nrTrgts select (floor (random count _nrTrgts));" \n
+           "_trgt = selectRandom _nrTrgts;" \n
            "};" \n
            "" \n
            "if(_cloakWalkHandle > -1)then{" \n
@@ -533,7 +533,7 @@ class FSM
           action=/*%FSM<ACTION""">*/"" \n
            "//Target Dead" \n
            "if(!(alive _trgt) && count _nrTrgts > 0)then{" \n
-           "_trgt = _nrTrgts select (floor (random count _nrTrgts));" \n
+           "_trgt = selectRandom _nrTrgts;" \n
            "};" \n
            "" \n
            "//Call random teleport" \n
@@ -636,7 +636,7 @@ class FSM
     class call_teleport
     {
       name = "call_teleport";
-      init = /*%FSM<STATEINIT""">*/"[_unit, _trgt] execFSM ""\x\addons\a3_epoch_code\System\cloakTeleport.fsm"";" \n
+      init = /*%FSM<STATEINIT""">*/"[_unit, _trgt] execFSM ""epoch_code\System\cloakTeleport.fsm"";" \n
        "" \n
        "_sWait = 0;" \n
        "_actionDone = true;" \n
@@ -705,7 +705,7 @@ class FSM
     class call_hover
     {
       name = "call_hover";
-      init = /*%FSM<STATEINIT""">*/"_cloakHoverHandle = [_unit, _trgt] execFSM ""\x\addons\a3_epoch_code\System\cloakHover.fsm"";" \n
+      init = /*%FSM<STATEINIT""">*/"_cloakHoverHandle = [_unit, _trgt] execFSM ""epoch_code\System\cloakHover.fsm"";" \n
        "_lastFly = diag_tickTime;" \n
        "" \n
        "_sWait = 0;" \n

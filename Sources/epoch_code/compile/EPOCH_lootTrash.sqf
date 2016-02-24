@@ -49,7 +49,7 @@ if (diag_tickTime - EPOCH_lastTrash > 2)  then {
 						_found = (getNumber(_finalConfig >> _x) == 1);
 						if (_found) exitWith{ _trashType = _forEachIndex };
 					} forEach getArray(_config >> worldname >> "TrashClasses");
-					// TrashClasses[] = { "Trash", "TrashSmall", "TrashVehicle", "PumpkinPatch", "TrashFood" };
+					// TrashClasses[] = { "Trash", "TrashSmall", "TrashVehicle", "PumpkinPatch", "TrashFood", "HempFiber" };
 
 					//_foundTerminal = _p3dName in EPOCH_atmList;
 					_foundTerminal = (getNumber(_finalConfig >> "bankTerminal") == 1);
@@ -102,7 +102,7 @@ if (diag_tickTime - EPOCH_lastTrash > 2)  then {
 			for "_i" from 1 to 2 step 1 do {
 				_animal = createAgent[_randomAIClass, _animalPos, [], 0, "CAN_COLLIDE"];
 				_animal setVariable["BIS_fnc_animalBehaviour_disable", true];
-				_id = [_animal, true] execFSM "\x\addons\a3_epoch_code\System\Animal_brain.fsm";
+				_id = [_animal, true] execFSM "epoch_code\System\Animal_brain.fsm";
 				_animals pushBack _animal;
 			};
 			_animals remoteExec ["EPOCH_localCleanup",2];

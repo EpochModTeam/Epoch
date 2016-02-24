@@ -105,7 +105,7 @@ class FSM
     class teleport
     {
       name = "teleport";
-      init = /*%FSM<STATEINIT""">*/"[_unit, _trgt] execFSM ""\x\addons\a3_epoch_code\System\cloakTeleport.fsm"";"/*%FSM</STATEINIT""">*/;
+      init = /*%FSM<STATEINIT""">*/"[_unit, _trgt] execFSM ""epoch_code\System\cloakTeleport.fsm"";"/*%FSM</STATEINIT""">*/;
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
       class Links
       {

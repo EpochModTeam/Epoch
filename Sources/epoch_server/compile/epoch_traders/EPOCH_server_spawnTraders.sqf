@@ -48,7 +48,7 @@ while {true} do {
 				};
 			};
 			if !(_homeBuildingPositions isEqualTo []) then {
-				_home = _homeBuildingPositions select floor(random(count _homeBuildingPositions));
+				_home = selectRandom _homeBuildingPositions;
 			};
 
 			_acceptableBlds = getArray(configFile >> "CfgEpoch" >> worldName >> "traderBlds");
@@ -56,7 +56,7 @@ while {true} do {
 
 			if !(_buildings isEqualTo []) then {
 
-				_buildingWork = _buildings select floor(random(count _buildings));
+				_buildingWork = selectRandom _buildings;
 
 				if !(_buildingWork in _usedBuildings) then {
 
@@ -74,7 +74,7 @@ while {true} do {
 					};
 
 					if !(_buildingPositions isEqualTo []) then {
-						_work = _buildingPositions select floor(random(count _buildingPositions));
+						_work = selectRandom _buildingPositions;
 					};
 
 					_startTime = floor(random 16);
@@ -95,7 +95,7 @@ while {true} do {
 
 					// Set slot used by vehicle
 					_agent setVariable["AI_SLOT", _slot, true];
-					
+
 					// allow input here to provide default items
 					_agent setVariable["AI_ITEMS", EPOCH_starterTraderItems, true];
 

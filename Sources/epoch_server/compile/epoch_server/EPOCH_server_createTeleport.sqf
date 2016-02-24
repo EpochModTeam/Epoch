@@ -21,7 +21,6 @@ _loadBaseTemplateConfig = {
     _pos = _this select 2;
 	_pos set [2,0];
     _center = createVehicle [_this select 0, _pos, [], 0, "CAN_COLLIDE"];
-	// diag_log format ["DEBUG 24 _pos: %1 %2",_pos, getpos _center];
     {
         _partPos = _center modelToWorld (_x select 1);
 		_partPos set [2,0];
@@ -50,15 +49,16 @@ _debugLocation = getMarkerPos "respawn_west";
 _debugLocation set[2, 0];
 _debug = createVehicle["Debug_static_F", _debugLocation, [], 0, "CAN_COLLIDE"];
 _protection = createVehicle["ProtectionZone_Invisible_F", _debugLocation, [], 0, "CAN_COLLIDE"];
+_cloneClasses = ["clone_empty_static_F", "clone_male_static_F", "clone_female_static_F"];
 
 for "_i" from 1 to 4 do {
-	_class = ["clone_empty_static_F", "clone_male_static_F", "clone_female_static_F"] select(floor(random 3));
+	_class = selectRandom _cloneClasses;
 	_debug1 = createVehicle[_class, (_debug modelToWorld(_debug selectionPosition(str _i))), [], 0, "CAN_COLLIDE"];
 	_debug1 setDir-90;
 
 };
 for "_i" from 5 to 8 do {
-	_class = ["clone_empty_static_F", "clone_male_static_F", "clone_female_static_F"] select(floor(random 3));
+	_class = selectRandom _cloneClasses;
 	_debug1 = createVehicle[_class, (_debug modelToWorld(_debug selectionPosition(str _i))), [], 0, "CAN_COLLIDE"];
 	_debug1 setDir 90;
 };
@@ -75,7 +75,6 @@ _config = configFile >> "CfgEpoch";
 
 // spawn area props
 {
-	// diag_log str(_x);
 	_class = _x select 0;
 	_pos = _x select 1;
 	_dir = _x select 2;
@@ -88,7 +87,7 @@ _config = configFile >> "CfgEpoch";
 	_ep = createVehicle[_class, _pos, [], 0, "CAN_COLLIDE"];
 
 	_ep allowDamage false;
-	if (typeName _dir == "ARRAY") then{
+	if (_dir isEqualType []) then{
 		_ep setVectorDirAndUp _dir;
 	} else {
 		_ep setDir _dir;
@@ -116,12 +115,10 @@ _config = configFile >> "CfgEpoch";
 	_exitClass = _x select 2;
 	_pos = _x select 3;
 
-	// if _pos is given a string we expect is to be a markerName
+	// load template props for marker location
 	if (_pos isEqualType "") then {
 		_markerName = _pos;
 		_pos = getMarkerPos _markerName;
-		// diag_log format ["DEBUG _pos: %1",_pos];
-		// load template props for marker location
 		["ProtectionZone_Invisible_F",_markerName,_pos] call _loadBaseTemplateConfig;
 	} else {
 		_pro2 = createVehicle ["ProtectionZone_Invisible_F", _pos, [], 0, "CAN_COLLIDE"];

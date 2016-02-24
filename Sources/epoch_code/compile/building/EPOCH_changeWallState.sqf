@@ -52,7 +52,7 @@ if !(isNull _object) then {
     {
       _recipeItem = _x;
   		_recipeQty = 1;
-  		if (typeName _x == "ARRAY") then {
+  		if (_x isEqualType []) then {
   			_recipeItem = _x select 0;
   			_recipeQty = _x select 1;
   		};
@@ -69,7 +69,7 @@ if !(isNull _object) then {
       {
         _recipeItem = _x;
         _recipeQty = 1;
-        if (typeName _x == "ARRAY") then {
+        if (_x isEqualType []) then {
           _recipeItem = _x select 0;
           _recipeQty = _x select 1;
         };
@@ -133,7 +133,7 @@ if !(isNull _object) then {
     {
         _craftItem = _x;
         _craftQty = 1;
-        if (typeName _x == "ARRAY") then {
+        if (_x isEqualType []) then {
             _craftItem = _x select 0;
             _craftQty = _x select 1;
         };

@@ -371,7 +371,7 @@ class FSM
        "" \n
        "axeInDropMission = false;" \n
        "" \n
-       "diag_log ""Dispose"";" \n
+       "" \n
        "" \n
        "" \n
        "" \n

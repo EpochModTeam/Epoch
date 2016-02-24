@@ -55,7 +55,7 @@ class FSM
                          "" \n
                          "_randomGroan = {" \n
                          "_sounds = [""sapper_groan0"",""sapper_groan1"",""sapper_groan2""];" \n
-                         "_sound = _sounds select (floor (random (count _sounds)));" \n
+                         "_sound = selectRandom _sounds;" \n
                          "" \n
                          "_unit say3D _sound;" \n
                          "EPOCH_say3D_PVS = [player, _unit,(EPOCH_sounds find _sound), Epoch_personalToken];" \n
@@ -240,7 +240,7 @@ class FSM
                          "" \n
                          "if(_sapperWalkHandle < 0)then{" \n
                          "_startLoad = diag_tickTime;" \n
-                         "_sapperWalkHandle = [_unit, _trgt] execFSM ""\x\addons\a3_epoch_code\System\sapperSwarmMemberWalking.fsm"";" \n
+                         "_sapperWalkHandle = [_unit, _trgt] execFSM ""epoch_code\System\sapperSwarmMemberWalking.fsm"";" \n
                          "" \n
                          "axeWalkHandle = _sapperWalkHandle;" \n
                          "//systemchat format[""Call Walking in %1"",diag_tickTime - _startLoad];" \n
@@ -275,7 +275,7 @@ class FSM
                          "" \n
                          "if(_sapperDisposeHandle < 0)then{" \n
                          "_startLoad = diag_tickTime;" \n
-                         "_sapperDisposeHandle = [_unit, _bomb, _detTrgt] execFSM ""\x\addons\a3_epoch_code\System\sapperSwarmMemberDispose.fsm"";" \n
+                         "_sapperDisposeHandle = [_unit, _bomb, _detTrgt] execFSM ""epoch_code\System\sapperSwarmMemberDispose.fsm"";" \n
                          "//systemchat format[""Call Dispose in %1"",diag_tickTime - _startLoad];" \n
                          "};" \n
                          "" \n

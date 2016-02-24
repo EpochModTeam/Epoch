@@ -15,6 +15,7 @@
 class Chernarus : Default
 {
 	worldSize = 12000;
+	plantLimit = 10;
 	vehicleSpawnTypes[] = {
 		{"FlatAreaCity",1},
 		{"FlatAreaCitySmall",1},

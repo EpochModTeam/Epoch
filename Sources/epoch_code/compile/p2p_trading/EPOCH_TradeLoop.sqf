@@ -32,7 +32,7 @@ if (!isNull EPOCH_p2ptradeTarget) then {
 	if (_tradeCryptoOffer > 0) then {
 		_index = lbAdd[1502, format["%1 Krypto", _tradeCryptoOffer]];
 		lbSetData[1502, _index, "Krypto"];
-		lbSetPicture[1502, _index, "\x\addons\a3_epoch_code\Data\UI\cc_ca.paa"];
+		lbSetPicture[1502, _index, "\x\addons\a3_epoch_icons\Data\UI\cc_ca.paa"];
 	};
 
 	_isAcceptedOther = EPOCH_p2ptradeTarget getVariable["Accept", false];

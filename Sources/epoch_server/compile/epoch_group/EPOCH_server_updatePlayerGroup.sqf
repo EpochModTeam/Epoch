@@ -14,7 +14,7 @@ _modOrMemberRevert = if (_this select 3) then [{4},{3}];
 
 // [_groupName, _leaderName, _groupSize, _modArray, _memberArray]
 _response = ["Group", _groupID] call EPOCH_fnc_server_hiveGETRANGE;
-if ((_response select 0) == 1 && typeName (_response select 1) == "ARRAY") then {
+if ((_response select 0) == 1 && (_response select 1) isEqualType []) then {
 	_contentArray = _response select 1;
 
 	//_groupName = _contentArray select 0;

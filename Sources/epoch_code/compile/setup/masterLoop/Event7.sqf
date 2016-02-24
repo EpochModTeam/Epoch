@@ -19,5 +19,5 @@
 
 		// test spawning one antagonist every 10 minutes select one unit at random to spawn
 		if !(_spawnUnits isEqualTo[]) then{
-			(_spawnUnits select(floor random(count _spawnUnits))) call EPOCH_unitSpawn;
+			(selectRandom _spawnUnits) call EPOCH_unitSpawn;
 		};
