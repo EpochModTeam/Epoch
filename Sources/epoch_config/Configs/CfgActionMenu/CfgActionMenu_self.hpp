@@ -17,20 +17,20 @@ class veh_lock
 {
 	condition = "dyna_inVehicle && !dyna_lockedInVehicle";
 	action = "[vehicle player, true, player, Epoch_personalToken] remoteExec ['EPOCH_server_lockVehicle',2];";
-	icon = "x\addons\a3_epoch_icons\Data\UI\buttons\pad_cannot_lock.paa";
+	icon = "x\addons\a3_epoch_code\Data\UI\buttons\pad_cannot_lock.paa";
 	tooltip = "Lock";
 };
 class veh_unLock
 {
 	condition = "dyna_inVehicle && dyna_lockedInVehicle";
 	action = "[vehicle player, false, player, Epoch_personalToken] remoteExec ['EPOCH_server_lockVehicle',2];";
-	icon = "x\addons\a3_epoch_icons\Data\UI\buttons\pad_can_unlock.paa";
+	icon = "x\addons\a3_epoch_code\Data\UI\buttons\pad_can_unlock.paa";
 	tooltip = "Unlock";
 };
 class player_inspect
 {
 	condition = "true";
 	action = "call EPOCH_lootTrash;";
-	icon = "x\addons\a3_epoch_icons\Data\UI\buttons\player_inspect.paa";
+	icon = "x\addons\a3_epoch_code\Data\UI\buttons\player_inspect.paa";
 	tooltip = "Examine";
 };

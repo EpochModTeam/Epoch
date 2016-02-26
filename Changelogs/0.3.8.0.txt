@@ -1,14 +1,12 @@
-[Added-WIP] Player Karma stat is now effected by Arma rating system by hooking the Event Handler.
+[New] Split gamemode from main assets, all epoch client gamemode code and configs are now found in the mission file.
+[Added-WIP] Player Karma stat is now effected by Arma 3 rating system by hooking the Event Handler.
 [Changed] A workaround that prevents issues with a negative player rating causing some players being unable to ride together is now purely event driven.
 [Changed] Disabled remote sensors to increase performance on server and client as all AI Epoch is locally controlled.
 [Changed] Repacked all pbo's and bumped versions to 0.3.8.0. *The P3D binarization process now uses 32-bit vertex indices and now produces binarized models (P3D) at version 70. https://dev.arma3.com/post/techrep-00026
 [Changed] Use pushBackUnique, isEqualType, and selectRandom commands instead of slower SQF logic.
-[Changed] Split gamemode from main assets, all epoch client gamemode code and configs are now found in the mission file.
 [Changed] Increased the amount of Krypto a player can hold from 25k to 250k.
-[Changed] Moved icons out of code pbo into a new icons pbo. If you are using these icons in your custom scripts change the folder path (a3_epoch_code) to (a3_epoch_icons).
-[Changed] CfgClientFunctions is now able to be overridden via description.ext.
-[Changed] publicVariableClient calls changed to use remoteExec. This should provide better performance and reliability as PVC's can be unreliable under heavy use and can also bottleneck the games netcode.
 [Changed] General cleanup and reorganizing of files.
+[Changed] Further improve loot positions in existing maps and add more positions for CUP maps.
 [Added] Players can now harvest Hemp from maps that it grows wild.
 [Fixed] Force player to lobby if the player did not tapout after respawn timer runs out.
 [Fixed] Buildings having a chance to loot again too quickly.
@@ -18,6 +16,8 @@
 
 **Server**
 [Added] limit to number of plant sites that can spawn. Can be controlled with "plantLimit" inside (CfgEpoch >> worldName).
+[Changed] publicVariableClient calls changed to use remoteExec. This should provide better performance and reliability as PVC's can be unreliable under heavy use and can also bottleneck the games netcode.
+[Changed] CfgClientFunctions is now able to be overridden via description.ext.
 [Info] epochAH.hpp updated "antihack_checkFiles" for new file paths.
 [Info] Some AI Scripts Mods may not work with disableRemoteSensors enabled. You can disable with "disableRemoteSensors = false;" in CfgEpochClient.
 [Info] Removed old .bikey and added new one for 0380.

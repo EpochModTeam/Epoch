@@ -95,9 +95,7 @@ if (diag_tickTime - EPOCH_lastTrash > 2)  then {
 		// Snake Den
 		if (random 1 < 0.04) then {
 			_animalPos = getposATL _destroyTrashObj;
-			_randomAIClass = ["Snake_random_EPOCH", "Snake2_random_EPOCH"];
-			_randomIndex = floor(random(count _randomAIClass));
-			_randomAIClass = _randomAIClass select _randomIndex;
+			_randomAIClass = selectRandom ["Snake_random_EPOCH", "Snake2_random_EPOCH"];
 			_animals = [];
 			for "_i" from 1 to 2 step 1 do {
 				_animal = createAgent[_randomAIClass, _animalPos, [], 0, "CAN_COLLIDE"];

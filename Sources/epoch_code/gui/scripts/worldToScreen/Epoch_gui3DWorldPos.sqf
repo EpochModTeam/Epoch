@@ -27,7 +27,7 @@ _this spawn {
 	
 	_ctrl ctrlSetStructuredText (composeText [_imgParsed, parseText "<br>", _txtParsed]);
 	
-	_rnd = format ["rmx_var_temp%1%2",floor random 100, ["A","B","C","D","E","F"] select random 5];
+	_rnd = format ["rmx_var_temp%1%2",floor random 100, selectRandom ["A","B","C","D","E","F"]];
 	uiNamespace setVariable [_rnd,[_ctrl, _loc,(ctrlPosition _ctrl),_dst/2]];
 	_var = format ["uiNamespace getVariable '%1'",_rnd];
 	

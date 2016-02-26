@@ -1175,7 +1175,7 @@ class FSM
           to="find_nest";
           precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
           condition=/*%FSM<CONDITION""">*/"_garrCount < 4 || !_noJammer;"/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/"_nrBuild = _nrBuilds call BIS_fnc_selectRandom;"/*%FSM</ACTION""">*/;
+          action=/*%FSM<ACTION""">*/"_nrBuild = selectRandom _nrBuilds;"/*%FSM</ACTION""">*/;
         };
         /*%FSM</LINK>*/
       };
@@ -1459,7 +1459,7 @@ class FSM
        "_moveTo = _spottedPos;" \n
        "_spottedPos=[0,0,0];" \n
        "}else{" \n
-       "_sSide = [90,-90] call BIS_fnc_selectRandom;" \n
+       "_sSide = selectRandom [90,-90];" \n
        "_moveTo = [_maxStalkDist,_minStalkDist,0,_sapper,_sSide,_trgt] call EPOCH_fnc_findSapperStalkLocation;" \n
        "};" \n
        "" \n
@@ -1800,9 +1800,9 @@ class FSM
           precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
           condition=/*%FSM<CONDITION""">*/"diag_tickTime > _s + 30;"/*%FSM</CONDITION""">*/;
           action=/*%FSM<ACTION""">*/"" \n
-           "_moveSapper = _arrNest call BIS_fnc_selectRandom;" \n
+           "_moveSapper = selectRandom _arrNest;" \n
            "_moveSapper forceSpeed 2;" \n
-           "_moveTo = _nrBuild buildingPos (_arrGarr call BIS_fnc_selectRandom);" \n
+           "_moveTo = _nrBuild buildingPos (selectRandom _arrGarr);" \n
            "_moveSapper moveTo _moveTo;" \n
            "_s = diag_tickTime;" \n
            ""/*%FSM</ACTION""">*/;

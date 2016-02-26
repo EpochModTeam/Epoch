@@ -8,6 +8,8 @@ class Header
 respawn = "BASE";
 respawnDelay = 600;
 respawnDialog = 0;
+respawnButton = 0;
+respawnOnStart = -1;
 
 onLoadMission= "Epoch";
 OnLoadIntro = "Welcome to Epoch Mod";
@@ -23,8 +25,8 @@ briefing = 0;
 debriefing = 0;
 enableDebugConsole = 0;
 joinUnassigned = 0;
-respawnOnStart = 0;
 forceRotorLibSimulation = 1;
+saving = 0;
 
 corpseManagerMode = 1;
 corpseLimit = 10;
@@ -35,3 +37,5 @@ wreckManagerMode = 1;
 wreckLimit = 2;
 wreckRemovalMinTime = 60;
 wreckRemovalMaxTime = 360;
+
+disableRandomization[] = {"All"};

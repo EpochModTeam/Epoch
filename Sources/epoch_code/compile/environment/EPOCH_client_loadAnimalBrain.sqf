@@ -26,14 +26,12 @@ private["_fightOrFlight", "_id", "_animal", "_tryAnimalPos", "_animalPos", "_ran
 if (count(player nearEntities["Animal_Base_F", 200]) >= 1) exitWith{};
 
 _animalAiTables = ["Sheep_random_EPOCH", "Sheep_random_EPOCH", "Goat_random_EPOCH", "Goat_random_EPOCH", "Goat_random_EPOCH", ["Cock_random_EPOCH", "Hen_random_EPOCH"], ["Cock_random_EPOCH", "Hen_random_EPOCH"], "Rabbit_EPOCH", "Rabbit_EPOCH", "Rabbit_EPOCH", "Snake_random_EPOCH", "Snake2_random_EPOCH", ["Fin_random_EPOCH", "Alsatian_Random_EPOCH"]];
-_randomIndex = floor(random(count _animalAiTables));
-_randomAIClass = _animalAiTables select _randomIndex;
+_randomAIClass = selectRandom _animalAiTables;
 _animalPos = nil;
 _plyrPos = position player;
 
 if (_randomAIClass isEqualType []) then {
-	_randomIndex = floor(random(count _randomAIClass));
-	_randomAIClass = _randomAIClass select _randomIndex;
+	_randomAIClass = selectRandom _randomAIClass;
 };
 
 for "_i" from 1 to 3 step 1 do {

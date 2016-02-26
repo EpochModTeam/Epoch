@@ -35,8 +35,8 @@ if (EPOCH_playerCrypto > 0) then {
       _maintainCount = EPOCH_playerCrypto;
     };
 
-    _rnd = format ["rmx_var_temp%1%2",floor random 100, ["A","B","C","D","E","F"] select random 5];
-    [_this modelToWorld [0,0,0.2],20,"x\addons\a3_epoch_icons\Data\UI\buttons\timer.paa", "Maintaining",60,_rnd] call epoch_gui3dWorldPos;
+    _rnd = format ["rmx_var_temp%1%2",floor random 100, selectRandom ["A","B","C","D","E","F"]];
+    [_this modelToWorld [0,0,0.2],20,"x\addons\a3_epoch_code\Data\UI\buttons\timer.paa", "Maintaining",60,_rnd] call epoch_gui3dWorldPos;
 
     EPOCH_maintainLockout = true;
 

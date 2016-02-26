@@ -30,7 +30,7 @@ if (isNil "EPOCH_bankTransferActive") then {
 				if (isNull(findDisplay -13)) exitWith{};
 				_progress = _progress + 1;
 				if (_progress > 100) exitWith{};
-				ctrlSetText[1200, format["\x\addons\a3_epoch_icons\Data\UI\loading_bar_%1.paa", _progress]];
+				ctrlSetText[1200, format["\x\addons\a3_epoch_code\Data\UI\loading_bar_%1.paa", _progress]];
 				uiSleep _sleep;
 			};
 

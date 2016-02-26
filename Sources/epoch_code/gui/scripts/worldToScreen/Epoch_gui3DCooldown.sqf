@@ -35,7 +35,7 @@ _this spawn {
 	_ctrlGrp ctrlSetPosition _ctrlPos;
 	_ctrlGrp ctrlCommit 0;
 
-	_rnd = format ["rmx_var_temp%1%2",floor random 100, ["A","B","C","D","E","F"] select random 5];
+	_rnd = format ["rmx_var_temp%1%2",floor random 100, selectRandom ["A","B","C","D","E","F"]];
 	uiNamespace setVariable [_rnd,[_ctrlGrp, _pos,(ctrlPosition _ctrlGrp),_distance/2]];
 	_var = format ["uiNamespace getVariable '%1'",_rnd];
 
@@ -44,7 +44,7 @@ _this spawn {
 	_ctrl = [];
 	for "_i" from 0 to 9 do {
 		_ct = _display ctrlCreate ["RscPicture",call epoch_getIDC,_ctrlGrp];
-		_ct ctrlSetText format ["x\addons\a3_epoch_icons\Data\UI\cooldown\%1.paa",_i];
+		_ct ctrlSetText format ["x\addons\a3_epoch_code\Data\UI\cooldown\%1.paa",_i];
 		_ct ctrlSetPosition [0.0375,0.05,(_ctrlPos select 2) / 2,(_ctrlPos select 3) / 2];
 		_ct ctrlSetFade 1;
 		_ct ctrlCommit 0;

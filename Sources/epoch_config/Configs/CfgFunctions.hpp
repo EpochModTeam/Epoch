@@ -3,14 +3,6 @@ class cfgFunctions
 	class A3
 	{
 		tag = "BIS";
-		class Respawn
-		{
-			file = "A3\functions_f\Respawn";
-			class selectRespawnTemplate
-			{
-				file = "epoch_code\compile\bis_functions\Respawn\fn_selectRespawnTemplate.sqf";
-			};
-		};
 		class functions {
 			// BIS_fnc_returnVector
 			class returnVector {
