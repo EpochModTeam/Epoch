@@ -80,17 +80,22 @@ class CfgEpochClient
 	InventoryOpened = "_this spawn EPOCH_initUI;_container = _this select 1;_lockedNear = false;if (_container isKindOf 'GroundWeaponHolder' || _container isKindOf 'WeaponHolderSimulated') then {{if (locked _x in [2, 3] ||_x getVariable['EPOCH_Locked', false]) exitWith {_lockedNear = true}} forEach (player nearSupplies 10);};if (locked _container in [2, 3] || _container getVariable['EPOCH_Locked', false] || _lockedNear) then {[] spawn {disableSerialization;waitUntil {!isNull findDisplay 602};_display = findDisplay 602;_ctrl_cargo = _display displayCtrl 6401;_ctrl_ground = _display displayCtrl 6321;_ctrl_cargo ctrlEnable  false;ctrlSetFocus _ctrl_ground;ctrlActivate _ctrl_ground;};};";
     Killed          = "_this call EPOCH_fnc_playerDeath;";
 	HandleRating    = "EPOCH_playerKarma = EPOCH_playerKarma + (_this select 1);0";
-	#include "CfgEpochClient\takistan.hpp"
-	#include "CfgEpochClient\australia.hpp"
-	#include "CfgEpochClient\ProvingGrounds_PMC.hpp"
-	#include "CfgEpochClient\utes.hpp"
-	#include "CfgEpochClient\Sara.hpp"
-	#include "CfgEpochClient\Altis.hpp"
-	#include "CfgEpochClient\Bornholm.hpp"
-	#include "CfgEpochClient\Chernarus_Summer.hpp"
+    // include configs
+    #include "CfgEpochClient\Altis.hpp"
+    #include "CfgEpochClient\australia.hpp"
+    #include "CfgEpochClient\Bornholm.hpp"
+    #include "CfgEpochClient\Chernarus_Summer.hpp"
 	#include "CfgEpochClient\Chernarus.hpp"
-	#include "CfgEpochClient\Stratis.hpp"
-	#include "CfgEpochClient\Esseker.hpp"
+    #include "CfgEpochClient\Esseker.hpp"
+    #include "CfgEpochClient\ProvingGrounds_PMC.hpp"
+    #include "CfgEpochClient\Sara_dbe1.hpp"
+    #include "CfgEpochClient\Sara.hpp"
+    #include "CfgEpochClient\SaraLite.hpp"
+    #include "CfgEpochClient\Stratis.hpp"
+    #include "CfgEpochClient\takistan.hpp"
+	#include "CfgEpochClient\utes.hpp"
+	#include "CfgEpochClient\vr.hpp"
+    #include "CfgEpochClient\Zargabad.hpp"
 	#include "CfgEpochClient\WorldInteractions.hpp"
 };
 class CfgEpochSapper
