@@ -17,7 +17,7 @@ private ["_unit","_group","_bomb","_unitClass","_targetPos","_disableAI","_nonJa
 _unitClass = _this;
 
 if(random 100 < 6)then{
-[] execFSM "epoch_code\System\Event_Air_Drop.fsm";
+[] execFSM "\x\addons\a3_epoch_code\System\Event_Air_Drop.fsm";
 };
 
 _index = EPOCH_spawnIndex find _unitClass;
@@ -54,14 +54,14 @@ switch _unitClass do {
 	case "Epoch_Cloak_F": {
 		_unit = createAgent[_unitClass, _targetPos, [], 256, "FORM"];
 		_unit call _disableAI;
-		[_unit] execFSM "epoch_code\System\cloak.fsm";
+		[_unit] execFSM "\x\addons\a3_epoch_code\System\cloak.fsm";
 	};
 	case "GreatWhite_F": {
 		if (surfaceIsWater _targetPos) then{
 			if (((_targetPos vectorDiff getPosASL player) select 2) > 25) then{
 				_unit = createAgent[_unitClass, _targetPos, [], 120, "FORM"];
 				_unit call _disableAI;
-				[_unit] execFSM "epoch_code\System\Shark_Brain.fsm";
+				[_unit] execFSM "\x\addons\a3_epoch_code\System\Shark_Brain.fsm";
 			};
 		};
 	};
@@ -78,7 +78,7 @@ switch _unitClass do {
 			_bomb = createVehicle ["Sapper_Charge_Ammo", _targetPos, [], 0, "CAN_COLLIDE"];
 			_bomb attachTo [_unit, [0,0,0],"Pelvis"];
 			_unit call _disableAI;
-			sapperHndl = [_unit, _bomb] execFSM "epoch_code\System\Sapper_Brain.fsm";
+			sapperHndl = [_unit, _bomb] execFSM "\x\addons\a3_epoch_code\System\Sapper_Brain.fsm";
 			_unit addEventHandler ["FiredNear", "sapperHndl setFSMVariable [""_sFiredNear"",[_this select 1, _this select 2]];"];
 			_unit addEventHandler ["Hit", "sapperHndl setFSMVariable [""_sHit"",[_this select 1, _this select 2]];"];
 		};
@@ -88,7 +88,7 @@ switch _unitClass do {
 		_bomb = createVehicle["SapperB_Charge_Ammo", _targetPos, [], 0, "CAN_COLLIDE"];
 		_bomb attachTo[_unit, [0, 0, 0], "Pelvis"];
 		_unit call _disableAI;
-		sapperHndl = [_unit, _bomb] execFSM "epoch_code\System\Sapper_Brain2.fsm";
+		sapperHndl = [_unit, _bomb] execFSM "\x\addons\a3_epoch_code\System\Sapper_Brain2.fsm";
 		_unit addEventHandler["FiredNear", "sapperHndl setFSMVariable [""_sFiredNear"",[_this select 1, _this select 2]];"];
 		_unit addEventHandler["Hit", "sapperHndl setFSMVariable [""_sHit"",[_this select 1, _this select 2]];"];
 	};
@@ -102,13 +102,13 @@ switch _unitClass do {
 		_grp = createGroup RESISTANCE;
 		_driver = _grp createUnit["I_UAV_AI", position _unit, [], 0, "CAN_COLLIDE"];
 		_driver moveInAny _unit;
-		[_unit, player] execFSM "epoch_code\System\Copter_brain.fsm";
+		[_unit, player] execFSM "\x\addons\a3_epoch_code\System\Copter_brain.fsm";
 	};
 	case "PHANTOM": {
-		[] execFSM "epoch_code\System\Phantom_Brain.fsm";
+		[] execFSM "\x\addons\a3_epoch_code\System\Phantom_Brain.fsm";
 	};
 	case "B_Heli_Transport_01_F": {
-		[] execFSM "epoch_code\System\Event_Air_Drop.fsm";
+		[] execFSM "\x\addons\a3_epoch_code\System\Event_Air_Drop.fsm";
 	};
 };
 

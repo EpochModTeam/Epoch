@@ -1,3 +1,15 @@
+/*
+	Epoch Mod Sandbox Survival Gamemode 
+
+	Author: Epoch Mod Team - EpochMod.com
+
+    Licence:
+    Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
+
+    Github:
+    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_config/config.hpp
+*/
+
 author = "Epoch Mod Team";
 class Header
 {
@@ -39,3 +51,17 @@ wreckRemovalMinTime = 60;
 wreckRemovalMaxTime = 360;
 
 disableRandomization[] = {"All"};
+
+#include "Configs\CfgTraderMissions.hpp"
+#include "Configs\cfgCrafting.hpp"
+#include "Configs\cfgPricing.hpp"
+#include "Configs\CfgEpochClient.hpp"
+#include "Configs\CfgMasterLoop.hpp"
+#include "Configs\CfgBaseBuilding.hpp"
+#include "Configs\CfgSnapChecks.hpp"
+#include "Configs\CfgBuildingLootPos.hpp"
+#include "Configs\CfgActionMenu\CfgActionMenu_core.hpp"
+#include "Configs\CfgEpochConfiguration.hpp"
+#include "Configs\CfgClientFunctions.hpp"
+#include "Configs\CfgFunctions.hpp"
+#include "Configs\CfgRemoteExec.hpp"

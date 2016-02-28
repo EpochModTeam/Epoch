@@ -1,6 +1,7 @@
 _index = lbValue[1500, lbCurSel 1500];
 
-_disabledMissions = getArray(configfile >> "MissionList" >> "traderMissionDisabled");
+_config = "MissionList" call EPOCH_returnConfig;
+_disabledMissions = getArray(_config >> "traderMissionDisabled");
 if (_index in _disabledMissions) exitWith{ titleText["Invalid Mission", "PLAIN", 3]; };
 
 _nrEnts = player nearEntities ["Man", 20];
@@ -14,16 +15,16 @@ _trader = objNull;
 if !(isNull _trader) then {
 	switch _index do {
 		case 0:	{
-				[player,_trader] execFSM "epoch_code\System\Trader_Missions_Delivery.fsm";
+				[player,_trader] execFSM "\x\addons\a3_epoch_code\System\Trader_Missions_Delivery.fsm";
 		};
 		case 1:	{
-				[player,_trader] execFSM "epoch_code\System\Trader_Missions_Animal_Control.fsm";
+				[player,_trader] execFSM "\x\addons\a3_epoch_code\System\Trader_Missions_Animal_Control.fsm";
 		};
 		case 2:	{
-				[player,_trader] execFSM "epoch_code\System\Trader_Missions_UAV.fsm";
+				[player,_trader] execFSM "\x\addons\a3_epoch_code\System\Trader_Missions_UAV.fsm";
 		};
 		case 3:	{
-				[] execFSM "epoch_code\System\Trader_Missions_VIP.fsm";
+				[] execFSM "\x\addons\a3_epoch_code\System\Trader_Missions_VIP.fsm";
 		};
 		case 4:	{
 				_formatMsg = format["<t size='0.8' shadow='0' color='#99ffffff'>The time is %1:%2.</t>",date select 3, date select 4];

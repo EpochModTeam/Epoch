@@ -100,7 +100,7 @@ if (diag_tickTime - EPOCH_lastTrash > 2)  then {
 			for "_i" from 1 to 2 step 1 do {
 				_animal = createAgent[_randomAIClass, _animalPos, [], 0, "CAN_COLLIDE"];
 				_animal setVariable["BIS_fnc_animalBehaviour_disable", true];
-				_id = [_animal, true] execFSM "epoch_code\System\Animal_brain.fsm";
+				_id = [_animal, true] execFSM "\x\addons\a3_epoch_code\System\Animal_brain.fsm";
 				_animals pushBack _animal;
 			};
 			_animals remoteExec ["EPOCH_localCleanup",2];

@@ -37,5 +37,5 @@ for "_i" from 1 to 3 step 1 do
 	_unit = _grp createUnit["B_G_Soldier_F", _startPos, [], 0, "CAN_COLLIDE"];
 	_unit addEventHandler ["FiredNear", "group (_this select 0) setVariable[""shotsFired"",[(_this select 1),(_this select 2)]]"];
 	_unit addEventHandler ["Killed", "group (_this select 0) setVariable[""killer"",_this select 1]"];
-	[_unit] execFSM "epoch_code\System\Trader_Militia.fsm";
+	[_unit] execFSM "\x\addons\a3_epoch_code\System\Trader_Militia.fsm";
 };

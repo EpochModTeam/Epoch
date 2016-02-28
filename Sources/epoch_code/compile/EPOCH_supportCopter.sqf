@@ -50,9 +50,9 @@ for "_i" from 0 to ((count _arrUnits)-1) do {
 	if (_i == 0) then {
 	//_unit enableAI "AUTOTARGET";
 		_grp selectLeader _unit;
-		[_pos,_copter,_plyr,_unit] execFSM "epoch_code\System\Group_Leader_Brain.fsm";
+		[_pos,_copter,_plyr,_unit] execFSM "\x\addons\a3_epoch_code\System\Group_Leader_Brain.fsm";
 	//}else{
-	//[_pos,_copter,_plyr,_unit] execFSM "epoch_code\System\Group_Soldier_brain.fsm";
+	//[_pos,_copter,_plyr,_unit] execFSM "\x\addons\a3_epoch_code\System\Group_Soldier_brain.fsm";
 	};
 
 };
