@@ -21,7 +21,7 @@
 	Returns:
 	NOTHING
 */
-private ["_warming","_isNearFire","_airTemp","_waterTemp","_playerPosATL"];
+private ["_warming","_wet","_increaseWet","_isNearFire","_playerPosATL","_maxTemp","_airTemp","_waterTemp","_wetsuit"];
 
 if (isNil "EPOCH_CURRENT_WEATHER") then {
 	EPOCH_CURRENT_WEATHER = 75;

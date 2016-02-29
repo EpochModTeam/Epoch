@@ -24,6 +24,7 @@
 	Returns:
 	(OBJECT or objNull)
 */
+private ["_ins"];
 params [["_distance",10], ["_lod1", "VIEW"], ["_lod2","FIRE"], ["_sort",true]];
 if (EPOCH_playerIsSwimming) then {
 	_ins = lineIntersectsSurfaces [AGLToASL positionCameraToWorld [0,0,0],AGLToASL positionCameraToWorld [0,0,_distance],player,objNull,_sort,1,_lod1,_lod2];

@@ -12,17 +12,18 @@
     Github:
     https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_code/compile/EPOCH_unitSpawn.sqf
 */
-private ["_unit","_group","_bomb","_unitClass","_targetPos","_disableAI","_nonJammer","_nonTrader","_jammerRange","_jammers","_restricted","_sapperNum"];
+private ["_unit","_sapperNum","_config","_bomb","_targetPos","_grp","_driver","_index","_nonJammer","_nonTrader","_jammers","_jammerRange","_restricted","_disableAI"];
 
-_unitClass = _this;
+params ["_unitClass"];
 
 if(random 100 < 6)then{
-[] execFSM "\x\addons\a3_epoch_code\System\Event_Air_Drop.fsm";
+	[] execFSM "\x\addons\a3_epoch_code\System\Event_Air_Drop.fsm";
 };
 
 _index = EPOCH_spawnIndex find _unitClass;
 if (count(player nearEntities[_unitClass, 800]) >= (EPOCH_playerSpawnArray select _index)) exitWith{};
 
+// TODO: Configize
 _nonJammer = ["B_Heli_Transport_01_F","PHANTOM","Epoch_Cloak_F"];
 _nonTrader = ["B_Heli_Transport_01_F","PHANTOM","Epoch_Cloak_F","GreatWhite_F"];
 _unit = objNull;
@@ -34,17 +35,11 @@ _jammers = [];
 _config = 'CfgEpochClient' call EPOCH_returnConfig;
 _jammerRange = getNumber(_config >> "buildingJammerRange");
 _jammers = nearestObjects[_targetPos, ["PlotPole_EPOCH"], _jammerRange];
-
-if(count _jammers > 0)then{
-if!(_unitClass in _nonJammer)exitWith{};
-};
+if(count _jammers > 0 && !(_unitClass in _nonJammer))exitWith{};
 
 _restricted = [];
 _restricted = nearestObjects [_targetPos, ["ProtectionZone_Invisible_F"], 150];
-if(count _restricted > 0)then{
-if!(_unitClass in _nonTrader)exitWith{};
-};
-
+if(count _restricted > 0 && !(_unitClass in _nonTrader))exitWith{};
 
 _disableAI = {
 	{_this disableAI _x}forEach["TARGET","AUTOTARGET","FSM"];

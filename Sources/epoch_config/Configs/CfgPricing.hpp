@@ -4,7 +4,7 @@
     Contributors:
 
 	Description:
-	Snap check offsets
+	Prices for Trading system.
 
     Licence:
     Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike

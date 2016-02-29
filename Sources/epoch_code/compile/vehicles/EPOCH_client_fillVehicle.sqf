@@ -12,10 +12,7 @@
     Github:
     https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_code/compile/vehicles/EPOCH_client_fillVehicle.sqf
 */
-private["_vehicle","_value"];
-
-_vehicle = _this select 0;
-_value = _this select 1;
+params ["_vehicle","_value"];
 if (local _vehicle) then {
 	_vehicle setFuel _value;
 };

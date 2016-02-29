@@ -1,6 +1,5 @@
-private ["_uiItem","_item","_worth","_cryptoCount","_control","_selected","_index","_sizeOut","_array"];
-_control = _this select 0;
-_selected = _this select 1;
+private ["_item","_worth","_cryptoCount","_itemWorth","_itemTax","_tax","_sizeOut","_uiItem","_config"];
+params ["_control","_selected"];
 
 _uiItem = (_selected select 0) lbData(_selected select 1);
 

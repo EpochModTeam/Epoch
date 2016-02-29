@@ -59,7 +59,6 @@ class CfgClientFunctions
 			class startNPCTraderMenu {};
 			class NPCTraderMenuFilter {};
 			class startNpcTrade {};
-			class makep2pTrade {};
 			class tradeFilter {};
 			class takeCrypto {};
 			class startBankTransfer {};
@@ -89,6 +88,7 @@ class CfgClientFunctions
 			class startTrade {};
 			class tradeRequest {};
 			class TradeLoop {};
+			class makep2pTrade {};
 		};
 		class functions
 		{

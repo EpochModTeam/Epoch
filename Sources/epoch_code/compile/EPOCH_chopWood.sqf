@@ -12,8 +12,7 @@
     Github:
     https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_code/compile/EPOCH_chopWood.sqf
 */
-
-private["_currentPos", "_object", "_type", "_objects", "_sel_object"];
+private ["_currentPos","_object","_type","_start","_end","_p3dName","_finalConfig","_str","_sel_object","_findStart","_objects","_config"];
 
 _currentPos = player modelToWorld[0, 5, 0];
 if !(surfaceIsWater _currentPos) then {
@@ -31,7 +30,6 @@ _config = 'CfgEpochClient' call EPOCH_returnConfig;
 	_sel_object = _x;
 	_findStart = _str find ": ";
 	if (_findStart != -1) then{
-
         _start = _findStart + 2;
         _end = (_str find ".") - _start;
         _p3dName = _str select[_start, _end];
@@ -39,7 +37,6 @@ _config = 'CfgEpochClient' call EPOCH_returnConfig;
             (_p3dName splitString " ") joinString "_"; // replace spaces with underscores
         };
         _finalConfig = (_config >> "WorldInteractions" >> (_p3dName + "_p3d"));
-
 		if (getNumber(_finalConfig >> "tree") == 1) then{
 			_object = _sel_object;
 		};

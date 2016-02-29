@@ -21,7 +21,7 @@
 	Returns:
 	NOTHING
 */
-private ["_newArmor","_totalArmor","_totalArmorMax","_selectedClass","_selectedItem","_bar","_uniformArmor","_finalArmor","_vestArmor","_headgearArmor","_totalArmorUI","_bar_compare"];
+private ["_selectedClass","_newArmor","_totalArmor","_totalArmorMax","_selectedItem","_bar","_uniformArmor","_finalArmor","_vestArmor","_headgearArmor","_totalArmorUI","_bar_compare"];
 disableSerialization;
 if (!isNull findDisplay 602) then {
 

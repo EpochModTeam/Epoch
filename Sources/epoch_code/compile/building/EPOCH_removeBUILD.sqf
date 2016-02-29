@@ -21,7 +21,8 @@
 	Returns:
 	BOOL - true if removed
 */
-private ["_buildingAllowed","_jammer","_buildingJammerRange","_buildingCountLimit","_dt","_nearestJammer","_ownedJammerExists","_return","_config","_objType","_object","_targeter","_stability","_removeParts"];
+private ["_buildingJammerRange","_buildingCountLimit","_buildingAllowed","_dt","_nearestJammer","_ownedJammerExists","_jammer","_return","_config","_object","_objType","_targeter","_stability","_removeParts"];
+
 _buildingAllowed = true;
 _ownedJammerExists = false;
 _nearestJammer = objNull;
@@ -35,7 +36,10 @@ if (_buildingCountLimit == 0) then { _buildingCountLimit = 200; };
 
 EPOCH_buildOption = 0;
 
-params ["_object"];
+params [["_object",objNull]];
+
+if (isNull _object) exitWith{ false };
+
 _objType = typeOf _object;
 
 // check if another player has target

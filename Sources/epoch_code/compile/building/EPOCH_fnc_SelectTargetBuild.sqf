@@ -21,13 +21,13 @@
 	Returns:
 	BOOL
 */
-private ["_targeter","_stability","_dt","_object"];
+private ["_dt","_targeter","_stability"];
 
 if !(isNil "EPOCH_simulSwap_Lock") exitWith{ false };
 if !(isNull EPOCH_Target) exitWith{ false };
 if (EPOCH_playerEnergy <= 0) exitWith{ _dt = ["<t size='0.8' shadow='0' color='#99ffffff'>Need energy</t>", 0, 1, 5, 2, 0, 1] spawn bis_fnc_dynamictext; false };
 
-params ["_object"];
+params [["_object",objNull]];
 
 EPOCH_buildOption = 2;
 

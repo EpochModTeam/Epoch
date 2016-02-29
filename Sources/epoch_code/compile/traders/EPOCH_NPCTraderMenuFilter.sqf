@@ -22,20 +22,13 @@
 	Returns:
 	NOTHING
 */
-private ["_item","_index","_itemCount","_itemOfferCount","_config","_name","_picture","_type","_vehicles","_sizeOut","_offerArray","_itemName","_itemIcon","_qty","_items","_qtys","_aiItems","_filterArray","_filterWeapons","_filterMagazines","_filterItems","_filterVehicle","_slot","_control","_isPlayerFilter"];
-
 disableSerialization;
+private ["_item","_itemCount","_itemOfferCount","_wpn","_bpck","_config","_name","_picture","_type","_vehicles","_sizeOut","_offerArray","_itemName","_itemIcon","_qty","_items","_qtys","_aiItems","_filterArray","_filterMagazines","_filterItems","_filterVehicle","_slot","_isPlayerFilter"];
+params ["_control","_index"];
 
 if !(isNull EPOCH_lastNPCtradeTarget) then {
-
 	_slot = EPOCH_lastNPCtradeTarget getVariable["AI_SLOT", -1];
-
-	_control = _this select 0;
-
 	_isPlayerFilter = (ctrlIDC _control == 42100);
-
-	_index = _this select 1;
-
 	if (_slot != -1) then {
 
 		_filterArray = [

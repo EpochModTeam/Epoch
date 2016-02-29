@@ -13,6 +13,7 @@
     https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_code/compile/EPOCH_updateLoadingScreen.sqf
 */
 disableSerialization;
+private ["_display"];
 _display = uiNameSpace getVariable ["EPOCH_loadingScreen",displayNull];
 if (!isNull _display) then {
   (_display displayCtrl 50) ctrlSetText _this;

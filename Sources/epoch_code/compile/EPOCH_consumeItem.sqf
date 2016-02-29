@@ -12,7 +12,7 @@
     Github:
     https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_code/compile/EPOCH_consumeItem.sqf
 */
-private ["_type","_interactOption","_previewClass","_object","_isStorage","_isOk","_buildClass","_vehicle","_currentFuel","_canCapacity","_fuelCapacity","_newFuel","_vehicles","_highestDMG","_currentHIT","_currentDMG","_newDMG","_paintCanIndex","_paintCanColor","_msg","_color","_text","_item","_pic","_removeItem"];
+private ["_type","_magazineSize","_text","_item","_pic","_magazinesAmmoFull","_dt","_magazineSizeMax","_config","_pos","_object","_isStorage","_isOk","_buildClass","_interactReturnOnUse","_vehicle","_currentFuel","_canCapacity","_interactAttributes","_fuelCapacity","_newFuel","_removeItem","_vehicles","_transportFuel","_highestDMG","_currentHIT","_currentDMG","_newDMG","_paintCanIndex","_paintCanColor","_msg","_color","_unifiedInteract","_interactOption"];
 
 _text = EPOCH_InteractedItem select 0;
 _item = EPOCH_InteractedItem select 1;
@@ -30,6 +30,7 @@ _interactAttributes = getArray(_config >> "interactAttributes");
 _removeItem = {([player,_this] call BIS_fnc_invRemove) == 1};
 
 _giveAttributes = {
+	private ["_return","_randomData","_index","_data","_addPlus"];
 	_index = _this select 0;
 	_data = _this select 1;
 	_addPlus = if (_data > 0) then {"+"} else {""};
@@ -88,8 +89,6 @@ _giveAttributes = {
 				EPOCH_playerRadiation = ((EPOCH_playerRadiation + _data) min 100) max 0;
 				_return = format["Radiation: %1%2 (%3/%4)<br />", _addPlus, _data, EPOCH_playerRadiation, 100];
 			};
-
-
 		};
 	};
 	_return

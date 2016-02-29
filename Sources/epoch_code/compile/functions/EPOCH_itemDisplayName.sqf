@@ -21,10 +21,9 @@
 	Returns:
 	STRING
 */
-private ["_item"];
-_item = _this;
+private ["_return"];
+params ["_item"];
 _return = "";
-
 if ([_item, "CfgVehicles"] call EPOCH_fnc_isAny) then {
   _return = getText(configfile >> "CfgVehicles" >> _item >> "DisplayName");
 } else {

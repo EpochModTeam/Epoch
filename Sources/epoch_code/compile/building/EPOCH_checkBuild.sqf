@@ -21,13 +21,13 @@
 	Returns:
 	ARRAY of BOOLs
 */
-private ["_dt","_out","_object","_objType","_config"];
+private ["_dt","_out","_objType","_config"];
 _out = [false, false, false];
 
 if !(isNil "EPOCH_simulSwap_Lock") exitWith{ _out };
 if !(isNull EPOCH_Target) exitWith{ _out };
 
-params ["_object"];
+params [["_object",objNull]];
 
 if (isNull _object) exitWith{ _out };
 if ((player distance _object) > 9) exitWith { _out };

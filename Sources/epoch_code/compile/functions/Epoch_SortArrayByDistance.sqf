@@ -22,13 +22,11 @@
 	Returns:
 	ARRAY of ARRAYS
 */
-private ["_sorted","_closest","_unsorted","_pos","_testPos","_closestPos"];
-_sorted = [];
-_closest = [];
-_unsorted = _this select 0;
-_pos = _this select 1;
+private ["_sorted","_closest","_testPos","_closestPos"];
+params ["_unsorted","_pos"];
 if (_pos isEqualType objNull) then {_pos = getpos _pos;};
 _sorted = [];
+_closest = [];
 _testPos = [0,0,0];
 _closestPos = [0,0,0];
 {

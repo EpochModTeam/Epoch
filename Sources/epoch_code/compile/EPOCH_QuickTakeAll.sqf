@@ -12,6 +12,7 @@
     Github:
     https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_code/compile/EPOCH_QuickTakeAll.sqf
 */
+private ["_magazines"];
 closeDialog 0;
 {
   _magazines = magazinesAmmoCargo _x;

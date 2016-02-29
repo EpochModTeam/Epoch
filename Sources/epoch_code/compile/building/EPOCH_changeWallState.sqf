@@ -25,10 +25,13 @@
 	Returns:
 	NOTHING
 */
-private ["_recipeItem","_recipeQty","_hasRecipeItems","_msg","_recipeCount","_currentCount","_numRemoved","_items","_mags","_dt","_recipe","_craftItem","_craftQty","_config","_objClass","_object","_anim","_state"];
-_object = param [0,objNull];
-_anim = param [1,""];
-_state = param [2,0];
+private ["_recipeItem","_recipeQty","_hasRecipeItems","_msg","_recipeCount","_currentCount","_numRemoved","_items","_mags","_dt","_recipe","_craftItem","_craftQty","_config","_objClass"];
+params [
+    ["_object",objNull],
+    ["_anim",""],
+    ["_state",0]
+];
+
 if !(isNull _object) then {
 
   _msg = "Missing Items";

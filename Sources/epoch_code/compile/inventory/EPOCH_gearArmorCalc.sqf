@@ -21,7 +21,7 @@
 	Returns:
 	NUMBER
 */
-private ["_passThrough","_armor"];
+private ["_gearArmor","_gearConfig","_passThrough","_armor"];
 _gearConfig = (configfile >> "CfgWeapons" >> _this);
 _passThrough = getNumber(_gearConfig >> "ItemInfo" >> "passThrough");
 _armor = getNumber(_gearConfig >> "ItemInfo" >> "armor");

@@ -21,9 +21,9 @@
 	Returns:
 	BOOL
 */
-private ["_wHPos","_wH","_nearByHolder","_item"];
-if (_this isEqualTo "") exitWith{false};
-_item = _this;
+private ["_wHPos","_wH","_nearByHolder"];
+params [["_item",""]];
+if (_item isEqualTo "") exitWith{false};
 if (player canAdd _item) then {
     player addItem _item;
 } else {

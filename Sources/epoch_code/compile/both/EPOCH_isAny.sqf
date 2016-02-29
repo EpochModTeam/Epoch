@@ -4,7 +4,7 @@
     Contributors:
 
 	Description:
-	Unisex check for vests, gives swing ammo and performs radio changed check
+	Config compare function
 
     Licence:
     Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
@@ -16,14 +16,11 @@
     _return = [_item, "CfgVehicles"] call EPOCH_fnc_isAny;
 
     Parameter(s):
-		_this select 0: STRING - Parent Class
-        _this select 0: STRING - Child Class
+		_this select 0: STRING - Item Class
+        _this select 1: STRING - Parent Class
 
 	Returns:
 	BOOL
 */
-private ["_item","_return"];
-_item = _this select 0;
-_type = _this select 1;
-_return = str(configFile >> _type >> _item) != "";
-_return
+params ["_item","_type"];
+(str(configFile >> _type >> _item) != "")

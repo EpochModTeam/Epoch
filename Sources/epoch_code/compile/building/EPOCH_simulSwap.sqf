@@ -21,7 +21,7 @@
 	Returns:
 	NOTHING
 */
-private ["_class","_worldspace","_objSlot","_newObj","_pos2","_vel2","_dir2","_up2","_velocityTransformation","_object","_return","_oemType","_config","_currentTarget","_dt","_energyCost","_allowedSnapObjects","_textureSlot","_lastCheckTime","_rejectMove","_nearestObject","_nearestObjectRaw","_distanceNear","_previousDistanceNear","_pOffset","_snapPos","_isSnap","_snapPosition","_snapType","_snapDistance","_prevSnapDistance","_snapPointsPara","_snapPointsPerp","_snapArrayPara","_snapArrayPerp","_direction","_distance","_plyrdistance","_create","_allowedSnapPoints","_snapObjects","_onContactEH","_offset","_disallowed","_objType","_distanceMod"];
+private ["_dt","_energyCost","_allowedSnapObjects","_worldspace","_objSlot","_textureSlot","_newObj","_lastCheckTime","_rejectMove","_nearestObject","_nearestObjectRaw","_distanceNear","_previousDistanceNear","_pOffset","_snapPos","_isSnap","_snapPosition","_snapType","_snapDistance","_prevSnapDistance","_snapPointsPara","_snapPointsPerp","_snapArrayPara","_snapArrayPerp","_pos2","_direction","_vel2","_dir2","_up2","_distance","_plyrdistance","_class","_create","_allowedSnapPoints","_snapObjects","_currentTarget","_onContactEH","_offset","_disallowed","_object","_objType","_return","_velocityTransformation","_distanceMod","_oemType","_config"];
 if !(isNil "EPOCH_simulSwap_Lock") exitWith{};
 
 _object = param [0,objNull];

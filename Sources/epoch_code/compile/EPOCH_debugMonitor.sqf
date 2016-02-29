@@ -12,7 +12,7 @@
     Github:
     https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_code/compile/EPOCH_debugMonitor.sqf
 */
-private["_hours"];
+private ["_customVars","_hours"];
 _hours = floor(servertime/60/60);
 
 _customVars = "";

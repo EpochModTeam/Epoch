@@ -22,11 +22,9 @@
 	Returns:
 	BOOL - allways returns true
 */
-private ["_data","_confData","_usedIn","_type","_interactOption","_buttonTXT","_control","_index","_text","_pic","_craftingArray","_craftingArrayNames","_config","_craftingConfig","_display","_useBtn"];
-
+private ["_data","_confData","_type","_interactOption","_buttonTXT","_magCount","_text","_pic","_display","_useBtn","_config","_craftingConfig"];
+params ["_control","_index"];
 EPOCH_InteractedItem = [];
-_control = _this select 0;
-_index = _this select 1;
 
 _text = _control lbText _index;
 _data = _control lbData _index;

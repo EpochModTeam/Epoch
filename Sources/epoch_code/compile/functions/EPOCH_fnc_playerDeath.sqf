@@ -22,10 +22,8 @@
 	Returns:
 	BOOL
 */
-
-private["_unit", "_killer"];
-_unit = _this select 0;
-_killer = _this select 1;
+private ["_dt"];
+params ["_unit", "_killer"];
 
 // test ejecting unit from vehicle if dead client side
 if (vehicle _unit != _unit) then {

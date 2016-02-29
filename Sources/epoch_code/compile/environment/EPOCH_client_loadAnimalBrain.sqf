@@ -21,8 +21,9 @@
 	Returns:
 	NOTHING
 */
-private["_fightOrFlight", "_id", "_animal", "_tryAnimalPos", "_animalPos", "_randomIndex", "_randomAIClass", "_aiTables", "_plyrPos"];
+private ["_randomAIClass","_animalPos","_tryAnimalPos","_id","_animal","_animalAiTables","_plyrPos"];
 
+// TODO: move static arrays to config
 if (count(player nearEntities["Animal_Base_F", 200]) >= 1) exitWith{};
 
 _animalAiTables = ["Sheep_random_EPOCH", "Sheep_random_EPOCH", "Goat_random_EPOCH", "Goat_random_EPOCH", "Goat_random_EPOCH", ["Cock_random_EPOCH", "Hen_random_EPOCH"], ["Cock_random_EPOCH", "Hen_random_EPOCH"], "Rabbit_EPOCH", "Rabbit_EPOCH", "Rabbit_EPOCH", "Snake_random_EPOCH", "Snake2_random_EPOCH", ["Fin_random_EPOCH", "Alsatian_Random_EPOCH"]];
@@ -53,8 +54,8 @@ if!(isNil "_animalPos") then {
 	}forEach ["TARGET","AUTOTARGET","FSM"];
 
 	if (_randomAIClass in ["Fin_random_EPOCH", "Alsatian_Random_EPOCH"]) then {
-			_id = [_animal] execFSM "\x\addons\a3_epoch_code\System\Dog_Brain.fsm";
+		_id = [_animal] execFSM "\x\addons\a3_epoch_code\System\Dog_Brain.fsm";
 	}else{
-			_id = [_animal, _randomAIClass in ["Snake_random_EPOCH","Snake2_random_EPOCH"]] execFSM "\x\addons\a3_epoch_code\System\Animal_brain.fsm";
+		_id = [_animal, _randomAIClass in ["Snake_random_EPOCH","Snake2_random_EPOCH"]] execFSM "\x\addons\a3_epoch_code\System\Animal_brain.fsm";
 	};
 };

@@ -22,10 +22,13 @@
 	Returns:
 	NOTHING
 */
-private ["_buildingJammerRange","_buildingCountLimit","_nearestJammer","_ownedJammerExists","_buildingAllowed","_dt","_missingCount","_canUpgrade","_missingParts","_part","_req","_partCheck","_canUpgradePartCount","_removedPartCount","_return","_upgrade","_upgradeParts","_config","_upgrades","_object","_index","_targeter","_stability","_jammer"];
+private ["_buildingJammerRange","_buildingCountLimit","_nearestJammer","_ownedJammerExists","_buildingAllowed","_dt","_missingCount","_canUpgrade","_missingParts","_part","_req","_partCheck","_canUpgradePartCount","_removedPartCount","_return","_upgrade","_upgradeParts","_config","_upgrades","_targeter","_stability","_jammer"];
+params [
+	["_object",objNull,[objNull]],
+	["_index",-1,[0]]
+];
 _return = false;
-_object = param [0,objNull,[objNull]];
-_index = param [1,-1,[0]]; //EPOCH_UpgradeIndex
+
 if !(_index isEqualTo -1) then {Epoch_upgradeIndex = _index};
 if (isNull _object) exitWith {false};
 

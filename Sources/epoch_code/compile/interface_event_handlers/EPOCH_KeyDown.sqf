@@ -25,14 +25,10 @@
 	Returns:
 	BOOL
 */
-private["_handled"];
+private ["_handled","_dt","_currentPos"];
 params ["_display","_dikCode","_shift","_ctrl","_alt"];
 
 _handled = false;
-
-// Developer Debug
-// if (_dikCode == 0x24) then {call compile preprocessFileLineNumbers "epoch.sqf";_handled = true;};
-
 
 if !(alive player) exitWith{ false };
 

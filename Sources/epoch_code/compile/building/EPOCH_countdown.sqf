@@ -45,7 +45,6 @@ if (!isNull _this) then {
 
 		EPOCH_arr_countdown pushBackUnique  _this;
 
-
 		_saveCheck = true;
 
 		EPOCH_drawIcon3d = true;

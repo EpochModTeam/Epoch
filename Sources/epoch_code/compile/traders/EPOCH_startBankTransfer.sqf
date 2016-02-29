@@ -7,7 +7,9 @@ if (isNil "EPOCH_bankTransferActive") then {
 	ctrlEnable[1600, false];
 
 	[] spawn {
-		ctrlSetText[1004,"Transfer started."];
+		private ["_transferTarget","_progress","_sleep","_deposit","_withdraw","_transfer","_totalTransfer"];
+		
+		ctrlSetText[1004,"Transfer started, please wait."];
 
 		_deposit = parseNumber(ctrlText 1401) min EPOCH_playerCrypto;
 		_withdraw = parseNumber(ctrlText 1402) min EPOCH_bankBalance;
@@ -35,14 +37,10 @@ if (isNil "EPOCH_bankTransferActive") then {
 			};
 
 			if (_progress >= 100) then {
-
 				// if player waited the full time then send upload
 				[player, [_deposit, _withdraw, [_transfer, _transferTarget]], Epoch_personalToken] remoteExec ["EPOCH_server_storeCrypto",2];
-
 				ctrlSetText[1004, "Transfer complete."];
-
 				uiSleep 1;
-
 				closeDialog 0;
 			}
 			else {

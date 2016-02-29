@@ -24,12 +24,9 @@
 	Returns:
 	Returns STRING if only one element in second param, otherwise returns ARRAY
 */
-private ["_item","_entries","_single","_arr","_return"];
-_item = param [0,""];
-_entries = param [1,["DisplayName"],[[]]];
-
+private ["_single","_arr"];
+params [["_item",""],["_entries",["DisplayName"],[[]]]];
 _single = (count _entries) == 1;
-
 _arr = [];
 {
 	if ([_item, "CfgMagazines"] call EPOCH_fnc_isAny) then {
@@ -44,8 +41,6 @@ _arr = [];
 		};
 	};
 } forEach _entries;
-
 if (_arr isEqualTo []) then {_arr = [""]};
-_return = if (_single) then {_arr select 0} else {_arr};
-
-_return
+// return
+if (_single) then {_arr select 0} else {_arr}

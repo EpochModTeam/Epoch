@@ -16,6 +16,8 @@ private["_found", "_return", "_foundLocalAnimal", "_str", "_blood", "_foundTermi
 
 _return = false;
 _config = 'CfgEpochClient' call EPOCH_returnConfig;
+_configWorldInteractions = (_config >> "WorldInteractions");
+_configWorldName = (_config >> worldname);
 
 if (diag_tickTime - EPOCH_lastTrash > 2)  then {
 	EPOCH_lastTrash = diag_tickTime;
@@ -43,21 +45,19 @@ if (diag_tickTime - EPOCH_lastTrash > 2)  then {
 					if (_p3dName find " " != -1) then {
 						(_p3dName splitString " ") joinString "_"; // replace spaces with underscores
 					};
-					_finalConfig = (_config >> "WorldInteractions" >> (_p3dName + "_p3d"));
+					_finalConfig = (_configWorldInteractions >> (_p3dName + "_p3d"));
 
 					{
 						_found = (getNumber(_finalConfig >> _x) == 1);
 						if (_found) exitWith{ _trashType = _forEachIndex };
-					} forEach getArray(_config >> worldname >> "TrashClasses");
-					// TrashClasses[] = { "Trash", "TrashSmall", "TrashVehicle", "PumpkinPatch", "TrashFood", "HempFiber" };
+					} forEach getArray(_configWorldName >> "TrashClasses");
 
-					//_foundTerminal = _p3dName in EPOCH_atmList;
 					_foundTerminal = (getNumber(_finalConfig >> "bankTerminal") == 1);
 				};
 			};
 		} else {
 			if (alive _x) then {
-				_foundTerminal = (getNumber(_config >> "WorldInteractions" >> (typeOf _x) >> "bankTerminal") == 1);
+				_foundTerminal = (getNumber(_configWorldInteractions >> (typeOf _x) >> "bankTerminal") == 1);
 				if (_x isKindOf "Snake_random_EPOCH") then {
 					_foundLocalAnimal = true;
 					if (random 1 < 0.1) then {

@@ -21,6 +21,7 @@
 	Returns:
 	NOTHING
 */
+private ["_distance","_toxicChance","_bloodpChance","_fatigueChance","_bleedAmount","_bloodpAmount","_soundEffect","_canSee","_ppEffect","_bleedChance","_soundEffectIndex","_soundEffectGlobal"];
 if !(isNull _this && alive _this) then {
 
 	_distance = 5;

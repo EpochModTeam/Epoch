@@ -22,9 +22,9 @@
 	Returns:
 	NOTHING
 */
+private ["_data","_confData","_text","_pic","_config","_craftingConfig"];
+params ["_control","_index"];
 EPOCH_InteractedItem = [];
-_control = _this select 0;
-_index = _this select 1;
 
 _text = _control lbText _index;
 _data = _control lbData _index;

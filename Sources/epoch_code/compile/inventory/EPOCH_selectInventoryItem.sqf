@@ -22,12 +22,9 @@
 	Returns:
 	NOTHING
 */
-private ["_index","_data","_control","_text","_pic","_craftingArray","_craftingArrayNames"];
-
+private ["_arr","_exit","_data","_name","_text","_pic","_craftingArray","_craftingArrayNames"];
+params ["_control","_index"];
 EPOCH_InteractedItem = [];
-
-_control = _this select 0;
-_index = _this select 1;
 
 if (_index isEqualType []) then {
   _index = (_index select 0) select 1;

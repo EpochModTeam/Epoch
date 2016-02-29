@@ -1,9 +1,6 @@
-private ["_item","_data","_index","_control","_filterArray","_weapons","_magazines","_items","_sizeOut","_arrayMags","_arrayWeapons"];
-
 disableSerialization;
-
-_control = _this select 0;
-_index = _this select 1;
+private ["_item","_xIndex","_filterArray","_magazines","_items","_sizeOut","_array"];
+params ["_control","_index"];
 
 // [weapons, mags, items]
 _filterArray = [
@@ -31,9 +28,9 @@ if (_sizeOut > 0) then {
 if (_weapons) then {
 	{
 		if !(_x in _array) then {
-			_index = lbAdd [1500, _x call EPOCH_itemDisplayName];
-			lbSetData [1500, _index, _x];
-			lbSetPicture [1500, _index, _x call EPOCH_itemPicture];
+			_xIndex = lbAdd [1500, _x call EPOCH_itemDisplayName];
+			lbSetData [1500, _xIndex, _x];
+			lbSetPicture [1500, _xIndex, _x call EPOCH_itemPicture];
 		} else {
 			_array set [_array find _x,nil];
 		};
@@ -44,9 +41,9 @@ if (_magazines) then {
 	{
 		if (getNumber(configfile >> "CfgMagazines" >> _x >> "count") == 1) then {
 			if !(_x in _array) then {
-				_index = lbAdd[1500, _x call EPOCH_itemDisplayName];
-				lbSetData[1500, _index, _x];
-				lbSetPicture[1500, _index, _x call EPOCH_itemPicture];
+				_xIndex = lbAdd[1500, _x call EPOCH_itemDisplayName];
+				lbSetData[1500, _xIndex, _x];
+				lbSetPicture[1500, _xIndex, _x call EPOCH_itemPicture];
 			}
 			else {
 				_array set[_array find _x, nil];
@@ -58,9 +55,9 @@ if (_magazines) then {
 if (_items) then {
 	{
 		if !(_x in _array) then {
-			_index = lbAdd [1500, _x call EPOCH_itemDisplayName];
-			lbSetData [1500, _index, _x];
-			lbSetPicture [1500, _index, _x call EPOCH_itemPicture];
+			_xIndex = lbAdd [1500, _x call EPOCH_itemDisplayName];
+			lbSetData [1500, _xIndex, _x];
+			lbSetPicture [1500, _xIndex, _x call EPOCH_itemPicture];
 		} else {
 			_array set [_array find _x,nil];
 		};

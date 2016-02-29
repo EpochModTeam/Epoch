@@ -25,20 +25,13 @@
 	Returns:
 	ARRAY
 */
-_maxIn = _this select 0;
-_minIn = _this select 1;
-_arcIn = _this select 2;
-_unitIn = _this select 3;
-_offset = 0;
-if ((count _this) > 4) then {
-	_offset = _this select 4;
-};
+private ["_dir","_rnd","_pos","_dist","_minIn","_outPos"];
+params ["_maxIn","_minIn","_arcIn","_unitIn",["_offset",0]];
 
 _rnd = ((180 +_offset) - (_arcIn / 2)) + (random _arcIn);
 _pos = getPosATL _unitIn;
 _dist = ((random (_maxIn - _minIn)) + _minIn) max _minIn;
 _dir = (getDir _unitIn) - _rnd;
 if (_dir<0) then {_dir = _dir + 360};
-
-_outPos = [(_pos select 0) + (_dist*(sin _dir)), (_pos select 1) + (_dist*(cos _dir)), _pos select 2];
-_outPos
+//return
+[(_pos select 0) + (_dist*(sin _dir)), (_pos select 1) + (_dist*(cos _dir)), _pos select 2]

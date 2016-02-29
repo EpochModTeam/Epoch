@@ -1,8 +1,8 @@
-private ["_uiItem","_item","_worth","_cryptoCount","_control","_selected","_index","_sizeOut","_array"];
+private ["_stockLimit","_allowAdd","_limit","_slot","_aiItems","_itemClasses","_itemQtys","_qtyIndex","_item","_sizeOut","_worth","_cryptoCount","_itemWorth","_itemTax","_tax","_index","_dt","_uiItem","_config"];
+params ["_control","_selected"];
+
 if !(isNull EPOCH_lastNPCtradeTarget) then {
 
-	_control = _this select 0;
-	_selected = _this select 1;
 	_allowAdd = true;
 	_stockLimit = false;
 	_uiItem = (_selected select 0) lbData (_selected select 1);

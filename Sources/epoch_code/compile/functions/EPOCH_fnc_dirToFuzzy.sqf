@@ -23,15 +23,8 @@
 	Returns:
 	SCALAR - (direction 0-360)
 */
-
-private ["_pos1","_pos2","_ret"];
-
-_pos1 = _this select 0;
-_pos2 = _this select 1;
-_spread = 32;
-if(count _this > 2)then{
-    _spread = _this select 2;
-};
+private ["_ret"];
+params ["_pos1","_pos2",["_spread",32]];
 
 //if objects, not positions, were passed in, then get their positions
 if(_pos1 isEqualType objNull) then {_pos1 = getpos _pos1};

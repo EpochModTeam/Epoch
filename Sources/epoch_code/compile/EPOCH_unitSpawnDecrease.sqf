@@ -12,6 +12,7 @@
     Github:
     https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_code/compile/EPOCH_unitSpawnDecrease.sqf
 */
+private ["_index"];
 _index = EPOCH_spawnIndex find _this;
 if (_index != -1) then{
   EPOCH_playerSpawnArray set[_index, ((EPOCH_playerSpawnArray select _index) - 1) max 0];

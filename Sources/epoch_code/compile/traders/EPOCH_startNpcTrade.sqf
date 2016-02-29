@@ -21,7 +21,7 @@
 	Returns:
 	NOTHING
 */
-private["_item", "_currQty", "_tradeType", "_itemWorth", "_aiItems", "_itemClasses", "_itemQtys", "_qtyIndex", "_tradeTotal", "_tradeQtyTotal", "_errorMsg", "_target", "_sizeOut", "_array", "_makeTrade", "_vehSlot", "_vehicle", "_vehicles", "_display", "_addWeaponToHands", "_type", "_tax"];
+private ["_vehSlot","_vehicle","_vehicles","_item","_current_crypto","_itemWorth","_itemTax","_tax","_config","_sizeOut","_arrayIn","_arrayOut"];
 
 if (!isNil "EPOCH_TRADE_COMPLETE") exitWith {};
 if (!isNil "EPOCH_TRADE_STARTED") exitWith{};

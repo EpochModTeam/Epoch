@@ -12,7 +12,7 @@
     Github:
     https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_code/compile/EPOCH_mineRocks.sqf
 */
-private ["_object","_foundIndex","_found","_str","_objects","_lootables","_currentPos","_p3dName","_findStart","_config","_cinderList","_rocksList"];
+private ["_currentPos","_found","_foundIndex","_start","_end","_p3dName","_finalConfig","_str","_findStart","_object","_objects","_config"];
 
 if ((diag_tickTime - EPOCH_lastMineRocks) >= 2) then {
 	EPOCH_lastMineRocks = diag_tickTime;

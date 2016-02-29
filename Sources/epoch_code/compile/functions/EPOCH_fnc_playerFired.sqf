@@ -27,16 +27,8 @@
 	Returns:
 	NOTHING
 */
-
-private ["_highestDMG","_currentHIT","_currentDMG","_attachments","_newDMG","_cursorTarget","_repaired","_unit","_weapon","_ammo","_projectile"];
-_unit = 		_this select 0;
-_weapon = 		_this select 1;
-_muzzle =		_this select 2;
-_mode =			_this select 3;
-_ammo = 		_this select 4;
-_magazine =		_this select 5;
-_projectile = 	_this select 6;
-
+private ["_heal","_highestDMG","_currentHIT","_currentDMG","_newDMG","_attachments","_cursorTarget","_repaired","_gesture","_droneChance"];
+params ["_unit","_weapon","_muzzle","_mode","_ammo","_magazine","_projectile"];
 switch true do {
 	case (_ammo isKindOf "B_EnergyPack"): {
 		if (!isNull cursorTarget) then {

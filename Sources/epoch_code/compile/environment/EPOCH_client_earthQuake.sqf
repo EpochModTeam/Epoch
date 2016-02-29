@@ -21,6 +21,7 @@
 	Returns:
 	Script handle
 */
+private ["_intensity","_epicenter","_distance"];
 _epicenter = _this;
 _distance = player distance _epicenter;
 _intensity = 1;

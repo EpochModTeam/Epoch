@@ -1,6 +1,5 @@
-private ["_uiItem","_item","_worth","_cryptoCount","_control","_selected","_index","_sizeOut","_array"];
-_control = _this select 0;
-_selected = _this select 1;
+private ["_allowAdd","_item","_sizeOut","_qty","_worth","_cryptoCount","_itemWorth","_itemTax","_tax","_itemName","_index","_itemIcon","_uiQty","_dt","_uiItem","_config"];
+params ["_control","_selected"];
 
 _allowAdd = true;
 

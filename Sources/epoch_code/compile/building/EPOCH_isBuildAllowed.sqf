@@ -22,7 +22,8 @@
 	Returns:
 	BOOL
 */
-private ["_buildingAllowed","_jammer","_restricted","_restrictedLocations","_myPosATL"];
+private ["_buildingJammerRange","_buildingCountLimit","_buildingAllowed","_dt","_nearestJammer","_ownedJammerExists","_objectCount","_limitNearby","_restricted","_range","_config","_staticClass","_objType","_simulClass","_bypassJammer","_jammer","_restrictedLocations","_myPosATL"];
+
 _buildingAllowed = true;
 _ownedJammerExists = false;
 _nearestJammer = objNull;

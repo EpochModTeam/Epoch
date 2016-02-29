@@ -12,8 +12,7 @@
     Github:
     https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_code/compile/EPOCH_SpawnTraderMiltia.sqf
 */
-
-//Make _trgt = trader and join militia to traders group
+private ["_garrCount","_startPos","_rndHouse","_unit","_trgt","_nrBuilds","_grp"];
 _trgt = player;
 _nrBuilds = nearestObjects [getPosATL _trgt,["house"],50];
 

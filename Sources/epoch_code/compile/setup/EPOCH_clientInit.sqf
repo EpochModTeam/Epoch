@@ -41,7 +41,6 @@ EPOCH_Y_OFFSET = 5;
 EPOCH_arr_snapPoints = [];
 EPOCH_prevTarget = objNull;
 EPOCH_interactOption = 0;
-
 EPOCH_playerStaminaMax = 100;
 EPOCH_playerEnergyMax = 2500;
 
