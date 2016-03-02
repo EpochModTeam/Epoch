@@ -89,14 +89,14 @@ class CfgServerFunctions
 			class server_takeCrypto {};
 		};
 		class epoch_vehicle {
-			class server {};
-			class server {};
-			class server {};
-			class server {};
-			class server {};
+			class server_save_vehicles {};
+			class server_save_vehicle {};
+			class server_save_killedVehicle {};
+			class server_save_killedStorage {};
+			class server_save_killedBuilding {};
 			class load_vehicles {};
 			class load_storage {};
-			class server {};
+			class server_save_storage {};
 			class spawn_vehicles {};
 			class server_lockVehicle {};
 			class server_fillVehicle {};
