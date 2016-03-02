@@ -27,7 +27,7 @@ private["_config", "_varData","_missionconfig","_finalconfig"];
 params ["_configClass","_variableName","_defaultData"];
 _varData = _defaultData;
 _config = (configfile >> _configClass);
-_missionconfig = (missionConfigFile >> _configClass);
+_missionconfig = (getMissionConfig _configClass);
 if (isClass _missionconfig) then{
 	if (configName(_missionconfig >> _variableName) == _variableName) then{
 		_config = _missionconfig;

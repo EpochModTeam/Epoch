@@ -95,6 +95,7 @@ _configArray = [
 EPOCH_fnc_returnConfigEntry = {
     private["_defaultData", "_config", "_varData"];
     _defaultData = _this select 2;
+	_varData = _defaultData;
 	if (isClass(_this select 0)) then{
 		_config = (_this select 0) >> (_this select 1);
 		_varData = switch (typeName _defaultData) do {
@@ -104,8 +105,6 @@ EPOCH_fnc_returnConfigEntry = {
 			case "STRING": {if (isText (_config)) then { getText _config } else {_defaultData} };
 			default {_defaultData};
 		};
-	} else {
-		_varData = _defaultData;
 	};
     _varData
 };

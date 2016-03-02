@@ -14,6 +14,7 @@
 
 **Server**
 [Added] limit to number of plant sites that can spawn. Can be controlled with "plantLimit" inside (CfgEpoch >> worldName).
+[Added-WIP] Support for Eden editor mission files and attributes.
 [Changed] Mission system can now use missionConfigFile configs.
 [Changed] publicVariableClient calls changed to use remoteExec. This should provide better performance and reliability as PVC's can be unreliable under heavy use and can also bottleneck the games netcode.
 [Changed] CfgClientFunctions is now able to be overridden via description.ext.

@@ -1,10 +1,6 @@
-private["_posWH", "_item", "_nearbyWH", "_rock", "_player"];
-
-_object = _this select 0;
-_index = _this select 1;
-_player = _this select 2;
-
-if !([_player, _this select 3] call EPOCH_server_getPToken) exitWith{};
+private["_posWH", "_item", "_nearbyWH", "_rock"];
+params ["_object","_index","_player","_token"];
+if !([_player, _token] call EPOCH_server_getPToken) exitWith{};
 
 if !(_object isKindOf "All") then {
 	if (alive _object) then {

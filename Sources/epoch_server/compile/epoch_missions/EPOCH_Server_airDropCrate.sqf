@@ -1,10 +1,8 @@
-private["_plyr","_axeCopter","_pos","_axeCrate","_crateSmoke","_weps","_mags","_items"];
-_plyr = _this select 1;
-if !([_plyr,_this select 2]call EPOCH_server_getPToken)exitWith{};
+private["_pos","_axeCrate","_crateSmoke","_weps","_mags","_items"];
+params ["_object","_player","_token"];
+if !([_player,_token] call EPOCH_server_getPToken)exitWith{};
 
-_axeCopter = _this select 0;
-_pos = getPos _axeCopter;
-
+_pos = getPos _object;
 _pos set [2,(_pos select 2) - 2];
 _axeCrate = createVehicle ["B_supplyCrate_F", _pos, [], 10, "NONE"];
 _axeChute = createVehicle ["NonSteerable_Parachute_F", _pos, [], 10, "FLY"];

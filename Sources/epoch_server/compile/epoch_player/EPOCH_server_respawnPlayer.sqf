@@ -3,12 +3,12 @@
 
 	Epoch Mod - EpochMod.com - All Rights Reserved.
 */
-private["_defaultUniform", "_class", "_vest", "_dir", "_location", "_plyrObj", "_plyr"];
+private["_defaultUniform", "_class", "_vest", "_dir", "_location", "_playerObj", "_player"];
 
 if !([_this select 0, _this select 1] call EPOCH_server_getPToken) exitWith{};
 
-_plyr = _this select 0;
-_plyrObj = _plyr;
+_player = _this select 0;
+_playerObj = _player;
 
 if (count _this == 3) then {
 
@@ -26,20 +26,20 @@ if (count _this == 3) then {
 	_location set[2, 0];
 
 
-	_plyrObj = (group _plyr) createUnit [_class, _location, [], 0, "CAN_COLLIDE"];
+	_playerObj = (group _player) createUnit [_class, _location, [], 0, "CAN_COLLIDE"];
 	{
-		_plyrObj disableAI _x;
+		_playerObj disableAI _x;
 	} forEach["FSM", "MOVE", "AUTOTARGET", "TARGET"];
 
-	_plyrObj setDir _dir;
-	_plyrObj setPosATL _location;
+	_playerObj setDir _dir;
+	_playerObj setPosATL _location;
 
 	// send player object to player
-	["_switchPlayer_PVC",_plyrObj] remoteExec ['EPOCH_playerGenderInit',_plyr];
+	["_switchPlayer_PVC",_playerObj] remoteExec ['EPOCH_playerGenderInit',_player];
 
 
 };
 
 
-_plyrObj setVariable ["REVIVE", true];
+_playerObj setVariable ["REVIVE", true];
 true

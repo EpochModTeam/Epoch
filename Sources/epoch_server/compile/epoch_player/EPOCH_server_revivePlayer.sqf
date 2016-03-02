@@ -4,46 +4,46 @@ Player Revive
 Epoch Mod - EpochMod.com
 All Rights Reserved.
 */
-private["_plyr", "_plyrUID", "_items", "_class", "_dir", "_location", "_type", "_weapon", "_attachments", "_currWeap", "_itemSlot", "_itemqtys", "_goggles", "_headgear", "_vest", "_backpack", "_uniform", "_weapons", "_magazinesAmmo", "_itemsplayer", "_weaponsplayer", "_group", "_primaryWeapon", "_secondaryWeapon", "_attachment", "_equipped", "_wMags", "_plyrGroup", "_droppedWeapons", "_newPlyr", "_token", "_owner", "_reviver"];
+private["_player", "_playerUID", "_items", "_class", "_dir", "_location", "_type", "_weapon", "_attachments", "_currWeap", "_itemSlot", "_itemqtys", "_goggles", "_headgear", "_vest", "_backpack", "_uniform", "_weapons", "_magazinesAmmo", "_itemsplayer", "_weaponsplayer", "_group", "_primaryWeapon", "_secondaryWeapon", "_attachment", "_equipped", "_wMags", "_playerGroup", "_droppedWeapons", "_newPlyr", "_token", "_owner", "_reviver"];
 
-_plyr = _this select 0;
-_owner = owner _plyr;
+_player = _this select 0;
+_owner = owner _player;
 _reviver = _this select 1;
 
 if !([_reviver, _this select 2] call EPOCH_server_getPToken) exitWith{};
-if (isNull _plyr) exitWith{};
-if (_plyr distance _reviver > 20) exitWith{};
+if (isNull _player) exitWith{};
+if (_player distance _reviver > 20) exitWith{};
 
-if (!local _plyr) then {
-	_plyrUID = getPlayerUID _plyr;
-	if (!isNil "_plyrUID" && !alive _plyr) then {
+if (!local _player) then {
+	_playerUID = getPlayerUID _player;
+	if (!isNil "_playerUID" && !alive _player) then {
 
-		if (_plyr == _reviver) exitWith {
+		if (_player == _reviver) exitWith {
 			'epochserver' callExtension format['820|%1|EpochMod.com Autoban #R1',getPlayerUID _reviver];
 			['ahb', format['%1 (%2): Tried to Revive yourself (%3)', name _reviver, getPlayerUID _reviver, _this]] call EPOCH_fnc_server_hiveLog;
 		};
 
-		_class = typeOf _plyr;
+		_class = typeOf _player;
 
 		if (_class in ["Epoch_Male_F", "Epoch_Female_F"]) then {
 
 
-			if (_plyr getVariable["REVIVE", true]) then {
+			if (_player getVariable["REVIVE", true]) then {
 
 				diag_log format["DEBUG server_revivePlayer : %1", _this];
 
-				_location = getPosATL _plyr;
-				_dir = getDir _plyr;
-				_plyrGroup = _plyr getVariable["GROUP", ""];
+				_location = getPosATL _player;
+				_dir = getDir _player;
+				_playerGroup = _player getVariable["GROUP", ""];
 
-				_goggles = goggles _plyr;
-				_headgear = headgear _plyr;
-				_vest = vest _plyr;
-				_backpack = backpack _plyr;
-				_uniform = uniform _plyr;
+				_goggles = goggles _player;
+				_headgear = headgear _player;
+				_vest = vest _player;
+				_backpack = backpack _player;
+				_uniform = uniform _player;
 
-				_items = assignedItems _plyr;
-				_magazinesAmmo = magazinesAmmo _plyr;
+				_items = assignedItems _player;
+				_magazinesAmmo = magazinesAmmo _player;
 
 				_primaryWeapon = "";
 				_secondaryWeapon = "";
@@ -59,21 +59,21 @@ if (!local _plyr) then {
 						};
 					} forEach (weaponsItemsCargo _x);
 
-				} forEach nearestObjects[_plyr, ["WeaponHolderSimulated"], 12];
+				} forEach nearestObjects[_player, ["WeaponHolderSimulated"], 12];
 
 				// diag_log ["DEBUG: _droppedWeapons %1", _droppedWeapons];
 
-				_itemsplayer = [getItemCargo(uniformContainer _plyr), getItemCargo(vestContainer _plyr), getItemCargo(backpackContainer _plyr)];
-				_weaponsplayer = [getWeaponCargo(uniformContainer _plyr), getWeaponCargo(vestContainer _plyr), getWeaponCargo(backpackContainer _plyr)];
-				_weapons = [currentWeapon _plyr, ((weaponsItems _plyr) + _droppedWeapons), [_primaryWeapon, _secondaryWeapon, handgunWeapon _plyr]];
+				_itemsplayer = [getItemCargo(uniformContainer _player), getItemCargo(vestContainer _player), getItemCargo(backpackContainer _player)];
+				_weaponsplayer = [getWeaponCargo(uniformContainer _player), getWeaponCargo(vestContainer _player), getWeaponCargo(backpackContainer _player)];
+				_weapons = [currentWeapon _player, ((weaponsItems _player) + _droppedWeapons), [_primaryWeapon, _secondaryWeapon, handgunWeapon _player]];
 
-				hideObjectGlobal _plyr;
+				hideObjectGlobal _player;
 
 				// create new player unit change this class later
 				_group = grpNull;
-				if (_plyrGroup != "") then {
+				if (_playerGroup != "") then {
 					{
-						if ((_x getVariable["GROUP",""]) == _plyrGroup) exitWith {
+						if ((_x getVariable["GROUP",""]) == _playerGroup) exitWith {
 							_group = group _x;
 						};
 					}forEach playableUnits;
@@ -98,11 +98,11 @@ if (!local _plyr) then {
 				}forEach["FSM", "MOVE", "AUTOTARGET", "TARGET"];
 
 				_newPlyr setVariable ["SETUP", true];
-				_newPlyr setVariable ["PUID", _plyrUID];
-				_newPlyr setVariable ["GROUP", _plyrGroup];
+				_newPlyr setVariable ["PUID", _playerUID];
+				_newPlyr setVariable ["GROUP", _playerGroup];
 				_newPlyr setVariable ["REVIVE", false];
 
-				// _plyr playActionNow "Die";
+				// _player playActionNow "Die";
 
 				_newPlyr setDir _dir;
 				_newPlyr setPosATL _location;

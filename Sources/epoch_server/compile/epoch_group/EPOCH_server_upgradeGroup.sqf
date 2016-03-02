@@ -1,15 +1,6 @@
-private [
-	"_groupID","_player"
-	,"_contentArray","_found"
-	,"_newGroupSize","_groupMemberPUID"
-];
-
-_groupID = _this select 0;
-_player = _this select 1;
-
-if !([_player, _this select 2] call EPOCH_server_getPToken) exitWith{};
-
-diag_log format["GROUP: Upgrade %1", _this];
+private ["_contentArray","_found","_newGroupSize","_groupMemberPUID"];
+params ["_groupID","_player","_token"];
+if !([_player, _token] call EPOCH_server_getPToken) exitWith{};
 
 // get vars array and current Crypto value
 _cIndex = EPOCH_customVars find "Crypto";

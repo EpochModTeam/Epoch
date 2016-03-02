@@ -9,7 +9,7 @@
 private ["_displayName","_marker","_plants","_plant","_item","_plantPosition"];
 
 _serverMapConfig = configFile >> "CfgEpoch" >> worldName;
-_plantLimit = [_serverMapConfig, "plantLimit", _spawnPositionSizeDefaults] call EPOCH_fnc_returnConfigEntry;
+_plantLimit = [_serverMapConfig, "plantLimit", 10] call EPOCH_fnc_returnConfigEntry;
 if (isNil "EPOCH_plantCounter") then {
 	EPOCH_plantCounter = 0;
 } else {

@@ -9,7 +9,7 @@ _params = _this select 1;
 _class = _this select 2;
 
 _allowDebugConsole = if (isnil "_allowDebugConsole") then {false} else {_allowDebugConsole};
-_enableDebugConsole = ["DebugConsole",getnumber (missionconfigfile >> "enableDebugConsole")] call bis_fnc_getParamValue;
+_enableDebugConsole = ["DebugConsole",getnumber (getMissionConfig "enableDebugConsole")] call bis_fnc_getParamValue;
 
 if (
 	//--- Editor

@@ -1,12 +1,7 @@
-private [
-	"_player","_token"
-	,"_groupID"
-	,"_response"
-];
+private ["_groupID","_response"];
+params ["_player","_token"];
 
-_player = _this select 0;
-
-if !([_player, _this select 1] call EPOCH_server_getPToken) exitWith{};
+if !([_player, _token] call EPOCH_server_getPToken) exitWith{};
 
 _groupID = getPlayerUID _player;
 
@@ -21,9 +16,6 @@ if ((_response select 0) == 1 && (_response select 1) isEqualType []) then {
 			} forEach (units group _x);
 		};
 	} forEach playableUnits;
-
-	// Remove Key
 	["Group", _groupID] call EPOCH_fnc_server_hiveDEL;
 };
-
 true

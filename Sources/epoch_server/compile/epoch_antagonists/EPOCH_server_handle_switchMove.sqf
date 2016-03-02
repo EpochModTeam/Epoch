@@ -1,19 +1,24 @@
 /*
-Player Animations
+	Author: Aaron Clark - EpochMod.com
 
-Epoch Mod - EpochMod.com
-All Rights Reserved.
+    Contributors:
+
+	Description:
+    Player Animations
+
+    Licence:
+    Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
+
+    Github:
+    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_server/compile/epoch_antagonists/EPOCH_server_handle_switchMove.sqf
 */
-private["_range", "_move", "_nearBy", "_target"];
-
-_target = _this select 0;
-
-if !([_target, _this select 2] call EPOCH_server_getPToken) exitWith{};
-
+private["_range", "_move", "_nearBy"];
+params ["_target","_moveCase","_token"];
+if !([_target, _token] call EPOCH_server_getPToken) exitWith{};
 _range = 0;
 _move = "";
-
-switch (_this select 1) do {
+// TODO configize
+switch (_moveCase) do {
 	case 1: {
 		_range = 1000;
 		_move = "AovrPercMrunSrasWrflDf";

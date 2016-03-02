@@ -1,8 +1,16 @@
 /*
-Building - Converts to static all simulated objects that have not moved since last check
+	Author: Aaron Clark - EpochMod.com
 
-Epoch Mod - EpochMod.com
-All Rights Reserved.
+    Contributors:
+
+	Description:
+    Building - Converts to static all simulated objects that have not moved since last check
+
+    Licence:
+    Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
+
+    Github:
+    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_server/compile/epoch_bases/EPOCH_server_simToStatic.sqf
 */
 private ["_worldspace","_newObj","_class","_objSlot","_config","_lastPosition","_currentPosition","_entities"];
 _entities = allMissionObjects "Constructions_modular_F";

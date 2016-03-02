@@ -1,5 +1,5 @@
-_missionList = getArray(missionConfigFile >> "MissionList" >> "traderMissionNames");
-_disabledMissions = getArray(missionConfigFile >> "MissionList" >> "traderMissionDisabled");
+_missionList = getArray(getMissionConfig "MissionList" >> "traderMissionNames");
+_disabledMissions = getArray(getMissionConfig "MissionList" >> "traderMissionDisabled");
 
 {
 	if !(_forEachIndex in _disabledMissions) then {

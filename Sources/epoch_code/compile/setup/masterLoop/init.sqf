@@ -43,9 +43,11 @@ _emergency = _display displayCtrl 21206;
 
 // lootBubble Init
 _loots = ["CfgEpochClient", "lootClasses", EPOCH_lootClasses] call EPOCH_fnc_returnConfigEntryV2;
+_masterConfig = 'CfgBuildingLootPos' call EPOCH_returnConfig;
 
-_lootClasses = ('CfgBuildingLootPos' call EPOCH_returnConfig) call Bis_fnc_getCfgSubClasses;
-_lootClasses = _lootClasses - ["Default"];
+_lootClasses = [];
+_lootClassesIgnore = ['Default'];
+'_cN = configName _x;if !(_cN in _lootClassesIgnore)then{_lootClasses pushBack _cN};' configClasses _masterConfig;
 
 _lootBubble = {
 	private["_pos", "_others", "_objects", "_nearObjects", "_building", "_travelDir", "_lootDist", "_xPos", "_yPos", "_lootLoc", "_playerPos", "_distanceTraveled", "_class", "_dir", "_color", "_colors", "_item", "_randomColor", "_positions", "_lootBiasPos", "_lootType", "_config"];
@@ -59,8 +61,8 @@ _lootBubble = {
 		_lootLoc = [_xPos, _yPos, 0];
 
 		_objects = nearestObjects[_lootLoc, _lootClasses, 30];
-		_config = 'CfgEpochClient' call EPOCH_returnConfig;
-		_buildingJammerRange = getNumber(_config >> "buildingJammerRange");
+
+		_buildingJammerRange = getNumber(_masterConfig >> "buildingJammerRange");
 		if (_buildingJammerRange == 0) then { _buildingJammerRange = 75; };
 
 		_jammer = nearestObjects [_lootLoc, ["PlotPole_EPOCH"], _buildingJammerRange];
@@ -78,7 +80,7 @@ _lootBubble = {
 					_nearObjects = nearestObjects[_pos, ["WH_Loot", "Animated_Loot"], 35];
 					if (_nearObjects isEqualTo[]) then {
 
-						_config = ('CfgBuildingLootPos' call EPOCH_returnConfig) >> (typeOf _building);
+						_config = _masterConfig >> (typeOf _building);
 
 						if (isClass(_config)) then {
 
@@ -119,6 +121,7 @@ _lootBubble = {
 
 												_item = createVehicle[_class, _pos, [], 0.0, "CAN_COLLIDE"];
 												_item setDir _dir;
+
 
 												// force item to ground level is resulting z pos is below ground.
 												if (_pos select 2 < 0) then {

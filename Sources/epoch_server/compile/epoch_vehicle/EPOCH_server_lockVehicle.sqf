@@ -10,12 +10,12 @@ if !([_player,_this select 3] call EPOCH_server_getPToken) exitWith {};
 if (_player distance _vehicle > 20) exitWith {};
 
 // Group access
-_plyrUID = getPlayerUID _player;
-_plyrGroup = _player getVariable["GROUP", ""];
+_playerUID = getPlayerUID _player;
+_playerGroup = _player getVariable["GROUP", ""];
 
-_lockOwner = _plyrUID;
-if (_plyrGroup != "") then {
-	_lockOwner = _plyrGroup;
+_lockOwner = _playerUID;
+if (_playerGroup != "") then {
+	_lockOwner = _playerGroup;
 };
 
 _lockedOwner = "-1";

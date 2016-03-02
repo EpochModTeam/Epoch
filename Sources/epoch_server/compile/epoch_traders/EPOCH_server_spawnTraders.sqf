@@ -6,32 +6,27 @@ private [
 	,"_buildingWork","_work","_buildingPositions","_buildingPosition","_startTime","_endTime","_schedule","_pos","_agent","_objHiveKey"
 	,"_marker"
 ];
-// find free AI slot or exit
+
+// TODO: configize
 _aiTables = ["U_OG_leader", "U_C_Poloshirt_stripped", "U_C_Poloshirt_blue", "U_C_Poloshirt_burgundy", "U_C_Poloshirt_tricolour", "U_C_Poloshirt_salmon", "U_C_Poloshirt_redwhite", "U_C_Poor_1", "U_C_WorkerCoveralls", "U_C_Journalist", "U_C_Scientist", "U_OrestesBody"];
-_counter = 0;
-while {true} do {
 
-	if (_counter >= EPOCH_NPCSlotsLimit) exitWith{};
+_spawnCount = count EPOCH_TraderSlots;
 
-	_slot = EPOCH_TraderSlots find 0;
-	if (_slot == -1) exitWith{};
+diag_log format["DEBUG: count EPOCH_TraderSlots: %1", _spawnCount];
 
-	_counter = _counter + 1;
+_usedBuildings = [];
+
+for "_i" from 1 to _spawnCount do {
 
 	_position = [epoch_centerMarkerPosition, 0, EPOCH_dynamicVehicleArea, 20, 0, 4000, 0] call BIS_fnc_findSafePos;
-
 	// only proceed if two params otherwise BIS_fnc_findSafePos failed and may spawn in air
 	if (count _position == 2) then {
 
-		_randomIndex = floor(random(count _aiTables));
-		_randomAIUniform = _aiTables select _randomIndex;
+		_randomAIUniform = selectRandom _aiTables;
 		_randomAIClass = "C_man_1";
-
-		_usedBuildings = [];
 
 		// find home
 		_building = nearestBuilding _position;
-
 		if !(_building in _usedBuildings) then {
 
 			_home = getPosATL _building;
@@ -39,14 +34,7 @@ while {true} do {
 
 			_usedBuildings pushBack _building;
 
-			_homeBuildingPositions = [];
-			for "_p" from 0 to 20 do {
-				_homeBuildingPosition = _building buildingPos _p;
-				if (_homeBuildingPosition isEqualTo[0, 0, 0]) exitWith{};
-				if (_homeBuildingPosition nearEntities[_randomAIClass, 5] isEqualTo[]) then {
-					_homeBuildingPositions pushBack _homeBuildingPosition;
-				};
-			};
+			_homeBuildingPositions = _building buildingPos -1;
 			if !(_homeBuildingPositions isEqualTo []) then {
 				_home = selectRandom _homeBuildingPositions;
 			};
@@ -55,24 +43,14 @@ while {true} do {
 			_buildings = nearestObjects[_home, _acceptableBlds, 500];
 
 			if !(_buildings isEqualTo []) then {
-
 				_buildingWork = selectRandom _buildings;
 
 				if !(_buildingWork in _usedBuildings) then {
 
-					_usedBuildings pushBack _building;
-
+					_usedBuildings pushBack _buildingWork;
 					_work = getPosATL _buildingWork;
 
-					_buildingPositions = [];
-					for "_p" from 0 to 20 do {
-						_buildingPosition = _buildingWork buildingPos _p;
-						if (_buildingPosition isEqualTo[0, 0, 0]) exitWith{};
-						if (_buildingPosition nearEntities[_randomAIClass, 5] isEqualTo []) then {
-							_buildingPositions pushBack _buildingPosition;
-						};
-					};
-
+					_buildingPositions = _buildingWork buildingPos -1;
 					if !(_buildingPositions isEqualTo []) then {
 						_work = selectRandom _buildingPositions;
 					};
@@ -91,7 +69,7 @@ while {true} do {
 
 					_agent addUniform _randomAIUniform;
 
-					EPOCH_TraderSlots set[_slot, 1];
+					_slot = EPOCH_TraderSlots deleteAt 0;
 
 					// Set slot used by vehicle
 					_agent setVariable["AI_SLOT", _slot, true];
@@ -116,7 +94,6 @@ while {true} do {
 						_marker setMarkerShape "ICON";
 						_marker setMarkerType "mil_dot";
 						_marker setMarkerColor "ColorKhaki";
-
 						_agent setVariable["MARKER_REF", _marker];
 					};
 				};

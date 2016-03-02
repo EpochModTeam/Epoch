@@ -1,6 +1,20 @@
-private ["_result","_object","_newOwner"];
-_object = _this select 0;
-_newOwner = owner (_this select 1);
+/*
+	Author: Aaron Clark - EpochMod.com
+
+    Contributors:
+
+	Description:
+    Change owner of NPC
+
+    Licence:
+    Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
+
+    Github:
+    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_server/compile/epoch_bases/EPOCH_server_changeOwner.sqf
+*/
+private ["_result","_newOwner"];
+params ["_object","_newOwnerObj"];
+_newOwner = owner _newOwnerObj;
 _result = false;
 if (!isNull _object) then {
 	if (local _object) then {

@@ -1,9 +1,6 @@
-private["_item", "_class", "_pos", "_objectClass", "_object", "_player"];
-
-_object = _this select 0;
-_player = _this select 1;
-
-if !([_player, _this select 2] call EPOCH_server_getPToken) exitWith{};
+private["_item", "_class", "_pos", "_objectClass"];
+params ["_object","_player","_token"];
+if !([_player, _token] call EPOCH_server_getPToken) exitWith{};
 
 if !(isNull _object) then {
 	_pos = getPosATL _object;

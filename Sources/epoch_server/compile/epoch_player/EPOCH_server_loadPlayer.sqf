@@ -4,7 +4,7 @@
 	Epoch Mod - EpochMod.com
 	All Rights Reserved.
 */
-private ["_arr","_uniform","_class","_vest","_vars","_canBeRevived","_dir","_location","_group","_apperance","_goggles","_headgear","_backpack","_weaponsAndItems","_linkedItems","_normalMagazines","_itemsInContainers","_weaponsInContainers","_wMags","_wMagsArray","_equipped","_weapon","_type","_attachments","_currWeap","_found","_contentArray","_plyrGroup","_response","_reject","_fnc_addItemToX","_worldspace","_prevInstance","_medical","_server_vars","_hitpoints","_deadPlayer","_alreadyDead","_newPlyr","_plyrUID","_serverSettingsConfig","_plyr","_instanceID","_plyrNetID"];
+private ["_arr","_uniform","_class","_vest","_vars","_canBeRevived","_dir","_location","_group","_apperance","_goggles","_headgear","_backpack","_weaponsAndItems","_linkedItems","_normalMagazines","_itemsInContainers","_weaponsInContainers","_wMags","_wMagsArray","_equipped","_weapon","_type","_attachments","_currWeap","_found","_contentArray","_playerGroup","_response","_reject","_fnc_addItemToX","_worldspace","_prevInstance","_medical","_server_vars","_hitpoints","_deadPlayer","_alreadyDead","_newPlyr","_playerUID","_serverSettingsConfig","_player","_instanceID","_playerNetID"];
 
 _reject = true;
 
@@ -31,18 +31,18 @@ if (_this isEqualType []) then {
 	// load server settings
 	_serverSettingsConfig = configFile >> "CfgEpochServer";
 
-	_plyr = _this select 0;
+	_player = _this select 0;
 
 	_instanceID = call EPOCH_fn_InstanceID;
 
-	_plyrNetID = owner _plyr;
-	if (!isNull _plyr) then {
+	_playerNetID = owner _player;
+	if (!isNull _player) then {
 
-		_plyrUID = getPlayerUID _plyr;
-		if (_plyrUID != "") then {
+		_playerUID = getPlayerUID _player;
+		if (_playerUID != "") then {
 
 			// Make Hive call
-			_response = ["Player", _plyrUID] call EPOCH_fnc_server_hiveGETRANGE;
+			_response = ["Player", _playerUID] call EPOCH_fnc_server_hiveGETRANGE;
 			_arr = [];
 			if ((_response select 0) == 1 && (_response select 1) isEqualType []) then {
 				_arr = (_response select 1);
@@ -87,12 +87,12 @@ if (_this isEqualType []) then {
 			_server_vars = _arr select 3;
 			_vars = _arr select 4;
 
-			_plyrGroup = _arr select 10;
+			_playerGroup = _arr select 10;
 			_canBeRevived = _arr select 11;
 
 			_hitpoints = _vars select 11;
 
-			_deadPlayer = ["PlayerStats", _plyrUID, 0] call EPOCH_fnc_server_hiveGETBIT;
+			_deadPlayer = ["PlayerStats", _playerUID, 0] call EPOCH_fnc_server_hiveGETBIT;
 			_alreadyDead = (_deadPlayer || (_medical select 3 == 1) || (_hitpoints select 2 == 1) || (_hitpoints select 3 == 1) || (_vars select 12 >= 180));
 
 			if (_alreadyDead || _prevInstance != _instanceID || (count _location) < 3 || !(_location isEqualType [])) then {
@@ -109,15 +109,15 @@ if (_this isEqualType []) then {
 
 			// Delete any left over units with same PUID
 			{
-				if ((_x getVariable["PUID", "0"]) == _plyrUID) then {
+				if ((_x getVariable["PUID", "0"]) == _playerUID) then {
 					deleteVehicle _x;
 				};
 			} forEach allUnits;
 
 			// find existing group
-			if (_plyrGroup != "") then {
+			if (_playerGroup != "") then {
 				{
-					if ((_x getVariable["GROUP", ""]) == _plyrGroup) exitWith{
+					if ((_x getVariable["GROUP", ""]) == _playerGroup) exitWith{
 						_group = group _x;
 					};
 				} forEach playableUnits;
@@ -263,48 +263,48 @@ if (_this isEqualType []) then {
 				// Load inventory + defaults END
 
 				// Final Push
-				if (isNull _plyr) then {
+				if (isNull _player) then {
 					deleteVehicle _newPlyr;
-					diag_log "DEBUG: _plyr object was null reject connection";
+					diag_log "DEBUG: _player object was null reject connection";
 				} else {
 
 					_reject = false;
 
-					if (_plyrGroup != "") then {
-						_response = ["Group", _plyrGroup] call EPOCH_fnc_server_hiveGETRANGE;
+					if (_playerGroup != "") then {
+						_response = ["Group", _playerGroup] call EPOCH_fnc_server_hiveGETRANGE;
 						_found = false;
 						if ((_response select 0) == 1 && (_response select 1) isEqualType [] && !((_response select 1) isEqualTo[])) then {
 							_contentArray = _response select 1;
-							_found = _plyrGroup == _plyrUID;
+							_found = _playerGroup == _playerUID;
 							if (!_found) then {
 									{
-										if (_x select 0 == _plyrUID) exitWith{
+										if (_x select 0 == _playerUID) exitWith{
 											_found = true;
 										};
 									}forEach(_contentArray select 4);
 							};
 							if (!_found) then {
 									{
-										if (_x select 0 == _plyrUID) exitWith{
+										if (_x select 0 == _playerUID) exitWith{
 											_found = true;
 										};
 									}forEach(_contentArray select 3);
 							};
 							if (_found) then {
 								// send group data to player
-								[["groupUpdate", _contentArray], _plyrNetID] call EPOCH_sendPublicVariableClient;
-								_newPlyr setVariable["GROUP", _plyrGroup];
+								[["groupUpdate", _contentArray], _playerNetID] call EPOCH_sendPublicVariableClient;
+								_newPlyr setVariable["GROUP", _playerGroup];
 							};
 						};
 
 						if (!_found) then {
-							_plyrGroup = "";
+							_playerGroup = "";
 						};
-						diag_log format["DEBUG (Load Player) Set Group: %1", _plyrGroup];
+						diag_log format["DEBUG (Load Player) Set Group: %1", _playerGroup];
 					};
 
 
-					_newPlyr setVariable["PUID", _plyrUID];
+					_newPlyr setVariable["PUID", _playerUID];
 
 					if !(_vars isEqualTo[]) then {
 						_newPlyr setVariable["VARS", _vars];
@@ -317,20 +317,20 @@ if (_this isEqualType []) then {
 					if (!_canBeRevived) then {
 						_newPlyr setVariable["REVIVE", _canBeRevived]
 					};
-					[_plyrNetID, _plyrUID, [_newPlyr, _vars, _currWeap, loadAbs _newPlyr, _plyrGroup, _canBeRevived, _newPlyr call EPOCH_server_setPToken]] call EPOCH_server_pushPlayer;
+					[_playerNetID, _playerUID, [_newPlyr, _vars, _currWeap, loadAbs _newPlyr, _playerGroup, _canBeRevived, _newPlyr call EPOCH_server_setPToken]] call EPOCH_server_pushPlayer;
 
 					_newPlyr setVariable["SETUP", true, true];
 				};
 			} else {
-				diag_log format["LOGIN FAILED UNIT NULL: %1 [%2|%3]", _plyr, _group, count allgroups];
+				diag_log format["LOGIN FAILED UNIT NULL: %1 [%2|%3]", _player, _group, count allgroups];
 			};
 		};
 	};
 };
 
 if (_reject) then {
-	diag_log format ["DEBUG PLAYER NOT SETUP OR INVAILD: %1", _plyr];
-	true remoteExec ['EPOCH_client_rejectPlayer',_plyr];
+	diag_log format ["DEBUG PLAYER NOT SETUP OR INVAILD: %1", _player];
+	true remoteExec ['EPOCH_client_rejectPlayer',_player];
 };
 
 true

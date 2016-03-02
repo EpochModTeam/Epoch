@@ -1,15 +1,21 @@
 /*
-Building Remove
+	Author: Aaron Clark - EpochMod.com
 
-Epoch Mod - EpochMod.com
-All Rights Reserved.
+    Contributors:
+
+	Description:
+    Remove Building
+
+    Licence:
+    Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
+
+    Github:
+    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_server/compile/epoch_bases/EPOCH_server_removeBUILD.sqf
 */
-private["_vehSlot", "_building", "_player", "_gwh", "_wepsItemsCargo", "_magsAmmoCargo", "_objTypes", "_objQty", "_magazine", "_weapon", "_suppressor", "_laser", "_optics", "_arrCount", "_magazineName", "_magazineSize", "_qty", "_objType", "_inventory", "_posWH", "_nearbyWH", "_removeParts", "_isTemporary", "_storageSlot"];
+private["_vehSlot", "_gwh", "_wepsItemsCargo", "_magsAmmoCargo", "_objTypes", "_objQty", "_magazine", "_weapon", "_suppressor", "_laser", "_optics", "_arrCount", "_magazineName", "_magazineSize", "_qty", "_objType", "_inventory", "_posWH", "_nearbyWH", "_removeParts", "_isTemporary", "_storageSlot"];
+params ["_building","_player","_token"];
 
-_building = _this select 0;
-_player = _this select 1;
-
-if !([_player, _this select 2] call EPOCH_server_getPToken) exitWith{};
+if !([_player, _token] call EPOCH_server_getPToken) exitWith{};
 if (isNull _building) exitWith{};
 if (_player distance _building > 20) exitWith{};
 
@@ -158,13 +164,10 @@ if (_vehSlot != -1 || _storageSlot != "ABORT" || _isTemporary == 1) then{
 				deleteVehicle _building;
 			};
 
-
 			// Normal config based payout
 			{
 				_gwh addMagazineCargoGlobal[_x select 0, _x select 1];
 			} forEach _removeParts;
 		};
-
 	};
-
 };

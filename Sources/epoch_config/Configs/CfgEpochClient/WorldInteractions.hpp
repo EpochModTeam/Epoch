@@ -118,7 +118,7 @@ class WorldInteractions  {
     class HempFiber {
         HempFiber = 1;
     };
-    class p_fiberplant_ep1 : HempFiber {};
+    class p_fiberplant_ep1_p3d : HempFiber {};
 
     class PumpkinPatch {
         PumpkinPatch = 1;

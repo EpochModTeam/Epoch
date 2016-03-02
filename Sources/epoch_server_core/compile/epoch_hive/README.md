@@ -11,13 +11,13 @@ _Returns: Nothing_
 ```
 // get reference to player and get playerUID to use as unique key
 
-_plyrUID = getPlayerUID _playerObject;
+_playerUID = getPlayerUID _playerObject;
 
 // Fill your Array with data
 _VAL = [damage _playerObject];
 
 // Save value to database with given prefix:key
-["PlayerMYCustomKey", _plyrUID, _VAL] call EPOCH_server_hiveSET;
+["PlayerMYCustomKey", _playerUID, _VAL] call EPOCH_server_hiveSET;
 
 ```
 
@@ -33,7 +33,7 @@ _Returns: Nothing_
 
 ```
 // get reference to player and get playerUID to use as unique key
-_plyrUID = getPlayerUID _playerObject;
+_playerUID = getPlayerUID _playerObject;
 
 // string (time in seconds) the key should last.
 _expires = "2592000";  // 30 days
@@ -42,7 +42,7 @@ _expires = "2592000";  // 30 days
 _VAL = [damage _playerObject];
 
 // Save value to database with given prefix:key and expiration.
-["PlayerMYCustomKey", _plyrUID, _expires, _VAL] call EPOCH_server_hiveSETEX;
+["PlayerMYCustomKey", _playerUID, _expires, _VAL] call EPOCH_server_hiveSETEX;
 ```
 
 **EPOCH_fnc_server_hiveEXPIRE**
@@ -57,13 +57,13 @@ _Returns: Nothing_
 
 ```
 // get reference to player and get playerUID to use as unique key.
-_plyrUID = getPlayerUID _playerObject;
+_playerUID = getPlayerUID _playerObject;
 
 // string (time in seconds) the key should last.
 _expires = "2592000"; // 30 days
 
 // Set expiration on given prefix:key.
-["PlayerMYCustomKey", _plyrUID, _expires] call EPOCH_server_hiveEXPIRE; 
+["PlayerMYCustomKey", _playerUID, _expires] call EPOCH_server_hiveEXPIRE; 
 ```
 
 **EPOCH_fnc_server_hiveSETBIT**
@@ -78,7 +78,7 @@ _Returns: Nothing_
 
 ```
 // get reference to player and get playerUID to use as unique key
-_plyrUID = getPlayerUID _playerObject;
+_playerUID = getPlayerUID _playerObject;
 
 // index to get bit value
 _index = 0;
@@ -87,7 +87,7 @@ _index = 0;
 _value = 1;
 
 // Set bit at given index for prefix:key
-["PlayerMYCustomBitKey", _plyrUID, _index, _value] call EPOCH_server_hiveSETBIT;
+["PlayerMYCustomBitKey", _playerUID, _index, _value] call EPOCH_server_hiveSETBIT;
 ```
 
 **EPOCH_fnc_server_hiveGET**
@@ -102,10 +102,10 @@ _Returns: Array(Status, Array)_
 
 ```
 // get reference to player and get playerUID to use as unique key
-_plyrUID = getPlayerUID _playerObject;
+_playerUID = getPlayerUID _playerObject;
 
-// Get data using prefix:key. "PlayerMYCustomKey" is the prefix and "_plyrUID" unique key.
-_response = ["PlayerMYCustomKey", _plyrUID] call EPOCH_server_hiveGET;
+// Get data using prefix:key. "PlayerMYCustomKey" is the prefix and "_playerUID" unique key.
+_response = ["PlayerMYCustomKey", _playerUID] call EPOCH_server_hiveGET;
 
 if ((_response select 0) == 1 && (_response select 1) isEqualType []) then {
    _status = _response select 0;
@@ -126,10 +126,10 @@ _Returns: Array(Status, Array,TTL)_
 
 ```
 // get reference to player and get playerUID to use as unique key
-_plyrUID = getPlayerUID _playerObject;
+_playerUID = getPlayerUID _playerObject;
 
-// Get data and ttl using prefix:key. "PlayerMYCustomKey" is the prefix and "_plyrUID" unique key.
-_response = ["PlayerMYCustomKey", _plyrUID] call EPOCH_server_hiveGETTTL;
+// Get data and ttl using prefix:key. "PlayerMYCustomKey" is the prefix and "_playerUID" unique key.
+_response = ["PlayerMYCustomKey", _playerUID] call EPOCH_server_hiveGETTTL;
 
 if ((_response select 0) == 1 && (_response select 1) isEqualType [] && !((_response select 1) isEqualTo [])) then {
    _status = _response select 0;
@@ -152,13 +152,13 @@ _Returns: Bool(true|false)_
 
 ```
 // get reference to player and get playerUID to use as unique key
-_plyrUID = getPlayerUID _playerObject;
+_playerUID = getPlayerUID _playerObject;
 
 // index to get bit value
 _index = 0;
 
 // Get bit value with given index at prefix:key
-_return = ["PlayerMYCustomBitKey", _plyrUID, _index] call EPOCH_server_hiveGETBIT;
+_return = ["PlayerMYCustomBitKey", _playerUID, _index] call EPOCH_server_hiveGETBIT;
 
 if (_return) then {
     // do something if true
@@ -177,10 +177,10 @@ _Returns: Array(Status, Array)_
 
 ```
 // get reference to player and get playerUID to use as unique key
-_plyrUID = getPlayerUID _playerObject;
+_playerUID = getPlayerUID _playerObject;
 
-// PlayerMYCustomKey is the prefix and _plyrUID unique key
-_response = ["PlayerMYCustomKey", _plyrUID] call EPOCH_server_hiveGETRANGE;
+// PlayerMYCustomKey is the prefix and _playerUID unique key
+_response = ["PlayerMYCustomKey", _playerUID] call EPOCH_server_hiveGETRANGE;
 
 if ((_response select 0) == 1 && (_response select 1) isEqualType []) then {
    _status = _response select 0;
@@ -201,10 +201,10 @@ _Returns: Nothing_
 
 ```
 // get reference to player and get playerUID to use as unique key
-_plyrUID = getPlayerUID _playerObject;
+_playerUID = getPlayerUID _playerObject;
 
 // Remove key
-["PlayerMYCustomKey", _plyrUID] call EPOCH_server_hiveDEL;
+["PlayerMYCustomKey", _playerUID] call EPOCH_server_hiveDEL;
 ```
 
 **EPOCH_fnc_server_hiveLog**
@@ -219,8 +219,8 @@ _Returns: Nothing_
 
 ```
 // get reference to player and get playerUID to use as unique key
-_plyrUID = getPlayerUID _playerObject;
+_playerUID = getPlayerUID _playerObject;
 
 // Log to database, This data can be access via the database and can be found with the key "MyCustomLog-LOG"
-['MyCustomLog', format["%1 (%2) at %3", _playerObject, _plyrUID, getPosATL _playerObject]] call EPOCH_server_hiveLog;
+['MyCustomLog', format["%1 (%2) at %3", _playerObject, _playerUID, getPosATL _playerObject]] call EPOCH_server_hiveLog;
 ```

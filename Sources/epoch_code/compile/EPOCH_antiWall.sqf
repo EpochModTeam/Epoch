@@ -21,7 +21,7 @@ if (_unit == player) then {
 	_worldPos set[2, (_worldPos select 2) + 1];
 	_front = _worldPos;
 	_dirTo = [_vehicle, player] call BIS_fnc_dirTo;
-	_front2 = [_worldPos, (_vehicle distance player) + 1, _dirTo] call BIS_fnc_relPos;
+	_front2 = _vehicle getRelPos [(_vehicle distance player) + 1, _dirTo];
 	{
 		if (_x isKindOf "Const_All_Walls_F") exitWith{
 			player moveInAny _vehicle;

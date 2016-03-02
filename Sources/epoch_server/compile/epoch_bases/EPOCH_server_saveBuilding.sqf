@@ -1,18 +1,24 @@
 /*
-Building Save
+	Author: Aaron Clark - EpochMod.com
 
-Epoch Mod - EpochMod.com
-All Rights Reserved.
+    Contributors:
+
+	Description:
+    Building Save
+
+    Licence:
+    Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
+
+    Github:
+    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_server/compile/epoch_bases/EPOCH_server_saveBuilding.sqf
 */
-private["_objSlot", "_findnextslot", "_worldspace", "_objHiveKey", "_VAL", "_config", "_slot", "_storageObj", "_pos", "_buildClass", "_newVehicle", "_textureSlot", "_staticClass", "_vehicle", "_plyr", "_plyrUID", "_oemType"];
+private["_objSlot", "_findnextslot", "_worldspace", "_objHiveKey", "_VAL", "_config", "_slot", "_storageObj", "_pos", "_buildClass", "_newVehicle", "_textureSlot", "_staticClass", "_playerUID", "_oemType"];
+params ["_vehicle", "_player", "_token"];
 
-_vehicle =  _this select 0;
-_plyr = _this select 1;
+if (isNull _vehicle) exitWith{};
+if !([_player,_token] call EPOCH_server_getPToken) exitWith {};
 
-if (isNull _vehicle || isNull _plyr) exitWith{};
-if !([_plyr,_this select 2] call EPOCH_server_getPToken) exitWith {};
-
-_plyrUID = getPlayerUID _plyr;
+_playerUID = getPlayerUID _player;
 
 if (!isNull ropeAttachedTo _vehicle) exitWith{};
 
@@ -44,14 +50,14 @@ if (isText _config) then {
 				_storageObj setVariable["EPOCH_Locked", false, true];
 			};
 
-			_storageObj setVariable["STORAGE_OWNERS", [_plyrUID]];
+			_storageObj setVariable["STORAGE_OWNERS", [_playerUID]];
 
 			_storageObj setVariable["STORAGE_SLOT", _slot, true];
 
 			_storageObj call EPOCH_server_save_storage;
 			_storageObj call EPOCH_server_storageInit;
 
-			diag_log format["STORAGE: %1 created storage %2 at %3 with slot %4", _plyrUID, _staticClass, _vehiclePos, _slot];
+			diag_log format["STORAGE: %1 created storage %2 at %3 with slot %4", _playerUID, _staticClass, _vehiclePos, _slot];
 		};
 
 	} else {
@@ -74,8 +80,8 @@ if (isText _config) then {
 
 			if (_objSlot != -1) then {
 				_newVehicle = [_vehicle, false] call EPOCH_server_simulSwap;
-				_newVehicle setVariable["BUILD_OWNER", _plyrUID, true];
-				_newVehicle call EPOCH_fnc_saveBuilding;
+				_newVehicle setVariable["BUILD_OWNER", _playerUID, true];
+				_newVehicle call EPOCH_saveBuilding;
 			};
 
 		} else {

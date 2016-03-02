@@ -44,10 +44,9 @@ _skn_displayAddEHChecks = [_skn_addEHConfig, "checks",[]] call EPOCH_fnc_returnC
 
 _skn_addEHArray = [];
 {
-	_code = [_skn_addEHConfig, _x,""] call EPOCH_fnc_returnConfigEntry;
+	_code = ["CfgEpochClient", _x, ""] call EPOCH_fnc_returnConfigEntryV2;
 	_skn_addEHArray pushBack [_x,_code,(_code != "")];
 } forEach _skn_displayAddEHChecks;
-
 
 _serverSettingsConfig = configFile >> "CfgEpochServer";
 _skn_enableAntihack = [_serverSettingsConfig, "antihack_Enabled", true] call EPOCH_fnc_returnConfigEntry;
@@ -129,37 +128,6 @@ if (_index != -1) then{
 _skn_AH_rndVarVehicle = _skn_rndVA deleteAt 0;
 _skn_AH_rndVarPlayer  = _skn_rndVA deleteAt 0;
 
-EPOCH_serverCommand = compileFinal ("
-switch (_this select 0) do {
-		case 'shutdown': { 'epochserver' callExtension '991' };
-		case 'message': { 'epochserver' callExtension format['901|%1', _this select 1] };
-		case 'lock': { 'epochserver' callExtension '931' };
-		case 'unlock': { 'epochserver' callExtension '930' };
-		case 'kick': {
-			_playerUID = _this select 1;
-			if (_playerUID isEqualType objNull) then{
-				if (!isNull(_playerUID)) then{
-					_playerUID = getPlayerUID _playerUID;
-				};
-			};
-			if (_playerUID != '') then{
-				'epochserver' callExtension format['911|%1|%2', _playerUID, _this select 2];
-			};
-		};
-		case 'ban': {
-			_playerUID = _this select 1;
-			if (_playerUID isEqualType objNull) then{
-				if (!isNull(_playerUID)) then{
-					_playerUID = getPlayerUID _playerUID;
-				};
-			};
-			if (_playerUID != '') then{
-				'epochserver' callExtension format['921|%1|%2|%3', _playerUID, _this select 2, _this select 3];
-			};
-		};
-	};
-");
-
 EPOCH_server_getVToken = compileFinal ("_this getVariable ['"+_skn_AH_rndVarVehicle+"',false]");
 EPOCH_server_setVToken = compileFinal ("_this setVariable ['"+_skn_AH_rndVarVehicle+"',true];true");
 EPOCH_server_getPToken = compileFinal ("private['_ret','_var'];_ret = false;if ((_this select 0) isEqualType objNull)then{if (!isNull(_this select 0))then{_var=(_this select 0) getVariable '"+_skn_AH_rndVarPlayer+"';if (!isNil '_var') then {_ret= _var==(_this select 1)}}};if(!_ret)then{['kick',(_this select 0),'Token Check Failed'] call EPOCH_serverCommand};_ret");
@@ -185,7 +153,6 @@ _skn_AH_Code_CB		 = _skn_rndVA deleteAt 0;
 _skn_AH_Ban			 = _skn_rndVA deleteAt 0;
 _skn_AH_rndVar		  = _skn_rndVA deleteAt 0;
 _skn_doKickBan		  = _skn_PVSPrefix + (_skn_rndVA deleteAt 0);
-
 
 _skn_server_getRealTime = _skn_rndVA deleteAt 0;
 //ADMIN STUFF:
@@ -1211,12 +1178,12 @@ call compile ("'"+_skn_doAdminRequest+"' addPublicVariableEventHandler {
 					clearItemCargoGlobal	  _vehObj;
 					_vehObj lock true;
 
-					_plyrUID = getPlayerUID _target;
-					_plyrGroup = _target getVariable['GROUP', ''];
+					_playerUID = getPlayerUID _target;
+					_playerGroup = _target getVariable['GROUP', ''];
 
-					_lockOwner = _plyrUID;
-					if (_plyrGroup != '') then {
-						_lockOwner = _plyrGroup;
+					_lockOwner = _playerUID;
+					if (_playerGroup != '') then {
+						_lockOwner = _playerGroup;
 					};
 
 					_vehLockHiveKey = format['%1:%2', (call EPOCH_fn_InstanceID), _slot];
@@ -1529,8 +1496,11 @@ _skn_admincode = compileFinal ("
 	};
 	"+_skn_spawnLoot+" = {
 		_lootLoc = getPosASL player;
-		_lootClasses = (configFile >> 'CfgBuildingLootPos') call Bis_fnc_getCfgSubClasses;
-		_lootClasses = _lootClasses - ['Default'];
+		_masterConfig = 'CfgBuildingLootPos' call EPOCH_returnConfig;
+
+		_lootClasses = [];
+		_lootClassesIgnore = ['Default'];
+		'_cN = configName _x;if !(_cN in _lootClassesIgnore)then{_lootClasses pushBack _cN};' configClasses _masterConfig;
 
 		_objects = nearestObjects[_lootLoc, _lootClasses, _this];
 
@@ -2125,7 +2095,7 @@ _skn_admincode = compileFinal ("
 			_unsortedName pushBack (name _x);
 		}forEach _unsorted;
 
-		_alphabetically = _unsortedName call BIS_fnc_sortAlphabetically;
+		_alphabetically = _unsortedName sort true;
 		{
 			{
 				if (name _x == (_alphabetically select 0)) exitWith {

@@ -1,18 +1,25 @@
 /*
-Building - Unsupported building check
+	Author: Aaron Clark - EpochMod.com
 
-Epoch Mod - EpochMod.com
-All Rights Reserved.
+    Contributors:
+
+	Description:
+    Building - Unsupported building check
+
+    Licence:
+    Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
+
+    Github:
+    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_server/compile/epoch_bases/EPOCH_server_unsuppported.sqf
 */
-
 private["_worldspace", "_newObj", "_class", "_objSlot", "_config", "_isSupported", "_lastPosition", "_currentPosition", "_objectPos"];
 
 if !(isNil "EPOCH_unsupportedCheckRunning") exitWith{ diag_log "UnsupportedCheck: Already running aborted"};
 EPOCH_unsupportedCheckRunning = true;
 
 // Check unsupported
-_start = diag_tickTime; 
-_simulatedCount = 0; 
+_start = diag_tickTime;
+_simulatedCount = 0;
 _stableCount = 0;
 {
 	if (!isNull _x) then {
@@ -33,14 +40,14 @@ _stableCount = 0;
 				if (_objSlot != -1) then {
 					_vDir = vectordir _x;
 					_vUP = vectorup _x;
-					_plyrUID = _x getVariable["BUILD_OWNER", "-1"];
+					_playerUID = _x getVariable["BUILD_OWNER", "-1"];
 					_slot = _x getVariable["EPOCH_secureStorage", "-1"];
 					deleteVehicle _x;
 					_newObj = createVehicle[_class, _objectPos, [], 0, "CAN_COLLIDE"];
 					_newObj setVariable["BUILD_SLOT", _objSlot, true];
 					_newObj setVectorDirAndUp[_vDir, _vUP];
 					_newObj setposASL _objectPos;
-					_newObj setVariable["BUILD_OWNER", _plyrUID, true];
+					_newObj setVariable["BUILD_OWNER", _playerUID, true];
 					_newObj setVariable["EPOCH_secureStorage", _slot];
 					_newObj setVelocity[0, 0, -1];
 					_simulatedCount = _simulatedCount + 1;

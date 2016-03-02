@@ -12,7 +12,6 @@
     Github:
     https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_code/init/client_init.sqf
 */
-//Variables
 EPOCH_CraftingItem = "";
 EPOCH_ESP_TARGETS = [];
 EPOCH_ESPMAP_TARGETS = [];
@@ -57,9 +56,9 @@ EPOCH_nearestLocations = [];
 onEachFrame EPOCH_onEachFrame;
 
 EPOCH_LastAirDrop = time;
-EPOCH_AirDropCheck = getNumber(missionConfigFile >> "CfgEpochAirDrop" >> "AirDropFreq");
+EPOCH_AirDropCheck = getNumber(getMissionConfig "CfgEpochAirDrop" >> "AirDropFreq");
 if(EPOCH_AirDropCheck < 120)then{EPOCH_AirDropCheck = 120;};
-EPOCH_AirDropChance = getNumber(missionConfigFile >> "CfgEpochAirDrop" >> "AirDropChance");
+EPOCH_AirDropChance = getNumber(getMissionConfig "CfgEpochAirDrop" >> "AirDropChance");
 if(EPOCH_AirDropChance < 0)then{EPOCH_AirDropChance = 101;EPOCH_AirDropCheck = 99999;};
 
 EPOCH_droneRndChance = 100;

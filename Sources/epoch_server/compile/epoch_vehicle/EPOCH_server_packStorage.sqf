@@ -1,15 +1,15 @@
 _unit = _this select 0;
-_plyr = _this select 1;
+_player = _this select 1;
 
-if !([_plyr, _this select 2] call EPOCH_server_getPToken) exitWith{};
+if !([_player, _this select 2] call EPOCH_server_getPToken) exitWith{};
 if (isNull _unit) exitWith{};
-if (_plyr distance _unit > 20) exitWith{};
+if (_player distance _unit > 20) exitWith{};
 
 _class = typeOf _unit;
 if (_class isKindOf 'Constructions_lockedstatic_F') then {
 
 	_owners = _unit getVariable["STORAGE_OWNERS", []];
-	if ((getPlayerUID _plyr) in _owners) then {
+	if ((getPlayerUID _player) in _owners) then {
 
 		_posWH = getPosATL _unit;
 
@@ -31,7 +31,7 @@ if (_class isKindOf 'Constructions_lockedstatic_F') then {
 			getItemCargo _unit
 		];
 
-		[_unit, _plyr] call EPOCH_server_save_killedStorage;
+		[_unit, _player] call EPOCH_server_save_killedStorage;
 		deleteVehicle _unit;
 
 		_gwh = createVehicle["groundWeaponHolder", _posWH, [], 0, "CAN_COLLIDE"];

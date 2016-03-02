@@ -4,13 +4,13 @@ Player Death
 Epoch Mod - EpochMod.com
 All Rights Reserved.
 */
-private ["_playerObj","_pos","_veh","_triggerType","_playerName","_bankBalance","_bankData","_response","_killer","_plyrUID","_cIndex","_vars","_current_crypto"];
+private ["_playerObj","_pos","_veh","_triggerType","_playerName","_bankBalance","_bankData","_response","_killer","_playerUID","_cIndex","_vars","_current_crypto"];
 _playerObj = _this select 0;
 _killer = _this select 1;
 
-// handle token check and isnull for _plyr
+// handle token check and isnull for _player
 if !([_playerObj, _this select 3] call EPOCH_server_getPToken) exitWith{};
-_plyrUID = getPlayerUID _playerObj;
+_playerUID = getPlayerUID _playerObj;
 _pos = getposATL _playerObj;
 
 if (_playerObj != _killer) then {
@@ -28,7 +28,7 @@ if (_playerObj != _killer) then {
 		_playerName = toString (_this select 2);
 	};
 
-	['deathlog', format['%1 (%2) Killed By %3 (%4) with weapon %5 from %6m at %7', _playerName, _plyrUID, name _killer, getPlayerUID _killer, currentWeapon _killer, _playerObj distance _killer, _pos]] call EPOCH_fnc_server_hiveLog;
+	['deathlog', format['%1 (%2) Killed By %3 (%4) with weapon %5 from %6m at %7', _playerName, _playerUID, name _killer, getPlayerUID _killer, currentWeapon _killer, _playerObj distance _killer, _pos]] call EPOCH_fnc_server_hiveLog;
 };
 
 // get vars array and current Crypto value
@@ -46,7 +46,7 @@ if (_current_crypto > 0) then{
 
 // death cost
 if (EPOCH_cloneCost > 0) then {
-	_response = ["Bank", _plyrUID] call EPOCH_fnc_server_hiveGETRANGE;
+	_response = ["Bank", _playerUID] call EPOCH_fnc_server_hiveGETRANGE;
 	if ((_response select 0) == 1 && (_response select 1) isEqualType []) then {
 		_bankData = _response select 1;
 		_bankBalance = 0;
@@ -56,6 +56,6 @@ if (EPOCH_cloneCost > 0) then {
 		};
 
 		_bankBalance = _bankBalance - EPOCH_cloneCost;
-		["Bank", _plyrUID, EPOCH_expiresBank, [_bankBalance]] call EPOCH_fnc_server_hiveSETEX;
+		["Bank", _playerUID, EPOCH_expiresBank, [_bankBalance]] call EPOCH_fnc_server_hiveSETEX;
 	};
 };

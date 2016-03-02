@@ -1,11 +1,8 @@
 private["_target", "_eventArray", "_triggerType", "_nearPlayers", "_posWH", "_item", "_config", "_object", "_player", "_payout", "_type"];
-
-_object = _this select 0;
-_type = _this select 1;
-_player = _this select 2;
+params ["_object","_type","_player","_token"];
 
 if (isNull _object) exitWith{};
-if !([_player, _this select 3] call EPOCH_server_getPToken) exitWith{};
+if !([_player, _token] call EPOCH_server_getPToken) exitWith{};
 
 if (!(_object isKindOf "All")) then {
 

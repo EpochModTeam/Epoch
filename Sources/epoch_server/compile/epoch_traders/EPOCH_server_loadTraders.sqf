@@ -20,6 +20,7 @@ _storedVehicleLimit = [_serverSettingsConfig, "storedVehicleLimit", 20] call EPO
 EPOCH_storedVehicleCount = 0;
 
 for "_i" from 0 to _this do {
+	_traderSlotIndex = EPOCH_TraderSlots pushBack str(_i);
 
 	// Spawn static traders first
 	if (_staticTradersArrCount > 0 && _i < _staticTradersArrCount) then {
@@ -100,7 +101,7 @@ for "_i" from 0 to _this do {
 
 		_agent setVariable ["AI_ITEMS", _arr, true];
 
-		EPOCH_TraderSlots set [_i, 1];
+		EPOCH_TraderSlots deleteAt _traderSlotIndex;
 
 		if (EPOCH_SHOW_TRADERS) then {
 			_marker = createMarker [str(_agent), (_pos)];
@@ -208,25 +209,17 @@ for "_i" from 0 to _this do {
 				};
 				_agent setVariable ["AI_ITEMS", _arr, true];
 
-				EPOCH_TraderSlots set [_i, 1];
+				EPOCH_TraderSlots deleteAt _traderSlotIndex;
 
 				if (EPOCH_SHOW_TRADERS) then {
 					_marker = createMarker [str(_agent), (_pos)];
 					_marker setMarkerShape "ICON";
 					_marker setMarkerType "mil_dot";
 					_marker setMarkerColor "ColorBrown";
-
 					_agent setVariable["MARKER_REF", _marker];
 				};
-			}
-			else {
-				EPOCH_TraderSlots set [_i, 0];
 			};
-		}
-		else {
-			EPOCH_TraderSlots set [_i, 0];
 		};
 	};
 };
-
 true

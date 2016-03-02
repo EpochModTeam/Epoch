@@ -1,12 +1,12 @@
 private ["_vehicle","_value"];
 _vehicle = _this select 0;
 _value = _this select 1;
-_plyr = _this select 2;
+_player = _this select 2;
 if (isNull _vehicle) exitWith{};
 
-if !([_plyr,  _this select 3] call EPOCH_server_getPToken) exitWith{};
-if (_plyr distance _vehicle > 20) exitWith{};
-// if (vehicle _plyr != _plyr) exitWith{};
+if !([_player,  _this select 3] call EPOCH_server_getPToken) exitWith{};
+if (_player distance _vehicle > 20) exitWith{};
+// if (vehicle _player != _player) exitWith{};
 
 if ((_value select 0) isEqualTo "ALL") then {
 	_vehicle setDamage 0;

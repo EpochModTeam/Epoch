@@ -1,10 +1,7 @@
 private ["_class","_pos","_dir","_object","_whConfig","_type","_lootClasses","_player","_maxLoot","_triggerType","_eventArray","_animated","_config"];
+params ["_object","_player","_token"];
+if !([_player, _token] call EPOCH_server_getPToken) exitWith{};
 
-_object = _this select 0;
-
-_player = _this select 1;
-
-if !([_player,  _this select 2] call EPOCH_server_getPToken) exitWith{};
 if (isNull _object) exitWith{};
 if !(alive _object) exitWith{};
 if (_player distance _object > 20) exitWith{};

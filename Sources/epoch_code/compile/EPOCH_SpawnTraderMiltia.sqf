@@ -21,15 +21,11 @@ for "_i" from 1 to 3 step 1 do
 {
 	_startPos = [];
     while {count _startPos < 1} do {
-    _garrCount = 0;
-    _rndHouse = selectRandom _nrBuilds;
-
-        while {format ["%1", _rndHouse buildingPos (_garrCount)] != "[0,0,0]" } do {
-        _garrCount = _garrCount + 1;
-        };
-
-        if (_garrCount > 0) then {
-            _startPos = _rndHouse buildingPos (floor random _garrCount);
+    	_garrCount = 0;
+    	_rndHouse = selectRandom _nrBuilds;
+		_allpositions = _rndHouse buildingPos -1;
+        if !(_allpositions isEqualTo []) then {
+            _startPos = selectRandom  _allpositions;
         };
     };
 

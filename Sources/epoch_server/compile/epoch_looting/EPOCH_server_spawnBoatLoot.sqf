@@ -1,4 +1,4 @@
-private ["_item"];
+private ["_item","_marker"];
 {
 	// 20 percent chance for loot to spawn
 	if ((random 1) <= 0.4) then {

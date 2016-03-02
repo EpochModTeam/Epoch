@@ -1,15 +1,15 @@
 _unit = _this select 0;
 _lockStatus = _this select 1;
-_plyr = _this select 2;
+_player = _this select 2;
 
-if !([_plyr, _this select 3] call EPOCH_server_getPToken) exitWith{};
+if !([_player, _this select 3] call EPOCH_server_getPToken) exitWith{};
 if (isNull _unit) exitWith{};
-if (_plyr distance _unit > 20) exitWith{};
+if (_player distance _unit > 20) exitWith{};
 
 _type = typeOf _unit;
 
-_plyrUID = getPlayerUID _plyr;
-_plyrGroup = _plyr getVariable ["GROUP",""];
+_playerUID = getPlayerUID _player;
+_playerGroup = _player getVariable ["GROUP",""];
 
 // functions
 _fnc_lock = {
@@ -32,18 +32,18 @@ if (getNumber(configFile >> "CfgVehicles" >> _type >> "isSecureStorage") == 1) t
 	if !(_unit getVariable ["EPOCH_Locked", true]) then {
 
 		// allow group members and owner access
-		if (_plyrGroup != "") then {
-			if (_plyrGroup in _owners) then {
+		if (_playerGroup != "") then {
+			if (_playerGroup in _owners) then {
 				_unit call _fnc_lock;
 			} else {
 
-				_response = ["Group", _plyrGroup] call EPOCH_fnc_server_hiveGETRANGE;
+				_response = ["Group", _playerGroup] call EPOCH_fnc_server_hiveGETRANGE;
 				if ((_response select 0) == 1 && (_response select 1) isEqualType []) then {
 					_gArray = _response select 1;
 					if (
 						{(_x select 0) in _owners}count(_gArray select 3) > 0 ||
 						{(_x select 0) in _owners}count(_gArray select 4) > 0 ||
-						_plyrUID in _owners
+						_playerUID in _owners
 					) then {
 						_unit call _fnc_lock;
 					};
@@ -51,7 +51,7 @@ if (getNumber(configFile >> "CfgVehicles" >> _type >> "isSecureStorage") == 1) t
 			};
 
 		} else {
-			if (_plyrUID in _owners) then {
+			if (_playerUID in _owners) then {
 				_unit call _fnc_lock;
 			};
 		};
@@ -60,24 +60,24 @@ if (getNumber(configFile >> "CfgVehicles" >> _type >> "isSecureStorage") == 1) t
 	} else {
 
 		// allow group members and owner access
-		if (_plyrGroup != "") then {
-			if (_plyrGroup in _owners) then {
+		if (_playerGroup != "") then {
+			if (_playerGroup in _owners) then {
 				_unit call _fnc_unlock;
 			} else {
-				_response = ["Group", _plyrGroup] call EPOCH_fnc_server_hiveGETRANGE;
+				_response = ["Group", _playerGroup] call EPOCH_fnc_server_hiveGETRANGE;
 				if ((_response select 0) == 1 && (_response select 1) isEqualType []) then {
 					_gArray = _response select 1;
 					if (
 						{(_x select 0) in _owners }count(_gArray select 3) > 0 ||
 						{(_x select 0) in _owners}count(_gArray select 4) > 0 ||
-						_plyrUID in _owners
+						_playerUID in _owners
 					) then {
 						_unit call _fnc_unlock;
 					};
 				};
 			};
 		} else {
-			if (_plyrUID in _owners) then {
+			if (_playerUID in _owners) then {
 				_unit call _fnc_unlock;
 			};
 		};

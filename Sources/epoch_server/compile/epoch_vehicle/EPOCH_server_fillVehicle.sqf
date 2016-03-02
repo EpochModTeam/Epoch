@@ -1,9 +1,9 @@
 private ["_owner","_vehicle","_value"];
 _vehicle = _this select 0;
-_plyr = _this select 2;
+_player = _this select 2;
 
-if !([_plyr, _this select 3] call EPOCH_server_getPToken) exitWith{};
-if (_plyr distance _vehicle > 20) exitWith{};
+if !([_player, _this select 3] call EPOCH_server_getPToken) exitWith{};
+if (_player distance _vehicle > 20) exitWith{};
 
 if (!isNull _vehicle) then {
 	_value = _this select 1;

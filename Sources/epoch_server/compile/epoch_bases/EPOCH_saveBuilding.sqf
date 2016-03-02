@@ -1,8 +1,16 @@
 /*
-Building Save function
+	Author: Aaron Clark - EpochMod.com
 
-Epoch Mod - EpochMod.com
-All Rights Reserved.
+    Contributors:
+
+	Description:
+    Building Save function
+
+    Licence:
+    Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
+
+    Github:
+    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_server/compile/epoch_bases/EPOCH_saveBuilding.sqf
 */
 private ["_class","_worldspace","_objHiveKey","_animPhases","_VAL","_return","_objSlot"];
 _return = false;

@@ -8,7 +8,7 @@ _display = param [0,displayNull];
 private ["_offset","_cfg","_configs","_idc","_getIDC","_mainCTRLS"];
 
 _offset = if (isServer) then {40 * GUI_GRID_W + GUI_GRID_X;} else {
-	if (getNumber (missionConfigFile >> "enableDebugConsole") > 0) then {
+	if (getNumber (getMissionConfig "enableDebugConsole") > 0) then {
 		40 * GUI_GRID_W + GUI_GRID_X;
 	} else {
 		17 * GUI_GRID_W + GUI_GRID_X;

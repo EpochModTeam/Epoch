@@ -1,10 +1,7 @@
-if !([_this select 3, _this select 4] call EPOCH_server_getPToken) exitWith{};
-
-_playerUID = _this select 0;
+params ["_playerUID","_var1","_var2","_player","_token"];
+if !([_player, _token] call EPOCH_server_getPToken) exitWith{};
 {
 	if (getPlayerUID _x == _playerUID) exitWith {
-		diag_log format ["DEBUG GROUP %1 - %2",_this,_x];
-		// send invite to player
-		[_this select 1, _this select 2] remoteExec ['EPOCH_Group_invitePlayer',_x];
+		[_var1, _var2] remoteExec ['EPOCH_Group_invitePlayer',_x];
 	};
 } forEach playableUnits;

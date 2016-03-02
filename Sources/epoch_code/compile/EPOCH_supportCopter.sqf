@@ -12,10 +12,10 @@
     Github:
     https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_code/compile/EPOCH_supportCopter.sqf
 */
-private ["_aiskill","_unit","_plyr","_grp","_arrUnits","_arrSkills","_units"];
+private ["_aiskill","_unit","_player","_grp","_arrUnits","_arrSkills","_units"];
 params ["_pos","_copter"];
 
-_plyr = player; //need to check on change owner
+_player = player; //need to check on change owner
 _unit = objNull;
 
 _grp = createGroup RESISTANCE;
@@ -48,7 +48,7 @@ for "_i" from 0 to ((count _arrUnits)-1) do {
 	
 	if (_i == 0) then {
 		_grp selectLeader _unit;
-		[_pos,_copter,_plyr,_unit] execFSM "\x\addons\a3_epoch_code\System\Group_Leader_Brain.fsm";
+		[_pos,_copter,_player,_unit] execFSM "\x\addons\a3_epoch_code\System\Group_Leader_Brain.fsm";
 	};
 };
 

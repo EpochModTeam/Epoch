@@ -31,29 +31,29 @@ if !(isNull _trader) then {
 				_dt = [_formatMsg, 0, 1, 6, 2, 0, 1] spawn bis_fnc_dynamictext;
 		};
 		case 5:	{
-				_plyrs = [];
-				_plyrsOut = [];
+				_players = [];
+				_playersOut = [];
 				_grpWith = false;
 				_msg = "Apart from you";
 				_grp = group player;
-				_plyrs = nearestObjects [player, ["Epoch_Man_base_F","Epoch_Female_base_F"], 750];
-				_plyrs = _plyrs - [player];
+				_players = nearestObjects [player, ["Epoch_Man_base_F","Epoch_Female_base_F"], 750];
+				_players = _players - [player];
 					{
 						if!(group _x == _grp)then{
-						_plyrsOut pushBack _x;
+						_playersOut pushBack _x;
 						}else{
 						_grpWith = true;
 						};
-					} forEach _plyrs;
+					} forEach _players;
 
 					if(_grpWith)then{
 					_msg = "Apart from your team and you";
 					};
 				_trdrMsg = format["%2 %1, I haven't seen anybody for a while.",name player,_msg];
 
-					if (count _plyrsOut > 0) then {
-						_plyr = selectRandom _plyrsOut;
-						_trdrMsg = format["The last person picked up by the UAV was %1.",name _plyr];
+					if (count _playersOut > 0) then {
+						_player = selectRandom _playersOut;
+						_trdrMsg = format["The last person picked up by the UAV was %1.",name _player];
 					};
 				_dt = [format["<t size='0.8' shadow='0' color='#99ffffff'>%1</t>",_trdrMsg], 0, 1, 6, 2, 0, 1] spawn bis_fnc_dynamictext;
 		};

@@ -21,7 +21,7 @@
 	Returns:
 	NOTHING
 */
-private ["_randomAIClass","_animalPos","_tryAnimalPos","_id","_animal","_animalAiTables","_plyrPos"];
+private ["_randomAIClass","_animalPos","_tryAnimalPos","_id","_animal","_animalAiTables","_playerPos"];
 
 // TODO: move static arrays to config
 if (count(player nearEntities["Animal_Base_F", 200]) >= 1) exitWith{};
@@ -29,14 +29,14 @@ if (count(player nearEntities["Animal_Base_F", 200]) >= 1) exitWith{};
 _animalAiTables = ["Sheep_random_EPOCH", "Sheep_random_EPOCH", "Goat_random_EPOCH", "Goat_random_EPOCH", "Goat_random_EPOCH", ["Cock_random_EPOCH", "Hen_random_EPOCH"], ["Cock_random_EPOCH", "Hen_random_EPOCH"], "Rabbit_EPOCH", "Rabbit_EPOCH", "Rabbit_EPOCH", "Snake_random_EPOCH", "Snake2_random_EPOCH", ["Fin_random_EPOCH", "Alsatian_Random_EPOCH"]];
 _randomAIClass = selectRandom _animalAiTables;
 _animalPos = nil;
-_plyrPos = position player;
+_playerPos = position player;
 
 if (_randomAIClass isEqualType []) then {
 	_randomAIClass = selectRandom _randomAIClass;
 };
 
 for "_i" from 1 to 3 step 1 do {
-	_tryAnimalPos = [_plyrPos, floor(random 350) + 50, floor(random 360)] call BIS_fnc_relPos;
+	_tryAnimalPos = player getRelPos [floor(random 350) + 50, floor(random 360)];
 	if!(surfaceIsWater _tryAnimalPos) exitWith {
 		_animalPos = _tryAnimalPos;
 	};

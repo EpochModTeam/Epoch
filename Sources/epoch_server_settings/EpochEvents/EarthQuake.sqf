@@ -6,11 +6,11 @@
 	Improvements and or bugfixes and other contributions are welcome via the github:
 	https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_server_settings/EpochEvents/Earthquake.sqf
 */
-private ["_marker","_minerals","_randomIndex","_item","_plyrsNearEpicenter","_position","_chance"];
+private ["_marker","_minerals","_randomIndex","_item","_playersNearEpicenter","_position","_chance"];
 _position = [epoch_centerMarkerPosition, 0, EPOCH_dynamicVehicleArea, 10, 0, 1000, 0] call BIS_fnc_findSafePos;
 if ((count _position) == 2) then{
-	_plyrsNearEpicenter = _position nearEntities[["Epoch_Male_F", "Epoch_Female_F"], 1000];
-	if !(_plyrsNearEpicenter isEqualTo[]) then{
+	_playersNearEpicenter = _position nearEntities[["Epoch_Male_F", "Epoch_Female_F"], 1000];
+	if !(_playersNearEpicenter isEqualTo[]) then{
 
 		// decrease chance with more players
 		_chance = linearConversion [1, 100, (count allPlayers), 0, 0.5, true];
@@ -19,7 +19,7 @@ if ((count _position) == 2) then{
 			{
 				// send to player
 				_position remoteExec ['EPOCH_client_earthQuake',(owner _x)];
-			}forEach _plyrsNearEpicenter;
+			}forEach _playersNearEpicenter;
 
 			_minerals = ["MineralDepositCopper_EPOCH", "MineralDepositGold_EPOCH", "MineralDepositSilver_EPOCH"];
 			_randomIndex = floor(random(count _minerals));

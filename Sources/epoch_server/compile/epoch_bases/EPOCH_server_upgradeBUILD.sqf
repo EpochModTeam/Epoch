@@ -1,17 +1,22 @@
 /*
-Building Upgrades
+	Author: Aaron Clark - EpochMod.com
 
-Epoch Mod - EpochMod.com
-All Rights Reserved.
+    Contributors:
+
+	Description:
+    Building Upgrades
+
+    Licence:
+    Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
+
+    Github:
+    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_server/compile/epoch_bases/EPOCH_server_upgradeBUILD.sqf
 */
-private["_worldspace", "_class", "_newObj", "_objHiveKey", "_VAL", "_return", "_upgrade", "_objSlot", "_objType", "_object", "_player"];
-
-_object = _this select 0;
-_player = _this select 1;
-_index = param [2,0];
+private["_worldspace", "_class", "_newObj", "_objHiveKey", "_VAL", "_return", "_upgrade", "_objSlot", "_objType"];
+params ["_object","_player",["_index",0],"_token"];
 
 if (isNull _object) exitWith{};
-if !([_player, _this select 3] call EPOCH_server_getPToken) exitWith{};
+if !([_player, _token] call EPOCH_server_getPToken) exitWith{};
 
 _objSlot = _object getVariable["BUILD_SLOT", -1];
 if (_objSlot != -1) then {
@@ -34,7 +39,7 @@ if (_objSlot != -1) then {
 		_newObj setVectorDirAndUp [(_worldspace select 1),(_worldspace select 2)];
 		_newObj setposATL _objectPos;
 
-		_newObj call EPOCH_fnc_saveBuilding;
+		_newObj call EPOCH_saveBuilding;
 	};
 } else {
 	_objType = typeOf _object;

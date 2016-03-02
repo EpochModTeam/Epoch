@@ -4,15 +4,15 @@ Player Check
 Epoch Mod - EpochMod.com
 All Rights Reserved.
 */
-private["_arr", "_dead", "_isMale", "_medical", "_apperance", "_class", "_vars", "_hitpoints", "_deadPlayer", "_response", "_plyrUID", "_plyrObj"];
+private["_arr", "_dead", "_isMale", "_medical", "_apperance", "_class", "_vars", "_hitpoints", "_deadPlayer", "_response", "_playerUID", "_playerObj"];
 
 if (_this isEqualType objNull) then {
-	_plyrObj = _this;
-	if (!isNull _plyrObj) then {
-		_plyrUID = getPlayerUID _plyrObj;
-		if (_plyrUID != "") then {
+	_playerObj = _this;
+	if (!isNull _playerObj) then {
+		_playerUID = getPlayerUID _playerObj;
+		if (_playerUID != "") then {
 
-			_response = ["Player", _plyrUID] call EPOCH_fnc_server_hiveGETRANGE;
+			_response = ["Player", _playerUID] call EPOCH_fnc_server_hiveGETRANGE;
 
 			_dead = false;
 			_isMale = true;
@@ -35,7 +35,7 @@ if (_this isEqualType objNull) then {
 				_vars = _arr select 4;
 				_hitpoints = _vars select 11;
 
-				_deadPlayer = ["PlayerStats", _plyrUID, 0] call EPOCH_fnc_server_hiveGETBIT;
+				_deadPlayer = ["PlayerStats", _playerUID, 0] call EPOCH_fnc_server_hiveGETBIT;
 
 				if (_deadPlayer || (_medical select 3 == 1) || (_hitpoints select 2 == 1) || (_hitpoints select 3 == 1) || (_vars select 12 >= 180)) then {
 					_dead = true;
@@ -43,10 +43,10 @@ if (_this isEqualType objNull) then {
 			};
 			/* true => New Char
 			   false => load old Char */
-			['_checkPlayer_PVC', _dead] remoteExec ['EPOCH_playerLoginInit',_plyrObj];
+			['_checkPlayer_PVC', _dead] remoteExec ['EPOCH_playerLoginInit',_playerObj];
 
 			if (!_dead) then { //Load old Char
-				[_plyrObj, _isMale] call EPOCH_server_loadPlayer;
+				[_playerObj, _isMale] call EPOCH_server_loadPlayer;
 			};
 		};
 	};

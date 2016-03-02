@@ -12,44 +12,51 @@
     Github:
     https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_code/compile/EPOCH_UnisexCheck.sqf
 */
-private ["_femaleVariant","_vest","_class","_config","_woman","_maleVariant","_vestItems","_mags"];
+private ["_femaleVariant","_vest","_item","_config","_woman","_maleVariant","_vestItems","_mags"];
+params ["_unit","_container","_item"];
 
-_woman = getNumber(configFile >> "CfgVehicles" >> (typeOf player) >> "woman");
-_class = _this select 2;
-_config = configfile >> "cfgweapons" >> _class;
+// check for access of a locked container
+if (_container getVariable['EPOCH_Locked', false]) then {
+	player removeItem _item;
+	// kick player
+	EPOCH_kicked = format ["%1 attempted to access a locked %2 with %3",_unit,_container,_item];
+	publicVariableServer "EPOCH_kicked";
+};
 
 _mags = (magazines player) + (handgunMagazine player);
-
 // TODO optimize
-if (_class in ["Hatchet","CrudeHatchet"]) then {
+if (_item in ["Hatchet","CrudeHatchet"]) then {
 	if !("Hatchet_swing" in _mags) then {
 		player addMagazine "Hatchet_swing";
 	};
 };
-if (_class in ["MeleeSledge","MeleeMaul","MeleeSword"]) then {
+if (_item in ["MeleeSledge","MeleeMaul","MeleeSword"]) then {
 	if !("sledge_swing" in _mags) then {
 		player addMagazine "sledge_swing";
 	};
 };
-if (_class in ["WoodClub","Plunger","MeleeRod"]) then {
+if (_item in ["WoodClub","Plunger","MeleeRod"]) then {
 	if !("stick_swing" in _mags) then {
 		player addMagazine "stick_swing";
 	};
 };
 
 //Radio Check
-if (configName(inheritsFrom(configFile >> "CfgWeapons" >> _class)) == "ItemRadio") then {
-	if (_class in(assignedItems player)) then {
-		EPOCH_equippedItem_PVS = [_class,true,player];
+if (configName(inheritsFrom(configFile >> "CfgWeapons" >> _item)) == "ItemRadio") then {
+	if (_item in(assignedItems player)) then {
+		EPOCH_equippedItem_PVS = [_item,true,player];
 	};
 };
 
+// Unisex vest check
+_woman = getNumber(configFile >> "CfgVehicles" >> (typeOf player) >> "woman");
+_config = configfile >> "cfgweapons" >> _item;
 if (_woman == 1) then {
 	if (isClass _config) then {
 		if (isText (_config >> "femaleVest")) then {
 			_femaleVariant = getText (_config >> "femaleVest");
 			_vest = vest player;
-			if (_class == _vest) then {
+			if (_item == _vest) then {
 				if (_femaleVariant != _vest) then {
 					// get items in existing vest
 					_vestItems = vestItems player;
@@ -68,7 +75,7 @@ if (_woman == 1) then {
 		if (isText (_config >> "maleVest")) then {
 			_maleVariant = getText (_config >> "maleVest");
 			_vest = vest player;
-			if (_class == _vest) then {
+			if (_item == _vest) then {
 				if (_maleVariant != _vest) then {
 					removeVest player;
 					player addVest _maleVariant;

@@ -33,9 +33,9 @@ switch _mode do {
 
 		//--- Respawn button
 		_buttonRespawn = _display displayctrl 1010;
-		_cfgRespawnButton = missionconfigfile >> "respawnButton";
+		_cfgRespawnButton = getMissionConfig "respawnButton";
 		_respawnButton = if (isnumber _cfgRespawnButton) then {getnumber _cfgRespawnButton} else {-1};
-		_cfgRespawnType = missionconfigfile >> "respawn";
+		_cfgRespawnType = getMissionConfig "respawn";
 		_respawnType = if (istext _cfgRespawnType) then {
 			 ["none","bird","instant","base","group","side"] find (tolower gettext _respawnType);
 		} else {

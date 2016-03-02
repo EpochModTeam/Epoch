@@ -57,39 +57,11 @@ if !(false call EPOCH_crafting_checkResources) exitWith {};
 		_nearByBench = nearestObjects [position player,["WorkBench_EPOCH"],3];
 
 		if (!(_nearByBench isEqualTo []) && (_needBench > 0)) then { //adds item on top of bench if bench was required
-
 			(_nearByBench select 0) addItemCargoGlobal [_item,1];
-
 		} else {
-			if (player canAdd _item) then { //Puts in a weaponholder nearby if can't add to inventory
-
-				player addItem _item; //adds any type of item, but does not assign
-
-			} else {
-
-				_wH = objNull;
-				_nearByHolder = nearestObjects [position player,["groundWeaponHolder"],3]; //TODO: adjust best range to reuse existing holders
-
-				if (_nearByHolder isEqualTo []) then {
-
-					_wHPos = player modelToWorld [0,1,0];
-
-					if (surfaceIsWater _wHPos) then { //should work anywhere, even on water
-
-						_wHPos = ASLToATL _wHPos;
-
-					};
-
-					_wH = createVehicle ["groundWeaponHolder",_wHPos, [], 0, "CAN_COLLIDE"];
-
-				} else {
-
-					_wH = _nearByHolder select 0;
-				};
-
-				_wh addItemCargoGlobal [_item,1];
-			};
+			_item call EPOCH_fnc_addItemOverflow;
 		};
+
 		call EPOCH_crafting_LB_click;
 	};
 	call EPOCH_crafting_LB_defaults;

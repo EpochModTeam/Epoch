@@ -18,7 +18,7 @@ class cfgFunctions
 				file = "epoch_code\compile\functions\EPOCH_fn_returnConfigEntryV2.sqf";
 			};
 			class isAny {
-				file = "epoch_code\compile\both\EPOCH_isAny.sqf"
+				file = "epoch_code\compile\both\EPOCH_isAny.sqf";
 			};
 		};
 		class Client
