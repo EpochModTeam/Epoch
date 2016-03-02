@@ -128,7 +128,7 @@ class CfgServerFunctions
 		};
 		class epoch_antagonists {
 			class server_triggerEvent {};
-			class server_handle_say {};
+			class server_handle_say3D {};
 			class server_handle_switchMove {};
 			class server_handle_sapperObjs {};
 		};
