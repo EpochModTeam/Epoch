@@ -20,6 +20,9 @@ class cfgFunctions
 			class isAny {
 				file = "epoch_code\compile\both\EPOCH_isAny.sqf";
 			};
+			class compiler {
+				file = "epoch_code\compile\both\EPOCH_compiler.sqf";
+			};
 		};
 		class Client
 		{
