@@ -65,3 +65,8 @@ disableRandomization[] = {"All"};
 #include "Configs\CfgClientFunctions.hpp"
 #include "Configs\CfgFunctions.hpp"
 #include "Configs\CfgRemoteExec.hpp"
+
+class CfgEpochBuild
+{
+ 	#include "build.hpp"
+};
