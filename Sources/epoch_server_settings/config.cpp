@@ -22,6 +22,7 @@ class CfgPatches {
 		requiredVersion = 0.1;
 		epochVersion = "0.3.8.0";
 		requiredAddons[] = {};
+		#include "build.hpp"
 	};
 };
 

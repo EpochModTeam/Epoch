@@ -20,6 +20,7 @@ class CfgPatches {
 		weapons[] = {};
 		requiredVersion = 0.1;
 		requiredAddons[] = {};
+		#include "build.hpp"
 	};
 };
 class cfgFunctions

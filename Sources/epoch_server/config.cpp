@@ -10,6 +10,7 @@ class CfgPatches {
 		weapons[] = {};
 		requiredVersion = 0.1;
 		requiredAddons[] = {"A3_epoch_server_core","A3_epoch_config","A3_server_settings"};
+		#include "build.hpp"
 	};
 };
 class cfgFunctions
