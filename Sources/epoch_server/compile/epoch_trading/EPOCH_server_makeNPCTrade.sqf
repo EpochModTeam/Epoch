@@ -1,14 +1,19 @@
 /*
-NPC trade mech
+	Author: Aaron Clark - EpochMod.com
 
-Epoch Mod - EpochMod.com
-All Rights Reserved.
+    Contributors:
+
+	Description:
+    NPC trade mech
+
+    Licence:
+    Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
+
+    Github:
+    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_server/compile/epoch_trading/EPOCH_server_makeNPCTrade.sqf
 */
-private["_vehicleSold", "_vehicleBought", "_vehHiveKey", "_VAL", "_vehSlot", "_vehicle", "_vehicles", "_trader", "_item", "_playerNetID", "_player", "_itemWorth", "_position", "_tmpposition", "_textures", "_textureSelectionIndex", "_selections", "_colors", "_color", "_count", "_helipad", "_slot", "_vehObj", "_config", "_makeTradeIn", "_tradeTotal", "_current_crypto", "_tradeQtyTotal", "_currQty", "_qtyIndex", "_itemQty", "_foundSmoke", "_objOwner", "_lockOwner", "_playerGroup", "_itemTax", "_tax", "_objHiveKey", "_cIndex", "_aiItems", "_itemClasses", "_itemQtys", "_itemsIn", "_itemsOut", "_returnIn", "_returnOut", "_smoke", "_vehLockHiveKey", "_colorsConfig", "_vars", "_current_cryptoRaw"];
-_trader = _this select 0;
-_itemsIn = _this select 1;
-_itemsOut = _this select 2;
-_player = _this select 3;
+private ["_vehicleSold","_vehHiveKey","_VAL","_makeTradeIn","_vehSlot","_playerNetID","_vehicle","_vehicles","_tradeTotal","_current_crypto","_tradeQtyTotal","_currQty","_qtyIndex","_itemWorth","_item","_itemQty","_position","_foundSmoke","_objOwner","_tmpposition","_lockOwner","_helipad","_helipads","_smoke","_vehicleBought","_playerGroup","_vehObj","_final_location","_group","_wp","_wHPos","_wH","_nearByHolder","_itemTax","_tax","_objHiveKey","_playerCryptoLimit","_config","_cIndex","_vars","_current_cryptoRaw","_aiItems","_itemClasses","_itemQtys","_returnIn","_returnOut","_slot"];
+params ["_trader","_itemsIn","_itemsOut","_player","_token"];
 
 _vehicleSold = false;
 _vehicleBought = false;
@@ -18,7 +23,7 @@ _returnOut = [];
 _final_location = [];
 
 if (isNull _trader) exitWith{};
-if !([_player,_this select 4] call EPOCH_server_getPToken) exitWith {};
+if !([_player,_token] call EPOCH_server_getPToken) exitWith {};
 if (_player distance _trader > 20) exitWith{};
 
 _slot = _trader getVariable["AI_SLOT", -1];
@@ -34,8 +39,6 @@ if (_slot != -1) then {
 	_vars = _player getVariable["VARS", [] + EPOCH_defaultVars_SEPXVar];
 	_current_crypto = _vars select _cIndex;
 	_current_cryptoRaw = _current_crypto;
-
-	//diag_log format["_current_crypto: %1 _cIndex:%2 %3", _current_crypto, _cIndex, _this];
 
 	// SELL ITEMS TO TRADER
 	_aiItems = _trader getVariable["AI_ITEMS", [[], []]];
@@ -103,34 +106,23 @@ if (_slot != -1) then {
 					_current_crypto = _current_crypto + _itemWorth;
 					_tradeQtyTotal = _tradeQtyTotal + _itemQty;
 				};
-				//diag_log format["_itemClasses: %1 _itemQtys:%2", _itemClasses, _itemQtys];
 			};
 		};
 	} forEach _itemsIn;
 
-
-
 	{
 		_item = _x;
 		_itemQty = 1;
-
-		 //diag_log format["_item: %1", _item];
 		if (isClass (_config >> _item)) then{
 			_itemWorth = getNumber(_config >> _item >> "price");
 			_itemTax = getNumber(_config >> _item >> "tax");
 			_tax = _itemWorth * (EPOCH_taxRate + _itemTax);
 			_itemWorth = ceil(_itemWorth + _tax);
-
-			//diag_log format["_itemWorth: %1", _itemWorth];
-
 			_qtyIndex = _itemClasses find _item;
 			// add items to array
 			if (_qtyIndex != -1) then {
 
 				_currQty = _itemQtys select _qtyIndex;
-
-				//diag_log format["_currQty: %1 >= %2", _currQty, _itemQty];
-
 				if (_currQty >= _itemQty) then {
 
 					if (_current_crypto >= _itemWorth) then {
@@ -163,8 +155,6 @@ if (_slot != -1) then {
 											}
 										} forEach _helipad;
 									};
-
-									// diag_log format["DEBUG: helipad: %1", _helipad];
 
 									if !(_helipads isEqualTo[]) then {
 
@@ -211,11 +201,7 @@ if (_slot != -1) then {
 									EPOCH_VehicleSlots = EPOCH_VehicleSlots - [_vehslot];
 									EPOCH_VehicleSlotCount = count EPOCH_VehicleSlots;
 									publicVariable "EPOCH_VehicleSlotCount";
-
-
-
 									_vehicleBought = true;
-
 
 									// Group access
 									_lockOwner = getPlayerUID _player;
@@ -244,29 +230,18 @@ if (_slot != -1) then {
 						} else {
 
 							if (_item isKindOf "Bag_Base") then {
-								// add to players back
-								/*
-								if (backpack _player == "") then {
-									_player addBackpackGlobal _item;
-									diag_log "backpack added to players back";
+								_wH = objNull;
+								_nearByHolder = nearestObjects [position _player,["groundWeaponHolder"],3];
+								if (_nearByHolder isEqualTo []) then {
+								  _wHPos = _player modelToWorld [0,1,0];
+								  if (surfaceIsWater _wHPos) then {
+									_wHPos = ASLToATL _wHPos;
+								  };
+								  _wH = createVehicle ["groundWeaponHolder",_wHPos, [], 0, "CAN_COLLIDE"];
 								} else {
-								*/
-									//diag_log "backpack added to players feet";
-									// add to the ground
-									_wH = objNull;
-									_nearByHolder = nearestObjects [position _player,["groundWeaponHolder"],3];
-									if (_nearByHolder isEqualTo []) then {
-									  _wHPos = _player modelToWorld [0,1,0];
-									  if (surfaceIsWater _wHPos) then {
-										_wHPos = ASLToATL _wHPos;
-									  };
-									  _wH = createVehicle ["groundWeaponHolder",_wHPos, [], 0, "CAN_COLLIDE"];
-									} else {
-									  _wH = _nearByHolder select 0;
-									};
-									//diag_log "backpack added to container";
-									_wh addBackpackCargoGlobal [_item,1];
-								//};
+								  _wH = _nearByHolder select 0;
+								};
+								_wh addBackpackCargoGlobal [_item,1];
 							};
 
 							_returnOut pushBack _item;
@@ -276,7 +251,6 @@ if (_slot != -1) then {
 							_current_crypto = _current_crypto - _itemWorth;
 							_tradeQtyTotal = _tradeQtyTotal + _itemQty;
 						};
-						//diag_log format["_itemClasses: %1 _itemQtys:%2", _itemClasses, _itemQtys];
 					};
 				};
 			};
@@ -284,17 +258,11 @@ if (_slot != -1) then {
 	} forEach _itemsOut;
 
 	if (_itemsIn isEqualTo _returnIn || _itemsOut isEqualTo _returnOut) then {
-
 		// save changes to array
 		_trader setVariable["AI_ITEMS", [_itemClasses, _itemQtys], true];
-
 		// Force Save
 		_objHiveKey = format["%1:%2", (call EPOCH_fn_InstanceID), _slot];
 		["AI_ITEMS", _objHiveKey, EPOCH_expiresAIdata, [_itemClasses, _itemQtys]] call EPOCH_fnc_server_hiveSETEX;
-		// diag_log format["UPDATED DB FOR TRADER: %1 SLOT: %2 DATA: %3", _trader, _slot, [_itemClasses, _itemQtys]];
-
-		// diag_log format["ADMIN: %1 TRADETOTAL:%2", _player, _tradeTotal];
-
 		// push crypto changes to player
 		_playerCryptoLimit = [(configFile >> "CfgSecConf" >> "limits"), "playerCrypto", 250000] call EPOCH_fnc_returnConfigEntry;
 		_current_crypto = ((_current_cryptoRaw + _tradeTotal) min _playerCryptoLimit) max 0;

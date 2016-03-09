@@ -1,3 +1,17 @@
+/*
+	Author: Aaron Clark - EpochMod.com
+
+    Contributors:
+
+	Description:
+	Add or remove members from a group
+
+    Licence:
+    Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
+
+    Github:
+    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_server/compile/epoch_group/EPOCH_server_updatePlayerGroup.sqf
+*/
 private ["_groupID","_selectedPlayerUID","_addOrRemove","_modOrMember","_modOrMemberRevert","_response","_contentArray","_modArray","_memberArray","_selectedPlayerName","_group","_removePlayerArray","_modOrMemberArray","_found"];
 
 if !([_this select 4, _this select 5] call EPOCH_server_getPToken) exitWith {};
@@ -27,24 +41,22 @@ if ((_response select 0) == 1 && (_response select 1) isEqualType []) then {
 		_selectedPlayerName = "Dead Player";
 
 		{
-			if (getPlayerUID _x == _selectedPlayerUID) exitWith {
-				_selectedPlayerName = if (alive _x) then {name _x};
-				if ((_x getVariable ["GROUP",""]) != _groupID) then {
-					_x setVariable ["GROUP", _groupID];
-					_group = grpNull;
-					{
-						if ((_x getVariable["GROUP",""]) == _groupID) exitWith {
-							_group = group _x;
-						};
-					}count playableUnits;
-
-					if (isNull _group) then {
-						_group = createGroup west;
+			_selectedPlayerName = if (alive _x) then {name _x};
+			if ((_x getVariable ["GROUP",""]) != _groupID) then {
+				_x setVariable ["GROUP", _groupID];
+				_group = grpNull;
+				{
+					if ((_x getVariable["GROUP",""]) == _groupID) exitWith {
+						_group = group _x;
 					};
-					[_x] joinSilent _group;
+				}count playableUnits;
+
+				if (isNull _group) then {
+					_group = createGroup west;
 				};
+				[_x] joinSilent _group;
 			};
-		}count playableUnits;
+		} forEach (allPlayers select {getPlayerUID _x == _selectedPlayerUID});
 
 		_removePlayerArray = _contentArray select _modOrMemberRevert;
 
@@ -59,17 +71,17 @@ if ((_response select 0) == 1 && (_response select 1) isEqualType []) then {
 		_modOrMemberArray pushBack [_selectedPlayerUID, _selectedPlayerName];
 
 		_contentArray set [_modOrMember, _modOrMemberArray];
-	}
-	else { //Remove
+
+	} else {
+
+		//Remove
 		_found = false;
 
 		{
-			if (getPlayerUID _x == _selectedPlayerUID) exitWith {
-				_x setVariable ["GROUP", nil];
-				[_x] joinSilent (createGroup west);
-				[["resetGroup", true], (owner _x)] call EPOCH_sendPublicVariableClient;
-			};
-		} count playableUnits;
+			_x setVariable ["GROUP", nil];
+			[_x] joinSilent (createGroup west);
+			[["resetGroup", true], (owner _x)] call EPOCH_sendPublicVariableClient;
+		} forEach (allPlayers select {getPlayerUID _x == _selectedPlayerUID});
 
 		{
 			if (_x select 0 == _selectedPlayerUID) exitWith {
@@ -96,12 +108,8 @@ if ((_response select 0) == 1 && (_response select 1) isEqualType []) then {
 	};
 
 	{
-		if ((_x getVariable["GROUP", ""]) == _groupID) exitWith {
-			{
-				[["groupUpdate", _contentArray], (owner _x)] call EPOCH_sendPublicVariableClient;
-			} count (units group _x);
-		};
-	} count playableUnits;
+		[["groupUpdate", _contentArray], (owner _x)] call EPOCH_sendPublicVariableClient;
+	} forEach (allPlayers select {(_x getVariable["GROUP", ""]) == _groupID});
 
 	// Save Group Data
 	["Group", _groupID, _contentArray] call EPOCH_fnc_server_hiveSET;

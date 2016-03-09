@@ -71,7 +71,7 @@ class CfgServerFunctions
 			class server_savePlayer {};
 			class server_loadPlayer {};
 			class server_checkPlayer {};
-			class server_respawnPlayer {};
+			// class server_respawnPlayer {};
 			class server_onPlayerDisconnect {};
 			class server_deadPlayer {};
 			class server_revivePlayer {};

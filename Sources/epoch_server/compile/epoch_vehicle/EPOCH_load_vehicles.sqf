@@ -1,4 +1,20 @@
-private["_vehicleSlotIndex", "_vehHiveKey", "_response", "_arr", "_arrNum", "_dataFormat", "_objType", "_objTypes", "_objQty", "_location", "_vdir", "_vup", "_vehicle", "_actualHitpoints", "_config", "_colors", "_textureSelectionIndex", "_selections", "_count", "_textures", "_weapon", "_suppressor", "_laser", "_optics", "_magazine", "_magazineName", "_magazineSize", "_magazineSizeMax", "_qty", "_diag", "_marker", "_class", "_worldspace", "_damage", "_hitpoints", "_fuel", "_inventory", "_magazines", "_color", "_dataFormatCount"];
+/*
+	Author: Aaron Clark - EpochMod.com
+
+    Contributors:
+
+	Description:
+    Load Vehicles
+
+    Licence:
+    Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
+
+    Github:
+    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_server/compile/epoch_vehicle/EPOCH_load_vehicles.sqf
+*/
+private ["_location","_class","_dmg","_actualHitpoints","_hitpoints","_textures","_color","_colors","_textureSelectionIndex","_selections","_count","_objTypes","_objQty","_wMags","_wMagsArray","_attachments","_magazineSizeMax","_magazineName","_magazineSize","_qty","_objType","_marker","_found","_vehicle","_allHitpoints","_config","_worldspace","_damage","_arr","_arrNum","_vehicleSlotIndex","_vehHiveKey","_response","_immuneVehicleSpawnTime","_diag","_dataFormat","_dataFormatCount","_allVehicles","_serverSettingsConfig","_simulationHandler","_immuneVehicleSpawn"];
+params [["_maxVehicleLimit",0]];
+
 _diag = diag_tickTime;
 _dataFormat = ["", [], 0, [], 0, [], [], 0];
 _dataFormatCount = count _dataFormat;
@@ -9,7 +25,7 @@ _serverSettingsConfig = configFile >> "CfgEpochServer";
 _simulationHandler = [_serverSettingsConfig, "simulationHandler", false] call EPOCH_fnc_returnConfigEntry;
 _immuneVehicleSpawn = [_serverSettingsConfig, "immuneVehicleSpawn", false] call EPOCH_fnc_returnConfigEntry;
 
-for "_i" from 1 to _this do {
+for "_i" from 1 to _maxVehicleLimit do {
 	_vehicleSlotIndex = EPOCH_VehicleSlots pushBack str(_i);
 
 	_vehHiveKey = format ["%1:%2", call EPOCH_fn_InstanceID,_i];

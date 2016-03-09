@@ -1,3 +1,17 @@
+/*
+	Author: Aaron Clark - EpochMod.com
+
+    Contributors:
+
+	Description:
+    Init Server Variables
+
+    Licence:
+    Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
+
+    Github:
+    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_server/init/server_init.sqf
+*/
 EPOCH_BuildingSlots = [];
 EPOCH_TraderSlots = [];
 EPOCH_saveBldQueue = [];

@@ -1,7 +1,17 @@
-comment 'Epoch Mod Antihack - Niklas Wagner - www.skaronator.com - Aaron Clark - www.epochmod.com - License: (CC) Attribution-NonCommercial-NoDerivatives 4.0 International';
+/*
+	Authors: Aaron Clark - EpochMod.com
+			 Niklas Wagner - skaronator.com
+    Contributors:
 
-/* ANTIHACK SETTINGS */
+	Description:
+    Arma 3 Epoch ANTIHACK/ADMINTOOL
 
+    Licence:
+    Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
+
+    Github:
+    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_server/init/server_securityfunctions.sqf
+*/
 _config = (configFile >> "CfgSecConf");
 if (isClass _config) then {diag_log "Loading config..."};
 

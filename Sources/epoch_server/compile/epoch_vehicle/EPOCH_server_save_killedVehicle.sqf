@@ -1,8 +1,19 @@
-private ["_vehicle","_vehSlot","_vehHiveKey","_killer"];
+/*
+	Author: Aaron Clark - EpochMod.com
 
-_vehicle = _this select 0;
-_killer = _this select 1;
+    Contributors:
 
+	Description:
+    Killed building handler
+
+    Licence:
+    Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
+
+    Github:
+    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_server/compile/epoch_vehicle/EPOCH_server_save_killedVehicle.sqf
+*/
+private ["_vehSlot","_vehHiveKey"];
+params ["_vehicle","_killer"];
 if (!isNull _vehicle) then {
 	_vehSlot = _vehicle getVariable ["VEHICLE_SLOT", "ABORT"];
 	if (_vehSlot != "ABORT") then {

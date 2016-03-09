@@ -1,40 +1,36 @@
-private["_randomItemArray", "_quan", "_randomLootClass", "_type", "_randomItem", "_object", "_lootPaid", "_mags", "_lootItemWeightedArray", "_lootItemArray", "_weightedItemArray", "_weightedItemArrayCount", "_exit", "_maxPayout", "_lootTable", "_lootTableArray", "_weightedArray", "_weightedArrayCount"];
-_object = _this select 0;
-_type = _this select 1;
+/*
+	Author: Aaron Clark - EpochMod.com
 
+    Contributors:
+
+	Description:
+    Uses Epoch server extension to perform various functions like: kick, ban, shutdown, message, unlock/lock
+
+    Licence:
+    Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
+
+    Github:
+    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_server/compile/epoch_server/EPOCH_serverLootObject.sqf
+*/
+private["_randomItemArray", "_quan", "_randomLootClass", "_randomItem", "_lootPaid", "_mags", "_lootItemWeightedArray", "_lootItemArray", "_weightedItemArray", "_weightedItemArrayCount", "_exit", "_maxPayout", "_lootTable", "_lootTableArray", "_weightedArray", "_weightedArrayCount"];
+params ["_object","_type"];
 _randomizeMagazineAmmoCount = ["CfgEpochClient", "randomizeMagazineAmmoCount", true] call EPOCH_fnc_returnConfigEntryV2;
-
 if !(isNull _object) then{
-
 	_lootTable = [_type, "CfgMainTable", "tables"] call EPOCH_weightedArray;
-
-	// diag_log format["%1: lootTable %2", __FILE__, _lootTable];
-
-	_lootTableArray = _lootTable select 0;
-	_weightedArray = _lootTable select 1;
-	_weightedArrayCount = _lootTable select 2;
-
+	_lootTable params ["_lootTableArray","_weightedArray","_weightedArrayCount"];
 	if !(_lootTableArray isEqualTo []) then {
 
 		_loots = [];
-
 		_config = configFile >> "CfgMainTable" >> _type;
 		_minLoot = getNumber(_config >> "lootMin");
 		_maxLoot = getNumber(_config >> "lootMax");
-
 		_maxPayout = ((random(_maxLoot) * EPOCH_lootMultiplier) min _maxLoot) max _minLoot;
 		for "_k" from 1 to _maxPayout do {
 			_loots pushBack (_lootTableArray select(_weightedArray select floor(random _weightedArrayCount)));
 		};
 
-		// diag_log format["%1: loots: %2", __FILE__, _loots];
-
 		{
-			// get weighted array
 			_lootItemWeightedArray = [_x, "CfgLootTable", "items"] call EPOCH_weightedArray;
-
-			// diag_log format["%1: lootItemWeightedArray1 %2", __FILE__, _lootItemWeightedArray];
-
 			_lootItemArray = _lootItemWeightedArray select 0;
 			if !(_lootItemArray isEqualTo[]) then {
 				_weightedItemArray = _lootItemWeightedArray select 1;
@@ -113,14 +109,12 @@ if !(isNull _object) then{
 								_exit = true;
 							};
 						};
-
 						default {
 							_exit = true;
 						};
 					};
 					if (_exit) exitWith{ diag_log format["%1: CASE DEFAULT WITH %2", __FILE__, _this] };
 				};
-				//diag_log format["DEBUG SPAWN LOOT IN VEH: %1 %2 %3 type:%4", typeOf _object, _x, _randomItem, _type];
 			};
 		} forEach _loots;
 	};

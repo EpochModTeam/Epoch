@@ -1,16 +1,21 @@
 /*
-Player Revive
+	Author: Aaron Clark - EpochMod.com
 
-Epoch Mod - EpochMod.com
-All Rights Reserved.
+    Contributors:
+
+	Description:
+	Player Revive
+
+    Licence:
+    Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
+
+    Github:
+    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_server/compile/epoch_player/EPOCH_server_revivePlayer.sqf
 */
 private["_player", "_playerUID", "_items", "_class", "_dir", "_location", "_type", "_weapon", "_attachments", "_currWeap", "_itemSlot", "_itemqtys", "_goggles", "_headgear", "_vest", "_backpack", "_uniform", "_weapons", "_magazinesAmmo", "_itemsplayer", "_weaponsplayer", "_group", "_primaryWeapon", "_secondaryWeapon", "_attachment", "_equipped", "_wMags", "_playerGroup", "_droppedWeapons", "_newPlyr", "_token", "_owner", "_reviver"];
+params ["_player","_reviver","_token"];
 
-_player = _this select 0;
-_owner = owner _player;
-_reviver = _this select 1;
-
-if !([_reviver, _this select 2] call EPOCH_server_getPToken) exitWith{};
+if !([_reviver, _token] call EPOCH_server_getPToken) exitWith{};
 if (isNull _player) exitWith{};
 if (_player distance _reviver > 20) exitWith{};
 
@@ -26,7 +31,6 @@ if (!local _player) then {
 		_class = typeOf _player;
 
 		if (_class in ["Epoch_Male_F", "Epoch_Female_F"]) then {
-
 
 			if (_player getVariable["REVIVE", true]) then {
 
@@ -246,7 +250,7 @@ if (!local _player) then {
 				_token = _newPlyr call EPOCH_server_setPToken;
 
 				// send to player
-				[_newPlyr, _token] remoteExec ['EPOCH_client_fillVehicle',_owner];
+				[_newPlyr, _token] remoteExec ['EPOCH_clientRevive',_player];
 			};
 		};
 	};

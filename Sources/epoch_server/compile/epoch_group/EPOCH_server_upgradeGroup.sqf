@@ -1,6 +1,22 @@
-private ["_contentArray","_found","_newGroupSize","_groupMemberPUID"];
+/*
+	Author: Aaron Clark - EpochMod.com
+
+    Contributors:
+
+	Description:
+	Upgrade group size
+
+    Licence:
+    Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
+
+    Github:
+    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_server/compile/epoch_group/EPOCH_server_upgradeGroup.sqf
+*/
+private ["_playerCryptoLimit","_current_crypto","_groupMemberPUID","_return","_newGroupSize","_upgradePrice","_contentArray","_found","_cIndex","_vars","_response"];
 params ["_groupID","_player","_token"];
 if !([_player, _token] call EPOCH_server_getPToken) exitWith{};
+
+_return = false;
 
 // get vars array and current Crypto value
 _cIndex = EPOCH_customVars find "Crypto";
@@ -37,13 +53,12 @@ if ((_response select 0) == 1 && (_response select 1) isEqualType []) then {
 			} forEach [_contentArray select 3, _contentArray select 4];
 
 			{
-				if (getPlayerUID _x in _groupMemberPUID) then {
-					[["groupUpdate", _contentArray], (owner _x)] call EPOCH_sendPublicVariableClient;
-				};
-			} forEach playableUnits;
+				[["groupUpdate", _contentArray], _x] call EPOCH_sendPublicVariableClient;
+			} forEach (allPlayers select {getPlayerUID _x in _groupMemberPUID});
 
 			// Save Group Data
-			["Group", _groupID, _contentArray] call EPOCH_fnc_server_hiveSET;
+			_return = ["Group", _groupID, _contentArray] call EPOCH_fnc_server_hiveSET;
 		};
 	};
 };
+_return

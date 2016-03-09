@@ -1,28 +1,32 @@
-_unit = _this select 0;
-_lockStatus = _this select 1;
-_player = _this select 2;
+/*
+	Author: Aaron Clark - EpochMod.com
 
-if !([_player, _this select 3] call EPOCH_server_getPToken) exitWith{};
+    Contributors:
+
+	Description:
+    Refuel Vehicles
+
+    Licence:
+    Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
+
+    Github:
+    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_server/compile/epoch_vehicle/EPOCH_server_lockStorage.sqf
+*/
+params ["_unit","_lockStatus","_player","_token"];
+if !([_player, _token] call EPOCH_server_getPToken) exitWith{};
 if (isNull _unit) exitWith{};
 if (_player distance _unit > 20) exitWith{};
-
 _type = typeOf _unit;
-
 _playerUID = getPlayerUID _player;
 _playerGroup = _player getVariable ["GROUP",""];
 
-// functions
 _fnc_lock = {
 	_this setVariable ["EPOCH_Locked", true, true];
-	// force save on lock
 	EPOCH_saveStorQueue pushBackUnique _this;
-	//_this enableSimulationGlobal false;
 };
 _fnc_unlock = {
 	_this setVariable ["EPOCH_Locked", false, true];
-	//_this enableSimulationGlobal true;
 };
-// functions
 
 if (getNumber(configFile >> "CfgVehicles" >> _type >> "isSecureStorage") == 1) then{
 

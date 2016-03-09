@@ -1,12 +1,22 @@
-private ["_vehicle","_value"];
+/*
+	Author: Aaron Clark - EpochMod.com
 
-_vehicle =  _this select 0;
-_player =  _this select 2;
+    Contributors:
+
+	Description:
+    (Un)Lock Vehicles
+
+    Licence:
+    Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
+
+    Github:
+    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_server/compile/epoch_vehicle/EPOCH_server_lockVehicle.sqf
+*/
+private ["_lockOwner","_lockedOwner","_response","_playerUID","_playerGroup","_vehSlot","_vehLockHiveKey","_isLocked","_driver","_crew","_logic"];
+params ["_vehicle","_value","_player","_token"];
 
 if (isNull _vehicle) exitWith {};
-
-// Token check
-if !([_player,_this select 3] call EPOCH_server_getPToken) exitWith {};
+if !([_player,_token] call EPOCH_server_getPToken) exitWith {};
 if (_player distance _vehicle > 20) exitWith {};
 
 // Group access
@@ -56,8 +66,6 @@ _logic = if !(_crew isEqualTo []) then {
 
 // Lockout mech
 if (_logic) then {
-
-	_value = _this select 1;
 
 	if (_value) then {
 		["VehicleLock", _vehLockHiveKey, EPOCH_vehicleLockTime, [_lockOwner]] call EPOCH_fnc_server_hiveSETEX;

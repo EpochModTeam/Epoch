@@ -1,9 +1,24 @@
-private ["_vehicle","_class","_vehSlot","_vehHiveKey","_damage","_fuel","_pos","_dir","_worldspace","_hitpoints","_actualHitpoints","_inventory","_VAL","_return","_magazines","_colorSlot","_magsAmmoCargoMinimized","_cargoIndex"];
-if (!isNull _this) then {
+/*
+	Author: Aaron Clark - EpochMod.com
 
-	_vehicle = _this;
+    Contributors:
+
+	Description:
+    Save Storage Object
+
+    Licence:
+    Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
+
+    Github:
+    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_server/compile/epoch_vehicle/EPOCH_server_save_vehicle.sqf
+*/
+private ["_wepsItemsCargo","_magsAmmoCargo","_cargoIndex","_vehHiveKey","_hitpoints","_magsAmmoCargoMinimized","_inventory","_colorSlot","_VAL","_vehSlot"];
+params [["_vehicle",objNull]];
+
+if (!isNull _vehicle) then {
+
 	// if (!alive _vehicle) exitWith {diag_log format["DEBUG DEAD VEHICLE SKIPPED SAVE: %1 %2", _vehicle]};
-	_vehSlot = _this getVariable["VEHICLE_SLOT", "ABORT"];
+	_vehSlot = _vehicle getVariable["VEHICLE_SLOT", "ABORT"];
 	if (_vehSlot != "ABORT") then {
 
 		_vehHiveKey = format ["%1:%2", (call EPOCH_fn_InstanceID),_vehSlot];
@@ -44,6 +59,5 @@ if (!isNull _this) then {
 
 		_VAL = [typeOf _vehicle,[(getposATL _vehicle call EPOCH_precisionPos),vectordir _vehicle,vectorup _vehicle],damage _vehicle,_hitpoints,fuel _vehicle,_inventory,magazinesAmmo _vehicle,_colorSlot];
 		["Vehicle", _vehHiveKey, EPOCH_expiresVehicle, _VAL] call EPOCH_fnc_server_hiveSETEX;
-		//["Vehicle", _vehHiveKey, _VAL] call EPOCH_fnc_server_hiveSET;
 	};
 };

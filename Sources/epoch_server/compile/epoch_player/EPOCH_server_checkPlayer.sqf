@@ -1,13 +1,20 @@
 /*
-Player Check
+	Author: Aaron Clark - EpochMod.com
 
-Epoch Mod - EpochMod.com
-All Rights Reserved.
+    Contributors:
+
+	Description:
+	Player Check
+
+    Licence:
+    Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
+
+    Github:
+    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_server/compile/epoch_player/EPOCH_server_checkPlayer.sqf
 */
 private["_arr", "_dead", "_isMale", "_medical", "_apperance", "_class", "_vars", "_hitpoints", "_deadPlayer", "_response", "_playerUID", "_playerObj"];
-
-if (_this isEqualType objNull) then {
-	_playerObj = _this;
+params [["_playerObj",objNull]];
+if (_playerObj isEqualType objNull) then {
 	if (!isNull _playerObj) then {
 		_playerUID = getPlayerUID _playerObj;
 		if (_playerUID != "") then {

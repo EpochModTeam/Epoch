@@ -14,19 +14,13 @@
 */
 
 private ["_prefix","_key","_expires","_value","_valueLength","_callStack","_call","_index","_charLimit"];
+params ["_prefix","_key","_expires","_value"];
 
-_prefix      = _this select 0;
-_key         = _this select 1;
-_expires     = _this select 2;
-_value       = str (_this select 3);
+_value       = str (_value);
 _valueLength = count _value;
 
-_callStack = 101;
-_call = 121;
-if !(EPOCH_hiveAsync) then {
-    _callStack = 100;
-    _call = 120;
-};
+_callStack = [100,101] select EPOCH_hiveAsync;
+_call = [120,121] select EPOCH_hiveAsync;
 
 _index = 0;
 _charLimit = 8000;
@@ -36,7 +30,7 @@ if (_valueLength > _charLimit) then{
 	if (isNil "EPOCH_hiveCallID") then{
 		EPOCH_hiveCallID = 0;
 	} else {
-		if (EPOCH_hiveCallID > 10) then{
+		if (EPOCH_hiveCallID > 1000) then{
 			EPOCH_hiveCallID = 0;
 		};
 		EPOCH_hiveCallID = EPOCH_hiveCallID + 1;

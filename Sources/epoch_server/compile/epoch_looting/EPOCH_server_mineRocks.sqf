@@ -1,3 +1,17 @@
+/*
+	Author: Aaron Clark - EpochMod.com
+
+    Contributors:
+
+	Description:
+	Server side rock mining
+
+    Licence:
+    Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
+
+    Github:
+    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_server/compile/epoch_looting/EPOCH_server_mineRocks.sqf
+*/
 private["_posWH", "_item", "_nearbyWH", "_rock"];
 params ["_object","_index","_player","_token"];
 if !([_player, _token] call EPOCH_server_getPToken) exitWith{};

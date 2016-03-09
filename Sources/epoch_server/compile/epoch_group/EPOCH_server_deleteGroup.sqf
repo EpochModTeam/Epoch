@@ -1,21 +1,32 @@
-private ["_groupID","_response"];
+/*
+	Author: Aaron Clark - EpochMod.com
+
+    Contributors:
+
+	Description:
+	Delete Group
+
+    Licence:
+    Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
+
+    Github:
+    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_server/compile/epoch_group/EPOCH_server_deleteGroup.sqf
+*/
+private ["_groupID","_return"];
 params ["_player","_token"];
 
 if !([_player, _token] call EPOCH_server_getPToken) exitWith{};
 
+_return = false;
 _groupID = getPlayerUID _player;
+if (_groupID != "") then {
 
-_response = ["Group", _groupID] call EPOCH_fnc_server_hiveGETRANGE;
-if ((_response select 0) == 1 && (_response select 1) isEqualType []) then {
 	{
-		if ((_x getVariable["GROUP", ""]) == _groupID) exitWith {
-			{
-				_x setVariable ["GROUP", nil];
-				[["resetGroup", true], (owner _x)] call EPOCH_sendPublicVariableClient;
-				[_x] joinSilent (createGroup west);
-			} forEach (units group _x);
-		};
-	} forEach playableUnits;
-	["Group", _groupID] call EPOCH_fnc_server_hiveDEL;
+		_x setVariable ["GROUP", nil];
+		[["resetGroup", true], (owner _x)] call EPOCH_sendPublicVariableClient;
+		[_x] joinSilent (createGroup west);
+	} forEach (allPlayers select {(_x getVariable["GROUP", ""]) == _groupID});
+
+	_return = ["Group", _groupID] call EPOCH_fnc_server_hiveDEL;
 };
-true
+_return

@@ -1,5 +1,20 @@
-private["_pos","_axeCrate","_crateSmoke","_weps","_mags","_items"];
+/*
+	Author: Aaron Clark - EpochMod.com
+
+    Contributors:
+
+	Description:
+	Creates air drop crate
+
+    Licence:
+    Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
+
+    Github:
+    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_server/compile/epoch_missions/EPOCH_Server_airDropCrate.sqf
+*/
+private ["_pos","_axeCrate","_axeChute","_crateSmoke","_axeLight"];
 params ["_object","_player","_token"];
+
 if !([_player,_token] call EPOCH_server_getPToken)exitWith{};
 
 _pos = getPos _object;

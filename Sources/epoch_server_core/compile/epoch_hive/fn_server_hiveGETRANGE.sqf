@@ -13,9 +13,7 @@
     https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_server_core/compile/epoch_hive/fn_server_hiveGETRANGE.sqf
 */
 private["_hiveResponse", "_hiveStatus", "_hiveMessage", "_currentIndex", "_hiveMakeCall", "_data"];
-// GetRange
-//_PREFIX = _this select 0;
-//_KEY = _this select 1;
+params ["_prefix","_key"];
 
 _hiveMessage = "";
 _hiveStatus = 0;
@@ -29,7 +27,7 @@ while {_hiveMakeCall} do {
 
 	// get 8k chars
 	_currentIndexMax = _currentIndex + 8000;
-	_hiveResponse = "epochserver" callExtension format["220|%1:%2|%3|%4", _this select 0, _this select 1, _currentIndex, (_currentIndexMax-1)];
+	_hiveResponse = "epochserver" callExtension format["220|%1:%2|%3|%4", _prefix, _key, _currentIndex, (_currentIndexMax-1)];
 
 	if (_hiveResponse != "") then {
 

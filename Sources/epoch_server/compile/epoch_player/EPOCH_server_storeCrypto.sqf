@@ -1,16 +1,22 @@
 /*
-Player Bank
+	Author: Aaron Clark - EpochMod.com
 
-Epoch Mod - EpochMod.com
-All Rights Reserved.
+    Contributors:
+
+	Description:
+	Player Bank
+
+    Licence:
+    Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
+
+    Github:
+    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_server/compile/epoch_player/EPOCH_server_storeCrypto.sqf
 */
-private["_player", "_bankBalance", "_bankBalanceBefore", "_current_crypto", "_transferBankBalance", "_transferBankBalanceBefore", "_return", "_transferBankData", "_transferTargetUID", "_transferResponse", "_transferAmountIn", "_transferAmountOut", "_transferBalance", "_transferTarget", "_cIndex", "_vars", "_playerNetID", "_bankData", "_tradeArray", "_playerUID", "_response"];
+private["_bankBalance", "_bankBalanceBefore", "_current_crypto", "_transferBankBalance", "_transferBankBalanceBefore", "_return", "_transferBankData", "_transferTargetUID", "_transferResponse", "_transferAmountIn", "_transferAmountOut", "_transferBalance", "_transferTarget", "_cIndex", "_vars", "_playerNetID", "_bankData", "_tradeArray", "_playerUID", "_response"];
 
-_player = _this select 0;
-_tradeArray = _this select 1;
+params ["_player","_tradeArray","_token"];
 
-// handle token check and isnull for _player
-if !([_player, _this select 2] call EPOCH_server_getPToken) exitWith{};
+if !([_player, _token] call EPOCH_server_getPToken) exitWith{};
 
 _playerUID = getPlayerUID _player;
 

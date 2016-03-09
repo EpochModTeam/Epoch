@@ -1,8 +1,26 @@
-private["_player","_objType","_obj","_pos","_unitPos","_driver","_unit","_grp","_axeCopter","_playerOwner"];
-_player = _this select 0;
-if !([_player,_this select 1]call EPOCH_server_getPToken)exitWith{};
+/*
+	Author: Aaron Clark - EpochMod.com
 
-_pos = _this select 2;
+    Contributors:
+
+	Description:
+	Creates helicopter air drop
+
+    Licence:
+    Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
+
+    Github:
+    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_server/compile/epoch_missions/EPOCH_Server_createAirDrop.sqf
+*/
+private ["_playerOwner","_objType","_obj","_grp","_unitPos","_driver","_unit"];
+params ["_player","_token","_pos"];
+
+if (!isNil "axenotSent" && {axenotSent}) exitWith {
+	diag_log format ["DEBUG: airdrop script already running %1",_this];
+};
+
+if !([_player,_token]call EPOCH_server_getPToken)exitWith{};
+
 _pos set[2, 2400];
 
 if !((nearestObjects[_pos, ["B_Heli_Transport_01_F"], 1000]) isEqualTo[]) exitWith{ diag_log "DEBUG: prevented air drop, too many in area." };
@@ -44,23 +62,21 @@ _grp setCombatMode "BLUE";
 _obj setVehicleLock "LOCKEDPLAYER";
 
 [_obj,_driver,_player] spawn {
-	axenotSent = false;
 	axenotSent = true;
-	_obj = _this select 0;
-	_driver = _this select 1;
-	_player = _this select 2;
+	params ["_obj","_driver","_player"];
 	while {axenotSent} do {
+		if (isNull _obj || isNull _driver ||isNull _player) exitWith {axenotSent = false};
 		_drvOwner = owner _driver;
 		_playerOwner = owner _player;
-		(group _driver) setGroupOwner _playerOwner;
-		if((_drvOwner == _playerOwner)) then {
+		if(_drvOwner == _playerOwner) exitWith {
 			// send airdrop to player
 			_obj remoteExec ['EPOCH_mission_returnObj',_player];
-			diag_log format["DEBUG: Transferred ownership of %1 to %2, new owner ID is %3",_driver, name _player, owner _driver];
-			axenotSent = false;
 			// since we found an owner, add cleanup if ownership reverts to server. This can also be used to change ownership instead later.
 			_obj call EPOCH_localCleanup;
+			diag_log format["DEBUG: Transferred ownership of %1 to %2, new owner ID is %3",_driver, name _player, owner _driver];
+			axenotSent = false;
 		};
-		uiSleep 0.5;
+		(group _driver) setGroupOwner _playerOwner;
+		uiSleep 1;
 	};
 };

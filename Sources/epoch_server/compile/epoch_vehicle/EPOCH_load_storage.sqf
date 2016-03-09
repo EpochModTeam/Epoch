@@ -1,32 +1,35 @@
-private [
-	"_storageSlotIndex","_vehHiveKey","_response","_arr"
-	,"_objType","_objTypes","_objQty"
-	,"_class","_damage","_hitpoints","_fuel","_count","_inventory","_dir","_location","_vehicle","_actualHitpoints","_marker","_isAir","_isShip","_config","_magazines","_colors","_color"
-];
+/*
+	Author: Aaron Clark - EpochMod.com
+
+    Contributors:
+
+	Description:
+    Fill vehicle inventory
+
+    Licence:
+    Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
+
+    Github:
+    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_server/compile/epoch_vehicle/EPOCH_load_storage.sqf
+*/
+private ["_inventory","_location","_dir","_textures","_colors","_textureSelectionIndex","_selections","_count","_color","_config","_objTypes","_objQty","_wMags","_wMagsArray","_attachments","_magazineSizeMax","_magazineName","_magazineSize","_qty","_objType","_marker","_class_raw","_damage","_class","_worldspace","_wsCount","_vehicle","_arr","_storageSlotIndex","_vehHiveKey","_response","_diag"];
+params [["_maxStorageLimit",0]];
 
 _diag = diag_tickTime;
-
 EPOCH_StorageSlots = [];
-for "_i" from 1 to _this do {
-
+for "_i" from 1 to _maxStorageLimit do {
 	_storageSlotIndex = EPOCH_StorageSlots pushBack str(_i);
-
 	_vehHiveKey = format ["%1:%2", (call EPOCH_fn_InstanceID), _i];
 	_response = ["Storage", _vehHiveKey] call EPOCH_fnc_server_hiveGETRANGE;
-
-	// diag_log format["STORAGE _response %1",_response];
-
 	if ((_response select 0) == 1 && (_response select 1) isEqualType []) then {
-
 		_arr = _response select 1;
 		if !(_arr isEqualTo []) then {
-
 			EPOCH_StorageSlots deleteAt _storageSlotIndex;
-
 			_class_raw = _arr select 0;
 			_damage = _arr select 2;
 			_inventory = _arr select 3;
 
+			// legacy change class
 			_class = switch (_class_raw) do {
 			    case "LockBoxProxy_EPOCH": { "LockBox_EPOCH" };
 			    case "SafeProxy_EPOCH": { "Safe_EPOCH" };
@@ -37,7 +40,6 @@ for "_i" from 1 to _this do {
 
 			_worldspace = _arr select 1;
 			_wsCount = count _worldspace;
-			//diag_log format ["DEBUG: _wsCount %1 _worldspace %2", _wsCount, _worldspace];
 
 			// new worldspace format
 			if (_wsCount == 3) then {
@@ -78,10 +80,6 @@ for "_i" from 1 to _this do {
 
 			_vehicle setVariable ["STORAGE_SLOT", str(_i), true];
 
-			// missionNamespace setVariable [format ["EPOCH_STORAGE_%1", _i], _vehicle];
-
-			// diag_log format ["STORAGE: created storage %1 at %2", _class, _location];
-
 			_vehicle call EPOCH_server_storageInit;
 
 			if (count _arr >= 5) then {
@@ -120,8 +118,6 @@ for "_i" from 1 to _this do {
 			clearItemCargoGlobal	  _vehicle;
 
 			if !(_inventory isEqualTo []) then {
-
-				//diag_log format ["FILLING: storage %1 pos: %2", _vehicle, (getPosATL _vehicle)];
 				{
 					_objType = _forEachIndex;
 

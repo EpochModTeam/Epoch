@@ -1,8 +1,21 @@
-private ["_target","_source","_token"];
-_target = _this select 0;
-_source = _this select 1;
+/*
+	Author: Aaron Clark - EpochMod.com
 
-if !([_source, _this select 2] call EPOCH_server_getPToken) exitWith{};
+    Contributors:
+
+	Description:
+    Epoch Mod - Server side take crypto
+
+    Licence:
+    Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
+
+    Github:
+    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_server/compile/epoch_trading/EPOCH_server_tradeRequest.sqf
+*/
+private ["_tradeKey"];
+params ["_target","_source","_token"];
+
+if !([_source, _token] call EPOCH_server_getPToken) exitWith{};
 if (isNull _target) exitWith{};
 if (_source distance _target > 10) exitWith{};
 
@@ -12,5 +25,4 @@ _source setVariable["currentTradeKey", _tradeKey];
 _target setVariable["currentTradeKey", _tradeKey];
 
 // send to player
-// make RE to player
 _source remoteExec ['EPOCH_tradeRequest',_target];

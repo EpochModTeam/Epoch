@@ -12,7 +12,7 @@
     Github:
     https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_code/compile/EPOCH_SpawnTraderMiltia.sqf
 */
-private ["_garrCount","_startPos","_rndHouse","_unit","_trgt","_nrBuilds","_grp"];
+private ["_startPos","_rndHouse","_unit","_trgt","_nrBuilds","_grp"];
 _trgt = player;
 _nrBuilds = nearestObjects [getPosATL _trgt,["house"],50];
 
@@ -21,7 +21,6 @@ for "_i" from 1 to 3 step 1 do
 {
 	_startPos = [];
     while {count _startPos < 1} do {
-    	_garrCount = 0;
     	_rndHouse = selectRandom _nrBuilds;
 		_allpositions = _rndHouse buildingPos -1;
         if !(_allpositions isEqualTo []) then {

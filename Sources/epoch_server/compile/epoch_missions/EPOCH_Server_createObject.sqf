@@ -1,32 +1,35 @@
-private["_player","_objType","_obj","_objSpc","_clearCargo","_pos","_chance","_driver","_driverType","_gunner","_gunnerType","_commander","_commanderType","_crew","_crewType","_grp","_doOwner","_missionVehList"];
-_missionVehList = ["O_UAV_01_F","B_UAV_01_F","I_Boat_Armed_01_minigun_F","B_Heli_Transport_01_F",""];
+/*
+	Author: Aaron Clark - EpochMod.com
 
-_player = _this select 0;
-if !([_player,_this select 1]call EPOCH_server_getPToken)exitWith{};
+    Contributors:
+
+	Description:
+	Server side spawing of shipwreck loots
+
+    Licence:
+    Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
+
+    Github:
+    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_server/compile/epoch_missions/EPOCH_Server_createObject.sqf
+*/
+private ["_grp","_driver","_gunner","_commander","_crew","_missionVehList","_obj"];
+params ["_player","_token","_objType","_clearCargo","_pos",["_objSpc","CAN_COLLIDE"],"_driverType","_gunnerType","_commanderType","_crewType"];
+
+if !([_player,_token]call EPOCH_server_getPToken)exitWith{};
+
 if (count _this != 11) exitWith {diag_log format ["Debug: %1 exit with %2",__FILE__,_this]};
 
-_objType = _this select 2;
+_missionVehList = ["O_UAV_01_F","B_UAV_01_F","I_Boat_Armed_01_minigun_F","B_Heli_Transport_01_F",""];
 if!(_objType in _missionVehList)exitWith{};
 
-
-_clearCargo = _this select 3;
-if ((_this select 4) isEqualTo []) then {
-	_pos = _this select 4;
-} else {
+if !(_pos isEqualTo []) then {
 	_pos = (getPosATL _player) findEmptyPosition [1,250,_objType];
 	if (count _pos < 1) then {
 		_pos = getPosATL _player;
 	};
 };
 
-_objSpc = if (_this select 5 == "") then {"CAN_COLLIDE"}else{_this select 5};
-_driverType = _this select 6;
-_gunnerType = _this select 7;
-_commanderType = _this select 8;
-_crewType = _this select 9;
 //_doOwner = _this select 10;
-
-
 _obj = createVehicle [_objType, _pos, [], 0, _objSpc];
 _obj call EPOCH_server_setVToken;
 addToRemainsCollector[_obj];

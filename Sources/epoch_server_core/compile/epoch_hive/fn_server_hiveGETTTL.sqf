@@ -13,8 +13,7 @@
     https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_server_core/compile/epoch_hive/fn_server_hiveGETTTL.sqf
 */
 private ["_hiveResponse","_hiveStatus","_hiveMessage","_whileCount"];
-//_PREFIX = _this select 0;
-//_KEY = _this select 1;
+params ["_prefix","_key"];
 
 _hiveStatus = -1;
 _hiveMessage = "";
@@ -23,10 +22,10 @@ _hiveResponse = "";
 _whileCount = 0;
 while {_hiveStatus < 0 || _hiveStatus == 2} do {
 	if (_whileCount == 0) then {
-		_hiveResponse = "epochserver" callExtension format ["210|%1:%2", _this select 0, _this select 1];
+		_hiveResponse = "epochserver" callExtension format ["210|%1:%2", _prefix, _key];
 	}
 	else {
-		_hiveResponse = "epochserver" callExtension format ["200|%1:%2", _this select 0, _this select 1];
+		_hiveResponse = "epochserver" callExtension format ["200|%1:%2", _prefix, _key];
 	};
 
 	_hiveStatus = 0;

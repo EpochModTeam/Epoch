@@ -1,6 +1,19 @@
-private["_sapper","_trader","_cage","_cage2","_cagePos","_sounds","_sound"];
-_sapper = _this select 0;
-_trader = _this select 1;
+/*
+	Author: Andrew Gregory - EpochMod.com
+
+    Contributors: Aaron Clark - EpochMod.com
+
+	Description:
+	Mission: cage a sapper
+
+    Licence:
+    Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
+
+    Github:
+    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_code/compile/missions/EPOCH_mission_cage_sapper.sqf
+*/
+private ["_sounds","_sound","_cagePos","_cage","_cage2","_startCage"];
+params ["_sapper","_trader"];
 
 _cagePos = (getPosATL _trader) findEmptyPosition [1,50,"Land_Cages_F"];
 _cage = createVehicle ["Land_Cages_F", _cagePos, [], 2, "CAN_COLLIDE"] ;
@@ -11,7 +24,6 @@ _cage attachTo [_cage2,[0,1.3,0]];
 
 // send to server
 [_cage,_cage2] remoteExec ["EPOCH_localCleanup",2];
-
 
 _startCage = diag_tickTime;
 while {_sapper distance _cage > 3 || diag_tickTime - _startCage < 12} do {

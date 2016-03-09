@@ -16,11 +16,11 @@
 private ["_class","_debug1","_lightLocation","_light","_deSimulate","_pos","_dir","_ep","_useWorldPos","_pos1","_markerName","_loadBaseTemplateConfig","_pro2","_veh2","_enterClass","_exitClass","_pro1","_veh1","_debugLocation","_debug","_protection","_config","_loadBaseTemplateConfig"];
 
 _loadBaseTemplateConfig = {
-	private ["_partPos","_part","_array","_pos","_center","_deSimulate"];
-    _array = getArray(configfile >> "CfgPropTemplate" >> (_this select 1));
-    _pos = _this select 2;
+	private ["_partPos","_part","_array","_center","_deSimulate"];
+	params ["_templateClass","_selectedTemplate","_pos"];
+    _array = getArray(configfile >> "CfgPropTemplate" >> _selectedTemplate);
 	_pos set [2,0];
-    _center = createVehicle [_this select 0, _pos, [], 0, "CAN_COLLIDE"];
+    _center = createVehicle [_templateClass, _pos, [], 0, "CAN_COLLIDE"];
     {
         _partPos = _center modelToWorld (_x select 1);
 		_partPos set [2,0];

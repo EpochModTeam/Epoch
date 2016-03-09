@@ -27,9 +27,8 @@ if !(_this isEqualType []) then {
 {
 	if (!isNull _x) then {
 		_x addEventHandler["local", {
-			if (_this select 1) then {
-				private "_unit";
-				_unit = _this select 0;
+			params ["_unit","_isLocal"];
+			if (_isLocal) then {
 				if (!isNull _unit) then{
 					{
 						_unit removeAllMPEventHandlers _x;

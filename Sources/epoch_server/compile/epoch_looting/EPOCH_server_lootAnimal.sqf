@@ -1,3 +1,17 @@
+/*
+	Author: Aaron Clark - EpochMod.com
+
+    Contributors:
+
+	Description:
+	Server side animal looting
+
+    Licence:
+    Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
+
+    Github:
+    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_server/compile/epoch_looting/EPOCH_server_lootAnimal.sqf
+*/
 private["_item", "_class", "_pos", "_objectClass"];
 params ["_object","_player","_token"];
 if !([_player, _token] call EPOCH_server_getPToken) exitWith{};

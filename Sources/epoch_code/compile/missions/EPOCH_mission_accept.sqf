@@ -1,3 +1,17 @@
+/*
+	Author: Andrew Gregory - EpochMod.com
+
+    Contributors: Aaron Clark - EpochMod.com
+
+	Description:
+	Mission accept
+
+    Licence:
+    Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
+
+    Github:
+    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_code/compile/missions/EPOCH_mission_accept.sqf
+*/
 _index = lbValue[1500, lbCurSel 1500];
 
 _config = "MissionList" call EPOCH_returnConfig;
@@ -7,7 +21,7 @@ if (_index in _disabledMissions) exitWith{ titleText["Invalid Mission", "PLAIN",
 _nrEnts = player nearEntities ["Man", 20];
 _trader = objNull;
 {
-	if ((_x getVariable ["AI_SLOT", -1 ] > -1)) exitWith {
+	if ((_x getVariable ["AI_SLOT", -1]) > -1) exitWith {
 		_trader = _x;
 	};
 }forEach _nrEnts;

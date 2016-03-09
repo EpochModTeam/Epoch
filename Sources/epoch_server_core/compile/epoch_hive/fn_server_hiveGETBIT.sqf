@@ -14,12 +14,10 @@
 */
 
 private ["_hiveResponse","_hiveStatus","_hiveMessage"];
-//_PREFIX = _this select 0;
-//_KEY = _this select 1;
-//_BIT = _this select 2;
+params ["_prefix","_key","_bit"];
 
 _hiveMessage = false;
-_hiveResponse = "epochserver" callExtension format["240|%1:%2|%3", _this select 0, _this select 1, _this select 2];
+_hiveResponse = "epochserver" callExtension format["240|%1:%2|%3", _prefix, _key, _bit];
 if (_hiveResponse != "") then {
 	_hiveResponse = call compile _hiveResponse;
 	if !(isNil "_hiveResponse") then {

@@ -1,15 +1,23 @@
 /*
-Player Death
+	Author: Aaron Clark - EpochMod.com
 
-Epoch Mod - EpochMod.com
-All Rights Reserved.
+    Contributors:
+
+	Description:
+	Player Death for use with RemoteExec
+
+    Licence:
+    Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
+
+    Github:
+    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_server/compile/epoch_player/EPOCH_server_deadPlayer.sqf
 */
-private ["_playerObj","_pos","_veh","_triggerType","_playerName","_bankBalance","_bankData","_response","_killer","_playerUID","_cIndex","_vars","_current_crypto"];
-_playerObj = _this select 0;
-_killer = _this select 1;
+private ["_triggerType","_veh","_bankBalance","_bankData","_response","_playerUID","_pos","_cIndex","_vars","_current_crypto"];
+params ["_playerObj","_killer","_playerName","_token"];
 
 // handle token check and isnull for _player
-if !([_playerObj, _this select 3] call EPOCH_server_getPToken) exitWith{};
+if !([_playerObj, _token] call EPOCH_server_getPToken) exitWith{};
+
 _playerUID = getPlayerUID _playerObj;
 _pos = getposATL _playerObj;
 
@@ -23,17 +31,17 @@ if (_playerObj != _killer) then {
 	};
 
 	// backwards compat for now -
-	_playerName = _this select 2;
 	if (_playerName isEqualType []) then{
-		_playerName = toString (_this select 2);
+		_playerName = toString (_playerName);
 	};
 
 	['deathlog', format['%1 (%2) Killed By %3 (%4) with weapon %5 from %6m at %7', _playerName, _playerUID, name _killer, getPlayerUID _killer, currentWeapon _killer, _playerObj distance _killer, _pos]] call EPOCH_fnc_server_hiveLog;
 };
 
+_defaultVars = [] + EPOCH_defaultVars_SEPXVar;
 // get vars array and current Crypto value
 _cIndex = EPOCH_customVars find "Crypto";
-_vars = _playerObj getVariable["VARS", [] + EPOCH_defaultVars_SEPXVar];
+_vars = _playerObj getVariable["VARS", _defaultVars];
 _current_crypto = _vars select _cIndex;
 
 if (_current_crypto > 0) then{
@@ -42,7 +50,7 @@ if (_current_crypto > 0) then{
 	_veh setVariable["Crypto", _current_crypto, true];
 };
 
-[_playerObj, [] + EPOCH_defaultVars_SEPXVar] call EPOCH_server_savePlayer;
+[_playerObj, _defaultVars] call EPOCH_server_savePlayer;
 
 // death cost
 if (EPOCH_cloneCost > 0) then {

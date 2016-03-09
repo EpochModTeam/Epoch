@@ -1,18 +1,21 @@
+/*
+	Author: Aaron Clark - EpochMod.com
+
+    Contributors:
+
+	Description:
+	Server side spawing of shipwreck loots
+
+    Licence:
+    Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
+
+    Github:
+    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_server/compile/epoch_missions/EPOCH_Server_fillContainer.sqf
+*/
 private["_player","_container","_clearFirst","_pos","_chance","_weps","_mags","_items"];
-_player = _this select 0;
-if !([_player,_this select 1]call EPOCH_server_getPToken)exitWith{};
+params ["_player","_token",["_container",objNull,[objNull]],["_clearFirst",false],["_chance",25],["_pos",getPosATL _player]];
 
-_container = objNull;
-if ((_this select 2) isEqualType objNull) then {_container = _this select 2;};
-
-_clearFirst = false;
-if (count _this > 3) then {_clearFirst = _this select 3;};
-
-_chance = 25;
-if (count _this > 4) then {_chance = _this select 4;};
-
-_pos = getPosATL _player;
-if (count _this > 5) then {_pos = _this select 5;};
+if !([_player,_token]call EPOCH_server_getPToken)exitWith{};
 
 if (isNull _container) then {
 	_container = createVehicle ["GroundWeaponHolder", _pos, [], 12, "CAN_COLLIDE"];

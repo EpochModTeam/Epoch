@@ -1,18 +1,22 @@
-private [
-	"_spawnPositionSize","_spawnPositions","_type","_position","_range","_roads","_maxSpawnSize"
-	,"_vehicleFound","_vehClass"
-	,"_countAllowedVeh","_randomVehicleIndex","_randomVehicle","_velimit","_vehicleCount"
-	,"_isShip"
-	,"_spawnPositionIndex","_spawnPosition","_roadPosition"
-	,"_dir","_vehObj","_config"
-	,"_textureSelectionIndex","_selections","_colors","_textures","_color","_count"
-	,"_marker"
-];
+/*
+	Author: Aaron Clark - EpochMod.com
+
+    Contributors:
+
+	Description:
+    Dynamic vehicle spawner
+
+    Licence:
+    Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
+
+    Github:
+    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_server/compile/epoch_vehicle/EPOCH_spawn_vehicles.sqf
+*/
+private ["_vehClass","_velimit","_vehicleCount","_limit","_cityPos","_range","_nearBy","_find","_position","_direction","_getRandomPos","_newPosition","_road","_selectedCity","_roads","_isShip","_collide","_marker","_vehObj","_slot","_vehCount","_preferedPos","_allowedVehiclesList","_spawnPositionSizeDefaults","_serverMapConfig","_spawnPositionSize","_allowedTypes","_allCitys","_allCitysDync","_spawnCount"];
 
 _allowedVehiclesList = [];
 {
-  _vehClass = _x select 0;
-  _velimit = _x select 1;
+  _x params ["_vehClass","_velimit"];
   _vehicleCount = {typeOf _x == _vehClass} count vehicles;
   for "_i" from 1 to (_velimit-_vehicleCount) do {
     _allowedVehiclesList pushBack _vehClass;

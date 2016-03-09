@@ -1,25 +1,22 @@
 /*
-  Epoch Vehicle Spawn Function
+	Author: Aaron Clark - EpochMod.com
+
+    Contributors:
+
+	Description:
+    Vehicle Spawn Function
+
+    Licence:
+    Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
+
+    Github:
+    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_server/compile/epoch_vehicle/EPOCH_spawn_vehicle.sqf
 */
-
-_vehClass = _this select 0;
-_position = _this select 1;
-_direction =  _this select 2;
-_locked = _this select 3;
-_slot = _this select 4;
-
-_lockOwner  =  param [5, ""];
-_can_collide = param [6, "CAN_COLLIDE"];
-_spawnLoot = param [7, false];
-_spawnDamaged = param [8, true];
-
-//diag_log format["DEBUG: spawn_vehicle %1", _this];
-
-//place vehicle
+private ["_maxDamage","_textures","_textureSelectionIndex","_selections","_colors","_color","_count","_vehLockHiveKey","_marker","_config","_vehObj"];
+params ["_vehClass","_position","_direction","_locked","_slot",["_lockOwner",""],["_can_collide","CAN_COLLIDE"],["_spawnLoot",false],["_spawnDamaged",true]];
+if !(isClass (configFile >> "CfgVehicles" >> _vehClass)) exitWith {objNull};
 _vehObj = createVehicle[_vehClass, _position, [], 0, _can_collide];
-
 if !(isNull _vehObj) then{
-
 	_vehObj call EPOCH_server_setVToken;
 
 	// Set Direction

@@ -12,6 +12,5 @@
     Github:
     https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_server_core/compile/epoch_hive/fn_server_hiveDEL.sqf
 */
-//_PREFIX = _this select 0;
-//_KEY = _this select 1;
-"epochserver" callExtension format["400|%1:%2", _this select 0, _this select 1];
+params ["_prefix","_key"];
+"epochserver" callExtension format["400|%1:%2", _prefix, _key];

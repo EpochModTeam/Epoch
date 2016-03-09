@@ -1,9 +1,21 @@
 /*
-Add HiveFunction: Create Group / Set Data
-Return:
+	Author: Aaron Clark - EpochMod.com
 
-true = group has been created and / or successfully saved!
-false = group exist already and hasn't been saved!
+    Contributors:
+
+	Description:
+	Add HiveFunction: Create Group / Set Data
+
+    Licence:
+    Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
+
+    Github:
+    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_server/compile/epoch_group/EPOCH_server_createGroup.sqf
+
+	Return:
+
+	true = group has been created and / or successfully saved!
+	false = group exist already and hasn't been saved!
 */
 params ["_leader", "_groupName", "_token"];
 if !([_leader, _token] call EPOCH_server_getPToken) exitWith{};
