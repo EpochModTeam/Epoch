@@ -168,38 +168,24 @@ if (_class != "") then {
 				_baselineSnapPos = _nearestObject modelToWorldVisual [0,0,0];
 
 				if (EPOCH_buildMode == 1) then {
-
 					{
-						if (_x in _allowedSnapPoints) then {
-							_pOffset = _nearestObject selectionPosition _x;
-							_snapPos = _nearestObject modelToWorldVisual _pOffset;
-							if (surfaceIsWater _snapPos) then {
-								_snapPos set[2, ((getPosASL _nearestObject) select 2) + (_pOffset select 2)];
+						_x params ["_snapPoints","_type"];
+						{
+							if (_x in _allowedSnapPoints) then {
+								_pOffset = _nearestObject selectionPosition _x;
+								_snapPos = _nearestObject modelToWorldVisual _pOffset;
+								if (surfaceIsWater _snapPos) then {
+									_snapPos set[2, ((getPosASL _nearestObject) select 2) + (_pOffset select 2)];
+								};
+								_snapDistance = _pos2 distance _snapPos;
+								if (_snapDistance < _maxSnapDistance) exitWith{
+									_isSnap = true;
+									_snapPosition = _snapPos;
+									_snapType = _type;
+								};
 							};
-							_snapDistance = _pos2 distance _snapPos;
-							if (_snapDistance < _maxSnapDistance) exitWith{
-								_isSnap = true;
-								_snapPosition = _snapPos;
-								_snapType = "para";
-							};
-						};
-					} forEach _snapPointsPara;
-
-					{
-						if (_x in _allowedSnapPoints) then {
-							_pOffset = _nearestObject selectionPosition _x;
-							_snapPos = _nearestObject modelToWorldVisual _pOffset;
-							if (surfaceIsWater _snapPos) then {
-								_snapPos set[2, ((getPosASL _nearestObject) select 2) + (_pOffset select 2)];
-							};
-							_snapDistance = _pos2 distance _snapPos;
-							if (_snapDistance < _maxSnapDistance) exitWith{
-								_isSnap = true;
-								_snapPosition = _snapPos;
-								_snapType = "perp";
-							};
-						};
-					} forEach _snapPointsPerp;
+						} forEach _snapPoints;
+					} forEach [[_snapPointsPara,"para"],[_snapPointsPerp,"perp"]];
 				};
 
 				_distance = _pos2 distance _currentTarget;
@@ -214,10 +200,8 @@ if (_class != "") then {
 						_snapPos1 = [_snapPosition select 0, _snapPosition select 1, 0];
 						_pos_snapObj = getposATL _nearestObject;
 						_pos_snapObj set[2, 0];
-
 						_direction = _direction - ([_snapPos1, _pos_snapObj] call BIS_fnc_dirTo);
-					}
-					else {
+					} else {
 						_direction = 0;
 					};
 					if (EPOCH_snapDirection > 0) then {

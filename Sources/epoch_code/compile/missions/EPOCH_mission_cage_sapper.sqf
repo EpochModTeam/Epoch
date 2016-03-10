@@ -51,8 +51,8 @@ while {player distance _sapper < 100 && alive player} do {
 		_sounds = ["sapper_groan0","sapper_groan1","sapper_groan2"];
 		_sound = selectRandom _sounds;
 		_sapper say3D _sound;
-		EPOCH_say3D_PVS = [player, _sapper,(EPOCH_sounds find _sound), Epoch_personalToken];
-		EPOCH_say3D_PVS remoteExec ["EPOCH_server_handle_say3D",2];
+		_say3D_PVS = [player, _sapper,(EPOCH_sounds find _sound), Epoch_personalToken];
+		_say3D_PVS remoteExec ["EPOCH_server_handle_say3D",2];
 	};
 	uiSleep 0.5;
 };

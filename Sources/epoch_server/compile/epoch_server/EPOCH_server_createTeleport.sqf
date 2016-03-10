@@ -12,7 +12,6 @@
     Github:
     https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_server/compile/epoch_server/EPOCH_server_createTeleport.sqf
 */
-
 private ["_class","_debug1","_lightLocation","_light","_deSimulate","_pos","_dir","_ep","_useWorldPos","_pos1","_markerName","_loadBaseTemplateConfig","_pro2","_veh2","_enterClass","_exitClass","_pro1","_veh1","_debugLocation","_debug","_protection","_config","_loadBaseTemplateConfig"];
 
 _loadBaseTemplateConfig = {
@@ -25,7 +24,6 @@ _loadBaseTemplateConfig = {
         _partPos = _center modelToWorld (_x select 1);
 		_partPos set [2,0];
 		if ((_x select 0) isKindOf "Man") then {
-			// { "C_man_hunter_1_F", { 4585.05, 4516.51, 0.201431 }, 273.197 },
 			EPOCH_staticNPCTraderPos pushBack [(_x select 0), _partPos, (_x select 2)];
 		} else {
 			_part = createVehicle [_x select 0, _partPos, [], 0, "CAN_COLLIDE"];

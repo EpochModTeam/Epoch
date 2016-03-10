@@ -11,38 +11,12 @@
 
     Github:
     https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_code/compile/inventory/EPOCH_itemInteractDblClick.sqf
-
-    Example:
-        onLBDblClick = "_this call EPOCH_itemInteractDblClick";
-
-    Parameter(s):
-		_this select 0: CONTROL - control
-        _this select 1: NUMBER - listbox index
-
-	Returns:
-	NOTHING
 */
 private ["_data","_confData","_text","_pic","_config","_craftingConfig"];
-params ["_control","_index"];
-EPOCH_InteractedItem = [];
-
-_text = _control lbText _index;
-_data = _control lbData _index;
-_pic = _control lbPicture _index;
-
-if (_data == "") then {
-  _confData = "getText (_x >> 'displayName') == _text" configClasses(configFile >> "CfgWeapons");
-  if !(_confData isEqualTo[]) then {
-    _data = configName(_confData select 0);
-  };
-};
-
-EPOCH_InteractedItem = [_text,_data,_pic];
-
+_this call EPOCH_selectInventoryItem;
+_data = EPOCH_InteractedItem select 1;
 _config = 'CfgCrafting' call EPOCH_returnConfig;
-_craftingConfig = _config >> _data;
-
-if (isClass (_craftingConfig)) then {
+if (isClass (_config >> _data)) then {
 	(EPOCH_InteractedItem select 0) call EPOCH_crafting_load;
 } else {
 	//TODO: eat, drink, build ... etc

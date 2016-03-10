@@ -97,26 +97,25 @@ if (_dikCode == EPOCH_keysAction) then {
 
 // Player only code
 if (vehicle player == player) then {
-
+	_disableBuildMode = {
+		EPOCH_buildMode = 0;
+		EPOCH_snapDirection = 0;
+		_dt = ["<t size = '0.8' shadow = '0' color = '#99ffffff'>Build Mode Disabled</t>", 0, 1, 5, 2, 0, 1] spawn bis_fnc_dynamictext;
+		EPOCH_Target = objNull;
+		EPOCH_Z_OFFSET = 0;
+		EPOCH_X_OFFSET = 0;
+		EPOCH_Y_OFFSET = 5;
+	};
 	if (_dikCode == EPOCH_keysBuildMode1) then {
 		if (EPOCH_buildMode == 1) then {
-			EPOCH_buildMode = 0;
-			EPOCH_snapDirection = 0;
-			_dt = ["<t size = '0.8' shadow = '0' color = '#99ffffff'>Build Mode Disabled</t>", 0, 1, 5, 2, 0, 1] spawn bis_fnc_dynamictext;
-			EPOCH_Target = objNull;
-			EPOCH_Z_OFFSET = 0;
-			EPOCH_X_OFFSET = 0;
-			EPOCH_Y_OFFSET = 5;
-			// EPOCH_SURVEY = [];
-		}
-		else {
+			call _disableBuildMode;
+		} else {
 			if (EPOCH_playerEnergy > 0) then {
 				EPOCH_stabilityTarget = objNull;
 				EPOCH_buildMode = 1;
 				_dt = ["<t size = '0.8' shadow = '0' color = '#99ffffff'>Build Mode Enabled: Snap alignment</t>", 0, 1, 5, 2, 0, 1] spawn bis_fnc_dynamictext;
 				EPOCH_buildDirection = 0;
-			}
-			else {
+			} else {
 				_dt = ["<t size = '0.8' shadow = '0' color = '#99ffffff'>Need Energy</t>", 0, 1, 5, 2, 0, 1] spawn bis_fnc_dynamictext;
 			};
 		};
@@ -124,16 +123,8 @@ if (vehicle player == player) then {
 	};
 	if (_dikCode == EPOCH_keysBuildMode2) then {
 		if (EPOCH_buildMode == 2) then {
-			EPOCH_buildMode = 0;
-			EPOCH_snapDirection = 0;
-			_dt = ["<t size = '0.8' shadow = '0' color = '#99ffffff'>Build Mode Disabled</t>", 0, 1, 5, 2, 0, 1] spawn bis_fnc_dynamictext;
-			EPOCH_Target = objNull;
-			// EPOCH_SURVEY = [];
-			EPOCH_Z_OFFSET = 0;
-			EPOCH_X_OFFSET = 0;
-			EPOCH_Y_OFFSET = 5;
-		}
-		else {
+			call _disableBuildMode;
+		} else {
 			if (EPOCH_playerEnergy > 0) then {
 				EPOCH_stabilityTarget = objNull;
 				EPOCH_buildMode = 2;

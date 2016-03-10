@@ -13,6 +13,5 @@
     https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_server/compile/epoch_server/EPOCH_precisionPos.sqf
 */
 private["_low"];
-params ["_x","_y","_z"];
-_low = [_x - (_x % 1),_y - (_y % 1),_z - (_z % 1)];
+_low = _this apply {_x - (_x % 1)};
 [_low, _this vectorDiff _low]

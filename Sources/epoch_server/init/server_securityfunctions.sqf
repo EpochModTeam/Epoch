@@ -1283,19 +1283,9 @@ _skn_admincode = compileFinal ("
 	{
 		(uiNamespace getVariable _x) ctrlRemoveAllEventHandlers 'Draw';
 		(uiNamespace getVariable _x) ctrlAddEventHandler['Draw',{
-
 			_getDmgColor = {
-				_color = [1,1,1,1];
 				_dmg = damage _this;
-				if (_dmg >= 0.25) then {_color = [1,1,0,1];
-					if (_dmg >= 0.5) then { _color = [1,0.55,0,1];
-						if (_dmg >= 0.75) then { _color = [1,0,0,1];
-							if (_dmg >= 0.9) then { _color = [0,0,0,1];
-							};
-						};
-					};
-				};
-				_color
+				[0,1,_dmg,1] call EPOCH_colorRange
 			};
 			_display = _this select 0;
 			if ("+_skn_tg_map_player+") then {

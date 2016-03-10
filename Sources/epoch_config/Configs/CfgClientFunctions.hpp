@@ -93,35 +93,30 @@ class CfgClientFunctions
 		class functions
 		{
 			class returnConfig {};
-
+			class colorRange {};
 			class fnc_playerDeath {};
 			class fnc_playerFired {};
 			class fnc_isInsideBuilding {};
 			class fnc_Weather {};
 			class fnc_findSafePos {};
 			class fnc_addItemOverflow {};
-
 			class pushCustomVar {};
 			class itemData {};
 			class itemPicture {};
 			class itemDisplayName {};
 			class SortArrayByDistance {};
-
 			class fnc_findRandomPosBehind {};
 			class fnc_stringLeft {};
 			class fnc_findSapperStalkLocation {};
 			class fnc_dirToFuzzy {};
-
 			class fnc_cursorTarget {};
 		};
-
 		class environment
 		{
 			class client_earthQuake {};
 			class client_loadAnimalBrain {};
 			class client_bitePlayer {};
 		};
-
 		class vehicles
 		{
 			class client_repairVehicle {};
@@ -129,14 +124,12 @@ class CfgClientFunctions
 			class client_fillVehicle {};
 			class client_gearVehicle {};
 		};
-
 		class missions
 		{
 			class mission_accept {};
 			class mission_cage_sapper {};
 			class mission_returnObj {};
 		};
-
 		class inventory {
 			class selectInventoryItem {};
 			class itemInteractClick {};
@@ -148,7 +141,6 @@ class CfgClientFunctions
 			class initUI {};
 			class refeshUI {};
 		};
-
 		class gui {
 			file = "epoch_code\gui\scripts";
 			class onPause {};

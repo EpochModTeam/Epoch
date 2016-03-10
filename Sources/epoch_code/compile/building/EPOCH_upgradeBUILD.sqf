@@ -45,11 +45,7 @@ if (_buildingCountLimit == 0) then { _buildingCountLimit = 200; };
 
 EPOCH_buildOption = 1;
 
-
-
-// check if another player has target
 _targeter = _object getVariable["last_targeter", objNull];
-
 if (!isNull _targeter && _targeter != player && (player distance _object > _targeter distance _object)) exitWith{ EPOCH_stabilityTarget = objNull; false };
 
 _stability = _object getVariable["stability", 100];

@@ -73,8 +73,7 @@ else {
 		if !(isNull _nearestJammer) then{
 			if ((_nearestJammer getVariable["BUILD_OWNER", "-1"]) in[getPlayerUID player, Epoch_my_GroupUID]) then{
 				_ownedJammerExists = true;
-			}
-			else {
+			} else {
 				_buildingAllowed = false;
 				_dt = ["<t size = '0.8' shadow = '0' color = '#99ffffff'>Remove Disallowed: Frequency Blocked</t>", 0, 1, 5, 2, 0, 1] spawn bis_fnc_dynamictext;
 			};
