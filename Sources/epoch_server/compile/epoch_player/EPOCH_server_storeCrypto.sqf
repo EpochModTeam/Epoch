@@ -12,8 +12,7 @@
     Github:
     https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_server/compile/epoch_player/EPOCH_server_storeCrypto.sqf
 */
-private["_bankBalance", "_bankBalanceBefore", "_current_crypto", "_transferBankBalance", "_transferBankBalanceBefore", "_return", "_transferBankData", "_transferTargetUID", "_transferResponse", "_transferAmountIn", "_transferAmountOut", "_transferBalance", "_transferTarget", "_cIndex", "_vars", "_playerNetID", "_bankData", "_tradeArray", "_playerUID", "_response"];
-
+private["_bankBalance", "_bankBalanceBefore", "_current_crypto", "_transferBankBalance", "_transferBankBalanceBefore", "_return", "_transferBankData", "_transferTargetUID", "_transferResponse", "_transferAmountIn", "_transferAmountOut", "_transferBalance", "_transferTarget", "_cIndex", "_vars", "_bankData", "_tradeArray", "_playerUID", "_response"];
 params ["_player","_tradeArray","_token"];
 
 if !([_player, _token] call EPOCH_server_getPToken) exitWith{};
@@ -25,8 +24,6 @@ _response = ["Bank", _playerUID] call EPOCH_fnc_server_hiveGETRANGE;
 
 if ((_response select 0) == 1 && (_response select 1) isEqualType []) then {
 
-	_playerNetID = owner _player;
-
 	_bankData = _response select 1;
 	_bankBalance = 0;
 	_bankBalanceBefore = 0;
@@ -37,7 +34,7 @@ if ((_response select 0) == 1 && (_response select 1) isEqualType []) then {
 
 	// return balance to player
 	if (_tradeArray isEqualTo[]) then {
-		[["bankBalance", _bankBalance], _playerNetID] call EPOCH_sendPublicVariableClient;
+		[["bankBalance", _bankBalance], _player] call EPOCH_sendRemoteExecClient;
 	} else {
 
 		// Transaction Data - TODO add check for validity of transaction
@@ -60,7 +57,7 @@ if ((_response select 0) == 1 && (_response select 1) isEqualType []) then {
 			if (_current_crypto >= _transferAmountIn) then {
 				_bankBalance = _bankBalance + _transferAmountIn;
 				_current_crypto = ((_current_crypto - _transferAmountIn) min _playerCryptoLimit) max 0;
-				_current_crypto remoteExec ['EPOCH_effectCrypto',_playerNetID];
+				_current_crypto remoteExec ['EPOCH_effectCrypto',_player];
 				_vars set[_cIndex, _current_crypto];
 				_player setVariable["VARS", _vars];
 			};
@@ -71,7 +68,7 @@ if ((_response select 0) == 1 && (_response select 1) isEqualType []) then {
 				_bankBalance = _bankBalance - _transferAmountOut;
 				_current_crypto = ((_current_crypto + _transferAmountOut) min _playerCryptoLimit) max 0;
 				// send to player
-				_current_crypto remoteExec ['EPOCH_effectCrypto',_playerNetID];
+				_current_crypto remoteExec ['EPOCH_effectCrypto',_player];
 				_vars set[_cIndex, _current_crypto];
 				_player setVariable["VARS", _vars];
 			};
@@ -104,7 +101,7 @@ if ((_response select 0) == 1 && (_response select 1) isEqualType []) then {
 
 					if (_transferBankBalanceBefore != _transferBankBalance) then {
 						_return = ["Bank", _transferTargetUID, EPOCH_expiresPlayer, [_transferBankBalance]] call EPOCH_fnc_server_hiveSETEX;
-						[["bankBalance", _transferBankBalance], (owner _transferTarget)] call EPOCH_sendPublicVariableClient;
+						[["bankBalance", _transferBankBalance], _transferTarget] call EPOCH_sendRemoteExecClient;
 					};
 				};
 			};

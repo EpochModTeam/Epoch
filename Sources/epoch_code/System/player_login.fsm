@@ -19,7 +19,7 @@ item14[] = {"",7,210,471.000061,145.999908,478.999939,154.000092,0.000000,""};
 item15[] = {"Timeout_No_Respo",4,218,125.000000,875.000000,225.000000,925.000000,0.000000,"Timeout" \n "No Response"};
 item16[] = {"Response",4,218,-150.000000,825.000000,-50.000000,875.000000,0.000000,"Response"};
 item17[] = {"Setup_Player_Var",2,250,-25.000000,1075.000000,75.000000,1125.000000,0.000000,"Setup Player" \n "Variables"};
-item18[] = {"Request_Hive",2,4346,-25.000000,575.000000,75.000000,625.000000,0.000000,"Request Hive"};
+item18[] = {"Request_Hive",2,250,-25.000000,575.000000,75.000000,625.000000,0.000000,"Request Hive"};
 item19[] = {"Timeout_No_Respo",4,218,125.000000,575.000000,225.000000,625.000000,0.000000,"Timeout" \n "No Response"};
 item20[] = {"ERROR_Server_not",2,250,275.000000,875.000000,375.000000,925.000000,0.000000,"ERROR" \n "Server not" \n "Response"};
 item21[] = {"",7,210,471.000000,895.999939,479.000000,904.000061,0.000000,""};
@@ -67,28 +67,25 @@ item62[] = {"true",8,218,-150.000000,-325.000000,-50.000000,-275.000000,0.000000
 item63[] = {"Process_1",2,250,-25.000000,-275.000000,75.000000,-225.000000,0.000000,"Process"};
 item64[] = {"Wait_ArmA_Loading",4,218,-150.000000,-225.000000,-50.000000,-175.000000,0.000000,"Wait ArmA" \n "Loading Screen" \n "Done"};
 item65[] = {"Start_Loading_Sc",2,250,-25.000000,-175.000000,75.000000,-125.000000,0.000000,"Start Loading" \n "Screen"};
-item66[] = {"freshServer",4,218,-325.000000,225.000000,-225.000000,275.000000,0.000000,"freshServer"};
-item67[] = {"Update_Loadingscreen",2,250,-325.000000,300.000000,-225.000000,350.000000,0.000000,"Update" \n "Loadingscreen" \n "Message"};
-item68[] = {"true",8,218,-150.000000,300.000000,-50.000000,350.000000,0.000000,"true"};
-item69[] = {"Timeout_",4,218,125.000000,975.000000,225.000000,1025.000000,0.000000,"" \n "Timeout" \n ""};
-item70[] = {"ERROR_Player_Setup",2,250,275.000000,975.000000,375.000000,1025.000000,0.000000,"ERROR" \n "Player Setup" \n "Invalid"};
-item71[] = {"",7,210,471.000000,996.000000,479.000000,1004.000000,0.000000,""};
-item72[] = {"Server_Version_C",2,250,-25.000000,475.000000,75.000000,525.000000,0.000000,"Server Version" \n "Check"};
-item73[] = {"Version_Okay",4,218,-125.000000,525.000000,-25.000000,575.000000,0.000000,"Version" \n "Okay"};
-item74[] = {"",7,210,471.000000,496.000000,479.000000,504.000000,0.000000,""};
-item75[] = {"ERROR_Server_not_3",2,250,275.000000,575.000000,375.000000,625.000000,0.000000,"ERROR" \n "Server not" \n "Response"};
-item76[] = {"",7,210,471.000000,596.000000,479.000000,604.000000,0.000000,""};
-item77[] = {"new_character",4,218,-250.000000,675.000000,-150.000000,725.000000,10.000000,"new" \n "character"};
-item78[] = {"Hive_Response",4,218,-125.000000,625.000000,-25.000000,675.000000,0.000000,"Hive" \n "Response"};
-item79[] = {"load_old_charact",4,218,-125.000000,725.000000,-25.000000,775.000000,0.000000,"load old" \n "character"};
-item80[] = {"Process_2",2,250,-25.000000,675.000000,75.000000,725.000000,0.000000,"Process"};
-item81[] = {"Open_Gender_Selection",2,250,-400.000000,675.000000,-300.000000,725.000000,0.000000,"Open Gender" \n "Selection Dialog"};
-item82[] = {"Reopen_when_client",4,218,-400.000000,600.000000,-300.000000,650.000000,0.000000,"Reopen" \n "when client hit" \n "escape"};
-item83[] = {"Gender_Selected",4,218,-450.000000,750.000000,-350.000000,800.000000,10.000000,"Gender" \n "Selected"};
-item84[] = {"Timeout",4,218,-350.000000,750.000000,-250.000000,800.000000,0.000000,"Timeout"};
-item85[] = {"Send_character_s",2,250,-400.000000,825.000000,-300.000000,875.000000,0.000000,"Send" \n "character" \n "selection"};
-item86[] = {"Process_3",2,250,-25.000000,775.000000,75.000000,825.000000,0.000000,"Process"};
-item87[] = {"ERROR_Server_not_4",2,250,275.000000,775.000000,375.000000,825.000000,0.000000,"ERROR" \n "Server not" \n "Response"};
+item66[] = {"Timeout_",4,218,125.000000,975.000000,225.000000,1025.000000,0.000000,"" \n "Timeout" \n ""};
+item67[] = {"ERROR_Player_Setup",2,250,275.000000,975.000000,375.000000,1025.000000,0.000000,"ERROR" \n "Player Setup" \n "Invalid"};
+item68[] = {"",7,210,471.000000,996.000000,479.000000,1004.000000,0.000000,""};
+item69[] = {"Server_Version_C",2,250,-25.000000,475.000000,75.000000,525.000000,0.000000,"Server Version" \n "Check"};
+item70[] = {"Version_Okay",4,218,-125.000000,525.000000,-25.000000,575.000000,0.000000,"Version" \n "Okay"};
+item71[] = {"",7,210,471.000000,496.000000,479.000000,504.000000,0.000000,""};
+item72[] = {"ERROR_Server_not_3",2,250,275.000000,575.000000,375.000000,625.000000,0.000000,"ERROR" \n "Server not" \n "Response"};
+item73[] = {"",7,210,471.000000,596.000000,479.000000,604.000000,0.000000,""};
+item74[] = {"new_character",4,218,-250.000000,675.000000,-150.000000,725.000000,10.000000,"new" \n "character"};
+item75[] = {"Hive_Response",4,218,-125.000000,625.000000,-25.000000,675.000000,0.000000,"Hive" \n "Response"};
+item76[] = {"load_old_charact",4,218,-125.000000,725.000000,-25.000000,775.000000,0.000000,"load old" \n "character"};
+item77[] = {"Process_2",2,250,-25.000000,675.000000,75.000000,725.000000,0.000000,"Process"};
+item78[] = {"Open_Gender_Selection",2,250,-400.000000,675.000000,-300.000000,725.000000,0.000000,"Open Gender" \n "Selection Dialog"};
+item79[] = {"Reopen_when_client",4,218,-400.000000,600.000000,-300.000000,650.000000,0.000000,"Reopen" \n "when client hit" \n "escape"};
+item80[] = {"Gender_Selected",4,218,-450.000000,750.000000,-350.000000,800.000000,10.000000,"Gender" \n "Selected"};
+item81[] = {"Timeout",4,218,-350.000000,750.000000,-250.000000,800.000000,0.000000,"Timeout"};
+item82[] = {"Send_character_s",2,250,-400.000000,825.000000,-300.000000,875.000000,0.000000,"Send" \n "character" \n "selection"};
+item83[] = {"Process_3",2,250,-25.000000,775.000000,75.000000,825.000000,0.000000,"Process"};
+item84[] = {"ERROR_Server_not_4",2,250,275.000000,775.000000,375.000000,825.000000,0.000000,"ERROR" \n "Server not" \n "Response"};
 link0[] = {0,62};
 link1[] = {2,3};
 link2[] = {3,7};
@@ -101,7 +98,7 @@ link8[] = {7,9};
 link9[] = {8,48};
 link10[] = {9,8};
 link11[] = {10,28};
-link12[] = {11,72};
+link12[] = {11,69};
 link13[] = {12,13};
 link14[] = {13,14};
 link15[] = {14,42};
@@ -109,17 +106,17 @@ link16[] = {15,20};
 link17[] = {16,60};
 link18[] = {17,24};
 link19[] = {18,19};
-link20[] = {18,78};
-link21[] = {19,75};
+link20[] = {18,75};
+link21[] = {19,72};
 link22[] = {20,21};
-link23[] = {21,71};
-link24[] = {22,87};
+link23[] = {21,68};
+link24[] = {22,84};
 link25[] = {23,25};
 link26[] = {24,50};
-link27[] = {25,74};
+link27[] = {25,71};
 link28[] = {26,10};
 link29[] = {27,49};
-link30[] = {27,69};
+link30[] = {27,66};
 link31[] = {28,43};
 link32[] = {29,1};
 link33[] = {31,21};
@@ -130,68 +127,64 @@ link37[] = {35,11};
 link38[] = {35,36};
 link39[] = {36,37};
 link40[] = {37,38};
-link41[] = {38,74};
+link41[] = {38,71};
 link42[] = {39,34};
 link43[] = {39,40};
-link44[] = {39,66};
-link45[] = {40,41};
-link46[] = {41,42};
-link47[] = {42,38};
-link48[] = {44,45};
-link49[] = {45,4};
-link50[] = {45,46};
-link51[] = {46,47};
-link52[] = {47,48};
-link53[] = {48,14};
-link54[] = {49,17};
-link55[] = {50,51};
-link56[] = {50,53};
-link57[] = {51,52};
-link58[] = {52,29};
-link59[] = {53,54};
-link60[] = {54,55};
-link61[] = {54,56};
-link62[] = {55,57};
-link63[] = {56,59};
-link64[] = {57,58};
-link65[] = {58,52};
-link66[] = {59,58};
-link67[] = {60,15};
-link68[] = {60,61};
-link69[] = {61,27};
-link70[] = {62,63};
-link71[] = {63,64};
-link72[] = {64,65};
-link73[] = {65,2};
-link74[] = {66,67};
-link75[] = {67,68};
-link76[] = {68,39};
+link44[] = {40,41};
+link45[] = {41,42};
+link46[] = {42,38};
+link47[] = {44,45};
+link48[] = {45,4};
+link49[] = {45,46};
+link50[] = {46,47};
+link51[] = {47,48};
+link52[] = {48,14};
+link53[] = {49,17};
+link54[] = {50,51};
+link55[] = {50,53};
+link56[] = {51,52};
+link57[] = {52,29};
+link58[] = {53,54};
+link59[] = {54,55};
+link60[] = {54,56};
+link61[] = {55,57};
+link62[] = {56,59};
+link63[] = {57,58};
+link64[] = {58,52};
+link65[] = {59,58};
+link66[] = {60,15};
+link67[] = {60,61};
+link68[] = {61,27};
+link69[] = {62,63};
+link70[] = {63,64};
+link71[] = {64,65};
+link72[] = {65,2};
+link73[] = {66,67};
+link74[] = {67,68};
+link75[] = {68,32};
+link76[] = {69,23};
 link77[] = {69,70};
-link78[] = {70,71};
-link79[] = {71,32};
-link80[] = {72,23};
-link81[] = {72,73};
-link82[] = {73,18};
-link83[] = {74,76};
-link84[] = {75,76};
-link85[] = {76,31};
-link86[] = {77,81};
-link87[] = {78,80};
-link88[] = {79,86};
-link89[] = {80,77};
-link90[] = {80,79};
-link91[] = {81,82};
-link92[] = {81,83};
-link93[] = {81,84};
-link94[] = {82,81};
-link95[] = {83,85};
-link96[] = {84,85};
-link97[] = {85,79};
-link98[] = {86,16};
-link99[] = {86,22};
-link100[] = {87,31};
-globals[] = {0.000000,0,0,0,0,640,480,1,244,6316128,1,-440.526886,393.480316,1305.898438,88.390503,585,854,1};
-window[] = {2,-1,-1,-1,-1,819,1732,3024,52,3,603};
+link78[] = {70,18};
+link79[] = {71,73};
+link80[] = {72,73};
+link81[] = {73,31};
+link82[] = {74,78};
+link83[] = {75,77};
+link84[] = {76,83};
+link85[] = {77,74};
+link86[] = {77,76};
+link87[] = {78,79};
+link88[] = {78,80};
+link89[] = {78,81};
+link90[] = {79,78};
+link91[] = {80,82};
+link92[] = {81,82};
+link93[] = {82,76};
+link94[] = {83,16};
+link95[] = {83,22};
+link96[] = {84,31};
+globals[] = {0.000000,0,0,0,0,640,480,1,247,6316128,1,-344.422272,46.278961,704.864319,-55.178772,439,854,1};
+window[] = {2,-1,-1,-1,-1,871,1784,2768,104,3,457};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -211,7 +204,6 @@ class FSM
        "if (_debug) then {" \n
        "	diag_log ""EPOCH-LOGIN: Init"";" \n
        "};" \n
-       "" \n
        "" \n
        "_finalPlayerObjectCheck = {" \n
        "	_logic1 = (_mass == (loadAbs _playerObject));" \n
@@ -472,17 +464,11 @@ class FSM
        "{" \n
        "	missionNamespace setVariable[(format[""EPOCH_player%1"", EPOCH_customVars select _forEachIndex]), _x];" \n
        "} forEach _playerVariables;" \n
-       "" \n
        """Loading Player Variables... Please wait!"" call Epoch_updateLoadingScreen;" \n
-       "" \n
-       "EPOCH_lastPlayerPos = getPosATL vehicle player;" \n
-       "" \n
        "progressLoadingScreen 0.7;" \n
-       "" \n
        "if (_debug) then {" \n
        "	diag_log ""EPOCH-LOGIN: Setup Player Variables"";" \n
-       "};" \n
-       ""/*%FSM</STATEINIT""">*/;
+       "};"/*%FSM</STATEINIT""">*/;
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
       class Links
       {
@@ -735,7 +721,8 @@ class FSM
     class Check_Server_1
     {
       name = "Check_Server_1";
-      init = /*%FSM<STATEINIT""">*/"progressLoadingScreen 0.3;"/*%FSM</STATEINIT""">*/;
+      init = /*%FSM<STATEINIT""">*/"progressLoadingScreen 0.3;" \n
+       """Server initializing... Please wait!"" call Epoch_updateLoadingScreen;"/*%FSM</STATEINIT""">*/;
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
       class Links
       {
@@ -749,25 +736,14 @@ class FSM
           action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
         };
         /*%FSM</LINK>*/
-        /*%FSM<LINK "freshServer">*/
-        class freshServer
-        {
-          priority = 0.000000;
-          to="Update_Loadingscreen";
-          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"uiNamespace getVariable ['Epoch_freshServer', false]"/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-        };
-        /*%FSM</LINK>*/
         /*%FSM<LINK "Server_Ready">*/
         class Server_Ready
         {
           priority = 0.000000;
           to="Check_Server";
           precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"!isNil ""EPOCH_SERVER"""/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/"_serverUptime = EPOCH_SERVER;" \n
-           "EPOCH_SERVER = nil;"/*%FSM</ACTION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!isNil ""EPOCH_SERVER_READY"""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/"EPOCH_SERVER_READY = nil;"/*%FSM</ACTION""">*/;
         };
         /*%FSM</LINK>*/
       };
@@ -943,7 +919,8 @@ class FSM
           to="FINISH";
           precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
           condition=/*%FSM<CONDITION""">*/"preloadCamera _playerPos"/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/"call compile _playerGroupOnline;"/*%FSM</ACTION""">*/;
+          action=/*%FSM<ACTION""">*/"call compile _remoteExecClientFnc;" \n
+           "call compile _extraPayload;"/*%FSM</ACTION""">*/;
         };
         /*%FSM</LINK>*/
       };
@@ -1106,29 +1083,6 @@ class FSM
           to="Version_Check";
           precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
           condition=/*%FSM<CONDITION""">*/"true"/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-        };
-        /*%FSM</LINK>*/
-      };
-    };
-    /*%FSM</STATE>*/
-    /*%FSM<STATE "Update_Loadingscreen">*/
-    class Update_Loadingscreen
-    {
-      name = "Update_Loadingscreen";
-      init = /*%FSM<STATEINIT""">*/"uiNamespace setVariable ['Epoch_freshServer', false];" \n
-       "" \n
-       """Server initializing... Please wait!"" call Epoch_updateLoadingScreen;"/*%FSM</STATEINIT""">*/;
-      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
-      class Links
-      {
-        /*%FSM<LINK "true">*/
-        class true
-        {
-          priority = 0.000000;
-          to="Check_Server_1";
-          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
           action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
         };
         /*%FSM</LINK>*/
@@ -1346,20 +1300,19 @@ class FSM
           to="Check_New_Player";
           precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
           condition=/*%FSM<CONDITION""">*/"!isNil ""_C_SET"""/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/"_array = _C_SET;" \n
-           "_C_SET = nil;" \n
-           "_playerObject = _array deleteAt 0;" \n
-           "_playerVariables = _array deleteAt 0;" \n
-           "_currentWeapon = _array deleteAt 0;" \n
-           "_mass = _array deleteAt 0;" \n
-           "Epoch_my_GroupUID = _array deleteAt 0;" \n
-           "Epoch_canBeRevived = _array deleteAt 0;" \n
-           "Epoch_personalToken = _array deleteAt 0;" \n
-           "reverse _serverUptime;" \n
-           "_serverUptime pushBack (_array deleteAt 0);" \n
-           "reverse _serverUptime;" \n
-           "_serverUptime call EPOCH_client_publicEH;" \n
-           "_playerGroupOnline = _array deleteAt 0;" \n
+          action=/*%FSM<ACTION""">*/"diag_log str(_C_SET);" \n
+           "_playerObject = _C_SET deleteAt 0;" \n
+           "_playerVariables = _C_SET deleteAt 0;" \n
+           "_currentWeapon = _C_SET deleteAt 0;" \n
+           "_mass = _C_SET deleteAt 0;" \n
+           "" \n
+           "Epoch_my_GroupUID = _C_SET deleteAt 0;" \n
+           "Epoch_canBeRevived = _C_SET deleteAt 0;" \n
+           "Epoch_personalToken = _C_SET deleteAt 0;" \n
+           "Epoch_my_Group = _C_SET deleteAt 0;" \n
+           "" \n
+           "_remoteExecClientFnc = _C_SET deleteAt 0;" \n
+           "_extraPayload = _C_SET deleteAt 0;" \n
            "" \n
            ""/*%FSM</ACTION""">*/;
         };

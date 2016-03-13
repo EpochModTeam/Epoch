@@ -46,7 +46,7 @@ hintSilent parseText format ["
 	<t size='1.15' font='puristaLight' align='left'>Server uptime: </t><t size='1.15' font='puristaLight' align='right'>%14h %15m</t><br/>
 	<t size='1.15' font='puristaLight' align='left'>Server FPS: </t><t size='1.15' font='puristaLight' align='right'>%16</t><br/>",
 	getText(configFile >> "CfgMods" >> "Epoch" >> "version"),
-	getNumber(configFile >> "CfgEpochBuild" >> "build"),
+	getNumber(missionConfigFile >> "CfgEpochBuild" >> "build"),
 	(getFatigue player),
 	(damage player),
 	(isBleeding player),

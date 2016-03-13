@@ -53,7 +53,7 @@ if ((_response select 0) == 1 && (_response select 1) isEqualType []) then {
 			} forEach [_contentArray select 3, _contentArray select 4];
 
 			{
-				[["groupUpdate", _contentArray], _x] call EPOCH_sendPublicVariableClient;
+				[["groupUpdate", _contentArray], _x] call EPOCH_sendRemoteExecClient;
 			} forEach (allPlayers select {getPlayerUID _x in _groupMemberPUID});
 
 			// Save Group Data

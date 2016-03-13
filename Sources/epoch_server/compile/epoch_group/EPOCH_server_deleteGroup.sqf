@@ -23,7 +23,7 @@ if (_groupID != "") then {
 
 	{
 		_x setVariable ["GROUP", nil];
-		[["resetGroup", true], (owner _x)] call EPOCH_sendPublicVariableClient;
+		[["resetGroup", true], _x] call EPOCH_sendRemoteExecClient;
 		[_x] joinSilent (createGroup west);
 	} forEach (allPlayers select {(_x getVariable["GROUP", ""]) == _groupID});
 

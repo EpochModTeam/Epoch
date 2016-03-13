@@ -1,2 +1,2 @@
 Epoch_loadFailed = true;
-publicVariable "Epoch_loadFailed";
+publicVariableServer "Epoch_loadFailed";

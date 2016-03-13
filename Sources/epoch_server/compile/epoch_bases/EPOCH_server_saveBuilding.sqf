@@ -34,8 +34,7 @@ if (isText _config) then {
 		if !(EPOCH_StorageSlots isEqualTo[]) then {
 
 			_slot = EPOCH_StorageSlots deleteAt 0;
-			EPOCH_StorageSlotsCount = count EPOCH_StorageSlots;
-			publicVariable "EPOCH_StorageSlotsCount";
+			missionNamespace setVariable ["EPOCH_StorageSlotsCount",count EPOCH_StorageSlots, true];
 
 			// Secure and insecure storage
 			_vehiclePos = getposATL _vehicle;

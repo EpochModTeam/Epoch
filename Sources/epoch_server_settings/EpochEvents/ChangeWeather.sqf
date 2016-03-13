@@ -49,8 +49,7 @@ if !(EPOCH_WeatherStaticForecast isEqualTo []) then {
 _rnd_temp = if (sunOrMoon < 1) then { (random 35) + 15 } else { (random 75) + 50 };
 
 // push temp to all players and JIP.
-EPOCH_CURRENT_WEATHER = if (isNil "_tempOVRD") then { _rnd_temp } else { _tempOVRD };
-publicVariable "EPOCH_CURRENT_WEATHER";
+missionNamespace setVariable ["EPOCH_CURRENT_WEATHER", if (isNil "_tempOVRD") then { _rnd_temp } else { _tempOVRD }, true];
 
 // fog, rain, overcast.
 _fog = if (isNil "_fogOVRD") then { [random 0.2, random 0.2, random 20] } else { _fogOVRD };

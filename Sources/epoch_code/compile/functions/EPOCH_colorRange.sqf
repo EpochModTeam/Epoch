@@ -29,6 +29,6 @@ _ratio = 2 * (_value-_minimum) / (_maximum - _minimum);
 _b = 0 max (255*(1 - _ratio));
 _r = 0 max (255*(_ratio - 1));
 _g = (255 - _b - _r);
-_return = [_r, _g, _b] apply {linearConversion [0, 255, _x, 0, 1, true]}
+_return = [_r, _g, _b] apply {linearConversion [0, 255, _x, 0, 1, true]};
 _return pushBack _alpha;
 _return

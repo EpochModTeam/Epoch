@@ -273,5 +273,5 @@ if (_slot != -1) then {
 	};
 
 	// Send completed trade back to player
-	[["tradeComplete", [_returnIn, _returnOut]], _player] call EPOCH_sendPublicVariableClient;
+	[["tradeComplete", [_returnIn, _returnOut]], _player] call EPOCH_sendRemoteExecClient;
 };

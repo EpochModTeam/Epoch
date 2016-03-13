@@ -24,6 +24,9 @@ _skn_systemDebug3 = getText(_cfg_systemDebug >> "systemChat3");
 _skn_systemDebug4 = getText(_cfg_systemDebug >> "systemChat4");
 _skn_systemDebug5 = getText(_cfg_systemDebug >> "systemChat5");
 
+_cfg_remoteExecClient = (_config >> "remoteExecClient");
+_remoteExecClient_NAMES = [_cfg_remoteExecClient, "functions", []] call EPOCH_fnc_returnConfigEntry;
+
 _cfg_limits = (_config >> "limits");
 _skn_playerCryptoLimit = [_cfg_limits, "playerCrypto", 250000] call EPOCH_fnc_returnConfigEntry;
 
@@ -92,8 +95,7 @@ _skn_customVariablesCheck = [_serverSettingsConfig, "antihack_customVariablesChe
 _skn_customVariables = [_serverSettingsConfig, "antihack_customVariables", []] call EPOCH_fnc_returnConfigEntry;
 _loots = ["CfgEpochClient", "lootClasses", EPOCH_lootClasses] call EPOCH_fnc_returnConfigEntryV2;
 
-_skn_PVC_NAMES = ['bankBalance', 'resetGroup', 'groupUpdate', 'groupUidUpdate', 'healPlayer','tradeComplete'];
-_rndVAR_Count = 83 + (count _skn_PVC_NAMES); // 82 = number of (_skn_rndVA deleteAt 0) uses + _skn_PVC_NAMES count
+_rndVAR_Count = 84 + (count _remoteExecClient_NAMES); // 84 = number of (_skn_rndVA deleteAt 0)
 _skn_rndVA = call compile('epochserver' callExtension format['810|%1', _rndVAR_Count]);
 
 EPOCH_hiveWhitelistVarsArray = [];
@@ -113,27 +115,28 @@ if (_skn_customVariablesCheck) then{
 };
 
 // For client PVC
+_rnd_strings_REC = [];
 _skn_PVC_INDEX = _skn_rndVA deleteAt 0;
 {
-	_ret = EPOCH_SERVER pushBack (_skn_rndVA deleteAt 0);
-}count _skn_PVC_NAMES;
+	_ret = _rnd_strings_REC pushBack (_skn_rndVA deleteAt 0);
+}count _remoteExecClient_NAMES;
 
-// [["function", _transferBankBalance],owner _transferTarget]
-EPOCH_sendPublicVariableClient = compileFinal ("
+// [["function", _transferBankBalance],_transferTarget]
+EPOCH_sendRemoteExecClient = compileFinal ("
 	private '_index';
-	_index = "+str _skn_PVC_NAMES+" find (_this select 0 select 0);
+	_index = "+str _remoteExecClient_NAMES+" find (_this select 0 select 0);
 	if (_index != -1) then {
-		["+str EPOCH_SERVER+" select _index, _this select 0 select 1] remoteExec ['EPOCH_"+_skn_PVC_INDEX+"',(_this select 1)];
+		["+str _rnd_strings_REC+" select _index, _this select 0 select 1] remoteExec ['EPOCH_"+_skn_PVC_INDEX+"',(_this select 1)];
 	};
 ");
-// [["serverMessage",["str_epoch_restart_in",5]]]
-EPOCH_sendPublicVariableAll = compileFinal("
-private '_index';
-_index = "+str _skn_PVC_NAMES+" find(_this select 0 select 0);
-if (_index != -1) then{
-	["+str EPOCH_SERVER+" select _index, _this select 0 select 1] remoteExec ['"+_skn_PVC_INDEX+"',-2, true];
-};
-");
+
+// build dynamic RE-C functions
+_remoteExecClientStr = "EPOCH_"+(_skn_PVC_INDEX)+" = {params [""_function"",""_data""];switch (_function) do {";
+{
+	missionNamespace setVariable [_x, compileFinal ([_cfg_remoteExecClient, _x, ""] call EPOCH_fnc_returnConfigEntry), true];
+	_remoteExecClientStr = _remoteExecClientStr + format['case "%1": %1;',_x];
+} forEach _remoteExecClient_NAMES;
+_remoteExecClientStr = _remoteExecClientStr + "};};";
 
 _skn_AH_rndVarVehicle = _skn_rndVA deleteAt 0;
 _skn_AH_rndVarPlayer  = _skn_rndVA deleteAt 0;
@@ -144,7 +147,11 @@ EPOCH_server_getPToken = compileFinal ("private['_ret','_var'];_ret = false;if (
 EPOCH_server_setPToken = compileFinal ("private '_var';_var = 'epochserver' callExtension '810';_this setVariable ['"+_skn_AH_rndVarPlayer+"',_var];_var");
 
 if (!_skn_enableAntihack) exitWith {
-	EPOCH_server_pushPlayer = compileFinal ("_C_SET = _this select 2;_C_SET pushBack '"+_skn_PVC_INDEX+"';_C_SET pushBack '';['_C_SET', _C_SET] remoteExec ['EPOCH_playerLoginInit',(_this select 0)];");
+	EPOCH_server_pushPlayer = compileFinal ("
+	_C_SET = _this select 2;
+	_C_SET pushBack '"+_remoteExecClientStr+"';
+	_C_SET pushBack '';
+	['_C_SET', _C_SET] remoteExec ['EPOCH_playerLoginInit',(_this select 0)];");
 	EPOCH_server_isPAdmin = compileFinal ("false");
 	EPOCH_server_Authed = compileFinal ("true");
 	EPOCH_server_disconnect = compileFinal("true");
@@ -530,10 +537,10 @@ EPOCH_server_pushPlayer = compileFinal ("
 		(_this select 0) publicVariableClient '"+_skn_Admin_Code+"';
 		(_this select 0) publicVariableClient '"+_skn_pv_adminLog+"';
 		(_this select 0) publicVariableClient '"+_skn_pv_hackerLog+"';
-		_C_SET pushBack '"+_skn_PVC_INDEX+"';
+		_C_SET pushBack '"+_remoteExecClientStr+"';
 		_C_SET pushBack '[] spawn "+_skn_Admin_Init+"';
 	} else {
-		_C_SET pushBack '"+_skn_PVC_INDEX+"';
+		_C_SET pushBack '"+_remoteExecClientStr+"';
 		_C_SET pushBack '[] spawn "+_skn_AH_Init+"';
 	};
 	['_C_SET', _C_SET] remoteExec ['EPOCH_playerLoginInit',(_this select 0)];
@@ -1066,7 +1073,7 @@ call compile ("'"+_skn_doAdminRequest+"' addPublicVariableEventHandler {
 	if (_case == 103) then {
 		_playerObj = objectFromNetId _content;
 		_playerObj setDamage 0;
-		[['healPlayer'], owner _playerObj] call EPOCH_sendPublicVariableClient;
+		[['healPlayer'], _playerObj] call EPOCH_sendRemoteExecClient;
 		if (_playerObj == _admin) then {
 			['Healed Self',0] call "+_skn_server_adminLog+";
 		} else {

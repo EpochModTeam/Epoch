@@ -14,7 +14,6 @@
 */
 _startTime = diag_tickTime;
 Epoch_ServerVersion = getText(configFile >> "CfgMods" >> "Epoch" >> "version");
-EPOCH_SERVER = [];
 diag_log format["Epoch: Starting ArmA3 Epoch Server, Version %1",Epoch_ServerVersion];
 
 _abortAndError = {
@@ -123,7 +122,7 @@ for "_i" from 0 to 9 do {
 
 //Execute Server Functions
 diag_log "Epoch: Loading buildings";
-EPOCH_BuildingSlotsLimit call EPOCH_fnc_server_loadBuildings;
+EPOCH_BuildingSlotsLimit call EPOCH_server_loadBuildings;
 
 diag_log "Epoch: Loading teleports and static props";
 call EPOCH_server_createTeleport;
@@ -189,10 +188,7 @@ setTimeMultiplier ([_serverSettingsConfig, "timeMultiplier", 1] call EPOCH_fnc_r
 // globalize tax rate
 EPOCH_taxRate = [_serverSettingsConfig, "taxRate", 0.1] call EPOCH_fnc_returnConfigEntry;
 publicVariable "EPOCH_taxRate";
-
-if !(EPOCH_SERVER isEqualTo []) then {
-    publicVariable "EPOCH_SERVER";
-};
+EPOCH_SERVER_READY = true;
+publicVariable "EPOCH_SERVER_READY";
 publicVariable "Epoch_ServerVersion";
-
 diag_log format ["Epoch: Server Start Complete: %1 seconds",diag_tickTime-_startTime];

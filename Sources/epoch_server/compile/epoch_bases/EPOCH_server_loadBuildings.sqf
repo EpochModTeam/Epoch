@@ -145,6 +145,5 @@ for "_i" from 0 to _this do {
 		EPOCH_BuildingSlots set [_i,0];
 	};
 };
-EPOCH_BuildingSlotCount = {_x == 0} count EPOCH_BuildingSlots;
-publicVariable "EPOCH_BuildingSlotCount";
+missionNamespace setVariable ["EPOCH_BuildingSlotCount", {_x == 0} count EPOCH_BuildingSlots, true];
 true

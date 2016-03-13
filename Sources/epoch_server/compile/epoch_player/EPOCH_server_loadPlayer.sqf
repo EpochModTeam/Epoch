@@ -13,10 +13,9 @@
     https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_server/compile/epoch_player/EPOCH_server_loadPlayer.sqf
 */
 
-private ["_arr","_uniform","_class","_vest","_vars","_canBeRevived","_dir","_location","_group","_apperance","_goggles","_headgear","_backpack","_weaponsAndItems","_linkedItems","_normalMagazines","_itemsInContainers","_weaponsInContainers","_wMags","_wMagsArray","_equipped","_weapon","_type","_attachments","_currWeap","_found","_contentArray","_playerGroup","_response","_reject","_fnc_addItemToX","_worldspace","_prevInstance","_medical","_server_vars","_hitpoints","_deadPlayer","_alreadyDead","_newPlyr","_playerUID","_serverSettingsConfig","_player","_instanceID","_playerNetID"];
-
+private ["_arr","_uniform","_class","_vest","_vars","_canBeRevived","_dir","_location","_group","_apperance","_goggles","_headgear","_backpack","_weaponsAndItems","_linkedItems","_normalMagazines","_itemsInContainers","_weaponsInContainers","_wMags","_wMagsArray","_equipped","_weapon","_type","_attachments","_currWeap","_found","_playerGroupArray","_playerGroup","_response","_reject","_fnc_addItemToX","_worldspace","_prevInstance","_medical","_server_vars","_hitpoints","_deadPlayer","_alreadyDead","_newPlyr","_playerUID","_serverSettingsConfig","_player","_instanceID","_playerNetID"];
 _reject = true;
-
+_playerGroupArray = [];
 _fnc_addItemToX = {
 	private ["_itemSlot","_itemqtys","_newPlyr"];
 	_newPlyr = _this select 0;
@@ -283,29 +282,26 @@ if (_this isEqualType []) then {
 						_response = ["Group", _playerGroup] call EPOCH_fnc_server_hiveGETRANGE;
 						_found = false;
 						if ((_response select 0) == 1 && (_response select 1) isEqualType [] && !((_response select 1) isEqualTo[])) then {
-							_contentArray = _response select 1;
+							_playerGroupArray = _response select 1;
 							_found = _playerGroup == _playerUID;
 							if (!_found) then {
 									{
 										if (_x select 0 == _playerUID) exitWith{
 											_found = true;
 										};
-									}forEach(_contentArray select 4);
+									}forEach(_playerGroupArray select 4);
 							};
 							if (!_found) then {
 									{
 										if (_x select 0 == _playerUID) exitWith{
 											_found = true;
 										};
-									}forEach(_contentArray select 3);
+									}forEach(_playerGroupArray select 3);
 							};
 							if (_found) then {
-								// send group data to player
-								[["groupUpdate", _contentArray], _playerNetID] call EPOCH_sendPublicVariableClient;
 								_newPlyr setVariable["GROUP", _playerGroup];
 							};
 						};
-
 						if (!_found) then {
 							_playerGroup = "";
 						};
@@ -326,7 +322,8 @@ if (_this isEqualType []) then {
 					if (!_canBeRevived) then {
 						_newPlyr setVariable["REVIVE", _canBeRevived]
 					};
-					[_playerNetID, _playerUID, [_newPlyr, _vars, _currWeap, loadAbs _newPlyr, _playerGroup, _canBeRevived, _newPlyr call EPOCH_server_setPToken]] call EPOCH_server_pushPlayer;
+
+					[_playerNetID, _playerUID, [_newPlyr, _vars, _currWeap, loadAbs _newPlyr, _playerGroup, _canBeRevived, _newPlyr call EPOCH_server_setPToken,_playerGroupArray]] call EPOCH_server_pushPlayer;
 
 					_newPlyr setVariable["SETUP", true, true];
 				};

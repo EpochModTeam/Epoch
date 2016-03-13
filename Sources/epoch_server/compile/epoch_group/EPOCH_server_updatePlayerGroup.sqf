@@ -80,7 +80,7 @@ if ((_response select 0) == 1 && (_response select 1) isEqualType []) then {
 		{
 			_x setVariable ["GROUP", nil];
 			[_x] joinSilent (createGroup west);
-			[["resetGroup", true], (owner _x)] call EPOCH_sendPublicVariableClient;
+			[["resetGroup", true], _x] call EPOCH_sendRemoteExecClient;
 		} forEach (allPlayers select {getPlayerUID _x == _selectedPlayerUID});
 
 		{
@@ -108,7 +108,7 @@ if ((_response select 0) == 1 && (_response select 1) isEqualType []) then {
 	};
 
 	{
-		[["groupUpdate", _contentArray], (owner _x)] call EPOCH_sendPublicVariableClient;
+		[["groupUpdate", _contentArray], _x] call EPOCH_sendRemoteExecClient;
 	} forEach (allPlayers select {(_x getVariable["GROUP", ""]) == _groupID});
 
 	// Save Group Data

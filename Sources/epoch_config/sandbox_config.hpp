@@ -1,5 +1,5 @@
 /*
-	Epoch Mod Sandbox Survival Gamemode 
+	Epoch Mod Sandbox Survival Gamemode
 
 	Author: Epoch Mod Team - EpochMod.com
 
@@ -22,7 +22,7 @@ respawnDelay = 600;
 respawnDialog = 0;
 respawnButton = 0;
 respawnOnStart = -1;
-
+onPauseScript = "epoch_code\gui\scripts\Epoch_onPause.sqf";
 onLoadMission= "Epoch";
 OnLoadIntro = "Welcome to Epoch Mod";
 loadScreen = "\x\addons\a3_epoch_assets\pictures\loadScreen_ca.paa";

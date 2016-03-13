@@ -16,6 +16,17 @@ class CfgSecConf
 {
     debug = false;
 
+    class remoteExecClient{
+        functions[] = {"bankBalance", "resetGroup", "groupUpdate", "groupUidUpdate", "healPlayer","tradeComplete"};
+        // code
+        bankBalance = "EPOCH_bankBalance = _data;";
+        resetGroup = "Epoch_my_Group = []; Epoch_my_GroupUID = '';";
+        groupUpdate = "Epoch_my_Group = _data; call EPOCH_Group_update;";
+        groupUidUpdate = "Epoch_my_GroupUID = _data;";
+        healPlayer = "{missionNamespace setVariable[format['EPOCH_player%1', _x], EPOCH_defaultVars select(EPOCH_customVars find _x)]} forEach['Temp','Hunger','Thirst','Toxicity','Stamina','HitPoints','BloodP','Alcohol','Radiation'];";
+        tradeComplete = "EPOCH_TRADE_COMPLETE = _data;";
+    };
+
     class limits {
         playerCrypto = 250000;
     };
