@@ -1,9 +1,9 @@
-[New] Split gamemode from main assets, all epoch client gamemode code and configs are now found in the mission file under APL-SA license.
+[New] Split gamemode from main assets, all epoch client gamemode code and configs are now found in the mission file under APL-SA license. https://github.com/EpochModTeam/Epoch
 [Added] Player Karma stat is now effected by Arma 3 rating system via Event Handler.
 [Changed] Moved Cultist and Sapper permanently to enemy side.
 [Changed] Disabled remote sensors on server and client as all AI Epoch is locally controlled. https://community.bistudio.com/wiki/disableRemoteSensors
 [Changed] Repacked all pbo's to make use of the new 32-bit P3D binarization process. https://dev.arma3.com/post/techrep-00026
-[Changed] Make use of many new SQF commands instead of slower SQF logic.
+[Changed] Massive code overhaul to make use of many new SQF commands instead of slower SQF logic.
 [Changed] Increased the amount of Krypto a player can hold from 25k to 250k.
 [Changed] Further improve loot positions in existing maps and add more missing positions for CUP maps.
 [Changed] General cleanup and reorganizing of files.
