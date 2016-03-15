@@ -217,8 +217,7 @@ for "_i" from 1 to _maxStorageLimit do {
 	};
 };
 
-EPOCH_StorageSlotsCount = count EPOCH_StorageSlots;
-publicVariable "EPOCH_StorageSlotsCount";
+missionNamespace setVariable ['EPOCH_StorageSlotsCount', count EPOCH_StorageSlots, true];
 
 diag_log format ["Storage SPAWN TIMER: %1 slots left: %2", diag_tickTime - _diag, EPOCH_StorageSlotsCount];
 

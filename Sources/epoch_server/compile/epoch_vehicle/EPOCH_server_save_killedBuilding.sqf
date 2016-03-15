@@ -25,8 +25,7 @@ if (!isNull _building) then {
 		_vehHiveKey = format ["%1:%2", (call EPOCH_fn_InstanceID), _vehSlot];
 		["Building", _vehHiveKey] call EPOCH_fnc_server_hiveDEL;
 		EPOCH_BuildingSlots set [_vehSlot, 0];
-		EPOCH_BuildingSlotCount = { _x == 0 } count EPOCH_BuildingSlots;
-		publicVariable "EPOCH_BuildingSlotCount";
+		missionNamespace setVariable ['EPOCH_BuildingSlotCount', { _x == 0 } count EPOCH_BuildingSlots, true];
 
 		['BuildingKilled', format["%1 was killed by %2 at %3", typeOf _building, _killer, getPosATL _building]] call EPOCH_fnc_server_hiveLog;
 	};

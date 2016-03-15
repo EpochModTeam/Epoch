@@ -13,7 +13,7 @@
     https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_server/init/server_init.sqf
 */
 _startTime = diag_tickTime;
-Epoch_ServerVersion = getText(configFile >> "CfgMods" >> "Epoch" >> "version");
+missionNamespace setVariable ['Epoch_ServerVersion', getText(configFile >> "CfgMods" >> "Epoch" >> "version"), true];
 diag_log format["Epoch: Starting ArmA3 Epoch Server, Version %1",Epoch_ServerVersion];
 
 _abortAndError = {
@@ -186,9 +186,9 @@ if (_dateChanged) then {
 setTimeMultiplier ([_serverSettingsConfig, "timeMultiplier", 1] call EPOCH_fnc_returnConfigEntry);
 
 // globalize tax rate
-EPOCH_taxRate = [_serverSettingsConfig, "taxRate", 0.1] call EPOCH_fnc_returnConfigEntry;
-publicVariable "EPOCH_taxRate";
-EPOCH_SERVER_READY = true;
-publicVariable "EPOCH_SERVER_READY";
-publicVariable "Epoch_ServerVersion";
+missionNamespace setVariable ["EPOCH_taxRate", [_serverSettingsConfig, "taxRate", 0.1] call EPOCH_fnc_returnConfigEntry, true];
+
+// start accepting logins
+missionNamespace setVariable ["EPOCH_SERVER_READY", true, true];
+
 diag_log format ["Epoch: Server Start Complete: %1 seconds",diag_tickTime-_startTime];

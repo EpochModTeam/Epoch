@@ -76,8 +76,8 @@ if (_slot != -1) then {
 								["Vehicle", _vehHiveKey, _VAL] call EPOCH_fnc_server_hiveSET;
 
 								EPOCH_VehicleSlots pushBack _vehSlot;
-								EPOCH_VehicleSlotCount = count EPOCH_VehicleSlots;
-								publicVariable "EPOCH_VehicleSlotCount";
+
+								missionNamespace setVariable ['EPOCH_VehicleSlotCount', count EPOCH_VehicleSlots, true];
 
 								_makeTradeIn = true;
 							};
@@ -199,8 +199,7 @@ if (_slot != -1) then {
 									_vehslot = EPOCH_VehicleSlots select 0;
 									// Remove from available slots
 									EPOCH_VehicleSlots = EPOCH_VehicleSlots - [_vehslot];
-									EPOCH_VehicleSlotCount = count EPOCH_VehicleSlots;
-									publicVariable "EPOCH_VehicleSlotCount";
+									missionNamespace setVariable ['EPOCH_VehicleSlotCount', count EPOCH_VehicleSlots, true];
 									_vehicleBought = true;
 
 									// Group access

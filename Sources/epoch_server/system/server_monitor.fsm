@@ -11,8 +11,8 @@ item6[] = {"Save_Players",4,218,450.000000,-375.000000,550.000000,-325.000000,3.
 item7[] = {"Cleanup",4,218,750.000000,-375.000000,850.000000,-325.000000,8.000000,"Cleanup"};
 item8[] = {"Events",4,218,450.000000,-225.000000,550.000000,-175.000000,0.000000,"Events"};
 item9[] = {"Save_Vehicles",4,218,450.000000,-300.000000,550.000000,-250.000000,4.000000,"Save" \n "Vehicles"};
-item10[] = {"Cleanup_Handler",4,4314,750.000000,-450.000000,850.000000,-400.000000,8.000000,"Cleanup" \n "Handler"};
-item11[] = {"Server_FPS",4,218,600.000000,-225.000000,700.000000,-175.000000,0.000000,"Server FPS"};
+item10[] = {"Cleanup_Handler",4,218,750.000000,-450.000000,850.000000,-400.000000,8.000000,"Cleanup" \n "Handler"};
+item11[] = {"Server_FPS",4,4314,600.000000,-225.000000,700.000000,-175.000000,0.000000,"Server FPS"};
 link0[] = {0,1};
 link1[] = {1,2};
 link2[] = {2,3};
@@ -33,8 +33,8 @@ link16[] = {8,2};
 link17[] = {9,2};
 link18[] = {10,2};
 link19[] = {11,2};
-globals[] = {25.000000,1,0,0,0,640,480,1,3,6316128,1,415.627258,1020.872498,-143.100464,-688.331299,948,854,1};
-window[] = {2,-1,-1,-1,-1,786,1706,2998,26,3,966};
+globals[] = {25.000000,1,0,0,0,640,480,1,3,6316128,1,415.627258,1020.872498,-143.100464,-688.331299,948,880,1};
+window[] = {2,-1,-1,-1,-1,786,-1654,-362,26,3,966};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -365,13 +365,11 @@ class FSM
            "if (_oldFPS isEqualTo EPOCH_diag_fps) then {" \n
            "	_currentFPS = round(diag_fps);" \n
            "	if !(_oldFPS isEqualTo _currentFPS) then {" \n
-           "		EPOCH_diag_fps = _currentFPS;" \n
-           "		publicVariable ""EPOCH_diag_fps"";" \n
+           "		missionNamespace setVariable [""EPOCH_diag_fps"",_currentFPS,true];" \n
            "		_oldFPS = _currentFPS;" \n
            "	};" \n
            "} else {" \n
-           "	EPOCH_diag_fps = compileFinal """";" \n
-           "	publicVariable ""EPOCH_diag_fps"";" \n
+           "	missionNamespace setVariable [""EPOCH_diag_fps"", compileFinal """",true];" \n
            "	_serverFPSCheckFine = false;" \n
            "};" \n
            ""/*%FSM</ACTION""">*/;

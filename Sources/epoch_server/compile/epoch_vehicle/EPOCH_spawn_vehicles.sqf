@@ -147,8 +147,7 @@ for "_i" from 1 to _spawnCount do {
 
 };
 
-EPOCH_VehicleSlotCount = count EPOCH_VehicleSlots;
-publicVariable "EPOCH_VehicleSlotCount";
+missionNamespace setVariable ['EPOCH_VehicleSlotCount', count EPOCH_VehicleSlots, true];
 
 EPOCH_allowedVehiclesList = nil;
 true

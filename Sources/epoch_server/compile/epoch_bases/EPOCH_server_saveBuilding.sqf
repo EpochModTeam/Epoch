@@ -74,8 +74,7 @@ if (isText _config) then {
 				};
 			};
 
-			EPOCH_BuildingSlotCount = { _x == 0 } count EPOCH_BuildingSlots;
-			publicVariable "EPOCH_BuildingSlotCount";
+			missionNamespace setVariable ['EPOCH_BuildingSlotCount', { _x == 0 } count EPOCH_BuildingSlots, true];
 
 			if (_objSlot != -1) then {
 				_newVehicle = [_vehicle, false] call EPOCH_server_simulSwap;

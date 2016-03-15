@@ -95,7 +95,8 @@ _skn_customVariablesCheck = [_serverSettingsConfig, "antihack_customVariablesChe
 _skn_customVariables = [_serverSettingsConfig, "antihack_customVariables", []] call EPOCH_fnc_returnConfigEntry;
 _loots = ["CfgEpochClient", "lootClasses", EPOCH_lootClasses] call EPOCH_fnc_returnConfigEntryV2;
 
-_rndVAR_Count = 84 + (count _remoteExecClient_NAMES); // 84 = number of (_skn_rndVA deleteAt 0)
+// build array with X number of random strings
+_rndVAR_Count = 85 + (count _remoteExecClient_NAMES); // 85 = number of (_skn_rndVA deleteAt 0)
 _skn_rndVA = call compile('epochserver' callExtension format['810|%1', _rndVAR_Count]);
 
 EPOCH_hiveWhitelistVarsArray = [];
@@ -1179,8 +1180,7 @@ call compile ("'"+_skn_doAdminRequest+"' addPublicVariableEventHandler {
 
 					_slot = EPOCH_VehicleSlots select 0;
 					EPOCH_VehicleSlots = EPOCH_VehicleSlots - [_slot];
-					EPOCH_VehicleSlotCount = count EPOCH_VehicleSlots;
-					publicVariable 'EPOCH_VehicleSlotCount';
+					missionNamespace setVariable ['EPOCH_VehicleSlotCount', count EPOCH_VehicleSlots, true];
 
 					_vehObj = createVehicle[_item, _position, [], 20, 'NONE'];
 					_return = true;
