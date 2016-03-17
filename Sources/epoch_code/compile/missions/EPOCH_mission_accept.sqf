@@ -42,7 +42,7 @@ if !(isNull _trader) then {
 		};
 		case 4:	{
 				_formatMsg = format["<t size='1.6' color='#99ffffff'>The time is %1:%2.</t>",date select 3, date select 4];
-				_dt = [_formatMsg, 5] call Epoch_dynamicText;
+				[_formatMsg, 5] call Epoch_dynamicText;
 		};
 		case 5:	{
 				_players = [];
@@ -69,7 +69,7 @@ if !(isNull _trader) then {
 						_player = selectRandom _playersOut;
 						_trdrMsg = format["The last person picked up by the UAV was %1.",name _player];
 					};
-				_dt = [format["<t size='1.6' color='#99ffffff'>%1</t>",_trdrMsg], 5] call Epoch_dynamicText;
+				[format["<t size='1.6' color='#99ffffff'>%1</t>",_trdrMsg], 5] call Epoch_dynamicText;
 		};
 		case 6:
 				{
@@ -82,12 +82,12 @@ if !(isNull _trader) then {
 						} forEach _customNews;
 					};
 				_formatMsg = format["<t size='1.6' color='#99ffffff'>%1</t>",selectRandom _newsArr];
-				_dt = [_formatMsg, 5] call Epoch_dynamicText;
+				[_formatMsg, 5] call Epoch_dynamicText;
 		};
 		case 7:	{
 				_responseArr = ["My name..? What does it matter.","Hey buddy you rock up here unannounced and suddenly we're friends ? On your bike if you aren't buying or selling.",format["My name.. I am known as %1",name _trader], format["When names mattered I was called %1",name _trader],"I forget.. At least, I try to forget."];
 				_formatMsg = format["<t size='1.6' color='#99ffffff'>%1</t>",selectRandom _responseArr];
-				_dt = [_formatMsg, 5] call Epoch_dynamicText;
+				[_formatMsg, 5] call Epoch_dynamicText;
 				};
 		case 8:	{
 				"Epoch_Sapper_F" call EPOCH_unitSpawn;
@@ -96,7 +96,7 @@ if !(isNull _trader) then {
 				call EPOCH_spawn_looters;
 		};
 		default {
-				_dt = ["Quit your jabbering and get the hell out of here.", 5] call Epoch_dynamicText;
+				["Quit your jabbering and get the hell out of here.", 5] call Epoch_dynamicText;
 		};
 	};
 

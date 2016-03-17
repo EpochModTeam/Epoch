@@ -33,7 +33,7 @@ if (isNull _object) exitWith{ _out };
 if ((player distance _object) > 9) exitWith { _out };
 
 if !(EPOCH_buildMode > 0) exitWith {_out};
-if (EPOCH_playerEnergy <= 0) exitWith{ _dt = ["<t size='1.6' color='#99ffffff'>Need energy</t>", 5] call Epoch_dynamicText; _out };
+if (EPOCH_playerEnergy <= 0) exitWith{ ["<t size='1.6' color='#99ffffff'>Need energy</t>", 5] call Epoch_dynamicText; _out };
 
 _objType = typeOf _object;
 _config = 'CfgBaseBuilding' call EPOCH_returnConfig;

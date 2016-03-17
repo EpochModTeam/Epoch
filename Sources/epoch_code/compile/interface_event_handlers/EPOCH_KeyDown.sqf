@@ -42,13 +42,13 @@ if (_dikCode in [0x02,0x03,0x04,0x58,0x57,0x44,0x43,0x42,0x41,0x40,0x3F,0x3E,0x3
 if (_ctrl && _dikCode == EPOCH_keysVolumeUp) then {
 	EPOCH_soundLevel = (EPOCH_soundLevel + 0.1) min 1;
 	5 fadeSound EPOCH_soundLevel;
-	_dt = [format["<t size = '0.8' shadow = '0' color = '#99ffffff'>Internal sound level: %1%2 </t>", EPOCH_soundLevel * 100, "%"], 5] call Epoch_dynamicText;
+	[format["<t size = '1.6' color = '#99ffffff'>Internal sound level: %1%2 </t>", EPOCH_soundLevel * 100, "%"], 5] call Epoch_dynamicText;
 };
 // lower vol
 if (_ctrl && _dikCode == EPOCH_keysVolumeDown) then {
 	EPOCH_soundLevel = (EPOCH_soundLevel - 0.1) max 0.1;
 	5 fadeSound EPOCH_soundLevel;
-	_dt = [format["<t size = '0.8' shadow = '0' color = '#99ffffff'>Internal sound level: %1%2 </t>", EPOCH_soundLevel * 100,"%"], 5] call Epoch_dynamicText;
+	[format["<t size = '1.6' color = '#99ffffff'>Internal sound level: %1%2 </t>", EPOCH_soundLevel * 100,"%"], 5] call Epoch_dynamicText;
 };
 
 // ESC default to cancel
@@ -59,7 +59,7 @@ if (_dikCode == 0x01) then {
 		} else {
 			EPOCH_Target = objNull;
 		};
-		_dt = ["<t size = '0.8' shadow = '0' color = '#99ffffff'>Build Canceled</t>", 5] call Epoch_dynamicText;
+		["<t size = '1.6' color = '#99ffffff'>Build Canceled</t>", 5] call Epoch_dynamicText;
 	};
 	if !(EPOCH_arr_interactedObjs isEqualTo[]) then {
 		EPOCH_arr_interactedObjs remoteExec["EPOCH_server_save_vehicles", 2];
@@ -71,9 +71,9 @@ if (_dikCode == 0x01) then {
 if (_dikCode == EPOCH_keysDebugMon) then {
 	EPOCH_debugMode = !EPOCH_debugMode;
 	if (EPOCH_debugMode) then {
-		_dt = ["<t size = '0.8' shadow = '0' color = '#99ffffff'>Debug Mode Enabled</t>", 5] call Epoch_dynamicText;
+		["<t size = '1.6' color = '#99ffffff'>Debug Mode Enabled</t>", 5] call Epoch_dynamicText;
 	} else {
-		_dt = ["<t size = '0.8' shadow = '0' color = '#99ffffff'>Debug Mode Disabled</t>", 5] call Epoch_dynamicText;
+		["<t size = '1.6' color = '#99ffffff'>Debug Mode Disabled</t>", 5] call Epoch_dynamicText;
 		hintSilent "";
 	};
 	_handled = true;
@@ -100,7 +100,7 @@ if (vehicle player == player) then {
 	_disableBuildMode = {
 		EPOCH_buildMode = 0;
 		EPOCH_snapDirection = 0;
-		_dt = ["<t size = '0.8' shadow = '0' color = '#99ffffff'>Build Mode Disabled</t>", 5] call Epoch_dynamicText;
+		["<t size = '1.6' color = '#99ffffff'>Build Mode Disabled</t>", 5] call Epoch_dynamicText;
 		EPOCH_Target = objNull;
 		EPOCH_Z_OFFSET = 0;
 		EPOCH_X_OFFSET = 0;
@@ -113,10 +113,10 @@ if (vehicle player == player) then {
 			if (EPOCH_playerEnergy > 0) then {
 				EPOCH_stabilityTarget = objNull;
 				EPOCH_buildMode = 1;
-				_dt = ["<t size = '0.8' shadow = '0' color = '#99ffffff'>Build Mode Enabled: Snap alignment</t>", 5] call Epoch_dynamicText;
+				["<t size = '1.6' color = '#99ffffff'>Build Mode Enabled: Snap alignment</t>", 5] call Epoch_dynamicText;
 				EPOCH_buildDirection = 0;
 			} else {
-				_dt = ["<t size = '0.8' shadow = '0' color = '#99ffffff'>Need Energy</t>", 5] call Epoch_dynamicText;
+				["<t size = '1.6' color = '#99ffffff'>Need Energy</t>", 5] call Epoch_dynamicText;
 			};
 		};
 		_handled = true;
@@ -128,11 +128,11 @@ if (vehicle player == player) then {
 			if (EPOCH_playerEnergy > 0) then {
 				EPOCH_stabilityTarget = objNull;
 				EPOCH_buildMode = 2;
-				_dt = ["<t size = '0.8' shadow = '0' color = '#99ffffff'>Build Mode Enabled: Free</t>", 5] call Epoch_dynamicText;
+				["<t size = '1.6' color = '#99ffffff'>Build Mode Enabled: Free</t>", 5] call Epoch_dynamicText;
 				EPOCH_buildDirection = 0;
 			}
 			else {
-				_dt = ["<t size = '0.8' shadow = '0' color = '#99ffffff'>Need Energy</t>", 5] call Epoch_dynamicText;
+				["<t size = '1.6' color = '#99ffffff'>Need Energy</t>", 5] call Epoch_dynamicText;
 			};
 		};
 		_handled = true;
@@ -158,10 +158,10 @@ if (vehicle player == player) then {
 			EPOCH_snapDirection = EPOCH_snapDirection + 1;
 			if (EPOCH_snapDirection > 3) then {
 				EPOCH_snapDirection = 0;
-				_dt = ["<t size = '0.8' shadow = '0' color = '#99ffffff'>SNAP DIRECTION MODE: 0</t>", 5] call Epoch_dynamicText;
+				["<t size = '1.6' color = '#99ffffff'>SNAP DIRECTION MODE: 0</t>", 5] call Epoch_dynamicText;
 			}
 			else {
-				_dt = [format["<t size = '0.8' shadow = '0' color = '#99ffffff'>SNAP DIRECTION MODE: %1</t>", EPOCH_snapDirection], 5] call Epoch_dynamicText;
+				[format["<t size = '1.6' color = '#99ffffff'>SNAP DIRECTION MODE: %1</t>", EPOCH_snapDirection], 5] call Epoch_dynamicText;
 			};
 			_handled = true;
 		};
@@ -261,7 +261,7 @@ if (vehicle player == player) then {
 			} else {
 				EPOCH_Target = objNull;
 			};
-			_dt = ["<t size = '0.8' shadow = '0' color = '#99ffffff'>Build Canceled</t>", 5] call Epoch_dynamicText;
+			["<t size = '1.6' color = '#99ffffff'>Build Canceled</t>", 5] call Epoch_dynamicText;
 		};
 		if (isTouchingGround player) then {
 			_handled = call EPOCH_lootTrash;

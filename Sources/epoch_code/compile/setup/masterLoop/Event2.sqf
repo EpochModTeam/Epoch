@@ -54,7 +54,7 @@ if (EPOCH_playerEnergy == 0) then {
 	if (EPOCH_buildMode > 0) then {
 		EPOCH_buildMode = 0;
 		EPOCH_snapDirection = 0;
-		_dt = ["<t size = '0.8' shadow = '0' color = '#99ffffff'>Build Mode Disabled: Need Energy< / t>", 5] call Epoch_dynamicText;
+		["<t size = '1.6' color = '#99ffffff'>Build Mode Disabled: Need Energy< / t>", 5] call Epoch_dynamicText;
 		EPOCH_Target = objNull;
 		EPOCH_Z_OFFSET = 0;
 		EPOCH_X_OFFSET = 0;

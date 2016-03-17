@@ -90,9 +90,9 @@ if !(isNull EPOCH_lastNPCtradeTarget) then {
 			ctrlSetText[41005, (format["%1 Krypto", _cryptoCount])];
 		} else {
 			if (_stockLimit) then{
-				_dt = ["<t size='1.6' color='#99ffffff'>Trader has the maximum amount of this item</t>", 5] call Epoch_dynamicText;
+				["<t size='1.6' color='#99ffffff'>Trader has the maximum amount of this item</t>", 5] call Epoch_dynamicText;
 			} else {
-				_dt = ["<t size='1.6' color='#99ffffff'>Limit one per trade</t>", 5] call Epoch_dynamicText;
+				["<t size='1.6' color='#99ffffff'>Limit one per trade</t>", 5] call Epoch_dynamicText;
 			};
 		};
 	};

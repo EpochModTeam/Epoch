@@ -116,10 +116,10 @@ if !(isNull _object) then {
 
       [format["<t size='1.6' color='#99ffffff'>%1 part on %2</t>","Added",_objClass call EPOCH_itemDisplayName],5] call Epoch_dynamicText;
 
-      _dt = [format["<t size='1.6' color='#99ffffff'>%1 part on %2</t>","Added",_objClass call EPOCH_itemDisplayName], 5] call Epoch_dynamicText;
+      [format["<t size='1.6' color='#99ffffff'>%1 part on %2</t>","Added",_objClass call EPOCH_itemDisplayName], 5] call Epoch_dynamicText;
 
     } else {
-      _dt = [format["<t size='1.6' color='#99ffffff'>%1</t>", _msg], 5] call Epoch_dynamicText;
+      [format["<t size='1.6' color='#99ffffff'>%1</t>", _msg], 5] call Epoch_dynamicText;
     };
 
 
@@ -146,7 +146,7 @@ if !(isNull _object) then {
         };
     }forEach _recipe;
 
-    _dt = [format["<t size='1.6' color='#99ffffff'>%1 part on %2</t>","Removed",_objClass call EPOCH_itemDisplayName], 5] call Epoch_dynamicText;
+    [format["<t size='1.6' color='#99ffffff'>%1 part on %2</t>","Removed",_objClass call EPOCH_itemDisplayName], 5] call Epoch_dynamicText;
   };
 
 };

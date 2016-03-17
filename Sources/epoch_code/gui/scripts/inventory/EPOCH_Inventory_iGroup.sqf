@@ -3,4 +3,4 @@ disableSerialization;
 if !(Epoch_invited_GroupUIDs isEqualTo[]) exitWith {
 	createDialog "GroupRequests";
 };
-_dt = ["<t size = '0.8' shadow = '0' color = '#99ffffff'>No pending requests< / t>", 5] call Epoch_dynamicText;
+["<t size = '1.6' color = '#99ffffff'>No pending requests< / t>", 5] call Epoch_dynamicText;

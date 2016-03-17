@@ -81,6 +81,6 @@ if (isClass (_config >> _uiItem)) then{
 		};
 		ctrlSetText [41005, (format ["%1 Krypto", _cryptoCount])];
 	} else {
-		_dt = ["<t size='1.6' color='#99ffffff'>Limit one per trade</t>", 5] call Epoch_dynamicText;
+		["<t size='1.6' color='#99ffffff'>Limit one per trade</t>", 5] call Epoch_dynamicText;
 	};
 };

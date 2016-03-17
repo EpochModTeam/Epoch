@@ -35,7 +35,7 @@ if (isNull _object) exitWith{ EPOCH_target = objNull; };
 if (_item == "") exitWith{ EPOCH_target = objNull; };
 
 if (EPOCH_playerEnergy <= 0) exitWith{
-	_dt = ["<t size = '0.8' shadow = '0' color = '#99ffffff'>Need Energy</t>", 5] call Epoch_dynamicText;
+	["<t size = '1.6' color = '#99ffffff'>Need Energy</t>", 5] call Epoch_dynamicText;
 };
 if !("" call EPOCH_isBuildAllowed) exitWith{};
 EPOCH_simulSwap_Lock = true;
