@@ -22,7 +22,7 @@
 	NOTHING
 */
 private ["_dt","_buildingJammerRange","_maintainCount","_rnd","_config"];
-if !(isNil "EPOCH_maintainLockout") exitWith {_dt = ["<t size=""0.8"" shadow=""0"" color=""#99ffffff"">Already Maintaining a base.</t>", 0, 1, 5, 2, 0, 1] spawn bis_fnc_dynamictext;};
+if !(isNil "EPOCH_maintainLockout") exitWith {_dt = ["<t size=""0.8"" shadow=""0"" color=""#99ffffff"">Already Maintaining a base.</t>", 5] call Epoch_dynamicText;};
 if (EPOCH_playerCrypto > 0) then {
   _config = "CfgEpochClient" call EPOCH_returnConfig;
   _buildingJammerRange = getNumber(_config >> "buildingJammerRange");
@@ -51,10 +51,10 @@ if (EPOCH_playerCrypto > 0) then {
       EPOCH_maintainLockout = nil;
     };
 
-    _dt = [format["<t size=""0.8"" shadow=""0"" color=""#99ffffff"">Cost %1 Krypto to maintain base.</t>", _maintainCount], 0, 1, 5, 2, 0, 1] spawn bis_fnc_dynamictext;
+    _dt = [format["<t size=""0.8"" shadow=""0"" color=""#99ffffff"">Cost %1 Krypto to maintain base.</t>", _maintainCount], 5] call Epoch_dynamicText;
   } else {
-    _dt = ["<t size=""0.8"" shadow=""0"" color=""#99ffffff"">Nothing needs Maintaining</t>", 0, 1, 5, 2, 0, 1] spawn bis_fnc_dynamictext;
+    _dt = ["<t size=""0.8"" shadow=""0"" color=""#99ffffff"">Nothing needs Maintaining</t>", 5] call Epoch_dynamicText;
   };
 } else {
-  _dt = ["<t size=""0.8"" shadow=""0"" color=""#99ffffff"">You need Krypto to maintain a base.</t>", 0, 1, 5, 2, 0, 1] spawn bis_fnc_dynamictext;
+  _dt = ["<t size=""0.8"" shadow=""0"" color=""#99ffffff"">You need Krypto to maintain a base.</t>", 5] call Epoch_dynamicText;
 };

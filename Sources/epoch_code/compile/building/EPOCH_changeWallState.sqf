@@ -114,11 +114,12 @@ if !(isNull _object) then {
       // push interacted object to save queue to save later
       EPOCH_arr_interactedObjs pushBackUnique _object;
 
+      [format["<t size='1.6' color='#99ffffff'>%1 part on %2</t>","Added",_objClass call EPOCH_itemDisplayName],5] call Epoch_dynamicText;
 
-      _dt = [format["<t size='0.8' shadow='0' color='#99ffffff'>%1 part on %2</t>","Added",_objClass call EPOCH_itemDisplayName], 0, 1, 5, 2, 0, 1] spawn bis_fnc_dynamictext;
+      _dt = [format["<t size='1.6' color='#99ffffff'>%1 part on %2</t>","Added",_objClass call EPOCH_itemDisplayName], 5] call Epoch_dynamicText;
 
     } else {
-      _dt = [format["<t size='0.8' shadow='0' color='#99ffffff'>%1</t>", _msg], 0, 1, 5, 2, 0, 1] spawn bis_fnc_dynamictext;
+      _dt = [format["<t size='1.6' color='#99ffffff'>%1</t>", _msg], 5] call Epoch_dynamicText;
     };
 
 
@@ -145,7 +146,7 @@ if !(isNull _object) then {
         };
     }forEach _recipe;
 
-    _dt = [format["<t size='0.8' shadow='0' color='#99ffffff'>%1 part on %2</t>","Removed",_objClass call EPOCH_itemDisplayName], 0, 1, 5, 2, 0, 1] spawn bis_fnc_dynamictext;
+    _dt = [format["<t size='1.6' color='#99ffffff'>%1 part on %2</t>","Removed",_objClass call EPOCH_itemDisplayName], 5] call Epoch_dynamicText;
   };
 
 };

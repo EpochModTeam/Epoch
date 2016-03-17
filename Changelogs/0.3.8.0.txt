@@ -1,4 +1,5 @@
 [New] Split gamemode from main assets, all epoch client gamemode code and configs are now found in the mission file under APL-SA license. https://github.com/EpochModTeam/Epoch
+[Added] Show build number on debug monitor.
 [Added] Player Karma stat is now effected by Arma 3 rating system via Event Handler.
 [Added] Players can now harvest Hemp from maps that it grows wild.
 [Changed] Moved Cultist and Sapper permanently to enemy side.

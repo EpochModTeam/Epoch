@@ -16,7 +16,7 @@ private ["_dt"];
 if !(isNull _this) then {
 	// ignore request if either player is in a vehicle
 	if (vehicle player == player && vehicle _this == _this) then {
-		_dt = ["<t size='0.8' shadow='0' color='#99ffffff'>Trade request received, press 'T' to accept</t>", 0, 1, 5, 2, 0, 1] spawn bis_fnc_dynamictext;
+		_dt = ["<t size='1.6' color='#99ffffff'>Trade request received, press 'T' to accept</t>", 5] call Epoch_dynamicText;
 		EPOCH_pendingP2ptradeTarget = _this;
 	};
 };

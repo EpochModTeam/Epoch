@@ -58,7 +58,7 @@ if (_stability > 0) exitWith{
 if (_objType == "PlotPole_EPOCH") then {
 	if ((_object getVariable["BUILD_OWNER", "-1"]) != getPlayerUID player) then{
 		_buildingAllowed = false;
-		_dt = ["<t size = '0.8' shadow = '0' color = '#99ffffff'>Remove Disallowed: Frequency Blocked</t>", 0, 1, 5, 2, 0, 1] spawn bis_fnc_dynamictext;
+		_dt = ["<t size = '0.8' shadow = '0' color = '#99ffffff'>Remove Disallowed: Frequency Blocked</t>", 5] call Epoch_dynamicText;
 	};
 }
 else {
@@ -75,7 +75,7 @@ else {
 				_ownedJammerExists = true;
 			} else {
 				_buildingAllowed = false;
-				_dt = ["<t size = '0.8' shadow = '0' color = '#99ffffff'>Remove Disallowed: Frequency Blocked</t>", 0, 1, 5, 2, 0, 1] spawn bis_fnc_dynamictext;
+				_dt = ["<t size = '0.8' shadow = '0' color = '#99ffffff'>Remove Disallowed: Frequency Blocked</t>", 5] call Epoch_dynamicText;
 			};
 		};
 	};
@@ -87,6 +87,6 @@ _removeParts = getArray(('CfgBaseBuilding' call EPOCH_returnConfig) >> _objType 
 if !(_removeParts isEqualTo[]) then{
 	[_this, player, Epoch_personalToken] remoteExec ["EPOCH_server_removeBUILD",2];
 	_return = true;
-	_dt = ["<t size='0.8' shadow='0' color='#99ffffff'>Removed</t>", 0, 1, 5, 2, 0, 1] spawn bis_fnc_dynamictext;
+	_dt = ["<t size='1.6' color='#99ffffff'>Removed</t>", 5] call Epoch_dynamicText;
 };
 _return

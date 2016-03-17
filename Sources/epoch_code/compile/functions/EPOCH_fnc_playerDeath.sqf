@@ -42,7 +42,7 @@ if (Epoch_canBeRevived) then {
 	createDialog "TapOut";
 } else {
 	setPlayerRespawnTime 15;
-	_dt = ["<t size='0.8' shadow='0' color='#99ffffff'>You can be just revived once per life!</t>", 0, 1, 5, 2, 0, 1] spawn bis_fnc_dynamictext;
+	_dt = ["<t size='1.6' color='#99ffffff'>You can be just revived once per life!</t>", 5] call Epoch_dynamicText;
 };
 
 [] spawn{
