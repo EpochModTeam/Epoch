@@ -67,9 +67,9 @@ if (isText(_config)) then {
 		if (_objSlot != -1) then {
 			_newObj setVariable ["BUILD_SLOT",_objSlot,true];
 		};
-		_newObj setVectorDirAndUp [_worldspace select 1,_worldspace select 2];
-		_newObj setposATL (_worldspace select 0);
 
+		_newObj setposATL (_worldspace select 0);
+		_newObj setVectorDirAndUp [_worldspace select 1,_worldspace select 2];
 		if (_textureSlot != 0) then {
 			[_newObj, _textureSlot, player, Epoch_personalToken] remoteExec ["EPOCH_server_paintBUILD",2];
 		};

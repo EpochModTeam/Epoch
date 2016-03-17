@@ -161,9 +161,8 @@ _lootBubble = {
 
 // [control,bool] call _fadeUI;
 _fadeUI = {
-	private ["_ctrl"];
-	_ctrl = _this select 0;
-	if (_this select 1) then {
+	params ["_ctrl","_bool"];
+	if (_bool) then {
 		if (ctrlFade _ctrl == 0) then {
 			_ctrl ctrlSetFade 1;
 			_ctrl ctrlCommit 0.5;
@@ -178,6 +177,7 @@ _fadeUI = {
 			_ctrl ctrlCommit 0;
 		};
 	};
+	_bool
 };
 
 _cursorTarget = objNull;

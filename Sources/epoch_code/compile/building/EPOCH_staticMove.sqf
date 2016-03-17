@@ -253,8 +253,9 @@ if (_class != "") then {
 							_snapPosition = ASLtoATL _snapPosition;
 						};
 
-						_currentTarget setVectorDirAndUp[_dir2, (vectorUp _nearestObject)];
+
 						_currentTarget setposATL _snapPosition;
+						_currentTarget setVectorDirAndUp[_dir2, (vectorUp _nearestObject)];
 
 						if ((diag_tickTime - _EPOCH_2) > 2) then {
 							_EPOCH_2 = diag_tickTime;
@@ -348,8 +349,9 @@ if (_class != "") then {
 						_worldspace = [getposATL _currentTarget, vectordir _currentTarget, vectorup _currentTarget];
 						deleteVehicle _currentTarget;
 						_currentTarget = createVehicle[_simulClass, (_worldspace select 0), [], 0, "CAN_COLLIDE"];
-						_currentTarget setVectorDirAndUp[_worldspace select 1, _worldspace select 2];
+
 						_currentTarget setposATL(_worldspace select 0);
+						_currentTarget setVectorDirAndUp[_worldspace select 1, _worldspace select 2];
 					};
 				};
 			};

@@ -86,11 +86,13 @@ _config = configFile >> "CfgEpoch";
 
 	_ep allowDamage false;
 	if (_dir isEqualType []) then{
+		_ep setposATL _pos;
 		_ep setVectorDirAndUp _dir;
 	} else {
 		_ep setDir _dir;
+		_ep setposATL _pos;
 	};
-	_ep setposATL _pos;
+
 
 	if (_deSimulate) then{
 		_ep enableSimulationGlobal false;

@@ -36,24 +36,14 @@ if (diag_tickTime - EPOCH_lastTrash > 2)  then {
 		if !(_x isKindOf "All") then {
 			if (alive _x) then {
 				_str = str(_x);
-				_findStart = _str find ": ";
-				if (_findStart != -1) then {
-
-					_start = _findStart + 2;
-					_end = (_str find ".") - _start;
-					_p3dName = _str select[_start, _end];
-					if (_p3dName find " " != -1) then {
-						(_p3dName splitString " ") joinString "_"; // replace spaces with underscores
-					};
-					_finalConfig = (_configWorldInteractions >> (_p3dName + "_p3d"));
-
-					{
-						_found = (getNumber(_finalConfig >> _x) == 1);
-						if (_found) exitWith{ _trashType = _forEachIndex };
-					} forEach getArray(_configWorldName >> "TrashClasses");
-
-					_foundTerminal = (getNumber(_finalConfig >> "bankTerminal") == 1);
-				};
+				_inputWorldTypes = ["bankTerminal"];
+				_inputWorldTypes append getArray(_configWorldName >> "TrashClasses");
+				_getWorldTypes = [_str, _inputWorldTypes] call EPOCH_worldObjectType;
+				{
+					_found = _getWorldTypes param [_inputWorldTypes find _x, false];
+					if (_found) exitWith{ _trashType = _forEachIndex };
+				} forEach getArray(_configWorldName >> "TrashClasses");
+				_foundTerminal = _getWorldTypes param [_inputWorldTypes find "bankTerminal", false];
 			};
 		} else {
 			if (alive _x) then {

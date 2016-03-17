@@ -20,7 +20,7 @@
 		_this select 1+: random strings
 	Returns:
 	NOTHING
-*/
+
 call compile ("
 	EPOCH_"+(_this select 0)+" = {
 		_data = (_this select 1);
@@ -35,3 +35,4 @@ call compile ("
 		};
 	};
 ");
+*/

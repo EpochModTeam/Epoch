@@ -17,7 +17,7 @@ item12[] = {"Empty_PlayerUID",4,218,125.000000,125.000000,225.000000,175.000000,
 item13[] = {"ERROR_PlayerUID",2,250,275.000000,125.000000,375.000000,175.000000,0.000000,"ERROR" \n "PlayerUID Empty"};
 item14[] = {"",7,210,471.000061,145.999908,478.999939,154.000092,0.000000,""};
 item15[] = {"Timeout_No_Respo",4,218,125.000000,875.000000,225.000000,925.000000,0.000000,"Timeout" \n "No Response"};
-item16[] = {"Response",4,218,-150.000000,825.000000,-50.000000,875.000000,0.000000,"Response"};
+item16[] = {"Response",4,4314,-150.000000,825.000000,-50.000000,875.000000,0.000000,"Response"};
 item17[] = {"Setup_Player_Var",2,250,-25.000000,1075.000000,75.000000,1125.000000,0.000000,"Setup Player" \n "Variables"};
 item18[] = {"Request_Hive",2,250,-25.000000,575.000000,75.000000,625.000000,0.000000,"Request Hive"};
 item19[] = {"Timeout_No_Respo",4,218,125.000000,575.000000,225.000000,625.000000,0.000000,"Timeout" \n "No Response"};
@@ -183,8 +183,8 @@ link93[] = {82,76};
 link94[] = {83,16};
 link95[] = {83,22};
 link96[] = {84,31};
-globals[] = {0.000000,0,0,0,0,640,480,1,247,6316128,1,-344.422272,46.278961,704.864319,-55.178772,439,854,1};
-window[] = {2,-1,-1,-1,-1,871,1784,2768,104,3,457};
+globals[] = {0.000000,0,0,0,0,640,480,1,247,6316128,1,-355.102020,35.599213,1309.160767,525.978271,439,880,1};
+window[] = {2,-1,-1,-1,-1,793,26,1010,26,3,457};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -919,8 +919,7 @@ class FSM
           to="FINISH";
           precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
           condition=/*%FSM<CONDITION""">*/"preloadCamera _playerPos"/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/"call compile _remoteExecClientFnc;" \n
-           "call compile _extraPayload;"/*%FSM</ACTION""">*/;
+          action=/*%FSM<ACTION""">*/"call compile _extraPayload;"/*%FSM</ACTION""">*/;
         };
         /*%FSM</LINK>*/
       };
@@ -1300,8 +1299,7 @@ class FSM
           to="Check_New_Player";
           precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
           condition=/*%FSM<CONDITION""">*/"!isNil ""_C_SET"""/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/"diag_log str(_C_SET);" \n
-           "_playerObject = _C_SET deleteAt 0;" \n
+          action=/*%FSM<ACTION""">*/"_playerObject = _C_SET deleteAt 0;" \n
            "_playerVariables = _C_SET deleteAt 0;" \n
            "_currentWeapon = _C_SET deleteAt 0;" \n
            "_mass = _C_SET deleteAt 0;" \n
@@ -1311,7 +1309,6 @@ class FSM
            "Epoch_personalToken = _C_SET deleteAt 0;" \n
            "Epoch_my_Group = _C_SET deleteAt 0;" \n
            "" \n
-           "_remoteExecClientFnc = _C_SET deleteAt 0;" \n
            "_extraPayload = _C_SET deleteAt 0;" \n
            "" \n
            ""/*%FSM</ACTION""">*/;

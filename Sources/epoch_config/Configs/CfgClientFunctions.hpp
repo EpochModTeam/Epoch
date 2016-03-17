@@ -92,6 +92,7 @@ class CfgClientFunctions
 		};
 		class functions
 		{
+			class worldObjectType {};
 			class returnConfig {};
 			class colorRange {};
 			class fnc_playerDeath {};

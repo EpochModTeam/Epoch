@@ -68,34 +68,38 @@ _warnbloodPressure = EPOCH_playerBloodP > 120;
 _thirst ctrlShow (EPOCH_playerThirst <= 625);
 if (ctrlShown _thirst) then {
 	[_thirst,_thirsty] call _fadeUI;
-	_thirstScale = linearConversion [0,EPOCH_playerThirst,2500,0.01,1,true];
-	_thirst ctrlSetTextColor [_thirstScale, _thirstScale, 0.9, 1];
+	_color = [2500,0,EPOCH_playerThirst,1] call EPOCH_colorRange;
+	_thirst ctrlSetTextColor _color;
 };
 
 _hunger ctrlShow (EPOCH_playerHunger <= 1250);
 if (ctrlShown _hunger) then {
 	[_hunger,_hungry] call _fadeUI;
-	_hungerScale = linearConversion [0,EPOCH_playerHunger,5000,0.01,1,true];
-	_hunger ctrlSetTextColor [1, _hungerScale, _hungerScale, 1];
+	_color = [5000,0,EPOCH_playerHunger,1] call EPOCH_colorRange;
+	_hunger ctrlSetTextColor _color;
 };
 
 _playerOxygen = getOxygenRemaining player;
 _oxygen ctrlShow (_playerOxygen < 1);
 if (ctrlShown _oxygen) then {
 	[_oxygen,(_playerOxygen <= 0.55)] call _fadeUI;
-	_oxygen ctrlSetTextColor [1, _playerOxygen, _playerOxygen, 1];
+	_color = [1,0,_playerOxygen,1] call EPOCH_colorRange;
+	_oxygen ctrlSetTextColor _color;
 };
 
 _hazzard ctrlShow (EPOCH_playerToxicity > 1);
 if (ctrlShown _hazzard) then {
 	[_hazzard,(EPOCH_playerToxicity >= 55)] call _fadeUI;
-	_toxicScale = 1-linearConversion [0,EPOCH_playerToxicity,100,0.01,1,true];
-	_hazzard ctrlSetTextColor [_toxicScale, 1, _toxicScale, 1];
+	_color = [0,100,EPOCH_playerToxicity,1] call EPOCH_colorRange;
+	_hazzard ctrlSetTextColor _color;
 };
 
-_broken ctrlShow ((player getHitPointDamage "HitLegs") >= 0.5);
+_legDamage = player getHitPointDamage "HitLegs";
+_broken ctrlShow (_legDamage >= 0.5);
 if (ctrlShown _broken) then {
 	[_broken,true] call _fadeUI;
+	_color = [1,0,_legDamage,1] call EPOCH_colorRange;
+	_broken ctrlSetTextColor _color;
 };
 
 if (_envCold || _envHot || _hungry || _thirsty) then {
@@ -119,8 +123,8 @@ _critical = (damage player >= 0.7 || _warnbloodPressure);
 _emergency ctrlShow _critical;
 if (ctrlShown _emergency) then {
 	[_emergency,(EPOCH_playerBloodP > 140)] call _fadeUI;
-	_emergencyScale = 1-linearConversion [0,EPOCH_playerBloodP,180,0.01,1,true];
-	_emergency ctrlSetTextColor [1, _emergencyScale, _emergencyScale, 1];
+	_color = [180,100,EPOCH_playerBloodP,1] call EPOCH_colorRange;
+	_emergency ctrlSetTextColor _color;
 };
 
 if (EPOCH_playerBloodP >= 180) then {

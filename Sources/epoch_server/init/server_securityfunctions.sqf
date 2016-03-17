@@ -49,8 +49,8 @@ _skn_badVarCheckArray = [_cfg_variablesConfig, "badVars", ['ESP_map','ESP_mainMa
 _skn_nilVarCheckArray = [_cfg_variablesConfig, "nilVars", ['EPOCH_antiWallCount','EPOCH_playerEnergy','EPOCH_playerHunger','EPOCH_playerStamina','EPOCH_playerCrypto','EPOCH_target','EPOCH_ESP_TARGETS','EPOCH_ESPMAP_TARGETS','EPOCH_taxRate','EPOCH_ESP_VEHICLEPLAYER','EPOCH_ESP_PLAYER','EPOCH_ESP_VEHICLES']] call EPOCH_fnc_returnConfigEntry;
 _skn_commandMenuArray = [(_config >> "commandMenu"), "menus",['','RscSelectTeam','RscTeam','RscMoveHigh','#GETIN','#RscStatus','#WATCH0','RscCombatMode','RscMenuReply','RscCallSupport','#CUSTOM_RADIO','#User:BIS_fnc_addCommMenuItem_menu','RscRadio','RscReply','#ACTION','RscMenuFormations','#WATCH','RscGroupRootMenu','RscMainMenu','RscMenuMove','RscWatchDir','RscWatchMoveDir','#User:BIS_Menu_GroupCommunication','RscMenuStatus','RscFormations']] call EPOCH_fnc_returnConfigEntry;
 
-_skn_displayAddEHKeyDown = [(_config >> "displayAddEventHandler"), "keyDown",'_this call EPOCH_KeyDown'] call EPOCH_fnc_returnConfigEntry;
-_skn_displayAddEHKeyUp   = [(_config >> "displayAddEventHandler"), "keyUp",'_this call EPOCH_KeyUp'] call EPOCH_fnc_returnConfigEntry;
+_skn_displayAddEHKeyDown = ["CfgEpochClient", "keyDown", "keyDown",'_this call EPOCH_KeyDown'] call EPOCH_fnc_returnConfigEntryV2;
+_skn_displayAddEHKeyUp   = ["CfgEpochClient", "keyUp", "keyUp",'_this call EPOCH_KeyUp'] call EPOCH_fnc_returnConfigEntryV2;
 
 _skn_addEHConfig		= (_config >> "addEventHandler");
 _skn_displayAddEHChecks = [_skn_addEHConfig, "checks",[]] call EPOCH_fnc_returnConfigEntry;
@@ -96,7 +96,7 @@ _skn_customVariables = [_serverSettingsConfig, "antihack_customVariables", []] c
 _loots = ["CfgEpochClient", "lootClasses", EPOCH_lootClasses] call EPOCH_fnc_returnConfigEntryV2;
 
 // build array with X number of random strings
-_rndVAR_Count = 85 + (count _remoteExecClient_NAMES); // 85 = number of (_skn_rndVA deleteAt 0)
+_rndVAR_Count = 84; // 85 = number of (_skn_rndVA deleteAt 0)
 _skn_rndVA = call compile('epochserver' callExtension format['810|%1', _rndVAR_Count]);
 
 EPOCH_hiveWhitelistVarsArray = [];
@@ -116,28 +116,27 @@ if (_skn_customVariablesCheck) then{
 };
 
 // For client PVC
-_rnd_strings_REC = [];
 _skn_PVC_INDEX = _skn_rndVA deleteAt 0;
-{
-	_ret = _rnd_strings_REC pushBack (_skn_rndVA deleteAt 0);
-}count _remoteExecClient_NAMES;
-
 // [["function", _transferBankBalance],_transferTarget]
 EPOCH_sendRemoteExecClient = compileFinal ("
-	private '_index';
-	_index = "+str _remoteExecClient_NAMES+" find (_this select 0 select 0);
-	if (_index != -1) then {
-		["+str _rnd_strings_REC+" select _index, _this select 0 select 1] remoteExec ['EPOCH_"+_skn_PVC_INDEX+"',(_this select 1)];
-	};
+	params ['_first','_target'];
+	_first params ['_functionName','_data'];
+	[_functionName, _data] remoteExec ['EPOCH_"+_skn_PVC_INDEX+"',_target];
 ");
 
 // build dynamic RE-C functions
-_remoteExecClientStr = "EPOCH_"+(_skn_PVC_INDEX)+" = {params [""_function"",""_data""];switch (_function) do {";
+_remoteExecClientStr = "params [""_function"",""_data""];switch (_function) do {";
 {
-	missionNamespace setVariable [_x, compileFinal ([_cfg_remoteExecClient, _x, ""] call EPOCH_fnc_returnConfigEntry), true];
-	_remoteExecClientStr = _remoteExecClientStr + format['case "%1": %1;',_x];
+	_functionName = format ["EPOCH_dyn_%1",_x];
+	missionNamespace setVariable [_functionName, compileFinal ([_cfg_remoteExecClient, _x, ""] call EPOCH_fnc_returnConfigEntry), true];
+	_remoteExecClientStr = _remoteExecClientStr + format['case "%1": {_data call %2};',_x,_functionName];
 } forEach _remoteExecClient_NAMES;
-_remoteExecClientStr = _remoteExecClientStr + "};};";
+_remoteExecClientStr = _remoteExecClientStr + "};";
+
+// broadcast main RE-C function
+missionNamespace setVariable [format["EPOCH_%1",_skn_PVC_INDEX], compileFinal _remoteExecClientStr, true];
+
+diag_log format["DEBUG: _remoteExecClientStr %1",_remoteExecClientStr];
 
 _skn_AH_rndVarVehicle = _skn_rndVA deleteAt 0;
 _skn_AH_rndVarPlayer  = _skn_rndVA deleteAt 0;
@@ -150,7 +149,6 @@ EPOCH_server_setPToken = compileFinal ("private '_var';_var = 'epochserver' call
 if (!_skn_enableAntihack) exitWith {
 	EPOCH_server_pushPlayer = compileFinal ("
 	_C_SET = _this select 2;
-	_C_SET pushBack '"+_remoteExecClientStr+"';
 	_C_SET pushBack '';
 	['_C_SET', _C_SET] remoteExec ['EPOCH_playerLoginInit',(_this select 0)];");
 	EPOCH_server_isPAdmin = compileFinal ("false");
@@ -266,8 +264,7 @@ if (_skn_customVariablesCheck) then{
 	_skn_customVariables append [toLower("FW"+_skn_AH_rndVar),toLower("FA"+_skn_AH_rndVar),toLower("FWC"+_skn_AH_rndVar)];
 
 	// Globally brodcast whitelist vars array
-	missionNamespace setVariable [_skn_whitelistVars,_skn_customVariables];
-	call compile("publicVariable " + str _skn_whitelistVars + ";");
+	missionNamespace setVariable [_skn_whitelistVars,_skn_customVariables,true];
 };
 
 EPOCH_server_kickToLobby = compileFinal ("if !(isNull _this) then {"+_skn_kickToLobby+" = true;(owner _this) publicVariableClient '"+_skn_kickToLobby+"';};");
@@ -538,10 +535,8 @@ EPOCH_server_pushPlayer = compileFinal ("
 		(_this select 0) publicVariableClient '"+_skn_Admin_Code+"';
 		(_this select 0) publicVariableClient '"+_skn_pv_adminLog+"';
 		(_this select 0) publicVariableClient '"+_skn_pv_hackerLog+"';
-		_C_SET pushBack '"+_remoteExecClientStr+"';
 		_C_SET pushBack '[] spawn "+_skn_Admin_Init+"';
 	} else {
-		_C_SET pushBack '"+_remoteExecClientStr+"';
 		_C_SET pushBack '[] spawn "+_skn_AH_Init+"';
 	};
 	['_C_SET', _C_SET] remoteExec ['EPOCH_playerLoginInit',(_this select 0)];
@@ -643,8 +638,7 @@ call compile ("'"+_skn_doKickBan+"' addPublicVariableEventHandler {
 				if (_trusted) then {
 
 					_safeVars pushBack _unknownVar;
-					missionNamespace setVariable ["+str _skn_whitelistVars+",_safeVars];
-					publicVariable "+str _skn_whitelistVars+";
+					missionNamespace setVariable ["+str _skn_whitelistVars+",_safeVars,true];
 
 					if !(_unknownVar in EPOCH_hiveWhitelistVarsArray) then{
 						EPOCH_hiveWhitelistVarsArray pushBack _unknownVar;
@@ -994,9 +988,10 @@ _skn_code_antihack = compileFinal ("
 	true
 ");
 
-call compile (_skn_AH_Ban+" = _skn_code_ban;publicVariable '"+_skn_AH_Ban+"'");
-call compile (_skn_AH_Code+" = _skn_code_antihack;publicVariable '"+_skn_AH_Code+"'");
-call compile (_skn_AH_Init+" = _skn_code_init;publicVariable '"+_skn_AH_Init+"'");
+missionNamespace setVariable [_skn_AH_Ban, _skn_code_ban, true];
+missionNamespace setVariable [_skn_AH_Code, _skn_code_antihack, true];
+missionNamespace setVariable [_skn_AH_Init, _skn_code_init, true];
+
 /*********************************************** ADMIN MENU *****************************************************/
 /*********************************************** ADMIN MENU *****************************************************/
 /*********************************************** ADMIN MENU *****************************************************/
@@ -2101,8 +2096,8 @@ _skn_admincode = compileFinal ("
 		{
 			_unsortedName pushBack (name _x);
 		}forEach _unsorted;
-
-		_alphabetically = _unsortedName sort true;
+		_alphabetically = _unsortedName;
+		_alphabetically sort true;
 		{
 			{
 				if (name _x == (_alphabetically select 0)) exitWith {
@@ -2311,4 +2306,5 @@ _skn_admincode = compileFinal ("
 
 _skn_admininit = compileFinal ("waitUntil {(!isNil '"+_skn_Admin_Code+"') && (!isNil '"+_skn_pv_adminLog+"') && (!isNil '"+_skn_pv_hackerLog+"')};[] spawn "+_skn_Admin_Code+"");
 call compile (_skn_Admin_Code+" = _skn_admincode");
-call compile (_skn_Admin_Init+" = _skn_admininit;publicVariable '"+_skn_Admin_Init+"'");
+
+missionNamespace setVariable [_skn_Admin_Init, _skn_admininit, true];

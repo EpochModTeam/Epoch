@@ -1,5 +1,6 @@
 [New] Split gamemode from main assets, all epoch client gamemode code and configs are now found in the mission file under APL-SA license. https://github.com/EpochModTeam/Epoch
 [Added] Player Karma stat is now effected by Arma 3 rating system via Event Handler.
+[Added] Players can now harvest Hemp from maps that it grows wild.
 [Changed] Moved Cultist and Sapper permanently to enemy side.
 [Changed] Disabled remote sensors on server and client as all AI Epoch is locally controlled. https://community.bistudio.com/wiki/disableRemoteSensors
 [Changed] Repacked all pbo's to make use of the new 32-bit P3D binarization process. https://dev.arma3.com/post/techrep-00026
@@ -7,7 +8,7 @@
 [Changed] Increased the amount of Krypto a player can hold from 25k to 250k.
 [Changed] Further improve loot positions in existing maps and add more missing positions for CUP maps.
 [Changed] General cleanup and reorganizing of files.
-[Added] Players can now harvest Hemp from maps that it grows wild.
+[Fixed] Temporary direction and angle placement issues when base building.
 [Fixed] Force player to lobby if the player did not tapout after timer runs out.
 [Fixed] Buildings had a chance to loot again too quickly.
 [Info] Required Arma 3 version is now 1.56 or higher.
@@ -19,6 +20,7 @@
 [Changed] publicVariableClient calls changed to use remoteExec. This should provide better performance and reliability as PVC's can be unreliable under heavy use and can also bottleneck the games netcode.
 [Changed] CfgClientFunctions is now able to be overridden via description.ext.
 [Changed] Fully removed BIS MP init override and added remoteExec BE filter rule for initPlayerServer.sqf usage. (Still must be whitelisted in remoteExec configs to use)
+[Fixed] Incorrect scope on some magazine items prevented them from showing in the admin spawn menu.
 [Fixed] Reworked player login, fixes issues with players logging in without gear (when one or more players are logging in at the same time, IE. server startup)
 [Info] epochAH.hpp updated "antihack_checkFiles" for new file paths.
 [Info] Some AI Scripts Mods may not work with disableRemoteSensors enabled. You can disable with "disableRemoteSensors = false;" in CfgEpochClient.

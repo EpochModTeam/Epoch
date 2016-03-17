@@ -68,15 +68,17 @@ for "_i" from 1 to _maxStorageLimit do {
 			_vehicle = createVehicle[_class, _location, [], 0, "CAN_COLLIDE"];
 
 			if (_dir isEqualType []) then {
+				_vehicle setposATL _location;
 				_vehicle setVectorDirAndUp _dir;
 			} else {
 				_vehicle setDir _dir;
+				_vehicle setposATL _location;
 			};
 
 			// temp set damage to mark for maint
 			_vehicle setDamage 0.01;
 
-			_vehicle setposATL _location;
+
 
 			_vehicle setVariable ["STORAGE_SLOT", str(_i), true];
 

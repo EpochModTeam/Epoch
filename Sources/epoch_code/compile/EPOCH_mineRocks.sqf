@@ -33,27 +33,14 @@ if ((diag_tickTime - EPOCH_lastMineRocks) >= 2) then {
 		{
 			if !(_x isKindOf "All") then {
 				_str = str(_x);
-				_findStart = _str find ": ";
-				if (_findStart != -1) then{
-
-					_start = _findStart + 2;
-					_end = (_str find ".") - _start;
-					_p3dName = _str select[_start, _end];
-					if (_p3dName find " " != -1) then {
-						(_p3dName splitString " ") joinString "_"; // replace spaces with underscores
-					};
-					_finalConfig = (_config >> "WorldInteractions" >> (_p3dName + "_p3d"));
-
-					_found = (getNumber(_finalConfig >> "rock") == 1);
-					if (getNumber(_finalConfig >> "wreck") == 1) then{
+				_worldTypes = ["rock","cinder","wreck"];
+				_getWorldTypes = [_str, _worldTypes] call EPOCH_worldObjectType;
+				{
+					if (_getWorldTypes param [_worldTypes find _x, false]) exitWith {
 						_found = true;
-						_foundIndex = 1;
+						_foundIndex = _forEachIndex - 1;
 					};
-					if (getNumber(_finalConfig >> "cinder") == 1) then{
-						_found = true;
-						_foundIndex = 0;
-					};
-				};
+				} forEach _worldTypes;
 			};
 			if (_found)exitWith{_object = _x};
 		}foreach _objects;

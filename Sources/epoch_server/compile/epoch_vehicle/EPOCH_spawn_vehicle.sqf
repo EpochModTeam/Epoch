@@ -19,14 +19,14 @@ _vehObj = createVehicle[_vehClass, _position, [], 0, _can_collide];
 if !(isNull _vehObj) then{
 	_vehObj call EPOCH_server_setVToken;
 
-	// Set Direction
+	// Set Direction and position
 	if (_direction isEqualType []) then{
-	  _vehObj setVectorDirAndUp _direction;
+		_vehObj setposATL _position;
+	 	_vehObj setVectorDirAndUp _direction;
 	} else {
-	  _vehObj setdir _direction;
+		_vehObj setdir _direction;
+		_vehObj setposATL _position;
 	};
-	// Set Position
-	_vehObj setposATL _position;
 
 	// Normalize vehicle inventory
 	clearWeaponCargoGlobal    _vehObj;

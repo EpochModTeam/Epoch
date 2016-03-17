@@ -15,7 +15,7 @@ _offset = if (isServer) then {40 * GUI_GRID_W + GUI_GRID_X;} else {
 	};
 };
 
-_cfg = 'CfgEpochConfiguration' call (missionNamespace getVariable "EPOCH_returnConfig");
+_cfg = 'CfgEpochConfiguration' call EPOCH_returnConfig;
 _configs = "true" configClasses _cfg;
 
 _idc = -70000;

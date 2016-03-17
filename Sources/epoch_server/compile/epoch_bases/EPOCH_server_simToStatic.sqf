@@ -28,8 +28,9 @@ _entities = allMissionObjects "Constructions_modular_F";
 				_newObj = createVehicle [_class, (_worldspace select 0), [], 0, "CAN_COLLIDE"];
 				_newObj setVariable ["BUILD_SLOT",_objSlot,true];
 				_newObj call EPOCH_server_buildingInit;
-				_newObj setVectorDirAndUp [(_worldspace select 1),(_worldspace select 2)];
+
 				_newObj setposATL (_worldspace select 0);
+				_newObj setVectorDirAndUp [(_worldspace select 1),(_worldspace select 2)];
 			};
 		};
 	};

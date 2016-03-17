@@ -54,12 +54,12 @@ if (_objSlot != -1) then {
 			if (isText _ammoClass) then {
 				_ammoClass = getText _ammoClass;
 				_ammoObj = createVehicle [_ammoClass, _worldspace select 0, [], 0, "CAN_COLLIDE"];
-				_ammoObj setVectorDirAndUp [(_worldspace select 1),(_worldspace select 2)];
 				_ammoObj setposATL (_worldspace select 0);
+				_ammoObj setVectorDirAndUp [(_worldspace select 1),(_worldspace select 2)];
 				_newObj setVariable ["EPOCH_TRAP_OBJ",_ammoObj];
 			};
-			_newObj setVectorDirAndUp [(_worldspace select 1),(_worldspace select 2)];
 			_newObj setposATL (_worldspace select 0);
+			_newObj setVectorDirAndUp [(_worldspace select 1),(_worldspace select 2)];
 			_newObj	setDamage _damage;
 			_return = _newObj;
 		};

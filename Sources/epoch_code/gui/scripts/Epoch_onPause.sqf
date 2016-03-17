@@ -54,19 +54,25 @@ _respawnButton ctrlEnable false;
 [_display] spawn {
 	disableSerialization;
 	params ["_display"];
-	_pushCustomVar = compile preprocessFileLineNumbers "epoch_code\compile\functions\EPOCH_pushCustomVar.sqf";
-	false call _pushCustomVar;
+	with missionNamespace do {
+		false call EPOCH_pushCustomVar;
+	};
 	_startTime = diag_tickTime+5;
 	waitUntil {
 		uiSleep 0.2;
 	   (isNull _display) || ((_startTime - diag_tickTime) <= 0)
 	};
 	if (!isNull _display) then {
-		true call _pushCustomVar;
+		with missionNamespace do {
+			true call EPOCH_pushCustomVar;
+		};
 	};
 };
 
 // init epoch configurator
-_display call (missionNamespace getVariable "EPOCH_InterruptConfig");
+with missionNamespace do {
+	_display call EPOCH_InterruptConfig;
+};
+
 
 true

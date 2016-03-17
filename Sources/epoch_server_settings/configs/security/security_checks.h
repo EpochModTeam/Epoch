@@ -19,12 +19,12 @@ class CfgSecConf
     class remoteExecClient{
         functions[] = {"bankBalance", "resetGroup", "groupUpdate", "groupUidUpdate", "healPlayer","tradeComplete"};
         // code
-        bankBalance = "EPOCH_bankBalance = _data;";
+        bankBalance = "EPOCH_bankBalance = _this;";
         resetGroup = "Epoch_my_Group = []; Epoch_my_GroupUID = '';";
-        groupUpdate = "Epoch_my_Group = _data; call EPOCH_Group_update;";
-        groupUidUpdate = "Epoch_my_GroupUID = _data;";
+        groupUpdate = "Epoch_my_Group = _this; call EPOCH_Group_update;";
+        groupUidUpdate = "Epoch_my_GroupUID = _this;";
         healPlayer = "{missionNamespace setVariable[format['EPOCH_player%1', _x], EPOCH_defaultVars select(EPOCH_customVars find _x)]} forEach['Temp','Hunger','Thirst','Toxicity','Stamina','HitPoints','BloodP','Alcohol','Radiation'];";
-        tradeComplete = "EPOCH_TRADE_COMPLETE = _data;";
+        tradeComplete = "EPOCH_TRADE_COMPLETE = _this;";
     };
 
     class limits {
@@ -74,11 +74,6 @@ class CfgSecConf
 			terrainGrid = 10; // Default in MP: 10
         };
         mode = "Standard";
-    };
-
-    class displayAddEventHandler {
-        keyDown = "_this call EPOCH_KeyDown;";
-        keyUp   = "_this call EPOCH_KeyUp;";
     };
 
     class addEventHandler {

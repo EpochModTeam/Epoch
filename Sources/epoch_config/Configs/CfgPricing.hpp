@@ -84,6 +84,7 @@ class CfgPricing
 	class ItemMixOil {price = 5;};
 	class emptyjar_epoch {price = 5;};
 	class jerrycan_epoch { price = 10; };
+	class jerrycanE_epoch { price = 5; };
 	class speargun_epoch { price = 75; };
 	class spear_magazine { price = 5; tax = 0.9; };
 	class lighter_epoch { price = 50; };
@@ -93,6 +94,7 @@ class CfgPricing
 	class ItemRock { price = 1; };
 
 	// Food
+	class honey_epoch {price = 5;};
 	class FoodBioMeat {price = 1;};
 	class FoodMeeps {price = 50;};
 	class FoodSnooter {price = 5;};
@@ -117,6 +119,8 @@ class CfgPricing
 	class ItemSodaMocha {price = 8;};
 	class ItemSodaBurst {price = 4;};
 	class ItemSodaRbull {price = 5;};
+	class water_epoch {price = 5;};
+	class clean_water_epoch {price = 10;};
 
 	// Medical
 	class FAK {price = 3;};
@@ -396,8 +400,6 @@ class CfgPricing
 	class ItemSolar { price = 75; };
 	class ItemCables { price = 50; };
 	class ItemBattery { price = 50; };
-
-	class honey_epoch {price = 5;};
 	class Pelt_EPOCH {price = 1;};
 	class Venom_EPOCH {price = 10;};
 
