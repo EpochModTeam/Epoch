@@ -20,26 +20,18 @@ if (surfaceIsWater _currentPos) then {
     _objects = lineIntersectsObjs[eyePos player, _currentPos, player, objNull, true, 2];
     if (_objects isEqualTo []) then{
 
-        _nearByBobbers = nearestObjects [player,["Bobber_EPOCH"],12];
-        _nearByBobbersLocal = [];
-        {
-            if (local _x) then {
-                _nearByBobbersLocal pushBack _x
-            };
-        } forEach _nearByBobbers;
-
         // Cast bobber and set for cleanup
-        if (_nearByBobbersLocal isEqualTo []) then {
+        _bobber = missionNamespace getVariable ["EPOCH_myBobber", objNull];
+        if (isNull _bobber) then {
             _bobber = createVehicle ["Bobber_EPOCH",_currentPos, [], 0, "CAN_COLLIDE"];
             [_bobber] remoteExec ["EPOCH_localCleanup",2];
             _bobber setPosASL _currentPos;
             _bobber setVariable ["EPOCH_bobberTime", diag_tickTime];
+            EPOCH_myBobber = _bobber;
         } else {
-
-            _bobber = _nearByBobbersLocal select 0;
-            // Reel in and delete Bobber
-            if !(isNull _bobber) then {
-
+            if (_bobber distance player > 12) then {
+                ["<t size='1.6' color='#99ffffff'>No bobber found within 12m.</t>", 5] call Epoch_dynamicText;
+            } else {
                 _castTime = _bobber getVariable ["EPOCH_bobberTime", diag_tickTime];
                 _diffTime = (diag_tickTime - _castTime) / 10;
 
@@ -52,22 +44,23 @@ if (surfaceIsWater _currentPos) then {
                         _diffTime = 100;
                     };
 
+                    // make bobber move and delete
                     _bobber setVelocity [0,-1,-10];
-                    deleteVehicle _bobber;
+                    _bobber spawn {
+                        uiSleep 0.5;
+                        deleteVehicle _this;
+                    };
 
                     _randomChanceMax = (100 - _diffTime) max 1 min 99;
                     _randomChance = random 100;
 
                     if (_randomChance > _randomChanceMax) then {
-                        // TODO: make payout config based
-                        _fishes = ["ItemTuna","ItemSeaBass","ItemSeaBass","ItemSeaBass","ItemTrout","ItemTrout","ItemTrout","ItemTrout","ItemTrout","ItemTrout"];
-                        _fish = _fishes param [floor(random(count _fishes)),""];
-
+                        _fishes = ["CfgEpochClient", "fishLoots", ["ItemTuna","ItemSeaBass","ItemSeaBass","ItemSeaBass","ItemTrout","ItemTrout","ItemTrout","ItemTrout","ItemTrout","ItemTrout"]] call EPOCH_fnc_returnConfigEntryV2;
+                        _fish = selectRandom _fishes;
                         if (_fish != "") then {
-                          _fish call EPOCH_fnc_addItemOverflow;
-                          ["<t size='1.6' color='#99ffffff'>Fish Caught</t>", 5] call Epoch_dynamicText;
+                            _fish call EPOCH_fnc_addItemOverflow;
+                            ["<t size='1.6' color='#99ffffff'>Fish Caught</t>", 5] call Epoch_dynamicText;
                         };
-
                     } else {
                         ["<t size='1.6' color='#99ffffff'>Fish Got Away</t>", 5] call Epoch_dynamicText;
                     };

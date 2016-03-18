@@ -1,10 +1,13 @@
 /*
 	Author: Aaron Clark - EpochMod.com
     Contributors:
+	
 	Description:
 	Main Client side configs for the Epoch gamemode
+    
     Licence:
     Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
+    
     Github:
     https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_config/Configs/CfgEpochClient.hpp
 */
@@ -68,6 +71,8 @@ class CfgEpochClient
 		{ "freezerPos", "Freezer_EPOCH", false },
 		{ "cabinetPos", "Cabinet_EPOCH", false }
 	};
+
+	// Event handler code
 	displayAddEventHandler[] = {"keyDown","keyUp"};
     keyDown = "_this call EPOCH_KeyDown";
     keyUp   = "_this call EPOCH_KeyUp";
@@ -85,6 +90,14 @@ class CfgEpochClient
 	Dammaged        = "";
 	Hit             = "";
 	HitPart         = "";
+
+	// suppress these units from spawning near Jammer or Traders
+	nonJammerAI[] = {"B_Heli_Transport_01_F","PHANTOM","Epoch_Cloak_F"};
+	nonTraderAI[] = {"B_Heli_Transport_01_F","PHANTOM","Epoch_Cloak_F","GreatWhite_F"};
+	nonTraderAIRange = 150;
+
+	// Fishing loots 
+	fishLoots[] = {"ItemTuna","ItemSeaBass","ItemSeaBass","ItemSeaBass","ItemTrout","ItemTrout","ItemTrout","ItemTrout","ItemTrout","ItemTrout"};
 
 	// include configs
     #include "CfgEpochClient\Altis.hpp"

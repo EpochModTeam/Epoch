@@ -38,7 +38,6 @@ if (!(_object isKindOf "All")) then {
 			};
 		};
 
-		// TODO move to server config
 		if ((random 1) <= EPOCH_antagonistChanceTrash) then {
 			_nearPlayers = _posWH nearEntities[["Epoch_Male_F", "Epoch_Female_F"], 50];
 

@@ -18,6 +18,7 @@ if !([_target, _token] call EPOCH_server_getPToken) exitWith{};
 _range = 0;
 _move = "";
 // TODO configize
+
 switch (_moveCase) do {
 	case 1: {
 		_range = 1000;

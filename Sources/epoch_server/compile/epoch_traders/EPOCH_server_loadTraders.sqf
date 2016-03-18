@@ -12,7 +12,7 @@
     Github:
     https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_server/compile/epoch_traders/EPOCH_server_loadTraders.sqf
 */
-private ["_arr","_currentStock","_limit","_toBeRemoved","_marker","_staticTrader","_agent","_class","_pos","_randomIndex","_randomAIUniform","_dir","_objHiveKey","_response","_schedule","_home","_work","_traderSlotIndex","_staticTradersArray","_staticTradersArrCount","_aiTables","_serverSettingsConfig","_storedVehicleLimit"];
+private ["_arr","_currentStock","_limit","_toBeRemoved","_marker","_staticTrader","_agent","_class","_pos","_randomAIUniform","_dir","_objHiveKey","_response","_schedule","_home","_work","_traderSlotIndex","_staticTradersArray","_staticTradersArrCount","_aiTables","_serverSettingsConfig","_storedVehicleLimit"];
 params [["_maxTraderLimit",0]];
 
 _staticTradersArray = [] + EPOCH_staticNPCTraderPos;
@@ -36,8 +36,7 @@ for "_i" from 0 to _maxTraderLimit do {
 		_staticTrader = _staticTradersArray select _i;
 		_staticTrader params ["_class","_pos","_dir"];
 		_agent = createAgent [_class, _pos, [], 0, "CAN_COLLIDE"];
-		_randomIndex = floor(random(count _aiTables));
-		_randomAIUniform = _aiTables select _randomIndex;
+		_randomAIUniform = selectRandom _aiTables;
 		_agent addUniform _randomAIUniform;
 		_agent setDir _dir;
 		_agent setPosATL _pos;
@@ -134,8 +133,7 @@ for "_i" from 0 to _maxTraderLimit do {
 
 				addToRemainsCollector[_agent];
 
-				_randomIndex = floor(random(count _aiTables));
-				_randomAIUniform = _aiTables select _randomIndex;
+				_randomAIUniform = selectRandom _aiTables;
 				_agent addUniform _randomAIUniform;
 
 				// _agent enableSimulationGlobal false;

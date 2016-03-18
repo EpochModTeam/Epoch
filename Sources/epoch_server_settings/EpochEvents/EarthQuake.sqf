@@ -17,14 +17,12 @@ if ((count _position) == 2) then{
 		if ((random 1) > _chance) then {
 			// send earthquake to each player in zone
 			{
-				// send to player
 				_position remoteExec ['EPOCH_client_earthQuake',(owner _x)];
 			}forEach _playersNearEpicenter;
 
+			// todo configize
 			_minerals = ["MineralDepositCopper_EPOCH", "MineralDepositGold_EPOCH", "MineralDepositSilver_EPOCH"];
-			_randomIndex = floor(random(count _minerals));
-
-			_item = createVehicle[(_minerals select _randomIndex), _position, [], 0.0, "CAN_COLLIDE"];
+			_item = createVehicle[(selectRandom _minerals), _position, [], 0.0, "CAN_COLLIDE"];
 			if (EPOCH_showEarthQuakes) then{
 				_marker = createMarker[str(_position), _position];
 				_marker setMarkerShape "ICON";

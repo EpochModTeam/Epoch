@@ -354,9 +354,6 @@ switch _interactOption do {
 	};
 
 	default {
-		// bottom
 		["<t size='1.6' color='#99ffffff'>Found nothing</t>", 5] call Epoch_dynamicText;
-		// center
-		// ["<t size='1.6' color='#99ffffff'>text</t>", 5] call Epoch_dynamicText;
 	};
 };
