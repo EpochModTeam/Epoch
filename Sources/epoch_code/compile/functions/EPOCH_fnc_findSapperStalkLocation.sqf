@@ -29,7 +29,7 @@
 private ["_dir","_dirTo","_rnd","_pos","_dist"];
 params ["_maxIn","_minIn","_arcIn","_unitIn","_offset","_trgtIn"];
 
-_dirTo = [position _unitIn, position _trgtIn] call BIS_fnc_dirTo;
+_dirTo = (position _unitIn) getDir (position _trgtIn);
 _rnd = _offset - (random _arcIn);
 _pos = getPosATL _trgtIn;
 _dist = ((random (_maxIn - _minIn)) + _minIn) max _minIn;

@@ -54,7 +54,7 @@ _lootBubble = {
 	_playerPos = getPosATL vehicle player;
 	_distanceTraveled = EPOCH_lastPlayerPos distance _playerPos;
 	if (_distanceTraveled > 10 && _distanceTraveled < 200) then {
-		_travelDir = [EPOCH_lastPlayerPos, _playerPos] call BIS_fnc_dirTo;
+		_travelDir = EPOCH_lastPlayerPos getDir _playerPos;
 		_lootDist = 30 + _distanceTraveled;
 		_xPos = (_playerPos select 0) + (_lootDist * sin(_travelDir));
 		_yPos = (_playerPos select 1) + (_lootDist * cos(_travelDir));

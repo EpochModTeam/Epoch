@@ -173,7 +173,7 @@ if (isText(_config)) then {
 					_vel2 = (velocity _nearestObject);
 					_direction = getDir _nearestObject;
 					if (_snapType == "perp") then {
-						_direction = _direction - ([_snapPosition,_nearestObject] call BIS_fnc_dirTo);
+						_direction = _direction - (_snapPosition getDir _nearestObject);
 					} else {
 						_direction = 0;
 					};

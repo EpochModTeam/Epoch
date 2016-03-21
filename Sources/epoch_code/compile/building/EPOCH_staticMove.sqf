@@ -200,7 +200,7 @@ if (_class != "") then {
 						_snapPos1 = [_snapPosition select 0, _snapPosition select 1, 0];
 						_pos_snapObj = getposATL _nearestObject;
 						_pos_snapObj set[2, 0];
-						_direction = _direction - ([_snapPos1, _pos_snapObj] call BIS_fnc_dirTo);
+						_direction = _direction - (_snapPos1 getDir _pos_snapObj);
 					} else {
 						_direction = 0;
 					};

@@ -12,14 +12,13 @@
     Github:
     https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_server/compile/epoch_server/EPOCH_serverLootObject.sqf
 */
-private["_randomItemArray", "_quan", "_randomLootClass", "_randomItem", "_lootPaid", "_mags", "_lootItemWeightedArray", "_lootItemArray", "_weightedItemArray", "_weightedItemArrayCount", "_exit", "_maxPayout", "_lootTable", "_lootTableArray", "_weightedArray"];
+private["_randomItemArray", "_quan", "_randomLootClass", "_randomItem", "_lootPaid", "_mags", "_lootItemWeightedArray", "_lootItemArray", "_weightedItemArray", "_exit", "_maxPayout", "_lootTable", "_lootTableArray", "_weightedArray"];
 params ["_object","_type"];
 _randomizeMagazineAmmoCount = ["CfgEpochClient", "randomizeMagazineAmmoCount", true] call EPOCH_fnc_returnConfigEntryV2;
 if !(isNull _object) then{
 	_lootTable = [_type, "CfgMainTable", "tables"] call EPOCH_weightedArray;
 	_lootTable params ["_lootTableArray","_weightedArray"];
 	if !(_lootTableArray isEqualTo []) then {
-
 		_loots = [];
 		_config = configFile >> "CfgMainTable" >> _type;
 		_minLoot = getNumber(_config >> "lootMin");
@@ -34,21 +33,15 @@ if !(isNull _object) then{
 			_lootItemArray = _lootItemWeightedArray select 0;
 			if !(_lootItemArray isEqualTo[]) then {
 				_weightedItemArray = _lootItemWeightedArray select 1;
-				_weightedItemArrayCount = _lootItemWeightedArray select 2;
-
-				_randomItemArray = _lootItemArray select (_weightedItemArray select floor(random _weightedItemArrayCount));
-
+				_randomItemArray = _lootItemArray select (selectRandom _weightedItemArray);
 				_randomItem = _randomItemArray select 0;
 				_type = _randomItemArray select 1;
-
 				_quan = 1;
-
 				/*
 				if ((count _randomItem) >= 3) then {
 					_quan = _randomItem select 2;
 				};
 				*/
-
 				_loop = true;
 				_exit = false;
 
@@ -97,12 +90,8 @@ if !(isNull _object) then{
 
 							_lootItemArray = _lootItemWeightedArray select 0;
 							if !(_lootItemArray isEqualTo[]) then {
-
 								_weightedItemArray = _lootItemWeightedArray select 1;
-								_weightedItemArrayCount = _lootItemWeightedArray select 2;
-
-								_randomItemArray = _lootItemArray select(_weightedItemArray select floor(random _weightedItemArrayCount));
-
+								_randomItemArray = _lootItemArray select(selectRandom _weightedItemArray);
 								_randomItem = _randomItemArray select 0;
 								_type = _randomItemArray select 1;
 							} else {

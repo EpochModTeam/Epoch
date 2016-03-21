@@ -550,7 +550,7 @@ _sknBanANDSleepQuick = _skn_AH_Ban+"; uiSleep 1";
 // CfgPatches Check
 _sknPatches = [];
 "_sknPatches pushBack (configName _x)" configClasses (configFile >> "CfgPatches");
-{if !(_x in _sknPatches) then {_sknPatches pushBack _x}}forEach _skn_whitelist_cfgPatches;
+{pushBackUnique _x}forEach _skn_whitelist_cfgPatches;
 _skn_addonCheckCode = if (_skn_check_addons) then {"[] spawn{_config = '!(configName _x in "+str _sknPatches+")' configClasses (configFile >> 'CfgPatches');if !(_config isEqualTo []) then {[format['Disallowed Addon %1',_config],"+str (_skn_cfgPatchesCfg select 0)+"] call "+_skn_AH_Ban+"}};"} else {""};
 _skn_fileCheckCode = if (_skn_check_files isEqualTo []) then {""} else {"{if (str(compile preprocessFileLineNumbers (_x select 0)) != str(missionNamespace getVariable [_x select 1,'']))exitWith{[format['Modified File %1 (%2/%3)',_x select 1,count toArray str (compile preprocessFileLineNumbers (_x select 0)),count toArray str(missionNamespace getVariable [_x select 1,''])],0] call "+_skn_AH_Ban+"}} forEach "+str _skn_check_files+";"};
 
@@ -1674,7 +1674,7 @@ _skn_admincode = compileFinal ("
 	"+_skn_freeCam+" = {
 		_getPos = player modelToWorld[0, -1.5, 1.75];
 		_cam = 'camera' camCreate _getPos;
-		_cam setDir([_getPos, player] call BIS_fnc_dirTo);
+		_cam setDir (_getPos getDir player);
 		_cam camCommand 'MANUAL ON';
 		_cam camCommand 'INERTIA OFF';
 		_cam cameraEffect['INTERNAL', 'BACK'];

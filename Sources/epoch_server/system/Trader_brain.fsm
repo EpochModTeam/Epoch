@@ -485,7 +485,7 @@ class FSM
     {
       name = "look_at";
       init = /*%FSM<STATEINIT""">*/"if !(isNull _trgt) then {" \n
-       "_dir = [_trader, _trgt] call BIS_fnc_dirTo;" \n
+       "_dir = _trader getDir _trgt;" \n
        "if(_lastDir != _dir)then{" \n
        "	_trader setDir _dir;" \n
        "	_lastDir = _dir;" \n
@@ -517,7 +517,7 @@ class FSM
     {
       name = "trade";
       init = /*%FSM<STATEINIT""">*/"if !(isNull _trgt) then {" \n
-       "	_trader setDir ([_trader, _trgt] call BIS_fnc_dirTo);" \n
+       "	_trader setDir (_trader getDir _trgt);" \n
        "};" \n
        "_sWait = 480;" \n
        "_actionDone = true;" \n
