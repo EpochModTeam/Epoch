@@ -35,11 +35,11 @@ _jammers = [];
 _config = 'CfgEpochClient' call EPOCH_returnConfig;
 _jammerRange = getNumber(_config >> "buildingJammerRange");
 _jammers = nearestObjects[_targetPos, ["PlotPole_EPOCH"], _jammerRange];
-if(count _jammers > 0 && !(_unitClass in _nonJammer))exitWith{};
+if(count _jammers > 0 && (_unitClass in _nonJammer))exitWith{};
 
 _restricted = [];
 _restricted = nearestObjects [_targetPos, ["ProtectionZone_Invisible_F"], _nonTraderAIRange];
-if(count _restricted > 0 && !(_unitClass in _nonTrader))exitWith{};
+if(count _restricted > 0 && (_unitClass in _nonTrader))exitWith{};
 
 _disableAI = {
 	{_this disableAI _x}forEach["TARGET","AUTOTARGET","FSM"];
