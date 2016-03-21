@@ -29,7 +29,7 @@ if(_return isEqualTo[]) then {
             _weightedArray pushBack _forEachIndex;
         };
     }forEach getArray(configFile >> _configName >> _keyName >> _arrayName);
-    _return = [_lootTableArray,_weightedArray,count _weightedArray];
+    _return = [_lootTableArray,_weightedArray];
     missionNamespace setVariable[format["EPOCH_LT_%1_%2_%3",_configName,_keyName,_arrayName],_return];
 };
 _return

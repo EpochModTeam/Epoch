@@ -50,17 +50,11 @@ if !(_object in EPOCH_cleanupQueue) then {
 	};
 
 	if ((random 1) <= EPOCH_antagonistChanceLoot) then{
-
 		_antagTable = [_type, "CfgMainTable", "antagonists"] call EPOCH_weightedArray;
-
 		_antagTableArray = _antagTable select 0;
 		if !(_antagTableArray isEqualTo[]) then{
-
 			_weightedArray = _antagTable select 1;
-			_weightedArrayCount = _antagTable select 2;
-
-			_triggerType = _antagTableArray select(_weightedArray select floor(random _weightedArrayCount));
-
+			_triggerType = _antagTableArray select(selectRandom _weightedArray);
 			[_player, _triggerType] call EPOCH_server_triggerEvent;
 		};
 	};

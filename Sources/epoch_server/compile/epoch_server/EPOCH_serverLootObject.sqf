@@ -12,12 +12,12 @@
     Github:
     https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_server/compile/epoch_server/EPOCH_serverLootObject.sqf
 */
-private["_randomItemArray", "_quan", "_randomLootClass", "_randomItem", "_lootPaid", "_mags", "_lootItemWeightedArray", "_lootItemArray", "_weightedItemArray", "_weightedItemArrayCount", "_exit", "_maxPayout", "_lootTable", "_lootTableArray", "_weightedArray", "_weightedArrayCount"];
+private["_randomItemArray", "_quan", "_randomLootClass", "_randomItem", "_lootPaid", "_mags", "_lootItemWeightedArray", "_lootItemArray", "_weightedItemArray", "_weightedItemArrayCount", "_exit", "_maxPayout", "_lootTable", "_lootTableArray", "_weightedArray"];
 params ["_object","_type"];
 _randomizeMagazineAmmoCount = ["CfgEpochClient", "randomizeMagazineAmmoCount", true] call EPOCH_fnc_returnConfigEntryV2;
 if !(isNull _object) then{
 	_lootTable = [_type, "CfgMainTable", "tables"] call EPOCH_weightedArray;
-	_lootTable params ["_lootTableArray","_weightedArray","_weightedArrayCount"];
+	_lootTable params ["_lootTableArray","_weightedArray"];
 	if !(_lootTableArray isEqualTo []) then {
 
 		_loots = [];
@@ -26,7 +26,7 @@ if !(isNull _object) then{
 		_maxLoot = getNumber(_config >> "lootMax");
 		_maxPayout = ((random(_maxLoot) * EPOCH_lootMultiplier) min _maxLoot) max _minLoot;
 		for "_k" from 1 to _maxPayout do {
-			_loots pushBack (_lootTableArray select(_weightedArray select floor(random _weightedArrayCount)));
+			_loots pushBack (_lootTableArray select(selectRandom _weightedArray));
 		};
 
 		{
