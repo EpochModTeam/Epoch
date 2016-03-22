@@ -17,7 +17,6 @@ params ["_unit","_container","_item"];
 
 // check for access of a locked container
 if (_container getVariable['EPOCH_Locked', false]) then {
-	player removeItem _item;
 	// kick player
 	EPOCH_kicked = format ["%1 attempted to access a locked %2 with %3",_unit,_container,_item];
 	publicVariableServer "EPOCH_kicked";
