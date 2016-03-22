@@ -31,9 +31,9 @@ _abortAfter = 0;
 _start = [];
 _finish = [];
 while {_notReady} do {
-    _start =  _trgt getRelPos [480, random 360];
+    _start =  _trgt getPos [480, random 360];
     _dirTo = [_start,_trgt,18] call EPOCH_fnc_dirToFuzzy;
-    _finish = [_start, ((_start distance _trgt) * 2), _dirTo] call BIS_fnc_relPos;
+    _finish = _start getPos [((_start distance _trgt) * 2),_dirTo];
     _nrPlyrs = nearestObjects [_start, ["Epoch_Female_base_F","Epoch_Man_base_F"],200];
     if((!(surfaceIsWater _start) && !(surfaceIsWater _finish) && (count _nrPlyrs < 1)) || _abortAfter > 41)then{
         _notReady = false;

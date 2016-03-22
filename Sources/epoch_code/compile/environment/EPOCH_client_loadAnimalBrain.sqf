@@ -36,7 +36,7 @@ if (_randomAIClass isEqualType []) then {
 };
 
 for "_i" from 1 to 3 step 1 do {
-	_tryAnimalPos = player getRelPos [floor(random 350) + 50, floor(random 360)];
+	_tryAnimalPos = player getPos [floor(random 350) + 50, floor(random 360)];
 	if!(surfaceIsWater _tryAnimalPos) exitWith {
 		_animalPos = _tryAnimalPos;
 	};
