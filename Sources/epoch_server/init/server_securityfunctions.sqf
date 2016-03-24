@@ -1516,7 +1516,7 @@ _skn_admincode = compileFinal ("
 			if (isClass(_config)) then {
 				_cntBuildings = _cntBuildings + 1;
 				{
-					_positions = [] + getArray(_config >> (_x select 0));
+					_positions = getArray(_config >> (_x select 0));
 					if !(_positions isEqualTo[]) then {
 						_class = _x select 1;
 						_randomColor = _x select 2;
@@ -1558,7 +1558,7 @@ _skn_admincode = compileFinal ("
 									};
 
 									if (_randomColor) then {
-										_colors = [] + getArray(configFile >> 'CfgVehicles' >> _class >> 'availableTextures');
+										_colors = getArray(configFile >> 'CfgVehicles' >> _class >> 'availableTextures');
 										if !(_colors isEqualTo[]) then {
 											_color = selectRandom _colors;
 											_item setObjectTextureGlobal[0, _color];

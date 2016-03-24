@@ -124,8 +124,8 @@ if (isText(_config)) then {
 					} forEach _allowedSnapObjects;
 				};
 				if (!isNull _nearestObject) then {
-					_snapPointsPara = [] + getArray(configfile >> "cfgVehicles" >> (typeOf _nearestObject) >> "snapPointsPara");
-					_snapPointsPerp = [] + getArray(configfile >> "cfgVehicles" >> (typeOf _nearestObject) >> "snapPointsPerp");
+					_snapPointsPara = getArray(configfile >> "cfgVehicles" >> (typeOf _nearestObject) >> "snapPointsPara");
+					_snapPointsPerp = getArray(configfile >> "cfgVehicles" >> (typeOf _nearestObject) >> "snapPointsPerp");
 					_snapArrayPara = [];
 					{
 						if (_x in _allowedSnapPoints) then {

@@ -43,6 +43,7 @@ _emergency = _display displayCtrl 21206;
 
 // lootBubble Init
 _loots = ["CfgEpochClient", "lootClasses", EPOCH_lootClasses] call EPOCH_fnc_returnConfigEntryV2;
+_buildingJammerRange = ["CfgEpochClient", "buildingJammerRange", 75] call EPOCH_fnc_returnConfigEntryV2;
 _masterConfig = 'CfgBuildingLootPos' call EPOCH_returnConfig;
 
 _lootClasses = [];
@@ -61,10 +62,6 @@ _lootBubble = {
 		_lootLoc = [_xPos, _yPos, 0];
 
 		_objects = nearestObjects[_lootLoc, _lootClasses, 30];
-
-		_buildingJammerRange = getNumber(_masterConfig >> "buildingJammerRange");
-		if (_buildingJammerRange == 0) then { _buildingJammerRange = 75; };
-
 		_jammer = nearestObjects [_lootLoc, ["PlotPole_EPOCH"], _buildingJammerRange];
 
 		if (!(_objects isEqualTo[]) && (_jammer isEqualTo[])) then {
@@ -139,7 +136,7 @@ _lootBubble = {
 												};
 
 												if (_randomColor) then {
-													_colors = [] + getArray(configFile >> "CfgVehicles" >> _class >> "availableTextures");
+													_colors = getArray(configFile >> "CfgVehicles" >> _class >> "availableTextures");
 													if !(_colors isEqualTo[]) then {
 														_color = selectRandom _colors;
 														_item setObjectTextureGlobal[0, _color];

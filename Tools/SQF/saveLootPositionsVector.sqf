@@ -511,7 +511,7 @@ EPOCH_LOOT = {
 
     {
         _configPos = _x select 0;
-        _positions = [] + getArray (_config >> _configPos);
+        _positions = getArray (_config >> _configPos);
         diag_log str(_positions);
         if (!(_positions isEqualTo [])) then{
             _class       = _x select 1;

@@ -1,13 +1,13 @@
 /*
 	Author: Aaron Clark - EpochMod.com
     Contributors:
-	
+
 	Description:
 	Main Client side configs for the Epoch gamemode
-    
+
     Licence:
     Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
-    
+
     Github:
     https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_config/Configs/CfgEpochClient.hpp
 */
@@ -96,7 +96,7 @@ class CfgEpochClient
 	nonTraderAI[] = {"B_Heli_Transport_01_F","PHANTOM","Epoch_Cloak_F","GreatWhite_F"};
 	nonTraderAIRange = 150;
 
-	// Fishing loots 
+	// Fishing loots
 	fishLoots[] = {"ItemTuna","ItemSeaBass","ItemSeaBass","ItemSeaBass","ItemTrout","ItemTrout","ItemTrout","ItemTrout","ItemTrout","ItemTrout"};
 
 	// include configs
