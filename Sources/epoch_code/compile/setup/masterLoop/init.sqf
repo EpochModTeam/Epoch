@@ -90,7 +90,7 @@ _lootBubble = {
 							};
 
 							{
-								_positions = [] + getArray(_config >> (_x select 0));
+								_positions = getArray(_config >> (_x select 0));
 								if !(_positions isEqualTo[]) then {
 									_class = _x select 1;
 									_randomColor = _x select 2;
