@@ -142,6 +142,9 @@ class CfgClientFunctions
 			class initUI {};
 			class refeshUI {};
 		};
+		class looting {
+			class spawnLoot {};
+		};
 		class gui {
 			file = "epoch_code\gui\scripts";
 			class onPause {};

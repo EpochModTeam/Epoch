@@ -53,7 +53,8 @@ EPOCH_soundLevel = 1;
 EPOCH_arr_interactedObjs = [];
 EPOCH_buildOption = 0;
 EPOCH_nearestLocations = [];
-onEachFrame EPOCH_onEachFrame;
+
+["EPOCH_onEachFrame", "onEachFrame", EPOCH_onEachFrame] call BIS_fnc_addStackedEventHandler;
 
 EPOCH_LastAirDrop = time;
 EPOCH_AirDropCheck = getNumber(getMissionConfig "CfgEpochAirDrop" >> "AirDropFreq");

@@ -1,4 +1,4 @@
-class WorldInteractions  {
+class CfgWorldInteractions  {
     class Water {
         water = 1;
     };

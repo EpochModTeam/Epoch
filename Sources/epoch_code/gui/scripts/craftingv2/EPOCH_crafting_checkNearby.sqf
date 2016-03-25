@@ -24,7 +24,7 @@ switch (_type) do {
 	case 2:
 	{
 		_config = 'CfgEpochClient' call EPOCH_returnConfig;
-		_configWorldInteractions = (_config >> "WorldInteractions");
+		_configWorldInteractions = (_config >> "CfgWorldInteractions");
 		_nearObjects = nearestObjects [player, [], _dist];
 		_check = _check select 0;
 		_tmpResult = false;

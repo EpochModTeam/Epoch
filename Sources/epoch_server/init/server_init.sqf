@@ -61,24 +61,19 @@ diag_log format["Epoch: Start Hive, Instance ID: '%1'", _instanceID];
 
 diag_log "Epoch: Init Connect/Disconnect handlers";
 addMissionEventHandler ["HandleDisconnect", { _this call EPOCH_server_onPlayerDisconnect }];
-_onPlayerDisconnected = {
-    diag_log format["playerDisconnected:%1:%2", _uid, _name];
-    ['Disconnected', [_uid, _name]] call EPOCH_fnc_server_hiveLog;
-    _uid call EPOCH_server_disconnect;
-};
-_onPlayerConnected = {
+
+["EPOCH_onPlayerConnected", "onPlayerConnected", {
     "epochserver" callExtension format["001|%1", _uid];
     diag_log format["playerConnected:%1:%2", _uid, _name];
     ['Connected', [_uid, _name]] call EPOCH_fnc_server_hiveLog;
     ["PlayerData", _uid, EPOCH_expiresPlayer, [_name]] call EPOCH_fnc_server_hiveSETEX;
-};
-if ([_serverSettingsConfig, "CBA_compatibility", false] call EPOCH_fnc_returnConfigEntry) then {
-    ["EPOCH_onPlayerConnected", "onPlayerConnected", _onPlayerConnected] call BIS_fnc_addStackedEventHandler;
-    ["EPOCH_onPlayerDisconnected", "onPlayerDisconnected", _onPlayerDisconnected] call BIS_fnc_addStackedEventHandler;
-} else {
-    onPlayerDisconnected _onPlayerDisconnected;
-    onPlayerConnected _onPlayerConnected;
-};
+}] call BIS_fnc_addStackedEventHandler;
+
+["EPOCH_onPlayerDisconnected", "onPlayerDisconnected", {
+    diag_log format["playerDisconnected:%1:%2", _uid, _name];
+    ['Disconnected', [_uid, _name]] call EPOCH_fnc_server_hiveLog;
+    _uid call EPOCH_server_disconnect;
+}] call BIS_fnc_addStackedEventHandler;
 
 diag_log "Epoch: Setup Side Settings";
 //set side status

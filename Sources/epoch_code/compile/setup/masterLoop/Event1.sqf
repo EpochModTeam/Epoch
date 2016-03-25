@@ -138,5 +138,3 @@ if (EPOCH_debugMode) then {
 };
 
 call EPOCH_TradeLoop;
-
-onEachFrame EPOCH_onEachFrame;

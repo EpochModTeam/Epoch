@@ -93,7 +93,6 @@ _skn_cfgPatchesCfg = [_serverSettingsConfig, "antihack_cfgPatchesCfg", [0]] call
 _skn_PVSPrefix = [_serverSettingsConfig, "antihack_PVSPrefix", "EPAH_"] call EPOCH_fnc_returnConfigEntry;
 _skn_customVariablesCheck = [_serverSettingsConfig, "antihack_customVariablesCheck", true] call EPOCH_fnc_returnConfigEntry;
 _skn_customVariables = [_serverSettingsConfig, "antihack_customVariables", []] call EPOCH_fnc_returnConfigEntry;
-_loots = ["CfgEpochClient", "lootClasses", EPOCH_lootClasses] call EPOCH_fnc_returnConfigEntryV2;
 
 // build array with X number of random strings
 _rndVAR_Count = 84; // 85 = number of (_skn_rndVA deleteAt 0)
@@ -785,7 +784,6 @@ _skn_code_antihack = compileFinal ("
 			onMapSingleClick '';
 			player allowDamage true;
 			vehicle player allowDamage true;
-			onEachFrame EPOCH_onEachFrame;
 
 			{
 				_ehKey = _x select 0;
@@ -1497,82 +1495,18 @@ _skn_admincode = compileFinal ("
 		}
 	};
 	"+_skn_spawnLoot+" = {
-		_lootLoc = getPosASL player;
 		_masterConfig = 'CfgBuildingLootPos' call EPOCH_returnConfig;
-
 		_lootClasses = [];
 		_lootClassesIgnore = ['Default'];
 		'_cN = configName _x;if !(_cN in _lootClassesIgnore)then{_lootClasses pushBack _cN};' configClasses _masterConfig;
-
-		_objects = nearestObjects[_lootLoc, _lootClasses, _this];
-
-		_cntItem = 0;
 		_cntBuildings = 0;
-
 		{
-			_building = _x;
-			_pos = getPosATL _building;
-			_config = configFile >> 'CfgBuildingLootPos' >> (typeOf _building);
-			if (isClass(_config)) then {
+			if (_x call EPOCH_spawnLoot) then {
 				_cntBuildings = _cntBuildings + 1;
-				{
-					_positions = getArray(_config >> (_x select 0));
-					if !(_positions isEqualTo[]) then {
-						_class = _x select 1;
-						_randomColor = _x select 2;
-						{
-							_lootBiasPos = getNumber(_config >> 'lootBiasPos');
-							_lootType = getText(_config >> 'lootType');
-							if ((random 100) < _lootBiasPos) then {
-
-								_pos = _building modelToWorld(_x select 0);
-
-								if (nearestObjects[_pos, ['WH_Loot', 'Animated_Loot'], 2] isEqualTo[]) then {
-									_cntItem = _cntItem + 1;
-
-									if (_class isEqualType []) then {
-										_class = selectRandom _class;
-									};
-									_dir = (_x select 1) + (getDir _building);
-									if (_dir > 360) then {
-										_dir = _dir - 360;
-									};
-									if (_lootType == 'mil' && _class == 'Bed_EPOCH') then {
-										_class = 'Bunk_EPOCH';
-									};
-									_item = createVehicle[_class, _pos, [], 0.0, 'CAN_COLLIDE'];
-									_item setDir _dir;
-
-									if (_pos select 2 < 0) then {
-										_pos set[2, 0];
-									};
-
-									if (surfaceIsWater _pos) then {
-										_item setPosASL _pos;
-									} else {
-										_item setPosATL _pos;
-									};
-
-									if (_randomColor isEqualType 'STRING') then{
-										_randomColor = _randomColor isEqualTo 'true';
-									};
-
-									if (_randomColor) then {
-										_colors = getArray(configFile >> 'CfgVehicles' >> _class >> 'availableTextures');
-										if !(_colors isEqualTo[]) then {
-											_color = selectRandom _colors;
-											_item setObjectTextureGlobal[0, _color];
-										};
-									};
-								};
-							};
-						}forEach _positions;
-					};
-				}forEach "+str _loots+";
 			};
 		}forEach (nearestObjects[getPosASL player, _lootClasses, _this]);
-		[format['Spawn Loot (%1) for %2 Buildings (%3 Container)',_this,_cntBuildings,_cntItem],0] call "+_skn_adminLog_PVC+";
-		hint format['Spawned Loot for %1 Buildings (%2 Container)',_cntBuildings,_cntItem];
+		[format['Spawn Loot (%1) for %2 Buildings',_this,_cntBuildings],0] call "+_skn_adminLog_PVC+";
+		hint format['Spawned Loot for %1 Buildings',_cntBuildings];
 	};
 	"+_skn_old_esp+" = {
 		"+_skn_tg_old_esp+" = !"+_skn_tg_old_esp+";

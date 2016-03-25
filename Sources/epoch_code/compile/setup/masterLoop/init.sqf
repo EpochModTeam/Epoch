@@ -42,7 +42,6 @@ _emergency = _display displayCtrl 21206;
 } forEach assignedItems player;
 
 // lootBubble Init
-_loots = ["CfgEpochClient", "lootClasses", EPOCH_lootClasses] call EPOCH_fnc_returnConfigEntryV2;
 _buildingJammerRange = ["CfgEpochClient", "buildingJammerRange", 75] call EPOCH_fnc_returnConfigEntryV2;
 _masterConfig = 'CfgBuildingLootPos' call EPOCH_returnConfig;
 
@@ -51,103 +50,22 @@ _lootClassesIgnore = ['Default'];
 '_cN = configName _x;if !(_cN in _lootClassesIgnore)then{_lootClasses pushBackUnique _cN};' configClasses _masterConfig;
 
 _lootBubble = {
-	private["_pos", "_others", "_objects", "_nearObjects", "_building", "_travelDir", "_lootDist", "_xPos", "_yPos", "_lootLoc", "_playerPos", "_distanceTraveled", "_class", "_dir", "_color", "_colors", "_item", "_randomColor", "_positions", "_lootBiasPos", "_lootType", "_config"];
+	private["_pos", "_others", "_objects", "_nearObjects", "_building", "_lootDist", "_xPos", "_yPos", "_lootLoc", "_playerPos", "_distanceTraveled", "_class", "_dir", "_color", "_colors", "_item", "_randomColor", "_positions", "_lootBiasPos", "_lootType", "_config"];
 	_playerPos = getPosATL vehicle player;
 	_distanceTraveled = EPOCH_lastPlayerPos distance _playerPos;
 	if (_distanceTraveled > 10 && _distanceTraveled < 200) then {
-		_travelDir = EPOCH_lastPlayerPos getDir _playerPos;
 		_lootDist = 30 + _distanceTraveled;
-		_xPos = (_playerPos select 0) + (_lootDist * sin(_travelDir));
-		_yPos = (_playerPos select 1) + (_lootDist * cos(_travelDir));
-		_lootLoc = [_xPos, _yPos, 0];
-
+		_lootLoc = player getRelPos [_lootDist, (random [-180,0,180])];
 		_objects = nearestObjects[_lootLoc, _lootClasses, 30];
 		_jammer = nearestObjects [_lootLoc, ["PlotPole_EPOCH"], _buildingJammerRange];
-
 		if (!(_objects isEqualTo[]) && (_jammer isEqualTo[])) then {
-
 			_building = selectRandom _objects;
-
 			if !(_building in EPOCH_LootedBlds) then {
-
-				_pos = getPosATL _building;
 				_others = _building nearEntities[["Epoch_Male_F", "Epoch_Female_F"], 15];
 				if (_others isEqualTo[]) then {
-
-					_nearObjects = nearestObjects[_pos, ["WH_Loot", "Animated_Loot"], 35];
+					_nearObjects = nearestObjects[_building, ["WH_Loot", "Animated_Loot"], 35];
 					if (_nearObjects isEqualTo[]) then {
-
-						_config = _masterConfig >> (typeOf _building);
-
-						if (isClass(_config)) then {
-
-							_lootBiasPos = getNumber(_config >> "lootBiasPos");
-							_lootType = getText(_config >> "lootType");
-
-							EPOCH_LootedBlds pushBackUnique _building;
-							if (count EPOCH_LootedBlds >= 100) then {
-								EPOCH_LootedBlds deleteAt 0;
-							};
-
-							{
-								_positions = getArray(_config >> (_x select 0));
-								if !(_positions isEqualTo[]) then {
-									_class = _x select 1;
-									_randomColor = _x select 2;
-									{
-
-										if ((random 100) < _lootBiasPos) then {
-
-											_pos = _building modelToWorld(_x select 0);
-
-											if (nearestObjects[_pos, ["WH_Loot", "Animated_Loot"], 2] isEqualTo[]) then {
-
-												if (_class isEqualType []) then {
-													_class = selectRandom _class;
-												};
-
-												_dir = (_x select 1) + (getDir _building);
-												if (_dir > 360) then {
-													_dir = _dir - 360;
-												};
-
-												// Temp for now till we get more
-												if (_lootType == "mil" && _class == "Bed_EPOCH") then {
-													_class = "Bunk_EPOCH";
-												};
-
-												_item = createVehicle[_class, _pos, [], 0.0, "CAN_COLLIDE"];
-												_item setDir _dir;
-
-
-												// force item to ground level is resulting z pos is below ground.
-												if (_pos select 2 < 0) then {
-													_pos set[2, 0];
-												};
-
-												if (surfaceIsWater _pos) then {
-													_item setPosASL _pos;
-												} else {
-													_item setPosATL _pos;
-												};
-
-												if (_randomColor isEqualType "STRING") then {
-													_randomColor = _randomColor isEqualTo "true";
-												};
-
-												if (_randomColor) then {
-													_colors = getArray(configFile >> "CfgVehicles" >> _class >> "availableTextures");
-													if !(_colors isEqualTo[]) then {
-														_color = selectRandom _colors;
-														_item setObjectTextureGlobal[0, _color];
-													};
-												};
-											};
-										};
-									}forEach _positions;
-								};
-							}forEach _loots;
-						};
+						[_building] call EPOCH_spawnLoot;
 					};
 				};
 			};

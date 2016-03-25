@@ -16,7 +16,7 @@ private["_found", "_return", "_foundLocalAnimal", "_str", "_blood", "_foundTermi
 
 _return = false;
 _config = 'CfgEpochClient' call EPOCH_returnConfig;
-_configWorldInteractions = (_config >> "WorldInteractions");
+_configWorldInteractions = (_config >> "CfgWorldInteractions");
 _configWorldName = (_config >> worldname);
 
 if (diag_tickTime - EPOCH_lastTrash > 2)  then {
