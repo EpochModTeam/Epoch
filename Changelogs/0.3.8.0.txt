@@ -1,7 +1,8 @@
 [New] Split gamemode from main assets, all epoch client gamemode code and configs are now found in the mission file under APL-SA license. https://github.com/EpochModTeam/Epoch
+[Added] Fully reworked loot system.
 [Added] Headers added to all gamemode files that include: Author, Description, Github Source link, Usage and Examples.
 [Added] All text based feedback now use new EPOCH_dynamicText function.
-[Added] Show build number on debug monitor.
+[Added] Show current build number on debug monitor.
 [Added] Player Karma stat is now effected by Arma 3 rating system via Event Handler.
 [Added] Players can now harvest Hemp from maps that it grows wild.
 [Changed] Crafting now supports Water sources from 'WorldInteractions' configs.
@@ -14,13 +15,13 @@
 [Changed] General cleanup and reorganizing of files.
 [Fixed] Temporary direction and angle placement issues when base building.
 [Fixed] Force player to lobby if the player did not tapout after timer runs out.
-[Fixed] Buildings had a chance to loot again too quickly.
 [Info] Required Arma 3 version is now 1.56 or higher.
 
 **Server**
+[Added] Batch files to rebuild server and mission pbo's can be found in Github Root/Tools/Build folder.
 [Added] Updated version redis-server.exe to latest build (2.8.2400) and added full Redis config examples.
 [Added] limit to number of plant sites that can spawn. Can be controlled with "plantLimit" inside (CfgEpoch >> worldName).
-[Added] Support for Eden editor mission files and attributes.
+[Added] Support for Eden editor mission files (version 51) and attributes.
 [Changed] Use BIS_fnc_addStackedEventHandler for onEachFrame, onPlayerConnected, onPlayerDisconnected to increase compatibility with other mods like CBA.
 [Changed] Lower disconnect timeout to 10 seconds with disconnectTimeout set via config.cfg. https://community.bistudio.com/wiki/server.cfg
 [Changed] Mission system can now use missionConfigFile configs.
