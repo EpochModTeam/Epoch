@@ -1,4 +1,4 @@
-private["_getCrypto","_dt"];
+private["_getCrypto"];
 if !(isNil "EPOCH_takeCryptoLock") exitWith {};
 EPOCH_takeCryptoLock = true;
 if (!isNull _this) then {

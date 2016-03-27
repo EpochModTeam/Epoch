@@ -1,5 +1,19 @@
+/*
+	Author: Raimonds Virtoss - EpochMod.com
+
+    Contributors: Aaron Clark
+
+	Description:
+	TODO: DESC-TBA
+
+    Licence:
+    Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
+
+    Github:
+    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_code/gui/scripts/EPOCH_InterruptConfigActions.sqf
+*/
 disableSerialization;
-private ["_mainGrp","_display","_data","_value","_ctrl","_idx","_mainGrpPos","_group","_width","_pos"];
+private ["_pos","_mainGrp","_display","_data","_value","_mainGrpPos","_group","_width"];
 params ["_ctrl","_idx"];
 
 _mainGrp = Epoch_interrupt_controls select 1;
@@ -19,7 +33,7 @@ _mainGrp ctrlCommit 0;
 
 _group = _display ctrlCreate [_data, _value + 1, _mainGrp];
 
-_width = (ctrlPosition _group) select 2; 
+_width = (ctrlPosition _group) select 2;
 Epoch_interrupt_controls set [1, _mainGrp];
 
 {

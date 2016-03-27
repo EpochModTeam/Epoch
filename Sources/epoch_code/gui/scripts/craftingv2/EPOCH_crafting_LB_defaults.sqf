@@ -1,4 +1,18 @@
-private ["_recipeCTRL","_STdesc","_lbColor","_playerGear"];
+/*
+	Author: Raimonds Virtoss - EpochMod.com
+
+    Contributors:
+
+	Description:
+	DESC-TBA
+
+    Licence:
+    Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
+
+    Github:
+    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_code/gui/scripts/craftingv2/EPOCH_crafting_LB_defaults.sqf
+*/
+private ["_y","_idx","_recipeCTRL","_STdesc","_lbColor","_playerGear"];
 
 _recipeCTRL = rmx_var_crafting_ctrl_main select 0;
 _STdesc = rmx_var_crafting_ctrl_main select 2;
@@ -19,7 +33,7 @@ _playerGear = (magazines player) + (items player) + (weapons player);
 	_recipeCTRL lbSetData [_idx,(_x select 0)];
 } forEach rmx_var_crafting_SearchConfigData;
 
-_STdesc ctrlSetStructuredText composeText 
+_STdesc ctrlSetStructuredText composeText
 [
 	parseText "<t color='#FD7F30'>Search: <t color='#FFFFFF'>Find recipe, X to clear.</t><br />",
 	parseText "<t color='#FD7F30'>Recipes: <t color='#FFFFFF'>Select an item to craft.</t><br />",

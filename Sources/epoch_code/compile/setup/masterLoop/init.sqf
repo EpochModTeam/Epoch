@@ -50,7 +50,7 @@ _lootClassesIgnore = ['Default'];
 '_cN = configName _x;if !(_cN in _lootClassesIgnore)then{_lootClasses pushBackUnique _cN};' configClasses _masterConfig;
 
 _lootBubble = {
-	private["_pos", "_others", "_objects", "_nearObjects", "_building", "_lootDist", "_xPos", "_yPos", "_lootLoc", "_playerPos", "_distanceTraveled", "_class", "_dir", "_color", "_colors", "_item", "_randomColor", "_positions", "_lootBiasPos", "_lootType", "_config"];
+	private["_jammer", "_others", "_objects", "_nearObjects", "_building", "_lootDist", "_lootLoc", "_playerPos", "_distanceTraveled"];
 	_playerPos = getPosATL vehicle player;
 	_distanceTraveled = EPOCH_lastPlayerPos distance _playerPos;
 	if (_distanceTraveled > 10 && _distanceTraveled < 200) then {

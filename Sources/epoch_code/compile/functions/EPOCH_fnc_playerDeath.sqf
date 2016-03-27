@@ -22,7 +22,6 @@
 	Returns:
 	BOOL
 */
-private ["_dt"];
 params ["_unit", "_killer"];
 
 // test ejecting unit from vehicle if dead client side

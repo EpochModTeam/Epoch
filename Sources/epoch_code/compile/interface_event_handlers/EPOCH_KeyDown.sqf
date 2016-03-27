@@ -25,7 +25,7 @@
 	Returns:
 	BOOL
 */
-private ["_handled","_dt","_currentPos"];
+private ["_handled","_currentPos"];
 params ["_display","_dikCode","_shift","_ctrl","_alt"];
 
 _handled = false;

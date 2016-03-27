@@ -1,11 +1,21 @@
+/*
+	Author: Raimonds Virtoss - EpochMod.com
+
+    Contributors: Aaron Clark
+
+	Description:
+	TODO: DESC-TBA
+
+    Licence:
+    Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
+
+    Github:
+    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_code/gui/scripts/EPOCH_InterruptConfig.sqf
+*/
 #include "\A3\ui_f\hpp\defineCommonGrids.inc"
-
 disableSerialization;
-_display = param [0,displayNull];
-
-//if (isNull _display) exitWith {false};
-
-private ["_offset","_cfg","_configs","_idc","_getIDC","_mainCTRLS"];
+private ["_ctrl","_ctrlPos","_name","_color","_icon","_group","_idx","_offset","_cfg","_configs","_idc","_getIDC","_lb","_groupIDC"];
+params [["_display",displayNull,[displayNull]]];
 
 _offset = if (isServer) then {40 * GUI_GRID_W + GUI_GRID_X;} else {
 	if (getNumber (getMissionConfig "enableDebugConsole") > 0) then {

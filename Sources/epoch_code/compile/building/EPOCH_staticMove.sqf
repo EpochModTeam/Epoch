@@ -23,7 +23,7 @@
 	NOTHING
 */
 if !(isNil "EPOCH_simulSwap_Lock") exitWith{};
-private ["_dt","_energyCost","_maxHeight","_stabilityCheck","_pos2ATL","_lastCheckTime","_rejectMove","_currentOffSet","_dir2","_up2","_nearestObject","_isSnap","_snapPosition","_snapType","_pOffset","_snapPos","_snapDistance","_snapPos1","_pos_snapObj","_direction","_pos1_snap","_pos2_snap","_ins","_EPOCH_2","_arr_snapPoints","_pos1","_offSet","_snapConfig","_snapPointsPara","_snapPointsPerp","_baselineSnapPos","_distance","_nearestObjects","_EPOCH_1","_pos2","_numberOfContacts","_worldspace","_currentTarget","_offsetZPos","_currentPos","_objSlot","_allowedSnapPoints","_allowedSnapObjects","_objType","_class","_simulClass","_snapChecks","_maxSnapDistance"];
+private ["_energyCost","_maxHeight","_stabilityCheck","_pos2ATL","_lastCheckTime","_rejectMove","_currentOffSet","_dir2","_up2","_nearestObject","_isSnap","_snapPosition","_snapType","_pOffset","_snapPos","_snapDistance","_snapPos1","_pos_snapObj","_direction","_pos1_snap","_pos2_snap","_ins","_EPOCH_2","_arr_snapPoints","_pos1","_offSet","_snapConfig","_snapPointsPara","_snapPointsPerp","_baselineSnapPos","_distance","_nearestObjects","_EPOCH_1","_pos2","_numberOfContacts","_worldspace","_currentTarget","_offsetZPos","_currentPos","_objSlot","_allowedSnapPoints","_allowedSnapObjects","_objType","_class","_simulClass","_snapChecks","_maxSnapDistance"];
 params [
 	["_object",objNull],
 	["_item",""]

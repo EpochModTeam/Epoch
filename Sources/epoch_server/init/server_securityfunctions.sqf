@@ -1504,7 +1504,7 @@ _skn_admincode = compileFinal ("
 			if (_x call EPOCH_spawnLoot) then {
 				_cntBuildings = _cntBuildings + 1;
 			};
-		}forEach (nearestObjects[getPosASL player, _lootClasses, _this]);
+		}forEach (nearestObjects[player, _lootClasses, _this]);
 		[format['Spawn Loot (%1) for %2 Buildings',_this,_cntBuildings],0] call "+_skn_adminLog_PVC+";
 		hint format['Spawned Loot for %1 Buildings',_cntBuildings];
 	};
@@ -1534,11 +1534,9 @@ _skn_admincode = compileFinal ("
 						_pos = visiblePosition _x;
 						_lastPos = _x getVariable['ESP_old_MAP', []];
 						_lastPos pushBack _pos;
-						reverse _lastPos;
 						if (count _lastPos > 101) then {
-							_lastPos resize 101;
+							_lastPos deleteAt 0;
 						};
-						reverse _lastPos;
 						_x setVariable['ESP_old_MAP', _lastPos];
 					};
 				}forEach EPOCH_ESPMAP_TARGETS;

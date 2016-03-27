@@ -1,3 +1,18 @@
+/*
+	Author: Niklas Wagner - EpochMod.com
+
+    Contributors: Aaron Clark
+
+	Description:
+	TODO: DESC-TBA
+
+    Licence:
+    Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
+
+    Github:
+    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_code/gui/group/EPOCH_Group_BtnInvite.sqf
+*/
+private ["_txt","_InvitePlayerCombo","_playerUID","_playerName","_upgradeSlots","_upgradePrice","_found","_currentMember","_currentMaxMember","_BtnInvite"];
 disableSerialization;
 _BtnInvite = (findDisplay -1300) displayCtrl 30;
 _playerUID = getPlayerUID player;

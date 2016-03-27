@@ -1,4 +1,4 @@
-private ["_stockLimit","_allowAdd","_limit","_slot","_aiItems","_itemClasses","_itemQtys","_qtyIndex","_item","_sizeOut","_worth","_cryptoCount","_itemWorth","_itemTax","_tax","_index","_dt","_uiItem","_config"];
+private ["_stockLimit","_allowAdd","_limit","_slot","_aiItems","_itemClasses","_itemQtys","_qtyIndex","_item","_sizeOut","_worth","_cryptoCount","_itemWorth","_itemTax","_tax","_index","_uiItem","_config"];
 params ["_control","_selected"];
 
 if !(isNull EPOCH_lastNPCtradeTarget) then {

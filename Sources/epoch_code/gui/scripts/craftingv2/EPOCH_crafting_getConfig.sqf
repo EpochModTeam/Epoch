@@ -1,13 +1,19 @@
 /*
+	Author: Raimonds Virtoss - EpochMod.com
+
+    Contributors:
+
+	Description:
 	Receives array of CONFIGS
 	Returns array of items pulled
-*/
 
-private
-[
-	"_arrIn","_type0","_type1","_type2","_type3","_out","_cName","_arr","_cDisplayName","_cPicture","_cDescShort","_cModel","_cPriority",
-	"_cCTime","_cRecipeArr","_cNearbyArr","_cUsedInArr","_cPreviewArr","_cPreviewScale","_cPreviewVector","_cDescFull","_cType"
-];
+    Licence:
+    Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
+
+    Github:
+    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_code/gui/scripts/craftingv2/EPOCH_crafting_getConfig.sqf
+*/
+private ["_cName","_arr","_cDisplayName","_cPicture","_cDescShort","_cModel","_cPriority","_cCTime","_cRecipeArr","_cNearbyArr","_cUsedInArr","_cPreviewArr","_cPreviewScale","_cPreviewVector","_cDescFull","_cType","_arrIn","_type0","_type1","_type2","_type3","_out"];
 
 _arrIn = param [0,[0]];
 if !(typeName (_arrIn select 0) isEqualTo "CONFIG") exitWith {[]};

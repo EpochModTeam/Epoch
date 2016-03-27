@@ -1,6 +1,20 @@
+/*
+	Author: Raimonds Virtoss - EpochMod.com
+
+    Contributors:
+
+	Description:
+	DESC-TBA
+
+    Licence:
+    Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
+
+    Github:
+    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_code/gui/scripts/craftingv2/EPOCH_crafting_LB_click.sqf
+*/
 if (rmx_var_crafting_SearchConfigData isEqualTo []) exitWith {false};
 
-private ["_cfg","_ingredientCTRL","_STdesc","_3DCTRL","_selection","_ingredientData","_recipes","_usedIn","_nearbyCount","_idx","_data","_countData","_itemsPlayer","_itemsNearby","_itemsRequired","_lbColor"];
+private ["_data","_idx","_countData","_itemsPlayer","_itemsNearby","_itemsRequired","_lbColor","_nearbyCount","_cfg","_ingredientCTRL","_STdesc","_3DCTRL","_selection","_ingredientData","_recipes","_usedIn"];
 
 _cfg = 'CfgCrafting' call EPOCH_returnConfig;
 _ingredientCTRL = rmx_var_crafting_ctrl_main select 1;

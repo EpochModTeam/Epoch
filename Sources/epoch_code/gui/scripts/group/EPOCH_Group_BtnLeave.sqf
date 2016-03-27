@@ -1,5 +1,19 @@
-disableSerialization;
+/*
+	Author: Niklas Wagner - EpochMod.com
 
+    Contributors: Aaron Clark
+
+	Description:
+	TODO: DESC-TBA
+
+    Licence:
+    Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
+
+    Github:
+    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_code/gui/group/EPOCH_Group_BtnLeave.sqf
+*/
+private ["_txt","_BtnLeave"];
+disableSerialization;
 _BtnLeave = (findDisplay -1300) displayCtrl 31;
 if (getPlayerUID player == Epoch_my_GroupUID) then {
 	_BtnLeave ctrlSetText "Delete Group";

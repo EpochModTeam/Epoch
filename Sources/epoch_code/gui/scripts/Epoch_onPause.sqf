@@ -1,6 +1,20 @@
-private ["_fieldManual","_btnAbort"];
+/*
+	Author: Niklas Wagner - EpochMod.com
+
+    Contributors: Aaron Clark, Raimonds Virtoss
+
+	Description:
+	TODO: DESC-TBA
+
+    Licence:
+    Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
+
+    Github:
+    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_code/gui/scripts/Epoch_onPause.sqf
+*/
 disableSerialization;
-params ["_display"];
+private ["_fieldManual","_btnSave","_btnAbort","_respawnButton"];
+params [["_display",displayNull,[displayNull]]];
 
 _fieldManual = _display displayCtrl 122;
 _fieldManual ctrlEnable false;
@@ -73,6 +87,5 @@ _respawnButton ctrlEnable false;
 with missionNamespace do {
 	_display call EPOCH_InterruptConfig;
 };
-
 
 true

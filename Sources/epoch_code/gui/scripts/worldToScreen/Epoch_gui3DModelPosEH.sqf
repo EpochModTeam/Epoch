@@ -1,3 +1,18 @@
+/*
+	Author: Raimonds Virtoss - EpochMod.com
+
+    Contributors:
+
+	Description:
+	TODO: Description
+
+    Licence:
+    Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
+
+    Github:
+    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_code/gui/scripts/worldToScreen/Epoch_gui3DModelPosEH.sqf
+*/
+private ["_pos2","_m2w","_scale"];
 params ["_ctrl", "_obj", "_loc","_pos","_dst"];
 _m2w = _obj modelToWorld _loc;
 _pos2 = worldToScreen _m2w;

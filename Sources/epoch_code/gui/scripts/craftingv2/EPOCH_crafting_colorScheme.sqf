@@ -1,3 +1,17 @@
+/*
+	Author: Raimonds Virtoss - EpochMod.com
+
+    Contributors:
+
+	Description:
+	DESC-TBA
+
+    Licence:
+    Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
+
+    Github:
+    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_code/gui/scripts/craftingv2/EPOCH_crafting_colorScheme.sqf
+*/
 params ["_cfg"];
 
 rmx_var_crafting_colorScheme = getArray (_cfg >> "colorScheme");

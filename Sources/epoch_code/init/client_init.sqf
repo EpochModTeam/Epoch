@@ -49,6 +49,7 @@ EPOCH_stabilityTarget = objNull;
 EPOCH_currentVehicle = objNull;
 EPOCH_currentTarget = objNull;
 EPOCH_LootedBlds = [];
+EPOCH_lootObjects = [];
 EPOCH_soundLevel = 1;
 EPOCH_arr_interactedObjs = [];
 EPOCH_buildOption = 0;

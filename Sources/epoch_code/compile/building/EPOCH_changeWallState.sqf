@@ -25,7 +25,7 @@
 	Returns:
 	NOTHING
 */
-private ["_recipeItem","_recipeQty","_hasRecipeItems","_msg","_recipeCount","_currentCount","_numRemoved","_items","_mags","_dt","_recipe","_craftItem","_craftQty","_config","_objClass"];
+private ["_recipeItem","_recipeQty","_hasRecipeItems","_msg","_recipeCount","_currentCount","_numRemoved","_items","_mags","_recipe","_craftItem","_craftQty","_config","_objClass"];
 params [
     ["_object",objNull],
     ["_anim",""],

@@ -1,5 +1,18 @@
 /*
+	Author: Raimonds Virtoss - EpochMod.com
+
+    Contributors:
+
+	Description:
 	Destroys single or multiple post process effects
+
+    Licence:
+    Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
+
+    Github:
+    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_code/gui/scripts/post_process/EPOCH_postprocessDestroy.sqf
+
+
 
 	Params:		single handle or array of handles
 

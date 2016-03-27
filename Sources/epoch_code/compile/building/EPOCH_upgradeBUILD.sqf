@@ -22,7 +22,7 @@
 	Returns:
 	NOTHING
 */
-private ["_buildingJammerRange","_buildingCountLimit","_nearestJammer","_ownedJammerExists","_buildingAllowed","_dt","_missingCount","_canUpgrade","_missingParts","_part","_req","_partCheck","_canUpgradePartCount","_removedPartCount","_return","_upgrade","_upgradeParts","_config","_upgrades","_targeter","_stability","_jammer"];
+private ["_buildingJammerRange","_buildingCountLimit","_nearestJammer","_ownedJammerExists","_buildingAllowed","_missingCount","_canUpgrade","_missingParts","_part","_req","_partCheck","_canUpgradePartCount","_removedPartCount","_return","_upgrade","_upgradeParts","_config","_upgrades","_targeter","_stability","_jammer"];
 params [
 	["_object",objNull,[objNull]],
 	["_index",-1,[0]]

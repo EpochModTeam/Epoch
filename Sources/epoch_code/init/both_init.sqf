@@ -12,7 +12,7 @@
     Github:
     https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_code/init/both_init.sqf
 */
-
+private ["_customVarsInit","_antagonistSpawnDefaults","_spawnLimits","_say3dsounds"];
 // Init Custom vars
 EPOCH_customVars = [];
 EPOCH_defaultVars = [];

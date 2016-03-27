@@ -1,4 +1,19 @@
+/*
+	Author: Niklas Wagner - EpochMod.com
+
+    Contributors: Aaron Clark
+
+	Description:
+	TODO: DESC-TBA
+
+    Licence:
+    Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
+
+    Github:
+    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_code/gui/group/EPOCH_cGroup_groupText.sqf
+*/
 disableSerialization;
+private ["_array","_ctrl"];
 _ctrl = (findDisplay -1200) displayCtrl 21;
 _array = toArray(ctrlText _ctrl);
 

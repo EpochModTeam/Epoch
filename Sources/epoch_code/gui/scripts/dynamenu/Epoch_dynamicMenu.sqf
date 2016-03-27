@@ -1,6 +1,20 @@
+/*
+	Author: Raimonds Virtoss - EpochMod.com
+
+    Contributors:
+
+	Description:
+	DESC-TBA
+
+    Licence:
+    Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
+
+    Github:
+    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_code/gui/scripts/dynamenu/Epoch_dynamicMenu.sqf
+*/
 disableSerialization;
-//_in = _this param [0, "", [""]];
-_in = [_this, 0, "", [""]] call BIS_fnc_param;
+private ["_selfOrTarget","_display","_cfg","_arr","_buttonSettings","_hasTarget","_checkConfigs","_entries"];
+params ["_in","",[""]];
 
 _display = findDisplay 66600;
 _cfg = "CfgActionMenu" call EPOCH_returnConfig;

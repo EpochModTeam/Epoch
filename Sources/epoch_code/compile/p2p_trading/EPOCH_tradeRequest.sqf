@@ -12,7 +12,6 @@
     Github:
     https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_code/compile/p2p_trading/EPOCH_tradeRequest.sqf
 */
-private ["_dt"];
 if !(isNull _this) then {
 	// ignore request if either player is in a vehicle
 	if (vehicle player == player && vehicle _this == _this) then {

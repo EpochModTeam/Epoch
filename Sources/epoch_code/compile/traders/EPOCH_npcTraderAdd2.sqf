@@ -1,4 +1,4 @@
-private ["_allowAdd","_item","_sizeOut","_qty","_worth","_cryptoCount","_itemWorth","_itemTax","_tax","_itemName","_index","_itemIcon","_uiQty","_dt","_uiItem","_config"];
+private ["_allowAdd","_item","_sizeOut","_qty","_worth","_cryptoCount","_itemWorth","_itemTax","_tax","_itemName","_index","_itemIcon","_uiQty","_uiItem","_config"];
 params ["_control","_selected"];
 
 _allowAdd = true;

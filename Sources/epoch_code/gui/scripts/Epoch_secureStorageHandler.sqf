@@ -1,5 +1,19 @@
-_in = param [0,false];
+/*
+	Author: Raimonds Virtoss - EpochMod.com
 
+    Contributors: Aaron Clark
+
+	Description:
+	TODO: DESC-TBA
+
+    Licence:
+    Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
+
+    Github:
+    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_code/gui/scripts/Epoch_secureStorageHandler.sqf
+*/
+private ["_out"];
+params [["_in",false]];
 _out = switch (typeName _in) do {
 	case "STRING":
 	{
@@ -14,5 +28,4 @@ _out = switch (typeName _in) do {
 	};
 	default {false};
 };
-
 _out

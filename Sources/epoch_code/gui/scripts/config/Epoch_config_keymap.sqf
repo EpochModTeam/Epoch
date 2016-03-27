@@ -1,5 +1,22 @@
-private ["_ctrl","_input","_display"];
-params ["_ctrl","_input"];
+/*
+	Author: Raimonds Virtoss - EpochMod.com
+
+    Contributors:
+
+	Description:
+	DESC-TBA
+
+    Licence:
+    Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
+
+    Github:
+    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_code/gui/scripts/config/Epoch_config_keymap.sqf
+
+    Example:
+    _this call Epoch_config_keymap;
+*/
+private ["_idx","_display","_input"];
+params ["_ctrl"];
 
 _display = if (typeName _ctrl isEqualTo "CONTROL") then {ctrlParent _ctrl} else {displayNull};
 _input = if (_ctrl isEqualType "STRING") then {_ctrl} else {str _ctrl};

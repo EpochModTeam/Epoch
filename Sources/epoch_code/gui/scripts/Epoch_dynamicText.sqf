@@ -1,8 +1,23 @@
-#include "\A3\ui_f\hpp\defineCommonGrids.inc"
+/*
+	Author: Raimonds Virtoss - EpochMod.com
 
-_text = param [0,"Missing text",["",(text "")]];
-_time = param [1,5,[1]];
-_color = param [2,"#ffffff",[""]];
+    Contributors: Aaron Clark
+
+	Description:
+	Displays custom text message to player
+
+    Licence:
+    Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
+
+    Github:
+    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_code/gui/scripts/Epoch_dynamicText.sqf
+
+	Usage:
+	"TEST" call Epoch_dynamicText
+*/
+#include "\A3\ui_f\hpp\defineCommonGrids.inc"
+private ["_y","_cnt","_ctrl","_alreadyEnabled","_input","_scale","_width","_height","_centerX","_centerY","_display","_ctrlGroup","_controls","_ctrlText","_add"];
+params [["_text","Missing text",["",(text "")]],["_time",5,[1]],["_color","#ffffff",[""]]];
 
 if (_text isEqualType "STRING") then {_text = parseText _text};
 
