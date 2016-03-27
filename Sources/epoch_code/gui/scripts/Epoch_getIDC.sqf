@@ -14,7 +14,7 @@
     https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_code/gui/scripts/Epoch_getIDC.sqf
 */
 private ["_list","_out","_find"];
-params [["_in",controlNull, [controlNull]]];
+params ["_in"];
 
 _list = missionNamespace getVariable ["rmx_var_uniqueIDC",[]];
 
