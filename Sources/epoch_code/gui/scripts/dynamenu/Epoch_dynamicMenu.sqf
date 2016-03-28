@@ -14,7 +14,7 @@
 */
 disableSerialization;
 private ["_selfOrTarget","_display","_cfg","_arr","_buttonSettings","_hasTarget","_checkConfigs","_entries"];
-params ["_in","",[""]];
+params [["_in","",[""]]];
 
 _display = findDisplay 66600;
 _cfg = "CfgActionMenu" call EPOCH_returnConfig;

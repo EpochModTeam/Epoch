@@ -15,7 +15,7 @@
 private ["_nearObjects","_result","_tmpResult","_config","_configWorldInteractions","_countOnFire","_countAlive"];
 params ["","","",["_arr",[2,""]],["_dist",0],["_cnt",1],["_inflamed",0],["_alive",0]];
 _arr params ["_type","_check"];
-_result = true;
+_result = false;
 switch (_type) do {
 	case 0:
 	{
