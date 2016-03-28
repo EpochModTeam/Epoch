@@ -13,8 +13,8 @@
     https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_code/gui/scripts/dynamenu/Epoch_dynamicMenu.sqf
 */
 disableSerialization;
-private ["_selfOrTarget","_display","_cfg","_arr","_buttonSettings","_hasTarget","_checkConfigs","_entries"];
-params [["_in","",[""]]];
+private ["_in","_selfOrTarget","_display","_cfg","_arr","_buttonSettings","_hasTarget","_checkConfigs","_entries"];
+_in = [_this, 0, "",[""]] call BIS_fnc_param;
 
 _display = findDisplay 66600;
 _cfg = "CfgActionMenu" call EPOCH_returnConfig;
@@ -28,7 +28,7 @@ _buttonSettings = [];
 
 _hasTarget = !(dyna_cursorTarget isEqualTo objNull);
 
-if (isNull _display && dialog) exitWith {call Epoch_dynamicMenuCleanup; false};
+if (isNull _display && dialog) exitWith {false call Epoch_dynamicMenuCleanup; false};
 
 if (isNull _display) then {
 	if (_hasTarget) then {
