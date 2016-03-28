@@ -95,6 +95,7 @@ class CfgClientFunctions
 			class worldObjectType {};
 			class returnConfig {};
 			class colorRange {};
+			class convertTemp {};
 			class fnc_playerDeath {};
 			class fnc_playerFired {};
 			class fnc_isInsideBuilding {};

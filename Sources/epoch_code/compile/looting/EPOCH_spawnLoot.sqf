@@ -23,8 +23,6 @@
 */
 params [["_building",objNull,[objNull]]];
 
-// _loots = ["CfgEpochClient", "lootClasses", EPOCH_lootClasses] call EPOCH_fnc_returnConfigEntryV2;
-
 _masterConfig = 'CfgBuildingLootPos' call EPOCH_returnConfig;
 _config = _masterConfig >> (typeOf _building);
 

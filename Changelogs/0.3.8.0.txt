@@ -1,5 +1,6 @@
 [New] Split gamemode from main assets, all epoch client gamemode code and configs are now found in the mission file under APL-SA license. https://github.com/EpochModTeam/Epoch
-[Added] Fully reworked loot system.
+[Added] Display temperatures in both Fahrenheit and Celsius.
+[Added] Fully reworked loot object spawn system.
 [Added] Headers added to all gamemode files that include: Author, Description, Github Source link, Usage and Examples.
 [Added] All text based feedback now use new EPOCH_dynamicText function.
 [Added] Show current build number on debug monitor.

@@ -34,7 +34,7 @@ _groupName = toString _textArr;
 
 // get vars array and current Crypto value
 _cIndex = EPOCH_customVars find "Crypto";
-_vars = _leader getVariable["VARS", [] + EPOCH_defaultVars_SEPXVar];
+_vars = _leader getVariable["VARS", call EPOCH_defaultVars_SEPXVar];
 _current_crypto = _vars select _cIndex;
 
 _upgradePrice = parseNumber (EPOCH_group_upgrade_lvl_SEPXVar select 1);

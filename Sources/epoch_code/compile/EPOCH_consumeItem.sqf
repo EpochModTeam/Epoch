@@ -36,59 +36,31 @@ _giveAttributes = {
 	_addPlus = if (_data > 0) then {"+"} else {""};
 	_return = "";
 	if (_data != 0) then {
-		switch _index do {
-			case 0: {
-				EPOCH_playerTemp = ((EPOCH_playerTemp + _data) min 106.7) max 95; // data = 1
-				_return = format["Temp: %1%2 (%3 F)<br />", _addPlus, _data, EPOCH_playerTemp];
-			};
-			case 1: {
-				EPOCH_playerHunger = ((EPOCH_playerHunger + _data) min 5000) max 0;
-				_return = format["Hunger: %1%2 (%3/%4)<br />", _addPlus, _data, EPOCH_playerHunger, 5000];
-			};
-			case 2: {
-				EPOCH_playerThirst = ((EPOCH_playerThirst + _data) min 2500) max 0;
-				_return = format["Thirst: %1%2 (%3/%4)<br />", _addPlus, _data, EPOCH_playerThirst, 2500];
-			};
-			case 3: {
-				EPOCH_playerEnergy = ((EPOCH_playerEnergy + _data) min EPOCH_playerEnergyMax) max 0;
-				_return = format["Energy: %1%2 (%3/%4)<br />", _addPlus, _data, EPOCH_playerEnergy, EPOCH_playerEnergyMax];
-			};
-			case 4: {
-				EPOCH_playerSoiled = ((EPOCH_playerSoiled + _data) min 100) max 0; // data -25
-				_return = format["Soiled: %1%2 (%3/%4)<br />", _addPlus, _data, EPOCH_playerSoiled, 100];
-			};
-			case 5: {
-				EPOCH_playerImmunity = ((EPOCH_playerImmunity + _data) min 100) max 0;
-				_return = format["Immunity: %1%2 (%3/%4)<br />", _addPlus, _data, EPOCH_playerImmunity, 100];
-			};
-			case 6: {
-				_randomData = round(random _data);
-				EPOCH_playerToxicity = ((EPOCH_playerToxicity + _randomData) min 100) max 0;
-				_return = format["Toxicity: %1%2 (%3/%4)<br />", _addPlus, _randomData, EPOCH_playerToxicity, 100];
-			};
-			case 7: {
-				EPOCH_playerStamina = ((EPOCH_playerStamina + _data) min EPOCH_playerStaminaMax) max 0;
-				_return = format["Stamina: %1%2 (%3/%4)<br />", _addPlus, _data, EPOCH_playerStamina, EPOCH_playerStaminaMax];
-			};
-			case 8: {
-				// this is handled server side
-			};
-			case 9: {
-				EPOCH_playerBloodP = ((EPOCH_playerBloodP + _data) min 190) max 0;
-				_return = format["Blood Pressure: %1%2 (%3/%4)<br />", _addPlus, _data, EPOCH_playerBloodP, 100];
-			};
-			case 10: {
-				EPOCH_playerKarma = ((EPOCH_playerKarma + _data) min 50000) max -50000;
-				_return = format["Karma: %1%2 (%3/%4)<br />", _addPlus, _data, EPOCH_playerKarma, 50000];
-			};
-			case 11: {
-				EPOCH_playerAlcohol = ((EPOCH_playerAlcohol + _data) min 100) max 0;
-				_return = format["Alcohol: %1%2 (%3/%4)<br />", _addPlus, _data, EPOCH_playerAlcohol, 100];
-			};
-			case 12: {
-				EPOCH_playerRadiation = ((EPOCH_playerRadiation + _data) min 100) max 0;
-				_return = format["Radiation: %1%2 (%3/%4)<br />", _addPlus, _data, EPOCH_playerRadiation, 100];
-			};
+		_editableVars = [["Temp"],["Hunger"],["Thirst"],["Energy"],["Soiled"],["Immunity"],["Toxicity",true],["Stamina"],["Wet"],["BloodP"],["Karma"],["Alcohol"],["Radiation"]];
+		_selectedVar = _editableVars select _index;
+		_selectedVar params ["_selectedVarName",["_randomNum",false]];
+		_varName = format["EPOCH_player%1",_selectedVarName];
+		_customVarIndex = EPOCH_customVars find _selectedVarName;
+		_limits = EPOCH_customVarLimits select _customVarIndex;
+		_limits params [["_max",100],["_min",0]];
+		if (_max isEqualType "") then {
+			_max = missionNamespace getVariable [_max, 0];
+		};
+		if (_min isEqualType "") then {
+			_min = missionNamespace getVariable [_min, 0];
+		};
+		_currentVal = missionNamespace getVariable [_varName, EPOCH_defaultVars select _customVarIndex];
+		if (_randomNum) then {
+			_data = round(random _data);
+		};
+		_newValue = ((_currentVal + _data) min _max) max _min;
+		missionNamespace setVariable [_varName, _newValue];
+		if (_selectedVarName == "Temp") then {
+			_celcuis = _data call EPOCH_convertTemp;
+			_celcuisNew = _newValue call EPOCH_convertTemp;
+			_return = format["%1: %2%3 (%4 °F) %2%5 (%6 °C)",(localize format["str_epoch_pvar_%1",_selectedVarName]),_addPlus,_data,_newValue,_celcuis,_celcuisNew];
+		} else {
+			_return = format["%1: %2%3 (%4/%5)", (localize format["str_epoch_pvar_%1",_selectedVarName]), _addPlus, _data, _newValue, _max];
 		};
 	};
 	_return
@@ -96,7 +68,9 @@ _giveAttributes = {
 
 _unifiedInteract = {
 	if (_item call _removeItem) then {
-		_interactReturnOnUse call EPOCH_fnc_addItemOverflow;
+		if (_interactReturnOnUse != "") then {
+			_interactReturnOnUse call EPOCH_fnc_addItemOverflow;
+		};
 		{
 			_output = [_forEachIndex, _x] call _giveAttributes;
 			if (_output != "") then {

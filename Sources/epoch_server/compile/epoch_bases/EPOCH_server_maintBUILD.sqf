@@ -46,7 +46,7 @@ if (typeOf _object == "PlotPole_EPOCH") then {
 
 		// get vars array and current Crypto value
 		_cIndex = EPOCH_customVars find "Crypto";
-		_vars = _player getVariable["VARS", [] + EPOCH_defaultVars_SEPXVar];
+		_vars = _player getVariable["VARS", call EPOCH_defaultVars_SEPXVar];
 		_current_crypto = _vars select _cIndex;
 
 		if (_current_crypto >= _maintCount) then {

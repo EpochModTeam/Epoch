@@ -33,44 +33,27 @@ class CfgEpochClient
 		{"B_Heli_Transport_01_F",1}
 	};
 	customVarsDefaults[] = {
-		{"Temp",98.6}, // EPOCH_player + varName, default value
-		{"Hunger",5000},
-		{"Thirst",2500},
-		{"AliveTime",0},
-		{"Energy",0},
-		{"Wet",0},
-		{"Soiled",0},
-		{"Immunity",0},
-		{"Toxicity",0},
-		{"Stamina",100},
-		{"Crypto",0},
-		{"HitPoints",{0,0,0,0}},
-		{"BloodP",100},
-		{"SpawnArray",{}},
-		{"Karma",0},
-		{"Alcohol",0},
-		{"Radiation",0}
+		// EPOCH_player + varName, default value, {max,min}
+		{"Temp",98.6,{106.7,95}},
+		{"Hunger",5000,{5000,0}},
+		{"Thirst",2500,{2500,0}},
+		{"AliveTime",0,{0,0}},
+		{"Energy",0,{2500,0}},
+		{"Wet",0,{100,0}},
+		{"Soiled",0,{100,0}},
+		{"Immunity",0,{100,0}},
+		{"Toxicity",0,{100,0}},
+		{"Stamina",100,{"EPOCH_playerStaminaMax",0}},
+		{"Crypto",0,{2500000,0}},
+		{"HitPoints",{0,0,0,0},{1,1,1,1}},
+		{"BloodP",100,{190,0}},
+		{"SpawnArray",{},{}},
+		{"Karma",0,{50000,-50000}},
+		{"Alcohol",0,{100,0}},
+		{"Radiation",0,{100,0}}
 	};
 	// controls max group limit and cost
 	group_upgrade_lvl[] = {4,"100",6,"300",8,"500",10,"1000",12,"1500",13,"1750",14,"2000",15,"3000",16,"5000"};
-	lootClasses[] = {
-		{ "shelfPos", "Shelf_EPOCH", true },
-		{ "fridgePos", "Fridge_EPOCH", true },
-		{ "bedPos", "Bed_EPOCH", false },
-		{ "couchPos", "Couch_EPOCH", false },
-		{ "wardrobePos", "wardrobe_epoch", false },
-		{ "cookerPos", "cooker_epoch", false },
-		{ "chairPos", { "Chair_EPOCH", "ChairRed_EPOCH" }, true },
-		{ "filingPos", "Filing_epoch", true },
-		{ "pelicanPos", "Pelican_EPOCH", false },
-		{ "tablePos", "Table_EPOCH", false },
-		{ "lockerPos", "Locker_EPOCH", false },
-		{ "toolRackPos", "ToolRack_EPOCH", false },
-		{ "shoeboxPos", "Shoebox_EPOCH", false },
-		{ "palletPos", "Tarp_EPOCH", false },
-		{ "freezerPos", "Freezer_EPOCH", false },
-		{ "cabinetPos", "Cabinet_EPOCH", false }
-	};
 
 	// Event handler code
 	displayAddEventHandler[] = {"keyDown","keyUp"};

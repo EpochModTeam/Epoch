@@ -44,7 +44,7 @@ if (_allowSave) then{
 
 	if !(_vars isEqualTo EPOCH_defaultVars_SEPXVar) then{
 		_serverOnly = ["Crypto"];
-		_Svars = _player getVariable["VARS", [] + EPOCH_defaultVars_SEPXVar];
+		_Svars = _player getVariable["VARS", call EPOCH_defaultVars_SEPXVar];
 		{
 			_cIndex = EPOCH_customVars find _x;
 			if (_cIndex != -1) then{

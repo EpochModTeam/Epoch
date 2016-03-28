@@ -38,7 +38,7 @@ if (_playerObj != _killer) then {
 	['deathlog', format['%1 (%2) Killed By %3 (%4) with weapon %5 from %6m at %7', _playerName, _playerUID, name _killer, getPlayerUID _killer, currentWeapon _killer, _playerObj distance _killer, _pos]] call EPOCH_fnc_server_hiveLog;
 };
 
-_defaultVars = [] + EPOCH_defaultVars_SEPXVar;
+_defaultVars = call EPOCH_defaultVars_SEPXVar;
 // get vars array and current Crypto value
 _cIndex = EPOCH_customVars find "Crypto";
 _vars = _playerObj getVariable["VARS", _defaultVars];

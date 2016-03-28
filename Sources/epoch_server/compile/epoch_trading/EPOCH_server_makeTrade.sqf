@@ -29,8 +29,8 @@ if ((_player1 getVariable["currentTradeKey", -1]) isEqualto (_player2 getVariabl
 		_trade2 params ["_tradeOffer2","_tradeCryptoOffer2"];
 
 		_cIndex = EPOCH_customVars find "Crypto";
-		_player1_vars = _player1 getVariable["VARS", [] + EPOCH_defaultVars_SEPXVar];
-		_player2_vars = _player2 getVariable["VARS", [] + EPOCH_defaultVars_SEPXVar];
+		_player1_vars = _player1 getVariable["VARS", call EPOCH_defaultVars_SEPXVar];
+		_player2_vars = _player2 getVariable["VARS", call EPOCH_defaultVars_SEPXVar];
 		_current_crypto1 = _player1_vars select _cIndex;
 		_current_crypto2 = _player2_vars select _cIndex;
 

@@ -47,7 +47,7 @@ if ((_response select 0) == 1 && (_response select 1) isEqualType []) then {
 
 		// get vars array and current Crypto value
 		_cIndex = EPOCH_customVars find "Crypto";
-		_vars = _player getVariable["VARS", [] + EPOCH_defaultVars_SEPXVar];
+		_vars = _player getVariable["VARS", call EPOCH_defaultVars_SEPXVar];
 		_current_crypto = _vars select _cIndex;
 
 		// Make Transaction

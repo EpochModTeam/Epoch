@@ -16,29 +16,31 @@ private ["_customVarsInit","_antagonistSpawnDefaults","_spawnLimits","_say3dsoun
 // Init Custom vars
 EPOCH_customVars = [];
 EPOCH_defaultVars = [];
+EPOCH_customVarLimits = [];
 EPOCH_customVarsDefaults = [
-	["Temp",98.6],
-	["Hunger",5000],
-	["Thirst",2500],
-	["AliveTime",0],
-	["Energy",0],
-	["Wet",0],
-	["Soiled",0],
-	["Immunity",0],
-	["Toxicity",0],
-	["Stamina",100],
-	["Crypto",0],
-	["HitPoints",[0,0,0,0]],
-	["BloodP",100],
-	["SpawnArray",[]],
-	["Karma",0],
-	["Alcohol",0],
-	["Radiation",0]
+	["Temp",98.6,[106.7,95]],
+	["Hunger",5000,[5000,0]],
+	["Thirst",2500,[2500,0]],
+	["AliveTime",0,[0,0]],
+	["Energy",0,[2500,0]],
+	["Wet",0,[100,0]],
+	["Soiled",0,[100,0]],
+	["Immunity",0,[100,0]],
+	["Toxicity",0,[100,0]],
+	["Stamina",100,["EPOCH_playerStaminaMax",0]],
+	["Crypto",0,[2500000,0]],
+	["HitPoints",[0,0,0,0],[1,1,1,1]],
+	["BloodP",100,[190,0]],
+	["SpawnArray",[],[]],
+	["Karma",0,[50000,-50000]],
+	["Alcohol",0,[100,0]],
+	["Radiation",0,[100,0]]
 ];
 _customVarsInit = ["CfgEpochClient", "customVarsDefaults", EPOCH_customVarsDefaults] call EPOCH_fnc_returnConfigEntryV2;
 {
 	EPOCH_customVars pushBack (_x select 0);
 	EPOCH_defaultVars pushBack (_x select 1);
+	EPOCH_customVarLimits pushBack (_x param [2,[]]);
 } forEach _customVarsInit;
 EPOCH_customVarCount = count EPOCH_customVars;
 
@@ -71,26 +73,6 @@ _say3dsounds = "isClass _x" configClasses (configFile >> "CfgSay3Dhandler");
 	EPOCH_sounds pushBack (configName _x);
 	EPOCH_soundsDistance pushBack getNumber(_x >> "distance");
 } forEach _say3dsounds;
-
-// default loot classes var
-EPOCH_lootClasses = [
-	["shelfPos", "Shelf_EPOCH", true],
-	["fridgePos", "Fridge_EPOCH", true],
-	["bedPos", "Bed_EPOCH", false],
-	["couchPos", "Couch_EPOCH", false],
-	["wardrobePos", "wardrobe_epoch", false],
-	["cookerPos", "cooker_epoch", false],
-	["chairPos", ["Chair_EPOCH", "ChairRed_EPOCH"], true],
-	["filingPos", "Filing_epoch", true],
-	["pelicanPos", "Pelican_EPOCH", false],
-	["tablePos", "Table_EPOCH", false],
-	["lockerPos", "Locker_EPOCH", false],
-	["toolRackPos", "ToolRack_EPOCH", false],
-	["shoeboxPos", "Shoebox_EPOCH", false],
-	["palletPos", "Tarp_EPOCH", false],
-	["freezerPos", "Freezer_EPOCH", false],
-	["cabinetPos", "Cabinet_EPOCH", false]
-];
 
 // disable remote sensors on server and client as all Epoch AI is local to the side controlling it.
 disableRemoteSensors (["CfgEpochClient", "disableRemoteSensors", true] call EPOCH_fnc_returnConfigEntryV2);

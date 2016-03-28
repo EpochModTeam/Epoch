@@ -33,7 +33,7 @@ if (_vehicle == player) then {
 		// EPOCH_SURVEY = [];
 	};
 	_increaseStamina = true;
-
+	// TODO: move to vehicle configs
 	switch (typeOf _vehicle) do {
 		case "jetski_epoch": {
 			_clock_hour10 = floor ((date select 3)/10);
@@ -87,7 +87,7 @@ if (ctrlShown _oxygen) then {
 	_oxygen ctrlSetTextColor _color;
 };
 
-_hazzard ctrlShow (EPOCH_playerToxicity > 1);
+_hazzard ctrlShow (EPOCH_playerToxicity > 35);
 if (ctrlShown _hazzard) then {
 	[_hazzard,(EPOCH_playerToxicity >= 55)] call _fadeUI;
 	_color = [0,100,EPOCH_playerToxicity,1] call EPOCH_colorRange;

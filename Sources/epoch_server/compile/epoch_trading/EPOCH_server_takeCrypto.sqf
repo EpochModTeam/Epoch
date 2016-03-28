@@ -26,7 +26,7 @@ if (_getCrypto > 0) then {
 
 	// get vars array and current Crypto value
 	_cIndex = EPOCH_customVars find "Crypto";
-	_vars = _player getVariable["VARS", [] + EPOCH_defaultVars_SEPXVar];
+	_vars = _player getVariable["VARS", call EPOCH_defaultVars_SEPXVar];
 	_current_crypto = _vars select _cIndex;
 
 	_playerCryptoLimit = [(configFile >> "CfgSecConf" >> "limits"), "playerCrypto", 250000] call EPOCH_fnc_returnConfigEntry;

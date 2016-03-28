@@ -79,7 +79,7 @@ if (_this isEqualType []) then {
 
 
 			if (count _arr < 11) then { // invaild format attempt to override
-				_arr = [[0, [], _instanceID], [0, 0, 1, 0, []], [_goggles, _headgear, _vest, _backpack, _uniform, _class], [""], [] + EPOCH_defaultVars_SEPXVar, _weaponsAndItems, _linkedItems, _normalMagazines, _itemsInContainers, _weaponsInContainers, "", true];
+				_arr = [[0, [], _instanceID], [0, 0, 1, 0, []], [_goggles, _headgear, _vest, _backpack, _uniform, _class], [""], call EPOCH_defaultVars_SEPXVar, _weaponsAndItems, _linkedItems, _normalMagazines, _itemsInContainers, _weaponsInContainers, "", true];
 			};
 
 			_worldspace = _arr select 0;
@@ -108,7 +108,7 @@ if (_this isEqualType []) then {
 				_location = getMarkerPos "respawn_west";
 				_location set[2, 0];
 				if (_alreadyDead) then {
-					_vars = [] + EPOCH_defaultVars_SEPXVar;
+					_vars = call EPOCH_defaultVars_SEPXVar;
 					_canBeRevived = true;
 				};
 			};

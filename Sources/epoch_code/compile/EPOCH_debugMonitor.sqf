@@ -52,9 +52,8 @@ hintSilent parseText format ["
 	(isBleeding player),
 	(getBleedingRemaining player),
 	(getOxygenRemaining player),
-
-	EPOCH_CURRENT_WEATHER,
-	(EPOCH_CURRENT_WEATHER/2),
+	format ["%1°F | %2°C",EPOCH_CURRENT_WEATHER,EPOCH_CURRENT_WEATHER call EPOCH_convertTemp],
+	format ["%1°F | %2°C",(EPOCH_CURRENT_WEATHER/2),(EPOCH_CURRENT_WEATHER/2) call EPOCH_convertTemp],
 	rain,
 	overcast,
 

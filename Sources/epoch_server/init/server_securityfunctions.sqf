@@ -1094,7 +1094,7 @@ call compile ("'"+_skn_doAdminRequest+"' addPublicVariableEventHandler {
 		_player = objectFromNetId (_content select 0);
 		if (!isNull _player) then {
 			_cIndex = EPOCH_customVars find 'Crypto';
-			_vars = _player getVariable['VARS', [] + EPOCH_defaultVars_SEPXVar];
+			_vars = _player getVariable['VARS', call EPOCH_defaultVars_SEPXVar];
 			_current_crypto = (((_vars select _cIndex) + (_content select 1)) min "+str _skn_playerCryptoLimit+") max 0;
 			_current_crypto remoteExec ['EPOCH_effectCrypto',(owner _player)];
 			_vars set[_cIndex, _current_crypto];
