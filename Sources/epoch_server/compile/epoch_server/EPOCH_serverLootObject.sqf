@@ -14,6 +14,7 @@
 */
 private["_randomItemArray", "_quan", "_randomLootClass", "_randomItem", "_lootPaid", "_mags", "_lootItemWeightedArray", "_lootItemArray", "_weightedItemArray", "_exit", "_maxPayout", "_lootTable", "_lootTableArray", "_weightedArray"];
 params ["_object","_type"];
+_lootTableClass = ["CfgLootTable_CUP","CfgLootTable"] select EPOCH_modCUPWeaponsEnabled;
 _randomizeMagazineAmmoCount = ["CfgEpochClient", "randomizeMagazineAmmoCount", true] call EPOCH_fnc_returnConfigEntryV2;
 if !(isNull _object) then{
 	_lootTable = [_type, "CfgMainTable", "tables"] call EPOCH_weightedArray;
@@ -29,7 +30,7 @@ if !(isNull _object) then{
 		};
 
 		{
-			_lootItemWeightedArray = [_x, "CfgLootTable", "items"] call EPOCH_weightedArray;
+			_lootItemWeightedArray = [_x, _lootTableClass, "items"] call EPOCH_weightedArray;
 			_lootItemArray = _lootItemWeightedArray select 0;
 			if !(_lootItemArray isEqualTo[]) then {
 				_weightedItemArray = _lootItemWeightedArray select 1;
@@ -86,7 +87,7 @@ if !(isNull _object) then{
 						case "CfgLootTable": {
 
 							// go down the rabit hole
-							_lootItemWeightedArray = [_randomItem, "CfgLootTable", "items"] call EPOCH_weightedArray;
+							_lootItemWeightedArray = [_randomItem, _lootTableClass, "items"] call EPOCH_weightedArray;
 
 							_lootItemArray = _lootItemWeightedArray select 0;
 							if !(_lootItemArray isEqualTo[]) then {

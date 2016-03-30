@@ -1,4 +1,4 @@
-_currentTarget = objNull;
+aw_currentTarget = objNull;
 _cursorTarget = ([10] call EPOCH_fnc_cursorTarget);
 if (!isNull _cursorTarget && {!(EPOCH_target isEqualTo _cursorTarget)}) then {
 	if (_cursorTarget isKindOf "ThingX" || _cursorTarget isKindOf "Constructions_static_F" || _cursorTarget isKindOf "Constructions_foundation_F" || _cursorTarget isKindOf "WeaponHolder" || _cursorTarget isKindOf "AllVehicles" || _cursorTarget isKindOf "PlotPole_EPOCH") then{
@@ -83,7 +83,7 @@ _playerOxygen = getOxygenRemaining player;
 _oxygen ctrlShow (_playerOxygen < 1);
 if (ctrlShown _oxygen) then {
 	[_oxygen,(_playerOxygen <= 0.55)] call _fadeUI;
-	_color = [1,0,_playerOxygen,1] call EPOCH_colorRange;
+	_color = [0,1,_playerOxygen,1] call EPOCH_colorRange;
 	_oxygen ctrlSetTextColor _color;
 };
 

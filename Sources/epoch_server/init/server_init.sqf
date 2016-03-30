@@ -52,6 +52,16 @@ if (isNil "_instanceID") exitWith{
     "Epoch: InstanceID missing!" call _abortAndError;
 };
 
+_activeAddons = activatedAddons;
+EPOCH_modCUPWeaponsEnabled = "caweapons" in _activeAddons;
+EPOCH_modCUPVehiclesEnabled = "cawheeled" in _activeAddons;
+if (EPOCH_modCUPWeaponsEnabled) then {
+    diag_log "Epoch: CUP Weapons detected";
+};
+if (EPOCH_modCUPVehiclesEnabled) then {
+    diag_log "Epoch: CUP Vehicles detected";
+};
+
 diag_log "Epoch: Init Variables";
 call compile preprocessFileLineNumbers "\x\addons\a3_epoch_server\init\server_variables.sqf";
 call compile preprocessFileLineNumbers "\x\addons\a3_epoch_server\init\server_securityfunctions.sqf";

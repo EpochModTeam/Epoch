@@ -27,7 +27,9 @@ class CfgPatches {
 };
 
 // inport loot tables
-#include "configs\Loots.h"
+#include "configs\CfgMainTable.h"
+#include "configs\CfgLootTable.h"
+#include "configs\CfgLootTable_CUP.h"
 // security checks
 #include "configs\security\security_checks.h"
 // props template

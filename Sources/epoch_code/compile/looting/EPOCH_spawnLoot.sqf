@@ -38,7 +38,7 @@ _loots = getArray(_config >> _lootType);
 _lootLimit = ceil random(getNumber(_config >> "limit"));
 
 EPOCH_LootedBlds pushBackUnique _building;
-if (count EPOCH_LootedBlds >= _buildingLootCheckedLimit) then {
+if (count EPOCH_LootedBlds >= _lootCheckBufferLimit) then {
     EPOCH_LootedBlds deleteAt 0;
 };
 
