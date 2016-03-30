@@ -263,8 +263,9 @@ if (_slot != -1) then {
 		_objHiveKey = format["%1:%2", (call EPOCH_fn_InstanceID), _slot];
 		["AI_ITEMS", _objHiveKey, EPOCH_expiresAIdata, [_itemClasses, _itemQtys]] call EPOCH_fnc_server_hiveSETEX;
 		// push crypto changes to player
-		_playerCryptoLimit = [(configFile >> "CfgSecConf" >> "limits"), "playerCrypto", 250000] call EPOCH_fnc_returnConfigEntry;
-		_current_crypto = ((_current_cryptoRaw + _tradeTotal) min _playerCryptoLimit) max 0;
+		_playerCryptoLimit = EPOCH_customVarLimits select _cIndex;
+		_playerCryptoLimit params ["_playerCryptoLimitMax","_playerCryptoLimitMin"];
+		_current_crypto = ((_current_cryptoRaw + _tradeTotal) min _playerCryptoLimitMax) max _playerCryptoLimitMin;
 		// send to player
 		_current_crypto remoteExec ['EPOCH_effectCrypto',(owner _player)];
 		_vars set[_cIndex, _current_crypto];

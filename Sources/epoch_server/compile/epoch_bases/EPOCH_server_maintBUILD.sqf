@@ -77,9 +77,9 @@ if (typeOf _object == "PlotPole_EPOCH") then {
 				} forEach nearestObjects[_object, ["Constructions_static_F","Constructions_foundation_F","Buildable_Storage","Constructions_lockedstatic_F"], _buildingJammerRange];
 
 				// effect crypto
-				_playerCryptoLimit = [(configFile >> "CfgSecConf" >> "limits"), "playerCrypto", 250000] call EPOCH_fnc_returnConfigEntry;
-
-				_current_crypto = ((_current_crypto - _counter) min _playerCryptoLimit) max 0;
+				_playerCryptoLimit = EPOCH_customVarLimits select _cIndex;
+				_playerCryptoLimit params ["_playerCryptoLimitMax","_playerCryptoLimitMin"];
+				_current_crypto = ((_current_crypto - _counter) min _playerCryptoLimitMax) max _playerCryptoLimitMin;
 
 				_current_crypto remoteExec ['EPOCH_effectCrypto',(owner _player)];
 

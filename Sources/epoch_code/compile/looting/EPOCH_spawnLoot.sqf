@@ -17,11 +17,13 @@
 
     Parameter(s):
 		_this select 0: OBJECT - building
+        _this select 1: NUMBER - Number of buildings checked before a building in the array can reattempt looting. Default: 333
+        _this select 2: NUMBER - Limit of loot objects, as new are created old ones will be removed. Default: 33
 
 	Returns:
 	BOOL
 */
-params [["_building",objNull,[objNull]]];
+params [["_building",objNull,[objNull]], ["_lootCheckBufferLimit",333], ["_lootObjectLimit",33]];
 
 _masterConfig = 'CfgBuildingLootPos' call EPOCH_returnConfig;
 _config = _masterConfig >> (typeOf _building);
@@ -36,10 +38,9 @@ _loots = getArray(_config >> _lootType);
 _lootLimit = ceil random(getNumber(_config >> "limit"));
 
 EPOCH_LootedBlds pushBackUnique _building;
-if (count EPOCH_LootedBlds >= 334) then {
+if (count EPOCH_LootedBlds >= _buildingLootCheckedLimit) then {
     EPOCH_LootedBlds deleteAt 0;
 };
-diag_log format["TIME start: %1",diag_tickTime];
 
 if ((random 100) < _lootBias) then {
     _possibleLoots = [];
@@ -50,47 +51,49 @@ if ((random 100) < _lootBias) then {
             _possibleLoots pushBack [_class,_randomColor,_x];
         } forEach _positions;
     } forEach _loots;
-    diag_log format["TIME mid: %1",diag_tickTime];
 
-    for "_i" from 1 to _lootLimit do
-    {
-        _return = true;
-        _selectedLoot = _possibleLoots deleteAt (floor random(count _possibleLoots));
-        _selectedLoot params ["_class","_randomColor","_position"];
-        _position params ["_m2WPos","_relDir"];
-        _pos = _building modelToWorld _m2WPos;
-        // force item to ground level if resulting z pos is below ground.
-        if (_pos select 2 < 0) then {
-            _pos set[2, 0];
-        };
-        if (_class isEqualType []) then {
-            _class = selectRandom _class;
-        };
+    if !(_possibleLoots isEqualTo []) then {
+        for "_i" from 1 to _lootLimit do
+        {
+            _return = true;
+            _randomIndex = (floor random(count _possibleLoots));
+            _selectedLoot = _possibleLoots deleteAt _randomIndex;
 
-        _dir = _relDir + (getDir _building);
-        _item = createVehicle[_class, _pos, [], 0.0, "CAN_COLLIDE"];
-        _item setDir _dir;
+            _selectedLoot params ["_class","_randomColor","_position"];
+            _position params ["_m2WPos","_relDir"];
+            _pos = _building modelToWorld _m2WPos;
+            // force item to ground level if resulting z pos is below ground.
+            if (_pos select 2 < 0) then {
+                _pos set[2, 0];
+            };
+            if (_class isEqualType []) then {
+                _class = selectRandom _class;
+            };
+            _dir = _relDir + (getDir _building);
+            _item = createVehicle[_class, _pos, [], 0.0, "CAN_COLLIDE"];
+            _item setDir _dir;
 
-        EPOCH_lootObjects pushBack _item;
-        if (count EPOCH_lootObjects > 50) then {
-            deleteVehicle (EPOCH_lootObjects deleteAt 0);
-        };
+            EPOCH_lootObjects pushBack _item;
+            if (count EPOCH_lootObjects > _lootObjectLimit) then {
+                deleteVehicle (EPOCH_lootObjects deleteAt 0);
+            };
 
-        if (surfaceIsWater _pos) then {
-            _item setPosASL _pos;
-        } else {
-            _item setPosATL _pos;
-        };
+            if (surfaceIsWater _pos) then {
+                _item setPosASL _pos;
+            } else {
+                _item setPosATL _pos;
+            };
 
-        if (_randomColor isEqualTo "true") then {
-            _colors = getArray(configFile >> "CfgVehicles" >> _class >> "availableTextures");
-            if !(_colors isEqualTo[]) then {
-                _color = selectRandom _colors;
-                _item setObjectTextureGlobal[0, _color];
+            if (_randomColor isEqualTo "true") then {
+                _colors = getArray(configFile >> "CfgVehicles" >> _class >> "availableTextures");
+                if !(_colors isEqualTo[]) then {
+                    _color = selectRandom _colors;
+                    _item setObjectTextureGlobal[0, _color];
+                };
             };
         };
+    } else {
+        diag_log format["DEBUG no positions for: %1",_posName];
     };
 };
-
-diag_log format["TIME fin: %1",diag_tickTime];
 _return

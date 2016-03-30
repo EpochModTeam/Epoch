@@ -27,10 +27,6 @@ class CfgSecConf
         tradeComplete = "EPOCH_TRADE_COMPLETE = _this;";
     };
 
-    class limits {
-        playerCrypto = 250000;
-    };
-
     class learning {
         mode = false; // true = only trust uids below, false = trust everyone (use only with a passworded server and trusted players)
         trustedUsers[] = {};

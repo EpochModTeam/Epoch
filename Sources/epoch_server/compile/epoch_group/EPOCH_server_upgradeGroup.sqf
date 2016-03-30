@@ -36,8 +36,9 @@ if ((_response select 0) == 1 && (_response select 1) isEqualType []) then {
 
 		if (_current_crypto >= _upgradePrice) then {
 
-			_playerCryptoLimit = [(configFile >> "CfgSecConf" >> "limits"), "playerCrypto", 250000] call EPOCH_fnc_returnConfigEntry;
-			_current_crypto = ((_current_crypto - _upgradePrice) min _playerCryptoLimit) max 0;
+			_playerCryptoLimit = EPOCH_customVarLimits select _cIndex;
+			_playerCryptoLimit params ["_playerCryptoLimitMax","_playerCryptoLimitMin"];
+			_current_crypto = ((_current_crypto - _upgradePrice) min _playerCryptoLimitMax) max _playerCryptoLimitMin;
 			// send to player
 			_current_crypto remoteExec ['EPOCH_effectCrypto',(owner _player)];
 			_vars set[_cIndex, _current_crypto];

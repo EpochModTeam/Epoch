@@ -51,12 +51,13 @@ if ((_response select 0) == 1 && (_response select 1) isEqualType []) then {
 		_current_crypto = _vars select _cIndex;
 
 		// Make Transaction
-		_playerCryptoLimit = [(configFile >> "CfgSecConf" >> "limits"), "playerCrypto", 250000] call EPOCH_fnc_returnConfigEntry;
+		_playerCryptoLimit = EPOCH_customVarLimits select _cIndex;
+		_playerCryptoLimit params ["_playerCryptoLimitMax","_playerCryptoLimitMin"];
 
 		if (_transferAmountIn > 0) then {
 			if (_current_crypto >= _transferAmountIn) then {
 				_bankBalance = _bankBalance + _transferAmountIn;
-				_current_crypto = ((_current_crypto - _transferAmountIn) min _playerCryptoLimit) max 0;
+				_current_crypto = ((_current_crypto - _transferAmountIn) min _playerCryptoLimitMax) max _playerCryptoLimitMin;
 				_current_crypto remoteExec ['EPOCH_effectCrypto',_player];
 				_vars set[_cIndex, _current_crypto];
 				_player setVariable["VARS", _vars];
@@ -66,7 +67,7 @@ if ((_response select 0) == 1 && (_response select 1) isEqualType []) then {
 		if (_transferAmountOut > 0) then {
 			if (_bankBalance >= _transferAmountOut) then {
 				_bankBalance = _bankBalance - _transferAmountOut;
-				_current_crypto = ((_current_crypto + _transferAmountOut) min _playerCryptoLimit) max 0;
+				_current_crypto = ((_current_crypto + _transferAmountOut) min _playerCryptoLimitMax) max _playerCryptoLimitMin;
 				// send to player
 				_current_crypto remoteExec ['EPOCH_effectCrypto',_player];
 				_vars set[_cIndex, _current_crypto];

@@ -37,11 +37,12 @@ if ((_player1 getVariable["currentTradeKey", -1]) isEqualto (_player2 getVariabl
 		// test this may work since players crypto is
 		if (_current_crypto1 >= _tradeCryptoOffer1 && _current_crypto2 >= _tradeCryptoOffer2) then{
 
-			_playerCryptoLimit = [(configFile >> "CfgSecConf" >> "limits"), "playerCrypto", 250000] call EPOCH_fnc_returnConfigEntry;
+			_playerCryptoLimit = EPOCH_customVarLimits select _cIndex;
+			_playerCryptoLimit params ["_playerCryptoLimitMax","_playerCryptoLimitMin"];
 
 			if (_tradeCryptoOffer1 > 0) then{
 
-				_current_crypto1 = ((_current_crypto1 - _tradeCryptoOffer1) min _playerCryptoLimit) max 0;
+				_current_crypto1 = ((_current_crypto1 - _tradeCryptoOffer1) min _playerCryptoLimitMax) max _playerCryptoLimitMin;
 				// send to player
 				_current_crypto1 remoteExec ['EPOCH_effectCrypto',(owner _player1)];
 				_player1_vars set[_cIndex, _current_crypto1];
@@ -61,7 +62,7 @@ if ((_player1 getVariable["currentTradeKey", -1]) isEqualto (_player2 getVariabl
 
 			if (_tradeCryptoOffer2 > 0) then{
 
-				_current_crypto1 = ((_current_crypto1 + _tradeCryptoOffer2) min _playerCryptoLimit) max 0;
+				_current_crypto1 = ((_current_crypto1 + _tradeCryptoOffer2) min _playerCryptoLimitMax) max _playerCryptoLimitMin;
 				// send to player
 				_current_crypto1 remoteExec ['EPOCH_effectCrypto',(owner _player1)];
 				_player1_vars set[_cIndex, _current_crypto1];

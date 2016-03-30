@@ -28,7 +28,7 @@ EPOCH_customVarsDefaults = [
 	["Immunity",0,[100,0]],
 	["Toxicity",0,[100,0]],
 	["Stamina",100,["EPOCH_playerStaminaMax",0]],
-	["Crypto",0,[2500000,0]],
+	["Crypto",0,[250000,0]],
 	["HitPoints",[0,0,0,0],[1,1,1,1]],
 	["BloodP",100,[190,0]],
 	["SpawnArray",[],[]],

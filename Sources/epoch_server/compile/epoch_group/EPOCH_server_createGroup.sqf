@@ -42,8 +42,9 @@ _upgradePrice = parseNumber (EPOCH_group_upgrade_lvl_SEPXVar select 1);
 if (_current_crypto >= _upgradePrice) then {
 	if (_groupName != "") then {
 
-		_playerCryptoLimit = [(configFile >> "CfgSecConf" >> "limits"), "playerCrypto", 250000] call EPOCH_fnc_returnConfigEntry;
-		_current_crypto = ((_current_crypto - _upgradePrice) min _playerCryptoLimit) max 0;
+		_playerCryptoLimit = EPOCH_customVarLimits select _cIndex;
+		_playerCryptoLimit params ["_playerCryptoLimitMax","_playerCryptoLimitMin"];
+		_current_crypto = ((_current_crypto - _upgradePrice) min _playerCryptoLimitMax) max _playerCryptoLimitMin;
 
 		_vars set[_cIndex, _current_crypto];
 		_leader setVariable["VARS", _vars];
