@@ -13,15 +13,7 @@
     https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_server/compile/epoch_vehicle/EPOCH_spawn_vehicles.sqf
 */
 private ["_vehClass","_velimit","_vehicleCount","_limit","_cityPos","_range","_nearBy","_find","_position","_direction","_getRandomPos","_newPosition","_road","_selectedCity","_roads","_isShip","_collide","_marker","_vehObj","_slot","_vehCount","_preferedPos","_allowedVehiclesList","_spawnPositionSizeDefaults","_serverMapConfig","_spawnPositionSize","_allowedTypes","_allCitys","_allCitysDync","_spawnCount"];
-
-_allowedVehiclesList = [];
-{
-  _x params ["_vehClass","_velimit"];
-  _vehicleCount = {typeOf _x == _vehClass} count vehicles;
-  for "_i" from 1 to (_velimit-_vehicleCount) do {
-    _allowedVehiclesList pushBack _vehClass;
-  };
-} forEach EPOCH_allowedVehiclesList;
+params [["_allowedVehiclesList",[]]];
 
 if (_allowedVehiclesList isEqualTo []) exitWith {
 	diag_log "DEBUG: All vehicles over limit";

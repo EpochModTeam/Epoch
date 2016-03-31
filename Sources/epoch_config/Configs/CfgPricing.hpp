@@ -49,7 +49,7 @@ class CfgPricing
 
 	class Binocular {price = 4;};
 	class NVG_EPOCH {price = 35;};
-	class acc_flashlight {price = 4;};
+	class acc_flashlight {price = 5;};
 	class acc_pointer_IR {price = 5;};
 
 	class srifle_EBR_F {price = 150;};
@@ -66,6 +66,329 @@ class CfgPricing
 	class 130Rnd_338_Mag{ price = 2; tax = 0.9; };
 	class 10Rnd_93x64_DMR_05_Mag { price = 2; tax = 0.9; };
 	class 10Rnd_127x54_Mag { price = 2; tax = 0.9; };
+
+	//CUP start - pistols
+	class CUP_hgun_Compact { price = 20; };
+	class CUP_hgun_Duty { price = 20; };
+	class CUP_hgun_Phantom { price = 25; };
+	class CUP_hgun_Glock17 { price = 25; };
+	class CUP_hgun_Makarov { price = 20; };
+	class CUP_hgun_MicroUzi { price = 45; };
+	class CUP_hgun_TaurusTracker455 { price = 35; };
+	class CUP_hgun_PB6P9 { price = 30; };
+	class CUP_hgun_SA61 { price = 30; };
+	class CUP_hgun_M9 { price = 30; };
+	class CUP_hgun_TaurusTracker455_gold { price = 300; };
+	class CUP_hgun_Colt1911 { price = 30; };
+	// Shotguns
+	class CUP_sgun_AA12 { price = 75; };
+	class CUP_sgun_M1014 { price = 50; };
+	class CUP_sgun_Saiga12K { price = 45; };
+	// Sniper Rifles
+	class CUP_srifle_AS50 { price = 200; };
+	class CUP_srifle_LeeEnfield { price = 100; };
+	class CUP_srifle_LeeEnfield_rail { price = 150; };
+	class CUP_srifle_M107_Base { price = 200; };
+	class CUP_srifle_M110 { price = 200; };
+	class CUP_srifle_M14 { price = 150; };
+	class CUP_srifle_M14_DMR { price = 150; };
+	class CUP_srifle_Mk12SPR { price = 200; };
+	class CUP_srifle_M24_des { price = 200; };
+	class CUP_srifle_M40A3 { price = 200; };
+	class CUP_srifle_ksvk { price = 150; };
+	class CUP_srifle_SVD { price = 200; };
+	class CUP_srifle_VSSVintorez { price = 200; };
+	class CUP_srifle_CZ750 { price = 200; };
+	class CUP_srifle_CZ550 { price = 200; };
+	class CUP_srifle_CZ550_rail { price = 200; };
+	class CUP_srifle_M24_wdl { price = 200; };
+	class CUP_srifle_SVD_des { price = 200; };
+	class CUP_srifle_AWM_des { price = 200; };
+	class CUP_srifle_AWM_wdl { price = 200; };
+	class CUP_srifle_G22_des { price = 200; };
+	// Rifles
+	class CUP_arifle_AK107_GL { price = 75; };
+	class CUP_arifle_AK47 { price = 75; };
+	class CUP_arifle_AK74 { price = 75; };
+	class CUP_arifle_AK74_GL { price = 75; };
+	class CUP_arifle_AK74M { price = 75; };
+	class CUP_arifle_AK74M_GL { price = 75; };
+	class CUP_arifle_AKM { price = 75; };
+	class CUP_arifle_AKS { price = 75; };
+	class CUP_arifle_AKS_Gold { price = 75; };
+	class CUP_arifle_AKS74 { price = 75; };
+	class CUP_arifle_RPK74 { price = 75; };
+	class CUP_arifle_L85A2_Base { price = 75; };
+	class CUP_arifle_L85A2_GL { price = 75; };
+	class CUP_arifle_L86A2_Base { price = 75; };
+	class CUP_arifle_M16A4_Base { price = 75; };
+	class CUP_arifle_M4_Base { price = 75; };
+	class CUP_arifle_M4A1_BUIS_Base { price = 75; };
+	class CUP_arifle_M4A1_black { price = 75; };
+	class CUP_arifle_M4A1_BUIS_GL { price = 75; };
+	class CUP_arifle_M4A1_BUIS_camo_GL { price = 75; };
+	class CUP_arifle_M4A1_BUIS_desert_GL { price = 75; };
+	class CUP_arifle_M16A2 { price = 75; };
+	class CUP_arifle_M16A2_GL { price = 75; };
+	class CUP_arifle_M16A4_GL { price = 75; };
+	class CUP_arifle_M4A3_desert { price = 75; };
+	class CUP_arifle_M4A1 { price = 75; };
+	class CUP_arifle_CZ805_A1 { price = 75; };
+	class CUP_arifle_CZ805_GL { price = 75; };
+	class CUP_arifle_CZ805_B_GL { price = 75; };
+	class CUP_arifle_FNFAL { price = 100; };
+	class CUP_arifle_FNFAL_railed { price = 100; };
+	class CUP_arifle_FNFAL5061 { price = 100; };
+	class CUP_arifle_G36A { price = 75; };
+	class CUP_arifle_G36K { price = 75; };
+	class CUP_arifle_G36C { price = 75; };
+	class CUP_arifle_MG36 { price = 75; };
+	class CUP_arifle_Mk16_CQC { price = 75; };
+	class CUP_arifle_Mk16_CQC_FG { price = 75; };
+	class CUP_arifle_Mk16_CQC_SFG { price = 75; };
+	class CUP_arifle_Mk16_CQC_EGLM { price = 75; };
+	class CUP_arifle_Mk16_STD { price = 75; };
+	class CUP_arifle_Mk16_STD_FG { price = 75; };
+	class CUP_arifle_Mk16_STD_SFG { price = 75; };
+	class CUP_arifle_Mk16_STD_EGLM { price = 75; };
+	class CUP_arifle_Mk16_SV { price = 75; };
+	class CUP_arifle_Mk17_CQC { price = 75; };
+	class CUP_arifle_Mk17_CQC_FG { price = 75; };
+	class CUP_arifle_Mk17_CQC_SFG { price = 75; };
+	class CUP_arifle_Mk17_CQC_EGLM { price = 75; };
+	class CUP_arifle_Mk17_STD { price = 75; };
+	class CUP_arifle_Mk17_STD_FG { price = 75; };
+	class CUP_arifle_Mk17_STD_SFG { price = 75; };
+	class CUP_arifle_Mk17_STD_EGLM { price = 75; };
+	class CUP_arifle_Mk20 { price = 100; };
+	class CUP_arifle_Sa58RIS1 { price = 75; };
+	class CUP_arifle_Sa58RIS2_gl { price = 75; };
+	class CUP_arifle_XM8_Carbine_FG { price = 75; };
+	class CUP_arifle_XM8_Carbine { price = 75; };
+	class CUP_arifle_XM8_Carbine_GL { price = 75; };
+	class CUP_arifle_xm8_sharpshooter { price = 75; };
+	class CUP_arifle_xm8_SAW { price = 75; };
+	class CUP_arifle_XM8_Compact { price = 75; };
+	class CUP_arifle_XM8_Compact_Rail { price = 75; };
+	class CUP_arifle_CZ805_A2 { price = 75; };
+	class CUP_arifle_CZ805_B { price = 75; };
+	class CUP_arifle_Sa58P { price = 75; };
+	class CUP_arifle_Sa58P_des { price = 75; };
+	class CUP_arifle_Sa58V { price = 75; };
+	class CUP_arifle_Sa58V_camo { price = 75; };
+	class CUP_arifle_Sa58RIS1_des { price = 75; };
+	class CUP_arifle_Sa58RIS2 { price = 75; };
+	class CUP_arifle_Sa58RIS2_camo { price = 75; };
+	class CUP_arifle_AK107 { price = 75; };
+	class CUP_arifle_AKS74U { price = 75; };
+	class CUP_arifle_RPK74_45 { price = 75; };
+	class CUP_arifle_RPK74M { price = 75; };
+	class CUP_arifle_FNFAL5062 { price = 75; };
+	class CUP_arifle_FNFAL_OSW { price = 75; };
+	class CUP_arifle_G36A_camo { price = 75; };
+	class CUP_arifle_G36K_camo { price = 75; };
+	class CUP_arifle_G36C_camo { price = 75; };
+	class CUP_arifle_MG36_camo { price = 75; };
+	class CUP_arifle_L85A2 { price = 75; };
+	class CUP_arifle_L86A2 { price = 75; };
+	class CUP_arifle_M4A1_camo { price = 75; };
+	class CUP_arifle_M4A1_desert { price = 75; };
+	class CUP_arifle_XM8_Railed { price = 75; };
+	//Lmgs
+	class CUP_lmg_L110A1 { price = 150; };
+	class CUP_lmg_M240 { price = 150; };
+	class CUP_lmg_minimipara { price = 150; };
+	class CUP_lmg_minimi { price = 150; };
+	class CUP_lmg_m249_para { price = 150; };
+	class CUP_lmg_M249_E2 { price = 150; };
+	class CUP_lmg_minimi_railed { price = 150; };
+	class CUP_lmg_m249_pip1 { price = 150; };
+	class CUP_lmg_m249_pip4 { price = 150; };
+	class CUP_lmg_L7A2 { price = 150; };
+	class CUP_lmg_PKM { price = 150; };
+	class CUP_lmg_Pecheneg { price = 150; };
+	class CUP_lmg_UK59 { price = 150; };
+	class CUP_lmg_m249_pip2 { price = 150; };
+	class CUP_lmg_m249_pip3 { price = 150; };
+	class CUP_lmg_m249_SQuantoon { price = 150; };
+	class CUP_lmg_M60E4 { price = 150; };
+	class CUP_lmg_Mk48_des { price = 150; };
+	class CUP_lmg_Mk48_wdl { price = 150; };
+	// smg
+	class CUP_smg_bizon { price = 75; };
+	class CUP_smg_EVO { price = 100; };
+	class CUP_smg_MP5SD6 { price = 125; };
+	class CUP_smg_MP5A5 { price = 100; };
+	// pistol ammo
+	class CUP_10Rnd_9x19_Compact { price = 3; tax = 0.9; };
+	class CUP_18Rnd_9x19_Phantom { price = 3; tax = 0.9; };
+	class CUP_17Rnd_9x19_glock17 { price = 3; tax = 0.9; };
+	class CUP_8Rnd_9x18_Makarov_M { price = 3; tax = 0.9; };
+	class CUP_8Rnd_9x18_MakarovSD_M { price = 3; tax = 0.9; };
+	class CUP_30Rnd_9x19_UZI { price = 3; tax = 0.9; };
+	class CUP_6Rnd_45ACP_M { price = 3; tax = 0.9; };
+	class CUP_20Rnd_B_765x17_Ball_M { price = 3; tax = 0.9; };
+	class CUP_15Rnd_9x19_M9 { price = 3; tax = 0.9; };
+	class CUP_7Rnd_45ACP_1911 { price = 3; tax = 0.9; };
+
+	// shotgun ammo
+	class CUP_20Rnd_B_AA12_Pellets { price = 5; tax = 0.9; };
+	class CUP_20Rnd_B_AA12_74Slug { price = 5; tax = 0.9; };
+	class CUP_20Rnd_B_AA12_HE { price = 15; tax = 0.9; };
+	class CUP_8Rnd_B_Beneli_74Slug { price = 5; tax = 0.9; };
+	class CUP_8Rnd_B_Beneli_74Pellets { price = 5; tax = 0.9; };
+	class CUP_8Rnd_B_Saiga12_74Slug_M { price = 5; tax = 0.9; };
+	class CUP_8Rnd_B_Saiga12_74Pellets_M { price = 5; tax = 0.9; };
+
+	// Sniper ammo
+	class CUP_5Rnd_127x99_as50_M { price = 5; tax = 0.9; };
+	class CUP_10x_303_M { price = 5; tax = 0.9; };
+	class CUP_10Rnd_127x99_m107 { price = 5; tax = 0.9; };
+	class CUP_20Rnd_762x51_B_M110 { price = 5; tax = 0.9; };
+	class CUP_20Rnd_TE1_Yellow_Tracer_762x51_M110 { price = 5; tax = 0.9; };
+	class CUP_20Rnd_TE1_Red_Tracer_762x51_M110 { price = 5; tax = 0.9; };
+	class CUP_20Rnd_TE1_Green_Tracer_762x51_M110 { price = 5; tax = 0.9; };
+	class CUP_20Rnd_TE1_White_Tracer_762x51_M110 { price = 5; tax = 0.9; };
+	class CUP_5Rnd_762x51_M24 { price = 5; tax = 0.9; };
+	class CUP_5Rnd_127x108_KSVK_M { price = 5; tax = 0.9; };
+	class CUP_10Rnd_762x54_SVD_M { price = 5; tax = 0.9; };
+	class CUP_10Rnd_9x39_SP5_VSS_M { price = 5; tax = 0.9; };
+	class CUP_20Rnd_9x39_SP5_VSS_M { price = 5; tax = 0.9; };
+	class CUP_10Rnd_762x51_CZ750_Tracer { price = 5; tax = 0.9; };
+	class CUP_10Rnd_762x51_CZ750 { price = 5; tax = 0.9; };
+	class CUP_5x_22_LR_17_HMR_M { price = 5; tax = 0.9; };
+	class CUP_5Rnd_86x70_L115A1 { price = 5; tax = 0.9; };
+	class CUP_5Rnd_762x67_G22 { price = 5; tax = 0.9; };
+
+	// Rifle ammo
+	class CUP_30Rnd_545x39_AK_M { price = 5; tax = 0.9; };
+	class CUP_30Rnd_TE1_Green_Tracer_545x39_AK_M { price = 5; tax = 0.9; };
+	class CUP_30Rnd_TE1_Red_Tracer_545x39_AK_M { price = 5; tax = 0.9; };
+	class CUP_30Rnd_TE1_White_Tracer_545x39_AK_M { price = 5; tax = 0.9; };
+	class CUP_30Rnd_TE1_Yellow_Tracer_545x39_AK_M { price = 5; tax = 0.9; };
+	class CUP_45Rnd_TE4_LRT4_Green_Tracer_545x39_RPK_M { price = 5; tax = 0.9; };
+	class CUP_30Rnd_762x39_AK47_M { price = 5; tax = 0.9; };
+	class CUP_75Rnd_TE4_LRT4_Green_Tracer_545x39_RPK_M { price = 5; tax = 0.9; };
+	class CUP_20Rnd_762x51_CZ805B { price = 5; tax = 0.9; };
+	class CUP_20Rnd_TE1_Yellow_Tracer_762x51_CZ805B { price = 5; tax = 0.9; };
+	class CUP_20Rnd_TE1_Red_Tracer_762x51_CZ805B { price = 5; tax = 0.9; };
+	class CUP_20Rnd_TE1_Green_Tracer_762x51_CZ805B { price = 5; tax = 0.9; };
+	class CUP_20Rnd_TE1_White_Tracer_762x51_CZ805B { price = 5; tax = 0.9; };
+	class CUP_20Rnd_762x51_FNFAL_M { price = 5; tax = 0.9; };
+	class CUP_20Rnd_762x51_B_SCAR { price = 5; tax = 0.9; };
+	class CUP_20Rnd_TE1_Yellow_Tracer_762x51_SCAR { price = 5; tax = 0.9; };
+	class CUP_20Rnd_TE1_Red_Tracer_762x51_SCAR { price = 5; tax = 0.9; };
+	class CUP_20Rnd_TE1_Green_Tracer_762x51_SCAR { price = 5; tax = 0.9; };
+	class CUP_20Rnd_TE1_White_Tracer_762x51_SCAR { price = 5; tax = 0.9; };
+	class CUP_30Rnd_Sa58_M_TracerG { price = 5; tax = 0.9; };
+	class CUP_30Rnd_Sa58_M_TracerR { price = 5; tax = 0.9; };
+	class CUP_30Rnd_Sa58_M_TracerY { price = 5; tax = 0.9; };
+	class CUP_30Rnd_Sa58_M { price = 5; tax = 0.9; };
+
+	// lmg
+	class CUP_100Rnd_TE4_LRT4_White_Tracer_762x51_Belt_M { price = 7; tax = 0.9; };
+	class CUP_100Rnd_TE4_LRT4_Red_Tracer_762x51_Belt_M { price = 7; tax = 0.9; };
+	class CUP_100Rnd_TE4_LRT4_762x54_PK_Tracer_Green_M { price = 7; tax = 0.9; };
+	class CUP_50Rnd_UK59_762x54R_Tracer { price = 5; tax = 0.9; };
+
+	// smg
+	class CUP_64Rnd_9x19_Bizon_M { price = 5; tax = 0.9; };
+	class CUP_64Rnd_Green_Tracer_9x19_Bizon_M { price = 4; tax = 0.9; };
+	class CUP_64Rnd_Red_Tracer_9x19_Bizon_M { price = 4; tax = 0.9; };
+	class CUP_64Rnd_White_Tracer_9x19_Bizon_M { price = 4; tax = 0.9; };
+	class CUP_64Rnd_Yellow_Tracer_9x19_Bizon_M { price = 4; tax = 0.9; };
+	class CUP_30Rnd_9x19_MP5 { price = 4; tax = 0.9; };
+	// items
+	class CUP_item_Money { price = 1000; };
+	class CUP_item_Kostey_photos { price = 100; };
+	class CUP_item_Kostey_map_case { price = 100; };
+	class CUP_item_Kostey_notebook { price = 100; };
+	class CUP_item_CDF_dogtags { price = 100; };
+	class CUP_item_Moscow_Bombing_File { price = 100; };
+	class CUP_item_Cobalt_File { price = 100; };
+	// muzzles
+	class CUP_muzzle_snds_M110 { price = 5; };
+	class CUP_muzzle_snds_M14 { price = 5; };
+	class CUP_muzzle_PBS4 { price = 5; };
+	class CUP_muzzle_PB6P9 { price = 5; };
+	class CUP_muzzle_Bizon { price = 5; };
+	class CUP_muzzle_snds_M9 { price = 5; };
+	class CUP_muzzle_snds_MicroUzi { price = 5; };
+	class CUP_muzzle_snds_AWM { price = 5; };
+	class CUP_muzzle_snds_G36_black { price = 5; };
+	class CUP_muzzle_snds_G36_desert { price = 5; };
+	class CUP_muzzle_snds_L85 { price = 5; };
+	class CUP_muzzle_snds_M16_camo { price = 5; };
+	class CUP_muzzle_snds_M16 { price = 5; };
+	class CUP_muzzle_snds_SCAR_L { price = 5; };
+	class CUP_muzzle_mfsup_SCAR_L { price = 5; };
+	class CUP_muzzle_snds_SCAR_H { price = 5; };
+	class CUP_muzzle_mfsup_SCAR_H { price = 5; };
+	class CUP_muzzle_snds_XM8 { price = 5; };
+	// optics
+	class CUP_optic_PSO_1 { price = 10; };
+	class CUP_optic_PSO_3 { price = 10; };
+	class CUP_optic_Kobra { price = 10; };
+	class CUP_optic_GOSHAWK { price = 10; };
+	class CUP_optic_NSPU { price = 10; };
+	class CUP_optic_PechenegScope { price = 10; };
+	class CUP_optic_SB_3_12x50_PMII { price = 10; };
+	class CUP_optic_AN_PAS_13c2 { price = 10; };
+	class CUP_optic_LeupoldMk4 { price = 10; };
+	class CUP_optic_HoloBlack { price = 10; };
+	class CUP_optic_HoloWdl { price = 10; };
+	class CUP_optic_HoloDesert { price = 10; };
+	class CUP_optic_Eotech533 { price = 10; };
+	class CUP_optic_Eotech533Grey { price = 10; };
+	class CUP_optic_CompM4 { price = 10; };
+	class CUP_optic_SUSAT { price = 10; };
+	class CUP_optic_ACOG { price = 10; };
+	class CUP_optic_CWS { price = 10; };
+	class CUP_optic_Leupold_VX3 { price = 10; };
+	class CUP_optic_AN_PVS_10 { price = 10; };
+	class CUP_optic_CompM2_Black { price = 10; };
+	class CUP_optic_CompM2_Woodland { price = 10; };
+	class CUP_optic_CompM2_Woodland2 { price = 10; };
+	class CUP_optic_CompM2_Desert { price = 10; };
+	class CUP_optic_RCO { price = 10; };
+	class CUP_optic_RCO_desert { price = 10; };
+	class CUP_optic_LeupoldM3LR { price = 15; };
+	class CUP_optic_LeupoldMk4_10x40_LRT_Desert { price = 15; };
+	class CUP_optic_LeupoldMk4_10x40_LRT_Woodland { price = 15; };
+	class CUP_optic_ElcanM145 { price = 10; };
+	class CUP_optic_AN_PAS_13c1 { price = 10; };
+	class CUP_optic_LeupoldMk4_CQ_T { price = 10; };
+	class CUP_optic_ELCAN_SpecterDR { price = 10; };
+	class CUP_optic_LeupoldMk4_MRT_tan { price = 10; };
+	class CUP_optic_SB_11_4x20_PM { price = 10; };
+	class CUP_optic_ZDDot { price = 10; };
+	class CUP_optic_MRad { price = 10; };
+	class CUP_optic_TrijiconRx01_desert { price = 10; };
+	class CUP_optic_TrijiconRx01_black { price = 10; };
+	class CUP_optic_AN_PVS_4 { price = 10; };
+	// acc
+	class CUP_acc_Glock17_Flashlight { price = 5; };
+	class CUP_acc_ANPEQ_15 { price = 5; };
+	class CUP_acc_ANPEQ_2 { price = 5; };
+	class CUP_acc_Flashlight { price = 5; };
+	class CUP_acc_Flashlight_wdl { price = 5; };
+	class CUP_acc_Flashlight_desert { price = 5; };
+	class CUP_acc_XM8_light_module { price = 5; };
+	class CUP_acc_ANPEQ_2_camo { price = 5; };
+	class CUP_acc_ANPEQ_2_desert { price = 5; };
+	class CUP_acc_ANPEQ_2_grey { price = 5; };
+	class CUP_acc_CZ_M3X { price = 5; };
+	// bipods
+	class CUP_bipod_Harris_1A2_L { price = 15; };
+	class CUP_bipod_VLTOR_Modpod { price = 15; };
+	// camos
+	class CUP_Mxx_camo { price = 10; };
+	class CUP_Mxx_camo_half { price = 10; };
+	class CUP_SVD_camo_g { price = 10; };
+	class CUP_SVD_camo_g_half { price = 10; };
+	class CUP_SVD_camo_d { price = 10; };
+	class CUP_SVD_camo_d_half { price = 10; };
+	//CUP end
 
 	// Paint
 	class PaintCanClear {price = 1;};
@@ -95,12 +418,12 @@ class CfgPricing
 
 	// Food
 	class honey_epoch {price = 5;};
-	class FoodBioMeat {price = 1;};
+	class FoodBioMeat {price = 4;};
 	class FoodMeeps {price = 50;};
 	class FoodSnooter {price = 5;};
 	class sardines_epoch {price = 2;};
 	class meatballs_epoch {price = 2;};
-	class scam_epoch {price = 1;};
+	class scam_epoch {price = 4;};
 	class TacticalBacon {price = 5;};
 	class sweetcorn_epoch {price = 2;};
 	class CookedSheep_EPOCH {price = 5;};
@@ -108,9 +431,12 @@ class CfgPricing
 	class SnakeMeat_EPOCH {price = 3;};
 	class CookedRabbit_EPOCH {price = 5;};
 	class CookedChicken_EPOCH {price = 3;};
-	class ItemTrout {price = 1;};
+	class ItemTrout {price = 2;};
+	class ItemTroutCooked {price = 20;};
 	class ItemSeaBass {price = 5;};
+	class ItemSeaBassCooked {price = 50;};
 	class ItemTuna {price = 10;};
+	class ItemTunaCooked {price = 100;};
 
 	// Drinks
 	class FoodWalkNSons {price = 5;};
@@ -256,14 +582,14 @@ class CfgPricing
 
 	class Rangefinder {price = 4;};
 	class Laserdesignator {price = 4;};
-	class hgun_ACPC2_F {price = 5;};
-	class hgun_Rook40_F {price = 5;};
-	class hgun_P07_F {price = 5;};
-	class hgun_Pistol_heavy_01_F {price = 7;};
-	class hgun_Pistol_heavy_02_F {price = 10;};
-	class ruger_pistol_epoch {price = 4;};
+	class hgun_ACPC2_F {price = 20;};
+	class hgun_Rook40_F {price = 20;};
+	class hgun_P07_F {price = 20;};
+	class hgun_Pistol_heavy_01_F {price = 25;};
+	class hgun_Pistol_heavy_02_F {price = 25;};
+	class ruger_pistol_epoch {price = 40;};
 	class 1911_pistol_epoch {price = 6;};
-	class hgun_Pistol_Signal_F {price = 4;};
+	class hgun_Pistol_Signal_F {price = 20;};
 	class Hatchet {price = 25;};
 	class MultiGun {price = 100;};
 	class MeleeSledge {price = 50;};
@@ -277,43 +603,43 @@ class CfgPricing
 
 	class 16Rnd_9x21_Mag {price = 2; tax = 0.9;};
 	class 30Rnd_9x21_Mag {price = 3; tax = 0.9;};
-	class 9Rnd_45ACP_Mag {price = 1; tax = 0.9;};
-	class 11Rnd_45ACP_Mag {price = 1; tax = 0.9;};
-	class 6Rnd_45ACP_Cylinder {price = 1; tax = 0.9;};
+	class 9Rnd_45ACP_Mag {price = 2; tax = 0.9;};
+	class 11Rnd_45ACP_Mag {price = 2; tax = 0.9;};
+	class 6Rnd_45ACP_Cylinder {price = 2; tax = 0.9;};
 	class 10rnd_22X44_magazine {price = 2; tax = 0.9;};
 	class 9rnd_45X88_magazine {price = 2; tax = 0.9;};
-	class 6Rnd_GreenSignal_F {price = 1;};
-	class 6Rnd_RedSignal_F {price = 1; tax = 0.9;};
+	class 6Rnd_GreenSignal_F {price = 2;};
+	class 6Rnd_RedSignal_F {price = 2;};
 	class EnergyPack {price = 3; tax = 0.9;};
 	class EnergyPackLg {price = 30; tax = 0.9;};
 
-	class optic_Arco {price = 3;};
-	class optic_Hamr {price = 3;};
-	class optic_Aco {price = 2;};
-	class optic_ACO_grn {price = 3;};
-	class optic_Aco_smg {price = 2;};
-	class optic_ACO_grn_smg {price = 3;};
-	class optic_Holosight {price = 2;};
-	class optic_Holosight_smg {price = 2;};
-	class optic_SOS {price = 3;};
-	class optic_MRCO {price = 3;};
-	class optic_DMS {price = 3;};
-	class optic_Yorris {price = 2;};
-	class optic_MRD {price = 1;};
-	class optic_LRPS {price = 3;};
-	class optic_NVS {price = 7;};
-	class optic_Nightstalker {price = 10;};
-	class optic_tws {price = 5;};
-	class optic_tws_mg {price = 5;};
+	class optic_Arco {price = 10;};
+	class optic_Hamr {price = 10;};
+	class optic_Aco {price = 10;};
+	class optic_ACO_grn {price = 10;};
+	class optic_Aco_smg {price = 10;};
+	class optic_ACO_grn_smg {price = 10;};
+	class optic_Holosight {price = 10;};
+	class optic_Holosight_smg {price = 10;};
+	class optic_SOS {price = 10;};
+	class optic_MRCO {price = 10;};
+	class optic_DMS {price = 10;};
+	class optic_Yorris {price = 10;};
+	class optic_MRD {price = 10;};
+	class optic_LRPS {price = 20;};
+	class optic_NVS {price = 30;};
+	class optic_Nightstalker {price = 50;};
+	class optic_tws {price = 20;};
+	class optic_tws_mg {price = 20;};
 
 	// DLC optics
-	class optic_AMS { price = 5; };
-	class optic_AMS_khk { price = 5; };
-	class optic_AMS_snd { price = 5; };
-	class optic_KHS_blk { price = 5; };
-	class optic_KHS_hex { price = 5; };
-	class optic_KHS_old { price = 5; };
-	class optic_KHS_tan { price = 5; };
+	class optic_AMS { price = 10; };
+	class optic_AMS_khk { price = 10; };
+	class optic_AMS_snd { price = 10; };
+	class optic_KHS_blk { price = 10; };
+	class optic_KHS_hex { price = 10; };
+	class optic_KHS_old { price = 10; };
+	class optic_KHS_tan { price = 10; };
 
 	// DLC bipods
 	class bipod_01_F_snd { price = 15; };
@@ -329,25 +655,25 @@ class CfgPricing
 	class Elcan_epoch { price = 5; };
 	class Elcan_reflex_epoch { price = 10; };
 
-	class muzzle_snds_H {price = 2;};
-	class muzzle_snds_L {price = 2;};
-	class muzzle_snds_M {price = 2;};
-	class muzzle_snds_B {price = 2;};
-	class muzzle_snds_H_MG {price = 2;};
-	class muzzle_snds_acp {price = 2;};
+	class muzzle_snds_H {price = 5;};
+	class muzzle_snds_L {price = 5;};
+	class muzzle_snds_M {price = 5;};
+	class muzzle_snds_B {price = 5;};
+	class muzzle_snds_H_MG {price = 5;};
+	class muzzle_snds_acp {price = 5;};
 	class Heal_EPOCH {price = 3;};
 	class Defib_EPOCH {price = 5;};
 	class Repair_EPOCH {price = 2;};
 
 	// DLC muzzles
-	class muzzle_snds_338_black { price = 3; };
-	class muzzle_snds_338_green { price = 3; };
-	class muzzle_snds_338_sand { price = 3; };
+	class muzzle_snds_338_black { price = 5; };
+	class muzzle_snds_338_green { price = 5; };
+	class muzzle_snds_338_sand { price = 5; };
 
-	class muzzle_snds_93mmg { price = 3; };
-	class muzzle_snds_93mmg_tan { price = 3; };
+	class muzzle_snds_93mmg { price = 5; };
+	class muzzle_snds_93mmg_tan { price = 5; };
 
-	class muzzle_sr25S_epoch { price = 2; };
+	class muzzle_sr25S_epoch { price = 5; };
 
 	class PartOreGold {price = 70;};
 	class PartOreSilver {price = 7;};

@@ -139,10 +139,23 @@ diag_log "Epoch: Spawning NPC traders";
 call EPOCH_server_spawnTraders;
 
 diag_log "Epoch: Loading vehicles";
-EPOCH_VehicleSlotsLimit call EPOCH_load_vehicles;
+// Vehicle slot limit set to total of all allowed limits
+_allowedVehicleListName = ["allowedVehiclesList_CUP","allowedVehiclesList"] select EPOCH_modCUPVehiclesEnabled;
+_allowedVehiclesList = getArray(configFile >> "CfgEpoch" >> worldName >> _allowedVehicleListName);
+_vehicleSlotLimit = 0;
+{_vehicleSlotLimit = _vehicleSlotLimit + (_x select 1)} forEach _allowedVehiclesList;
+_vehicleSlotLimit call EPOCH_load_vehicles;
 
 diag_log "Epoch: Spawning vehicles";
-call EPOCH_spawn_vehicles;
+_allowedVehiclesListArray = [];
+{
+    _x params ["_vehClass","_velimit"];
+    _vehicleCount = {typeOf _x == _vehClass} count vehicles;
+    for "_i" from 1 to (_velimit-_vehicleCount) do {
+        _allowedVehiclesListArray pushBack _vehClass;
+    };
+} forEach _allowedVehiclesList;
+_allowedVehiclesListArray call EPOCH_spawn_vehicles;
 
 diag_log "Epoch: Loading storage";
 EPOCH_StorageSlotsLimit call EPOCH_load_storage;

@@ -135,7 +135,7 @@ _remoteExecClientStr = _remoteExecClientStr + "};";
 // broadcast main RE-C function
 missionNamespace setVariable [format["EPOCH_%1",_skn_PVC_INDEX], compileFinal _remoteExecClientStr, true];
 
-diag_log format["DEBUG: _remoteExecClientStr %1",_remoteExecClientStr];
+// diag_log format["DEBUG: _remoteExecClientStr %1",_remoteExecClientStr];
 
 _skn_AH_rndVarVehicle = _skn_rndVA deleteAt 0;
 _skn_AH_rndVarPlayer  = _skn_rndVA deleteAt 0;

@@ -1,4 +1,5 @@
 [New] Split gamemode from main assets, all epoch client gamemode code and configs are now found in the mission file under APL-SA license. https://github.com/EpochModTeam/Epoch
+[Added] Support for CUP Vehicles and Weapons.
 [Added] Display temperatures in both Fahrenheit and Celsius.
 [Added] Fully reworked loot object spawn system.
 [Added] Headers added to all gamemode files that include: Author, Description, Github Source link, Usage and Examples.
@@ -23,6 +24,8 @@
 [Added] Updated version redis-server.exe to latest build (2.8.2400) and added full Redis config examples.
 [Added] limit to number of plant sites that can spawn. Can be controlled with "plantLimit" inside (CfgEpoch >> worldName).
 [Added] Support for Eden editor mission files (version 51) and attributes.
+[Added] Battleye filter updates for CUP Weapons and CBA.
+[Changed] Moved vehicle spawn limit configs to per map configs found in server settings pbo (CfgEpoch > WorldName > allowedVehiclesList).
 [Changed] Use BIS_fnc_addStackedEventHandler for onEachFrame, onPlayerConnected, onPlayerDisconnected to increase compatibility with other mods like CBA.
 [Changed] Lower disconnect timeout to 10 seconds with disconnectTimeout set via config.cfg. https://community.bistudio.com/wiki/server.cfg
 [Changed] Mission system can now use missionConfigFile configs.

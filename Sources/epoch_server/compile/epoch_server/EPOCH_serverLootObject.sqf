@@ -14,6 +14,8 @@
 */
 private["_randomItemArray", "_quan", "_randomLootClass", "_randomItem", "_lootPaid", "_mags", "_lootItemWeightedArray", "_lootItemArray", "_weightedItemArray", "_exit", "_maxPayout", "_lootTable", "_lootTableArray", "_weightedArray"];
 params ["_object","_type"];
+_debug = true;
+_pricingConfig = 'CfgPricing' call EPOCH_returnConfig;
 _lootTableClass = ["CfgLootTable_CUP","CfgLootTable"] select EPOCH_modCUPWeaponsEnabled;
 _randomizeMagazineAmmoCount = ["CfgEpochClient", "randomizeMagazineAmmoCount", true] call EPOCH_fnc_returnConfigEntryV2;
 if !(isNull _object) then{
@@ -28,7 +30,6 @@ if !(isNull _object) then{
 		for "_k" from 1 to _maxPayout do {
 			_loots pushBack (_lootTableArray select(selectRandom _weightedArray));
 		};
-
 		{
 			_lootItemWeightedArray = [_x, _lootTableClass, "items"] call EPOCH_weightedArray;
 			_lootItemArray = _lootItemWeightedArray select 0;
@@ -38,57 +39,64 @@ if !(isNull _object) then{
 				_randomItem = _randomItemArray select 0;
 				_type = _randomItemArray select 1;
 				_quan = 1;
-				/*
-				if ((count _randomItem) >= 3) then {
-					_quan = _randomItem select 2;
-				};
-				*/
 				_loop = true;
 				_exit = false;
-
 				while {_loop} do {
-
 					switch _type do {
 						case "item": {
-							_object additemCargoGlobal [_randomItem, _quan];
+							if (isClass (_pricingConfig >> _randomItem)) then {
+								_object additemCargoGlobal [_randomItem, _quan];
+							} else {
+								if (_debug) then {diag_log format["DEBUG: suppress spawn of %1 does not have price.",_randomItem]};
+							};
 							_loop = false;
 						};
 						case "magazine": {
-							if (_randomizeMagazineAmmoCount) then {
-								// spawn a single Magazine with a random ammo count
-								_magazineSize = getNumber (configFile >> "CfgMagazines" >> _randomItem >> "count");
-								_object addMagazineAmmoCargo[_randomItem, _quan, ceil(random(_magazineSize))];
+							if (isClass (_pricingConfig >> _randomItem)) then {
+								if (_randomizeMagazineAmmoCount) then {
+									// spawn a single Magazine with a random ammo count
+									_magazineSize = getNumber (configFile >> "CfgMagazines" >> _randomItem >> "count");
+									_object addMagazineAmmoCargo[_randomItem, _quan, ceil(random(_magazineSize))];
+								} else {
+									// spawn a single full Magazine
+									_object addMagazineCargoGlobal [_randomItem, _quan];
+								};
 							} else {
-								// spawn a single full Magazine
-								_object addMagazineCargoGlobal [_randomItem, _quan];
+								if (_debug) then {diag_log format["DEBUG: suppress spawn of %1 does not have price.",_randomItem]};
 							};
 							_loop = false;
 						};
 						case "backpack": {
-							_object addBackpackCargoGlobal [_randomItem, _quan];
+							if (isClass (_pricingConfig >> _randomItem)) then {
+								_object addBackpackCargoGlobal [_randomItem, _quan];
+							} else {
+								if (_debug) then {diag_log format["DEBUG: suppress spawn of %1 does not have price.",_randomItem]};
+							};
 							_loop = false;
 						};
 						case "weapon": {
-							_object addWeaponCargoGlobal [_randomItem, _quan];
-							_mags = getArray (configFile >> "CfgWeapons" >> _randomItem >> "magazines");
-
-							if !(_mags isEqualTo []) then {
-								if (_randomizeMagazineAmmoCount) then {
-									// spawn a single Magazine with a random ammo count
-									_magazineSize = getNumber (configFile >> "CfgMagazines" >> (_mags select 0) >> "count");
-									_object addMagazineAmmoCargo[_mags select 0, 1, ceil(random(_magazineSize))];
-								} else {
-									// spawn a single full Magazine with weapon
-									_object addMagazineCargoGlobal [_mags select 0, 1];
+							if (isClass (_pricingConfig >> _randomItem)) then {
+								_object addWeaponCargoGlobal [_randomItem, _quan];
+								// only spawn mags that have prices
+								_mags = getArray (configFile >> "CfgWeapons" >> _randomItem >> "magazines") select {isClass (_pricingConfig >> _x)};
+								if !(_mags isEqualTo []) then {
+									if (_randomizeMagazineAmmoCount) then {
+										// spawn a single Magazine with a random ammo count
+										_magazineSize = getNumber (configFile >> "CfgMagazines" >> (_mags select 0) >> "count");
+										_object addMagazineAmmoCargo[_mags select 0, 1, ceil(random(_magazineSize))];
+									} else {
+										// spawn a single full Magazine with weapon
+										_object addMagazineCargoGlobal [_mags select 0, 1];
+									};
 								};
+							} else {
+								if (_debug) then {diag_log format["DEBUG: suppress spawn of %1 does not have price.",_randomItem]};
 							};
 							_loop = false;
 						};
 						case "CfgLootTable": {
-
 							// go down the rabit hole
 							_lootItemWeightedArray = [_randomItem, _lootTableClass, "items"] call EPOCH_weightedArray;
-
 							_lootItemArray = _lootItemWeightedArray select 0;
 							if !(_lootItemArray isEqualTo[]) then {
 								_weightedItemArray = _lootItemWeightedArray select 1;
@@ -103,10 +111,9 @@ if !(isNull _object) then{
 							_exit = true;
 						};
 					};
-					if (_exit) exitWith{ diag_log format["%1: CASE DEFAULT WITH %2", __FILE__, _this] };
+					if (_exit) exitWith{if (_debug) then {diag_log "DEBUG: exit from spawn with default state."}};
 				};
 			};
 		} forEach _loots;
 	};
-
 };
