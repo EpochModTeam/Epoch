@@ -1,4 +1,4 @@
-aw_currentTarget = objNull;
+_currentTarget = objNull;
 _cursorTarget = ([10] call EPOCH_fnc_cursorTarget);
 if (!isNull _cursorTarget && {!(EPOCH_target isEqualTo _cursorTarget)}) then {
 	if (_cursorTarget isKindOf "ThingX" || _cursorTarget isKindOf "Constructions_static_F" || _cursorTarget isKindOf "Constructions_foundation_F" || _cursorTarget isKindOf "WeaponHolder" || _cursorTarget isKindOf "AllVehicles" || _cursorTarget isKindOf "PlotPole_EPOCH") then{
