@@ -65,6 +65,10 @@ if (vehicle player == player) then {
 	};
 };
 
+if ((getFatigue player) == 1 && _airTemp > 100) then {
+	_maxTemp = _airTemp;
+};
+
 if (EPOCH_playerToxicity > 0) then {
 	EPOCH_playerImmunity = (EPOCH_playerImmunity + 0.1) min 100;
 	EPOCH_playerToxicity = (EPOCH_playerToxicity - 0.1) max 0;

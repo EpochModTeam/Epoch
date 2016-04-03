@@ -37,7 +37,7 @@ class CfgEpochClient
 		{"Temp",98.6,{106.7,95}},
 		{"Hunger",5000,{5000,0}},
 		{"Thirst",2500,{2500,0}},
-		{"AliveTime",0,{0,0}},
+		{"AliveTime",0,{-2,0}},
 		{"Energy",0,{2500,0}},
 		{"Wet",0,{100,0}},
 		{"Soiled",0,{100,0}},

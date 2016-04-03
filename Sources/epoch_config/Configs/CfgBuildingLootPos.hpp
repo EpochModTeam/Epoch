@@ -72,7 +72,7 @@ class CfgBuildingLootPos
 		};
 
 	};
-	// test
+
 	class Land_Kiosk_redburger_F : Default {
 		fridgePos[] = {
 				{ { 1.64453, 1.43945, -2.897 }, 89.9032 }
