@@ -19,7 +19,7 @@ _aiTables = ["U_OG_leader", "U_C_Poloshirt_stripped", "U_C_Poloshirt_blue", "U_C
 
 _spawnCount = count EPOCH_TraderSlots;
 
-diag_log format["DEBUG: count EPOCH_TraderSlots: %1", _spawnCount];
+//diag_log format["DEBUG: Tradercount EPOCH_TraderSlots: %1", _spawnCount];
 
 _usedBuildings = [];
 for "_i" from 1 to _spawnCount do {

@@ -59,15 +59,15 @@ _allCitysDync = [];
 _position = [0,0,0];
 _spawnCount = (count EPOCH_VehicleSlots - EPOCH_storedVehicleCount) - 1;
 
-diag_log format["DEBUG: count EPOCH_VehicleSlots: %1 EPOCH_storedVehicleCount: %2 _spawnCount %3", (count EPOCH_VehicleSlots), EPOCH_storedVehicleCount, _spawnCount,_allowedVehiclesList];
-diag_log format["DEBUG: _allowedVehiclesList: %1 ", _allowedVehiclesList];
+// diag_log format["DEBUG: count EPOCH_VehicleSlots: %1 EPOCH_storedVehicleCount: %2 _spawnCount %3", (count EPOCH_VehicleSlots), EPOCH_storedVehicleCount, _spawnCount,_allowedVehiclesList];
+// diag_log format["DEBUG: _allowedVehiclesList: %1 ", _allowedVehiclesList];
 
 for "_i" from 1 to _spawnCount do {
 
 	_slot = EPOCH_VehicleSlots deleteAt 0;
 
 	_vehCount = count _allowedVehiclesList;
-	diag_log format["DEBUG: _allowedVehiclesList: %1 ", _allowedVehiclesList];
+	// diag_log format["DEBUG: _allowedVehiclesList: %1 ", _allowedVehiclesList];
 	_vehClass = _allowedVehiclesList deleteAt(floor(random(_vehCount)));
 	if (isNil "_vehClass") exitWith{diag_log "DEBUG: Failed to find vehicle class"};
 

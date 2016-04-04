@@ -7,7 +7,7 @@
 	https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_server_settings/EpochEvents/PlantSpawner.sqf
 */
 private ["_displayName","_marker","_plants","_plant","_item","_plantPosition"];
-
+_debug = false;
 _serverMapConfig = configFile >> "CfgEpoch" >> worldName;
 _plantLimit = [_serverMapConfig, "plantLimit", 10] call EPOCH_fnc_returnConfigEntry;
 if (isNil "EPOCH_plantCounter") then {
@@ -15,7 +15,8 @@ if (isNil "EPOCH_plantCounter") then {
 } else {
 	EPOCH_plantCounter = EPOCH_plantCounter + 1;
 };
-if (EPOCH_plantCounter >= _plantLimit) exitWith {diag_log "DEBUG: suppressed plant spawn over limit"};
+
+if (EPOCH_plantCounter >= _plantLimit) exitWith {if (_debug) then {diag_log "DEBUG: suppressed plant spawn over limit"}};
 
 _plantPosition = [epoch_centerMarkerPosition, 0, EPOCH_dynamicVehicleArea, 10, 0, 4000, 0] call BIS_fnc_findSafePos;
 
