@@ -13,7 +13,7 @@
     https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_server/compile/epoch_player/EPOCH_server_deadPlayer.sqf
 */
 private ["_triggerType","_veh","_bankBalance","_bankData","_response","_playerUID","_pos","_cIndex","_vars","_current_crypto"];
-params ["_playerObj","_killer","_playerName","_token"];
+params ["_playerObj","_killer","_playerName",["_token","",[""]]];
 
 // handle token check and isnull for _player
 if !([_playerObj, _token] call EPOCH_server_getPToken) exitWith{};

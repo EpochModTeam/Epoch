@@ -13,7 +13,7 @@
     https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_server/compile/epoch_looting/EPOCH_server_destroyTrash.sqf
 */
 private["_target", "_eventArray", "_triggerType", "_nearPlayers", "_posWH", "_item", "_config", "_object", "_player", "_payout", "_type"];
-params ["_object","_type","_player","_token"];
+params ["_object","_type","_player",["_token","",[""]]];
 
 if (isNull _object) exitWith{};
 if !([_player, _token] call EPOCH_server_getPToken) exitWith{};

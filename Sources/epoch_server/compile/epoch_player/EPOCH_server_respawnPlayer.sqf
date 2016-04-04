@@ -13,7 +13,7 @@
     https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_server/compile/epoch_player/EPOCH_server_respawnPlayer.sqf
 */
 private["_defaultUniform", "_class", "_vest", "_dir", "_location", "_playerObj"];
-params ["_playerObj","_token","_isMale"];
+params ["_playerObj",["_token","",[""]],"_isMale"];
 
 if !([_playerObj, _token] call EPOCH_server_getPToken) exitWith{};
 

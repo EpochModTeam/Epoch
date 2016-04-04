@@ -13,7 +13,7 @@
     https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_server/compile/epoch_bases/EPOCH_server_saveBuilding.sqf
 */
 private["_objSlot", "_findnextslot", "_worldspace", "_objHiveKey", "_VAL", "_config", "_slot", "_storageObj", "_pos", "_buildClass", "_newVehicle", "_textureSlot", "_staticClass", "_playerUID", "_oemType"];
-params ["_vehicle", "_player", "_token"];
+params ["_vehicle", "_player", ["_token","",[""]]];
 
 if (isNull _vehicle) exitWith{};
 if !([_player,_token] call EPOCH_server_getPToken) exitWith {};

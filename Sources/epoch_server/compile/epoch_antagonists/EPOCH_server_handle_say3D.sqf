@@ -13,7 +13,7 @@
     https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_server/compile/epoch_antagonists/EPOCH_server_handle_say3D.sqf
 */
 private["_range", "_nearBy", "_sound"];
-params ["_player",["_target",objNull],["_soundIndex",-1], "_token"];
+params ["_player",["_target",objNull],["_soundIndex",-1], ["_token","",[""]]];
 
 if !([_player, _token] call EPOCH_server_getPToken) exitWith{};
 if (isNull _target) exitWith {};

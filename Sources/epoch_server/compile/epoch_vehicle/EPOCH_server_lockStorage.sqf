@@ -12,7 +12,7 @@
     Github:
     https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_server/compile/epoch_vehicle/EPOCH_server_lockStorage.sqf
 */
-params ["_unit","_lockStatus","_player","_token"];
+params ["_unit","_lockStatus","_player",["_token","",[""]]];
 if !([_player, _token] call EPOCH_server_getPToken) exitWith{};
 if (isNull _unit) exitWith{};
 if (_player distance _unit > 20) exitWith{};

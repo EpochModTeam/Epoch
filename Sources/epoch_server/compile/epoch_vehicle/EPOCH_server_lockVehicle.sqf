@@ -13,7 +13,7 @@
     https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_server/compile/epoch_vehicle/EPOCH_server_lockVehicle.sqf
 */
 private ["_lockOwner","_lockedOwner","_response","_playerUID","_playerGroup","_vehSlot","_vehLockHiveKey","_isLocked","_driver","_crew","_logic"];
-params ["_vehicle","_value","_player","_token"];
+params ["_vehicle","_value","_player",["_token","",[""]]];
 
 if (isNull _vehicle) exitWith {};
 if !([_player,_token] call EPOCH_server_getPToken) exitWith {};

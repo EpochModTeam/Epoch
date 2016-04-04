@@ -13,7 +13,7 @@
     https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_server/compile/epoch_player/EPOCH_server_unpackBackpack.sqf
 */
 private ["_wHPos","_wH","_nearByHolder"];
-params ["_item","_player","_token"];
+params ["_item","_player",["_token","",[""]]];
 
 if !([_player,_token] call EPOCH_server_getPToken) exitWith {};
 if (_item isKindOf "Bag_Base") then {

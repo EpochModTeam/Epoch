@@ -13,7 +13,7 @@
     https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_server/compile/epoch_group/EPOCH_server_upgradeGroup.sqf
 */
 private ["_playerCryptoLimit","_current_crypto","_groupMemberPUID","_return","_newGroupSize","_upgradePrice","_contentArray","_found","_cIndex","_vars","_response"];
-params ["_groupID","_player","_token"];
+params ["_groupID","_player",["_token","",[""]]];
 if !([_player, _token] call EPOCH_server_getPToken) exitWith{};
 
 _return = false;

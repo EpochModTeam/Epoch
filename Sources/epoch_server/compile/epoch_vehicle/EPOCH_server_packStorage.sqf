@@ -13,7 +13,7 @@
     https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_server/compile/epoch_vehicle/EPOCH_server_packStorage.sqf
 */
 private ["_wepsItemsCargo","_magsAmmoCargo","_objTypes","_objQty","_wMags","_wMagsArray","_attachments","_arrCount","_magazineName","_magazineSize","_qty","_objType","_posWH","_inventory","_gwh","_returnItems","_owners","_class"];
-params ["_unit","_player","_token"];
+params ["_unit","_player",["_token","",[""]]];
 
 if !([_player, _token] call EPOCH_server_getPToken) exitWith{};
 if (isNull _unit) exitWith{};

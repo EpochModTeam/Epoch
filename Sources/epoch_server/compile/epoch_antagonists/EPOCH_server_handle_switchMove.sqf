@@ -13,7 +13,7 @@
     https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_server/compile/epoch_antagonists/EPOCH_server_handle_switchMove.sqf
 */
 private["_range", "_move", "_nearBy"];
-params ["_target","_moveCase","_token"];
+params ["_target","_moveCase",["_token","",[""]]];
 if !([_target, _token] call EPOCH_server_getPToken) exitWith{};
 _range = 0;
 _move = "";

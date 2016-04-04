@@ -13,7 +13,7 @@
     https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_server/compile/epoch_looting/EPOCH_server_lootContainer.sqf
 */
 private ["_class","_pos","_dir","_object","_whConfig","_type","_lootClasses","_player","_maxLoot","_triggerType","_eventArray","_animated","_config"];
-params ["_object","_player","_token"];
+params ["_object","_player",["_token","",[""]]];
 if !([_player, _token] call EPOCH_server_getPToken) exitWith{};
 
 if (isNull _object) exitWith{};

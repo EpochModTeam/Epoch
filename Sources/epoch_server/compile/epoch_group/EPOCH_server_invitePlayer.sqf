@@ -12,7 +12,7 @@
     Github:
     https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_server/compile/epoch_group/EPOCH_server_invitePlayer.sqf
 */
-params ["_playerUID","_var1","_var2","_player","_token"];
+params ["_playerUID","_var1","_var2","_player",["_token","",[""]]];
 if !([_player, _token] call EPOCH_server_getPToken) exitWith{};
 
 {

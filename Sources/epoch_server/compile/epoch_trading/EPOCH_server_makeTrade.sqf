@@ -13,7 +13,7 @@
     https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_server/compile/epoch_trading/EPOCH_server_makeTrade.sqf
 */
 private ["_current_crypto1","_overFlowItems","_playerCryptoLimit","_tradeOffer2","_tradeOffer1","_trade1","_trade2","_cIndex","_player1_vars","_player2_vars","_current_crypto2","_tradeCryptoOffer1","_tradeCryptoOffer2"];
-params ["_player1", "_player2","_array","_tradeOffer","_token"];
+params ["_player1", "_player2","_array","_tradeOffer",["_token","",[""]]];
 
 if (isNull _player2) exitWith{};
 if !([_player1, _token] call EPOCH_server_getPToken) exitWith{};

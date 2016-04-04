@@ -13,7 +13,7 @@
     https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_server/compile/epoch_bases/EPOCH_server_removeBUILD.sqf
 */
 private["_vehSlot", "_gwh", "_wepsItemsCargo", "_magsAmmoCargo", "_objTypes", "_objQty", "_magazine", "_weapon", "_suppressor", "_laser", "_optics", "_arrCount", "_magazineName", "_magazineSize", "_qty", "_objType", "_inventory", "_posWH", "_nearbyWH", "_removeParts", "_isTemporary", "_storageSlot"];
-params ["_building","_player","_token"];
+params ["_building","_player",["_token","",[""]]];
 
 if !([_player, _token] call EPOCH_server_getPToken) exitWith{};
 if (isNull _building) exitWith{};

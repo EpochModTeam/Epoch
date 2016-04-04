@@ -26,7 +26,7 @@
 	NOTHING
 */
 private ["_playerUID","_counter","_objSlot","_buildingJammerRange","_current_crypto","_cIndex","_vars","_storSlot","_playerCryptoLimit","_config"];
-params [["_object",objNull],"_player","_maintCount","_token"];
+params [["_object",objNull],"_player","_maintCount",["_token","",[""]]];
 
 if !([_player, _token] call EPOCH_server_getPToken) exitWith{};
 if (isNull _object) exitWith{};

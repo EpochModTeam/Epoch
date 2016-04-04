@@ -13,7 +13,7 @@
     https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_server/compile/epoch_server/EPOCH_server_teleportPlayer.sqf
 */
 private ["_tp"];
-params ["_player","_teleporter","_token"];
+params ["_player","_teleporter",["_token","",[""]]];
 if !([_player, _token] call EPOCH_server_getPToken) exitWith{};
 if (isNull _teleporter) exitWith{};
 if (_player distance _teleporter > 20) exitWith{};

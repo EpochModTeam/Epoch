@@ -40,7 +40,6 @@ _allowedTypes = [];
   _allowedTypes pushBack (_x select 0)
 }forEach _spawnPositionSize;
 
-
 _allCitys = "getText(_x >> 'type') in _allowedTypes" configClasses (configfile >> "CfgWorlds" >> worldName >> "Names");
 _allCitysDync = [];
 
@@ -58,16 +57,17 @@ _allCitysDync = [];
 } forEach _allCitys;
 
 _position = [0,0,0];
-
 _spawnCount = (count EPOCH_VehicleSlots - EPOCH_storedVehicleCount) - 1;
 
-diag_log format["DEBUG: count EPOCH_VehicleSlots: %1 EPOCH_storedVehicleCount: %2 _spawnCount %3", (count EPOCH_VehicleSlots), EPOCH_storedVehicleCount, _spawnCount];
+diag_log format["DEBUG: count EPOCH_VehicleSlots: %1 EPOCH_storedVehicleCount: %2 _spawnCount %3", (count EPOCH_VehicleSlots), EPOCH_storedVehicleCount, _spawnCount,_allowedVehiclesList];
+diag_log format["DEBUG: _allowedVehiclesList: %1 ", _allowedVehiclesList];
 
 for "_i" from 1 to _spawnCount do {
 
 	_slot = EPOCH_VehicleSlots deleteAt 0;
 
 	_vehCount = count _allowedVehiclesList;
+	diag_log format["DEBUG: _allowedVehiclesList: %1 ", _allowedVehiclesList];
 	_vehClass = _allowedVehiclesList deleteAt(floor(random(_vehCount)));
 	if (isNil "_vehClass") exitWith{diag_log "DEBUG: Failed to find vehicle class"};
 
@@ -84,7 +84,6 @@ for "_i" from 1 to _spawnCount do {
 			_getRandomPos = false;
 		};
 	};
-
 
 	if (_getRandomPos) then{
 		_isShip = _vehClass isKindOf "Ship";
@@ -136,10 +135,6 @@ for "_i" from 1 to _spawnCount do {
 		};
 
 	};
-
 };
-
 missionNamespace setVariable ['EPOCH_VehicleSlotCount', count EPOCH_VehicleSlots, true];
-
-EPOCH_allowedVehiclesList = nil;
 true

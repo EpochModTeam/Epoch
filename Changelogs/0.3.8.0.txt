@@ -5,10 +5,10 @@
 [Added] Headers added to all gamemode files that include: Author, Description, Github Source link, Usage and Examples.
 [Added] All text based feedback now use new EPOCH_dynamicText function.
 [Added] Show current build number on debug monitor.
-[Added] Player Karma stat is now effected by Arma 3 rating system via Event Handler.
+[Added] Player Karma stat is now effected by Arma 3 rating system via Event Handler. More TBA.
 [Added] Players can now harvest Hemp from maps that it grows wild.
 [Changed] Can now over heat if fatigued and air temperature is greater than 100F or 37C
-[Changed] Crafting now supports Water sources from 'WorldInteractions' configs.
+[Changed] Crafting now supports Water sources from 'CfgWorldInteractions' configs.
 [Changed] Moved Cultist and Sapper permanently to enemy side.
 [Changed] Disabled remote sensors on server and client as all AI Epoch is locally controlled. https://community.bistudio.com/wiki/disableRemoteSensors
 [Changed] Repacked all pbo's to make use of the new 32-bit P3D binarization process. https://dev.arma3.com/post/techrep-00026

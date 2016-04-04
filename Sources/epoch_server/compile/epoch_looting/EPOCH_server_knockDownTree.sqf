@@ -13,7 +13,7 @@
     https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_server/compile/epoch_looting/EPOCH_server_knockDownTree.sqf
 */
 private["_posWH", "_item", "_nearbyWH", "_payout", "_object", "_type", "_player"];
-params ["_object","_type","_player","_token"];
+params ["_object","_type","_player",["_token","",[""]]];
 if !([_player, _token] call EPOCH_server_getPToken) exitWith{};
 
 if (isNull _object) exitWith{};

@@ -16,7 +16,7 @@ private["_randomItemArray", "_quan", "_randomLootClass", "_randomItem", "_lootPa
 params ["_object","_type"];
 _debug = true;
 _pricingConfig = 'CfgPricing' call EPOCH_returnConfig;
-_lootTableClass = ["CfgLootTable_CUP","CfgLootTable"] select EPOCH_modCUPWeaponsEnabled;
+_lootTableClass = ["CfgLootTable","CfgLootTable_CUP"] select EPOCH_modCUPWeaponsEnabled;
 _randomizeMagazineAmmoCount = ["CfgEpochClient", "randomizeMagazineAmmoCount", true] call EPOCH_fnc_returnConfigEntryV2;
 if !(isNull _object) then{
 	_lootTable = [_type, "CfgMainTable", "tables"] call EPOCH_weightedArray;

@@ -13,7 +13,7 @@
     https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_server/compile/epoch_bases/EPOCH_server_paintBUILD.sqf
 */
 private["_color", "_class", "_currentTextureSlot", "_slot", "_worldspace", "_objHiveKey", "_VAL", "_return", "_playerUID", "_objSlot"];
-params [["_object",objNull],"_textureSlot","_player","_token"];
+params [["_object",objNull],"_textureSlot","_player",["_token","",[""]]];
 
 if !([_player, _token] call EPOCH_server_getPToken) exitWith{};
 if (isNull _object) exitWith{};

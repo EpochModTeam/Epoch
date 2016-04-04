@@ -13,7 +13,7 @@
     https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_server/compile/epoch_looting/EPOCH_server_lootAnimal.sqf
 */
 private["_item", "_class", "_pos", "_objectClass"];
-params ["_object","_player","_token"];
+params ["_object","_player",["_token","",[""]]];
 if !([_player, _token] call EPOCH_server_getPToken) exitWith{};
 
 if !(isNull _object) then {

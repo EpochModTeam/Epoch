@@ -13,7 +13,7 @@
     https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_server/compile/epoch_bases/EPOCH_server_upgradeBUILD.sqf
 */
 private["_worldspace", "_class", "_newObj", "_objHiveKey", "_VAL", "_return", "_upgrade", "_objSlot", "_objType"];
-params ["_object","_player",["_index",0],"_token"];
+params ["_object","_player",["_index",0],["_token","",[""]]];
 
 if (isNull _object) exitWith{};
 if !([_player, _token] call EPOCH_server_getPToken) exitWith{};

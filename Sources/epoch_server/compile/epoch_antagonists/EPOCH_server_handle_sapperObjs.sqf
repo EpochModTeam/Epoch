@@ -13,7 +13,7 @@
     https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_server/compile/epoch_antagonists/EPOCH_server_handle_sapperObjs.sqf
 */
 private["_safeUnits"];
-params [["_bomb",objNull], "_player", "_token", "_unit", ["_killUnit",false]];
+params [["_bomb",objNull], "_player", ["_token","",[""]], "_unit", ["_killUnit",false]];
 if !([_player,_token]call EPOCH_server_getPToken)exitWith{};
 _safeUnits = ["Epoch_Sapper_F","Epoch_SapperB_F"];
 _safeBombs = ["Sapper_Charge_Ammo","SapperB_Charge_Ammo"];

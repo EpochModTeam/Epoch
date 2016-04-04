@@ -13,7 +13,7 @@
     https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_server/compile/epoch_missions/EPOCH_Server_fillContainer.sqf
 */
 private["_player","_container","_clearFirst","_pos","_chance","_weps","_mags","_items"];
-params ["_player","_token",["_container",objNull,[objNull]],["_clearFirst",false],["_chance",25],["_pos",getPosATL _player]];
+params ["_player",["_token","",[""]],["_container",objNull,[objNull]],["_clearFirst",false],["_chance",25],["_pos",getPosATL _player]];
 
 if !([_player,_token]call EPOCH_server_getPToken)exitWith{};
 

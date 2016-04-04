@@ -13,7 +13,7 @@
     https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_server/compile/epoch_missions/EPOCH_Server_createObject.sqf
 */
 private ["_grp","_driver","_gunner","_commander","_crew","_missionVehList","_obj"];
-params ["_player","_token","_objType","_clearCargo","_pos",["_objSpc","CAN_COLLIDE"],"_driverType","_gunnerType","_commanderType","_crewType"];
+params ["_player",["_token","",[""]],"_objType","_clearCargo","_pos",["_objSpc","CAN_COLLIDE"],"_driverType","_gunnerType","_commanderType","_crewType"];
 
 if !([_player,_token]call EPOCH_server_getPToken)exitWith{};
 

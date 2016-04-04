@@ -13,7 +13,7 @@
     https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_server/compile/epoch_missions/EPOCH_Server_createAirDrop.sqf
 */
 private ["_playerOwner","_objType","_obj","_grp","_unitPos","_driver","_unit"];
-params ["_player","_token","_pos"];
+params ["_player",["_token","",[""]],"_pos"];
 
 if (!isNil "axenotSent" && {axenotSent}) exitWith {
 	diag_log format ["DEBUG: airdrop script already running %1",_this];
