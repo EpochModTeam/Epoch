@@ -113,4 +113,4 @@ if ((_response select 0) == 1 && (_response select 1) isEqualType []) then {
 		};
 	};
 };
-diag_log format["BANK: %1 (%2) TRADE: %3", _player, _playerUID, _tradeArray];
+diag_log format["Epoch: BANK - %1 (%2) TRADE: %3", _player, _playerUID, _tradeArray];

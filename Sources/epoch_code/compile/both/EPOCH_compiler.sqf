@@ -70,5 +70,5 @@ if (_version == 1) then {
 		};
 	} forEach ("isclass _x" configClasses (_config));
 } else {
-	diag_log format["Error: Compiler format for %1 is out of date.",_configName];
+	diag_log format["Epoch: Error Compiler format for %1 is out of date.",_configName];
 };

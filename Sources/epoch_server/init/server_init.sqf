@@ -145,7 +145,6 @@ _allowedVehiclesList = getArray(configFile >> "CfgEpoch" >> worldName >> _allowe
 _vehicleSlotLimit = 0;
 {_vehicleSlotLimit = _vehicleSlotLimit + (_x select 1)} forEach _allowedVehiclesList;
 _vehicleSlotLimit call EPOCH_load_vehicles;
-diag_log format["Epoch: selected vehicle table: %1 arr %2",_allowedVehicleListName,_allowedVehiclesList];
 
 diag_log "Epoch: Spawning vehicles";
 _allowedVehiclesListArray = [];
@@ -156,9 +155,7 @@ _allowedVehiclesListArray = [];
         _allowedVehiclesListArray pushBack _vehClass;
     };
 } forEach _allowedVehiclesList;
-diag_log format["Epoch: selected vehicle table 2: %1 ",_allowedVehiclesListArray];
 [_allowedVehiclesListArray] call EPOCH_spawn_vehicles;
-
 
 diag_log "Epoch: Loading storage";
 EPOCH_StorageSlotsLimit call EPOCH_load_storage;

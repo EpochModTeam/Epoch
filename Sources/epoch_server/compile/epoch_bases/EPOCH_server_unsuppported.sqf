@@ -59,5 +59,5 @@ _stableCount = 0;
 		};
 	};
 } forEach(allMissionObjects "Constructions_static_F");
-diag_log format["Speed %1 Count %2  Stable %3", (diag_tickTime - _start), _simulatedCount, _stableCount];
+diag_log format["Epoch: Speed %1 Count %2  Stable %3", (diag_tickTime - _start), _simulatedCount, _stableCount];
 EPOCH_unsupportedCheckRunning = nil;

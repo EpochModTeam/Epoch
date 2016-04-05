@@ -17,9 +17,9 @@ private ["_groupID","_selectedPlayerUID","_addOrRemove","_modOrMember","_modOrMe
 if !([_this select 4, _this select 5] call EPOCH_server_getPToken) exitWith {};
 
 _groupID = _this select 0;
-if (_groupID == "") exitWith{ diag_log format["GROUP: No Group Selected %1", _this]; };
+if (_groupID == "") exitWith{ diag_log format["Epoch: GROUP: No Group Selected %1", _this]; };
 
-diag_log format["GROUP: Update %1", _this];
+diag_log format["Epoch: GROUP: Update %1", _this];
 
 _selectedPlayerUID = _this select 1;
 _addOrRemove = _this select 2; //add = true
@@ -103,7 +103,7 @@ if ((_response select 0) == 1 && (_response select 1) isEqualType []) then {
 		};
 
 		if (!_found) then {
-			diag_log format ["%1 cannot remove Player! (%1)", __FILE__, _this]
+			diag_log format ["Epoch: %1 cannot remove Player! (%1)", __FILE__, _this]
 		};
 	};
 

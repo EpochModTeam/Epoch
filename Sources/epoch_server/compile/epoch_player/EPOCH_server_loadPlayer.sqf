@@ -273,7 +273,7 @@ if (_this isEqualType []) then {
 				// Final Push
 				if (isNull _player) then {
 					deleteVehicle _newPlyr;
-					diag_log "DEBUG: _player object was null reject connection";
+					diag_log "Epoch: DEBUG: _player object was null reject connection";
 				} else {
 
 					_reject = false;

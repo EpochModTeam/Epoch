@@ -62,7 +62,7 @@ if (_dikCode == 0x01) then {
 		["<t size = '1.6' color = '#99ffffff'>Build Canceled</t>", 5] call Epoch_dynamicText;
 	};
 	if !(EPOCH_arr_interactedObjs isEqualTo[]) then {
-		EPOCH_arr_interactedObjs remoteExec["EPOCH_server_save_vehicles", 2];
+		[EPOCH_arr_interactedObjs] remoteExec["EPOCH_server_save_vehicles", 2];
 		EPOCH_arr_interactedObjs = [];
 	};
 };

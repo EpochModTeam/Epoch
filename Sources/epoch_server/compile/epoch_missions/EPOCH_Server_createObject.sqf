@@ -17,7 +17,7 @@ params ["_player",["_token","",[""]],"_objType","_clearCargo","_pos",["_objSpc",
 
 if !([_player,_token]call EPOCH_server_getPToken)exitWith{};
 
-if (count _this != 11) exitWith {diag_log format ["Debug: %1 exit with %2",__FILE__,_this]};
+if (count _this != 11) exitWith {diag_log format ["Epoch: Debug: %1 exit with %2",__FILE__,_this]};
 
 _missionVehList = ["O_UAV_01_F","B_UAV_01_F","I_Boat_Armed_01_minigun_F","B_Heli_Transport_01_F",""];
 if!(_objType in _missionVehList)exitWith{};
@@ -79,4 +79,4 @@ if (_crewType != "") then {
 	//if (_doOwner) then {_crew setOwner (owner _player)};
 };
 _obj allowdamage true;
-//diag_log format["Spawned Object %1(%5) for %3(%4) at %2",_objType,_pos,name _player,owner _player,owner _obj];
+diag_log format["Epoch: Spawned Object %1(%5) for %3(%4) at %2",_objType,_pos,name _player,owner _player,owner _obj];

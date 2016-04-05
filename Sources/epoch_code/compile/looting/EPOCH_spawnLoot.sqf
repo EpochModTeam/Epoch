@@ -93,7 +93,7 @@ if ((random 100) < _lootBias) then {
             };
         };
     } else {
-        diag_log format["DEBUG no positions for: %1",_posName];
+        diag_log format["DEBUG: no positions for: %1",_posName];
     };
 };
 _return

@@ -28,7 +28,7 @@ if !((nearestObjects[_pos, ["B_Heli_Transport_01_F"], 1000]) isEqualTo[]) exitWi
 _playerOwner = owner _player;
 
 _objType = "B_Heli_Transport_01_F";
-diag_log format["DEBUG: Creating %1 for %3 (Owner ID: %4) at %2",_objType, _pos, name _player, owner _player];
+diag_log format["Epoch: Creating %1 for %3 (Owner ID: %4) at %2",_objType, _pos, name _player, owner _player];
 _obj = createVehicle [_objType, _pos, [], 0, "FLY"];
 _obj call EPOCH_server_setVToken;
 addToRemainsCollector[_obj];

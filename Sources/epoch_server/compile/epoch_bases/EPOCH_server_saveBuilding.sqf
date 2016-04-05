@@ -57,7 +57,7 @@ if (isText _config) then {
 			_storageObj call EPOCH_server_save_storage;
 			_storageObj call EPOCH_server_storageInit;
 
-			diag_log format["STORAGE: %1 created storage %2 at %3 with slot %4", _playerUID, _staticClass, _vehiclePos, _slot];
+			diag_log format["Epoch: STORAGE: %1 created storage %2 at %3 with slot %4", _playerUID, _staticClass, _vehiclePos, _slot];
 		};
 
 	} else {

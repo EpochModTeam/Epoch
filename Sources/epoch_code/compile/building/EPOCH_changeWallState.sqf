@@ -108,10 +108,7 @@ if !(isNull _object) then {
     if (_numRemoved == _recipeCount) then {
       _object animate [_anim, _state, true];
 
-      // tell server we should persist this object now
-      // [_object] remoteExec ["EPOCH_server_save_vehicles",2];
-
-      // push interacted object to save queue to save later
+      // push interacted object to queue to save later
       EPOCH_arr_interactedObjs pushBackUnique _object;
 
       [format["<t size='1.6' color='#99ffffff'>%1 part on %2</t>","Added",_objClass call EPOCH_itemDisplayName],5] call Epoch_dynamicText;

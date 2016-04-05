@@ -491,7 +491,7 @@ class FSM
       name = "Request_Hive";
       init = /*%FSM<STATEINIT""">*/"_myTime = diag_tickTime;" \n
        "" \n
-       "player remoteExec [""EPOCH_server_checkPlayer"",2];" \n
+       "[player] remoteExec [""EPOCH_server_checkPlayer"",2];" \n
        "" \n
        """Loading Player Data... Please wait!"" call Epoch_updateLoadingScreen;" \n
        "progressLoadingScreen 0.5;" \n

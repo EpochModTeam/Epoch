@@ -87,7 +87,7 @@ if (typeOf _object == "PlotPole_EPOCH") then {
 				_player setVariable["VARS", _vars];
 
 			};
-			diag_log format["ADMIN: %1 maintained %2 base objects at %3", _playerUID, _counter, getPosATL _object];
+			diag_log format["Epoch: ADMIN: %1 maintained %2 base objects at %3", _playerUID, _counter, getPosATL _object];
 		};
 	};
 };

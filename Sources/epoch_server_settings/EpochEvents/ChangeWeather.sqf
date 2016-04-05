@@ -80,4 +80,4 @@ if (_force) then {
 	forceWeatherChange;
 };
 
-diag_log format["Weather Change: fog: %1 rain: %2 overcast: %3 windx: %4 windz: %5 forced: %6", _fog, _overcast, _rain, _windValX, _windValZ, _force];
+diag_log format["Epoch: Weather Change - fog: %1 rain: %2 overcast: %3 windx: %4 windz: %5 forced: %6", _fog, _overcast, _rain, _windValX, _windValZ, _force];
