@@ -21,8 +21,8 @@
 	Returns:
 	Script handle
 */
-private ["_intensity","_epicenter","_distance"];
-params [["_epicenter",[],[[]]];
+private ["_intensity","_distance"];
+params [["_epicenter",[0,0,0], [[]]]];
 _distance = player distance _epicenter;
 _intensity = 1;
 if (_distance < 250) then {
