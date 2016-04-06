@@ -219,4 +219,5 @@ class CfgEpoch
 	#include "configs\maps\Shapur_BAF.h"
 	#include "configs\maps\Utes.h"
 	#include "configs\maps\Woodland_ACR.h"
+	#include "configs\maps\Napf.h"
 };

@@ -21,6 +21,7 @@
 [Info] Required Arma 3 version is now 1.56 or higher.
 
 **Server**
+[Added] Support for Napf by Momo and ANixon http://steamcommunity.com/sharedfiles/filedetails/?id=635780806.
 [Added] Batch files to rebuild server and mission pbo's can be found in Github Root/Tools/Build folder.
 [Added] Updated version redis-server.exe to latest build (2.8.2400) and added full Redis config examples.
 [Added] limit to number of plant sites that can spawn. Can be controlled with "plantLimit" inside (CfgEpoch >> worldName).
