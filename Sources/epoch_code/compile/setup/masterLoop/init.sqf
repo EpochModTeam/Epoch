@@ -63,7 +63,8 @@ _lootBubble = {
 			if !(_building in EPOCH_LootedBlds) then {
 				_others = _building nearEntities[["Epoch_Male_F", "Epoch_Female_F"], 15];
 				if (_others isEqualTo[]) then {
-					_nearObjects = nearestObjects[_building, ["WH_Loot", "Animated_Loot"], 35];
+					_nearObjects = nearestObjects[_building, ["WH_Loot", "Animated_Loot"], sizeOf (typeOf _building)];
+					diag_log format["DEBUG: sizeof %1 %2",sizeOf (typeOf _building), typeOf _building]
 					if (_nearObjects isEqualTo[]) then {
 						[_building] call EPOCH_spawnLoot;
 					};

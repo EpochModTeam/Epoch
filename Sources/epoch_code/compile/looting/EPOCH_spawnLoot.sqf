@@ -56,39 +56,43 @@ if ((random 100) < _lootBias) then {
         for "_i" from 1 to _lootLimit do
         {
             _return = true;
-            _randomIndex = (floor random(count _possibleLoots));
-            _selectedLoot = _possibleLoots deleteAt _randomIndex;
+            _possibleCount = count _possibleLoots;
+            if (_possibleCount > 0) then {
+                _randomIndex = (floor random(_possibleCount));
 
-            _selectedLoot params ["_class","_randomColor","_position"];
-            _position params ["_m2WPos","_relDir"];
-            _pos = _building modelToWorld _m2WPos;
-            // force item to ground level if resulting z pos is below ground.
-            if (_pos select 2 < 0) then {
-                _pos set[2, 0];
-            };
-            if (_class isEqualType []) then {
-                _class = selectRandom _class;
-            };
-            _dir = _relDir + (getDir _building);
-            _item = createVehicle[_class, _pos, [], 0.0, "CAN_COLLIDE"];
-            _item setDir _dir;
+                _selectedLoot = _possibleLoots deleteAt _randomIndex;
+                //
+                _selectedLoot params ["_class","_randomColor","_position"];
+                _position params ["_m2WPos","_relDir"];
+                _pos = _building modelToWorld _m2WPos;
+                // force item to ground level if resulting z pos is below ground.
+                if (_pos select 2 < 0) then {
+                    _pos set[2, 0];
+                };
+                if (_class isEqualType []) then {
+                    _class = selectRandom _class;
+                };
+                _dir = _relDir + (getDir _building);
+                _item = createVehicle[_class, _pos, [], 0.0, "CAN_COLLIDE"];
+                _item setDir _dir;
 
-            EPOCH_lootObjects pushBack _item;
-            if (count EPOCH_lootObjects > _lootObjectLimit) then {
-                deleteVehicle (EPOCH_lootObjects deleteAt 0);
-            };
+                EPOCH_lootObjects pushBack _item;
+                if (count EPOCH_lootObjects > _lootObjectLimit) then {
+                    deleteVehicle (EPOCH_lootObjects deleteAt 0);
+                };
 
-            if (surfaceIsWater _pos) then {
-                _item setPosASL _pos;
-            } else {
-                _item setPosATL _pos;
-            };
+                if (surfaceIsWater _pos) then {
+                    _item setPosASL _pos;
+                } else {
+                    _item setPosATL _pos;
+                };
 
-            if (_randomColor isEqualTo "true") then {
-                _colors = getArray(configFile >> "CfgVehicles" >> _class >> "availableTextures");
-                if !(_colors isEqualTo[]) then {
-                    _color = selectRandom _colors;
-                    _item setObjectTextureGlobal[0, _color];
+                if (_randomColor isEqualTo "true") then {
+                    _colors = getArray(configFile >> "CfgVehicles" >> _class >> "availableTextures");
+                    if !(_colors isEqualTo[]) then {
+                        _color = selectRandom _colors;
+                        _item setObjectTextureGlobal[0, _color];
+                    };
                 };
             };
         };
