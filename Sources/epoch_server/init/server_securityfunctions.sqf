@@ -1067,7 +1067,7 @@ call compile ("'"+_skn_doAdminRequest+"' addPublicVariableEventHandler {
 	if (_case == 103) then {
 		_playerObj = objectFromNetId _content;
 		_playerObj setDamage 0;
-		[['healPlayer'], _playerObj] call EPOCH_sendRemoteExecClient;
+		[['healPlayer',true], _playerObj] call EPOCH_sendRemoteExecClient;
 		if (_playerObj == _admin) then {
 			['Healed Self',0] call "+_skn_server_adminLog+";
 		} else {

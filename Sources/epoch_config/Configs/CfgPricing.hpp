@@ -118,12 +118,8 @@ class CfgPricing
 	class CUP_arifle_AKS_Gold { price = 75; };
 	class CUP_arifle_AKS74 { price = 75; };
 	class CUP_arifle_RPK74 { price = 75; };
-	class CUP_arifle_L85A2_Base { price = 75; };
 	class CUP_arifle_L85A2_GL { price = 75; };
-	class CUP_arifle_L86A2_Base { price = 75; };
 	class CUP_arifle_M16A4_Base { price = 75; };
-	class CUP_arifle_M4_Base { price = 75; };
-	class CUP_arifle_M4A1_BUIS_Base { price = 75; };
 	class CUP_arifle_M4A1_black { price = 75; };
 	class CUP_arifle_M4A1_BUIS_GL { price = 75; };
 	class CUP_arifle_M4A1_BUIS_camo_GL { price = 75; };

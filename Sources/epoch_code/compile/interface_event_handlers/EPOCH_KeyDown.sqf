@@ -264,7 +264,7 @@ if (vehicle player == player) then {
 			["<t size = '1.6' color = '#99ffffff'>Build Canceled</t>", 5] call Epoch_dynamicText;
 		};
 		if (isTouchingGround player) then {
-			_handled = call EPOCH_lootTrash;
+			// _handled = call EPOCH_lootTrash;
 		};
 	};
 
