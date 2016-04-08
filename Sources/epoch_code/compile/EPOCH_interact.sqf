@@ -12,20 +12,16 @@
     Github:
     https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_code/compile/EPOCH_interact.sqf
 */
-private ["_vehSlot"];
+private ["_vehSlot","_storSlot"];
 0 call EPOCH_refeshUI;
 if (!isNull _this) then {
 	_vehSlot = _this getVariable ["VEHICLE_SLOT", "ABORT"];
 	if (_vehSlot != "ABORT") then {
-		if !(_this in EPOCH_arr_interactedObjs) then {
-			EPOCH_arr_interactedObjs pushBack _this;
-		};
+		EPOCH_arr_interactedObjs pushBackUnique _this;
 	};
 	_storSlot = _this getVariable["STORAGE_SLOT", "ABORT"];
 	if (_storSlot != "ABORT") then {
-		if !(_this in EPOCH_arr_interactedObjs) then {
-			EPOCH_arr_interactedObjs pushBack _this;
-		};
+		EPOCH_arr_interactedObjs pushBackUnique _this;
 	};
 };
 true

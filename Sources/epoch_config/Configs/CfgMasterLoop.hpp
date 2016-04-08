@@ -17,13 +17,13 @@ class CfgMasterLoop
 {
 	class Init
 	{
-		file = "\x\addons\a3_epoch_code\compile\setup\masterLoop\init.sqf";
+		file = "epoch_code\compile\setup\masterLoop\init.sqf";
 	};
 
 	class Events
 	{
 		condition = "alive player";
-		file = "\x\addons\a3_epoch_code\compile\setup\masterLoop";
+		file = "epoch_code\compile\setup\masterLoop";
 
 		class Event1
 		{

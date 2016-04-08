@@ -1,20 +1,36 @@
+/*
+	Author: Aaron Clark - EpochMod.com
+
+    Contributors:
+
+	Description:
+    Starts main functions
+
+    Licence:
+    Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
+
+    Github:
+    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_server/init/server_init.sqf
+*/
 _startTime = diag_tickTime;
-Epoch_ServerVersion = getText(configFile >> "CfgMods" >> "Epoch" >> "version");
-EPOCH_SERVER = [];
+missionNamespace setVariable ['Epoch_ServerVersion', getText(configFile >> "CfgMods" >> "Epoch" >> "version"), true];
 diag_log format["Epoch: Starting ArmA3 Epoch Server, Version %1",Epoch_ServerVersion];
 
 _abortAndError = {
-    publicVariable "EPOCH_SERVER";
-    EPOCH_BADHIVE = true; //Kick all player
-    publicVariable "EPOCH_BADHIVE";
+    // kick all players with reverse BE kicks
+    true remoteExec ['EPOCH_client_rejectPlayer',-2, true];
+    // flood server rpt with reason
     for "_i" from 0 to 15 do {
         diag_log _this;
     };
 };
 
-_clientVersion = getText(configFile >> "CfgServerVersion" >> "client");
-_configVersion = getText(configFile >> "CfgServerVersion" >> "config");
-_hiveVersion = getText(configFile >> "CfgServerVersion" >> "hive");
+_cfgServerVersion = configFile >> "CfgServerVersion";
+_serverSettingsConfig = configFile >> "CfgEpochServer";
+
+_clientVersion = getText(_cfgServerVersion >> "client");
+_configVersion = getText(_cfgServerVersion >> "config");
+_hiveVersion = getText(_cfgServerVersion >> "hive");
 
 if (_clientVersion != Epoch_ServerVersion) exitWith{
     format["Epoch: Version mismatch! Current: %2 Needed: %1", _clientVersion, Epoch_ServerVersion] call _abortAndError;
@@ -22,12 +38,9 @@ if (_clientVersion != Epoch_ServerVersion) exitWith{
 if (_configVersion != getText(configFile >> "CfgPatches" >> "A3_server_settings" >> "epochVersion")) exitWith {
     format["Epoch: Config file needs updated! Current: %1 Needed: %2", _configVersion, getText(configFile >> "CfgPatches" >> "A3_server_settings" >> "epochVersion")] call _abortAndError;
 };
-
-
-if (isClass(missionConfigFile >> "CfgEpochClient") && _configVersion != getText(missionConfigFile >> "CfgEpochClient" >> "epochVersion")) exitWith{
-	format["Epoch: Mission Config file needs updated! Current: %1 Needed: %2", _configVersion, getText(missionConfigFile >> "CfgEpochClient" >> "epochVersion")] call _abortAndError;
+if (isClass(getMissionConfig "CfgEpochClient") && _configVersion != getText(getMissionConfig "CfgEpochClient" >> "epochVersion")) exitWith{
+	format["Epoch: Mission Config file needs updated! Current: %1 Needed: %2", _configVersion, getText(getMissionConfig "CfgEpochClient" >> "epochVersion")] call _abortAndError;
 };
-
 if (("epochserver" callExtension "") != _hiveVersion) exitWith {
     format["Epoch: Server DLL mismatch! Current: %1 Needed: %2", "epochserver" callExtension "",_hiveVersion] call _abortAndError;
 };
@@ -39,6 +52,16 @@ if (isNil "_instanceID") exitWith{
     "Epoch: InstanceID missing!" call _abortAndError;
 };
 
+_activeAddons = activatedAddons;
+EPOCH_modCUPWeaponsEnabled = "caweapons" in _activeAddons;
+EPOCH_modCUPVehiclesEnabled = "cawheeled" in _activeAddons;
+if (EPOCH_modCUPWeaponsEnabled) then {
+    diag_log "Epoch: CUP Weapons detected";
+};
+if (EPOCH_modCUPVehiclesEnabled) then {
+    diag_log "Epoch: CUP Vehicles detected";
+};
+
 diag_log "Epoch: Init Variables";
 call compile preprocessFileLineNumbers "\x\addons\a3_epoch_server\init\server_variables.sqf";
 call compile preprocessFileLineNumbers "\x\addons\a3_epoch_server\init\server_securityfunctions.sqf";
@@ -46,22 +69,21 @@ call compile preprocessFileLineNumbers "\x\addons\a3_epoch_server\init\server_se
 ["I", _instanceID, "86400", ["CONTINUE"]] call EPOCH_fnc_server_hiveSETEX;
 diag_log format["Epoch: Start Hive, Instance ID: '%1'", _instanceID];
 
-call EPOCH_server_publicEH;
-diag_log "Epoch: Init PublicEH";
-
-// Connect/Disconnect
+diag_log "Epoch: Init Connect/Disconnect handlers";
 addMissionEventHandler ["HandleDisconnect", { _this call EPOCH_server_onPlayerDisconnect }];
-onPlayerDisconnected{
-    diag_log format["playerDisconnected:%1:%2", _uid, _name];
-    ['Disconnected', [_uid, _name]] call EPOCH_fnc_server_hiveLog;
-    _uid call EPOCH_server_disconnect;
-};
-onPlayerConnected{
+
+["EPOCH_onPlayerConnected", "onPlayerConnected", {
     "epochserver" callExtension format["001|%1", _uid];
     diag_log format["playerConnected:%1:%2", _uid, _name];
     ['Connected', [_uid, _name]] call EPOCH_fnc_server_hiveLog;
     ["PlayerData", _uid, EPOCH_expiresPlayer, [_name]] call EPOCH_fnc_server_hiveSETEX;
-};
+}] call BIS_fnc_addStackedEventHandler;
+
+["EPOCH_onPlayerDisconnected", "onPlayerDisconnected", {
+    diag_log format["playerDisconnected:%1:%2", _uid, _name];
+    ['Disconnected', [_uid, _name]] call EPOCH_fnc_server_hiveLog;
+    _uid call EPOCH_server_disconnect;
+}] call BIS_fnc_addStackedEventHandler;
 
 diag_log "Epoch: Setup Side Settings";
 //set side status
@@ -92,9 +114,6 @@ if (epoch_centerMarkerPosition isEqualTo [0,0,0]) then {
 };
 EPOCH_dynamicVehicleArea = _worldSize / 2;
 
-// diag_log "Epoch: Set Weather";
-// true call EPOCH_server_setWeather;
-
 // custom radio channels
 EPOCH_customChannels = [];
 for "_i" from 0 to 9 do {
@@ -105,96 +124,89 @@ for "_i" from 0 to 9 do {
     _index = radioChannelCreate[_channelColor, _channelTXT, "%UNIT_NAME", []];
     EPOCH_customChannels pushBack _index;
 };
+
 //Execute Server Functions
-_startTime spawn {
+diag_log "Epoch: Loading buildings";
+EPOCH_BuildingSlotsLimit call EPOCH_server_loadBuildings;
 
-    diag_log "Epoch: Loading buildings";
-    _workload1 = EPOCH_BuildingSlotsLimit call EPOCH_server_loadBuildings;
+diag_log "Epoch: Loading teleports and static props";
+call EPOCH_server_createTeleport;
 
+diag_log "Epoch: Loading NPC traders";
+EPOCH_NPCSlotsLimit call EPOCH_server_loadTraders;
 
-    // Underground and teleports
-    diag_log "Epoch: Loading teleports and static props";
-    _workload8 = [] call EPOCH_server_createTeleport;
+diag_log "Epoch: Spawning NPC traders";
+call EPOCH_server_spawnTraders;
 
+diag_log "Epoch: Loading vehicles";
+// Vehicle slot limit set to total of all allowed limits
+_allowedVehicleListName = ["allowedVehiclesList","allowedVehiclesList_CUP"] select EPOCH_modCUPVehiclesEnabled;
+_allowedVehiclesList = getArray(configFile >> "CfgEpoch" >> worldName >> _allowedVehicleListName);
+_vehicleSlotLimit = 0;
+{_vehicleSlotLimit = _vehicleSlotLimit + (_x select 1)} forEach _allowedVehiclesList;
+_vehicleSlotLimit call EPOCH_load_vehicles;
 
-    // Traders
-    diag_log "Epoch: Loading NPC traders";
-    _workload4 = EPOCH_NPCSlotsLimit call EPOCH_server_loadTraders;
+diag_log "Epoch: Spawning vehicles";
+_allowedVehiclesListArray = [];
+{
+    _x params ["_vehClass","_velimit"];
+    _vehicleCount = {typeOf _x == _vehClass} count vehicles;
+    for "_i" from 1 to (_velimit-_vehicleCount) do {
+        _allowedVehiclesListArray pushBack _vehClass;
+    };
+} forEach _allowedVehiclesList;
+[_allowedVehiclesListArray] call EPOCH_spawn_vehicles;
 
+diag_log "Epoch: Loading storage";
+EPOCH_StorageSlotsLimit call EPOCH_load_storage;
 
-    diag_log "Epoch: Spawning NPC traders";
-    _workload5 = [] call EPOCH_server_spawnTraders;
+diag_log "Epoch: Loading static loot";
+call EPOCH_server_spawnBoatLoot;
 
+[] execFSM "\x\addons\a3_epoch_server\system\server_monitor.fsm";
 
-    // Vehicles
-    diag_log "Epoch: Loading vehicles";
-    _workload2 = EPOCH_VehicleSlotsLimit call EPOCH_load_vehicles;
+// Setting Server Date and Time
+_dateChanged = false;
+_date = date;
 
+_staticDateTime = [_serverSettingsConfig, "StaticDateTime", []] call EPOCH_fnc_returnConfigEntry;
+_timeDifference = [_serverSettingsConfig, "timeDifference", 0] call EPOCH_fnc_returnConfigEntry;
 
-    diag_log "Epoch: Spawning vehicles";
-    _workload3 = [] call EPOCH_spawn_vehicles;
-
-
-    // Storage
-    diag_log "Epoch: Loading storage";
-    _workload6 = EPOCH_StorageSlotsLimit call EPOCH_load_storage;
-
-
-    // Loot
-    diag_log "Epoch: Loading static loot";
-    _workload9 = [] call EPOCH_server_spawnBoatLoot;
-
-
-    [] execFSM "\x\addons\a3_epoch_server\system\server_monitor.fsm";
-
-    _serverSettingsConfig      = configFile >> "CfgEpochServer";
-
-    // Setting Server Date and Time
-    _dateChanged = false;
-    _date = date;
-
-    _staticDateTime = [_serverSettingsConfig, "StaticDateTime", []] call EPOCH_fnc_returnConfigEntry;
-    _timeDifference = [_serverSettingsConfig, "timeDifference", 0] call EPOCH_fnc_returnConfigEntry;
-
-    if (_staticDateTime isEqualto []) then {
-        _response = "epochserver" callExtension "510";
-        if (_response != "") then {
-            diag_log format ["Epoch: Set Real Time: %1", _response];
-            _date = call compile _response;
-            _date resize 5;
-            _date set[0, (_date select 0) + 21];
-            _date set[3, (_date select 3) + _timeDifference];
+if (_staticDateTime isEqualto []) then {
+    _response = "epochserver" callExtension "510";
+    if (_response != "") then {
+        diag_log format ["Epoch: Set Real Time: %1", _response];
+        _date = call compile _response;
+        _date resize 5;
+        _date set[0, (_date select 0) + 21];
+        _date set[3, (_date select 3) + _timeDifference];
+        _dateChanged = true;
+    };
+} else {
+    {
+        if (_x != 0) then {
+            _date set [_forEachIndex, _x];
             _dateChanged = true;
         };
-    } else {
-        {
-            if (_x != 0) then {
-                _date set [_forEachIndex, _x];
-                _dateChanged = true;
-            };
-        }forEach _staticDateTime;
-    };
-    if (_dateChanged) then {
-        setDate _date;
-    };
-
-    // set time multiplier
-    setTimeMultiplier ([_serverSettingsConfig, "timeMultiplier", 1] call EPOCH_fnc_returnConfigEntry);
-
-    // globalize tax rate
-    EPOCH_taxRate = [_serverSettingsConfig, "taxRate", 0.1] call EPOCH_fnc_returnConfigEntry;
-    publicVariable "EPOCH_taxRate";
-
-    if !(EPOCH_SERVER isEqualTo []) then {
-        publicVariable "EPOCH_SERVER";
-    };
-    publicVariable "Epoch_ServerVersion";
-
-    diag_log format ["Epoch: Server Start Complete: %1 seconds",diag_tickTime-_this];
-
-    if (_dateChanged) then {
+    }forEach _staticDateTime;
+};
+if (_dateChanged) then {
+    setDate _date;
+    //add 1 min to be 100% correct
+    _date set [4, (_date select 4) + 1];
+    _date spawn {
         uiSleep 60;
-        _date set [4, (_date select 4) + 1]; //add 1 min to be 100% correct
-        setDate _date;
+        setDate _this;
     };
 };
+
+// set time multiplier
+setTimeMultiplier ([_serverSettingsConfig, "timeMultiplier", 1] call EPOCH_fnc_returnConfigEntry);
+
+// globalize tax rate
+missionNamespace setVariable ["EPOCH_taxRate", [_serverSettingsConfig, "taxRate", 0.1] call EPOCH_fnc_returnConfigEntry, true];
+
+// start accepting logins
+missionNamespace setVariable ["EPOCH_SERVER_READY", true, true];
+
+diag_log format ["Epoch: Server Start Complete: %1 seconds",diag_tickTime-_startTime];

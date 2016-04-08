@@ -1,4 +1,4 @@
-class WorldInteractions  {
+class CfgWorldInteractions  {
     class Water {
         water = 1;
     };
@@ -16,6 +16,8 @@ class WorldInteractions  {
     class misc_well_l_ep1_p3d : Water {};
     class stand_water_ep1_p3d : Water {};
     class misc_concbox_ep1_p3d : Water {};
+    class Land_water_tank : Water {};
+    class Land_Pumpa : Water {};
 
     class BankTerminal {
         bankTerminal = 1;
@@ -114,6 +116,11 @@ class WorldInteractions  {
     class r_tk_boulder_01_ep1_p3d : Rocks {};
     class r_tk_boulder_02_ep1_p3d : Rocks {};
     class r_tk_rock_01_ep1_p3d : Rocks {};
+
+    class HempFiber {
+        HempFiber = 1;
+    };
+    class p_fiberplant_ep1_p3d : HempFiber {};
 
     class PumpkinPatch {
         PumpkinPatch = 1;

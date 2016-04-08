@@ -27,19 +27,10 @@
 	Returns:
 	NOTHING
 */
-
-private ["_highestDMG","_currentHIT","_currentDMG","_attachments","_newDMG","_cursorTarget","_repaired","_unit","_weapon","_ammo","_projectile"];
-_unit = 		_this select 0;
-_weapon = 		_this select 1;
-_muzzle =		_this select 2;
-_mode =			_this select 3;
-_ammo = 		_this select 4;
-_magazine =		_this select 5;
-_projectile = 	_this select 6;
-
+private ["_heal","_highestDMG","_currentHIT","_currentDMG","_newDMG","_attachments","_cursorTarget","_repaired","_gesture","_droneChance"];
+params ["_unit","_weapon","_muzzle","_mode","_ammo","_magazine","_projectile"];
 switch true do {
 	case (_ammo isKindOf "B_EnergyPack"): {
-		// diag_log format["DEBUG AMMO: %1", _ammo];
 		if (!isNull cursorTarget) then {
 			_cursorTarget = cursorTarget;
 			_repaired = false;
@@ -84,8 +75,6 @@ switch true do {
 						} else {
 							[_cursorTarget,[_currentHIT,_newDMG],player,Epoch_personalToken] remoteExec ["EPOCH_server_repairVehicle",2];
 						};
-
-						//diag_log format["DEBUG HITPOINT REPAIRED: %1 %2 %3", _currentHIT, _newDMG, _attachments];
 					} else {
 						if ((damage _cursorTarget) > 0) then {
 							[_cursorTarget,["ALL",0],player,Epoch_personalToken] remoteExec ["EPOCH_server_repairVehicle",2];
@@ -97,7 +86,7 @@ switch true do {
 	};
 
 	case (_ammo isKindOf "B_Hatchet"): {
-		_gesture = ["GestureSwing0", "GestureSwing1", "GestureSwing2"] select (floor(random 3));
+		_gesture = selectRandom ["GestureSwing0", "GestureSwing1", "GestureSwing2"];
 		player playActionNow _gesture;
 		call EPOCH_chopWood;
 	};

@@ -21,6 +21,7 @@
 	Returns:
 	NOTHING
 */
+private ["_distance","_toxicChance","_bloodpChance","_fatigueChance","_bleedAmount","_bloodpAmount","_soundEffect","_canSee","_ppEffect","_bleedChance","_soundEffectIndex","_soundEffectGlobal"];
 if !(isNull _this && alive _this) then {
 
 	_distance = 5;
@@ -100,8 +101,7 @@ if !(isNull _this && alive _this) then {
 		if (_soundEffectIndex != -1) then {
 			_this say3D _soundEffect;
 			if (_soundEffectGlobal) then {
-				EPOCH_say3D_PVS = [player, _this, _soundEffectIndex, Epoch_personalToken];
-				EPOCH_say3D_PVS remoteExec ["EPOCH_server_handle_say3D",2];
+				[player, _this, _soundEffectIndex, Epoch_personalToken] remoteExec ["EPOCH_server_handle_say3D",2];
 			};
 		};
 		if (random 1 < _toxicChance) then {

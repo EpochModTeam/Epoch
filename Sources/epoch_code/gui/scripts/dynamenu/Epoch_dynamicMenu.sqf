@@ -1,6 +1,20 @@
+/*
+	Author: Raimonds Virtoss - EpochMod.com
+
+    Contributors:
+
+	Description:
+	DESC-TBA
+
+    Licence:
+    Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
+
+    Github:
+    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_code/gui/scripts/dynamenu/Epoch_dynamicMenu.sqf
+*/
 disableSerialization;
-//_in = _this param [0, "", [""]];
-_in = [_this, 0, "", [""]] call BIS_fnc_param;
+private ["_in","_selfOrTarget","_display","_cfg","_arr","_buttonSettings","_hasTarget","_checkConfigs","_entries"];
+_in = [_this, 0, "",[""]] call BIS_fnc_param;
 
 _display = findDisplay 66600;
 _cfg = "CfgActionMenu" call EPOCH_returnConfig;
@@ -14,7 +28,7 @@ _buttonSettings = [];
 
 _hasTarget = !(dyna_cursorTarget isEqualTo objNull);
 
-if (isNull _display && dialog) exitWith {call Epoch_dynamicMenuCleanup; false};
+if (isNull _display && dialog) exitWith {false call Epoch_dynamicMenuCleanup; false};
 
 if (isNull _display) then {
 	if (_hasTarget) then {
@@ -59,7 +73,7 @@ _checkConfigs = {
 				_tTip = "";
 				_icon = "";
 				{
-					if !(typeName _x isEqualTo "ARRAY") then {_x = [_x, 1]};
+					if !(_x isEqualType []) then {_x = [_x, 1]};
 					_c = configfile >> "CfgMagazines" >> (_x select 0);
 					_tTip = _tTip + format ["[%1 x %2] ", _x select 1, getText(_c >> "DisplayName")];
 					if (_icon isEqualTo "") then {_icon = getText (_c >> "picture")};

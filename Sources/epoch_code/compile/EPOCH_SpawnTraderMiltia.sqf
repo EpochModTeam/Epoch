@@ -12,8 +12,7 @@
     Github:
     https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_code/compile/EPOCH_SpawnTraderMiltia.sqf
 */
-
-//Make _trgt = trader and join militia to traders group
+private ["_startPos","_rndHouse","_unit","_trgt","_nrBuilds","_grp"];
 _trgt = player;
 _nrBuilds = nearestObjects [getPosATL _trgt,["house"],50];
 
@@ -22,15 +21,10 @@ for "_i" from 1 to 3 step 1 do
 {
 	_startPos = [];
     while {count _startPos < 1} do {
-    _garrCount = 0;
-    _rndHouse = _nrBuilds select (floor random(count _nrBuilds));
-
-        while {format ["%1", _rndHouse buildingPos (_garrCount)] != "[0,0,0]" } do {
-        _garrCount = _garrCount + 1;
-        };
-
-        if (_garrCount > 0) then {
-            _startPos = _rndHouse buildingPos (floor random _garrCount);
+    	_rndHouse = selectRandom _nrBuilds;
+		_allpositions = _rndHouse buildingPos -1;
+        if !(_allpositions isEqualTo []) then {
+            _startPos = selectRandom  _allpositions;
         };
     };
 

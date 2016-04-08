@@ -1,4 +1,3 @@
-
 // BIS function
 private ["_v","_d","_x","_y"];
 _v = +(_this select 0);

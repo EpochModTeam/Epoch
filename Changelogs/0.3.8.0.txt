@@ -1,0 +1,43 @@
+[New] Split gamemode from main assets, all epoch client gamemode code and configs are now found in the mission file under APL-SA license. https://github.com/EpochModTeam/Epoch
+[Added] Support for CUP Vehicles and Weapons.
+[Added] Display temperatures in both Fahrenheit and Celsius.
+[Added] Fully reworked loot object spawn system.
+[Added] Headers added to all gamemode files that include: Author, Description, Github Source link, Usage and Examples.
+[Added] All text based feedback now use new EPOCH_dynamicText function.
+[Added] Show current build number on debug monitor.
+[Added] Player Karma stat is now effected by Arma 3 rating system via Event Handler. More TBA.
+[Added] Players can now harvest Hemp from maps that it grows wild.
+[Changed] Can now over heat if fatigued and air temperature is greater than 100F or 37C
+[Changed] Crafting now supports Water sources from 'CfgWorldInteractions' configs.
+[Changed] Moved Cultist and Sapper permanently to enemy side.
+[Changed] Disabled remote sensors on server and client as all AI Epoch is locally controlled. https://community.bistudio.com/wiki/disableRemoteSensors
+[Changed] Repacked all pbo's to make use of the new 32-bit P3D binarization process. https://dev.arma3.com/post/techrep-00026
+[Changed] Massive code overhaul to make use of many new SQF commands instead of slower SQF logic.
+[Changed] Increased the amount of Krypto a player can hold from 25k to 250k.
+[Changed] Further improve loot positions in existing maps and add more missing positions for CUP maps.
+[Changed] General cleanup and reorganizing of files.
+[Fixed] Temporary direction and angle placement issues when base building.
+[Fixed] Force player to lobby if the player did not tapout after timer runs out.
+[Info] Required Arma 3 version is now 1.56 or higher.
+
+**Server**
+[Added] Support for Napf by Momo and ANixon http://steamcommunity.com/sharedfiles/filedetails/?id=635780806.
+[Added] Batch files to rebuild server and mission pbo's can be found in Github Root/Tools/Build folder.
+[Added] Updated version redis-server.exe to latest build (2.8.2400) and added full Redis config examples.
+[Added] limit to number of plant sites that can spawn. Can be controlled with "plantLimit" inside (CfgEpoch >> worldName).
+[Added] Support for Eden editor mission files (version 51) and attributes.
+[Added] Battleye filter updates for CUP Weapons and CBA.
+[Changed] Moved vehicle spawn limit configs to per map configs found in server settings pbo (CfgEpoch > WorldName > allowedVehiclesList).
+[Changed] Use BIS_fnc_addStackedEventHandler for onEachFrame, onPlayerConnected, onPlayerDisconnected to increase compatibility with other mods like CBA.
+[Changed] Lower disconnect timeout to 10 seconds with disconnectTimeout set via config.cfg. https://community.bistudio.com/wiki/server.cfg
+[Changed] Mission system can now use missionConfigFile configs.
+[Changed] publicVariableClient calls changed to use remoteExec. This should provide better performance and reliability as PVC's can be unreliable under heavy use and can also bottleneck the games netcode.
+[Changed] CfgClientFunctions is now able to be overridden via description.ext.
+[Changed] Fully removed BIS MP init override and added remoteExec BE filter rule for initPlayerServer.sqf usage. (Still must be whitelisted in remoteExec configs to use)
+[Fixed] Incorrect scope on some magazine items prevented them from showing in the admin spawn menu.
+[Fixed] Reworked player login, fixes issues with players logging in without gear (when one or more players are logging in at the same time, IE. server startup)
+[Removed] Old BEC plugin as its not needed anymore.
+[Info] RConPort 2302 added to example-beserver.cfg for changes since A3 1.58.
+[Info] epochAH.hpp updated "antihack_checkFiles" for new file paths.
+[Info] Some AI Scripts Mods may not work with disableRemoteSensors enabled. You can disable with "disableRemoteSensors = false;" in CfgEpochClient.
+[Info] Removed old .bikey and added new one for 0380.

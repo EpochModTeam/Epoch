@@ -21,7 +21,7 @@
 	Returns:
 	NOTHING
 */
-private ["_class","_worldspace","_objSlot","_newObj","_pos2","_vel2","_dir2","_up2","_velocityTransformation","_object","_return","_oemType","_config","_currentTarget","_dt","_energyCost","_allowedSnapObjects","_textureSlot","_lastCheckTime","_rejectMove","_nearestObject","_nearestObjectRaw","_distanceNear","_previousDistanceNear","_pOffset","_snapPos","_isSnap","_snapPosition","_snapType","_snapDistance","_prevSnapDistance","_snapPointsPara","_snapPointsPerp","_snapArrayPara","_snapArrayPerp","_direction","_distance","_plyrdistance","_create","_allowedSnapPoints","_snapObjects","_onContactEH","_offset","_disallowed","_objType","_distanceMod"];
+private ["_energyCost","_allowedSnapObjects","_worldspace","_objSlot","_textureSlot","_newObj","_lastCheckTime","_rejectMove","_nearestObject","_nearestObjectRaw","_distanceNear","_previousDistanceNear","_pOffset","_snapPos","_isSnap","_snapPosition","_snapType","_snapDistance","_prevSnapDistance","_snapPointsPara","_snapPointsPerp","_snapArrayPara","_snapArrayPerp","_pos2","_direction","_vel2","_dir2","_up2","_distance","_playerdistance","_class","_create","_allowedSnapPoints","_snapObjects","_currentTarget","_onContactEH","_offset","_disallowed","_object","_objType","_return","_velocityTransformation","_distanceMod","_oemType","_config"];
 if !(isNil "EPOCH_simulSwap_Lock") exitWith{};
 
 _object = param [0,objNull];
@@ -32,7 +32,7 @@ _objType = typeOf _object;
 _isSnap = false;
 
 if (EPOCH_playerEnergy <= 0) exitWith {
-	_dt = ["<t size = '0.8' shadow = '0' color = '#99ffffff'>Need Energy</t>", 0, 1, 5, 2, 0, 1] spawn bis_fnc_dynamictext;
+	["<t size = '1.6' color = '#99ffffff'>Need Energy</t>", 5] call Epoch_dynamicText;
 };
 if !(_objType call EPOCH_isBuildAllowed) exitWith{};
 
@@ -56,7 +56,6 @@ if (isText(_config)) then {
 	if (isArray(_snapObjects)) then {
 		_allowedSnapObjects = getArray(_snapObjects);
 	};
-	// diag_log format["DEBUG ALLOWED SNAP OBJECTS: %1", _allowedSnapObjects];
 	_newObj = _object;
 	if (_create) then {
 		_worldspace = [(getposATL _object),(vectordir _object),(vectorup _object)];
@@ -68,9 +67,9 @@ if (isText(_config)) then {
 		if (_objSlot != -1) then {
 			_newObj setVariable ["BUILD_SLOT",_objSlot,true];
 		};
-		_newObj setVectorDirAndUp [_worldspace select 1,_worldspace select 2];
-		_newObj setposATL (_worldspace select 0);
 
+		_newObj setposATL (_worldspace select 0);
+		_newObj setVectorDirAndUp [_worldspace select 1,_worldspace select 2];
 		if (_textureSlot != 0) then {
 			[_newObj, _textureSlot, player, Epoch_personalToken] remoteExec ["EPOCH_server_paintBUILD",2];
 		};
@@ -99,8 +98,8 @@ if (isText(_config)) then {
 		if (_rejectMove) exitWith{
 			EPOCH_target = objNull;
 		};
-		_plyrdistance = player distance EPOCH_target;
-		if (_plyrdistance < 10) then {
+		_playerdistance = player distance EPOCH_target;
+		if (_playerdistance < 10) then {
 			_isSnap = false;
 			_snapPosition = [0,0,0];
 			_snapType = "para";
@@ -125,15 +124,15 @@ if (isText(_config)) then {
 					} forEach _allowedSnapObjects;
 				};
 				if (!isNull _nearestObject) then {
-					_snapPointsPara = [] + getArray(configfile >> "cfgVehicles" >> (typeOf _nearestObject) >> "snapPointsPara");
-					_snapPointsPerp = [] + getArray(configfile >> "cfgVehicles" >> (typeOf _nearestObject) >> "snapPointsPerp");
+					_snapPointsPara = getArray(configfile >> "cfgVehicles" >> (typeOf _nearestObject) >> "snapPointsPara");
+					_snapPointsPerp = getArray(configfile >> "cfgVehicles" >> (typeOf _nearestObject) >> "snapPointsPerp");
 					_snapArrayPara = [];
 					{
 						if (_x in _allowedSnapPoints) then {
 							_pOffset = _nearestObject selectionPosition _x;
 							_snapPos = _nearestObject modelToWorld _pOffset;
 							if ((_pos2 distance _snapPos) < 3) then {
-								_snapArrayPara pushBack _snapPos;
+								_snapArrayPara pushBackUnique _snapPos;
 							};
 						};
 					} forEach _snapPointsPara;
@@ -143,7 +142,7 @@ if (isText(_config)) then {
 							_pOffset = _nearestObject selectionPosition _x;
 							_snapPos = _nearestObject modelToWorld _pOffset;
 							if ((_pos2 distance _snapPos) < 3) then {
-								_snapArrayPerp pushBack _snapPos;
+								_snapArrayPerp pushBackUnique _snapPos;
 							};
 						};
 					} forEach _snapPointsPerp;
@@ -174,7 +173,7 @@ if (isText(_config)) then {
 					_vel2 = (velocity _nearestObject);
 					_direction = getDir _nearestObject;
 					if (_snapType == "perp") then {
-						_direction = _direction - ([_snapPosition,_nearestObject] call BIS_fnc_dirTo);
+						_direction = _direction - (_snapPosition getDir _nearestObject);
 					} else {
 						_direction = 0;
 					};

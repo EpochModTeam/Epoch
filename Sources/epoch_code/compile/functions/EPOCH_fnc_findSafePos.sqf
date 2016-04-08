@@ -26,21 +26,8 @@
 	Returns:
 	ARRAY
 */
-private["_MinDist","_MaxDist","_outHeight","_inPos","_rDist","_rDir","_outPos","_nrRoad","_nrRoads","_onRoad"];
-_inPos = _this select 0;
-_MinDist = _this select 1;
-_MaxDist = _this select 2;
-
-_outHeight = 0;
-if ((count _this) > 3) then {
-	_outHeight = _this select 3;
-};
-
-_onRoad = false;
-if ((count _this) > 4) then {
-	_onRoad = _this select 4;
-};
-
+private["_rDist","_rDir","_outPos","_nrRoad","_nrRoads"];
+params ["_inPos","_MinDist","_MaxDist",["_outHeight",0],["_onRoad",false]];
 
 _rDist = (random (_MaxDist - _MinDist))+_MinDist;
 _rDir = random 360;
@@ -49,7 +36,7 @@ _outPos = [(_inPos select 0) + (sin _rDir) * _rDist, (_inPos select 1) + (cos _r
 if (_onRoad) then {
 	_nrRoads = _outPos nearRoads 250;
 	if (count _nrRoads > 0) then {
-		_nrRoad = _nrRoads select (floor(random (count _nrRoads)));
+		_nrRoad = selectRandom _nrRoads;
 		_outPos = getPosATL _nrRoad;
 	};
 };

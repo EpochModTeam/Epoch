@@ -12,7 +12,7 @@
     Github:
     https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_code/compile/EPOCH_effectCrypto.sqf
 */
-if (typeName _this == "SCALAR") then {
+if (_this isEqualType 0) then {
   EPOCH_playerCrypto = _this;
   9992 cutRsc["EpochGameUI2", "PLAIN", 2, false];
   ((uiNamespace getVariable "EPOCH_EpochGameUI2") displayCtrl 21208) ctrlSetText format["%1", EPOCH_playerCrypto];

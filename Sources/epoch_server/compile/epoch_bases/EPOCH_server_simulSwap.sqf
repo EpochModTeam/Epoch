@@ -1,19 +1,25 @@
 /*
-Building - Sim to Static
+	Author: Aaron Clark - EpochMod.com
 
-Epoch Mod - EpochMod.com
-All Rights Reserved.
+    Contributors:
+
+	Description:
+    Building - Sim to Static
+
+    Licence:
+    Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
+
+    Github:
+    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_server/compile/epoch_bases/EPOCH_server_simulSwap.sqf
 */
 private["_cfgClass", "_worldspace", "_newObj", "_return", "_class", "_oemType", "_config", "_object", "_objSlot", "_damage", "_color", "_textureSlot"];
-
-_object = _this select 0;
+params [["_object",objNull,[objNull]],["_static",false,[false]]];
 _return = _object;
-
 _objSlot = _object getVariable ["BUILD_SLOT", -1];
 if (_objSlot != -1) then {
 
 	_cfgClass = "staticClass";
-	if (_this select 1) then {
+	if (_static) then {
 		_cfgClass = "simulClass";
 	};
 	_oemType = typeOf _object;
@@ -48,16 +54,14 @@ if (_objSlot != -1) then {
 			if (isText _ammoClass) then {
 				_ammoClass = getText _ammoClass;
 				_ammoObj = createVehicle [_ammoClass, _worldspace select 0, [], 0, "CAN_COLLIDE"];
-				_ammoObj setVectorDirAndUp [(_worldspace select 1),(_worldspace select 2)];
 				_ammoObj setposATL (_worldspace select 0);
+				_ammoObj setVectorDirAndUp [(_worldspace select 1),(_worldspace select 2)];
 				_newObj setVariable ["EPOCH_TRAP_OBJ",_ammoObj];
 			};
-
-			_newObj setVectorDirAndUp [(_worldspace select 1),(_worldspace select 2)];
 			_newObj setposATL (_worldspace select 0);
+			_newObj setVectorDirAndUp [(_worldspace select 1),(_worldspace select 2)];
 			_newObj	setDamage _damage;
 			_return = _newObj;
-
 		};
 	};
 };

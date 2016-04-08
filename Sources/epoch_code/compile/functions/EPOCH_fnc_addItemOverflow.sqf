@@ -16,16 +16,21 @@
     _fish call EPOCH_fnc_addItemOverflow;
 
     Parameter(s):
-		_this: STRING - Item Class
+		_this select 0: STRING - Item Class
+        _this select 1: NUMBER - (Optional) Ammo count
 
 	Returns:
 	BOOL
 */
-private ["_wHPos","_wH","_nearByHolder","_item"];
-if (_this isEqualTo "") exitWith{false};
-_item = _this;
+private ["_wHPos","_wH","_nearByHolder"];
+params [["_item","",[""]],["_count",0]];
+
 if (player canAdd _item) then {
-    player addItem _item;
+    if (_count >= 1) then {
+        player addMagazine [_item, _count];
+    } else {
+        player addItem _item;
+    };
 } else {
     _wH = objNull;
     _nearByHolder = nearestObjects [position player,["groundWeaponHolder"],3];
@@ -38,6 +43,11 @@ if (player canAdd _item) then {
     } else {
         _wH = _nearByHolder select 0;
     };
-    _wh addItemCargoGlobal [_item,1];
+
+    if (_count >= 1) then {
+        _wh addMagazineAmmoCargo[_item, 1, _count];
+    } else {
+        _wh addItemCargoGlobal [_item,1];
+    };
 };
 true

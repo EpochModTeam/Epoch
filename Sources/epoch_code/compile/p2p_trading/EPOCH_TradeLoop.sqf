@@ -1,4 +1,19 @@
-private ["_item","_index","_sizeOut","_sizeIn","_array","_tradeOffer","_isAcceptedOther","_isAccepted"];
+/*
+	Author: Aaron Clark - EpochMod.com
+
+    Contributors:
+
+	Description:
+	P2P trade loop
+
+    Licence:
+    Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
+
+    Github:
+    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_code/compile/p2p_trading/EPOCH_TradeLoop.sqf
+*/
+private ["_item","_index","_removeCount","_sizeOut","_array","_cryptoOffer","_offerArray","_tradeOffer","_tradeCryptoOffer","_isAcceptedOther","_isAccepted"];
+
 if (EPOCH_p2ptradeTarget distance player > 8) exitWith{ EPOCH_p2ptradeTarget = ObjNull; };
 if (vehicle player != player || vehicle EPOCH_p2ptradeTarget != EPOCH_p2ptradeTarget) exitWith { EPOCH_p2ptradeTarget = ObjNull; };
 if (!isNull EPOCH_p2ptradeTarget) then {
@@ -56,11 +71,9 @@ if (!isNull EPOCH_p2ptradeTarget) then {
 				};
 			};
 		}forEach _array;
-
 		if (_removeCount == count _array) then {
 			[player, EPOCH_p2ptradeTarget, _array, _tradeOffer, Epoch_personalToken] remoteExec ["EPOCH_server_makeTrade",2];
 		};
-
 		(findDisplay -1900) closeDisplay 1;
 	};
 

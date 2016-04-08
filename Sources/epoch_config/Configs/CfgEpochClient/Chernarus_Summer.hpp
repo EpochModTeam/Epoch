@@ -29,5 +29,5 @@ class Chernarus_Summer {
 			{ { 13092, 7096, 0 }, 140 } //Solnichniy Factory
 	};
 	// main config
-	TrashClasses[] = { "Trash", "TrashSmall", "TrashVehicle", "PumpkinPatch", "TrashFood" };
+	TrashClasses[] = { "Trash", "TrashSmall", "TrashVehicle", "PumpkinPatch", "TrashFood", "HempFiber" };
 };

@@ -1,4 +1,20 @@
-private["_vehicleSlotIndex", "_vehHiveKey", "_response", "_arr", "_arrNum", "_dataFormat", "_objType", "_objTypes", "_objQty", "_location", "_vdir", "_vup", "_vehicle", "_actualHitpoints", "_config", "_colors", "_textureSelectionIndex", "_selections", "_count", "_textures", "_weapon", "_suppressor", "_laser", "_optics", "_magazine", "_magazineName", "_magazineSize", "_magazineSizeMax", "_qty", "_diag", "_marker", "_class", "_worldspace", "_damage", "_hitpoints", "_fuel", "_inventory", "_magazines", "_color", "_dataFormatCount"];
+/*
+	Author: Aaron Clark - EpochMod.com
+
+    Contributors:
+
+	Description:
+    Load Vehicles
+
+    Licence:
+    Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
+
+    Github:
+    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_server/compile/epoch_vehicle/EPOCH_load_vehicles.sqf
+*/
+private ["_location","_class","_dmg","_actualHitpoints","_hitpoints","_textures","_color","_colors","_textureSelectionIndex","_selections","_count","_objTypes","_objQty","_wMags","_wMagsArray","_attachments","_magazineSizeMax","_magazineName","_magazineSize","_qty","_objType","_marker","_found","_vehicle","_allHitpoints","_config","_worldspace","_damage","_arr","_arrNum","_vehicleSlotIndex","_vehHiveKey","_response","_immuneVehicleSpawnTime","_diag","_dataFormat","_dataFormatCount","_allVehicles","_serverSettingsConfig","_simulationHandler","_immuneVehicleSpawn"];
+params [["_maxVehicleLimit",0]];
+
 _diag = diag_tickTime;
 _dataFormat = ["", [], 0, [], 0, [], [], 0];
 _dataFormatCount = count _dataFormat;
@@ -9,13 +25,13 @@ _serverSettingsConfig = configFile >> "CfgEpochServer";
 _simulationHandler = [_serverSettingsConfig, "simulationHandler", false] call EPOCH_fnc_returnConfigEntry;
 _immuneVehicleSpawn = [_serverSettingsConfig, "immuneVehicleSpawn", false] call EPOCH_fnc_returnConfigEntry;
 
-for "_i" from 1 to _this do {
+for "_i" from 1 to _maxVehicleLimit do {
 	_vehicleSlotIndex = EPOCH_VehicleSlots pushBack str(_i);
 
 	_vehHiveKey = format ["%1:%2", call EPOCH_fn_InstanceID,_i];
 	_response = ["Vehicle", _vehHiveKey] call EPOCH_fnc_server_hiveGETRANGE;
 
-	if ((_response select 0) == 1 && typeName (_response select 1) == "ARRAY") then {
+	if ((_response select 0) == 1 && (_response select 1) isEqualType []) then {
 		_arr = _response select 1;
 		_arrNum = count _arr;
 
@@ -23,7 +39,7 @@ for "_i" from 1 to _this do {
 
 			// Validate and replace invaild data
 			{
-				if (typeName (_arr select _forEachIndex) != typeName _x) then {_arr set[_forEachIndex, _x]};
+				if !((_arr select _forEachIndex) isEqualType _x) then {_arr set[_forEachIndex, _x]};
 			} forEach _dataFormat;
 
 			_class = _arr select 0;
@@ -49,15 +65,10 @@ for "_i" from 1 to _this do {
 					};
 
 					_vehicle = createVehicle [_class, _location, [], 0, "CAN_COLLIDE"];
-
 					_allVehicles pushBack _vehicle;
-
 					_vehicle call EPOCH_server_setVToken;
-
-					_vehicle setposATL _location;
-
 					_vehicle setVectorDirAndUp _worldspace;
-
+					_vehicle setposATL _location;
 					_vehicle setDamage _damage;
 
 					_allHitpoints = getAllHitPointsDamage _vehicle;
@@ -127,7 +138,7 @@ for "_i" from 1 to _this do {
 							switch _objType do {
 								// Weapon cargo
 								case 0: {
-									if (typeName _x == "ARRAY") then {
+									if (_x isEqualType []) then {
 										if ((count _x) >= 4) then {
 
 											_vehicle addWeaponCargoGlobal[_x deleteAt 0, 1];
@@ -138,7 +149,7 @@ for "_i" from 1 to _this do {
 											// suppressor, laser, optics, magazines(array), bipods
 											{
 												// magazines
-												if (typeName(_x) == "ARRAY") then{
+												if (_x isEqualType []) then{
 													_wMags = true;
 													_wMagsArray = _x;
 												}
@@ -157,7 +168,7 @@ for "_i" from 1 to _this do {
 											} forEach _attachments;
 
 											if (_wMags) then{
-												if (typeName _wMagsArray == "ARRAY" && (count _wMagsArray) >= 2) then{
+												if (_wMagsArray isEqualType [] && (count _wMagsArray) >= 2) then{
 													_vehicle addMagazineAmmoCargo[_wMagsArray select 0, 1, _wMagsArray select 1];
 												};
 											};
@@ -170,7 +181,7 @@ for "_i" from 1 to _this do {
 									_magazineName = _x;
 									_magazineSize = _objQty select _forEachIndex;
 
-									if ((typeName _magazineName == "STRING") && (typeName _magazineSize == "SCALAR")) then {
+									if ((_magazineName isEqualType "STRING") && (_magazineSize isEqualType 0)) then {
 										_magazineSizeMax = getNumber (configFile >> "CfgMagazines" >> _magazineName >> "count");
 
 										// Add full magazines cargo
@@ -184,14 +195,14 @@ for "_i" from 1 to _this do {
 								};
 								// Backpack cargo
 								case 2: {
-									if (typeName _x == "STRING") then {
+									if (_x isEqualType "STRING") then {
 										_qty = _objQty select _forEachIndex;
 										_vehicle addBackpackCargoGlobal [_x, _qty];
 									};
 								};
 								// Item cargo
 								case 3: {
-									if (typeName _x == "STRING") then {
+									if (_x isEqualType "STRING") then {
 										_qty = _objQty select _forEachIndex;
 										_vehicle addItemCargoGlobal [_x, _qty];
 									};
@@ -248,6 +259,6 @@ if (_immuneVehicleSpawn) then{
 
 addToRemainsCollector _allVehicles;
 
-diag_log format ["VEH SPAWN TIMER %1, LOADED %2 VEHICLES", diag_tickTime - _diag, count _allVehicles];
+diag_log format ["Epoch: Vehicle SPAWN TIMER %1, LOADED %2 VEHICLES", diag_tickTime - _diag, count _allVehicles];
 
 true

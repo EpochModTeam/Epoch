@@ -1,4 +1,17 @@
 /*
+	Author: Raimonds Virtoss - EpochMod.com
+
+    Contributors:
+
+	Description:
+	Drunk effects
+
+    Licence:
+    Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
+
+    Github:
+    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_code/gui/scripts/post_process/EPOCH_postprocessDestroy.sqf
+
 	Usage:
 			0.5 call epoch_setDrunk;
 			[0.2, _time] call epoch_setDrunk;
@@ -6,8 +19,7 @@
 			Drunk levels 1-9, 0 to disable
 			Use low times, wet distortion does not work well when animated over time
 */
-
-private ["_level","_speed"];
+private ["_priority","_wd","_db"];
 params [["_level",0,[0]],["_speed",0,[0]]];
 
 if (isNil "rmx_var_drunkHandles") then {

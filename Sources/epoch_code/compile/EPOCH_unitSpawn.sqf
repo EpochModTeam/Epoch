@@ -12,19 +12,20 @@
     Github:
     https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_code/compile/EPOCH_unitSpawn.sqf
 */
-private ["_unit","_group","_bomb","_unitClass","_targetPos","_disableAI","_nonJammer","_nonTrader","_jammerRange","_jammers","_restricted","_sapperNum"];
-
-_unitClass = _this;
+private ["_unit","_sapperNum","_config","_bomb","_targetPos","_grp","_driver","_index","_nonJammer","_nonTrader","_jammers","_jammerRange","_restricted","_disableAI"];
+params ["_unitClass"];
 
 if(random 100 < 6)then{
-[] execFSM "\x\addons\a3_epoch_code\System\Event_Air_Drop.fsm";
+	[] execFSM "\x\addons\a3_epoch_code\System\Event_Air_Drop.fsm";
 };
 
 _index = EPOCH_spawnIndex find _unitClass;
 if (count(player nearEntities[_unitClass, 800]) >= (EPOCH_playerSpawnArray select _index)) exitWith{};
 
-_nonJammer = ["B_Heli_Transport_01_F","PHANTOM","Epoch_Cloak_F"];
-_nonTrader = ["B_Heli_Transport_01_F","PHANTOM","Epoch_Cloak_F","GreatWhite_F"];
+_nonJammer = ["CfgEpochClient", "nonJammerAI", ["B_Heli_Transport_01_F","PHANTOM","Epoch_Cloak_F"]] call EPOCH_fnc_returnConfigEntryV2;
+_nonTrader = ["CfgEpochClient", "nonTraderAI", ["B_Heli_Transport_01_F","PHANTOM","Epoch_Cloak_F","GreatWhite_F"]] call EPOCH_fnc_returnConfigEntryV2;
+_nonTraderAIRange = ["CfgEpochClient", "nonTraderAIRange", 150] call EPOCH_fnc_returnConfigEntryV2;
+
 _unit = objNull;
 
 _targetPos = getPosATL player;
@@ -34,17 +35,11 @@ _jammers = [];
 _config = 'CfgEpochClient' call EPOCH_returnConfig;
 _jammerRange = getNumber(_config >> "buildingJammerRange");
 _jammers = nearestObjects[_targetPos, ["PlotPole_EPOCH"], _jammerRange];
-
-if(count _jammers > 0)then{
-if!(_unitClass in _nonJammer)exitWith{};
-};
+if(count _jammers > 0 && (_unitClass in _nonJammer))exitWith{};
 
 _restricted = [];
-_restricted = nearestObjects [_targetPos, ["ProtectionZone_Invisible_F"], 150];
-if(count _restricted > 0)then{
-if!(_unitClass in _nonTrader)exitWith{};
-};
-
+_restricted = nearestObjects [_targetPos, ["ProtectionZone_Invisible_F"], _nonTraderAIRange];
+if(count _restricted > 0 && (_unitClass in _nonTrader))exitWith{};
 
 _disableAI = {
 	{_this disableAI _x}forEach["TARGET","AUTOTARGET","FSM"];
@@ -55,7 +50,6 @@ switch _unitClass do {
 		_unit = createAgent[_unitClass, _targetPos, [], 256, "FORM"];
 		_unit call _disableAI;
 		[_unit] execFSM "\x\addons\a3_epoch_code\System\cloak.fsm";
-		// diag_log "cultist spawned";
 	};
 	case "GreatWhite_F": {
 		if (surfaceIsWater _targetPos) then{
@@ -73,7 +67,7 @@ switch _unitClass do {
 			if(getNumber(_config >> "sapperMigrationCount") > 0)then{
 				_sapperNum = getNumber(_config >> "sapperMigrationCount");
 			};
-			[player,_sapperNum] execVM "\x\addons\a3_epoch_code\compile\EPOCH_callSapperMigration.sqf";
+			[player,_sapperNum] execVM "epoch_code\compile\EPOCH_callSapperMigration.sqf";
 		}else{
 			_unit = createAgent[_unitClass, _targetPos, [], 256, "FORM"];
 			_bomb = createVehicle ["Sapper_Charge_Ammo", _targetPos, [], 0, "CAN_COLLIDE"];

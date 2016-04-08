@@ -1,9 +1,19 @@
 /*
+	Author: Raimonds Virtoss - EpochMod.com
+
+    Contributors: Aaron Clark
+
+	Description:
 	Used to register and unregister IDC used in dynamic menus.
 	Pass the control to unregister or just call fnc to get a unique IDC
+
+    Licence:
+    Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
+
+    Github:
+    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_code/gui/scripts/Epoch_getIDC.sqf
 */
 private ["_in","_list","_out","_find"];
-//_in = _this param [0,controlNull,[controlNull]];
 _in = [_this, 0, controlNull, [controlNull]] call BIS_fnc_param;
 
 _list = missionNamespace getVariable ["rmx_var_uniqueIDC",[]];

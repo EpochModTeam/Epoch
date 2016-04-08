@@ -15,6 +15,7 @@
 class Takistan : Default
 {
 	worldSize = 12000;
+	plantLimit = 7;
 	vehicleSpawnTypes[] = {
 		{"FlatAreaCity",1},
 		{"FlatAreaCitySmall",1},

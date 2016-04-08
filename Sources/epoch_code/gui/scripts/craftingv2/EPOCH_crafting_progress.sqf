@@ -1,7 +1,22 @@
+/*
+	Author: Raimonds Virtoss - EpochMod.com
+
+    Contributors:
+
+	Description:
+	DESC-TBA
+
+    Licence:
+    Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
+
+    Github:
+    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_code/gui/scripts/craftingv2/EPOCH_crafting_progress.sqf
+*/
 if !(isNil "rmx_var_craftProgressInProgress") exitWith {false};
 rmx_var_craftProgressInProgress = true;
 
-private ["_txt","_time","_posY","_posX","_w","_h","_idc","_stColor","_out","_display","_ctrl","_ctrl2","_ctrl3","_tick"];
+private ["_out","_txt","_time","_posY","_posX","_w","_h","_idc","_stColor","_layer","_display","_ctrl3","_ctrl","_ctrl2","_tick"];
+
 disableSerialization;
 _txt = param [0,"No text"];
 _time = param [1,1];
@@ -39,7 +54,7 @@ _tick = diag_tickTime;
 while {((diag_tickTime - _tick) < _time && rmx_var_craftingLOOPS) } do {
 	if !(rmx_var_craftInProgress) exitWith {_out = false;};
 	_ctrl progressSetPosition ((diag_tickTime - _tick)/_time);
-	
+
 	uiSleep 0.01; //smoothness vs performance
 };
 

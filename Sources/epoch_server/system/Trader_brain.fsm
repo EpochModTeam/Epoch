@@ -97,7 +97,7 @@ class FSM
        "_trader setCombatMode ""BLUE"";" \n
        "" \n
        "_traderNames=[""Aaron"",""Kenneth"",""Paul"",""Darren"",""Damian"",""Niklas"",""Andrew"",""Nigel"",""Harry"",""Phil"",""Antony"",""Dave"",""Hammish"",""Richard"",""Peter"",""Conor""];" \n
-       "_traderName = _traderNames select (floor(random count _traderNames));" \n
+       "_traderName = selectRandom _traderNames;" \n
        "" \n
        "_trgtArray = [""Epoch_Man_base_F"",""Epoch_Female_base_F""];" \n
        "_tRange = 20;//Travel Range - Pause if players within range when travelling home" \n
@@ -485,7 +485,7 @@ class FSM
     {
       name = "look_at";
       init = /*%FSM<STATEINIT""">*/"if !(isNull _trgt) then {" \n
-       "_dir = [_trader, _trgt] call BIS_fnc_dirTo;" \n
+       "_dir = _trader getDir _trgt;" \n
        "if(_lastDir != _dir)then{" \n
        "	_trader setDir _dir;" \n
        "	_lastDir = _dir;" \n
@@ -517,7 +517,7 @@ class FSM
     {
       name = "trade";
       init = /*%FSM<STATEINIT""">*/"if !(isNull _trgt) then {" \n
-       "	_trader setDir ([_trader, _trgt] call BIS_fnc_dirTo);" \n
+       "	_trader setDir (_trader getDir _trgt);" \n
        "};" \n
        "_sWait = 480;" \n
        "_actionDone = true;" \n

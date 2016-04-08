@@ -1,29 +1,32 @@
-private["_plyr","_container","_clearFirst","_pos","_chance","_weps","_mags","_items"];
-_plyr = _this select 0;
-if !([_plyr,_this select 1]call EPOCH_server_getPToken)exitWith{};
+/*
+	Author: Aaron Clark - EpochMod.com
 
-_container = objNull;
-if (typename (_this select 2) == "OBJECT") then {_container = _this select 2;};
+    Contributors:
 
-_clearFirst = false;
-if (count _this > 3) then {_clearFirst = _this select 3;};
+	Description:
+	Server side spawing of shipwreck loots
 
-_chance = 25;
-if (count _this > 4) then {_chance = _this select 4;};
+    Licence:
+    Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
 
-_pos = getPosATL _plyr;
-if (count _this > 5) then {_pos = _this select 5;};
+    Github:
+    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_server/compile/epoch_missions/EPOCH_Server_fillContainer.sqf
+*/
+private["_player","_container","_clearFirst","_pos","_chance","_weps","_mags","_items"];
+params ["_player",["_token","",[""]],["_container",objNull,[objNull]],["_clearFirst",false],["_chance",25],["_pos",getPosATL _player]];
+
+if !([_player,_token]call EPOCH_server_getPToken)exitWith{};
 
 if (isNull _container) then {
-_container = createVehicle ["GroundWeaponHolder", _pos, [], 12, "CAN_COLLIDE"];
-_container setPosATL _pos;
+	_container = createVehicle ["GroundWeaponHolder", _pos, [], 12, "CAN_COLLIDE"];
+	_container setPosATL _pos;
 };
-//diag_log format["Creating GroundWeaponHolder %3 at %1 for %2",_pos, name _plyr,_container];
+
 if (_clearFirst) then {
-clearWeaponCargoGlobal _container;
-clearItemCargoGlobal _container;
-clearMagazineCargoGlobal  _container;
-clearBackpackCargoGlobal _container;
+	clearWeaponCargoGlobal _container;
+	clearItemCargoGlobal _container;
+	clearMagazineCargoGlobal  _container;
+	clearBackpackCargoGlobal _container;
 };
 
 if (_chance > 0) then {

@@ -25,10 +25,13 @@
 	Returns:
 	NOTHING
 */
-private ["_recipeItem","_recipeQty","_hasRecipeItems","_msg","_recipeCount","_currentCount","_numRemoved","_items","_mags","_dt","_recipe","_craftItem","_craftQty","_config","_objClass","_object","_anim","_state"];
-_object = param [0,objNull];
-_anim = param [1,""];
-_state = param [2,0];
+private ["_recipeItem","_recipeQty","_hasRecipeItems","_msg","_recipeCount","_currentCount","_numRemoved","_items","_mags","_recipe","_craftItem","_craftQty","_config","_objClass"];
+params [
+    ["_object",objNull],
+    ["_anim",""],
+    ["_state",0]
+];
+
 if !(isNull _object) then {
 
   _msg = "Missing Items";
@@ -52,7 +55,7 @@ if !(isNull _object) then {
     {
       _recipeItem = _x;
   		_recipeQty = 1;
-  		if (typeName _x == "ARRAY") then {
+  		if (_x isEqualType []) then {
   			_recipeItem = _x select 0;
   			_recipeQty = _x select 1;
   		};
@@ -69,7 +72,7 @@ if !(isNull _object) then {
       {
         _recipeItem = _x;
         _recipeQty = 1;
-        if (typeName _x == "ARRAY") then {
+        if (_x isEqualType []) then {
           _recipeItem = _x select 0;
           _recipeQty = _x select 1;
         };
@@ -105,18 +108,15 @@ if !(isNull _object) then {
     if (_numRemoved == _recipeCount) then {
       _object animate [_anim, _state, true];
 
-      // tell server we should persist this object now
-      // [_object] remoteExec ["EPOCH_server_save_vehicles",2];
+      // push interacted object to queue to save later
+      EPOCH_arr_interactedObjs pushBackUnique _object;
 
-      // push interacted object to save queue to save later
-      if !(_object in EPOCH_arr_interactedObjs) then{
-    	  EPOCH_arr_interactedObjs pushBack _object;
-      };
+      [format["<t size='1.6' color='#99ffffff'>%1 part on %2</t>","Added",_objClass call EPOCH_itemDisplayName],5] call Epoch_dynamicText;
 
-      _dt = [format["<t size='0.8' shadow='0' color='#99ffffff'>%1 part on %2</t>","Added",_objClass call EPOCH_itemDisplayName], 0, 1, 5, 2, 0, 1] spawn bis_fnc_dynamictext;
+      [format["<t size='1.6' color='#99ffffff'>%1 part on %2</t>","Added",_objClass call EPOCH_itemDisplayName], 5] call Epoch_dynamicText;
 
     } else {
-      _dt = [format["<t size='0.8' shadow='0' color='#99ffffff'>%1</t>", _msg], 0, 1, 5, 2, 0, 1] spawn bis_fnc_dynamictext;
+      [format["<t size='1.6' color='#99ffffff'>%1</t>", _msg], 5] call Epoch_dynamicText;
     };
 
 
@@ -129,14 +129,12 @@ if !(isNull _object) then {
     _object animate [_anim, _state, true];
 
     // push interacted object to save queue to save later
-    if !(_object in EPOCH_arr_interactedObjs) then{
-      EPOCH_arr_interactedObjs pushBack _object;
-    };
+    EPOCH_arr_interactedObjs pushBackUnique  _object;
 
     {
         _craftItem = _x;
         _craftQty = 1;
-        if (typeName _x == "ARRAY") then {
+        if (_x isEqualType []) then {
             _craftItem = _x select 0;
             _craftQty = _x select 1;
         };
@@ -145,7 +143,7 @@ if !(isNull _object) then {
         };
     }forEach _recipe;
 
-    _dt = [format["<t size='0.8' shadow='0' color='#99ffffff'>%1 part on %2</t>","Removed",_objClass call EPOCH_itemDisplayName], 0, 1, 5, 2, 0, 1] spawn bis_fnc_dynamictext;
+    [format["<t size='1.6' color='#99ffffff'>%1 part on %2</t>","Removed",_objClass call EPOCH_itemDisplayName], 5] call Epoch_dynamicText;
   };
 
 };

@@ -24,7 +24,7 @@ for "_i" from 0 to _this do {
 	_vehHiveKey = format ["%1:%2", (call EPOCH_fn_InstanceID),_i];
 	_response = ["Building", _vehHiveKey] call EPOCH_fnc_server_hiveGETTTL;
 
-	if ((_response select 0) == 1 && typeName (_response select 1) == "ARRAY" && !((_response select 1) isEqualTo [])) then {
+	if ((_response select 0) == 1 && (_response select 1) isEqualType [] && !((_response select 1) isEqualTo [])) then {
 		_arr = _response select 1;
 		_ttl = _response select 2;
 
@@ -40,7 +40,7 @@ for "_i" from 0 to _this do {
 
 		_storageSlot = "-1";
 		if (_arrCount >= 3) then {
-			if ((typeName (_arr select 2)) == "SCALAR") then {
+			if ((_arr select 2) isEqualType 0) then {
 				_storageSlot = str(_arr select 2);
 			} else {
 				_storageSlot = _arr select 2;
@@ -73,16 +73,17 @@ for "_i" from 0 to _this do {
 		if (isClass (configFile >> "CfgVehicles" >> _class) && (_damage < 1) && !(_class isKindOf 'Constructions_lockedstatic_F')) then {
 
 			_baseObj = createVehicle [_class, _location, [], 0, "CAN_COLLIDE"];
-			_baseObj setVectorDirAndUp _worldspace;
+
 			_baseObj setposATL _location;
+			_baseObj setVectorDirAndUp _worldspace;
 
 			// spawn additional object for trap
 			_ammoClass = (configFile >> "CfgVehicles" >> _class >> "ammoClass");
 			if(isText _ammoClass) then {
 				_ammoClass = getText _ammoClass;
 				_ammoObj = createVehicle [_ammoClass, _location, [], 0, "CAN_COLLIDE"];
-				_ammoObj setVectorDirAndUp _worldspace;
 				_ammoObj setposATL _location;
+				_ammoObj setVectorDirAndUp _worldspace;
 				_baseObj setVariable ["EPOCH_TRAP_OBJ",_ammoObj];
 			};
 
@@ -145,6 +146,5 @@ for "_i" from 0 to _this do {
 		EPOCH_BuildingSlots set [_i,0];
 	};
 };
-EPOCH_BuildingSlotCount = {_x == 0} count EPOCH_BuildingSlots;
-publicVariable "EPOCH_BuildingSlotCount";
+missionNamespace setVariable ["EPOCH_BuildingSlotCount", {_x == 0} count EPOCH_BuildingSlots, true];
 true

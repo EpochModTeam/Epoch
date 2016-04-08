@@ -21,15 +21,14 @@
 	Returns:
 	NOTHING
 */
-if (typename _this != "ARRAY") then {
+if !(_this isEqualType []) then {
 	_this = [_this];
 };
 {
 	if (!isNull _x) then {
 		_x addEventHandler["local", {
-			if (_this select 1) then {
-				private "_unit";
-				_unit = _this select 0;
+			params ["_unit","_isLocal"];
+			if (_isLocal) then {
 				if (!isNull _unit) then{
 					{
 						_unit removeAllMPEventHandlers _x;

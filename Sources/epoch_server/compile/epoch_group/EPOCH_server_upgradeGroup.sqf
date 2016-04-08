@@ -1,24 +1,31 @@
-private [
-	"_groupID","_player"
-	,"_contentArray","_found"
-	,"_newGroupSize","_groupMemberPUID"
-];
+/*
+	Author: Aaron Clark - EpochMod.com
 
-_groupID = _this select 0;
-_player = _this select 1;
+    Contributors:
 
-if !([_player, _this select 2] call EPOCH_server_getPToken) exitWith{};
+	Description:
+	Upgrade group size
 
-diag_log format["GROUP: Upgrade %1", _this];
+    Licence:
+    Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
+
+    Github:
+    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_server/compile/epoch_group/EPOCH_server_upgradeGroup.sqf
+*/
+private ["_playerCryptoLimit","_current_crypto","_groupMemberPUID","_return","_newGroupSize","_upgradePrice","_contentArray","_found","_cIndex","_vars","_response"];
+params ["_groupID","_player",["_token","",[""]]];
+if !([_player, _token] call EPOCH_server_getPToken) exitWith{};
+
+_return = false;
 
 // get vars array and current Crypto value
 _cIndex = EPOCH_customVars find "Crypto";
-_vars = _player getVariable["VARS", [] + EPOCH_defaultVars_SEPXVar];
+_vars = _player getVariable["VARS", call EPOCH_defaultVars_SEPXVar];
 _current_crypto = _vars select _cIndex;
 
 // [_groupName, _leaderName, _groupSize, _modArray, _memberArray]
 _response = ["Group", _groupID] call EPOCH_fnc_server_hiveGETRANGE;
-if ((_response select 0) == 1 && typeName (_response select 1) == "ARRAY") then {
+if ((_response select 0) == 1 && (_response select 1) isEqualType []) then {
 	_contentArray = (_response select 1);
 	_found = EPOCH_group_upgrade_lvl_SEPXVar find (_contentArray select 2);
 
@@ -29,9 +36,11 @@ if ((_response select 0) == 1 && typeName (_response select 1) == "ARRAY") then 
 
 		if (_current_crypto >= _upgradePrice) then {
 
-			_playerCryptoLimit = [(configFile >> "CfgSecConf" >> "limits"), "playerCrypto", 25000] call EPOCH_fnc_returnConfigEntry;
-			_current_crypto = ((_current_crypto - _upgradePrice) min _playerCryptoLimit) max 0;
-			[["effectCrypto", _current_crypto], (owner _player)] call EPOCH_sendPublicVariableClient;
+			_playerCryptoLimit = EPOCH_customVarLimits select _cIndex;
+			_playerCryptoLimit params ["_playerCryptoLimitMax","_playerCryptoLimitMin"];
+			_current_crypto = ((_current_crypto - _upgradePrice) min _playerCryptoLimitMax) max _playerCryptoLimitMin;
+			// send to player
+			_current_crypto remoteExec ['EPOCH_effectCrypto',(owner _player)];
 			_vars set[_cIndex, _current_crypto];
 			_player setVariable["VARS", _vars];
 
@@ -45,13 +54,12 @@ if ((_response select 0) == 1 && typeName (_response select 1) == "ARRAY") then 
 			} forEach [_contentArray select 3, _contentArray select 4];
 
 			{
-				if (getPlayerUID _x in _groupMemberPUID) then {
-					[["groupUpdate", _contentArray], (owner _x)] call EPOCH_sendPublicVariableClient;
-				};
-			} forEach playableUnits;
+				[["groupUpdate", _contentArray], _x] call EPOCH_sendRemoteExecClient;
+			} forEach (allPlayers select {getPlayerUID _x in _groupMemberPUID});
 
 			// Save Group Data
-			["Group", _groupID, _contentArray] call EPOCH_fnc_server_hiveSET;
+			_return = ["Group", _groupID, _contentArray] call EPOCH_fnc_server_hiveSET;
 		};
 	};
 };
+_return

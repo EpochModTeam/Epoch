@@ -1,21 +1,31 @@
-private ["_vehicle","_value"];
+/*
+	Author: Aaron Clark - EpochMod.com
 
-_vehicle =  _this select 0;
-_player =  _this select 2;
+    Contributors:
+
+	Description:
+    (Un)Lock Vehicles
+
+    Licence:
+    Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
+
+    Github:
+    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_server/compile/epoch_vehicle/EPOCH_server_lockVehicle.sqf
+*/
+private ["_lockOwner","_lockedOwner","_response","_playerUID","_playerGroup","_vehSlot","_vehLockHiveKey","_isLocked","_driver","_crew","_logic"];
+params ["_vehicle","_value","_player",["_token","",[""]]];
 
 if (isNull _vehicle) exitWith {};
-
-// Token check
-if !([_player,_this select 3] call EPOCH_server_getPToken) exitWith {};
+if !([_player,_token] call EPOCH_server_getPToken) exitWith {};
 if (_player distance _vehicle > 20) exitWith {};
 
 // Group access
-_plyrUID = getPlayerUID _player;
-_plyrGroup = _player getVariable["GROUP", ""];
+_playerUID = getPlayerUID _player;
+_playerGroup = _player getVariable["GROUP", ""];
 
-_lockOwner = _plyrUID;
-if (_plyrGroup != "") then {
-	_lockOwner = _plyrGroup;
+_lockOwner = _playerUID;
+if (_playerGroup != "") then {
+	_lockOwner = _playerGroup;
 };
 
 _lockedOwner = "-1";
@@ -23,7 +33,7 @@ _vehSlot = _vehicle getVariable["VEHICLE_SLOT", "ABORT"];
 _vehLockHiveKey = format["%1:%2", (call EPOCH_fn_InstanceID), _vehSlot];
 if (_vehSlot != "ABORT") then {
 	_response = ["VehicleLock", _vehLockHiveKey] call EPOCH_fnc_server_hiveGETRANGE;
-	if ((_response select 0) == 1 && typeName(_response select 1) == "ARRAY" && !((_response select 1) isEqualTo[])) then {
+	if ((_response select 0) == 1 && (_response select 1) isEqualType [] && !((_response select 1) isEqualTo[])) then {
 		_lockedOwner = _response select 1 select 0;
 	};
 };
@@ -57,8 +67,6 @@ _logic = if !(_crew isEqualTo []) then {
 // Lockout mech
 if (_logic) then {
 
-	_value = _this select 1;
-
 	if (_value) then {
 		["VehicleLock", _vehLockHiveKey, EPOCH_vehicleLockTime, [_lockOwner]] call EPOCH_fnc_server_hiveSETEX;
 	};
@@ -67,9 +75,11 @@ if (_logic) then {
 		_vehicle lock _value;
 	} else {
 		if (_value) then {
-			[["lockVehicle", _vehicle], (owner _vehicle)] call EPOCH_sendPublicVariableClient;
+			// send to player
+			[_vehicle, true] remoteExec ['EPOCH_client_lockVehicle',(owner _vehicle)];
 		} else {
-			[["unlockVehicle", _vehicle], (owner _vehicle)] call EPOCH_sendPublicVariableClient;
+			// send to player
+			[_vehicle, false] remoteExec ['EPOCH_client_lockVehicle',(owner _vehicle)];
 		};
 	};
 };

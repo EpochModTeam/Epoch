@@ -1,10 +1,25 @@
+/*
+	Author: Raimonds Virtoss - EpochMod.com
+
+    Contributors: Aaron Clark
+
+	Description:
+	Displays custom text message to player
+
+    Licence:
+    Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
+
+    Github:
+    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_code/gui/scripts/Epoch_dynamicText.sqf
+
+	Usage:
+	"TEST" call Epoch_dynamicText
+*/
 #include "\A3\ui_f\hpp\defineCommonGrids.inc"
+private ["_y","_cnt","_ctrl","_alreadyEnabled","_input","_scale","_width","_height","_centerX","_centerY","_display","_ctrlGroup","_controls","_ctrlText","_add"];
+params [["_text","Missing text",["",(text "")]],["_time",5,[1]],["_color","#ffffff",[""]]];
 
-_text = param [0,"Missing text",["",(text "")]];
-_time = param [1,5,[1]];
-_color = param [2,"#ffffff",[""]];
-
-if (typeName _text isEqualTo "STRING") then {_text = parseText _text};
+if (_text isEqualType "STRING") then {_text = parseText _text};
 
 _alreadyEnabled = uiNamespace getVariable ["rmx_var_dynamicText",false];
 
@@ -12,7 +27,7 @@ _input = count str _text * 2;
 _scale = 1;
 _width = _scale * GUI_GRID_W;
 _height = _scale * GUI_GRID_H;
-_centerX = 0.5; 
+_centerX = 0.5;
 _centerY = -18 * GUI_GRID_H + GUI_GRID_Y;
 
 disableSerialization;
@@ -34,7 +49,7 @@ for "_i" from 0 to (_input - 1) do {
 	_ctrl ctrlCommit 0;
 	_ctrl ctrlSetFade 1-(random 0.2);
 	[_ctrl, 1-(random 0.2),0] call BIS_fnc_ctrlSetScale;
-	
+
 	_controls set [_i, _ctrl];
 };
 
@@ -51,7 +66,7 @@ uiNamespace setVariable ["rmx_var_dynamicTextCTRL",_add];
 [_time,_ctrlGroup,_ctrlText,_controls] spawn {
 	disableSerialization;
 	params ["_time","_ctrlGroup","_ctrlText","_controls"];
-	
+
 	_tick = diag_tickTime;
 	while {(diag_tickTime - _tick) < _time} do {
 		{
@@ -61,12 +76,12 @@ uiNamespace setVariable ["rmx_var_dynamicTextCTRL",_add];
 		uiSleep 0.5;
 	};
 	_arr = uiNamespace getVariable ["rmx_var_dynamicTextCTRL",[]];
-	_del = 
+	_del =
 	{
 		if (str _x isEqualTo str _ctrlGroup) exitWith {_forEachIndex};
 		0
 	} forEach _arr;
-	
+
 	_arr deleteAt _del;
 	uiNamespace setVariable ["rmx_var_dynamicTextCTRL",_arr];
 	uiSleep 0.01;

@@ -15,6 +15,7 @@
 class Sara_dbe1 : Default
 {
 	worldSize = 0; // 0 = default to worldSize command
+	plantLimit = 10;
 	vehicleSpawnTypes[] = {
 		{"FlatAreaCity",1},
 		{"FlatAreaCitySmall",1},

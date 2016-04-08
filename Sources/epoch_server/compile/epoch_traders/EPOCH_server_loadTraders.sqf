@@ -1,17 +1,25 @@
-private [
-	"_staticTradersArray","_staticTradersArrCount","_aiTables"
-	,"_staticTrader"
-	,"_class","_pos","_dir"
-	,"_agent","_randomIndex","_randomAIUniform"
-	,"_arr","_objHiveKey","_response"
-	,"_marker"
-	,"_home","_work","_schedule"
-];
+/*
+	Author: Aaron Clark - EpochMod.com
+
+    Contributors:
+
+	Description:
+    Splits a position into two arrays: Whole number array and decimal array.
+
+    Licence:
+    Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
+
+    Github:
+    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_server/compile/epoch_traders/EPOCH_server_loadTraders.sqf
+*/
+private ["_arr","_currentStock","_limit","_toBeRemoved","_marker","_staticTrader","_agent","_class","_pos","_randomAIUniform","_dir","_objHiveKey","_response","_schedule","_home","_work","_traderSlotIndex","_staticTradersArray","_staticTradersArrCount","_aiTables","_serverSettingsConfig","_storedVehicleLimit"];
+params [["_maxTraderLimit",0]];
 
 _staticTradersArray = [] + EPOCH_staticNPCTraderPos;
 EPOCH_staticNPCTraderPos = nil;
 _staticTradersArray append getArray(configFile >> "CfgEpoch" >> worldName >> "staticNpcPos");
 _staticTradersArrCount = count _staticTradersArray;
+// TODO: configize
 _aiTables = ["U_OG_leader", "U_C_Poloshirt_stripped", "U_C_Poloshirt_blue", "U_C_Poloshirt_burgundy", "U_C_Poloshirt_tricolour", "U_C_Poloshirt_salmon", "U_C_Poloshirt_redwhite", "U_C_Poor_1", "U_C_WorkerCoveralls", "U_C_Journalist", "U_C_Scientist", "U_OrestesBody"];
 
 _serverSettingsConfig = configFile >> "CfgEpochServer";
@@ -19,46 +27,33 @@ _storedVehicleLimit = [_serverSettingsConfig, "storedVehicleLimit", 20] call EPO
 
 EPOCH_storedVehicleCount = 0;
 
-for "_i" from 0 to _this do {
+for "_i" from 0 to _maxTraderLimit do {
+	_traderSlotIndex = EPOCH_TraderSlots pushBack str(_i);
 
 	// Spawn static traders first
 	if (_staticTradersArrCount > 0 && _i < _staticTradersArrCount) then {
 
 		_staticTrader = _staticTradersArray select _i;
-
-		_class = _staticTrader select 0;
-		_pos = _staticTrader select 1;
-		_dir = _staticTrader select 2;
-
+		_staticTrader params ["_class","_pos","_dir"];
 		_agent = createAgent [_class, _pos, [], 0, "CAN_COLLIDE"];
-
-		_randomIndex = floor(random(count _aiTables));
-		_randomAIUniform = _aiTables select _randomIndex;
+		_randomAIUniform = selectRandom _aiTables;
 		_agent addUniform _randomAIUniform;
-
 		_agent setDir _dir;
 		_agent setPosATL _pos;
-
 		_agent setVariable ["AI_SLOT", _i, true];
-
 		_agent disableAI "FSM";
 		_agent setBehaviour "CARELESS";
 		_agent setCombatMode "RED";
 		_agent setSkill 0;
-
 		_agent addEventHandler ["Killed", { _this call EPOCH_server_traderKilled; }];
-
 		_arr = [[], []];
 		_objHiveKey = format ["%1:%2", (call EPOCH_fn_InstanceID), _i];
 		_response = ["AI_ITEMS", _objHiveKey] call EPOCH_fnc_server_hiveGETRANGE;
-		// diag_log format ["TRADER LOAD DATA: %1", _response];
-
-		if ((_response select 0) == 1 && typeName (_response select 1) == "ARRAY") then {
+		if ((_response select 0) == 1 && (_response select 1) isEqualType []) then {
 			_arr = (_response select 1);
 			if (_arr isEqualTo []) then {
 				_arr = [[], []];
 			};
-
 			_toBeRemoved = [];
 			// count vehicles
 			{
@@ -84,13 +79,11 @@ for "_i" from 0 to _this do {
 
 				};
 			} forEach (_arr select 0);
-
 			// remove any marked for removal
 			{
 					(_arr select 0) deleteAt _x;
 					(_arr select 1) deleteAt _x
 			} forEach _toBeRemoved;
-
 		};
 
 		if (_arr isEqualTo [[], []]) then{
@@ -100,7 +93,7 @@ for "_i" from 0 to _this do {
 
 		_agent setVariable ["AI_ITEMS", _arr, true];
 
-		EPOCH_TraderSlots set [_i, 1];
+		EPOCH_TraderSlots deleteAt _traderSlotIndex;
 
 		if (EPOCH_SHOW_TRADERS) then {
 			_marker = createMarker [str(_agent), (_pos)];
@@ -110,24 +103,23 @@ for "_i" from 0 to _this do {
 
 			_agent setVariable["MARKER_REF", _marker];
 		};
-	}
-	// Spawn dynamic traders
-	else {
+	} else {
+		// Spawn dynamic traders
 		_objHiveKey = format ["%1:%2", (call EPOCH_fn_InstanceID), _i];
 		_response = ["AI", _objHiveKey] call EPOCH_fnc_server_hiveGETRANGE;
-		if ((_response select 0) == 1 && typeName (_response select 1) == "ARRAY" && !((_response select 1) isEqualTo [])) then {
+		if ((_response select 0) == 1 && (_response select 1) isEqualType [] && !((_response select 1) isEqualTo [])) then {
 			_arr = (_response select 1);
 
 			_class = _arr select 0; //"C_man_1"
 			_home = _arr select 1;
 			_work = _arr select 2;
 
-			if (typeName _home == "ARRAY" && typeName _work == "ARRAY") then {
+			if (_home isEqualType [] && _work isEqualType []) then {
 				// check schedule
 				_pos = _home;
 
 				_schedule = [9, 17];
-				if (typeName(_work select 1) == "ARRAY") then {
+				if ((_work select 1) isEqualType []) then {
 					_schedule = _work select 1;
 				}
 				else {
@@ -141,8 +133,7 @@ for "_i" from 0 to _this do {
 
 				addToRemainsCollector[_agent];
 
-				_randomIndex = floor(random(count _aiTables));
-				_randomAIUniform = _aiTables select _randomIndex;
+				_randomAIUniform = selectRandom _aiTables;
 				_agent addUniform _randomAIUniform;
 
 				// _agent enableSimulationGlobal false;
@@ -159,9 +150,8 @@ for "_i" from 0 to _this do {
 				_arr = [[],[]];
 				_objHiveKey = format ["%1:%2", (call EPOCH_fn_InstanceID), _i];
 				_response = ["AI_ITEMS", _objHiveKey] call EPOCH_fnc_server_hiveGETRANGE;
-				//diag_log format ["TRADER LOAD DATA: %1", _response];
 
-				if ((_response select 0) == 1 && typeName (_response select 1) == "ARRAY") then {
+				if ((_response select 0) == 1 && (_response select 1) isEqualType []) then {
 					_arr = (_response select 1);
 
 					if (_arr isEqualTo []) then {
@@ -208,25 +198,17 @@ for "_i" from 0 to _this do {
 				};
 				_agent setVariable ["AI_ITEMS", _arr, true];
 
-				EPOCH_TraderSlots set [_i, 1];
+				EPOCH_TraderSlots deleteAt _traderSlotIndex;
 
 				if (EPOCH_SHOW_TRADERS) then {
 					_marker = createMarker [str(_agent), (_pos)];
 					_marker setMarkerShape "ICON";
 					_marker setMarkerType "mil_dot";
 					_marker setMarkerColor "ColorBrown";
-
 					_agent setVariable["MARKER_REF", _marker];
 				};
-			}
-			else {
-				EPOCH_TraderSlots set [_i, 0];
 			};
-		}
-		else {
-			EPOCH_TraderSlots set [_i, 0];
 		};
 	};
 };
-
 true

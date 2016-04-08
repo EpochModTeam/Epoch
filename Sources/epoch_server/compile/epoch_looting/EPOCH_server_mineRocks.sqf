@@ -1,10 +1,20 @@
-private["_posWH", "_item", "_nearbyWH", "_rock", "_player"];
+/*
+	Author: Aaron Clark - EpochMod.com
 
-_object = _this select 0;
-_index = _this select 1;
-_player = _this select 2;
+    Contributors:
 
-if !([_player, _this select 3] call EPOCH_server_getPToken) exitWith{};
+	Description:
+	Server side rock mining
+
+    Licence:
+    Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
+
+    Github:
+    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_server/compile/epoch_looting/EPOCH_server_mineRocks.sqf
+*/
+private["_posWH", "_item", "_nearbyWH", "_rock"];
+params ["_object","_index","_player",["_token","",[""]]];
+if !([_player, _token] call EPOCH_server_getPToken) exitWith{};
 
 if !(_object isKindOf "All") then {
 	if (alive _object) then {
@@ -22,12 +32,12 @@ if !(_object isKindOf "All") then {
 			};
 		} else {
 			_lootables = [["PartOre", 2], ["ItemRock", 4]];
-			_selectedPayout = _lootables select(floor random(count _lootables));
+			_selectedPayout = selectRandom _lootables;
 		};
 
 		_payout = _selectedPayout select 0;
 		_payoutQty = _selectedPayout select 1;
-		
+
 		_object setdamage ((damage _object) + (1/_payoutQty)) min 1;
 
 		_nearbyWH = nearestObjects[_posWH, ["groundWeaponHolder"], 2];

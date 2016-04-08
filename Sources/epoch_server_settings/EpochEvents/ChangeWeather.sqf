@@ -31,19 +31,17 @@ if !(EPOCH_WeatherStaticForecast isEqualTo []) then {
 	_fogOVRD = EPOCH_WeatherStaticForecast select 2;
 	_overcastOVRD = EPOCH_WeatherStaticForecast select 3;
 	_windOVRD = EPOCH_WeatherStaticForecast select 4;
-	diag_log format["DEBUG: static weather: %1", EPOCH_WeatherStaticForecast];
 } else {
 
 	// Make database call to get "Weather:InstanceID" that can be set in the database to allow for weather controls outside of the game.
 	_response = ["Weather", (call EPOCH_fn_InstanceID)] call EPOCH_fnc_server_hiveGETRANGE;
-	if ((_response select 0) == 1 && typeName(_response select 1) == "ARRAY" && !((_response select 1) isEqualTo[])) then {
+	if ((_response select 0) == 1 && (_response select 1) isEqualType [] && !((_response select 1) isEqualTo[])) then {
 		_arr = _response select 1;
 		_tempOVRD = _arr select 0;
 		_rainOVRD = _arr select 1;
 		_fogOVRD = _arr select 2;
 		_overcastOVRD = _arr select 3;
 		_windOVRD = _arr select 4;
-		diag_log format["DEBUG: hive weather: %1", _arr];
 	};
 };
 
@@ -51,8 +49,7 @@ if !(EPOCH_WeatherStaticForecast isEqualTo []) then {
 _rnd_temp = if (sunOrMoon < 1) then { (random 35) + 15 } else { (random 75) + 50 };
 
 // push temp to all players and JIP.
-EPOCH_CURRENT_WEATHER = if (isNil "_tempOVRD") then { _rnd_temp } else { _tempOVRD };
-publicVariable "EPOCH_CURRENT_WEATHER";
+missionNamespace setVariable ["EPOCH_CURRENT_WEATHER", if (isNil "_tempOVRD") then { round(_rnd_temp) } else { _tempOVRD }, true];
 
 // fog, rain, overcast.
 _fog = if (isNil "_fogOVRD") then { [random 0.2, random 0.2, random 20] } else { _fogOVRD };
@@ -83,4 +80,4 @@ if (_force) then {
 	forceWeatherChange;
 };
 
-diag_log format["Weather Change: fog: %1 rain: %2 overcast: %3 windx: %4 windz: %5 forced: %6", _fog, _overcast, _rain, _windValX, _windValZ, _force];
+diag_log format["Epoch: Weather Change - fog: %1 rain: %2 overcast: %3 windx: %4 windz: %5 forced: %6", _fog, _overcast, _rain, _windValX, _windValZ, _force];

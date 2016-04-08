@@ -12,8 +12,7 @@
     Github:
     https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_code/compile/EPOCH_chopWood.sqf
 */
-
-private["_currentPos", "_object", "_type", "_objects", "_sel_object"];
+private ["_currentPos","_object","_type","_start","_end","_p3dName","_finalConfig","_str","_sel_object","_findStart","_objects","_config"];
 
 _currentPos = player modelToWorld[0, 5, 0];
 if !(surfaceIsWater _currentPos) then {
@@ -23,32 +22,20 @@ if !(surfaceIsWater _currentPos) then {
 _objects = lineIntersectsObjs[eyePos player, _currentPos, player, objNull, true, 2];
 _object  = objNull;
 _type    = 0;
-
 _config = 'CfgEpochClient' call EPOCH_returnConfig;
 
 {
     _str = str _x;
 	_sel_object = _x;
-	_findStart = _str find ": ";
-	if (_findStart != -1) then{
-
-        _start = _findStart + 2;
-        _end = (_str find ".") - _start;
-        _p3dName = _str select[_start, _end];
-        // diag_log format ["DEBUG: _p3dName %1",_p3dName];
-        if (_p3dName find " " != -1) then {
-            (_p3dName splitString " ") joinString "_"; // replace spaces with underscores
+    _worldTypes = ["tree","bush"];
+    _getWorldTypes = [_str, _worldTypes] call EPOCH_worldObjectType;
+    {
+        if (_getWorldTypes param [_worldTypes find _x, false]) exitWith {
+            _type = _forEachIndex;
+            _object = _sel_object;
         };
-        _finalConfig = (_config >> "WorldInteractions" >> (_p3dName + "_p3d"));
+    } forEach _worldTypes;
 
-		if (getNumber(_finalConfig >> "tree") == 1) then{
-			_object = _sel_object;
-		};
-		if (getNumber(_finalConfig >> "bush") == 1) then{
-			_type = 1;
-			_object = _sel_object;
-		};
-	};
     if !(isNull _object) exitWith {};
 }foreach _objects;
 

@@ -12,7 +12,6 @@
     Github:
     https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_code/init/client_init.sqf
 */
-//Variables
 EPOCH_CraftingItem = "";
 EPOCH_ESP_TARGETS = [];
 EPOCH_ESPMAP_TARGETS = [];
@@ -21,7 +20,7 @@ EPOCH_ESPGROUPCOLORS = [];
 EPOCH_ESP_PLAYER = false;
 EPOCH_ESP_VEHICLES = false;
 EPOCH_ESP_VEHICLEPLAYER = [];
-EPOCH_group_level_img = ["x\addons\a3_epoch_code\data\owner.paa", "x\addons\a3_epoch_code\data\mod.paa", "x\addons\a3_epoch_code\data\member.paa"];
+EPOCH_group_level_img = ["x\addons\a3_epoch_code\Data\owner.paa", "x\addons\a3_epoch_code\Data\mod.paa", "x\addons\a3_epoch_code\Data\member.paa"];
 if (isNil 'EPOCH_diag_fps') then {
 	EPOCH_diag_fps = 0;
 };
@@ -41,6 +40,7 @@ Epoch_invited_GroupUID = "";
 Epoch_invited_GroupName = "";
 Epoch_invited_GroupUIDs = [];
 Epoch_invited_GroupUIDsPrev = [];
+Epoch_my_Group = [];
 EPOCH_lastPlayerPos = [0,0,0];
 EPOCH_prevOffer = [];
 EPOCH_drawIcon3d = false;
@@ -49,16 +49,18 @@ EPOCH_stabilityTarget = objNull;
 EPOCH_currentVehicle = objNull;
 EPOCH_currentTarget = objNull;
 EPOCH_LootedBlds = [];
+EPOCH_lootObjects = [];
 EPOCH_soundLevel = 1;
 EPOCH_arr_interactedObjs = [];
 EPOCH_buildOption = 0;
 EPOCH_nearestLocations = [];
-onEachFrame EPOCH_onEachFrame;
+
+["EPOCH_onEachFrame", "onEachFrame", EPOCH_onEachFrame] call BIS_fnc_addStackedEventHandler;
 
 EPOCH_LastAirDrop = time;
-EPOCH_AirDropCheck = getNumber(missionConfigFile >> "CfgEpochAirDrop" >> "AirDropFreq");
+EPOCH_AirDropCheck = getNumber(getMissionConfig "CfgEpochAirDrop" >> "AirDropFreq");
 if(EPOCH_AirDropCheck < 120)then{EPOCH_AirDropCheck = 120;};
-EPOCH_AirDropChance = getNumber(missionConfigFile >> "CfgEpochAirDrop" >> "AirDropChance");
+EPOCH_AirDropChance = getNumber(getMissionConfig "CfgEpochAirDrop" >> "AirDropChance");
 if(EPOCH_AirDropChance < 0)then{EPOCH_AirDropChance = 101;EPOCH_AirDropCheck = 99999;};
 
 EPOCH_droneRndChance = 100;
@@ -70,7 +72,7 @@ EPOCH_keysActionPressed = false; //prevents EH spam
 //ON INIT and RESPAWN
 call EPOCH_clientInit;
 
-[] execFSM "\x\addons\a3_epoch_code\system\SPVEH.fsm";
-[] execFSM "\x\addons\a3_epoch_code\system\player_login.fsm";
+[] execFSM "epoch_code\system\SPVEH.fsm";
+[] execFSM "epoch_code\system\player_login.fsm";
 
 true

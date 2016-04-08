@@ -43,9 +43,7 @@ if (!isNull _this) then {
 
 		_this setVariable["EPOCH_endTime", _endTime];
 
-		if !(_this in EPOCH_arr_countdown) then {
-			EPOCH_arr_countdown pushBack _this;
-		};
+		EPOCH_arr_countdown pushBackUnique  _this;
 
 		_saveCheck = true;
 
@@ -70,9 +68,9 @@ if (!isNull _this) then {
 			deleteVehicle _this;
 			_class = getText(configfile >> "CfgVehicles" >> _objClass >> "staticClass");
 			_newObj = createVehicle["Fireplace_EPOCH", (_worldspace select 0), [], 0, "CAN_COLLIDE"];
-			_newObj setVectorDirAndUp[_worldspace select 1, _worldspace select 2];
-			_newObj setposATL(_worldspace select 0);
 
+			_newObj setposATL(_worldspace select 0);
+			_newObj setVectorDirAndUp[_worldspace select 1, _worldspace select 2];
 		// proceed to send save to server
 		} else {
 			if (_saveCheck) then {

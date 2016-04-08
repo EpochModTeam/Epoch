@@ -1,3 +1,18 @@
+/*
+	Author: Raimonds Virtoss - EpochMod.com
+
+    Contributors:
+
+	Description:
+	Displays custom text message to player
+
+    Licence:
+    Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
+
+    Github:
+    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_code/gui/scripts/Epoch_genderSelection.sqf
+*/
+private ["_min","_max","_r","_r2","_r3"];
 _min = safezoneX + 0.4 * safezoneW;
 _max = safezoneX + 0.6 * safezoneW;
 _r = linearConversion [_min, _max, _this, 0.2, -1, true];

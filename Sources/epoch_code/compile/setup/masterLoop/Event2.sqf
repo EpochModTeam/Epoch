@@ -1,5 +1,5 @@
 if !(EPOCH_arr_interactedObjs isEqualTo[]) then {
-	EPOCH_arr_interactedObjs remoteExec["EPOCH_server_save_vehicles", 2];
+	[EPOCH_arr_interactedObjs] remoteExec["EPOCH_server_save_vehicles", 2];
 	EPOCH_arr_interactedObjs = [];
 };
 
@@ -8,11 +8,6 @@ if (damage player != _damagePlayer) then {
 		true call EPOCH_pushCustomVar;
 		_damagePlayer = damage player;
 	};
-};
-
-// this fixes issues with players being unable to ride in the same vehicle
-if ((rating player) < 0) then {
-	player addRating abs(rating player);
 };
 
 // calculate total available power
@@ -39,7 +34,6 @@ if (currentVisionMode player == 1) then { //NV enabled
 if (EPOCH_playerAlcohol > 20) then {
 	_drunkVal = linearConversion [0,100,EPOCH_playerAlcohol,0.1,1,true];
 	[(round(_drunkVal * 10)/10), 2] call epoch_setDrunk;
-	diag_log format["DEBUG: _drunkVal: %1",_drunkVal];
 } else {
 	[0, 2] call epoch_setDrunk;
 };
@@ -60,7 +54,7 @@ if (EPOCH_playerEnergy == 0) then {
 	if (EPOCH_buildMode > 0) then {
 		EPOCH_buildMode = 0;
 		EPOCH_snapDirection = 0;
-		_dt = ["<t size = '0.8' shadow = '0' color = '#99ffffff'>Build Mode Disabled: Need Energy< / t>", 0, 1, 5, 2, 0, 1] spawn bis_fnc_dynamictext;
+		["<t size = '1.6' color = '#99ffffff'>Build Mode Disabled: Need Energy< / t>", 5] call Epoch_dynamicText;
 		EPOCH_Target = objNull;
 		EPOCH_Z_OFFSET = 0;
 		EPOCH_X_OFFSET = 0;

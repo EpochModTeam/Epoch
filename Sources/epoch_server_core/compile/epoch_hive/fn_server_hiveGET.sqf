@@ -14,19 +14,19 @@
 */
 
 private ["_hiveResponse","_hiveStatus","_hiveMessage"];
-//_PREFIX = _this select 0;
-//_KEY = _this select 1;
+params ["_prefix","_key"];
 
 _hiveStatus = -1;
 _hiveMessage = "";
 
 while {_hiveStatus < 0 || _hiveStatus == 2} do {
-	_hiveResponse = "epochserver" callExtension format ["200|%1:%2", _this select 0, _this select 1];
+	_hiveResponse = "epochserver" callExtension format ["200|%1:%2", _prefix, _key];
 	_hiveStatus = 0;
 	if (_hiveResponse != "") then {
 		_hiveResponse = call compile _hiveResponse;
 		if !(isNil "_hiveResponse") then {
-			if (typeName _hiveResponse == "ARRAY" && !(_hiveResponse isEqualTo [])) then {
+
+			if (_hiveResponse isEqualType [] && !(_hiveResponse isEqualTo [])) then {
 				_hiveStatus = _hiveResponse select 0;
 				if (_hiveStatus >= 1) then {
 					_hiveMessage = _hiveMessage + (_hiveResponse select 1);

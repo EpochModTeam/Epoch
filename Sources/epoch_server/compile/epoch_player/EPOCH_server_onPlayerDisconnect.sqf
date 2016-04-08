@@ -1,26 +1,30 @@
 /*
-Player Disconnect
+	Author: Aaron Clark - EpochMod.com
 
-Epoch Mod - EpochMod.com
-All Rights Reserved.
+    Contributors:
+
+	Description:
+	Player Disconnect
+
+    Licence:
+    Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
+
+    Github:
+    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_server/compile/epoch_player/EPOCH_server_onPlayerDisconnect.sqf
 */
+private ["_return"];
+params ["_player","_id","_uid","_name"];
 
-private["_plyr", "_return"];
-
-_plyr = _this select 0;
-//_id = _this select 1;
-//_uid = _this select 2;
-//_name = _this select 3;
-// diag_log format["Handle Disconnect: %1 return: %2", _this, _return];
 _return = false;
-if (!isNull _plyr) then {
-	if (_plyr getVariable["SETUP", false]) then {
-		[_plyr, _plyr getVariable["VARS", []], true, true] call EPOCH_server_savePlayer;
-		if (alive _plyr) then {
-			deleteVehicle _plyr;
+if (!isNull _player) then {
+	if (_player getVariable["SETUP", false]) then {
+		[_player, _player getVariable["VARS", []]] call EPOCH_server_savePlayer;
+		if (alive _player) then {
+			_player setVariable ["VARS", nil];
+			deleteVehicle _player;
 		};
 	} else {
-		deleteVehicle _plyr;
+		deleteVehicle _player;
 	};
 };
 _return

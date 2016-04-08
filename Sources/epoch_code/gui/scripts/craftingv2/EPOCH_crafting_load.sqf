@@ -1,3 +1,17 @@
+/*
+	Author: Raimonds Virtoss - EpochMod.com
+
+    Contributors:
+
+	Description:
+	DESC-TBA
+
+    Licence:
+    Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
+
+    Github:
+    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_code/gui/scripts/craftingv2/EPOCH_crafting_load.sqf
+*/
 if (rmx_var_craftingENABLED) exitWith {false};
 disableSerialization;
 private ["_in","_cfg","_3DCTRL","_recipeCTRL","_recipeConfigs"];
@@ -43,7 +57,7 @@ rmx_var_crafting_progressClicked = false;
 ctrlSetFocus _recipeCTRL;
 
 //puts arguments into search field
-if (typeName _in isEqualTo "STRING") then {
+if (_in isEqualType "STRING") then {
 	if (count _in > 0) then { //required, empty string crashes game for some reason
 		(rmx_var_crafting_ctrl_Interact select 4) ctrlSetText _in;
 	};
@@ -76,12 +90,12 @@ rmx_var_crafting_PP_DB = ["dynamicBlur",11] call epoch_postProcessCreate;
 	private ["_searchCTRL","_searchTextTEMP"];
 	_searchCTRL = rmx_var_crafting_ctrl_Interact select 4;
 	_searchTextTEMP = "";
-	
-	
+
+
 	while {rmx_var_craftingLOOPS} do {
-		
+
 		uiSleep 0.5; //speed of search, should be less or equal to unload delay
-		
+
 		if !(_searchTextTEMP isEqualTo (ctrlText _searchCTRL)) then {
 			rmx_var_crafting_SearchConfigData = [];
 			{
@@ -90,7 +104,7 @@ rmx_var_crafting_PP_DB = ["dynamicBlur",11] call epoch_postProcessCreate;
 					rmx_var_crafting_SearchConfigData pushBack _x;
 				};
 			} forEach rmx_var_crafting_FullConfigData;
-			
+
 			_searchTextTEMP = ctrlText _searchCTRL;
 			call EPOCH_crafting_LB_defaults;
 			(rmx_var_crafting_ctrl_main select 0) lbSetCurSel 0;
@@ -105,14 +119,14 @@ rmx_var_crafting_PP_DB = ["dynamicBlur",11] call epoch_postProcessCreate;
 	disableSerialization;
 	_btn = rmx_var_crafting_ctrl_Interact select 0;
 	_btn ctrlEnable true;
-	
+
 	_btn_cancel = rmx_var_crafting_colorScheme select 0;
 	_btn_craft = rmx_var_crafting_colorScheme select 1;
 	_btn_close = rmx_var_crafting_colorScheme select 2;
-	
+
 	while {rmx_var_craftingLOOPS} do {
 		uiSleep 0.1;
-		
+
 		if (rmx_var_craftInProgress) then {
 			_btn ctrlSetText _btn_cancel;
 		} else {
@@ -132,4 +146,4 @@ rmx_var_crafting_PP_DB = ["dynamicBlur",11] call epoch_postProcessCreate;
 		if ((_pos distance (position player)) > 1) exitWith {closeDialog 0;};
 	};
 };
-true 
+true

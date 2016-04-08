@@ -1,6 +1,18 @@
+/*
+	Author: Andrew Gregory - EpochMod.com
 
+    Contributors:
+
+	Description:
+	Spawn looters (unused)
+
+    Licence:
+    Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
+
+    Github:
+    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_code/compile/missions/EPOCH_spawn_looters.sqf
+*/
 private["_unit"];
-
 for "_i" from 0 to 4 step 1 do {
 	_unit =  createGroup RESISTANCE createUnit ["Epoch_Female_F", getPos player, [], 400, "CAN_COLLIDE"];
 	_unit addBackPack "B_FieldPack_blk";

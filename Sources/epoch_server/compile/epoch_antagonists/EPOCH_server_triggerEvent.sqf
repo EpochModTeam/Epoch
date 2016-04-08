@@ -1,28 +1,41 @@
-private ["_target"];
-_target = _this select 0;
+/*
+	Author: Aaron Clark - EpochMod.com
+
+    Contributors:
+
+	Description:
+    Trigger antagonists
+
+    Licence:
+    Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
+
+    Github:
+    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_server/compile/epoch_antagonists/EPOCH_server_triggerEvent.sqf
+*/
+params ["_target", "_type"];
 if (!isNull _target) then {
-	switch (_this select 1) do {
+	switch (_type) do {
 		case "UAV": {
-			[["unitSpawn", "I_UAV_01_F"], (owner _target)] call EPOCH_sendPublicVariableClient;
+			"I_UAV_01_F" remoteExec ['EPOCH_unitSpawnIncrease',_target];
 		};
 		case "Cloak": {
 			if (sunOrMoon < 1) then {
-				[["unitSpawn", "Epoch_Cloak_F"], (owner _target)] call EPOCH_sendPublicVariableClient;
+				"Epoch_Cloak_F" remoteExec ['EPOCH_unitSpawnIncrease',_target];
 			} else {
-				[["unitSpawn", "Epoch_Sapper_F"], (owner _target)] call EPOCH_sendPublicVariableClient;
+				"Epoch_Sapper_F" remoteExec ['EPOCH_unitSpawnIncrease',_target];
 			};
 		};
 		case "Sapper": {
-			[["unitSpawn", "Epoch_Sapper_F"], (owner _target)] call EPOCH_sendPublicVariableClient;
+			"Epoch_Sapper_F" remoteExec ['EPOCH_unitSpawnIncrease',_target];
 		};
 		case "GreatWhite": {
-			[["unitSpawn", "GreatWhite_F"], (owner _target)] call EPOCH_sendPublicVariableClient;
+			"GreatWhite_F" remoteExec ['EPOCH_unitSpawnIncrease',_target];
 		};
 		case "SapperB": {
-			[["unitSpawn", "Epoch_SapperB_F"], (owner _target)] call EPOCH_sendPublicVariableClient;
+			"Epoch_SapperB_F" remoteExec ['EPOCH_unitSpawnIncrease',_target];
 		};
 		case "PHANTOM": {
-			[["unitSpawn", "PHANTOM"], (owner _target)] call EPOCH_sendPublicVariableClient;
+			"PHANTOM" remoteExec ['EPOCH_unitSpawnIncrease',_target];
 		};
 	};
 };

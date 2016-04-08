@@ -1,6 +1,20 @@
+/*
+	Author: Niklas Wagner - EpochMod.com
+
+    Contributors: Aaron Clark
+
+	Description:
+	TODO: DESC-TBA
+
+    Licence:
+    Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
+
+    Github:
+    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_code/gui/group/EPOCH_Group_List.sqf
+*/
 disableSerialization;
-_ctrl = _this select 0;
-_selected = _this select 1;	
+private ["_img","_BtnSetMod","_BtnKick"];
+params ["_ctrl","_selected"];
 
 if (getPlayerUID player == Epoch_my_GroupUID) then {
 	_img = _ctrl lbPicture _selected;

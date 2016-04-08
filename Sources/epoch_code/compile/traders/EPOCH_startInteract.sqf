@@ -1,9 +1,11 @@
+private ["_target","_forceGear","_targets","_handled","_dialog","_vehicle"];
 closeDialog 0;
 _dialog = "";
 _handled = false;
 _forceGear = false;
 _target = objNull;
-_ctrl = _this;
+
+// params ["_ctrl"];
 
 _vehicle = vehicle player;
 if (_vehicle != player) exitWith {false};

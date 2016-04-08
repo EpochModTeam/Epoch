@@ -13,7 +13,7 @@
     https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_code/compile/environment/EPOCH_client_earthQuake.sqf
 
     Example:
-    _location call EPOCH_client_earthQuake
+    [_location] call EPOCH_client_earthQuake
 
     Parameter(s):
 		_this: ARRAY - Locaton of epicenter
@@ -21,7 +21,8 @@
 	Returns:
 	Script handle
 */
-_epicenter = _this;
+private ["_intensity","_distance"];
+params [["_epicenter",[0,0,0], [[]]]];
 _distance = player distance _epicenter;
 _intensity = 1;
 if (_distance < 250) then {

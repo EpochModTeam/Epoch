@@ -21,19 +21,19 @@
 	Returns:
 	ARRAY of BOOLs
 */
-private ["_dt","_out","_object","_objType","_config"];
+private ["_out","_objType","_config"];
 _out = [false, false, false];
 
 if !(isNil "EPOCH_simulSwap_Lock") exitWith{ _out };
 if !(isNull EPOCH_Target) exitWith{ _out };
 
-params ["_object"];
+params [["_object",objNull]];
 
 if (isNull _object) exitWith{ _out };
 if ((player distance _object) > 9) exitWith { _out };
 
 if !(EPOCH_buildMode > 0) exitWith {_out};
-if (EPOCH_playerEnergy <= 0) exitWith{ _dt = ["<t size='0.8' shadow='0' color='#99ffffff'>Need energy</t>", 0, 1, 5, 2, 0, 1] spawn bis_fnc_dynamictext; _out };
+if (EPOCH_playerEnergy <= 0) exitWith{ ["<t size='1.6' color='#99ffffff'>Need energy</t>", 5] call Epoch_dynamicText; _out };
 
 _objType = typeOf _object;
 _config = 'CfgBaseBuilding' call EPOCH_returnConfig;

@@ -1,2 +1,15 @@
+/*
+	Author: Aaron Clark - EpochMod.com
+
+    Contributors:
+
+	Description:
+    Adds killed handler to storage object.
+
+    Licence:
+    Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
+
+    Github:
+    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_server/compile/epoch_server/EPOCH_server_storageInit.sqf
+*/
 _this addMPEventHandler["MPKilled", { _this call EPOCH_server_save_killedStorage }];
-// _this addMPEventHandler["MPHit", { if !((_this select 0) in EPOCH_saveStorQueue) then { EPOCH_saveStorQueue pushBack(_this select 0) } }];

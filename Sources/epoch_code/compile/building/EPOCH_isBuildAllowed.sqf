@@ -22,7 +22,8 @@
 	Returns:
 	BOOL
 */
-private ["_buildingAllowed","_jammer","_restricted","_restrictedLocations","_myPosATL"];
+private ["_buildingJammerRange","_buildingCountLimit","_buildingAllowed","_nearestJammer","_ownedJammerExists","_objectCount","_limitNearby","_restricted","_range","_config","_staticClass","_objType","_simulClass","_bypassJammer","_jammer","_restrictedLocations","_myPosATL"];
+
 _buildingAllowed = true;
 _ownedJammerExists = false;
 _nearestJammer = objNull;
@@ -48,7 +49,7 @@ if !(_jammer isEqualTo []) then {
 		{
 			if (alive _x) exitWith{
 				_buildingAllowed = false;
-				_dt = ["<t size = '0.8' shadow = '0' color = '#99ffffff'>Building Disallowed: Existing Jammer Signal</t>", 0, 1, 5, 2, 0, 1] spawn bis_fnc_dynamictext;
+				["<t size = '1.6' color = '#99ffffff'>Building Disallowed: Existing Jammer Signal</t>", 5] call Epoch_dynamicText;
 			};
 		} foreach _jammer;
 	} else {
@@ -64,12 +65,12 @@ if !(_jammer isEqualTo []) then {
 				_ownedJammerExists = true;
 			} else {
 				_buildingAllowed = false;
-				_dt = ["<t size = '0.8' shadow = '0' color = '#99ffffff'>Building Disallowed: Frequency Blocked</t>", 0, 1, 5, 2, 0, 1] spawn bis_fnc_dynamictext;
+				["<t size = '1.6' color = '#99ffffff'>Building Disallowed: Frequency Blocked</t>", 5] call Epoch_dynamicText;
 			};
 			_objectCount = count nearestObjects[_nearestJammer, ["Constructions_static_F"], _buildingJammerRange];
 			if (_objectCount >= _buildingCountLimit) then {
 				_buildingAllowed = false;
-				_dt = ["<t size = '0.8' shadow = '0' color = '#99ffffff'>Building Disallowed: Frequency Overloaded</t>", 0, 1, 5, 2, 0, 1] spawn bis_fnc_dynamictext;
+				["<t size = '1.6' color = '#99ffffff'>Building Disallowed: Frequency Overloaded</t>", 5] call Epoch_dynamicText;
 			};
 		};
 	};
@@ -83,7 +84,7 @@ if (!_ownedJammerExists) then{
 		_objectCount = count nearestObjects[player, [_staticClass, _simulClass], _buildingJammerRange];
 		if (_objectCount >= _limitNearby) then{
 			_buildingAllowed = false;
-			_dt = [format["<t size = '0.8' shadow = '0' color = '#99ffffff'>Building Disallowed: Limit %1</t>", _limitNearby], 0, 1, 5, 2, 0, 1] spawn bis_fnc_dynamictext;
+			[format["<t size = '1.6' color = '#99ffffff'>Building Disallowed: Limit %1</t>", _limitNearby], 5] call Epoch_dynamicText;
 		};
 	};
 };
@@ -94,7 +95,7 @@ if (getNumber(_config >> "buildingRequireJammer") == 0 && _bypassJammer == 0) th
 	if !(_objType in ["PlotPole_EPOCH", "PlotPole_SIM_EPOCH"]) then {
 		_buildingAllowed = _ownedJammerExists;
 		if !(_buildingAllowed) then {
-			_dt = ["<t size = '0.8' shadow = '0' color = '#99ffffff'>Building Disallowed: Frequency Jammer Needed</t>", 0, 1, 5, 2, 0, 1] spawn bis_fnc_dynamictext;
+			["<t size = '1.6' color = '#99ffffff'>Building Disallowed: Frequency Jammer Needed</t>", 5] call Epoch_dynamicText;
 		};
 	};
 };
@@ -113,20 +114,20 @@ if (getNumber(_config >> "buildingNearbyMilitary") == 0) then{
 };
 if !(_restricted isEqualTo []) then {
 	_buildingAllowed = false;
-	_dt = ["<t size = '0.8' shadow = '0' color = '#99ffffff'>Building Disallowed: Protected Frequency</t>", 0, 1, 5, 2, 0, 1] spawn bis_fnc_dynamictext;
+	["<t size = '1.6' color = '#99ffffff'>Building Disallowed: Protected Frequency</t>", 5] call Epoch_dynamicText;
 };
 
 _restrictedLocations = nearestLocations [player, ["NameCityCapital"], 300];
 if !(_restrictedLocations isEqualTo []) then {
 	_buildingAllowed = false;
-	_dt = ["<t size = '0.8' shadow = '0' color = '#99ffffff'>Building Disallowed: Protected Frequency</t>", 0, 1, 5, 2, 0, 1] spawn bis_fnc_dynamictext;
+	["<t size = '1.6' color = '#99ffffff'>Building Disallowed: Protected Frequency</t>", 5] call Epoch_dynamicText;
 };
 
 _myPosATL = getPosATL player;
 {
 	if ((_x select 0) distance _myPosATL < (_x select 1)) exitWith {
 		_buildingAllowed = false;
-		_dt = ["<t size = '0.8' shadow = '0' color = '#99ffffff'>Building Disallowed: Protected Frequency</t>", 0, 1, 5, 2, 0, 1] spawn bis_fnc_dynamictext;
+		["<t size = '1.6' color = '#99ffffff'>Building Disallowed: Protected Frequency</t>", 5] call Epoch_dynamicText;
 	};
 } forEach(getArray(_config >> worldname >> "blockedArea"));
 

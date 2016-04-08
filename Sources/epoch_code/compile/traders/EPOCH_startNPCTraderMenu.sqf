@@ -1,4 +1,4 @@
-private ["_index","_type","_config","_name","_picture","_qty","_items","_qtys","_ok","_vehicles","_aiItems","_target","_slot"];
+private ["_ok","_slot","_target"];
 _target = cursorTarget;
 if (alive _target) then {
 	_slot = _target getVariable ["AI_SLOT",-1];

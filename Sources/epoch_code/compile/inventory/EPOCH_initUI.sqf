@@ -23,7 +23,7 @@
 	Returns:
 	NOHTING
 */
-private ["_bar","_uniformArmor","_totalArmor","_finalArmor","_vestArmor","_headgearArmor","_bar_pos","_bar_compare","_color","_colorCompare","_display","_totalArmorMax"];
+private ["_display","_color","_colorCompare","_bar","_bar_compare"];
 disableSerialization;
 
 EPOCH_InteractedItem = [];

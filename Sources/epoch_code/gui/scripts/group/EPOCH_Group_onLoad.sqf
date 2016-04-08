@@ -1,9 +1,21 @@
+/*
+	Author: Niklas Wagner - EpochMod.com
+
+    Contributors: Aaron Clark
+
+	Description:
+	TODO: DESC-TBA
+
+    Licence:
+    Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
+
+    Github:
+    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_code/gui/group/EPOCH_Group_onLoad.sqf
+*/
 private ["_index","_players","_found","_playerUID","_picture","_display","_BtnInvite","_GroupMemberList","_InvitePlayerCombo","_currentMaxMember","_currentMember","_myPlayerUID","_playerIsLeader","_playerIsMod","_onlinePUID"];
 disableSerialization;
 _display = findDisplay -1300;
 _BtnInvite = _display displayCtrl 30;
-
-diag_log format["%1 %2", Epoch_my_Group, Epoch_my_GroupUID];
 
 _GroupMemberList = _display displayCtrl 40;
 _InvitePlayerCombo = _display displayCtrl 41;

@@ -51,10 +51,12 @@ class CfgRemoteExec
       allowedTargets=2;
       jip = 0;
     };
+    /*
 	class EPOCH_server_respawnPlayer {
       allowedTargets=2;
       jip = 0;
     };
+    */
 	class EPOCH_server_deadPlayer {
       allowedTargets=2;
       jip = 0;

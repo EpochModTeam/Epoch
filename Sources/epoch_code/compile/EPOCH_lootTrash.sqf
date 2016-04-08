@@ -16,6 +16,8 @@ private["_found", "_return", "_foundLocalAnimal", "_str", "_blood", "_foundTermi
 
 _return = false;
 _config = 'CfgEpochClient' call EPOCH_returnConfig;
+_configWorldInteractions = (_config >> "CfgWorldInteractions");
+_configWorldName = (_config >> worldname);
 
 if (diag_tickTime - EPOCH_lastTrash > 2)  then {
 	EPOCH_lastTrash = diag_tickTime;
@@ -34,30 +36,18 @@ if (diag_tickTime - EPOCH_lastTrash > 2)  then {
 		if !(_x isKindOf "All") then {
 			if (alive _x) then {
 				_str = str(_x);
-				_findStart = _str find ": ";
-				if (_findStart != -1) then {
-
-					_start = _findStart + 2;
-					_end = (_str find ".") - _start;
-					_p3dName = _str select[_start, _end];
-					if (_p3dName find " " != -1) then {
-						(_p3dName splitString " ") joinString "_"; // replace spaces with underscores
-					};
-					_finalConfig = (_config >> "WorldInteractions" >> (_p3dName + "_p3d"));
-
-					{
-						_found = (getNumber(_finalConfig >> _x) == 1);
-						if (_found) exitWith{ _trashType = _forEachIndex };
-					} forEach getArray(_config >> worldname >> "TrashClasses");
-					// TrashClasses[] = { "Trash", "TrashSmall", "TrashVehicle", "PumpkinPatch", "TrashFood" };
-
-					//_foundTerminal = _p3dName in EPOCH_atmList;
-					_foundTerminal = (getNumber(_finalConfig >> "bankTerminal") == 1);
-				};
+				_inputWorldTypes = ["bankTerminal"];
+				_inputWorldTypes append getArray(_configWorldName >> "TrashClasses");
+				_getWorldTypes = [_str, _inputWorldTypes] call EPOCH_worldObjectType;
+				{
+					_found = _getWorldTypes param [_inputWorldTypes find _x, false];
+					if (_found) exitWith{ _trashType = _forEachIndex };
+				} forEach getArray(_configWorldName >> "TrashClasses");
+				_foundTerminal = _getWorldTypes param [_inputWorldTypes find "bankTerminal", false];
 			};
 		} else {
 			if (alive _x) then {
-				_foundTerminal = (getNumber(_config >> "WorldInteractions" >> (typeOf _x) >> "bankTerminal") == 1);
+				_foundTerminal = (getNumber(_configWorldInteractions >> (typeOf _x) >> "bankTerminal") == 1);
 				if (_x isKindOf "Snake_random_EPOCH") then {
 					_foundLocalAnimal = true;
 					if (random 1 < 0.1) then {
@@ -84,20 +74,18 @@ if (diag_tickTime - EPOCH_lastTrash > 2)  then {
 		// send
 		[_lootAnimalObj, player, Epoch_personalToken] remoteExec ["EPOCH_server_lootAnimal",2];
 		_return = true;
-		_dt = ["<t size='0.8' shadow='0' color='#99ffffff'>Object Looted</t>", 0, 1, 5, 2, 0, 1] spawn bis_fnc_dynamictext;
+		["<t size='1.6' color='#99ffffff'>Object Looted</t>", 5] call Epoch_dynamicText;
 	};
 	if (!isNull _destroyTrashObj) then {
 		[_destroyTrashObj, _trashType, player, Epoch_personalToken] remoteExec ["EPOCH_server_destroyTrash",2];
 		EPOCH_playerSoiled = (EPOCH_playerSoiled + 1) min 100;
 		_return = true;
-		_dt = ["<t size='0.8' shadow='0' color='#99ffffff'>Object Looted</t>", 0, 1, 5, 2, 0, 1] spawn bis_fnc_dynamictext;
+		["<t size='1.6' color='#99ffffff'>Object Looted</t>", 5] call Epoch_dynamicText;
 
 		// Snake Den
 		if (random 1 < 0.04) then {
 			_animalPos = getposATL _destroyTrashObj;
-			_randomAIClass = ["Snake_random_EPOCH", "Snake2_random_EPOCH"];
-			_randomIndex = floor(random(count _randomAIClass));
-			_randomAIClass = _randomAIClass select _randomIndex;
+			_randomAIClass = selectRandom ["Snake_random_EPOCH", "Snake2_random_EPOCH"];
 			_animals = [];
 			for "_i" from 1 to 2 step 1 do {
 				_animal = createAgent[_randomAIClass, _animalPos, [], 0, "CAN_COLLIDE"];

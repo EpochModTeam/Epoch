@@ -1,15 +1,21 @@
 /*
-Building Remove
+	Author: Aaron Clark - EpochMod.com
 
-Epoch Mod - EpochMod.com
-All Rights Reserved.
+    Contributors:
+
+	Description:
+    Remove Building
+
+    Licence:
+    Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
+
+    Github:
+    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_server/compile/epoch_bases/EPOCH_server_removeBUILD.sqf
 */
-private["_vehSlot", "_building", "_player", "_gwh", "_wepsItemsCargo", "_magsAmmoCargo", "_objTypes", "_objQty", "_magazine", "_weapon", "_suppressor", "_laser", "_optics", "_arrCount", "_magazineName", "_magazineSize", "_qty", "_objType", "_inventory", "_posWH", "_nearbyWH", "_removeParts", "_isTemporary", "_storageSlot"];
+private["_vehSlot", "_gwh", "_wepsItemsCargo", "_magsAmmoCargo", "_objTypes", "_objQty", "_magazine", "_weapon", "_suppressor", "_laser", "_optics", "_arrCount", "_magazineName", "_magazineSize", "_qty", "_objType", "_inventory", "_posWH", "_nearbyWH", "_removeParts", "_isTemporary", "_storageSlot"];
+params ["_building","_player",["_token","",[""]]];
 
-_building = _this select 0;
-_player = _this select 1;
-
-if !([_player, _this select 2] call EPOCH_server_getPToken) exitWith{};
+if !([_player, _token] call EPOCH_server_getPToken) exitWith{};
 if (isNull _building) exitWith{};
 if (_player distance _building > 20) exitWith{};
 
@@ -79,7 +85,7 @@ if (_vehSlot != -1 || _storageSlot != "ABORT" || _isTemporary == 1) then{
 					{
 						switch _objType do {
 						case 0: {
-							if (typeName _x == "ARRAY") then{
+							if (_x isEqualType []) then{
 								_arrCount = count _x;
 								if (_arrCount >= 4) then{
 
@@ -91,7 +97,7 @@ if (_vehSlot != -1 || _storageSlot != "ABORT" || _isTemporary == 1) then{
 									// suppressor, laser, optics, magazines(array), bipods
 									{
 										// magazines
-										if (typeName(_x) == "ARRAY") then{
+										if (_x isEqualType []) then{
 											_wMags = true;
 											_wMagsArray = _x;
 										}
@@ -110,7 +116,7 @@ if (_vehSlot != -1 || _storageSlot != "ABORT" || _isTemporary == 1) then{
 									} forEach _attachments;
 
 									if (_wMags) then{
-										if (typeName _wMagsArray == "ARRAY" && (count _wMagsArray) >= 2) then{
+										if (_wMagsArray isEqualType [] && (count _wMagsArray) >= 2) then{
 											_gwh addMagazineAmmoCargo[_wMagsArray select 0, 1, _wMagsArray select 1];
 										};
 									};
@@ -119,25 +125,25 @@ if (_vehSlot != -1 || _storageSlot != "ABORT" || _isTemporary == 1) then{
 							};
 						};
 						case 1: {
-							if (typeName _x == "ARRAY") then{
+							if (_x isEqualType []) then{
 								if ((count _x) == 2) then{
 									_magazineName = _x select 0;
 									_magazineSize = _x select 1;
 
-									if ((typeName _magazineName == "STRING") && (typeName _magazineSize == "SCALAR")) then{
+									if ((_magazineName isEqualType "STRING") && (_magazineSize isEqualType 0)) then{
 										_gwh addMagazineAmmoCargo[_magazineName, 1, _magazineSize];
 									};
 								};
 							};
 						};
 						case 2: {
-							if (typeName _x == "STRING") then{
+							if (_x isEqualType "STRING") then{
 								_qty = _objQty select _forEachIndex;
 								_gwh addBackpackCargoGlobal[_x, _qty];
 							};
 						};
 						case 3: {
-							if (typeName _x == "STRING") then{
+							if (_x isEqualType "STRING") then{
 								_qty = _objQty select _forEachIndex;
 								_gwh addItemCargoGlobal[_x, _qty];
 							};
@@ -158,13 +164,10 @@ if (_vehSlot != -1 || _storageSlot != "ABORT" || _isTemporary == 1) then{
 				deleteVehicle _building;
 			};
 
-
 			// Normal config based payout
 			{
 				_gwh addMagazineCargoGlobal[_x select 0, _x select 1];
 			} forEach _removeParts;
 		};
-
 	};
-
 };

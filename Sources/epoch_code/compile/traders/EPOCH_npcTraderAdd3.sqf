@@ -1,16 +1,15 @@
-private ["_uiItem","_item","_worth","_cryptoCount","_control","_selected","_index","_sizeOut","_array"];
-_control = _this select 0;
-_selected = _this select 1;
+private ["_item","_worth","_cryptoCount","_itemWorth","_itemTax","_tax","_sizeOut","_uiItem","_config"];
+params ["_control","_selected"];
 
 _uiItem = (_selected select 0) lbData(_selected select 1);
 
 _config = 'CfgPricing' call EPOCH_returnConfig;
 if (isClass (_config >> _uiItem)) then{
-	
+
 	(_selected select 0) lbDelete (_selected select 1);
 
 	lbSetCurSel[42101, 0];
-	
+
 	_cryptoCount = 0;
 	_sizeOut = lbSize 41501;
 	//_array = [];
@@ -26,16 +25,13 @@ if (isClass (_config >> _uiItem)) then{
 
 	_cryptoCount = 0;
 	_sizeOut = lbSize 41502;
-	//_array = [];
 	if (_sizeOut > 0) then {
 		for "_i" from 0 to (_sizeOut - 1) do {
 			_item = lbData [41502, _i];
-			//_array pushBack _item;
 			_itemWorth = getNumber(_config >> _item >> "price");
 			_itemTax = getNumber(_config >> _item >> "tax");
 			_tax = _itemWorth * (EPOCH_taxRate + _itemTax);
 			_itemWorth = ceil(_itemWorth + _tax);
-			//diag_log format["_finalWorth %1", _finalWorth];
 			_cryptoCount = _cryptoCount + _itemWorth;
 		};
 	};

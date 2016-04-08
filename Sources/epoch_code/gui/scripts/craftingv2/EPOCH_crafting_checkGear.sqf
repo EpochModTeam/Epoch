@@ -1,3 +1,17 @@
+/*
+	Author: Raimonds Virtoss - EpochMod.com
+
+    Contributors:
+
+	Description:
+	DESC-TBA
+
+    Licence:
+    Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
+
+    Github:
+    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_code/gui/scripts/craftingv2/EPOCH_crafting_checkGear.sqf
+*/
 private ["_recipes","_nearObjects","_near","_out","_player","_recipe","_cP","_cN"];
 params ["_recipes"];
 
@@ -13,7 +27,7 @@ _near = []; _out = [];
 _player = (magazines player) + (items player) + (weapons player);
 
 {
-	_recipe = if (typeName _x isEqualTo "STRING") then {[_x,1]} else {_x};
+	_recipe = if (_x isEqualType "STRING") then {[_x,1]} else {_x};
 	_cP = {_x == (_recipe select 0)} count _player;
 	_cN = {_x == (_recipe select 0)} count _near;
 	_out pushBack [_cP, _cN, _recipe select 1];

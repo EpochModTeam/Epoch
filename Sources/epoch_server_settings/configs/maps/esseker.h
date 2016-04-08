@@ -15,6 +15,7 @@
 class Esseker : Default
 {
 	worldSize = 12000;
+	plantLimit = 5;
 	vehicleSpawnTypes[] = {
 		{"FlatAreaCity",1},
 		{"FlatAreaCitySmall",1},

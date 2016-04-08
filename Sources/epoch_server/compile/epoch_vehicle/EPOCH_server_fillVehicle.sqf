@@ -1,15 +1,24 @@
-private ["_owner","_vehicle","_value"];
-_vehicle = _this select 0;
-_plyr = _this select 2;
+/*
+	Author: Aaron Clark - EpochMod.com
 
-if !([_plyr, _this select 3] call EPOCH_server_getPToken) exitWith{};
-if (_plyr distance _vehicle > 20) exitWith{};
+    Contributors:
 
+	Description:
+    Refuel Vehicles
+
+    Licence:
+    Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
+
+    Github:
+    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_server/compile/epoch_vehicle/EPOCH_server_fillVehicle.sqf
+*/
+params ["_vehicle","_value","_player",["_token","",[""]]];
+if !([_player, _token] call EPOCH_server_getPToken) exitWith{};
+if (_player distance _vehicle > 20) exitWith{};
 if (!isNull _vehicle) then {
-	_value = _this select 1;
 	if (local _vehicle) then {
 		_vehicle setFuel _value;
 	} else {
-		[["fillVehicle", [_vehicle, _value]], (owner _vehicle)] call EPOCH_sendPublicVariableClient;
+		[_vehicle, _value] remoteExec ['EPOCH_client_fillVehicle',_vehicle];
 	};
 };

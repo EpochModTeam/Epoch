@@ -1,5 +1,16 @@
 /*
+	Author: Raimonds Virtoss - EpochMod.com
+
+    Contributors: Aaron Clark
+
+	Description:
 	Adjusts PP created elsewhere (or by epoch_postprocessCreate)
+
+    Licence:
+    Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
+
+    Github:
+    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_code/gui/scripts/post_process/EPOCH_postprocessCreate.sqf
 
 	Params:		[Handle, speed integer, Effect array]
 
@@ -15,11 +26,7 @@
 							dynamicBlur >> [0]
 							colorInversion >> [0,0,0]
 */
-
-_handle = param [0,666];
-_animSpeed = param [1,666];
-_effect = param [2,[]];
-
+params [["_handle",666],["_animSpeed",666],["_effect",[]]];
 //needed because PPs have variable array sizes
 if ((_handle isEqualTo 666) || (_animSpeed isEqualTo 666) || (_effect isEqualTo [])) exitWith {hint "Wrong PPAdjust input"; false};
 

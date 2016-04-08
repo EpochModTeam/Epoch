@@ -1,25 +1,28 @@
 /*
-Player Bank
+	Author: Aaron Clark - EpochMod.com
 
-Epoch Mod - EpochMod.com
-All Rights Reserved.
+    Contributors:
+
+	Description:
+	Player Bank
+
+    Licence:
+    Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
+
+    Github:
+    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_server/compile/epoch_player/EPOCH_server_storeCrypto.sqf
 */
-private["_plyr", "_bankBalance", "_bankBalanceBefore", "_current_crypto", "_transferBankBalance", "_transferBankBalanceBefore", "_return", "_transferBankData", "_transferTargetUID", "_transferResponse", "_transferAmountIn", "_transferAmountOut", "_transferBalance", "_transferTarget", "_cIndex", "_vars", "_plyrNetID", "_bankData", "_tradeArray", "_plyrUID", "_response"];
+private["_bankBalance", "_bankBalanceBefore", "_current_crypto", "_transferBankBalance", "_transferBankBalanceBefore", "_return", "_transferBankData", "_transferTargetUID", "_transferResponse", "_transferAmountIn", "_transferAmountOut", "_transferBalance", "_transferTarget", "_cIndex", "_vars", "_bankData", "_tradeArray", "_playerUID", "_response"];
+params ["_player","_tradeArray",["_token","",[""]]];
 
-_plyr = _this select 0;
-_tradeArray = _this select 1;
+if !([_player, _token] call EPOCH_server_getPToken) exitWith{};
 
-// handle token check and isnull for _plyr
-if !([_plyr, _this select 2] call EPOCH_server_getPToken) exitWith{};
-
-_plyrUID = getPlayerUID _plyr;
+_playerUID = getPlayerUID _player;
 
 // load players account
-_response = ["Bank", _plyrUID] call EPOCH_fnc_server_hiveGETRANGE;
+_response = ["Bank", _playerUID] call EPOCH_fnc_server_hiveGETRANGE;
 
-if ((_response select 0) == 1 && typeName(_response select 1) == "ARRAY") then {
-
-	_plyrNetID = owner _plyr;
+if ((_response select 0) == 1 && (_response select 1) isEqualType []) then {
 
 	_bankData = _response select 1;
 	_bankBalance = 0;
@@ -31,7 +34,7 @@ if ((_response select 0) == 1 && typeName(_response select 1) == "ARRAY") then {
 
 	// return balance to player
 	if (_tradeArray isEqualTo[]) then {
-		[["bankBalance", _bankBalance], _plyrNetID] call EPOCH_sendPublicVariableClient;
+		[["bankBalance", _bankBalance], _player] call EPOCH_sendRemoteExecClient;
 	} else {
 
 		// Transaction Data - TODO add check for validity of transaction
@@ -44,32 +47,31 @@ if ((_response select 0) == 1 && typeName(_response select 1) == "ARRAY") then {
 
 		// get vars array and current Crypto value
 		_cIndex = EPOCH_customVars find "Crypto";
-		_vars = _plyr getVariable["VARS", [] + EPOCH_defaultVars_SEPXVar];
+		_vars = _player getVariable["VARS", call EPOCH_defaultVars_SEPXVar];
 		_current_crypto = _vars select _cIndex;
 
 		// Make Transaction
-		_playerCryptoLimit = [(configFile >> "CfgSecConf" >> "limits"), "playerCrypto", 25000] call EPOCH_fnc_returnConfigEntry;
+		_playerCryptoLimit = EPOCH_customVarLimits select _cIndex;
+		_playerCryptoLimit params ["_playerCryptoLimitMax","_playerCryptoLimitMin"];
 
 		if (_transferAmountIn > 0) then {
-
-			// diag_log format["Store: _current_crypto: %1 _cIndex:%2", _current_crypto, _cIndex];
-
 			if (_current_crypto >= _transferAmountIn) then {
 				_bankBalance = _bankBalance + _transferAmountIn;
-				_current_crypto = ((_current_crypto - _transferAmountIn) min _playerCryptoLimit) max 0;
-				[["effectCrypto", _current_crypto], _plyrNetID] call EPOCH_sendPublicVariableClient;
+				_current_crypto = ((_current_crypto - _transferAmountIn) min _playerCryptoLimitMax) max _playerCryptoLimitMin;
+				_current_crypto remoteExec ['EPOCH_effectCrypto',_player];
 				_vars set[_cIndex, _current_crypto];
-				_plyr setVariable["VARS", _vars];
+				_player setVariable["VARS", _vars];
 			};
 		};
 
 		if (_transferAmountOut > 0) then {
 			if (_bankBalance >= _transferAmountOut) then {
 				_bankBalance = _bankBalance - _transferAmountOut;
-				_current_crypto = ((_current_crypto + _transferAmountOut) min _playerCryptoLimit) max 0;
-				[["effectCrypto", _current_crypto], _plyrNetID] call EPOCH_sendPublicVariableClient;
+				_current_crypto = ((_current_crypto + _transferAmountOut) min _playerCryptoLimitMax) max _playerCryptoLimitMin;
+				// send to player
+				_current_crypto remoteExec ['EPOCH_effectCrypto',_player];
 				_vars set[_cIndex, _current_crypto];
-				_plyr setVariable["VARS", _vars];
+				_player setVariable["VARS", _vars];
 			};
 		};
 
@@ -81,7 +83,7 @@ if ((_response select 0) == 1 && typeName(_response select 1) == "ARRAY") then {
 				_transferTargetUID = getPlayerUID _transferTarget;
 				_transferResponse = ["Bank", _transferTargetUID] call EPOCH_fnc_server_hiveGETRANGE;
 
-				if ((_transferResponse select 0) == 1 && typeName(_transferResponse select 1) == "ARRAY") then {
+				if ((_transferResponse select 0) == 1 && (_transferResponse select 1) isEqualType []) then {
 
 					_transferBankData = _transferResponse select 1;
 					_transferBankBalance = 0;
@@ -100,15 +102,15 @@ if ((_response select 0) == 1 && typeName(_response select 1) == "ARRAY") then {
 
 					if (_transferBankBalanceBefore != _transferBankBalance) then {
 						_return = ["Bank", _transferTargetUID, EPOCH_expiresPlayer, [_transferBankBalance]] call EPOCH_fnc_server_hiveSETEX;
-						[["bankBalance", _transferBankBalance], (owner _transferTarget)] call EPOCH_sendPublicVariableClient;
+						[["bankBalance", _transferBankBalance], _transferTarget] call EPOCH_sendRemoteExecClient;
 					};
 				};
 			};
 		};
 
 		if (_bankBalanceBefore != _bankBalance) then {
-			_return = ["Bank", _plyrUID, EPOCH_expiresBank, [_bankBalance]] call EPOCH_fnc_server_hiveSETEX;
+			_return = ["Bank", _playerUID, EPOCH_expiresBank, [_bankBalance]] call EPOCH_fnc_server_hiveSETEX;
 		};
 	};
 };
-diag_log format["BANK: %1 (%2) TRADE: %3", _plyr, _plyrUID, _tradeArray];
+diag_log format["Epoch: BANK - %1 (%2) TRADE: %3", _player, _playerUID, _tradeArray];

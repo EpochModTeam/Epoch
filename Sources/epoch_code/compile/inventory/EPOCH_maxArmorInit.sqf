@@ -21,7 +21,7 @@
 	Returns:
 	NOTHING
 */
-private ["_tempArmor","_maxArmorUniform","_curArmor","_maxArmorVest","_maxArmorHeadgear"];
+private ["_curArmor","_maxArmorUniform","_maxArmorVest","_maxArmorHeadgear"];
 _maxArmorUniform = 0;
 {
   _curArmor = ([getNumber(_x >> 'passThrough'),getNumber(_x >> 'armor')] call EPOCH_factorArmor) + getNumber(_x >> 'armorStructural');

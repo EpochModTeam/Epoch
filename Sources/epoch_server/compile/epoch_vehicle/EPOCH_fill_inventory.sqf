@@ -1,10 +1,20 @@
-private ["_vehicle","_class","_qty"];
-_vehicle = _this select 0;
+/*
+	Author: Aaron Clark - EpochMod.com
+
+    Contributors:
+
+	Description:
+    Fill vehicle inventory
+
+    Licence:
+    Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
+
+    Github:
+    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_server/compile/epoch_vehicle/EPOCH_fill_inventory.sqf
+*/
+params ["_vehicle","_type","_class","_qty"];
 if (!isNull _vehicle) then {
-	//_type = _this select 1;
-	_class = _this select 2;
-	_qty = _this select 3;
-	switch (_this select 1) do {
+	switch (_type) do {
 		case 0: { _vehicle addWeaponCargoGlobal[_class, _qty] };
 		case 1: { _vehicle addBackpackCargoGlobal[_class, _qty] };
 		case 2: { _vehicle addMagazineCargoGlobal[_class, _qty] };

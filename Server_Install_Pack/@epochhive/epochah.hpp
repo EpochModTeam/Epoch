@@ -8,12 +8,12 @@ antihack_whitelistedCfgPatches[] = {"A3Data","A3_BaseConfig_F","A3_Dubbing_Radio
 antihack_InvOpenCheck[] = {}; // blank array disables, enable with {6} distance in meters disallows gear access if another player is within this range also disables gear access in vehicles.
 antihack_banReason = "EpochMod.com Autoban";
 antihack_checkFiles[] = { //script check, leave it blank to disable it
-	{"\x\addons\a3_epoch_code\compile\setup\EPOCH_clientInit.sqf", "EPOCH_clientInit"},
-	{"\x\addons\a3_epoch_code\compile\EPOCH_onEachFrame.sqf", "EPOCH_onEachFrame"},
-	{"\x\addons\a3_epoch_code\compile\setup\EPOCH_masterLoop.sqf", "EPOCH_masterLoop"},
-	{"\x\addons\a3_epoch_code\compile\setup\EPOCH_client_rejectPlayer.sqf", "EPOCH_client_rejectPlayer"},
-	{"\x\addons\a3_epoch_code\compile\setup\EPOCH_clientRespawn.sqf", "EPOCH_clientRespawn"},
-	{"\x\addons\a3_epoch_code\compile\interface_event_handlers\EPOCH_KeyDown.sqf", "EPOCH_KeyDown"}
+	{"epoch_code\compile\setup\EPOCH_clientInit.sqf", "EPOCH_clientInit"},
+	{"epoch_code\compile\EPOCH_onEachFrame.sqf", "EPOCH_onEachFrame"},
+	{"epoch_code\compile\setup\EPOCH_masterLoop.sqf", "EPOCH_masterLoop"},
+	{"epoch_code\compile\setup\EPOCH_client_rejectPlayer.sqf", "EPOCH_client_rejectPlayer"},
+	{"epoch_code\compile\setup\EPOCH_clientRespawn.sqf", "EPOCH_clientRespawn"},
+	{"epoch_code\compile\interface_event_handlers\EPOCH_KeyDown.sqf", "EPOCH_KeyDown"}
 };
 antihack_addActionCheck = true; // false to disable addAction checks
 antihack_customVariablesCheck = false; // true enables variable scanning on missionNamespace

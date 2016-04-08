@@ -21,13 +21,13 @@
 	Returns:
 	BOOL
 */
-private ["_targeter","_stability","_dt","_object"];
+private ["_targeter","_stability"];
 
 if !(isNil "EPOCH_simulSwap_Lock") exitWith{ false };
 if !(isNull EPOCH_Target) exitWith{ false };
-if (EPOCH_playerEnergy <= 0) exitWith{ _dt = ["<t size='0.8' shadow='0' color='#99ffffff'>Need energy</t>", 0, 1, 5, 2, 0, 1] spawn bis_fnc_dynamictext; false };
+if (EPOCH_playerEnergy <= 0) exitWith{ ["<t size='1.6' color='#99ffffff'>Need energy</t>", 5] call Epoch_dynamicText; false };
 
-params ["_object"];
+params [["_object",objNull]];
 
 EPOCH_buildOption = 2;
 
@@ -50,9 +50,7 @@ if (_stability > 0) exitWith{
 
 /*
 if (_object isKindOf "Infostand_base_F") then {
-	if (!(_object in EPOCH_SURVEY)) then {
-		EPOCH_SURVEY pushBack _object;
-	};
+	EPOCH_SURVEY pushBackUnique  _object;
 };
 */
 

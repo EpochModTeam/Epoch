@@ -22,12 +22,12 @@
 	Returns:
 	NOTHING
 */
-private ["_allowedSnapObjects","_nearestObject","_pOffset","_snapPos","_snapPosition","_snapType","_snapDistance","_pos2","_snapPointsPara","_snapPointsPerp","_distance","_objSlot","_currentTarget","_allowedSnapPoints","_class","_dt","_energyCost","_maxHeight","_stabilityCheck","_pos2ATL","_lastCheckTime","_rejectMove","_currentOffSet","_dir2","_up2","_isSnap","_snapPos1","_pos_snapObj","_direction","_pos1_snap","_pos2_snap","_ins","_EPOCH_2","_arr_snapPoints","_pos1","_offSet","_snapConfig","_baselineSnapPos","_nearestObjects","_EPOCH_1","_numberOfContacts","_worldspace","_offsetZPos","_currentPos","_object","_item","_objType","_simulClass","_snapChecks","_maxSnapDistance"];
 if !(isNil "EPOCH_simulSwap_Lock") exitWith{};
-
-// inputs
-_object = param [0,objNull];
-_item = param [1,""];
+private ["_energyCost","_maxHeight","_stabilityCheck","_pos2ATL","_lastCheckTime","_rejectMove","_currentOffSet","_dir2","_up2","_nearestObject","_isSnap","_snapPosition","_snapType","_pOffset","_snapPos","_snapDistance","_snapPos1","_pos_snapObj","_direction","_pos1_snap","_pos2_snap","_ins","_EPOCH_2","_arr_snapPoints","_pos1","_offSet","_snapConfig","_snapPointsPara","_snapPointsPerp","_baselineSnapPos","_distance","_nearestObjects","_EPOCH_1","_pos2","_numberOfContacts","_worldspace","_currentTarget","_offsetZPos","_currentPos","_objSlot","_allowedSnapPoints","_allowedSnapObjects","_objType","_class","_simulClass","_snapChecks","_maxSnapDistance"];
+params [
+	["_object",objNull],
+	["_item",""]
+];
 
 // exit if object is nulll
 if (isNull _object) exitWith{ EPOCH_target = objNull; };
@@ -35,7 +35,7 @@ if (isNull _object) exitWith{ EPOCH_target = objNull; };
 if (_item == "") exitWith{ EPOCH_target = objNull; };
 
 if (EPOCH_playerEnergy <= 0) exitWith{
-	_dt = ["<t size = '0.8' shadow = '0' color = '#99ffffff'>Need Energy</t>", 0, 1, 5, 2, 0, 1] spawn bis_fnc_dynamictext;
+	["<t size = '1.6' color = '#99ffffff'>Need Energy</t>", 5] call Epoch_dynamicText;
 };
 if !("" call EPOCH_isBuildAllowed) exitWith{};
 EPOCH_simulSwap_Lock = true;
@@ -50,8 +50,8 @@ if (_energyCost == 0) then {
 _class = getText(configfile >> "cfgVehicles" >> _objType >> "GhostPreview");
 _maxHeight = getNumber(configfile >> "cfgVehicles" >> _objType >> "maxHeight");
 _simulClass = getText(configFile >> "CfgVehicles" >> _objType >> "simulClass");
-_snapChecks = getArray(configFile >> "CfgSnapChecks" >> _objType >> "nails");
-diag_log format["DEBUG: _snapChecks %1",_snapChecks];
+_snapChecks = getArray(("CfgSnapChecks" call EPOCH_returnConfig) >> _objType >> "nails");
+
 _maxSnapDistance = 1;
 _lastCheckTime = diag_tickTime;
 _stabilityCheck = false;
@@ -168,38 +168,24 @@ if (_class != "") then {
 				_baselineSnapPos = _nearestObject modelToWorldVisual [0,0,0];
 
 				if (EPOCH_buildMode == 1) then {
-
 					{
-						if (_x in _allowedSnapPoints) then {
-							_pOffset = _nearestObject selectionPosition _x;
-							_snapPos = _nearestObject modelToWorldVisual _pOffset;
-							if (surfaceIsWater _snapPos) then {
-								_snapPos set[2, ((getPosASL _nearestObject) select 2) + (_pOffset select 2)];
+						_x params ["_snapPoints","_type"];
+						{
+							if (_x in _allowedSnapPoints) then {
+								_pOffset = _nearestObject selectionPosition _x;
+								_snapPos = _nearestObject modelToWorldVisual _pOffset;
+								if (surfaceIsWater _snapPos) then {
+									_snapPos set[2, ((getPosASL _nearestObject) select 2) + (_pOffset select 2)];
+								};
+								_snapDistance = _pos2 distance _snapPos;
+								if (_snapDistance < _maxSnapDistance) exitWith{
+									_isSnap = true;
+									_snapPosition = _snapPos;
+									_snapType = _type;
+								};
 							};
-							_snapDistance = _pos2 distance _snapPos;
-							if (_snapDistance < _maxSnapDistance) exitWith{
-								_isSnap = true;
-								_snapPosition = _snapPos;
-								_snapType = "para";
-							};
-						};
-					} forEach _snapPointsPara;
-
-					{
-						if (_x in _allowedSnapPoints) then {
-							_pOffset = _nearestObject selectionPosition _x;
-							_snapPos = _nearestObject modelToWorldVisual _pOffset;
-							if (surfaceIsWater _snapPos) then {
-								_snapPos set[2, ((getPosASL _nearestObject) select 2) + (_pOffset select 2)];
-							};
-							_snapDistance = _pos2 distance _snapPos;
-							if (_snapDistance < _maxSnapDistance) exitWith{
-								_isSnap = true;
-								_snapPosition = _snapPos;
-								_snapType = "perp";
-							};
-						};
-					} forEach _snapPointsPerp;
+						} forEach _snapPoints;
+					} forEach [[_snapPointsPara,"para"],[_snapPointsPerp,"perp"]];
 				};
 
 				_distance = _pos2 distance _currentTarget;
@@ -214,10 +200,8 @@ if (_class != "") then {
 						_snapPos1 = [_snapPosition select 0, _snapPosition select 1, 0];
 						_pos_snapObj = getposATL _nearestObject;
 						_pos_snapObj set[2, 0];
-
-						_direction = _direction - ([_snapPos1, _pos_snapObj] call BIS_fnc_dirTo);
-					}
-					else {
+						_direction = _direction - (_snapPos1 getDir _pos_snapObj);
+					} else {
 						_direction = 0;
 					};
 					if (EPOCH_snapDirection > 0) then {
@@ -269,8 +253,9 @@ if (_class != "") then {
 							_snapPosition = ASLtoATL _snapPosition;
 						};
 
-						_currentTarget setVectorDirAndUp[_dir2, (vectorUp _nearestObject)];
+
 						_currentTarget setposATL _snapPosition;
+						_currentTarget setVectorDirAndUp[_dir2, (vectorUp _nearestObject)];
 
 						if ((diag_tickTime - _EPOCH_2) > 2) then {
 							_EPOCH_2 = diag_tickTime;
@@ -282,9 +267,9 @@ if (_class != "") then {
 						        _ins = lineIntersectsSurfaces [AGLToASL _pos1_snap, AGLToASL _pos2_snap,player,_currentTarget,true,1,"VIEW","FIRE"];
 						        if (count _ins > 0) then {
 									if (surfaceIsWater _snapPosition) then {
-										_arr_snapPoints pushBack (_ins select 0 select 0);
+										_arr_snapPoints pushBackUnique (_ins select 0 select 0);
 									} else {
-										_arr_snapPoints pushBack ASLToATL(_ins select 0 select 0);
+										_arr_snapPoints pushBackUnique ASLToATL(_ins select 0 select 0);
 									};
 						        };
 								if (count _arr_snapPoints >= 2) exitWith { EPOCH_arr_snapPoints = _arr_snapPoints; }
@@ -364,8 +349,9 @@ if (_class != "") then {
 						_worldspace = [getposATL _currentTarget, vectordir _currentTarget, vectorup _currentTarget];
 						deleteVehicle _currentTarget;
 						_currentTarget = createVehicle[_simulClass, (_worldspace select 0), [], 0, "CAN_COLLIDE"];
-						_currentTarget setVectorDirAndUp[_worldspace select 1, _worldspace select 2];
+
 						_currentTarget setposATL(_worldspace select 0);
+						_currentTarget setVectorDirAndUp[_worldspace select 1, _worldspace select 2];
 					};
 				};
 			};

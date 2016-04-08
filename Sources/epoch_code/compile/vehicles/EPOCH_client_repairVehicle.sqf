@@ -12,9 +12,7 @@
     Github:
     https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_code/compile/vehicles/EPOCH_client_repairVehicle.sqf
 */
-private ["_vehicle","_value"];
-_vehicle = _this select 0;
-_value = _this select 1;
+params ["_vehicle","_value"];
 if (local _vehicle) then {
 	_currentDMG = _vehicle getHitIndex (_value select 0);
 	_vehicle setHitIndex[_value select 0, (_currentDMG - 0.5) max 0];

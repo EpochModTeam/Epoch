@@ -1,8 +1,8 @@
-private ["_uiItem","_item","_worth","_cryptoCount","_control","_selected","_index","_sizeOut","_array"];
+private ["_stockLimit","_allowAdd","_limit","_slot","_aiItems","_itemClasses","_itemQtys","_qtyIndex","_item","_sizeOut","_worth","_cryptoCount","_itemWorth","_itemTax","_tax","_index","_uiItem","_config"];
+params ["_control","_selected"];
+
 if !(isNull EPOCH_lastNPCtradeTarget) then {
 
-	_control = _this select 0;
-	_selected = _this select 1;
 	_allowAdd = true;
 	_stockLimit = false;
 	_uiItem = (_selected select 0) lbData (_selected select 1);
@@ -51,7 +51,7 @@ if !(isNull EPOCH_lastNPCtradeTarget) then {
 						};
 					};
 				};
-				// disallow adding item to list of already one 
+				// disallow adding item to list of already one
 			};
 		};
 
@@ -77,25 +77,22 @@ if !(isNull EPOCH_lastNPCtradeTarget) then {
 
 			_cryptoCount = 0;
 			_sizeOut = lbSize 41502;
-			//_array = [];
 			if (_sizeOut > 0) then {
 				for "_i" from 0 to(_sizeOut - 1) do {
 					_item = lbData[41502, _i];
-					//_array pushBack _item;
 					_itemWorth = getNumber(_config >> _item >> "price");
 					_itemTax = getNumber(_config >> _item >> "tax");
 					_tax = _itemWorth * (EPOCH_taxRate + _itemTax);
 					_itemWorth = ceil(_itemWorth + _tax);
-					//diag_log format["_finalWorth %1", _finalWorth];
 					_cryptoCount = _cryptoCount + _itemWorth;
 				};
 			};
 			ctrlSetText[41005, (format["%1 Krypto", _cryptoCount])];
 		} else {
 			if (_stockLimit) then{
-				_dt = ["<t size='0.8' shadow='0' color='#99ffffff'>Trader has the maximum amount of this item</t>", 0, 1, 5, 2, 0, 1] spawn bis_fnc_dynamictext;
+				["<t size='1.6' color='#99ffffff'>Trader has the maximum amount of this item</t>", 5] call Epoch_dynamicText;
 			} else {
-				_dt = ["<t size='0.8' shadow='0' color='#99ffffff'>Limit one per trade</t>", 0, 1, 5, 2, 0, 1] spawn bis_fnc_dynamictext;
+				["<t size='1.6' color='#99ffffff'>Limit one per trade</t>", 5] call Epoch_dynamicText;
 			};
 		};
 	};

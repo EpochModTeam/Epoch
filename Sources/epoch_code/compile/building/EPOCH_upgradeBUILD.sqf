@@ -22,10 +22,13 @@
 	Returns:
 	NOTHING
 */
-private ["_buildingJammerRange","_buildingCountLimit","_nearestJammer","_ownedJammerExists","_buildingAllowed","_dt","_missingCount","_canUpgrade","_missingParts","_part","_req","_partCheck","_canUpgradePartCount","_removedPartCount","_return","_upgrade","_upgradeParts","_config","_upgrades","_object","_index","_targeter","_stability","_jammer"];
+private ["_buildingJammerRange","_buildingCountLimit","_nearestJammer","_ownedJammerExists","_buildingAllowed","_missingCount","_canUpgrade","_missingParts","_part","_req","_partCheck","_canUpgradePartCount","_removedPartCount","_return","_upgrade","_upgradeParts","_config","_upgrades","_targeter","_stability","_jammer"];
+params [
+	["_object",objNull,[objNull]],
+	["_index",-1,[0]]
+];
 _return = false;
-_object = param [0,objNull,[objNull]];
-_index = param [1,-1,[0]]; //EPOCH_UpgradeIndex
+
 if !(_index isEqualTo -1) then {Epoch_upgradeIndex = _index};
 if (isNull _object) exitWith {false};
 
@@ -42,11 +45,7 @@ if (_buildingCountLimit == 0) then { _buildingCountLimit = 200; };
 
 EPOCH_buildOption = 1;
 
-
-
-// check if another player has target
 _targeter = _object getVariable["last_targeter", objNull];
-
 if (!isNull _targeter && _targeter != player && (player distance _object > _targeter distance _object)) exitWith{ EPOCH_stabilityTarget = objNull; false };
 
 _stability = _object getVariable["stability", 100];
@@ -72,7 +71,7 @@ if !(_jammer isEqualTo[]) then {
 			}
 			else {
 				_buildingAllowed = false;
-				_dt = ["<t size = '0.8' shadow = '0' color = '#99ffffff'>Upgrade Disallowed: Frequency Blocked</t>", 0, 1, 5, 2, 0, 1] spawn bis_fnc_dynamictext;
+				["<t size = '1.6' color = '#99ffffff'>Upgrade Disallowed: Frequency Blocked</t>", 5] call Epoch_dynamicText;
 			};
 		};
 };
@@ -98,12 +97,9 @@ if (_object isKindOf "Constructions_static_F") then {
 			_part = _x select 0;
 			_req = _x select 1;
 			_partCheck = {_x == _part} count (magazines player);
-			//diag_log format["DEBUG: _partCheck %1", _partCheck];
-			//diag_log format["DEBUG: _x %1", _x];
+
 			if (_partCheck < _req) then {
 				_missingCount = _req - _partCheck;
-
-				//diag_log format["DEBUG: _missingCount %1", _missingCount];
 
 				_canUpgrade = false;
 				_missingParts = _missingParts + format["Missing %1 %2, ", _missingCount, (_part call EPOCH_itemDisplayName)];
@@ -127,10 +123,10 @@ if (_object isKindOf "Constructions_static_F") then {
 				[_object,player,Epoch_upgradeIndex,Epoch_personalToken] remoteExec ["EPOCH_server_upgradeBUILD",2];
 				Epoch_upgradeIndex = nil;
 				_return = true;
-				_dt = ["<t size='0.8' shadow='0' color='#99ffffff'>Upgraded</t>", 0, 1, 5, 2, 0, 1] spawn bis_fnc_dynamictext;
+				["<t size='1.6' color='#99ffffff'>Upgraded</t>", 5] call Epoch_dynamicText;
 			};
 		} else {
-			_dt = [format["<t size='0.8' shadow='0' color='#99ffffff'>%1</t>", _missingParts], 0, 1, 5, 2, 0, 1] spawn bis_fnc_dynamictext;
+			[format["<t size='1.6' color='#99ffffff'>%1</t>", _missingParts], 5] call Epoch_dynamicText;
 		};
 	};
 };

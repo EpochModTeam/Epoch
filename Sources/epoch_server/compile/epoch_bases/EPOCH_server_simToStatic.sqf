@@ -1,8 +1,16 @@
 /*
-Building - Converts to static all simulated objects that have not moved since last check
+	Author: Aaron Clark - EpochMod.com
 
-Epoch Mod - EpochMod.com
-All Rights Reserved.
+    Contributors:
+
+	Description:
+    Building - Converts to static all simulated objects that have not moved since last check
+
+    Licence:
+    Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
+
+    Github:
+    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_server/compile/epoch_bases/EPOCH_server_simToStatic.sqf
 */
 private ["_worldspace","_newObj","_class","_objSlot","_config","_lastPosition","_currentPosition","_entities"];
 _entities = allMissionObjects "Constructions_modular_F";
@@ -20,8 +28,9 @@ _entities = allMissionObjects "Constructions_modular_F";
 				_newObj = createVehicle [_class, (_worldspace select 0), [], 0, "CAN_COLLIDE"];
 				_newObj setVariable ["BUILD_SLOT",_objSlot,true];
 				_newObj call EPOCH_server_buildingInit;
-				_newObj setVectorDirAndUp [(_worldspace select 1),(_worldspace select 2)];
+
 				_newObj setposATL (_worldspace select 0);
+				_newObj setVectorDirAndUp [(_worldspace select 1),(_worldspace select 2)];
 			};
 		};
 	};

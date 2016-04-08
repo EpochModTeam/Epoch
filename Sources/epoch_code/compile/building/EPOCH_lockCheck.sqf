@@ -21,7 +21,8 @@
 	Returns:
 	BOOL
 */
-private ["_jammed","_jammer","_buildingJammerRange","_config"];
+private ["_buildingJammerRange","_jammed","_config","_jammer"];
+
 _config = "CfgEpochClient" call EPOCH_returnConfig;
 _buildingJammerRange = getNumber(_config >> "buildingJammerRange");
 if (_buildingJammerRange == 0) then { _buildingJammerRange = 75; };

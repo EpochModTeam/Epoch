@@ -21,7 +21,7 @@
 	Returns:
 	NOTHING
 */
-private["_item", "_currQty", "_tradeType", "_itemWorth", "_aiItems", "_itemClasses", "_itemQtys", "_qtyIndex", "_tradeTotal", "_tradeQtyTotal", "_errorMsg", "_target", "_sizeOut", "_array", "_makeTrade", "_vehSlot", "_vehicle", "_vehicles", "_display", "_addWeaponToHands", "_type", "_tax"];
+private ["_vehSlot","_vehicle","_vehicles","_item","_current_crypto","_itemWorth","_itemTax","_tax","_config","_sizeOut","_arrayIn","_arrayOut"];
 
 if (!isNil "EPOCH_TRADE_COMPLETE") exitWith {};
 if (!isNil "EPOCH_TRADE_STARTED") exitWith{};
@@ -126,12 +126,12 @@ if (alive _this) then {
 			if !((EPOCH_TRADE_COMPLETE select 0) isEqualTo[]) then {
 				if ((EPOCH_TRADE_COMPLETE select 0) isEqualTo(_this select 0)) then {
 					_errorMsg = 'Items Sold';
-					_dt = [format["<t size='0.8' shadow='0' color='#99ffffff'>%1</t>", _errorMsg], 0, 1, 5, 2, 0, 1] spawn bis_fnc_dynamictext;
+					[format["<t size='1.6' color='#99ffffff'>%1</t>", _errorMsg], 5] call Epoch_dynamicText;
 
 				}
 				else {
 					_errorMsg = 'Failed To Sell Items';
-					_dt = [format["<t size='0.8' shadow='0' color='#99ffffff'>%1</t>", _errorMsg], 0, 1, 5, 2, 0, 1] spawn bis_fnc_dynamictext;
+					[format["<t size='1.6' color='#99ffffff'>%1</t>", _errorMsg], 5] call Epoch_dynamicText;
 				};
 			};
 
@@ -179,11 +179,11 @@ if (alive _this) then {
 						};
 					} forEach(_this select 1);
 
-					_dt = [format["<t size='0.8' shadow='0' color='#99ffffff'>%1</t>", _errorMsg], 0, 0.4, 5, 2, 0, 2] spawn bis_fnc_dynamictext;
+					[format["<t size='1.6' color='#99ffffff'>%1</t>", _errorMsg], 5] call Epoch_dynamicText;
 				}
 				else {
 					_errorMsg = 'Failed To Purchase Items';
-					_dt = [format["<t size='0.8' shadow='0' color='#99ffffff'>%1</t>", _errorMsg], 0, 0.4, 5, 2, 0, 2] spawn bis_fnc_dynamictext;
+					[format["<t size='1.6' color='#99ffffff'>%1</t>", _errorMsg], 5] call Epoch_dynamicText;
 				};
 			};
 

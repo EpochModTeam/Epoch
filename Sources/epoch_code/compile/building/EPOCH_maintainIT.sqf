@@ -21,8 +21,8 @@
 	Returns:
 	NOTHING
 */
-private ["_dt","_buildingJammerRange","_maintainCount","_rnd","_config"];
-if !(isNil "EPOCH_maintainLockout") exitWith {_dt = ["<t size=""0.8"" shadow=""0"" color=""#99ffffff"">Already Maintaining a base.</t>", 0, 1, 5, 2, 0, 1] spawn bis_fnc_dynamictext;};
+private ["_buildingJammerRange","_maintainCount","_rnd","_config"];
+if !(isNil "EPOCH_maintainLockout") exitWith {["<t size=""1.6"" color=""#99ffffff"">Already Maintaining a base.</t>", 5] call Epoch_dynamicText;};
 if (EPOCH_playerCrypto > 0) then {
   _config = "CfgEpochClient" call EPOCH_returnConfig;
   _buildingJammerRange = getNumber(_config >> "buildingJammerRange");
@@ -35,7 +35,7 @@ if (EPOCH_playerCrypto > 0) then {
       _maintainCount = EPOCH_playerCrypto;
     };
 
-    _rnd = format ["rmx_var_temp%1%2",floor random 100, ["A","B","C","D","E","F"] select random 5];
+    _rnd = format ["rmx_var_temp%1%2",floor random 100, selectRandom ["A","B","C","D","E","F"]];
     [_this modelToWorld [0,0,0.2],20,"x\addons\a3_epoch_code\Data\UI\buttons\timer.paa", "Maintaining",60,_rnd] call epoch_gui3dWorldPos;
 
     EPOCH_maintainLockout = true;
@@ -51,10 +51,10 @@ if (EPOCH_playerCrypto > 0) then {
       EPOCH_maintainLockout = nil;
     };
 
-    _dt = [format["<t size=""0.8"" shadow=""0"" color=""#99ffffff"">Cost %1 Krypto to maintain base.</t>", _maintainCount], 0, 1, 5, 2, 0, 1] spawn bis_fnc_dynamictext;
+    [format["<t size=""1.6""  color=""#99ffffff"">Cost %1 Krypto to maintain base.</t>", _maintainCount], 5] call Epoch_dynamicText;
   } else {
-    _dt = ["<t size=""0.8"" shadow=""0"" color=""#99ffffff"">Nothing needs Maintaining</t>", 0, 1, 5, 2, 0, 1] spawn bis_fnc_dynamictext;
+    ["<t size=""1.6""  color=""#99ffffff"">Nothing needs Maintaining</t>", 5] call Epoch_dynamicText;
   };
 } else {
-  _dt = ["<t size=""0.8"" shadow=""0"" color=""#99ffffff"">You need Krypto to maintain a base.</t>", 0, 1, 5, 2, 0, 1] spawn bis_fnc_dynamictext;
+  ["<t size=""1.6""  color=""#99ffffff"">You need Krypto to maintain a base.</t>", 5] call Epoch_dynamicText;
 };

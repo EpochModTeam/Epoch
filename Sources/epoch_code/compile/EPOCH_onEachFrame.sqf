@@ -48,45 +48,25 @@ if (!isNull EPOCH_currentTarget && vehicle player == player) then {
 		_icon = "\x\addons\a3_epoch_code\Data\UI\ui_question_ca.paa";
 
 		_interactOption = getNumber(configFile >> "cfgVehicles" >> typeOf _currentTarget >> "interactMode");
-
 		switch _interactOption do {
 			case 0: {
 				_stability = 100 - round(damage _currentTarget * 100);
 				_icon = "\x\addons\a3_epoch_code\Data\UI\loading_bar_%1.paa";
 				_text = "";
-
-				if (_stability < 50) then {
-					_color = [1, 0.5, 0, 0.7];
-					if (_stability < 25) then {
-						_color = [1, 0, 0, 0.7];
-					};
-				};
+				_color = [100,0,_stability,0.7] call EPOCH_colorRange;
 			};
 			case 1: {
 				_text = if (EPOCH_buildMode > 0) then[{_text}, { format ["Press (%1)",EPOCH_keysBuildMode1 call BIS_fnc_keyCode] }];
 				_stability = if (EPOCH_buildMode > 0) then[{_currentTarget getVariable["stability", 100]}, {100 - round(damage _currentTarget * 100)}];
 				_icon = "\x\addons\a3_epoch_code\Data\UI\loading_bar_%1.paa";
-
-				if (_stability < 50) then {
-					_color = [1, 0.5, 0, 0.7];
-					if (_stability < 25) then {
-						_color = [1, 0, 0, 0.7];
-					};
-				};
+				_color = [100,0,_stability,0.7] call EPOCH_colorRange;
 			};
 			case 2: {
 				if (alive _currentTarget) then{
 					_text = format["%1 - Press (Ctrl+%2)", if (isStreamFriendlyUIEnabled) then[{"Player"}, { name _currentTarget }],EPOCH_keysAcceptTrade call BIS_fnc_keyCode];
 					_stability = 100 - round(damage _currentTarget * 100);
 					_icon = "\x\addons\a3_epoch_code\Data\UI\loading_bar_%1.paa";
-
-					if (_stability < 50) then{
-						_color = [1, 0.5, 0, 0.7];
-						if (_stability < 25) then{
-							_color = [1, 0, 0, 0.7];
-						};
-					};
-
+					_color = [100,0,_stability,0.7] call EPOCH_colorRange;
 				} else {
 					//_text = "Press (Inventory)";
 					_icon = "\x\addons\a3_epoch_code\Data\UI\ui_crossbones_ca.paa";
@@ -96,20 +76,14 @@ if (!isNull EPOCH_currentTarget && vehicle player == player) then {
 				if (!alive _currentTarget && _distance < 2) then{
 					_text = format ["Gut Animal - %1",_text];
 					_icon = "\x\addons\a3_epoch_code\Data\UI\ui_crossbones_ca.paa";
+					_color = [1,0,0,0.7];
 				};
 			};
 			case 4: {
-				//_text = if (EPOCH_buildMode > 0) then[{"Press (Space)"}, { "Press (Inventory)" }];
 				_text = if (EPOCH_buildMode > 0) then[{_text}, { format ["Press (%1) or (Inventory)",EPOCH_keysBuildMode1 call BIS_fnc_keyCode] }];
 				_stability = if (EPOCH_buildMode > 0) then[{_currentTarget getVariable["stability", 100]}, {100 - round(damage _currentTarget * 100)}];
 				_icon = "\x\addons\a3_epoch_code\Data\UI\loading_bar_%1.paa";
-
-				if (_stability < 50) then{
-					_color = [1, 0.5, 0, 0.7];
-					if (_stability < 25) then{
-						_color = [1, 0, 0, 0.7];
-					};
-				};
+				_color = [100,0,_stability,0.7] call EPOCH_colorRange;
 			};
 		};
 
@@ -150,22 +124,16 @@ else {
 
 
 if (EPOCH_drawIcon3d) then {
-		{
-			if (!isPlayer _x) then {
-				_pos = visiblePositionASL _x;
-				_pos set[2, (_x modelToWorld[0, 0, 0]) select 2];
-				_endTime = _x getVariable["EPOCH_endTime", 0];
-				_num = (round(_endTime - diag_tickTime)) max 0;
-				_color = [1, 1, 1, 0.7];
-				if (_num < 7) then {
-					_color = [1, 0.5, 0, 0.7];
-					if (_num < 5) then {
-						_color = [1, 0, 0, 0.7];
-					};
-				};
-				drawIcon3D[format["\x\addons\a3_epoch_code\Data\UI\loading_bar_%1.paa", _num], _color, _pos, 4, 4, 0, "", 1, 0.05, "PuristaMedium"];
-			};
-		}forEach EPOCH_arr_countdown;
+	{
+		if (!isPlayer _x) then {
+			_pos = visiblePositionASL _x;
+			_pos set[2, (_x modelToWorld[0, 0, 0]) select 2];
+			_endTime = _x getVariable["EPOCH_endTime", 0];
+			_num = (round(_endTime - diag_tickTime)) max 0;
+			_color = [10,0,_num,0.7] call EPOCH_colorRange;
+			drawIcon3D[format["\x\addons\a3_epoch_code\Data\UI\loading_bar_%1.paa", _num], _color, _pos, 4, 4, 0, "", 1, 0.05, "PuristaMedium"];
+		};
+	}forEach EPOCH_arr_countdown;
 };
 
 {
@@ -182,21 +150,10 @@ if (EPOCH_drawIcon3d) then {
 	if (!isNull _x) then {
 		_pos = visiblePositionASL _x;
 		_pos set[2, (_x modelToWorld[0, 0, 0]) select 2];
-		_color = [1, 1, 1, 0.7];
 		_dmg = damage _x;
-		if (_dmg > 0.5) then {
-			_color = [1, 0.5, 0, 0.7];
-			if (_dmg > 0.7) then {
-				_color = [1, 0, 0, 0.7];
-			};
-		};
+		_color = [0,1,_dmg,0.7] call EPOCH_colorRange;
 		_text = '';
-		if (isPlayer _x) then {
-			_text = format['%1 : %2m', name _x, round(player distance _x)];
-		}
-		else {
-			_text = format['%1 : %2m', typeOf _x, round(player distance _x)];
-		};
+		_text = format['%1 : %2m', [typeOf _x,name _x] select (isPlayer _x), round(player distance _x)];
 		drawIcon3D["\x\addons\a3_epoch_code\Data\Member.paa", _color, _pos, 1, 1, 0, _text, 1, 0.025, "PuristaMedium"];
 	};
 }forEach EPOCH_ESP_TARGETS;

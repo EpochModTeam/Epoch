@@ -26,17 +26,14 @@
 	Returns:
 	ARRAY
 */
-_maxIn = _this select 0;
-_minIn = _this select 1;
-_arcIn = _this select 2;
-_unitIn = _this select 3;
-_offset = _this select 4;
-_trgtIn = _this select 5;
-_dirTo = [position _unitIn, position _trgtIn] call BIS_fnc_dirTo;
+private ["_dir","_dirTo","_rnd","_pos","_dist"];
+params ["_maxIn","_minIn","_arcIn","_unitIn","_offset","_trgtIn"];
+
+_dirTo = (position _unitIn) getDir (position _trgtIn);
 _rnd = _offset - (random _arcIn);
 _pos = getPosATL _trgtIn;
 _dist = ((random (_maxIn - _minIn)) + _minIn) max _minIn;
 _dir = _dirTo - _rnd;
 if (_dir<0) then {_dir = _dir + 360};
-_outPos = [(_pos select 0) + (_dist*(sin _dir)), (_pos select 1) + (_dist*(cos _dir)), _pos select 2];
-_outPos
+// Return
+[(_pos select 0) + (_dist*(sin _dir)), (_pos select 1) + (_dist*(cos _dir)), _pos select 2]

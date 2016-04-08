@@ -12,21 +12,18 @@
     Github:
     https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_server/compile/epoch_server/EPOCH_server_createTeleport.sqf
 */
-
 private ["_class","_debug1","_lightLocation","_light","_deSimulate","_pos","_dir","_ep","_useWorldPos","_pos1","_markerName","_loadBaseTemplateConfig","_pro2","_veh2","_enterClass","_exitClass","_pro1","_veh1","_debugLocation","_debug","_protection","_config","_loadBaseTemplateConfig"];
 
 _loadBaseTemplateConfig = {
-	private ["_partPos","_part","_array","_pos","_center","_deSimulate"];
-    _array = getArray(configfile >> "CfgPropTemplate" >> (_this select 1));
-    _pos = _this select 2;
+	private ["_partPos","_part","_array","_center","_deSimulate"];
+	params ["_templateClass","_selectedTemplate","_pos"];
+    _array = getArray(configfile >> "CfgPropTemplate" >> _selectedTemplate);
 	_pos set [2,0];
-    _center = createVehicle [_this select 0, _pos, [], 0, "CAN_COLLIDE"];
-	// diag_log format ["DEBUG 24 _pos: %1 %2",_pos, getpos _center];
+    _center = createVehicle [_templateClass, _pos, [], 0, "CAN_COLLIDE"];
     {
         _partPos = _center modelToWorld (_x select 1);
 		_partPos set [2,0];
 		if ((_x select 0) isKindOf "Man") then {
-			// { "C_man_hunter_1_F", { 4585.05, 4516.51, 0.201431 }, 273.197 },
 			EPOCH_staticNPCTraderPos pushBack [(_x select 0), _partPos, (_x select 2)];
 		} else {
 			_part = createVehicle [_x select 0, _partPos, [], 0, "CAN_COLLIDE"];
@@ -50,15 +47,16 @@ _debugLocation = getMarkerPos "respawn_west";
 _debugLocation set[2, 0];
 _debug = createVehicle["Debug_static_F", _debugLocation, [], 0, "CAN_COLLIDE"];
 _protection = createVehicle["ProtectionZone_Invisible_F", _debugLocation, [], 0, "CAN_COLLIDE"];
+_cloneClasses = ["clone_empty_static_F", "clone_male_static_F", "clone_female_static_F"];
 
 for "_i" from 1 to 4 do {
-	_class = ["clone_empty_static_F", "clone_male_static_F", "clone_female_static_F"] select(floor(random 3));
+	_class = selectRandom _cloneClasses;
 	_debug1 = createVehicle[_class, (_debug modelToWorld(_debug selectionPosition(str _i))), [], 0, "CAN_COLLIDE"];
 	_debug1 setDir-90;
 
 };
 for "_i" from 5 to 8 do {
-	_class = ["clone_empty_static_F", "clone_male_static_F", "clone_female_static_F"] select(floor(random 3));
+	_class = selectRandom _cloneClasses;
 	_debug1 = createVehicle[_class, (_debug modelToWorld(_debug selectionPosition(str _i))), [], 0, "CAN_COLLIDE"];
 	_debug1 setDir 90;
 };
@@ -67,7 +65,7 @@ for "_i" from 5 to 8 do {
 {
 	_lightLocation = _debug modelToWorld _x;
 	_light = createVehicle["Land_PortableLight_double_F", _lightLocation, [], 0, "CAN_COLLIDE"];
-	_light setDir ([_debugLocation,_lightLocation] call BIS_fnc_dirTo);
+	_light setDir (_debugLocation getDir _lightLocation);
 	_light setpos _lightLocation;
 } forEach [[-16.623,-8.50195,-10.5417],[15.0352,-9.08594,-10.5417]];
 
@@ -75,7 +73,6 @@ _config = configFile >> "CfgEpoch";
 
 // spawn area props
 {
-	// diag_log str(_x);
 	_class = _x select 0;
 	_pos = _x select 1;
 	_dir = _x select 2;
@@ -88,12 +85,14 @@ _config = configFile >> "CfgEpoch";
 	_ep = createVehicle[_class, _pos, [], 0, "CAN_COLLIDE"];
 
 	_ep allowDamage false;
-	if (typeName _dir == "ARRAY") then{
+	if (_dir isEqualType []) then{
+		_ep setposATL _pos;
 		_ep setVectorDirAndUp _dir;
 	} else {
 		_ep setDir _dir;
+		_ep setposATL _pos;
 	};
-	_ep setposATL _pos;
+
 
 	if (_deSimulate) then{
 		_ep enableSimulationGlobal false;
@@ -116,12 +115,10 @@ _config = configFile >> "CfgEpoch";
 	_exitClass = _x select 2;
 	_pos = _x select 3;
 
-	// if _pos is given a string we expect is to be a markerName
+	// load template props for marker location
 	if (_pos isEqualType "") then {
 		_markerName = _pos;
 		_pos = getMarkerPos _markerName;
-		// diag_log format ["DEBUG _pos: %1",_pos];
-		// load template props for marker location
 		["ProtectionZone_Invisible_F",_markerName,_pos] call _loadBaseTemplateConfig;
 	} else {
 		_pro2 = createVehicle ["ProtectionZone_Invisible_F", _pos, [], 0, "CAN_COLLIDE"];

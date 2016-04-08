@@ -29,57 +29,13 @@ antagonistChanceLoot = 0.09; //9% chance when player click "SEARCH" on a loot ob
 cloneCost = 100; // debt incurred on player death
 
 // vehicles - Max vehicle slots is calculated from per vehicle limits below. Warning! Higher the number lower the performance.
-simulationHandler = false; // When enabled this feature disables simulation on vehicles that are not near players. Can help improve client fps at the cost of server fps. (This is disabled by default now that Arma has fixed the original issue)
+simulationHandler = true; // When enabled this feature disables simulation on vehicles that are not nea players. Can help improve client fps at the cost of server fps.
 vehicleLockTime = 1800; // Controls how many seconds it takes to allow another person/group to unlock vehicle.
-allowedVehiclesList[] = {
-    {"C_Offroad_01_EPOCH",8},
-    {"C_Quadbike_01_EPOCH",8},
-    {"C_Hatchback_01_EPOCH",10},
-    {"C_Hatchback_02_EPOCH",10},
-    {"C_SUV_01_EPOCH",10},
-    {"C_Rubberboat_EPOCH",5},
-    {"C_Rubberboat_02_EPOCH",5},
-    {"C_Rubberboat_03_EPOCH",5},
-    {"C_Rubberboat_04_EPOCH",5},
-    {"C_Van_01_box_EPOCH",8},
-    {"C_Van_01_transport_EPOCH",9},
-    {"C_Boat_Civil_01_EPOCH",5},
-    {"C_Boat_Civil_01_police_EPOCH",5},
-    {"C_Boat_Civil_01_rescue_EPOCH",5},
-    {"B_Heli_Light_01_EPOCH",2},
-    {"B_SDV_01_EPOCH",2},
-    {"B_MRAP_01_EPOCH",3},
-	{"I_MRAP_03_EPOCH", 3},	
-    {"B_Truck_01_transport_EPOCH",1},
-    {"B_Truck_01_covered_EPOCH",2},
-    {"B_Truck_01_mover_EPOCH",1},
-    {"B_Truck_01_box_EPOCH",1},
-    {"O_Truck_02_covered_EPOCH",2},
-    {"O_Truck_02_transport_EPOCH",1},
-    {"O_Truck_03_covered_EPOCH",1},
-    {"O_Truck_02_box_EPOCH",1},
-    {"I_Heli_light_03_unarmed_EPOCH",1},
-    {"O_Heli_Light_02_unarmed_EPOCH",1},
-    {"I_Heli_Transport_02_EPOCH",1},
-    {"O_Heli_Transport_04_EPOCH",1},
-    {"O_Heli_Transport_04_bench_EPOCH",1},
-    {"O_Heli_Transport_04_box_EPOCH",1},
-    {"O_Heli_Transport_04_covered_EPOCH",1},
-    {"B_Heli_Transport_03_unarmed_EPOCH",1},
-    {"jetski_epoch",7},
-    {"K01",2},
-    {"K02",2},
-    {"K03",2},
-    {"K04",2},
-    {"ebike_epoch",7},
-    {"mosquito_epoch",5},
-	{"C_Heli_Light_01_civil_EPOCH",5}
-};
 
 // Traders
 taxRate = 0.1; // controls the price increase for purchases
 starterTraderItems[] = { { "ItemSodaBurst", "meatballs_epoch", "MortarBucket", "CinderBlocks", "VehicleRepair", "CircuitParts", "ItemCorrugated", "PartPlankPack", "ItemRock", "ItemRope", "ItemStick" }, { 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5 } }; // Starter Items for fresh spawned trader first array is classnames second is quantity.
-NPCSlotsLimit = 50; // Max number of traders static or dynamic. Warning! Higher the number lower performance.
+NPCSlotsLimit = 20; // Max number of traders static or dynamic. Warning! Higher the number lower performance.
 forceStaticTraders = true; // disables traders moving from work to home
 
 // Markers

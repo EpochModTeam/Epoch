@@ -1,4 +1,18 @@
-private[];
+/*
+	Author: Aaron Clark - EpochMod.com
+
+    Contributors:
+
+	Description:
+	P2P trade start
+
+    Licence:
+    Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
+
+    Github:
+    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_code/compile/p2p_trading/EPOCH_startTrade.sqf
+*/
+private["_index"];
 
 closeDialog 0;
 if !(createdialog "Trade") exitWith {};

@@ -4,7 +4,7 @@
     Contributors:
 
 	Description:
-	code to replace string in word
+	Code to replace string in word
 
     Licence:
     Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
