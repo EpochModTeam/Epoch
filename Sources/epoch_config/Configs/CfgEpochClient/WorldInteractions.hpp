@@ -16,6 +16,8 @@ class CfgWorldInteractions  {
     class misc_well_l_ep1_p3d : Water {};
     class stand_water_ep1_p3d : Water {};
     class misc_concbox_ep1_p3d : Water {};
+    class Land_water_tank : Water {};
+    class Land_Pumpa : Water {};
 
     class BankTerminal {
         bankTerminal = 1;
