@@ -37,7 +37,7 @@
 [Fixed] Incorrect scope on some magazine items prevented them from showing in the admin spawn menu.
 [Fixed] Reworked player login, fixes issues with players logging in without gear (when one or more players are logging in at the same time, IE. server startup)
 [Removed] Old BEC plugin as its not needed anymore.
-[Info] RConPort 2302 added to example-beserver.cfg for changes since A3 1.58.
+[Info] RConPort 2303 added to example-beserver.cfg for changes since A3 1.58.
 [Info] epochAH.hpp updated "antihack_checkFiles" for new file paths.
 [Info] Some AI Scripts Mods may not work with disableRemoteSensors enabled. You can disable with "disableRemoteSensors = false;" in CfgEpochClient.
 [Info] Removed old .bikey and added new one for 0380.
