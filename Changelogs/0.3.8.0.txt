@@ -1,3 +1,4 @@
+[Changed] Trash looting is now done by interaction system only. Hold Space Bar and choose Examine.
 [New] Split gamemode from main assets, all epoch client gamemode code and configs are now found in the mission file under APL-SA license. https://github.com/EpochModTeam/Epoch
 [Added] Support for CUP Vehicles and Weapons.
 [Added] Display temperatures in both Fahrenheit and Celsius.
