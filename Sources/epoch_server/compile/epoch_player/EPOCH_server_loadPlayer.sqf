@@ -86,13 +86,9 @@ if (_this isEqualType []) then {
 			_dir = _worldspace select 0;
 			_location = _worldspace select 1;
 
-			diag_log format["DEBUG: _worldspace %1",_worldspace];
-
 			if (count _location == 2) then{
 				_location = (_location select 0) vectorAdd (_location select 1);
 			};
-
-			diag_log format["DEBUG: _location %1",_location];
 
 			_prevInstance = _worldspace select 2;
 			_medical = _arr select 1;
@@ -142,7 +138,7 @@ if (_this isEqualType []) then {
 			_player setPosATL _location;
 
 			_newPlyr = _group createUnit[_class, _location, [], 0, "CAN_COLLIDE"];
-			diag_log format["DEBUG: _newPlyr %1 %2 %3",_newPlyr, _location, getPosATL _newPlyr];
+			// diag_log format["DEBUG: _newPlyr %1 %2 %3",_newPlyr, _location, getPosATL _newPlyr];
 
 			if !(isNull _newPlyr) then {
 
@@ -334,8 +330,6 @@ if (_this isEqualType []) then {
 					[_playerNetID, _playerUID, [_newPlyr, _vars, _currWeap, loadAbs _newPlyr, _playerGroup, _canBeRevived, _newPlyr call EPOCH_server_setPToken,_playerGroupArray]] call EPOCH_server_pushPlayer;
 
 					_newPlyr setVariable["SETUP", true, true];
-
-					diag_log format["DEBUG: _newPlyr SETUP %1",_newPlyr];
 				};
 			} else {
 				diag_log format["LOGIN FAILED UNIT NULL: %1 [%2|%3]", _player, _group, count allgroups];
