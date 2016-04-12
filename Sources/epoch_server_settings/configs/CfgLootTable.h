@@ -165,7 +165,7 @@ class CfgLootTable
 
 				{ { "ItemAluminumBar", "magazine" }, 2 },
 				{ { "ItemCopperBar", "magazine" }, 2 },
-				{ { "ItemTinBar", "magazine" }, 1 },
+				{ { "ItemTinBar", "magazine" }, 1 }
 		};
 	};
 
@@ -733,7 +733,7 @@ class CfgLootTable
 				{ { "ItemSilverBar", "magazine" }, 20 },
 				{ { "ItemCopperBar", "magazine" }, 20 },
 				{ { "ItemAluminumBar", "magazine" }, 20 },
-				{ { "ItemTinBar", "magazine" }, 30 },
+				{ { "ItemTinBar", "magazine" }, 30 }
 		};
 	};
 	class Gems
