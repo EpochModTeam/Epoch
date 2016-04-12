@@ -44,6 +44,7 @@
 [Info] Removed old .bikey and added new one for 0380.
 
 Build: 421
+[Fixed] Disallow building inside of vehicles.
 [Fixed] Incorrectly enabled CUP vehicles and weapons support if only Core and Maps where enabled.
 [Fixed] removeExec Battleye kick fixed.
 [Fixed] Player getting stuck waiting for inventory to load.
