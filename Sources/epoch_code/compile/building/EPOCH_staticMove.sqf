@@ -37,7 +37,9 @@ if (_item == "") exitWith{ EPOCH_target = objNull; };
 if (EPOCH_playerEnergy <= 0) exitWith{
 	["<t size = '1.6' color = '#99ffffff'>Need Energy</t>", 5] call Epoch_dynamicText;
 };
-if !("" call EPOCH_isBuildAllowed) exitWith{};
+
+// Remove object if not allowed
+if !("" call EPOCH_isBuildAllowed) exitWith{ deleteVehicle _object };
 EPOCH_simulSwap_Lock = true;
 
 _objType = typeOf _object;

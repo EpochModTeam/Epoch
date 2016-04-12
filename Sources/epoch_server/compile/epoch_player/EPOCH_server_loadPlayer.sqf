@@ -135,7 +135,11 @@ if (_this isEqualType []) then {
 				_group = createGroup west;
 			};
 
+			_player setPosATL _location;
+
 			_newPlyr = _group createUnit[_class, _location, [], 0, "CAN_COLLIDE"];
+			// diag_log format["DEBUG: _newPlyr %1 %2 %3",_newPlyr, _location, getPosATL _newPlyr];
+
 			if !(isNull _newPlyr) then {
 
 				addToRemainsCollector[_newPlyr];

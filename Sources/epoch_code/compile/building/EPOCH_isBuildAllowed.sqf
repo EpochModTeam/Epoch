@@ -28,6 +28,9 @@ _buildingAllowed = true;
 _ownedJammerExists = false;
 _nearestJammer = objNull;
 
+// reject building if in vehicle
+if (vehicle player != player)exitWith{["<t size = '1.6' color = '#99ffffff'>Building Disallowed: Inside Vehicle</t>", 5] call Epoch_dynamicText; false };
+
 // defaults
 _config = 'CfgEpochClient' call EPOCH_returnConfig;
 _buildingJammerRange = getNumber(_config >> "buildingJammerRange");
