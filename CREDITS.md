@@ -4,8 +4,8 @@
 ### [Epoch Survival Gamemode](https://github.com/EpochModTeam/Epoch)
 
 * [Aaron Clark ([VB]AWOL)](http://epochmod.com): Code
-* [Andrew Gregory (Axeman)](http://thefreezer.co.uk): Code, AI
-* [Raimonds Virtoss (Raymix)](https://www.twitch.tv/raymich): Code, UI
+* [Andrew Gregory (Axeman)](http://thefreezer.co.uk): AI Code
+* [Raimonds Virtoss (Raymix)](https://www.twitch.tv/raymich): UI Code
 * [Niklas Wagner (Skaronator)](https://skaronator.com): Code
 * [Kenneth Bente (Axle)](www.twitch.tv/axles): Tester
 
@@ -13,20 +13,20 @@
 
 * [Aaron Clark ([VB]AWOL)](http://epochmod.com): Code
 * [Florian Kinder (Fank)](https://github.com/Fank): Code
-* [Denis Erygin (devd)](https://github.com/denisio): Linux Support
+* [Denis Erygin (devd)](https://github.com/denisio): Linux Code Support
 
 ### [Epoch Server SQF Persistence Framework](https://github.com/EpochModTeam/EpochServerCore)
 
 * [Aaron Clark ([VB]AWOL)](http://epochmod.com): Code
-* [Florian Kinder (Fank)](https://github.com/Fank): DLL Code
+* [Florian Kinder (Fank)](https://github.com/Fank): Code
 
 ### [Epoch Mod](http://steamcommunity.com/sharedfiles/filedetails/?id=421839251)
 
 * [Aaron Clark ([VB]AWOL)](http://epochmod.com): Configs, Textures
-* [Kenneth Bente (Axle)](www.twitch.tv/axles): Tester, Models
 * [Paul Tomany (Sequisha)](https://www.twitch.tv/sequisha): Models, Textures
 * [Darren Harrison (Kiory)](https://www.twitch.tv/kiory123): Models, Textures
 * [Paden Sturtevant (SteamPunkGears)](https://www.twitch.tv/steampunkgears): Models, Textures
+* [Kenneth Bente (Axle)](www.twitch.tv/axles): Tester, Models
 * Damian Clark ([VB]GREEN): Graphics
 
 #### Contributors
