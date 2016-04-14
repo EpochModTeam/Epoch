@@ -1,4 +1,4 @@
-## [Epoch Projects](http://epochmod.com) by Epoch Mod Team for [Arma 3](https://arma3.com/)
+## [Epoch Projects](https://github.com/EpochModTeam) by [Epoch Mod Team](https://github.com/orgs/EpochModTeam/people) for [Arma 3](https://arma3.com/)
 
 
 ### [Epoch Survival Gamemode](https://github.com/EpochModTeam/Epoch)
