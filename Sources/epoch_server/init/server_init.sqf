@@ -209,4 +209,9 @@ missionNamespace setVariable ["EPOCH_taxRate", [_serverSettingsConfig, "taxRate"
 // start accepting logins
 missionNamespace setVariable ["EPOCH_SERVER_READY", true, true];
 
+// spawn a single sapper to preload
+_sapper = createAgent ["Epoch_Sapper_F", [0,0,0], [], 0, "CAN_COLLIDE"];
+_sapper setDamage 1;
+_sapper enableSimulationGlobal false;
+
 diag_log format ["Epoch: Server Start Complete: %1 seconds",diag_tickTime-_startTime];
