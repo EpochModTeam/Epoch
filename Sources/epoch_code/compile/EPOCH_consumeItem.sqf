@@ -171,7 +171,7 @@ switch _interactOption do {
 		};
 	};
 	case 4: { // Refuel 4
-		_vehicles = player nearEntities [["LandVehicle","Ship","Air","Tank"], 6];
+		_vehicles = player nearEntities [["LandVehicle","Ship","Air","Tank"], 30];
 		if (cursorTarget in _vehicles) then {
 			_vehicle = cursorTarget;
 			_currentFuel = fuel _vehicle;
@@ -191,9 +191,8 @@ switch _interactOption do {
 		};
 	};
 	case 5: {
-		_vehicles = player nearEntities [["LandVehicle","Ship","Air","Tank"], 6];
+		_vehicles = player nearEntities [["LandVehicle","Ship","Air","Tank"], 30];
 		_canCapacity = _interactAttributes param [0,10];
-
 		if (cursorTarget in _vehicles) then {
 			_vehicle = cursorTarget;
 			_fuelCapacity = getNumber (configfile >> "CfgVehicles" >> (typeOf _vehicle) >> "fuelCapacity");
@@ -230,7 +229,7 @@ switch _interactOption do {
 	case 8: _unifiedInteract; //Cold -1
 	case 9: _unifiedInteract; //Energy 100
 	case 10: { // Repair 10 - Lite
-		_vehicles = player nearEntities [["LandVehicle","Ship","Air","Tank"], 6];
+		_vehicles = player nearEntities [["LandVehicle","Ship","Air","Tank"], 30];
 		_vehicle = cursorTarget;
 		if (_vehicle in _vehicles) then {
 
@@ -267,7 +266,7 @@ switch _interactOption do {
 		};
 	};
 	case 11: { // Repair 11 - Heavy
-		_vehicles = player nearEntities [["LandVehicle","Ship","Air","Tank"], 6];
+		_vehicles = player nearEntities [["LandVehicle","Ship","Air","Tank"], 30];
 		_vehicle = cursorTarget;
 		if (_vehicle in _vehicles) then {
 			if (_item call _removeItem) then {

@@ -14,7 +14,7 @@
 */
 closeDialog 0;
 if (!isNull cursorTarget) then {
-	_vehicles = player nearEntities[["LandVehicle", "Ship", "Air", "Tank"], 25];
+	_vehicles = player nearEntities[["LandVehicle", "Ship", "Air", "Tank"], 30];
 	if (cursorTarget in _vehicles) then {
 		player action["Gear", cursorTarget];
 	};
