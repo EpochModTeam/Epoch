@@ -259,7 +259,7 @@ class CfgLootTable_CUP
 				{ { "lighter_epoch", "magazine" }, 1 },
 				{ { "ItemAluminumBar", "magazine" }, 2 },
 				{ { "ItemCopperBar", "magazine" }, 2 },
-				{ { "ItemTinBar", "magazine" }, 1 },
+				{ { "ItemTinBar", "magazine" }, 1 }
 		};
 	};
 	class Primitive
@@ -886,7 +886,7 @@ class CfgLootTable_CUP
 				{ { "CUP_lmg_m249_SQuantoon", "weapon" }, 1 },
 				{ { "CUP_lmg_M60E4", "weapon" }, 1 },
 				{ { "CUP_lmg_Mk48_des", "weapon" }, 1 },
-				{ { "CUP_lmg_Mk48_wdl", "weapon" }, 1 },
+				{ { "CUP_lmg_Mk48_wdl", "weapon" }, 1 }
 		};
 	};
 
@@ -927,7 +927,7 @@ class CfgLootTable_CUP
 				{ { "200Rnd_556x45_M249", "magazine" }, 10 },
 				{ { "150Rnd_93x64_Mag", "magazine" }, 10 },
 				{ { "MachinegunAmmo_30Rnd_65x39_caseless_mag", "CfgLootTable" }, 20 },
-				{ { "CUP_MachinegunAmmo", "CfgLootTable" }, 23 },
+				{ { "CUP_MachinegunAmmo", "CfgLootTable" }, 23 }
 		};
 	};
 	class CUP_MachinegunAmmo
@@ -1018,7 +1018,7 @@ class CfgLootTable_CUP
 				{ { "hgun_ACPC2_F", "weapon" }, 10 },
 				{ { "ruger_pistol_epoch", "weapon" }, 12 },
 				// CUP
-				{ { "CUP_pistols", "CfgLootTable" }, 15 },
+				{ { "CUP_pistols", "CfgLootTable" }, 15 }
 		};
 	};
 	class CUP_pistols
@@ -1055,7 +1055,7 @@ class CfgLootTable_CUP
 				// CUP
 				{ { "CUP_PistolAmmo", "CfgLootTable" }, 10 },
 				{ { "CUP_ShotgunAmmo", "CfgLootTable" }, 5 },
-				{ { "CUP_SubMachinegunAmmo", "CfgLootTable" }, 5 },
+				{ { "CUP_SubMachinegunAmmo", "CfgLootTable" }, 5 }
 
 		};
 	};
@@ -1196,7 +1196,7 @@ class CfgLootTable_CUP
 				{ { "bipod_02_F_hex", "item" }, 1 },
 				{ { "bipod_03_F_blk", "item" }, 1 },
 				{ { "bipod_03_F_oli", "item" }, 1 },
-				{ { "CUP_Bipods", "CfgLootTable" }, 2 },
+				{ { "CUP_Bipods", "CfgLootTable" }, 2 }
 		};
 	};
 	class CUP_Bipods
@@ -1221,7 +1221,7 @@ class CfgLootTable_CUP
 				// Marksman DLC
 				{ { "Muzzles_338MarkDLC", "CfgLootTable" }, 1 },
 				{ { "Muzzles_93mmgMarkDLC", "CfgLootTable" }, 1 },
-				{ { "CUP_Muzzles", "CfgLootTable" }, 8 },
+				{ { "CUP_Muzzles", "CfgLootTable" }, 8 }
 		};
 	};
 	class CUP_Muzzles
@@ -1244,7 +1244,7 @@ class CfgLootTable_CUP
 				{ { "CUP_muzzle_mfsup_SCAR_L", "item" }, 1 },
 				{ { "CUP_muzzle_snds_SCAR_H", "item" }, 1 },
 				{ { "CUP_muzzle_mfsup_SCAR_H", "item" }, 1 },
-				{ { "CUP_muzzle_snds_XM8", "item" }, 1 },
+				{ { "CUP_muzzle_snds_XM8", "item" }, 1 }
 		};
 	};
 
@@ -1295,7 +1295,7 @@ class CfgLootTable_CUP
 				{ { "ItemSilverBar", "magazine" }, 20 },
 				{ { "ItemCopperBar", "magazine" }, 20 },
 				{ { "ItemAluminumBar", "magazine" }, 20 },
-				{ { "ItemTinBar", "magazine" }, 30 },
+				{ { "ItemTinBar", "magazine" }, 30 }
 		};
 	};
 	class Gems

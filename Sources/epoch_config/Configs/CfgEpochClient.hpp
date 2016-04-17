@@ -21,7 +21,7 @@ class CfgEpochClient
 	buildingRequireJammer = 0; // 1 = to allow building without a jammer
 	buildingCountLimit = 200; // how many objects can be built within range of a jammer
 	buildingJammerRange = 75; // jammer range in meters
-	disableRemoteSensors = true; // 1 = disableRemoteSensors true, 0 = disableRemoteSensors false
+	disableRemoteSensors = true; // disableRemoteSensors true
 	EPOCH_news[] = {"Word is that Sappers have a new boss.","Dogs will often lure them monsters away.","My dog was blown up. I miss him.."};
 	antagonistSpawnIndex[] = {
 		{"Epoch_Cloak_F", 1}, // {"type", limit}
