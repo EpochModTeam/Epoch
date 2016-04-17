@@ -43,7 +43,11 @@
 [Info] Some AI Scripts Mods may not work with disableRemoteSensors enabled. You can disable with "disableRemoteSensors = false;" in CfgEpochClient.
 [Info] Removed old .bikey and added new one for 0380.
 
-Build: 422
+Build: 424
+[Changed] Preloading sapper by spawning one on the map at server start.
+[Changed] Change to github markdown for credits and license.
+[Fixed] Green Marked traders unable to be accessed.
+[Fixed] Trailing commas in CfgLootTable.
 [Fixed] Disallow building inside of vehicles.
 [Fixed] Incorrectly enabled CUP vehicles and weapons support if only Core and Maps where enabled.
 [Fixed] removeExec Battleye kick fixed.
