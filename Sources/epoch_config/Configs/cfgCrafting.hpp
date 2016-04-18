@@ -359,7 +359,7 @@ class CfgCrafting
 	};
 	class ItemCorrugated : Item
 	{
-		usedIn[] = {"KitShelf","ItemCorrugatedLg"};
+		usedIn[] = {"KitShelf","ItemCorrugatedLg","VehicleRepairLg"};
 		nearby[] = {{"Fire", "", "fire", {1,{"ALL"}}, 3, 1, 1, 0}};
 		recipe[] = { { "ItemScraps", 2 } };
 		previewPosition[] = {0.791088,1,0.300004};
@@ -717,7 +717,7 @@ class CfgCrafting
 	};
 	class ItemCorrugatedLg : Item
 	{
-		usedIn[] = { "VehicleRepairLg", "KitPlotPole", "KitTankTrap", "KitHesco3" };
+		usedIn[] = { "KitPlotPole", "KitTankTrap", "KitHesco3" };
 		recipe[] = { { "ItemCorrugated", 3 } };
 		nearby[] = {{"Workbench", "", "workbench", {1,{"WorkBench_EPOCH"}}, 3, 1, 0, 1}};
 		previewPosition[] = {0.797491,1,0.32899};
