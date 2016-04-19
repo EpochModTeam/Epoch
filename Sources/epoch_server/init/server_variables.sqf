@@ -32,7 +32,6 @@ _configArray = [
     ["StaticDateTime", []],
     ["timeDifference", 0],
     ["lootMultiplier", 0.5],
-    ["WeatherChangeTime", 1200],
     ["WeatherStaticForecast", []],
     ["showEarthQuakes", true],
     ["showShippingContainers", true],
