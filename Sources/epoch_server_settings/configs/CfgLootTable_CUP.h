@@ -1835,7 +1835,7 @@ class CfgLootTable_CUP
 				{ { "H_90_EPOCH", "item" }, 1 },
 				{ { "H_91_EPOCH", "item" }, 1 },
 				{ { "H_92_EPOCH", "item" }, 1 },
-				{ { "H_104_EPOCH", "item" }, 1 },
+				{ { "H_104_EPOCH", "item" }, 1 }
 				//{ { "wolf_mask_epoch", "item" }, 1 },
 				//{ { "pkin_mask_epoch", "item" }, 1 },
 				//{ { "clown_mask_epoch", "item" }, 1 }

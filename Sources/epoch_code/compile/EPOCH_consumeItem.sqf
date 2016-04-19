@@ -115,6 +115,9 @@ switch _interactOption do {
 	case 2: _unifiedInteract; //Drink 2
 	case 3: { // Build 3
 		closeDialog 0;
+		_buildingJammerRange = ["CfgEpochClient", "buildingJammerRange", 75] call EPOCH_fnc_returnConfigEntryV2;
+		_buildingCountLimit = ["CfgEpochClient", "buildingCountLimit", 200] call EPOCH_fnc_returnConfigEntryV2;
+
 		_buildClass = getText(configfile >> "CfgMagazines" >> _item >> "buildClass");
 		if (_buildClass != "") then {
 			_isStorage = getNumber(configfile >> "CfgMagazines" >> _item >> "isStorage");
@@ -135,23 +138,26 @@ switch _interactOption do {
 								// base building
 								_pos = player modelToWorldVisual[0, 5, 0];
 								_pos set[2, getPosATL player select 2];
-								_object=createVehicle[_buildClass,_pos,[],0,"CAN_COLLIDE"];
-								_object setDir ((getDir player) - 180);
 
-								if (_buildClass != "PlotPole_EPOCH") then {
-									if (_object isKindOf "ThingX") then {
+								if (_buildClass isKindOf "ThingX") then {
+									// prevent spawning if another simulated object exists still
+									_otherObjects = nearestObjects[player, [_buildClass], _buildingJammerRange];
+									if (_otherObjects isEqualTo []) then {
+										_object=createVehicle[_buildClass,_pos,[],0,"CAN_COLLIDE"];
+										_object setDir ((getDir player) - 180);
 										if (([player, _item] call BIS_fnc_invRemove) == 1) then {
 											[_object] spawn EPOCH_simulSwap;
 										};
 									} else {
-										[_object,_item] spawn EPOCH_staticMove;
+										["<t size = '1.6' color = '#99ffffff'>Building Disallowed: Frequency Unstable</t>", 5] call Epoch_dynamicText;
 									};
 								} else {
-									_object spawn EPOCH_countdown;
+									_object=createVehicle[_buildClass,_pos,[],0,"CAN_COLLIDE"];
+									_object setDir ((getDir player) - 180);
+									[_object,_item] spawn EPOCH_staticMove;
 								};
-
+								// _object spawn EPOCH_countdown;
 								[format["<t size='1.6' color='#99ffffff'>Press '%1' to drop object.</t>", "1"], 5] call Epoch_dynamicText;
-
 
 							} else {
 								["<t size = '1.6' color = '#99ffffff'>Need Energy< / t>", 5] call Epoch_dynamicText;
@@ -165,7 +171,7 @@ switch _interactOption do {
 		};
 	};
 	case 4: { // Refuel 4
-		_vehicles = player nearEntities [["LandVehicle","Ship","Air","Tank"], 6];
+		_vehicles = player nearEntities [["LandVehicle","Ship","Air","Tank"], 30];
 		if (cursorTarget in _vehicles) then {
 			_vehicle = cursorTarget;
 			_currentFuel = fuel _vehicle;
@@ -185,9 +191,8 @@ switch _interactOption do {
 		};
 	};
 	case 5: {
-		_vehicles = player nearEntities [["LandVehicle","Ship","Air","Tank"], 6];
+		_vehicles = player nearEntities [["LandVehicle","Ship","Air","Tank"], 30];
 		_canCapacity = _interactAttributes param [0,10];
-
 		if (cursorTarget in _vehicles) then {
 			_vehicle = cursorTarget;
 			_fuelCapacity = getNumber (configfile >> "CfgVehicles" >> (typeOf _vehicle) >> "fuelCapacity");
@@ -224,7 +229,7 @@ switch _interactOption do {
 	case 8: _unifiedInteract; //Cold -1
 	case 9: _unifiedInteract; //Energy 100
 	case 10: { // Repair 10 - Lite
-		_vehicles = player nearEntities [["LandVehicle","Ship","Air","Tank"], 6];
+		_vehicles = player nearEntities [["LandVehicle","Ship","Air","Tank"], 30];
 		_vehicle = cursorTarget;
 		if (_vehicle in _vehicles) then {
 
@@ -261,7 +266,7 @@ switch _interactOption do {
 		};
 	};
 	case 11: { // Repair 11 - Heavy
-		_vehicles = player nearEntities [["LandVehicle","Ship","Air","Tank"], 6];
+		_vehicles = player nearEntities [["LandVehicle","Ship","Air","Tank"], 30];
 		_vehicle = cursorTarget;
 		if (_vehicle in _vehicles) then {
 			if (_item call _removeItem) then {
