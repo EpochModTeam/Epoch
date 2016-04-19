@@ -4,6 +4,7 @@
     Contributors:
 
 	Description:
+	Server side spawing of mission loots
 
     Licence:
     Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
