@@ -14,4 +14,5 @@ SET ARMAAPPID=107410
 
 :: more info https://community.bistudio.com/wiki/Arma_3_Dedicated_Server
 
-steamcmd.exe +login %STEAMUN% %STEAMPW% +force_install_dir "%ARMASVRPATH%" "+app_update %ARMAAPPID%" validate +quit
+:: steamcmd.exe +login %STEAMUN% %STEAMPW% +force_install_dir "%ARMASVRPATH%" "+app_update %ARMAAPPID% validate" +quit
+steamcmd.exe +login %STEAMUN% %STEAMPW% +force_install_dir "%ARMASVRPATH%" "+app_update %ARMAAPPID%" +quit
