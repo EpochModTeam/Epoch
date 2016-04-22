@@ -809,7 +809,6 @@ _skn_code_antihack = compileFinal ("
 		disableSerialization;
 		_ActionCount = -1;
 		_ActionVehicle = player;
-		_displayCountKD = 0;
 		_displayCount = 0;
 		_personalToken = Epoch_personalToken;
 		_antiWallCount = 0;
@@ -884,18 +883,15 @@ _skn_code_antihack = compileFinal ("
 				[format['viewDistance %1',viewDistance],0] call "+_sknBanANDSleep+";
 			};
 			"+_sknAddActionCheck+"
-			_display46 = findDisplay 46;
-			if !(isNull _display46) then {
-				_display46 displayRemoveAllEventHandlers 'KeyDown';
-				_addCase = _display46 displayAddEventHandler ['KeyDown',{"+_skn_displayAddEHKeyDown+"}];
-				if (_addCase != _displayCountKD) then {
-					[format['DEH: KeyDown %1/%2',_addCase,_displayCountKD],0] call "+_sknBanANDSleep+";
-				};
-				_display46 displayRemoveAllEventHandlers 'KeyUp';
-				_addCase = _display46 displayAddEventHandler ['KeyUp',{"+_skn_displayAddEHKeyUp+"}];
-				if (_addCase != _displayCount) then {
-					[format['DEH: KeyUp %1/%2',_addCase,_displayCount],0] call "+_sknBanANDSleep+";
-				};
+			_display = findDisplay 46;
+			if !(isNull _display) then {
+				{
+					_display displayRemoveAllEventHandlers _x;
+					_addCase = _display displayAddEventHandler [_x,([""CfgEpochClient"", _x, """"] call EPOCH_fnc_returnConfigEntryV2)];
+					if (_addCase != _displayCount) then {
+						[format['DEH: %3 %1/%2',_addCase,_displayCount,_x],0] call "+_sknBanANDSleep+";
+					};
+				} forEach (['CfgEpochClient', 'displayAddEventHandler', []] call EPOCH_fnc_returnConfigEntryV2);
 			};
 			uiSleep ((random 1)+1);
 		};
