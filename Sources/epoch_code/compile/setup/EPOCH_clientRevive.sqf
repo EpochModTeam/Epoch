@@ -40,6 +40,7 @@ if !(alive player && alive _playerObject && !isPlayer _playerObject) then {
 	("BIS_fnc_respawnCounter" call BIS_fnc_rscLayer) cutText ["","PLAIN"];
 
 	{
+		player removeEventHandler [_x, 0];
 		player addEventHandler [_x,(["CfgEpochClient", _x, ""] call EPOCH_fnc_returnConfigEntryV2)];
 	} forEach (["CfgEpochClient", "addEventHandler", []] call EPOCH_fnc_returnConfigEntryV2);
 
