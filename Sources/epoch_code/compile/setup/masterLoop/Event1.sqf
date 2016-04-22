@@ -28,12 +28,11 @@ if (_vehicle == player) then {
 	if (EPOCH_buildMode > 0) then {
 		EPOCH_buildMode = 0;
 		EPOCH_snapDirection = 0;
-		hintsilent "BUILD MODE: DISABLED";
+		[format["<t size='1.6' color='#99ffffff'>BUILD MODE:%1</t>","DISABLED"], 5] call Epoch_dynamicText;
 		EPOCH_Target = objNull;
-		// EPOCH_SURVEY = [];
 	};
 	_increaseStamina = true;
-	// TODO: move to vehicle configs
+	// TODO: move back to vehicle configs
 	switch (typeOf _vehicle) do {
 		case "jetski_epoch": {
 			_clock_hour10 = floor ((date select 3)/10);
