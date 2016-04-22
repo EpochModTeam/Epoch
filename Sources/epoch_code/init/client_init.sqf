@@ -46,7 +46,6 @@ EPOCH_prevOffer = [];
 EPOCH_drawIcon3d = false;
 EPOCH_velTransform = false;
 EPOCH_stabilityTarget = objNull;
-EPOCH_currentVehicle = objNull;
 EPOCH_currentTarget = objNull;
 EPOCH_LootedBlds = [];
 EPOCH_lootObjects = [];

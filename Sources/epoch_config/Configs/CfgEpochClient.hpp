@@ -59,7 +59,7 @@ class CfgEpochClient
 	displayAddEventHandler[] = {"keyDown","keyUp"};
     keyDown = "(_this call EPOCH_KeyDown)";
     keyUp   = "(_this call EPOCH_KeyUp)";
-	addEventHandler[] = {"Respawn","Put","Take","InventoryClosed","InventoryOpened","Fired","Killed","HandleRating"};
+	addEventHandler[] = {"Respawn","Put","Take","InventoryClosed","InventoryOpened","Fired","Killed","HandleRating","GetInMan","GetOutMan"};
 	Respawn = "(_this select 0) call EPOCH_clientRespawn";
 	Put = "(_this select 1) call EPOCH_interact;_this call EPOCH_PutHandler";
   	Take = "(_this select 1) call EPOCH_interact;_this call EPOCH_UnisexCheck";
@@ -73,6 +73,8 @@ class CfgEpochClient
 	Dammaged        = "";
 	Hit             = "";
 	HitPart         = "";
+	GetInMan        = "";
+	GetOutMan       = "_this call EPOCH_antiWall;";
 
 	// suppress these units from spawning near Jammer or Traders
 	nonJammerAI[] = {"B_Heli_Transport_01_F","PHANTOM","Epoch_Cloak_F"};

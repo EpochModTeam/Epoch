@@ -13,10 +13,8 @@
     https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_code/compile/EPOCH_antiWall.sqf
 */
 private ["_worldPos","_front","_dirTo","_front2"];
-params ["_vehicle","_position","_unit"];
+params ["_unit","_position","_vehicle"];
 if (_unit == player) then {
-	_vehicle removeAllEventHandlers "GetOut";
-	EPOCH_currentVehicle = objNull;
 	_worldPos = getPosATLVisual _vehicle;
 	_worldPos set[2, (_worldPos select 2) + 1];
 	_front = _worldPos;
