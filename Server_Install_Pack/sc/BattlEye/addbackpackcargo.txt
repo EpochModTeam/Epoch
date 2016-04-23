@@ -1,0 +1,1 @@
+5 "" !"B_Parachute" !"B_AssaultPack_(cbr|dgtl|khk|mcamo|ocamo|rgr|sgg|blk)" !"B_Carryall_(cbr|khk|mcamo|ocamo|oli|oucamo)" !"B_FieldPack_(blk|cbr|khk|ocamo|oli|oucamo)" !"B_Kitbag_(cbr|mcamo|rgr|sgg)" !"B_TacticalPack_(blk|mcamo|ocamo|oli|rgr)" !"smallbackpack_(red|green|teal|pink|)_epoch" !"(O|I|B)_UAV_01_backpack_F"
