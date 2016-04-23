@@ -1,190 +1,42 @@
 version=1;
 blood=1;
-volumeCD=5;
-volumeFX=5;
-volumeSpeech=5;
 singleVoice=0;
 gamma=1;
 brightness=1;
-class CfgDifficultyPresets
+difficulty = "Custom";
+class DifficultyPresets
 {
-	defaultPreset = Regular;
+    class CustomDifficulty
+    {
+        class Options
+        {
+            groupIndicators=2;
+            friendlyTags=0;
+            enemyTags=0;
+            detectedMines=0;
+            commands=1;
+            waypoints=1;
+            weaponInfo=0;
+            stanceIndicator=1;
+            reducedDamage=0;
+            staminaBar=0;
+            weaponCrosshair=1;
+            visionAid=0;
+            thirdPersonView=1;
+            cameraShake=1;
+            scoreTable=1;
+            deathMessages=1;
+            vonID=1;
+            mapContent=0;
+            autoReport=0;
+            multipleSaves=0;
 
-	// Parameters that affect difficulty and which are shared among presets
-	myArmorCoef = 1.5;
-	groupArmorCoef = 1.5;
-
-	//Parameters that affect the Limited distance choice for Group Indicators, Friendly Name Tags, Enemy Name Tags and Detected Mines.
-	//They determine on which distance the indicators are fully visible and how many more meters it takes until the indicator fades-out completely.
-	fadeDistanceStart = 40.0;
-	fadeDistanceSpan = 10.0;
-
-	recoilCoef = 1;
-	visionAidCoef = 0.8;
-	divingLimitMultiplier = 1.0;		//Multiplier to limit capacity of lungs for soldiers.
-
-	animSpeedCoef = 0;
-	cancelThreshold = 0;			//Threshold used for interrupting action.
-	showCadetHints = true;
-	showCadetWP = true;
-
-	class Recruit
-	{
-		displayName = $STR_Difficulty0;    //Name of the difficulty preset.
-
-		class Options
-		{
-			// Simulation
-			reducedDamage = true;    // Reduced damage
-
-			// Situational awareness
-			groupIndicators = 2;      // Group indicators   (0 = never, 1 = limited distance, 2 = always)
-			friendlyTags = 2;         // Friendly name tags (0 = never, 1 = limited distance, 2 = always)
-			enemyTags = 0;            // Enemy name tags    (0 = never, 1 = limited distance, 2 = always)
-			detectedMines = 2;        // Detected mines     (0 = never, 1 = limited distance, 2 = always)
-			commands = 2;             // Commands           (0 = never, 1 = fade out, 2 = always)
-			waypoints = 2;            // Waypoints          (0 = never, 1 = fade out, 2 = always)
-
-			// Personal awareness
-			weaponInfo = 2;           // Weapon info        (0 = never, 1 = fade out, 2 = always)
-			stanceIndicator = 2;      // Stance indicator   (0 = never, 1 = fade out, 2 = always)
-			staminaBar = true;        // Stamina bar
-			weaponCrosshair = true;   // Weapon crosshair
-			visionAid = true;         // Vision aid
-
-			// View
-			thirdPersonView = true;   // 3rd person view
-			cameraShake = true;       // Camera shake
-
-			// Multiplayer
-			scoreTable = true;        // Score table
-			deathMessages = true;     // Killed by
-			vonID = true;             // VON ID
-
-			// Misc
-			mapContent = true;        // Extended map content
-			autoReport = true;        // Automatic reporting
-			multipleSaves = true;     // Multiple saves
-		};
-	};
-
-	class Regular
-	{
-		displayName = $STR_Difficulty1;   //Name of the difficulty preset.
-
-		class Options
-		{
-			// Simulation
-			reducedDamage = false;    // Reduced damage
-
-			groupIndicators = 1;      // Group indicators   (0 = never, 1 = limited distance, 2 = always)
-			friendlyTags = 1;         // Friendly name tags (0 = never, 1 = limited distance, 2 = always)
-			enemyTags = 0;            // Enemy name tags    (0 = never, 1 = limited distance, 2 = always)
-			detectedMines = 1;        // Detected mines     (0 = never, 1 = limited distance, 2 = always)
-			commands = 1;             // Commands           (0 = never, 1 = fade out, 2 = always)
-			waypoints = 2;            // Waypoints          (0 = never, 1 = fade out, 2 = always)
-
-			// Personal awareness
-			weaponInfo = 2;           // Weapon info        (0 = never, 1 = fade out, 2 = always)
-			stanceIndicator = 2;      // Stance indicator   (0 = never, 1 = fade out, 2 = always)
-			staminaBar = true;        // Stamina bar
-			weaponCrosshair = true;   // Weapon crosshair
-			visionAid = false;        // Vision aid
-
-			// View
-			thirdPersonView = true;   // 3rd person view
-			cameraShake = true;       // Camera shake
-
-			// Multiplayer
-			scoreTable = true;        // Score table
-			deathMessages = true;     // Killed by
-			vonID = true;             // VON ID
-
-			// Misc
-			mapContent = true;        // Extended map content
-			autoReport = true;        // Automatic reporting
-			multipleSaves = true;     // Multiple saves
-		};
-	};
-
-	class Veteran
-	{
-		displayName = $STR_Difficulty2;    //Name of the difficulty preset.
-
-		class Options
-		{
-			// Simulation
-			reducedDamage = false;    // Reduced damage
-
-			// Situational awareness
-			groupIndicators = 0;      // Group indicators   (0 = never, 1 = limited distance, 2 = always)
-			friendlyTags = 0;         // Friendly name tags (0 = never, 1 = limited distance, 2 = always)
-			enemyTags = 0;            // Enemy name tags    (0 = never, 1 = limited distance, 2 = always)
-			detectedMines = 0;        // Detected mines     (0 = never, 1 = limited distance, 2 = always)
-			commands = 1;             // Commands           (0 = never, 1 = fade out, 2 = always)
-			waypoints = 1;            // Waypoints          (0 = never, 1 = fade out, 2 = always)
-
-			// Personal awareness
-			weaponInfo = 1;           // Weapon info        (0 = never, 1 = fade out, 2 = always)
-			stanceIndicator = 1;      // Stance indicator   (0 = never, 1 = fade out, 2 = always)
-			staminaBar = false;       // Stamina bar
-			weaponCrosshair = false;  // Weapon crosshair
-			visionAid = false;        // Vision aid
-
-			// View
-			thirdPersonView = true;  // 3rd person view
-			cameraShake = true;       // Camera shake
-
-			// Multiplayer
-			scoreTable = true;        // Score table
-			deathMessages = true;     // Killed by
-			vonID = true;             // VON ID
-
-			// Misc
-			mapContent = false;       // Extended map content
-			autoReport = false;       // Automatic reporting
-			multipleSaves = false;    // Multiple saves
-		};
-	};
-
-	class Custom
-	{
-		displayName = $STR_Difficulty_Custom;	    //Name of the difficulty preset.
-
-                //All options of the Custom preset are set by the engine. The values in config
-		class Options
-		{
-			// Simulation
-			reducedDamage = false;    // Reduced damage
-
-			// Situational awareness
-			groupIndicators = 0;      // Group indicators   (0 = never, 1 = limited distance, 2 = always)
-			friendlyTags = 0;         // Friendly name tags (0 = never, 1 = limited distance, 2 = always)
-			enemyTags = 0;            // Enemy name tags    (0 = never, 1 = limited distance, 2 = always)
-			detectedMines = 0;        // Detected mines     (0 = never, 1 = limited distance, 2 = always)
-			commands = 0;             // Commands           (0 = never, 1 = fade out, 2 = always)
-			waypoints = 0;            // Waypoints          (0 = never, 1 = fade out, 2 = always)
-
-			// Personal awareness
-			weaponInfo = 1;           // Weapon info        (0 = never, 1 = fade out, 2 = always)
-			stanceIndicator = 0;      // Stance indicator   (0 = never, 1 = fade out, 2 = always)
-			staminaBar = false;       // Stamina bar
-			weaponCrosshair = false;  // Weapon crosshair
-			visionAid = false;        // Vision aid
-
-			// View
-			thirdPersonView = false;  // 3rd person view
-			cameraShake = false;      // Camera shake
-
-			// Multiplayer
-			scoreTable = false;       // Score table
-			deathMessages = false;    // Killed by
-			vonID = false;            // VON ID
-
-			// Misc
-			mapContent = false;       // Extended map content
-			autoReport = false;       // Automatic reporting
-			multipleSaves = false;    // Multiple saves
-		};
-	};
+        };
+        aiLevelPreset=2;
+    };
+    class CustomAILevel
+    {
+        skillAI=1;
+        precisionAI=0;
+    };
 };
