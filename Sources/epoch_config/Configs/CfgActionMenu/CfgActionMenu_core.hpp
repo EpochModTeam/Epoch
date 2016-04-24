@@ -21,7 +21,8 @@ class CfgActionMenu
 		dyna_cursorTargetType = "typeOf ([10] call EPOCH_fnc_cursorTarget)";
 		dyna_inVehicle = "vehicle player != player";
 		dyna_itemsPlayer = "items player";
-		dyna_distance = "(player distance dyna_cursorTarget) < 5";
+		dyna_sizeOf = "((sizeOf dyna_cursorTargetType/2) max 5) min 30";
+		dyna_distance = "(player distance dyna_cursorTarget) <= dyna_sizeOf";
 
 		dyna_buildMode = "([10] call EPOCH_fnc_cursorTarget) call EPOCH_checkBuild;";
 		dyna_isVehicle = "if (!(isNull dyna_cursorTarget) && alive dyna_cursorTarget) then {((dyna_cursorTarget isKindOf 'LandVehicle') || (dyna_cursorTarget isKindOf 'Air') || (dyna_cursorTarget isKindOf 'Ship') || (dyna_cursorTarget isKindOf 'Tank'))} else {false}";
