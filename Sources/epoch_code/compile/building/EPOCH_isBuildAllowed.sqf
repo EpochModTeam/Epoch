@@ -85,7 +85,7 @@ if (!_ownedJammerExists) then{
 	_limitNearby = getNumber(configfile >> "CfgVehicles" >> _staticClass >> "limitNearby");
 	if (_limitNearby > 0) then{
 		_objectCount = count nearestObjects[player, [_staticClass, _simulClass], _buildingJammerRange];
-		if (_objectCount >= _limitNearby) then{
+		if (_objectCount > _limitNearby) then{
 			_buildingAllowed = false;
 			[format["<t size = '1.6' color = '#99ffffff'>Building Disallowed: Limit %1</t>", _limitNearby], 5] call Epoch_dynamicText;
 		};
