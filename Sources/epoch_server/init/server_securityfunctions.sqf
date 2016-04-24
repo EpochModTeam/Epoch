@@ -49,9 +49,6 @@ _skn_badVarCheckArray = [_cfg_variablesConfig, "badVars", ['ESP_map','ESP_mainMa
 _skn_nilVarCheckArray = [_cfg_variablesConfig, "nilVars", ['EPOCH_antiWallCount','EPOCH_playerEnergy','EPOCH_playerHunger','EPOCH_playerStamina','EPOCH_playerCrypto','EPOCH_target','EPOCH_ESP_TARGETS','EPOCH_ESPMAP_TARGETS','EPOCH_taxRate','EPOCH_ESP_VEHICLEPLAYER','EPOCH_ESP_PLAYER','EPOCH_ESP_VEHICLES']] call EPOCH_fnc_returnConfigEntry;
 _skn_commandMenuArray = [(_config >> "commandMenu"), "menus",['','RscSelectTeam','RscTeam','RscMoveHigh','#GETIN','#RscStatus','#WATCH0','RscCombatMode','RscMenuReply','RscCallSupport','#CUSTOM_RADIO','#User:BIS_fnc_addCommMenuItem_menu','RscRadio','RscReply','#ACTION','RscMenuFormations','#WATCH','RscGroupRootMenu','RscMainMenu','RscMenuMove','RscWatchDir','RscWatchMoveDir','#User:BIS_Menu_GroupCommunication','RscMenuStatus','RscFormations']] call EPOCH_fnc_returnConfigEntry;
 
-_skn_displayAddEHKeyDown = ["CfgEpochClient", "keyDown", "keyDown",'(_this call EPOCH_KeyDown)'] call EPOCH_fnc_returnConfigEntryV2;
-_skn_displayAddEHKeyUp   = ["CfgEpochClient", "keyUp", "keyUp",'(_this call EPOCH_KeyUp)'] call EPOCH_fnc_returnConfigEntryV2;
-
 _skn_addEHConfig		= (_config >> "addEventHandler");
 _skn_displayAddEHChecks = [_skn_addEHConfig, "checks",[]] call EPOCH_fnc_returnConfigEntry;
 

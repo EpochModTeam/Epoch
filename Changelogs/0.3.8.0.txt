@@ -44,10 +44,15 @@
 [Info] Removed old .bikey and added new one for 0380.
 
 Build: 429
+[Added] Install batch for all CUP mods and CBA. https://github.com/EpochModTeam/Epoch/tree/master/Tools/Install
+[Changed] Make use of new getOutMan EH for vehicle epoch anti wall glitch checks.
+[Changed] Change last few uses of hintSilent to Epoch_dynamicText. Now only the debug monitor uses hintSilent.
 [Changed] 1.58 Difficulty Overhaul changes to enable 3rd person. Thanks to klinGiii on the forum: http://epochmod.com/forum/index.php?/topic/41922-158-difficulty-overhaul
+[Changed] Epoch AH reworked displayAddEventHandler checks to use.
 [Changed] Increased range for vehicle interactions to fix issues with access to larger vehicles. Thanks to Grahame for the report: http://epochmod.com/forum/index.php?/topic/41894-cannot-unlock-large-vehicles/
 [Changed] Preloading sapper by spawning one on the map at server start.
 [Changed] Change to github markdown for credits and license.
+[Fixed] Fixed Arma install batch script not closing after update.
 [Fixed] Mission loot payout not working. Thanks to @He-Man for the fix: http://epochmod.com/forum/index.php?/topic/41892-payout-trader-mission-broken/
 [Fixed] Crafting recipe for Vehicle Repair Kit had wrong part in usedIn array. Thanks to LeBarbare for the report: http://epochmod.com/forum/index.php?/topic/41896-wrong-recipe-place/
 [Fixed] Green Marked traders unable to be accessed. Thanks to @He-Man for the report: http://epochmod.com/forum/index.php?/topic/41887-radom-unexpected-script-failure-with-traders-ai_slot/
@@ -57,3 +62,4 @@ Build: 429
 [Fixed] removeExec Battleye kick fixed.
 [Fixed] Player getting stuck waiting for inventory to load.
 [Fixed] Delete base object if over limit.
+[Info] Defined proper settings in full redis-example.conf
