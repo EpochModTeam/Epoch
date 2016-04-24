@@ -59,7 +59,8 @@ Build: 429
 [Fixed] Trailing commas in CfgLootTable.
 [Fixed] Disallow building inside of vehicles.
 [Fixed] Incorrectly enabled CUP vehicles and weapons support if only Core and Maps where enabled.
-[Fixed] removeExec Battleye kick fixed.
+[Fixed] remoteExec Battleye kick fixed.
 [Fixed] Player getting stuck waiting for inventory to load.
 [Fixed] Delete base object if over limit.
 [Info] Defined proper settings in full redis-example.conf
+[Info] Requires Arma 3 1.58 or higher.
