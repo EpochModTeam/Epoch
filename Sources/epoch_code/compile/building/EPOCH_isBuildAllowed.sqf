@@ -40,6 +40,11 @@ if (_buildingCountLimit == 0) then { _buildingCountLimit = 200; };
 
 // input
 params ["_objType"];
+_obj = objNull;
+if (_objType isEqualType objNull) then {
+	_obj = _objType;
+	_objType = typeOf _objType;
+};
 
 _staticClass = getText(configfile >> "CfgVehicles" >> _objType >> "staticClass");
 _simulClass = getText(configfile >> "CfgVehicles" >> _objType >> "simulClass");
@@ -83,9 +88,12 @@ if !(_buildingAllowed)exitWith{ false };
 // Max object
 if (!_ownedJammerExists) then{
 	_limitNearby = getNumber(configfile >> "CfgVehicles" >> _staticClass >> "limitNearby");
+
 	if (_limitNearby > 0) then{
-		_objectCount = count nearestObjects[player, [_staticClass, _simulClass], _buildingJammerRange];
-		if (_objectCount > _limitNearby) then{
+		// remove current target from objects
+		_objectCount = count (nearestObjects[player, [_staticClass, _simulClass], _buildingJammerRange] - [_obj]);
+		// TODO: not properly limiting simulated objects
+		if (_objectCount >= _limitNearby) then{
 			_buildingAllowed = false;
 			[format["<t size = '1.6' color = '#99ffffff'>Building Disallowed: Limit %1</t>", _limitNearby], 5] call Epoch_dynamicText;
 		};
