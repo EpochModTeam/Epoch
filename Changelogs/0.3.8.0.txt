@@ -43,7 +43,7 @@
 [Info] Some AI Scripts Mods may not work with disableRemoteSensors enabled. You can disable with "disableRemoteSensors = false;" in CfgEpochClient.
 [Info] Removed old .bikey and added new one for 0380.
 
-Build: 429
+Build: 435
 [Added] Install batch for all CUP mods and CBA. https://github.com/EpochModTeam/Epoch/tree/master/Tools/Install
 [Changed] Make use of new getOutMan EH for vehicle epoch anti wall glitch checks.
 [Changed] Change last few uses of hintSilent to Epoch_dynamicText. Now only the debug monitor uses hintSilent.
