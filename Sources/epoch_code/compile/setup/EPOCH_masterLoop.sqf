@@ -50,13 +50,4 @@ while {'+_condition+'} do {
 	};
 	';
 }forEach _configs;
-_build_sqf = _build_sqf + '
-	if (vehicle player != player) then {
-		if (isNull EPOCH_currentVehicle) then {
-			EPOCH_currentVehicle = vehicle player;
-			EPOCH_currentVehicle addEventHandler["GetOut", "_this call EPOCH_antiWall"];
-		};
-	};
-	uiSleep 0.1;
-};';
 call compile _build_sqf;

@@ -1,58 +1,42 @@
-version=2;
- 
-viewDistance=3000;
-preferredObjectViewDistance=3000;
-terrainGrid=12.5;
-activeKeys[]=
+version=1;
+blood=1;
+singleVoice=0;
+gamma=1;
+brightness=1;
+difficulty = "Custom";
+class DifficultyPresets
 {
-};
- 
-class Difficulties
-{
-    class veteran
+    class CustomDifficulty
     {
-        class Flags
+        class Options
         {
-            Armor=0;
-            FriendlyTag=1;
-            EnemyTag=0;
-            MineTag=0;
-            HUD=1;
-            HUDWp=1;
-            HUDWpPerm=1;
-            HUDGroupInfo=1;
-            AutoSpot=0;
-            WeaponCursor=1;
-            ClockIndicator=1;
-            3rdPersonView=1;
-            UltraAI=0;
-            CameraShake=0;
-            DeathMessages=1;
-            NetStats=1;
-            VonID=1;
-            ExtendetInfoType=0;
+            groupIndicators=2;
+            friendlyTags=0;
+            enemyTags=0;
+            detectedMines=0;
+            commands=1;
+            waypoints=1;
+            weaponInfo=0;
+            stanceIndicator=1;
+            reducedDamage=0;
+            staminaBar=0;
+            weaponCrosshair=1;
+            visionAid=0;
+            thirdPersonView=1;
+            cameraShake=1;
+            scoreTable=1;
+            deathMessages=1;
+            vonID=1;
+            mapContent=0;
+            autoReport=0;
+            multipleSaves=0;
+
         };
-        skillFriendly=0.6;
-        skillEnemy=0.6;
-        precisionFriendly=0.28;
-        precisionEnemy=0.28;
+        aiLevelPreset=2;
     };
-    class mercenary
+    class CustomAILevel
     {
-        class Flags
-        {
-            HUD=1;
-            AutoSpot=0;
-            WeaponCursor=0;
-            DeathMessages=1;
-            NetStats=1;
-            VonID=1;
-        };
-        skillFriendly=0.6;
-        skillEnemy=0.6;
-        precisionFriendly=0.28;
-        precisionEnemy=0.28;
+        skillAI=1;
+        precisionAI=0;
     };
 };
- 
-difficulty="veteran";

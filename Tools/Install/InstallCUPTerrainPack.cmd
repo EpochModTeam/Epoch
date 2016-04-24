@@ -21,6 +21,13 @@ START "" /WAIT steamcmd.exe +login %STEAMUN% %STEAMPW% +workshop_download_item %
 :: copy files back to server
 xcopy /s/e/y/q/i "steamapps\workshop\content\%ARMAAPPID%\%ARMAWORKSHOPID%" "%ARMASVRPATH%\%MODFOLDER%"
 
+:: Remove old bikey
+del "%ARMASVRPATH%\Keys\cup_terrains_core-*.bikey"
+
+:: add new bikey
+xcopy /s/e/y/q/i "%ARMASVRPATH%\%MODFOLDER%\Keys" "%ARMASVRPATH%\Keys"
+
+
 
 :: Install CUP MAPS
 
@@ -35,3 +42,9 @@ START "" /WAIT steamcmd.exe +login %STEAMUN% %STEAMPW% +workshop_download_item %
 
 :: copy files back to server
 xcopy /s/e/y/q/i "steamapps\workshop\content\%ARMAAPPID%\%ARMAWORKSHOPID%" "%ARMASVRPATH%\%MODFOLDER%"
+
+:: Remove old bikey
+del "%ARMASVRPATH%\Keys\cup_terrains_maps-*.bikey"
+
+:: add new bikey
+xcopy /s/e/y/q/i "%ARMASVRPATH%\%MODFOLDER%\Keys" "%ARMASVRPATH%\Keys"
