@@ -153,4 +153,13 @@ class CfgBaseBuilding {
 	{
 		removeParts[] = { { "PartPlankPack", 2 } };
 	};
+
+	class LockBox_EPOCH : Default
+	{
+		returnOnPack[] = { { "ItemLockbox", 1 } };
+	}
+	class Safe_EPOCH : Default
+	{
+		returnOnPack[] = { { "ItemSafe", 1 } };
+	}
 };
