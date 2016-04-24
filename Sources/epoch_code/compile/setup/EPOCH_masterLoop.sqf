@@ -50,4 +50,7 @@ while {'+_condition+'} do {
 	};
 	';
 }forEach _configs;
+_build_sqf = _build_sqf + '
+	uiSleep 0.1;
+};';
 call compile _build_sqf;
