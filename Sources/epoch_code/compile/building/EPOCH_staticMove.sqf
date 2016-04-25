@@ -13,7 +13,7 @@
     https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_code/compile/building/EPOCH_simulSwap.sqf
 
     Example:
-    [_object] spawn EPOCH_simulSwap;
+    [_object,_item] spawn EPOCH_staticMove;
 
     Parameter(s):
 		_this select 0: OBJECT - Base building object
