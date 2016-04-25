@@ -51,7 +51,7 @@ if (_class isKindOf 'Constructions_lockedstatic_F') then {
 		_gwh = createVehicle["groundWeaponHolder", _posWH, [], 0, "CAN_COLLIDE"];
 		_gwh setPosATL _posWH;
 
-		_returnItems = getArray(configFile >> "CfgVehicles" >> _class >> "returnOnPack");
+		_returnItems = getArray(configFile >> "CfgBaseBuilding" >> _class >> "returnOnPack");
 		{
 			_gwh addMagazineCargoGlobal _x;
 		} forEach _returnItems;
