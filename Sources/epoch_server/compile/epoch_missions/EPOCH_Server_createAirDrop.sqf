@@ -1,7 +1,7 @@
 /*
-	Author: Aaron Clark - EpochMod.com
+	Author: Andrew Gregory - EpochMod.com
 
-    Contributors:
+    Contributors: Aaron Clark
 
 	Description:
 	Creates helicopter air drop

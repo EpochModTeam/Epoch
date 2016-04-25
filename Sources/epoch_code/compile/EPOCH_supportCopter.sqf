@@ -22,16 +22,29 @@ _grp = createGroup RESISTANCE;
 _grp setBehaviour "COMBAT";
 _grp setCombatMode "RED";
 
-// TODO: make configized
-_arrUnits = ["I_Soldier_EPOCH", "I_Soldier2_EPOCH", "I_Soldier3_EPOCH"];
+_minAISkill = getNumber (getMissionConfig "CfgEpochUAVSupport" >> "minAISkill");
+_arrUnits = getArray (getMissionConfig "CfgEpochUAVSupport" >> "unitTypes");
+_unitCount = getNumber (getMissionConfig "CfgEpochUAVSupport" >> "maxUnitNum");
 _arrSkills = ["aimingAccuracy","aimingShake","aimingSpeed","endurance","spotDistance","spotTime","courage","reloadSpeed","commanding","general"];
+_arrVals = [
+getNumber (getMissionConfig "CfgEpochUAVSupport" >> "maxAimingAccuracy"),
+getNumber (getMissionConfig "CfgEpochUAVSupport" >> "maxAimingShake"),
+getNumber (getMissionConfig "CfgEpochUAVSupport" >> "maxAimingSpeed"),
+getNumber (getMissionConfig "CfgEpochUAVSupport" >> "maxEndurance"),
+getNumber (getMissionConfig "CfgEpochUAVSupport" >> "maxSpotDistance"),
+getNumber (getMissionConfig "CfgEpochUAVSupport" >> "maxSpotTime"),
+getNumber (getMissionConfig "CfgEpochUAVSupport" >> "maxCourage"),
+getNumber (getMissionConfig "CfgEpochUAVSupport" >> "maxReloadSpeed"),
+getNumber (getMissionConfig "CfgEpochUAVSupport" >> "maxCommanding"),
+getNumber (getMissionConfig "CfgEpochUAVSupport" >> "maxGeneral")
+];
 _units = [];
-for "_i" from 0 to ((count _arrUnits)-1) do {
+for "_i" from 0 to (_unitCount - 1) do {
 
-	_unit = _grp createUnit[(_arrUnits select _i), _pos, [], 0, "FORM"];
+	_unit = _grp createUnit[(_arrUnits select (floor random count _arrUnits)), _pos, [], 0, "FORM"];
 	_units pushBack _unit;
 
-	_unit setSkill 0.6;
+	//_unit setSkill 0.6;
 	_unit setRank "Private";
 
 	_unit enableAI "TARGET";
@@ -41,9 +54,9 @@ for "_i" from 0 to ((count _arrUnits)-1) do {
 	_unit disableAI "FSM";
 
 	for "_i" from 0 to ((count _arrSkills)-1) do {
-		_aiskill = ((floor(random 10))+1)/10;
-		if (_aiskill<0.6) then {_aiskill=0.6};
-		_unit setSkill [_arrSkills select _i,_aiskill];
+		_aiskill = floor random (_arrVals select _i);
+		if (_aiskill<_minAISkill) then {_aiskill=_minAISkill};
+		_unit setSkill [_arrSkills select _i,_arrVals select _i];
 	};
 	
 	if (_i == 0) then {
