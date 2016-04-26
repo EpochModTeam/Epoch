@@ -1,6 +1,6 @@
 /*
 	Author: Aaron Clark - EpochMod.com
-    Contributors:
+    Contributors: Andrew Gregory
 
 	Description:
 	Main Client side configs for the Epoch gamemode
@@ -23,6 +23,7 @@ class CfgEpochClient
 	buildingJammerRange = 75; // jammer range in meters
 	disableRemoteSensors = true; // disableRemoteSensors true
 	EPOCH_news[] = {"Word is that Sappers have a new boss.","Dogs will often lure them monsters away.","My dog was blown up. I miss him.."};
+	deathMorphClass[] = {"Epoch_Sapper_F","Epoch_SapperB_F","I_UAV_01_F","Epoch_Cloak_F"};//Random selection of these classes when player morphs after death. Currently available: Epoch_Cloak_F, Epoch_SapperB_F, Epoch_Sapper_F, I_UAV_01_F
 	antagonistSpawnIndex[] = {
 		{"Epoch_Cloak_F", 1}, // {"type", limit}
 		{"GreatWhite_F", 2},
@@ -57,16 +58,16 @@ class CfgEpochClient
 
 	// Event handler code
 	displayAddEventHandler[] = {"keyDown","keyUp"};
-    keyDown = "(_this call EPOCH_KeyDown)";
-    keyUp   = "(_this call EPOCH_KeyUp)";
+	keyDown = "(_this call EPOCH_KeyDown)";
+	keyUp   = "(_this call EPOCH_KeyUp)";
 	addEventHandler[] = {"Respawn","Put","Take","InventoryClosed","InventoryOpened","Fired","Killed","HandleRating","GetInMan","GetOutMan"};
 	Respawn = "(_this select 0) call EPOCH_clientRespawn";
 	Put = "(_this select 1) call EPOCH_interact;_this call EPOCH_PutHandler";
-  	Take = "(_this select 1) call EPOCH_interact;_this call EPOCH_UnisexCheck";
-    Fired           = "_this call EPOCH_fnc_playerFired;";
-    InventoryClosed = "if !(EPOCH_arr_interactedObjs isEqualTo[]) then {[EPOCH_arr_interactedObjs] remoteExec['EPOCH_server_save_vehicles', 2]; EPOCH_arr_interactedObjs = [];};";
+	Take = "(_this select 1) call EPOCH_interact;_this call EPOCH_UnisexCheck";
+	Fired           = "_this call EPOCH_fnc_playerFired;";
+	InventoryClosed = "if !(EPOCH_arr_interactedObjs isEqualTo[]) then {[EPOCH_arr_interactedObjs] remoteExec['EPOCH_server_save_vehicles', 2]; EPOCH_arr_interactedObjs = [];};";
 	InventoryOpened = "_this spawn EPOCH_initUI;_container = _this select 1;_lockedNear = false;if (_container isKindOf 'GroundWeaponHolder' || _container isKindOf 'WeaponHolderSimulated') then {{if (locked _x in [2, 3] ||_x getVariable['EPOCH_Locked', false]) exitWith {_lockedNear = true}} forEach (player nearSupplies 10);};if (locked _container in [2, 3] || _container getVariable['EPOCH_Locked', false] || _lockedNear) then {[] spawn {disableSerialization;waitUntil {!isNull findDisplay 602};_display = findDisplay 602;_ctrl_cargo = _display displayCtrl 6401;_ctrl_ground = _display displayCtrl 6321;_ctrl_cargo ctrlEnable  false;ctrlSetFocus _ctrl_ground;ctrlActivate _ctrl_ground;};};";
-    Killed          = "_this call EPOCH_fnc_playerDeath;";
+	Killed          = "_this call EPOCH_fnc_playerDeath;";
 	HandleRating    = "EPOCH_playerKarma = EPOCH_playerKarma + (_this select 1);0";
 	HandleDamage    = "";
 	HandleHeal      = "";
@@ -108,12 +109,32 @@ class CfgEpochSapper
 	groanTrig = 16; //Percentage chance of a groan. Min value = 4
 	sRange = 300; //Distance from target over which sapper will dispose. Range within which sapper code will be aware of targets. Distance up to which sapper will attempt to find a spot to hide in. Min Value = 150.
 	smellDist = 24; //Distance up to which sapper can smell. Used to decide if sapper can see target when deciding to charge and influences target selection. Is influenced by wind direction. Min Value = 8.
+	reflexSpeed = 0.25; //Sapper brain will pause for this time when checking for new stimulus during each thought process. Lower number equals a more reactive sapper. (Guide Min 0.25 - Max 2.5).
+	nestChance = 2; //Every time a sapper spawns apply this percentage chance that sapper will create a nest.
+	hideLevel = 72; //(Emotion) Sapper fear increases by several factors, higher number of armed player(s) in area / being shot at. Set fear level (out of 100) at which he will go into a 'hide / evade mode'.. temporarily.
+	chargeLevel = 52; //(Emotion) Sapper anger increases by smelling / sensing players, being shot at / hit, too many players on his turf. Set level (Out of 100) at which he is triggered to charge on the current target.
 };
 class CfgEpochUAV
 {
 	UAVMinDist = 48; //Minimum distance to choose next position when roaming. Min Value = 8.
 	UAVMaxDist = 180; //Maximum distance to choose next position when roaming. Min Value = 42 / Max Value = 400.
 	UAVHeight = 100; //Set height when roaming, slight randomness is applied to this value. UAV will choose own height when locked onto target. Min Value = 42 / Max Value = 280. UAV can still spot targets from height !
+};
+class CfgEpochUAVSupport
+{
+	unitTypes[] = {"I_Soldier_EPOCH", "I_Soldier2_EPOCH", "I_Soldier3_EPOCH"};//Selects from randomly
+	maxUnitNum = 2; //Maximum number of units spawned when UAV spots target.
+	minAISkill = 0.2; //Minumum AI Skill. Skills are chosen randomly between this minimum overall AI skill value and the following max AI skill values, for each of the next skills:
+	maxAimingAccuracy = 0.7;
+	maxAimingShake = 0.9;
+	maxAimingSpeed = 0.6;
+	maxEndurance = 0.4;
+	maxSpotDistance = 0.4;
+	maxSpotTime = 0.3;
+	maxCourage = 0.3;
+	maxReloadSpeed = 0.5;
+	maxCommanding = 0.4;
+	maxGeneral = 0.4;
 };
 class CfgEpochAirDrop
 {

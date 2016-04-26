@@ -1,7 +1,7 @@
 /*
 	Author: Aaron Clark - EpochMod.com
 
-    Contributors:
+    Contributors: Andrew Gregory
 
 	Description:
 	RemoteExec whitelist for Epoch sandbox gamemode. This also blacklists default A3 remoteExec commands.
@@ -197,6 +197,19 @@ class CfgRemoteExec
       allowedTargets=2;
       jip = 0;
     };
+	class EPOCH_server_triggerAntagonist {
+      allowedTargets=2;
+      jip = 0;
+    };
+	class EPOCH_server_deadPlayerDetonate {
+      allowedTargets=2;
+      jip = 0;
+    };
+	class epoch_server_playersetvariable {
+      allowedTargets=2;
+      jip = 0;
+    };
+	
   };
   class Commands {mode=0;};
 };
