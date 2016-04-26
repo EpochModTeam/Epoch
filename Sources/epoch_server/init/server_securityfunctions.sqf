@@ -75,7 +75,17 @@ _skn_whitelist_cfgPatches = [_serverSettingsConfig, "antihack_whitelistedCfgPatc
 _skn_adminsOwner = [_serverSettingsConfig, "adminMenu_Owner", []] call EPOCH_fnc_returnConfigEntry;
 _skn_adminsHigh = [_serverSettingsConfig, "adminMenu_High", []] call EPOCH_fnc_returnConfigEntry;
 _skn_adminsLow = [_serverSettingsConfig, "adminMenu_Low", []] call EPOCH_fnc_returnConfigEntry;
+_banReasons = [
+	"Mod mismatch, check that the mods you have enabled match server."
+];
 _skn_banReason = [_serverSettingsConfig, "antihack_banReason", "EpochMod.com Autoban"] call EPOCH_fnc_returnConfigEntry;
+_antihack_banDuration = [_serverSettingsConfig, "antihack_banDuration", 5] call EPOCH_fnc_returnConfigEntry;
+_epoch_banReasons = [_serverSettingsConfig, "antihack_banReasons", _banReasons] call EPOCH_fnc_returnConfigEntry;
+_kickReasons = [
+	"Mod mismatch, check that mods enabled match server."
+];
+_epoch_kickReason = [_serverSettingsConfig, "antihack_kickReason", "EpochMod.com Autokick"] call EPOCH_fnc_returnConfigEntry;
+_epoch_kickReasons = [_serverSettingsConfig, "antihack_kickReasons", _kickReasons] call EPOCH_fnc_returnConfigEntry;
 _ownerSettings = ["ESP-PLAYER","ESP-VEHICLE","ESP-LOOT","OLD-ESP","OLD-MAP","PLAYER-TELEPORT","MAP-TELEPORT","INFRONT-TELEPORT","MAP-PLAYER","MAP-CORPSE","MAP-LOOT","MAP-VEHICLE","MAP-AI","MAP-BASEBUILDING","TARGET-HEAL","TARGET-AMMO","TARGET-KILL","TARGET-CRYPTO","TARGET-VEHICLEREPAIR","VEHICLEFLIP","BANPANNEL","SPAWN-MENU","FREE-CAM","INVISIBLE","SPAWNLOOT","GODMODE","HEAL","VEHICLEREPAIR"];
 _skn_adminMenuOwnerSetting = [_serverSettingsConfig, "adminMenu_OwnerSetting", _ownerSettings] call EPOCH_fnc_returnConfigEntry;
 _adminSettings = ["PLAYER-TELEPORT","MAP-TELEPORT","TARGET-HEAL","TARGET-AMMO","TARGET-KILL","VEHICLEFLIP","BANPANNEL"];
@@ -88,28 +98,12 @@ _skn_adminMenuBanReasons = [_serverSettingsConfig, "adminMenu_BanReasons", ["Tra
 _skn_adminMenuCryproCfg = [_serverSettingsConfig, "adminMenu_cryptoCfg", [2500,1000,500,100,50,-1000]] call EPOCH_fnc_returnConfigEntry;
 _skn_cfgPatchesCfg = [_serverSettingsConfig, "antihack_cfgPatchesCfg", [0]] call EPOCH_fnc_returnConfigEntry;
 _skn_PVSPrefix = [_serverSettingsConfig, "antihack_PVSPrefix", "EPAH_"] call EPOCH_fnc_returnConfigEntry;
-_skn_customVariablesCheck = [_serverSettingsConfig, "antihack_customVariablesCheck", true] call EPOCH_fnc_returnConfigEntry;
-_skn_customVariables = [_serverSettingsConfig, "antihack_customVariables", []] call EPOCH_fnc_returnConfigEntry;
 
 // build array with X number of random strings
 _rndVAR_Count = 84; // 85 = number of (_skn_rndVA deleteAt 0)
 _skn_rndVA = call compile('epochserver' callExtension format['810|%1', _rndVAR_Count]);
 
 EPOCH_hiveWhitelistVarsArray = [];
-if (_skn_customVariablesCheck) then{
-	_whitelistConfig = _cfg_variablesConfig >> "whitelist";
-	_skn_customVariables append(getArray(_whitelistConfig >> "bis")); //BIS Variables
-	_skn_customVariables append(getArray(_whitelistConfig >> "epoch")); //Epoch Variables
-	_skn_customVariables append(getArray(_whitelistConfig >> "custom")); //Custom Variables
-	// Get any automatically added whitelist vars from Learning feature.
-	_response = ["AH-WhitelistVars", (call EPOCH_fn_InstanceID)] call EPOCH_fnc_server_hiveGETRANGE;
-	if ((_response select 0) == 1 && (_response select 1) isEqualType []) then{
-		if !((_response select 1) isEqualTo[]) then{
-			EPOCH_hiveWhitelistVarsArray = _response select 1;
-			_skn_customVariables append EPOCH_hiveWhitelistVarsArray;
-		};
-	};
-};
 
 // For client PVC
 _skn_PVC_INDEX = _skn_rndVA deleteAt 0;
@@ -150,7 +144,6 @@ if (!_skn_enableAntihack) exitWith {
 	EPOCH_server_isPAdmin = compileFinal ("false");
 	EPOCH_server_Authed = compileFinal ("true");
 	EPOCH_server_disconnect = compileFinal("true");
-	EPOCH_server_kickToLobby = compileFinal("true");
 };
 
 // Check AH init code
@@ -249,21 +242,6 @@ _skn_t2 = _skn_rndVA deleteAt 0;
 _skn_t3 = _skn_rndVA deleteAt 0;
 _skn_t4 = _skn_rndVA deleteAt 0;
 _skn_t5 = _skn_rndVA deleteAt 0;
-
-_skn_kickToLobby   = _skn_rndVA deleteAt 0;
-_skn_whitelistVars = _skn_rndVA deleteAt 0;
-
-if (_skn_customVariablesCheck) then{
-	// Gather all random global vars from AH for whitelist var checks
-	_skn_customVariables append [_skn_PVC_INDEX,_skn_whitelistVars,_skn_kickToLobby,toLower(_skn_doKickBan),toLower(_skn_doTokenAuth)];
-	_skn_customVariables append [_skn_AH_Init,_skn_AH_Code,_skn_AH_Code_CA,_skn_AH_Code_CB,_skn_AH_Ban,_skn_antiTeleportPVC,_skn_Admin_Init];
-	_skn_customVariables append [toLower("FW"+_skn_AH_rndVar),toLower("FA"+_skn_AH_rndVar),toLower("FWC"+_skn_AH_rndVar)];
-
-	// Globally brodcast whitelist vars array
-	missionNamespace setVariable [_skn_whitelistVars,_skn_customVariables,true];
-};
-
-EPOCH_server_kickToLobby = compileFinal ("if !(isNull _this) then {"+_skn_kickToLobby+" = true;(owner _this) publicVariableClient '"+_skn_kickToLobby+"';};");
 
 _skn_AH_rndVarAHInitCheckToken = _skn_t1+_skn_t2+_skn_t3+_skn_t4+_skn_t5;
 EPOCH_server_Authed = compileFinal("_this in "+_skn_AH_rndVarAHInitCheck);
@@ -547,18 +525,8 @@ _sknBanANDSleepQuick = _skn_AH_Ban+"; uiSleep 1";
 _sknPatches = [];
 "_sknPatches pushBack (configName _x)" configClasses (configFile >> "CfgPatches");
 {_sknPatches pushBackUnique _x}forEach _skn_whitelist_cfgPatches;
-_skn_addonCheckCode = if (_skn_check_addons) then {"[] spawn{_config = '!(configName _x in "+str _sknPatches+")' configClasses (configFile >> 'CfgPatches');if !(_config isEqualTo []) then {[format['Disallowed Addon %1',_config],"+str (_skn_cfgPatchesCfg select 0)+"] call "+_skn_AH_Ban+"}};"} else {""};
+_skn_addonCheckCode = if (_skn_check_addons) then {"[] spawn{_config = '!(configName _x in "+str _sknPatches+")' configClasses (configFile >> 'CfgPatches');if !(_config isEqualTo []) then {[format['Disallowed Addon %1',_config],["+str (_skn_cfgPatchesCfg select 0)+",0]] call "+_skn_AH_Ban+"}};"} else {""};
 _skn_fileCheckCode = if (_skn_check_files isEqualTo []) then {""} else {"{if (str(compile preprocessFileLineNumbers (_x select 0)) != str(missionNamespace getVariable [_x select 1,'']))exitWith{[format['Modified File %1 (%2/%3)',_x select 1,count toArray str (compile preprocessFileLineNumbers (_x select 0)),count toArray str(missionNamespace getVariable [_x select 1,''])],0] call "+_skn_AH_Ban+"}} forEach "+str _skn_check_files+";"};
-
-_sknCustomVarCheckModeCode = [_serverSettingsConfig, "antihack_customVariablesCheckMode", 0] call EPOCH_fnc_returnConfigEntry;
-_sknCustomVarCheckCode = if (_skn_customVariablesCheck) then {"
-{
-	if !(_x in (missionNamespace getVariable ["+str _skn_whitelistVars+",[]])) then{
-		[format['(WIP) Unknown Variable (missionNamespace): %1', _x], ["+str _sknCustomVarCheckModeCode+",[toArray(_x)]]] call "+_sknBanANDSleepQuick+";
-	}
-}forEach(allVariables missionNamespace);
-"} else {""};
-
 
 _sknAddActionCheck = if ([_serverSettingsConfig, "antihack_addActionCheck", true] call EPOCH_fnc_returnConfigEntry) then{ "
 if (player == _ActionVehicle) then[{_ActionCount = _ActionCount + 1}, { _ActionVehicle = player; _ActionCount = 0 }];
@@ -604,66 +572,52 @@ call compile("'"+_skn_doTokenAuth+"' addPublicVariableEventHandler {
 	};
 };");
 
-
-//[[_case,_time,_name,_uid,_save],[1, 0, 0, 1]]
 call compile ("'"+_skn_doKickBan+"' addPublicVariableEventHandler {
 	_array = _this select 1;
-	_player =_array select 2;
-	if !([_player,_array select 3] call EPOCH_server_getPToken) exitWith {
+	_array params ['_text','_mode','_player','_token'];
+	if !([_player,_token] call EPOCH_server_getPToken) exitWith {
 		['ahe', format['Token is different [%1,%2] %3',if (!isNull _player) then { _player getVariable ['"+_skn_AH_rndVarPlayer+"','']}else{'PlayerObj NULL'}, _array select 3, _array]] call EPOCH_fnc_server_hiveLog;
 	};
-	_text = toString(_array select 0);
-
-	_mode = _array select 1;
-	_data = [];
+	_text = toString(_text);
+	_reasonIndex = -1;
 	if (_mode isEqualType []) then{
-		_mode = (_array select 1) select 0;
-		_data = (_array select 1) select 1;
+		_mode = _mode select 0;
+		_reasonIndex = _mode select 1;
 	};
-
-	if (_mode == 0) then{
-		['ahb', format['%1 (%2): %3', name _player, getPlayerUID _player, _text]] call EPOCH_fnc_server_hiveLog;
-		"+_skn_pv_hackerLog+" pushBack [[0,call "+_skn_server_getRealTime+",name _player,getPlayerUID _player,_text],[1, 0, 0, 1]];
-		'epochserver' callExtension format['820|%1|"+_skn_banReason+"',getPlayerUID _player];
-	} else {
-		if (_mode == 2) then{
-			_unknownVar = toString(_data select 0);
-			_safeVars   = missionNamespace getVariable ["+str _skn_whitelistVars+",[]];
-			_trusted	= "+_str_learningModeCheck+";
-			if !(_unknownVar in _safeVars) then{
-				if (_trusted) then {
-
-					_safeVars pushBack _unknownVar;
-					missionNamespace setVariable ["+str _skn_whitelistVars+",_safeVars,true];
-
-					if !(_unknownVar in EPOCH_hiveWhitelistVarsArray) then{
-						EPOCH_hiveWhitelistVarsArray pushBack _unknownVar;
-						['AH-WhitelistVars', (call EPOCH_fn_InstanceID), EPOCH_hiveWhitelistVarsArray] call EPOCH_fnc_server_hiveSET;
-					};
-
-					['ahl', format['LEARNING: %1 (%2): %3', name _player, getPlayerUID _player, _text]] call EPOCH_fnc_server_hiveLog;
-					"+_skn_pv_hackerLog+" pushBack[[1, call "+_skn_server_getRealTime+", name _player, getPlayerUID _player, format['LEARNING: %1',_text]], []];
-				} else {
-					['ahb', format['%1 (%2): %3', name _player, getPlayerUID _player, _text]] call EPOCH_fnc_server_hiveLog;
-					"+_skn_pv_hackerLog+" pushBack [[0,call "+_skn_server_getRealTime+",name _player,getPlayerUID _player,_text],[1, 0, 0, 1]];
-					_banID = 1;
-					'epochserver' callExtension format['820|%1|"+_skn_banReason+" #V%2',getPlayerUID _player,_banID];
-				};
+	_reason = '';
+	_logName = 'ahl';
+	_logMode = 1;
+	_logColor = [1,1,1,1];
+	switch _mode do {
+		case 0: {
+			_logName = 'ahb';
+			_logColor = [1,0,0,1];
+			_logMode = 0;
+			if (_reasonIndex != -1) then {
+				_reason = "+str(_epoch_banReasons)+" select _reasonIndex;
 			};
-		}else {
-			['ahl', format['%1 (%2): %3', name _player, getPlayerUID _player, _text]] call EPOCH_fnc_server_hiveLog;
-			"+_skn_pv_hackerLog+" pushBack[[1, call "+_skn_server_getRealTime+", name _player, getPlayerUID _player, _text], []];
+			['ban', _player , format['"+_skn_banReason+" %1',_reason], "+str(_antihack_banDuration)+"] call EPOCH_serverCommand;
+		};
+		case 2: {
+			_logName = 'ahk';
+			_logColor = [0,0,1,1];
+			if (_reasonIndex != -1) then {
+				_reason = "+str(_epoch_kickReasons)+" select _reasonIndex;
+			};
+			['kick', _player , format['"+_epoch_kickReason+" %1',_reason]] call EPOCH_serverCommand;
 		};
 	};
+	"+_skn_pv_hackerLog+" pushBack[[_logMode, call "+_skn_server_getRealTime+", name _player, getPlayerUID _player, _text], _logColor];
+	[_logName, format['%1 (%2): %3', name _player, getPlayerUID _player, _text]] call EPOCH_fnc_server_hiveLog;
 	{
 		if (_x call EPOCH_server_isPAdmin) then {
 			(owner _x) publicVariableClient '"+_skn_pv_hackerLog+"';
 		};
-	}forEach playableUnits;
+	}forEach allPlayers;
 };");
 //0 = BAN
 //1 = LOG
-//[2,varname] = Self-learning vars from trusted users.
+//2 = KICK
 
 _skn_code_ban = compileFinal ("
 	_this set [0,toArray (_this select 0)];
@@ -679,7 +633,7 @@ _skn_code_init = compileFinal ("
 	_start = diag_tickTime;
 	waitUntil {!isNil '"+_skn_AH_Code+"' || (diag_tickTime-_start > 20)};
 	if (isNil '"+_skn_AH_Code+"') exitWith {
-		"+_skn_doKickBan+" = [format['Cannot Load AH [%1,%2]',!isNil '"+_skn_AH_Code_CA+"',!isNil '"+_skn_AH_Code_CB+"'],1,player,Epoch_personalToken];
+		"+_skn_doKickBan+" = [format['Cannot Load AH [%1,%2]',!isNil '"+_skn_AH_Code_CA+"',!isNil '"+_skn_AH_Code_CB+"'],2,player,Epoch_personalToken];
 		publicVariableServer '"+_skn_doKickBan+"';
 		(findDisplay 46) closeDisplay 0
 	};
@@ -694,7 +648,7 @@ _skn_code_init = compileFinal ("
 	};
 	uiSleep 5;
 	if ((isNil '"+_skn_AH_Code_CA+"') || (isNil '"+_skn_AH_Code_CB+"')) then {
-		"+_skn_doKickBan+" = [format['Cannot Load AH [%1,%2]',!isNil '"+_skn_AH_Code_CA+"',!isNil '"+_skn_AH_Code_CB+"'],1,player,Epoch_personalToken];
+		"+_skn_doKickBan+" = [format['Cannot Load AH [%1,%2]',!isNil '"+_skn_AH_Code_CA+"',!isNil '"+_skn_AH_Code_CB+"'],2,player,Epoch_personalToken];
 		publicVariableServer '"+_skn_doKickBan+"';
 		(findDisplay 46) closeDisplay 0
 	};
@@ -964,7 +918,6 @@ _skn_code_antihack = compileFinal ("
 					[format['Changed %1 >> onUnload >> %2', _display, getText(configFile>>_display>>'onUnload')],0] call "+_sknBanANDSleep+";
 				}
 			}forEach "+str _cfg_displayArray+";
-			"+_sknCustomVarCheckCode+"
 			uiSleep ((random 10)+10);
 		};
 	};
@@ -972,9 +925,6 @@ _skn_code_antihack = compileFinal ("
 	"+_skn_doTokenAuth+" = [_t,player,Epoch_personalToken];
 	publicVariableServer '"+_skn_doTokenAuth+"';
 	"+_skn_doTokenAuth+" = nil;
-	'"+_skn_kickToLobby+"' addPublicVariableEventHandler {
-		[] spawn {waitUntil {(findDisplay 46) closeDisplay 0; false}}
-	};
 	"+_skn_AH_Code_CB+" = true;
 	true
 ");
@@ -1006,7 +956,7 @@ call compile ("
 			if (_x call EPOCH_server_isPAdmin) then {
 				(owner _x) publicVariableClient '"+_skn_pv_adminLog+"';
 			};
-		}forEach playableUnits;
+		}forEach allPlayers;
 		true
 	};
 ");
