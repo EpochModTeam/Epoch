@@ -41,7 +41,7 @@ getNumber (getMissionConfig "CfgEpochUAVSupport" >> "maxGeneral")
 _units = [];
 for "_i" from 0 to (_unitCount - 1) do {
 
-	_unit = _grp createUnit[(_arrUnits select (floor random count _arrUnits)), _pos, [], 0, "FORM"];
+	_unit = _grp createUnit[selectRandom _arrUnits, _pos, [], 0, "FORM"];
 	_units pushBack _unit;
 
 	//_unit setSkill 0.6;
