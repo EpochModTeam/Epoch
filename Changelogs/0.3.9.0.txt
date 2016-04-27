@@ -1,4 +1,5 @@
 [New] from Axeman TBA
+[Fixed] Missing texture issues with some base building objects since 0.3.8.
 [Info] RConPort 2306 added to example-beserver.cfg for changes since A3 1.58.
 [Info] Removed old .bikey and added new one for 0390.
 [Info] Requires Arma 3 1.58 or higher.
