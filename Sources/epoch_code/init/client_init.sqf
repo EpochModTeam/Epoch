@@ -20,7 +20,7 @@ EPOCH_ESPGROUPCOLORS = [];
 EPOCH_ESP_PLAYER = false;
 EPOCH_ESP_VEHICLES = false;
 EPOCH_ESP_VEHICLEPLAYER = [];
-EPOCH_group_level_img = ["x\addons\a3_epoch_code\Data\owner.paa", "x\addons\a3_epoch_code\Data\mod.paa", "x\addons\a3_epoch_code\Data\member.paa"];
+EPOCH_group_level_img = ["x\addons\a3_epoch_code\data\owner.paa", "x\addons\a3_epoch_code\data\mod.paa", "x\addons\a3_epoch_code\data\member.paa"];
 if (isNil 'EPOCH_diag_fps') then {
 	EPOCH_diag_fps = 0;
 };
