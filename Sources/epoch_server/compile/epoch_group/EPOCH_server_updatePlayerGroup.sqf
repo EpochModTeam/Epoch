@@ -58,6 +58,16 @@ if ((_response select 0) == 1 && (_response select 1) isEqualType []) then {
 			};
 		} forEach (allPlayers select {getPlayerUID _x == _selectedPlayerUID});
 
+		// find player name from DB
+		if (_selectedPlayerName == "Dead Player") then {
+			_memberrange = ["PlayerData", _selectedPlayerUID] call EPOCH_fnc_server_hiveGETRANGE;
+			if (count (_memberrange select 1) > 0) then {
+				if (typename (_memberrange select 1 select 0) == "STRING") then {
+					_selectedPlayerName = _memberrange select 1 select 0;
+				};
+			};
+		};
+
 		_removePlayerArray = _contentArray select _modOrMemberRevert;
 
 		{
