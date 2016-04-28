@@ -81,9 +81,9 @@ echo build=%BUILDNUMBER%; > !serverBuildInc!
 SET SOURCE_PATH=%MAIN_PATH%\Sources\epoch_server
 SET OUTPUT_PATH=%MAIN_PATH%\Server_Install_Pack\@EpochHive\addons
 SET TEMP_PATH=x\addons\a3_epoch_server
-rd /s/q P:\packing\!TEMP_PATH!
-xcopy /s/e/y/q/i "!SOURCE_PATH!" P:\packing\!TEMP_PATH!
-START "" /min /WAIT "!TOOLS_PATH!\AddonBuilder.exe" "P:\packing\!TEMP_PATH!" "!OUTPUT_PATH!" -clear -prefix="!TEMP_PATH!" -project="P:\packing\!TEMP_PATH!" -include=!AB_includes_path!
+rd /s/q P:\!TEMP_PATH!
+xcopy /s/e/y/q/i "!SOURCE_PATH!" P:\!TEMP_PATH!
+START "" /min /WAIT "!TOOLS_PATH!\AddonBuilder.exe" "P:\!TEMP_PATH!" "!OUTPUT_PATH!" -clear -prefix="!TEMP_PATH!" -project="P:\!TEMP_PATH!" -include=!AB_includes_path!
 if '%choice%'=='5' (
 	call :settings
 ) else (
@@ -95,9 +95,9 @@ echo build=%BUILDNUMBER%; > !settingsBuildInc!
 SET SOURCE_PATH=%MAIN_PATH%\Sources\epoch_server_settings
 SET OUTPUT_PATH=%MAIN_PATH%\Server_Install_Pack\@EpochHive\addons
 SET TEMP_PATH=a3_epoch_server_settings
-rd /s/q P:\packing\!TEMP_PATH!
-xcopy /s/e/y/q/i "!SOURCE_PATH!" P:\packing\!TEMP_PATH!
-START "" /min /WAIT "!TOOLS_PATH!\AddonBuilder.exe" "P:\packing\!TEMP_PATH!" "!OUTPUT_PATH!" -packonly -clear -prefix="!TEMP_PATH!" -project="P:\packing\!TEMP_PATH!" -include=!AB_includes_path!
+rd /s/q P:\!TEMP_PATH!
+xcopy /s/e/y/q/i "!SOURCE_PATH!" P:\!TEMP_PATH!
+START "" /min /WAIT "!TOOLS_PATH!\AddonBuilder.exe" "P:\!TEMP_PATH!" "!OUTPUT_PATH!" -packonly -clear -prefix="!TEMP_PATH!" -project="P:\!TEMP_PATH!" -include=!AB_includes_path!
 if '%choice%'=='5' (
 	call :core
 ) else (
@@ -109,9 +109,9 @@ echo build=%BUILDNUMBER%; > !coreBuildInc!
 SET SOURCE_PATH=%MAIN_PATH%\Sources\epoch_server_core
 SET OUTPUT_PATH=%MAIN_PATH%\Server_Install_Pack\@EpochHive\addons
 SET TEMP_PATH=epoch_server_core
-rd /s/q P:\packing\!TEMP_PATH!
-xcopy /s/e/y/q/i "!SOURCE_PATH!" P:\packing\!TEMP_PATH!
-START "" /min /WAIT "!TOOLS_PATH!\AddonBuilder.exe" "P:\packing\!TEMP_PATH!" "!OUTPUT_PATH!" -clear -prefix="!TEMP_PATH!" -project="P:\packing\!TEMP_PATH!" -include=!AB_includes_path!
+rd /s/q P:\!TEMP_PATH!
+xcopy /s/e/y/q/i "!SOURCE_PATH!" P:\!TEMP_PATH!
+START "" /min /WAIT "!TOOLS_PATH!\AddonBuilder.exe" "P:\!TEMP_PATH!" "!OUTPUT_PATH!" -clear -prefix="!TEMP_PATH!" -project="P:\!TEMP_PATH!" -include=!AB_includes_path!
 if '%choice%'=='5' (
 	call :allmaps
 ) else (
@@ -125,13 +125,13 @@ SET OUTPUT_PATH=%MAIN_PATH%\Server_Install_Pack\MPMissions
 for /f "tokens=*" %%G in ('dir /b /s /a:d "!SOURCE_PATH!\mpmissions\epoch.*"') do (
 	SET MISSION=%%~nxG
 	echo building !MISSION! pbo
-	rd /s/q p:\packing_missions\!MISSION!
+	rd /s/q p:_missions\!MISSION!
 	rem Moving files into temp folder
-	xcopy /s/e/y/q/i/d "!SOURCE_PATH!\mpmissions\!MISSION!" P:\packing\!MISSION!
-	xcopy /s/y/q/i/f "!SOURCE_PATH!\description.ext" P:\packing\!MISSION!
-	xcopy /s/e/y/q/i/d "!SOURCE_PATH!\epoch_code" P:\packing\!MISSION!\epoch_code
-	xcopy /s/e/y/q/i/d "!SOURCE_PATH!\epoch_config" P:\packing\!MISSION!\epoch_config
-	START "" /min /WAIT "!TOOLS_PATH!\AddonBuilder.exe" "P:\packing\!MISSION!" "!OUTPUT_PATH!" -clear -prefix=\ -project=P:\packing\ -include=!AB_includes_path!
+	xcopy /s/e/y/q/i/d "!SOURCE_PATH!\mpmissions\!MISSION!" P:\!MISSION!
+	xcopy /s/y/q/i/f "!SOURCE_PATH!\description.ext" P:\!MISSION!
+	xcopy /s/e/y/q/i/d "!SOURCE_PATH!\epoch_code" P:\!MISSION!\epoch_code
+	xcopy /s/e/y/q/i/d "!SOURCE_PATH!\epoch_config" P:\!MISSION!\epoch_config
+	START "" /min /WAIT "!TOOLS_PATH!\AddonBuilder.exe" "P:\!MISSION!" "!OUTPUT_PATH!" -clear -prefix=\ -project=P:\ -include=!AB_includes_path!
 )
 goto end
 :end
