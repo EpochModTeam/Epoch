@@ -55,7 +55,7 @@
 7 displayRemoveAllEventHandlers !="_display displayRemoveAllEventHandlers _x;" !="if !(isMultiplayer) then { { (findDisplay 46) displayRemoveAllEventHandlers _x } forEach [\"KeyUp\", \"KeyDown\"] };"
 7 removeAllMissionEventHandlers
 7 ctrlRemoveAllEventHandlers !="(uiNamespace getVariable 'ESP_map') ctrlRemoveAllEventHandlers 'Draw';" !="ctrlAddEventHandler ['MouseButtonDown'"
-7 removeEventHandler !="displayRemoveEventHandler" !="player removeEventHandler ['Fired', 0];" !"_currentTarget removeEventHandler[\"EpeContactStart\", _onContactEH]" !" [_adminVar,objnull];\npublicvariable _adminVar;\nplayer removeeventhandler [\"respawn\",_respawn];" !="_plyr removeEventHandler [\"FiredNear\", _smokeEH];" !="player removeEventHandler [_ehKey, 0];" !="\"CBA_fnc_removeEventHandler\"" !="\\fnc_removeEventHandler" !="\"removeEventHandler"
+7 removeEventHandler !="displayRemoveEventHandler" !="player removeEventHandler ['Fired', 0];" !"_currentTarget removeEventHandler[\"EpeContactStart\", _onContactEH]" !" [_adminVar,objnull];\npublicvariable _adminVar;\nplayer removeeventhandler [\"respawn\",_respawn];" !="_plyr removeEventHandler [\"FiredNear\", _smokeEH];" !="player removeEventHandler [_ehKey, 0];" !="player removeEventHandler [_x, 0];" !="\"CBA_fnc_removeEventHandler\"" !="\\fnc_removeEventHandler" !="\"removeEventHandler"
 7 displayRemoveEventHandler !"BIS_fnc_guiMessage_status" !="(findDisplay 46) displayRemoveEventHandler [_key, _id];"
 7 switchCamera !="vehicle player switchCamera" !="_antagonist switchCamera \"Internal\";"
 7 remoteControl !"fn_moduleRemoteControl.sqf" !="\"BIS_fnc_moduleRemoteControl"\"
