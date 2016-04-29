@@ -25,7 +25,7 @@ _entities = allMissionObjects "Constructions_modular_F";
 			if (_objSlot != -1) then {
 				_worldspace = [_currentPosition,(vectordir _x),(vectorup _x)];
 				deleteVehicle _x;
-				_newObj = createVehicle [_class, (_worldspace select 0), [], 0, "CAN_COLLIDE"];
+				_newObj = createVehicle [_class, [0,0,0], [], 0, "CAN_COLLIDE"];
 				_newObj setVariable ["BUILD_SLOT",_objSlot,true];
 				_newObj call EPOCH_server_buildingInit;
 

@@ -40,7 +40,7 @@ if ((_response select 0) == 1 && (_response select 1) isEqualType []) then {
 			_playerCryptoLimit params ["_playerCryptoLimitMax","_playerCryptoLimitMin"];
 			_current_crypto = ((_current_crypto - _upgradePrice) min _playerCryptoLimitMax) max _playerCryptoLimitMin;
 			// send to player
-			_current_crypto remoteExec ['EPOCH_effectCrypto',(owner _player)];
+			_current_crypto remoteExec ['EPOCH_effectCrypto',_player];
 			_vars set[_cIndex, _current_crypto];
 			_player setVariable["VARS", _vars];
 

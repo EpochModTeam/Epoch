@@ -41,8 +41,7 @@ if (isText _config) then {
 			_vectorDirAndUp = [vectordir _vehicle, vectorup _vehicle];
 			deleteVehicle _vehicle;
 
-			_storageObj = createVehicle[_staticClass, _vehiclePos, [], 0, "CAN_COLLIDE"];
-
+			_storageObj = createVehicle[_staticClass, [0,0,0], [], 0, "CAN_COLLIDE"];
 			_storageObj setposATL _vehiclePos;
 			_storageObj setVectorDirAndUp _vectorDirAndUp;
 

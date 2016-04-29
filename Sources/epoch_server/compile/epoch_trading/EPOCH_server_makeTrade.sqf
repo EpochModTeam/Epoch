@@ -44,7 +44,7 @@ if ((_player1 getVariable["currentTradeKey", -1]) isEqualto (_player2 getVariabl
 
 				_current_crypto1 = ((_current_crypto1 - _tradeCryptoOffer1) min _playerCryptoLimitMax) max _playerCryptoLimitMin;
 				// send to player
-				_current_crypto1 remoteExec ['EPOCH_effectCrypto',(owner _player1)];
+				_current_crypto1 remoteExec ['EPOCH_effectCrypto',_player1];
 				_player1_vars set[_cIndex, _current_crypto1];
 				_player1 setVariable["VARS", _player1_vars];
 			};
@@ -64,7 +64,7 @@ if ((_player1 getVariable["currentTradeKey", -1]) isEqualto (_player2 getVariabl
 
 				_current_crypto1 = ((_current_crypto1 + _tradeCryptoOffer2) min _playerCryptoLimitMax) max _playerCryptoLimitMin;
 				// send to player
-				_current_crypto1 remoteExec ['EPOCH_effectCrypto',(owner _player1)];
+				_current_crypto1 remoteExec ['EPOCH_effectCrypto',_player1];
 				_player1_vars set[_cIndex, _current_crypto1];
 				_player1 setVariable["VARS", _player1_vars];
 			};

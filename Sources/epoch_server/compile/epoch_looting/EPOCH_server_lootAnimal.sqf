@@ -22,7 +22,7 @@ if !(isNull _object) then {
 
 	deleteVehicle _object;
 
-	_item = createVehicle["groundWeaponHolder", _pos, [], 0.0, "CAN_COLLIDE"];
+	_item = createVehicle["groundWeaponHolder", [0,0,0], [], 0.0, "CAN_COLLIDE"];
 	_item setPosATL _pos;
 
 	_class = "SeaFood";
