@@ -57,7 +57,7 @@ _lootBubble = {
 		_lootDist = 30 + _distanceTraveled;
 		_lootLoc = player getRelPos [_lootDist, (random [-180,0,180])];
 		_objects = nearestObjects[_lootLoc, _lootClasses, 30];
-		_jammer = nearestObjects [_lootLoc, ["PlotPole_EPOCH"], _buildingJammerRange];
+		_jammer = nearestObjects [_lootLoc, ["PlotPole_EPOCH","ProtectionZone_Invisible_F"], _buildingJammerRange];
 		if (!(_objects isEqualTo[]) && (_jammer isEqualTo[])) then {
 			_building = selectRandom _objects;
 			if !(_building in EPOCH_LootedBlds) then {
