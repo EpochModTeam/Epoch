@@ -1,0 +1,25 @@
+[Added] Player option to Morph into a random antagonist (from deathMorphClass) after death. The array 'deathMorphClass' found in CfgEpochClient can be used to specify what antagonists to randomly spawn.
+[Added] Player option to detonate body after death. Sacrifice yourself by generating a runaway thermal cascade using the nano bots within your body. Nothing left to revive.
+[Added] Server function to allow remote exec of setVariable on client - Allows client to ask another client to set a local variable, via the server. Server can run same function.
+[Changed] Sapper groan or detonate can be triggered by setting a variable on the target or sapper.
+[Changed] Server can be asked by a client / server to trigger an antagonist on another client. Antagonist is then run on target PC, independent from caller of function.
+[Changed] Epoch Unit Spawn code. Now can be called specifying the target of the antagonist. Antagonist will run on target client PC.
+[Changed] Sapper defaults tweaked to make them more responsive.
+[Changed] New Sapper antagonist config options:
+reflexSpeed - Set the loop pause. Defaults have been lowered to make sapper more responsive.
+nestChance - A percentage chance, at each sapper spawn, that he will create a nest.
+hideLevel - (Fear Emotion) Set level at which sapper will go into hiding based on fear of armed players, being shot near etc.
+chargeLevel - (Anger Emotion) Set level at which sapper will trigger 'charge the player' mode.
+[Changed] New UAV Support Troops antagonist config options:
+unitTypes - an array of soldier classes to randomly choose from. Custom weapons to-do, use soldiers with default weapon loadout or handle weapons with custom script.
+maxUnitNum - Maximum number of units to spawn per UAV.
+minAISkill - Minimum value for any AI skill.
+maxAimingAccuracy -> maxGeneral - Set the maximum value for each available AI skill. A random number between minAISkill and the value for each will be set as that skill.
+[Fixed] Prevent empty group menu display. Thanks to He-Man! for the fix.
+[Fixed] Group system marked player as "Dead Player" if moderator status was change while player offline. Thanks to He-Man! for the fix.
+[Fixed] Group system invite and kick from group options not working. Thanks to He-Man for the fixes: http://epochmod.com/forum/topic/41893-group-menu-broken-kick-invite-for-admin-not-possible/#comment-275429
+[Fixed] Missing texture issues with some base building objects since 0.3.8.
+[Info] RConPort 2306 added to example-beserver.cfg for changes since A3 1.58.
+[Info] Removed old .bikey and added new one for 0390.
+[Info] Requires Arma 3 1.58 or higher.
+[Info] A big thanks to Isaac, Axeman's chief tester.

@@ -55,7 +55,8 @@ Build: 439
 [Changed] Increased range for vehicle interactions to fix issues with access to larger vehicles. Thanks to Grahame for the report: http://epochmod.com/forum/index.php?/topic/41894-cannot-unlock-large-vehicles/
 [Changed] Preloading sapper by spawning one on the map at server start.
 [Changed] Change to github markdown for credits and license.
-[Fixed] BE kick since 1.58 hotfix.
+[Fixed] suppress loot spawning at main traders. Thanks to Ghostrider-DbD- for the report. http://epochmod.com/forum/topic/41954-loot-spawning-at-traders/
+[Fixed] BE kick since 1.58 hotfix. http://epochmod.com/forum/topic/41961-rscdebugconsole_watch-battleye-kick/?do=findComment&comment=275456
 [Fixed] Use object as input for remoteExec instead of owner. http://epochmod.com/forum/topic/41959-be-carefull-with-remoteexec-and-owner/
 [Fixed] Attempt fix issues with temporary angle and rotation issues with base building.
 [Fixed] Check for base kit item is in players inventory before spawning ghost.

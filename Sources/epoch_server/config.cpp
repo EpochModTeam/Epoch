@@ -71,13 +71,14 @@ class CfgServerFunctions
 			class server_savePlayer {};
 			class server_loadPlayer {};
 			class server_checkPlayer {};
-			// class server_respawnPlayer {};
 			class server_onPlayerDisconnect {};
 			class server_deadPlayer {};
 			class server_revivePlayer {};
 			class server_storeCrypto {};
 			class server_equippedItem {};
 			class server_unpackBackpack {};
+			class server_deadPlayerDetonate{};
+			class server_playerSetVariable{};
 		};
 		class epoch_traders {
 			class server_loadTraders {};
@@ -132,12 +133,13 @@ class CfgServerFunctions
 			class server_handle_say3D {};
 			class server_handle_switchMove {};
 			class server_handle_sapperObjs {};
+			class server_triggerAntagonist{};
 		};
 	};
 };
 class CfgServerVersion
 {
-	client = "0.3.8.0";
-	config = "0.3.8.0";
+	client = "0.3.9.0";
+	config = "0.3.9.0";
 	hive = "0.5.1.7";
 };

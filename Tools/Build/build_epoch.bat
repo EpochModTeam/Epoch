@@ -81,8 +81,8 @@ echo build=%BUILDNUMBER%; > !serverBuildInc!
 SET SOURCE_PATH=%MAIN_PATH%\Sources\epoch_server
 SET OUTPUT_PATH=%MAIN_PATH%\Server_Install_Pack\@EpochHive\addons
 SET TEMP_PATH=x\addons\a3_epoch_server
-rd /s/q p:\!TEMP_PATH!
-xcopy /s/e/y/q/i "!SOURCE_PATH!" p:\!TEMP_PATH!
+rd /s/q P:\!TEMP_PATH!
+xcopy /s/e/y/q/i "!SOURCE_PATH!" P:\!TEMP_PATH!
 START "" /min /WAIT "!TOOLS_PATH!\AddonBuilder.exe" "P:\!TEMP_PATH!" "!OUTPUT_PATH!" -clear -prefix="!TEMP_PATH!" -project="P:\!TEMP_PATH!" -include=!AB_includes_path!
 if '%choice%'=='5' (
 	call :settings
@@ -95,8 +95,8 @@ echo build=%BUILDNUMBER%; > !settingsBuildInc!
 SET SOURCE_PATH=%MAIN_PATH%\Sources\epoch_server_settings
 SET OUTPUT_PATH=%MAIN_PATH%\Server_Install_Pack\@EpochHive\addons
 SET TEMP_PATH=a3_epoch_server_settings
-rd /s/q p:\!TEMP_PATH!
-xcopy /s/e/y/q/i "!SOURCE_PATH!" p:\!TEMP_PATH!
+rd /s/q P:\!TEMP_PATH!
+xcopy /s/e/y/q/i "!SOURCE_PATH!" P:\!TEMP_PATH!
 START "" /min /WAIT "!TOOLS_PATH!\AddonBuilder.exe" "P:\!TEMP_PATH!" "!OUTPUT_PATH!" -packonly -clear -prefix="!TEMP_PATH!" -project="P:\!TEMP_PATH!" -include=!AB_includes_path!
 if '%choice%'=='5' (
 	call :core
@@ -109,8 +109,8 @@ echo build=%BUILDNUMBER%; > !coreBuildInc!
 SET SOURCE_PATH=%MAIN_PATH%\Sources\epoch_server_core
 SET OUTPUT_PATH=%MAIN_PATH%\Server_Install_Pack\@EpochHive\addons
 SET TEMP_PATH=epoch_server_core
-rd /s/q p:\!TEMP_PATH!
-xcopy /s/e/y/q/i "!SOURCE_PATH!" p:\!TEMP_PATH!
+rd /s/q P:\!TEMP_PATH!
+xcopy /s/e/y/q/i "!SOURCE_PATH!" P:\!TEMP_PATH!
 START "" /min /WAIT "!TOOLS_PATH!\AddonBuilder.exe" "P:\!TEMP_PATH!" "!OUTPUT_PATH!" -clear -prefix="!TEMP_PATH!" -project="P:\!TEMP_PATH!" -include=!AB_includes_path!
 if '%choice%'=='5' (
 	call :allmaps
@@ -127,10 +127,10 @@ for /f "tokens=*" %%G in ('dir /b /s /a:d "!SOURCE_PATH!\mpmissions\epoch.*"') d
 	echo building !MISSION! pbo
 	rd /s/q p:\!MISSION!
 	rem Moving files into temp folder
-	xcopy /s/e/y/q/i/d "!SOURCE_PATH!\mpmissions\!MISSION!" p:\!MISSION!
-	xcopy /s/y/q/i/f "!SOURCE_PATH!\description.ext" p:\!MISSION!
-	xcopy /s/e/y/q/i/d "!SOURCE_PATH!\epoch_code" p:\!MISSION!\epoch_code
-	xcopy /s/e/y/q/i/d "!SOURCE_PATH!\epoch_config" p:\!MISSION!\epoch_config
+	xcopy /s/e/y/q/i/d "!SOURCE_PATH!\mpmissions\!MISSION!" P:\!MISSION!
+	xcopy /s/y/q/i/f "!SOURCE_PATH!\description.ext" P:\!MISSION!
+	xcopy /s/e/y/q/i/d "!SOURCE_PATH!\epoch_code" P:\!MISSION!\epoch_code
+	xcopy /s/e/y/q/i/d "!SOURCE_PATH!\epoch_config" P:\!MISSION!\epoch_config
 	START "" /min /WAIT "!TOOLS_PATH!\AddonBuilder.exe" "P:\!MISSION!" "!OUTPUT_PATH!" -clear -prefix=\ -project=P:\ -include=!AB_includes_path!
 )
 goto end

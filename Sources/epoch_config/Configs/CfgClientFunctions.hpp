@@ -112,6 +112,11 @@ class CfgClientFunctions
 			class fnc_findSapperStalkLocation {};
 			class fnc_dirToFuzzy {};
 			class fnc_cursorTarget {};
+			class fnc_triggerAntagonist {};
+   			class fnc_playerDeathDetonate {};
+   			class fnc_playerDeathMorph {};
+   			class fnc_playerSetVariable {};
+   			class fnc_playerAttachToAntagonist {};
 		};
 		class environment
 		{
