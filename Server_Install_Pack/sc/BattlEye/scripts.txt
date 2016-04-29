@@ -3,7 +3,7 @@
 7 forceRespawn !="reviveHandleForceRespawnAction" !="forcerespawn player;"
 7 setFriend
 7 setAmmo
-7 RscDebugConsole_watch !="RscDebugConsole_watchSave = [true,true,true,true];"
+7 RscDebugConsole_watch !="RscDebugConsole_watchSave = [true,true,true,true];" !="\"RscDebugConsole_watch\""
 7 enableFatigue
 7 setUnitRecoilCoefficient
 7 setWeaponReloadingTime
