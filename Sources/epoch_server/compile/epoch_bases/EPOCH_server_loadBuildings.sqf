@@ -72,8 +72,7 @@ for "_i" from 0 to _this do {
 		// remove old safes on && !(_class isKindOf 'Constructions_lockedstatic_F')
 		if (isClass (configFile >> "CfgVehicles" >> _class) && (_damage < 1) && !(_class isKindOf 'Constructions_lockedstatic_F')) then {
 
-			_baseObj = createVehicle [_class, _location, [], 0, "CAN_COLLIDE"];
-
+			_baseObj = createVehicle [_class, [0,0,0], [], 0, "CAN_COLLIDE"];
 			_baseObj setposATL _location;
 			_baseObj setVectorDirAndUp _worldspace;
 
@@ -81,7 +80,7 @@ for "_i" from 0 to _this do {
 			_ammoClass = (configFile >> "CfgVehicles" >> _class >> "ammoClass");
 			if(isText _ammoClass) then {
 				_ammoClass = getText _ammoClass;
-				_ammoObj = createVehicle [_ammoClass, _location, [], 0, "CAN_COLLIDE"];
+				_ammoObj = createVehicle [_ammoClass, [0,0,0], [], 0, "CAN_COLLIDE"];
 				_ammoObj setposATL _location;
 				_ammoObj setVectorDirAndUp _worldspace;
 				_baseObj setVariable ["EPOCH_TRAP_OBJ",_ammoObj];

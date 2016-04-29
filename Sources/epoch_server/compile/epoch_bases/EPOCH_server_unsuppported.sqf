@@ -43,7 +43,7 @@ _stableCount = 0;
 					_playerUID = _x getVariable["BUILD_OWNER", "-1"];
 					_slot = _x getVariable["EPOCH_secureStorage", "-1"];
 					deleteVehicle _x;
-					_newObj = createVehicle[_class, _objectPos, [], 0, "CAN_COLLIDE"];
+					_newObj = createVehicle[_class, [0,0,0], [], 0, "CAN_COLLIDE"];
 					_newObj setVariable["BUILD_SLOT", _objSlot, true];
 					_newObj setposASL _objectPos;
 					_newObj setVectorDirAndUp[_vDir, _vUP];

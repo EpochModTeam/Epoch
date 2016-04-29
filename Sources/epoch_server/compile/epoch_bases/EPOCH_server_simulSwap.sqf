@@ -36,7 +36,7 @@ if (_objSlot != -1) then {
 			_worldspace = [getposATL _object,vectordir _object,vectorup _object];
 			deleteVehicle _object;
 
-			_newObj = createVehicle [_class, _worldspace select 0, [], 0, "CAN_COLLIDE"];
+			_newObj = createVehicle [_class, [0,0,0], [], 0, "CAN_COLLIDE"];
 			_newObj setVariable ["BUILD_SLOT",_objSlot,true];
 			_newObj call EPOCH_server_buildingInit;
 
@@ -53,7 +53,7 @@ if (_objSlot != -1) then {
 			_ammoClass = (configFile >> "CfgVehicles" >> _class >> "ammoClass");
 			if (isText _ammoClass) then {
 				_ammoClass = getText _ammoClass;
-				_ammoObj = createVehicle [_ammoClass, _worldspace select 0, [], 0, "CAN_COLLIDE"];
+				_ammoObj = createVehicle [_ammoClass, [0,0,0], [], 0, "CAN_COLLIDE"];
 				_ammoObj setposATL (_worldspace select 0);
 				_ammoObj setVectorDirAndUp [(_worldspace select 1),(_worldspace select 2)];
 				_newObj setVariable ["EPOCH_TRAP_OBJ",_ammoObj];

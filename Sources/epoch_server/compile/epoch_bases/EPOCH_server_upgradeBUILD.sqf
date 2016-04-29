@@ -33,7 +33,7 @@ if (_objSlot != -1) then {
 		deleteVehicle _object;
 		_class = _upgrade select 0;
 
-		_newObj = createVehicle [_class, _objectPos, [], 0, "CAN_COLLIDE"];
+		_newObj = createVehicle [_class, [0,0,0], [], 0, "CAN_COLLIDE"];
 		_newObj setVariable ["BUILD_SLOT",_objSlot,true];
 		_newObj call EPOCH_server_buildingInit;
 		_newObj setposATL _objectPos;
@@ -55,7 +55,7 @@ if (_objSlot != -1) then {
 			deleteVehicle _object;
 			_class = _upgrade select 0;
 
-			_newObj = createVehicle[_class, (_worldspace select 0), [], 0, "CAN_COLLIDE"];
+			_newObj = createVehicle[_class, [0,0,0], [], 0, "CAN_COLLIDE"];
 			_newObj setposATL(_worldspace select 0);
 			_newObj setVectorDirAndUp[(_worldspace select 1), (_worldspace select 2)];
 		};
