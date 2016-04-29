@@ -43,7 +43,8 @@
 [Info] Some AI Scripts Mods may not work with disableRemoteSensors enabled. You can disable with "disableRemoteSensors = false;" in CfgEpochClient.
 [Info] Removed old .bikey and added new one for 0380.
 
-Build: 436
+Build: 439
+[Added] FastNights Epoch Event. http://epochmod.com/forum/topic/41949-accelerated-time/?do=findComment&comment=275310
 [Added] Install batch for all CUP mods and CBA. https://github.com/EpochModTeam/Epoch/tree/master/Tools/Install
 [Changed] The function EPOCH_fnc_addItemOverflow now supports spawning items and weapons types given a count.
 [Changed] Moved the secure storage config variable 'returnOnPack' from cfgvehicles config to CfgBaseBuilding.
@@ -54,6 +55,14 @@ Build: 436
 [Changed] Increased range for vehicle interactions to fix issues with access to larger vehicles. Thanks to Grahame for the report: http://epochmod.com/forum/index.php?/topic/41894-cannot-unlock-large-vehicles/
 [Changed] Preloading sapper by spawning one on the map at server start.
 [Changed] Change to github markdown for credits and license.
+[Fixed] suppress loot spawning at main traders. Thanks to Ghostrider-DbD- for the report. http://epochmod.com/forum/topic/41954-loot-spawning-at-traders/
+[Fixed] BE kick since 1.58 hotfix. http://epochmod.com/forum/topic/41961-rscdebugconsole_watch-battleye-kick/?do=findComment&comment=275456
+[Fixed] Use object as input for remoteExec instead of owner. http://epochmod.com/forum/topic/41959-be-carefull-with-remoteexec-and-owner/
+[Fixed] Attempt fix issues with temporary angle and rotation issues with base building.
+[Fixed] Check for base kit item is in players inventory before spawning ghost.
+[Fixed] Prevent empty group menu display. Thanks to He-Man! for the fix.
+[Fixed] Group system marked player as "Dead Player" if moderator status was change while player offline. Thanks to He-Man! for the fix.
+[Fixed] Group system invite and kick from group options not working. Thanks to He-Man for the fixes: http://epochmod.com/forum/topic/41893-group-menu-broken-kick-invite-for-admin-not-possible/#comment-275429
 [Fixed] Rewrote deleteVehicle.txt BE filter to correct filter syntax to fix false kicks. Thanks to BetterDeadThanZed for the report http://epochmod.com/forum/index.php?/topic/41933-players-kicked-for-moving-safes/#comment-275297
 [Fixed] Fixed Arma install batch script not closing after update.
 [Fixed] Mission loot payout not working. Thanks to @He-Man for the fix: http://epochmod.com/forum/index.php?/topic/41892-payout-trader-mission-broken/
