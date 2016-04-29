@@ -33,7 +33,7 @@ if (_getCrypto > 0) then {
 	_playerCryptoLimit params ["_playerCryptoLimitMax","_playerCryptoLimitMin"];
 	_current_crypto = ((_current_crypto + _getCrypto) min _playerCryptoLimitMax) max _playerCryptoLimitMin;
 	// send to player
-	_current_crypto remoteExec ['EPOCH_effectCrypto',(owner _player)];
+	_current_crypto remoteExec ['EPOCH_effectCrypto',_player];
 	_vars set[_cIndex, _current_crypto];
 	_player setVariable["VARS", _vars];
 };

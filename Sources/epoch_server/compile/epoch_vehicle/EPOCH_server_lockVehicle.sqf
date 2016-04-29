@@ -76,10 +76,10 @@ if (_logic) then {
 	} else {
 		if (_value) then {
 			// send to player
-			[_vehicle, true] remoteExec ['EPOCH_client_lockVehicle',(owner _vehicle)];
+			[_vehicle, true] remoteExec ['EPOCH_client_lockVehicle',_vehicle];
 		} else {
 			// send to player
-			[_vehicle, false] remoteExec ['EPOCH_client_lockVehicle',(owner _vehicle)];
+			[_vehicle, false] remoteExec ['EPOCH_client_lockVehicle',_vehicle];
 		};
 	};
 };

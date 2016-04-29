@@ -117,9 +117,9 @@ switch _interactOption do {
 		closeDialog 0;
 		_buildingJammerRange = ["CfgEpochClient", "buildingJammerRange", 75] call EPOCH_fnc_returnConfigEntryV2;
 		_buildingCountLimit = ["CfgEpochClient", "buildingCountLimit", 200] call EPOCH_fnc_returnConfigEntryV2;
-
+		_partCheck = _item in (magazines player);
 		_buildClass = getText(configfile >> "CfgMagazines" >> _item >> "buildClass");
-		if (_buildClass != "") then {
+		if (_buildClass != "" && _partCheck) then {
 			_isStorage = getNumber(configfile >> "CfgMagazines" >> _item >> "isStorage");
 
 			_isOk = if (_isStorage == 1 || _buildClass isKindOf "Secure_Storage_Temp") then { EPOCH_StorageSlotsCount > 0 } else { EPOCH_BuildingSlotCount > 0 };

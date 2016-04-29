@@ -17,7 +17,7 @@ if ((count _position) == 2) then{
 		if ((random 1) > _chance) then {
 			// send earthquake to each player in zone
 			{
-				[_position] remoteExec ['EPOCH_client_earthQuake',(owner _x)];
+				[_position] remoteExec ['EPOCH_client_earthQuake',_x];
 			}forEach _playersNearEpicenter;
 
 			// todo configize

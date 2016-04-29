@@ -41,7 +41,7 @@ if (_vehSlot != -1 || _storageSlot != "ABORT" || _isTemporary == 1) then{
 			_gwh = _nearbyWH select 0;
 			// _posWH = getPosATL _gwh;
 		} else {
-			_gwh = createVehicle["groundWeaponHolder", _posWH, [], 0, "CAN_COLLIDE"];
+			_gwh = createVehicle["groundWeaponHolder", [0,0,0], [], 0, "CAN_COLLIDE"];
 			_gwh setPosATL _posWH;
 		};
 

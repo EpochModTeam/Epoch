@@ -23,7 +23,7 @@ if ((_value select 0) isEqualTo "ALL") then {
 	if (local _vehicle) then {
 		_vehicle setHitIndex _value;
 	} else {
-		[_vehicle, _value] remoteExec ['EPOCH_client_repairVehicle',(owner _vehicle)];
+		[_vehicle, _value] remoteExec ['EPOCH_client_repairVehicle',_vehicle];
 	};
 };
 _vehicle call EPOCH_server_save_vehicle;
