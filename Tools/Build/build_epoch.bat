@@ -125,7 +125,7 @@ SET OUTPUT_PATH=%MAIN_PATH%\Server_Install_Pack\MPMissions
 for /f "tokens=*" %%G in ('dir /b /s /a:d "!SOURCE_PATH!\mpmissions\epoch.*"') do (
 	SET MISSION=%%~nxG
 	echo building !MISSION! pbo
-	rd /s/q p:_missions\!MISSION!
+	rd /s/q p:\!MISSION!
 	rem Moving files into temp folder
 	xcopy /s/e/y/q/i/d "!SOURCE_PATH!\mpmissions\!MISSION!" P:\!MISSION!
 	xcopy /s/y/q/i/f "!SOURCE_PATH!\description.ext" P:\!MISSION!
