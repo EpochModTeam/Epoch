@@ -9,10 +9,10 @@ item4[] = {"Simulate_Vehicle",4,218,750.000000,-300.000000,850.000000,-250.00000
 item5[] = {"CMD_queue",4,218,450.000000,-450.000000,550.000000,-400.000000,10.000000,"CMD queue"};
 item6[] = {"Save_Players",4,218,450.000000,-375.000000,550.000000,-325.000000,3.000000,"Save" \n "Players"};
 item7[] = {"Cleanup",4,218,750.000000,-375.000000,850.000000,-325.000000,8.000000,"Cleanup"};
-item8[] = {"Events",4,218,450.000000,-225.000000,550.000000,-175.000000,0.000000,"Events"};
+item8[] = {"Events",4,4314,450.000000,-225.000000,550.000000,-175.000000,0.000000,"Events"};
 item9[] = {"Save_Vehicles",4,218,450.000000,-300.000000,550.000000,-250.000000,4.000000,"Save" \n "Vehicles"};
 item10[] = {"Cleanup_Handler",4,218,750.000000,-450.000000,850.000000,-400.000000,8.000000,"Cleanup" \n "Handler"};
-item11[] = {"Server_FPS",4,4314,600.000000,-225.000000,700.000000,-175.000000,0.000000,"Server FPS"};
+item11[] = {"Server_FPS",4,218,600.000000,-225.000000,700.000000,-175.000000,0.000000,"Server FPS"};
 link0[] = {0,1};
 link1[] = {1,2};
 link2[] = {2,3};
@@ -33,8 +33,8 @@ link16[] = {8,2};
 link17[] = {9,2};
 link18[] = {10,2};
 link19[] = {11,2};
-globals[] = {25.000000,1,0,0,0,640,480,1,3,6316128,1,415.627258,1020.872498,-143.100464,-688.331299,948,880,1};
-window[] = {2,-1,-1,-1,-1,786,-1654,-362,26,3,966};
+globals[] = {25.000000,1,0,0,0,640,480,1,3,6316128,1,415.627258,1020.872498,-120.027557,-522.247498,677,880,1};
+window[] = {2,-1,-1,-1,-1,864,104,1396,104,3,695};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -49,7 +49,7 @@ class FSM
        "" \n
        "_serverSettingsConfig = configFile >> ""CfgEpochServer"";" \n
        "_ahInitAuthCfg = [_serverSettingsConfig, ""antihack_ahInitAuthCfg"", [0,180]] call EPOCH_fnc_returnConfigEntry;" \n
-       "_events = [_serverSettingsConfig, ""events"", [[3600, ""CarnivalSpawner""], [2400, ""EarthQuake""], [1800, ""ChangeWeather""], [1200, ""ContainerSpawner""], [300, ""PlantSpawner""]]] call EPOCH_fnc_returnConfigEntry;" \n
+       "_events = [_serverSettingsConfig, ""events"", []] call EPOCH_fnc_returnConfigEntry;" \n
        "_simulationHandler = [_serverSettingsConfig, ""simulationHandler"", false] call EPOCH_fnc_returnConfigEntry;" \n
        "" \n
        "_initAhInitBanOrLog = _ahInitAuthCfg select 0;" \n
@@ -382,18 +382,24 @@ class FSM
           to="Process";
           precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
           condition=/*%FSM<CONDITION""">*/"((diag_tickTime - _pvehTime) > 20)"/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/"_pvehTime = diag_tickTime;" \n
+          action=/*%FSM<ACTION""">*/"// Epoch Events" \n
+           "_pvehTime = diag_tickTime;" \n
            "{" \n
+           "	_x params [""_time"", ""_scriptName"", [""_runAtStart"",false]];" \n
            "	_eventKey = format[""EPOCH_EVENT_%1"", _forEachIndex];" \n
            "	_lastTime = missionNamespace getVariable _eventKey;" \n
            "	if (isNil ""_lastTime"") then {" \n
-           "		missionNamespace setVariable[_eventKey, diag_tickTime];" \n
-           "		_lastTime = diag_tickTime;" \n
+           "		_startTime = diag_tickTime;" \n
+           "		if (_runAtStart) then {" \n
+           "			_startTime = diag_tickTime - _time;" \n
+           "		};" \n
+           "		missionNamespace setVariable[_eventKey, _startTime];" \n
+           "		_lastTime = _startTime;" \n
            "	};" \n
-           "	if ((diag_tickTime - _lastTime) >= (_x select 0)) then {" \n
+           "	if ((diag_tickTime - _lastTime) >= _time) then {" \n
            "		missionNamespace setVariable[_eventKey, diag_tickTime];" \n
-           "		_handle = [] execVM format[""\a3_epoch_server_settings\EpochEvents\%1.sqf"",_x select 1];" \n
-           "		diag_log format[""DEBUG: _event %1"", _x select 1];" \n
+           "		_handle = [] execVM format[""\a3_epoch_server_settings\EpochEvents\%1.sqf"",_scriptName];" \n
+           "		diag_log format[""DEBUG: _event %1"", _scriptName];" \n
            "	};" \n
            "} forEach _events;" \n
            "" \n
@@ -404,20 +410,22 @@ class FSM
            "			diag_log ""server shutdown: locked"";" \n
            "			_serverLocked = true;" \n
            "			[""lock""] call EPOCH_serverCommand;" \n
+           "		} else {" \n
+           "			if (allPlayers isEqualTo []) then {" \n
+           "				[""shutdown""] call EPOCH_serverCommand;" \n
+           "				diag_log ""server shutdown: now"";" \n
+           "			};" \n
            "		};" \n
-           "		" \n
            "		_restartIn = round((_forceRestartTime-diag_tickTime)/60);" \n
-           "" \n
            "		if (_prevRestartIn != _restartIn) then {" \n
            "			_prevRestartIn = _restartIn;" \n
            "			if (_restartIn > 1) then {" \n
-           "				[""message"", format[""Server restart  in %1 minutes"",_restartIn]] call EPOCH_serverCommand;" \n
+           "				[""message"", format[""Server restart in %1 minutes"",_restartIn]] call EPOCH_serverCommand;" \n
            "			} else {" \n
-           "				[""message"", format[""Server restart  in %1 minute"",1]] call EPOCH_serverCommand;" \n
+           "				[""message"", format[""Server restart in %1 minute"",1]] call EPOCH_serverCommand;" \n
            "			};" \n
            "		};" \n
            "	};" \n
-           "" \n
            "	// kick all remaining players before shutdown to force player save" \n
            "	if (diag_tickTime >=  _forceRestartTime) then {" \n
            "		if (_serverRestarting) then {" \n
@@ -425,15 +433,14 @@ class FSM
            "				diag_log ""server shutdown: now"";" \n
            "		} else {" \n
            "			{" \n
-           "				if (isPlayer _x) then {" \n
-           "					[""kick"", _x , ""Server Restarting""] call EPOCH_serverCommand;" \n
-           "				};" \n
-           "			} forEach playableUnits;" \n
-           "			diag_log format [""server shutdown: kicking players %1"",playableUnits];" \n
+           "				[""kick"", _x , ""Server Restarting""] call EPOCH_serverCommand;" \n
+           "			} forEach allPlayers;" \n
            "			_serverRestarting = true;" \n
            "		};" \n
            "	};" \n
-           "};"/*%FSM</ACTION""">*/;
+           "};" \n
+           "" \n
+           ""/*%FSM</ACTION""">*/;
         };
         /*%FSM</LINK>*/
       };
