@@ -30,6 +30,6 @@ if !(isNull _object) then {
 	if (isClass(_config)) then {
 		_class = _objectClass;
 	};
-	[_item, _class] call EPOCH_serverLootObject;
+	[_item, _class, true] call EPOCH_serverLootObject;
 };
 true
