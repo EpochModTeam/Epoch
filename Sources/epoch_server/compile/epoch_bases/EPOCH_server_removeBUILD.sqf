@@ -12,7 +12,7 @@
     Github:
     https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_server/compile/epoch_bases/EPOCH_server_removeBUILD.sqf
 */
-private["_vehSlot", "_gwh", "_wepsItemsCargo", "_magsAmmoCargo", "_objTypes", "_objQty", "_magazine", "_weapon", "_suppressor", "_laser", "_optics", "_arrCount", "_magazineName", "_magazineSize", "_qty", "_objType", "_inventory", "_posWH", "_nearbyWH", "_removeParts", "_isTemporary", "_storageSlot"];
+private["_config","_vehSlot", "_gwh", "_wepsItemsCargo", "_magsAmmoCargo", "_objTypes", "_objQty", "_magazine", "_weapon", "_suppressor", "_laser", "_optics", "_arrCount", "_magazineName", "_magazineSize", "_qty", "_objType", "_inventory", "_posWH", "_nearbyWH", "_removeParts", "_isTemporary", "_storageSlot"];
 params ["_building","_player",["_token","",[""]]];
 
 if !([_player, _token] call EPOCH_server_getPToken) exitWith{};
@@ -21,8 +21,8 @@ if (_player distance _building > 20) exitWith{};
 
 // TODO add group check here since this should only be removed by group or owner of pole
 _objType = typeOf _building;
-
-_isTemporary = getNumber(configFile >> "CfgVehicles" >> _objType >> "isTemporary");
+_config = 'CfgBaseBuilding' call EPOCH_returnConfig;
+_isTemporary = getNumber(_config >> _objType >> "isTemporary");
 
 // check that object has building or storage slot
 _vehSlot = _building getVariable["BUILD_SLOT", -1];

@@ -21,7 +21,7 @@
 	Returns:
 	NOTHING
 */
-private ["_posObj","_savedBuildPos","_previousBuildPos","_saveCheck","_endTime","_worldspace","_class","_newObj","_startTime","_objClass"];
+private ["_config","_posObj","_savedBuildPos","_previousBuildPos","_saveCheck","_endTime","_worldspace","_class","_newObj","_startTime","_objClass"];
 
 if (!isNull _this) then {
 
@@ -63,7 +63,8 @@ if (!isNull _this) then {
 
 		_objClass = typeOf _this;
 		// Spawn temporary static item insead of saving.
-		if (getNumber(configfile >> "CfgVehicles" >> _objClass >> "isTemporary") == 1) then {
+		_config = 'CfgBaseBuilding' call EPOCH_returnConfig;
+		if (getNumber(_config >> _objClass >> "isTemporary") == 1) then {
 			_worldspace = [getposATL _this, vectordir _this, vectorup _this];
 			deleteVehicle _this;
 			_class = getText(configfile >> "CfgVehicles" >> _objClass >> "staticClass");

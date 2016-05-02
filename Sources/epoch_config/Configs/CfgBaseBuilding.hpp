@@ -22,10 +22,22 @@ class CfgBaseBuilding {
 	{
 		upgradeBuilding[] = { { "FirePlaceOn_EPOCH", { { "WoodLog_EPOCH", 1 } } } };
 		removeParts[] = { { "ItemRock", 2 } };
+
+		staticClass = "FirePlace_EPOCH";
+		simulClass = "Fireplace_SIM_EPOCH";
+		GhostPreview = "FirePlace_EPOCH";
+
+		limitNearby = 2;
+		bypassJammer = 1;
+		isTemporary = 1;
 	};
-	class FirePlaceOn_EPOCH : Default
+	class Fireplace_SIM_EPOCH : FirePlace_EPOCH
 	{
-		removeParts[] = { { "ItemRock", 2 } };
+		upgradeBuilding[] = {};
+		removeParts[] = {};
+	};
+	class FirePlaceOn_EPOCH : FirePlace_EPOCH {
+		upgradeBuilding[] = {};
 	};
 	class Foundation_EPOCH : Default
 	{
