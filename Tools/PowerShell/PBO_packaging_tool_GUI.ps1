@@ -50,13 +50,13 @@
 #When working with the ScriptForm designer this region and any changes within may be overwritten.
 #~~< Form1 >~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 $Form1 = New-Object System.Windows.Forms.Form
-$Form1.ClientSize = New-Object System.Drawing.Size(1095, 738)
+$Form1.ClientSize = New-Object System.Drawing.Size(499, 534)
 $Form1.FormBorderStyle = [System.Windows.Forms.FormBorderStyle]::FixedSingle
 $Form1.Text = "Epoch PBO Packing Tool"
 #~~< Label4 >~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 $Label4 = New-Object System.Windows.Forms.Label
 $Label4.Anchor = ([System.Windows.Forms.AnchorStyles]([System.Windows.Forms.AnchorStyles]::Top -bor [System.Windows.Forms.AnchorStyles]::Right))
-$Label4.Location = New-Object System.Drawing.Point(983, 8)
+$Label4.Location = New-Object System.Drawing.Point(387, 8)
 $Label4.Size = New-Object System.Drawing.Size(100, 23)
 $Label4.TabIndex = 1
 $Label4.Text = "Version"
@@ -65,7 +65,7 @@ $Label4.TextAlign = [System.Drawing.ContentAlignment]::MiddleCenter
 $TabControl1 = New-Object System.Windows.Forms.TabControl
 $TabControl1.Anchor = ([System.Windows.Forms.AnchorStyles]([System.Windows.Forms.AnchorStyles]::Top -bor [System.Windows.Forms.AnchorStyles]::Bottom -bor [System.Windows.Forms.AnchorStyles]::Left -bor [System.Windows.Forms.AnchorStyles]::Right))
 $TabControl1.Location = New-Object System.Drawing.Point(12, 12)
-$TabControl1.Size = New-Object System.Drawing.Size(1071, 714)
+$TabControl1.Size = New-Object System.Drawing.Size(475, 510)
 $TabControl1.TabIndex = 0
 $TabControl1.Text = ""
 #~~< TabPage1 >~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -73,14 +73,14 @@ $TabPage1 = New-Object System.Windows.Forms.TabPage
 $TabPage1.BorderStyle = [System.Windows.Forms.BorderStyle]::FixedSingle
 $TabPage1.Location = New-Object System.Drawing.Point(4, 22)
 $TabPage1.Padding = New-Object System.Windows.Forms.Padding(3)
-$TabPage1.Size = New-Object System.Drawing.Size(1063, 688)
+$TabPage1.Size = New-Object System.Drawing.Size(326, 346)
 $TabPage1.TabIndex = 0
 $TabPage1.Text = "Packager"
 $TabPage1.BackColor = [System.Drawing.SystemColors]::Control
 #~~< Button6 >~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 $Button6 = New-Object System.Windows.Forms.Button
 $Button6.Anchor = ([System.Windows.Forms.AnchorStyles]([System.Windows.Forms.AnchorStyles]::Bottom -bor [System.Windows.Forms.AnchorStyles]::Right))
-$Button6.Location = New-Object System.Drawing.Point(980, 657)
+$Button6.Location = New-Object System.Drawing.Point(243, 315)
 $Button6.Size = New-Object System.Drawing.Size(75, 23)
 $Button6.TabIndex = 3
 $Button6.Text = "Create PBO"
@@ -88,7 +88,7 @@ $Button6.UseVisualStyleBackColor = $true
 #~~< Button5 >~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 $Button5 = New-Object System.Windows.Forms.Button
 $Button5.Anchor = ([System.Windows.Forms.AnchorStyles]([System.Windows.Forms.AnchorStyles]::Top -bor [System.Windows.Forms.AnchorStyles]::Right))
-$Button5.Location = New-Object System.Drawing.Point(980, 35)
+$Button5.Location = New-Object System.Drawing.Point(243, 35)
 $Button5.Size = New-Object System.Drawing.Size(75, 23)
 $Button5.TabIndex = 2
 $Button5.Text = "Select none"
@@ -96,7 +96,7 @@ $Button5.UseVisualStyleBackColor = $true
 #~~< Button7 >~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 $Button7 = New-Object System.Windows.Forms.Button
 $Button7.Anchor = ([System.Windows.Forms.AnchorStyles]([System.Windows.Forms.AnchorStyles]::Top -bor [System.Windows.Forms.AnchorStyles]::Right))
-$Button7.Location = New-Object System.Drawing.Point(980, 6)
+$Button7.Location = New-Object System.Drawing.Point(243, 6)
 $Button7.Size = New-Object System.Drawing.Size(75, 23)
 $Button7.TabIndex = 1
 $Button7.Text = "Select all"
@@ -105,7 +105,7 @@ $Button7.UseVisualStyleBackColor = $true
 $ListView1 = New-Object System.Windows.Forms.ListView
 $ListView1.Anchor = ([System.Windows.Forms.AnchorStyles]([System.Windows.Forms.AnchorStyles]::Top -bor [System.Windows.Forms.AnchorStyles]::Bottom -bor [System.Windows.Forms.AnchorStyles]::Left -bor [System.Windows.Forms.AnchorStyles]::Right))
 $ListView1.Location = New-Object System.Drawing.Point(6, 6)
-$ListView1.Size = New-Object System.Drawing.Size(968, 674)
+$ListView1.Size = New-Object System.Drawing.Size(231, 332)
 $ListView1.TabIndex = 0
 $ListView1.Text = "ListView1"
 $ListView1.UseCompatibleStateImageBehavior = $false
@@ -138,7 +138,7 @@ $TabPage2 = New-Object System.Windows.Forms.TabPage
 $TabPage2.BorderStyle = [System.Windows.Forms.BorderStyle]::FixedSingle
 $TabPage2.Location = New-Object System.Drawing.Point(4, 22)
 $TabPage2.Padding = New-Object System.Windows.Forms.Padding(3)
-$TabPage2.Size = New-Object System.Drawing.Size(629, 398)
+$TabPage2.Size = New-Object System.Drawing.Size(467, 484)
 $TabPage2.TabIndex = 1
 $TabPage2.Text = "Settings"
 $TabPage2.BackColor = [System.Drawing.SystemColors]::Control
@@ -178,7 +178,7 @@ $TextBox4.Text = ""
 #~~< CheckBox2 >~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 $CheckBox2 = New-Object System.Windows.Forms.CheckBox
 $CheckBox2.Anchor = ([System.Windows.Forms.AnchorStyles]([System.Windows.Forms.AnchorStyles]::Bottom -bor [System.Windows.Forms.AnchorStyles]::Left))
-$CheckBox2.Location = New-Object System.Drawing.Point(6, 366)
+$CheckBox2.Location = New-Object System.Drawing.Point(6, 452)
 $CheckBox2.Size = New-Object System.Drawing.Size(290, 24)
 $CheckBox2.TabIndex = 1
 $CheckBox2.Text = "Increase Build Number (Devs only)"
@@ -186,7 +186,7 @@ $CheckBox2.UseVisualStyleBackColor = $true
 #~~< CheckBox1 >~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 $CheckBox1 = New-Object System.Windows.Forms.CheckBox
 $CheckBox1.Anchor = ([System.Windows.Forms.AnchorStyles]([System.Windows.Forms.AnchorStyles]::Bottom -bor [System.Windows.Forms.AnchorStyles]::Left))
-$CheckBox1.Location = New-Object System.Drawing.Point(6, 331)
+$CheckBox1.Location = New-Object System.Drawing.Point(6, 417)
 $CheckBox1.Size = New-Object System.Drawing.Size(290, 29)
 $CheckBox1.TabIndex = 10
 $CheckBox1.Text = "Save settings locally (%temp%\EPPTsettings.txt)"
@@ -293,35 +293,46 @@ $Form1.Icon = ([System.Drawing.Icon](New-Object System.Drawing.Icon((New-Object 
                                 "AAAA8A8AAOAHAADH4wAAgAMAAIAAAACB+QAAn/kAAIAFAACABQAAn/kAAIP5AACAAAAAgAEAAIfj"+
                                 "AADgBwAA8A8AAA==")),0,$$.Length)))))
 #endregion
+#~~< FolderBrowserDialog1 >~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+$FolderBrowserDialog1 = New-Object System.Windows.Forms.FolderBrowserDialog
 #~~< components >~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 $components = New-Object System.ComponentModel.Container
 #~~< Timer1 >~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 $Timer1 = New-Object System.Windows.Forms.Timer($components)
-#~~< FolderBrowserDialog1 >~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-$FolderBrowserDialog1 = New-Object System.Windows.Forms.FolderBrowserDialog
 
 #endregion
 
 #region Custom Code
 		
 	# Static development vars, DELETE ON RELEASE
-	$TextBox1.Text = "E:\Steam\steamapps\common\Arma 3"
+	#$TextBox1.Text = "E:\Steam\steamapps\common\Arma 3"
 	$TextBox2.Text = "F:\github\Epoch_public"
-	$TextBox3.Text = "P:\AddonBuilder"
+	#$TextBox3.Text = "P:\AddonBuilder"
 	$TextBox4.Text = "F:\github\EPOCHMOD"
 	$ver = "0.3.8"
 	
 	# Defines
 	$ListView1.CheckBoxes = $true
 	$FolderBrowserDialog1.ShowNewFolderButton = $false
+		
+	$OS = (Get-WmiObject Win32_OperatingSystem).OSArchitecture
+		
+	$armaPathArr = switch($OS) #gets array of objects from registry
+	{
+		"64-bit" { Get-ChildItem "HKLM:\SOFTWARE\WOW6432Node\Bohemia Interactive\" | ForEach-Object { Get-ItemProperty $_.pspath } }
+		"32-bit" { Get-ChildItem "HKLM:\SOFTWARE\Bohemia Interactive Studio\" | ForEach-Object { Get-ItemProperty $_.pspath } }
+		default { $false } #OS Architecture not recognized, might need to update Powershell version, should work with 2.0 (win7)
+	}
+		
+	$TextBox1.Text = $armaPathArr.main | ForEach-Object { if ($_ -match "Arma 3") { return $_ } }
+	$TextBox3.Text = $armaPathArr.path | ForEach-Object { if ($_ -match "AddonBuilder") { return $_ } }
+		
 	
 	# Functions
 		
 	function fnc_populateListView
-	{
-		#$ListView1.Clear()
-				
-		$listarr = @() #empty arr
+	{	
+		$Script:listarr = @() #empty arr
 		$folders = Get-ChildItem $TextBox2.Text -directory
 				
 		if (Test-Path $TextBox4.Text)
@@ -346,7 +357,7 @@ $FolderBrowserDialog1 = New-Object System.Windows.Forms.FolderBrowserDialog
 							$tmp = New-Object System.Windows.Forms.ListViewItem([System.String[]] ( @($_, $z.fullname) ), -1)
 							$tmp.Name = $_
 							$tmp.Group = $ListViewGroup11
-							$listarr +=, $tmp
+							$Script:listarr +=, $tmp
 						}
 						{ $_.contains("mpmissions") } 
 						{
@@ -356,7 +367,7 @@ $FolderBrowserDialog1 = New-Object System.Windows.Forms.FolderBrowserDialog
 								$tmp = New-Object System.Windows.Forms.ListViewItem([System.String[]] ( @($mission.name, $mission.fullname) ), -1)
 								$tmp.Name = $_
 								$tmp.Group = $ListViewGroup13
-								$listarr +=, $tmp
+								$Script:listarr +=, $tmp
 							}
 						}
 						default
@@ -367,14 +378,14 @@ $FolderBrowserDialog1 = New-Object System.Windows.Forms.FolderBrowserDialog
 								$tmp = New-Object System.Windows.Forms.ListViewItem([System.String[]] ( @($_, $z.fullname) ), -1)
 								$tmp.Name = $_
 								$tmp.Group = $ListViewGroup12
-								$listarr +=, $tmp
+								$Script:listarr +=, $tmp
 							}
 						}
 					}
 				}
 			}
 		}
-		$ListView1.Items.AddRange([System.Windows.Forms.ListViewItem[]] ( $listarr ))
+		$ListView1.Items.AddRange([System.Windows.Forms.ListViewItem[]] ( $Script:listarr ))
 	}
 	
 	function fnc_populateCombo
@@ -392,7 +403,7 @@ $FolderBrowserDialog1 = New-Object System.Windows.Forms.FolderBrowserDialog
 	{
 		$c1 = Test-Path (Join-Path $TextBox1.Text "\Arma3.exe")
 		$c2 = Test-Path (Join-Path $TextBox2.Text "\Sources")
-		$c3 = Test-Path (Join-Path $TextBox3.Text "\AddonBuilder.exe")
+		$c3 = Test-Path (Join-Path $TextBox3.Text "\AddonBuilder.exe") -ErrorAction SilentlyContinue
 		$c4 = Test-Path (Join-Path $TextBox4.Text "\Source_APL")
 		$c5 = Test-Path "P:\"
 	
@@ -430,7 +441,7 @@ $FolderBrowserDialog1 = New-Object System.Windows.Forms.FolderBrowserDialog
 						[System.Windows.Forms.MessageBox]::Show(($tp + " Not found."), "Warning")
 					}
 				}
-				
+								
 				2 # Location of Public Github
 				{ 
 					$TextBox2.Text = $p
@@ -440,7 +451,7 @@ $FolderBrowserDialog1 = New-Object System.Windows.Forms.FolderBrowserDialog
 						$Script:PathGPu = $tp
 					}
 				}
-				
+								
 				3 # Location of Addob Builder
 				{ 
 					$TextBox3.Text = $p
@@ -450,7 +461,7 @@ $FolderBrowserDialog1 = New-Object System.Windows.Forms.FolderBrowserDialog
 						$Script:PathAB = $tp
 					}
 				}
-				
+								
 				4 # Location of Private Github
 				{ 
 					$TextBox4.Text = $p
@@ -464,11 +475,22 @@ $FolderBrowserDialog1 = New-Object System.Windows.Forms.FolderBrowserDialog
 			$FolderBrowserDialog1.SelectedPath = $null
 		}
 	}
+		
+	function fnc_selectAll($boo)
+	{
+		foreach ($x in $Script:listarr)
+		{
+			$x.checked = $boo
+		}
+	}
+	
 	# Event Handlers
 	$Button1.Add_Click({ fnc_getSetPath(1) })
 	$Button2.Add_Click({ fnc_getSetPath(2) })
 	$Button3.Add_Click({ fnc_getSetPath(3) })
 	$Button4.Add_Click({ fnc_getSetPath(4) })
+	$Button7.Add_Click({ fnc_selectAll($true) })
+	$Button5.Add_Click({ fnc_selectAll($false) })
 	
 	# Main code
 		
