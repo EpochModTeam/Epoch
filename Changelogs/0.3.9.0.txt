@@ -1,6 +1,7 @@
 [Added] Player option to Morph into a random antagonist (from deathMorphClass) after death. The array 'deathMorphClass' found in CfgEpochClient can be used to specify what antagonists to randomly spawn.
 [Added] Player option to detonate body after death. Sacrifice yourself by generating a runaway thermal cascade using the nano bots within your body. Nothing left to revive.
 [Added] Server function to allow remote exec of setVariable on client - Allows client to ask another client to set a local variable, via the server. Server can run same function.
+[Changed] Moved all Base Building configs to gamemode.
 [Changed] Sapper groan or detonate can be triggered by setting a variable on the target or sapper.
 [Changed] Server can be asked by a client / server to trigger an antagonist on another client. Antagonist is then run on target PC, independent from caller of function.
 [Changed] Epoch Unit Spawn code. Now can be called specifying the target of the antagonist. Antagonist will run on target client PC.
