@@ -58,7 +58,7 @@ $Label4.Anchor = ([System.Windows.Forms.AnchorStyles]([System.Windows.Forms.Anch
 $Label4.Location = New-Object System.Drawing.Point(12, 7)
 $Label4.Size = New-Object System.Drawing.Size(551, 20)
 $Label4.TabIndex = 1
-$Label4.Text = "Info bar"
+$Label4.Text = "Why do farts smell? So deaf people can enjoy them too."
 $Label4.TextAlign = [System.Drawing.ContentAlignment]::MiddleCenter
 #~~< TabControl1 >~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 $TabControl1 = New-Object System.Windows.Forms.TabControl
@@ -76,6 +76,14 @@ $TabPage1.Size = New-Object System.Drawing.Size(761, 487)
 $TabPage1.TabIndex = 0
 $TabPage1.Text = "Packager"
 $TabPage1.BackColor = [System.Drawing.SystemColors]::Control
+#~~< Button16 >~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+$Button16 = New-Object System.Windows.Forms.Button
+$Button16.Anchor = ([System.Windows.Forms.AnchorStyles]([System.Windows.Forms.AnchorStyles]::Top -bor [System.Windows.Forms.AnchorStyles]::Right))
+$Button16.Location = New-Object System.Drawing.Point(678, 64)
+$Button16.Size = New-Object System.Drawing.Size(75, 23)
+$Button16.TabIndex = 4
+$Button16.Text = "Selected"
+$Button16.UseVisualStyleBackColor = $true
 #~~< Button6 >~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 $Button6 = New-Object System.Windows.Forms.Button
 $Button6.Anchor = ([System.Windows.Forms.AnchorStyles]([System.Windows.Forms.AnchorStyles]::Bottom -bor [System.Windows.Forms.AnchorStyles]::Right))
@@ -128,6 +136,7 @@ $ListViewGroup12.Header = "Client"
 $ListViewGroup13 = New-Object System.Windows.Forms.ListViewGroup("Missions", [System.Windows.Forms.HorizontalAlignment]::Left)
 $ListViewGroup13.Header = "Missions"
 $ListView1.Groups.AddRange([System.Windows.Forms.ListViewGroup[]](@($ListViewGroup11, $ListViewGroup12, $ListViewGroup13)))
+$TabPage1.Controls.Add($Button16)
 $TabPage1.Controls.Add($Button6)
 $TabPage1.Controls.Add($Button5)
 $TabPage1.Controls.Add($Button7)
@@ -305,30 +314,30 @@ $TabPage3.Size = New-Object System.Drawing.Size(761, 487)
 $TabPage3.TabIndex = 2
 $TabPage3.Text = "Developers"
 $TabPage3.BackColor = [System.Drawing.SystemColors]::Control
+#~~< Button15 >~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+$Button15 = New-Object System.Windows.Forms.Button
+$Button15.Location = New-Object System.Drawing.Point(6, 199)
+$Button15.Size = New-Object System.Drawing.Size(96, 21)
+$Button15.TabIndex = 26
+$Button15.Text = "Reload Versions"
+$Button15.UseVisualStyleBackColor = $true
 #~~< Button12 >~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 $Button12 = New-Object System.Windows.Forms.Button
-$Button12.Location = New-Object System.Drawing.Point(97, 172)
-$Button12.Size = New-Object System.Drawing.Size(54, 21)
+$Button12.Location = New-Object System.Drawing.Point(6, 226)
+$Button12.Size = New-Object System.Drawing.Size(96, 21)
 $Button12.TabIndex = 25
-$Button12.Text = "Update"
+$Button12.Text = "Update Versions"
 $Button12.UseVisualStyleBackColor = $true
 #~~< TextBox8 >~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 $TextBox8 = New-Object System.Windows.Forms.TextBox
 $TextBox8.Location = New-Object System.Drawing.Point(6, 173)
-$TextBox8.Size = New-Object System.Drawing.Size(85, 20)
+$TextBox8.Size = New-Object System.Drawing.Size(96, 20)
 $TextBox8.TabIndex = 24
 $TextBox8.Text = ""
-#~~< Button11 >~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-$Button11 = New-Object System.Windows.Forms.Button
-$Button11.Location = New-Object System.Drawing.Point(97, 131)
-$Button11.Size = New-Object System.Drawing.Size(54, 21)
-$Button11.TabIndex = 23
-$Button11.Text = "Update"
-$Button11.UseVisualStyleBackColor = $true
 #~~< TextBox7 >~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 $TextBox7 = New-Object System.Windows.Forms.TextBox
 $TextBox7.Location = New-Object System.Drawing.Point(6, 132)
-$TextBox7.Size = New-Object System.Drawing.Size(85, 20)
+$TextBox7.Size = New-Object System.Drawing.Size(96, 20)
 $TextBox7.TabIndex = 22
 $TextBox7.Text = ""
 #~~< Label10 >~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -336,24 +345,17 @@ $Label10 = New-Object System.Windows.Forms.Label
 $Label10.Location = New-Object System.Drawing.Point(6, 156)
 $Label10.Size = New-Object System.Drawing.Size(145, 14)
 $Label10.TabIndex = 21
-$Label10.Text = "Build 2 Version:"
+$Label10.Text = "Public Build:"
 #~~< Label9 >~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 $Label9 = New-Object System.Windows.Forms.Label
 $Label9.Location = New-Object System.Drawing.Point(6, 115)
 $Label9.Size = New-Object System.Drawing.Size(145, 14)
 $Label9.TabIndex = 18
-$Label9.Text = "Build Version:"
-#~~< Button10 >~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-$Button10 = New-Object System.Windows.Forms.Button
-$Button10.Location = New-Object System.Drawing.Point(97, 91)
-$Button10.Size = New-Object System.Drawing.Size(54, 21)
-$Button10.TabIndex = 17
-$Button10.Text = "Update"
-$Button10.UseVisualStyleBackColor = $true
+$Label9.Text = "Private Build:"
 #~~< TextBox6 >~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 $TextBox6 = New-Object System.Windows.Forms.TextBox
 $TextBox6.Location = New-Object System.Drawing.Point(6, 92)
-$TextBox6.Size = New-Object System.Drawing.Size(85, 20)
+$TextBox6.Size = New-Object System.Drawing.Size(96, 20)
 $TextBox6.TabIndex = 16
 $TextBox6.Text = ""
 #~~< Label8 >~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -390,13 +392,12 @@ $Button4.Size = New-Object System.Drawing.Size(54, 21)
 $Button4.TabIndex = 13
 $Button4.Text = "Browse"
 $Button4.UseVisualStyleBackColor = $true
+$TabPage3.Controls.Add($Button15)
 $TabPage3.Controls.Add($Button12)
 $TabPage3.Controls.Add($TextBox8)
-$TabPage3.Controls.Add($Button11)
 $TabPage3.Controls.Add($TextBox7)
 $TabPage3.Controls.Add($Label10)
 $TabPage3.Controls.Add($Label9)
-$TabPage3.Controls.Add($Button10)
 $TabPage3.Controls.Add($TextBox6)
 $TabPage3.Controls.Add($Label8)
 $TabPage3.Controls.Add($CheckBox1)
@@ -422,7 +423,7 @@ $ComboBox1.Location = New-Object System.Drawing.Point(644, 6)
 $ComboBox1.SelectedIndex = -1
 $ComboBox1.Size = New-Object System.Drawing.Size(137, 21)
 $ComboBox1.TabIndex = 14
-$ComboBox1.Text = ""
+$ComboBox1.Text = "Select Arma Mod"
 $Form1.Controls.Add($Label4)
 $Form1.Controls.Add($TabControl1)
 $Form1.Controls.Add($Label6)
@@ -451,28 +452,27 @@ $Form1.Icon = ([System.Drawing.Icon](New-Object System.Drawing.Icon((New-Object 
                                 "AAAA8A8AAOAHAADH4wAAgAMAAIAAAACB+QAAn/kAAIAFAACABQAAn/kAAIP5AACAAAAAgAEAAIfj"+
                                 "AADgBwAA8A8AAA==")),0,$$.Length)))))
 #endregion
-#~~< FolderBrowserDialog1 >~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-$FolderBrowserDialog1 = New-Object System.Windows.Forms.FolderBrowserDialog
 #~~< components >~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 $components = New-Object System.ComponentModel.Container
 #~~< Timer1 >~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 $Timer1 = New-Object System.Windows.Forms.Timer($components)
+#~~< FolderBrowserDialog1 >~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+$FolderBrowserDialog1 = New-Object System.Windows.Forms.FolderBrowserDialog
 
 #endregion
 
 #region Custom Code
-		
-	# Static development vars, DELETE ON RELEASE
-	#$TextBox1.Text = "E:\Steam\steamapps\common\Arma 3"
-	$TextBox2.Text = "F:\github\Epoch_public"
-	#$TextBox3.Text = "P:\AddonBuilder"
-	$TextBox4.Text = "F:\github\EPOCHMOD"
-	$ver = "0.3.8"
 	
 	# Defines
+	
 	$ListView1.CheckBoxes = $true
 	$FolderBrowserDialog1.ShowNewFolderButton = $false
-		
+	$TextBox1.Text = "Arma 3 not found"
+	$TextBox3.Text = "Arma Tools not found"
+	$TextBox2.Text = "C:\"
+	$TextBox4.Text = "C:\"
+	$TextBox5.Text = (Join-Path $env:APPDATA "\Epoch_PBO.ini")
+	
 	$OS = (Get-WmiObject Win32_OperatingSystem).OSArchitecture
 		
 	$armaPathArr = switch($OS) #gets array of objects from registry
@@ -546,17 +546,6 @@ $Timer1 = New-Object System.Windows.Forms.Timer($components)
 		$ListView1.Items.AddRange([System.Windows.Forms.ListViewItem[]] ( $Script:listarr ))
 	}
 	
-	function fnc_populateCombo
-	{
-				
-	}
-
-		
-	function fnc_getVersion
-	{
-		
-	}
-	
 	function fnc_enableControls
 	{
 		$c1 = Test-Path (Join-Path $TextBox1.Text "\Arma3.exe")
@@ -564,12 +553,13 @@ $Timer1 = New-Object System.Windows.Forms.Timer($components)
 		$c3 = Test-Path (Join-Path $TextBox3.Text "\AddonBuilder.exe") -ErrorAction SilentlyContinue
 		$c4 = Test-Path (Join-Path $TextBox4.Text "\Source_APL")
 		$c5 = Test-Path "P:\"
-	
+
 		if ($c1 -and $c2 -and $c3 -and $c5)
 		{
 			$Button5.Enabled = $true
 			$Button6.Enabled = $true
 			$Button7.Enabled = $true
+			$Button16.Enabled = $true
 			$ListView1.Enabled = $true
 		}
 		else
@@ -577,9 +567,40 @@ $Timer1 = New-Object System.Windows.Forms.Timer($components)
 			$Button5.Enabled = $false
 			$Button6.Enabled = $false
 			$Button7.Enabled = $false
+			$Button16.Enabled = $false
 			$ListView1.Enabled = $false
 		}
-		$Label4.Text = if (!$c5) { "P:\ drive not mounted" } else { $ver }
+		$Label4.Text = if (!$c5) { "P:\ drive not mounted" } else { "EPOCH_CODE and EPOCH_CONFIG are automatically merged into MPMissions PBO packs" }
+	}
+		
+	function fnc_reloadVersions
+	{
+		$p6 = Join-Path $Textbox4.Text "\Assets\EpochAutoPacker\Final\batches\version.txt"
+		$p7 = Join-Path $Textbox4.Text "\Assets\EpochAutoPacker\Final\batches\currentBuild.txt"
+		$p8 = Join-Path $Textbox2.Text "\build.txt"
+		$Textbox6.Text = if (Test-Path $p6) { Get-Content $p6 } else { "Path not set" }
+		$Textbox7.Text = if (Test-Path $p7) { Get-Content $p7 } else { "Path not set" }
+		$Textbox8.Text = if (Test-Path $p8) { Get-Content $p8 } else { "Path not set" }
+	}
+		
+	function fnc_updateVersions
+	{
+		$p6 = Join-Path $Textbox4.Text "\Assets\EpochAutoPacker\Final\batches\version.txt"
+		$p7 = Join-Path $Textbox4.Text "\Assets\EpochAutoPacker\Final\batches\currentBuild.txt"
+		$p8 = Join-Path $Textbox2.Text "\build.txt"
+				
+		if (($Textbox6.Text -ne "Path not set") -and (Test-Path $p6))
+		{
+			$TextBox6.Text | Out-File $p6
+		}
+		if (($Textbox7.Text -ne "Path not set") -and (Test-Path $p7))
+		{
+			$TextBox7.Text | Out-File $p7
+		}
+		if (($Textbox8.Text -ne "Path not set") -and (Test-Path $p8))
+		{
+			$TextBox8.Text | Out-File $p8
+		}
 	}
 	
 	function fnc_getSetPath($switch)
@@ -588,7 +609,7 @@ $Timer1 = New-Object System.Windows.Forms.Timer($components)
 		if ($FolderBrowserDialog1.SelectedPath)
 		{
 			$p = $FolderBrowserDialog1.SelectedPath
-			$tb = switch($switch)
+			switch($switch)
 			{
 				1 # Location of Arma 3
 				{ 
@@ -606,7 +627,12 @@ $Timer1 = New-Object System.Windows.Forms.Timer($components)
 					$tp = Join-Path $p "\Sources"
 					if (!(Test-Path $tp))
 					{
-						$Script:PathGPu = $tp
+						[System.Windows.Forms.MessageBox]::Show(($tp + " Not found."), "Warning")
+					}
+					else
+					{
+						$ListView1.Items.Clear()
+						fnc_populateListView
 					}
 				}
 								
@@ -616,7 +642,7 @@ $Timer1 = New-Object System.Windows.Forms.Timer($components)
 					$tp = Join-Path $p "\AddonBuilder.exe"
 					if (!(Test-Path $tp))
 					{
-						$Script:PathAB = $tp
+						[System.Windows.Forms.MessageBox]::Show(($tp + " Not found."), "Warning")
 					}
 				}
 								
@@ -626,7 +652,30 @@ $Timer1 = New-Object System.Windows.Forms.Timer($components)
 					$tp = Join-Path $p "\Source_APL"
 					if (!(Test-Path $tp))
 					{
-						$Script:PathGPr = $tp
+						[System.Windows.Forms.MessageBox]::Show(($tp + " Not found."), "Warning")
+					}
+					else
+					{
+						$ListView1.Items.Clear()
+						fnc_populateListView
+					}
+				}
+								
+				5 # Location of Packed missions
+				{ 
+					$TextBox9.Text = $p
+					if (!(Test-Path $p))
+					{
+						[System.Windows.Forms.MessageBox]::Show(($tp + " Not found."), "Warning")
+					}
+				}
+								
+				6 # Location of Packed missions
+				{ 
+					$TextBox10.Text = $p
+					if (!(Test-Path $p))
+					{
+						[System.Windows.Forms.MessageBox]::Show(($tp + " Not found."), "Warning")
 					}
 				}
 			}
@@ -641,17 +690,99 @@ $Timer1 = New-Object System.Windows.Forms.Timer($components)
 			$x.checked = $boo
 		}
 	}
+		
+	function fnc_selectSelected
+	{
+		foreach ($x in $Script:listarr)
+		{
+			$x.checked = $x.selected
+		}
+	}
+		
+	function fnc_devEnableDisable
+	{
+		$cbstate = $CheckBox1.Checked
+						
+		$TextBox4.Enabled = $cbstate
+		$TextBox6.Enabled = $cbstate
+		$TextBox7.Enabled = $cbstate
+		$TextBox8.Enabled = $cbstate
+						
+		$Button4.Enabled = $cbstate
+		$Button15.Enabled = $cbstate
+		$Button12.Enabled = $cbstate
+	}
+		
+	function fnc_settingsSave
+	{
+		$Out = @(
+					
+			$ComboBox1.SelectedIndex
+			$TextBox1.Text
+			$TextBox3.Text
+			$TextBox2.Text
+			$TextBox9.Text
+			$TextBox1.Text
+			$TextBox10.Text
+			$TextBox4.Text
+			$CheckBox1.Checked
+		)
+				
+		$Out | Out-File $TextBox5.Text
+	}
+		
+	function fnc_settingsLoad
+	{
+		if ( Test-Path $TextBox5.Text)
+		{
+			$in = Get-Content $TextBox5.Text
+				
+			$ComboBox1.SelectedIndex = $in[0]
+			$TextBox1.Text = $in[1]
+			$TextBox3.Text = $in[2]
+			$TextBox2.Text = $in[3]
+			$TextBox9.Text = $in[4]
+			$TextBox1.Text = $in[5]
+			$TextBox10.Text = $in[6]
+			$TextBox4.Text = $in[7]
+			$CheckBox1.Checked = $in[8]
+		}
+	}
 	
 	# Event Handlers
 	$Button1.Add_Click({ fnc_getSetPath(1) })
 	$Button2.Add_Click({ fnc_getSetPath(2) })
 	$Button3.Add_Click({ fnc_getSetPath(3) })
 	$Button4.Add_Click({ fnc_getSetPath(4) })
+	$Button13.Add_Click({ fnc_getSetPath(5) })
+	$Button14.Add_Click({ fnc_getSetPath(6) })
+	
 	$Button7.Add_Click({ fnc_selectAll($true) })
 	$Button5.Add_Click({ fnc_selectAll($false) })
+	$Button12.Add_Click({ fnc_updateVersions })
+	$Button15.Add_Click({ fnc_reloadVersions })
+	$Button16.Add_Click({ fnc_selectSelected })
+	$Button8.Add_Click({ Remove-Item -Path $TextBox5.Text -ErrorAction SilentlyContinue })
+	$Button9.Add_Click({ fnc_settingsSave })
+	$CheckBox1.Add_CheckedChanged({ fnc_devEnableDisable })
+	
 	
 	# Main code
+	
+	$mods = Get-ChildItem $TextBox1.Text -directory
+	$modsarr = @()	
+	foreach ($x in $mods)
+	{
+		if (Test-Path($x.fullname + "\mod.cpp"))
+		{
+			$modsarr += ,$x.name
+		}
+	}
+	
+	$ComboBox1.Items.AddRange([System.Object[]] ( $modsarr ))
 		
+	fnc_settingsLoad
+	
 	# Fake endless loop, spawned thread
 	$Timer1.Start()
 	$Timer1.Interval = 1000
@@ -661,7 +792,10 @@ $Timer1 = New-Object System.Windows.Forms.Timer($components)
 	{
 		fnc_populateListView
 	}
-
+		
+	fnc_devEnableDisable
+	fnc_reloadVersions
+	
 #endregion
 
 #region Event Loop
