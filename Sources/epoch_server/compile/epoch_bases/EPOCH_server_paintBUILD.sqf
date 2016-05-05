@@ -12,7 +12,7 @@
     Github:
     https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_server/compile/epoch_bases/EPOCH_server_paintBUILD.sqf
 */
-private["_color", "_class", "_currentTextureSlot", "_slot", "_worldspace", "_objHiveKey", "_VAL", "_return", "_playerUID", "_objSlot"];
+private["_cfgBaseBuilding","_color", "_class", "_currentTextureSlot", "_slot", "_worldspace", "_objHiveKey", "_VAL", "_return", "_playerUID", "_objSlot"];
 params [["_object",objNull],"_textureSlot","_player",["_token","",[""]]];
 
 if !([_player, _token] call EPOCH_server_getPToken) exitWith{};
@@ -28,7 +28,8 @@ if (_objSlot != -1) then {
 	if (_textureSlot != _currentTextureSlot) then {
 
 		_class = typeOf _object;
-		_color = getArray(configFile >> "CfgVehicles" >> _class >> "availableTextures");
+		_cfgBaseBuilding = 'CfgBaseBuilding' call EPOCH_returnConfig;
+		_color = getArray(_cfgBaseBuilding >> _class >> "availableTextures");
 		if !(_color isEqualTo[]) then {
 			_object setObjectTextureGlobal[0, (_color select _textureSlot)];
 			_object setVariable["TEXTURE_SLOT", _textureSlot, true];

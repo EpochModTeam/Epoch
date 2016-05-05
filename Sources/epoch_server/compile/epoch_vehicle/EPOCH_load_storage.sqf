@@ -12,7 +12,7 @@
     Github:
     https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_server/compile/epoch_vehicle/EPOCH_load_storage.sqf
 */
-private ["_inventory","_location","_dir","_textures","_colors","_textureSelectionIndex","_selections","_count","_color","_config","_objTypes","_objQty","_wMags","_wMagsArray","_attachments","_magazineSizeMax","_magazineName","_magazineSize","_qty","_objType","_marker","_class_raw","_damage","_class","_worldspace","_wsCount","_vehicle","_arr","_storageSlotIndex","_vehHiveKey","_response","_diag"];
+private ["_inventory","_location","_dir","_textures","_colors","_textureSelectionIndex","_selections","_count","_color","_cfgBaseBuilding","_objTypes","_objQty","_wMags","_wMagsArray","_attachments","_magazineSizeMax","_magazineName","_magazineSize","_qty","_objType","_marker","_class_raw","_damage","_class","_worldspace","_wsCount","_vehicle","_arr","_storageSlotIndex","_vehHiveKey","_response","_diag"];
 params [["_maxStorageLimit",0]];
 
 _diag = diag_tickTime;
@@ -86,10 +86,11 @@ for "_i" from 1 to _maxStorageLimit do {
 
 			if (count _arr >= 5) then {
 				_color = _arr select 4;
-				_config = configFile >> "CfgVehicles" >> _class >> "availableColors";
-				if (isArray _config) then {
-					_colors = getArray(_config);
-					_textureSelectionIndex = configFile >> "CfgVehicles" >> _class >> "textureSelectionIndex";
+				_cfgBaseBuilding = 'CfgBaseBuilding' call EPOCH_returnConfig;
+				_availableColorsConfig = _cfgBaseBuilding >> _class >> "availableColors";
+				if (isArray _availableColorsConfig) then {
+					_colors = getArray(_availableColorsConfig);
+					_textureSelectionIndex = _cfgBaseBuilding >> _class >> "textureSelectionIndex";
 					_selections = if (isArray(_textureSelectionIndex)) then { getArray(_textureSelectionIndex) } else { [0] };
 					_count = (count _colors)-1;
 					{

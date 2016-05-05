@@ -97,3 +97,7 @@ _fadeUI = {
 };
 
 _cursorTarget = objNull;
+
+// init cfgBaseBuilding config var
+_cfgBaseBuilding = 'CfgBaseBuilding' call EPOCH_returnConfig;
+_cfgObjectInteractions = 'CfgObjectInteractions' call EPOCH_returnConfig;

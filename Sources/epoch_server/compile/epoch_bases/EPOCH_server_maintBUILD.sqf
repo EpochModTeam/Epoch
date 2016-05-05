@@ -25,15 +25,15 @@
 	Returns:
 	NOTHING
 */
-private ["_playerUID","_counter","_objSlot","_buildingJammerRange","_current_crypto","_cIndex","_vars","_storSlot","_playerCryptoLimit","_config"];
+private ["_playerUID","_counter","_objSlot","_buildingJammerRange","_current_crypto","_cIndex","_vars","_storSlot","_playerCryptoLimit","_cfgEpochClient"];
 params [["_object",objNull],"_player","_maintCount",["_token","",[""]]];
 
 if !([_player, _token] call EPOCH_server_getPToken) exitWith{};
 if (isNull _object) exitWith{};
 if (_player distance _object > 20) exitWith{};
 
-_config = 'CfgEpochClient' call EPOCH_returnConfig;
-_buildingJammerRange = getNumber(_config >> "buildingJammerRange");
+_cfgEpochClient = 'CfgEpochClient' call EPOCH_returnConfig;
+_buildingJammerRange = getNumber(_cfgEpochClient >> "buildingJammerRange");
 if (_buildingJammerRange == 0) then { _buildingJammerRange = 75; };
 
 _playerUID = getPlayerUID _player;

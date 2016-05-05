@@ -12,10 +12,12 @@
     Github:
     https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_server/compile/epoch_bases/EPOCH_server_unsuppported.sqf
 */
-private["_worldspace", "_newObj", "_class", "_objSlot", "_config", "_isSupported", "_lastPosition", "_currentPosition", "_objectPos"];
+private["_simulClassConfig","_worldspace", "_newObj", "_class", "_objSlot", "_cfgBaseBuilding", "_isSupported", "_lastPosition", "_currentPosition", "_objectPos"];
 
 if !(isNil "EPOCH_unsupportedCheckRunning") exitWith{ diag_log "UnsupportedCheck: Already running aborted"};
 EPOCH_unsupportedCheckRunning = true;
+
+_cfgBaseBuilding = 'CfgBaseBuilding' call EPOCH_returnConfig;
 
 // Check unsupported
 _start = diag_tickTime;
@@ -23,10 +25,8 @@ _simulatedCount = 0;
 _stableCount = 0;
 {
 	if (!isNull _x) then {
-
-		_config = (configFile >> "CfgVehicles" >> (typeOf _x) >> "simulClass");
-		if (isText(_config)) then {
-
+		_simulClassConfig = (_cfgBaseBuilding >> (typeOf _x) >> "simulClass");
+		if (isText(_simulClassConfig)) then {
 			_objectPos = getPosASL _x;
 			_isSupported = isTouchingGround _x;
 			if (!_isSupported) then {
@@ -35,7 +35,7 @@ _stableCount = 0;
 				};
 			};
 			if (!_isSupported) then {
-				_class = getText(_config);
+				_class = getText(_simulClassConfig);
 				_objSlot = _x getVariable["BUILD_SLOT", -1];
 				if (_objSlot != -1) then {
 					_vDir = vectordir _x;

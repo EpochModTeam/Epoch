@@ -21,7 +21,7 @@
 	Returns:
 	NOTHING
 */
-private ["_energyCost","_allowedSnapObjects","_worldspace","_objSlot","_textureSlot","_newObj","_lastCheckTime","_rejectMove","_nearestObject","_nearestObjectRaw","_distanceNear","_previousDistanceNear","_pOffset","_snapPos","_isSnap","_snapPosition","_snapType","_snapDistance","_prevSnapDistance","_snapPointsPara","_snapPointsPerp","_snapArrayPara","_snapArrayPerp","_pos2","_direction","_vel2","_dir2","_up2","_distance","_playerdistance","_class","_create","_allowedSnapPoints","_snapObjects","_currentTarget","_onContactEH","_offset","_disallowed","_object","_objType","_return","_velocityTransformation","_distanceMod","_oemType","_config"];
+private ["_simulClassConfig","_energyCost","_allowedSnapObjects","_worldspace","_objSlot","_textureSlot","_newObj","_lastCheckTime","_rejectMove","_nearestObject","_nearestObjectRaw","_distanceNear","_previousDistanceNear","_pOffset","_snapPos","_isSnap","_snapPosition","_snapType","_snapDistance","_prevSnapDistance","_snapPointsPara","_snapPointsPerp","_snapArrayPara","_snapArrayPerp","_pos2","_direction","_vel2","_dir2","_up2","_distance","_playerdistance","_class","_create","_allowedSnapPoints","_snapObjects","_currentTarget","_onContactEH","_offset","_disallowed","_object","_objType","_return","_velocityTransformation","_distanceMod","_oemType","_cfgBaseBuilding"];
 if !(isNil "EPOCH_simulSwap_Lock") exitWith{};
 
 _object = param [0,objNull];
@@ -42,14 +42,17 @@ _velocityTransformation = [];
 _prevSnapDistance = 0;
 _distanceMod = 0;
 _oemType = (typeOf _object);
-_config = (configFile >> "CfgVehicles" >> _oemType >> "simulClass");
-if (isText(_config)) then {
-	_class = getText(_config);
+
+_cfgBaseBuilding = 'CfgBaseBuilding' call EPOCH_returnConfig;
+
+_simulClassConfig = (_cfgBaseBuilding >> _oemType >> "simulClass");
+if (isText(_simulClassConfig)) then {
+	_class = getText(_simulClassConfig);
 	_create = true;
-	_allowedSnapPoints = getArray(configfile >> "cfgVehicles" >> _class >> "allowedSnapPoints");
+	_allowedSnapPoints = getArray(_cfgBaseBuilding >> _class >> "allowedSnapPoints");
 	_allowedSnapObjects = ["Constructions_static_F"];
-	_snapObjects = configfile >> "cfgVehicles" >> _class >> "allowedSnapObjects";
-	_energyCost = getNumber(configfile >> "cfgVehicles" >> _class >> "energyCost");
+	_snapObjects = _cfgBaseBuilding >> _class >> "allowedSnapObjects";
+	_energyCost = getNumber(_cfgBaseBuilding >> _class >> "energyCost");
 	if (_energyCost == 0) then {
 		_energyCost = 0.1;
 	};
@@ -129,8 +132,8 @@ if (isText(_config)) then {
 					} forEach _allowedSnapObjects;
 				};
 				if (!isNull _nearestObject) then {
-					_snapPointsPara = getArray(configfile >> "cfgVehicles" >> (typeOf _nearestObject) >> "snapPointsPara");
-					_snapPointsPerp = getArray(configfile >> "cfgVehicles" >> (typeOf _nearestObject) >> "snapPointsPerp");
+					_snapPointsPara = getArray(_cfgBaseBuilding >> (typeOf _nearestObject) >> "snapPointsPara");
+					_snapPointsPerp = getArray(_cfgBaseBuilding >> (typeOf _nearestObject) >> "snapPointsPerp");
 					_snapArrayPara = [];
 					{
 						if (_x in _allowedSnapPoints) then {

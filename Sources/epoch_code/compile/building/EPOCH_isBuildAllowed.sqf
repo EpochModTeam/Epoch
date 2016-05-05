@@ -22,7 +22,7 @@
 	Returns:
 	BOOL
 */
-private ["_buildingJammerRange","_buildingCountLimit","_buildingAllowed","_nearestJammer","_ownedJammerExists","_objectCount","_limitNearby","_restricted","_range","_config","_staticClass","_objType","_simulClass","_bypassJammer","_jammer","_restrictedLocations","_myPosATL"];
+private ["_cfgBaseBuilding","_buildingJammerRange","_buildingCountLimit","_buildingAllowed","_nearestJammer","_ownedJammerExists","_objectCount","_limitNearby","_restricted","_range","_config","_staticClass","_objType","_simulClass","_bypassJammer","_jammer","_restrictedLocations","_myPosATL"];
 
 _buildingAllowed = true;
 _ownedJammerExists = false;
@@ -33,6 +33,7 @@ if (vehicle player != player)exitWith{["<t size = '1.6' color = '#99ffffff'>Buil
 
 // defaults
 _config = 'CfgEpochClient' call EPOCH_returnConfig;
+_cfgBaseBuilding = 'CfgBaseBuilding' call EPOCH_returnConfig;
 _buildingJammerRange = getNumber(_config >> "buildingJammerRange");
 _buildingCountLimit = getNumber(_config >> "buildingCountLimit");
 if (_buildingJammerRange == 0) then { _buildingJammerRange = 75; };
@@ -46,9 +47,9 @@ if (_objType isEqualType objNull) then {
 	_objType = typeOf _objType;
 };
 
-_staticClass = getText(configfile >> "CfgVehicles" >> _objType >> "staticClass");
-_simulClass = getText(configfile >> "CfgVehicles" >> _objType >> "simulClass");
-_bypassJammer = getNumber(configfile >> "CfgVehicles" >> _staticClass >> "bypassJammer");
+_staticClass = getText(_cfgBaseBuilding >> _objType >> "staticClass");
+_simulClass = getText(_cfgBaseBuilding >> _objType >> "simulClass");
+_bypassJammer = getNumber(_cfgBaseBuilding >> _staticClass >> "bypassJammer");
 
 // Jammer
 _jammer = nearestObjects[player, ["PlotPole_EPOCH"], _buildingJammerRange*3];
@@ -87,7 +88,7 @@ if !(_buildingAllowed)exitWith{ false };
 
 // Max object
 if (!_ownedJammerExists) then{
-	_limitNearby = getNumber(configfile >> "CfgVehicles" >> _staticClass >> "limitNearby");
+	_limitNearby = getNumber(_cfgBaseBuilding >> _staticClass >> "limitNearby");
 
 	if (_limitNearby > 0) then{
 		// remove current target from objects

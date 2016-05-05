@@ -77,6 +77,21 @@ class tra_shop
 	tooltip = "Shop";
 };
 
+class player_trade
+{
+	condition = "dyna_isPlayer";
+	action = "[dyna_cursorTarget, player, Epoch_personalToken] call EPOCH_startTRADEREQ;";
+	icon = "x\addons\a3_epoch_code\Data\UI\buttons\krypto.paa";
+	tooltip = "Make Trade Request";
+};
+class player_trade_accept
+{
+	condition = "dyna_isPlayer && dyna_canAcceptTrade";
+	action = "EPOCH_p2ptradeTarget = EPOCH_pendingP2ptradeTarget;call EPOCH_startTrade;";
+	icon = "x\addons\a3_epoch_code\Data\UI\buttons\krypto.paa";
+	tooltip = "Accept Trade Request";
+};
+
 //User action replacement
 class maintain_jammer
 {

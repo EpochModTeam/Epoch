@@ -12,7 +12,7 @@
     Github:
     https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_server/compile/epoch_bases/EPOCH_server_simulSwap.sqf
 */
-private["_cfgClass", "_worldspace", "_newObj", "_return", "_class", "_oemType", "_config", "_object", "_objSlot", "_damage", "_color", "_textureSlot"];
+private["_classConfig","_cfgClass", "_worldspace", "_newObj", "_return", "_class", "_oemType", "_cfgBaseBuilding", "_object", "_objSlot", "_damage", "_color", "_textureSlot"];
 params [["_object",objNull,[objNull]],["_static",false,[false]]];
 _return = _object;
 _objSlot = _object getVariable ["BUILD_SLOT", -1];
@@ -23,10 +23,10 @@ if (_objSlot != -1) then {
 		_cfgClass = "simulClass";
 	};
 	_oemType = typeOf _object;
-
-	_config = (configFile >> "CfgVehicles" >> _oemType >> _cfgClass);
-	if (isText _config) then {
-		_class = getText(_config);
+	_cfgBaseBuilding = 'CfgBaseBuilding' call EPOCH_returnConfig;
+	_classConfig = (_cfgBaseBuilding >> _oemType >> _cfgClass);
+	if (isText _classConfig) then {
+		_class = getText(_classConfig);
 
 		if (_oemType != _class) then {
 
@@ -42,7 +42,7 @@ if (_objSlot != -1) then {
 
 			if (_textureSlot != 0) then {
 				// get texture path from index
-				_color = getArray(configFile >> "CfgVehicles" >> _class >> "availableTextures");
+				_color = getArray(_cfgBaseBuilding >> _class >> "availableTextures");
 				if !(_color isEqualTo[]) then {
 					_newObj setObjectTextureGlobal[0, (_color select _textureSlot)];
 					_newObj setVariable["TEXTURE_SLOT", _textureSlot, true];
@@ -50,7 +50,7 @@ if (_objSlot != -1) then {
 			};
 
 			// spawn additional object for trap
-			_ammoClass = (configFile >> "CfgVehicles" >> _class >> "ammoClass");
+			_ammoClass = (_cfgBaseBuilding >> _class >> "ammoClass");
 			if (isText _ammoClass) then {
 				_ammoClass = getText _ammoClass;
 				_ammoObj = createVehicle [_ammoClass, [0,0,0], [], 0, "CAN_COLLIDE"];

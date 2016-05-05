@@ -181,26 +181,6 @@ if (vehicle player == player) then {
 		};
 	};
 
-	if (_dikCode == EPOCH_keysAcceptTrade) then {
-		if (_ctrl) then {
-			if (!isNull cursorTarget) then {
-				if ((player distance cursorTarget) < 6) then {
-					if (cursorTarget != player && isPlayer cursorTarget && vehicle cursorTarget == cursorTarget) then {
-						[cursorTarget, player, Epoch_personalToken] call EPOCH_startTRADEREQ;
-					};
-				};
-			};
-		} else {
-			if !(isNull EPOCH_pendingP2ptradeTarget && isPlayer EPOCH_pendingP2ptradeTarget) then {
-				if ((player distance EPOCH_pendingP2ptradeTarget) < 6) then {
-					EPOCH_p2ptradeTarget = EPOCH_pendingP2ptradeTarget;
-					call EPOCH_startTrade;
-				};
-			};
-		};
-		_handled = true;
-	};
-
 	if (_dikCode in(actionKeys "moveFastForward") || _dikCode in(actionKeys "moveForward")) then {
 		if ((diag_tickTime - EPOCH_lastAGTime) > 1) then {
 			EPOCH_lastAGTime = diag_tickTime;

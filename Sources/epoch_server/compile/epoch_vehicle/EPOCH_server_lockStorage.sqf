@@ -28,7 +28,8 @@ _fnc_unlock = {
 	_this setVariable ["EPOCH_Locked", false, true];
 };
 
-if (getNumber(configFile >> "CfgVehicles" >> _type >> "isSecureStorage") == 1) then{
+_cfgBaseBuilding = 'CfgBaseBuilding' call EPOCH_returnConfig;
+if (getNumber(_cfgBaseBuilding >> _type >> "isSecureStorage") == 1) then{
 
 	_owners = _unit getVariable["STORAGE_OWNERS", []];
 

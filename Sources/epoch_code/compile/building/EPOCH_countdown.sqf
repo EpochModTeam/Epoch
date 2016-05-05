@@ -21,7 +21,7 @@
 	Returns:
 	NOTHING
 */
-private ["_config","_posObj","_savedBuildPos","_previousBuildPos","_saveCheck","_endTime","_worldspace","_class","_newObj","_startTime","_objClass"];
+private ["_cfgBaseBuilding","_posObj","_savedBuildPos","_previousBuildPos","_saveCheck","_endTime","_worldspace","_class","_newObj","_startTime","_objClass"];
 
 if (!isNull _this) then {
 
@@ -63,16 +63,16 @@ if (!isNull _this) then {
 
 		_objClass = typeOf _this;
 		// Spawn temporary static item insead of saving.
-		_config = 'CfgBaseBuilding' call EPOCH_returnConfig;
-		if (getNumber(_config >> _objClass >> "isTemporary") == 1) then {
+		_cfgBaseBuilding = 'CfgBaseBuilding' call EPOCH_returnConfig;
+		if (getNumber(_cfgBaseBuilding >> _objClass >> "isTemporary") == 1) then {
 			_worldspace = [getposATL _this, vectordir _this, vectorup _this];
 			deleteVehicle _this;
-			_class = getText(configfile >> "CfgVehicles" >> _objClass >> "staticClass");
-			_newObj = createVehicle["Fireplace_EPOCH", (_worldspace select 0), [], 0, "CAN_COLLIDE"];
-
-			_newObj setposATL(_worldspace select 0);
-			_newObj setVectorDirAndUp[_worldspace select 1, _worldspace select 2];
-		// proceed to send save to server
+			_class = getText(_cfgBaseBuilding >> _objClass >> "staticClass");
+			if (_class != "") then {
+				_newObj = createVehicle[_class, (_worldspace select 0), [], 0, "CAN_COLLIDE"];
+				_newObj setposATL(_worldspace select 0);
+				_newObj setVectorDirAndUp[_worldspace select 1, _worldspace select 2];
+			};
 		} else {
 			if (_saveCheck) then {
 				[_this, player, Epoch_personalToken] remoteExec["EPOCH_server_saveBuilding", 2];

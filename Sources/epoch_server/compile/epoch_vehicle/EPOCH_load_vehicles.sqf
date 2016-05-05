@@ -12,7 +12,7 @@
     Github:
     https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_server/compile/epoch_vehicle/EPOCH_load_vehicles.sqf
 */
-private ["_location","_class","_dmg","_actualHitpoints","_hitpoints","_textures","_color","_colors","_textureSelectionIndex","_selections","_count","_objTypes","_objQty","_wMags","_wMagsArray","_attachments","_magazineSizeMax","_magazineName","_magazineSize","_qty","_objType","_marker","_found","_vehicle","_allHitpoints","_config","_worldspace","_damage","_arr","_arrNum","_vehicleSlotIndex","_vehHiveKey","_response","_immuneVehicleSpawnTime","_diag","_dataFormat","_dataFormatCount","_allVehicles","_serverSettingsConfig","_simulationHandler","_immuneVehicleSpawn"];
+private ["_availableColorsConfig","_location","_class","_dmg","_actualHitpoints","_hitpoints","_textures","_color","_colors","_textureSelectionIndex","_selections","_count","_objTypes","_objQty","_wMags","_wMagsArray","_attachments","_magazineSizeMax","_magazineName","_magazineSize","_qty","_objType","_marker","_found","_vehicle","_allHitpoints","_cfgBaseBuilding","_worldspace","_damage","_arr","_arrNum","_vehicleSlotIndex","_vehHiveKey","_response","_immuneVehicleSpawnTime","_diag","_dataFormat","_dataFormatCount","_allVehicles","_serverSettingsConfig","_simulationHandler","_immuneVehicleSpawn"];
 params [["_maxVehicleLimit",0]];
 
 _diag = diag_tickTime;
@@ -94,11 +94,12 @@ for "_i" from 1 to _maxVehicleLimit do {
 
 					_vehicle call EPOCH_server_vehicleInit;
 
-					_config = configFile >> "CfgVehicles" >> _class >> "availableColors";
-					if (isArray(_config)) then {
+					_cfgBaseBuilding = 'CfgBaseBuilding' call EPOCH_returnConfig;
+					_availableColorsConfig = (_cfgBaseBuilding >> _class >> "availableColors");
+					if (isArray(_availableColorsConfig)) then {
 						_color = _arr select 7;
-						_colors = getArray(_config);
-						_textureSelectionIndex = configFile >> "CfgVehicles" >> _class >> "textureSelectionIndex";
+						_colors = getArray(_availableColorsConfig);
+						_textureSelectionIndex = (_cfgBaseBuilding >> _class >> "textureSelectionIndex");
 						_selections = if (isArray(_textureSelectionIndex)) then { getArray(_textureSelectionIndex) } else { [0] };
 						_count = (count _colors) - 1;
 						{

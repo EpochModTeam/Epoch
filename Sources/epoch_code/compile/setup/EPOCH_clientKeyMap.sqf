@@ -31,7 +31,6 @@ _keyMap =
 	["Action","EPOCH_keysAction",0x39],
 	["Holster Weapon", "EPOCH_keysHolster", 35],
 	["Debug Monitor", "EPOCH_keysDebugMon", 41],
-	["Trade", "EPOCH_keysAcceptTrade", 0x14],
 
 	["Volume + (ctrl)","EPOCH_keysVolumeUp",0x0D],
 	["Volume - (ctrl)","EPOCH_keysVolumeDown",0x0C],

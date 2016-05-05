@@ -31,8 +31,8 @@ if !(_powerSources isEqualTo[]) then {
 	_totalCapacity = 0;
 	{
 			_powerClass = typeOf _x;
-			_powerCap = getNumber(configFile >> "CfgVehicles" >> _powerClass >> "powerCapacity");
-			_powerType = getNumber(configFile >> "CfgVehicles" >> _powerClass >> "powerType");
+			_powerCap = getNumber(_cfgBaseBuilding >> _powerClass >> "powerCapacity");
+			_powerType = getNumber(_cfgBaseBuilding >> _powerClass >> "powerType");
 			if (_powerCap == 0) then {
 				_powerCap = 100;
 			};

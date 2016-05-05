@@ -23,7 +23,7 @@
 	NOTHING
 */
 if !(isNil "EPOCH_simulSwap_Lock") exitWith{};
-private ["_energyCost","_maxHeight","_stabilityCheck","_pos2ATL","_lastCheckTime","_rejectMove","_currentOffSet","_dir2","_up2","_nearestObject","_isSnap","_snapPosition","_snapType","_pOffset","_snapPos","_snapDistance","_snapPos1","_pos_snapObj","_direction","_pos1_snap","_pos2_snap","_ins","_EPOCH_2","_arr_snapPoints","_pos1","_offSet","_snapConfig","_snapPointsPara","_snapPointsPerp","_baselineSnapPos","_distance","_nearestObjects","_EPOCH_1","_pos2","_numberOfContacts","_worldspace","_currentTarget","_offsetZPos","_currentPos","_objSlot","_allowedSnapPoints","_allowedSnapObjects","_objType","_class","_simulClass","_snapChecks","_maxSnapDistance"];
+private ["_cfgBaseBuilding","_energyCost","_maxHeight","_stabilityCheck","_pos2ATL","_lastCheckTime","_rejectMove","_currentOffSet","_dir2","_up2","_nearestObject","_isSnap","_snapPosition","_snapType","_pOffset","_snapPos","_snapDistance","_snapPos1","_pos_snapObj","_direction","_pos1_snap","_pos2_snap","_ins","_EPOCH_2","_arr_snapPoints","_pos1","_offSet","_snapConfig","_snapPointsPara","_snapPointsPerp","_baselineSnapPos","_distance","_nearestObjects","_EPOCH_1","_pos2","_numberOfContacts","_worldspace","_currentTarget","_offsetZPos","_currentPos","_objSlot","_allowedSnapPoints","_allowedSnapObjects","_objType","_class","_simulClass","_snapChecks","_maxSnapDistance"];
 params [
 	["_object",objNull],
 	["_item",""]
@@ -44,14 +44,16 @@ EPOCH_simulSwap_Lock = true;
 
 _objType = typeOf _object;
 
-_energyCost = getNumber(configfile >> "cfgVehicles" >> _objType >> "energyCost");
+_cfgBaseBuilding = 'CfgBaseBuilding' call EPOCH_returnConfig;
+
+_energyCost = getNumber(_cfgBaseBuilding >> _objType >> "energyCost");
 if (_energyCost == 0) then {
 	_energyCost = 0.1;
 };
 
-_class = getText(configfile >> "cfgVehicles" >> _objType >> "GhostPreview");
-_maxHeight = getNumber(configfile >> "cfgVehicles" >> _objType >> "maxHeight");
-_simulClass = getText(configFile >> "CfgVehicles" >> _objType >> "simulClass");
+_class = getText(_cfgBaseBuilding >> _objType >> "GhostPreview");
+_maxHeight = getNumber(_cfgBaseBuilding >> _objType >> "maxHeight");
+_simulClass = getText(_cfgBaseBuilding >> _objType >> "simulClass");
 _snapChecks = getArray(("CfgSnapChecks" call EPOCH_returnConfig) >> _objType >> "nails");
 
 _maxSnapDistance = 1;
@@ -95,8 +97,8 @@ if (_class != "") then {
 		_currentTarget setVariable["BUILD_SLOT", _objSlot, true];
 	};
 
-	_allowedSnapPoints = getArray(configfile >> "cfgVehicles" >> _class >> "allowedSnapPoints");
-	_allowedSnapObjects = getArray(configfile >> "cfgVehicles" >> _class >> "allowedSnapObjects");
+	_allowedSnapPoints = getArray(_cfgBaseBuilding >> _class >> "allowedSnapPoints");
+	_allowedSnapObjects = getArray(_cfgBaseBuilding >> _class >> "allowedSnapObjects");
 
 	_currentOffSet = [];
 	EP_snap = objNull;
@@ -162,7 +164,7 @@ if (_class != "") then {
 
 				_isSnap = false;
 				_snapPosition = [0, 0, 0];
-				_snapConfig = configfile >> "cfgVehicles" >> (typeOf _nearestObject);
+				_snapConfig = _cfgBaseBuilding >> (typeOf _nearestObject);
 				_snapPointsPara = getArray(_snapConfig >> "snapPointsPara");
 				_snapPointsPerp = getArray(_snapConfig >> "snapPointsPerp");
 

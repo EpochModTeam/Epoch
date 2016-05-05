@@ -47,6 +47,7 @@ EPOCH_drawIcon3d = false;
 EPOCH_velTransform = false;
 EPOCH_stabilityTarget = objNull;
 EPOCH_currentTarget = objNull;
+EPOCH_currentTargetMode = 0;
 EPOCH_LootedBlds = [];
 EPOCH_lootObjects = [];
 EPOCH_soundLevel = 1;

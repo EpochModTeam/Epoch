@@ -12,11 +12,13 @@
     Github:
     https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_code/compile/EPOCH_consumeItem.sqf
 */
-private ["_type","_magazineSize","_text","_item","_pic","_magazinesAmmoFull","_magazineSizeMax","_config","_pos","_object","_isStorage","_isOk","_buildClass","_interactReturnOnUse","_vehicle","_currentFuel","_canCapacity","_interactAttributes","_fuelCapacity","_newFuel","_removeItem","_vehicles","_transportFuel","_highestDMG","_currentHIT","_currentDMG","_newDMG","_paintCanIndex","_paintCanColor","_msg","_color","_unifiedInteract","_interactOption"];
+private ["_cfgBaseBuilding","_type","_magazineSize","_text","_item","_pic","_magazinesAmmoFull","_magazineSizeMax","_config","_pos","_object","_isStorage","_isOk","_buildClass","_interactReturnOnUse","_vehicle","_currentFuel","_canCapacity","_interactAttributes","_fuelCapacity","_newFuel","_removeItem","_vehicles","_transportFuel","_highestDMG","_currentHIT","_currentDMG","_newDMG","_paintCanIndex","_paintCanColor","_msg","_color","_unifiedInteract","_interactOption"];
 
 _text = EPOCH_InteractedItem select 0;
 _item = EPOCH_InteractedItem select 1;
 _pic = EPOCH_InteractedItem select 2;
+
+_cfgBaseBuilding = 'CfgBaseBuilding' call EPOCH_returnConfig;
 
 _type = "CfgMagazines";
 if (isClass (configfile >> "CfgWeapons" >> _item)) then {_type = "CfgWeapons"};
@@ -283,7 +285,7 @@ switch _interactOption do {
 		_vehicle = cursorTarget;
 		if (_vehicle in _vehicles) then {
 			if ("" call EPOCH_isBuildAllowed) then {
-				_color = getArray(configFile >> "CfgVehicles" >> (typeOf _vehicle) >> "availableTextures");
+				_color = getArray(_cfgBaseBuilding >> (typeOf _vehicle) >> "availableTextures");
 				if !(_color isEqualTo[]) then {
 
 					if (_item call _removeItem) then {

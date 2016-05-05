@@ -63,6 +63,9 @@ disableRandomization[] = {"All"};
 #include "Configs\CfgActionMenu\CfgActionMenu_core.hpp"
 #include "Configs\CfgEpochConfiguration.hpp"
 #include "Configs\CfgClientFunctions.hpp"
+#include "Configs\CfgInteractions.hpp"
+
+// A3 specific configs
 #include "Configs\CfgFunctions.hpp"
 #include "Configs\CfgRemoteExec.hpp"
 
