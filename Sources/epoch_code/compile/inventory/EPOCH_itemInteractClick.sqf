@@ -19,17 +19,17 @@ _data = EPOCH_InteractedItem select 1;
 _interactOption = 0;
 _buttonTXT = "";
 _magCount = 1;
-
 _config = (configfile >> "CfgWeapons" >> _data);
+_cfgItemInteractions = (('CfgItemInteractions' call EPOCH_returnConfig) >> _data);
 if (isClass (_config)) then {
     _type = getNumber (_config >> "type");
-    _interactOption = getNumber (_config >> "interactAction");
-    _buttonTXT = getText(_config >> "interactText");
+    _interactOption = getNumber (_cfgItemInteractions >> "interactAction");
+    _buttonTXT = getText(_cfgItemInteractions >> "interactText");
 } else {
     _config = (configfile >> "CfgMagazines" >> _data);
     _type = getNumber (_config >> "type");
-    _interactOption = getNumber (_config >> "interactAction");
-    _buttonTXT = getText(_config >> "interactText");
+    _interactOption = getNumber (_cfgItemInteractions >> "interactAction");
+    _buttonTXT = getText(_cfgItemInteractions >> "interactText");
     _magCount = getNumber (_config >> "count");
 };
 

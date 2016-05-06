@@ -64,6 +64,7 @@ disableRandomization[] = {"All"};
 #include "Configs\CfgEpochConfiguration.hpp"
 #include "Configs\CfgClientFunctions.hpp"
 #include "Configs\CfgObjectInteractions.hpp"
+#include "Configs\CfgItemInteractions.hpp"
 
 // A3 specific configs
 #include "Configs\CfgFunctions.hpp"

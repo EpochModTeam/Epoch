@@ -12,22 +12,17 @@
     Github:
     https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_code/compile/EPOCH_consumeItem.sqf
 */
-private ["_cfgBaseBuilding","_type","_magazineSize","_text","_item","_pic","_magazinesAmmoFull","_magazineSizeMax","_config","_pos","_object","_isStorage","_isOk","_buildClass","_interactReturnOnUse","_vehicle","_currentFuel","_canCapacity","_interactAttributes","_fuelCapacity","_newFuel","_removeItem","_vehicles","_transportFuel","_highestDMG","_currentHIT","_currentDMG","_newDMG","_paintCanIndex","_paintCanColor","_msg","_color","_unifiedInteract","_interactOption"];
+private ["_cfgBaseBuilding","_cfgItemInteractions","_type","_magazineSize","_text","_item","_pic","_magazinesAmmoFull","_magazineSizeMax","_pos","_object","_isStorage","_isOk","_buildClass","_interactReturnOnUse","_vehicle","_currentFuel","_canCapacity","_interactAttributes","_fuelCapacity","_newFuel","_removeItem","_vehicles","_transportFuel","_highestDMG","_currentHIT","_currentDMG","_newDMG","_paintCanIndex","_paintCanColor","_msg","_color","_unifiedInteract","_interactOption"];
 
 _text = EPOCH_InteractedItem select 0;
 _item = EPOCH_InteractedItem select 1;
 _pic = EPOCH_InteractedItem select 2;
 
 _cfgBaseBuilding = 'CfgBaseBuilding' call EPOCH_returnConfig;
-
-_type = "CfgMagazines";
-if (isClass (configfile >> "CfgWeapons" >> _item)) then {_type = "CfgWeapons"};
-
-_config = (configfile >> _type >> _item);
-_type = getNumber(_config >> "type");
-_interactOption = getNumber(_config >> "interactAction");
-_interactReturnOnUse = getText(_config >> "interactReturnOnUse");
-_interactAttributes = getArray(_config >> "interactAttributes");
+_cfgItemInteractions = (('CfgItemInteractions' call EPOCH_returnConfig) >> _item);
+_interactOption = getNumber(_cfgItemInteractions >> "interactAction");
+_interactReturnOnUse = getText(_cfgItemInteractions >> "interactReturnOnUse");
+_interactAttributes = getArray(_cfgItemInteractions >> "interactAttributes");
 
 _removeItem = {([player,_this] call BIS_fnc_invRemove) == 1};
 
@@ -38,6 +33,7 @@ _giveAttributes = {
 	_addPlus = if (_data > 0) then {"+"} else {""};
 	_return = "";
 	if (_data != 0) then {
+		// TODO: configize
 		_editableVars = [["Temp"],["Hunger"],["Thirst"],["Energy"],["Soiled"],["Immunity"],["Toxicity",true],["Stamina"],["Wet"],["BloodP"],["Karma"],["Alcohol"],["Radiation"]];
 		_selectedVar = _editableVars select _index;
 		_selectedVar params ["_selectedVarName",["_randomNum",false]];
@@ -84,7 +80,7 @@ _unifiedInteract = {
 
 switch _interactOption do {
 	case 0: {
-		_magazineSizeMax = getNumber (_config >> "count");
+		_magazineSizeMax = getNumber (configfile >> "CfgMagazines" >> _item >> "count");
 		// allow repack for all magazines with greater than 1 bullet
 		if (_magazineSizeMax > 1) then {
 
@@ -120,9 +116,10 @@ switch _interactOption do {
 		_buildingJammerRange = ["CfgEpochClient", "buildingJammerRange", 75] call EPOCH_fnc_returnConfigEntryV2;
 		_buildingCountLimit = ["CfgEpochClient", "buildingCountLimit", 200] call EPOCH_fnc_returnConfigEntryV2;
 		_partCheck = _item in (magazines player);
-		_buildClass = getText(configfile >> "CfgMagazines" >> _item >> "buildClass");
+
+		_buildClass = getText(_cfgItemInteractions >> _item >> "buildClass");
 		if (_buildClass != "" && _partCheck) then {
-			_isStorage = getNumber(configfile >> "CfgMagazines" >> _item >> "isStorage");
+			_isStorage = getNumber(_cfgItemInteractions >> _item >> "isStorage");
 
 			_isOk = if (_isStorage == 1 || _buildClass isKindOf "Secure_Storage_Temp") then { EPOCH_StorageSlotsCount > 0 } else { EPOCH_BuildingSlotCount > 0 };
 
@@ -291,8 +288,8 @@ switch _interactOption do {
 					if (_item call _removeItem) then {
 
 						// find _paintCanIndex from config
-						_paintCanIndex = getNumber(configfile >> "CfgMagazines" >> _item >> "textureIndex");
-						_paintCanColor = getText(configfile >> "CfgMagazines" >> _item >> "colorName");
+						_paintCanIndex = getNumber(_cfgItemInteractions >> _item >> "textureIndex");
+						_paintCanColor = getText(_cfgItemInteractions >> _item >> "colorName");
 
 						[_vehicle,_paintCanIndex,player,Epoch_personalToken] remoteExec ["EPOCH_server_paintBUILD",2];
 
