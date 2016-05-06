@@ -85,6 +85,7 @@ class CfgServerFunctions
 			class server_spawnTraders {};
 		};
 		class epoch_trading {
+			class server_effectCrypto {};
 			class server_makeTrade {};
 			class server_tradeRequest {};
 			class server_makeNPCTrade {};
