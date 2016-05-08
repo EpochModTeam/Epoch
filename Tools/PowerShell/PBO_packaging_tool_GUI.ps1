@@ -782,7 +782,7 @@ $Timer1 = New-Object System.Windows.Forms.Timer($components)
 						if (Test-Path $tmp) { Remove-Item -Path $tmp -Recurse }														
 						Copy-Item -Path $x.subitems[1].Text -Destination $tmp -Recurse
 												
-						$argz = @($tmp, $Output, "-packonly", "-clear", "-prefix=$name", "-project=$tmp", "-include=$includes")
+						$argz = @($tmp, ('"' + $Output + '"'), "-packonly", "-clear", "-prefix=$name", "-project=$tmp", "-include=$includes")
 												
 						Start-Process -FilePath $Bob -ArgumentList $argz -Wait
 					}
@@ -807,7 +807,7 @@ $Timer1 = New-Object System.Windows.Forms.Timer($components)
 						Copy-Item($src + "epoch_config") -Destination $tmp -Recurse
 						Copy-Item($src + "description.ext") -Destination $tmp
 												
-						$argz = @($tmp, $Output, "-clear", "-prefix=\", "-project=P:\", "-include=$includes")
+						$argz = @($tmp, ('"' + $Output + '"'), "-clear", "-prefix=\", "-project=P:\", "-include=$includes")
 																		
 						Start-Process -FilePath $Bob -ArgumentList $argz -Wait
 					}
