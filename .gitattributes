@@ -15,8 +15,3 @@
 *.PDF	 diff=astextplain
 *.rtf	 diff=astextplain
 *.RTF	 diff=astextplain
-
-# arma 3 packed files 
-*.p3d filter=lfs diff=lfs merge=lfs -text
-*.pbo filter=lfs diff=lfs merge=lfs -text
-*.psd filter=lfs diff=lfs merge=lfs -text
