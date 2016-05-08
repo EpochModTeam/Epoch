@@ -55,8 +55,8 @@ $Form1.Text = "Epoch PBO Packing Tool"
 #~~< Label4 >~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 $Label4 = New-Object System.Windows.Forms.Label
 $Label4.Anchor = ([System.Windows.Forms.AnchorStyles]([System.Windows.Forms.AnchorStyles]::Top -bor [System.Windows.Forms.AnchorStyles]::Left -bor [System.Windows.Forms.AnchorStyles]::Right))
-$Label4.Location = New-Object System.Drawing.Point(12, 7)
-$Label4.Size = New-Object System.Drawing.Size(551, 20)
+$Label4.Location = New-Object System.Drawing.Point(12, 9)
+$Label4.Size = New-Object System.Drawing.Size(769, 18)
 $Label4.TabIndex = 1
 $Label4.Text = "Why do farts smell? So deaf people can enjoy them too."
 $Label4.TextAlign = [System.Drawing.ContentAlignment]::MiddleCenter
@@ -328,12 +328,28 @@ $Button12.Size = New-Object System.Drawing.Size(96, 21)
 $Button12.TabIndex = 25
 $Button12.Text = "Update Versions"
 $Button12.UseVisualStyleBackColor = $true
+#~~< Label6 >~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+$Label6 = New-Object System.Windows.Forms.Label
+$Label6.Anchor = ([System.Windows.Forms.AnchorStyles]([System.Windows.Forms.AnchorStyles]::Top -bor [System.Windows.Forms.AnchorStyles]::Right))
+$Label6.Location = New-Object System.Drawing.Point(469, 9)
+$Label6.Size = New-Object System.Drawing.Size(141, 21)
+$Label6.TabIndex = 15
+$Label6.Text = "Arma 3 Mod (Client PBOs):"
 #~~< TextBox8 >~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 $TextBox8 = New-Object System.Windows.Forms.TextBox
 $TextBox8.Location = New-Object System.Drawing.Point(6, 173)
 $TextBox8.Size = New-Object System.Drawing.Size(96, 20)
 $TextBox8.TabIndex = 24
 $TextBox8.Text = ""
+#~~< ComboBox1 >~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+$ComboBox1 = New-Object System.Windows.Forms.ComboBox
+$ComboBox1.Anchor = ([System.Windows.Forms.AnchorStyles]([System.Windows.Forms.AnchorStyles]::Top -bor [System.Windows.Forms.AnchorStyles]::Right))
+$ComboBox1.FormattingEnabled = $true
+$ComboBox1.Location = New-Object System.Drawing.Point(616, 6)
+$ComboBox1.SelectedIndex = -1
+$ComboBox1.Size = New-Object System.Drawing.Size(137, 21)
+$ComboBox1.TabIndex = 14
+$ComboBox1.Text = "Select Arma Mod"
 #~~< TextBox7 >~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 $TextBox7 = New-Object System.Windows.Forms.TextBox
 $TextBox7.Location = New-Object System.Drawing.Point(6, 132)
@@ -394,7 +410,9 @@ $Button4.Text = "Browse"
 $Button4.UseVisualStyleBackColor = $true
 $TabPage3.Controls.Add($Button15)
 $TabPage3.Controls.Add($Button12)
+$TabPage3.Controls.Add($Label6)
 $TabPage3.Controls.Add($TextBox8)
+$TabPage3.Controls.Add($ComboBox1)
 $TabPage3.Controls.Add($TextBox7)
 $TabPage3.Controls.Add($Label10)
 $TabPage3.Controls.Add($Label9)
@@ -408,26 +426,8 @@ $TabControl1.Controls.Add($TabPage1)
 $TabControl1.Controls.Add($TabPage2)
 $TabControl1.Controls.Add($TabPage3)
 $TabControl1.SelectedIndex = 0
-#~~< Label6 >~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-$Label6 = New-Object System.Windows.Forms.Label
-$Label6.Anchor = ([System.Windows.Forms.AnchorStyles]([System.Windows.Forms.AnchorStyles]::Top -bor [System.Windows.Forms.AnchorStyles]::Right))
-$Label6.Location = New-Object System.Drawing.Point(569, 9)
-$Label6.Size = New-Object System.Drawing.Size(69, 21)
-$Label6.TabIndex = 15
-$Label6.Text = "Arma 3 Mod:"
-#~~< ComboBox1 >~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-$ComboBox1 = New-Object System.Windows.Forms.ComboBox
-$ComboBox1.Anchor = ([System.Windows.Forms.AnchorStyles]([System.Windows.Forms.AnchorStyles]::Top -bor [System.Windows.Forms.AnchorStyles]::Right))
-$ComboBox1.FormattingEnabled = $true
-$ComboBox1.Location = New-Object System.Drawing.Point(644, 6)
-$ComboBox1.SelectedIndex = -1
-$ComboBox1.Size = New-Object System.Drawing.Size(137, 21)
-$ComboBox1.TabIndex = 14
-$ComboBox1.Text = "Select Arma Mod"
 $Form1.Controls.Add($Label4)
 $Form1.Controls.Add($TabControl1)
-$Form1.Controls.Add($Label6)
-$Form1.Controls.Add($ComboBox1)
 #region$Form1.Icon = ([System.Drawing.Icon](...)
 $Form1.Icon = ([System.Drawing.Icon](New-Object System.Drawing.Icon((New-Object System.IO.MemoryStream(($$ = [System.Convert]::FromBase64String(
 "AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAQAABILAAASCwAAAAAA"+
@@ -452,12 +452,12 @@ $Form1.Icon = ([System.Drawing.Icon](New-Object System.Drawing.Icon((New-Object 
                                 "AAAA8A8AAOAHAADH4wAAgAMAAIAAAACB+QAAn/kAAIAFAACABQAAn/kAAIP5AACAAAAAgAEAAIfj"+
                                 "AADgBwAA8A8AAA==")),0,$$.Length)))))
 #endregion
+#~~< FolderBrowserDialog1 >~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+$FolderBrowserDialog1 = New-Object System.Windows.Forms.FolderBrowserDialog
 #~~< components >~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 $components = New-Object System.ComponentModel.Container
 #~~< Timer1 >~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 $Timer1 = New-Object System.Windows.Forms.Timer($components)
-#~~< FolderBrowserDialog1 >~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-$FolderBrowserDialog1 = New-Object System.Windows.Forms.FolderBrowserDialog
 
 #endregion
 
@@ -493,10 +493,13 @@ $FolderBrowserDialog1 = New-Object System.Windows.Forms.FolderBrowserDialog
 		$Script:listarr = @() #empty arr
 		$folders = Get-ChildItem $TextBox2.Text -directory
 				
-		if (Test-Path $TextBox4.Text)
+		if ($Checkbox1.Checked)
 		{
-			$priv = Get-ChildItem $TextBox4.Text -directory
-			$folders += ,$priv
+			if (Test-Path $TextBox4.Text)
+			{
+				$priv = Get-ChildItem $TextBox4.Text -directory
+				$folders +=, $priv
+			}
 		}
 		
 		foreach ($x in $folders)
@@ -605,6 +608,7 @@ $FolderBrowserDialog1 = New-Object System.Windows.Forms.FolderBrowserDialog
 	
 	function fnc_getSetPath($switch)
 	{
+		$FolderBrowserDialog1.ShowNewFolderButton = $true
 		$FolderBrowserDialog1.ShowDialog()
 		if ($FolderBrowserDialog1.SelectedPath)
 		{
@@ -711,6 +715,11 @@ $FolderBrowserDialog1 = New-Object System.Windows.Forms.FolderBrowserDialog
 		$Button4.Enabled = $cbstate
 		$Button15.Enabled = $cbstate
 		$Button12.Enabled = $cbstate
+				
+		$ComboBox1.Enabled = $cbstate
+		
+		$ListView1.Items.Clear()
+		fnc_populateListView
 	}
 		
 	function fnc_settingsSave
@@ -733,10 +742,10 @@ $FolderBrowserDialog1 = New-Object System.Windows.Forms.FolderBrowserDialog
 		
 	function fnc_settingsLoad
 	{
-		if ( Test-Path $TextBox5.Text)
+		if (Test-Path $TextBox5.Text)
 		{
 			$in = Get-Content $TextBox5.Text
-				
+										
 			$ComboBox1.SelectedIndex = $in[0]
 			$TextBox1.Text = $in[1]
 			$TextBox3.Text = $in[2]
@@ -745,9 +754,71 @@ $FolderBrowserDialog1 = New-Object System.Windows.Forms.FolderBrowserDialog
 			$TextBox1.Text = $in[5]
 			$TextBox10.Text = $in[6]
 			$TextBox4.Text = $in[7]
-			$CheckBox1.Checked = $in[8]
+						
+			#Hacky Convert str to bool
+			$state = if ($in[8] -eq "True") { $true } else { $false }
+			$CheckBox1.Checked = $state
 		}
 	}
+		
+	function fnc_CreatePBO
+	{
+		$Bob = Join-Path $TextBox3.Text "\AddonBuilder.exe"
+		$includes = "P:\includes.txt"
+		if (!(Test-Path $includes)) { "*.xml;*.pac;*.paa;*.sqf;*.sqs;*.bikb;*.fsm;*.wss;*.ogg;*.wav;*.fxy;*.csv;*.html;*.lip;*.txt;*.wrp;*.bisurf;*.rvmat;*.sqm;*.ext;*.hpp" | Out-File $includes}
+		
+		foreach ($x in $Script:listarr)
+		{
+			if ($x.checked)
+			{
+				$name = $x.subitems[0].Text
+				$tmp = "P:\$name"	
+				
+				switch($x.group.header)
+				{
+					"Server" 
+					{
+						$Output = $TextBox10.Text
+						if (Test-Path $tmp) { Remove-Item -Path $tmp -Recurse }														
+						Copy-Item -Path $x.subitems[1].Text -Destination $tmp -Recurse
+												
+						$argz = @($tmp, $Output, "-packonly", "-clear", "-prefix=$name", "-project=$tmp", "-include=$includes")
+												
+						Start-Process -FilePath $Bob -ArgumentList $argz -Wait
+					}
+					"Client" 
+					{ 
+						$Output = $TextBox1.Text + "\" + $ComboBox1.SelectedItem + "\Addons"
+						if (Test-Path $tmp) { Remove-Item -Path $tmp -Recurse }														
+						Copy-Item -Path $x.subitems[1].Text -Destination $tmp -Recurse
+												
+						$argz = @($tmp, ('"' + $Output + '"'), "-clear", "-prefix=$name", "-project=$tmp", "-include=$includes")
+						#Write-Host $argz
+						Start-Process -FilePath $Bob -ArgumentList $argz -Wait
+					}
+					"Missions" 
+					{
+						$Output = $TextBox9.Text
+						$src = $TextBox2.Text + "\Sources\"
+												
+						if (Test-Path $tmp) { Remove-Item -Path $tmp -Recurse }
+						Copy-Item -Path $x.subitems[1].Text -Destination $tmp -Recurse
+						Copy-Item($src + "epoch_code") -Destination $tmp -Recurse
+						Copy-Item($src + "epoch_config") -Destination $tmp -Recurse
+						Copy-Item($src + "description.ext") -Destination $tmp
+												
+						$argz = @($tmp, $Output, "-clear", "-prefix=\", "-project=P:\", "-include=$includes")
+																		
+						Start-Process -FilePath $Bob -ArgumentList $argz -Wait
+					}
+				}
+				#cleanup
+				if (Test-Path $tmp) { Remove-Item -Path $tmp -Recurse }
+				if (Test-Path ($env:temp + "\" + $name)) { Remove-Item -Path($env:temp + "\" + $name) -Recurse }
+			}
+		}
+	}
+	
 	
 	# Event Handlers
 	$Button1.Add_Click({ fnc_getSetPath(1) })
@@ -756,6 +827,7 @@ $FolderBrowserDialog1 = New-Object System.Windows.Forms.FolderBrowserDialog
 	$Button4.Add_Click({ fnc_getSetPath(4) })
 	$Button13.Add_Click({ fnc_getSetPath(5) })
 	$Button14.Add_Click({ fnc_getSetPath(6) })
+	$Button6.Add_Click({ fnc_CreatePBO })
 	
 	$Button7.Add_Click({ fnc_selectAll($true) })
 	$Button5.Add_Click({ fnc_selectAll($false) })
