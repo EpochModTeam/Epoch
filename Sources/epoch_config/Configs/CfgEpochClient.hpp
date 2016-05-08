@@ -78,9 +78,9 @@ class CfgEpochClient
 	GetOutMan       = "_this call EPOCH_antiWall;";
 
 	// suppress these units from spawning near Jammer or Traders
-	nonJammerAI[] = {"B_Heli_Transport_01_F","PHANTOM","Epoch_Cloak_F"};
-	nonTraderAI[] = {"B_Heli_Transport_01_F","PHANTOM","Epoch_Cloak_F","GreatWhite_F"};
-	nonTraderAIRange = 150;
+	nonJammerAI[] = {"EPOCH_Sapper_F","Epoch_SapperB_F","I_UAV_01_F"};
+	nonTraderAI[] = {"EPOCH_Sapper_F","Epoch_SapperB_F","I_UAV_01_F","Epoch_Cloak_F"};
+	nonTraderAIRange = 50;
 
 	// Fishing loots
 	fishLoots[] = {"ItemTuna","ItemSeaBass","ItemSeaBass","ItemSeaBass","ItemTrout","ItemTrout","ItemTrout","ItemTrout","ItemTrout","ItemTrout"};
