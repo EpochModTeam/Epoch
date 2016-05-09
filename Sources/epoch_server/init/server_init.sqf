@@ -63,8 +63,8 @@ if (EPOCH_modCUPVehiclesEnabled) then {
 };
 
 diag_log "Epoch: Init Variables";
-call compile preprocessFileLineNumbers "\x\addons\a3_epoch_server\init\server_variables.sqf";
-call compile preprocessFileLineNumbers "\x\addons\a3_epoch_server\init\server_securityfunctions.sqf";
+call compile preprocessFileLineNumbers "\epoch_server\init\server_variables.sqf";
+call compile preprocessFileLineNumbers "\epoch_server\init\server_securityfunctions.sqf";
 
 ["I", _instanceID, "86400", ["CONTINUE"]] call EPOCH_fnc_server_hiveSETEX;
 diag_log format["Epoch: Start Hive, Instance ID: '%1'", _instanceID];
@@ -163,7 +163,7 @@ EPOCH_StorageSlotsLimit call EPOCH_load_storage;
 diag_log "Epoch: Loading static loot";
 call EPOCH_server_spawnBoatLoot;
 
-[] execFSM "\x\addons\a3_epoch_server\system\server_monitor.fsm";
+[] execFSM "\epoch_server\system\server_monitor.fsm";
 
 // Setting Server Date and Time
 _dateChanged = false;

@@ -385,12 +385,12 @@ class FSM
           action=/*%FSM<ACTION""">*/"// Epoch Events" \n
            "_pvehTime = diag_tickTime;" \n
            "{" \n
-           "	_x params [""_time"", ""_scriptName"", [""_runAtStart"",false]];" \n
+           "	_x params [""_time"", ""_scriptName"", [""_runAtStart"",0]];" \n
            "	_eventKey = format[""EPOCH_EVENT_%1"", _forEachIndex];" \n
            "	_lastTime = missionNamespace getVariable _eventKey;" \n
            "	if (isNil ""_lastTime"") then {" \n
            "		_startTime = diag_tickTime;" \n
-           "		if (_runAtStart) then {" \n
+           "		if (_runAtStart isEqualTo 1) then {" \n
            "			_startTime = diag_tickTime - _time;" \n
            "		};" \n
            "		missionNamespace setVariable[_eventKey, _startTime];" \n

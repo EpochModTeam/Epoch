@@ -257,6 +257,27 @@ EPOCH_server_disconnect = compileFinal("
 	_ret
 ");
 
+EPOCH_server_movePlayer = compileFinal("
+params [['_playerObj',objNull,[_playerObj]],'_pos'];
+if !(isNull _playerObj) then {
+	"+_skn_antiTeleportPVC+" = true;
+	(owner _playerObj) publicVariableClient '"+_skn_antiTeleportPVC+"';
+	[format['Teleport %1 (%2) To Position: %3', name _playerObj, getPlayerUID _playerObj,_pos], 0] call "+_skn_server_adminLog+";
+	[vehicle _playerObj,_pos] spawn {
+		uiSleep 0.5;
+		(_this select 0) setPosATL (_this select 1);
+	};
+};
+");
+
+EPOCH_server_teleportCheck = compileFinal("
+params [['_playerObj',objNull,[_playerObj]],'_allow'];
+if !(isNull _playerObj) then {
+	"+_skn_antiTeleportPVC+" = _allow;
+	(owner _playerObj) publicVariableClient '"+_skn_antiTeleportPVC+"';
+};
+");
+
 _stringInArray = {
 	private "_ret";
 	_ret = false;

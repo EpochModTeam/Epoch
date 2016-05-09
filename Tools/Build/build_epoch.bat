@@ -80,7 +80,7 @@ echo building server pbo
 echo build=%BUILDNUMBER%; > !serverBuildInc!
 SET SOURCE_PATH=%MAIN_PATH%\Sources\epoch_server
 SET OUTPUT_PATH=%MAIN_PATH%\Server_Install_Pack\@EpochHive\addons
-SET TEMP_PATH=x\addons\a3_epoch_server
+SET TEMP_PATH=epoch_server
 rd /s/q P:\!TEMP_PATH!
 xcopy /s/e/y/q/i "!SOURCE_PATH!" P:\!TEMP_PATH!
 START "" /min /WAIT "!TOOLS_PATH!\AddonBuilder.exe" "P:\!TEMP_PATH!" "!OUTPUT_PATH!" -clear -prefix="!TEMP_PATH!" -project="P:\!TEMP_PATH!" -include=!AB_includes_path!
@@ -94,7 +94,7 @@ echo building settings pbo
 echo build=%BUILDNUMBER%; > !settingsBuildInc!
 SET SOURCE_PATH=%MAIN_PATH%\Sources\epoch_server_settings
 SET OUTPUT_PATH=%MAIN_PATH%\Server_Install_Pack\@EpochHive\addons
-SET TEMP_PATH=a3_epoch_server_settings
+SET TEMP_PATH=epoch_server_settings
 rd /s/q P:\!TEMP_PATH!
 xcopy /s/e/y/q/i "!SOURCE_PATH!" P:\!TEMP_PATH!
 START "" /min /WAIT "!TOOLS_PATH!\AddonBuilder.exe" "P:\!TEMP_PATH!" "!OUTPUT_PATH!" -packonly -clear -prefix="!TEMP_PATH!" -project="P:\!TEMP_PATH!" -include=!AB_includes_path!

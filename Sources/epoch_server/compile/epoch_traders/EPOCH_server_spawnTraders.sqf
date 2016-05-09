@@ -76,7 +76,7 @@ for "_i" from 1 to _spawnCount do {
 						_agent addEventHandler["Killed", { _this call EPOCH_server_traderKilled; }];
 
 						if !(EPOCH_forceStaticTraders) then {
-							[_agent, _home, [_work, _schedule]] execFSM "\x\addons\a3_epoch_server\system\Trader_brain.fsm";
+							[_agent, _home, [_work, _schedule]] execFSM "\epoch_server\system\Trader_brain.fsm";
 						};
 
 						["AI", _objHiveKey, [_randomAIClass, _home, [_work, _schedule]]] call EPOCH_fnc_server_hiveSET;

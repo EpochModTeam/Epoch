@@ -142,7 +142,7 @@ for "_i" from 0 to _maxTraderLimit do {
 				_agent addEventHandler ["Killed", { _this call EPOCH_server_traderKilled; }];
 
 				if !(EPOCH_forceStaticTraders) then {
-					[_agent, _home, _work] execFSM "\x\addons\a3_epoch_server\system\Trader_brain.fsm";
+					[_agent, _home, _work] execFSM "\epoch_server\system\Trader_brain.fsm";
 				};
 
 				_agent setVariable ["AI_SLOT", _i, true];

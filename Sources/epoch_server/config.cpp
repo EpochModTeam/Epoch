@@ -20,7 +20,7 @@ class cfgFunctions
 		tag = "EPOCH";
 		class Epoch_Server
 		{
-			file = "\x\addons\a3_epoch_server\init";
+			file = "\epoch_server\init";
 			class init
 			{
 				preInit = 1;
@@ -38,7 +38,7 @@ class CfgServerFunctions
 	class A3E
 	{
 		tag = "EPOCH";
-		file = "\x\addons\a3_epoch_server\compile";
+		file = "\epoch_server\compile";
 		class epoch_group {
 			class server_upgradeGroup {};
 			class server_updatePlayerGroup {};
