@@ -24,6 +24,7 @@ maxAimingAccuracy -> maxGeneral - Set the maximum value for each available AI sk
 
 **Server Only**
 [Added] Server function to allow remote exec of setVariable on client - Allows client to ask another client to set a local variable, via the server. Server can run same function.
+[Changed] Epoch Events can now self initialize
 [Info] Changed name of a3_epoch_server to epoch_server.
 [Info] Changed name of a3_epoch_server_settings to epoch_server_settings.
 [Info] RConPort 2306 added to example-beserver.cfg for changes since A3 1.58.
