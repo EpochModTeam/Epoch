@@ -22,3 +22,7 @@ maxAimingAccuracy -> maxGeneral - Set the maximum value for each available AI sk
 [Info] Removed old .bikey and added new one for 0390.
 [Info] Requires Arma 3 1.58 or higher.
 [Info] A big thanks to Isaac, Axeman's chief tester.
+
+**Server Only**
+[Info] Changed name of a3_epoch_server to epoch_server.
+[Info] Changed name of a3_epoch_server_settings to epoch_server_settings.
