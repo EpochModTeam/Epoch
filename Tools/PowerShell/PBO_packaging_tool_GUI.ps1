@@ -784,7 +784,7 @@ $Timer1 = New-Object System.Windows.Forms.Timer($components)
 												
 						$argz = @($tmp, ('"' + $Output + '"'), "-packonly", "-clear", "-prefix=$name", "-project=$tmp", "-include=$includes")
 												
-						Start-Process -FilePath $Bob -ArgumentList $argz -Wait
+						Start-Process -FilePath $Bob -ArgumentList $argz -WindowStyle Minimized -Wait
 					}
 					"Client" 
 					{ 
@@ -794,7 +794,7 @@ $Timer1 = New-Object System.Windows.Forms.Timer($components)
 												
 						$argz = @($tmp, ('"' + $Output + '"'), "-clear", "-prefix=$name", "-project=$tmp", "-include=$includes")
 						#Write-Host $argz
-						Start-Process -FilePath $Bob -ArgumentList $argz -Wait
+						Start-Process -FilePath $Bob -ArgumentList $argz -WindowStyle Minimized -Wait
 					}
 					"Missions" 
 					{
@@ -809,7 +809,7 @@ $Timer1 = New-Object System.Windows.Forms.Timer($components)
 												
 						$argz = @($tmp, ('"' + $Output + '"'), "-clear", "-prefix=\", "-project=P:\", "-include=$includes")
 																		
-						Start-Process -FilePath $Bob -ArgumentList $argz -Wait
+						Start-Process -FilePath $Bob -ArgumentList $argz -WindowStyle Minimized -Wait
 					}
 				}
 				#cleanup
