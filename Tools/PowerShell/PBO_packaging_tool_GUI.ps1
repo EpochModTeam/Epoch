@@ -50,13 +50,20 @@
 #When working with the ScriptForm designer this region and any changes within may be overwritten.
 #~~< Form1 >~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 $Form1 = New-Object System.Windows.Forms.Form
-$Form1.ClientSize = New-Object System.Drawing.Size(793, 555)
+$Form1.ClientSize = New-Object System.Drawing.Size(832, 593)
 $Form1.Text = "Epoch PBO Packing Tool"
+#~~< ProgressBar1 >~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+$ProgressBar1 = New-Object System.Windows.Forms.ProgressBar
+$ProgressBar1.Anchor = ([System.Windows.Forms.AnchorStyles]([System.Windows.Forms.AnchorStyles]::Bottom -bor [System.Windows.Forms.AnchorStyles]::Left -bor [System.Windows.Forms.AnchorStyles]::Right))
+$ProgressBar1.Location = New-Object System.Drawing.Point(12, 565)
+$ProgressBar1.Size = New-Object System.Drawing.Size(808, 16)
+$ProgressBar1.TabIndex = 2
+$ProgressBar1.Text = ""
 #~~< Label4 >~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 $Label4 = New-Object System.Windows.Forms.Label
 $Label4.Anchor = ([System.Windows.Forms.AnchorStyles]([System.Windows.Forms.AnchorStyles]::Top -bor [System.Windows.Forms.AnchorStyles]::Left -bor [System.Windows.Forms.AnchorStyles]::Right))
 $Label4.Location = New-Object System.Drawing.Point(12, 9)
-$Label4.Size = New-Object System.Drawing.Size(769, 18)
+$Label4.Size = New-Object System.Drawing.Size(808, 18)
 $Label4.TabIndex = 1
 $Label4.Text = "Why do farts smell? So deaf people can enjoy them too."
 $Label4.TextAlign = [System.Drawing.ContentAlignment]::MiddleCenter
@@ -64,7 +71,7 @@ $Label4.TextAlign = [System.Drawing.ContentAlignment]::MiddleCenter
 $TabControl1 = New-Object System.Windows.Forms.TabControl
 $TabControl1.Anchor = ([System.Windows.Forms.AnchorStyles]([System.Windows.Forms.AnchorStyles]::Top -bor [System.Windows.Forms.AnchorStyles]::Bottom -bor [System.Windows.Forms.AnchorStyles]::Left -bor [System.Windows.Forms.AnchorStyles]::Right))
 $TabControl1.Location = New-Object System.Drawing.Point(12, 30)
-$TabControl1.Size = New-Object System.Drawing.Size(769, 513)
+$TabControl1.Size = New-Object System.Drawing.Size(808, 529)
 $TabControl1.TabIndex = 0
 $TabControl1.Text = ""
 #~~< TabPage1 >~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -72,14 +79,14 @@ $TabPage1 = New-Object System.Windows.Forms.TabPage
 $TabPage1.BorderStyle = [System.Windows.Forms.BorderStyle]::FixedSingle
 $TabPage1.Location = New-Object System.Drawing.Point(4, 22)
 $TabPage1.Padding = New-Object System.Windows.Forms.Padding(3)
-$TabPage1.Size = New-Object System.Drawing.Size(761, 487)
+$TabPage1.Size = New-Object System.Drawing.Size(800, 503)
 $TabPage1.TabIndex = 0
 $TabPage1.Text = "Packager"
 $TabPage1.BackColor = [System.Drawing.SystemColors]::Control
 #~~< Button16 >~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 $Button16 = New-Object System.Windows.Forms.Button
 $Button16.Anchor = ([System.Windows.Forms.AnchorStyles]([System.Windows.Forms.AnchorStyles]::Top -bor [System.Windows.Forms.AnchorStyles]::Right))
-$Button16.Location = New-Object System.Drawing.Point(678, 64)
+$Button16.Location = New-Object System.Drawing.Point(717, 64)
 $Button16.Size = New-Object System.Drawing.Size(75, 23)
 $Button16.TabIndex = 4
 $Button16.Text = "Selected"
@@ -87,7 +94,7 @@ $Button16.UseVisualStyleBackColor = $true
 #~~< Button6 >~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 $Button6 = New-Object System.Windows.Forms.Button
 $Button6.Anchor = ([System.Windows.Forms.AnchorStyles]([System.Windows.Forms.AnchorStyles]::Bottom -bor [System.Windows.Forms.AnchorStyles]::Right))
-$Button6.Location = New-Object System.Drawing.Point(678, 456)
+$Button6.Location = New-Object System.Drawing.Point(717, 472)
 $Button6.Size = New-Object System.Drawing.Size(75, 23)
 $Button6.TabIndex = 3
 $Button6.Text = "Create PBO"
@@ -95,7 +102,7 @@ $Button6.UseVisualStyleBackColor = $true
 #~~< Button5 >~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 $Button5 = New-Object System.Windows.Forms.Button
 $Button5.Anchor = ([System.Windows.Forms.AnchorStyles]([System.Windows.Forms.AnchorStyles]::Top -bor [System.Windows.Forms.AnchorStyles]::Right))
-$Button5.Location = New-Object System.Drawing.Point(678, 35)
+$Button5.Location = New-Object System.Drawing.Point(717, 35)
 $Button5.Size = New-Object System.Drawing.Size(75, 23)
 $Button5.TabIndex = 2
 $Button5.Text = "Select none"
@@ -103,7 +110,7 @@ $Button5.UseVisualStyleBackColor = $true
 #~~< Button7 >~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 $Button7 = New-Object System.Windows.Forms.Button
 $Button7.Anchor = ([System.Windows.Forms.AnchorStyles]([System.Windows.Forms.AnchorStyles]::Top -bor [System.Windows.Forms.AnchorStyles]::Right))
-$Button7.Location = New-Object System.Drawing.Point(678, 6)
+$Button7.Location = New-Object System.Drawing.Point(717, 6)
 $Button7.Size = New-Object System.Drawing.Size(75, 23)
 $Button7.TabIndex = 1
 $Button7.Text = "Select all"
@@ -112,7 +119,7 @@ $Button7.UseVisualStyleBackColor = $true
 $ListView1 = New-Object System.Windows.Forms.ListView
 $ListView1.Anchor = ([System.Windows.Forms.AnchorStyles]([System.Windows.Forms.AnchorStyles]::Top -bor [System.Windows.Forms.AnchorStyles]::Bottom -bor [System.Windows.Forms.AnchorStyles]::Left -bor [System.Windows.Forms.AnchorStyles]::Right))
 $ListView1.Location = New-Object System.Drawing.Point(6, 6)
-$ListView1.Size = New-Object System.Drawing.Size(666, 473)
+$ListView1.Size = New-Object System.Drawing.Size(705, 489)
 $ListView1.TabIndex = 0
 $ListView1.Text = "ListView1"
 $ListView1.UseCompatibleStateImageBehavior = $false
@@ -146,14 +153,14 @@ $TabPage2 = New-Object System.Windows.Forms.TabPage
 $TabPage2.BorderStyle = [System.Windows.Forms.BorderStyle]::FixedSingle
 $TabPage2.Location = New-Object System.Drawing.Point(4, 22)
 $TabPage2.Padding = New-Object System.Windows.Forms.Padding(3)
-$TabPage2.Size = New-Object System.Drawing.Size(761, 487)
+$TabPage2.Size = New-Object System.Drawing.Size(800, 503)
 $TabPage2.TabIndex = 1
 $TabPage2.Text = "Settings"
 $TabPage2.BackColor = [System.Drawing.SystemColors]::Control
 #~~< Button14 >~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 $Button14 = New-Object System.Windows.Forms.Button
 $Button14.Anchor = ([System.Windows.Forms.AnchorStyles]([System.Windows.Forms.AnchorStyles]::Top -bor [System.Windows.Forms.AnchorStyles]::Right))
-$Button14.Location = New-Object System.Drawing.Point(699, 185)
+$Button14.Location = New-Object System.Drawing.Point(738, 185)
 $Button14.Size = New-Object System.Drawing.Size(54, 21)
 $Button14.TabIndex = 18
 $Button14.Text = "Browse"
@@ -163,18 +170,18 @@ $Label12 = New-Object System.Windows.Forms.Label
 $Label12.Location = New-Object System.Drawing.Point(6, 167)
 $Label12.Size = New-Object System.Drawing.Size(230, 15)
 $Label12.TabIndex = 17
-$Label12.Text = "Save packed server files in:"
+$Label12.Text = "Save Server PBOs to (UNC supported):"
 #~~< TextBox10 >~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 $TextBox10 = New-Object System.Windows.Forms.TextBox
 $TextBox10.Anchor = ([System.Windows.Forms.AnchorStyles]([System.Windows.Forms.AnchorStyles]::Top -bor [System.Windows.Forms.AnchorStyles]::Left -bor [System.Windows.Forms.AnchorStyles]::Right))
 $TextBox10.Location = New-Object System.Drawing.Point(6, 185)
-$TextBox10.Size = New-Object System.Drawing.Size(687, 20)
+$TextBox10.Size = New-Object System.Drawing.Size(726, 20)
 $TextBox10.TabIndex = 16
 $TextBox10.Text = "\\server\a3server\@epochhive\addons"
 #~~< Button13 >~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 $Button13 = New-Object System.Windows.Forms.Button
 $Button13.Anchor = ([System.Windows.Forms.AnchorStyles]([System.Windows.Forms.AnchorStyles]::Top -bor [System.Windows.Forms.AnchorStyles]::Right))
-$Button13.Location = New-Object System.Drawing.Point(699, 144)
+$Button13.Location = New-Object System.Drawing.Point(738, 144)
 $Button13.Size = New-Object System.Drawing.Size(54, 21)
 $Button13.TabIndex = 15
 $Button13.Text = "Browse"
@@ -184,18 +191,18 @@ $Label11 = New-Object System.Windows.Forms.Label
 $Label11.Location = New-Object System.Drawing.Point(6, 126)
 $Label11.Size = New-Object System.Drawing.Size(230, 15)
 $Label11.TabIndex = 14
-$Label11.Text = "Save Packed Missions in:"
+$Label11.Text = "Save Mission PBOs to (UNC supported):"
 #~~< TextBox9 >~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 $TextBox9 = New-Object System.Windows.Forms.TextBox
 $TextBox9.Anchor = ([System.Windows.Forms.AnchorStyles]([System.Windows.Forms.AnchorStyles]::Top -bor [System.Windows.Forms.AnchorStyles]::Left -bor [System.Windows.Forms.AnchorStyles]::Right))
 $TextBox9.Location = New-Object System.Drawing.Point(6, 144)
-$TextBox9.Size = New-Object System.Drawing.Size(687, 20)
+$TextBox9.Size = New-Object System.Drawing.Size(726, 20)
 $TextBox9.TabIndex = 13
 $TextBox9.Text = "\\server\a3server\@epochserver\mpmissions\"
 #~~< Button9 >~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 $Button9 = New-Object System.Windows.Forms.Button
 $Button9.Anchor = ([System.Windows.Forms.AnchorStyles]([System.Windows.Forms.AnchorStyles]::Bottom -bor [System.Windows.Forms.AnchorStyles]::Right))
-$Button9.Location = New-Object System.Drawing.Point(639, 448)
+$Button9.Location = New-Object System.Drawing.Point(678, 464)
 $Button9.Size = New-Object System.Drawing.Size(54, 21)
 $Button9.TabIndex = 12
 $Button9.Text = "Save"
@@ -203,7 +210,7 @@ $Button9.UseVisualStyleBackColor = $true
 #~~< Button8 >~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 $Button8 = New-Object System.Windows.Forms.Button
 $Button8.Anchor = ([System.Windows.Forms.AnchorStyles]([System.Windows.Forms.AnchorStyles]::Bottom -bor [System.Windows.Forms.AnchorStyles]::Right))
-$Button8.Location = New-Object System.Drawing.Point(699, 448)
+$Button8.Location = New-Object System.Drawing.Point(738, 464)
 $Button8.Size = New-Object System.Drawing.Size(54, 21)
 $Button8.TabIndex = 11
 $Button8.Text = "Delete"
@@ -211,7 +218,7 @@ $Button8.UseVisualStyleBackColor = $true
 #~~< Label7 >~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 $Label7 = New-Object System.Windows.Forms.Label
 $Label7.Anchor = ([System.Windows.Forms.AnchorStyles]([System.Windows.Forms.AnchorStyles]::Bottom -bor [System.Windows.Forms.AnchorStyles]::Left))
-$Label7.Location = New-Object System.Drawing.Point(6, 430)
+$Label7.Location = New-Object System.Drawing.Point(6, 446)
 $Label7.Size = New-Object System.Drawing.Size(230, 15)
 $Label7.TabIndex = 10
 $Label7.Text = "Save Settings:"
@@ -219,14 +226,14 @@ $Label7.Text = "Save Settings:"
 $TextBox5 = New-Object System.Windows.Forms.TextBox
 $TextBox5.Anchor = ([System.Windows.Forms.AnchorStyles]([System.Windows.Forms.AnchorStyles]::Bottom -bor [System.Windows.Forms.AnchorStyles]::Left -bor [System.Windows.Forms.AnchorStyles]::Right))
 $TextBox5.Enabled = $false
-$TextBox5.Location = New-Object System.Drawing.Point(6, 448)
-$TextBox5.Size = New-Object System.Drawing.Size(627, 20)
+$TextBox5.Location = New-Object System.Drawing.Point(6, 464)
+$TextBox5.Size = New-Object System.Drawing.Size(666, 20)
 $TextBox5.TabIndex = 9
 $TextBox5.Text = ""
 #~~< Button3 >~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 $Button3 = New-Object System.Windows.Forms.Button
 $Button3.Anchor = ([System.Windows.Forms.AnchorStyles]([System.Windows.Forms.AnchorStyles]::Top -bor [System.Windows.Forms.AnchorStyles]::Right))
-$Button3.Location = New-Object System.Drawing.Point(699, 62)
+$Button3.Location = New-Object System.Drawing.Point(738, 62)
 $Button3.Size = New-Object System.Drawing.Size(54, 21)
 $Button3.TabIndex = 8
 $Button3.Text = "Browse"
@@ -241,13 +248,13 @@ $Label3.Text = "Path to Arma 3 Addon builder:"
 $TextBox3 = New-Object System.Windows.Forms.TextBox
 $TextBox3.Anchor = ([System.Windows.Forms.AnchorStyles]([System.Windows.Forms.AnchorStyles]::Top -bor [System.Windows.Forms.AnchorStyles]::Left -bor [System.Windows.Forms.AnchorStyles]::Right))
 $TextBox3.Location = New-Object System.Drawing.Point(6, 62)
-$TextBox3.Size = New-Object System.Drawing.Size(687, 20)
+$TextBox3.Size = New-Object System.Drawing.Size(726, 20)
 $TextBox3.TabIndex = 6
 $TextBox3.Text = ""
 #~~< Button2 >~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 $Button2 = New-Object System.Windows.Forms.Button
 $Button2.Anchor = ([System.Windows.Forms.AnchorStyles]([System.Windows.Forms.AnchorStyles]::Top -bor [System.Windows.Forms.AnchorStyles]::Right))
-$Button2.Location = New-Object System.Drawing.Point(699, 103)
+$Button2.Location = New-Object System.Drawing.Point(738, 103)
 $Button2.Size = New-Object System.Drawing.Size(54, 21)
 $Button2.TabIndex = 5
 $Button2.Text = "Browse"
@@ -262,13 +269,13 @@ $Label2.Text = "Path to Epoch Public Github:"
 $TextBox2 = New-Object System.Windows.Forms.TextBox
 $TextBox2.Anchor = ([System.Windows.Forms.AnchorStyles]([System.Windows.Forms.AnchorStyles]::Top -bor [System.Windows.Forms.AnchorStyles]::Left -bor [System.Windows.Forms.AnchorStyles]::Right))
 $TextBox2.Location = New-Object System.Drawing.Point(6, 103)
-$TextBox2.Size = New-Object System.Drawing.Size(687, 20)
+$TextBox2.Size = New-Object System.Drawing.Size(726, 20)
 $TextBox2.TabIndex = 3
 $TextBox2.Text = ""
 #~~< Button1 >~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 $Button1 = New-Object System.Windows.Forms.Button
 $Button1.Anchor = ([System.Windows.Forms.AnchorStyles]([System.Windows.Forms.AnchorStyles]::Top -bor [System.Windows.Forms.AnchorStyles]::Right))
-$Button1.Location = New-Object System.Drawing.Point(699, 21)
+$Button1.Location = New-Object System.Drawing.Point(738, 21)
 $Button1.Size = New-Object System.Drawing.Size(54, 21)
 $Button1.TabIndex = 2
 $Button1.Text = "Browse"
@@ -283,7 +290,7 @@ $Label1.Text = "Path to Arma 3:"
 $TextBox1 = New-Object System.Windows.Forms.TextBox
 $TextBox1.Anchor = ([System.Windows.Forms.AnchorStyles]([System.Windows.Forms.AnchorStyles]::Top -bor [System.Windows.Forms.AnchorStyles]::Left -bor [System.Windows.Forms.AnchorStyles]::Right))
 $TextBox1.Location = New-Object System.Drawing.Point(6, 21)
-$TextBox1.Size = New-Object System.Drawing.Size(687, 20)
+$TextBox1.Size = New-Object System.Drawing.Size(726, 20)
 $TextBox1.TabIndex = 0
 $TextBox1.Text = ""
 $TabPage2.Controls.Add($Button14)
@@ -310,7 +317,7 @@ $TabPage3 = New-Object System.Windows.Forms.TabPage
 $TabPage3.BorderStyle = [System.Windows.Forms.BorderStyle]::FixedSingle
 $TabPage3.Location = New-Object System.Drawing.Point(4, 22)
 $TabPage3.Padding = New-Object System.Windows.Forms.Padding(3)
-$TabPage3.Size = New-Object System.Drawing.Size(761, 487)
+$TabPage3.Size = New-Object System.Drawing.Size(800, 503)
 $TabPage3.TabIndex = 2
 $TabPage3.Text = "Developers"
 $TabPage3.BackColor = [System.Drawing.SystemColors]::Control
@@ -331,7 +338,7 @@ $Button12.UseVisualStyleBackColor = $true
 #~~< Label6 >~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 $Label6 = New-Object System.Windows.Forms.Label
 $Label6.Anchor = ([System.Windows.Forms.AnchorStyles]([System.Windows.Forms.AnchorStyles]::Top -bor [System.Windows.Forms.AnchorStyles]::Right))
-$Label6.Location = New-Object System.Drawing.Point(469, 9)
+$Label6.Location = New-Object System.Drawing.Point(508, 9)
 $Label6.Size = New-Object System.Drawing.Size(141, 21)
 $Label6.TabIndex = 15
 $Label6.Text = "Arma 3 Mod (Client PBOs):"
@@ -345,7 +352,7 @@ $TextBox8.Text = ""
 $ComboBox1 = New-Object System.Windows.Forms.ComboBox
 $ComboBox1.Anchor = ([System.Windows.Forms.AnchorStyles]([System.Windows.Forms.AnchorStyles]::Top -bor [System.Windows.Forms.AnchorStyles]::Right))
 $ComboBox1.FormattingEnabled = $true
-$ComboBox1.Location = New-Object System.Drawing.Point(616, 6)
+$ComboBox1.Location = New-Object System.Drawing.Point(655, 6)
 $ComboBox1.SelectedIndex = -1
 $ComboBox1.Size = New-Object System.Drawing.Size(137, 21)
 $ComboBox1.TabIndex = 14
@@ -397,13 +404,13 @@ $Label5.Text = "Path to Epoch Private Github"
 $TextBox4 = New-Object System.Windows.Forms.TextBox
 $TextBox4.Anchor = ([System.Windows.Forms.AnchorStyles]([System.Windows.Forms.AnchorStyles]::Top -bor [System.Windows.Forms.AnchorStyles]::Left -bor [System.Windows.Forms.AnchorStyles]::Right))
 $TextBox4.Location = New-Object System.Drawing.Point(6, 51)
-$TextBox4.Size = New-Object System.Drawing.Size(687, 20)
+$TextBox4.Size = New-Object System.Drawing.Size(726, 20)
 $TextBox4.TabIndex = 11
 $TextBox4.Text = ""
 #~~< Button4 >~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 $Button4 = New-Object System.Windows.Forms.Button
 $Button4.Anchor = ([System.Windows.Forms.AnchorStyles]([System.Windows.Forms.AnchorStyles]::Top -bor [System.Windows.Forms.AnchorStyles]::Right))
-$Button4.Location = New-Object System.Drawing.Point(699, 51)
+$Button4.Location = New-Object System.Drawing.Point(738, 51)
 $Button4.Size = New-Object System.Drawing.Size(54, 21)
 $Button4.TabIndex = 13
 $Button4.Text = "Browse"
@@ -426,6 +433,7 @@ $TabControl1.Controls.Add($TabPage1)
 $TabControl1.Controls.Add($TabPage2)
 $TabControl1.Controls.Add($TabPage3)
 $TabControl1.SelectedIndex = 0
+$Form1.Controls.Add($ProgressBar1)
 $Form1.Controls.Add($Label4)
 $Form1.Controls.Add($TabControl1)
 #region$Form1.Icon = ([System.Drawing.Icon](...)
@@ -573,7 +581,19 @@ $Timer1 = New-Object System.Windows.Forms.Timer($components)
 			$Button16.Enabled = $false
 			$ListView1.Enabled = $false
 		}
-		$Label4.Text = if (!$c5) { "P:\ drive not mounted" } else { "EPOCH_CODE and EPOCH_CONFIG are automatically merged into MPMissions PBO packs" }
+		$Label4.Text = if (!$c5) 
+		{ 
+			"P:\ drive not mounted" 
+		}
+		elseif (Get-Process Arma3 -ErrorAction SilentlyContinue) #not a boolean, but any variable equals true and null equals false
+		{
+			"(WARNING) Arma 3 is running" 
+		}
+		else 
+		{ 
+			#"EPOCH_CODE and EPOCH_CONFIG are automatically merged into MPMissions PBO packs"
+			"Tool is Ready! Please check items from the list you want to PBO"
+		}
 	}
 		
 	function fnc_reloadVersions
@@ -594,15 +614,15 @@ $Timer1 = New-Object System.Windows.Forms.Timer($components)
 				
 		if (($Textbox6.Text -ne "Path not set") -and (Test-Path $p6))
 		{
-			$TextBox6.Text | Out-File $p6
+			$TextBox6.Text | Out-File $p6 -Encoding "UTF8"
 		}
 		if (($Textbox7.Text -ne "Path not set") -and (Test-Path $p7))
 		{
-			$TextBox7.Text | Out-File $p7
+			$TextBox7.Text | Out-File $p7 -Encoding "UTF8"
 		}
 		if (($Textbox8.Text -ne "Path not set") -and (Test-Path $p8))
 		{
-			$TextBox8.Text | Out-File $p8
+			$TextBox8.Text | Out-File $p8 -Encoding "UTF8"
 		}
 	}
 	
@@ -765,14 +785,22 @@ $Timer1 = New-Object System.Windows.Forms.Timer($components)
 	{
 		$Bob = Join-Path $TextBox3.Text "\AddonBuilder.exe"
 		$includes = "P:\includes.txt"
-		if (!(Test-Path $includes)) { "*.xml;*.pac;*.paa;*.sqf;*.sqs;*.bikb;*.fsm;*.wss;*.ogg;*.wav;*.fxy;*.csv;*.html;*.lip;*.txt;*.wrp;*.bisurf;*.rvmat;*.sqm;*.ext;*.hpp" | Out-File $includes}
+		if (!(Test-Path $includes)) { "*.xml;*.pac;*.paa;*.sqf;*.sqs;*.bikb;*.fsm;*.wss;*.ogg;*.wav;*.fxy;*.csv;*.html;*.lip;*.txt;*.wrp;*.bisurf;*.rvmat;*.sqm;*.ext;*.hpp" | Out-File $includes -Encoding "UTF8"}		
+		
+		foreach ($i in $Script:listarr) {if ($i.checked) { $ct++ }}
+		$cnt = 100 / $ct
+				
+		$Label4.Text = "Building PBO ... Please wait"
+		$Label4.Refresh()
 		
 		foreach ($x in $Script:listarr)
-		{
+		{										
 			if ($x.checked)
 			{
 				$name = $x.subitems[0].Text
-				$tmp = "P:\$name"	
+				$tmp = "P:\$name"
+				$ProgressBar1.Value = $ProgressBar1.Value + [Math]::Floor($cnt)
+				$ProgressBar1.Refresh()
 				
 				switch($x.group.header)
 				{
@@ -781,9 +809,9 @@ $Timer1 = New-Object System.Windows.Forms.Timer($components)
 						$Output = $TextBox10.Text
 						if (Test-Path $tmp) { Remove-Item -Path $tmp -Recurse }														
 						Copy-Item -Path $x.subitems[1].Text -Destination $tmp -Recurse
-												
-						$argz = @($tmp, ('"' + $Output + '"'), "-packonly", "-clear", "-prefix=$name", "-project=$tmp", "-include=$includes")
-												
+																		
+						$argz = @($tmp, ( '"' + $Output + '"' ), "-packonly", "-clear", "-prefix=$name", "-project=$tmp", "-include=$includes")
+																		
 						Start-Process -FilePath $Bob -ArgumentList $argz -WindowStyle Minimized -Wait
 					}
 					"Client" 
@@ -791,32 +819,34 @@ $Timer1 = New-Object System.Windows.Forms.Timer($components)
 						$Output = $TextBox1.Text + "\" + $ComboBox1.SelectedItem + "\Addons"
 						if (Test-Path $tmp) { Remove-Item -Path $tmp -Recurse }														
 						Copy-Item -Path $x.subitems[1].Text -Destination $tmp -Recurse
+																		
+						$argz = @($tmp, ( '"' + $Output + '"' ), "-clear", "-prefix=$name", "-project=$tmp", "-include=$includes")
 												
-						$argz = @($tmp, ('"' + $Output + '"'), "-clear", "-prefix=$name", "-project=$tmp", "-include=$includes")
-						#Write-Host $argz
 						Start-Process -FilePath $Bob -ArgumentList $argz -WindowStyle Minimized -Wait
 					}
 					"Missions" 
 					{
 						$Output = $TextBox9.Text
 						$src = $TextBox2.Text + "\Sources\"
-												
+																		
 						if (Test-Path $tmp) { Remove-Item -Path $tmp -Recurse }
 						Copy-Item -Path $x.subitems[1].Text -Destination $tmp -Recurse
 						Copy-Item($src + "epoch_code") -Destination $tmp -Recurse
 						Copy-Item($src + "epoch_config") -Destination $tmp -Recurse
 						Copy-Item($src + "description.ext") -Destination $tmp
-												
-						$argz = @($tmp, ('"' + $Output + '"'), "-clear", "-prefix=\", "-project=P:\", "-include=$includes")
 																		
+						$argz = @($tmp, ( '"' + $Output + '"' ), "-clear", "-prefix=\", "-project=P:\", "-include=$includes")
+																								
 						Start-Process -FilePath $Bob -ArgumentList $argz -WindowStyle Minimized -Wait
 					}
 				}
 				#cleanup
 				if (Test-Path $tmp) { Remove-Item -Path $tmp -Recurse }
-				if (Test-Path ($env:temp + "\" + $name)) { Remove-Item -Path($env:temp + "\" + $name) -Recurse }
+				if (Test-Path($env:temp + "\" + $name)) { Remove-Item -Path($env:temp + "\" + $name) -Recurse }
 			}
 		}
+		$ProgressBar1.Value = 0
+		$ProgressBar1.Refresh()
 	}
 	
 	
