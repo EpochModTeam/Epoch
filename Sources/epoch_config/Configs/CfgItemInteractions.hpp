@@ -63,7 +63,8 @@ class CfgItemInteractions {
 		interactAction = 14;
 		interactText = "UNPACK";
 	};
-	// BASE CLASSES END	class honey_epoch : Food_Jar_base
+	// BASE CLASSES END
+	class honey_epoch : Food_Jar_base
 	{
 		interactText = "CONSUME";
 		interactAttributes[] = { 0, 0, 0, 0, 0, 1, 0, 30, 0, 10 };
