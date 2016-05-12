@@ -117,9 +117,9 @@ switch _interactOption do {
 		_buildingCountLimit = ["CfgEpochClient", "buildingCountLimit", 200] call EPOCH_fnc_returnConfigEntryV2;
 		_partCheck = _item in (magazines player);
 
-		_buildClass = getText(_cfgItemInteractions >> _item >> "buildClass");
+		_buildClass = getText(_cfgItemInteractions >> "buildClass");
 		if (_buildClass != "" && _partCheck) then {
-			_isStorage = getNumber(_cfgItemInteractions >> _item >> "isStorage");
+			_isStorage = getNumber(_cfgItemInteractions >> "isStorage");
 
 			_isOk = if (_isStorage == 1 || _buildClass isKindOf "Secure_Storage_Temp") then { EPOCH_StorageSlotsCount > 0 } else { EPOCH_BuildingSlotCount > 0 };
 
@@ -288,8 +288,8 @@ switch _interactOption do {
 					if (_item call _removeItem) then {
 
 						// find _paintCanIndex from config
-						_paintCanIndex = getNumber(_cfgItemInteractions >> _item >> "textureIndex");
-						_paintCanColor = getText(_cfgItemInteractions >> _item >> "colorName");
+						_paintCanIndex = getNumber(_cfgItemInteractions >> "textureIndex");
+						_paintCanColor = getText(_cfgItemInteractions >> "colorName");
 
 						[_vehicle,_paintCanIndex,player,Epoch_personalToken] remoteExec ["EPOCH_server_paintBUILD",2];
 
