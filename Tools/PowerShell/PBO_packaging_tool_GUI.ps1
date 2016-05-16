@@ -67,6 +67,7 @@ $Label4.Size = New-Object System.Drawing.Size(808, 18)
 $Label4.TabIndex = 1
 $Label4.Text = "Why do farts smell? So deaf people can enjoy them too."
 $Label4.TextAlign = [System.Drawing.ContentAlignment]::MiddleCenter
+$Label4.add_Click({Label4Click($Label4)})
 #~~< TabControl1 >~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 $TabControl1 = New-Object System.Windows.Forms.TabControl
 $TabControl1.Anchor = ([System.Windows.Forms.AnchorStyles]([System.Windows.Forms.AnchorStyles]::Top -bor [System.Windows.Forms.AnchorStyles]::Bottom -bor [System.Windows.Forms.AnchorStyles]::Left -bor [System.Windows.Forms.AnchorStyles]::Right))
@@ -131,7 +132,7 @@ $ColumnHeader1.Width = 205
 #~~< ColumnHeader2 >~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 $ColumnHeader2 = New-Object System.Windows.Forms.ColumnHeader
 $ColumnHeader2.Text = "Full Path"
-$ColumnHeader2.Width = 679
+$ColumnHeader2.Width = 659
 $ListView1.Columns.AddRange([System.Windows.Forms.ColumnHeader[]](@($ColumnHeader1, $ColumnHeader2)))
 #~~< ListViewGroup11 >~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 $ListViewGroup11 = New-Object System.Windows.Forms.ListViewGroup("Server", [System.Windows.Forms.HorizontalAlignment]::Left)
@@ -157,6 +158,49 @@ $TabPage2.Size = New-Object System.Drawing.Size(800, 503)
 $TabPage2.TabIndex = 1
 $TabPage2.Text = "Settings"
 $TabPage2.BackColor = [System.Drawing.SystemColors]::Control
+#~~< Label18 >~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+$Label18 = New-Object System.Windows.Forms.Label
+$Label18.Font = New-Object System.Drawing.Font("Microsoft Sans Serif", 14.25, [System.Drawing.FontStyle]::Bold, [System.Drawing.GraphicsUnit]::Point, ([System.Byte](0)))
+$Label18.Location = New-Object System.Drawing.Point(270, 225)
+$Label18.Size = New-Object System.Drawing.Size(179, 29)
+$Label18.TabIndex = 37
+$Label18.Text = "Sign File Settings"
+$Label18.add_Click({Label18Click($Label18)})
+#~~< Label16 >~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+$Label16 = New-Object System.Windows.Forms.Label
+$Label16.Location = New-Object System.Drawing.Point(6, 292)
+$Label16.Size = New-Object System.Drawing.Size(643, 14)
+$Label16.TabIndex = 34
+$Label16.Text = "Path to Arma 3 Tools (DSSignFile) biprivatekey:"
+$Label16.add_Click({Label16Click($Label16)})
+#~~< Label17 >~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+$Label17 = New-Object System.Windows.Forms.Label
+$Label17.Location = New-Object System.Drawing.Point(6, 252)
+$Label17.Size = New-Object System.Drawing.Size(145, 14)
+$Label17.TabIndex = 36
+$Label17.Text = "PBO prefix:"
+$Label17.add_Click({Label17Click($Label17)})
+#~~< Button17 >~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+$Button17 = New-Object System.Windows.Forms.Button
+$Button17.Anchor = ([System.Windows.Forms.AnchorStyles]([System.Windows.Forms.AnchorStyles]::Top -bor [System.Windows.Forms.AnchorStyles]::Right))
+$Button17.Location = New-Object System.Drawing.Point(738, 309)
+$Button17.Size = New-Object System.Drawing.Size(54, 21)
+$Button17.TabIndex = 28
+$Button17.Text = "Browse"
+$Button17.UseVisualStyleBackColor = $true
+#~~< Label14 >~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+$Label14 = New-Object System.Windows.Forms.Label
+$Label14.Location = New-Object System.Drawing.Point(7, 332)
+$Label14.Size = New-Object System.Drawing.Size(145, 14)
+$Label14.TabIndex = 31
+$Label14.Text = "Authority Name Prefix:"
+$Label14.add_Click({Label14Click($Label14)})
+#~~< TextBoxBISignPrefix >~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+$TextBoxBISignPrefix = New-Object System.Windows.Forms.TextBox
+$TextBoxBISignPrefix.Location = New-Object System.Drawing.Point(7, 349)
+$TextBoxBISignPrefix.Size = New-Object System.Drawing.Size(100, 20)
+$TextBoxBISignPrefix.TabIndex = 30
+$TextBoxBISignPrefix.Text = "epoch"
 #~~< Button14 >~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 $Button14 = New-Object System.Windows.Forms.Button
 $Button14.Anchor = ([System.Windows.Forms.AnchorStyles]([System.Windows.Forms.AnchorStyles]::Top -bor [System.Windows.Forms.AnchorStyles]::Right))
@@ -165,19 +209,31 @@ $Button14.Size = New-Object System.Drawing.Size(54, 21)
 $Button14.TabIndex = 18
 $Button14.Text = "Browse"
 $Button14.UseVisualStyleBackColor = $true
+#~~< TextBoxPboPrefix >~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+$TextBoxPboPrefix = New-Object System.Windows.Forms.TextBox
+$TextBoxPboPrefix.Location = New-Object System.Drawing.Point(6, 269)
+$TextBoxPboPrefix.Size = New-Object System.Drawing.Size(365, 20)
+$TextBoxPboPrefix.TabIndex = 35
+$TextBoxPboPrefix.Text = "x\addons"
 #~~< Label12 >~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 $Label12 = New-Object System.Windows.Forms.Label
 $Label12.Location = New-Object System.Drawing.Point(6, 167)
 $Label12.Size = New-Object System.Drawing.Size(230, 15)
 $Label12.TabIndex = 17
-$Label12.Text = "Save Server PBOs to (UNC supported):"
+$Label12.Text = "Server PBO Output Folder:"
+#~~< TextBox11 >~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+$TextBox11 = New-Object System.Windows.Forms.TextBox
+$TextBox11.Location = New-Object System.Drawing.Point(7, 309)
+$TextBox11.Size = New-Object System.Drawing.Size(725, 20)
+$TextBox11.TabIndex = 27
+$TextBox11.Text = ""
 #~~< TextBox10 >~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 $TextBox10 = New-Object System.Windows.Forms.TextBox
 $TextBox10.Anchor = ([System.Windows.Forms.AnchorStyles]([System.Windows.Forms.AnchorStyles]::Top -bor [System.Windows.Forms.AnchorStyles]::Left -bor [System.Windows.Forms.AnchorStyles]::Right))
 $TextBox10.Location = New-Object System.Drawing.Point(6, 185)
 $TextBox10.Size = New-Object System.Drawing.Size(726, 20)
 $TextBox10.TabIndex = 16
-$TextBox10.Text = "\\server\a3server\@epochhive\addons"
+$TextBox10.Text = ""
 #~~< Button13 >~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 $Button13 = New-Object System.Windows.Forms.Button
 $Button13.Anchor = ([System.Windows.Forms.AnchorStyles]([System.Windows.Forms.AnchorStyles]::Top -bor [System.Windows.Forms.AnchorStyles]::Right))
@@ -191,14 +247,14 @@ $Label11 = New-Object System.Windows.Forms.Label
 $Label11.Location = New-Object System.Drawing.Point(6, 126)
 $Label11.Size = New-Object System.Drawing.Size(230, 15)
 $Label11.TabIndex = 14
-$Label11.Text = "Save Mission PBOs to (UNC supported):"
+$Label11.Text = "Output Folder MpMissions:"
 #~~< TextBox9 >~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 $TextBox9 = New-Object System.Windows.Forms.TextBox
 $TextBox9.Anchor = ([System.Windows.Forms.AnchorStyles]([System.Windows.Forms.AnchorStyles]::Top -bor [System.Windows.Forms.AnchorStyles]::Left -bor [System.Windows.Forms.AnchorStyles]::Right))
 $TextBox9.Location = New-Object System.Drawing.Point(6, 144)
 $TextBox9.Size = New-Object System.Drawing.Size(726, 20)
 $TextBox9.TabIndex = 13
-$TextBox9.Text = "\\server\a3server\@epochserver\mpmissions\"
+$TextBox9.Text = ""
 #~~< Button9 >~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 $Button9 = New-Object System.Windows.Forms.Button
 $Button9.Anchor = ([System.Windows.Forms.AnchorStyles]([System.Windows.Forms.AnchorStyles]::Bottom -bor [System.Windows.Forms.AnchorStyles]::Right))
@@ -293,8 +349,16 @@ $TextBox1.Location = New-Object System.Drawing.Point(6, 21)
 $TextBox1.Size = New-Object System.Drawing.Size(726, 20)
 $TextBox1.TabIndex = 0
 $TextBox1.Text = ""
+$TabPage2.Controls.Add($Label18)
+$TabPage2.Controls.Add($Label16)
+$TabPage2.Controls.Add($Label17)
+$TabPage2.Controls.Add($Button17)
+$TabPage2.Controls.Add($Label14)
+$TabPage2.Controls.Add($TextBoxBISignPrefix)
 $TabPage2.Controls.Add($Button14)
+$TabPage2.Controls.Add($TextBoxPboPrefix)
 $TabPage2.Controls.Add($Label12)
+$TabPage2.Controls.Add($TextBox11)
 $TabPage2.Controls.Add($TextBox10)
 $TabPage2.Controls.Add($Button13)
 $TabPage2.Controls.Add($Label11)
@@ -321,16 +385,37 @@ $TabPage3.Size = New-Object System.Drawing.Size(800, 503)
 $TabPage3.TabIndex = 2
 $TabPage3.Text = "Developers"
 $TabPage3.BackColor = [System.Drawing.SystemColors]::Control
+#~~< TextBox13 >~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+$TextBox13 = New-Object System.Windows.Forms.TextBox
+$TextBox13.Location = New-Object System.Drawing.Point(6, 133)
+$TextBox13.Size = New-Object System.Drawing.Size(96, 20)
+$TextBox13.TabIndex = 33
+$TextBox13.Text = ""
+$TextBox13.add_TextChanged({TextBox13TextChanged($TextBox13)})
+#~~< Label15 >~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+$Label15 = New-Object System.Windows.Forms.Label
+$Label15.Location = New-Object System.Drawing.Point(6, 115)
+$Label15.Size = New-Object System.Drawing.Size(145, 14)
+$Label15.TabIndex = 32
+$Label15.Text = "Sign Version:"
+$Label15.add_Click({Label15Click($Label15)})
+#~~< Label13 >~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+$Label13 = New-Object System.Windows.Forms.Label
+$Label13.Location = New-Object System.Drawing.Point(6, 397)
+$Label13.Size = New-Object System.Drawing.Size(785, 15)
+$Label13.TabIndex = 29
+$Label13.Text = ""
+$Label13.add_Click({Label13Click($Label13)})
 #~~< Button15 >~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 $Button15 = New-Object System.Windows.Forms.Button
-$Button15.Location = New-Object System.Drawing.Point(6, 199)
+$Button15.Location = New-Object System.Drawing.Point(6, 240)
 $Button15.Size = New-Object System.Drawing.Size(96, 21)
 $Button15.TabIndex = 26
 $Button15.Text = "Reload Versions"
 $Button15.UseVisualStyleBackColor = $true
 #~~< Button12 >~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 $Button12 = New-Object System.Windows.Forms.Button
-$Button12.Location = New-Object System.Drawing.Point(6, 226)
+$Button12.Location = New-Object System.Drawing.Point(6, 267)
 $Button12.Size = New-Object System.Drawing.Size(96, 21)
 $Button12.TabIndex = 25
 $Button12.Text = "Update Versions"
@@ -341,10 +426,11 @@ $Label6.Anchor = ([System.Windows.Forms.AnchorStyles]([System.Windows.Forms.Anch
 $Label6.Location = New-Object System.Drawing.Point(508, 9)
 $Label6.Size = New-Object System.Drawing.Size(141, 21)
 $Label6.TabIndex = 15
-$Label6.Text = "Arma 3 Mod (Client PBOs):"
+$Label6.Text = "Arma 3 Mod Output Folder:"
+$Label6.add_Click({Label6Click($Label6)})
 #~~< TextBox8 >~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 $TextBox8 = New-Object System.Windows.Forms.TextBox
-$TextBox8.Location = New-Object System.Drawing.Point(6, 173)
+$TextBox8.Location = New-Object System.Drawing.Point(6, 214)
 $TextBox8.Size = New-Object System.Drawing.Size(96, 20)
 $TextBox8.TabIndex = 24
 $TextBox8.Text = ""
@@ -359,22 +445,24 @@ $ComboBox1.TabIndex = 14
 $ComboBox1.Text = "Select Arma Mod"
 #~~< TextBox7 >~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 $TextBox7 = New-Object System.Windows.Forms.TextBox
-$TextBox7.Location = New-Object System.Drawing.Point(6, 132)
+$TextBox7.Location = New-Object System.Drawing.Point(6, 173)
 $TextBox7.Size = New-Object System.Drawing.Size(96, 20)
 $TextBox7.TabIndex = 22
 $TextBox7.Text = ""
+$TextBox7.add_TextChanged({TextBox7TextChanged($TextBox7)})
 #~~< Label10 >~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 $Label10 = New-Object System.Windows.Forms.Label
-$Label10.Location = New-Object System.Drawing.Point(6, 156)
+$Label10.Location = New-Object System.Drawing.Point(6, 197)
 $Label10.Size = New-Object System.Drawing.Size(145, 14)
 $Label10.TabIndex = 21
 $Label10.Text = "Public Build:"
 #~~< Label9 >~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 $Label9 = New-Object System.Windows.Forms.Label
-$Label9.Location = New-Object System.Drawing.Point(6, 115)
+$Label9.Location = New-Object System.Drawing.Point(6, 156)
 $Label9.Size = New-Object System.Drawing.Size(145, 14)
 $Label9.TabIndex = 18
 $Label9.Text = "Private Build:"
+$Label9.add_Click({Label9Click($Label9)})
 #~~< TextBox6 >~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 $TextBox6 = New-Object System.Windows.Forms.TextBox
 $TextBox6.Location = New-Object System.Drawing.Point(6, 92)
@@ -415,6 +503,9 @@ $Button4.Size = New-Object System.Drawing.Size(54, 21)
 $Button4.TabIndex = 13
 $Button4.Text = "Browse"
 $Button4.UseVisualStyleBackColor = $true
+$TabPage3.Controls.Add($TextBox13)
+$TabPage3.Controls.Add($Label15)
+$TabPage3.Controls.Add($Label13)
 $TabPage3.Controls.Add($Button15)
 $TabPage3.Controls.Add($Button12)
 $TabPage3.Controls.Add($Label6)
@@ -477,6 +568,7 @@ $Timer1 = New-Object System.Windows.Forms.Timer($components)
 	$FolderBrowserDialog1.ShowNewFolderButton = $false
 	$TextBox1.Text = "Arma 3 not found"
 	$TextBox3.Text = "Arma Tools not found"
+	$TextBox11.Text = "Arma Tools not found"
 	$TextBox2.Text = "C:\"
 	$TextBox4.Text = "C:\"
 	$TextBox5.Text = (Join-Path $env:APPDATA "\Epoch_PBO.ini")
@@ -487,12 +579,13 @@ $Timer1 = New-Object System.Windows.Forms.Timer($components)
 	{
 		"64-bit" { Get-ChildItem "HKLM:\SOFTWARE\WOW6432Node\Bohemia Interactive\" | ForEach-Object { Get-ItemProperty $_.pspath } }
 		"32-bit" { Get-ChildItem "HKLM:\SOFTWARE\Bohemia Interactive Studio\" | ForEach-Object { Get-ItemProperty $_.pspath } }
-		default { @() } #OS Architecture not recognized, might need to update Powershell version, should work with 2.0 (win7)
+		default { @( ) } #OS Architecture not recognized, might need to update Powershell version, should work with 2.0 (win7)
 	}
 		
 	$TextBox1.Text = $armaPathArr.main | ForEach-Object { if ($_ -match "Arma 3") { return $_ } }
 	$TextBox3.Text = $armaPathArr.path | ForEach-Object { if ($_ -match "AddonBuilder") { return $_ } }
-		
+	$TextBox11.Text = (Get-ItemProperty 'HKCU:\SOFTWARE\Bohemia Interactive\dscreatekey').path
+	
 	
 	# Functions
 		
@@ -562,7 +655,7 @@ $Timer1 = New-Object System.Windows.Forms.Timer($components)
 		$c1 = Test-Path (Join-Path $TextBox1.Text "\Arma3.exe")
 		$c2 = Test-Path (Join-Path $TextBox2.Text "\Sources")
 		$c3 = Test-Path (Join-Path $TextBox3.Text "\AddonBuilder.exe") -ErrorAction SilentlyContinue
-		$c4 = Test-Path (Join-Path $TextBox4.Text "\Source_APL")
+		$c4 = Test-Path (Join-Path $TextBox4.Text "\Sources")
 		$c5 = Test-Path "P:\"
 
 		if ($c1 -and $c2 -and $c3 -and $c5)
@@ -598,19 +691,22 @@ $Timer1 = New-Object System.Windows.Forms.Timer($components)
 		
 	function fnc_reloadVersions
 	{
-		$p6 = Join-Path $Textbox4.Text "\Assets\EpochAutoPacker\Final\batches\version.txt"
-		$p7 = Join-Path $Textbox4.Text "\Assets\EpochAutoPacker\Final\batches\currentBuild.txt"
+		$p6 = Join-Path $Textbox4.Text "\version.txt"
+		$p7 = Join-Path $Textbox4.Text "\build.txt"
 		$p8 = Join-Path $Textbox2.Text "\build.txt"
+		$p9 = Join-Path $Textbox4.Text "\version_int.txt"
 		$Textbox6.Text = if (Test-Path $p6) { Get-Content $p6 } else { "Path not set" }
 		$Textbox7.Text = if (Test-Path $p7) { Get-Content $p7 } else { "Path not set" }
 		$Textbox8.Text = if (Test-Path $p8) { Get-Content $p8 } else { "Path not set" }
+		$Textbox13.Text = if (Test-Path $p9) { Get-Content $p9 } else { "Path not set" }
 	}
 		
 	function fnc_updateVersions
 	{
-		$p6 = Join-Path $Textbox4.Text "\Assets\EpochAutoPacker\Final\batches\version.txt"
-		$p7 = Join-Path $Textbox4.Text "\Assets\EpochAutoPacker\Final\batches\currentBuild.txt"
+		$p6 = Join-Path $Textbox4.Text "\version.txt"
+		$p7 = Join-Path $Textbox4.Text "\build.txt"
 		$p8 = Join-Path $Textbox2.Text "\build.txt"
+		$p9 = Join-Path $Textbox4.Text "\version_int.txt"
 				
 		if (($Textbox6.Text -ne "Path not set") -and (Test-Path $p6))
 		{
@@ -623,6 +719,10 @@ $Timer1 = New-Object System.Windows.Forms.Timer($components)
 		if (($Textbox8.Text -ne "Path not set") -and (Test-Path $p8))
 		{
 			$TextBox8.Text | Out-File $p8 -Encoding "UTF8"
+		}
+		if (($Textbox9.Text -ne "Path not set") -and (Test-Path $p9))
+		{
+			$TextBox9.Text | Out-File $p9 -Encoding "UTF8"
 		}
 	}
 	
@@ -673,7 +773,7 @@ $Timer1 = New-Object System.Windows.Forms.Timer($components)
 				4 # Location of Private Github
 				{ 
 					$TextBox4.Text = $p
-					$tp = Join-Path $p "\Source_APL"
+					$tp = Join-Path $p "\Sources"
 					if (!(Test-Path $tp))
 					{
 						[System.Windows.Forms.MessageBox]::Show(($tp + " Not found."), "Warning")
@@ -698,6 +798,16 @@ $Timer1 = New-Object System.Windows.Forms.Timer($components)
 				{ 
 					$TextBox10.Text = $p
 					if (!(Test-Path $p))
+					{
+						[System.Windows.Forms.MessageBox]::Show(($tp + " Not found."), "Warning")
+					}
+				}
+				
+				7 # Location of Addob Builder
+				{ 
+					$TextBox11.Text = $p
+					$tp = Join-Path $p "\DSCreateKey.exe"
+					if (!(Test-Path $tp))
 					{
 						[System.Windows.Forms.MessageBox]::Show(($tp + " Not found."), "Warning")
 					}
@@ -731,6 +841,7 @@ $Timer1 = New-Object System.Windows.Forms.Timer($components)
 		$TextBox6.Enabled = $cbstate
 		$TextBox7.Enabled = $cbstate
 		$TextBox8.Enabled = $cbstate
+		$TextBox13.Enabled = $cbstate
 						
 		$Button4.Enabled = $cbstate
 		$Button15.Enabled = $cbstate
@@ -755,6 +866,9 @@ $Timer1 = New-Object System.Windows.Forms.Timer($components)
 			$TextBox10.Text
 			$TextBox4.Text
 			$CheckBox1.Checked
+			$TextBox11.Text
+			$TextBoxPboPrefix.Text
+			$TextBoxBISignPrefix.Text
 		)
 				
 		$Out | Out-File $TextBox5.Text
@@ -778,11 +892,31 @@ $Timer1 = New-Object System.Windows.Forms.Timer($components)
 			#Hacky Convert str to bool
 			$state = if ($in[8] -eq "True") { $true } else { $false }
 			$CheckBox1.Checked = $state
+			
+			$TextBox11.Text = $in[9]
+						
+			$TextBoxPboPrefix.Text = if ($in[10]) { $in[10] } else { "x\addons" }
+			$TextBoxBISignPrefix.Text = if ($in[11]) { $in[11] } else { "epoch" }
+			
 		}
 	}
 		
 	function fnc_CreatePBO
 	{
+		#
+		$signName = ($TextBox12.Text + $TextBox13.Text)
+		$signFileName = ($signName + ".biprivatekey")
+		$signfile = Join-Path $TextBox11.Text $signFileName
+				
+		# make privatekey if it does not exist
+		if (!(Test-Path $signfile)) { 
+			$createKeyExecutable = Join-Path $TextBox11.Text "DSCreateKey.exe"
+			$argz = @($signName)												
+			Start-Process -FilePath $createKeyExecutable -WorkingDirectory $TextBox11.Text -ArgumentList $argz -WindowStyle Minimized -Wait
+			$Label4.Text = "Making Private Key... Please wait"
+			$Label4.Refresh()
+		}
+		
 		$Bob = Join-Path $TextBox3.Text "\AddonBuilder.exe"
 		$includes = "P:\includes.txt"
 		if (!(Test-Path $includes)) { "*.xml;*.pac;*.paa;*.sqf;*.sqs;*.bikb;*.fsm;*.wss;*.ogg;*.wav;*.fxy;*.csv;*.html;*.lip;*.txt;*.wrp;*.bisurf;*.rvmat;*.sqm;*.ext;*.hpp" | Out-File $includes -Encoding "UTF8"}		
@@ -816,11 +950,18 @@ $Timer1 = New-Object System.Windows.Forms.Timer($components)
 					}
 					"Client" 
 					{ 
+						$name = Join-Path $TextBoxPboPrefix.Text $name
+						$tmp = "P:\$name"
+						
 						$Output = $TextBox1.Text + "\" + $ComboBox1.SelectedItem + "\Addons"
 						if (Test-Path $tmp) { Remove-Item -Path $tmp -Recurse }														
 						Copy-Item -Path $x.subitems[1].Text -Destination $tmp -Recurse
 																		
-						$argz = @($tmp, ( '"' + $Output + '"' ), "-clear", "-prefix=$name", "-project=$tmp", "-include=$includes")
+						$signFlag = ""
+						if (Test-Path $signfile) { $signFlag = ('-sign="' + $signfile + '"') }
+							
+																		
+						$argz = @($tmp, ( '"' + $Output + '"' ), "-clear", "-prefix=$name", "-project=$tmp", "-include=$includes", $signFlag)
 												
 						Start-Process -FilePath $Bob -ArgumentList $argz -WindowStyle Minimized -Wait
 					}
@@ -857,6 +998,7 @@ $Timer1 = New-Object System.Windows.Forms.Timer($components)
 	$Button4.Add_Click({ fnc_getSetPath(4) })
 	$Button13.Add_Click({ fnc_getSetPath(5) })
 	$Button14.Add_Click({ fnc_getSetPath(6) })
+	$Button17.Add_Click({ fnc_getSetPath(7) })
 	$Button6.Add_Click({ fnc_CreatePBO })
 	
 	$Button7.Add_Click({ fnc_selectAll($true) })
@@ -897,6 +1039,14 @@ $Timer1 = New-Object System.Windows.Forms.Timer($components)
 		
 	fnc_devEnableDisable
 	fnc_reloadVersions
+		
+		
+	$signName = ($TextBox12.Text + $TextBox13.Text)
+	$signFileName = ($signName + ".biprivatekey")
+	$signfile = Join-Path $TextBox11.Text $signFileName
+	$signFlag = ""
+	if (Test-Path $signfile) { $signFlag = "-sign= '$signfile'" }
+	$Label13.Text = $signFlag;
 	
 #endregion
 
@@ -912,6 +1062,50 @@ function Main{
 #endregion
 
 #region Event Handlers
+
+function Label16Click( $object ){
+
+}
+
+function TextBox13TextChanged( $object ){
+
+}
+
+function Label15Click( $object ){
+
+}
+
+function Label14Click( $object ){
+
+}
+
+function Label13Click( $object ){
+
+}
+
+function Label6Click( $object ){
+
+}
+
+function TextBox7TextChanged( $object ){
+
+}
+
+function Label9Click( $object ){
+
+}
+
+function Label4Click( $object ){
+
+}
+
+function Label17Click( $object ){
+
+}
+
+function Label18Click( $object ){
+
+}
 
 Main # This call must remain below all other event functions
 
