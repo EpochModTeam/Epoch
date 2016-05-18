@@ -20,7 +20,7 @@ if (damage player != _damagePlayer) then {
 _energyValue = EPOCH_chargeRate min _energyRegenMax;
 _vehicle = vehicle player;
 if (_vehicle != player && isEngineOn _vehicle) then {
-		_energyValue = _energyValue + 5;
+	_energyValue = _energyValue + 5;
 };
 
 if (currentVisionMode player == 1) then { //NV enabled
@@ -45,7 +45,6 @@ if !(EPOCH_playerEnergy isEqualTo _prevEnergy) then {
 	_display3 = uiNamespace getVariable "EPOCH_EpochGameUI3";
 	_energyDiff = round(EPOCH_playerEnergy - _prevEnergy);
 	_diffText = if (_energyDiff > 0) then {format["+%1",_energyDiff]} else {format["%1",_energyDiff]};
-	// hint str [_energyValue,_prevEnergy,EPOCH_playerEnergy];
 	(_display3 displayCtrl 21210) ctrlSetText format["%1/%2 %3", round(EPOCH_playerEnergy), EPOCH_playerEnergyMax, _diffText];
 	_prevEnergy = EPOCH_playerEnergy;
 };
@@ -67,7 +66,6 @@ if !(_attackers isEqualTo[]) then {
 	(_attackers select 0) call EPOCH_client_bitePlayer;
 	_panic = true;
 } else {
-	// custom poision
 	_toxicObjs = player nearobjects["SmokeShellCustom", 6];
 	if!(_toxicObjs IsEqualTo[]) then {
 		(_toxicObjs select 0) call EPOCH_client_bitePlayer;
@@ -95,3 +93,7 @@ EPOCH_playerThirst = (EPOCH_playerThirst - _HTlossRate) max 0;
 call _lootBubble;
 
 EPOCH_playerStaminaMax = (100 * (round(EPOCH_playerAliveTime/360)/10)) min 2500;
+
+// downtick Nuisance
+(EPOCH_customVarLimits select (EPOCH_customVars find "Nuisance")) params [["_playerLimitMax",100],["_playerLimitMin",0]];
+EPOCH_playerNuisance = ((EPOCH_playerNuisance - 1) min _playerLimitMax) max _playerLimitMin;

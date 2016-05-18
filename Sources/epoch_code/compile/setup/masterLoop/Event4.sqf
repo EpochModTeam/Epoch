@@ -1,11 +1,4 @@
-_nearByBobbersLocal = [];
-_nearByBobbers = player nearEntities[["Bobber_EPOCH"], 12];
-{
-	if (local _x) then {
-		_nearByBobbersLocal pushBack _x
-	}
-} forEach _nearByBobbers;
-
+_nearByBobbersLocal = (player nearEntities[["Bobber_EPOCH"], 12]) select {local _x};
 if !(_nearByBobbersLocal isEqualTo []) then {
 	if ((random 100) < 50) then {
 		_bobber = selectRandom _nearByBobbersLocal;

@@ -54,6 +54,7 @@ EPOCH_soundLevel = 1;
 EPOCH_arr_interactedObjs = [];
 EPOCH_buildOption = 0;
 EPOCH_nearestLocations = [];
+EPOCH_lastFiredLocation = [];
 
 ["EPOCH_onEachFrame", "onEachFrame", EPOCH_onEachFrame] call BIS_fnc_addStackedEventHandler;
 

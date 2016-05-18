@@ -174,10 +174,7 @@ if (isText(_simulClassConfig)) then {
 					} forEach _snapArrayPerp;
 				};
 				if (_isSnap && _distance < 5) then {
-					_pos2 = _snapPosition;
-					if (!surfaceIsWater _pos2) then {
-						_pos2 = ATLtoASL _pos2;
-					};
+					_pos2 = AGLToASL _snapPosition;
 					_vel2 = (velocity _nearestObject);
 					_direction = getDir _nearestObject;
 					if (_snapType == "perp") then {

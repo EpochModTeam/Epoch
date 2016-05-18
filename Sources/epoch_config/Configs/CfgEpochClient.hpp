@@ -51,7 +51,8 @@ class CfgEpochClient
 		{"SpawnArray",{},{}},
 		{"Karma",0,{50000,-50000}},
 		{"Alcohol",0,{100,0}},
-		{"Radiation",0,{100,0}}
+		{"Radiation",0,{100,0}},
+		{"Nuisance",0,{100,0}}
 	};
 	// controls max group limit and cost
 	group_upgrade_lvl[] = {4,"100",6,"300",8,"500",10,"1000",12,"1500",13,"1750",14,"2000",15,"3000",16,"5000"};

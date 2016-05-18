@@ -5,18 +5,22 @@
 #    <arguments />
 #    <extractdir>%TEMP%</extractdir>
 #    <files />
-#    <usedefaulticon>true</usedefaulticon>
+#    <usedefaulticon>false</usedefaulticon>
+#    <icon>F:\ARCHIVE\Downloads\logo_only_1024.ico</icon>
 #    <showinsystray>false</showinsystray>
+#    <tooltip>Epoch Mod PBO Packer</tooltip>
 #    <altcreds>false</altcreds>
 #    <efs>true</efs>
 #    <ntfs>true</ntfs>
 #    <local>false</local>
 #    <abortonfail>true</abortonfail>
-#    <product />
+#    <product>Epoch PBO Packing Tool</product>
+#    <internalname>Epoch PBO Packing Tool </internalname>
 #    <version>1.0.0.1</version>
-#    <versionstring />
-#    <comments />
-#    <company />
+#    <versionstring>1.0</versionstring>
+#    <description>Tool to aid in the packing of Epoch Mod source files</description>
+#    <comments>By Raimonds Virtoss and Aaron Clark</comments>
+#    <company>EpochMod.com</company>
 #    <includeinterpreter>false</includeinterpreter>
 #    <forcecomregistration>false</forcecomregistration>
 #    <consolemode>false</consolemode>
@@ -65,7 +69,7 @@ $Label4.Anchor = ([System.Windows.Forms.AnchorStyles]([System.Windows.Forms.Anch
 $Label4.Location = New-Object System.Drawing.Point(12, 9)
 $Label4.Size = New-Object System.Drawing.Size(808, 18)
 $Label4.TabIndex = 1
-$Label4.Text = "Why do farts smell? So deaf people can enjoy them too."
+$Label4.Text = ""
 $Label4.TextAlign = [System.Drawing.ContentAlignment]::MiddleCenter
 $Label4.add_Click({Label4Click($Label4)})
 #~~< TabControl1 >~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -158,11 +162,25 @@ $TabPage2.Size = New-Object System.Drawing.Size(800, 503)
 $TabPage2.TabIndex = 1
 $TabPage2.Text = "Settings"
 $TabPage2.BackColor = [System.Drawing.SystemColors]::Control
+#~~< Label19 >~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+$Label19 = New-Object System.Windows.Forms.Label
+$Label19.Location = New-Object System.Drawing.Point(7, 372)
+$Label19.Size = New-Object System.Drawing.Size(145, 14)
+$Label19.TabIndex = 38
+$Label19.Text = "BIPrivatekey Location:"
+#~~< TextBox13 >~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+$TextBox13 = New-Object System.Windows.Forms.TextBox
+$TextBox13.Location = New-Object System.Drawing.Point(139, 349)
+$TextBox13.ReadOnly = $true
+$TextBox13.Size = New-Object System.Drawing.Size(96, 20)
+$TextBox13.TabIndex = 33
+$TextBox13.Text = ""
+$TextBox13.add_TextChanged({TextBox13TextChanged($TextBox13)})
 #~~< Label18 >~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 $Label18 = New-Object System.Windows.Forms.Label
-$Label18.Font = New-Object System.Drawing.Font("Microsoft Sans Serif", 14.25, [System.Drawing.FontStyle]::Bold, [System.Drawing.GraphicsUnit]::Point, ([System.Byte](0)))
-$Label18.Location = New-Object System.Drawing.Point(270, 225)
-$Label18.Size = New-Object System.Drawing.Size(179, 29)
+$Label18.Font = New-Object System.Drawing.Font("Stencil Std", 12.0, [System.Drawing.FontStyle]::Bold, [System.Drawing.GraphicsUnit]::Point, ([System.Byte](0)))
+$Label18.Location = New-Object System.Drawing.Point(6, 223)
+$Label18.Size = New-Object System.Drawing.Size(235, 29)
 $Label18.TabIndex = 37
 $Label18.Text = "Sign File Settings"
 $Label18.add_Click({Label18Click($Label18)})
@@ -171,8 +189,22 @@ $Label16 = New-Object System.Windows.Forms.Label
 $Label16.Location = New-Object System.Drawing.Point(6, 292)
 $Label16.Size = New-Object System.Drawing.Size(643, 14)
 $Label16.TabIndex = 34
-$Label16.Text = "Path to Arma 3 Tools (DSSignFile) biprivatekey:"
+$Label16.Text = "Path to Arma 3 Tools (DSCreateKey):"
 $Label16.add_Click({Label16Click($Label16)})
+#~~< Label15 >~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+$Label15 = New-Object System.Windows.Forms.Label
+$Label15.Location = New-Object System.Drawing.Point(139, 332)
+$Label15.Size = New-Object System.Drawing.Size(145, 14)
+$Label15.TabIndex = 32
+$Label15.Text = "Sign Version:"
+$Label15.add_Click({Label15Click($Label15)})
+#~~< Label13 >~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+$Label13 = New-Object System.Windows.Forms.Label
+$Label13.Location = New-Object System.Drawing.Point(6, 386)
+$Label13.Size = New-Object System.Drawing.Size(785, 15)
+$Label13.TabIndex = 29
+$Label13.Text = ""
+$Label13.add_Click({Label13Click($Label13)})
 #~~< Label17 >~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 $Label17 = New-Object System.Windows.Forms.Label
 $Label17.Location = New-Object System.Drawing.Point(6, 252)
@@ -349,8 +381,12 @@ $TextBox1.Location = New-Object System.Drawing.Point(6, 21)
 $TextBox1.Size = New-Object System.Drawing.Size(726, 20)
 $TextBox1.TabIndex = 0
 $TextBox1.Text = ""
+$TabPage2.Controls.Add($Label19)
+$TabPage2.Controls.Add($TextBox13)
 $TabPage2.Controls.Add($Label18)
 $TabPage2.Controls.Add($Label16)
+$TabPage2.Controls.Add($Label15)
+$TabPage2.Controls.Add($Label13)
 $TabPage2.Controls.Add($Label17)
 $TabPage2.Controls.Add($Button17)
 $TabPage2.Controls.Add($Label14)
@@ -385,27 +421,6 @@ $TabPage3.Size = New-Object System.Drawing.Size(800, 503)
 $TabPage3.TabIndex = 2
 $TabPage3.Text = "Developers"
 $TabPage3.BackColor = [System.Drawing.SystemColors]::Control
-#~~< TextBox13 >~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-$TextBox13 = New-Object System.Windows.Forms.TextBox
-$TextBox13.Location = New-Object System.Drawing.Point(6, 133)
-$TextBox13.Size = New-Object System.Drawing.Size(96, 20)
-$TextBox13.TabIndex = 33
-$TextBox13.Text = ""
-$TextBox13.add_TextChanged({TextBox13TextChanged($TextBox13)})
-#~~< Label15 >~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-$Label15 = New-Object System.Windows.Forms.Label
-$Label15.Location = New-Object System.Drawing.Point(6, 115)
-$Label15.Size = New-Object System.Drawing.Size(145, 14)
-$Label15.TabIndex = 32
-$Label15.Text = "Sign Version:"
-$Label15.add_Click({Label15Click($Label15)})
-#~~< Label13 >~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-$Label13 = New-Object System.Windows.Forms.Label
-$Label13.Location = New-Object System.Drawing.Point(6, 397)
-$Label13.Size = New-Object System.Drawing.Size(785, 15)
-$Label13.TabIndex = 29
-$Label13.Text = ""
-$Label13.add_Click({Label13Click($Label13)})
 #~~< Button15 >~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 $Button15 = New-Object System.Windows.Forms.Button
 $Button15.Location = New-Object System.Drawing.Point(6, 240)
@@ -503,9 +518,6 @@ $Button4.Size = New-Object System.Drawing.Size(54, 21)
 $Button4.TabIndex = 13
 $Button4.Text = "Browse"
 $Button4.UseVisualStyleBackColor = $true
-$TabPage3.Controls.Add($TextBox13)
-$TabPage3.Controls.Add($Label15)
-$TabPage3.Controls.Add($Label13)
 $TabPage3.Controls.Add($Button15)
 $TabPage3.Controls.Add($Button12)
 $TabPage3.Controls.Add($Label6)
@@ -563,6 +575,8 @@ $Timer1 = New-Object System.Windows.Forms.Timer($components)
 #region Custom Code
 	
 	# Defines
+		
+	$Label4.Text = Get-Random -InputObject "Bug? That's not a bug, that's a feature.", "A bug in the code is worth two in the documentation."
 	
 	$ListView1.CheckBoxes = $true
 	$FolderBrowserDialog1.ShowNewFolderButton = $false
@@ -694,11 +708,34 @@ $Timer1 = New-Object System.Windows.Forms.Timer($components)
 		$p6 = Join-Path $Textbox4.Text "\version.txt"
 		$p7 = Join-Path $Textbox4.Text "\build.txt"
 		$p8 = Join-Path $Textbox2.Text "\build.txt"
-		$p9 = Join-Path $Textbox4.Text "\version_int.txt"
 		$Textbox6.Text = if (Test-Path $p6) { Get-Content $p6 } else { "Path not set" }
 		$Textbox7.Text = if (Test-Path $p7) { Get-Content $p7 } else { "Path not set" }
 		$Textbox8.Text = if (Test-Path $p8) { Get-Content $p8 } else { "Path not set" }
-		$Textbox13.Text = if (Test-Path $p9) { Get-Content $p9 } else { "Path not set" }
+		$Textbox13.Text = if (Test-Path $p6) { (Get-Content $p6) -replace '[.]','' } else { "" }
+	}
+		
+	function fnc_updateBuildNumber($inpath, $outpath, $increment)
+	{
+		if ($Checkbox1.Checked)
+		{
+			$path = Join-Path $inpath "\build.txt"				
+			if (Test-Path $path)
+			{
+				$in = Get-Content $path
+													
+				$newBuild = [int]$in + $increment
+				$Out = @(
+					'build=' + [string]$newBuild + ';'
+				)
+												
+				$Out | Out-File(Join-Path $outpath "\build.hpp") -Encoding "UTF8"
+				$newBuild | Out-File $path -Encoding "UTF8"
+				if ($increment -eq 1)
+				{
+					fnc_reloadVersions
+				}
+			}
+		}
 	}
 		
 	function fnc_updateVersions
@@ -706,7 +743,6 @@ $Timer1 = New-Object System.Windows.Forms.Timer($components)
 		$p6 = Join-Path $Textbox4.Text "\version.txt"
 		$p7 = Join-Path $Textbox4.Text "\build.txt"
 		$p8 = Join-Path $Textbox2.Text "\build.txt"
-		$p9 = Join-Path $Textbox4.Text "\version_int.txt"
 				
 		if (($Textbox6.Text -ne "Path not set") -and (Test-Path $p6))
 		{
@@ -719,10 +755,6 @@ $Timer1 = New-Object System.Windows.Forms.Timer($components)
 		if (($Textbox8.Text -ne "Path not set") -and (Test-Path $p8))
 		{
 			$TextBox8.Text | Out-File $p8 -Encoding "UTF8"
-		}
-		if (($Textbox9.Text -ne "Path not set") -and (Test-Path $p9))
-		{
-			$TextBox9.Text | Out-File $p9 -Encoding "UTF8"
 		}
 	}
 	
@@ -836,21 +868,40 @@ $Timer1 = New-Object System.Windows.Forms.Timer($components)
 	function fnc_devEnableDisable
 	{
 		$cbstate = $CheckBox1.Checked
-						
+										
 		$TextBox4.Enabled = $cbstate
 		$TextBox6.Enabled = $cbstate
 		$TextBox7.Enabled = $cbstate
 		$TextBox8.Enabled = $cbstate
-		$TextBox13.Enabled = $cbstate
+		$TextBox13.Enabled = $cbstate			
+		$TextBox11.Enabled = $cbstate
+		$TextBoxPboPrefix.Enabled = $cbstate
+		$TextBoxBISignPrefix.Enabled = $cbstate
 						
 		$Button4.Enabled = $cbstate
 		$Button15.Enabled = $cbstate
 		$Button12.Enabled = $cbstate
-				
+		$Button17.Enabled = $cbstate
+								
 		$ComboBox1.Enabled = $cbstate
-		
+						
 		$ListView1.Items.Clear()
 		fnc_populateListView
+	}
+	
+	function fnc_outputmodcpp
+	{
+		$Output = Join-Path $TextBox1.Text $ComboBox1.SelectedItem
+		$Out = @(					
+			'dir = "@Epoch";'
+			'name = "Epoch Mod ' + $Textbox6.Text + '";'
+			'actionName = "Website";'
+			'picture = "mod.paa";'
+			'action = "http://www.epochmod.com";'
+			'overview = "Open world survival mod set in the year 2035, Just two years after the mass extinction of billions of people. Those that remain are left with remnants of a once technological society. Try to survive, build, or explore your way through the harsh dynamic environment.";'
+		)
+		
+		$Out | Out-File (Join-Path $Output "mod.cpp")
 	}
 		
 	function fnc_settingsSave
@@ -903,19 +954,28 @@ $Timer1 = New-Object System.Windows.Forms.Timer($components)
 		
 	function fnc_CreatePBO
 	{
+		
 		#
-		$signName = ($TextBox12.Text + $TextBox13.Text)
+		$signName = ($TextBoxBISignPrefix.Text + $TextBox13.Text)
 		$signFileName = ($signName + ".biprivatekey")
 		$signfile = Join-Path $TextBox11.Text $signFileName
 				
 		# make privatekey if it does not exist
-		if (!(Test-Path $signfile)) { 
+		if (!(Test-Path $signfile))
+		{ 
 			$createKeyExecutable = Join-Path $TextBox11.Text "DSCreateKey.exe"
 			$argz = @($signName)												
 			Start-Process -FilePath $createKeyExecutable -WorkingDirectory $TextBox11.Text -ArgumentList $argz -WindowStyle Minimized -Wait
 			$Label4.Text = "Making Private Key... Please wait"
 			$Label4.Refresh()
 		}
+				
+		fnc_outputmodcpp				
+		# increase build numbers
+				
+		$incrementClientBuild = 1
+		$incrementServerBuild = 1
+		
 		
 		$Bob = Join-Path $TextBox3.Text "\AddonBuilder.exe"
 		$includes = "P:\includes.txt"
@@ -943,33 +1003,47 @@ $Timer1 = New-Object System.Windows.Forms.Timer($components)
 						$Output = $TextBox10.Text
 						if (Test-Path $tmp) { Remove-Item -Path $tmp -Recurse }														
 						Copy-Item -Path $x.subitems[1].Text -Destination $tmp -Recurse
+												
+						fnc_updateBuildNumber $TextBox2.Text ($x.subitems[1].Text) $incrementServerBuild
+						$incrementServerBuild = 0
 																		
-						$argz = @($tmp, ( '"' + $Output + '"' ), "-packonly", "-clear", "-prefix=$name", "-project=$tmp", "-include=$includes")
-																		
+						$argz = @($tmp, ( '"' + $Output + '"' ), "-packonly", "-clear", "-prefix=$name", "-project=P:\", "-include=$includes")
+												
+						$Label4.Text = "Building Server PBO (" + $x.subitems[0].Text + ".pbo) ... Please wait"
+						$Label4.Refresh()
+						
 						Start-Process -FilePath $Bob -ArgumentList $argz -WindowStyle Minimized -Wait
 					}
 					"Client" 
 					{ 
 						$name = Join-Path $TextBoxPboPrefix.Text $name
-						$tmp = "P:\$name"
+						$tmp = "P:\$name"						
 						
+						fnc_updateBuildNumber $TextBox4.Text ($x.subitems[1].Text) $incrementClientBuild
+						$incrementClientBuild = 0
+												
 						$Output = $TextBox1.Text + "\" + $ComboBox1.SelectedItem + "\Addons"
 						if (Test-Path $tmp) { Remove-Item -Path $tmp -Recurse }														
 						Copy-Item -Path $x.subitems[1].Text -Destination $tmp -Recurse
 																		
 						$signFlag = ""
 						if (Test-Path $signfile) { $signFlag = ('-sign="' + $signfile + '"') }
-							
 																		
-						$argz = @($tmp, ( '"' + $Output + '"' ), "-clear", "-prefix=$name", "-project=$tmp", "-include=$includes", $signFlag)
+						$argz = @($tmp, ( '"' + $Output + '"' ), "-clear", "-prefix=$name", "-project=P:\", "-include=$includes", $signFlag)
 												
+						$Label4.Text = "Building Client PBO (" + $x.subitems[0].Text +  ".pbo) ... Please wait"
+						$Label4.Refresh()
+						
 						Start-Process -FilePath $Bob -ArgumentList $argz -WindowStyle Minimized -Wait
 					}
 					"Missions" 
 					{
 						$Output = $TextBox9.Text
 						$src = $TextBox2.Text + "\Sources\"
-																		
+												
+						fnc_updateBuildNumber $TextBox2.Text ($src + "epoch_config") $incrementServerBuild
+						$incrementServerBuild = 0
+						
 						if (Test-Path $tmp) { Remove-Item -Path $tmp -Recurse }
 						Copy-Item -Path $x.subitems[1].Text -Destination $tmp -Recurse
 						Copy-Item($src + "epoch_code") -Destination $tmp -Recurse
@@ -977,7 +1051,10 @@ $Timer1 = New-Object System.Windows.Forms.Timer($components)
 						Copy-Item($src + "description.ext") -Destination $tmp
 																		
 						$argz = @($tmp, ( '"' + $Output + '"' ), "-clear", "-prefix=\", "-project=P:\", "-include=$includes")
-																								
+												
+						$Label4.Text = "Building MPMission PBO (" + $x.subitems[0].Text + ".pbo) ... Please wait"
+						$Label4.Refresh()
+						
 						Start-Process -FilePath $Bob -ArgumentList $argz -WindowStyle Minimized -Wait
 					}
 				}
@@ -1041,12 +1118,20 @@ $Timer1 = New-Object System.Windows.Forms.Timer($components)
 	fnc_reloadVersions
 		
 		
-	$signName = ($TextBox12.Text + $TextBox13.Text)
+	$signName = ($TextBoxBISignPrefix.Text + $TextBox13.Text)
 	$signFileName = ($signName + ".biprivatekey")
 	$signfile = Join-Path $TextBox11.Text $signFileName
 	$signFlag = ""
-	if (Test-Path $signfile) { $signFlag = "-sign= '$signfile'" }
-	$Label13.Text = $signFlag;
+	if (Test-Path $signfile) { 
+		$Label13.Text = $signfile
+		$signFlag = ('-sign="' + $signfile + '"') 
+	}
+	else
+	{
+		$Label13.Text = "Path Not Found!"
+	}
+	
+		
 	
 #endregion
 
@@ -1114,8 +1199,9 @@ Main # This call must remain below all other event functions
 #
 # 	Script Information
 #
-#	Title:					Epoch PBO Packing Tool
+#	Title:					Epoch PBO Packing Tool - EpochMod.com
 #	Author:					Raimonds Virtoss - Raymix @ Epoch UI code
+#  Contributors: 			Aaron Clark - [VB]AWOL
 #	Originally created:	4/24/2016 - 17:56:19
 #	Description:			Form based (GUI) Tool to Pack or binarize Epoch PBOs. Scans your github repos and automatically creates a list of relevant folders for packaging
 #	Usage:					.EXE file will be provided when script is done, for now simply right click it and run with powershell.
