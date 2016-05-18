@@ -669,6 +669,7 @@ $Timer1 = New-Object System.Windows.Forms.Timer($components)
 		$c1 = Test-Path (Join-Path $TextBox1.Text "\Arma3.exe")
 		$c2 = Test-Path (Join-Path $TextBox2.Text "\Sources")
 		$c3 = Test-Path (Join-Path $TextBox3.Text "\AddonBuilder.exe") -ErrorAction SilentlyContinue
+		$c4 = Test-Path (Join-Path $TextBox4.Text "\Sources")
 		$c5 = Test-Path "P:\"
 
 		if ($c1 -and $c2 -and $c3 -and $c5)
@@ -804,7 +805,7 @@ $Timer1 = New-Object System.Windows.Forms.Timer($components)
 				4 # Location of Private Github
 				{ 
 					$TextBox4.Text = $p
-					$tp = Join-Path $p "\Source_CC_BY-NC-ND"
+					$tp = Join-Path $p "\Sources"
 					if (!(Test-Path $tp))
 					{
 						[System.Windows.Forms.MessageBox]::Show(($tp + " Not found."), "Warning")
