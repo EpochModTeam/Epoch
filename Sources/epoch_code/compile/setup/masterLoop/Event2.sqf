@@ -61,7 +61,7 @@ if (EPOCH_playerEnergy == 0) then {
 	};
 };
 
-_attackers = player nearEntities[["Snake_random_EPOCH", "GreatWhite_F", "Epoch_Cloak_F"], 30];
+_attackers = player nearEntities[["Snake_random_EPOCH", "GreatWhite_F", "Epoch_Cloak_F","EPOCH_RyanZombie_1"], 30];
 if !(_attackers isEqualTo[]) then {
 	(_attackers select 0) call EPOCH_client_bitePlayer;
 	_panic = true;

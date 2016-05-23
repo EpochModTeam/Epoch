@@ -54,16 +54,11 @@ if (isNil "_instanceID") exitWith{
 
 EPOCH_modCUPWeaponsEnabled = (getNumber (configFile >> "CfgPatches" >> "CUP_WheeledVehicles_Core" >> "requiredVersion") > 0);
 EPOCH_modCUPVehiclesEnabled = (getNumber (configFile >> "CfgPatches" >> "CUP_Weapons_WeaponsCore" >> "requiredVersion") > 0);
-EPOCH_mod_Ryanzombies_Enabled = (parseNumber (getText (configFile >> "CfgPatches" >> "Ryanzombies" >> "version")) >= 4.2);
-
 if (EPOCH_modCUPWeaponsEnabled) then {
     diag_log "Epoch: CUP Weapons detected";
 };
 if (EPOCH_modCUPVehiclesEnabled) then {
     diag_log "Epoch: CUP Vehicles detected";
-};
-if (EPOCH_mod_Ryanzombies_Enabled) then {
-    diag_log "Epoch: Ryanzombies detected";
 };
 
 diag_log "Epoch: Init Variables";

@@ -24,7 +24,8 @@ if(random 100 < 6)then{
 if(_doVariable)then{_unitClass call EPOCH_unitSpawnIncrease;};//Assumes Antagonist is required.
 
 _index = EPOCH_spawnIndex find _unitClass;
-if (!_doVariable && (count(_trgt nearEntities[_unitClass, 800]) >= (EPOCH_playerSpawnArray select _index))) exitWith{};
+_spawnLimit = EPOCH_playerSpawnArray select _index;
+if (!_doVariable && (count(_trgt nearEntities[_unitClass, 800]) >= _spawnLimit)) exitWith{};
 
 _nonJammer = ["CfgEpochClient", "nonJammerAI", ["B_Heli_Transport_01_F","PHANTOM","Epoch_Cloak_F"]] call EPOCH_fnc_returnConfigEntryV2;
 _nonTrader = ["CfgEpochClient", "nonTraderAI", ["B_Heli_Transport_01_F","PHANTOM","Epoch_Cloak_F","GreatWhite_F"]] call EPOCH_fnc_returnConfigEntryV2;
@@ -113,13 +114,31 @@ switch _unitClass do {
 	case "B_Heli_Transport_01_F": {
 		[] execFSM "\x\addons\a3_epoch_code\System\Event_Air_Drop.fsm";
 	};
+	case "EPOCH_RyanZombie_1": {
+		_hordeTypes = ["EPOCH_RyanZombie_1","EPOCH_RyanZombie_2","EPOCH_RyanZombie_3","EPOCH_RyanZombie_4","EPOCH_RyanZombie_5"];
+		_unitClass = selectRandom _hordeTypes;
+
+		diag_log format["DEBUG: spawned %1",_unitClass];
+		_unit = createAgent[_unitClass, _targetPos, [], 256, "FORM"];
+		_unit call _disableAI;
+
+		// climb out of ground
+		_unit switchMove "AmovPercMstpSnonWnonDnon_SaluteOut";
+		_unit setmimic "dead";
+
+		// load temp brains
+		[_unit,true] execFSM "\x\addons\a3_epoch_code\System\Zombie_Brain.fsm";
+
+		// spawn more up to limit
+		_id = "EPOCH_RyanZombie_1" spawn EPOCH_unitSpawn;
+	};
 };
 
 if(_doVariable && (!isNull _unit) && (!isNull _trgt))then{
-_trgt setVariable ["EPOCH_antagObj", _unit, true];
-if!(isNull _bomb)then{
-_trgt setVariable ["EPOCH_antagBomb", _bomb, true];
-};
+	_trgt setVariable ["EPOCH_antagObj", _unit, true];
+	if!(isNull _bomb)then{
+		_trgt setVariable ["EPOCH_antagBomb", _bomb, true];
+	};
 };
 if !(isNull _unit) then {
 	// send to server

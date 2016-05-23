@@ -13,6 +13,13 @@
     https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_code/init/both_init.sqf
 */
 private ["_customVarsInit","_antagonistSpawnDefaults","_spawnLimits","_say3dsounds"];
+
+// detect if Ryan's Zombies and Deamons mod is present
+EPOCH_mod_Ryanzombies_Enabled = (parseNumber (getText (configFile >> "CfgPatches" >> "Ryanzombies" >> "version")) >= 4.2);
+if (EPOCH_mod_Ryanzombies_Enabled) then {
+    diag_log "Epoch: Ryanzombies detected";
+};
+
 // Init Custom vars
 EPOCH_customVars = [];
 EPOCH_defaultVars = [];
@@ -34,7 +41,8 @@ EPOCH_customVarsDefaults = [
 	["SpawnArray",[],[]],
 	["Karma",0,[50000,-50000]],
 	["Alcohol",0,[100,0]],
-	["Radiation",0,[100,0]]
+	["Radiation",0,[100,0]],
+	["Nuisance",0,[100,0]]
 ];
 _customVarsInit = ["CfgEpochClient", "customVarsDefaults", EPOCH_customVarsDefaults] call EPOCH_fnc_returnConfigEntryV2;
 {
@@ -54,12 +62,21 @@ _antagonistSpawnDefaults = [
 	["Epoch_SapperB_F",1],
 	["I_UAV_01_F",2],
 	["PHANTOM",1],
-	["B_Heli_Transport_01_F",1]
+	["B_Heli_Transport_01_F",1],
+	["EPOCH_RyanZombie_1",10]
 ];
 _spawnLimits = ["CfgEpochClient", "antagonistSpawnIndex", _antagonistSpawnDefaults] call EPOCH_fnc_returnConfigEntryV2;
 {
-	EPOCH_spawnIndex pushBack (_x select 0);
-	EPOCH_spawnLimits pushBack (_x select 1);
+	_x params ["_spawnName","_spawnLimit"];
+	if (_spawnName isEqualTo "EPOCH_RyanZombie_1") then {
+		if (EPOCH_mod_Ryanzombies_Enabled) then {
+			EPOCH_spawnIndex pushBack _spawnName;
+			EPOCH_spawnLimits pushBack _spawnLimit;
+		};
+	} else {
+		EPOCH_spawnIndex pushBack _spawnName;
+		EPOCH_spawnLimits pushBack _spawnLimit;
+	};
 } forEach _spawnLimits;
 
 //GroupSize (number) // Price (String)

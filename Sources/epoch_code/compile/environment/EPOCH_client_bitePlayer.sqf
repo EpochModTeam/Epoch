@@ -13,15 +13,15 @@
     https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_code/compile/environment/EPOCH_client_bitePlayer.sqf
 
     Example:
-    [cursorTarget,_index] call EPOCH_upgradeBUILD;
+    _dog call EPOCH_client_bitePlayer;
 
     Parameter(s):
-		_this: OBJECT - Player
+		_this: OBJECT - attacker
 
 	Returns:
 	NOTHING
 */
-private ["_distance","_toxicChance","_bloodpChance","_fatigueChance","_bleedAmount","_bloodpAmount","_soundEffect","_canSee","_ppEffect","_bleedChance","_soundEffectIndex","_soundEffectGlobal"];
+private ["_distance","_toxicChance","_bloodpChance","_fatigueChance","_bleedAmount","_bloodpAmount","_soundEffect","_canSee","_ppEffect","_bleedChance","_soundEffectIndex","_soundEffectGlobal","_animationEffect","_animationEffectGlobal","_cfgObjectInteraction"];
 if !(isNull _this && alive _this) then {
 
 	_distance = 5;
@@ -29,81 +29,48 @@ if !(isNull _this && alive _this) then {
 	_bleedChance = 1;
 	_bloodpChance = 0;
 	_fatigueChance = 0.1;
-
 	_bleedAmount = 30;
 	_bloodpAmount = 2;
-
-	_soundEffect = -1;
-	_soundEffectGlobal = false;
+	_soundEffect = "";
+	_soundEffectGlobal = -1;
+	_animationEffect = "";
+	_animationEffectGlobal = -1;
 	_canSee = false;
 	_ppEffect = 0;
 
-	switch (typeOf _this) do {
-		case "Snake_random_EPOCH": {
-			_distance = 3;
-			_toxicChance = 0.2;
-			_bloodpChance = 1;
-			_fatigueChance = 0.5;
-			_bleedAmount = 30;
-			_bloodpAmount = 3;
-			_soundEffect = "snake_bite0";
-			_canSee = !(lineIntersects[eyePos _this, aimPos player, _this, player]);
-			_ppEffect = 0;
-		};
-		case "Snake2_random_EPOCH": {
-			_distance = 3;
-			_toxicChance = 0.1;
-			_bloodpChance = 1;
-			_fatigueChance = 0.5;
-			_bleedAmount = 30;
-			_bloodpAmount = 3;
-			_soundEffect = "snake_bite0";
-			_canSee = !(lineIntersects[eyePos _this, aimPos player, _this, player]);
-			_ppEffect = 0;
-		};
-		case "GreatWhite_F": {
-			_distance = 6;
-			_toxicChance = 0;
-			_bleedChance = 1;
-			_bloodpChance = 1;
-			_fatigueChance = 1;
-			_bleedAmount = 100;
-			_bloodpAmount = 3;
-			_canSee = true;
-			_ppEffect = 0;
-		};
-		case "SmokeShellCustom": {
-			_distance = 6;
-			_toxicChance = 1;
-			_bleedChance = 0;
-			_bloodpChance = 1;
-			_fatigueChance = 1;
-			_bleedAmount = 0;
-			_bloodpAmount = 3;
-			_canSee = true;
-			_ppEffect = 0;
-		};
-		case "Epoch_Cloak_F": {
-			_distance = 30;
-			_toxicChance = 0;
-			_bloodpChance = 0.9;
-			_fatigueChance = 0.5;
-			_bleedAmount = 66;
-			_bloodpAmount = 3;
-			_soundEffect = "cultist_nearby";
-			_canSee = !(lineIntersects[eyePos _this, aimPos player, _this, player]);
-			_ppEffect = 1;
-		};
+	_cfgObjectInteraction = (('CfgObjectInteractions' call EPOCH_returnConfig) >> (typeOf _this));
+	if (isClass _cfgObjectInteraction) then {
+		_distance = getNumber (_cfgObjectInteraction >> "distance");
+		_toxicChance = getNumber (_cfgObjectInteraction >> "toxicChance");
+		_bloodpChance = getNumber (_cfgObjectInteraction >> "bloodpChance");
+		_fatigueChance = getNumber (_cfgObjectInteraction >> "fatigueChance");
+		_bleedAmount = getNumber (_cfgObjectInteraction >> "bleedAmount");
+		_bloodpAmount = getNumber (_cfgObjectInteraction >> "bloodpAmount");
+		_soundEffect = selectRandom (getArray (_cfgObjectInteraction >> "soundEffect"));
+		_soundEffectGlobal = getNumber (_cfgObjectInteraction >> "soundEffectGlobal");
+		_animationEffect = selectRandom (getArray (_cfgObjectInteraction >> "animationEffect"));
+		_animationEffectGlobal = getNumber (_cfgObjectInteraction >> "animationEffectGlobal");
+		_canSee = call compile (getText (_cfgObjectInteraction >> "canSee"));
+		_ppEffect = getNumber (_cfgObjectInteraction >> "ppEffect");
 	};
 
 	if ((_this distance player) < _distance && _canSee) then {
+
 		_soundEffectIndex = EPOCH_sounds find _soundEffect;
 		if (_soundEffectIndex != -1) then {
 			_this say3D _soundEffect;
-			if (_soundEffectGlobal) then {
+			if (_soundEffectGlobal != -1) then {
 				[player, _this, _soundEffectIndex, Epoch_personalToken] remoteExec ["EPOCH_server_handle_say3D",2];
 			};
 		};
+
+		if (_animationEffect != "") then {
+			_this switchMove _animationEffect;
+			if (_animationEffectGlobal != -1) then {
+				[[_this,player], _animationEffectGlobal, Epoch_personalToken] remoteExec ["EPOCH_server_handle_switchMove",2];
+			};
+		};
+
 		if (random 1 < _toxicChance) then {
 			EPOCH_playerToxicity = (EPOCH_playerToxicity + (random(100 - EPOCH_playerImmunity))) min 100;
 		};

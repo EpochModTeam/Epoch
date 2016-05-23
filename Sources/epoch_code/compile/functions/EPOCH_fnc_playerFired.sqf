@@ -108,10 +108,6 @@ switch true do {
 		if (((player weaponAccessories _muzzle) select 0) != "") then{
 			_nuisanceLevel = _nuisanceLevel / 2;
 		};
-		// force spawn increase once player has become a Nuisance
-		if (EPOCH_playerNuisance >= 50 && {random EPOCH_droneRndChance < EPOCH_playerNuisance}) then{
-			(selectRandom ["I_UAV_01_F","Epoch_Sapper_F"]) call EPOCH_unitSpawnIncrease;
-		};
 		// Nuisance System 0.1
 		(EPOCH_customVarLimits select (EPOCH_customVars find "Nuisance")) params [["_playerLimitMax",100],["_playerLimitMin",0]];
 		EPOCH_playerNuisance = ((EPOCH_playerNuisance + _nuisanceLevel) min _playerLimitMax) max _playerLimitMin;

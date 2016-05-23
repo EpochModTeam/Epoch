@@ -37,5 +37,8 @@ if (!isNull _target) then {
 		case "PHANTOM": {
 			"PHANTOM" remoteExec ['EPOCH_unitSpawnIncrease',_target];
 		};
+		case "EPOCH_RyanZombie_1": {
+			"EPOCH_RyanZombie_1" remoteExec ['EPOCH_unitSpawnIncrease',_target];
+		};
 	};
 };
