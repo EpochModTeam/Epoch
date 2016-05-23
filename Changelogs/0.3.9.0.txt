@@ -1,8 +1,10 @@
+[Added] (Optional) Support for Ryan's Zombies and Demons mod: http://steamcommunity.com/sharedfiles/filedetails/?id=501966277 with custom Epoch implementation.
+[Added] New custom variable EPOCH_playerNuisance that increases based on the type of weapon fired and decreases at a rate of 1 per 10 seconds. This is used to track how active a shooter the player is.
 [Added] Player option to Morph into a random antagonist (from deathMorphClass) after death. The array 'deathMorphClass' found in CfgEpochClient can be used to specify what antagonists to randomly spawn.
 [Added] Player option to detonate body after death. Sacrifice yourself by generating a runaway thermal cascade using the nano bots within your body. Nothing left to revive.
-
-[Changed] Moved all Base Building variables to gamemode config 'CfgObjectInteractions'.
-[Changed] Moved all Item Interaction to gamemode config 'CfgItemInteractions'.
+[Changed] Object Interaction and EPOCH_client_bitePlayer settings in now config CfgObjectInteractions.
+[Changed] Moved all Base Building variables to gamemode config CfgBaseBuilding.
+[Changed] Moved all Item Interaction to new gamemode config CfgItemInteractions.
 [Changed] Sapper groan or detonate can be triggered by setting a variable on the target or sapper.
 [Changed] Server can be asked by a client / server to trigger an antagonist on another client. Antagonist is then run on target PC, independent from caller of function.
 [Changed] Epoch Unit Spawn code. Now can be called specifying the target of the antagonist. Antagonist will run on target client PC.
@@ -17,15 +19,20 @@ unitTypes - an array of soldier classes to randomly choose from. Custom weapons 
 maxUnitNum - Maximum number of units to spawn per UAV.
 minAISkill - Minimum value for any AI skill.
 maxAimingAccuracy -> maxGeneral - Set the maximum value for each available AI skill. A random number between minAISkill and the value for each will be set as that skill.
-
+[Fixed] Issue with animals not returning raw meat.
 [Fixed] Getting wet and cold on standing on pier. Thanks to umfufu for the report! http://epochmod.com/forum/topic/41929-getting-10-points-of-wetness/
 [Fixed] Missing texture issues with some base building objects since 0.3.8.
-[Info] A big thanks to Isaac, Axeman's chief tester.
+[Info] A big thanks to Isaac, Axeman's chief tester!
 
 **Server Only**
+[Added] Function to effect a players Crypto server side:
+- [_player,100] call EPOCH_server_effectCrypto; // adds 100
+- [_player,-100] call EPOCH_server_effectCrypto; // removes 100
+[Added] New experimental PBO packing tool found in Epoch/Tools/PowerShell/
 [Added] Server function to allow remote exec of setVariable on client - Allows client to ask another client to set a local variable, via the server. Server can run same function.
-[Changed] Epoch Events can now self initialize.
-[Info] Changed name of a3_epoch_server.pbo to epoch_server.pbo.
+[Changed] ForceRestart option should now restart as soon as all players disconnect and server is locked.
+[Changed] Epoch Events can now self initialize on server startup (if third events[] array element is 1). Fixes issue with weather not changing till first event run.
+[Info] Changed name of a3_epoch_server.pbo to epoch_server.pbo. Also changed path from \x\addons\a3_epoch_server to \epoch_server
 [Info] Changed name of a3_epoch_server_settings.pbo to epoch_server_settings.pbo.
 [Info] RConPort 2306 added to example-beserver.cfg for changes since A3 1.58.
 [Info] Removed old .bikey and added new one for 0390.

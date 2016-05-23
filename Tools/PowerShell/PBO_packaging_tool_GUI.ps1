@@ -967,7 +967,7 @@ $FolderBrowserDialog1 = New-Object System.Windows.Forms.FolderBrowserDialog
 		{ 
 			$createKeyExecutable = Join-Path $TextBox11.Text "DSCreateKey.exe"
 			$argz = @($signName)												
-			Start-Process -FilePath $createKeyExecutable -WorkingDirectory $TextBox11.Text -ArgumentList $argz -WindowStyle Minimized -Wait
+			Start-Process -FilePath $createKeyExecutable -WorkingDirectory $TextBox11.Text -ArgumentList $argz -WindowStyle Hidden -Wait
 			$Label4.Text = "Making Private Key... Please wait"
 			$Label4.Refresh()
 		}
@@ -1014,7 +1014,7 @@ $FolderBrowserDialog1 = New-Object System.Windows.Forms.FolderBrowserDialog
 						$Label4.Text = "Building Server PBO (" + $x.subitems[0].Text + ".pbo) ... Please wait"
 						$Label4.Refresh()
 						
-						Start-Process -FilePath $Bob -ArgumentList $argz -WindowStyle Minimized -Wait
+						Start-Process -FilePath $Bob -ArgumentList $argz -WindowStyle Hidden -Wait
 					}
 					"Client" 
 					{ 
@@ -1036,7 +1036,7 @@ $FolderBrowserDialog1 = New-Object System.Windows.Forms.FolderBrowserDialog
 						$Label4.Text = "Building Client PBO (" + $x.subitems[0].Text +  ".pbo) ... Please wait"
 						$Label4.Refresh()
 						
-						Start-Process -FilePath $Bob -ArgumentList $argz -WindowStyle Minimized -Wait
+						Start-Process -FilePath $Bob -ArgumentList $argz -WindowStyle Hidden -Wait
 					}
 					"Missions" 
 					{
@@ -1057,7 +1057,7 @@ $FolderBrowserDialog1 = New-Object System.Windows.Forms.FolderBrowserDialog
 						$Label4.Text = "Building MPMission PBO (" + $x.subitems[0].Text + ".pbo) ... Please wait"
 						$Label4.Refresh()
 						
-						Start-Process -FilePath $Bob -ArgumentList $argz -WindowStyle Minimized -Wait
+						Start-Process -FilePath $Bob -ArgumentList $argz -WindowStyle Hidden -Wait
 					}
 				}
 				#cleanup
