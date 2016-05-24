@@ -1,6 +1,19 @@
 class CfgObjectInteractions {
     class Default {
         interactMode = 0;
+        distance = 0;
+    	toxicChance = 0;
+    	bleedChance = 0;
+    	bloodpChance = 0;
+    	fatigueChance = 0;
+    	bleedAmount = 0;
+    	bloodpAmount = 0;
+    	soundEffect[] = {};
+    	soundEffectGlobal = -1;
+    	animationEffect[] = {};
+    	animationEffectGlobal = -1;
+    	canSee = "false";
+    	ppEffect = 0;
     };
     class Land_MPS_EPOCH : Default {};
     class container_epoch : Default {};
@@ -16,7 +29,13 @@ class CfgObjectInteractions {
     class C_man_1 : Default {
         interactMode = 2;
     };
-
+    class SapperHead_SIM_EPOCH : Default {
+        interactMode = 0;
+    };
+    class SapperCorpse_SIM_EPOCH : Default {
+        interactMode = 0;
+    };
+    
     class Snake_random_EPOCH : Default {
         distance = 3;
         toxicChance = 0.2;

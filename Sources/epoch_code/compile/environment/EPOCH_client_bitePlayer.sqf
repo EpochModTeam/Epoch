@@ -46,9 +46,15 @@ if !(isNull _this && alive _this) then {
 		_fatigueChance = getNumber (_cfgObjectInteraction >> "fatigueChance");
 		_bleedAmount = getNumber (_cfgObjectInteraction >> "bleedAmount");
 		_bloodpAmount = getNumber (_cfgObjectInteraction >> "bloodpAmount");
-		_soundEffect = selectRandom (getArray (_cfgObjectInteraction >> "soundEffect"));
+		_soundConfigArray = getArray (_cfgObjectInteraction >> "soundEffect");
+		if !(_animConfigArray isEqualTo []) then {
+			_soundEffect = selectRandom _soundConfigArray;
+		};
 		_soundEffectGlobal = getNumber (_cfgObjectInteraction >> "soundEffectGlobal");
-		_animationEffect = selectRandom (getArray (_cfgObjectInteraction >> "animationEffect"));
+		_animConfigArray = getArray (_cfgObjectInteraction >> "animationEffect");
+		if !(_animConfigArray isEqualTo []) then {
+			_animationEffect = selectRandom _animConfigArray;
+		};
 		_animationEffectGlobal = getNumber (_cfgObjectInteraction >> "animationEffectGlobal");
 		_canSee = call compile (getText (_cfgObjectInteraction >> "canSee"));
 		_ppEffect = getNumber (_cfgObjectInteraction >> "ppEffect");
