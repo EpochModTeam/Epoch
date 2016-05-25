@@ -145,6 +145,10 @@ class CfgItemInteractions {
 	{
 		interactAttributes[] = { 0, 5000, 0, 0, 0, 0, 0, 0, 0, 0 };
 	};
+	class WhiskeyNoodle : Drink_base
+	{
+		interactAttributes[] = { 0, 0, 800, 0, 0, 0, -5, 50, 0, 0, 0 , 10 , 0};
+	};
 	class water_epoch : Drink_Jar_base
 	{
 		interactAttributes[] = { 0, 0, 500, 0, 0, 0, 5, 50, 0, 0 };
