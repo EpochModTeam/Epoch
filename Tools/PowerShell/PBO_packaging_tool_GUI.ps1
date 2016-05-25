@@ -1008,6 +1008,8 @@ $FolderBrowserDialog1 = New-Object System.Windows.Forms.FolderBrowserDialog
 												
 						fnc_updateBuildNumber $TextBox2.Text ($x.subitems[1].Text) $incrementServerBuild
 						$incrementServerBuild = 0
+												
+						tree /A /F $tmp > (Join-Path $x.subitems[1].Text "treeView.txt") 
 																		
 						$argz = @($tmp, ( '"' + $Output + '"' ), "-packonly", "-clear", "-prefix=$name", "-project=P:\", "-include=$includes")
 												
@@ -1027,6 +1029,8 @@ $FolderBrowserDialog1 = New-Object System.Windows.Forms.FolderBrowserDialog
 						$Output = $TextBox1.Text + "\" + $ComboBox1.SelectedItem + "\Addons"
 						if (Test-Path $tmp) { Remove-Item -Path $tmp -Recurse }														
 						Copy-Item -Path $x.subitems[1].Text -Destination $tmp -Recurse
+												
+						tree /A /F $tmp > (Join-Path $x.subitems[1].Text "treeView.txt") 
 																		
 						$signFlag = ""
 						if (Test-Path $signfile) { $signFlag = ('-sign="' + $signfile + '"') }
@@ -1051,6 +1055,8 @@ $FolderBrowserDialog1 = New-Object System.Windows.Forms.FolderBrowserDialog
 						Copy-Item($src + "epoch_code") -Destination $tmp -Recurse
 						Copy-Item($src + "epoch_config") -Destination $tmp -Recurse
 						Copy-Item($src + "description.ext") -Destination $tmp
+												
+						tree /A /F $tmp > (Join-Path ($src + "mpmissions") "treeView.txt") 
 																		
 						$argz = @($tmp, ( '"' + $Output + '"' ), "-clear", "-prefix=\", "-project=P:\", "-include=$includes")
 												
@@ -1065,6 +1071,10 @@ $FolderBrowserDialog1 = New-Object System.Windows.Forms.FolderBrowserDialog
 				if (Test-Path($env:temp + "\" + $name)) { Remove-Item -Path($env:temp + "\" + $name) -Recurse }
 			}
 		}
+		#make tree view from 
+		
+				
+		#end
 		$ProgressBar1.Value = 0
 		$ProgressBar1.Refresh()
 	}
