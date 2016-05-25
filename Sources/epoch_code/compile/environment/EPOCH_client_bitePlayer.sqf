@@ -47,7 +47,7 @@ if !(isNull _this && alive _this) then {
 		_bleedAmount = getNumber (_cfgObjectInteraction >> "bleedAmount");
 		_bloodpAmount = getNumber (_cfgObjectInteraction >> "bloodpAmount");
 		_soundConfigArray = getArray (_cfgObjectInteraction >> "soundEffect");
-		if !(_animConfigArray isEqualTo []) then {
+		if !(_soundConfigArray isEqualTo []) then {
 			_soundEffect = selectRandom _soundConfigArray;
 		};
 		_soundEffectGlobal = getNumber (_cfgObjectInteraction >> "soundEffectGlobal");
