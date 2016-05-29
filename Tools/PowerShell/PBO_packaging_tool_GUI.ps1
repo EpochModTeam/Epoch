@@ -573,7 +573,7 @@ $FolderBrowserDialog1 = New-Object System.Windows.Forms.FolderBrowserDialog
 #endregion
 
 #region Custom Code
-	
+
 	# Defines
 		
 	$Label4.Text = Get-Random -InputObject "Bug? That's not a bug, that's a feature.", "A bug in the code is worth two in the documentation."
@@ -931,8 +931,9 @@ $FolderBrowserDialog1 = New-Object System.Windows.Forms.FolderBrowserDialog
 	{
 		if (Test-Path $TextBox5.Text)
 		{
+			Write-Host @("Loading application settings from:", $TextBox5.Text) -BackgroundColor darkcyan -ForegroundColor cyan
 			$in = Get-Content $TextBox5.Text
-										
+																
 			$ComboBox1.SelectedIndex = $in[0]
 			$TextBox1.Text = $in[1]
 			$TextBox3.Text = $in[2]
@@ -941,16 +942,20 @@ $FolderBrowserDialog1 = New-Object System.Windows.Forms.FolderBrowserDialog
 			$TextBox1.Text = $in[5]
 			$TextBox10.Text = $in[6]
 			$TextBox4.Text = $in[7]
-						
+												
 			#Hacky Convert str to bool
 			$state = if ($in[8] -eq "True") { $true } else { $false }
 			$CheckBox1.Checked = $state
-			
+									
 			$TextBox11.Text = $in[9]
-						
+												
 			$TextBoxPboPrefix.Text = if ($in[10]) { $in[10] } else { "x\addons" }
 			$TextBoxBISignPrefix.Text = if ($in[11]) { $in[11] } else { "epoch" }
-			
+									
+		}
+		else
+		{
+			Write-Host "Settings file not found, please save your changes under SETTINGS tab!" -BackgroundColor darkred -ForegroundColor red
 		}
 	}
 		
@@ -968,8 +973,7 @@ $FolderBrowserDialog1 = New-Object System.Windows.Forms.FolderBrowserDialog
 			$createKeyExecutable = Join-Path $TextBox11.Text "DSCreateKey.exe"
 			$argz = @($signName)												
 			Start-Process -FilePath $createKeyExecutable -WorkingDirectory $TextBox11.Text -ArgumentList $argz -WindowStyle Hidden -Wait
-			$Label4.Text = "Making Private Key... Please wait"
-			$Label4.Refresh()
+			Write-Host @("Creating new Private Key:", $signfile) -BackgroundColor darkcyan -ForegroundColor cyan
 		}
 				
 		fnc_outputmodcpp				
@@ -981,13 +985,16 @@ $FolderBrowserDialog1 = New-Object System.Windows.Forms.FolderBrowserDialog
 		
 		$Bob = Join-Path $TextBox3.Text "\AddonBuilder.exe"
 		$includes = "P:\includes.txt"
-		if (!(Test-Path $includes)) { "*.xml;*.pac;*.paa;*.sqf;*.sqs;*.bikb;*.fsm;*.wss;*.ogg;*.wav;*.fxy;*.csv;*.html;*.lip;*.txt;*.wrp;*.bisurf;*.rvmat;*.sqm;*.ext;*.hpp" | Out-File $includes -Encoding "UTF8"}		
+		if (!(Test-Path $includes))
+		{
+			Write-Host @("Creating new includes file:", $includes) -BackgroundColor darkcyan -ForegroundColor cyan
+			"*.xml;*.pac;*.paa;*.sqf;*.sqs;*.bikb;*.fsm;*.wss;*.ogg;*.wav;*.fxy;*.csv;*.html;*.lip;*.txt;*.wrp;*.bisurf;*.rvmat;*.sqm;*.ext;*.hpp" | Out-File $includes -Encoding "UTF8"
+		}		
 		
 		foreach ($i in $Script:listarr) {if ($i.checked) { $ct++ }}
 		$cnt = 100 / $ct
 				
-		$Label4.Text = "Building PBO ... Please wait"
-		$Label4.Refresh()
+		Write-Host "Building Selected PBO files ..." -BackgroundColor darkcyan -ForegroundColor cyan
 		
 		foreach ($x in $Script:listarr)
 		{										
@@ -1008,14 +1015,13 @@ $FolderBrowserDialog1 = New-Object System.Windows.Forms.FolderBrowserDialog
 												
 						fnc_updateBuildNumber $TextBox2.Text ($x.subitems[1].Text) $incrementServerBuild
 						$incrementServerBuild = 0
-												
-						tree /A /F $tmp > (Join-Path $x.subitems[1].Text "treeView.txt") 
-																		
-						$argz = @($tmp, ( '"' + $Output + '"' ), "-packonly", "-clear", "-prefix=$name", "-project=P:\", "-include=$includes")
-												
-						$Label4.Text = "Building Server PBO (" + $x.subitems[0].Text + ".pbo) ... Please wait"
-						$Label4.Refresh()
 						
+						$txt = "Building Server PBO (" + $x.subitems[0].Text + ".pbo) ... Please wait"
+						$tree = Join-Path $x.subitems[1].Text "treeView.txt"
+						tree /A /F $tmp > $tree
+						fnc_pboWriteHostAndTree $txt $tree
+						
+						$argz = @($tmp, ( '"' + $Output + '"' ), "-packonly", "-clear", "-prefix=$name", "-project=P:\", "-include=$includes")
 						Start-Process -FilePath $Bob -ArgumentList $argz -WindowStyle Hidden -Wait
 					}
 					"Client" 
@@ -1030,16 +1036,15 @@ $FolderBrowserDialog1 = New-Object System.Windows.Forms.FolderBrowserDialog
 						if (Test-Path $tmp) { Remove-Item -Path $tmp -Recurse }														
 						Copy-Item -Path $x.subitems[1].Text -Destination $tmp -Recurse
 												
-						tree /A /F $tmp > (Join-Path $x.subitems[1].Text "treeView.txt") 
+						$txt = "Building Client PBO (" + $x.subitems[0].Text + ".pbo) ... Please wait"
+						$tree = Join-Path $x.subitems[1].Text "treeView.txt"
+						tree /A /F $tmp > $tree
+						fnc_pboWriteHostAndTree $txt $tree
 																		
 						$signFlag = ""
 						if (Test-Path $signfile) { $signFlag = ('-sign="' + $signfile + '"') }
 																		
 						$argz = @($tmp, ( '"' + $Output + '"' ), "-clear", "-prefix=$name", "-project=P:\", "-include=$includes", $signFlag)
-												
-						$Label4.Text = "Building Client PBO (" + $x.subitems[0].Text +  ".pbo) ... Please wait"
-						$Label4.Refresh()
-						
 						Start-Process -FilePath $Bob -ArgumentList $argz -WindowStyle Hidden -Wait
 					}
 					"Missions" 
@@ -1056,13 +1061,12 @@ $FolderBrowserDialog1 = New-Object System.Windows.Forms.FolderBrowserDialog
 						Copy-Item($src + "epoch_config") -Destination $tmp -Recurse
 						Copy-Item($src + "description.ext") -Destination $tmp
 												
-						tree /A /F $tmp > (Join-Path ($src + "mpmissions") "treeView.txt") 
+						$txt = "Building MPMission PBO (" + $x.subitems[0].Text + ".pbo) ... Please wait"
+						$tree = Join-Path $x.subitems[1].Text "treeView.txt"
+						tree /A /F $tmp > $tree
+						fnc_pboWriteHostAndTree $txt $tree
 																		
 						$argz = @($tmp, ( '"' + $Output + '"' ), "-clear", "-prefix=\", "-project=P:\", "-include=$includes")
-												
-						$Label4.Text = "Building MPMission PBO (" + $x.subitems[0].Text + ".pbo) ... Please wait"
-						$Label4.Refresh()
-						
 						Start-Process -FilePath $Bob -ArgumentList $argz -WindowStyle Hidden -Wait
 					}
 				}
@@ -1071,14 +1075,23 @@ $FolderBrowserDialog1 = New-Object System.Windows.Forms.FolderBrowserDialog
 				if (Test-Path($env:temp + "\" + $name)) { Remove-Item -Path($env:temp + "\" + $name) -Recurse }
 			}
 		}
-		#make tree view from 
-		
-				
-		#end
 		$ProgressBar1.Value = 0
 		$ProgressBar1.Refresh()
+				
+		Write-Host "All done!" -BackgroundColor darkcyan -ForegroundColor cyan
 	}
-	
+		
+	function fnc_pboWriteHostAndTree ($txt, $tree)
+	{ 
+		Write-Host ""
+		Write-Host $txt -ForegroundColor yellow
+		foreach ($w in (Get-Content $tree))
+		{
+			Write-Host $w
+		}
+		$Label4.Text = $txt
+		$Label4.Refresh()
+	}
 	
 	# Event Handlers
 	$Button1.Add_Click({ fnc_getSetPath(1) })
@@ -1142,8 +1155,6 @@ $FolderBrowserDialog1 = New-Object System.Windows.Forms.FolderBrowserDialog
 	{
 		$Label13.Text = "Path Not Found!"
 	}
-	
-		
 	
 #endregion
 
