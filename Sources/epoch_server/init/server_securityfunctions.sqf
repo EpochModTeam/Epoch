@@ -632,6 +632,7 @@ call compile ("'"+_skn_doKickBan+"' addPublicVariableEventHandler {
 	};
 	"+_skn_pv_hackerLog+" pushBack[[_logMode, call "+_skn_server_getRealTime+", name _player, getPlayerUID _player, _text], _logColor];
 	[_logName, format['%1 (%2): %3', name _player, getPlayerUID _player, _text]] call EPOCH_fnc_server_hiveLog;
+	diag_log str([_logName, format['%1 (%2): %3', name _player, getPlayerUID _player, _text]]);
 	{
 		if (_x call EPOCH_server_isPAdmin) then {
 			(owner _x) publicVariableClient '"+_skn_pv_hackerLog+"';
