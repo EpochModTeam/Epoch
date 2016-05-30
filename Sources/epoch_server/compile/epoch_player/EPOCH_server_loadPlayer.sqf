@@ -324,7 +324,7 @@ if (_this isEqualType []) then {
 					};
 
 					if (!_canBeRevived) then {
-						_newPlyr setVariable["REVIVE", _canBeRevived]
+						_newPlyr setVariable["REVIVE", _canBeRevived];
 					};
 
 					[_playerNetID, _playerUID, [_newPlyr, _vars, _currWeap, loadAbs _newPlyr, _playerGroup, _canBeRevived, _newPlyr call EPOCH_server_setPToken,_playerGroupArray]] call EPOCH_server_pushPlayer;
