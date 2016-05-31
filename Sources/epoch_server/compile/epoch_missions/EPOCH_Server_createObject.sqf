@@ -12,14 +12,13 @@
     Github:
     https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_server/compile/epoch_missions/EPOCH_Server_createObject.sqf
 */
-private ["_grp","_driver","_gunner","_commander","_crew","_missionVehList","_obj","_cfgPricing","_objClass","_vehicles","_backpacks","_weapons","_items","_magazines","_posOut","_posSafe","_inStr"];
-params ["_player",["_token","",[""]],["_objArr",[]],["_pos",[]],["_wepHolder",objNull],["_clearCargo",true],["_objSpc","CAN_COLLIDE"],["_driverType",""],["_gunnerType",""],["_commanderType",""],["_crewType",""],["_doDamage",false]];
+private ["_grp","_driver","_gunner","_commander","_crew","_missionVehList","_obj","_cfgPricing","_objClass","_vehicles","_backpacks","_weapons","_items","_magazines"];
+params ["_player",["_token","",[""]],["_objArr",[]],["_pos",[]],["_wepHolder",objNull],["_clearCargo",true],["_objSpc","CAN_COLLIDE"],["_driverType",""],["_gunnerType",""],["_commanderType",""],["_crewType",""]];
 
-diag_log format["Epoch Admin: Server_CreateObject: %1 for %2",_objArr, name _player];
-
-if !([_player,_token]call EPOCH_server_getPToken) exitWith {diag_log format["Epoch Admin: Token failed for %1", name _player];};
-if (typeName _objArr == "STRING") then {if!(_objArr == "")then{_objArr = [_objArr];};};
+if !([_player,_token]call EPOCH_server_getPToken) exitWith {};
 if (count _objArr < 1) exitWith {};
+
+diag_log format["Epoch: Server_CreateObject: %1 for %2",_objArr, name _player];
 
 _cfgPricing = 'CfgPricing' call EPOCH_returnConfig;
 _allowedVehicleListName = ["allowedVehiclesList","allowedVehiclesList_CUP"] select EPOCH_modCUPVehiclesEnabled;
@@ -80,17 +79,16 @@ _pos set [2,0];
 			//Not working ?
 			
 				if(_x isKindOf "CAR" || _x isKindOf "AIR")then{
-				//_posSafe = [_pos, 0, 550, 6, 0, 1000, 0] call BIS_fnc_findSafePos;
-				//_posOut = _posSafe findEmptyPosition [1,75,_x];
-				_posOut = _pos;
+				_pos = [position _player, 0, 250, 6, 0, 1000, 0] call BIS_fnc_findSafePos;
+				_pos = _pos findEmptyPosition [1,75,_x];
 				};
 
 				if(_x isKindOf "SHIP")then{
-				_posSafe = [_pos, 0, EPOCH_dynamicVehicleArea, 10, 1, 1000, 0] call BIS_fnc_findSafePos;
-				_posOut = _posSafe findEmptyPosition [1,75,_x];
+				_pos = [position _player, 0, EPOCH_dynamicVehicleArea, 10, 1, 1000, 0] call BIS_fnc_findSafePos;
+				_pos = _pos findEmptyPosition [1,75,_x];
 				};
 				
-				_vehicles pushBack [_x,_posOut];
+				_vehicles pushBack [_x,_pos];
 			//};
 		};
 	};
@@ -180,35 +178,8 @@ if(count _vehicles > 0)then{
 				_crew moveInCargo _obj;
 				//if (_doOwner) then {_crew setOwner (owner _player)};
 			};
-			
 		_obj allowdamage true;
-			
-			//Assume is 'crash site' vehicle.
-			if(_doDamage)then{
-			_obj setdamage 1;
-			removeFromRemainsCollector [_obj];
-			_obj call EPOCH_server_setVToken;
-				//WIP - Wait for player to turn up then add back to remains collector. May be less performant that just leaving it for a server restart ?
-				[_obj] spawn {
-					_monitorObj = true;
-					_obj = _this select 0;
-					while{_monitorObj}do{
-						if(count nearestObjects [_obj,["MAN"],28] > 0)then{
-						_monitorObj = false;
-						};
-						uiSleep 30;
-					};
-					while!(_monitorObj)do{
-						if(count nearestObjects [_obj,["MAN"],56] < 1)then{
-						_monitorObj = true;
-						addToRemainsCollector [_obj];
-						};
-						uiSleep 30;
-					};
-				terminate _thisScript;//Testing
-				};
-			};
-			
+	
 	}forEach _vehicles;
 };
 
