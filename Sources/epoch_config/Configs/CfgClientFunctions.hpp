@@ -32,6 +32,7 @@ class CfgClientFunctions
 			class unitSpawn {};
 			class antiWall {};
 			class onEachFrame {};
+			class callSapperMigration {};
 		};
 
 		class building
@@ -117,6 +118,7 @@ class CfgClientFunctions
    			class fnc_playerDeathMorph {};
    			class fnc_playerSetVariable {};
    			class fnc_playerAttachToAntagonist {};
+			class fnc_createMarker {};
 		};
 		class environment
 		{
