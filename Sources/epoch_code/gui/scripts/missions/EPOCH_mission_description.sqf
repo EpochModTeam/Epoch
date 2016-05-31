@@ -4,7 +4,7 @@
     Contributors: Aaron Clark
 
 	Description:
-	TODO: Description
+	Reload trader menu description, from config, when mission is clicked on. Filter out disabled missions.
 
     Licence:
     Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
@@ -12,7 +12,19 @@
     Github:
     https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_code/gui/scripts/missions/EPOCH_mission_refresh.sqf
 */
-private["_index","_missionDesc"];
+private["_index","_missionClasses","_missionDesc"];
+_missionClasses = getArray(getMissionConfig "EpochMissionList" >> "traderMissionClasses");
+
 _index = lbCurSel 1500;
-_missionDesc = getArray(getMissionConfig "MissionList" >> "traderMissionLongDesc");
-ctrlSetText [1001, _missionDesc select _index];
+
+_menuCondition = getText(getMissionConfig "epochMissions" >> (_missionClasses select _index) >> "missionDeny");
+_missionDesc = getText(getMissionConfig "epochMissions" >> (_missionClasses select _index) >> "missionDesc");
+
+if!(_menuCondition=="")then{
+	if(call compile _menuCondition)then{
+	_missionDesc = "NOT AVAILABLE - " + _missionDesc;
+	lbSetColor [1001, 0, [0.73,0.24,0.11,1] ] ;
+	};
+};		
+
+ctrlSetText [1001, _missionDesc];

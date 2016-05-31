@@ -42,13 +42,17 @@ while {_notReady} do {
 };
 
 if(_abortAfter < 42)then{
-	for "_i" from 1 to _sapperCount step 1 do  {
-    	_pos = _start findEmptyPosition [0,20,"Epoch_Sapper_F"];
-    	_axeSapper = createAgent ["Epoch_Sapper_F", _pos, [], 12, "FORM"];
-    	waitUntil {_axeSapper == _axeSapper};
-    	_axeSapper call _disableAI;
-    	EPOCHSapperMigrationHandle = [_axeSapper,_finish] execFSM "\x\addons\a3_epoch_code\System\sapperSwarmMember.fsm";
-    	uiSleep 0.75;
+
+	[_sapperCount,_start,_disableAI,_finish]spawn{
+	params["_sapperCount","_start","_disableAI","_finish",["_pos",[]],["_axeSapper", objNull]];
+		for "_i" from 1 to _sapperCount step 1 do  {
+			_pos = _start findEmptyPosition [0,20,"Epoch_Sapper_F"];
+			_axeSapper = createAgent ["Epoch_Sapper_F", _pos, [], 12, "FORM"];
+			waitUntil {_axeSapper == _axeSapper};
+			_axeSapper call _disableAI;
+			EPOCHSapperMigrationHandle = [_axeSapper,_finish] execFSM "\x\addons\a3_epoch_code\System\sapperSwarmMember.fsm";
+			uiSleep 0.75;
+		};
+		Epoch_axeMigrationRunning = true;
 	};
-    Epoch_axeMigrationRunning = true;
 };

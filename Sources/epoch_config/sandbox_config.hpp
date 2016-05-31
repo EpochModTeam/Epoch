@@ -53,6 +53,8 @@ wreckRemovalMaxTime = 360;
 disableRandomization[] = {"All"};
 
 #include "Configs\CfgTraderMissions.hpp"
+#include "Configs\CfgMissions.hpp"
+#include "Configs\CfgMissionsTasks.hpp"
 #include "Configs\cfgCrafting.hpp"
 #include "Configs\cfgPricing.hpp"
 #include "Configs\CfgEpochClient.hpp"

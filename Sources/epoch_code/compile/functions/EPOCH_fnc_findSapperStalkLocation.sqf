@@ -4,7 +4,7 @@
     Contributors:
 
 	Description:
-	Picks a random spot relative to the target with some randomness. (Unused)
+	Picks a random spot relative to the target with some randomness. Used in Sapper Brain
 
     Licence:
     Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike

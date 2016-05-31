@@ -785,7 +785,7 @@ class CfgPricing
 	class smallbackpack_green_epoch {price = 22;};
 	class smallbackpack_teal_epoch {price = 22;};
 	class smallbackpack_pink_epoch {price = 22;};
-
+	class I_UAV_01_backpack_F {price = 22;};
 	// Marksman DLC
 	class U_O_FullGhillie_lsh { price = 7; };
 	class U_O_FullGhillie_sard { price = 7; };
@@ -1033,6 +1033,7 @@ class CfgPricing
 	class O_Heli_Transport_04_box_EPOCH {price = 2500;};
 	class O_Heli_Transport_04_covered_EPOCH {price = 2500;};
 	class B_Heli_Transport_03_unarmed_EPOCH {price = 2500;};
+	class I_UAV_01_F {price = 50;};
 
 	class jetski_epoch {price = 500;};
 	class ebike_epoch {price = 1500;};

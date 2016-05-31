@@ -122,12 +122,14 @@ class CfgServerFunctions
 			class server_teleportPlayer {};
 			class returnConfig {};
 			class serverCommand {};
+			class server_createMarker {};
 		};
 		class epoch_missions {
 			class Server_createObject {};
 			class server_airDropCrate {};
 			class server_fillContainer {};
 			class Server_createAirDrop {};
+			class Server_missionComms{};
 		};
 		class epoch_antagonists {
 			class server_triggerEvent {};

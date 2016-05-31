@@ -209,6 +209,22 @@ class CfgRemoteExec
       allowedTargets=2;
       jip = 0;
     };
+	class EPOCH_spawn_vehicle {
+      allowedTargets=2;
+      jip = 0;
+    };
+	class EPOCH_Server_missionComms {
+      allowedTargets=2;
+      jip = 0;
+    };
+	class EPOCH_serverLootObject {
+      allowedTargets=2;
+      jip = 0;
+    };
+	class EPOCH_server_createmarker {
+      allowedTargets=2;
+      jip = 0;
+    };
 	
   };
   class Commands {mode=0;};

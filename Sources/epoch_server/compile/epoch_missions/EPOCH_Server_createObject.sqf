@@ -4,7 +4,7 @@
     Contributors: Aaron Clark
 
 	Description:
-	Server side spawing of shipwreck loots
+	Server side spawing of mission objects
 
     Licence:
     Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
@@ -12,71 +12,204 @@
     Github:
     https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_server/compile/epoch_missions/EPOCH_Server_createObject.sqf
 */
-private ["_grp","_driver","_gunner","_commander","_crew","_missionVehList","_obj"];
-params ["_player",["_token","",[""]],"_objType","_clearCargo","_pos",["_objSpc","CAN_COLLIDE"],"_driverType","_gunnerType","_commanderType","_crewType"];
+private ["_grp","_driver","_gunner","_commander","_crew","_missionVehList","_obj","_cfgPricing","_objClass","_vehicles","_backpacks","_weapons","_items","_magazines","_posOut","_posSafe","_inStr"];
+params ["_player",["_token","",[""]],["_objArr",[]],["_pos",[]],["_wepHolder",objNull],["_clearCargo",true],["_objSpc","CAN_COLLIDE"],["_driverType",""],["_gunnerType",""],["_commanderType",""],["_crewType",""],["_doDamage",false]];
 
-if !([_player,_token]call EPOCH_server_getPToken)exitWith{};
+diag_log format["Epoch Admin: Server_CreateObject: %1 for %2",_objArr, name _player];
 
-if (count _this != 11) exitWith {diag_log format ["Epoch: Debug: %1 exit with %2",__FILE__,_this]};
+if !([_player,_token]call EPOCH_server_getPToken) exitWith {diag_log format["Epoch Admin: Token failed for %1", name _player];};
+if (typeName _objArr == "STRING") then {if!(_objArr == "")then{_objArr = [_objArr];};};
+if (count _objArr < 1) exitWith {};
 
-_missionVehList = ["O_UAV_01_F","B_UAV_01_F","I_Boat_Armed_01_minigun_F","B_Heli_Transport_01_F",""];
-if!(_objType in _missionVehList)exitWith{};
+_cfgPricing = 'CfgPricing' call EPOCH_returnConfig;
+_allowedVehicleListName = ["allowedVehiclesList","allowedVehiclesList_CUP"] select EPOCH_modCUPVehiclesEnabled;
+_allowedVehiclesList = getArray(configFile >> "CfgEpoch" >> worldName >> _allowedVehicleListName);
+_vehicles = [];
+_backpacks = [];
+_weapons = [];
+_items = [];
+_magazines = [];
 
-if !(_pos isEqualTo []) then {
-	_pos = (getPosATL _player) findEmptyPosition [1,250,_objType];
-	if (count _pos < 1) then {
-		_pos = getPosATL _player;
+if (_pos isEqualTo []) then {
+	_pos = (getPosATL _player);
+};
+
+if(count _pos < 3)then{
+_pos set [2,0];
+};
+
+
+//Sort Object Array
+{
+	
+	//Weapons / Items
+		if(isClass (configFile >> "CfgWeapons" >> _x))then{
+			
+			diag_log format["Epoch: Server_CreateObject: %1 Weapon / Item Found",_x];
+			
+			if("ItemCore" in ([configFile >> "CfgWeapons" >> _x, true] call BIS_fnc_returnParents))then{
+			_items pushBack _x;
+			}else{
+			_weapons pushBack _x;
+			};
+			
+		};
+		
+		//Magazines
+		if(isClass (configFile >> "CfgMagazines" >> _x))then{
+			
+			diag_log format["Epoch: Server_CreateObject: %1 Magaxine Found",_x];
+			
+			if("ItemCore" in ([configFile >> "CfgMagazines" >> _x, true] call BIS_fnc_returnParents))then{
+			_items pushBack _x;
+			}else{
+			_magazines pushBack _x;
+			};
+			
+		};
+		
+	//BackPacks / Vehicles
+	if(isClass (configFile >> "CfgVehicles" >> _x))then{
+		if("Bag_Base" in ([configFile >> "CfgVehicles" >> _x, true] call BIS_fnc_returnParents))then{
+		_backpacks pushBack _x;
+		}else{
+			
+			diag_log format["Epoch: Server_CreateObject: Vehicle Found %1 - Allowed: %2",_x, _x in _allowedVehiclesList];
+			
+			//if(_x in _allowedVehiclesList)then{
+			//Not working ?
+			
+				if(_x isKindOf "CAR" || _x isKindOf "AIR")then{
+				//_posSafe = [_pos, 0, 550, 6, 0, 1000, 0] call BIS_fnc_findSafePos;
+				//_posOut = _posSafe findEmptyPosition [1,75,_x];
+				_posOut = _pos;
+				};
+
+				if(_x isKindOf "SHIP")then{
+				_posSafe = [_pos, 0, EPOCH_dynamicVehicleArea, 10, 1, 1000, 0] call BIS_fnc_findSafePos;
+				_posOut = _posSafe findEmptyPosition [1,75,_x];
+				};
+				
+				_vehicles pushBack [_x,_posOut];
+			//};
+		};
 	};
+
+}forEach _objArr;
+
+//Weapons, ammo, items, backpacks
+if(count _weapons > 0 || count _items > 0 || count _magazines > 0 || count _backpacks > 0)then{
+
+if(isNull _wepHolder)then{
+_wepHolder = createVehicle["groundWeaponHolder", _pos, [], 0.0, "CAN_COLLIDE"];
 };
 
-//_doOwner = _this select 10;
-_obj = createVehicle [_objType, _pos, [], 0, _objSpc];
-_obj call EPOCH_server_setVToken;
-addToRemainsCollector[_obj];
-_obj disableTIEquipment true;
 
-_obj allowdamage false;
-_obj setPosATL _pos;
-_obj setFuel 1;
-//if (_doOwner) then {_obj setOwner (owner _player)};
+	//Weapons
+	if(count _weapons > 0)then{
+		{
+		diag_log format["Epoch: Server_CreateObject: %1 Weapon Spawn",_x];
+		_wepHolder addWeaponCargoGlobal [_x,1];
+		} forEach _weapons;
+	};
+	
+	//Items
+	if(count _items > 0)then{
+		{
+		diag_log format["Epoch: Server_CreateObject: %1 Item Spawn",_x];
+		_wepHolder addItemCargoGlobal [_x,1];
+		} forEach _items;
+	};
+	
+	//Magazines
+	if(count _magazines > 0)then{
+		{
+		diag_log format["Epoch: Server_CreateObject: %1 Magazine Spawn",_x];
+		_wepHolder addMagazineCargoGlobal [_x,1];
+		} forEach _magazines;
+	};
+	
+	//Backpacks
+	if(count _backpacks > 0)then{
+		{
+		diag_log format["Epoch: Server_CreateObject: %1 Backpack Spawn",_x];
+		_wepHolder addBackPackCargoGlobal [_x,1];
+		}forEach _backpacks;
+	};
 
-if (_clearCargo) then {
-	clearWeaponCargoGlobal _obj;
-	clearItemCargoGlobal _obj;
-	clearMagazineCargoGlobal  _obj;
-	clearBackpackCargoGlobal _obj;
 };
 
-if (_driverType != "" || _gunnerType != "" ||_commanderType != "") then {
-	_grp = createGroup RESISTANCE;
+if(count _vehicles > 0)then{
+	{
+		diag_log format["Epoch: Server_CreateObject: %1 Vehicle Spawn",_x];
+		//Need to create slot to createVehicle a persistent Epoch vehicle.
+		//_obj = [_x select 0, _x select 1, random 360, true, (EPOCH_storedVehicleCount + 1), _player, "CAN_COLLIDE", !_clearCargo, false] call EPOCH_spawn_vehicle;
+		
+		_obj =  createVehicle[(_x select 0), (_x select 1), [], 15, "CAN_COLLIDE"];
+		
+		_obj allowdamage false;
+
+			if (_driverType != "" || _gunnerType != "" || _commanderType != "") then {
+				_grp = createGroup RESISTANCE;
+			};
+
+			if (_driverType != "") then {
+				_driver = _grp createUnit[_driverType, position _obj, [], 1, "CAN_COLLIDE"];
+				_driver assignAsDriver _obj;
+				_driver moveInDriver _obj;
+				//if (_doOwner) then {_driver setOwner (owner _player)};
+			};
+
+			if (_gunnerType != "") then {
+				_gunner = _grp createUnit[_gunnerType, position _obj, [], 1, "CAN_COLLIDE"];
+				_gunner assignAsGunner _obj;
+				_gunner moveInGunner _obj;
+				//if (_doOwner) then {_gunner setOwner (owner _player)};
+			};
+
+			if (_commanderType != "") then {
+				_commander = _grp createUnit[_commanderType, position _obj, [], 1, "CAN_COLLIDE"];
+				_commander assignAsCommander _obj;
+				_commander moveInCommander _obj;
+				//if (_doOwner) then {_commander setOwner (owner _player)};
+			};
+
+			if (_crewType != "") then {
+				_crew = _grp createUnit[_crewType, position _obj, [], 1, "CAN_COLLIDE"];
+				_crew assignAsCargo _obj;
+				_crew moveInCargo _obj;
+				//if (_doOwner) then {_crew setOwner (owner _player)};
+			};
+			
+		_obj allowdamage true;
+			
+			//Assume is 'crash site' vehicle.
+			if(_doDamage)then{
+			_obj setdamage 1;
+			removeFromRemainsCollector [_obj];
+			_obj call EPOCH_server_setVToken;
+				//WIP - Wait for player to turn up then add back to remains collector. May be less performant that just leaving it for a server restart ?
+				[_obj] spawn {
+					_monitorObj = true;
+					_obj = _this select 0;
+					while{_monitorObj}do{
+						if(count nearestObjects [_obj,["MAN"],28] > 0)then{
+						_monitorObj = false;
+						};
+						uiSleep 30;
+					};
+					while!(_monitorObj)do{
+						if(count nearestObjects [_obj,["MAN"],56] < 1)then{
+						_monitorObj = true;
+						addToRemainsCollector [_obj];
+						};
+						uiSleep 30;
+					};
+				terminate _thisScript;//Testing
+				};
+			};
+			
+	}forEach _vehicles;
 };
 
-if (_driverType != "") then {
-	_driver = _grp createUnit[_driverType, position _obj, [], 1, "CAN_COLLIDE"];
-	_driver assignAsDriver _obj;
-	_driver moveInDriver _obj;
-	//if (_doOwner) then {_driver setOwner (owner _player)};
-};
 
-if (_gunnerType != "") then {
-	_gunner = _grp createUnit[_gunnerType, position _obj, [], 1, "CAN_COLLIDE"];
-	_gunner assignAsGunner _obj;
-	_gunner moveInGunner _obj;
-	//if (_doOwner) then {_gunner setOwner (owner _player)};
-};
-
-if (_commanderType != "") then {
-	_commander = _grp createUnit[_commanderType, position _obj, [], 1, "CAN_COLLIDE"];
-	_commander assignAsCommander _obj;
-	_commander moveInCommander _obj;
-	//if (_doOwner) then {_commander setOwner (owner _player)};
-};
-
-if (_crewType != "") then {
-	_crew = _grp createUnit[_crewType, position _obj, [], 1, "CAN_COLLIDE"];
-	_crew assignAsCargo _obj;
-	_crew moveInCargo _obj;
-	//if (_doOwner) then {_crew setOwner (owner _player)};
-};
-_obj allowdamage true;
-diag_log format["Epoch: Spawned Object %1(%5) for %3(%4) at %2",_objType,_pos,name _player,owner _player,owner _obj];

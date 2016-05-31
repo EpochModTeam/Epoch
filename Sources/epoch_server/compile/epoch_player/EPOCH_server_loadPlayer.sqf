@@ -320,7 +320,8 @@ if (_this isEqualType []) then {
 					};
 
 					if !(_server_vars isEqualTo[]) then{
-						_newPlyr setVariable["SERVER_VARS", _server_vars];
+						_newPlyr setVariable["SERVER_VARS", _server_vars, true];
+						//Used for mission tracking. TODO: collect directly as required rather than broadcast.
 					};
 
 					if (!_canBeRevived) then {
