@@ -25,6 +25,7 @@ maxAimingAccuracy -> maxGeneral - Set the maximum value for each available AI sk
 [Info] A big thanks to Isaac, Axeman's chief tester!
 
 **Server Only**
+[Added] Allow Epoch Events to accept full file path if 4th variable in the EpochEvents array is set to 0. Default is 1.
 [Added] Function to effect a players Crypto server side:
 - [_player,100] call EPOCH_server_effectCrypto; // adds 100
 - [_player,-100] call EPOCH_server_effectCrypto; // removes 100
