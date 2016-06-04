@@ -1,7 +1,7 @@
 /*
 	Author: Aaron Clark - EpochMod.com
 
-    Contributors:
+    Contributors: He-Man
 
 	Description:
 	Player Revive
@@ -18,6 +18,24 @@ params ["_player","_reviver",["_token","",[""]]];
 if !([_reviver, _token] call EPOCH_server_getPToken) exitWith{};
 if (isNull _player) exitWith{};
 if (_player distance _reviver > 20) exitWith{};
+
+_fnc_addItemToX = {
+	private ["_itemSlot","_itemqtys","_newPlyr"];
+	_newPlyr = _this select 0;
+	{
+		_itemSlot = _forEachIndex;
+		_itemqtys = _x select 1;
+		{
+			for "_i" from 1 to (_itemqtys select _forEachIndex) do {
+				switch _itemSlot do {
+					case 0: { _newPlyr addItemToUniform _x };
+					case 1: { _newPlyr addItemToVest _x };
+					case 2: { _newPlyr addItemToBackpack _x };
+				};
+			};
+		} forEach(_x select 0);
+	} forEach (_this select 1);
+};
 
 if (!local _player) then {
 	_playerUID = getPlayerUID _player;
@@ -52,7 +70,10 @@ if (!local _player) then {
 				_primaryWeapon = "";
 				_secondaryWeapon = "";
 
+				_wh = nearestObjects[_player, ["WeaponHolderSimulated"], 12];
+/*
 				_droppedWeapons = [];
+				reverse _wh;
 				{
 					{
 						_droppedWeapons pushBack _x;
@@ -63,8 +84,30 @@ if (!local _player) then {
 						};
 					} forEach (weaponsItemsCargo _x);
 
-				} forEach nearestObjects[_player, ["WeaponHolderSimulated"], 12];
+				} foreach _wh;
+*/
+				_droppedPrimary = [];
+				_droppedSecondary = [];
+				_droppedWeapons = [];
+				_deleteprimary = [];
+				_deletesecondary = [];
+				reverse _wh;
+				{
+					_currwh = _x;
+					{
+						_type = getNumber(configfile >> "cfgweapons" >> (_x select 0) >> "type");
+						switch _type do {
+							case 1: {_droppedPrimary = _x; _primaryWeapon = _x select 0; _deleteprimary = [_currwh]};
+							case 4: {_droppedSecondary = _x; _secondaryWeapon = _x select 0;_deletesecondary = [_currwh]};
+						};
+					} forEach (weaponsItemsCargo _x);
+				} foreach _wh;
+				{
+					if (!isnull _x) then {deletevehicle _x};
+				} foreach (_deleteprimary+_deletesecondary);
 
+				if !(_droppedPrimary isequalto []) then {_droppedWeapons pushback _droppedPrimary};
+				if !(_droppedSecondary isequalto []) then {_droppedWeapons pushback _droppedSecondary};
 				// diag_log ["DEBUG: _droppedWeapons %1", _droppedWeapons];
 
 				_itemsplayer = [getItemCargo(uniformContainer _player), getItemCargo(vestContainer _player), getItemCargo(backpackContainer _player)];
@@ -133,36 +176,38 @@ if (!local _player) then {
 				};
 
 				// Weapons
-				if (count _weapons >= 2) then {
-
+				if (count _weapons >= 3) then {
 					_equipped = _weapons select 2;
 					{
-						_weapon = _x select 0;
+						_weapon = _x deleteAt 0;
 						_type = getNumber(configfile >> "cfgweapons" >> _weapon >> "type");
-
 						_attachments = [];
+						_wMags = false;
+						_wMagsArray = [];
 						// suppressor, laser, optics
-						for "_a" from 1 to 3 do {
-							_attachment = _x select _a;
-							if (_attachment != "") then {
-								_attachments pushBack _attachment;
+						{
+							// magazines
+							if (_x isEqualType []) then{
+								_wMags = true;
+								_wMagsArray pushback _x;
+							} else {
+								// attachments
+								if (_x != "") then{
+									_attachments pushBack _x;
+								};
 							};
+						} forEach _x;
+						if (_wMags) then {
+							{
+								_newPlyr addMagazine _x;
+							} foreach _wMagsArray;
 						};
-						_wMags = (count _x) == 5;
-
 						// add weapon if equiped
-
 						if (_weapon in _equipped) then {
 							_equipped = _equipped - [_weapon];
-
-							if (_wMags) then {
-								_newPlyr addMagazine(_x select 4);
-							};
-
 							if (_weapon != "") then {
 								_newPlyr addWeapon _weapon;
 							};
-
 							switch _type do {
 								case 1: { // primary
 									removeAllPrimaryWeaponItems _newPlyr;
@@ -180,22 +225,14 @@ if (!local _player) then {
 									{ _newPlyr addSecondaryWeaponItem _x }forEach _attachments;
 								};
 							};
-						} else {
+						}else{
 							{
 								_newPlyr addItem _x;
 							}forEach _attachments;
-
-							if (_wMags) then {
-								_newPlyr addMagazine(_x select 4);
-							};
 						};
-
 					} forEach (_weapons select 1);
-
-					_currWeap = (_weapons select 0);
-
+//					_currWeap = (_weapons select 0);
 				};
-
 				// Linked items
 				{
 					if (_x in ["Binocular","Rangefinder"]) then {
@@ -205,46 +242,15 @@ if (!local _player) then {
 					};
 				}forEach _items;
 
-
 				// add items to containers
-				{
-					_itemSlot = _forEachIndex;
-					_itemqtys = _x select 1;
-					{
-						for "_i" from 1 to (_itemqtys select _forEachIndex) do {
-							switch _itemSlot do {
-								case 0: { _newPlyr addItemToUniform _x };
-								case 1: { _newPlyr addItemToVest _x };
-								case 2: { _newPlyr addItemToBackpack _x };
-							};
-							//diag_log format["DEBUG additemtoVest: %1", _x];
-						};
-
-					}forEach (_x select 0);
-				}forEach _itemsplayer;
+				[_newPlyr, _itemsplayer] call _fnc_addItemToX;
 
 				// add weapons to containers
-				{
-					_itemSlot = _forEachIndex;
-					_itemqtys = _x select 1;
-					{
-						for "_i" from 1 to (_itemqtys select _forEachIndex) do {
-							switch _itemSlot do {
-								case 0: { _newPlyr addItemToUniform _x };
-								case 1: { _newPlyr addItemToVest _x };
-								case 2: { _newPlyr addItemToBackpack _x };
-							};
-							//diag_log format["DEBUG additemtoVest: %1", _x];
-						};
-
-					}forEach (_x select 0);
-				}forEach _weaponsplayer;
+				[_newPlyr, _weaponsplayer] call _fnc_addItemToX;
 
 				// Add magazines
-				{
-					_newPlyr addMagazine _x;
-					//diag_log format["DEBUG addMagazine: %1", _x];
-				}forEach _magazinesAmmo;
+				{_newPlyr addMagazine _x;}forEach _magazinesAmmo;
+				// Load inventory + defaults END
 
 				// Final Push
 				_token = _newPlyr call EPOCH_server_setPToken;
