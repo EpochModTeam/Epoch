@@ -41,7 +41,7 @@
 7 deleteMarker
 7 setMarker !="CBA_fnc_setMarkerPersistent\"" !="\\fnc_setMarkerPersistent" !="\"setMarkerPersistent"
 7 createMarker !="CBA_fnc_createMarker\"" !="\\fnc_createMarker" !="\"createMarker" !="cba_fCreateMarker"
-7 assignItem !="axeVIP assignItem _item;"
+7 assignItem !="axeVIP assignItem _item;" !="unassignItem"
 7 forceAddUniform
 7 removeAllMPEventHandlers
 7 setDammage
@@ -70,6 +70,7 @@
 7 deleteVehicleCrew !"fn_deleteVehicleCrew.sqf" !="\"BIS_fnc_deleteVehicleCrew"\"
 7 loadFile
 7 selectPlayer !="selectPlayer _playerObject;"
+7 setGroupIconsVisible
 7 setGroupIconsVisible
 7 setGroupIconsSelectable
 7 setGroupIconParams
