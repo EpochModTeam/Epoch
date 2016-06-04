@@ -22,8 +22,8 @@
 7 onMapSingleClick !="onMapSingleClick '';" !="\"onmapsingleclick\""
 7 addMagazine !"addMagazineCargo" !="player addMagazine [_item, _magazineSizeMax];" !="player addMagazine [_item, floor (_magazineSize % _magazineSizeMax)];" !="player addMagazine[_x select 0, _x select 1];" !="player addMagazine \"sledge_swing\";" !="player addMagazine \"Hatchet_swing\";" !="player addMagazine \"stick_swing\";" !="_wh addMagazineAmmoCargo[_item, 1, _count];" !="CBA_fnc_addMagazine" !="\\fnc_addMagazine" !="\"addMagazine"
 7 addMagazineCargo !"_dogHolder addMagazineCargo [\"RabbitCarcass_EPOCH\", 1]" !"_dogHolder addMagazineCargo [\"Pelt_EPOCH\", 1]" !"_dogHolder addMagazineCargo [\"Venom_EPOCH\", 1]" !"_dogHolder addMagazineCargo [\"SnakeCarcass_EPOCH\", 1]" !"_dogHolder addMagazineCargo [\"ChickenCarcass_EPOCH\", 1]" !="_acceptHolder addMagazineCargo [_wAmmo, 1] ;" !="CBA_fnc_addMagazineCargo" !="\\fnc_addMagazineCargo" !="\"addMagazineCargo" !="cba_fAddMagazineCargo"
-7 addItem !="{player addItemToVest _x} forEach _vestItems;" !="player addItem _item;" !="_plyr addItemToVest _missionItem;" !="axeVIP addItemToVest _item;" !="_plyr  addItemToVest _missionItem;" !="EPOCH_fnc_addItemOverflow"
-7 addBackPack
+7 addItem !="{player addItemToVest _x} forEach _vestItems;" !="player addItem _item;" !="_plyr addItemToVest _missionItem;" !="axeVIP addItemToVest _item;" !="_plyr  addItemToVest _missionItem;" !="EPOCH_fnc_addItemOverflow" !="CBA_fnc_addItem" !="\\fnc_addItem" !="\"addItem" !="fnc_addItemCargo"
+7 addBackPack !="fnc_addBackpackCargo"
 7 addMissionEventHandler !="addMissionEventHandler ['Draw3D',_var + \"call Epoch_gui3DCooldownEH;\"];" !="addMissionEventHandler ['Draw3D',_var + \"call epoch_gui3dModelPosEH;\"];" !="addMissionEventHandler ['Draw3D',_var + \"call epoch_gui3dWorldPosEH;\"];" !="addMissionEventHandler [\n"ended",\n{\n\nBIS_fnc_missionHandlers_end = _this;"
 7 removeMissionEventHandler !="removeMissionEventHandler [\"Draw3D\", _id];"
 7 removeAllWeapons !="removeAllWeapons axeGeneral;"
@@ -56,7 +56,6 @@
 7 removeAllMissionEventHandlers
 7 ctrlRemoveAllEventHandlers !="(uiNamespace getVariable 'ESP_map') ctrlRemoveAllEventHandlers 'Draw';" !="ctrlAddEventHandler ['MouseButtonDown'"
 7 removeEventHandler !="displayRemoveEventHandler" !="player removeEventHandler ['Fired', 0];" !"_currentTarget removeEventHandler[\"EpeContactStart\", _onContactEH]" !" [_adminVar,objnull];\npublicvariable _adminVar;\nplayer removeeventhandler [\"respawn\",_respawn];" !="_plyr removeEventHandler [\"FiredNear\", _smokeEH];" !="player removeEventHandler [_ehKey, 0];" !="player removeEventHandler [_x, 0];" !="\"CBA_fnc_removeEventHandler\"" !="\\fnc_removeEventHandler" !="\"removeEventHandler"
-7 displayRemoveEventHandler !"BIS_fnc_guiMessage_status" !="(findDisplay 46) displayRemoveEventHandler [_key, _id];"
 7 switchCamera !="vehicle player switchCamera" !="_antagonist switchCamera \"Internal\";"
 7 remoteControl !"fn_moduleRemoteControl.sqf" !="\"BIS_fnc_moduleRemoteControl"\"
 7 drawIcon3D !="drawIcon3D[\"\x\addons\a3_epoch_code\Data\Member.paa\",_color,_pos,1,1,0,_text,1,0.025,\"PuristaMedium\"];\n}forEach EPOCH_ESP_TARGETS;" !"drawIcon3D[format[\"\x\addons\a3_epoch_code\Data\UI\loading_bar_%1.paa\",_stability],_color,(getPosATL EPOCH_stabilityTarget),5,5,0,\"\",1,0.05,\"PuristaMedium\"];" !"drawIcon3D[format[\"\x\addons\a3_epoch_code\Data\UI\loading_bar_%1.paa\",_num],_color,_pos,4,4,0,\"\",1,0.05,\"PuristaMedium\"];" !"EPOCH_drawIcon3dStability" !"EPOCH_drawIcon3d" !"if (_condition) then {\ndrawIcon3D [_icon, _color, _position, _sizeX, _sizeY, _angle, _text," !="drawIcon3D [\"\A3\UI_F_MP_Mark\Data\Tasks\Misc\background.paa\"" !="drawIcon3D[\"x\addons\a3_epoch_code\Data\UI\snap_ca.paa\""
