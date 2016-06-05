@@ -78,6 +78,8 @@ _pos set [2,0];
 			//if(_x in _allowedVehiclesList)then{
 			//Not working ?
 			
+				_posOut = _pos;
+				
 				if(_x isKindOf "CAR" || _x isKindOf "AIR")then{
 				_pos = [position _player, 0, 250, 6, 0, 1000, 0] call BIS_fnc_findSafePos;
 				_pos = _pos findEmptyPosition [1,75,_x];
