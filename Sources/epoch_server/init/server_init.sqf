@@ -69,20 +69,17 @@ call compile preprocessFileLineNumbers "\epoch_server\init\server_securityfuncti
 diag_log format["Epoch: Start Hive, Instance ID: '%1'", _instanceID];
 
 diag_log "Epoch: Init Connect/Disconnect handlers";
-addMissionEventHandler ["HandleDisconnect", { _this call EPOCH_server_onPlayerDisconnect }];
 
-["EPOCH_onPlayerConnected", "onPlayerConnected", {
-    "epochserver" callExtension format["001|%1", _uid];
-    diag_log format["playerConnected:%1:%2", _uid, _name];
-    ['Connected', [_uid, _name]] call EPOCH_fnc_server_hiveLog;
+onPlayerConnected {}; // seems this is needed or addMissionEventHandler "PlayerConnected" does not work. as of A3 1.60
+addMissionEventHandler ["PlayerConnected", {
+    params ["_id","_uid","_name","_jip","_owner"];
+    // TODO: diabled STEAMAPI - Vac ban check needs reworked.
+    // "epochserver" callExtension format["001|%1", _uid];
+    // diag_log format["playerConnected:%1", _this];
     ["PlayerData", _uid, EPOCH_expiresPlayer, [_name]] call EPOCH_fnc_server_hiveSETEX;
-}] call BIS_fnc_addStackedEventHandler;
-
-["EPOCH_onPlayerDisconnected", "onPlayerDisconnected", {
-    diag_log format["playerDisconnected:%1:%2", _uid, _name];
-    ['Disconnected', [_uid, _name]] call EPOCH_fnc_server_hiveLog;
-    _uid call EPOCH_server_disconnect;
-}] call BIS_fnc_addStackedEventHandler;
+    ['Connected', [_uid, _name]] call EPOCH_fnc_server_hiveLog;
+}];
+addMissionEventHandler ["HandleDisconnect", {_this call EPOCH_server_onPlayerDisconnect}];
 
 diag_log "Epoch: Setup Side Settings";
 //set side status

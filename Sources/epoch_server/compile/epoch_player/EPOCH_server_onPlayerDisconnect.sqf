@@ -14,7 +14,6 @@
 */
 private ["_return"];
 params ["_player","_id","_uid","_name"];
-
 _return = false;
 if (!isNull _player) then {
 	if (_player getVariable["SETUP", false]) then {
@@ -27,4 +26,6 @@ if (!isNull _player) then {
 		deleteVehicle _player;
 	};
 };
+_uid call EPOCH_server_disconnect;
+['Disconnected', [_uid, _name]] call EPOCH_fnc_server_hiveLog;
 _return

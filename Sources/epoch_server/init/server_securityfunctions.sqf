@@ -575,15 +575,13 @@ call compile("'"+_skn_doTokenAuth+"' addPublicVariableEventHandler {
 	_array = _this select 1;
 	_tokenSet = false;
 	if !([_array select 1, _array select 2] call EPOCH_server_getPToken) exitWith{};
-	if ((_array select 0) isEqualType 'STRING') then {
-		if (_array select 0 == '"+_skn_AH_rndVarAHInitCheckToken+"') then {
-			_tokenSet = true;
-			_puid = (_array select 1) getVariable['PUID', ''];
-			if (_puid != '') then {
-				if !(_puid in "+_skn_AH_rndVarAHInitCheck+") then {
-					"+_skn_AH_rndVarAHInitCheck+" pushBack _puid;
-					diag_log format['DEBUG: player auth token set %1', _array];
-				};
+	if (_array select 0 isEqualTo '"+_skn_AH_rndVarAHInitCheckToken+"') then {
+		_tokenSet = true;
+		_puid = (_array select 1) getVariable['PUID', ''];
+		if (_puid != '') then {
+			if !(_puid in "+_skn_AH_rndVarAHInitCheck+") then {
+				"+_skn_AH_rndVarAHInitCheck+" pushBack _puid;
+				diag_log format['DEBUG: player auth token set %1', _array];
 			};
 		};
 	};
@@ -1474,7 +1472,7 @@ _skn_admincode = compileFinal ("
 				_cntBuildings = _cntBuildings + 1;
 			};
 		}forEach (nearestObjects[player, _lootClasses, _this]);
-		[format['Spawn Loot (%1) for %2 Buildings',_this,_cntBuildings],0] call "+_skn_adminLog_PVC+";
+		[format['Looting %2 Buildings within (%1)m',_this,_cntBuildings],0] call "+_skn_adminLog_PVC+";
 		hint format['Spawned Loot for %1 Buildings',_cntBuildings];
 	};
 	"+_skn_old_esp+" = {
