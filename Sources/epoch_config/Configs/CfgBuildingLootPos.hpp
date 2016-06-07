@@ -28,7 +28,7 @@ class CfgBuildingLootPos
 		lockerPos[] = {};
 		toolRackPos[] = {};
 		shoeboxPos[] = {};
-		lootBias = 30;
+		lootBias = 40;
 
 		limit = 3;
 		lootType = "normal";
@@ -145,6 +145,7 @@ class CfgBuildingLootPos
 		};
 	};
 	class Land_Research_HQ_F : Default {
+		limit = 5;
 		lootType = "mil";
 		shelfPos[] = {
 				{ { 0.380859, 4.1875, -3.29264 }, 2.04878 },
@@ -223,6 +224,7 @@ class CfgBuildingLootPos
 		};
 	};
 	class Land_spp_Tower_F : Default {
+		limit = 5;
 		lootType = "mil";
 		shelfPos[] = {
 				{ { 2.79297, -1.28906, -14.9882 }, 88.9351 },
@@ -272,6 +274,7 @@ class CfgBuildingLootPos
 		};
 	};
 	class Land_MilOffices_V1_F : Default {
+		limit = 6;
 		lootType = "mil";
 		shelfPos[] = {
 				{ { 5.89844, 0.773438, -2.89318 }, 269.647 },
@@ -516,6 +519,7 @@ class CfgBuildingLootPos
 		};
 	};
 	class Land_Airport_right_F : Default {
+		limit = 5;
 	    lootType = "mil";
 	    shelfPos[] = {
 	        { {-4.19922,-2.1543,-1.76375}, 359.705 },
@@ -638,6 +642,7 @@ class CfgBuildingLootPos
 		};
 	};
 	class Land_Airport_left_F : Default {
+		limit = 5;
 		lootType = "mil";
 	    shelfPos[] = {
 	        { {3.91211,-1.41797,-1.76377}, 184.071 },
@@ -724,6 +729,7 @@ class CfgBuildingLootPos
 	    };
 	};
 	class Land_Hangar_F : Default {
+		limit = 5;
 	    lootType = "mil";
 	    shelfPos[] = {
 	        { {-14.3125,1.24023,-5.40771}, 270.363 },
@@ -806,6 +812,7 @@ class CfgBuildingLootPos
 	    };
 	};
 	class Land_Cargo_Tower_V1_F : Default {
+		limit = 5;
 		lootType = "mil";
 		shelfPos[] = {
 				{ { 0.552734, -1.625, 5.05352 }, 178.136 },
@@ -922,6 +929,7 @@ class CfgBuildingLootPos
 		};
 	};
 	class Land_Medevac_HQ_V1_F : Default {
+		limit = 5;
 		lootType = "mil";
 		shelfPos[] = {
 				{ { 2.64648, -5.00391, -3.29263 }, 179.273 },
@@ -968,6 +976,7 @@ class CfgBuildingLootPos
 		};
 	};
 	class Land_Cargo_HQ_V1_F : Default {
+		limit = 4;
 		lootType = "mil";
 		shelfPos[] = {
 				{ { 0.302734, 4.1875, -3.2987 }, 357.597 },
@@ -1093,6 +1102,7 @@ class CfgBuildingLootPos
 	    };
 	};
 	class Land_u_Barracks_V2_F : Default {
+		limit = 6;
 		lootType = "mil";
 		shelfPos[] = {
 				{ { -2.01953, 3.59766, 1.40866 }, 86.5322 },
@@ -1193,6 +1203,7 @@ class CfgBuildingLootPos
 		};
 	};
 	class Land_i_Barracks_V2_F : Default {
+		limit = 6;
 		lootType = "mil";
 		shelfPos[] = {
 				{ { -3.91406, 4.36816, 0.579132 }, 0.755371 },
@@ -1394,6 +1405,7 @@ class CfgBuildingLootPos
 		};
 	};
 	class Land_Offices_01_V1_F : Default {
+		limit = 6;
 		shelfPos[] = {
 				{ { 1.18555, 3.91016, 0.712739 }, 359.463 },
 				{ { -1.66797, -5.50195, -7.10147 }, 270.268 },
@@ -1604,7 +1616,7 @@ class CfgBuildingLootPos
 	class Land_i_House_Big_01_V3_F : Land_i_House_Big_01_V1_F {};
 
 	class Land_Hospital_side1_F : Default {
-		lootBias = 25;
+		limit = 5;
 		lootType = "mil";
 		shelfPos[] = {
 				{ { -5.40039, 2.9082, -7.91957 }, 2.14935 },
@@ -1659,7 +1671,7 @@ class CfgBuildingLootPos
 		};
 	};
 	class Land_Hospital_side2_F : Default {
-		lootBias = 25;
+		limit = 5;
 		lootType = "mil";
 		shelfPos[] = {
 				{ { 4.34766, -10.8809, -8.13902 }, 179.22 },
@@ -1702,7 +1714,7 @@ class CfgBuildingLootPos
 		};
 	};
 	class Land_Hospital_main_F : Default {
-		lootBias = 25;
+		limit = 5;
 		lootType = "mil";
 		shelfPos[] = {
 				{ { 14.3516, -2.75781, -8.04017 }, 90.0092 },
@@ -2611,6 +2623,7 @@ class CfgBuildingLootPos
 		};
 	};
 	class Land_WIP_F : Default {
+		limit = 6;
 		shelfPos[] = {
 				{ { -0.957031, -4.42969, 12.2029 }, 358.087 },
 				{ { -0.919922, -5.26563, 0.396693 }, 178.896 },
@@ -2961,6 +2974,7 @@ class CfgBuildingLootPos
 		};
 	};
 	class Land_GH_House_2_F : Default {
+		limit = 4;
 		lootType = "mil";
 		shelfPos[] = {
 				{ { -3.61914, -1.67969, -0.301109 }, 359.443 },
@@ -3688,6 +3702,7 @@ class CfgBuildingLootPos
 		};
 	};
 	class Land_Hangar_2 : Default {
+		limit = 5;
 		lootType = "mil";
 		shelfPos[] = {
 				{ { 1.82813, -9.84717, -2.58939 }, 181.468 },
@@ -3814,6 +3829,7 @@ class CfgBuildingLootPos
 		};
 	};
 	class Land_Mil_ControlTower : Default {
+		limit = 5;
 		lootType = "mil";
 		shelfPos[] = {
 				{ { 1.49512, 2.23389, -1.09485 }, 268.083 },
@@ -3913,6 +3929,7 @@ class CfgBuildingLootPos
 		};
 	};
 	class Land_Mil_Barracks_i : Default {
+		limit = 5;
 		lootType = "mil";
 		shelfPos[] = {
 				{ { 0.902344, -2.39502, -1.12442 }, 238.007 },
@@ -3940,6 +3957,7 @@ class CfgBuildingLootPos
 		};
 	};
 	class Land_Ss_hangar : Default {
+		limit = 5;
 		lootType = "mil";
 		shelfPos[] = {
 				{ { 14.2314, -8.46289, -5.89868 }, 173.905 },
@@ -4513,6 +4531,7 @@ class CfgBuildingLootPos
 
 	//// Taki Start ///
 	class Land_Mil_hangar_EP1 : Default {
+		limit = 5;
 		lootType = "mil";
 	    shelfPos[] = {
 	        { {13.5302,-21.2354,-5.37346}, 179 },
@@ -4550,6 +4569,7 @@ class CfgBuildingLootPos
 	    };
 	};
 	class Land_Mil_ControlTower_EP1 : Default {
+		limit = 5;
 		lootType = "mil";
 		shelfPos[] = {
 				{ { 3.03467, 2.64453, -1.16014 }, 0 },
@@ -5317,6 +5337,7 @@ class CfgBuildingLootPos
 		};
 	};
 	class Land_Mil_Barracks_i_EP1 : Default {
+		limit = 5;
 		lootType = "mil";
 	    pelicanPos[] = {
 	        { {-0.560303,-1.47656,0.0566254}, 88 },
@@ -6038,6 +6059,7 @@ class CfgBuildingLootPos
 		pelicanPos[] = { { { -7.55273, 1.50537, 5.76163 }, 28.6669 } };
 	};
 	class Land_A_BuildingWIP : Default {
+		limit = 6;
 		fridgePos[] = { { { 2.03711, 11.1831, -6.49124 }, 305.356 }, { { -3.37573, 12.2183, 1.48757 }, 305.492 }, { { -24.4121, 7.55957, -2.55824 }, 228.742 } };
 		shelfPos[] = { { { -5.80249, -5.0332, -2.55812 }, 356.037 }, { { 12.1133, -4.3042, -6.54318 }, 179.13 }, { { -21.0371, 1.47168, -6.46016 }, 178.598 } };
 		pelicanPos[] = { { { -7.40625, -9.28955, -6.50476 }, 210.36 }, { { -20.8247, -11.5005, 5.44375 }, 191.623 }, { { -24.6577, 11.9438, 1.45556 }, 293.971 } };
@@ -6191,6 +6213,7 @@ class CfgBuildingLootPos
 		pelicanPos[] = { { { -0.840332, 1.09473, -10 }, 269.861 } };
 	};
 	class Carnival_Tent : Default {
+		limit = 2;
 		lootBias = 50;
 		shelfPos[] = { { { -1, -1, -10 }, 178.014 } };
 		chairPos[] = { { { 1, 1, -10 }, 152.678 } };
@@ -6849,6 +6872,7 @@ class CfgBuildingLootPos
 	    };
 	};
 	class Land_Panelak3 : Default {
+		limit = 6;
 	    shelfPos[] = {
 	        { {-3.97217,-0.323242,1.84827}, 90 },
 	        { {4.33447,-2.9873,12.6483}, 92.1 },
@@ -7450,6 +7474,7 @@ class CfgBuildingLootPos
 	    };
 	};
 	class Land_MBG_Killhouse_4 : Default {
+		limit = 5;
 	    shelfPos[] = {
 	        { {-1.86426,0.823242,-3.84317}, 0 }
 	    };
@@ -7498,6 +7523,7 @@ class CfgBuildingLootPos
 	    };
 	};
 	class Land_MBG_Warehouse : Default {
+		limit = 5;
 	    shelfPos[] = {
 	        { {-11.0225,19.5303,-6.14345}, 0 },
 	        { {22.1719,4.58838,-6.14345}, 90 },
@@ -7795,6 +7821,7 @@ class CfgBuildingLootPos
 	    };
 	};
 	class Land_aif_hotel : Default {
+		limit = 6;
 	    shelfPos[] = {
 	        { {-2.01904,1.21753,2.74082}, 0 },
 	        { {3.21387,-0.964844,-7.74672}, 180 }
@@ -7953,6 +7980,7 @@ class CfgBuildingLootPos
 	    };
 	};
 	class Land_House_C_4_EP1 : Default {
+		limit = 5;
 	    shelfPos[] = {
 	        { {-0.529297,2.29675,-0.350365}, 270 },
 	        { {-4.1626,2.0033,-0.278609}, 180 },
@@ -8198,6 +8226,7 @@ class CfgBuildingLootPos
 	    };
 	};
 	class land_mbg_apartments_big_04 : Default {
+		limit = 4;
 	    shelfPos[] = {
 	        { {-2.9585,-0.955566,-3.19898}, 173 },
 	        { {3.57837,-1.02734,-0.150979}, 180 },
@@ -8858,6 +8887,7 @@ class CfgBuildingLootPos
 	    };
 	};
 	class Land_MBG_ATC_Base : Default {
+		limit = 6;
 		lootType = "mil";
 	    shelfPos[] = {
 	        { {-4.58923,-6.30957,-1.21875}, 270 },
@@ -8963,6 +8993,7 @@ class CfgBuildingLootPos
 	    };
 	};
 	class Land_aif_hotel_bio : Default {
+		limit = 8;
 	    shelfPos[] = {
 	        { {-0.945801,1.20837,-0.835111}, 360 },
 	        { {-1.18018,1.21466,-4.68552}, 360 },
