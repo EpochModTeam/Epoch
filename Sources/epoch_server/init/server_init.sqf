@@ -147,6 +147,14 @@ _allowedVehiclesListArray = [];
 {
     _x params ["_vehClass","_velimit"];
     _vehicleCount = {typeOf _x == _vehClass} count vehicles;
+
+    // Load how many of this vehicle are in stock at any trader.
+    _indexStock = EPOCH_traderStoredVehicles find _vehClass;
+    if (_indexStock != -1) then {
+        _existingStock = EPOCH_traderStoredVehiclesCnt select _indexStock;
+        _vehicleCount = _vehicleCount + _existingStock;
+    };
+
     for "_i" from 1 to (_velimit-_vehicleCount) do {
         _allowedVehiclesListArray pushBack _vehClass;
     };

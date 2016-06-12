@@ -67,6 +67,8 @@ for "_i" from 1 to _maxVehicleLimit do {
 					_vehicle = createVehicle [_class, _location, [], 0, "CAN_COLLIDE"];
 					_allVehicles pushBack _vehicle;
 					_vehicle call EPOCH_server_setVToken;
+					_vehicle call EPOCH_server_vehicleInit;
+
 					_vehicle setVectorDirAndUp _worldspace;
 					_vehicle setposATL _location;
 					_vehicle setDamage _damage;
@@ -91,8 +93,6 @@ for "_i" from 1 to _maxVehicleLimit do {
 					};
 
 					_vehicle setFuel (_arr select 4);
-
-					_vehicle call EPOCH_server_vehicleInit;
 
 					_cfgBaseBuilding = 'CfgBaseBuilding' call EPOCH_returnConfig;
 					_availableColorsConfig = (_cfgBaseBuilding >> _class >> "availableColors");
@@ -241,11 +241,17 @@ for "_i" from 1 to _maxVehicleLimit do {
 						_vehicle enableSimulationGlobal false;
 					};
 
-
-
+				} else {
+					diag_log format["DEBUG: invalid vehicle position array %1",_location];
 				};
+			} else {
+				diag_log format["DEBUG: vehicle destroyed already (%2) or invalid vehicle class: %1",_class, _damage];
 			};
+		} else {
+			diag_log format["DEBUG: invalid vehicle data count: %1 != %2",_arrNum,_dataFormatCount];
 		};
+	} else {
+		diag_log format["DEBUG: invalid vehicle data: %1",_response];
 	};
 };
 

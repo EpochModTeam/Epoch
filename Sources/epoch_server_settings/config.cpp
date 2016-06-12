@@ -220,4 +220,5 @@ class CfgEpoch
 	#include "configs\maps\Utes.h"
 	#include "configs\maps\Woodland_ACR.h"
 	#include "configs\maps\Napf.h"
+	#include "configs\maps\tanoa.h"
 };
