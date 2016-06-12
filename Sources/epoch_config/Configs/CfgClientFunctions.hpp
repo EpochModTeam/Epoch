@@ -167,6 +167,7 @@ class CfgClientFunctions
 			class secureStorageHandler {};
 			class dynamicText {};
 			class genderSelection {};
+			class getColorScheme {};
 		};
 
 		class config {
