@@ -1,8 +1,6 @@
 /*
 	Author: Raimonds Virtoss - EpochMod.com
 
-    Contributors: Aaron Clark
-
 	Description:
 	Displays custom text message to player
 
@@ -16,97 +14,61 @@
 	"TEST" call Epoch_dynamicText
 */
 #include "\A3\ui_f\hpp\defineCommonGrids.inc"
-private ["_y","_cnt","_ctrl","_alreadyEnabled","_input","_scale","_width","_height","_centerX","_centerY","_display","_ctrlGroup","_controls","_ctrlText","_add"];
-params [["_text","Missing text",["",(text "")]],["_time",5,[1]],["_color","#ffffff",[""]]];
 
-if (_text isEqualType "STRING") then {_text = parseText _text};
+_in = param [0, "No input given"];
+_timer = param [1, 5];
 
-_alreadyEnabled = uiNamespace getVariable ["rmx_var_dynamicText",false];
+if !(_in isEqualType "STRING") then {_in = str _in};
 
-_input = count str _text * 2;
-_scale = 1;
-_width = _scale * GUI_GRID_W;
-_height = _scale * GUI_GRID_H;
-_centerX = 0.5;
-_centerY = -18 * GUI_GRID_H + GUI_GRID_Y;
-
-disableSerialization;
-_display = findDisplay 46;
-
-_ctrlGroup = _display ctrlCreate ["RscControlsGroupNoScrollbars", call Epoch_getIDC];
-_ctrlGroup ctrlSetPosition [_centerX - _width/2 * _input / 2, _centerY - _height, _width * _input, _height * 2];
-_ctrlGroup ctrlCommit 0;
-
-_y = 0;
-_cnt = -1;
-_controls = [];
-for "_i" from 0 to (_input - 1) do {
-	_ctrl = _display ctrlCreate ["RscPicture", call Epoch_getIDC,_ctrlGroup];
-	_cnt = _cnt + 1;
-	if (_cnt == (_input / 2)) then {_y = _height; _cnt = 0;};
-	_ctrl ctrlSetPosition [_cnt * _width,_y,_width,_height];
-	_ctrl ctrlSetText "#(rgb,8,8,3)color(1,1,1,1)";
-	_ctrl ctrlCommit 0;
-	_ctrl ctrlSetFade 1-(random 0.2);
-	[_ctrl, 1-(random 0.2),0] call BIS_fnc_ctrlSetScale;
-
-	_controls set [_i, _ctrl];
+if (!isnil "rmx_var_dtEnabled") then {
+	rmx_var_dtDisable = true;
 };
 
-_ctrlText = _display ctrlCreate ["rmx_ST1", call Epoch_getIDC,_ctrlGroup];
-_ctrlText ctrlSetStructuredText _text;
-_ctrlText ctrlSetPosition [0, 0, _width * _input /2, _height * 2];
-_ctrlText ctrlCommit 0;
-
-
-_add = uiNamespace getVariable ["rmx_var_dynamicTextCTRL",[]];
-_add pushBack _ctrlGroup;
-uiNamespace setVariable ["rmx_var_dynamicTextCTRL",_add];
-
-[_time,_ctrlGroup,_ctrlText,_controls] spawn {
+[_in, _timer, GUI_GRID_W, GUI_GRID_H] spawn {
+	params ["_in","_timer","_gridW","_gridH"];
 	disableSerialization;
-	params ["_time","_ctrlGroup","_ctrlText","_controls"];
+	
+	rmx_var_dtEnabled = true;
+	rmx_var_dtDisable = false;
+	
+	_dsp = findDisplay 46;
+	
+	_c = _dsp ctrlCreate ["dUI_rscText", -8777];
+	_c2 = _dsp ctrlCreate ["RscText", -8776];
+	_c3 = _dsp ctrlCreate ["RscText", -8775];
+
+	_c ctrlSetBackgroundColor [1,1,1,0.2];
+	_c2 ctrlSetBackgroundColor (call Epoch_getColorScheme);
+	_c3 ctrlSetBackgroundColor (call Epoch_getColorScheme);
+
+	_c ctrlSetText _in;
+
+	_cnt = 0;
+
+	{
+		_ct = if (_x in [65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90]) then {0.8} else {0.3};
+		_cnt = _cnt +_ct;
+	} count (toArray _in);
+
+	_w = ((_cnt max 5) min 80) * _gridW;
+	_w2 = 0.2 * _gridW;
+	_h = 2 * _gridH;
+
+	_c ctrlSetPosition [0.5 - _w / 2,1,_w,_h];
+	_c2 ctrlSetPosition[0.5 - _w / 2,1,_w2,_h];
+	_c3 ctrlSetPosition[0.5 + _w / 2,1,_w2,_h];
+
+	_c ctrlCommit 0;
+	_c2 ctrlCommit 0;
+	_c3 ctrlCommit 0;
+
 
 	_tick = diag_tickTime;
-	while {(diag_tickTime - _tick) < _time} do {
-		{
-			_x ctrlSetFade 1-(random 0.2);
-			[_x, 1-(random 0.2), (random 1)] call BIS_fnc_ctrlSetScale;
-		} forEach _controls;
-		uiSleep 0.5;
-	};
-	_arr = uiNamespace getVariable ["rmx_var_dynamicTextCTRL",[]];
-	_del =
-	{
-		if (str _x isEqualTo str _ctrlGroup) exitWith {_forEachIndex};
-		0
-	} forEach _arr;
-
-	_arr deleteAt _del;
-	uiNamespace setVariable ["rmx_var_dynamicTextCTRL",_arr];
-	uiSleep 0.01;
-	{
-		_x call Epoch_getIDC;
-		ctrlDelete _x;
-	} forEach (_controls + [_ctrlText] + [_ctrlGroup]);
+	while {((diag_tickTime - _tick) < _timer) && !rmx_var_dtDisable} do {};
+	ctrlDelete _c;
+	ctrlDelete _c2;
+	ctrlDelete _c3;
+	
+	rmx_var_dtEnabled = nil;
+	rmx_var_dtDisable = nil;
 };
-
-if !(_alreadyEnabled) then {
-	uiNamespace setVariable ["rmx_var_dynamicText",true];
-	[ctrlPosition _ctrlGroup] spawn {
-		disableSerialization;
-		params ["_defaultPos"];
-		_yPos = _defaultPos param [1];
-		_height = _defaultPos param [3];
-		while {uiNamespace getVariable ["rmx_var_dynamicText",false]} do {
-			_arr = uiNamespace getVariable ["rmx_var_dynamicTextCTRL",[]];
-			if (_arr isEqualTo []) exitWith {uiNamespace setVariable ["rmx_var_dynamicText",nil];};
-			{
-				_xPos = (ctrlPosition _x) select 0;
-				_x ctrlSetPosition [_xPos,_yPos + _height * _forEachIndex];
-				_x ctrlCommit 0;
-			} forEach _arr;
-		};
-	};
-};
-true
