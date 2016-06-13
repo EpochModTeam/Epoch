@@ -9,6 +9,8 @@ Epoch Server DB extension (DLL / so)
 ### [Epoch Mod](https://github.com/EpochModTeam/EpochCore)
 Epoch Assets Mod - Custom Units, Vehicles, Weapons, Items and more!
 
+#### Credits
+
 * [Aaron Clark ([VB]AWOL)](http://epochmod.com): Code, Configs, Textures
 * [Kenneth Bente (Axle)](www.twitch.tv/axles): Tester, Models
 * [Paul Tomany (Sequisha)](https://www.twitch.tv/sequisha): Models, Textures
