@@ -66,18 +66,18 @@ rmx_var_dtMessageArr pushBack [_in, _timer];
 	while {!(rmx_var_dtMessageArr isEqualTo [])} do 
 	{
 		
-		_in = rmx_var_dtMessageArr select 0 select 0;
+		_in = parseText (rmx_var_dtMessageArr select 0 select 0);
 		_timer = rmx_var_dtMessageArr select 0 select 1;
 		rmx_var_dtMessageArr deleteAt 0;
 		
-		_c ctrlSetStructuredText (parseText _in);
+		_c ctrlSetStructuredText _in;
 
 		_cnt = 0;
 
 		{
 			_ct = if (_x in [65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90]) then {0.8} else {0.3};
 			_cnt = _cnt +_ct;
-		} count (toArray _in);
+		} count (toArray str _in);
 
 		_w2 = ((_cnt max 5) min 80) * _gridW;
 		
