@@ -57,7 +57,7 @@ _allCitysDync = [];
 } forEach _allCitys;
 
 _position = [0,0,0];
-_spawnCount = (count EPOCH_VehicleSlots - EPOCH_storedVehicleCount) - 1;
+_spawnCount = (count EPOCH_VehicleSlots - EPOCH_storedVehicleCount);
 
 // diag_log format["DEBUG: count EPOCH_VehicleSlots: %1 EPOCH_storedVehicleCount: %2 _spawnCount %3", (count EPOCH_VehicleSlots), EPOCH_storedVehicleCount, _spawnCount,_allowedVehiclesList];
 // diag_log format["DEBUG: _allowedVehiclesList: %1 ", _allowedVehiclesList];
