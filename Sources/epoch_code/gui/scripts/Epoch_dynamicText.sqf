@@ -43,7 +43,7 @@ rmx_var_dtMessageArr pushBack [_in, _timer];
 	_c2 = _dsp ctrlCreate ["RscText", -8776];
 	_c3 = _dsp ctrlCreate ["RscText", -8775];
 
-	_clr = call rmx_fnc_getColorScheme;
+	_clr = call Epoch_getColorScheme;
 	
 	_c ctrlSetBackgroundColor [_clr select 0, _clr select 1, _clr select 2, 0.5];
 	_c2 ctrlSetBackgroundColor _clr;
