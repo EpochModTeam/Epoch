@@ -30,6 +30,8 @@ class CfgPatches {
 #include "configs\CfgMainTable.h"
 #include "configs\CfgLootTable.h"
 #include "configs\CfgLootTable_CUP.h"
+// vehicle textures
+#include "configs\CfgEpochVehicles.h"
 // security checks
 #include "configs\security\security_checks.h"
 // props template

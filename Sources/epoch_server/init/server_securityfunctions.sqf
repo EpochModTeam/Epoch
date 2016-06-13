@@ -1164,11 +1164,11 @@ call compile ("'"+_skn_doAdminRequest+"' addPublicVariableEventHandler {
 					_vehLockHiveKey = format['%1:%2', (call EPOCH_fn_InstanceID), _slot];
 					['VehicleLock', _vehLockHiveKey, EPOCH_vehicleLockTime, [_lockOwner]] call EPOCH_fnc_server_hiveSETEX;
 
-					_cfgBaseBuilding = 'CfgBaseBuilding' call EPOCH_returnConfig;
-					_availableColorsConfig = (_cfgBaseBuilding >> _item >> 'availableColors');
+					_cfgEpochVehicles = 'CfgEpochVehicles' call EPOCH_returnConfig;
+					_availableColorsConfig = (_cfgEpochVehicles >> _item >> 'availableColors');
 
 					if (isArray(_availableColorsConfig)) then {
-						_textureSelectionIndex = (_cfgBaseBuilding >> _item >> 'textureSelectionIndex');
+						_textureSelectionIndex = (_cfgEpochVehicles >> _item >> 'textureSelectionIndex');
 						_selections = if (isArray(_textureSelectionIndex)) then {getArray(_textureSelectionIndex)} else {[0]};
 						_colors = getArray(_availableColorsConfig);
 						_textures = _colors select 0;

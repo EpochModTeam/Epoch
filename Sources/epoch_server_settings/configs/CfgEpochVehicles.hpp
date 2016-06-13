@@ -1,17 +1,18 @@
 /*
 	Author: Aaron Clark - EpochMod.com
+
     Contributors:
 
 	Description:
-	Main Client side configs for the Epoch gamemode
+	Epoch Server side config to persist vehicle colors, these are also used to randomly colorize new spawns.
 
     Licence:
     Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
 
     Github:
-    https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_config/Configs/CfgEpochVehicles.hpp
+    https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server_settngs/configs/CfgEpochVehicles.h
 */
-class CfgPersistentVehicles
+class CfgEpochVehicles
 {
     class C_Hatchback_01_EPOCH {
         textureSelectionIndex[] = {0};
