@@ -1,32 +1,24 @@
 ## [Epoch Projects](https://github.com/EpochModTeam) by [Epoch Mod Team](https://github.com/orgs/EpochModTeam/people) for [Arma 3](https://arma3.com/)
 
-
 ### [Epoch Survival Gamemode](https://github.com/EpochModTeam/Epoch)
+Open source survival gamemode for Arma 3.
 
-* [Aaron Clark ([VB]AWOL)](http://epochmod.com): Code
+### [Epoch Server Framework](https://github.com/EpochModTeam/EpochServer)
+Epoch Server DB extension (DLL / so)
+
+### [Epoch Mod](https://github.com/EpochModTeam/EpochCore)
+Epoch Assets Mod - Custom Units, Vehicles, Weapons, Items and more!
+
+* [Aaron Clark ([VB]AWOL)](http://epochmod.com): Code, Configs, Textures
+* [Kenneth Bente (Axle)](www.twitch.tv/axles): Tester, Models
+* [Paul Tomany (Sequisha)](https://www.twitch.tv/sequisha): Models, Textures
 * [Andrew Gregory (Axeman)](http://thefreezer.co.uk): AI Code
 * [Raimonds Virtoss (Raymix)](https://www.twitch.tv/raymich): UI Code
-* [Niklas Wagner (Skaronator)](https://skaronator.com): Code
-* [Kenneth Bente (Axle)](www.twitch.tv/axles): Tester
-
-### [Epoch Server DB extension (DLL / so)](https://github.com/EpochModTeam/EpochServer)
-
-* [Aaron Clark ([VB]AWOL)](http://epochmod.com): Code
 * [Florian Kinder (Fank)](https://github.com/Fank): Code
 * [Denis Erygin (devd)](https://github.com/denisio): Linux Code Support
-
-### [Epoch Server SQF Persistence Framework](https://github.com/EpochModTeam/EpochServerCore)
-
-* [Aaron Clark ([VB]AWOL)](http://epochmod.com): Code
-* [Florian Kinder (Fank)](https://github.com/Fank): Code
-
-### [Epoch Mod](http://steamcommunity.com/sharedfiles/filedetails/?id=421839251)
-
-* [Aaron Clark ([VB]AWOL)](http://epochmod.com): Configs, Textures
-* [Paul Tomany (Sequisha)](https://www.twitch.tv/sequisha): Models, Textures
-* [Darren Harrison (Kiory)](https://www.twitch.tv/kiory123): Models, Textures
+* [Darren Harrison (Kiory)](https://www.twitch.tv/kiory123): Models, Textures, Configs
 * [Paden Sturtevant (SteamPunkGears)](https://www.twitch.tv/steampunkgears): Models, Textures
-* [Kenneth Bente (Axle)](www.twitch.tv/axles): Tester, Models
+* [Niklas Wagner (Skaronator)](https://skaronator.com): Code
 * Damian Clark ([VB]GREEN): Graphics
 
 #### Contributors
