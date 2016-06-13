@@ -10,7 +10,7 @@
     Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
 
     Github:
-    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_server/compile/epoch_player/EPOCH_server_revivePlayer.sqf
+    https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server/compile/epoch_player/EPOCH_server_revivePlayer.sqf
 */
 private["_player", "_playerUID", "_items", "_class", "_dir", "_location", "_type", "_weapon", "_attachments", "_currWeap", "_itemSlot", "_itemqtys", "_goggles", "_headgear", "_vest", "_backpack", "_uniform", "_weapons", "_magazinesAmmo", "_itemsplayer", "_weaponsplayer", "_group", "_primaryWeapon", "_secondaryWeapon", "_attachment", "_equipped", "_wMags", "_playerGroup", "_droppedWeapons", "_newPlyr", "_token", "_owner", "_reviver"];
 params ["_player","_reviver",["_token","",[""]]];

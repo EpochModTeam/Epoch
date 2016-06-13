@@ -10,7 +10,7 @@
     Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
 
     Github:
-    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_server/compile/epoch_vehicle/EPOCH_server_lockStorage.sqf
+    https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server/compile/epoch_vehicle/EPOCH_server_lockStorage.sqf
 */
 params ["_unit","_lockStatus","_player",["_token","",[""]]];
 if !([_player, _token] call EPOCH_server_getPToken) exitWith{};

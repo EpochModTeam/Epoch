@@ -10,7 +10,7 @@
     Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
 
     Github:
-    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_server/compile/epoch_player/EPOCH_server_loadPlayer.sqf
+    https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server/compile/epoch_player/EPOCH_server_loadPlayer.sqf
 */
 
 private ["_arr","_uniform","_class","_vest","_vars","_canBeRevived","_dir","_location","_group","_apperance","_goggles","_headgear","_backpack","_weaponsAndItems","_linkedItems","_normalMagazines","_itemsInContainers","_weaponsInContainers","_wMags","_wMagsArray","_equipped","_weapon","_type","_attachments","_currWeap","_found","_playerGroupArray","_playerGroup","_response","_reject","_fnc_addItemToX","_worldspace","_prevInstance","_medical","_server_vars","_hitpoints","_deadPlayer","_alreadyDead","_newPlyr","_playerUID","_serverSettingsConfig","_player","_instanceID","_playerNetID"];

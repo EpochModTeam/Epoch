@@ -10,7 +10,7 @@
     Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
 
     Github:
-    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_server/compile/epoch_vehicle/EPOCH_load_storage.sqf
+    https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server/compile/epoch_vehicle/EPOCH_load_storage.sqf
 */
 private ["_inventory","_location","_dir","_textures","_colors","_textureSelectionIndex","_selections","_count","_color","_cfgBaseBuilding","_objTypes","_objQty","_wMags","_wMagsArray","_attachments","_magazineSizeMax","_magazineName","_magazineSize","_qty","_objType","_marker","_class_raw","_damage","_class","_worldspace","_wsCount","_vehicle","_arr","_storageSlotIndex","_vehHiveKey","_response","_diag"];
 params [["_maxStorageLimit",0]];

@@ -10,7 +10,7 @@
     Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
 
     Github:
-    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_server/compile/epoch_bases/EPOCH_server_paintBUILD.sqf
+    https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server/compile/epoch_bases/EPOCH_server_paintBUILD.sqf
 */
 private["_cfgBaseBuilding","_color", "_class", "_currentTextureSlot", "_slot", "_worldspace", "_objHiveKey", "_VAL", "_return", "_playerUID", "_objSlot"];
 params [["_object",objNull],"_textureSlot","_player",["_token","",[""]]];

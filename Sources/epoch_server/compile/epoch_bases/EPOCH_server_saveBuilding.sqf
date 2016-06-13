@@ -10,7 +10,7 @@
     Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
 
     Github:
-    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_server/compile/epoch_bases/EPOCH_server_saveBuilding.sqf
+    https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server/compile/epoch_bases/EPOCH_server_saveBuilding.sqf
 */
 private["_staticClassConfig","_objSlot", "_findnextslot", "_worldspace", "_objHiveKey", "_VAL", "_cfgBaseBuilding", "_slot", "_storageObj", "_pos", "_buildClass", "_newVehicle", "_textureSlot", "_staticClass", "_playerUID", "_oemType"];
 params ["_vehicle", "_player", ["_token","",[""]]];

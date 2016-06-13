@@ -45,7 +45,7 @@
 
 Build: 439
 [Added] FastNights Epoch Event. http://epochmod.com/forum/topic/41949-accelerated-time/?do=findComment&comment=275310
-[Added] Install batch for all CUP mods and CBA. https://github.com/EpochModTeam/Epoch/tree/master/Tools/Install
+[Added] Install batch for all CUP mods and CBA. https://github.com/EpochModTeam/Epoch/tree/release/Tools/Install
 [Changed] The function EPOCH_fnc_addItemOverflow now supports spawning items and weapons types given a count.
 [Changed] Moved the secure storage config variable 'returnOnPack' from cfgvehicles config to CfgBaseBuilding.
 [Changed] Make use of new getOutMan EH for vehicle epoch anti wall glitch checks.

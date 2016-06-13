@@ -11,7 +11,7 @@
     Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
 
     Github:
-    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_code/gui/scripts/Epoch_getIDC.sqf
+    https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_code/gui/scripts/Epoch_getIDC.sqf
 */
 private ["_in","_list","_out","_find"];
 _in = [_this, 0, controlNull, [controlNull]] call BIS_fnc_param;

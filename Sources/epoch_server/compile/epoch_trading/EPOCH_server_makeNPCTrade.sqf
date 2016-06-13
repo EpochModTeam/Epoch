@@ -10,7 +10,7 @@
     Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
 
     Github:
-    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_server/compile/epoch_trading/EPOCH_server_makeNPCTrade.sqf
+    https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server/compile/epoch_trading/EPOCH_server_makeNPCTrade.sqf
 */
 private ["_vehicleSold","_vehHiveKey","_VAL","_makeTradeIn","_vehSlot","_playerNetID","_vehicle","_vehicles","_tradeTotal","_current_crypto","_tradeQtyTotal","_currQty","_qtyIndex","_itemWorth","_item","_itemQty","_position","_foundSmoke","_objOwner","_tmpposition","_lockOwner","_helipad","_helipads","_smoke","_vehicleBought","_playerGroup","_vehObj","_final_location","_group","_wp","_wHPos","_wH","_nearByHolder","_itemTax","_tax","_objHiveKey","_playerCryptoLimit","_config","_cIndex","_vars","_current_cryptoRaw","_aiItems","_itemClasses","_itemQtys","_returnIn","_returnOut","_slot"];
 params ["_trader","_itemsIn","_itemsOut","_player",["_token","",[""]]];

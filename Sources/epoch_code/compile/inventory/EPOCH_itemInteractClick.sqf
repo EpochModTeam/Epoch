@@ -10,7 +10,7 @@
     Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
 
     Github:
-    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_code/compile/inventory/EPOCH_itemInteractClick.sqf
+    https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_code/compile/inventory/EPOCH_itemInteractClick.sqf
 */
 private ["_data","_confData","_type","_interactOption","_buttonTXT","_magCount","_text","_pic","_display","_useBtn","_config","_craftingConfig"];
 _this call EPOCH_selectInventoryItem;

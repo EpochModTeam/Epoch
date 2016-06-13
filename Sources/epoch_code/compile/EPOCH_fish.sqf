@@ -10,7 +10,7 @@
     Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
 
     Github:
-    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_code/compile/EPOCH_fish.sqf
+    https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_code/compile/EPOCH_fish.sqf
 */
 private ["_bobber","_diffTime","_fishes","_fish","_randomChanceMax","_randomChance","_castTime","_nearByBobbers","_nearByBobbersLocal","_objects","_currentPos"];
 

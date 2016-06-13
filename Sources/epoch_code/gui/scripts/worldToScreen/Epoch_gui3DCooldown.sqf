@@ -10,7 +10,7 @@
     Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
 
     Github:
-    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_code/gui/scripts/worldToScreen/Epoch_gui3DCooldown.sqf
+    https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_code/gui/scripts/worldToScreen/Epoch_gui3DCooldown.sqf
 
 	Usage:
 	[_pos, _time, _distance, "myVariable"] call Epoch_gui3DCooldown;

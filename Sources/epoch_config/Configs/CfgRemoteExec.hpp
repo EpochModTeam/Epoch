@@ -10,7 +10,7 @@
     Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
 
     Github:
-    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_config/Configs/CfgRemoteExec.hpp
+    https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_config/Configs/CfgRemoteExec.hpp
 */
 
 class CfgRemoteExec

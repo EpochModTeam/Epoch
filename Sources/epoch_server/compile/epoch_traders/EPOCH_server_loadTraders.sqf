@@ -10,7 +10,7 @@
     Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
 
     Github:
-    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_server/compile/epoch_traders/EPOCH_server_loadTraders.sqf
+    https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server/compile/epoch_traders/EPOCH_server_loadTraders.sqf
 */
 private ["_arr","_currentStock","_limit","_toBeRemoved","_marker","_staticTrader","_agent","_class","_pos","_randomAIUniform","_dir","_objHiveKey","_response","_schedule","_home","_work","_traderSlotIndex","_staticTradersArray","_staticTradersArrCount","_aiTables","_serverSettingsConfig","_storedVehicleLimit"];
 params [["_maxTraderLimit",0]];

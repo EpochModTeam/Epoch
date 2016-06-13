@@ -10,7 +10,7 @@
     Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
 
     Github:
-    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_server/compile/epoch_vehicle/EPOCH_server_save_storage.sqf
+    https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server/compile/epoch_vehicle/EPOCH_server_save_storage.sqf
 */
 private ["_wepsItemsCargo","_magsAmmoCargo","_cargoIndex","_vehHiveKey","_damage","_vehiclePos","_magsAmmoCargoMinimized","_inventory","_colorSlot","_storageOwners","_locked","_worldspace","_VAL","_class","_vehSlot"];
 params [["_vehicle",objNull]];

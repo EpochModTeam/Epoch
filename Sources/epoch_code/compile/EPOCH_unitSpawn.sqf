@@ -10,7 +10,7 @@
     Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
 
     Github:
-    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_code/compile/EPOCH_unitSpawn.sqf
+    https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_code/compile/EPOCH_unitSpawn.sqf
 */
 private ["_unit","_sapperNum","_config","_targetPos","_grp","_driver","_index","_nonJammer","_nonTrader","_jammers","_jammerRange","_restricted","_disableAI"];
 params ["_unitClass","_trgt","_doVariable"];

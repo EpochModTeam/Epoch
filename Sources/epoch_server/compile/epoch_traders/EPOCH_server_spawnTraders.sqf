@@ -10,7 +10,7 @@
     Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
 
     Github:
-    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_server/compile/epoch_traders/EPOCH_server_spawnTraders.sqf
+    https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server/compile/epoch_traders/EPOCH_server_spawnTraders.sqf
 */
 private ["_home","_work","_pos","_marker","_buildingPositions","_startTime","_endTime","_schedule","_agent","_slot","_objHiveKey","_buildingWork","_homeBuildingPositions","_acceptableBlds","_buildings","_randomAIUniform","_randomAIClass","_building","_position","_aiTables","_spawnCount","_usedBuildings"];
 

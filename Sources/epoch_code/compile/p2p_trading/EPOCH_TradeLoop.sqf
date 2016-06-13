@@ -10,7 +10,7 @@
     Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
 
     Github:
-    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_code/compile/p2p_trading/EPOCH_TradeLoop.sqf
+    https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_code/compile/p2p_trading/EPOCH_TradeLoop.sqf
 */
 private ["_item","_index","_removeCount","_sizeOut","_array","_cryptoOffer","_offerArray","_tradeOffer","_tradeCryptoOffer","_isAcceptedOther","_isAccepted"];
 

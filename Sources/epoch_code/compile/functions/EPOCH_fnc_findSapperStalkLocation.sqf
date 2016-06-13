@@ -10,7 +10,7 @@
     Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
 
     Github:
-    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_code/compile/functions/EPOCH_fnc_findSapperStalkLocation.sqf
+    https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_code/compile/functions/EPOCH_fnc_findSapperStalkLocation.sqf
 
     Example:
     _moveTo = [_centre, _min_distance, _max_distance, _height, _onRoad] call EPOCH_fnc_findSafePos;

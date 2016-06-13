@@ -10,7 +10,7 @@
     Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
 
     Github:
-    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_server/compile/epoch_antagonists/EPOCH_server_handle_say3D.sqf
+    https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server/compile/epoch_antagonists/EPOCH_server_handle_say3D.sqf
 */
 private["_range", "_nearBy", "_sound"];
 params ["_player",["_target",objNull],["_soundIndex",-1], ["_token","",[""]]];

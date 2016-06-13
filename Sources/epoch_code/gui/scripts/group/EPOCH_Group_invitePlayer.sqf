@@ -10,7 +10,7 @@
     Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
 
     Github:
-    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_code/gui/group/EPOCH_Group_invitePlayer.sqf
+    https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_code/gui/group/EPOCH_Group_invitePlayer.sqf
 */
 if !(_this in Epoch_invited_GroupUIDs) then {
   Epoch_invited_GroupUIDs pushBack _this;

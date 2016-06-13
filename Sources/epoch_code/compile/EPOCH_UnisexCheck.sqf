@@ -10,7 +10,7 @@
     Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
 
     Github:
-    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_code/compile/EPOCH_UnisexCheck.sqf
+    https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_code/compile/EPOCH_UnisexCheck.sqf
 */
 private ["_femaleVariant","_vest","_item","_config","_woman","_maleVariant","_vestItems","_mags"];
 params ["_unit","_container","_item"];

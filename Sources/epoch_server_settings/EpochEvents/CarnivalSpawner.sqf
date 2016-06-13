@@ -4,7 +4,7 @@
 	This work is licensed under a Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License.
 	http://creativecommons.org/licenses/by-nc-nd/4.0/
 	Improvements and or bugfixes and other contributions are welcome via the github:
-	https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_server_settings/EpochEvents/CarnivalSpawner.sqf
+	https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server_settings/EpochEvents/CarnivalSpawner.sqf
 */
 private ["_item","_marker","_ferrisPosition"];
 _ferrisPosition = [epoch_centerMarkerPosition, 0, EPOCH_dynamicVehicleArea, 10, 0, 4000, 0] call BIS_fnc_findSafePos;

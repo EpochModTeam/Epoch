@@ -10,7 +10,7 @@
     Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
 
     Github:
-    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_server/compile/epoch_server/EPOCH_serverLootObject.sqf
+    https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server/compile/epoch_server/EPOCH_serverLootObject.sqf
 */
 private["_randomItemArray", "_quan", "_randomLootClass", "_randomItem", "_lootPaid", "_mags", "_lootItemWeightedArray", "_lootItemArray", "_weightedItemArray", "_exit", "_maxPayout", "_lootTable", "_lootTableArray", "_weightedArray"];
 params ["_object","_type",["_forceSpawn",false]];

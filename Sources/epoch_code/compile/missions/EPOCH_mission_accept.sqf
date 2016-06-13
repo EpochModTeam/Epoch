@@ -10,7 +10,7 @@
     Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
 
     Github:
-    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_code/compile/missions/EPOCH_mission_accept.sqf
+    https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_code/compile/missions/EPOCH_mission_accept.sqf
 */
 private ["_missionTasks","_selectedMission","_simpleTask","_simpleTaskFSM","_simpleTaskSQF","_simpleTaskFNC","_taskNS","_itemCompile","_fnc_path","_path","_taskControl","_missionAllowed","_missionIndex","_plyrVar"];
 _missionIndex = lbCurSel 1500;

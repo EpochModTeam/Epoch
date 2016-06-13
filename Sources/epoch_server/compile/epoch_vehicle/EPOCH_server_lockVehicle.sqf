@@ -10,7 +10,7 @@
     Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
 
     Github:
-    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_server/compile/epoch_vehicle/EPOCH_server_lockVehicle.sqf
+    https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server/compile/epoch_vehicle/EPOCH_server_lockVehicle.sqf
 */
 private ["_lockOwner","_lockedOwner","_response","_playerUID","_playerGroup","_vehSlot","_vehLockHiveKey","_isLocked","_driver","_crew","_logic"];
 params ["_vehicle","_value","_player",["_token","",[""]]];

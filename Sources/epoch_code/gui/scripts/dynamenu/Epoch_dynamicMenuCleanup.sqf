@@ -10,7 +10,7 @@
     Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
 
     Github:
-    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_code/gui/scripts/dynamenu/Epoch_dynamicMenuCleanup.sqf
+    https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_code/gui/scripts/dynamenu/Epoch_dynamicMenuCleanup.sqf
 */
 private ["_close","_cleanupVars"];
 _close = param [0,false,[false]];

@@ -10,7 +10,7 @@
     Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
 
     Github:
-    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_server/compile/epoch_group/EPOCH_server_upgradeGroup.sqf
+    https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server/compile/epoch_group/EPOCH_server_upgradeGroup.sqf
 */
 private ["_playerCryptoLimit","_current_crypto","_groupMemberPUID","_return","_newGroupSize","_upgradePrice","_contentArray","_found","_cIndex","_vars","_response"];
 params ["_groupID","_player",["_token","",[""]]];

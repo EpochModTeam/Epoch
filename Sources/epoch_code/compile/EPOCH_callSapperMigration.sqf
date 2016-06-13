@@ -10,7 +10,7 @@
     Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
 
     Github:
-    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_code/compile/EPOCH_callSapperMigration.sqf
+    https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_code/compile/EPOCH_callSapperMigration.sqf
 */
 private ["_trgt","_sapperCount","_notReady","_start","_dirTo","_finish","_nrPlyrs","_abortAfter","_pos","_axeSapper","_disableAI"];
 

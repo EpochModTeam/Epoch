@@ -10,7 +10,7 @@
     Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
 
     Github:
-    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_server/compile/epoch_group/EPOCH_server_updatePlayerGroup.sqf
+    https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server/compile/epoch_group/EPOCH_server_updatePlayerGroup.sqf
 */
 private ["_groupID","_selectedPlayerUID","_addOrRemove","_modOrMember","_modOrMemberRevert","_response","_contentArray","_modArray","_memberArray","_selectedPlayerName","_group","_removePlayerArray","_modOrMemberArray","_found"];
 

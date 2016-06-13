@@ -10,7 +10,7 @@
     Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
 
     Github:
-    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_server/compile/epoch_server/EPOCH_server_createTeleport.sqf
+    https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server/compile/epoch_server/EPOCH_server_createTeleport.sqf
 */
 private ["_class","_debug1","_lightLocation","_light","_deSimulate","_pos","_dir","_ep","_useWorldPos","_pos1","_markerName","_loadBaseTemplateConfig","_pro2","_veh2","_enterClass","_exitClass","_pro1","_veh1","_debugLocation","_debug","_protection","_config","_loadBaseTemplateConfig"];
 

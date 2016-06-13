@@ -15,7 +15,7 @@
 	http://creativecommons.org/licenses/by-nc-nd/4.0/
 
 	Improvements and or bugfixes and other contributions are welcome via the github:
-	https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_server_settings/EpochEvents/PlantSpawner.sqf
+	https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server_settings/EpochEvents/PlantSpawner.sqf
 */
 private ["_debug","_jammers","_restricted","_playersNearby","_plant","_position","_plantCount","_scatter","_marker","_nearbyLocations","_plants","_timeStamp","_decayTime","_showPlantMarkers"];
 
