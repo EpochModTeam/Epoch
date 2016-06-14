@@ -27,7 +27,8 @@ _unitClass = selectRandom ["EPOCH_RyanZombie_1","EPOCH_RyanZombie_2","EPOCH_Ryan
 _unit = createAgent[_unitClass, position player, [], _zRange, "FORM"];
 _clutterPos = getPosATL _unit;
 if!(isOnRoad _unit)then{
-	createVehicle ["Land_Grave_dirt_F", _clutterPos, [], 0, "CAN_COLLIDE"];
+	// todo cleanup this object after some time
+	// _grave = createVehicle ["Land_Grave_dirt_F", _clutterPos, [], 0, "CAN_COLLIDE"];
 };
 _unit call _disableAI;
 _unit switchMove "AmovPercMstpSnonWnonDnon_SaluteOut";
