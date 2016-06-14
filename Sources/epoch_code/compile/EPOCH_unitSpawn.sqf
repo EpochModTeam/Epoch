@@ -115,23 +115,9 @@ switch _unitClass do {
 		[] execFSM "\x\addons\a3_epoch_code\System\Event_Air_Drop.fsm";
 	};
 	case "EPOCH_RyanZombie_1": {
-		_unitClass = selectRandom ["EPOCH_RyanZombie_1","EPOCH_RyanZombie_2","EPOCH_RyanZombie_3","EPOCH_RyanZombie_4","EPOCH_RyanZombie_5"];
-
-		// diag_log format["DEBUG: spawned %1",_unitClass];
-		_unit = createAgent[_unitClass, _targetPos, [], 120, "FORM"];
-		_unit call _disableAI;
-
-		// climb out of ground
-		_unit switchMove "AmovPercMstpSnonWnonDnon_SaluteOut";
-		_unit setmimic "dead";
-		_unit setface (selectRandom ["RyanZombieFace1", "RyanZombieFace2", "RyanZombieFace3", "RyanZombieFace4", "RyanZombieFace5"]);
-		removegoggles _unit;
-
-		// load temp brains
-		[_unit,true] execFSM "\x\addons\a3_epoch_code\System\Zombie_Brain.fsm";
-
-		// spawn more up to limit
-		_id = "EPOCH_RyanZombie_1" call EPOCH_unitSpawn;
+		_unit = [] call EPOCH_zombieSpawn;
+		// spawn more zeds up to limit max spawn limit.
+		"EPOCH_RyanZombie_1" call EPOCH_unitSpawn;
 	};
 };
 
