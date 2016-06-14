@@ -109,3 +109,16 @@ class CfgEpochCloak
 	teleportChance = 66; //Chance for cloak to teleport. (Min: 1)
 	hoverFrequency = 1280; //Cloak has new hover attack. When player is above cloak, and at a distance, cloak will float to player and teleport attack. Only perform one of these moves per this period. (Min: 240)
 };
+class CfgEpochRyanZombie
+{
+	attackDist = 1.6; //Attack Distance.
+	range = 108; //Range at which to dispose old zombies and spawn new ones within.
+	maxNumber = 12; //Maximum number of zombies within range,
+	smell[] = {28,0.42}; //Distance in metres up to which the zombie can smell a target. | Skill (0 - 1). 0 - Disable
+	sight[] = {18,0.72}; //Zombie sight distance | Skill (0 - 1).
+	hearing[] = {108,0.68}; //Zombie hearing distance | Skill (0 - 1). Max FiredNear EH Limit ?
+	memory[] = {480,0.8}; //Memory time. / Weighting. WIP - Not Used
+	reflexSpeed = 0.25; //Zombie brain will pause for this time when checking for new stimulus during each thought process. Lower number equals a more reactive zombie. (Guide Min 0.25 - Max 2.5).
+	moans[] = {"ryanzombiesmoan1","ryanzombiesmoan2","ryanzombiesmoan3","ryanzombiesmoan4"};
+	screams[] = {"ryanzombiesscream1", "ryanzombiesscream2", "ryanzombiesscream3", "ryanzombiesscream4", "ryanzombiesscream5", "ryanzombiesscream6", "ryanzombiesscream7", "ryanzombiesscream8", "ryanzombiesscream9"};
+};
