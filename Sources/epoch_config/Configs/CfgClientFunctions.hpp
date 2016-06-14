@@ -33,6 +33,7 @@ class CfgClientFunctions
 			class antiWall {};
 			class onEachFrame {};
 			class callSapperMigration {};
+			class zombieSpawn {};
 		};
 
 		class building
@@ -119,6 +120,8 @@ class CfgClientFunctions
    			class fnc_playerSetVariable {};
    			class fnc_playerAttachToAntagonist {};
 			class fnc_createMarker {};
+			class fnc_dynamicFSM {};
+			class fnc_vectorDivide {};
 		};
 		class environment
 		{
