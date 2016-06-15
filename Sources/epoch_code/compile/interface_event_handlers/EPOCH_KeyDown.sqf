@@ -140,7 +140,7 @@ if (vehicle player == player) then {
 
 	// H - holster unholster
 	if (_dikCode == EPOCH_keysHolster) then {
-		if (player nearObjects["Const_All_Walls_F", 3] isEqualTo[]) then {
+		if (player nearObjects["Const_All_Walls_F", 3] isEqualTo[] && speed player == 0) then {
 			if (currentweapon player != "") then {
 				EPOCH_Holstered = currentweapon player;
 				player action["switchWeapon", player, player, 100];
