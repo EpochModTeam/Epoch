@@ -217,7 +217,7 @@ class FSM
                                          "};" \n
                                          "_zombie removeAllEventHandlers ""Hit"";" \n
                                          "_zombie removeAllEventHandlers ""FiredNear"";" \n
-                                         "[] call EPOCH_zombieSpawn;" \n
+                                         "//[] call EPOCH_zombieSpawn;" \n
                                          "" \n
                                          "_t = diag_tickTime;" \n
                                          "" \n
@@ -401,7 +401,7 @@ class FSM
                                          "};" \n
                                          "_zombie removeAllEventHandlers ""Hit"";" \n
                                          "_zombie removeAllEventHandlers ""FiredNear"";" \n
-                                         "[] call EPOCH_zombieSpawn;" \n
+                                         "//[] call EPOCH_zombieSpawn;" \n
                                          "" \n
                                          "_t = diag_tickTime;" \n
                                          "" \n
