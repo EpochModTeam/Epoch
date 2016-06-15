@@ -65,180 +65,186 @@ for "_i" from 1 to _maxVehicleLimit do {
 					};
 
 					_vehicle = createVehicle [_class, _location, [], 0, "CAN_COLLIDE"];
-					_allVehicles pushBack _vehicle;
-					_vehicle call EPOCH_server_setVToken;
-					_vehicle call EPOCH_server_vehicleInit;
+					if !(isNull _vehicle) then {
 
-					_vehicle setVectorDirAndUp _worldspace;
-					_vehicle setposATL _location;
-					_vehicle setDamage _damage;
+						_allVehicles pushBack _vehicle;
+						_vehicle call EPOCH_server_setVToken;
+						_vehicle call EPOCH_server_vehicleInit;
 
-					_allHitpoints = getAllHitPointsDamage _vehicle;
-					if !(_allHitpoints isEqualTo []) then{
-						_actualHitpoints = _allHitpoints select 0;
-						_hitpoints = _arr select 3;
-						if ((count _actualHitpoints) == (count _hitpoints)) then{
-							{
-								_dmg = _hitpoints param [_forEachIndex,0];
-								if (_x in ["HitFuel", "HitEngine"]) then {
-									_dmg = _dmg min 0.9;
-								};
-								_vehicle setHitIndex [_forEachIndex, _dmg];
-							} forEach _actualHitpoints;
-						};
-					};
+						_vehicle setVectorDirAndUp _worldspace;
+						_vehicle setposATL _location;
+						_vehicle setDamage _damage;
 
-					if (_immuneVehicleSpawn) then{
-						_vehicle allowDamage false;
-					};
-
-					_vehicle setFuel (_arr select 4);
-
-					_cfgEpochVehicles = 'CfgEpochVehicles' call EPOCH_returnConfig;
-					_availableColorsConfig = (_cfgEpochVehicles >> _class >> "availableColors");
-					if (isArray(_availableColorsConfig)) then {
-						_color = _arr select 7;
-						_colors = getArray(_availableColorsConfig);
-						_textureSelectionIndex = (_cfgEpochVehicles >> _class >> "textureSelectionIndex");
-						_selections = if (isArray(_textureSelectionIndex)) then { getArray(_textureSelectionIndex) } else { [0] };
-						_count = (count _colors) - 1;
-						{
-							_textures = _colors select 0;
-							if (_count >= _forEachIndex) then {
-								_textures = _colors select _forEachIndex;
+						_allHitpoints = getAllHitPointsDamage _vehicle;
+						if !(_allHitpoints isEqualTo []) then{
+							_actualHitpoints = _allHitpoints select 0;
+							_hitpoints = _arr select 3;
+							if ((count _actualHitpoints) == (count _hitpoints)) then{
+								{
+									_dmg = _hitpoints param [_forEachIndex,0];
+									if (_x in ["HitFuel", "HitEngine"]) then {
+										_dmg = _dmg min 0.9;
+									};
+									_vehicle setHitIndex [_forEachIndex, _dmg];
+								} forEach _actualHitpoints;
 							};
-							_vehicle setObjectTextureGlobal [_x, _textures  select _color];
-						} forEach _selections;
-						_vehicle setVariable ["VEHICLE_TEXTURE", _color];
-					};
-
-					clearWeaponCargoGlobal    _vehicle;
-					clearMagazineCargoGlobal  _vehicle;
-					clearBackpackCargoGlobal  _vehicle;
-					clearItemCargoGlobal      _vehicle;
-
-					_vehicle disableTIEquipment true;
-
-					_vehicle lock true;
-
-					_vehicle setVariable ["VEHICLE_SLOT", str(_i), true];
-
-					//diag_log format ["FILLING: _vehicle %1 pos: %2", _vehicle, (getPosATL _vehicle)];
-					{
-						_objType = _forEachIndex;
-
-						_objTypes = _x;
-						_objQty = [];
-
-						if (_objType in [1, 2, 3]) then {
-							_objTypes = _x select 0;
-							_objQty = _x select 1;
 						};
 
+						if (_immuneVehicleSpawn) then{
+							_vehicle allowDamage false;
+						};
+
+						_vehicle setFuel (_arr select 4);
+
+						_cfgEpochVehicles = 'CfgEpochVehicles' call EPOCH_returnConfig;
+						_availableColorsConfig = (_cfgEpochVehicles >> _class >> "availableColors");
+						if (isArray(_availableColorsConfig)) then {
+							_color = _arr select 7;
+							_colors = getArray(_availableColorsConfig);
+							_textureSelectionIndex = (_cfgEpochVehicles >> _class >> "textureSelectionIndex");
+							_selections = if (isArray(_textureSelectionIndex)) then { getArray(_textureSelectionIndex) } else { [0] };
+							_count = (count _colors) - 1;
+							{
+								_textures = _colors select 0;
+								if (_count >= _forEachIndex) then {
+									_textures = _colors select _forEachIndex;
+								};
+								_vehicle setObjectTextureGlobal [_x, _textures  select _color];
+							} forEach _selections;
+							_vehicle setVariable ["VEHICLE_TEXTURE", _color];
+						};
+
+						clearWeaponCargoGlobal    _vehicle;
+						clearMagazineCargoGlobal  _vehicle;
+						clearBackpackCargoGlobal  _vehicle;
+						clearItemCargoGlobal      _vehicle;
+
+						_vehicle disableTIEquipment true;
+
+						_vehicle lock true;
+
+						_vehicle setVariable ["VEHICLE_SLOT", str(_i), true];
+
+						//diag_log format ["FILLING: _vehicle %1 pos: %2", _vehicle, (getPosATL _vehicle)];
 						{
-							switch _objType do {
-								// Weapon cargo
-								case 0: {
-									if (_x isEqualType []) then {
-										if ((count _x) >= 4) then {
+							_objType = _forEachIndex;
 
-											_vehicle addWeaponCargoGlobal[_x deleteAt 0, 1];
+							_objTypes = _x;
+							_objQty = [];
 
-											_attachments = [];
-											_wMags = false;
-											_wMagsArray = [];
-											// suppressor, laser, optics, magazines(array), bipods
-											{
-												// magazines
-												if (_x isEqualType []) then{
-													_wMags = true;
-													_wMagsArray = _x;
-												}
-												else {
-													// attachments
-													if (_x != "") then{
-														_attachments pushBack _x;
+							if (_objType in [1, 2, 3]) then {
+								_objTypes = _x select 0;
+								_objQty = _x select 1;
+							};
+
+							{
+								switch _objType do {
+									// Weapon cargo
+									case 0: {
+										if (_x isEqualType []) then {
+											if ((count _x) >= 4) then {
+
+												_vehicle addWeaponCargoGlobal[_x deleteAt 0, 1];
+
+												_attachments = [];
+												_wMags = false;
+												_wMagsArray = [];
+												// suppressor, laser, optics, magazines(array), bipods
+												{
+													// magazines
+													if (_x isEqualType []) then{
+														_wMags = true;
+														_wMagsArray = _x;
+													}
+													else {
+														// attachments
+														if (_x != "") then{
+															_attachments pushBack _x;
+														};
+													};
+												} forEach _x;
+
+												// add all attachments to vehicle
+												// TODO replace with adding attachments directly to gun (Arma feature dependant)
+												{
+													_vehicle addItemCargoGlobal[_x, 1];
+												} forEach _attachments;
+
+												if (_wMags) then{
+													if (_wMagsArray isEqualType [] && (count _wMagsArray) >= 2) then{
+														_vehicle addMagazineAmmoCargo[_wMagsArray select 0, 1, _wMagsArray select 1];
 													};
 												};
-											} forEach _x;
 
-											// add all attachments to vehicle
-											// TODO replace with adding attachments directly to gun (Arma feature dependant)
-											{
-												_vehicle addItemCargoGlobal[_x, 1];
-											} forEach _attachments;
-
-											if (_wMags) then{
-												if (_wMagsArray isEqualType [] && (count _wMagsArray) >= 2) then{
-													_vehicle addMagazineAmmoCargo[_wMagsArray select 0, 1, _wMagsArray select 1];
-												};
 											};
+										};
+									};
+									// Magazine cargo
+									case 1: {
+										_magazineName = _x;
+										_magazineSize = _objQty select _forEachIndex;
 
+										if ((_magazineName isEqualType "STRING") && (_magazineSize isEqualType 0)) then {
+											_magazineSizeMax = getNumber (configFile >> "CfgMagazines" >> _magazineName >> "count");
+
+											// Add full magazines cargo
+											_vehicle addMagazineAmmoCargo [_magazineName, floor (_magazineSize / _magazineSizeMax), _magazineSizeMax];
+
+											// Add last non full magazine
+											if ((_magazineSize % _magazineSizeMax) > 0) then {
+												_vehicle addMagazineAmmoCargo [_magazineName, 1, floor (_magazineSize % _magazineSizeMax)];
+											};
+										};
+									};
+									// Backpack cargo
+									case 2: {
+										if (_x isEqualType "STRING") then {
+											_qty = _objQty select _forEachIndex;
+											_vehicle addBackpackCargoGlobal [_x, _qty];
+										};
+									};
+									// Item cargo
+									case 3: {
+										if (_x isEqualType "STRING") then {
+											_qty = _objQty select _forEachIndex;
+											_vehicle addItemCargoGlobal [_x, _qty];
 										};
 									};
 								};
-								// Magazine cargo
-								case 1: {
-									_magazineName = _x;
-									_magazineSize = _objQty select _forEachIndex;
+							} forEach _objTypes;
+						} forEach (_arr select 5);
 
-									if ((_magazineName isEqualType "STRING") && (_magazineSize isEqualType 0)) then {
-										_magazineSizeMax = getNumber (configFile >> "CfgMagazines" >> _magazineName >> "count");
+						// remove and add back magazines works for armed trucks but not helis ATM
+						{_vehicle removeMagazineGlobal _x}count (magazines _vehicle);
+						{_vehicle addMagazine _x}count (_arr select 6);
 
-										// Add full magazines cargo
-										_vehicle addMagazineAmmoCargo [_magazineName, floor (_magazineSize / _magazineSizeMax), _magazineSizeMax];
+						// turrets
+						/*
+						_mags = _vehicle magazinesTurret [0];
+						{
+							_object removeMagazinesTurret [_x, [0]];
+						} forEach _mags;
 
-										// Add last non full magazine
-										if ((_magazineSize % _magazineSizeMax) > 0) then {
-											_vehicle addMagazineAmmoCargo [_magazineName, 1, floor (_magazineSize % _magazineSizeMax)];
-										};
-									};
-								};
-								// Backpack cargo
-								case 2: {
-									if (_x isEqualType "STRING") then {
-										_qty = _objQty select _forEachIndex;
-										_vehicle addBackpackCargoGlobal [_x, _qty];
-									};
-								};
-								// Item cargo
-								case 3: {
-									if (_x isEqualType "STRING") then {
-										_qty = _objQty select _forEachIndex;
-										_vehicle addItemCargoGlobal [_x, _qty];
-									};
-								};
-							};
-						} forEach _objTypes;
-					} forEach (_arr select 5);
+						_mags = _vehicle magazinesTurret [-1];
+						{
+							_object removeMagazinesTurret [_x, [-1]];
+						} forEach _mags;
+						*/
 
-					// remove and add back magazines works for armed trucks but not helis ATM
-					{_vehicle removeMagazineGlobal _x}count (magazines _vehicle);
-					{_vehicle addMagazine _x}count (_arr select 6);
+						if (EPOCH_DEBUG_VEH) then {
+							_marker = createMarker [str(_location) , _location];
+							_marker setMarkerShape "ICON";
+							_marker setMarkerType "mil_dot";
+							_marker setMarkerText _class;
+							_marker setMarkerColor "ColorGreen";
+						};
 
-					// turrets
-					/*
-					_mags = _vehicle magazinesTurret [0];
-					{
-						_object removeMagazinesTurret [_x, [0]];
-					} forEach _mags;
+						if (_simulationHandler) then{
+							_vehicle enableSimulationGlobal false;
+						};
 
-					_mags = _vehicle magazinesTurret [-1];
-					{
-						_object removeMagazinesTurret [_x, [-1]];
-					} forEach _mags;
-					*/
-
-					if (EPOCH_DEBUG_VEH) then {
-						_marker = createMarker [str(_location) , _location];
-						_marker setMarkerShape "ICON";
-						_marker setMarkerType "mil_dot";
-						_marker setMarkerText _class;
-						_marker setMarkerColor "ColorGreen";
-					};
-
-					if (_simulationHandler) then{
-						_vehicle enableSimulationGlobal false;
+					} else {
+						diag_log format["DEBUG: vehicle object Null: class: %1, loc: %2, slot: %3",_class, _location,str(_i)];
 					};
 
 				} else {
