@@ -35,7 +35,7 @@ class CfgObjectInteractions {
     class SapperCorpse_SIM_EPOCH : Default {
         interactMode = 0;
     };
-    
+
     class Snake_random_EPOCH : Default {
         distance = 3;
         toxicChance = 0.2;
@@ -44,7 +44,7 @@ class CfgObjectInteractions {
         bleedAmount = 30;
         bloodpAmount = 3;
         soundEffect[] = {"snake_bite0"};
-        canSee = "!(lineIntersects[eyePos _this, aimPos player, _this, player])";
+        canSee = "!(lineIntersects[eyePos _unit, aimPos _target, _unit, _target])";
         ppEffect = 0;
     };
     class Snake2_random_EPOCH : Default {
@@ -55,7 +55,7 @@ class CfgObjectInteractions {
         bleedAmount = 30;
         bloodpAmount = 3;
         soundEffect[] = {"snake_bite0"};
-        canSee = "!(lineIntersects[eyePos _this, aimPos player, _this, player])";
+        canSee = "!(lineIntersects[eyePos _unit, aimPos _target, _unit, _target])";
         ppEffect = 0;
     };
     class GreatWhite_F : Default {
@@ -88,21 +88,21 @@ class CfgObjectInteractions {
         bleedAmount = 66;
         bloodpAmount = 3;
         soundEffect[] = {"cultist_nearby"};
-        canSee = "!(lineIntersects[eyePos _this, aimPos player, _this, player])";
+        canSee = "!(lineIntersects[eyePos _unit, aimPos _target, _unit, _target])";
         ppEffect = 1;
     };
     class EPOCH_RyanZombie_1 : Default {
         distance = 3;
-        toxicChance = 0.2;
-        bloodpChance = 1;
-        fatigueChance = 0.5;
+        toxicChance = 0.1;
+        bloodpChance = 0.9;
+        fatigueChance = 0.4;
         bleedAmount = 30;
         bloodpAmount = 3;
-        soundEffect[] = {"ryanzombiesattack1", "ryanzombiesattack2", "ryanzombiesattack3", "ryanzombiesattack4", "ryanzombiesattack5"};
+        soundEffect[] = {{"ryanzombies\sounds\attack1.ogg",400}, {"ryanzombies\sounds\attack2.ogg",400}, {"ryanzombies\sounds\attack3.ogg",400}, {"ryanzombies\sounds\attack4.ogg",400}, {"ryanzombies\sounds\attack5.ogg",400}};
         soundEffectGlobal = 1;
         animationEffect[] = {"AwopPercMstpSgthWnonDnon_throw"};
         animationEffectGlobal = 3;
-        canSee = "!(lineIntersects[eyePos _this, aimPos player, _this, player])";
+        canSee = "!(lineIntersects[eyePos _unit, aimPos _target, _unit, _target])";
         ppEffect = 0;
     };
     class EPOCH_RyanZombie_2 : EPOCH_RyanZombie_1 {};

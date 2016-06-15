@@ -43,3 +43,4 @@ if !(_this isEqualType []) then {
 		}];
 	};
 }forEach _this;
+addToRemainsCollector _this;

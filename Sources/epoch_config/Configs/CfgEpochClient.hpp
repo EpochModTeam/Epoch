@@ -32,7 +32,7 @@ class CfgEpochClient
 		{"I_UAV_01_F",2},
 		{"PHANTOM",1},
 		{"B_Heli_Transport_01_F",1},
-		{"EPOCH_RyanZombie_1",10}
+		{"EPOCH_RyanZombie_1",12}
 	};
 	customVarsDefaults[] = {
 		// EPOCH_player + varName, default value, {max,min}

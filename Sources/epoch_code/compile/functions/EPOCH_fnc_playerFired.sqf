@@ -109,7 +109,7 @@ switch true do {
 			_nuisanceLevel = _nuisanceLevel / 2;
 		};
 		// Nuisance System 0.1
-		(EPOCH_customVarLimits select (EPOCH_customVars find "Nuisance")) params [["_playerLimitMax",100],["_playerLimitMin",0]];
+  		(EPOCH_customVarLimits select (EPOCH_customVars find "Nuisance")) params [["_playerLimitMax",100],["_playerLimitMin",0]];
 		EPOCH_playerNuisance = ((EPOCH_playerNuisance + _nuisanceLevel) min _playerLimitMax) max _playerLimitMin;
 	};
 };

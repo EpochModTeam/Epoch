@@ -12,12 +12,12 @@
     Github:
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_code/compile/EPOCH_unitSpawn.sqf
 */
-private ["_unit","_sapperNum","_config","_targetPos","_grp","_driver","_index","_nonJammer","_nonTrader","_jammers","_jammerRange","_restricted","_disableAI"];
-params ["_unitClass","_trgt","_doVariable"];
+private ["_loop","_unit","_sapperNum","_config","_targetPos","_grp","_driver","_index","_nonJammer","_nonTrader","_jammers","_jammerRange","_restricted","_disableAI"];
+params ["_unitClass",["_trgt",player],["_doVariable",false]];
 private _bomb = objNull;
-if(isNil "_doVariable")then{_doVariable=false;};
-if(isNil "_trgt")then{_trgt=player;};
-diag_log format["Epoch: ADMIN: Antagonist %1 Spawning on %2. Do variable: %3.", _unitClass, _trgt, _doVariable];
+
+diag_log format["DEBUG: Antagonist %1 Spawning on %2. Do variable: %3.", _unitClass, _trgt, _doVariable];
+
 if(random 100 < 6)then{
 	[] execFSM "\x\addons\a3_epoch_code\System\Event_Air_Drop.fsm";
 };
@@ -25,12 +25,15 @@ if(_doVariable)then{_unitClass call EPOCH_unitSpawnIncrease;};//Assumes Antagoni
 
 _index = EPOCH_spawnIndex find _unitClass;
 _spawnLimit = EPOCH_playerSpawnArray select _index;
-if (!_doVariable && (count(_trgt nearEntities[_unitClass, 800]) >= _spawnLimit)) exitWith{};
+_currentLimit = count(_trgt nearEntities[_unitClass, 800]);
+if (!_doVariable && (_currentLimit >= _spawnLimit)) exitWith {
+	diag_log format["DEBUG: too many %1 exiting unitspawn",_unitClass];
+};
 
 _nonJammer = ["CfgEpochClient", "nonJammerAI", ["B_Heli_Transport_01_F","PHANTOM","Epoch_Cloak_F"]] call EPOCH_fnc_returnConfigEntryV2;
 _nonTrader = ["CfgEpochClient", "nonTraderAI", ["B_Heli_Transport_01_F","PHANTOM","Epoch_Cloak_F","GreatWhite_F"]] call EPOCH_fnc_returnConfigEntryV2;
 _nonTraderAIRange = ["CfgEpochClient", "nonTraderAIRange", 150] call EPOCH_fnc_returnConfigEntryV2;
-
+_loop = false;
 _unit = objNull;
 
 _targetPos = getPosATL _trgt;
@@ -53,10 +56,11 @@ if(count _restricted > 0 && (_unitClass in _nonTrader))exitWith{
 _disableAI = {
 	{_this disableAI _x}forEach["TARGET","AUTOTARGET","FSM"];
 };
-
+_units = [];
 switch _unitClass do {
 	case "Epoch_Cloak_F": {
 		_unit = createAgent[_unitClass, _targetPos, [], 256, "FORM"];
+		_units pushBack _unit;
 		_unit call _disableAI;
 		[_unit,_trgt] execFSM "\x\addons\a3_epoch_code\System\cloak.fsm";
 	};
@@ -64,6 +68,7 @@ switch _unitClass do {
 		if (surfaceIsWater _targetPos) then{
 			if (((_targetPos vectorDiff getPosASL _trgt) select 2) > 25) then{
 				_unit = createAgent[_unitClass, _targetPos, [], 120, "FORM"];
+				_units pushBack _unit;
 				_unit call _disableAI;
 				[_unit] execFSM "\x\addons\a3_epoch_code\System\Shark_Brain.fsm";
 			};
@@ -79,6 +84,7 @@ switch _unitClass do {
 			[_trgt,_sapperNum] execVM "epoch_code\compile\EPOCH_callSapperMigration.sqf";
 		}else{
 			_unit = createAgent[_unitClass, _targetPos, [], 256, "FORM"];
+			_units pushBack _unit;
 			_bomb = createVehicle ["Sapper_Charge_Ammo", _targetPos, [], 0, "CAN_COLLIDE"];
 			_bomb attachTo [_unit, [0,0,0],"Pelvis"];
 			_unit call _disableAI;
@@ -89,6 +95,7 @@ switch _unitClass do {
 	};
 	case "Epoch_SapperB_F": {
 		_unit = createAgent[_unitClass, _targetPos, [], 256, "FORM"];
+		_units pushBack _unit;
 		_bomb = createVehicle["SapperB_Charge_Ammo", _targetPos, [], 0, "CAN_COLLIDE"];
 		_bomb attachTo[_unit, [0, 0, 0], "Pelvis"];
 		_unit call _disableAI;
@@ -101,6 +108,7 @@ switch _unitClass do {
 		_targetPos = [_targetPos, 600, 1200, 5, 0, 400, 0] call BIS_fnc_findSafePos;
 		_targetPos set[2, 600];
 		_unit = createVehicle["I_UAV_01_F", _targetPos, [], 0, "FLY"];
+		_units pushBack _unit;
 		addToRemainsCollector[_unit];
 		_unit flyInHeight 600;
 		_grp = createGroup RESISTANCE;
@@ -115,9 +123,11 @@ switch _unitClass do {
 		[] execFSM "\x\addons\a3_epoch_code\System\Event_Air_Drop.fsm";
 	};
 	case "EPOCH_RyanZombie_1": {
-		_unit = [] call EPOCH_zombieSpawn;
-		// spawn more zeds up to limit max spawn limit.
-		"EPOCH_RyanZombie_1" call EPOCH_unitSpawn;
+		for "_i" from 1 to (_spawnLimit - _currentLimit) do
+		{
+			_unit = [] call EPOCH_zombieSpawn;
+			_units pushBack _unit;
+		};
 	};
 };
 
@@ -127,7 +137,7 @@ if(_doVariable && (!isNull _unit) && (!isNull _trgt))then{
 		_trgt setVariable ["EPOCH_antagBomb", _bomb, true];
 	};
 };
-if !(isNull _unit) then {
-	// send to server
-	[_unit] remoteExec ["EPOCH_localCleanup",2];
+
+if !(_units isEqualTo []) then {
+	_units remoteExec ["EPOCH_localCleanup",2];
 };

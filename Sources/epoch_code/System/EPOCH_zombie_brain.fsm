@@ -684,7 +684,7 @@ class FSM
                                         to="instinct";
                                         precondition = "";
                                         condition="diag_tickTime - _t > 0.6;";
-                                        action="_zombie switchMove ""AwopPercMstpSgthWnonDnon_throw"";";
+                                        action="[_zombie,_trgt] call EPOCH_client_bitePlayer;";
                                 };
                         };
                 };

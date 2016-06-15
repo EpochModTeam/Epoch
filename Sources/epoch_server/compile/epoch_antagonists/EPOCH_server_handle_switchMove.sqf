@@ -33,8 +33,12 @@ switch (_moveCase) do {
 		_move = "epoch_unarmed_jump";
 	};
 	case 3: {
-		_range = 400;
+		_range = 1000;
 		_move = "AwopPercMstpSgthWnonDnon_throw";
+	}
+	case 4: {
+		_range = 1000;
+		_move = "AmovPercMstpSnonWnonDnon_SaluteOut";
 	}
 };
 

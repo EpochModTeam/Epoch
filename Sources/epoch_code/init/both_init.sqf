@@ -63,7 +63,7 @@ _antagonistSpawnDefaults = [
 	["I_UAV_01_F",2],
 	["PHANTOM",1],
 	["B_Heli_Transport_01_F",1],
-	["EPOCH_RyanZombie_1",10]
+	["EPOCH_RyanZombie_1",12]
 ];
 _spawnLimits = ["CfgEpochClient", "antagonistSpawnIndex", _antagonistSpawnDefaults] call EPOCH_fnc_returnConfigEntryV2;
 {

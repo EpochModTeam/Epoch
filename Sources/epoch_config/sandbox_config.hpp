@@ -57,7 +57,9 @@ disableRandomization[] = {"All"};
 #include "Configs\CfgMissionsTasks.hpp"
 #include "Configs\cfgCrafting.hpp"
 #include "Configs\cfgPricing.hpp"
+
 #include "Configs\CfgEpochClient.hpp"
+
 #include "Configs\CfgMasterLoop.hpp"
 #include "Configs\CfgBaseBuilding.hpp"
 #include "Configs\CfgSnapChecks.hpp"

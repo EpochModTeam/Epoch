@@ -85,6 +85,10 @@ class CfgRemoteExec
       allowedTargets=2;
       jip = 0;
     };
+    class EPOCH_client_bitePlayer {
+      allowedTargets=1;
+      jip = 0;
+    };
 	class EPOCH_server_upgradeGroup {
       allowedTargets=2;
       jip = 0;
@@ -225,7 +229,7 @@ class CfgRemoteExec
       allowedTargets=2;
       jip = 0;
     };
-	
+
   };
   class Commands {mode=0;};
 };
