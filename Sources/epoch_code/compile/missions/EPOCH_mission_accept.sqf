@@ -32,16 +32,16 @@ _menuCondition = getText(getMissionConfig "epochMissions" >> (_missionClasses se
 	if!(_menuCondition=="")then{
 		if(call compile _menuCondition)then{_missionAllowed = false;};
 	};
-		
+
 
 	if(_missionAllowed)then{
 	_selectedMission = _missionClasses select _missionIndex;
 	_missionTasks = getArray(getMissionConfig "epochMissions" >> _selectedMission >> "tasksList");
-	
+
 	_simpleTask = getNumber (getMissionConfig "inGameTasks" >> (_missionTasks select 0) >> "simpleTask");
-	
+
 	//systemChat format ["Simple Task: %1 | Mission: %2 from %3",_simpleTask,_selectedMission,_missionTasks];
-	
+
 		if(_simpleTask > 0)then{//Simple Task
 
 		_simpleTaskFSM = getText (getMissionConfig "inGameTasks" >> (_missionTasks select 0) >> "initfsm");
@@ -53,42 +53,42 @@ _menuCondition = getText(getMissionConfig "epochMissions" >> (_missionClasses se
 			_path = getText (getMissionConfig "inGameTasks" >> "file");
 			_taskNS = _tag + "_" + ((_simpleTaskSQF splitString ".") select 0);
 			_fnc_path = _path + "\" +_simpleTaskSQF;
-				
+
 				if!((typeName _taskNS)=="CODE")then{
 				_itemCompile = compileFinal preprocessFileLineNumbers _fnc_path;
 				missionNamespace setvariable [_taskNS,_itemCompile];
 				}else{
 				_itemCompile = missionNamespace getVariable ["_taskNS",""];
 				};
-				
+
 			//Emulating CfgClientFunctions - Is this required ?
 			[] call _itemCompile;
 
 			};
-			
+
 			if!(_simpleTaskFSM == "")then{
 			_simpleTaskFSM = _path + "\" + _simpleTaskFSM;
 			epochSimpleTaskHandle = [] execFSM _simpleTaskFSM;
 			};
-			
+
 			if!(_simpleTaskFNC == "")then{
 			call compile _simpleTaskFNC;
 			};
 
 		}else{//Run Task / Mission Monitor
-		
+
 			_doTask = (_missionTasks select 0);
 			_allowTask = true;
 			//_uiNSTask = uiNameSpace getVariable ["axeTask",""];//TODO: Use hive to store this via dynamic vars. Or server mission control server_vars
-			_plyrVar = player getVariable ["SERVER_VARS",[]] select {_x find "axeTask" > -1;};
+			_plyrVar = missionNamespace getVariable ["EPOCH_playerMissionArray",[]] select {_x find "axeTask" > -1;};
 			_uiNSTask = "";
 			if(count _plyrVar > 0)then{
 			_uiNSTask = _plyrVar select 0 select 1;
 			};
 			_miNSTask = missionNameSpace getVariable ["axeTask",""];
-			
+
 			//Allow continuation of mission from Cached Task
-			if!(_uiNSTask == "")then{			
+			if!(_uiNSTask == "")then{
 				if(_miNSTask == "")then{
 				_doTask = _uiNSTask;
 				}else{
@@ -96,7 +96,7 @@ _menuCondition = getText(getMissionConfig "epochMissions" >> (_missionClasses se
 				[format ["<t size='1.6' color='#99ffffff'>Already on a mission - %1</t>",selectRandom ['Chop Chop !','Get on With It !','What are you waiting for ?','No bonuses for tardiness !']], 5] call Epoch_dynamicText;
 				};
 			};
-			
+
 			if(_allowTask)then{
 			epochTaskHandle = [_doTask] execFSM "epoch_code\System\task_control.fsm"
 			};
@@ -104,7 +104,7 @@ _menuCondition = getText(getMissionConfig "epochMissions" >> (_missionClasses se
 		};
 
 	}else{
-	
+
 	[format["<t size='1.6' color='#99ffffff'>Mission Not Allowed !</t>",_menuCondition], 5] call Epoch_dynamicText;
 
 	};

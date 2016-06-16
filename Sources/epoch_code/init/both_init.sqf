@@ -42,7 +42,8 @@ EPOCH_customVarsDefaults = [
 	["Karma",0,[50000,-50000]],
 	["Alcohol",0,[100,0]],
 	["Radiation",0,[100,0]],
-	["Nuisance",0,[100,0]]
+	["Nuisance",0,[100,0]],
+	["MissionArray",[],[]]
 ];
 _customVarsInit = ["CfgEpochClient", "customVarsDefaults", EPOCH_customVarsDefaults] call EPOCH_fnc_returnConfigEntryV2;
 {
