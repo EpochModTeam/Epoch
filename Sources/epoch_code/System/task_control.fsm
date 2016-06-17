@@ -40,13 +40,13 @@ item35[] = {"diag_1",4,218,300.000000,150.000000,400.000000,200.000000,15.000000
 item36[] = {"diag_2",4,218,175.000122,210.091980,275.000122,260.091980,10.000000,"diag 2"};
 item37[] = {"pause",4,218,300.000000,275.000000,400.000000,325.000000,0.000000,"pause"};
 item38[] = {"reward",2,250,25.000000,275.000000,125.000000,325.000000,0.000000,"reward"};
-item39[] = {"comms_1",2,250,-150.000000,425.000000,-50.000000,475.000000,0.000000,"comms"};
+item39[] = {"comms_1",2,4346,-150.000000,425.000000,-50.000000,475.000000,0.000000,"comms"};
 item40[] = {"mission_complete",4,218,-650.000000,350.000000,-550.000000,400.000000,10.000000,"mission complete"};
 item41[] = {"_",8,218,25.000000,75.000000,125.000000,125.000000,0.000000,""};
 item42[] = {"_",8,218,-350.000000,100.000000,-250.000000,150.000000,0.000000,""};
 item43[] = {"markers",2,250,-225.000000,175.000000,-125.000000,225.000000,0.000000,"markers"};
 item44[] = {"continue",4,218,-75.000000,175.000000,25.000000,225.000000,100.000000,"continue"};
-item45[] = {"radius",4,4314,-300.000000,350.000000,-200.000000,400.000000,0.000000,"radius"};
+item45[] = {"radius",4,218,-300.000000,350.000000,-200.000000,400.000000,0.000000,"radius"};
 item46[] = {"marker_pos",4,218,-350.000000,225.000000,-250.000000,275.000000,0.000000,"marker pos"};
 item47[] = {"do_markers",2,250,-225.000000,275.000000,-125.000000,325.000000,0.000000,"do markers"};
 item48[] = {"find_spot",2,250,-900.000000,-175.000000,-800.000000,-125.000000,0.000000,"find spot"};
@@ -203,8 +203,8 @@ link115[] = {79,80};
 link116[] = {80,81};
 link117[] = {81,2};
 link118[] = {82,34};
-globals[] = {0.000000,0,0,0,0,640,480,1,402,6316128,1,-373.223206,667.163940,461.114258,-479.323029,397,828,1};
-window[] = {2,-1,-1,-1,-1,629,2024,3049,104,3,415};
+globals[] = {0.000000,0,0,0,0,640,480,1,402,6316128,1,-1036.249023,990.485596,688.632874,-753.906189,1242,884,1};
+window[] = {2,-1,-1,-1,-1,642,365,1390,117,3,1260};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -279,13 +279,13 @@ class FSM
                          "" \n
                          "//Mission Control - WIP. TODO: Move to serverside mission control UINamespace not secure." \n
                          "//uiNameSpace setVariable [""axeTask"",_taskName];" \n
-                         "_plyrVar = missionNamespace  getVariable [""EPOCH_playerMissionArray"",[]];" \n
+                         "_plyrVar = missionNamespace getVariable [""EPOCH_playerMissionArray"",[]];" \n
                          "_taskIndex = ((_plyrVar apply {_x find ""axeTask"" > -1;}) find true);" \n
                          "if(_taskIndex > -1)then{" \n
                          "_plyrVar deleteAt _taskIndex;" \n
                          "};" \n
                          "_plyrVar pushBack [""axeTask"",_taskName];" \n
-                         "missionNamespace setVariable [""EPOCH_playerMissionArray"",_plyrVar];" \n
+                         "missionNamespace setVariable [""SERVER_VARS"",_plyrVar];" \n
                          "" \n
                          "missionNameSpace setVariable [""axeTask"",_taskName];" \n
                          "" \n
@@ -496,12 +496,12 @@ class FSM
                         itemno = 6;
                         init = /*%FSM<STATEINIT""">*/"//uiNameSpace setVariable [""axeTask"",nil];" \n
                          "if!(_doBin)then{" \n
-                         "_plyrVar = missionNamespace getVariable [""EPOCH_playerMissionArray"",[]];" \n
+                         "_plyrVar = missionNamespace getVariable [""SERVER_VARS"",[]];" \n
                          "_taskIndex = ((_plyrVar apply {_x find ""axeTask"" > -1;}) find true);" \n
                          "if(_taskIndex > -1)then{" \n
                          "_plyrVar deleteAt _taskIndex;" \n
                          "};" \n
-                         "missionNamespace setVariable [""EPOCH_playerMissionArray"",_plyrVar];" \n
+                         "missionNamespace setVariable [""SERVER_VARS"",_plyrVar];" \n
                          "};" \n
                          "if(count _missionCleanUp > 0)then{" \n
                          "{" \n
