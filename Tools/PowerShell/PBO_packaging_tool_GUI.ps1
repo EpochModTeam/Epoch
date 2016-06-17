@@ -448,6 +448,13 @@ $TabPage3.Size = New-Object System.Drawing.Size(800, 492)
 $TabPage3.TabIndex = 2
 $TabPage3.Text = "Developers"
 $TabPage3.BackColor = [System.Drawing.SystemColors]::Control
+#~~< CheckBox2 >~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+$CheckBox2 = New-Object System.Windows.Forms.CheckBox
+$CheckBox2.Location = New-Object System.Drawing.Point(78, 6)
+$CheckBox2.Size = New-Object System.Drawing.Size(178, 24)
+$CheckBox2.TabIndex = 27
+$CheckBox2.Text = "Update versions when packing"
+$CheckBox2.UseVisualStyleBackColor = $true
 #~~< Button15 >~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 $Button15 = New-Object System.Windows.Forms.Button
 $Button15.Location = New-Object System.Drawing.Point(6, 173)
@@ -521,6 +528,7 @@ $CheckBox1.Size = New-Object System.Drawing.Size(66, 24)
 $CheckBox1.TabIndex = 14
 $CheckBox1.Text = "Enable"
 $CheckBox1.UseVisualStyleBackColor = $true
+$TabPage3.Controls.Add($CheckBox2)
 $TabPage3.Controls.Add($Button15)
 $TabPage3.Controls.Add($Button12)
 $TabPage3.Controls.Add($Label6)
@@ -720,7 +728,7 @@ $FolderBrowserDialog1 = New-Object System.Windows.Forms.FolderBrowserDialog
 		
 	function fnc_updateBuildNumber($inpath, $outpath, $increment)
 	{
-		if ($Checkbox1.Checked)
+		if ($Checkbox1.Checked -and $checkbox2.Checked )
 		{
 			$path = Join-Path $inpath "\build.txt"				
 			if (Test-Path $path)
@@ -731,7 +739,7 @@ $FolderBrowserDialog1 = New-Object System.Windows.Forms.FolderBrowserDialog
 				$Out = @(
 					'build=' + [string]$newBuild + ';'
 				)
-												
+				
 				$Out | Out-File(Join-Path $outpath "\build.hpp") -Encoding "UTF8"
 				$newBuild | Out-File $path -Encoding "UTF8"
 				if ($increment -eq 1)
@@ -922,6 +930,7 @@ $FolderBrowserDialog1 = New-Object System.Windows.Forms.FolderBrowserDialog
 			$TextBox11.Text
 			$TextBoxPboPrefix.Text
 			$TextBoxBISignPrefix.Text
+			$CheckBox2.Checked
 		)
 				
 		$Out | Out-File $TextBox5.Text
@@ -951,6 +960,9 @@ $FolderBrowserDialog1 = New-Object System.Windows.Forms.FolderBrowserDialog
 												
 			$TextBoxPboPrefix.Text = if ($in[10]) { $in[10] } else { "x\addons" }
 			$TextBoxBISignPrefix.Text = if ($in[11]) { $in[11] } else { "epoch" }
+			
+			$state = if ($in[12] -eq "True") { $true } else { $false }
+			$CheckBox2.Checked = $state
 									
 		}
 		else
@@ -1016,10 +1028,13 @@ $FolderBrowserDialog1 = New-Object System.Windows.Forms.FolderBrowserDialog
 						fnc_updateBuildNumber $TextBox2.Text ($x.subitems[1].Text) $incrementServerBuild
 						$incrementServerBuild = 0
 						
-						$txt = "Building Server PBO (" + $x.subitems[0].Text + ".pbo) ... Please wait"
-						$tree = Join-Path $x.subitems[1].Text "treeView.txt"
-						tree /A /F $tmp > $tree
-						fnc_pboWriteHostAndTree $txt $tree
+						if ($checkbox2.Checked)
+						{
+							$txt = "Building Server PBO (" + $x.subitems[0].Text + ".pbo) ... Please wait"
+							$tree = Join-Path $x.subitems[1].Text "treeView.txt"
+							tree / A / F $tmp > $tree
+							fnc_pboWriteHostAndTree $txt $tree
+						}
 						
 						$argz = @($tmp, ( '"' + $Output + '"' ), "-packonly", "-clear", "-prefix=$name", "-project=P:\", "-include=$includes")
 						Start-Process -FilePath $Bob -ArgumentList $argz -WindowStyle Hidden -Wait
@@ -1036,11 +1051,14 @@ $FolderBrowserDialog1 = New-Object System.Windows.Forms.FolderBrowserDialog
 						if (Test-Path $tmp) { Remove-Item -Path $tmp -Recurse }														
 						Copy-Item -Path $x.subitems[1].Text -Destination $tmp -Recurse
 												
-						$txt = "Building Client PBO (" + $x.subitems[0].Text + ".pbo) ... Please wait"
-						$tree = Join-Path $x.subitems[1].Text "treeView.txt"
-						tree /A /F $tmp > $tree
-						fnc_pboWriteHostAndTree $txt $tree
-																		
+						if ($checkbox2.Checked)
+						{
+							$txt = "Building Client PBO (" + $x.subitems[0].Text + ".pbo) ... Please wait"
+							$tree = Join-Path $x.subitems[1].Text "treeView.txt"
+							tree / A / F $tmp > $tree
+							fnc_pboWriteHostAndTree $txt $tree
+						}
+						
 						$signFlag = ""
 						if (Test-Path $signfile) { $signFlag = ('-sign="' + $signfile + '"') }
 																		
@@ -1061,10 +1079,13 @@ $FolderBrowserDialog1 = New-Object System.Windows.Forms.FolderBrowserDialog
 						Copy-Item($src + "epoch_config") -Destination $tmp -Recurse
 						Copy-Item($src + "description.ext") -Destination $tmp
 												
-						$txt = "Building MPMission PBO (" + $x.subitems[0].Text + ".pbo) ... Please wait"
-						$tree = Join-Path $x.subitems[1].Text "treeView.txt"
-						tree /A /F $tmp > $tree
-						fnc_pboWriteHostAndTree $txt $tree
+						if ($checkbox2.Checked)
+						{
+							$txt = "Building MPMission PBO (" + $x.subitems[0].Text + ".pbo) ... Please wait"
+							$tree = Join-Path $x.subitems[1].Text "treeView.txt"
+							tree / A / F $tmp > $tree
+							fnc_pboWriteHostAndTree $txt $tree
+						}
 																		
 						$argz = @($tmp, ( '"' + $Output + '"' ), "-clear", "-prefix=\", "-project=P:\", "-include=$includes")
 						Start-Process -FilePath $Bob -ArgumentList $argz -WindowStyle Hidden -Wait
