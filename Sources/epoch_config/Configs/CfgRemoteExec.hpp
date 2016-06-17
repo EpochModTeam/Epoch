@@ -225,7 +225,11 @@ class CfgRemoteExec
       allowedTargets=2;
       jip = 0;
     };
-	class EPOCH_server_createmarker {
+	class EPOCH_server_makeMarker {
+      allowedTargets=2;
+      jip = 0;
+    };
+	class EPOCH_server_removeMarker {
       allowedTargets=2;
       jip = 0;
     };
