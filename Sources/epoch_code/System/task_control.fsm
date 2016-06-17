@@ -279,13 +279,13 @@ class FSM
                          "" \n
                          "//Mission Control - WIP. TODO: Move to serverside mission control UINamespace not secure." \n
                          "//uiNameSpace setVariable [""axeTask"",_taskName];" \n
-                         "_plyrVar = player getVariable [""SERVER_VARS"",[]];" \n
+                         "_plyrVar = missionNamespace  getVariable [""EPOCH_playerMissionArray"",[]];" \n
                          "_taskIndex = ((_plyrVar apply {_x find ""axeTask"" > -1;}) find true);" \n
                          "if(_taskIndex > -1)then{" \n
                          "_plyrVar deleteAt _taskIndex;" \n
                          "};" \n
                          "_plyrVar pushBack [""axeTask"",_taskName];" \n
-                         "player setVariable [""SERVER_VARS"",_plyrVar,true];" \n
+                         "missionNamespace setVariable [""EPOCH_playerMissionArray"",_plyrVar];" \n
                          "" \n
                          "missionNameSpace setVariable [""axeTask"",_taskName];" \n
                          "" \n
@@ -496,12 +496,12 @@ class FSM
                         itemno = 6;
                         init = /*%FSM<STATEINIT""">*/"//uiNameSpace setVariable [""axeTask"",nil];" \n
                          "if!(_doBin)then{" \n
-                         "_plyrVar = player getVariable [""SERVER_VARS"",[]];" \n
+                         "_plyrVar = missionNamespace getVariable [""EPOCH_playerMissionArray"",[]];" \n
                          "_taskIndex = ((_plyrVar apply {_x find ""axeTask"" > -1;}) find true);" \n
                          "if(_taskIndex > -1)then{" \n
                          "_plyrVar deleteAt _taskIndex;" \n
                          "};" \n
-                         "player setVariable [""SERVER_VARS"",_plyrVar,true];" \n
+                         "missionNamespace setVariable [""EPOCH_playerMissionArray"",_plyrVar];" \n
                          "};" \n
                          "if(count _missionCleanUp > 0)then{" \n
                          "{" \n
