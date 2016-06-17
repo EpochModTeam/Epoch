@@ -9896,11 +9896,6 @@ class CfgBuildingLootPos
 	    };
 	};
 	class Land_Church_03_F : Default {
-	    shoeboxPos[] = {
-	        { {7.10645,-6.07715,-7.20654}, 220 }
-	    };
-	};
-	class Land_Church_03_F : Default {
 	    chairPos[] = {
 	        { {7.31055,-5.0791,-7.20663}, 282 }
 	    };
