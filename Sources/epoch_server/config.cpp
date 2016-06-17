@@ -122,7 +122,8 @@ class CfgServerFunctions
 			class server_teleportPlayer {};
 			class returnConfig {};
 			class serverCommand {};
-			class server_createMarker {};
+			class server_makeMarker {};
+			class server_removeMarker {};
 		};
 		class epoch_missions {
 			class Server_createObject {};
