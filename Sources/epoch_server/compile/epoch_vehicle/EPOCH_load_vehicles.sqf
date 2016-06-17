@@ -12,7 +12,7 @@
     Github:
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server/compile/epoch_vehicle/EPOCH_load_vehicles.sqf
 */
-private ["_availableColorsConfig","_location","_class","_dmg","_actualHitpoints","_hitpoints","_textures","_color","_colors","_textureSelectionIndex","_selections","_count","_objTypes","_objQty","_wMags","_wMagsArray","_attachments","_magazineSizeMax","_magazineName","_magazineSize","_qty","_objType","_marker","_found","_vehicle","_allHitpoints","_cfgEpochVehicles","_worldspace","_damage","_arr","_arrNum","_vehicleSlotIndex","_vehHiveKey","_response","_immuneVehicleSpawnTime","_diag","_dataFormat","_dataFormatCount","_allVehicles","_serverSettingsConfig","_simulationHandler","_immuneVehicleSpawn"];
+private ["_availableColorsConfig","_location","_class","_dmg","_actualHitpoints","_hitpoints","_textures","_color","_colors","_textureSelectionIndex","_selections","_count","_objTypes","_objQty","_wMags","_wMagsArray","_attachments","_magazineSizeMax","_magazineName","_magazineSize","_qty","_objType","_marker","_found","_vehicle","_allHitpoints","_cfgEpochVehicles","_worldspace","_damage","_arr","_arrNum","_vehicleSlotIndex","_vehHiveKey","_response","_diag","_dataFormat","_dataFormatCount","_allVehicles","_serverSettingsConfig"];
 params [["_maxVehicleLimit",0]];
 
 _diag = diag_tickTime;
@@ -20,10 +20,9 @@ _dataFormat = ["", [], 0, [], 0, [], [], 0];
 _dataFormatCount = count _dataFormat;
 EPOCH_VehicleSlots = [];
 _allVehicles = [];
+_vehicleDamages = [];
 
 _serverSettingsConfig = configFile >> "CfgEpochServer";
-_simulationHandler = [_serverSettingsConfig, "simulationHandler", false] call EPOCH_fnc_returnConfigEntry;
-_immuneVehicleSpawn = [_serverSettingsConfig, "immuneVehicleSpawn", false] call EPOCH_fnc_returnConfigEntry;
 
 for "_i" from 1 to _maxVehicleLimit do {
 	_vehicleSlotIndex = EPOCH_VehicleSlots pushBack str(_i);
@@ -56,46 +55,33 @@ for "_i" from 1 to _maxVehicleLimit do {
 						_location = (_location select 0) vectorAdd (_location select 1);
 					};
 
-					EPOCH_VehicleSlots deleteAt _vehicleSlotIndex;
-
 					// temp for changes in class names
 					_found = ["O_Heli_Transport_04_F","O_Heli_Transport_04_bench_F","O_Heli_Transport_04_box_F","O_Heli_Transport_04_covered_F","B_Heli_Transport_03_unarmed_F","O_Truck_03_covered_F"] find _class;
 					if (_found != -1) then {
 						_class = ["O_Heli_Transport_04_EPOCH","O_Heli_Transport_04_bench_EPOCH","O_Heli_Transport_04_box_EPOCH","O_Heli_Transport_04_covered_EPOCH","B_Heli_Transport_03_unarmed_EPOCH","O_Truck_03_covered_EPOCH"] select _found;
 					};
 
-					_vehicle = createVehicle [_class, _location, [], 0, "CAN_COLLIDE"];
+					// spawn vehicle at temp location.
+					_vehicle = createVehicle [_class, [0,0,0], [], 0, "CAN_COLLIDE"];
 					if !(isNull _vehicle) then {
-
+						// make vehicle immune from damage.
+						_vehicle allowDamage false;
+						// store spawned vehicles in array to make one call to remains handler
 						_allVehicles pushBack _vehicle;
+						// remove selected slot from array and set on vehicle
+						EPOCH_VehicleSlots deleteAt _vehicleSlotIndex;
+						_vehicle setVariable ["VEHICLE_SLOT", str(_i), true];
+						// set server side token and init vehicle event handlers.
 						_vehicle call EPOCH_server_setVToken;
 						_vehicle call EPOCH_server_vehicleInit;
-
+						// set final direction and postion of vehicle
 						_vehicle setVectorDirAndUp _worldspace;
 						_vehicle setposATL _location;
-						_vehicle setDamage _damage;
-
-						_allHitpoints = getAllHitPointsDamage _vehicle;
-						if !(_allHitpoints isEqualTo []) then{
-							_actualHitpoints = _allHitpoints select 0;
-							_hitpoints = _arr select 3;
-							if ((count _actualHitpoints) == (count _hitpoints)) then{
-								{
-									_dmg = _hitpoints param [_forEachIndex,0];
-									if (_x in ["HitFuel", "HitEngine"]) then {
-										_dmg = _dmg min 0.9;
-									};
-									_vehicle setHitIndex [_forEachIndex, _dmg];
-								} forEach _actualHitpoints;
-							};
-						};
-
-						if (_immuneVehicleSpawn) then{
-							_vehicle allowDamage false;
-						};
-
+						// push damage to temp array to apply damage after some delay
+						_vehicleDamages pushBack [_vehicle,_damage,(_arr select 3)];
+						// set fuel level
 						_vehicle setFuel (_arr select 4);
-
+						// apply persistent textures
 						_cfgEpochVehicles = 'CfgEpochVehicles' call EPOCH_returnConfig;
 						_availableColorsConfig = (_cfgEpochVehicles >> _class >> "availableColors");
 						if (isArray(_availableColorsConfig)) then {
@@ -113,39 +99,30 @@ for "_i" from 1 to _maxVehicleLimit do {
 							} forEach _selections;
 							_vehicle setVariable ["VEHICLE_TEXTURE", _color];
 						};
-
+						// disable thermal imaging equipment
+						_vehicle disableTIEquipment true;
+						// lock all vehicles
+						_vehicle lock true;
+						// load vehicle inventory
 						clearWeaponCargoGlobal    _vehicle;
 						clearMagazineCargoGlobal  _vehicle;
 						clearBackpackCargoGlobal  _vehicle;
 						clearItemCargoGlobal      _vehicle;
-
-						_vehicle disableTIEquipment true;
-
-						_vehicle lock true;
-
-						_vehicle setVariable ["VEHICLE_SLOT", str(_i), true];
-
-						//diag_log format ["FILLING: _vehicle %1 pos: %2", _vehicle, (getPosATL _vehicle)];
 						{
 							_objType = _forEachIndex;
-
 							_objTypes = _x;
 							_objQty = [];
-
 							if (_objType in [1, 2, 3]) then {
 								_objTypes = _x select 0;
 								_objQty = _x select 1;
 							};
-
 							{
 								switch _objType do {
 									// Weapon cargo
 									case 0: {
 										if (_x isEqualType []) then {
 											if ((count _x) >= 4) then {
-
 												_vehicle addWeaponCargoGlobal[_x deleteAt 0, 1];
-
 												_attachments = [];
 												_wMags = false;
 												_wMagsArray = [];
@@ -155,27 +132,23 @@ for "_i" from 1 to _maxVehicleLimit do {
 													if (_x isEqualType []) then{
 														_wMags = true;
 														_wMagsArray = _x;
-													}
-													else {
+													} else {
 														// attachments
 														if (_x != "") then{
 															_attachments pushBack _x;
 														};
 													};
 												} forEach _x;
-
 												// add all attachments to vehicle
 												// TODO replace with adding attachments directly to gun (Arma feature dependant)
 												{
 													_vehicle addItemCargoGlobal[_x, 1];
 												} forEach _attachments;
-
 												if (_wMags) then{
 													if (_wMagsArray isEqualType [] && (count _wMagsArray) >= 2) then{
 														_vehicle addMagazineAmmoCargo[_wMagsArray select 0, 1, _wMagsArray select 1];
 													};
 												};
-
 											};
 										};
 									};
@@ -183,13 +156,10 @@ for "_i" from 1 to _maxVehicleLimit do {
 									case 1: {
 										_magazineName = _x;
 										_magazineSize = _objQty select _forEachIndex;
-
 										if ((_magazineName isEqualType "STRING") && (_magazineSize isEqualType 0)) then {
 											_magazineSizeMax = getNumber (configFile >> "CfgMagazines" >> _magazineName >> "count");
-
 											// Add full magazines cargo
 											_vehicle addMagazineAmmoCargo [_magazineName, floor (_magazineSize / _magazineSizeMax), _magazineSizeMax];
-
 											// Add last non full magazine
 											if ((_magazineSize % _magazineSizeMax) > 0) then {
 												_vehicle addMagazineAmmoCargo [_magazineName, 1, floor (_magazineSize % _magazineSizeMax)];
@@ -213,24 +183,20 @@ for "_i" from 1 to _maxVehicleLimit do {
 								};
 							} forEach _objTypes;
 						} forEach (_arr select 5);
-
 						// remove and add back magazines works for armed trucks but not helis ATM
 						{_vehicle removeMagazineGlobal _x}count (magazines _vehicle);
 						{_vehicle addMagazine _x}count (_arr select 6);
-
 						// turrets
 						/*
 						_mags = _vehicle magazinesTurret [0];
 						{
 							_object removeMagazinesTurret [_x, [0]];
 						} forEach _mags;
-
 						_mags = _vehicle magazinesTurret [-1];
 						{
 							_object removeMagazinesTurret [_x, [-1]];
 						} forEach _mags;
 						*/
-
 						if (EPOCH_DEBUG_VEH) then {
 							_marker = createMarker [str(_location) , _location];
 							_marker setMarkerShape "ICON";
@@ -238,15 +204,9 @@ for "_i" from 1 to _maxVehicleLimit do {
 							_marker setMarkerText _class;
 							_marker setMarkerColor "ColorGreen";
 						};
-
-						if (_simulationHandler) then{
-							_vehicle enableSimulationGlobal false;
-						};
-
 					} else {
 						diag_log format["DEBUG: vehicle object Null: class: %1, loc: %2, slot: %3",_class, _location,str(_i)];
 					};
-
 				} else {
 					diag_log format["DEBUG: invalid vehicle position array %1",_location];
 				};
@@ -261,17 +221,37 @@ for "_i" from 1 to _maxVehicleLimit do {
 	};
 };
 
-// re-enable damage to vehicles after we wait
-if (_immuneVehicleSpawn) then{
-	_immuneVehicleSpawnTime = [_serverSettingsConfig, "immuneVehicleSpawnTime", 120] call EPOCH_fnc_returnConfigEntry;
-	[_allVehicles,_immuneVehicleSpawnTime] spawn{
-		sleep (_this select 1);
-		{_x allowDamage true} count (_this select 0);
-	};
+// re-enable damage and apply to vehicles after we wait some time.
+[_vehicleDamages,([_serverSettingsConfig, "immuneVehicleSpawnTime", 120] call EPOCH_fnc_returnConfigEntry),([_serverSettingsConfig, "simulationHandler", true] call EPOCH_fnc_returnConfigEntry)] spawn {
+	params [["_vehicleDamages",[]],["_immuneTime",120],["_simulationHandler",true]];
+	// wait for some time to let all vehicles settle.
+	sleep _immuneTime;
+	// set final damages
+	{
+		_x params ["_vehicle","_damage","_hitpoints"];
+		_vehicle allowDamage true;
+		_vehicle setDamage _damage;
+		_allHitpoints = getAllHitPointsDamage _vehicle;
+		if !(_allHitpoints isEqualTo []) then{
+			_actualHitpoints = _allHitpoints select 0;
+			if ((count _actualHitpoints) == (count _hitpoints)) then{
+				{
+					_dmg = _hitpoints param [_forEachIndex,0];
+					if (_x in ["HitFuel", "HitEngine"]) then {
+						_dmg = _dmg min 0.9;
+					};
+					_vehicle setHitIndex [_forEachIndex, _dmg];
+				} forEach _actualHitpoints;
+			};
+		};
+		// vehicle simulation handler
+		if (_simulationHandler) then{
+			_vehicle enableSimulationGlobal false;
+		};
+	} forEach _vehicleDamages;
 };
-
+// add all spawned vehicles to remains collector.
 addToRemainsCollector _allVehicles;
-
 diag_log format ["Epoch: Vehicle SPAWN TIMER %1, LOADED %2 VEHICLES", diag_tickTime - _diag, count _allVehicles];
 
 true

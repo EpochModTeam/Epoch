@@ -50,7 +50,7 @@ class FSM
        "_serverSettingsConfig = configFile >> ""CfgEpochServer"";" \n
        "_ahInitAuthCfg = [_serverSettingsConfig, ""antihack_ahInitAuthCfg"", [0,180]] call EPOCH_fnc_returnConfigEntry;" \n
        "_events = [_serverSettingsConfig, ""events"", []] call EPOCH_fnc_returnConfigEntry;" \n
-       "_simulationHandler = [_serverSettingsConfig, ""simulationHandler"", false] call EPOCH_fnc_returnConfigEntry;" \n
+       "_simulationHandler = [_serverSettingsConfig, ""simulationHandler"", true] call EPOCH_fnc_returnConfigEntry;" \n
        "" \n
        "_initAhInitBanOrLog = _ahInitAuthCfg select 0;" \n
        "_initTimeLimit = _ahInitAuthCfg select 1;" \n
@@ -319,21 +319,21 @@ class FSM
            "_playersTemp = [];" \n
            "{	" \n
            "	if (isPlayer _x) then {" \n
-           "		if (_simulationHandler) then {" \n
+           "" \n
            "			{" \n
            "				if !(typeOf _x in _safeVehicles) then {" \n
            "					if (_x call EPOCH_server_getVToken) then {" \n
-           "						if !(simulationEnabled _x) then {" \n
+           "						if (_simulationHandler && !(simulationEnabled _x)) then {" \n
            "							_x enableSimulationGlobal true;" \n
            "							_activeVehicles pushBack _x;" \n
            "						};" \n
            "					} else {" \n
-           "						//diag_log format[""DEBUG: vtoken del %1"",_x];" \n
+           "						diag_log format[""DEBUG: Invalid Vehicle Token, deleted %1"",_x];" \n
            "						deleteVehicle _x;" \n
            "					};" \n
            "				};" \n
            "			}forEach (_x nearEntities[[""LandVehicle"", ""Ship"", ""Air"", ""Tank""], 300]);" \n
-           "		};" \n
+           "" \n
            "" \n
            "		_pUID = getPlayerUID _x;" \n
            "" \n
