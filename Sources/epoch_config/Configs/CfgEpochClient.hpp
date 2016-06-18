@@ -104,6 +104,7 @@ class CfgEpochClient
 	#include "CfgEpochClient\utes.hpp"
 	#include "CfgEpochClient\vr.hpp"
     #include "CfgEpochClient\Zargabad.hpp"
+	#include "CfgEpochClient\Tanoa.hpp"
 	#include "CfgEpochClient\WorldInteractions.hpp"
 };
 class CfgEpochSapper
