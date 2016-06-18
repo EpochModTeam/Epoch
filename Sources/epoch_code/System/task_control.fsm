@@ -624,7 +624,7 @@ class FSM
                                         condition=/*%FSM<CONDITION""">*/"diag_tickTime - _lastChat > _taskDiagSquelch && call _taskDiagCond3 && count _taskDiag3 > 0"/*%FSM</CONDITION""">*/;
                                         action=/*%FSM<ACTION""">*/"_diag = selectRandom _taskDiag3;" \n
                                          "" \n
-                                         "[format [""<t size='1.6' color='#99ffffff'>%1</t>"",_diag], 5] call Epoch_dynamicText;" \n
+                                         "[format [""%1"",_diag], 5] call Epoch_message;" \n
                                          "" \n
                                          "" \n
                                          "_chat3Done = true;" \n
@@ -640,7 +640,7 @@ class FSM
                                         precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
                                         condition=/*%FSM<CONDITION""">*/"diag_tickTime - _lastChat > _taskDiagSquelch && call _taskDiagCond2 && count _taskDiag2 > 0"/*%FSM</CONDITION""">*/;
                                         action=/*%FSM<ACTION""">*/"_diag = selectRandom _taskDiag2;" \n
-                                         "[format [""<t size='1.6' color='#99ffffff'>%1</t>"",_diag], 5] call Epoch_dynamicText;" \n
+                                         "[format [""%1"",_diag], 5] call Epoch_message;" \n
                                          "_chat2Done = true;" \n
                                          "_lastChat = diag_tickTime;"/*%FSM</ACTION""">*/;
                                 };
@@ -665,7 +665,7 @@ class FSM
                                         precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
                                         condition=/*%FSM<CONDITION""">*/"(!_chat1Done) && call _taskDiagCond1 && count _taskDiag1 > 0"/*%FSM</CONDITION""">*/;
                                         action=/*%FSM<ACTION""">*/"_diag = selectRandom _taskDiag1;" \n
-                                         "[format [""<t size='1.6' color='#99ffffff'>%1</t>"",_diag], 5] call Epoch_dynamicText;" \n
+                                         "[format [""%1"",_diag], 5] call Epoch_message;" \n
                                          "_chat1Done = true;" \n
                                          "_lastChat = diag_tickTime;"/*%FSM</ACTION""">*/;
                                 };
@@ -1061,7 +1061,7 @@ class FSM
                                         precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
                                         condition=/*%FSM<CONDITION""">*/"!_diag1Done && count _taskCompleteDiag1 > 0"/*%FSM</CONDITION""">*/;
                                         action=/*%FSM<ACTION""">*/"_diag = selectRandom _taskCompleteDiag1;" \n
-                                         "[format [""<t size='1.6' color='#99ffffff'>%1</t>"",_diag], 5] call Epoch_dynamicText;" \n
+                                         "[format [""%1"",_diag], 5] call Epoch_message;" \n
                                          "_diag1Done = true;"/*%FSM</ACTION""">*/;
                                 };
                                 /*%FSM</LINK>*/
@@ -1074,7 +1074,7 @@ class FSM
                                         precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
                                         condition=/*%FSM<CONDITION""">*/"_diag1Done && (!_diag2Done) && diag_tickTime - _lastLoop > 20 && count _taskCompleteDiag2 > 0"/*%FSM</CONDITION""">*/;
                                         action=/*%FSM<ACTION""">*/"_diag = selectRandom _taskCompleteDiag2;" \n
-                                         "[format [""<t size='1.6' color='#99ffffff'>%1</t>"",_diag], 5] call Epoch_dynamicText;" \n
+                                         "[format [""%1"",_diag], 5] call Epoch_message;" \n
                                          "_diag2Done = true;"/*%FSM</ACTION""">*/;
                                 };
                                 /*%FSM</LINK>*/
@@ -1377,7 +1377,7 @@ class FSM
                                         precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
                                         condition=/*%FSM<CONDITION""">*/"count _taskFailedDiag > 0"/*%FSM</CONDITION""">*/;
                                         action=/*%FSM<ACTION""">*/"_diag = selectRandom _taskFailedDiag;" \n
-                                         "[format [""<t size='1.6' color='#99ffffff'>%1</t>"",_diag], 5] call Epoch_dynamicText;" \n
+                                         "[format [""%1"",_diag], 5] call Epoch_message;" \n
                                          "_taskFailedDiag = [];"/*%FSM</ACTION""">*/;
                                 };
                                 /*%FSM</LINK>*/
@@ -1426,7 +1426,7 @@ class FSM
                                         precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
                                         condition=/*%FSM<CONDITION""">*/"count _taskReminder > 0 && !_taskFailed"/*%FSM</CONDITION""">*/;
                                         action=/*%FSM<ACTION""">*/"_diag = selectRandom _taskReminder;" \n
-                                         "[format [""<t size='1.6' color='#99ffffff'>%1</t>"",_diag], 5] call Epoch_dynamicText;" \n
+                                         "[format [""%1"",_diag], 5] call Epoch_message;" \n
                                          "_taskReminder = [];"/*%FSM</ACTION""">*/;
                                 };
                                 /*%FSM</LINK>*/
