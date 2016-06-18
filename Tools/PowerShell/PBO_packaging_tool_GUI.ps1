@@ -1032,7 +1032,7 @@ $FolderBrowserDialog1 = New-Object System.Windows.Forms.FolderBrowserDialog
 						{
 							$txt = "Building Server PBO (" + $x.subitems[0].Text + ".pbo) ... Please wait"
 							$tree = Join-Path $x.subitems[1].Text "treeView.txt"
-							tree / A / F $tmp > $tree
+							tree /A /F $tmp > $tree
 							fnc_pboWriteHostAndTree $txt $tree
 						}
 						
@@ -1055,7 +1055,7 @@ $FolderBrowserDialog1 = New-Object System.Windows.Forms.FolderBrowserDialog
 						{
 							$txt = "Building Client PBO (" + $x.subitems[0].Text + ".pbo) ... Please wait"
 							$tree = Join-Path $x.subitems[1].Text "treeView.txt"
-							tree / A / F $tmp > $tree
+							tree /A /F $tmp > $tree
 							fnc_pboWriteHostAndTree $txt $tree
 						}
 						
@@ -1083,7 +1083,7 @@ $FolderBrowserDialog1 = New-Object System.Windows.Forms.FolderBrowserDialog
 						{
 							$txt = "Building MPMission PBO (" + $x.subitems[0].Text + ".pbo) ... Please wait"
 							$tree = Join-Path $x.subitems[1].Text "treeView.txt"
-							tree / A / F $tmp > $tree
+							tree /A /F $tmp > $tree
 							fnc_pboWriteHostAndTree $txt $tree
 						}
 																		
