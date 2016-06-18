@@ -19,7 +19,7 @@
 _msg = param [0, "No input"];
 _time = param [1, 2];
 
-if !(_msg isEqualType "STRING") then {_msg = str (parseText _msg)};
+_msg = str (parseText str _msg); //Parses and converts text back to small string
 
 if !(isNil "rmx_var_msgQueue") exitWith { rmx_var_msgQueue pushBack [_msg, _time];};
 
