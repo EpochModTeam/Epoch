@@ -34,6 +34,8 @@ class CfgClientFunctions
 			class onEachFrame {};
 			class callSapperMigration {};
 			class zombieSpawn {};
+			class makeMarker {};
+			class removeMarker {};
 		};
 
 		class building
@@ -119,7 +121,6 @@ class CfgClientFunctions
    			class fnc_playerDeathMorph {};
    			class fnc_playerSetVariable {};
    			class fnc_playerAttachToAntagonist {};
-			class fnc_createMarker {};
 			class fnc_dynamicFSM {};
 			class fnc_vectorDivide {};
 		};
