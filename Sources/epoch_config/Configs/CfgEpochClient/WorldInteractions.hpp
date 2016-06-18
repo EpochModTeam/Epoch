@@ -531,7 +531,6 @@ class CfgWorldInteractions  {
     class t_banana_wild_f_p3d : Bushes {};
     class b_rhizophora_f_p3d : Bushes {};
     class b_neriumo2d_tanoa_f_p3d : Bushes {};
-    class b_calochlaena_f_p3d : Bushes {};
     class cinderblocks_f_p3d : Cinder {};
     class cinderblocks_01_f_p3d : Cinder {};
     class wall_tin_4_2_p3d : Wrecks {};
