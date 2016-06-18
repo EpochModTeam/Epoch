@@ -79,7 +79,7 @@ _menuCondition = getText(getMissionConfig "epochMissions" >> (_missionClasses se
 
 			_doTask = (_missionTasks select 0);
 			_allowTask = true;
-			//_uiNSTask = uiNameSpace getVariable ["axeTask",""];//TODO: Use hive to store this via dynamic vars. Or server mission control server_vars
+
 			_plyrVar = missionNamespace getVariable ["EPOCH_playerMissionArray",[]] select {_x find "axeTask" > -1;};
 			_uiNSTask = "";
 			if(count _plyrVar > 0)then{
