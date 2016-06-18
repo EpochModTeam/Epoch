@@ -32,7 +32,7 @@ _objType = typeOf _object;
 _isSnap = false;
 
 if (EPOCH_playerEnergy <= 0) exitWith {
-	["<t size = '1.6' color = '#99ffffff'>Need Energy</t>", 5] call Epoch_dynamicText;
+	["Need Energy", 5] call Epoch_message;
 };
 if !(_objType call EPOCH_isBuildAllowed) exitWith{};
 

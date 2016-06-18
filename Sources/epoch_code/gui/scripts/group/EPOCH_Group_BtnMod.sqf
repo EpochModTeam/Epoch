@@ -35,7 +35,7 @@ if (getPlayerUID player == Epoch_my_GroupUID) then {
 			};
 		};
 	} else {
-		["<t size='1.6' color='#99ffffff'>You need to select a player!</t>", 5] call Epoch_dynamicText;
+		["You need to select a player!", 5] call Epoch_message;
 	};
 	true
 } else {

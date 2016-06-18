@@ -44,13 +44,13 @@ _config = 'CfgEpochClient' call EPOCH_returnConfig;
 _jammerRange = getNumber(_config >> "buildingJammerRange");
 _jammers = nearestObjects[_targetPos, ["PlotPole_EPOCH"], _jammerRange];
 if(count _jammers > 0 && (_unitClass in _nonJammer))exitWith{
-	if(_doVariable)then{["<t size='1.6' color='#99ffffff'>Not allowed near a base - Please respawn !</t>", 5] call Epoch_dynamicText;};
+	if(_doVariable)then{["Not allowed near a base - Please respawn !", 5] call Epoch_message;};
 };
 
 _restricted = [];
 _restricted = nearestObjects [_targetPos, ["ProtectionZone_Invisible_F"], _nonTraderAIRange];
 if(count _restricted > 0 && (_unitClass in _nonTrader))exitWith{
-	if(_doVariable)then{["<t size='1.6' color='#99ffffff'>Not allowed near a trader - Please respawn !</t>", 5] call Epoch_dynamicText;};
+	if(_doVariable)then{["Not allowed near a trader - Please respawn !", 5] call Epoch_message;};
 };
 
 _disableAI = {

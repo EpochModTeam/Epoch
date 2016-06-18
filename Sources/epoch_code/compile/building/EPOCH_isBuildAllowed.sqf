@@ -29,7 +29,7 @@ _ownedJammerExists = false;
 _nearestJammer = objNull;
 
 // reject building if in vehicle
-if (vehicle player != player)exitWith{["<t size = '1.6' color = '#99ffffff'>Building Disallowed: Inside Vehicle</t>", 5] call Epoch_dynamicText; false };
+if (vehicle player != player)exitWith{["Building Disallowed: Inside Vehicle", 5] call Epoch_message; false };
 
 // defaults
 _config = 'CfgEpochClient' call EPOCH_returnConfig;
@@ -58,7 +58,7 @@ if !(_jammer isEqualTo []) then {
 		{
 			if (alive _x) exitWith{
 				_buildingAllowed = false;
-				["<t size = '1.6' color = '#99ffffff'>Building Disallowed: Existing Jammer Signal</t>", 5] call Epoch_dynamicText;
+				["Building Disallowed: Existing Jammer Signal", 5] call Epoch_message;
 			};
 		} foreach _jammer;
 	} else {
@@ -74,12 +74,12 @@ if !(_jammer isEqualTo []) then {
 				_ownedJammerExists = true;
 			} else {
 				_buildingAllowed = false;
-				["<t size = '1.6' color = '#99ffffff'>Building Disallowed: Frequency Blocked</t>", 5] call Epoch_dynamicText;
+				["Building Disallowed: Frequency Blocked", 5] call Epoch_message;
 			};
 			_objectCount = count nearestObjects[_nearestJammer, ["Constructions_static_F"], _buildingJammerRange];
 			if (_objectCount >= _buildingCountLimit) then {
 				_buildingAllowed = false;
-				["<t size = '1.6' color = '#99ffffff'>Building Disallowed: Frequency Overloaded</t>", 5] call Epoch_dynamicText;
+				["Building Disallowed: Frequency Overloaded", 5] call Epoch_message;
 			};
 		};
 	};
@@ -96,7 +96,7 @@ if (!_ownedJammerExists) then{
 		// TODO: not properly limiting simulated objects
 		if (_objectCount >= _limitNearby) then{
 			_buildingAllowed = false;
-			[format["<t size = '1.6' color = '#99ffffff'>Building Disallowed: Limit %1</t>", _limitNearby], 5] call Epoch_dynamicText;
+			[format["Building Disallowed: Limit %1", _limitNearby], 5] call Epoch_message;
 		};
 	};
 };
@@ -107,7 +107,7 @@ if (getNumber(_config >> "buildingRequireJammer") == 0 && _bypassJammer == 0) th
 	if !(_objType in ["PlotPole_EPOCH", "PlotPole_SIM_EPOCH"]) then {
 		_buildingAllowed = _ownedJammerExists;
 		if !(_buildingAllowed) then {
-			["<t size = '1.6' color = '#99ffffff'>Building Disallowed: Frequency Jammer Needed</t>", 5] call Epoch_dynamicText;
+			["Building Disallowed: Frequency Jammer Needed", 5] call Epoch_message;
 		};
 	};
 };
@@ -126,20 +126,20 @@ if (getNumber(_config >> "buildingNearbyMilitary") == 0) then{
 };
 if !(_restricted isEqualTo []) then {
 	_buildingAllowed = false;
-	["<t size = '1.6' color = '#99ffffff'>Building Disallowed: Protected Frequency</t>", 5] call Epoch_dynamicText;
+	["Building Disallowed: Protected Frequency", 5] call Epoch_message;
 };
 
 _restrictedLocations = nearestLocations [player, ["NameCityCapital"], 300];
 if !(_restrictedLocations isEqualTo []) then {
 	_buildingAllowed = false;
-	["<t size = '1.6' color = '#99ffffff'>Building Disallowed: Protected Frequency</t>", 5] call Epoch_dynamicText;
+	["Building Disallowed: Protected Frequency", 5] call Epoch_message;
 };
 
 _myPosATL = getPosATL player;
 {
 	if ((_x select 0) distance _myPosATL < (_x select 1)) exitWith {
 		_buildingAllowed = false;
-		["<t size = '1.6' color = '#99ffffff'>Building Disallowed: Protected Frequency</t>", 5] call Epoch_dynamicText;
+		["Building Disallowed: Protected Frequency", 5] call Epoch_message;
 	};
 } forEach(getArray(_config >> worldname >> "blockedArea"));
 

@@ -35,7 +35,7 @@ if (isNull _object) exitWith{ EPOCH_target = objNull; };
 if (_item == "") exitWith{ EPOCH_target = objNull; };
 
 if (EPOCH_playerEnergy <= 0) exitWith{
-	["<t size = '1.6' color = '#99ffffff'>Need Energy</t>", 5] call Epoch_dynamicText;
+	["Need Energy", 5] call Epoch_message;
 };
 
 // Remove object if not allowed

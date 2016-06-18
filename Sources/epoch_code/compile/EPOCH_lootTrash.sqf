@@ -74,13 +74,13 @@ if (diag_tickTime - EPOCH_lastTrash > 2)  then {
 		// send
 		[_lootAnimalObj, player, Epoch_personalToken] remoteExec ["EPOCH_server_lootAnimal",2];
 		_return = true;
-		["<t size='1.6' color='#99ffffff'>Object Looted</t>", 5] call Epoch_dynamicText;
+		["Object Looted", 5] call Epoch_message;
 	};
 	if (!isNull _destroyTrashObj) then {
 		[_destroyTrashObj, _trashType, player, Epoch_personalToken] remoteExec ["EPOCH_server_destroyTrash",2];
 		EPOCH_playerSoiled = (EPOCH_playerSoiled + 1) min 100;
 		_return = true;
-		["<t size='1.6' color='#99ffffff'>Object Looted</t>", 5] call Epoch_dynamicText;
+		["Object Looted", 5] call Epoch_message;
 
 		// Snake Den
 		if (random 1 < 0.04) then {

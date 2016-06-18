@@ -62,7 +62,7 @@ if (_vehicle == player) then {
 	if (EPOCH_buildMode > 0) then {
 		EPOCH_buildMode = 0;
 		EPOCH_snapDirection = 0;
-		[format["<t size='1.6' color='#99ffffff'>BUILD MODE:%1</t>","DISABLED"], 5] call Epoch_dynamicText;
+		["BUILD MODE: DISABLED", 5] call Epoch_message;
 		EPOCH_Target = objNull;
 	};
 	_increaseStamina = true;

@@ -71,7 +71,7 @@ if !(_jammer isEqualTo[]) then {
 			}
 			else {
 				_buildingAllowed = false;
-				["<t size = '1.6' color = '#99ffffff'>Upgrade Disallowed: Frequency Blocked</t>", 5] call Epoch_dynamicText;
+				["Upgrade Disallowed: Frequency Blocked", 5] call Epoch_message;
 			};
 		};
 };
@@ -123,10 +123,10 @@ if (_object isKindOf "Constructions_static_F") then {
 				[_object,player,Epoch_upgradeIndex,Epoch_personalToken] remoteExec ["EPOCH_server_upgradeBUILD",2];
 				Epoch_upgradeIndex = nil;
 				_return = true;
-				["<t size='1.6' color='#99ffffff'>Upgraded</t>", 5] call Epoch_dynamicText;
+				["Upgraded", 5] call Epoch_message;
 			};
 		} else {
-			[format["<t size='1.6' color='#99ffffff'>%1</t>", _missingParts], 5] call Epoch_dynamicText;
+			[_missingParts, 5] call Epoch_message;
 		};
 	};
 };

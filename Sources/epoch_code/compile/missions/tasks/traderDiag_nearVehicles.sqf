@@ -10,4 +10,4 @@ if (count _vehs < 1) then {
 	_dist = _veh distance _plyr;
 	_trdrMsg = format["I know of at least one vehicle within %1m of my current location. It looks like a %2.",_dist, typeof _veh];
 };
-[format ["<t size='1.6' color='#99ffffff'>%1</t>",_trdrMsg], 5] call Epoch_dynamicText;
+[_trdrMsg, 5] call Epoch_message;

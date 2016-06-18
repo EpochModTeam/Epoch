@@ -97,9 +97,9 @@ if !(isNull _object) then{
 			_object animate[_anim, _state, true];
 			// push interacted object to queue to save later
 			EPOCH_arr_interactedObjs pushBackUnique _object;
-			[format["<t size='1.6' color='#99ffffff'>%1 part on %2</t>", "Added", _objClass call EPOCH_itemDisplayName], 5] call Epoch_dynamicText;
+			[format["%1 part on %2", "Added", _objClass call EPOCH_itemDisplayName], 5] call Epoch_message;
 		} else {
-			[format["<t size='1.6' color='#99ffffff'>%1</t>", _msg], 5] call Epoch_dynamicText;
+			[_msg, 5] call Epoch_message;
 		};
 	} else {
 		// Remove part
@@ -118,6 +118,6 @@ if !(isNull _object) then{
 				_craftItem call EPOCH_fnc_addItemOverflow;
 			};
 		}forEach _recipe;
-		[format["<t size='1.6' color='#99ffffff'>%1 part on %2</t>", "Removed", _objClass call EPOCH_itemDisplayName], 5] call Epoch_dynamicText;
+		[format["%1 part on %2", "Removed", _objClass call EPOCH_itemDisplayName], 5] call Epoch_message;
 	};
 };

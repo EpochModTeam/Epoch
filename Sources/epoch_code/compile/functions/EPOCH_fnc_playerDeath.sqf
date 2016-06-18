@@ -45,7 +45,7 @@ if (Epoch_canBeRevived) then {
 	createDialog _tapDiag;
 } else {
 	setPlayerRespawnTime 15;
-	["<t size='1.6' color='#99ffffff'>You can be just revived once per life!</t>", 5] call Epoch_dynamicText;
+	["You can be just revived once per life!", 5] call Epoch_message;
 };
 
 [_killer, _tapDiag] spawn{

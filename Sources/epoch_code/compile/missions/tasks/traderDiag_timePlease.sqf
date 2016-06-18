@@ -10,4 +10,4 @@ if(count _min < 2)then{
 _min = "0" + _min;
 };
 
-[format ["<t size='1.6' color='#99ffffff'>The time is %1:%2.</t>",_hour, _min], 5] call Epoch_dynamicText;
+[format ["The time is %1:%2.",_hour, _min], 5] call Epoch_message;

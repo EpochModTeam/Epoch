@@ -42,13 +42,13 @@ if (_dikCode in [0x02,0x03,0x04,0x58,0x57,0x44,0x43,0x42,0x41,0x40,0x3F,0x3E,0x3
 if (_ctrl && _dikCode == EPOCH_keysVolumeUp) then {
 	EPOCH_soundLevel = (EPOCH_soundLevel + 0.1) min 1;
 	5 fadeSound EPOCH_soundLevel;
-	[format["<t size = '1.6' color = '#99ffffff'>Internal sound level: %1%2 </t>", EPOCH_soundLevel * 100, "%"], 5] call Epoch_dynamicText;
+	[format["Internal sound level: %1%2", EPOCH_soundLevel * 100, "%"], 5] call Epoch_message;
 };
 // lower vol
 if (_ctrl && _dikCode == EPOCH_keysVolumeDown) then {
 	EPOCH_soundLevel = (EPOCH_soundLevel - 0.1) max 0.1;
 	5 fadeSound EPOCH_soundLevel;
-	[format["<t size = '1.6' color = '#99ffffff'>Internal sound level: %1%2 </t>", EPOCH_soundLevel * 100,"%"], 5] call Epoch_dynamicText;
+	[format["Internal sound level: %1%2", EPOCH_soundLevel * 100,"%"], 5] call Epoch_message;
 };
 
 // ESC default to cancel
@@ -59,7 +59,7 @@ if (_dikCode == 0x01) then {
 		} else {
 			EPOCH_Target = objNull;
 		};
-		["<t size = '1.6' color = '#99ffffff'>Build Canceled</t>", 5] call Epoch_dynamicText;
+		["Build Canceled", 5] call Epoch_message;
 	};
 	if !(EPOCH_arr_interactedObjs isEqualTo[]) then {
 		[EPOCH_arr_interactedObjs] remoteExec["EPOCH_server_save_vehicles", 2];
@@ -71,9 +71,9 @@ if (_dikCode == 0x01) then {
 if (_dikCode == EPOCH_keysDebugMon) then {
 	EPOCH_debugMode = !EPOCH_debugMode;
 	if (EPOCH_debugMode) then {
-		["<t size = '1.6' color = '#99ffffff'>Debug Mode Enabled</t>", 5] call Epoch_dynamicText;
+		["Debug Mode Enabled", 5] call Epoch_message;
 	} else {
-		["<t size = '1.6' color = '#99ffffff'>Debug Mode Disabled</t>", 5] call Epoch_dynamicText;
+		["Debug Mode Disabled", 5] call Epoch_message;
 		hintSilent "";
 	};
 	_handled = true;
@@ -100,7 +100,7 @@ if (vehicle player == player) then {
 	_disableBuildMode = {
 		EPOCH_buildMode = 0;
 		EPOCH_snapDirection = 0;
-		["<t size = '1.6' color = '#99ffffff'>Build Mode Disabled</t>", 5] call Epoch_dynamicText;
+		["Build Mode Disabled", 5] call Epoch_message;
 		EPOCH_Target = objNull;
 		EPOCH_Z_OFFSET = 0;
 		EPOCH_X_OFFSET = 0;
@@ -113,10 +113,10 @@ if (vehicle player == player) then {
 			if (EPOCH_playerEnergy > 0) then {
 				EPOCH_stabilityTarget = objNull;
 				EPOCH_buildMode = 1;
-				["<t size = '1.6' color = '#99ffffff'>Build Mode Enabled: Snap alignment</t>", 5] call Epoch_dynamicText;
+				["Build Mode Enabled: Snap alignment", 5] call Epoch_message;
 				EPOCH_buildDirection = 0;
 			} else {
-				["<t size = '1.6' color = '#99ffffff'>Need Energy</t>", 5] call Epoch_dynamicText;
+				["Need Energy", 5] call Epoch_message;
 			};
 		};
 		_handled = true;
@@ -128,11 +128,11 @@ if (vehicle player == player) then {
 			if (EPOCH_playerEnergy > 0) then {
 				EPOCH_stabilityTarget = objNull;
 				EPOCH_buildMode = 2;
-				["<t size = '1.6' color = '#99ffffff'>Build Mode Enabled: Free</t>", 5] call Epoch_dynamicText;
+				["Build Mode Enabled: Free", 5] call Epoch_message;
 				EPOCH_buildDirection = 0;
 			}
 			else {
-				["<t size = '1.6' color = '#99ffffff'>Need Energy</t>", 5] call Epoch_dynamicText;
+				["Need Energy", 5] call Epoch_message;
 			};
 		};
 		_handled = true;
@@ -158,10 +158,10 @@ if (vehicle player == player) then {
 			EPOCH_snapDirection = EPOCH_snapDirection + 1;
 			if (EPOCH_snapDirection > 3) then {
 				EPOCH_snapDirection = 0;
-				["<t size = '1.6' color = '#99ffffff'>SNAP DIRECTION MODE: 0</t>", 5] call Epoch_dynamicText;
+				["SNAP DIRECTION MODE: 0", 5] call Epoch_message;
 			}
 			else {
-				[format["<t size = '1.6' color = '#99ffffff'>SNAP DIRECTION MODE: %1</t>", EPOCH_snapDirection], 5] call Epoch_dynamicText;
+				[format["SNAP DIRECTION MODE: %1", EPOCH_snapDirection], 5] call Epoch_message;
 			};
 			_handled = true;
 		};
@@ -241,7 +241,7 @@ if (vehicle player == player) then {
 			} else {
 				EPOCH_Target = objNull;
 			};
-			["<t size = '1.6' color = '#99ffffff'>Build Canceled</t>", 5] call Epoch_dynamicText;
+			["Build Canceled", 5] call Epoch_message;
 		};
 		if (isTouchingGround player) then {
 			// _handled = call EPOCH_lootTrash;

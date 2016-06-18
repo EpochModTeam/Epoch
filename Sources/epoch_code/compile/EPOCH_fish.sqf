@@ -30,7 +30,7 @@ if (surfaceIsWater _currentPos) then {
             EPOCH_myBobber = _bobber;
         } else {
             if (_bobber distance player > 12) then {
-                ["<t size='1.6' color='#99ffffff'>No bobber found within 12m.</t>", 5] call Epoch_dynamicText;
+                ["No bobber found within 12m.", 5] call Epoch_message;
             } else {
                 _castTime = _bobber getVariable ["EPOCH_bobberTime", diag_tickTime];
                 _diffTime = (diag_tickTime - _castTime) / 10;
@@ -59,10 +59,10 @@ if (surfaceIsWater _currentPos) then {
                         _fish = selectRandom _fishes;
                         if (_fish != "") then {
                             _fish call EPOCH_fnc_addItemOverflow;
-                            ["<t size='1.6' color='#99ffffff'>Fish Caught</t>", 5] call Epoch_dynamicText;
+                            ["Fish Caught", 5] call Epoch_message;
                         };
                     } else {
-                        ["<t size='1.6' color='#99ffffff'>Fish Got Away</t>", 5] call Epoch_dynamicText;
+                        ["Fish Got Away", 5] call Epoch_message;
                     };
                 };
             };

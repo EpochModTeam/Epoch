@@ -25,7 +25,7 @@ private ["_targeter","_stability"];
 
 if !(isNil "EPOCH_simulSwap_Lock") exitWith{ false };
 if !(isNull EPOCH_Target) exitWith{ false };
-if (EPOCH_playerEnergy <= 0) exitWith{ ["<t size='1.6' color='#99ffffff'>Need energy</t>", 5] call Epoch_dynamicText; false };
+if (EPOCH_playerEnergy <= 0) exitWith{ ["Need energy", 5] call Epoch_message; false };
 
 params [["_object",objNull]];
 

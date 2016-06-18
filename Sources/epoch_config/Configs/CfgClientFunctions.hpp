@@ -153,6 +153,11 @@ class CfgClientFunctions
 			class initUI {};
 			class refeshUI {};
 		};
+		class messaging {
+			class message {};
+			class message_old1 {};
+			class message_old2 {};
+		};
 		class looting {
 			class spawnLoot {};
 		};
@@ -168,7 +173,6 @@ class CfgClientFunctions
 			class getIDC {};
 			class guiObjHP {};
 			class secureStorageHandler {};
-			class dynamicText {};
 			class genderSelection {};
 			class getColorScheme {};
 		};

@@ -17,5 +17,5 @@
 
 */
 if (isLocalized (_this select 0)) then{
- [format["<t size = ""1.6"" color = ""#99ffffff"">%1</t>", format[localize (_this select 0), _this select 1]], 5] call Epoch_dynamicText;
+ [format["%1", format[localize (_this select 0), _this select 1]], 5] call Epoch_message;
 };

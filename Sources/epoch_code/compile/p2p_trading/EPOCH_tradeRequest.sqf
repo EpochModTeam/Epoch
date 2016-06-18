@@ -15,7 +15,7 @@
 if !(isNull _this) then {
 	// ignore request if either player is in a vehicle
 	if (vehicle player == player && vehicle _this == _this) then {
-		["<t size='1.6' color='#99ffffff'>Trade request received, press 'T' to accept</t>", 5] call Epoch_dynamicText;
+		["Trade request received, press 'T' to accept", 5] call Epoch_message;
 		EPOCH_pendingP2ptradeTarget = _this;
 	};
 };

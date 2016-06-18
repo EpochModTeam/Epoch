@@ -78,7 +78,7 @@ class doDelivery{
 	callEventCondition1 = "(axeDocDeliveryStart + 480 < diag_tickTime) && ((player nearentities [[""C_Man_1""],500]) apply {_x getVariable [""AI_SLOT"",-1]} isEqualTo (uiNameSpace getVariable [""axeStartTraders"",[]]))";
 	callEventCondition2 = "";
 	callEventCondition3 = "";
-	callEventCALL1 = "[""<t size='1.6' color='#99ffffff'>Hey, what are you doing here ? Get on with your task !</t>"", 5] call Epoch_dynamicText";
+	callEventCALL1 = "[""Hey, what are you doing here ? Get on with your task !"", 5] call Epoch_message";
 	callEventFSM1 = "";
 	callEventSQF1 = "";
 	callEventTask1 = "";

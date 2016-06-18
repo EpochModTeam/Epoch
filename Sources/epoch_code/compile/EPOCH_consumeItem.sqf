@@ -72,7 +72,7 @@ _unifiedInteract = {
 		{
 			_output = [_forEachIndex, _x] call _giveAttributes;
 			if (_output != "") then {
-				[format["<t size='1.6' color='#99ffffff'>%1</t>", _output], 5] call Epoch_dynamicText;
+				[_output, 5] call Epoch_message;
 			};
 		} foreach _interactAttributes;
 	};
@@ -106,7 +106,7 @@ switch _interactOption do {
 			if ((_magazineSize % _magazineSizeMax) > 0) then {
 				player addMagazine [_item, floor (_magazineSize % _magazineSizeMax)];
 			};
- 			["<t size='1.6' color='#99ffffff'>Ammo Repacked</t>", 5] call Epoch_dynamicText;
+ 			["Ammo Repacked", 5] call Epoch_message;
 		};
 	};
 	case 1: _unifiedInteract; // Eat 1
@@ -148,7 +148,7 @@ switch _interactOption do {
 											[_object] spawn EPOCH_simulSwap;
 										};
 									} else {
-										["<t size = '1.6' color = '#99ffffff'>Building Disallowed: Frequency Unstable</t>", 5] call Epoch_dynamicText;
+										["Building Disallowed: Frequency Unstable", 5] call Epoch_message;
 									};
 								} else {
 									_object=createVehicle[_buildClass,_pos,[],0,"CAN_COLLIDE"];
@@ -156,14 +156,14 @@ switch _interactOption do {
 									[_object,_item] spawn EPOCH_staticMove;
 								};
 								// _object spawn EPOCH_countdown;
-								[format["<t size='1.6' color='#99ffffff'>Press '%1' to drop object.</t>", "1"], 5] call Epoch_dynamicText;
+								[format["Press '%1' to drop object.", "1"], 5] call Epoch_message;
 
 							} else {
-								["<t size = '1.6' color = '#99ffffff'>Need Energy< / t>", 5] call Epoch_dynamicText;
+								["Need Energy", 5] call Epoch_message;
 							};
 						};
 					} else {
-						["<t size='1.6' color='#99ffffff'>World limit reached</t>", 5] call Epoch_dynamicText;
+						["World limit reached", 5] call Epoch_message;
 					};
 				};
 			};
@@ -185,7 +185,7 @@ switch _interactOption do {
 				// send
 				[_vehicle,_newFuel,player,Epoch_personalToken] remoteExec ["EPOCH_server_fillVehicle",2];
 
-				["<t size='1.6' color='#99ffffff'>Fuel Added</t>", 5] call Epoch_dynamicText;
+				["Fuel Added", 5] call Epoch_message;
 			};
 		};
 	};
@@ -200,10 +200,10 @@ switch _interactOption do {
 				if (_item call _removeItem) then {
 					_interactReturnOnUse call EPOCH_fnc_addItemOverflow;
 					[_vehicle,_newFuel,player,Epoch_personalToken] remoteExec ["EPOCH_server_fillVehicle",2];
-					["<t size='1.6' color='#99ffffff'>Fuel Siphoned</t>", 5] call Epoch_dynamicText;
+					["Fuel Siphoned", 5] call Epoch_message;
 				};
 			} else {
-				["<t size='1.6' color='#99ffffff'>Not Enough Fuel</t>", 5] call Epoch_dynamicText;
+				["Not Enough Fuel", 5] call Epoch_message;
 			};
 		} else {
 
@@ -216,10 +216,10 @@ switch _interactOption do {
 			if (_transportFuel > _canCapacity) then {
 				if (_item call _removeItem) then {
 					_interactReturnOnUse call EPOCH_fnc_addItemOverflow;
-					["<t size='1.6' color='#99ffffff'>Fuel Siphoned</t>", 5] call Epoch_dynamicText;
+					["Fuel Siphoned", 5] call Epoch_message;
 				};
 			} else {
-				["<t size='1.6' color='#99ffffff'>Not Enough Fuel</t>", 5] call Epoch_dynamicText;
+				["Not Enough Fuel", 5] call Epoch_message;
 			};
 		};
 	};
@@ -260,7 +260,7 @@ switch _interactOption do {
 						[_vehicle,["ALL",0],player,Epoch_personalToken] remoteExec ["EPOCH_server_repairVehicle",2];
 					};
 				};
-				["<t size='1.6' color='#99ffffff'>Vehicle Partially Repaired</t>", 5] call Epoch_dynamicText;
+				["Vehicle Partially Repaired", 5] call Epoch_message;
 			};
 		};
 	};
@@ -270,7 +270,7 @@ switch _interactOption do {
 		if (_vehicle in _vehicles) then {
 			if (_item call _removeItem) then {
 				[_vehicle,["ALL",0],player,Epoch_personalToken] remoteExec ["EPOCH_server_repairVehicle",2];
-				["<t size='1.6' color='#99ffffff'>Vehicle Fully Repaired</t>", 5] call Epoch_dynamicText;
+				["Vehicle Fully Repaired", 5] call Epoch_message;
 			};
 		};
 	};
@@ -293,13 +293,12 @@ switch _interactOption do {
 
 						[_vehicle,_paintCanIndex,player,Epoch_personalToken] remoteExec ["EPOCH_server_paintBUILD",2];
 
-						_msg = format["Wall Painted %1", _paintCanColor];
-						[format["<t size='1.6' color='#99ffffff'>%1</t>", _msg], 5] call Epoch_dynamicText;
+						[format["Wall Painted %1", _paintCanColor], 5] call Epoch_message;
 					};
 				};
 			}
 			else {
-				["<t size = '1.6' color = '#99ffffff'>Disallowed</t>", 5] call Epoch_dynamicText;
+				["Disallowed", 5] call Epoch_message;
 			};
 		};
 	};
@@ -311,14 +310,14 @@ switch _interactOption do {
 			if (damage _vehicle != 0) then {
 				if (_item call _removeItem) then {
 					[_vehicle,["ALL",0],player,Epoch_personalToken] remoteExec ["EPOCH_server_repairVehicle",2];
-					["<t size = '1.6' color = '#99ffffff'>Healed other player</t>", 5] call Epoch_dynamicText;
+					["Healed other player", 5] call Epoch_message;
 				};
 			};
 		} else {
 			if (damage player != 0) then {
 				if (_item call _removeItem) then {
 					[player,["ALL",0],player,Epoch_personalToken] remoteExec ["EPOCH_server_repairVehicle",2];
-					["<t size = '1.6' color = '#99ffffff'>Healed yourself</t>", 5] call Epoch_dynamicText;
+					["Healed yourself", 5] call Epoch_message;
 				};
 			};
 		};
@@ -327,11 +326,11 @@ switch _interactOption do {
 	case 14: { // Unpack Backpack
 		if (_item call _removeItem) then {
 			[_interactReturnOnUse,player,Epoch_personalToken] remoteExec ["EPOCH_server_unpackBackpack",2];
-			["<t size = '1.6' color = '#99ffffff'>Unpacked backpack</t>", 5] call Epoch_dynamicText;
+			["Unpacked backpack", 5] call Epoch_message;
 		};
 	};
 
 	default {
-		["<t size='1.6' color='#99ffffff'>Found nothing</t>", 5] call Epoch_dynamicText;
+		["Found nothing", 5] call Epoch_message;
 	};
 };

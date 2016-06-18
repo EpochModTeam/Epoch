@@ -93,7 +93,7 @@ _menuCondition = getText(getMissionConfig "epochMissions" >> (_missionClasses se
 				_doTask = _uiNSTask;
 				}else{
 				_allowTask = false;
-				[format ["<t size='1.6' color='#99ffffff'>Already on a mission - %1</t>",selectRandom ['Chop Chop !','Get on With It !','What are you waiting for ?','No bonuses for tardiness !']], 5] call Epoch_dynamicText;
+				[format ["Already on a mission - %1",selectRandom ['Chop Chop !','Get on With It !','What are you waiting for ?','No bonuses for tardiness !']], 5] call Epoch_message;
 				};
 			};
 
@@ -105,12 +105,12 @@ _menuCondition = getText(getMissionConfig "epochMissions" >> (_missionClasses se
 
 	}else{
 
-	[format["<t size='1.6' color='#99ffffff'>Mission Not Allowed !</t>",_menuCondition], 5] call Epoch_dynamicText;
+	[format["Mission Not Allowed !",_menuCondition], 5] call Epoch_message; //Not formatting, is this intended?
 
 	};
 
 
 } else {
 //systemChat format ["Trader Not Found",""];
-["<t size='1.6' color='#99ffffff'>Trader Lost. Goodbye.</t>", 5] call Epoch_dynamicText;
+["Trader Lost. Goodbye.", 5] call Epoch_message;
 };
