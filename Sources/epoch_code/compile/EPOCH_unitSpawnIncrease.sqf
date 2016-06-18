@@ -13,7 +13,8 @@
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_code/compile/EPOCH_unitSpawnIncrease.sqf
 */
 private ["_index"];
-_index = EPOCH_spawnIndex find _this;
+params ["_spawnName", ["_increase",1]];
+_index = EPOCH_spawnIndex find _spawnName;
 if (_index != -1) then{
-  EPOCH_playerSpawnArray set[_index, ((EPOCH_playerSpawnArray select _index) + 1) min (EPOCH_spawnLimits select _index)];
+  EPOCH_playerSpawnArray set[_index, ((EPOCH_playerSpawnArray select _index) + _increase) min (EPOCH_spawnLimits select _index)];
 };
