@@ -58,4 +58,4 @@ maxAimingAccuracy -> maxGeneral - Set the maximum value for each available AI sk
 [Info] Changed name of a3_epoch_server_settings.pbo to epoch_server_settings.pbo.
 [Info] RConPort 2306 added to example-beserver.cfg for changes since A3 1.58.
 [Info] Removed old .bikey and added new one for 0390.
-[Info] Requires Arma 3 1.58 or higher.
+[Info] Requires Arma 3 1.60 or higher.
