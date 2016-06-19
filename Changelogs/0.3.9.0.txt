@@ -1,6 +1,6 @@
 [New] Epoch Mod configs and some community pbo's are now released under APL-SA license here: https://github.com/EpochModTeam/EpochCore
 [Added-WIP] Tanoa map support.
-[Added] New Task Mission System and removed old mission system.
+[Added] New Task based Mission System.
 [Added] (Optional) Support for Ryan's Zombies and Demons mod: http://steamcommunity.com/sharedfiles/filedetails/?id=501966277 with custom Epoch implementation.
 [Added] New custom variable EPOCH_playerNuisance that increases based on the type of weapon fired and decreases at a rate of 1 per 10 seconds. This is used to track how active a shooter the player is.
 [Added] Player option to Morph into a random antagonist (from deathMorphClass) after death. The array 'deathMorphClass' found in CfgEpochClient can be used to specify what antagonists to randomly spawn.
@@ -24,8 +24,8 @@ unitTypes - an array of soldier classes to randomly choose from. Custom weapons 
 maxUnitNum - Maximum number of units to spawn per UAV.
 minAISkill - Minimum value for any AI skill.
 maxAimingAccuracy -> maxGeneral - Set the maximum value for each available AI skill. A random number between minAISkill and the value for each will be set as that skill.
-
-[Fixed] To prevent animation glich with weapon switching on the move and holstering. You now must be standing still to holster your weapon.
+[Fixed] To prevent A3 dupe issues Epoch Militia Solders when taking uniforms, they no longer have uniforms.
+[Fixed] To prevent animation glitch with weapon switching on the move and holstering. You now must be standing still to holster your weapon.
 [Fixed] Custom Epoch Gestures not working since 1.60.
 [Fixed] Issue with animals not returning raw meat.
 [Fixed] Getting wet and cold on standing on pier. Thanks to umfufu for the report! http://epochmod.com/forum/topic/41929-getting-10-points-of-wetness/
@@ -46,6 +46,7 @@ maxAimingAccuracy -> maxGeneral - Set the maximum value for each available AI sk
 [Changed] ForceRestart option should now restart as soon as all players disconnect and server is locked.
 [Changed] Epoch Events can now self initialize on server startup (if third events[] array element is 1). Fixes issue with weather not changing till first event run.
 [Removed] Epoch AH removed whitelisted variable check system.
+[Removed] STEAMAPI Vac ban check as it needs reworked in the extension.
 [Fixed] Take into account trader stored per class vehicle limits when spawning new vehicles.
 [Fixed] Disappearing Mags on login / revive. Thanks to He-Man for the fix: http://epochmod.com/forum/topic/42178-disappearing-mags-on-login-revive-fix/#comment-277194
 [Fixed] CUP mods enabled check logic typo. Thanks to @morgoth0 for the report: https://github.com/EpochModTeam/Epoch/issues/543

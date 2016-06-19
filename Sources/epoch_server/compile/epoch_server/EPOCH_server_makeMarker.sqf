@@ -14,7 +14,7 @@
     Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
 
     Github:
-    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_server/compile/epoch_server/EPOCH_server_createMarker.sqf
+    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_server/compile/epoch_server/EPOCH_server_makeMarker.sqf
 */
 params ["_trgt","_mPos",["_mShape","ICON"],["_mType","mil_dot"],["_mText",""],["_mColor","ColorBlack"],["_mSize",[0.7,0.7]],"_mBrush","_mDir","_mAlpha",["_mrkrName",""]];
 private ["_trgtType","_trgtObj"];
