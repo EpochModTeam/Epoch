@@ -125,8 +125,7 @@ switch _unitClass do {
 	case "EPOCH_RyanZombie_1": {
 		for "_i" from 1 to (_spawnLimit - _currentLimit) do
 		{
-			_unit = [] call EPOCH_zombieSpawn;
-			_units pushBack _unit;
+			[] call EPOCH_zombieSpawn;
 		};
 	};
 };
