@@ -133,7 +133,7 @@ class milMarkCrashSite{
 	markerText = "Crash Site";
 	initfsm = "";
 	initsqf = "";
-	initcall = "[[1,player],milCrashPos,""ELLIPSE"",""mil_dot"",""Crash Site"",""ColorRed"",[800,800], ""SolidBorder"", 42, 0.6] remoteExec [""EPOCH_server_makeMarker"",2];";
+	initcall = "[[1,player],milCrashPos,""ELLIPSE"",""mil_dot"",""Crash Site"",""ColorRed"",[800,800], ""SolidBorder"", 42, 0.6, ""milMarkCrashSite""] remoteExec [""EPOCH_server_makeMarker"",2];";
 	callEventBinTask = 0;
 	callEventCondition1 = "true";
 	callEventCondition2 = "true";
@@ -234,7 +234,7 @@ class milFindCrashSite{
 	reminder[] = {""};
 	nextTask[] = {"milEndCrashSite"};
 };
-
+	
 class milEndCrashSite{
 	author = "axeman";
 	title = "";
@@ -290,7 +290,7 @@ class milEndCrashSite{
 	reward[] = {""};
 	completed1[] = {""};
 	completed2[] = {""};
-	completedCALL = "";
+	completedCALL = "[player,1,""milMarkCrashSite""] remoteExec [""EPOCH_server_removeMarker"",2];";
 	reminder[] = {""};
 	nextTask[] = {""};
 };

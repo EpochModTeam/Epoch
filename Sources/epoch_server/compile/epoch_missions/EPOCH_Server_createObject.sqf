@@ -12,17 +12,19 @@
     Github:
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server/compile/epoch_missions/EPOCH_Server_createObject.sqf
 */
-private ["_grp","_driver","_gunner","_commander","_crew","_missionVehList","_obj","_cfgPricing","_objClass","_vehicles","_backpacks","_weapons","_items","_magazines"];
-params ["_player",["_token","",[""]],["_objArr",[]],["_pos",[]],["_wepHolder",objNull],["_clearCargo",true],["_objSpc","CAN_COLLIDE"],["_driverType",""],["_gunnerType",""],["_commanderType",""],["_crewType",""]];
+private ["_grp","_driver","_gunner","_commander","_crew","_missionVehList","_obj","_cfgPricing","_objClass","_vehicles","_backpacks","_weapons","_items","_magazines","_vehAllowed"];
+params ["_player",["_token","",[""]],["_objArr",[]],["_pos",[]],["_wepHolder",objNull],["_clearCargo",true],["_objSpc","CAN_COLLIDE"],["_driverType",""],["_gunnerType",""],["_commanderType",""],["_crewType",""],["_doDamage",false]];
 
 if !([_player,_token]call EPOCH_server_getPToken) exitWith {};
+if (typeName _objArr != "ARRAY")then{_objArr = [_objArr];};
 if (count _objArr < 1) exitWith {};
 
-diag_log format["Epoch: Server_CreateObject: %1 for %2",_objArr, name _player];
+diag_log format["Epoch: Attempt Create Object: %1 for %2",_objArr, name _player];
 
 _cfgPricing = 'CfgPricing' call EPOCH_returnConfig;
 _allowedVehicleListName = ["allowedVehiclesList","allowedVehiclesList_CUP"] select EPOCH_modCUPVehiclesEnabled;
 _allowedVehiclesList = getArray(configFile >> "CfgEpoch" >> worldName >> _allowedVehicleListName);
+//diag_log format ["DEBUG: Allowed Vehs: %1",_allowedVehiclesList];
 _vehicles = [];
 _backpacks = [];
 _weapons = [];
@@ -57,7 +59,7 @@ _pos set [2,0];
 		//Magazines
 		if(isClass (configFile >> "CfgMagazines" >> _x))then{
 			
-			diag_log format["Epoch: Server_CreateObject: %1 Magaxine Found",_x];
+			diag_log format["Epoch: Server_CreateObject: %1 Magazine Found",_x];
 			
 			if("ItemCore" in ([configFile >> "CfgMagazines" >> _x, true] call BIS_fnc_returnParents))then{
 			_items pushBack _x;
@@ -73,25 +75,34 @@ _pos set [2,0];
 		_backpacks pushBack _x;
 		}else{
 			
-			diag_log format["Epoch: Server_CreateObject: Vehicle Found %1 - Allowed: %2",_x, _x in _allowedVehiclesList];
+			_vehAllowed = true;
 			
-			//if(_x in _allowedVehiclesList)then{
-			//Not working ?
+			//If not destroying vehcile then check if allowed
+			if!(_doDamage)then{
+			_veh = _x;
+			_vehAllowed = false;
+				{
+				if (_veh in _x)then{_vehAllowed = true;};
+				} forEach _allowedVehiclesList;
+			};
 			
-				_posOut = _pos;
 				
-				if(_x isKindOf "CAR" || _x isKindOf "AIR")then{
-				_pos = [position _player, 0, 250, 6, 0, 1000, 0] call BIS_fnc_findSafePos;
-				_pos = _pos findEmptyPosition [1,75,_x];
-				};
+				if(_vehAllowed)then{
+					//If not destroying (mission object) then find safe position
+					if!(_doDamage)then{
+						if(_x isKindOf "CAR" || _x isKindOf "AIR")then{
+						_pos = [position _player, 0, 250, 6, 0, 1000, 0] call BIS_fnc_findSafePos;
+						_pos = _pos findEmptyPosition [1,75,_x];
+						};
 
-				if(_x isKindOf "SHIP")then{
-				_pos = [position _player, 0, EPOCH_dynamicVehicleArea, 10, 1, 1000, 0] call BIS_fnc_findSafePos;
-				_pos = _pos findEmptyPosition [1,75,_x];
+						if(_x isKindOf "SHIP")then{
+						_pos = [position _player, 0, EPOCH_dynamicVehicleArea, 10, 1, 1000, 0] call BIS_fnc_findSafePos;
+						_pos = _pos findEmptyPosition [1,75,_x];
+						};
+					};
+					
+					_vehicles pushBack [_x,_pos];
 				};
-				
-				_vehicles pushBack [_x,_pos];
-			//};
 		};
 	};
 
@@ -182,7 +193,9 @@ if(count _vehicles > 0)then{
 			};
 		_obj allowdamage true;
 	
+		if(_doDamage)then{_obj setDamage 1;};
+	
 	}forEach _vehicles;
+	
+	
 };
-
-
