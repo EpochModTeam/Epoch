@@ -413,7 +413,7 @@ EPOCH_KeyDownCustom = {
 
 
             if (_ctrl) then {
-                EPB = []; "if (isclass _x) then {EPB pushBack (configName _x); true}" configClasses (configFile >> "CfgBuildingLootPos")
+                EPB = []; "if (isclass _x) then {EPB pushBack (configName _x); true}" configClasses (getMissionConfig "CfgBuildingLootPos")
             } else {
 
                 _buildLoading = objNull;
@@ -424,16 +424,11 @@ EPOCH_KeyDownCustom = {
                 };
 
                 _buildingPos = getPosATL _buildLoading;
-                _config = missionConfigFile;
+
                 _customLoot = true;
                 _lootCount = 0;
 
-                if!(isClass (_config >> "CfgBuildingLootPos" >> typeOf _buildLoading))then{
-                _config = configFile;
-                _customLoot = false;
-                };
-
-                if(isClass (_config >> "CfgBuildingLootPos" >> typeOf _buildLoading))then{
+                if(isClass (getMissionConfig "CfgBuildingLootPos" >> typeOf _buildLoading))then{
 
                     {
                         _thisLoot = _x select 1;
@@ -450,7 +445,7 @@ EPOCH_KeyDownCustom = {
 
                             _newLoot setDir _dir;
                             _lootCount = _lootCount + 1;
-                            }forEach getArray(_config >> "CfgBuildingLootPos" >> typeOf _buildLoading >> _thisRawLootPos);
+                            }forEach getArray(getMissionConfig "CfgBuildingLootPos" >> typeOf _buildLoading >> _thisRawLootPos);
 
                     } forEach EPOCH_lootClassesRaw;
 
@@ -528,7 +523,7 @@ EPOCH_dbg_saveLootPos = {
                 _ppos            = EP_building worldToModel (getposATL _x);
                 _directionOffset = [_x,EP_building] call EPOCH_dirOffset;
                 _config_str      = _config_str +  format['        { %1, %2 }%3', _ppos call EPOCH_dbg_replaceBrackets, _directionOffset,if (_forEachIndex isEqualTo _countArray) then {_br} else {("," + _br)}];
-            } forEach _objectsArray;
+            } forEach _objectsArray - [EPOCH_vehTarget];
             _config_str = _config_str +  "    };" + _br;
         };
     } forEach EPOCH_lootClassesRaw;
@@ -567,7 +562,7 @@ EPOCH_LOOT = {
 
     _building = EP_building;
 
-    _config = configFile >> 'CfgBuildingLootPos' >> (typeOf _building);
+    _config = getMissionConfig 'CfgBuildingLootPos' >> (typeOf _building);
 
     _buildingPos = (getPosATL _building);
 
@@ -699,9 +694,7 @@ KK_boundingBox = {
                     case 0: {
                         _worldPos set [2, _intersectPosASL select 2];
                     };
-                    case 1: {
-                        _worldPos set [2, _intersectPosASL select 2];
-                    };
+                    case 1;
                     case 2;
                     case 3;
                     case 4;
