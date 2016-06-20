@@ -1410,6 +1410,13 @@ class CfgLootTable_CUP
 				{ { "Pelt_EPOCH", "magazine" }, 1 }
 		};
 	};
+	class GreatWhite_F
+	{
+		items[] = {
+				{ { "MetalBars", "CfgLootTable" }, 9 },
+				{ { "ItemBriefcaseGold100oz", "magazine" }, 1 }
+		};
+	};
 	class Epoch_Sapper_F
 	{
 		items[] = {
