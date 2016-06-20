@@ -24,6 +24,7 @@ class CfgEpochClient
 	disableRemoteSensors = true; // disableRemoteSensors true
 	EPOCH_news[] = {"Word is that Sappers have a new boss.","Dogs will often lure them monsters away.","My dog was blown up. I miss him.."};
 	deathMorphClass[] = {"Epoch_Sapper_F","Epoch_SapperB_F","I_UAV_01_F","Epoch_Cloak_F"};//Random selection of these classes when player morphs after death. Currently available: Epoch_Cloak_F, Epoch_SapperB_F, Epoch_Sapper_F, I_UAV_01_F
+	niteLight[] = {1.88,22};//Set ambient lighting at night: {Brightness of light,Height of light}. Default (Low Ambient): {1.88,22} | Twilight: {7.2,88} | Distant: {12.8,142}
 	antagonistSpawnIndex[] = {
 		{"Epoch_Cloak_F", 1}, // {"type", limit}
 		{"GreatWhite_F", 2},

@@ -1,7 +1,7 @@
 /*
 	Author: Aaron Clark - EpochMod.com
 
-    Contributors:
+    Contributors: Andrew Gregory
 
 	Description:
 	setup nightlight to provide improved night vision
@@ -10,23 +10,24 @@
     Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
 
     Github:
-    https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_code/compile/EPOCH_niteLight.sqf
+    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_code/compile/EPOCH_niteLight.sqf
 */
 private ["_pos"];
 
 if (!isNull EP_light) then {
 	deleteVehicle EP_light;
 };
-
+_config = 'CfgEpochClient' call EPOCH_returnConfig;
+_nlSettings = getArray ( _config >> "niteLight");
+_nlBright = _nlSettings select 0;
+_nlZ = _nlSettings select 1;
 _pos = (getPosATL player);
-_pos set [2,(_this select 1)];
+_pos set [2,_nlZ];
 EP_light = "#lightpoint" createvehiclelocal _pos;
 EP_light setposATL _pos;
-EP_light attachTo [player];
-
-EP_light setLightDayLight true;
-EP_light setLightBrightness (_this select 0);
-EP_light setLightAmbient[0.05, 0.05, 0.05];
-EP_light setlightcolor[0.05, 0.05, 0.05];
-
+EP_light attachTo [player,[0,8.11,_nlZ]]; //offset infront of player so that the darkness is 'following' them.
+EP_light setLightDayLight true; //TODO: Test if this can be turned off (Dawn / Dusk)
+EP_light setLightBrightness _nlBright;
+EP_light setLightAmbient [0.435, 0.439, 0.439];//Using new Colours.
+EP_light setlightcolor [0.435, 0.439, 0.439];
 true
