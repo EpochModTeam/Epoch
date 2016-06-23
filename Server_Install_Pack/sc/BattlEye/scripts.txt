@@ -1,6 +1,6 @@
 //new2
 7 "BIS_fnc_dynamictext" !="\"BIS_fnc_dynamictext"\" !="'BIS_fnc_dynamictext'"
-7 forceRespawn !="reviveHandleForceRespawnAction" !="forcerespawn player;"
+7 forceRespawn !="BIS_fnc_paramReviveForceRespawnDuration" !="reviveHandleForceRespawnAction" !="forcerespawn player;"
 7 setFriend
 7 setAmmo
 7 enableFatigue
