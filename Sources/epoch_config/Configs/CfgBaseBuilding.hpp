@@ -132,7 +132,6 @@ class CfgBaseBuilding {
 		GhostPreview = "SolarGen_EPOCH";
 		staticClass = "SolarGen_EPOCH";
 		simulClass = "SolarGen_SIM_EPOCH";
-		interactMode = 1;
 	};
 	class SolarGen_SIM_EPOCH : SolarGen_EPOCH {
 		removeParts[] = {};
@@ -144,11 +143,9 @@ class CfgBaseBuilding {
 		staticClass = "PlotPole_EPOCH";
 		simulClass = "PlotPole_SIM_EPOCH";
 		bypassJammer = 1;
-		interactMode = 1;
 	};
 	class PlotPole_SIM_EPOCH : PlotPole_EPOCH
 	{
-		interactMode = 0;
 		removeParts[] = {};
 	};
 	class WoodRamp_EPOCH : Default
@@ -504,7 +501,6 @@ class CfgBaseBuilding {
 		simulClass = "Tipi_SIM_EPOCH";
 		limitNearby = 2;
 		bypassJammer = 1;
-		interactMode = 4;
 	};
 	class Tipi_SIM_EPOCH : Tipi_EPOCH
 	{
@@ -512,7 +508,6 @@ class CfgBaseBuilding {
 		staticClass = "Tipi_EPOCH";
 		limitNearby = 2;
 		bypassJammer = 1;
-		interactMode = 1;
 		removeParts[] = {};
 	};
 	class Tipi_Ghost_EPOCH : Tipi_SIM_EPOCH {};
@@ -524,11 +519,9 @@ class CfgBaseBuilding {
 		simulClass = "StorageShelf_SIM_EPOCH";
 		limitNearby = 5;
 		bypassJammer = 1;
-		interactMode = 4;
 	};
 	class StorageShelf_SIM_EPOCH : StorageShelf_EPOCH
 	{
-		interactMode = 0;
 		removeParts[] = {};
 	};
 	class StorageShelf_Ghost_EPOCH : StorageShelf_SIM_EPOCH {};
@@ -540,11 +533,9 @@ class CfgBaseBuilding {
 		simulClass = "WorkBench_SIM_EPOCH";
 		limitNearby = 5;
 		bypassJammer = 1;
-		interactMode = 4;
 	};
 	class WorkBench_SIM_EPOCH : Workbench_EPOCH
 	{
-		interactMode = 0;
 		removeParts[] = {};
 	};
 	class WorkBench_Ghost_EPOCH : WorkBench_SIM_EPOCH {};

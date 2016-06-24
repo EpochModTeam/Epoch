@@ -569,6 +569,18 @@ class CfgMainTable
 		LootMax = 4;
 		tables[] = { "Goat_random_EPOCH" };
 	};
+	class Fin_random_EPOCH
+	{
+		lootMin = 2;
+		LootMax = 4;
+		tables[] = { "Fin_random_EPOCH" };
+	};
+	class Alsatian_Random_EPOCH
+	{
+		lootMin = 2;
+		LootMax = 4;
+		tables[] = { "Alsatian_Random_EPOCH" };
+	};
 	class Cock_random_EPOCH
 	{
 		lootMin = 1;
@@ -586,6 +598,18 @@ class CfgMainTable
 		lootMin = 1;
 		LootMax = 1;
 		tables[] = { "Rabbit_EPOCH" };
+	};
+	class Epoch_RyanZombie_1
+	{
+		lootMin = 5;
+		LootMax = 10;
+		tables[] = { "EPOCH_RyanZombie_1" };
+	};
+	class GreatWhite_F
+	{
+		lootMin = 5;
+		LootMax = 10;
+		tables[] = { "GreatWhite_F" };
 	};
 	class Epoch_Sapper_F
 	{

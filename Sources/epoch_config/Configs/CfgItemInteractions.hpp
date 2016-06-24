@@ -12,21 +12,36 @@ Github:
 https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_config/Configs/CfgItemInteractions.hpp
 
 Legend:
-interactMode: 0 = examine, 1 = eat, 2 = drink, 3 = build
-interactAttributes: {Temp,Hunger,Thirst,Energy,Soiled,Immunity,Toxicity,Stamina,Wet,BloodP,Karma,Alcohol,Radiation};
-
+interactAction: 0 = examine, 1 = eat, 2 = drink, 3 = build
+interactAttributes[] = {
+	{"Temp",0},
+	{"Hunger",0},
+	{"Thirst",0},
+	{"Energy",0},
+	{"Soiled",0},
+	{"Immunity",0},
+	{"Toxicity",0},
+	{"Stamina",0},
+	{"Wet",0},
+	{"BloodP",0},
+	{"Karma",0},
+	{"Alcohol",0},
+	{"Radiation",0}
+};
 */
 class CfgItemInteractions {
 	// BASE CLASSES START
 	class Default
     {
-		interactMode = 0;
+		interactAction = 0;
 	};
 	class Food_base : Default
 	{
 		interactAction = 1;
 		interactText = "EAT";
-		interactAttributes[] = { 0, 600, 0, 0, 0, 0, 0, 0, 0, 0 };
+		interactAttributes[] = {
+			{"Hunger",600}
+		};
 	};
 	class Food_TinCan_base : Food_base
 	{
@@ -44,7 +59,9 @@ class CfgItemInteractions {
 	{
 		interactAction = 2;
 		interactText = "DRINK";
-		interactAttributes[] = { 0, 0, 500, 0, 0, 0, 0, 0, 0, 0 };
+		interactAttributes[] = {
+			{"Thirst",500}
+		};
 	};
 	class Drink_Jar_base : Drink_base
 	{
@@ -67,123 +84,203 @@ class CfgItemInteractions {
 	class honey_epoch : Food_Jar_base
 	{
 		interactText = "CONSUME";
-		interactAttributes[] = { 0, 0, 0, 0, 0, 1, 0, 30, 0, 10 };
+		interactAttributes[] = {
+			{"Immunity",1},
+			{"Stamina",30}
+			{"BloodP",10}
+		};
 	};
 	class sardines_epoch : Food_TinCan_base
 	{
-		interactAttributes[] = { 0, 1000, 0, 0, 0, 0, 7, 0, 0, 0 };
+		interactAttributes[] = {
+			{"Hunger",1000},
+			{"Toxicity",7}
+		};
 	};
 	class meatballs_epoch : Food_TinCan_base
 	{
-		interactAttributes[] = { 0, 1200, 0, 0, 0, 0, 0, 0, 0, 0 };
+		interactAttributes[] = {
+			{"Hunger",1200}
+		};
 	};
 	class scam_epoch : Food_TinCan_base
 	{
-		interactAttributes[] = { 0, 1000, 0, 0, 0, 0, 0, 0, 0, 0 };
+		interactAttributes[] = {
+			{"Hunger",1000}
+		};
 	};
 	class sweetcorn_epoch : Food_TinCan_base
 	{
-		interactAttributes[] = { 0, 600, 0, 0, 0, 0, 0, 0, 0, 0 };
+		interactAttributes[] = {
+			{"Hunger",600}
+		};
 	};
 	class FoodBioMeat : Food_TinCan_base
 	{
-		interactAttributes[] = { 0, 1000, 0, 0, 0, 0, 7, 0, 0, 0 };
+		interactAttributes[] = {
+			{"Hunger",1000},
+			{"Toxicity",7}
+		};
 	};
 	class TacticalBacon : Food_TinCan_base
 	{
-		interactAttributes[] = { 0, 500, 0, 0, 0, 0, 0, 0, 0, 0 };
+		interactAttributes[] = {
+			{"Hunger",500}
+		};
 	};
 	class ItemTrout : Food_base
 	{
-		interactAttributes[] = { 0, 300, 0, 0, 0, 0, 5, 0, 0, 0 };
+		interactAttributes[] = {
+			{"Hunger",300},
+			{"Toxicity",5}
+		};
 	};
 	class ItemSeaBass : Food_base
 	{
-		interactAttributes[] = { 0, 500, 0, 0, 0, 0, 10, 0, 0, 0 };
+		interactAttributes[] = {
+			{"Hunger",500},
+			{"Toxicity",10}
+		};
 	};
 	class ItemTuna : Food_base
 	{
-		interactAttributes[] = { 0, 2500, 0, 0, 0, 0, 0, 0, 0, 0 };
+		interactAttributes[] = {
+			{"Hunger",2500}
+		};
 	};
 	class ItemTroutCooked : Food_base
 	{
-		interactAttributes[] = { 0, 600, 0, 0, 0, 0, 0, 0, 0, 0 };
+		interactAttributes[] = {
+			{"Hunger",600}
+		};
 	};
 	class ItemSeaBassCooked : Food_base
 	{
-		interactAttributes[] = { 0, 1200, 0, 0, 0, 0, 0, 0, 0, 0 };
+		interactAttributes[] = {
+			{"Hunger",1200}
+		};
 	};
 	class ItemTunaCooked : Food_base
 	{
-		interactAttributes[] = { 0, 5000, 0, 0, 0, 0, 0, 0, 0, 0 };
+		interactAttributes[] = {
+			{"Hunger",5000}
+		};
 	};
 	class FoodMeeps : Food_base
 	{
-		interactAttributes[] = { 0, 500, 0, 0, 0, 0, 0, 0, 0, 0 };
+		interactAttributes[] = {
+			{"Hunger",500}
+		};
 	};
 	class FoodSnooter : Food_base
 	{
-		interactAttributes[] = { 0, 500, 0, 0, 0, 0, 0, 50, 0, 0 };
+		interactAttributes[] = {
+			{"Hunger",500},
+			{"Stamina",50}
+		};
 	};
     class ItemCooler0 : Food_Cooler_base
     {
-		interactAttributes[] = { 0, 3000, 0, 0, 0, 0, 0, 0, 0, 0 };
+		interactAttributes[] = {
+			{"Hunger",3000}
+		};
 	};
 	class ItemCooler1 : Food_Cooler_base
     {
-		interactAttributes[] = { 0, 3500, 0, 0, 0, 0, 0, 0, 0, 0 };
+		interactAttributes[] = {
+			{"Hunger",3500}
+		};
 	};
 	class ItemCooler2 : Food_Cooler_base
 	{
-		interactAttributes[] = { 0, 4000, 0, 0, 0, 0, 0, 0, 0, 0 };
+		interactAttributes[] = {
+			{"Hunger",4000}
+		};
 	};
 	class ItemCooler3 : Food_Cooler_base
 	{
-		interactAttributes[] = { 0, 5000, 0, 0, 0, 0, 0, 0, 0, 0 };
+		interactAttributes[] = {
+			{"Hunger",5000}
+		};
 	};
 	class ItemCooler4 : Food_Cooler_base
 	{
-		interactAttributes[] = { 0, 5000, 0, 0, 0, 0, 0, 0, 0, 0 };
+		interactAttributes[] = {
+			{"Hunger",5000}
+		};
 	};
 	class WhiskeyNoodle : Drink_base
 	{
-		interactAttributes[] = { 0, 0, 800, 0, 0, 0, -5, 50, 0, 0, 0 , 10 , 0};
+		interactAttributes[] = {
+			{"Thirst",800},
+			{"Toxicity",-1},
+			{"Stamina",50},
+			{"Alcohol",10}
+		};
 	};
 	class water_epoch : Drink_Jar_base
 	{
-		interactAttributes[] = { 0, 0, 500, 0, 0, 0, 5, 50, 0, 0 };
+		interactAttributes[] = {
+			{"Thirst",500},
+			{"Toxicity",5,1},
+			{"Stamina",50}
+		};
 	};
 	class clean_water_epoch : Drink_Jar_base
 	{
-		interactAttributes[] = { 0, 0, 500, 0, 0, 0, 0, 50, 0, 0 };
+		interactAttributes[] = {
+			{"Thirst",500},
+			{"Stamina",50}
+		};
 	};
 	class ItemSodaRbull : Soda_base
 	{
-		interactAttributes[] = { 0, 0, 1000, 0, 0, 0, 0, 100, 0, 0 };
+		interactAttributes[] = {
+			{"Thirst",1000},
+			{"Stamina",100}
+		};
 	};
 	class ItemSodaOrangeSherbet : Soda_base
 	{
-		interactAttributes[] = { 0, 0, 800, 0, 0, 0, 0, 75, 0, 0 };
+		interactAttributes[] = {
+			{"Thirst",800},
+			{"Stamina",75}
+		};
 	};
 	class ItemSodaPurple : Soda_base
 	{
-		interactAttributes[] = { 0, 0, 800, 0, 0, 0, 0, 75, 0, 0 };
+		interactAttributes[] = {
+			{"Thirst",800},
+			{"Stamina",75}
+		};
 	};
 	class ItemSodaMocha : Soda_base
 	{
-		interactAttributes[] = { 0, 0, 650, 0, 0, 0, 0, 150, 0, 0 };
+		interactAttributes[] = {
+			{"Thirst",650},
+			{"Stamina",150}
+		};
 	};
 	class ItemSodaBurst : Soda_base
 	{
-		interactAttributes[] = { 0, 0, 800, 0, 0, 0, 0, 75, 0, 0 };
+		interactAttributes[] = {
+			{"Thirst",800},
+			{"Stamina",75}
+		};
 	};
 	class FoodWalkNSons : Soda_base
 	{
-		interactAttributes[] = { 0, 0, 1200, 0, 0, 0, 0, 150, 0, 0 };
+		interactAttributes[] = {
+			{"Thirst",1200},
+			{"Stamina",150}
+		};
 	};
 	class ItemSodaAlpineDude : Soda_base
     {
-		interactAttributes[] = { 0, 0, 800, 0, 0, 0, 0, 100, 0, 0 };
+		interactAttributes[] = {
+			{"Thirst",800},
+			{"Stamina",800}
+		};
 	};
     class jerrycan_epoch : Default
 	{
@@ -220,13 +317,17 @@ class CfgItemInteractions {
 	{
 		interactAction = 9;
 		interactText = "USE";
-		interactAttributes[] = { 0, 0, 0, 100, 0, 0, 0, 0, 0, 0 };
+		interactAttributes[] = {
+			{"Energy",100}
+		};
 	};
 	class EnergyPackLg : Default
 	{
 		interactAction = 9;
 		interactText = "USE";
-		interactAttributes[] = { 0, 0, 0, 1000, 0, 0, 0, 0, 0, 0 };
+		interactAttributes[] = {
+			{"Energy",1000}
+		};
 	};
 	class VehicleRepair : Default
 	{
@@ -242,67 +343,119 @@ class CfgItemInteractions {
 	{
 		interactAction = 1;
 		interactText = "EAT";
-		interactAttributes[] = { 0, 0, 0, 0, 0, 0, 20, 0, 0, 0 };
+		interactAttributes[] = {
+			{"Toxicity",20,1}
+		};
 	};
 	class SnakeCarcass_EPOCH : Default
 	{
 		interactAction = 1;
 		interactText = "EAT";
-		interactAttributes[] = { 0, 300, 0, 0, 0, 0, 10, 0, 0, 0 };
+		interactAttributes[] = {
+			{"Hunger",300},
+			{"Soiled",1},
+			{"Toxicity",10,1}
+		};
 	};
 	class SnakeMeat_EPOCH : Default
 	{
 		interactAction = 1;
 		interactText = "EAT";
-		interactAttributes[] = { 0, 1200, 0, 0, 0, 0, 0, 0, 0, 0 };
+		interactAttributes[] = {
+			{"Hunger",1200}
+		};
 	};
 	class RabbitCarcass_EPOCH : Default
 	{
 		interactAction = 1;
 		interactText = "EAT";
-		interactAttributes[] = { 0, 300, 0, 0, 0, 0, 10, 0, 0, 0 };
+		interactAttributes[] = {
+			{"Hunger",300},
+			{"Soiled",1},
+			{"Toxicity",10,1}
+		};
 	};
 	class CookedRabbit_EPOCH : Default
 	{
 		interactAction = 1;
 		interactText = "EAT";
-		interactAttributes[] = { 0, 1200, 0, 0, 0, 0, 0, 0, 0, 0 };
+		interactAttributes[] = {
+			{"Hunger",1200}
+		};
 	};
 	class ChickenCarcass_EPOCH : Default
 	{
 		interactAction = 1;
 		interactText = "EAT";
-		interactAttributes[] = { 0, 500, 0, 0, 0, 0, 25, 0, 0, 0 };
+		interactAttributes[] = {
+			{"Hunger",500},
+			{"Soiled",1},
+			{"Toxicity",25,1}
+		};
 	};
 	class CookedChicken_EPOCH : Default
 	{
 		interactAction = 1;
 		interactText = "EAT";
-		interactAttributes[] = { 0, 2000, 0, 0, 0, 0, 0, 0, 0, 0 };
+		interactAttributes[] = {
+			{"Hunger",2000}
+		};
 	};
 	class GoatCarcass_EPOCH : Default
 	{
 		interactAction = 1;
 		interactText = "EAT";
-		interactAttributes[] = { 0, 500, 0, 0, 0, 0, 15, 0, 0, 0 };
+		interactAttributes[] = {
+			{"Hunger",500},
+			{"Soiled",1},
+			{"Toxicity",15,1}
+		};
+	};
+	class DogCarcass_EPOCH : Default
+	{
+		interactAction = 1;
+		interactText = "EAT";
+		interactAttributes[] = {
+			{"Hunger",500},
+			{"Soiled",1},
+			{"Toxicity",15,1},
+			{"Karma",-10}
+		};
+	};
+	class CookedDog_EPOCH : Default
+	{
+		interactAction = 1;
+		interactText = "EAT";
+		interactAttributes[] = {
+			{"Hunger",3000},
+			{"Karma",-10}
+		};
 	};
 	class CookedGoat_EPOCH : Default
 	{
 		interactAction = 1;
 		interactText = "EAT";
-		interactAttributes[] = { 0, 3000, 0, 0, 0, 0, 0, 0, 0, 0 };
+		interactAttributes[] = {
+			{"Hunger",3000}
+		};
 	};
 	class SheepCarcass_EPOCH : Default
 	{
 		interactAction = 1;
 		interactText = "EAT";
-		interactAttributes[] = { 0, 500, 0, 0, 0, 0, 15, 0, 0, 0 };
+		interactAttributes[] = {
+			{"Hunger",500},
+			{"Soiled",1},
+			{"Toxicity",15,1}
+		};
 	};
 	class CookedSheep_EPOCH : Default
 	{
 		interactAction = 1;
 		interactText = "EAT";
-		interactAttributes[] = { 0, 3000, 0, 0, 0, 0, 0, 0, 0, 0 };
+		interactAttributes[] = {
+			{"Hunger",3000}
+		};
 	};
 	class KitSpikeTrap : Item_Build_base
 	{
@@ -442,37 +595,52 @@ class CfgItemInteractions {
 	{
 		interactAction = 6;
 		interactText = "USE";
-		interactAttributes[] = { 0, 0, 0, 0, 0, 10, 0, -100, 0, -10 };
+		interactAttributes[] = {
+			{"Immunity",10},
+			{"Stamina",-100},
+			{"BloodP",-10}
+		};
 	};
 	class Goldenseal : Default
 	{
 		interactAction = 6;
 		interactText = "USE";
-		interactAttributes[] = { 0, 0, 0, 0, 0, 0, -50, 0, 0, 0 };
+		interactAttributes[] = {
+			{"Toxicity",-50}
+		};
 	};
 	class Pumpkin : Default
 	{
 		interactAction = 6;
 		interactText = "USE";
-		interactAttributes[] = { 0, 500, 0, 0, 0, 0, 0, 50, 0, 0 };
+		interactAttributes[] = {
+			{"Hunger",500},
+			{"Stamina",50}
+		};
 	};
 	class Towelette : Default
 	{
 		interactAction = 6;
 		interactText = "USE";
-		interactAttributes[] = { 0, 0, 0, 0, -25, 0, 0, 0, 0, 0 };
+		interactAttributes[] = {
+			{"Soiled",-25}
+		};
 	};
 	class HeatPack : Default
 	{
 		interactAction = 7;
 		interactText = "USE";
-		interactAttributes[] = { 1, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+		interactAttributes[] = {
+			{"Temp",1}
+		};
 	};
 	class ColdPack : Default
 	{
 		interactAction = 8;
 		interactText = "USE";
-		interactAttributes[] = { -1, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+		interactAttributes[] = {
+			{"Temp",-1}
+		};
 	};
 	class ItemHotwire : Default {
 		interactAction = 2;

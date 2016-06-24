@@ -2,44 +2,26 @@ _currentTarget = objNull;
 _currentTargetMode = 0;
 _cursorTarget = ([10] call EPOCH_fnc_cursorTarget);
 if (!isNull _cursorTarget && {!(EPOCH_target isEqualTo _cursorTarget)}) then {
-	// Land_MPS_EPOCH = ThingX 0
-	// container_epoch = ThingX 0
-	// Parent - Constructions_modular_F = ThingX
-	// Epoch_Female_F , Epoch_Male_F = 2
-	// Animal_Base_F = 3
-	// Buildable_Storage = 4
 	_interactType = typeOf _cursorTarget;
 	_interaction = (_cfgObjectInteractions >> _interactType);
 	if (isClass(_interaction)) then {
 		_currentTargetMode = getNumber (_interaction >> "interactMode");
-		_currentTarget = _cursorTarget;
+		_allowTarget = switch (getNumber (_interaction >> "aliveState")) do {
+		    case 1: {!(alive _cursorTarget)};
+			case 2: {(alive _cursorTarget)};
+		    default {true};
+		};
+		if (_allowTarget) then {
+			_currentTarget = _cursorTarget;
+		};
 	} else {
-		// AllVehicles = vehicles=0 players=2 animals=3
+		// AllVehicles = vehicles=0, bases=1
 		if (_cursorTarget isKindOf "AllVehicles") then {
-			if (_cursorTarget isKindOf "Animal_Base_F") then { // 3
-				if !(alive _cursorTarget) then {
-					_currentTargetMode = 3;
-					_currentTarget = _cursorTarget;
-				};
-			} else {
-				_currentTarget = _cursorTarget;
-			};
+			_currentTarget = _cursorTarget;
 		} else {
-			if (_cursorTarget isKindOf "Constructions_modular_F" || _cursorTarget isKindOf "Constructions_static_F" || _cursorTarget isKindOf "Constructions_foundation_F") then {
+			if (_cursorTarget isKindOf "Constructions_modular_F" || _cursorTarget isKindOf "Constructions_static_F") then {
 				_currentTargetMode = 1;
 				_currentTarget = _cursorTarget;
-			} else {
-				if (_cursorTarget isKindOf "Buildable_Storage") then {
-					_currentTargetMode = 4;
-					_currentTarget = _cursorTarget;
-				} else {
-					/*
-					if (_cursorTarget isKindOf "WeaponHolder") then {
-						_currentTargetMode = 0;
-						_currentTarget = _cursorTarget;
-					};
-					*/
-				};
 			};
 		};
 	};

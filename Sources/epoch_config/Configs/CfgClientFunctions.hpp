@@ -123,6 +123,7 @@ class CfgClientFunctions
    			class fnc_playerAttachToAntagonist {};
 			class fnc_dynamicFSM {};
 			class fnc_vectorDivide {};
+			class giveAttributes {};
 		};
 		class environment
 		{

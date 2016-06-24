@@ -665,6 +665,22 @@ class CfgCrafting
 		previewScale = 0.4;
 		previewVector = 2;
 	};
+	class DogCarcass_EPOCH : Part
+	{
+		usedIn[] = { "CookedDog_EPOCH" };
+		previewPosition[] = {0.796141,1,0.27};
+		previewScale = 0.4;
+		previewVector = 2.1;
+	};
+	class CookedDog_EPOCH : Item
+	{
+		usedIn[] = {};
+		nearby[] = {{"Fire", "", "fire", {1,{"ALL"}}, 3, 1, 1, 0}};
+		recipe[] = { "DogCarcass_EPOCH" };
+		previewPosition[] = {0.796141,1,0.27};
+		previewScale = 0.4;
+		previewVector = 2;
+	};
 	class SheepCarcass_EPOCH : Part
 	{
 		usedIn[] = { "CookedSheep_EPOCH" };

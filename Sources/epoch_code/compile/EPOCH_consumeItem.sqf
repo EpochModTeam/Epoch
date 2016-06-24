@@ -13,10 +13,7 @@
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_code/compile/EPOCH_consumeItem.sqf
 */
 private ["_cfgBaseBuilding","_cfgItemInteractions","_type","_magazineSize","_text","_item","_pic","_magazinesAmmoFull","_magazineSizeMax","_pos","_object","_isStorage","_isOk","_buildClass","_interactReturnOnUse","_vehicle","_currentFuel","_canCapacity","_interactAttributes","_fuelCapacity","_newFuel","_removeItem","_vehicles","_transportFuel","_highestDMG","_currentHIT","_currentDMG","_newDMG","_paintCanIndex","_paintCanColor","_msg","_color","_unifiedInteract","_interactOption"];
-
-_text = EPOCH_InteractedItem select 0;
-_item = EPOCH_InteractedItem select 1;
-_pic = EPOCH_InteractedItem select 2;
+EPOCH_InteractedItem params ["_text","_item","_pic"];
 
 _cfgBaseBuilding = 'CfgBaseBuilding' call EPOCH_returnConfig;
 _cfgItemInteractions = (('CfgItemInteractions' call EPOCH_returnConfig) >> _item);
@@ -26,51 +23,13 @@ _interactAttributes = getArray(_cfgItemInteractions >> "interactAttributes");
 
 _removeItem = {([player,_this] call BIS_fnc_invRemove) == 1};
 
-_giveAttributes = {
-	private ["_return","_randomData","_index","_data","_addPlus"];
-	_index = _this select 0;
-	_data = _this select 1;
-	_addPlus = if (_data > 0) then {"+"} else {""};
-	_return = "";
-	if (_data != 0) then {
-		// TODO: configize
-		_editableVars = [["Temp"],["Hunger"],["Thirst"],["Energy"],["Soiled"],["Immunity"],["Toxicity",true],["Stamina"],["Wet"],["BloodP"],["Karma"],["Alcohol"],["Radiation"]];
-		_selectedVar = _editableVars select _index;
-		_selectedVar params ["_selectedVarName",["_randomNum",false]];
-		_varName = format["EPOCH_player%1",_selectedVarName];
-		_customVarIndex = EPOCH_customVars find _selectedVarName;
-		_limits = EPOCH_customVarLimits select _customVarIndex;
-		_limits params [["_max",100],["_min",0]];
-		if (_max isEqualType "") then {
-			_max = missionNamespace getVariable [_max, 0];
-		};
-		if (_min isEqualType "") then {
-			_min = missionNamespace getVariable [_min, 0];
-		};
-		_currentVal = missionNamespace getVariable [_varName, EPOCH_defaultVars select _customVarIndex];
-		if (_randomNum) then {
-			_data = round(random _data);
-		};
-		_newValue = ((_currentVal + _data) min _max) max _min;
-		missionNamespace setVariable [_varName, _newValue];
-		if (_selectedVarName == "Temp") then {
-			_celcuis = _data call EPOCH_convertTemp;
-			_celcuisNew = _newValue call EPOCH_convertTemp;
-			_return = format["%1: %2%3 (%4 °F) %2%5 (%6 °C)",(localize format["str_epoch_pvar_%1",_selectedVarName]),_addPlus,_data,_newValue,_celcuis,_celcuisNew];
-		} else {
-			_return = format["%1: %2%3 (%4/%5)", (localize format["str_epoch_pvar_%1",_selectedVarName]), _addPlus, _data, _newValue, _max];
-		};
-	};
-	_return
-};
-
 _unifiedInteract = {
 	if (_item call _removeItem) then {
 		if (_interactReturnOnUse != "") then {
 			_interactReturnOnUse call EPOCH_fnc_addItemOverflow;
 		};
 		{
-			_output = [_forEachIndex, _x] call _giveAttributes;
+			_output = _x call EPOCH_giveAttributes;
 			if (_output != "") then {
 				[_output, 5] call Epoch_message;
 			};

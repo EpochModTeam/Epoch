@@ -829,6 +829,20 @@ class CfgLootTable
 				{ { "Pelt_EPOCH", "magazine" }, 1 }
 		};
 	};
+	class Fin_random_EPOCH
+	{
+		items[] = {
+				{ { "CookedDog_EPOCH", "magazine" }, 1 },
+				{ { "Pelt_EPOCH", "magazine" }, 1 }
+		};
+	};
+	class Alsatian_Random_EPOCH
+	{
+		items[] = {
+				{ { "CookedDog_EPOCH", "magazine" }, 1 },
+				{ { "Pelt_EPOCH", "magazine" }, 1 }
+		};
+	};
 	class Cock_random_EPOCH
 	{
 		items[] = {
@@ -846,6 +860,17 @@ class CfgLootTable
 		items[] = {
 				{ { "RabbitCarcass_EPOCH", "magazine" }, 1 },
 				{ { "Pelt_EPOCH", "magazine" }, 1 }
+		};
+	};
+	class EPOCH_RyanZombie_1
+	{
+		items[] = {
+			{ { "MetalBars", "CfgLootTable" }, 5 },
+			{ { "WhiskeyNoodle", "magazine" }, 5 },
+			{ { "Hand", "CfgLootTable" }, 20 },
+			{ { "HotColdPacks", "CfgLootTable" }, 20 },
+			{ { "PistolAmmo", "CfgLootTable" }, 20 },
+			{ { "Pelt_EPOCH", "magazine" }, 10 }
 		};
 	};
 	class GreatWhite_F

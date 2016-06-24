@@ -20,19 +20,16 @@ if (EPOCH_velTransform) then {
 		_up1 = vectorUp EPOCH_target;
 		_interval = 0.1;
 
-		if ((count EP_velocityTransformation) == 4) then {
+		if !(EP_velocityTransformation isEqualTo []) then {
 			EPOCH_target setvelocitytransformation[_pos1, (EP_velocityTransformation select 0), _vel1, (EP_velocityTransformation select 1), _dir1, (EP_velocityTransformation select 2), _up1, (EP_velocityTransformation select 3), _interval];
-		}
-		else {
+		} else {
 			_pos2 = player modelToWorld[EPOCH_X_OFFSET, EPOCH_Y_OFFSET, EPOCH_Z_OFFSET];
 			if ((_pos2 select 2) < 0) then { _pos2 set[2, 0] };
-			if !(surfaceIsWater _pos2) then { _pos2 = ATLtoASL _pos2 };
 			if ((_pos1 distance _pos2) > 0) then {
-				EPOCH_target setvelocitytransformation[_pos1, _pos2, _vel1, _vel1, _dir1, _dir1, _up1, _up1, _interval];
+				EPOCH_target setvelocitytransformation[_pos1, AGLtoASL _pos2, _vel1, _vel1, _dir1, _dir1, _up1, _up1, _interval];
 			};
 		};
-	}
-	else {
+	} else {
 		EPOCH_velTransform = false;
 	};
 };
@@ -72,9 +69,9 @@ if (!isNull EPOCH_currentTarget && vehicle player == player) then {
 				};
 			};
 			case 3: {
-				// Animals
+				// Animals, Drone, Sappers
 				if (!alive _currentTarget && _distance < 2) then{
-					_text = format ["Gut Animal - %1",_text];
+					_text = format ["Gut - %1",_text];
 					_icon = "\x\addons\a3_epoch_code\Data\UI\ui_crossbones_ca.paa";
 					_color = [1,1,1,1];
 				};
@@ -147,7 +144,6 @@ if (EPOCH_drawIcon3d) then {
 		_pos set[2, (_x modelToWorld[0, 0, 0]) select 2];
 		_dmg = damage _x;
 		_color = [0,1,_dmg,1] call EPOCH_colorRange;
-		_text = '';
 		_text = format['%1 : %2m', [typeOf _x,name _x] select (isPlayer _x), round(player distance _x)];
 		drawIcon3D["\x\addons\a3_epoch_code\Data\Member.paa", _color, _pos, 1, 1, 0, _text, 1, 0.025, "PuristaMedium"];
 	};
