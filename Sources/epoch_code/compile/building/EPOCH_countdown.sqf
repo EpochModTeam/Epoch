@@ -70,8 +70,9 @@ if (!isNull _this) then {
 			_class = getText(_cfgBaseBuilding >> _objClass >> "staticClass");
 			if (_class != "") then {
 				_newObj = createVehicle[_class, (_worldspace select 0), [], 0, "CAN_COLLIDE"];
-				_newObj setposATL(_worldspace select 0);
 				_newObj setVectorDirAndUp[_worldspace select 1, _worldspace select 2];
+				_newObj setposATL(_worldspace select 0);
+
 			};
 		} else {
 			if (_saveCheck) then {

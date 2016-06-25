@@ -74,16 +74,17 @@ for "_i" from 0 to _this do {
 		if (isClass (configFile >> "CfgVehicles" >> _class) && (_damage < 1) && !(_class isKindOf 'Constructions_lockedstatic_F')) then {
 
 			_baseObj = createVehicle [_class, [0,0,0], [], 0, "CAN_COLLIDE"];
-			_baseObj setposATL _location;
 			_baseObj setVectorDirAndUp _worldspace;
+			_baseObj setposATL _location;
+
 
 			// spawn additional object for trap
 			_ammoClass = (_cfgBaseBuilding >> _class >> "ammoClass");
 			if(isText _ammoClass) then {
 				_ammoClass = getText _ammoClass;
 				_ammoObj = createVehicle [_ammoClass, [0,0,0], [], 0, "CAN_COLLIDE"];
-				_ammoObj setposATL _location;
 				_ammoObj setVectorDirAndUp _worldspace;
+				_ammoObj setposATL _location;
 				_baseObj setVariable ["EPOCH_TRAP_OBJ",_ammoObj];
 			};
 

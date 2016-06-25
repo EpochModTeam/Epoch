@@ -70,9 +70,9 @@ if (isText(_simulClassConfig)) then {
 		if (_objSlot != -1) then {
 			_newObj setVariable ["BUILD_SLOT",_objSlot,true];
 		};
-
-		_newObj setposATL (_worldspace select 0);
 		_newObj setVectorDirAndUp [_worldspace select 1,_worldspace select 2];
+		_newObj setposATL (_worldspace select 0);
+
 		if (_textureSlot != 0) then {
 			[_newObj, _textureSlot, player, Epoch_personalToken] remoteExec ["EPOCH_server_paintBUILD",2];
 		};
@@ -174,7 +174,7 @@ if (isText(_simulClassConfig)) then {
 					} forEach _snapArrayPerp;
 				};
 				if (_isSnap && _distance < 5) then {
-					_pos2 = AGLToASL _snapPosition;
+					_pos2 = _snapPosition;
 					_vel2 = (velocity _nearestObject);
 					_direction = getDir _nearestObject;
 					if (_snapType == "perp") then {
@@ -201,19 +201,16 @@ if (isText(_simulClassConfig)) then {
 					};
 					_dir2 = [vectorDir _nearestObject, _direction] call BIS_fnc_returnVector;
 					_up2 = (vectorUp _nearestObject);
-					EP_velocityTransformation = [_pos2,_vel2,_dir2,_up2];
+					EP_velocityTransformation = [AGLToASL _pos2,_vel2,_dir2,_up2];
 				};
 			};
 			if (!_isSnap) then {
-				if !(surfaceIsWater _pos2) then {
-					_pos2 = ATLtoASL _pos2;
-				};
 				if (EPOCH_doRotate) then {
 					_vel2 = (velocity player);
 					_dir2 = [vectorDir player, EPOCH_buildDirection] call BIS_fnc_returnVector;
 					_up2 = (vectorUp player);
 					EPOCH_doRotate = false;
-					EP_velocityTransformation = [_pos2,_vel2,_dir2,_up2];
+					EP_velocityTransformation = [AGLToASL _pos2,_vel2,_dir2,_up2];
 				} else {
 					EP_velocityTransformation = [];
 				};

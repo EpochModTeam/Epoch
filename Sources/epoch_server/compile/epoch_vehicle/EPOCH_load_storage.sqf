@@ -65,11 +65,11 @@ for "_i" from 1 to _maxStorageLimit do {
 				_location set [2, 0];
 			};
 
-			_vehicle = createVehicle[_class, _location, [], 0, "CAN_COLLIDE"];
+			_vehicle = createVehicle[_class, [0,0,0], [], 0, "CAN_COLLIDE"];
 
 			if (_dir isEqualType []) then {
-				_vehicle setposATL _location;
 				_vehicle setVectorDirAndUp _dir;
+				_vehicle setposATL _location;
 			} else {
 				_vehicle setDir _dir;
 				_vehicle setposATL _location;

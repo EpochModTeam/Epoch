@@ -41,8 +41,8 @@ if (isText _staticClassConfig) then {
 			deleteVehicle _vehicle;
 
 			_storageObj = createVehicle[_staticClass, [0,0,0], [], 0, "CAN_COLLIDE"];
-			_storageObj setposATL _vehiclePos;
 			_storageObj setVectorDirAndUp _vectorDirAndUp;
+			_storageObj setposATL _vehiclePos;
 
 			if (getNumber(_cfgBaseBuilding >> _staticClass >> "isSecureStorage") == 1) then{
 				_storageObj setVariable["EPOCH_Locked", false, true];

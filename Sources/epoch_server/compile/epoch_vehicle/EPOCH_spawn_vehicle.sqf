@@ -20,8 +20,8 @@ if !(isNull _vehObj) then{
 	_vehObj call EPOCH_server_setVToken;
 	// Set Direction and position
 	if (_direction isEqualType []) then{
+		_vehObj setVectorDirAndUp _direction;
 		_vehObj setposATL _position;
-	 	_vehObj setVectorDirAndUp _direction;
 	} else {
 		_vehObj setdir _direction;
 		_vehObj setposATL _position;

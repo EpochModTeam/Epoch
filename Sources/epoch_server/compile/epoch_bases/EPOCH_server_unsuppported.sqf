@@ -4,7 +4,7 @@
     Contributors:
 
 	Description:
-    Building - Unsupported building check
+    Building - Unsupported building check (unused ATM)
 
     Licence:
     Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
@@ -45,8 +45,8 @@ _stableCount = 0;
 					deleteVehicle _x;
 					_newObj = createVehicle[_class, [0,0,0], [], 0, "CAN_COLLIDE"];
 					_newObj setVariable["BUILD_SLOT", _objSlot, true];
-					_newObj setposASL _objectPos;
 					_newObj setVectorDirAndUp[_vDir, _vUP];
+					_newObj setposASL _objectPos;
 					_newObj setVariable["BUILD_OWNER", _playerUID, true];
 					_newObj setVariable["EPOCH_secureStorage", _slot];
 					_newObj setVelocity[0, 0, -1];
