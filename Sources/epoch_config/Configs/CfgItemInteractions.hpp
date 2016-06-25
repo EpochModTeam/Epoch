@@ -86,7 +86,7 @@ class CfgItemInteractions {
 		interactText = "CONSUME";
 		interactAttributes[] = {
 			{"Immunity",1},
-			{"Stamina",30}
+			{"Stamina",30},
 			{"BloodP",10}
 		};
 	};

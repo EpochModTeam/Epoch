@@ -111,14 +111,7 @@ class CfgObjectInteractions {
             {"Soiled",20,1}
 		};
     };
-    class Epoch_Cloak_F : Default {
-        interactMode = 3;
-        aliveState = 1;
-        interactAttributes[] = {
-			{"Toxicity",20,1},
-            {"Soiled",20,1}
-		};
-    };
+
     class I_UAV_01_F : Default {
         interactMode = 3;
         aliveState = 1;
@@ -162,7 +155,7 @@ class CfgObjectInteractions {
         aliveState = 0;
         interactAttributes[] = {
 			{"Toxicity",20,1},
-            {"Soiled",1,1}
+            {"Soiled",1}
 		};
     };
     class Snake2_random_EPOCH : Default {
@@ -179,7 +172,7 @@ class CfgObjectInteractions {
         aliveState = 0;
         interactAttributes[] = {
 			{"Toxicity",10,1},
-            {"Soiled",1,1}
+            {"Soiled",1}
 		};
     };
     class GreatWhite_F : Default {
@@ -217,6 +210,12 @@ class CfgObjectInteractions {
         soundEffect[] = {"cultist_nearby"};
         canSee = "!(lineIntersects[eyePos _unit, aimPos _target, _unit, _target])";
         ppEffect = 1;
+        interactMode = 3;
+        aliveState = 1;
+        interactAttributes[] = {
+			{"Toxicity",20,1},
+            {"Soiled",20,1}
+		};
     };
     class EPOCH_RyanZombie_1 : Default {
         distance = 3;

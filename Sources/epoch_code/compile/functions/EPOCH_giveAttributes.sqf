@@ -7,7 +7,7 @@ _return = "";
 if (_data != 0) then {
     _customVarIndex = EPOCH_customVars find _selectedVarName;
     if (_customVarIndex != -1) then {
-        _varName = format["EPOCH_player%1",_selectedVarName];}
+        _varName = format["EPOCH_player%1",_selectedVarName];
         _limits = EPOCH_customVarLimits select _customVarIndex;
     	_limits params [["_max",100],["_min",0]];
     	if (_max isEqualType "") then {
