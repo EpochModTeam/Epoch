@@ -1,13 +1,15 @@
 [New] Epoch Mod configs and some community pbo's are now released under APL-SA license here: https://github.com/EpochModTeam/EpochCore
-[Added-WIP] Tanoa map support.
+[Added] Tanoa map support.
 [Added] New Task based Mission System.
 [Added] (Optional) Support for Ryan's Zombies and Demons mod: http://steamcommunity.com/sharedfiles/filedetails/?id=501966277 with custom Epoch implementation.
 [Added] New custom variable EPOCH_playerNuisance that increases based on the type of weapon fired and decreases at a rate of 1 per 10 seconds. This is used to track how active a shooter the player is.
 [Added] Player option to Morph into a random antagonist (from deathMorphClass) after death. The array 'deathMorphClass' found in CfgEpochClient can be used to specify what antagonists to randomly spawn.
 [Added] Player option to detonate body after death. Sacrifice yourself by generating a runaway thermal cascade using the nano bots within your body. Nothing left to revive.
+[Added] object loot tables for zombies, sharks and Dogs.
+[Added] looting Dogs for meat (uses placeholder object "goat leg"). Negative Karma given for eating or gutting dogs.
 [Changed] Increased loot bias 10% overall and increased loot density for military and other larger buildings.
 [Changed] new function Epoch_message, replaces Epoch_dynamicText.
-[Changed] Object Interaction and EPOCH_client_bitePlayer settings in now config CfgObjectInteractions.
+[Changed] Object Interaction and EPOCH_client_bitePlayer settings in now config CfgObjectInteractions. Lootable objects can now effect player stats.
 [Changed] Moved all Base Building variables to gamemode config CfgBaseBuilding.
 [Changed] Moved all Item Interaction to new gamemode config CfgItemInteractions.
 [Changed] Sapper groan or detonate can be triggered by setting a variable on the target or sapper.
@@ -39,6 +41,7 @@ maxAimingAccuracy -> maxGeneral - Set the maximum value for each available AI sk
 [Added] New experimental PBO packing tool found in Epoch/Tools/PowerShell/
 [Added] Server function to allow remote exec of setVariable on client - Allows client to ask another client to set a local variable, via the server. Server can run same function.
 [Added] Epoch AH: Added ability to kick, instead of just log or ban.
+[Changed] Changed gamemode to Survival, (might show as unknown gamemode pre 1.62)
 [Changed] Reworked vehicle load function and made vehicles immune to damage for 120 seconds after startup.
 [Changed] cfgpatches check now kicks by default with message a message.
 [Changed] Vehicle persistence texture configs are now found in server settings pbo. https://github.com/EpochModTeam/Epoch/blob/experimental/Sources/epoch_server_settings/configs/CfgEpochVehicles.h
