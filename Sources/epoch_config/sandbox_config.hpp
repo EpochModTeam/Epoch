@@ -1,5 +1,5 @@
 /*
-	Epoch Mod Sandbox Survival Gamemode
+	Epoch Mod Survival Gamemode
 
 	Author: Epoch Mod Team - EpochMod.com
 
@@ -13,7 +13,7 @@
 author = "Epoch Mod Team";
 class Header
 {
- gameType = Sandbox;
+ gameType = Survival;
  minPlayers = 1;
  maxPlayers = 100;
 };

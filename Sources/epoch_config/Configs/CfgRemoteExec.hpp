@@ -4,7 +4,7 @@
     Contributors: Andrew Gregory
 
 	Description:
-	RemoteExec whitelist for Epoch sandbox gamemode. This also blacklists default A3 remoteExec commands.
+	RemoteExec whitelist for Epoch Survival gamemode. This also blacklists default A3 remoteExec commands.
 
     Licence:
     Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
