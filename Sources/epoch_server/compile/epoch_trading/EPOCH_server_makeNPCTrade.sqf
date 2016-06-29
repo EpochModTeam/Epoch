@@ -223,7 +223,10 @@ if (_slot != -1) then {
 									_current_crypto = _current_crypto - _itemWorth;
 									_tradeQtyTotal = _tradeQtyTotal + _itemQty;
 								} else {
-									diag_log "DEBUG: no slots found to spawn vehicle";
+									// diag_log "DEBUG: no slots found to spawn vehicle";
+									// [_errorMsg, 5] call Epoch_message;
+									_errorMsg = "Failed to purchase vehicle.";
+									[_errorMsg, 5] remoteExec ['Epoch_message',_player];
 								};
 							};
 						} else {

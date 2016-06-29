@@ -32,5 +32,8 @@ if !(isNull _object) then {
 		_class = _objectClass;
 	};
 	[_item, _class, true] call EPOCH_serverLootObject;
+
+	_errorMsg = "You found something!";
+	[_errorMsg, 5] remoteExec ['Epoch_message',_player];
 };
 true

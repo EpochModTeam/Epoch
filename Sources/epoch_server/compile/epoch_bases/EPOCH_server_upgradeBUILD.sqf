@@ -12,7 +12,7 @@
     Github:
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server/compile/epoch_bases/EPOCH_server_upgradeBUILD.sqf
 */
-private["_cfgBaseBuilding","_worldspace", "_class", "_newObj", "_objHiveKey", "_VAL", "_return", "_upgrade", "_objSlot", "_objType"];
+private ["_cfgBaseBuilding","_class","_newObj","_upgrade","_objSlot","_objType","_upgrades"];
 params ["_object","_player",["_index",0],["_token","",[""]]];
 
 if (isNull _object) exitWith{};
@@ -25,7 +25,6 @@ if (_objSlot != -1) then {
 	if !(_upgrades isEqualTo []) then {
 		_upgrade = _upgrades param [_index,[]];
 		_class = _upgrade select 0;
-
 		_newObj = [_class,_object] call EPOCH_swapBuilding;
 		_newObj setVariable ["BUILD_SLOT",_objSlot,true];
 		_newObj call EPOCH_server_buildingInit;
