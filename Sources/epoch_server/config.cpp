@@ -47,6 +47,7 @@ class CfgServerFunctions
 			class server_invitePlayer {};
 		};
 		class epoch_bases {
+			class swapBuilding {};
 			class saveBuilding {};
 			class server_loadBuildings {};
 			class server_saveBuilding {};

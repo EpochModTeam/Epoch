@@ -24,15 +24,11 @@ if (_objSlot != -1) then {
 	_upgrades = getArray(_cfgBaseBuilding >> (typeOf _object) >> "upgradeBuilding");
 	if !(_upgrades isEqualTo []) then {
 		_upgrade = _upgrades param [_index,[]];
-		_objectPos = getposATL _object;
-		_worldspace = [(_objectPos call EPOCH_precisionPos), vectordir _object, vectorup _object];
-		deleteVehicle _object;
 		_class = _upgrade select 0;
-		_newObj = createVehicle [_class, [0,0,0], [], 0, "CAN_COLLIDE"];
+
+		_newObj = [_class,_object] call EPOCH_swapBuilding;
 		_newObj setVariable ["BUILD_SLOT",_objSlot,true];
 		_newObj call EPOCH_server_buildingInit;
-		_newObj setVectorDirAndUp [(_worldspace select 1),(_worldspace select 2)];
-		_newObj setposATL _objectPos;
 		_newObj call EPOCH_saveBuilding;
 	};
 } else {
@@ -41,12 +37,8 @@ if (_objSlot != -1) then {
 		_upgrades = getArray(_cfgBaseBuilding >> (typeOf _object) >> "upgradeBuilding");
 		if !(_upgrades isEqualTo []) then {
 			_upgrade = _upgrades param [_index,[]];
-			_worldspace = [getposATL _object, vectordir _object, vectorup _object];
-			deleteVehicle _object;
 			_class = _upgrade select 0;
-			_newObj = createVehicle[_class, [0,0,0], [], 0, "CAN_COLLIDE"];
-			_newObj setVectorDirAndUp[(_worldspace select 1), (_worldspace select 2)];
-			_newObj setposATL(_worldspace select 0);
+			_newObj = [_class,_object] call EPOCH_swapBuilding;
 		};
 	};
 };

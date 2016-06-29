@@ -37,12 +37,8 @@ if (isText _staticClassConfig) then {
 
 			// Secure and insecure storage
 			_vehiclePos = getposATL _vehicle;
-			_vectorDirAndUp = [vectordir _vehicle, vectorup _vehicle];
-			deleteVehicle _vehicle;
 
-			_storageObj = createVehicle[_staticClass, [0,0,0], [], 0, "CAN_COLLIDE"];
-			_storageObj setVectorDirAndUp _vectorDirAndUp;
-			_storageObj setposATL _vehiclePos;
+			_storageObj = [_staticClass,_vehicle] call EPOCH_swapBuilding;
 
 			if (getNumber(_cfgBaseBuilding >> _staticClass >> "isSecureStorage") == 1) then{
 				_storageObj setVariable["EPOCH_Locked", false, true];

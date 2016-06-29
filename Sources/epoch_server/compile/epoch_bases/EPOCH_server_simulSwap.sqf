@@ -12,7 +12,7 @@
     Github:
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server/compile/epoch_bases/EPOCH_server_simulSwap.sqf
 */
-private["_classConfig","_cfgClass", "_worldspace", "_newObj", "_return", "_class", "_oemType", "_cfgBaseBuilding", "_object", "_objSlot", "_damage", "_color", "_textureSlot"];
+private["_classConfig","_cfgClass", "_newObj", "_return", "_class", "_oemType", "_cfgBaseBuilding", "_object", "_objSlot", "_damage", "_color", "_textureSlot"];
 params [["_object",objNull,[objNull]],["_static",false,[false]]];
 _return = _object;
 _objSlot = _object getVariable ["BUILD_SLOT", -1];
@@ -33,10 +33,10 @@ if (_objSlot != -1) then {
 			_textureSlot = _object getVariable["TEXTURE_SLOT", 0];
 			_damage = damage _object;
 
-			_worldspace = [getposATL _object,vectordir _object,vectorup _object];
-			deleteVehicle _object;
+			//_worldspace = [getposATL _object,vectordir _object,vectorup _object];
+			//_newObj = createVehicle [_class, [0,0,0], [], 0, "CAN_COLLIDE"];
+			_newObj = [_class,_object] call EPOCH_swapBuilding;
 
-			_newObj = createVehicle [_class, [0,0,0], [], 0, "CAN_COLLIDE"];
 			_newObj setVariable ["BUILD_SLOT",_objSlot,true];
 			_newObj call EPOCH_server_buildingInit;
 
@@ -54,12 +54,12 @@ if (_objSlot != -1) then {
 			if (isText _ammoClass) then {
 				_ammoClass = getText _ammoClass;
 				_ammoObj = createVehicle [_ammoClass, [0,0,0], [], 0, "CAN_COLLIDE"];
-				_ammoObj setVectorDirAndUp [(_worldspace select 1),(_worldspace select 2)];
-				_ammoObj setposATL (_worldspace select 0);
+				//_ammoObj setVectorDirAndUp [(_worldspace select 1),(_worldspace select 2)];
+				//_ammoObj setposATL (_worldspace select 0);
+				_ammoObj attachTo [_newObj,[0,0,0]];
 				_newObj setVariable ["EPOCH_TRAP_OBJ",_ammoObj];
 			};
-			_newObj setVectorDirAndUp [(_worldspace select 1),(_worldspace select 2)];
-			_newObj setposATL (_worldspace select 0);
+
 			_newObj	setDamage _damage;
 			_return = _newObj;
 		};

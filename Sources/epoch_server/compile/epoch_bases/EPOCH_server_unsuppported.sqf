@@ -38,15 +38,11 @@ _stableCount = 0;
 				_class = getText(_simulClassConfig);
 				_objSlot = _x getVariable["BUILD_SLOT", -1];
 				if (_objSlot != -1) then {
-					_vDir = vectordir _x;
-					_vUP = vectorup _x;
 					_playerUID = _x getVariable["BUILD_OWNER", "-1"];
 					_slot = _x getVariable["EPOCH_secureStorage", "-1"];
-					deleteVehicle _x;
-					_newObj = createVehicle[_class, [0,0,0], [], 0, "CAN_COLLIDE"];
+					// _newObj = createVehicle[_class, [0,0,0], [], 0, "CAN_COLLIDE"];
+					_newObj = [_class,_x] call EPOCH_swapBuilding;
 					_newObj setVariable["BUILD_SLOT", _objSlot, true];
-					_newObj setVectorDirAndUp[_vDir, _vUP];
-					_newObj setposASL _objectPos;
 					_newObj setVariable["BUILD_OWNER", _playerUID, true];
 					_newObj setVariable["EPOCH_secureStorage", _slot];
 					_newObj setVelocity[0, 0, -1];
