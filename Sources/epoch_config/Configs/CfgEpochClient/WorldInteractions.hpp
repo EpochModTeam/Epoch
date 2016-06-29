@@ -443,13 +443,11 @@ class CfgWorldInteractions  {
     class t_ficus_medium_f_p3d : Trees {};
     class t_cyathea_f_p3d : Trees {};
     class t_ficus_small_f_p3d : Trees {};
-    class woodenplanks_01_f_p3d : Trees {};
     class t_cocosnucifera2s_small_f_p3d : Trees {};
     class t_millettia_f_p3d : Trees {};
     class t_inocarpus_f_p3d : Trees {};
     class t_cocosnucifera3s_bend_f_p3d : Trees {};
     class t_agathis_wide_f_p3d : Trees {};
-    class timberpile_01_f_p3d : Trees {};
     class d_treestump_cut_small_f_p3d : Trees {};
     class d_treestump_natural_small_f_p3d : Trees {};
     class d_treestump_natural_large_f_p3d : Trees {};
