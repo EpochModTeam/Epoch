@@ -55,6 +55,7 @@ EPOCH_arr_interactedObjs = [];
 EPOCH_buildOption = 0;
 EPOCH_nearestLocations = [];
 EPOCH_lastFiredLocation = [];
+rmx_var_drag_MouseDown = false;
 
 ["EPOCH_onEachFrame", "onEachFrame", EPOCH_onEachFrame] call BIS_fnc_addStackedEventHandler;
 

@@ -178,6 +178,7 @@ class CfgClientFunctions
 			class secureStorageHandler {};
 			class genderSelection {};
 			class getColorScheme {};
+			class dragControl {};
 		};
 
 		class config {
@@ -191,7 +192,15 @@ class CfgClientFunctions
 			class dynamicMenuPopulate {};
 			class dynamicMenuCleanup {};
 		};
-
+		
+		class dynamicHUD {
+			file = "epoch_code\gui\scripts\dynamicHUD";
+			class dynamicHUD_adjust {};
+			class dynamicHUD_loadSave {};
+			class dynamicHUD_start {};
+			class getHUDCtrl {};
+		};
+		
 		class gui_craft {
 			file = "epoch_code\gui\scripts\craftingv2";
 			class crafting_animate {};
