@@ -81,8 +81,6 @@ class Tanoa : Default
 		{"C_Plane_Civil_01_racing_F",1},
 		{"B_CTRG_LSV_01_light_F",2},
 		{"B_LSV_01_unarmed_F",2},
-		{"O_T_VTOL_02_infantry_F",1},
-		{"O_T_VTOL_02_vehicle_F",1},
 		{"B_T_VTOL_01_infantry_F",1},
 		{"B_T_VTOL_01_vehicle_F",1}
 	};
@@ -189,8 +187,6 @@ class Tanoa : Default
 		{"C_Plane_Civil_01_racing_F",1},
 		{"B_CTRG_LSV_01_light_F",2},
 		{"B_LSV_01_unarmed_F",2},
-		{"O_T_VTOL_02_infantry_F",1},
-		{"O_T_VTOL_02_vehicle_F",1},
 		{"B_T_VTOL_01_infantry_F",1},
 		{"B_T_VTOL_01_vehicle_F",1}
 	};

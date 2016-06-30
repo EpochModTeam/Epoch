@@ -6,7 +6,7 @@ _prevEnergy = EPOCH_playerEnergy;
 
 // init config data
 EPOCH_sapperRndChance = ["CfgEpochClient", "sapperRngChance", 100] call EPOCH_fnc_returnConfigEntryV2;
-EPOCH_zombieRndChance = ["CfgEpochClient", "zombieRndChance", 100] call EPOCH_fnc_returnConfigEntryV2;
+EPOCH_zombieRndChance = ["CfgEpochClient", "zombieRndChance", 50] call EPOCH_fnc_returnConfigEntryV2;
 EPOCH_droneRndChance = ["CfgEpochClient", "droneRngChance", 100] call EPOCH_fnc_returnConfigEntryV2;
 _baseHTLoss = ["CfgEpochClient", "baseHTLoss", 8] call EPOCH_fnc_returnConfigEntryV2;
 _energyCostNV = ["CfgEpochClient", "energyCostNV", 3] call EPOCH_fnc_returnConfigEntryV2;

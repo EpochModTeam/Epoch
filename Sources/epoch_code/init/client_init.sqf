@@ -67,7 +67,7 @@ if(EPOCH_AirDropChance < 0)then{EPOCH_AirDropChance = 101;EPOCH_AirDropCheck = 9
 
 EPOCH_droneRndChance = 100;
 EPOCH_sapperRndChance = 100;
-EPOCH_zombieRndChance = 30;
+EPOCH_zombieRndChance = 50;
 
 // Custom Keys
 EPOCH_keysActionPressed = false; //prevents EH spam

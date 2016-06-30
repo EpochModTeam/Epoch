@@ -1,4 +1,4 @@
-/*%FSM<COMPILE "D:\Program Files (x86)\Bohemia Interactive\Tools\FSM Editor Personal Edition\scriptedFSM.cfg, zombie">*/
+/*%FSM<COMPILE "F:\Program Files (x86)\Steam\steamapps\common\Arma 3 Tools\FSMEditor\scriptedFSM.cfg, zombie">*/
 /*%FSM<HEAD>*/
 /*
 item0[] = {"brainz",0,250,-25.000000,-25.000000,75.000000,25.000000,0.000000,"brainz"};
@@ -29,9 +29,9 @@ item24[] = {"sight___target",4,218,550.000000,-350.000000,650.000000,-300.000000
 item25[] = {"hearing___target",4,218,650.000000,-325.000000,750.000000,-275.000000,80.000000,"hearing / target"};
 item26[] = {"nearest_target",4,218,725.000000,0.000000,825.000000,50.000000,75.000000,"nearest" \n "target"};
 item27[] = {"spin",2,250,0.000000,-500.000000,100.000000,-450.000000,0.000000,"spin"};
-item28[] = {"wait",4,218,100.000000,-425.000000,200.000000,-375.000000,0.000000,"wait"};
+item28[] = {"wait",4,4314,100.000000,-425.000000,200.000000,-375.000000,0.000000,"wait"};
 item29[] = {"scream",4,218,200.000000,-475.000000,300.000000,-425.000000,80.000000,"scream"};
-item30[] = {"____FAKE____",9,352,0.000000,0.000000,0.000000,0.000000,0.000000,"____FAKE____"};
+item30[] = {"____FAKE____",9,0,0.000000,0.000000,0.000000,0.000000,0.000000,"____FAKE____"};
 link0[] = {0,17};
 link1[] = {1,2};
 link2[] = {2,3};
@@ -79,883 +79,915 @@ link43[] = {30,10};
 link44[] = {30,19};
 link45[] = {30,22};
 link46[] = {30,26};
-globals[] = {0.000000,0,0,0,0,640,480,1,266,6316128,1,-207.474609,835.795471,312.554321,-630.442322,978,884,1};
-window[] = {2,-1,-1,-1,-1,707,182,1207,182,3,996};
+globals[] = {0.000000,0,0,0,0,640,480,1,266,6316128,1,-207.474609,835.795471,312.554321,-630.442322,978,854,1};
+window[] = {2,-1,-1,-1,-1,655,130,1155,130,3,996};
 *//*%FSM</HEAD>*/
 class FSM
 {
-  fsmName = "zombie";
-  class States
-  {
-    /*%FSM<STATE "brainz">*/
-    class brainz
-    {
-      name = "brainz";
-      init = /*%FSM<STATEINIT""">*/"_zombie = _this select 0;" \n
-       "_sBomb = _this select 1;" \n
-       "_head = objNull;" \n
-       "_lastAlert = diag_tickTime;" \n
-       "_trgt = player;" \n
-       "" \n
-       "//Defaults" \n
-       "_fsmPath = ""epoch_code\system"";" \n
-       "_zombie setBehaviour ""CARELESS"";" \n
-       "_zombie setUnitPos ""UP""; " \n
-       "_trgtArr =  [""Epoch_Man_Base_F"",""Epoch_Female_base_F""];" \n
-       "_vehArray = [""Car""];" \n
-       "_trgt = player;" \n
-       "_t =  diag_tickTime;" \n
-       "_zedPos = getPosATL _zombie;" \n
-       "" \n
-       "//Behaviour Vars" \n
-       "_attackDist = getNumber (getMissionConfig ""CfgEpochRyanZombie"" >> ""attackDist"");" \n
-       "_groanTrig = getNumber (getMissionConfig ""CfgEpochRyanZombie"" >> ""groanTrig"");" \n
-       "_zRange = getNumber (getMissionConfig ""CfgEpochRyanZombie"" >> ""range"");" \n
-       "_sHideTrig =  getNumber (getMissionConfig ""CfgEpochRyanZombie"" >> ""hideLevel""); " \n
-       "_moveTrig =  getNumber (getMissionConfig ""CfgEpochRyanZombie"" >> ""chargeLevel""); " \n
-       "_sHardness = floor (random 6) max 1;" \n
-       "_checkFreq = getNumber (getMissionConfig ""CfgEpochRyanZombie"" >> ""reflexSpeed"");" \n
-       "_welcomeWait = random 4;" \n
-       "_config = 'CfgEpochClient' call EPOCH_returnConfig;" \n
-       "_jammerRange = getNumber(_config >> ""buildingJammerRange"");" \n
-       "_zSmell = getArray (getMissionConfig ""CfgEpochRyanZombie"" >> ""smell"");" \n
-       "_zSight = getArray (getMissionConfig ""CfgEpochRyanZombie"" >> ""sight"");" \n
-       "_zHear = getArray (getMissionConfig ""CfgEpochRyanZombie"" >> ""hearing"");" \n
-       "_zMem = getArray (getMissionConfig ""CfgEpochRyanZombie"" >> ""memory"");" \n
-       "_zMoans = getArray (getMissionConfig ""CfgEpochRyanZombie"" >> ""moans"");" \n
-       "_zScreams = getArray (getMissionConfig ""CfgEpochRyanZombie"" >> ""screams"");" \n
-       "" \n
-       "//Smell" \n
-       "_smellDist = _zSmell select 0;" \n
-       "_smellCoeff = _zSmell select 1;" \n
-       "" \n
-       "//Sight" \n
-       "_sightDist = _zSight select 0;" \n
-       "_sightCoeff = _zSight select 1;" \n
-       "_sight = [_zombie, ""VIEW""] checkVisibility [eyePos _zombie,aimPos _trgt];" \n
-       "" \n
-       "//Hearing" \n
-       "_hearDist = _zHear select 0;" \n
-       "_hearCoeff = _zHear select 1;" \n
-       "_zFiredNear = _zombie getVariable [""zFiredNear"",[objNull, 0]];" \n
-       "_shotDist = 0;" \n
-       "" \n
-       "//Memory" \n
-       "_memTime = _zMem select 0;" \n
-       "_memCoeff = _zMem select 1;" \n
-       "_m = _t;" \n
-       "_spottedPos = [0,0,0];" \n
-       "" \n
-       "//Moving" \n
-       "_moveTo = [0,0,0];" \n
-       "" \n
-       "//Attack" \n
-       "_lastAttack = _t;" \n
-       "_doAttack = false;" \n
-       "" \n
-       "//Sounds" \n
-       "_doMoan = false;" \n
-       "_doScream = false;" \n
-       "_lastMoan = _t;" \n
-       "" \n
-       "//Missions" \n
-       "_traderDispose = false;" \n
-       "" \n
-       "//FSM" \n
-       "_walkHandle = -1;" \n
-       "" \n
-       "_requestDispose = false;" \n
-       "_nrstTrgt = objNull;" \n
-       "_lowDist = 0;" \n
-       "_currDist = 0;" \n
-       "_filterBuilds = [""Land_i_Addon_03_V1_F"",""Land_Offices_01_V1_F""];" \n
-       "" \n
-       "_u = _t;" \n
-       "_c = _u;" \n
-       "_f = _c;" \n
-       "_h = _f;" \n
-       "_d2 = _h;" \n
-       "" \n
-       "" \n
-       "" \n
-       "_dirTo = 0;" \n
-       "_lDist = 0;" \n
-       "_checkEntry = """";" \n
-       "" \n
-       "_decisionMade = false;" \n
-       "_actionDone = false;" \n
-       "_zombiePos=[0,0,0];" \n
-       "_moveTo=[0,0,0];" \n
-       "_trgtPos=[0,0,0];" \n
-       "_hidePos = [0,0,0];" \n
-       "_nrPlyrs = [];" \n
-       "_circlePos = [0,0,0];" \n
-       "_behindPos = [0,0,0];" \n
-       "_sSide = 90;" \n
-       "" \n
-       "_vectTot = [0,0,0];" \n
-       "" \n
-       "_lastAction = """";" \n
-       "_maxStalkDist = 48;" \n
-       "_maxStalkDistPerm = 48;" \n
-       "_minStalkDist = 12;" \n
-       "_minStalkDistPerm = 12;" \n
-       "_doWander = false;" \n
-       "_callHide = false;" \n
-       "_callMove = false;" \n
-       "_callGroan = false;" \n
-       "" \n
-       "//Feeling vars" \n
-       "_sAnger = 50;" \n
-       "_sFear = 50;" \n
-       "_threateLevel = 0;" \n
-       "_addThreat = 0;" \n
-       "_sHit = [objNull, 0];" \n
-       "" \n
-       "_angerCoeff = random 1;" \n
-       "_calmAngerCoeff = 1 - _angerCoeff;" \n
-       "_fearCoeff = random 1;" \n
-       "_calmFearCoeff = 1 - _fearCoeff;" \n
-       "" \n
-       "_stuckCount = 0;" \n
-       "" \n
-       "_traderDispose = false;" \n
-       "" \n
-       "_doMove = false;" \n
-       "_sanityCheckDone = false;" \n
-       "_canSee = ([_zombie, ""VIEW""] checkVisibility [eyePos _zombie,aimPos _trgt] >= 0.5);" \n
-       "_nrTrgts = [];" \n
-       "_threatLevel = 0;" \n
-       "_trgtDist = _trgt distance _zombie;" \n
-       "_sanityCheck = 0;" \n
-       "_doHide = false;" \n
-       "_doAttack = false;" \n
-       "_firedNear = 0;" \n
-       "" \n
-       "" \n
-       "" \n
-       "" \n
-       "//Debug - Uncomment Sounds for live" \n
-       "_randomGroan = {" \n
-       "/*" \n
-       "_sounds = [""sapper_groan0"",""sapper_groan1"",""sapper_groan2""];" \n
-       "_sound = selectRandom _sounds;" \n
-       "" \n
-       "_zombie say3D _sound;" \n
-       "_say3D_PVS = [player, _zombie,(EPOCH_sounds find _sound), Epoch_personalToken];" \n
-       "_say3D_PVS remoteExec [""EPOCH_server_handle_say3D"",2];" \n
-       "*/" \n
-       "};" \n
-       "" \n
-       "_doInterrupt = {" \n
-       "_actionDone = true;" \n
-       "_criteria = ""(true)"";" \n
-       "};" \n
-       "" \n
-       "//DEBUG" \n
-       "_doDebug = false;" \n
-       "axeDebug = _doDebug ;" \n
-       "if(_doDebug)then{" \n
-       "axeDebug = true;" \n
-       "_jammerRange = 75;" \n
-       "axeZed = _zombie;" \n
-       "_debugDo = ""START"";" \n
-       "_mkrName = """";" \n
-       "};" \n
-       ""/*%FSM</STATEINIT""">*/;
-      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
-      class Links
-      {
-        /*%FSM<LINK "Wait_random">*/
-        class Wait_random
+        fsmName = "zombie";
+        class States
         {
-          priority = 10.000000;
-          to="reset_vars";
-          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"(diag_tickTime - _t) > _welcomeWait;"/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/"call _randomGroan;"/*%FSM</ACTION""">*/;
+                /*%FSM<STATE "brainz">*/
+                class brainz
+                {
+                        name = "brainz";
+                        itemno = 0;
+                        init = /*%FSM<STATEINIT""">*/"_zombie = _this select 0;" \n
+                         "_sBomb = _this select 1;" \n
+                         "_head = objNull;" \n
+                         "_lastAlert = diag_tickTime;" \n
+                         "_trgt = player;" \n
+                         "" \n
+                         "//Defaults" \n
+                         "_fsmPath = ""epoch_code\system"";" \n
+                         "_zombie setBehaviour ""CARELESS"";" \n
+                         "_zombie setUnitPos ""UP""; " \n
+                         "_trgtArr =  [""Epoch_Man_Base_F"",""Epoch_Female_base_F""];" \n
+                         "_vehArray = [""Car""];" \n
+                         "_trgt = player;" \n
+                         "_t =  diag_tickTime;" \n
+                         "_zedPos = getPosATL _zombie;" \n
+                         "" \n
+                         "//Behaviour Vars" \n
+                         "_attackDist = getNumber (getMissionConfig ""CfgEpochRyanZombie"" >> ""attackDist"");" \n
+                         "_groanTrig = getNumber (getMissionConfig ""CfgEpochRyanZombie"" >> ""groanTrig"");" \n
+                         "_zDisposeRange = getNumber (getMissionConfig ""CfgEpochRyanZombie"" >> ""disposeRange"");" \n
+                         "_sHideTrig =  getNumber (getMissionConfig ""CfgEpochRyanZombie"" >> ""hideLevel""); " \n
+                         "_moveTrig =  getNumber (getMissionConfig ""CfgEpochRyanZombie"" >> ""chargeLevel""); " \n
+                         "_sHardness = floor (random 6) max 1;" \n
+                         "_checkFreq = getNumber (getMissionConfig ""CfgEpochRyanZombie"" >> ""reflexSpeed"");" \n
+                         "_welcomeWait = random 4;" \n
+                         "_config = 'CfgEpochClient' call EPOCH_returnConfig;" \n
+                         "_jammerRange = getNumber(_config >> ""buildingJammerRange"");" \n
+                         "_zSmell = getArray (getMissionConfig ""CfgEpochRyanZombie"" >> ""smell"");" \n
+                         "_zSight = getArray (getMissionConfig ""CfgEpochRyanZombie"" >> ""sight"");" \n
+                         "_zHear = getArray (getMissionConfig ""CfgEpochRyanZombie"" >> ""hearing"");" \n
+                         "_zMem = getArray (getMissionConfig ""CfgEpochRyanZombie"" >> ""memory"");" \n
+                         "_zMoans = getArray (getMissionConfig ""CfgEpochRyanZombie"" >> ""moans"");" \n
+                         "_zScreams = getArray (getMissionConfig ""CfgEpochRyanZombie"" >> ""screams"");" \n
+                         "" \n
+                         "//Smell" \n
+                         "_smellDist = _zSmell select 0;" \n
+                         "_smellCoeff = _zSmell select 1;" \n
+                         "" \n
+                         "//Sight" \n
+                         "_sightDist = _zSight select 0;" \n
+                         "_sightCoeff = _zSight select 1;" \n
+                         "_sight = [_zombie, ""VIEW""] checkVisibility [eyePos _zombie,aimPos _trgt];" \n
+                         "" \n
+                         "//Hearing" \n
+                         "_hearDist = _zHear select 0;" \n
+                         "_hearCoeff = _zHear select 1;" \n
+                         "_zFiredNear = _zombie getVariable [""zFiredNear"",[objNull, 0]];" \n
+                         "_shotDist = 0;" \n
+                         "" \n
+                         "//Memory" \n
+                         "_memTime = _zMem select 0;" \n
+                         "_memCoeff = _zMem select 1;" \n
+                         "_m = _t;" \n
+                         "_spottedPos = [0,0,0];" \n
+                         "" \n
+                         "//Moving" \n
+                         "_moveTo = [0,0,0];" \n
+                         "" \n
+                         "//Attack" \n
+                         "_lastAttack = _t;" \n
+                         "_doAttack = false;" \n
+                         "" \n
+                         "//Sounds" \n
+                         "_doMoan = false;" \n
+                         "_doScream = false;" \n
+                         "_lastMoan = _t;" \n
+                         "" \n
+                         "//Missions" \n
+                         "_traderDispose = false;" \n
+                         "" \n
+                         "//FSM" \n
+                         "_walkHandle = -1;" \n
+                         "" \n
+                         "_requestDispose = false;" \n
+                         "_nrstTrgt = objNull;" \n
+                         "_lowDist = 0;" \n
+                         "_currDist = 0;" \n
+                         "_filterBuilds = [""Land_i_Addon_03_V1_F"",""Land_Offices_01_V1_F""];" \n
+                         "" \n
+                         "_u = _t;" \n
+                         "_c = _u;" \n
+                         "_f = _c;" \n
+                         "_h = _f;" \n
+                         "_d2 = _h;" \n
+                         "" \n
+                         "" \n
+                         "" \n
+                         "_dirTo = 0;" \n
+                         "_lDist = 0;" \n
+                         "_checkEntry = """";" \n
+                         "" \n
+                         "_decisionMade = false;" \n
+                         "_actionDone = false;" \n
+                         "_zombiePos=[0,0,0];" \n
+                         "_moveTo=[0,0,0];" \n
+                         "_trgtPos=[0,0,0];" \n
+                         "_hidePos = [0,0,0];" \n
+                         "_nrPlyrs = [];" \n
+                         "_circlePos = [0,0,0];" \n
+                         "_behindPos = [0,0,0];" \n
+                         "_sSide = 90;" \n
+                         "" \n
+                         "_vectTot = [0,0,0];" \n
+                         "" \n
+                         "_lastAction = """";" \n
+                         "_maxStalkDist = 48;" \n
+                         "_maxStalkDistPerm = 48;" \n
+                         "_minStalkDist = 12;" \n
+                         "_minStalkDistPerm = 12;" \n
+                         "_doWander = false;" \n
+                         "_callHide = false;" \n
+                         "_callMove = false;" \n
+                         "_callGroan = false;" \n
+                         "" \n
+                         "//Feeling vars" \n
+                         "_sAnger = 50;" \n
+                         "_sFear = 50;" \n
+                         "_threateLevel = 0;" \n
+                         "_addThreat = 0;" \n
+                         "_sHit = [objNull, 0];" \n
+                         "" \n
+                         "_angerCoeff = random 1;" \n
+                         "_calmAngerCoeff = 1 - _angerCoeff;" \n
+                         "_fearCoeff = random 1;" \n
+                         "_calmFearCoeff = 1 - _fearCoeff;" \n
+                         "" \n
+                         "_stuckCount = 0;" \n
+                         "" \n
+                         "_traderDispose = false;" \n
+                         "" \n
+                         "_doMove = false;" \n
+                         "_sanityCheckDone = false;" \n
+                         "_canSee = ([_zombie, ""VIEW""] checkVisibility [eyePos _zombie,aimPos _trgt] >= 0.5);" \n
+                         "_nrTrgts = [];" \n
+                         "_threatLevel = 0;" \n
+                         "_trgtDist = _trgt distance _zombie;" \n
+                         "_sanityCheck = 0;" \n
+                         "_doHide = false;" \n
+                         "_doAttack = false;" \n
+                         "_firedNear = 0;" \n
+                         "" \n
+                         "" \n
+                         "" \n
+                         "" \n
+                         "//Debug - Uncomment Sounds for live" \n
+                         "_randomGroan = {" \n
+                         "/*" \n
+                         "_sounds = [""sapper_groan0"",""sapper_groan1"",""sapper_groan2""];" \n
+                         "_sound = selectRandom _sounds;" \n
+                         "" \n
+                         "_zombie say3D _sound;" \n
+                         "_say3D_PVS = [player, _zombie,(EPOCH_sounds find _sound), Epoch_personalToken];" \n
+                         "_say3D_PVS remoteExec [""EPOCH_server_handle_say3D"",2];" \n
+                         "*/" \n
+                         "};" \n
+                         "" \n
+                         "_doInterrupt = {" \n
+                         "_actionDone = true;" \n
+                         "_criteria = ""(true)"";" \n
+                         "};" \n
+                         "" \n
+                         "//DEBUG" \n
+                         "_doDebug = false;" \n
+                         "axeDebug = _doDebug ;" \n
+                         "if(_doDebug)then{" \n
+                         "axeDebug = true;" \n
+                         "_jammerRange = 75;" \n
+                         "axeZed = _zombie;" \n
+                         "_debugDo = ""START"";" \n
+                         "_mkrName = """";" \n
+                         "};" \n
+                         ""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "Wait_random">*/
+                                class Wait_random
+                                {
+                                        itemno = 17;
+                                        priority = 10.000000;
+                                        to="reset_vars";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"(diag_tickTime - _t) > _welcomeWait;"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/"call _randomGroan;"/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "instinct">*/
+                class instinct
+                {
+                        name = "instinct";
+                        itemno = 2;
+                        init = /*%FSM<STATEINIT""">*/"//systemchat format[""I %1"",diag_tickTime];" \n
+                         "" \n
+                         "" \n
+                         "" \n
+                         ""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "dispose">*/
+                                class dispose
+                                {
+                                        itemno = 9;
+                                        priority = 200.000000;
+                                        to="pre_dispose";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"_doDispose || !(alive _zombie)"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/"if(_walkHandle < 0)then{" \n
+                                         "_walkHandle setFSMVariable [""_callDispose"", true];" \n
+                                         "};" \n
+                                         "_zombie removeAllEventHandlers ""Hit"";" \n
+                                         "_zombie removeAllEventHandlers ""FiredNear"";" \n
+                                         "//[] call EPOCH_zombieSpawn;" \n
+                                         "" \n
+                                         "_t = diag_tickTime;" \n
+                                         "" \n
+                                         "//systemChat ""Dispose/Respawn"";"/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "dispose_1">*/
+                                class dispose_1
+                                {
+                                        itemno = 5;
+                                        priority = 100.000000;
+                                        to="instinct";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!(alive _zombie) || _traderDispose || _trgtDist > _zDisposeRange;"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/"_doDispose = true;"/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "attack">*/
+                                class attack
+                                {
+                                        itemno = 20;
+                                        priority = 90.000000;
+                                        to="spin";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"_doAttack"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/"_zombie moveTo _zedPos;" \n
+                                         "_aslPos = ATLToASL _zedPos;" \n
+                                         "_trgtPos = getPosASLVisual _trgt;" \n
+                                         "_unitV = velocity _zombie;" \n
+                                         "_unitvDir = vectorDir _zombie;" \n
+                                         "_vDir = _aslPos vectorFromTo _trgtPos;" \n
+                                         "_unitvUp = vectorUp _trgt;" \n
+                                         "_lastAttack = _t;" \n
+                                         "_doAttack = false;"/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "scream">*/
+                                class scream
+                                {
+                                        itemno = 29;
+                                        priority = 80.000000;
+                                        to="instinct";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"_doScream"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/"_random = selectRandom _zScreams;" \n
+                                         "playSound  format [""%1"",_random];" \n
+                                         "_doScream = false;" \n
+                                         "_debugDo = ""SCREAM"";" \n
+                                         "//systemChat ""Scream"";"/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "moan">*/
+                                class moan
+                                {
+                                        itemno = 16;
+                                        priority = 70.000000;
+                                        to="instinct";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"_doMoan && diag_tickTime - _lastMoan > 8"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/"_random = selectRandom _zMoans;" \n
+                                         "playSound  format [""%1"",_random];" \n
+                                         "_doMoan = false;" \n
+                                         "_lastMoan = _t;" \n
+                                         "_debugDo = ""SOUNDS"";"/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "move">*/
+                                class move
+                                {
+                                        itemno = 11;
+                                        priority = 60.000000;
+                                        to="instinct";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!(_moveTo isEqualTo [0,0,0])"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/"if(_walkHandle < 0)then{" \n
+                                         "_walkHandle = [""EPOCH_zombie_walking"",_fsmPath,[_zombie]] call EPOCH_fnc_dynamicFSM;" \n
+                                         "};" \n
+                                         "_walkHandle setFSMVariable [""_nextPos"", _moveTo];" \n
+                                         "_moveTo = [0,0,0];" \n
+                                         "_debugDo = ""MOVE"";"/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "check">*/
+                                class check
+                                {
+                                        itemno = 3;
+                                        priority = 5.000000;
+                                        to="checking_status";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"diag_tickTime > _u + _checkFreq"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/"_sanityCheck = 100;" \n
+                                         "_debugDo = ""CHECK"";" \n
+                                         "" \n
+                                         ""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "pre_dispose">*/
+                class pre_dispose
+                {
+                        name = "pre_dispose";
+                        itemno = 4;
+                        init = /*%FSM<STATEINIT""">*/"_nrTrgts = _zedPos nearEntities [_trgtArr, 480];" \n
+                         "_canSee = [];" \n
+                         "{" \n
+                         "	if !(lineIntersects [eyePos _trgt, eyePos _zombie, _zombie, _trgt]) then{" \n
+                         "	_canSee pushBack _x;" \n
+                         "	};" \n
+                         "}forEach _nrTrgts;" \n
+                         "if (count _canSee < 1)then{" \n
+                         "deleteVehicle _zombie;" \n
+                         "_t = _t + 480;" \n
+                         "}else{" \n
+                         "_zombie setdamage 1;" \n
+                         "};"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "wait_dispose">*/
+                                class wait_dispose
+                                {
+                                        itemno = 6;
+                                        priority = 0.000000;
+                                        to="end";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"diag_tickTime - _t > 480;"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "reset_vars">*/
+                class reset_vars
+                {
+                        name = "reset_vars";
+                        itemno = 7;
+                        init = /*%FSM<STATEINIT""">*/"//System Vars" \n
+                         "_t = diag_tickTime;" \n
+                         "_u = _t;" \n
+                         "" \n
+                         "_doLoiter = false;" \n
+                         "_loiterType = 0;" \n
+                         "" \n
+                         "_doMove = false;" \n
+                         "_moving = false;" \n
+                         "_moveCount = 0;" \n
+                         "_attempts = 0;" \n
+                         "" \n
+                         "_doGroan = false;" \n
+                         "" \n
+                         "" \n
+                         "_rnd = 0;" \n
+                         "_sWait = 0;" \n
+                         "_doDispose = false;" \n
+                         "_chooseTarget = false;" \n
+                         "" \n
+                         "_nrTrgts=[];" \n
+                         "_doHide = false;" \n
+                         "" \n
+                         "//Moving" \n
+                         "_moving = false;" \n
+                         "" \n
+                         "//Sight" \n
+                         "//_spottedPos = [0,0,0];" \n
+                         "" \n
+                         "//Safezones" \n
+                         "_inSafe = false;" \n
+                         "" \n
+                         "//Dispose" \n
+                         "" \n
+                         "//FSM" \n
+                         "" \n
+                         "" \n
+                         "//Brain Vars" \n
+                         "_override = false;" \n
+                         "_criteria =""(false)"";" \n
+                         "_criteriaMet = false;" \n
+                         "_criteriaMetAction = nil;" \n
+                         "_allowInterrupt = false;" \n
+                         "_interruptReason = ""(false)"";" \n
+                         "" \n
+                         "_debugDo = ""RESET"";" \n
+                         "" \n
+                         "" \n
+                         "" \n
+                         "" \n
+                         ""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "dispose">*/
+                                class dispose
+                                {
+                                        itemno = 9;
+                                        priority = 200.000000;
+                                        to="pre_dispose";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"_doDispose || !(alive _zombie)"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/"if(_walkHandle < 0)then{" \n
+                                         "_walkHandle setFSMVariable [""_callDispose"", true];" \n
+                                         "};" \n
+                                         "_zombie removeAllEventHandlers ""Hit"";" \n
+                                         "_zombie removeAllEventHandlers ""FiredNear"";" \n
+                                         "//[] call EPOCH_zombieSpawn;" \n
+                                         "" \n
+                                         "_t = diag_tickTime;" \n
+                                         "" \n
+                                         "//systemChat ""Dispose/Respawn"";"/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "_">*/
+                                class _
+                                {
+                                        itemno = 1;
+                                        priority = 0.000000;
+                                        to="instinct";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"true"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "checking_status">*/
+                class checking_status
+                {
+                        name = "checking_status";
+                        itemno = 12;
+                        init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "done">*/
+                                class done
+                                {
+                                        itemno = 15;
+                                        priority = 100.000000;
+                                        to="reset_vars";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"_sanityCheck < 1" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/"_debugDo = ""CHECKED"";"/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "pre_vars___check">*/
+                                class pre_vars___check
+                                {
+                                        itemno = 23;
+                                        priority = 95.000000;
+                                        to="checking_status";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"_sanityCheck > 95;"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/"//Zed" \n
+                                         "_zedPos = getPosATL _zombie;" \n
+                                         "_zedSpeed = speed _zombie;" \n
+                                         "" \n
+                                         "//Target" \n
+                                         "_trgtDist = _trgt distance _zombie;" \n
+                                         "_trgtPos = getPosATL _trgt;" \n
+                                         "" \n
+                                         "//Smell" \n
+                                         "_smellVect = [0,0,0];" \n
+                                         "_smellPos = [0,0,0];" \n
+                                         "_canSmellCount = 0;" \n
+                                         "" \n
+                                         "//Sight" \n
+                                         "_canSee = false;" \n
+                                         "_visTrgts = [];" \n
+                                         "_sightVect = [0,0,0];" \n
+                                         "_spottedVect = [0,0,0];" \n
+                                         "" \n
+                                         "//Attack" \n
+                                         "_sight = 0;" \n
+                                         "" \n
+                                         "" \n
+                                         "//Hearing" \n
+                                         "_hearVect = [0,0,0];" \n
+                                         "" \n
+                                         "//Target" \n
+                                         "_spottedVect = [0,0,0];" \n
+                                         "" \n
+                                         "_vectTot = [0,0,0];" \n
+                                         "_vectDiv = 0;" \n
+                                         "" \n
+                                         "//EH" \n
+                                         "_zFiredNear = _zombie getVariable [""zFiredNear"",[objNull, 0]];" \n
+                                         "_shotDist = _zFiredNear select 1;" \n
+                                         "" \n
+                                         "//Memory" \n
+                                         "if(diag_tickTime - _m > _memTime)then{" \n
+                                         "_spottedPos = [0,0,0];" \n
+                                         "};" \n
+                                         "" \n
+                                         "//Safe Zones" \n
+                                         "" \n
+                                         "_restricted = nearestObjects [player, [""ProtectionZone_Invisible_F""], 30];" \n
+                                         "if !(_restricted isEqualTo []) then {" \n
+                                         "_inSafe = true;" \n
+                                         "};" \n
+                                         "" \n
+                                         "_sanityCheck = 95;"/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "smell">*/
+                                class smell
+                                {
+                                        itemno = 13;
+                                        priority = 90.000000;
+                                        to="checking_status";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"_sanityCheck > 90 && !_moving && _smellCoeff > 0 && !_inSafe"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/"_nrstTrgt = objNull;" \n
+                                         "_nrTrgts = _zedPos nearEntities [_trgtArr, _smellDist];" \n
+                                         "_avPos = [0,0,0];" \n
+                                         "_upwindPos = [0,0,0];" \n
+                                         "" \n
+                                         "{" \n
+                                         "	_upwindPos = [_x, _smellDist, winddir] call BIS_fnc_relPos;" \n
+                                         "	if(_zombie distance _upwindPos < _smellDist + 1)then{" \n
+                                         "	_canSmellCount = _canSmellCount + 1;" \n
+                                         "	_avPos = _avPos vectorAdd getPosATL _x;" \n
+                                         "	};" \n
+                                         "} forEach _nrTrgts;" \n
+                                         "" \n
+                                         "" \n
+                                         "if(_canSmellCount > 0)then{" \n
+                                         "_smellVect = _zedPos vectorDiff ([_avPos,_canSmellCount] call EPOCH_fnc_vectorDivide);" \n
+                                         "_smellVect = [_smellVect,_smellCoeff] call BIS_fnc_vectorMultiply;" \n
+                                         "_vectDiv = _vectDiv + 1;" \n
+                                         "};" \n
+                                         "" \n
+                                         "" \n
+                                         "_sanityCheck = 90;"/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "sight___target">*/
+                                class sight___target
+                                {
+                                        itemno = 24;
+                                        priority = 85.000000;
+                                        to="checking_status";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"_sanityCheck > 85 && _sightCoeff > 0 && !_inSafe"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/"_nrTrgts = _zedPos nearEntities [_trgtArr, _sightDist];" \n
+                                         "" \n
+                                         "_sightPos = [0,0,0];" \n
+                                         "_avPos = [0,0,0];" \n
+                                         "" \n
+                                         "_trgtCount = count _nrTrgts;" \n
+                                         "_visTrgts = [];" \n
+                                         "" \n
+                                         "if(_trgtCount > 0)then{" \n
+                                         "" \n
+                                         "_sight = [_zombie, ""VIEW""] checkVisibility [eyePos _zombie,aimPos _trgt];" \n
+                                         "" \n
+                                         "	{" \n
+                                         "		if(_sight >= 0.62)then{" \n
+                                         "			_thisPos = getPosATL _x;" \n
+                                         "			_relDir = _zombie getRelDir _thisPos;" \n
+                                         "			if(_relDir < 42 || _relDir > 318)then{" \n
+                                         "			_visTrgts pushBack _x;" \n
+                                         "			_avPos = _avPos vectorAdd _thisPos;" \n
+                                         "			};" \n
+                                         "		};" \n
+                                         "	} forEach _nrTrgts;" \n
+                                         "" \n
+                                         "	if(count _visTrgts > 0)then{" \n
+                                         "	_spottedPos = getPosATL (_visTrgts select 0);" \n
+                                         "	_sightVect = _zedPos vectorDiff ([_avPos,_trgtCount,false] call EPOCH_fnc_vectorDivide);" \n
+                                         "	_sightVect = [_sightVect,_sightCoeff] call BIS_fnc_vectorMultiply;" \n
+                                         "	_vectDiv = _vectDiv + 1;" \n
+                                         "	_canSee = true;" \n
+                                         "	};	" \n
+                                         "" \n
+                                         "};" \n
+                                         "_sanityCheck = 85;"/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "hearing___target">*/
+                                class hearing___target
+                                {
+                                        itemno = 25;
+                                        priority = 80.000000;
+                                        to="checking_status";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"_sanityCheck > 80 && !_moving && (_shotDist > 0 && _shotDist < _hearDist) && _hearCoeff > 0 && !_inSafe"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/"_trgt =  (_zFiredNear select 0);" \n
+                                         "_hearTrgtPos = getPosATL _trgt;" \n
+                                         "_hearVect = _zedPos vectorDiff _hearTrgtPos;" \n
+                                         "_hearVect = [_hearVect,_hearCoeff] call BIS_fnc_vectorMultiply;" \n
+                                         "_vectDiv = _vectDiv + 1;" \n
+                                         "_zombie setVariable [""zFiredNear"", nil];" \n
+                                         "_sanityCheck = 80;"/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "do_attack">*/
+                                class do_attack
+                                {
+                                        itemno = 8;
+                                        priority = 70.000000;
+                                        to="checking_status";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"_sanityCheck > 70 && _sight > 0.6 && _trgtDist < _attackDist && diag_tickTime - _lastAttack > 3 && !_inSafe"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/"_doAttack = true;" \n
+                                         "_doScream = true;" \n
+                                         "_sanityCheck = 70;"/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "stuck">*/
+                                class stuck
+                                {
+                                        itemno = 21;
+                                        priority = 30.000000;
+                                        to="checking_status";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"_sanityCheck > 30 && _moving && _attempts > 6 && _zedSpeed < 0.4" \n
+                                         "" \n
+                                         "" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/"" \n
+                                         "	if (!(_moveTo isEqualTo [0,0,0])) then {" \n
+                                         "" \n
+                                         "	_moveTo = [_moveTo, floor(random 2), floor(random 360)] call BIS_fnc_relPos;" \n
+                                         "	_zombie moveTo _moveTo;" \n
+                                         "	_attempts = 0;" \n
+                                         "	systemChat format[""UnSticking: %1"", diag_tickTime];" \n
+                                         "	};" \n
+                                         "" \n
+                                         "_sanityCheck = 30;"/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "final_checks___r">*/
+                                class final_checks___r
+                                {
+                                        itemno = 14;
+                                        priority = 10.000000;
+                                        to="checking_status";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"_sanityCheck > 10;"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/"" \n
+                                         "_sAnger =_sAnger min 100 max 0;" \n
+                                         "_sFear =_sFear min 100 max 0;" \n
+                                         "" \n
+                                         "if(_vectDiv > 0)then{" \n
+                                         "_vectTot = _smellVect vectorAdd _sightVect vectorAdd _hearVect vectorAdd _spottedVect;" \n
+                                         "_moveTo = _zedPos vectorDiff ([_vectTot,_vectDiv,false] call EPOCH_fnc_vectorDivide);" \n
+                                         "_doMoan = true;" \n
+                                         "//_moveTo = [_moveTo, floor(random 2), floor(random 360)] call BIS_fnc_relPos;" \n
+                                         "};" \n
+                                         "" \n
+                                         "" \n
+                                         "if(_zedPos distance _spottedPos < 3)then{" \n
+                                         "_spottedPos = [0,0,0];" \n
+                                         "};" \n
+                                         "" \n
+                                         "if(_zombie getVariable [""EPOCH_callGroan"",false])then{_zombie setVariable [""EPOCH_callGroan"",false];_callGroan = true; _doGroan = true;};" \n
+                                         "if(_zombie getVariable [""EPOCH_callBoom"",false])then{_zombie setVariable [""EPOCH_callBoom"",false];_callBoom = true; _doBoom = true;};" \n
+                                         "" \n
+                                         "" \n
+                                         "if(_doDebug)then{" \n
+                                         "_plyrVel = velocity player;" \n
+                                         "_plyrVelSpeed = (_plyrVel select 0) + (_plyrVel select 1);" \n
+                                         "_plyRelDir = (player getRelDir _zedPos) - 180; " \n
+                                         "hintSilent format [""ZOMBIE (%4)\nStalk: %1 / %2\nDist To Move: %3 | Plyr:%6\nSee: %5 (%20)\nAnger: %7\nFear: %8\nHit: %9\nNear: %10\nSmell: %11\nMoved(ing):%12(%17)\nAttempts: %15\nPlyr Vel: %13\nRDir: %14\nSpeed: %16\nVectors: %18\nFPS: %19"",_minStalkDist,_maxStalkDist,_moveTo distance _zombie,_debugDo, _canSee,_zombie distance _trgt,_sAnger,_sFear,_sHit,_zFiredNear,_canSmellCount,moveToCompleted _zombie, _plyrVelSpeed,_plyRelDir,_attempts,_zedSpeed,_moving,_vectDiv,diag_FPS,_sight];" \n
+                                         "[_zombie,_zedPos,wind,""Sign_Arrow_Direction_Pink_F""] call EPOCH_fncHordeMemberVelPointer;" \n
+                                         "[""target"",0.8,_moveTo]call EPOCH_fnc_DebugMarker;" \n
+                                         "[""zed"",0.8,_zedPos]call EPOCH_fnc_DebugMarker;" \n
+                                         "};" \n
+                                         "" \n
+                                         "_sHit = [objNull, 0];" \n
+                                         "_zFiredNear = [objNull, 0];" \n
+                                         "_sanityCheck = 0;" \n
+                                         "" \n
+                                         "" \n
+                                         "" \n
+                                         ""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "end">*/
+                class end
+                {
+                        name = "end";
+                        itemno = 18;
+                        init = /*%FSM<STATEINIT""">*/"if (!isNull _zombie) then {" \n
+                         "deleteVehicle _zombie;//Move to cleanup" \n
+                         "};" \n
+                         "" \n
+                         "" \n
+                         "" \n
+                         "" \n
+                         ""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "spin">*/
+                class spin
+                {
+                        name = "spin";
+                        itemno = 27;
+                        init = /*%FSM<STATEINIT""">*/"_t = diag_tickTime;" \n
+                         "_zombie setVelocityTransformation [_aslPos,_aslPos,_unitV,_unitV,_unitvDir,_vDir,_unitvUp,_unitvUp,2];"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "wait">*/
+                                class wait
+                                {
+                                        itemno = 28;
+                                        priority = 0.000000;
+                                        to="instinct";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"diag_tickTime - _t > 0.6;"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/"[_zombie,_trgt] call EPOCH_client_bitePlayer;"/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "____FAKE____">*/
+                class ____FAKE____
+                {
+                        name = "____FAKE____";
+                        itemno = 30;
+                        init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "check_threat">*/
+                                class check_threat
+                                {
+                                        itemno = 10;
+                                        priority = 80.000000;
+                                        to="checking_status";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"_sanityCheck > 80;"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/"_avDist = 0;" \n
+                                         "_tDist = 0;" \n
+                                         "_wepCount = 0;" \n
+                                         "_addThreat = 0;" \n
+                                         "" \n
+                                         "_nrTrgtCount = (count _nrTrgts);" \n
+                                         "if (_nrTrgtCount>0) then {" \n
+                                         "{" \n
+                                         "" \n
+                                         "" \n
+                                         "		if!((currentWeapon _x) == """") then {" \n
+                                         "		_tDist = _tDist + (_x distance _zombie);" \n
+                                         "" \n
+                                         "			if!(lineIntersects [aimPos _zombie, eyePos _x, _zombie, _x]) then {" \n
+                                         "			_wepCount = _wepCount + 1;" \n
+                                         "			};" \n
+                                         "" \n
+                                         "		};" \n
+                                         "" \n
+                                         "" \n
+                                         "}forEach _nrTrgts;" \n
+                                         "" \n
+                                         "_avDist = _tDist / _nrTrgtCount;" \n
+                                         "_addThreat = _wepCount;" \n
+                                         "" \n
+                                         "" \n
+                                         "};" \n
+                                         "" \n
+                                         "" \n
+                                         "_sanityCheck = 80;" \n
+                                         ""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "nearest_target">*/
+                                class nearest_target
+                                {
+                                        itemno = 26;
+                                        priority = 75.000000;
+                                        to="checking_status";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"_sanityCheck > 75 && !_moving && !(_spottedPos isEqualTo [0,0,0]);" \n
+                                         "" \n
+                                         "" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/"_spottedVect = _zedPos vectorDiff _spottedPos;" \n
+                                         "_spottedVect = [_spottedVect,_sightCoeff] call BIS_fnc_vectorMultiply;" \n
+                                         "_vectDiv = _vectDiv + 1;" \n
+                                         "_sanityCheck = 75;" \n
+                                         "" \n
+                                         ""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "check_target">*/
+                                class check_target
+                                {
+                                        itemno = 19;
+                                        priority = 60.000000;
+                                        to="checking_status";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"_sanityCheck > 60;" \n
+                                         "" \n
+                                         "" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/"" \n
+                                         "_trgtDist = _zombie distance _trgt;" \n
+                                         "_canSee = (([_zombie, ""VIEW""] checkVisibility [eyePos _zombie,aimPos _trgt] >= 0.5) && _trgtDist < _smellDist);" \n
+                                         "_trgtPos = getPosATL _trgt;" \n
+                                         "" \n
+                                         "if(_trgt getVariable [""EPOCH_callGroan"",false])then{_trgt setVariable [""EPOCH_callGroan"",false];_callGroan = true; _doGroan = true;};" \n
+                                         "if(_trgt getVariable [""EPOCH_callBoom"",false])then{_trgt setVariable [""EPOCH_callBoom"",false];_callBoom = true; _doBoom = true;};" \n
+                                         "" \n
+                                         "_sanityCheck = 60;" \n
+                                         "" \n
+                                         ""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "feeling">*/
+                                class feeling
+                                {
+                                        itemno = 22;
+                                        priority = 50.000000;
+                                        to="checking_status";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"_sanityCheck > 50;" \n
+                                         "" \n
+                                         "" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/"" \n
+                                         "if (_zFiredNear select 1 > 0 && _zFiredNear select 1 < 50) then {" \n
+                                         "_sAnger = _sAnger + ( random 2 * _angerCoeff);" \n
+                                         "_sFear = _sFear + (random 2 * _fearCoeff);" \n
+                                         "if (isPlayer (_sHit select 0)) then {" \n
+                                         "_trgt = _sHit select 0;" \n
+                                         "};" \n
+                                         "};" \n
+                                         "" \n
+                                         "if (_sHit select 1>0) then {" \n
+                                         "_sAnger = _sAnger + (random 14 * _angerCoeff);" \n
+                                         "_sFear = _sFear + (random 14 * _fearCoeff);" \n
+                                         "if (isPlayer (_sHit select 0)) then {" \n
+                                         "_trgt = _sHit select 0;" \n
+                                         "};" \n
+                                         "};" \n
+                                         "" \n
+                                         "//Can see target grrr" \n
+                                         "if (_canSee) then {" \n
+                                         "_sAnger = _sAnger + (random 2 * _angerCoeff);" \n
+                                         "};" \n
+                                         "" \n
+                                         "//can see armed targets" \n
+                                         "if (_addThreat > 0) then {" \n
+                                         "_sFear = _sFear + (_addThreat * _fearCoeff);" \n
+                                         "};" \n
+                                         "" \n
+                                         "//calm down calm down" \n
+                                         "//if (diag_tickTime > _f + 28) then {" \n
+                                         "_sAnger = _sAnger - (random _sHardness * _calmAngerCoeff);" \n
+                                         "_sFear = _sFear - (random _sHardness * _calmFearCoeff);" \n
+                                         "_f = diag_tickTime;" \n
+                                         "//};" \n
+                                         "" \n
+                                         "" \n
+                                         "_sanityCheck = 50;" \n
+                                         "" \n
+                                         ""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
         };
-        /*%FSM</LINK>*/
-      };
-    };
-    /*%FSM</STATE>*/
-    /*%FSM<STATE "instinct">*/
-    class instinct
-    {
-      name = "instinct";
-      init = /*%FSM<STATEINIT""">*/"//systemchat format[""I %1"",diag_tickTime];" \n
-       "" \n
-       "" \n
-       "" \n
-       ""/*%FSM</STATEINIT""">*/;
-      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
-      class Links
-      {
-        /*%FSM<LINK "dispose">*/
-        class dispose
+        initState="brainz";
+        finalStates[] =
         {
-          priority = 200.000000;
-          to="pre_dispose";
-          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"_doDispose || !(alive _zombie)"/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/"if(_walkHandle < 0)then{" \n
-           "_walkHandle setFSMVariable [""_callDispose"", true];" \n
-           "};" \n
-           "_zombie removeAllEventHandlers ""Hit"";" \n
-           "_zombie removeAllEventHandlers ""FiredNear"";" \n
-           "//[] call EPOCH_zombieSpawn;" \n
-           "" \n
-           "_t = diag_tickTime;" \n
-           "" \n
-           "//systemChat ""Dispose/Respawn"";"/*%FSM</ACTION""">*/;
+                "end",
         };
-        /*%FSM</LINK>*/
-        /*%FSM<LINK "dispose_1">*/
-        class dispose_1
-        {
-          priority = 100.000000;
-          to="instinct";
-          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"!(alive _zombie) || _traderDispose || _trgtDist > _zRange;"/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/"_doDispose = true;"/*%FSM</ACTION""">*/;
-        };
-        /*%FSM</LINK>*/
-        /*%FSM<LINK "attack">*/
-        class attack
-        {
-          priority = 90.000000;
-          to="spin";
-          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"_doAttack"/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/"_zombie moveTo _zedPos;" \n
-           "_aslPos = ATLToASL _zedPos;" \n
-           "_trgtPos = getPosASLVisual _trgt;" \n
-           "_unitV = velocity _zombie;" \n
-           "_unitvDir = vectorDir _zombie;" \n
-           "_vDir = _aslPos vectorFromTo _trgtPos;" \n
-           "_unitvUp = vectorUp _trgt;" \n
-           "_lastAttack = _t;" \n
-           "_doAttack = false;"/*%FSM</ACTION""">*/;
-        };
-        /*%FSM</LINK>*/
-        /*%FSM<LINK "scream">*/
-        class scream
-        {
-          priority = 80.000000;
-          to="instinct";
-          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"_doScream"/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/"_random = selectRandom _zScreams;" \n
-           "playSound  format [""%1"",_random];" \n
-           "_doScream = false;" \n
-           "_debugDo = ""SCREAM"";" \n
-           "//systemChat ""Scream"";"/*%FSM</ACTION""">*/;
-        };
-        /*%FSM</LINK>*/
-        /*%FSM<LINK "moan">*/
-        class moan
-        {
-          priority = 70.000000;
-          to="instinct";
-          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"_doMoan && diag_tickTime - _lastMoan > 8"/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/"_random = selectRandom _zMoans;" \n
-           "playSound  format [""%1"",_random];" \n
-           "_doMoan = false;" \n
-           "_lastMoan = _t;" \n
-           "_debugDo = ""SOUNDS"";"/*%FSM</ACTION""">*/;
-        };
-        /*%FSM</LINK>*/
-        /*%FSM<LINK "move">*/
-        class move
-        {
-          priority = 60.000000;
-          to="instinct";
-          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"!(_moveTo isEqualTo [0,0,0])"/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/"if(_walkHandle < 0)then{" \n
-           "_walkHandle = [""EPOCH_zombie_walking"",_fsmPath,[_zombie]] call EPOCH_fnc_dynamicFSM;" \n
-           "};" \n
-           "_walkHandle setFSMVariable [""_nextPos"", _moveTo];" \n
-           "_moveTo = [0,0,0];" \n
-           "_debugDo = ""MOVE"";"/*%FSM</ACTION""">*/;
-        };
-        /*%FSM</LINK>*/
-        /*%FSM<LINK "check">*/
-        class check
-        {
-          priority = 5.000000;
-          to="checking_status";
-          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"diag_tickTime > _u + _checkFreq"/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/"_sanityCheck = 100;" \n
-           "_debugDo = ""CHECK"";" \n
-           "" \n
-           ""/*%FSM</ACTION""">*/;
-        };
-        /*%FSM</LINK>*/
-      };
-    };
-    /*%FSM</STATE>*/
-    /*%FSM<STATE "pre_dispose">*/
-    class pre_dispose
-    {
-      name = "pre_dispose";
-      init = /*%FSM<STATEINIT""">*/"_nrTrgts = _zedPos nearEntities [_trgtArr, 480];" \n
-       "_canSee = [];" \n
-       "{" \n
-       "	if !(lineIntersects [eyePos _trgt, eyePos _zombie, _zombie, _trgt]) then{" \n
-       "	_canSee pushBack _x;" \n
-       "	};" \n
-       "}forEach _nrTrgts;" \n
-       "if (count _canSee < 1)then{" \n
-       "deleteVehicle _zombie;" \n
-       "_t = _t + 480;" \n
-       "}else{" \n
-       "_zombie setdamage 1;" \n
-       "};"/*%FSM</STATEINIT""">*/;
-      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
-      class Links
-      {
-        /*%FSM<LINK "wait_dispose">*/
-        class wait_dispose
-        {
-          priority = 0.000000;
-          to="end";
-          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"diag_tickTime - _t > 480;"/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-        };
-        /*%FSM</LINK>*/
-      };
-    };
-    /*%FSM</STATE>*/
-    /*%FSM<STATE "reset_vars">*/
-    class reset_vars
-    {
-      name = "reset_vars";
-      init = /*%FSM<STATEINIT""">*/"//System Vars" \n
-       "_t = diag_tickTime;" \n
-       "_u = _t;" \n
-       "" \n
-       "_doLoiter = false;" \n
-       "_loiterType = 0;" \n
-       "" \n
-       "_doMove = false;" \n
-       "_moving = false;" \n
-       "_moveCount = 0;" \n
-       "_attempts = 0;" \n
-       "" \n
-       "_doGroan = false;" \n
-       "" \n
-       "" \n
-       "_rnd = 0;" \n
-       "_sWait = 0;" \n
-       "_doDispose = false;" \n
-       "_chooseTarget = false;" \n
-       "" \n
-       "_nrTrgts=[];" \n
-       "_doHide = false;" \n
-       "" \n
-       "//Moving" \n
-       "_moving = false;" \n
-       "" \n
-       "//Sight" \n
-       "//_spottedPos = [0,0,0];" \n
-       "" \n
-       "//Safezones" \n
-       "_inSafe = false;" \n
-       "" \n
-       "//Dispose" \n
-       "" \n
-       "//FSM" \n
-       "" \n
-       "" \n
-       "//Brain Vars" \n
-       "_override = false;" \n
-       "_criteria =""(false)"";" \n
-       "_criteriaMet = false;" \n
-       "_criteriaMetAction = nil;" \n
-       "_allowInterrupt = false;" \n
-       "_interruptReason = ""(false)"";" \n
-       "" \n
-       "_debugDo = ""RESET"";" \n
-       "" \n
-       "" \n
-       "" \n
-       "" \n
-       ""/*%FSM</STATEINIT""">*/;
-      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
-      class Links
-      {
-        /*%FSM<LINK "dispose">*/
-        class dispose
-        {
-          priority = 200.000000;
-          to="pre_dispose";
-          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"_doDispose || !(alive _zombie)"/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/"if(_walkHandle < 0)then{" \n
-           "_walkHandle setFSMVariable [""_callDispose"", true];" \n
-           "};" \n
-           "_zombie removeAllEventHandlers ""Hit"";" \n
-           "_zombie removeAllEventHandlers ""FiredNear"";" \n
-           "//[] call EPOCH_zombieSpawn;" \n
-           "" \n
-           "_t = diag_tickTime;" \n
-           "" \n
-           "//systemChat ""Dispose/Respawn"";"/*%FSM</ACTION""">*/;
-        };
-        /*%FSM</LINK>*/
-        /*%FSM<LINK "_">*/
-        class _
-        {
-          priority = 0.000000;
-          to="instinct";
-          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"true"/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-        };
-        /*%FSM</LINK>*/
-      };
-    };
-    /*%FSM</STATE>*/
-    /*%FSM<STATE "checking_status">*/
-    class checking_status
-    {
-      name = "checking_status";
-      init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
-      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
-      class Links
-      {
-        /*%FSM<LINK "done">*/
-        class done
-        {
-          priority = 100.000000;
-          to="reset_vars";
-          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"_sanityCheck < 1" \n
-           ""/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/"_debugDo = ""CHECKED"";"/*%FSM</ACTION""">*/;
-        };
-        /*%FSM</LINK>*/
-        /*%FSM<LINK "pre_vars___check">*/
-        class pre_vars___check
-        {
-          priority = 95.000000;
-          to="checking_status";
-          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"_sanityCheck > 95;"/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/"//Zed" \n
-           "_zedPos = getPosATL _zombie;" \n
-           "_zedSpeed = speed _zombie;" \n
-           "" \n
-           "//Target" \n
-           "_trgtDist = _trgt distance _zombie;" \n
-           "_trgtPos = getPosATL _trgt;" \n
-           "" \n
-           "//Smell" \n
-           "_smellVect = [0,0,0];" \n
-           "_smellPos = [0,0,0];" \n
-           "_canSmellCount = 0;" \n
-           "" \n
-           "//Sight" \n
-           "_canSee = false;" \n
-           "_visTrgts = [];" \n
-           "_sightVect = [0,0,0];" \n
-           "_spottedVect = [0,0,0];" \n
-           "" \n
-           "//Attack" \n
-           "_sight = 0;" \n
-           "" \n
-           "" \n
-           "//Hearing" \n
-           "_hearVect = [0,0,0];" \n
-           "" \n
-           "//Target" \n
-           "_spottedVect = [0,0,0];" \n
-           "" \n
-           "_vectTot = [0,0,0];" \n
-           "_vectDiv = 0;" \n
-           "" \n
-           "//EH" \n
-           "_zFiredNear = _zombie getVariable [""zFiredNear"",[objNull, 0]];" \n
-           "_shotDist = _zFiredNear select 1;" \n
-           "" \n
-           "//Memory" \n
-           "if(diag_tickTime - _m > _memTime)then{" \n
-           "_spottedPos = [0,0,0];" \n
-           "};" \n
-           "" \n
-           "//Safe Zones" \n
-           "" \n
-           "_restricted = nearestObjects [player, [""ProtectionZone_Invisible_F""], 30];" \n
-           "if !(_restricted isEqualTo []) then {" \n
-           "_inSafe = true;" \n
-           "};" \n
-           "" \n
-           "_sanityCheck = 95;"/*%FSM</ACTION""">*/;
-        };
-        /*%FSM</LINK>*/
-        /*%FSM<LINK "smell">*/
-        class smell
-        {
-          priority = 90.000000;
-          to="checking_status";
-          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"_sanityCheck > 90 && !_moving && _smellCoeff > 0 && !_inSafe"/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/"_nrstTrgt = objNull;" \n
-           "_nrTrgts = _zedPos nearEntities [_trgtArr, _smellDist];" \n
-           "_avPos = [0,0,0];" \n
-           "_upwindPos = [0,0,0];" \n
-           "" \n
-           "{" \n
-           "	_upwindPos = [_x, _smellDist, winddir] call BIS_fnc_relPos;" \n
-           "	if(_zombie distance _upwindPos < _smellDist + 1)then{" \n
-           "	_canSmellCount = _canSmellCount + 1;" \n
-           "	_avPos = _avPos vectorAdd getPosATL _x;" \n
-           "	};" \n
-           "} forEach _nrTrgts;" \n
-           "" \n
-           "" \n
-           "if(_canSmellCount > 0)then{" \n
-           "_smellVect = _zedPos vectorDiff ([_avPos,_canSmellCount] call EPOCH_fnc_vectorDivide);" \n
-           "_smellVect = [_smellVect,_smellCoeff] call BIS_fnc_vectorMultiply;" \n
-           "_vectDiv = _vectDiv + 1;" \n
-           "};" \n
-           "" \n
-           "" \n
-           "_sanityCheck = 90;"/*%FSM</ACTION""">*/;
-        };
-        /*%FSM</LINK>*/
-        /*%FSM<LINK "sight___target">*/
-        class sight___target
-        {
-          priority = 85.000000;
-          to="checking_status";
-          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"_sanityCheck > 85 && _sightCoeff > 0 && !_inSafe"/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/"_nrTrgts = _zedPos nearEntities [_trgtArr, _sightDist];" \n
-           "" \n
-           "_sightPos = [0,0,0];" \n
-           "_avPos = [0,0,0];" \n
-           "" \n
-           "_trgtCount = count _nrTrgts;" \n
-           "_visTrgts = [];" \n
-           "" \n
-           "if(_trgtCount > 0)then{" \n
-           "" \n
-           "_sight = [_zombie, ""VIEW""] checkVisibility [eyePos _zombie,aimPos _trgt];" \n
-           "" \n
-           "	{" \n
-           "		if(_sight >= 0.62)then{" \n
-           "			_thisPos = getPosATL _x;" \n
-           "			_relDir = _zombie getRelDir _thisPos;" \n
-           "			if(_relDir < 42 || _relDir > 318)then{" \n
-           "			_visTrgts pushBack _x;" \n
-           "			_avPos = _avPos vectorAdd _thisPos;" \n
-           "			};" \n
-           "		};" \n
-           "	} forEach _nrTrgts;" \n
-           "" \n
-           "	if(count _visTrgts > 0)then{" \n
-           "	_spottedPos = getPosATL (_visTrgts select 0);" \n
-           "	_sightVect = _zedPos vectorDiff ([_avPos,_trgtCount,false] call EPOCH_fnc_vectorDivide);" \n
-           "	_sightVect = [_sightVect,_sightCoeff] call BIS_fnc_vectorMultiply;" \n
-           "	_vectDiv = _vectDiv + 1;" \n
-           "	_canSee = true;" \n
-           "	};	" \n
-           "" \n
-           "};" \n
-           "_sanityCheck = 85;"/*%FSM</ACTION""">*/;
-        };
-        /*%FSM</LINK>*/
-        /*%FSM<LINK "hearing___target">*/
-        class hearing___target
-        {
-          priority = 80.000000;
-          to="checking_status";
-          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"_sanityCheck > 80 && !_moving && (_shotDist > 0 && _shotDist < _hearDist) && _hearCoeff > 0 && !_inSafe"/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/"_trgt =  (_zFiredNear select 0);" \n
-           "_hearTrgtPos = getPosATL _trgt;" \n
-           "_hearVect = _zedPos vectorDiff _hearTrgtPos;" \n
-           "_hearVect = [_hearVect,_hearCoeff] call BIS_fnc_vectorMultiply;" \n
-           "_vectDiv = _vectDiv + 1;" \n
-           "_zombie setVariable [""zFiredNear"", nil];" \n
-           "_sanityCheck = 80;"/*%FSM</ACTION""">*/;
-        };
-        /*%FSM</LINK>*/
-        /*%FSM<LINK "do_attack">*/
-        class do_attack
-        {
-          priority = 70.000000;
-          to="checking_status";
-          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"_sanityCheck > 70 && _sight > 0.6 && _trgtDist < _attackDist && diag_tickTime - _lastAttack > 3 && !_inSafe"/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/"_doAttack = true;" \n
-           "_doScream = true;" \n
-           "_sanityCheck = 70;"/*%FSM</ACTION""">*/;
-        };
-        /*%FSM</LINK>*/
-        /*%FSM<LINK "stuck">*/
-        class stuck
-        {
-          priority = 30.000000;
-          to="checking_status";
-          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"_sanityCheck > 30 && _moving && _attempts > 6 && _zedSpeed < 0.4" \n
-           "" \n
-           "" \n
-           ""/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/"" \n
-           "	if (!(_moveTo isEqualTo [0,0,0])) then {" \n
-           "" \n
-           "	_moveTo = [_moveTo, floor(random 2), floor(random 360)] call BIS_fnc_relPos;" \n
-           "	_zombie moveTo _moveTo;" \n
-           "	_attempts = 0;" \n
-           "	systemChat format[""UnSticking: %1"", diag_tickTime];" \n
-           "	};" \n
-           "" \n
-           "_sanityCheck = 30;"/*%FSM</ACTION""">*/;
-        };
-        /*%FSM</LINK>*/
-        /*%FSM<LINK "final_checks___r">*/
-        class final_checks___r
-        {
-          priority = 10.000000;
-          to="checking_status";
-          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"_sanityCheck > 10;"/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/"" \n
-           "_sAnger =_sAnger min 100 max 0;" \n
-           "_sFear =_sFear min 100 max 0;" \n
-           "" \n
-           "if(_vectDiv > 0)then{" \n
-           "_vectTot = _smellVect vectorAdd _sightVect vectorAdd _hearVect vectorAdd _spottedVect;" \n
-           "_moveTo = _zedPos vectorDiff ([_vectTot,_vectDiv,false] call EPOCH_fnc_vectorDivide);" \n
-           "_doMoan = true;" \n
-           "//_moveTo = [_moveTo, floor(random 2), floor(random 360)] call BIS_fnc_relPos;" \n
-           "};" \n
-           "" \n
-           "" \n
-           "if(_zedPos distance _spottedPos < 3)then{" \n
-           "_spottedPos = [0,0,0];" \n
-           "};" \n
-           "" \n
-           "if(_zombie getVariable [""EPOCH_callGroan"",false])then{_zombie setVariable [""EPOCH_callGroan"",false];_callGroan = true; _doGroan = true;};" \n
-           "if(_zombie getVariable [""EPOCH_callBoom"",false])then{_zombie setVariable [""EPOCH_callBoom"",false];_callBoom = true; _doBoom = true;};" \n
-           "" \n
-           "" \n
-           "if(_doDebug)then{" \n
-           "_plyrVel = velocity player;" \n
-           "_plyrVelSpeed = (_plyrVel select 0) + (_plyrVel select 1);" \n
-           "_plyRelDir = (player getRelDir _zedPos) - 180; " \n
-           "hintSilent format [""ZOMBIE (%4)\nStalk: %1 / %2\nDist To Move: %3 | Plyr:%6\nSee: %5 (%20)\nAnger: %7\nFear: %8\nHit: %9\nNear: %10\nSmell: %11\nMoved(ing):%12(%17)\nAttempts: %15\nPlyr Vel: %13\nRDir: %14\nSpeed: %16\nVectors: %18\nFPS: %19"",_minStalkDist,_maxStalkDist,_moveTo distance _zombie,_debugDo, _canSee,_zombie distance _trgt,_sAnger,_sFear,_sHit,_zFiredNear,_canSmellCount,moveToCompleted _zombie, _plyrVelSpeed,_plyRelDir,_attempts,_zedSpeed,_moving,_vectDiv,diag_FPS,_sight];" \n
-           "[_zombie,_zedPos,wind,""Sign_Arrow_Direction_Pink_F""] call EPOCH_fncHordeMemberVelPointer;" \n
-           "[""target"",0.8,_moveTo]call EPOCH_fnc_DebugMarker;" \n
-           "[""zed"",0.8,_zedPos]call EPOCH_fnc_DebugMarker;" \n
-           "};" \n
-           "" \n
-           "_sHit = [objNull, 0];" \n
-           "_zFiredNear = [objNull, 0];" \n
-           "_sanityCheck = 0;" \n
-           "" \n
-           "" \n
-           "" \n
-           ""/*%FSM</ACTION""">*/;
-        };
-        /*%FSM</LINK>*/
-      };
-    };
-    /*%FSM</STATE>*/
-    /*%FSM<STATE "end">*/
-    class end
-    {
-      name = "end";
-      init = /*%FSM<STATEINIT""">*/"if (!isNull _zombie) then {" \n
-       "deleteVehicle _zombie;//Move to cleanup" \n
-       "};" \n
-       "" \n
-       "" \n
-       "" \n
-       "" \n
-       ""/*%FSM</STATEINIT""">*/;
-      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
-      class Links
-      {
-      };
-    };
-    /*%FSM</STATE>*/
-    /*%FSM<STATE "spin">*/
-    class spin
-    {
-      name = "spin";
-      init = /*%FSM<STATEINIT""">*/"_t = diag_tickTime;" \n
-       "_zombie setVelocityTransformation [_aslPos,_aslPos,_unitV,_unitV,_unitvDir,_vDir,_unitvUp,_unitvUp,2];"/*%FSM</STATEINIT""">*/;
-      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
-      class Links
-      {
-        /*%FSM<LINK "wait">*/
-        class wait
-        {
-          priority = 0.000000;
-          to="instinct";
-          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"diag_tickTime - _t > 0.6;"/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/"_zombie switchMove ""AwopPercMstpSgthWnonDnon_throw"";"/*%FSM</ACTION""">*/;
-        };
-        /*%FSM</LINK>*/
-      };
-    };
-    /*%FSM</STATE>*/
-    /*%FSM<STATE "____FAKE____">*/
-    class ____FAKE____
-    {
-      name = "____FAKE____";
-      init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
-      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
-      class Links
-      {
-        /*%FSM<LINK "check_threat">*/
-        class check_threat
-        {
-          priority = 80.000000;
-          to="checking_status";
-          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"_sanityCheck > 80;"/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/"_avDist = 0;" \n
-           "_tDist = 0;" \n
-           "_wepCount = 0;" \n
-           "_addThreat = 0;" \n
-           "" \n
-           "_nrTrgtCount = (count _nrTrgts);" \n
-           "if (_nrTrgtCount>0) then {" \n
-           "{" \n
-           "" \n
-           "" \n
-           "		if!((currentWeapon _x) == """") then {" \n
-           "		_tDist = _tDist + (_x distance _zombie);" \n
-           "" \n
-           "			if!(lineIntersects [aimPos _zombie, eyePos _x, _zombie, _x]) then {" \n
-           "			_wepCount = _wepCount + 1;" \n
-           "			};" \n
-           "" \n
-           "		};" \n
-           "" \n
-           "" \n
-           "}forEach _nrTrgts;" \n
-           "" \n
-           "_avDist = _tDist / _nrTrgtCount;" \n
-           "_addThreat = _wepCount;" \n
-           "" \n
-           "" \n
-           "};" \n
-           "" \n
-           "" \n
-           "_sanityCheck = 80;" \n
-           ""/*%FSM</ACTION""">*/;
-        };
-        /*%FSM</LINK>*/
-        /*%FSM<LINK "nearest_target">*/
-        class nearest_target
-        {
-          priority = 75.000000;
-          to="checking_status";
-          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"_sanityCheck > 75 && !_moving && !(_spottedPos isEqualTo [0,0,0]);" \n
-           "" \n
-           "" \n
-           ""/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/"_spottedVect = _zedPos vectorDiff _spottedPos;" \n
-           "_spottedVect = [_spottedVect,_sightCoeff] call BIS_fnc_vectorMultiply;" \n
-           "_vectDiv = _vectDiv + 1;" \n
-           "_sanityCheck = 75;" \n
-           "" \n
-           ""/*%FSM</ACTION""">*/;
-        };
-        /*%FSM</LINK>*/
-        /*%FSM<LINK "check_target">*/
-        class check_target
-        {
-          priority = 60.000000;
-          to="checking_status";
-          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"_sanityCheck > 60;" \n
-           "" \n
-           "" \n
-           ""/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/"" \n
-           "_trgtDist = _zombie distance _trgt;" \n
-           "_canSee = (([_zombie, ""VIEW""] checkVisibility [eyePos _zombie,aimPos _trgt] >= 0.5) && _trgtDist < _smellDist);" \n
-           "_trgtPos = getPosATL _trgt;" \n
-           "" \n
-           "if(_trgt getVariable [""EPOCH_callGroan"",false])then{_trgt setVariable [""EPOCH_callGroan"",false];_callGroan = true; _doGroan = true;};" \n
-           "if(_trgt getVariable [""EPOCH_callBoom"",false])then{_trgt setVariable [""EPOCH_callBoom"",false];_callBoom = true; _doBoom = true;};" \n
-           "" \n
-           "_sanityCheck = 60;" \n
-           "" \n
-           ""/*%FSM</ACTION""">*/;
-        };
-        /*%FSM</LINK>*/
-        /*%FSM<LINK "feeling">*/
-        class feeling
-        {
-          priority = 50.000000;
-          to="checking_status";
-          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"_sanityCheck > 50;" \n
-           "" \n
-           "" \n
-           ""/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/"" \n
-           "if (_zFiredNear select 1 > 0 && _zFiredNear select 1 < 50) then {" \n
-           "_sAnger = _sAnger + ( random 2 * _angerCoeff);" \n
-           "_sFear = _sFear + (random 2 * _fearCoeff);" \n
-           "if (isPlayer (_sHit select 0)) then {" \n
-           "_trgt = _sHit select 0;" \n
-           "};" \n
-           "};" \n
-           "" \n
-           "if (_sHit select 1>0) then {" \n
-           "_sAnger = _sAnger + (random 14 * _angerCoeff);" \n
-           "_sFear = _sFear + (random 14 * _fearCoeff);" \n
-           "if (isPlayer (_sHit select 0)) then {" \n
-           "_trgt = _sHit select 0;" \n
-           "};" \n
-           "};" \n
-           "" \n
-           "//Can see target grrr" \n
-           "if (_canSee) then {" \n
-           "_sAnger = _sAnger + (random 2 * _angerCoeff);" \n
-           "};" \n
-           "" \n
-           "//can see armed targets" \n
-           "if (_addThreat > 0) then {" \n
-           "_sFear = _sFear + (_addThreat * _fearCoeff);" \n
-           "};" \n
-           "" \n
-           "//calm down calm down" \n
-           "//if (diag_tickTime > _f + 28) then {" \n
-           "_sAnger = _sAnger - (random _sHardness * _calmAngerCoeff);" \n
-           "_sFear = _sFear - (random _sHardness * _calmFearCoeff);" \n
-           "_f = diag_tickTime;" \n
-           "//};" \n
-           "" \n
-           "" \n
-           "_sanityCheck = 50;" \n
-           "" \n
-           ""/*%FSM</ACTION""">*/;
-        };
-        /*%FSM</LINK>*/
-      };
-    };
-    /*%FSM</STATE>*/
-  };
-  initState="brainz";
-  finalStates[] =
-  {
-    "end",
-  };
 };
 /*%FSM</COMPILE>*/

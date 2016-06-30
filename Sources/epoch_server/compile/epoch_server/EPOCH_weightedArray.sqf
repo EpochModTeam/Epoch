@@ -20,16 +20,22 @@ if(_return isEqualTo[]) then {
     _weightedArray  = [];
     {
         if(_x isEqualType []) then {
-            _lootTableArray pushBack(_x select 0);
-            for "_i" from 1 to(_x select 1) do {
-                _weightedArray pushBack _forEachIndex;
+            _x params ["_tname","_tqty"];
+            if (!(_tname isEqualTo "Zombie") || (_tname isEqualTo "Zombie") && EPOCH_mod_Ryanzombies_Enabled) then {
+                _lootTableArray pushBack _tname;
+                for "_i" from 1 to _tqty do {
+                    _weightedArray pushBack _forEachIndex;
+                };
             };
         } else {
-            _lootTableArray pushBack _x;
-            _weightedArray pushBack _forEachIndex;
+            if (!(_x isEqualTo "Zombie") || (_x isEqualTo "Zombie") && EPOCH_mod_Ryanzombies_Enabled) then {
+                _lootTableArray pushBack _x;
+                _weightedArray pushBack _forEachIndex;
+            };
         };
     }forEach getArray(configFile >> _configName >> _keyName >> _arrayName);
     _return = [_lootTableArray,_weightedArray];
     missionNamespace setVariable[format["EPOCH_LT_%1_%2_%3",_configName,_keyName,_arrayName],_return];
+    diag_log format["EPOCH_LT_%1_%2_%3 = %4",_configName,_keyName,_arrayName,_return];
 };
 _return

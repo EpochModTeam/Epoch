@@ -1093,6 +1093,21 @@ class CfgPricing
 	class CUP_B_Ural_Empty_CDF {price = 1000;};
 	class CUP_C_DC3_CIV {price = 2400;};
 
+	// APEX
+	class C_Boat_Transport_02_F {price = 1200;};
+	class C_Scooter_Transport_01_F {price = 1200;};
+	class C_Offroad_02_unarmed_F {price = 3500;};
+	class I_C_Offroad_02_unarmed_F {price = 3500;};
+	class B_T_LSV_01_unarmed_F {price = 4400;};
+	class O_LSV_02_unarmed_F {price = 4300;};
+	class O_T_LSV_02_unarmed_F {price = 4600;};
+	class C_Plane_Civil_01_F {price = 5000;};
+	class C_Plane_Civil_01_racing_F {price = 5000;};
+	class B_CTRG_LSV_01_light_F {price = 4400;};
+	class B_LSV_01_unarmed_F {price = 4400;};
+	class B_T_VTOL_01_infantry_F {price = 10000;};
+	class B_T_VTOL_01_vehicle_F {price = 10000;};
+
 	//Mission Items
 	class B_UavTerminal {price = 10;};
 	class O_UavTerminal {price = 10;};

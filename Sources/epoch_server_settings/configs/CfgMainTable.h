@@ -21,10 +21,11 @@ class CfgMainTable
 		LootMax = 1;
 		tables[] = { "Food" };
 		antagonists[] = {
-				{ "UAV", 30 },
-				{ "Cloak", 25 }, // Night = Epoch_Cloak_F, Day = Epoch_Sapper_F
-				{ "Sapper", 25 },
-				{ "SapperB", 15 },
+				{ "Zombie", 40 },
+				{ "UAV", 15 },
+				{ "Cloak", 10 }, // Night = Epoch_Cloak_F, Day = Epoch_Sapper_F
+				{ "Sapper", 20 },
+				{ "SapperB", 10 },
 				{ "PHANTOM", 5 }
 		};
 	};
@@ -61,10 +62,11 @@ class CfgMainTable
 				{ "GenericLarge", 18 }
 		};
 		antagonists[] = {
-				{ "UAV", 30 }, // I_UAV_01_F
-				{ "Cloak", 30 }, // Night = Epoch_Cloak_F, Day = Epoch_Sapper_F
-				{ "Sapper", 25 }, // Epoch_Sapper_F
-				{ "SapperB", 15 }  // Epoch_SapperB_F
+				{ "Zombie", 45 },
+				{ "UAV", 15 },
+				{ "Cloak", 10 }, // Night = Epoch_Cloak_F, Day = Epoch_Sapper_F
+				{ "Sapper", 20 },
+				{ "SapperB", 10 }
 		};
 	};
 	class TrashSmall : Default

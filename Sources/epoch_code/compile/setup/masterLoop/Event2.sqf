@@ -27,6 +27,7 @@ if (currentVisionMode player == 1) then { //NV enabled
 	_energyValue = _energyValue - _energyCostNV;
 	if (EPOCH_playerEnergy == 0) then {
 		player action["nvGogglesOff", player];
+		["Night Vision Goggles: Need Energy", 5] call Epoch_message;
 	};
 };
 
