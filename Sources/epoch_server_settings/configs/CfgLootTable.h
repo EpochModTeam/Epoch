@@ -832,14 +832,14 @@ class CfgLootTable
 	class Fin_random_EPOCH
 	{
 		items[] = {
-				{ { "CookedDog_EPOCH", "magazine" }, 1 },
+				{ { "DogCarcass_EPOCH", "magazine" }, 1 },
 				{ { "Pelt_EPOCH", "magazine" }, 1 }
 		};
 	};
 	class Alsatian_Random_EPOCH
 	{
 		items[] = {
-				{ { "CookedDog_EPOCH", "magazine" }, 1 },
+				{ { "DogCarcass_EPOCH", "magazine" }, 1 },
 				{ { "Pelt_EPOCH", "magazine" }, 1 }
 		};
 	};
