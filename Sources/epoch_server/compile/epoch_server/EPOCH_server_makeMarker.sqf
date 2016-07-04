@@ -28,14 +28,14 @@ switch _trgtType do {
 
 	case 0: {
 		if(isPlayer _trgtObj)then{
-			[_trgtObj,_mPos,_mShape,_mType,_mColor,_mSize,_mBrush,_mDir,_mText,_mAlpha,_mrkrName] remoteExec ['EPOCH_fnc_createMarker',_trgtObj];
+			[_trgtObj,_mPos,_mShape,_mType,_mColor,_mSize,_mBrush,_mDir,_mText,_mAlpha,_mrkrName] remoteExec ['EPOCH_makeMarker',_trgtObj];
 		};
 	};
 
 	case 1: {
 		if!(isNull _trgtObj)then{
 			{
-			[_x,_mPos,_mShape,_mType,_mColor,_mSize,_mBrush,_mDir,_mText,_mAlpha,_mrkrName] remoteExec ['EPOCH_fnc_createMarker',_x];
+			[_x,_mPos,_mShape,_mType,_mColor,_mSize,_mBrush,_mDir,_mText,_mAlpha,_mrkrName] remoteExec ['EPOCH_makeMarker',_x];
 			}foreach (units group _trgtObj);
 		};
 	};
@@ -56,7 +56,7 @@ switch _trgtType do {
 	case 3: {
 		if(isArray _trgtObj && count _trgtObj > 0)then{
 			{
-			[_x,_mPos,_mShape,_mType,_mColor,_mSize,_mBrush,_mDir,_mText,_mAlpha,_mrkrName] remoteExec ['EPOCH_fnc_createMarker',_x];
+			[_x,_mPos,_mShape,_mType,_mColor,_mSize,_mBrush,_mDir,_mText,_mAlpha,_mrkrName] remoteExec ['EPOCH_makeMarker',_x];
 			}foreach _trgtObj;
 		};
 	};
