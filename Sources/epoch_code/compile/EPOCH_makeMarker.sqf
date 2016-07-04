@@ -13,7 +13,7 @@
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_code/compile/EPOCH_makeMarker.sqf
 
     Example:
-    [player, position player, "ICON", "mil_dot", "Hi, I am a marker.. yay.", "ColorRed", [0.7,0.7], "Border", 42, 0.6,"markerName"] call EPOCH_makeMarker.sqf
+    [player, position player, "ICON", "mil_dot", "ColorBlack", [0.7,0.7], "Border", 42, "Hi, I am a marker.. yay.", 0.6,"markerName"] call EPOCH_makeMarker
 
     Parameter(s):
 		_this select 0: Target Object - Used if name not supplied
@@ -28,11 +28,11 @@ diag_log format["Epoch: ADMIN: Creating marker at %1 called %2 (Params:%3).", _m
 
 if(_mName == "")then{_mName = str(_trgt) + str(diag_tickTime);};
 _mrkr = createMarkerLocal [_mName, _mPos];
-_mrkr setMarkerShapeLocal _mShape;
-_mrkr setMarkerTypeLocal _mType;
-if!(_mText=="")then{_mrkr setMarkerTextLocal _mText;};
-_mrkr setMarkerSizeLocal _mSize;
-_mrkr setMarkerColorLocal _mColor;
-if!(_mBrush == "")then{_mrkr setMarkerBrushLocal _mBrush;};
-_mrkr setMarkerDirLocal _mDir;
-_mrkr setMarkerAlphaLocal _mAlpha;
+_mName setMarkerShapeLocal _mShape;
+_mName setMarkerTypeLocal _mType;
+if!(_mText == "")then{_mName setMarkerTextLocal _mText;};
+_mName setMarkerSizeLocal _mSize;
+_mName setMarkerColorLocal _mColor;
+if!(_mBrush == "")then{_mName setMarkerBrushLocal _mBrush;};
+_mName setMarkerDirLocal _mDir;
+_mName setMarkerAlphaLocal _mAlpha;
