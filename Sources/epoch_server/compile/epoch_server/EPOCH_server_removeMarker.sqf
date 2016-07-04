@@ -15,7 +15,7 @@
     Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
 
     Github:
-    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_server/compile/epoch_server/EPOCH_server_deleteMarker.sqf
+    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_server/compile/epoch_server/EPOCH_server_removeMarker.sqf
 */
 params [["_trgtObj",[]],["_trgtType",0],["_mrkrName",""]];
 diag_log format["Epoch: ADMIN: Deleting marker %1 | %2.", _mrkrName, _trgtObj];
@@ -25,14 +25,14 @@ switch _trgtType do {
 
 	case 0: {
 		if(isPlayer _trgtObj)then{
-			[_mrkrName] remoteExec ['EPOCH_fnc_deleteMarker',_trgtObj];
+			[_mrkrName] remoteExec ['EPOCH_removeMarker',_trgtObj];
 		};
 	};
 
 	case 1: {
 		if!(isNull _trgtObj)then{
 			{
-			[_mrkrName] remoteExec ['EPOCH_fnc_deleteMarker',_x];
+			[_mrkrName] remoteExec ['EPOCH_removeMarker',_x];
 			}foreach (units group _trgtObj);
 		};
 	};
@@ -44,7 +44,7 @@ switch _trgtType do {
 	case 3: {
 		if(isArray _trgtObj && count _trgtObj > 0)then{
 			{
-			[_mrkrName] remoteExec ['EPOCH_fnc_deleteMarker',_x];
+			[_mrkrName] remoteExec ['EPOCH_removeMarker',_x];
 			}foreach _trgtObj;
 		};
 	};
