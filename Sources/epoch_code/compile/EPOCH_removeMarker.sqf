@@ -13,7 +13,7 @@
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_code/compile/EPOCH_removeMarker.sqf
 
     Example:
-    ["markerName"] call EPOCH_removeMarker.sqf
+    ["markerName"] call EPOCH_removeMarker
 
     Parameter(s):
 		_this select 0: STRING - Marker Name
