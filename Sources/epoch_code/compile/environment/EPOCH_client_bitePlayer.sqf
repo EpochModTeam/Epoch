@@ -33,12 +33,15 @@ if !(_target isEqualTo player) then {
 
 		_cfgObjectInteraction = (('CfgObjectInteractions' call EPOCH_returnConfig) >> (typeOf _unit));
 		if (isClass _cfgObjectInteraction) then {
+
 			_distance = getNumber (_cfgObjectInteraction >> "distance");
 			_toxicChance = getNumber (_cfgObjectInteraction >> "toxicChance");
+			_bleedChance = getNumber (_cfgObjectInteraction >> "bleedChance");
 			_bloodpChance = getNumber (_cfgObjectInteraction >> "bloodpChance");
 			_fatigueChance = getNumber (_cfgObjectInteraction >> "fatigueChance");
 			_bleedAmount = getNumber (_cfgObjectInteraction >> "bleedAmount");
 			_bloodpAmount = getNumber (_cfgObjectInteraction >> "bloodpAmount");
+
 			_soundConfigArray = getArray (_cfgObjectInteraction >> "soundEffect");
 			if !(_soundConfigArray isEqualTo []) then {
 				_soundEffect = selectRandom _soundConfigArray;
