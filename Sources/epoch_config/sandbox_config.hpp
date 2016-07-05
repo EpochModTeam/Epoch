@@ -70,8 +70,11 @@ disableRandomization[] = {"All"};
 #include "Configs\CfgClientFunctions.hpp"
 #include "Configs\CfgObjectInteractions.hpp"
 #include "Configs\CfgItemInteractions.hpp"
+#include "Configs\CfgSay3Dhandler.hpp"
+#include "Configs\CfgSwitchMovehandler.hpp"
 
 // A3 specific configs
+#include "Configs\CfgSounds.hpp"
 #include "Configs\CfgFunctions.hpp"
 #include "Configs\CfgRemoteExec.hpp"
 

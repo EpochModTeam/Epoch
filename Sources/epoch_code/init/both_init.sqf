@@ -85,11 +85,10 @@ EPOCH_group_upgrade_lvl = ["CfgEpochClient", "group_upgrade_lvl", [4,"100",6,"30
 
 // Init 3d sound handler
 EPOCH_sounds = [];
-EPOCH_soundsDistance = [];
-_say3dsounds = "isClass _x" configClasses (configFile >> "CfgSay3Dhandler");
+_say3dsoundsConfig = 'CfgSay3Dhandler' call EPOCH_returnConfig;
+_say3dsounds = "isClass _x" configClasses (_say3dsoundsConfig);
 {
 	EPOCH_sounds pushBack (configName _x);
-	EPOCH_soundsDistance pushBack getNumber(_x >> "distance");
 } forEach _say3dsounds;
 
 // disable remote sensors on server and client as all Epoch AI is local to the side controlling it.

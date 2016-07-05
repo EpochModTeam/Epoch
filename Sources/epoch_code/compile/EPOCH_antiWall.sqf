@@ -12,18 +12,17 @@
     Github:
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_code/compile/EPOCH_antiWall.sqf
 */
-private ["_worldPos","_front","_dirTo","_front2"];
+private ["_start","_end","_dirTo"];
 params ["_unit","_position","_vehicle"];
 if (_unit == player) then {
-	_worldPos = getPosATLVisual _vehicle;
-	_worldPos set[2, (_worldPos select 2) + 1];
-	_front = _worldPos;
+	_start = getPosWorld _vehicle;
+	// _worldPos set[2, (_worldPos select 2) + 1];
 	_dirTo = _vehicle getDir player;
-	_front2 = _vehicle getPos [(_vehicle distance player) + 1, _dirTo];
+	_end = _vehicle getPos [(_vehicle distance player) + 1, _dirTo];
 	{
 		if (_x isKindOf "Const_All_Walls_F") exitWith{
 			player moveInAny _vehicle;
 			EPOCH_antiWallCount = EPOCH_antiWallCount + 1;
 		};
-	} forEach lineintersectsobjs[ATLToASL _front, ATLToASL _front2, player, _vehicle, true, 2];
+	} forEach lineintersectsobjs[_start, AGLToASL _end, player, _vehicle, true, 2];
 };

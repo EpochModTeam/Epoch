@@ -37,7 +37,7 @@ _unit = createAgent[_unitClass, position player, [], _zRange, "FORM"];
 //};
 _unit call _disableAI;
 _unit switchMove "AmovPercMstpSnonWnonDnon_SaluteOut";
-[[_unit,player], 4, Epoch_personalToken] remoteExec ["EPOCH_server_handle_switchMove",2];
+[player, "AmovPercMstpSnonWnonDnon_SaluteOut", Epoch_personalToken, _unit] remoteExec ["EPOCH_server_handle_switchMove",2];
 
 _unit setmimic "dead";
 _unit setface (selectRandom ["RyanZombieFace1", "RyanZombieFace2", "RyanZombieFace3", "RyanZombieFace4", "RyanZombieFace5"]);

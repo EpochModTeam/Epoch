@@ -9,9 +9,9 @@ class CfgObjectInteractions {
     	bleedAmount = 0;
     	bloodpAmount = 0;
     	soundEffect[] = {};
-    	soundEffectGlobal = -1;
+    	soundEffectGlobal = 0;
     	animationEffect[] = {};
-    	animationEffectGlobal = -1;
+    	animationEffectGlobal = 0;
     	canSee = "false";
     	ppEffect = 0;
         aliveState = 0; // 0 = alive or dead, 1 = dead, 2 = alive.
@@ -227,7 +227,7 @@ class CfgObjectInteractions {
         soundEffect[] = {{"ryanzombies\sounds\attack1.ogg",400}, {"ryanzombies\sounds\attack2.ogg",400}, {"ryanzombies\sounds\attack3.ogg",400}, {"ryanzombies\sounds\attack4.ogg",400}, {"ryanzombies\sounds\attack5.ogg",400}};
         soundEffectGlobal = 1;
         animationEffect[] = {"AwopPercMstpSgthWnonDnon_throw"};
-        animationEffectGlobal = 3;
+        animationEffectGlobal = 1;
         canSee = "!(lineIntersects[eyePos _unit, aimPos _target, _unit, _target])";
         ppEffect = 0;
         interactMode = 3;

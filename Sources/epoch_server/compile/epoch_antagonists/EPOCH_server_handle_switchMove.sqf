@@ -11,40 +11,28 @@
 
     Github:
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server/compile/epoch_antagonists/EPOCH_server_handle_switchMove.sqf
+
+	Usage:
+	[_player,"moveName","token",_target] call EPOCH_server_handle_switchMove;
+	or
+	[_player,"moveName","token"] call EPOCH_server_handle_switchMove;
 */
 private["_range", "_move", "_nearBy"];
-params ["_target","_moveCase",["_token","",[""]]];
-_player = _target;
-if (_target isEqualType []) then {
-	_target params ["_target","_player"];
-};
+params [["_player",objNull,[objNull]],["_move","",[""]],["_token","",[""]],["_target",objNull]];
+
 if !([_player, _token] call EPOCH_server_getPToken) exitWith{};
-_range = 0;
-_move = "";
+if (_move isEqualTo "") exitWith {};
+if (isNull _target) then {_target = _player};
 
-// TODO configize
-switch (_moveCase) do {
-	case 1: {
-		_range = 1000;
-		_move = "AovrPercMrunSrasWrflDf";
+_switchMovehandlerConfig = 'CfgSwitchMovehandler' call EPOCH_returnConfig;
+_selectedMove = (_switchMovehandlerConfig >> _move);
+if (isClass _selectedMove) then {
+	// get nearby players based on range
+	_range = getNumber(_selectedMove >> "distance");
+	_nearBy = (_target nearEntities [["Epoch_Male_F","Epoch_Female_F","LandVehicle","Ship","Air","Tank"], _range]) select {isPlayer _x};
+	 // send move to everyone except caller.
+	_targets = _nearBy - [_player];
+	if !(_targets isEqualTo []) then {
+		[_target, _move] remoteExec ['switchMove',_targets];
 	};
-	case 2: {
-		_range = 1000;
-		_move = "epoch_unarmed_jump";
-	};
-	case 3: {
-		_range = 1000;
-		_move = "AwopPercMstpSgthWnonDnon_throw";
-	};
-	case 4: {
-		_range = 1000;
-		_move = "AmovPercMstpSnonWnonDnon_SaluteOut";
-	};
-};
-
-if (_range > 0 && _move != "") then {
-	_nearBy = _target nearEntities [["Epoch_Male_F","Epoch_Female_F"], _range];
-	{
-		[_target, _move] remoteExec ['switchMove',_x];
-	}forEach (_nearBy - [_target]); //_target == the caller, already plays the animation locally!
 };
