@@ -43,11 +43,13 @@ if !(_target isEqualTo player) then {
 			_bloodpAmount = getNumber (_cfgObjectInteraction >> "bloodpAmount");
 
 			_soundConfigArray = getArray (_cfgObjectInteraction >> "soundEffect");
+			_soundEffect = "";
 			if !(_soundConfigArray isEqualTo []) then {
 				_soundEffect = selectRandom _soundConfigArray;
 			};
 			_soundEffectGlobal = getNumber (_cfgObjectInteraction >> "soundEffectGlobal");
 			_animConfigArray = getArray (_cfgObjectInteraction >> "animationEffect");
+			_animationEffect = "";
 			if !(_animConfigArray isEqualTo []) then {
 				_animationEffect = selectRandom _animConfigArray;
 			};
