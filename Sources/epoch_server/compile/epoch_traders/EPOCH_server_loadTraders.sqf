@@ -189,6 +189,18 @@ for "_i" from 0 to _maxTraderLimit do {
 						if (_x isKindOf "Air" || _x isKindOf "Ship" || _x isKindOf "LandVehicle" || _x isKindOf "Tank") then {
 							if (EPOCH_storedVehicleCount <= _storedVehicleLimit) then {
 								EPOCH_storedVehicleCount = EPOCH_storedVehicleCount + _currentStock;
+								
+								// Count how many of this vehicle are in stock at any trader.
+								if !(_x in EPOCH_traderStoredVehicles) then {
+									EPOCH_traderStoredVehicles pushBack _x;
+									EPOCH_traderStoredVehiclesCnt pushBack _currentStock;
+								} else {
+									_indexStock = EPOCH_traderStoredVehicles find _x;
+									if (_indexStock != -1) then {
+										_existingStock = EPOCH_traderStoredVehiclesCnt select _indexStock;
+										EPOCH_traderStoredVehiclesCnt set [_indexStock, (_existingStock + _currentStock)];
+									};
+								};					
 							} else {
 								_toBeRemoved pushBack _forEachIndex;
 							};
