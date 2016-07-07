@@ -30,8 +30,8 @@ if (!_doVariable && (_currentLimit >= _spawnLimit)) exitWith {
 	diag_log format["DEBUG: too many %1 exiting unitspawn",_unitClass];
 };
 
-_nonJammer = ["CfgEpochClient", "nonJammerAI", ["B_Heli_Transport_01_F","PHANTOM","Epoch_Cloak_F"]] call EPOCH_fnc_returnConfigEntryV2;
-_nonTrader = ["CfgEpochClient", "nonTraderAI", ["B_Heli_Transport_01_F","PHANTOM","Epoch_Cloak_F","GreatWhite_F"]] call EPOCH_fnc_returnConfigEntryV2;
+_nonJammer = ["CfgEpochClient", "nonJammerAI", ["B_Heli_Transport_01_F","PHANTOM","EPOCH_Sapper_F","Epoch_SapperB_F","I_UAV_01_F","EPOCH_RyanZombie_1"]] call EPOCH_fnc_returnConfigEntryV2;
+_nonTrader = ["CfgEpochClient", "nonTraderAI", ["B_Heli_Transport_01_F","PHANTOM","EPOCH_Sapper_F","Epoch_SapperB_F","I_UAV_01_F","Epoch_Cloak_F","GreatWhite_F","EPOCH_RyanZombie_1"]] call EPOCH_fnc_returnConfigEntryV2;
 _nonTraderAIRange = ["CfgEpochClient", "nonTraderAIRange", 150] call EPOCH_fnc_returnConfigEntryV2;
 _loop = false;
 _unit = objNull;
@@ -39,15 +39,13 @@ _unit = objNull;
 _targetPos = getPosATL _trgt;
 _targetPos set [2,0];
 
-_jammers = [];
 _config = 'CfgEpochClient' call EPOCH_returnConfig;
 _jammerRange = getNumber(_config >> "buildingJammerRange");
 _jammers = nearestObjects[_targetPos, ["PlotPole_EPOCH"], _jammerRange];
-if(count _jammers > 0 && (_unitClass in _nonJammer))exitWith{};
+if(!(_jammers isEqualTo []) && (_unitClass in _nonJammer))exitWith{};
 
-_restricted = [];
 _restricted = nearestObjects [_targetPos, ["ProtectionZone_Invisible_F"], _nonTraderAIRange];
-if(count _restricted > 0 && (_unitClass in _nonTrader))exitWith{};
+if(!(_restricted isEqualTo []) && (_unitClass in _nonTrader))exitWith{};
 
 _disableAI = {
 	{_this disableAI _x}forEach["TARGET","AUTOTARGET","FSM"];

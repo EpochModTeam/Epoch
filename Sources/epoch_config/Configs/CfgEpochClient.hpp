@@ -25,6 +25,7 @@ class CfgEpochClient
 	EPOCH_news[] = {"Word is that Sappers have a new boss.","Dogs will often lure them monsters away.","My dog was blown up. I miss him.."};
 	deathMorphClass[] = {"Epoch_Sapper_F","Epoch_SapperB_F","I_UAV_01_F","Epoch_Cloak_F"};//Random selection of these classes when player morphs after death. Currently available: Epoch_Cloak_F, Epoch_SapperB_F, Epoch_Sapper_F, I_UAV_01_F
 	niteLight[] = {1.88,22};//Set ambient lighting at night: {Brightness of light,Height of light}. Default (Low Ambient): {1.88,22} | Twilight: {7.2,88} | Distant: {12.8,142}
+	ryanZombiesEnabled = true; // disabled by default true
 	antagonistSpawnIndex[] = {
 		{"Epoch_Cloak_F", 1}, // {"type", limit}
 		{"GreatWhite_F", 2},
@@ -82,8 +83,8 @@ class CfgEpochClient
 	GetOutMan       = "_this call EPOCH_antiWall;";
 
 	// suppress these units from spawning near Jammer or Traders
-	nonJammerAI[] = {"EPOCH_Sapper_F","Epoch_SapperB_F","I_UAV_01_F"};
-	nonTraderAI[] = {"EPOCH_Sapper_F","Epoch_SapperB_F","I_UAV_01_F","Epoch_Cloak_F"};
+	nonJammerAI[] = {"B_Heli_Transport_01_F","PHANTOM","EPOCH_Sapper_F","Epoch_SapperB_F","I_UAV_01_F","EPOCH_RyanZombie_1"};
+	nonTraderAI[] = {"B_Heli_Transport_01_F","PHANTOM","EPOCH_Sapper_F","Epoch_SapperB_F","I_UAV_01_F","Epoch_Cloak_F","GreatWhite_F","EPOCH_RyanZombie_1"};
 	nonTraderAIRange = 50;
 
 	// Fishing loots
