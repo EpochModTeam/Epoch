@@ -92,9 +92,9 @@ if !(_jammer isEqualTo []) then {
 			};
 			_objectCount = count nearestObjects[_nearestJammer, ["Constructions_static_F"], _buildingJammerRange];
 			
-			_membercount = 1;
+			_membercount = 0;
 			if (count Epoch_my_Group > 0) then {
-				_membercount = count (Epoch_my_Group select 3) + count (Epoch_my_Group select 4) + 1;
+				_membercount = count (Epoch_my_Group select 3) + count (Epoch_my_Group select 4);
 			};
 			if (_objType in ["WorkBench_EPOCH","StorageShelf_EPOCH","Tipi_EPOCH","LockBox_EPOCH","Safe_EPOCH","StorageShelf_SIM_EPOCH","LockBox_SIM_EPOCH","Safe_SIM_EPOCH","Workbench_SIM_EPOCH","Tipi_SIM_EPOCH"]) then {
 				_buildingCountLimit = _storagecountLeader + _storagecountPerMember*_membercount;
