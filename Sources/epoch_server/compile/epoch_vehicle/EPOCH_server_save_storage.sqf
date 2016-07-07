@@ -35,6 +35,18 @@ if (!isNull _vehicle) then {
 		if (isNil "_magsAmmoCargo") then {
 			_magsAmmoCargo = [];
 		};
+		
+		{
+			_cargo = _x select 1;
+			_magsAmmoCargox = magazinesAmmoCargo _cargo;
+			{
+				_magsAmmoCargo pushback _x;
+			} foreach _magsAmmoCargox;
+			_wepsItemsCargox = weaponsItemsCargo _cargo;
+			{
+				_wepsItemsCargo pushback _x;
+			} foreach _wepsItemsCargox;
+		} foreach everycontainer _vehicle;
 
 		// minimize magazine ammo cargo
 		_magsAmmoCargoMinimized = [[],[]];

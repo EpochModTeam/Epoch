@@ -108,11 +108,21 @@ _checkConfigs = {
 							format ["%2 %1 call Epoch_dynamicMenu;",_arr + [(configName _x)],getText(_x >> "action")]
 						};
 
+						_tooltip = "";
+						_tooltipcode = getText(_x >> "tooltipcode"),;
+						if (_tooltipcode != "") then {
+							_tooltip = [] call compile _tooltipcode;
+						}
+						else {
+							_tooltip = getText(_x >> "tooltip");
+						};
+
 						_buttonSettings pushBack [
 							getText(_x >> "icon"),
-							getText(_x >> "tooltip"),
+							_tooltip,
 							_action
 						];
+
 					};
 				};
 			} forEach _configs;
