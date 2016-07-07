@@ -294,7 +294,7 @@ class FSM
            "		_deSim = false;" \n
            "		if (crew _selectedVehicle isEqualTo []) then {" \n
            "			if ((getPos _selectedVehicle) select 2 < 1) then {" \n
-           "				if ({isPlayer _selectedVehicle} count (_selectedVehicle nearEntities[[""CAManBase"", ""LandVehicle"", ""Ship"", ""Air"", ""Tank""], 300]) == 0) then {" \n
+           "				if ({isPlayer _x} count (_selectedVehicle nearEntities[[""CAManBase"", ""LandVehicle"", ""Ship"", ""Air"", ""Tank""], 300]) == 0) then {" \n
            "					_selectedVehicle enableSimulationGlobal false;" \n
            "					_deSim = true;" \n
            "				};" \n
