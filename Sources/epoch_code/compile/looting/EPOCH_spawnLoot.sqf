@@ -10,7 +10,7 @@
     Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
 
     Github:
-    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_code/compile/looting/EPOCH_spawnLoot.sqf
+    https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_code/compile/looting/EPOCH_spawnLoot.sqf
 
     Example:
     [_building] call EPOCH_spawnLoot;
@@ -23,10 +23,12 @@
 	Returns:
 	BOOL
 */
+private ["_class","_randomColor","_positions","_posName","_color","_colors","_randomIndex","_selectedLoot","_position","_pos","_m2WPos","_dir","_relDir","_item","_return","_possibleCount","_possibleLoots","_masterConfig","_config","_cfgBaseBuilding","_lootBias","_lootType","_loots","_lootLimit"];
 params [["_building",objNull,[objNull]], ["_lootCheckBufferLimit",333], ["_lootObjectLimit",33]];
 
 _masterConfig = 'CfgBuildingLootPos' call EPOCH_returnConfig;
 _config = _masterConfig >> (typeOf _building);
+_cfgBaseBuilding = 'CfgBaseBuilding' call EPOCH_returnConfig;
 
 // exit with false if building is not lootable
 _return = false;
@@ -88,7 +90,7 @@ if ((random 100) < _lootBias) then {
                 };
 
                 if (_randomColor isEqualTo "true") then {
-                    _colors = getArray(configFile >> "CfgVehicles" >> _class >> "availableTextures");
+                    _colors = getArray(_cfgBaseBuilding >> _class >> "availableTextures");
                     if !(_colors isEqualTo[]) then {
                         _color = selectRandom _colors;
                         _item setObjectTextureGlobal[0, _color];

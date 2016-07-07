@@ -10,7 +10,7 @@
     Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
 
     Github:
-    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_code/compile/EPOCH_SpawnTraderMiltia.sqf
+    https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_code/compile/EPOCH_SpawnTraderMiltia.sqf
 */
 private ["_startPos","_rndHouse","_unit","_trgt","_nrBuilds","_grp"];
 _trgt = player;

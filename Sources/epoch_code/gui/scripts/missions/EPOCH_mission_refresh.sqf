@@ -4,20 +4,50 @@
     Contributors: Aaron Clark
 
 	Description:
-	TODO: Description
+	Loads trader menu with available missions from config. Applies conditions and tooltips.
 
     Licence:
     Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
 
     Github:
-    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_code/gui/scripts/missions/EPOCH_mission_refresh.sqf
+    https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_code/gui/scripts/missions/EPOCH_mission_refresh.sqf
 */
-private ["_index","_missionList","_disabledMissions"];
-_missionList = getArray(getMissionConfig "MissionList" >> "traderMissionNames");
-_disabledMissions = getArray(getMissionConfig "MissionList" >> "traderMissionDisabled");
+private ["_lbl","_missionClasses","_missionName","_menuCondition","_toolTip","_plyrVar","_uiNSTask"];
+params [["_currentTask",""]];
+_missionClasses = getArray(getMissionConfig "EpochMissionList" >> "traderMissionClasses");
+_plyrVar = missionNamespace getVariable ["EPOCH_playerMissionArray",[]] select {_x find "axeTask" > -1;};
+_uiNSTask = "";
+if(count _plyrVar > 0)then{
+_uiNSTask = _plyrVar select 0 select 1;
+};
+
 {
-	if !(_forEachIndex in _disabledMissions) then {
-		_index = lbAdd[1500, _x];
-		lbSetValue[1500, _index, _forEachIndex];
+
+	_missionName = getText(getMissionConfig "epochMissions" >> _x >> "missionName");
+	if!(_missionName == "")then{
+
+		_lbl = lbAdd[1500, _missionName];
+		lbSetValue[1500, _lbl, _forEachIndex];
+		_toolTip = getText(getMissionConfig "epochMissions" >> _x >> "missionToolTip");
+
+		_menuCondition = getText(getMissionConfig "epochMissions" >> _x >> "missionDeny");
+		if!(_menuCondition=="")then{
+			if(call compile _menuCondition)then{
+			lbSetColor [1500, _lbl, [0.73,0.24,0.11,1] ] ;
+			_toolTip = getText(getMissionConfig "epochMissions" >> _x >> "missionDenyToolTip");
+			};
+		};
+
+
+
+		if(_uiNSTask in getArray(getMissionConfig "epochMissions" >> _x >> "tasksList"))then{
+		lbSetColor [1500, _lbl, [0.98,0.98,0.33,1]] ;
+		_toolTip = "CONTINUE - " + _toolTip;
+		};
+
+		lbSetTooltip [1500, _lbl, _toolTip];
+
 	};
-}forEach _missionList;
+
+
+}forEach _missionClasses;

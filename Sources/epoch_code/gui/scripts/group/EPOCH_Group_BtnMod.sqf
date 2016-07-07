@@ -10,7 +10,7 @@
     Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
 
     Github:
-    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_code/gui/group/EPOCH_Group_BtnMod.sqf
+    https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_code/gui/group/EPOCH_Group_BtnMod.sqf
 */
 disableSerialization;
 private ["_isMember","_txt","_playerUID","_group","_selected"];
@@ -35,7 +35,7 @@ if (getPlayerUID player == Epoch_my_GroupUID) then {
 			};
 		};
 	} else {
-		["<t size='1.6' color='#99ffffff'>You need to select a player!</t>", 5] call Epoch_dynamicText;
+		["You need to select a player!", 5] call Epoch_message;
 	};
 	true
 } else {

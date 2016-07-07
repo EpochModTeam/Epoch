@@ -11,7 +11,7 @@ class DifficultyPresets
 		class Options
 		{
 			// Simulation
-			reducedDamage = false;    // Reduced damage
+			reducedDamage = 0;    // Reduced damage
 
 			// Situational awareness
 			groupIndicators = 2;      // Group indicators   (0 = never, 1 = limited distance, 2 = always)
@@ -24,23 +24,22 @@ class DifficultyPresets
 			// Personal awareness
 			weaponInfo = 1;           // Weapon info        (0 = never, 1 = fade out, 2 = always)
 			stanceIndicator = 1;      // Stance indicator   (0 = never, 1 = fade out, 2 = always)
-			staminaBar = false;       // Stamina bar
-			weaponCrosshair = true;  // Weapon crosshair
-			visionAid = false;        // Vision aid
-
+			staminaBar = 1;       // Stamina bar		(0 = never, 1 = always)
+			weaponCrosshair = 1;  // Weapon crosshair	(0 = never, 1 = always)
+			visionAid = 0;        // Vision aid		(0 = never, 1 = always)
 			// View
-			thirdPersonView = true;  // 3rd person view
-			cameraShake = true;      // Camera shake
+			thirdPersonView = 1;  // 3rd person view	(0 = enabled, 1 = disabled)
+			cameraShake = 1;      // Camera shake		(0 = enabled, 1 = disabled)
 
 			// Multiplayer
-			scoreTable = true;       // Score table
-			deathMessages = true;    // Killed by
-			vonID = true;            // VON ID
+			scoreTable = 1;       // Score table		
+			deathMessages = 1;    // Killed by
+			vonID = 1;            // VON ID
 
 			// Misc
-			mapContent = false;       // Extended map content
-			autoReport = false;       // Automatic reporting
-			multipleSaves = false;    // Multiple saves
+			mapContent = 0;       // Extended map content
+			autoReport = 0;       // Automatic reporting
+			multipleSaves = 0;    // Multiple saves
 		};
 		aiLevelPreset=2;
 	};

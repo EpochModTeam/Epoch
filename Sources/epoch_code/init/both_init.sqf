@@ -10,9 +10,20 @@
     Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
 
     Github:
-    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_code/init/both_init.sqf
+    https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_code/init/both_init.sqf
 */
 private ["_customVarsInit","_antagonistSpawnDefaults","_spawnLimits","_say3dsounds"];
+
+// detect if Ryan's Zombies and Deamons mod is present
+if (["CfgEpochClient", "ryanZombiesEnabled", false] call EPOCH_fnc_returnConfigEntryV2) then {
+    EPOCH_mod_Ryanzombies_Enabled = (parseNumber (getText (configFile >> "CfgPatches" >> "Ryanzombies" >> "version")) >= 4.2);
+    if (EPOCH_mod_Ryanzombies_Enabled) then {
+        diag_log "Epoch: Ryanzombies detected";
+    };
+} else {
+    EPOCH_mod_Ryanzombies_Enabled = false;
+};
+
 // Init Custom vars
 EPOCH_customVars = [];
 EPOCH_defaultVars = [];
@@ -34,7 +45,9 @@ EPOCH_customVarsDefaults = [
 	["SpawnArray",[],[]],
 	["Karma",0,[50000,-50000]],
 	["Alcohol",0,[100,0]],
-	["Radiation",0,[100,0]]
+	["Radiation",0,[100,0]],
+	["Nuisance",0,[100,0]],
+	["MissionArray",[],[]]
 ];
 _customVarsInit = ["CfgEpochClient", "customVarsDefaults", EPOCH_customVarsDefaults] call EPOCH_fnc_returnConfigEntryV2;
 {
@@ -54,12 +67,21 @@ _antagonistSpawnDefaults = [
 	["Epoch_SapperB_F",1],
 	["I_UAV_01_F",2],
 	["PHANTOM",1],
-	["B_Heli_Transport_01_F",1]
+	["B_Heli_Transport_01_F",1],
+	["EPOCH_RyanZombie_1",12]
 ];
 _spawnLimits = ["CfgEpochClient", "antagonistSpawnIndex", _antagonistSpawnDefaults] call EPOCH_fnc_returnConfigEntryV2;
 {
-	EPOCH_spawnIndex pushBack (_x select 0);
-	EPOCH_spawnLimits pushBack (_x select 1);
+	_x params ["_spawnName","_spawnLimit"];
+	if (_spawnName isEqualTo "EPOCH_RyanZombie_1") then {
+		if (EPOCH_mod_Ryanzombies_Enabled) then {
+			EPOCH_spawnIndex pushBack _spawnName;
+			EPOCH_spawnLimits pushBack _spawnLimit;
+		};
+	} else {
+		EPOCH_spawnIndex pushBack _spawnName;
+		EPOCH_spawnLimits pushBack _spawnLimit;
+	};
 } forEach _spawnLimits;
 
 //GroupSize (number) // Price (String)
@@ -67,11 +89,10 @@ EPOCH_group_upgrade_lvl = ["CfgEpochClient", "group_upgrade_lvl", [4,"100",6,"30
 
 // Init 3d sound handler
 EPOCH_sounds = [];
-EPOCH_soundsDistance = [];
-_say3dsounds = "isClass _x" configClasses (configFile >> "CfgSay3Dhandler");
+_say3dsoundsConfig = 'CfgSay3Dhandler' call EPOCH_returnConfig;
+_say3dsounds = "isClass _x" configClasses (_say3dsoundsConfig);
 {
 	EPOCH_sounds pushBack (configName _x);
-	EPOCH_soundsDistance pushBack getNumber(_x >> "distance");
 } forEach _say3dsounds;
 
 // disable remote sensors on server and client as all Epoch AI is local to the side controlling it.

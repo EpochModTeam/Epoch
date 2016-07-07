@@ -10,7 +10,7 @@
     Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
 
     Github:
-    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_server_settngs/configs/maps/Mountains_ACR.h
+    https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server_settngs/configs/maps/Mountains_ACR.h
 */
 class Mountains_ACR : Default
 {
@@ -29,7 +29,7 @@ class Mountains_ACR : Default
 		{"VegetationFir",1},
 		{"ViewPoint",1}
 	};
-	traderBlds[] = {};
+	traderBlds[] = {"House", "Building"};
 	containerPos[] = {};
 	telePos[] = {
 		// N [-0.286865,8.17383,-10.3098]

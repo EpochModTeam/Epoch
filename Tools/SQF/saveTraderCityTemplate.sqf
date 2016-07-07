@@ -40,7 +40,7 @@ EPOCH_dbg_saveBaseTemplate = {
     _staticTraders = [];
     _middleClass = (typeof MIDDLE);
     _classes pushBack _middleClass;
-    _range = 200;
+    _range = 400;
     _array = allMissionObjects "ALL";
     _newArray = [];
 
@@ -57,8 +57,8 @@ EPOCH_dbg_saveBaseTemplate = {
     {
         if (!(isPlayer _x)) then {
             _type = typeof _x;
-            _classes pushBack [_type,(MIDDLE worldToModel (getpos _x)),getDir _x];
-            _config_str = _config_str +  format['    { "%1", %2, %3, %4 }%5', _type,  ((MIDDLE worldToModel (getpos _x))) call EPOCH_dbg_replaceBrackets, getDir _x, !(simulationEnabled _x), if (_forEachIndex isEqualTo _countArray) then {_br} else {("," + _br)}];
+            _classes pushBack [_type,getposATL _x, ([vectorDir _x, vectorUp _x]) call EPOCH_dbg_replaceBrackets];
+            _config_str = _config_str +  format['    { "%1", %2, %3, %4 }%5', _type,  (getposATL _x) call EPOCH_dbg_replaceBrackets, ([vectorDir _x, vectorUp _x]) call EPOCH_dbg_replaceBrackets, !(simulationEnabled _x), if (_forEachIndex isEqualTo _countArray) then {_br} else {("," + _br)}];
 
         };
     } forEach _newArray;

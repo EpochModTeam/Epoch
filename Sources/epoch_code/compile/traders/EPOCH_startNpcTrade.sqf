@@ -10,7 +10,7 @@
     Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
 
     Github:
-    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_code/traders/EPOCH_startNpcTrade.sqf
+    https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_code/traders/EPOCH_startNpcTrade.sqf
 
     Example:
     cursorTarget call EPOCH_startNpcTrade;
@@ -125,13 +125,10 @@ if (alive _this) then {
 			// SOLD ITEMS ARRAY
 			if !((EPOCH_TRADE_COMPLETE select 0) isEqualTo[]) then {
 				if ((EPOCH_TRADE_COMPLETE select 0) isEqualTo(_this select 0)) then {
-					_errorMsg = 'Items Sold';
-					[format["<t size='1.6' color='#99ffffff'>%1</t>", _errorMsg], 5] call Epoch_dynamicText;
-
+					['Items Sold', 5] call Epoch_message;
 				}
 				else {
-					_errorMsg = 'Failed To Sell Items';
-					[format["<t size='1.6' color='#99ffffff'>%1</t>", _errorMsg], 5] call Epoch_dynamicText;
+					['Failed To Sell Items', 5] call Epoch_message;
 				};
 			};
 
@@ -179,11 +176,10 @@ if (alive _this) then {
 						};
 					} forEach(_this select 1);
 
-					[format["<t size='1.6' color='#99ffffff'>%1</t>", _errorMsg], 5] call Epoch_dynamicText;
+					[_errorMsg, 5] call Epoch_message;
 				}
 				else {
-					_errorMsg = 'Failed To Purchase Items';
-					[format["<t size='1.6' color='#99ffffff'>%1</t>", _errorMsg], 5] call Epoch_dynamicText;
+					['Failed To Purchase Items', 5] call Epoch_message;
 				};
 			};
 

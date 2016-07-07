@@ -10,7 +10,7 @@
     Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
 
     Github:
-    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_code/gui/scripts/EPOCH_InterruptConfigActions.sqf
+    https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_code/gui/scripts/EPOCH_InterruptConfigActions.sqf
 */
 disableSerialization;
 private ["_pos","_mainGrp","_display","_data","_value","_mainGrpPos","_group","_width"];

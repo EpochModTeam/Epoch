@@ -10,10 +10,10 @@
     Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
 
     Github:
-    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_server/compile/epoch_server/EPOCH_serverLootObject.sqf
+    https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server/compile/epoch_server/EPOCH_serverLootObject.sqf
 */
 private["_randomItemArray", "_quan", "_randomLootClass", "_randomItem", "_lootPaid", "_mags", "_lootItemWeightedArray", "_lootItemArray", "_weightedItemArray", "_exit", "_maxPayout", "_lootTable", "_lootTableArray", "_weightedArray"];
-params ["_object","_type"];
+params ["_object","_type",["_forceSpawn",false]];
 _debug = true;
 _pricingConfig = 'CfgPricing' call EPOCH_returnConfig;
 _lootTableClass = ["CfgLootTable","CfgLootTable_CUP"] select EPOCH_modCUPWeaponsEnabled;
@@ -44,7 +44,7 @@ if !(isNull _object) then{
 				while {_loop} do {
 					switch _type do {
 						case "item": {
-							if (isClass (_pricingConfig >> _randomItem)) then {
+							if (isClass (_pricingConfig >> _randomItem) || _forceSpawn) then {
 								_object additemCargoGlobal [_randomItem, _quan];
 							} else {
 								if (_debug) then {diag_log format["DEBUG: suppress spawn of %1 does not have price.",_randomItem]};
@@ -52,7 +52,7 @@ if !(isNull _object) then{
 							_loop = false;
 						};
 						case "magazine": {
-							if (isClass (_pricingConfig >> _randomItem)) then {
+							if (isClass (_pricingConfig >> _randomItem) || _forceSpawn) then {
 								if (_randomizeMagazineAmmoCount) then {
 									// spawn a single Magazine with a random ammo count
 									_magazineSize = getNumber (configFile >> "CfgMagazines" >> _randomItem >> "count");
@@ -67,7 +67,7 @@ if !(isNull _object) then{
 							_loop = false;
 						};
 						case "backpack": {
-							if (isClass (_pricingConfig >> _randomItem)) then {
+							if (isClass (_pricingConfig >> _randomItem) || _forceSpawn) then {
 								_object addBackpackCargoGlobal [_randomItem, _quan];
 							} else {
 								if (_debug) then {diag_log format["DEBUG: suppress spawn of %1 does not have price.",_randomItem]};
@@ -75,7 +75,7 @@ if !(isNull _object) then{
 							_loop = false;
 						};
 						case "weapon": {
-							if (isClass (_pricingConfig >> _randomItem)) then {
+							if (isClass (_pricingConfig >> _randomItem) || _forceSpawn) then {
 								_object addWeaponCargoGlobal [_randomItem, _quan];
 								// only spawn mags that have prices
 								_mags = getArray (configFile >> "CfgWeapons" >> _randomItem >> "magazines") select {isClass (_pricingConfig >> _x)};

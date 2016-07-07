@@ -10,7 +10,7 @@
     Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
 
     Github:
-    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_config/Configs/CfgPricing.hpp
+    https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_config/Configs/CfgPricing.hpp
 */
 
 class CfgPricing
@@ -785,7 +785,7 @@ class CfgPricing
 	class smallbackpack_green_epoch {price = 22;};
 	class smallbackpack_teal_epoch {price = 22;};
 	class smallbackpack_pink_epoch {price = 22;};
-
+	class I_UAV_01_backpack_F {price = 22;};
 	// Marksman DLC
 	class U_O_FullGhillie_lsh { price = 7; };
 	class U_O_FullGhillie_sard { price = 7; };
@@ -1033,6 +1033,7 @@ class CfgPricing
 	class O_Heli_Transport_04_box_EPOCH {price = 2500;};
 	class O_Heli_Transport_04_covered_EPOCH {price = 2500;};
 	class B_Heli_Transport_03_unarmed_EPOCH {price = 2500;};
+	class I_UAV_01_F {price = 50;};
 
 	class jetski_epoch {price = 500;};
 	class ebike_epoch {price = 1500;};
@@ -1091,6 +1092,21 @@ class CfgPricing
 	class CUP_B_UAZ_Unarmed_CDF {price = 1000;};
 	class CUP_B_Ural_Empty_CDF {price = 1000;};
 	class CUP_C_DC3_CIV {price = 2400;};
+
+	// APEX
+	class C_Boat_Transport_02_F {price = 1200;};
+	class C_Scooter_Transport_01_F {price = 1200;};
+	class C_Offroad_02_unarmed_F {price = 3500;};
+	class I_C_Offroad_02_unarmed_F {price = 3500;};
+	class B_T_LSV_01_unarmed_F {price = 4400;};
+	class O_LSV_02_unarmed_F {price = 4300;};
+	class O_T_LSV_02_unarmed_F {price = 4600;};
+	class C_Plane_Civil_01_F {price = 5000;};
+	class C_Plane_Civil_01_racing_F {price = 5000;};
+	class B_CTRG_LSV_01_light_F {price = 4400;};
+	class B_LSV_01_unarmed_F {price = 4400;};
+	class B_T_VTOL_01_infantry_F {price = 10000;};
+	class B_T_VTOL_01_vehicle_F {price = 10000;};
 
 	//Mission Items
 	class B_UavTerminal {price = 10;};

@@ -10,7 +10,7 @@
     Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
 
     Github:
-    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_code/init/client_init.sqf
+    https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_code/init/client_init.sqf
 */
 EPOCH_CraftingItem = "";
 EPOCH_ESP_TARGETS = [];
@@ -47,12 +47,15 @@ EPOCH_drawIcon3d = false;
 EPOCH_velTransform = false;
 EPOCH_stabilityTarget = objNull;
 EPOCH_currentTarget = objNull;
+EPOCH_currentTargetMode = 0;
 EPOCH_LootedBlds = [];
 EPOCH_lootObjects = [];
 EPOCH_soundLevel = 1;
 EPOCH_arr_interactedObjs = [];
 EPOCH_buildOption = 0;
 EPOCH_nearestLocations = [];
+EPOCH_lastFiredLocation = [];
+rmx_var_drag_MouseDown = false;
 
 ["EPOCH_onEachFrame", "onEachFrame", EPOCH_onEachFrame] call BIS_fnc_addStackedEventHandler;
 
@@ -63,6 +66,8 @@ EPOCH_AirDropChance = getNumber(getMissionConfig "CfgEpochAirDrop" >> "AirDropCh
 if(EPOCH_AirDropChance < 0)then{EPOCH_AirDropChance = 101;EPOCH_AirDropCheck = 99999;};
 
 EPOCH_droneRndChance = 100;
+EPOCH_sapperRndChance = 100;
+EPOCH_zombieRndChance = 50;
 
 // Custom Keys
 EPOCH_keysActionPressed = false; //prevents EH spam

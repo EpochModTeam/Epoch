@@ -10,7 +10,7 @@
     Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
 
     Github:
-    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_code/compile/missions/EPOCH_mission_cage_sapper.sqf
+    https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_code/compile/missions/EPOCH_mission_cage_sapper.sqf
 */
 private ["_sounds","_sound","_cagePos","_cage","_cage2","_startCage"];
 params ["_sapper","_trader"];
@@ -51,7 +51,7 @@ while {player distance _sapper < 100 && alive player} do {
 		_sounds = ["sapper_groan0","sapper_groan1","sapper_groan2"];
 		_sound = selectRandom _sounds;
 		_sapper say3D _sound;
-		[player, _sapper,(EPOCH_sounds find _sound), Epoch_personalToken] remoteExec ["EPOCH_server_handle_say3D",2];
+		[player, _sapper,_sound, Epoch_personalToken] remoteExec ["EPOCH_server_handle_say3D",2];
 	};
 	uiSleep 0.5;
 };

@@ -10,7 +10,7 @@
     Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
 
     Github:
-    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_config/Configs/CfgCrafting.hpp
+    https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_config/Configs/CfgCrafting.hpp
 
 	USAGE:
 	nearby[] =
@@ -661,6 +661,22 @@ class CfgCrafting
 		usedIn[] = { "ItemCooler3" };
 		nearby[] = {{"Fire", "", "fire", {1,{"ALL"}}, 3, 1, 1, 0}};
 		recipe[] = { "GoatCarcass_EPOCH" };
+		previewPosition[] = {0.796141,1,0.27};
+		previewScale = 0.4;
+		previewVector = 2;
+	};
+	class DogCarcass_EPOCH : Part
+	{
+		usedIn[] = { "CookedDog_EPOCH" };
+		previewPosition[] = {0.796141,1,0.27};
+		previewScale = 0.4;
+		previewVector = 2.1;
+	};
+	class CookedDog_EPOCH : Item
+	{
+		usedIn[] = {};
+		nearby[] = {{"Fire", "", "fire", {1,{"ALL"}}, 3, 1, 1, 0}};
+		recipe[] = { "DogCarcass_EPOCH" };
 		previewPosition[] = {0.796141,1,0.27};
 		previewScale = 0.4;
 		previewVector = 2;

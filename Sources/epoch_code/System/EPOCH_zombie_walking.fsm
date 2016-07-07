@@ -1,0 +1,294 @@
+/*%FSM<COMPILE "L:\Program Files (x86)\Steam\steamapps\common\Arma 3 Tools\FSMEditor\scriptedFSM.cfg, zombie walking">*/
+/*%FSM<HEAD>*/
+/*
+item0[] = {"zombie",0,250,-100.000000,-250.000000,0.000000,-200.000000,0.000000,"zombie"};
+item1[] = {"instinct",2,250,150.000000,-175.000000,250.000000,-125.000000,0.000000,"instinct"};
+item2[] = {"action",2,250,150.000000,-25.000000,250.000000,25.000000,0.000000,"action"};
+item3[] = {"dispose",4,218,150.000000,-250.000000,250.000000,-200.000000,90.000000,"dispose"};
+item4[] = {"_",8,218,150.000000,75.000000,250.000000,125.000000,0.000000,""};
+item5[] = {"reset___control",2,250,-100.000000,-100.000000,0.000000,-50.000000,0.000000,"reset / control"};
+item6[] = {"_",8,218,-100.000000,-175.000000,0.000000,-125.000000,0.000000,""};
+item7[] = {"complete",4,218,-100.000000,-25.000000,0.000000,25.000000,100.000000,"complete"};
+item8[] = {"end",1,4346,-100.000000,75.000000,0.000000,125.000000,0.000000,"end"};
+item9[] = {"dispose",4,218,25.000000,75.000000,125.000000,125.000000,120.000000,"dispose"};
+item10[] = {"instinct_done",4,218,150.000000,-100.000000,250.000000,-50.000000,100.000000,"instinct done"};
+item11[] = {"move",4,218,300.000000,-175.000000,400.000000,-125.000000,60.000000,"move"};
+item12[] = {"_",8,218,25.000000,-175.000000,125.000000,-125.000000,0.000000,""};
+item13[] = {"move",4,218,300.000000,-25.000000,400.000000,25.000000,10.000000,"move"};
+item14[] = {"do_move",2,250,300.000000,75.000000,400.000000,125.000000,0.000000,"do move"};
+link0[] = {0,6};
+link1[] = {1,3};
+link2[] = {1,10};
+link3[] = {1,11};
+link4[] = {2,7};
+link5[] = {2,9};
+link6[] = {2,13};
+link7[] = {3,1};
+link8[] = {4,2};
+link9[] = {5,12};
+link10[] = {6,5};
+link11[] = {7,5};
+link12[] = {9,8};
+link13[] = {10,2};
+link14[] = {11,1};
+link15[] = {12,1};
+link16[] = {13,14};
+link17[] = {14,4};
+globals[] = {25.000000,0,0,0,0,640,480,1,246,6316128,1,-246.574387,523.779114,344.046051,-352.794586,1006,910,1};
+window[] = {2,-1,-1,-1,-1,793,389,1414,268,3,1024};
+*//*%FSM</HEAD>*/
+class FSM
+{
+        fsmName = "zombie walking";
+        class States
+        {
+                /*%FSM<STATE "zombie">*/
+                class zombie
+                {
+                        name = "zombie";
+                        itemno = ;
+                        init = /*%FSM<STATEINIT""">*/"//Developer code" \n
+                         "//Author: axeman (Andrew Gregory | andrew@andgregor.co.uk)" \n
+                         "//Licence:" \n
+                         "//You may not copy, reproduce, edit, move or transfer in any way without the express permission of the author." \n
+                         "//All files contained in this MPMission folder also fall under the Epoch Mod Creative Commons Licence: https://creativecommons.org/licenses/by-nc-nd/4.0/" \n
+                         "//Any files triggered, called, execVM'ed, execFSM'ed etc, by this file fall under the same agreement." \n
+                         "" \n
+                         "//systemChat ""INIT WALKING"";" \n
+                         "_unit = _this select 0;" \n
+                         "" \n
+                         "_moveTo = [];" \n
+                         "_nextPos = [];" \n
+                         "" \n
+                         "_callDispose = false;" \n
+                         "_doDispose = false;" \n
+                         "_decisionMade = false;" \n
+                         "_t = diag_tickTime;" \n
+                         "_c = diag_tickTime;" \n
+                         "_sFreqCheck = 1.5;" \n
+                         "_lFreqCheck = 12;" \n
+                         "_doneCheck = false;" \n
+                         "" \n
+                         "//Debug" \n
+                         "_showDebug = {" \n
+                         "hint format [""SAPPER\nAnger: %2\nCanSee: %3\nTarget: %4\nHit: %5\nNear: %6FPS:%1"",diag_fps,_sAnger,_canSee,_trgt,_sHit,_sFiredNear];" \n
+                         "};" \n
+                         "" \n
+                         "" \n
+                         "" \n
+                         ""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "_">*/
+                                class _
+                                {
+                                        itemno = ;
+                                        priority = 0.000000;
+                                        to="reset___control";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"true"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "instinct">*/
+                class instinct
+                {
+                        name = "instinct";
+                        itemno = ;
+                        init = /*%FSM<STATEINIT""">*/"//systemchat format [""WI:%1"",diag_tickTime];"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "instinct_done">*/
+                                class instinct_done
+                                {
+                                        itemno = ;
+                                        priority = 100.000000;
+                                        to="action";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"_decisionMade;"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/"_decisionMade = false;"/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "dispose">*/
+                                class dispose
+                                {
+                                        itemno = ;
+                                        priority = 90.000000;
+                                        to="instinct";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!alive _unit || _callDispose;"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/"_doDispose = true;" \n
+                                         "_decisionMade = true;" \n
+                                         "" \n
+                                         "" \n
+                                         ""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "move">*/
+                                class move
+                                {
+                                        itemno = ;
+                                        priority = 60.000000;
+                                        to="instinct";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!(_moveTo isEqualTo _nextPos)"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/"_doMove = true;" \n
+                                         "_decisionMade = true;" \n
+                                         "_moveTo = [] + _nextPos;" \n
+                                         ""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "action">*/
+                class action
+                {
+                        name = "action";
+                        itemno = ;
+                        init = /*%FSM<STATEINIT""">*/"//systemchat format [""WA:%1"",diag_tickTime];"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "dispose">*/
+                                class dispose
+                                {
+                                        itemno = ;
+                                        priority = 120.000000;
+                                        to="end";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"_doDispose;"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "complete">*/
+                                class complete
+                                {
+                                        itemno = ;
+                                        priority = 100.000000;
+                                        to="reset___control";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"_actionDone && ((call compile _criteria) || (diag_tickTime > (_t + _sWait)));"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/"" \n
+                                         "if(!isNil ""_criteriaMetAction"")then{" \n
+                                         "call _criteriaMetAction;" \n
+                                         "};" \n
+                                         "" \n
+                                         "" \n
+                                         "" \n
+                                         "" \n
+                                         "" \n
+                                         "" \n
+                                         "" \n
+                                         "" \n
+                                         "" \n
+                                         ""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "move">*/
+                                class move
+                                {
+                                        itemno = ;
+                                        priority = 10.000000;
+                                        to="do_move";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"_doMove;" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/"_doMove = false;" \n
+                                         ""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "reset___control">*/
+                class reset___control
+                {
+                        name = "reset___control";
+                        itemno = ;
+                        init = /*%FSM<STATEINIT""">*/"//Brain Vars" \n
+                         "_criteria =""(false)"";" \n
+                         "_criteriaMetAction = nil;" \n
+                         "_actionDone = false;" \n
+                         "_sWait = 0;" \n
+                         "" \n
+                         "_newTrgt = false;" \n
+                         "" \n
+                         "" \n
+                         "" \n
+                         ""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "_">*/
+                                class _
+                                {
+                                        itemno = ;
+                                        priority = 0.000000;
+                                        to="instinct";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"true"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "end">*/
+                class end
+                {
+                        name = "end";
+                        itemno = ;
+                        init = /*%FSM<STATEINIT""">*/"//systemchat format[""Walk Disposing for %1"",_unit];"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "do_move">*/
+                class do_move
+                {
+                        name = "do_move";
+                        itemno = ;
+                        init = /*%FSM<STATEINIT""">*/"_unit moveTo _moveTo;" \n
+                         "" \n
+                         "" \n
+                         "_actionDone = true;" \n
+                         "_criteria = ""moveToCompleted _unit || _newTrgt"";" \n
+                         "_sWait = (_unit distance _moveTo) * 2;" \n
+                         "" \n
+                         "if(axeDebug)then{" \n
+                         "[_unit, _moveTo, ""Sign_Arrow_F""] call EPOCH_fnc_debugArrow;" \n
+                         "};" \n
+                         ""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "_">*/
+                                class _
+                                {
+                                        itemno = ;
+                                        priority = 0.000000;
+                                        to="action";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"true"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+        };
+        initState="zombie";
+        finalStates[] =
+        {
+                "end",
+        };
+};
+/*%FSM</COMPILE>*/

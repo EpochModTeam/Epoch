@@ -10,7 +10,7 @@
     Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
 
     Github:
-    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_server_settngs/configs/CfgMainTable.h
+    https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server_settngs/configs/CfgMainTable.h
 */
 class CfgMainTable
 {
@@ -21,10 +21,11 @@ class CfgMainTable
 		LootMax = 1;
 		tables[] = { "Food" };
 		antagonists[] = {
-				{ "UAV", 30 },
-				{ "Cloak", 25 }, // Night = Epoch_Cloak_F, Day = Epoch_Sapper_F
-				{ "Sapper", 25 },
-				{ "SapperB", 15 },
+				{ "Zombie", 40 },
+				{ "UAV", 15 },
+				{ "Cloak", 10 }, // Night = Epoch_Cloak_F, Day = Epoch_Sapper_F
+				{ "Sapper", 20 },
+				{ "SapperB", 10 },
 				{ "PHANTOM", 5 }
 		};
 	};
@@ -61,10 +62,11 @@ class CfgMainTable
 				{ "GenericLarge", 18 }
 		};
 		antagonists[] = {
-				{ "UAV", 30 }, // I_UAV_01_F
-				{ "Cloak", 30 }, // Night = Epoch_Cloak_F, Day = Epoch_Sapper_F
-				{ "Sapper", 25 }, // Epoch_Sapper_F
-				{ "SapperB", 15 }  // Epoch_SapperB_F
+				{ "Zombie", 45 },
+				{ "UAV", 15 },
+				{ "Cloak", 10 }, // Night = Epoch_Cloak_F, Day = Epoch_Sapper_F
+				{ "Sapper", 20 },
+				{ "SapperB", 10 }
 		};
 	};
 	class TrashSmall : Default
@@ -569,6 +571,18 @@ class CfgMainTable
 		LootMax = 4;
 		tables[] = { "Goat_random_EPOCH" };
 	};
+	class Fin_random_EPOCH
+	{
+		lootMin = 2;
+		LootMax = 4;
+		tables[] = { "Fin_random_EPOCH" };
+	};
+	class Alsatian_Random_EPOCH
+	{
+		lootMin = 2;
+		LootMax = 4;
+		tables[] = { "Alsatian_Random_EPOCH" };
+	};
 	class Cock_random_EPOCH
 	{
 		lootMin = 1;
@@ -586,6 +600,18 @@ class CfgMainTable
 		lootMin = 1;
 		LootMax = 1;
 		tables[] = { "Rabbit_EPOCH" };
+	};
+	class Epoch_RyanZombie_1
+	{
+		lootMin = 5;
+		LootMax = 10;
+		tables[] = { "EPOCH_RyanZombie_1" };
+	};
+	class GreatWhite_F
+	{
+		lootMin = 5;
+		LootMax = 10;
+		tables[] = { "GreatWhite_F" };
 	};
 	class Epoch_Sapper_F
 	{

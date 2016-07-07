@@ -1,17 +1,33 @@
 _currentTarget = objNull;
+_currentTargetMode = 0;
 _cursorTarget = ([10] call EPOCH_fnc_cursorTarget);
 if (!isNull _cursorTarget && {!(EPOCH_target isEqualTo _cursorTarget)}) then {
-	if (_cursorTarget isKindOf "ThingX" || _cursorTarget isKindOf "Constructions_static_F" || _cursorTarget isKindOf "Constructions_foundation_F" || _cursorTarget isKindOf "WeaponHolder" || _cursorTarget isKindOf "AllVehicles" || _cursorTarget isKindOf "PlotPole_EPOCH") then{
-		if (_cursorTarget isKindOf "Animal_Base_F") then {
-			if !(alive _cursorTarget) then {
+	_interactType = typeOf _cursorTarget;
+	_interaction = (_cfgObjectInteractions >> _interactType);
+	if (isClass(_interaction)) then {
+		_currentTargetMode = getNumber (_interaction >> "interactMode");
+		_allowTarget = switch (getNumber (_interaction >> "aliveState")) do {
+		    case 1: {!(alive _cursorTarget)};
+			case 2: {(alive _cursorTarget)};
+		    default {true};
+		};
+		if (_allowTarget) then {
+			_currentTarget = _cursorTarget;
+		};
+	} else {
+		// AllVehicles = vehicles=0, bases=1
+		if (_cursorTarget isKindOf "AllVehicles") then {
+			_currentTarget = _cursorTarget;
+		} else {
+			if (_cursorTarget isKindOf "Constructions_modular_F" || _cursorTarget isKindOf "Constructions_static_F") then {
+				_currentTargetMode = 1;
 				_currentTarget = _cursorTarget;
 			};
-		} else {
-			_currentTarget = _cursorTarget;
 		};
 	};
 };
 EPOCH_currentTarget = _currentTarget;
+EPOCH_currentTargetMode = _currentTargetMode;
 
 _increaseStamina = false;
 _vehicle = vehicle player;
@@ -28,10 +44,11 @@ if (_vehicle == player) then {
 	if (EPOCH_buildMode > 0) then {
 		EPOCH_buildMode = 0;
 		EPOCH_snapDirection = 0;
-		[format["<t size='1.6' color='#99ffffff'>BUILD MODE:%1</t>","DISABLED"], 5] call Epoch_dynamicText;
+		["BUILD MODE: DISABLED", 5] call Epoch_message;
 		EPOCH_Target = objNull;
 	};
 	_increaseStamina = true;
+
 	// TODO: move back to vehicle configs
 	switch (typeOf _vehicle) do {
 		case "jetski_epoch": {

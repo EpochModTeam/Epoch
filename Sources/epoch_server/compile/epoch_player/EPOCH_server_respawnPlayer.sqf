@@ -10,7 +10,7 @@
     Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
 
     Github:
-    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_server/compile/epoch_player/EPOCH_server_respawnPlayer.sqf
+    https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server/compile/epoch_player/EPOCH_server_respawnPlayer.sqf
 */
 private["_defaultUniform", "_class", "_vest", "_dir", "_location", "_playerObj"];
 params ["_playerObj",["_token","",[""]],"_isMale"];

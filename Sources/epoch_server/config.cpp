@@ -20,7 +20,7 @@ class cfgFunctions
 		tag = "EPOCH";
 		class Epoch_Server
 		{
-			file = "\x\addons\a3_epoch_server\init";
+			file = "\epoch_server\init";
 			class init
 			{
 				preInit = 1;
@@ -38,7 +38,7 @@ class CfgServerFunctions
 	class A3E
 	{
 		tag = "EPOCH";
-		file = "\x\addons\a3_epoch_server\compile";
+		file = "\epoch_server\compile";
 		class epoch_group {
 			class server_upgradeGroup {};
 			class server_updatePlayerGroup {};
@@ -47,6 +47,7 @@ class CfgServerFunctions
 			class server_invitePlayer {};
 		};
 		class epoch_bases {
+			class swapBuilding {};
 			class saveBuilding {};
 			class server_loadBuildings {};
 			class server_saveBuilding {};
@@ -71,19 +72,21 @@ class CfgServerFunctions
 			class server_savePlayer {};
 			class server_loadPlayer {};
 			class server_checkPlayer {};
-			// class server_respawnPlayer {};
 			class server_onPlayerDisconnect {};
 			class server_deadPlayer {};
 			class server_revivePlayer {};
 			class server_storeCrypto {};
 			class server_equippedItem {};
 			class server_unpackBackpack {};
+			class server_deadPlayerDetonate{};
+			class server_playerSetVariable{};
 		};
 		class epoch_traders {
 			class server_loadTraders {};
 			class server_spawnTraders {};
 		};
 		class epoch_trading {
+			class server_effectCrypto {};
 			class server_makeTrade {};
 			class server_tradeRequest {};
 			class server_makeNPCTrade {};
@@ -120,24 +123,28 @@ class CfgServerFunctions
 			class server_teleportPlayer {};
 			class returnConfig {};
 			class serverCommand {};
+			class server_makeMarker {};
+			class server_removeMarker {};
 		};
 		class epoch_missions {
 			class Server_createObject {};
 			class server_airDropCrate {};
 			class server_fillContainer {};
 			class Server_createAirDrop {};
+			class Server_missionComms{};
 		};
 		class epoch_antagonists {
 			class server_triggerEvent {};
 			class server_handle_say3D {};
 			class server_handle_switchMove {};
 			class server_handle_sapperObjs {};
+			class server_triggerAntagonist{};
 		};
 	};
 };
 class CfgServerVersion
 {
-	client = "0.3.8.0";
-	config = "0.3.8.0";
+	client = "0.3.9.0";
+	config = "0.3.9.0";
 	hive = "0.5.1.7";
 };

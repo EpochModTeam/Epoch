@@ -32,6 +32,10 @@ class CfgClientFunctions
 			class unitSpawn {};
 			class antiWall {};
 			class onEachFrame {};
+			class callSapperMigration {};
+			class zombieSpawn {};
+			class makeMarker {};
+			class removeMarker {};
 		};
 
 		class building
@@ -112,6 +116,14 @@ class CfgClientFunctions
 			class fnc_findSapperStalkLocation {};
 			class fnc_dirToFuzzy {};
 			class fnc_cursorTarget {};
+			class fnc_triggerAntagonist {};
+   			class fnc_playerDeathDetonate {};
+   			class fnc_playerDeathMorph {};
+   			class fnc_playerSetVariable {};
+   			class fnc_playerAttachToAntagonist {};
+			class fnc_dynamicFSM {};
+			class fnc_vectorDivide {};
+			class giveAttributes {};
 		};
 		class environment
 		{
@@ -143,6 +155,12 @@ class CfgClientFunctions
 			class initUI {};
 			class refeshUI {};
 		};
+		class messaging {
+			file = "epoch_code\gui\scripts\messaging";
+			class message {};
+			class message_old1 {};
+			class message_old2 {};
+		};
 		class looting {
 			class spawnLoot {};
 		};
@@ -158,8 +176,9 @@ class CfgClientFunctions
 			class getIDC {};
 			class guiObjHP {};
 			class secureStorageHandler {};
-			class dynamicText {};
 			class genderSelection {};
+			class getColorScheme {};
+			class dragControl {};
 		};
 
 		class config {
@@ -173,7 +192,15 @@ class CfgClientFunctions
 			class dynamicMenuPopulate {};
 			class dynamicMenuCleanup {};
 		};
-
+		
+		class dynamicHUD {
+			file = "epoch_code\gui\scripts\dynamicHUD";
+			class dynamicHUD_adjust {};
+			class dynamicHUD_loadSave {};
+			class dynamicHUD_start {};
+			class getHUDCtrl {};
+		};
+		
 		class gui_craft {
 			file = "epoch_code\gui\scripts\craftingv2";
 			class crafting_animate {};

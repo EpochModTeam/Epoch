@@ -10,7 +10,7 @@
     Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
 
     Github:
-    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_code/compile/building/EPOCH_maintainIT.sqf
+    https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_code/compile/building/EPOCH_maintainIT.sqf
 
     Example:
     cursorTarget call EPOCH_maintainIT;
@@ -22,7 +22,7 @@
 	NOTHING
 */
 private ["_buildingJammerRange","_maintainCount","_rnd","_config"];
-if !(isNil "EPOCH_maintainLockout") exitWith {["<t size=""1.6"" color=""#99ffffff"">Already Maintaining a base.</t>", 5] call Epoch_dynamicText;};
+if !(isNil "EPOCH_maintainLockout") exitWith {["Already Maintaining a base.", 5] call Epoch_message;};
 if (EPOCH_playerCrypto > 0) then {
   _config = "CfgEpochClient" call EPOCH_returnConfig;
   _buildingJammerRange = getNumber(_config >> "buildingJammerRange");
@@ -51,10 +51,10 @@ if (EPOCH_playerCrypto > 0) then {
       EPOCH_maintainLockout = nil;
     };
 
-    [format["<t size=""1.6""  color=""#99ffffff"">Cost %1 Krypto to maintain base.</t>", _maintainCount], 5] call Epoch_dynamicText;
+    [format["Cost %1 Krypto to maintain base.", _maintainCount], 5] call Epoch_message;
   } else {
-    ["<t size=""1.6""  color=""#99ffffff"">Nothing needs Maintaining</t>", 5] call Epoch_dynamicText;
+    ["Nothing needs Maintaining", 5] call Epoch_message;
   };
 } else {
-  ["<t size=""1.6""  color=""#99ffffff"">You need Krypto to maintain a base.</t>", 5] call Epoch_dynamicText;
+  ["You need Krypto to maintain a base.", 5] call Epoch_message;
 };

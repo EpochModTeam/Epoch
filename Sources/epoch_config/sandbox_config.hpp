@@ -1,5 +1,5 @@
 /*
-	Epoch Mod Sandbox Survival Gamemode
+	Epoch Mod Survival Gamemode
 
 	Author: Epoch Mod Team - EpochMod.com
 
@@ -7,13 +7,13 @@
     Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
 
     Github:
-    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_config/config.hpp
+    https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_config/config.hpp
 */
 
 author = "Epoch Mod Team";
 class Header
 {
- gameType = Sandbox;
+ gameType = Survival;
  minPlayers = 1;
  maxPlayers = 100;
 };
@@ -31,7 +31,7 @@ OnLoadMissionTime = False;
 onLoadName = "Epoch Mod";
 disabledAI = true;
 scriptedPlayer = 1;
-disableChannels[]={0,1,2,6};
+disableChannels[]={{0,true,true},{1,false,true},{2,true,true},{6,true,true}}; // allow text only on side chat
 enableItemsDropping = 0;
 briefing = 0;
 debriefing = 0;
@@ -53,9 +53,14 @@ wreckRemovalMaxTime = 360;
 disableRandomization[] = {"All"};
 
 #include "Configs\CfgTraderMissions.hpp"
+#include "Configs\CfgMissions.hpp"
+#include "Configs\CfgMissionsTasks.hpp"
 #include "Configs\cfgCrafting.hpp"
 #include "Configs\cfgPricing.hpp"
+#include "Configs\CfgDynamicHUD.hpp"
+
 #include "Configs\CfgEpochClient.hpp"
+
 #include "Configs\CfgMasterLoop.hpp"
 #include "Configs\CfgBaseBuilding.hpp"
 #include "Configs\CfgSnapChecks.hpp"
@@ -63,6 +68,13 @@ disableRandomization[] = {"All"};
 #include "Configs\CfgActionMenu\CfgActionMenu_core.hpp"
 #include "Configs\CfgEpochConfiguration.hpp"
 #include "Configs\CfgClientFunctions.hpp"
+#include "Configs\CfgObjectInteractions.hpp"
+#include "Configs\CfgItemInteractions.hpp"
+#include "Configs\CfgSay3Dhandler.hpp"
+#include "Configs\CfgSwitchMovehandler.hpp"
+
+// A3 specific configs
+#include "Configs\CfgSounds.hpp"
 #include "Configs\CfgFunctions.hpp"
 #include "Configs\CfgRemoteExec.hpp"
 

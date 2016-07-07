@@ -10,7 +10,7 @@
     Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
 
     Github:
-    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_code/compile/functions/EPOCH_fnc_Weather.sqf
+    https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_code/compile/functions/EPOCH_fnc_Weather.sqf
 
     Example:
     call EPOCH_fnc_Weather;
@@ -37,7 +37,7 @@ _wetsuit = (getText(configfile >> "cfgweapons" >> uniform player >> "itemInfo" >
 
 if (vehicle player == player) then {
 	_playerPosATL = getPosATL player;
-	if (surfaceIsWater _playerPosATL) then {
+	if (EPOCH_playerIsSwimming) then {
 		// do nothing if player is wearing a wetsuit
 		if (!_wetsuit) then {
 			if (_waterTemp <= 50) then {

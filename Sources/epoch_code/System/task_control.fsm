@@ -1,0 +1,1654 @@
+/*%FSM<COMPILE "C:\Program Files (x86)\PoseidonTools\Data\Packages\Bin\fsmEditor\scriptedFSM.cfg, task control client">*/
+/*%FSM<HEAD>*/
+/*
+item0[] = {"task_control",0,250,-225.000000,-625.000000,-125.000000,-575.000000,0.000000,"task control"};
+item1[] = {"delay",4,218,-500.000000,-250.000000,-400.000000,-200.000000,0.000000,"delay"};
+item2[] = {"setup",2,250,-650.000000,-625.000000,-550.000000,-575.000000,0.000000,"setup"};
+item3[] = {"_",8,218,-500.000000,-625.000000,-400.000000,-575.000000,0.000000,""};
+item4[] = {"items_and_vars",2,250,-500.000000,-175.000000,-400.000000,-125.000000,0.000000,"items" \n "and" \n "vars"};
+item5[] = {"task_completed",4,218,300.000000,75.000000,400.000000,125.000000,15.000000,"task" \n "completed"};
+item6[] = {"end",1,250,-775.000000,350.000000,-675.000000,400.000000,0.000000,"end"};
+item7[] = {"no_item_spawn",4,218,-350.000000,-175.000000,-250.000000,-125.000000,0.000000,"no item spawn"};
+item8[] = {"do_monitor",2,250,-75.000000,-25.000000,25.000000,25.000000,0.000000," do monitor"};
+item9[] = {"next",2,250,300.000000,-25.000000,400.000000,25.000000,0.000000,"next"};
+item10[] = {"loop",4,218,75.000000,-25.000000,175.000000,25.000000,5.000000,"loop"};
+item11[] = {"_",8,218,-75.000000,-100.000000,25.000000,-50.000000,0.000000,""};
+item12[] = {"_",8,218,75.000000,-325.000000,175.000000,-275.000000,0.000000,""};
+item13[] = {"chat_conditions",2,250,-75.000000,-175.000000,25.000000,-125.000000,0.000000,"chat conditions"};
+item14[] = {"event_conditions",2,250,300.000000,-325.000000,400.000000,-275.000000,0.000000,"event" \n "conditions"};
+item15[] = {"_",8,218,300.000000,-250.000000,400.000000,-200.000000,0.000000,""};
+item16[] = {"comms",2,250,-500.000000,-350.000000,-400.000000,-300.000000,0.000000,"comms"};
+item17[] = {"_",8,218,300.000000,-100.000000,400.000000,-50.000000,0.000000,""};
+item18[] = {"task_conditions",2,250,300.000000,-175.000000,400.000000,-125.000000,0.000000,"task" \n "conditions"};
+item19[] = {"chat_1",4,218,75.000000,-100.000000,175.000000,-50.000000,5.000000,"chat 1"};
+item20[] = {"chat_2",4,218,75.000000,-175.000000,175.000000,-125.000000,10.000000,"chat 2"};
+item21[] = {"chat_3",4,218,75.000000,-250.000000,175.000000,-200.000000,15.000000,"chat 3"};
+item22[] = {"item_spawn",4,218,-650.000000,-175.000000,-550.000000,-125.000000,5.000000,"item spawn"};
+item23[] = {"actions",2,250,-350.000000,-25.000000,-250.000000,25.000000,0.000000,"actions"};
+item24[] = {"point",4,218,-150.000000,350.000000,-50.000000,400.000000,0.000000,"point"};
+item25[] = {"spawn_item",2,250,-650.000000,-25.000000,-550.000000,25.000000,0.000000,"spawn item"};
+item26[] = {"ready",4,218,-500.000000,-25.000000,-400.000000,25.000000,0.000000,"ready"};
+item27[] = {"in_house",4,218,-775.000000,50.000000,-675.000000,100.000000,10.000000,"in house"};
+item28[] = {"hidden_nearby",4,218,-775.000000,-175.000000,-675.000000,-125.000000,5.000000,"hidden nearby"};
+item29[] = {"near_player",4,218,-775.000000,-25.000000,-675.000000,25.000000,15.000000,"near player"};
+item30[] = {"event_1",4,218,425.000000,-400.000000,525.000000,-350.000000,10.000000,"event 1"};
+item31[] = {"event_2",4,218,300.000000,-400.000000,400.000000,-350.000000,15.000000,"event 2"};
+item32[] = {"event_3",4,218,175.000000,-400.000000,275.000000,-350.000000,20.000000,"event 3"};
+item33[] = {"_",8,218,-650.000000,-400.000000,-550.000000,-350.000000,0.000000,""};
+item34[] = {"completed",2,250,175.000000,75.000000,275.000000,125.000000,0.000000,"completed"};
+item35[] = {"diag_1",4,218,300.000000,150.000000,400.000000,200.000000,15.000000,"diag 1"};
+item36[] = {"diag_2",4,218,175.000122,210.091980,275.000122,260.091980,10.000000,"diag 2"};
+item37[] = {"pause",4,218,300.000000,275.000000,400.000000,325.000000,0.000000,"pause"};
+item38[] = {"reward",2,250,25.000000,275.000000,125.000000,325.000000,0.000000,"reward"};
+item39[] = {"comms_1",2,4346,-150.000000,425.000000,-50.000000,475.000000,0.000000,"comms"};
+item40[] = {"mission_complete",4,218,-650.000000,350.000000,-550.000000,400.000000,10.000000,"mission complete"};
+item41[] = {"_",8,218,25.000000,75.000000,125.000000,125.000000,0.000000,""};
+item42[] = {"_",8,218,-350.000000,100.000000,-250.000000,150.000000,0.000000,""};
+item43[] = {"markers",2,250,-225.000000,175.000000,-125.000000,225.000000,0.000000,"markers"};
+item44[] = {"continue",4,218,-75.000000,175.000000,25.000000,225.000000,100.000000,"continue"};
+item45[] = {"radius",4,218,-300.000000,350.000000,-200.000000,400.000000,0.000000,"radius"};
+item46[] = {"marker_pos",4,218,-350.000000,225.000000,-250.000000,275.000000,0.000000,"marker pos"};
+item47[] = {"do_markers",2,250,-225.000000,275.000000,-125.000000,325.000000,0.000000,"do markers"};
+item48[] = {"find_spot",2,250,-900.000000,-175.000000,-800.000000,-125.000000,0.000000,"find spot"};
+item49[] = {"task_failed",4,218,450.000000,-25.000000,550.000000,25.000000,10.000000,"task" \n "failed"};
+item50[] = {"failed",2,250,450.000000,75.000000,550.000000,125.000000,0.000000,"failed"};
+item51[] = {"diag",4,218,575.000000,-25.000000,675.000000,25.000000,5.000000,"diag"};
+item52[] = {"fsm",4,218,575.000000,75.000000,675.000000,125.000000,10.000000,"fsm"};
+item53[] = {"sqf",4,218,575.000000,150.000000,675.000000,200.000000,15.000000,"sqf"};
+item54[] = {"call",4,218,575.000000,225.000000,675.000000,275.000000,20.000000,"call"};
+item55[] = {"clean_up",2,250,300.000000,425.000000,400.000000,475.000000,0.000000,"clean up"};
+item56[] = {"_",8,218,25.000000,425.000000,125.000000,475.000000,0.000000,""};
+item57[] = {"markers",4,218,525.000000,350.000000,625.000000,400.000000,5.000000,"markers"};
+item58[] = {"fsm",4,218,-225.000000,-100.000000,-125.000000,-50.000000,15.000000,"fsm"};
+item59[] = {"sqf",4,218,-225.000000,-25.000000,-125.000000,25.000000,10.000000,"sqf"};
+item60[] = {"call",4,218,-225.000000,50.000000,-125.000000,100.000000,20.000000,"call"};
+item61[] = {"not_hidden",4,218,-900.000000,-100.000000,-800.000000,-50.000000,10.000000,"not hidden"};
+item62[] = {"is_hidden",4,218,-775.000000,-100.000000,-675.000000,-50.000000,5.000000,"is hidden"};
+item63[] = {"gui",2,250,-775.000000,-250.000000,-675.000000,-200.000000,0.000000,"gui"};
+item64[] = {"no_dialogoue",4,218,-650.000000,-250.000000,-550.000000,-200.000000,10.000000,"no dialogoue"};
+item65[] = {"dialogue",4,218,-900.000000,-250.000000,-800.000000,-200.000000,5.000000,"dialogue"};
+item66[] = {"remind_dialogue",4,218,200.000000,350.000000,300.000000,400.000000,10.000000,"remind" \n "dialogue"};
+item67[] = {"_",8,218,-300.000000,425.000000,-200.000000,475.000000,0.000000,""};
+item68[] = {"next_task",2,250,-500.000000,425.000000,-400.000000,475.000000,0.000000,"next task"};
+item69[] = {"clean_up",4,218,400.000000,350.000000,500.000000,400.000000,15.000000,"clean up"};
+item70[] = {"comms_2",2,250,-75.000000,-325.000000,25.000000,-275.000000,0.000000,"comms"};
+item71[] = {"server",4,218,-75.000000,-250.000000,25.000000,-200.000000,10.000000,"server"};
+item72[] = {"simple_task",4,218,-225.000000,-450.000000,-125.000000,-400.000000,10.000000,"simple" \n "task"};
+item73[] = {"skip",4,218,-500.000000,225.000000,-400.000000,275.000000,5.000000,"skip"};
+item74[] = {"run_test",4,218,-500.000000,-525.000000,-400.000000,-475.000000,20.000000,"run test"};
+item75[] = {"override_for_task",2,250,-500.000000,-450.000000,-400.000000,-400.000000,0.000000,"override for" \n "task Editor"};
+item76[] = {"bin_it",4,218,425.000000,-325.000000,525.000000,-275.000000,5.000000,"bin it"};
+item77[] = {"",7,210,708.500000,-141.500000,716.500000,-133.500000,0.000000,""};
+item78[] = {"",7,210,708.500000,446.000000,716.500000,454.000000,0.000000,""};
+item79[] = {"next_task",4,218,-650.000000,425.000000,-550.000000,475.000000,5.000000,"next task"};
+item80[] = {"",7,210,-929.000000,446.000000,-921.000000,454.000000,0.000000,""};
+item81[] = {"",7,210,-929.000000,-604.000000,-921.000000,-596.000000,0.000000,""};
+item82[] = {"call",4,218,103.990662,149.799805,193.990662,199.799805,5.000000,"call"};
+link0[] = {0,3};
+link1[] = {1,4};
+link2[] = {2,33};
+link3[] = {2,72};
+link4[] = {2,74};
+link5[] = {3,2};
+link6[] = {4,7};
+link7[] = {4,22};
+link8[] = {5,34};
+link9[] = {7,23};
+link10[] = {8,11};
+link11[] = {9,5};
+link12[] = {9,10};
+link13[] = {9,49};
+link14[] = {10,8};
+link15[] = {11,13};
+link16[] = {12,14};
+link17[] = {13,12};
+link18[] = {13,19};
+link19[] = {13,20};
+link20[] = {13,21};
+link21[] = {13,71};
+link22[] = {14,15};
+link23[] = {14,30};
+link24[] = {14,31};
+link25[] = {14,32};
+link26[] = {14,76};
+link27[] = {15,18};
+link28[] = {16,1};
+link29[] = {17,9};
+link30[] = {18,17};
+link31[] = {19,13};
+link32[] = {20,13};
+link33[] = {21,13};
+link34[] = {22,25};
+link35[] = {23,42};
+link36[] = {23,58};
+link37[] = {23,59};
+link38[] = {23,60};
+link39[] = {23,73};
+link40[] = {24,47};
+link41[] = {25,26};
+link42[] = {25,27};
+link43[] = {25,28};
+link44[] = {25,29};
+link45[] = {26,23};
+link46[] = {27,25};
+link47[] = {28,48};
+link48[] = {29,25};
+link49[] = {30,14};
+link50[] = {31,14};
+link51[] = {32,14};
+link52[] = {33,16};
+link53[] = {34,35};
+link54[] = {34,36};
+link55[] = {34,41};
+link56[] = {34,82};
+link57[] = {35,34};
+link58[] = {36,34};
+link59[] = {37,55};
+link60[] = {38,37};
+link61[] = {39,67};
+link62[] = {40,6};
+link63[] = {41,38};
+link64[] = {42,43};
+link65[] = {43,44};
+link66[] = {43,46};
+link67[] = {44,8};
+link68[] = {45,47};
+link69[] = {46,47};
+link70[] = {47,24};
+link71[] = {47,44};
+link72[] = {47,45};
+link73[] = {48,61};
+link74[] = {48,62};
+link75[] = {49,50};
+link76[] = {50,37};
+link77[] = {50,51};
+link78[] = {50,52};
+link79[] = {50,53};
+link80[] = {50,54};
+link81[] = {51,50};
+link82[] = {52,50};
+link83[] = {53,50};
+link84[] = {54,50};
+link85[] = {55,56};
+link86[] = {55,57};
+link87[] = {55,66};
+link88[] = {55,69};
+link89[] = {56,39};
+link90[] = {57,55};
+link91[] = {58,23};
+link92[] = {59,23};
+link93[] = {60,23};
+link94[] = {61,48};
+link95[] = {62,25};
+link96[] = {63,64};
+link97[] = {63,65};
+link98[] = {64,4};
+link99[] = {65,63};
+link100[] = {66,55};
+link101[] = {67,68};
+link102[] = {68,40};
+link103[] = {68,79};
+link104[] = {69,55};
+link105[] = {70,12};
+link106[] = {71,70};
+link107[] = {72,23};
+link108[] = {73,68};
+link109[] = {74,75};
+link110[] = {75,33};
+link111[] = {75,72};
+link112[] = {76,77};
+link113[] = {77,78};
+link114[] = {78,55};
+link115[] = {79,80};
+link116[] = {80,81};
+link117[] = {81,2};
+link118[] = {82,34};
+globals[] = {0.000000,0,0,0,0,640,480,1,402,6316128,1,-1036.249023,990.485596,688.632874,-753.906189,1242,884,1};
+window[] = {2,-1,-1,-1,-1,642,365,1390,117,3,1260};
+*//*%FSM</HEAD>*/
+class FSM
+{
+        fsmName = "task control client";
+        class States
+        {
+                /*%FSM<STATE "task_control">*/
+                class task_control
+                {
+                        name = "task_control";
+                        itemno = 0;
+                        init = /*%FSM<STATEINIT""">*/"_plyr = player;" \n
+                         "_taskName = _this select 0;" \n
+                         "_unit = objNull;" \n
+                         "_taskItem = objNull;" \n
+                         "_taskID = 0;" \n
+                         "_editorTest  = false;" \n
+                         "if(count _this > 1)then{" \n
+                         "_editorTest = _this select 1;" \n
+                         "};" \n
+                         "if(count _this > 2)then{" \n
+                         "_taskID = _this select 2;" \n
+                         "};" \n
+                         "if(count _this > 3)then{" \n
+                         "_unit = _this select 3;" \n
+                         "};" \n
+                         "if(count _this >4)then{" \n
+                         "_plyr = _this select 4;" \n
+                         "};" \n
+                         "_trgt = _plyr;" \n
+                         "if(count _this > 5)then{" \n
+                         "_trgt = _this select 5;" \n
+                         "};" \n
+                         "" \n
+                         "//Common Vars" \n
+                         "_plyrArr = [""Epoch_Man_Base_F"",""Epoch_Female_base_F""];" \n
+                         "_config = 'inGameTasks' call EPOCH_returnConfig;" \n
+                         "_scriptPath = getText ( _config >> ""file"");" \n
+                         "_fsmPath = ""epoch_code\system"";" \n
+                         "_filterBuilds = getArray ( _config >> ""filterBuilds"");" \n
+                         "" \n
+                         "//DECLARE" \n
+                         "_taskCall = """";" \n
+                         "" \n
+                         "" \n
+                         "" \n
+                         ""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "_">*/
+                                class _
+                                {
+                                        itemno = 3;
+                                        priority = 0.000000;
+                                        to="setup";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"true"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "setup">*/
+                class setup
+                {
+                        name = "setup";
+                        itemno = 2;
+                        init = /*%FSM<STATEINIT""">*/"" \n
+                         "//_config = missionConfigFile;" \n
+                         "" \n
+                         "//Mission Control - WIP. TODO: Move to serverside mission control UINamespace not secure." \n
+                         "//uiNameSpace setVariable [""axeTask"",_taskName];" \n
+                         "_plyrVar = missionNamespace getVariable [""EPOCH_playerMissionArray"",[]];" \n
+                         "_taskIndex = ((_plyrVar apply {_x find ""axeTask"" > -1;}) find true);" \n
+                         "if(_taskIndex > -1)then{" \n
+                         "_plyrVar deleteAt _taskIndex;" \n
+                         "};" \n
+                         "_plyrVar pushBack [""axeTask"",_taskName];" \n
+                         "missionNamespace setVariable [""EPOCH_playerMissionArray"",_plyrVar];" \n
+                         "" \n
+                         "missionNameSpace setVariable [""axeTask"",_taskName];" \n
+                         "" \n
+                         "//Built in Vars" \n
+                         "_startTime = diag_tickTime;" \n
+                         "EPOCH_task_startTime = _startTime;" \n
+                         "EPOCH_taskLastLoop = EPOCH_task_startTime;" \n
+                         "EPOCH_taskItem = objNull;" \n
+                         "if(isNil ""EPOCH_taskMarkerName"")then{EPOCH_taskMarkerName = """";};" \n
+                         "" \n
+                         "//Task Vars from Config with relevant local vars" \n
+                         "//TODO - Move relevant ones into FSM so only called if required." \n
+                         "_taskTitle = getText  ( _config >> _taskName >> ""title"");" \n
+                         "EPOCH_taskTitle = _taskTitle;" \n
+                         "_taskDesc = getText ( _config >> _taskName >>  ""desc"");" \n
+                         "_taskImg = getText ( _config >> _taskName >>  ""img"");" \n
+                         "_taskSimple = getNumber ( _config >> _taskName >>  ""simpleTask"");" \n
+                         "_taskDelay = getNumber ( _config >> _taskName >>  ""triggerDelay"");" \n
+                         "_taskTrigger = getText ( _config >> _taskName >>  ""triggerCondition"");" \n
+                         "_taskFSM = getText ( _config >> _taskName >>  ""initfsm"");" \n
+                         "_taskSQF = getText ( _config >> _taskName >>  ""initsqf"");" \n
+                         "_taskCall = getText ( _config >> _taskName >>  ""initcall"");" \n
+                         "_binTask = getNumber ( _config >> _taskName >>  ""callEventBinTask"");" \n
+                         "_taskEventCond1 = compile getText ( _config >> _taskName >>  ""callEventCondition1"");" \n
+                         "_taskEventCond2 = compile getText ( _config >> _taskName >>  ""callEventCondition2"");" \n
+                         "_taskEventCond3 = compile getText ( _config >> _taskName >>  ""callEventCondition3"");" \n
+                         "_taskEventSQF1 = getText ( _config >> _taskName >>  ""callEventSQF1"");" \n
+                         "_taskEventSQF2 = getText ( _config >> _taskName >>  ""callEventSQF2"");" \n
+                         "_taskEventSQF3 = getText ( _config >> _taskName >>  ""callEventSQF3"");" \n
+                         "_taskEventFSM1 = getText ( _config >> _taskName >>  ""callEventFSM1"");" \n
+                         "_taskEventFSM2 = getText ( _config >> _taskName >>  ""callEventFSM2"");" \n
+                         "_taskEventFSM3 = getText ( _config >> _taskName >>  ""callEventFSM3"");" \n
+                         "_taskEventCALL1 = compile getText ( _config >> _taskName >>  ""callEventCALL1"");" \n
+                         "_taskEventCALL2 = compile getText ( _config >> _taskName >>  ""callEventCALL2"");" \n
+                         "_taskEventCALL3 = compile getText ( _config >> _taskName >>  ""callEventCALL3"");" \n
+                         "_taskEventTask1 = getText ( _config >> _taskName >>  ""callEventTask1"");" \n
+                         "_taskEventTask2 = getText ( _config >> _taskName >>  ""callEventTask2"");" \n
+                         "_taskEventTask3 = getText ( _config >> _taskName >>  ""callEventTask3"");" \n
+                         "_event1Done = false;" \n
+                         "_event2Done = false;" \n
+                         "_event3Done = false;" \n
+                         "_taskItems =  getArray ( _config >> _taskName >> ""items"");" \n
+                         "_taskItemSpawn =  getNumber ( _config >> _taskName >>  ""itemSpawn"");" \n
+                         "_taskMarkerType = getNumber ( _config >> _taskName >>  ""markerType"");" \n
+                         "_taskMarkerRad = getNumber ( _config >> _taskName >>  ""markerRadius"");" \n
+                         "_taskMarkerText =  getText ( _config >> _taskName >>  ""markerText"");" \n
+                         "_taskMarkerVis = getNumber ( _config >> _taskName >>  ""markerVisible"");" \n
+                         "_taskDiagSquelch = getNumber ( _config >> _taskName >>  ""diagSquelch"");" \n
+                         "_lastChat = diag_tickTime;" \n
+                         "_taskDiagCond1 = compile getText ( _config >> _taskName >>  ""diag1Condition"");" \n
+                         "_taskDiagCond2 = compile getText ( _config >> _taskName >>  ""diag2Condition"");" \n
+                         "_taskDiagCond3 = compile getText ( _config >> _taskName >>  ""diag3Condition"");" \n
+                         "_taskDiag1 = getArray ( _config >> _taskName >>  ""dialogue1"");" \n
+                         "_taskDiag2 = getArray ( _config >> _taskName >>  ""dialogue2"");" \n
+                         "_taskDiag3 = getArray ( _config >> _taskName >>  ""dialogue3"");" \n
+                         "_chat1Done = false;" \n
+                         "_chat2Done = false;" \n
+                         "_chat3Done = false;" \n
+                         "" \n
+                         "//Failed" \n
+                         "_taskFailedCond = compile getText ( _config >> _taskName >>  ""failedCondition"");" \n
+                         "_taskFailDist = getNumber ( _config >> _taskName >>  ""abandonDist"");" \n
+                         "if(_taskFailDist < 1)then{_taskFailDist=999999;};" \n
+                         "_taskFailTime = getNumber ( _config >> _taskName >>  ""abandonTime"");" \n
+                         "if(_taskFailTime < 1)then{_taskFailTime=999999;};" \n
+                         "_taskFailed = false;" \n
+                         "//Failed Calls and Diag done in task failed." \n
+                         "_taskFailedCall = compile """";" \n
+                         "" \n
+                         "//Completed" \n
+                         "_taskCompleteCond = compile getText ( _config >> _taskName >>  ""completeCondition"");" \n
+                         "_taskReward = getArray ( _config >> _taskName >>  ""reward"");" \n
+                         "_taskCompleteDiag1 = getArray ( _config >> _taskName >>  ""completed1"");" \n
+                         "_taskCompleteDiag2 = getArray ( _config >> _taskName >>  ""completed2"");" \n
+                         "_taskCompleteCall = compile getText ( _config >> _taskName >>  ""completedCALL"");" \n
+                         "_diag1Done = false;" \n
+                         "_diag2Done = false;" \n
+                         "_taskReminder = getArray ( _config >> _taskName >>  ""reminder"");" \n
+                         "_taskCheckTime = getNumber ( _config >> _taskName >>  ""taskCheckTime"");" \n
+                         "" \n
+                         "" \n
+                         "_taskNextTrigger = getArray ( _config >> _taskName >>  ""nextTask"");" \n
+                         "_taskCleanup = getNumber ( _config >> _taskName >>  ""cleanUp"");" \n
+                         "_missionCleanUp = getArray ( _config >> _taskName >>  ""cleanUpCalls"");" \n
+                         "" \n
+                         "_completed = false;" \n
+                         "" \n
+                         "//Custom Vars" \n
+                         "_customVars = [];" \n
+                         "_varNames = getArray ( _config >> ""varName"");" \n
+                         "_varDatas = getArray ( _config >> ""varData"");" \n
+                         "_serverCmd = [];" \n
+                         "_doSkip = false;" \n
+                         "_taskFailed = false;" \n
+                         "_doBin = false;" \n
+                         "" \n
+                         "if(count _varNames > 0)then{" \n
+                         "" \n
+                         "{" \n
+                         "call compile format [""missionNamespace setVariable%3""""%1"""", %2%4;"",parseText _x,_varDatas select _forEachIndex,parseText ""["",parseText ""]""];" \n
+                         "//systemChat format [""%1 = %2"",parseText (_x),(_varDatas select _forEachIndex)];" \n
+                         "//_customVars pushBack (_varDatas select _forEachIndex);" \n
+                         "}forEach _varNames;" \n
+                         "" \n
+                         "};" \n
+                         "" \n
+                         "//Functions" \n
+                         "_execFSM = {" \n
+                         "//systemChat format[""execing FSM %1"",_this];" \n
+                         "call compile format [""[_taskName,_plyr,_unit,_taskItem] execFSM """"%1"""""",_this];" \n
+                         "};" \n
+                         "" \n
+                         "_execSQF = {" \n
+                         "//systemChat format[""execing SQF %1"",_this];" \n
+                         "call compile format [""[_taskName,_plyr,_unit,_taskItem] execVM """"%1"""""",_this];" \n
+                         "};" \n
+                         "" \n
+                         "_spawnWH = {" \n
+                         "_retTaskWH = objNull;" \n
+                         "_retTaskWH = createVehicle[""GroundWeaponHolder"",_this select 0,[],0,""CAN_COLLIDE""];" \n
+                         "_retTaskWH" \n
+                         "};" \n
+                         "" \n
+                         "//SystemChat format [""INIT: %1"",_taskTitle];" \n
+                         "_debugDo = ""INIT"";" \n
+                         "_showDebug = {" \n
+                         "//hint format [""%4\n%1\nStage: %2\nMsg: %3\nTask: %4"", _debugDo,_missionStage,_msg1,_missionName,_taskTitle];" \n
+                         "};"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "run_test">*/
+                                class run_test
+                                {
+                                        itemno = 74;
+                                        priority = 20.000000;
+                                        to="override_for_task";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"_editorTest"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "simple_task">*/
+                                class simple_task
+                                {
+                                        itemno = 72;
+                                        priority = 10.000000;
+                                        to="actions";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"_taskSimple > 0;"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/"_doSkip = true;"/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "_">*/
+                                class _
+                                {
+                                        itemno = 33;
+                                        priority = 0.000000;
+                                        to="comms";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"true"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "items_and_vars">*/
+                class items_and_vars
+                {
+                        name = "items_and_vars";
+                        itemno = 4;
+                        init = /*%FSM<STATEINIT""">*/"//SystemChat format [""START: Do Spawn: %1"",_taskItemSpawn];" \n
+                         "_taskStartPos = getPosATL _plyr;" \n
+                         "_startTime = diag_tickTime;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "item_spawn">*/
+                                class item_spawn
+                                {
+                                        itemno = 22;
+                                        priority = 5.000000;
+                                        to="spawn_item";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"_taskItemSpawn > 0 && count _taskItems > 0"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/"_taskItem = objNull;"/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "no_item_spawn">*/
+                                class no_item_spawn
+                                {
+                                        itemno = 7;
+                                        priority = 0.000000;
+                                        to="actions";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"_taskItemSpawn < 1"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "end">*/
+                class end
+                {
+                        name = "end";
+                        itemno = 6;
+                        init = /*%FSM<STATEINIT""">*/"//uiNameSpace setVariable [""axeTask"",nil];" \n
+                         "if!(_doBin)then{" \n
+                         "_plyrVar = missionNamespace getVariable [""EPOCH_playerMissionArray"",[]];" \n
+                         "_taskIndex = ((_plyrVar apply {_x find ""axeTask"" > -1;}) find true);" \n
+                         "if(_taskIndex > -1)then{" \n
+                         "_plyrVar deleteAt _taskIndex;" \n
+                         "};" \n
+                         "missionNamespace setVariable [""EPOCH_playerMissionArray"",_plyrVar];" \n
+                         "};" \n
+                         "if(count _missionCleanUp > 0)then{" \n
+                         "{" \n
+                         "call compile _x;" \n
+                         "} forEach _missionCleanUp;" \n
+                         "};" \n
+                         "_debugDo = ""DISPOSE"";" \n
+                         "diag_log format [""Task Failed: %1"",_taskName];"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "do_monitor">*/
+                class do_monitor
+                {
+                        name = "do_monitor";
+                        itemno = 8;
+                        init = /*%FSM<STATEINIT""">*/"_lastLoop = diag_tickTime;" \n
+                         "EPOCH_taskLastLoop = _lastLoop;" \n
+                         "_plyPos = getPosATL _plyr;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "_">*/
+                                class _
+                                {
+                                        itemno = 11;
+                                        priority = 0.000000;
+                                        to="chat_conditions";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"true"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "next">*/
+                class next
+                {
+                        name = "next";
+                        itemno = 9;
+                        init = /*%FSM<STATEINIT""">*/"//Clean Up / Other Options here"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "task_completed">*/
+                                class task_completed
+                                {
+                                        itemno = 5;
+                                        priority = 15.000000;
+                                        to="completed";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"_completed && diag_tickTime - _lastLoop > _taskCheckTime"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/"_lastLoop = diag_tickTime;"/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "task_failed">*/
+                                class task_failed
+                                {
+                                        itemno = 49;
+                                        priority = 10.000000;
+                                        to="failed";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"_taskFailed"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/"_taskFailedDiag = [];" \n
+                                         "_taskFailedFSM = """";" \n
+                                         "_taskFailedSQF = """";" \n
+                                         "_taskFailedCall = compile """";" \n
+                                         "" \n
+                                         "if!(_editorTest)then{" \n
+                                         "_taskFailedDiag = getArray ( _config >> _taskName >>  ""failed"");" \n
+                                         "_taskFailedFSM = getText ( _config >> _taskName >>  ""failedFSM"");" \n
+                                         "_taskFailedSQF = getText ( _config >> _taskName >>  ""failedSQF"");" \n
+                                         "_taskFailedCall = compile getText ( _config >> _taskName >>  ""failedCall"");" \n
+                                         "_nextTask = getArray ( _config >> _taskName >>  ""failedTask"");" \n
+                                         "}else{" \n
+                                         "_taskFailedDiag = parseText axeValCacheList select 41;" \n
+                                         "_taskFailedFSM = axeValCacheList select 42;" \n
+                                         "_taskFailedSQF = axeValCacheList select 43;" \n
+                                         "_taskFailedCall = axeValCacheList select 44;" \n
+                                         "_nextTask = parseText axeValCacheList select 45;" \n
+                                         "};" \n
+                                         "" \n
+                                         "_taskReminder = [];"/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "loop">*/
+                                class loop
+                                {
+                                        itemno = 10;
+                                        priority = 5.000000;
+                                        to="do_monitor";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"((!_completed) || (!_taskFailed)) && diag_tickTime - _lastLoop > _taskCheckTime"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "chat_conditions">*/
+                class chat_conditions
+                {
+                        name = "chat_conditions";
+                        itemno = 13;
+                        init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "chat_3">*/
+                                class chat_3
+                                {
+                                        itemno = 21;
+                                        priority = 15.000000;
+                                        to="chat_conditions";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"diag_tickTime - _lastChat > _taskDiagSquelch && call _taskDiagCond3 && count _taskDiag3 > 0"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/"_diag = selectRandom _taskDiag3;" \n
+                                         "" \n
+                                         "[format [""%1"",_diag], 5] call Epoch_message;" \n
+                                         "" \n
+                                         "" \n
+                                         "_chat3Done = true;" \n
+                                         "_lastChat = diag_tickTime;"/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "chat_2">*/
+                                class chat_2
+                                {
+                                        itemno = 20;
+                                        priority = 10.000000;
+                                        to="chat_conditions";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"diag_tickTime - _lastChat > _taskDiagSquelch && call _taskDiagCond2 && count _taskDiag2 > 0"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/"_diag = selectRandom _taskDiag2;" \n
+                                         "[format [""%1"",_diag], 5] call Epoch_message;" \n
+                                         "_chat2Done = true;" \n
+                                         "_lastChat = diag_tickTime;"/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "server">*/
+                                class server
+                                {
+                                        itemno = 71;
+                                        priority = 10.000000;
+                                        to="comms_2";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"count _serverCmd > 0"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "chat_1">*/
+                                class chat_1
+                                {
+                                        itemno = 19;
+                                        priority = 5.000000;
+                                        to="chat_conditions";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"(!_chat1Done) && call _taskDiagCond1 && count _taskDiag1 > 0"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/"_diag = selectRandom _taskDiag1;" \n
+                                         "[format [""%1"",_diag], 5] call Epoch_message;" \n
+                                         "_chat1Done = true;" \n
+                                         "_lastChat = diag_tickTime;"/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "_">*/
+                                class _
+                                {
+                                        itemno = 12;
+                                        priority = 0.000000;
+                                        to="event_conditions";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"true"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "event_conditions">*/
+                class event_conditions
+                {
+                        name = "event_conditions";
+                        itemno = 14;
+                        init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "event_3">*/
+                                class event_3
+                                {
+                                        itemno = 32;
+                                        priority = 20.000000;
+                                        to="event_conditions";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"(!_event3Done) && call _taskEventCond3"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/"if!(_taskEventFSM3 == """")then{" \n
+                                         "_taskEventFSM3 call _execFSM;" \n
+                                         "};" \n
+                                         "" \n
+                                         "if!(_taskEventSQF3 == """")then{" \n
+                                         "_taskEventSQF3 call _execSQF;" \n
+                                         "};" \n
+                                         "" \n
+                                         "if!(str(_taskEventCALL3) == ""{}"")then{" \n
+                                         "call _taskEventCALL3;" \n
+                                         "};" \n
+                                         "" \n
+                                         "if!(_taskEventTask3 == """")then{" \n
+                                         "call compile format[""epochTaskHandle = [""""%2""""] execFSM """"%1\task_control.fsm"""";"",_fsmPath,_taskEventTask3];" \n
+                                         "" \n
+                                         "if(_binTask > 0)then{" \n
+                                         "_doBin = true;" \n
+                                         "};" \n
+                                         "" \n
+                                         "};" \n
+                                         "" \n
+                                         "_event3Done = true;"/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "event_2">*/
+                                class event_2
+                                {
+                                        itemno = 31;
+                                        priority = 15.000000;
+                                        to="event_conditions";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"(!_event2Done) && call _taskEventCond2"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/"if!(_taskEventFSM2 == """")then{" \n
+                                         "_taskEventFSM2 call _execFSM;" \n
+                                         "};" \n
+                                         "" \n
+                                         "if!(_taskEventSQF2 == """")then{" \n
+                                         "_taskEventSQF2 call _execSQF;" \n
+                                         "};" \n
+                                         "" \n
+                                         "if!(str(_taskEventCALL2) == ""{}"")then{" \n
+                                         "call _taskEventCALL2;" \n
+                                         "};" \n
+                                         "" \n
+                                         "if!(_taskEventTask2 == """")then{" \n
+                                         "call compile format[""epochTaskHandle = [""""%2""""] execFSM """"%1\task_control.fsm"""";"",_fsmPath,_taskEventTask2];" \n
+                                         "" \n
+                                         "if(_binTask > 0)then{" \n
+                                         "_doBin = true;" \n
+                                         "};" \n
+                                         "" \n
+                                         "};" \n
+                                         "" \n
+                                         "_event2Done = true;"/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "event_1">*/
+                                class event_1
+                                {
+                                        itemno = 30;
+                                        priority = 10.000000;
+                                        to="event_conditions";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"(!_event1Done) && call _taskEventCond1"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/"if!(_taskEventFSM1 == """")then{" \n
+                                         "_taskEventFSM1 call _execFSM;" \n
+                                         "};" \n
+                                         "" \n
+                                         "if!(_taskEventSQF1 == """")then{" \n
+                                         "_taskEventSQF1 call _execSQF;" \n
+                                         "};" \n
+                                         "" \n
+                                         "if!(str(_taskEventCALL1) == ""{}"")then{" \n
+                                         "call _taskEventCALL1;" \n
+                                         "};" \n
+                                         "" \n
+                                         "if!(_taskEventTask1 == """")then{" \n
+                                         "//TODO: Allow new separate mission from here." \n
+                                         "call compile format[""epochTaskHandle = [""""%2""""] execFSM """"%1\task_control.fsm"""";"",_fsmPath,_taskEventTask1];" \n
+                                         "" \n
+                                         "if(_binTask > 0)then{" \n
+                                         "_doBin = true;" \n
+                                         "};" \n
+                                         "" \n
+                                         "};" \n
+                                         "" \n
+                                         "_event1Done = true;"/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "bin_it">*/
+                                class bin_it
+                                {
+                                        itemno = 76;
+                                        priority = 5.000000;
+                                        to="clean_up";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"_doBin"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "_">*/
+                                class _
+                                {
+                                        itemno = 15;
+                                        priority = 0.000000;
+                                        to="task_conditions";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"true"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "comms">*/
+                class comms
+                {
+                        name = "comms";
+                        itemno = 16;
+                        init = /*%FSM<STATEINIT""">*/"//[_plyr,0,_taskID] remoteExec [""EPOCH_Server_missionComms"",3];"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "delay">*/
+                                class delay
+                                {
+                                        itemno = 1;
+                                        priority = 0.000000;
+                                        to="items_and_vars";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"diag_tickTime > _startTime + _taskDelay"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "task_conditions">*/
+                class task_conditions
+                {
+                        name = "task_conditions";
+                        itemno = 18;
+                        init = /*%FSM<STATEINIT""">*/"if((_plyPos distance _taskStartPos > _taskFailDist) || (diag_tickTIme - _startTime > _taskFailTime) || (call _taskFailedCond))then{" \n
+                         "_taskFailed = true;" \n
+                         "};" \n
+                         "" \n
+                         "if(call _taskCompleteCond)then{" \n
+                         "_completed = true;" \n
+                         "};"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "_">*/
+                                class _
+                                {
+                                        itemno = 17;
+                                        priority = 0.000000;
+                                        to="next";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"true"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "actions">*/
+                class actions
+                {
+                        name = "actions";
+                        itemno = 23;
+                        init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "call">*/
+                                class call
+                                {
+                                        itemno = 60;
+                                        priority = 20.000000;
+                                        to="actions";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!(_taskCall == """")" \n
+                                         "//USE isNill NOT == """""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/"call compile _taskCall;" \n
+                                         "_taskCall = """";"/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "fsm">*/
+                                class fsm
+                                {
+                                        itemno = 58;
+                                        priority = 15.000000;
+                                        to="actions";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!(_taskFSM == """")"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/"_taskFSM call _execFSM;" \n
+                                         "_taskFSM = """";"/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "sqf">*/
+                                class sqf
+                                {
+                                        itemno = 59;
+                                        priority = 10.000000;
+                                        to="actions";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!(_taskSQF == """")"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/"systemChat ""SQF NOT NIL"";" \n
+                                         "_taskSQF call _execSQF;" \n
+                                         "_taskSQF = """";"/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "skip">*/
+                                class skip
+                                {
+                                        itemno = 73;
+                                        priority = 5.000000;
+                                        to="next_task";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"_doSkip"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "_">*/
+                                class _
+                                {
+                                        itemno = 42;
+                                        priority = 0.000000;
+                                        to="markers";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"true"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "spawn_item">*/
+                class spawn_item
+                {
+                        name = "spawn_item";
+                        itemno = 25;
+                        init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "near_player">*/
+                                class near_player
+                                {
+                                        itemno = 29;
+                                        priority = 15.000000;
+                                        to="spawn_item";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"_taskItemSpawn == 3"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/"_pos = getPosATL player;" \n
+                                         "_taskItem = [_pos] call _spawnWH;" \n
+                                         "_taskItemSpawn = -1;" \n
+                                         ""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "in_house">*/
+                                class in_house
+                                {
+                                        itemno = 27;
+                                        priority = 10.000000;
+                                        to="spawn_item";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"_taskItemSpawn == 1"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/"_nrBuilds = nearestObjects [_plyr,[""house""],50];" \n
+                                         "_arrGarr = [];" \n
+                                         "_bldMap = [];" \n
+                                         "_pos = getPosATL _plyr;" \n
+                                         "" \n
+                                         "{" \n
+                                         "" \n
+                                         "if(!((typeOf _x) in _filterBuilds))then{" \n
+                                         "" \n
+                                         "	_garrCount = 0;" \n
+                                         "" \n
+                                         "	while {format [""%1"", _x buildingPos (_garrCount)] != ""[0,0,0]"" } do {" \n
+                                         "	_garrCount = _garrCount + 1;" \n
+                                         "	};" \n
+                                         "" \n
+                                         "	if(_garrCount > 0)then{" \n
+                                         "	_arrGarr pushBack [_x,_garrCount];" \n
+                                         "	};" \n
+                                         "" \n
+                                         "};" \n
+                                         "" \n
+                                         "}forEach _nrBuilds;" \n
+                                         "" \n
+                                         "if(count _arrGarr > 0)then{" \n
+                                         "" \n
+                                         "	{" \n
+                                         "	_garrPos =  (_x select 0) buildingPos (floor random (_x select 1));" \n
+                                         "	_bldMap pushBack _garrPos;" \n
+                                         "" \n
+                                         "	}forEach _arrGarr;" \n
+                                         "" \n
+                                         "};" \n
+                                         "" \n
+                                         "if(count _bldMap > 0)then{" \n
+                                         "_pos = _bldMap select (floor random (count _bldMap));" \n
+                                         "};" \n
+                                         "" \n
+                                         "" \n
+                                         "//_taskItem = createVehicle[""WeaponHolderSimulated"",_pos,[],0,""CAN_COLLIDE""];" \n
+                                         "_taskItem = [_pos] call _spawnWH;" \n
+                                         "" \n
+                                         "" \n
+                                         "_taskItemSpawn = -1;"/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "hidden_nearby">*/
+                                class hidden_nearby
+                                {
+                                        itemno = 28;
+                                        priority = 5.000000;
+                                        to="find_spot";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"_taskItemSpawn == 2"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/"_taskItemSpawn = -1;" \n
+                                         "_posSafe = false;" \n
+                                         "_done = false;"/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "ready">*/
+                                class ready
+                                {
+                                        itemno = 26;
+                                        priority = 0.000000;
+                                        to="actions";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNull _taskItem"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/"[player,Epoch_personalToken,_taskItems,[],_taskItem,false] remoteExec [""EPOCH_Server_createObject"",2];" \n
+                                         "EPOCH_taskItem = _taskItem;"/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "completed">*/
+                class completed
+                {
+                        name = "completed";
+                        itemno = 34;
+                        init = /*%FSM<STATEINIT""">*/"//Put more checks in for empty dialogue array so as not just waiting a set time"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "diag_1">*/
+                                class diag_1
+                                {
+                                        itemno = 35;
+                                        priority = 15.000000;
+                                        to="completed";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!_diag1Done && count _taskCompleteDiag1 > 0"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/"_diag = selectRandom _taskCompleteDiag1;" \n
+                                         "[format [""%1"",_diag], 5] call Epoch_message;" \n
+                                         "_diag1Done = true;"/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "diag_2">*/
+                                class diag_2
+                                {
+                                        itemno = 36;
+                                        priority = 10.000000;
+                                        to="completed";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"_diag1Done && (!_diag2Done) && diag_tickTime - _lastLoop > 20 && count _taskCompleteDiag2 > 0"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/"_diag = selectRandom _taskCompleteDiag2;" \n
+                                         "[format [""%1"",_diag], 5] call Epoch_message;" \n
+                                         "_diag2Done = true;"/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "call">*/
+                                class call
+                                {
+                                        itemno = 82;
+                                        priority = 5.000000;
+                                        to="completed";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!(str(_taskCompleteCall) == ""{}"")"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/"call _taskCompleteCall;" \n
+                                         "_taskCompleteCall = compile """";"/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "_">*/
+                                class _
+                                {
+                                        itemno = 41;
+                                        priority = 0.000000;
+                                        to="reward";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"true"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "reward">*/
+                class reward
+                {
+                        name = "reward";
+                        itemno = 38;
+                        init = /*%FSM<STATEINIT""">*/"if(count _taskReward > 0)then{" \n
+                         "" \n
+                         "diag_log format [""spawn reward: %1"",_taskReward];" \n
+                         "" \n
+                         "_rewardHolder = [getPosATL player] call _spawnWH;" \n
+                         "" \n
+                         "[player,Epoch_personalToken,_taskReward,[],_rewardHolder,false] remoteExec [""EPOCH_Server_createObject"",2];" \n
+                         "" \n
+                         "};" \n
+                         "" \n
+                         "_debugDo = ""REWARD"";"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "pause">*/
+                                class pause
+                                {
+                                        itemno = 37;
+                                        priority = 0.000000;
+                                        to="clean_up";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"diag_tickTime - _lastLoop > _taskCheckTime"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "comms_1">*/
+                class comms_1
+                {
+                        name = "comms_1";
+                        itemno = 39;
+                        init = /*%FSM<STATEINIT""">*/"//[_plyr,1,_taskID] remoteExec [""EPOCH_Server_missionComms"",3];"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "_">*/
+                                class _
+                                {
+                                        itemno = 67;
+                                        priority = 0.000000;
+                                        to="next_task";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"true"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "markers">*/
+                class markers
+                {
+                        name = "markers";
+                        itemno = 43;
+                        init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "continue">*/
+                                class continue
+                                {
+                                        itemno = 44;
+                                        priority = 100.000000;
+                                        to="do_monitor";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"//no marker" \n
+                                         "_taskMarkerType < 1"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "marker_pos">*/
+                                class marker_pos
+                                {
+                                        itemno = 46;
+                                        priority = 0.000000;
+                                        to="do_markers";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"_taskMarkerType > 0"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/"_markerPos = [];" \n
+                                         "if(isNil ""EPOCH_taskMarkerPos"")then{" \n
+                                         "if!(isNull _trgt)then{" \n
+                                         "_markerPos = getPos _trgt;" \n
+                                         "};" \n
+                                         "" \n
+                                         "if!(isNull _unit)then{" \n
+                                         "_markerPos = getPos _unit;" \n
+                                         "};" \n
+                                         "" \n
+                                         "if!(isNull _taskItem)then{" \n
+                                         "_markerPos = getPos _taskItem;" \n
+                                         "};" \n
+                                         "" \n
+                                         "}else{" \n
+                                         "_markerPos = EPOCH_taskMarkerPos;" \n
+                                         "};" \n
+                                         "" \n
+                                         "_mkrName = format[""EPOCHTaskMark%1%2"", _taskName,diag_tickTime];" \n
+                                         "EPOCH_taskMarkerName = _mkrName;" \n
+                                         "_markerText = getText ( _config >> _taskName >>  ""markerText"");" \n
+                                         "_markerRad = getNumber ( _config >> _taskName >>  ""markerRadius"");" \n
+                                         "" \n
+                                         "if(_taskMarkerType == 2)then{" \n
+                                         "_markerPos set [0, (_markerPos select 0) + (floor (random _markerRad) - (_markerRad / 2))];" \n
+                                         "_markerPos set [1, (_markerPos select 1) + (floor (random _markerRad) - (_markerRad / 2))];" \n
+                                         "};" \n
+                                         "" \n
+                                         "" \n
+                                         ""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "do_markers">*/
+                class do_markers
+                {
+                        name = "do_markers";
+                        itemno = 47;
+                        init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "continue">*/
+                                class continue
+                                {
+                                        itemno = 44;
+                                        priority = 100.000000;
+                                        to="do_monitor";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"//no marker" \n
+                                         "_taskMarkerType < 1"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "radius">*/
+                                class radius
+                                {
+                                        itemno = 45;
+                                        priority = 0.000000;
+                                        to="do_markers";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"_taskMarkerType == 2"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/"[[_taskMarkerVis,player],_markerPos,""ELLIPSE"",""mil_dot"",_markerText,""ColorYellow"",[_taskMarkerRad,_taskMarkerRad], ""SolidBorder"", 42, 0.6,_taskTitle] remoteExec [""EPOCH_server_makeMarker"",2];" \n
+                                         "_taskMarkerType = -1;"/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "point">*/
+                                class point
+                                {
+                                        itemno = 24;
+                                        priority = 0.000000;
+                                        to="do_markers";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"_taskMarkerType == 1"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/"[[_taskMarkerVis,player],_markerPos,""ICON"",""mil_dot"",_markerText,""ColorYellow"",[0.8,0.8], ""SolidBorder"", 42, 0.6,_taskTitle] remoteExec [""EPOCH_server_makeMarker"",2];" \n
+                                         "_taskMarkerType = -1;"/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "find_spot">*/
+                class find_spot
+                {
+                        name = "find_spot";
+                        itemno = 48;
+                        init = /*%FSM<STATEINIT""">*/"//TODO: try catch used incorrectly here" \n
+                         "try{" \n
+                         "_pos = [(getPosATL _plyr), (floor (random 80) + 42), floor random 360] call BIS_fnc_relPos;" \n
+                         "" \n
+                         "if (!lineIntersects [eyePos _plyr, _pos, _plyr, _unit]) then {_posSafe = true;};" \n
+                         "" \n
+                         "if(_posSafe)then{" \n
+                         "//_taskItem = createVehicle[""GroundWeaponHolder"",_pos,[],0,""CAN_COLLIDE""];" \n
+                         "_taskItem = [_pos] call _spawnWH;" \n
+                         "_taskItemSpawn = -1;" \n
+                         "_done = true;" \n
+                         "};" \n
+                         "" \n
+                         "}catch{" \n
+                         "systemchat format[""CATCH:%1"",_exception];" \n
+                         "done = true;" \n
+                         "_taskItemSpawn = 1;" \n
+                         "};"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "not_hidden">*/
+                                class not_hidden
+                                {
+                                        itemno = 61;
+                                        priority = 10.000000;
+                                        to="find_spot";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!_posSafe;"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "is_hidden">*/
+                                class is_hidden
+                                {
+                                        itemno = 62;
+                                        priority = 5.000000;
+                                        to="spawn_item";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"_done;"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "failed">*/
+                class failed
+                {
+                        name = "failed";
+                        itemno = 50;
+                        init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "call">*/
+                                class call
+                                {
+                                        itemno = 54;
+                                        priority = 20.000000;
+                                        to="failed";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!(str(_taskFailedCall) == ""{}"")"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/"call _taskFailedCall;" \n
+                                         "_taskFailedCall = compile """";"/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "sqf">*/
+                                class sqf
+                                {
+                                        itemno = 53;
+                                        priority = 15.000000;
+                                        to="failed";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!(_taskFailedSQF == """")"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/"_taskFailedSQF call _execSQF;" \n
+                                         "_taskFailedSQF = """";"/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "fsm">*/
+                                class fsm
+                                {
+                                        itemno = 52;
+                                        priority = 10.000000;
+                                        to="failed";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!(_taskFailedFSM == """")"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/"_taskFailedFSM call _execFSM;" \n
+                                         "_taskFailedFSM = """";"/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "diag">*/
+                                class diag
+                                {
+                                        itemno = 51;
+                                        priority = 5.000000;
+                                        to="failed";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"count _taskFailedDiag > 0"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/"_diag = selectRandom _taskFailedDiag;" \n
+                                         "[format [""%1"",_diag], 5] call Epoch_message;" \n
+                                         "_taskFailedDiag = [];"/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "pause">*/
+                                class pause
+                                {
+                                        itemno = 37;
+                                        priority = 0.000000;
+                                        to="clean_up";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"diag_tickTime - _lastLoop > _taskCheckTime"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "clean_up">*/
+                class clean_up
+                {
+                        name = "clean_up";
+                        itemno = 55;
+                        init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "clean_up">*/
+                                class clean_up
+                                {
+                                        itemno = 69;
+                                        priority = 15.000000;
+                                        to="clean_up";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"_taskCleanup > 0"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/"//deleteVehicle _taskItem;" \n
+                                         "//[_plyr,0,_taskID,_taskItem] remoteExec [""EPOCH_Server_missionComms"",3];" \n
+                                         "_taskCleanup = -1;"/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "remind_dialogue">*/
+                                class remind_dialogue
+                                {
+                                        itemno = 66;
+                                        priority = 10.000000;
+                                        to="clean_up";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"count _taskReminder > 0 && !_taskFailed"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/"_diag = selectRandom _taskReminder;" \n
+                                         "[format [""%1"",_diag], 5] call Epoch_message;" \n
+                                         "_taskReminder = [];"/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "markers">*/
+                                class markers
+                                {
+                                        itemno = 57;
+                                        priority = 5.000000;
+                                        to="clean_up";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!(isNil ""EPOCH_taskMarkerName"") && (_taskCleanup > 0 || _taskFailed)"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/"[player,_taskMarkerVis,EPOCH_taskMarkerName] remoteExec [""EPOCH_server_removeMarker"",2];" \n
+                                         "_mkrName = nil;" \n
+                                         "EPOCH_taskMarkerName = nil;"/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "_">*/
+                                class _
+                                {
+                                        itemno = 56;
+                                        priority = 0.000000;
+                                        to="comms_1";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"true"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "gui">*/
+                class gui
+                {
+                        name = "gui";
+                        itemno = 63;
+                        init = /*%FSM<STATEINIT""">*/"//GUI dialogue Options for Raymix :)"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "no_dialogoue">*/
+                                class no_dialogoue
+                                {
+                                        itemno = 64;
+                                        priority = 10.000000;
+                                        to="items_and_vars";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"_taskTitle == """""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "dialogue">*/
+                                class dialogue
+                                {
+                                        itemno = 65;
+                                        priority = 5.000000;
+                                        to="gui";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!(_taskTitle == """")"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/"" \n
+                                         "axeTaskTitle = _taskTitle;" \n
+                                         "axeTaskDesc = _taskDesc;" \n
+                                         "axeTaskImg = _taskImg;" \n
+                                         "createDialog ""taskAccept"";" \n
+                                         "" \n
+                                         "_taskTitle = """";"/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "next_task">*/
+                class next_task
+                {
+                        name = "next_task";
+                        itemno = 68;
+                        init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "mission_complete">*/
+                                class mission_complete
+                                {
+                                        itemno = 40;
+                                        priority = 10.000000;
+                                        to="end";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"count _taskNextTrigger < 1 || !alive _plyr || _taskFailed || _doBin"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "next_task">*/
+                                class next_task
+                                {
+                                        itemno = 79;
+                                        priority = 5.000000;
+                                        to="setup";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"count _taskNextTrigger > 0 && !_taskFailed"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/"_taskName = selectRandom _taskNextTrigger;" \n
+                                         "diag_log format [""Trigger Next Task: %1"",_taskName];" \n
+                                         "_taskNextTrigger = [];"/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "comms_2">*/
+                class comms_2
+                {
+                        name = "comms_2";
+                        itemno = 70;
+                        init = /*%FSM<STATEINIT""">*/"" \n
+                         "systemChat format [""SERVER CMD: %1"",_serverCmd];" \n
+                         "" \n
+                         "_serverCmd = [];"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "_">*/
+                                class _
+                                {
+                                        itemno = 12;
+                                        priority = 0.000000;
+                                        to="event_conditions";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"true"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "override_for_task">*/
+                class override_for_task
+                {
+                        name = "override_for_task";
+                        itemno = 75;
+                        init = /*%FSM<STATEINIT""">*/"_taskAuthor = axeValCacheList select 0;" \n
+                         "_taskTitle = axeValCacheList select 1;" \n
+                         "_taskSimple = parseNumber (axeValCacheList select 2);" \n
+                         "_taskDesc = ""Test Task"";" \n
+                         "_taskImg = ""NOIMG"";" \n
+                         "_taskTrigger = axeValCacheList select 3;" \n
+                         "_taskLimit = parseNumber (axeValCacheList select 4);" \n
+                         "_taskCheckTime = parseNumber (axeValCacheList select 5);" \n
+                         "_taskDelay = parseNumber (axeValCacheList select 6);" \n
+                         "_taskItems = parseText axeValCacheList select 7;" \n
+                         "_taskItemSpawn = parseNumber (axeValCacheList select 8);" \n
+                         "_taskMarkerType = parseNumber (axeValCacheList select 9);" \n
+                         "_taskMarkerRad = parseNumber (axeValCacheList select 10);" \n
+                         "_taskMarkerText = axeValCacheList select 11;" \n
+                         "_taskFSM = axeValCacheList select 12;" \n
+                         "_taskSQF = axeValCacheList select 13;" \n
+                         "_taskCall = axeValCacheList select 14;" \n
+                         "_binTask = parseNumber (axeValCacheList select 15);" \n
+                         "_taskEventCond1 = axeValCacheList select 16;" \n
+                         "_taskEventCond2 = axeValCacheList select 17;" \n
+                         "_taskEventCond3 = axeValCacheList select 18;" \n
+                         "_taskEventCALL1 = axeValCacheList select 19;" \n
+                         "_taskEventFSM1 = axeValCacheList select 20;" \n
+                         "_taskEventSQF1 = axeValCacheList select 21;" \n
+                         "_taskEventTask1 = axeValCacheList select 22;" \n
+                         "_taskEventCALL2 = axeValCacheList select 23;" \n
+                         "_taskEventFSM2 = axeValCacheList select 24;" \n
+                         "_taskEventSQF2 = axeValCacheList select 25;" \n
+                         "_taskEventTask2 = axeValCacheList select 26;" \n
+                         "_taskEventCALL3 = axeValCacheList select 27;" \n
+                         "_taskEventFSM3 = axeValCacheList select 28;" \n
+                         "_taskEventSQF3 = axeValCacheList select 29;" \n
+                         "_taskEventTask3 = axeValCacheList select 30;" \n
+                         "_taskDiagCond1 = axeValCacheList select 31;" \n
+                         "_taskDiag1 = parseText axeValCacheList select 32;" \n
+                         "_taskDiagSquelch = parseNumber (axeValCacheList select 33);" \n
+                         "_taskDiagCond2 = axeValCacheList select 34;" \n
+                         "_taskDiag2 = parseText axeValCacheList select 35;" \n
+                         "_taskDiagCond3 = axeValCacheList select 36;" \n
+                         "_taskDiag3 = parseText axeValCacheList select 37;" \n
+                         "_taskFailedCond = axeValCacheList select 38;" \n
+                         "_taskFailDist = parseNumber (axeValCacheList select 39);" \n
+                         "_taskFailTime = parseNumber (axeValCacheList select 40);" \n
+                         "//See task failed for this bit" \n
+                         "_taskCleanup = parseNumber (axeValCacheList select 46);" \n
+                         "_taskCompleteCond = axeValCacheList select 47;" \n
+                         "_taskReward = parseText axeValCacheList select 48;" \n
+                         "_taskCompleteDiag1 = parseText axeValCacheList select 49;" \n
+                         "_taskCompleteDiag2 = parseText axeValCacheList select 50;" \n
+                         "_taskReminder = axeValCacheList select 51;" \n
+                         "_taskNextTrigger = parseText axeValCacheList select 52;" \n
+                         ""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "simple_task">*/
+                                class simple_task
+                                {
+                                        itemno = 72;
+                                        priority = 10.000000;
+                                        to="actions";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"_taskSimple > 0;"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/"_doSkip = true;"/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "_">*/
+                                class _
+                                {
+                                        itemno = 33;
+                                        priority = 0.000000;
+                                        to="comms";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"true"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+        };
+        initState="task_control";
+        finalStates[] =
+        {
+                "end",
+        };
+};
+/*%FSM</COMPILE>*/

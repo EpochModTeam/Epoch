@@ -10,7 +10,7 @@
     Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
 
     Github:
-    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_server/compile/epoch_looting/EPOCH_server_destroyTrash.sqf
+    https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server/compile/epoch_looting/EPOCH_server_destroyTrash.sqf
 */
 private["_target", "_eventArray", "_triggerType", "_nearPlayers", "_posWH", "_item", "_config", "_object", "_player", "_payout", "_type"];
 params ["_object","_type","_player",["_token","",[""]]];
@@ -35,6 +35,8 @@ if (!(_object isKindOf "All")) then {
 		if (isClass _config) then {
 			if (random 1 < getNumber(_config >> "chance")) then {
 				[_item, _payout] call EPOCH_serverLootObject;
+				_errorMsg = "You found something!";
+				[_errorMsg, 5] remoteExec ['Epoch_message',_player];
 			};
 		};
 

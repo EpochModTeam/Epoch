@@ -1,16 +1,16 @@
 /*
 	Author: Aaron Clark - EpochMod.com
 
-    Contributors:
+    Contributors: Andrew Gregory
 
 	Description:
-	RemoteExec whitelist for Epoch sandbox gamemode. This also blacklists default A3 remoteExec commands.
+	RemoteExec whitelist for Epoch Survival gamemode. This also blacklists default A3 remoteExec commands.
 
     Licence:
     Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
 
     Github:
-    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_config/Configs/CfgRemoteExec.hpp
+    https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_config/Configs/CfgRemoteExec.hpp
 */
 
 class CfgRemoteExec
@@ -83,6 +83,10 @@ class CfgRemoteExec
     };
 	class EPOCH_server_handle_switchMove {
       allowedTargets=2;
+      jip = 0;
+    };
+    class EPOCH_client_bitePlayer {
+      allowedTargets=1;
       jip = 0;
     };
 	class EPOCH_server_upgradeGroup {
@@ -197,6 +201,39 @@ class CfgRemoteExec
       allowedTargets=2;
       jip = 0;
     };
+	class EPOCH_server_triggerAntagonist {
+      allowedTargets=2;
+      jip = 0;
+    };
+	class EPOCH_server_deadPlayerDetonate {
+      allowedTargets=2;
+      jip = 0;
+    };
+	class epoch_server_playersetvariable {
+      allowedTargets=2;
+      jip = 0;
+    };
+	class EPOCH_spawn_vehicle {
+      allowedTargets=2;
+      jip = 0;
+    };
+	class EPOCH_Server_missionComms {
+      allowedTargets=2;
+      jip = 0;
+    };
+	class EPOCH_serverLootObject {
+      allowedTargets=2;
+      jip = 0;
+    };
+	class EPOCH_server_makeMarker {
+      allowedTargets=2;
+      jip = 0;
+    };
+	class EPOCH_server_removeMarker {
+      allowedTargets=2;
+      jip = 0;
+    };
+
   };
   class Commands {mode=0;};
 };

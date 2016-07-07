@@ -10,7 +10,7 @@
     Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
 
     Github:
-    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_code/compile/EPOCH_debugMonitor.sqf
+    https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_code/compile/EPOCH_debugMonitor.sqf
 */
 private ["_customVars","_hours"];
 _hours = floor(servertime/60/60);
@@ -18,7 +18,7 @@ _hours = floor(servertime/60/60);
 _customVars = "";
 {
 	_val = missionNamespace getVariable [format ["EPOCH_player%1",_x],EPOCH_defaultVars select _forEachIndex];
-	if !(_x in ["AliveTime","SpawnArray","HitPoints"]) then {
+	if !(_x in ["AliveTime","SpawnArray","HitPoints","MissionArray"]) then {
 		if (_x == "Temp") then {
 			_customVars = _customVars + format["<t size='1.15' font='puristaLight' align='left'>%1: </t><t size='1.15' font='puristaLight' align='right'>%2°F | %3°C</t><br/>", _x,_val,_val call EPOCH_convertTemp];
 		} else {

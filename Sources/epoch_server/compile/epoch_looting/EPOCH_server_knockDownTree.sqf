@@ -10,7 +10,7 @@
     Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
 
     Github:
-    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_server/compile/epoch_looting/EPOCH_server_knockDownTree.sqf
+    https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server/compile/epoch_looting/EPOCH_server_knockDownTree.sqf
 */
 private["_posWH", "_item", "_nearbyWH", "_payout", "_object", "_type", "_player"];
 params ["_object","_type","_player",["_token","",[""]]];

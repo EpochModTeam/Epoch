@@ -4,13 +4,13 @@
     Contributors:
 
 	Description:
-	Epoch cursorTarget anywhere
+	Direction from one object to another plus a degree value to chose a random direction within.
 
     Licence:
     Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
 
     Github:
-    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_code/compile/functions/EPOCH_fnc_dirToFuzzy.sqf
+    https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_code/compile/functions/EPOCH_fnc_dirToFuzzy.sqf
 
     Example:
     _dirToF = [_pos,_destination,44] call EPOCH_fnc_dirToFuzzy;
@@ -18,7 +18,7 @@
     Parameter(s):
 		_this select 0: (ARRAY or OBJECT) - position1
         _this select 1: (ARRAY or OBJECT) - position2
-        _this select 2: NUMBER - random spread [optional: default 32]
+        _this select 2: NUMBER - random spread [optional: default 32] max 360
 
 	Returns:
 	SCALAR - (direction 0-360)

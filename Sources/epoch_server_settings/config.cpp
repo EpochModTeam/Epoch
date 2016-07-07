@@ -10,7 +10,7 @@
     Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
 
     Github:
-    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_server_settngs/config.cpp
+    https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server_settngs/config.cpp
 */
 
 #define _ARMA_
@@ -20,7 +20,7 @@ class CfgPatches {
 		units[] = {};
 		weapons[] = {};
 		requiredVersion = 0.1;
-		epochVersion = "0.3.8.0";
+		epochVersion = "0.3.9.0";
 		requiredAddons[] = {};
 		#include "build.hpp"
 	};
@@ -30,6 +30,8 @@ class CfgPatches {
 #include "configs\CfgMainTable.h"
 #include "configs\CfgLootTable.h"
 #include "configs\CfgLootTable_CUP.h"
+// vehicle textures
+#include "configs\CfgEpochVehicles.h"
 // security checks
 #include "configs\security\security_checks.h"
 // props template
@@ -57,7 +59,9 @@ class CfgEpoch
 			{"NameCityCapital",4},
 			{"Airport",5}
 		};
-		traderBlds[] = {};
+		traderBlds[] = {"House", "Building"};
+		traderHomes[] = {"House", "Building"};
+		traderUniforms[] = {"U_OG_leader", "U_C_Poloshirt_stripped", "U_C_Poloshirt_blue", "U_C_Poloshirt_burgundy", "U_C_Poloshirt_tricolour", "U_C_Poloshirt_salmon", "U_C_Poloshirt_redwhite", "U_C_Poor_1", "U_C_WorkerCoveralls", "U_C_Journalist", "U_C_Scientist", "U_OrestesBody"};
 		containerPos[] = {};
 		telePos[] = {};
 		propsPos[] = {};
@@ -220,4 +224,5 @@ class CfgEpoch
 	#include "configs\maps\Utes.h"
 	#include "configs\maps\Woodland_ACR.h"
 	#include "configs\maps\Napf.h"
+	#include "configs\maps\tanoa.h"
 };

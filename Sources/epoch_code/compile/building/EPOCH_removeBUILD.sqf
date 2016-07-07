@@ -10,7 +10,7 @@
     Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
 
     Github:
-    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_code/compile/building/EPOCH_removeBUILD.sqf
+    https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_code/compile/building/EPOCH_removeBUILD.sqf
 
     Example:
     cursorTarget call EPOCH_removeBUILD;
@@ -58,7 +58,7 @@ if (_stability > 0) exitWith{
 if (_objType == "PlotPole_EPOCH") then {
 	if ((_object getVariable["BUILD_OWNER", "-1"]) != getPlayerUID player) then{
 		_buildingAllowed = false;
-		["<t size = '1.6' color = '#99ffffff'>Remove Disallowed: Frequency Blocked</t>", 5] call Epoch_dynamicText;
+		["Remove Disallowed: Frequency Blocked", 5] call Epoch_message;
 	};
 }
 else {
@@ -75,7 +75,7 @@ else {
 				_ownedJammerExists = true;
 			} else {
 				_buildingAllowed = false;
-				["<t size = '1.6' color = '#99ffffff'>Remove Disallowed: Frequency Blocked</t>", 5] call Epoch_dynamicText;
+				["Remove Disallowed: Frequency Blocked", 5] call Epoch_message;
 			};
 		};
 	};
@@ -87,6 +87,6 @@ _removeParts = getArray(('CfgBaseBuilding' call EPOCH_returnConfig) >> _objType 
 if !(_removeParts isEqualTo[]) then{
 	[_this, player, Epoch_personalToken] remoteExec ["EPOCH_server_removeBUILD",2];
 	_return = true;
-	["<t size='1.6' color='#99ffffff'>Removed</t>", 5] call Epoch_dynamicText;
+	["Removed", 5] call Epoch_message;
 };
 _return

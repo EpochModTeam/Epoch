@@ -10,7 +10,7 @@
     Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
 
     Github:
-    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_code/compile/setup/EPOCH_clientKeyMap.sqf
+    https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_code/compile/setup/EPOCH_clientKeyMap.sqf
 
     Example:
     _arr = 2 call EPOCH_clientKeyMap;
@@ -31,7 +31,6 @@ _keyMap =
 	["Action","EPOCH_keysAction",0x39],
 	["Holster Weapon", "EPOCH_keysHolster", 35],
 	["Debug Monitor", "EPOCH_keysDebugMon", 41],
-	["Trade", "EPOCH_keysAcceptTrade", 0x14],
 
 	["Volume + (ctrl)","EPOCH_keysVolumeUp",0x0D],
 	["Volume - (ctrl)","EPOCH_keysVolumeDown",0x0C],

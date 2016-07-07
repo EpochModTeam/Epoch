@@ -10,7 +10,7 @@
     Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
 
     Github:
-    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_server/compile/epoch_vehicle/EPOCH_server_packStorage.sqf
+    https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server/compile/epoch_vehicle/EPOCH_server_packStorage.sqf
 */
 private ["_wepsItemsCargo","_magsAmmoCargo","_objTypes","_objQty","_wMags","_wMagsArray","_attachments","_arrCount","_magazineName","_magazineSize","_qty","_objType","_posWH","_inventory","_gwh","_returnItems","_owners","_class"];
 params ["_unit","_player",["_token","",[""]]];
@@ -50,7 +50,6 @@ if (_class isKindOf 'Constructions_lockedstatic_F') then {
 
 		_gwh = createVehicle["groundWeaponHolder", _posWH, [], 0, "CAN_COLLIDE"];
 		_gwh setPosATL _posWH;
-
 		_config = 'CfgBaseBuilding' call EPOCH_returnConfig;
 		_returnItems = getArray(_config >> _class >> "returnOnPack");
 		{

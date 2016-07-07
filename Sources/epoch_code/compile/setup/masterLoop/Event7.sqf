@@ -1,13 +1,16 @@
-if ((EPOCH_playerSpawnArray select(EPOCH_spawnIndex find "Epoch_Sapper_F")) <= 0) then{
-	_sapperChance = 1 + (EPOCH_playerSoiled / 2);
-	if !(EPOCH_nearestLocations isEqualTo[]) then{
-		_sapperChance = _sapperChance + 2;
-	};
-	// 1% - 55% if soiled (+ 2% if in city) chance to spawn sapper every 10 minutes
-	if (random _sapperRndChance < _sapperChance) then{
-		"Epoch_Sapper_F" call EPOCH_unitSpawnIncrease;
+_spawnChance = ((EPOCH_playerNuisance + EPOCH_playerSoiled)/2) max 1;
+if (random EPOCH_droneRndChance < _spawnChance) then {
+	"I_UAV_01_F" call EPOCH_unitSpawnIncrease;
+};
+if (EPOCH_mod_Ryanzombies_Enabled) then {
+	if (random EPOCH_zombieRndChance < _spawnChance) then {
+		["EPOCH_RyanZombie_1",12] call EPOCH_unitSpawnIncrease;
 	};
 };
+if (random EPOCH_sapperRndChance < _spawnChance) then {
+	"Epoch_Sapper_F" call EPOCH_unitSpawnIncrease;
+};
+diag_log format["DEBUG: _spawnChance %1",_spawnChance];
 
 _spawnUnits = [];
 {

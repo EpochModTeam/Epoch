@@ -10,7 +10,7 @@
     Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
 
     Github:
-    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_code/compile/building/EPOCH_fnc_SelectTargetBuild.sqf
+    https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_code/compile/building/EPOCH_fnc_SelectTargetBuild.sqf
 
     Example:
     cursorTarget call EPOCH_fnc_SelectTargetBuild;
@@ -25,7 +25,7 @@ private ["_targeter","_stability"];
 
 if !(isNil "EPOCH_simulSwap_Lock") exitWith{ false };
 if !(isNull EPOCH_Target) exitWith{ false };
-if (EPOCH_playerEnergy <= 0) exitWith{ ["<t size='1.6' color='#99ffffff'>Need energy</t>", 5] call Epoch_dynamicText; false };
+if (EPOCH_playerEnergy <= 0) exitWith{ ["Need energy", 5] call Epoch_message; false };
 
 params [["_object",objNull]];
 

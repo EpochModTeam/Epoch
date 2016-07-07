@@ -10,7 +10,7 @@
     Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
 
     Github:
-    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_server/compile/epoch_server/EPOCH_server_createTeleport.sqf
+    https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server/compile/epoch_server/EPOCH_server_createTeleport.sqf
 */
 private ["_class","_debug1","_lightLocation","_light","_deSimulate","_pos","_dir","_ep","_useWorldPos","_pos1","_markerName","_loadBaseTemplateConfig","_pro2","_veh2","_enterClass","_exitClass","_pro1","_veh1","_debugLocation","_debug","_protection","_config","_loadBaseTemplateConfig"];
 
@@ -86,13 +86,12 @@ _config = configFile >> "CfgEpoch";
 
 	_ep allowDamage false;
 	if (_dir isEqualType []) then{
-		_ep setposATL _pos;
 		_ep setVectorDirAndUp _dir;
+		_ep setposATL _pos;
 	} else {
 		_ep setDir _dir;
 		_ep setposATL _pos;
 	};
-
 
 	if (_deSimulate) then{
 		_ep enableSimulationGlobal false;

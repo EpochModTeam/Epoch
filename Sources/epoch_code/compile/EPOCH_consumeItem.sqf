@@ -10,61 +10,18 @@
     Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
 
     Github:
-    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_code/compile/EPOCH_consumeItem.sqf
+    https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_code/compile/EPOCH_consumeItem.sqf
 */
-private ["_type","_magazineSize","_text","_item","_pic","_magazinesAmmoFull","_magazineSizeMax","_config","_pos","_object","_isStorage","_isOk","_buildClass","_interactReturnOnUse","_vehicle","_currentFuel","_canCapacity","_interactAttributes","_fuelCapacity","_newFuel","_removeItem","_vehicles","_transportFuel","_highestDMG","_currentHIT","_currentDMG","_newDMG","_paintCanIndex","_paintCanColor","_msg","_color","_unifiedInteract","_interactOption"];
+private ["_cfgBaseBuilding","_cfgItemInteractions","_type","_magazineSize","_text","_item","_pic","_magazinesAmmoFull","_magazineSizeMax","_pos","_object","_isStorage","_isOk","_buildClass","_interactReturnOnUse","_vehicle","_currentFuel","_canCapacity","_interactAttributes","_fuelCapacity","_newFuel","_removeItem","_vehicles","_transportFuel","_highestDMG","_currentHIT","_currentDMG","_newDMG","_paintCanIndex","_paintCanColor","_msg","_color","_unifiedInteract","_interactOption"];
+EPOCH_InteractedItem params ["_text","_item","_pic"];
 
-_text = EPOCH_InteractedItem select 0;
-_item = EPOCH_InteractedItem select 1;
-_pic = EPOCH_InteractedItem select 2;
-
-_type = "CfgMagazines";
-if (isClass (configfile >> "CfgWeapons" >> _item)) then {_type = "CfgWeapons"};
-
-_config = (configfile >> _type >> _item);
-_type = getNumber(_config >> "type");
-_interactOption = getNumber(_config >> "interactAction");
-_interactReturnOnUse = getText(_config >> "interactReturnOnUse");
-_interactAttributes = getArray(_config >> "interactAttributes");
+_cfgBaseBuilding = 'CfgBaseBuilding' call EPOCH_returnConfig;
+_cfgItemInteractions = (('CfgItemInteractions' call EPOCH_returnConfig) >> _item);
+_interactOption = getNumber(_cfgItemInteractions >> "interactAction");
+_interactReturnOnUse = getText(_cfgItemInteractions >> "interactReturnOnUse");
+_interactAttributes = getArray(_cfgItemInteractions >> "interactAttributes");
 
 _removeItem = {([player,_this] call BIS_fnc_invRemove) == 1};
-
-_giveAttributes = {
-	private ["_return","_randomData","_index","_data","_addPlus"];
-	_index = _this select 0;
-	_data = _this select 1;
-	_addPlus = if (_data > 0) then {"+"} else {""};
-	_return = "";
-	if (_data != 0) then {
-		_editableVars = [["Temp"],["Hunger"],["Thirst"],["Energy"],["Soiled"],["Immunity"],["Toxicity",true],["Stamina"],["Wet"],["BloodP"],["Karma"],["Alcohol"],["Radiation"]];
-		_selectedVar = _editableVars select _index;
-		_selectedVar params ["_selectedVarName",["_randomNum",false]];
-		_varName = format["EPOCH_player%1",_selectedVarName];
-		_customVarIndex = EPOCH_customVars find _selectedVarName;
-		_limits = EPOCH_customVarLimits select _customVarIndex;
-		_limits params [["_max",100],["_min",0]];
-		if (_max isEqualType "") then {
-			_max = missionNamespace getVariable [_max, 0];
-		};
-		if (_min isEqualType "") then {
-			_min = missionNamespace getVariable [_min, 0];
-		};
-		_currentVal = missionNamespace getVariable [_varName, EPOCH_defaultVars select _customVarIndex];
-		if (_randomNum) then {
-			_data = round(random _data);
-		};
-		_newValue = ((_currentVal + _data) min _max) max _min;
-		missionNamespace setVariable [_varName, _newValue];
-		if (_selectedVarName == "Temp") then {
-			_celcuis = _data call EPOCH_convertTemp;
-			_celcuisNew = _newValue call EPOCH_convertTemp;
-			_return = format["%1: %2%3 (%4 °F) %2%5 (%6 °C)",(localize format["str_epoch_pvar_%1",_selectedVarName]),_addPlus,_data,_newValue,_celcuis,_celcuisNew];
-		} else {
-			_return = format["%1: %2%3 (%4/%5)", (localize format["str_epoch_pvar_%1",_selectedVarName]), _addPlus, _data, _newValue, _max];
-		};
-	};
-	_return
-};
 
 _unifiedInteract = {
 	if (_item call _removeItem) then {
@@ -72,9 +29,9 @@ _unifiedInteract = {
 			_interactReturnOnUse call EPOCH_fnc_addItemOverflow;
 		};
 		{
-			_output = [_forEachIndex, _x] call _giveAttributes;
+			_output = _x call EPOCH_giveAttributes;
 			if (_output != "") then {
-				[format["<t size='1.6' color='#99ffffff'>%1</t>", _output], 5] call Epoch_dynamicText;
+				[_output, 5] call Epoch_message;
 			};
 		} foreach _interactAttributes;
 	};
@@ -82,7 +39,7 @@ _unifiedInteract = {
 
 switch _interactOption do {
 	case 0: {
-		_magazineSizeMax = getNumber (_config >> "count");
+		_magazineSizeMax = getNumber (configfile >> "CfgMagazines" >> _item >> "count");
 		// allow repack for all magazines with greater than 1 bullet
 		if (_magazineSizeMax > 1) then {
 
@@ -108,7 +65,7 @@ switch _interactOption do {
 			if ((_magazineSize % _magazineSizeMax) > 0) then {
 				player addMagazine [_item, floor (_magazineSize % _magazineSizeMax)];
 			};
- 			["<t size='1.6' color='#99ffffff'>Ammo Repacked</t>", 5] call Epoch_dynamicText;
+ 			["Ammo Repacked", 5] call Epoch_message;
 		};
 	};
 	case 1: _unifiedInteract; // Eat 1
@@ -118,9 +75,10 @@ switch _interactOption do {
 		_buildingJammerRange = ["CfgEpochClient", "buildingJammerRange", 75] call EPOCH_fnc_returnConfigEntryV2;
 		_buildingCountLimit = ["CfgEpochClient", "buildingCountLimit", 200] call EPOCH_fnc_returnConfigEntryV2;
 		_partCheck = _item in (magazines player);
-		_buildClass = getText(configfile >> "CfgMagazines" >> _item >> "buildClass");
+
+		_buildClass = getText(_cfgItemInteractions >> "buildClass");
 		if (_buildClass != "" && _partCheck) then {
-			_isStorage = getNumber(configfile >> "CfgMagazines" >> _item >> "isStorage");
+			_isStorage = getNumber(_cfgItemInteractions >> "isStorage");
 
 			_isOk = if (_isStorage == 1 || _buildClass isKindOf "Secure_Storage_Temp") then { EPOCH_StorageSlotsCount > 0 } else { EPOCH_BuildingSlotCount > 0 };
 
@@ -149,7 +107,7 @@ switch _interactOption do {
 											[_object] spawn EPOCH_simulSwap;
 										};
 									} else {
-										["<t size = '1.6' color = '#99ffffff'>Building Disallowed: Frequency Unstable</t>", 5] call Epoch_dynamicText;
+										["Building Disallowed: Frequency Unstable", 5] call Epoch_message;
 									};
 								} else {
 									_object=createVehicle[_buildClass,_pos,[],0,"CAN_COLLIDE"];
@@ -157,14 +115,14 @@ switch _interactOption do {
 									[_object,_item] spawn EPOCH_staticMove;
 								};
 								// _object spawn EPOCH_countdown;
-								[format["<t size='1.6' color='#99ffffff'>Press '%1' to drop object.</t>", "1"], 5] call Epoch_dynamicText;
+								[format["Press '%1' to drop object.", "1"], 5] call Epoch_message;
 
 							} else {
-								["<t size = '1.6' color = '#99ffffff'>Need Energy< / t>", 5] call Epoch_dynamicText;
+								["Need Energy", 5] call Epoch_message;
 							};
 						};
 					} else {
-						["<t size='1.6' color='#99ffffff'>World limit reached</t>", 5] call Epoch_dynamicText;
+						["World limit reached", 5] call Epoch_message;
 					};
 				};
 			};
@@ -186,7 +144,7 @@ switch _interactOption do {
 				// send
 				[_vehicle,_newFuel,player,Epoch_personalToken] remoteExec ["EPOCH_server_fillVehicle",2];
 
-				["<t size='1.6' color='#99ffffff'>Fuel Added</t>", 5] call Epoch_dynamicText;
+				["Fuel Added", 5] call Epoch_message;
 			};
 		};
 	};
@@ -201,10 +159,10 @@ switch _interactOption do {
 				if (_item call _removeItem) then {
 					_interactReturnOnUse call EPOCH_fnc_addItemOverflow;
 					[_vehicle,_newFuel,player,Epoch_personalToken] remoteExec ["EPOCH_server_fillVehicle",2];
-					["<t size='1.6' color='#99ffffff'>Fuel Siphoned</t>", 5] call Epoch_dynamicText;
+					["Fuel Siphoned", 5] call Epoch_message;
 				};
 			} else {
-				["<t size='1.6' color='#99ffffff'>Not Enough Fuel</t>", 5] call Epoch_dynamicText;
+				["Not Enough Fuel", 5] call Epoch_message;
 			};
 		} else {
 
@@ -217,10 +175,10 @@ switch _interactOption do {
 			if (_transportFuel > _canCapacity) then {
 				if (_item call _removeItem) then {
 					_interactReturnOnUse call EPOCH_fnc_addItemOverflow;
-					["<t size='1.6' color='#99ffffff'>Fuel Siphoned</t>", 5] call Epoch_dynamicText;
+					["Fuel Siphoned", 5] call Epoch_message;
 				};
 			} else {
-				["<t size='1.6' color='#99ffffff'>Not Enough Fuel</t>", 5] call Epoch_dynamicText;
+				["Not Enough Fuel", 5] call Epoch_message;
 			};
 		};
 	};
@@ -261,7 +219,7 @@ switch _interactOption do {
 						[_vehicle,["ALL",0],player,Epoch_personalToken] remoteExec ["EPOCH_server_repairVehicle",2];
 					};
 				};
-				["<t size='1.6' color='#99ffffff'>Vehicle Partially Repaired</t>", 5] call Epoch_dynamicText;
+				["Vehicle Partially Repaired", 5] call Epoch_message;
 			};
 		};
 	};
@@ -271,7 +229,7 @@ switch _interactOption do {
 		if (_vehicle in _vehicles) then {
 			if (_item call _removeItem) then {
 				[_vehicle,["ALL",0],player,Epoch_personalToken] remoteExec ["EPOCH_server_repairVehicle",2];
-				["<t size='1.6' color='#99ffffff'>Vehicle Fully Repaired</t>", 5] call Epoch_dynamicText;
+				["Vehicle Fully Repaired", 5] call Epoch_message;
 			};
 		};
 	};
@@ -283,24 +241,23 @@ switch _interactOption do {
 		_vehicle = cursorTarget;
 		if (_vehicle in _vehicles) then {
 			if ("" call EPOCH_isBuildAllowed) then {
-				_color = getArray(configFile >> "CfgVehicles" >> (typeOf _vehicle) >> "availableTextures");
+				_color = getArray(_cfgBaseBuilding >> (typeOf _vehicle) >> "availableTextures");
 				if !(_color isEqualTo[]) then {
 
 					if (_item call _removeItem) then {
 
 						// find _paintCanIndex from config
-						_paintCanIndex = getNumber(configfile >> "CfgMagazines" >> _item >> "textureIndex");
-						_paintCanColor = getText(configfile >> "CfgMagazines" >> _item >> "colorName");
+						_paintCanIndex = getNumber(_cfgItemInteractions >> "textureIndex");
+						_paintCanColor = getText(_cfgItemInteractions >> "colorName");
 
 						[_vehicle,_paintCanIndex,player,Epoch_personalToken] remoteExec ["EPOCH_server_paintBUILD",2];
 
-						_msg = format["Wall Painted %1", _paintCanColor];
-						[format["<t size='1.6' color='#99ffffff'>%1</t>", _msg], 5] call Epoch_dynamicText;
+						[format["Wall Painted %1", _paintCanColor], 5] call Epoch_message;
 					};
 				};
 			}
 			else {
-				["<t size = '1.6' color = '#99ffffff'>Disallowed</t>", 5] call Epoch_dynamicText;
+				["Disallowed", 5] call Epoch_message;
 			};
 		};
 	};
@@ -312,14 +269,14 @@ switch _interactOption do {
 			if (damage _vehicle != 0) then {
 				if (_item call _removeItem) then {
 					[_vehicle,["ALL",0],player,Epoch_personalToken] remoteExec ["EPOCH_server_repairVehicle",2];
-					["<t size = '1.6' color = '#99ffffff'>Healed other player</t>", 5] call Epoch_dynamicText;
+					["Healed other player", 5] call Epoch_message;
 				};
 			};
 		} else {
 			if (damage player != 0) then {
 				if (_item call _removeItem) then {
 					[player,["ALL",0],player,Epoch_personalToken] remoteExec ["EPOCH_server_repairVehicle",2];
-					["<t size = '1.6' color = '#99ffffff'>Healed yourself</t>", 5] call Epoch_dynamicText;
+					["Healed yourself", 5] call Epoch_message;
 				};
 			};
 		};
@@ -328,11 +285,11 @@ switch _interactOption do {
 	case 14: { // Unpack Backpack
 		if (_item call _removeItem) then {
 			[_interactReturnOnUse,player,Epoch_personalToken] remoteExec ["EPOCH_server_unpackBackpack",2];
-			["<t size = '1.6' color = '#99ffffff'>Unpacked backpack</t>", 5] call Epoch_dynamicText;
+			["Unpacked backpack", 5] call Epoch_message;
 		};
 	};
 
 	default {
-		["<t size='1.6' color='#99ffffff'>Found nothing</t>", 5] call Epoch_dynamicText;
+		["Found nothing", 5] call Epoch_message;
 	};
 };

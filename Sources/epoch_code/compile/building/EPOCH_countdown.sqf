@@ -10,7 +10,7 @@
     Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
 
     Github:
-    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_code/compile/building/EPOCH_countdown.sqf
+    https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_code/compile/building/EPOCH_countdown.sqf
 
     Example:
     _currentTarget spawn EPOCH_countdown;
@@ -21,7 +21,7 @@
 	Returns:
 	NOTHING
 */
-private ["_posObj","_savedBuildPos","_previousBuildPos","_saveCheck","_endTime","_worldspace","_class","_newObj","_startTime","_objClass"];
+private ["_cfgBaseBuilding","_posObj","_savedBuildPos","_previousBuildPos","_saveCheck","_endTime","_worldspace","_class","_newObj","_startTime","_objClass"];
 
 if (!isNull _this) then {
 
@@ -63,15 +63,17 @@ if (!isNull _this) then {
 
 		_objClass = typeOf _this;
 		// Spawn temporary static item insead of saving.
-		if (getNumber(configfile >> "CfgVehicles" >> _objClass >> "isTemporary") == 1) then {
+		_cfgBaseBuilding = 'CfgBaseBuilding' call EPOCH_returnConfig;
+		if (getNumber(_cfgBaseBuilding >> _objClass >> "isTemporary") == 1) then {
 			_worldspace = [getposATL _this, vectordir _this, vectorup _this];
 			deleteVehicle _this;
-			_class = getText(configfile >> "CfgVehicles" >> _objClass >> "staticClass");
-			_newObj = createVehicle["Fireplace_EPOCH", (_worldspace select 0), [], 0, "CAN_COLLIDE"];
+			_class = getText(_cfgBaseBuilding >> _objClass >> "staticClass");
+			if (_class != "") then {
+				_newObj = createVehicle[_class, (_worldspace select 0), [], 0, "CAN_COLLIDE"];
+				_newObj setVectorDirAndUp[_worldspace select 1, _worldspace select 2];
+				_newObj setposATL(_worldspace select 0);
 
-			_newObj setposATL(_worldspace select 0);
-			_newObj setVectorDirAndUp[_worldspace select 1, _worldspace select 2];
-		// proceed to send save to server
+			};
 		} else {
 			if (_saveCheck) then {
 				[_this, player, Epoch_personalToken] remoteExec["EPOCH_server_saveBuilding", 2];

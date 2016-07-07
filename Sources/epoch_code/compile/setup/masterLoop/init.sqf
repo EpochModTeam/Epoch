@@ -5,7 +5,8 @@ _panic = false;
 _prevEnergy = EPOCH_playerEnergy;
 
 // init config data
-_sapperRndChance = ["CfgEpochClient", "sapperRngChance", 100] call EPOCH_fnc_returnConfigEntryV2;
+EPOCH_sapperRndChance = ["CfgEpochClient", "sapperRngChance", 100] call EPOCH_fnc_returnConfigEntryV2;
+EPOCH_zombieRndChance = ["CfgEpochClient", "zombieRndChance", 50] call EPOCH_fnc_returnConfigEntryV2;
 EPOCH_droneRndChance = ["CfgEpochClient", "droneRngChance", 100] call EPOCH_fnc_returnConfigEntryV2;
 _baseHTLoss = ["CfgEpochClient", "baseHTLoss", 8] call EPOCH_fnc_returnConfigEntryV2;
 _energyCostNV = ["CfgEpochClient", "energyCostNV", 3] call EPOCH_fnc_returnConfigEntryV2;
@@ -17,6 +18,7 @@ EPOCH_playerIsSwimming = false;
 
 // default data if mismatch
 if (count EPOCH_playerSpawnArray != count EPOCH_spawnIndex) then{
+	EPOCH_playerSpawnArray = [];
 	{ EPOCH_playerSpawnArray pushBack 0 } forEach EPOCH_spawnIndex;
 };
 
@@ -97,3 +99,7 @@ _fadeUI = {
 };
 
 _cursorTarget = objNull;
+
+// init cfgBaseBuilding config var
+_cfgBaseBuilding = 'CfgBaseBuilding' call EPOCH_returnConfig;
+_cfgObjectInteractions = 'CfgObjectInteractions' call EPOCH_returnConfig;

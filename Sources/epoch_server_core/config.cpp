@@ -10,7 +10,7 @@
     Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
 
     Github:
-    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_server_core/config.hpp
+    https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server_core/config.hpp
 */
 
 #define _ARMA_

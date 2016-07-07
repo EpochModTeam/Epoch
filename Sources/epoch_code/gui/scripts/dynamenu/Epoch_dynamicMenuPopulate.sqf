@@ -10,7 +10,7 @@
     Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
 
     Github:
-    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_code/gui/scripts/dynamenu/Epoch_dynamicMenuPopulate.sqf
+    https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_code/gui/scripts/dynamenu/Epoch_dynamicMenuPopulate.sqf
 */
 #include "\A3\ui_f\hpp\defineCommonGrids.inc"
 private ["_x","_y","_arr","_inProgress","_display","_center","_scale","_defaultScaleX","_defaultScaleY","_distance","_scaleLargeX","_scaleLargeY","_scaleSmallX","_scaleSmallY","_points","_positions","_positions2"];

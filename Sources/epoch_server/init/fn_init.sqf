@@ -10,7 +10,7 @@
     Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
 
     Github:
-    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_server/init/fn_init.sqf
+    https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server/init/fn_init.sqf
 */
 if !(isNil "Epoch_SStart1") exitWith { false };
 Epoch_SStart1 = true;

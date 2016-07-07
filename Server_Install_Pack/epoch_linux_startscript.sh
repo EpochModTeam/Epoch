@@ -37,7 +37,7 @@ SERVERMODS=@epochhive
 # !!!!!!!!!! DO NOT EDIT ANYTHING BELOW THIS LINE !!!!!!!!!!
 #=======================================================================
 CFG_DIR=${ARMA_DIR}
-CONFIG=${CFG_DIR}/${NAME}/config.cfg
+CONFIG=${CFG_DIR}/${NAME}/server.cfg
 CFG=${CFG_DIR}/${NAME}/basic.cfg
 LOG_DIR=${ARMA_DIR}/logs
 BEPATH=${CFG_DIR}/${NAME}/battleye/
@@ -51,10 +51,10 @@ LOGFILE=${LOG_DIR}/port_${PORT}.`date +%d.%m.%y_%H%M`.log
 SERVER=${ARMA_DIR}/arma3server
 #=======================================================================
 ulimit -c 1000000
- 
+
 case "$1" in
- 
- 
+
+
 start)
 # check if there is a server running or not
 ps ax | grep ${SERVER} | grep ${PORT}  > /dev/null
@@ -71,7 +71,7 @@ echo "go" >${RUNFILE}
 nohup </dev/null >/dev/null $0 watchdog &
 fi
 ;;
- 
+
 stop)
 echo -e "Stopping A3 server if there is one (Port=\033[35m${PORT}\033[0m)..."
 if [ -f ${RUNFILE} ]; then
@@ -88,7 +88,7 @@ rm -f ${PIDFILE}
 fi
 fi
 ;;
- 
+
 status)
 if [ -f ${RUNFILE} ]; then
 echo -e "\033[32mRunfile exist, Server should be up or is starting...\033[0m"
@@ -106,13 +106,13 @@ echo $output | ps ax | grep ${SERVER} | grep ${PORT}
 fi
 fi
 ;;
- 
+
 restart)
 $0 stop
 sleep 5s
 $0 start
 ;;
- 
+
 watchdog)
 # zip old logfile and move it to old directory
 cd ${LOG_DIR}
@@ -123,7 +123,7 @@ echo >>${LOGFILE} "WATCHDOG ($$): [$(date)] Zipping logfiles from ${LOG_DIR} to 
 else
 echo >>${LOGFILE} "WATCHDOG ($$): [$(date)] No old logfile to zip in ${LOG_DIR}"
 fi
- 
+
 # zip old logfiles and move them to old directory
 cd ${ARMA_DIR}
 if  find ./*.log -type f; then
@@ -133,20 +133,20 @@ echo >>${LOGFILE} "WATCHDOG ($$): [$(date)] Zipping logfiles from ${ARMA_DIR} to
 else
 echo >>${LOGFILE} "WATCHDOG ($$): [$(date)] No old logfiles to zip in ${ARMA_DIR}"
 fi
- 
+
 # delete old logs when older then ${DELDAYS} days
 find ${LOG_DIR}/old -iname "*log.tgz" -mtime +${DELDAYS} -delete
 echo >>${LOGFILE} "WATCHDOG ($$): [$(date)] Deleting all zipped logfile in ${LOG_DIR}/old when older then ${DELDAYS} days."
- 
+
 # this is a background watchdog process. Do not start directly
 while [ -f ${RUNFILE} ]; do
 # launch the server...
 cd ${ARMA_DIR}
 echo >>${LOGFILE} "WATCHDOG ($$): [$(date)] Starting server (port ${PORT})..."
 export LD_LIBRARY_PATH=.:${ARMA_DIR}:${ARMA_DIR}/@epochhive:$LD_LIBRARY_PATH
- 
+
 ${SERVER} >>${LOGFILE} 2>&1 -config=${CONFIG} -cfg=${CFG} -port=${PORT} -name=${NAME} -pid=${PIDFILE} -mod=${MODS} -servermod=${SERVERMODS}  -bepath=${BEPATH} ${OTHERPARAMS}
- 
+
 if [ -f ${RUNFILE} ]; then
 echo >>${LOGFILE} "WATCHDOG ($$): [$(date)] Server died, waiting to restart..."
 sleep 5s
@@ -155,7 +155,7 @@ echo >>${LOGFILE} "WATCHDOG ($$): [$(date)] Server shutdown intentional, watchdo
 fi
 done
 ;;
- 
+
 check)
 clear
 echo -ne "\033[33mArmA 3 directory:\033[0m ${ARMA_DIR} "
@@ -165,7 +165,7 @@ else
 echo -e "\033[31mMISSING!\033[0m"
 echo -e "========= Check your settings (ARMA_DIR)! =========\n"
 fi
- 
+
 echo -ne "\033[33mServer executable:\033[0m ${SERVER} "
 if [ -x ${SERVER} ]; then
 echo -e "\033[32mOK\033[0m"
@@ -173,7 +173,7 @@ else
 echo -e "\033[31mMISSING!\033[0m"
 echo -e "========= Server executable not found, arma3server should be in that folder when path is right =========\n"
 fi
- 
+
 echo -ne "\033[33mCFG directory:\033[0m ${CFG_DIR}/${NAME} "
 if [ -d ${CFG_DIR}/${NAME} ]; then
 echo -e "\033[32mOK\033[0m"
@@ -182,7 +182,7 @@ echo -e "\033[31mMISSING!\033[0m"
 echo -e "========= We need that folder for the config files! You can use the next row to create it: ========="
 echo -e "\033[35mmkdir ${CFG_DIR}/${NAME}\033[0m\n"
 fi
- 
+
 echo -ne "\033[33mConfig file:\033[0m ${CONFIG} "
 if [ -f ${CONFIG} ]; then
 echo -e "\033[32mOK\033[0m"
@@ -190,7 +190,7 @@ else
 echo -e "\033[31mMISSING!\033[0m"
 echo -e "========= We need this file in that folder =========\n"
 fi
- 
+
 echo -ne "\033[33mBasic file:\033[0m ${CFG} "
 if [ -f ${CFG} ]; then
 echo -e "\033[32mOK\033[0m"
@@ -198,7 +198,7 @@ else
 echo -e "\033[31mMISSING!\033[0m"
 echo -e "========= We need this file in that folder =========\n"
 fi
- 
+
 echo -ne "\033[33mBattleye directory:\033[0m ${BEPATH} "
 if [ -d ${BEPATH} ]; then
 echo -e "\033[32mOK\033[0m"
@@ -207,7 +207,7 @@ echo -e "\033[31mMISSING!\033[0m"
 echo -e "========= We need that folder for the Battleye files! You can use the next row to create it: ========="
 echo -e "\033[35mmkdir ${BEPATH}\033[0m\n"
 fi
- 
+
 echo -ne "\033[33mArma3Profile:\033[0m ${CFG_DIR}/${NAME}/users/${NAME}/${NAME}.arma3profile "
 if [ -f ${CFG_DIR}/${NAME}/users/${NAME}/${NAME}.arma3profile ]; then
 echo -e "\033[32mOK\033[0m"
@@ -219,7 +219,7 @@ echo -n 'echo -e "version=2;\nviewDistance=3000;\npreferredObjectViewDistance=30
 echo -n "${CFG_DIR}/${NAME}/users/${NAME}/${NAME}.arma3profile"
 echo -e "\n\033[0m"
 fi
- 
+
 echo -ne "\033[33mLog directory:\033[0m ${LOG_DIR} "
 if [ -d ${LOG_DIR} ]; then
 echo -e "\033[32mOK\033[0m"
@@ -228,7 +228,7 @@ echo -e "\033[31mMISSING!\033[0m"
 echo -e "========= We need that folder. You can use the next row to create it: ========="
 echo -e "\033[35mmkdir ${LOG_DIR}\033[0m\n"
 fi
- 
+
 echo -ne "\033[33mOld Log directory:\033[0m ${LOG_DIR}/old "
 if [ -d ${LOG_DIR}/old ]; then
 echo -e "\033[32mOK\033[0m"
@@ -237,7 +237,7 @@ echo -e "\033[31mMISSING!\033[0m"
 echo -e "========= We need that folder. You can use the next row to create it: ========="
 echo -e "\033[35mmkdir ${LOG_DIR}/old\033[0m\n"
 fi
- 
+
 echo -ne "\033[33mProfile directory:\033[0m ~/.local/share/Arma\ 3\ -\ Other\ Profiles/${NAME} "
 if [ -d ~/.local/share/Arma\ 3\ -\ Other\ Profiles/${NAME} ]; then
 echo -e "\033[32mOK\033[0m"
@@ -247,7 +247,7 @@ echo -e "========= You should create this folder. You can use the next row for t
 echo -e "=========       ( Not sure if we need this? Capital letters are ok ?)       ========="
 echo -e "\033[35mmkdir -p ~/.local/share/Arma\ 3\ -\ Other\ Profiles/${NAME}\033[0m\n"
 fi
- 
+
 echo -ne "\033[33mArma3Profile symlink:\033[0m ~/.local/share/Arma\ 3\ -\ Other\ Profiles/${NAME}/${NAME}.Arma3Profile "
 if [ -L ~/.local/share/Arma\ 3\ -\ Other\ Profiles/${NAME}/${NAME}.Arma3Profile ]; then
 echo -e "\033[32mOK\033[0m"
@@ -257,17 +257,17 @@ echo -e "========= You should creat this symlink. You can use the next row for t
 echo -e "=========       ( Capital letters are ok in ~/.local/share/Arma 3.. !)      ========="
 echo -e "\033[35mln -s ${CFG_DIR}/${NAME}/${NAME}.arma3profile ~/.local/share/Arma\ 3\ -\ Other\ Profiles/${NAME}/${NAME}.Arma3Profile\033[0m\n"
 fi
- 
+
 echo -e "\n\033[33mPort number will be: \033[0m${PORT}"
 echo -e "\033[33mPID file will be: \033[0m${PIDFILE}"
 echo -e "\033[33mRUN file will be: \033[0m${RUNFILE}"
- 
+
 echo -e "\n\033[33mStart cmd will be:\033[0m"
 echo -e "${SERVER} >>${LOGFILE} 2>&1 -config=${CONFIG} -cfg=${CFG} -port=${PORT} -name=${NAME} -pid=${PIDFILE} -mod=${MODS} ${OTHERPARAMS}"
- 
+
 echo -e "\n\033[31mIf you got something MISSING, you have to work from the top to the bottom, fix the top issue and start the check again!\033[0m"
 ;;
- 
+
 log)
 # you can see the logfile in realtime, no more need for screen or something else
 clear
@@ -276,7 +276,7 @@ echo "========================================"
 sleep 1s
 tail -f ${LOG_DIR}/port_${PORT}*.log
 ;;
- 
+
 *)
 echo "$0 (start|stop|restart|status|check|log)"
 ;;

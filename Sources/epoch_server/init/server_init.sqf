@@ -10,7 +10,7 @@
     Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
 
     Github:
-    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_server/init/server_init.sqf
+    https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server/init/server_init.sqf
 */
 _startTime = diag_tickTime;
 missionNamespace setVariable ['Epoch_ServerVersion', getText(configFile >> "CfgMods" >> "Epoch" >> "version"), true];
@@ -52,9 +52,8 @@ if (isNil "_instanceID") exitWith{
     "Epoch: InstanceID missing!" call _abortAndError;
 };
 
-EPOCH_modCUPWeaponsEnabled = (getNumber (configFile >> "CfgPatches" >> "CUP_WheeledVehicles_Core" >> "requiredVersion") > 0);
-EPOCH_modCUPVehiclesEnabled = (getNumber (configFile >> "CfgPatches" >> "CUP_Weapons_WeaponsCore" >> "requiredVersion") > 0);
-
+EPOCH_modCUPWeaponsEnabled = (getNumber (configFile >> "CfgPatches" >> "CUP_Weapons_WeaponsCore" >> "requiredVersion") > 0);
+EPOCH_modCUPVehiclesEnabled = (getNumber (configFile >> "CfgPatches" >> "CUP_WheeledVehicles_Core" >> "requiredVersion") > 0);
 if (EPOCH_modCUPWeaponsEnabled) then {
     diag_log "Epoch: CUP Weapons detected";
 };
@@ -63,27 +62,24 @@ if (EPOCH_modCUPVehiclesEnabled) then {
 };
 
 diag_log "Epoch: Init Variables";
-call compile preprocessFileLineNumbers "\x\addons\a3_epoch_server\init\server_variables.sqf";
-call compile preprocessFileLineNumbers "\x\addons\a3_epoch_server\init\server_securityfunctions.sqf";
+call compile preprocessFileLineNumbers "\epoch_server\init\server_variables.sqf";
+call compile preprocessFileLineNumbers "\epoch_server\init\server_securityfunctions.sqf";
 
 ["I", _instanceID, "86400", ["CONTINUE"]] call EPOCH_fnc_server_hiveSETEX;
 diag_log format["Epoch: Start Hive, Instance ID: '%1'", _instanceID];
 
 diag_log "Epoch: Init Connect/Disconnect handlers";
-addMissionEventHandler ["HandleDisconnect", { _this call EPOCH_server_onPlayerDisconnect }];
 
-["EPOCH_onPlayerConnected", "onPlayerConnected", {
-    "epochserver" callExtension format["001|%1", _uid];
-    diag_log format["playerConnected:%1:%2", _uid, _name];
-    ['Connected', [_uid, _name]] call EPOCH_fnc_server_hiveLog;
+onPlayerConnected {}; // seems this is needed or addMissionEventHandler "PlayerConnected" does not work. as of A3 1.60
+addMissionEventHandler ["PlayerConnected", {
+    params ["_id","_uid","_name","_jip","_owner"];
+    // TODO: diabled STEAMAPI - Vac ban check needs reworked.
+    // "epochserver" callExtension format["001|%1", _uid];
+    // diag_log format["playerConnected:%1", _this];
     ["PlayerData", _uid, EPOCH_expiresPlayer, [_name]] call EPOCH_fnc_server_hiveSETEX;
-}] call BIS_fnc_addStackedEventHandler;
-
-["EPOCH_onPlayerDisconnected", "onPlayerDisconnected", {
-    diag_log format["playerDisconnected:%1:%2", _uid, _name];
-    ['Disconnected', [_uid, _name]] call EPOCH_fnc_server_hiveLog;
-    _uid call EPOCH_server_disconnect;
-}] call BIS_fnc_addStackedEventHandler;
+    ['Connected', [_uid, _name]] call EPOCH_fnc_server_hiveLog;
+}];
+addMissionEventHandler ["HandleDisconnect", {_this call EPOCH_server_onPlayerDisconnect}];
 
 diag_log "Epoch: Setup Side Settings";
 //set side status
@@ -144,6 +140,8 @@ _allowedVehicleListName = ["allowedVehiclesList","allowedVehiclesList_CUP"] sele
 _allowedVehiclesList = getArray(configFile >> "CfgEpoch" >> worldName >> _allowedVehicleListName);
 _vehicleSlotLimit = 0;
 {_vehicleSlotLimit = _vehicleSlotLimit + (_x select 1)} forEach _allowedVehiclesList;
+_ReservedSlots = 50;
+_vehicleSlotLimit = _vehicleSlotLimit + _ReservedSlots;
 _vehicleSlotLimit call EPOCH_load_vehicles;
 
 diag_log "Epoch: Spawning vehicles";
@@ -151,6 +149,14 @@ _allowedVehiclesListArray = [];
 {
     _x params ["_vehClass","_velimit"];
     _vehicleCount = {typeOf _x == _vehClass} count vehicles;
+
+    // Load how many of this vehicle are in stock at any trader.
+    _indexStock = EPOCH_traderStoredVehicles find _vehClass;
+    if (_indexStock != -1) then {
+        _existingStock = EPOCH_traderStoredVehiclesCnt select _indexStock;
+        _vehicleCount = _vehicleCount + _existingStock;
+    };
+
     for "_i" from 1 to (_velimit-_vehicleCount) do {
         _allowedVehiclesListArray pushBack _vehClass;
     };
@@ -163,7 +169,7 @@ EPOCH_StorageSlotsLimit call EPOCH_load_storage;
 diag_log "Epoch: Loading static loot";
 call EPOCH_server_spawnBoatLoot;
 
-[] execFSM "\x\addons\a3_epoch_server\system\server_monitor.fsm";
+[] execFSM "\epoch_server\system\server_monitor.fsm";
 
 // Setting Server Date and Time
 _dateChanged = false;

@@ -6,7 +6,7 @@
 	http://creativecommons.org/licenses/by-nc-nd/4.0/
 
 	Improvements and or bugfixes and other contributions are welcome via the github:
-	https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_server_settings/EpochEvents/ChangeWeather.sqf
+	https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server_settings/EpochEvents/ChangeWeather.sqf
 */
 
 private ["_tempOVRD","_rainOVRD","_fogOVRD","_overcastOVRD","_windOVRD","_arr","_response","_windValX","_windValZ","_WeatherChangeTime","_force","_rnd_temp","_fog","_rain","_overcast"];

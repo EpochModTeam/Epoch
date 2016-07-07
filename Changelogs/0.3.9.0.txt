@@ -1,0 +1,64 @@
+[New] Epoch Mod configs and some community pbo's are now released under APL-SA license here: https://github.com/EpochModTeam/EpochCore
+[Added] Tanoa map support.
+[Added] New Task based Mission System.
+[Added] (Optional) Support for Ryan's Zombies and Demons mod: http://steamcommunity.com/sharedfiles/filedetails/?id=501966277 with custom Epoch implementation.
+[Added] New custom variable EPOCH_playerNuisance that increases based on the type of weapon fired and decreases at a rate of 1 per 10 seconds. This is used to track how active a shooter the player is.
+[Added] Player option to Morph into a random antagonist (from deathMorphClass) after death. The array 'deathMorphClass' found in CfgEpochClient can be used to specify what antagonists to randomly spawn.
+[Added] Player option to detonate body after death. Sacrifice yourself by generating a runaway thermal cascade using the nano bots within your body. Nothing left to revive.
+[Added] object loot tables for zombies, sharks and Dogs.
+[Added] looting Dogs for meat (uses placeholder object "goat leg"). Negative Karma given for eating or gutting dogs.
+[Changed] Increased loot bias 10% overall and increased loot density for military and other larger buildings.
+[Changed] new function Epoch_message, replaces Epoch_dynamicText.
+[Changed] Object Interaction and EPOCH_client_bitePlayer settings in now config CfgObjectInteractions. Lootable objects can now effect player stats.
+[Changed] Moved all Base Building variables to gamemode config CfgBaseBuilding.
+[Changed] Moved all Item Interaction to new gamemode config CfgItemInteractions.
+[Changed] Sapper groan or detonate can be triggered by setting a variable on the target or sapper.
+[Changed] Server can be asked by a client / server to trigger an antagonist on another client. Antagonist is then run on target PC, independent from caller of function.
+[Changed] Epoch Unit Spawn code. Now can be called specifying the target of the antagonist. Antagonist will run on target client PC.
+[Changed] Sapper defaults tweaked to make them more responsive.
+[Changed] New Sapper antagonist config options:
+reflexSpeed - Set the loop pause. Defaults have been lowered to make sapper more responsive.
+nestChance - A percentage chance, at each sapper spawn, that he will create a nest.
+hideLevel - (Fear Emotion) Set level at which sapper will go into hiding based on fear of armed players, being shot near etc.
+chargeLevel - (Anger Emotion) Set level at which sapper will trigger 'charge the player' mode.
+[Changed] New UAV Support Troops antagonist config options:
+unitTypes - an array of soldier classes to randomly choose from. Custom weapons to-do, use soldiers with default weapon loadout or handle weapons with custom script.
+maxUnitNum - Maximum number of units to spawn per UAV.
+minAISkill - Minimum value for any AI skill.
+maxAimingAccuracy -> maxGeneral - Set the maximum value for each available AI skill. A random number between minAISkill and the value for each will be set as that skill.
+[Fixed] To prevent A3 dupe issues Epoch Militia Solders when taking uniforms, they no longer have uniforms.
+[Fixed] To prevent animation glitch with weapon switching on the move and holstering. You now must be standing still to holster your weapon.
+[Fixed] Custom Epoch Gestures not working since 1.60.
+[Fixed] Issue with animals not returning raw meat.
+[Fixed] Getting wet and cold on standing on pier. Thanks to umfufu for the report! http://epochmod.com/forum/topic/41929-getting-10-points-of-wetness/
+[Fixed] Missing texture issues with some base building objects since 0.3.8.
+[Info] A big thanks to Isaac, Axeman's chief tester!
+
+**Server Only**
+[Added] Improved plant spawner by Redbeard Actual and [VB]AWOL.
+[Added] Allow Epoch Events to accept full file path if 4th variable in the EpochEvents array is set to 0. Default is 1.
+[Added] Function to effect a players Crypto server side: EPOCH_server_effectCrypto
+[Added] New experimental PBO packing tool found in Epoch/Tools/PowerShell/
+[Added] Server function to allow remote exec of setVariable on client - Allows client to ask another client to set a local variable, via the server. Server can run same function.
+[Added] Epoch AH: Added ability to kick, instead of just log or ban.
+[Changed] Changed gamemode to Survival, (might show as unknown gamemode pre 1.62)
+[Changed] Reworked vehicle load function and made vehicles immune to damage for 120 seconds after startup.
+[Changed] cfgpatches check now kicks by default with message a message.
+[Changed] Vehicle persistence texture configs are now found in server settings pbo. https://github.com/EpochModTeam/Epoch/blob/experimental/Sources/epoch_server_settings/configs/CfgEpochVehicles.h
+[Changed] Use new disableChannels syntax in 1.60 and enable text chat on side chat and not voice. Thanks to @morgoth0 for the heads up! https://github.com/EpochModTeam/Epoch/issues/544
+[Changed] ForceRestart option should now restart as soon as all players disconnect and server is locked.
+[Changed] Epoch Events can now self initialize on server startup (if third events[] array element is 1). Fixes issue with weather not changing till first event run.
+[Removed] Epoch AH removed whitelisted variable check system.
+[Removed] STEAMAPI Vac ban check as it needs reworked in the extension.
+[Fixed] Take into account trader stored per class vehicle limits when spawning new vehicles.
+[Fixed] Disappearing Mags on login / revive. Thanks to He-Man for the fix: http://epochmod.com/forum/topic/42178-disappearing-mags-on-login-revive-fix/#comment-277194
+[Fixed] CUP mods enabled check logic typo. Thanks to @morgoth0 for the report: https://github.com/EpochModTeam/Epoch/issues/543
+[Fixed] BE kick when player opened stock A3 dialog (Game > Options > Layout).
+[Fixed] BE kick with Spawn Loot admin panel option. Thanks to @jostster for the report: https://github.com/EpochModTeam/Epoch/issues/540
+[Updated] Loot position tool: Epoch/Tools/SQF/saveLootPositionsVector.sqf
+[Updated] World config tool: Epoch/Tools/SQF/getTreesAndTrash.sqf
+[Info] Changed name of a3_epoch_server.pbo to epoch_server.pbo. Also changed path from \x\addons\a3_epoch_server to \epoch_server
+[Info] Changed name of a3_epoch_server_settings.pbo to epoch_server_settings.pbo.
+[Info] RConPort 2306 added to example-beserver.cfg for changes since A3 1.58.
+[Info] Removed old .bikey and added new one for 0390.
+[Info] Requires Arma 3 1.60 or higher.

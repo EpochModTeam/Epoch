@@ -10,7 +10,7 @@
     Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
 
     Github:
-    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_server/compile/epoch_looting/EPOCH_server_lootContainer.sqf
+    https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server/compile/epoch_looting/EPOCH_server_lootContainer.sqf
 */
 private ["_class","_pos","_dir","_object","_whConfig","_type","_lootClasses","_player","_maxLoot","_triggerType","_eventArray","_animated","_config"];
 params ["_object","_player",["_token","",[""]]];
@@ -45,8 +45,12 @@ if !(_object in EPOCH_cleanupQueue) then {
 		};
 
 		[_object, _type] call EPOCH_serverLootObject;
+		_errorMsg = "You found something!";
+		[_errorMsg, 5] remoteExec ['Epoch_message',_player];
 	} else {
 		[_object, "Food"] call EPOCH_serverLootObject;
+		_errorMsg = "You found Food!";
+		[_errorMsg, 5] remoteExec ['Epoch_message',_player];
 	};
 
 	if ((random 1) <= EPOCH_antagonistChanceLoot) then{

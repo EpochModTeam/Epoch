@@ -10,7 +10,7 @@
     Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
 
     Github:
-    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_code/gui/group/EPOCH_Group_BtnInvite.sqf
+    https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_code/gui/group/EPOCH_Group_BtnInvite.sqf
 */
 private ["_txt","_InvitePlayerCombo","_playerUID","_playerName","_upgradeSlots","_upgradePrice","_found","_currentMember","_currentMaxMember","_BtnInvite"];
 disableSerialization;

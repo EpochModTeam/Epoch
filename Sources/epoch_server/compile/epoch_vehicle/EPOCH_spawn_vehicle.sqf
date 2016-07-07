@@ -10,24 +10,22 @@
     Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
 
     Github:
-    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_server/compile/epoch_vehicle/EPOCH_spawn_vehicle.sqf
+    https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server/compile/epoch_vehicle/EPOCH_spawn_vehicle.sqf
 */
-private ["_maxDamage","_textures","_textureSelectionIndex","_selections","_colors","_color","_count","_vehLockHiveKey","_marker","_config","_vehObj"];
+private ["_maxDamage","_textures","_textureSelectionIndex","_selections","_colors","_color","_count","_vehLockHiveKey","_marker","_cfgEpochVehicles","_vehObj"];
 params ["_vehClass","_position","_direction","_locked","_slot",["_lockOwner",""],["_can_collide","CAN_COLLIDE"],["_spawnLoot",false],["_spawnDamaged",true]];
 if !(isClass (configFile >> "CfgVehicles" >> _vehClass)) exitWith {objNull};
 _vehObj = createVehicle[_vehClass, _position, [], 0, _can_collide];
 if !(isNull _vehObj) then{
 	_vehObj call EPOCH_server_setVToken;
-
 	// Set Direction and position
 	if (_direction isEqualType []) then{
+		_vehObj setVectorDirAndUp _direction;
 		_vehObj setposATL _position;
-	 	_vehObj setVectorDirAndUp _direction;
 	} else {
 		_vehObj setdir _direction;
 		_vehObj setposATL _position;
 	};
-
 	// Normalize vehicle inventory
 	clearWeaponCargoGlobal    _vehObj;
 	clearMagazineCargoGlobal  _vehObj;
@@ -52,13 +50,13 @@ if !(isNull _vehObj) then{
 	};
 
 	// get colors from config
-	_config = (configFile >> "CfgVehicles" >> _vehClass >> "availableColors");
+	_cfgEpochVehicles = 'CfgEpochVehicles' call EPOCH_returnConfig;
+	_availableColorsConfig = (_cfgEpochVehicles >> _vehClass >> "availableColors");
+	if (isArray(_availableColorsConfig)) then{
 
-	if (isArray(_config)) then{
-
-	  _textureSelectionIndex = configFile >> "CfgVehicles" >> _vehClass >> "textureSelectionIndex";
+	  _textureSelectionIndex = (_cfgEpochVehicles >> _vehClass >> "textureSelectionIndex");
 	  _selections = if (isArray(_textureSelectionIndex)) then{ getArray(_textureSelectionIndex) } else { [0] };
-	  _colors = getArray(_config);
+	  _colors = getArray(_availableColorsConfig);
 	  _textures = _colors select 0;
 	  _color = floor(random(count _textures));
 	  _count = (count _colors) - 1;

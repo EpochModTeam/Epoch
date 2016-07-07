@@ -10,7 +10,7 @@
     Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
 
     Github:
-    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_config/Configs/CfgSnapChecks.hpp
+    https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_config/Configs/CfgSnapChecks.hpp
 */
 
 class CfgSnapChecks {
@@ -18,16 +18,16 @@ class CfgSnapChecks {
         nails[] = {
             {{1.6,0,-0.6},{1.6,0,-0.75}},
             {{-1.6,0,-0.6},{-1.6,0,-0.75}},
-            {{1.6,0,-0.0307557},{1.8625,0,-0.0307557}},
-            {{-1.6,0,-0.0307557},{-1.8625,0,-0.0307557}}
+            {{0,0,-0.0307557},{1.8625,0,-0.0307557}},
+            {{0,0,-0.0307557},{-1.8625,0,-0.0307557}}
         };
     };
     class WoodLargeWall_EPOCH {
         nails[] = {
             {{2.46932,0,0.120775},{2.46932,0,-0.190775}},
             {{-2.46932,0,0.120775},{-2.46932,0,-0.190775}},
-            {{2.46932,0,1.5},{2.76932,0,1.5}},
-            {{-2.46932,0,1.5},{-2.76932,0,1.5}}
+            {{0,0,1.5},{2.76932,0,1.5}},
+            {{0,0,1.5},{-2.76932,0,1.5}}
         };
     };
     class WoodWall1_EPOCH : WoodLargeWall_EPOCH {};
@@ -43,10 +43,10 @@ class CfgSnapChecks {
     class CinderWallHalf_EPOCH : WoodLargeWall_EPOCH {};
     class WoodFloor_Epoch {
         nails[] = {
-            {{2.5555,0,0.15},{2.8555,0,0.15}},
-            {{0,-2.5555,0.15},{0,2.8555,0.15}},
-            {{-2.5555,0,0.15},{-2.8555,0,0.15}},
-            {{0,-2.5555,0.15},{0,-2.8555,0.15}},
+            {{0,0,0.15},{2.8555,0,0.15}},
+            {{0,0,0.15},{0,2.8555,0.15}},
+            {{0,0,0.15},{-2.8555,0,0.15}},
+            {{0,0,0.15},{0,-2.8555,0.15}},
 
             {{2.5555,0,0.15},{2.5555,0,-0.15}},
             {{-2.5555,0,0.15},{-2.5555,0,-0.15}},

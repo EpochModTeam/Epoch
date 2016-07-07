@@ -10,7 +10,7 @@
     Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
 
     Github:
-    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_server/init/server_init.sqf
+    https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server/init/server_init.sqf
 */
 EPOCH_BuildingSlots = [];
 EPOCH_TraderSlots = [];
@@ -23,6 +23,8 @@ EPOCH_defaultVars_SEPXVar = compileFinal str(EPOCH_defaultVars);
 EPOCH_group_upgrade_lvl_SEPXVar = EPOCH_group_upgrade_lvl;
 EPOCH_staticTraderLocations = [];
 EPOCH_staticNPCTraderPos = [];
+EPOCH_traderStoredVehicles = [];
+EPOCH_traderStoredVehiclesCnt = [];
 
 _configArray = [
 	["serverRestart", false],

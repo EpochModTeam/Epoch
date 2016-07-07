@@ -10,7 +10,7 @@
     Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
 
     Github:
-    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_server/compile/epoch_traders/EPOCH_server_loadTraders.sqf
+    https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server/compile/epoch_traders/EPOCH_server_loadTraders.sqf
 */
 private ["_arr","_currentStock","_limit","_toBeRemoved","_marker","_staticTrader","_agent","_class","_pos","_randomAIUniform","_dir","_objHiveKey","_response","_schedule","_home","_work","_traderSlotIndex","_staticTradersArray","_staticTradersArrCount","_aiTables","_serverSettingsConfig","_storedVehicleLimit"];
 params [["_maxTraderLimit",0]];
@@ -73,6 +73,18 @@ for "_i" from 0 to _maxTraderLimit do {
 				if (_x isKindOf "Air" || _x isKindOf "Ship" || _x isKindOf "LandVehicle" || _x isKindOf "Tank") then {
 					if (EPOCH_storedVehicleCount <= _storedVehicleLimit) then {
 						EPOCH_storedVehicleCount = EPOCH_storedVehicleCount + _currentStock;
+
+						// Count how many of this vehicle are in stock at any trader.
+						if !(_x in EPOCH_traderStoredVehicles) then {
+							EPOCH_traderStoredVehicles pushBack _x;
+							EPOCH_traderStoredVehiclesCnt pushBack _currentStock;
+						} else {
+							_indexStock = EPOCH_traderStoredVehicles find _x;
+							if (_indexStock != -1) then {
+								_existingStock = EPOCH_traderStoredVehiclesCnt select _indexStock;
+								EPOCH_traderStoredVehiclesCnt set [_indexStock, (_existingStock + _currentStock)];
+							};
+						};
 					} else {
 						_toBeRemoved pushBack _forEachIndex;
 					};
@@ -142,7 +154,7 @@ for "_i" from 0 to _maxTraderLimit do {
 				_agent addEventHandler ["Killed", { _this call EPOCH_server_traderKilled; }];
 
 				if !(EPOCH_forceStaticTraders) then {
-					[_agent, _home, _work] execFSM "\x\addons\a3_epoch_server\system\Trader_brain.fsm";
+					[_agent, _home, _work] execFSM "\epoch_server\system\Trader_brain.fsm";
 				};
 
 				_agent setVariable ["AI_SLOT", _i, true];
@@ -177,6 +189,18 @@ for "_i" from 0 to _maxTraderLimit do {
 						if (_x isKindOf "Air" || _x isKindOf "Ship" || _x isKindOf "LandVehicle" || _x isKindOf "Tank") then {
 							if (EPOCH_storedVehicleCount <= _storedVehicleLimit) then {
 								EPOCH_storedVehicleCount = EPOCH_storedVehicleCount + _currentStock;
+								
+								// Count how many of this vehicle are in stock at any trader.
+								if !(_x in EPOCH_traderStoredVehicles) then {
+									EPOCH_traderStoredVehicles pushBack _x;
+									EPOCH_traderStoredVehiclesCnt pushBack _currentStock;
+								} else {
+									_indexStock = EPOCH_traderStoredVehicles find _x;
+									if (_indexStock != -1) then {
+										_existingStock = EPOCH_traderStoredVehiclesCnt select _indexStock;
+										EPOCH_traderStoredVehiclesCnt set [_indexStock, (_existingStock + _currentStock)];
+									};
+								};					
 							} else {
 								_toBeRemoved pushBack _forEachIndex;
 							};

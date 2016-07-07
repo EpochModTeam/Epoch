@@ -10,14 +10,14 @@
     Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
 
     Github:
-    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_code/compile/EPOCH_UnisexCheck.sqf
+    https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_code/compile/EPOCH_UnisexCheck.sqf
 */
 private ["_femaleVariant","_vest","_item","_config","_woman","_maleVariant","_vestItems","_mags"];
 params ["_unit","_container","_item"];
 
 // check for access of a locked container
 if (_container getVariable['EPOCH_Locked', false]) then {
-	// kick player
+	// kick player, TODO: temp ban?
 	EPOCH_kicked = format ["%1 attempted to access a locked %2 with %3",_unit,_container,_item];
 	publicVariableServer "EPOCH_kicked";
 };

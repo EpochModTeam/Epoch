@@ -10,12 +10,13 @@
     Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
 
     Github:
-    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_server/compile/epoch_bases/EPOCH_server_loadBuildings.sqf
+    https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server/compile/epoch_bases/EPOCH_server_loadBuildings.sqf
 */
 
 _maxTTL = parseNumber EPOCH_expiresBuilding;
-_config = 'CfgEpochClient' call EPOCH_returnConfig;
-_buildingJammerRange = getNumber(_config >> "buildingJammerRange");
+_cfgEpochClient = 'CfgEpochClient' call EPOCH_returnConfig;
+_cfgBaseBuilding = 'CfgBaseBuilding' call EPOCH_returnConfig;
+_buildingJammerRange = getNumber(_cfgEpochClient >> "buildingJammerRange");
 if (_buildingJammerRange == 0) then { _buildingJammerRange = 75; };
 
 _VAL = ["", [], "", "", 0, []];
@@ -73,17 +74,17 @@ for "_i" from 0 to _this do {
 		if (isClass (configFile >> "CfgVehicles" >> _class) && (_damage < 1) && !(_class isKindOf 'Constructions_lockedstatic_F')) then {
 
 			_baseObj = createVehicle [_class, [0,0,0], [], 0, "CAN_COLLIDE"];
-
-			_baseObj setposATL _location;
 			_baseObj setVectorDirAndUp _worldspace;
+			_baseObj setposATL _location;
+
 
 			// spawn additional object for trap
-			_ammoClass = (configFile >> "CfgVehicles" >> _class >> "ammoClass");
+			_ammoClass = (_cfgBaseBuilding >> _class >> "ammoClass");
 			if(isText _ammoClass) then {
 				_ammoClass = getText _ammoClass;
 				_ammoObj = createVehicle [_ammoClass, [0,0,0], [], 0, "CAN_COLLIDE"];
-				_ammoObj setposATL _location;
 				_ammoObj setVectorDirAndUp _worldspace;
+				_ammoObj setposATL _location;
 				_baseObj setVariable ["EPOCH_TRAP_OBJ",_ammoObj];
 			};
 
@@ -98,7 +99,7 @@ for "_i" from 0 to _this do {
 
 				{
 					_baseObj animate [_x, _anims param [_forEachIndex,0], true]
-				} foreach(getArray(configFile >> "CfgVehicles" >> _class >> "persistAnimations"));
+				} foreach(getArray(_cfgBaseBuilding >> _class >> "persistAnimations"));
 			};
 
 			// Handle Jammers and create marker if EPOCH_SHOW_JAMMERS set true.
@@ -123,7 +124,7 @@ for "_i" from 0 to _this do {
 
 			if (_textureSlot != 0) then {
 				// get texture path from index
-				_color = getArray (configFile >> "CfgVehicles" >> _class >> "availableTextures");
+				_color = getArray (_cfgBaseBuilding >> _class >> "availableTextures");
 				if !(_color isEqualTo []) then {
 					_baseObj setObjectTextureGlobal [0, (_color select _textureSlot)];
 					_baseObj setVariable ["TEXTURE_SLOT", _textureSlot, true];

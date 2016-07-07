@@ -1,7 +1,7 @@
 /*
-	Author: Aaron Clark - EpochMod.com
+	Author: Andrew Gregory - EpochMod.com
 
-    Contributors:
+    Contributors: Aaron Clark
 
 	Description:
 	Creates helicopter air drop
@@ -10,7 +10,7 @@
     Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
 
     Github:
-    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_server/compile/epoch_missions/EPOCH_Server_createAirDrop.sqf
+    https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server/compile/epoch_missions/EPOCH_Server_createAirDrop.sqf
 */
 private ["_playerOwner","_objType","_obj","_grp","_unitPos","_driver","_unit"];
 params ["_player",["_token","",[""]],"_pos"];

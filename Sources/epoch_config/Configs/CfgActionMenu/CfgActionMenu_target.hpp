@@ -10,7 +10,7 @@
     Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
 
     Github:
-    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_config/Configs/CfgActionMenu/CfgActionMenu_target.hpp
+    https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_config/Configs/CfgActionMenu/CfgActionMenu_target.hpp
 */
 
 //Build mode enabled
@@ -75,6 +75,21 @@ class tra_shop
 	action = "call EPOCH_startNPCTraderMenu;";
 	icon = "x\addons\a3_epoch_code\Data\UI\buttons\krypto.paa";
 	tooltip = "Shop";
+};
+
+class player_trade
+{
+	condition = "dyna_isPlayer";
+	action = "[dyna_cursorTarget, player, Epoch_personalToken] call EPOCH_startTRADEREQ;";
+	icon = "x\addons\a3_epoch_code\Data\UI\buttons\krypto.paa";
+	tooltip = "Make Trade Request";
+};
+class player_trade_accept
+{
+	condition = "dyna_isPlayer && dyna_canAcceptTrade";
+	action = "EPOCH_p2ptradeTarget = EPOCH_pendingP2ptradeTarget;call EPOCH_startTrade;";
+	icon = "x\addons\a3_epoch_code\Data\UI\buttons\krypto.paa";
+	tooltip = "Accept Trade Request";
 };
 
 //User action replacement

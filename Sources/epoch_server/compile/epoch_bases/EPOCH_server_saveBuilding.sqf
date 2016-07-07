@@ -10,9 +10,9 @@
     Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
 
     Github:
-    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_server/compile/epoch_bases/EPOCH_server_saveBuilding.sqf
+    https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server/compile/epoch_bases/EPOCH_server_saveBuilding.sqf
 */
-private["_objSlot", "_findnextslot", "_worldspace", "_objHiveKey", "_VAL", "_config", "_slot", "_storageObj", "_pos", "_buildClass", "_newVehicle", "_textureSlot", "_staticClass", "_playerUID", "_oemType"];
+private["_staticClassConfig","_objSlot", "_findnextslot", "_worldspace", "_objHiveKey", "_VAL", "_cfgBaseBuilding", "_slot", "_storageObj", "_pos", "_buildClass", "_newVehicle", "_textureSlot", "_staticClass", "_playerUID", "_oemType"];
 params ["_vehicle", "_player", ["_token","",[""]]];
 
 if (isNull _vehicle) exitWith{};
@@ -23,12 +23,11 @@ _playerUID = getPlayerUID _player;
 if (!isNull ropeAttachedTo _vehicle) exitWith{};
 
 _oemType = typeOf _vehicle;
+_cfgBaseBuilding = 'CfgBaseBuilding' call EPOCH_returnConfig;
+_staticClassConfig = (_cfgBaseBuilding >> _oemType >> "staticClass");
+if (isText _staticClassConfig) then {
 
-_config = (configFile >> "CfgVehicles" >> _oemType >> "staticClass");
-if (isText _config) then {
-
-	_staticClass = getText(_config);
-
+	_staticClass = getText(_staticClassConfig);
 	if (_staticClass isKindOf "Buildable_Storage" || _staticClass isKindOf "Constructions_lockedstatic_F") then{
 
 		if !(EPOCH_StorageSlots isEqualTo[]) then {
@@ -38,14 +37,10 @@ if (isText _config) then {
 
 			// Secure and insecure storage
 			_vehiclePos = getposATL _vehicle;
-			_vectorDirAndUp = [vectordir _vehicle, vectorup _vehicle];
-			deleteVehicle _vehicle;
 
-			_storageObj = createVehicle[_staticClass, [0,0,0], [], 0, "CAN_COLLIDE"];
-			_storageObj setposATL _vehiclePos;
-			_storageObj setVectorDirAndUp _vectorDirAndUp;
+			_storageObj = [_staticClass,_vehicle] call EPOCH_swapBuilding;
 
-			if (getNumber(configFile >> "CfgVehicles" >> _staticClass >> "isSecureStorage") == 1) then{
+			if (getNumber(_cfgBaseBuilding >> _staticClass >> "isSecureStorage") == 1) then{
 				_storageObj setVariable["EPOCH_Locked", false, true];
 			};
 

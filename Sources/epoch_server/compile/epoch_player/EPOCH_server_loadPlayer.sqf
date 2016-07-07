@@ -1,7 +1,7 @@
 /*
 	Author: Aaron Clark - EpochMod.com
 
-    Contributors:
+    Contributors: He-Man
 
 	Description:
 	Player Login
@@ -10,7 +10,7 @@
     Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
 
     Github:
-    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_server/compile/epoch_player/EPOCH_server_loadPlayer.sqf
+    https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server/compile/epoch_player/EPOCH_server_loadPlayer.sqf
 */
 
 private ["_arr","_uniform","_class","_vest","_vars","_canBeRevived","_dir","_location","_group","_apperance","_goggles","_headgear","_backpack","_weaponsAndItems","_linkedItems","_normalMagazines","_itemsInContainers","_weaponsInContainers","_wMags","_wMagsArray","_equipped","_weapon","_type","_attachments","_currWeap","_found","_playerGroupArray","_playerGroup","_response","_reject","_fnc_addItemToX","_worldspace","_prevInstance","_medical","_server_vars","_hitpoints","_deadPlayer","_alreadyDead","_newPlyr","_playerUID","_serverSettingsConfig","_player","_instanceID","_playerNetID"];
@@ -137,7 +137,7 @@ if (_this isEqualType []) then {
 
 			_player setPosATL _location;
 
-			_newPlyr = _group createUnit[_class, _location, [], 0, "CAN_COLLIDE"];
+ 			_newPlyr = _group createUnit[_class, _location, [], 0, "CAN_COLLIDE"];
 			// diag_log format["DEBUG: _newPlyr %1 %2 %3",_newPlyr, _location, getPosATL _newPlyr];
 
 			if !(isNull _newPlyr) then {
@@ -195,7 +195,7 @@ if (_this isEqualType []) then {
 				// Load Apperance END
 
 				// Load inventory + defaults START
-				if (count _weaponsAndItems >= 2) then {
+				if (count _weaponsAndItems >= 3) then {
 					_equipped = _weaponsAndItems select 2;
 					{
 						_weapon = _x deleteAt 0;
@@ -208,7 +208,7 @@ if (_this isEqualType []) then {
 							// magazines
 							if (_x isEqualType []) then{
 								_wMags = true;
-								_wMagsArray = _x;
+								_wMagsArray pushback _x;
 							} else {
 								// attachments
 								if (_x != "") then{
@@ -216,12 +216,14 @@ if (_this isEqualType []) then {
 								};
 							};
 						} forEach _x;
+						if (_wMags) then {
+							{
+								_newPlyr addMagazine _x;
+							} foreach _wMagsArray;
+						};
 						// add weapon if equiped
 						if (_weapon in _equipped) then {
 							_equipped = _equipped - [_weapon];
-							if (_wMags) then {
-								_newPlyr addMagazine _wMagsArray;
-							};
 							if (_weapon != "") then {
 								_newPlyr addWeapon _weapon;
 							};
@@ -239,18 +241,13 @@ if (_this isEqualType []) then {
 									{
 										_newPlyr removeSecondaryWeaponItem _x;
 									} forEach (secondaryWeaponItems _newPlyr);
-
 									{ _newPlyr addSecondaryWeaponItem _x } forEach _attachments;
 								};
 							};
-						} else {
-							// overflow need to add these items to storage
+						}else{
 							{
 								_newPlyr addItem _x;
 							} forEach _attachments;
-							if (_wMags) then {
-								_newPlyr addMagazine _wMagsArray;
-							};
 						};
 					} forEach(_weaponsAndItems select 1);
 					_currWeap = _weaponsAndItems select 0;

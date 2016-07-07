@@ -10,7 +10,7 @@
     Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
 
     Github:
-    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_code/compile/building/EPOCH_checkBuild.sqf
+    https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_code/compile/building/EPOCH_checkBuild.sqf
 
     Example:
     cursorTarget call EPOCH_checkBuild;
@@ -33,7 +33,7 @@ if (isNull _object) exitWith{ _out };
 if ((player distance _object) > 9) exitWith { _out };
 
 if !(EPOCH_buildMode > 0) exitWith {_out};
-if (EPOCH_playerEnergy <= 0) exitWith{ ["<t size='1.6' color='#99ffffff'>Need energy</t>", 5] call Epoch_dynamicText; _out };
+if (EPOCH_playerEnergy <= 0) exitWith{ ["Need energy", 5] call Epoch_message; _out };
 
 _objType = typeOf _object;
 _config = 'CfgBaseBuilding' call EPOCH_returnConfig;

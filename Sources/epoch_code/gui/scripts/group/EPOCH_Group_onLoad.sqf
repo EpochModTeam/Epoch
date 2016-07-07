@@ -10,7 +10,7 @@
     Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
 
     Github:
-    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_code/gui/group/EPOCH_Group_onLoad.sqf
+    https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_code/gui/group/EPOCH_Group_onLoad.sqf
 */
 private ["_index","_players","_found","_playerUID","_picture","_display","_BtnInvite","_GroupMemberList","_InvitePlayerCombo","_currentMaxMember","_currentMember","_myPlayerUID","_playerIsLeader","_playerIsMod","_onlinePUID"];
 disableSerialization;
