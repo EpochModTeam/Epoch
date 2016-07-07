@@ -40,9 +40,9 @@ if (_buildingJammerRange == 0) then { _buildingJammerRange = 75; };
 if (_buildingCountLimit == 0) then { _buildingCountLimit = 200; };
 
 _buildingCountLeader = getNumber(_config >> "buildingCountLeader");
-_buildingCountPerMember = getNumber(_config >> "buildingCountMember");
+_buildingCountPerMember = getNumber(_config >> "buildingCountPerMember");
 _storagecountLeader = getNumber(_config >> "storagecountLeader");
-_storagecountPerMember = getNumber(_config >> "storagecountMember");
+_storagecountPerMember = getNumber(_config >> "storagecountPerMember");
 _minjammerdistance = getNumber(_config >> "minJammerDistance");
 _maxbuildingheigh = getNumber(_config >> "maxBuildingHeigh");
 _jammerpergroup = getNumber(_config >> "JammerPerGroup");
