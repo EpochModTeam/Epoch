@@ -261,6 +261,7 @@ if (_dikCode in (actionKeys "TacticalView")) then {
 };
 if (_dikCode in (actionKeys "NightVision")) then {
 	if (EPOCH_playerEnergy == 0) then {
+		["Night Vision Goggles: Need Energy", 5] call Epoch_message;
 		_handled = true;
 	};
 };
