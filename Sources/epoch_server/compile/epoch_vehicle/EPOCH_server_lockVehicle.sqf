@@ -54,7 +54,7 @@ _crew = [];
 _logic = if !(_crew isEqualTo []) then {
 	if (_player in _crew) then {
 		// allow unlock if player is the driver or is inside the vehicle with out a driver.
-		(_player isEqualTo _driver || isNull(_driver))
+		(_player isEqualTo _driver || isNull(_driver) || _lockedOwner == _lockOwner || !alive _driver)
 	} else {
 		// allow only if player is already the owner as they are not inside the occupied vehicle.
 		(_lockedOwner == _lockOwner)
