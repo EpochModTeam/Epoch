@@ -29,7 +29,7 @@ class Sara_dbe1 : Default
 		{"VegetationFir",1},
 		{"ViewPoint",1}
 	};
-	traderBlds[] = {};
+	traderBlds[] = {"House", "Building"};
 	containerPos[] = {};
 	telePos[] = {
 		// N [-0.286865,8.17383,-10.3098]
