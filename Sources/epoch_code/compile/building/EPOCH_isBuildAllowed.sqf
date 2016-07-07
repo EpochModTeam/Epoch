@@ -39,6 +39,19 @@ _buildingCountLimit = getNumber(_config >> "buildingCountLimit");
 if (_buildingJammerRange == 0) then { _buildingJammerRange = 75; };
 if (_buildingCountLimit == 0) then { _buildingCountLimit = 200; };
 
+_buildingCountLeader = getNumber(_config >> "buildingCountLeader");
+_buildingCountPerMember = getNumber(_config >> "buildingCountMember");
+_storagecountLeader = getNumber(_config >> "storagecountLeader");
+_storagecountPerMember = getNumber(_config >> "storagecountMember");
+_minjammerdistance = getNumber(_config >> "minJammerDistance");
+_maxbuildingheigh = getNumber(_config >> "maxBuildingHeigh");
+_jammerpergroup = getNumber(_config >> "JammerPerGroup");
+if (_buildingCountLeader == 0) then { _buildingCountLeader = _buildingCountLimit};
+if (_storagecountLeader == 0) then { _storagecountLeader = 100};
+if (_minjammerdistance == 0) then { _minjammerdistance = _buildingJammerRange*3};
+if (_maxbuildingheigh == 0) then { _maxbuildingheigh = 100};
+if (_jammerpergroup == 0) then { _jammerpergroup = 2};
+
 // input
 params ["_objType"];
 _obj = objNull;
@@ -52,7 +65,7 @@ _simulClass = getText(_cfgBaseBuilding >> _objType >> "simulClass");
 _bypassJammer = getNumber(_cfgBaseBuilding >> _staticClass >> "bypassJammer");
 
 // Jammer
-_jammer = nearestObjects[player, ["PlotPole_EPOCH"], _buildingJammerRange*3];
+_jammer = nearestObjects[player, ["PlotPole_EPOCH"], _minjammerdistance];
 if !(_jammer isEqualTo []) then {
 	if (_objType in ["PlotPole_EPOCH", "PlotPole_SIM_EPOCH"]) then {
 		{
@@ -70,6 +83,7 @@ if !(_jammer isEqualTo []) then {
 		} foreach _jammer;
 
 		if !(isNull _nearestJammer) then {
+		if ((getposatl player) select 2 < _maxbuildingheigh) then {
 			if ((_nearestJammer getVariable["BUILD_OWNER", "-1"]) in[getPlayerUID player, Epoch_my_GroupUID]) then {
 				_ownedJammerExists = true;
 			} else {
@@ -77,10 +91,44 @@ if !(_jammer isEqualTo []) then {
 				["Building Disallowed: Frequency Blocked", 5] call Epoch_message;
 			};
 			_objectCount = count nearestObjects[_nearestJammer, ["Constructions_static_F"], _buildingJammerRange];
+			
+			_membercount = 1;
+			if (count Epoch_my_Group > 0) then {
+				_membercount = count (Epoch_my_Group select 3) + count (Epoch_my_Group select 4) + 1;
+			};
+			if (_objType in ["WorkBench_EPOCH","StorageShelf_EPOCH","Tipi_EPOCH","LockBox_EPOCH","Safe_EPOCH","StorageShelf_SIM_EPOCH","LockBox_SIM_EPOCH","Safe_SIM_EPOCH","Workbench_SIM_EPOCH","Tipi_SIM_EPOCH"]) then {
+				_buildingCountLimit = _storagecountLeader + _storagecountPerMember*_membercount;
+				_objectCount = count nearestObjects[_nearestJammer, ["Buildable_Storage","Constructions_lockedstatic_F"], _buildingJammerRange];
+			}
+			else {
+				_buildingCountLimit = _buildingCountLeader + _buildingCountPerMember*_membercount;
+				_objectCount = count nearestObjects[_nearestJammer, ["Constructions_static_F","Constructions_foundation_F"], _buildingJammerRange];
+			};
+			
 			if (_objectCount >= _buildingCountLimit) then {
 				_buildingAllowed = false;
-				["Building Disallowed: Frequency Overloaded", 5] call Epoch_message;
+				[format["Building Disallowed: Frequency Overloaded: Limit %1", _buildingCountLimit], 5] call Epoch_message;
 			};
+		}
+		else {
+			_buildingAllowed = false;
+			["Building Disallowed: Max building heigh reached", 5] call Epoch_message;
+		};
+		};
+	};
+}
+else {
+	if (_objType in ["PlotPole_EPOCH", "PlotPole_SIM_EPOCH"]) then {
+		_alljammer = allmissionobjects 'PlotPole_EPOCH';
+		_c = 0;
+		{
+			if ((_x getVariable["BUILD_OWNER", "-1"]) in[getPlayerUID player, Epoch_my_GroupUID]) then {
+				_c = _c+1;
+			};
+		} foreach _alljammer;
+		if (_c >= _jammerpergroup) then {
+			_buildingAllowed = false;
+			[format["Building Disallowed: Max %1 Jammer per Group!", _jammerpergroup], 5] call Epoch_message;
 		};
 	};
 };
@@ -126,20 +174,20 @@ if (getNumber(_config >> "buildingNearbyMilitary") == 0) then{
 };
 if !(_restricted isEqualTo []) then {
 	_buildingAllowed = false;
-	["Building Disallowed: Protected Frequency", 5] call Epoch_message;
+	["Building Disallowed: Area Blocked", 5] call Epoch_message;
 };
 
 _restrictedLocations = nearestLocations [player, ["NameCityCapital"], 300];
 if !(_restrictedLocations isEqualTo []) then {
 	_buildingAllowed = false;
-	["Building Disallowed: Protected Frequency", 5] call Epoch_message;
+	["Building Disallowed: Area Blocked", 5] call Epoch_message;
 };
 
 _myPosATL = getPosATL player;
 {
 	if ((_x select 0) distance _myPosATL < (_x select 1)) exitWith {
 		_buildingAllowed = false;
-		["Building Disallowed: Protected Frequency", 5] call Epoch_message;
+		["Building Disallowed: Area Blocked", 5] call Epoch_message;
 	};
 } forEach(getArray(_config >> worldname >> "blockedArea"));
 
