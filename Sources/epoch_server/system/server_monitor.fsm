@@ -50,7 +50,7 @@ class FSM
        "_serverSettingsConfig = configFile >> ""CfgEpochServer"";" \n
        "_ahInitAuthCfg = [_serverSettingsConfig, ""antihack_ahInitAuthCfg"", [0,180]] call EPOCH_fnc_returnConfigEntry;" \n
        "_events = [_serverSettingsConfig, ""events"", []] call EPOCH_fnc_returnConfigEntry;" \n
-       "_simulationHandler = [_serverSettingsConfig, ""simulationHandler"", true] call EPOCH_fnc_returnConfigEntry;" \n
+       "_simulationHandler = [_serverSettingsConfig, ""simulationHandlerOld"", false] call EPOCH_fnc_returnConfigEntry;" \n
        "" \n
        "_initAhInitBanOrLog = _ahInitAuthCfg select 0;" \n
        "_initTimeLimit = _ahInitAuthCfg select 1;" \n

@@ -222,8 +222,8 @@ for "_i" from 1 to _maxVehicleLimit do {
 };
 
 // re-enable damage and apply to vehicles after we wait some time.
-[_vehicleDamages,([_serverSettingsConfig, "immuneVehicleSpawnTime", 120] call EPOCH_fnc_returnConfigEntry),([_serverSettingsConfig, "simulationHandler", true] call EPOCH_fnc_returnConfigEntry)] spawn {
-	params [["_vehicleDamages",[]],["_immuneTime",120],["_simulationHandler",true]];
+[_vehicleDamages,([_serverSettingsConfig, "immuneVehicleSpawnTime", 120] call EPOCH_fnc_returnConfigEntry),([_serverSettingsConfig, "simulationHandlerOld", false] call EPOCH_fnc_returnConfigEntry)] spawn {
+	params [["_vehicleDamages",[]],["_immuneTime",120],["_simulationHandler",false]];
 	// wait for some time to let all vehicles settle.
 	sleep _immuneTime;
 	// set final damages
