@@ -99,6 +99,7 @@ class CfgServerFunctions
 			class server_save_killedStorage {};
 			class server_save_killedBuilding {};
 			class load_vehicles {};
+			class load_vehicles_old {};
 			class load_storage {};
 			class server_save_storage {};
 			class spawn_vehicles {};

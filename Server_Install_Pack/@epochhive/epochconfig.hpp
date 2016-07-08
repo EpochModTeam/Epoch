@@ -57,3 +57,6 @@ hiveAsync = true; // true = asynchronous hive calls (non blocking), false = sync
 hiveAdminCmdExec = false; // true = enables extra (To Be Released) feature to allow execution of code via hive.
 hiveAdminSavePlayerList = true; // true = enables saving of playerUID array to hive value PLAYERS:#InstanceID.
 hiveAdminCmdTime = 5; // how many seconds between each command queue call.
+
+// DEBUG
+useOldLoadVehicles = false;

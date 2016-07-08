@@ -62,7 +62,7 @@ for "_i" from 1 to _maxVehicleLimit do {
 					};
 
 					// spawn vehicle at temp location.
-					_vehicle = createVehicle [_class, [0,0,0], [], 0, "CAN_COLLIDE"];
+					_vehicle = createVehicle [_class, _location, [], 0, "CAN_COLLIDE"];
 					if !(isNull _vehicle) then {
 						// make vehicle immune from damage.
 						_vehicle allowDamage false;
@@ -186,6 +186,27 @@ for "_i" from 1 to _maxVehicleLimit do {
 						// remove and add back magazines works for armed trucks but not helis ATM
 						{_vehicle removeMagazineGlobal _x}count (magazines _vehicle);
 						{_vehicle addMagazine _x}count (_arr select 6);
+
+						// set damage and hitpoints
+						_vehicle setDamage _damage;
+						_allHitpoints = getAllHitPointsDamage _vehicle;
+						if !(_allHitpoints isEqualTo []) then{
+							_actualHitpoints = _allHitpoints select 0;
+							if ((count _actualHitpoints) == (count _hitpoints)) then{
+								{
+									_dmg = _hitpoints param [_forEachIndex,0];
+									if (_x in ["HitFuel", "HitEngine"]) then {
+										_dmg = _dmg min 0.9;
+									};
+									_vehicle setHitIndex [_forEachIndex, _dmg];
+								} forEach _actualHitpoints;
+							};
+						};
+						_vehicle allowDamage true;
+						// vehicle simulation handler
+						if (_simulationHandler) then{
+							_vehicle enableSimulationGlobal false;
+						};
 						// turrets
 						/*
 						_mags = _vehicle magazinesTurret [0];
@@ -220,38 +241,7 @@ for "_i" from 1 to _maxVehicleLimit do {
 		diag_log format["DEBUG: invalid vehicle data: %1",_response];
 	};
 };
-
-// re-enable damage and apply to vehicles after we wait some time.
-[_vehicleDamages,([_serverSettingsConfig, "immuneVehicleSpawnTime", 120] call EPOCH_fnc_returnConfigEntry),([_serverSettingsConfig, "simulationHandlerOld", false] call EPOCH_fnc_returnConfigEntry)] spawn {
-	params [["_vehicleDamages",[]],["_immuneTime",120],["_simulationHandler",false]];
-	// wait for some time to let all vehicles settle.
-	sleep _immuneTime;
-	// set final damages
-	{
-		_x params ["_vehicle","_damage","_hitpoints"];
-		_vehicle allowDamage true;
-		_vehicle setDamage _damage;
-		_allHitpoints = getAllHitPointsDamage _vehicle;
-		if !(_allHitpoints isEqualTo []) then{
-			_actualHitpoints = _allHitpoints select 0;
-			if ((count _actualHitpoints) == (count _hitpoints)) then{
-				{
-					_dmg = _hitpoints param [_forEachIndex,0];
-					if (_x in ["HitFuel", "HitEngine"]) then {
-						_dmg = _dmg min 0.9;
-					};
-					_vehicle setHitIndex [_forEachIndex, _dmg];
-				} forEach _actualHitpoints;
-			};
-		};
-		// vehicle simulation handler
-		if (_simulationHandler) then{
-			_vehicle enableSimulationGlobal false;
-		};
-	} forEach _vehicleDamages;
-};
 // add all spawned vehicles to remains collector.
 addToRemainsCollector _allVehicles;
 diag_log format ["Epoch: Vehicle SPAWN TIMER %1, LOADED %2 VEHICLES", diag_tickTime - _diag, count _allVehicles];
-
 true
