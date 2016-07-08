@@ -142,8 +142,11 @@ _vehicleSlotLimit = 0;
 {_vehicleSlotLimit = _vehicleSlotLimit + (_x select 1)} forEach _allowedVehiclesList;
 _ReservedSlots = 50;
 _vehicleSlotLimit = _vehicleSlotLimit + _ReservedSlots;
-_vehicleSlotLimit call EPOCH_load_vehicles;
-
+if (EPOCH_useOldLoadVehicles) then {
+    _vehicleSlotLimit call EPOCH_load_vehicles_old;
+} else {
+    _vehicleSlotLimit call EPOCH_load_vehicles;
+};
 diag_log "Epoch: Spawning vehicles";
 _allowedVehiclesListArray = [];
 {

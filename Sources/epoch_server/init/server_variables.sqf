@@ -58,7 +58,8 @@ _configArray = [
     ["hiveAdminCmdExec", false],
     ["hiveAdminSavePlayerList", true],
     ["hiveAdminCmdTime", 5],
-    ["DEBUG_VEH", false]
+    ["DEBUG_VEH", false],
+	["useOldLoadVehicles", false]
 ];
 
 EPOCH_fnc_returnConfigEntry = {
