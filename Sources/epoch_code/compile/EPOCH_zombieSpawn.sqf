@@ -40,7 +40,7 @@ _unit switchMove "AmovPercMstpSnonWnonDnon_SaluteOut";
 [player, "AmovPercMstpSnonWnonDnon_SaluteOut", Epoch_personalToken, _unit] remoteExec ["EPOCH_server_handle_switchMove",2];
 
 _unit setmimic "dead";
-_unit setface (selectRandom ["RyanZombieFace1", "RyanZombieFace2", "RyanZombieFace3", "RyanZombieFace4", "RyanZombieFace5"]);
+// _unit setface (selectRandom ["RyanZombieFace1", "RyanZombieFace2", "RyanZombieFace3", "RyanZombieFace4", "RyanZombieFace5"]);
 removegoggles _unit;
 _zedHandle = [_unit,true] execFSM "epoch_code\system\EPOCH_zombie_brain.fsm";
 _unit addEventHandler ["FiredNear", "(_this select 0) setVariable [""zFiredNear"",[_this select 1, _this select 2]];"];

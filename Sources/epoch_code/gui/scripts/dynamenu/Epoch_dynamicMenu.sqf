@@ -109,7 +109,7 @@ _checkConfigs = {
 						};
 
 						_tooltip = "";
-						_tooltipcode = getText(_x >> "tooltipcode"),;
+						_tooltipcode = getText(_x >> "tooltipcode");
 						if (_tooltipcode != "") then {
 							_tooltip = [] call compile _tooltipcode;
 						}
