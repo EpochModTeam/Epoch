@@ -38,7 +38,7 @@
 7 createDialog !="createDialog \"rmx_dynamenu\";" !="createDialog \"rmx_craftingUI\";" !="createDialog \"QuickUpgrade\";" !="createDialog \"QuickTake\";" !="createDialog \"InteractBank\";" !="createdialog \"SelectGender\";" !="_handled = createdialog _dialog;" !="if !(createdialog \"InteractItem\") exitWith {};" !="createDialog _tapDiag;" !="if !(createdialog \"Trade\") exitWith {};" !="_ok = createdialog \"Interact\";" !="_ok = createdialog \"TradeNPCMenu\";" !="createDialog \"Epoch_myGroup\";" !="createDialog (if ((Epoch_my_GroupUID == \"\") && (Epoch_my_Group isEqualTo [])) then {\"EPOCH_createGrp\"} else {\"Epoch_myGroup\"});" !="createDialog \"GroupRequests\";" !="_ok = createdialog \"MissionSelect\";" !="createDialog 'Skaronator_AdminMenu';"
 7 createDisplay !="createDisplay \"rmx_dynamenu\";" !="_parent createdisplay _displayClass;" !="finddisplay 151 createdisplay 'RscDisplayOptionsLayout'"
 7 deleteMarker !="deleteMarkerLocal _mName;"
-7 setMarker !="CBA_fnc_setMarkerPersistent\"" !="\\fnc_setMarkerPersistent" !="\"setMarkerPersistent" !="_mrkr setMarkerShapeLocal _mShape;" != "_mrkr setMarkerTypeLocal _mType;"
+7 setMarker !="CBA_fnc_setMarkerPersistent\"" !="\\fnc_setMarkerPersistent" !="\"setMarkerPersistent" !="_mrkr setMarkerShapeLocal _mShape;" !="_mrkr setMarkerTypeLocal _mType;"
 7 createMarker !="CBA_fnc_createMarker\"" !="\\fnc_createMarker" !="\"createMarker" !="cba_fCreateMarker" !="createMarkerLocal [_mName, _mPos];"
 7 assignItem !="axeVIP assignItem _item;" !="unassignItem"
 7 forceAddUniform
