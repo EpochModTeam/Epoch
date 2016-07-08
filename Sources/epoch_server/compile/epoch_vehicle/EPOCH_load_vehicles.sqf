@@ -197,10 +197,6 @@ for "_i" from 1 to _maxVehicleLimit do {
 							_object removeMagazinesTurret [_x, [-1]];
 						} forEach _mags;
 						*/
-						// vehicle simulation handler
-						if (_simulationHandler) then{
-							_vehicle enableSimulationGlobal false;
-						};
 						if (EPOCH_DEBUG_VEH) then {
 							_marker = createMarker [str(_location) , _location];
 							_marker setMarkerShape "ICON";
@@ -247,6 +243,10 @@ for "_i" from 1 to _maxVehicleLimit do {
 					_vehicle setHitIndex [_forEachIndex, _dmg];
 				} forEach _actualHitpoints;
 			};
+		};
+		// vehicle simulation handler
+		if (_simulationHandler) then{
+			_vehicle enableSimulationGlobal false;
 		};
 	} forEach _vehicleDamages;
 };
