@@ -101,7 +101,7 @@ class CfgEpochClient
 	// Player specific configs
 	playerDeathScreen = "TapOut";
 	playerKilledScreen = "TapOut2";
-	playerDisableRevenge = 0; // 1 = invoke playerKilledScreen when killed by another player.
+	playerDisableRevenge = 0; // 0 = invoke playerKilledScreen when killed by another player, 1 = disable.
 
 	// include configs
     #include "CfgEpochClient\Altis.hpp"
