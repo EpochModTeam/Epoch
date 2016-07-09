@@ -23,6 +23,7 @@ _allVehicles = [];
 _vehicleDamages = [];
 
 _serverSettingsConfig = configFile >> "CfgEpochServer";
+_simulationHandler = [_serverSettingsConfig, "simulationHandlerOld", false] call EPOCH_fnc_returnConfigEntry;
 
 for "_i" from 1 to _maxVehicleLimit do {
 	_vehicleSlotIndex = EPOCH_VehicleSlots pushBack str(_i);
