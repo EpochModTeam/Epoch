@@ -98,6 +98,11 @@ class CfgEpochClient
 	// Fishing loots
 	fishLoots[] = {"ItemTuna","ItemSeaBass","ItemSeaBass","ItemSeaBass","ItemTrout","ItemTrout","ItemTrout","ItemTrout","ItemTrout","ItemTrout"};
 
+	// Player specific configs
+	playerDeathScreen = "TapOut";
+	playerKilledScreen = "TapOut2";
+	playerDisableRevenge = 0; // 0 = invoke playerKilledScreen when killed by another player, 1 = disable.
+
 	// include configs
     #include "CfgEpochClient\Altis.hpp"
     #include "CfgEpochClient\australia.hpp"
