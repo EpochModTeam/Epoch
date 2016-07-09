@@ -21,6 +21,7 @@ class CfgEpochClient
 	buildingRequireJammer = 0; // 1 = to allow building without a jammer
 	buildingCountLimit = 200; // how many objects can be built within range of a jammer
 	buildingJammerRange = 75; // jammer range in meters
+	JammerPerGroup = 1;		// Max Jammer count per Group
 	minJammerDistance = 650;	// min distance to next Jammer
 	maxBuildingHeigh = 33;		// Max heigh, building is allowed
 	buildingCountLeader = 125;	// Building count limit if Player has no group
