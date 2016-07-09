@@ -139,7 +139,6 @@ if (!local _player) then {
 
 				addToRemainsCollector[_newPlyr];
 
-				_newPlyr allowDammage false;
 				{
 					_newPlyr disableAI _x;
 				}forEach["FSM", "MOVE", "AUTOTARGET", "TARGET"];
