@@ -23,6 +23,7 @@ _allVehicles = [];
 _vehicleDamages = [];
 
 _serverSettingsConfig = configFile >> "CfgEpochServer";
+_simulationHandler = [_serverSettingsConfig, "simulationHandlerOld", false] call EPOCH_fnc_returnConfigEntry;
 
 for "_i" from 1 to _maxVehicleLimit do {
 	_vehicleSlotIndex = EPOCH_VehicleSlots pushBack str(_i);
@@ -190,6 +191,7 @@ for "_i" from 1 to _maxVehicleLimit do {
 						// set damage and hitpoints
 						_vehicle setDamage _damage;
 						_allHitpoints = getAllHitPointsDamage _vehicle;
+						_hitpoints = _arr select 3;
 						if !(_allHitpoints isEqualTo []) then{
 							_actualHitpoints = _allHitpoints select 0;
 							if ((count _actualHitpoints) == (count _hitpoints)) then{
