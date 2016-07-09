@@ -21,6 +21,14 @@ class CfgEpochClient
 	buildingRequireJammer = 0; // 1 = to allow building without a jammer
 	buildingCountLimit = 200; // how many objects can be built within range of a jammer
 	buildingJammerRange = 75; // jammer range in meters
+	minJammerDistance = 650;	// min distance to next Jammer
+	maxBuildingHeigh = 33;		// Max heigh, building is allowed
+	buildingCountLeader = 125;	// Building count limit if Player has no group
+	buildingCountPerMember = 5;	// Additional building counts per group member
+	storagecountLeader	= 10;	// Storage count limit if Player has no group
+	storagecountPerMember	= 5;	// Additional Storage counts per group member
+	maxdoors = 8;			// Max allowed doors per Group
+	maxgates = 5;			// Max allowed Gates per Group
 	disableRemoteSensors = true; // disableRemoteSensors true
 	EPOCH_news[] = {"Word is that Sappers have a new boss.","Dogs will often lure them monsters away.","My dog was blown up. I miss him.."};
 	deathMorphClass[] = {"Epoch_Sapper_F","Epoch_SapperB_F","I_UAV_01_F","Epoch_Cloak_F"};//Random selection of these classes when player morphs after death. Currently available: Epoch_Cloak_F, Epoch_SapperB_F, Epoch_Sapper_F, I_UAV_01_F
