@@ -26,7 +26,7 @@ private ["_playerDeathScreen","_playerKilledScreen","_tapDiag","_config","_doRev
 params [["_unit",objNull,[objNull]], ["_killer",objNull,[objNull]]];
 
 _config = 'CfgEpochClient' call EPOCH_returnConfig;
-_playerDeathScreen = getText(_config >> "playerDeathScreen")
+_playerDeathScreen = getText(_config >> "playerDeathScreen");
 if (_playerDeathScreen isEqualTo "") then {_playerDeathScreen = "TapOut"};
 _tapDiag = _playerDeathScreen;
 _doRevenge = (getNumber(_config >> "playerDisableRevenge") isEqualTo 0);
@@ -44,7 +44,7 @@ EPOCH_snapDirection = 0;
 EPOCH_Target = objNull;
 
 // playerKilledScreen
-_playerKilledScreen = getText(_config >> "playerKilledScreen")
+_playerKilledScreen = getText(_config >> "playerKilledScreen");
 if (_playerKilledScreen isEqualTo "") then {_playerKilledScreen = "TapOut2"};
 if(_doRevenge && player != _killer && (isPlayer _killer || isPlayer (effectiveCommander _killer)))then{_tapDiag = _playerKilledScreen};//TODO: vehicle check may not always be reliable
 
