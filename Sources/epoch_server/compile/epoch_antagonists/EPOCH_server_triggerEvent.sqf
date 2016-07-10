@@ -12,7 +12,7 @@
     Github:
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server/compile/epoch_antagonists/EPOCH_server_triggerEvent.sqf
 */
-params ["_target", "_type"];
+params [["_target",objNull,[objNull]], ["_type","",[""]]];
 if (!isNull _target) then {
 	switch (_type) do {
 		case "UAV": {

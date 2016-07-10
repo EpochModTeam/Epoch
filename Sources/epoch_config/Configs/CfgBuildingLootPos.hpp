@@ -6213,7 +6213,7 @@ class CfgBuildingLootPos
 		pelicanPos[] = { { { -0.840332, 1.09473, -10 }, 269.861 } };
 	};
 	class Carnival_Tent : Default {
-		limit = 2;
+		limit = 1;
 		lootBias = 50;
 		shelfPos[] = { { { -1, -1, -10 }, 178.014 } };
 		chairPos[] = { { { 1, 1, -10 }, 152.678 } };
