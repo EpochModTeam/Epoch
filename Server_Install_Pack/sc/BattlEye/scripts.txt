@@ -6,7 +6,7 @@
 7 enableFatigue
 7 setUnitRecoilCoefficient
 7 setWeaponReloadingTime
-7 allMissionObjects
+7 allMissionObjects !="_alljammer = allmissionobjects 'PlotPole_EPOCH';"
 7 callExtension
 7 showCommandingMenu !="showCommandingMenu '';" !"showCommandingMenu '#USER:"
 7 moveIn !="\"A3\functions_f\Misc\fn_moveIn.sqf\"" !="\"A3\functions_f\arrays\fn_removeIndex.sqf\"" !="player moveInAny _vehicle;\nEPOCH_antiWallCount = EPOCH_antiWallCount + 1;" !="[\"I_UAV_AI\", position _unit, [], 0, \"CAN_COLLIDE\"];\n_driver moveInAny _unit;" !="_driver moveInAny Epoch_mission_uav;" !="axeVIP moveInDriver vehicle axeVIP;" !="axeVIP moveInCargo vehicle axeVIP; !="_driver moveInDriver _axeCopter;" !="_unit moveInGunner _axeCopter;" !="axeVIP moveInDriver vehicle axeVIP;" !="axeVIP moveInCargo vehicle axeVIP;"

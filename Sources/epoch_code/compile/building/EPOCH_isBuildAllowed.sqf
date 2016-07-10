@@ -91,7 +91,7 @@ if !(_jammer isEqualTo []) then {
 				["Building Disallowed: Frequency Blocked", 5] call Epoch_message;
 			};
 			_objectCount = count nearestObjects[_nearestJammer, ["Constructions_static_F"], _buildingJammerRange];
-			
+
 			_membercount = 0;
 			if (count Epoch_my_Group > 0) then {
 				_membercount = count (Epoch_my_Group select 3) + count (Epoch_my_Group select 4);
@@ -104,7 +104,7 @@ if !(_jammer isEqualTo []) then {
 				_buildingCountLimit = _buildingCountLeader + _buildingCountPerMember*_membercount;
 				_objectCount = count nearestObjects[_nearestJammer, ["Constructions_static_F","Constructions_foundation_F"], _buildingJammerRange];
 			};
-			
+
 			if (_objectCount >= _buildingCountLimit) then {
 				_buildingAllowed = false;
 				[format["Building Disallowed: Frequency Overloaded: Limit %1", _buildingCountLimit], 5] call Epoch_message;
@@ -119,6 +119,7 @@ if !(_jammer isEqualTo []) then {
 }
 else {
 	if (_objType in ["PlotPole_EPOCH", "PlotPole_SIM_EPOCH"]) then {
+		// TODO: rework not ideal to use allmissionobjects
 		_alljammer = allmissionobjects 'PlotPole_EPOCH';
 		_c = 0;
 		{

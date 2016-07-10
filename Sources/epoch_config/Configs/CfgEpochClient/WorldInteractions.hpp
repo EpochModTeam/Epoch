@@ -33,7 +33,9 @@ class CfgWorldInteractions  {
         wreck = 1;
     };
 
-
+    class Land_WaterBarrel_F : Water {};
+    class Land_BarrelWater_F : Water {};
+    class Land_WaterTank_F : Water {};
     class barrelwater_f_p3d : Water {};
     class water_source_f_p3d : Water {};
     class waterbarrel_f_p3d : Water {};
