@@ -13,7 +13,7 @@
 author = "Epoch Mod Team";
 class Header
 {
- gameType = Survival;
+ gameType = Survive;
  minPlayers = 1;
  maxPlayers = 100;
 };

@@ -27,9 +27,11 @@ params [["_unit",objNull,[objNull]], ["_killer",objNull,[objNull]]];
 
 _config = 'CfgEpochClient' call EPOCH_returnConfig;
 _playerDeathScreen = getText(_config >> "playerDeathScreen");
+_playerRevengeMinAliveTime = getNumber(_config >> "playerRevengeMinAliveTime");
 if (_playerDeathScreen isEqualTo "") then {_playerDeathScreen = "TapOut"};
 _tapDiag = _playerDeathScreen;
-_doRevenge = (getNumber(_config >> "playerDisableRevenge") isEqualTo 0);
+// diag_log format ["DEBUG: EPOCH_playerAliveTime %1",EPOCH_playerAliveTime];
+_doRevenge = ((getNumber(_config >> "playerDisableRevenge") isEqualTo 0) && EPOCH_playerAliveTime >= _playerRevengeMinAliveTime);
 
 // test ejecting unit from vehicle if dead client side
 if (vehicle _unit != _unit) then {
@@ -64,7 +66,7 @@ if (Epoch_canBeRevived) then {
 		if (playerRespawnTime <= 1) exitWith{ (findDisplay 46) closeDisplay 0; };
 		if (playerRespawnTime > 15 && !dialog) then {createDialog _tapDiag2;};
 		if (isObjectHidden player) then {closeDialog 2;};
-		if(player getVariable["EPOCH_doBoom",false])exitWith{player setVariable ["EPOCH_doBoom",nil];[player] call EPOCH_fnc_playerDeathDetonate;};
+		if(player getVariable["EPOCH_doBoom",false])exitWith{player setVariable ["EPOCH_doBoom",nil]; call EPOCH_fnc_playerDeathDetonate;};
 		if(player getVariable["EPOCH_doMorph",false])exitWith{player setVariable ["EPOCH_doMorph",nil];[selectRandom (getArray (getMissionConfig "CfgEpochClient" >> "deathMorphClass")),player,_killer2] call EPOCH_fnc_playerDeathMorph;};
 		uiSleep 0.1;
 	};
