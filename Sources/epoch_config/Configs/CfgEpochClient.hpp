@@ -103,7 +103,7 @@ class CfgEpochClient
 	playerDeathScreen = "TapOut";
 	playerKilledScreen = "TapOut2";
 	playerDisableRevenge = 0; // 0 = invoke playerKilledScreen when killed by another player, 1 = disable.
-	playerRevengeAliveTime = 900; // time in seconds player must be alive before Revenge option is available.
+	playerRevengeMinAliveTime = 900; // time in seconds player must be alive before Revenge option is available.
 
 	// include configs
     #include "CfgEpochClient\Altis.hpp"
