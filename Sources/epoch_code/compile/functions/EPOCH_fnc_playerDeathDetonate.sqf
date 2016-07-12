@@ -20,18 +20,15 @@
 	Returns:
 	BOOM
 */
-params ["_player"];
 openmap [false,false];
 closeDialog 2;
-
 [] spawn{
-
 	// todo: add paricle effect here.
 
 	// random delay of up to 30 seconds,
 	uisleep (random 25) + 5;
 
-	[_player, Epoch_personalToken] remoteExec ["EPOCH_server_deadPlayerDetonate",2];
+	[player, Epoch_personalToken] remoteExec ["EPOCH_server_deadPlayerDetonate",2];
 	deleteVehicle player;
 	player setVariable ["doneBoom", true];
 
