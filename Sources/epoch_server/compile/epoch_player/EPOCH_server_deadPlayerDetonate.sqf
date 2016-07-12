@@ -17,6 +17,6 @@ diag_log format["Epoch: ADMIN: Attempting player detonate on %1.", getPlayerUID 
 if !([_player,_token]call EPOCH_server_getPToken)exitWith{};
 
 _pos = getPosATL _player;
-_bomb = createVehicle["SapperB_Charge_Ammo", _pos, [], 0, "CAN_COLLIDE"];
+_bomb = createVehicle["Sapper_Charge_Ammo", _pos, [], 0, "CAN_COLLIDE"];
 _bomb setDamage 1;
 hideObjectGlobal _player;
