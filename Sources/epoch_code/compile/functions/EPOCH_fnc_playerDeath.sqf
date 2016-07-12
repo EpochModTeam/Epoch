@@ -27,9 +27,10 @@ params [["_unit",objNull,[objNull]], ["_killer",objNull,[objNull]]];
 
 _config = 'CfgEpochClient' call EPOCH_returnConfig;
 _playerDeathScreen = getText(_config >> "playerDeathScreen");
+_playerRevengeAliveTime = getNumber(_config >> "playerRevengeAliveTime");
 if (_playerDeathScreen isEqualTo "") then {_playerDeathScreen = "TapOut"};
 _tapDiag = _playerDeathScreen;
-_doRevenge = (getNumber(_config >> "playerDisableRevenge") isEqualTo 0);
+_doRevenge = ((getNumber(_config >> "playerDisableRevenge") isEqualTo 0) && EPOCH_playerAliveTime >= _playerRevengeAliveTime);
 
 // test ejecting unit from vehicle if dead client side
 if (vehicle _unit != _unit) then {
