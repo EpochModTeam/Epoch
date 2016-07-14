@@ -165,10 +165,9 @@ if !(_buildingAllowed)exitWith{ false };
 if (getNumber(_config >> "buildingNearbyMilitary") == 0) then{
 	_range = getNumber(_config >> "buildingNearbyMilitaryRange");
 	if (_range > 0) then {
-		_restricted = nearestObjects [player, ["ProtectionZone_Invisible_F","Cargo_Tower_base_F","Cargo_HQ_base_F","Cargo_Patrol_base_F","Cargo_House_base_F"], 300];
-	} else {
-		_restricted = nearestObjects [player, ["Cargo_Tower_base_F","Cargo_HQ_base_F","Cargo_Patrol_base_F","Cargo_House_base_F"], _range];
-		_restricted append (nearestObjects [player, ["ProtectionZone_Invisible_F","Cargo_Tower_base_F","Cargo_HQ_base_F","Cargo_Patrol_base_F","Cargo_House_base_F"], 300]);
+		_restrictedArray = ["ProtectionZone_Invisible_F"];
+		_restrictedArray append getArray(_config >> "buildingNearbyMilitaryClasses");
+		_restricted = nearestObjects [player, _restrictedArray, _range];
 	};
 } else {
 	_restricted = nearestObjects [player, ["ProtectionZone_Invisible_F"], 300];
@@ -178,10 +177,14 @@ if !(_restricted isEqualTo []) then {
 	["Building Disallowed: Area Blocked", 5] call Epoch_message;
 };
 
-_restrictedLocations = nearestLocations [player, ["NameCityCapital"], 300];
-if !(_restrictedLocations isEqualTo []) then {
-	_buildingAllowed = false;
-	["Building Disallowed: Area Blocked", 5] call Epoch_message;
+_restrictedLocationsArray = getArray(_config >> "restrictedLocations");
+_restrictedLocationsRange = getNumber(_config >> "restrictedLocationsRange");
+if !(_restrictedLocationsArray isEqualTo []) then {
+	_restrictedLocations = nearestLocations [player, _restrictedLocationsArray, _restrictedLocationsRange];
+	if !(_restrictedLocations isEqualTo []) then {
+		_buildingAllowed = false;
+		["Building Disallowed: Area Blocked", 5] call Epoch_message;
+	};
 };
 
 _myPosATL = getPosATL player;

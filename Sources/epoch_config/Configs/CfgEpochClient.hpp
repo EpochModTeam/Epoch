@@ -18,6 +18,9 @@ class CfgEpochClient
 	droneRngChance = 100; // increase number to reduce chances and reduce to increase. Default 100 = // 2% chance (+ 4% chance if in city) (1% - 2% Half if using silencer) to spawn drone if shot fired
 	buildingNearbyMilitary = 0; //1 to allow building nearby
 	buildingNearbyMilitaryRange = 300; //Define radius of blocked area
+	buildingNearbyMilitaryClasses[] = {"Cargo_Tower_base_F","Cargo_HQ_base_F","Cargo_Patrol_base_F","Cargo_House_base_F"};
+	restrictedLocations[] = {"NameCityCapital"};
+	restrictedLocationsRange = 300;
 	buildingRequireJammer = 0; // 1 = to allow building without a jammer
 	buildingCountLimit = 200; // how many objects can be built within range of a jammer
 	buildingJammerRange = 75; // jammer range in meters
