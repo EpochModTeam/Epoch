@@ -254,7 +254,8 @@ class CfgClientFunctions
 			class postprocessCreate {};
 			class postprocessAdjust {};
 			class postprocessDestroy {};
-			class setDrunk {}; //needs a better name
+			class setDrunk {};
+			class setRadiation {};
 		};
 		class worldToScreen {
 			file = "epoch_code\gui\scripts\worldToScreen";

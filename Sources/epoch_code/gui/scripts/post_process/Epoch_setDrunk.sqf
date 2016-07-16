@@ -18,6 +18,7 @@
 	Notes:
 			Drunk levels 1-9, 0 to disable
 			Use low times, wet distortion does not work well when animated over time
+			To reuse code in a new PP function, adjust _priority so they don't overwrite each other
 */
 private ["_priority","_wd","_db"];
 params [["_level",0,[0]],["_speed",0,[0]]];
@@ -40,18 +41,22 @@ switch _level do {
 	case 0.1:
 	{
 		[(rmx_var_drunkHandles select 0), _speed, [-1,0.0144629,0,1,0,-0.551644,0.0309715,0.202484,0,0,-0.161139,0,0,1,1]] call epoch_postprocessAdjust;
+		[(rmx_var_drunkHandles select 1), _speed, [0]] call epoch_postprocessAdjust;
 	};
 	case 0.2:
 	{
 		[(rmx_var_drunkHandles select 0), _speed, [-1,0.0144629,0,1,0,-0.551644,0.0309715,0.390503,0,0,-0.161139,0,0,1,1]] call epoch_postprocessAdjust;
+		[(rmx_var_drunkHandles select 1), _speed, [0]] call epoch_postprocessAdjust;
 	};
 	case 0.3:
 	{
 		[(rmx_var_drunkHandles select 0), _speed, [-1,0.0144629,0,1,0,-0.53718,-0.157049,0.390503,-1,0,-0.161139,0,0,1,1]] call epoch_postprocessAdjust;
+		[(rmx_var_drunkHandles select 1), _speed, [0]] call epoch_postprocessAdjust;
 	};
 	case 0.4:
 	{
 		[(rmx_var_drunkHandles select 0), _speed, [-1,0.0144629,0,1,0,-0.53718,-0.157049,0.390503,-1,1,-0.161139,0,0,1,1]] call epoch_postprocessAdjust;
+		[(rmx_var_drunkHandles select 1), _speed, [0]] call epoch_postprocessAdjust;
 	};
 	case 0.5:
 	{
