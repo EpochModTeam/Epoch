@@ -16,7 +16,7 @@ class CfgEpochClient
 	epochVersion = "0.3.9.0";
 	sapperRngChance = 100; // increase number to reduce chances and reduce to increase. Default 100 = 1% - 55% if soiled (+ 2% if in city) chance to spawn sapper
 	droneRngChance = 100; // increase number to reduce chances and reduce to increase. Default 100 = // 2% chance (+ 4% chance if in city) (1% - 2% Half if using silencer) to spawn drone if shot fired
-	buildingNearbyMilitary = 0; //1 to allow building nearby
+	buildingNearbyMilitary = 0; //1 to allow building nearby Military buildings
 	buildingNearbyMilitaryRange = 300; //Define radius of blocked area
 	buildingNearbyMilitaryClasses[] = {"Cargo_Tower_base_F","Cargo_HQ_base_F","Cargo_Patrol_base_F","Cargo_House_base_F"};
 	restrictedLocations[] = {"NameCityCapital"};
@@ -107,6 +107,9 @@ class CfgEpochClient
 	playerKilledScreen = "TapOut2";
 	playerDisableRevenge = 0; // 0 = invoke playerKilledScreen when killed by another player, 1 = disable.
 	playerRevengeMinAliveTime = 900; // time in seconds player must be alive before Revenge option is available.
+
+	// banking
+	bankTransferTime[] = {0.0006,1.2,0.06}; // {time per crypto,max wait time,min wait time}
 
 	// include configs
     #include "CfgEpochClient\Altis.hpp"

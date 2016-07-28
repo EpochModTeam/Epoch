@@ -8,12 +8,15 @@ if (isNil "EPOCH_bankTransferActive") then {
 
 	[] spawn {
 		private ["_transferTarget","_progress","_sleep","_deposit","_withdraw","_transfer","_totalTransfer"];
-		
+
 		ctrlSetText[1004,"Transfer started, please wait."];
 
 		_deposit = parseNumber(ctrlText 1401) min EPOCH_playerCrypto;
 		_withdraw = parseNumber(ctrlText 1402) min EPOCH_bankBalance;
 		_transfer = parseNumber(ctrlText 1400) min EPOCH_bankBalance;
+
+		_config = 'CfgEpochClient' call EPOCH_returnConfig;
+		getArray(_config >> "bankTransferTime") params [["_timePerCrypto",0.0006],["_maxWait",1.2],["_minWait",0.06]];
 
 		_totalTransfer = (_deposit + _withdraw) + _transfer;
 		_progress = 0;
@@ -27,11 +30,11 @@ if (isNil "EPOCH_bankTransferActive") then {
 
 		if (_deposit > 0 || _withdraw > 0 || (_transfer > 0 && _transferTarget != "")) then {
 
-			_sleep = ((_totalTransfer * 0.0006) min 1.2) max 0.06;
+			_sleep = ((_totalTransfer * _timePerCrypto) min _maxWait) max _minWait;
 			for "_i" from 0 to 100 do {
 				if (isNull(findDisplay -13)) exitWith{};
 				_progress = _progress + 1;
-				if (_progress > 100) exitWith{};
+				if (_progress >= 100) exitWith{};
 				ctrlSetText[1200, format["\x\addons\a3_epoch_code\Data\UI\loading_bar_%1.paa", _progress]];
 				uiSleep _sleep;
 			};
