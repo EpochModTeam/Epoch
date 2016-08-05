@@ -55,7 +55,7 @@ if (typeOf _object == "PlotPole_EPOCH") then {
 			_counter = _counter + 1;
 			EPOCH_saveBuildQueue pushBackUnique _object;
 
-			if (_maintCount > 1) then {
+			if (_maintCount > 0) then {
 
 				// maintain all objects within range
 				{
