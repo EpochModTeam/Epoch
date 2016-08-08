@@ -45,9 +45,8 @@ _vars = _playerObj getVariable["VARS", _defaultVars];
 _current_crypto = _vars select _cIndex;
 
 if (_current_crypto > 0) then{
-	_veh = createVehicle["Land_MPS_EPOCH", _pos, [], 1.5, "NONE"];
-	diag_log format["Epoch: ADMIN: Created crypto device for %1 with %2 at %3", getPlayerUID _playerObj, _current_crypto, _pos];
-	_veh setVariable["Crypto", _current_crypto, true];
+	_playerObj setVariable["Crypto", _current_crypto, true];
+	diag_log format["Epoch: ADMIN: Crypto added to dead body for %1 with %2 at %3", getPlayerUID _playerObj, _current_crypto, _pos];
 };
 
 [_playerObj, _defaultVars] call EPOCH_server_savePlayer;

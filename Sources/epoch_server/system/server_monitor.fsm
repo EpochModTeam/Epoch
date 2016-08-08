@@ -231,7 +231,7 @@ class FSM
            "" \n
            "// TODO need better way allMissionObjects is not performant" \n
            "if (_cleanupItems isEqualTo []) then {" \n
-           "	_cleanupItems = allMissionObjects ""groundWeaponHolder"" + entities ""Land_MPS_EPOCH"" + entities ""WeaponHolderSimulated"";" \n
+           "	_cleanupItems = allMissionObjects ""groundWeaponHolder"" + entities ""WeaponHolderSimulated"";" \n
            "};"/*%FSM</ACTION""">*/;
         };
         /*%FSM</LINK>*/

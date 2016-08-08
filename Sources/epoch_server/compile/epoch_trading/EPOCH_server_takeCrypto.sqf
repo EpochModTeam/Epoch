@@ -22,7 +22,8 @@ if (_player distance _object > 10) exitWith {};
 _getCrypto = _object getVariable["Crypto", 0];
 if (_getCrypto > 0) then {
 
-	deleteVehicle _object;
+	// remove crypto from object
+	_object setVariable["Crypto", nil, true];
 
 	// get vars array and current Crypto value
 	_cIndex = EPOCH_customVars find "Crypto";
@@ -36,4 +37,7 @@ if (_getCrypto > 0) then {
 	_current_crypto remoteExec ['EPOCH_effectCrypto',_player];
 	_vars set[_cIndex, _current_crypto];
 	_player setVariable["VARS", _vars];
+
+	// debug and logging.
+	diag_log format["Epoch: ADMIN: %1 picked up %2 Crypto from object %3 with puid %4 at %5", getPlayerUID _player, _current_crypto, [_object, typeOf _object],_object getVariable['PUID', ''],getposATL _object];
 };
