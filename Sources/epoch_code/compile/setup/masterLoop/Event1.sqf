@@ -81,39 +81,133 @@ _hungry = EPOCH_playerHunger <= 0;
 _thirsty = EPOCH_playerThirst <= 0;
 _warnbloodPressure = EPOCH_playerBloodP > 120;
 
-_thirst ctrlShow (EPOCH_playerThirst <= 625);
-if (ctrlShown _thirst) then {
-	[_thirst,_thirsty] call _fadeUI;
+//_thirst ctrlShow (EPOCH_playerThirst <= 625);
+/*
+if (EPOCH_playerThirst <= 625) then {
+	_thirst = ["topRight",_hudIndex] call epoch_getHUDCtrl;
+	_hudIndex = _hudIndex + 1;
+
+	_thirst ctrlSetText "x\addons\a3_epoch_code\Data\UI\thirst_ca.paa";
+	[_thirst,_thirsty] call _scaleUI;
 	_color = [2500,0,EPOCH_playerThirst,1] call EPOCH_colorRange;
 	_thirst ctrlSetTextColor _color;
 };
 
-_hunger ctrlShow (EPOCH_playerHunger <= 1250);
-if (ctrlShown _hunger) then {
-	[_hunger,_hungry] call _fadeUI;
+if (EPOCH_playerHunger <= 1250) then {
+	_hunger = ["topRight",_hudIndex] call epoch_getHUDCtrl;
+	_hudIndex = _hudIndex + 1;
+	_hunger ctrlSetText "x\addons\a3_epoch_code\Data\UI\hunger_ca.paa";
+
+	[_hunger,_hungry] call _scaleUI;
 	_color = [5000,0,EPOCH_playerHunger,1] call EPOCH_colorRange;
 	_hunger ctrlSetTextColor _color;
 };
+*/
 
 _playerOxygen = getOxygenRemaining player;
-_oxygen ctrlShow (_playerOxygen < 1);
-if (ctrlShown _oxygen) then {
-	[_oxygen,(_playerOxygen <= 0.55)] call _fadeUI;
+//_oxygen ctrlShow (_playerOxygen < 1);
+if (_playerOxygen < 1) then {
+	_hudIndex = missionNamespace getVariable [format["EPOCH_dynHUD_%1","topRight"],1];
+	_oxygen = ["topRight",_hudIndex] call epoch_getHUDCtrl;
+	missionNamespace setVariable [format["EPOCH_dynHUD_%1","topRight"], _hudIndex + 1];
+	_oxygen ctrlSetText "x\addons\a3_epoch_code\Data\UI\oxygen_ca.paa";
+
+	[_oxygen,(_playerOxygen <= 0.55)] call _scaleUI;
 	_color = [0,1,_playerOxygen,1] call EPOCH_colorRange;
 	_oxygen ctrlSetTextColor _color;
 };
 
-_hazzard ctrlShow (EPOCH_playerToxicity > 35);
-if (ctrlShown _hazzard) then {
-	[_hazzard,(EPOCH_playerToxicity >= 55)] call _fadeUI;
-	_color = [0,100,EPOCH_playerToxicity,1] call EPOCH_colorRange;
-	_hazzard ctrlSetTextColor _color;
-};
+// dynamic start (greater than)
+{
+	_x params [["_selVarName",""],["_HUDclass","topRight"],["_ctrlText",""]];
+	_varIndex = EPOCH_customVars find _selVarName;
+	if (_varIndex != -1) then {
+		_currentVarVal = missionNamespace getVariable[format['EPOCH_player%1', _selVarName],EPOCH_defaultVars select _varIndex];
+		(EPOCH_customVarLimits select _varIndex) params [["_playerLimitMax",100],["_playerLimitMin",0],["_playerWarnLimit",25],["_playerCriticalLimit",75],["_playerWarnLow",0],["_playerCriticalLow",0]];
+		if (_playerLimitMax isEqualType "") then {
+			_playerLimitMax = missionNamespace getVariable [_playerLimitMax, 0];
+		};
+		if (_playerLimitMin isEqualType "") then {
+			_playerLimitMin = missionNamespace getVariable [_playerLimitMin, 0];
+		};
+		_warnLow = _currentVarVal < _playerWarnLow;
+		_warnHigh = _currentVarVal > _playerWarnLimit;
+		_criticalLow = _currentVarVal <= _playerCriticalLow;
+		_criticalHigh = _currentVarVal >= _playerCriticalLimit;
+		if (_warnHigh || _warnLow) then {
+			_hudIndex = missionNamespace getVariable [format["EPOCH_dynHUD_%1",_HUDclass],1];
+			_curCtrl = [_HUDclass,_hudIndex] call epoch_getHUDCtrl;
+			missionNamespace setVariable [format["EPOCH_dynHUD_%1",_HUDclass], _hudIndex + 1];
+			if (_ctrlText isEqualType []) then {
+				_ctrlText = if (_warnHigh) then {_ctrlText select 0} else {_ctrlText select 1};
+			};
+			_curCtrl ctrlSetText _ctrlText;
+			_critical = (_criticalHigh || _criticalLow);
+			[_curCtrl,_critical] call _scaleUI;
+			_color = [_playerLimitMin,_playerLimitMax,_currentVarVal,1] call EPOCH_colorRange;
+			_curCtrl ctrlSetTextColor _color;
+		};
+	};
+} forEach
+[
+	[
+		'Temp',
+		"topRight",
+		[
+			"x\addons\a3_epoch_code\Data\UI\hot_ca.paa",
+			"x\addons\a3_epoch_code\Data\UI\cold_ca.paa"
+		]
+	],
+	[
+		'Hunger',
+		"topRight",
+		"x\addons\a3_epoch_code\Data\UI\hunger_ca.paa"
+	],
+	[
+		'Thirst',
+		"topRight",
+		"x\addons\a3_epoch_code\Data\UI\thirst_ca.paa"
+	],
+	[	'Toxicity',
+		"topRight",
+		"x\addons\a3_epoch_code\Data\UI\hazzard_ca.paa"
+	],
+	[
+		'Wet',
+		"topRight",
+		"x\addons\a3_epoch_code\Data\UI\wet_ca.paa"
+	],
+	[
+		'BloodP',
+		"topRight",
+		"x\addons\a3_epoch_code\Data\UI\bleeding_ca.paa"
+	],
+	[
+		'Alcohol',
+		"topRight",
+		"x\addons\a3_epoch_code\Data\UI\drunk_ca.paa"
+	],
+	[
+		'Soiled',
+		"topRight",
+		"x\addons\a3_epoch_code\Data\UI\soiled_ca.paa"
+	],
+	[
+		'Radiation',
+		"topRight",
+		"x\addons\a3_epoch_code\Data\UI\rads_ca.paa"
+	]
+];
+// dynamic end
 
 _legDamage = player getHitPointDamage "HitLegs";
-_broken ctrlShow (_legDamage >= 0.5);
-if (ctrlShown _broken) then {
-	[_broken,true] call _fadeUI;
+// _broken ctrlShow (_legDamage >= 0.5);
+if (_legDamage >= 0.5) then {
+	_hudIndex = missionNamespace getVariable [format["EPOCH_dynHUD_%1","topRight"],1];
+	_broken = ["topRight",_hudIndex] call epoch_getHUDCtrl;
+	missionNamespace setVariable [format["EPOCH_dynHUD_%1","topRight"], _hudIndex + 1];
+	_broken ctrlSetText "x\addons\a3_epoch_code\Data\UI\broken_ca.paa";
+	[_broken,true] call _scaleUI;
 	_color = [1,0,_legDamage,1] call EPOCH_colorRange;
 	_broken ctrlSetTextColor _color;
 };
@@ -136,9 +230,13 @@ if (_envCold || _envHot || _hungry || _thirsty) then {
 };
 
 _critical = (damage player >= 0.7 || _warnbloodPressure);
-_emergency ctrlShow _critical;
-if (ctrlShown _emergency) then {
-	[_emergency,(EPOCH_playerBloodP > 140)] call _fadeUI;
+// _emergency ctrlShow _critical;
+if (_critical) then {
+	_hudIndex = missionNamespace getVariable [format["EPOCH_dynHUD_%1","topRight"],1];
+	_emergency = ["topRight",_hudIndex] call epoch_getHUDCtrl;
+	missionNamespace setVariable [format["EPOCH_dynHUD_%1","topRight"], _hudIndex + 1];
+	_emergency ctrlSetText "x\addons\a3_epoch_code\Data\UI\bleeding_ca.paa";
+	[_emergency,(EPOCH_playerBloodP > 140)] call _scaleUI;
 	_color = [180,100,EPOCH_playerBloodP,1] call EPOCH_colorRange;
 	_emergency ctrlSetTextColor _color;
 };
@@ -154,3 +252,12 @@ if (EPOCH_debugMode) then {
 };
 
 call EPOCH_TradeLoop;
+
+// blank out unused hud elements
+
+_hudIndex = missionNamespace getVariable [format["EPOCH_dynHUD_%1","topRight"],1];
+for "_i" from _hudIndex to 9 do {
+    _c = ["topRight",_i] call epoch_getHUDCtrl;
+    _c ctrlSetText "";
+};
+missionNamespace setVariable [format["EPOCH_dynHUD_%1","topRight"], nil];

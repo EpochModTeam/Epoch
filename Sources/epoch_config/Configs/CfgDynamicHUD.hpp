@@ -21,7 +21,7 @@ defaultPopulate:
 offSetX: Positive = right, Negative = left
 offSetY: Positive = down, Negative = up
 	Offsets group of controls, unit measurement is width or height of group. The bigger the group the more it will be offset.
-	Offsets are optional, don't have to be included 
+	Offsets are optional, don't have to be included
 
 classname:
 	https://community.bistudio.com/wiki/ctrlCreate/classnames
@@ -41,11 +41,13 @@ class rmx_dynamicHUD
 		classname = "RscPicture";
 		defaultPos = 2;
 		defaultPopulate = 1;
-		arraySize = 8;
+		arraySize = 10;
 		width = 4;
 		height = 4;
 		offSetX = 0;
 		offSetY = 0;
+		angle[] = {15, 0.5, 0.5, 1.5}; // [start degrees, x, y, tilt]
+		scale[] = {1, 0.05}; // [start scale, size reduction]
 	};
 	class botcenter
 	{
@@ -55,6 +57,7 @@ class rmx_dynamicHUD
 		arraySize = 9;
 		width = 5;
 		height = 5;
+		//angle[] = {25, 0.5, 0.5};
 	};
 
 };

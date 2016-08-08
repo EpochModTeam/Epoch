@@ -13,7 +13,7 @@
 */
 class CfgEpochClient
 {
-	epochVersion = "0.3.9.0";
+	epochVersion = "0.4.0.0";
 	sapperRngChance = 100; // increase number to reduce chances and reduce to increase. Default 100 = 1% - 55% if soiled (+ 2% if in city) chance to spawn sapper
 	droneRngChance = 100; // increase number to reduce chances and reduce to increase. Default 100 = // 2% chance (+ 4% chance if in city) (1% - 2% Half if using silencer) to spawn drone if shot fired
 	buildingNearbyMilitary = 0; //1 to allow building nearby Military buildings
@@ -36,7 +36,7 @@ class CfgEpochClient
 	disableRemoteSensors = true; // disableRemoteSensors true
 	EPOCH_news[] = {"Word is that Sappers have a new boss.","Dogs will often lure them monsters away.","My dog was blown up. I miss him.."};
 	deathMorphClass[] = {"Epoch_Sapper_F","Epoch_SapperB_F","I_UAV_01_F","Epoch_Cloak_F"};//Random selection of these classes when player morphs after death. Currently available: Epoch_Cloak_F, Epoch_SapperB_F, Epoch_Sapper_F, I_UAV_01_F
-	niteLight[] = {1.88,22};//Set ambient lighting at night: {Brightness of light,Height of light}. Default (Low Ambient): {1.88,22} | Twilight: {7.2,88} | Distant: {12.8,142}
+	niteLight[] = {1, 1.88, 22};//Set ambient lighting at night: {1 = enabled/0 = disabled, Brightness of light,Height of light}. Default (Low Ambient): {1.88,22} | Twilight: {7.2,88} | Distant: {12.8,142}
 	ryanZombiesEnabled = true; // enabled by default, false to disable
 	antagonistSpawnIndex[] = {
 		{"Epoch_Cloak_F", 1}, // {"type", limit}
@@ -49,29 +49,29 @@ class CfgEpochClient
 		{"EPOCH_RyanZombie_1",12}
 	};
 	customVarsDefaults[] = {
-		// EPOCH_player + varName, default value, {max,min}
-		{"Temp",98.6,{106.7,95}},
-		{"Hunger",5000,{5000,0}},
-		{"Thirst",2500,{2500,0}},
+		// EPOCH_player + varName, default value, {max,min,warn-high,critical-high,warn-low,critical-low}
+		{"Temp",98.6,{106.7,95,102,105,96,95}},
+		{"Hunger",5000,{5000,0,5001,5001,1250,0}},
+		{"Thirst",2500,{2500,0,2501,2501,625,0}},
 		{"AliveTime",0,{-2,0}},
 		{"Energy",0,{2500,0}},
-		{"Wet",0,{100,0}},
-		{"Soiled",0,{100,0}},
+		{"Wet",0,{100,0,35,55,-1,-1}},
+		{"Soiled",0,{100,0,35,55,-1,-1}},
 		{"Immunity",0,{100,0}},
-		{"Toxicity",0,{100,0}},
+		{"Toxicity",0,{100,0,35,55,-1,-1}},
 		{"Stamina",100,{"EPOCH_playerStaminaMax",0}},
 		{"Crypto",0,{250000,0}},
 		{"HitPoints",{0,0,0,0},{1,1,1,1}},
-		{"BloodP",100,{190,0}},
+		{"BloodP",100,{190,0,120,140,99,0}},
 		{"SpawnArray",{},{}},
 		{"Karma",0,{50000,-50000}},
-		{"Alcohol",0,{100,0}},
-		{"Radiation",0,{100,0}},
+		{"Alcohol",0,{100,0,35,55,-1,-1}},
+		{"Radiation",0,{100,0,35,55,-1,-1}},
 		{"Nuisance",0,{100,0}},
 		{"MissionArray",{},{}}
 	};
 	// controls max group limit and cost
-	group_upgrade_lvl[] = {4,"100",6,"300",8,"500",10,"1000",12,"1500",13,"1750",14,"2000",15,"3000",16,"5000"};
+	group_upgrade_lvl[] = {4,"1000",6,"1500",8,"2000",10,"2500",12,"3000",14,"3500",16,"4000",32,"8000",64,"16000"};
 
 	// Event handler code
 	displayAddEventHandler[] = {"keyDown","keyUp"};

@@ -22,20 +22,33 @@ if (count EPOCH_playerSpawnArray != count EPOCH_spawnIndex) then{
 	{ EPOCH_playerSpawnArray pushBack 0 } forEach EPOCH_spawnIndex;
 };
 
-9990 cutRsc ["EpochGameUI","PLAIN",2,false];
-_display = uiNamespace getVariable "EPOCH_EpochGameUI";
+//9990 cutRsc ["EpochGameUI","PLAIN",2,false];
+//_display = uiNamespace getVariable "EPOCH_EpochGameUI";
+/*
+EPOCH_fnc_makeCtrl = {
+	params [["_picture",""],["_HUDclass","topRight"]];
+	private _index =  missionNamespace getvariable ["EPOCH_dynamicCtrlIndex",1];
+	private _ctrl = [_HUDclass,_index] call epoch_getHUDCtrl;
+	_ctrl ctrlSetText _picture;
+	missionNamespace setvariable ["EPOCH_dynamicCtrlIndex",_index + 1];
+	_ctrl
+};
 
-_thirst = _display displayCtrl 21201;
-_hunger = _display displayCtrl 21202;
-_broken = _display displayCtrl 21203;
-_oxygen = _display displayCtrl 21204;
-_hazzard = _display displayCtrl 21205;
-_emergency = _display displayCtrl 21206;
+_thirst = ["x\addons\a3_epoch_code\Data\UI\thirst_ca.paa"] call EPOCH_fnc_makeCtrl;
+_hunger = ["x\addons\a3_epoch_code\Data\UI\hunger_ca.paa"] call EPOCH_fnc_makeCtrl;
+_broken = ["x\addons\a3_epoch_code\Data\UI\broken_ca.paa"] call EPOCH_fnc_makeCtrl;
+_oxygen = ["x\addons\a3_epoch_code\Data\UI\oxygen_ca.paa"] call EPOCH_fnc_makeCtrl;
+_hazzard = ["x\addons\a3_epoch_code\Data\UI\hazzard_ca.paa"] call EPOCH_fnc_makeCtrl;
+_emergency = ["x\addons\a3_epoch_code\Data\UI\bleeding_ca.paa"] call EPOCH_fnc_makeCtrl;
+
+diag_log format ["init HUD: %1 %2 %3 %4 %5 %6", _thirst,_hunger,_broken,_oxygen,_hazzard,_emergency];
 
 {
+
 	_x ctrlShow false;
 }forEach[_thirst,_hunger,_broken,_oxygen,_hazzard,_emergency];
 
+*/
 // find radio
 {
 	if (configName(inheritsFrom(configFile >> "CfgWeapons" >> _x)) == "ItemRadio") exitWith{
@@ -93,6 +106,26 @@ _fadeUI = {
 		if (ctrlFade _ctrl != 1) then {
 			_ctrl ctrlSetFade 0;
 			_ctrl ctrlCommit 0;
+		};
+	};
+	_bool
+};
+_scaleUI = {
+	params ["_ctrl","_bool"];
+	private _oemScale = _ctrl getVariable ["ctrl_scale", 1];
+	private _curScale = ctrlScale _ctrl;
+	if (_bool) then {
+		if (_curScale isEqualTo _oemScale) then {
+			_ctrl ctrlSetScale (_oemScale - 0.1);
+			_ctrl ctrlCommit 0.5;
+		} else {
+			_ctrl ctrlSetScale _oemScale;
+			_ctrl ctrlCommit 0.5;
+		};
+	} else {
+		if !(_curScale isEqualTo _oemScale) then {
+			_ctrl ctrlSetScale _oemScale;
+			_ctrl ctrlCommit 0.5;
 		};
 	};
 	_bool
