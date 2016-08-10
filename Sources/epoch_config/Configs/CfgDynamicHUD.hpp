@@ -45,8 +45,8 @@ class rmx_dynamicHUD
 		width = 4;
 		height = 4;
 		offSetX = 0;
-		offSetY = 0;
-		angle[] = {15, 0.5, 0.5, 1.5}; // [start degrees, x, y, tilt]
+		offSetY = 1.3;
+		angle[] = {-5, 0.5, 0.5, 0.5}; // [start degrees, x, y, tilt]
 		scale[] = {1, 0.05}; // [start scale, size reduction]
 	};
 	class botcenter
