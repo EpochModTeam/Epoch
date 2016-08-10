@@ -24,20 +24,7 @@ if (_getCrypto > 0) then {
 
 	// remove crypto from object
 	_object setVariable["Crypto", nil, true];
-
-	// get vars array and current Crypto value
-	_cIndex = EPOCH_customVars find "Crypto";
-	_vars = _player getVariable["VARS", call EPOCH_defaultVars_SEPXVar];
-	_current_crypto = _vars select _cIndex;
-
-	_playerCryptoLimit = EPOCH_customVarLimits select _cIndex;
-	_playerCryptoLimit params ["_playerCryptoLimitMax","_playerCryptoLimitMin"];
-	_current_crypto = ((_current_crypto + _getCrypto) min _playerCryptoLimitMax) max _playerCryptoLimitMin;
-	// send to player
-	_current_crypto remoteExec ['EPOCH_effectCrypto',_player];
-	_vars set[_cIndex, _current_crypto];
-	_player setVariable["VARS", _vars];
-
+	[_player,_getCrypto] call EPOCH_server_effectCrypto;
 	// debug and logging.
 	diag_log format["Epoch: ADMIN: %1 picked up %2 Crypto from object %3 with puid %4 at %5", getPlayerUID _player, _current_crypto, [_object, typeOf _object],_object getVariable['PUID', ''],getposATL _object];
 };
