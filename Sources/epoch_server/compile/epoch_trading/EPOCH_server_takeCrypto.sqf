@@ -12,7 +12,7 @@
     Github:
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server/compile/epoch_trading/EPOCH_server_makeTrade.sqf
 */
-private ["_cIndex","_vars","_current_crypto","_change","_player","_object","_player1","_player2","_getCrypto"];
+private ["_current_crypto","_player","_object","_getCrypto"];
 params ["_player",["_token","",[""]],"_object"];
 
 if !([_player,_token] call EPOCH_server_getPToken) exitWith {};
