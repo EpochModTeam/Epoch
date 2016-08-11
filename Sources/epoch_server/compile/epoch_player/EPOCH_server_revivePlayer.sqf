@@ -254,6 +254,16 @@ if (!local _player) then {
 				// Final Push
 				_token = _newPlyr call EPOCH_server_setPToken;
 
+				_CorpseCrypto = _player getVariable['Crypto', 0];
+				if (_CorpseCrypto > 0) then {
+					_cIndex = EPOCH_customVars find 'Crypto';
+					_vars = _player getVariable['VARS', call EPOCH_defaultVars_SEPXVar];
+					_PlayerCrypto = _CorpseCrypto;
+					_PlayerCrypto remoteExec ['EPOCH_effectCrypto',_player];
+					_vars set[_cIndex, _PlayerCrypto];
+					_newPlyr setVariable['VARS', _vars];
+				};
+
 				// send to player
 				[_newPlyr, _token] remoteExec ['EPOCH_clientRevive',_player];
 			};
