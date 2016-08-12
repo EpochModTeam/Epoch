@@ -23,10 +23,10 @@
 */
 private ["_randomAIClass","_animalPos","_tryAnimalPos","_id","_animal","_animalAiTables","_playerPos"];
 
-// TODO: move static arrays to config
 if (count(player nearEntities["Animal_Base_F", 200]) >= 1) exitWith{};
 
-_animalAiTables = ["Sheep_random_EPOCH", "Sheep_random_EPOCH", "Goat_random_EPOCH", "Goat_random_EPOCH", "Goat_random_EPOCH", ["Cock_random_EPOCH", "Hen_random_EPOCH"], ["Cock_random_EPOCH", "Hen_random_EPOCH"], "Rabbit_EPOCH", "Rabbit_EPOCH", "Rabbit_EPOCH", "Snake_random_EPOCH", "Snake2_random_EPOCH", ["Fin_random_EPOCH", "Alsatian_Random_EPOCH"]];
+_animalAiTables = ["CfgEpochClient", "animalAiTables", ["Sheep_random_EPOCH", "Sheep_random_EPOCH", "Goat_random_EPOCH", "Goat_random_EPOCH", "Goat_random_EPOCH", ["Cock_random_EPOCH", "Hen_random_EPOCH"], ["Cock_random_EPOCH", "Hen_random_EPOCH"], "Rabbit_EPOCH", "Rabbit_EPOCH", "Rabbit_EPOCH", "Snake_random_EPOCH", "Snake2_random_EPOCH", ["Fin_random_EPOCH", "Alsatian_Random_EPOCH"]]] call EPOCH_fnc_returnConfigEntryV2;
+
 _randomAIClass = selectRandom _animalAiTables;
 _animalPos = nil;
 _playerPos = position player;

@@ -12,6 +12,7 @@ _baseHTLoss = ["CfgEpochClient", "baseHTLoss", 8] call EPOCH_fnc_returnConfigEnt
 _energyCostNV = ["CfgEpochClient", "energyCostNV", 3] call EPOCH_fnc_returnConfigEntryV2;
 _energyRegenMax = ["CfgEpochClient", "energyRegenMax", 5] call EPOCH_fnc_returnConfigEntryV2;
 _energyRange = ["CfgEpochClient", "energyRange", 75] call EPOCH_fnc_returnConfigEntryV2;
+_hudConfigs = ["CfgEpochClient", "hudConfigs", []] call EPOCH_fnc_returnConfigEntryV2;
 
 EPOCH_chargeRate = 0;
 EPOCH_playerIsSwimming = false;
@@ -22,33 +23,35 @@ if (count EPOCH_playerSpawnArray != count EPOCH_spawnIndex) then{
 	{ EPOCH_playerSpawnArray pushBack 0 } forEach EPOCH_spawnIndex;
 };
 
-//9990 cutRsc ["EpochGameUI","PLAIN",2,false];
-//_display = uiNamespace getVariable "EPOCH_EpochGameUI";
+// HUD and Logic functions - todo move to client function.
 /*
-EPOCH_fnc_makeCtrl = {
-	params [["_picture",""],["_HUDclass","topRight"]];
-	private _index =  missionNamespace getvariable ["EPOCH_dynamicCtrlIndex",1];
-	private _ctrl = [_HUDclass,_index] call epoch_getHUDCtrl;
-	_ctrl ctrlSetText _picture;
-	missionNamespace setvariable ["EPOCH_dynamicCtrlIndex",_index + 1];
-	_ctrl
+[_selVarName,_varIndex,_selVarType,_selVarSubData] call _fnc_returnHudVar
+*/
+_fnc_returnHudVar = {
+	params [["_selVarName",""],["_varIndex",0],["_selVarType",""],["_selVarSubData",""]];
+	switch (_selVarType) do {
+		case "getMissionNamespaceVariable": {missionNamespace getVariable[_selVarName,_selVarSubData]};
+		case "getPlayerHitPointDamage": {player getHitPointDamage _selVarSubData};
+		case "getPlayerOxygenRemaining": {getOxygenRemaining player};
+		case "getPlayerDamage": {damage player};
+		default {missionNamespace getVariable[format['EPOCH_player%1', _selVarName],EPOCH_defaultVars select _varIndex]};
+	}
+};
+/*
+[1,">=",0] call _fnc_arrayToLogic; // returns: true
+*/
+_fnc_arrayToLogic = {
+	params [["_v",""],["_t",""],["_d",""]];
+	switch (_t) do {
+		case ">=": {_v >= _d};
+		case "<=": {_v <= _d};
+		case "<": {_v < _d};
+		case ">": {_v > _d};
+		case "!=": {!(_v isEqualTo _d)};
+		default {_v isEqualTo _d};
+	}
 };
 
-_thirst = ["x\addons\a3_epoch_code\Data\UI\thirst_ca.paa"] call EPOCH_fnc_makeCtrl;
-_hunger = ["x\addons\a3_epoch_code\Data\UI\hunger_ca.paa"] call EPOCH_fnc_makeCtrl;
-_broken = ["x\addons\a3_epoch_code\Data\UI\broken_ca.paa"] call EPOCH_fnc_makeCtrl;
-_oxygen = ["x\addons\a3_epoch_code\Data\UI\oxygen_ca.paa"] call EPOCH_fnc_makeCtrl;
-_hazzard = ["x\addons\a3_epoch_code\Data\UI\hazzard_ca.paa"] call EPOCH_fnc_makeCtrl;
-_emergency = ["x\addons\a3_epoch_code\Data\UI\bleeding_ca.paa"] call EPOCH_fnc_makeCtrl;
-
-diag_log format ["init HUD: %1 %2 %3 %4 %5 %6", _thirst,_hunger,_broken,_oxygen,_hazzard,_emergency];
-
-{
-
-	_x ctrlShow false;
-}forEach[_thirst,_hunger,_broken,_oxygen,_hazzard,_emergency];
-
-*/
 // find radio
 {
 	if (configName(inheritsFrom(configFile >> "CfgWeapons" >> _x)) == "ItemRadio") exitWith{

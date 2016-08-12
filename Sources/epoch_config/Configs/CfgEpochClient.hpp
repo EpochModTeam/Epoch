@@ -49,7 +49,7 @@ class CfgEpochClient
 		{"EPOCH_RyanZombie_1",12}
 	};
 	customVarsDefaults[] = {
-		// EPOCH_player + varName, default value, {max,min,warn-high,critical-high,warn-low,critical-low}
+		// EPOCH_player + varName, default value, {max,min,warn-high,crit-high,warn-low,crit-low}
 		{"Temp",98.6,{106.7,95,102,105,96,95}},
 		{"Hunger",5000,{5000,0,5001,5001,1250,0}},
 		{"Thirst",2500,{2500,0,2501,2501,625,0}},
@@ -61,8 +61,8 @@ class CfgEpochClient
 		{"Toxicity",0,{100,0,35,55,-1,-1}},
 		{"Stamina",100,{"EPOCH_playerStaminaMax",0}},
 		{"Crypto",0,{250000,0}},
-		{"HitPoints",{0,0,0,0},{1,1,1,1}},
-		{"BloodP",100,{190,0,120,140,99,0}},
+		{"HitPoints",{0,0,0,0},{1,0,0.5,1,-1,-1}},
+		{"BloodP",100,{190,0,120,140,70,50}},
 		{"SpawnArray",{},{}},
 		{"Karma",0,{50000,-50000}},
 		{"Alcohol",0,{100,0,35,55,-1,-1}},
@@ -70,6 +70,107 @@ class CfgEpochClient
 		{"Nuisance",0,{100,0}},
 		{"MissionArray",{},{}}
 	};
+
+	// HUD configs
+	hudConfigs[] = {
+		/*
+		{
+			{
+				"AnyVarName",
+				"getMissionNamespaceVariable",
+				"defaultValue",
+				{
+					{
+						"VarName1",
+						"getMissionNamespaceVariable",
+						"defaultValue"
+					},
+					">=",
+					0.7
+				},
+				{5000,0,5001,5001,1250,0}
+			},
+			"topRight",
+			"x\addons\a3_epoch_code\Data\UI\bleeding_ca.paa"
+		},
+		{
+			{
+				"Thirst",
+				"",
+				"",
+				{
+					{"Hunger","getPlayerVariable"},">=",1000
+				},
+				{2500,0,2501,2501,625,0}
+			},
+			"topRight",
+			"x\addons\a3_epoch_code\Data\UI\hunger_ca.paa",
+
+		},
+		*/
+		{
+			{"BloodP","","",{"getPlayerDamage",">=",0.7}},
+			"topRight",
+			"x\addons\a3_epoch_code\Data\UI\bleeding_ca.paa",
+			{"forceUpdate"}
+		},
+		{
+			{"Oxygen","getPlayerOxygenRemaining","",{},{1,0,2,2,1,0.55}},
+			"topRight",
+			"x\addons\a3_epoch_code\Data\UI\oxygen_ca.paa"
+		},
+		{
+			"Hunger",
+			"topRight",
+			"x\addons\a3_epoch_code\Data\UI\hunger_ca.paa",
+			{"forceBloodRise"}
+		},
+		{
+			"Thirst",
+			"topRight",
+			"x\addons\a3_epoch_code\Data\UI\thirst_ca.paa",
+			{"forceBloodRise"}
+		},
+		{
+			"Temp",
+			"topRight",
+			{
+				"x\addons\a3_epoch_code\Data\UI\hot_ca.paa",
+				"x\addons\a3_epoch_code\Data\UI\cold_ca.paa"
+			},
+			{"forceFatigue"}
+		},
+		{	"Toxicity",
+			"topRight",
+			"x\addons\a3_epoch_code\Data\UI\hazzard_ca.paa"
+		},
+		{
+			"Wet",
+			"topRight",
+			"x\addons\a3_epoch_code\Data\UI\wet_ca.paa"
+		},
+		{
+			"Alcohol",
+			"topRight",
+			"x\addons\a3_epoch_code\Data\UI\drunk_ca.paa"
+		},
+		{
+			"Soiled",
+			"topRight",
+			"x\addons\a3_epoch_code\Data\UI\soiled_ca.paa"
+		},
+		{
+			"Radiation",
+			"topRight",
+			"x\addons\a3_epoch_code\Data\UI\rads_ca.paa"
+		},
+		{
+			{"HitPoints","getPlayerHitPointDamage","HitLegs"},
+			"topRight",
+			"x\addons\a3_epoch_code\Data\UI\broken_ca.paa"
+		}
+	};
+
 	// controls max group limit and cost
 	group_upgrade_lvl[] = {4,"1000",6,"1500",8,"2000",10,"2500",12,"3000",14,"3500",16,"4000",32,"8000",64,"16000"};
 
@@ -91,8 +192,8 @@ class CfgEpochClient
 	Dammaged        = "";
 	Hit             = "";
 	HitPart         = "";
-	GetInMan        = "";
-	GetOutMan       = "_this call EPOCH_antiWall;";
+	GetInMan        = "_this call EPOCH_getInMan";
+	GetOutMan       = "_this call EPOCH_getOutMan;";
 
 	// suppress these units from spawning near Jammer or Traders
 	nonJammerAI[] = {"B_Heli_Transport_01_F","PHANTOM","EPOCH_Sapper_F","Epoch_SapperB_F","I_UAV_01_F","EPOCH_RyanZombie_1"};
@@ -101,6 +202,9 @@ class CfgEpochClient
 
 	// Fishing loots
 	fishLoots[] = {"ItemTuna","ItemSeaBass","ItemSeaBass","ItemSeaBass","ItemTrout","ItemTrout","ItemTrout","ItemTrout","ItemTrout","ItemTrout"};
+
+	// Animal spawn table
+	animalAiTables[] = {"Sheep_random_EPOCH", "Sheep_random_EPOCH", "Goat_random_EPOCH", "Goat_random_EPOCH", "Goat_random_EPOCH", {"Cock_random_EPOCH", "Hen_random_EPOCH"}, {"Cock_random_EPOCH", "Hen_random_EPOCH"}, "Rabbit_EPOCH", "Rabbit_EPOCH", "Rabbit_EPOCH", "Snake_random_EPOCH", "Snake2_random_EPOCH", {"Fin_random_EPOCH", "Alsatian_Random_EPOCH"}};
 
 	// Player specific configs
 	playerDeathScreen = "TapOut";

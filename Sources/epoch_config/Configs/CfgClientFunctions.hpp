@@ -30,7 +30,6 @@ class CfgClientFunctions
 			class supportCopter {};
 			class consumeItem {};
 			class unitSpawn {};
-			class antiWall {};
 			class onEachFrame {};
 			class callSapperMigration {};
 			class zombieSpawn {};
@@ -74,10 +73,13 @@ class CfgClientFunctions
 			class KeyUp {};
 			class onChar {};
 		};
-
+		class event_handlers
+		{
+			class getInMan {};
+			class getOutMan {};
+		};
 		class setup
 		{
-			class client_publicEH {};
 			class masterLoop {};
 			class clientInit {};
 			class clientRespawn {};
@@ -192,7 +194,7 @@ class CfgClientFunctions
 			class dynamicMenuPopulate {};
 			class dynamicMenuCleanup {};
 		};
-		
+
 		class dynamicHUD {
 			file = "epoch_code\gui\scripts\dynamicHUD";
 			class dynamicHUD_adjust {};
@@ -200,7 +202,7 @@ class CfgClientFunctions
 			class dynamicHUD_start {};
 			class getHUDCtrl {};
 		};
-		
+
 		class gui_craft {
 			file = "epoch_code\gui\scripts\craftingv2";
 			class crafting_animate {};
