@@ -80,7 +80,10 @@ if ((random 100) < _lootBias) then {
 
                 EPOCH_lootObjects pushBack _item;
                 if (count EPOCH_lootObjects > _lootObjectLimit) then {
-                    deleteVehicle (EPOCH_lootObjects deleteAt 0);
+                    _delete = EPOCH_lootObjects deleteAt 0;
+                    if (!isnull _delete) then {
+                    	deleteVehicle _delete;
+                    };
                 };
 
                 if (surfaceIsWater _pos) then {
