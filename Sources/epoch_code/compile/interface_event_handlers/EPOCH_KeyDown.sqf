@@ -266,4 +266,5 @@ if (_dikCode in (actionKeys "NightVision")) then {
 	};
 };
 
-_handled
+// only return anything if _handled actually is true
+if (_handled isEqualTo true) then {true};
