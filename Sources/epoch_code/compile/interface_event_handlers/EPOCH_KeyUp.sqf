@@ -36,4 +36,6 @@ if (_dikCode == EPOCH_keysAction) then {
 if (_dikCode in(actionKeys "Gear")) then {
 	EPOCH_gearKeyPressed = false;
 };
-_handled
+
+// only return anything if _handled actually is true
+if (_handled isEqualTo true) then {true};
