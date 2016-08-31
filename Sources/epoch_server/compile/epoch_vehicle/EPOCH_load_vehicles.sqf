@@ -12,7 +12,7 @@
     Github:
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server/compile/epoch_vehicle/EPOCH_load_vehicles.sqf
 */
-private ["_availableColorsConfig","_location","_class","_dmg","_actualHitpoints","_hitpoints","_textures","_color","_colors","_textureSelectionIndex","_selections","_count","_objTypes","_objQty","_wMags","_wMagsArray","_attachments","_magazineSizeMax","_magazineName","_magazineSize","_qty","_objType","_marker","_found","_vehicle","_allHitpoints","_cfgEpochVehicles","_worldspace","_damage","_arr","_arrNum","_vehicleSlotIndex","_vehHiveKey","_response","_diag","_dataFormat","_dataFormatCount","_allVehicles","_serverSettingsConfig"];
+private ["_removeweapons","_removemagazinesturret","_availableColorsConfig","_location","_class","_dmg","_actualHitpoints","_hitpoints","_textures","_color","_colors","_textureSelectionIndex","_selections","_count","_objTypes","_objQty","_wMags","_wMagsArray","_attachments","_magazineSizeMax","_magazineName","_magazineSize","_qty","_objType","_marker","_found","_vehicle","_allHitpoints","_cfgEpochVehicles","_worldspace","_damage","_arr","_arrNum","_vehicleSlotIndex","_vehHiveKey","_response","_diag","_dataFormat","_dataFormatCount","_allVehicles","_serverSettingsConfig"];
 params [["_maxVehicleLimit",0]];
 
 _diag = diag_tickTime;
