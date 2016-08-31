@@ -114,12 +114,12 @@ for "_i" from 1 to _maxVehicleLimit do {
 						
 						if !(_removeweapons isequalto []) then {
 							{
-								_vehObj removeWeaponGlobal _x;
+								_vehicle removeWeaponGlobal _x;
 							} foreach _removeweapons;
 						};
 						if !(_removemagazinesturret isequalto []) then {
 							{
-								_vehObj removeMagazinesTurret _x;
+								_vehicle removeMagazinesTurret _x;
 							} foreach _removemagazinesturret;
 						};
 
