@@ -12,7 +12,7 @@
     Github:
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server/compile/epoch_vehicle/EPOCH_spawn_vehicle.sqf
 */
-private ["_maxDamage","_textures","_textureSelectionIndex","_selections","_colors","_color","_count","_vehLockHiveKey","_marker","_cfgEpochVehicles","_vehObj"];
+private ["_removeweapons","_removemagazinesturret","_maxDamage","_textures","_textureSelectionIndex","_selections","_colors","_color","_count","_vehLockHiveKey","_marker","_cfgEpochVehicles","_vehObj"];
 params ["_vehClass","_position","_direction","_locked","_slot",["_lockOwner",""],["_can_collide","CAN_COLLIDE"],["_spawnLoot",false],["_spawnDamaged",true]];
 if !(isClass (configFile >> "CfgVehicles" >> _vehClass)) exitWith {objNull};
 _serverSettingsConfig = configFile >> "CfgEpochServer";
