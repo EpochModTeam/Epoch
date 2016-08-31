@@ -12,7 +12,7 @@
     Github:
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server/compile/epoch_vehicle/EPOCH_load_vehicles.sqf
 */
-private ["_availableColorsConfig","_location","_class","_dmg","_actualHitpoints","_hitpoints","_textures","_color","_colors","_textureSelectionIndex","_selections","_count","_objTypes","_objQty","_wMags","_wMagsArray","_attachments","_magazineSizeMax","_magazineName","_magazineSize","_qty","_objType","_marker","_found","_vehicle","_allHitpoints","_cfgEpochVehicles","_worldspace","_damage","_arr","_arrNum","_vehicleSlotIndex","_vehHiveKey","_response","_diag","_dataFormat","_dataFormatCount","_allVehicles","_serverSettingsConfig"];
+private ["_removeweapons","_removemagazinesturret","_availableColorsConfig","_location","_class","_dmg","_actualHitpoints","_hitpoints","_textures","_color","_colors","_textureSelectionIndex","_selections","_count","_objTypes","_objQty","_wMags","_wMagsArray","_attachments","_magazineSizeMax","_magazineName","_magazineSize","_qty","_objType","_marker","_found","_vehicle","_allHitpoints","_cfgEpochVehicles","_worldspace","_damage","_arr","_arrNum","_vehicleSlotIndex","_vehHiveKey","_response","_diag","_dataFormat","_dataFormatCount","_allVehicles","_serverSettingsConfig"];
 params [["_maxVehicleLimit",0]];
 
 _diag = diag_tickTime;
@@ -24,6 +24,8 @@ _vehicleDamages = [];
 
 _serverSettingsConfig = configFile >> "CfgEpochServer";
 _simulationHandler = [_serverSettingsConfig, "simulationHandlerOld", false] call EPOCH_fnc_returnConfigEntry;
+_removeweapons = [_serverSettingsConfig, "removevehweapons", []] call EPOCH_fnc_returnConfigEntry;
+_removemagazinesturret = [_serverSettingsConfig, "removevehmagazinesturret", []] call EPOCH_fnc_returnConfigEntry;
 
 for "_i" from 1 to _maxVehicleLimit do {
 	_vehicleSlotIndex = EPOCH_VehicleSlots pushBack str(_i);
@@ -109,6 +111,18 @@ for "_i" from 1 to _maxVehicleLimit do {
 						clearMagazineCargoGlobal  _vehicle;
 						clearBackpackCargoGlobal  _vehicle;
 						clearItemCargoGlobal      _vehicle;
+						
+						if !(_removeweapons isequalto []) then {
+							{
+								_vehicle removeWeaponGlobal _x;
+							} foreach _removeweapons;
+						};
+						if !(_removemagazinesturret isequalto []) then {
+							{
+								_vehicle removeMagazinesTurret _x;
+							} foreach _removemagazinesturret;
+						};
+
 						{
 							_objType = _forEachIndex;
 							_objTypes = _x;

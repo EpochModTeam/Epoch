@@ -1134,6 +1134,9 @@ call compile ("'"+_skn_doAdminRequest+"' addPublicVariableEventHandler {
 			_return = false;
 			if (_item isKindOf 'Air' || _item isKindOf 'Ship' || _item isKindOf 'LandVehicle') then {
 				if !(EPOCH_VehicleSlots isEqualTo[]) then {
+					_serverSettingsConfig = configFile >> 'CfgEpochServer';
+					_removeweapons = [_serverSettingsConfig, 'removevehweapons', []] call EPOCH_fnc_returnConfigEntry;
+					_removemagazinesturret = [_serverSettingsConfig, 'removevehmagazinesturret', []] call EPOCH_fnc_returnConfigEntry;
 					_position = getPosATL _target;
 
 					_slot = EPOCH_VehicleSlots select 0;
@@ -1151,6 +1154,18 @@ call compile ("'"+_skn_doAdminRequest+"' addPublicVariableEventHandler {
 					clearMagazineCargoGlobal  _vehObj;
 					clearBackpackCargoGlobal  _vehObj;
 					clearItemCargoGlobal	  _vehObj;
+					
+					if !(_removeweapons isequalto []) then {
+						{
+							_vehObj removeWeaponGlobal _x;
+						} foreach _removeweapons;
+					};
+					if !(_removemagazinesturret isequalto []) then {
+						{
+							_vehObj removeMagazinesTurret _x;
+						} foreach _removemagazinesturret;
+					};
+
 					_vehObj lock true;
 
 					_playerUID = getPlayerUID _target;
