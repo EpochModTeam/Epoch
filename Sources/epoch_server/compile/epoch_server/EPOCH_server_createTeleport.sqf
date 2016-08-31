@@ -46,7 +46,9 @@ _loadBaseTemplateConfig = {
 _debugLocation = getMarkerPos "respawn_west";
 _debugLocation set[2, 0];
 _debug = createVehicle["Debug_static_F", _debugLocation, [], 0, "CAN_COLLIDE"];
+_debug setposATL _debugLocation;
 _protection = createVehicle["ProtectionZone_Invisible_F", _debugLocation, [], 0, "CAN_COLLIDE"];
+_protection setposATL _debugLocation;
 _cloneClasses = ["clone_empty_static_F", "clone_male_static_F", "clone_female_static_F"];
 
 for "_i" from 1 to 4 do {

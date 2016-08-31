@@ -180,13 +180,14 @@ for "_i" from 1 to _maxStorageLimit do {
 
 								if ((_magazineName isEqualType "STRING") && (_magazineSize isEqualType 0)) then {
 									_magazineSizeMax = getNumber (configFile >> "CfgMagazines" >> _magazineName >> "count");
+									if (_magazineSizeMax >= 1) then {
+										// Add full magazines cargo
+										_vehicle addMagazineAmmoCargo [_magazineName, floor (_magazineSize / _magazineSizeMax), _magazineSizeMax];
 
-									// Add full magazines cargo
-									_vehicle addMagazineAmmoCargo [_magazineName, floor (_magazineSize / _magazineSizeMax), _magazineSizeMax];
-
-									// Add last non full magazine
-									if ((_magazineSize % _magazineSizeMax) > 0) then {
-										_vehicle addMagazineAmmoCargo [_magazineName, 1, floor (_magazineSize % _magazineSizeMax)];
+										// Add last non full magazine
+										if ((_magazineSize % _magazineSizeMax) > 0) then {
+											_vehicle addMagazineAmmoCargo [_magazineName, 1, floor (_magazineSize % _magazineSizeMax)];
+										};
 									};
 								};
 							};

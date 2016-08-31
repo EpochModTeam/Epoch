@@ -15,6 +15,9 @@
 private ["_maxDamage","_textures","_textureSelectionIndex","_selections","_colors","_color","_count","_vehLockHiveKey","_marker","_cfgEpochVehicles","_vehObj"];
 params ["_vehClass","_position","_direction","_locked","_slot",["_lockOwner",""],["_can_collide","CAN_COLLIDE"],["_spawnLoot",false],["_spawnDamaged",true]];
 if !(isClass (configFile >> "CfgVehicles" >> _vehClass)) exitWith {objNull};
+_serverSettingsConfig = configFile >> "CfgEpochServer";
+_removeweapons = [_serverSettingsConfig, "removevehweapons", []] call EPOCH_fnc_returnConfigEntry;
+_removemagazinesturret = [_serverSettingsConfig, "removevehmagazinesturret", []] call EPOCH_fnc_returnConfigEntry;
 _vehObj = createVehicle[_vehClass, _position, [], 0, _can_collide];
 if !(isNull _vehObj) then{
 	_vehObj call EPOCH_server_setVToken;
@@ -32,6 +35,17 @@ if !(isNull _vehObj) then{
 	clearBackpackCargoGlobal  _vehObj;
 	clearItemCargoGlobal	  _vehObj;
 
+	if !(_removeweapons isequalto []) then {
+		{
+			_vehObj removeWeaponGlobal _x;
+		} foreach _removeweapons;
+	};
+	if !(_removemagazinesturret isequalto []) then {
+		{
+			_vehObj removeMagazinesTurret _x;
+		} foreach _removemagazinesturret;
+	};
+	
 	// Disable Termal Equipment
 	_vehObj disableTIEquipment true;
 

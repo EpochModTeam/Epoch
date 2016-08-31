@@ -30,6 +30,15 @@ cloneCost = 100; // debt incurred on player death
 // vehicles - Max vehicle slots is calculated from per vehicle limits below. Warning! Higher the number lower the performance.
 simulationHandlerOld = false; // When enabled this feature disables simulation on vehicles that are not nea players. Can help improve client fps at the cost of server fps.
 vehicleLockTime = 1800; // Controls how many seconds it takes to allow another person/group to unlock vehicle.
+removevehweapons[] = {			// remove these Weapons from spawned Vehicles
+	"missiles_DAR","gatling_30mm","gatling_20mm","missiles_DAGR","cannon_30mm_Plane_CAS_02_F","Missile_AA_03_Plane_CAS_02_F","Missile_AGM_01_Plane_CAS_02_F","Rocket_03_HE_Plane_CAS_02_F",
+	"Rocket_03_AP_Plane_CAS_02_F","Bomb_03_Plane_CAS_02_F","Bomb_04_Plane_CAS_01_F","Rocket_04_AP_Plane_CAS_01_F","Rocket_04_HE_Plane_CAS_01_F","Missile_AGM_02_Plane_CAS_01_F","Missile_AA_04_Plane_CAS_01_F",
+	"Gatling_30mm_Plane_CAS_01_F","GBU12BombLauncher_Plane_Fighter_03_F","missiles_ASRAAM","missiles_SCALPEL","Twin_Cannon_20mm","missiles_Zephyr","rockets_skyfire","gatling_30mm_vtol_02"
+};
+removevehmagazinesturret[] = {	// Remove these Magazines from the given Turret from spawned Vehicles
+	{"24Rnd_missiles",{-1}},
+	{"200Rnd_40mm_G_belt",{0}}
+};
 
 // Traders
 taxRate = 0.1; // controls the price increase for purchases

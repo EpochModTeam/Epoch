@@ -149,12 +149,12 @@ if (alive _this) then {
 										_addWeaponToHands = true;
 									};
 								};
-								case 2: {
+								case 4: {
 									if (secondaryWeapon player == "") then {
 										_addWeaponToHands = true;
 									};
 								};
-								case 4: {
+								case 2: {
 									if (handgunWeapon player == "") then {
 										_addWeaponToHands = true;
 									};

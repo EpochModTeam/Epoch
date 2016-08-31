@@ -77,6 +77,13 @@ class tra_shop
 	tooltip = "Shop";
 };
 
+class player_takeCrypto
+{
+	condition = "dyna_isDeadPlayer";
+	action = "dyna_cursorTarget call EPOCH_takeCrypto;";
+	icon = "x\addons\a3_epoch_code\Data\UI\buttons\krypto.paa";
+	tooltip = "Take Krypto";
+};
 class player_trade
 {
 	condition = "dyna_isPlayer";

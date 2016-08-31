@@ -12,6 +12,7 @@ _baseHTLoss = ["CfgEpochClient", "baseHTLoss", 8] call EPOCH_fnc_returnConfigEnt
 _energyCostNV = ["CfgEpochClient", "energyCostNV", 3] call EPOCH_fnc_returnConfigEntryV2;
 _energyRegenMax = ["CfgEpochClient", "energyRegenMax", 5] call EPOCH_fnc_returnConfigEntryV2;
 _energyRange = ["CfgEpochClient", "energyRange", 75] call EPOCH_fnc_returnConfigEntryV2;
+_hudConfigs = ["CfgEpochClient", "hudConfigs", []] call EPOCH_fnc_returnConfigEntryV2;
 
 EPOCH_chargeRate = 0;
 EPOCH_playerIsSwimming = false;
@@ -22,19 +23,34 @@ if (count EPOCH_playerSpawnArray != count EPOCH_spawnIndex) then{
 	{ EPOCH_playerSpawnArray pushBack 0 } forEach EPOCH_spawnIndex;
 };
 
-9990 cutRsc ["EpochGameUI","PLAIN",2,false];
-_display = uiNamespace getVariable "EPOCH_EpochGameUI";
-
-_thirst = _display displayCtrl 21201;
-_hunger = _display displayCtrl 21202;
-_broken = _display displayCtrl 21203;
-_oxygen = _display displayCtrl 21204;
-_hazzard = _display displayCtrl 21205;
-_emergency = _display displayCtrl 21206;
-
-{
-	_x ctrlShow false;
-}forEach[_thirst,_hunger,_broken,_oxygen,_hazzard,_emergency];
+// HUD and Logic functions - todo move to client function.
+/*
+[_selVarName,_varIndex,_selVarType,_selVarSubData] call _fnc_returnHudVar
+*/
+_fnc_returnHudVar = {
+	params [["_selVarName",""],["_varIndex",0],["_selVarType",""],["_selVarSubData",""]];
+	switch (_selVarType) do {
+		case "getMissionNamespaceVariable": {missionNamespace getVariable[_selVarName,_selVarSubData]};
+		case "getPlayerHitPointDamage": {player getHitPointDamage _selVarSubData};
+		case "getPlayerOxygenRemaining": {getOxygenRemaining player};
+		case "getPlayerDamage": {damage player};
+		default {missionNamespace getVariable[format['EPOCH_player%1', _selVarName],EPOCH_defaultVars select _varIndex]};
+	}
+};
+/*
+[1,">=",0] call _fnc_arrayToLogic; // returns: true
+*/
+_fnc_arrayToLogic = {
+	params [["_v",""],["_t",""],["_d",""]];
+	switch (_t) do {
+		case ">=": {_v >= _d};
+		case "<=": {_v <= _d};
+		case "<": {_v < _d};
+		case ">": {_v > _d};
+		case "!=": {!(_v isEqualTo _d)};
+		default {_v isEqualTo _d};
+	}
+};
 
 // find radio
 {
@@ -93,6 +109,26 @@ _fadeUI = {
 		if (ctrlFade _ctrl != 1) then {
 			_ctrl ctrlSetFade 0;
 			_ctrl ctrlCommit 0;
+		};
+	};
+	_bool
+};
+_scaleUI = {
+	params ["_ctrl","_bool"];
+	private _oemScale = _ctrl getVariable ["ctrl_scale", 1];
+	private _curScale = ctrlScale _ctrl;
+	if (_bool) then {
+		if (_curScale isEqualTo _oemScale) then {
+			_ctrl ctrlSetScale (_oemScale - 0.1);
+			_ctrl ctrlCommit 0.5;
+		} else {
+			_ctrl ctrlSetScale _oemScale;
+			_ctrl ctrlCommit 0.5;
+		};
+	} else {
+		if !(_curScale isEqualTo _oemScale) then {
+			_ctrl ctrlSetScale _oemScale;
+			_ctrl ctrlCommit 0.5;
 		};
 	};
 	_bool

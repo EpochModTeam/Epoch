@@ -24,6 +24,8 @@ _vehicleDamages = [];
 
 _serverSettingsConfig = configFile >> "CfgEpochServer";
 _simulationHandler = [_serverSettingsConfig, "simulationHandlerOld", false] call EPOCH_fnc_returnConfigEntry;
+_removeweapons = [_serverSettingsConfig, "removevehweapons", []] call EPOCH_fnc_returnConfigEntry;
+_removemagazinesturret = [_serverSettingsConfig, "removevehmagazinesturret", []] call EPOCH_fnc_returnConfigEntry;
 
 for "_i" from 1 to _maxVehicleLimit do {
 	_vehicleSlotIndex = EPOCH_VehicleSlots pushBack str(_i);
@@ -109,6 +111,18 @@ for "_i" from 1 to _maxVehicleLimit do {
 						clearMagazineCargoGlobal  _vehicle;
 						clearBackpackCargoGlobal  _vehicle;
 						clearItemCargoGlobal      _vehicle;
+						
+						if !(_removeweapons isequalto []) then {
+							{
+								_vehObj removeWeaponGlobal _x;
+							} foreach _removeweapons;
+						};
+						if !(_removemagazinesturret isequalto []) then {
+							{
+								_vehObj removeMagazinesTurret _x;
+							} foreach _removemagazinesturret;
+						};
+
 						{
 							_objType = _forEachIndex;
 							_objTypes = _x;
@@ -159,11 +173,13 @@ for "_i" from 1 to _maxVehicleLimit do {
 										_magazineSize = _objQty select _forEachIndex;
 										if ((_magazineName isEqualType "STRING") && (_magazineSize isEqualType 0)) then {
 											_magazineSizeMax = getNumber (configFile >> "CfgMagazines" >> _magazineName >> "count");
-											// Add full magazines cargo
-											_vehicle addMagazineAmmoCargo [_magazineName, floor (_magazineSize / _magazineSizeMax), _magazineSizeMax];
-											// Add last non full magazine
-											if ((_magazineSize % _magazineSizeMax) > 0) then {
-												_vehicle addMagazineAmmoCargo [_magazineName, 1, floor (_magazineSize % _magazineSizeMax)];
+											if (_magazineSizeMax >= 1) then {
+												// Add full magazines cargo
+												_vehicle addMagazineAmmoCargo [_magazineName, floor (_magazineSize / _magazineSizeMax), _magazineSizeMax];
+												// Add last non full magazine
+												if ((_magazineSize % _magazineSizeMax) > 0) then {
+													_vehicle addMagazineAmmoCargo [_magazineName, 1, floor (_magazineSize % _magazineSizeMax)];
+												};
 											};
 										};
 									};
