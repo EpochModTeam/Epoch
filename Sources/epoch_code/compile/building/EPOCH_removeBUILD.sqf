@@ -21,7 +21,9 @@
 	Returns:
 	BOOL - true if removed
 */
-private ["_buildingJammerRange","_buildingCountLimit","_buildingAllowed","_nearestJammer","_ownedJammerExists","_jammer","_return","_config","_object","_objType","_targeter","_stability","_removeParts"];
+//[[[cog import generate_private_arrays ]]]
+private ["_buildingAllowed","_buildingCountLimit","_buildingJammerRange","_config","_jammer","_nearestJammer","_objType","_ownedJammerExists","_removeParts","_return","_stability","_targeter"];
+//[[[end]]]
 
 _buildingAllowed = true;
 _ownedJammerExists = false;

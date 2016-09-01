@@ -14,8 +14,10 @@
 */
 #include "\A3\ui_f\hpp\defineCommonGrids.inc"
 disableSerialization;
-private ["_ctrl","_ctrlPos","_name","_color","_icon","_group","_idx","_offset","_cfg","_configs","_idc","_getIDC","_lb","_groupIDC"];
-params [["_display",displayNull,[displayNull]]];
+//[[[cog import generate_private_arrays ]]]
+private ["_cfg","_color","_configs","_ctrl","_ctrlPos","_getIDC","_group","_groupIDC","_icon","_idc","_idx","_lb","_name","_offset"];
+//[[[end]]]
+params [["_display",displayNull,[displayNull] ] ];
 
 _offset = if (isServer) then {40 * GUI_GRID_W + GUI_GRID_X;} else {
 	if (getNumber (getMissionConfig "enableDebugConsole") > 0) then {

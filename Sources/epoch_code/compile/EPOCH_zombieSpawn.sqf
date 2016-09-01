@@ -20,8 +20,10 @@
 	Returns:
 	OBJECT - Zombie Agent
 */
+//[[[cog import generate_private_arrays ]]]
+private ["_clutterPos","_disableAI","_grave","_unit","_unitClass","_zMax","_zRange","_zedHandle","_zeds"];
+//[[[end]]]
 params [["_justSpawn",false]];
-private ["_zRange","_disableAI","_unitClass","_unit","_clutterPos","_zedHandle","_zMax"];
 _disableAI = {{_this disableAI _x}forEach["TARGET","AUTOTARGET","FSM"];};
 
 _zRange = getNumber (getMissionConfig "CfgEpochRyanZombie" >> "range");

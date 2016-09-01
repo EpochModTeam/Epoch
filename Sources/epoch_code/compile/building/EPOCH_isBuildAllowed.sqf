@@ -22,7 +22,9 @@
 	Returns:
 	BOOL
 */
-private ["_cfgBaseBuilding","_buildingJammerRange","_buildingCountLimit","_buildingAllowed","_nearestJammer","_ownedJammerExists","_objectCount","_limitNearby","_restricted","_range","_config","_staticClass","_objType","_simulClass","_bypassJammer","_jammer","_restrictedLocations","_myPosATL"];
+//[[[cog import generate_private_arrays ]]]
+private ["_alljammer","_buildingAllowed","_buildingCountLeader","_buildingCountLimit","_buildingCountPerMember","_buildingJammerRange","_bypassJammer","_c","_cfgBaseBuilding","_config","_isAllowed","_jammer","_jammerpergroup","_limitNearby","_maxbuildingheigh","_membercount","_minjammerdistance","_myPosATL","_nearestJammer","_obj","_objType","_objectCount","_ownedJammerExists","_range","_restricted","_restrictedArray","_restrictedLocations","_restrictedLocationsArray","_restrictedLocationsRange","_simulClass","_staticClass","_storagecountLeader","_storagecountPerMember"];
+//[[[end]]]
 
 _buildingAllowed = true;
 _ownedJammerExists = false;

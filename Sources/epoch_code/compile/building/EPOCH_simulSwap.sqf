@@ -21,7 +21,10 @@
 	Returns:
 	NOTHING
 */
-private ["_simulClassConfig","_energyCost","_allowedSnapObjects","_worldspace","_objSlot","_textureSlot","_newObj","_lastCheckTime","_rejectMove","_nearestObject","_nearestObjectRaw","_distanceNear","_previousDistanceNear","_pOffset","_snapPos","_isSnap","_snapPosition","_snapType","_snapDistance","_prevSnapDistance","_snapPointsPara","_snapPointsPerp","_snapArrayPara","_snapArrayPerp","_pos2","_direction","_vel2","_dir2","_up2","_distance","_playerdistance","_class","_create","_allowedSnapPoints","_snapObjects","_currentTarget","_onContactEH","_offset","_disallowed","_object","_objType","_return","_velocityTransformation","_distanceMod","_oemType","_cfgBaseBuilding"];
+//[[[cog import generate_private_arrays ]]]
+private ["_allowedSnapObjects","_allowedSnapPoints","_cfgBaseBuilding","_class","_create","_currentTarget","_dir2","_direction","_disallowed","_distance","_distanceMod","_distanceNear","_energyCost","_isSnap","_lastCheckTime","_nearestObject","_nearestObjectRaw","_newObj","_objSlot","_objType","_object","_oemType","_offset","_onContactEH","_pOffset","_playerdistance","_pos2","_prevSnapDistance","_previousDistanceNear","_rejectMove","_removeParts","_return","_simulClassConfig","_snapArrayPara","_snapArrayPerp","_snapDistance","_snapObjects","_snapPointsPara","_snapPointsPerp","_snapPos","_snapPosition","_snapType","_textureSlot","_up2","_vel2","_velocityTransformation","_worldspace"];
+//[[[end]]]
+
 if !(isNil "EPOCH_simulSwap_Lock") exitWith{};
 
 _object = param [0,objNull];
