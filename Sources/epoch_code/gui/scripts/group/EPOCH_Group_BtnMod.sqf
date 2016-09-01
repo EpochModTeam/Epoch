@@ -13,7 +13,9 @@
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_code/gui/group/EPOCH_Group_BtnMod.sqf
 */
 disableSerialization;
-private ["_isMember","_txt","_playerUID","_group","_selected"];
+//[[[cog import generate_private_arrays ]]]
+private ["_group","_isMember","_playerUID","_ret","_selected","_txt"];
+//[[[end]]]
 if (getPlayerUID player == Epoch_my_GroupUID) then {
 	_group = (findDisplay -1300) displayCtrl 40;
 	_selected = lbCurSel _group;

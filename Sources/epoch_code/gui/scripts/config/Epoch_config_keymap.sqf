@@ -15,7 +15,9 @@
     Example:
     _this call Epoch_config_keymap;
 */
-private ["_idx","_display","_input"];
+//[[[cog import generate_private_arrays ]]]
+private ["_arr","_ctrl","_ctrlCurrent","_ctrlDefault","_ctrlEdit","_data","_default","_display","_idx","_input","_lb","_new","_old","_txt","_txtCurrent","_txtDefault","_var"];
+//[[[end]]]
 params ["_ctrl"];
 
 _display = if (typeName _ctrl isEqualTo "CONTROL") then {ctrlParent _ctrl} else {displayNull};

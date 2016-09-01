@@ -12,7 +12,9 @@
     Github:
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_code/compile/EPOCH_QuickTakeAll.sqf
 */
-private ["_magazines","_items","_weapons"];
+//[[[cog import generate_private_arrays ]]]
+private ["_items","_magazines","_weapons"];
+//[[[end]]]
 closeDialog 0;
 {
 

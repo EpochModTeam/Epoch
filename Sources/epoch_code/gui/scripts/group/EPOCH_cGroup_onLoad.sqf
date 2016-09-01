@@ -12,7 +12,9 @@
     Github:
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_code/gui/group/EPOCH_cGroup_onLoad.sqf
 */
+//[[[cog import generate_private_arrays ]]]
 private ["_textCtrl"];
+//[[[end]]]
 if (Epoch_my_GroupUID != "") exitWith {(findDisplay -1200) closeDisplay 0};
 disableSerialization;
 _textCtrl = (findDisplay -1200) displayCtrl 22;

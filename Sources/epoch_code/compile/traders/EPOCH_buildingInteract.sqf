@@ -1,4 +1,6 @@
-private ["_index","_action","_displayname","_position","_condition","_statement","_unlock","_doorIndex","_disabledDoor","_uniqueActions","_useractions","_class"];
+//[[[cog import generate_private_arrays ]]]
+private ["_action","_class","_condition","_disabledDoor","_displayname","_doorIndex","_index","_position","_statement","_uniqueActions","_unlock","_useractions"];
+//[[[end]]]
 lbClear 1550;
 _class = configFile >> "CfgVehicles" >> (typeOf EPCH);
 if (isclass _class) then {

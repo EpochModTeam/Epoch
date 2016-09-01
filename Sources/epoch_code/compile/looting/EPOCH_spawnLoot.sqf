@@ -23,7 +23,9 @@
 	Returns:
 	BOOL
 */
-private ["_class","_randomColor","_positions","_posName","_color","_colors","_randomIndex","_selectedLoot","_position","_pos","_m2WPos","_dir","_relDir","_item","_return","_possibleCount","_possibleLoots","_masterConfig","_config","_cfgBaseBuilding","_lootBias","_lootType","_loots","_lootLimit"];
+//[[[cog import generate_private_arrays ]]]
+private ["_cfgBaseBuilding","_class","_color","_colors","_config","_delete","_dir","_item","_lootBias","_lootLimit","_lootType","_loots","_masterConfig","_pos","_positions","_possibleCount","_possibleLoots","_randomIndex","_return","_selectedLoot"];
+//[[[end]]]
 params [["_building",objNull,[objNull]], ["_lootCheckBufferLimit",333], ["_lootObjectLimit",33]];
 
 _masterConfig = 'CfgBuildingLootPos' call EPOCH_returnConfig;

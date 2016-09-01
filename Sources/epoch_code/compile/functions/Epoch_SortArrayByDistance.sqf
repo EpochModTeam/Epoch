@@ -22,7 +22,9 @@
 	Returns:
 	ARRAY of ARRAYS
 */
-private ["_sorted","_closest","_testPos","_closestPos"];
+//[[[cog import generate_private_arrays ]]]
+private ["_closest","_closestPos","_pos","_sorted","_testPos","_unsorted"];
+//[[[end]]]
 params ["_unsorted","_pos"];
 if (_pos isEqualType objNull) then {_pos = getpos _pos;};
 _sorted = [];

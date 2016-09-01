@@ -14,7 +14,9 @@
 */
 
 disableSerialization;
-private "_display";
+//[[[cog import generate_private_arrays ]]]
+private ["_display"];
+//[[[end]]]
 
 _display = findDisplay 77700;
 

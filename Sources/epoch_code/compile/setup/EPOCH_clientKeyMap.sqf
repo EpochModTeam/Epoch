@@ -21,8 +21,9 @@
 	Returns:
 	Mixed
 */
-
-private ["_keyMap","_args","_input","_return"];
+//[[[cog import generate_private_arrays ]]]
+private ["_arr","_keyMap","_return","_s"];
+//[[[end]]]
 params [["_args",0],["_input",0]];
 
 _keyMap =

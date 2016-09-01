@@ -12,8 +12,10 @@
     Github:
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_code/gui/scripts/craftingv2/EPOCH_crafting_checkResources.sqf
 */
-private ["_display","_ncGroup","_ncCFrame","_ncRFrame","_ncRText","_ncCLB","_out","_cfg","_selection","_nearbyArr"];
-params [["_in",false,[true]]];
+//[[[cog import generate_private_arrays ]]]
+private ["_animSpeed","_cfg","_chck","_cnt","_color","_count","_countTxt","_ctrl","_display","_h","_img","_imgParsed","_ncCFrame","_ncCLB","_ncGroup","_ncRFrame","_ncRText","_nearbyArr","_out","_selection","_stText","_txt"];
+//[[[end]]]
+params [["_in",false,[true] ] ];
 
 //Defines
 _out = true;

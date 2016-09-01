@@ -12,7 +12,9 @@
     Github:
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_code/compile/EPOCH_supportCopter.sqf
 */
-private ["_aiskill","_unit","_player","_grp","_arrUnits","_arrSkills","_units"];
+//[[[cog import generate_private_arrays ]]]
+private ["_aiskill","_arrSkills","_arrUnits","_arrVals","_grp","_minAISkill","_player","_unit","_unitCount","_units"];
+//[[[end]]]
 params ["_pos","_copter"];
 
 _player = player; //need to check on change owner
@@ -58,7 +60,7 @@ for "_i" from 0 to (_unitCount - 1) do {
 		if (_aiskill<_minAISkill) then {_aiskill=_minAISkill};
 		_unit setSkill [_arrSkills select _i,_arrVals select _i];
 	};
-	
+
 	if (_i == 0) then {
 		_grp selectLeader _unit;
 		[_pos,_copter,_player,_unit] execFSM "\x\addons\a3_epoch_code\System\Group_Leader_Brain.fsm";

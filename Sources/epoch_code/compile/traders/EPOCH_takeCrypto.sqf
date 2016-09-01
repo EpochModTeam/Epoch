@@ -1,4 +1,6 @@
-private["_getCrypto"];
+//[[[cog import generate_private_arrays ]]]
+private ["_getCrypto"];
+//[[[end]]]
 if !(isNil "EPOCH_takeCryptoLock") exitWith {};
 EPOCH_takeCryptoLock = true;
 if (!isNull _this) then {

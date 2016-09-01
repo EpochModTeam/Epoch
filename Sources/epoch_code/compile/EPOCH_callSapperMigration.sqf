@@ -12,7 +12,9 @@
     Github:
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_code/compile/EPOCH_callSapperMigration.sqf
 */
-private ["_trgt","_sapperCount","_notReady","_start","_dirTo","_finish","_nrPlyrs","_abortAfter","_pos","_axeSapper","_disableAI"];
+//[[[cog import generate_private_arrays ]]]
+private ["_abortAfter","_axeSapper","_dirTo","_disableAI","_finish","_notReady","_nrPlyrs","_pos","_sapperCount","_start","_trgt"];
+//[[[end]]]
 
  _disableAI = {
 	{_this disableAI _x}forEach["TARGET","AUTOTARGET","FSM"];

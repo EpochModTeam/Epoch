@@ -12,7 +12,9 @@
     Github:
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_code/gui/scripts/Epoch_genderSelection.sqf
 */
-private ["_min","_max","_r","_r2","_r3"];
+//[[[cog import generate_private_arrays ]]]
+private ["_max","_min","_r","_r2","_r3"];
+//[[[end]]]
 _min = safezoneX + 0.4 * safezoneW;
 _max = safezoneX + 0.6 * safezoneW;
 _r = linearConversion [_min, _max, _this, 0.2, -1, true];

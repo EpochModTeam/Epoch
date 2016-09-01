@@ -12,7 +12,9 @@
     Github:
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_code/compile/p2p_trading/EPOCH_startTRADEREQ.sqf
 */
-private["_distance"];
+//[[[cog import generate_private_arrays ]]]
+private ["_distance"];
+//[[[end]]]
 params ["_otherPlyr"];
 if (!isNull _otherPlyr) then {
 	_distance = player distance _otherPlyr;

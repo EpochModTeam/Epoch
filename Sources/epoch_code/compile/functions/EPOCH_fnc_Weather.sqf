@@ -21,7 +21,9 @@
 	Returns:
 	NOTHING
 */
-private ["_warming","_wet","_increaseWet","_isNearFire","_playerPosATL","_maxTemp","_airTemp","_waterTemp","_wetsuit"];
+//[[[cog import generate_private_arrays ]]]
+private ["_airTemp","_increaseWet","_isNearFire","_maxTemp","_playerPosATL","_warming","_waterTemp","_wet","_wetsuit"];
+//[[[end]]]
 
 if (isNil "EPOCH_CURRENT_WEATHER") then {
 	EPOCH_CURRENT_WEATHER = 75;

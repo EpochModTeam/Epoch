@@ -21,11 +21,13 @@
 	Returns:
 	NOTHING
 */
-private ["_randomAIClass","_animalPos","_tryAnimalPos","_id","_animal","_animalAiTables","_playerPos"];
+//[[[cog import generate_private_arrays ]]]
+private ["_animal","_animalAiTables","_animalPos","_id","_playerPos","_randomAIClass","_tryAnimalPos"];
+//[[[end]]]
 
 if (count(player nearEntities["Animal_Base_F", 200]) >= 1) exitWith{};
 
-_animalAiTables = ["CfgEpochClient", "animalAiTables", ["Sheep_random_EPOCH", "Sheep_random_EPOCH", "Goat_random_EPOCH", "Goat_random_EPOCH", "Goat_random_EPOCH", ["Cock_random_EPOCH", "Hen_random_EPOCH"], ["Cock_random_EPOCH", "Hen_random_EPOCH"], "Rabbit_EPOCH", "Rabbit_EPOCH", "Rabbit_EPOCH", "Snake_random_EPOCH", "Snake2_random_EPOCH", ["Fin_random_EPOCH", "Alsatian_Random_EPOCH"]]] call EPOCH_fnc_returnConfigEntryV2;
+_animalAiTables = ["CfgEpochClient", "animalAiTables", ["Sheep_random_EPOCH", "Sheep_random_EPOCH", "Goat_random_EPOCH", "Goat_random_EPOCH", "Goat_random_EPOCH", ["Cock_random_EPOCH", "Hen_random_EPOCH"], ["Cock_random_EPOCH", "Hen_random_EPOCH"], "Rabbit_EPOCH", "Rabbit_EPOCH", "Rabbit_EPOCH", "Snake_random_EPOCH", "Snake2_random_EPOCH", ["Fin_random_EPOCH", "Alsatian_Random_EPOCH"] ] ] call EPOCH_fnc_returnConfigEntryV2;
 
 _randomAIClass = selectRandom _animalAiTables;
 _animalPos = nil;

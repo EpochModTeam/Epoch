@@ -15,7 +15,9 @@
 	Usage:
 	No direct usage, simply create your control in configs following example in HPP mentioned in description
 */
+//[[[cog import generate_private_arrays ]]]
 private ["_ctrl","_curr","_mpos"];
+//[[[end]]]
 _ctrl = param [0];
 _curr = ctrlPosition _Ctrl;
 _mpos = getmousePosition;

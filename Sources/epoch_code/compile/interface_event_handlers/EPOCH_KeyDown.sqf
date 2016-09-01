@@ -25,7 +25,9 @@
 	Returns:
 	BOOL
 */
-private ["_handled","_currentPos"];
+//[[[cog import generate_private_arrays ]]]
+private ["_currentPos","_disableBuildMode","_handled"];
+//[[[end]]]
 params ["_display","_dikCode","_shift","_ctrl","_alt"];
 
 _handled = false;

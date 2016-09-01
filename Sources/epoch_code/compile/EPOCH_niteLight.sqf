@@ -12,7 +12,9 @@
     Github:
     https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_code/compile/EPOCH_niteLight.sqf
 */
-private ["_pos"];
+//[[[cog import generate_private_arrays ]]]
+private ["_config","_nlSettings","_pos"];
+//[[[end]]]
 if (!isNull EP_light) then {
 	deleteVehicle EP_light;
 };

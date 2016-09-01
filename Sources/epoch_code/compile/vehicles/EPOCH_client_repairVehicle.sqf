@@ -12,6 +12,9 @@
     Github:
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_code/compile/vehicles/EPOCH_client_repairVehicle.sqf
 */
+//[[[cog import generate_private_arrays ]]]
+private ["_currentDMG"];
+//[[[end]]]
 params ["_vehicle","_value"];
 if (local _vehicle) then {
 	_currentDMG = _vehicle getHitIndex (_value select 0);

@@ -1,4 +1,6 @@
-private ["_allowAdd","_item","_sizeOut","_qty","_worth","_cryptoCount","_itemWorth","_itemTax","_tax","_itemName","_index","_itemIcon","_uiQty","_uiItem","_config"];
+//[[[cog import generate_private_arrays ]]]
+private ["_allowAdd","_array","_config","_cryptoCount","_index","_item","_itemIcon","_itemName","_itemTax","_itemWorth","_qty","_sizeOut","_tax","_uiItem","_uiQty","_worth"];
+//[[[end]]]
 params ["_control","_selected"];
 
 _allowAdd = true;

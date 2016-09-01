@@ -12,7 +12,9 @@
     Github:
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_code/gui/scripts/Epoch_secureStorageHandler.sqf
 */
+//[[[cog import generate_private_arrays ]]]
 private ["_out"];
+//[[[end]]]
 params [["_in",false]];
 _out = switch (typeName _in) do {
 	case "STRING":

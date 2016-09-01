@@ -13,7 +13,9 @@
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_code/compile/EPOCH_updateLoadingScreen.sqf
 */
 disableSerialization;
+//[[[cog import generate_private_arrays ]]]
 private ["_display"];
+//[[[end]]]
 _display = uiNameSpace getVariable ["EPOCH_loadingScreen",displayNull];
 if (!isNull _display) then {
   (_display displayCtrl 50) ctrlSetText _this;

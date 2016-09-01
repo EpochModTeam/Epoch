@@ -13,7 +13,9 @@
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_code/gui/group/EPOCH_cGroup_groupText.sqf
 */
 disableSerialization;
+//[[[cog import generate_private_arrays ]]]
 private ["_array","_ctrl"];
+//[[[end]]]
 _ctrl = (findDisplay -1200) displayCtrl 21;
 _array = toArray(ctrlText _ctrl);
 

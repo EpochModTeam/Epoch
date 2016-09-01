@@ -23,7 +23,9 @@
 	Returns:
 	MIXED
 */
-private["_config", "_varData","_missionconfig","_finalconfig"];
+//[[[cog import generate_private_arrays ]]]
+private ["_config","_finalconfig","_missionconfig","_sapperRndChance","_varData"];
+//[[[end]]]
 params ["_configClass","_variableName","_defaultData"];
 _varData = _defaultData;
 _config = (configfile >> _configClass);

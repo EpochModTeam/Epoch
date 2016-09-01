@@ -23,7 +23,9 @@
 	Returns:
 	NOHTING
 */
-private ["_display","_color","_colorCompare","_bar","_bar_compare"];
+//[[[cog import generate_private_arrays ]]]
+private ["_bar","_bar_compare","_color","_colorCompare","_display"];
+//[[[end]]]
 disableSerialization;
 
 EPOCH_InteractedItem = [];

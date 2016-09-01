@@ -1,4 +1,6 @@
-private ["_item","_worth","_cryptoCount","_itemWorth","_itemTax","_tax","_sizeOut","_uiItem","_config"];
+//[[[cog import generate_private_arrays ]]]
+private ["_array","_config","_cryptoCount","_item","_itemTax","_itemWorth","_sizeOut","_tax","_uiItem","_worth"];
+//[[[end]]]
 params ["_control","_selected"];
 
 _uiItem = (_selected select 0) lbData(_selected select 1);

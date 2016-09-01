@@ -21,7 +21,9 @@
 	Returns:
 	CONFIG
 */
-private["_return", "_config"];
+//[[[cog import generate_private_arrays ]]]
+private ["_config","_return"];
+//[[[end]]]
 _return = (configfile >> _this);
 _config = (getMissionConfig _this);
 if (isClass _config) then{

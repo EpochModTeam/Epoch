@@ -21,7 +21,9 @@
 	Returns:
 	BOOL
 */
-private ["_buildingJammerRange","_jammed","_config","_jammer"];
+//[[[cog import generate_private_arrays ]]]
+private ["_buildingJammerRange","_config","_jammed","_jammer"];
+//[[[end]]]
 
 _config = "CfgEpochClient" call EPOCH_returnConfig;
 _buildingJammerRange = getNumber(_config >> "buildingJammerRange");

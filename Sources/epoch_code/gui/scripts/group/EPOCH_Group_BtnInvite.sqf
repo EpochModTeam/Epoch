@@ -12,7 +12,9 @@
     Github:
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_code/gui/group/EPOCH_Group_BtnInvite.sqf
 */
-private ["_txt","_InvitePlayerCombo","_playerUID","_playerName","_upgradeSlots","_upgradePrice","_found","_currentMember","_currentMaxMember","_BtnInvite"];
+//[[[cog import generate_private_arrays ]]]
+private ["_BtnInvite","_InvitePlayerCombo","_currentMaxMember","_currentMember","_found","_playerName","_playerUID","_ret","_txt","_upgradePrice","_upgradeSlots"];
+//[[[end]]]
 disableSerialization;
 _BtnInvite = (findDisplay -1300) displayCtrl 30;
 _playerUID = getPlayerUID player;

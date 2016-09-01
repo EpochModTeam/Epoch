@@ -16,17 +16,14 @@
 	[_configName, _index] call epoch_getHUDCtrl;
 	["myHudName", 2] call epoch_getHUDCtrl;
 */
-
+//[[[cog import generate_private_arrays ]]]
+private ["_gIdx"];
+//[[[end]]]
 if !(_this isEqualTypeArray ["",0]) exitWith {controlNull};
-
 params ["_gName","_cIdx"];
-
 _gIdx = -1;
-
 {
 	if ((_x select 0) isEqualTo _gName) exitWith {_gIdx = _forEachIndex};
 } forEach rmx_var_dynamicHUD_groupCTRL;
-
 if (_gIdx == -1) exitWith {controlNull};
-
 (rmx_var_dynamicHUD_groupCTRL select _gIdx) select _cIdx

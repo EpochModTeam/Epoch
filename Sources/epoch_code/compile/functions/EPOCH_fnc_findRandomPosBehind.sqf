@@ -25,7 +25,9 @@
 	Returns:
 	ARRAY
 */
-private ["_dir","_rnd","_pos","_dist","_minIn","_outPos"];
+//[[[cog import generate_private_arrays ]]]
+private ["_dir","_dist","_moveTo","_pos","_rnd"];
+//[[[end]]]
 params ["_maxIn","_minIn","_arcIn","_unitIn",["_offset",0]];
 
 _rnd = ((180 +_offset) - (_arcIn / 2)) + (random _arcIn);

@@ -1,5 +1,7 @@
 disableSerialization;
-private ["_item","_xIndex","_filterArray","_magazines","_items","_sizeOut","_array"];
+//[[[cog import generate_private_arrays ]]]
+private ["_array","_filterArray","_item","_items","_magazines","_sizeOut","_weapons","_xIndex"];
+//[[[end]]]
 params ["_control","_index"];
 
 // [weapons, mags, items]

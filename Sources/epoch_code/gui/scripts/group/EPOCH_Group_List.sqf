@@ -13,7 +13,9 @@
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_code/gui/group/EPOCH_Group_List.sqf
 */
 disableSerialization;
-private ["_img","_BtnSetMod","_BtnKick"];
+//[[[cog import generate_private_arrays ]]]
+private ["_BtnKick","_BtnSetMod","_img"];
+//[[[end]]]
 params ["_ctrl","_selected"];
 
 if (getPlayerUID player == Epoch_my_GroupUID) then {

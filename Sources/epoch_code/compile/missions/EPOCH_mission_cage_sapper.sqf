@@ -12,7 +12,9 @@
     Github:
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_code/compile/missions/EPOCH_mission_cage_sapper.sqf
 */
-private ["_sounds","_sound","_cagePos","_cage","_cage2","_startCage"];
+//[[[cog import generate_private_arrays ]]]
+private ["_cage","_cage2","_cagePos","_sapper","_sound","_sounds","_startCage"];
+//[[[end]]]
 params ["_sapper","_trader"];
 
 _cagePos = (getPosATL _trader) findEmptyPosition [1,50,"Land_Cages_F"];

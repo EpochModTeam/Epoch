@@ -21,7 +21,10 @@
 	Returns:
 	NOTHING
 */
-private ["_buildingJammerRange","_maintainCount","_rnd","_config"];
+//[[[cog import generate_private_arrays ]]]
+private ["_buildingJammerRange","_config","_maintainCount","_rnd"];
+//[[[end]]]
+
 if !(isNil "EPOCH_maintainLockout") exitWith {["Already Maintaining a base.", 5] call Epoch_message;};
 if (EPOCH_playerCrypto > 0) then {
   _config = "CfgEpochClient" call EPOCH_returnConfig;

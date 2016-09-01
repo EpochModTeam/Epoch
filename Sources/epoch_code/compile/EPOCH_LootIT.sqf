@@ -12,6 +12,9 @@
     Github:
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_code/compile/EPOCH_LootIT.sqf
 */
+//[[[cog import generate_private_arrays ]]]
+private ["_cam"];
+//[[[end]]]
 if (!isNull _this) then {
 	[_this,player,Epoch_personalToken] remoteExec ["EPOCH_server_lootContainer",2];
 

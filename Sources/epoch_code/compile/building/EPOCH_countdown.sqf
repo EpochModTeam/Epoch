@@ -21,7 +21,9 @@
 	Returns:
 	NOTHING
 */
-private ["_cfgBaseBuilding","_posObj","_savedBuildPos","_previousBuildPos","_saveCheck","_endTime","_worldspace","_class","_newObj","_startTime","_objClass"];
+//[[[cog import generate_private_arrays ]]]
+private ["_cfgBaseBuilding","_class","_endTime","_newObj","_objClass","_posObj","_previousBuildPos","_saveCheck","_savedBuildPos","_startTime","_worldspace"];
+//[[[end]]]
 
 if (!isNull _this) then {
 

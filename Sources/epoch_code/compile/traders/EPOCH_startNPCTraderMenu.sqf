@@ -1,4 +1,6 @@
+//[[[cog import generate_private_arrays ]]]
 private ["_ok","_slot","_target"];
+//[[[end]]]
 _target = cursorTarget;
 if (alive _target) then {
 	_slot = _target getVariable ["AI_SLOT",-1];

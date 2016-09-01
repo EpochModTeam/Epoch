@@ -26,7 +26,9 @@
 	Returns:
 	ARRAY
 */
-private["_rDist","_rDir","_outPos","_nrRoad","_nrRoads"];
+//[[[cog import generate_private_arrays ]]]
+private ["_moveTo","_nrRoad","_nrRoads","_outPos","_rDir","_rDist"];
+//[[[end]]]
 params ["_inPos","_MinDist","_MaxDist",["_outHeight",0],["_onRoad",false]];
 
 _rDist = (random (_MaxDist - _MinDist))+_MinDist;

@@ -23,8 +23,10 @@
 	Returns:
 	BOOL
 */
-private ["_cat","_file","_fnc_path","_var_name","_file_raw","_itemCompile","_tag","_file_tag","_config","_returnConfig","_version"];
-params [["_configName","",[""]]];
+//[[[cog import generate_private_arrays ]]]
+private ["_cat","_config","_file","_file_raw","_file_tag","_fnc_path","_itemCompile","_return","_returnConfig","_tag","_var_name","_version"];
+//[[[end]]]
+params [["_configName","",[""] ] ];
 
 _returnConfig = {
 	private["_return", "_config"];

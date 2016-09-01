@@ -12,7 +12,9 @@
     Github:
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_code/compile/EPOCH_unitSpawnDecrease.sqf
 */
+//[[[cog import generate_private_arrays ]]]
 private ["_index"];
+//[[[end]]]
 params ["_spawnName", ["_decrease",1]];
 _index = EPOCH_spawnIndex find _spawnName;
 if (_index != -1) then{

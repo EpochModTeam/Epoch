@@ -13,7 +13,9 @@
     Github:
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_code/compile/EPOCH_getOutMan_EH.sqf
 */
-private ["_start","_end","_dirTo"];
+//[[[cog import generate_private_arrays ]]]
+private ["_dirTo","_end","_start"];
+//[[[end]]]
 params ["_unit","_position","_vehicle"];
 if (_unit == player) then {
 	_start = getPosWorld _vehicle;

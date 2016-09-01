@@ -12,7 +12,9 @@
     Github:
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_code/compile/inventory/EPOCH_itemInteractClick.sqf
 */
-private ["_data","_confData","_type","_interactOption","_buttonTXT","_magCount","_text","_pic","_display","_useBtn","_config","_craftingConfig"];
+//[[[cog import generate_private_arrays ]]]
+private ["_buttonTXT","_cfgItemInteractions","_config","_data","_display","_interactOption","_magCount","_type","_useBtn"];
+//[[[end]]]
 _this call EPOCH_selectInventoryItem;
 _data = EPOCH_InteractedItem select 1;
 

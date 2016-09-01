@@ -22,8 +22,14 @@
 	Returns:
 	STRING
 */
+//[[[cog import generate_private_arrays ]]]
+private ["_arrFull","_arrOut","_strIn","_trimmedStr"];
+//[[[end]]]
 private["_arrFull","_arrOut"];
-params ["_strIn",["_count",0,[0]]];
+params [
+    "_strIn",
+    ["_count",0,[0]]
+];
 _arrOut = [];
 if !(_strIn isEqualType "STRING") then {_strIn = str(_strIn)};
 _arrFull = toArray _strIn;
