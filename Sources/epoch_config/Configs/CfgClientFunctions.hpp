@@ -126,6 +126,7 @@ class CfgClientFunctions
 			class fnc_dynamicFSM {};
 			class fnc_vectorDivide {};
 			class giveAttributes {};
+			class fnc_spawnEffects {};
 		};
 		class environment
 		{
