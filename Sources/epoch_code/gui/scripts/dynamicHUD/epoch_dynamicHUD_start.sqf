@@ -13,7 +13,9 @@
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_code/gui/scripts/dynamicHUD/Epoch_dynamicHUD_start.sqf
 */
 #include "\A3\ui_f\hpp\defineCommonGrids.inc"
-
+//[[[cog import generate_private_arrays ]]]
+private ["_angle","_arraySize","_c","_cPos","_center","_cfg","_classname","_configs","_defaultPopulate","_defaultPos","_dsp","_evenOdd","_group","_groupPos","_h","_hCtrl","_height","_oX","_oY","_offsetX","_offsetY","_result","_scale","_w","_wCtrl","_width"];
+//[[[end]]]
 _cfg = "rmx_dynamicHUD" call EPOCH_returnConfig;
 _configs = "true" configClasses _cfg;
 

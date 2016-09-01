@@ -13,7 +13,9 @@
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_code/gui/scripts/dynamenu/Epoch_dynamicMenuPopulate.sqf
 */
 #include "\A3\ui_f\hpp\defineCommonGrids.inc"
-private ["_x","_y","_arr","_inProgress","_display","_center","_scale","_defaultScaleX","_defaultScaleY","_distance","_scaleLargeX","_scaleLargeY","_scaleSmallX","_scaleSmallY","_points","_positions","_positions2"];
+//[[[cog import generate_private_arrays ]]]
+private ["_arr","_c","_center","_ctrl","_ctrl2","_defaultScaleX","_defaultScaleY","_display","_distance","_inProgress","_points","_positions","_positions2","_scale","_scaleLargeX","_scaleLargeY","_scaleSmallX","_scaleSmallY","_x","_y"];
+//[[[end]]]
 params ["_entries","_buttonSettings"];
 disableSerialization;
 
