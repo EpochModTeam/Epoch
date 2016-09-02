@@ -254,7 +254,7 @@ if (_this isEqualType []) then {
 				};
 				// Linked items
 				{
-					if (_x in["Binocular", "Rangefinder"]) then {
+					if (_x in["Binocular", "Rangefinder","Laserdesignator","Laserdesignator_02","Laserdesignator_03","Laserdesignator_01_khk_F","Laserdesignator_02_ghex_F"]) then {
 						_newPlyr addWeapon _x;
 					} else {
 						_newPlyr linkItem _x;
