@@ -21,9 +21,8 @@
 //[[[cog import generate_private_arrays ]]]
 private ["_firstArray","_fx","_handle","_handles"];
 //[[[end]]]
-params [["_ppEffects",[]] ];
+params [["_ppEffects",[],[[]] ] ];
 _handles = [];
-_firstArray = true;
 {
     _fx = _x;
     if (_fx isEqualType []) then {
@@ -32,22 +31,22 @@ _firstArray = true;
         } else {
             {
                 if !(_x isEqualTo []) then {
-                    if (_firstArray) then {
+                    if (count _x == 4) then {
                         _x params ["_type","_proi","_effect","_speed"];
                         _handle = [_type,_proi] call epoch_postProcessCreate;
                         _handles pushBack _handle;
-                        [_handle, _speed, _effect] call epoch_postprocessAdjust;
+                        [_handle, _speed, _effect, true] call epoch_postprocessAdjust;
                     } else {
-                        _x params ["_handle","_effect","_speed"];
-                        [_handles select _forEachIndex, _speed, _effect] call epoch_postprocessAdjust;
+                        _x params ["_effect","_speed"];
+                        [_handles select _forEachIndex, _speed, _effect, true] call epoch_postprocessAdjust;
                     };
                 };
             } forEach _fx;
         };
-        _firstArray = false;
-    };
-    // sleep
-    if (_fx isEqualType 0) then {
-        uiSleep _fx;
+    } else {
+        // sleep
+        if (_fx isEqualType 0) then {
+            uiSleep _fx;
+        };
     };
 } forEach _ppEffects;

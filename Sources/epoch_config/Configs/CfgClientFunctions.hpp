@@ -127,6 +127,7 @@ class CfgClientFunctions
 			class fnc_vectorDivide {};
 			class giveAttributes {};
 			class fnc_spawnEffects {};
+			class fnc_arrayStringToBool {};
 		};
 		class environment
 		{

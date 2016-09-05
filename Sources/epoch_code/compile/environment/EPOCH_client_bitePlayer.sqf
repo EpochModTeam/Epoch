@@ -94,7 +94,7 @@ if !(_target isEqualTo player) then {
 				if (random 1 < _bloodpChance) then {
 					EPOCH_playerBloodP = (EPOCH_playerBloodP + (_bloodpAmount + (EPOCH_playerBloodP - 100))) min 190;
 					if !(_ppEffect isEqualTo []) then {
-						_ppEffect spawn EPOCH_fnc_spawnEffects;
+						[_ppEffect] spawn EPOCH_fnc_spawnEffects;
 					};
 				};
 				if (random 1 < _fatigueChance) then {
