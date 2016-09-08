@@ -12,11 +12,30 @@
     Github:
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_code/init/fn_init.sqf
 */
-if !(isNil "Epoch_CStart") exitWith { false };
-Epoch_CStart = true;
-if (!isDedicated && hasInterface) then {
+if !(isNil "Epoch_Survival_Started") exitWith { false };
+Epoch_Survival_Started = true;
+
+_selectedFunction = "CfgClientFunctions";
+if (isDedicated) then {
+	// dedicated server
+	_selectedFunction = "CfgServerFunctions";
 	call compile preprocessFileLineNumbers "epoch_code\init\both_init.sqf";
-	// Epoch Client Only function compiler
-	"CfgClientFunctions" call EPOCH_fnc_compiler;
+} else {
+	if (hasInterface) then {
+		// all players
+		call compile preprocessFileLineNumbers "epoch_code\init\both_init.sqf";
+		if (isServer) then {
+			// listen server host
+			_selectedFunction = "CfgEpochListenServerFunctions";
+		} else {
+			// all players
+			_selectedFunction = "CfgClientFunctions";
+		};
+	} else {
+		// Headless Clients
+		_selectedFunction = "CfgEpochClientHCFunctions";
+	};
 };
+diag_log format["Loading Functions: %1",_selectedFunction];
+_selectedFunction call EPOCH_fnc_compiler;
 true

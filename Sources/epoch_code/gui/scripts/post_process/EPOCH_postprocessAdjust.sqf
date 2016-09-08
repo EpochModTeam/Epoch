@@ -33,7 +33,6 @@ if ((_handle isEqualTo 666) || (_animSpeed isEqualTo 666) || (_effect isEqualTo 
 // fix any strings to bool
 if (_fixBool) then {
 	_effect = _effect call EPOCH_fnc_arrayStringToBool;
-	diag_log str(_handle, _animSpeed, _effect]);
 };
 
 _handle ppEffectEnable true;

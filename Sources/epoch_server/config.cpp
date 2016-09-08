@@ -13,25 +13,6 @@ class CfgPatches {
 		#include "build.hpp"
 	};
 };
-class cfgFunctions
-{
-	class A3E
-	{
-		tag = "EPOCH";
-		class Epoch_Server
-		{
-			file = "\epoch_server\init";
-			class init
-			{
-				preInit = 1;
-			};
-			class postinit
-			{
-				postInit = 1;
-			};
-		};
-	};
-};
 class CfgServerFunctions
 {
 	version = 1;
