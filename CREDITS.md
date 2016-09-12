@@ -7,25 +7,26 @@ Open source survival gamemode for Arma 3.
 Epoch Server DB extension (DLL / so)
 
 ### [Epoch Mod](https://github.com/EpochModTeam/EpochCore)
-Epoch Assets Mod - Custom Units, Vehicles, Weapons, Items and more!
+Epoch Assets Mod Configs - Custom Units, Vehicles, Weapons, Items and more!
 
-#### Credits
-
-* [Aaron Clark ([VB]AWOL)](http://epochmod.com): Code, Configs, Textures
-* [Kenneth Bente (Axle)](www.twitch.tv/axles): Tester, Models
-* [Paul Tomany (Sequisha)](https://www.twitch.tv/sequisha): Models, Textures
-* [Andrew Gregory (Axeman)](http://thefreezer.co.uk): AI Code
-* [Raimonds Virtoss (Raymix)](https://www.twitch.tv/raymich): UI Code
-* [Florian Kinder (Fank)](https://github.com/Fank): Code
-* [Denis Erygin (devd)](https://github.com/denisio): Linux Code Support
-* [Darren Harrison (Kiory)](https://www.twitch.tv/kiory123): Models, Textures, Configs
-* [Paden Sturtevant (SteamPunkGears)](https://www.twitch.tv/steampunkgears): Models, Textures
-* [Niklas Wagner (Skaronator)](https://skaronator.com): Code
-* Damian Clark ([VB]GREEN): Graphics
+#### Developers
+* [Aaron Clark ([VB]AWOL)](http://epochmod.com): Concept, Code, Configs, Textures - [x] Active
+* [Kenneth Bente (Axle)](www.twitch.tv/axles): Tester, Models - [ ] Active
+* [Paul Tomany (Sequisha)](https://www.twitch.tv/sequisha): Models, Textures - [ ] Active
+* [Andrew Gregory (Axeman)](http://thefreezer.co.uk): AI Code - [x] Active
+* [Raimonds Virtoss (Raymix)](https://www.twitch.tv/raymich): UI Code - [x] Active
+* [Florian Kinder (Fank)](https://github.com/Fank): Code - [ ] Active
+* [Denis Erygin (devd)](https://github.com/denisio): Linux Code Support - [ ] Active
+* [Darren Harrison (Kiory)](https://www.twitch.tv/kiory123): Models, Textures, Configs - [ ] Active
+* [Paden Sturtevant (SteamPunkGears)](https://www.twitch.tv/steampunkgears): Models, Textures - [ ] Active
+* [Niklas Wagner (Skaronator)](https://skaronator.com): Code - [ ] Active
+* [Damian Clark ([VB]GREEN)](http://epochmod.com): Graphics - [ ] Active
 
 #### Contributors
 
 * [Dan (OrangeSherbet)](https://www.twitch.tv/OrangeSherbet): Tester, Videos, Wiki Editor
+* [HeMan](https://github.com/Ignatz-HeMan)
+* [Robio](https://github.com/RC-Robio)
 * [Poulmba](https://www.youtube.com/user/poulmba): Wiki Editor, Tester
 * Richie: Map Support, Forum Moderator
 * [Tobias Solem](http://whatthepoch.com/): Tester
