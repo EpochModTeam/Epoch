@@ -12,7 +12,7 @@
     Github:
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server/init/server_securityfunctions.sqf
 */
-private ["_code","_functionName","_remoteExecClientStr","_onLoad","_onUnload","_skn_blockedSpawnMenuUID","_temp","_skn_adminMenuOwner","_case","_skn_adminMenuHigh","_skn_adminMenuLow","_config","_debugClass","_cfg_systemDebug","_skn_systemDebug1","_skn_systemDebug2","_skn_systemDebug3","_skn_systemDebug4","_skn_systemDebug5","_cfg_remoteExecClient","_remoteExecClient_NAMES","_cfg_limits","_skn_playerCryptoLimit","_cfg_learning","_skn_trustedUsers","_str_learningModeCheck","_cfg_quality","_skn_perfMode","_skn_viewDistance","_skn_viewDistanceObects","_skn_terrainGrid","_cfg_blacklistConfig","_skn_badDisplaysArray","_skn_badAnimations","_cfg_variablesConfig","_skn_badVarCheckArray","_skn_nilVarCheckArray","_skn_commandMenuArray","_skn_addEHConfig","_skn_displayAddEHChecks","_skn_addEHArray","_serverSettingsConfig","_skn_enableAntihack","_skn_check_addons","_checkFiles","_skn_check_files","_whitelistPatches","_skn_whitelist_cfgPatches","_skn_adminsOwner","_skn_adminsHigh","_skn_adminsLow","_banReasons","_skn_banReason","_antihack_banDuration","_epoch_banReasons","_kickReasons","_epoch_kickReason","_epoch_kickReasons","_ownerSettings","_skn_adminMenuOwnerSetting","_adminSettings","_skn_adminMenuHighSetting","_lowSettings","_skn_adminMenuLowSetting","_skn_adminMenuMenuKey","_skn_adminMenuInfrontTeleport","_skn_adminMenuBanReasons","_skn_adminMenuCryproCfg","_skn_cfgPatchesCfg","_skn_PVSPrefix","_rndVAR_Count","_skn_rndVA","_skn_PVC_INDEX","_skn_AH_rndVarVehicle","_skn_AH_rndVarPlayer","_skn_AH_rndVarAHInitCheck","_skn_AH_Init","_skn_AH_Code","_skn_AH_Code_CA","_skn_AH_Code_CB","_skn_AH_Ban","_skn_AH_rndVar","_skn_doKickBan","_skn_server_getRealTime","_skn_pv_hackerLog","_skn_pv_adminLog","_skn_server_adminLog","_skn_doAdminRequest","_skn_doAdminLog","_skn_doTokenAuth","_skn_antiTeleportPVC","_skn_Admin_Code","_skn_Admin_Init","_skn_adminRequest_PVC","_skn_adminLog_PVC","_skn_adminLog","_skn_AdminKeyDown","_skn_AdminMenu_Init","_skn_getCtrl","_skn_fnc_Spec","_skn_Update_AdminButtons","_skn_mainMenuCfg","_skn_FillMainMenu","_skn_FillPlayerMenu","_skn_switchMainMenu","_skn_dbClickMainMenu","_skn_spawnMenu","_skn_spawnSpawnMenu","_skn_removespawnMenu","_skn_fillSpawnMenu","_skn_hackerLog","_skn_switchTable","_skn_customBanreason","_skn_flipVehicle","_skn_freeCam","_skn_delete","_skn_deleteMenu","_skn_deleteNow","_skn_doBan","_skn_mapTeleport","_skn_old_esp","_skn_hideAdmin","_skn_old_espMap","_skn_infrontTP","_skn_esp","_skn_godMode","_skn_repairVehicle","_skn_spawnLoot","_skn_mapLootArray","_skn_tg_Spec","_skn_tg_sortOrder","_skn_tg_toggle","_skn_tg_BanPlayer","_skn_tg_delete","_skn_tg_mapTeleport","_skn_tg_spawnTyp","_skn_tg_limitSpawn","_skn_tg_old_espMap","_skn_tg_old_esp","_skn_tg_hideAdmin","_skn_tg_infrontTP","_skn_tg_godMode","_skn_tg_map_player","_skn_tg_map_corpse","_skn_tg_map_loot","_skn_tg_map_vehicle","_skn_tg_map_ai","_skn_tg_map_basebuilding","_skn_t1","_skn_t2","_skn_t3","_skn_t4","_skn_t5","_skn_AH_rndVarAHInitCheckToken","_stringInArray","_displaysArray","_displays","_escapeQuotes","_cfg_displayArray","_skn_adminUIDArray","_skn_adminNAMEArray","_skn_tempuid","_skn_spawnPointCenter","_centerDistance","_sknBanANDSleep","_sknBanANDSleepQuick","_sknPatches","_skn_addonCheckCode","_skn_fileCheckCode","_sknAddActionCheck","_skn_code_ban","_skn_code_init","_skn_code_antihack","_skn_admincode","_skn_admininit"];
+private ["_code","_functionName","_remoteExecClientStr","_onLoad","_onUnload","_skn_blockedSpawnMenuUID","_temp","_skn_adminMenuOwner","_case","_skn_adminMenuHigh","_skn_adminMenuLow","_config","_debugClass","_cfg_systemDebug","_skn_systemDebug1","_skn_systemDebug2","_skn_systemDebug3","_skn_systemDebug4","_skn_systemDebug5","_cfg_remoteExecClient","_remoteExecClient_NAMES","_cfg_limits","_skn_playerCryptoLimit","_cfg_learning","_skn_trustedUsers","_str_learningModeCheck","_cfg_quality","_skn_perfMode","_skn_viewDistance","_skn_viewDistanceObects","_skn_terrainGrid","_cfg_blacklistConfig","_skn_badDisplaysArray","_skn_badAnimations","_cfg_variablesConfig","_skn_badVarCheckArray","_skn_nilVarCheckArray","_skn_commandMenuArray","_skn_addEHConfig","_skn_displayAddEHChecks","_skn_addEHArray","_serverSettingsConfig","_skn_enableAntihack","_skn_check_addons","_checkFiles","_skn_check_files","_whitelistPatches","_skn_whitelist_cfgPatches","_skn_adminsOwner","_skn_adminsHigh","_skn_adminsLow","_banReasons","_skn_banReason","_antihack_banDuration","_epoch_banReasons","_kickReasons","_epoch_kickReason","_epoch_kickReasons","_ownerSettings","_skn_adminMenuOwnerSetting","_adminSettings","_skn_adminMenuHighSetting","_lowSettings","_skn_adminMenuLowSetting","_skn_adminMenuMenuKey","_skn_adminMenuInfrontTeleport","_skn_adminMenuBanReasons","_skn_adminMenuCryproCfg","_skn_cfgPatchesCfg","_skn_PVSPrefix","_rndVAR_Count","_skn_rndVA","_skn_PVC_INDEX","_skn_AH_rndVarVehicle","_skn_AH_rndVarPlayer","_skn_AH_rndVarAHInitCheck","_skn_AH_Init","_skn_AH_Code","_skn_AH_Code_CA","_skn_AH_Code_CB","_skn_AH_Ban","_skn_AH_rndVar","_skn_doKickBan","_skn_server_getRealTime","_skn_pv_hackerLog","_skn_pv_adminLog","_skn_server_adminLog","_skn_doAdminRequest","_skn_doAdminLog","_skn_doTokenAuth","_skn_antiTeleportPVC","_skn_Admin_Code","_skn_Admin_Init","_skn_adminRequest_PVC","_skn_adminLog_PVC","_skn_adminLog","_skn_AdminKeyDown","_skn_AdminMenu_Init","_skn_getCtrl","_skn_fnc_Spec","_skn_Update_AdminButtons","_skn_mainMenuCfg","_skn_FillMainMenu","_skn_FillPlayerMenu","_skn_switchMainMenu","_skn_dbClickMainMenu","_skn_spawnMenu","_skn_spawnSpawnMenu","_skn_removespawnMenu","_skn_fillSpawnMenu","_skn_hackerLog","_skn_switchTable","_skn_customBanreason","_skn_flipVehicle","_skn_freeCam","_skn_delete","_skn_deleteMenu","_skn_deleteNow","_skn_doBan","_skn_mapTeleport","_skn_old_esp","_skn_hideAdmin","_skn_old_espMap","_skn_infrontTP","_skn_esp","_skn_godMode","_skn_repairVehicle","_skn_spawnLoot","_skn_mapLootArray","_skn_tg_Spec","_skn_tg_sortOrder","_skn_tg_toggle","_skn_tg_BanPlayer","_skn_tg_delete","_skn_tg_mapTeleport","_skn_tg_spawnTyp","_skn_tg_limitSpawn","_skn_tg_old_espMap","_skn_tg_old_esp","_skn_tg_hideAdmin","_skn_tg_infrontTP","_skn_tg_godMode","_skn_tg_map_player","_skn_tg_map_corpse","_skn_tg_map_loot","_skn_tg_map_vehicle","_skn_tg_map_ai","_skn_tg_map_basebuilding","_skn_t1","_skn_t2","_skn_t3","_skn_t4","_skn_t5","_skn_AH_rndVarAHInitCheckToken","_stringInArray","_displaysArray","_displays","_cfg_displayArray","_skn_adminUIDArray","_skn_adminNAMEArray","_skn_tempuid","_skn_spawnPointCenter","_centerDistance","_sknBanANDSleep","_sknBanANDSleepQuick","_sknPatches","_skn_addonCheckCode","_skn_fileCheckCode","_sknAddActionCheck","_skn_code_ban","_skn_code_init","_skn_code_antihack","_skn_admincode","_skn_admininit"];
 
 _config = (configFile >> "CfgSecConf");
 if (isClass _config) then {diag_log "Loading config..."};
@@ -289,29 +289,17 @@ _displaysArray = [];
 {_displaysArray pushBack [_x,[],[]]} forEach ["RscDisplayMainMap","RscDisplayGetReady","RscDisplayInventory","RscDisplayLoadMission","RscDisplayInterrupt","RscDisplayOptionsVideo","RscDisplayOptions","RscDisplayAVTerminal","RscDisplayConfigure","RscDisplayConfigureAction","RscDisplayConfigureControllers","RscDisplayControlSchemes","RscDisplayCustomizeController","RscDisplayDebriefing","RscDisplayDiary","RscDisplayGameOptions","RscDisplayJoystickSchemes","RscDisplayLoading","RscDisplayMicSensitivityOptions","RscDisplayOptionsAudio","RscDisplayOptionsLayout","RscDisplayStart","RscDisplayVehicleMsgBox","RscDisplayInsertMarker"];
 _displays = [(_config >> "displayOnload"), "checkDisplays", _displaysArray] call EPOCH_fnc_returnConfigEntry;
 
-
-_escapeQuotes = {
-	_return = [];
-	{
-		_return pushback _x;
-		if (_x == 34) then {
-			_return pushback _x;
-		};
-	} forEach toArray _this;
-	toString _return
-};
-
 _cfg_displayArray = [];
 {
-	_onLoad   = ((getText(configFile >> (_x select 0) >> "onLoad")) call _escapeQuotes);
-	_onUnload = ((getText(configFile >> (_x select 0) >> "onUnload")) call _escapeQuotes);
+	_onLoad   = (getText(configFile >> (_x select 0) >> "onLoad"));
+	_onUnload = (getText(configFile >> (_x select 0) >> "onUnload"));
 	_onLoad   = [_onLoad];
 	_onUnload = [_onUnload];
 	{
-		_onLoad pushBack(_x call _escapeQuotes);
+		_onLoad pushBack _x;
 	} forEach(_x select 1);
 	{
-		_onUnload pushBack(_x call _escapeQuotes);
+		_onUnload pushBack _x;
 	} forEach(_x select 2);
 	_cfg_displayArray pushBack[(_x select 0), _onLoad, _onUnload];
 }forEach _displays;
@@ -1134,6 +1122,9 @@ call compile ("'"+_skn_doAdminRequest+"' addPublicVariableEventHandler {
 			_return = false;
 			if (_item isKindOf 'Air' || _item isKindOf 'Ship' || _item isKindOf 'LandVehicle') then {
 				if !(EPOCH_VehicleSlots isEqualTo[]) then {
+					_serverSettingsConfig = configFile >> 'CfgEpochServer';
+					_removeweapons = [_serverSettingsConfig, 'removevehweapons', []] call EPOCH_fnc_returnConfigEntry;
+					_removemagazinesturret = [_serverSettingsConfig, 'removevehmagazinesturret', []] call EPOCH_fnc_returnConfigEntry;
 					_position = getPosATL _target;
 
 					_slot = EPOCH_VehicleSlots select 0;
@@ -1151,6 +1142,18 @@ call compile ("'"+_skn_doAdminRequest+"' addPublicVariableEventHandler {
 					clearMagazineCargoGlobal  _vehObj;
 					clearBackpackCargoGlobal  _vehObj;
 					clearItemCargoGlobal	  _vehObj;
+
+					if !(_removeweapons isequalto []) then {
+						{
+							_vehObj removeWeaponGlobal _x;
+						} foreach _removeweapons;
+					};
+					if !(_removemagazinesturret isequalto []) then {
+						{
+							_vehObj removeMagazinesTurret _x;
+						} foreach _removemagazinesturret;
+					};
+
 					_vehObj lock true;
 
 					_playerUID = getPlayerUID _target;
