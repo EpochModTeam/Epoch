@@ -1,0 +1,603 @@
+{
+    "_header": {
+        "@author": "Aaron Clark - https://EpochMod.com",
+        "@contributors": [],
+        "@description": "Epoch object interaction configs.",
+        "@licence": "Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike",
+        "@github": "https://github.com/EpochModTeam/Epoch/tree/release/Sources/{filename}"
+    },
+    "CfgObjectInteractions": {
+        "Default": {
+            "interactMode": 0,
+            "distance": 0,
+            "toxicChance": 0,
+            "bleedChance": 0,
+            "bloodpChance": 0,
+            "fatigueChance": 0,
+            "bleedAmount": 0,
+            "bloodpAmount": 0,
+            "soundEffect": [],
+            "soundEffectGlobal": 0,
+            "animationEffect": [],
+            "animationEffectGlobal": 0,
+            "canSee": "false",
+            "ppEffect": [],
+            "aliveState": 0,
+            "interactAttributes": []
+        },
+        "Land_MPS_EPOCH": {
+            "_parentName": "Default"
+        },
+        "container_epoch": {
+            "_parentName": "Default"
+        },
+        "PlotPole_EPOCH": {
+            "interactMode": 1,
+            "_parentName": "Default"
+        },
+        "Tipi_EPOCH": {
+            "interactMode": 4,
+            "_parentName": "Default"
+        },
+        "Tipi_SIM_EPOCH": {
+            "interactMode": 1,
+            "_parentName": "Default"
+        },
+        "StorageShelf_EPOCH": {
+            "interactMode": 4,
+            "_parentName": "Default"
+        },
+        "WorkBench_EPOCH": {
+            "interactMode": 4,
+            "_parentName": "Default"
+        },
+        "Foundation_EPOCH": {
+            "interactMode": 1,
+            "_parentName": "Default"
+        },
+        "WoodFoundation_EPOCH": {
+            "interactMode": 1,
+            "_parentName": "Default"
+        },
+        "Sheep_random_EPOCH": {
+            "interactMode": 3,
+            "aliveState": 1,
+            "interactAttributes": [
+                [
+                    "Soiled",
+                    1
+                ]
+            ],
+            "_parentName": "Default"
+        },
+        "Goat_random_EPOCH": {
+            "interactMode": 3,
+            "aliveState": 1,
+            "interactAttributes": [
+                [
+                    "Soiled",
+                    1
+                ]
+            ],
+            "_parentName": "Default"
+        },
+        "Cock_random_EPOCH": {
+            "interactMode": 3,
+            "aliveState": 1,
+            "interactAttributes": [
+                [
+                    "Soiled",
+                    1
+                ]
+            ],
+            "_parentName": "Default"
+        },
+        "Hen_random_EPOCH": {
+            "interactMode": 3,
+            "aliveState": 1,
+            "interactAttributes": [
+                [
+                    "Soiled",
+                    1
+                ]
+            ],
+            "_parentName": "Default"
+        },
+        "Rabbit_EPOCH": {
+            "interactMode": 3,
+            "aliveState": 1,
+            "interactAttributes": [
+                [
+                    "Soiled",
+                    1
+                ]
+            ],
+            "_parentName": "Default"
+        },
+        "Fin_random_EPOCH": {
+            "interactMode": 3,
+            "aliveState": 1,
+            "interactAttributes": [
+                [
+                    "Karma",
+                    -100
+                ],
+                [
+                    "Soiled",
+                    1
+                ]
+            ],
+            "_parentName": "Default"
+        },
+        "Alsatian_Random_EPOCH": {
+            "interactMode": 3,
+            "aliveState": 1,
+            "interactAttributes": [
+                [
+                    "Karma",
+                    -100
+                ],
+                [
+                    "Soiled",
+                    1
+                ]
+            ],
+            "_parentName": "Default"
+        },
+        "Epoch_Sapper_F": {
+            "interactMode": 3,
+            "aliveState": 1,
+            "interactAttributes": [
+                [
+                    "Toxicity",
+                    20,
+                    1
+                ],
+                [
+                    "Soiled",
+                    20,
+                    1
+                ]
+            ],
+            "_parentName": "Default"
+        },
+        "Epoch_SapperB_F": {
+            "interactMode": 3,
+            "aliveState": 1,
+            "interactAttributes": [
+                [
+                    "Toxicity",
+                    20,
+                    1
+                ],
+                [
+                    "Soiled",
+                    20,
+                    1
+                ]
+            ],
+            "_parentName": "Default"
+        },
+        "I_UAV_01_F": {
+            "interactMode": 3,
+            "aliveState": 1,
+            "interactAttributes": [
+                [
+                    "Energy",
+                    20,
+                    1
+                ]
+            ],
+            "_parentName": "Default"
+        },
+        "Epoch_Female_F": {
+            "interactMode": 2,
+            "_parentName": "Default"
+        },
+        "Epoch_Male_F": {
+            "interactMode": 2,
+            "_parentName": "Default"
+        },
+        "C_man_1": {
+            "interactMode": 2,
+            "_parentName": "Default"
+        },
+        "SapperHead_SIM_EPOCH": {
+            "interactMode": 0,
+            "interactAttributes": [
+                [
+                    "Soiled",
+                    1
+                ]
+            ],
+            "_parentName": "Default"
+        },
+        "SapperCorpse_SIM_EPOCH": {
+            "interactMode": 0,
+            "interactAttributes": [
+                [
+                    "Soiled",
+                    1
+                ]
+            ],
+            "_parentName": "Default"
+        },
+        "Snake_random_EPOCH": {
+            "interactMode": 3,
+            "distance": 3,
+            "toxicChance": 0.2,
+            "bloodpChance": 1,
+            "fatigueChance": 0.5,
+            "bleedAmount": 30,
+            "bloodpAmount": 3,
+            "soundEffect": [
+                "snake_bite0"
+            ],
+            "canSee": "!(lineIntersects[eyePos _unit, aimPos _target, _unit, _target])",
+            "ppEffect": [],
+            "aliveState": 0,
+            "interactAttributes": [
+                [
+                    "Toxicity",
+                    20,
+                    1
+                ],
+                [
+                    "Soiled",
+                    1
+                ]
+            ],
+            "_parentName": "Default"
+        },
+        "Snake2_random_EPOCH": {
+            "interactMode": 3,
+            "distance": 3,
+            "toxicChance": 0.1,
+            "bloodpChance": 1,
+            "fatigueChance": 0.5,
+            "bleedAmount": 30,
+            "bloodpAmount": 3,
+            "soundEffect": [
+                "snake_bite0"
+            ],
+            "canSee": "!(lineIntersects[eyePos _unit, aimPos _target, _unit, _target])",
+            "ppEffect": [],
+            "aliveState": 0,
+            "interactAttributes": [
+                [
+                    "Toxicity",
+                    10,
+                    1
+                ],
+                [
+                    "Soiled",
+                    1
+                ]
+            ],
+            "_parentName": "Default"
+        },
+        "GreatWhite_F": {
+            "interactMode": 3,
+            "distance": 6,
+            "toxicChance": 0,
+            "bleedChance": 1,
+            "bloodpChance": 1,
+            "fatigueChance": 1,
+            "bleedAmount": 100,
+            "bloodpAmount": 3,
+            "canSee": "true",
+            "ppEffect": [],
+            "aliveState": 1,
+            "interactAttributes": [],
+            "_parentName": "Default"
+        },
+        "SmokeShellCustom": {
+            "distance": 6,
+            "toxicChance": 1,
+            "bleedChance": 0,
+            "bloodpChance": 1,
+            "fatigueChance": 1,
+            "bleedAmount": 0,
+            "bloodpAmount": 3,
+            "canSee": "true",
+            "ppEffect": [],
+            "_parentName": "Default"
+        },
+        "Epoch_Cloak_F": {
+            "distance": 30,
+            "toxicChance": 0,
+            "bloodpChance": 0.9,
+            "fatigueChance": 0.5,
+            "bleedAmount": 66,
+            "bloodpAmount": 3,
+            "soundEffect": [
+                "cultist_nearby"
+            ],
+            "canSee": "!(lineIntersects[eyePos _unit, aimPos _target, _unit, _target])",
+            "ppEffect": [
+                [
+                    [
+                        "filmGrain",
+                        2005,
+                        [
+                            0.1,
+                            -1,
+                            0.05,
+                            0.05,
+                            2,
+                            false
+                        ],
+                        1
+                    ],
+                    [
+                        "chromAberration",
+                        2006,
+                        [
+                            0.01,
+                            0.01,
+                            true
+                        ],
+                        5
+                    ],
+                    [
+                        "colorCorrections",
+                        2007,
+                        [
+                            1,
+                            1,
+                            0,
+                            [
+                                1.5,
+                                -1,
+                                -1.5,
+                                0.5
+                            ],
+                            [
+                                5,
+                                3.5,
+                                -5,
+                                -0.5
+                            ],
+                            [
+                                -3,
+                                5,
+                                -5,
+                                -0.5
+                            ]
+                        ],
+                        5
+                    ],
+                    [
+                        "radialBlur",
+                        2008,
+                        [
+                            0.02,
+                            0.02,
+                            0.15,
+                            0.15
+                        ],
+                        5
+                    ]
+                ],
+                2,
+                [
+                    [],
+                    [
+                        [
+                            0,
+                            0,
+                            true
+                        ],
+                        5
+                    ],
+                    [
+                        [
+                            1,
+                            1,
+                            -0.01,
+                            [
+                                0.0,
+                                0.0,
+                                0.0,
+                                0.0
+                            ],
+                            [
+                                1.5,
+                                1,
+                                1.2,
+                                0.6
+                            ],
+                            [
+                                0.199,
+                                0.587,
+                                0.114,
+                                0.2
+                            ]
+                        ],
+                        5
+                    ],
+                    [
+                        [
+                            0,
+                            0,
+                            0,
+                            0
+                        ],
+                        5
+                    ]
+                ],
+                5,
+                []
+            ],
+            "interactMode": 3,
+            "aliveState": 1,
+            "interactAttributes": [
+                [
+                    "Toxicity",
+                    20,
+                    1
+                ],
+                [
+                    "Soiled",
+                    20,
+                    1
+                ]
+            ],
+            "_parentName": "Default"
+        },
+        "EPOCH_RyanZombie_1": {
+            "distance": 3,
+            "toxicChance": 0.1,
+            "bloodpChance": 0.9,
+            "fatigueChance": 0.4,
+            "bleedAmount": 30,
+            "bloodpAmount": 3,
+            "soundEffect": [
+                [
+                    "ryanzombies\\sounds\\attack1.ogg",
+                    400
+                ],
+                [
+                    "ryanzombies\\sounds\\attack2.ogg",
+                    400
+                ],
+                [
+                    "ryanzombies\\sounds\\attack3.ogg",
+                    400
+                ],
+                [
+                    "ryanzombies\\sounds\\attack4.ogg",
+                    400
+                ],
+                [
+                    "ryanzombies\\sounds\\attack5.ogg",
+                    400
+                ]
+            ],
+            "soundEffectGlobal": 1,
+            "animationEffect": [
+                "AwopPercMstpSgthWnonDnon_throw"
+            ],
+            "animationEffectGlobal": 1,
+            "canSee": "!(lineIntersects[eyePos _unit, aimPos _target, _unit, _target])",
+            "ppEffect": [],
+            "interactMode": 3,
+            "aliveState": 1,
+            "interactAttributes": [
+                [
+                    "Toxicity",
+                    5,
+                    1
+                ],
+                [
+                    "Soiled",
+                    10,
+                    1
+                ]
+            ],
+            "_parentName": "Default"
+        },
+        "EPOCH_RyanZombie_2": {
+            "_parentName": "EPOCH_RyanZombie_1"
+        },
+        "EPOCH_RyanZombie_3": {
+            "_parentName": "EPOCH_RyanZombie_1"
+        },
+        "EPOCH_RyanZombie_4": {
+            "_parentName": "EPOCH_RyanZombie_1"
+        },
+        "EPOCH_RyanZombie_5": {
+            "_parentName": "EPOCH_RyanZombie_1"
+        },
+        "EPOCH_RyanZombie_1_C": {
+            "_parentName": "EPOCH_RyanZombie_1"
+        },
+        "EPOCH_RyanZombie_2_C": {
+            "_parentName": "EPOCH_RyanZombie_1"
+        },
+        "EPOCH_RyanZombie_3_C": {
+            "_parentName": "EPOCH_RyanZombie_1"
+        },
+        "EPOCH_RyanZombie_4_C": {
+            "_parentName": "EPOCH_RyanZombie_1"
+        },
+        "EPOCH_RyanZombie_5_C": {
+            "_parentName": "EPOCH_RyanZombie_1"
+        },
+        "EPOCH_RyanZombie_1_Sp": {
+            "_parentName": "EPOCH_RyanZombie_1"
+        },
+        "EPOCH_RyanZombie_2_Sp": {
+            "_parentName": "EPOCH_RyanZombie_1"
+        },
+        "EPOCH_RyanZombie_3_Sp": {
+            "_parentName": "EPOCH_RyanZombie_1"
+        },
+        "EPOCH_RyanZombie_4_Sp": {
+            "_parentName": "EPOCH_RyanZombie_1"
+        },
+        "EPOCH_RyanZombie_5_Sp": {
+            "_parentName": "EPOCH_RyanZombie_1"
+        },
+        "EPOCH_RyanZombie_1_B": {
+            "_parentName": "EPOCH_RyanZombie_1"
+        },
+        "EPOCH_RyanZombie_2_B": {
+            "_parentName": "EPOCH_RyanZombie_1"
+        },
+        "EPOCH_RyanZombie_3_B": {
+            "_parentName": "EPOCH_RyanZombie_1"
+        },
+        "EPOCH_RyanZombie_4_B": {
+            "_parentName": "EPOCH_RyanZombie_1"
+        },
+        "EPOCH_RyanZombie_5_B": {
+            "_parentName": "EPOCH_RyanZombie_1"
+        },
+        "EPOCH_RyanZombie_1_W": {
+            "_parentName": "EPOCH_RyanZombie_1"
+        },
+        "EPOCH_RyanZombie_2_W": {
+            "_parentName": "EPOCH_RyanZombie_1"
+        },
+        "EPOCH_RyanZombie_3_W": {
+            "_parentName": "EPOCH_RyanZombie_1"
+        },
+        "EPOCH_RyanZombie_4_W": {
+            "_parentName": "EPOCH_RyanZombie_1"
+        },
+        "EPOCH_RyanZombie_5_W": {
+            "_parentName": "EPOCH_RyanZombie_1"
+        },
+        "EPOCH_RyanZombie_1_M": {
+            "_parentName": "EPOCH_RyanZombie_1"
+        },
+        "EPOCH_RyanZombie_2_M": {
+            "_parentName": "EPOCH_RyanZombie_1"
+        },
+        "EPOCH_RyanZombie_3_M": {
+            "_parentName": "EPOCH_RyanZombie_1"
+        },
+        "EPOCH_RyanZombie_4_M": {
+            "_parentName": "EPOCH_RyanZombie_1"
+        },
+        "EPOCH_RyanZombie_5_M": {
+            "_parentName": "EPOCH_RyanZombie_1"
+        },
+        "EPOCH_RyanZombie_1_S": {
+            "_parentName": "EPOCH_RyanZombie_1"
+        },
+        "EPOCH_RyanZombie_2_S": {
+            "_parentName": "EPOCH_RyanZombie_1"
+        },
+        "EPOCH_RyanZombie_3_S": {
+            "_parentName": "EPOCH_RyanZombie_1"
+        },
+        "EPOCH_RyanZombie_4_S": {
+            "_parentName": "EPOCH_RyanZombie_1"
+        },
+        "EPOCH_RyanZombie_5_S": {
+            "_parentName": "EPOCH_RyanZombie_1"
+        }
+    }
+}

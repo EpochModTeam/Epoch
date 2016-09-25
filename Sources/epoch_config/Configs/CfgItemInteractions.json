@@ -1,0 +1,1286 @@
+{
+    "_header": {
+        "@author": "Aaron Clark - https://EpochMod.com",
+        "@contributors": ["Andrew Gregory"],
+        "@description": "Item interaction configs",
+        "@licence": "Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike",
+        "@github": "https://github.com/EpochModTeam/Epoch/tree/release/Sources/{filename}"
+    },
+    "CfgItemInteractions": {
+        "Default": {
+            "interactAction": 0
+        },
+        "Food_base": {
+            "interactAction": 1,
+            "interactText": "EAT",
+            "interactAttributes": [
+                [
+                    "Hunger",
+                    600
+                ]
+            ],
+            "_parentName": "Default"
+        },
+        "Food_TinCan_base": {
+            "interactReturnOnUse": "ItemEmptyTin",
+            "_parentName": "Food_base"
+        },
+        "Food_Jar_base": {
+            "interactReturnOnUse": "emptyjar_epoch",
+            "_parentName": "Food_base"
+        },
+        "Food_Cooler_base": {
+            "interactReturnOnUse": "ItemCoolerE",
+            "_parentName": "Food_base"
+        },
+        "Drink_base": {
+            "interactAction": 2,
+            "interactText": "DRINK",
+            "interactAttributes": [
+                [
+                    "Thirst",
+                    500
+                ]
+            ],
+            "_parentName": "Default"
+        },
+        "Drink_Jar_base": {
+            "interactReturnOnUse": "emptyjar_epoch",
+            "_parentName": "Drink_base"
+        },
+        "Soda_base": {
+            "interactReturnOnUse": "ItemSodaEmpty",
+            "_parentName": "Drink_base"
+        },
+        "Item_Build_base": {
+            "interactAction": 3,
+            "interactText": "BUILD",
+            "_parentName": "Default"
+        },
+        "Item_Packed_base": {
+            "interactAction": 14,
+            "interactText": "UNPACK",
+            "_parentName": "Default"
+        },
+        "honey_epoch": {
+            "interactText": "CONSUME",
+            "interactAttributes": [
+                [
+                    "Immunity",
+                    1
+                ],
+                [
+                    "Stamina",
+                    30
+                ],
+                [
+                    "BloodP",
+                    10
+                ]
+            ],
+            "_parentName": "Food_Jar_base"
+        },
+        "sardines_epoch": {
+            "interactAttributes": [
+                [
+                    "Hunger",
+                    1000
+                ],
+                [
+                    "Toxicity",
+                    7
+                ]
+            ],
+            "_parentName": "Food_TinCan_base"
+        },
+        "meatballs_epoch": {
+            "interactAttributes": [
+                [
+                    "Hunger",
+                    1200
+                ]
+            ],
+            "_parentName": "Food_TinCan_base"
+        },
+        "scam_epoch": {
+            "interactAttributes": [
+                [
+                    "Hunger",
+                    1000
+                ]
+            ],
+            "_parentName": "Food_TinCan_base"
+        },
+        "sweetcorn_epoch": {
+            "interactAttributes": [
+                [
+                    "Hunger",
+                    600
+                ]
+            ],
+            "_parentName": "Food_TinCan_base"
+        },
+        "FoodBioMeat": {
+            "interactAttributes": [
+                [
+                    "Hunger",
+                    1000
+                ],
+                [
+                    "Toxicity",
+                    7
+                ]
+            ],
+            "_parentName": "Food_TinCan_base"
+        },
+        "TacticalBacon": {
+            "interactAttributes": [
+                [
+                    "Hunger",
+                    500
+                ]
+            ],
+            "_parentName": "Food_TinCan_base"
+        },
+        "ItemTrout": {
+            "interactAttributes": [
+                [
+                    "Hunger",
+                    300
+                ],
+                [
+                    "Toxicity",
+                    5
+                ]
+            ],
+            "_parentName": "Food_base"
+        },
+        "ItemSeaBass": {
+            "interactAttributes": [
+                [
+                    "Hunger",
+                    500
+                ],
+                [
+                    "Toxicity",
+                    10
+                ]
+            ],
+            "_parentName": "Food_base"
+        },
+        "ItemTuna": {
+            "interactAttributes": [
+                [
+                    "Hunger",
+                    2500
+                ]
+            ],
+            "_parentName": "Food_base"
+        },
+        "ItemTroutCooked": {
+            "interactAttributes": [
+                [
+                    "Hunger",
+                    600
+                ]
+            ],
+            "_parentName": "Food_base"
+        },
+        "ItemSeaBassCooked": {
+            "interactAttributes": [
+                [
+                    "Hunger",
+                    1200
+                ]
+            ],
+            "_parentName": "Food_base"
+        },
+        "ItemTunaCooked": {
+            "interactAttributes": [
+                [
+                    "Hunger",
+                    5000
+                ]
+            ],
+            "_parentName": "Food_base"
+        },
+        "FoodMeeps": {
+            "interactAttributes": [
+                [
+                    "Hunger",
+                    500
+                ]
+            ],
+            "_parentName": "Food_base"
+        },
+        "FoodSnooter": {
+            "interactAttributes": [
+                [
+                    "Hunger",
+                    500
+                ],
+                [
+                    "Stamina",
+                    50
+                ]
+            ],
+            "_parentName": "Food_base"
+        },
+        "ItemCooler0": {
+            "interactAttributes": [
+                [
+                    "Hunger",
+                    3000
+                ]
+            ],
+            "_parentName": "Food_Cooler_base"
+        },
+        "ItemCooler1": {
+            "interactAttributes": [
+                [
+                    "Hunger",
+                    3500
+                ]
+            ],
+            "_parentName": "Food_Cooler_base"
+        },
+        "ItemCooler2": {
+            "interactAttributes": [
+                [
+                    "Hunger",
+                    4000
+                ]
+            ],
+            "_parentName": "Food_Cooler_base"
+        },
+        "ItemCooler3": {
+            "interactAttributes": [
+                [
+                    "Hunger",
+                    5000
+                ]
+            ],
+            "_parentName": "Food_Cooler_base"
+        },
+        "ItemCooler4": {
+            "interactAttributes": [
+                [
+                    "Hunger",
+                    5000
+                ]
+            ],
+            "_parentName": "Food_Cooler_base"
+        },
+        "WhiskeyNoodle": {
+            "interactAttributes": [
+                [
+                    "Thirst",
+                    800
+                ],
+                [
+                    "Toxicity",
+                    -1
+                ],
+                [
+                    "Stamina",
+                    50
+                ],
+                [
+                    "Alcohol",
+                    10
+                ]
+            ],
+            "_parentName": "Drink_base"
+        },
+        "water_epoch": {
+            "interactAttributes": [
+                [
+                    "Thirst",
+                    500
+                ],
+                [
+                    "Toxicity",
+                    5,
+                    1
+                ],
+                [
+                    "Stamina",
+                    50
+                ]
+            ],
+            "_parentName": "Drink_Jar_base"
+        },
+        "clean_water_epoch": {
+            "interactAttributes": [
+                [
+                    "Thirst",
+                    500
+                ],
+                [
+                    "Stamina",
+                    50
+                ]
+            ],
+            "_parentName": "Drink_Jar_base"
+        },
+        "ItemSodaRbull": {
+            "interactAttributes": [
+                [
+                    "Thirst",
+                    1000
+                ],
+                [
+                    "Stamina",
+                    100
+                ]
+            ],
+            "_parentName": "Soda_base"
+        },
+        "ItemSodaOrangeSherbet": {
+            "interactAttributes": [
+                [
+                    "Thirst",
+                    800
+                ],
+                [
+                    "Stamina",
+                    75
+                ]
+            ],
+            "_parentName": "Soda_base"
+        },
+        "ItemSodaPurple": {
+            "interactAttributes": [
+                [
+                    "Thirst",
+                    800
+                ],
+                [
+                    "Stamina",
+                    75
+                ]
+            ],
+            "_parentName": "Soda_base"
+        },
+        "ItemSodaMocha": {
+            "interactAttributes": [
+                [
+                    "Thirst",
+                    650
+                ],
+                [
+                    "Stamina",
+                    150
+                ]
+            ],
+            "_parentName": "Soda_base"
+        },
+        "ItemSodaBurst": {
+            "interactAttributes": [
+                [
+                    "Thirst",
+                    800
+                ],
+                [
+                    "Stamina",
+                    75
+                ]
+            ],
+            "_parentName": "Soda_base"
+        },
+        "FoodWalkNSons": {
+            "interactAttributes": [
+                [
+                    "Thirst",
+                    1200
+                ],
+                [
+                    "Stamina",
+                    150
+                ]
+            ],
+            "_parentName": "Soda_base"
+        },
+        "ItemSodaAlpineDude": {
+            "interactAttributes": [
+                [
+                    "Thirst",
+                    800
+                ],
+                [
+                    "Stamina",
+                    800
+                ]
+            ],
+            "_parentName": "Soda_base"
+        },
+        "jerrycan_epoch": {
+            "interactAction": 4,
+            "interactText": "FILL",
+            "interactReturnOnUse": "jerrycanE_epoch",
+            "interactAttributes": [
+                10
+            ],
+            "_parentName": "Default"
+        },
+        "jerrycanE_epoch": {
+            "interactAction": 5,
+            "interactText": "SIPHON",
+            "interactReturnOnUse": "jerrycan_epoch",
+            "interactAttributes": [
+                10
+            ],
+            "_parentName": "Default"
+        },
+        "FAK": {
+            "interactAction": 13,
+            "interactText": "USE",
+            "_parentName": "Default"
+        },
+        "ItemLockbox": {
+            "buildClass": "LockBox_SIM_EPOCH",
+            "_parentName": "Item_Build_base"
+        },
+        "ItemSafe": {
+            "buildClass": "Safe_SIM_EPOCH",
+            "_parentName": "Item_Build_base"
+        },
+        "JackKit": {
+            "buildClass": "Jack_SIM_EPOCH",
+            "_parentName": "Item_Build_base"
+        },
+        "EnergyPack": {
+            "interactAction": 9,
+            "interactText": "USE",
+            "interactAttributes": [
+                [
+                    "Energy",
+                    100
+                ]
+            ],
+            "_parentName": "Default"
+        },
+        "EnergyPackLg": {
+            "interactAction": 9,
+            "interactText": "USE",
+            "interactAttributes": [
+                [
+                    "Energy",
+                    1000
+                ]
+            ],
+            "_parentName": "Default"
+        },
+        "VehicleRepair": {
+            "interactAction": 10,
+            "interactText": "USE",
+            "_parentName": "Default"
+        },
+        "VehicleRepairLg": {
+            "interactAction": 11,
+            "interactText": "USE",
+            "_parentName": "Default"
+        },
+        "Venom_EPOCH": {
+            "interactAction": 1,
+            "interactText": "EAT",
+            "interactAttributes": [
+                [
+                    "Toxicity",
+                    20,
+                    1
+                ]
+            ],
+            "_parentName": "Default"
+        },
+        "SnakeCarcass_EPOCH": {
+            "interactAction": 1,
+            "interactText": "EAT",
+            "interactAttributes": [
+                [
+                    "Hunger",
+                    300
+                ],
+                [
+                    "Soiled",
+                    1
+                ],
+                [
+                    "Toxicity",
+                    10,
+                    1
+                ]
+            ],
+            "_parentName": "Default"
+        },
+        "SnakeMeat_EPOCH": {
+            "interactAction": 1,
+            "interactText": "EAT",
+            "interactAttributes": [
+                [
+                    "Hunger",
+                    1200
+                ]
+            ],
+            "_parentName": "Default"
+        },
+        "RabbitCarcass_EPOCH": {
+            "interactAction": 1,
+            "interactText": "EAT",
+            "interactAttributes": [
+                [
+                    "Hunger",
+                    300
+                ],
+                [
+                    "Soiled",
+                    1
+                ],
+                [
+                    "Toxicity",
+                    10,
+                    1
+                ]
+            ],
+            "_parentName": "Default"
+        },
+        "CookedRabbit_EPOCH": {
+            "interactAction": 1,
+            "interactText": "EAT",
+            "interactAttributes": [
+                [
+                    "Hunger",
+                    1200
+                ]
+            ],
+            "_parentName": "Default"
+        },
+        "ChickenCarcass_EPOCH": {
+            "interactAction": 1,
+            "interactText": "EAT",
+            "interactAttributes": [
+                [
+                    "Hunger",
+                    500
+                ],
+                [
+                    "Soiled",
+                    1
+                ],
+                [
+                    "Toxicity",
+                    25,
+                    1
+                ]
+            ],
+            "_parentName": "Default"
+        },
+        "CookedChicken_EPOCH": {
+            "interactAction": 1,
+            "interactText": "EAT",
+            "interactAttributes": [
+                [
+                    "Hunger",
+                    2000
+                ]
+            ],
+            "_parentName": "Default"
+        },
+        "GoatCarcass_EPOCH": {
+            "interactAction": 1,
+            "interactText": "EAT",
+            "interactAttributes": [
+                [
+                    "Hunger",
+                    500
+                ],
+                [
+                    "Soiled",
+                    1
+                ],
+                [
+                    "Toxicity",
+                    15,
+                    1
+                ]
+            ],
+            "_parentName": "Default"
+        },
+        "DogCarcass_EPOCH": {
+            "interactAction": 1,
+            "interactText": "EAT",
+            "interactAttributes": [
+                [
+                    "Hunger",
+                    500
+                ],
+                [
+                    "Soiled",
+                    1
+                ],
+                [
+                    "Toxicity",
+                    15,
+                    1
+                ],
+                [
+                    "Karma",
+                    -10
+                ]
+            ],
+            "_parentName": "Default"
+        },
+        "CookedDog_EPOCH": {
+            "interactAction": 1,
+            "interactText": "EAT",
+            "interactAttributes": [
+                [
+                    "Hunger",
+                    3000
+                ],
+                [
+                    "Karma",
+                    -10
+                ]
+            ],
+            "_parentName": "Default"
+        },
+        "CookedGoat_EPOCH": {
+            "interactAction": 1,
+            "interactText": "EAT",
+            "interactAttributes": [
+                [
+                    "Hunger",
+                    3000
+                ]
+            ],
+            "_parentName": "Default"
+        },
+        "SheepCarcass_EPOCH": {
+            "interactAction": 1,
+            "interactText": "EAT",
+            "interactAttributes": [
+                [
+                    "Hunger",
+                    500
+                ],
+                [
+                    "Soiled",
+                    1
+                ],
+                [
+                    "Toxicity",
+                    15,
+                    1
+                ]
+            ],
+            "_parentName": "Default"
+        },
+        "CookedSheep_EPOCH": {
+            "interactAction": 1,
+            "interactText": "EAT",
+            "interactAttributes": [
+                [
+                    "Hunger",
+                    3000
+                ]
+            ],
+            "_parentName": "Default"
+        },
+        "KitSpikeTrap": {
+            "buildClass": "Spike_TRAP_SIM_EPOCH",
+            "_parentName": "Item_Build_base"
+        },
+        "KitMetalTrap": {
+            "buildClass": "Metal_TRAP_SIM_EPOCH",
+            "_parentName": "Item_Build_base"
+        },
+        "KitStudWall": {
+            "buildClass": "WoodLargeWall_EPOCH",
+            "_parentName": "Item_Build_base"
+        },
+        "KitWoodFloor": {
+            "buildClass": "WoodFloor_EPOCH",
+            "_parentName": "Item_Build_base"
+        },
+        "KitWoodStairs": {
+            "buildClass": "WoodStairs_EPOCH",
+            "_parentName": "Item_Build_base"
+        },
+        "KitWoodTower": {
+            "buildClass": "WoodTower_EPOCH",
+            "_parentName": "Item_Build_base"
+        },
+        "KitWoodRamp": {
+            "buildClass": "WoodRamp_EPOCH",
+            "_parentName": "Item_Build_base"
+        },
+        "KitTankTrap": {
+            "buildClass": "TankTrap_SIM_EPOCH",
+            "_parentName": "Item_Build_base"
+        },
+        "KitHesco3": {
+            "buildClass": "Hesco3_EPOCH",
+            "_parentName": "Item_Build_base"
+        },
+        "KitWoodLadder": {
+            "buildClass": "WoodLadder_EPOCH",
+            "_parentName": "Item_Build_base"
+        },
+        "KitFirePlace": {
+            "buildClass": "FirePlace_SIM_EPOCH",
+            "_parentName": "Item_Build_base"
+        },
+        "KitTiPi": {
+            "buildClass": "Tipi_SIM_EPOCH",
+            "isStorage": 1,
+            "_parentName": "Item_Build_base"
+        },
+        "KitShelf": {
+            "buildClass": "StorageShelf_SIM_EPOCH",
+            "isStorage": 1,
+            "_parentName": "Item_Build_base"
+        },
+        "KitWorkbench": {
+            "buildClass": "Workbench_SIM_EPOCH",
+            "isStorage": 1,
+            "_parentName": "Item_Build_base"
+        },
+        "KitFoundation": {
+            "buildClass": "Foundation_EPOCH",
+            "_parentName": "Item_Build_base"
+        },
+        "KitWoodFoundation": {
+            "buildClass": "WoodFoundation_EPOCH",
+            "_parentName": "Item_Build_base"
+        },
+        "KitSolarGen": {
+            "buildClass": "SolarGen_SIM_EPOCH",
+            "_parentName": "Item_Build_base"
+        },
+        "KitPlotPole": {
+            "buildClass": "PlotPole_SIM_EPOCH",
+            "_parentName": "Item_Build_base"
+        },
+        "KitCinderWall": {
+            "buildClass": "CinderWallHalf_EPOCH",
+            "_parentName": "Item_Build_base"
+        },
+        "PaintCanBase": {
+            "interactAction": 12,
+            "interactText": "USE",
+            "_parentName": "Default"
+        },
+        "PaintCanClear": {
+            "colorName": "None",
+            "textureIndex": 0,
+            "_parentName": "PaintCanBase"
+        },
+        "PaintCanBlk": {
+            "colorName": "Black",
+            "textureIndex": 1,
+            "_parentName": "PaintCanBase"
+        },
+        "PaintCanBlu": {
+            "colorName": "Blue",
+            "textureIndex": 2,
+            "_parentName": "PaintCanBase"
+        },
+        "PaintCanBrn": {
+            "colorName": "Brown",
+            "textureIndex": 3,
+            "_parentName": "PaintCanBase"
+        },
+        "PaintCanGrn": {
+            "colorName": "Green",
+            "textureIndex": 4,
+            "_parentName": "PaintCanBase"
+        },
+        "PaintCanOra": {
+            "colorName": "Orange",
+            "textureIndex": 5,
+            "_parentName": "PaintCanBase"
+        },
+        "PaintCanPur": {
+            "colorName": "Purple",
+            "textureIndex": 6,
+            "_parentName": "PaintCanBase"
+        },
+        "PaintCanRed": {
+            "colorName": "Red",
+            "textureIndex": 7,
+            "_parentName": "PaintCanBase"
+        },
+        "PaintCanTeal": {
+            "colorName": "Teal",
+            "textureIndex": 8,
+            "_parentName": "PaintCanBase"
+        },
+        "PaintCanYel": {
+            "colorName": "Yellow",
+            "textureIndex": 9,
+            "_parentName": "PaintCanBase"
+        },
+        "Poppy": {
+            "interactAction": 6,
+            "interactText": "USE",
+            "interactAttributes": [
+                [
+                    "Immunity",
+                    10
+                ],
+                [
+                    "Stamina",
+                    -100
+                ],
+                [
+                    "BloodP",
+                    -10
+                ]
+            ],
+            "_parentName": "Default"
+        },
+        "Goldenseal": {
+            "interactAction": 6,
+            "interactText": "USE",
+            "interactAttributes": [
+                [
+                    "Toxicity",
+                    -50
+                ]
+            ],
+            "_parentName": "Default"
+        },
+        "Pumpkin": {
+            "interactAction": 6,
+            "interactText": "USE",
+            "interactAttributes": [
+                [
+                    "Hunger",
+                    500
+                ],
+                [
+                    "Stamina",
+                    50
+                ]
+            ],
+            "_parentName": "Default"
+        },
+        "Towelette": {
+            "interactAction": 6,
+            "interactText": "USE",
+            "interactAttributes": [
+                [
+                    "Soiled",
+                    -25
+                ]
+            ],
+            "_parentName": "Default"
+        },
+        "HeatPack": {
+            "interactAction": 7,
+            "interactText": "USE",
+            "interactAttributes": [
+                [
+                    "Temp",
+                    1
+                ]
+            ],
+            "_parentName": "Default"
+        },
+        "ColdPack": {
+            "interactAction": 8,
+            "interactText": "USE",
+            "interactAttributes": [
+                [
+                    "Temp",
+                    -1
+                ]
+            ],
+            "_parentName": "Default"
+        },
+        "ItemHotwire": {
+            "interactAction": 2,
+            "interactText": "USE",
+            "_parentName": "Default"
+        },
+        "ItemKeyKit": {
+            "interactAction": 2,
+            "interactText": "USE",
+            "_parentName": "Default"
+        },
+        "ItemBarrelF": {
+            "interactAction": 4,
+            "interactText": "FILL",
+            "interactAttributes": [
+                210
+            ],
+            "interactReturnOnUse": "ItemBarrelE",
+            "_parentName": "Default"
+        },
+        "ItemBarrelE": {
+            "interactAction": 5,
+            "interactText": "SIPHON",
+            "interactAttributes": [
+                210
+            ],
+            "interactReturnOnUse": "ItemBarrelF",
+            "_parentName": "Default"
+        },
+        "ItemKey": {
+            "interactAction": 2,
+            "interactText": "USE",
+            "_parentName": "Default"
+        },
+        "ItemKeyBlue": {
+            "_parentName": "ItemKey"
+        },
+        "ItemKeyGreen": {
+            "_parentName": "ItemKey"
+        },
+        "ItemKeyRed": {
+            "_parentName": "ItemKey"
+        },
+        "ItemKeyYellow": {
+            "_parentName": "ItemKey"
+        },
+        "ItemDoc1": {
+            "interactAction": -1,
+            "interactText": "READ",
+            "_parentName": "Default"
+        },
+        "ItemDoc2": {
+            "_parentName": "ItemDoc1"
+        },
+        "ItemDoc3": {
+            "_parentName": "ItemDoc1"
+        },
+        "ItemDoc4": {
+            "_parentName": "ItemDoc1"
+        },
+        "ItemDoc5": {
+            "_parentName": "ItemDoc1"
+        },
+        "ItemDoc6": {
+            "_parentName": "ItemDoc1"
+        },
+        "ItemDoc7": {
+            "_parentName": "ItemDoc1"
+        },
+        "ItemDoc8": {
+            "_parentName": "ItemDoc1"
+        },
+        "ItemVehDoc1": {
+            "_parentName": "ItemDoc1"
+        },
+        "ItemVehDoc2": {
+            "_parentName": "ItemDoc1"
+        },
+        "ItemVehDoc3": {
+            "_parentName": "ItemDoc1"
+        },
+        "ItemVehDoc4": {
+            "_parentName": "ItemDoc1"
+        },
+        "ItemBulb": {
+            "_parentName": "Default"
+        },
+        "ItemBurlap": {
+            "_parentName": "Default"
+        },
+        "ItemBriefcaseE": {
+            "_parentName": "Default"
+        },
+        "ItemBriefcaseGold100oz": {
+            "_parentName": "Default"
+        },
+        "ItemAluminumBar": {
+            "_parentName": "Default"
+        },
+        "ItemCopperBar": {
+            "_parentName": "Default"
+        },
+        "ItemTinBar": {
+            "_parentName": "Default"
+        },
+        "ItemPlywoodPack": {
+            "_parentName": "Default"
+        },
+        "ItemComboLock": {
+            "_parentName": "Default"
+        },
+        "CircuitParts": {
+            "_parentName": "Default"
+        },
+        "Pelt_EPOCH": {
+            "_parentName": "Default"
+        },
+        "ItemPipe": {
+            "_parentName": "Default"
+        },
+        "ItemEmptyTin": {
+            "_parentName": "Default"
+        },
+        "ItemSodaEmpty": {
+            "_parentName": "Default"
+        },
+        "emptyjar_epoch": {
+            "_parentName": "Default"
+        },
+        "PartPlankPack": {
+            "_parentName": "Default"
+        },
+        "CinderBlocks": {
+            "_parentName": "Default"
+        },
+        "MortarBucket": {
+            "_parentName": "Default"
+        },
+        "ItemKiloHemp": {
+            "_parentName": "Default"
+        },
+        "ItemTopaz": {
+            "_parentName": "Default"
+        },
+        "ItemOnyx": {
+            "_parentName": "Default"
+        },
+        "ItemSapphire": {
+            "_parentName": "Default"
+        },
+        "ItemAmethyst": {
+            "_parentName": "Default"
+        },
+        "ItemEmerald": {
+            "_parentName": "Default"
+        },
+        "ItemCitrine": {
+            "_parentName": "Default"
+        },
+        "ItemRuby": {
+            "_parentName": "Default"
+        },
+        "ItemQuartz": {
+            "_parentName": "Default"
+        },
+        "ItemJade": {
+            "_parentName": "Default"
+        },
+        "ItemGarnet": {
+            "_parentName": "Default"
+        },
+        "ItemMixOil": {
+            "_parentName": "Default"
+        },
+        "ItemDocument": {
+            "_parentName": "Default"
+        },
+        "ItemDocumentMission": {
+            "_parentName": "Default"
+        },
+        "ItemSilverBar": {
+            "_parentName": "Default"
+        },
+        "ItemGoldBar": {
+            "_parentName": "Default"
+        },
+        "ItemGoldBar10oz": {
+            "_parentName": "Default"
+        },
+        "ItemRock": {
+            "_parentName": "Default"
+        },
+        "ItemStick": {
+            "_parentName": "Default"
+        },
+        "ItemRope": {
+            "_parentName": "Default"
+        },
+        "PartOre": {
+            "_parentName": "Default"
+        },
+        "PartOreSilver": {
+            "_parentName": "Default"
+        },
+        "PartOreGold": {
+            "_parentName": "Default"
+        },
+        "ItemPacked": {
+            "_parentName": "Default"
+        },
+        "ItemSolar": {
+            "_parentName": "Default"
+        },
+        "ItemCables": {
+            "_parentName": "Default"
+        },
+        "ItemBattery": {
+            "_parentName": "Default"
+        },
+        "ItemScraps": {
+            "_parentName": "Default"
+        },
+        "ItemCorrugated": {
+            "_parentName": "Default"
+        },
+        "ItemCorrugatedLg": {
+            "_parentName": "Default"
+        },
+        "5Rnd_rollins_mag": {
+            "_parentName": "Default"
+        },
+        "CSGAS": {
+            "_parentName": "Default"
+        },
+        "sledge_swing": {
+            "_parentName": "Default"
+        },
+        "stick_swing": {
+            "_parentName": "Default"
+        },
+        "hatchet_swing": {
+            "_parentName": "Default"
+        },
+        "WoodLog_EPOCH": {
+            "_parentName": "Default"
+        },
+        "ItemCoolerE": {
+            "_parentName": "Default"
+        },
+        "lighter_epoch": {
+            "_parentName": "Default"
+        },
+        "Item_AssaultPack_cbr": {
+            "interactReturnOnUse": "B_AssaultPack_cbr",
+            "_parentName": "Item_Packed_base"
+        },
+        "Item_AssaultPack_dgtl": {
+            "interactReturnOnUse": "B_AssaultPack_dgtl",
+            "_parentName": "Item_Packed_base"
+        },
+        "Item_AssaultPack_khk": {
+            "interactReturnOnUse": "B_AssaultPack_khk",
+            "_parentName": "Item_Packed_base"
+        },
+        "Item_AssaultPack_mcamo": {
+            "interactReturnOnUse": "B_AssaultPack_mcamo",
+            "_parentName": "Item_Packed_base"
+        },
+        "Item_AssaultPack_ocamo": {
+            "interactReturnOnUse": "B_AssaultPack_ocamo",
+            "_parentName": "Item_Packed_base"
+        },
+        "Item_AssaultPack_rgr": {
+            "interactReturnOnUse": "B_AssaultPack_rgr",
+            "_parentName": "Item_Packed_base"
+        },
+        "Item_AssaultPack_sgg": {
+            "interactReturnOnUse": "B_AssaultPack_sgg",
+            "_parentName": "Item_Packed_base"
+        },
+        "Item_AssaultPack_blk": {
+            "interactReturnOnUse": "B_AssaultPack_blk",
+            "_parentName": "Item_Packed_base"
+        },
+        "Item_Carryall_cbr": {
+            "interactReturnOnUse": "B_Carryall_cbr",
+            "_parentName": "Item_Packed_base"
+        },
+        "Item_Carryall_khk": {
+            "interactReturnOnUse": "B_Carryall_khk",
+            "_parentName": "Item_Packed_base"
+        },
+        "Item_Carryall_mcamo": {
+            "interactReturnOnUse": "B_Carryall_mcamo",
+            "_parentName": "Item_Packed_base"
+        },
+        "Item_Carryall_ocamo": {
+            "interactReturnOnUse": "B_Carryall_ocamo",
+            "_parentName": "Item_Packed_base"
+        },
+        "Item_Carryall_oli": {
+            "interactReturnOnUse": "B_Carryall_oli",
+            "_parentName": "Item_Packed_base"
+        },
+        "Item_Carryall_oucamo": {
+            "interactReturnOnUse": "B_Carryall_oucamo",
+            "_parentName": "Item_Packed_base"
+        },
+        "Item_FieldPack_blk": {
+            "interactReturnOnUse": "B_FieldPack_blk",
+            "_parentName": "Item_Packed_base"
+        },
+        "Item_FieldPack_cbr": {
+            "interactReturnOnUse": "B_FieldPack_cbr",
+            "_parentName": "Item_Packed_base"
+        },
+        "Item_FieldPack_khk": {
+            "interactReturnOnUse": "B_FieldPack_khk",
+            "_parentName": "Item_Packed_base"
+        },
+        "Item_FieldPack_ocamo": {
+            "interactReturnOnUse": "B_FieldPack_ocamo",
+            "_parentName": "Item_Packed_base"
+        },
+        "Item_FieldPack_oli": {
+            "interactReturnOnUse": "B_FieldPack_oli",
+            "_parentName": "Item_Packed_base"
+        },
+        "Item_FieldPack_oucamo": {
+            "interactReturnOnUse": "B_FieldPack_oucamo",
+            "_parentName": "Item_Packed_base"
+        },
+        "Item_Kitbag_cbr": {
+            "interactReturnOnUse": "B_Kitbag_cbr",
+            "_parentName": "Item_Packed_base"
+        },
+        "Item_Kitbag_mcamo": {
+            "interactReturnOnUse": "B_Kitbag_mcamo",
+            "_parentName": "Item_Packed_base"
+        },
+        "Item_Kitbag_rgr": {
+            "interactReturnOnUse": "B_Kitbag_rgr",
+            "_parentName": "Item_Packed_base"
+        },
+        "Item_Kitbag_sgg": {
+            "interactReturnOnUse": "B_Kitbag_sgg",
+            "_parentName": "Item_Packed_base"
+        },
+        "Item_TacticalPack_blk": {
+            "interactReturnOnUse": "B_TacticalPack_blk",
+            "_parentName": "Item_Packed_base"
+        },
+        "Item_TacticalPack_mcamo": {
+            "interactReturnOnUse": "B_TacticalPack_mcamo",
+            "_parentName": "Item_Packed_base"
+        },
+        "Item_TacticalPack_ocamo": {
+            "interactReturnOnUse": "B_TacticalPack_ocamo",
+            "_parentName": "Item_Packed_base"
+        },
+        "Item_TacticalPack_oli": {
+            "interactReturnOnUse": "B_TacticalPack_oli",
+            "_parentName": "Item_Packed_base"
+        },
+        "Item_TacticalPack_rgr": {
+            "interactReturnOnUse": "B_TacticalPack_rgr",
+            "_parentName": "Item_Packed_base"
+        },
+        "Item_smallbackpack_red": {
+            "interactReturnOnUse": "smallbackpack_red_epoch",
+            "_parentName": "Item_Packed_base"
+        },
+        "Item_smallbackpack_green": {
+            "interactReturnOnUse": "smallbackpack_green_epoch",
+            "_parentName": "Item_Packed_base"
+        },
+        "Item_smallbackpack_teal": {
+            "interactReturnOnUse": "smallbackpack_teal_epoch",
+            "_parentName": "Item_Packed_base"
+        },
+        "Item_smallbackpack_pink": {
+            "interactReturnOnUse": "smallbackpack_pink_epoch",
+            "_parentName": "Item_Packed_base"
+        }
+    }
+}
