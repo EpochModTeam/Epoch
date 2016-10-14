@@ -2971,6 +2971,9 @@
         "H_104_EPOCH": {
             "price": 3
         },
+        "H_105_EPOCH": {
+            "price": 3
+        },
         "wolf_mask_epoch": {
             "price": 30
         },

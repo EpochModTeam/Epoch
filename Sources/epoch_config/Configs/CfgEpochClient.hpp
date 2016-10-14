@@ -11,6 +11,8 @@
     Github:
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_config/Configs/CfgEpochClient.hpp
 */
+/*[[[cog from arma_config_tools import *; json_to_arma()]]]*/
+/*[[[end]]]*/
 class CfgEpochClient
 {
 	epochVersion = "0.4.0.0";

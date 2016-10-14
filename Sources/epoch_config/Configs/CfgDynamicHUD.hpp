@@ -33,31 +33,38 @@ Obtaining Controls:
 	[_ConfigName, _index] call epoch_getHUDCtrl;
 	["myHUDname", 3] call epoch_getHUDCtrl;
 */
-
+/*[[[cog from arma_config_tools import *; json_to_arma()]]]*/
+/*
+    @author = "Raimonds Virtoss - https://EpochMod.com";
+    @contributors[] = {};
+    @description = "Epoch dynamic player HUD config";
+    @licence = "Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike";
+    @github = "https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_config/Configs/CfgDynamicHUD.hpp";
+*/
 class rmx_dynamicHUD
 {
-	class topRight //ConfigName matters to be able to use function!
-	{
-		classname = "RscPicture";
-		defaultPos = 2;
-		defaultPopulate = 1;
-		arraySize = 10;
-		width = 4;
-		height = 4;
-		offSetX = 0;
-		offSetY = 1.3;
-		angle[] = {-5, 0.5, 0.5, 0.5}; // [start degrees, x, y, tilt]
-		scale[] = {1, 0.05}; // [start scale, size reduction]
-	};
-	class botcenter
-	{
-		classname = "RscPicture";
-		defaultPos = 7;
-		defaultPopulate = 4;
-		arraySize = 9;
-		width = 5;
-		height = 5;
-		//angle[] = {25, 0.5, 0.5};
-	};
-
+    class topRight
+    {
+        classname = "RscPicture";
+        defaultPos = 2;
+        defaultPopulate = 1;
+        arraySize = 10;
+        width = 4;
+        height = 4;
+        offSetX = 0;
+        offSetY = 1.3;
+        angle[] = {-5,0.5,0.5,0.5};
+        scale[] = {1,0.05};
+    };
+    class botcenter
+    {
+        classname = "RscPicture";
+        defaultPos = 7;
+        defaultPopulate = 4;
+        arraySize = 9;
+        width = 5;
+        height = 5;
+    };
 };
+
+/*[[[end]]]*/

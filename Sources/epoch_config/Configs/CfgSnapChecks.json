@@ -112,37 +112,37 @@
             ]
         },
         "WoodWall1_EPOCH": {
-            "_parentName": "WoodLargeWall_EPOCH"
+            "_inherit": "WoodLargeWall_EPOCH"
         },
         "WoodWall2_EPOCH": {
-            "_parentName": "WoodLargeWall_EPOCH"
+            "_inherit": "WoodLargeWall_EPOCH"
         },
         "WoodWall3_EPOCH": {
-            "_parentName": "WoodLargeWall_EPOCH"
+            "_inherit": "WoodLargeWall_EPOCH"
         },
         "WoodWall4_EPOCH": {
-            "_parentName": "WoodLargeWall_EPOCH"
+            "_inherit": "WoodLargeWall_EPOCH"
         },
         "WoodLargeWallCor_EPOCH": {
-            "_parentName": "WoodLargeWall_EPOCH"
+            "_inherit": "WoodLargeWall_EPOCH"
         },
         "WoodLargeWallDoorway_EPOCH": {
-            "_parentName": "WoodLargeWall_EPOCH"
+            "_inherit": "WoodLargeWall_EPOCH"
         },
         "WoodLargeWallDoor_EPOCH": {
-            "_parentName": "WoodLargeWall_EPOCH"
+            "_inherit": "WoodLargeWall_EPOCH"
         },
         "WoodLargeWallDoorL_EPOCH": {
-            "_parentName": "WoodLargeWall_EPOCH"
+            "_inherit": "WoodLargeWall_EPOCH"
         },
         "CinderWallGarage_EPOCH": {
-            "_parentName": "WoodLargeWall_EPOCH"
+            "_inherit": "WoodLargeWall_EPOCH"
         },
         "CinderWall_EPOCH": {
-            "_parentName": "WoodLargeWall_EPOCH"
+            "_inherit": "WoodLargeWall_EPOCH"
         },
         "CinderWallHalf_EPOCH": {
-            "_parentName": "WoodLargeWall_EPOCH"
+            "_inherit": "WoodLargeWall_EPOCH"
         },
         "WoodFloor_Epoch": {
             "nails": [
@@ -245,7 +245,7 @@
             ]
         },
         "MetalFloor_EPOCH": {
-            "_parentName": "WoodFloor_Epoch"
+            "_inherit": "WoodFloor_Epoch"
         },
         "WoodStairs_EPOCH": {
             "nails": [
@@ -276,13 +276,13 @@
             ]
         },
         "WoodStairs2_EPOCH": {
-            "_parentName": "WoodStairs_EPOCH"
+            "_inherit": "WoodStairs_EPOCH"
         },
         "WoodTower_EPOCH": {
-            "_parentName": "WoodStairs_EPOCH"
+            "_inherit": "WoodStairs_EPOCH"
         },
         "WoodRamp_EPOCH": {
-            "_parentName": "WoodStairs_EPOCH"
+            "_inherit": "WoodStairs_EPOCH"
         }
     }
 }

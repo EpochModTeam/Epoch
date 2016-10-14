@@ -286,7 +286,7 @@ class FSM
                          "_epoch_assets3 = getText(configFile >> ""Epoch"" >> ""Version"" >> ""A3_epoch_assets_3"");" \n
                          "_epoch_config = getText(configFile >> ""Epoch"" >> ""Version"" >> ""A3_epoch_config"");" \n
                          "_epoch_language = getText(configFile >> ""Epoch"" >> ""Version"" >> ""A3_epoch_language"");" \n
-                         "_epoch_underground = getText(configFile >> ""Epoch"" >> ""Version"" >> ""Underground_Epoch"");" \n
+                         "_epoch_community = getText(configFile >> ""Epoch"" >> ""Version"" >> ""a3_epoch_community"");" \n
                          "_epoch_vehicles = getText(configFile >> ""Epoch"" >> ""Version"" >> ""A3_epoch_vehicles"");" \n
                          "_epoch_weapons = getText(configFile >> ""Epoch"" >> ""Version"" >> ""a3_epoch_weapons"");" \n
                          "" \n
@@ -298,7 +298,7 @@ class FSM
                          "_my_epoch_assets3 = getText(configFile >> ""CfgPatches"" >> ""A3_epoch_assets_3"" >> ""epochVersion"");" \n
                          "_my_epoch_config = getText(configFile >> ""CfgPatches"" >> ""A3_epoch_config"" >> ""epochVersion"");" \n
                          "_my_epoch_language = getText(configFile >> ""CfgPatches"" >> ""A3_epoch_language"" >> ""epochVersion"");" \n
-                         "_my_epoch_underground = getText(configFile >> ""CfgPatches"" >> ""Underground_Epoch"" >> ""epochVersion"");" \n
+                         "_my_epoch_community = getText(configFile >> ""CfgPatches"" >> ""a3_epoch_community"" >> ""epochVersion"");" \n
                          "_my_epoch_vehicles = getText(configFile >> ""CfgPatches"" >> ""A3_epoch_vehicles"" >> ""epochVersion"");" \n
                          "_my_epoch_weapons = getText(configFile >> ""CfgPatches"" >> ""a3_epoch_weapons"" >> ""epochVersion"");" \n
                          "" \n
@@ -320,7 +320,7 @@ class FSM
                                          "_my_epoch_assets3 != _epoch_assets3 ||" \n
                                          "_my_epoch_config != _epoch_config ||" \n
                                          "_my_epoch_language != _epoch_language ||" \n
-                                         "_my_epoch_underground != _epoch_underground ||" \n
+                                         "_my_epoch_community != _epoch_community ||" \n
                                          "_my_epoch_vehicles != _epoch_vehicles ||" \n
                                          "_my_epoch_weapons != _epoch_weapons"/*%FSM</CONDITION""">*/;
                                         action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;

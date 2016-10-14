@@ -1,4 +1,4 @@
-/*[[[cog import arma_config_tools; arma_config_tools.json_to_arma()]]]*/
+/*[[[cog from arma_config_tools import *; json_to_arma()]]]*/
 /*
     @author = "Aaron Clark - https://EpochMod.com";
     @contributors[] = {};
@@ -8,6 +8,46 @@
 */
 class CfgSounds
 {
+    class sapper_groan0
+	{
+		sound[] = {"\x\addons\a3_epoch_assets\sounds\sapper\sapper_groan2",1.0,1.0};
+		titles[] = {};
+	};
+	class sapper_groan1
+	{
+		sound[] = { "\x\addons\a3_epoch_assets\sounds\sapper\sapper_groan3", 1.0, 1.0 };
+		titles[] = {};
+	};
+	class sapper_groan2
+	{
+		sound[] = { "\x\addons\a3_epoch_assets\sounds\sapper\sapper_groan4", 1.0, 1.0 };
+		titles[] = {};
+	};
+	class sapper_explode
+	{
+		sound[] = { "\x\addons\a3_epoch_assets\sounds\sapper\sapper_preExplode", 1.0, 1.0 };
+		titles[] = {};
+	};
+	class sapper_alert0
+	{
+		sound[] = { "\x\addons\a3_epoch_assets\sounds\sapper\sapper_alert1", 1.0, 1.0 };
+		titles[] = {};
+	};
+	class drone_alert0
+	{
+		sound[] = { "\x\addons\a3_epoch_assets\sounds\drone\drone_alert2", 1.0, 1.0 };
+		titles[] = {};
+	};
+	class snake_bite0
+	{
+		sound[] = { "\x\addons\a3_epoch_assets\sounds\snake\snake_bite", 1.0, 1.0 };
+		titles[] = {};
+	};
+	class jack_pump
+	{
+		sound[] = { "\x\addons\a3_epoch_assets\sounds\tools\jack", 1.0, 1.0 };
+		titles[] = {};
+	};
     class dog_bark
     {
         sound[] = {"@A3\Sounds_F\ambient\animals\dog1",0.6,1.0};

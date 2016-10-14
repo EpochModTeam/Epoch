@@ -110,7 +110,8 @@ class CfgLootTable_CUP
 				// Marksman DLC
 				{ { "SniperRifleMarkDLC", "CfgLootTable" }, 10 },
 
-				{ { "srifle_LRR_F", "weapon" }, 11 },
+				{ { "srifle_LRR_F", "weapon" }, 6 },
+                { { "srifle_LRR_camo_F", "weapon" }, 5 },
 				{ { "srifle_GM6_F", "weapon" }, 14 },
 				{ { "srifle_DMR_01_F", "weapon" }, 12 },
 				{ { "SniperRifleM14", "CfgLootTable" }, 18 },
@@ -1867,10 +1868,11 @@ class CfgLootTable_CUP
 				{ { "H_90_EPOCH", "item" }, 1 },
 				{ { "H_91_EPOCH", "item" }, 1 },
 				{ { "H_92_EPOCH", "item" }, 1 },
-				{ { "H_104_EPOCH", "item" }, 1 }
-				//{ { "wolf_mask_epoch", "item" }, 1 },
-				//{ { "pkin_mask_epoch", "item" }, 1 },
-				//{ { "clown_mask_epoch", "item" }, 1 }
+				{ { "H_104_EPOCH", "item" }, 1 },
+                { { "H_105_EPOCH", "item" }, 1 },
+				{ { "wolf_mask_epoch", "item" }, 1 },
+				{ { "pkin_mask_epoch", "item" }, 1 },
+				{ { "clown_mask_epoch", "item" }, 1 }
 		};
 	};
 };

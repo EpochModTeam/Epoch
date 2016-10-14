@@ -26,38 +26,38 @@
             "interactAttributes": []
         },
         "Land_MPS_EPOCH": {
-            "_parentName": "Default"
+            "_inherit": "Default"
         },
         "container_epoch": {
-            "_parentName": "Default"
+            "_inherit": "Default"
         },
         "PlotPole_EPOCH": {
             "interactMode": 1,
-            "_parentName": "Default"
+            "_inherit": "Default"
         },
         "Tipi_EPOCH": {
             "interactMode": 4,
-            "_parentName": "Default"
+            "_inherit": "Default"
         },
         "Tipi_SIM_EPOCH": {
             "interactMode": 1,
-            "_parentName": "Default"
+            "_inherit": "Default"
         },
         "StorageShelf_EPOCH": {
             "interactMode": 4,
-            "_parentName": "Default"
+            "_inherit": "Default"
         },
         "WorkBench_EPOCH": {
             "interactMode": 4,
-            "_parentName": "Default"
+            "_inherit": "Default"
         },
         "Foundation_EPOCH": {
             "interactMode": 1,
-            "_parentName": "Default"
+            "_inherit": "Default"
         },
         "WoodFoundation_EPOCH": {
             "interactMode": 1,
-            "_parentName": "Default"
+            "_inherit": "Default"
         },
         "Sheep_random_EPOCH": {
             "interactMode": 3,
@@ -68,7 +68,7 @@
                     1
                 ]
             ],
-            "_parentName": "Default"
+            "_inherit": "Default"
         },
         "Goat_random_EPOCH": {
             "interactMode": 3,
@@ -79,7 +79,7 @@
                     1
                 ]
             ],
-            "_parentName": "Default"
+            "_inherit": "Default"
         },
         "Cock_random_EPOCH": {
             "interactMode": 3,
@@ -90,7 +90,7 @@
                     1
                 ]
             ],
-            "_parentName": "Default"
+            "_inherit": "Default"
         },
         "Hen_random_EPOCH": {
             "interactMode": 3,
@@ -101,7 +101,7 @@
                     1
                 ]
             ],
-            "_parentName": "Default"
+            "_inherit": "Default"
         },
         "Rabbit_EPOCH": {
             "interactMode": 3,
@@ -112,7 +112,7 @@
                     1
                 ]
             ],
-            "_parentName": "Default"
+            "_inherit": "Default"
         },
         "Fin_random_EPOCH": {
             "interactMode": 3,
@@ -127,7 +127,7 @@
                     1
                 ]
             ],
-            "_parentName": "Default"
+            "_inherit": "Default"
         },
         "Alsatian_Random_EPOCH": {
             "interactMode": 3,
@@ -142,7 +142,7 @@
                     1
                 ]
             ],
-            "_parentName": "Default"
+            "_inherit": "Default"
         },
         "Epoch_Sapper_F": {
             "interactMode": 3,
@@ -159,7 +159,7 @@
                     1
                 ]
             ],
-            "_parentName": "Default"
+            "_inherit": "Default"
         },
         "Epoch_SapperB_F": {
             "interactMode": 3,
@@ -176,7 +176,7 @@
                     1
                 ]
             ],
-            "_parentName": "Default"
+            "_inherit": "Default"
         },
         "I_UAV_01_F": {
             "interactMode": 3,
@@ -188,19 +188,19 @@
                     1
                 ]
             ],
-            "_parentName": "Default"
+            "_inherit": "Default"
         },
         "Epoch_Female_F": {
             "interactMode": 2,
-            "_parentName": "Default"
+            "_inherit": "Default"
         },
         "Epoch_Male_F": {
             "interactMode": 2,
-            "_parentName": "Default"
+            "_inherit": "Default"
         },
         "C_man_1": {
             "interactMode": 2,
-            "_parentName": "Default"
+            "_inherit": "Default"
         },
         "SapperHead_SIM_EPOCH": {
             "interactMode": 0,
@@ -210,7 +210,7 @@
                     1
                 ]
             ],
-            "_parentName": "Default"
+            "_inherit": "Default"
         },
         "SapperCorpse_SIM_EPOCH": {
             "interactMode": 0,
@@ -220,7 +220,7 @@
                     1
                 ]
             ],
-            "_parentName": "Default"
+            "_inherit": "Default"
         },
         "Snake_random_EPOCH": {
             "interactMode": 3,
@@ -247,7 +247,7 @@
                     1
                 ]
             ],
-            "_parentName": "Default"
+            "_inherit": "Default"
         },
         "Snake2_random_EPOCH": {
             "interactMode": 3,
@@ -274,7 +274,7 @@
                     1
                 ]
             ],
-            "_parentName": "Default"
+            "_inherit": "Default"
         },
         "GreatWhite_F": {
             "interactMode": 3,
@@ -289,7 +289,7 @@
             "ppEffect": [],
             "aliveState": 1,
             "interactAttributes": [],
-            "_parentName": "Default"
+            "_inherit": "Default"
         },
         "SmokeShellCustom": {
             "distance": 6,
@@ -301,7 +301,7 @@
             "bloodpAmount": 3,
             "canSee": "true",
             "ppEffect": [],
-            "_parentName": "Default"
+            "_inherit": "Default"
         },
         "Epoch_Cloak_F": {
             "distance": 30,
@@ -443,7 +443,7 @@
                     1
                 ]
             ],
-            "_parentName": "Default"
+            "_inherit": "Default"
         },
         "EPOCH_RyanZombie_1": {
             "distance": 3,
@@ -495,109 +495,109 @@
                     1
                 ]
             ],
-            "_parentName": "Default"
+            "_inherit": "Default"
         },
         "EPOCH_RyanZombie_2": {
-            "_parentName": "EPOCH_RyanZombie_1"
+            "_inherit": "EPOCH_RyanZombie_1"
         },
         "EPOCH_RyanZombie_3": {
-            "_parentName": "EPOCH_RyanZombie_1"
+            "_inherit": "EPOCH_RyanZombie_1"
         },
         "EPOCH_RyanZombie_4": {
-            "_parentName": "EPOCH_RyanZombie_1"
+            "_inherit": "EPOCH_RyanZombie_1"
         },
         "EPOCH_RyanZombie_5": {
-            "_parentName": "EPOCH_RyanZombie_1"
+            "_inherit": "EPOCH_RyanZombie_1"
         },
         "EPOCH_RyanZombie_1_C": {
-            "_parentName": "EPOCH_RyanZombie_1"
+            "_inherit": "EPOCH_RyanZombie_1"
         },
         "EPOCH_RyanZombie_2_C": {
-            "_parentName": "EPOCH_RyanZombie_1"
+            "_inherit": "EPOCH_RyanZombie_1"
         },
         "EPOCH_RyanZombie_3_C": {
-            "_parentName": "EPOCH_RyanZombie_1"
+            "_inherit": "EPOCH_RyanZombie_1"
         },
         "EPOCH_RyanZombie_4_C": {
-            "_parentName": "EPOCH_RyanZombie_1"
+            "_inherit": "EPOCH_RyanZombie_1"
         },
         "EPOCH_RyanZombie_5_C": {
-            "_parentName": "EPOCH_RyanZombie_1"
+            "_inherit": "EPOCH_RyanZombie_1"
         },
         "EPOCH_RyanZombie_1_Sp": {
-            "_parentName": "EPOCH_RyanZombie_1"
+            "_inherit": "EPOCH_RyanZombie_1"
         },
         "EPOCH_RyanZombie_2_Sp": {
-            "_parentName": "EPOCH_RyanZombie_1"
+            "_inherit": "EPOCH_RyanZombie_1"
         },
         "EPOCH_RyanZombie_3_Sp": {
-            "_parentName": "EPOCH_RyanZombie_1"
+            "_inherit": "EPOCH_RyanZombie_1"
         },
         "EPOCH_RyanZombie_4_Sp": {
-            "_parentName": "EPOCH_RyanZombie_1"
+            "_inherit": "EPOCH_RyanZombie_1"
         },
         "EPOCH_RyanZombie_5_Sp": {
-            "_parentName": "EPOCH_RyanZombie_1"
+            "_inherit": "EPOCH_RyanZombie_1"
         },
         "EPOCH_RyanZombie_1_B": {
-            "_parentName": "EPOCH_RyanZombie_1"
+            "_inherit": "EPOCH_RyanZombie_1"
         },
         "EPOCH_RyanZombie_2_B": {
-            "_parentName": "EPOCH_RyanZombie_1"
+            "_inherit": "EPOCH_RyanZombie_1"
         },
         "EPOCH_RyanZombie_3_B": {
-            "_parentName": "EPOCH_RyanZombie_1"
+            "_inherit": "EPOCH_RyanZombie_1"
         },
         "EPOCH_RyanZombie_4_B": {
-            "_parentName": "EPOCH_RyanZombie_1"
+            "_inherit": "EPOCH_RyanZombie_1"
         },
         "EPOCH_RyanZombie_5_B": {
-            "_parentName": "EPOCH_RyanZombie_1"
+            "_inherit": "EPOCH_RyanZombie_1"
         },
         "EPOCH_RyanZombie_1_W": {
-            "_parentName": "EPOCH_RyanZombie_1"
+            "_inherit": "EPOCH_RyanZombie_1"
         },
         "EPOCH_RyanZombie_2_W": {
-            "_parentName": "EPOCH_RyanZombie_1"
+            "_inherit": "EPOCH_RyanZombie_1"
         },
         "EPOCH_RyanZombie_3_W": {
-            "_parentName": "EPOCH_RyanZombie_1"
+            "_inherit": "EPOCH_RyanZombie_1"
         },
         "EPOCH_RyanZombie_4_W": {
-            "_parentName": "EPOCH_RyanZombie_1"
+            "_inherit": "EPOCH_RyanZombie_1"
         },
         "EPOCH_RyanZombie_5_W": {
-            "_parentName": "EPOCH_RyanZombie_1"
+            "_inherit": "EPOCH_RyanZombie_1"
         },
         "EPOCH_RyanZombie_1_M": {
-            "_parentName": "EPOCH_RyanZombie_1"
+            "_inherit": "EPOCH_RyanZombie_1"
         },
         "EPOCH_RyanZombie_2_M": {
-            "_parentName": "EPOCH_RyanZombie_1"
+            "_inherit": "EPOCH_RyanZombie_1"
         },
         "EPOCH_RyanZombie_3_M": {
-            "_parentName": "EPOCH_RyanZombie_1"
+            "_inherit": "EPOCH_RyanZombie_1"
         },
         "EPOCH_RyanZombie_4_M": {
-            "_parentName": "EPOCH_RyanZombie_1"
+            "_inherit": "EPOCH_RyanZombie_1"
         },
         "EPOCH_RyanZombie_5_M": {
-            "_parentName": "EPOCH_RyanZombie_1"
+            "_inherit": "EPOCH_RyanZombie_1"
         },
         "EPOCH_RyanZombie_1_S": {
-            "_parentName": "EPOCH_RyanZombie_1"
+            "_inherit": "EPOCH_RyanZombie_1"
         },
         "EPOCH_RyanZombie_2_S": {
-            "_parentName": "EPOCH_RyanZombie_1"
+            "_inherit": "EPOCH_RyanZombie_1"
         },
         "EPOCH_RyanZombie_3_S": {
-            "_parentName": "EPOCH_RyanZombie_1"
+            "_inherit": "EPOCH_RyanZombie_1"
         },
         "EPOCH_RyanZombie_4_S": {
-            "_parentName": "EPOCH_RyanZombie_1"
+            "_inherit": "EPOCH_RyanZombie_1"
         },
         "EPOCH_RyanZombie_5_S": {
-            "_parentName": "EPOCH_RyanZombie_1"
+            "_inherit": "EPOCH_RyanZombie_1"
         }
     }
 }

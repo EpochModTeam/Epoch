@@ -1,4 +1,4 @@
-/*[[[cog import arma_config_tools; arma_config_tools.json_to_arma()]]]*/
+/*[[[cog from arma_config_tools import *; json_to_arma()]]]*/
 /*
     @author = "Aaron Clark - https://EpochMod.com";
     @contributors[] = {};
@@ -3919,6 +3919,10 @@ class CfgPricing
         price = 5;
     };
     class H_104_EPOCH
+    {
+        price = 3;
+    };
+    class H_105_EPOCH
     {
         price = 3;
     };

@@ -19,19 +19,19 @@
                     600
                 ]
             ],
-            "_parentName": "Default"
+            "_inherit": "Default"
         },
         "Food_TinCan_base": {
             "interactReturnOnUse": "ItemEmptyTin",
-            "_parentName": "Food_base"
+            "_inherit": "Food_base"
         },
         "Food_Jar_base": {
             "interactReturnOnUse": "emptyjar_epoch",
-            "_parentName": "Food_base"
+            "_inherit": "Food_base"
         },
         "Food_Cooler_base": {
             "interactReturnOnUse": "ItemCoolerE",
-            "_parentName": "Food_base"
+            "_inherit": "Food_base"
         },
         "Drink_base": {
             "interactAction": 2,
@@ -42,25 +42,25 @@
                     500
                 ]
             ],
-            "_parentName": "Default"
+            "_inherit": "Default"
         },
         "Drink_Jar_base": {
             "interactReturnOnUse": "emptyjar_epoch",
-            "_parentName": "Drink_base"
+            "_inherit": "Drink_base"
         },
         "Soda_base": {
             "interactReturnOnUse": "ItemSodaEmpty",
-            "_parentName": "Drink_base"
+            "_inherit": "Drink_base"
         },
         "Item_Build_base": {
             "interactAction": 3,
             "interactText": "BUILD",
-            "_parentName": "Default"
+            "_inherit": "Default"
         },
         "Item_Packed_base": {
             "interactAction": 14,
             "interactText": "UNPACK",
-            "_parentName": "Default"
+            "_inherit": "Default"
         },
         "honey_epoch": {
             "interactText": "CONSUME",
@@ -78,7 +78,7 @@
                     10
                 ]
             ],
-            "_parentName": "Food_Jar_base"
+            "_inherit": "Food_Jar_base"
         },
         "sardines_epoch": {
             "interactAttributes": [
@@ -91,7 +91,7 @@
                     7
                 ]
             ],
-            "_parentName": "Food_TinCan_base"
+            "_inherit": "Food_TinCan_base"
         },
         "meatballs_epoch": {
             "interactAttributes": [
@@ -100,7 +100,7 @@
                     1200
                 ]
             ],
-            "_parentName": "Food_TinCan_base"
+            "_inherit": "Food_TinCan_base"
         },
         "scam_epoch": {
             "interactAttributes": [
@@ -109,7 +109,7 @@
                     1000
                 ]
             ],
-            "_parentName": "Food_TinCan_base"
+            "_inherit": "Food_TinCan_base"
         },
         "sweetcorn_epoch": {
             "interactAttributes": [
@@ -118,7 +118,7 @@
                     600
                 ]
             ],
-            "_parentName": "Food_TinCan_base"
+            "_inherit": "Food_TinCan_base"
         },
         "FoodBioMeat": {
             "interactAttributes": [
@@ -131,7 +131,7 @@
                     7
                 ]
             ],
-            "_parentName": "Food_TinCan_base"
+            "_inherit": "Food_TinCan_base"
         },
         "TacticalBacon": {
             "interactAttributes": [
@@ -140,7 +140,7 @@
                     500
                 ]
             ],
-            "_parentName": "Food_TinCan_base"
+            "_inherit": "Food_TinCan_base"
         },
         "ItemTrout": {
             "interactAttributes": [
@@ -153,7 +153,7 @@
                     5
                 ]
             ],
-            "_parentName": "Food_base"
+            "_inherit": "Food_base"
         },
         "ItemSeaBass": {
             "interactAttributes": [
@@ -166,7 +166,7 @@
                     10
                 ]
             ],
-            "_parentName": "Food_base"
+            "_inherit": "Food_base"
         },
         "ItemTuna": {
             "interactAttributes": [
@@ -175,7 +175,7 @@
                     2500
                 ]
             ],
-            "_parentName": "Food_base"
+            "_inherit": "Food_base"
         },
         "ItemTroutCooked": {
             "interactAttributes": [
@@ -184,7 +184,7 @@
                     600
                 ]
             ],
-            "_parentName": "Food_base"
+            "_inherit": "Food_base"
         },
         "ItemSeaBassCooked": {
             "interactAttributes": [
@@ -193,7 +193,7 @@
                     1200
                 ]
             ],
-            "_parentName": "Food_base"
+            "_inherit": "Food_base"
         },
         "ItemTunaCooked": {
             "interactAttributes": [
@@ -202,7 +202,7 @@
                     5000
                 ]
             ],
-            "_parentName": "Food_base"
+            "_inherit": "Food_base"
         },
         "FoodMeeps": {
             "interactAttributes": [
@@ -211,7 +211,7 @@
                     500
                 ]
             ],
-            "_parentName": "Food_base"
+            "_inherit": "Food_base"
         },
         "FoodSnooter": {
             "interactAttributes": [
@@ -224,7 +224,7 @@
                     50
                 ]
             ],
-            "_parentName": "Food_base"
+            "_inherit": "Food_base"
         },
         "ItemCooler0": {
             "interactAttributes": [
@@ -233,7 +233,7 @@
                     3000
                 ]
             ],
-            "_parentName": "Food_Cooler_base"
+            "_inherit": "Food_Cooler_base"
         },
         "ItemCooler1": {
             "interactAttributes": [
@@ -242,7 +242,7 @@
                     3500
                 ]
             ],
-            "_parentName": "Food_Cooler_base"
+            "_inherit": "Food_Cooler_base"
         },
         "ItemCooler2": {
             "interactAttributes": [
@@ -251,7 +251,7 @@
                     4000
                 ]
             ],
-            "_parentName": "Food_Cooler_base"
+            "_inherit": "Food_Cooler_base"
         },
         "ItemCooler3": {
             "interactAttributes": [
@@ -260,7 +260,7 @@
                     5000
                 ]
             ],
-            "_parentName": "Food_Cooler_base"
+            "_inherit": "Food_Cooler_base"
         },
         "ItemCooler4": {
             "interactAttributes": [
@@ -269,7 +269,7 @@
                     5000
                 ]
             ],
-            "_parentName": "Food_Cooler_base"
+            "_inherit": "Food_Cooler_base"
         },
         "WhiskeyNoodle": {
             "interactAttributes": [
@@ -290,7 +290,7 @@
                     10
                 ]
             ],
-            "_parentName": "Drink_base"
+            "_inherit": "Drink_base"
         },
         "water_epoch": {
             "interactAttributes": [
@@ -308,7 +308,7 @@
                     50
                 ]
             ],
-            "_parentName": "Drink_Jar_base"
+            "_inherit": "Drink_Jar_base"
         },
         "clean_water_epoch": {
             "interactAttributes": [
@@ -321,7 +321,7 @@
                     50
                 ]
             ],
-            "_parentName": "Drink_Jar_base"
+            "_inherit": "Drink_Jar_base"
         },
         "ItemSodaRbull": {
             "interactAttributes": [
@@ -334,7 +334,7 @@
                     100
                 ]
             ],
-            "_parentName": "Soda_base"
+            "_inherit": "Soda_base"
         },
         "ItemSodaOrangeSherbet": {
             "interactAttributes": [
@@ -347,7 +347,7 @@
                     75
                 ]
             ],
-            "_parentName": "Soda_base"
+            "_inherit": "Soda_base"
         },
         "ItemSodaPurple": {
             "interactAttributes": [
@@ -360,7 +360,7 @@
                     75
                 ]
             ],
-            "_parentName": "Soda_base"
+            "_inherit": "Soda_base"
         },
         "ItemSodaMocha": {
             "interactAttributes": [
@@ -373,7 +373,7 @@
                     150
                 ]
             ],
-            "_parentName": "Soda_base"
+            "_inherit": "Soda_base"
         },
         "ItemSodaBurst": {
             "interactAttributes": [
@@ -386,7 +386,7 @@
                     75
                 ]
             ],
-            "_parentName": "Soda_base"
+            "_inherit": "Soda_base"
         },
         "FoodWalkNSons": {
             "interactAttributes": [
@@ -399,7 +399,7 @@
                     150
                 ]
             ],
-            "_parentName": "Soda_base"
+            "_inherit": "Soda_base"
         },
         "ItemSodaAlpineDude": {
             "interactAttributes": [
@@ -412,7 +412,7 @@
                     800
                 ]
             ],
-            "_parentName": "Soda_base"
+            "_inherit": "Soda_base"
         },
         "jerrycan_epoch": {
             "interactAction": 4,
@@ -421,7 +421,7 @@
             "interactAttributes": [
                 10
             ],
-            "_parentName": "Default"
+            "_inherit": "Default"
         },
         "jerrycanE_epoch": {
             "interactAction": 5,
@@ -430,24 +430,24 @@
             "interactAttributes": [
                 10
             ],
-            "_parentName": "Default"
+            "_inherit": "Default"
         },
         "FAK": {
             "interactAction": 13,
             "interactText": "USE",
-            "_parentName": "Default"
+            "_inherit": "Default"
         },
         "ItemLockbox": {
             "buildClass": "LockBox_SIM_EPOCH",
-            "_parentName": "Item_Build_base"
+            "_inherit": "Item_Build_base"
         },
         "ItemSafe": {
             "buildClass": "Safe_SIM_EPOCH",
-            "_parentName": "Item_Build_base"
+            "_inherit": "Item_Build_base"
         },
         "JackKit": {
             "buildClass": "Jack_SIM_EPOCH",
-            "_parentName": "Item_Build_base"
+            "_inherit": "Item_Build_base"
         },
         "EnergyPack": {
             "interactAction": 9,
@@ -458,7 +458,7 @@
                     100
                 ]
             ],
-            "_parentName": "Default"
+            "_inherit": "Default"
         },
         "EnergyPackLg": {
             "interactAction": 9,
@@ -469,17 +469,17 @@
                     1000
                 ]
             ],
-            "_parentName": "Default"
+            "_inherit": "Default"
         },
         "VehicleRepair": {
             "interactAction": 10,
             "interactText": "USE",
-            "_parentName": "Default"
+            "_inherit": "Default"
         },
         "VehicleRepairLg": {
             "interactAction": 11,
             "interactText": "USE",
-            "_parentName": "Default"
+            "_inherit": "Default"
         },
         "Venom_EPOCH": {
             "interactAction": 1,
@@ -491,7 +491,7 @@
                     1
                 ]
             ],
-            "_parentName": "Default"
+            "_inherit": "Default"
         },
         "SnakeCarcass_EPOCH": {
             "interactAction": 1,
@@ -511,7 +511,7 @@
                     1
                 ]
             ],
-            "_parentName": "Default"
+            "_inherit": "Default"
         },
         "SnakeMeat_EPOCH": {
             "interactAction": 1,
@@ -522,7 +522,7 @@
                     1200
                 ]
             ],
-            "_parentName": "Default"
+            "_inherit": "Default"
         },
         "RabbitCarcass_EPOCH": {
             "interactAction": 1,
@@ -542,7 +542,7 @@
                     1
                 ]
             ],
-            "_parentName": "Default"
+            "_inherit": "Default"
         },
         "CookedRabbit_EPOCH": {
             "interactAction": 1,
@@ -553,7 +553,7 @@
                     1200
                 ]
             ],
-            "_parentName": "Default"
+            "_inherit": "Default"
         },
         "ChickenCarcass_EPOCH": {
             "interactAction": 1,
@@ -573,7 +573,7 @@
                     1
                 ]
             ],
-            "_parentName": "Default"
+            "_inherit": "Default"
         },
         "CookedChicken_EPOCH": {
             "interactAction": 1,
@@ -584,7 +584,7 @@
                     2000
                 ]
             ],
-            "_parentName": "Default"
+            "_inherit": "Default"
         },
         "GoatCarcass_EPOCH": {
             "interactAction": 1,
@@ -604,7 +604,7 @@
                     1
                 ]
             ],
-            "_parentName": "Default"
+            "_inherit": "Default"
         },
         "DogCarcass_EPOCH": {
             "interactAction": 1,
@@ -628,7 +628,7 @@
                     -10
                 ]
             ],
-            "_parentName": "Default"
+            "_inherit": "Default"
         },
         "CookedDog_EPOCH": {
             "interactAction": 1,
@@ -643,7 +643,7 @@
                     -10
                 ]
             ],
-            "_parentName": "Default"
+            "_inherit": "Default"
         },
         "CookedGoat_EPOCH": {
             "interactAction": 1,
@@ -654,7 +654,7 @@
                     3000
                 ]
             ],
-            "_parentName": "Default"
+            "_inherit": "Default"
         },
         "SheepCarcass_EPOCH": {
             "interactAction": 1,
@@ -674,7 +674,7 @@
                     1
                 ]
             ],
-            "_parentName": "Default"
+            "_inherit": "Default"
         },
         "CookedSheep_EPOCH": {
             "interactAction": 1,
@@ -685,141 +685,141 @@
                     3000
                 ]
             ],
-            "_parentName": "Default"
+            "_inherit": "Default"
         },
         "KitSpikeTrap": {
             "buildClass": "Spike_TRAP_SIM_EPOCH",
-            "_parentName": "Item_Build_base"
+            "_inherit": "Item_Build_base"
         },
         "KitMetalTrap": {
             "buildClass": "Metal_TRAP_SIM_EPOCH",
-            "_parentName": "Item_Build_base"
+            "_inherit": "Item_Build_base"
         },
         "KitStudWall": {
             "buildClass": "WoodLargeWall_EPOCH",
-            "_parentName": "Item_Build_base"
+            "_inherit": "Item_Build_base"
         },
         "KitWoodFloor": {
             "buildClass": "WoodFloor_EPOCH",
-            "_parentName": "Item_Build_base"
+            "_inherit": "Item_Build_base"
         },
         "KitWoodStairs": {
             "buildClass": "WoodStairs_EPOCH",
-            "_parentName": "Item_Build_base"
+            "_inherit": "Item_Build_base"
         },
         "KitWoodTower": {
             "buildClass": "WoodTower_EPOCH",
-            "_parentName": "Item_Build_base"
+            "_inherit": "Item_Build_base"
         },
         "KitWoodRamp": {
             "buildClass": "WoodRamp_EPOCH",
-            "_parentName": "Item_Build_base"
+            "_inherit": "Item_Build_base"
         },
         "KitTankTrap": {
             "buildClass": "TankTrap_SIM_EPOCH",
-            "_parentName": "Item_Build_base"
+            "_inherit": "Item_Build_base"
         },
         "KitHesco3": {
             "buildClass": "Hesco3_EPOCH",
-            "_parentName": "Item_Build_base"
+            "_inherit": "Item_Build_base"
         },
         "KitWoodLadder": {
             "buildClass": "WoodLadder_EPOCH",
-            "_parentName": "Item_Build_base"
+            "_inherit": "Item_Build_base"
         },
         "KitFirePlace": {
             "buildClass": "FirePlace_SIM_EPOCH",
-            "_parentName": "Item_Build_base"
+            "_inherit": "Item_Build_base"
         },
         "KitTiPi": {
             "buildClass": "Tipi_SIM_EPOCH",
             "isStorage": 1,
-            "_parentName": "Item_Build_base"
+            "_inherit": "Item_Build_base"
         },
         "KitShelf": {
             "buildClass": "StorageShelf_SIM_EPOCH",
             "isStorage": 1,
-            "_parentName": "Item_Build_base"
+            "_inherit": "Item_Build_base"
         },
         "KitWorkbench": {
             "buildClass": "Workbench_SIM_EPOCH",
             "isStorage": 1,
-            "_parentName": "Item_Build_base"
+            "_inherit": "Item_Build_base"
         },
         "KitFoundation": {
             "buildClass": "Foundation_EPOCH",
-            "_parentName": "Item_Build_base"
+            "_inherit": "Item_Build_base"
         },
         "KitWoodFoundation": {
             "buildClass": "WoodFoundation_EPOCH",
-            "_parentName": "Item_Build_base"
+            "_inherit": "Item_Build_base"
         },
         "KitSolarGen": {
             "buildClass": "SolarGen_SIM_EPOCH",
-            "_parentName": "Item_Build_base"
+            "_inherit": "Item_Build_base"
         },
         "KitPlotPole": {
             "buildClass": "PlotPole_SIM_EPOCH",
-            "_parentName": "Item_Build_base"
+            "_inherit": "Item_Build_base"
         },
         "KitCinderWall": {
             "buildClass": "CinderWallHalf_EPOCH",
-            "_parentName": "Item_Build_base"
+            "_inherit": "Item_Build_base"
         },
         "PaintCanBase": {
             "interactAction": 12,
             "interactText": "USE",
-            "_parentName": "Default"
+            "_inherit": "Default"
         },
         "PaintCanClear": {
             "colorName": "None",
             "textureIndex": 0,
-            "_parentName": "PaintCanBase"
+            "_inherit": "PaintCanBase"
         },
         "PaintCanBlk": {
             "colorName": "Black",
             "textureIndex": 1,
-            "_parentName": "PaintCanBase"
+            "_inherit": "PaintCanBase"
         },
         "PaintCanBlu": {
             "colorName": "Blue",
             "textureIndex": 2,
-            "_parentName": "PaintCanBase"
+            "_inherit": "PaintCanBase"
         },
         "PaintCanBrn": {
             "colorName": "Brown",
             "textureIndex": 3,
-            "_parentName": "PaintCanBase"
+            "_inherit": "PaintCanBase"
         },
         "PaintCanGrn": {
             "colorName": "Green",
             "textureIndex": 4,
-            "_parentName": "PaintCanBase"
+            "_inherit": "PaintCanBase"
         },
         "PaintCanOra": {
             "colorName": "Orange",
             "textureIndex": 5,
-            "_parentName": "PaintCanBase"
+            "_inherit": "PaintCanBase"
         },
         "PaintCanPur": {
             "colorName": "Purple",
             "textureIndex": 6,
-            "_parentName": "PaintCanBase"
+            "_inherit": "PaintCanBase"
         },
         "PaintCanRed": {
             "colorName": "Red",
             "textureIndex": 7,
-            "_parentName": "PaintCanBase"
+            "_inherit": "PaintCanBase"
         },
         "PaintCanTeal": {
             "colorName": "Teal",
             "textureIndex": 8,
-            "_parentName": "PaintCanBase"
+            "_inherit": "PaintCanBase"
         },
         "PaintCanYel": {
             "colorName": "Yellow",
             "textureIndex": 9,
-            "_parentName": "PaintCanBase"
+            "_inherit": "PaintCanBase"
         },
         "Poppy": {
             "interactAction": 6,
@@ -838,7 +838,7 @@
                     -10
                 ]
             ],
-            "_parentName": "Default"
+            "_inherit": "Default"
         },
         "Goldenseal": {
             "interactAction": 6,
@@ -849,7 +849,7 @@
                     -50
                 ]
             ],
-            "_parentName": "Default"
+            "_inherit": "Default"
         },
         "Pumpkin": {
             "interactAction": 6,
@@ -864,7 +864,7 @@
                     50
                 ]
             ],
-            "_parentName": "Default"
+            "_inherit": "Default"
         },
         "Towelette": {
             "interactAction": 6,
@@ -875,7 +875,7 @@
                     -25
                 ]
             ],
-            "_parentName": "Default"
+            "_inherit": "Default"
         },
         "HeatPack": {
             "interactAction": 7,
@@ -886,7 +886,7 @@
                     1
                 ]
             ],
-            "_parentName": "Default"
+            "_inherit": "Default"
         },
         "ColdPack": {
             "interactAction": 8,
@@ -897,17 +897,17 @@
                     -1
                 ]
             ],
-            "_parentName": "Default"
+            "_inherit": "Default"
         },
         "ItemHotwire": {
             "interactAction": 2,
             "interactText": "USE",
-            "_parentName": "Default"
+            "_inherit": "Default"
         },
         "ItemKeyKit": {
             "interactAction": 2,
             "interactText": "USE",
-            "_parentName": "Default"
+            "_inherit": "Default"
         },
         "ItemBarrelF": {
             "interactAction": 4,
@@ -916,7 +916,7 @@
                 210
             ],
             "interactReturnOnUse": "ItemBarrelE",
-            "_parentName": "Default"
+            "_inherit": "Default"
         },
         "ItemBarrelE": {
             "interactAction": 5,
@@ -925,362 +925,362 @@
                 210
             ],
             "interactReturnOnUse": "ItemBarrelF",
-            "_parentName": "Default"
+            "_inherit": "Default"
         },
         "ItemKey": {
             "interactAction": 2,
             "interactText": "USE",
-            "_parentName": "Default"
+            "_inherit": "Default"
         },
         "ItemKeyBlue": {
-            "_parentName": "ItemKey"
+            "_inherit": "ItemKey"
         },
         "ItemKeyGreen": {
-            "_parentName": "ItemKey"
+            "_inherit": "ItemKey"
         },
         "ItemKeyRed": {
-            "_parentName": "ItemKey"
+            "_inherit": "ItemKey"
         },
         "ItemKeyYellow": {
-            "_parentName": "ItemKey"
+            "_inherit": "ItemKey"
         },
         "ItemDoc1": {
             "interactAction": -1,
             "interactText": "READ",
-            "_parentName": "Default"
+            "_inherit": "Default"
         },
         "ItemDoc2": {
-            "_parentName": "ItemDoc1"
+            "_inherit": "ItemDoc1"
         },
         "ItemDoc3": {
-            "_parentName": "ItemDoc1"
+            "_inherit": "ItemDoc1"
         },
         "ItemDoc4": {
-            "_parentName": "ItemDoc1"
+            "_inherit": "ItemDoc1"
         },
         "ItemDoc5": {
-            "_parentName": "ItemDoc1"
+            "_inherit": "ItemDoc1"
         },
         "ItemDoc6": {
-            "_parentName": "ItemDoc1"
+            "_inherit": "ItemDoc1"
         },
         "ItemDoc7": {
-            "_parentName": "ItemDoc1"
+            "_inherit": "ItemDoc1"
         },
         "ItemDoc8": {
-            "_parentName": "ItemDoc1"
+            "_inherit": "ItemDoc1"
         },
         "ItemVehDoc1": {
-            "_parentName": "ItemDoc1"
+            "_inherit": "ItemDoc1"
         },
         "ItemVehDoc2": {
-            "_parentName": "ItemDoc1"
+            "_inherit": "ItemDoc1"
         },
         "ItemVehDoc3": {
-            "_parentName": "ItemDoc1"
+            "_inherit": "ItemDoc1"
         },
         "ItemVehDoc4": {
-            "_parentName": "ItemDoc1"
+            "_inherit": "ItemDoc1"
         },
         "ItemBulb": {
-            "_parentName": "Default"
+            "_inherit": "Default"
         },
         "ItemBurlap": {
-            "_parentName": "Default"
+            "_inherit": "Default"
         },
         "ItemBriefcaseE": {
-            "_parentName": "Default"
+            "_inherit": "Default"
         },
         "ItemBriefcaseGold100oz": {
-            "_parentName": "Default"
+            "_inherit": "Default"
         },
         "ItemAluminumBar": {
-            "_parentName": "Default"
+            "_inherit": "Default"
         },
         "ItemCopperBar": {
-            "_parentName": "Default"
+            "_inherit": "Default"
         },
         "ItemTinBar": {
-            "_parentName": "Default"
+            "_inherit": "Default"
         },
         "ItemPlywoodPack": {
-            "_parentName": "Default"
+            "_inherit": "Default"
         },
         "ItemComboLock": {
-            "_parentName": "Default"
+            "_inherit": "Default"
         },
         "CircuitParts": {
-            "_parentName": "Default"
+            "_inherit": "Default"
         },
         "Pelt_EPOCH": {
-            "_parentName": "Default"
+            "_inherit": "Default"
         },
         "ItemPipe": {
-            "_parentName": "Default"
+            "_inherit": "Default"
         },
         "ItemEmptyTin": {
-            "_parentName": "Default"
+            "_inherit": "Default"
         },
         "ItemSodaEmpty": {
-            "_parentName": "Default"
+            "_inherit": "Default"
         },
         "emptyjar_epoch": {
-            "_parentName": "Default"
+            "_inherit": "Default"
         },
         "PartPlankPack": {
-            "_parentName": "Default"
+            "_inherit": "Default"
         },
         "CinderBlocks": {
-            "_parentName": "Default"
+            "_inherit": "Default"
         },
         "MortarBucket": {
-            "_parentName": "Default"
+            "_inherit": "Default"
         },
         "ItemKiloHemp": {
-            "_parentName": "Default"
+            "_inherit": "Default"
         },
         "ItemTopaz": {
-            "_parentName": "Default"
+            "_inherit": "Default"
         },
         "ItemOnyx": {
-            "_parentName": "Default"
+            "_inherit": "Default"
         },
         "ItemSapphire": {
-            "_parentName": "Default"
+            "_inherit": "Default"
         },
         "ItemAmethyst": {
-            "_parentName": "Default"
+            "_inherit": "Default"
         },
         "ItemEmerald": {
-            "_parentName": "Default"
+            "_inherit": "Default"
         },
         "ItemCitrine": {
-            "_parentName": "Default"
+            "_inherit": "Default"
         },
         "ItemRuby": {
-            "_parentName": "Default"
+            "_inherit": "Default"
         },
         "ItemQuartz": {
-            "_parentName": "Default"
+            "_inherit": "Default"
         },
         "ItemJade": {
-            "_parentName": "Default"
+            "_inherit": "Default"
         },
         "ItemGarnet": {
-            "_parentName": "Default"
+            "_inherit": "Default"
         },
         "ItemMixOil": {
-            "_parentName": "Default"
+            "_inherit": "Default"
         },
         "ItemDocument": {
-            "_parentName": "Default"
+            "_inherit": "Default"
         },
         "ItemDocumentMission": {
-            "_parentName": "Default"
+            "_inherit": "Default"
         },
         "ItemSilverBar": {
-            "_parentName": "Default"
+            "_inherit": "Default"
         },
         "ItemGoldBar": {
-            "_parentName": "Default"
+            "_inherit": "Default"
         },
         "ItemGoldBar10oz": {
-            "_parentName": "Default"
+            "_inherit": "Default"
         },
         "ItemRock": {
-            "_parentName": "Default"
+            "_inherit": "Default"
         },
         "ItemStick": {
-            "_parentName": "Default"
+            "_inherit": "Default"
         },
         "ItemRope": {
-            "_parentName": "Default"
+            "_inherit": "Default"
         },
         "PartOre": {
-            "_parentName": "Default"
+            "_inherit": "Default"
         },
         "PartOreSilver": {
-            "_parentName": "Default"
+            "_inherit": "Default"
         },
         "PartOreGold": {
-            "_parentName": "Default"
+            "_inherit": "Default"
         },
         "ItemPacked": {
-            "_parentName": "Default"
+            "_inherit": "Default"
         },
         "ItemSolar": {
-            "_parentName": "Default"
+            "_inherit": "Default"
         },
         "ItemCables": {
-            "_parentName": "Default"
+            "_inherit": "Default"
         },
         "ItemBattery": {
-            "_parentName": "Default"
+            "_inherit": "Default"
         },
         "ItemScraps": {
-            "_parentName": "Default"
+            "_inherit": "Default"
         },
         "ItemCorrugated": {
-            "_parentName": "Default"
+            "_inherit": "Default"
         },
         "ItemCorrugatedLg": {
-            "_parentName": "Default"
+            "_inherit": "Default"
         },
         "5Rnd_rollins_mag": {
-            "_parentName": "Default"
+            "_inherit": "Default"
         },
         "CSGAS": {
-            "_parentName": "Default"
+            "_inherit": "Default"
         },
         "sledge_swing": {
-            "_parentName": "Default"
+            "_inherit": "Default"
         },
         "stick_swing": {
-            "_parentName": "Default"
+            "_inherit": "Default"
         },
         "hatchet_swing": {
-            "_parentName": "Default"
+            "_inherit": "Default"
         },
         "WoodLog_EPOCH": {
-            "_parentName": "Default"
+            "_inherit": "Default"
         },
         "ItemCoolerE": {
-            "_parentName": "Default"
+            "_inherit": "Default"
         },
         "lighter_epoch": {
-            "_parentName": "Default"
+            "_inherit": "Default"
         },
         "Item_AssaultPack_cbr": {
             "interactReturnOnUse": "B_AssaultPack_cbr",
-            "_parentName": "Item_Packed_base"
+            "_inherit": "Item_Packed_base"
         },
         "Item_AssaultPack_dgtl": {
             "interactReturnOnUse": "B_AssaultPack_dgtl",
-            "_parentName": "Item_Packed_base"
+            "_inherit": "Item_Packed_base"
         },
         "Item_AssaultPack_khk": {
             "interactReturnOnUse": "B_AssaultPack_khk",
-            "_parentName": "Item_Packed_base"
+            "_inherit": "Item_Packed_base"
         },
         "Item_AssaultPack_mcamo": {
             "interactReturnOnUse": "B_AssaultPack_mcamo",
-            "_parentName": "Item_Packed_base"
+            "_inherit": "Item_Packed_base"
         },
         "Item_AssaultPack_ocamo": {
             "interactReturnOnUse": "B_AssaultPack_ocamo",
-            "_parentName": "Item_Packed_base"
+            "_inherit": "Item_Packed_base"
         },
         "Item_AssaultPack_rgr": {
             "interactReturnOnUse": "B_AssaultPack_rgr",
-            "_parentName": "Item_Packed_base"
+            "_inherit": "Item_Packed_base"
         },
         "Item_AssaultPack_sgg": {
             "interactReturnOnUse": "B_AssaultPack_sgg",
-            "_parentName": "Item_Packed_base"
+            "_inherit": "Item_Packed_base"
         },
         "Item_AssaultPack_blk": {
             "interactReturnOnUse": "B_AssaultPack_blk",
-            "_parentName": "Item_Packed_base"
+            "_inherit": "Item_Packed_base"
         },
         "Item_Carryall_cbr": {
             "interactReturnOnUse": "B_Carryall_cbr",
-            "_parentName": "Item_Packed_base"
+            "_inherit": "Item_Packed_base"
         },
         "Item_Carryall_khk": {
             "interactReturnOnUse": "B_Carryall_khk",
-            "_parentName": "Item_Packed_base"
+            "_inherit": "Item_Packed_base"
         },
         "Item_Carryall_mcamo": {
             "interactReturnOnUse": "B_Carryall_mcamo",
-            "_parentName": "Item_Packed_base"
+            "_inherit": "Item_Packed_base"
         },
         "Item_Carryall_ocamo": {
             "interactReturnOnUse": "B_Carryall_ocamo",
-            "_parentName": "Item_Packed_base"
+            "_inherit": "Item_Packed_base"
         },
         "Item_Carryall_oli": {
             "interactReturnOnUse": "B_Carryall_oli",
-            "_parentName": "Item_Packed_base"
+            "_inherit": "Item_Packed_base"
         },
         "Item_Carryall_oucamo": {
             "interactReturnOnUse": "B_Carryall_oucamo",
-            "_parentName": "Item_Packed_base"
+            "_inherit": "Item_Packed_base"
         },
         "Item_FieldPack_blk": {
             "interactReturnOnUse": "B_FieldPack_blk",
-            "_parentName": "Item_Packed_base"
+            "_inherit": "Item_Packed_base"
         },
         "Item_FieldPack_cbr": {
             "interactReturnOnUse": "B_FieldPack_cbr",
-            "_parentName": "Item_Packed_base"
+            "_inherit": "Item_Packed_base"
         },
         "Item_FieldPack_khk": {
             "interactReturnOnUse": "B_FieldPack_khk",
-            "_parentName": "Item_Packed_base"
+            "_inherit": "Item_Packed_base"
         },
         "Item_FieldPack_ocamo": {
             "interactReturnOnUse": "B_FieldPack_ocamo",
-            "_parentName": "Item_Packed_base"
+            "_inherit": "Item_Packed_base"
         },
         "Item_FieldPack_oli": {
             "interactReturnOnUse": "B_FieldPack_oli",
-            "_parentName": "Item_Packed_base"
+            "_inherit": "Item_Packed_base"
         },
         "Item_FieldPack_oucamo": {
             "interactReturnOnUse": "B_FieldPack_oucamo",
-            "_parentName": "Item_Packed_base"
+            "_inherit": "Item_Packed_base"
         },
         "Item_Kitbag_cbr": {
             "interactReturnOnUse": "B_Kitbag_cbr",
-            "_parentName": "Item_Packed_base"
+            "_inherit": "Item_Packed_base"
         },
         "Item_Kitbag_mcamo": {
             "interactReturnOnUse": "B_Kitbag_mcamo",
-            "_parentName": "Item_Packed_base"
+            "_inherit": "Item_Packed_base"
         },
         "Item_Kitbag_rgr": {
             "interactReturnOnUse": "B_Kitbag_rgr",
-            "_parentName": "Item_Packed_base"
+            "_inherit": "Item_Packed_base"
         },
         "Item_Kitbag_sgg": {
             "interactReturnOnUse": "B_Kitbag_sgg",
-            "_parentName": "Item_Packed_base"
+            "_inherit": "Item_Packed_base"
         },
         "Item_TacticalPack_blk": {
             "interactReturnOnUse": "B_TacticalPack_blk",
-            "_parentName": "Item_Packed_base"
+            "_inherit": "Item_Packed_base"
         },
         "Item_TacticalPack_mcamo": {
             "interactReturnOnUse": "B_TacticalPack_mcamo",
-            "_parentName": "Item_Packed_base"
+            "_inherit": "Item_Packed_base"
         },
         "Item_TacticalPack_ocamo": {
             "interactReturnOnUse": "B_TacticalPack_ocamo",
-            "_parentName": "Item_Packed_base"
+            "_inherit": "Item_Packed_base"
         },
         "Item_TacticalPack_oli": {
             "interactReturnOnUse": "B_TacticalPack_oli",
-            "_parentName": "Item_Packed_base"
+            "_inherit": "Item_Packed_base"
         },
         "Item_TacticalPack_rgr": {
             "interactReturnOnUse": "B_TacticalPack_rgr",
-            "_parentName": "Item_Packed_base"
+            "_inherit": "Item_Packed_base"
         },
         "Item_smallbackpack_red": {
             "interactReturnOnUse": "smallbackpack_red_epoch",
-            "_parentName": "Item_Packed_base"
+            "_inherit": "Item_Packed_base"
         },
         "Item_smallbackpack_green": {
             "interactReturnOnUse": "smallbackpack_green_epoch",
-            "_parentName": "Item_Packed_base"
+            "_inherit": "Item_Packed_base"
         },
         "Item_smallbackpack_teal": {
             "interactReturnOnUse": "smallbackpack_teal_epoch",
-            "_parentName": "Item_Packed_base"
+            "_inherit": "Item_Packed_base"
         },
         "Item_smallbackpack_pink": {
             "interactReturnOnUse": "smallbackpack_pink_epoch",
-            "_parentName": "Item_Packed_base"
+            "_inherit": "Item_Packed_base"
         }
     }
 }

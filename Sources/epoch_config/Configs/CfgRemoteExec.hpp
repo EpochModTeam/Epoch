@@ -12,7 +12,7 @@
     Github:
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_config/Configs/CfgRemoteExec.hpp
 */
-/*[[[cog import arma_config_tools; arma_config_tools.json_to_arma()]]]*/
+/*[[[cog from arma_config_tools import *; json_to_arma()]]]*/
 /*
     @author = "Aaron Clark - https://EpochMod.com";
     @contributors[] = {"Andrew Gregory"};
