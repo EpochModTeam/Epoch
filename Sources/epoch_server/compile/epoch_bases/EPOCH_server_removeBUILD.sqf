@@ -163,8 +163,16 @@ if (_vehSlot != -1 || _storageSlot != "ABORT" || _isTemporary == 1) then{
 				[_building, _player] call EPOCH_server_save_killedBuilding;
 				deleteVehicle _building;
 			};
-
 			// Normal config based payout
+			_nearbyWH = nearestObjects[_posWH, ["groundWeaponHolder"], 2];
+			if !(_nearbyWH isEqualTo[]) then{
+				_gwh = _nearbyWH select 0;
+				// _posWH = getPosATL _gwh;
+			} else {
+				_gwh = createVehicle["groundWeaponHolder", [0,0,0], [], 0, "CAN_COLLIDE"];
+				_gwh setPosATL _posWH;
+			};
+
 			{
 				_gwh addMagazineCargoGlobal[_x select 0, _x select 1];
 			} forEach _removeParts;
