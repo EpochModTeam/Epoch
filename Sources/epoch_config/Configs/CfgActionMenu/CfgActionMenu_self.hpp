@@ -34,3 +34,17 @@ class player_inspect
 	icon = "x\addons\a3_epoch_code\Data\UI\buttons\player_inspect.paa";
 	tooltip = "Examine";
 };
+class player_group_menu
+{
+	condition = "true";
+	action = "call EPOCH_Inventory_Group;";
+	icon = "x\addons\a3_epoch_code\Data\UI\buttons\group_menu_ca.paa";
+	tooltip = "Group Menu";
+};
+class player_group_requests
+{
+	condition = "!(Epoch_invited_GroupUIDs isEqualTo[])";
+	action = "call EPOCH_Inventory_iGroup;";
+	icon = "x\addons\a3_epoch_code\Data\UI\buttons\group_requests_ca.paa";
+	tooltip = "Group Requests";
+};

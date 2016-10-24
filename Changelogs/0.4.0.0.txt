@@ -1,1 +1,2 @@
-TBA
+[New] Dynamic sub menu for inventory item interaction and crafting options when you double click in item in your inventory.
+[Changed] Group menu and requests are now on the self action menu.
