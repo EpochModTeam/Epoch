@@ -1,2 +1,3 @@
-[New] Dynamic sub menu for inventory item interaction and crafting options when you double click in item in your inventory.
+[Changed] Dynamic sub menu for inventory item interaction and crafting options. (Double click item in your inventory)
+[Changed] Armor stat inventory feature now dynamic and no longer forced via config.
 [Changed] Group menu and requests are now on the self action menu.
