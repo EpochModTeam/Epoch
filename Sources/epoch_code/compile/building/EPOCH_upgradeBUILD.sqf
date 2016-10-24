@@ -83,6 +83,13 @@ if (_object isKindOf "Constructions_static_F") then {
 
 	// take upgrade item from player here
 	_config = 'CfgBaseBuilding' call EPOCH_returnConfig;
+	_config2 = 'CfgEpochClient' call EPOCH_returnConfig;
+	_buildingJammerRange = getNumber(_config2 >> "buildingJammerRange");
+	_maxdoors = getNumber(_config2 >> "maxdoors");
+	_maxgates = getNumber(_config2 >> "maxgates");
+	if (_buildingJammerRange == 0) then {_buildingJammerRange = 150};
+	if (_maxdoors == 0) then {_maxdoors = 12};
+	if (_maxgates == 0) then {_maxgates = 10};
 
 	_upgrades = getArray(_config >> (typeOf _object) >> "upgradeBuilding");
 	if !(_upgrades isEqualTo []) then {
@@ -108,6 +115,26 @@ if (_object isKindOf "Constructions_static_F") then {
 			};
 			_canUpgradePartCount = _canUpgradePartCount + _req;
 		} forEach _upgradeParts;
+		
+		_doors = ["WoodLargeWallDoorL_EPOCH","WoodWall4_EPOCH"];
+		_gates = ["CinderWallGarage_EPOCH"];
+		if (_canUpgrade) then {
+			_upgradeto = _upgrade select 0;
+			if (_upgradeto in _doors) then {
+				_countdoors = count (nearestobjects [_nearestJammer,_doors,_buildingJammerRange]);
+				if (_countdoors >= _maxdoors) then {
+					_canUpgrade = false;
+					_missingParts = _missingParts + format["Can not upgrade to locked Door! Max %1 allowed per Base!", _maxdoors];
+				};
+			};
+			if (_upgradeto in _gates) then {
+				_countgates = count (nearestobjects [_nearestJammer,_gates,_buildingJammerRange]);
+				if (_countgates >= _maxgates) then {
+					_canUpgrade = false;
+					_missingParts = _missingParts + format["Can not upgrade to Gate! Max %1 allowed per Base!", _maxgates];
+				};
+			};
+		};
 
 		_removedPartCount = 0;
 		if (_canUpgrade) then {
