@@ -28,11 +28,11 @@ class DifficultyPresets
 			weaponCrosshair = 1;  // Weapon crosshair	(0 = never, 1 = always)
 			visionAid = 0;        // Vision aid		(0 = never, 1 = always)
 			// View
-			thirdPersonView = 1;  // 3rd person view	(0 = enabled, 1 = disabled)
-			cameraShake = 1;      // Camera shake		(0 = enabled, 1 = disabled)
+			thirdPersonView = 1;  // 3rd person view	(0 = disabled, 1 = enabled)
+			cameraShake = 1;      // Camera shake		(0 = disabled, 1 = enabled)
 
 			// Multiplayer
-			scoreTable = 1;       // Score table		
+			scoreTable = 1;       // Score table
 			deathMessages = 1;    // Killed by
 			vonID = 1;            // VON ID
 
