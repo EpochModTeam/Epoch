@@ -1,3 +1,12 @@
-[Changed] Dynamic sub menu for inventory item interaction and crafting options. (Double click item in your inventory)
-[Changed] Armor stat inventory feature now dynamic and no longer forced via config.
-[Changed] Group menu and requests are now on the self action menu.
+[New] Dynamic and extensible inventory sub menu system for item interaction and crafting options. (Double click item in your inventory)
+[Changed] Inventory Armor stats feature now dynamic and no longer forced via config.
+[Changed] Group menu and group requests options are now found options on the self action menu. (SPACE BAR)
+[Changed] Wardrobe mirror now works in single player.
+[Changed] Jetski and Electric Motorcycle motorcycle in-vehicle HUD now works in singleplayer.
+[Fixed] Increased mass of "Hotwire Kit" (ItemHotwire) magazine item from 2 to 50 to address balance issues. Thanks to PR from @Ignatz-HeMan
+[Fixed] Disposal of Snakes and other animals when inside a protection zone.
+[Fixed] Shark bite attack and effect can now target all players correctly.
+[Fixed] Female ghillie suit transparency issue since Arma update 1.62.
+
+Known Issues:
+Jetski and Electric Motorcycle motorcycle in-vehicle HUD will not initialize if player is spawned inside vehicle, as display getin EH did not fire.
