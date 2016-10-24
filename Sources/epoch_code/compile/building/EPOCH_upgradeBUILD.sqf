@@ -87,6 +87,7 @@ if (_object isKindOf "Constructions_static_F") then {
 	_buildingJammerRange = getNumber(_config2 >> "buildingJammerRange");
 	_maxdoors = getNumber(_config2 >> "maxdoors");
 	_maxgates = getNumber(_config2 >> "maxgates");
+	if (_buildingJammerRange == 0) then {_buildingJammerRange = 150};
 	if (_maxdoors == 0) then {_maxdoors = 12};
 	if (_maxgates == 0) then {_maxgates = 10};
 
