@@ -99,7 +99,7 @@ class CfgEpochSapper
     reflexSpeed = 0.25;
     nestChance = 2;
     hideLevel = 72;
-    chargeLevel = 52;
+    chargeLevel = 62;
 };
 class CfgEpochUAV
 {
