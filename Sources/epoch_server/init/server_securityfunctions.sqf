@@ -870,7 +870,7 @@ _skn_code_antihack = compileFinal ("
 				_distance = _lastPos distance _curPos;
 
 				if ((_curTime-_lastTime)>1 || _distance>10) then {
-					if (((_distance/(_curTime-_lastTime)) > 10) && _notNearbySpawn && (player == vehicle player)) then {
+					if (((_distance/(_curTime-_lastTime)) > 16) && _notNearbySpawn && (player == vehicle player)) then {
 						if (isNil '"+_skn_antiTeleportPVC+"') then {
 							[format['[TEST] TP from %1 to %2, %3 meters, now at %4', _lastPos, _curPos, round _distance, getPosATL player],1] call "+_sknBanANDSleep+";
 							vehicle player setPosATL _lastPos;

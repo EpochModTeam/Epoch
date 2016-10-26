@@ -4,6 +4,7 @@
 [Changed] Wardrobe mirror now works in single player.
 [Changed] Jetski and Electric Motorcycle motorcycle in-vehicle HUD now works in singleplayer.
 [Changed] Updated Tanoa trader city layout and added ATM's. Thanks to @morgoth0 (aka Grahame on EpochMod.com Forum)
+[Changed] Players now start with only 30% Hunger and Thirst instead of 100%.
 [Fixed] Increased mass of "Hotwire Kit" (ItemHotwire) magazine item from 2 to 50 to address balance issues. Thanks to PR from @Ignatz-HeMan
 [Fixed] Disposal of Snakes and other animals when inside a protection zone.
 [Fixed] Shark bite attack and effect can now target all players correctly.
