@@ -11,8 +11,8 @@
 [Fixed] Shark bite attack and effect can now target all players correctly.
 [Fixed] Female ghillie suit transparency issue since Arma update 1.62.
 [Fixed] Fireplace position incorrectly shifted down after lighting fireplace. Thanks for the report by @Ignatz-HeMan #592
-[Fixed] increased anti-teleport range that should allow for HALO spawning.
-
+[Fixed] Increased anti-teleport range that should hopefully allow for proper HALO spawning.
+[Fixed] Typos in Battleye script.txt that caused the filter not to function properly.
 
 Known Issues:
 Jetski and Electric Motorcycle motorcycle in-vehicle HUD will not initialize if player is spawned inside vehicle, as display getin EH did not fire.
