@@ -22,7 +22,7 @@ binarizationWanted=0;
 addons[]=
 {
 	"A3_epoch_config",
-	"cup_zargabad_config",
+	"cup_zargabad_config"
 };
 randomSeed=12032465;
 class ScenarioData

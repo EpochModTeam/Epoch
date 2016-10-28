@@ -218,11 +218,13 @@ if (vehicle player == player) then {
 					if ((primaryWeapon player != "") && (currentWeapon player == primaryWeapon player)) then {
 						player switchMove "AovrPercMrunSrasWrflDf";
 						[player, "AovrPercMrunSrasWrflDf", Epoch_personalToken] remoteExec ["EPOCH_server_handle_switchMove",2];
+                        EPOCH_playerStamina = (EPOCH_playerStamina - 30) max 0;
 						_handled = true;
 					} else {
 						if (currentWeapon player == "") then {
 							player switchMove "epoch_unarmed_jump";
 							[player, "epoch_unarmed_jump", Epoch_personalToken] remoteExec ["EPOCH_server_handle_switchMove",2];
+                            EPOCH_playerStamina = (EPOCH_playerStamina - 30) max 0;
 							_handled = true;
 						};
 					};

@@ -1,5 +1,6 @@
 [New] Dynamic and extensible inventory sub menu system for item interaction and crafting options. (Double click item in your inventory)
 [Added] Vehicle immunity when a vehicle is left locked inside a player owned base (within jammer range) at server startup. Thanks to @morgoth0 for the feedback!
+[Changed] Stamina loss when player jumps.
 [Changed] Inventory Armor stats feature now dynamic and no longer forced via config.
 [Changed] Group menu and group requests options are now found options on the self action menu. (SPACE BAR)
 [Changed] Wardrobe mirror now works in single player.
@@ -13,6 +14,7 @@
 [Fixed] Fireplace position incorrectly shifted down after lighting fireplace. Thanks for the report by @Ignatz-HeMan #592
 [Fixed] Increased anti-teleport range that should hopefully allow for proper HALO spawning.
 [Fixed] Typos in Battleye script.txt that caused the filter not to function properly.
+[Fixed] Trailing commas in mission addons array. Thanks to a RP from @SPKcoding (aka $p4rky on EpochMod.com Forum)
 
 Known Issues:
 Jetski and Electric Motorcycle motorcycle in-vehicle HUD will not initialize if player is spawned inside vehicle, as display getin EH did not fire.
