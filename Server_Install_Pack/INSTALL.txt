@@ -1,6 +1,6 @@
 A3 EPOCH Server Install Guide
 
-Prerequisites:
+Prerequisites (Windows):
 
 Visual C++ Redistributable Packages for Visual Studio 2013:
 http://www.microsoft.com/en-us/download/details.aspx?id=40784
@@ -8,19 +8,17 @@ http://www.microsoft.com/en-us/download/details.aspx?id=40784
 == INSTALL ==
 
 1. Remove any previous @Epoch folders and Install A3 Epoch client files (@Epoch) into Arma3 root directory.
-2. Copy the pcre3.dll and @EpochHive folder into your Arma3 root directory. 
-3. Open "DB" folder and start redis-server.exe with the parameter "redis.conf" or use start-redis.cmd. (Only one redis instance is needed per box, All servers connecting to the same redis will share character data by default.)
-4. Open @EpochHive folder and edit EpochServer.ini BattlEyePath to match your server path to Battleye.
-5. If running multiple servers on the same box, open "@EpochHive" folder and edit the "EpochServer.ini" setting "InstanceID" to a unique string for each A3 Epoch server.
-6. Open "SC" folder and rename server-example.cfg to server.cfg edit the server.cfg server name, password, etc.
-7. Open the SC/Battleye folder and rename example-BEServer.cfg to BEServer.cfg and change the RConPassword.
+2. Open "DB" folder and start redis-server.exe with the parameter "redis.conf" or use start-redis.cmd. (Only one redis instance is needed per box, All servers connecting to the same redis will share character data by default.)
+3. Open @EpochHive folder and edit EpochServer.ini BattlEyePath to match your server path to Battleye.
+4. If running multiple servers on the same box, open "@EpochHive" folder and edit the "EpochServer.ini" setting "InstanceID" to a unique string for each A3 Epoch server.
+5. Open "SC" folder and rename server-example.cfg to server.cfg edit the server.cfg server name, password, etc.
+6. Open the SC/Battleye folder and rename example-BEServer.cfg to BEServer.cfg and change the RConPassword.
 7. Look at the "start-A3-cmd-line-example.txt" file for an example command line for starting your server.
 
 == NOTES ==
 
-* As of 0.2.5.2 Server Hotfix Build A you only need BEC (http://ibattle.org/) with watchdog plugin (included in BEC folder) if you use do not use a PVS prefix.
 * You should use a service restarter (like firedaemon) to keep the redis server and Arma 3 server running.
 * A3 Server should be restarted every 4 hours. A good option ssing BEC http://ibattle.org/ scheduler and the #shutdown rcon command works well. (Scheduler Example: https://gist.github.com/vbawol/38b2f57d89c2c36106b3)
 * The log rotator found in tools should only need one path to Arma 3 changed and should be ran just before the Arma 3 server starts. (firedeamon Pre/post service: Before Event)
 * It is recommended that you use ASM https://github.com/fred41/ASM to monitor your server performance.
-* Go to http://epochmod.com/forum/ for more help if needed.
+* Go to http://epochmod.com/forum/ for more help if needed. GLHF!
