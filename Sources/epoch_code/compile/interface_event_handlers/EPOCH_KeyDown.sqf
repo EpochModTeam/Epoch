@@ -83,7 +83,7 @@ if (_dikCode == EPOCH_keysDebugMon) then {
 
 //Action Menu
 if (_dikCode == EPOCH_keysAction) then {
-	_handled = true;
+	//_handled = true;
 	if !(EPOCH_keysActionPressed) then {
 		EPOCH_keysActionPressed = true;
 		if (cursorTarget isKindOf "AllVehicles") then {
