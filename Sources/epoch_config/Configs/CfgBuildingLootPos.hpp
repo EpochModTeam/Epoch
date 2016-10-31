@@ -1,11 +1,4 @@
 /*[[[cog from arma_config_tools import *; json_to_arma()]]]*/
-/*
-    @author = "Aaron Clark - https://EpochMod.com";
-    @contributors[] = {"Kenneth Bente"};
-    @description = "Loot container offsets for Epoch loot system";
-    @licence = "Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike";
-    @github = "https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_config/Configs/CfgBuildingLootPos.hpp";
-*/
 class CfgBuildingLootPos
 {
     class Default
@@ -417,6 +410,44 @@ class CfgBuildingLootPos
         toolRackPos[] = {{{-2.93359,1.23438,0.579066},180.737}};
         freezerPos[] = {{{-8.96094,-1.70605,0.508462},360},{{-9.27344,-1.7334,3.85846},360}};
         cabinetPos[] = {{{-6.55322,-2.76904,5.30856},0}};
+    };
+    class Land_i_Garage_V2_dam_F : Default
+    {
+        toolRackPos[] = {{{5.12695,-2.06641,-0.159975},90}};
+        shoeboxPos[] = {{{-0.900391,1.64063,-0.159975},220}};
+        palletPos[] = {{{1.32031,0.759766,-0.159975},170}};
+        freezerPos[] = {{{-3.42969,-2.76563,-0.159975},190}};
+    };
+    class Land_i_Stone_HouseBig_V1_dam_F : Default
+    {
+        shelfPos[] = {{{-0.191406,-3.48438,-1.65251},178}};
+        fridgePos[] = {{{1.73438,1.0625,-1.65251},360}};
+        bedPos[] = {{{-1.56836,0.713867,1.15249},267}};
+        couchPos[] = {{{-1.58203,-2.34082,1.15249},97}};
+        wardrobePos[] = {{{1.50195,-3.28125,1.19749},178}};
+        tablePos[] = {{{-3.07813,-1.62109,-1.63251},269}};
+        shoeboxPos[] = {{{1.07031,1.16113,1.19749},128}};
+    };
+    class Land_i_Stone_HouseBig_V3_dam_F : Default
+    {
+        bedPos[] = {{{-1.96094,0.71875,1.15249},269}};
+        couchPos[] = {{{-2.11523,-1.89453,1.12749},169}};
+        chairPos[] = {{{2.98047,-3.04883,1.15249},141.7}};
+        filingPos[] = {{{0.0800781,1.31836,1.15249},351.7}};
+        tablePos[] = {{{-3.07617,-1.59766,-1.77251},269}};
+        shoeboxPos[] = {{{-0.470703,0.771484,-0.593828},202.7}};
+        palletPos[] = {{{2.15234,0.814453,-1.65383},202.7}};
+        freezerPos[] = {{{3.11523,-2.91797,-1.65383},92.7}};
+    };
+    class Land_Airport_Tower_dam_F : Default
+    {
+        lootType = "mil";
+        shelfPos[] = {{{1.78906,1.90234,0.798989},0}};
+        filingPos[] = {{{-2.93359,-3.1582,0.812261},229}};
+        pelicanPos[] = {{{0.587891,8.4043,3.79912},9.99995}};
+        lockerPos[] = {{{1.10938,6.14648,-8.19994},360}};
+        shoeboxPos[] = {{{2.2793,-5.125,0.798989},9.99995}};
+        cabinetPos[] = {{{-0.714844,2.58203,-6.82513},270}};
     };
     class Land_i_Barracks_V1_F : Land_i_Barracks_V2_F {};
     class Land_d_Windmill01_F : Default
@@ -2299,7 +2330,7 @@ class CfgBuildingLootPos
         shelfPos[] = {{{-5.3606,-5.2832,-1.15784},270}};
         pelicanPos[] = {{{3.18213,-3.80811,-1.30784},160}};
     };
-    class Land_i_Stone_HouseSmall_V2_dam_F : Default
+    class Land_i_Stone_HouseSmall_V1_dam_F : Default
     {
         couchPos[] = {{{-6.25098,1.86572,-0.594842},270}};
         filingPos[] = {{{8.93213,-2.67773,-0.594842},176}};
@@ -2307,6 +2338,8 @@ class CfgBuildingLootPos
         tablePos[] = {{{-3.21045,-2.5564,-0.594842},180}};
         shoeboxPos[] = {{{1.99609,2.25684,-0.274842},320}};
     };
+    class Land_i_Stone_HouseSmall_V2_dam_F : Land_i_Stone_HouseSmall_V1_dam_F {};
+    class Land_i_Stone_HouseSmall_V3_dam_F : Land_i_Stone_HouseSmall_V1_dam_F {};
     class Land_cmp_Shed_dam_F : Default
     {
         palletPos[] = {{{0.482422,-2.13721,-3.10882},329},{{-3.94287,1.30518,-3.10882},260}};
