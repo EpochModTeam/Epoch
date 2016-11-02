@@ -19,28 +19,36 @@ _data = EPOCH_InteractedItem select 1;
 _interactOption = 0;
 _buttonTXT = "";
 _magCount = 1;
+_interactActions = [];
 _config = (configfile >> "CfgWeapons" >> _data);
 _cfgItemInteractions = (('CfgItemInteractions' call EPOCH_returnConfig) >> _data);
 if (isClass (_config)) then {
     _type = getNumber (_config >> "type");
     _interactOption = getNumber (_cfgItemInteractions >> "interactAction");
     _buttonTXT = getText(_cfgItemInteractions >> "interactText");
+    _interactActions = getArray(_cfgItemInteractions >> "interactActions");
 } else {
     _config = (configfile >> "CfgMagazines" >> _data);
     _type = getNumber (_config >> "type");
     _interactOption = getNumber (_cfgItemInteractions >> "interactAction");
     _buttonTXT = getText(_cfgItemInteractions >> "interactText");
     _magCount = getNumber (_config >> "count");
+    _interactActions = getArray(_cfgItemInteractions >> "interactActions");
 };
 
+// legacy
 if (_buttonTXT != "") then {
   _button_texts pushBack [_buttonTXT];
-} else {
-  if (_magCount > 1) then {
-      _button_texts pushBack ["REPACK"];
-  } else {
-      _button_texts pushBack ["EXAMINE"];
-  };
+};
+// additional interactActions
+if !(_interactActions isEqualTo []) then {
+    {
+         _button_texts pushBack _x;
+    } forEach _interactActions;
+};
+// ammo repack
+if (_magCount > 1) then {
+    _button_texts pushBack ["REPACK"];
 };
 
 _config = 'CfgCrafting' call EPOCH_returnConfig;
@@ -86,7 +94,7 @@ if !(_button_texts isEqualTo []) then {
     _btn_arr = [];
     _start_idc = 12346;
     {
-        _x params [["_btn_text","EXAMINE"],["_btn_code","call EPOCH_consumeItem;"]];
+        _x params [["_btn_text","EXAMINE"],["_btn_code","[] call EPOCH_consumeItem;"]];
         _button_gen = _display ctrlCreate ["RscButtonMenu", _start_idc,_control];
         _start_idc = _start_idc + 1;
         _button_gen ctrlSetPosition [0.06,_y2d,0.20,0.06];

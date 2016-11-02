@@ -63,7 +63,7 @@
             "_inherit": "Default"
         },
         "honey_epoch": {
-            "interactText": "CONSUME",
+            "interactText": "EAT",
             "interactAttributes": [
                 [
                     "Immunity",
@@ -76,6 +76,12 @@
                 [
                     "BloodP",
                     10
+                ]
+            ],
+            "interactActions": [
+                [
+                    "EMPTY",
+                    "[1,[],'emptyjar_epoch'] call EPOCH_consumeItem;"
                 ]
             ],
             "_inherit": "Food_Jar_base"
@@ -420,6 +426,12 @@
             "interactReturnOnUse": "jerrycanE_epoch",
             "interactAttributes": [
                 10
+            ],
+            "interactActions": [
+                [
+                    "DRINK",
+                    "[2,[['Toxicity',100],['Alcohol',50]],''] call EPOCH_consumeItem;"
+                ]
             ],
             "_inherit": "Default"
         },

@@ -20,9 +20,23 @@ EPOCH_InteractedItem params ["_text","_item","_pic"];
 
 _cfgBaseBuilding = 'CfgBaseBuilding' call EPOCH_returnConfig;
 _cfgItemInteractions = (('CfgItemInteractions' call EPOCH_returnConfig) >> _item);
+
 _interactOption = getNumber(_cfgItemInteractions >> "interactAction");
-_interactReturnOnUse = getText(_cfgItemInteractions >> "interactReturnOnUse");
 _interactAttributes = getArray(_cfgItemInteractions >> "interactAttributes");
+_interactReturnOnUse = getText(_cfgItemInteractions >> "interactReturnOnUse");
+
+_inputCount = count _this;
+if (_inputCount >= 1) then {
+    _interactOption = param [0,0];
+};
+if (_inputCount >= 2) then {
+    _interactAttributes = param [1,[]];
+};
+if (_inputCount >= 3) then {
+    _interactReturnOnUse = param [2,""];
+};
+
+// diag_log format["DEBUG: %1",[_interactOption,_interactAttributes,_interactReturnOnUse]];
 
 _removeItem = {([player,_this] call BIS_fnc_invRemove) == 1};
 

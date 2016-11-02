@@ -75,8 +75,9 @@ class CfgItemInteractions
     };
     class honey_epoch : Food_Jar_base
     {
-        interactText = "CONSUME";
+        interactText = "EAT";
         interactAttributes[] = {{"Immunity",1},{"Stamina",30},{"BloodP",10}};
+        interactActions[] = {{"EMPTY","[1,[],'emptyjar_epoch'] call EPOCH_consumeItem;"}};
     };
     class sardines_epoch : Food_TinCan_base
     {
@@ -200,6 +201,7 @@ class CfgItemInteractions
         interactText = "FILL";
         interactReturnOnUse = "jerrycanE_epoch";
         interactAttributes[] = {10};
+        interactActions[] = {{"DRINK","[2,[['Toxicity',100],['Alcohol',50]],''] call EPOCH_consumeItem;"}};
     };
     class jerrycanE_epoch : Default
     {

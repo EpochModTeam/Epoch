@@ -22,4 +22,3 @@ Server Side Only:
 
 Known Issues:
 Jetski and Electric Motorcycle motorcycle in-vehicle HUD will not initialize if player is spawned inside vehicle, as display getin EH did not fire.
-Selected Inventory item is deselected randomly.
