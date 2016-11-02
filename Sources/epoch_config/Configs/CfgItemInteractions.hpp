@@ -201,7 +201,7 @@ class CfgItemInteractions
         interactText = "FILL";
         interactReturnOnUse = "jerrycanE_epoch";
         interactAttributes[] = {10};
-        interactActions[] = {{"DRINK","[2,[['Toxicity',100],['Alcohol',50]],''] call EPOCH_consumeItem;"}};
+        interactActions[] = {{"DRINK","[2,[['Toxicity',100],['Alcohol',50]],'jerrycanE_epoch'] call EPOCH_consumeItem;"},{"EMPTY","[2,[],'jerrycanE_epoch'] call EPOCH_consumeItem;"}};
     };
     class jerrycanE_epoch : Default
     {

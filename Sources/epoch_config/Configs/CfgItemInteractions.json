@@ -430,7 +430,11 @@
             "interactActions": [
                 [
                     "DRINK",
-                    "[2,[['Toxicity',100],['Alcohol',50]],''] call EPOCH_consumeItem;"
+                    "[2,[['Toxicity',100],['Alcohol',50]],'jerrycanE_epoch'] call EPOCH_consumeItem;"
+                ],
+                [
+                    "EMPTY",
+                    "[2,[],'jerrycanE_epoch'] call EPOCH_consumeItem;"
                 ]
             ],
             "_inherit": "Default"
