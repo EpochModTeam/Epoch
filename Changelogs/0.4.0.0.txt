@@ -1,6 +1,8 @@
 [New] Dynamic and extensible inventory sub menu system for item interaction and crafting options. (Double click item in your inventory)
 [Added] Vehicle immunity when a vehicle is left locked inside a player owned base (within jammer range) at server startup. Thanks to @morgoth0 for the feedback!
 [Added] Stamina loss when a player jumps.
+[Added] Drink option to Gas can to poison yourself.
+[Added] Option to pour out honey and get an empty jar instead of eating it.
 [Changed] Inventory Armor stats feature now dynamic and no longer forced via config.
 [Changed] Group menu and group requests options are now found options on the self-action menu. (SPACE BAR)
 [Changed] Wardrobe mirror now works in single player.
@@ -15,9 +17,11 @@
 [Fixed] Increased anti-teleport range that should hopefully allow for proper HALO spawning.
 [Fixed] Typos in Battleye script.txt that caused the filter not to function properly.
 [Fixed] Trailing commas in mission addons array. Thanks to a RP from @SPKcoding (aka $p4rky on EpochMod.com Forum)
+[Fixed] No longer possible to unlock Doors / Gates while using a UAV. Thanks to PR from @Ignatz-HeMan
 
 Server Side Only:
 [New] EpochServer.dll/so is now statically linked to pcre3 and hredis. On Windows this means that the pcre3.dll file in the arma 3 root can now be removed. On Linux we no longer depend on libhredis and libpcre to be installed.
+[Added] Example mission file epoch_RyanZed.Tanoa that includes "RyanZombies" in the required addons array.
 [Fixed] Database logging now trims log entries via the LogLimit setting  provided in EpochServer.ini. The default is 1000 log records per list.
 
 Known Issues:
