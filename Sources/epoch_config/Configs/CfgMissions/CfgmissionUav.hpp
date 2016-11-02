@@ -36,7 +36,7 @@ class doUAVSpawn{
 	initcall = "axeUAV = objNull";
 	callEventBinTask = 0;
 	callEventCondition1 = "(diag_tickTime - EPOCH_task_startTime) > 6";
-	callEventCALL1 = "_targetPos = (getPosATL player) findEmptyPosition [25,250,""I_UAV_01_F""];axeUAV = createVehicle[""I_UAV_01_F"", _targetPos, [], 10, ""CAN_COLLIDE""];_driver = (group player) createUnit[""I_UAV_AI"", position axeUAV, [], 0, ""CAN_COLLIDE""];_driver moveInAny axeUAV;";
+	callEventCALL1 = "_targetPos = (getPosATL player) findEmptyPosition [25,250,""I_UAV_01_F""];axeUAV = createVehicle[""I_UAV_01_F"", _targetPos, [], 10, ""CAN_COLLIDE""];axeUAV disableTIEquipment true;_driver = (group player) createUnit[""I_UAV_AI"", position axeUAV, [], 0, ""CAN_COLLIDE""];_driver moveInAny axeUAV;";
 	diag1Condition = "true";
 	dialogue1[] = {"UAV is ready, get prepared !","Here it comes, connecting you now. 10 seconds..","Nice spot, connecting you to the UAV !"};
 	diagSquelch = 60;

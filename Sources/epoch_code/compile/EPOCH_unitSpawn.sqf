@@ -104,6 +104,7 @@ switch _unitClass do {
 		_targetPos = [_targetPos, 600, 1200, 5, 0, 400, 0] call BIS_fnc_findSafePos;
 		_targetPos set[2, 600];
 		_unit = createVehicle["I_UAV_01_F", _targetPos, [], 0, "FLY"];
+        _unit disableTIEquipment true;
 		_units pushBack _unit;
 		addToRemainsCollector[_unit];
 		_unit flyInHeight 600;
