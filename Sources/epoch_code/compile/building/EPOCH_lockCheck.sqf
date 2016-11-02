@@ -29,7 +29,7 @@ _config = "CfgEpochClient" call EPOCH_returnConfig;
 _buildingJammerRange = getNumber(_config >> "buildingJammerRange");
 if (_buildingJammerRange == 0) then { _buildingJammerRange = 75; };
 
-_jammer = nearestObjects[player, ["PlotPole_EPOCH"], _buildingJammerRange];
+_jammer = nearestObjects[cameraon, ["PlotPole_EPOCH"], _buildingJammerRange];
 _jammed = false;
 if !(_jammer isEqualTo[]) then {
   {
