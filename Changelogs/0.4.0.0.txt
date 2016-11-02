@@ -1,7 +1,7 @@
 [New] Dynamic and extensible inventory sub menu system for item interaction and crafting options. (Double click item in your inventory)
 [Added] Vehicle immunity when a vehicle is left locked inside a player owned base (within jammer range) at server startup. Thanks to @morgoth0 for the feedback!
 [Added] Stamina loss when a player jumps.
-[Added] Drink option to Gas can to poison yourself.
+[Added] Option to pour our gas to get an empty Jerry can and a "Drink" option to poison yourself.
 [Added] Option to pour out honey and get an empty jar instead of eating it.
 [Changed] Inventory Armor stats feature now dynamic and no longer forced via config.
 [Changed] Group menu and group requests options are now found options on the self-action menu. (SPACE BAR)
