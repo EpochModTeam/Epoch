@@ -1,0 +1,23 @@
+{
+    "_header": {
+        "@author": "Aaron Clark - https://EpochMod.com",
+        "@contributors": [],
+        "@description": "Custom Epoch config for animation broadcasting to nearby players.",
+        "@licence": "Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike",
+        "@github": "https://github.com/EpochModTeam/Epoch/tree/release/Sources/{filename}"
+    },
+    "CfgSwitchMovehandler": {
+        "AovrPercMrunSrasWrflDf": {
+            "distance": 1000
+        },
+        "epoch_unarmed_jump": {
+            "distance": 1000
+        },
+        "AwopPercMstpSgthWnonDnon_throw": {
+            "distance": 1000
+        },
+        "AmovPercMstpSnonWnonDnon_SaluteOut": {
+            "distance": 1000
+        }
+    }
+}

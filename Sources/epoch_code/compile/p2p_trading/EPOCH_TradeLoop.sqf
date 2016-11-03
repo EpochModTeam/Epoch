@@ -12,7 +12,9 @@
     Github:
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_code/compile/p2p_trading/EPOCH_TradeLoop.sqf
 */
-private ["_item","_index","_removeCount","_sizeOut","_array","_cryptoOffer","_offerArray","_tradeOffer","_tradeCryptoOffer","_isAcceptedOther","_isAccepted"];
+//[[[cog import generate_private_arrays ]]]
+private ["_array","_cryptoOffer","_index","_isAccepted","_isAcceptedOther","_item","_offerArray","_removeCount","_sizeOut","_tradeCryptoOffer","_tradeOffer"];
+//[[[end]]]
 
 if (EPOCH_p2ptradeTarget distance player > 8) exitWith{ EPOCH_p2ptradeTarget = ObjNull; };
 if (vehicle player != player || vehicle EPOCH_p2ptradeTarget != EPOCH_p2ptradeTarget) exitWith { EPOCH_p2ptradeTarget = ObjNull; };

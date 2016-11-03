@@ -13,7 +13,9 @@
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_code/gui/group/EPOCH_Group_Combo.sqf
 */
 disableSerialization;
-private ["_BtnInvite","_currentMember","_currentMaxMember","_ctrl","_selected","_playerUID"];
+//[[[cog import generate_private_arrays ]]]
+private ["_BtnInvite","_ctrl","_currentMaxMember","_currentMember","_playerUID","_selected"];
+//[[[end]]]
 _ctrl = _this select 0;
 _selected = _this select 1;
 _playerUID = getPlayerUID player;

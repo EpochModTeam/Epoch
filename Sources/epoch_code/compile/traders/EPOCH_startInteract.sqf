@@ -1,5 +1,7 @@
 // TODO remove unused file
-private ["_target","_forceGear","_targets","_handled","_dialog","_vehicle"];
+//[[[cog import generate_private_arrays ]]]
+private ["_dialog","_forceGear","_handled","_target","_targets","_vehicle"];
+//[[[end]]]
 closeDialog 0;
 _dialog = "";
 _handled = false;

@@ -17,7 +17,9 @@
 	Usage:
 	_ctrl ctrlSetEventHandler ["MouseMoving", "[_this,control3D] call Epoch_3DctrlPitchYaw"];
 */
-private ["_inX","_inY","_dirY","_upY","_dirX","_upX"];
+//[[[cog import generate_private_arrays ]]]
+private ["_dirX","_dirY","_inX","_inY","_upX","_upY"];
+//[[[end]]]
 params ["_arr","_ctrl3D"];
 
 disableSerialization;

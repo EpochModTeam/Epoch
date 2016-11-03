@@ -1,0 +1,43 @@
+{
+    "_header": {
+        "@author": "Aaron Clark - https://EpochMod.com",
+        "@contributors": [],
+        "@description": "Epoch cfgfunctions",
+        "@licence": "Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike",
+        "@github": "https://github.com/EpochModTeam/Epoch/tree/release/Sources/{filename}"
+    },
+    "cfgFunctions": {
+        "A3": {
+            "tag": "BIS",
+            "functions": {
+                "returnVector": {
+                    "file": "epoch_code\\compile\\bis_functions\\returnVector.sqf"
+                }
+            }
+        },
+        "EPOCH": {
+            "tag": "EPOCH",
+            "functions": {
+                "returnConfigEntryV2": {
+                    "file": "epoch_code\\compile\\functions\\EPOCH_fn_returnConfigEntryV2.sqf"
+                },
+                "isAny": {
+                    "file": "epoch_code\\compile\\both\\EPOCH_isAny.sqf"
+                },
+                "compiler": {
+                    "file": "epoch_code\\compile\\both\\EPOCH_compiler.sqf"
+                }
+            },
+            "Client": {
+                "init": {
+                    "file": "epoch_code\\init\\fn_init.sqf",
+                    "preInit": 1
+                },
+                "postinit": {
+                    "file": "epoch_code\\init\\fn_postinit.sqf",
+                    "postInit": 1
+                }
+            }
+        }
+    }
+}

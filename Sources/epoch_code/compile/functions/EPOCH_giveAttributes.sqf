@@ -1,6 +1,7 @@
 // EPOCH_giveAttributes
-
-private ["_return","_addPlus","_editableVars","_selectedVar","_varName","_celcuis","_celcuisNew","_customVarIndex","_limits","_currentVal","_newValue"];
+//[[[cog import generate_private_arrays ]]]
+private ["_addPlus","_celcuis","_celcuisNew","_currentVal","_customVarIndex","_data","_limits","_max","_min","_newValue","_return","_varName"];
+//[[[end]]]
 params ["_selectedVarName",["_data",0],["_randomizeData",0]];
 _addPlus = if (_data > 0) then {"+"} else {""};
 _return = "";

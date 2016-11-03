@@ -12,7 +12,9 @@
     Github:
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_code/gui/scripts/craftingv2/EPOCH_crafting_LB_defaults.sqf
 */
-private ["_y","_idx","_recipeCTRL","_STdesc","_lbColor","_playerGear"];
+//[[[cog import generate_private_arrays ]]]
+private ["_STdesc","_idx","_lbColor","_playerGear","_recipeCTRL","_y"];
+//[[[end]]]
 
 _recipeCTRL = rmx_var_crafting_ctrl_main select 0;
 _STdesc = rmx_var_crafting_ctrl_main select 2;

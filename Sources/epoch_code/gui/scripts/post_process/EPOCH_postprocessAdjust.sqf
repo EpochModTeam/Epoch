@@ -26,9 +26,14 @@
 							dynamicBlur >> [0]
 							colorInversion >> [0,0,0]
 */
-params [["_handle",666],["_animSpeed",666],["_effect",[]]];
+params [["_handle",666],["_animSpeed",666],["_effect",[]],["_fixBool",false]];
 //needed because PPs have variable array sizes
 if ((_handle isEqualTo 666) || (_animSpeed isEqualTo 666) || (_effect isEqualTo [])) exitWith {hint "Wrong PPAdjust input"; false};
+
+// fix any strings to bool
+if (_fixBool) then {
+	_effect = _effect call EPOCH_fnc_arrayStringToBool;
+};
 
 _handle ppEffectEnable true;
 _handle ppEffectAdjust _effect;

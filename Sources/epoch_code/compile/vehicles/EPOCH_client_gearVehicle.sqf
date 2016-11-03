@@ -12,6 +12,9 @@
     Github:
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_code/compile/vehicles/EPOCH_client_gearVehicle.sqf
 */
+//[[[cog import generate_private_arrays ]]]
+private ["_vehicles"];
+//[[[end]]]
 closeDialog 0;
 if (!isNull cursorTarget) then {
 	_vehicles = player nearEntities[["LandVehicle", "Ship", "Air", "Tank"], 30];

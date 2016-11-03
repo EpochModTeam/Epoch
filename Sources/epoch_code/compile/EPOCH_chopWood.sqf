@@ -12,7 +12,9 @@
     Github:
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_code/compile/EPOCH_chopWood.sqf
 */
-private ["_currentPos","_object","_type","_start","_end","_p3dName","_finalConfig","_str","_sel_object","_findStart","_objects","_config"];
+//[[[cog import generate_private_arrays ]]]
+private ["_config","_currentPos","_getWorldTypes","_object","_objects","_sel_object","_str","_type","_worldTypes"];
+//[[[end]]]
 
 _currentPos = player modelToWorld[0, 5, 0];
 if !(surfaceIsWater _currentPos) then {

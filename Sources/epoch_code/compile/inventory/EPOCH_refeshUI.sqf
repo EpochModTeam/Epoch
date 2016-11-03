@@ -21,7 +21,9 @@
 	Returns:
 	NOTHING
 */
-private ["_selectedClass","_newArmor","_totalArmor","_totalArmorMax","_selectedItem","_bar","_uniformArmor","_finalArmor","_vestArmor","_headgearArmor","_totalArmorUI","_bar_compare"];
+//[[[cog import generate_private_arrays ]]]
+private ["_bar","_bar_compare","_finalArmor","_headgearArmor","_newArmor","_selectedClass","_selectedItem","_totalArmor","_totalArmorMax","_totalArmorUI","_uniformArmor","_vestArmor"];
+//[[[end]]]
 disableSerialization;
 if (!isNull findDisplay 602) then {
 

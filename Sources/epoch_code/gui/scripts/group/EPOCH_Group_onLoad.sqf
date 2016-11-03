@@ -12,7 +12,9 @@
     Github:
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_code/gui/group/EPOCH_Group_onLoad.sqf
 */
-private ["_index","_players","_found","_playerUID","_picture","_display","_BtnInvite","_GroupMemberList","_InvitePlayerCombo","_currentMaxMember","_currentMember","_myPlayerUID","_playerIsLeader","_playerIsMod","_onlinePUID"];
+//[[[cog import generate_private_arrays ]]]
+private ["_BtnInvite","_GroupMemberList","_InvitePlayerCombo","_currentMaxMember","_currentMember","_display","_found","_index","_myPlayerUID","_onlinePUID","_picture","_playerIsLeader","_playerIsMod","_playerUID","_players"];
+//[[[end]]]
 disableSerialization;
 _display = findDisplay -1300;
 _BtnInvite = _display displayCtrl 30;

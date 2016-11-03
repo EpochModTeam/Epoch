@@ -23,7 +23,10 @@
 	Returns:
 
 */
-_paramres = params [["_trgt", str(diag_tickTime)],["_mPos", position player],["_mShape","ICON"],["_mType","mil_dot"],["_mColor","ColorBlack"],["_mSize",[0.7,0.7]],["_mBrush",""],["_mDir",0],["_mText",""],["_mAlpha",1],["_mName",""]];
+//[[[cog import generate_private_arrays ]]]
+private ["_mName","_mrkr"];
+//[[[end]]]
+params [["_trgt", str(diag_tickTime)],["_mPos", position player],["_mShape","ICON"],["_mType","mil_dot"],["_mColor","ColorBlack"],["_mSize",[0.7,0.7]],["_mBrush",""],["_mDir",0],["_mText",""],["_mAlpha",1],["_mName",""]];
 diag_log format["Epoch: ADMIN: Creating marker at %1 called %2 (Params:%3).", _mPos, _trgt, _paramres];
 
 if(_mName == "")then{_mName = str(_trgt) + str(diag_tickTime);};

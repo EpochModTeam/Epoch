@@ -21,7 +21,9 @@
 	Returns:
 	STRING
 */
-private ["_return"];
+//[[[cog import generate_private_arrays ]]]
+private ["_displayName","_return"];
+//[[[end]]]
 params ["_item"];
 _return = "";
 if ([_item, "CfgVehicles"] call EPOCH_fnc_isAny) then {

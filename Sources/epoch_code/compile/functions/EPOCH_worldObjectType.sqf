@@ -22,6 +22,9 @@
 	Returns:
 	BOOL or ARRAY of BOOLs
 */
+//[[[cog import generate_private_arrays ]]]
+private ["_config","_end","_finalConfig","_findStart","_isTree","_p3dName","_return","_start"];
+//[[[end]]]
 params ["_str","_checkType"];
 _return = false;
 _config = 'CfgEpochClient' call EPOCH_returnConfig;

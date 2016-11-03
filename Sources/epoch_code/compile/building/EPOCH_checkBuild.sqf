@@ -21,7 +21,9 @@
 	Returns:
 	ARRAY of BOOLs
 */
-private ["_out","_objType","_config"];
+//[[[cog import generate_private_arrays ]]]
+private ["_config","_objType","_out"];
+//[[[end]]]
 _out = [false, false, false];
 
 if !(isNil "EPOCH_simulSwap_Lock") exitWith{ _out };

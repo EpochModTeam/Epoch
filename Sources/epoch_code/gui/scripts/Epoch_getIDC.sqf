@@ -13,7 +13,9 @@
     Github:
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_code/gui/scripts/Epoch_getIDC.sqf
 */
-private ["_in","_list","_out","_find"];
+//[[[cog import generate_private_arrays ]]]
+private ["_find","_in","_list","_out"];
+//[[[end]]]
 _in = [_this, 0, controlNull, [controlNull]] call BIS_fnc_param;
 
 _list = missionNamespace getVariable ["rmx_var_uniqueIDC",[]];

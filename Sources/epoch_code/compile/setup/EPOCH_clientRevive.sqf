@@ -22,7 +22,9 @@
 	Returns:
 	NOTHING
 */
-private ["_ply","_group","_playerObject"];
+//[[[cog import generate_private_arrays ]]]
+private ["_group","_playerObject","_ply"];
+//[[[end]]]
 _playerObject = _this select 0;
 if !(alive player && alive _playerObject && !isPlayer _playerObject) then {
 	_ply = player;

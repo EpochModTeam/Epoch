@@ -4,15 +4,18 @@
     Contributors:
 
 	Description:
-	A3 Epoch Anti-Vehicle Wall glitch
+	Get out handler for A3 Epoch
+	Includes Anti-Vehicle Wall glitch checks
 
     Licence:
     Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
 
     Github:
-    https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_code/compile/EPOCH_antiWall.sqf
+    https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_code/compile/EPOCH_getOutMan_EH.sqf
 */
-private ["_start","_end","_dirTo"];
+//[[[cog import generate_private_arrays ]]]
+private ["_dirTo","_end","_start"];
+//[[[end]]]
 params ["_unit","_position","_vehicle"];
 if (_unit == player) then {
 	_start = getPosWorld _vehicle;

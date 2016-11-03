@@ -12,7 +12,9 @@
     Github:
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_code/gui/group/EPOCH_Group_BtnInvite.sqf
 */
-private ["_txt","_InvitePlayerCombo","_playerUID","_playerName","_upgradeSlots","_upgradePrice","_found","_currentMember","_currentMaxMember","_BtnInvite"];
+//[[[cog import generate_private_arrays ]]]
+private ["_BtnInvite","_InvitePlayerCombo","_currentMaxMember","_currentMember","_found","_playerName","_playerUID","_ret","_txt","_upgradePrice","_upgradeSlots"];
+//[[[end]]]
 disableSerialization;
 _BtnInvite = (findDisplay -1300) displayCtrl 30;
 _playerUID = getPlayerUID player;
@@ -23,7 +25,7 @@ if (_playerUID == Epoch_my_GroupUID || {_x select 0 == _playerUID}count (Epoch_m
 		_InvitePlayerCombo = (findDisplay -1300) displayCtrl 41;
 		_playerUID = _InvitePlayerCombo lbData (lbCurSel _InvitePlayerCombo);
 		_playerName = _InvitePlayerCombo lbText (lbCurSel _InvitePlayerCombo);
-		if (_playerUID != "" && _playerName != "") then {
+		if (_playerUID != "" && _playerName != "" && ({_playerUID in _x} count (Epoch_my_Group select 3) == 0) && ({_playerUID in _x} count (Epoch_my_Group select 4) == 0) && !(_playerUID == Epoch_my_GroupUID)) then {
 			_txt = format["Do you want to add %1 to your Group?",_playerName];
 			[_playerUID,_txt] spawn {
 				_ret = [_this select 1,"Epoch Group Menu",true,true] call BIS_fnc_GUImessage;

@@ -12,7 +12,28 @@
     Github:
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_code/init/fn_postinit.sqf
 */
-if (!isDedicated && isMultiplayer && hasInterface) then {
-	call compile preprocessFileLineNumbers "epoch_code\init\client_init.sqf";
+if (isDedicated) then {
+	// dedicated server
+	call compile preprocessFileLineNumbers "\epoch_server\init\server_init.sqf";
+} else {
+	if (hasInterface) then {
+
+		if (isMultiplayer) then {
+			// start multiplayer game
+			call compile preprocessFileLineNumbers "epoch_code\init\client_init.sqf";
+		};
+
+		if (isServer) then {
+			// listen server host
+
+		} else {
+			// all players
+
+
+		};
+	} else {
+		// Headless Clients
+
+	};
 };
 true

@@ -12,7 +12,9 @@
     Github:
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_code/init/both_init.sqf
 */
-private ["_customVarsInit","_antagonistSpawnDefaults","_spawnLimits","_say3dsounds"];
+//[[[cog import generate_private_arrays ]]]
+private ["_antagonistSpawnDefaults","_customVarsInit","_say3dsounds","_say3dsoundsConfig","_spawnLimits"];
+//[[[end]]]
 
 // detect if Ryan's Zombies and Deamons mod is present
 if (["CfgEpochClient", "ryanZombiesEnabled", false] call EPOCH_fnc_returnConfigEntryV2) then {

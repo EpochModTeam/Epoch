@@ -12,8 +12,9 @@
     Github:
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_code/compile/p2p_trading/EPOCH_startTrade.sqf
 */
-private["_index"];
-
+//[[[cog import generate_private_arrays ]]]
+private ["_index"];
+//[[[end]]]
 closeDialog 0;
 if !(createdialog "Trade") exitWith {};
 

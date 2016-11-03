@@ -23,52 +23,53 @@
 	Returns:
 	BOOL
 */
-private ["_cat","_file","_fnc_path","_var_name","_file_raw","_itemCompile","_tag","_file_tag","_config","_returnConfig","_version"];
-params [["_configName","",[""]]];
+//[[[cog import generate_private_arrays ]]]
+private ["_config","_config_name","_file","_file_raw","_file_tag","_fnc_path","_missionConfig","_tag","_var_name","_version"];
+//[[[end]]]
+params [["_configName","",[""] ] ];
 
-_returnConfig = {
-	private["_return", "_config"];
-	_return = (configfile >> _this);
-	_config = (getMissionConfig _this);
-	if (isClass _config) then{
-	  _return = _config;
-	};
-	_return
+_config = (configfile >> _configName);
+_missionConfig = (getMissionConfig _configName);
+if (isClass _missionConfig) then{
+	_config = _missionConfig;
 };
-
-_config = _configName call _returnConfig;
 _version = getNumber(_config >> "version");
-if (_version == 1) then {
+if (_version >= 1) then {
 	{
 		if (isClass(_x)) then {
 			_tag = getText(_x >> "tag");
 			_file = getText(_x >> "file");
 			_file_tag = _file;
-			_cat = "";
 			{
 				if (isClass(_x)) then {
 					_file = _file_tag;
 					_file_raw = getText(_x >> "file");
 					if (_file_raw == "") then {
-						_cat = configName _x;
-						_file = _file + "\" + _cat;
+						_file = format["%1\%2", _file, configName _x];
 					} else {
 						_file = _file_raw;
 					};
 					{
-						_var_name = _tag + "_" + configName _x;
-						_fnc_path = _file + "\" + _var_name + ".sqf";
+						_config_name = configName _x;
+						//version 2 More like BI standard fnc / fn_
+						_var_name = format["%1_fnc_%2", _tag, _config_name];
+						_fnc_path = format["%1\fn_%2.sqf", _file, _config_name];
+						if (_version == 1) then {
+							//version 1 TAG + _ + configName
+							_var_name = format["%1_%2", _tag, _config_name];
+							_fnc_path = format["%1\%2.sqf", _file, _var_name];
+						};
 						_file_raw = getText(_x >> "file");
 						if (_file_raw != "") then {
 							_fnc_path = _file_raw;
 						};
-						_itemCompile = compileFinal preprocessFileLineNumbers _fnc_path;
-						missionNamespace setvariable [_var_name,_itemCompile];
-					} forEach ("isclass _x" configClasses (_x));
+						missionNamespace setvariable [_var_name,compileFinal preprocessFileLineNumbers _fnc_path];
+						if (getNumber(_x >> "preInit") == 1) then {
+							call (missionNamespace getvariable _var_name);
+						};
+					} forEach (configProperties [_x, "isClass _x", true]);
 				}
-			} forEach ("isclass _x" configClasses (_x));
+			} forEach (configProperties [_x, "isClass _x", true]);
 		};
-	} forEach ("isclass _x" configClasses (_config));
-} else {
-	diag_log format["Epoch: Error Compiler format for %1 is out of date.",_configName];
+	} forEach (configProperties [_config, "isClass _x", true]);
 };

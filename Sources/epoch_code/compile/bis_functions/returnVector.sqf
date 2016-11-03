@@ -1,5 +1,7 @@
 // BIS function
-private ["_v","_d","_x","_y"];
+//[[[cog import generate_private_arrays ]]]
+private ["_d","_v","_x","_y"];
+//[[[end]]]
 _v = +(_this select 0);
 _d = _this select 1;
 

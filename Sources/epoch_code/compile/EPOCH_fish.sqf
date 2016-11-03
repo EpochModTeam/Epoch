@@ -12,7 +12,9 @@
     Github:
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_code/compile/EPOCH_fish.sqf
 */
-private ["_bobber","_diffTime","_fishes","_fish","_randomChanceMax","_randomChance","_castTime","_nearByBobbers","_nearByBobbersLocal","_objects","_currentPos"];
+//[[[cog import generate_private_arrays ]]]
+private ["_bobber","_castTime","_currentPos","_diffTime","_fish","_fishes","_objects","_randomChance","_randomChanceMax"];
+//[[[end]]]
 
 _currentPos = player modelToWorld[0, 5 + (random 5), 0];
 if (surfaceIsWater _currentPos) then {

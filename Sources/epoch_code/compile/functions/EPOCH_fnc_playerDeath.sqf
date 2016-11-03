@@ -22,9 +22,10 @@
 	Returns:
 	BOOL
 */
-private ["_playerDeathScreen","_playerKilledScreen","_tapDiag","_config","_doRevenge"];
-params [["_unit",objNull,[objNull]], ["_killer",objNull,[objNull]]];
-
+//[[[cog import generate_private_arrays ]]]
+private ["_config","_doRevenge","_playerDeathScreen","_playerKilledScreen","_playerRevengeMinAliveTime","_tapDiag"];
+//[[[end]]]
+params [["_unit",objNull,[objNull]],["_killer",objNull,[objNull]] ];
 _config = 'CfgEpochClient' call EPOCH_returnConfig;
 _playerDeathScreen = getText(_config >> "playerDeathScreen");
 _playerRevengeMinAliveTime = getNumber(_config >> "playerRevengeMinAliveTime");
@@ -59,10 +60,8 @@ if (Epoch_canBeRevived) then {
 };
 
 [_killer, _tapDiag] spawn{
-	_killer2 = _this select 0;
-	_tapDiag2 = _this select 1;
+	params ["_killer2","_tapDiag2"];
 	while {!alive player} do {
-
 		if (playerRespawnTime <= 1) exitWith{ (findDisplay 46) closeDisplay 0; };
 		if (playerRespawnTime > 15 && !dialog) then {createDialog _tapDiag2;};
 		if (isObjectHidden player) then {closeDialog 2;};

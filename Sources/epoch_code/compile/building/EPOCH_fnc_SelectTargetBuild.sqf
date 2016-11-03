@@ -21,7 +21,9 @@
 	Returns:
 	BOOL
 */
-private ["_targeter","_stability"];
+//[[[cog import generate_private_arrays ]]]
+private ["_stability","_targeter"];
+//[[[end]]]
 
 if !(isNil "EPOCH_simulSwap_Lock") exitWith{ false };
 if !(isNull EPOCH_Target) exitWith{ false };

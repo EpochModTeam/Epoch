@@ -12,7 +12,9 @@
     Github:
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_code/gui/group/EPOCH_cGroup_BtnCreate.sqf
 */
-private ["_groupName","_upgradePrice","_txtCtrl","_array"];
+//[[[cog import generate_private_arrays ]]]
+private ["_array","_groupName","_ret","_timeout","_txt","_txtCtrl","_upgradePrice"];
+//[[[end]]]
 disableSerialization;
 _txtCtrl = (findDisplay -1200) displayCtrl 21;
 _array = toArray(ctrlText _txtCtrl);

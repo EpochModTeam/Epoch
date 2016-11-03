@@ -22,7 +22,9 @@
 	Returns:
 	BOOL
 */
-private ["_wHPos","_wH","_nearByHolder"];
+//[[[cog import generate_private_arrays ]]]
+private ["_nearByHolder","_wH","_wHPos"];
+//[[[end]]]
 params [["_item","",[""]],["_count",1]];
 for "_i" from 1 to _count do
 {

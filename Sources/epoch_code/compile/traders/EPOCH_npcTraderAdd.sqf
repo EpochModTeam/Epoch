@@ -1,4 +1,6 @@
-private ["_stockLimit","_allowAdd","_limit","_slot","_aiItems","_itemClasses","_itemQtys","_qtyIndex","_item","_sizeOut","_worth","_cryptoCount","_itemWorth","_itemTax","_tax","_index","_uiItem","_config"];
+//[[[cog import generate_private_arrays ]]]
+private ["_action","_class","_condition","_disabledDoor","_displayname","_doorIndex","_index","_position","_statement","_uniqueActions","_unlock","_useractions"];
+//[[[end]]]
 params ["_control","_selected"];
 
 if !(isNull EPOCH_lastNPCtradeTarget) then {

@@ -21,7 +21,9 @@
 	Returns:
 	NUMBER
 */
-private ["_uniformClass","_uniformArmor","_uniformConfig","_uniformArmorStructural"];
+//[[[cog import generate_private_arrays ]]]
+private ["_newArmor","_uniformArmor","_uniformArmorStructural","_uniformClass","_uniformConfig"];
+//[[[end]]]
 
 _uniformClass = _this;
 if (isClass (configFile >> "CfgWeapons" >> _this)) then {

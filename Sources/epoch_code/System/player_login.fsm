@@ -1,8 +1,8 @@
-/*%FSM<COMPILE "D:\SteamLibrary\steamapps\common\Arma 3 Tools\FSMEditor\scriptedFSM.cfg, Epoch Login">*/
+/*%FSM<COMPILE "F:\Program Files (x86)\Steam\steamapps\common\Arma 3 Tools\FSMEditor\scriptedFSM.cfg, Epoch Login">*/
 /*%FSM<HEAD>*/
 /*
 item0[] = {"INIT",0,250,-25.000000,-375.000000,75.000000,-325.000000,0.000000,"INIT"};
-item1[] = {"FINISH",1,4346,-25.000000,1475.000000,75.000000,1525.000000,0.000000,"FINISH"};
+item1[] = {"FINISH",1,4346,-149.463196,1518.792480,-49.463196,1568.792480,0.000000,"FINISH"};
 item2[] = {"true",8,218,-150.000000,-125.000000,-50.000000,-75.000000,0.000000,"true"};
 item3[] = {"Version_Check",2,250,-25.000000,-75.000000,75.000000,-25.000000,0.000000,"Version Check"};
 item4[] = {"Player_Object_Re",4,218,-150.000000,75.000000,-50.000000,125.000000,0.000000,"Player" \n "Object Ready"};
@@ -183,8 +183,8 @@ link93[] = {82,76};
 link94[] = {83,16};
 link95[] = {83,22};
 link96[] = {84,31};
-globals[] = {0.000000,0,0,0,0,640,480,1,247,6316128,1,-534.004700,883.834412,1895.573975,986.017029,1287,884,1};
-window[] = {2,-1,-1,-32000,-32000,1149,2931,3915,382,3,1305};
+globals[] = {0.000000,0,0,0,0,640,480,1,247,6316128,1,-566.678223,916.507324,1906.129761,921.949097,1287,854,1};
+window[] = {2,-1,-1,-1,-1,923,-1524,-540,156,3,1305};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -236,35 +236,34 @@ class FSM
                 {
                         name = "FINISH";
                         itemno = 1;
-                        init = /*%FSM<STATEINIT""">*/"[] spawn {" \n
-                         "	disableSerialization;" \n
-                         "  	waitUntil{!isNull (findDisplay 46)};" \n
-                         "	_display = findDisplay 46;" \n
-                         "	{" \n
-                         "		_display displayAddEventHandler [_x,([""CfgEpochClient"", _x, """"] call EPOCH_fnc_returnConfigEntryV2)];" \n
-                         "	} forEach ([""CfgEpochClient"", ""displayAddEventHandler"", []] call EPOCH_fnc_returnConfigEntryV2);" \n
-                         "	call epoch_dynamicHUD_start;	" \n
-                         "	player switchMove """";" \n
-                         "};" \n
+                        init = /*%FSM<STATEINIT""">*/"// setup display EH's" \n
+                         "{" \n
+                         "	(findDisplay 46) displayAddEventHandler [_x,([""CfgEpochClient"", _x, """"] call EPOCH_fnc_returnConfigEntryV2)];" \n
+                         "} forEach ([""CfgEpochClient"", ""displayAddEventHandler"", []] call EPOCH_fnc_returnConfigEntryV2);" \n
                          "" \n
-                         "3 fadeSound 1;" \n
+                         "// reset anim state" \n
+                         "player switchMove """";" \n
                          "" \n
-                         "if (_debug) then {" \n
-                         "	diag_log ""EPOCH-LOGIN: Finish!"";" \n
-                         "};" \n
+                         "// setup Epoch Hud" \n
+                         "call epoch_dynamicHUD_start;" \n
+                         "[] spawn EPOCH_masterLoop;" \n
                          "" \n
                          "EPOCH_loginFSM = nil;" \n
                          "EPOCH_playerLoginInit = nil;" \n
                          "" \n
-                         "//player enableSimulation true;" \n
-                         "" \n
+                         "// fade in sound and screen" \n
+                         "3 fadeSound 1;" \n
                          "titleCut ["""", ""BLACK IN"", 1];" \n
                          "1338 cutText ["""",""PLAIN"",0]; " \n
                          "" \n
                          "progressLoadingScreen 1.0;" \n
-                         "" \n
                          "endLoadingScreen;" \n
-                         "EPOCH_loadingScreenDone = true;"/*%FSM</STATEINIT""">*/;
+                         "EPOCH_loadingScreenDone = true;" \n
+                         "" \n
+                         "if (_debug) then {" \n
+                         "	diag_log ""EPOCH-LOGIN: Finish!"";" \n
+                         "};" \n
+                         ""/*%FSM</STATEINIT""">*/;
                         precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
                         class Links
                         {
@@ -287,7 +286,7 @@ class FSM
                          "_epoch_assets3 = getText(configFile >> ""Epoch"" >> ""Version"" >> ""A3_epoch_assets_3"");" \n
                          "_epoch_config = getText(configFile >> ""Epoch"" >> ""Version"" >> ""A3_epoch_config"");" \n
                          "_epoch_language = getText(configFile >> ""Epoch"" >> ""Version"" >> ""A3_epoch_language"");" \n
-                         "_epoch_underground = getText(configFile >> ""Epoch"" >> ""Version"" >> ""Underground_Epoch"");" \n
+                         "_epoch_community = getText(configFile >> ""Epoch"" >> ""Version"" >> ""a3_epoch_community"");" \n
                          "_epoch_vehicles = getText(configFile >> ""Epoch"" >> ""Version"" >> ""A3_epoch_vehicles"");" \n
                          "_epoch_weapons = getText(configFile >> ""Epoch"" >> ""Version"" >> ""a3_epoch_weapons"");" \n
                          "" \n
@@ -299,7 +298,7 @@ class FSM
                          "_my_epoch_assets3 = getText(configFile >> ""CfgPatches"" >> ""A3_epoch_assets_3"" >> ""epochVersion"");" \n
                          "_my_epoch_config = getText(configFile >> ""CfgPatches"" >> ""A3_epoch_config"" >> ""epochVersion"");" \n
                          "_my_epoch_language = getText(configFile >> ""CfgPatches"" >> ""A3_epoch_language"" >> ""epochVersion"");" \n
-                         "_my_epoch_underground = getText(configFile >> ""CfgPatches"" >> ""Underground_Epoch"" >> ""epochVersion"");" \n
+                         "_my_epoch_community = getText(configFile >> ""CfgPatches"" >> ""a3_epoch_community"" >> ""epochVersion"");" \n
                          "_my_epoch_vehicles = getText(configFile >> ""CfgPatches"" >> ""A3_epoch_vehicles"" >> ""epochVersion"");" \n
                          "_my_epoch_weapons = getText(configFile >> ""CfgPatches"" >> ""a3_epoch_weapons"" >> ""epochVersion"");" \n
                          "" \n
@@ -321,7 +320,7 @@ class FSM
                                          "_my_epoch_assets3 != _epoch_assets3 ||" \n
                                          "_my_epoch_config != _epoch_config ||" \n
                                          "_my_epoch_language != _epoch_language ||" \n
-                                         "_my_epoch_underground != _epoch_underground ||" \n
+                                         "_my_epoch_community != _epoch_community ||" \n
                                          "_my_epoch_vehicles != _epoch_vehicles ||" \n
                                          "_my_epoch_weapons != _epoch_weapons"/*%FSM</CONDITION""">*/;
                                         action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
@@ -911,7 +910,6 @@ class FSM
                          "	}forEach EPOCH_playerHitPoints;" \n
                          "};" \n
                          "" \n
-                         "[] spawn EPOCH_masterLoop;" \n
                          "true call EPOCH_fnc_Weather;" \n
                          "[5,100] spawn EPOCH_niteLight;" \n
                          "" \n
@@ -965,7 +963,7 @@ class FSM
                                         priority = 0.000000;
                                         to="FINISH";
                                         precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-                                        condition=/*%FSM<CONDITION""">*/"preloadCamera _playerPos"/*%FSM</CONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!(isNull (findDisplay 46)) && {preloadCamera _playerPos}"/*%FSM</CONDITION""">*/;
                                         action=/*%FSM<ACTION""">*/"call compile _extraPayload;"/*%FSM</ACTION""">*/;
                                 };
                                 /*%FSM</LINK>*/

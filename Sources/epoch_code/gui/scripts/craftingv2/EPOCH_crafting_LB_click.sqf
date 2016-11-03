@@ -14,7 +14,9 @@
 */
 if (rmx_var_crafting_SearchConfigData isEqualTo []) exitWith {false};
 
-private ["_data","_idx","_countData","_itemsPlayer","_itemsNearby","_itemsRequired","_lbColor","_nearbyCount","_cfg","_ingredientCTRL","_STdesc","_3DCTRL","_selection","_ingredientData","_recipes","_usedIn"];
+//[[[cog import generate_private_arrays ]]]
+private ["_3DCTRL","_STdesc","_c","_cfg","_countData","_data","_idx","_ingredientCTRL","_ingredientData","_itemsNearby","_itemsPlayer","_itemsRequired","_lbColor","_nearbyCount","_p","_r","_recipes","_selection","_usedIn","_x"];
+//[[[end]]]
 
 _cfg = 'CfgCrafting' call EPOCH_returnConfig;
 _ingredientCTRL = rmx_var_crafting_ctrl_main select 1;

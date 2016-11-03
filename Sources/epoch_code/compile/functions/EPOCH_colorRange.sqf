@@ -23,7 +23,9 @@
 	Returns:
 	MIXED
 */
-private ["_ratio","_b","_r","_g"];
+//[[[cog import generate_private_arrays ]]]
+private ["_b","_color","_g","_r","_ratio","_return"];
+//[[[end]]]
 params ["_minimum", "_maximum", "_value", "_alpha"];
 _ratio = 2 * (_value-_minimum) / (_maximum - _minimum);
 _b = 0 max (255*(1 - _ratio));

@@ -12,7 +12,9 @@
     Github:
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_code/compile/EPOCH_UnisexCheck.sqf
 */
-private ["_femaleVariant","_vest","_item","_config","_woman","_maleVariant","_vestItems","_mags"];
+//[[[cog import generate_private_arrays ]]]
+private ["_config","_femaleVariant","_mags","_maleVariant","_vest","_vestItems","_woman"];
+//[[[end]]]
 params ["_unit","_container","_item"];
 
 // check for access of a locked container

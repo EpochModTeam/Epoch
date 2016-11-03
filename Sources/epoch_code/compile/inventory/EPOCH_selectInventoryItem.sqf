@@ -22,7 +22,9 @@
 	Returns:
 	NOTHING
 */
-private ["_arr","_exit","_data","_name","_text","_pic","_craftingArray","_craftingArrayNames"];
+//[[[cog import generate_private_arrays ]]]
+private ["_arr","_craftingArray","_craftingArrayNames","_data","_exit","_index","_name","_pic","_text"];
+//[[[end]]]
 params ["_control","_index"];
 EPOCH_InteractedItem = [];
 

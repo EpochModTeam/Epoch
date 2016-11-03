@@ -12,7 +12,9 @@
     Github:
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_code/gui/group/EPOCH_Group_BtnKick.sqf
 */
-private ["_txt","_playerUID","_playerName","_group","_selected","_BtnKick"];
+//[[[cog import generate_private_arrays ]]]
+private ["_BtnKick","_group","_playerName","_playerUID","_ret","_selected","_txt"];
+//[[[end]]]
 disableSerialization;
 _BtnKick = (findDisplay -1300) displayCtrl 33;
 

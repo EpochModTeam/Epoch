@@ -12,7 +12,9 @@
     Github:
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_code/gui/scripts/dynamenu/Epoch_dynamicMenuCleanup.sqf
 */
-private ["_close","_cleanupVars"];
+//[[[cog import generate_private_arrays ]]]
+private ["_cfg","_cleanupVars","_close"];
+//[[[end]]]
 _close = param [0,false,[false]];
 
 _cleanupVars = {

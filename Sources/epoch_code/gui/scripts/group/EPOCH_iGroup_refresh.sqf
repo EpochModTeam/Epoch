@@ -12,7 +12,9 @@
     Github:
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_code/gui/group/EPOCH_iGroup_refresh.sqf
 */
+//[[[cog import generate_private_arrays ]]]
 private ["_index"];
+//[[[end]]]
 if !(Epoch_invited_GroupUIDs isEqualTo Epoch_invited_GroupUIDsPrev) then {
 	Epoch_invited_GroupUIDsPrev = Epoch_invited_GroupUIDs;
 	lbClear 1500;

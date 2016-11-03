@@ -27,7 +27,9 @@
 	Returns:
 	NOTHING
 */
-private ["_heal","_highestDMG","_currentHIT","_currentDMG","_newDMG","_attachments","_cursorTarget","_repaired","_gesture","_nuisanceLevel"];
+//[[[cog import generate_private_arrays ]]]
+private ["_ammoConfig","_attachments","_currentDMG","_currentHIT","_cursorTarget","_gesture","_heal","_highestDMG","_newDMG","_nuisanceLevel","_repaired"];
+//[[[end]]]
 params ["_unit","_weapon","_muzzle","_mode","_ammo","_magazine","_projectile"];
 EPOCH_lastFiredLocation = getPosATL player;
 switch true do {

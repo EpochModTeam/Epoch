@@ -13,7 +13,9 @@
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_code/gui/scripts/dynamenu/Epoch_dynamicMenu.sqf
 */
 disableSerialization;
-private ["_in","_selfOrTarget","_display","_cfg","_arr","_buttonSettings","_hasTarget","_checkConfigs","_entries"];
+//[[[cog import generate_private_arrays ]]]
+private ["_action","_arr","_buttonSettings","_c","_cfg","_checkConfigs","_config","_configs","_dName","_display","_entries","_hasTarget","_icon","_in","_selfOrTarget","_subclasses","_tTip","_tooltip","_tooltipcode","_x"];
+//[[[end]]]
 _in = [_this, 0, "",[""]] call BIS_fnc_param;
 
 _display = findDisplay 66600;

@@ -21,7 +21,9 @@
 	Returns:
 	NOTHING
 */
-private ["_vehSlot","_vehicle","_vehicles","_item","_current_crypto","_itemWorth","_itemTax","_tax","_config","_sizeOut","_arrayIn","_arrayOut"];
+//[[[cog import generate_private_arrays ]]]
+private ["_addWeaponToHands","_arrayIn","_arrayOut","_config","_current_crypto","_errorMsg","_item","_itemTax","_itemWorth","_sizeOut","_tax","_type","_vehSlot","_vehicle","_vehicles"];
+//[[[end]]]
 
 if (!isNil "EPOCH_TRADE_COMPLETE") exitWith {};
 if (!isNil "EPOCH_TRADE_STARTED") exitWith{};
@@ -149,12 +151,12 @@ if (alive _this) then {
 										_addWeaponToHands = true;
 									};
 								};
-								case 2: {
+								case 4: {
 									if (secondaryWeapon player == "") then {
 										_addWeaponToHands = true;
 									};
 								};
-								case 4: {
+								case 2: {
 									if (handgunWeapon player == "") then {
 										_addWeaponToHands = true;
 									};

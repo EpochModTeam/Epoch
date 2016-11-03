@@ -12,7 +12,9 @@
     Github:
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server/compile/epoch_vehicle/EPOCH_load_vehicles.sqf
 */
-private ["_availableColorsConfig","_location","_class","_dmg","_actualHitpoints","_hitpoints","_textures","_color","_colors","_textureSelectionIndex","_selections","_count","_objTypes","_objQty","_wMags","_wMagsArray","_attachments","_magazineSizeMax","_magazineName","_magazineSize","_qty","_objType","_marker","_found","_vehicle","_allHitpoints","_cfgEpochVehicles","_worldspace","_damage","_arr","_arrNum","_vehicleSlotIndex","_vehHiveKey","_response","_diag","_dataFormat","_dataFormatCount","_allVehicles","_serverSettingsConfig"];
+//[[[cog import generate_private_arrays ]]]
+private ["_actualHitpoints","_allHitpoints","_allVehicles","_allowDamage","_arr","_arrNum","_attachments","_availableColorsConfig","_cfgEpochVehicles","_class","_color","_colors","_config","_count","_damage","_dataFormat","_dataFormatCount","_diag","_dmg","_found","_hitpoints","_immuneIfStartInBase","_jammerOwner","_jammerRange","_jammers","_location","_lockedOwner","_magazineName","_magazineSize","_magazineSizeMax","_mags","_marker","_nearestJammer","_objQty","_objType","_objTypes","_qty","_removemagazinesturret","_removeweapons","_response","_selections","_serverSettingsConfig","_simulationHandler","_textureSelectionIndex","_textures","_vehHiveKey","_vehLockHiveKey","_vehicle","_vehicleDamages","_vehicleSlotIndex","_wMags","_wMagsArray","_worldspace"];
+//[[[end]]]
 params [["_maxVehicleLimit",0]];
 
 _diag = diag_tickTime;
@@ -22,8 +24,14 @@ EPOCH_VehicleSlots = [];
 _allVehicles = [];
 _vehicleDamages = [];
 
+_config = 'CfgEpochClient' call EPOCH_returnConfig;
+_jammerRange = getNumber(_config >> "buildingJammerRange");
+
 _serverSettingsConfig = configFile >> "CfgEpochServer";
+_immuneIfStartInBase = [_serverSettingsConfig, "immuneIfStartInBase", true] call EPOCH_fnc_returnConfigEntry;
 _simulationHandler = [_serverSettingsConfig, "simulationHandlerOld", false] call EPOCH_fnc_returnConfigEntry;
+_removeweapons = [_serverSettingsConfig, "removevehweapons", []] call EPOCH_fnc_returnConfigEntry;
+_removemagazinesturret = [_serverSettingsConfig, "removevehmagazinesturret", []] call EPOCH_fnc_returnConfigEntry;
 
 for "_i" from 1 to _maxVehicleLimit do {
 	_vehicleSlotIndex = EPOCH_VehicleSlots pushBack str(_i);
@@ -109,6 +117,18 @@ for "_i" from 1 to _maxVehicleLimit do {
 						clearMagazineCargoGlobal  _vehicle;
 						clearBackpackCargoGlobal  _vehicle;
 						clearItemCargoGlobal      _vehicle;
+
+						if !(_removeweapons isequalto []) then {
+							{
+								_vehicle removeWeaponGlobal _x;
+							} foreach _removeweapons;
+						};
+						if !(_removemagazinesturret isequalto []) then {
+							{
+								_vehicle removeMagazinesTurret _x;
+							} foreach _removemagazinesturret;
+						};
+
 						{
 							_objType = _forEachIndex;
 							_objTypes = _x;
@@ -159,11 +179,13 @@ for "_i" from 1 to _maxVehicleLimit do {
 										_magazineSize = _objQty select _forEachIndex;
 										if ((_magazineName isEqualType "STRING") && (_magazineSize isEqualType 0)) then {
 											_magazineSizeMax = getNumber (configFile >> "CfgMagazines" >> _magazineName >> "count");
-											// Add full magazines cargo
-											_vehicle addMagazineAmmoCargo [_magazineName, floor (_magazineSize / _magazineSizeMax), _magazineSizeMax];
-											// Add last non full magazine
-											if ((_magazineSize % _magazineSizeMax) > 0) then {
-												_vehicle addMagazineAmmoCargo [_magazineName, 1, floor (_magazineSize % _magazineSizeMax)];
+											if (_magazineSizeMax >= 1) then {
+												// Add full magazines cargo
+												_vehicle addMagazineAmmoCargo [_magazineName, floor (_magazineSize / _magazineSizeMax), _magazineSizeMax];
+												// Add last non full magazine
+												if ((_magazineSize % _magazineSizeMax) > 0) then {
+													_vehicle addMagazineAmmoCargo [_magazineName, 1, floor (_magazineSize % _magazineSizeMax)];
+												};
 											};
 										};
 									};
@@ -204,7 +226,34 @@ for "_i" from 1 to _maxVehicleLimit do {
 								} forEach _actualHitpoints;
 							};
 						};
-						_vehicle allowDamage true;
+
+                        // allow damage
+                        _allowDamage = true;
+                        if (_immuneIfStartInBase) then {
+                            _jammers = nearestObjects[_vehicle, ["PlotPole_EPOCH"], _jammerRange];
+                            if!(_jammers isEqualTo [])then {
+                                // get jammer owner
+                                _nearestJammer = _jammers select 0;
+                                _jammerOwner = _nearestJammer getVariable["BUILD_OWNER", "-2"];
+                                // get vehicle lock owner
+                                _lockedOwner = "-1";
+                                _vehLockHiveKey = format["%1:%2", (call EPOCH_fn_InstanceID), str(_i)];
+                                (["VehicleLock", _vehLockHiveKey] call EPOCH_fnc_server_hiveGETRANGE) params [["_status", 0 ],["_payload", [] ]];
+                                if (_status isEqualTo 1) then {
+                                    _lockedOwner = _payload param [0,"-1"];
+                                };
+                                // if match keep vehicle immune till first unlock
+                                if (_jammerOwner isEqualTo _lockedOwner) then {
+                                    _vehicle setVariable ["EPOCH_disallowedDamage", true];
+                                    _allowDamage = false;
+                                };
+                            };
+                        };
+
+                        if (_allowDamage) then {
+                            _vehicle allowDamage true;
+                        };
+
 						// vehicle simulation handler
 						if (_simulationHandler) then{
 							_vehicle enableSimulationGlobal false;

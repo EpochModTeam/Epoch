@@ -23,7 +23,9 @@
 	Returns:
 	SCALAR - (direction 0-360)
 */
-private ["_ret"];
+//[[[cog import generate_private_arrays ]]]
+private ["_dirToF","_pos1","_pos2","_ret"];
+//[[[end]]]
 params ["_pos1","_pos2",["_spread",32]];
 
 //if objects, not positions, were passed in, then get their positions

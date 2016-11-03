@@ -1,0 +1,3308 @@
+{
+    "_header": {
+        "@author": "Aaron Clark - https://EpochMod.com",
+        "@contributors": [],
+        "@description": "Prices for Trading system.",
+        "@licence": "Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike",
+        "@github": "https://github.com/EpochModTeam/Epoch/tree/release/Sources/{filename}"
+    },
+    "CfgPricing": {
+        "ItemEmptyTin": {
+            "price": 1
+        },
+        "ItemSodaEmpty": {
+            "price": 1
+        },
+        "ItemSodaAlpineDude": {
+            "price": 5
+        },
+        "ItemHotwire": {
+            "price": 15
+        },
+        "ItemKeyKit": {
+            "price": 15
+        },
+        "ItemBarrelF": {
+            "price": 200
+        },
+        "ItemBarrelE": {
+            "price": 50
+        },
+        "ItemPipe": {
+            "price": 10
+        },
+        "ItemKey": {
+            "price": 10
+        },
+        "ItemKeyBlue": {
+            "price": 10
+        },
+        "ItemKeyGreen": {
+            "price": 10
+        },
+        "ItemKeyRed": {
+            "price": 10
+        },
+        "ItemKeyYellow": {
+            "price": 10
+        },
+        "ItemDoc1": {
+            "price": 10
+        },
+        "ItemDoc2": {
+            "price": 10
+        },
+        "ItemDoc3": {
+            "price": 10
+        },
+        "ItemDoc4": {
+            "price": 10
+        },
+        "ItemDoc5": {
+            "price": 10
+        },
+        "ItemDoc6": {
+            "price": 10
+        },
+        "ItemDoc7": {
+            "price": 10
+        },
+        "ItemDoc8": {
+            "price": 10
+        },
+        "ItemVehDoc1": {
+            "price": 10
+        },
+        "ItemVehDoc2": {
+            "price": 10
+        },
+        "ItemVehDoc3": {
+            "price": 10
+        },
+        "ItemVehDoc4": {
+            "price": 10
+        },
+        "ItemBulb": {
+            "price": 10
+        },
+        "ItemBurlap": {
+            "price": 10
+        },
+        "ItemBriefcaseE": {
+            "price": 10
+        },
+        "ItemBriefcaseGold100oz": {
+            "price": 10000
+        },
+        "ItemAluminumBar": {
+            "price": 10
+        },
+        "ItemCopperBar": {
+            "price": 100
+        },
+        "ItemTinBar": {
+            "price": 1
+        },
+        "ItemPlywoodPack": {
+            "price": 100
+        },
+        "ItemComboLock": {
+            "price": 45
+        },
+        "Item_AssaultPack_cbr": {
+            "price": 10
+        },
+        "Item_AssaultPack_dgtl": {
+            "price": 10
+        },
+        "Item_AssaultPack_khk": {
+            "price": 10
+        },
+        "Item_AssaultPack_mcamo": {
+            "price": 10
+        },
+        "Item_AssaultPack_ocamo": {
+            "price": 10
+        },
+        "Item_AssaultPack_rgr": {
+            "price": 10
+        },
+        "Item_AssaultPack_sgg": {
+            "price": 10
+        },
+        "Item_AssaultPack_blk": {
+            "price": 10
+        },
+        "Item_Carryall_cbr": {
+            "price": 40
+        },
+        "Item_Carryall_khk": {
+            "price": 40
+        },
+        "Item_Carryall_mcamo": {
+            "price": 40
+        },
+        "Item_Carryall_ocamo": {
+            "price": 40
+        },
+        "Item_Carryall_oli": {
+            "price": 40
+        },
+        "Item_Carryall_oucamo": {
+            "price": 40
+        },
+        "Item_FieldPack_blk": {
+            "price": 15
+        },
+        "Item_FieldPack_cbr": {
+            "price": 15
+        },
+        "Item_FieldPack_khk": {
+            "price": 15
+        },
+        "Item_FieldPack_ocamo": {
+            "price": 15
+        },
+        "Item_FieldPack_oli": {
+            "price": 15
+        },
+        "Item_FieldPack_oucamo": {
+            "price": 15
+        },
+        "Item_Kitbag_cbr": {
+            "price": 25
+        },
+        "Item_Kitbag_mcamo": {
+            "price": 25
+        },
+        "Item_Kitbag_rgr": {
+            "price": 25
+        },
+        "Item_Kitbag_sgg": {
+            "price": 25
+        },
+        "Item_TacticalPack_blk": {
+            "price": 20
+        },
+        "Item_TacticalPack_mcamo": {
+            "price": 20
+        },
+        "Item_TacticalPack_ocamo": {
+            "price": 20
+        },
+        "Item_TacticalPack_oli": {
+            "price": 20
+        },
+        "Item_TacticalPack_rgr": {
+            "price": 20
+        },
+        "Item_smallbackpack_red": {
+            "price": 22
+        },
+        "Item_smallbackpack_green": {
+            "price": 22
+        },
+        "Item_smallbackpack_teal": {
+            "price": 22
+        },
+        "Item_smallbackpack_pink": {
+            "price": 22
+        },
+        "ChainSaw": {
+            "price": 125
+        },
+        "CircuitParts": {
+            "price": 50
+        },
+        "ItemCoolerE": {
+            "price": 50
+        },
+        "JackKit": {
+            "price": 25
+        },
+        "ItemLockbox": {
+            "price": 250,
+            "tax": 0.5
+        },
+        "ItemSafe": {
+            "price": 1250,
+            "tax": 0.5
+        },
+        "ItemCompass": {
+            "price": 3
+        },
+        "ItemGPS": {
+            "price": 20
+        },
+        "EpochRadio0": {
+            "price": 2
+        },
+        "EpochRadio1": {
+            "price": 4
+        },
+        "EpochRadio2": {
+            "price": 6
+        },
+        "EpochRadio3": {
+            "price": 8
+        },
+        "EpochRadio4": {
+            "price": 10
+        },
+        "EpochRadio5": {
+            "price": 12
+        },
+        "EpochRadio6": {
+            "price": 14
+        },
+        "EpochRadio7": {
+            "price": 16
+        },
+        "EpochRadio8": {
+            "price": 18
+        },
+        "EpochRadio9": {
+            "price": 20
+        },
+        "VehicleRepair": {
+            "price": 35
+        },
+        "VehicleRepairLg": {
+            "price": 50
+        },
+        "WhiskeyNoodle": {
+            "price": 80
+        },
+        "ItemWatch": {
+            "price": 2
+        },
+        "Binocular": {
+            "price": 4
+        },
+        "NVG_EPOCH": {
+            "price": 35
+        },
+        "acc_flashlight": {
+            "price": 5
+        },
+        "acc_pointer_IR": {
+            "price": 5
+        },
+        "srifle_EBR_F": {
+            "price": 150
+        },
+        "srifle_GM6_F": {
+            "price": 150
+        },
+        "srifle_LRR_F": {
+            "price": 200
+        },
+        "srifle_DMR_01_F": {
+            "price": 200
+        },
+        "20Rnd_762x51_Mag": {
+            "price": 4,
+            "tax": 0.9
+        },
+        "5Rnd_127x108_Mag": {
+            "price": 3,
+            "tax": 0.9
+        },
+        "5Rnd_127x108_APDS_Mag": {
+            "price": 6,
+            "tax": 0.9
+        },
+        "7Rnd_408_Mag": {
+            "price": 4,
+            "tax": 0.9
+        },
+        "10Rnd_762x54_Mag": {
+            "price": 2,
+            "tax": 0.9
+        },
+        "10Rnd_338_Mag": {
+            "price": 2,
+            "tax": 0.9
+        },
+        "130Rnd_338_Mag": {
+            "price": 2,
+            "tax": 0.9
+        },
+        "10Rnd_93x64_DMR_05_Mag": {
+            "price": 2,
+            "tax": 0.9
+        },
+        "10Rnd_127x54_Mag": {
+            "price": 2,
+            "tax": 0.9
+        },
+        "CUP_hgun_Compact": {
+            "price": 20
+        },
+        "CUP_hgun_Duty": {
+            "price": 20
+        },
+        "CUP_hgun_Phantom": {
+            "price": 25
+        },
+        "CUP_hgun_Glock17": {
+            "price": 25
+        },
+        "CUP_hgun_Makarov": {
+            "price": 20
+        },
+        "CUP_hgun_MicroUzi": {
+            "price": 45
+        },
+        "CUP_hgun_TaurusTracker455": {
+            "price": 35
+        },
+        "CUP_hgun_PB6P9": {
+            "price": 30
+        },
+        "CUP_hgun_SA61": {
+            "price": 30
+        },
+        "CUP_hgun_M9": {
+            "price": 30
+        },
+        "CUP_hgun_TaurusTracker455_gold": {
+            "price": 300
+        },
+        "CUP_hgun_Colt1911": {
+            "price": 30
+        },
+        "CUP_sgun_AA12": {
+            "price": 75
+        },
+        "CUP_sgun_M1014": {
+            "price": 50
+        },
+        "CUP_sgun_Saiga12K": {
+            "price": 45
+        },
+        "CUP_srifle_AS50": {
+            "price": 200
+        },
+        "CUP_srifle_LeeEnfield": {
+            "price": 100
+        },
+        "CUP_srifle_LeeEnfield_rail": {
+            "price": 150
+        },
+        "CUP_srifle_M107_Base": {
+            "price": 200
+        },
+        "CUP_srifle_M110": {
+            "price": 200
+        },
+        "CUP_srifle_M14": {
+            "price": 150
+        },
+        "CUP_srifle_M14_DMR": {
+            "price": 150
+        },
+        "CUP_srifle_Mk12SPR": {
+            "price": 200
+        },
+        "CUP_srifle_M24_des": {
+            "price": 200
+        },
+        "CUP_srifle_M40A3": {
+            "price": 200
+        },
+        "CUP_srifle_ksvk": {
+            "price": 150
+        },
+        "CUP_srifle_SVD": {
+            "price": 200
+        },
+        "CUP_srifle_VSSVintorez": {
+            "price": 200
+        },
+        "CUP_srifle_CZ750": {
+            "price": 200
+        },
+        "CUP_srifle_CZ550": {
+            "price": 200
+        },
+        "CUP_srifle_CZ550_rail": {
+            "price": 200
+        },
+        "CUP_srifle_M24_wdl": {
+            "price": 200
+        },
+        "CUP_srifle_SVD_des": {
+            "price": 200
+        },
+        "CUP_srifle_AWM_des": {
+            "price": 200
+        },
+        "CUP_srifle_AWM_wdl": {
+            "price": 200
+        },
+        "CUP_srifle_G22_des": {
+            "price": 200
+        },
+        "CUP_arifle_AK107_GL": {
+            "price": 75
+        },
+        "CUP_arifle_AK47": {
+            "price": 75
+        },
+        "CUP_arifle_AK74": {
+            "price": 75
+        },
+        "CUP_arifle_AK74_GL": {
+            "price": 75
+        },
+        "CUP_arifle_AK74M": {
+            "price": 75
+        },
+        "CUP_arifle_AK74M_GL": {
+            "price": 75
+        },
+        "CUP_arifle_AKM": {
+            "price": 75
+        },
+        "CUP_arifle_AKS": {
+            "price": 75
+        },
+        "CUP_arifle_AKS_Gold": {
+            "price": 75
+        },
+        "CUP_arifle_AKS74": {
+            "price": 75
+        },
+        "CUP_arifle_RPK74": {
+            "price": 75
+        },
+        "CUP_arifle_L85A2_GL": {
+            "price": 75
+        },
+        "CUP_arifle_M16A4_Base": {
+            "price": 75
+        },
+        "CUP_arifle_M4A1_black": {
+            "price": 75
+        },
+        "CUP_arifle_M4A1_BUIS_GL": {
+            "price": 75
+        },
+        "CUP_arifle_M4A1_BUIS_camo_GL": {
+            "price": 75
+        },
+        "CUP_arifle_M4A1_BUIS_desert_GL": {
+            "price": 75
+        },
+        "CUP_arifle_M16A2": {
+            "price": 75
+        },
+        "CUP_arifle_M16A2_GL": {
+            "price": 75
+        },
+        "CUP_arifle_M16A4_GL": {
+            "price": 75
+        },
+        "CUP_arifle_M4A3_desert": {
+            "price": 75
+        },
+        "CUP_arifle_M4A1": {
+            "price": 75
+        },
+        "CUP_arifle_CZ805_A1": {
+            "price": 75
+        },
+        "CUP_arifle_CZ805_GL": {
+            "price": 75
+        },
+        "CUP_arifle_CZ805_B_GL": {
+            "price": 75
+        },
+        "CUP_arifle_FNFAL": {
+            "price": 100
+        },
+        "CUP_arifle_FNFAL_railed": {
+            "price": 100
+        },
+        "CUP_arifle_FNFAL5061": {
+            "price": 100
+        },
+        "CUP_arifle_G36A": {
+            "price": 75
+        },
+        "CUP_arifle_G36K": {
+            "price": 75
+        },
+        "CUP_arifle_G36C": {
+            "price": 75
+        },
+        "CUP_arifle_MG36": {
+            "price": 75
+        },
+        "CUP_arifle_Mk16_CQC": {
+            "price": 75
+        },
+        "CUP_arifle_Mk16_CQC_FG": {
+            "price": 75
+        },
+        "CUP_arifle_Mk16_CQC_SFG": {
+            "price": 75
+        },
+        "CUP_arifle_Mk16_CQC_EGLM": {
+            "price": 75
+        },
+        "CUP_arifle_Mk16_STD": {
+            "price": 75
+        },
+        "CUP_arifle_Mk16_STD_FG": {
+            "price": 75
+        },
+        "CUP_arifle_Mk16_STD_SFG": {
+            "price": 75
+        },
+        "CUP_arifle_Mk16_STD_EGLM": {
+            "price": 75
+        },
+        "CUP_arifle_Mk16_SV": {
+            "price": 75
+        },
+        "CUP_arifle_Mk17_CQC": {
+            "price": 75
+        },
+        "CUP_arifle_Mk17_CQC_FG": {
+            "price": 75
+        },
+        "CUP_arifle_Mk17_CQC_SFG": {
+            "price": 75
+        },
+        "CUP_arifle_Mk17_CQC_EGLM": {
+            "price": 75
+        },
+        "CUP_arifle_Mk17_STD": {
+            "price": 75
+        },
+        "CUP_arifle_Mk17_STD_FG": {
+            "price": 75
+        },
+        "CUP_arifle_Mk17_STD_SFG": {
+            "price": 75
+        },
+        "CUP_arifle_Mk17_STD_EGLM": {
+            "price": 75
+        },
+        "CUP_arifle_Mk20": {
+            "price": 100
+        },
+        "CUP_arifle_Sa58RIS1": {
+            "price": 75
+        },
+        "CUP_arifle_Sa58RIS2_gl": {
+            "price": 75
+        },
+        "CUP_arifle_XM8_Carbine_FG": {
+            "price": 75
+        },
+        "CUP_arifle_XM8_Carbine": {
+            "price": 75
+        },
+        "CUP_arifle_XM8_Carbine_GL": {
+            "price": 75
+        },
+        "CUP_arifle_xm8_sharpshooter": {
+            "price": 75
+        },
+        "CUP_arifle_xm8_SAW": {
+            "price": 75
+        },
+        "CUP_arifle_XM8_Compact": {
+            "price": 75
+        },
+        "CUP_arifle_XM8_Compact_Rail": {
+            "price": 75
+        },
+        "CUP_arifle_CZ805_A2": {
+            "price": 75
+        },
+        "CUP_arifle_CZ805_B": {
+            "price": 75
+        },
+        "CUP_arifle_Sa58P": {
+            "price": 75
+        },
+        "CUP_arifle_Sa58P_des": {
+            "price": 75
+        },
+        "CUP_arifle_Sa58V": {
+            "price": 75
+        },
+        "CUP_arifle_Sa58V_camo": {
+            "price": 75
+        },
+        "CUP_arifle_Sa58RIS1_des": {
+            "price": 75
+        },
+        "CUP_arifle_Sa58RIS2": {
+            "price": 75
+        },
+        "CUP_arifle_Sa58RIS2_camo": {
+            "price": 75
+        },
+        "CUP_arifle_AK107": {
+            "price": 75
+        },
+        "CUP_arifle_AKS74U": {
+            "price": 75
+        },
+        "CUP_arifle_RPK74_45": {
+            "price": 75
+        },
+        "CUP_arifle_RPK74M": {
+            "price": 75
+        },
+        "CUP_arifle_FNFAL5062": {
+            "price": 75
+        },
+        "CUP_arifle_FNFAL_OSW": {
+            "price": 75
+        },
+        "CUP_arifle_G36A_camo": {
+            "price": 75
+        },
+        "CUP_arifle_G36K_camo": {
+            "price": 75
+        },
+        "CUP_arifle_G36C_camo": {
+            "price": 75
+        },
+        "CUP_arifle_MG36_camo": {
+            "price": 75
+        },
+        "CUP_arifle_L85A2": {
+            "price": 75
+        },
+        "CUP_arifle_L86A2": {
+            "price": 75
+        },
+        "CUP_arifle_M4A1_camo": {
+            "price": 75
+        },
+        "CUP_arifle_M4A1_desert": {
+            "price": 75
+        },
+        "CUP_arifle_XM8_Railed": {
+            "price": 75
+        },
+        "CUP_lmg_L110A1": {
+            "price": 150
+        },
+        "CUP_lmg_M240": {
+            "price": 150
+        },
+        "CUP_lmg_minimipara": {
+            "price": 150
+        },
+        "CUP_lmg_minimi": {
+            "price": 150
+        },
+        "CUP_lmg_m249_para": {
+            "price": 150
+        },
+        "CUP_lmg_M249_E2": {
+            "price": 150
+        },
+        "CUP_lmg_minimi_railed": {
+            "price": 150
+        },
+        "CUP_lmg_m249_pip1": {
+            "price": 150
+        },
+        "CUP_lmg_m249_pip4": {
+            "price": 150
+        },
+        "CUP_lmg_L7A2": {
+            "price": 150
+        },
+        "CUP_lmg_PKM": {
+            "price": 150
+        },
+        "CUP_lmg_Pecheneg": {
+            "price": 150
+        },
+        "CUP_lmg_UK59": {
+            "price": 150
+        },
+        "CUP_lmg_m249_pip2": {
+            "price": 150
+        },
+        "CUP_lmg_m249_pip3": {
+            "price": 150
+        },
+        "CUP_lmg_m249_SQuantoon": {
+            "price": 150
+        },
+        "CUP_lmg_M60E4": {
+            "price": 150
+        },
+        "CUP_lmg_Mk48_des": {
+            "price": 150
+        },
+        "CUP_lmg_Mk48_wdl": {
+            "price": 150
+        },
+        "CUP_smg_bizon": {
+            "price": 75
+        },
+        "CUP_smg_EVO": {
+            "price": 100
+        },
+        "CUP_smg_MP5SD6": {
+            "price": 125
+        },
+        "CUP_smg_MP5A5": {
+            "price": 100
+        },
+        "CUP_10Rnd_9x19_Compact": {
+            "price": 3,
+            "tax": 0.9
+        },
+        "CUP_18Rnd_9x19_Phantom": {
+            "price": 3,
+            "tax": 0.9
+        },
+        "CUP_17Rnd_9x19_glock17": {
+            "price": 3,
+            "tax": 0.9
+        },
+        "CUP_8Rnd_9x18_Makarov_M": {
+            "price": 3,
+            "tax": 0.9
+        },
+        "CUP_8Rnd_9x18_MakarovSD_M": {
+            "price": 3,
+            "tax": 0.9
+        },
+        "CUP_30Rnd_9x19_UZI": {
+            "price": 3,
+            "tax": 0.9
+        },
+        "CUP_6Rnd_45ACP_M": {
+            "price": 3,
+            "tax": 0.9
+        },
+        "CUP_20Rnd_B_765x17_Ball_M": {
+            "price": 3,
+            "tax": 0.9
+        },
+        "CUP_15Rnd_9x19_M9": {
+            "price": 3,
+            "tax": 0.9
+        },
+        "CUP_7Rnd_45ACP_1911": {
+            "price": 3,
+            "tax": 0.9
+        },
+        "CUP_20Rnd_B_AA12_Pellets": {
+            "price": 5,
+            "tax": 0.9
+        },
+        "CUP_20Rnd_B_AA12_74Slug": {
+            "price": 5,
+            "tax": 0.9
+        },
+        "CUP_20Rnd_B_AA12_HE": {
+            "price": 15,
+            "tax": 0.9
+        },
+        "CUP_8Rnd_B_Beneli_74Slug": {
+            "price": 5,
+            "tax": 0.9
+        },
+        "CUP_8Rnd_B_Beneli_74Pellets": {
+            "price": 5,
+            "tax": 0.9
+        },
+        "CUP_8Rnd_B_Saiga12_74Slug_M": {
+            "price": 5,
+            "tax": 0.9
+        },
+        "CUP_8Rnd_B_Saiga12_74Pellets_M": {
+            "price": 5,
+            "tax": 0.9
+        },
+        "CUP_5Rnd_127x99_as50_M": {
+            "price": 5,
+            "tax": 0.9
+        },
+        "CUP_10x_303_M": {
+            "price": 5,
+            "tax": 0.9
+        },
+        "CUP_10Rnd_127x99_m107": {
+            "price": 5,
+            "tax": 0.9
+        },
+        "CUP_20Rnd_762x51_B_M110": {
+            "price": 5,
+            "tax": 0.9
+        },
+        "CUP_20Rnd_TE1_Yellow_Tracer_762x51_M110": {
+            "price": 5,
+            "tax": 0.9
+        },
+        "CUP_20Rnd_TE1_Red_Tracer_762x51_M110": {
+            "price": 5,
+            "tax": 0.9
+        },
+        "CUP_20Rnd_TE1_Green_Tracer_762x51_M110": {
+            "price": 5,
+            "tax": 0.9
+        },
+        "CUP_20Rnd_TE1_White_Tracer_762x51_M110": {
+            "price": 5,
+            "tax": 0.9
+        },
+        "CUP_5Rnd_762x51_M24": {
+            "price": 5,
+            "tax": 0.9
+        },
+        "CUP_5Rnd_127x108_KSVK_M": {
+            "price": 5,
+            "tax": 0.9
+        },
+        "CUP_10Rnd_762x54_SVD_M": {
+            "price": 5,
+            "tax": 0.9
+        },
+        "CUP_10Rnd_9x39_SP5_VSS_M": {
+            "price": 5,
+            "tax": 0.9
+        },
+        "CUP_20Rnd_9x39_SP5_VSS_M": {
+            "price": 5,
+            "tax": 0.9
+        },
+        "CUP_10Rnd_762x51_CZ750_Tracer": {
+            "price": 5,
+            "tax": 0.9
+        },
+        "CUP_10Rnd_762x51_CZ750": {
+            "price": 5,
+            "tax": 0.9
+        },
+        "CUP_5x_22_LR_17_HMR_M": {
+            "price": 5,
+            "tax": 0.9
+        },
+        "CUP_5Rnd_86x70_L115A1": {
+            "price": 5,
+            "tax": 0.9
+        },
+        "CUP_5Rnd_762x67_G22": {
+            "price": 5,
+            "tax": 0.9
+        },
+        "CUP_30Rnd_545x39_AK_M": {
+            "price": 5,
+            "tax": 0.9
+        },
+        "CUP_30Rnd_TE1_Green_Tracer_545x39_AK_M": {
+            "price": 5,
+            "tax": 0.9
+        },
+        "CUP_30Rnd_TE1_Red_Tracer_545x39_AK_M": {
+            "price": 5,
+            "tax": 0.9
+        },
+        "CUP_30Rnd_TE1_White_Tracer_545x39_AK_M": {
+            "price": 5,
+            "tax": 0.9
+        },
+        "CUP_30Rnd_TE1_Yellow_Tracer_545x39_AK_M": {
+            "price": 5,
+            "tax": 0.9
+        },
+        "CUP_45Rnd_TE4_LRT4_Green_Tracer_545x39_RPK_M": {
+            "price": 5,
+            "tax": 0.9
+        },
+        "CUP_30Rnd_762x39_AK47_M": {
+            "price": 5,
+            "tax": 0.9
+        },
+        "CUP_75Rnd_TE4_LRT4_Green_Tracer_545x39_RPK_M": {
+            "price": 5,
+            "tax": 0.9
+        },
+        "CUP_20Rnd_762x51_CZ805B": {
+            "price": 5,
+            "tax": 0.9
+        },
+        "CUP_20Rnd_TE1_Yellow_Tracer_762x51_CZ805B": {
+            "price": 5,
+            "tax": 0.9
+        },
+        "CUP_20Rnd_TE1_Red_Tracer_762x51_CZ805B": {
+            "price": 5,
+            "tax": 0.9
+        },
+        "CUP_20Rnd_TE1_Green_Tracer_762x51_CZ805B": {
+            "price": 5,
+            "tax": 0.9
+        },
+        "CUP_20Rnd_TE1_White_Tracer_762x51_CZ805B": {
+            "price": 5,
+            "tax": 0.9
+        },
+        "CUP_20Rnd_762x51_FNFAL_M": {
+            "price": 5,
+            "tax": 0.9
+        },
+        "CUP_20Rnd_762x51_B_SCAR": {
+            "price": 5,
+            "tax": 0.9
+        },
+        "CUP_20Rnd_TE1_Yellow_Tracer_762x51_SCAR": {
+            "price": 5,
+            "tax": 0.9
+        },
+        "CUP_20Rnd_TE1_Red_Tracer_762x51_SCAR": {
+            "price": 5,
+            "tax": 0.9
+        },
+        "CUP_20Rnd_TE1_Green_Tracer_762x51_SCAR": {
+            "price": 5,
+            "tax": 0.9
+        },
+        "CUP_20Rnd_TE1_White_Tracer_762x51_SCAR": {
+            "price": 5,
+            "tax": 0.9
+        },
+        "CUP_30Rnd_Sa58_M_TracerG": {
+            "price": 5,
+            "tax": 0.9
+        },
+        "CUP_30Rnd_Sa58_M_TracerR": {
+            "price": 5,
+            "tax": 0.9
+        },
+        "CUP_30Rnd_Sa58_M_TracerY": {
+            "price": 5,
+            "tax": 0.9
+        },
+        "CUP_30Rnd_Sa58_M": {
+            "price": 5,
+            "tax": 0.9
+        },
+        "CUP_100Rnd_TE4_LRT4_White_Tracer_762x51_Belt_M": {
+            "price": 7,
+            "tax": 0.9
+        },
+        "CUP_100Rnd_TE4_LRT4_Red_Tracer_762x51_Belt_M": {
+            "price": 7,
+            "tax": 0.9
+        },
+        "CUP_100Rnd_TE4_LRT4_762x54_PK_Tracer_Green_M": {
+            "price": 7,
+            "tax": 0.9
+        },
+        "CUP_50Rnd_UK59_762x54R_Tracer": {
+            "price": 5,
+            "tax": 0.9
+        },
+        "CUP_64Rnd_9x19_Bizon_M": {
+            "price": 5,
+            "tax": 0.9
+        },
+        "CUP_64Rnd_Green_Tracer_9x19_Bizon_M": {
+            "price": 4,
+            "tax": 0.9
+        },
+        "CUP_64Rnd_Red_Tracer_9x19_Bizon_M": {
+            "price": 4,
+            "tax": 0.9
+        },
+        "CUP_64Rnd_White_Tracer_9x19_Bizon_M": {
+            "price": 4,
+            "tax": 0.9
+        },
+        "CUP_64Rnd_Yellow_Tracer_9x19_Bizon_M": {
+            "price": 4,
+            "tax": 0.9
+        },
+        "CUP_30Rnd_9x19_MP5": {
+            "price": 4,
+            "tax": 0.9
+        },
+        "CUP_item_Money": {
+            "price": 1000
+        },
+        "CUP_item_Kostey_photos": {
+            "price": 100
+        },
+        "CUP_item_Kostey_map_case": {
+            "price": 100
+        },
+        "CUP_item_Kostey_notebook": {
+            "price": 100
+        },
+        "CUP_item_CDF_dogtags": {
+            "price": 100
+        },
+        "CUP_item_Moscow_Bombing_File": {
+            "price": 100
+        },
+        "CUP_item_Cobalt_File": {
+            "price": 100
+        },
+        "CUP_muzzle_snds_M110": {
+            "price": 5
+        },
+        "CUP_muzzle_snds_M14": {
+            "price": 5
+        },
+        "CUP_muzzle_PBS4": {
+            "price": 5
+        },
+        "CUP_muzzle_PB6P9": {
+            "price": 5
+        },
+        "CUP_muzzle_Bizon": {
+            "price": 5
+        },
+        "CUP_muzzle_snds_M9": {
+            "price": 5
+        },
+        "CUP_muzzle_snds_MicroUzi": {
+            "price": 5
+        },
+        "CUP_muzzle_snds_AWM": {
+            "price": 5
+        },
+        "CUP_muzzle_snds_G36_black": {
+            "price": 5
+        },
+        "CUP_muzzle_snds_G36_desert": {
+            "price": 5
+        },
+        "CUP_muzzle_snds_L85": {
+            "price": 5
+        },
+        "CUP_muzzle_snds_M16_camo": {
+            "price": 5
+        },
+        "CUP_muzzle_snds_M16": {
+            "price": 5
+        },
+        "CUP_muzzle_snds_SCAR_L": {
+            "price": 5
+        },
+        "CUP_muzzle_mfsup_SCAR_L": {
+            "price": 5
+        },
+        "CUP_muzzle_snds_SCAR_H": {
+            "price": 5
+        },
+        "CUP_muzzle_mfsup_SCAR_H": {
+            "price": 5
+        },
+        "CUP_muzzle_snds_XM8": {
+            "price": 5
+        },
+        "CUP_optic_PSO_1": {
+            "price": 10
+        },
+        "CUP_optic_PSO_3": {
+            "price": 10
+        },
+        "CUP_optic_Kobra": {
+            "price": 10
+        },
+        "CUP_optic_GOSHAWK": {
+            "price": 10
+        },
+        "CUP_optic_NSPU": {
+            "price": 10
+        },
+        "CUP_optic_PechenegScope": {
+            "price": 10
+        },
+        "CUP_optic_SB_3_12x50_PMII": {
+            "price": 10
+        },
+        "CUP_optic_AN_PAS_13c2": {
+            "price": 10
+        },
+        "CUP_optic_LeupoldMk4": {
+            "price": 10
+        },
+        "CUP_optic_HoloBlack": {
+            "price": 10
+        },
+        "CUP_optic_HoloWdl": {
+            "price": 10
+        },
+        "CUP_optic_HoloDesert": {
+            "price": 10
+        },
+        "CUP_optic_Eotech533": {
+            "price": 10
+        },
+        "CUP_optic_Eotech533Grey": {
+            "price": 10
+        },
+        "CUP_optic_CompM4": {
+            "price": 10
+        },
+        "CUP_optic_SUSAT": {
+            "price": 10
+        },
+        "CUP_optic_ACOG": {
+            "price": 10
+        },
+        "CUP_optic_CWS": {
+            "price": 10
+        },
+        "CUP_optic_Leupold_VX3": {
+            "price": 10
+        },
+        "CUP_optic_AN_PVS_10": {
+            "price": 10
+        },
+        "CUP_optic_CompM2_Black": {
+            "price": 10
+        },
+        "CUP_optic_CompM2_Woodland": {
+            "price": 10
+        },
+        "CUP_optic_CompM2_Woodland2": {
+            "price": 10
+        },
+        "CUP_optic_CompM2_Desert": {
+            "price": 10
+        },
+        "CUP_optic_RCO": {
+            "price": 10
+        },
+        "CUP_optic_RCO_desert": {
+            "price": 10
+        },
+        "CUP_optic_LeupoldM3LR": {
+            "price": 15
+        },
+        "CUP_optic_LeupoldMk4_10x40_LRT_Desert": {
+            "price": 15
+        },
+        "CUP_optic_LeupoldMk4_10x40_LRT_Woodland": {
+            "price": 15
+        },
+        "CUP_optic_ElcanM145": {
+            "price": 10
+        },
+        "CUP_optic_AN_PAS_13c1": {
+            "price": 10
+        },
+        "CUP_optic_LeupoldMk4_CQ_T": {
+            "price": 10
+        },
+        "CUP_optic_ELCAN_SpecterDR": {
+            "price": 10
+        },
+        "CUP_optic_LeupoldMk4_MRT_tan": {
+            "price": 10
+        },
+        "CUP_optic_SB_11_4x20_PM": {
+            "price": 10
+        },
+        "CUP_optic_ZDDot": {
+            "price": 10
+        },
+        "CUP_optic_MRad": {
+            "price": 10
+        },
+        "CUP_optic_TrijiconRx01_desert": {
+            "price": 10
+        },
+        "CUP_optic_TrijiconRx01_black": {
+            "price": 10
+        },
+        "CUP_optic_AN_PVS_4": {
+            "price": 10
+        },
+        "CUP_acc_Glock17_Flashlight": {
+            "price": 5
+        },
+        "CUP_acc_ANPEQ_15": {
+            "price": 5
+        },
+        "CUP_acc_ANPEQ_2": {
+            "price": 5
+        },
+        "CUP_acc_Flashlight": {
+            "price": 5
+        },
+        "CUP_acc_Flashlight_wdl": {
+            "price": 5
+        },
+        "CUP_acc_Flashlight_desert": {
+            "price": 5
+        },
+        "CUP_acc_XM8_light_module": {
+            "price": 5
+        },
+        "CUP_acc_ANPEQ_2_camo": {
+            "price": 5
+        },
+        "CUP_acc_ANPEQ_2_desert": {
+            "price": 5
+        },
+        "CUP_acc_ANPEQ_2_grey": {
+            "price": 5
+        },
+        "CUP_acc_CZ_M3X": {
+            "price": 5
+        },
+        "CUP_bipod_Harris_1A2_L": {
+            "price": 15
+        },
+        "CUP_bipod_VLTOR_Modpod": {
+            "price": 15
+        },
+        "CUP_Mxx_camo": {
+            "price": 10
+        },
+        "CUP_Mxx_camo_half": {
+            "price": 10
+        },
+        "CUP_SVD_camo_g": {
+            "price": 10
+        },
+        "CUP_SVD_camo_g_half": {
+            "price": 10
+        },
+        "CUP_SVD_camo_d": {
+            "price": 10
+        },
+        "CUP_SVD_camo_d_half": {
+            "price": 10
+        },
+        "PaintCanClear": {
+            "price": 1
+        },
+        "PaintCanBlk": {
+            "price": 1
+        },
+        "PaintCanBlu": {
+            "price": 1
+        },
+        "PaintCanBrn": {
+            "price": 1
+        },
+        "PaintCanGrn": {
+            "price": 1
+        },
+        "PaintCanOra": {
+            "price": 1
+        },
+        "PaintCanPur": {
+            "price": 1
+        },
+        "PaintCanRed": {
+            "price": 1
+        },
+        "PaintCanTeal": {
+            "price": 1
+        },
+        "PaintCanYel": {
+            "price": 1
+        },
+        "ItemDocument": {
+            "price": 5
+        },
+        "ItemDocumentMission": {
+            "price": 5
+        },
+        "ItemMixOil": {
+            "price": 5
+        },
+        "emptyjar_epoch": {
+            "price": 5
+        },
+        "jerrycan_epoch": {
+            "price": 10
+        },
+        "jerrycanE_epoch": {
+            "price": 5
+        },
+        "speargun_epoch": {
+            "price": 75
+        },
+        "spear_magazine": {
+            "price": 5,
+            "tax": 0.9
+        },
+        "lighter_epoch": {
+            "price": 50
+        },
+        "WoodLog_EPOCH": {
+            "price": 1
+        },
+        "ItemRope": {
+            "price": 5
+        },
+        "ItemStick": {
+            "price": 1
+        },
+        "ItemRock": {
+            "price": 1
+        },
+        "honey_epoch": {
+            "price": 5
+        },
+        "FoodBioMeat": {
+            "price": 4
+        },
+        "FoodMeeps": {
+            "price": 50
+        },
+        "FoodSnooter": {
+            "price": 5
+        },
+        "sardines_epoch": {
+            "price": 2
+        },
+        "meatballs_epoch": {
+            "price": 2
+        },
+        "scam_epoch": {
+            "price": 4
+        },
+        "TacticalBacon": {
+            "price": 5
+        },
+        "sweetcorn_epoch": {
+            "price": 2
+        },
+        "CookedSheep_EPOCH": {
+            "price": 5
+        },
+        "CookedGoat_EPOCH": {
+            "price": 5
+        },
+        "SnakeMeat_EPOCH": {
+            "price": 3
+        },
+        "CookedRabbit_EPOCH": {
+            "price": 5
+        },
+        "CookedChicken_EPOCH": {
+            "price": 3
+        },
+        "ItemTrout": {
+            "price": 2
+        },
+        "ItemTroutCooked": {
+            "price": 20
+        },
+        "ItemSeaBass": {
+            "price": 5
+        },
+        "ItemSeaBassCooked": {
+            "price": 50
+        },
+        "ItemTuna": {
+            "price": 10
+        },
+        "ItemTunaCooked": {
+            "price": 100
+        },
+        "FoodWalkNSons": {
+            "price": 5
+        },
+        "ItemSodaOrangeSherbet": {
+            "price": 4
+        },
+        "ItemSodaPurple": {
+            "price": 5
+        },
+        "ItemSodaMocha": {
+            "price": 8
+        },
+        "ItemSodaBurst": {
+            "price": 4
+        },
+        "ItemSodaRbull": {
+            "price": 5
+        },
+        "water_epoch": {
+            "price": 5
+        },
+        "clean_water_epoch": {
+            "price": 10
+        },
+        "FAK": {
+            "price": 3
+        },
+        "Towelette": {
+            "price": 1
+        },
+        "HeatPack": {
+            "price": 2
+        },
+        "ColdPack": {
+            "price": 2
+        },
+        "sr25_epoch": {
+            "price": 50
+        },
+        "l85a2_epoch": {
+            "price": 50
+        },
+        "l85a2_pink_epoch": {
+            "price": 50
+        },
+        "l85a2_ugl_epoch": {
+            "price": 50
+        },
+        "arifle_Katiba_F": {
+            "price": 50
+        },
+        "arifle_Katiba_C_F": {
+            "price": 50
+        },
+        "arifle_Katiba_GL_F": {
+            "price": 75
+        },
+        "arifle_MXC_F": {
+            "price": 50
+        },
+        "arifle_MX_F": {
+            "price": 50
+        },
+        "arifle_MX_GL_F": {
+            "price": 75
+        },
+        "arifle_MXM_F": {
+            "price": 50
+        },
+        "arifle_SDAR_F": {
+            "price": 50
+        },
+        "arifle_TRG21_F": {
+            "price": 50
+        },
+        "arifle_TRG20_F": {
+            "price": 50
+        },
+        "arifle_TRG21_GL_F": {
+            "price": 75
+        },
+        "arifle_Mk20_F": {
+            "price": 50
+        },
+        "arifle_Mk20C_F": {
+            "price": 50
+        },
+        "arifle_Mk20_GL_F": {
+            "price": 75
+        },
+        "arifle_Mk20_plain_F": {
+            "price": 50
+        },
+        "arifle_Mk20C_plain_F": {
+            "price": 50
+        },
+        "arifle_Mk20_GL_plain_F": {
+            "price": 75
+        },
+        "SMG_01_F": {
+            "price": 35
+        },
+        "SMG_02_F": {
+            "price": 35
+        },
+        "hgun_PDW2000_F": {
+            "price": 35
+        },
+        "arifle_MXM_Black_F": {
+            "price": 50
+        },
+        "arifle_MX_GL_Black_F": {
+            "price": 75
+        },
+        "arifle_MX_Black_F": {
+            "price": 50
+        },
+        "arifle_MXC_Black_F": {
+            "price": 50
+        },
+        "Rollins_F": {
+            "price": 50
+        },
+        "30Rnd_65x39_caseless_green": {
+            "price": 3,
+            "tax": 0.9
+        },
+        "30Rnd_65x39_caseless_green_mag_Tracer": {
+            "price": 4,
+            "tax": 0.9
+        },
+        "30Rnd_65x39_caseless_mag": {
+            "price": 3,
+            "tax": 0.9
+        },
+        "30Rnd_65x39_caseless_mag_Tracer": {
+            "price": 4,
+            "tax": 0.9
+        },
+        "20Rnd_556x45_UW_mag": {
+            "price": 3,
+            "tax": 0.9
+        },
+        "30Rnd_556x45_Stanag": {
+            "price": 3,
+            "tax": 0.9
+        },
+        "30Rnd_556x45_Stanag_Tracer_Red": {
+            "price": 4,
+            "tax": 0.9
+        },
+        "30Rnd_556x45_Stanag_Tracer_Green": {
+            "price": 4,
+            "tax": 0.9
+        },
+        "30Rnd_556x45_Stanag_Tracer_Yellow": {
+            "price": 4,
+            "tax": 0.9
+        },
+        "30Rnd_45ACP_Mag_SMG_01": {
+            "price": 2,
+            "tax": 0.9
+        },
+        "30Rnd_45ACP_Mag_SMG_01_Tracer_Green": {
+            "price": 3,
+            "tax": 0.9
+        },
+        "5Rnd_rollins_mag": {
+            "price": 2,
+            "tax": 0.9
+        },
+        "UGL_FlareWhite_F": {
+            "price": 2
+        },
+        "UGL_FlareGreen_F": {
+            "price": 2
+        },
+        "UGL_FlareRed_F": {
+            "price": 2
+        },
+        "UGL_FlareYellow_F": {
+            "price": 2
+        },
+        "UGL_FlareCIR_F": {
+            "price": 2
+        },
+        "1Rnd_Smoke_Grenade_shell": {
+            "price": 4
+        },
+        "1Rnd_SmokeRed_Grenade_shell": {
+            "price": 4
+        },
+        "1Rnd_SmokeGreen_Grenade_shell": {
+            "price": 4
+        },
+        "1Rnd_SmokeYellow_Grenade_shell": {
+            "price": 4
+        },
+        "1Rnd_SmokePurple_Grenade_shell": {
+            "price": 4
+        },
+        "1Rnd_SmokeBlue_Grenade_shell": {
+            "price": 4
+        },
+        "1Rnd_SmokeOrange_Grenade_shell": {
+            "price": 4
+        },
+        "3Rnd_HE_Grenade_shell": {
+            "price": 10
+        },
+        "3Rnd_UGL_FlareWhite_F": {
+            "price": 4
+        },
+        "3Rnd_UGL_FlareGreen_F": {
+            "price": 4
+        },
+        "3Rnd_UGL_FlareRed_F": {
+            "price": 4
+        },
+        "3Rnd_UGL_FlareYellow_F": {
+            "price": 4
+        },
+        "3Rnd_UGL_FlareCIR_F": {
+            "price": 4
+        },
+        "3Rnd_Smoke_Grenade_shell": {
+            "price": 3
+        },
+        "3Rnd_SmokeRed_Grenade_shell": {
+            "price": 3
+        },
+        "3Rnd_SmokeGreen_Grenade_shell": {
+            "price": 3
+        },
+        "3Rnd_SmokeYellow_Grenade_shell": {
+            "price": 3
+        },
+        "3Rnd_SmokePurple_Grenade_shell": {
+            "price": 3
+        },
+        "3Rnd_SmokeBlue_Grenade_shell": {
+            "price": 3
+        },
+        "3Rnd_SmokeOrange_Grenade_shell": {
+            "price": 3
+        },
+        "LMG_Mk200_F": {
+            "price": 150
+        },
+        "arifle_MX_SW_F": {
+            "price": 150
+        },
+        "LMG_Zafir_F": {
+            "price": 150
+        },
+        "arifle_MX_SW_Black_F": {
+            "price": 150
+        },
+        "srifle_DMR_02_F": {
+            "price": 150
+        },
+        "srifle_DMR_02_camo_F": {
+            "price": 150
+        },
+        "srifle_DMR_02_sniper_F": {
+            "price": 150
+        },
+        "srifle_DMR_03_F": {
+            "price": 150
+        },
+        "srifle_DMR_03_khaki_F": {
+            "price": 150
+        },
+        "srifle_DMR_03_tan_F": {
+            "price": 150
+        },
+        "srifle_DMR_03_multicam_F": {
+            "price": 150
+        },
+        "srifle_DMR_03_woodland_F": {
+            "price": 150
+        },
+        "srifle_DMR_03_spotter_F": {
+            "price": 150
+        },
+        "srifle_DMR_04_Tan_F": {
+            "price": 150
+        },
+        "srifle_DMR_05_blk_F": {
+            "price": 150
+        },
+        "srifle_DMR_05_hex_F": {
+            "price": 150
+        },
+        "srifle_DMR_05_tan_f": {
+            "price": 150
+        },
+        "srifle_DMR_06_camo_F": {
+            "price": 150
+        },
+        "srifle_DMR_06_olive_F": {
+            "price": 150
+        },
+        "MMG_01_hex_F": {
+            "price": 150
+        },
+        "MMG_01_tan_F": {
+            "price": 150
+        },
+        "MMG_02_camo_F": {
+            "price": 150
+        },
+        "MMG_02_black_F": {
+            "price": 150
+        },
+        "MMG_02_sand_F": {
+            "price": 150
+        },
+        "m249_EPOCH": {
+            "price": 150
+        },
+        "m249Tan_EPOCH": {
+            "price": 150
+        },
+        "m107Tan_EPOCH": {
+            "price": 200
+        },
+        "m107_EPOCH": {
+            "price": 200
+        },
+        "m16_EPOCH": {
+            "price": 100
+        },
+        "m16Red_EPOCH": {
+            "price": 125
+        },
+        "M14_EPOCH": {
+            "price": 125
+        },
+        "M14Grn_EPOCH": {
+            "price": 150
+        },
+        "m4a3_EPOCH": {
+            "price": 100
+        },
+        "AKM_EPOCH": {
+            "price": 100
+        },
+        "30rnd_556_magazine": {
+            "price": 5,
+            "tax": 0.9
+        },
+        "20rnd_762_magazine": {
+            "price": 5,
+            "tax": 0.9
+        },
+        "30Rnd_762x39_Mag": {
+            "price": 5,
+            "tax": 0.9
+        },
+        "200Rnd_556x45_M249": {
+            "price": 5,
+            "tax": 0.9
+        },
+        "200Rnd_65x39_cased_Box": {
+            "price": 5,
+            "tax": 0.9
+        },
+        "100Rnd_65x39_caseless_mag": {
+            "price": 3,
+            "tax": 0.9
+        },
+        "200Rnd_65x39_cased_Box_Tracer": {
+            "price": 5,
+            "tax": 0.9
+        },
+        "100Rnd_65x39_caseless_mag_Tracer": {
+            "price": 4,
+            "tax": 0.9
+        },
+        "150Rnd_762x51_Box": {
+            "price": 4,
+            "tax": 0.9
+        },
+        "150Rnd_762x51_Box_Tracer": {
+            "price": 5,
+            "tax": 0.9
+        },
+        "150Rnd_762x54_Box": {
+            "price": 4,
+            "tax": 0.9
+        },
+        "150Rnd_762x54_Box_Tracer": {
+            "price": 5,
+            "tax": 0.9
+        },
+        "150Rnd_93x64_Mag": {
+            "price": 6,
+            "tax": 0.9
+        },
+        "Rangefinder": {
+            "price": 4
+        },
+        "Laserdesignator": {
+            "price": 4
+        },
+        "hgun_ACPC2_F": {
+            "price": 20
+        },
+        "hgun_Rook40_F": {
+            "price": 20
+        },
+        "hgun_P07_F": {
+            "price": 20
+        },
+        "hgun_Pistol_heavy_01_F": {
+            "price": 25
+        },
+        "hgun_Pistol_heavy_02_F": {
+            "price": 25
+        },
+        "ruger_pistol_epoch": {
+            "price": 40
+        },
+        "1911_pistol_epoch": {
+            "price": 6
+        },
+        "hgun_Pistol_Signal_F": {
+            "price": 20
+        },
+        "Hatchet": {
+            "price": 25
+        },
+        "MultiGun": {
+            "price": 100
+        },
+        "MeleeSledge": {
+            "price": 50
+        },
+        "MeleeSword": {
+            "price": 1111
+        },
+        "MeleeRod": {
+            "price": 100
+        },
+        "CrudeHatchet": {
+            "price": 5
+        },
+        "MeleeMaul": {
+            "price": 10
+        },
+        "WoodClub": {
+            "price": 5
+        },
+        "Plunger": {
+            "price": 15
+        },
+        "16Rnd_9x21_Mag": {
+            "price": 2,
+            "tax": 0.9
+        },
+        "30Rnd_9x21_Mag": {
+            "price": 3,
+            "tax": 0.9
+        },
+        "9Rnd_45ACP_Mag": {
+            "price": 2,
+            "tax": 0.9
+        },
+        "11Rnd_45ACP_Mag": {
+            "price": 2,
+            "tax": 0.9
+        },
+        "6Rnd_45ACP_Cylinder": {
+            "price": 2,
+            "tax": 0.9
+        },
+        "10rnd_22X44_magazine": {
+            "price": 2,
+            "tax": 0.9
+        },
+        "9rnd_45X88_magazine": {
+            "price": 2,
+            "tax": 0.9
+        },
+        "6Rnd_GreenSignal_F": {
+            "price": 2
+        },
+        "6Rnd_RedSignal_F": {
+            "price": 2
+        },
+        "EnergyPack": {
+            "price": 3,
+            "tax": 0.9
+        },
+        "EnergyPackLg": {
+            "price": 30,
+            "tax": 0.9
+        },
+        "optic_Arco": {
+            "price": 10
+        },
+        "optic_Hamr": {
+            "price": 10
+        },
+        "optic_Aco": {
+            "price": 10
+        },
+        "optic_ACO_grn": {
+            "price": 10
+        },
+        "optic_Aco_smg": {
+            "price": 10
+        },
+        "optic_ACO_grn_smg": {
+            "price": 10
+        },
+        "optic_Holosight": {
+            "price": 10
+        },
+        "optic_Holosight_smg": {
+            "price": 10
+        },
+        "optic_SOS": {
+            "price": 10
+        },
+        "optic_MRCO": {
+            "price": 10
+        },
+        "optic_DMS": {
+            "price": 10
+        },
+        "optic_Yorris": {
+            "price": 10
+        },
+        "optic_MRD": {
+            "price": 10
+        },
+        "optic_LRPS": {
+            "price": 20
+        },
+        "optic_NVS": {
+            "price": 30
+        },
+        "optic_Nightstalker": {
+            "price": 50
+        },
+        "optic_tws": {
+            "price": 20
+        },
+        "optic_tws_mg": {
+            "price": 20
+        },
+        "optic_AMS": {
+            "price": 10
+        },
+        "optic_AMS_khk": {
+            "price": 10
+        },
+        "optic_AMS_snd": {
+            "price": 10
+        },
+        "optic_KHS_blk": {
+            "price": 10
+        },
+        "optic_KHS_hex": {
+            "price": 10
+        },
+        "optic_KHS_old": {
+            "price": 10
+        },
+        "optic_KHS_tan": {
+            "price": 10
+        },
+        "bipod_01_F_snd": {
+            "price": 15
+        },
+        "bipod_01_F_blk": {
+            "price": 15
+        },
+        "bipod_01_F_mtp": {
+            "price": 15
+        },
+        "bipod_02_F_blk": {
+            "price": 15
+        },
+        "bipod_02_F_tan": {
+            "price": 15
+        },
+        "bipod_02_F_hex": {
+            "price": 15
+        },
+        "bipod_03_F_blk": {
+            "price": 15
+        },
+        "bipod_03_F_oli": {
+            "price": 15
+        },
+        "Elcan_epoch": {
+            "price": 5
+        },
+        "Elcan_reflex_epoch": {
+            "price": 10
+        },
+        "muzzle_snds_H": {
+            "price": 5
+        },
+        "muzzle_snds_L": {
+            "price": 5
+        },
+        "muzzle_snds_M": {
+            "price": 5
+        },
+        "muzzle_snds_B": {
+            "price": 5
+        },
+        "muzzle_snds_H_MG": {
+            "price": 5
+        },
+        "muzzle_snds_acp": {
+            "price": 5
+        },
+        "Heal_EPOCH": {
+            "price": 3
+        },
+        "Defib_EPOCH": {
+            "price": 5
+        },
+        "Repair_EPOCH": {
+            "price": 2
+        },
+        "muzzle_snds_338_black": {
+            "price": 5
+        },
+        "muzzle_snds_338_green": {
+            "price": 5
+        },
+        "muzzle_snds_338_sand": {
+            "price": 5
+        },
+        "muzzle_snds_93mmg": {
+            "price": 5
+        },
+        "muzzle_snds_93mmg_tan": {
+            "price": 5
+        },
+        "muzzle_sr25S_epoch": {
+            "price": 5
+        },
+        "PartOreGold": {
+            "price": 70
+        },
+        "PartOreSilver": {
+            "price": 7
+        },
+        "PartOre": {
+            "price": 1
+        },
+        "ItemGoldBar": {
+            "price": 100
+        },
+        "ItemSilverBar": {
+            "price": 10
+        },
+        "ItemGoldBar10oz": {
+            "price": 1000
+        },
+        "ItemTopaz": {
+            "price": 25
+        },
+        "ItemOnyx": {
+            "price": 30
+        },
+        "ItemSapphire": {
+            "price": 50
+        },
+        "ItemAmethyst": {
+            "price": 25
+        },
+        "ItemEmerald": {
+            "price": 25
+        },
+        "ItemCitrine": {
+            "price": 25
+        },
+        "ItemRuby": {
+            "price": 75
+        },
+        "ItemQuartz": {
+            "price": 5
+        },
+        "ItemJade": {
+            "price": 100
+        },
+        "ItemGarnet": {
+            "price": 25
+        },
+        "ItemKiloHemp": {
+            "price": 100
+        },
+        "PartPlankPack": {
+            "price": 2
+        },
+        "CinderBlocks": {
+            "price": 20
+        },
+        "MortarBucket": {
+            "price": 20
+        },
+        "ItemScraps": {
+            "price": 2
+        },
+        "ItemCorrugated": {
+            "price": 8
+        },
+        "ItemCorrugatedLg": {
+            "price": 25
+        },
+        "KitStudWall": {
+            "price": 10
+        },
+        "KitWoodFloor": {
+            "price": 10
+        },
+        "KitWoodStairs": {
+            "price": 10
+        },
+        "KitWoodTower": {
+            "price": 10
+        },
+        "KitWoodRamp": {
+            "price": 14
+        },
+        "KitSpikeTrap": {
+            "price": 25
+        },
+        "KitMetalTrap": {
+            "price": 25
+        },
+        "KitTankTrap": {
+            "price": 25
+        },
+        "KitHesco3": {
+            "price": 25
+        },
+        "KitWoodLadder": {
+            "price": 10
+        },
+        "KitFirePlace": {
+            "price": 4
+        },
+        "KitTiPi": {
+            "price": 10
+        },
+        "KitShelf": {
+            "price": 90
+        },
+        "KitWorkbench": {
+            "price": 10
+        },
+        "KitWoodFoundation": {
+            "price": 20
+        },
+        "KitFoundation": {
+            "price": 90
+        },
+        "KitPlotPole": {
+            "price": 300
+        },
+        "KitSolarGen": {
+            "price": 200
+        },
+        "KitCinderWall": {
+            "price": 140
+        },
+        "ItemSolar": {
+            "price": 75
+        },
+        "ItemCables": {
+            "price": 50
+        },
+        "ItemBattery": {
+            "price": 50
+        },
+        "Pelt_EPOCH": {
+            "price": 1
+        },
+        "Venom_EPOCH": {
+            "price": 10
+        },
+        "HandGrenade_Stone": {
+            "price": 1
+        },
+        "SmokeShell": {
+            "price": 2
+        },
+        "SmokeShellYellow": {
+            "price": 2
+        },
+        "SmokeShellGreen": {
+            "price": 2
+        },
+        "SmokeShellRed": {
+            "price": 2
+        },
+        "SmokeShellPurple": {
+            "price": 2
+        },
+        "SmokeShellOrange": {
+            "price": 2
+        },
+        "SmokeShellBlue": {
+            "price": 2
+        },
+        "Chemlight_green": {
+            "price": 1
+        },
+        "Chemlight_red": {
+            "price": 1
+        },
+        "Chemlight_yellow": {
+            "price": 1
+        },
+        "Chemlight_blue": {
+            "price": 1
+        },
+        "HandGrenade": {
+            "price": 15
+        },
+        "MiniGrenade": {
+            "price": 10
+        },
+        "DemoCharge_Remote_Mag": {
+            "price": 40
+        },
+        "SatchelCharge_Remote_Mag": {
+            "price": 75
+        },
+        "ATMine_Range_Mag": {
+            "price": 50
+        },
+        "ClaymoreDirectionalMine_Remote_Mag": {
+            "price": 50
+        },
+        "APERSMine_Range_Mag": {
+            "price": 30
+        },
+        "APERSBoundingMine_Range_Mag": {
+            "price": 50
+        },
+        "SLAMDirectionalMine_Wire_Mag": {
+            "price": 40
+        },
+        "APERSTripMine_Wire_Mag": {
+            "price": 30
+        },
+        "B_AssaultPack_cbr": {
+            "price": 10
+        },
+        "B_AssaultPack_dgtl": {
+            "price": 10
+        },
+        "B_AssaultPack_khk": {
+            "price": 10
+        },
+        "B_AssaultPack_mcamo": {
+            "price": 10
+        },
+        "B_AssaultPack_ocamo": {
+            "price": 10
+        },
+        "B_AssaultPack_rgr": {
+            "price": 10
+        },
+        "B_AssaultPack_sgg": {
+            "price": 10
+        },
+        "B_AssaultPack_blk": {
+            "price": 10
+        },
+        "B_Carryall_cbr": {
+            "price": 40
+        },
+        "B_Carryall_khk": {
+            "price": 40
+        },
+        "B_Carryall_mcamo": {
+            "price": 40
+        },
+        "B_Carryall_ocamo": {
+            "price": 40
+        },
+        "B_Carryall_oli": {
+            "price": 40
+        },
+        "B_Carryall_oucamo": {
+            "price": 40
+        },
+        "B_FieldPack_blk": {
+            "price": 15
+        },
+        "B_FieldPack_cbr": {
+            "price": 15
+        },
+        "B_FieldPack_khk": {
+            "price": 15
+        },
+        "B_FieldPack_ocamo": {
+            "price": 15
+        },
+        "B_FieldPack_oli": {
+            "price": 15
+        },
+        "B_FieldPack_oucamo": {
+            "price": 15
+        },
+        "B_Kitbag_cbr": {
+            "price": 25
+        },
+        "B_Kitbag_mcamo": {
+            "price": 25
+        },
+        "B_Kitbag_rgr": {
+            "price": 25
+        },
+        "B_Kitbag_sgg": {
+            "price": 25
+        },
+        "B_Parachute": {
+            "price": 25
+        },
+        "B_TacticalPack_blk": {
+            "price": 20
+        },
+        "B_TacticalPack_mcamo": {
+            "price": 20
+        },
+        "B_TacticalPack_ocamo": {
+            "price": 20
+        },
+        "B_TacticalPack_oli": {
+            "price": 20
+        },
+        "B_TacticalPack_rgr": {
+            "price": 20
+        },
+        "smallbackpack_red_epoch": {
+            "price": 22
+        },
+        "smallbackpack_green_epoch": {
+            "price": 22
+        },
+        "smallbackpack_teal_epoch": {
+            "price": 22
+        },
+        "smallbackpack_pink_epoch": {
+            "price": 22
+        },
+        "I_UAV_01_backpack_F": {
+            "price": 22
+        },
+        "U_O_FullGhillie_lsh": {
+            "price": 7
+        },
+        "U_O_FullGhillie_sard": {
+            "price": 7
+        },
+        "U_O_FullGhillie_ard": {
+            "price": 7
+        },
+        "U_O_CombatUniform_ocamo": {
+            "price": 5
+        },
+        "U_O_GhillieSuit": {
+            "price": 5
+        },
+        "U_O_PilotCoveralls": {
+            "price": 5
+        },
+        "U_O_Wetsuit": {
+            "price": 5
+        },
+        "U_OG_Guerilla1_1": {
+            "price": 5
+        },
+        "U_OG_Guerilla2_1": {
+            "price": 5
+        },
+        "U_OG_Guerilla2_2": {
+            "price": 5
+        },
+        "U_OG_Guerilla2_3": {
+            "price": 5
+        },
+        "U_OG_Guerilla3_1": {
+            "price": 5
+        },
+        "U_OG_Guerilla3_2": {
+            "price": 5
+        },
+        "U_OG_leader": {
+            "price": 5
+        },
+        "U_C_Poloshirt_stripped": {
+            "price": 4
+        },
+        "U_C_Poloshirt_blue": {
+            "price": 4
+        },
+        "U_C_Poloshirt_burgundy": {
+            "price": 4
+        },
+        "U_C_Poloshirt_tricolour": {
+            "price": 4
+        },
+        "U_C_Poloshirt_salmon": {
+            "price": 4
+        },
+        "U_C_Poloshirt_redwhite": {
+            "price": 4
+        },
+        "U_C_Poor_1": {
+            "price": 5
+        },
+        "U_C_WorkerCoveralls": {
+            "price": 5
+        },
+        "U_C_Journalist": {
+            "price": 5
+        },
+        "U_C_Scientist": {
+            "price": 5
+        },
+        "U_OrestesBody": {
+            "price": 5
+        },
+        "U_Wetsuit_uniform": {
+            "price": 5
+        },
+        "U_Wetsuit_White": {
+            "price": 5
+        },
+        "U_Wetsuit_Blue": {
+            "price": 5
+        },
+        "U_Wetsuit_Purp": {
+            "price": 5
+        },
+        "U_Wetsuit_Camo": {
+            "price": 5
+        },
+        "U_Camo_uniform": {
+            "price": 5
+        },
+        "U_ghillie1_uniform": {
+            "price": 5
+        },
+        "U_ghillie2_uniform": {
+            "price": 5
+        },
+        "U_ghillie3_uniform": {
+            "price": 5
+        },
+        "U_CamoBlue_uniform": {
+            "price": 5
+        },
+        "U_CamoBrn_uniform": {
+            "price": 5
+        },
+        "U_CamoRed_uniform": {
+            "price": 5
+        },
+        "U_C_Driver_1": {
+            "price": 5
+        },
+        "U_C_Driver_2": {
+            "price": 5
+        },
+        "U_C_Driver_3": {
+            "price": 5
+        },
+        "U_C_Driver_4": {
+            "price": 5
+        },
+        "U_C_Driver_1_black": {
+            "price": 5
+        },
+        "U_C_Driver_1_blue": {
+            "price": 5
+        },
+        "U_C_Driver_1_green": {
+            "price": 5
+        },
+        "U_C_Driver_1_red": {
+            "price": 5
+        },
+        "U_C_Driver_1_white": {
+            "price": 5
+        },
+        "U_C_Driver_1_yellow": {
+            "price": 5
+        },
+        "U_C_Driver_1_orange": {
+            "price": 5
+        },
+        "V_F0_EPOCH": {
+            "price": 5
+        },
+        "V_F1_EPOCH": {
+            "price": 5
+        },
+        "V_F2_EPOCH": {
+            "price": 5
+        },
+        "V_F3_EPOCH": {
+            "price": 5
+        },
+        "V_F4_EPOCH": {
+            "price": 5
+        },
+        "V_F5_EPOCH": {
+            "price": 5
+        },
+        "V_1_EPOCH": {
+            "price": 5
+        },
+        "V_2_EPOCH": {
+            "price": 5
+        },
+        "V_3_EPOCH": {
+            "price": 5
+        },
+        "V_4_EPOCH": {
+            "price": 5
+        },
+        "V_5_EPOCH": {
+            "price": 5
+        },
+        "V_6_EPOCH": {
+            "price": 5
+        },
+        "V_7_EPOCH": {
+            "price": 5
+        },
+        "V_8_EPOCH": {
+            "price": 5
+        },
+        "V_9_EPOCH": {
+            "price": 5
+        },
+        "V_10_EPOCH": {
+            "price": 5
+        },
+        "V_11_EPOCH": {
+            "price": 5
+        },
+        "V_12_EPOCH": {
+            "price": 5
+        },
+        "V_13_EPOCH": {
+            "price": 5
+        },
+        "V_14_EPOCH": {
+            "price": 5
+        },
+        "V_15_EPOCH": {
+            "price": 5
+        },
+        "V_16_EPOCH": {
+            "price": 5
+        },
+        "V_17_EPOCH": {
+            "price": 5
+        },
+        "V_18_EPOCH": {
+            "price": 5
+        },
+        "V_19_EPOCH": {
+            "price": 5
+        },
+        "V_20_EPOCH": {
+            "price": 5
+        },
+        "V_21_EPOCH": {
+            "price": 5
+        },
+        "V_22_EPOCH": {
+            "price": 5
+        },
+        "V_23_EPOCH": {
+            "price": 5
+        },
+        "V_24_EPOCH": {
+            "price": 5
+        },
+        "V_25_EPOCH": {
+            "price": 5
+        },
+        "V_26_EPOCH": {
+            "price": 5
+        },
+        "V_27_EPOCH": {
+            "price": 5
+        },
+        "V_28_EPOCH": {
+            "price": 5
+        },
+        "V_29_EPOCH": {
+            "price": 5
+        },
+        "V_30_EPOCH": {
+            "price": 5
+        },
+        "V_31_EPOCH": {
+            "price": 5
+        },
+        "V_32_EPOCH": {
+            "price": 5
+        },
+        "V_33_EPOCH": {
+            "price": 5
+        },
+        "V_34_EPOCH": {
+            "price": 5
+        },
+        "V_35_EPOCH": {
+            "price": 5
+        },
+        "V_36_EPOCH": {
+            "price": 5
+        },
+        "V_37_EPOCH": {
+            "price": 5
+        },
+        "V_38_EPOCH": {
+            "price": 5
+        },
+        "V_39_EPOCH": {
+            "price": 5
+        },
+        "V_40_EPOCH": {
+            "price": 5
+        },
+        "H_1_EPOCH": {
+            "price": 3
+        },
+        "H_2_EPOCH": {
+            "price": 3
+        },
+        "H_3_EPOCH": {
+            "price": 3
+        },
+        "H_4_EPOCH": {
+            "price": 3
+        },
+        "H_5_EPOCH": {
+            "price": 3
+        },
+        "H_6_EPOCH": {
+            "price": 3
+        },
+        "H_7_EPOCH": {
+            "price": 3
+        },
+        "H_8_EPOCH": {
+            "price": 3
+        },
+        "H_9_EPOCH": {
+            "price": 3
+        },
+        "H_10_EPOCH": {
+            "price": 3
+        },
+        "H_11_EPOCH": {
+            "price": 3
+        },
+        "H_12_EPOCH": {
+            "price": 3
+        },
+        "H_13_EPOCH": {
+            "price": 3
+        },
+        "H_14_EPOCH": {
+            "price": 3
+        },
+        "H_15_EPOCH": {
+            "price": 3
+        },
+        "H_16_EPOCH": {
+            "price": 3
+        },
+        "H_17_EPOCH": {
+            "price": 3
+        },
+        "H_18_EPOCH": {
+            "price": 3
+        },
+        "H_19_EPOCH": {
+            "price": 3
+        },
+        "H_20_EPOCH": {
+            "price": 3
+        },
+        "H_21_EPOCH": {
+            "price": 3
+        },
+        "H_22_EPOCH": {
+            "price": 3
+        },
+        "H_23_EPOCH": {
+            "price": 3
+        },
+        "H_24_EPOCH": {
+            "price": 3
+        },
+        "H_25_EPOCH": {
+            "price": 3
+        },
+        "H_26_EPOCH": {
+            "price": 3
+        },
+        "H_27_EPOCH": {
+            "price": 3
+        },
+        "H_28_EPOCH": {
+            "price": 3
+        },
+        "H_29_EPOCH": {
+            "price": 3
+        },
+        "H_30_EPOCH": {
+            "price": 3
+        },
+        "H_31_EPOCH": {
+            "price": 3
+        },
+        "H_32_EPOCH": {
+            "price": 3
+        },
+        "H_33_EPOCH": {
+            "price": 3
+        },
+        "H_34_EPOCH": {
+            "price": 3
+        },
+        "H_35_EPOCH": {
+            "price": 3
+        },
+        "H_36_EPOCH": {
+            "price": 3
+        },
+        "H_37_EPOCH": {
+            "price": 3
+        },
+        "H_38_EPOCH": {
+            "price": 3
+        },
+        "H_39_EPOCH": {
+            "price": 3
+        },
+        "H_40_EPOCH": {
+            "price": 3
+        },
+        "H_41_EPOCH": {
+            "price": 3
+        },
+        "H_42_EPOCH": {
+            "price": 3
+        },
+        "H_43_EPOCH": {
+            "price": 3
+        },
+        "H_44_EPOCH": {
+            "price": 3
+        },
+        "H_45_EPOCH": {
+            "price": 3
+        },
+        "H_46_EPOCH": {
+            "price": 3
+        },
+        "H_47_EPOCH": {
+            "price": 3
+        },
+        "H_48_EPOCH": {
+            "price": 3
+        },
+        "H_49_EPOCH": {
+            "price": 3
+        },
+        "H_50_EPOCH": {
+            "price": 3
+        },
+        "H_51_EPOCH": {
+            "price": 3
+        },
+        "H_52_EPOCH": {
+            "price": 3
+        },
+        "H_53_EPOCH": {
+            "price": 3
+        },
+        "H_54_EPOCH": {
+            "price": 3
+        },
+        "H_55_EPOCH": {
+            "price": 3
+        },
+        "H_56_EPOCH": {
+            "price": 3
+        },
+        "H_57_EPOCH": {
+            "price": 3
+        },
+        "H_58_EPOCH": {
+            "price": 3
+        },
+        "H_59_EPOCH": {
+            "price": 3
+        },
+        "H_60_EPOCH": {
+            "price": 3
+        },
+        "H_61_EPOCH": {
+            "price": 3
+        },
+        "H_62_EPOCH": {
+            "price": 3
+        },
+        "H_63_EPOCH": {
+            "price": 3
+        },
+        "H_64_EPOCH": {
+            "price": 3
+        },
+        "H_65_EPOCH": {
+            "price": 3
+        },
+        "H_66_EPOCH": {
+            "price": 3
+        },
+        "H_67_EPOCH": {
+            "price": 3
+        },
+        "H_68_EPOCH": {
+            "price": 3
+        },
+        "H_69_EPOCH": {
+            "price": 3
+        },
+        "H_70_EPOCH": {
+            "price": 3
+        },
+        "H_71_EPOCH": {
+            "price": 3
+        },
+        "H_72_EPOCH": {
+            "price": 3
+        },
+        "H_73_EPOCH": {
+            "price": 3
+        },
+        "H_74_EPOCH": {
+            "price": 3
+        },
+        "H_75_EPOCH": {
+            "price": 3
+        },
+        "H_76_EPOCH": {
+            "price": 3
+        },
+        "H_77_EPOCH": {
+            "price": 3
+        },
+        "H_78_EPOCH": {
+            "price": 3
+        },
+        "H_79_EPOCH": {
+            "price": 3
+        },
+        "H_80_EPOCH": {
+            "price": 3
+        },
+        "H_81_EPOCH": {
+            "price": 3
+        },
+        "H_82_EPOCH": {
+            "price": 3
+        },
+        "H_83_EPOCH": {
+            "price": 3
+        },
+        "H_84_EPOCH": {
+            "price": 3
+        },
+        "H_85_EPOCH": {
+            "price": 3
+        },
+        "H_86_EPOCH": {
+            "price": 3
+        },
+        "H_87_EPOCH": {
+            "price": 3
+        },
+        "H_88_EPOCH": {
+            "price": 3
+        },
+        "H_89_EPOCH": {
+            "price": 3
+        },
+        "H_90_EPOCH": {
+            "price": 3
+        },
+        "H_91_EPOCH": {
+            "price": 3
+        },
+        "H_92_EPOCH": {
+            "price": 3
+        },
+        "H_93_EPOCH": {
+            "price": 3
+        },
+        "H_94_EPOCH": {
+            "price": 5
+        },
+        "H_95_EPOCH": {
+            "price": 5
+        },
+        "H_96_EPOCH": {
+            "price": 5
+        },
+        "H_97_EPOCH": {
+            "price": 5
+        },
+        "H_98_EPOCH": {
+            "price": 5
+        },
+        "H_99_EPOCH": {
+            "price": 5
+        },
+        "H_100_EPOCH": {
+            "price": 5
+        },
+        "H_101_EPOCH": {
+            "price": 5
+        },
+        "H_102_EPOCH": {
+            "price": 5
+        },
+        "H_103_EPOCH": {
+            "price": 5
+        },
+        "H_104_EPOCH": {
+            "price": 3
+        },
+        "H_105_EPOCH": {
+            "price": 3
+        },
+        "wolf_mask_epoch": {
+            "price": 30
+        },
+        "pkin_mask_epoch": {
+            "price": 30
+        },
+        "clown_mask_epoch": {
+            "price": 30
+        },
+        "C_Offroad_01_EPOCH": {
+            "price": 750
+        },
+        "C_Quadbike_01_EPOCH": {
+            "price": 500
+        },
+        "C_Hatchback_01_EPOCH": {
+            "price": 750
+        },
+        "C_Hatchback_02_EPOCH": {
+            "price": 1000
+        },
+        "C_SUV_01_EPOCH": {
+            "price": 750
+        },
+        "C_Rubberboat_EPOCH": {
+            "price": 500
+        },
+        "C_Rubberboat_02_EPOCH": {
+            "price": 500
+        },
+        "C_Rubberboat_03_EPOCH": {
+            "price": 500
+        },
+        "C_Rubberboat_04_EPOCH": {
+            "price": 500
+        },
+        "C_Van_01_box_EPOCH": {
+            "price": 1000
+        },
+        "C_Van_01_transport_EPOCH": {
+            "price": 1000
+        },
+        "C_Boat_Civil_01_EPOCH": {
+            "price": 750
+        },
+        "C_Boat_Civil_01_police_EPOCH": {
+            "price": 750
+        },
+        "C_Boat_Civil_01_rescue_EPOCH": {
+            "price": 750
+        },
+        "B_Heli_Light_01_EPOCH": {
+            "price": 2500
+        },
+        "B_SDV_01_EPOCH": {
+            "price": 1000
+        },
+        "B_MRAP_01_EPOCH": {
+            "price": 2500
+        },
+        "I_MRAP_03_EPOCH": {
+            "price": 2500
+        },
+        "B_G_Offroad_01_armed_EPOCH": {
+            "price": 2500
+        },
+        "B_Truck_01_transport_EPOCH": {
+            "price": 1000
+        },
+        "B_Truck_01_covered_EPOCH": {
+            "price": 1000
+        },
+        "B_Truck_01_mover_EPOCH": {
+            "price": 1000
+        },
+        "B_Truck_01_box_EPOCH": {
+            "price": 1000
+        },
+        "O_Truck_02_covered_EPOCH": {
+            "price": 1000
+        },
+        "O_Truck_02_transport_EPOCH": {
+            "price": 1000
+        },
+        "O_Truck_03_covered_EPOCH": {
+            "price": 1000
+        },
+        "O_Truck_02_box_EPOCH": {
+            "price": 1000
+        },
+        "O_Heli_Light_02_unarmed_EPOCH": {
+            "price": 2500
+        },
+        "I_Heli_Transport_02_EPOCH": {
+            "price": 2500
+        },
+        "I_Heli_light_03_unarmed_EPOCH": {
+            "price": 2500
+        },
+        "C_Heli_Light_01_civil_EPOCH": {
+            "price": 2500
+        },
+        "O_Heli_Transport_04_EPOCH": {
+            "price": 2500
+        },
+        "O_Heli_Transport_04_bench_EPOCH": {
+            "price": 2500
+        },
+        "O_Heli_Transport_04_box_EPOCH": {
+            "price": 2500
+        },
+        "O_Heli_Transport_04_covered_EPOCH": {
+            "price": 2500
+        },
+        "B_Heli_Transport_03_unarmed_EPOCH": {
+            "price": 2500
+        },
+        "I_UAV_01_F": {
+            "price": 50
+        },
+        "jetski_epoch": {
+            "price": 500
+        },
+        "ebike_epoch": {
+            "price": 1500
+        },
+        "mosquito_epoch": {
+            "price": 1500
+        },
+        "K01": {
+            "price": 300
+        },
+        "K02": {
+            "price": 300
+        },
+        "K03": {
+            "price": 300
+        },
+        "K04": {
+            "price": 300
+        },
+        "CUP_C_Fishing_Boat_Chernarus": {
+            "price": 800
+        },
+        "CUP_C_LR_Transport_CTK": {
+            "price": 800
+        },
+        "CUP_B_Zodiac_USMC": {
+            "price": 800
+        },
+        "CUP_C_Skoda_Red_CIV": {
+            "price": 800
+        },
+        "CUP_C_Skoda_White_CIV": {
+            "price": 800
+        },
+        "CUP_C_Skoda_Blue_CIV": {
+            "price": 800
+        },
+        "CUP_C_Skoda_Green_CIV": {
+            "price": 800
+        },
+        "CUP_C_SUV_CIV": {
+            "price": 1500
+        },
+        "CUP_B_HMMWV_Transport_USA": {
+            "price": 2500
+        },
+        "CUP_B_HMMWV_Unarmed_USA": {
+            "price": 2500
+        },
+        "CUP_C_SUV_TK": {
+            "price": 2000
+        },
+        "CUP_B_LR_Transport_CZ_D": {
+            "price": 1100
+        },
+        "CUP_C_Datsun_Covered": {
+            "price": 800
+        },
+        "CUP_C_Datsun_Plain": {
+            "price": 800
+        },
+        "CUP_C_Datsun_Tubeframe": {
+            "price": 800
+        },
+        "CUP_C_Datsun_4seat": {
+            "price": 800
+        },
+        "CUP_C_Datsun": {
+            "price": 800
+        },
+        "CUP_C_Golf4_green_Civ": {
+            "price": 800
+        },
+        "CUP_C_Golf4_red_Civ": {
+            "price": 800
+        },
+        "CUP_C_Golf4_blue_Civ": {
+            "price": 800
+        },
+        "CUP_C_Golf4_black_Civ": {
+            "price": 800
+        },
+        "CUP_C_Golf4_kitty_Civ": {
+            "price": 800
+        },
+        "CUP_C_Golf4_reptile_Civ": {
+            "price": 800
+        },
+        "CUP_C_Golf4_camodigital_Civ": {
+            "price": 800
+        },
+        "CUP_C_Golf4_camodark_Civ": {
+            "price": 800
+        },
+        "CUP_C_Golf4_camo_Civ": {
+            "price": 800
+        },
+        "CUP_B_M1030": {
+            "price": 500
+        },
+        "CUP_C_Ural_Civ_03": {
+            "price": 1200
+        },
+        "CUP_C_Ural_Open_Civ_03": {
+            "price": 1200
+        },
+        "CUP_C_Ural_Civ_02": {
+            "price": 1200
+        },
+        "CUP_B_TowingTractor_USMC": {
+            "price": 800
+        },
+        "CUP_C_C47_CIV": {
+            "price": 1600
+        },
+        "CUP_B_LR_Transport_CZ_W": {
+            "price": 800
+        },
+        "CUP_C_Golf4_white_Civ": {
+            "price": 800
+        },
+        "CUP_C_Golf4_whiteblood_Civ": {
+            "price": 800
+        },
+        "CUP_C_Golf4_yellow_Civ": {
+            "price": 800
+        },
+        "CUP_C_Octavia_CIV": {
+            "price": 1600
+        },
+        "CUP_C_Ural_Civ_01": {
+            "price": 1000
+        },
+        "CUP_C_Ural_Open_Civ_01": {
+            "price": 1000
+        },
+        "CUP_B_Ural_CDF": {
+            "price": 1000
+        },
+        "CUP_B_Ural_Open_CDF": {
+            "price": 1000
+        },
+        "CUP_C_Ural_Open_Civ_02": {
+            "price": 1000
+        },
+        "CUP_B_HMMWV_Ambulance_USA": {
+            "price": 1500
+        },
+        "CUP_C_UAZ_Unarmed_TK_CIV": {
+            "price": 1000
+        },
+        "CUP_C_UAZ_Open_TK_CIV": {
+            "price": 1000
+        },
+        "CUP_B_UAZ_Unarmed_CDF": {
+            "price": 1000
+        },
+        "CUP_B_Ural_Empty_CDF": {
+            "price": 1000
+        },
+        "CUP_C_DC3_CIV": {
+            "price": 2400
+        },
+        "C_Boat_Transport_02_F": {
+            "price": 1200
+        },
+        "C_Scooter_Transport_01_F": {
+            "price": 1200
+        },
+        "C_Offroad_02_unarmed_F": {
+            "price": 3500
+        },
+        "I_C_Offroad_02_unarmed_F": {
+            "price": 3500
+        },
+        "B_T_LSV_01_unarmed_F": {
+            "price": 4400
+        },
+        "O_LSV_02_unarmed_F": {
+            "price": 4300
+        },
+        "O_T_LSV_02_unarmed_F": {
+            "price": 4600
+        },
+        "C_Plane_Civil_01_F": {
+            "price": 5000
+        },
+        "C_Plane_Civil_01_racing_F": {
+            "price": 5000
+        },
+        "B_CTRG_LSV_01_light_F": {
+            "price": 4400
+        },
+        "B_LSV_01_unarmed_F": {
+            "price": 4400
+        },
+        "B_T_VTOL_01_infantry_F": {
+            "price": 10000
+        },
+        "B_T_VTOL_01_vehicle_F": {
+            "price": 10000
+        },
+        "B_UavTerminal": {
+            "price": 10
+        },
+        "O_UavTerminal": {
+            "price": 10
+        }
+    }
+}

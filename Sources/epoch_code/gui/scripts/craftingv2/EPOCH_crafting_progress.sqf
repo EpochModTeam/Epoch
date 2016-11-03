@@ -15,7 +15,9 @@
 if !(isNil "rmx_var_craftProgressInProgress") exitWith {false};
 rmx_var_craftProgressInProgress = true;
 
-private ["_out","_txt","_time","_posY","_posX","_w","_h","_idc","_stColor","_layer","_display","_ctrl3","_ctrl","_ctrl2","_tick"];
+//[[[cog import generate_private_arrays ]]]
+private ["_ctrl","_ctrl2","_ctrl3","_display","_h","_idc","_layer","_out","_posX","_posY","_stColor","_tick","_time","_txt","_w"];
+//[[[end]]]
 
 disableSerialization;
 _txt = param [0,"No text"];

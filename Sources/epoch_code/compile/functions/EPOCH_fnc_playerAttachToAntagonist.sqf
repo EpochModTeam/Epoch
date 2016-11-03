@@ -18,12 +18,15 @@
     Parameter(s):
 	_this select 0: OBJECT - Antagonist Object
 	_this select 1: OBJECT - Player Object
-	
+
 	Returns:
-	
+
 */
+//[[[cog import generate_private_arrays ]]]
+private ["_antagonist2","_bomb","_doingBoom","_doingGroan","_groanTime","_killer2","_player2","_tapDiag","_tapDiag2"];
+//[[[end]]]
 params ["_player", "_antagonist", "_bomb","_killer"];
-private _tapDiag = "TapOut";
+_tapDiag = "TapOut";
 if (visibleMap) then {openMap [false, true];};
 _antagonist switchCamera "Internal";
 if(isNil "_bomb")then{_bomb = objNull;};
@@ -36,9 +39,9 @@ _antagonist2 = _this select 0;
 _tapDiag2 = _this select 1;
 _player2 = _this select 2;
 _killer2 = _this select 3;
-private _doingGroan = false;
-private _doingBoom = false;
-private _groanTime = diag_tickTime;
+_doingGroan = false;
+_doingBoom = false;
+_groanTime = diag_tickTime;
 	while {!alive _player2} do {
 		if (playerRespawnTime <= 1) exitWith{ (findDisplay 46) closeDisplay 0; };
 		if (playerRespawnTime > 15 && !dialog) then {createDialog _tapDiag2;};

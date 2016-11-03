@@ -12,10 +12,12 @@
     Github:
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_code/compile/EPOCH_unitSpawn.sqf
 */
-private ["_loop","_unit","_sapperNum","_config","_targetPos","_grp","_driver","_index","_nonJammer","_nonTrader","_jammers","_jammerRange","_restricted","_disableAI"];
+//[[[cog import generate_private_arrays ]]]
+private ["_bomb","_config","_currentLimit","_disableAI","_driver","_grp","_index","_jammerRange","_jammers","_loop","_nonJammer","_nonTrader","_nonTraderAIRange","_restricted","_sapperNum","_spawnLimit","_targetPos","_unit","_units"];
+//[[[end]]]
 params ["_unitClass",["_trgt",player],["_doVariable",false]];
-private _bomb = objNull;
 
+_bomb = objNull;
 diag_log format["DEBUG: Antagonist %1 Spawning on %2. Do variable: %3.", _unitClass, _trgt, _doVariable];
 
 if(random 100 < 6)then{
@@ -102,6 +104,7 @@ switch _unitClass do {
 		_targetPos = [_targetPos, 600, 1200, 5, 0, 400, 0] call BIS_fnc_findSafePos;
 		_targetPos set[2, 600];
 		_unit = createVehicle["I_UAV_01_F", _targetPos, [], 0, "FLY"];
+        _unit disableTIEquipment true;
 		_units pushBack _unit;
 		addToRemainsCollector[_unit];
 		_unit flyInHeight 600;

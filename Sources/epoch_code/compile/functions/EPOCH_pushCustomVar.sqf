@@ -21,7 +21,9 @@
 	Returns:
 	NOTHING
 */
-private ["_lastSave","_customVars","_time"];
+//[[[cog import generate_private_arrays ]]]
+private ["_customVars","_lastSave","_time"];
+//[[[end]]]
 _time = if (_this) then [{15},{80}];
 _lastSave = missionNamespace getVariable["EPOCH_lastSave", diag_tickTime];
 if ((diag_tickTime - _lastSave) >= _time) then {

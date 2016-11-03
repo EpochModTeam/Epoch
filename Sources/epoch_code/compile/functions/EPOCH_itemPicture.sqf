@@ -13,7 +13,7 @@
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_code/compile/functions/EPOCH_itemPicture.sqf
 
     Example:
-    _picture =  _part call EPOCH_itemPicture;
+    _part call EPOCH_itemPicture;
 
     Parameter(s):
 		_this: STRING - Vehicle, Weapon, or Magazine config class name
@@ -21,7 +21,9 @@
 	Returns:
 	STRING
 */
+//[[[cog import generate_private_arrays ]]]
 private ["_return"];
+//[[[end]]]
 params ["_item"];
 _return = "";
 if ([_item, "CfgVehicles"] call EPOCH_fnc_isAny) then {

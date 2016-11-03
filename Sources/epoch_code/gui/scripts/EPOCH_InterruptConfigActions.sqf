@@ -13,7 +13,9 @@
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_code/gui/scripts/EPOCH_InterruptConfigActions.sqf
 */
 disableSerialization;
-private ["_pos","_mainGrp","_display","_data","_value","_mainGrpPos","_group","_width"];
+//[[[cog import generate_private_arrays ]]]
+private ["_data","_display","_group","_mainGrp","_mainGrpPos","_pos","_value","_width"];
+//[[[end]]]
 params ["_ctrl","_idx"];
 
 _mainGrp = Epoch_interrupt_controls select 1;

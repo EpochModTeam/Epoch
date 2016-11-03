@@ -21,7 +21,9 @@
 	Returns:
 	NOTHING
 */
-private ["_curArmor","_maxArmorUniform","_maxArmorVest","_maxArmorHeadgear"];
+//[[[cog import generate_private_arrays ]]]
+private ["_curArmor","_maxArmorHeadgear","_maxArmorUniform","_maxArmorVest"];
+//[[[end]]]
 _maxArmorUniform = 0;
 {
   _curArmor = ([getNumber(_x >> 'passThrough'),getNumber(_x >> 'armor')] call EPOCH_factorArmor) + getNumber(_x >> 'armorStructural');

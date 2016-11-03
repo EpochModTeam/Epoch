@@ -12,7 +12,9 @@
     Github:
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_code/gui/scripts/craftingv2/EPOCH_crafting_checkNearby.sqf
 */
-private ["_nearObjects","_result","_tmpResult","_config","_configWorldInteractions","_countOnFire","_countAlive"];
+//[[[cog import generate_private_arrays ]]]
+private ["_check","_config","_configWorldInteractions","_countAlive","_countOnFire","_find","_nearObjects","_result","_test1","_test2","_tmpResult"];
+//[[[end]]]
 params ["","","",["_arr",[2,""]],["_dist",0],["_cnt",1],["_inflamed",0],["_alive",0]];
 _arr params ["_type","_check"];
 _result = false;

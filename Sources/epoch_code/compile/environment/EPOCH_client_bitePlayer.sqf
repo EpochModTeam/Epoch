@@ -21,7 +21,9 @@
 	Returns:
 	NOTHING
 */
-private ["_distance","_toxicChance","_bloodpChance","_fatigueChance","_bleedAmount","_bloodpAmount","_soundEffect","_canSee","_ppEffect","_bleedChance","_soundEffectIndex","_soundEffectGlobal","_animationEffect","_animationEffectGlobal","_cfgObjectInteraction"];
+//[[[cog import generate_private_arrays ]]]
+private ["_animConfigArray","_animationEffect","_animationEffectGlobal","_bleedAmount","_bleedChance","_bloodpAmount","_bloodpChance","_canSee","_cfgObjectInteraction","_distance","_fatigueChance","_handle","_handles","_ppEffect","_say3dsoundsConfig","_selectedMove","_selectedSound","_soundConfigArray","_soundEffect","_soundEffectGlobal","_switchMovehandlerConfig","_toxicChance"];
+//[[[end]]]
 params [["_unit",objNull],["_target",player]];
 if (isNull _unit && isNull _target) exitWith {};
 if !(_target isEqualTo player) then {
@@ -55,7 +57,7 @@ if !(_target isEqualTo player) then {
 			};
 			_animationEffectGlobal = getNumber (_cfgObjectInteraction >> "animationEffectGlobal");
 			_canSee = call compile (getText (_cfgObjectInteraction >> "canSee"));
-			_ppEffect = getNumber (_cfgObjectInteraction >> "ppEffect");
+			_ppEffect = getArray (_cfgObjectInteraction >> "ppEffect");
 
 			if ((_unit distance player) < _distance && _canSee) then {
 
@@ -91,35 +93,8 @@ if !(_target isEqualTo player) then {
 				};
 				if (random 1 < _bloodpChance) then {
 					EPOCH_playerBloodP = (EPOCH_playerBloodP + (_bloodpAmount + (EPOCH_playerBloodP - 100))) min 190;
-					// todo configize
-					if (_ppEffect == 1) then {
-						[] spawn{
-							_ppGrain = ppEffectCreate["filmGrain", 2005];
-							_ppChrom = ppEffectCreate["chromAberration", 2006];
-							_ppColor = ppEffectCreate["colorCorrections", 2007];
-							_ppBlur = ppEffectCreate["radialBlur", 2008];
-							_ppColor ppEffectAdjust[1, 1, 0, [1.5, -1, -1.5, 0.5], [5, 3.5, -5, -0.5], [-3, 5, -5, -0.5]];
-							_ppColor ppEffectCommit 5;
-							_ppChrom ppEffectAdjust[0.01, 0.01, true];
-							_ppChrom ppEffectCommit 5;
-							_ppBlur ppEffectAdjust[0.02, 0.02, 0.15, 0.15];
-							_ppBlur ppEffectCommit 5;
-							_ppGrain ppEffectAdjust[0.1, -1, 0.05, 0.05, 2, false];
-							_ppGrain ppEffectCommit 1;
-							_ppGrain ppEffectEnable true;
-							_ppChrom ppEffectEnable true;
-							_ppColor ppEffectEnable true;
-							_ppBlur ppEffectEnable true;
-							uiSleep 2;
-							_ppColor ppEffectAdjust[1, 1, -0.01, [0.0, 0.0, 0.0, 0.0], [1.5, 1, 1.2, 0.6], [0.199, 0.587, 0.114, 0.20]];
-							_ppColor ppEffectCommit 5;
-							_ppChrom ppEffectAdjust[0, 0, true];
-							_ppChrom ppEffectCommit 5;
-							_ppBlur ppEffectAdjust[0, 0, 0, 0];
-							_ppBlur ppEffectCommit 5;
-							uiSleep 5;
-							ppEffectDestroy[_ppGrain, _ppChrom, _ppColor, _ppBlur];
-						};
+					if !(_ppEffect isEqualTo []) then {
+						[_ppEffect] spawn EPOCH_fnc_spawnEffects;
 					};
 				};
 				if (random 1 < _fatigueChance) then {

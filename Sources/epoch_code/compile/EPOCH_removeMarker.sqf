@@ -21,7 +21,7 @@
 	Returns:
 
 */
-_paramres = params [["_mName",""]];
+params [["_mName",""]];
 diag_log format["Epoch: ADMIN: Removing marker %1.", _mName];
 
 if(_mName == "")exitWith{};

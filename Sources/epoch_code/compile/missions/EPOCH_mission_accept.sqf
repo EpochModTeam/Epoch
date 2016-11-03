@@ -12,7 +12,9 @@
     Github:
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_code/compile/missions/EPOCH_mission_accept.sqf
 */
-private ["_missionTasks","_selectedMission","_simpleTask","_simpleTaskFSM","_simpleTaskSQF","_simpleTaskFNC","_taskNS","_itemCompile","_fnc_path","_path","_taskControl","_missionAllowed","_missionIndex","_plyrVar"];
+//[[[cog import generate_private_arrays ]]]
+private ["_allowTask","_doTask","_fnc_path","_itemCompile","_menuCondition","_miNSTask","_missionAllowed","_missionClasses","_missionIndex","_missionTasks","_nrEnts","_path","_plyrVar","_selectedMission","_simpleTask","_simpleTaskFNC","_simpleTaskFSM","_simpleTaskSQF","_tag","_taskNS","_trader","_uiNSTask"];
+//[[[end]]]
 _missionIndex = lbCurSel 1500;
 _missionAllowed = true;
 //systemChat format ["Mission Acepted: %1",_missionIndex];

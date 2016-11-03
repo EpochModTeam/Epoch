@@ -12,8 +12,15 @@
     Github:
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server/compile/epoch_vehicle/EPOCH_server_lockVehicle.sqf
 */
-private ["_lockOwner","_lockedOwner","_response","_playerUID","_playerGroup","_vehSlot","_vehLockHiveKey","_isLocked","_driver","_crew","_logic"];
-params ["_vehicle","_value","_player",["_token","",[""]]];
+//[[[cog import generate_private_arrays ]]]
+private ["_crew","_driver","_isLocked","_lockOwner","_lockedOwner","_logic","_playerGroup","_playerUID","_response","_vehLockHiveKey","_vehSlot"];
+//[[[end]]]
+params [
+    ["_vehicle",objNull,[objNull]],
+    ["_value",true,[true]],
+    ["_player",objNull,[objNull]],
+    ["_token","",[""]]
+];
 
 if (isNull _vehicle) exitWith {};
 if !([_player,_token] call EPOCH_server_getPToken) exitWith {};
@@ -69,17 +76,18 @@ if (_logic) then {
 
 	if (_value) then {
 		["VehicleLock", _vehLockHiveKey, EPOCH_vehicleLockTime, [_lockOwner]] call EPOCH_fnc_server_hiveSETEX;
-	};
+	} else {
+        // re-allow damage (server-side) on first unlock
+        if (_vehicle getVariable ["EPOCH_disallowedDamage", false]) then {
+            _vehicle allowDamage true;
+            _vehicle setVariable ["EPOCH_disallowedDamage", nil];
+        };
+    };
 
+    // lock/unlock
 	if (local _vehicle) then {
 		_vehicle lock _value;
 	} else {
-		if (_value) then {
-			// send to player
-			[_vehicle, true] remoteExec ['EPOCH_client_lockVehicle',_vehicle];
-		} else {
-			// send to player
-			[_vehicle, false] remoteExec ['EPOCH_client_lockVehicle',_vehicle];
-		};
+		[_vehicle, _value] remoteExec ['EPOCH_client_lockVehicle',_vehicle];
 	};
 };

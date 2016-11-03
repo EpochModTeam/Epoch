@@ -34,7 +34,7 @@ if (!isNull _vehicle) then {
 		if (isNil "_magsAmmoCargo") then {
 			_magsAmmoCargo = [];
 		};
-		
+
 		{
 			_cargo = _x select 1;
 			_magsAmmoCargox = magazinesAmmoCargo _cargo;
@@ -61,8 +61,34 @@ if (!isNull _vehicle) then {
 			};
 		} forEach _magsAmmoCargo;
 
+		// convert and normalize
+		_startTime = diag_tickTime;
+		//diag_log format ["DEBUG: BIS_fnc_weaponComponents start %1", _startTime];
+		_wepsItemsCargoNormalized = [];
+		{
+			_selectedWeaponComponents = _x;
+			_selectedWeapon = _selectedWeaponComponents deleteAt 0;
+			// find actual weapon components - todo this BIS call maybe slow
+			_weaponComponents = _selectedWeapon call BIS_fnc_weaponComponents;
+			//diag_log format ["DEBUG: BIS_fnc_weaponComponents end %1", diag_tickTime - _startTime];
+			// base weapon (without attachments)
+			_weapon = _weaponComponents deleteAt 0;
+			_newComponents = [];
+			{
+				// remove attachments that are already linked via config
+				if (_x isEqualType "" && {(tolower _x) in _weaponComponents}) then {
+					_newComponents pushBack "";
+					//diag_log format ["DEBUG: suppressed saving of %1 for weapon %2 config %3", _x, [_selectedWeapon,_selectedWeaponComponents],[_weapon,_weaponComponents]];
+				} else {
+					_newComponents pushBack _x;
+				};
+			} forEach _selectedWeaponComponents;
+			_wepsItemsCargoNormalized pushBack ([_selectedWeapon] + _newComponents);
+		} forEach _wepsItemsCargo;
+		// diag_log format ["DEBUG: convert and normalize end %1", diag_tickTime - _startTime];
+
 		_inventory = [
-			_wepsItemsCargo,
+			_wepsItemsCargoNormalized,
 			_magsAmmoCargoMinimized,
 			getBackpackCargo _vehicle,
 			getItemCargo _vehicle

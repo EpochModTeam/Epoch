@@ -12,7 +12,9 @@
     Github:
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_code/compile/missions/EPOCH_spawn_looters.sqf
 */
-private["_unit"];
+//[[[cog import generate_private_arrays ]]]
+private ["_unit"];
+//[[[end]]]
 for "_i" from 0 to 4 step 1 do {
 	_unit =  createGroup RESISTANCE createUnit ["Epoch_Female_F", getPos player, [], 400, "CAN_COLLIDE"];
 	_unit addBackPack "B_FieldPack_blk";

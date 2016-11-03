@@ -25,7 +25,9 @@ _this select 1: SCALAR - state
 Returns:
 NOTHING
 */
-private["_recipeItem", "_recipeQty", "_hasRecipeItems", "_msg", "_recipeCount", "_currentCount", "_numRemoved", "_items", "_mags", "_recipe", "_craftItem", "_craftQty", "_config", "_objClass"];
+//[[[cog import generate_private_arrays ]]]
+private ["_config","_craftItem","_craftQty","_currentCount","_hasRecipeItems","_items","_mags","_msg","_numRemoved","_objClass","_recipe","_recipeCount","_recipeItem","_recipeQty"];
+//[[[end]]]
 params[
 	["_object", objNull],
 	["_anim", ""],
@@ -65,6 +67,7 @@ if !(isNull _object) then{
 				_recipeItem = _x;
 				_recipeQty = 1;
 				if (_x isEqualType[]) then{
+					_x params ["_recipeItem","_recipeQty"];
 					_recipeItem = _x select 0;
 					_recipeQty = _x select 1;
 				};

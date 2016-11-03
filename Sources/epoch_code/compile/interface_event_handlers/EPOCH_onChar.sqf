@@ -22,7 +22,9 @@
 	Returns:
 	NOTHING
 */
-private ["_textArr","_num"];
+//[[[cog import generate_private_arrays ]]]
+private ["_num","_textArr"];
+//[[[end]]]
 params ["_control",["_maxLimit",0]];
 _textArr = toArray(ctrlText(_control select 0));
 {

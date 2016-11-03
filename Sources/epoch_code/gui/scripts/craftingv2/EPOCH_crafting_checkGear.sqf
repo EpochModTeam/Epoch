@@ -12,7 +12,9 @@
     Github:
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_code/gui/scripts/craftingv2/EPOCH_crafting_checkGear.sqf
 */
-private ["_recipes","_nearObjects","_near","_out","_player","_recipe","_cP","_cN"];
+//[[[cog import generate_private_arrays ]]]
+private ["_cN","_cP","_near","_nearObjects","_out","_player","_recipe"];
+//[[[end]]]
 params ["_recipes"];
 
 _nearObjects = nearestObjects [position player,["WeaponHolder","LandVehicle","Air"],10];

@@ -22,8 +22,11 @@
 	Returns:
 	NOTHING
 */
+//[[[cog import generate_private_arrays ]]]
+private ["_EPOCH_1","_EPOCH_2","_allowedSnapObjects","_allowedSnapPoints","_arr_snapPoints","_baselineSnapPos","_cfgBaseBuilding","_class","_currentOffSet","_currentPos","_currentTarget","_dir2","_direction","_distance","_energyCost","_ins","_isSnap","_lastCheckTime","_maxHeight","_maxSnapDistance","_nearestObject","_nearestObjects","_numberOfContacts","_objSlot","_objType","_offSet","_offsetZPos","_pOffset","_pos1","_pos1_snap","_pos2","_pos2ATL","_pos2_snap","_pos_snapObj","_rejectMove","_simulClass","_snapChecks","_snapConfig","_snapDistance","_snapPointsPara","_snapPointsPerp","_snapPos","_snapPos1","_snapPosition","_snapType","_stabilityCheck","_up2","_worldspace"];
+//[[[end]]]
 if !(isNil "EPOCH_simulSwap_Lock") exitWith{};
-private ["_cfgBaseBuilding","_energyCost","_maxHeight","_stabilityCheck","_pos2ATL","_lastCheckTime","_rejectMove","_currentOffSet","_dir2","_up2","_nearestObject","_isSnap","_snapPosition","_snapType","_pOffset","_snapPos","_snapDistance","_snapPos1","_pos_snapObj","_direction","_pos1_snap","_pos2_snap","_ins","_EPOCH_2","_arr_snapPoints","_pos1","_offSet","_snapConfig","_snapPointsPara","_snapPointsPerp","_baselineSnapPos","_distance","_nearestObjects","_EPOCH_1","_pos2","_numberOfContacts","_worldspace","_currentTarget","_offsetZPos","_currentPos","_objSlot","_allowedSnapPoints","_allowedSnapObjects","_objType","_class","_simulClass","_snapChecks","_maxSnapDistance"];
+
 params [
 	["_object",objNull],
 	["_item",""]

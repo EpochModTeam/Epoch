@@ -21,7 +21,10 @@
 	Returns:
 	NOTHING
 */
-private ["_buildingJammerRange","_maintainCount","_rnd","_config"];
+//[[[cog import generate_private_arrays ]]]
+private ["_buildingJammerRange","_config","_maintainCount","_rnd"];
+//[[[end]]]
+
 if !(isNil "EPOCH_maintainLockout") exitWith {["Already Maintaining a base.", 5] call Epoch_message;};
 if (EPOCH_playerCrypto > 0) then {
   _config = "CfgEpochClient" call EPOCH_returnConfig;
@@ -31,8 +34,8 @@ if (EPOCH_playerCrypto > 0) then {
   _maintainCount = {(damage _x) > 0} count nearestObjects[_this, ["Constructions_static_F","Constructions_foundation_F","Buildable_Storage","Constructions_lockedstatic_F"], _buildingJammerRange];
   if (_maintainCount > 0) then {
 
-    if (EPOCH_playerCrypto < _maintainCount) then {
-      _maintainCount = EPOCH_playerCrypto;
+    if (EPOCH_playerCrypto < _maintainCount) exitwith {
+      [format ["You need %1 Krypto to maintain your base.",_maintainCount], 5] call Epoch_message;
     };
 
     _rnd = format ["rmx_var_temp%1%2",floor random 100, selectRandom ["A","B","C","D","E","F"]];

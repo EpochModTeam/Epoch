@@ -24,8 +24,10 @@
 	Returns:
 	Returns STRING if only one element in second param, otherwise returns ARRAY
 */
-private ["_single","_arr"];
-params [["_item",""],["_entries",["DisplayName"],[[]]]];
+//[[[cog import generate_private_arrays ]]]
+private ["_arr","_data","_displayName","_pic","_single"];
+//[[[end]]]
+params [["_item",""],["_entries",["DisplayName"],[[]] ] ];
 _single = (count _entries) == 1;
 _arr = [];
 {

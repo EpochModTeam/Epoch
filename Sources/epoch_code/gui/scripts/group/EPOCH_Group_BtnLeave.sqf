@@ -12,7 +12,9 @@
     Github:
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_code/gui/group/EPOCH_Group_BtnLeave.sqf
 */
-private ["_txt","_BtnLeave"];
+//[[[cog import generate_private_arrays ]]]
+private ["_BtnLeave","_ret","_txt"];
+//[[[end]]]
 disableSerialization;
 _BtnLeave = (findDisplay -1300) displayCtrl 31;
 if (getPlayerUID player == Epoch_my_GroupUID) then {

@@ -12,8 +12,9 @@
     Github:
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_code/compile/EPOCH_mineRocks.sqf
 */
-private ["_currentPos","_found","_foundIndex","_start","_end","_p3dName","_finalConfig","_str","_findStart","_object","_objects","_config"];
-
+//[[[cog import generate_private_arrays ]]]
+private ["_config","_currentPos","_found","_foundIndex","_getWorldTypes","_object","_objects","_str","_worldTypes"];
+//[[[end]]]
 if ((diag_tickTime - EPOCH_lastMineRocks) >= 2) then {
 	EPOCH_lastMineRocks = diag_tickTime;
 	if (random 1 < 0.16) then {

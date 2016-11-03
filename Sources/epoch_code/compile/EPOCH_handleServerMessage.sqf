@@ -16,6 +16,7 @@
     [_this select 1, _this select 2] remoteExec ['EPOCH_handleServerMessage',_x];
 
 */
-if (isLocalized (_this select 0)) then{
- [format["%1", format[localize (_this select 0), _this select 1]], 5] call Epoch_message;
+params [["_str",""],["_input",""]];
+if (isLocalized _str) then{
+    [format["%1", format[localize _str, _input]], 5] call Epoch_message;
 };

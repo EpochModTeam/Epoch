@@ -1,0 +1,1302 @@
+{
+    "_header": {
+        "@author": "Aaron Clark - https://EpochMod.com",
+        "@contributors": ["Andrew Gregory"],
+        "@description": "Item interaction configs",
+        "@licence": "Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike",
+        "@github": "https://github.com/EpochModTeam/Epoch/tree/release/Sources/{filename}"
+    },
+    "CfgItemInteractions": {
+        "Default": {
+            "interactAction": 0
+        },
+        "Food_base": {
+            "interactAction": 1,
+            "interactText": "EAT",
+            "interactAttributes": [
+                [
+                    "Hunger",
+                    600
+                ]
+            ],
+            "_inherit": "Default"
+        },
+        "Food_TinCan_base": {
+            "interactReturnOnUse": "ItemEmptyTin",
+            "_inherit": "Food_base"
+        },
+        "Food_Jar_base": {
+            "interactReturnOnUse": "emptyjar_epoch",
+            "_inherit": "Food_base"
+        },
+        "Food_Cooler_base": {
+            "interactReturnOnUse": "ItemCoolerE",
+            "_inherit": "Food_base"
+        },
+        "Drink_base": {
+            "interactAction": 2,
+            "interactText": "DRINK",
+            "interactAttributes": [
+                [
+                    "Thirst",
+                    500
+                ]
+            ],
+            "_inherit": "Default"
+        },
+        "Drink_Jar_base": {
+            "interactReturnOnUse": "emptyjar_epoch",
+            "_inherit": "Drink_base"
+        },
+        "Soda_base": {
+            "interactReturnOnUse": "ItemSodaEmpty",
+            "_inherit": "Drink_base"
+        },
+        "Item_Build_base": {
+            "interactAction": 3,
+            "interactText": "BUILD",
+            "_inherit": "Default"
+        },
+        "Item_Packed_base": {
+            "interactAction": 14,
+            "interactText": "UNPACK",
+            "_inherit": "Default"
+        },
+        "honey_epoch": {
+            "interactText": "EAT",
+            "interactAttributes": [
+                [
+                    "Immunity",
+                    1
+                ],
+                [
+                    "Stamina",
+                    30
+                ],
+                [
+                    "BloodP",
+                    10
+                ]
+            ],
+            "interactActions": [
+                [
+                    "EMPTY",
+                    "[1,[],'emptyjar_epoch'] call EPOCH_consumeItem;"
+                ]
+            ],
+            "_inherit": "Food_Jar_base"
+        },
+        "sardines_epoch": {
+            "interactAttributes": [
+                [
+                    "Hunger",
+                    1000
+                ],
+                [
+                    "Toxicity",
+                    7
+                ]
+            ],
+            "_inherit": "Food_TinCan_base"
+        },
+        "meatballs_epoch": {
+            "interactAttributes": [
+                [
+                    "Hunger",
+                    1200
+                ]
+            ],
+            "_inherit": "Food_TinCan_base"
+        },
+        "scam_epoch": {
+            "interactAttributes": [
+                [
+                    "Hunger",
+                    1000
+                ]
+            ],
+            "_inherit": "Food_TinCan_base"
+        },
+        "sweetcorn_epoch": {
+            "interactAttributes": [
+                [
+                    "Hunger",
+                    600
+                ]
+            ],
+            "_inherit": "Food_TinCan_base"
+        },
+        "FoodBioMeat": {
+            "interactAttributes": [
+                [
+                    "Hunger",
+                    1000
+                ],
+                [
+                    "Toxicity",
+                    7
+                ]
+            ],
+            "_inherit": "Food_TinCan_base"
+        },
+        "TacticalBacon": {
+            "interactAttributes": [
+                [
+                    "Hunger",
+                    500
+                ]
+            ],
+            "_inherit": "Food_TinCan_base"
+        },
+        "ItemTrout": {
+            "interactAttributes": [
+                [
+                    "Hunger",
+                    300
+                ],
+                [
+                    "Toxicity",
+                    5
+                ]
+            ],
+            "_inherit": "Food_base"
+        },
+        "ItemSeaBass": {
+            "interactAttributes": [
+                [
+                    "Hunger",
+                    500
+                ],
+                [
+                    "Toxicity",
+                    10
+                ]
+            ],
+            "_inherit": "Food_base"
+        },
+        "ItemTuna": {
+            "interactAttributes": [
+                [
+                    "Hunger",
+                    2500
+                ]
+            ],
+            "_inherit": "Food_base"
+        },
+        "ItemTroutCooked": {
+            "interactAttributes": [
+                [
+                    "Hunger",
+                    600
+                ]
+            ],
+            "_inherit": "Food_base"
+        },
+        "ItemSeaBassCooked": {
+            "interactAttributes": [
+                [
+                    "Hunger",
+                    1200
+                ]
+            ],
+            "_inherit": "Food_base"
+        },
+        "ItemTunaCooked": {
+            "interactAttributes": [
+                [
+                    "Hunger",
+                    5000
+                ]
+            ],
+            "_inherit": "Food_base"
+        },
+        "FoodMeeps": {
+            "interactAttributes": [
+                [
+                    "Hunger",
+                    500
+                ]
+            ],
+            "_inherit": "Food_base"
+        },
+        "FoodSnooter": {
+            "interactAttributes": [
+                [
+                    "Hunger",
+                    500
+                ],
+                [
+                    "Stamina",
+                    50
+                ]
+            ],
+            "_inherit": "Food_base"
+        },
+        "ItemCooler0": {
+            "interactAttributes": [
+                [
+                    "Hunger",
+                    3000
+                ]
+            ],
+            "_inherit": "Food_Cooler_base"
+        },
+        "ItemCooler1": {
+            "interactAttributes": [
+                [
+                    "Hunger",
+                    3500
+                ]
+            ],
+            "_inherit": "Food_Cooler_base"
+        },
+        "ItemCooler2": {
+            "interactAttributes": [
+                [
+                    "Hunger",
+                    4000
+                ]
+            ],
+            "_inherit": "Food_Cooler_base"
+        },
+        "ItemCooler3": {
+            "interactAttributes": [
+                [
+                    "Hunger",
+                    5000
+                ]
+            ],
+            "_inherit": "Food_Cooler_base"
+        },
+        "ItemCooler4": {
+            "interactAttributes": [
+                [
+                    "Hunger",
+                    5000
+                ]
+            ],
+            "_inherit": "Food_Cooler_base"
+        },
+        "WhiskeyNoodle": {
+            "interactAttributes": [
+                [
+                    "Thirst",
+                    800
+                ],
+                [
+                    "Toxicity",
+                    -1
+                ],
+                [
+                    "Stamina",
+                    50
+                ],
+                [
+                    "Alcohol",
+                    10
+                ]
+            ],
+            "_inherit": "Drink_base"
+        },
+        "water_epoch": {
+            "interactAttributes": [
+                [
+                    "Thirst",
+                    500
+                ],
+                [
+                    "Toxicity",
+                    5,
+                    1
+                ],
+                [
+                    "Stamina",
+                    50
+                ]
+            ],
+            "_inherit": "Drink_Jar_base"
+        },
+        "clean_water_epoch": {
+            "interactAttributes": [
+                [
+                    "Thirst",
+                    500
+                ],
+                [
+                    "Stamina",
+                    50
+                ]
+            ],
+            "_inherit": "Drink_Jar_base"
+        },
+        "ItemSodaRbull": {
+            "interactAttributes": [
+                [
+                    "Thirst",
+                    1000
+                ],
+                [
+                    "Stamina",
+                    100
+                ]
+            ],
+            "_inherit": "Soda_base"
+        },
+        "ItemSodaOrangeSherbet": {
+            "interactAttributes": [
+                [
+                    "Thirst",
+                    800
+                ],
+                [
+                    "Stamina",
+                    75
+                ]
+            ],
+            "_inherit": "Soda_base"
+        },
+        "ItemSodaPurple": {
+            "interactAttributes": [
+                [
+                    "Thirst",
+                    800
+                ],
+                [
+                    "Stamina",
+                    75
+                ]
+            ],
+            "_inherit": "Soda_base"
+        },
+        "ItemSodaMocha": {
+            "interactAttributes": [
+                [
+                    "Thirst",
+                    650
+                ],
+                [
+                    "Stamina",
+                    150
+                ]
+            ],
+            "_inherit": "Soda_base"
+        },
+        "ItemSodaBurst": {
+            "interactAttributes": [
+                [
+                    "Thirst",
+                    800
+                ],
+                [
+                    "Stamina",
+                    75
+                ]
+            ],
+            "_inherit": "Soda_base"
+        },
+        "FoodWalkNSons": {
+            "interactAttributes": [
+                [
+                    "Thirst",
+                    1200
+                ],
+                [
+                    "Stamina",
+                    150
+                ]
+            ],
+            "_inherit": "Soda_base"
+        },
+        "ItemSodaAlpineDude": {
+            "interactAttributes": [
+                [
+                    "Thirst",
+                    800
+                ],
+                [
+                    "Stamina",
+                    800
+                ]
+            ],
+            "_inherit": "Soda_base"
+        },
+        "jerrycan_epoch": {
+            "interactAction": 4,
+            "interactText": "FILL",
+            "interactReturnOnUse": "jerrycanE_epoch",
+            "interactAttributes": [
+                10
+            ],
+            "interactActions": [
+                [
+                    "DRINK",
+                    "[2,[['Toxicity',100],['Alcohol',50]],'jerrycanE_epoch'] call EPOCH_consumeItem;"
+                ],
+                [
+                    "EMPTY",
+                    "[2,[],'jerrycanE_epoch'] call EPOCH_consumeItem;"
+                ]
+            ],
+            "_inherit": "Default"
+        },
+        "jerrycanE_epoch": {
+            "interactAction": 5,
+            "interactText": "SIPHON",
+            "interactReturnOnUse": "jerrycan_epoch",
+            "interactAttributes": [
+                10
+            ],
+            "_inherit": "Default"
+        },
+        "FAK": {
+            "interactAction": 13,
+            "interactText": "USE",
+            "_inherit": "Default"
+        },
+        "ItemLockbox": {
+            "buildClass": "LockBox_SIM_EPOCH",
+            "_inherit": "Item_Build_base"
+        },
+        "ItemSafe": {
+            "buildClass": "Safe_SIM_EPOCH",
+            "_inherit": "Item_Build_base"
+        },
+        "JackKit": {
+            "buildClass": "Jack_SIM_EPOCH",
+            "_inherit": "Item_Build_base"
+        },
+        "EnergyPack": {
+            "interactAction": 9,
+            "interactText": "USE",
+            "interactAttributes": [
+                [
+                    "Energy",
+                    100
+                ]
+            ],
+            "_inherit": "Default"
+        },
+        "EnergyPackLg": {
+            "interactAction": 9,
+            "interactText": "USE",
+            "interactAttributes": [
+                [
+                    "Energy",
+                    1000
+                ]
+            ],
+            "_inherit": "Default"
+        },
+        "VehicleRepair": {
+            "interactAction": 10,
+            "interactText": "USE",
+            "_inherit": "Default"
+        },
+        "VehicleRepairLg": {
+            "interactAction": 11,
+            "interactText": "USE",
+            "_inherit": "Default"
+        },
+        "Venom_EPOCH": {
+            "interactAction": 1,
+            "interactText": "EAT",
+            "interactAttributes": [
+                [
+                    "Toxicity",
+                    20,
+                    1
+                ]
+            ],
+            "_inherit": "Default"
+        },
+        "SnakeCarcass_EPOCH": {
+            "interactAction": 1,
+            "interactText": "EAT",
+            "interactAttributes": [
+                [
+                    "Hunger",
+                    300
+                ],
+                [
+                    "Soiled",
+                    1
+                ],
+                [
+                    "Toxicity",
+                    10,
+                    1
+                ]
+            ],
+            "_inherit": "Default"
+        },
+        "SnakeMeat_EPOCH": {
+            "interactAction": 1,
+            "interactText": "EAT",
+            "interactAttributes": [
+                [
+                    "Hunger",
+                    1200
+                ]
+            ],
+            "_inherit": "Default"
+        },
+        "RabbitCarcass_EPOCH": {
+            "interactAction": 1,
+            "interactText": "EAT",
+            "interactAttributes": [
+                [
+                    "Hunger",
+                    300
+                ],
+                [
+                    "Soiled",
+                    1
+                ],
+                [
+                    "Toxicity",
+                    10,
+                    1
+                ]
+            ],
+            "_inherit": "Default"
+        },
+        "CookedRabbit_EPOCH": {
+            "interactAction": 1,
+            "interactText": "EAT",
+            "interactAttributes": [
+                [
+                    "Hunger",
+                    1200
+                ]
+            ],
+            "_inherit": "Default"
+        },
+        "ChickenCarcass_EPOCH": {
+            "interactAction": 1,
+            "interactText": "EAT",
+            "interactAttributes": [
+                [
+                    "Hunger",
+                    500
+                ],
+                [
+                    "Soiled",
+                    1
+                ],
+                [
+                    "Toxicity",
+                    25,
+                    1
+                ]
+            ],
+            "_inherit": "Default"
+        },
+        "CookedChicken_EPOCH": {
+            "interactAction": 1,
+            "interactText": "EAT",
+            "interactAttributes": [
+                [
+                    "Hunger",
+                    2000
+                ]
+            ],
+            "_inherit": "Default"
+        },
+        "GoatCarcass_EPOCH": {
+            "interactAction": 1,
+            "interactText": "EAT",
+            "interactAttributes": [
+                [
+                    "Hunger",
+                    500
+                ],
+                [
+                    "Soiled",
+                    1
+                ],
+                [
+                    "Toxicity",
+                    15,
+                    1
+                ]
+            ],
+            "_inherit": "Default"
+        },
+        "DogCarcass_EPOCH": {
+            "interactAction": 1,
+            "interactText": "EAT",
+            "interactAttributes": [
+                [
+                    "Hunger",
+                    500
+                ],
+                [
+                    "Soiled",
+                    1
+                ],
+                [
+                    "Toxicity",
+                    15,
+                    1
+                ],
+                [
+                    "Karma",
+                    -10
+                ]
+            ],
+            "_inherit": "Default"
+        },
+        "CookedDog_EPOCH": {
+            "interactAction": 1,
+            "interactText": "EAT",
+            "interactAttributes": [
+                [
+                    "Hunger",
+                    3000
+                ],
+                [
+                    "Karma",
+                    -10
+                ]
+            ],
+            "_inherit": "Default"
+        },
+        "CookedGoat_EPOCH": {
+            "interactAction": 1,
+            "interactText": "EAT",
+            "interactAttributes": [
+                [
+                    "Hunger",
+                    3000
+                ]
+            ],
+            "_inherit": "Default"
+        },
+        "SheepCarcass_EPOCH": {
+            "interactAction": 1,
+            "interactText": "EAT",
+            "interactAttributes": [
+                [
+                    "Hunger",
+                    500
+                ],
+                [
+                    "Soiled",
+                    1
+                ],
+                [
+                    "Toxicity",
+                    15,
+                    1
+                ]
+            ],
+            "_inherit": "Default"
+        },
+        "CookedSheep_EPOCH": {
+            "interactAction": 1,
+            "interactText": "EAT",
+            "interactAttributes": [
+                [
+                    "Hunger",
+                    3000
+                ]
+            ],
+            "_inherit": "Default"
+        },
+        "KitSpikeTrap": {
+            "buildClass": "Spike_TRAP_SIM_EPOCH",
+            "_inherit": "Item_Build_base"
+        },
+        "KitMetalTrap": {
+            "buildClass": "Metal_TRAP_SIM_EPOCH",
+            "_inherit": "Item_Build_base"
+        },
+        "KitStudWall": {
+            "buildClass": "WoodLargeWall_EPOCH",
+            "_inherit": "Item_Build_base"
+        },
+        "KitWoodFloor": {
+            "buildClass": "WoodFloor_EPOCH",
+            "_inherit": "Item_Build_base"
+        },
+        "KitWoodStairs": {
+            "buildClass": "WoodStairs_EPOCH",
+            "_inherit": "Item_Build_base"
+        },
+        "KitWoodTower": {
+            "buildClass": "WoodTower_EPOCH",
+            "_inherit": "Item_Build_base"
+        },
+        "KitWoodRamp": {
+            "buildClass": "WoodRamp_EPOCH",
+            "_inherit": "Item_Build_base"
+        },
+        "KitTankTrap": {
+            "buildClass": "TankTrap_SIM_EPOCH",
+            "_inherit": "Item_Build_base"
+        },
+        "KitHesco3": {
+            "buildClass": "Hesco3_EPOCH",
+            "_inherit": "Item_Build_base"
+        },
+        "KitWoodLadder": {
+            "buildClass": "WoodLadder_EPOCH",
+            "_inherit": "Item_Build_base"
+        },
+        "KitFirePlace": {
+            "buildClass": "FirePlace_SIM_EPOCH",
+            "_inherit": "Item_Build_base"
+        },
+        "KitTiPi": {
+            "buildClass": "Tipi_SIM_EPOCH",
+            "isStorage": 1,
+            "_inherit": "Item_Build_base"
+        },
+        "KitShelf": {
+            "buildClass": "StorageShelf_SIM_EPOCH",
+            "isStorage": 1,
+            "_inherit": "Item_Build_base"
+        },
+        "KitWorkbench": {
+            "buildClass": "Workbench_SIM_EPOCH",
+            "isStorage": 1,
+            "_inherit": "Item_Build_base"
+        },
+        "KitFoundation": {
+            "buildClass": "Foundation_EPOCH",
+            "_inherit": "Item_Build_base"
+        },
+        "KitWoodFoundation": {
+            "buildClass": "WoodFoundation_EPOCH",
+            "_inherit": "Item_Build_base"
+        },
+        "KitSolarGen": {
+            "buildClass": "SolarGen_SIM_EPOCH",
+            "_inherit": "Item_Build_base"
+        },
+        "KitPlotPole": {
+            "buildClass": "PlotPole_SIM_EPOCH",
+            "_inherit": "Item_Build_base"
+        },
+        "KitCinderWall": {
+            "buildClass": "CinderWallHalf_EPOCH",
+            "_inherit": "Item_Build_base"
+        },
+        "PaintCanBase": {
+            "interactAction": 12,
+            "interactText": "USE",
+            "_inherit": "Default"
+        },
+        "PaintCanClear": {
+            "colorName": "None",
+            "textureIndex": 0,
+            "_inherit": "PaintCanBase"
+        },
+        "PaintCanBlk": {
+            "colorName": "Black",
+            "textureIndex": 1,
+            "_inherit": "PaintCanBase"
+        },
+        "PaintCanBlu": {
+            "colorName": "Blue",
+            "textureIndex": 2,
+            "_inherit": "PaintCanBase"
+        },
+        "PaintCanBrn": {
+            "colorName": "Brown",
+            "textureIndex": 3,
+            "_inherit": "PaintCanBase"
+        },
+        "PaintCanGrn": {
+            "colorName": "Green",
+            "textureIndex": 4,
+            "_inherit": "PaintCanBase"
+        },
+        "PaintCanOra": {
+            "colorName": "Orange",
+            "textureIndex": 5,
+            "_inherit": "PaintCanBase"
+        },
+        "PaintCanPur": {
+            "colorName": "Purple",
+            "textureIndex": 6,
+            "_inherit": "PaintCanBase"
+        },
+        "PaintCanRed": {
+            "colorName": "Red",
+            "textureIndex": 7,
+            "_inherit": "PaintCanBase"
+        },
+        "PaintCanTeal": {
+            "colorName": "Teal",
+            "textureIndex": 8,
+            "_inherit": "PaintCanBase"
+        },
+        "PaintCanYel": {
+            "colorName": "Yellow",
+            "textureIndex": 9,
+            "_inherit": "PaintCanBase"
+        },
+        "Poppy": {
+            "interactAction": 6,
+            "interactText": "USE",
+            "interactAttributes": [
+                [
+                    "Immunity",
+                    10
+                ],
+                [
+                    "Stamina",
+                    -100
+                ],
+                [
+                    "BloodP",
+                    -10
+                ]
+            ],
+            "_inherit": "Default"
+        },
+        "Goldenseal": {
+            "interactAction": 6,
+            "interactText": "USE",
+            "interactAttributes": [
+                [
+                    "Toxicity",
+                    -50
+                ]
+            ],
+            "_inherit": "Default"
+        },
+        "Pumpkin": {
+            "interactAction": 6,
+            "interactText": "USE",
+            "interactAttributes": [
+                [
+                    "Hunger",
+                    500
+                ],
+                [
+                    "Stamina",
+                    50
+                ]
+            ],
+            "_inherit": "Default"
+        },
+        "Towelette": {
+            "interactAction": 6,
+            "interactText": "USE",
+            "interactAttributes": [
+                [
+                    "Soiled",
+                    -25
+                ]
+            ],
+            "_inherit": "Default"
+        },
+        "HeatPack": {
+            "interactAction": 7,
+            "interactText": "USE",
+            "interactAttributes": [
+                [
+                    "Temp",
+                    1
+                ]
+            ],
+            "_inherit": "Default"
+        },
+        "ColdPack": {
+            "interactAction": 8,
+            "interactText": "USE",
+            "interactAttributes": [
+                [
+                    "Temp",
+                    -1
+                ]
+            ],
+            "_inherit": "Default"
+        },
+        "ItemHotwire": {
+            "interactAction": 2,
+            "interactText": "USE",
+            "_inherit": "Default"
+        },
+        "ItemKeyKit": {
+            "interactAction": 2,
+            "interactText": "USE",
+            "_inherit": "Default"
+        },
+        "ItemBarrelF": {
+            "interactAction": 4,
+            "interactText": "FILL",
+            "interactAttributes": [
+                210
+            ],
+            "interactReturnOnUse": "ItemBarrelE",
+            "_inherit": "Default"
+        },
+        "ItemBarrelE": {
+            "interactAction": 5,
+            "interactText": "SIPHON",
+            "interactAttributes": [
+                210
+            ],
+            "interactReturnOnUse": "ItemBarrelF",
+            "_inherit": "Default"
+        },
+        "ItemKey": {
+            "interactAction": 2,
+            "interactText": "USE",
+            "_inherit": "Default"
+        },
+        "ItemKeyBlue": {
+            "_inherit": "ItemKey"
+        },
+        "ItemKeyGreen": {
+            "_inherit": "ItemKey"
+        },
+        "ItemKeyRed": {
+            "_inherit": "ItemKey"
+        },
+        "ItemKeyYellow": {
+            "_inherit": "ItemKey"
+        },
+        "ItemDoc1": {
+            "interactAction": -1,
+            "interactText": "READ",
+            "_inherit": "Default"
+        },
+        "ItemDoc2": {
+            "_inherit": "ItemDoc1"
+        },
+        "ItemDoc3": {
+            "_inherit": "ItemDoc1"
+        },
+        "ItemDoc4": {
+            "_inherit": "ItemDoc1"
+        },
+        "ItemDoc5": {
+            "_inherit": "ItemDoc1"
+        },
+        "ItemDoc6": {
+            "_inherit": "ItemDoc1"
+        },
+        "ItemDoc7": {
+            "_inherit": "ItemDoc1"
+        },
+        "ItemDoc8": {
+            "_inherit": "ItemDoc1"
+        },
+        "ItemVehDoc1": {
+            "_inherit": "ItemDoc1"
+        },
+        "ItemVehDoc2": {
+            "_inherit": "ItemDoc1"
+        },
+        "ItemVehDoc3": {
+            "_inherit": "ItemDoc1"
+        },
+        "ItemVehDoc4": {
+            "_inherit": "ItemDoc1"
+        },
+        "ItemBulb": {
+            "_inherit": "Default"
+        },
+        "ItemBurlap": {
+            "_inherit": "Default"
+        },
+        "ItemBriefcaseE": {
+            "_inherit": "Default"
+        },
+        "ItemBriefcaseGold100oz": {
+            "_inherit": "Default"
+        },
+        "ItemAluminumBar": {
+            "_inherit": "Default"
+        },
+        "ItemCopperBar": {
+            "_inherit": "Default"
+        },
+        "ItemTinBar": {
+            "_inherit": "Default"
+        },
+        "ItemPlywoodPack": {
+            "_inherit": "Default"
+        },
+        "ItemComboLock": {
+            "_inherit": "Default"
+        },
+        "CircuitParts": {
+            "_inherit": "Default"
+        },
+        "Pelt_EPOCH": {
+            "_inherit": "Default"
+        },
+        "ItemPipe": {
+            "_inherit": "Default"
+        },
+        "ItemEmptyTin": {
+            "_inherit": "Default"
+        },
+        "ItemSodaEmpty": {
+            "_inherit": "Default"
+        },
+        "emptyjar_epoch": {
+            "_inherit": "Default"
+        },
+        "PartPlankPack": {
+            "_inherit": "Default"
+        },
+        "CinderBlocks": {
+            "_inherit": "Default"
+        },
+        "MortarBucket": {
+            "_inherit": "Default"
+        },
+        "ItemKiloHemp": {
+            "_inherit": "Default"
+        },
+        "ItemTopaz": {
+            "_inherit": "Default"
+        },
+        "ItemOnyx": {
+            "_inherit": "Default"
+        },
+        "ItemSapphire": {
+            "_inherit": "Default"
+        },
+        "ItemAmethyst": {
+            "_inherit": "Default"
+        },
+        "ItemEmerald": {
+            "_inherit": "Default"
+        },
+        "ItemCitrine": {
+            "_inherit": "Default"
+        },
+        "ItemRuby": {
+            "_inherit": "Default"
+        },
+        "ItemQuartz": {
+            "_inherit": "Default"
+        },
+        "ItemJade": {
+            "_inherit": "Default"
+        },
+        "ItemGarnet": {
+            "_inherit": "Default"
+        },
+        "ItemMixOil": {
+            "_inherit": "Default"
+        },
+        "ItemDocument": {
+            "_inherit": "Default"
+        },
+        "ItemDocumentMission": {
+            "_inherit": "Default"
+        },
+        "ItemSilverBar": {
+            "_inherit": "Default"
+        },
+        "ItemGoldBar": {
+            "_inherit": "Default"
+        },
+        "ItemGoldBar10oz": {
+            "_inherit": "Default"
+        },
+        "ItemRock": {
+            "_inherit": "Default"
+        },
+        "ItemStick": {
+            "_inherit": "Default"
+        },
+        "ItemRope": {
+            "_inherit": "Default"
+        },
+        "PartOre": {
+            "_inherit": "Default"
+        },
+        "PartOreSilver": {
+            "_inherit": "Default"
+        },
+        "PartOreGold": {
+            "_inherit": "Default"
+        },
+        "ItemPacked": {
+            "_inherit": "Default"
+        },
+        "ItemSolar": {
+            "_inherit": "Default"
+        },
+        "ItemCables": {
+            "_inherit": "Default"
+        },
+        "ItemBattery": {
+            "_inherit": "Default"
+        },
+        "ItemScraps": {
+            "_inherit": "Default"
+        },
+        "ItemCorrugated": {
+            "_inherit": "Default"
+        },
+        "ItemCorrugatedLg": {
+            "_inherit": "Default"
+        },
+        "5Rnd_rollins_mag": {
+            "_inherit": "Default"
+        },
+        "CSGAS": {
+            "_inherit": "Default"
+        },
+        "sledge_swing": {
+            "_inherit": "Default"
+        },
+        "stick_swing": {
+            "_inherit": "Default"
+        },
+        "hatchet_swing": {
+            "_inherit": "Default"
+        },
+        "WoodLog_EPOCH": {
+            "_inherit": "Default"
+        },
+        "ItemCoolerE": {
+            "_inherit": "Default"
+        },
+        "lighter_epoch": {
+            "_inherit": "Default"
+        },
+        "Item_AssaultPack_cbr": {
+            "interactReturnOnUse": "B_AssaultPack_cbr",
+            "_inherit": "Item_Packed_base"
+        },
+        "Item_AssaultPack_dgtl": {
+            "interactReturnOnUse": "B_AssaultPack_dgtl",
+            "_inherit": "Item_Packed_base"
+        },
+        "Item_AssaultPack_khk": {
+            "interactReturnOnUse": "B_AssaultPack_khk",
+            "_inherit": "Item_Packed_base"
+        },
+        "Item_AssaultPack_mcamo": {
+            "interactReturnOnUse": "B_AssaultPack_mcamo",
+            "_inherit": "Item_Packed_base"
+        },
+        "Item_AssaultPack_ocamo": {
+            "interactReturnOnUse": "B_AssaultPack_ocamo",
+            "_inherit": "Item_Packed_base"
+        },
+        "Item_AssaultPack_rgr": {
+            "interactReturnOnUse": "B_AssaultPack_rgr",
+            "_inherit": "Item_Packed_base"
+        },
+        "Item_AssaultPack_sgg": {
+            "interactReturnOnUse": "B_AssaultPack_sgg",
+            "_inherit": "Item_Packed_base"
+        },
+        "Item_AssaultPack_blk": {
+            "interactReturnOnUse": "B_AssaultPack_blk",
+            "_inherit": "Item_Packed_base"
+        },
+        "Item_Carryall_cbr": {
+            "interactReturnOnUse": "B_Carryall_cbr",
+            "_inherit": "Item_Packed_base"
+        },
+        "Item_Carryall_khk": {
+            "interactReturnOnUse": "B_Carryall_khk",
+            "_inherit": "Item_Packed_base"
+        },
+        "Item_Carryall_mcamo": {
+            "interactReturnOnUse": "B_Carryall_mcamo",
+            "_inherit": "Item_Packed_base"
+        },
+        "Item_Carryall_ocamo": {
+            "interactReturnOnUse": "B_Carryall_ocamo",
+            "_inherit": "Item_Packed_base"
+        },
+        "Item_Carryall_oli": {
+            "interactReturnOnUse": "B_Carryall_oli",
+            "_inherit": "Item_Packed_base"
+        },
+        "Item_Carryall_oucamo": {
+            "interactReturnOnUse": "B_Carryall_oucamo",
+            "_inherit": "Item_Packed_base"
+        },
+        "Item_FieldPack_blk": {
+            "interactReturnOnUse": "B_FieldPack_blk",
+            "_inherit": "Item_Packed_base"
+        },
+        "Item_FieldPack_cbr": {
+            "interactReturnOnUse": "B_FieldPack_cbr",
+            "_inherit": "Item_Packed_base"
+        },
+        "Item_FieldPack_khk": {
+            "interactReturnOnUse": "B_FieldPack_khk",
+            "_inherit": "Item_Packed_base"
+        },
+        "Item_FieldPack_ocamo": {
+            "interactReturnOnUse": "B_FieldPack_ocamo",
+            "_inherit": "Item_Packed_base"
+        },
+        "Item_FieldPack_oli": {
+            "interactReturnOnUse": "B_FieldPack_oli",
+            "_inherit": "Item_Packed_base"
+        },
+        "Item_FieldPack_oucamo": {
+            "interactReturnOnUse": "B_FieldPack_oucamo",
+            "_inherit": "Item_Packed_base"
+        },
+        "Item_Kitbag_cbr": {
+            "interactReturnOnUse": "B_Kitbag_cbr",
+            "_inherit": "Item_Packed_base"
+        },
+        "Item_Kitbag_mcamo": {
+            "interactReturnOnUse": "B_Kitbag_mcamo",
+            "_inherit": "Item_Packed_base"
+        },
+        "Item_Kitbag_rgr": {
+            "interactReturnOnUse": "B_Kitbag_rgr",
+            "_inherit": "Item_Packed_base"
+        },
+        "Item_Kitbag_sgg": {
+            "interactReturnOnUse": "B_Kitbag_sgg",
+            "_inherit": "Item_Packed_base"
+        },
+        "Item_TacticalPack_blk": {
+            "interactReturnOnUse": "B_TacticalPack_blk",
+            "_inherit": "Item_Packed_base"
+        },
+        "Item_TacticalPack_mcamo": {
+            "interactReturnOnUse": "B_TacticalPack_mcamo",
+            "_inherit": "Item_Packed_base"
+        },
+        "Item_TacticalPack_ocamo": {
+            "interactReturnOnUse": "B_TacticalPack_ocamo",
+            "_inherit": "Item_Packed_base"
+        },
+        "Item_TacticalPack_oli": {
+            "interactReturnOnUse": "B_TacticalPack_oli",
+            "_inherit": "Item_Packed_base"
+        },
+        "Item_TacticalPack_rgr": {
+            "interactReturnOnUse": "B_TacticalPack_rgr",
+            "_inherit": "Item_Packed_base"
+        },
+        "Item_smallbackpack_red": {
+            "interactReturnOnUse": "smallbackpack_red_epoch",
+            "_inherit": "Item_Packed_base"
+        },
+        "Item_smallbackpack_green": {
+            "interactReturnOnUse": "smallbackpack_green_epoch",
+            "_inherit": "Item_Packed_base"
+        },
+        "Item_smallbackpack_teal": {
+            "interactReturnOnUse": "smallbackpack_teal_epoch",
+            "_inherit": "Item_Packed_base"
+        },
+        "Item_smallbackpack_pink": {
+            "interactReturnOnUse": "smallbackpack_pink_epoch",
+            "_inherit": "Item_Packed_base"
+        }
+    }
+}

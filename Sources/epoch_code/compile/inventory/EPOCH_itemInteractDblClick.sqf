@@ -12,7 +12,9 @@
     Github:
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_code/compile/inventory/EPOCH_itemInteractDblClick.sqf
 */
-private ["_data","_confData","_text","_pic","_config","_craftingConfig"];
+//[[[cog import generate_private_arrays ]]]
+private ["_config","_data"];
+//[[[end]]]
 _this call EPOCH_selectInventoryItem;
 _data = EPOCH_InteractedItem select 1;
 _config = 'CfgCrafting' call EPOCH_returnConfig;

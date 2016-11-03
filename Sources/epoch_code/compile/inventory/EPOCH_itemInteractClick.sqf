@@ -1,64 +1,112 @@
 /*
-	Author: Aaron Clark - EpochMod.com
-
-    Contributors: Raimonds Virtoss
-
-	Description:
-	Epoch Item Interact
-
-    Licence:
-    Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
-
-    Github:
-    https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_code/compile/inventory/EPOCH_itemInteractClick.sqf
+ Dynamic inventory sub menu
+ By Aaron Clark - Epoch Mod
 */
-private ["_data","_confData","_type","_interactOption","_buttonTXT","_magCount","_text","_pic","_display","_useBtn","_config","_craftingConfig"];
+//[[[cog import generate_private_arrays ]]]
+private ["_activeControl","_bg","_btn_arr","_buffer","_buttonTXT","_button_gen","_button_texts","_cfgItemInteractions","_config","_control","_data","_display","_interactOption","_magCount","_pos","_start_idc","_type","_y2d"];
+//[[[end]]]
+_button_texts = [];
+
+_activeControl = uiNamespace getVariable ["EPOCH_active_button_control", controlNull];
+if (!isNull _activeControl) then {
+    _activeControl ctrlShow false;
+    ctrlDelete _activeControl;
+};
+
 _this call EPOCH_selectInventoryItem;
 _data = EPOCH_InteractedItem select 1;
 
 _interactOption = 0;
 _buttonTXT = "";
 _magCount = 1;
+_interactActions = [];
 _config = (configfile >> "CfgWeapons" >> _data);
 _cfgItemInteractions = (('CfgItemInteractions' call EPOCH_returnConfig) >> _data);
 if (isClass (_config)) then {
     _type = getNumber (_config >> "type");
     _interactOption = getNumber (_cfgItemInteractions >> "interactAction");
     _buttonTXT = getText(_cfgItemInteractions >> "interactText");
+    _interactActions = getArray(_cfgItemInteractions >> "interactActions");
 } else {
     _config = (configfile >> "CfgMagazines" >> _data);
     _type = getNumber (_config >> "type");
     _interactOption = getNumber (_cfgItemInteractions >> "interactAction");
     _buttonTXT = getText(_cfgItemInteractions >> "interactText");
     _magCount = getNumber (_config >> "count");
+    _interactActions = getArray(_cfgItemInteractions >> "interactActions");
 };
 
-_display = (findDisplay 602);
-_useBtn = _display displayCtrl -13;
-
+// legacy
 if (_buttonTXT != "") then {
-  _useBtn ctrlSetText _buttonTXT;
-  _useBtn ctrlEnable true;
-} else {
-  if (_magCount > 1) then {
-      _useBtn ctrlEnable true;
-      _useBtn ctrlSetText "REPACK";
-  } else {
-      _useBtn ctrlSetText "EXAMINE";
-      _useBtn ctrlEnable false;
-  };
+  _button_texts pushBack [_buttonTXT];
 };
-
-_useBtn = _display displayCtrl -14;
-_useBtn ctrlEnable true;
+// additional interactActions
+if !(_interactActions isEqualTo []) then {
+    {
+         _button_texts pushBack _x;
+    } forEach _interactActions;
+};
+// ammo repack
+if (_magCount > 1) then {
+    _button_texts pushBack ["REPACK"];
+};
 
 _config = 'CfgCrafting' call EPOCH_returnConfig;
 if (isClass (_config >> _data)) then {
-	_useBtn ctrlSetTextColor [0,1,0,1];
-	EPOCH_CraftingItem = EPOCH_InteractedItem select 0;
+    EPOCH_CraftingItem = EPOCH_InteractedItem select 0;
+    _button_texts pushBack ["CRAFT","EPOCH_CraftingItem call EPOCH_crafting_load;"];
 } else {
-	_useBtn ctrlSetTextColor [1,0,0,1];
-	EPOCH_CraftingItem = "";
+    EPOCH_CraftingItem = "";
 };
 
-true
+if !(_button_texts isEqualTo []) then {
+    _display = ctrlParent (_this select 0);
+    _pos = getMousePosition;
+
+    _control = _display ctrlCreate ["RscControlsGroupNoScrollbars", 5678910];
+    uiNamespace setVariable ["EPOCH_active_button_control", _control];
+
+    _control ctrlSetPosition [(_pos select 0)-0.03,(_pos select 1)-0.03,1,1];
+    _control ctrlCommit 0;
+
+    _bg = _display ctrlCreate ["RscButtonTextOnly", 12349,_control];
+    _bg ctrlSetPosition [0,0,1,1];
+    _bg ctrlCommit 0;
+    _bg ctrlAddEventHandler ["MouseEnter",{
+        _activeControl = uiNamespace getVariable ["EPOCH_active_button_control", controlNull];
+        if !(isNull _activeControl) then {
+            _activeControl ctrlShow false;
+        };
+    }];
+
+    _buffer = _display ctrlCreate ["RscButtonTextOnly", 12345,_control];
+    _buffer ctrlSetPosition [0.02,0.02,0.25,0.0625 + (0.0625 * (count _button_texts))];
+    _buffer ctrlAddEventHandler ["ButtonClick",{
+        _activeControl = uiNamespace getVariable ["EPOCH_active_button_control", controlNull];
+        if !(isNull _activeControl) then {
+            _activeControl ctrlShow false;
+        };
+    }];
+
+    _buffer ctrlCommit 0;
+
+    _y2d = 0.06;
+    _btn_arr = [];
+    _start_idc = 12346;
+    {
+        _x params [["_btn_text","EXAMINE"],["_btn_code","[] call EPOCH_consumeItem;"]];
+        _button_gen = _display ctrlCreate ["RscButtonMenu", _start_idc,_control];
+        _start_idc = _start_idc + 1;
+        _button_gen ctrlSetPosition [0.06,_y2d,0.20,0.06];
+        _button_gen ctrlSetText _btn_text;
+        _button_gen ctrlCommit 0;
+        _button_gen ctrlSetEventHandler ["ButtonClick",_btn_code + "(uiNamespace getVariable [""EPOCH_active_button_control"", controlNull]) ctrlShow false;"];
+        _y2d = _y2d + 0.0625;
+        _btn_arr pushBack _button_gen;
+    } forEach _button_texts;
+
+    reverse _btn_arr;
+    uiNamespace setVariable ["EPOCH_active_controls", ([_control,_bg,_buffer] + _btn_arr) ];
+    // uiNamespace setVariable ["EPOCH_active_buttons", _btn_arr ];
+    {ctrlSetFocus _x} forEach (uiNamespace getVariable ["EPOCH_active_controls", []]);
+};

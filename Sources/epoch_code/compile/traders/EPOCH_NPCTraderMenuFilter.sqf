@@ -23,7 +23,9 @@
 	NOTHING
 */
 disableSerialization;
-private ["_item","_itemCount","_itemOfferCount","_wpn","_bpck","_config","_name","_picture","_type","_vehicles","_sizeOut","_offerArray","_itemName","_itemIcon","_qty","_items","_qtys","_aiItems","_filterArray","_filterMagazines","_filterItems","_filterVehicle","_slot","_isPlayerFilter"];
+//[[[cog import generate_private_arrays ]]]
+private ["_aiItems","_bpck","_config","_filterArray","_filterItems","_filterMagazines","_filterVehicle","_filterWeapons","_index","_isPlayerFilter","_item","_itemCount","_itemIcon","_itemName","_itemOfferCount","_items","_name","_offerArray","_picture","_qty","_qtys","_sizeOut","_slot","_type","_vehicles","_wpn"];
+//[[[end]]]
 params ["_control","_index"];
 
 if !(isNull EPOCH_lastNPCtradeTarget) then {

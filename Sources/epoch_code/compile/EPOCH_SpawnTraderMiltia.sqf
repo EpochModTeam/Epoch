@@ -12,7 +12,9 @@
     Github:
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_code/compile/EPOCH_SpawnTraderMiltia.sqf
 */
-private ["_startPos","_rndHouse","_unit","_trgt","_nrBuilds","_grp"];
+//[[[cog import generate_private_arrays ]]]
+private ["_allpositions","_grp","_nrBuilds","_rndHouse","_startPos","_trgt","_unit"];
+//[[[end]]]
 _trgt = player;
 _nrBuilds = nearestObjects [getPosATL _trgt,["house"],50];
 

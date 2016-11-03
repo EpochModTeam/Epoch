@@ -12,7 +12,9 @@
     Github:
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_code/gui/scripts/craftingv2/EPOCH_crafting_dev_toggle.sqf
 */
-private ["_mainDevBtn","_3DCTRL"];
+//[[[cog import generate_private_arrays ]]]
+private ["_3DCTRL","_3DPos","_ctrlPos","_curLB","_devBtnExport","_devBtnSetPos","_devBtnSetScale","_devX","_devY","_devZ","_mainDevBtn"];
+//[[[end]]]
 _mainDevBtn = rmx_var_crafting_ctrl_DEVMisc select 1;
 _3DCTRL = rmx_var_crafting_ctrl_DEVMisc select 0;
 

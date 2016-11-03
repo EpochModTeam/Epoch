@@ -41,7 +41,34 @@ BIS_fnc_returnVector = {
     _v
 };
 
-_import = ["Land_Slum_01_F","Land_Shed_03_F","Land_Slum_02_F","Land_House_Native_02_F","Land_House_Small_03_F","Land_House_Native_01_F","Land_Shed_05_F","Land_Shed_04_F","Land_Addon_05_F","Land_Shed_06_F","Land_House_Small_04_F","Land_House_Small_01_F","Land_Shop_Town_04_F","Land_Shop_Town_01_F","Land_House_Small_05_F","Land_Slum_05_F","Land_WaterTower_01_F","Land_Shed_02_F","Land_House_Small_06_F","Land_Shop_Town_02_F","Land_House_Small_02_F","Land_Shed_01_F","Land_Shop_Town_03_F","Land_Addon_03_F","Land_MetalShelter_01_F","Land_MetalShelter_02_F","Land_Slum_03_F","Land_Supermarket_01_F","Land_Shop_City_04_F","Land_Addon_02_F","Land_Addon_04_F","Land_House_Big_05_F","Land_Shop_City_07_F","Land_Addon_01_F","Land_House_Big_03_F","Land_House_Big_01_F","Land_Hotel_02_F","Land_Slum_04_F","Land_GarageShelter_01_F","Land_WoodenShelter_01_F","Land_PierWooden_02_hut_F","Land_Church_03_F","Land_Shed_07_F","Land_School_01_F","Land_Temple_Native_01_F","Land_Shop_City_06_F","Land_Shop_Town_05_F","Land_Shop_City_03_F","Land_Church_01_F","Land_Warehouse_03_F","Land_FireEscape_01_short_F","Land_House_Big_04_F","Land_Shop_City_02_F","Land_Shop_City_01_F","Land_Hotel_01_F","Land_WindmillPump_01_F","Land_Shop_Town_05_addon_F","Land_FuelStation_01_shop_F","Land_FuelStation_01_workshop_F","Land_FuelStation_01_pump_F","Land_FuelStation_02_workshop_F","Land_Mausoleum_01_F","Land_Barracks_01_grey_F","Land_Church_02_F","Land_SCF_01_warehouse_F","Land_Shed_Small_F","Land_GuardHouse_01_F","Land_Airport_01_controlTower_F","Land_Airport_01_terminal_F","Land_FuelStation_02_pump_F","Land_dp_smallTank_F","Land_Barracks_01_camo_F","Land_spp_Transformer_F","Land_TBox_F","Land_FuelStation_02_roof_F","Land_House_Big_02_F","Land_PierWooden_01_dock_F","Land_PierWooden_01_hut_F","Land_SCF_01_storageBin_medium_F","Land_ContainerLine_01_F","Land_DPP_01_waterCooler_F","Land_DPP_01_smallFactory_F","Land_GantryCrane_01_F","Land_ContainerLine_03_F","Land_StorageTank_01_small_F","Land_MobileCrane_01_F","Land_SCF_01_shed_F","Land_ContainerLine_02_F","Land_FireEscape_01_tall_F","Land_MobileCrane_01_hook_F","Land_Shop_City_05_F","Land_MultistoryBuilding_01_F","Land_MultistoryBuilding_03_F","Land_MultistoryBuilding_04_F","Land_Cathedral_01_F","Land_Airport_01_hangar_F","Land_Airport_02_controlTower_F","Land_Airport_02_terminal_F","Land_Airport_02_hangar_right_F","Land_Airport_02_hangar_left_F","Land_BasaltWall_01_gate_F","Land_DPP_01_mainFactory_F","Land_CombineHarvester_01_wreck_F","Land_SCF_01_heap_bagasse_F","Land_SCF_01_generalBuilding_F","Land_SCF_01_washer_F","Land_SCF_01_shredder_F","Land_SCF_01_clarifier_F","Land_SCF_01_feeder_F","Land_SCF_01_chimney_F","Land_SCF_01_boilerBuilding_F","Land_SCF_01_crystallizer_F","Land_SCF_01_crystallizerTowers_F","Land_Radar_Small_F","Land_MiningShovel_01_abandoned_F","Land_SM_01_reservoirTower_F","Land_HaulTruck_01_abandoned_F","Land_Warehouse_01_F","Land_Warehouse_02_F","Land_SM_01_shelter_narrow_F","Land_SM_01_shelter_wide_F","Land_SM_01_shed_unfinished_F","Land_WarehouseShelter_01_F","Land_SY_01_reclaimer_F","Land_SY_01_stockpile_01_F","Land_SY_01_stockpile_02_F","Land_ContainerCrane_01_F","Land_SM_01_shed_F"];
+_import = ["Land_TentHangar_V1_F",
+"Land_TentHangar_V1_dam_F",
+"Land_Dome_Big_F",
+"Land_Dome_Small_F",
+"Land_GH_MainBuilding_entry_F",
+"Land_dp_smallTank_F",
+"Land_i_House_Big_01_V1_dam_F",
+"Land_i_House_Big_01_V2_dam_F",
+"Land_i_House_Big_01_V3_dam_F",
+"Land_u_House_Big_01_V1_dam_F",
+"Land_i_House_Big_02_V2_dam_F",
+"Land_i_Shop_01_V1_dam_F",
+"Land_i_Shop_01_V2_dam_F",
+"Land_i_Shop_01_V3_dam_F",
+"Land_u_Shop_01_V1_dam_F",
+"Land_i_Shop_02_V1_dam_F",
+"Land_i_Shop_02_V2_dam_F",
+"Land_i_Shop_02_V3_dam_F",
+"Land_u_Shop_02_V1_dam_F",
+"Land_i_House_Small_01_V1_dam_F",
+"Land_i_House_Small_01_V2_dam_F",
+"Land_i_House_Small_01_V3_dam_F",
+"Land_u_House_Small_01_V1_dam_F",
+"Land_i_House_Small_02_V1_dam_F",
+"Land_i_House_Small_02_V2_dam_F",
+"Land_i_House_Small_02_V3_dam_F",
+"Land_u_House_Small_02_V1_dam_F",
+"Land_i_House_Small_03_V1_dam_F"];
 
 EPB = [];
 {

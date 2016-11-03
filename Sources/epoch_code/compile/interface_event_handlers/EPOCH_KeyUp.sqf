@@ -25,7 +25,9 @@
 	Returns:
 	BOOL
 */
-private["_handled"];
+//[[[cog import generate_private_arrays ]]]
+private ["_handled"];
+//[[[end]]]
 params ["_display","_dikCode","_shift","_ctrl","_alt"];
 _handled = false;
 //Main actions

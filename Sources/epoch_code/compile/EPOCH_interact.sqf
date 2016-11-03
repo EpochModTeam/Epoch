@@ -12,7 +12,9 @@
     Github:
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_code/compile/EPOCH_interact.sqf
 */
-private ["_vehSlot","_storSlot"];
+//[[[cog import generate_private_arrays ]]]
+private ["_storSlot","_vehSlot"];
+//[[[end]]]
 0 call EPOCH_refeshUI;
 if (!isNull _this) then {
 	_vehSlot = _this getVariable ["VEHICLE_SLOT", "ABORT"];

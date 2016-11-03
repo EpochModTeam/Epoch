@@ -26,7 +26,9 @@
 	Returns:
 	ARRAY
 */
-private ["_dir","_dirTo","_rnd","_pos","_dist"];
+//[[[cog import generate_private_arrays ]]]
+private ["_dir","_dirTo","_dist","_moveTo","_pos","_rnd"];
+//[[[end]]]
 params ["_maxIn","_minIn","_arcIn","_unitIn","_offset","_trgtIn"];
 
 _dirTo = (position _unitIn) getDir (position _trgtIn);

@@ -12,14 +12,31 @@
     Github:
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_code/compile/EPOCH_consumeItem.sqf
 */
-private ["_cfgBaseBuilding","_cfgItemInteractions","_type","_magazineSize","_text","_item","_pic","_magazinesAmmoFull","_magazineSizeMax","_pos","_object","_isStorage","_isOk","_buildClass","_interactReturnOnUse","_vehicle","_currentFuel","_canCapacity","_interactAttributes","_fuelCapacity","_newFuel","_removeItem","_vehicles","_transportFuel","_highestDMG","_currentHIT","_currentDMG","_newDMG","_paintCanIndex","_paintCanColor","_msg","_color","_unifiedInteract","_interactOption"];
+//[[[cog import generate_private_arrays ]]]
+private ["_buildClass","_buildingCountLimit","_buildingJammerRange","_canCapacity","_cfgBaseBuilding","_cfgItemInteractions","_color","_currentDMG","_currentFuel","_currentHIT","_fuelCapacity","_highestDMG","_interactAttributes","_interactOption","_interactReturnOnUse","_isOk","_isStorage","_magazineSize","_magazineSizeMax","_magazinesAmmoFull","_newDMG","_newFuel","_object","_otherObjects","_output","_paintCanColor","_paintCanIndex","_partCheck","_pos","_removeItem","_transportFuel","_unifiedInteract","_vehicle","_vehicles"];
+//[[[end]]]
+
 EPOCH_InteractedItem params ["_text","_item","_pic"];
 
 _cfgBaseBuilding = 'CfgBaseBuilding' call EPOCH_returnConfig;
 _cfgItemInteractions = (('CfgItemInteractions' call EPOCH_returnConfig) >> _item);
+
 _interactOption = getNumber(_cfgItemInteractions >> "interactAction");
-_interactReturnOnUse = getText(_cfgItemInteractions >> "interactReturnOnUse");
 _interactAttributes = getArray(_cfgItemInteractions >> "interactAttributes");
+_interactReturnOnUse = getText(_cfgItemInteractions >> "interactReturnOnUse");
+
+_inputCount = count _this;
+if (_inputCount >= 1) then {
+    _interactOption = param [0,0];
+};
+if (_inputCount >= 2) then {
+    _interactAttributes = param [1,[]];
+};
+if (_inputCount >= 3) then {
+    _interactReturnOnUse = param [2,""];
+};
+
+// diag_log format["DEBUG: %1",[_interactOption,_interactAttributes,_interactReturnOnUse]];
 
 _removeItem = {([player,_this] call BIS_fnc_invRemove) == 1};
 
