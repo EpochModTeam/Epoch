@@ -27,7 +27,7 @@ disableSerialization;
 _dsp = findDisplay 46;
 
 {
-	_group = _dsp ctrlCreate ["rscControlsGroup", call Epoch_getIDC];
+	_group = _dsp ctrlCreate ["rmx_rscControlsGroup", call Epoch_getIDC];
 	rmx_var_dynamicHUD_groups set [_forEachIndex, _group];
 
 	_defaultPopulate = getNumber (_x >> "defaultPopulate");
