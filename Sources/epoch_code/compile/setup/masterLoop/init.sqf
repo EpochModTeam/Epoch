@@ -119,16 +119,13 @@ _scaleUI = {
 	private _curScale = ctrlScale _ctrl;
 	if (_bool) then {
 		if (_curScale isEqualTo _oemScale) then {
-			_ctrl ctrlSetScale (_oemScale - 0.1);
-			_ctrl ctrlCommit 0.5;
+			[_ctrl, (_oemScale - 0.1), 0.5] call BIS_fnc_ctrlSetScale;
 		} else {
-			_ctrl ctrlSetScale _oemScale;
-			_ctrl ctrlCommit 0.5;
+			[_ctrl, _oemScale, 0.5] call BIS_fnc_ctrlSetScale;
 		};
 	} else {
 		if !(_curScale isEqualTo _oemScale) then {
-			_ctrl ctrlSetScale _oemScale;
-			_ctrl ctrlCommit 0.5;
+			[_ctrl, _oemScale, 0.5] call BIS_fnc_ctrlSetScale;
 		};
 	};
 	_bool
