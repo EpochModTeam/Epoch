@@ -39,6 +39,6 @@ if(_return isEqualTo[]) then {
     }forEach getArray(configFile >> _configName >> _keyName >> _arrayName);
     _return = [_lootTableArray,_weightedArray];
     missionNamespace setVariable[format["EPOCH_LT_%1_%2_%3",_configName,_keyName,_arrayName],_return];
-    diag_log format["EPOCH_LT_%1_%2_%3 = %4",_configName,_keyName,_arrayName,_return];
+    // diag_log format["EPOCH_LT_%1_%2_%3 = %4",_configName,_keyName,_arrayName,_return];
 };
 _return

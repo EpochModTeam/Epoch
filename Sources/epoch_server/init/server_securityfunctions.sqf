@@ -1038,7 +1038,13 @@ call compile ("'"+_skn_doAdminRequest+"' addPublicVariableEventHandler {
 			};
 		};
 		[format['Delete: %1 at [%2]',typeOf _content, getPos _content],0] call "+_skn_server_adminLog+";
-		deleteVehicle _content;
+        _content spawn {
+            if !(isNull _this) then {
+                _this hideObjectGlobal true;
+                sleep 1;
+                if !(isNull _this) then {deleteVehicle _this};
+            };
+        };
 	};
 	if (_case == 106) then {
 		_admin hideObjectGlobal _content;

@@ -1,3 +1,13 @@
+// make sure we wait for Display #46
+waitUntil {!(isNull (findDisplay 46))};
+// setup display EH's
+{
+	(findDisplay 46) displayAddEventHandler [_x,(["CfgEpochClient", _x, ""] call EPOCH_fnc_returnConfigEntryV2)];
+} forEach (["CfgEpochClient", "displayAddEventHandler", []] call EPOCH_fnc_returnConfigEntryV2);
+// reset anim state
+player switchMove "";
+// setup Epoch Hud
+call epoch_dynamicHUD_start;
 
 _prevEquippedItem = [];
 _damagePlayer = damage player;

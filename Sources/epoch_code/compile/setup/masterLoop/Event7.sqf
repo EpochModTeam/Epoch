@@ -10,7 +10,7 @@ if (EPOCH_mod_Ryanzombies_Enabled) then {
 if (random EPOCH_sapperRndChance < _spawnChance) then {
 	"Epoch_Sapper_F" call EPOCH_unitSpawnIncrease;
 };
-diag_log format["DEBUG: _spawnChance %1",_spawnChance];
+// diag_log format["DEBUG: _spawnChance %1",_spawnChance];
 
 _spawnUnits = [];
 {
