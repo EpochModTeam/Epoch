@@ -25,9 +25,12 @@
 	[_control] call epoch_2DCtrlShake; //default 3 fast shakes
 	[_control, 10, 12] call epoch_2DCtrlShake; //12 very fast shakes
 	[_control, 2, 5, 90] call epoch_2DCtrlShake; // 5 very slow 90 degree shakes
+	
+	Returns:
+	[bool] success
 */
 
-private ["_ctrl"];
+private ["_ctrl","_speed","_shakes","_degrees","_s","_d"];
 _ctrl = 	param [0, controlNull,[controlNull]];
 _speed = 	param [1,5,[0]];
 _shakes = 	param [2,3,[0]];
