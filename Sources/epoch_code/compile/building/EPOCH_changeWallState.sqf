@@ -67,7 +67,6 @@ if !(isNull _object) then{
 				_recipeItem = _x;
 				_recipeQty = 1;
 				if (_x isEqualType[]) then{
-					_x params ["_recipeItem","_recipeQty"];
 					_recipeItem = _x select 0;
 					_recipeQty = _x select 1;
 				};
