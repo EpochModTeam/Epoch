@@ -26,7 +26,7 @@
 	BOOL
 */
 //[[[cog import generate_private_arrays ]]]
-private ["_currentPos","_disableBuildMode","_handled"];
+private ["_currentPos","_handled"];
 //[[[end]]]
 params ["_display","_dikCode","_shift","_ctrl","_alt"];
 
@@ -95,45 +95,16 @@ if (_dikCode == EPOCH_keysAction) then {
 
 // Player only code
 if (vehicle player == player) then {
-	_disableBuildMode = {
-		EPOCH_buildMode = 0;
+
+	if (_dikCode == EPOCH_keysBuildMode1 && EPOCH_buildMode > 0) then {
+        EPOCH_buildMode = 0;
 		EPOCH_snapDirection = 0;
-		["Build Mode Disabled", 5] call Epoch_message;
+		["Build Mode: Disabled", 5] call Epoch_message;
 		EPOCH_Target = objNull;
 		EPOCH_Z_OFFSET = 0;
 		EPOCH_X_OFFSET = 0;
 		EPOCH_Y_OFFSET = 5;
-	};
-	if (_dikCode == EPOCH_keysBuildMode1) then {
-		if (EPOCH_buildMode == 1) then {
-			call _disableBuildMode;
-		} else {
-			if (EPOCH_playerEnergy > 0) then {
-				EPOCH_stabilityTarget = objNull;
-				EPOCH_buildMode = 1;
-				["Build Mode Enabled: Snap alignment", 5] call Epoch_message;
-				EPOCH_buildDirection = 0;
-			} else {
-				["Need Energy", 5] call Epoch_message;
-			};
-		};
-		_handled = true;
-	};
-	if (_dikCode == EPOCH_keysBuildMode2) then {
-		if (EPOCH_buildMode == 2) then {
-			call _disableBuildMode;
-		} else {
-			if (EPOCH_playerEnergy > 0) then {
-				EPOCH_stabilityTarget = objNull;
-				EPOCH_buildMode = 2;
-				["Build Mode Enabled: Free", 5] call Epoch_message;
-				EPOCH_buildDirection = 0;
-			}
-			else {
-				["Need Energy", 5] call Epoch_message;
-			};
-		};
-		_handled = true;
+        _handled = true;
 	};
 
 	// H - holster unholster
@@ -152,18 +123,6 @@ if (vehicle player == player) then {
 	};
 
 	if (EPOCH_buildMode > 0) then {
-		if (_dikCode == EPOCH_keysBuildDir) then {
-			EPOCH_snapDirection = EPOCH_snapDirection + 1;
-			if (EPOCH_snapDirection > 3) then {
-				EPOCH_snapDirection = 0;
-				["SNAP DIRECTION MODE: 0", 5] call Epoch_message;
-			}
-			else {
-				[format["SNAP DIRECTION MODE: %1", EPOCH_snapDirection], 5] call Epoch_message;
-			};
-			_handled = true;
-		};
-
 		if (!_ctrl) then {
 			switch (_dikCode) do {
 			case EPOCH_keysBuildMovUp: { EPOCH_Z_OFFSET = (EPOCH_Z_OFFSET + 0.1) min 6; _handled = true };
