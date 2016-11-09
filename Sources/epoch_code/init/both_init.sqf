@@ -18,7 +18,7 @@ private ["_antagonistSpawnDefaults","_customVarsInit","_say3dsounds","_say3dsoun
 
 // detect if Ryan's Zombies and Deamons mod is present
 if (["CfgEpochClient", "ryanZombiesEnabled", false] call EPOCH_fnc_returnConfigEntryV2) then {
-    EPOCH_mod_Ryanzombies_Enabled = (parseNumber (getNumber (configFile >> "CfgPatches" >> "Ryanzombies" >> "version")) >= 4.5);
+    EPOCH_mod_Ryanzombies_Enabled = (parseNumber (getText (configFile >> "CfgPatches" >> "Ryanzombies" >> "version")) >= 4.5);
     if (EPOCH_mod_Ryanzombies_Enabled) then {
         diag_log "Epoch: Ryanzombies detected";
     };
