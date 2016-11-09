@@ -196,7 +196,7 @@ class CfgClientFunctions
         {
             file = "epoch_code\gui\scripts\animations";
             class 2DCtrlShake {};
-			class 2DCtrlHearbeat {};
+			class 2DCtrlHeartbeat {};
         };
         class config
         {

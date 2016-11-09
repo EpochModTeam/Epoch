@@ -123,23 +123,6 @@ _fadeUI = {
 	};
 	_bool
 };
-_scaleUI = {
-	params ["_ctrl","_bool"];
-	private _oemScale = _ctrl getVariable ["ctrl_scale", 1];
-	private _curScale = ctrlScale _ctrl;
-	if (_bool) then {
-		if (_curScale isEqualTo _oemScale) then {
-			[_ctrl, (_oemScale - 0.1), 0.5] call BIS_fnc_ctrlSetScale;
-		} else {
-			[_ctrl, _oemScale, 0.5] call BIS_fnc_ctrlSetScale;
-		};
-	} else {
-		if !(_curScale isEqualTo _oemScale) then {
-			[_ctrl, _oemScale, 0.5] call BIS_fnc_ctrlSetScale;
-		};
-	};
-	_bool
-};
 
 _cursorTarget = objNull;
 
