@@ -91,8 +91,8 @@ EPOCH_currentTargetMode = _currentTargetMode;
 				_forceUpdate = "forceUpdate" in _criticalAttributes;
 				_forceFatigue = "forceFatigue" in _criticalAttributes;
 				_forceBloodRise = "forceBloodRise" in _criticalAttributes;
+                [_curCtrl,0.55] call epoch_2DCtrlHeartbeat;
 			};
-			[_curCtrl,0.55] call epoch_2DCtrlHeartbeat;
 			// todo make this reversable or even limited to a color range.
 			_color = [_playerLimitMin,_playerLimitMax,_currentVarVal,1] call EPOCH_colorRange;
 			_curCtrl ctrlSetTextColor _color;
