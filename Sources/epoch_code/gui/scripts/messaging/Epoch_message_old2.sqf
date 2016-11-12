@@ -8,7 +8,7 @@
     Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
 
     Github:
-    https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_code/gui/scripts/Epoch_dynamicText.sqf
+    https://github.com/EpochModTeam/Epoch/blob/release/Sources/epoch_code/gui/scripts/messaging/Epoch_message_old2.sqf
 
 	Usage:
 	"TEST" call Epoch_message_old2
