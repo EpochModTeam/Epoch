@@ -15,12 +15,15 @@
             "NameCityCapital"
         ],
         "restrictedLocationsRange": 300,
-        "buildingRequireJammer": 0,
+        "buildingRequireJammer": 1,
         "buildingCountLimit": 200,
         "buildingJammerRange": 75,
         "JammerPerGroup": 1,
         "minJammerDistance": 650,
         "maxBuildingHeigh": 33,
+		"storageCountLimit": 100,
+		"splitCountLimits": 0,
+		"useGroupCountLimits": 1,
         "buildingCountLeader": 125,
         "buildingCountPerMember": 5,
         "storagecountLeader": 10,
@@ -339,6 +342,11 @@
                 "Toxicity",
                 "topRight",
                 "x\\addons\\a3_epoch_code\\Data\\UI\\hazzard_ca.paa"
+            ],
+            [
+                "Wet",
+                "topRight",
+                "x\\addons\\a3_epoch_code\\Data\\UI\\wet_ca.paa"
             ],
             [
                 "Alcohol",
