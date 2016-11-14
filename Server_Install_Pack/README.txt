@@ -15,4 +15,4 @@ http://www.bistudio.com/community/licenses/arma-public-license-share-alike
 
 Credits:
 =====
-https://github.com/EpochModTeam/Epoch/blob/master/CREDITS.md
+https://github.com/EpochModTeam/Epoch/blob/release/CREDITS.md

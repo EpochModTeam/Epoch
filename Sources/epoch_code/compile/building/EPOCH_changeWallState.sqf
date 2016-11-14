@@ -50,10 +50,7 @@ if !(isNull _object) then{
 		{
 			_recipeItem = _x;
 			_recipeQty = 1;
-			if (_x isEqualType[]) then{
-				_recipeItem = _x select 0;
-				_recipeQty = _x select 1;
-			};
+			_x params [["_recipeItem",_recipeItem],["_recipeQty",_recipeQty]];
 			_recipeCount = _recipeCount + _recipeQty;
 			_currentCount = { _x == _recipeItem } count _mags;
 			if (_currentCount < _recipeQty) exitWith{
@@ -66,11 +63,7 @@ if !(isNull _object) then{
 			{
 				_recipeItem = _x;
 				_recipeQty = 1;
-				if (_x isEqualType[]) then{
-					_x params ["_recipeItem","_recipeQty"];
-					_recipeItem = _x select 0;
-					_recipeQty = _x select 1;
-				};
+                _x params [["_recipeItem",_recipeItem],["_recipeQty",_recipeQty]];
 				if ([_recipeItem, "CfgWeapons"] call EPOCH_fnc_isAny) then{
 					_items = items player;
 					_currentCount = { _x == _recipeItem } count _items;

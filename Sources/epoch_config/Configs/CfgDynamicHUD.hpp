@@ -29,7 +29,7 @@ classname:
 Obtaining Controls:
 	use epoch_getHUDCtrl function to obtain controls for manipulation
 	_name = Config name of your group
-	_index = each group hosts multiple elements, each element has it's index, starting from 0
+	_index = each group hosts multiple elements, each element has it's index, starting from 1! Don't use 0 as it returns configName
 	[_ConfigName, _index] call epoch_getHUDCtrl;
 	["myHUDname", 3] call epoch_getHUDCtrl;
 */

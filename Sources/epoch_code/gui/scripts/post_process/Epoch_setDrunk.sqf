@@ -10,7 +10,7 @@
     Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
 
     Github:
-    https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_code/gui/scripts/post_process/EPOCH_postprocessDestroy.sqf
+    https://github.com/EpochModTeam/Epoch/blob/release/Sources/epoch_code/gui/scripts/post_process/Epoch_setDrunk.sqf
 
 	Usage:
 			0.5 call epoch_setDrunk;

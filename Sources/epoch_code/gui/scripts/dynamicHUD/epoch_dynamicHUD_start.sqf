@@ -19,7 +19,7 @@ private ["_angle","_arraySize","_c","_cPos","_center","_cfg","_classname","_conf
 _cfg = "rmx_dynamicHUD" call EPOCH_returnConfig;
 _configs = "true" configClasses _cfg;
 
-diag_log format ["Epoch_dynamicHUD_start: %1", _configs];
+// diag_log format ["Epoch_dynamicHUD_start: %1", _configs];
 
 setMousePosition [0.5,0.5];
 
@@ -27,7 +27,7 @@ disableSerialization;
 _dsp = findDisplay 46;
 
 {
-	_group = _dsp ctrlCreate ["rscControlsGroup", call Epoch_getIDC];
+	_group = _dsp ctrlCreate ["rmx_rscControlsGroup", call Epoch_getIDC];
 	rmx_var_dynamicHUD_groups set [_forEachIndex, _group];
 
 	_defaultPopulate = getNumber (_x >> "defaultPopulate");

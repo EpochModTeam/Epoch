@@ -192,6 +192,12 @@ class CfgClientFunctions
             class getColorScheme {};
             class dragControl {};
         };
+        class animations
+        {
+            file = "epoch_code\gui\scripts\animations";
+            class 2DCtrlShake {};
+			class 2DCtrlHeartbeat {};
+        };
         class config
         {
             file = "epoch_code\gui\scripts\config";

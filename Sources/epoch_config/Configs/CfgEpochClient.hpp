@@ -17,31 +17,34 @@ class CfgEpochClient
     epochVersion = "0.4.0.0";
     sapperRngChance = 100;
     droneRngChance = 100;
-    buildingNearbyMilitary = 0;
+	buildingNearbyMilitary = 0;
     buildingNearbyMilitaryRange = 300;
     buildingNearbyMilitaryClasses[] = {"Cargo_Tower_base_F","Cargo_HQ_base_F","Cargo_Patrol_base_F","Cargo_House_base_F"};
     restrictedLocations[] = {"NameCityCapital"};
     restrictedLocationsRange = 300;
-    buildingRequireJammer = 0;
-    buildingCountLimit = 200;
-    buildingJammerRange = 75;
-    JammerPerGroup = 1;
+    buildingRequireJammer = 1;		//1 = require jammer to build
+	buildingJammerRange = 75;
+    jammerPerGroup = 1;
     minJammerDistance = 650;
-    maxBuildingHeigh = 33;
-    buildingCountLeader = 125;
-    buildingCountPerMember = 5;
-    storagecountLeader = 10;
-    storagecountPerMember = 5;
-    maxdoors = 8;
+    maxBuildingHeight = 33;
+	buildingCountLimit = 200;		//overall building limit in range of jammer (overridden if "useGroupCountLimits=1")
+	storageCountLimit = 100;		//overall storage limit in range of jammer (triggers only if "splitCountLimits=1" & "useGroupCountLimits=0")	
+	splitCountLimits = 0;			//1 = distinguish buildingCountLimit from storageCountLimit (ex.: buildingCountLimit=100, storageCountLimit=100 >> you can build 100 baseparts AND additional 100 storage objects like safes, lockboxes...)
+	useGroupCountLimits = 1;		//1 = enable leader and member counts (doesn´t affect "splitCountLimits")
+	buildingCountLeader = 125;		//ignore if "useGroupCountLimits=0"
+	buildingCountPerMember = 5;		//ignore if "useGroupCountLimits=0"
+	storageCountLeader = 10;		//ignore if "splitCountLimits=0" & "useGroupCountLimits=0"
+	storageCountPerMember = 5;		//ignore if "splitCountLimits=0" & "useGroupCountLimits=0"
+	maxdoors = 8;
     maxgates = 5;
-    disableRemoteSensors = True;
+    disableRemoteSensors = true;
     EPOCH_news[] = {"Word is that Sappers have a new boss.","Dogs will often lure them monsters away.","My dog was blown up. I miss him.."};
     deathMorphClass[] = {"Epoch_Sapper_F","Epoch_SapperB_F","I_UAV_01_F","Epoch_Cloak_F"};
     niteLight[] = {1,1.88,22};
-    ryanZombiesEnabled = True;
+    ryanZombiesEnabled = true;
     antagonistSpawnIndex[] = {{"Epoch_Cloak_F",1},{"GreatWhite_F",2},{"Epoch_Sapper_F",2},{"Epoch_SapperB_F",1},{"I_UAV_01_F",2},{"PHANTOM",1},{"B_Heli_Transport_01_F",1},{"EPOCH_RyanZombie_1",12}};
     customVarsDefaults[] = {{"Temp",98.6,{106.7,95,102,105,96,95}},{"Hunger",1500,{5000,0,5001,5001,1250,0}},{"Thirst",750,{2500,0,2501,2501,625,0}},{"AliveTime",0,{-2,0}},{"Energy",0,{2500,0}},{"Wet",0,{100,0,35,55,-1,-1}},{"Soiled",0,{100,0,35,55,-1,-1}},{"Immunity",0,{100,0}},{"Toxicity",0,{100,0,35,55,-1,-1}},{"Stamina",100,{"EPOCH_playerStaminaMax",0}},{"Crypto",0,{250000,0}},{"HitPoints",{0,0,0,0},{1,0,0.5,1,-1,-1}},{"BloodP",100,{190,0,120,140,70,50}},{"SpawnArray",{},{}},{"Karma",0,{50000,-50000}},{"Alcohol",0,{100,0,35,55,-1,-1}},{"Radiation",0,{100,0,35,55,-1,-1}},{"Nuisance",0,{100,0}},{"MissionArray",{},{}}};
-    hudConfigs[] = {{{"BloodP","","",{"getPlayerDamage",">=",0.7}},"topRight","x\addons\a3_epoch_code\Data\UI\bleeding_ca.paa",{"forceUpdate"}},{{"Oxygen","getPlayerOxygenRemaining","",{},{1,0,2,2,1,0.55}},"topRight","x\addons\a3_epoch_code\Data\UI\oxygen_ca.paa"},{"Hunger","topRight","x\addons\a3_epoch_code\Data\UI\hunger_ca.paa",{"forceBloodRise"}},{"Thirst","topRight","x\addons\a3_epoch_code\Data\UI\thirst_ca.paa",{"forceBloodRise"}},{"Temp","topRight",{"x\addons\a3_epoch_code\Data\UI\hot_ca.paa","x\addons\a3_epoch_code\Data\UI\cold_ca.paa"},{"forceFatigue"}},{"Toxicity","topRight","x\addons\a3_epoch_code\Data\UI\hazzard_ca.paa"},{"Wet","topRight","x\addons\a3_epoch_code\Data\UI\wet_ca.paa"},{"Alcohol","topRight","x\addons\a3_epoch_code\Data\UI\drunk_ca.paa"},{"Soiled","topRight","x\addons\a3_epoch_code\Data\UI\soiled_ca.paa"},{"Radiation","topRight","x\addons\a3_epoch_code\Data\UI\rads_ca.paa"},{{"HitPoints","getPlayerHitPointDamage","HitLegs"},"topRight","x\addons\a3_epoch_code\Data\UI\broken_ca.paa"}};
+    hudConfigs[] = {{{"BloodP","","",{"getPlayerDamage",">=",0.7}},"topRight","x\addons\a3_epoch_code\Data\UI\bleeding_ca.paa",{"forceUpdate"}},{{"Oxygen","getPlayerOxygenRemaining","",{},{1,0,2,2,1,0.55}},"topRight","x\addons\a3_epoch_code\Data\UI\oxygen_ca.paa"},{"Hunger","topRight","x\addons\a3_epoch_code\Data\UI\hunger_ca.paa",{"forceBloodRise"}},{"Thirst","topRight","x\addons\a3_epoch_code\Data\UI\thirst_ca.paa",{"forceBloodRise"}},{"Temp","topRight",{"x\addons\a3_epoch_code\Data\UI\hot_ca.paa","x\addons\a3_epoch_code\Data\UI\cold_ca.paa"},{"forceFatigue"}},{"Toxicity","topRight","x\addons\a3_epoch_code\Data\UI\hazzard_ca.paa"},{"Alcohol","topRight","x\addons\a3_epoch_code\Data\UI\drunk_ca.paa"},{"Soiled","topRight","x\addons\a3_epoch_code\Data\UI\soiled_ca.paa"},{"Radiation","topRight","x\addons\a3_epoch_code\Data\UI\rads_ca.paa"},{{"HitPoints","getPlayerHitPointDamage","HitLegs"},"topRight","x\addons\a3_epoch_code\Data\UI\broken_ca.paa"}};
     group_upgrade_lvl[] = {4,"1000",6,"1500",8,"2000",10,"2500",12,"3000",14,"3500",16,"4000",32,"8000",64,"16000"};
     displayAddEventHandler[] = {"keyDown","keyUp"};
     keyDown = "(_this call EPOCH_KeyDown)";

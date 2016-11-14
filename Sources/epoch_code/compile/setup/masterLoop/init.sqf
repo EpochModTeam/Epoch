@@ -1,3 +1,13 @@
+// make sure we wait for Display #46
+waitUntil {!(isNull (findDisplay 46))};
+// setup display EH's
+{
+	(findDisplay 46) displayAddEventHandler [_x,(["CfgEpochClient", _x, ""] call EPOCH_fnc_returnConfigEntryV2)];
+} forEach (["CfgEpochClient", "displayAddEventHandler", []] call EPOCH_fnc_returnConfigEntryV2);
+// reset anim state
+player switchMove "";
+// setup Epoch Hud
+call epoch_dynamicHUD_start;
 
 _prevEquippedItem = [];
 _damagePlayer = damage player;
@@ -109,26 +119,6 @@ _fadeUI = {
 		if (ctrlFade _ctrl != 1) then {
 			_ctrl ctrlSetFade 0;
 			_ctrl ctrlCommit 0;
-		};
-	};
-	_bool
-};
-_scaleUI = {
-	params ["_ctrl","_bool"];
-	private _oemScale = _ctrl getVariable ["ctrl_scale", 1];
-	private _curScale = ctrlScale _ctrl;
-	if (_bool) then {
-		if (_curScale isEqualTo _oemScale) then {
-			_ctrl ctrlSetScale (_oemScale - 0.1);
-			_ctrl ctrlCommit 0.5;
-		} else {
-			_ctrl ctrlSetScale _oemScale;
-			_ctrl ctrlCommit 0.5;
-		};
-	} else {
-		if !(_curScale isEqualTo _oemScale) then {
-			_ctrl ctrlSetScale _oemScale;
-			_ctrl ctrlCommit 0.5;
 		};
 	};
 	_bool

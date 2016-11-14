@@ -18,7 +18,7 @@ private ["_bomb","_config","_currentLimit","_disableAI","_driver","_grp","_index
 params ["_unitClass",["_trgt",player],["_doVariable",false]];
 
 _bomb = objNull;
-diag_log format["DEBUG: Antagonist %1 Spawning on %2. Do variable: %3.", _unitClass, _trgt, _doVariable];
+// diag_log format["DEBUG: Antagonist %1 Spawning on %2. Do variable: %3.", _unitClass, _trgt, _doVariable];
 
 if(random 100 < 6)then{
 	[] execFSM "\x\addons\a3_epoch_code\System\Event_Air_Drop.fsm";
