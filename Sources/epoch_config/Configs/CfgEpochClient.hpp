@@ -17,22 +17,25 @@ class CfgEpochClient
     epochVersion = "0.4.0.0";
     sapperRngChance = 100;
     droneRngChance = 100;
-    buildingNearbyMilitary = 0;
+	buildingNearbyMilitary = 0;
     buildingNearbyMilitaryRange = 300;
     buildingNearbyMilitaryClasses[] = {"Cargo_Tower_base_F","Cargo_HQ_base_F","Cargo_Patrol_base_F","Cargo_House_base_F"};
     restrictedLocations[] = {"NameCityCapital"};
     restrictedLocationsRange = 300;
-    buildingRequireJammer = 0;
-    buildingCountLimit = 200;
-    buildingJammerRange = 75;
-    JammerPerGroup = 1;
+    buildingRequireJammer = 1;		//1 = require jammer to build
+	buildingJammerRange = 75;
+    jammerPerGroup = 1;
     minJammerDistance = 650;
-    maxBuildingHeigh = 33;
-    buildingCountLeader = 125;
-    buildingCountPerMember = 5;
-    storagecountLeader = 10;
-    storagecountPerMember = 5;
-    maxdoors = 8;
+    maxBuildingHeight = 33;
+	buildingCountLimit = 200;		//overall building limit in range of jammer (overridden if "useGroupCountLimits=1")
+	storageCountLimit = 100;		//overall storage limit in range of jammer (triggers only if "splitCountLimits=1" & "useGroupCountLimits=0")	
+	splitCountLimits = 0;			//1 = distinguish buildingCountLimit from storageCountLimit (ex.: buildingCountLimit=100, storageCountLimit=100 >> you can build 100 baseparts AND additional 100 storage objects like safes, lockboxes...)
+	useGroupCountLimits = 1;		//1 = enable leader and member counts (doesn´t affect "splitCountLimits")
+	buildingCountLeader = 125;		//ignore if "useGroupCountLimits=0"
+	buildingCountPerMember = 5;		//ignore if "useGroupCountLimits=0"
+	storageCountLeader = 10;		//ignore if "splitCountLimits=0" & "useGroupCountLimits=0"
+	storageCountPerMember = 5;		//ignore if "splitCountLimits=0" & "useGroupCountLimits=0"
+	maxdoors = 8;
     maxgates = 5;
     disableRemoteSensors = true;
     EPOCH_news[] = {"Word is that Sappers have a new boss.","Dogs will often lure them monsters away.","My dog was blown up. I miss him.."};
