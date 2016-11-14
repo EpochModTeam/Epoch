@@ -1,5 +1,7 @@
 // Anti Hack
 antihack_Enabled = true; // built-in Anti-Hack
+antihack_maxTravelDistance = 30; // anti-teleport max travel distance
+antihack_TPcenterDistance = 30; // anti-teleport distance from start
 antihack_cfgPatchesCheck = true; // cfgPatches (AddOn Check)
 antihack_PVSPrefix = "EPAH_"; // used to help whitelist pveh variables in BE without BEC and watchdog, leave blank to use no prefix.
 antihack_cfgPatchesMode[] = {2}; // 0 == BAN - 1 = LOG, 2 = KICK

@@ -507,7 +507,8 @@ for "_i" from 1 to 3 do {
 };
 
 _skn_spawnPointCenter = getMarkerPos "respawn_west";
-_centerDistance = 30;
+_centerDistance = [_serverSettingsConfig, "antihack_TPcenterDistance", 30] call EPOCH_fnc_returnConfigEntry;
+_maxTravelDistance = [_serverSettingsConfig, "antihack_maxTravelDistance", 30] call EPOCH_fnc_returnConfigEntry;
 
 // Only set these if prefix is not used since we can filter for it
 if (_skn_PVSPrefix == "") then {
@@ -869,8 +870,8 @@ _skn_code_antihack = compileFinal ("
 				_curPos = getPosATL vehicle player;
 				_distance = _lastPos distance _curPos;
 
-				if ((_curTime-_lastTime)>1 || _distance>10) then {
-					if (((_distance/(_curTime-_lastTime)) > 16) && _notNearbySpawn && (player == vehicle player)) then {
+				if ((_curTime-_lastTime) > 1 || _distance > "+str _maxTravelDistance+") then {
+					if (((_distance/(_curTime-_lastTime)) > "+str _maxTravelDistance+") && _notNearbySpawn && (player == vehicle player)) then {
 						if (isNil '"+_skn_antiTeleportPVC+"') then {
 							[format['[TEST] TP from %1 to %2, %3 meters, now at %4', _lastPos, _curPos, round _distance, getPosATL player],1] call "+_sknBanANDSleep+";
 							vehicle player setPosATL _lastPos;
