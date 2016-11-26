@@ -3,6 +3,7 @@ waitUntil {!(isNull (findDisplay 46))};
 
 // setup display EH's
 if (isNil "EPOCH_display_setup_complete") then {
+    EPOCH_display_setup_complete = true;
     {
     	(findDisplay 46) displayAddEventHandler [_x,(["CfgEpochClient", _x, ""] call EPOCH_fnc_returnConfigEntryV2)];
     } forEach (["CfgEpochClient", "displayAddEventHandler", []] call EPOCH_fnc_returnConfigEntryV2);
@@ -10,7 +11,6 @@ if (isNil "EPOCH_display_setup_complete") then {
     player switchMove "";
     // setup Epoch Hud
     call epoch_dynamicHUD_start;
-    EPOCH_display_setup_complete = true;
 };
 
 _prevEquippedItem = [];
