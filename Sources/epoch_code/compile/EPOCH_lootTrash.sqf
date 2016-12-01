@@ -109,7 +109,7 @@ if (diag_tickTime - EPOCH_lastTrash > 2)  then {
 			{
 				_index = lbAdd[21500, name _x];
 				lbSetData[21500, _index, netId _x];
-			} forEach(playableUnits - [player]);
+			} forEach(allPlayers - [player]);
 		};
 		_return = true;
 	};
