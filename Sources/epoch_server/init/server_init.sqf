@@ -79,7 +79,18 @@ addMissionEventHandler ["PlayerConnected", {
     ["PlayerData", _uid, EPOCH_expiresPlayer, [_name]] call EPOCH_fnc_server_hiveSETEX;
     ['Connected', [_uid, _name]] call EPOCH_fnc_server_hiveLog;
 }];
-addMissionEventHandler ["HandleDisconnect", {_this call EPOCH_server_onPlayerDisconnect}];
+
+onPlayerDisconnected {
+    params ["_id", "_uid", "_name"];
+    _unit = objNull;
+    {
+        if ((_x getVariable["PUID", "0"]) == _uid) exitWith {
+            _unit = _x;
+        };
+    } forEach allUnits;
+    [_unit,_id,_uid,_name] call EPOCH_server_onPlayerDisconnect
+};
+// addMissionEventHandler ["HandleDisconnect", {_this call EPOCH_server_onPlayerDisconnect}];
 
 diag_log "Epoch: Setup Side Settings";
 //set side status
