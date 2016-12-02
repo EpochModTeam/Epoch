@@ -36,6 +36,7 @@ _idc = ctrlIDC _control;
 _text = _control lbText _index;
 _data = _control lbData _index;
 _pic = _control lbPicture _index;
+_val = _control lbValue _index;
 
 _craftingArray = [];
 _craftingArrayNames = [];
