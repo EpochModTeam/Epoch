@@ -123,7 +123,7 @@ if (!local _player) then {
 						if ((_x getVariable["GROUP",""]) == _playerGroup) exitWith {
 							_group = group _x;
 						};
-					}forEach playableUnits;
+					}forEach allPlayers;
 
 					if (isNull _group) then {
 						_group = createGroup west;

@@ -21,7 +21,8 @@ _buttonTXT = "";
 _magCount = 1;
 _interactActions = [];
 _config = (configfile >> "CfgWeapons" >> _data);
-_cfgItemInteractions = (('CfgItemInteractions' call EPOCH_returnConfig) >> _data);
+// _cfgItemInteractions = (('CfgItemInteractions' call EPOCH_returnConfig) >> _data);
+_cfgItemInteractions = ["CfgItemInteractions", _data] call EPOCH_returnConfigV2;
 if (isClass (_config)) then {
     _type = getNumber (_config >> "type");
     _interactOption = getNumber (_cfgItemInteractions >> "interactAction");

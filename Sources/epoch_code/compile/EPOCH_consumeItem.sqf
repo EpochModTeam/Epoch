@@ -19,7 +19,8 @@ private ["_buildClass","_buildingCountLimit","_buildingJammerRange","_canCapacit
 EPOCH_InteractedItem params ["_text","_item","_pic"];
 
 _cfgBaseBuilding = 'CfgBaseBuilding' call EPOCH_returnConfig;
-_cfgItemInteractions = (('CfgItemInteractions' call EPOCH_returnConfig) >> _item);
+_cfgItemInteractions = ["CfgItemInteractions", _item] call EPOCH_returnConfigV2;
+// _cfgItemInteractions = (('CfgItemInteractions' call EPOCH_returnConfig) >> _item);
 
 _interactOption = getNumber(_cfgItemInteractions >> "interactAction");
 _interactAttributes = getArray(_cfgItemInteractions >> "interactAttributes");

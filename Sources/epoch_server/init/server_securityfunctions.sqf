@@ -1273,7 +1273,7 @@ _skn_admincode = compileFinal ("
 							getText (configFile >> 'CfgVehicles' >> typeOf _x >> 'Icon'), _x call _getDmgColor, visiblePosition _x, _size, _size, getDir _x, name _x
 						];
 					};
-				}forEach playableUnits;
+				}forEach allPlayers;
 			};
 			if ("+_skn_tg_map_corpse+") then {
 				_size = (1/ctrlMapScale _display) max 20;
@@ -1382,7 +1382,7 @@ _skn_admincode = compileFinal ("
 		{(_x call "+_skn_getCtrl+") ctrlShow false}forEach[40,41,42,43,50,51,52,60,61,62,63,64,65,66,67,68,69,70,71] };
 		if (getPlayerUID player in "+str _skn_blockedSpawnMenuUID+") then {ctrlEnable [21,false]};
 		ctrlEnable [22,false];
-		(1 call "+_skn_getCtrl+") ctrlSetText format['Players %1 of %2',count playableUnits,playersNumber civilian];
+		(1 call "+_skn_getCtrl+") ctrlSetText format['Players %1 of %2',count allPlayers,playersNumber civilian];
 		(2 call "+_skn_getCtrl+") ctrlSetText format['Epoch Mod Admin Menu by Skaronator.com - Server Uptime: %1h %2min', _hours, _minutes];
 		(5 call "+_skn_getCtrl+") ctrlSetEventHandler ['LBDblClick', '_this call "+_skn_fnc_Spec+"'];
 		(6 call "+_skn_getCtrl+") ctrlSetEventHandler ['LBDblClick', '_this call "+_skn_dbClickMainMenu+"'];
@@ -1980,7 +1980,7 @@ _skn_admincode = compileFinal ("
 		lbclear _ctrl;
 
 		_sorted = [];
-		_unsorted = playableUnits;
+		_unsorted = allPlayers;
 
 		_buttonRange = 10 call "+_skn_getCtrl+";
 		_buttonRange ctrlSetText 'Range';

@@ -23,7 +23,7 @@
 	NOTHING
 */
 //[[[cog import generate_private_arrays ]]]
-private ["_arr","_craftingArray","_craftingArrayNames","_data","_exit","_index","_name","_pic","_text"];
+private ["_container","_craftingArray","_craftingArrayNames","_data","_idc","_index","_pic","_text","_weaponsAndItems"];
 //[[[end]]]
 params ["_control","_index"];
 EPOCH_InteractedItem = [];
@@ -32,24 +32,26 @@ if (_index isEqualType []) then {
   _index = (_index select 0) select 1;
 };
 
+_idc = ctrlIDC _control;
 _text = _control lbText _index;
 _data = _control lbData _index;
 _pic = _control lbPicture _index;
+_val = _control lbValue _index;
 
 _craftingArray = [];
 _craftingArrayNames = [];
 
-// This test is to over come an issue that causes the wrong class selected
-// when more than two classes share the same displayName
+// weapons and items do not return a class so a workaround is used to find the class
 if (_data == "") then {
-  {
-    _name = configName(_x);
-    _exit = false;
-    if !(isNull EPOCH_lastContainer) then {
-        _arr = ((getItemCargo EPOCH_lastContainer) select 0) + [uniform player,vest player,headgear player];
-        _exit = (_name in _arr);
+    _container = switch (_idc) do {
+        case 633: { uniformContainer player };
+        case 638: { vestContainer player };
+        case 632: { EPOCH_targetContainer };
+        case 640: { EPOCH_secondaryContainer };
+        default { backpackContainer player };
     };
-    if (_exit) exitWith {_data = _name};
-  } forEach ("getText (_x >> 'displayName') == _text" configClasses(configFile >> "CfgWeapons"));
+    _weaponsAndItems = ((getWeaponCargo  _container) select 0);
+    _weaponsAndItems append ((getItemCargo _container) select 0);
+    _data = _weaponsAndItems param [_val,""];
 };
 EPOCH_InteractedItem = [_text,_data,_pic];

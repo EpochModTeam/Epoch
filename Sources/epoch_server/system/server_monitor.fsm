@@ -1,11 +1,11 @@
 /*%FSM<COMPILE "F:\Program Files (x86)\Bohemia Interactive\Tools\FSM Editor Personal Edition\scriptedFSM.cfg, Server Monitor">*/
 /*%FSM<HEAD>*/
 /*
-item0[] = {"Init",0,4346,600.000000,-575.000000,700.000000,-525.000000,0.000000,"Init"};
+item0[] = {"Init",0,250,600.000000,-575.000000,700.000000,-525.000000,0.000000,"Init"};
 item1[] = {"_",8,218,600.000000,-500.000000,700.000000,-450.000000,0.000000,""};
 item2[] = {"Process",2,250,600.000000,-350.000000,700.000000,-300.000000,0.000000,"Process"};
 item3[] = {"De_simulate_Vehicle",4,218,750.000000,-225.000000,850.000000,-175.000000,2.000000,"De-simulate" \n "Vehicle Check"};
-item4[] = {"Simulate_Vehicle",4,218,750.000000,-300.000000,850.000000,-250.000000,1.000000,"Simulate" \n "Vehicle Check"};
+item4[] = {"Simulate_Vehicle",4,4314,750.000000,-300.000000,850.000000,-250.000000,1.000000,"Simulate" \n "Vehicle Check"};
 item5[] = {"CMD_queue",4,218,450.000000,-450.000000,550.000000,-400.000000,10.000000,"CMD queue"};
 item6[] = {"Save_Players",4,218,450.000000,-375.000000,550.000000,-325.000000,3.000000,"Save" \n "Players"};
 item7[] = {"Cleanup",4,218,750.000000,-375.000000,850.000000,-325.000000,8.000000,"Cleanup"};
@@ -33,8 +33,8 @@ link16[] = {8,2};
 link17[] = {9,2};
 link18[] = {10,2};
 link19[] = {11,2};
-globals[] = {25.000000,1,0,0,0,640,480,1,3,6316128,1,275.180084,1161.319580,208.497711,-659.879456,898,880,1};
-window[] = {2,-1,-1,-1,-1,838,78,1370,78,3,916};
+globals[] = {0.000000,0,0,0,0,640,480,1,3,6316128,1,275.180084,1161.319580,208.497711,-659.879456,898,854,1};
+window[] = {2,-1,-1,-1,-1,786,-1654,-362,26,3,916};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -328,8 +328,10 @@ class FSM
            "							_activeVehicles pushBack _x;" \n
            "						};" \n
            "					} else {" \n
-           "						diag_log format[""DEBUG: Invalid Vehicle Token, deleted %1"",_x];" \n
-           "						deleteVehicle _x;" \n
+           "						if ((objectCurators _x) isEqualTo []) then {" \n
+           "							diag_log format[""DEBUG: Invalid Vehicle Token, deleted %1"",_x];" \n
+           "							deleteVehicle _x;" \n
+           "						};" \n
            "					};" \n
            "				};" \n
            "			}forEach (_x nearEntities[[""LandVehicle"", ""Ship"", ""Air"", ""Tank""], 300]);" \n
@@ -349,7 +351,7 @@ class FSM
            "			if (_pUID != """") then { _playersTemp pushBack _pUID; };" \n
            "		};" \n
            "	};" \n
-           "}forEach playableUnits;" \n
+           "}forEach allPlayers;" \n
            "_players = _playersTemp;"/*%FSM</ACTION""">*/;
         };
         /*%FSM</LINK>*/

@@ -28,7 +28,7 @@ class CfgEpochClient
     minJammerDistance = 650;
     maxBuildingHeight = 33;
 	buildingCountLimit = 200;		//overall building limit in range of jammer (overridden if "useGroupCountLimits=1")
-	storageCountLimit = 100;		//overall storage limit in range of jammer (triggers only if "splitCountLimits=1" & "useGroupCountLimits=0")	
+	storageCountLimit = 100;		//overall storage limit in range of jammer (triggers only if "splitCountLimits=1" & "useGroupCountLimits=0")
 	splitCountLimits = 0;			//1 = distinguish buildingCountLimit from storageCountLimit (ex.: buildingCountLimit=100, storageCountLimit=100 >> you can build 100 baseparts AND additional 100 storage objects like safes, lockboxes...)
 	useGroupCountLimits = 1;		//1 = enable leader and member counts (doesn´t affect "splitCountLimits")
 	buildingCountLeader = 125;		//ignore if "useGroupCountLimits=0"
@@ -55,7 +55,7 @@ class CfgEpochClient
     Take = "(_this select 1) call EPOCH_interact;_this call EPOCH_UnisexCheck";
     Fired = "_this call EPOCH_fnc_playerFired;";
     InventoryClosed = "if !(EPOCH_arr_interactedObjs isEqualTo[]) then {[EPOCH_arr_interactedObjs] remoteExec['EPOCH_server_save_vehicles', 2]; EPOCH_arr_interactedObjs = [];};";
-    InventoryOpened = "setMousePosition[0.5, 0.5]; call EPOCH_showStats;_this spawn EPOCH_initUI;_container = _this select 1;_lockedNear = false;if (_container isKindOf 'GroundWeaponHolder' || _container isKindOf 'WeaponHolderSimulated') then {{if (locked _x in [2, 3] ||_x getVariable['EPOCH_Locked', false]) exitWith {_lockedNear = true}} forEach (player nearSupplies 10);};if (locked _container in [2, 3] || _container getVariable['EPOCH_Locked', false] || _lockedNear) then {[] spawn {disableSerialization;waitUntil {!isNull findDisplay 602};_display = findDisplay 602;_ctrl_cargo = _display displayCtrl 6401;_ctrl_ground = _display displayCtrl 6321;_ctrl_cargo ctrlEnable  false;ctrlSetFocus _ctrl_ground;ctrlActivate _ctrl_ground;};};";
+    InventoryOpened = "setMousePosition[0.5, 0.5];call EPOCH_showStats;_this spawn EPOCH_initUI;params ['_unit','_container','_sec'];_containerlocked = (locked _container in [2, 3] || _container getVariable['EPOCH_Locked', false]);_seclocked = false;if !(isNull _sec) then {_seclocked = (locked _sec in [2, 3] || _sec getVariable['EPOCH_Locked', false]);};if (_containerlocked || _seclocked) then {[] spawn {disableSerialization;waitUntil {!isNull findDisplay 602};_d = findDisplay 602;_cargo = _d displayCtrl 6401;_ground = _d displayCtrl 6321;_cargo ctrlEnable false;ctrlSetFocus _ground;ctrlActivate _ground;};};";
     Killed = "_this call EPOCH_fnc_playerDeath;";
     HandleRating = "EPOCH_playerKarma = EPOCH_playerKarma + (_this select 1);0";
     HandleDamage = "";

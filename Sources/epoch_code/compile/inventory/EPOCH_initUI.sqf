@@ -29,7 +29,9 @@ private ["_bar","_bar_compare","_color","_colorCompare","_container","_display",
 disableSerialization;
 
 EPOCH_InteractedItem = [];
-EPOCH_lastContainer = _this select 1;
+params ["_unit","_targetContainer","_secondaryContainer"];
+EPOCH_targetContainer = _targetContainer;
+EPOCH_secondaryContainer = _secondaryContainer;
 
 waitUntil {!isNull findDisplay 602};
 _display = (findDisplay 602);
