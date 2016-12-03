@@ -54,9 +54,11 @@ if (_playerKilledScreen isEqualTo "") then {_playerKilledScreen = "TapOut2"};
 if(_doRevenge && player != _killer && (isPlayer _killer || isPlayer (effectiveCommander _killer)))then{_tapDiag = _playerKilledScreen};//TODO: vehicle check may not always be reliable
  
 if (Epoch_canBeRevived) then {
+	setPlayerRespawnTime 600;
     _Epoch_PlayerRespawnTime = 600;
     createDialog _tapDiag;
 } else {
+	setPlayerRespawnTime 15;
     _Epoch_PlayerRespawnTime = 15;
     ["You can be just revived once per life!", 5] call Epoch_message;
 };
