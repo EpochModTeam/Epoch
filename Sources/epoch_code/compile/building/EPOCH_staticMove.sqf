@@ -42,7 +42,7 @@ if (EPOCH_playerEnergy <= 0) exitWith{
 };
 
 // Remove object if not allowed
-if !("" call EPOCH_isBuildAllowed) exitWith{ deleteVehicle _object };
+if !(_object call EPOCH_isBuildAllowed) exitWith{ deleteVehicle _object };
 EPOCH_simulSwap_Lock = true;
 
 _objType = typeOf _object;
@@ -117,7 +117,7 @@ if (_class != "") then {
 		_rejectMove = false;
 		if ((diag_tickTime - _lastCheckTime) > 10) then {
 			_lastCheckTime = diag_tickTime;
-			_rejectMove = !(_objType call EPOCH_isBuildAllowed);
+			_rejectMove = !(_object call EPOCH_isBuildAllowed);
 		};
 		if (_rejectMove) exitWith{
 			deleteVehicle EPOCH_target;
