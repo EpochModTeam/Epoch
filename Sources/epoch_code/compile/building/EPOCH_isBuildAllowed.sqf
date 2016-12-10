@@ -28,8 +28,8 @@ private ["_alljammer","_buildingAllowed","_buildingCountLeader","_buildingCountL
 
 _buildingAllowed = true;
 _ownedJammerExists = false;
-_scl = false;
-_gcl = true;
+_useSplitCountLimits = false;
+_useGroupCountLimits = true;
 _nearestJammer = objNull;
 
 // reject building if in vehicle
@@ -48,8 +48,8 @@ _storageCountPerMember = getNumber(_config >> "storageCountPerMember");
 _minJammerDistance = getNumber(_config >> "minJammerDistance");
 _maxBuildingHeight = getNumber(_config >> "maxBuildingHeight");
 _jammerPerGroup = getNumber(_config >> "jammerPerGroup");
-if(getNumber(_config >> "useGroupCountLimits") == 0)then{_gcl=false};
-if(getNumber(_config >> "splitCountLimits") == 1)then{_scl=true};
+if(getNumber(_config >> "useGroupCountLimits") == 0)then{_useGroupCountLimits=false};
+if(getNumber(_config >> "splitCountLimits") == 1)then{_useSplitCountLimits=true};
 if(_buildingJammerRange == 0)then{_buildingJammerRange = 75};
 if(_buildingCountLimit == 0)then{_buildingCountLimit = 200};
 if(_buildingCountLeader == 0)then{_buildingCountLeader = _buildingCountLimit};
@@ -81,68 +81,57 @@ if !(_jammer isEqualTo []) then {
 				["Building Disallowed: Existing Jammer Signal", 5] call Epoch_message;
 			};
 		} foreach _jammer;
-	} else {
+	} 
+	else {
 		{
 			if (alive _x && (_x distance player) <= _buildingJammerRange) exitWith{
 				_nearestJammer = _x;
 			};
 		} foreach _jammer;
 		if !(isNull _nearestJammer) then {
-			if ((getPosATL player) select 2 < _maxBuildingHeight) then {
-				if ((_nearestJammer getVariable["BUILD_OWNER", "-1"]) in[getPlayerUID player, Epoch_my_GroupUID]) then {
-					_ownedJammerExists = true;
-				} else {
-					_buildingAllowed = false;
-					["Building Disallowed: Frequency Blocked", 5] call Epoch_message;
+			if !((_nearestJammer getVariable["BUILD_OWNER", "-1"]) in[getPlayerUID player, Epoch_my_GroupUID]) exitwith {
+				_buildingAllowed = false;
+				["Building Disallowed: Frequency Blocked", 5] call Epoch_message;
+			};
+			_ownedJammerExists = true;
+			if(_useGroupCountLimits)then{
+				_membercount = 0;
+				if(count Epoch_my_Group > 0)then{
+					_membercount = count (Epoch_my_Group select 3) + count (Epoch_my_Group select 4)
 				};
-				if(_gcl)then{
-					_membercount = 0;
-					if(count Epoch_my_Group > 0)then{_membercount = count (Epoch_my_Group select 3) + count (Epoch_my_Group select 4)}
-				};
-				if(_objType in ["WorkBench_EPOCH","StorageShelf_EPOCH","Tipi_EPOCH","LockBox_EPOCH","Safe_EPOCH","StorageShelf_SIM_EPOCH","LockBox_SIM_EPOCH","Safe_SIM_EPOCH","Workbench_SIM_EPOCH","Tipi_SIM_EPOCH"])then[{
-					if(_scl)then{
-						if(_gcl)then{
-							_storageCountLimit = _storageCountLeader + (_storageCountPerMember * _membercount);
-							if((_storageCountLeader + _storageCountPerMember) > _storageCountLimit)then{_storageCountLimit = _storageCountLeader}
-						};
-						if((count nearestObjects[_nearestJammer,["Buildable_Storage","Constructions_lockedstatic_F",_ghostClass],_buildingJammerRange]) >= _storageCountLimit)then{
-							_buildingAllowed = false;
-							[format["Building Disallowed: Max. %1 Storage Objects",_storageCountLimit],5] call Epoch_message
-						}
-					}else{
-						if(_gcl)then{_buildingCountLimit = _buildingCountLeader + (_buildingCountPerMember * _membercount)};
-						if((count nearestObjects[_nearestJammer,["Buildable_Storage","Constructions_lockedstatic_F","Constructions_static_F","Constructions_foundation_F",_ghostClass],_buildingJammerRange]) >= _buildingCountLimit)then{
-							_buildingAllowed = false;
-							[format["Building Disallowed, Frequency Overloaded: Limit %1",_buildingCountLimit],5] call Epoch_message
-						}
-					}
-				},{
-					//a try to prevent bugusing (TODO: not working for storage objects atm)
-					if((count nearestObjects[_nearestJammer,[_ghostClass],_buildingJammerRange]) >= 2)exitWith{ //setting this too low may not be player-friendly. Recommend: >= 2
+			};
+			if (_useGroupCountLimits) then {
+				_storageCountLimit = _storageCountLeader + (_storageCountPerMember * _membercount);
+				_buildingCountLimit = _buildingCountLeader + (_buildingCountPerMember * _membercount);
+			};
+			if (_useSplitCountLimits) then {
+				if(_objType in ["WorkBench_EPOCH","StorageShelf_EPOCH","Tipi_EPOCH","LockBox_EPOCH","Safe_EPOCH","StorageShelf_SIM_EPOCH","LockBox_SIM_EPOCH","Safe_SIM_EPOCH","Workbench_SIM_EPOCH","Tipi_SIM_EPOCH"]) then {
+					if ((count (nearestObjects[_nearestJammer,["Buildable_Storage","Constructions_lockedstatic_F","LockBox_SIM_EPOCH","Safe_SIM_EPOCH","StorageShelf_SIM_EPOCH","WorkBench_SIM_EPOCH"],_buildingJammerRange]-[_obj])) >= _storageCountLimit) exitwith {
 						_buildingAllowed = false;
-						["Building Disallowed: Frequency Unstable, Wait A Moment",5] call Epoch_message
+						[format["Building Disallowed: Max. %1 Storage Objects",_storageCountLimit],5] call Epoch_message
 					};
-					
-					if(_gcl)then{_buildingCountLimit = _buildingCountLeader + (_buildingCountPerMember * _membercount)};
-					if(_scl)then{
-						if((count nearestObjects[_nearestJammer,["Constructions_static_F","Constructions_foundation_F",_ghostClass],_buildingJammerRange]) >= (_buildingCountLimit +1))then{
-							_buildingAllowed = false;
-							[format["Building Disallowed: Max. %1 Constructions",_buildingCountLimit],5] call Epoch_message
-						}
-					}else{
-						if((count nearestObjects[_nearestJammer,["Buildable_Storage","Constructions_lockedstatic_F","Constructions_static_F","Constructions_foundation_F",_ghostClass],_buildingJammerRange]) >= (_buildingCountLimit +1))then{
-							_buildingAllowed = false;
-							[format["Building Disallowed: Frequency Overloaded: Limit %1",_buildingCountLimit],5] call Epoch_message
-						}
-					}
-				}]
-			}else{
+				}
+				else {
+					if ((count (nearestObjects[_nearestJammer,["Constructions_static_F","Constructions_foundation_F","Const_Ghost_EPOCH"],_buildingJammerRange]-[_obj])) >= _buildingCountLimit) exitwith {
+						_buildingAllowed = false;
+						[format["Building Disallowed: Max. %1 Constructions",_buildingCountLimit],5] call Epoch_message
+					};
+				};
+			}
+			else {
+				if ((count (nearestObjects [_nearestJammer,["Buildable_Storage","Constructions_lockedstatic_F","LockBox_SIM_EPOCH","Safe_SIM_EPOCH","StorageShelf_SIM_EPOCH","WorkBench_SIM_EPOCH","Constructions_static_F","Constructions_foundation_F","Const_Ghost_EPOCH"],_buildingJammerRange]-[_obj])) >= _buildingCountLimit) exitwith {
+					_buildingAllowed = false;
+					[format["Building Disallowed, Frequency Overloaded: Limit %1",_buildingCountLimit],5] call Epoch_message
+				};
+			};
+			if !((getPosATL player) select 2 < _maxBuildingHeight) exitwith {
 				_buildingAllowed = false;
 				["Building Disallowed: Max building height reached",5] call Epoch_message;
 			};
 		};
 	};
-}else{
+}
+else {
 	if (_objType in ["PlotPole_EPOCH", "PlotPole_SIM_EPOCH"]) then {
 		// TODO: rework not ideal to use allmissionobjects
 		_alljammer = allmissionobjects 'PlotPole_EPOCH';
@@ -166,9 +155,8 @@ if (!_ownedJammerExists) then{
 
 	if (_limitNearby > 0) then{
 		// remove current target from objects
-		_objectCount = count (nearestObjects[player, [_staticClass, _simulClass], _buildingJammerRange] - [_obj]);
-		// TODO: not properly limiting simulated objects
-		if (_objectCount >= _limitNearby) then{
+		_objectscount = count (nearestObjects[player, [_staticClass, _simulClass], _buildingJammerRange]-[_obj]);
+		if (_objectscount >= _limitNearby) then{
 			_buildingAllowed = false;
 			[format["Building Disallowed: Limit %1", _limitNearby], 5] call Epoch_message;
 		};
