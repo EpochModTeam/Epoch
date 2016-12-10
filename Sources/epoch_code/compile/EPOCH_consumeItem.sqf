@@ -121,21 +121,23 @@ switch _interactOption do {
 									if (_otherObjects isEqualTo []) then {
 										_object=createVehicle[_buildClass,_pos,[],0,"CAN_COLLIDE"];
 										_object setDir ((getDir player) - 180);
+										[format["Press '%1' to drop object.", "1"], 5] call Epoch_message;
 										if (([player, _item] call BIS_fnc_invRemove) == 1) then {
 											[_object] spawn EPOCH_simulSwap;
 										};
-									} else {
+									}
+									else {
 										["Building Disallowed: Frequency Unstable", 5] call Epoch_message;
 									};
-								} else {
+								} 
+								else {
 									_object=createVehicle[_buildClass,_pos,[],0,"CAN_COLLIDE"];
 									_object setDir ((getDir player) - 180);
+									[format["Press '%1' to drop object.", "1"], 5] call Epoch_message;
 									[_object,_item] spawn EPOCH_staticMove;
 								};
-								// _object spawn EPOCH_countdown;
-								[format["Press '%1' to drop object.", "1"], 5] call Epoch_message;
-
-							} else {
+							}
+							else {
 								["Need Energy", 5] call Epoch_message;
 							};
 						};
