@@ -99,8 +99,6 @@ if !(_jammer isEqualTo []) then {
 				if(count Epoch_my_Group > 0)then{
 					_membercount = count (Epoch_my_Group select 3) + count (Epoch_my_Group select 4)
 				};
-			};
-			if (_useGroupCountLimits) then {
 				_storageCountLimit = _storageCountLeader + (_storageCountPerMember * _membercount);
 				_buildingCountLimit = _buildingCountLeader + (_buildingCountPerMember * _membercount);
 			};
