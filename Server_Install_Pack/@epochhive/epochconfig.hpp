@@ -40,6 +40,22 @@ removevehmagazinesturret[] = {	// Remove these Magazines from the given Turret f
 	{"200Rnd_40mm_G_belt",{0}}
 };
 
+// BaseBuilding
+UseIndestructible = true;			// Enable / Disable Indestructible BaseObjects
+IndestructibleBaseObjects[] =	{	// Can be Names or Classes
+									"Constructions_static_F",
+									"Buildable_Storage",
+									"PlotPole_EPOCH",
+									"LockBox_EPOCH",
+									"Safe_EPOCH"
+								};
+ExceptedBaseObjects[] = 		{	// Not Indestructible, also if in a Class of IndestructibleBaseObjects
+									"CinderWallGarage_EPOCH",
+									"WoodLargeWallDoorL_EPOCH",
+									"WoodLargeWallDoor_EPOCH",
+									"WoodWall4_EPOCH"
+								};
+
 // Traders
 taxRate = 0.1; // controls the price increase for purchases
 starterTraderItems[] = { { "ItemSodaBurst", "meatballs_epoch", "MortarBucket", "CinderBlocks", "VehicleRepair", "CircuitParts", "ItemCorrugated", "PartPlankPack", "ItemRock", "ItemRope", "ItemStick" }, { 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5 } }; // Starter Items for fresh spawned trader first array is classnames second is quantity.
