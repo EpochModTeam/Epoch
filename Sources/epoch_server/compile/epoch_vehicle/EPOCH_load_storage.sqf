@@ -15,6 +15,11 @@
 private ["_inventory","_location","_dir","_textures","_colors","_textureSelectionIndex","_selections","_count","_color","_cfgBaseBuilding","_objTypes","_objQty","_wMags","_wMagsArray","_attachments","_magazineSizeMax","_magazineName","_magazineSize","_qty","_objType","_marker","_class_raw","_damage","_class","_worldspace","_wsCount","_vehicle","_arr","_storageSlotIndex","_vehHiveKey","_response","_diag"];
 params [["_maxStorageLimit",0]];
 
+_serverSettingsConfig = configFile >> "CfgEpochServer";
+_UseIndestructible = [_serverSettingsConfig, "UseIndestructible", false] call EPOCH_fnc_returnConfigEntry;
+_IndestructibleBaseObjects = [_serverSettingsConfig, "IndestructibleBaseObjects", []] call EPOCH_fnc_returnConfigEntry;
+_ExceptedBaseObjects = [_serverSettingsConfig, "ExceptedBaseObjects", []] call EPOCH_fnc_returnConfigEntry;
+
 _diag = diag_tickTime;
 EPOCH_StorageSlots = [];
 for "_i" from 1 to _maxStorageLimit do {
@@ -66,6 +71,16 @@ for "_i" from 1 to _maxStorageLimit do {
 			};
 
 			_vehicle = createVehicle[_class, [0,0,0], [], 0, "CAN_COLLIDE"];
+
+			if (_UseIndestructible) then {
+				if ({_vehicle iskindof _x} count _ExceptedBaseObjects == 0) then {
+					{
+						if (_vehicle iskindof _x) exitwith {
+							_vehicle allowdamage false;
+						};
+					} foreach _IndestructibleBaseObjects;
+				};
+			};
 
 			if (_dir isEqualType []) then {
 				_vehicle setVectorDirAndUp _dir;
