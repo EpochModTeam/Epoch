@@ -41,7 +41,7 @@ removevehmagazinesturret[] = {	// Remove these Magazines from the given Turret f
 };
 
 // BaseBuilding
-UseIndestructible = true;			// Enable / Disable Indestructible BaseObjects
+UseIndestructible = false;			// Enable / Disable Indestructible BaseObjects
 IndestructibleBaseObjects[] =	{	// Can be Names or Classes
 									"Constructions_static_F",
 									"Buildable_Storage",
