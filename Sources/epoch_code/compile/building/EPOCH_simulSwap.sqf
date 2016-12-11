@@ -37,7 +37,7 @@ _isSnap = false;
 if (EPOCH_playerEnergy <= 0) exitWith {
 	["Need Energy", 5] call Epoch_message;
 };
-if !(_objType call EPOCH_isBuildAllowed) exitWith{};
+if !(_object call EPOCH_isBuildAllowed) exitWith{};
 
 EPOCH_simulSwap_Lock = true;
 _return = _object;
