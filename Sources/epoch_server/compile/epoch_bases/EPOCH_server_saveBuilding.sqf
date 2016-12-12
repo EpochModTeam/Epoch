@@ -23,6 +23,10 @@ _playerUID = getPlayerUID _player;
 if (!isNull ropeAttachedTo _vehicle) exitWith{};
 
 _oemType = typeOf _vehicle;
+_serverSettingsConfig = configFile >> "CfgEpochServer";
+_UseIndestructible = [_serverSettingsConfig, "UseIndestructible", false] call EPOCH_fnc_returnConfigEntry;
+_IndestructibleBaseObjects = [_serverSettingsConfig, "IndestructibleBaseObjects", []] call EPOCH_fnc_returnConfigEntry;
+_ExceptedBaseObjects = [_serverSettingsConfig, "ExceptedBaseObjects", []] call EPOCH_fnc_returnConfigEntry;
 _cfgBaseBuilding = 'CfgBaseBuilding' call EPOCH_returnConfig;
 _staticClassConfig = (_cfgBaseBuilding >> _oemType >> "staticClass");
 if (isText _staticClassConfig) then {
@@ -39,7 +43,17 @@ if (isText _staticClassConfig) then {
 			_vehiclePos = getposATL _vehicle;
 
 			_storageObj = [_staticClass,_vehicle] call EPOCH_swapBuilding;
-
+			
+			if (_UseIndestructible) then {
+				if ({_storageObj iskindof _x} count _ExceptedBaseObjects == 0) then {
+					{
+						if (_storageObj iskindof _x) exitwith {
+							_storageObj allowdamage false;
+						};
+					} foreach _IndestructibleBaseObjects;
+				};
+			};
+			
 			if (getNumber(_cfgBaseBuilding >> _staticClass >> "isSecureStorage") == 1) then{
 				_storageObj setVariable["EPOCH_Locked", false, true];
 			};
@@ -73,6 +87,17 @@ if (isText _staticClassConfig) then {
 
 			if (_objSlot != -1) then {
 				_newVehicle = [_vehicle, false] call EPOCH_server_simulSwap;
+
+				if (_UseIndestructible) then {
+					if ({_newVehicle iskindof _x} count _ExceptedBaseObjects == 0) then {
+						{
+							if (_newVehicle iskindof _x) exitwith {
+								_newVehicle allowdamage false;
+							};
+						} foreach _IndestructibleBaseObjects;
+					};
+				};
+
 				_newVehicle setVariable["BUILD_OWNER", _playerUID, true];
 				_newVehicle call EPOCH_saveBuilding;
 			};
