@@ -21,7 +21,7 @@
 
 	Returns:
 	NOTHING
-*/_aiItems
+*/
 disableSerialization;
 //[[[cog import generate_private_arrays ]]]
 private ["_aiItems","_bpck","_config","_filterArray","_filterItems","_filterMagazines","_filterVehicle","_filterWeapons","_index","_isPlayerFilter","_item","_itemCount","_itemIcon","_itemName","_itemOfferCount","_items","_name","_offerArray","_picture","_qty","_qtys","_sizeOut","_slot","_type","_vehicles","_wpn"];
