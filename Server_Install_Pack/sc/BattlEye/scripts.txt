@@ -1,5 +1,5 @@
 //new2
-7 "BIS_fnc_dynamictext" !="\"BIS_fnc_dynamictext\"" !="'BIS_fnc_dynamictext'" !="[_txt,0,0.75*safezoneH+safezoneY,0,0,0,_Layer] spawn bis_fnc_dynamicText;"
+7 "BIS_fnc_dynamictext" !="\"BIS_fnc_dynamictext\"" !="'BIS_fnc_dynamictext'"
 7 forceRespawn !="ForceRespawnDuration" !="reviveHandleForceRespawnAction" !="forcerespawn player;"
 7 setFriend
 7 setAmmo
