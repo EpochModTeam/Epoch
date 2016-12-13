@@ -21,22 +21,18 @@ switch (_command) do {
 	case 'kick': {
 		_playerUID = _param1;
 		if (_playerUID isEqualType objNull) then{
-			if (!isNull(_playerUID)) then{
-				_playerUID = getPlayerUID _playerUID;
-			};
+			_playerUID = getPlayerUID _playerUID;
 		};
-		if (_playerUID != '') then{
+		if !(_playerUID isEqualTo '') then{
 			'epochserver' callExtension format['911|%1|%2', _playerUID, _param2];
 		};
 	};
 	case 'ban': {
 		_playerUID = _param1;
 		if (_playerUID isEqualType objNull) then{
-			if (!isNull(_playerUID)) then{
-				_playerUID = getPlayerUID _playerUID;
-			};
+			_playerUID = getPlayerUID _playerUID;
 		};
-		if (_playerUID != '') then{
+		if !(_playerUID isEqualTo '') then{
 			'epochserver' callExtension format['921|%1|%2|%3', _playerUID, _param2, _param3];
 		};
 	};

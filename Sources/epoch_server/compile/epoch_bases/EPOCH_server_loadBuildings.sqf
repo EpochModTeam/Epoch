@@ -14,6 +14,10 @@
 */
 
 _maxTTL = parseNumber EPOCH_expiresBuilding;
+_serverSettingsConfig = configFile >> "CfgEpochServer";
+_UseIndestructible = [_serverSettingsConfig, "UseIndestructible", false] call EPOCH_fnc_returnConfigEntry;
+_IndestructibleBaseObjects = [_serverSettingsConfig, "IndestructibleBaseObjects", []] call EPOCH_fnc_returnConfigEntry;
+_ExceptedBaseObjects = [_serverSettingsConfig, "ExceptedBaseObjects", []] call EPOCH_fnc_returnConfigEntry;
 _cfgEpochClient = 'CfgEpochClient' call EPOCH_returnConfig;
 _cfgBaseBuilding = 'CfgBaseBuilding' call EPOCH_returnConfig;
 _buildingJammerRange = getNumber(_cfgEpochClient >> "buildingJammerRange");
@@ -74,6 +78,15 @@ for "_i" from 0 to _this do {
 		if (isClass (configFile >> "CfgVehicles" >> _class) && (_damage < 1) && !(_class isKindOf 'Constructions_lockedstatic_F')) then {
 
 			_baseObj = createVehicle [_class, [0,0,0], [], 0, "CAN_COLLIDE"];
+			if (_UseIndestructible) then {
+				if ({_baseObj iskindof _x} count _ExceptedBaseObjects == 0) then {
+					{
+						if (_baseObj iskindof _x) exitwith {
+							_baseObj allowdamage false;
+						};
+					} foreach _IndestructibleBaseObjects;
+				};
+			};
 			_baseObj setVectorDirAndUp _worldspace;
 			_baseObj setposATL _location;
 
