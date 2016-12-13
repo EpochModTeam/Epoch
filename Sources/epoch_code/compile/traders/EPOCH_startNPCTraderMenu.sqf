@@ -22,4 +22,3 @@ if (alive _target) then {
 		lbSetCurSel[42101, 0];
 	};
 };
- 
