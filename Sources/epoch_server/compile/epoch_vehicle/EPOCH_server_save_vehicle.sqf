@@ -17,7 +17,7 @@ params [["_vehicle",objNull]];
 
 if (!isNull _vehicle) then {
 
-	// if (!alive _vehicle) exitWith {diag_log format["DEBUG DEAD VEHICLE SKIPPED SAVE: %1 %2", _vehicle]};
+	if (!alive _vehicle) exitWith {diag_log format["DEBUG DEAD VEHICLE SKIPPED SAVE: %1 %2", _vehicle]};
 	_vehSlot = _vehicle getVariable["VEHICLE_SLOT", "ABORT"];
 	if (_vehSlot != "ABORT") then {
 
