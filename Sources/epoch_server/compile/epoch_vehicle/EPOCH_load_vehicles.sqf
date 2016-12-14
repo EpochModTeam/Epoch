@@ -206,7 +206,8 @@ for "_i" from 1 to _maxVehicleLimit do {
 								};
 							} forEach _objTypes;
 						} forEach (_arr select 5);
-						// remove and add back magazines works for armed trucks but not helis ATM
+
+						// remove and add back magazines
 						if !((_arr select 6) isequalto []) then {
 							if ((_arr select 6 select 0) isequaltype true) then {
 								{
@@ -223,6 +224,7 @@ for "_i" from 1 to _maxVehicleLimit do {
 								{_vehicle addMagazine _x}count (_arr select 6);
 							};
 						};
+
 						// set damage and hitpoints
 						_vehicle setDamage _damage;
 						_allHitpoints = getAllHitPointsDamage _vehicle;
