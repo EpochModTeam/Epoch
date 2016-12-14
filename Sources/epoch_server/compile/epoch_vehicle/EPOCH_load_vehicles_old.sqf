@@ -243,19 +243,6 @@ for "_i" from 1 to _maxVehicleLimit do {
 						};
 					};
 
-					// turrets
-					/*
-					_mags = _vehicle magazinesTurret [0];
-					{
-						_object removeMagazinesTurret [_x, [0]];
-					} forEach _mags;
-
-					_mags = _vehicle magazinesTurret [-1];
-					{
-						_object removeMagazinesTurret [_x, [-1]];
-					} forEach _mags;
-					*/
-
 					if (EPOCH_DEBUG_VEH) then {
 						_marker = createMarker [str(_location) , _location];
 						_marker setMarkerShape "ICON";
@@ -267,9 +254,6 @@ for "_i" from 1 to _maxVehicleLimit do {
 					if (_simulationHandler) then{
 						_vehicle enableSimulationGlobal false;
 					};
-
-
-
 				};
 			};
 		};
