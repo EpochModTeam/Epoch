@@ -45,6 +45,7 @@ if !(alive player && alive _playerObject && !isPlayer _playerObject) then {
         _prevPlayerObjectect = player;
 
         // wait for loadAbs to sync
+        waitUntil {_loadAbs isEqualTo (loadAbs _playerObject)};
 
         // switch to new playerObject
         selectPlayer _playerObject;
