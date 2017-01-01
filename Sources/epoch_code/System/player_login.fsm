@@ -207,7 +207,7 @@ class FSM
                          "};" \n
                          "" \n
                          "_finalPlayerObjectCheck = {" \n
-                         "	(_mass == (loadAbs _playerObject))" \n
+                         "	(_mass isEqualTo (loadAbs _playerObject))" \n
                          "};" \n
                          "" \n
                          "EPOCH_loginFSM = _thisFSM;" \n

@@ -265,7 +265,7 @@ if (!local _player) then {
 				};
 
 				// send to player
-				[_newPlyr, _token] remoteExec ['EPOCH_clientRevive',_player];
+				[_newPlyr, _token, loadAbs _newPlyr] remoteExec ['EPOCH_clientRevive',_player];
 			};
 		};
 	};
