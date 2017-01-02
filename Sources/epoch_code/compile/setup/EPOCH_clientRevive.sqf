@@ -34,7 +34,7 @@ params [
 if (isNull _playerObject) exitWith { diag_log "EPOCH-DEBUG: New Player Object was Null cannot revive." };
 if !(alive player && alive _playerObject && !isPlayer _playerObject) then {
 
-    // reveal new player object (to hopefully propigate info faster).
+    // reveal new player object (to hopefully propagate info faster).
     player reveal _playerObject;
 
     // spawn a thread to wait for loadAbs to sync before using selectPlayer
