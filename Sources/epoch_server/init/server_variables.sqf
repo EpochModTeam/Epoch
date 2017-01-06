@@ -70,7 +70,7 @@ EPOCH_fnc_returnConfigEntry = {
 		_config = (_this select 0) >> (_this select 1);
 		_varData = switch (typeName _defaultData) do {
 			case "SCALAR": {if (isNumber (_config)) then { getNumber _config } else {_defaultData} };
-			case "BOOL": {if (isText (_config)) then { (getText _config) isEqualTo "true" } else {_defaultData} };
+			case "BOOL": {if (isText (_config)) then {(getText _config) isEqualTo "true"} else {if (isNumber (_config)) then {(getNumber _config) isEqualTo 1} else {_defaultData}}};
 			case "ARRAY": {if (isArray (_config)) then { getArray _config } else {_defaultData} };
 			case "STRING": {if (isText (_config)) then { getText _config } else {_defaultData} };
 			default {_defaultData};

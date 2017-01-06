@@ -17,7 +17,7 @@ params [["_vehicle",objNull]];
 
 if (!isNull _vehicle) then {
 
-	// if (!alive _vehicle) exitWith {diag_log format["DEBUG DEAD VEHICLE SKIPPED SAVE: %1 %2", _vehicle]};
+	if (!alive _vehicle) exitWith {diag_log format["DEBUG DEAD VEHICLE SKIPPED SAVE: %1 %2", _vehicle]};
 	_vehSlot = _vehicle getVariable["VEHICLE_SLOT", "ABORT"];
 	if (_vehSlot != "ABORT") then {
 
@@ -95,7 +95,7 @@ if (!isNull _vehicle) then {
 		];
 		_colorSlot = _vehicle getVariable ["VEHICLE_TEXTURE",0];
 
-		_VAL = [typeOf _vehicle,[(getposATL _vehicle call EPOCH_precisionPos),vectordir _vehicle,vectorup _vehicle],damage _vehicle,_hitpoints,fuel _vehicle,_inventory,magazinesAmmo _vehicle,_colorSlot];
+		_VAL = [typeOf _vehicle,[(getposATL _vehicle call EPOCH_precisionPos),vectordir _vehicle,vectorup _vehicle],damage _vehicle,_hitpoints,fuel _vehicle,_inventory,[true,magazinesAllTurrets _vehicle],_colorSlot];
 		["Vehicle", _vehHiveKey, EPOCH_expiresVehicle, _VAL] call EPOCH_fnc_server_hiveSETEX;
 	};
 };

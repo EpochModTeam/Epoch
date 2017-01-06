@@ -225,22 +225,23 @@ for "_i" from 1 to _maxVehicleLimit do {
 						} forEach _objTypes;
 					} forEach (_arr select 5);
 
-					// remove and add back magazines works for armed trucks but not helis ATM
-					{_vehicle removeMagazineGlobal _x}count (magazines _vehicle);
-					{_vehicle addMagazine _x}count (_arr select 6);
-
-					// turrets
-					/*
-					_mags = _vehicle magazinesTurret [0];
-					{
-						_object removeMagazinesTurret [_x, [0]];
-					} forEach _mags;
-
-					_mags = _vehicle magazinesTurret [-1];
-					{
-						_object removeMagazinesTurret [_x, [-1]];
-					} forEach _mags;
-					*/
+					// remove and add back magazines
+					if !((_arr select 6) isequalto []) then {
+						if ((_arr select 6 select 0) isequaltype true) then {
+							{
+								_vehicle removeMagazinesTurret [_x select 0, _x select 1];
+							} foreach magazinesAllTurrets _vehicle;
+							{
+								if ((_x select 2) > 0) then {
+									_vehicle addMagazineTurret [_x select 0,_x select 1,_x select 2];
+								};
+							} foreach (_arr select 6 select 1);
+						}
+						else {
+							{_vehicle removeMagazineGlobal _x}count (magazines _vehicle);
+							{_vehicle addMagazine _x}count (_arr select 6);
+						};
+					};
 
 					if (EPOCH_DEBUG_VEH) then {
 						_marker = createMarker [str(_location) , _location];
@@ -253,9 +254,6 @@ for "_i" from 1 to _maxVehicleLimit do {
 					if (_simulationHandler) then{
 						_vehicle enableSimulationGlobal false;
 					};
-
-
-
 				};
 			};
 		};

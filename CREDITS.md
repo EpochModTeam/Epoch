@@ -10,25 +10,26 @@ Epoch Server DB extension (DLL / so)
 Epoch Assets Mod Configs - Custom Units, Vehicles, Weapons, Items and more!
 
 #### Developers
-* [Aaron Clark ([VB]AWOL)](http://epochmod.com): Concept, Code, Configs, Textures - [x] Active
-* [Kenneth Bente (Axle)](www.twitch.tv/axles): Tester, Models - [ ] Active
-* [Paul Tomany (Sequisha)](https://www.twitch.tv/sequisha): Models, Textures - [ ] Active
-* [Andrew Gregory (Axeman)](http://thefreezer.co.uk): AI Code - [x] Active
-* [Raimonds Virtoss (Raymix)](https://www.twitch.tv/raymich): UI Code - [x] Active
-* [Florian Kinder (Fank)](https://github.com/Fank): Code - [ ] Active
-* [Denis Erygin (devd)](https://github.com/denisio): Linux Code Support - [ ] Active
-* [Darren Harrison (Kiory)](https://www.twitch.tv/kiory123): Models, Textures, Configs - [ ] Active
-* [Paden Sturtevant (SteamPunkGears)](https://www.twitch.tv/steampunkgears): Models, Textures - [ ] Active
-* [Niklas Wagner (Skaronator)](https://skaronator.com): Code - [ ] Active
-* [Damian Clark ([VB]GREEN)](http://epochmod.com): Graphics - [ ] Active
+* [Aaron Clark ([VB]AWOL)](http://epochmod.com): Concept, Code, Configs, Textures
+* [Kenneth Bente (Axle)](www.twitch.tv/axles): Tester, Models
+* [Paul Tomany (Sequisha)](https://www.twitch.tv/sequisha): Models, Textures
+* [Damian Clark ([VB]GREEN)](http://epochmod.com): Graphics
+* [Andrew Gregory (Axeman)](http://thefreezer.co.uk): AI Code
+* [Raimonds Virtoss (Raymix)](https://www.twitch.tv/raymich): UI Code
+* [Darren Harrison (Kiory)](https://www.twitch.tv/kiory123): Models, Textures, Configs
+* [Niklas Wagner (Skaronator)](https://skaronator.com): Code
+* [Florian Kinder (Fank)](https://github.com/Fank): Code
+* [Denis Erygin (devd)](https://github.com/denisio): Linux Code Support
+* [Paden Sturtevant (SteamPunkGears)](https://www.twitch.tv/steampunkgears): Models, Textures
+* [Dan Dalsted (OrangeSherbet)](https://www.twitch.tv/OrangeSherbet): Tester, Videos, Wiki Editor
 
-#### Contributors
-
-* [Dan (OrangeSherbet)](https://www.twitch.tv/OrangeSherbet): Tester, Videos, Wiki Editor
+#### Top Contributors
 * [HeMan](https://github.com/Ignatz-HeMan)
+* [$p4rkY](https://github.com/SPKcoding)
+* [82ndab-Bravo17](https://github.com/82ndab-Bravo17) - http://www.the82ndab.net
 * [Robio](https://github.com/RC-Robio)
 * [Poulmba](https://www.youtube.com/user/poulmba): Wiki Editor, Tester
-* Richie: Map Support, Forum Moderator
+* [Richie](http://uk-gaming-zone.co.uk): Map Support, Forum Moderator
 * [Tobias Solem](http://whatthepoch.com/): Tester
 
 #### Special Thanks!

@@ -258,7 +258,7 @@ EPOCH_server_disconnect = compileFinal("
 ");
 
 EPOCH_server_movePlayer = compileFinal("
-params [['_playerObj',objNull,[_playerObj]],'_pos'];
+params [['_playerObj',objNull,[objNull]],['_pos',[],[[]]]];
 if !(isNull _playerObj) then {
 	"+_skn_antiTeleportPVC+" = true;
 	(owner _playerObj) publicVariableClient '"+_skn_antiTeleportPVC+"';
@@ -271,7 +271,7 @@ if !(isNull _playerObj) then {
 ");
 
 EPOCH_server_teleportCheck = compileFinal("
-params [['_playerObj',objNull,[_playerObj]],'_allow'];
+params [['_playerObj',objNull,[objNull]],'_allow'];
 if !(isNull _playerObj) then {
 	"+_skn_antiTeleportPVC+" = _allow;
 	(owner _playerObj) publicVariableClient '"+_skn_antiTeleportPVC+"';

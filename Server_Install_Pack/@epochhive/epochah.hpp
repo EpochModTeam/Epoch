@@ -1,8 +1,8 @@
 // Anti Hack
-antihack_Enabled = true; // built-in Anti-Hack
+antihack_Enabled = "true"; // built-in Anti-Hack
 antihack_maxTravelDistance = 30; // anti-teleport max travel distance
 antihack_TPcenterDistance = 30; // anti-teleport distance from start
-antihack_cfgPatchesCheck = true; // cfgPatches (AddOn Check)
+antihack_cfgPatchesCheck = "true"; // cfgPatches (AddOn Check)
 antihack_PVSPrefix = "EPAH_"; // used to help whitelist pveh variables in BE without BEC and watchdog, leave blank to use no prefix.
 antihack_cfgPatchesMode[] = {2}; // 0 == BAN - 1 = LOG, 2 = KICK
 antihack_ahInitAuthCfg[] = {0,180}; // 0 == BAN - 1 = LOG, 60 = ban or log if anti hack is not started in 180 seconds
@@ -24,7 +24,7 @@ antihack_checkFiles[] = { //script check, leave it blank to disable it
 	{"epoch_code\compile\setup\EPOCH_clientRespawn.sqf", "EPOCH_clientRespawn"},
 	{"epoch_code\compile\interface_event_handlers\EPOCH_KeyDown.sqf", "EPOCH_KeyDown"}
 };
-antihack_addActionCheck = true; // false to disable addAction checks
+antihack_addActionCheck = "true"; // false to disable addAction checks
 adminMenu_Owner[] = {};
 adminMenu_OwnerSetting[] = {
 	"ESP-PLAYER",

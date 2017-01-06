@@ -206,9 +206,24 @@ for "_i" from 1 to _maxVehicleLimit do {
 								};
 							} forEach _objTypes;
 						} forEach (_arr select 5);
-						// remove and add back magazines works for armed trucks but not helis ATM
-						{_vehicle removeMagazineGlobal _x}count (magazines _vehicle);
-						{_vehicle addMagazine _x}count (_arr select 6);
+
+						// remove and add back magazines
+						if !((_arr select 6) isequalto []) then {
+							if ((_arr select 6 select 0) isequaltype true) then {
+								{
+									_vehicle removeMagazinesTurret [_x select 0, _x select 1];
+								} foreach magazinesAllTurrets _vehicle;
+								{
+									if ((_x select 2) > 0) then {
+										_vehicle addMagazineTurret [_x select 0,_x select 1,_x select 2];
+									};
+								} foreach (_arr select 6 select 1);
+							}
+							else {
+								{_vehicle removeMagazineGlobal _x}count (magazines _vehicle);
+								{_vehicle addMagazine _x}count (_arr select 6);
+							};
+						};
 
 						// set damage and hitpoints
 						_vehicle setDamage _damage;

@@ -14,7 +14,7 @@
 */
 class CfgSecConf
 {
-    debug = false;
+    debug = "false";
 
     class remoteExecClient{
         functions[] = {"bankBalance", "resetGroup", "groupUpdate", "groupUidUpdate", "healPlayer","tradeComplete"};
@@ -28,7 +28,7 @@ class CfgSecConf
     };
 
     class learning {
-        mode = false; // true = only trust uids below, false = trust everyone (use only with a passworded server and trusted players)
+        mode = "false"; // true = only trust uids below, false = trust everyone (use only with a passworded server and trusted players)
         trustedUsers[] = {};
     };
 
