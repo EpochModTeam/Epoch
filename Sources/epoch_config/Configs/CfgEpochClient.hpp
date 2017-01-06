@@ -14,7 +14,7 @@
 /*[[[cog from arma_config_tools import *; json_to_arma()]]]*/
 class CfgEpochClient
 {
-    epochVersion = "0.4.0.0";
+    epochVersion = "0.5.0.0";
     sapperRngChance = 100;
     droneRngChance = 100;
 	buildingNearbyMilitary = 0;
