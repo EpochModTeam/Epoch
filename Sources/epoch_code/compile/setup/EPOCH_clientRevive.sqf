@@ -42,7 +42,7 @@ if !(alive player && alive _playerObject && !isPlayer _playerObject) then {
         params ["_playerObject","_personalToken","_loadAbs"];
 
         // get current player object
-        _prevPlayerObjectect = player;
+        _prevPlayerObject = player;
 
         // wait for loadAbs to sync
         waitUntil {_loadAbs isEqualTo (loadAbs _playerObject)};
