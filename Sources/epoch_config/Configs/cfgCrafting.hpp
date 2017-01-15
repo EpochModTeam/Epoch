@@ -35,51 +35,65 @@ class CfgCrafting
 {
     DeveloperMode = 0;
     colorScheme[] = {"\x\addons\a3_epoch_code\Data\UI\crafting\cancel.paa","\x\addons\a3_epoch_code\Data\UI\crafting\craft.paa","\x\addons\a3_epoch_code\Data\UI\crafting\close.paa",{"Recipes",{0,0,0,0.8}},{"Ingredients",{0,0,0,0.8}},{"Preview",{0.76,0.5,0.07,0.8}},{"Resources",{0,0,0,0.8}},{"Description",{0,0,0,0.8}},{" -- Requires -- ",{0.99,0.53,0.03,1}},{" -- Used in -- ",{0.99,0.53,0.03,1}},{0,1,0,1},{0,1,0,1},{1,1,0,1},{1,0,0,1},{1,1,1,1},{0,0,0,0.1},{0,0,0,1},{0,0,0,0},{0,0,0,0},{0,0,0,0},{0.76,0.5,0.07,0.8},{0,0,0,0.3},"#FFFFFF",{1,0.6,0.01,1}};
-    class Default
-    {
-        craftTime = 1;
-        recipe[] = {};
-        nearby[] = {};
-        usedIn[] = {};
-        previewPosition[] = {0.8125,1,0.285};
-        previewScale = 1;
-        previewVector = 0;
-        priority = 0;
-        type = 0;
-        descriptionFull = "";
-    };
-    class WeaponHolder : Default
-    {
-        priority = 0;
-        type = 1;
-        offset[] = {0,1,0};
-        craftTime = 10;
-        descriptionFull = "Demo: Can be used if player's inventory space is an issue";
-    };
-    class Vehicle : Default
-    {
-        priority = 0;
-        type = 2;
-        offset[] = {0,5,0};
-        craftTime = 10;
-        descriptionFull = "Demo: Should be used for vehicles only";
-    };
-    class Kit : Default
-    {
-        priority = 1;
-        descriptionFull = "Base building material";
-        craftTime = 4;
-    };
-    class Item : Default
-    {
-        priority = 2;
-        craftTime = 2;
-    };
-    class Part : Default
-    {
-        priority = 3;
-        descriptionFull = "<t color='#FD7F30'>This item has no recipe, but is a part used for other recipes</t>";
-    };
+    /** --------- Don't edit --------- **/
+	class Default //className, any object or item
+	{
+		craftTime = 1; //time it takes to craft
+
+		recipe[] = {}; //nested arrays, {{"item", 1}};
+		nearby[] = {}; //nearby requirements - fire, water source, object
+		usedIn[] = {}; //item is an ingredient
+
+		previewPosition[] = {0.8125,1,0.285}; //XzY
+		previewScale = 1;
+		previewVector = 0; //vector rotation multiplier
+
+		priority = 0; //Recipe list priority, items with 0 are on top followed by order in config file.
+		type = 0; //After crafting, item is added: [0 - to inventory], [1 - in weapon holder], [2 - as vehicle]
+		descriptionFull = ""; //Structured text, added on new line after descriptionShort
+
+		/** --------- Config Overrides --------- **/
+		//displayName = "";
+		//picture = "";
+		//descriptionShort = "";
+		//model = "\x\addons\a3_epoch_assets\models\logo.p3d";
+	};
+
+	/** --------- Main templates --------- **/
+	class WeaponHolder: Default //Placed inside weaponholder in front of player (?)
+	{
+		priority = 0;
+		type = 1;
+		offset[] = {0,1,0}; //local space
+		craftTime = 10;
+		descriptionFull = "Demo: Can be used if player's inventory space is an issue";
+	};
+	class Vehicle: Default //Spawned in front of player (?)
+	{
+		priority = 0;
+		type = 2;
+		offset[] = {0,5,0}; //local space
+		craftTime = 10;
+		descriptionFull = "Demo: Should be used for vehicles only";
+	};
+	class Kit: Default //base building kits gets higher priority on the list
+	{
+		priority = 1;
+		descriptionFull = "Base building material";
+		craftTime = 4;
+	};
+	class Item: Default //Goes into inventory
+	{
+		priority = 2;
+		craftTime = 2;
+	};
+	class Part: Default //Looted part - an ingredient for other items, can't be crafted
+	{
+		priority = 3;
+		descriptionFull = "<t color='#FD7F30'>This item has no recipe, but is a part used for other recipes</t>";
+	};
+
+	/** --------- RECIPES BELOW --------- **/
     class ItemCoolerE : Part
     {
         usedIn[] = {"ItemCooler0","ItemCooler1","ItemCooler2","ItemCooler3","ItemCooler4"};
@@ -215,7 +229,7 @@ class CfgCrafting
     };
     class ItemRock : Part
     {
-        usedIn[] = {"KitFirePlace","MeleeMaul","CrudeHatchet"};
+        usedIn[] = {"KitFirePlace","MeleeMaul","CrudeHatchet","MortarBucket"};
         previewPosition[] = {0.796998,1,0.35};
         previewScale = 1.3;
     };
@@ -284,9 +298,11 @@ class CfgCrafting
         previewPosition[] = {0.800064,1,0.25};
         previewScale = 0.3;
     };
-    class MortarBucket : Part
+    class MortarBucket : Item
     {
         usedIn[] = {"KitFoundation","KitCinderWall","KitHesco3"};
+        nearby[] = {{"Fire","","fire",{1,{"ALL"}},3,1,1,0},{"Workbench","","workbench",{1,{"WorkBench_EPOCH"}},3,1,0,1}};
+        recipe[] = {{"ItemRock",12},{"water_epoch",2}};
         previewPosition[] = {0.799442,1,0.426761};
         previewScale = 0.6;
         previewVector = 0;
@@ -636,7 +652,7 @@ class CfgCrafting
     };
     class water_epoch : Item
     {
-        usedIn[] = {"clean_water_epoch"};
+        usedIn[] = {"clean_water_epoch", "MortarBucket"};
         nearby[] = {{"Water source","","water",{2,{"water"}},3,1,0,0}};
         recipe[] = {"emptyjar_epoch"};
         previewPosition[] = {0.807346,1,0.43035};
