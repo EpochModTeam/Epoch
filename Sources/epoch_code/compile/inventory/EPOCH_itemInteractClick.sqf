@@ -49,7 +49,7 @@ if !(_interactActions isEqualTo []) then {
 };
 // ammo repack
 if (_magCount > 1) then {
-    _button_texts pushBack ["REPACK"];
+    _button_texts pushBack ["REPACK","[0] call EPOCH_consumeItem;"];
 };
 
 _config = 'CfgCrafting' call EPOCH_returnConfig;
