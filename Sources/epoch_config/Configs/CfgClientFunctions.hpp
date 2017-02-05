@@ -82,6 +82,8 @@ class CfgClientFunctions
         {
             class getInMan {};
             class getOutMan {};
+            class InventoryClosed {};
+            class InventoryOpened {};
         };
         class setup
         {
@@ -164,6 +166,21 @@ class CfgClientFunctions
             class maxArmorInit {};
             class initUI {};
             class refeshUI {};
+        };
+        class customs
+        {
+            file = "epoch_code\customs";
+            class custom_EH_FiredMan {};
+            class custom_EH_GetInMan {};
+            class custom_EH_GetOutMan {};
+            class custom_EH_InventoryClosed {};
+            class custom_EH_InventoryOpened {};
+            class custom_EH_KeyDown {};
+            class custom_EH_KeyUp {};
+            class custom_EH_Killed {};
+            class custom_EH_Put {};
+            class custom_EH_Take {};
+            class custom_OnEachFrame {};
         };
         class messaging
         {
