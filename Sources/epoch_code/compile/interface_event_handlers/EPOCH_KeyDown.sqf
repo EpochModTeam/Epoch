@@ -32,6 +32,9 @@ params ["_display","_dikCode","_shift","_ctrl","_alt"];
 
 _handled = false;
 
+_this call Epoch_custom_EH_KeyDown;
+if (_handled) exitWith{ true };
+
 if !(alive player) exitWith{ false };
 
 EPOCH_doRotate = false;
