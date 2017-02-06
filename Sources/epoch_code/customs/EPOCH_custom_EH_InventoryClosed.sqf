@@ -4,7 +4,7 @@
     Contributors: [Ignatz] He-Man
 
 	Description:
-	Custom A3 Epoch Take Eventhandler
+	Custom A3 Epoch InventoryClosed Eventhandler
 
     Licence:
     Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
