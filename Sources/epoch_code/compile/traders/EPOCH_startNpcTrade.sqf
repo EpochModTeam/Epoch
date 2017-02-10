@@ -25,7 +25,6 @@
 private ["_addWeaponToHands","_arrayIn","_arrayOut","_config","_current_crypto","_errorMsg","_item","_itemTax","_itemWorth","_sizeOut","_tax","_type","_vehSlot","_vehicle","_vehicles"];
 //[[[end]]]
 
-if (!isNil "EPOCH_TRADE_COMPLETE") exitWith {};
 if (!isNil "EPOCH_TRADE_STARTED") exitWith{};
 if (isNull _this) exitWith{};
 
@@ -119,74 +118,5 @@ if (alive _this) then {
 
 		// close menu
 		closeDialog 0;
-
-		[_arrayIn, _arrayOut] spawn{
-
-			waitUntil{ uiSleep 0.1; !isNil "EPOCH_TRADE_COMPLETE" };
-
-			// SOLD ITEMS ARRAY
-			if !((EPOCH_TRADE_COMPLETE select 0) isEqualTo[]) then {
-				if ((EPOCH_TRADE_COMPLETE select 0) isEqualTo(_this select 0)) then {
-					['Items Sold', 5] call Epoch_message;
-				}
-				else {
-					['Failed To Sell Items', 5] call Epoch_message;
-				};
-			};
-
-			// PURCHASED ITEMS ARRAY
-			if !((EPOCH_TRADE_COMPLETE select 1) isEqualTo[]) then {
-				if ((EPOCH_TRADE_COMPLETE select 1) isEqualTo(_this select 1)) then {
-
-					_errorMsg = 'Items Purchased: ';
-					// add purchased items
-					{
-						if ([_x, "CfgWeapons"] call EPOCH_fnc_isAny) then {
-							_errorMsg = _errorMsg + format["%1, ", getText(configfile >> "CfgWeapons" >> (_x) >> "displayName")];
-							_type = getNumber(configfile >> "CfgWeapons" >> (_x) >> "type");
-							_addWeaponToHands = false;
-							switch (_type) do {
-								case 1: {
-									if (primaryWeapon player == "") then {
-										_addWeaponToHands = true;
-									};
-								};
-								case 4: {
-									if (secondaryWeapon player == "") then {
-										_addWeaponToHands = true;
-									};
-								};
-								case 2: {
-									if (handgunWeapon player == "") then {
-										_addWeaponToHands = true;
-									};
-								};
-							};
-							if (_addWeaponToHands) then {
-								player addWeapon _x;
-							}
-							else {
-								_x call EPOCH_fnc_addItemOverflow;
-							};
-						} else {
-							if ([_x, "CfgMagazines"] call EPOCH_fnc_isAny) then {
-								_errorMsg = _errorMsg + format["%1, ", getText(configfile >> "CfgMagazines" >> (_x) >> "displayName")];
-								_x call EPOCH_fnc_addItemOverflow;
-							} else {
-								_errorMsg = _errorMsg + format["%1, ", getText(configfile >> "CfgVehicles" >> (_x) >> "displayName")];
-							};
-						};
-					} forEach(_this select 1);
-
-					[_errorMsg, 5] call Epoch_message;
-				}
-				else {
-					['Failed To Purchase Items', 5] call Epoch_message;
-				};
-			};
-
-			EPOCH_TRADE_COMPLETE = nil;
-			EPOCH_TRADE_STARTED = nil;
-		};
 	};
 };

@@ -25,7 +25,8 @@ antagonistChancePDeath = 0.33; //33% chance when player was killed from a other 
 antagonistChanceLoot = 0.09; //9% chance when player click "SEARCH" on a loot object
 
 // Player Related
-cloneCost = 100; // debt incurred on player death
+cloneCost = 100; 					// debt incurred on player death
+MaxBankDebitforTrade = -50000		// If Player has less money on Bank, Crypto from Trade goes directly to Bank instead to Player
 
 // vehicles - Max vehicle slots is calculated from per vehicle limits below. Warning! Higher the number lower the performance.
 simulationHandlerOld = "false"; // When enabled this feature disables simulation on vehicles that are not nea players. Can help improve client fps at the cost of server fps.

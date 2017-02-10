@@ -60,6 +60,7 @@ class CfgClientFunctions
         };
         class traders
         {
+            class NpcTrade_return {};
             class startInteract {};
             class startInteractNPC {};
             class npcTraderAdd {};
