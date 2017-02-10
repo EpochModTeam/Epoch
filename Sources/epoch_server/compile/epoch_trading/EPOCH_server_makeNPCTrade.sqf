@@ -138,7 +138,6 @@ if (_slot != -1) then {
 					_itemsOut = [];
 					_SkipOut = true;
 				};
-				['Bank',_bankBalance,'set'] remoteexec ['Ignatz_Client_PlayerStatsUpdate',_player];
 			};
 		};
 
