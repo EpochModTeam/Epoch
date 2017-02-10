@@ -71,16 +71,3 @@ if !(_message isequalto "") then {
 };
 
 EPOCH_TRADE_STARTED = nil;
-
-// Ignatz ...
-if (isnil 'Ignatz_LastTrade') then {
-	Ignatz_LastTrade = diag_ticktime;
-	['Tradings',1,'add'] call Ignatz_Client_PlayerStatsUpdate;
-}
-else {
-	if (diag_ticktime > Ignatz_LastTrade+300) then {
-		['Tradings',1,'add'] call Ignatz_Client_PlayerStatsUpdate;
-		Ignatz_LastTrade = diag_ticktime;
-	};
-};
-// ... Ignatz
