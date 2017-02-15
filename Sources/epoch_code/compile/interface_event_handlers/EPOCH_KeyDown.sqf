@@ -150,6 +150,9 @@ if (vehicle player == player) then {
 					_currentPos = ATLtoASL _currentPos;
 				};
 				player forceWalk(lineIntersects[eyePos player, _currentPos, player, objNull]);
+			}
+			else {
+				player forceWalk false;
 			};
 		};
 	};
