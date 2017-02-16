@@ -179,3 +179,5 @@ if (EPOCH_ESP_PLAYER || EPOCH_ESP_VEHICLES) then {
 		};
 	} forEach EPOCH_ESP_VEHICLEPLAYER;
 };
+
+call Epoch_custom_OnEachFrame;

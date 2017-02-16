@@ -131,6 +131,10 @@ if !(_jammer isEqualTo []) then {
 }
 else {
 	if (_objType in ["PlotPole_EPOCH", "PlotPole_SIM_EPOCH"]) then {
+		if (!(EPOCH_my_groupUID isequalto "") && !((getplayeruid player) isequalto EPOCH_my_groupUID)) exitwith {
+			_buildingAllowed = false;
+			["The Group Leader must place the Jammer!", 5] call Epoch_message;
+		};
 		// TODO: rework not ideal to use allmissionobjects
 		_alljammer = allmissionobjects 'PlotPole_EPOCH';
 		_c = 0;
