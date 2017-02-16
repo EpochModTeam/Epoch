@@ -83,6 +83,7 @@ if (_dikCode == EPOCH_keysDebugMon) then {
 //Action Menu
 if (_dikCode == EPOCH_keysAction) then {
 	//_handled = true;
+	{player reveal _x;} foreach (player nearObjects 50);
 	if !(EPOCH_keysActionPressed) then {
 		EPOCH_keysActionPressed = true;
 		if (cursorTarget isKindOf "AllVehicles") then {
