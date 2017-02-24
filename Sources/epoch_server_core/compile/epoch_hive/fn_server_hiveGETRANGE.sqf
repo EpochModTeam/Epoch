@@ -25,8 +25,8 @@ while {_hiveMakeCall} do {
 
 	_hiveMakeCall = false;
 
-	// get 8k chars
-	_currentIndexMax = _currentIndex + 8000;
+	// get 10k chars
+	_currentIndexMax = _currentIndex + 10000;
 	_hiveResponse = "epochserver" callExtension format["220|%1:%2|%3|%4", _prefix, _key, _currentIndex, (_currentIndexMax-1)];
 
 	if (_hiveResponse != "") then {
@@ -46,8 +46,8 @@ while {_hiveMakeCall} do {
 						// add data to string
 						_hiveMessage = _hiveMessage + _data;
 
-						// if data returned is exactly 8k chars then we likely need to make another call
-						if (count _data == 8000) then{
+						// if data returned is exactly 10k chars then we likely need to make another call
+						if (count _data == 10000) then{
 							_currentIndex = _currentIndexMax;
 							_hiveMakeCall = true;
 						};

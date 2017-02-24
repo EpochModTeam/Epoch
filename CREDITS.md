@@ -36,7 +36,7 @@ Epoch Assets Mod Configs - Custom Units, Vehicles, Weapons, Items and more!
 #### Special Thanks!
 
 * [Bohemia Interactive](http://bistudio.com) for an incredible and versatile game engine.
-* Top Donors: survivalservers.com, RC_Robio, gtxgaming, dean4310, KPABATOK
+* Top Donors: survivalservers, RC_Robio, gtxgaming, dean4310, KPABATOK
 * [GTXGaming](http://www.gtxgaming.co.uk) - Dedicated Dev Server
 * [Survival Servers](https://www.survivalservers.com) - Dedicated Dev Server
 * [Vilayer](https://www.vilayer.com) - Dedicated Dev Server

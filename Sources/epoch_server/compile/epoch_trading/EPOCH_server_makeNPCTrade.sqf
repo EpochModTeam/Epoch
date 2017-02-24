@@ -115,7 +115,7 @@ if (_slot != -1) then {
 			};
 		};
 	} forEach _itemsIn;
-	
+
 		_response = ["Bank", _playerUID] call EPOCH_fnc_server_hiveGETRANGE;
 		if ((_response select 0) == 1 && (_response select 1) isEqualType []) then {
 			_bankData = _response select 1;
@@ -130,7 +130,7 @@ if (_slot != -1) then {
 						_message = _message + "Items sold, but the Money goes to your Bank - to much Bank-Debit";
 					}
 					else {
-						_message = _message + "Putchase not possible - to much Bank-Debit";
+						_message = _message + "Purchase not possible - to much Bank-Debit";
 					};
 					_current_crypto = _current_cryptoRaw;
 					_tradeIn = 0;
@@ -230,7 +230,7 @@ if (_slot != -1) then {
 												_road = [getpos _player,100] call BIS_fnc_nearestRoad;
 												if (!isnull _road) then {
 													_position = getpos _road;
-												};										
+												};
 											};
 										};
 										// select available slot
@@ -294,15 +294,15 @@ if (_slot != -1) then {
 			};
 		} forEach _itemsOut;
 	};
-	
-	
+
+
 	if !(_itemsIn isEqualTo []) then {
 		if (_itemsIn isEqualTo _returnIn) then {
 			_message = _message + "All Items sold";
 		}
 		else {
 			_message = _message + "Not all Items sold";
-		};	
+		};
 	};
 	if !(_itemsOut isEqualTo []) then {
 		if (_itemsOut isEqualTo _returnOut) then {
@@ -316,7 +316,7 @@ if (_slot != -1) then {
 				_message = _message + " / ";
 			};
 			_message = _message + "Not all Items purchased";
-		};	
+		};
 	};
 
 	_tradeTotal = _tradeIn + _tradeOut;

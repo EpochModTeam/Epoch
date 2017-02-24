@@ -1,0 +1,13 @@
+[Added] 64-bit database extension support for windows servers. (EpochServer_x64.dll)
+[Added] Custom event handler and OnEachFrame hooks added. https://github.com/Ignatz-HeMan/Epoch/tree/experimental/Sources/epoch_code/customs Thanks to @Ignatz-HeMan
+[Added] Crafting recipe: Mortar (Uses: 12x Rock, 2x dirty water) (Requires: Fire and workbench within 3m). Thanks to @baaljayjay for the suggestion.
+[Changed] Optimized database SET and SETEX calls in both SQF and c++.
+[Changed] Optimized database GETRANGE call.
+[Changed] To prevent issues with ownership only Group Leader can place a Jammer. Thanks to @Ignatz-HeMan
+[Changed] Optimized NPC Trading and fixed abort issue if trade failed. Thanks to @Ignatz-HeMan
+[Changed] Selling to traders with bank dept greater than -50000(default), pays the bank debt back to below the limit instead of the player. Purchasing is unaffected. Thanks to @Ignatz-HeMan
+[Fixed] Wrong variable name in EPOCH_clientRevive.sqf. Thanks to @Ignatz-HeMan
+[Fixed] Sometimes getting stuck only walking. Thanks to @Ignatz-HeMan
+[Fixed] Repack of Energy Pack is now possible.
+[Removed] EpochServer extension calls 100 and 101 as they are no longer needed.
+[Info] Re-add missing comments in some config files.
