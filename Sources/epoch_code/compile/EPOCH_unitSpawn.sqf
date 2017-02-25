@@ -85,8 +85,9 @@ switch _unitClass do {
 			_bomb attachTo [_unit, [0,0,0],"Pelvis"];
 			_unit call _disableAI;
 			_sapperHndl = [_unit, _bomb, _trgt] execFSM "\x\addons\a3_epoch_code\System\Sapper_Brain.fsm";
-			_unit addEventHandler ["FiredNear", "(_this select 0) setFSMVariable [""_sFiredNear"",[_this select 1, _this select 2]];"];
-			_unit addEventHandler ["Hit", "(_this select 0) setFSMVariable [""_sHit"",[_this select 1, _this select 2]];"];
+            _unit setVariable ["sapperHndl",_sapperHndl];
+			_unit addEventHandler ["FiredNear", format ["%1 setFSMVariable [""_sFiredNear"",[_this select 1, _this select 2]];",_sapperHndl]];
+			_unit addEventHandler ["Hit", format ["%1 setFSMVariable [""_sHit"",[_this select 1, _this select 2]];",_sapperHndl]];
 		};
 	};
 	case "Epoch_SapperB_F": {
@@ -96,8 +97,9 @@ switch _unitClass do {
 		_bomb attachTo[_unit, [0, 0, 0], "Pelvis"];
 		_unit call _disableAI;
 		_sapperHndl = [_unit, _bomb, _trgt] execFSM "\x\addons\a3_epoch_code\System\Sapper_Brain2.fsm";
-		_unit addEventHandler ["FiredNear", "(_this select 0) setFSMVariable [""_sFiredNear"",[_this select 1, _this select 2]];"];
-		_unit addEventHandler ["Hit", "(_this select 0) setFSMVariable [""_sHit"",[_this select 1, _this select 2]];"];
+        _unit setVariable ["sapperHndl",_sapperHndl];
+        _unit addEventHandler ["FiredNear", format ["%1 setFSMVariable [""_sFiredNear"",[_this select 1, _this select 2]];",_sapperHndl]];
+        _unit addEventHandler ["Hit", format ["%1 setFSMVariable [""_sHit"",[_this select 1, _this select 2]];",_sapperHndl]];
 	};
 	case "I_UAV_01_F": {
 		_targetPos = getPosATL _trgt;
