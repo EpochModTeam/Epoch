@@ -2914,6 +2914,10 @@ class CfgPricing
     {
         price = 2;
     };
+    class SmokeShellToxic
+    {
+        price = 10;
+    };
     class SmokeShellGreen
     {
         price = 2;

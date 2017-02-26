@@ -1517,6 +1517,7 @@ class CfgLootTable_CUP
 				{ { "SmokeShell", "magazine" }, 1 },
 				{ { "SmokeShellYellow", "magazine" }, 1 },
 				{ { "SmokeShellGreen", "magazine" }, 1 },
+                { { "SmokeShellToxic", "magazine" }, 1 },
 				{ { "SmokeShellRed", "magazine" }, 1 },
 				{ { "SmokeShellPurple", "magazine" }, 1 },
 				{ { "SmokeShellOrange", "magazine" }, 1 },
