@@ -56,7 +56,7 @@ class CfgEpochClient
     Take = "(_this select 1) call EPOCH_interact;_this call EPOCH_UnisexCheck;_this call Epoch_custom_EH_Take";
     FiredMan = "_this call EPOCH_fnc_playerFired;_this call Epoch_custom_EH_FiredMan";
     InventoryClosed = "_this call EPOCH_InventoryClosed;_this call EPOCH_custom_EH_InventoryClosed";
-    InventoryOpened = "_this call EPOCH_InventoryOpened;_this call EPOCH_custom_EH_InventoryOpened";
+    InventoryOpened = "_this call EPOCH_InventoryOpened||_this call EPOCH_custom_EH_InventoryOpened"; // the || here allows either function to block opening of inventory by returning true.
     Killed = "_this call EPOCH_fnc_playerDeath;_this call Epoch_custom_EH_Killed";
     HandleRating = "EPOCH_playerKarma = EPOCH_playerKarma + (_this select 1);0";
     HandleDamage = "";
