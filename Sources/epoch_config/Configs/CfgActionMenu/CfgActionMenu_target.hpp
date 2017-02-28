@@ -79,7 +79,7 @@ class tra_shop
 
 class player_takeCrypto
 {
-	condition = "dyna_isDeadPlayer";
+	condition = "(dyna_cursorTarget getVariable [""Crypto"",0]) > 0";
 	action = "dyna_cursorTarget call EPOCH_takeCrypto;";
 	icon = "x\addons\a3_epoch_code\Data\UI\buttons\krypto.paa";
 	tooltip = "Take Krypto";

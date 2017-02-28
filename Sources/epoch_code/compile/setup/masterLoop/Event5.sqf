@@ -16,7 +16,7 @@ if !(surfaceIsWater _position) then {
 		_offsetZ = ((_position vectorDiff getPosASL player) select 2);
 		EPOCH_playerIsSwimming = (_offsetZ > 1.7);
 		if (_offsetZ > 50) then {
-			"GreatWhite_F" call EPOCH_unitSpawn;
+			["GreatWhite_F", player, true] call EPOCH_unitSpawn;
 		};
 	};
 };
