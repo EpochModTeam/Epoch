@@ -1,8 +1,7 @@
 /*
   Earthquake and Mineral Deposit Event
 	by Aaron Clark - EpochMod.com
-	This work is licensed under a Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License.
-	http://creativecommons.org/licenses/by-nc-nd/4.0/
+
 	Improvements and or bugfixes and other contributions are welcome via the github:
 	https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server_settings/EpochEvents/Earthquake.sqf
 */
