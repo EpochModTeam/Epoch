@@ -8,7 +8,7 @@
 [Changed] Selling to traders with bank debt greater than -50000(default), pays the bank debt back to below the limit instead of the player. Purchasing is unaffected. Thanks to @Ignatz-HeMan
 [Changed] Great White Sharks will now spawn if player is deep enough in the ocean.
 [Changed] Objects or Players that have been given "Crypto" variable can be accessed via the dynamic menu (Space Bar) for a "Take Crypto" action.
-[Changed] Air Drops are now triggered with Epoch Events server side instead of randomly triggered client side.
+[Changed] Air Drops are now triggered with Epoch Events server side every 45m instead of randomly triggered client side.
 [Fixed] To prevent issues with ownership only Group Leader can place a Jammer. Thanks to @Ignatz-HeMan
 [Fixed] Wrong variable name in EPOCH_clientRevive.sqf. Thanks to @Ignatz-HeMan
 [Fixed] Sometimes getting stuck only walking. Thanks to @Ignatz-HeMan
