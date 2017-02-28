@@ -21,7 +21,8 @@ _seclocked = false;
 if !(isNull _sec) then {
 	_seclocked = (locked _sec in [2, 3] || _sec getVariable['EPOCH_Locked', false]);
 };
-if (_containerlocked || _seclocked) then {
+_blocked = (_containerlocked && _seclocked);
+if (!_blocked && _containerlocked || _seclocked) then {
 	[] spawn {
 		disableSerialization;
 		waitUntil {!isNull findDisplay 602};
@@ -33,3 +34,4 @@ if (_containerlocked || _seclocked) then {
 		ctrlActivate _ground;
 	};
 };
+_blocked
