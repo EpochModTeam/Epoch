@@ -49,6 +49,7 @@ class CfgServerFunctions
 			class server_lootAnimal {};
 		};
 		class epoch_player {
+            class fnc_addItemToX {};
 			class fnc_savePlayer {};
 			class server_savePlayer {};
 			class server_loadPlayer {};

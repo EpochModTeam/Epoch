@@ -12,30 +12,14 @@
     Github:
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server/compile/epoch_player/EPOCH_server_revivePlayer.sqf
 */
-private["_player", "_playerUID", "_items", "_class", "_dir", "_location", "_type", "_weapon", "_attachments", "_currWeap", "_itemSlot", "_itemqtys", "_goggles", "_headgear", "_vest", "_backpack", "_uniform", "_weapons", "_magazinesAmmo", "_itemsplayer", "_weaponsplayer", "_group", "_primaryWeapon", "_secondaryWeapon", "_attachment", "_equipped", "_wMags", "_playerGroup", "_droppedWeapons", "_newPlyr", "_token", "_owner", "_reviver"];
-params ["_player","_reviver",["_token","",[""]]];
+//[[[cog import generate_private_arrays ]]]
+private ["_CorpseCrypto","_PlayerCrypto","_attachments","_backpack","_cIndex","_class","_currWeap","_currwh","_deleteprimary","_deletesecondary","_dir","_droppedPrimary","_droppedSecondary","_droppedWeapons","_equipped","_goggles","_group","_headgear","_items","_itemsplayer","_location","_magazinesAmmo","_newPlyr","_playerGroup","_playerUID","_primaryWeapon","_secondaryWeapon","_token","_type","_uniform","_vars","_vest","_wMags","_wMagsArray","_weapon","_weapons","_weaponsplayer","_wh"];
+//[[[end]]]
+params ["_player","_reviver",["_token","",[""]] ];
 
 if !([_reviver, _token] call EPOCH_server_getPToken) exitWith{};
 if (isNull _player) exitWith{};
 if (_player distance _reviver > 20) exitWith{};
-
-_fnc_addItemToX = {
-	private ["_itemSlot","_itemqtys","_newPlyr"];
-	_newPlyr = _this select 0;
-	{
-		_itemSlot = _forEachIndex;
-		_itemqtys = _x select 1;
-		{
-			for "_i" from 1 to (_itemqtys select _forEachIndex) do {
-				switch _itemSlot do {
-					case 0: { _newPlyr addItemToUniform _x };
-					case 1: { _newPlyr addItemToVest _x };
-					case 2: { _newPlyr addItemToBackpack _x };
-				};
-			};
-		} forEach(_x select 0);
-	} forEach (_this select 1);
-};
 
 if (!local _player) then {
 	_playerUID = getPlayerUID _player;
@@ -242,10 +226,10 @@ if (!local _player) then {
 				}forEach _items;
 
 				// add items to containers
-				[_newPlyr, _itemsplayer] call _fnc_addItemToX;
+				[_newPlyr, _itemsplayer] call EPOCH_fnc_addItemToX;
 
 				// add weapons to containers
-				[_newPlyr, _weaponsplayer] call _fnc_addItemToX;
+				[_newPlyr, _weaponsplayer] call EPOCH_fnc_addItemToX;
 
 				// Add magazines
 				{_newPlyr addMagazine _x;}forEach _magazinesAmmo;
