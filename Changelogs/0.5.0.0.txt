@@ -2,6 +2,7 @@
 [Added] Custom event handler and OnEachFrame hooks added. https://github.com/Ignatz-HeMan/Epoch/tree/experimental/Sources/epoch_code/customs Thanks to @Ignatz-HeMan
 [Added] Crafting recipe: Mortar (Uses: 12x Rock, 2x dirty water) (Requires: Fire and workbench within 3m). Thanks to @baaljayjay for the suggestion.
 [Added] Customizability of units spawned by UAV alert via CfgEpochClient > uavAlertUnitSpawnTemplate. (Default: I_Soldier_EPOCH)
+[Added] Toxic Smoke Grenades can now be found in the world.
 [Changed] Optimized database SET and SETEX calls in both SQF and C++.
 [Changed] Optimized database GETRANGE call.
 [Changed] Optimized NPC Trading and fixed issue if trade failed. Thanks to @Ignatz-HeMan
