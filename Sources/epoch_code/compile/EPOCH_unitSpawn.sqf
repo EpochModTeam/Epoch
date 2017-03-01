@@ -86,6 +86,17 @@ switch _unitClass do {
 			_unit addEventHandler ["Hit", format ["%1 setFSMVariable [""_sHit"",[_this select 1, _this select 2]];",_sapperHndl]];
 		};
 	};
+    case "Epoch_SapperG_F": {
+		_unit = createAgent[_unitClass, _targetPos, [], 256, "FORM"];
+		_units pushBack _unit;
+		_bomb = createVehicle ["SmokeShellCustom", _targetPos, [], 0, "CAN_COLLIDE"];
+		_bomb attachTo [_unit, [0,0,0],"Pelvis"];
+		_unit call _disableAI;
+		_sapperHndl = [_unit, _bomb, _trgt] execFSM "\x\addons\a3_epoch_code\System\Sapper_Brain.fsm";
+        _unit setVariable ["sapperHndl",_sapperHndl];
+		_unit addEventHandler ["FiredNear", format ["%1 setFSMVariable [""_sFiredNear"",[_this select 1, _this select 2]];",_sapperHndl]];
+		_unit addEventHandler ["Hit", format ["%1 setFSMVariable [""_sHit"",[_this select 1, _this select 2]];",_sapperHndl]];
+	};
 	case "Epoch_SapperB_F": {
 		_unit = createAgent[_unitClass, _targetPos, [], 256, "FORM"];
 		_units pushBack _unit;
