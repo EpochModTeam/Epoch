@@ -12,5 +12,6 @@
     Github:
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_code/compile/EPOCH_supportCopter.sqf
 */
-_unitClass = ["CfgEpochClient", "uavAlertUnitSpawnTemplate", "I_Soldier_EPOCH"] call EPOCH_fnc_returnConfigEntryV2;
-[_unitClass, player, true, _this] call EPOCH_unitSpawn;
+{
+    [_x, player, true, _this] call EPOCH_unitSpawn;
+} forEach (["CfgEpochClient", "uavAlertUnitSpawnTemplate", ["I_Soldier_EPOCH"]] call EPOCH_fnc_returnConfigEntryV2);
