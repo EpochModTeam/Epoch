@@ -29,7 +29,7 @@ for "_i" from 1 to _unitCount do {
 		_Spawncounts pushback 1;
 	}
 	else {
-		(_Spawncounts select _idx) = (_Spawncounts select _idx) + 1;
+		_Spawncounts set [_idx,(_Spawncounts select _idx)+ 1];
 	};
 };
 
