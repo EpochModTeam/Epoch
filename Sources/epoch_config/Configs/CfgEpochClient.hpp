@@ -100,6 +100,21 @@ class CfgEpochClient
     #include "CfgEpochClient\Tanoa.hpp"
     #include "CfgEpochClient\WorldInteractions.hpp"
 };
+class CfgEpochSoldier
+{
+    unitTypes[] = {"I_Soldier_EPOCH", "I_Soldier2_EPOCH", "I_Soldier3_EPOCH"};//Selects from randomly
+    minAISkill = 0.2; //Minumum AI Skill. Skills are chosen randomly between this minimum overall AI skill value and the following max AI skill values, for each of the next skills:
+    maxAimingAccuracy = 0.7;
+    maxAimingShake = 0.9;
+    maxAimingSpeed = 0.6;
+    maxEndurance = 0.4;
+    maxSpotDistance = 0.4;
+    maxSpotTime = 0.3;
+    maxCourage = 0.3;
+    maxReloadSpeed = 0.5;
+    maxCommanding = 0.4;
+    maxGeneral = 0.4;
+};
 class CfgEpochSapper
 {
     detonateDistMax = 8; //Random distance between 3m and this number at which sapper detonates. Min value = 4
@@ -119,19 +134,9 @@ class CfgEpochUAV
 };
 class CfgEpochUAVSupport
 {
-    unitTypes[] = {"I_Soldier_EPOCH", "I_Soldier2_EPOCH", "I_Soldier3_EPOCH"};//Selects from randomly
-    maxUnitNum = 2; //Maximum number of units spawned when UAV spots target.
-    minAISkill = 0.2; //Minumum AI Skill. Skills are chosen randomly between this minimum overall AI skill value and the following max AI skill values, for each of the next skills:
-    maxAimingAccuracy = 0.7;
-    maxAimingShake = 0.9;
-    maxAimingSpeed = 0.6;
-    maxEndurance = 0.4;
-    maxSpotDistance = 0.4;
-    maxSpotTime = 0.3;
-    maxCourage = 0.3;
-    maxReloadSpeed = 0.5;
-    maxCommanding = 0.4;
-    maxGeneral = 0.4;
+	unitTypes[] = {"I_Soldier_EPOCH"}; //Selects from randomly (e.g. {"I_Soldier_EPOCH","Epoch_Sapper_F","Epoch_SapperB_F"};)
+	minUnitNum = 2; //Maximum number of units spawned when UAV spots target.
+	maxUnitNum = 4; //Maximum number of units spawned when UAV spots target.
 };
 class CfgEpochAirDrop
 {
