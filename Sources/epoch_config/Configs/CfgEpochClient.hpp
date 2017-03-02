@@ -133,7 +133,7 @@ class CfgEpochUAV
 };
 class CfgEpochUAVSupport
 {
-	unitTypes[] = {"I_Soldier_EPOCH"}; //Selects from randomly (e.g. {"I_Soldier_EPOCH","Epoch_Sapper_F","Epoch_SapperB_F"};)
+	unitTypes[] = {"I_Soldier_EPOCH"}; //Selects from randomly (e.g. {"I_Soldier_EPOCH","Epoch_Sapper_F","Epoch_SapperB_F","Epoch_SapperG_F"};)
 	minUnitNum = 2; //Maximum number of units spawned when UAV spots target.
 	maxUnitNum = 4; //Maximum number of units spawned when UAV spots target.
 };
