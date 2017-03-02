@@ -15,7 +15,7 @@
 //[[[cog import generate_private_arrays ]]]
 private ["_bomb","_config","_currentLimit","_disableAI","_driver","_grp","_index","_jammerRange","_jammers","_loop","_nonJammer","_nonTrader","_nonTraderAIRange","_restricted","_sapperNum","_spawnLimit","_targetPos","_unit","_units"];
 //[[[end]]]
-params ["_unitClass",["_trgt",player],["_doVariable",false],["_extraData",[]]];
+params ["_unitClass",["_trgt",player],["_doVariable",false],["_unitCount",1],["_extraData",[]]];
 
 _bomb = objNull;
 // diag_log format["DEBUG: Antagonist %1 Spawning on %2. Do variable: %3.", _unitClass, _trgt, _doVariable];
@@ -51,18 +51,22 @@ _disableAI = {
 _units = [];
 switch _unitClass do {
 	case "Epoch_Cloak_F": {
-		_unit = createAgent[_unitClass, _targetPos, [], 256, "FORM"];
-		_units pushBack _unit;
-		_unit call _disableAI;
-		[_unit,_trgt] execFSM "\x\addons\a3_epoch_code\System\cloak.fsm";
+		for "_i" from 0 to (_unitCount-1) do {
+			_unit = createAgent[_unitClass, _targetPos, [], 256, "FORM"];
+			_units pushBack _unit;
+			_unit call _disableAI;
+			[_unit,_trgt] execFSM "\x\addons\a3_epoch_code\System\cloak.fsm";
+		};
 	};
 	case "GreatWhite_F": {
 		if (surfaceIsWater _targetPos) then{
 			if (((_targetPos vectorDiff getPosASL _trgt) select 2) > 25) then{
-				_unit = createAgent[_unitClass, _targetPos, [], 120, "FORM"];
-				_units pushBack _unit;
-				_unit call _disableAI;
-				[_unit] execFSM "\x\addons\a3_epoch_code\System\Shark_Brain.fsm";
+				for "_i" from 0 to (_unitCount-1) do {
+					_unit = createAgent[_unitClass, _targetPos, [], 120, "FORM"];
+					_units pushBack _unit;
+					_unit call _disableAI;
+					[_unit] execFSM "\x\addons\a3_epoch_code\System\Shark_Brain.fsm";
+				};
 			};
 		};
 	};
@@ -75,52 +79,60 @@ switch _unitClass do {
 			};
 			[_trgt,_sapperNum] execVM "epoch_code\compile\EPOCH_callSapperMigration.sqf";
 		}else{
+			for "_i" from 0 to (_unitCount-1) do {
+				_unit = createAgent[_unitClass, _targetPos, [], 256, "FORM"];
+				_units pushBack _unit;
+				_bomb = createVehicle ["Sapper_Charge_Ammo", _targetPos, [], 0, "CAN_COLLIDE"];
+				_bomb attachTo [_unit, [0,0,0],"Pelvis"];
+				_unit call _disableAI;
+				_sapperHndl = [_unit, _bomb, _trgt] execFSM "\x\addons\a3_epoch_code\System\Sapper_Brain.fsm";
+				_unit setVariable ["sapperHndl",_sapperHndl];
+				_unit addEventHandler ["FiredNear", format ["%1 setFSMVariable [""_sFiredNear"",[_this select 1, _this select 2]];",_sapperHndl]];
+				_unit addEventHandler ["Hit", format ["%1 setFSMVariable [""_sHit"",[_this select 1, _this select 2]];",_sapperHndl]];
+			};
+		};
+	};
+    case "Epoch_SapperG_F": {
+		for "_i" from 0 to (_unitCount-1) do {
 			_unit = createAgent[_unitClass, _targetPos, [], 256, "FORM"];
 			_units pushBack _unit;
-			_bomb = createVehicle ["Sapper_Charge_Ammo", _targetPos, [], 0, "CAN_COLLIDE"];
+			_bomb = createVehicle ["SmokeShellCustom", _targetPos, [], 0, "CAN_COLLIDE"];
 			_bomb attachTo [_unit, [0,0,0],"Pelvis"];
 			_unit call _disableAI;
 			_sapperHndl = [_unit, _bomb, _trgt] execFSM "\x\addons\a3_epoch_code\System\Sapper_Brain.fsm";
-            _unit setVariable ["sapperHndl",_sapperHndl];
+			_unit setVariable ["sapperHndl",_sapperHndl];
 			_unit addEventHandler ["FiredNear", format ["%1 setFSMVariable [""_sFiredNear"",[_this select 1, _this select 2]];",_sapperHndl]];
 			_unit addEventHandler ["Hit", format ["%1 setFSMVariable [""_sHit"",[_this select 1, _this select 2]];",_sapperHndl]];
 		};
 	};
-    case "Epoch_SapperG_F": {
-		_unit = createAgent[_unitClass, _targetPos, [], 256, "FORM"];
-		_units pushBack _unit;
-		_bomb = createVehicle ["SmokeShellCustom", _targetPos, [], 0, "CAN_COLLIDE"];
-		_bomb attachTo [_unit, [0,0,0],"Pelvis"];
-		_unit call _disableAI;
-		_sapperHndl = [_unit, _bomb, _trgt] execFSM "\x\addons\a3_epoch_code\System\Sapper_Brain.fsm";
-        _unit setVariable ["sapperHndl",_sapperHndl];
-		_unit addEventHandler ["FiredNear", format ["%1 setFSMVariable [""_sFiredNear"",[_this select 1, _this select 2]];",_sapperHndl]];
-		_unit addEventHandler ["Hit", format ["%1 setFSMVariable [""_sHit"",[_this select 1, _this select 2]];",_sapperHndl]];
-	};
 	case "Epoch_SapperB_F": {
-		_unit = createAgent[_unitClass, _targetPos, [], 256, "FORM"];
-		_units pushBack _unit;
-		_bomb = createVehicle["SapperB_Charge_Ammo", _targetPos, [], 0, "CAN_COLLIDE"];
-		_bomb attachTo[_unit, [0, 0, 0], "Pelvis"];
-		_unit call _disableAI;
-		_sapperHndl = [_unit, _bomb, _trgt] execFSM "\x\addons\a3_epoch_code\System\Sapper_Brain2.fsm";
-        _unit setVariable ["sapperHndl",_sapperHndl];
-        _unit addEventHandler ["FiredNear", format ["%1 setFSMVariable [""_sFiredNear"",[_this select 1, _this select 2]];",_sapperHndl]];
-        _unit addEventHandler ["Hit", format ["%1 setFSMVariable [""_sHit"",[_this select 1, _this select 2]];",_sapperHndl]];
+		for "_i" from 0 to (_unitCount-1) do {
+			_unit = createAgent[_unitClass, _targetPos, [], 256, "FORM"];
+			_units pushBack _unit;
+			_bomb = createVehicle["SapperB_Charge_Ammo", _targetPos, [], 0, "CAN_COLLIDE"];
+			_bomb attachTo[_unit, [0, 0, 0], "Pelvis"];
+			_unit call _disableAI;
+			_sapperHndl = [_unit, _bomb, _trgt] execFSM "\x\addons\a3_epoch_code\System\Sapper_Brain2.fsm";
+			_unit setVariable ["sapperHndl",_sapperHndl];
+			_unit addEventHandler ["FiredNear", format ["%1 setFSMVariable [""_sFiredNear"",[_this select 1, _this select 2]];",_sapperHndl]];
+			_unit addEventHandler ["Hit", format ["%1 setFSMVariable [""_sHit"",[_this select 1, _this select 2]];",_sapperHndl]];
+		};
 	};
 	case "I_UAV_01_F": {
-		_targetPos = getPosATL _trgt;
-		_targetPos = [_targetPos, 600, 1200, 5, 0, 400, 0] call BIS_fnc_findSafePos;
-		_targetPos set[2, 600];
-		_unit = createVehicle["I_UAV_01_F", _targetPos, [], 0, "FLY"];
-        _unit disableTIEquipment true;
-		_units pushBack _unit;
-		addToRemainsCollector[_unit];
-		_unit flyInHeight 600;
-		_grp = createGroup RESISTANCE;
-		_driver = _grp createUnit["I_UAV_AI", position _unit, [], 0, "CAN_COLLIDE"];
-		_driver moveInAny _unit;
-		[_unit, _trgt] execFSM "\x\addons\a3_epoch_code\System\Copter_brain.fsm";
+		for "_i" from 0 to (_unitCount-1) do {
+			_targetPos = getPosATL _trgt;
+			_targetPos = [_targetPos, 600, 1200, 5, 0, 400, 0] call BIS_fnc_findSafePos;
+			_targetPos set[2, 600];
+			_unit = createVehicle["I_UAV_01_F", _targetPos, [], 0, "FLY"];
+			_unit disableTIEquipment true;
+			_units pushBack _unit;
+			addToRemainsCollector[_unit];
+			_unit flyInHeight 600;
+			_grp = createGroup RESISTANCE;
+			_driver = _grp createUnit["I_UAV_AI", position _unit, [], 0, "CAN_COLLIDE"];
+			_driver moveInAny _unit;
+			[_unit, _trgt] execFSM "\x\addons\a3_epoch_code\System\Copter_brain.fsm";
+		};
 	};
 	case "PHANTOM": {
 		[] execFSM "\x\addons\a3_epoch_code\System\Phantom_Brain.fsm";
@@ -136,25 +148,24 @@ switch _unitClass do {
 		};
 	};
     case "I_Soldier_EPOCH": {
-        _extraData params ["_pos","_copter"];
-        _grp = createGroup RESISTANCE;
-        _grp setBehaviour "COMBAT";
-        _grp setCombatMode "RED";
-        _minAISkill = getNumber (getMissionConfig "CfgEpochUAVSupport" >> "minAISkill");
-        _arrUnits = getArray (getMissionConfig "CfgEpochUAVSupport" >> "unitTypes");
-        _unitCount = getNumber (getMissionConfig "CfgEpochUAVSupport" >> "maxUnitNum");
+        _extraData params [["_pos",getpos player],["_copter",objnull]];
+		_grp = createGroup RESISTANCE;
+		_grp setBehaviour "COMBAT";
+		_grp setCombatMode "RED";
+        _minAISkill = getNumber (getMissionConfig "CfgEpochSoldier" >> "minAISkill");
+        _arrUnits = getArray (getMissionConfig "CfgEpochSoldier" >> "unitTypes");
         _arrSkills = ["aimingAccuracy","aimingShake","aimingSpeed","endurance","spotDistance","spotTime","courage","reloadSpeed","commanding","general"];
         _arrVals = [
-            getNumber (getMissionConfig "CfgEpochUAVSupport" >> "maxAimingAccuracy"),
-            getNumber (getMissionConfig "CfgEpochUAVSupport" >> "maxAimingShake"),
-            getNumber (getMissionConfig "CfgEpochUAVSupport" >> "maxAimingSpeed"),
-            getNumber (getMissionConfig "CfgEpochUAVSupport" >> "maxEndurance"),
-            getNumber (getMissionConfig "CfgEpochUAVSupport" >> "maxSpotDistance"),
-            getNumber (getMissionConfig "CfgEpochUAVSupport" >> "maxSpotTime"),
-            getNumber (getMissionConfig "CfgEpochUAVSupport" >> "maxCourage"),
-            getNumber (getMissionConfig "CfgEpochUAVSupport" >> "maxReloadSpeed"),
-            getNumber (getMissionConfig "CfgEpochUAVSupport" >> "maxCommanding"),
-            getNumber (getMissionConfig "CfgEpochUAVSupport" >> "maxGeneral")
+            getNumber (getMissionConfig "CfgEpochSoldier" >> "maxAimingAccuracy"),
+            getNumber (getMissionConfig "CfgEpochSoldier" >> "maxAimingShake"),
+            getNumber (getMissionConfig "CfgEpochSoldier" >> "maxAimingSpeed"),
+            getNumber (getMissionConfig "CfgEpochSoldier" >> "maxEndurance"),
+            getNumber (getMissionConfig "CfgEpochSoldier" >> "maxSpotDistance"),
+            getNumber (getMissionConfig "CfgEpochSoldier" >> "maxSpotTime"),
+            getNumber (getMissionConfig "CfgEpochSoldier" >> "maxCourage"),
+            getNumber (getMissionConfig "CfgEpochSoldier" >> "maxReloadSpeed"),
+            getNumber (getMissionConfig "CfgEpochSoldier" >> "maxCommanding"),
+            getNumber (getMissionConfig "CfgEpochSoldier" >> "maxGeneral")
         ];
         _units = [];
         for "_i" from 0 to (_unitCount - 1) do {
