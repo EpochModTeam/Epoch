@@ -22,7 +22,10 @@ _bomb = objNull;
 if(_doVariable)then{_unitClass call EPOCH_unitSpawnIncrease;};//Assumes Antagonist is required.
 
 _index = EPOCH_spawnIndex find _unitClass;
-_spawnLimit = EPOCH_playerSpawnArray select _index;
+_spawnLimit = 0;
+if (_index != -1) then {
+	_spawnLimit = EPOCH_playerSpawnArray select _index;
+};
 _currentLimit = count(_trgt nearEntities[_unitClass, 800]);
 if (!_doVariable && (_currentLimit >= _spawnLimit)) exitWith {
 	diag_log format["DEBUG: too many %1 exiting unitspawn",_unitClass];
