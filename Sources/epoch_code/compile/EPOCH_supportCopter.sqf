@@ -12,6 +12,28 @@
     Github:
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_code/compile/EPOCH_supportCopter.sqf
 */
+params ["_pos","_copter"];
+
+_arrUnits = getArray (getMissionConfig "CfgEpochUAVSupport" >> "unitTypes");
+_minunitCount = getNumber (getMissionConfig "CfgEpochUAVSupport" >> "minUnitNum");
+_maxunitCount = getNumber (getMissionConfig "CfgEpochUAVSupport" >> "maxUnitNum");
+_unitCount = _minunitCount + round (random (_maxunitCount - _minunitCount));
+
+_SpawnTypes = [];
+_Spawncounts = [];
+for "_i" from 1 to _unitCount do {
+	_UnitType = selectRandom _arrUnits;
+	_idx = _SpawnTypes find _UnitType;
+	if (_idx == -1) then {
+		_SpawnTypes pushback _UnitType;
+		_Spawncounts pushback 1;
+	}
+	else {
+		(_Spawncounts select _idx) = (_Spawncounts select _idx) + 1;
+	};
+};
+
 {
-    [_x, player, true, _this] call EPOCH_unitSpawn;
-} forEach (["CfgEpochClient", "uavAlertUnitSpawnTemplate", ["I_Soldier_EPOCH"]] call EPOCH_fnc_returnConfigEntryV2);
+    [_SpawnTypes select _foreachindex, player, true, _x, _this] call EPOCH_unitSpawn;
+} forEach _Spawncounts;
+
