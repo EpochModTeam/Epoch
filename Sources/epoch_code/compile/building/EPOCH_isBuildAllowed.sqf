@@ -31,6 +31,7 @@ _ownedJammerExists = false;
 _useSplitCountLimits = false;
 _useGroupCountLimits = true;
 _nearestJammer = objNull;
+_jammerGLOnly = true;
 
 // reject building if in vehicle
 if (vehicle player != player)exitWith{["Building Disallowed: Inside Vehicle", 5] call Epoch_message; false };
@@ -50,6 +51,7 @@ _maxBuildingHeight = getNumber(_config >> "maxBuildingHeight");
 _jammerPerGroup = getNumber(_config >> "jammerPerGroup");
 if(getNumber(_config >> "useGroupCountLimits") == 0)then{_useGroupCountLimits=false};
 if(getNumber(_config >> "splitCountLimits") == 1)then{_useSplitCountLimits=true};
+if(getNumber(_config >> "jammerGLOnly") == 0)then{_jammerGLOnly=false};
 if(_buildingJammerRange == 0)then{_buildingJammerRange = 75};
 if(_buildingCountLimit == 0)then{_buildingCountLimit = 200};
 if(_buildingCountLeader == 0)then{_buildingCountLeader = _buildingCountLimit};
@@ -131,7 +133,7 @@ if !(_jammer isEqualTo []) then {
 }
 else {
 	if (_objType in ["PlotPole_EPOCH", "PlotPole_SIM_EPOCH"]) then {
-		if (!(EPOCH_my_groupUID isequalto "") && !((getplayeruid player) isequalto EPOCH_my_groupUID)) exitwith {
+		if (!(EPOCH_my_groupUID isequalto "") && !((getplayeruid player) isequalto EPOCH_my_groupUID) && _jammerGLOnly) exitwith {
 			_buildingAllowed = false;
 			["The Group Leader must place the Jammer!", 5] call Epoch_message;
 		};
