@@ -122,7 +122,7 @@ if (!isNull _player) then {
                     // check if jammer is not null and is alive.
                     if (!isNull _jammer && {alive _jammer}) then {
                         // check if player is still a member of jammers group.
-                        if ((_jammer getVariable["BUILD_OWNER", "-1"]) in [getPlayerUID player, _playerGroup]) then {
+                        if ((_jammer getVariable["BUILD_OWNER", "-1"]) in [_playerUID, _playerGroup]) then {
                             _location = _newLocation;
                         };
                     };
