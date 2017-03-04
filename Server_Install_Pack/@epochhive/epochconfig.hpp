@@ -13,7 +13,7 @@ lootMultiplier = 0.5; // 1 = max loot bias. This controls how much loot can payo
 WeatherStaticForecast[] = {}; // Default: {75.5,0,{0,0,0},0,{1,1}}; // Clear day; {19,1,{1,1,40},1,{5,5}}; // Cold Foggy Rainy Overcast Windy; Format: {temp <scalar>,rain <scalar>,fog <array>,overcast <scalar>,wind <array>}
 events[] = {
     { 3600, "CarnivalSpawner", 0 , 1}, // SECOND <scalar>, EVENT <string>, INIT <scalar> 1 = run script at startup, 0 normal delay, PREPOSTFIX <scalar> 1 = use pre/postfix path (inside epoch settings pbo) 0 = use full file path
-    { 2700, "AirDrop", 0 , 1}, 
+    { 2700, "AirDrop", 0 , 1},
     { 2400, "EarthQuake", 0 , 1},
     { 1800, "ChangeWeather", 1 , 1},
     { 1200, "ContainerSpawner", 0 , 1},
@@ -27,7 +27,7 @@ antagonistChanceLoot = 0.09; //9% chance when player click "SEARCH" on a loot ob
 
 // Player Related
 cloneCost = 100; 					// debt incurred on player death
-MaxBankDebitforTrade = -50000		// If Player has less money on Bank, Crypto from Trade goes directly to Bank instead to Player
+MaxBankDebitforTrade = -50000;		// If Player has less money on Bank, Crypto from Trade goes directly to Bank instead to Player
 
 // vehicles - Max vehicle slots is calculated from per vehicle limits below. Warning! Higher the number lower the performance.
 simulationHandlerOld = "false"; // When enabled this feature disables simulation on vehicles that are not nea players. Can help improve client fps at the cost of server fps.
