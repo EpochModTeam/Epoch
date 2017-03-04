@@ -114,22 +114,23 @@ if (!isNull _player) then {
 			_dir = random 360;
             // try to find respawn point by position
             _newLocation = _server_vars param [0,[]]; // 0 = RESPAWN POS
+            // normal respawn location
+            _location = getMarkerPos "respawn_west";
+            _location set[2, 0];
             if (_newLocation isEqualType [] && {(count _newLocation) == 3}) then {
                 _jammers = nearestObjects[_newLocation, ["PlotPole_EPOCH"], 1];
                 if !(_jammers isEqualTo[]) then {
-                    // get nearby jammer
+                    // get nearby object
                     _jammer = _jammers param [0,objNull];
-                    // check if jammer is not null and is alive.
+                    // check if object is not null and is alive.
                     if (!isNull _jammer && {alive _jammer}) then {
-                        // check if player is still a member of jammers group.
+                        // check if player is still a member of object group.
                         if ((_jammer getVariable["BUILD_OWNER", "-1"]) in [_playerUID, _playerGroup]) then {
+                            // Override location with that of object
                             _location = _newLocation;
                         };
                     };
                 };
-            } else {
-                _location = getMarkerPos "respawn_west";
-                _location set[2, 0];
             };
 			if (_alreadyDead) then {
 				_vars = call EPOCH_defaultVars_SEPXVar;
