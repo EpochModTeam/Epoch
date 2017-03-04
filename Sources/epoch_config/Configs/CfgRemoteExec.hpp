@@ -286,6 +286,11 @@ class CfgRemoteExec
             allowedTargets = 2;
             jip = 0;
         };
+        class EPOCH_server_makeSP
+        {
+            allowedTargets = 2;
+            jip = 0;
+        };
     };
     class Commands
     {

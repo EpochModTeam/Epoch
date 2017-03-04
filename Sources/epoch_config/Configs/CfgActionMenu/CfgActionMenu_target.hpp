@@ -107,6 +107,14 @@ class maintain_jammer
 	icon = "x\addons\a3_epoch_code\Data\UI\buttons\build_maintain.paa";
 	tooltip = "Maintain";
 };
+class select_jammer
+{
+	condition = "dyna_cursorTargetType isEqualTo 'PlotPole_EPOCH' && (damage dyna_cursorTarget < 1)";
+	action = "[dyna_cursorTarget,player,Epoch_personalToken] remoteExec [""EPOCH_server_makeSP"",2];";
+	icon = "x\addons\a3_epoch_code\Data\UI\buttons\player_inspect.paa";
+	tooltip = "Make Spawnpoint";
+};
+
 //lock unlock
 class unlock_lockbox
 {

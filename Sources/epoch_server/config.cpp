@@ -52,6 +52,7 @@ class CfgServerFunctions
             class fnc_addItemToX {};
 			class fnc_savePlayer {};
 			class server_savePlayer {};
+            class server_makeSP {};
 			class server_loadPlayer {};
 			class server_checkPlayer {};
 			class server_onPlayerDisconnect {};

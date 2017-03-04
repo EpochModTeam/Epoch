@@ -62,7 +62,7 @@ if (!isNull _player) then {
 
         // todo make dynamic
 		if (count _arr < 11) then { // invaild format attempt to override
-			_arr = [[0, [], _instanceID], [0, 0, 1, 0, []], [_goggles, _headgear, _vest, _backpack, _uniform, _class], [""], call EPOCH_defaultVars_SEPXVar, _weaponsAndItems, _linkedItems, _normalMagazines, _itemsInContainers, _weaponsInContainers, "", true];
+			_arr = [[0, [], _instanceID], [0, 0, 1, 0, []], [_goggles, _headgear, _vest, _backpack, _uniform, _class], [], call EPOCH_defaultVars_SEPXVar, _weaponsAndItems, _linkedItems, _normalMagazines, _itemsInContainers, _weaponsInContainers, "", true];
 		};
 
 		_worldspace = _arr select 0;
@@ -78,7 +78,30 @@ if (!isNull _player) then {
 		_server_vars = _arr select 3;
 		_vars = _arr select 4;
 
+        // Get player group
 		_playerGroup = _arr select 10;
+        // check players group
+        if (_playerGroup != "") then {
+            _found = false;
+            (["Group", _playerGroup] call EPOCH_fnc_server_hiveGETRANGE) params [
+                ["_status", 0, [0] ],
+                ["_data", [], [[]] ]
+            ];
+            if (_status == 1 && !(_data isEqualTo[])) then {
+                _data params ["","","","_modArray","_memberArray"];
+                _found = _playerGroup == _playerUID;
+                if (!_found) then {
+                    {
+                        if (_x select 0 == _playerUID) exitWith{_found = true;};
+                    }forEach (_modArray + _memberArray);
+                };
+            };
+            if (!_found) then {
+                _playerGroup = "";
+            };
+            diag_log format["DEBUG (Load Player) Set Group: %1", _playerGroup];
+        };
+
 		_canBeRevived = _arr select 11;
 
 		_hitpoints = _vars select 11;
@@ -86,10 +109,28 @@ if (!isNull _player) then {
 		_deadPlayer = ["PlayerStats", _playerUID, 0] call EPOCH_fnc_server_hiveGETBIT;
 		_alreadyDead = (_deadPlayer || (_medical select 3 == 1) || (_hitpoints select 2 == 1) || (_hitpoints select 3 == 1) || (_vars select 12 >= 180));
 
+
 		if (_alreadyDead || _prevInstance != _instanceID || (count _location) < 3 || !(_location isEqualType [])) then {
 			_dir = random 360;
-			_location = getMarkerPos "respawn_west";
-			_location set[2, 0];
+            // try to find respawn point by position
+            _newLocation = _server_vars param [0,[]]; // 0 = RESPAWN POS
+            if (_newLocation isEqualType [] && {(count _newLocation) == 3}) then {
+                _jammers = nearestObjects[_newLocation, ["PlotPole_EPOCH"], 1];
+                if !(_jammers isEqualTo[]) then {
+                    // get nearby jammer
+                    _jammer = _jammers param [0,objNull];
+                    // check if jammer is not null and is alive.
+                    if (!isNull _jammer && {alive _jammer}) then {
+                        // check if player is still a member of jammers group.
+                        if ((_jammer getVariable["BUILD_OWNER", "-1"]) in [getPlayerUID player, _playerGroup]) then {
+                            _location = _newLocation;
+                        };
+                    };
+                };
+            } else {
+                _location = getMarkerPos "respawn_west";
+                _location set[2, 0];
+            };
 			if (_alreadyDead) then {
 				_vars = call EPOCH_defaultVars_SEPXVar;
 				_canBeRevived = true;
@@ -262,36 +303,9 @@ if (!isNull _player) then {
                 _reject = false;
                 _playerGroupArray = [];
 
-				if (_playerGroup != "") then {
-					_response = ["Group", _playerGroup] call EPOCH_fnc_server_hiveGETRANGE;
-					_found = false;
-					if ((_response select 0) == 1 && (_response select 1) isEqualType [] && !((_response select 1) isEqualTo[])) then {
-						_playerGroupArray = _response select 1;
-						_found = _playerGroup == _playerUID;
-						if (!_found) then {
-								{
-									if (_x select 0 == _playerUID) exitWith{
-										_found = true;
-									};
-								}forEach(_playerGroupArray select 4);
-						};
-						if (!_found) then {
-								{
-									if (_x select 0 == _playerUID) exitWith{
-										_found = true;
-									};
-								}forEach(_playerGroupArray select 3);
-						};
-						if (_found) then {
-							_newPlyr setVariable["GROUP", _playerGroup];
-						};
-					};
-					if (!_found) then {
-						_playerGroup = "";
-					};
-					diag_log format["DEBUG (Load Player) Set Group: %1", _playerGroup];
-				};
-
+                if (_playerGroup != "") then {
+                    _newPlyr setVariable["GROUP", _playerGroup];
+                };
 
 				_newPlyr setVariable["PUID", _playerUID];
 
