@@ -107,7 +107,7 @@ if (!local _player) then {
 						if ((_x getVariable["GROUP",""]) == _playerGroup) exitWith {
 							_group = group _x;
 						};
-					}forEach allPlayers;
+					}forEach (allPlayers select {alive _x});
 
 					if (isNull _group) then {
 						_group = createGroup west;

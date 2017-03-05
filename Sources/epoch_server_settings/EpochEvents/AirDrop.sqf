@@ -10,10 +10,7 @@ _chance = 50;
 if (random 100 < _chance) then {
 
     // get all alive players
-    _players = [];
-    {
-        if (alive _x) then {_players pushBack _x};
-    } forEach allPlayers;
+    _players = allPlayers select {alive _x};
 
     // continue if players found alive
     if !(_players isEqualTo []) then {
