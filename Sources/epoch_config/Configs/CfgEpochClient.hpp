@@ -42,10 +42,10 @@ class CfgEpochClient
 
     disableRemoteSensors = "true";  // disableRemoteSensors true/false
     EPOCH_news[] = {"Word is that Sappers have a new boss.","Dogs will often lure them monsters away.","My dog was blown up. I miss him.."};
-    deathMorphClass[] = {"Epoch_Sapper_F","Epoch_SapperB_F","I_UAV_01_F","Epoch_Cloak_F"}; //Random selection of these classes when player morphs after death. Currently available: Epoch_Cloak_F, Epoch_SapperB_F, Epoch_Sapper_F, I_UAV_01_F
+    deathMorphClass[] = {"Epoch_Sapper_F","Epoch_SapperG_F","Epoch_SapperB_F","I_UAV_01_F","Epoch_Cloak_F"}; //Random selection of these classes when player morphs after death. Currently available: Epoch_Cloak_F, Epoch_SapperB_F, Epoch_Sapper_F, I_UAV_01_F
     niteLight[] = {1,1.88,22}; //Set ambient lighting at night: {Brightness of light,Height of light}. Default (Low Ambient): {1.88,22} | Twilight: {7.2,88} | Distant: {12.8,142}
     ryanZombiesEnabled = "true";
-    antagonistSpawnIndex[] = {{"Epoch_Cloak_F",1},{"GreatWhite_F",2},{"Epoch_Sapper_F",2},{"Epoch_SapperB_F",1},{"I_UAV_01_F",2},{"PHANTOM",1},{"B_Heli_Transport_01_F",1},{"EPOCH_RyanZombie_1",12},{"I_Soldier_EPOCH",1}}; // {"type", limit}
+    antagonistSpawnIndex[] = {{"Epoch_Cloak_F",1},{"GreatWhite_F",2},{"Epoch_Sapper_F",2},{"Epoch_SapperG_F",1},{"Epoch_SapperB_F",1},{"I_UAV_01_F",2},{"PHANTOM",1},{"B_Heli_Transport_01_F",1},{"EPOCH_RyanZombie_1",12},{"I_Soldier_EPOCH",1}}; // {"type", limit}
     customVarsDefaults[] = {{"Temp",98.6,{106.7,95,102,105,96,95}},{"Hunger",1500,{5000,0,5001,5001,1250,0}},{"Thirst",750,{2500,0,2501,2501,625,0}},{"AliveTime",0,{-2,0}},{"Energy",0,{2500,0}},{"Wet",0,{100,0,35,55,-1,-1}},{"Soiled",0,{100,0,35,55,-1,-1}},{"Immunity",0,{100,0}},{"Toxicity",0,{100,0,35,55,-1,-1}},{"Stamina",100,{"EPOCH_playerStaminaMax",0}},{"Crypto",0,{250000,0}},{"HitPoints",{0,0,0,0},{1,0,0.5,1,-1,-1}},{"BloodP",100,{190,0,120,140,70,50}},{"SpawnArray",{},{}},{"Karma",0,{50000,-50000}},{"Alcohol",0,{100,0,35,55,-1,-1}},{"Radiation",0,{100,0,35,55,-1,-1}},{"Nuisance",0,{100,0}},{"MissionArray",{},{}}}; // EPOCH_player + varName, default value, {max,min,high-warn,high-critical,low-warn,low-critical}
     hudConfigs[] = {{{"BloodP","","",{"getPlayerDamage",">=",0.7}},"topRight","x\addons\a3_epoch_code\Data\UI\bleeding_ca.paa",{"forceUpdate"}},{{"Oxygen","getPlayerOxygenRemaining","",{},{1,0,2,2,1,0.55}},"topRight","x\addons\a3_epoch_code\Data\UI\oxygen_ca.paa"},{"Hunger","topRight","x\addons\a3_epoch_code\Data\UI\hunger_ca.paa",{"forceBloodRise"}},{"Thirst","topRight","x\addons\a3_epoch_code\Data\UI\thirst_ca.paa",{"forceBloodRise"}},{"Temp","topRight",{"x\addons\a3_epoch_code\Data\UI\hot_ca.paa","x\addons\a3_epoch_code\Data\UI\cold_ca.paa"},{"forceFatigue"}},{"Toxicity","topRight","x\addons\a3_epoch_code\Data\UI\hazzard_ca.paa"},{"Alcohol","topRight","x\addons\a3_epoch_code\Data\UI\drunk_ca.paa"},{"Soiled","topRight","x\addons\a3_epoch_code\Data\UI\soiled_ca.paa"},{"Radiation","topRight","x\addons\a3_epoch_code\Data\UI\rads_ca.paa"},{{"HitPoints","getPlayerHitPointDamage","HitLegs"},"topRight","x\addons\a3_epoch_code\Data\UI\broken_ca.paa"}};
     group_upgrade_lvl[] = {4,"1000",6,"1500",8,"2000",10,"2500",12,"3000",14,"3500",16,"4000",32,"8000",64,"16000"}; // controls max group limit and cost
@@ -70,8 +70,8 @@ class CfgEpochClient
     GetInMan = "_this call EPOCH_getInMan;_this call Epoch_custom_EH_GetInMan";
     GetOutMan = "_this call EPOCH_getOutMan;_this call Epoch_custom_EH_GetOutMan";
     // suppress these units from spawning near Jammer or Traders
-    nonJammerAI[] = {"B_Heli_Transport_01_F","PHANTOM","EPOCH_Sapper_F","Epoch_SapperB_F","I_UAV_01_F","EPOCH_RyanZombie_1"};
-    nonTraderAI[] = {"B_Heli_Transport_01_F","PHANTOM","EPOCH_Sapper_F","Epoch_SapperB_F","I_UAV_01_F","Epoch_Cloak_F","GreatWhite_F","EPOCH_RyanZombie_1"};
+    nonJammerAI[] = {"B_Heli_Transport_01_F","PHANTOM","EPOCH_Sapper_F","Epoch_SapperG_F","Epoch_SapperB_F","I_UAV_01_F","EPOCH_RyanZombie_1"};
+    nonTraderAI[] = {"B_Heli_Transport_01_F","PHANTOM","EPOCH_Sapper_F","Epoch_SapperG_F","Epoch_SapperB_F","I_UAV_01_F","Epoch_Cloak_F","GreatWhite_F","EPOCH_RyanZombie_1"};
     nonTraderAIRange = 50;
     fishLoots[] = {"ItemTuna","ItemSeaBass","ItemSeaBass","ItemSeaBass","ItemTrout","ItemTrout","ItemTrout","ItemTrout","ItemTrout","ItemTrout"}; // Fishing loots
     animalAiTables[] = {"Sheep_random_EPOCH","Sheep_random_EPOCH","Goat_random_EPOCH","Goat_random_EPOCH","Goat_random_EPOCH",{"Cock_random_EPOCH","Hen_random_EPOCH"},{"Cock_random_EPOCH","Hen_random_EPOCH"},"Rabbit_EPOCH","Rabbit_EPOCH","Rabbit_EPOCH","Snake_random_EPOCH","Snake2_random_EPOCH",{"Fin_random_EPOCH","Alsatian_Random_EPOCH"}}; // Animal spawn table

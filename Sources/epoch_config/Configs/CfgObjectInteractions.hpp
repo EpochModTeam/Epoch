@@ -105,6 +105,12 @@ class CfgObjectInteractions
         aliveState = 1;
         interactAttributes[] = {{"Toxicity",20,1},{"Soiled",20,1}};
     };
+    class Epoch_SapperG_F : Default
+    {
+        interactMode = 3;
+        aliveState = 1;
+        interactAttributes[] = {{"Toxicity",50,1},{"Soiled",50,1}};
+    };
     class Epoch_SapperB_F : Default
     {
         interactMode = 3;

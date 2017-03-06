@@ -34,6 +34,9 @@ if (!isNull _target) then {
 		case "SapperB": {
 			"Epoch_SapperB_F" remoteExec ['EPOCH_unitSpawnIncrease',_target];
 		};
+        case "SapperG": {
+			"Epoch_SapperG_F" remoteExec ['EPOCH_unitSpawnIncrease',_target];
+		};
 		case "PHANTOM": {
 			"PHANTOM" remoteExec ['EPOCH_unitSpawnIncrease',_target];
 		};

@@ -911,6 +911,17 @@ class CfgLootTable
 				{ { "Pelt_EPOCH", "magazine" }, 29 }
 		};
 	};
+    class Epoch_SapperG_F
+    {
+        items[] = {
+                { { "SmokeShellToxic", "magazine" }, 9 },
+                { { "WhiskeyNoodle", "magazine" }, 13 },
+                { { "ItemKiloHemp", "magazine" }, 15 },
+                { { "ItemSilverBar", "magazine" }, 17 },
+                { { "HotColdPacks", "CfgLootTable" }, 17 },
+                { { "Pelt_EPOCH", "magazine" }, 29 }
+        };
+    };
 
 	class I_UAV_01_F
 	{

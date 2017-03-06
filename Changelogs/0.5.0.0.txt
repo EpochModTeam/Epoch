@@ -3,14 +3,14 @@
 [Added] Crafting recipe: Mortar (Uses: 12x Rock, 2x dirty water) (Requires: Fire and workbench within 3m). Thanks to @baaljayjay for the suggestion.
 [Added] Customizability of units spawned by UAV alert via CfgEpochClient > uavAlertUnitSpawnTemplate. (Default: I_Soldier_EPOCH)
 [Added] Toxic Smoke Grenades can now be found in the world.
-[Added] Allow respawn in base at Jammer. Interact with Jammer and choose "Make Spawnpoint" to enable.
+[Added] Respawn in base feature, each player must interact with Jammer and choose "Make Spawnpoint" to enable.
+[Added] Selling to traders with bank debt greater than -50000(default), pays the bank debt back to below the limit instead of the player. Thanks to @Ignatz-HeMan
 [Changed] Optimized database SET and SETEX calls in both SQF and C++.
 [Changed] Optimized database GETRANGE call.
 [Changed] Optimized NPC Trading and fixed issue if trade failed. Thanks to @Ignatz-HeMan
-[Changed] Selling to traders with bank debt greater than -50000(default), pays the bank debt back to below the limit instead of the player. Purchasing is unaffected. Thanks to @Ignatz-HeMan
 [Changed] Great White Sharks will now spawn if the player is deep enough in the ocean.
 [Changed] Objects or Players that have been given "Crypto" variable can be accessed via the dynamic menu (Space Bar) for a "Take Crypto" action.
-[Changed] Air Drops are now triggered with Epoch Events server side every 45m instead of randomly triggered client side.
+[Changed] Air Drops are now triggered via Epoch Events server side every 45m at random, instead of randomly triggered client side.
 [Fixed] To prevent issues with ownership only Group Leader can place a Jammer. Thanks to @Ignatz-HeMan
 [Fixed] Wrong variable name in EPOCH_clientRevive.sqf. Thanks to @Ignatz-HeMan
 [Fixed] Sometimes getting stuck only walking. Thanks to @Ignatz-HeMan
