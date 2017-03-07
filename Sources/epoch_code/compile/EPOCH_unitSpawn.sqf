@@ -170,7 +170,6 @@ switch _unitClass do {
             getNumber (getMissionConfig "CfgEpochSoldier" >> "maxCommanding"),
             getNumber (getMissionConfig "CfgEpochSoldier" >> "maxGeneral")
         ];
-        _units = [];
         for "_i" from 0 to (_unitCount - 1) do {
         	_unit = _grp createUnit[selectRandom _arrUnits, _pos, [], 0, "FORM"];
         	_units pushBack _unit;
