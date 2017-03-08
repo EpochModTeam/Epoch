@@ -35,6 +35,10 @@ if (!local _player) then {
 		if (_class in ["Epoch_Male_F", "Epoch_Female_F"]) then {
 
 			if (_player getVariable["REVIVE", true]) then {
+				if (_player getvariable ['Reviving', false]) exitwith {
+					diag_log format['DEBUG Reviving skipped - Player already reviving : %1', _this];
+				};
+				_player setvariable ['Reviving',true];
 
 				diag_log format["DEBUG server_revivePlayer : %1", _this];
 
@@ -55,21 +59,7 @@ if (!local _player) then {
 				_secondaryWeapon = "";
 
 				_wh = nearestObjects[_player, ["WeaponHolderSimulated"], 12];
-/*
-				_droppedWeapons = [];
-				reverse _wh;
-				{
-					{
-						_droppedWeapons pushBack _x;
-						_type = getNumber(configfile >> "cfgweapons" >> (_x select 0) >> "type");
-						switch _type do {
-							case 1: { _primaryWeapon = _x select 0 };
-							case 4: { _secondaryWeapon = _x select 0 };
-						};
-					} forEach (weaponsItemsCargo _x);
 
-				} foreach _wh;
-*/
 				_droppedPrimary = [];
 				_droppedSecondary = [];
 				_droppedWeapons = [];
