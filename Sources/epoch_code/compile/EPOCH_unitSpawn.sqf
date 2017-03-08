@@ -99,7 +99,7 @@ switch _unitClass do {
 		for "_i" from 0 to (_unitCount-1) do {
 			_unit = createAgent[_unitClass, _targetPos, [], 256, "FORM"];
 			_units pushBack _unit;
-			_bomb = createVehicle ["SmokeShellToxic", _targetPos, [], 0, "CAN_COLLIDE"];
+			_bomb = createVehicle ["SmokeShellToxicSapper", _targetPos, [], 0, "CAN_COLLIDE"];
 			_bomb attachTo [_unit, [0,0,0],"Pelvis"];
 			_unit call _disableAI;
 			_sapperHndl = [_unit, _bomb, _trgt] execFSM "\x\addons\a3_epoch_code\System\Sapper_Brain.fsm";
