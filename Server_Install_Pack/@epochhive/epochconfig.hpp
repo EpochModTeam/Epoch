@@ -17,7 +17,7 @@ events[] = {
     // { 1200, "MessageServer", 0, 1},
     { 2700, "AirDrop", 0 , 1},
     { 2400, "EarthQuake", 0 , 1},
-    { 1800, "ChangeWeather", 1 , 1},
+    { 900, "ChangeWeather", 1 , 1},
     { 1200, "ContainerSpawner", 0 , 1},
     { 300, "PlantSpawner", 0 , 1} //No comma on last Entry
 };

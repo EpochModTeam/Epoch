@@ -34,21 +34,20 @@ class Mission
 	class Intel
 	{
 		briefingName="Epoch Mod";
-		timeOfChanges=1800.0002;
-		startWeather=0.30000001;
-		startWind=0.1;
-		startWaves=0.1;
-		forecastWeather=0.30000001;
-		forecastWind=0.1;
-		forecastWaves=0.1;
-		forecastLightnings=0.1;
+		timeOfChanges=28800;
+        startWeather=0;
+		startWind=0;
+		forecastWeather=0;
+		forecastWind=0;
+		forecastWaves=0;
+		forecastLightnings=0;
 		year=2035;
 		month=6;
 		day=24;
 		hour=12;
 		minute=0;
-		startFogDecay=0.013;
-		forecastFogDecay=0.013;
+		startFogDecay=0;
+		forecastFogDecay=0;
 	};
 	class Entities
 	{
