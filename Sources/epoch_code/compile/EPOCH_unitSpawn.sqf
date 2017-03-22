@@ -123,7 +123,6 @@ switch _unitClass do {
 	};
 	case "I_UAV_01_F": {
 		for "_i" from 0 to (_unitCount-1) do {
-			_targetPos = getPosATL _trgt;
 			_targetPos = [_targetPos, 600, 1200, 5, 0, 400, 0] call BIS_fnc_findSafePos;
 			_targetPos set[2, 600];
 			_unit = createVehicle["I_UAV_01_F", _targetPos, [], 0, "FLY"];
@@ -151,7 +150,6 @@ switch _unitClass do {
 		};
 	};
     case "I_Soldier_EPOCH": {
-        _extraData params [["_pos",getpos player],["_copter",objnull]];
 		_grp = createGroup RESISTANCE;
 		_grp setBehaviour "COMBAT";
 		_grp setCombatMode "RED";
