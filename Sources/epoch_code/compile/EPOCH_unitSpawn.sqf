@@ -18,8 +18,6 @@ private ["_bomb","_config","_currentLimit","_disableAI","_driver","_grp","_index
 params ["_unitClass",["_trgt",player],["_doVariable",false],["_unitCount",1],["_extraData",[]]];
 
 _bomb = objNull;
-// diag_log format["DEBUG: Antagonist %1 Spawning on %2. Do variable: %3.", _unitClass, _trgt, _doVariable];
-if(_doVariable)then{_unitClass call EPOCH_unitSpawnIncrease;};//Assumes Antagonist is required.
 
 _index = EPOCH_spawnIndex find _unitClass;
 _spawnLimit = 0;
@@ -150,6 +148,11 @@ switch _unitClass do {
 		};
 	};
     case "I_Soldier_EPOCH": {
+        _extraData params [["_pos",[]],["_copter",objnull]];
+        if (_pos isEqualTo []) then {
+            _pos = [_targetPos,80,150,1,true] call EPOCH_fnc_findSafePos;
+        };
+        _pos set [2,0];
 		_grp = createGroup RESISTANCE;
 		_grp setBehaviour "COMBAT";
 		_grp setCombatMode "RED";
