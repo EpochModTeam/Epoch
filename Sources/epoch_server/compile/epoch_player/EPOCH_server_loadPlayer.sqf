@@ -13,7 +13,7 @@
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server/compile/epoch_player/EPOCH_server_loadPlayer.sqf
 */
 //[[[cog import generate_private_arrays ]]]
-private ["_alreadyDead","_apperance","_arr","_attachments","_backpack","_canBeRevived","_class","_currWeap","_deadPlayer","_dir","_equipped","_found","_goggles","_group","_headgear","_hitpoints","_instanceID","_itemsInContainers","_linkedItems","_location","_medical","_newPlyr","_normalMagazines","_playerGroup","_playerGroupArray","_playerNetID","_playerUID","_prevInstance","_reject","_response","_serverSettingsConfig","_server_vars","_type","_uniform","_vars","_vest","_wMags","_wMagsArray","_weapon","_weaponsAndItems","_weaponsInContainers","_worldspace"];
+private ["_alreadyDead","_apperance","_arr","_attachments","_backpack","_canBeRevived","_class","_currWeap","_deadPlayer","_dir","_equipped","_found","_goggles","_group","_headgear","_hitpoints","_instanceID","_itemsInContainers","_jammer","_jammers","_linkedItems","_location","_medical","_newLocation","_newPlyr","_normalMagazines","_playerGroup","_playerGroupArray","_playerNetID","_playerUID","_prevInstance","_reject","_response","_serverSettingsConfig","_server_vars","_type","_uniform","_vars","_vest","_wMags","_wMagsArray","_weapon","_weaponsAndItems","_weaponsInContainers","_worldspace"];
 //[[[end]]]
 _reject = true;
 
@@ -84,11 +84,11 @@ if (!isNull _player) then {
         if (_playerGroup != "") then {
             _found = false;
             (["Group", _playerGroup] call EPOCH_fnc_server_hiveGETRANGE) params [
-                ["_status", 0, [0] ],
-                ["_data", [], [[]] ]
+                ["_status", 0 ],
+                ["_playerGroupArray", [] ]
             ];
-            if (_status == 1 && !(_data isEqualTo[])) then {
-                _data params ["","","","_modArray","_memberArray"];
+            if (_status == 1 && !(_playerGroupArray isEqualTo[])) then {
+                _playerGroupArray params ["","","","_modArray","_memberArray"];
                 _found = _playerGroup == _playerUID;
                 if (!_found) then {
                     {
@@ -98,6 +98,7 @@ if (!isNull _player) then {
             };
             if (!_found) then {
                 _playerGroup = "";
+                _playerGroupArray = [];
             };
             diag_log format["DEBUG (Load Player) Set Group: %1", _playerGroup];
         };
@@ -302,7 +303,6 @@ if (!isNull _player) then {
 				diag_log "Epoch: DEBUG: _player object was null reject connection";
 			} else {
                 _reject = false;
-                _playerGroupArray = [];
 
                 if (_playerGroup != "") then {
                     _newPlyr setVariable["GROUP", _playerGroup];
