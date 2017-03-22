@@ -17,8 +17,14 @@ if (!isNull _object && !(_class isEqualTo "")) then {
                 _newObj attachTo [_object,[0,0,0]];
             };
         };
-
         deleteVehicle _object;
+
+        // force nearby players to reveal new object faster
+        _playersNear = _newObj nearEntities[["Epoch_Male_F", "Epoch_Female_F"], 300];
+        {
+            [_x, _newObj] remoteExec ['reveal',_x];
+        }forEach _playersNear;
+
     };
 };
 _newObj
