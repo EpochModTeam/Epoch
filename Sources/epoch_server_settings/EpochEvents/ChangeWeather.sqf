@@ -98,7 +98,8 @@ if (_rain > 0.1) then {
 };
 
 if !(isNil "_windOVRD") then {
-    _windOVRD params ["_windValX","_windValZ"];
+    _windValX = _windOVRD select 0;
+    _windValZ = _windOVRD select 1;
 };
 
 // cooler at night
