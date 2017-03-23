@@ -22,7 +22,7 @@ Epoch_my_Group params [
     ["_leaderName",""],
     ["_groupSize",0],
     ["_modArray",[]],
-    ["_memberArray",[]],
+    ["_memberArray",[]]
 ];
 if (getPlayerUID player == Epoch_my_GroupUID) then {
 	_BtnLeave ctrlSetText "Delete Group";

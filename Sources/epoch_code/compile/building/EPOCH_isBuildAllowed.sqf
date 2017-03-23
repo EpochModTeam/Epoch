@@ -103,9 +103,9 @@ if !(_jammer isEqualTo []) then {
                     ["_leaderName",""],
                     ["_groupSize",0],
                     ["_modArray",[]],
-                    ["_memberArray",[]],
+                    ["_memberArray",[]]
                 ];
-				_membercount = count _modArray + count _memberArray
+				_membercount = count _modArray + count _memberArray;
 				_storageCountLimit = _storageCountLeader + (_storageCountPerMember * _membercount);
 				_buildingCountLimit = _buildingCountLeader + (_buildingCountPerMember * _membercount);
 			};

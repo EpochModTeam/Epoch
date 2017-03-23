@@ -22,7 +22,7 @@ Epoch_my_Group params [
     ["_leaderName",""],
     ["_groupSize",0],
     ["_modArray",[]],
-    ["_memberArray",[]],
+    ["_memberArray",[]]
 ];
 
 _ctrl = _this select 0;

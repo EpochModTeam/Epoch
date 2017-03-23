@@ -27,7 +27,7 @@ Epoch_my_Group params [
     ["_leaderName",""],
     ["_groupSize",0],
     ["_modArray",[]],
-    ["_memberArray",[]],
+    ["_memberArray",[]]
 ];
 
 _currentMaxMember = count(_modArray) + count(_memberArray) + 1;

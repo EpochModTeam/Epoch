@@ -25,7 +25,7 @@ Epoch_my_Group params [
     ["_leaderName",""],
     ["_groupSize",0],
     ["_modArray",[]],
-    ["_memberArray",[]],
+    ["_memberArray",[]]
 ];
 
 if (_playerUID == Epoch_my_GroupUID || {_x select 0 == _playerUID}count (_modArray) > 0) then {
@@ -37,9 +37,10 @@ if (_playerUID == Epoch_my_GroupUID || {_x select 0 == _playerUID}count (_modArr
 		if (_playerUID != "" && _playerName != "") then {
 			_txt = format["Do you want to kick %1 from your Group?",_playerName];
 			[_playerUID,_txt] spawn {
-				_ret = [_this select 1,"Epoch Group Menu",true,true] call BIS_fnc_GUImessage;
+                params ["_playerUID","_txt"];
+				_ret = [_txt,"Epoch Group Menu",true,true] call BIS_fnc_GUImessage;
 				if (_ret) then {
-					[Epoch_my_GroupUID,_this select 0,false,false,player,Epoch_personalToken] remoteExec ["EPOCH_server_updatePlayerGroup",2];
+					[Epoch_my_GroupUID,_playerUID,false,false,player,Epoch_personalToken] remoteExec ["EPOCH_server_updatePlayerGroup",2];
 				};
 			};
 		};

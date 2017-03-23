@@ -24,7 +24,7 @@ Epoch_my_Group params [
     ["_leaderName",""],
     ["_groupSize",0],
     ["_modArray",[]],
-    ["_memberArray",[]],
+    ["_memberArray",[]]
 ];
 
 if (_playerUID == Epoch_my_GroupUID || {_x select 0 == _playerUID}count (_modArray) > 0) then {
@@ -35,10 +35,11 @@ if (_playerUID == Epoch_my_GroupUID || {_x select 0 == _playerUID}count (_modArr
 		_playerName = _InvitePlayerCombo lbText (lbCurSel _InvitePlayerCombo);
 		if (_playerUID != "" && _playerName != "" && ({_playerUID in _x} count (_modArray) == 0) && ({_playerUID in _x} count (_memberArray) == 0) && !(_playerUID == Epoch_my_GroupUID)) then {
 			_txt = format["Do you want to add %1 to your Group?",_playerName];
-			[_playerUID,_txt] spawn {
-				_ret = [_this select 1,"Epoch Group Menu",true,true] call BIS_fnc_GUImessage;
+			[_playerUID,_txt,_groupName] spawn {
+                params ["_playerUID","_txt","_groupName"];
+				_ret = [_txt,"Epoch Group Menu",true,true] call BIS_fnc_GUImessage;
 				if (_ret) then {
-					[_this select 0,Epoch_my_GroupUID,_groupName,player,Epoch_personalToken] remoteExec ["EPOCH_server_invitePlayer",2];
+					[_playerUID,Epoch_my_GroupUID,_groupName,player,Epoch_personalToken] remoteExec ["EPOCH_server_invitePlayer",2];
 				};
 			};
 		};
@@ -50,7 +51,8 @@ if (_playerUID == Epoch_my_GroupUID || {_x select 0 == _playerUID}count (_modArr
 				_upgradeSlots = EPOCH_group_upgrade_lvl select (_found+2);
 				_txt = format["Do you want to upgrade your group from %1 to %2 slots for %3 Krypto?",_groupSize,_upgradeSlots,_upgradePrice];
 				[_txt,_upgradePrice] spawn {
-					_ret = [_this select 0,"Epoch Group Menu",true,true] call BIS_fnc_GUImessage;
+                    params ["_txt","_upgradePrice"];
+					_ret = [_txt,"Epoch Group Menu",true,true] call BIS_fnc_GUImessage;
 					if (_ret) then {
 						[Epoch_my_GroupUID,player,Epoch_personalToken] remoteExec ["EPOCH_server_upgradeGroup",2];
 					};
