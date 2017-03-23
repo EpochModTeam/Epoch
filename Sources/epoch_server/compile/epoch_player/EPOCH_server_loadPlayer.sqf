@@ -13,7 +13,7 @@
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server/compile/epoch_player/EPOCH_server_loadPlayer.sqf
 */
 //[[[cog import generate_private_arrays ]]]
-private ["_alreadyDead","_apperance","_arr","_attachments","_backpack","_canBeRevived","_class","_currWeap","_deadPlayer","_dir","_equipped","_found","_goggles","_group","_headgear","_hitpoints","_instanceID","_itemsInContainers","_jammer","_jammers","_linkedItems","_location","_medical","_newLocation","_newPlyr","_normalMagazines","_playerGroup","_playerGroupArray","_playerNetID","_playerUID","_prevInstance","_reject","_response","_serverSettingsConfig","_server_vars","_type","_uniform","_vars","_vest","_wMags","_wMagsArray","_weapon","_weaponsAndItems","_weaponsInContainers","_worldspace"];
+private ["_alreadyDead","_attachments","_backpack","_canBeRevived","_class","_currWeap","_deadPlayer","_dir","_equipped","_found","_goggles","_group","_headgear","_hitpoints","_instanceID","_itemsInContainers","_jammer","_jammers","_linkedItems","_location","_newLocation","_newPlyr","_normalMagazines","_playerData","_playerGroup","_playerGroupArray","_playerNetID","_playerUID","_reject","_serverSettingsConfig","_type","_uniform","_vars","_vest","_wMags","_wMagsArray","_weapon","_weaponsAndItems","_weaponsInContainers"];
 //[[[end]]]
 _reject = true;
 
@@ -30,14 +30,18 @@ if (!isNull _player) then {
 
     _playerNetID = owner _player;
 	_playerUID = getPlayerUID _player;
+
 	if (_playerUID != "") then {
 
 		// Make Hive call
-		_response = ["Player", _playerUID] call EPOCH_fnc_server_hiveGETRANGE;
-		_arr = [];
-		if ((_response select 0) == 1 && (_response select 1) isEqualType []) then {
-			_arr = (_response select 1);
-		};
+		_playerData = [];
+        (["Player", _playerUID] call EPOCH_fnc_server_hiveGETRANGE) params [
+            ["_status", 0 ],
+            ["_playerDataTmp", [] ]
+        ];
+        if (_status == 1 && _playerDataTmp isEqualType []) then {
+            _playerData = _playerDataTmp;
+        };
 
 		// Apperance defaults
 		_uniform = [_serverSettingsConfig, "defaultUniformFemale", "U_Test_uniform"] call EPOCH_fnc_returnConfigEntry;
@@ -61,25 +65,21 @@ if (!isNull _player) then {
 
 
         // todo make dynamic
-		if (count _arr < 11) then { // invaild format attempt to override
-			_arr = [[0, [], _instanceID], [0, 0, 1, 0, []], [_goggles, _headgear, _vest, _backpack, _uniform, _class], [], call EPOCH_defaultVars_SEPXVar, _weaponsAndItems, _linkedItems, _normalMagazines, _itemsInContainers, _weaponsInContainers, "", true];
+		if (count _playerData < 11) then { // invaild format attempt to override
+			_playerData = [[0, [], _instanceID], [0, 0, 1, 0, []], [_goggles, _headgear, _vest, _backpack, _uniform, _class], [], call EPOCH_defaultVars_SEPXVar, _weaponsAndItems, _linkedItems, _normalMagazines, _itemsInContainers, _weaponsInContainers, "", true];
 		};
 
-		_worldspace = _arr select 0;
-		_dir = _worldspace select 0;
-		_location = _worldspace select 1;
+        _playerData params ["_worldspace","_medical","","_server_vars","_vars","","","","","","_playerGroup","_canBeRevived"];
+
+		// Load world space and previous instance id
+        _worldspace params ["_dir","_location","_prevInstance"];
 
 		if (count _location == 2) then{
 			_location = (_location select 0) vectorAdd (_location select 1);
 		};
 
-		_prevInstance = _worldspace select 2;
-		_medical = _arr select 1;
-		_server_vars = _arr select 3;
-		_vars = _arr select 4;
-
         // Get player group
-		_playerGroup = _arr select 10;
+        _playerGroupArray = [];
         // check players group
         if (_playerGroup != "") then {
             _found = false;
@@ -102,8 +102,6 @@ if (!isNull _player) then {
             };
             diag_log format["DEBUG (Load Player) Set Group: %1", _playerGroup];
         };
-
-		_canBeRevived = _arr select 11;
 
 		_hitpoints = _vars select 11;
 
@@ -181,25 +179,15 @@ if (!isNull _player) then {
 
 			if (!_alreadyDead) then {
 				// Medical
-				_newPlyr setBleedingRemaining(_medical select 0);
-				// _newPlyr setFatigue (_medical select 1);
-				_newPlyr setOxygenRemaining(_medical select 2);
-				_newPlyr setDamage(_medical select 3);
-
-				// Apperance
-				_apperance = _arr select 2;
-				_goggles = _apperance select 0;
-				_headgear = _apperance select 1;
-				_vest = _apperance select 2;
-				_backpack = _apperance select 3;
-				_uniform = _apperance select 4;
-
-				// Weapons
-				_weaponsAndItems = _arr select 5;
-				_linkedItems = _arr select 6;
-				_normalMagazines = _arr select 7;
-				_itemsInContainers = _arr select 8;
-				_weaponsInContainers = _arr select 9;
+                _medical params ["_bleedingRemaining","_fatigue","_oxygenRemaining","_damage"];
+				_newPlyr setBleedingRemaining _bleedingRemaining;
+				// _newPlyr setFatigue _fatigue;
+				_newPlyr setOxygenRemaining _oxygenRemaining;
+				_newPlyr setDamage _damage;
+				// Apperance + Weapons
+                _playerData params ["","","_apperance","","","_weaponsAndItems","_linkedItems","_normalMagazines","_itemsInContainers","_weaponsInContainers"];
+				// load Apperance
+                _apperance params ["_goggles","_headgear","_vest","_backpack","_uniform"];
 			};
 
 			// Load Apperance START
@@ -222,7 +210,7 @@ if (!isNull _player) then {
 
 			// Load inventory + defaults START
 			if (count _weaponsAndItems >= 3) then {
-				_equipped = _weaponsAndItems select 2;
+                _weaponsAndItems params ["_currWeap","_weaponsAndItemsArray","_equipped"];
 				{
 					_weapon = _x deleteAt 0;
 					_type = getNumber(configfile >> "cfgweapons" >> _weapon >> "type");
@@ -275,8 +263,7 @@ if (!isNull _player) then {
 							_newPlyr addItem _x;
 						} forEach _attachments;
 					};
-				} forEach(_weaponsAndItems select 1);
-				_currWeap = _weaponsAndItems select 0;
+				} forEach _weaponsAndItemsArray;
 			};
 			// Linked items
 			{
