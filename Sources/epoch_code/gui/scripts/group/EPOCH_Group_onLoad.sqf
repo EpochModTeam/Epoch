@@ -13,7 +13,7 @@
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_code/gui/group/EPOCH_Group_onLoad.sqf
 */
 //[[[cog import generate_private_arrays ]]]
-private ["_BtnInvite","_GroupMemberList","_InvitePlayerCombo","_currentMaxMember","_currentMember","_display","_found","_index","_myPlayerUID","_onlinePUID","_picture","_playerIsLeader","_playerIsMod","_playerUID","_players"];
+private ["_BtnInvite","_GroupMemberList","_InvitePlayerCombo","_currentMaxMember","_display","_found","_index","_myPlayerUID","_onlinePUID","_picture","_playerIsLeader","_playerIsMod","_playerUID","_players"];
 //[[[end]]]
 disableSerialization;
 _display = findDisplay -1300;
@@ -22,13 +22,21 @@ _BtnInvite = _display displayCtrl 30;
 _GroupMemberList = _display displayCtrl 40;
 _InvitePlayerCombo = _display displayCtrl 41;
 
-_currentMaxMember = count(Epoch_my_Group select 3) + count(Epoch_my_Group select 4) + 1;
-_currentMember = Epoch_my_Group select 2;
-(_display displayCtrl 21) ctrlSetText format["Group Name: %1 (%2/%3 Slots)",Epoch_my_Group select 0,_currentMaxMember,_currentMember];
+Epoch_my_Group params [
+    ["_groupName",""],
+    ["_leaderName",""],
+    ["_groupSize",0],
+    ["_modArray",[]],
+    ["_memberArray",[]],
+];
+
+_currentMaxMember = count(_modArray) + count(_memberArray) + 1;
+
+(_display displayCtrl 21) ctrlSetText format["Group Name: %1 (%2/%3 Slots)",_groupName,_currentMaxMember,_groupSize];
 
 _myPlayerUID = getPlayerUID player;
 _playerIsLeader = _myPlayerUID == Epoch_my_GroupUID;
-_playerIsMod = {_x select 0 == _myPlayerUID}count (Epoch_my_Group select 3) > 0;
+_playerIsMod = {_x select 0 == _myPlayerUID}count (_modArray) > 0;
 (_display displayCtrl 32) ctrlEnable false;
 (_display displayCtrl 33) ctrlEnable false;
 
@@ -37,7 +45,7 @@ _onlinePUID = [];
 	_onlinePUID pushBack (getPlayerUID _x);
 }forEach (units group player);
 
-if (_currentMaxMember < _currentMember) then {
+if (_currentMaxMember < _groupSize) then {
 	_players = player nearEntities [["Epoch_Male_F","Epoch_Female_F","LandVehicle","Ship","Air","Tank"], 10];
 
 	if (_playerIsLeader || _playerIsMod) then {
@@ -90,7 +98,7 @@ if (_currentMaxMember < _currentMember) then {
 	}forEach _x;
 }forEach
 [
-	[[Epoch_my_GroupUID,Epoch_my_Group select 1]],
-	Epoch_my_Group select 3,
-	Epoch_my_Group select 4
+	[[Epoch_my_GroupUID,_leaderName]],
+	_modArray,
+	_memberArray
 ];

@@ -19,7 +19,16 @@ disableSerialization;
 _BtnKick = (findDisplay -1300) displayCtrl 33;
 
 _playerUID = getPlayerUID player;
-if (_playerUID == Epoch_my_GroupUID || {_x select 0 == _playerUID}count (Epoch_my_Group select 3) > 0) then {
+
+Epoch_my_Group params [
+    ["_groupName",""],
+    ["_leaderName",""],
+    ["_groupSize",0],
+    ["_modArray",[]],
+    ["_memberArray",[]],
+];
+
+if (_playerUID == Epoch_my_GroupUID || {_x select 0 == _playerUID}count (_modArray) > 0) then {
 	_group = (findDisplay -1300) displayCtrl 40;
 	_selected = lbCurSel _group;
 	if (_selected >= 0) then {
