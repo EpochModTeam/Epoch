@@ -70,10 +70,10 @@ _randomRainValue = [0,1,0];
 _randomOvercastValue = [0,1,0];
 _randomLightningValue = [0,1,0];
 
-_randomWindValX = [-7,0,7];
-_randomWindValZ = [-7,0,7];
-_randomWindRValX = [-15,0,15];
-_randomWindRValZ = [-15,0,15];
+_randomWindValX = [0,10,0];
+_randomWindValZ = [0,10,0];
+_randomWindRValX = [0,20,0];
+_randomWindRValZ = [0,20,0];
 
 // fog, rain, overcast.
 
@@ -98,8 +98,7 @@ if (_rain > 0.1) then {
 };
 
 if !(isNil "_windOVRD") then {
-	_windValX = _windOVRD select 0;
-	_windValZ = _windOVRD select 1;
+    _windOVRD params ["_windValX","_windValZ"];
 };
 
 // cooler at night
@@ -120,10 +119,7 @@ _WeatherChangeTime setFog _fog;
 _WeatherChangeTime setOvercast _overcast;
 _WeatherChangeTime setRain _rain;
 _WeatherChangeTime setLightnings _lightning;
-setWind[_windValX, _windValZ, true];
-
-// get random temp.
-
+setWind[_windValX, _windValZ, false];
 
 // push temp to all players and JIP.
 missionNamespace setVariable ["EPOCH_CURRENT_WEATHER", if (isNil "_tempOVRD") then { round(_temp) } else { _tempOVRD }, true];
