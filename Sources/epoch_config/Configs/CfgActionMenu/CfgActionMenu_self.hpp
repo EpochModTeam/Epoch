@@ -51,8 +51,8 @@ class player_group_requests
 
 class base_mode_enable
 {
-	condition = "EPOCH_buildMode in [0,2] && EPOCH_playerEnergy > 0 && !dyna_inVehicle";
-	action = "EPOCH_stabilityTarget = objNull;EPOCH_buildMode = 1;['Build Mode: Enabled Snap alignment', 5] call Epoch_message;EPOCH_buildDirection = 0;";
+	condition = "EPOCH_buildMode in [0,2] && !dyna_inVehicle";
+	action = "if (EPOCH_playerEnergy > 0) then {EPOCH_stabilityTarget = objNull;EPOCH_buildMode = 1;['Build Mode: Enabled Snap alignment', 5] call Epoch_message;EPOCH_buildDirection = 0} else {['Need Energy!', 5] call Epoch_message};";
 	icon = "x\addons\a3_epoch_code\Data\UI\buttons\build_maintain.paa";
 	tooltip = "Build Mode: Snap alignment";
 };
