@@ -119,7 +119,7 @@ _WeatherChangeTime setFog _fog;
 _WeatherChangeTime setOvercast _overcast;
 _WeatherChangeTime setRain _rain;
 _WeatherChangeTime setLightnings _lightning;
-setWind[_windValX, _windValZ, false];
+setWind[_windValX, _windValZ, true];
 
 // push temp to all players and JIP.
 missionNamespace setVariable ["EPOCH_CURRENT_WEATHER", if (isNil "_tempOVRD") then { round(_temp) } else { _tempOVRD }, true];
