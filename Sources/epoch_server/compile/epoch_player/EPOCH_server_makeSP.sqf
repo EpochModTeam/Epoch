@@ -22,10 +22,23 @@ if (_player distance _jammer > 20) exitWith{};
 // check if in group with owner
 if (alive _jammer) then {
     if ((_jammer getVariable["BUILD_OWNER", "-1"]) in [getPlayerUID _player, _player getVariable["GROUP", ""]]) then {
-        // set position of spawnpoint to players SERVER_VARS
         _server_vars = _player getVariable["SERVER_VARS", []];
-        _server_vars set [0, getposATL _jammer]; // 0 = RESPAWN POS
-        _player setVariable ["SERVER_VARS", _server_vars];
-        ["Spawnpoint set", 5] remoteExec ['Epoch_message',_player];
+        if (_server_vars param [0,[]] isEqualTo []) then {
+            // set position of spawnpoint to players SERVER_VARS
+            _server_vars set [0, getposATL _jammer]; // 0 = RESPAWN POS
+            _player setVariable ["SERVER_VARS", _server_vars];
+            ["Spawnpoint set", 5] remoteExec ['Epoch_message',_player];
+        }
+        else
+        {
+            // remove position of spawnpoint from players SERVER_VARS
+            _server_vars set [0, []]; // 0 = RESPAWN POS
+            _player setVariable ["SERVER_VARS", _server_vars];
+            ["Spawnpoint removed", 5] remoteExec ['Epoch_message',_player];
+        };
+    }
+    else
+    {
+        ["This is not one of your Group's Jammers", 5] remoteExec ['Epoch_message',_player];
     };
 };
