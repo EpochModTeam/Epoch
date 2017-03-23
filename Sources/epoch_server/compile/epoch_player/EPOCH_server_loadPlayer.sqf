@@ -13,7 +13,7 @@
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server/compile/epoch_player/EPOCH_server_loadPlayer.sqf
 */
 //[[[cog import generate_private_arrays ]]]
-private ["_alreadyDead","_attachments","_backpack","_canBeRevived","_class","_currWeap","_deadPlayer","_dir","_equipped","_found","_goggles","_group","_headgear","_hitpoints","_instanceID","_itemsInContainers","_jammer","_jammers","_linkedItems","_location","_newLocation","_newPlyr","_normalMagazines","_playerData","_playerGroup","_playerGroupArray","_playerNetID","_playerUID","_reject","_serverSettingsConfig","_type","_uniform","_vars","_vest","_wMags","_wMagsArray","_weapon","_weaponsAndItems","_weaponsInContainers"];
+private ["_allGroupMembers","_alreadyDead","_attachments","_backpack","_canBeRevived","_class","_currWeap","_deadPlayer","_defaultData","_dir","_equipped","_found","_goggles","_group","_headgear","_hitpoints","_instanceID","_itemsInContainers","_jammer","_jammers","_linkedItems","_location","_newLocation","_newPlyr","_normalMagazines","_playerData","_playerGroup","_playerGroupArray","_playerNetID","_playerUID","_reject","_serverSettingsConfig","_type","_uniform","_vars","_vest","_wMags","_wMagsArray","_weapon","_weaponsAndItems","_weaponsInContainers"];
 //[[[end]]]
 _reject = true;
 
@@ -63,10 +63,12 @@ if (!isNull _player) then {
 		_normalMagazines = [_serverSettingsConfig, "normalMagazines", []] call EPOCH_fnc_returnConfigEntry;
 		_weaponsAndItems = [_serverSettingsConfig, "weaponsAndItems", ["", []] ] call EPOCH_fnc_returnConfigEntry;
 
+        // default data
+        _defaultData = [[0, [], _instanceID], [0, 0, 1, 0, []], [_goggles, _headgear, _vest, _backpack, _uniform, _class], [], call EPOCH_defaultVars_SEPXVar, _weaponsAndItems, _linkedItems, _normalMagazines, _itemsInContainers, _weaponsInContainers, "", true];
 
         // todo make dynamic
 		if (count _playerData < 11) then { // invaild format attempt to override
-			_playerData = [[0, [], _instanceID], [0, 0, 1, 0, []], [_goggles, _headgear, _vest, _backpack, _uniform, _class], [], call EPOCH_defaultVars_SEPXVar, _weaponsAndItems, _linkedItems, _normalMagazines, _itemsInContainers, _weaponsInContainers, "", true];
+			_playerData = _defaultData;
 		};
 
         _playerData params ["_worldspace","_medical","","_server_vars","_vars","","","","","","_playerGroup","_canBeRevived"];
@@ -85,22 +87,23 @@ if (!isNull _player) then {
             _found = false;
             (["Group", _playerGroup] call EPOCH_fnc_server_hiveGETRANGE) params [
                 ["_status", 0 ],
-                ["_playerGroupArray", [] ]
+                ["_playerGroupArrayTmp", [] ]
             ];
-            if (_status == 1 && !(_playerGroupArray isEqualTo[])) then {
-                _playerGroupArray params ["","","","_modArray","_memberArray"];
+            if (_status == 1 && !(_playerGroupArrayTmp isEqualTo[])) then {
+                _playerGroupArrayTmp params ["","","","_modArray","_memberArray"];
                 _found = _playerGroup == _playerUID;
                 if (!_found) then {
-                    {
-                        if (_x select 0 == _playerUID) exitWith{_found = true;};
-                    }forEach (_modArray + _memberArray);
+                    _allGroupMembers = (_modArray + _memberArray) apply {_x select 0};
+                    _found = _playerUID in _allGroupMembers;
+                };
+                if (_found) then {
+                    _playerGroupArray = _playerGroupArrayTmp;
                 };
             };
             if (!_found) then {
                 _playerGroup = "";
-                _playerGroupArray = [];
             };
-            diag_log format["DEBUG (Load Player) Set Group: %1", _playerGroup];
+            // diag_log format["DEBUG (Load Player) Set Group: %1", _playerGroup];
         };
 
 		_hitpoints = _vars select 11;
@@ -161,21 +164,15 @@ if (!isNull _player) then {
 
 		_player setPosATL _location;
 
-			_newPlyr = _group createUnit[_class, _location, [], 0, "CAN_COLLIDE"];
-		// diag_log format["DEBUG: _newPlyr %1 %2 %3",_newPlyr, _location, getPosATL _newPlyr];
-
+		_newPlyr = _group createUnit[_class, _location, [], 0, "CAN_COLLIDE"];
 		if !(isNull _newPlyr) then {
-
 			addToRemainsCollector[_newPlyr];
-
 			{
 				_newPlyr disableAI _x;
 			} forEach["FSM", "MOVE", "AUTOTARGET", "TARGET"];
 
 			_newPlyr setDir _dir;
 			_newPlyr setPosATL _location;
-
-			_currWeap = "";
 
 			if (!_alreadyDead) then {
 				// Medical
@@ -184,11 +181,15 @@ if (!isNull _player) then {
 				// _newPlyr setFatigue _fatigue;
 				_newPlyr setOxygenRemaining _oxygenRemaining;
 				_newPlyr setDamage _damage;
-				// Apperance + Weapons
-                _playerData params ["","","_apperance","","","_weaponsAndItems","_linkedItems","_normalMagazines","_itemsInContainers","_weaponsInContainers"];
-				// load Apperance
-                _apperance params ["_goggles","_headgear","_vest","_backpack","_uniform"];
-			};
+			} else {
+                // player dead use default Data for appearance and loadout data
+                _playerData = _defaultData;
+            };
+
+            // Apperance + Weapons
+            _playerData params ["","","_apperance","","","_weaponsAndItems","_linkedItems","_normalMagazines","_itemsInContainers","_weaponsInContainers"];
+            // load Apperance
+            _apperance params ["_goggles","_headgear","_vest","_backpack","_uniform"];
 
 			// Load Apperance START
 			if (_uniform != "") then {
@@ -208,9 +209,11 @@ if (!isNull _player) then {
 			};
 			// Load Apperance END
 
+            _currWeap = "";
 			// Load inventory + defaults START
 			if (count _weaponsAndItems >= 3) then {
-                _weaponsAndItems params ["_currWeap","_weaponsAndItemsArray","_equipped"];
+                _weaponsAndItems params ["_currWeapTmp","_weaponsAndItemsArray","_equipped"];
+                _currWeap = _currWeapTmp;
 				{
 					_weapon = _x deleteAt 0;
 					_type = getNumber(configfile >> "cfgweapons" >> _weapon >> "type");
@@ -310,6 +313,7 @@ if (!isNull _player) then {
 				};
 
 				[_playerNetID, _playerUID, [_newPlyr, _vars, _currWeap, loadAbs _newPlyr, _playerGroup, _canBeRevived, _newPlyr call EPOCH_server_setPToken,_playerGroupArray]] call EPOCH_server_pushPlayer;
+                //diag_log format["DEBUG (Load Player) Sent Group: %1 %2", _playerGroup, _playerGroupArray];
 
 				_newPlyr setVariable["SETUP", true, true];
 			};
