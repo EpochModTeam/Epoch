@@ -23,7 +23,10 @@ if (_player distance _jammer > 20) exitWith{};
 if (alive _jammer) then {
     if ((_jammer getVariable["BUILD_OWNER", "-1"]) in [getPlayerUID _player, _player getVariable["GROUP", ""]]) then {
         _server_vars = _player getVariable["SERVER_VARS", []];
-        if (_server_vars param [0,[]] isEqualTo []) then {
+        _currentPos = _server_vars param [0,[]];
+        // invalidate previous position
+        if (_jammer distance _currentPos > 20) then { _currentPos = [] };
+        if (_currentPos isEqualTo []) then {
             // set position of spawnpoint to players SERVER_VARS
             _server_vars set [0, getposATL _jammer]; // 0 = RESPAWN POS
             _player setVariable ["SERVER_VARS", _server_vars];
