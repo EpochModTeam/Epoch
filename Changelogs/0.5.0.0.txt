@@ -1,5 +1,6 @@
+[New] Epoch is leaving alpha and entering beta! All Epoch Asset project sources are now available via our GitHub +LFS and under APL-SA license here: https://github.com/EpochModTeam/EpochCore
 [Added] 64-bit database extension support for Windows (EpochServer_x64.dll) and Linux (epochserver_x64.so) servers. Linux support is pending testing.
-[Added] Custom event handler and OnEachFrame hooks added. https://github.com/Ignatz-HeMan/Epoch/tree/experimental/Sources/epoch_code/customs Thanks to @Ignatz-HeMan
+[Added] Custom event handler and OnEachFrame hooks added. https://github.com/EpochModTeam/Epoch/tree/experimental/Sources/epoch_code/customs Thanks to @Ignatz-HeMan
 [Added] Crafting recipe: Mortar (Uses: 12x Rock, 2x dirty water) (Requires: Fire and workbench within 3m). Thanks to @baaljayjay for the suggestion.
 [Added] Customizability of units spawned by UAV alert via CfgEpochClient > uavAlertUnitSpawnTemplate. (Default: I_Soldier_EPOCH)
 [Added] Toxic Smoke Grenades can now be found in the world.
