@@ -99,3 +99,52 @@ class base_mode_snap_direction_3
 	icon = "x\addons\a3_epoch_code\Data\UI\buttons\build_move.paa";
 	tooltip = "Build Mode: Snap Direction 270°";
 };
+class ServicePoint
+{
+	condition = "call EPOCH_SP_Check";
+	action = "call EPOCH_SP_Start;";
+//	icon = "x\addons\a3_epoch_code\Data\UI\buttons\Repair.paa";
+	icon = "x\addons\a3_epoch_code\Data\UI\buttons\player_inspect.paa";
+	tooltip = "Service Point";
+	
+	class Refuel
+	{
+		condition = "true";
+		action = "(Ignatz_Refuel select 1) spawn EPOCH_SP_Refuel";
+//		icon = "x\addons\a3_epoch_code\Data\UI\buttons\Refuel.paa";
+		icon = "x\addons\a3_epoch_code\Data\UI\buttons\player_inspect.paa";
+		tooltipcode = "Ignatz_Refuel select 0";
+	};
+	class Repair
+	{
+		condition = "true";
+		action = "(Ignatz_Repair select 1) spawn EPOCH_SP_Repair";
+//		icon = "x\addons\a3_epoch_code\Data\UI\buttons\Repair.paa";
+		icon = "x\addons\a3_epoch_code\Data\UI\buttons\player_inspect.paa";
+		tooltipcode = "Ignatz_Repair select 0";
+	};
+	class Rearm0
+	{
+		condition = "!isnil 'Ignatz_Rearm0'";
+		action = "(Ignatz_Rearm0 select 1) call EPOCH_SP_Rearm";
+//		icon = "x\addons\a3_epoch_code\Data\UI\buttons\Rearm.paa";
+		icon = "x\addons\a3_epoch_code\Data\UI\buttons\player_inspect.paa";
+		tooltipcode = "Ignatz_Rearm0 select 0";
+	};
+	class Rearm1
+	{
+		condition = "!isnil 'Ignatz_Rearm1'";
+		action = "(Ignatz_Rearm1 select 1) call EPOCH_SP_Rearm";
+//		icon = "x\addons\a3_epoch_code\Data\UI\buttons\Rearm.paa";
+		icon = "x\addons\a3_epoch_code\Data\UI\buttons\player_inspect.paa";
+		tooltipcode = "Ignatz_Rearm1 select 0";
+	};
+	class Rearm2
+	{
+		condition = "!isnil 'Ignatz_Rearm2'";
+		action = "(Ignatz_Rearm2 select 1) call EPOCH_SP_Rearm";
+//		icon = "x\addons\a3_epoch_code\Data\UI\buttons\Rearm.paa";
+		icon = "x\addons\a3_epoch_code\Data\UI\buttons\player_inspect.paa";
+		tooltipcode = "Ignatz_Rearm2 select 0";
+	};
+};

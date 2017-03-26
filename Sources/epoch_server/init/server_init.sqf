@@ -210,6 +210,19 @@ if (_dateChanged) then {
     };
 };
 
+_config = 'CfgServicePoint' call EPOCH_returnConfig;
+_servicepoints = getArray (_config >> worldname >> 'ServicePoints');
+{
+	_marker = createMarker [('ServicePointMarker'+(str _foreachindex)), _x];
+	_marker setmarkertype "mil_dot";
+	_marker setmarkercolor 'ColorBlack';
+	_marker setMarkerText ("Service Point");
+	if !(surfaceiswater _x) then {
+		"Land_HelipadCircle_F" createvehicle _x;
+	};
+} forEach _ServicePoints;
+
+
 // set time multiplier
 setTimeMultiplier ([_serverSettingsConfig, "timeMultiplier", 1] call EPOCH_fnc_returnConfigEntry);
 

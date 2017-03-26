@@ -168,6 +168,14 @@ class CfgClientFunctions
             class initUI {};
             class refeshUI {};
         };
+        class servicepoint
+        {
+            class SP_Check {};
+            class SP_Rearm {};
+            class SP_Refuel {};
+            class SP_Repair {};
+            class SP_Start {};
+        };
         class customs
         {
             file = "epoch_code\customs";
