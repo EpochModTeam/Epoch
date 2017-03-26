@@ -15,6 +15,7 @@
 class CfgEpochClient
 {
     epochVersion = "0.5.0.0";
+    ArmAVersion = 168;
     sapperRngChance = 100; // increase number to reduce chances and reduce to increase. Default 100
     droneRngChance = 100; // increase number to reduce chances and reduce to increase. Default 100
     zombieRngChance = 50; // increase number to reduce chances and reduce to increase. Default 50
