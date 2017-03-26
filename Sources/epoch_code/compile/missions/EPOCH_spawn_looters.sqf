@@ -16,7 +16,7 @@
 private ["_unit"];
 //[[[end]]]
 for "_i" from 0 to 4 step 1 do {
-	_unit =  createGroup RESISTANCE createUnit ["Epoch_Female_F", getPos player, [], 400, "CAN_COLLIDE"];
+	_unit =  createGroup [RESISTANCE, true] createUnit ["Epoch_Female_F", getPos player, [], 400, "CAN_COLLIDE"];
 	_unit addBackPack "B_FieldPack_blk";
 	_unit addWeapon "Hatchet";
 	_unit addMagazine "hatchet_swing";

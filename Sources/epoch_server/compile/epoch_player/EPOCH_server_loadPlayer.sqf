@@ -159,7 +159,7 @@ if (!isNull _player) then {
 		};
 
 		if (isNull _group) then {
-			_group = createGroup west;
+			_group = createGroup [west, true];
 		};
 
 		_player setPosATL _location;

@@ -24,7 +24,7 @@ if (_groupID != "") then {
 	{
 		_x setVariable ["GROUP", nil];
 		[["resetGroup", true], _x] call EPOCH_sendRemoteExecClient;
-		[_x] joinSilent (createGroup west);
+		[_x] joinSilent (createGroup [west, true]);
 	} forEach (allPlayers select {(_x getVariable["GROUP", ""]) == _groupID});
 
 	_return = ["Group", _groupID] call EPOCH_fnc_server_hiveDEL;

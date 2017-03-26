@@ -100,12 +100,12 @@ if (!local _player) then {
 					}forEach (allPlayers select {alive _x});
 
 					if (isNull _group) then {
-						_group = createGroup west;
+						_group = createGroup [west, true];
 					};
 
 					diag_log format["DEBUG Group Found: %1", _group];
 				} else {
-					_group = createGroup west;
+					_group = createGroup [west, true];
 					diag_log format["DEBUG Group Created: %1", _group];
 				};
 

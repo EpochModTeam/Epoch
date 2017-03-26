@@ -18,7 +18,7 @@ private ["_allpositions","_grp","_nrBuilds","_rndHouse","_startPos","_trgt","_un
 _trgt = player;
 _nrBuilds = nearestObjects [getPosATL _trgt,["house"],50];
 
-_grp = createGroup RESISTANCE;
+_grp = createGroup [RESISTANCE, true];
 for "_i" from 1 to 3 step 1 do
 {
 	_startPos = [];

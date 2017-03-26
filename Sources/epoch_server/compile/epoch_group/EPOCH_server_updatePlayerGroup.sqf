@@ -48,7 +48,7 @@ if ((_response select 0) == 1 && (_response select 1) isEqualType []) then {
 				} forEach _allPlayers;
 
 				if (isNull _group) then {
-					_group = createGroup west;
+					_group = createGroup [west, true];
 				};
 				[_x] joinSilent _group;
 			};
@@ -85,7 +85,7 @@ if ((_response select 0) == 1 && (_response select 1) isEqualType []) then {
 
 		{
 			_x setVariable ["GROUP", nil];
-			[_x] joinSilent (createGroup west);
+			[_x] joinSilent (createGroup [west, true]);
 			[["resetGroup", true], _x] call EPOCH_sendRemoteExecClient;
 		} forEach (_allPlayers select {getPlayerUID _x == _selectedPlayerUID});
 
