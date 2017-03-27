@@ -65,6 +65,7 @@ diag_log "Epoch: Init Variables";
 call compile preprocessFileLineNumbers "\epoch_server\init\server_variables.sqf";
 call compile preprocessFileLineNumbers "\epoch_server\init\server_securityfunctions.sqf";
 
+
 ["I", _instanceID, "86400", ["CONTINUE"]] call EPOCH_fnc_server_hiveSETEX;
 diag_log format["Epoch: Start Hive, Instance ID: '%1'", _instanceID];
 
@@ -225,3 +226,6 @@ _sapper setDamage 1;
 _sapper enableSimulationGlobal false;
 
 diag_log format ["Epoch: Server Start Complete: %1 seconds",diag_tickTime-_startTime];
+
+// unit test start
+// call EPOCH_fnc_server_hiveUnitTest;

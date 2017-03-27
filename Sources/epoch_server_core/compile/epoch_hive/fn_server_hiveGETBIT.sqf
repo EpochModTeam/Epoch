@@ -13,19 +13,18 @@
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server_core/compile/epoch_hive/fn_server_hiveGETBIT.sqf
 */
 
-private ["_hiveResponse","_hiveStatus","_hiveMessage"];
+private ["_hiveResponse","_hiveMessage"];
 params ["_prefix","_key","_bit"];
-
 _hiveMessage = false;
 _hiveResponse = "epochserver" callExtension format["240|%1:%2|%3", _prefix, _key, _bit];
-if (_hiveResponse != "") then {
-	_hiveResponse = call compile _hiveResponse;
-	if !(isNil "_hiveResponse") then {
-		if (_hiveResponse isEqualType [] && !(_hiveResponse isEqualTo[])) then {
-			if ((_hiveResponse select 0) == 1) then {
-				_hiveMessage = ((_hiveResponse select 1) == "1");
-			};
-		};
-	};
+if !(_hiveResponse isEqualTo "") then {
+	_hiveResponse = parseSimpleArray _hiveResponse;
+    _hiveResponse params [
+        ["_status", 0],
+        ["_data", "0"]
+    ];
+    if (_status == 1) then {
+    	_hiveMessage = (_data isEqualTo "1");
+    };
 };
 _hiveMessage

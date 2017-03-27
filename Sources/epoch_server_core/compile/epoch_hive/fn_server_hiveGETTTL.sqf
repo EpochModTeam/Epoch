@@ -50,12 +50,7 @@ while {_hiveStatus < 0 || _hiveStatus == 2} do {
 	_whileCount = _whileCount + 1;
 };
 
-if (_hiveStatus > 0 && _hiveMessage find "<null>" == -1) then {
-	_hiveMessage = call compile _hiveMessage;
-	if (isNil "_hiveMessage") then { _hiveMessage = [];}
-}
-else {
-	_hiveMessage = [];
-};
+// removed check for null in array _hiveMessage find "<null>" == -1
+_hiveMessage = if (_hiveMessage isEqualTo "") then {[]} else {parseSimpleArray _hiveMessage};
 
 [_hiveStatus, _hiveMessage, _hiveTTL]

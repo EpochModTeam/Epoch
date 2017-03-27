@@ -17,50 +17,34 @@ params ["_prefix","_key"];
 
 _hiveMessage = "";
 _hiveStatus = 0;
-
 _currentIndex = 0;
-
 _hiveMakeCall = true;
+_hiveCharCount = 10000; // get 10k chars
 while {_hiveMakeCall} do {
-
-	_hiveMakeCall = false;
-
+    _hiveMakeCall = false;
 	// get 10k chars
-	_currentIndexMax = _currentIndex + 10000;
+	_currentIndexMax = _currentIndex + _hiveCharCount;
 	_hiveResponse = "epochserver" callExtension format["220|%1:%2|%3|%4", _prefix, _key, _currentIndex, (_currentIndexMax-1)];
-
-	if (_hiveResponse != "") then {
-
-		_hiveResponse = call compile _hiveResponse;
-		if !(isNil "_hiveResponse") then{
-
-			if (_hiveResponse isEqualType [] && !(_hiveResponse isEqualTo[])) then{
-
-				_hiveStatus = _hiveResponse select 0;
-				if (_hiveStatus == 1) then{
-
-					_data = _hiveResponse select 1;
-
-					if !(_data isEqualTo []) then{
-
-						// add data to string
-						_hiveMessage = _hiveMessage + _data;
-
-						// if data returned is exactly 10k chars then we likely need to make another call
-						if (count _data == 10000) then{
-							_currentIndex = _currentIndexMax;
-							_hiveMakeCall = true;
-						};
-					};
-				};
-			};
-		};
-	};
+    if !(_hiveResponse isEqualTo "") then {
+        _hiveResponse = call compile _hiveResponse;
+        _hiveResponse params [
+            ["_status", 0],
+            ["_data", []]
+        ];
+        if (_status isEqualTo 1 && !(_data isEqualTo [])) then{
+            // add data to string
+            _hiveStatus = _status;
+            _hiveMessage = _hiveMessage + _data;
+            // if data returned matches exactly _hiveCharCount then we likely need to make another call
+            if (count _data == _hiveCharCount) then{
+                _currentIndex = _currentIndexMax;
+                _hiveMakeCall = true;
+            };
+        };
+    };
 };
 
-if (_hiveStatus == 1) then{
-	_hiveMessage = call compile _hiveMessage;
-	if (isNil "_hiveMessage") then{ _hiveMessage = []; }
-};
+// avoid parse if data is blank and return empty array
+_hiveMessage = if (_hiveMessage isEqualTo "") then {[]} else {parseSimpleArray _hiveMessage};
 
 [_hiveStatus, _hiveMessage]
