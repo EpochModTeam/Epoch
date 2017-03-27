@@ -6,7 +6,7 @@
 	https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server_settings/EpochEvents/ChangeWeather.sqf
 */
 
-private ["_tempOVRD","_rainOVRD","_fogOVRD","_overcastOVRD","_windOVRD","_arr","_response","_windValX","_windValZ","_WeatherChangeTime","_force","_temp","_fog","_rain","_overcast"];
+private ["_tempOVRD","_rainOVRD","_fogOVRD","_overcastOVRD","_windOVRD","_arr","_response","_windValX","_windValY","_WeatherChangeTime","_force","_temp","_fog","_rain","_overcast"];
 
 // Initalize variable for tracking time between runs.
 if (isNil "EPOCH_lastWeatherChange") then {
@@ -33,24 +33,9 @@ if !(EPOCH_WeatherStaticForecast isEqualTo []) then {
 	};
 };
 
+
 /*
     New weather configs
-
-    Normal Weather:
-    _randomNightTemp = [0,32,50];
-    _randomNightRainTemp = [0,25,45];
-    _randomDayTemp = [50,75,112];
-    _randomDayRainTemp = [50,75,99];
-    _randomFogValue = [0,0.1,0.2];
-    _randomFogDecay = [0,0.1,0.2];
-    _randomFogBase = [0,10,20];
-    _randomRainValue = [0,0.5,1];
-    _randomOvercastValue = [0,0.5,1];
-    _randomWindValX = [-5,0,5];
-    _randomWindValZ = [-5,0,5];
-    _randomWindRValX = [-10,0,10];
-    _randomWindRValZ = [-10,0,10];
-
     BAD WEATHER:
 */
 _randomNightTemp = [0,10,32];
@@ -70,22 +55,16 @@ _randomRainValue = [0,1,0];
 _randomOvercastValue = [0,1,0];
 _randomLightningValue = [0,1,0];
 
-_randomWindValX = [0,10,0];
-_randomWindValZ = [0,10,0];
-_randomWindRValX = [0,20,0];
-_randomWindRValZ = [0,20,0];
-
-// fog, rain, overcast.
+_randomDirection = random 360;
+_randomWindStr = random 20;
+// config end
 
 _rain = if (isNil "_rainOVRD") then { random _randomRainValue } else { _rainOVRD };
-
+_windVal = [cos _randomDirection,sin _randomDirection,0] vectorMultiply (_randomWindStr * _rain);
+_windVal params ["_windValX","_windValY"];
 
 // wind.
-_windValX = random _randomWindValX;
-_windValZ = random _randomWindValZ;
 if (_rain > 0.1) then {
-	_windValX = random _randomWindRValX;
-	_windValZ = random _randomWindRValZ;
     _randomNightTemp = _randomNightRainTemp;
     _randomDayTemp = _randomDayRainTemp;
 } else {
@@ -99,7 +78,7 @@ if (_rain > 0.1) then {
 
 if !(isNil "_windOVRD") then {
     _windValX = _windOVRD select 0;
-    _windValZ = _windOVRD select 1;
+    _windValY = _windOVRD select 1;
 };
 
 // cooler at night
@@ -120,7 +99,7 @@ _WeatherChangeTime setFog _fog;
 _WeatherChangeTime setOvercast _overcast;
 _WeatherChangeTime setRain _rain;
 _WeatherChangeTime setLightnings _lightning;
-setWind[_windValX, _windValZ, true];
+setWind[_windValX, _windValY, true];
 
 // push temp to all players and JIP.
 missionNamespace setVariable ["EPOCH_CURRENT_WEATHER", if (isNil "_tempOVRD") then { round(_temp) } else { _tempOVRD }, true];
@@ -130,4 +109,4 @@ if (_force) then {
 	forceWeatherChange;
 };
 
-diag_log format["Epoch: Weather Change - fog: %1 rain: %2 overcast: %3 windx: %4 windz: %5 forced: %6", _fog, _overcast, _rain, _windValX, _windValZ, _force];
+diag_log format["Epoch: Weather Change - fog: %1 rain: %2 overcast: %3 wind: %4 wind-xy: %5 forced: %6", _fog, _overcast, _rain, [_randomDirection,_randomWindStr], [_windValX,_windValY], _force];
