@@ -3282,6 +3282,34 @@ class CfgPricing
     {
         price = 5;
     };
+    class U_CamoAloha_uniform
+    {
+        price = 5;
+    };
+    class U_CamoBiker_uniform
+    {
+        price = 5;
+    };
+    class U_CamoBubblegum_uniform
+    {
+        price = 5;
+    };
+    class U_CamoLumberjack_uniform
+    {
+        price = 5;
+    };
+    class U_CamoOutback_uniform
+    {
+        price = 5;
+    };
+    class U_CamoPink_uniform
+    {
+        price = 5;
+    };
+    class U_CamoPinkPolka_uniform
+    {
+        price = 5;
+    };
     class U_C_Driver_1
     {
         price = 5;

@@ -1695,6 +1695,13 @@ class CfgLootTable_CUP
 		items[] = {
 				{ { "FemaleWetsuits", "CfgLootTable" }, 1 },
 				{ { "U_CamoRed_uniform", "item" }, 1 },
+                { { "U_CamoAloha_uniform", "item" }, 1 },
+                { { "U_CamoBiker_uniform", "item" }, 1 },
+                { { "U_CamoBubblegum_uniform", "item" }, 1 },
+                { { "U_CamoLumberjack_uniform", "item" }, 1 },
+                { { "U_CamoOutback_uniform", "item" }, 1 },
+                { { "U_CamoPink_uniform", "item" }, 1 },
+                { { "U_CamoPinkPolka_uniform", "item" }, 1 },
 				{ { "U_CamoBrn_uniform", "item" }, 1 },
 				{ { "U_CamoBlue_uniform", "item" }, 1 },
 				{ { "U_Camo_uniform", "item" }, 1 },
