@@ -54,7 +54,7 @@ class CfgItemSort
 			"U_CamoBlue_uniform",
 			"U_CamoBrn_uniform",
 			"U_CamoRed_uniform",
-            'U_CamoAloha_uniform",
+            "U_CamoAloha_uniform",
             "U_CamoBiker_uniform",
             "U_CamoBubblegum_uniform",
             "U_CamoLumberjack_uniform",

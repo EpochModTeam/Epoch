@@ -100,7 +100,7 @@ switch _unitClass do {
 			_bomb = createVehicle ["SmokeShellToxicSapper", _targetPos, [], 0, "CAN_COLLIDE"];
 			_bomb attachTo [_unit, [0,0,0],"Pelvis"];
 			_unit call _disableAI;
-			_sapperHndl = [_unit, _bomb, _trgt] execFSM "\x\addons\a3_epoch_code\System\Sapper_Brain.fsm";
+			_sapperHndl = [_unit, _bomb, _trgt] execFSM "\x\addons\a3_epoch_code\System\Sapper_Brain2.fsm";
 			_unit setVariable ["sapperHndl",_sapperHndl];
 			_unit addEventHandler ["FiredNear", format ["%1 setFSMVariable [""_sFiredNear"",[_this select 1, _this select 2]];",_sapperHndl]];
 			_unit addEventHandler ["Hit", format ["%1 setFSMVariable [""_sHit"",[_this select 1, _this select 2]];",_sapperHndl]];

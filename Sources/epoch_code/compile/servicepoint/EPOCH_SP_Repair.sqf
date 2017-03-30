@@ -13,7 +13,7 @@ if (EPOCH_playerCrypto < _costs) exitWith {
 	[_line,5] call Epoch_message; 
 };
 if(_costs > 0)then{
-	[player,(_costs*-1)] remoteexec ['epoch_server_paycrypto',2];
+	[player,(_costs*-1),Epoch_personalToken] remoteexec ['epoch_server_paycrypto',2];
 };
 _Ignatz_vehicle engineOn false;
 _repaired = []; 

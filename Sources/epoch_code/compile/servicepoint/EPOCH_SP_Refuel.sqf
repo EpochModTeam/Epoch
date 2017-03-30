@@ -12,7 +12,7 @@ if (EPOCH_playerCrypto < _costs) exitWith {
 	[_line,5] call Epoch_message; 
 };
 if(_costs > 0)then{
-	[player,(_costs*-1)] remoteexec ['epoch_server_paycrypto',2];
+	[player,(_costs*-1),Epoch_personalToken] remoteexec ['epoch_server_paycrypto',2];
 };
 _vehicle engineOn false;
 if ((vehicle player != _vehicle) || (!local _vehicle) || speed _vehicle < -2 || speed _vehicle > 2) exitWith {
