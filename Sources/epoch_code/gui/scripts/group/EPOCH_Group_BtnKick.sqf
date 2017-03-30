@@ -19,7 +19,16 @@ disableSerialization;
 _BtnKick = (findDisplay -1300) displayCtrl 33;
 
 _playerUID = getPlayerUID player;
-if (_playerUID == Epoch_my_GroupUID || {_x select 0 == _playerUID}count (Epoch_my_Group select 3) > 0) then {
+
+Epoch_my_Group params [
+    ["_groupName",""],
+    ["_leaderName",""],
+    ["_groupSize",0],
+    ["_modArray",[]],
+    ["_memberArray",[]]
+];
+
+if (_playerUID == Epoch_my_GroupUID || {_x select 0 == _playerUID}count (_modArray) > 0) then {
 	_group = (findDisplay -1300) displayCtrl 40;
 	_selected = lbCurSel _group;
 	if (_selected >= 0) then {
@@ -28,9 +37,10 @@ if (_playerUID == Epoch_my_GroupUID || {_x select 0 == _playerUID}count (Epoch_m
 		if (_playerUID != "" && _playerName != "") then {
 			_txt = format["Do you want to kick %1 from your Group?",_playerName];
 			[_playerUID,_txt] spawn {
-				_ret = [_this select 1,"Epoch Group Menu",true,true] call BIS_fnc_GUImessage;
+                params ["_playerUID","_txt"];
+				_ret = [_txt,"Epoch Group Menu",true,true] call BIS_fnc_GUImessage;
 				if (_ret) then {
-					[Epoch_my_GroupUID,_this select 0,false,false,player,Epoch_personalToken] remoteExec ["EPOCH_server_updatePlayerGroup",2];
+					[Epoch_my_GroupUID,_playerUID,false,false,player,Epoch_personalToken] remoteExec ["EPOCH_server_updatePlayerGroup",2];
 				};
 			};
 		};

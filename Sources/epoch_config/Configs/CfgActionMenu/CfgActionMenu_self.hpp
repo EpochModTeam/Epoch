@@ -29,7 +29,7 @@ class veh_unLock
 };
 class player_inspect
 {
-	condition = "true";
+	condition = "!dyna_inVehicle";
 	action = "call EPOCH_lootTrash;";
 	icon = "x\addons\a3_epoch_code\Data\UI\buttons\player_inspect.paa";
 	tooltip = "Examine";
@@ -51,8 +51,8 @@ class player_group_requests
 
 class base_mode_enable
 {
-	condition = "EPOCH_buildMode in [0,2] && EPOCH_playerEnergy > 0";
-	action = "EPOCH_stabilityTarget = objNull;EPOCH_buildMode = 1;['Build Mode: Enabled Snap alignment', 5] call Epoch_message;EPOCH_buildDirection = 0;";
+	condition = "EPOCH_buildMode in [0,2] && !dyna_inVehicle";
+	action = "if (EPOCH_playerEnergy > 0) then {EPOCH_stabilityTarget = objNull;EPOCH_buildMode = 1;['Build Mode: Enabled Snap alignment', 5] call Epoch_message;EPOCH_buildDirection = 0} else {['Need Energy!', 5] call Epoch_message};";
 	icon = "x\addons\a3_epoch_code\Data\UI\buttons\build_maintain.paa";
 	tooltip = "Build Mode: Snap alignment";
 };
@@ -98,4 +98,47 @@ class base_mode_snap_direction_3
 	action = "EPOCH_snapDirection = 3;[format['SNAP DIRECTION MODE: %1', EPOCH_snapDirection], 5] call Epoch_message;";
 	icon = "x\addons\a3_epoch_code\Data\UI\buttons\build_move.paa";
 	tooltip = "Build Mode: Snap Direction 270°";
+};
+class ServicePoint
+{
+	condition = "call EPOCH_SP_Check";
+	action = "call EPOCH_SP_Start;";
+    icon = "x\addons\a3_epoch_code\Data\UI\buttons\Repair_man.paa";
+	tooltip = "Service Point";
+
+	class Refuel
+	{
+		condition = "true";
+		action = "(Ignatz_Refuel select 1) spawn EPOCH_SP_Refuel";
+        icon = "x\addons\a3_epoch_code\Data\UI\buttons\vehicle_refuel.paa";
+		tooltipcode = "Ignatz_Refuel select 0";
+	};
+	class Repair
+	{
+		condition = "true";
+		action = "(Ignatz_Repair select 1) spawn EPOCH_SP_Repair";
+        icon = "x\addons\a3_epoch_code\Data\UI\buttons\repair.paa";
+		tooltipcode = "Ignatz_Repair select 0";
+	};
+	class Rearm0
+	{
+		condition = "!isnil 'Ignatz_Rearm0'";
+		action = "(Ignatz_Rearm0 select 1) call EPOCH_SP_Rearm";
+        icon = "x\addons\a3_epoch_code\Data\UI\buttons\Rearm.paa";
+		tooltipcode = "Ignatz_Rearm0 select 0";
+	};
+	class Rearm1
+	{
+		condition = "!isnil 'Ignatz_Rearm1'";
+		action = "(Ignatz_Rearm1 select 1) call EPOCH_SP_Rearm";
+        icon = "x\addons\a3_epoch_code\Data\UI\buttons\Rearm.paa";
+		tooltipcode = "Ignatz_Rearm1 select 0";
+	};
+	class Rearm2
+	{
+		condition = "!isnil 'Ignatz_Rearm2'";
+		action = "(Ignatz_Rearm2 select 1) call EPOCH_SP_Rearm";
+        icon = "x\addons\a3_epoch_code\Data\UI\buttons\Rearm.paa";
+		tooltipcode = "Ignatz_Rearm2 select 0";
+	};
 };

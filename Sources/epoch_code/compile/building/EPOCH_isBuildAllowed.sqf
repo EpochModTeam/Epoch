@@ -23,7 +23,7 @@
 	BOOL
 */
 //[[[cog import generate_private_arrays ]]]
-private ["_alljammer","_buildingAllowed","_buildingCountLeader","_buildingCountLimit","_buildingCountPerMember","_buildingJammerRange","_bypassJammer","_c","_cfgBaseBuilding","_config","_isAllowed","_jammer","_jammerPerGroup","_limitNearby","_maxBuildingHeight","_membercount","_minjammerdistance","_myPosATL","_nearestJammer","_obj","_objType","_objectCount","_ownedJammerExists","_range","_restricted","_restrictedArray","_restrictedLocations","_restrictedLocationsArray","_restrictedLocationsRange","_simulClass","_staticClass","_storageCountLeader","_storageCountPerMember","_scl","_gcl","_storageCountLimit","_useGroupCountLimits","_ghostClass"];
+private ["_alljammer","_buildingAllowed","_buildingCountLeader","_buildingCountLimit","_buildingCountPerMember","_buildingJammerRange","_bypassJammer","_c","_cfgBaseBuilding","_config","_ghostClass","_isAllowed","_jammer","_jammerGLOnly","_jammerPerGroup","_limitNearby","_maxBuildingHeight","_membercount","_minJammerDistance","_myPosATL","_nearestJammer","_obj","_objType","_objectscount","_ownedJammerExists","_range","_restricted","_restrictedArray","_restrictedLocations","_restrictedLocationsArray","_restrictedLocationsRange","_simulClass","_staticClass","_storageCountLeader","_storageCountLimit","_storageCountPerMember","_useGroupCountLimits","_useSplitCountLimits"];
 //[[[end]]]
 
 _buildingAllowed = true;
@@ -31,6 +31,7 @@ _ownedJammerExists = false;
 _useSplitCountLimits = false;
 _useGroupCountLimits = true;
 _nearestJammer = objNull;
+_jammerGLOnly = true;
 
 // reject building if in vehicle
 if (vehicle player != player)exitWith{["Building Disallowed: Inside Vehicle", 5] call Epoch_message; false };
@@ -50,6 +51,7 @@ _maxBuildingHeight = getNumber(_config >> "maxBuildingHeight");
 _jammerPerGroup = getNumber(_config >> "jammerPerGroup");
 if(getNumber(_config >> "useGroupCountLimits") == 0)then{_useGroupCountLimits=false};
 if(getNumber(_config >> "splitCountLimits") == 1)then{_useSplitCountLimits=true};
+if(getNumber(_config >> "jammerGLOnly") == 0)then{_jammerGLOnly=false};
 if(_buildingJammerRange == 0)then{_buildingJammerRange = 75};
 if(_buildingCountLimit == 0)then{_buildingCountLimit = 200};
 if(_buildingCountLeader == 0)then{_buildingCountLeader = _buildingCountLimit};
@@ -81,7 +83,7 @@ if !(_jammer isEqualTo []) then {
 				["Building Disallowed: Existing Jammer Signal", 5] call Epoch_message;
 			};
 		} foreach _jammer;
-	} 
+	}
 	else {
 		{
 			if (alive _x && (_x distance player) <= _buildingJammerRange) exitWith{
@@ -96,9 +98,14 @@ if !(_jammer isEqualTo []) then {
 			_ownedJammerExists = true;
 			if(_useGroupCountLimits)then{
 				_membercount = 0;
-				if(count Epoch_my_Group > 0)then{
-					_membercount = count (Epoch_my_Group select 3) + count (Epoch_my_Group select 4)
-				};
+                Epoch_my_Group params [
+                    ["_groupName",""],
+                    ["_leaderName",""],
+                    ["_groupSize",0],
+                    ["_modArray",[]],
+                    ["_memberArray",[]]
+                ];
+				_membercount = count _modArray + count _memberArray;
 				_storageCountLimit = _storageCountLeader + (_storageCountPerMember * _membercount);
 				_buildingCountLimit = _buildingCountLeader + (_buildingCountPerMember * _membercount);
 			};
@@ -131,6 +138,10 @@ if !(_jammer isEqualTo []) then {
 }
 else {
 	if (_objType in ["PlotPole_EPOCH", "PlotPole_SIM_EPOCH"]) then {
+		if (!(EPOCH_my_groupUID isequalto "") && !((getplayeruid player) isequalto EPOCH_my_groupUID) && _jammerGLOnly) exitwith {
+			_buildingAllowed = false;
+			["The Group Leader must place the Jammer!", 5] call Epoch_message;
+		};
 		// TODO: rework not ideal to use allmissionobjects
 		_alljammer = allmissionobjects 'PlotPole_EPOCH';
 		_c = 0;

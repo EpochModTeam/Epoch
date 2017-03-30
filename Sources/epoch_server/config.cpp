@@ -49,8 +49,10 @@ class CfgServerFunctions
 			class server_lootAnimal {};
 		};
 		class epoch_player {
+            class fnc_addItemToX {};
 			class fnc_savePlayer {};
 			class server_savePlayer {};
+            class server_makeSP {};
 			class server_loadPlayer {};
 			class server_checkPlayer {};
 			class server_onPlayerDisconnect {};
@@ -61,6 +63,7 @@ class CfgServerFunctions
 			class server_unpackBackpack {};
 			class server_deadPlayerDetonate{};
 			class server_playerSetVariable{};
+			class server_PayCrypto{};
 		};
 		class epoch_traders {
 			class server_loadTraders {};
@@ -126,7 +129,7 @@ class CfgServerFunctions
 };
 class CfgServerVersion
 {
-	client = "0.4.0.0";
-	config = "0.4.0.0";
+	client = "0.5.0.0";
+	config = "0.5.0.0";
 	hive = "0.5.1.8";
 };

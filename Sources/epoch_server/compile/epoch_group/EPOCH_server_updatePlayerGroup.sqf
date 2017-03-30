@@ -30,12 +30,8 @@ _modOrMemberRevert = if (_this select 3) then [{4},{3}];
 _response = ["Group", _groupID] call EPOCH_fnc_server_hiveGETRANGE;
 if ((_response select 0) == 1 && (_response select 1) isEqualType []) then {
 	_contentArray = _response select 1;
-
-	//_groupName = _contentArray select 0;
-	//_leaderName = _contentArray select 1;
-	//_groupSize = _contentArray select 2;
-	_modArray = _contentArray select 3;
-	_memberArray = _contentArray select 4;
+    _contentArray params ["_groupName","_leaderName","_groupSize","_modArray","_memberArray"];
+    _allPlayers = allPlayers select {alive _x};
 
 	if (_addOrRemove) then { //Add
 		_selectedPlayerName = "Dead Player";
@@ -49,14 +45,14 @@ if ((_response select 0) == 1 && (_response select 1) isEqualType []) then {
 					if ((_x getVariable["GROUP",""]) == _groupID) exitWith {
 						_group = group _x;
 					};
-				}count allPlayers;
+				} forEach _allPlayers;
 
 				if (isNull _group) then {
-					_group = createGroup west;
+					_group = createGroup [west, true];
 				};
 				[_x] joinSilent _group;
 			};
-		} forEach (allPlayers select {getPlayerUID _x == _selectedPlayerUID});
+		} forEach (_allPlayers select {getPlayerUID _x == _selectedPlayerUID});
 
 		// find player name from DB
 		if (_selectedPlayerName == "Dead Player") then {
@@ -89,9 +85,9 @@ if ((_response select 0) == 1 && (_response select 1) isEqualType []) then {
 
 		{
 			_x setVariable ["GROUP", nil];
-			[_x] joinSilent (createGroup west);
+			[_x] joinSilent (createGroup [west, true]);
 			[["resetGroup", true], _x] call EPOCH_sendRemoteExecClient;
-		} forEach (allPlayers select {getPlayerUID _x == _selectedPlayerUID});
+		} forEach (_allPlayers select {getPlayerUID _x == _selectedPlayerUID});
 
 		{
 			if (_x select 0 == _selectedPlayerUID) exitWith {
@@ -119,7 +115,7 @@ if ((_response select 0) == 1 && (_response select 1) isEqualType []) then {
 
 	{
 		[["groupUpdate", _contentArray], _x] call EPOCH_sendRemoteExecClient;
-	} forEach (allPlayers select {(_x getVariable["GROUP", ""]) == _groupID});
+	} forEach (_allPlayers select {(_x getVariable["GROUP", ""]) == _groupID});
 
 	// Save Group Data
 	["Group", _groupID, _contentArray] call EPOCH_fnc_server_hiveSET;

@@ -20,6 +20,8 @@ params ["_entries","_buttonSettings"];
 disableSerialization;
 
 _inProgress = uiNamespace getVariable ["rmx_var_dynamicMenuInProgress", false];
+
+waitUntil{!isNull (findDisplay 66600)};
 _display = findDisplay 66600;
 
 if (_inProgress) then {

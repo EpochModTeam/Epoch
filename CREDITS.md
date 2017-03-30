@@ -23,11 +23,12 @@ Epoch Assets Mod Configs - Custom Units, Vehicles, Weapons, Items and more!
 * [Paden Sturtevant (SteamPunkGears)](https://www.twitch.tv/steampunkgears): Models, Textures
 * [Dan Dalsted (OrangeSherbet)](https://www.twitch.tv/OrangeSherbet): Tester, Videos, Wiki Editor
 
-#### Top Contributors
+#### Contributors
 * [HeMan](https://github.com/Ignatz-HeMan)
 * [$p4rkY](https://github.com/SPKcoding)
 * [82ndab-Bravo17](https://github.com/82ndab-Bravo17) - http://www.the82ndab.net
 * [Robio](https://github.com/RC-Robio)
+* Craig Hauer "ComatoseBadger": additional "Keesha" Female skin textures.
 * [Poulmba](https://www.youtube.com/user/poulmba): Wiki Editor, Tester
 * [Richie](http://uk-gaming-zone.co.uk): Map Support, Forum Moderator
 * [Tobias Solem](http://whatthepoch.com/): Tester
@@ -35,10 +36,9 @@ Epoch Assets Mod Configs - Custom Units, Vehicles, Weapons, Items and more!
 #### Special Thanks!
 
 * [Bohemia Interactive](http://bistudio.com) for an incredible and versatile game engine.
-* Top Donors: dean4310, Robio, rhinoCRUNCH, B3nzi, Madman2077
+* Top Donors: survivalservers, RC_Robio, gtxgaming, dean4310, KPABATOK
 * [GTXGaming](http://www.gtxgaming.co.uk) - Dedicated Dev Server
 * [Survival Servers](https://www.survivalservers.com) - Dedicated Dev Server
 * [Vilayer](https://www.vilayer.com) - Dedicated Dev Server
 * [Nitrado](https://server.nitrado.net) - Dedicated Dev Server
-* [Vert Hosting](https://verthosting.com) - Shared Arma 2 and 3 Dev servers.
 * Also a thanks goes to all the testers and supporters we missed, you know who you are!

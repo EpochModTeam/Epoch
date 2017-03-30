@@ -15,8 +15,8 @@
 private["_safeUnits"];
 params [["_bomb",objNull], "_player", ["_token","",[""]], "_unit", ["_killUnit",false]];
 if !([_player,_token]call EPOCH_server_getPToken)exitWith{};
-_safeUnits = ["Epoch_Sapper_F","Epoch_SapperB_F"];
-_safeBombs = ["Sapper_Charge_Ammo","SapperB_Charge_Ammo"];
+_safeUnits = ["Epoch_Sapper_F","Epoch_SapperB_F","Epoch_SapperG_F"];
+_safeBombs = ["Sapper_Charge_Ammo","SapperB_Charge_Ammo","SmokeShellToxicSapper"];
 if!(isNull _bomb)then{
     if(typeOf _bomb in _safeBombs) then {
         _bomb setDamage 1;

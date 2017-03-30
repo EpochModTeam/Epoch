@@ -66,6 +66,7 @@ _antagonistSpawnDefaults = [
 	["Epoch_Cloak_F", 1],
 	["GreatWhite_F", 2],
 	["Epoch_Sapper_F",2],
+    ["Epoch_SapperG_F",1],
 	["Epoch_SapperB_F",1],
 	["I_UAV_01_F",2],
 	["PHANTOM",1],

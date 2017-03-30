@@ -54,7 +54,9 @@ if (_allowSave) then{
 	};
 	_player setVariable ["VARS", _vars];
 
-	// Server Only Stats
+    /* SERVER_VARS INUSE INDEX:
+        0 = RESPAWN POS
+    */
 	_server_vars = _player getVariable["SERVER_VARS", []];
 
 	_group = _player getVariable ["GROUP", ""];

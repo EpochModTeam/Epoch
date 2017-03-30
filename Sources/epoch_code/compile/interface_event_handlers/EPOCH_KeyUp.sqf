@@ -30,6 +30,10 @@ private ["_handled"];
 //[[[end]]]
 params ["_display","_dikCode","_shift","_ctrl","_alt"];
 _handled = false;
+
+_this call Epoch_custom_EH_KeyUp;
+if (_handled) exitWith{ true };
+
 //Main actions
 if (_dikCode == EPOCH_keysAction) then {
 	EPOCH_keysActionPressed = false;

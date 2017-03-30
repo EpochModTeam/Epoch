@@ -11,9 +11,6 @@
 		Plant patch marker will turn red after one plant is picked
 		Plants and marker will cleanup after all plants in a patch are picked or die due to decay.
 
-	This work is licensed under a Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License.
-	http://creativecommons.org/licenses/by-nc-nd/4.0/
-
 	Improvements and or bugfixes and other contributions are welcome via the github:
 	https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server_settings/EpochEvents/PlantSpawner.sqf
 */
@@ -40,7 +37,7 @@ if (EPOCH_plantCounter >= EPOCH_plantLimit) exitWith {
 	if (_debug) then {diag_log "DEBUG: suppressed plant spawn over limit"};
 };
 
-// FIND A POSITION FOR PLANT PATCH prefer Hils and Vineyards
+// FIND A POSITION FOR PLANT PATCH prefer Hills and Vineyards
 _nearbyLocations = nearestLocations [epoch_centerMarkerPosition,["VegetationVineyard","Hill"],EPOCH_dynamicVehicleArea];
 if (_nearbyLocations isEqualTo []) then {
 	_position = [epoch_centerMarkerPosition, 0, EPOCH_dynamicVehicleArea, 10, 0, 4000, 0] call BIS_fnc_findSafePos;

@@ -300,8 +300,6 @@ for "_i" from 1 to _maxVehicleLimit do {
 			} else {
 				diag_log format["DEBUG: vehicle destroyed already (%2) or invalid vehicle class: %1",_class, _damage];
 			};
-		} else {
-			diag_log format["DEBUG: invalid vehicle data count: %1 != %2",_arrNum,_dataFormatCount];
 		};
 	} else {
 		diag_log format["DEBUG: invalid vehicle data: %1",_response];

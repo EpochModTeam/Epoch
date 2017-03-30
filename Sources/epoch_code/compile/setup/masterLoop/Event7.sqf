@@ -3,7 +3,7 @@ if (random EPOCH_droneRndChance < _spawnChance) then {
 	"I_UAV_01_F" call EPOCH_unitSpawnIncrease;
 };
 if (EPOCH_mod_Ryanzombies_Enabled) then {
-	if (random EPOCH_zombieRndChance < _spawnChance) then {
+	if (random EPOCH_zombieRngChance < _spawnChance) then {
 		["EPOCH_RyanZombie_1",12] call EPOCH_unitSpawnIncrease;
 	};
 };

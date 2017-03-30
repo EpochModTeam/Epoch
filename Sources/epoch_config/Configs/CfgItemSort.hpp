@@ -2,7 +2,7 @@
 
 class CfgItemSort
 {
-	
+
 	class MainCategories
 	{
 		classes[] = {
@@ -54,6 +54,13 @@ class CfgItemSort
 			"U_CamoBlue_uniform",
 			"U_CamoBrn_uniform",
 			"U_CamoRed_uniform",
+            "U_CamoAloha_uniform",
+            "U_CamoBiker_uniform",
+            "U_CamoBubblegum_uniform",
+            "U_CamoLumberjack_uniform",
+            "U_CamoOutback_uniform",
+            "U_CamoPink_uniform",
+            "U_CamoPinkPolka_uniform",
 
 			"U_C_Driver_1",
 			"U_C_Driver_2",
@@ -74,13 +81,13 @@ class CfgItemSort
 			"U_O_T_FullGhillie_tna_F",
 			"U_O_V_Soldier_Viper_F",
 			"U_O_V_Soldier_Viper_hex_F",
-			
+
 		// Marksman Clothing
 			"U_O_FullGhillie_lsh",
 			"U_O_FullGhillie_sard",
 			"U_O_FullGhillie_ard"
 		};
-		
+
 		Vests[] = {
 			"V_1_EPOCH",
 			"V_2_EPOCH",
@@ -122,7 +129,7 @@ class CfgItemSort
 			"V_38_EPOCH",
 			"V_39_EPOCH",
 			"V_40_EPOCH",
-			
+
 			// Vests Apex
 			"V_PlateCarrier1_tna_F",
 			"V_TacChestrig_grn_F",
@@ -134,7 +141,7 @@ class CfgItemSort
 			"V_PlateCarroer2_tna_F",
 			"V_PlateCarrierGL_tna_F"
 		};
-		
+
 		Backpacks[] = {
 			"B_AssaultPack_blk",
 			"B_AssaultPack_cbr",
@@ -170,7 +177,7 @@ class CfgItemSort
 			"smallbackpack_green_epoch",
 			"smallbackpack_teal_epoch",
 			"smallbackpack_pink_epoch",
-			
+
 			// Backpacks Apex
 			"B_Bergen_tna_F",
 			"B_AssaultPack_tna",
@@ -187,7 +194,7 @@ class CfgItemSort
 			"B_Carryall_ghex_F",
 			"B_FieldPack_ghex_F"
 		};
-		
+
 		HeadGear[] = {
 			"H_1_EPOCH",
 			"H_2_EPOCH",
@@ -296,7 +303,7 @@ class CfgItemSort
 			"wolf_mask_epoch",
 			"pkin_mask_epoch",
 			"clown_mask_epoch",
-			
+
 			// Headgear Apex
 			"H_HelmetLeaderO_ghex_F",
 			"H_HelmetCrew_O_ghex_F",
@@ -332,10 +339,10 @@ class CfgItemSort
 			"B_UavTerminal",
 			"O_UavTerminal"
 		};
-		
+
 		Weapons[] = {
 			"MultiGun",
-			
+
 			"hgun_ACPC2_F",
 			"hgun_Rook40_F",
 			"hgun_P07_F",
@@ -377,7 +384,7 @@ class CfgItemSort
 			"m16_EPOCH",
 			"m16Red_EPOCH",
 			"m4a3_EPOCH",
-			
+
 			// Apex
 			"SMG_05_F",
 
@@ -388,8 +395,8 @@ class CfgItemSort
 			"M14_EPOCH",
 			"M14Grn_EPOCH",
 			"AKM_EPOCH",
-			
-			// Apex	
+
+			// Apex
 			"arifle_AK12_F",
 			"arifle_MX_khk_F",
 			"arifle_MX_GL_khk_F",
@@ -414,38 +421,38 @@ class CfgItemSort
 			"arifle_SPAR_03_khk_F",
 			"arifle_SPAR_03_blk_F",
 			"arifle_SPAR_03_snd_F",
-			
+
 			// heavy Rifle
 			"srifle_GM6_F",
 			"srifle_LRR_F",
 			"m107Tan_EPOCH",
 			"m107_EPOCH",
-			// Apex	
+			// Apex
 			"srifle_GM6_ghex_F",
 			"srifle_LRR_tna_F",
 			"srifle_DMR_07_blk_F",
 			"srifle_DMR_07_hex_F",
 			"srifle_DMR_07_ghex_F",
-			
+
 			// light Mashinegun
 			"m249_EPOCH",
 			"m249Tan_EPOCH",
 			"LMG_Mk200_F",
 			"arifle_MX_SW_F",
 			"arifle_MX_SW_Black_F",
-			
+
 			// mid Machinegun
 			"LMG_Zafir_F",
-			
+
 			// Apex
 			"LMG_03_F",
-			
+
 			// Launcher
 			"launch_I_Titan_F",
 			"launch_B_Titan_short_F",
 			"Titan_AT",
 			"Titan_AA",
-			
+
 			// Marksman rifles
 			"srifle_DMR_02_F",
 			"srifle_DMR_02_camo_F",
@@ -463,7 +470,7 @@ class CfgItemSort
 			"srifle_DMR_05_blk_F",
 			"srifle_DMR_05_hex_F",
 			"srifle_DMR_05_tan_f",
-			
+
 			// Marksman machine guns
 			"MMG_01_hex_F",
 			"MMG_01_tan_F",
@@ -483,10 +490,10 @@ class CfgItemSort
 			"speargun_epoch",
 			"ChainSaw"
 		};
-		
+
 		Magazines[] = {
 			"spear_magazine",
-			
+
 			// Handgun Mags
 			"16Rnd_9x21_Mag",
 			"30Rnd_9x21_Mag",
@@ -497,7 +504,7 @@ class CfgItemSort
 			"9rnd_45X88_magazine",
 			"6Rnd_GreenSignal_F",
 			"6Rnd_RedSignal_F",
-			
+
 			// light Mags
 			"30Rnd_65x39_caseless_green",
 			"30Rnd_65x39_caseless_green_mag_Tracer",
@@ -512,28 +519,28 @@ class CfgItemSort
 			"30Rnd_45ACP_Mag_SMG_01_Tracer_Green",
 			"5Rnd_rollins_mag",
 			"30rnd_556_magazine",
-			
+
 			// mid Mags
 			"20Rnd_762x51_Mag",
 			"10Rnd_762x54_Mag",
 			"20rnd_762_magazine",
 			"30Rnd_762x39_Mag",
-			
-			// Apex	
+
+			// Apex
 			"30Rnd_762x39_Mag_F",
 			"30Rnd_762x39_Mag_Green_F",
 			"30Rnd_762x39_Mag_Tracer_F",
 			"30Rnd_580x42_Mag_F",
 			"30Rnd_580x42_Mag_Tracer_F",
 			"20Rnd_650x39_Cased_Mag_F",
-			
+
 			// heavy Mags
 			"10Rnd_127x54_Mag",
 			"5Rnd_127x108_Mag",
 			"5Rnd_127x108_APDS_Mag",
 			"7Rnd_408_Mag",
-			
-			// Apex	
+
+			// Apex
 			"10Rnd_50BW_Mag_F",
 
 			// light Mashinegun Mags
@@ -542,11 +549,11 @@ class CfgItemSort
 			"200Rnd_65x39_cased_Box_Tracer",
 			"100Rnd_65x39_caseless_mag_Tracer",
 			"200Rnd_556x45_M249",
-			
+
 			// mid Mashinegun Mags
 			"150Rnd_762x54_Box",
 			"150Rnd_762x54_Box_Tracer",
-			
+
 			// Apex Mags
 			"30Rnd_545x39_Mag_F",
 			"30Rnd_545x39_Mag_Green_F",
@@ -593,13 +600,13 @@ class CfgItemSort
 			"3Rnd_SmokeBlue_Grenade_shell",
 			"3Rnd_SmokeOrange_Grenade_shell"
 		};
-		
+
 		Attachments[] = {
 			// Multigun
 			"Heal_EPOCH",
 			"Defib_EPOCH",
 			"Repair_EPOCH",
-			
+
 			// Optics Light
 			"optic_Aco",
 			"optic_ACO_grn",
@@ -609,7 +616,7 @@ class CfgItemSort
 			"optic_Holosight_smg",
 			"optic_Yorris",
 			"optic_MRD",
-			
+
 			// Optics Mid
 			"optic_Arco",
 			"optic_Hamr",
@@ -617,7 +624,7 @@ class CfgItemSort
 			"optic_NVS",
 			"Elcan_epoch",
 			"Elcan_reflex_epoch",
-			
+
 			// Optics Heavy
 			"optic_LRPS",
 			"optic_SOS",
@@ -625,7 +632,7 @@ class CfgItemSort
 			"optic_Nightstalker",
 			"optic_tws",
 			"optic_tws_mg",
-			
+
 			// Optics Marksman
 			"optic_AMS",
 			"optic_AMS_khk",
@@ -634,7 +641,7 @@ class CfgItemSort
 			"optic_KHS_hex",
 			"optic_KHS_old",
 			"optic_KHS_tan",
-			
+
 			// Optics_Apex
 			"optic_ERCO_blk_F",
 			"optic_ERCO_khk_F",
@@ -649,7 +656,7 @@ class CfgItemSort
 
 			"acc_flashlight",
 			"acc_pointer_IR",
-			
+
 			// Bipods Marksman
 			"bipod_01_F_snd",
 			"bipod_01_F_blk",
@@ -659,10 +666,10 @@ class CfgItemSort
 			"bipod_02_F_hex",
 			"bipod_03_F_blk",
 			"bipod_03_F_oli",
-			
+
 			// Bipods Apex
 			"bipod_01_F_khk",
-			
+
 			// Muzzles
 			"muzzle_snds_H",
 			"muzzle_snds_L",
@@ -670,7 +677,7 @@ class CfgItemSort
 			"muzzle_snds_B",
 			"muzzle_snds_H_MG",
 			"muzzle_snds_acp",
-			
+
 			// Muzzles Marksman
 			"muzzle_snds_338_black",
 			"muzzle_snds_338_green",
@@ -678,7 +685,7 @@ class CfgItemSort
 			"muzzle_snds_93mmg",
 			"muzzle_snds_93mmg_tan",
 			"muzzle_sr25S_epoch",
-			
+
 			// Muzzles Apex
 			"muzzle_snds_58_blk_F",
 			"muzzle_snds_58_wdm_F",
@@ -694,7 +701,7 @@ class CfgItemSort
 			"muzzle_snds_65_TI_blk_F",
 			"muzzle_snds_65_TI_hex_F"
 		};
-		
+
 		Explosive[] = {
 			"DemoCharge_Remote_Mag",
 			"SatchelCharge_Remote_Mag",
@@ -709,6 +716,7 @@ class CfgItemSort
 			"SmokeShell",
 			"SmokeShellYellow",
 			"SmokeShellGreen",
+            "SmokeShellToxic",
 			"SmokeShellRed",
 			"SmokeShellPurple",
 			"SmokeShellOrange",
@@ -718,14 +726,14 @@ class CfgItemSort
 			"Chemlight_yellow",
 			"Chemlight_blue"
 		};
-		
+
 		Medical[] = {
 			"FAK",
 			"Towelette",
 			"HeatPack",
 			"ColdPack"
 		};
-		
+
 		Food[] = {
 			"Pumpkin",
 			"FoodBioMeat",
@@ -751,7 +759,7 @@ class CfgItemSort
 			"SheepCarcass_EPOCH",
 			"SnakeCarcass_EPOCH"
 		};
-		
+
 		Drink[] = {
 			"WhiskeyNoodle",
 			"FoodWalkNSons",
@@ -796,7 +804,7 @@ class CfgItemSort
 			//"ItemPipe",
 			//"ItemBulb"
 		};
-		
+
 		Items[] = {
 			"VehicleRepair",
 			"VehicleRepairLg",
@@ -837,7 +845,7 @@ class CfgItemSort
 			//"ItemVehDoc2",
 			//"ItemVehDoc3",
 			//"ItemVehDoc4",
-			
+
 			// KryptoItems
 			"PartOreGold",
 			"PartOreSilver",
@@ -863,7 +871,7 @@ class CfgItemSort
 			"ItemSodaEmpty",
 			//"ItemBriefcaseE",
 			//"ItemBriefcaseGold100oz",
-			
+
 			"PaintCanClear",
 			"PaintCanBlk",
 			"PaintCanBlu",
@@ -884,12 +892,12 @@ class CfgItemSort
 			"C_SUV_01_EPOCH",							// SUV
 			"C_Van_01_box_EPOCH",						// Truck Boxer
 			"C_Van_01_transport_EPOCH",					// Truck
-			
+
 			"K01",										// Kart
 			"K02",										// Kart Blueking
 			"K03",										// Kart Redstone
 			"K04",										// Kart Vrana
-			
+
 			"B_Truck_01_transport_EPOCH",				// HEMTT Transport - Personen
 			"B_Truck_01_covered_EPOCH",					// HEMTT Transporter abgedeckt
 			"B_Truck_01_mover_EPOCH",					// HEMTT
@@ -898,7 +906,7 @@ class CfgItemSort
 			"O_Truck_02_transport_EPOCH",
 			"O_Truck_03_covered_EPOCH",
 			"O_Truck_03_transport_F",
-			
+
 			// Funktions Fahrzeuge |Repair,Heal,Tank|
 			"C_Offroad_01_repair_F",
 			"O_G_Van_01_fuel_F",
@@ -915,7 +923,7 @@ class CfgItemSort
 			"O_Truck_03_ammo_F",
 			"O_Truck_03_fuel_F",
 			"O_Truck_03_medical_F",
-			
+
 			"O_G_Offroad_01_armed_F",
 			"I_G_Offroad_01_armed_F",
 			"B_G_Offroad_01_armed_F",
@@ -925,8 +933,8 @@ class CfgItemSort
 			"I_MRAP_03_EPOCH",
 			"B_MRAP_01_hmg_F",
 			"O_MRAP_02_hmg_F",
-			"I_MRAP_03_hmg_F", 
-			
+			"I_MRAP_03_hmg_F",
+
 			// Apex
 			"I_C_Offroad_02_unarmed_F",
 			"I_C_Offroad_02_unarmed_brown_F",
@@ -938,35 +946,35 @@ class CfgItemSort
 			"C_Offroad_02_unarmed_black_F",
 			"C_Offroad_02_unarmed_white_F",
 			"C_Offroad_02_unarmed_red_F",
-			
+
 			"B_LSV_01_unarmed_F",
 			"B_LSV_01_unarmed_olive_F",
 			"B_LSV_01_unarmed_sand_F",
 			"B_LSV_01_unarmed_black_F",
-			
+
 			"B_T_LSV_01_unarmed_F",
 			"B_T_LSV_01_unarmed_CTRG_F",
 			"B_T_LSV_01_unarmed_olive_F",
 			"B_T_LSV_01_unarmed_black_F",
 			"B_T_LSV_01_unarmed_sand_F",
-			
+
 			"O_LSV_02_unarmed_F",
 			"O_LSV_02_unarmed_ghex_F",
 			"O_LSV_02_unarmed_arid_F",
 			"O_LSV_02_unarmed_viper_F",
 			"O_LSV_02_unarmed_black_F",
-			
+
 			"O_T_LSV_02_unarmed_black_F",
 			"O_T_LSV_02_unarmed_ghex_F",
 			"O_T_LSV_02_unarmed_arid_F",
 			"O_T_LSV_02_unarmed_viper_F",
-			
+
 			"O_T_LSV_02_armed_black_F",
 			"O_T_LSV_02_armed_ghex_F",
 			"B_LSV_01_armed_black_F",
 			"B_LSV_01_armed_olive_F"
 		};
-		
+
 		Vehicles_Air[] = {
 			"mosquito_epoch",
 			"C_Heli_light_01_wasp_F",
@@ -984,7 +992,7 @@ class CfgItemSort
 			"C_Heli_light_01_furious_F",
 			"C_Heli_light_01_wave_F",
 			"C_Heli_light_01_sheriff_F",
-			
+
 			"O_Heli_Light_02_unarmed_EPOCH",
 			"I_Heli_light_03_unarmed_EPOCH",
 			"I_Heli_Transport_02_EPOCH",
@@ -995,23 +1003,23 @@ class CfgItemSort
 			"O_Heli_Transport_04_box_EPOCH",
 			"O_Heli_Transport_04_covered_EPOCH",
 			"B_Heli_Light_01_EPOCH",
-			
+
 			"B_Heli_Light_01_armed_F",
 			"B_Heli_Transport_01_EPOCH",
 			"B_Heli_Transport_03_black_F",
 			"O_Heli_Light_02_v2_F",
 			"I_Heli_light_03_F",
-			
+
 			// Apex
 			"B_T_VTOL_01_vehicle_blue_F",
 			"B_T_VTOL_01_infantry_blue_F",
 			"B_T_VTOL_01_infantry_olive_F",
-		
+
 			"O_T_VTOL_02_vehicle_grey_F",
 			"O_T_VTOL_02_vehicle_F",
 			"O_T_VTOL_02_infantry_F"
 		};
-		
+
 		Vehicles_Ship[] = {
 			"jetski_epoch",
 			"C_Boat_Civil_01_EPOCH",
@@ -1022,7 +1030,7 @@ class CfgItemSort
 			"C_Rubberboat_03_EPOCH",
 			"C_Rubberboat_04_EPOCH",
 			"B_SDV_01_EPOCH",
-			
+
 			// Apex
 			"I_C_Boat_Transport_02_F",
 			"O_G_Boat_Transport_02_F",

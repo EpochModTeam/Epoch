@@ -6,7 +6,7 @@ _unit = createVehicle["I_UAV_01_F", _targetPos, [], 0, "FLY"];
 _unit disableTIEquipment true;
 addToRemainsCollector[_unit];
 _unit flyInHeight 600;
-_grp = createGroup RESISTANCE;
+_grp = createGroup [RESISTANCE, true];
 _driver = _grp createUnit["I_UAV_AI", position _unit, [], 0, "CAN_COLLIDE"];
 _driver moveInAny _unit;
 [_unit, _trgt] execFSM "\x\addons\a3_epoch_code\System\Copter_brain.fsm";

@@ -25,7 +25,8 @@ class CfgMainTable
 				{ "UAV", 15 },
 				{ "Cloak", 10 }, // Night = Epoch_Cloak_F, Day = Epoch_Sapper_F
 				{ "Sapper", 20 },
-				{ "SapperB", 10 },
+                { "SapperG", 5 },
+				{ "SapperB", 5 },
 				{ "PHANTOM", 5 }
 		};
 	};
@@ -66,7 +67,8 @@ class CfgMainTable
 				{ "UAV", 15 },
 				{ "Cloak", 10 }, // Night = Epoch_Cloak_F, Day = Epoch_Sapper_F
 				{ "Sapper", 20 },
-				{ "SapperB", 10 }
+				{ "SapperG", 5 },
+                { "SapperB", 5 }
 		};
 	};
 	class TrashSmall : Default
@@ -624,6 +626,12 @@ class CfgMainTable
 		lootMin = 5;
 		LootMax = 10;
 		tables[] = { "Epoch_SapperB_F" };
+	};
+    class Epoch_SapperG_F
+	{
+		lootMin = 5;
+		LootMax = 10;
+		tables[] = { "Epoch_SapperG_F" };
 	};
 	class Epoch_Cloak_F
 	{

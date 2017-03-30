@@ -837,7 +837,7 @@ class FSM
                                         priority = 10.000000;
                                         to="ERROR_Wrong_Version_1";
                                         precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-                                        condition=/*%FSM<CONDITION""">*/"productVersion select 2 < getNumber(configFile >> ""CfgMods"" >> ""Epoch"" >> ""ArmAVersion"")"/*%FSM</CONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"productVersion select 2 < getNumber(getMissionConfig ""CfgEpochClient"" >> ""ArmAVersion"")"/*%FSM</CONDITION""">*/;
                                         action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
                                 };
                                 /*%FSM</LINK>*/

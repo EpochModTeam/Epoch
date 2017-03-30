@@ -52,14 +52,14 @@ class Mission
 		forecastWeather=0;
 		forecastWind=0;
 		forecastWaves=0;
-		forecastLightnings=1;
+		forecastLightnings=0;
 		year=2035;
 		month=6;
 		day=24;
 		hour=12;
 		minute=0;
-		startFogDecay=0.013;
-		forecastFogDecay=0.013;
+		startFogDecay=0;
+		forecastFogDecay=0;
 	};
 	class Entities
 	{

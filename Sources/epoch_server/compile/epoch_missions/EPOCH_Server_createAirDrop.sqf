@@ -43,7 +43,7 @@ _obj allowdamage false;
 _obj setPosATL _pos;
 _obj setFuel 1;
 _obj flyInHeight 120;
-_grp = createGroup RESISTANCE;
+_grp = createGroup [RESISTANCE, true];
 
 _unitPos = _pos;
 _driver = _grp createUnit["I_helipilot_F", _unitPos, [], 0, "CAN_COLLIDE"];

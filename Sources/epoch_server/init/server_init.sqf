@@ -65,6 +65,7 @@ diag_log "Epoch: Init Variables";
 call compile preprocessFileLineNumbers "\epoch_server\init\server_variables.sqf";
 call compile preprocessFileLineNumbers "\epoch_server\init\server_securityfunctions.sqf";
 
+
 ["I", _instanceID, "86400", ["CONTINUE"]] call EPOCH_fnc_server_hiveSETEX;
 diag_log format["Epoch: Start Hive, Instance ID: '%1'", _instanceID];
 
@@ -210,6 +211,19 @@ if (_dateChanged) then {
     };
 };
 
+_config = 'CfgServicePoint' call EPOCH_returnConfig;
+_servicepoints = getArray (_config >> worldname >> 'ServicePoints');
+{
+	_marker = createMarker [('ServicePointMarker'+(str _foreachindex)), _x];
+	_marker setmarkertype "mil_dot";
+	_marker setmarkercolor 'ColorBlack';
+	_marker setMarkerText ("Service Point");
+	if !(surfaceiswater _x) then {
+		"Land_HelipadCircle_F" createvehicle _x;
+	};
+} forEach _ServicePoints;
+
+
 // set time multiplier
 setTimeMultiplier ([_serverSettingsConfig, "timeMultiplier", 1] call EPOCH_fnc_returnConfigEntry);
 
@@ -225,3 +239,6 @@ _sapper setDamage 1;
 _sapper enableSimulationGlobal false;
 
 diag_log format ["Epoch: Server Start Complete: %1 seconds",diag_tickTime-_startTime];
+
+// unit test start
+// call EPOCH_fnc_server_hiveUnitTest;

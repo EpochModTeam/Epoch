@@ -1268,12 +1268,10 @@ _skn_admincode = compileFinal ("
 			if ("+_skn_tg_map_player+") then {
 				_size = (0.5/ctrlMapScale _display) max 20;
 				{
-					if (isPlayer _x) then {
-						_display drawIcon [
-							getText (configFile >> 'CfgVehicles' >> typeOf _x >> 'Icon'), _x call _getDmgColor, visiblePosition _x, _size, _size, getDir _x, name _x
-						];
-					};
-				}forEach allPlayers;
+					_display drawIcon [
+						getText (configFile >> 'CfgVehicles' >> typeOf _x >> 'Icon'), _x call _getDmgColor, visiblePosition _x, _size, _size, getDir _x, name _x
+					];
+				}forEach (allPlayers select {alive _x});
 			};
 			if ("+_skn_tg_map_corpse+") then {
 				_size = (1/ctrlMapScale _display) max 20;
@@ -1284,7 +1282,7 @@ _skn_admincode = compileFinal ("
 							getText (configFile >> 'CfgVehicles' >> typeOf _x >> 'Icon'), _color, visiblePosition _x, _size, _size, getDir _x, typeOf _x
 						];
 					};
-				}forEach allDeadMen;
+				}forEach (allPlayers select {!alive _x});
 			};
 			if ("+_skn_tg_map_loot+") then {
 				{
@@ -1911,6 +1909,13 @@ _skn_admincode = compileFinal ("
 				'U_Wetsuit_Purp',
 				'U_Wetsuit_Camo',
 				'U_CamoRed_uniform',
+                'U_CamoAloha_uniform',
+                'U_CamoBiker_uniform',
+                'U_CamoBubblegum_uniform',
+                'U_CamoLumberjack_uniform',
+                'U_CamoOutback_uniform',
+                'U_CamoPink_uniform',
+                'U_CamoPinkPolka_uniform',
 				'U_CamoBrn_uniform',
 				'U_CamoBlue_uniform',
 				'U_Camo_uniform',

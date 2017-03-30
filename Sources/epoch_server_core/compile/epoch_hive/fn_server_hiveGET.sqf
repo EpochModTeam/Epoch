@@ -24,24 +24,18 @@ while {_hiveStatus < 0 || _hiveStatus == 2} do {
 	_hiveStatus = 0;
 	if (_hiveResponse != "") then {
 		_hiveResponse = call compile _hiveResponse;
-		if !(isNil "_hiveResponse") then {
-
-			if (_hiveResponse isEqualType [] && !(_hiveResponse isEqualTo [])) then {
-				_hiveStatus = _hiveResponse select 0;
-				if (_hiveStatus >= 1) then {
-					_hiveMessage = _hiveMessage + (_hiveResponse select 1);
-				};
-			};
+        _hiveResponse params [
+            ["_status", 0],
+            ["_data", ""]
+        ];
+		_hiveStatus = _status;
+		if (_hiveStatus >= 1) then {
+			_hiveMessage = _hiveMessage + _data;
 		};
 	};
 };
 
-if (_hiveStatus > 0 && _hiveMessage find "<null>" == -1) then {
-	_hiveMessage = call compile _hiveMessage;
-	if (isNil "_hiveMessage") then { _hiveMessage = [];}
-}
-else {
-	_hiveMessage = [];
-};
+// note: removed check for null in array _hiveMessage find "<null>" == -1
+_hiveMessage = if (_hiveMessage isEqualTo "") then {[]} else {parseSimpleArray _hiveMessage};
 
 [_hiveStatus, _hiveMessage]

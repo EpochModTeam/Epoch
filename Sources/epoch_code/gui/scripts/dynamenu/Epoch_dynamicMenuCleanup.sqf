@@ -15,6 +15,7 @@
 //[[[cog import generate_private_arrays ]]]
 private ["_cfg","_cleanupVars","_close"];
 //[[[end]]]
+disableSerialization;
 _close = param [0,false,[false]];
 
 _cleanupVars = {
@@ -26,7 +27,10 @@ _cleanupVars = {
 };
 
 if (_close) then {
-	(findDisplay 66600) closeDisplay 1;
+    _display = findDisplay 66600;
+    if !(isNull _display) then {
+        _display closeDisplay 1;
+    };
 };
 
 if (uiNamespace getVariable ["rmx_var_dynamicMenuInProgress",false]) then {

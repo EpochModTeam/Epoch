@@ -911,6 +911,17 @@ class CfgLootTable
 				{ { "Pelt_EPOCH", "magazine" }, 29 }
 		};
 	};
+    class Epoch_SapperG_F
+    {
+        items[] = {
+                { { "SmokeShellToxic", "magazine" }, 9 },
+                { { "WhiskeyNoodle", "magazine" }, 13 },
+                { { "ItemKiloHemp", "magazine" }, 15 },
+                { { "ItemSilverBar", "magazine" }, 17 },
+                { { "HotColdPacks", "CfgLootTable" }, 17 },
+                { { "Pelt_EPOCH", "magazine" }, 29 }
+        };
+    };
 
 	class I_UAV_01_F
 	{
@@ -954,6 +965,7 @@ class CfgLootTable
 				{ { "SmokeShell", "magazine" }, 1 },
 				{ { "SmokeShellYellow", "magazine" }, 1 },
 				{ { "SmokeShellGreen", "magazine" }, 1 },
+                { { "SmokeShellToxic", "magazine" }, 1 },
 				{ { "SmokeShellRed", "magazine" }, 1 },
 				{ { "SmokeShellPurple", "magazine" }, 1 },
 				{ { "SmokeShellOrange", "magazine" }, 1 },
@@ -1120,6 +1132,13 @@ class CfgLootTable
 		items[] = {
 				{ { "FemaleWetsuits", "CfgLootTable" }, 1 },
 				{ { "U_CamoRed_uniform", "item" }, 1 },
+                { { "U_CamoAloha_uniform", "item" }, 1 },
+                { { "U_CamoBiker_uniform", "item" }, 1 },
+                { { "U_CamoBubblegum_uniform", "item" }, 1 },
+                { { "U_CamoLumberjack_uniform", "item" }, 1 },
+                { { "U_CamoOutback_uniform", "item" }, 1 },
+                { { "U_CamoPink_uniform", "item" }, 1 },
+                { { "U_CamoPinkPolka_uniform", "item" }, 1 },
 				{ { "U_CamoBrn_uniform", "item" }, 1 },
 				{ { "U_CamoBlue_uniform", "item" }, 1 },
 				{ { "U_Camo_uniform", "item" }, 1 },

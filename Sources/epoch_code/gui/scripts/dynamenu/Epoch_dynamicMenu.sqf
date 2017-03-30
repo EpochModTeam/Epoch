@@ -137,7 +137,7 @@ if (_buttonSettings isEqualTo []) then {_selfOrTarget = "self"; call _checkConfi
 
 _entries = count _buttonSettings;
 if !(_entries <= 0) then {
-	[_entries, _buttonSettings] call epoch_dynamicMenuPopulate;
+	[_entries, _buttonSettings] spawn epoch_dynamicMenuPopulate;
 } else {
 	true call Epoch_dynamicMenuCleanup;
 };

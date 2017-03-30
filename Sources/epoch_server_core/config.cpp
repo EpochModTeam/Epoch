@@ -41,6 +41,7 @@ class cfgFunctions
 			class server_hiveGETTTL    		{};
 			class server_hiveDEL       		{};
 			class server_hiveLog       		{};
+            class server_hiveUnitTest       {};
 		};
 	};
 };

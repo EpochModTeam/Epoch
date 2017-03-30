@@ -161,7 +161,7 @@ if(count _vehicles > 0)then{
 		_obj allowdamage false;
 
 			if (_driverType != "" || _gunnerType != "" || _commanderType != "") then {
-				_grp = createGroup RESISTANCE;
+				_grp = createGroup [RESISTANCE, true];
 			};
 
 			if (_driverType != "") then {
