@@ -24,3 +24,4 @@
 [Removed] EpochServer extension calls 100 and 101 as they are no longer needed.
 [Info] Re-add missing comments in some config files.
 [Info] Numerous other fixes and optimizations.
+[Info] Requires Arma 3 1.68 or higher.
