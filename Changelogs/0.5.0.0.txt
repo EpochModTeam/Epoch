@@ -1,4 +1,5 @@
 [New] Epoch is leaving alpha and entering beta! All Epoch Asset project sources are now available via our GitHub +LFS and under APL-SA license here: https://github.com/EpochModTeam/EpochCore
+[Added] Added Service Point to Rearm, Repair and Refuel. Thanks to @Ignatz-HeMan
 [Added] 7 new Keesha camo skins by Craig Hauer aka ComatoseBadger.
 [Added] 64-bit database extension support for Windows (EpochServer_x64.dll) and Linux (epochserver_x64.so) servers. Linux support is pending testing.
 [Added] Custom event handler and OnEachFrame hooks added. https://github.com/EpochModTeam/Epoch/tree/experimental/Sources/epoch_code/customs Thanks to @Ignatz-HeMan
@@ -7,6 +8,7 @@
 [Added] Toxic Smoke Grenades can now be found in the world.
 [Added] Respawn in base feature, each player must interact with Jammer and choose "Make Spawnpoint" to enable.
 [Added] Selling to traders with bank debt greater than -50000(default), pays the bank debt back to below the limit instead of the player. Thanks to @Ignatz-HeMan
+[Changed] Epoch Message function now supports custom colors. Thanks to @SPKcoding
 [Changed] Epoch Event: ChangeWeather has been updated to allow for better random control of weather and defaults to bad weather.
 [Changed] Optimized database SET and SETEX calls in both SQF and C++.
 [Changed] Optimized database GETRANGE call.
