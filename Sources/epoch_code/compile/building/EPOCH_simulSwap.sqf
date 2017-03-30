@@ -101,14 +101,7 @@ if (isText(_simulClassConfig)) then {
 			_lastCheckTime = diag_tickTime;
 			_rejectMove = !(EPOCH_target call EPOCH_isBuildAllowed);
 		};
-		if (_rejectMove) exitWith{
-			// remove object and refund items
-			deleteVehicle EPOCH_target;
-			_removeParts = getArray(('CfgBaseBuilding' call EPOCH_returnConfig) >> _objType >> "removeParts");
-			{
-				[_x select 0,_x select 1] call EPOCH_fnc_addItemOverflow;
-			} forEach _removeParts;
-		};
+		if (_rejectMove) exitWith { EPOCH_target = objNull; };
 		_playerdistance = player distance EPOCH_target;
 		if (_playerdistance < 10) then {
 			_isSnap = false;
