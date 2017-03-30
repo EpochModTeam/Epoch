@@ -13,4 +13,4 @@ xcopy /s/e/y/q/i "F:\GitHub Personal\Epoch\Server_Install_Pack\@epochhive\addons
 xcopy /s/e/y/q/i "F:\GitHub Personal\Epoch\Server_Install_Pack\sc\battleye" "F:\GitHub Personal\Epoch-HiveTest\@epochhive\sc\battleye"
 
 
-START "" /WAIT "F:\Program Files (x86)\Steam\steamapps\common\Arma 3 Tools\Publisher\PublisherCmd.exe" update /id:558243173 /changeNote:"testing 123" /path:%WORKSHOPPATH%
+START "" /WAIT "F:\Program Files (x86)\Steam\steamapps\common\Arma 3 Tools\Publisher\PublisherCmd.exe" update /id:558243173 /changeNote:"See Changelogs: https://github.com/EpochModTeam/Epoch/tree/experimental/Changelogs" /path:%WORKSHOPPATH%
