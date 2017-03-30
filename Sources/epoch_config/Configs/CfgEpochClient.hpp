@@ -35,6 +35,10 @@ class CfgEpochClient
     maxdoors = 8;
     maxgates = 5;
     disableRemoteSensors = True;
+    epochMessageBackgroundCol[] = {0,0,0,0.2};  //Epoch_message background color (format: {R,G,B,A})
+    epochMessageTextCol[] = {1,1,1,0.95};       //Epoch_message text color (format: {R,G,B,A})
+                                                //to use different colored messages in scripts, just call it this way: ["the message", 6, [[0,0,0,0.2],[1,1,1,0.95]]] call Epoch_message;
+    
     EPOCH_news[] = {"Word is that Sappers have a new boss.","Dogs will often lure them monsters away.","My dog was blown up. I miss him.."};
     deathMorphClass[] = {"Epoch_Sapper_F","Epoch_SapperB_F","I_UAV_01_F","Epoch_Cloak_F"};
     niteLight[] = {1,1.88,22};
