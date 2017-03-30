@@ -52,6 +52,7 @@ wreckRemovalMaxTime = 360;
 
 disableRandomization[] = {"All"};
 
+#include "Configs\CfgServicePoint.hpp"
 #include "Configs\CfgItemSort.hpp"
 #include "Configs\CfgTraderMissions.hpp"
 #include "Configs\CfgMissions.hpp"

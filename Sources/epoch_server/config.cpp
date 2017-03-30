@@ -63,6 +63,7 @@ class CfgServerFunctions
 			class server_unpackBackpack {};
 			class server_deadPlayerDetonate{};
 			class server_playerSetVariable{};
+			class server_PayCrypto{};
 		};
 		class epoch_traders {
 			class server_loadTraders {};
