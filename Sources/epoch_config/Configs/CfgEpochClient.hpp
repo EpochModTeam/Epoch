@@ -43,6 +43,11 @@ class CfgEpochClient
     maxgates = 5;					// Max allowed Gates per Group
 
     disableRemoteSensors = "true";  // disableRemoteSensors true/false
+
+    epochMessageBackgroundCol[] = {0,0,0,0.2};  //Epoch_message background color (format: {R,G,B,A})
+    epochMessageTextCol[] = {1,1,1,0.95};       //Epoch_message text color (format: {R,G,B,A})
+                                                //to use different colored messages in scripts, just call it this way: ["the message", 6, [[0,0,0,0.2],[1,1,1,0.95]]] call Epoch_message;
+
     EPOCH_news[] = {"Word is that Sappers have a new boss.","Dogs will often lure them monsters away.","My dog was blown up. I miss him.."};
     deathMorphClass[] = {"Epoch_Sapper_F","Epoch_SapperG_F","Epoch_SapperB_F","I_UAV_01_F","Epoch_Cloak_F"}; //Random selection of these classes when player morphs after death. Currently available: Epoch_Cloak_F, Epoch_SapperB_F, Epoch_Sapper_F, I_UAV_01_F
     niteLight[] = {1,1.88,22}; //Set ambient lighting at night: {Brightness of light,Height of light}. Default (Low Ambient): {1.88,22} | Twilight: {7.2,88} | Distant: {12.8,142}
