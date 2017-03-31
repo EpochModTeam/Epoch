@@ -102,7 +102,7 @@ class base_mode_snap_direction_3
 class ServicePoint
 {
 	condition = "call EPOCH_SP_Check";
-	action = "call EPOCH_SP_Start;";
+	action = "call EPOCH_SP_Start";
     icon = "x\addons\a3_epoch_code\Data\UI\buttons\Repair_man.paa";
 	tooltip = "Service Point";
 
