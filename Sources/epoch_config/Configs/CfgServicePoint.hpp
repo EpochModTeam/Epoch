@@ -1,11 +1,11 @@
 class CfgServicePoint {
 	class Altis {
-		ServicePoints[] =	{
+		ServicePoints[] =	{	// Array of coords for ServicePoints
 								{13325,14477,0}
 							};
 	};
 	class Tanoa {
-		ServicePoints[] =	{
+		ServicePoints[] =	{	// Array of coords for ServicePoints
 /*
 								{2157.79,3477.65,0},
 								{11731.5,3125.95,0},
@@ -19,10 +19,16 @@ class CfgServicePoint {
 */								
 							};
 	};
-	class Chernarus {
+	class Chernarus {	// Array of coords for ServicePoints
 		ServicePoints[] =	{
 
 							};
+	};
+	ServicePointClasses[] = {	// Array of Classnames, where also are ServicePoints
+//								"Land_Pillar_Pier_F",
+//								"Land_CarService_F",
+//								"Land_fs_feed_F",
+//								"Land_fs_roof_F"
 	};
 	ServicePointDist = 40;
 	refuel_updateInterval = 1;
