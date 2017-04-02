@@ -1,3 +1,4 @@
+0.5 b740:
 [New] Epoch is leaving alpha and entering beta! All Epoch Asset project sources are now available via our GitHub +LFS and under APL-SA license here: https://github.com/EpochModTeam/EpochCore
 [Added] Added Service Point to Rearm, Repair and Refuel. Thanks to @Ignatz-HeMan
 [Added] 7 new Keesha camo skins by Craig Hauer aka ComatoseBadger.
@@ -25,3 +26,5 @@
 [Info] Re-add missing comments in some config files.
 [Info] Numerous other fixes and optimizations.
 [Info] Requires Arma 3 1.68 or higher.
+
+0.5 b748:

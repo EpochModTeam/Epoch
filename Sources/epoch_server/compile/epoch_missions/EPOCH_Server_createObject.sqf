@@ -22,7 +22,8 @@ if (count _objArr < 1) exitWith {};
 diag_log format["Epoch: Attempt Create Object: %1 for %2",_objArr, name _player];
 
 _cfgPricing = 'CfgPricing' call EPOCH_returnConfig;
-_allowedVehicleListName = ["allowedVehiclesList","allowedVehiclesList_CUP"] select EPOCH_modCUPVehiclesEnabled;
+_lootTableIndex = if (EPOCH_modCUPVehiclesEnabled) then {if (EPOCH_mod_madArma_Enabled) then {3} else {1}} else {if (EPOCH_mod_madArma_Enabled) then {2} else {0}};
+_allowedVehicleListName = ["allowedVehiclesList","allowedVehiclesList_CUP","allowedVehiclesList_MAD","allowedVehiclesList_MADCUP"] select _allowedVehicleIndex;
 _allowedVehiclesList = getArray(configFile >> "CfgEpoch" >> worldName >> _allowedVehicleListName);
 //diag_log format ["DEBUG: Allowed Vehs: %1",_allowedVehiclesList];
 _vehicles = [];
@@ -42,41 +43,41 @@ _pos set [2,0];
 
 //Sort Object Array
 {
-	
+
 	//Weapons / Items
 		if(isClass (configFile >> "CfgWeapons" >> _x))then{
-			
+
 			diag_log format["Epoch: Server_CreateObject: %1 Weapon / Item Found",_x];
-			
+
 			if("ItemCore" in ([configFile >> "CfgWeapons" >> _x, true] call BIS_fnc_returnParents))then{
 			_items pushBack _x;
 			}else{
 			_weapons pushBack _x;
 			};
-			
+
 		};
-		
+
 		//Magazines
 		if(isClass (configFile >> "CfgMagazines" >> _x))then{
-			
+
 			diag_log format["Epoch: Server_CreateObject: %1 Magazine Found",_x];
-			
+
 			if("ItemCore" in ([configFile >> "CfgMagazines" >> _x, true] call BIS_fnc_returnParents))then{
 			_items pushBack _x;
 			}else{
 			_magazines pushBack _x;
 			};
-			
+
 		};
-		
+
 	//BackPacks / Vehicles
 	if(isClass (configFile >> "CfgVehicles" >> _x))then{
 		if("Bag_Base" in ([configFile >> "CfgVehicles" >> _x, true] call BIS_fnc_returnParents))then{
 		_backpacks pushBack _x;
 		}else{
-			
+
 			_vehAllowed = true;
-			
+
 			//If not destroying vehcile then check if allowed
 			if!(_doDamage)then{
 			_veh = _x;
@@ -85,8 +86,8 @@ _pos set [2,0];
 				if (_veh in _x)then{_vehAllowed = true;};
 				} forEach _allowedVehiclesList;
 			};
-			
-				
+
+
 				if(_vehAllowed)then{
 					//If not destroying (mission object) then find safe position
 					if!(_doDamage)then{
@@ -100,7 +101,7 @@ _pos set [2,0];
 						_pos = _pos findEmptyPosition [1,75,_x];
 						};
 					};
-					
+
 					_vehicles pushBack [_x,_pos];
 				};
 		};
@@ -123,7 +124,7 @@ _wepHolder = createVehicle["groundWeaponHolder", _pos, [], 0.0, "CAN_COLLIDE"];
 		_wepHolder addWeaponCargoGlobal [_x,1];
 		} forEach _weapons;
 	};
-	
+
 	//Items
 	if(count _items > 0)then{
 		{
@@ -131,7 +132,7 @@ _wepHolder = createVehicle["groundWeaponHolder", _pos, [], 0.0, "CAN_COLLIDE"];
 		_wepHolder addItemCargoGlobal [_x,1];
 		} forEach _items;
 	};
-	
+
 	//Magazines
 	if(count _magazines > 0)then{
 		{
@@ -139,7 +140,7 @@ _wepHolder = createVehicle["groundWeaponHolder", _pos, [], 0.0, "CAN_COLLIDE"];
 		_wepHolder addMagazineCargoGlobal [_x,1];
 		} forEach _magazines;
 	};
-	
+
 	//Backpacks
 	if(count _backpacks > 0)then{
 		{
@@ -155,9 +156,9 @@ if(count _vehicles > 0)then{
 		diag_log format["Epoch: Server_CreateObject: %1 Vehicle Spawn",_x];
 		//Need to create slot to createVehicle a persistent Epoch vehicle.
 		//_obj = [_x select 0, _x select 1, random 360, true, (EPOCH_storedVehicleCount + 1), _player, "CAN_COLLIDE", !_clearCargo, false] call EPOCH_spawn_vehicle;
-		
+
 		_obj =  createVehicle[(_x select 0), (_x select 1), [], 15, "CAN_COLLIDE"];
-		
+
 		_obj allowdamage false;
 
 			if (_driverType != "" || _gunnerType != "" || _commanderType != "") then {
@@ -192,10 +193,10 @@ if(count _vehicles > 0)then{
 				//if (_doOwner) then {_crew setOwner (owner _player)};
 			};
 		_obj allowdamage true;
-	
+
 		if(_doDamage)then{_obj setDamage 1;};
-	
+
 	}forEach _vehicles;
-	
-	
+
+
 };

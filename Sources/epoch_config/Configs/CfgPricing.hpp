@@ -4513,6 +4513,15 @@ class CfgPricing
     class B_ViperLightHarness_hex_F         {  price = 20; };
     class B_ViperLightHarness_khk_F         {  price = 20; };
     class B_ViperLightHarness_oli_F         {  price = 20; };
+    // MAD ARMA
+    class revolver01                        { price = 55 };
+    class VG_sawed_off_01                   { price = 120 };
+    class Devastator_01                     { price = 180 };
+    class in005_1Rnd_12Gauge_Pellets        { price = 5 };
+    class in005_1Rnd_12Gauge_Slug           { price = 5 };
+    class H_MM_Buzzard_Gasmask_01           { price = 65 };
+    class H_MM_Helmet_01                    { price = 75 };
+    class V_MM_Vest_01                      { price = 20 };
 };
 
 /*[[[end]]]*/
