@@ -28,3 +28,5 @@
 [Info] Requires Arma 3 1.68 or higher.
 
 0.5 b748:
+[Added] 200 player support to all mission files, thanks to increased group limits in Arma 1.68!
+[Added] Experimental support for Mad ArmA Mod: https://forums.bistudio.com/forums/topic/200295-mad-arma-mad-max-inspired-mod/
