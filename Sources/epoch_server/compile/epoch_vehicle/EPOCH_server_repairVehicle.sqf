@@ -18,7 +18,7 @@ if !([_player,  _token] call EPOCH_server_getPToken) exitWith{};
 if (_player distance _vehicle > 20) exitWith{};
 
 if ((_value select 0) isEqualTo "ALL") then {
-	_vehicle setDamage 0;
+	_vehicle setDamage (_value select 1);
 } else {
 	if (local _vehicle) then {
 		_vehicle setHitIndex _value;
