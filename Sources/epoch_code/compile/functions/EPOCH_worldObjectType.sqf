@@ -13,7 +13,7 @@
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_code/compile/functions/EPOCH_worldObjectType.sqf
 
     Example:
-    _isTree = [_objectSting, "tree"] call EPOCH_worldObjectType;
+    _isTree = [_objectString, "tree"] call EPOCH_worldObjectType;
 
     Parameter(s):
 		_this select 0: STRING - string name of world object
