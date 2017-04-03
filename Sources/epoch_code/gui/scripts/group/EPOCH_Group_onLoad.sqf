@@ -18,7 +18,7 @@ private ["_BtnInvite","_GroupMemberList","_InvitePlayerCombo","_currentMaxMember
 disableSerialization;
 _display = findDisplay -1300;
 _BtnInvite = _display displayCtrl 30;
-
+_eh = _display displayaddeventhandler ['KeyUp',{true}];
 _GroupMemberList = _display displayCtrl 40;
 _InvitePlayerCombo = _display displayCtrl 41;
 
