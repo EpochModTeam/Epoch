@@ -30,6 +30,8 @@ class CfgPatches {
 #include "configs\CfgMainTable.h"
 #include "configs\CfgLootTable.h"
 #include "configs\CfgLootTable_CUP.h"
+#include "configs\CfgLootTable_MAD.h"
+#include "configs\CfgLootTable_MADCUP.h"
 // vehicle textures
 #include "configs\CfgEpochVehicles.h"
 // security checks
@@ -201,6 +203,50 @@ class CfgEpoch
 			{"CUP_B_UAZ_Unarmed_CDF",2},
 			{"CUP_B_Ural_Empty_CDF",2},
 			{"CUP_C_DC3_CIV",2}
+		};
+        allowedVehiclesList_MAD[] = {
+			{"jetski_epoch",5},
+            {"ebike_epoch",5},
+		    {"mosquito_epoch",5},
+            {"chums_buggy_1",10},
+            {"plymouth_rock_1",5},
+            {"warrig_black",5},
+            {"nux_car_1",10},
+            {"interceptor_1",5},
+		};
+        allowedVehiclesList_MADCUP[] = {
+            {"jetski_epoch",3},
+            {"ebike_epoch",1},
+		    {"mosquito_epoch",3},
+            {"chums_buggy_1",7},
+            {"plymouth_rock_1",4},
+            {"warrig_black",4},
+            {"nux_car_1",7},
+            {"interceptor_1",4},
+			{"CUP_C_Fishing_Boat_Chernarus",2},
+			{"CUP_C_Skoda_Red_CIV",1},
+			{"CUP_C_Skoda_White_CIV",1},
+			{"CUP_C_Skoda_Blue_CIV",1},
+			{"CUP_C_Skoda_Green_CIV",1},
+			{"CUP_C_Datsun_Covered",1},
+			{"CUP_C_Datsun_Plain",1},
+			{"CUP_C_Datsun_Tubeframe",1},
+			{"CUP_C_Datsun_4seat",1},
+			{"CUP_C_Datsun",1},
+			{"CUP_C_Golf4_green_Civ",1},
+			{"CUP_C_Golf4_red_Civ",1},
+			{"CUP_C_Golf4_blue_Civ",1},
+			{"CUP_C_Golf4_black_Civ",1},
+			{"CUP_C_Golf4_kitty_Civ",1},
+			{"CUP_C_Golf4_reptile_Civ",1},
+			{"CUP_C_Golf4_camodigital_Civ",1},
+			{"CUP_C_Golf4_camodark_Civ",1},
+			{"CUP_C_Golf4_camo_Civ",1},
+			{"CUP_B_M1030",2},
+			{"CUP_C_Golf4_white_Civ",1},
+			{"CUP_C_Golf4_whiteblood_Civ",1},
+			{"CUP_C_Golf4_yellow_Civ",1},
+			{"CUP_C_Octavia_CIV",1},
 		};
 	};
 	#include "configs\maps\bornholm.h"

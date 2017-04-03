@@ -17,7 +17,7 @@ private ["_antagonistSpawnDefaults","_customVarsInit","_say3dsounds","_say3dsoun
 //[[[end]]]
 
 // detect if Ryan's Zombies and Deamons mod is present
-if (["CfgEpochClient", "ryanZombiesEnabled", false] call EPOCH_fnc_returnConfigEntryV2) then {
+if (["CfgEpochClient", "ryanZombiesEnabled", true] call EPOCH_fnc_returnConfigEntryV2) then {
     EPOCH_mod_Ryanzombies_Enabled = (parseNumber (getText (configFile >> "CfgPatches" >> "Ryanzombies" >> "version")) >= 4.5);
     if (EPOCH_mod_Ryanzombies_Enabled) then {
         diag_log "Epoch: Ryanzombies detected";
@@ -25,6 +25,17 @@ if (["CfgEpochClient", "ryanZombiesEnabled", false] call EPOCH_fnc_returnConfigE
 } else {
     EPOCH_mod_Ryanzombies_Enabled = false;
 };
+
+// detect if Mad Arma is present
+if (["CfgEpochClient", "madArmaEnabled", true] call EPOCH_fnc_returnConfigEntryV2) then {
+    EPOCH_mod_madArma_Enabled = (parseNumber (getText (configFile >> "CfgPatches" >> "bv_wheels" >> "version")) >= 2016);
+    if (EPOCH_mod_madArma_Enabled) then {
+        diag_log "Epoch: Mad Arma detected";
+    };
+} else {
+    EPOCH_mod_madArma_Enabled = false;
+};
+
 
 // Init Custom vars
 EPOCH_customVars = [];

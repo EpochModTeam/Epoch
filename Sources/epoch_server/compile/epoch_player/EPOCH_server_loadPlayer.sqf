@@ -120,7 +120,7 @@ if (!isNull _player) then {
             _location = getMarkerPos "respawn_west";
             _location set[2, 0];
             if (_newLocation isEqualType [] && {(count _newLocation) == 3}) then {
-                _jammers = nearestObjects[_newLocation, ["PlotPole_EPOCH"], 1];
+                _jammers = nearestObjects[_newLocation, ["PlotPole_EPOCH"], 6];
                 if !(_jammers isEqualTo[]) then {
                     // get nearby object
                     _jammer = _jammers param [0,objNull];

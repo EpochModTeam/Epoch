@@ -1,3 +1,4 @@
+0.5 b740:
 [New] Epoch is leaving alpha and entering beta! All Epoch Asset project sources are now available via our GitHub +LFS and under APL-SA license here: https://github.com/EpochModTeam/EpochCore
 [Added] Added Service Point to Rearm, Repair and Refuel. Thanks to @Ignatz-HeMan
 [Added] 7 new Keesha camo skins by Craig Hauer aka ComatoseBadger.
@@ -25,3 +26,13 @@
 [Info] Re-add missing comments in some config files.
 [Info] Numerous other fixes and optimizations.
 [Info] Requires Arma 3 1.68 or higher.
+
+0.5 b749:
+[Added] 200 player support to all mission files, thanks to increased group limits in Arma 1.68!
+[Added] Experimental support for Mad ArmA Mod: https://forums.bistudio.com/forums/topic/200295-mad-arma-mad-max-inspired-mod/
+[Changed] Spawn in base now use player position instead of jammers (reset spawn point to use). @Ignatz-HeMan
+[Changed] Force "Take Crypto" option on dead bodies. @Ignatz-HeMan
+[Changed ] Added optional Classnames for Service Point Pos.  @Ignatz-HeMan
+[Changed ] Some Cleanups and Script optimization to the service point scripts. @Ignatz-HeMan
+[Fixed] Toxic Smoke Grenade not making you Toxic thanks to @Ignatz-HeMan
+[Info] Install script for Mad Arma mod via Steam workshop in the tools/install folder.

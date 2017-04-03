@@ -15,7 +15,7 @@ class Header
 {
  gameType = Survive;
  minPlayers = 1;
- maxPlayers = 100;
+ maxPlayers = 200;
 };
 respawn = "BASE";
 respawnDelay = 600;

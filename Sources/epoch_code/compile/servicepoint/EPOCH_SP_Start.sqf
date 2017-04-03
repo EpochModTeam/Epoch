@@ -1,3 +1,20 @@
+/*
+	Author: [Ignatz] He-Man
+
+    Contributors: Aaron Clark - EpochMod.com
+
+	Description:
+	Service Point StartScript for A3 Epoch
+
+    Licence:
+    Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
+
+    Github:
+    https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_code/servicepoint/EPOCH_SP_Start.sqf
+*/
+
+private ['_missingammo','_ownedcompletemags','_magname','_actionTitle','_costs','_vehicle','_refuel_costs','_refuel_updateInterval','_refuel_amount','_costsFree','_repair_costs','_fnc_getCosts','_fnc_actionTitle'];
+
 Ignatz_Refuel = nil;
 Ignatz_Repair = nil;
 Ignatz_Rearm0 = nil;
@@ -5,21 +22,7 @@ Ignatz_Rearm1 = nil;
 Ignatz_Rearm2 = nil;
 Ignatz_Rearm3 = nil;
 
-if (vehicle player == player) exitwith {false};
-if !(local vehicle player) exitwith {false};
-if (speed vehicle player > 2 || speed vehicle player < -2) exitwith {false};
-if (((getpos vehicle player) select 2) > 1) exitwith {false};
-
-private ['_missingammo','_ownedcompletemags','_magname','_actionTitle','_costs','_vehicle','_refuel_costs','_refuel_updateInterval','_refuel_amount','_costsFree','_repair_costs','_repair_repairTime','_fnc_getCosts','_fnc_actionTitle'];
-
-_config = 					'CfgServicePoint' call EPOCH_returnConfig;
-_servicepoints = 			getArray (_config >> worldname >> 'ServicePoints');
-_servicepointDist = 		["CfgServicePoint", "ServicePointDist", 40] call EPOCH_fnc_returnConfigEntryV2;
-
-if !(({player distance _x < _servicepointDist} count _servicepoints > 0)) exitwith {false};
-_Vehicle = vehicle player;
-if (!(_Vehicle iskindof 'ship') && (((getposasl _Vehicle)  select 2) < 1)) exitwith {false};
-
+_vehicle = vehicle player;
 _repair_costs = 			["CfgServicePoint", "repair_costs", []] call EPOCH_fnc_returnConfigEntryV2;
 _refuel_costs = 			["CfgServicePoint", "refuel_costs", []] call EPOCH_fnc_returnConfigEntryV2;
 _refuel_updateInterval = 	["CfgServicePoint", "refuel_updateInterval", 1] call EPOCH_fnc_returnConfigEntryV2;
@@ -43,6 +46,7 @@ _fnc_getCosts = {
 	} forEach _costs;
 	_cost
 };
+
 _fnc_actionTitle = {
 	private ['_itemName','_displayName','_actionName','_costs','_costsText','_actionTitle'];
 	_actionName = _this select 0;

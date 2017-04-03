@@ -25,10 +25,13 @@ if (alive _jammer) then {
         _server_vars = _player getVariable["SERVER_VARS", []];
         _currentPos = _server_vars param [0,[]];
         // invalidate previous position
+		if (!(_currentPos isequaltype [])) then {
+			_currentPos = [];
+		};
         if (!(_currentPos isEqualTo []) && {_jammer distance _currentPos > 20}) then { _currentPos = [] };
         if (_currentPos isEqualTo []) then {
             // set position of spawnpoint to players SERVER_VARS
-            _server_vars set [0, getposATL _jammer]; // 0 = RESPAWN POS
+            _server_vars set [0, getposATL _player]; // 0 = RESPAWN POS
             _player setVariable ["SERVER_VARS", _server_vars];
             ["Spawnpoint set", 5] remoteExec ['Epoch_message',_player];
         }
