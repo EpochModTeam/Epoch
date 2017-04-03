@@ -30,7 +30,7 @@ _customVars = "";
 }forEach EPOCH_customVars;
 
 hintSilent parseText format ["
-	<t size='1.25' font='puristaLight' align='center'>Welcome to Epoch Alpha</t><br/>
+	<t size='1.25' font='puristaLight' align='center'>Welcome to Epoch!</t><br/>
 	<t size='1.18' font='puristaLight' align='center'>Current Version: %1</t><br/>
 	<t size='1.0' font='puristaLight' align='center'>Build: %2</t><br/>
 
