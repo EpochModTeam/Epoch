@@ -244,4 +244,7 @@ _sapper enableSimulationGlobal false;
 diag_log format ["Epoch: Server Start Complete: %1 seconds",diag_tickTime-_startTime];
 
 // unit test start
-// call EPOCH_fnc_server_hiveUnitTest;
+if (EPOCH_enableUnitTestOnStart isEqualTo 1) then {
+    call EPOCH_fnc_server_hiveUnitTest;
+    EPOCH_enableUnitTestOnStart = nil;
+};

@@ -88,3 +88,4 @@ hiveAdminCmdTime = 5; // how many seconds between each command queue call.
 
 // DEBUG
 useOldLoadVehicles = "false";
+enableUnitTestOnStart = 1; // enable extra debug for database calls. 1 = enabled.
