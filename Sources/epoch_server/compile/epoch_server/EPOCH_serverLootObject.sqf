@@ -19,6 +19,9 @@ _pricingConfig = 'CfgPricing' call EPOCH_returnConfig;
 
 _lootTableIndex = if (EPOCH_modCUPVehiclesEnabled) then {if (EPOCH_mod_madArma_Enabled) then {3} else {1}} else {if (EPOCH_mod_madArma_Enabled) then {2} else {0}};
 _lootTableClass = ["CfgLootTable","CfgLootTable_CUP","CfgLootTable_MAD","CfgLootTable_MADCUP"] select _lootTableIndex;
+if !(EPOCH_forcedLootSpawnTable isEqualTo "") then {
+    _lootTableClass = EPOCH_forcedLootSpawnTable;
+};
 _randomizeMagazineAmmoCount = ["CfgEpochClient", "randomizeMagazineAmmoCount", true] call EPOCH_fnc_returnConfigEntryV2;
 if !(isNull _object) then{
 	_lootTable = [_type, "CfgMainTable", "tables"] call EPOCH_weightedArray;

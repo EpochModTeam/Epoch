@@ -59,7 +59,9 @@ _configArray = [
     ["hiveAdminCmdTime", 5],
     ["DEBUG_VEH", false],
     ["useOldLoadVehicles", false],
-    ["enableUnitTestOnStart", 0]
+    ["enableUnitTestOnStart", 0],
+    ["forcedVehicleSpawnTable",""],
+    ["forcedLootSpawnTable",""]
 ];
 
 EPOCH_fnc_returnConfigEntry = {

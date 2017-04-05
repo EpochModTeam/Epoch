@@ -27,6 +27,7 @@ _abortAndError = {
 
 _cfgServerVersion = configFile >> "CfgServerVersion";
 _serverSettingsConfig = configFile >> "CfgEpochServer";
+_epochConfig = configFile >> "CfgEpoch";
 
 _clientVersion = getText(_cfgServerVersion >> "client");
 _configVersion = getText(_cfgServerVersion >> "config");
@@ -99,7 +100,7 @@ WEST setFriend[EAST, 1];
 diag_log format["Epoch: Setup World Settings for %1",worldName];
 //World Settings
 _worldSize = worldSize;
-_epochWorldPath = configfile >> "CfgEpoch" >> worldName;
+_epochWorldPath = _epochConfig >> worldName;
 if (isClass _epochWorldPath) then {
     _configSize = getNumber(_epochWorldPath >> "worldSize");
     if (_configSize > 0) then {
@@ -140,9 +141,12 @@ diag_log "Epoch: Loading vehicles";
 // Vehicle slot limit set to total of all allowed limits
 _allowedVehicleIndex = if (EPOCH_modCUPVehiclesEnabled) then {if (EPOCH_mod_madArma_Enabled) then {3} else {1}} else {if (EPOCH_mod_madArma_Enabled) then {2} else {0}};
 _allowedVehicleListName = ["allowedVehiclesList","allowedVehiclesList_CUP","allowedVehiclesList_MAD","allowedVehiclesList_MADCUP"] select _allowedVehicleIndex;
+if !(EPOCH_forcedVehicleSpawnTable isEqualTo "") then {
+    _allowedVehicleListName = EPOCH_forcedVehicleSpawnTable;
+};
 // do something here
 
-_allowedVehiclesList = getArray(configFile >> "CfgEpoch" >> worldName >> _allowedVehicleListName);
+_allowedVehiclesList = getArray(_epochConfig >> worldName >> _allowedVehicleListName);
 _vehicleSlotLimit = 0;
 {_vehicleSlotLimit = _vehicleSlotLimit + (_x select 1)} forEach _allowedVehiclesList;
 _ReservedSlots = 50;
