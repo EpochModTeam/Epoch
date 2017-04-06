@@ -6,6 +6,8 @@ pipeline {
         node (label: 'testing') {
           checkout scm
           fileExists 'README.md'
+          fileExists 'version.txt'
+          fileExists 'build.txt'
           bat 'C:/GITTEMP/build.cmd'
         }
       }
