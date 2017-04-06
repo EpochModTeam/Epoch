@@ -3,7 +3,10 @@ pipeline {
   stages {
     stage('') {
       steps {
-        echo 'test'
+        ws(dir: 'C:/GITTEMP') {
+          readFile 'build.txt'
+        }
+        
       }
     }
   }
