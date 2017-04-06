@@ -3,11 +3,10 @@ pipeline {
   stages {
     stage('checkout') {
       steps {
-        node(label: 'testing') {
+        node {
           checkout scm          
           fileExists 'README.md'
         }
-        
       }
     }
   }
