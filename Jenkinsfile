@@ -1,13 +1,10 @@
 pipeline {
   agent none
   stages {
-    stage('Checkout') {
+    stage('') {
       steps {
-        ws(dir: 'C:/GITTEMP') {
-          script {
-            checkout scm
-          }
-          
+        node(label: 'Stage Checkouts') {
+          sh 'checkout scm'
         }
         
       }
