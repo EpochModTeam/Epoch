@@ -1,9 +1,13 @@
 pipeline {
   agent none
   stages {
-    stage('') {
+    stage('checkout') {
       steps {
         node(label: 'testing') {
+          script {
+            checkout scm
+          }
+          
           fileExists 'README.md'
         }
         
