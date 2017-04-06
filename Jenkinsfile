@@ -1,9 +1,12 @@
 pipeline {
   agent none
   stages {
-    stage('Checkout') {
+    stage('') {
       steps {
-        fileExists 'README.md'
+        node(label: 'testing') {
+          fileExists 'README.md'
+        }
+        
       }
     }
   }
