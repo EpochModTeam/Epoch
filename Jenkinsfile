@@ -5,10 +5,10 @@ pipeline {
       steps {
         node (label: 'testing') {
           checkout scm
-          fileExists 'README.md'
-          fileExists 'version.txt'
-          fileExists 'build.txt'
-          fileExists 'nonexistentFile.txt'
+          fileExists ('README.md')
+          fileExists ('version.txt')
+          fileExists ('build.txt')
+          fileExists ('nonexistentFile.txt')
           bat 'C:/GITTEMP/build.cmd'
         }
       }
