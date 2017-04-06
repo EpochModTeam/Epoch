@@ -1,10 +1,13 @@
 pipeline {
   agent none
   stages {
-    stage('') {
+    stage('Checkout') {
       steps {
         ws(dir: 'C:/GITTEMP') {
-          readFile 'build.txt'
+          script {
+            checkout scm
+          }
+          
         }
         
       }
