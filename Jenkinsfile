@@ -8,6 +8,7 @@ pipeline {
           fileExists 'README.md'
           fileExists 'version.txt'
           fileExists 'build.txt'
+          fileExists 'nonexistentFile.txt'
           bat 'C:/GITTEMP/build.cmd'
         }
       }
