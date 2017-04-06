@@ -18,6 +18,7 @@ pipeline {
     stage('build') {
       steps {
         node (label: 'testing') {
+          fileExists 'README.md'
           bat 'C:/GITTEMP/build.cmd'
         }
       }
