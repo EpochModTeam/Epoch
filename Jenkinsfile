@@ -5,19 +5,6 @@ pipeline {
       steps {
         node (label: 'testing') {
           checkout scm
-        }
-      }
-    }
-    stage('test') {
-      steps {
-        node (label: 'testing') {
-          fileExists 'README.md'
-        }
-      }
-    }
-    stage('build') {
-      steps {
-        node (label: 'testing') {
           fileExists 'README.md'
           bat 'C:/GITTEMP/build.cmd'
         }
