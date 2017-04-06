@@ -4,10 +4,7 @@ pipeline {
     stage('checkout') {
       steps {
         node(label: 'testing') {
-          script {
-            checkout scm
-          }
-          
+          checkout scm          
           fileExists 'README.md'
         }
         
