@@ -18,7 +18,7 @@ pipeline {
     stage('release') {
       steps {
         node (label: 'testing') {
-          fileExists 'README.md'
+          bat 'C:\GITTEMP\Hello.cmd'
         }
       }
     }
