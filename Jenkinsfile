@@ -1,10 +1,13 @@
 pipeline {
   agent none
   stages {
-    stage('') {
+    stage('Checkout') {
       steps {
-        node(label: 'Stage Checkouts') {
-          sh 'checkout scm'
+        node(label: 'Checkout') {
+          script {
+            checkout scm
+          }
+          
         }
         
       }
