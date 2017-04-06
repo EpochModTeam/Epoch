@@ -18,7 +18,7 @@ pipeline {
     stage('release') {
       steps {
         node (label: 'testing') {
-          bat 'C:\GITTEMP\Hello.cmd'
+          bat 'C:/GITTEMP/Hello.cmd'
         }
       }
     }
