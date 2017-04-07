@@ -144,11 +144,6 @@ class CfgEpochUAVSupport
 	minUnitNum = 2; //Maximum number of units spawned when UAV spots target.
 	maxUnitNum = 4; //Maximum number of units spawned when UAV spots target.
 };
-class CfgEpochAirDrop
-{
-    AirDropFreq = 1200; //AirDropChance, to decide if Air drop occurs, will only be checked once per AirDropFreq time period, for each player. Min value = 120.
-    AirDropChance = 6; //Percentage chance of air drop, for current player. Checked every AirDropFreq and upon antagonists spawn trigger. -1 To disable.
-};
 class CfgEpochCloak
 {
     cRange = 300; //Distance, from target, at which Cloak will dispose. Cloak is also aware of players within this range. (Min: 60 / Max: 600)
