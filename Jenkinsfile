@@ -7,12 +7,9 @@ pipeline {
         fileExists 'README.md'
       }
     }
-    stage('release') {
+    stage('Release') {
       steps {
-        node(label: 'testing') {
-          bat 'C:/GITTEMP/release.cmd'
-        }
-        
+        bat 'C:/GITTEMP/release.cmd'
       }
     }
   }
