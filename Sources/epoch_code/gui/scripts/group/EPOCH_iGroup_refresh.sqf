@@ -15,7 +15,7 @@
 //[[[cog import generate_private_arrays ]]]
 private ["_index"];
 //[[[end]]]
-if !(Epoch_invited_GroupUIDs isEqualTo Epoch_invited_GroupUIDsPrev) then {
+if !(Epoch_invited_GroupUIDs isEqualTo []) then {
 	Epoch_invited_GroupUIDsPrev = Epoch_invited_GroupUIDs;
 	lbClear 1500;
 	{
