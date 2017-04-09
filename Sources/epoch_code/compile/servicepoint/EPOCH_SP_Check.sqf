@@ -28,11 +28,7 @@ _servicepointDist = 		["CfgServicePoint", "ServicePointDist", 40] call EPOCH_fnc
 _ServicePointClasses = 		["CfgServicePoint", "ServicePointClasses", []] call EPOCH_fnc_returnConfigEntryV2;
 
 if (_servicepoints isequalto [] && _ServicePointClasses isequalto []) exitwith {false};
-if (_vehicle == player) exitwith {false};
-if !(local _vehicle) exitwith {false};
-if (speed _vehicle > 2 || speed _vehicle < -2) exitwith {false};
-if (((getpos _vehicle) select 2) > 1) exitwith {false};
-if (!(_vehicle iskindof 'ship') && (((getposasl _vehicle)  select 2) < 1)) exitwith {false};
+
 _inSP = false;
 if (({player distance _x < _servicepointDist} count _servicepoints > 0)) then {
 	_inSP = true;
