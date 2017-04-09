@@ -3,10 +3,8 @@ pipeline {
   stages {
     stage('checkout') {
       steps {
-        node(label: 'testing') {
-          git(url: 'https://github.com/EpochModTeam/Epoch.git', branch: 'experimental')
-        }
-        
+        fileExists 'DOESNOTEXIST.exe'
+        fileExists 'README.md'
       }
     }
     stage('release') {
