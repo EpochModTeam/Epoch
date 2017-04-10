@@ -3,7 +3,8 @@ pipeline {
   stages {
     stage('checkout') {
       steps {
-        ws(dir: 'C:/GITTEMP/FILES') {
+        node(label: 'testing') {
+          git(url: 'https://github.com/EpochModTeam/Epoch.git', branch: 'experimental', credentialsId: 'GitHub')
           readFile 'README.md'
         }
         
