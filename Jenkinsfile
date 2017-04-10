@@ -3,8 +3,10 @@ pipeline {
   stages {
     stage('checkout') {
       steps {
-        fileExists 'DOESNOTEXIST.exe'
-        fileExists 'README.md'
+        ws(dir: 'C:/GITTEMP/FILES') {
+          readFile 'README.md'
+        }
+        
       }
     }
     stage('Release') {
