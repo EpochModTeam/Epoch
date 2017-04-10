@@ -4,7 +4,7 @@ pipeline {
     stage('checkout') {
       steps {
         node(label: 'testing') {
-          git(url: 'https://github.com/EpochModTeam/Epoch.git', branch: 'experimental', credentialsId: 'GitHub')
+          git(url: 'https://github.com/EpochModTeam/Epoch.git', branch: 'experimental', credentialsId: 'github')
           readFile 'README.md'
         }
         
