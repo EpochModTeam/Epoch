@@ -54,7 +54,7 @@ _allHitPointsDamage = getAllHitPointsDamage _vehicle;
 	}; 
 } foreach (_allHitPointsDamage select 0); 
 if (_allRepaired) then {
-	if ((damage _vehicle) > 0) then {
+	if ((damage _vehicle) > 0 || {_x > 0} count ((getallhitpointsdamage _vehicle) select 2) > 0) then {
 		[_vehicle,["ALL",0],player,Epoch_personalToken] remoteExec ["EPOCH_server_repairVehicle",2];
 	};
 	_pos = getposatl _vehicle;
