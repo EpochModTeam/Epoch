@@ -5,8 +5,9 @@
 	Improvements and or bugfixes and other contributions are welcome via the github:
 	https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server_settings/EpochEvents/ChangeWeather.sqf
 */
-
-private ["_tempOVRD","_rainOVRD","_fogOVRD","_overcastOVRD","_windOVRD","_arr","_response","_windValX","_windValY","_WeatherChangeTime","_force","_temp","_fog","_rain","_overcast"];
+//[[[cog import generate_private_arrays ]]]
+private ["_weatherChangeTime","_arr","_fog","_force","_lightning","_overcast","_rain","_randomDayRainTemp","_randomDayTemp","_randomDirection","_randomFogAfterRainBase","_randomFogAfterRainDecay","_randomFogAfterRainValue","_randomFogBase","_randomFogDecay","_randomFogValue","_randomLightningValue","_randomNightRainTemp","_randomNightTemp","_randomOvercastValue","_randomRainValue","_randomWindStr","_response","_staticWeatherForecast","_temp","_windVal","_windValX","_windValY"];
+//[[[end]]]
 
 // Initalize variable for tracking time between runs.
 if (isNil "EPOCH_lastWeatherChange") then {
@@ -14,7 +15,7 @@ if (isNil "EPOCH_lastWeatherChange") then {
 };
 
 // get the time between weather change events to use as tranistion time.
-_WeatherChangeTime = diag_tickTime - EPOCH_lastWeatherChange;
+_weatherChangeTime = diag_tickTime - EPOCH_lastWeatherChange;
 
 // increment timer to current time.
 EPOCH_lastWeatherChange = diag_tickTime;
@@ -96,10 +97,10 @@ _fog = if (isNil "_fogOVRD") then { [random _randomFogValue, random _randomFogDe
 _overcast = if (isNil "_overcastOVRD") then { random _randomOvercastValue } else { _overcastOVRD };
 _lightning = if (isNil "_lightningOVRD") then { random _randomLightningValue } else { _lightningOVRD };
 
-_WeatherChangeTime setFog _fog;
-_WeatherChangeTime setOvercast _overcast;
-_WeatherChangeTime setRain _rain;
-_WeatherChangeTime setLightnings _lightning;
+_weatherChangeTime setFog _fog;
+_weatherChangeTime setOvercast _overcast;
+_weatherChangeTime setRain _rain;
+_weatherChangeTime setLightnings _lightning;
 setWind[_windValX, _windValY, true];
 
 // push temp to all players and JIP.
