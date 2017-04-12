@@ -22,17 +22,18 @@ EPOCH_lastWeatherChange = diag_tickTime;
 _force = false;
 
 // use config static weather if set.
+_staticWeatherForecast = [];
 if !(EPOCH_WeatherStaticForecast isEqualTo []) then {
-    EPOCH_WeatherStaticForecast params ["_tempOVRD","_rainOVRD","_fogOVRD","_overcastOVRD","_windOVRD","_lightningOVRD"];
+    _staticWeatherForecast = EPOCH_WeatherStaticForecast;
 } else {
 	// Make database call to get "Weather:InstanceID" that can be set in the database to allow for weather controls outside of the game.
 	_response = ["Weather", (call EPOCH_fn_InstanceID)] call EPOCH_fnc_server_hiveGETRANGE;
 	if ((_response select 0) == 1 && (_response select 1) isEqualType [] && !((_response select 1) isEqualTo[])) then {
 		_arr = _response select 1;
-        _arr params ["_tempOVRD","_rainOVRD","_fogOVRD","_overcastOVRD","_windOVRD","_lightningOVRD"];
+        _staticWeatherForecast = _arr;
 	};
 };
-
+_staticWeatherForecast params ["_tempOVRD","_rainOVRD","_fogOVRD","_overcastOVRD","_windOVRD","_lightningOVRD"];
 
 /*
     New weather configs
