@@ -1147,8 +1147,8 @@ class FSM
                          "diag_log _msg;" \n
                          "" \n
                          "_rejectPlayer = {" \n
-                         "	PLAYER_REJECT_InvaildSetup = true;" \n
-                         "	publicVariableServer ""PLAYER_REJECT_InvaildSetup"";" \n
+                         "	PLAYER_REJECT_InvalidSetup = true;" \n
+                         "	publicVariableServer ""PLAYER_REJECT_InvalidSetup"";" \n
                          "};"/*%FSM</STATEINIT""">*/;
                         precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
                         class Links
