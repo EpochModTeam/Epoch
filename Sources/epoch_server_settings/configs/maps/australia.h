@@ -56,7 +56,7 @@ class Australia : Default
     {"Land_Slums02_4m", {19031.6, 33955.9, 0}, 1.81821},
     {"Land_Slums02_4m", {19026.2, 33957.5, 0}, 94.0909},
     {"Land_Slums02_4m", {19026.4, 33961.4, 0}, 94.0909},
-    {"Land_BarGate_F", {19026.1, 33968, -0.0194139}, 267.727},
+    {"Land_BarGate_F", {19026.1, 33968, -0.0194139}, 267.727, false},
     {"Land_Slums02_4m", {19027.6, 33956, 0}, 1.81821},
     {"Campfire_burning_F", {19037.5, 33971.2, 0}, 0},
     {"Land_WoodPile_large_F", {19028.4, 33961.1, 0}, 0},
@@ -220,7 +220,7 @@ class Australia : Default
 
     {"Land_Communication_F", {4075.63, 19467.2, 0}, 0},
 
-    {"Land_BarGate_F", {4087.73, 19423.3, 0.0014801}, 90},
+    {"Land_BarGate_F", {4087.73, 19423.3, 0.0014801}, 90, false},
 
     {"Land_Tank_rust_F", {4032.32, 19378, 0}, 0},
 
