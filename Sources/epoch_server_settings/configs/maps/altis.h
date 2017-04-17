@@ -232,7 +232,7 @@ class Altis : Default
 			{ "Land_ChairPlastic_F", { 6181.8, 16846.2, 0.00118256 }, 53.9327, true },
 			{ "Land_Axe_F", { 6197.86, 16835.8, -0.00292969 }, 246.133, true },
 			//tradercity 3
-			{ "Land_BarGate_F", { 18436.5, 14277, 0.10347 }, 58.0699, true },
+			{ "Land_BarGate_F", { 18436.5, 14277, 0.10347 }, 58.0699, false },
 			{ "Land_HBarrierBig_F", { 18440.4, 14268.3, 0.00117111 }, 60.1274, true },
 			{ "Land_HBarrierBig_F", { 18444.9, 14261, 0.00129318 }, 60.1036, true },
 			{ "Land_Mil_WiredFence_F", { 18440.6, 14268.7, 0.00332832 }, 62.0634, true },
