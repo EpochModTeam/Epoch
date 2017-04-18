@@ -235,7 +235,7 @@ class CfgCrafting
     };
     class ItemStick : Item
     {
-        usedIn[] = {"WoodClub","MeleeMaul","CrudeHatchet","KitFirePlace","KitSpikeTrap","KitMetalTrap"};
+        usedIn[] = {"WoodClub","MeleeMaul","CrudeHatchet","KitFirePlace","KitSpikeTrap","KitMetalTrap","MeleeRod"};
         recipe[] = {{"WoodLog_EPOCH",1}};
         previewPosition[] = {0.8,1,0.25};
         previewScale = 0.4;
@@ -257,7 +257,7 @@ class CfgCrafting
     };
     class ItemRope : Item
     {
-        usedIn[] = {"WoodClub","MeleeMaul","CrudeHatchet"};
+        usedIn[] = {"WoodClub","MeleeMaul","CrudeHatchet","MeleeRod"};
         nearby[] = {{"Workbench","","workbench",{1,{"WorkBench_EPOCH"}},3,1,0,1}};
         recipe[] = {{"ItemKiloHemp",1}};
         previewPosition[] = {0.8,1,0.35};
@@ -948,6 +948,14 @@ class CfgCrafting
         previewScale = 0.11;
         previewVector = 0;
     };
+	class MeleeRod : Kit
+	{
+		recipe[] = { { "ItemRope", 1 }, { "ItemStick", 1 }, { "ItemScraps", 1 } };
+		descriptionFull = "";
+		previewPosition[] = {0.798975,1,0.375};
+		previewScale = 0.2;
+		previewVector = -1.8;
+	};
 };
 
 /*[[[end]]]*/
