@@ -23,7 +23,7 @@ diag_log format["Epoch: Attempt Create Object: %1 for %2",_objArr, name _player]
 
 _cfgPricing = 'CfgPricing' call EPOCH_returnConfig;
 _lootTableIndex = if (EPOCH_modCUPVehiclesEnabled) then {if (EPOCH_mod_madArma_Enabled) then {3} else {1}} else {if (EPOCH_mod_madArma_Enabled) then {2} else {0}};
-_allowedVehicleListName = ["allowedVehiclesList","allowedVehiclesList_CUP","allowedVehiclesList_MAD","allowedVehiclesList_MADCUP"] select _allowedVehicleIndex;
+_allowedVehicleListName = ["allowedVehiclesList","allowedVehiclesList_CUP","allowedVehiclesList_MAD","allowedVehiclesList_MADCUP"] select _lootTableIndex;
 if !(EPOCH_forcedVehicleSpawnTable isEqualTo "") then {
     _allowedVehicleListName = EPOCH_forcedVehicleSpawnTable;
 };
