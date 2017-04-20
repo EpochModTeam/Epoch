@@ -316,6 +316,12 @@ if (!isNull _player) then {
                 //diag_log format["DEBUG (Load Player) Sent Group: %1 %2", _playerGroup, _playerGroupArray];
 
 				_newPlyr setVariable["SETUP", true, true];
+
+                // revive
+                _newPlyr setVariable ['#rev_enabled', true, true];
+
+                // [] remoteExec ["bis_fnc_reviveInit",_player];
+
 			};
 		} else {
 			diag_log format["LOGIN FAILED UNIT NULL: %1 [%2|%3]", _player, _group, count allgroups];
