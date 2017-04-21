@@ -133,3 +133,99 @@ _cursorTarget = objNull;
 // init cfgBaseBuilding config var
 _cfgBaseBuilding = 'CfgBaseBuilding' call EPOCH_returnConfig;
 _cfgObjectInteractions = 'CfgObjectInteractions' call EPOCH_returnConfig;
+
+
+_EPOCH_BuildTraderMisson = {
+	params ['_inGameTasksconfig','_taskName',['_unit',objnull],['_taskItem',objnull]];
+	_taskTitle = getText ( _inGameTasksconfig >> _taskName >> "title");
+	_taskSQF = getText ( _inGameTasksconfig >> _taskName >> "initsqf");
+	if !(_taskSQF isequalto '') then {
+		call compile format ["[_taskName,player,_unit,_taskItem] execVM ""%1""",_taskSQF];	
+	};
+	_taskCall = getText ( _inGameTasksconfig >> _taskName >> "initcall");
+	if !(_taskCall isequalto '') then {
+		call compile _taskCall;
+	};
+	
+	_taskDelay = diag_ticktime + (getNumber ( _inGameTasksconfig >> _taskName >> "triggerDelay"));
+	_triggerintervall = getNumber ( _inGameTasksconfig >> _taskName >> "triggerintervall");
+	_taskItems = getArray ( _inGameTasksconfig >> _taskName >> "items");
+	if !(_taskItems isequalto []) then {
+		_wh = objNull;
+		_wh = createVehicle ["GroundWeaponHolder",getPosATL player,[],0,"CAN_COLLIDE"];
+		[player,Epoch_personalToken,_taskItems,[],_wh,false] remoteExec ["EPOCH_Server_createObject",2];
+	};
+
+	_taskMarkerType = getnumber (_inGameTasksconfig >> _taskName >> 'markerType');
+	if (_taskMarkerType > 0) then {
+		_taskMarkerVis = getNumber ( _inGameTasksconfig >> _taskName >> "markerVisible");
+		_markerPos = [0,0,0];
+		 if (isNil "EPOCH_taskMarkerPos") then {
+			if !(isNull _trgt) then {
+				_markerPos = getPos _trgt;
+			};
+			if !(isNull _unit) then{
+				_markerPos = getPos _unit;
+			};
+			if !(isNull _taskItem) then {
+				_markerPos = getPos _taskItem;
+			};
+		}
+		else {
+			_markerPos = EPOCH_taskMarkerPos;
+		};
+		_mkrName = format ["EPOCHTaskMark%1%2",_taskName,diag_tickTime];
+		EPOCH_taskMarker = [_mkrName,_taskMarkerVis];
+		_taskMarkerText = getText ( _inGameTasksconfig >> _taskName >> "markerText");
+		_taskMarkerRad = getNumber ( _inGameTasksconfig >> _taskName >>  "markerRadius");
+		if(_taskMarkerType == 2)then{
+			_markerPos set [0, (_markerPos select 0) + (floor (random _taskMarkerRad) - (_taskMarkerRad / 2))];
+			_markerPos set [1, (_markerPos select 1) + (floor (random _taskMarkerRad) - (_taskMarkerRad / 2))];
+		};		
+		[[_taskMarkerVis,player],_markerPos,"ELLIPSE","mil_dot",_taskMarkerText,"ColorYellow",[_taskMarkerRad,_taskMarkerRad], "SolidBorder", 42, 0.6,_mkrName] remoteExec ["EPOCH_server_makeMarker",2];
+	};
+	_taskDialogues = [];
+	{
+		_x params [["_condition",""],["_dialogue",""]];
+		if !(_condition isequalto "" || _dialogue isequalto "") then {
+			_taskDialogues pushback [compile _condition,_dialogue];
+		};
+	} foreach (getarray (_inGameTasksconfig >> _taskName >> 'dialogues'));
+	_taskEvents = [];
+	{
+		_x params [["_condition",""],["_taskEventCALL",""],["_taskEventTasks",[]]];
+		if !(_condition isequalto "") then {
+			_taskEvents pushback [compile _condition,compile _taskEventCALL,_taskEventTasks];
+		};
+	} foreach (getarray (_inGameTasksconfig >> _taskName >> 'callevents'));
+	_taskFailedCond = compile getText ( _inGameTasksconfig >> _taskName >> "failedCondition");
+	_taskFailTime = (getNumber ( _inGameTasksconfig >> _taskName >> "abandonTime"));
+	if (_taskFailTime < 1) then {_taskFailTime=999999} else {_taskFailTime = _taskFailTime + diag_ticktime};
+	_taskFailedDiags = getArray ( _inGameTasksconfig >> _taskName >> "faileddialogues");
+	_taskFailedSQF = getText ( _inGameTasksconfig >> _taskName >> "failedSQF");
+	_taskFailedCall = compile getText ( _inGameTasksconfig >> _taskName >> "failedCall");
+	_nextTask = getArray ( _inGameTasksconfig >> _taskName >> "failedTask");
+	
+	_taskCompleteCond = compile getText ( _inGameTasksconfig >> _taskName >> "completeCondition");
+	_taskReward = getArray ( _inGameTasksconfig >> _taskName >> "reward");
+	_taskCompleteDiags = getArray ( _inGameTasksconfig >> _taskName >> "completedialogues");
+	_taskCompleteCall = compile getText ( _inGameTasksconfig >> _taskName >> "completedCALL");
+	_taskNextTrigger = getArray ( _inGameTasksconfig >> _taskName >> "nextTask");
+	
+	_missionCleanUpCall = compile getText ( _inGameTasksconfig >> _taskName >>  "cleanUpCall");
+	_taskCleanup = getNumber ( _inGameTasksconfig >> _taskName >>  "cleanUp");
+	_return = [
+		[_inGameTasksconfig,_taskName,_unit,_taskItem,_taskTitle,_missionCleanUpCall,_taskCleanup],
+		_taskDelay,
+		_triggerintervall,
+		_taskDialogues,
+		_taskEvents,
+		[_taskFailedCond,_taskFailTime,_taskFailedDiags,_taskFailedSQF,_taskFailedCall,_nextTask],
+		[_taskCompleteCond,_taskReward,_taskCompleteDiags,_taskCompleteCall,_taskNextTrigger]
+	];
+	EPOCH_task_startTime = diag_ticktime;
+	_return
+};
+_epoch_tradermissionarray = [];
+EPOCH_ActiveTraderMission = [];
+_LastMissionTrigger = 0;

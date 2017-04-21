@@ -14,14 +14,34 @@
 */
 
 class EpochMissionList{
-	traderMissionClasses[] = {"missionDelivery","missionEscort","missionUav","missionSapper","missionSkull","missionMilitary","gameCaptureTheJammer","gameCarRace","infoTime","infoName","infoNews","infoVehicles","infoPeople","helpAirDrop","debugResetMission"}; //Exclude from here to remove from menu and trigger
+//	traderMissionClasses[] = {"missionMonster","missionDelivery","missionEscort","missionUav","missionSapper","missionSkull","missionMilitary","gameCaptureTheJammer","gameCarRace","infoTime","infoName","infoNews","infoVehicles","infoPeople","helpAirDrop","debugResetMission"}; //Exclude from here to remove from menu and trigger
+	traderMissionClasses[] = {"missionfishing","missionMonster","missionDelivery","missionUav","infoTime","infoName","infoNews","infoVehicles","infoPeople","debugResetMission"}; //Exclude from here to remove from menu and trigger
 	traderMissionActiveNames[] = {}; //Not currently used (WIP)
 	traderMissionLongDesc[] = {}; //Not currently used (WIP)
 	traderMissionActiveLongDesc[] = {}; //Not currently used (WIP)
 };
 
 class epochMissions {
-	
+	class missionfishing{
+		missionName = "Bring me a fresh Fish"; //Name of mission as it appears in trader list
+		missionToolTip= "Bring the Trader a fresh Fish from the Water."; //Tooltip for trader menu
+		missionDesc = "You must went to the Water and catch a Fish for the Trader and bring it to him."; //Misison description as it appears in trader menu.
+		missionDeny = "!(""MeleeRod"" in weapons player)"; //Specify a call compile condition. If it returns true the mission will be dis-allowed. Title will be rust coloured and prefixed with NOT ALLOWED.
+		missionDenyToolTip = "You need a Fishing-Rod for this Mission"; //Provides a tooltip explaining why the mission is denied. prefixed with NOT ALLOWED.
+		tasksList[] = {"StartFishMission"}; //Must contain a list of tasks used for this mission, in order. Used to control trader menu when mission is active. WIP - To control mission from this array alone.
+		missionTrigger = ""; //A dynamic trigger that sets off the mission anywhere in-game. e.g. player != vehicle player Not currently used (WIP)
+		missionTriggerDialog[] = {""}; //Randomly selected dialogue that is shown when mission is dynamically triggered. Not currently used (WIP)
+	};
+	class missionMonster{
+		missionName = "Escort my Monster (Experimental)"; //Name of mission as it appears in trader list
+		missionToolTip= "Escort a Monster."; //Tooltip for trader menu
+		missionDesc = "You must escort the Traders Monster to another Trader somewhere else on the map."; //Misison description as it appears in trader menu.
+		missionDeny = ""; //Specify a call compile condition. If it returns true the mission will be dis-allowed. Title will be rust coloured and prefixed with NOT ALLOWED.
+		missionDenyToolTip = ""; //Provides a tooltip explaining why the mission is denied. prefixed with NOT ALLOWED.
+		tasksList[] = {"prepForMonsterEscort"}; //Must contain a list of tasks used for this mission, in order. Used to control trader menu when mission is active. WIP - To control mission from this array alone.
+		missionTrigger = ""; //A dynamic trigger that sets off the mission anywhere in-game. e.g. player != vehicle player Not currently used (WIP)
+		missionTriggerDialog[] = {""}; //Randomly selected dialogue that is shown when mission is dynamically triggered. Not currently used (WIP)
+	};
 	class missionDelivery{
 		missionName = "Pikes Peak Express"; //Name of mission as it appears in trader list
 		missionToolTip= "Courier."; //Tooltip for trader menu
