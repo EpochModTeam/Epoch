@@ -12,8 +12,9 @@
     Github:
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server/compile/epoch_server/EPOCH_server_createTeleport.sqf
 */
-private ["_class","_debug1","_lightLocation","_light","_deSimulate","_pos","_dir","_ep","_useWorldPos","_pos1","_markerName","_loadBaseTemplateConfig","_pro2","_veh2","_enterClass","_exitClass","_pro1","_veh1","_debugLocation","_debug","_protection","_config","_loadBaseTemplateConfig"];
-
+//[[[cog import generate_private_arrays ]]]
+private ["_array","_center","_class","_cloneClasses","_config","_deSimulate","_debug","_debug1","_debugLocation","_dir","_enterClass","_ep","_exitClass","_light","_lightLocation","_loadBaseTemplateConfig","_markerName","_part","_partPos","_pos","_pos1","_pro1","_pro2","_protection","_useWorldPos","_veh1","_veh2"];
+//[[[end]]]
 _loadBaseTemplateConfig = {
 	private ["_partPos","_part","_array","_center","_deSimulate"];
 	params ["_templateClass","_selectedTemplate","_pos"];
