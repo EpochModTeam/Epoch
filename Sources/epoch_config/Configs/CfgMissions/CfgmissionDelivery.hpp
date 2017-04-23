@@ -120,7 +120,7 @@ class finishDelivery {
 	faileddialogues[] 		= {};
 	completeCondition		= "diag_ticktime - EPOCH_task_startTime > 16 && axeRndBadNews > 5";
 	completedialogues[] 	= {"Take your reward, you have earnt it","Here is your reward, you are a great courier.","Any time you need work, come and see me, great job."};
-	completedCALL 			= "_wh = createVehicle[""groundWeaponHolder"",getPosATL player,[],0,""CAN_COLLIDE""];[_wh,""Pelican_EPOCH""] remoteExec [""EPOCH_serverLootObject"",2];";
+	completedCALL 			= "[objnull,""Pelican_EPOCH"",true,getposatl player] remoteExec [""EPOCH_serverLootObject"",2];";
 	reward[] 				= {};
 	cleanUp 				= 1;
 	nextTask[] 				= {};

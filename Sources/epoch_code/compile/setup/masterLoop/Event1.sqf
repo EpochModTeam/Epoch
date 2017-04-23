@@ -227,9 +227,7 @@ if !(EPOCH_ActiveTraderMission isequalto []) then {
 			[format ["%1",_diag], 5] call Epoch_message;
 		};
 		if(count _taskReward > 0) then {
-			_retTaskWH = objNull;
-			_retTaskWH = createVehicle ["GroundWeaponHolder",getPosATL player,[],0,"CAN_COLLIDE"];
-			[player,Epoch_personalToken,_taskReward,[],_retTaskWH,false] remoteExec ["EPOCH_Server_createObject",2];
+			[player,Epoch_personalToken,_taskReward,[],objNull,false] remoteExec ["EPOCH_Server_createObject",2];
 		};
 		if !(str(_taskCompleteCall) == "{}") then {
 			call _taskCompleteCall;

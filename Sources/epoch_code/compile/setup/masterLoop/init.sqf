@@ -151,9 +151,7 @@ _EPOCH_BuildTraderMisson = {
 	_triggerintervall = getNumber ( _inGameTasksconfig >> _taskName >> "triggerintervall");
 	_taskItems = getArray ( _inGameTasksconfig >> _taskName >> "items");
 	if !(_taskItems isequalto []) then {
-		_wh = objNull;
-		_wh = createVehicle ["GroundWeaponHolder",getPosATL player,[],0,"CAN_COLLIDE"];
-		[player,Epoch_personalToken,_taskItems,[],_wh,false] remoteExec ["EPOCH_Server_createObject",2];
+		[player,Epoch_personalToken,_taskItems,[],objNull,false] remoteExec ["EPOCH_Server_createObject",2];
 	};
 
 	_taskMarkerType = getnumber (_inGameTasksconfig >> _taskName >> 'markerType');
