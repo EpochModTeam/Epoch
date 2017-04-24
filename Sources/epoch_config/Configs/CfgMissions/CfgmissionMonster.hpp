@@ -127,7 +127,7 @@ class finishMonsterEscort {
 	faileddialogues[] 		= {};
 	completeCondition		= "true";
 	completedialogues[] 	= {"Take your reward, you have earnt it","Here is your reward, you are a great courier.","Any time you need work, come and see me, great job."};
-	completedCALL 			= "_WH = createVehicle[""groundWeaponHolder"",getPosATL player,[],0,""CAN_COLLIDE""];[_WH,""Mission_Monster_Payout""] remoteExec [""EPOCH_serverLootObject"",2];";
+	completedCALL 			= "[objnull,""Mission_Monster_Payout"",true,getposatl player] remoteExec [""EPOCH_serverLootObject"",2];";
 	reward[] 				= {};
 	cleanUp 				= 1;
 	nextTask[] 				= {};

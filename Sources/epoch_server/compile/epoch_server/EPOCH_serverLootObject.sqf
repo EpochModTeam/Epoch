@@ -13,7 +13,7 @@
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server/compile/epoch_server/EPOCH_serverLootObject.sqf
 */
 private["_randomItemArray", "_quan", "_randomLootClass", "_randomItem", "_lootPaid", "_mags", "_lootItemWeightedArray", "_lootItemArray", "_weightedItemArray", "_exit", "_maxPayout", "_lootTable", "_lootTableArray", "_weightedArray"];
-params ["_object","_type",["_forceSpawn",false]];
+params ["_object","_type",["_forceSpawn",false],["_pos",[]]];
 _debug = true;
 _pricingConfig = 'CfgPricing' call EPOCH_returnConfig;
 
@@ -23,6 +23,9 @@ if !(EPOCH_forcedLootSpawnTable isEqualTo "") then {
     _lootTableClass = EPOCH_forcedLootSpawnTable;
 };
 _randomizeMagazineAmmoCount = ["CfgEpochClient", "randomizeMagazineAmmoCount", true] call EPOCH_fnc_returnConfigEntryV2;
+if (isnull _object && !(_pos isequalto [])) then {
+	_object = createVehicle ["groundWeaponHolder",_pos,[],0,"CAN_COLLIDE"];
+};
 if !(isNull _object) then{
 	_lootTable = [_type, "CfgMainTable", "tables"] call EPOCH_weightedArray;
 	_lootTable params ["_lootTableArray","_weightedArray"];
