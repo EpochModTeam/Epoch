@@ -12,7 +12,7 @@
     Github:
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server/compile/epoch_missions/EPOCH_Server_missionComms.sqf
 */
-params["_plyr","_token",["_cmd",-1],["_tmpVar", nil],{"_missionIndex",-1],["_item",objNull],["_pos"],[]];
+params["_plyr","_token",["_cmd",-1],["_tmpVar", nil],["_missionIndex",-1],["_item",objNull],["_pos",[]]];
 
 if !([_plyr, _token] call EPOCH_server_getPToken) exitWith{};
 
