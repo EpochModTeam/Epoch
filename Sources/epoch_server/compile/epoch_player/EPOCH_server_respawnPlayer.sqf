@@ -13,11 +13,11 @@
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server/compile/epoch_player/EPOCH_server_respawnPlayer.sqf
 */
 //[[[cog import generate_private_arrays ]]]
-private ["_class","_defaultUniform","_dir","_location","_playerObj","_vest"];
+private ["_class","_defaultUniform","_dir","_location","_vest"];
 //[[[end]]]
-params ["_playerObj",["_token","",[""]],"_isMale"];
+params ["_player",["_token","",[""]],"_isMale"];
 
-if !([_playerObj, _token] call EPOCH_server_getPToken) exitWith{};
+if !([_player, _token] call EPOCH_server_getPToken) exitWith{};
 
 _defaultUniform = "U_Test_uniform";
 _class = "Epoch_Female_F";
@@ -32,16 +32,16 @@ _dir = random 360;
 _location = getMarkerPos "respawn_west";
 _location set[2, 0];
 
-_playerObj = (group _player) createUnit [_class, _location, [], 0, "CAN_COLLIDE"];
+_player = (group _player) createUnit [_class, _location, [], 0, "CAN_COLLIDE"];
 {
-	_playerObj disableAI _x;
+	_player disableAI _x;
 } forEach["FSM", "MOVE", "AUTOTARGET", "TARGET"];
 
-_playerObj setDir _dir;
-_playerObj setPosATL _location;
+_player setDir _dir;
+_player setPosATL _location;
 
 // send player object to player
-["_switchPlayer_PVC",_playerObj] remoteExec ['EPOCH_playerGenderInit',_player];
+["_switchPlayer_PVC",_player] remoteExec ['EPOCH_playerGenderInit',_player];
 
-_playerObj setVariable ["REVIVE", true];
+_player setVariable ["REVIVE", true];
 true

@@ -43,7 +43,7 @@ _allowSave = _vars isEqualTypeParams EPOCH_defaultVars;
 if (_allowSave) then{
 
 	if !(_vars isEqualTo EPOCH_defaultVars_SEPXVar) then{
-		_serverOnly = ["Crypto"];
+		private _serverOnly = ["Crypto"];
 		_Svars = _player getVariable["VARS", call EPOCH_defaultVars_SEPXVar];
 		{
 			_cIndex = EPOCH_customVars find _x;
@@ -66,7 +66,7 @@ if (_allowSave) then{
 
 	if (vehicle _player != _player) then {
 
-		_staticTraderLocationsDistances = [];
+		private _staticTraderLocationsDistances = [];
 		{
 			_staticTraderLocationsDistances pushBack [_x distance _player, _x]
 		} forEach EPOCH_staticTraderLocations;

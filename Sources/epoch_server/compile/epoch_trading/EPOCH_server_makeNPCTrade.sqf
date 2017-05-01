@@ -282,7 +282,7 @@ if (_slot != -1) then {
 									} else {
 									  _wH = _nearByHolder select 0;
 									};
-									_wh addBackpackCargoGlobal [_item,1];
+									_wH addBackpackCargoGlobal [_item,1];
 								};
 								_returnOut pushBack _item;
 								_itemQtys set[_qtyIndex, (_currQty - _itemQty)];

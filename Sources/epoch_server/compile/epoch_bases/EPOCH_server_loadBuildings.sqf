@@ -120,7 +120,7 @@ for "_i" from 0 to _this do {
 			// Handle Jammers and create marker if EPOCH_SHOW_JAMMERS set true.
 			if (_class isKindOf "PlotPole_EPOCH") then {
 				if (EPOCH_SHOW_JAMMERS) then {
-					_marker = createMarker[str(_location), _location];
+					_marker = createMarker [str(_location), _location];
 					_marker setMarkerShape "ICON";
 					// TODO allow players to change this per base
 					_marker setMarkerType "mil_dot";

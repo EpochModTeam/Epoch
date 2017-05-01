@@ -12,6 +12,9 @@
     Github:
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server/init/server_init.sqf
 */
+//[[[cog import generate_private_arrays ]]]
+private ["_ReservedSlots","_SideHQ1","_SideHQ2","_SideHQ3","_abortAndError","_allowedVehicleIndex","_allowedVehicleListName","_allowedVehiclesList","_allowedVehiclesListArray","_cfgServerVersion","_channelColor","_channelNumber","_channelTXT","_clientVersion","_config","_configSize","_configVersion","_date","_dateChanged","_epochConfig","_epochWorldPath","_existingStock","_hiveVersion","_index","_indexStock","_instanceID","_marker","_radio","_response","_sapper","_serverConfig","_serverSettingsConfig","_servicepoints","_startTime","_staticDateTime","_timeDifference","_vehicleCount","_vehicleSlotLimit","_worldSize"];
+//[[[end]]]
 _startTime = diag_tickTime;
 missionNamespace setVariable ['Epoch_ServerVersion', getText(configFile >> "CfgMods" >> "Epoch" >> "version"), true];
 diag_log format["Epoch: Starting ArmA3 Epoch Server, Version %1",Epoch_ServerVersion];
@@ -221,14 +224,14 @@ if (_dateChanged) then {
 _config = 'CfgServicePoint' call EPOCH_returnConfig;
 _servicepoints = getArray (_config >> worldname >> 'ServicePoints');
 {
-	_marker = createMarker [('ServicePointMarker'+(str _foreachindex)), _x];
+	_marker = createMarker [('ServicePointMarker'+(str _forEachIndex)), _x];
 	_marker setmarkertype "mil_dot";
 	_marker setmarkercolor 'ColorBlack';
 	_marker setMarkerText ("Service Point");
 	if !(surfaceiswater _x) then {
 		"Land_HelipadCircle_F" createvehicle _x;
 	};
-} forEach _ServicePoints;
+} forEach _servicepoints;
 
 
 // set time multiplier
