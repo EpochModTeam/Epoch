@@ -12,7 +12,9 @@
     Github:
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server/compile/epoch_player/EPOCH_server_checkPlayer.sqf
 */
-private["_arr", "_dead", "_isMale", "_medical", "_apperance", "_class", "_vars", "_hitpoints", "_deadPlayer", "_response", "_playerUID", "_playerObj"];
+//[[[cog import generate_private_arrays ]]]
+private ["_apperance","_arr","_class","_dead","_deadPlayer","_hitpoints","_isMale","_medical","_playerUID","_response","_vars"];
+//[[[end]]]
 params [["_playerObj",objNull]];
 if (_playerObj isEqualType objNull) then {
 	if (!isNull _playerObj) then {

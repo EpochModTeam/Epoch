@@ -12,8 +12,10 @@
     Github:
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server/compile/epoch_bases/EPOCH_server_paintBUILD.sqf
 */
-private["_cfgBaseBuilding","_color", "_class", "_currentTextureSlot", "_slot", "_worldspace", "_objHiveKey", "_VAL", "_return", "_playerUID", "_objSlot"];
-params [["_object",objNull],"_textureSlot","_player",["_token","",[""]]];
+//[[[cog import generate_private_arrays ]]]
+private ["_cfgBaseBuilding","_class","_color","_currentTextureSlot","_objSlot","_playerUID"];
+//[[[end]]]
+params [["_object",objNull],"_textureSlot","_player",["_token","",[""]] ];
 
 if !([_player, _token] call EPOCH_server_getPToken) exitWith{};
 if (isNull _object) exitWith{};

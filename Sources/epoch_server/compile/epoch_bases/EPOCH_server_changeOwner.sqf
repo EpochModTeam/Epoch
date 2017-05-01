@@ -12,7 +12,9 @@
     Github:
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server/compile/epoch_bases/EPOCH_server_changeOwner.sqf
 */
-private ["_result","_newOwner"];
+//[[[cog import generate_private_arrays ]]]
+private ["_newOwner","_result"];
+//[[[end]]]
 params ["_object","_newOwnerObj"];
 _newOwner = owner _newOwnerObj;
 _result = false;

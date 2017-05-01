@@ -12,7 +12,9 @@
     Github:
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server/compile/epoch_traders/EPOCH_server_spawnTraders.sqf
 */
-private ["_pos","_marker","_buildingWork","_home","_work","_startTime","_endTime","_schedule","_agent","_slot","_objHiveKey","_buildingHome","_buildings","_randomAIUniform","_aiClass","_homes","_position","_spawnCount","_config","_aiTables","_acceptableBlds","_traderHomes","_usedBuildings","_checkBuilding"];
+//[[[cog import generate_private_arrays ]]]
+private ["_acceptableBlds","_agent","_aiClass","_aiTables","_buildingHome","_buildingWork","_buildings","_checkBuilding","_config","_endTime","_home","_homes","_marker","_objHiveKey","_pos","_position","_randomAIUniform","_return","_schedule","_slot","_spawnCount","_startTime","_traderHomes","_usedBuildings","_work"];
+//[[[end]]]
 _spawnCount = count EPOCH_TraderSlots;
 _config = (configFile >> "CfgEpoch" >> worldName);
 _aiTables = getArray(_config >> "traderUniforms");
@@ -63,7 +65,7 @@ for "_i" from 1 to _spawnCount do {
 				if !(EPOCH_forceStaticTraders) then {
 					[_agent, _home, [_work, _schedule]] execFSM "\epoch_server\system\Trader_brain.fsm";
 				};
-				["AI", _objHiveKey, [_aiClass, _home, [_work, _schedule]]] call EPOCH_fnc_server_hiveSET;
+				["AI", _objHiveKey, [_aiClass, _home, [_work, _schedule]] ] call EPOCH_fnc_server_hiveSET;
 				if (EPOCH_SHOW_TRADERS) then {
 					_marker = createMarker[str(_agent), (_pos)];
 					_marker setMarkerShape "ICON";

@@ -12,7 +12,9 @@
     Github:
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server/compile/epoch_server/EPOCH_server_traderKilled.sqf
 */
-private ["_marker","_slot","_objHiveKey"];
+//[[[cog import generate_private_arrays ]]]
+private ["_marker","_objHiveKey","_slot"];
+//[[[end]]]
 params ["_trader","_player"];
 if (!isNull _trader) then {
 	_marker = _trader getVariable["MARKER_REF",""];

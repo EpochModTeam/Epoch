@@ -12,8 +12,10 @@
     Github:
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server/compile/epoch_antagonists/EPOCH_server_handle_say3D.sqf
 */
-private["_range", "_nearBy", "_sound"];
-params [["_player",objNull,[objNull]],["_target",objNull],["_sound","",[""]], ["_token","",[""]]];
+//[[[cog import generate_private_arrays ]]]
+private ["_nearBy","_range","_say3dsoundsConfig","_selectedSound","_target","_targets"];
+//[[[end]]]
+params [["_player",objNull,[objNull]],["_target",objNull],["_sound","",[""]], ["_token","",[""]] ];
 
 if !([_player, _token] call EPOCH_server_getPToken) exitWith{};
 if (isNull _target) then {_target = _player};

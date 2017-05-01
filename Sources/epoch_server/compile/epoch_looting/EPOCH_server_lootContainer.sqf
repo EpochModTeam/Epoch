@@ -12,8 +12,10 @@
     Github:
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server/compile/epoch_looting/EPOCH_server_lootContainer.sqf
 */
-private ["_class","_pos","_dir","_object","_whConfig","_type","_lootClasses","_player","_maxLoot","_triggerType","_eventArray","_animated","_config"];
-params ["_object","_player",["_token","",[""]]];
+//[[[cog import generate_private_arrays ]]]
+private ["_animated","_antagTable","_antagTableArray","_class","_config","_dir","_errorMsg","_lootClasses","_object","_pos","_triggerType","_type","_weightedArray","_whConfig"];
+//[[[end]]]
+params ["_object","_player",["_token","",[""]] ];
 if !([_player, _token] call EPOCH_server_getPToken) exitWith{};
 
 if (isNull _object) exitWith{};

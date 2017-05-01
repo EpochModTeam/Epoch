@@ -12,8 +12,10 @@
     Github:
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server/compile/epoch_looting/EPOCH_server_mineRocks.sqf
 */
-private["_posWH", "_item", "_nearbyWH", "_rock"];
-params ["_object","_index","_player",["_token","",[""]]];
+//[[[cog import generate_private_arrays ]]]
+private ["_item","_lootables","_nearbyWH","_payout","_payoutQty","_posWH","_selectedPayout"];
+//[[[end]]]
+params ["_object","_index","_player",["_token","",[""]] ];
 if !([_player, _token] call EPOCH_server_getPToken) exitWith{};
 
 if !(_object isKindOf "All") then {

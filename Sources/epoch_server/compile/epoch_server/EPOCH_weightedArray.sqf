@@ -12,7 +12,9 @@
     Github:
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server/compile/epoch_server/EPOCH_weightedArray.sqf
 */
-private["_return","_lootTableArray","_weightedArray"];
+//[[[cog import generate_private_arrays ]]]
+private ["_lootIndex","_lootTableArray","_return","_weightedArray"];
+//[[[end]]]
 params ["_keyName","_configName","_arrayName"];
 _return = missionNamespace getVariable[format["EPOCH_LT_%1_%2_%3",_configName,_keyName,_arrayName],[]];
 if(_return isEqualTo[]) then {

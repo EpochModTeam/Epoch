@@ -12,7 +12,9 @@
     Github:
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server/compile/epoch_missions/EPOCH_Server_createAirDrop.sqf
 */
-private ["_playerOwner","_objType","_obj","_grp","_unitPos","_driver","_unit"];
+//[[[cog import generate_private_arrays ]]]
+private ["_driver","_drvOwner","_grp","_obj","_objType","_playerOwner","_unit","_unitPos"];
+//[[[end]]]
 params ["_player",["_token","",[""]],"_pos"];
 
 if (!isNil "axenotSent" && {axenotSent}) exitWith {

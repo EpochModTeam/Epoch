@@ -24,10 +24,9 @@
             [["yourClass",4],["myClass",3]] // addItemToBackpack
         ]
 */
-private ["_itemSlot"];
 params ["_player","_slots"];
 {
-	_itemSlot = _forEachIndex;
+	private _itemSlot = _forEachIndex;
     _x params ["_items","_itemqtys"];
 	{
 		for "_i" from 1 to (_itemqtys select _forEachIndex) do {

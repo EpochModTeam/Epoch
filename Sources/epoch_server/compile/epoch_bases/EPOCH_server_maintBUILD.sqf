@@ -25,8 +25,10 @@
 	Returns:
 	NOTHING
 */
-private ["_playerUID","_counter","_objSlot","_buildingJammerRange","_current_crypto","_cIndex","_vars","_storSlot","_playerCryptoLimit","_cfgEpochClient"];
-params [["_object",objNull],"_player","_maintCount",["_token","",[""]]];
+//[[[cog import generate_private_arrays ]]]
+private ["_buildingJammerRange","_cIndex","_cfgEpochClient","_counter","_current_crypto","_objSlot","_playerCryptoLimit","_playerUID","_storSlot","_vars"];
+//[[[end]]]
+params [["_object",objNull],"_player","_maintCount",["_token","",[""]] ];
 
 if !([_player, _token] call EPOCH_server_getPToken) exitWith{};
 if (isNull _object) exitWith{};

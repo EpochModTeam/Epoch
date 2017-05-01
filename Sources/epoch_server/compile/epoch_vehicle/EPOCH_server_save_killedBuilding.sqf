@@ -12,7 +12,9 @@
     Github:
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server/compile/epoch_vehicle/EPOCH_server_save_killedBuilding.sqf
 */
-private ["_vehSlot","_vehHiveKey","_ammoObj"];
+//[[[cog import generate_private_arrays ]]]
+private ["_ammoObj","_vehHiveKey","_vehSlot"];
+//[[[end]]]
 params ["_building","_killer"];
 if (!isNull _building) then {
 	_vehSlot = _building getVariable["BUILD_SLOT", -1];

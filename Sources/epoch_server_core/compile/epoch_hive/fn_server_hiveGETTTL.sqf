@@ -12,7 +12,9 @@
     Github:
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server_core/compile/epoch_hive/fn_server_hiveGETTTL.sqf
 */
-private ["_hiveResponse","_hiveStatus","_hiveMessage","_whileCount"];
+//[[[cog import generate_private_arrays ]]]
+private ["_hiveMessage","_hiveResponse","_hiveStatus","_hiveTTL","_whileCount"];
+//[[[end]]]
 params ["_prefix","_key"];
 
 _hiveStatus = -1;

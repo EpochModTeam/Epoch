@@ -12,8 +12,10 @@
     Github:
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server/compile/epoch_player/EPOCH_server_deadPlayer.sqf
 */
-private ["_triggerType","_veh","_bankBalance","_bankData","_response","_playerUID","_pos","_cIndex","_vars","_current_crypto"];
-params ["_playerObj","_killer","_playerName",["_token","",[""]]];
+//[[[cog import generate_private_arrays ]]]
+private ["_bankBalance","_bankData","_cIndex","_current_crypto","_defaultVars","_playerName","_playerUID","_pos","_response","_triggerType","_vars"];
+//[[[end]]]
+params ["_playerObj","_killer","_playerName",["_token","",[""]] ];
 
 // handle token check and isnull for _player
 if !([_playerObj, _token] call EPOCH_server_getPToken) exitWith{};

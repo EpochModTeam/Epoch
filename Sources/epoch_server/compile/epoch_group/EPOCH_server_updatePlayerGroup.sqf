@@ -12,7 +12,9 @@
     Github:
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server/compile/epoch_group/EPOCH_server_updatePlayerGroup.sqf
 */
-private ["_modOrMember","_modOrMemberRevert","_response","_contentArray","_modArray","_memberArray","_selectedPlayerName","_group","_removePlayerArray","_modOrMemberArray","_found"];
+//[[[cog import generate_private_arrays ]]]
+private ["_allPlayers","_contentArray","_found","_group","_memberrange","_modOrMember","_modOrMemberArray","_modOrMemberRevert","_removePlayerArray","_response","_selectedPlayerName"];
+//[[[end]]]
 params [["_groupID",""],["_selectedPlayerUID",""],["_addOrRemove",false],["_modOrMemberVar",true],["_player",objnull],["_token",""]];
 
 if !([_player, _token] call EPOCH_server_getPToken) exitWith {};

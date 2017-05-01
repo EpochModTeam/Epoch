@@ -12,8 +12,10 @@
     Github:
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server/compile/epoch_bases/EPOCH_server_simulSwap.sqf
 */
-private["_classConfig","_cfgClass", "_newObj", "_return", "_class", "_oemType", "_cfgBaseBuilding", "_object", "_objSlot", "_damage", "_color", "_textureSlot"];
-params [["_object",objNull,[objNull]],["_static",false,[false]]];
+//[[[cog import generate_private_arrays ]]]
+private ["_ammoClass","_ammoObj","_cfgBaseBuilding","_cfgClass","_class","_classConfig","_color","_damage","_newObj","_objSlot","_oemType","_return","_textureSlot","_worldspace"];
+//[[[end]]]
+params [["_object",objNull,[objNull]],["_static",false,[false]] ];
 _return = _object;
 _objSlot = _object getVariable ["BUILD_SLOT", -1];
 if (_objSlot != -1) then {

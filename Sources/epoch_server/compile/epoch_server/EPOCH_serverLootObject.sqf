@@ -12,8 +12,10 @@
     Github:
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server/compile/epoch_server/EPOCH_serverLootObject.sqf
 */
-private["_randomItemArray", "_quan", "_randomLootClass", "_randomItem", "_lootPaid", "_mags", "_lootItemWeightedArray", "_lootItemArray", "_weightedItemArray", "_exit", "_maxPayout", "_lootTable", "_lootTableArray", "_weightedArray"];
-params ["_object","_type",["_forceSpawn",false],["_pos",[]]];
+//[[[cog import generate_private_arrays ]]]
+private ["_config","_debug","_exit","_loop","_lootItemArray","_lootItemWeightedArray","_lootTable","_lootTableClass","_lootTableIndex","_loots","_magazineSize","_mags","_maxLoot","_maxPayout","_minLoot","_pricingConfig","_quan","_randomItem","_randomItemArray","_randomizeMagazineAmmoCount","_weightedItemArray"];
+//[[[end]]]
+params ["_object","_type",["_forceSpawn",false],["_pos",[]] ];
 _debug = true;
 _pricingConfig = 'CfgPricing' call EPOCH_returnConfig;
 

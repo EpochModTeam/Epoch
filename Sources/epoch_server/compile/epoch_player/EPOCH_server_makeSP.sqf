@@ -12,6 +12,9 @@
     Github:
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server/compile/epoch_player/EPOCH_server_selectSpawnpoint.sqf
 */
+//[[[cog import generate_private_arrays ]]]
+private ["_currentPos","_server_vars"];
+//[[[end]]]
 params [["_jammer",objNull],["_player",objNull],["_token",""]];
 // check token
 if !([_player, _token] call EPOCH_server_getPToken) exitWith{};

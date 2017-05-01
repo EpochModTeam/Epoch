@@ -17,10 +17,7 @@ private ["_allGroupMembers","_alreadyDead","_attachments","_backpack","_canBeRev
 //[[[end]]]
 _reject = true;
 
-params [
-    ["_player",objNull,[objNull]],
-    ["_isMale",true]
-];
+params [["_player",objNull,[objNull]],["_isMale",true]];
 
 if (!isNull _player) then {
 
@@ -244,7 +241,7 @@ if (!isNull _player) then {
 						if (_weapon != "") then {
 							_newPlyr addWeapon _weapon;
 						};
-						switch _type do {
+						switch (_type) do {
 							case 1: { // primary
 								removeAllPrimaryWeaponItems _newPlyr;
 								{ _newPlyr addPrimaryWeaponItem _x } forEach _attachments;

@@ -12,7 +12,9 @@
     Github:
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server/compile/epoch_bases/EPOCH_server_simToStatic.sqf
 */
-private ["_newObj","_class","_objSlot","_cfgBaseBuilding","_lastPosition","_currentPosition","_entities"];
+//[[[cog import generate_private_arrays ]]]
+private ["_cfgBaseBuilding","_class","_currentPosition","_entities","_lastPosition","_newObj","_objSlot","_staticClassConfig"];
+//[[[end]]]
 _entities = allMissionObjects "Constructions_modular_F";
 {
 	_lastPosition = _x getVariable["LAST_POS", []];

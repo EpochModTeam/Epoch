@@ -12,7 +12,9 @@
     Github:
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server/compile/epoch_vehicle/EPOCH_load_storage.sqf
 */
-private ["_inventory","_location","_dir","_textures","_colors","_textureSelectionIndex","_selections","_count","_color","_cfgBaseBuilding","_objTypes","_objQty","_wMags","_wMagsArray","_attachments","_magazineSizeMax","_magazineName","_magazineSize","_qty","_objType","_marker","_class_raw","_damage","_class","_worldspace","_wsCount","_vehicle","_arr","_storageSlotIndex","_vehHiveKey","_response","_diag"];
+//[[[cog import generate_private_arrays ]]]
+private ["_ExceptedBaseObjects","_IndestructibleBaseObjects","_UseIndestructible","_arr","_attachments","_availableColorsConfig","_cfgBaseBuilding","_class","_class_raw","_color","_colors","_count","_damage","_diag","_dir","_inventory","_location","_magazineName","_magazineSize","_magazineSizeMax","_marker","_objQty","_objType","_objTypes","_qty","_response","_selections","_serverSettingsConfig","_storageSlotIndex","_textureSelectionIndex","_textures","_vehHiveKey","_vehicle","_wMags","_wMagsArray","_worldspace","_wsCount"];
+//[[[end]]]
 params [["_maxStorageLimit",0]];
 
 _serverSettingsConfig = configFile >> "CfgEpochServer";

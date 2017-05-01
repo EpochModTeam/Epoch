@@ -12,12 +12,14 @@
     Github:
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server/compile/epoch_player/EPOCH_server_onPlayerDisconnect.sqf
 */
+//[[[cog import generate_private_arrays ]]]
 private ["_return"];
+//[[[end]]]
 params ["_player","_id","_uid","_name"];
 _return = false;
 if (!isNull _player) then {
 	if (_player getVariable["SETUP", false]) then {
-		[_player, _player getVariable["VARS", []]] call EPOCH_server_savePlayer;
+		[_player, _player getVariable["VARS", []] ] call EPOCH_server_savePlayer;
 		if (alive _player) then {
 			_player setVariable ["VARS", nil];
 			deleteVehicle _player;

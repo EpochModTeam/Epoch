@@ -12,8 +12,10 @@
     Github:
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server/compile/epoch_bases/EPOCH_server_upgradeBUILD.sqf
 */
-private ["_cfgBaseBuilding","_class","_newObj","_upgrade","_objSlot","_objType","_upgrades"];
-params ["_object","_player",["_index",0],["_token","",[""]]];
+//[[[cog import generate_private_arrays ]]]
+private ["_cfgBaseBuilding","_class","_newObj","_objSlot","_objType","_upgrade","_upgrades"];
+//[[[end]]]
+params ["_object","_player",["_index",0],["_token","",[""]] ];
 
 if (isNull _object) exitWith{};
 if !([_player, _token] call EPOCH_server_getPToken) exitWith{};

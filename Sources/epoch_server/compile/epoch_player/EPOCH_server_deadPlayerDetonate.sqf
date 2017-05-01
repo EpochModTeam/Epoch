@@ -12,6 +12,9 @@
     Github:
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server/compile/epoch_antagonists/EPOCH_server_playerDeathOptions.sqf
 */
+//[[[cog import generate_private_arrays ]]]
+private ["_bomb","_pos"];
+//[[[end]]]
 params ["_player", "_token"];
 diag_log format["Epoch: ADMIN: Attempting player detonate on %1.", getPlayerUID _player];
 if !([_player,_token]call EPOCH_server_getPToken)exitWith{};

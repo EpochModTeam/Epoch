@@ -12,8 +12,8 @@
     Github:
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server/compile/epoch_player/EPOCH_server_savePlayer.sqf
 */
-private["_return", "_pos", "_medical", "_playerUID", "_weapons", "_vars", "_itemsplayer", "_weaponsplayer", "_appearance", "_player", "_dmg", "_allowSave", "_cIndex", "_Svars", "_current_crypto", "_group", "_revive", "_vehiclePlyr","_server_vars"];
-params ["_player", "_vars"];
+private["_return", "_pos", "_medical", "_playerUID", "_weapons", "_itemsplayer", "_weaponsplayer", "_appearance", "_dmg", "_allowSave", "_cIndex", "_Svars", "_current_crypto", "_group", "_revive", "_vehiclePlyr","_server_vars"];
+params [["_player",objNull], ["_vars",[]]];
 
 if (isNull _player) exitWith {
 	diag_log "DEBUG SAVE ABORT null player object";

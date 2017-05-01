@@ -12,7 +12,9 @@
     Github:
     https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_server/compile/epoch_vehicle/EPOCH_load_vehicles.sqf
 */
-private ["_removeweapons","_removemagazinesturret","_location","_class","_dmg","_actualHitpoints","_hitpoints","_textures","_color","_colors","_textureSelectionIndex","_selections","_count","_objTypes","_objQty","_wMags","_wMagsArray","_attachments","_magazineSizeMax","_magazineName","_magazineSize","_qty","_objType","_marker","_found","_vehicle","_allHitpoints","_config","_worldspace","_damage","_arr","_arrNum","_vehicleSlotIndex","_vehHiveKey","_response","_immuneVehicleSpawnTime","_diag","_dataFormat","_dataFormatCount","_allVehicles","_serverSettingsConfig","_simulationHandler","_immuneVehicleSpawn"];
+//[[[cog import generate_private_arrays ]]]
+private ["_actualHitpoints","_allHitpoints","_allVehicles","_arr","_arrNum","_attachments","_class","_color","_colors","_config","_count","_damage","_dataFormat","_dataFormatCount","_diag","_dmg","_found","_hitpoints","_immuneVehicleSpawn","_immuneVehicleSpawnTime","_location","_magazineName","_magazineSize","_magazineSizeMax","_marker","_objQty","_objType","_objTypes","_qty","_removemagazinesturret","_removeweapons","_response","_selections","_serverSettingsConfig","_simulationHandler","_textureSelectionIndex","_textures","_vehHiveKey","_vehicle","_vehicleSlotIndex","_wMags","_wMagsArray","_worldspace"];
+//[[[end]]]
 params [["_maxVehicleLimit",0]];
 
 _diag = diag_tickTime;

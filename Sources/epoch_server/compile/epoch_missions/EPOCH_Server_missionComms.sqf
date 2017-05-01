@@ -17,14 +17,14 @@ params["_plyr","_token",["_cmd",-1],["_tmpVar", nil],{"_missionIndex",-1],["_ite
 if !([_plyr, _token] call EPOCH_server_getPToken) exitWith{};
 
 if(isNil "missionControlHandle")then{
-missionControlHandle = [] execFSM "x\addons\a3_epoch_server\system\mission_control.fsm";
-diag_log format ["MISSION CONTROL INIT: %1",missionControlHandle];
+    missionControlHandle = [] execFSM "x\addons\a3_epoch_server\system\mission_control.fsm";
+    diag_log format ["MISSION CONTROL INIT: %1",missionControlHandle];
 
-	//Catch first instant if fsm slow to start - may not be necessary.
-	["_clientCmd",[_plyr, _cmd, _missionIndex,_item,_pos]] spawn{
-	waitUntil {!(isNil "missionControlHandle")};
-	missionControlHandle setFSMVariable [_this select 0, _this select 1];
-	};
+    //Catch first instant if fsm slow to start - may not be necessary.
+    ["_clientCmd",[_plyr, _cmd, _missionIndex,_item,_pos]] spawn{
+        waitUntil {!(isNil "missionControlHandle")};
+        missionControlHandle setFSMVariable [_this select 0, _this select 1];
+    };
 }else{
-missionControlHandle setFSMVariable ["_clientCmd",[_plyr, _cmd, _missionIndex,_item,_pos]];
+    missionControlHandle setFSMVariable ["_clientCmd",[_plyr, _cmd, _missionIndex,_item,_pos]];
 };

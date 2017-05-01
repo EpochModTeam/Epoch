@@ -12,8 +12,10 @@
     Github:
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server/compile/epoch_trading/EPOCH_server_makeNPCTrade.sqf
 */
-private ["_SkipOut","_tradeIn","_tradeOut","_message","_vehicleSold","_vehHiveKey","_VAL","_makeTradeIn","_vehSlot","_playerNetID","_vehicle","_vehicles","_tradeTotal","_current_crypto","_tradeQtyTotal","_currQty","_qtyIndex","_itemWorth","_item","_itemQty","_position","_foundSmoke","_objOwner","_tmpposition","_lockOwner","_helipad","_helipads","_smoke","_vehicleBought","_playerGroup","_vehObj","_final_location","_group","_wp","_wHPos","_wH","_nearByHolder","_itemTax","_tax","_objHiveKey","_playerCryptoLimit","_config","_cIndex","_vars","_current_cryptoRaw","_aiItems","_itemClasses","_itemQtys","_returnIn","_returnOut","_slot"];
-params ["_trader","_itemsIn","_itemsOut","_player",["_token","",[""]]];
+//[[[cog import generate_private_arrays ]]]
+private ["_MaxBankDebit","_SkipOut","_VAL","_aiItems","_bankBalance","_bankData","_cIndex","_config","_currQty","_current_crypto","_current_cryptoRaw","_errorMsg","_final_location","_foundSmoke","_group","_helipad","_helipads","_item","_itemClasses","_itemQty","_itemQtys","_itemTax","_itemWorth","_itemsIn","_itemsOut","_lockOwner","_makeTradeIn","_message","_nearByHolder","_objHiveKey","_objOwner","_playerCryptoLimit","_playerGroup","_playerNetID","_playerUID","_position","_qtyIndex","_response","_return","_returnIn","_returnOut","_road","_serverSettingsConfig","_slot","_smoke","_tax","_tmpposition","_tradeIn","_tradeOut","_tradeQtyTotal","_tradeTotal","_vars","_vehHiveKey","_vehObj","_vehSlot","_vehicle","_vehicleBought","_vehicleSold","_vehicles","_vehslot","_wH","_wHPos","_wp"];
+//[[[end]]]
+params ["_trader","_itemsIn","_itemsOut","_player",["_token","",[""]] ];
 
 _playerUID = getplayeruid _player;
 
@@ -47,7 +49,7 @@ if (_slot != -1) then {
 	_current_cryptoRaw = _current_crypto;
 
 	// SELL ITEMS TO TRADER
-	_aiItems = _trader getVariable["AI_ITEMS", [[], []]];
+	_aiItems = _trader getVariable["AI_ITEMS", [[], []] ];
 	_itemClasses = _aiItems select 0;
 	_itemQtys = _aiItems select 1;
 	{

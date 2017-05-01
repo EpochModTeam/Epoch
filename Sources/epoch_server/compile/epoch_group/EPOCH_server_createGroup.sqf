@@ -17,7 +17,10 @@
 	true = group has been created and / or successfully saved!
 	false = group exist already and hasn't been saved!
 */
-params ["_leader", "_groupName", ["_token","",[""]]];
+//[[[cog import generate_private_arrays ]]]
+private ["_cIndex","_contentArray","_current_crypto","_groupID","_groupName","_leaderName","_playerCryptoLimit","_return","_textArr","_upgradePrice","_vars"];
+//[[[end]]]
+params ["_leader", "_groupName", ["_token","",[""]] ];
 if !([_leader, _token] call EPOCH_server_getPToken) exitWith{};
 
 _return = false;

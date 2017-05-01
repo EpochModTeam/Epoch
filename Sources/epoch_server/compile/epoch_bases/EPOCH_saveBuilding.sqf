@@ -12,7 +12,9 @@
     Github:
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server/compile/epoch_bases/EPOCH_saveBuilding.sqf
 */
-private ["_class","_worldspace","_objHiveKey","_animPhases","_VAL","_return","_objSlot"];
+//[[[cog import generate_private_arrays ]]]
+private ["_VAL","_animPhases","_cfgBaseBuilding","_class","_objHiveKey","_objSlot","_return","_worldspace"];
+//[[[end]]]
 _return = false;
 if !(isNull _this) then {
 	_objSlot = _this getVariable["BUILD_SLOT", -1];

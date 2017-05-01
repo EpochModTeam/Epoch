@@ -12,7 +12,9 @@
     Github:
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server/compile/epoch_missions/EPOCH_Server_createObject.sqf
 */
-private ["_grp","_driver","_gunner","_commander","_crew","_missionVehList","_obj","_cfgPricing","_objClass","_vehicles","_backpacks","_weapons","_items","_magazines","_vehAllowed"];
+//[[[cog import generate_private_arrays ]]]
+private ["_allowedVehicleListName","_allowedVehiclesList","_backpacks","_cfgPricing","_commander","_crew","_driver","_grp","_gunner","_items","_lootTableIndex","_magazines","_obj","_objArr","_pos","_veh","_vehAllowed","_vehicles","_weapons","_wepHolder"];
+//[[[end]]]
 params ["_player",["_token","",[""]],["_objArr",[]],["_pos",[]],["_wepHolder",objNull],["_clearCargo",true],["_objSpc","CAN_COLLIDE"],["_driverType",""],["_gunnerType",""],["_commanderType",""],["_crewType",""],["_doDamage",false]];
 
 if !([_player,_token]call EPOCH_server_getPToken) exitWith {};

@@ -12,8 +12,10 @@
     Github:
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server/compile/epoch_looting/EPOCH_server_lootAnimal.sqf
 */
-private["_item", "_class", "_pos", "_objectClass"];
-params ["_object","_player",["_token","",[""]]];
+//[[[cog import generate_private_arrays ]]]
+private ["_class","_classOverride","_config","_errorMsg","_item","_objectClass","_pos"];
+//[[[end]]]
+params ["_object","_player",["_token","",[""]] ];
 if !([_player, _token] call EPOCH_server_getPToken) exitWith{};
 
 if !(isNull _object) then {
