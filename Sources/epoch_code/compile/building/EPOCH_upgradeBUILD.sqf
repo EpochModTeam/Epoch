@@ -23,7 +23,7 @@
 	NOTHING
 */
 //[[[cog import generate_private_arrays ]]]
-private ["_buildingAllowed","_buildingCountLimit","_buildingJammerRange","_canUpgrade","_canUpgradePartCount","_config","_jammer","_missingCount","_missingParts","_nearestJammer","_ownedJammerExists","_part","_partCheck","_removedPartCount","_req","_return","_stability","_targeter","_upgrade","_upgradeParts","_upgrades"];
+private ["_buildingAllowed","_buildingCountLimit","_buildingJammerRange","_canUpgrade","_canUpgradePartCount","_config","_config2","_countdoors","_countgates","_doors","_gates","_jammer","_maxdoors","_maxgates","_missingCount","_missingParts","_nearestJammer","_ownedJammerExists","_part","_partCheck","_removedPartCount","_req","_return","_stability","_targeter","_upgrade","_upgradeParts","_upgrades","_upgradeto"];
 //[[[end]]]
 params [
 	["_object",objNull,[objNull]],
@@ -115,7 +115,7 @@ if (_object isKindOf "Constructions_static_F") then {
 			};
 			_canUpgradePartCount = _canUpgradePartCount + _req;
 		} forEach _upgradeParts;
-		
+
 		_doors = ["WoodLargeWallDoorL_EPOCH","WoodWall4_EPOCH"];
 		_gates = ["CinderWallGarage_EPOCH"];
 		if (_canUpgrade) then {

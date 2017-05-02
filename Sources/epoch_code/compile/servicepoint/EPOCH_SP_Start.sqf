@@ -13,7 +13,9 @@
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_code/servicepoint/EPOCH_SP_Start.sqf
 */
 
-private ['_missingammo','_ownedcompletemags','_magname','_actionTitle','_costs','_vehicle','_refuel_costs','_refuel_updateInterval','_refuel_amount','_costsFree','_repair_costs','_fnc_getCosts','_fnc_actionTitle'];
+//[[[cog import generate_private_arrays ]]]
+private ["_Ignatz_SP_Array","_VehiclesAndAmmo","_actionName","_actionTitle","_ammocount","_ammotype","_cost","_costs","_costsFree","_costsText","_fnc_actionTitle","_fnc_getCosts","_magname","_maxammototal","_maxmags","_missingammo","_ownedcompletemags","_refuel_amount","_refuel_costs","_refuel_updateInterval","_reloagmags","_repairTime","_repair_costs","_totalammocount","_turret","_typeName","_vehicle"];
+//[[[end]]]
 
 Ignatz_Refuel = nil;
 Ignatz_Repair = nil;
@@ -96,11 +98,11 @@ _fnc_actionTitle = {
 
 _costs = [_vehicle, _refuel_costs] call _fnc_getCosts;
 _actionTitle = [format['Refuel %1',getText (configFile >> 'Cfgvehicles' >> typeOf _vehicle >> 'displayName')], _costs] call _fnc_actionTitle;
-Ignatz_Refuel = [_actionTitle,[_vehicle,[_costs, _refuel_updateInterval,_refuel_amount]]];
+Ignatz_Refuel = [_actionTitle,[_vehicle,[_costs, _refuel_updateInterval,_refuel_amount]] ];
 
 _costs = [_vehicle, _repair_costs] call _fnc_getCosts;
 _actionTitle = [format['Repair %1',getText (configFile >> 'Cfgvehicles' >> typeOf _vehicle >> 'displayName')], _costs] call _fnc_actionTitle;
-Ignatz_Repair = [_actionTitle,[_vehicle,[_costs, _repairTime]]];
+Ignatz_Repair = [_actionTitle,[_vehicle,[_costs, _repairTime]] ];
 if (count _Ignatz_SP_Array > 0) then {Ignatz_Rearm0 = _Ignatz_SP_Array select 0;};
 if (count _Ignatz_SP_Array > 1) then {Ignatz_Rearm1 = _Ignatz_SP_Array select 1;};
 if (count _Ignatz_SP_Array > 2) then {Ignatz_Rearm2 = _Ignatz_SP_Array select 2;};

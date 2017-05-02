@@ -1,5 +1,5 @@
 //[[[cog import generate_private_arrays ]]]
-private ["_action","_class","_condition","_disabledDoor","_displayname","_doorIndex","_index","_position","_statement","_uniqueActions","_unlock","_useractions"];
+private ["_aiItems","_allowAdd","_array","_config","_cryptoCount","_index","_item","_itemClasses","_itemQtys","_itemTax","_itemWorth","_limit","_qtyIndex","_sizeOut","_slot","_stockLimit","_tax","_uiItem","_worth"];
 //[[[end]]]
 params ["_control","_selected"];
 
@@ -17,7 +17,7 @@ if !(isNull EPOCH_lastNPCtradeTarget) then {
 			// limit adding more if item is over stocked
 			if (_control == 41501) then {
 				_slot = EPOCH_lastNPCtradeTarget getVariable["AI_SLOT", -1];
-				_aiItems = EPOCH_lastNPCtradeTarget getVariable["AI_ITEMS", [[], []]];
+				_aiItems = EPOCH_lastNPCtradeTarget getVariable["AI_ITEMS", [[], []] ];
 				_itemClasses = _aiItems select 0;
 				_itemQtys = _aiItems select 1;
 

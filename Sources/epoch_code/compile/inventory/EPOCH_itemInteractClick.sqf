@@ -3,7 +3,7 @@
  By Aaron Clark - Epoch Mod
 */
 //[[[cog import generate_private_arrays ]]]
-private ["_activeControl","_bg","_btn_arr","_buffer","_buttonTXT","_button_gen","_button_texts","_cfgItemInteractions","_config","_control","_data","_display","_interactOption","_magCount","_pos","_start_idc","_type","_y2d"];
+private ["_activeControl","_bg","_btn_arr","_buffer","_buttonTXT","_button_gen","_button_texts","_cfgItemInteractions","_config","_control","_data","_display","_interactActions","_interactOption","_magCount","_pos","_start_idc","_type","_y2d"];
 //[[[end]]]
 _button_texts = [];
 

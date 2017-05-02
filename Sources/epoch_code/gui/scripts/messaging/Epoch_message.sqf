@@ -13,7 +13,9 @@
 	Usage:
 	"TEST" call Epoch_message
 */
-
+//[[[cog import generate_private_arrays ]]]
+private ["_bgCol","_c","_c1StartPos","_c1pos","_c2pos","_c3pos","_col","_config","_ctrl","_ctrlArr","_customCol","_dsp","_fade","_fnc_animFirst","_fnc_animShiftCtrl","_fontSize","_msg","_oldCtrl","_pos","_tick","_time","_txtCol","_uniqueID","_yPos","_ySize"];
+//[[[end]]]
 #include "\A3\ui_f\hpp\defineCommonGrids.inc"
 _msg = param [0, "No input"];
 _time = param [1, 2];
@@ -26,15 +28,15 @@ if(_customCol isEqualTo [])then{
 	if !(_bgCol isEqualTypeAll 0)then{_bgCol = [0,0,0,0.2]};
 	if !(_txtCol isEqualTypeAll 0)then{_txtCol = [1,1,1,0.95]};
 }else{
-	_bgCol = if((_customCol select 0)isEqualTypeAll 0)then[{_customCol select 0},{_bgCol = [0,0,0,0.2]}];
-	_txtCol = if((_customCol select 1)isEqualTypeAll 0)then[{_customCol select 1},{_txtCol = [1,1,1,0.95]}];
+	_bgCol = if((_customCol select 0)isEqualTypeAll 0) then [{_customCol select 0},{_bgCol = [0,0,0,0.2]}];
+	_txtCol = if((_customCol select 1)isEqualTypeAll 0) then [{_customCol select 1},{_txtCol = [1,1,1,0.95]}];
 };
 
 _msg = str (parseText str _msg); //Parses and converts text back to small string
 
 if !(isNil "rmx_var_msgQueue") exitWith {rmx_var_msgQueue pushBack [_msg, _time, [_bgCol,_txtCol]]};
 
-rmx_var_msgQueue = [[_msg, _time, [_bgCol,_txtCol]]];
+rmx_var_msgQueue = [[_msg, _time, [_bgCol,_txtCol]] ];
 
 [] spawn {
 	private ["_c1pos","_c2pos","_c3pos","_clr","_dsp"];

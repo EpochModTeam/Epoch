@@ -13,7 +13,9 @@
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_code/servicepoint/EPOCH_SP_Check.sqf
 */
 
-private ['_inSP','_vehicle','_vehName','_allRepaired'];
+//[[[cog import generate_private_arrays ]]]
+private ["_ServicePointClasses","_config","_inSP","_nearClasses","_servicepointDist","_servicepoints","_vehicle"];
+//[[[end]]]
 
 _vehicle = vehicle player;
 if (_vehicle == player) exitwith {false};

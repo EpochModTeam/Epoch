@@ -19,8 +19,10 @@
 			Radiation levels 1-9, 0 to disable
 			To reuse code in a new PP function, adjust _priority so they don't overwrite each other
 */
-private ["_priority","_fg","_cc"];
-params [["_level",0,[0]],["_speed",0,[0]]];
+//[[[cog import generate_private_arrays ]]]
+private ["_cc","_ci","_fg","_priority"];
+//[[[end]]]
+params [["_level",0,[0]],["_speed",0,[0]] ];
 
 if (isNil "rmx_var_RadiationHandles") then {
 

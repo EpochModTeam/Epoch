@@ -1,4 +1,6 @@
-
+//[[[cog import generate_private_arrays ]]]
+private ["_hour","_min"];
+//[[[end]]]
 _hour = str(date select 3);
 _min = str(date select 4);
 

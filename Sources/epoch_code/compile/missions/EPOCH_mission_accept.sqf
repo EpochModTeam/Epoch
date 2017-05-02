@@ -13,7 +13,7 @@
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_code/compile/missions/EPOCH_mission_accept.sqf
 */
 //[[[cog import generate_private_arrays ]]]
-private ["_allowTask","_doTask","_fnc_path","_itemCompile","_menuCondition","_miNSTask","_missionAllowed","_missionClasses","_missionIndex","_missionTasks","_nrEnts","_path","_plyrVar","_selectedMission","_simpleTask","_simpleTaskFNC","_simpleTaskFSM","_simpleTaskSQF","_tag","_taskNS","_trader","_uiNSTask"];
+private ["_epochmissionsconfig","_inGameTasksconfig","_menuCondition","_missionAllowed","_missionClasses","_missionIndex","_missionTasks","_missionname","_msg","_newtask","_nexttask","_nrEnts","_selectedMission","_simpleTask","_taskCall","_taskSQF","_taskname","_trader"];
 //[[[end]]]
 _missionIndex = lbCurSel 1500;
 _missionAllowed = true;
@@ -42,7 +42,7 @@ if !(isNull _trader) then {
 		_inGameTasksconfig = getMissionConfig "inGameTasks";
 		_taskname = _missionTasks select 0;
 		_simpleTask = getNumber (_inGameTasksconfig >> _taskname >> "simpleTask");
-		
+
 		if (_selectedMission isequalto "debugResetMission") exitwith {
 			EPOCH_ResetTraderMission = true;
 		};
@@ -51,11 +51,11 @@ if !(isNull _trader) then {
 			_msg = format ['You are already running %1. Finish or cancel it first',_missionname];
 			[_msg, 5] call Epoch_message;
 		};
-		
+
 		if (_simpleTask > 0) then {	//Simple Task
 			_taskSQF = getText ( _inGameTasksconfig >> _taskName >> "initsqf");
 			if !(_taskSQF isequalto '') then {
-				call compile format ["[_taskName,player,_unit,_taskItem] execVM ""%1""",_taskSQF];	
+				call compile format ["[_taskName,player,_unit,_taskItem] execVM ""%1""",_taskSQF];
 			};
 			_taskCall = getText ( _inGameTasksconfig >> _taskName >> "initcall");
 			if !(_taskCall isequalto '') then {

@@ -15,9 +15,12 @@
 	Usage:
 	"TEST" call Epoch_message_old1
 */
+//[[[cog import generate_private_arrays ]]]
+private ["_add","_alreadyEnabled","_arr","_centerX","_centerY","_cnt","_controls","_ctrl","_ctrlGroup","_ctrlText","_del","_display","_height","_input","_scale","_text","_tick","_width","_xPos","_y","_yPos"];
+//[[[end]]]
 #include "\A3\ui_f\hpp\defineCommonGrids.inc"
-private ["_y","_cnt","_ctrl","_alreadyEnabled","_input","_scale","_width","_height","_centerX","_centerY","_display","_ctrlGroup","_controls","_ctrlText","_add"];
-params [["_text","Missing text",["",(text "")]],["_time",5,[1]],["_color","#ffffff",[""]]];
+
+params [["_text","Missing text",["",(text "")]],["_time",5,[1]],["_color","#ffffff",[""]] ];
 
 if (_text isEqualType "STRING") then {_text = parseText _text};
 

@@ -34,6 +34,6 @@ _rnd = ((180 +_offset) - (_arcIn / 2)) + (random _arcIn);
 _pos = getPosATL _unitIn;
 _dist = ((random (_maxIn - _minIn)) + _minIn) max _minIn;
 _dir = (getDir _unitIn) - _rnd;
-if (_dir<0) then {_dir = _dir + 360};
+if (_dir < 0) then {_dir = _dir + 360};
 //return
 [(_pos select 0) + (_dist*(sin _dir)), (_pos select 1) + (_dist*(cos _dir)), _pos select 2]

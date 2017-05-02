@@ -1,4 +1,6 @@
-private["_plyr","_trdrMsg"];
+//[[[cog import generate_private_arrays ]]]
+private ["_plyr","_plyrs","_trdrMsg"];
+//[[[end]]]
 _trdrMsg = "Do I look like the local Neighbourhood Watch..? No, I do not !";
 _plyrs = [];
 _plyrs = player nearEntities [["Epoch_Man_base_F","Epoch_Female_base_F"], 250];
