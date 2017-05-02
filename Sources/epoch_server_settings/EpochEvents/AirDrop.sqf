@@ -6,6 +6,9 @@
 	https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server_settings/EpochEvents/AirDrop.sqf
 */
 // 50% chance every 45 minutes by default
+//[[[cog import generate_private_arrays ]]]
+private ["_chance","_player","_players"];
+//[[[end]]]
 _chance = 50;
 if (random 100 < _chance) then {
 

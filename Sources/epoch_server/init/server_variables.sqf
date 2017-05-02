@@ -10,7 +10,7 @@
     Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
 
     Github:
-    https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server/init/server_init.sqf
+    https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server/init/server_variables.sqf
 */
 EPOCH_BuildingSlots = [];
 EPOCH_TraderSlots = [];
@@ -26,7 +26,7 @@ EPOCH_staticNPCTraderPos = [];
 EPOCH_traderStoredVehicles = [];
 EPOCH_traderStoredVehiclesCnt = [];
 
-_configArray = [
+private _configArray = [
 	["serverRestart", false],
     ["forceRestartTime", 14400],
     ["StorageSlotsLimit",1500],
@@ -83,8 +83,8 @@ EPOCH_fnc_returnConfigEntry = {
 
 // Cast default vars to global vars
 // Note: TODO not all of these should be cast to a global var to save memory. If used only once use config lookup.
-_serverSettingsConfig = configFile >> "CfgEpochServer";
+private _serverSettingsConfig = configFile >> "CfgEpochServer";
 {
-    _varData = [_serverSettingsConfig,_x select 0,_x select 1] call EPOCH_fnc_returnConfigEntry;
+    private _varData = [_serverSettingsConfig,_x select 0,_x select 1] call EPOCH_fnc_returnConfigEntry;
     missionNamespace setVariable[format["EPOCH_%1", _x select 0], _varData];
 }forEach _configArray;
