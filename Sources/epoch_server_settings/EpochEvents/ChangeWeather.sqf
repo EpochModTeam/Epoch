@@ -5,8 +5,9 @@
 	Improvements and or bugfixes and other contributions are welcome via the github:
 	https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server_settings/EpochEvents/ChangeWeather.sqf
 */
-
-private ["_tempOVRD","_rainOVRD","_fogOVRD","_overcastOVRD","_windOVRD","_arr","_response","_windValX","_windValY","_WeatherChangeTime","_force","_temp","_fog","_rain","_overcast"];
+//[[[cog import generate_private_arrays ]]]
+private ["_fog","_force","_lightning","_overcast","_rain","_randomDayRainTemp","_randomDayTemp","_randomDirection","_randomFogAfterRainBase","_randomFogAfterRainDecay","_randomFogAfterRainValue","_randomFogBase","_randomFogDecay","_randomFogValue","_randomLightningValue","_randomNightRainTemp","_randomNightTemp","_randomOvercastValue","_randomRainValue","_randomWindStr","_staticWeatherForecast","_temp","_weatherChangeTime","_windVal","_windValX","_windValY"];
+//[[[end]]]
 
 // Initalize variable for tracking time between runs.
 if (isNil "EPOCH_lastWeatherChange") then {
@@ -14,7 +15,7 @@ if (isNil "EPOCH_lastWeatherChange") then {
 };
 
 // get the time between weather change events to use as tranistion time.
-_WeatherChangeTime = diag_tickTime - EPOCH_lastWeatherChange;
+_weatherChangeTime = diag_tickTime - EPOCH_lastWeatherChange;
 
 // increment timer to current time.
 EPOCH_lastWeatherChange = diag_tickTime;
@@ -22,17 +23,17 @@ EPOCH_lastWeatherChange = diag_tickTime;
 _force = false;
 
 // use config static weather if set.
+_staticWeatherForecast = [];
 if !(EPOCH_WeatherStaticForecast isEqualTo []) then {
-    EPOCH_WeatherStaticForecast params ["_tempOVRD","_rainOVRD","_fogOVRD","_overcastOVRD","_windOVRD","_lightningOVRD"];
+    _staticWeatherForecast = EPOCH_WeatherStaticForecast;
 } else {
 	// Make database call to get "Weather:InstanceID" that can be set in the database to allow for weather controls outside of the game.
-	_response = ["Weather", (call EPOCH_fn_InstanceID)] call EPOCH_fnc_server_hiveGETRANGE;
-	if ((_response select 0) == 1 && (_response select 1) isEqualType [] && !((_response select 1) isEqualTo[])) then {
-		_arr = _response select 1;
-        _arr params ["_tempOVRD","_rainOVRD","_fogOVRD","_overcastOVRD","_windOVRD","_lightningOVRD"];
+	(["Weather", (call EPOCH_fn_InstanceID)] call EPOCH_fnc_server_hiveGETRANGE) params [["_status", 0 ], ["_data", [] ]];
+	if (_status == 1 && _data isEqualType [] && !(_data isEqualTo[])) then {
+        _staticWeatherForecast = _data;
 	};
 };
-
+_staticWeatherForecast params ["_tempOVRD","_rainOVRD","_fogOVRD","_overcastOVRD","_windOVRD","_lightningOVRD"];
 
 /*
     New weather configs
@@ -95,10 +96,10 @@ _fog = if (isNil "_fogOVRD") then { [random _randomFogValue, random _randomFogDe
 _overcast = if (isNil "_overcastOVRD") then { random _randomOvercastValue } else { _overcastOVRD };
 _lightning = if (isNil "_lightningOVRD") then { random _randomLightningValue } else { _lightningOVRD };
 
-_WeatherChangeTime setFog _fog;
-_WeatherChangeTime setOvercast _overcast;
-_WeatherChangeTime setRain _rain;
-_WeatherChangeTime setLightnings _lightning;
+_weatherChangeTime setFog _fog;
+_weatherChangeTime setOvercast _overcast;
+_weatherChangeTime setRain _rain;
+_weatherChangeTime setLightnings _lightning;
 setWind[_windValX, _windValY, true];
 
 // push temp to all players and JIP.

@@ -561,6 +561,62 @@ class CfgMainTable
 		LootMax = 10;
 		tables[] = { "Mission_Payout1" };
 	};
+	class Mission_Monster_Payout
+	{
+		lootMin = 12;
+		LootMax = 20;
+		tables[] = {
+			{ "Tools", 8 },
+			{ "BaseBuilding", 6 },
+			{ "Food", 11 },
+			{ "Equipment", 5 },
+			{ "SniperRifle", 5 },
+			{ "SniperRifleAmmo", 6 },
+			{ "Rifle", 6 },
+			{ "RifleAmmo", 8 },
+			{ "Machinegun", 6 },
+			{ "MachinegunAmmo", 8 },
+			{ "Pistols", 5 },
+			{ "PistolAmmo", 7 },
+			{ "Scopes", 8 },
+			{ "Muzzles", 5 },
+			{ "Hand", 10 },
+			{ "Explosives", 5 },
+			{ "Backpack", 7 },
+			{ "Uniforms", 7 },
+			{ "Vests", 7 },
+			{ "HeadgearArmored", 8 },
+			{ "GenericAuto", 3 }
+		};
+	};
+	class Mission_Fishing_Payout
+	{
+		lootMin = 8;
+		LootMax = 16;
+		tables[] = {
+			{ "Tools", 8 },
+			{ "BaseBuilding", 6 },
+			{ "Food", 11 },
+			{ "Equipment", 5 },
+			{ "SniperRifle", 5 },
+			{ "SniperRifleAmmo", 6 },
+			{ "Rifle", 6 },
+			{ "RifleAmmo", 8 },
+			{ "Machinegun", 6 },
+			{ "MachinegunAmmo", 8 },
+			{ "Pistols", 5 },
+			{ "PistolAmmo", 7 },
+			{ "Scopes", 8 },
+			{ "Muzzles", 5 },
+			{ "Hand", 10 },
+			{ "Explosives", 5 },
+			{ "Backpack", 7 },
+			{ "Uniforms", 7 },
+			{ "Vests", 7 },
+			{ "HeadgearArmored", 8 },
+			{ "GenericAuto", 3 }
+		};
+	};
 	class Sheep_random_EPOCH
 	{
 		lootMin = 2;

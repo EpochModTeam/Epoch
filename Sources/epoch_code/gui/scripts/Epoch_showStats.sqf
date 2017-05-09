@@ -13,7 +13,9 @@
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_code/gui/scripts/Epoch_showStats.sqf
 */
 disableSerialization;
-private "_display";
+//[[[cog import generate_private_arrays ]]]
+private ["_display","_display3"];
+//[[[end]]]
 9992 cutRsc["EpochGameUI2", "PLAIN", 2, false];
 _display = uiNamespace getVariable "EPOCH_EpochGameUI2";
 (_display displayCtrl 21208) ctrlSetText format["%1", EPOCH_playerCrypto];

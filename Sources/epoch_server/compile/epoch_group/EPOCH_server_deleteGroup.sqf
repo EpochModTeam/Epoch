@@ -12,8 +12,10 @@
     Github:
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server/compile/epoch_group/EPOCH_server_deleteGroup.sqf
 */
+//[[[cog import generate_private_arrays ]]]
 private ["_groupID","_return"];
-params ["_player",["_token","",[""]]];
+//[[[end]]]
+params ["_player",["_token","",[""]] ];
 
 if !([_player, _token] call EPOCH_server_getPToken) exitWith{};
 

@@ -12,8 +12,10 @@
     Github:
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server/compile/epoch_player/EPOCH_server_storeCrypto.sqf
 */
-private["_bankBalance", "_bankBalanceBefore", "_current_crypto", "_transferBankBalance", "_transferBankBalanceBefore", "_return", "_transferBankData", "_transferTargetUID", "_transferResponse", "_transferAmountIn", "_transferAmountOut", "_transferBalance", "_transferTarget", "_cIndex", "_vars", "_bankData", "_tradeArray", "_playerUID", "_response"];
-params ["_player","_tradeArray",["_token","",[""]]];
+//[[[cog import generate_private_arrays ]]]
+private ["_bankBalance","_bankBalanceBefore","_bankData","_cIndex","_current_crypto","_playerCryptoLimit","_playerUID","_response","_return","_transferAmountIn","_transferAmountOut","_transferBalance","_transferBankBalance","_transferBankBalanceBefore","_transferBankData","_transferResponse","_transferTarget","_transferTargetUID","_vars"];
+//[[[end]]]
+params ["_player","_tradeArray",["_token","",[""]] ];
 
 if !([_player, _token] call EPOCH_server_getPToken) exitWith{};
 

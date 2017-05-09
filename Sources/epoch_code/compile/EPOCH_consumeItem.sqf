@@ -13,7 +13,7 @@
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_code/compile/EPOCH_consumeItem.sqf
 */
 //[[[cog import generate_private_arrays ]]]
-private ["_buildClass","_buildingCountLimit","_buildingJammerRange","_canCapacity","_cfgBaseBuilding","_cfgItemInteractions","_color","_currentDMG","_currentFuel","_currentHIT","_fuelCapacity","_highestDMG","_interactAttributes","_interactOption","_interactReturnOnUse","_isOk","_isStorage","_magazineSize","_magazineSizeMax","_magazinesAmmoFull","_newDMG","_newFuel","_object","_otherObjects","_output","_paintCanColor","_paintCanIndex","_partCheck","_pos","_removeItem","_transportFuel","_unifiedInteract","_vehicle","_vehicles"];
+private ["_buildClass","_buildingCountLimit","_buildingJammerRange","_canCapacity","_cfgBaseBuilding","_cfgItemInteractions","_color","_currentDMG","_currentFuel","_currentHIT","_fuelCapacity","_highestDMG","_inputCount","_interactAttributes","_interactOption","_interactReturnOnUse","_isOk","_isStorage","_magazineSize","_magazineSizeMax","_magazinesAmmoFull","_newDMG","_newFuel","_object","_otherObjects","_output","_paintCanColor","_paintCanIndex","_partCheck","_pos","_removeItem","_transportFuel","_unifiedInteract","_vehicle","_vehicles"];
 //[[[end]]]
 
 EPOCH_InteractedItem params ["_text","_item","_pic"];
@@ -129,7 +129,7 @@ switch _interactOption do {
 									else {
 										["Building Disallowed: Frequency Unstable", 5] call Epoch_message;
 									};
-								} 
+								}
 								else {
 									_object=createVehicle[_buildClass,_pos,[],0,"CAN_COLLIDE"];
 									_object setDir ((getDir player) - 180);
@@ -286,14 +286,14 @@ switch _interactOption do {
 		_vehicles = player nearEntities[["Epoch_Male_F", "Epoch_Female_F"], 6];
 		_vehicle = cursorTarget;
 		if (_vehicle in _vehicles) then {
-			if (damage _vehicle != 0) then {
+			if (damage _vehicle != 0 || {_x > 0} count ((getallhitpointsdamage _vehicle) select 2) > 0) then {
 				if (_item call _removeItem) then {
 					[_vehicle,["ALL",0],player,Epoch_personalToken] remoteExec ["EPOCH_server_repairVehicle",2];
 					["Healed other player", 5] call Epoch_message;
 				};
 			};
 		} else {
-			if (damage player != 0) then {
+			if (damage player != 0 || {_x > 0} count ((getallhitpointsdamage player) select 2) > 0) then {
 				if (_item call _removeItem) then {
 					[player,["ALL",0],player,Epoch_personalToken] remoteExec ["EPOCH_server_repairVehicle",2];
 					["Healed yourself", 5] call Epoch_message;

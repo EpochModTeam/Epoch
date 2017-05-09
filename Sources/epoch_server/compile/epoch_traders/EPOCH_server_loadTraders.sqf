@@ -12,7 +12,9 @@
     Github:
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server/compile/epoch_traders/EPOCH_server_loadTraders.sqf
 */
-private ["_arr","_currentStock","_limit","_toBeRemoved","_marker","_staticTrader","_agent","_class","_pos","_randomAIUniform","_dir","_objHiveKey","_response","_schedule","_home","_work","_traderSlotIndex","_staticTradersArray","_staticTradersArrCount","_aiTables","_serverSettingsConfig","_storedVehicleLimit"];
+//[[[cog import generate_private_arrays ]]]
+private ["_agent","_aiTables","_arr","_class","_currentStock","_existingStock","_home","_indexStock","_limit","_marker","_objHiveKey","_pos","_randomAIUniform","_response","_schedule","_serverSettingsConfig","_staticTrader","_staticTradersArrCount","_staticTradersArray","_storedVehicleLimit","_toBeRemoved","_traderSlotIndex","_work"];
+//[[[end]]]
 params [["_maxTraderLimit",0]];
 
 _staticTradersArray = [] + EPOCH_staticNPCTraderPos;
@@ -189,7 +191,7 @@ for "_i" from 0 to _maxTraderLimit do {
 						if (_x isKindOf "Air" || _x isKindOf "Ship" || _x isKindOf "LandVehicle" || _x isKindOf "Tank") then {
 							if (EPOCH_storedVehicleCount <= _storedVehicleLimit) then {
 								EPOCH_storedVehicleCount = EPOCH_storedVehicleCount + _currentStock;
-								
+
 								// Count how many of this vehicle are in stock at any trader.
 								if !(_x in EPOCH_traderStoredVehicles) then {
 									EPOCH_traderStoredVehicles pushBack _x;
@@ -200,7 +202,7 @@ for "_i" from 0 to _maxTraderLimit do {
 										_existingStock = EPOCH_traderStoredVehiclesCnt select _indexStock;
 										EPOCH_traderStoredVehiclesCnt set [_indexStock, (_existingStock + _currentStock)];
 									};
-								};					
+								};
 							} else {
 								_toBeRemoved pushBack _forEachIndex;
 							};

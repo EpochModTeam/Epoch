@@ -12,7 +12,9 @@
     Github:
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server/compile/epoch_looting/EPOCH_server_spawnBoatLoot.sqf
 */
+//[[[cog import generate_private_arrays ]]]
 private ["_item","_marker"];
+//[[[end]]]
 {
 	// 20 percent chance for loot to spawn
 	if ((random 1) <= 0.4) then {

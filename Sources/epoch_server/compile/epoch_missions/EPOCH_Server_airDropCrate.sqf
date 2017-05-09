@@ -12,8 +12,10 @@
     Github:
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server/compile/epoch_missions/EPOCH_Server_airDropCrate.sqf
 */
-private ["_pos","_axeCrate","_axeChute","_crateSmoke","_axeLight"];
-params ["_object","_player",["_token","",[""]]];
+//[[[cog import generate_private_arrays ]]]
+private ["_axeChute","_axeCrate","_axeLight","_crateSmoke","_pos"];
+//[[[end]]]
+params ["_object","_player",["_token","",[""]] ];
 
 if !([_player,_token] call EPOCH_server_getPToken)exitWith{};
 

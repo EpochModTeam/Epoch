@@ -12,6 +12,9 @@
     Github:
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_code/compile/EPOCH_supportCopter.sqf
 */
+//[[[cog import generate_private_arrays ]]]
+private ["_SpawnTypes","_Spawncounts","_UnitType","_arrUnits","_idx","_maxunitCount","_minunitCount","_unitCount"];
+//[[[end]]]
 params ["_pos","_copter"];
 
 _arrUnits = getArray (getMissionConfig "CfgEpochUAVSupport" >> "unitTypes");
@@ -36,4 +39,3 @@ for "_i" from 1 to _unitCount do {
 {
     [_SpawnTypes select _foreachindex, player, true, _x, _this] call EPOCH_unitSpawn;
 } forEach _Spawncounts;
-

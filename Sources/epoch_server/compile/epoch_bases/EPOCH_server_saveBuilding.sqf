@@ -12,8 +12,10 @@
     Github:
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server/compile/epoch_bases/EPOCH_server_saveBuilding.sqf
 */
-private["_staticClassConfig","_objSlot", "_findnextslot", "_worldspace", "_objHiveKey", "_VAL", "_cfgBaseBuilding", "_slot", "_storageObj", "_pos", "_buildClass", "_newVehicle", "_textureSlot", "_staticClass", "_playerUID", "_oemType"];
-params ["_vehicle", "_player", ["_token","",[""]]];
+//[[[cog import generate_private_arrays ]]]
+private ["_ExceptedBaseObjects","_IndestructibleBaseObjects","_UseIndestructible","_cfgBaseBuilding","_findnextslot","_newVehicle","_objSlot","_oemType","_playerUID","_serverSettingsConfig","_slot","_staticClass","_staticClassConfig","_storageObj","_vehiclePos"];
+//[[[end]]]
+params ["_vehicle", "_player", ["_token","",[""]] ];
 
 if (isNull _vehicle) exitWith{};
 if !([_player,_token] call EPOCH_server_getPToken) exitWith {};
@@ -43,7 +45,7 @@ if (isText _staticClassConfig) then {
 			_vehiclePos = getposATL _vehicle;
 
 			_storageObj = [_staticClass,_vehicle] call EPOCH_swapBuilding;
-			
+
 			if (_UseIndestructible) then {
 				if ({_storageObj iskindof _x} count _ExceptedBaseObjects == 0) then {
 					{
@@ -53,7 +55,7 @@ if (isText _staticClassConfig) then {
 					} foreach _IndestructibleBaseObjects;
 				};
 			};
-			
+
 			if (getNumber(_cfgBaseBuilding >> _staticClass >> "isSecureStorage") == 1) then{
 				_storageObj setVariable["EPOCH_Locked", false, true];
 			};

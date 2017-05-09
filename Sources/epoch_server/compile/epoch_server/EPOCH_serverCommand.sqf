@@ -12,6 +12,9 @@
     Github:
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server/compile/epoch_server/EPOCH_serverCommand.sqf
 */
+//[[[cog import generate_private_arrays ]]]
+private ["_playerUID"];
+//[[[end]]]
 params ["_command","_param1","_param2","_param3"];
 switch (_command) do {
 	case 'shutdown': { 'epochserver' callExtension '991' };

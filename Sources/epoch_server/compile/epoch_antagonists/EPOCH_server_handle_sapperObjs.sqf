@@ -12,7 +12,9 @@
     Github:
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server/compile/epoch_antagonists/EPOCH_server_handle_sapperObjs.sqf
 */
-private["_safeUnits"];
+//[[[cog import generate_private_arrays ]]]
+private ["_safeBombs","_safeUnits"];
+//[[[end]]]
 params [["_bomb",objNull], "_player", ["_token","",[""]], "_unit", ["_killUnit",false]];
 if !([_player,_token]call EPOCH_server_getPToken)exitWith{};
 _safeUnits = ["Epoch_Sapper_F","Epoch_SapperB_F","Epoch_SapperG_F"];

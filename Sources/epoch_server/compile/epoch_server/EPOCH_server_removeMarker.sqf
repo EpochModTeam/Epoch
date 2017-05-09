@@ -36,11 +36,11 @@ switch _trgtType do {
 			}foreach (units group _trgtObj);
 		};
 	};
-	
+
 	case 2: {
 			deleteMarker _mrkrName;
 	};
-	
+
 	case 3: {
 		if(isArray _trgtObj && count _trgtObj > 0)then{
 			{
@@ -49,6 +49,6 @@ switch _trgtType do {
 		};
 	};
 
-	
-	default {diag_log format["Epoch: ADMIN: Marker delete failed at %1 called by %2.", _mPos, _trgt];};
+
+	default {diag_log format["Epoch: ADMIN: Marker delete failed at %1 called by %2.", _mrkrName, _trgtObj];};
 };

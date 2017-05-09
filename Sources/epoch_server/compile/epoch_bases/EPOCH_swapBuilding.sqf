@@ -1,5 +1,7 @@
 // _newObj = [_class,_object] call EPOCH_swapBuilding;
-private ["_objectPos","_newObj"];
+//[[[cog import generate_private_arrays ]]]
+private ["_newObj","_objectPos","_playersNear"];
+//[[[end]]]
 params [["_class",""],["_object",objNull],["_method",0]];
 _newObj = objNull;
 if (!isNull _object && !(_class isEqualTo "")) then {

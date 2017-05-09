@@ -19,7 +19,8 @@ if (!isNull EP_light) then {
 	deleteVehicle EP_light;
 };
 _config = 'CfgEpochClient' call EPOCH_returnConfig;
-_nlSettings = getArray ( _config >> "niteLight") params [["_nlEnabled",1],["_nlBright",1.88],["_nlZ",22]];
+_nlSettings = getArray( _config >> "niteLight");
+_nlSettings params [["_nlEnabled",1],["_nlBright",1.88],["_nlZ",22]];
 if (_nlEnabled isEqualTo 1) then {
 	_pos = (getPosATL player);
 	_pos set [2,_nlZ];

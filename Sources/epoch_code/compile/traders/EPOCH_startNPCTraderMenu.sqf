@@ -1,5 +1,5 @@
 //[[[cog import generate_private_arrays ]]]
-private ["_ok","_slot","_target"];
+private ["_MainCategoriearray","_categorie","_config","_ok","_slot","_target"];
 //[[[end]]]
 _config = 'CfgItemSort' call EPOCH_returnConfig;
 _MainCategoriearray = getarray (_config >> "MainCategories" >> "Classes");

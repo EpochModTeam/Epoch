@@ -12,14 +12,22 @@
     Github:
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server/compile/epoch_server/EPOCH_serverLootObject.sqf
 */
-private["_randomItemArray", "_quan", "_randomLootClass", "_randomItem", "_lootPaid", "_mags", "_lootItemWeightedArray", "_lootItemArray", "_weightedItemArray", "_exit", "_maxPayout", "_lootTable", "_lootTableArray", "_weightedArray"];
-params ["_object","_type",["_forceSpawn",false]];
+//[[[cog import generate_private_arrays ]]]
+private ["_config","_debug","_exit","_loop","_lootItemArray","_lootItemWeightedArray","_lootTable","_lootTableClass","_lootTableIndex","_loots","_magazineSize","_mags","_maxLoot","_maxPayout","_minLoot","_pricingConfig","_quan","_randomItem","_randomItemArray","_randomizeMagazineAmmoCount","_weightedItemArray"];
+//[[[end]]]
+params ["_object","_type",["_forceSpawn",false],["_pos",[]] ];
 _debug = true;
 _pricingConfig = 'CfgPricing' call EPOCH_returnConfig;
 
 _lootTableIndex = if (EPOCH_modCUPVehiclesEnabled) then {if (EPOCH_mod_madArma_Enabled) then {3} else {1}} else {if (EPOCH_mod_madArma_Enabled) then {2} else {0}};
 _lootTableClass = ["CfgLootTable","CfgLootTable_CUP","CfgLootTable_MAD","CfgLootTable_MADCUP"] select _lootTableIndex;
+if !(EPOCH_forcedLootSpawnTable isEqualTo "") then {
+    _lootTableClass = EPOCH_forcedLootSpawnTable;
+};
 _randomizeMagazineAmmoCount = ["CfgEpochClient", "randomizeMagazineAmmoCount", true] call EPOCH_fnc_returnConfigEntryV2;
+if (isnull _object && !(_pos isequalto [])) then {
+	_object = createVehicle ["groundWeaponHolder",_pos,[],0,"CAN_COLLIDE"];
+};
 if !(isNull _object) then{
 	_lootTable = [_type, "CfgMainTable", "tables"] call EPOCH_weightedArray;
 	_lootTable params ["_lootTableArray","_weightedArray"];

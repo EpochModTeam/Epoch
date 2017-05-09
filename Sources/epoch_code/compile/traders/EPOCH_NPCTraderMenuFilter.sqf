@@ -24,7 +24,7 @@
 */
 disableSerialization;
 //[[[cog import generate_private_arrays ]]]
-private ["_aiItems","_bpck","_config","_filterArray","_filterItems","_filterMagazines","_filterVehicle","_filterWeapons","_index","_isPlayerFilter","_item","_itemCount","_itemIcon","_itemName","_itemOfferCount","_items","_name","_offerArray","_picture","_qty","_qtys","_sizeOut","_slot","_type","_vehicles","_wpn"];
+private ["_FilterArray","_MainCategorie","_MainCategoriearray","_SubCategorieItems","_aiItems","_config","_control","_display","_id","_isPlayerFilter","_item","_itemCount","_itemOfferCount","_items","_name","_offerArray","_picture","_playeritems","_qty","_qtys","_sizeOut","_slot","_sortarray","_subcategories","_type","_vehicles"];
 //[[[end]]]
 params ["_control","_index"];
 _config = 'CfgItemSort' call EPOCH_returnConfig;
@@ -65,7 +65,7 @@ if !(isNull EPOCH_lastNPCtradeTarget) then {
 			if (count backpackItems player == 0 && count backpackmagazines player == 0 && backpack player != "") then {
 				_playeritems pushback backpack player;
 			};
-			
+
 			{
 				_item = _x;
 				if !(_item isequalto "") then {
@@ -81,7 +81,7 @@ if !(isNull EPOCH_lastNPCtradeTarget) then {
 					};
 				};
 			} forEach _playeritems;
-			
+
 			_vehicles = player nearEntities [["LandVehicle","Ship","Air","Tank"], 30];
 			{
 				if (local _x) then {
@@ -101,6 +101,7 @@ if !(isNull EPOCH_lastNPCtradeTarget) then {
 					};
 				};
 			} forEach _vehicles;
+            _display = (findDisplay -8);
 			_control = (_display displayCtrl 41500);
 			lbsort _control;
 		}
@@ -123,10 +124,10 @@ if !(isNull EPOCH_lastNPCtradeTarget) then {
 					_sortarray pushback [_x call EPOCH_itemDisplayName,_x,_qtys select _foreachindex];
 				} foreach _items;
 				_sortarray sort true;
-				
+
 				{
 					_item = _x select 1;
-					
+
 					if !(_item isequalto "") then {
 						if (_index == 0 || (tolower _item) in _FilterArray) then {
 							_qty = ((_x select 2) - ({_x == _item} count _offerArray));

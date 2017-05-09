@@ -12,7 +12,9 @@
     Github:
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server/compile/epoch_bases/EPOCH_server_unsuppported.sqf
 */
-private["_simulClassConfig","_worldspace", "_newObj", "_class", "_objSlot", "_cfgBaseBuilding", "_isSupported", "_lastPosition", "_currentPosition", "_objectPos"];
+//[[[cog import generate_private_arrays ]]]
+private ["_cfgBaseBuilding","_class","_isSupported","_newObj","_objSlot","_objectPos","_playerUID","_simulClassConfig","_simulatedCount","_slot","_stableCount","_start"];
+//[[[end]]]
 
 if !(isNil "EPOCH_unsupportedCheckRunning") exitWith{ diag_log "UnsupportedCheck: Already running aborted"};
 EPOCH_unsupportedCheckRunning = true;

@@ -12,7 +12,9 @@
     Github:
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server/compile/epoch_vehicle/EPOCH_server_save_vehicle.sqf
 */
-private ["_wepsItemsCargo","_magsAmmoCargo","_cargoIndex","_vehHiveKey","_hitpoints","_magsAmmoCargoMinimized","_inventory","_colorSlot","_VAL","_vehSlot"];
+//[[[cog import generate_private_arrays ]]]
+private ["_VAL","_cargo","_cargoIndex","_colorSlot","_hitpoints","_inventory","_magsAmmoCargo","_magsAmmoCargoMinimized","_magsAmmoCargox","_newComponents","_selectedWeapon","_selectedWeaponComponents","_startTime","_vehHiveKey","_vehSlot","_weapon","_weaponComponents","_wepsItemsCargo","_wepsItemsCargoNormalized","_wepsItemsCargox"];
+//[[[end]]]
 params [["_vehicle",objNull]];
 
 if (!isNull _vehicle) then {

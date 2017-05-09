@@ -23,7 +23,7 @@
 	NOTHING
 */
 //[[[cog import generate_private_arrays ]]]
-private ["_container","_craftingArray","_craftingArrayNames","_data","_idc","_index","_pic","_text","_weaponsAndItems"];
+private ["_container","_craftingArray","_craftingArrayNames","_data","_idc","_index","_pic","_text","_val","_weaponsAndItems"];
 //[[[end]]]
 params ["_control","_index"];
 EPOCH_InteractedItem = [];

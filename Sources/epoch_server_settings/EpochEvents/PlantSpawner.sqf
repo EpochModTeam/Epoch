@@ -14,7 +14,9 @@
 	Improvements and or bugfixes and other contributions are welcome via the github:
 	https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server_settings/EpochEvents/PlantSpawner.sqf
 */
-private ["_debug","_jammers","_restricted","_playersNearby","_plant","_position","_plantCount","_scatter","_marker","_nearbyLocations","_plants","_timeStamp","_decayTime","_showPlantMarkers"];
+//[[[cog import generate_private_arrays ]]]
+private ["_debug","_decayTime","_jammers","_marker","_nearbyLocations","_plant","_plantCount","_plants","_playersNearby","_position","_restricted","_scatter","_selectedLocation","_showPlantMarkers","_timeStamp"];
+//[[[end]]]
 
 // SET THIS TO TRUE TO GET MESSAGES IN LOG.
 _debug = true;

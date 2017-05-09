@@ -13,9 +13,9 @@
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_code/compile/EPOCH_unitSpawn.sqf
 */
 //[[[cog import generate_private_arrays ]]]
-private ["_bomb","_config","_currentLimit","_disableAI","_driver","_grp","_index","_jammerRange","_jammers","_loop","_nonJammer","_nonTrader","_nonTraderAIRange","_restricted","_sapperNum","_spawnLimit","_targetPos","_unit","_units"];
+private ["_aiskill","_arrSkills","_arrUnits","_arrVals","_bomb","_config","_currentLimit","_disableAI","_driver","_grp","_index","_jammerRange","_jammers","_loop","_minAISkill","_nonJammer","_nonTrader","_nonTraderAIRange","_pos","_restricted","_sapperHndl","_sapperNum","_spawnLimit","_targetPos","_unit","_units"];
 //[[[end]]]
-params ["_unitClass",["_trgt",player],["_doVariable",false],["_unitCount",1],["_extraData",[]]];
+params ["_unitClass",["_trgt",player],["_doVariable",false],["_unitCount",1],["_extraData",[]] ];
 
 _bomb = objNull;
 
@@ -183,7 +183,7 @@ switch _unitClass do {
             // randomize skill
         	for "_i" from 0 to ((count _arrSkills)-1) do {
         		_aiskill = floor random (_arrVals select _i);
-        		if (_aiskill<_minAISkill) then {_aiskill=_minAISkill};
+        		if (_aiskill < _minAISkill) then {_aiskill = _minAISkill};
         		_unit setSkill [_arrSkills select _i,_arrVals select _i];
         	};
             // spawn brains only on leader

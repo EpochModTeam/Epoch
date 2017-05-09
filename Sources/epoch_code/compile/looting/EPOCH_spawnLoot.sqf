@@ -24,7 +24,7 @@
 	BOOL
 */
 //[[[cog import generate_private_arrays ]]]
-private ["_cfgBaseBuilding","_class","_color","_colors","_config","_delete","_dir","_item","_lootBias","_lootLimit","_lootType","_loots","_masterConfig","_pos","_positions","_possibleCount","_possibleLoots","_randomIndex","_return","_selectedLoot"];
+private ["_cfgBaseBuilding","_class","_color","_colors","_config","_delete","_dir","_item","_lootBias","_lootLimit","_lootType","_loots","_masterConfig","_pos","_posName","_positions","_possibleCount","_possibleLoots","_randomIndex","_return","_selectedLoot"];
 //[[[end]]]
 params [["_building",objNull,[objNull]], ["_lootCheckBufferLimit",333], ["_lootObjectLimit",33]];
 
@@ -40,6 +40,7 @@ _lootBias = getNumber(_config >> "lootBias");
 _lootType = getText(_config >> "lootType");
 _loots = getArray(_config >> _lootType);
 _lootLimit = ceil random(getNumber(_config >> "limit"));
+_posName = "";
 
 EPOCH_LootedBlds pushBackUnique _building;
 if (count EPOCH_LootedBlds >= _lootCheckBufferLimit) then {
@@ -49,7 +50,8 @@ if (count EPOCH_LootedBlds >= _lootCheckBufferLimit) then {
 if ((random 100) < _lootBias) then {
     _possibleLoots = [];
     {
-        _x params ["_posName","_class","_randomColor"];
+        _x params ["_posNameTMP","_class","_randomColor"];
+        _posName = _posNameTMP;
         _positions = getArray(_config >> _posName);
         {
             _possibleLoots pushBack [_class,_randomColor,_x];

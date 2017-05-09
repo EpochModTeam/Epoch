@@ -12,8 +12,10 @@
     Github:
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server/compile/epoch_vehicle/EPOCH_server_save_vehicles.sqf
 */
-private ["_vehSlot","_storSlot","_objSlot"];
-params [["_objects",[]]];
+//[[[cog import generate_private_arrays ]]]
+private ["_objSlot","_storSlot","_vehSlot"];
+//[[[end]]]
+params [["_objects",[]] ];
 {
 	if (!isNull _x) then {
 		_vehSlot = _x getVariable ["VEHICLE_SLOT", "ABORT"];

@@ -12,6 +12,9 @@
     Github:
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_code/compile/event_handlers/EPOCH_InventoryOpened.sqf
 */
+//[[[cog import generate_private_arrays ]]]
+private ["_blocked","_containerlocked","_seclocked"];
+//[[[end]]]
 params ["_unit","_container","_sec"];
 setMousePosition[0.5, 0.5];
 call EPOCH_showStats;
@@ -24,11 +27,12 @@ if !(isNull _sec) then {
 _blocked = (_containerlocked && _seclocked);
 if (!_blocked && _containerlocked || _seclocked) then {
 	[] spawn {
+
 		disableSerialization;
 		waitUntil {!isNull findDisplay 602};
-		_d = findDisplay 602;
-		_cargo = _d displayCtrl 6401;
-		_ground = _d displayCtrl 6321;
+		private _d = findDisplay 602;
+		private _cargo = _d displayCtrl 6401;
+		private _ground = _d displayCtrl 6321;
 		_cargo ctrlEnable false;
 		ctrlSetFocus _ground;
 		ctrlActivate _ground;

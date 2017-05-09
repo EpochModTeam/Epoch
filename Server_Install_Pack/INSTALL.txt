@@ -18,7 +18,7 @@ http://www.microsoft.com/en-us/download/details.aspx?id=40784
 == NOTES ==
 
 * You should use a service restarter (like firedaemon) to keep the redis server and Arma 3 server running.
-* A3 Server should be restarted every 4 hours. A good option ssing BEC http://ibattle.org/ scheduler and the #shutdown rcon command works well. (Scheduler Example: https://gist.github.com/vbawol/38b2f57d89c2c36106b3)
+* A3 Server should be restarted every 4 hours. A good option is using BEC http://ibattle.org/ scheduler and the #shutdown rcon command works well. (Scheduler Example: https://gist.github.com/vbawol/38b2f57d89c2c36106b3)
 * The log rotator found in tools should only need one path to Arma 3 changed and should be ran just before the Arma 3 server starts. (firedeamon Pre/post service: Before Event)
 * It is recommended that you use ASM https://github.com/fred41/ASM to monitor your server performance.
 * Go to http://epochmod.com/forum/ for more help if needed. GLHF!

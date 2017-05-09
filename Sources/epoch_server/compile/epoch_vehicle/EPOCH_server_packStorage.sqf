@@ -12,8 +12,10 @@
     Github:
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server/compile/epoch_vehicle/EPOCH_server_packStorage.sqf
 */
-private ["_wepsItemsCargo","_magsAmmoCargo","_objTypes","_objQty","_wMags","_wMagsArray","_attachments","_arrCount","_magazineName","_magazineSize","_qty","_objType","_posWH","_inventory","_gwh","_returnItems","_owners","_class"];
-params ["_unit","_player",["_token","",[""]]];
+//[[[cog import generate_private_arrays ]]]
+private ["_arrCount","_attachments","_class","_config","_gwh","_inventory","_magazineName","_magazineSize","_magsAmmoCargo","_objQty","_objType","_objTypes","_owners","_posWH","_qty","_returnItems","_wMags","_wMagsArray","_wepsItemsCargo"];
+//[[[end]]]
+params ["_unit","_player",["_token","",[""]] ];
 
 if !([_player, _token] call EPOCH_server_getPToken) exitWith{};
 if (isNull _unit) exitWith{};

@@ -12,7 +12,9 @@
     Github:
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server/compile/epoch_vehicle/EPOCH_server_save_killedStorage.sqf
 */
-private ["_vehSlot","_vehHiveKey"];
+//[[[cog import generate_private_arrays ]]]
+private ["_vehHiveKey","_vehSlot"];
+//[[[end]]]
 params ["_storage","_killer"];
 
 if (!isNull _storage) then {

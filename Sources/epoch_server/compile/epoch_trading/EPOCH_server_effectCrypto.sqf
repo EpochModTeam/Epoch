@@ -22,8 +22,10 @@
 	Returns:
 	MIXED
 */
-private ["_cIndex","_vars","_current_crypto"];
-params [["_player",objNull,[objNull]],["_crypto",0,[0]]];
+//[[[cog import generate_private_arrays ]]]
+private ["_cIndex","_current_crypto","_vars"];
+//[[[end]]]
+params [["_player",objNull,[objNull]],["_crypto",0,[0]] ];
 if (!isNull _player && isPlayer _player) then {
 	// get index of custom variable
 	_cIndex = EPOCH_customVars find "Crypto";

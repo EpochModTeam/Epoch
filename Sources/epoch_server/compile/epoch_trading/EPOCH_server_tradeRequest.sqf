@@ -12,8 +12,10 @@
     Github:
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server/compile/epoch_trading/EPOCH_server_tradeRequest.sqf
 */
+//[[[cog import generate_private_arrays ]]]
 private ["_tradeKey"];
-params ["_target","_source",["_token","",[""]]];
+//[[[end]]]
+params ["_target","_source",["_token","",[""]] ];
 
 if !([_source, _token] call EPOCH_server_getPToken) exitWith{};
 if (isNull _target) exitWith{};

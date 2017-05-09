@@ -1,3 +1,6 @@
+//[[[cog import generate_private_arrays ]]]
+private ["_nameArr","_newName","_nrMn","_responseArr","_trader","_trdrCurrName"];
+//[[[end]]]
 _trader = objNull;
 _nrMn = nearestObjects [player, ["C_Man_1"], 16];
 _trader = _nrMn select 0;

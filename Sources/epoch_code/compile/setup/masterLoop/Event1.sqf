@@ -169,3 +169,106 @@ for "_i" from _hudIndex to 9 do {
     _c ctrlSetText "";
 };
 missionNamespace setVariable [format["EPOCH_dynHUD_%1","topRight"], nil];
+
+// EPOCH TraderMissions
+if (!isnil "EPOCH_ResetTraderMission") then {
+	if (!isNil "EPOCH_taskMarker") then{
+		EPOCH_taskMarker params ["_mkrName","_taskMarkerVis"];
+		[player,_taskMarkerVis,_mkrName] remoteExec ["EPOCH_server_removeMarker",2];
+		EPOCH_taskMarker = nil;
+	};
+	if !(_EPOCH_TraderMissionArray isequalto []) then {
+		_EPOCH_TraderMissionArray params ["_mainblock"];
+		_mainblock params ["","","","","",["_missionCleanUpCall",""]];
+		call _missionCleanUpCall;
+	};
+	EPOCH_ActiveTraderMission = [];
+	_EPOCH_TraderMissionArray = [];
+	_LastMissionTrigger = 0;
+	["Mission sucessfully resettet", 5] call Epoch_message;
+	EPOCH_ResetTraderMission = nil;
+};
+
+if !(EPOCH_ActiveTraderMission isequalto []) then {
+	if (_EPOCH_TraderMissionArray isequalto []) then {
+		_EPOCH_TraderMissionArray = EPOCH_ActiveTraderMission call _EPOCH_BuildTraderMisson;
+	};
+	_EPOCH_TraderMissionArray params ["_mainblock","_taskDelay","_triggerintervall","_taskDialogues","_taskEvents","_taskFailed","_taskComplete"];
+	if (diag_ticktime < _taskDelay) exitwith {};
+	if (diag_ticktime < _LastMissionTrigger + _triggerintervall) exitwith {};
+	_LastMissionTrigger = diag_ticktime;
+	_mainblock params ["_inGameTasksconfig","_taskName","_unit","_taskItem","_taskTitle","_missionCleanUpCall","_taskCleanup"];
+	_taskComplete params ["_taskCompleteCond","_taskReward","_taskCompleteDiags","_taskCompleteCall","_taskNextTrigger"];
+	_taskFailed params ['_taskFailedCond','_taskFailTime','_taskFailedDiags','_taskFailedSQF','_taskFailedCall'];
+	if (diag_ticktime > _taskFailTime || call _taskFailedCond) exitwith {
+		if (count _taskFailedDiags > 0) then {
+			_diag = selectRandom _taskFailedDiags;
+			[format ["%1",_diag], 5] call Epoch_message;
+		};
+		if !(_taskFailedSQF isequalto '') then {
+			call compile format ["[_taskName,_plyr,_unit,_taskItem] execVM ""%1""",_taskFailedSQF];
+		};
+		if !(str(_taskFailedCall) == "{}") then {
+			call _taskFailedCall;
+		};
+		if (!isNil "EPOCH_taskMarker") then{
+			EPOCH_taskMarker params ['_mkrName','_taskMarkerVis'];
+			[player,_taskMarkerVis,_mkrName] remoteExec ["EPOCH_server_removeMarker",2];
+			EPOCH_taskMarker = nil;
+		};
+		call _missionCleanUpCall;
+		EPOCH_ActiveTraderMission = [];
+		_EPOCH_TraderMissionArray = [];
+		_LastMissionTrigger = 0;
+	};
+	if (call _taskCompleteCond) exitwith {
+		if (count _taskCompleteDiags > 0) then {
+			_diag = selectrandom _taskCompleteDiags;
+			[format ["%1",_diag], 5] call Epoch_message;
+		};
+		if(count _taskReward > 0) then {
+			[player,Epoch_personalToken,_taskReward,[],objNull,false] remoteExec ["EPOCH_Server_createObject",2];
+		};
+		if !(str(_taskCompleteCall) == "{}") then {
+			call _taskCompleteCall;
+		};
+		if (_taskCleanup isequalto 1) then {
+			if (!isNil "EPOCH_taskMarker") then{
+				EPOCH_taskMarker params ['_mkrName','_taskMarkerVis'];
+				[player,_taskMarkerVis,_mkrName] remoteExec ["EPOCH_server_removeMarker",2];
+				EPOCH_taskMarker = nil;
+			};
+			call _missionCleanUpCall;
+		};
+		if (count _taskNextTrigger > 0) then {
+			_nexttask = selectrandom _taskNextTrigger;
+			_EPOCH_TraderMissionArray = [_inGameTasksconfig,_nexttask] call _EPOCH_BuildTraderMisson;
+		}
+		else {
+			EPOCH_ActiveTraderMission = [];
+			_EPOCH_TraderMissionArray = [];
+		};
+		_LastMissionTrigger = 0;
+	};
+	{
+		_x params ["_taskEventCond","_taskEventCALL","_taskEventTasks"];
+		if (call _taskEventCond) exitwith {
+			call _taskEventCALL;
+			if (count _taskEventTasks > 0) exitwith {
+				_task = selectrandom _taskEventTasks;
+				_EPOCH_TraderMissionArray = [_inGameTasksconfig,_task] call _EPOCH_BuildTraderMisson;
+			};
+			_taskEvents deleteat _foreachindex;
+		};
+	} foreach _taskEvents;
+	{
+		_x params ['_taskDiagCond','_taskDiag'];
+		if (call _taskDiagCond) exitwith {
+			_diag = selectRandom _taskDiag;
+			if !(_diag isequalto "") then {
+				[format ["%1",_diag], 5] call Epoch_message;
+			};
+			_taskDialogues deleteat _foreachindex;
+		};
+	} foreach _taskDialogues;
+};

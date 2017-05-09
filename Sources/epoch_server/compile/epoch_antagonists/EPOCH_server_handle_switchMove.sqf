@@ -17,7 +17,9 @@
 	or
 	[_player,"moveName","token"] call EPOCH_server_handle_switchMove;
 */
-private["_range", "_move", "_nearBy"];
+//[[[cog import generate_private_arrays ]]]
+private ["_nearBy","_range","_selectedMove","_switchMovehandlerConfig","_target","_targets"];
+//[[[end]]]
 params [["_player",objNull,[objNull]],["_move","",[""]],["_token","",[""]],["_target",objNull]];
 
 if !([_player, _token] call EPOCH_server_getPToken) exitWith{};

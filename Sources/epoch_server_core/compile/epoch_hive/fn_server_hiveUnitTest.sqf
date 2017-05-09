@@ -12,6 +12,9 @@
     Github:
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server_core/compile/epoch_hive/fn_server_hiveUnitTest.sqf
 */
+//[[[cog import generate_private_arrays ]]]
+private ["_charCheck","_expires","_payload","_payload_64k","_payload_64k_count","_response","_startTime","_testID"];
+//[[[end]]]
 _testID = "1234567890";
 _payload = "32D1ECB8511569B43A5CC39DF4261CACDA912C798B066EE1E1EE06E2F09D02073C1B3FC638F091D58E7691DA7D0F7E1F01371CB58346572A015F6F93429F3BDC";
 _expires = "600"; // 10 minutes

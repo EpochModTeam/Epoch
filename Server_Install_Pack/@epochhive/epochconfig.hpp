@@ -66,6 +66,9 @@ starterTraderItems[] = { { "ItemSodaBurst", "meatballs_epoch", "MortarBucket", "
 NPCSlotsLimit = 20; // Max number of traders static or dynamic. Warning! Higher the number lower performance.
 forceStaticTraders = "true"; // disables traders moving from work to home
 
+forcedVehicleSpawnTable = ""; // leave blank for default. Options: "allowedVehiclesList","allowedVehiclesList_CUP","allowedVehiclesList_MAD","allowedVehiclesList_MADCUP"
+forcedLootSpawnTable = ""; // leave blank for default. Options: "CfgLootTable","CfgLootTable_CUP","CfgLootTable_MAD","CfgLootTable_MADCUP"
+
 // Markers
 showEarthQuakes = "true"; // show mineral viens caused by earthquakes
 showShippingContainers = "true"; // Show location of events based loots (plants, shipping container, Carnival)
@@ -88,3 +91,4 @@ hiveAdminCmdTime = 5; // how many seconds between each command queue call.
 
 // DEBUG
 useOldLoadVehicles = "false";
+enableUnitTestOnStart = 1; // enable extra debug for database calls. 1 = enabled.

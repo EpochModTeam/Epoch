@@ -13,7 +13,9 @@
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server_core/compile/epoch_hive/fn_server_hiveGETBIT.sqf
 */
 
-private ["_hiveResponse","_hiveMessage"];
+//[[[cog import generate_private_arrays ]]]
+private ["_hiveMessage","_hiveResponse"];
+//[[[end]]]
 params ["_prefix","_key","_bit"];
 _hiveMessage = false;
 _hiveResponse = "epochserver" callExtension format["240|%1:%2|%3", _prefix, _key, _bit];

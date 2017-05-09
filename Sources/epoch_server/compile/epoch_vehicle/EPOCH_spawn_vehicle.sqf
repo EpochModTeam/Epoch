@@ -12,7 +12,9 @@
     Github:
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server/compile/epoch_vehicle/EPOCH_spawn_vehicle.sqf
 */
-private ["_removeweapons","_removemagazinesturret","_maxDamage","_textures","_textureSelectionIndex","_selections","_colors","_color","_count","_vehLockHiveKey","_marker","_cfgEpochVehicles","_vehObj"];
+//[[[cog import generate_private_arrays ]]]
+private ["_availableColorsConfig","_cfgEpochVehicles","_color","_colors","_count","_marker","_maxDamage","_removemagazinesturret","_removeweapons","_selections","_serverSettingsConfig","_textureSelectionIndex","_textures","_vehLockHiveKey","_vehObj"];
+//[[[end]]]
 params ["_vehClass","_position","_direction","_locked","_slot",["_lockOwner",""],["_can_collide","CAN_COLLIDE"],["_spawnLoot",false],["_spawnDamaged",true]];
 if !(isClass (configFile >> "CfgVehicles" >> _vehClass)) exitWith {objNull};
 _serverSettingsConfig = configFile >> "CfgEpochServer";
@@ -45,7 +47,7 @@ if !(isNull _vehObj) then{
 			_vehObj removeMagazinesTurret _x;
 		} foreach _removemagazinesturret;
 	};
-	
+
 	// Disable Termal Equipment
 	_vehObj disableTIEquipment true;
 

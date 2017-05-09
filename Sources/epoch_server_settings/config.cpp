@@ -68,6 +68,8 @@ class CfgEpoch
 		telePos[] = {};
 		propsPos[] = {};
 		staticNpcPos[] = {};
+        forcedVehicleSpawnTable = "";
+        forcedLootSpawnTable = "";
 		allowedVehiclesList[] = {
 		    {"C_Offroad_01_EPOCH",8},
 		    {"C_Quadbike_01_EPOCH",8},

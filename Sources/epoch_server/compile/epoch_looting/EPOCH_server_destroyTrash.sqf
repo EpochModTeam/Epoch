@@ -12,8 +12,10 @@
     Github:
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server/compile/epoch_looting/EPOCH_server_destroyTrash.sqf
 */
-private["_target", "_eventArray", "_triggerType", "_nearPlayers", "_posWH", "_item", "_config", "_object", "_player", "_payout", "_type"];
-params [["_object",objNull,[objNull]],["_type",0,[0]],["_player",objNull,[objNull]],["_token","",[""]]];
+//[[[cog import generate_private_arrays ]]]
+private ["_antagTable","_antagTableArray","_config","_errorMsg","_item","_nearPlayers","_payout","_posWH","_target","_triggerType","_weightedArray"];
+//[[[end]]]
+params [["_object",objNull,[objNull]],["_type",0,[0]],["_player",objNull,[objNull]],["_token","",[""]] ];
 
 if (isNull _object) exitWith{};
 if !([_player, _token] call EPOCH_server_getPToken) exitWith{};

@@ -16,8 +16,11 @@
     Github:
     https://github.com/EpochModTeam/Epoch/tree/master/Sources/epoch_server/compile/epoch_server/EPOCH_server_makeMarker.sqf
 */
+//[[[cog import generate_private_arrays ]]]
+private ["_mrkr","_mrkrName","_trgtObj","_trgtType"];
+//[[[end]]]
 params ["_trgt","_mPos",["_mShape","ICON"],["_mType","mil_dot"],["_mText",""],["_mColor","ColorBlack"],["_mSize",[0.7,0.7]],"_mBrush","_mDir","_mAlpha",["_mrkrName",""]];
-private ["_trgtType","_trgtObj"];
+
 diag_log format["Epoch: ADMIN: Creating marker at %1 called by %2.", _mPos, _trgt];
 if(count _trgt < 2)exitWith{};
 _trgtType = _trgt select 0;
@@ -39,7 +42,7 @@ switch _trgtType do {
 			}foreach (units group _trgtObj);
 		};
 	};
-	
+
 	case 2: {
 			if(_trgtObj == "")then{_trgtObj=diag_tickTime;};
 			_mrkr = createMarker [_mrkrName, _mPos];
@@ -52,7 +55,7 @@ switch _trgtType do {
 			if!(isNil "_mDir")then{_mrkr setMarkerDir _mDir;};
 			if!(isNil "_mAlpha")then{_mrkr setMarkerAlpha _mAlpha;};
 	};
-	
+
 	case 3: {
 		if(isArray _trgtObj && count _trgtObj > 0)then{
 			{
@@ -61,6 +64,6 @@ switch _trgtType do {
 		};
 	};
 
-	
+
 	default {diag_log format["Epoch: ADMIN: Marker failed at %1 called by %2.", _mPos, _trgt];};
 };

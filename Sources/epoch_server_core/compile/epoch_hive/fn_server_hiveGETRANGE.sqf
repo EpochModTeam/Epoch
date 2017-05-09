@@ -12,7 +12,9 @@
     Github:
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server_core/compile/epoch_hive/fn_server_hiveGETRANGE.sqf
 */
-private["_hiveResponse", "_hiveStatus", "_hiveMessage", "_currentIndex", "_hiveMakeCall", "_data"];
+//[[[cog import generate_private_arrays ]]]
+private ["_currentIndex","_currentIndexMax","_hiveCharCount","_hiveMakeCall","_hiveMessage","_hiveResponse","_hiveStatus"];
+//[[[end]]]
 params ["_prefix","_key"];
 
 _hiveMessage = "";

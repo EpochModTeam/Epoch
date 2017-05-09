@@ -12,7 +12,7 @@
     Github:
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_code/compile/EPOCH_PutHandler.sqf
 */
-_class = param [2];
+private _class = param [2];
 //Radio Check
 if (configName(inheritsFrom(configFile >> "CfgWeapons" >> _class)) == "ItemRadio") then {
 	if !(_class in(assignedItems player)) then {

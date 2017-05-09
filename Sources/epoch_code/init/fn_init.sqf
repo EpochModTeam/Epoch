@@ -15,7 +15,7 @@
 if !(isNil "Epoch_Survival_Started") exitWith { false };
 Epoch_Survival_Started = true;
 
-_selectedFunction = "CfgClientFunctions";
+private _selectedFunction = "CfgClientFunctions";
 if (isDedicated) then {
 	// dedicated server
 	_selectedFunction = "CfgServerFunctions";

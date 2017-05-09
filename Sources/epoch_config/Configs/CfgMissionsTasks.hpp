@@ -17,4 +17,6 @@ class inGameTasks {
 #include "CfgMissions\CfgmissionDelivery.hpp"
 #include "CfgMissions\CfgmissionUav.hpp"
 #include "CfgMissions\CfgmissionMilitary.hpp"
+#include "CfgMissions\CfgmissionMonster.hpp"
+#include "CfgMissions\CfgmissionFish.hpp"
 };
