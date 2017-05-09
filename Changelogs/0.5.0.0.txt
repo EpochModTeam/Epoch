@@ -36,3 +36,25 @@
 [Changed ] Some Cleanups and Script optimization to the service point scripts. @Ignatz-HeMan
 [Fixed] Toxic Smoke Grenade not making you Toxic thanks to @Ignatz-HeMan
 [Info] Install script for Mad Arma mod via Steam workshop in the tools/install folder.
+
+0.5 b757:
+[Added] "MeleeRod" (Fishing Rod) to Crafting Menu (1x Rope,1x Stick,1x Metal Scraps) @Ignatz-HeMan
+[Added] Vehicle and Loot tables can be set via epochconfig settings (forcedVehicleSpawnTable, forcedLootSpawnTable) to force specific vehicle or loot tables.
+[Changed] Removed "Alpha" text from debug monitor.
+[Changed] Add flag to enable database unit test. enableUnitTestOnStart = 1 in epochconfig.hpp to enable
+[Changed] Delete rest of unused clientside Airdrop Event code.	@Ignatz-HeMan
+[Changed] further optimized db call for weather script.
+[Updated] redis-server.exe to latest version: 3.2.100 from: https://github.com/MSOpenTech/redis/releases
+[Fixed] some missing semicolons in CfgPricing. @SPKcoding
+[Fixed] Joining and leaving a group and optimize with added usage of params. @Ignatz-HeMan
+[Fixed] Group invites from the same Group where not possible until relog. @Ignatz-HeMan
+[Fixed] Heal not working when using SafeZones with VehicleGodmode and only HitPoint is damaged. @Ignatz-HeMan
+[Fixed] fix deleteVehicle BE kick with sharks
+[Fixed] CBA related Battleye kicks with current CBA version.
+[Fixed] Static weather settings not working. @82ndab-Bravo17
+[Fixed] Battleye kicks for CUP weapon and attachment BE kicks.
+[Fixed] Battleye kicks for towing tractor from CUP.
+[Fixed] Fixed / updated and added Trader Missions and ported to run it on Events instead fsm. @Ignatz-HeMan
+[Fixed] Several minor fixes, cleanup, and private array updates.
+[Fixed] Fix for Weaponholder disappearing while adding loot. @Ignatz-HeMan
+[Info] SQF parser analyzer: https://www.reddit.com/r/armadev/comments/681236/released_static_analyzer_for_sqf_and_integration/ Thanks to @LordGolias
