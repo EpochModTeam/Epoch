@@ -30,6 +30,55 @@ antagonistChanceLoot = 0.09; //9% chance when player click "SEARCH" on a loot ob
 // Player Related
 cloneCost = 100; 					// debt incurred on player death
 MaxBankDebitforTrade = -50000;		// If Player has less money on Bank, Crypto from Trade goes directly to Bank instead to Player
+// Start Leadout
+defaultUniformFemale =		"U_Test_uniform";
+defaultVestFemale =			"V_F41_EPOCH";
+defaultUniformMale =		"U_Test1_uniform";
+defaultVestMale =			"V_41_EPOCH";
+defaultGoggles =			"";
+defaultHeadgear =			"";
+defaultBackpack =			"";
+linkedItems[] =				{"ItemMap","EpochRadio0"};		// {"Item1","Item2",...}; These Items will be linked to the Players Inventory
+itemsInContainers[] =		{};								// {"Item1","Item2",...}; These Items will be put in the Players Cargo(s)
+weaponsInContainers[] = 	{};								// {"Weapon1","Weapon2",...}; These Weapons will be put in the Players Cargo(s)
+normalMagazines[] = 		{};								// {{"Magazine1",Ammocount1},{"Magazine2",Ammocount2},...};
+weaponsAndItems[] =			{
+/*
+	"srifle_EBR_F",											// Active Weapon (in hand)
+	{														// Full equipped Weapons (put here equipped Weapons that should be in the Weapons Slots)
+		{
+			"srifle_EBR_F",									// Weapon 1
+			"muzzle_snds_B",								// Suppressor 1
+			"acc_pointer_IR",								// Laser 1
+			"optic_DMS",									// Optics 1
+			{"20Rnd_762x51_Mag",20},						// Magtype + ammo count 1
+			{},												// 2nd Magtype + ammo count 1 (Only needed for GL-Mags)
+			"bipod_02_F_blk"								// Bipod 1
+		},
+		{
+			"Plunger",										// Weapon 2
+			"",												// Suppressor 2
+			"",												// Laser 2
+			"",												// Optics 2
+			{"stick_swing",1000},							// Magtype + ammo count 2
+			""
+		},
+		{
+			"ruger_pistol_epoch",
+			"",												// Suppressor 3
+			"",												// Laser 3
+			"",												// Optics 3
+			{"10rnd_22X44_magazine",10},					// Magtype + ammo count 3
+			""												// Bipod 3
+		}
+	},
+	{
+		"srifle_EBR_F",										// Primary Weapon
+		"Plunger",											// Secondary Weapon
+		"ruger_pistol_epoch"								// Handgun Weapon
+	}
+*/
+};
 
 // vehicles - Max vehicle slots is calculated from per vehicle limits below. Warning! Higher the number lower the performance.
 simulationHandlerOld = "false"; // When enabled this feature disables simulation on vehicles that are not nea players. Can help improve client fps at the cost of server fps.
