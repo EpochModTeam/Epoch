@@ -36,6 +36,7 @@ if (alive _jammer) then {
             // set position of spawnpoint to players SERVER_VARS
             _server_vars set [0, getposATL _player]; // 0 = RESPAWN POS
             _player setVariable ["SERVER_VARS", _server_vars];
+	    [_player, _player getVariable["VARS", []]] call EPOCH_server_savePlayer;
             ["Spawnpoint set", 5] remoteExec ['Epoch_message',_player];
         }
         else
@@ -43,6 +44,7 @@ if (alive _jammer) then {
             // remove position of spawnpoint from players SERVER_VARS
             _server_vars set [0, []]; // 0 = RESPAWN POS
             _player setVariable ["SERVER_VARS", _server_vars];
+	    [_player, _player getVariable["VARS", []]] call EPOCH_server_savePlayer;
             ["Spawnpoint removed", 5] remoteExec ['Epoch_message',_player];
         };
     }
