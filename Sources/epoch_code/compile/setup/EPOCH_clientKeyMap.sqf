@@ -49,6 +49,8 @@ _keyMap =
 	["Build: Rotate RIGHT", "EPOCH_keysBuildRotR", 0x10]
 ];
 
+_keyMap call EPOCH_custom_KeyMap;
+
 switch (_args) do {
 	case 0: //load variables
 	{
