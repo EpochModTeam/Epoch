@@ -189,6 +189,7 @@ class CfgClientFunctions
             class custom_EH_Killed {};
             class custom_EH_Put {};
             class custom_EH_Take {};
+            class custom_KeyMap {};
             class custom_OnEachFrame {};
         };
         class messaging
