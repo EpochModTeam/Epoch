@@ -139,13 +139,6 @@ if (!isNull _player) then {
 
 		_group = grpNull;
 
-		// Delete any left over units with same PUID
-		{
-			if ((_x getVariable["PUID", "0"]) == _playerUID) then {
-				deleteVehicle _x;
-			};
-		} forEach allUnits;
-
 		// find existing group
 		if (_playerGroup != "") then {
 			{
