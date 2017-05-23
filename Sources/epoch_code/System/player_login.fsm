@@ -183,8 +183,8 @@ link93[] = {82,76};
 link94[] = {83,16};
 link95[] = {83,22};
 link96[] = {84,31};
-globals[] = {0.000000,0,0,0,0,640,480,1,247,6316128,1,-423.640717,1096.514160,1778.978027,253.646729,881,884,1};
-window[] = {2,-1,-1,-1,-1,793,26,1010,26,3,899};
+globals[] = {0.000000,0,0,0,0,640,480,1,247,6316128,1,-423.640717,1096.514160,1778.978027,253.646729,577,604,1};
+window[] = {2,-1,-1,-1,-1,767,105,1089,0,3,595};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -1087,6 +1087,7 @@ class FSM
                                          "    diag_log format[""DEBUG: Checking Player is setup: %1"", [""FAILED"",""OK""] select _playerCheckSetup];" \n
                                          "    diag_log format[""DEBUG: Checking world preloaded: %1"", [""FAILED"",""OK""] select _playerCheckObjectsReady];" \n
                                          "    diag_log format[""DEBUG: Final Player mass check: %1 (%2 != %3)"",  [""FAILED"",""OK""] select _playerCheckFinal, _mass, (loadAbs _playerObject)];" \n
+                                         "    diag_log format[""DEBUG: Pos check: %1 == %2"",  getpos _playerObject, getpos player];" \n
                                          "};" \n
                                          "_state"/*%FSM</CONDITION""">*/;
                                         action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
