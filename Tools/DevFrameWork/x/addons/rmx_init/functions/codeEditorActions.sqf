@@ -12,11 +12,15 @@ _tab = param [1, 0];
 
 switch (_action) do
 {
-	case "execute":
+	case "exec_client":
 	{
 		playSound "click";
 		_code = ctrlText (rmx_var_ctrl_editorItems select 1);
 		call compile _code; //add try catch
+	};
+	case "exec_server":
+	{
+		hintSilent (ctrlText (rmx_var_ctrl_editorItems select 1));
 	};
 	case "save":
 	{
@@ -66,7 +70,7 @@ switch (_action) do
 			(rmx_var_ctrl_editorItems select rmx_var_editorIndex + 2) ctrlSetTextColor (call rmx_fnc_getColorScheme);
 			(rmx_var_ctrl_editorMain select 1) ctrlSetBackgroundColor (call rmx_fnc_getColorScheme);
 			
-			for "_c" from 13 to 15 do {
+			for "_c" from 13 to 16 do {
 				(rmx_var_ctrl_editorItems select _c) ctrlSetTextColor (call rmx_fnc_getColorScheme);
 			};
 		};

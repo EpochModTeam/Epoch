@@ -177,26 +177,26 @@ class dUI_editor {
 			idc = 7212;
 			x = 0.155;
 			y = 0.928;
-			w = 0.39;
+			w = 0.265;
 			h = 0.068;
 			onMouseButtonUp = "'slider' call rmx_fnc_codeEditorActions";
 		};
-		class ce_btn_Execute: RscButton
+		class ce_btn_Client: RscButton
 		{
 			idc = 7213;
-			text = "Execute"; //--- ToDo: Localize;
+			text = "Client"; //--- ToDo: Localize;
 			x = 0.825;
 			y = 0.92;
 			w = 0.1025;
 			h = 0.08;
 			colorText[] = {1,0.5,0,1};
-			action = "'execute' call rmx_fnc_codeEditorActions";
+			action = "'exec_client' call rmx_fnc_codeEditorActions";
 		};
 		class ce_btn_save: RscButton
 		{
 			idc = 7214;
 			text = "Save Tab"; //--- ToDo: Localize;
-			x = 0.7;
+			x = 0.5725;
 			y = 0.92;
 			w = 0.1025;
 			h = 0.08;
@@ -207,12 +207,23 @@ class dUI_editor {
 		{
 			idc = 7215;
 			text = "Clear Tab"; //--- ToDo: Localize;
-			x = 0.575;
+			x = 0.4475;
 			y = 0.92;
 			w = 0.1025;
 			h = 0.08;
 			colorText[] = {1,0.5,0,1};
 			action = "'clear' call rmx_fnc_codeEditorActions";
+		};
+		class ce_btn_Server: RscButton
+		{
+			idc = 7216;
+			text = "Server"; //--- ToDo: Localize;
+			x = 0.6975;
+			y = 0.92;
+			w = 0.1025;
+			h = 0.08;
+			colorText[] = {1,0.5,0,1};
+			action = "'exec_server' call rmx_fnc_codeEditorActions";
 		};
 	};
 };

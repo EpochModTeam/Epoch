@@ -24,7 +24,7 @@ _display displayAddEventHandler ["keyDown", "_this call rmx_fnc_keyDown;"];
 rmx_var_ctrl_editorMain = [_display displayCtrl 7200, _display displayCtrl 7300];
 rmx_var_ctrl_editorItems = [];
 
-for "_i" from 7200 to 7215 do {
+for "_i" from 7200 to 7216 do {
 	rmx_var_ctrl_editorItems set [count rmx_var_ctrl_editorItems,_display displayCtrl _i];
 };
 
