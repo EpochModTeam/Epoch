@@ -1,0 +1,16 @@
+== WIP ==
+
+[Added] Option to drink from predetermined sources. @Ignatz-HeMan
+
+[Added] Epoch Events 3.0: Allow external events based on server side configs and pbos.
+
+New server side events can be added just dropping the pbo into @epochhive/addons folder.
+To make your own use Dynamic Debris Event as a template.
+
+[Added] Dynamic Debris Epoch Event. Dynamically spawns vehicle and other debris on the roadways.
+Scans the roads on startup and uses a random seed generator to determine the locations of debris.
+Debris is spawned using createSimpleObject and is made to conform with the upper most roadway surface.
+
+[Added] Epoch Dev Libs by @raymix
+
+[Fixed] BE kick since 1.70.

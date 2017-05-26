@@ -12,7 +12,7 @@ lootMultiplier = 0.5; // 1 = max loot bias. This controls how much loot can payo
 // Events
 WeatherStaticForecast[] = {}; // Default: {75.5,0,{0,0,0},0,{1,1}}; // Clear day; {19,1,{1,1,40},1,{5,5}}; // Cold Foggy Rainy Overcast Windy; Format: {temp <scalar>,rain <scalar>,fog <array>,overcast <scalar>,wind <array>}
 events[] = {
-    { 3600, "CarnivalSpawner", 0 , 1}, // SECOND <scalar>, EVENT <string>, INIT <scalar> 1 = run script at startup, 0 normal delay, PREPOSTFIX <scalar> 1 = use pre/postfix path (inside epoch settings pbo) 0 = use full file path
+    { 3600, "CarnivalSpawner", 0 , 1}, // SECOND <scalar>, EVENT <string>, INIT <scalar> 1 = run script at startup or 0 normal delay, PREPOSTFIX <scalar> 1 = use pre/postfix path (inside epoch settings pbo) 0 = use full file path
     // { 1800, "PaydayEvent", 0, 1},
     // { 1200, "MessageServer", 0, 1},
     { 2700, "AirDrop", 0 , 1},

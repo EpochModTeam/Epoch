@@ -638,8 +638,23 @@ class CfgWorldInteractions  {
     class locomotive_01_v2_f_p3d : Wrecks {};
     class excavator_01_abandoned_f_p3d : Wrecks {};
 
-
-
-
+    class Land_Wreck_Skodovka_F : Wrecks {};
+    class Land_Wreck_CarDismantled_F : Wrecks {};
+    class Land_Wreck_Truck_F : Wrecks {};
+    class Land_Wreck_Car2_F : Wrecks {};
+    class Land_Wreck_Car_F : Wrecks {};
+    class Land_Wreck_Car3_F : Wrecks {};
+    class Land_Wreck_Hunter_F : Wrecks {};
+    class Land_Wreck_Van_F : Wrecks {};
+    class Land_Wreck_Offroad_F : Wrecks {};
+    class Land_Wreck_UAZ_F : Wrecks {};
+    class Land_Wreck_Ural_F : Wrecks {};
+    class Land_Wreck_Truck_dropside_F : Wrecks {};
+    class Land_Wreck_HMMWV_F : Wrecks {};
+    class Land_GarbageWashingMachine_F : Trash {};
+    class Land_GarbageHeap_01_F : Trash {};
+    class Land_GarbageHeap_02_F : Trash {};
+    class Land_GarbageHeap_03_F : Trash {};
+    class Land_GarbageHeap_04_F : Trash {};
 
 };

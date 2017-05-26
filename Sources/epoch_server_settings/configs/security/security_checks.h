@@ -16,6 +16,10 @@ class CfgSecConf
 {
     debug = "false";
 
+    class vehicles {
+        safeVehicles[] = {"I_UAV_01_F","B_Heli_Transport_01_F","Steerable_Parachute_F","NonSteerable_Parachute_F","Land_Camping_Light_F","container_epoch"};
+    };
+
     class remoteExecClient{
         functions[] = {"bankBalance", "resetGroup", "groupUpdate", "groupUidUpdate", "healPlayer","tradeComplete"};
         // code

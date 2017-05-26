@@ -9,7 +9,7 @@ class CfgPatches {
 		units[] = {};
 		weapons[] = {};
 		requiredVersion = 0.1;
-		requiredAddons[] = {"A3_epoch_server_core","A3_epoch_config","A3_server_settings"};
+		requiredAddons[] = {"A3_epoch_server_core","A3_epoch_config","A3_server_settings","A3_server_events"};
 		#include "build.hpp"
 	};
 };
