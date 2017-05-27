@@ -70,34 +70,27 @@ class base_mode_disable
 	icon = "x\addons\a3_epoch_code\Data\UI\buttons\build_remove.paa";
 	tooltip = "Build Mode: Disable";
 };
-
-class base_mode_snap_direction_0
+class base_mode_snap_direction
 {
-	condition = "EPOCH_buildMode == 1 && EPOCH_snapDirection != 0";
-	action = "EPOCH_snapDirection = 0;[format['SNAP DIRECTION MODE: %1', EPOCH_snapDirection], 5] call Epoch_message;";
+	condition = "EPOCH_buildMode == 1";
+	action = "EPOCH_snapDirection = EPOCH_snapDirection + 1; if (EPOCH_snapDirection > 3) then {EPOCH_snapDirection = 0};[format['SNAP DIRECTION: %1°', EPOCH_snapDirection*90], 5] call Epoch_message;";
 	icon = "x\addons\a3_epoch_code\Data\UI\buttons\build_move.paa";
-	tooltip = "Build Mode: Snap Direction 0°";
+	tooltip = "Build Mode: Rotate 90°";
+	tooltipcode = "format ['Build Mode: Switch Snap Direction to %1° (current %2°)',if (EPOCH_snapDirection < 3) then {(EPOCH_snapDirection+1)*90} else {0},EPOCH_snapDirection*90]";
 };
-class base_mode_snap_direction_1
+class base_mode_detach
 {
-	condition = "EPOCH_buildMode == 1 && EPOCH_snapDirection != 1";
-	action = "EPOCH_snapDirection = 1;[format['SNAP DIRECTION MODE: %1', EPOCH_snapDirection], 5] call Epoch_message;";
+	condition = "EPOCH_buildMode > 0 && !isnull EPOCH_target && EPOCH_target_attachedTo isequalto player && Epoch_target iskindof 'Const_Ghost_EPOCH'";
+	action = "EPOCH_target_attachedTo = objnull; ['Object Detached', 5] call Epoch_message;";
 	icon = "x\addons\a3_epoch_code\Data\UI\buttons\build_move.paa";
-	tooltip = "Build Mode: Snap Direction 90°";
+	tooltip = "Build Mode: Detach Object";
 };
-class base_mode_snap_direction_2
+class base_mode_attach
 {
-	condition = "EPOCH_buildMode == 1 && EPOCH_snapDirection != 2";
-	action = "EPOCH_snapDirection = 2;[format['SNAP DIRECTION MODE: %1', EPOCH_snapDirection], 5] call Epoch_message;";
+	condition = "EPOCH_buildMode > 0 && !isnull EPOCH_target && !(EPOCH_target_attachedTo isequalto player) && Epoch_target iskindof 'Const_Ghost_EPOCH'";
+	action = "EPOCH_target_attachedTo = player; ['Object Attached', 5] call Epoch_message;";
 	icon = "x\addons\a3_epoch_code\Data\UI\buttons\build_move.paa";
-	tooltip = "Build Mode: Snap Direction 180°";
-};
-class base_mode_snap_direction_3
-{
-	condition = "EPOCH_buildMode == 1 && EPOCH_snapDirection != 3";
-	action = "EPOCH_snapDirection = 3;[format['SNAP DIRECTION MODE: %1', EPOCH_snapDirection], 5] call Epoch_message;";
-	icon = "x\addons\a3_epoch_code\Data\UI\buttons\build_move.paa";
-	tooltip = "Build Mode: Snap Direction 270°";
+	tooltip = "Build Mode: Attach Object";
 };
 class Drink
 {
