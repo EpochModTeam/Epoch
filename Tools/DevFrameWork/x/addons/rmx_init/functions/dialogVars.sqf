@@ -67,7 +67,9 @@ rmx_var_ppDbPos = [0];
 rmx_var_ppCiPos = [0,0,0];
 
 with profileNamespace do {
-	if (rmx_var_ppLoadSave isEqualTo []) then {rmx_var_ppLoadSave = nil};
+	if !(isNil "rmx_var_ppLoadSave") then {
+		if (rmx_var_ppLoadSave isEqualTo []) then {rmx_var_ppLoadSave = nil};
+	};
 };
 rmx_var_ppLoadSave = profileNamespace getVariable ["rmx_var_ppLoadSave",[[0,"Nothing saved",[1,1,0,0,0,0,0,0,0,0,1,0,0,0,0]]]];
 rmx_var_ppHandles = [];
@@ -88,7 +90,9 @@ rmx_var_afText = [];
 rmx_var_afSelected = 0;
 
 with profileNamespace do {
-	if (rmx_var_afLoadSave isEqualTo []) then {rmx_var_afLoadSave = nil};
+	if !(isNil "rmx_var_afLoadSave") then {
+		if (rmx_var_afLoadSave isEqualTo []) then {rmx_var_afLoadSave = nil};
+	};
 };
 rmx_var_afProfile = profileNamespace getVariable ["rmx_var_afProfile",[0,0,0,0,[0,0],[0,[0,0,0]],[0,0],[0,0],[0,0],[0,0],[0,0,false]]];
 rmx_var_afLoadSave = profileNamespace getVariable ["rmx_var_afLoadSave",[["Nothing saved",[]]]];
