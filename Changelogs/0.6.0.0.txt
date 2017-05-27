@@ -15,7 +15,7 @@ Debris is spawned using createSimpleObject and is made to conform with the upper
 
 [Fixed] BE kick since 1.70.
 
-[Changed] Reworked Basebuilding Script. @DirtySanches & @Ignatz-Heman
+[Changed] Reworked Basebuilding Script. @DirtySanchez & @Ignatz-Heman
 	- Added Vecorbuilding
 	- Added: Building element can be detached to walk around the Element before saving
 	- Added: Help-Arrow to indicate door-opening direction
