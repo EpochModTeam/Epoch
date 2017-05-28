@@ -23,4 +23,4 @@ Debris is spawned using createSimpleObject and is made to conform with the upper
 	- Added: Max building height now will be checked direcly by building element placement
 	- Changed: Replaced 0/90/180/270° direction build mode with "Rotate 90°"
 	- Fixed: 90° and 270° Snap was broken
-	- Fixed: Sometimes rotated elements rotate back on save
+	- Fixed: Sometimes Snapped elements rotate back on save
