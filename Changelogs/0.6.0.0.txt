@@ -18,6 +18,7 @@ Debris is spawned using createSimpleObject and is made to conform with the upper
 [Changed] Reworked Basebuilding Script. @DirtySanchez & @Ignatz-Heman
 	- Added Vecorbuilding (with arrow keys by default)
 	- Added: Building element can be detached to walk around the Element before saving
+	- Added: With SHIFT / ALT you can control the steps of building placement while building
 	- Added: Help-Arrow to indicate door-opening direction
 	- Added: Max building height now will be checked direcly by building element placement
 	- Changed: Replaced 0/90/180/270° direction build mode with "Rotate 90°"
