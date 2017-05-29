@@ -46,7 +46,12 @@ _keyMap =
 	["Build: Move LEFT", "EPOCH_keysBuildMovL", 0xD2],
 	["Build: Move RIGHT", "EPOCH_keysBuildMovR", 0xD3],
 	["Build: Rotate LEFT", "EPOCH_keysBuildRotL", 0x12],
-	["Build: Rotate RIGHT", "EPOCH_keysBuildRotR", 0x10]
+	["Build: Rotate RIGHT", "EPOCH_keysBuildRotR", 0x10],
+	["Build: Vector LEFT", "eXpoch_keysVectorTiltL", 0xCB],
+	["Build: Vector RIGHT", "eXpoch_keysVectorTiltR", 0xCD],
+	["Build: Vector AWAY", "eXpoch_keysVectorTiltAwy", 0xC8],
+	["Build: Vector TOWARD", "eXpoch_keysVectorTiltTwd", 0xD0],
+	["Build: Reset Object", "eXpoch_keysVectorResetObject", 0x4C]
 ];
 
 _keyMap call EPOCH_custom_KeyMap;

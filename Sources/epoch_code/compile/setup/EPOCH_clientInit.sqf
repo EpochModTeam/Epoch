@@ -23,6 +23,9 @@
 */
 EPOCH_buildMode = 0;
 EPOCH_buildDirection = 0;
+EPOCH_buildDirectionPitch = 0;
+EPOCH_buildDirectionRoll = 0;
+EPOCH_target_attachedTo = player;
 EPOCH_debugMode = false;
 EPOCH_snapDirection = 0;
 EPOCH_stabilityTarget = objNull;
