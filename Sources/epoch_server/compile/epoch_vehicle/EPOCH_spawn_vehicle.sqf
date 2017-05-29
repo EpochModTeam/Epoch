@@ -21,6 +21,8 @@ _serverSettingsConfig = configFile >> "CfgEpochServer";
 _removeweapons = [_serverSettingsConfig, "removevehweapons", []] call EPOCH_fnc_returnConfigEntry;
 _removemagazinesturret = [_serverSettingsConfig, "removevehmagazinesturret", []] call EPOCH_fnc_returnConfigEntry;
 _vehObj = createVehicle[_vehClass, _position, [], 0, _can_collide];
+// turn off BIS randomization
+_vehObj setVariable ["BIS_enableRandomization", false];
 if !(isNull _vehObj) then{
 	_vehObj call EPOCH_server_setVToken;
 	// Set Direction and position

@@ -72,9 +72,11 @@ for "_i" from 1 to _maxVehicleLimit do {
 
 					// spawn vehicle at temp location.
 					_vehicle = createVehicle [_class, _location, [], 0, "CAN_COLLIDE"];
+					// turn off BIS randomization
+					_vehicle setVariable ["BIS_enableRandomization", false];
 					if !(isNull _vehicle) then {
 						// make vehicle immune from damage.
-						_vehicle allowDamage false;
+						_vehicle allowDamage false;	
 						// store spawned vehicles in array to make one call to remains handler
 						_allVehicles pushBack _vehicle;
 						// remove selected slot from array and set on vehicle
