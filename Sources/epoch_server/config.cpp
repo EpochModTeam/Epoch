@@ -131,5 +131,5 @@ class CfgServerVersion
 {
 	client = "0.5.0.0";
 	config = "0.5.0.0";
-	hive = "0.5.1.8";
+	hive = "0.6.0.0";
 };
