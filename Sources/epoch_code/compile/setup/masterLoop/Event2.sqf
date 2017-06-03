@@ -79,17 +79,21 @@ if !(_attackers isEqualTo[]) then {
 call EPOCH_fnc_Weather;
 
 // Hunger / Thirst
-_HTlossRate = _baseHTLoss;
+_hungerlossRate = _baseHungerLoss * timeMultiplier;
+_thirstlossRate = _baseThirstLoss * timeMultiplier;
+
+// Increase hunger if player is Fatigued
 if (EPOCH_playerStamina < 100) then {
 	if ((getFatigue player) > 0) then {
-		_HTlossRate = _HTlossRate + (_HTlossRate*(getFatigue player));
+		_hungerlossRate = _hungerlossRate + (_hungerlossRate*(getFatigue player));
 	};
 } else {
-	_HTlossRate = (_HTlossRate / 2);
+    // reduce hunger loss if player stamina is greater than 100
+	_hungerlossRate = (_hungerlossRate / 2);
 };
 
-EPOCH_playerHunger = (EPOCH_playerHunger - _HTlossRate) max 0;
-EPOCH_playerThirst = (EPOCH_playerThirst - _HTlossRate) max 0;
+EPOCH_playerHunger = (EPOCH_playerHunger - _hungerlossRate) max 0;
+EPOCH_playerThirst = (EPOCH_playerThirst - _thirstlossRate) max 0;
 
 call _lootBubble;
 

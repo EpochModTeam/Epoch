@@ -20,6 +20,9 @@ class CfgEpochClient
     droneRngChance = 100; // increase number to reduce chances and reduce to increase. Default 100
     zombieRngChance = 50; // increase number to reduce chances and reduce to increase. Default 50
 
+    baseHungerLoss = 2; // increase number to speed up rate of Hunger loss
+    baseThirstLoss = 2; // increase number to speed up rate of Thirst loss
+
     buildingNearbyMilitary = 0; //1 to allow building nearby
     buildingNearbyMilitaryRange = 300; //Define radius of blocked area
     buildingNearbyMilitaryClasses[] = {"Cargo_Tower_base_F","Cargo_HQ_base_F","Cargo_Patrol_base_F","Cargo_House_base_F"};

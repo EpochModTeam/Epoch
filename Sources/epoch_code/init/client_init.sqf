@@ -62,10 +62,6 @@ rmx_var_dynamicHUD_groupCTRL = [];
 
 ["EPOCH_onEachFrame", "onEachFrame", EPOCH_onEachFrame] call BIS_fnc_addStackedEventHandler;
 
-EPOCH_droneRndChance = 100;
-EPOCH_sapperRndChance = 100;
-EPOCH_zombieRngChance = 50;
-
 // Custom Keys
 EPOCH_keysActionPressed = false; //prevents EH spam
 0 call EPOCH_clientKeyMap;

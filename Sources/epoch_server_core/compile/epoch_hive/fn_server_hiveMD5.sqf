@@ -12,6 +12,14 @@
 
     Github:
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server_core/compile/epoch_hive/fn_server_hiveMD5.sqf
+
+    Usage Examples:
+    _hash = "Hello World" call EPOCH_fnc_server_hiveMD5;
+    // _hash = "b10a8db164e0754105b7a99be72e3fe5"
+    or multiple:
+    _hashes = ["Hello World","Lorem Ipsum"] call EPOCH_fnc_server_hiveMD5;
+    // _hashes = ["b10a8db164e0754105b7a99be72e3fe5", "6dbd01b4309de2c22b027eb35a3ce18b"]
+    
 */
 params ["_val"];
 if (_this isEqualType []) then {

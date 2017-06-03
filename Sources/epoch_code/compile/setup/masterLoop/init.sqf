@@ -19,10 +19,11 @@ _panic = false;
 _prevEnergy = EPOCH_playerEnergy;
 
 // init config data
-EPOCH_sapperRndChance = ["CfgEpochClient", "sapperRngChance", 100] call EPOCH_fnc_returnConfigEntryV2;
-EPOCH_zombieRngChance = ["CfgEpochClient", "zombieRngChance", 50] call EPOCH_fnc_returnConfigEntryV2;
-EPOCH_droneRndChance = ["CfgEpochClient", "droneRngChance", 100] call EPOCH_fnc_returnConfigEntryV2;
-_baseHTLoss = ["CfgEpochClient", "baseHTLoss", 8] call EPOCH_fnc_returnConfigEntryV2;
+_sapperRndChance = ["CfgEpochClient", "sapperRngChance", 100] call EPOCH_fnc_returnConfigEntryV2;
+_zombieRngChance = ["CfgEpochClient", "zombieRngChance", 50] call EPOCH_fnc_returnConfigEntryV2;
+_droneRndChance = ["CfgEpochClient", "droneRngChance", 100] call EPOCH_fnc_returnConfigEntryV2;
+_baseHungerLoss = ["CfgEpochClient", "baseHungerLoss", 2] call EPOCH_fnc_returnConfigEntryV2;
+_baseThirstLoss = ["CfgEpochClient", "baseThirstLoss", 2] call EPOCH_fnc_returnConfigEntryV2;
 _energyCostNV = ["CfgEpochClient", "energyCostNV", 3] call EPOCH_fnc_returnConfigEntryV2;
 _energyRegenMax = ["CfgEpochClient", "energyRegenMax", 5] call EPOCH_fnc_returnConfigEntryV2;
 _energyRange = ["CfgEpochClient", "energyRange", 75] call EPOCH_fnc_returnConfigEntryV2;
@@ -140,13 +141,13 @@ _EPOCH_BuildTraderMisson = {
 	_taskTitle = getText ( _inGameTasksconfig >> _taskName >> "title");
 	_taskSQF = getText ( _inGameTasksconfig >> _taskName >> "initsqf");
 	if !(_taskSQF isequalto '') then {
-		call compile format ["[_taskName,player,_unit,_taskItem] execVM ""%1""",_taskSQF];	
+		call compile format ["[_taskName,player,_unit,_taskItem] execVM ""%1""",_taskSQF];
 	};
 	_taskCall = getText ( _inGameTasksconfig >> _taskName >> "initcall");
 	if !(_taskCall isequalto '') then {
 		call compile _taskCall;
 	};
-	
+
 	_taskDelay = diag_ticktime + (getNumber ( _inGameTasksconfig >> _taskName >> "triggerDelay"));
 	_triggerintervall = getNumber ( _inGameTasksconfig >> _taskName >> "triggerintervall");
 	_taskItems = getArray ( _inGameTasksconfig >> _taskName >> "items");
@@ -179,7 +180,7 @@ _EPOCH_BuildTraderMisson = {
 		if(_taskMarkerType == 2)then{
 			_markerPos set [0, (_markerPos select 0) + (floor (random _taskMarkerRad) - (_taskMarkerRad / 2))];
 			_markerPos set [1, (_markerPos select 1) + (floor (random _taskMarkerRad) - (_taskMarkerRad / 2))];
-		};		
+		};
 		[[_taskMarkerVis,player],_markerPos,"ELLIPSE","mil_dot",_taskMarkerText,"ColorYellow",[_taskMarkerRad,_taskMarkerRad], "SolidBorder", 42, 0.6,_mkrName] remoteExec ["EPOCH_server_makeMarker",2];
 	};
 	_taskDialogues = [];
@@ -203,13 +204,13 @@ _EPOCH_BuildTraderMisson = {
 	_taskFailedSQF = getText ( _inGameTasksconfig >> _taskName >> "failedSQF");
 	_taskFailedCall = compile getText ( _inGameTasksconfig >> _taskName >> "failedCall");
 	_nextTask = getArray ( _inGameTasksconfig >> _taskName >> "failedTask");
-	
+
 	_taskCompleteCond = compile getText ( _inGameTasksconfig >> _taskName >> "completeCondition");
 	_taskReward = getArray ( _inGameTasksconfig >> _taskName >> "reward");
 	_taskCompleteDiags = getArray ( _inGameTasksconfig >> _taskName >> "completedialogues");
 	_taskCompleteCall = compile getText ( _inGameTasksconfig >> _taskName >> "completedCALL");
 	_taskNextTrigger = getArray ( _inGameTasksconfig >> _taskName >> "nextTask");
-	
+
 	_missionCleanUpCall = compile getText ( _inGameTasksconfig >> _taskName >>  "cleanUpCall");
 	_taskCleanup = getNumber ( _inGameTasksconfig >> _taskName >>  "cleanUp");
 	_return = [

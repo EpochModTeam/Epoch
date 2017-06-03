@@ -1,35 +1,22 @@
-== WIP ==
-[Added] Md5 hash function 840 to hive. See use example with EPOCH_fnc_server_hiveMD5 SQF function.
-    Usage Examples:
-    _hash = "Hello World" call EPOCH_fnc_server_hiveMD5;
-    // _hash = "b10a8db164e0754105b7a99be72e3fe5"
-    or multiple:
-    _hashes = ["Hello World","Lorem Ipsum"] call EPOCH_fnc_server_hiveMD5;
-    // _hashes = ["b10a8db164e0754105b7a99be72e3fe5", "6dbd01b4309de2c22b027eb35a3ce18b"]
+## [0.6.0.0] - TBA
+### Added
+- Vector Base Building (uses Arrow keys by default and with SHIFT / ALT you can control the steps). @DirtySanchez & @Ignatz-Heman
+- Base Building elements can be detached to walk around the Element before saving. @Ignatz-Heman
+- Helper arrow to indicate door-opening direction for Base Building. @Ignatz-Heman
+- Option to drink directly from water sources. @Ignatz-HeMan
+- Epoch Events 3.0: Allow external events based on server side configs and pbos. New server side events can be added just dropping the pbo into @epochhive/addons folder. To make your own use Dynamic Debris Event as a template.
+- Dynamic Debris: Dynamically spawns vehicle and other debris on the roadways. Scans the roads on startup and uses a random seed generator to determine the locations of debris. Debris is spawned using createSimpleObject for best performance and is made to conform with the upper most roadway surface.
+- Epoch Dev Libs, See https://github.com/EpochModTeam/Epoch/tree/experimental/Tools/DevFrameWork for more info. @raymix
+- Md5 hash function and Unit test to hive. See usage example with EPOCH_fnc_server_hiveMD5 SQF function.
 
-[Added] Option to drink from predetermined sources. @Ignatz-HeMan
+### Fixed
+- Base Building 90° and 270° Snap was broken.
+- Sometimes snapped Base Building elements rotated back on save.
+- BE kick since 1.70.
 
-[Added] Epoch Events 3.0: Allow external events based on server side configs and pbos.
-
-New server side events can be added just dropping the pbo into @epochhive/addons folder.
-To make your own use Dynamic Debris Event as a template.
-
-[Added] Dynamic Debris Epoch Event. Dynamically spawns vehicle and other debris on the roadways.
-Scans the roads on startup and uses a random seed generator to determine the locations of debris.
-Debris is spawned using createSimpleObject and is made to conform with the upper most roadway surface.
-
-[Added] Epoch Dev Libs by @raymix
-
-[Fixed] BE kick since 1.70.
-
-[Changed] Reworked Basebuilding Script. @DirtySanchez & @Ignatz-Heman
-	- Added Vecorbuilding (with arrow keys by default)
-	- Added: Building element can be detached to walk around the Element before saving
-	- Added: With SHIFT / ALT you can control the steps of building placement while building
-	- Added: Help-Arrow to indicate door-opening direction
-	- Added: Max building height now will be checked direcly by building element placement
-	- Changed: Replaced 0/90/180/270° direction build mode with "Rotate 90°"
-	- Fixed: 90° and 270° Snap was broken
-	- Fixed: Sometimes Snapped elements rotate back on save
-
-[Info] Server requires epochserver(_x64).dll/so hive extension updates.
+### Changed
+- Base Building: Replaced 0/90/180/270° direction build mode with "Rotate 90°". @Ignatz-Heman
+- Base Building: Max building height now will be checked directly at building element placement. @Ignatz-Heman
+- Separated Hunger and Thirst loss values to baseHungerLoss/baseThirstLoss and removed baseHTLoss from CfgEpochClient.
+- Hunger and Thirst loss rates are now effected by timeMultiplier.
+- Bump to hive version 0.6.0.0, Note: this requires epochserver(_x64).dll/so hive extension updates server side.
