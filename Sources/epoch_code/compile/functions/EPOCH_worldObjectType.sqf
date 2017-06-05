@@ -43,6 +43,7 @@ if (_object isEqualType objNull) then {
     };
 
 } else {
+    // find start of p3d name - OLD UNUSED TBR
     _findStart = _object find ": ";
     if (_findStart != -1) then{
         _start = _findStart + 2;
