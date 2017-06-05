@@ -94,7 +94,7 @@ class base_mode_attach
 };
 class Drink
 {
-	condition = "_config = 'CfgEpochClient' call EPOCH_returnConfig;_configWorldInteractions = (_config >> 'CfgWorldInteractions');_nearObjects = nearestObjects [player, [], 2];_check = 'water';_ok = false;{if (alive _x) then {if !(_x isKindOf 'All') then {_ok = [str(_x), _check] call EPOCH_worldObjectType;}else {_ok = (getNumber(_configWorldInteractions >> (typeOf _x) >> _check) == 1);};};if (_ok) exitWith {};} forEach _nearObjects;_ok";
+	condition = "_nearObjects = nearestObjects [player, [], 2];_check = 'water';_ok = false;{if (alive _x) then {_ok = [_x, _check] call EPOCH_worldObjectType;};if (_ok) exitWith {};} forEach _nearObjects;_ok";
 	action = "if (currentweapon player == '') then {player playmove 'AinvPknlMstpSnonWnonDnon_Putdown_AmovPknlMstpSnonWnonDnon';}else {if (currentweapon player == handgunweapon player) then {player playmove 'AinvPknlMstpSrasWpstDnon_Putdown_AmovPknlMstpSrasWpstDnon';}else {	player playmove 'AinvPknlMstpSrasWrflDnon_Putdown_AmovPknlMstpSrasWrflDnon';};};{_output = _x call EPOCH_giveAttributes;if (_output != '') then {[_output, 5] call Epoch_message;};} foreach [['Toxicity',4,1],['Stamina',10],['Thirst',100]];";
 	icon = "epoch_code\customs\Drink.paa";	// On release change to: "x\addons\a3_epoch_code\Data\UI\buttons\Drink.paa"
 	tooltip = "Drink";

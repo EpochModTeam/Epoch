@@ -13,41 +13,59 @@
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_code/compile/functions/EPOCH_worldObjectType.sqf
 
     Example:
-    _isTree = [_objectString, "tree"] call EPOCH_worldObjectType;
+    _isTree = [_object, "tree"] call EPOCH_worldObjectType;
 
     Parameter(s):
-		_this select 0: STRING - string name of world object
+		_this select 0: STRING or OBJECT - string name or world object
 		_this select 1: STRING or ARRAY - type names ("tree","bush")
 
 	Returns:
 	BOOL or ARRAY of BOOLs
 */
 //[[[cog import generate_private_arrays ]]]
-private ["_config","_end","_finalConfig","_findStart","_isTree","_p3dName","_return","_start"];
+private ["_config","_end","_finalConfig","_findStart","_isTree","_modelInfo","_p3dName","_return","_selectedConfig","_start"];
 //[[[end]]]
-params ["_str","_checkType"];
+params ["_object","_checkType"];
 _return = false;
-_config = 'CfgEpochClient' call EPOCH_returnConfig;
-// find start of p3d name
-_findStart = _str find ": ";
-if (_findStart != -1) then{
-    _start = _findStart + 2;
-    _end = (_str find ".") - _start;
-    _p3dName = _str select[_start, _end];
+_config = ('CfgEpochClient' call EPOCH_returnConfig) >> "CfgWorldInteractions";
 
-    // replace spaces with underscores
-    if (_p3dName find " " != -1) then {
-        (_p3dName splitString " ") joinString "_";
-    };
-    _finalConfig = (_config >> "CfgWorldInteractions" >> (_p3dName + "_p3d"));
+_selectedConfig = "";
+if (_object isEqualType objNull) then {
 
-    if (_checkType isEqualType []) then {
-        _return = [];
-        {
-            _return pushBack (getNumber(_finalConfig >> _x) == 1);
-        } forEach _checkType;
+    if !(_object isKindOf "All") then {
+        _modelInfo = getModelInfo _object;
+        _p3dName = _modelInfo select 0;
+        // replace spaces and periods with underscores
+        (_p3dName splitString " .") joinString "_";
+        _selectedConfig = _p3dName;
     } else {
-        _return = (getNumber(_finalConfig >> _checkType) == 1);
+        _selectedConfig = typeOf _object;
+    };
+
+} else {
+    _findStart = _object find ": ";
+    if (_findStart != -1) then{
+        _start = _findStart + 2;
+        _end = (_object find ".") - _start;
+        _p3dName = _object select[_start, _end];
+        // replace spaces with underscores
+        if (_p3dName find " " != -1) then {
+            (_p3dName splitString " ") joinString "_";
+        };
+        _selectedConfig = _p3dName + "_p3d";
     };
 };
+
+
+// Do checks
+_finalConfig = (_config >> _selectedConfig);
+if (_checkType isEqualType []) then {
+    _return = [];
+    {
+        _return pushBack (getNumber(_finalConfig >> _x) == 1);
+    } forEach _checkType;
+} else {
+    _return = (getNumber(_finalConfig >> _checkType) == 1);
+};
+
 _return
