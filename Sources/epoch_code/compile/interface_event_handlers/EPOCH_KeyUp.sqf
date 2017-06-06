@@ -31,6 +31,10 @@ private ["_handled"];
 params ["_display","_dikCode","_shift","_ctrl","_alt"];
 _handled = false;
 
+if (!isnull (finddisplay -1200) || !isnull (finddisplay -1300) || !isnull (finddisplay -1400)) then {
+	_handled = true;
+};
+
 _this call Epoch_custom_EH_KeyUp;
 if (_handled) exitWith{ true };
 
