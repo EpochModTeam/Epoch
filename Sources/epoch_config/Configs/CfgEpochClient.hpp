@@ -107,6 +107,7 @@ class CfgEpochClient
     #include "CfgEpochClient\vr.hpp"
     #include "CfgEpochClient\Zargabad.hpp"
     #include "CfgEpochClient\Tanoa.hpp"
+    #include "CfgEpochClient\Malden.hpp"
     #include "CfgEpochClient\WorldInteractions.hpp"
 };
 class CfgEpochSoldier

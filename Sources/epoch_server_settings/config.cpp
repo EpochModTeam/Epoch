@@ -273,4 +273,5 @@ class CfgEpoch
 	#include "configs\maps\Woodland_ACR.h"
 	#include "configs\maps\Napf.h"
 	#include "configs\maps\tanoa.h"
+    #include "configs\maps\Malden.h"
 };
