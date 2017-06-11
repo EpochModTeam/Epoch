@@ -1,6 +1,6 @@
 ## [0.6.0.0] - TBA
 ### Added
-- Support for Malden 2035.
+- Initial support for Malden 2035 map released with A3 1.72+.
 - Vector Base Building (uses Arrow keys by default and with SHIFT / ALT you can control the steps). @DirtySanchez & @Ignatz-Heman
 - Base Building elements can be detached to walk around the Element before saving. @Ignatz-Heman
 - Helper arrow to indicate door-opening direction for Base Building. @Ignatz-Heman

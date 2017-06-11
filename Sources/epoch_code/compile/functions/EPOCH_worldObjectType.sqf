@@ -30,11 +30,11 @@ _return = false;
 _config = ('CfgEpochClient' call EPOCH_returnConfig) >> "CfgWorldInteractions";
 
 _selectedConfig = "";
-if (_object isEqualType objNull) then {
+if (_object isEqualType objNull && !(isNull _object)) then {
     if !(_object isKindOf "All") then {
-        _modelInfo = getModelInfo _object;
+        (getModelInfo _object) params [["_modelName",""]];
         // replace spaces and periods with underscores
-        _selectedConfig = ((_modelInfo select 0) splitString " .") joinString "_";
+        _selectedConfig = (_modelName splitString " .") joinString "_";
     } else {
         _selectedConfig = typeOf _object;
     };
