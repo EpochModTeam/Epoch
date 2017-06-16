@@ -1329,7 +1329,7 @@ _skn_admincode = compileFinal ("
 							getText (configFile >> 'CfgVehicles' >> 'PlotPole_Epoch' >> 'displayName')
 						];
 					};
-				} forEach ((getpos player) nearObjects ['NonStrategic', (worldSize/2)]);
+				} forEach ((epoch_centerMarkerPosition) nearObjects ['NonStrategic',(EPOCH_dynamicVehicleArea)]);
 			};
 			if ("+_skn_tg_old_espMap+") then {
 				{
