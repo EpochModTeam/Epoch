@@ -1323,13 +1323,11 @@ _skn_admincode = compileFinal ("
 			if ("+_skn_tg_map_basebuilding+") then {
 				_size = (1/ctrlMapScale _display) max 20;
 				{
-					if (_x isKindOf 'PlotPole_Epoch') then {
-						_display drawIcon [
-							getText (configFile >> 'CfgVehicles' >> 'PlotPole_Epoch' >> 'Icon'), _x call _getDmgColor, visiblePosition _x, _size, _size, getDir _x,
-							getText (configFile >> 'CfgVehicles' >> 'PlotPole_Epoch' >> 'displayName')
-						];
-					};
-				} forEach ((epoch_centerMarkerPosition) nearObjects ['NonStrategic',(EPOCH_dynamicVehicleArea)]);
+					_display drawIcon [
+						getText (configFile >> 'CfgVehicles' >> 'PlotPole_Epoch' >> 'Icon'), _x call _getDmgColor, visiblePosition _x, _size, _size, getDir _x,
+						getText (configFile >> 'CfgVehicles' >> 'PlotPole_Epoch' >> 'displayName')
+					];
+				} forEach ((epoch_centerMarkerPosition) nearObjects ['PlotPole_Epoch',(EPOCH_dynamicVehicleArea)]);
 			};
 			if ("+_skn_tg_old_espMap+") then {
 				{
