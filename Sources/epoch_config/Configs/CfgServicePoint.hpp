@@ -1,6 +1,25 @@
 class CfgServicePoint {
 	class Altis {
 		ServicePoints[] =	{	// Array of coords for ServicePoints
+/* 								{pos1},
+								{pos1}
+								OR
+								{
+									pos,
+									dist,
+									{VehType_1,VehType_1,...},
+									"Markername",
+									"Markertype"
+								},
+								{
+									pos,
+									dist,
+									{VehType_1,VehType_1,...},
+									"Markertype",
+									"MarkerColor",
+									"MarkerText"
+								}
+*/
 								{13325,14477,0}
 							};
 	};
