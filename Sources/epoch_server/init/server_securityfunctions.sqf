@@ -406,7 +406,7 @@ for "_i" from 1 to 3 do {
 		};
 		if ("MAP-BASEBUILDING" in _case) then {
 			_temp = _temp + "
-				,['  Base Building Marker (WIP)', [], {"+_skn_tg_map_basebuilding+" = !"+_skn_tg_map_basebuilding+"; ['Base Building MARKER',if ("+_skn_tg_map_basebuilding+") then [{2},{1}]] call "+_skn_adminLog_PVC+"}, '2', []]
+				,['  Base Building Marker', [], {"+_skn_tg_map_basebuilding+" = !"+_skn_tg_map_basebuilding+"; ['Base Building MARKER',if ("+_skn_tg_map_basebuilding+") then [{2},{1}]] call "+_skn_adminLog_PVC+"}, '2', []]
 			";
 		};
 	};
@@ -1321,7 +1321,13 @@ _skn_admincode = compileFinal ("
 				}forEach agents;
 			};
 			if ("+_skn_tg_map_basebuilding+") then {
-
+				_size = (1/ctrlMapScale _display) max 20;
+				{
+					_display drawIcon [
+						getText (configFile >> 'CfgVehicles' >> 'PlotPole_Epoch' >> 'Icon'), _x call _getDmgColor, visiblePosition _x, _size, _size, getDir _x,
+						getText (configFile >> 'CfgVehicles' >> 'PlotPole_Epoch' >> 'displayName')
+					];
+				} forEach ((epoch_centerMarkerPosition) nearObjects ['PlotPole_Epoch',(EPOCH_dynamicVehicleArea)]);
 			};
 			if ("+_skn_tg_old_espMap+") then {
 				{
