@@ -1,7 +1,35 @@
 class CfgServicePoint {
 	class Altis {
 		ServicePoints[] =	{	// Array of coords for ServicePoints
-								{13325,14477,0}
+/*
+								{pos1},
+								{pos2}
+								OR
+								{
+									pos1,
+									dist1,
+									{VehType_1,VehType_1,...},
+									"Markertype1",
+									"MarkerColor1",
+									"MarkerText1"
+								},
+								{
+									pos2,
+									dist2,
+									{VehType,VehType,...},
+									"Markertype2",
+									"MarkerColor2",
+									"MarkerText2"
+								}
+*/
+								{								// Central
+									{13325,14477,0},						// Pos
+									40,										// max distance
+									{"Landvehicle","Ship","Tank","AIR"},			// Vehicle Types for SP
+									"loc_BusStop",							// Marker Type
+									"ColorWhite",							// Marker Color
+									"Service Point Land / Ship / Air"				// Marker Text
+								}
 							};
 	};
 	class Tanoa {
@@ -24,7 +52,7 @@ class CfgServicePoint {
 
 							};
 	};
-	ServicePointClasses[] = {	// Array of Classnames, where also are ServicePoints
+	ServicePointClasses[] = {	// Array of Classnames where also are ServicePoints (not separat configurable for Vehicle types / distance)
 //								"Land_Pillar_Pier_F",
 //								"Land_CarService_F",
 //								"Land_fs_feed_F",
