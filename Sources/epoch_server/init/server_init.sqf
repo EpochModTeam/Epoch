@@ -13,7 +13,7 @@
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server/init/server_init.sqf
 */
 //[[[cog import generate_private_arrays ]]]
-private ["_ReservedSlots","_SideHQ1","_SideHQ2","_SideHQ3","_abortAndError","_allowedVehicleIndex","_allowedVehicleListName","_allowedVehiclesList","_allowedVehiclesListArray","_cfgServerVersion","_channelColor","_channelNumber","_channelTXT","_clientVersion","_config","_configSize","_configVersion","_date","_dateChanged","_epochConfig","_epochWorldPath","_existingStock","_hiveVersion","_index","_indexStock","_instanceID","_marker","_radio","_response","_sapper","_serverConfig","_serverSettingsConfig","_servicepoints","_startTime","_staticDateTime","_timeDifference","_vehicleCount","_vehicleSlotLimit","_worldSize"];
+private ["_ReservedSlots","_SideHQ1","_SideHQ2","_SideHQ3","_abortAndError","_allowedVehicleIndex","_allowedVehicleListName","_allowedVehiclesList","_allowedVehiclesListArray","_cfgServerVersion","_channelColor","_channelNumber","_channelTXT","_clientVersion","_config","_configSize","_configVersion","_date","_dateChanged","_epochConfig","_epochWorldPath","_existingStock","_hiveVersion","_index","_indexStock","_instanceID","_marker","_radio","_response","_sapper","_serverConfig","_serverSettingsConfig","_servicepoints","_startTime","_staticDateTime","_timeDifference","_vehicleCount","_vehicleSlotLimit","_worldSize","_pumps","_allPumps"];
 //[[[end]]]
 _startTime = diag_tickTime;
 missionNamespace setVariable ['Epoch_ServerVersion', getText(configFile >> "CfgMods" >> "Epoch" >> "version"), true];
@@ -258,6 +258,11 @@ _servicepoints = getArray (_config >> worldname >> 'ServicePoints');
 		};
 	};
 } forEach _ServicePoints;
+
+// Remove Auto-Refuel from Altis/Stratis/Tanoa/(Malden 2035?)
+_pumps = ['Land_fs_feed_F','Land_FuelStation_Feed_F','Land_FuelStation_01_pump_F','Land_FuelStation_02_pump_F'];
+_allPumps = ((epoch_centerMarkerPosition) nearObjects ['House',(EPOCH_dynamicVehicleArea)]) select {(typeOf _x in _pumps) AND {getFuelCargo _x > 0}};
+{_x setFuelCargo 0;} foreach _allPumps;
 
 // set time multiplier
 setTimeMultiplier ([_serverSettingsConfig, "timeMultiplier", 1] call EPOCH_fnc_returnConfigEntry);
