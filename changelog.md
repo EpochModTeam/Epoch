@@ -4,6 +4,7 @@ All changes for [Arma 3](https://arma3.com/) [Epoch Mod](https://epochmod.com) a
 ## [Unreleased]
 ### Added
 - Initial support for Malden 2035 map released with A3 1.72+.
+- Base PlotPole ESP added to EpochAH. @SMVampire
 - Vector Base Building (uses Arrow keys by default and with SHIFT / ALT you can control the steps). @DirtySanchez & @Ignatz-Heman
 - Base Building elements can be detached to walk around the Element before saving. @Ignatz-Heman
 - Helper arrow to indicate door-opening direction for Base Building. @Ignatz-Heman
@@ -12,16 +13,19 @@ All changes for [Arma 3](https://arma3.com/) [Epoch Mod](https://epochmod.com) a
 - Dynamic Debris: Dynamically spawns vehicle and other debris on the roadways. Scans the roads on startup and uses a random seed generator to determine the locations of debris. Debris is spawned using createSimpleObject for best performance and is made to conform with the uppermost roadway surface.
 - Epoch Dev Libs, See https://github.com/EpochModTeam/Epoch/tree/experimental/Tools/DevFrameWork for more info. @raymix
 - Md5 hash function and Unit test to the hive. See usage example with EPOCH_fnc_server_hiveMD5 SQF function.
-### Fixed
-- Base Building 90° and 270° Snap was broken.
-- Sometimes snapped Base Building elements rotated back on save.
-- BE kick since 1.70.
 ### Changed
+- Made ServicePoint more configurable @Ignatz-Heman
 - Base Building: Replaced 0/90/180/270° direction build mode with "Rotate 90°". @Ignatz-Heman
 - Base Building: Max building height now will be checked directly at building element placement. @Ignatz-Heman
 - Separated Hunger and Thirst loss values to baseHungerLoss/baseThirstLoss and removed baseHTLoss from CfgEpochClient.
 - Hunger and Thirst loss rates are now effected by timeMultiplier.
-- Bump to hive version 0.6.0.0, Note: this requires epochserver(_x64).dll/so hive extension updates server side.
+- Bump to hive version 0.6.0.0, Note: this requires epochserver hive extension updates server side.
+- Disable Gas Station Auto-Refuel on server startup. Use disableAutoRefuel = false; via epochconfig.hpp to disable. @SMVampire
+### Fixed
+- Zombie falsely triggers Mission success @Ignatz-Heman
+- Base Building 90° and 270° Snap was broken.
+- Sometimes snapped Base Building elements rotated back on save.
+- BE kick since 1.70.
 
 ## [0.5.0.0] - 2017-03-17
 ### Added

@@ -81,6 +81,7 @@ weaponsAndItems[] =			{
 };
 
 // vehicles - Max vehicle slots is calculated from per vehicle limits below. Warning! Higher the number lower the performance.
+disableAutoRefuel = "true"; // Removes auto refuel from all buildings at server startup.
 simulationHandlerOld = "false"; // When enabled this feature disables simulation on vehicles that are not nea players. Can help improve client fps at the cost of server fps.
 vehicleLockTime = 1800; // Controls how many seconds it takes to allow another person/group to unlock vehicle.
 removevehweapons[] = {			// remove these Weapons from spawned Vehicles

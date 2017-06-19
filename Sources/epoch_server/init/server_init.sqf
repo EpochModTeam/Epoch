@@ -260,7 +260,9 @@ _servicepoints = getArray (_config >> worldname >> 'ServicePoints');
 } forEach _ServicePoints;
 
 // Remove Auto-Refuel from all maps
-{_x setFuelCargo 0;} foreach ((epoch_centerMarkerPosition nearObjects ['Building',EPOCH_dynamicVehicleArea]) select {getFuelCargo _x > 0});
+if ([_serverSettingsConfig, "disableAutoRefuel", true] call EPOCH_fnc_returnConfigEntry) then {
+    {_x setFuelCargo 0;} foreach ((epoch_centerMarkerPosition nearObjects ['Building',EPOCH_dynamicVehicleArea]) select {getFuelCargo _x > 0});
+};
 
 // set time multiplier
 setTimeMultiplier ([_serverSettingsConfig, "timeMultiplier", 1] call EPOCH_fnc_returnConfigEntry);
