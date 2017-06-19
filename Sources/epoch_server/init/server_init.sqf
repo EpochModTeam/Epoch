@@ -13,7 +13,7 @@
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server/init/server_init.sqf
 */
 //[[[cog import generate_private_arrays ]]]
-private ["_ReservedSlots","_SideHQ1","_SideHQ2","_SideHQ3","_abortAndError","_allowedVehicleIndex","_allowedVehicleListName","_allowedVehiclesList","_allowedVehiclesListArray","_cfgServerVersion","_channelColor","_channelNumber","_channelTXT","_clientVersion","_config","_configSize","_configVersion","_date","_dateChanged","_epochConfig","_epochWorldPath","_existingStock","_hiveVersion","_index","_indexStock","_instanceID","_marker","_radio","_response","_sapper","_serverConfig","_serverSettingsConfig","_servicepoints","_startTime","_staticDateTime","_timeDifference","_vehicleCount","_vehicleSlotLimit","_worldSize","_pumps","_allPumps"];
+private ["_ReservedSlots","_SideHQ1","_SideHQ2","_SideHQ3","_abortAndError","_allowedVehicleIndex","_allowedVehicleListName","_allowedVehiclesList","_allowedVehiclesListArray","_cfgServerVersion","_channelColor","_channelNumber","_channelTXT","_clientVersion","_config","_configSize","_configVersion","_date","_dateChanged","_epochConfig","_epochWorldPath","_existingStock","_hiveVersion","_index","_indexStock","_instanceID","_marker","_markercolor","_markertxt","_markertype","_pos","_radio","_response","_sapper","_serverConfig","_serverSettingsConfig","_servicepoints","_startTime","_staticDateTime","_timeDifference","_vehicleCount","_vehicleSlotLimit","_worldSize"];
 //[[[end]]]
 _startTime = diag_tickTime;
 missionNamespace setVariable ['Epoch_ServerVersion', getText(configFile >> "CfgMods" >> "Epoch" >> "version"), true];
