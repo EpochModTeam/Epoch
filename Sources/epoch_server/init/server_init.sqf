@@ -261,7 +261,7 @@ _servicepoints = getArray (_config >> worldname >> 'ServicePoints');
 
 // Remove Auto-Refuel from Altis/Stratis/Tanoa/(Malden 2035?)
 _pumps = ['Land_fs_feed_F','Land_FuelStation_Feed_F','Land_FuelStation_01_pump_F','Land_FuelStation_02_pump_F'];
-_allPumps = (epoch_centerMarkerPosition nearObjects EPOCH_dynamicVehicleArea) select {(getFuelCargo _x > 0) AND (typeOf _x in _pumps)};
+_allPumps = ((epoch_centerMarkerPosition) nearObjects ['House',(EPOCH_dynamicVehicleArea)]) select {(typeOf _x in _pumps) AND {getFuelCargo _x > 0}};
 {_x setFuelCargo 0;} foreach _allPumps;
 
 // set time multiplier
