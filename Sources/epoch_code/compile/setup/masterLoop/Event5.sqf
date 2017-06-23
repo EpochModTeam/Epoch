@@ -6,7 +6,7 @@ EPOCH_playerIsSwimming = false;
 
 if !(surfaceIsWater _position) then {
 	if (EPOCH_nearestLocations isEqualTo []) then{
-		if (count(_position nearEntities["Animal_Base_F", 800]) < 2) then {
+		if (count(player nearEntities["Animal_Base_F", 800]) < 2) then {
 			call EPOCH_client_loadAnimalBrain;
 		};
 	};
