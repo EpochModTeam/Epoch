@@ -277,6 +277,12 @@ class CfgServicePoint {
 				{"SmokeLauncherMag_boat",{-1},1,100},
 				{"200Rnd_127x99_mag_Tracer_Green",{1},3,300}
 			}
-		}
+		},
+		{
+            "mosquito_epoch_armedG",
+            {
+                {"3Rnd_MosquitoGrenade",{-1},1,60}
+            }
+        }
 	};
 };
