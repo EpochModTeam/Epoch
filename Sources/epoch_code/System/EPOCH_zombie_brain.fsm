@@ -669,7 +669,7 @@ class FSM
                                          "" \n
                                          "" \n
                                          "	{" \n
-                                         "	_sight = [_zombie, ""VIEW""] checkVisibility [eyePos _zombie,aimPos _x];" \n
+                                         "	_sight = [_zombie, ""VIEW""] checkVisibility [eyePos _zombie,aimPos (driver _x)];" \n
                                          "		if(alive _x)then{" \n
                                          "			if(_sight >= 0.62)then{" \n
                                          "				_thisPos = getPosATL _x;" \n

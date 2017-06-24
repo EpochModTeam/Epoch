@@ -35,7 +35,7 @@ if (isNull objectParent _target) then {
 		_doAttack = true;
 	} else {
 		// send attack to other player
-		if (isplayer _target) then {
+		if (isPlayer _target) then {
 			[_unit,_target] remoteExec ["EPOCH_client_bitePlayer", _target];
 		};
 	};
@@ -48,7 +48,7 @@ if (isNull objectParent _target) then {
 			_doAttack = true;
 		} else {
 			// send attack to other players
-			if (isplayer _x) then {
+			if (isPlayer _x) then {
 				[_unit,_x] remoteExec ["EPOCH_client_bitePlayer", _x];
 			};
 		};
