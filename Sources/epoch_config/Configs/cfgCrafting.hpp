@@ -176,9 +176,18 @@ class CfgCrafting
     };
     class ItemAluminumBar : Item
     {
-        usedIn[] = {};
+        usedIn[] = {"ItemAluminumBar10oz"};
         nearby[] = {{"Fire","","fire",{1,{"ALL"}},3,1,1,0}};
         recipe[] = {{"ItemSodaEmpty",6},{"water_epoch",1}};
+        previewPosition[] = {0.797144,1,0.27};
+        previewScale = 1.3;
+        previewVector = 2.5;
+    };
+	class ItemAluminumBar10oz : Item
+    {
+        usedIn[] = {};
+        nearby[] = {{"Fire","","fire",{1,{"ALL"}},3,1,1,0}};
+        recipe[] = {{"ItemAluminumBar",10},{"water_epoch",1}};
         previewPosition[] = {0.797144,1,0.27};
         previewScale = 1.3;
         previewVector = 2.5;
@@ -192,9 +201,18 @@ class CfgCrafting
     };
     class ItemTinBar : Item
     {
-        usedIn[] = {};
+        usedIn[] = {"ItemTinBar10oz"};
         nearby[] = {{"Fire","","fire",{1,{"ALL"}},3,1,1,0}};
         recipe[] = {{"ItemEmptyTin",6},{"water_epoch",1}};
+        previewPosition[] = {0.797144,1,0.27};
+        previewScale = 1.3;
+        previewVector = 2.5;
+    };
+	class ItemTinBar10oz : Item
+    {
+        usedIn[] = {};
+        nearby[] = {{"Fire","","fire",{1,{"ALL"}},3,1,1,0}};
+        recipe[] = {{"ItemTinBar",10},{"water_epoch",1}};
         previewPosition[] = {0.797144,1,0.27};
         previewScale = 1.3;
         previewVector = 2.5;
@@ -747,6 +765,26 @@ class CfgCrafting
         previewScale = 0.055;
         previewVector = 3.6;
     };
+	class KitWoodHalfFloor : Kit
+    {
+        usedIn[] = {"KitWoodFloor"};
+        recipe[] = {{"KitWoodQuarterFloor",2}};
+        nearby[] = {{"Workbench","","workbench",{1,{"WorkBench_EPOCH"}},3,1,0,1}};
+        model = "\x\addons\a3_epoch_assets_1\models\Half_Floor.p3d";
+        previewPosition[] = {0.800198,1,0.262418};
+        previewScale = 0.055;
+        previewVector = 3.6;
+    };
+	class KitWoodQuarterFloor : Kit
+    {
+        usedIn[] = {"KitWoodHalfFloor"};
+        recipe[] = {{"PartPlankPack",1}};
+        nearby[] = {{"Workbench","","workbench",{1,{"WorkBench_EPOCH"}},3,1,0,1}};
+        model = "\x\addons\a3_epoch_assets_1\models\Quarter_Floor.p3d";
+        previewPosition[] = {0.800198,1,0.262418};
+        previewScale = 0.055;
+        previewVector = 3.6;
+    };
     class KitWoodLadder : Kit
     {
         recipe[] = {{"PartPlankPack",4}};
@@ -881,9 +919,18 @@ class CfgCrafting
     };
     class ItemCopperBar : Item
     {
-        usedIn[] = {"ItemCables"};
+        usedIn[] = {"ItemCables","ItemCopperBar10oz"};
         nearby[] = {{"Fire","","fire",{1,{"ALL"}},3,1,1,0}};
         recipe[] = {{"ItemCables",1},{"water_epoch",1}};
+        previewPosition[] = {0.797144,1,0.27};
+        previewScale = 1.3;
+        previewVector = 2.5;
+    };
+	class ItemCopperBar10oz : Item
+    {
+        usedIn[] = {};
+        nearby[] = {{"Fire","","fire",{1,{"ALL"}},3,1,1,0}};
+        recipe[] = {{"ItemCopperBar",10},{"water_epoch",1}};
         previewPosition[] = {0.797144,1,0.27};
         previewScale = 1.3;
         previewVector = 2.5;
@@ -915,6 +962,15 @@ class CfgCrafting
         previewScale = 1.5;
         previewVector = 0.3;
     };
+	class ItemSilverBar10oz : Item
+    {
+        usedIn[] = {"ItemBriefcaseSilver100oz"};
+        nearby[] = {{"Fire","","fire",{1,{"ALL"}},3,1,1,0}};
+        recipe[] = {{"ItemSilverBar",10},{"water_epoch",1}};
+        previewPosition[] = {0.801715,1,0.331674};
+        previewScale = 1.5;
+        previewVector = 0.3;
+    };
     class ItemBriefcaseGold100oz : Item
     {
         usedIn[] = {};
@@ -924,9 +980,18 @@ class CfgCrafting
         previewScale = 0.5;
         previewVector = 0;
     };
+	class ItemBriefcaseSilver100oz : Item
+    {
+        usedIn[] = {};
+        nearby[] = {};
+        recipe[] = {{"ItemSilverBar10oz",10},{"ItemBriefcaseE",1}};
+        previewPosition[] = {0.8,1,0.42};
+        previewScale = 0.5;
+        previewVector = 0;
+    };
     class ItemBriefcaseE : Part
     {
-        usedIn[] = {"ItemBriefcaseGold100oz"};
+        usedIn[] = {"ItemBriefcaseGold100oz","ItemBriefcaseSilver100oz"};
         previewPosition[] = {0.8,1,0.42};
         previewScale = 0.5;
         previewVector = 0;
