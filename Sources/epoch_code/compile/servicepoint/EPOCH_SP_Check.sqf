@@ -57,19 +57,4 @@ if (!_inSP) then {
 		};
 	};
 };
-if (!_inSP) then {
-	_servicepointsAir = getArray (_config >> worldname >> 'ServicePointsAir');
-	if (_vehicle iskindof "AIR" || _vehicle iskindof "SHIP") then {
-		if (({player distance _x < _servicepointDist} count _servicepointsAir > 0)) then {
-			_inSP = true;
-		};
-	};
-	if (_inSP) exitwith {};
-	_servicepointsLand = getArray (_config >> worldname >> 'ServicePointsLand');
-	if (_vehicle iskindof "Landvehicle" || _vehicle iskindof "SHIP") then {
-		if (({player distance _x < _servicepointDist} count _servicepointsLand > 0)) then {
-			_inSP = true;
-		};
-	};
-};
 _inSP
