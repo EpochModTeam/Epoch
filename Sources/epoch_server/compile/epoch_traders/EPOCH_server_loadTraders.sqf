@@ -29,7 +29,7 @@ _storedVehicleLimit = [_serverSettingsConfig, "storedVehicleLimit", 20] call EPO
 
 EPOCH_storedVehicleCount = 0;
 
-for "_i" from 0 to _maxTraderLimit do {
+for "_i" from 1 to _maxTraderLimit do {
 	_traderSlotIndex = EPOCH_TraderSlots pushBack _i;
 
 	// Spawn static traders first
