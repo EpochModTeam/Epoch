@@ -343,7 +343,15 @@ class CfgItemInteractions
     {
         buildClass = "WoodFloor_EPOCH";
     };
-    class KitWoodStairs : Item_Build_base
+    class KitWoodHalfFloor : Item_Build_base
+    {
+        buildClass = "WoodHalfFloor_EPOCH";
+    };
+	class KitWoodQuarterFloor : Item_Build_base
+    {
+        buildClass = "WoodQuarterFloor_EPOCH";
+    };
+	class KitWoodStairs : Item_Build_base
     {
         buildClass = "WoodStairs_EPOCH";
     };
@@ -550,9 +558,13 @@ class CfgItemInteractions
     class ItemBurlap : Default {};
     class ItemBriefcaseE : Default {};
     class ItemBriefcaseGold100oz : Default {};
+	class ItemBriefcaseSilver100oz : Default {};
     class ItemAluminumBar : Default {};
+	class ItemAluminumBar10oz : Default {};
     class ItemCopperBar : Default {};
+	class ItemCopperBar10oz : Default {};
     class ItemTinBar : Default {};
+	class ItemTinBar10oz : Default {};
     class ItemPlywoodPack : Default {};
     class ItemComboLock : Default {};
     class CircuitParts : Default {};
@@ -579,6 +591,7 @@ class CfgItemInteractions
     class ItemDocument : Default {};
     class ItemDocumentMission : Default {};
     class ItemSilverBar : Default {};
+	class ItemSilverBar10oz : Default {};
     class ItemGoldBar : Default {};
     class ItemGoldBar10oz : Default {};
     class ItemRock : Default {};

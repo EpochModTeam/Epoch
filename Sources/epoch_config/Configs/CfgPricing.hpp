@@ -124,17 +124,33 @@ class CfgPricing
     {
         price = 10000;
     };
+	class ItemBriefcaseSilver100oz
+    {
+        price = 1000;
+    };
     class ItemAluminumBar
     {
         price = 10;
+    };
+	class ItemAluminumBar10oz
+    {
+        price = 100;
     };
     class ItemCopperBar
     {
         price = 100;
     };
+	class ItemCopperBar10oz
+    {
+        price = 1000;
+    };
     class ItemTinBar
     {
         price = 1;
+    };
+	class ItemTinBar10oz
+    {
+        price = 10;
     };
     class ItemPlywoodPack
     {
@@ -2504,6 +2520,18 @@ class CfgPricing
     {
         price = 2;
     };
+	class 6Rnd_BlueSignal_F
+	{
+        price = 2;
+    };
+	class 6Rnd_PurpleSignal_F
+	{
+        price = 2;
+    };
+	class 6Rnd_OrangeSignal_F
+	{
+        price = 2;
+    };
     class EnergyPack
     {
         price = 3;
@@ -2737,6 +2765,10 @@ class CfgPricing
     class ItemGoldBar10oz
     {
         price = 1000;
+    };
+	class ItemSilverBar10oz
+    {
+        price = 100;
     };
     class ItemTopaz
     {
@@ -4398,7 +4430,82 @@ class CfgPricing
     {
         price = 10;
     };
-
+	class 500Rnd_127x99_mag
+	{
+		price = 500;
+	};
+	class 500Rnd_127x99_mag_Tracer_Red
+	{
+		price = 500;
+	};
+	class 500Rnd_127x99_mag_Tracer_Green
+	{
+		price = 500;
+	};
+	class 500Rnd_127x99_mag_Tracer_Yellow
+	{
+		price = 500;
+	};
+	class 200Rnd_127x99_mag
+	{
+		price = 200;
+	};
+	class 200Rnd_127x99_mag_Tracer_Red
+	{
+		price = 200;
+	};
+	class 200Rnd_127x99_mag_Tracer_Green
+	{
+		price = 200;
+	};
+	class 200Rnd_127x99_mag_Tracer_Yellow
+	{
+		price = 200;
+	};
+	class 100Rnd_127x99_mag
+	{
+		price = 100;
+	};
+	class 100Rnd_127x99_mag_Tracer_Red
+	{
+		price = 100;
+	};
+	class 100Rnd_127x99_mag_Tracer_Green
+	{
+		price = 100;
+	};
+	class 100Rnd_127x99_mag_Tracer_Yellow
+	{
+		price = 100;
+	};
+	class 2000Rnd_762x51_Belt
+	{
+		price = 1250;
+	};
+	class 200Rnd_40mm_G_belt
+	{
+		price = 650;
+	};
+	class 32Rnd_40mm_G_belt
+	{
+		price = 350;
+	};
+	class 64Rnd_40mm_G_belt
+	{
+		price = 400;
+	};
+	class 96Rnd_40mm_G_belt
+	{
+		price = 500;
+	};
+	class 200Rnd_20mm_G_belt
+	{
+		price = 550;
+	};
+	class 40Rnd_20mm_G_belt
+	{
+		price = 350;
+	};
     ///////////////////////////////////////////////////////////////////////////////
     // Apex Items & Weapons
     ///////////////////////////////////////////////////////////////////////////////

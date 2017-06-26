@@ -179,6 +179,44 @@ class CfgBaseBuilding
         removeParts[] = {};
     };
     class WoodFloor_Ghost_EPOCH : WoodFloor_SIM_EPOCH {};
+	class WoodHalfFloor_EPOCH : Default
+    {
+        upgradeBuilding[] = {{"WoodFloor_EPOCH",{{"KitWoodHalfFloor",1}}}};
+        removeParts[] = {{"KitWoodHalfFloor",1}};
+        simulClass = "WoodHalfFloor_SIM_EPOCH";
+        staticClass = "WoodHalfFloor_EPOCH";
+        GhostPreview = "WoodHalfFloor_Ghost_EPOCH";
+        snapPointsPara[] = {"NF","SF","EF","WF","C","CB"};
+        snapPointsPerp[] = {"N","S","E","W","CinN","CinS","CinE","CinW"};
+        energyCost = 0.2;
+    };
+    class WoodHalfFloor_SIM_EPOCH : WoodHalfFloor_EPOCH
+    {
+        allowedSnapPoints[] = {"NF","SF","EF","WF","C"};
+        allowedSnapObjects[] = {"WoodHalfFloor_EPOCH"};
+        upgradeBuilding[] = {};
+        removeParts[] = {};
+    };
+    class WoodHalfFloor_Ghost_EPOCH : WoodHalfFloor_SIM_EPOCH {};
+	class WoodQuarterFloor_EPOCH : Default
+    {
+        upgradeBuilding[] = {{"WoodHalfFloor_EPOCH",{{"KitWoodQuarterFloor",1}}}};
+        removeParts[] = {{"KitWoodQuarterFloor",1}};
+        simulClass = "WoodQuarterFloor_SIM_EPOCH";
+        staticClass = "WoodQuarterFloor_EPOCH";
+        GhostPreview = "WoodQuarterFloor_Ghost_EPOCH";
+        snapPointsPara[] = {"NF","SF","EF","WF","C","CB"};
+        snapPointsPerp[] = {"N","S","E","W","CinN","CinS","CinE","CinW"};
+        energyCost = 0.1;
+    };
+    class WoodQuarterFloor_SIM_EPOCH : WoodQuarterFloor_EPOCH
+    {
+        allowedSnapPoints[] = {"NF","SF","EF","WF","C"};
+        allowedSnapObjects[] = {"WoodQuarterFloor_EPOCH"};
+        upgradeBuilding[] = {};
+        removeParts[] = {};
+    };
+    class WoodQuarterFloor_Ghost_EPOCH : WoodQuarterFloor_SIM_EPOCH {};
     class MetalFloor_EPOCH : Default
     {
         removeParts[] = {{"ItemCorrugatedLg",2}};
