@@ -32,9 +32,23 @@ _ServicePointClasses = 		["CfgServicePoint", "ServicePointClasses", []] call EPO
 if (_servicepoints isequalto [] && _ServicePointClasses isequalto []) exitwith {false};
 
 _inSP = false;
-if (({player distance _x < _servicepointDist} count _servicepoints > 0)) then {
-	_inSP = true;
-};
+{
+	if (count _x > 3) then {
+		_x params ["_pos","_dist","_vehtypes"];
+		{
+			if (_vehicle iskindof _x && _vehicle distance _pos < _dist) exitwith {
+				_inSP = true;
+			};
+		} foreach _vehtypes;
+	}
+	else {
+		if (_vehicle distance _x < _servicepointDist) then {
+			_inSP = true;
+		};
+	};
+	if (_inSP) exitwith {};
+} foreach _servicepoints;
+
 if (!_inSP) then {
 	if !(_ServicePointClasses isequalto []) then {
 		_nearClasses = nearestobjects [_vehicle,_ServicePointClasses,_servicepointDist];

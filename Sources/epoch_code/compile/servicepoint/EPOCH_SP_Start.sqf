@@ -64,11 +64,7 @@ _fnc_actionTitle = {
 {
 	if ((typeof _vehicle) == _x select 0) exitwith {
 		{
-			_ammotype = _x select 0;
-			_turret = _x select 1;
-			_maxmags = _x select 2;
-			_costs = _x select 3;
-			_ammocount = getNumber (configfile >> "CfgMagazines" >> (_x select 0) >> "count");
+			_x params ["_ammotype","_turret","_maxmags","_costs",["_ammocount",getNumber (configfile >> "CfgMagazines" >> (_x select 0) >> "count")]];
 			_maxammototal = _maxmags*_ammocount;
 			_totalammocount = 0;
 			{
@@ -98,11 +94,11 @@ _fnc_actionTitle = {
 
 _costs = [_vehicle, _refuel_costs] call _fnc_getCosts;
 _actionTitle = [format['Refuel %1',getText (configFile >> 'Cfgvehicles' >> typeOf _vehicle >> 'displayName')], _costs] call _fnc_actionTitle;
-Ignatz_Refuel = [_actionTitle,[_vehicle,[_costs, _refuel_updateInterval,_refuel_amount]] ];
+Ignatz_Refuel = [_actionTitle,[_vehicle,[_costs, _refuel_updateInterval,_refuel_amount]]];
 
 _costs = [_vehicle, _repair_costs] call _fnc_getCosts;
 _actionTitle = [format['Repair %1',getText (configFile >> 'Cfgvehicles' >> typeOf _vehicle >> 'displayName')], _costs] call _fnc_actionTitle;
-Ignatz_Repair = [_actionTitle,[_vehicle,[_costs, _repairTime]] ];
+Ignatz_Repair = [_actionTitle,[_vehicle,[_costs, _repairTime]]];
 if (count _Ignatz_SP_Array > 0) then {Ignatz_Rearm0 = _Ignatz_SP_Array select 0;};
 if (count _Ignatz_SP_Array > 1) then {Ignatz_Rearm1 = _Ignatz_SP_Array select 1;};
 if (count _Ignatz_SP_Array > 2) then {Ignatz_Rearm2 = _Ignatz_SP_Array select 2;};
