@@ -317,7 +317,7 @@ switch _interactOption do {
 		};
 		_veh = _nearveh select 0;
 		_vehType = typeOf _veh;
-		_classUpgrade = isClass(configFile >> "cfgVehicles" >> _vehType >> "Upgrades");
+		_classUpgrade = isClass(missionConfigFile >> "CfgVehicleUpgrades" >> _vehType);
 		if!(_classUpgrade)exitWith{
 			["Vehicle can't be upgraded",5] call Epoch_message;_canUpgrade = false;
 		};
@@ -329,6 +329,9 @@ switch _interactOption do {
 		{
 			if((_x select 1) isEqualTo "Crypto")then{
 				_crypto = _x select 0;
+				if(EPOCH_playerCrypto < _crypto)exitWith{
+					[format["You need %1 crypto to upgrade your %2", _crypto, _vehType],5] call Epoch_message;_canUpgrade = false;
+				};
 			};
 			if(!((_x select 1) in (magazines player)) && !((_x select 1) isEqualTo "Crypto"))exitWith{
 				[format["You do not have the required materials to upgrade your %1",_vehType],5] call Epoch_message;_canUpgrade = false;
