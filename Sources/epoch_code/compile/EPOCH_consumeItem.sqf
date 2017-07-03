@@ -334,7 +334,7 @@ switch _interactOption do {
 				};
 			};
 			if(!((_x select 1) in (magazines player)) && !((_x select 1) isEqualTo "Crypto"))exitWith{
-				[format["You do not have the required materials to upgrade your %1",_vehType],5] call Epoch_message;_canUpgrade = false;
+				[format["You do not have %1 to upgrade your %2", (_x select 1), _vehType],5] call Epoch_message;_canUpgrade = false;
 			};
 		}forEach _reqMaterials;
 		if(_canUpgrade)then{
