@@ -308,49 +308,6 @@ switch _interactOption do {
 			["Unpacked backpack", 5] call Epoch_message;
 		};
 	};
-
-	case 15: { // Vehicle Upgrade
-		_canUpgrade = true;
-		_nearveh = nearestObjects[player,["Car","Truck","Heli","Boat","Plane"],15];
-		if (_nearveh isequalto []) exitwith {
-			["No Vehicle for upgrade found",5] call Epoch_message;_canUpgrade = false;
-		};
-		_veh = _nearveh select 0;
-		_vehType = typeOf _veh;
-		_classUpgrade = isClass(missionConfigFile >> "CfgVehicleUpgrades" >> _vehType);
-		if!(_classUpgrade)exitWith{
-			["Vehicle can't be upgraded",5] call Epoch_message;_canUpgrade = false;
-		};
-		_reqMaterials = getArray(missionConfigFile >> "CfgVehicleUpgrades" >> _vehType >> "ReqMaterials");
-		_crypto = 0;
-		if(_reqMaterials isEqualTo [])exitWith{
-			["Required Materials list not found, report this error to an admin",5] call Epoch_message;_canUpgrade = false;
-		};
-		{
-			if((_x select 1) isEqualTo "Crypto")then{
-				_crypto = _x select 0;
-				if(EPOCH_playerCrypto < _crypto)exitWith{
-					[format["You need %1 crypto to upgrade your %2", _crypto, _vehType],5] call Epoch_message;_canUpgrade = false;
-				};
-			};
-			if(!((_x select 1) in (magazines player)) && !((_x select 1) isEqualTo "Crypto"))exitWith{
-				[format["You do not have %1 to upgrade your %2", (_x select 1), _vehType],5] call Epoch_message;_canUpgrade = false;
-			};
-		}forEach _reqMaterials;
-		if(_canUpgrade)then{
-			{
-				_count = _x select 0;
-				_upgradeItem = _x select 1;
-				for "_i" from 1 to _count do{
-					if!(_upgradeItem isEqualTo "Crypto")then{
-						player removeItem _upgradeItem;
-					};
-				};
-			}forEach _reqMaterials;
-			_upgradeToVeh = getText(missionConfigFile >> "CfgVehicleUpgrades" >> _vehType >> "upgradeToVehicle");
-			[[_veh,_upgradeToVeh,_crypto],player,Epoch_personalToken] remoteExec ["EPOCH_server_upgrade_vehicle",2];
-		};
-	};
 	
 	default {
 		["Found nothing", 5] call Epoch_message;

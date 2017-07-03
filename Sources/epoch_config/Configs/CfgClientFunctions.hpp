@@ -149,6 +149,7 @@ class CfgClientFunctions
             class client_lockVehicle {};
             class client_fillVehicle {};
             class client_gearVehicle {};
+			class client_upgradeVehicle {};
         };
         class missions
         {

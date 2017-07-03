@@ -37,4 +37,7 @@ if ([_item, "CfgVehicles"] call EPOCH_fnc_isAny) then {
 		};
 	};
 };
+if (_return isequalto "") then {
+    _return = _item;
+};
 _return;

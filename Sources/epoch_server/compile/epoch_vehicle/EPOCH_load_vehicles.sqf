@@ -13,12 +13,12 @@
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server/compile/epoch_vehicle/EPOCH_load_vehicles.sqf
 */
 //[[[cog import generate_private_arrays ]]]
-private ["_actualHitpoints","_allHitpoints","_allVehicles","_allowDamage","_arr","_arrNum","_attachments","_availableColorsConfig","_cfgEpochVehicles","_class","_color","_colors","_config","_count","_damage","_dataFormat","_dataFormatCount","_diag","_dmg","_found","_hitpoints","_immuneIfStartInBase","_jammerOwner","_jammerRange","_jammers","_location","_lockedOwner","_magazineName","_magazineSize","_magazineSizeMax","_mags","_marker","_nearestJammer","_objQty","_objType","_objTypes","_qty","_removemagazinesturret","_removeweapons","_response","_selections","_serverSettingsConfig","_simulationHandler","_textureSelectionIndex","_textures","_vehHiveKey","_vehLockHiveKey","_vehicle","_vehicleDamages","_vehicleSlotIndex","_wMags","_wMagsArray","_worldspace"];
+private ["_actualHitpoints","_allHitpoints","_allVehicles","_allowDamage","_arr","_arrNum","_attachments","_availableColorsConfig","_cfgEpochVehicles","_class","_color","_colors","_config","_count","_damage","_dataFormat","_dataFormatCount","_diag","_dmg","_found","_hitpoints","_immuneIfStartInBase","_jammerOwner","_jammerRange","_jammers","_location","_lockedOwner","_magazineName","_magazineSize","_magazineSizeMax","_mags","_marker","_nearestJammer","_objQty","_objType","_objTypes","_qty","_removemagazinesturret","_removeweapons","_response","_selections","_serverSettingsConfig","_simulationHandler","_textureSelectionIndex","_textures","_vehHiveKey","_vehLockHiveKey","_vehicle","_vehicleDamages","_vehicleSlotIndex","_wMags","_wMagsArray","_worldspace","_baseClass"];
 //[[[end]]]
 params [["_maxVehicleLimit",0]];
 
 _diag = diag_tickTime;
-_dataFormat = ["", [], 0, [], 0, [], [], 0];
+_dataFormat = ["", [], 0, [], 0, [], [], 0, ""];
 _dataFormatCount = count _dataFormat;
 EPOCH_VehicleSlots = [];
 _allVehicles = [];
@@ -110,6 +110,10 @@ for "_i" from 1 to _maxVehicleLimit do {
 							} forEach _selections;
 							_vehicle setVariable ["VEHICLE_TEXTURE", _color];
 						};
+						_baseClass = _arr select 8;
+						if !(_baseClass isequalto "") then {
+                            _vehicle setvariable ["VEHICLE_BASECLASS",_baseClass];
+                        };
 						// disable thermal imaging equipment
 						_vehicle disableTIEquipment true;
 						// lock all vehicles
@@ -131,83 +135,8 @@ for "_i" from 1 to _maxVehicleLimit do {
 							} foreach _removemagazinesturret;
 						};
 
-						{
-							_objType = _forEachIndex;
-							_objTypes = _x;
-							_objQty = [];
-							if (_objType in [1, 2, 3]) then {
-								_objTypes = _x select 0;
-								_objQty = _x select 1;
-							};
-							{
-								switch _objType do {
-									// Weapon cargo
-									case 0: {
-										if (_x isEqualType []) then {
-											if ((count _x) >= 4) then {
-												_vehicle addWeaponCargoGlobal[_x deleteAt 0, 1];
-												_attachments = [];
-												_wMags = false;
-												_wMagsArray = [];
-												// suppressor, laser, optics, magazines(array), bipods
-												{
-													// magazines
-													if (_x isEqualType []) then{
-														_wMags = true;
-														_wMagsArray = _x;
-													} else {
-														// attachments
-														if (_x != "") then{
-															_attachments pushBack _x;
-														};
-													};
-												} forEach _x;
-												// add all attachments to vehicle
-												// TODO replace with adding attachments directly to gun (Arma feature dependant)
-												{
-													_vehicle addItemCargoGlobal[_x, 1];
-												} forEach _attachments;
-												if (_wMags) then{
-													if (_wMagsArray isEqualType [] && (count _wMagsArray) >= 2) then{
-														_vehicle addMagazineAmmoCargo[_wMagsArray select 0, 1, _wMagsArray select 1];
-													};
-												};
-											};
-										};
-									};
-									// Magazine cargo
-									case 1: {
-										_magazineName = _x;
-										_magazineSize = _objQty select _forEachIndex;
-										if ((_magazineName isEqualType "STRING") && (_magazineSize isEqualType 0)) then {
-											_magazineSizeMax = getNumber (configFile >> "CfgMagazines" >> _magazineName >> "count");
-											if (_magazineSizeMax >= 1) then {
-												// Add full magazines cargo
-												_vehicle addMagazineAmmoCargo [_magazineName, floor (_magazineSize / _magazineSizeMax), _magazineSizeMax];
-												// Add last non full magazine
-												if ((_magazineSize % _magazineSizeMax) > 0) then {
-													_vehicle addMagazineAmmoCargo [_magazineName, 1, floor (_magazineSize % _magazineSizeMax)];
-												};
-											};
-										};
-									};
-									// Backpack cargo
-									case 2: {
-										if (_x isEqualType "STRING") then {
-											_qty = _objQty select _forEachIndex;
-											_vehicle addBackpackCargoGlobal [_x, _qty];
-										};
-									};
-									// Item cargo
-									case 3: {
-										if (_x isEqualType "STRING") then {
-											_qty = _objQty select _forEachIndex;
-											_vehicle addItemCargoGlobal [_x, _qty];
-										};
-									};
-								};
-							} forEach _objTypes;
-						} forEach (_arr select 5);
+						// utilize He-Man's new Cargo functions
+						[_vehicle,_arr select 5] call EPOCH_server_CargoFill;
 
 						// remove and add back magazines
 						if !((_arr select 6) isequalto []) then {
