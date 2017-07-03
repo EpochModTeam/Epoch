@@ -550,10 +550,14 @@ class CfgItemInteractions
     class ItemDoc6 : ItemDoc1 {};
     class ItemDoc7 : ItemDoc1 {};
     class ItemDoc8 : ItemDoc1 {};
-    class ItemVehDoc1 : ItemDoc1 {};
-    class ItemVehDoc2 : ItemDoc1 {};
-    class ItemVehDoc3 : ItemDoc1 {};
-    class ItemVehDoc4 : ItemDoc1 {};
+    class ItemVehDoc1
+	{
+        interactAction = 15;
+        interactText = "UPGRADE";
+	};
+    class ItemVehDoc2 : ItemVehDoc1 {};
+    class ItemVehDoc3 : ItemVehDoc1 {};
+    class ItemVehDoc4 : ItemVehDoc1 {};
     class ItemBulb : Default {};
     class ItemBurlap : Default {};
     class ItemBriefcaseE : Default {};

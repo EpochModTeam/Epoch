@@ -94,6 +94,7 @@ class CfgServerFunctions
 			class server_packStorage {};
 			class server_packJack {};
 			class spawn_vehicle {};
+			class server_upgrade_vehicle {};
 		};
 		class epoch_server {
 			class weightedArray {};
