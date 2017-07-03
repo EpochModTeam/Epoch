@@ -23,7 +23,7 @@ if (isnull _veh) exitwith {
 if (_UpgradeVeh isequalto "") exitwith {
 	diag_log "No Upgrade Vehicle Class";
 };
-if !(_removeCrypto isequalto []) && !(_removeCrypto isEqualTo 0) then {
+if (!(_removeCrypto isequalto []) && !(_removeCrypto isEqualTo 0)) then {
 	[_player,-_removeCrypto] call EPOCH_server_effectCrypto;
 };
 _slot = _veh getvariable ["vehicle_slot","-1"];

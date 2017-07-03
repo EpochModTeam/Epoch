@@ -4006,6 +4006,11 @@ class CfgPricing
     {
         price = 750;
     };
+	class C_Offroad_01_EPOCH1: C_Offroad_01_EPOCH{};
+	class C_Offroad_01_EPOCH2: C_Offroad_01_EPOCH{};
+	class C_Offroad_01_EPOCH3: C_Offroad_01_EPOCH{};
+	class C_Offroad_01_EPOCH4: C_Offroad_01_EPOCH{};
+	class C_Offroad_01_EPOCH5: C_Offroad_01_EPOCH{};
     class C_Quadbike_01_EPOCH
     {
         price = 500;
@@ -4014,14 +4019,26 @@ class CfgPricing
     {
         price = 750;
     };
+	class C_Hatchback_01_EPOCH1: C_Hatchback_01_EPOCH{};
+	class C_Hatchback_01_EPOCH2: C_Hatchback_01_EPOCH{};
+	class C_Hatchback_01_EPOCH3: C_Hatchback_01_EPOCH{};
+	class C_Hatchback_01_EPOCH4: C_Hatchback_01_EPOCH{};
     class C_Hatchback_02_EPOCH
     {
         price = 1000;
     };
+	class C_Hatchback_02_EPOCH1: C_Hatchback_02_EPOCH{};
+	class C_Hatchback_02_EPOCH2: C_Hatchback_02_EPOCH{};
+	class C_Hatchback_02_EPOCH3: C_Hatchback_02_EPOCH{};
+	class C_Hatchback_02_EPOCH4: C_Hatchback_02_EPOCH{};
     class C_SUV_01_EPOCH
     {
         price = 750;
     };
+	class C_SUV_01_EPOCH1: C_SUV_01_EPOCH{};
+	class C_SUV_01_EPOCH2: C_SUV_01_EPOCH{};
+	class C_SUV_01_EPOCH3: C_SUV_01_EPOCH{};
+	class C_SUV_01_EPOCH4: C_SUV_01_EPOCH{};
     class C_Rubberboat_EPOCH
     {
         price = 500;
@@ -4078,6 +4095,10 @@ class CfgPricing
     {
         price = 2500;
     };
+	class B_G_Offroad_01_armed_EPOCH1: B_G_Offroad_01_armed_EPOCH{};
+	class B_G_Offroad_01_armed_EPOCH2: B_G_Offroad_01_armed_EPOCH{};
+	class B_G_Offroad_01_armed_EPOCH3: B_G_Offroad_01_armed_EPOCH{};
+	class B_G_Offroad_01_armed_EPOCH4: B_G_Offroad_01_armed_EPOCH{};
     class B_Truck_01_transport_EPOCH
     {
         price = 1000;
