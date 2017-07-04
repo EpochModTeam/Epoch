@@ -42,7 +42,17 @@ for "_i" from 1 to _maxVehicleLimit do {
 	if ((_response select 0) == 1 && (_response select 1) isEqualType []) then {
 		_arr = _response select 1;
 		_arrNum = count _arr;
-
+		
+		// New Upgrade System adds to DB array, check and correct older saved vehicles
+		if (_arrNum < _dataFormatCount) then {
+			{
+				_check = _arr select _foreachindex;
+				if (isnil '_check') then {
+					_arr pushback (_dataFormat select _foreachindex);
+				};
+			} foreach _dataFormat;
+		};
+		
 		if (_arrNum == _dataFormatCount) then {
 
 			// Validate and replace invaild data
