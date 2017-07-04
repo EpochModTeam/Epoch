@@ -75,6 +75,7 @@ disableRandomization[] = {"All"};
 #include "Configs\CfgSay3Dhandler.hpp"
 #include "Configs\CfgSwitchMovehandler.hpp"
 #include "Configs\CfgVehicleUpgrades.hpp"
+#include "Configs\CfgReadingDocuments.hpp"
 
 // A3 specific configs
 #include "Configs\CfgFunctions.hpp"

@@ -540,7 +540,7 @@ class CfgItemInteractions
     class ItemKeyYellow : ItemKey {};
     class ItemDoc1 : Default
     {
-        interactAction = -1;
+        interactAction = 15;
         interactText = "READ";
     };
     class ItemDoc2 : ItemDoc1 {};
