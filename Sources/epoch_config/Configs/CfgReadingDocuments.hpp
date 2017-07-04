@@ -11,18 +11,30 @@ class CfgReadingDocuments
 	{
 		displayMessage[] = {"Max Speed, Terrain Coef, Gears and more were edited","Upgrade your vehicle's Speed and Offroad Performance"};
 	};
+	class KitVehicleUpgradeI_100_EPOCH: ItemVehDoc1{};
+	class KitVehicleUpgradeI_200_EPOCH: ItemVehDoc1{};
+	class KitVehicleUpgradeI_300_EPOCH: ItemVehDoc1{};
 	class ItemVehDoc2
 	{
 		displayMessage[] = {"Upgrade your vehicle's body, wheels and windows with armor strength"};
 	};
+	class KitVehicleUpgradeII_100_EPOCH: ItemVehDoc2{};
+	class KitVehicleUpgradeII_200_EPOCH: ItemVehDoc2{};
+	class KitVehicleUpgradeII_300_EPOCH: ItemVehDoc2{};
 	class ItemVehDoc3
 	{
 		displayMessage[] = {"Increase your vehicle's inventory capacity for items, magazines, weapons and more"};
 	};
+	class KitVehicleUpgradeIII_100_EPOCH: ItemVehDoc3{};
+	class KitVehicleUpgradeIII_200_EPOCH: ItemVehDoc3{};
+	class KitVehicleUpgradeIII_300_EPOCH: ItemVehDoc3{};
 	class ItemVehDoc4
 	{
 		displayMessage[] = {"Increase your fuel capacity for those long hauls across your favorite ISLANDS"};
 	};
+	class KitVehicleUpgradeIV_100_EPOCH: ItemVehDoc1{};
+	class KitVehicleUpgradeIV_200_EPOCH: ItemVehDoc1{};
+	class KitVehicleUpgradeIV_300_EPOCH: ItemVehDoc1{};
 	class ItemDoc1
 	{
 		displayMessage[] = {"It was a beautiful day on Johnny's block","While Johnny was watching his father take all he could","Daddy's Roommate by Will Michoite"};

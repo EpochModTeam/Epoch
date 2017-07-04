@@ -27,6 +27,9 @@ class CfgVehicleUpgrades
 			upgradeToVehicle = "C_SUV_01_EPOCH1";
 		};
 	};
+	class KitVehicleUpgradeI_100_EPOCH: ItemVehDoc1{};
+	class KitVehicleUpgradeI_200_EPOCH: ItemVehDoc1{};
+	class KitVehicleUpgradeI_300_EPOCH: ItemVehDoc1{};
 	class ItemVehDoc2
 	{
 		class C_Hatchback_01_EPOCH1
@@ -47,6 +50,9 @@ class CfgVehicleUpgrades
 			upgradeToVehicle = "C_SUV_01_EPOCH2";
 		};
 	};
+	class KitVehicleUpgradeII_100_EPOCH: ItemVehDoc2{};
+	class KitVehicleUpgradeII_200_EPOCH: ItemVehDoc2{};
+	class KitVehicleUpgradeII_300_EPOCH: ItemVehDoc2{};
 	class ItemVehDoc3
 	{
 		class C_Hatchback_01_EPOCH2
@@ -67,6 +73,9 @@ class CfgVehicleUpgrades
 			upgradeToVehicle = "C_SUV_01_EPOCH3";
 		};
 	};
+	class KitVehicleUpgradeIII_100_EPOCH: ItemVehDoc3{};
+	class KitVehicleUpgradeIII_200_EPOCH: ItemVehDoc3{};
+	class KitVehicleUpgradeIII_300_EPOCH: ItemVehDoc3{};
 	class ItemVehDoc4
 	{
 		class C_Hatchback_01_EPOCH3
@@ -87,4 +96,7 @@ class CfgVehicleUpgrades
 			upgradeToVehicle = "C_SUV_01_EPOCH4";
 		};
 	};
+	class KitVehicleUpgradeIV_100_EPOCH: ItemVehDoc1{};
+	class KitVehicleUpgradeIV_200_EPOCH: ItemVehDoc1{};
+	class KitVehicleUpgradeIV_300_EPOCH: ItemVehDoc1{};
 };
