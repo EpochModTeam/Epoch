@@ -80,7 +80,7 @@ class CfgVehicleUpgrades
 	{
 		class C_Hatchback_01_EPOCH3
 		{
-			ReqMaterials[] = {{1,"ItemVehDoc3"},{2,"ItemPipe"},{2,"KitShelf"}};
+			ReqMaterials[] = {{1,"ItemVehDoc3"},{1,"CircuitParts"},{2,"ItemScraps"},{2,"jerrycan_epoch"}};
 			upgradeToVehicle = "C_Hatchback_01_EPOCH4";
 		};
 		class C_Hatchback_02_EPOCH3: C_Hatchback_01_EPOCH3
