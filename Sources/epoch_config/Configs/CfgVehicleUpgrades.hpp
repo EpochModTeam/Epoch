@@ -27,9 +27,66 @@ class CfgVehicleUpgrades
 			upgradeToVehicle = "C_SUV_01_EPOCH1";
 		};
 	};
-	class KitVehicleUpgradeI_100_EPOCH: ItemVehDoc1{};
-	class KitVehicleUpgradeI_200_EPOCH: ItemVehDoc1{};
-	class KitVehicleUpgradeI_300_EPOCH: ItemVehDoc1{};
+	class KitVehicleUpgradeI_100_EPOCH
+	{
+		class C_Hatchback_01_EPOCH
+		{
+			ReqMaterials[] = {{1,"KitVehicleUpgradeI_100_EPOCH"}};
+			upgradeToVehicle = "C_Hatchback_01_EPOCH1";
+		};
+		class C_Hatchback_02_EPOCH: C_Hatchback_01_EPOCH
+		{
+			upgradeToVehicle = "C_Hatchback_02_EPOCH1";
+		};
+		class C_Offroad_01_EPOCH: C_Hatchback_01_EPOCH
+		{
+			upgradeToVehicle = "C_Offroad_01_EPOCH1";
+		};
+		class C_SUV_01_EPOCH: C_Hatchback_01_EPOCH
+		{
+			upgradeToVehicle = "C_SUV_01_EPOCH1";
+		};
+	};
+	class KitVehicleUpgradeI_200_EPOCH
+	{
+		class C_Hatchback_01_EPOCH
+		{
+			ReqMaterials[] = {{1,"KitVehicleUpgradeI_200_EPOCH"}};
+			upgradeToVehicle = "C_Hatchback_01_EPOCH1";
+		};
+		class C_Hatchback_02_EPOCH: C_Hatchback_01_EPOCH
+		{
+			upgradeToVehicle = "C_Hatchback_02_EPOCH1";
+		};
+		class C_Offroad_01_EPOCH: C_Hatchback_01_EPOCH
+		{
+			upgradeToVehicle = "C_Offroad_01_EPOCH1";
+		};
+		class C_SUV_01_EPOCH: C_Hatchback_01_EPOCH
+		{
+			upgradeToVehicle = "C_SUV_01_EPOCH1";
+		};
+	};
+	class KitVehicleUpgradeI_300_EPOCH
+	{
+		class C_Hatchback_01_EPOCH
+		{
+			ReqMaterials[] = {{1,"KitVehicleUpgradeI_300_EPOCH"}};
+			upgradeToVehicle = "C_Hatchback_01_EPOCH1";
+		};
+		class C_Hatchback_02_EPOCH: C_Hatchback_01_EPOCH
+		{
+			upgradeToVehicle = "C_Hatchback_02_EPOCH1";
+		};
+		class C_Offroad_01_EPOCH: C_Hatchback_01_EPOCH
+		{
+			upgradeToVehicle = "C_Offroad_01_EPOCH1";
+		};
+		class C_SUV_01_EPOCH: C_Hatchback_01_EPOCH
+		{
+			upgradeToVehicle = "C_SUV_01_EPOCH1";
+		};
+	};
 	class ItemVehDoc2
 	{
 		class C_Hatchback_01_EPOCH1
@@ -50,9 +107,66 @@ class CfgVehicleUpgrades
 			upgradeToVehicle = "C_SUV_01_EPOCH2";
 		};
 	};
-	class KitVehicleUpgradeII_100_EPOCH: ItemVehDoc2{};
-	class KitVehicleUpgradeII_200_EPOCH: ItemVehDoc2{};
-	class KitVehicleUpgradeII_300_EPOCH: ItemVehDoc2{};
+	class KitVehicleUpgradeII_100_EPOCH
+	{
+		class C_Hatchback_01_EPOCH1
+		{
+			ReqMaterials[] = {{1,"KitVehicleUpgradeII_100_EPOCH"}};
+			upgradeToVehicle = "C_Hatchback_01_EPOCH2";
+		};
+		class C_Hatchback_02_EPOCH1: C_Hatchback_01_EPOCH1
+		{
+			upgradeToVehicle = "C_Hatchback_02_EPOCH2";
+		};
+		class C_Offroad_01_EPOCH1: C_Hatchback_01_EPOCH1
+		{
+			upgradeToVehicle = "C_Offroad_01_EPOCH2";
+		};
+		class C_SUV_01_EPOCH1: C_Hatchback_01_EPOCH1
+		{
+			upgradeToVehicle = "C_SUV_01_EPOCH2";
+		};
+	};
+	class KitVehicleUpgradeII_200_EPOCH
+	{
+		class C_Hatchback_01_EPOCH1
+		{
+			ReqMaterials[] = {{1,"KitVehicleUpgradeII_200_EPOCH"}};
+			upgradeToVehicle = "C_Hatchback_01_EPOCH2";
+		};
+		class C_Hatchback_02_EPOCH1: C_Hatchback_01_EPOCH1
+		{
+			upgradeToVehicle = "C_Hatchback_02_EPOCH2";
+		};
+		class C_Offroad_01_EPOCH1: C_Hatchback_01_EPOCH1
+		{
+			upgradeToVehicle = "C_Offroad_01_EPOCH2";
+		};
+		class C_SUV_01_EPOCH1: C_Hatchback_01_EPOCH1
+		{
+			upgradeToVehicle = "C_SUV_01_EPOCH2";
+		};
+	};
+	class KitVehicleUpgradeII_300_EPOCH
+	{
+		class C_Hatchback_01_EPOCH1
+		{
+			ReqMaterials[] = {{1,"KitVehicleUpgradeII_300_EPOCH"}};
+			upgradeToVehicle = "C_Hatchback_01_EPOCH2";
+		};
+		class C_Hatchback_02_EPOCH1: C_Hatchback_01_EPOCH1
+		{
+			upgradeToVehicle = "C_Hatchback_02_EPOCH2";
+		};
+		class C_Offroad_01_EPOCH1: C_Hatchback_01_EPOCH1
+		{
+			upgradeToVehicle = "C_Offroad_01_EPOCH2";
+		};
+		class C_SUV_01_EPOCH1: C_Hatchback_01_EPOCH1
+		{
+			upgradeToVehicle = "C_SUV_01_EPOCH2";
+		};
+	};
 	class ItemVehDoc3
 	{
 		class C_Hatchback_01_EPOCH2
@@ -73,9 +187,66 @@ class CfgVehicleUpgrades
 			upgradeToVehicle = "C_SUV_01_EPOCH3";
 		};
 	};
-	class KitVehicleUpgradeIII_100_EPOCH: ItemVehDoc3{};
-	class KitVehicleUpgradeIII_200_EPOCH: ItemVehDoc3{};
-	class KitVehicleUpgradeIII_300_EPOCH: ItemVehDoc3{};
+	class KitVehicleUpgradeIII_100_EPOCH
+	{
+		class C_Hatchback_01_EPOCH2
+		{
+			ReqMaterials[] = {{1,"KitVehicleUpgradeIII_100_EPOCH"}};
+			upgradeToVehicle = "C_Hatchback_01_EPOCH3";
+		};
+		class C_Hatchback_02_EPOCH2: C_Hatchback_01_EPOCH2
+		{
+			upgradeToVehicle = "C_Hatchback_02_EPOCH3";
+		};
+		class C_Offroad_01_EPOCH2: C_Hatchback_01_EPOCH2
+		{
+			upgradeToVehicle = "C_Offroad_01_EPOCH3";
+		};
+		class C_SUV_01_EPOCH2: C_Hatchback_01_EPOCH2
+		{
+			upgradeToVehicle = "C_SUV_01_EPOCH3";
+		};
+	};
+	class KitVehicleUpgradeIII_200_EPOCH
+	{
+		class C_Hatchback_01_EPOCH2
+		{
+			ReqMaterials[] = {{1,"KitVehicleUpgradeIII_200_EPOCH"}};
+			upgradeToVehicle = "C_Hatchback_01_EPOCH3";
+		};
+		class C_Hatchback_02_EPOCH2: C_Hatchback_01_EPOCH2
+		{
+			upgradeToVehicle = "C_Hatchback_02_EPOCH3";
+		};
+		class C_Offroad_01_EPOCH2: C_Hatchback_01_EPOCH2
+		{
+			upgradeToVehicle = "C_Offroad_01_EPOCH3";
+		};
+		class C_SUV_01_EPOCH2: C_Hatchback_01_EPOCH2
+		{
+			upgradeToVehicle = "C_SUV_01_EPOCH3";
+		};
+	};
+	class KitVehicleUpgradeIII_300_EPOCH
+	{
+		class C_Hatchback_01_EPOCH2
+		{
+			ReqMaterials[] = {{1,"KitVehicleUpgradeIII_300_EPOCH"}};
+			upgradeToVehicle = "C_Hatchback_01_EPOCH3";
+		};
+		class C_Hatchback_02_EPOCH2: C_Hatchback_01_EPOCH2
+		{
+			upgradeToVehicle = "C_Hatchback_02_EPOCH3";
+		};
+		class C_Offroad_01_EPOCH2: C_Hatchback_01_EPOCH2
+		{
+			upgradeToVehicle = "C_Offroad_01_EPOCH3";
+		};
+		class C_SUV_01_EPOCH2: C_Hatchback_01_EPOCH2
+		{
+			upgradeToVehicle = "C_SUV_01_EPOCH3";
+		};
+	};
 	class ItemVehDoc4
 	{
 		class C_Hatchback_01_EPOCH3
@@ -96,7 +267,64 @@ class CfgVehicleUpgrades
 			upgradeToVehicle = "C_SUV_01_EPOCH4";
 		};
 	};
-	class KitVehicleUpgradeIV_100_EPOCH: ItemVehDoc1{};
-	class KitVehicleUpgradeIV_200_EPOCH: ItemVehDoc1{};
-	class KitVehicleUpgradeIV_300_EPOCH: ItemVehDoc1{};
+	class KitVehicleUpgradeIV_100_EPOCH
+	{
+		class C_Hatchback_01_EPOCH3
+		{
+			ReqMaterials[] = {{1,"KitVehicleUpgradeIV_100_EPOCH"}};
+			upgradeToVehicle = "C_Hatchback_01_EPOCH4";
+		};
+		class C_Hatchback_02_EPOCH3: C_Hatchback_01_EPOCH3
+		{
+			upgradeToVehicle = "C_Hatchback_02_EPOCH4";
+		};
+		class C_Offroad_01_EPOCH3: C_Hatchback_01_EPOCH3
+		{
+			upgradeToVehicle = "C_Offroad_01_EPOCH4";
+		};
+		class C_SUV_01_EPOCH3: C_Hatchback_01_EPOCH3
+		{
+			upgradeToVehicle = "C_SUV_01_EPOCH4";
+		};
+	};
+	class KitVehicleUpgradeIV_200_EPOCH
+	{
+		class C_Hatchback_01_EPOCH3
+		{
+			ReqMaterials[] = {{1,"KitVehicleUpgradeIV_200_EPOCH"}};
+			upgradeToVehicle = "C_Hatchback_01_EPOCH4";
+		};
+		class C_Hatchback_02_EPOCH3: C_Hatchback_01_EPOCH3
+		{
+			upgradeToVehicle = "C_Hatchback_02_EPOCH4";
+		};
+		class C_Offroad_01_EPOCH3: C_Hatchback_01_EPOCH3
+		{
+			upgradeToVehicle = "C_Offroad_01_EPOCH4";
+		};
+		class C_SUV_01_EPOCH3: C_Hatchback_01_EPOCH3
+		{
+			upgradeToVehicle = "C_SUV_01_EPOCH4";
+		};
+	};
+	class KitVehicleUpgradeIV_300_EPOCH
+	{
+		class C_Hatchback_01_EPOCH3
+		{
+			ReqMaterials[] = {{1,"KitVehicleUpgradeIV_300_EPOCH"}};
+			upgradeToVehicle = "C_Hatchback_01_EPOCH4";
+		};
+		class C_Hatchback_02_EPOCH3: C_Hatchback_01_EPOCH3
+		{
+			upgradeToVehicle = "C_Hatchback_02_EPOCH4";
+		};
+		class C_Offroad_01_EPOCH3: C_Hatchback_01_EPOCH3
+		{
+			upgradeToVehicle = "C_Offroad_01_EPOCH4";
+		};
+		class C_SUV_01_EPOCH3: C_Hatchback_01_EPOCH3
+		{
+			upgradeToVehicle = "C_SUV_01_EPOCH4";
+		};
+	};
 };
