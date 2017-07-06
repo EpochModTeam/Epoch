@@ -26,6 +26,18 @@ class CfgVehicleUpgrades
 		{
 			upgradeToVehicle = "C_SUV_01_EPOCH1";
 		};
+		class B_MRAP_01_EPOCH: C_Hatchback_01_EPOCH
+		{
+			upgradeToVehicle = "B_MRAP_01_EPOCH1";
+		};
+		class O_MRAP_02_EPOCH: C_Hatchback_01_EPOCH
+		{
+			upgradeToVehicle = "O_MRAP_02_EPOCH1";
+		};
+		class I_MRAP_03_EPOCH: C_Hatchback_01_EPOCH
+		{
+			upgradeToVehicle = "I_MRAP_03_EPOCH1";
+		};
 	};
 	class KitVehicleUpgradeI_100_EPOCH
 	{
@@ -45,6 +57,18 @@ class CfgVehicleUpgrades
 		class C_SUV_01_EPOCH: C_Hatchback_01_EPOCH
 		{
 			upgradeToVehicle = "C_SUV_01_EPOCH1";
+		};
+		class B_MRAP_01_EPOCH: C_Hatchback_01_EPOCH
+		{
+			upgradeToVehicle = "B_MRAP_01_EPOCH1";
+		};
+		class O_MRAP_02_EPOCH: C_Hatchback_01_EPOCH
+		{
+			upgradeToVehicle = "O_MRAP_02_EPOCH1";
+		};
+		class I_MRAP_03_EPOCH: C_Hatchback_01_EPOCH
+		{
+			upgradeToVehicle = "I_MRAP_03_EPOCH1";
 		};
 	};
 	class KitVehicleUpgradeI_200_EPOCH
@@ -66,6 +90,18 @@ class CfgVehicleUpgrades
 		{
 			upgradeToVehicle = "C_SUV_01_EPOCH1";
 		};
+		class B_MRAP_01_EPOCH: C_Hatchback_01_EPOCH
+		{
+			upgradeToVehicle = "B_MRAP_01_EPOCH1";
+		};
+		class O_MRAP_02_EPOCH: C_Hatchback_01_EPOCH
+		{
+			upgradeToVehicle = "O_MRAP_02_EPOCH1";
+		};
+		class I_MRAP_03_EPOCH: C_Hatchback_01_EPOCH
+		{
+			upgradeToVehicle = "I_MRAP_03_EPOCH1";
+		};
 	};
 	class KitVehicleUpgradeI_300_EPOCH
 	{
@@ -85,6 +121,18 @@ class CfgVehicleUpgrades
 		class C_SUV_01_EPOCH: C_Hatchback_01_EPOCH
 		{
 			upgradeToVehicle = "C_SUV_01_EPOCH1";
+		};
+		class B_MRAP_01_EPOCH: C_Hatchback_01_EPOCH
+		{
+			upgradeToVehicle = "B_MRAP_01_EPOCH1";
+		};
+		class O_MRAP_02_EPOCH: C_Hatchback_01_EPOCH
+		{
+			upgradeToVehicle = "O_MRAP_02_EPOCH1";
+		};
+		class I_MRAP_03_EPOCH: C_Hatchback_01_EPOCH
+		{
+			upgradeToVehicle = "I_MRAP_03_EPOCH1";
 		};
 	};
 	class ItemVehDoc2
@@ -106,6 +154,18 @@ class CfgVehicleUpgrades
 		{
 			upgradeToVehicle = "C_SUV_01_EPOCH2";
 		};
+		class B_MRAP_01_EPOCH1: C_Hatchback_01_EPOCH1
+		{
+			upgradeToVehicle = "B_MRAP_01_EPOCH2";
+		};
+		class O_MRAP_02_EPOCH1: C_Hatchback_01_EPOCH1
+		{
+			upgradeToVehicle = "O_MRAP_02_EPOCH2";
+		};
+		class I_MRAP_03_EPOCH1: C_Hatchback_01_EPOCH1
+		{
+			upgradeToVehicle = "I_MRAP_03_EPOCH2";
+		};
 	};
 	class KitVehicleUpgradeII_100_EPOCH
 	{
@@ -125,6 +185,18 @@ class CfgVehicleUpgrades
 		class C_SUV_01_EPOCH1: C_Hatchback_01_EPOCH1
 		{
 			upgradeToVehicle = "C_SUV_01_EPOCH2";
+		};
+		class B_MRAP_01_EPOCH1: C_Hatchback_01_EPOCH1
+		{
+			upgradeToVehicle = "B_MRAP_01_EPOCH2";
+		};
+		class O_MRAP_02_EPOCH1: C_Hatchback_01_EPOCH1
+		{
+			upgradeToVehicle = "O_MRAP_02_EPOCH2";
+		};
+		class I_MRAP_03_EPOCH1: C_Hatchback_01_EPOCH1
+		{
+			upgradeToVehicle = "I_MRAP_03_EPOCH2";
 		};
 	};
 	class KitVehicleUpgradeII_200_EPOCH
@@ -146,6 +218,18 @@ class CfgVehicleUpgrades
 		{
 			upgradeToVehicle = "C_SUV_01_EPOCH2";
 		};
+		class B_MRAP_01_EPOCH1: C_Hatchback_01_EPOCH1
+		{
+			upgradeToVehicle = "B_MRAP_01_EPOCH2";
+		};
+		class O_MRAP_02_EPOCH1: C_Hatchback_01_EPOCH1
+		{
+			upgradeToVehicle = "O_MRAP_02_EPOCH2";
+		};
+		class I_MRAP_03_EPOCH1: C_Hatchback_01_EPOCH1
+		{
+			upgradeToVehicle = "I_MRAP_03_EPOCH2";
+		};
 	};
 	class KitVehicleUpgradeII_300_EPOCH
 	{
@@ -165,6 +249,18 @@ class CfgVehicleUpgrades
 		class C_SUV_01_EPOCH1: C_Hatchback_01_EPOCH1
 		{
 			upgradeToVehicle = "C_SUV_01_EPOCH2";
+		};
+		class B_MRAP_01_EPOCH1: C_Hatchback_01_EPOCH1
+		{
+			upgradeToVehicle = "B_MRAP_01_EPOCH2";
+		};
+		class O_MRAP_02_EPOCH1: C_Hatchback_01_EPOCH1
+		{
+			upgradeToVehicle = "O_MRAP_02_EPOCH2";
+		};
+		class I_MRAP_03_EPOCH1: C_Hatchback_01_EPOCH1
+		{
+			upgradeToVehicle = "I_MRAP_03_EPOCH2";
 		};
 	};
 	class ItemVehDoc3
@@ -186,6 +282,18 @@ class CfgVehicleUpgrades
 		{
 			upgradeToVehicle = "C_SUV_01_EPOCH3";
 		};
+		class B_MRAP_01_EPOCH2: C_Hatchback_01_EPOCH2
+		{
+			upgradeToVehicle = "B_MRAP_01_EPOCH3";
+		};
+		class O_MRAP_02_EPOCH2: C_Hatchback_01_EPOCH2
+		{
+			upgradeToVehicle = "O_MRAP_02_EPOCH3";
+		};
+		class I_MRAP_03_EPOCH2: C_Hatchback_01_EPOCH2
+		{
+			upgradeToVehicle = "I_MRAP_03_EPOCH3";
+		};
 	};
 	class KitVehicleUpgradeIII_100_EPOCH
 	{
@@ -205,6 +313,18 @@ class CfgVehicleUpgrades
 		class C_SUV_01_EPOCH2: C_Hatchback_01_EPOCH2
 		{
 			upgradeToVehicle = "C_SUV_01_EPOCH3";
+		};
+		class B_MRAP_01_EPOCH2: C_Hatchback_01_EPOCH2
+		{
+			upgradeToVehicle = "B_MRAP_01_EPOCH3";
+		};
+		class O_MRAP_02_EPOCH2: C_Hatchback_01_EPOCH2
+		{
+			upgradeToVehicle = "O_MRAP_02_EPOCH3";
+		};
+		class I_MRAP_03_EPOCH2: C_Hatchback_01_EPOCH2
+		{
+			upgradeToVehicle = "I_MRAP_03_EPOCH3";
 		};
 	};
 	class KitVehicleUpgradeIII_200_EPOCH
@@ -226,6 +346,18 @@ class CfgVehicleUpgrades
 		{
 			upgradeToVehicle = "C_SUV_01_EPOCH3";
 		};
+		class B_MRAP_01_EPOCH2: C_Hatchback_01_EPOCH2
+		{
+			upgradeToVehicle = "B_MRAP_01_EPOCH3";
+		};
+		class O_MRAP_02_EPOCH2: C_Hatchback_01_EPOCH2
+		{
+			upgradeToVehicle = "O_MRAP_02_EPOCH3";
+		};
+		class I_MRAP_03_EPOCH2: C_Hatchback_01_EPOCH2
+		{
+			upgradeToVehicle = "I_MRAP_03_EPOCH3";
+		};
 	};
 	class KitVehicleUpgradeIII_300_EPOCH
 	{
@@ -245,6 +377,18 @@ class CfgVehicleUpgrades
 		class C_SUV_01_EPOCH2: C_Hatchback_01_EPOCH2
 		{
 			upgradeToVehicle = "C_SUV_01_EPOCH3";
+		};
+		class B_MRAP_01_EPOCH2: C_Hatchback_01_EPOCH2
+		{
+			upgradeToVehicle = "B_MRAP_01_EPOCH3";
+		};
+		class O_MRAP_02_EPOCH2: C_Hatchback_01_EPOCH2
+		{
+			upgradeToVehicle = "O_MRAP_02_EPOCH3";
+		};
+		class I_MRAP_03_EPOCH2: C_Hatchback_01_EPOCH2
+		{
+			upgradeToVehicle = "I_MRAP_03_EPOCH3";
 		};
 	};
 	class ItemVehDoc4
@@ -266,6 +410,18 @@ class CfgVehicleUpgrades
 		{
 			upgradeToVehicle = "C_SUV_01_EPOCH4";
 		};
+		class B_MRAP_01_EPOCH3: C_Hatchback_01_EPOCH3
+		{
+			upgradeToVehicle = "B_MRAP_01_EPOCH4";
+		};
+		class O_MRAP_02_EPOCH3: C_Hatchback_01_EPOCH3
+		{
+			upgradeToVehicle = "O_MRAP_02_EPOCH4";
+		};
+		class I_MRAP_03_EPOCH3: C_Hatchback_01_EPOCH3
+		{
+			upgradeToVehicle = "I_MRAP_03_EPOCH4";
+		};
 	};
 	class KitVehicleUpgradeIV_100_EPOCH
 	{
@@ -285,6 +441,18 @@ class CfgVehicleUpgrades
 		class C_SUV_01_EPOCH3: C_Hatchback_01_EPOCH3
 		{
 			upgradeToVehicle = "C_SUV_01_EPOCH4";
+		};
+		class B_MRAP_01_EPOCH3: C_Hatchback_01_EPOCH3
+		{
+			upgradeToVehicle = "B_MRAP_01_EPOCH4";
+		};
+		class O_MRAP_02_EPOCH3: C_Hatchback_01_EPOCH3
+		{
+			upgradeToVehicle = "O_MRAP_02_EPOCH4";
+		};
+		class I_MRAP_03_EPOCH3: C_Hatchback_01_EPOCH3
+		{
+			upgradeToVehicle = "I_MRAP_03_EPOCH4";
 		};
 	};
 	class KitVehicleUpgradeIV_200_EPOCH
@@ -306,6 +474,18 @@ class CfgVehicleUpgrades
 		{
 			upgradeToVehicle = "C_SUV_01_EPOCH4";
 		};
+		class B_MRAP_01_EPOCH3: C_Hatchback_01_EPOCH3
+		{
+			upgradeToVehicle = "B_MRAP_01_EPOCH4";
+		};
+		class O_MRAP_02_EPOCH3: C_Hatchback_01_EPOCH3
+		{
+			upgradeToVehicle = "O_MRAP_02_EPOCH4";
+		};
+		class I_MRAP_03_EPOCH3: C_Hatchback_01_EPOCH3
+		{
+			upgradeToVehicle = "I_MRAP_03_EPOCH4";
+		};
 	};
 	class KitVehicleUpgradeIV_300_EPOCH
 	{
@@ -325,6 +505,18 @@ class CfgVehicleUpgrades
 		class C_SUV_01_EPOCH3: C_Hatchback_01_EPOCH3
 		{
 			upgradeToVehicle = "C_SUV_01_EPOCH4";
+		};
+		class B_MRAP_01_EPOCH3: C_Hatchback_01_EPOCH3
+		{
+			upgradeToVehicle = "B_MRAP_01_EPOCH4";
+		};
+		class O_MRAP_02_EPOCH3: C_Hatchback_01_EPOCH3
+		{
+			upgradeToVehicle = "O_MRAP_02_EPOCH4";
+		};
+		class I_MRAP_03_EPOCH3: C_Hatchback_01_EPOCH3
+		{
+			upgradeToVehicle = "I_MRAP_03_EPOCH4";
 		};
 	};
 };
