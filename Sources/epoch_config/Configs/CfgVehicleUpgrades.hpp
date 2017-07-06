@@ -138,6 +138,12 @@ class CfgVehicleUpgrades
 			ReqMaterials[] = {{1,"ItemVehDoc3"},{5,"ItemCorrugatedLg"},{8,"ItemPipe"},{4,"KitShelf"}};
 			upgradeToVehicle = "C_Van_01_transport_EPOCH3";
 		};
+		class O_Truck_02_covered_EPOCH: C_Hatchback_01_EPOCH2			{	upgradeToVehicle = "O_Truck_02_covered_EPOCH3";	};
+		class O_Truck_02_transport_EPOCH: C_Hatchback_01_EPOCH2	
+		{
+			ReqMaterials[] = {{1,"ItemVehDoc3"},{6,"ItemBurlap"},{6,"ItemPipe"},{4,"KitShelf"}};
+			upgradeToVehicle = "O_Truck_02_transport_EPOCH3";
+		};
 	};
 	class KitVehicleUpgradeIII_100_EPOCH
 	{
@@ -157,6 +163,12 @@ class CfgVehicleUpgrades
 		{
 			ReqMaterials[] = {{1,"KitVehicleUpgradeIII_100_EPOCH"},{5,"ItemCorrugatedLg"},{6,"ItemPipe"},{2,"KitShelf"}};
 			upgradeToVehicle = "C_Van_01_transport_EPOCH3";
+		};
+		class O_Truck_02_covered_EPOCH: C_Hatchback_01_EPOCH2			{	upgradeToVehicle = "O_Truck_02_covered_EPOCH3";	};
+		class O_Truck_02_transport_EPOCH: C_Hatchback_01_EPOCH2	
+		{
+			ReqMaterials[] = {{1,"KitVehicleUpgradeIII_100_EPOCH"},{6,"ItemBurlap"},{4,"ItemPipe"},{2,"KitShelf"}};
+			upgradeToVehicle = "O_Truck_02_transport_EPOCH3";
 		};
 	};
 	class KitVehicleUpgradeIII_200_EPOCH
@@ -178,6 +190,12 @@ class CfgVehicleUpgrades
 			ReqMaterials[] = {{1,"KitVehicleUpgradeIII_200_EPOCH"},{5,"ItemCorrugatedLg"},{6,"ItemPipe"},{2,"KitShelf"}};
 			upgradeToVehicle = "C_Van_01_transport_EPOCH3";
 		};
+		class O_Truck_02_covered_EPOCH: C_Hatchback_01_EPOCH2			{	upgradeToVehicle = "O_Truck_02_covered_EPOCH3";	};
+		class O_Truck_02_transport_EPOCH: C_Hatchback_01_EPOCH2	
+		{
+			ReqMaterials[] = {{1,"KitVehicleUpgradeIII_100_EPOCH"},{6,"ItemBurlap"},{4,"ItemPipe"},{2,"KitShelf"}};
+			upgradeToVehicle = "O_Truck_02_transport_EPOCH3";
+		};
 	};
 	class KitVehicleUpgradeIII_300_EPOCH
 	{
@@ -198,6 +216,12 @@ class CfgVehicleUpgrades
 			ReqMaterials[] = {{1,"KitVehicleUpgradeIII_300_EPOCH"},{5,"ItemCorrugatedLg"},{6,"ItemPipe"},{2,"KitShelf"}};
 			upgradeToVehicle = "C_Van_01_transport_EPOCH3";
 		};
+		class O_Truck_02_covered_EPOCH: C_Hatchback_01_EPOCH2			{	upgradeToVehicle = "O_Truck_02_covered_EPOCH3";	};
+		class O_Truck_02_transport_EPOCH: C_Hatchback_01_EPOCH2	
+		{
+			ReqMaterials[] = {{1,"KitVehicleUpgradeIII_100_EPOCH"},{6,"ItemBurlap"},{4,"ItemPipe"},{2,"KitShelf"}};
+			upgradeToVehicle = "O_Truck_02_transport_EPOCH3";
+		};
 	};
 	class ItemVehDoc4
 	{
@@ -214,6 +238,8 @@ class CfgVehicleUpgrades
 		class I_MRAP_03_EPOCH3: C_Hatchback_01_EPOCH3			{	upgradeToVehicle = "I_MRAP_03_EPOCH4";		};
 		class C_Van_01_box_EPOCH3: C_Hatchback_01_EPOCH3		{	upgradeToVehicle = "C_Van_01_box_EPOCH4";	};
 		class C_Van_01_transport_EPOCH3: C_Hatchback_01_EPOCH3	{	upgradeToVehicle = "C_Van_01_transport_EPOCH4";	};
+		class O_Truck_02_covered_EPOCH3: C_Hatchback_01_EPOCH3	{	upgradeToVehicle = "O_Truck_02_covered_EPOCH4";	};
+		class O_Truck_02_transport_EPOCH3: C_Hatchback_01_EPOCH3 {	upgradeToVehicle = "O_Truck_02_transport_EPOCH4"; };
 	};
 	class KitVehicleUpgradeIV_100_EPOCH
 	{
@@ -230,6 +256,8 @@ class CfgVehicleUpgrades
 		class I_MRAP_03_EPOCH3: C_Hatchback_01_EPOCH3			{	upgradeToVehicle = "I_MRAP_03_EPOCH4";		};
 		class C_Van_01_box_EPOCH3: C_Hatchback_01_EPOCH3		{	upgradeToVehicle = "C_Van_01_box_EPOCH4";	};
 		class C_Van_01_transport_EPOCH3: C_Hatchback_01_EPOCH3	{	upgradeToVehicle = "C_Van_01_transport_EPOCH4";	};
+		class O_Truck_02_covered_EPOCH3: C_Hatchback_01_EPOCH3	{	upgradeToVehicle = "O_Truck_02_covered_EPOCH4";	};
+		class O_Truck_02_transport_EPOCH3: C_Hatchback_01_EPOCH3 {	upgradeToVehicle = "O_Truck_02_transport_EPOCH4"; };
 	};
 	class KitVehicleUpgradeIV_200_EPOCH
 	{
@@ -246,6 +274,8 @@ class CfgVehicleUpgrades
 		class I_MRAP_03_EPOCH3: C_Hatchback_01_EPOCH3			{	upgradeToVehicle = "I_MRAP_03_EPOCH4";		};
 		class C_Van_01_box_EPOCH3: C_Hatchback_01_EPOCH3		{	upgradeToVehicle = "C_Van_01_box_EPOCH4";	};
 		class C_Van_01_transport_EPOCH3: C_Hatchback_01_EPOCH3	{	upgradeToVehicle = "C_Van_01_transport_EPOCH4";	};
+		class O_Truck_02_covered_EPOCH3: C_Hatchback_01_EPOCH3	{	upgradeToVehicle = "O_Truck_02_covered_EPOCH4";	};
+		class O_Truck_02_transport_EPOCH3: C_Hatchback_01_EPOCH3 {	upgradeToVehicle = "O_Truck_02_transport_EPOCH4"; };
 	};
 	class KitVehicleUpgradeIV_300_EPOCH
 	{
@@ -262,5 +292,7 @@ class CfgVehicleUpgrades
 		class I_MRAP_03_EPOCH3: C_Hatchback_01_EPOCH3			{	upgradeToVehicle = "I_MRAP_03_EPOCH4";		};
 		class C_Van_01_box_EPOCH3: C_Hatchback_01_EPOCH3		{	upgradeToVehicle = "C_Van_01_box_EPOCH4";	};
 		class C_Van_01_transport_EPOCH3: C_Hatchback_01_EPOCH3	{	upgradeToVehicle = "C_Van_01_transport_EPOCH4";	};
+		class O_Truck_02_covered_EPOCH3: C_Hatchback_01_EPOCH3	{	upgradeToVehicle = "O_Truck_02_covered_EPOCH4";	};
+		class O_Truck_02_transport_EPOCH3: C_Hatchback_01_EPOCH3 {	upgradeToVehicle = "O_Truck_02_transport_EPOCH4"; };
 	};
 };
