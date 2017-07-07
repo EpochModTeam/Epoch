@@ -295,4 +295,16 @@ class CfgVehicleUpgrades
 		class O_Truck_02_covered_EPOCH3: C_Hatchback_01_EPOCH3	{	upgradeToVehicle = "O_Truck_02_covered_EPOCH4";	};
 		class O_Truck_02_transport_EPOCH3: C_Hatchback_01_EPOCH3 {	upgradeToVehicle = "O_Truck_02_transport_EPOCH4"; };
 	};
+	class ItemVehDoc5 {};
+	class ItemVehDocRara 
+	{
+		class K01
+		{
+			ReqMaterials[] = {{1,"ItemVehDocRara"},{2,"PaintCanOra"},{4,"ItemPipe"},{2,"jerrycan_epoch"}};
+			upgradeToVehicle = "mosquito_epoch";
+		};
+		class K02: K01{};
+		class K03: K01{};
+		class K04: K01{};
+	};
 };
