@@ -13,7 +13,7 @@
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server/compile/epoch_player/EPOCH_server_loadPlayer.sqf
 */
 //[[[cog import generate_private_arrays ]]]
-private ["_allGroupMembers","_alreadyDead","_attachments","_backpack","_canBeRevived","_class","_currWeap","_deadPlayer","_defaultData","_dir","_equipped","_found","_goggles","_group","_headgear","_hitpoints","_instanceID","_itemsInContainers","_jammer","_jammers","_linkedItems","_location","_newLocation","_newPlyr","_normalMagazines","_playerData","_playerGroup","_playerGroupArray","_playerNetID","_playerUID","_reject","_serverSettingsConfig","_type","_uniform","_vars","_vest","_wMags","_wMagsArray","_weapon","_weaponsAndItems","_weaponsInContainers"];
+private ["_CheckLocation","_allGroupMembers","_alreadyDead","_attachments","_backpack","_canBeRevived","_class","_currWeap","_deadPlayer","_defaultData","_dir","_equipped","_found","_goggles","_group","_headgear","_hitpoints","_instanceID","_itemsInContainers","_jammer","_jammers","_linkedItems","_location","_newLocation","_newPlyr","_normalMagazines","_playerData","_playerGroup","_playerGroupArray","_playerNetID","_playerUID","_reject","_serverSettingsConfig","_type","_uniform","_vars","_vest","_wMags","_wMagsArray","_weapon","_weaponsAndItems","_weaponsInContainers"];
 //[[[end]]]
 _reject = true;
 
