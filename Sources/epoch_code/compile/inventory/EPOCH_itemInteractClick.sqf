@@ -60,6 +60,23 @@ if (isClass (_config >> _data)) then {
     EPOCH_CraftingItem = "";
 };
 
+_config = 'CfgVehicleUpgrades' call EPOCH_returnConfig;
+if (isClass (_config >> _data)) then {
+    {
+        if (isclass (_config >> _data >> (typeof _x))) exitwith {
+            EPOCH_UpgradeVehicle = [_data,_x];
+            _reqMaterials = getArray (_config >> _data >> (typeof _x) >> "ReqMaterials");
+            _itemtxt = "required: ";
+            {
+                _itemtxt = _itemtxt + str (_x select 0) + ((_x select 1) call EPOCH_itemDisplayName) + ", ";
+            } foreach _reqMaterials;
+            _txt1 = format ["Upgrade %1", (typeof _x) call EPOCH_itemDisplayName];
+            _txt2 = "EPOCH_UpgradeVehicle call EPOCH_Client_UpgradeVehicle;";
+            _button_texts pushBack [_txt1,_txt2];
+        };
+    } foreach (nearestobjects [player,["Landvehicle","SHIP","AIR","TANK"],10]);
+};
+
 if !(_button_texts isEqualTo []) then {
     _display = ctrlParent (_this select 0);
     _pos = getMousePosition;

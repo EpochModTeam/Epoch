@@ -73,9 +73,12 @@ if (_slot != -1) then {
 						if (_playerNetID == (owner _vehicle)) then {
 
 							_vehSlot = _vehicle getVariable["VEHICLE_SLOT", "ABORT"];
-							if (!_vehicleSold && _vehSlot != "ABORT") then {
-
-								removeFromRemainsCollector[_vehicle];
+                            if (!_vehicleSold && _vehSlot != "ABORT") then {
+                                _BaseClass = _vehicle getvariable ["VEHICLE_BaseClass",""];
+                                if !(_BaseClass isequalto "") then {
+                                    _item = _BaseClass;
+                                };
+                                removeFromRemainsCollector[_vehicle];
 								deleteVehicle _vehicle;
 								_vehicleSold = true;
 

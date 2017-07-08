@@ -308,7 +308,18 @@ switch _interactOption do {
 			["Unpacked backpack", 5] call Epoch_message;
 		};
 	};
-
+		
+	case 15: { // Read
+		_msg = getArray(missionConfigFile >> "CfgReadingDocuments" >> _item >> "displayMessage");
+		if!(_msg isEqualTo [])then{
+			{
+				[_x,5] call Epoch_message;
+			}forEach _msg;
+		}else{
+			["This document can't be read yet. Blame DirtySanchez!",5] call Epoch_message;
+		};
+	};
+	
 	default {
 		["Found nothing", 5] call Epoch_message;
 	};

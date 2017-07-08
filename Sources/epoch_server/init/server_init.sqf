@@ -163,7 +163,7 @@ diag_log "Epoch: Spawning vehicles";
 _allowedVehiclesListArray = [];
 {
     _x params ["_vehClass","_velimit"];
-    _vehicleCount = {typeOf _x == _vehClass} count vehicles;
+     _vehicleCount = {(_x getvariable ["VEHICLE_BaseClass",typeOf _x]) == _vehClass} count vehicles;
 
     // Load how many of this vehicle are in stock at any trader.
     _indexStock = EPOCH_traderStoredVehicles find _vehClass;

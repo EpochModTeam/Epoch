@@ -1021,6 +1021,42 @@ class CfgCrafting
 		previewScale = 0.2;
 		previewVector = -1.8;
 	};
+	class KitVehicleUpgradeI_100_EPOCH : Kit
+	{
+		recipe[] = { {"ItemVehDoc1",1}, {"CircuitParts",1}, {"ItemCables",1}, {"VehicleRepairLg",2} };
+		previewPosition[] = {0.801715,1,0.331674};
+        previewScale = 1.5;
+        previewVector = 0.3;
+	};
+	class KitVehicleUpgradeI_200_EPOCH : KitVehicleUpgradeI_100_EPOCH{};
+	class KitVehicleUpgradeI_300_EPOCH : KitVehicleUpgradeI_100_EPOCH{};
+	class KitVehicleUpgradeII_100_EPOCH : Kit
+	{
+		recipe[] = { {"ItemVehDoc2",1}, {"SpareTire",1}, {"KitTankTrap",2}, {"ItemAluminumBar10oz",2} };
+		previewPosition[] = {0.801715,1,0.331674};
+        previewScale = 1.5;
+        previewVector = 0.3;
+	};
+	class KitVehicleUpgradeII_200_EPOCH : KitVehicleUpgradeII_100_EPOCH{};
+	class KitVehicleUpgradeII_300_EPOCH : KitVehicleUpgradeII_100_EPOCH{};
+	class KitVehicleUpgradeIII_100_EPOCH : Kit
+	{
+		recipe[] = { {"ItemVehDoc3",1}, {"ItemPipes",2}, {"KitShelf",2}, {"ItemBurlap",2} };
+		previewPosition[] = {0.801715,1,0.331674};
+        previewScale = 1.5;
+        previewVector = 0.3;
+	};
+	class KitVehicleUpgradeIII_200_EPOCH : KitVehicleUpgradeIII_100_EPOCH{};
+	class KitVehicleUpgradeIII_300_EPOCH : KitVehicleUpgradeIII_100_EPOCH{};
+	class KitVehicleUpgradeIV_100_EPOCH : Kit
+	{
+		recipe[] = { {"ItemVehDoc4",1}, {"CircuitParts",1}, {"ItemScraps",2}, {"jerrycan_epoch",2} };
+		previewPosition[] = {0.801715,1,0.331674};
+        previewScale = 1.5;
+        previewVector = 0.3;
+	};
+	class KitVehicleUpgradeIV_200_EPOCH : KitVehicleUpgradeIV_100_EPOCH{};
+	class KitVehicleUpgradeIV_300_EPOCH : KitVehicleUpgradeIV_100_EPOCH{};
 };
 
 /*[[[end]]]*/

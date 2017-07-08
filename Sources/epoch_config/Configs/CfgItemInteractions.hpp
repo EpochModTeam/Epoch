@@ -540,7 +540,7 @@ class CfgItemInteractions
     class ItemKeyYellow : ItemKey {};
     class ItemDoc1 : Default
     {
-        interactAction = -1;
+        interactAction = 15;
         interactText = "READ";
     };
     class ItemDoc2 : ItemDoc1 {};
@@ -554,6 +554,18 @@ class CfgItemInteractions
     class ItemVehDoc2 : ItemDoc1 {};
     class ItemVehDoc3 : ItemDoc1 {};
     class ItemVehDoc4 : ItemDoc1 {};
+	class KitVehicleUpgradeI_100_EPOCH : ItemDoc1 {};
+	class KitVehicleUpgradeI_200_EPOCH : ItemDoc1 {};
+	class KitVehicleUpgradeI_300_EPOCH : ItemDoc1 {};
+	class KitVehicleUpgradeII_100_EPOCH : ItemDoc1 {};
+	class KitVehicleUpgradeII_200_EPOCH : ItemDoc1 {};
+	class KitVehicleUpgradeII_300_EPOCH : ItemDoc1 {};
+	class KitVehicleUpgradeIII_100_EPOCH : ItemDoc1 {};
+	class KitVehicleUpgradeIII_200_EPOCH : ItemDoc1 {};
+	class KitVehicleUpgradeIII_300_EPOCH : ItemDoc1 {};
+	class KitVehicleUpgradeIV_100_EPOCH : ItemDoc1 {};
+	class KitVehicleUpgradeIV_200_EPOCH : ItemDoc1 {};
+	class KitVehicleUpgradeIV_300_EPOCH : ItemDoc1 {};
     class ItemBulb : Default {};
     class ItemBurlap : Default {};
     class ItemBriefcaseE : Default {};
