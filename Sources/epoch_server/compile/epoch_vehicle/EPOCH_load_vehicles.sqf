@@ -42,7 +42,7 @@ for "_i" from 1 to _maxVehicleLimit do {
 	if ((_response select 0) == 1 && (_response select 1) isEqualType []) then {
 		_arr = _response select 1;
 		_arrNum = count _arr;
-		
+
 		// New Upgrade System adds to DB array, check and correct older saved vehicles
 		if (_arrNum < _dataFormatCount) then {
 			{
@@ -52,7 +52,7 @@ for "_i" from 1 to _maxVehicleLimit do {
 				};
 			} foreach _dataFormat;
 		};
-		
+
 		if (_arrNum == _dataFormatCount) then {
 
 			// Validate and replace invaild data
@@ -86,7 +86,7 @@ for "_i" from 1 to _maxVehicleLimit do {
 					_vehicle setVariable ["BIS_enableRandomization", false];
 					if !(isNull _vehicle) then {
 						// make vehicle immune from damage.
-						_vehicle allowDamage false;	
+						_vehicle allowDamage false;
 						// store spawned vehicles in array to make one call to remains handler
 						_allVehicles pushBack _vehicle;
 						// remove selected slot from array and set on vehicle
@@ -212,7 +212,7 @@ for "_i" from 1 to _maxVehicleLimit do {
 
 						// vehicle simulation handler
 						if (_simulationHandler) then{
-							_vehicle enableSimulationGlobal false;
+							_vehicle enableDynamicSimulation true;
 						};
 						// turrets
 						/*

@@ -111,3 +111,4 @@ _say3dsounds = "isClass _x" configClasses (_say3dsoundsConfig);
 
 // disable remote sensors on server and client as all Epoch AI is local to the side controlling it.
 disableRemoteSensors (["CfgEpochClient", "disableRemoteSensors", true] call EPOCH_fnc_returnConfigEntryV2);
+enableDynamicSimulationSystem true;
