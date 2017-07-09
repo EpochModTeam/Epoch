@@ -9,9 +9,7 @@
 7 allMissionObjects !="_alljammer = allmissionobjects 'PlotPole_EPOCH';"
 7 callExtension
 7 showCommandingMenu !="showCommandingMenu '';" !="showCommandingMenu '#USER:"
-7 moveIn !="fnc_moveInCargo" !="\"BIS_fnc_moveIn\"" !="\"A3\functions_f\Misc\fn_moveIn.sqf\"" !="\"A3\functions_f\arrays\fn_removeIndex.sqf\"" !="player moveInAny _vehicle;\nEPOCH_antiWallCount = EPOCH_antiWallCount + 1;" !="[\"I_UAV_AI\", position _unit, [], 0, \"CAN_COLLIDE\"];\n_driver moveInAny _unit;" !="_driver moveInAny Epoch_mission_uav;" !="axeVIP moveInDriver vehicle axeVIP;" !="axeVIP moveInCargo vehicle axeVIP;" !="_driver moveInDriver _axeCopter;" !="_unit moveInGunner _axeCopter;" !="axeVIP moveInDriver vehicle axeVIP;" !="axeVIP moveInCargo vehicle axeVIP;" !="_driver moveInAny axeUAV"
 7 enableCollisionWith
-7 hideObject !="_dogHolder hideobject true;" !="_dogHolder hideobject false;" !="player hideobject true;" !="_ship hideobject true;\n_ship hideobjectglobal true;"
 7 setvelocity !="setVelocityTarget" !="_bolt setPosATL _pos;\n_bolt setVelocity [0, 0, -10];" !="EPOCH_target setvelocitytransformation" !="_currentTarget setVelocity [0,0,-0.01];" !="_head setVelocity [\n(sin _dir * _speed), \n(cos _dir * _speed)" !="_vel = velocity this; _dir = getDir player; this setVelocity[(_vel select 0)+(sin _dir * 2),(_vel select 1)+(cos _dir * 2),(_vel select 2)];" !="_head setVelocity [random 2,random 2,10];" !="_bobber setVelocity [0,-1,-10];" !="_x setvelocity [0,0,0.1];" !="_veh setVelocity [0,0,0];" !="_this select 0 setvelocity (_this select 1)" !="_zombie setVelocityTransformation [_aslPos,_aslPos,_unitV,_unitV,_unitvDir,_vDir,_unitvUp,_unitvUp,2];"
 7 assignAs !"assignAsCargo" !="_unit assignAsGunner _axeCopter;" !="_driver assignAsDriver _axeCopter;" !="axeVIP assignAsDriver vehicle axeVIP;"
 7 assignAsCargo !="_x assignAsCargo axeGeneralsBoat;" !="axeVIP assignAsCargo vehicle player;" !="axeVIP assignAsCargo vehicle axeVIP;"
