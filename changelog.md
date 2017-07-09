@@ -3,6 +3,9 @@ All changes for [Arma 3](https://arma3.com/) [Epoch Mod](https://epochmod.com) a
 
 ## [Unreleased]
 ### Added
+- Vehicle Upgrade System and Documents. @DirtySanchez
+- Brown Briefcase that contains 100oz Silver. @DirtySanchez
+- CBA extended event handler and zeus curator support for Epoch Vehicles. @DirtySanchez
 - Initial support for Malden 2035 map released with A3 1.72+.
 - Base PlotPole ESP added to EpochAH. @SMVampire
 - Vector Base Building (uses Arrow keys by default and with SHIFT / ALT you can control the steps). @DirtySanchez & @Ignatz-Heman
@@ -22,8 +25,9 @@ All changes for [Arma 3](https://arma3.com/) [Epoch Mod](https://epochmod.com) a
 - Bump to hive version 0.6.0.0, Note: this requires epochserver hive extension updates server side.
 - Disable Gas Station Auto-Refuel on server startup. Use disableAutoRefuel = false; via epochconfig.hpp to disable. @SMVampire
 ### Fixed
-- One step is higher on stairs, can't run up while crouched #447 @Helion4
-- L85 Elcan optic issue #678 @Helion4
+- Spawning at base above Water was not working correctly. @Ignatz-Heman
+- One step is higher on stairs, can't run up while crouched. #447 @Helion4
+- L85 Elcan optic issue. #678 @Helion4
 - Zombie falsely triggers Mission success @Ignatz-Heman
 - Base Building 90° and 270° Snap was broken.
 - Sometimes snapped Base Building elements rotated back on save.
