@@ -3,7 +3,7 @@ All changes for [Arma 3](https://arma3.com/) [Epoch Mod](https://epochmod.com) a
 
 ## [Unreleased]
 ### Added
-- Vehicle Upgrade System and Documents. @DirtySanchez
+- Documents and Vehicle Upgrade System. @DirtySanchez
 - Brown Briefcase that contains 100oz Silver. @DirtySanchez
 - CBA extended event handler and zeus curator support for Epoch Vehicles. @DirtySanchez
 - Initial support for Malden 2035 map released with A3 1.72+.
@@ -17,13 +17,14 @@ All changes for [Arma 3](https://arma3.com/) [Epoch Mod](https://epochmod.com) a
 - Epoch Dev Libs, See https://github.com/EpochModTeam/Epoch/tree/experimental/Tools/DevFrameWork for more info. @raymix
 - Md5 hash function and Unit test to the hive. See usage example with EPOCH_fnc_server_hiveMD5 SQF function.
 ### Changed
+- Enabled A3 Dynamic Simulation on Vehicles.
 - Made ServicePoint more configurable @Ignatz-Heman
 - Base Building: Replaced 0/90/180/270° direction build mode with "Rotate 90°". @Ignatz-Heman
 - Base Building: Max building height now will be checked directly at building element placement. @Ignatz-Heman
 - Separated Hunger and Thirst loss values to baseHungerLoss/baseThirstLoss and removed baseHTLoss from CfgEpochClient.
 - Hunger and Thirst loss rates are now effected by timeMultiplier.
 - Bump to hive version 0.6.0.0, Note: this requires epochserver hive extension updates server side.
-- Disable Gas Station Auto-Refuel on server startup. Use disableAutoRefuel = false; via epochconfig.hpp to disable. @SMVampire
+- Gas Station Auto-Refuel is now disabled on all maps. Use disableAutoRefuel = false; via epochconfig.hpp to disable. @SMVampire
 ### Fixed
 - Spawning at base above Water was not working correctly. @Ignatz-Heman
 - One step is higher on stairs, can't run up while crouched. #447 @Helion4
