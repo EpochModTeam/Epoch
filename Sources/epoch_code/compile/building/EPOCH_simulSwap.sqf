@@ -22,7 +22,7 @@
 	NOTHING
 */
 //[[[cog import generate_private_arrays ]]]
-private ["_allowedSnapObjects","_allowedSnapPoints","_cfgBaseBuilding","_class","_create","_currentTarget","_dir2","_direction","_disallowed","_distance","_distanceMod","_distanceNear","_energyCost","_isSnap","_lastCheckTime","_nearestObject","_nearestObjectRaw","_newObj","_objSlot","_objType","_object","_oemType","_offset","_onContactEH","_pOffset","_playerdistance","_pos2","_prevSnapDistance","_previousDistanceNear","_rejectMove","_removeParts","_return","_simulClassConfig","_snapArrayPara","_snapArrayPerp","_snapDistance","_snapObjects","_snapPointsPara","_snapPointsPerp","_snapPos","_snapPosition","_snapType","_textureSlot","_up2","_vel2","_velocityTransformation","_worldspace"];
+private ["_maxBuildingHeight","_CfgEpochClient","_maxHeight","_allowedSnapObjects","_allowedSnapPoints","_cfgBaseBuilding","_class","_create","_currentTarget","_dir2","_direction","_disallowed","_distance","_distanceMod","_distanceNear","_energyCost","_isSnap","_lastCheckTime","_nearestObject","_nearestObjectRaw","_newObj","_objSlot","_objType","_object","_oemType","_offset","_onContactEH","_pOffset","_playerdistance","_pos2","_prevSnapDistance","_previousDistanceNear","_rejectMove","_removeParts","_return","_simulClassConfig","_snapArrayPara","_snapArrayPerp","_snapDistance","_snapObjects","_snapPointsPara","_snapPointsPerp","_snapPos","_snapPosition","_snapType","_textureSlot","_up2","_vel2","_velocityTransformation","_worldspace"];
 //[[[end]]]
 
 if !(isNil "EPOCH_simulSwap_Lock") exitWith{};
@@ -56,8 +56,17 @@ if (isText(_simulClassConfig)) then {
 	_allowedSnapObjects = ["Constructions_static_F"];
 	_snapObjects = _cfgBaseBuilding >> _class >> "allowedSnapObjects";
 	_energyCost = getNumber(_cfgBaseBuilding >> _class >> "energyCost");
+	_maxHeight = getNumber(_cfgBaseBuilding >> _class >> "maxHeight");
 	if (_energyCost == 0) then {
 		_energyCost = 0.1;
+	};
+	if (_maxHeight == 0) then {
+		_maxHeight = 500;
+	};
+	_CfgEpochClient = 'CfgEpochClient' call EPOCH_returnConfig;
+	_maxBuildingHeight = getNumber(_CfgEpochClient >> "maxBuildingHeight");
+	if !(_maxBuildingHeight == 0) then {
+		_maxHeight = _maxHeight min _maxBuildingHeight;
 	};
 	if (isArray(_snapObjects)) then {
 		_allowedSnapObjects = getArray(_snapObjects);
@@ -90,6 +99,9 @@ if (isText(_simulClassConfig)) then {
 	EP_snap = objNull;
 	_previousDistanceNear = 0;
 	_offset = player worldToModel (getposATL _currentTarget);
+	if (surfaceiswater (getpos _currentTarget)) then {
+		_offset = player worldToModel (getposASL _currentTarget);
+	};
 	EPOCH_X_OFFSET = _offset select 0;
 	EPOCH_Y_OFFSET = _offset select 1;
 	EPOCH_Z_OFFSET = _offset select 2;
@@ -115,6 +127,9 @@ if (isText(_simulClassConfig)) then {
 			};
 
 			_pos2 = player modelToWorld[EPOCH_X_OFFSET, EPOCH_Y_OFFSET, EPOCH_Z_OFFSET];
+			if (_pos2 select 2 > _maxHeight) then {
+				_pos2 set[2, _maxHeight];
+			};
 			_distance = _pos2 distance EPOCH_target;
 			if (EPOCH_buildMode == 1) then {
 				if (isNull _nearestObject) then {
