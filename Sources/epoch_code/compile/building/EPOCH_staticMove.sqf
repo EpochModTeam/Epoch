@@ -23,7 +23,7 @@
 	NOTHING
 */
 //[[[cog import generate_private_arrays ]]]
-private ["_snapped","_EPOCH_1","_EPOCH_2","_allowedSnapObjects","_allowedSnapPoints","_arr_snapPoints","_baselineSnapPos","_cfgBaseBuilding","_class","_currentOffSet","_currentPos","_currentTarget","_dir2","_direction","_distance","_energyCost","_ins","_isSnap","_lastCheckTime","_maxHeight","_maxSnapDistance","_nearestObject","_nearestObjects","_numberOfContacts","_objSlot","_objType","_offSet","_offsetZPos","_pOffset","_pos1","_pos1_snap","_pos2","_pos2ATL","_pos2_snap","_pos_snapObj","_rejectMove","_simulClass","_snapChecks","_snapConfig","_snapDistance","_snapPointsPara","_snapPointsPerp","_snapPos","_snapPos1","_snapPosition","_snapType","_stabilityCheck","_up2","_worldspace"];
+private ["_AnchorPos","_EPOCH_1","_EPOCH_2","_MoveObject","_Snapdirection","_allowedSnapObjects","_allowedSnapPoints","_arr_snapPoints","_baselineSnapPos","_cfgBaseBuilding","_class","_currentOffSet","_currentPos","_currentTarget","_currentTargetAttachedTo","_dir2","_direction","_distance","_energyCost","_helper","_ins","_isSnap","_lastCheckTime","_maxHeight","_maxSnapDistance","_nearestObject","_nearestObjects","_newDirAndUp","_numberOfContacts","_objSlot","_objType","_offSet","_offsetZPos","_pOffset","_pos1_snap","_pos2","_pos2ATL","_pos2_snap","_pos_snapObj","_rejectMove","_simulClass","_snapChecks","_snapConfig","_snapDistance","_snapPointsPara","_snapPointsPerp","_snapPos","_snapPos1","_snapPosition","_snapType","_snapped","_stabilityCheck","_worldspace"];
 //[[[end]]]
 if !(isNil "EPOCH_simulSwap_Lock") exitWith{};
 
@@ -71,10 +71,8 @@ if (_class != "") then {
 		};
 	};
 
-	_CfgEpochClient = 'CfgEpochClient' call EPOCH_returnConfig;
-	_maxBuildingHeight = getNumber(_CfgEpochClient >> "maxBuildingHeight");
-	if !(_maxBuildingHeight == 0) then {
-		_maxHeight = _maxHeight min _maxBuildingHeight;
+	if !(EPOCH_maxBuildingHeight == 0) then {
+		_maxHeight = _maxHeight min EPOCH_maxBuildingHeight;
 	};
 
 	_objSlot = _object getVariable["BUILD_SLOT", -1];
@@ -123,7 +121,7 @@ if (_class != "") then {
 	_currentTargetAttachedTo = player;
 	_AnchorPos = [];
 	_helper = objnull;
-	
+
 	if (typeof EPOCH_target in ["CinderWallHalf_Ghost_EPOCH","WoodLargeWall_Ghost_EPOCH"]) then {
 		_helper = "Sign_Arrow_Direction_Yellow_F" createVehicleLocal (getpos EPOCH_target);
 		_helper attachto [EPOCH_target, [0, -0.5, 1]];
@@ -253,7 +251,7 @@ if (_class != "") then {
 									_pos_snapObj = getposATL _nearestObject;
 									_pos_snapObj set[2, 0];
 									_direction = _direction - (_snapPos1 getDir _pos_snapObj);
-								} 
+								}
 								else {
 									_direction = 0;
 								};
@@ -325,7 +323,7 @@ if (_class != "") then {
 	{
 		detach _x;
 	} forEach attachedObjects _currentTargetAttachedTo;
-	
+
 	if (!isnull _helper) then {
 		deletevehicle _helper;
 	};

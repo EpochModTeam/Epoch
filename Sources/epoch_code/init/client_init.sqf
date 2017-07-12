@@ -66,6 +66,8 @@ rmx_var_dynamicHUD_groupCTRL = [];
 EPOCH_keysActionPressed = false; //prevents EH spam
 0 call EPOCH_clientKeyMap;
 
+EPOCH_maxBuildingHeight = getNumber(_CfgEpochClient >> "maxBuildingHeight");
+
 //ON INIT and RESPAWN
 call EPOCH_clientInit;
 
