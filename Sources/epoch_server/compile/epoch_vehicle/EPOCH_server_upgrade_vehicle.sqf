@@ -98,6 +98,11 @@ if !(_allHitpoints isEqualTo []) then{
 	};
 };
 
+// new Dynamicsimulation
+_vehObj enableSimulationGlobal false; // turn it off until activated by dynamicSim
+_vehObj enableDynamicSimulation true;
+
+
 // add back old inventory
 [_newveh,_cargo] call EPOCH_server_CargoFill;
 
