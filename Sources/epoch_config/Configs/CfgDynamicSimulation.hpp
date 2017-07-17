@@ -9,6 +9,7 @@ class CfgDynamicSimulation
 	territoryDynamicSimulationSystem = true;
 	
 	// Distances and Coef
+	isMovingCoefValue = 1.5; // This multiplies below distances while entity is moving
 	groupDynSimDistance = 1600;
 	vehicleDynSimDistance = 1600;
 	emptyVehicleDynSimDistance = 1600;
