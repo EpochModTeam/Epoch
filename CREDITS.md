@@ -21,7 +21,7 @@
 
 #### Community Developers / Contributors
 * [DirtySanchez](https://github.com/ravmustang): Vector Build, Vehicle Upgrades and more.
-* [HeMan](https://github.com/Ignatz-HeMan): Loads of fixes
+* [HeMan](https://github.com/Ignatz-HeMan): Loads of fixes and improvements.
 * [$p4rkY](https://github.com/SPKcoding)
 * [82ndab-Bravo17](https://github.com/82ndab-Bravo17) - http://www.the82ndab.net
 * [Robio](https://github.com/RC-Robio)
