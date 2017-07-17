@@ -109,8 +109,12 @@ if !(isNull _vehObj) then{
 	};
 	
 	// new Dynamicsimulation
-	_vehObj enableSimulationGlobal false; // turn it off until activated by dynamicSim
-	_vehObj enableDynamicSimulation true;
+	_cfgDynamicSimulation = 'CfgDynamicSimulation' call EPOCH_returnConfig;
+	if(_cfgDynamicSimulation >> "vehicleDynamicSimulationSystem")then
+	{
+		_vehObj enableSimulationGlobal false; // turn it off until activated by dynamicSim
+		_vehObj enableDynamicSimulation true;
+	};
 
 	
 	// SAVE VEHICLE
