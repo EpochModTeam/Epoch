@@ -318,7 +318,10 @@ if (!isNull _player) then {
 
                 // This is a test to see setUnitLoadout can force propagation of unit loadout.
                 _newPlyr setUnitLoadout (getUnitLoadout _newPlyr); // if this works, possibly replace all inventory code with with get|setUnitLoadout
-
+				
+				// new Dynamicsimulation
+				_newPlyr enableDynamicSimulation true;
+				_newPlyr triggerDynamicSimulation true;
 			};
 		} else {
 			diag_log format["LOGIN FAILED UNIT NULL: %1 [%2|%3]", _player, _group, count allgroups];

@@ -9,7 +9,11 @@ if (!isNull _object && !(_class isEqualTo "")) then {
     _newObj = createVehicle [_class, ASLtoAGL _objectPos, [], 0, "CAN_COLLIDE"];
     if (!isNull _newObj) then {
         _object hideObjectGlobal true;
-
+		
+		// new Dynamicsimulation
+		_newObj enableDynamicSimulation true;
+		_newObj triggerDynamicSimulation false; // this object doesnt need to turn anything on in the server
+			
         switch (_method) do {
             case 0: {
                 _newObj setVectorDirAndUp [vectordir _object, vectorup _object];
