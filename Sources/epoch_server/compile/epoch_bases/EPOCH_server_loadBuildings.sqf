@@ -22,6 +22,7 @@ _IndestructibleBaseObjects = [_serverSettingsConfig, "IndestructibleBaseObjects"
 _ExceptedBaseObjects = [_serverSettingsConfig, "ExceptedBaseObjects", []] call EPOCH_fnc_returnConfigEntry;
 _cfgEpochClient = 'CfgEpochClient' call EPOCH_returnConfig;
 _cfgBaseBuilding = 'CfgBaseBuilding' call EPOCH_returnConfig;
+_cfgDynamicSimulation = 'CfgDynamicSimulation' call EPOCH_returnConfig;
 _buildingJammerRange = getNumber(_cfgEpochClient >> "buildingJammerRange");
 if (_buildingJammerRange == 0) then { _buildingJammerRange = 75; };
 
@@ -93,10 +94,12 @@ for "_i" from 0 to _this do {
 			_baseObj setposATL _location;
 
 			// new Dynamicsimulation
-			_baseObj enableSimulationGlobal false; // turn off sim on server start, let dynSim activate it to true
-			_baseObj enableDynamicSimulation true;
-			_baseObj triggerDynamicSimulation false; // this object doesnt need to turn anything on in the server
-			
+			if(_cfgDynamicSimulation >> "territoryDynamicSimulationSystem")then
+			{
+				_baseObj enableSimulationGlobal false; // turn off sim on server start, let dynSim activate it to true
+				_baseObj enableDynamicSimulation true;
+				_baseObj triggerDynamicSimulation false; // this object doesnt need to turn anything on in the server
+			};
 			// spawn additional object for trap
 			_ammoClass = (_cfgBaseBuilding >> _class >> "ammoClass");
 			if(isText _ammoClass) then {

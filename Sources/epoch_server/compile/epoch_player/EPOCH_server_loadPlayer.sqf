@@ -320,8 +320,12 @@ if (!isNull _player) then {
                 _newPlyr setUnitLoadout (getUnitLoadout _newPlyr); // if this works, possibly replace all inventory code with with get|setUnitLoadout
 				
 				// new Dynamicsimulation
-				_newPlyr enableDynamicSimulation true;
-				_newPlyr triggerDynamicSimulation true;
+				_cfgDynamicSimulation = 'CfgDynamicSimulation' call EPOCH_returnConfig;
+				if(_cfgDynamicSimulation >> "playerDynamicSimulationSystem")then
+				{
+					_newPlyr enableDynamicSimulation true;
+					_newPlyr triggerDynamicSimulation true;
+				};
 			};
 		} else {
 			diag_log format["LOGIN FAILED UNIT NULL: %1 [%2|%3]", _player, _group, count allgroups];
