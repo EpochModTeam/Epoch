@@ -1057,6 +1057,15 @@ class CfgCrafting
 	};
 	class KitVehicleUpgradeIV_200_EPOCH : KitVehicleUpgradeIV_100_EPOCH{};
 	class KitVehicleUpgradeIV_300_EPOCH : KitVehicleUpgradeIV_100_EPOCH{};
+	class BarrelBomb_EPOCH_Remote_Mag : Kit
+    {
+        nearby[] = {{"Fire","","fire",{1,{"ALL"}},3,1,1,0}};
+        recipe[] = {{"ItemBarrelE",1},{"jerrycan_epoch",3},{"ItemBattery",1},{"CircuitParts",1}};
+        previewPosition[] = {0.801715,1,0.331674};
+        previewScale = 1.5;
+        previewVector = 0.3;
+    };
+	class BarrelBomb2_EPOCH_Remote_Mag : BarrelBomb_EPOCH_Remote_Mag{};
 };
 
 /*[[[end]]]*/
