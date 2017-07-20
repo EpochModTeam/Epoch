@@ -43,7 +43,7 @@ _fuel = fuel _veh;
 deletevehicle _veh;
 waituntil {isnull _veh};
 _pos set [2,(_pos select 2)+0.5];
-_newVeh = createVehicle [_UpgradeVeh, [random 500, random 500,500], [], 0, "CAN_COLLIDE"];		
+_newVeh = createVehicle [_UpgradeVeh, [random 500, random 500,500], [], 0, "CAN_COLLIDE"];
 _newVeh setVariable ["VEHICLE_SLOT", _slot, true];
 if!(_baseVeh isEqualTo "")then
 {
@@ -58,7 +58,7 @@ _newVeh setposasl _pos;
 
 // set fuel level
 _newVeh setFuel _fuel;
-			
+
 // apply persistent textures
 _cfgEpochVehicles = 'CfgEpochVehicles' call EPOCH_returnConfig;
 _newbaseVeh = _veh getVariable ["VEHICLE_BASECLASS",""];
@@ -78,7 +78,7 @@ if (isArray(_availableColorsConfig)) then {
 	} forEach _selections;
 	_newVeh setVariable ["VEHICLE_TEXTURE", _color];
 };
-			
+
 // disable thermal imaging equipment
 _newVeh disableTIEquipment true;
 
@@ -99,8 +99,8 @@ if !(_allHitpoints isEqualTo []) then{
 };
 
 // new Dynamicsimulation
-_vehObj enableSimulationGlobal false; // turn it off until activated by dynamicSim
-_vehObj enableDynamicSimulation true;
+_newveh enableSimulationGlobal false; // turn it off until activated by dynamicSim
+_newveh enableDynamicSimulation true;
 
 
 // add back old inventory

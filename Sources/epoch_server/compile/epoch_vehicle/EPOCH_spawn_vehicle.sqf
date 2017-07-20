@@ -107,12 +107,12 @@ if !(isNull _vehObj) then{
 	  _vehLockHiveKey = format["%1:%2", (call EPOCH_fn_InstanceID), _slot];
 	  ["VehicleLock", _vehLockHiveKey] call EPOCH_fnc_server_hiveDEL;
 	};
-	
+
 	// new Dynamicsimulation
 	_vehObj enableSimulationGlobal false; // turn it off until activated by dynamicSim
 	_vehObj enableDynamicSimulation true;
 
-	
+
 	// SAVE VEHICLE
 	_vehObj call EPOCH_server_save_vehicle;
 

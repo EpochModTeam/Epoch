@@ -212,13 +212,13 @@ for "_i" from 1 to _maxVehicleLimit do {
 
 						// vehicle simulation handler
 						if (_simulationHandler) then{
-							_vehicle enableSimulationGlobal false;	
+							_vehicle enableSimulationGlobal false;
 						};
-						
+
 						// new Dynamicsimulation
-						_vehObj enableSimulationGlobal false; // turn it off until activated by dynamicSim
-						_vehObj enableDynamicSimulation true;
-						
+						_vehicle enableSimulationGlobal false; // turn it off until activated by dynamicSim
+						_vehicle enableDynamicSimulation true;
+
 						// turrets
 						/*
 						_mags = _vehicle magazinesTurret [0];
