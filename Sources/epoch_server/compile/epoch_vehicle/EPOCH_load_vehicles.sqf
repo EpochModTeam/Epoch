@@ -13,7 +13,7 @@
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server/compile/epoch_vehicle/EPOCH_load_vehicles.sqf
 */
 //[[[cog import generate_private_arrays ]]]
-private ["_actualHitpoints","_allHitpoints","_allVehicles","_allowDamage","_arr","_arrNum","_attachments","_availableColorsConfig","_cfgEpochVehicles","_class","_color","_colors","_config","_count","_damage","_dataFormat","_dataFormatCount","_diag","_dmg","_found","_hitpoints","_immuneIfStartInBase","_jammerOwner","_jammerRange","_jammers","_location","_lockedOwner","_magazineName","_magazineSize","_magazineSizeMax","_mags","_marker","_nearestJammer","_objQty","_objType","_objTypes","_qty","_removemagazinesturret","_removeweapons","_response","_selections","_serverSettingsConfig","_simulationHandler","_textureSelectionIndex","_textures","_vehHiveKey","_vehLockHiveKey","_vehicle","_vehicleDamages","_vehicleSlotIndex","_wMags","_wMagsArray","_worldspace","_baseClass"];
+private ["_actualHitpoints","_allHitpoints","_allVehicles","_allowDamage","_arr","_arrNum","_availableColorsConfig","_baseClass","_cfgEpochVehicles","_check","_class","_color","_colors","_config","_count","_damage","_dataFormat","_dataFormatCount","_diag","_dmg","_found","_hitpoints","_immuneIfStartInBase","_jammerOwner","_jammerRange","_jammers","_location","_lockedOwner","_mags","_marker","_nearestJammer","_removemagazinesturret","_removeweapons","_response","_selections","_serverSettingsConfig","_textureSelectionIndex","_textures","_vehHiveKey","_vehLockHiveKey","_vehicle","_vehicleDamages","_vehicleSlotIndex","_worldspace"];
 //[[[end]]]
 params [["_maxVehicleLimit",0]];
 
@@ -29,7 +29,7 @@ _jammerRange = getNumber(_config >> "buildingJammerRange");
 
 _serverSettingsConfig = configFile >> "CfgEpochServer";
 _immuneIfStartInBase = [_serverSettingsConfig, "immuneIfStartInBase", true] call EPOCH_fnc_returnConfigEntry;
-_simulationHandler = [_serverSettingsConfig, "simulationHandlerOld", false] call EPOCH_fnc_returnConfigEntry;
+
 _removeweapons = [_serverSettingsConfig, "removevehweapons", []] call EPOCH_fnc_returnConfigEntry;
 _removemagazinesturret = [_serverSettingsConfig, "removevehmagazinesturret", []] call EPOCH_fnc_returnConfigEntry;
 
@@ -51,6 +51,8 @@ for "_i" from 1 to _maxVehicleLimit do {
 					_arr pushback (_dataFormat select _foreachindex);
 				};
 			} foreach _dataFormat;
+			// recount array
+			_arrNum = count _arr;
 		};
 
 		if (_arrNum == _dataFormatCount) then {
@@ -209,11 +211,6 @@ for "_i" from 1 to _maxVehicleLimit do {
                         if (_allowDamage) then {
                             _vehicle allowDamage true;
                         };
-
-						// vehicle simulation handler
-						if (_simulationHandler) then{
-							_vehicle enableSimulationGlobal false;
-						};
 
 						// new Dynamicsimulation
 						_vehicle enableSimulationGlobal false; // turn it off until activated by dynamicSim
