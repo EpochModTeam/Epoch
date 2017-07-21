@@ -111,15 +111,15 @@ _say3dsounds = "isClass _x" configClasses (_say3dsoundsConfig);
 
 // disable remote sensors on server and client as all Epoch AI is local to the side controlling it.
 disableRemoteSensors (["CfgEpochClient", "disableRemoteSensors", true] call EPOCH_fnc_returnConfigEntryV2);
+
 // Enable Dynamic simulation on both server and clients (maybe only needed server side)
 // DynSim is handled locally and yes server and clients will need these configurations
-_cfgDynamicSimulation = 'CfgDynamicSimulation' call EPOCH_returnConfig;
-if(_cfgDynamicSimulation >> "enableDynamicSimulationSystem")then
+if(["CfgDynamicSimulation", "enableDynamicSimulationSystem", true] call EPOCH_fnc_returnConfigEntryV2)then
 {
 	enableDynamicSimulationSystem true;
-	"IsMoving" setDynamicSimulationDistanceCoef (_cfgDynamicSimulation >> "isMovingCoefValue");
-	"Group" setDynamicSimulationDistance (_cfgDynamicSimulation >> "groupDynSimDistance");
-	"Vehicle" setDynamicSimulationDistance (_cfgDynamicSimulation >> "vehicleDynSimDistance");
-	"EmptyVehicle" setDynamicSimulationDistance (_cfgDynamicSimulation >> "emptyVehicleDynSimDistance");
-	"Prop" setDynamicSimulationDistance (_cfgDynamicSimulation >> "propDynSimDistance");
+	"IsMoving" setDynamicSimulationDistanceCoef (["CfgDynamicSimulation", "isMovingCoefValue", 1600] call EPOCH_fnc_returnConfigEntryV2);
+	"Group" setDynamicSimulationDistance (["CfgDynamicSimulation", "groupDynSimDistance", 1600] call EPOCH_fnc_returnConfigEntryV2);
+	"Vehicle" setDynamicSimulationDistance (["CfgDynamicSimulation", "vehicleDynSimDistance", 1600] call EPOCH_fnc_returnConfigEntryV2);
+	"EmptyVehicle" setDynamicSimulationDistance (["CfgDynamicSimulation", "emptyVehicleDynSimDistance", 1600] call EPOCH_fnc_returnConfigEntryV2);
+	"Prop" setDynamicSimulationDistance (["CfgDynamicSimulation", "propDynSimDistance", 1600] call EPOCH_fnc_returnConfigEntryV2);
 };
