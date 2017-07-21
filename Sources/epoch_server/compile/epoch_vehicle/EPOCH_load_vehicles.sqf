@@ -51,8 +51,11 @@ for "_i" from 1 to _maxVehicleLimit do {
 					_arr pushback (_dataFormat select _foreachindex);
 				};
 			} foreach _dataFormat;
+			_arrNum = count _arr;
 		};
 
+		
+		
 		if (_arrNum == _dataFormatCount) then {
 
 			// Validate and replace invaild data
