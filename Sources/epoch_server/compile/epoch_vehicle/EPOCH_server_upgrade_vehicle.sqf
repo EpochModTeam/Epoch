@@ -102,8 +102,8 @@ if !(_allHitpoints isEqualTo []) then{
 _cfgDynamicSimulation = 'CfgDynamicSimulation' call EPOCH_returnConfig;
 if(_cfgDynamicSimulation >> "vehicleDynamicSimulationSystem")then
 {
-	_vehObj enableSimulationGlobal false; // turn it off until activated by dynamicSim
-	_vehObj enableDynamicSimulation true;
+	_newveh enableSimulationGlobal false; // turn it off until activated by dynamicSim
+	_newveh enableDynamicSimulation true;
 };
 
 // add back old inventory
