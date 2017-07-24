@@ -112,8 +112,11 @@ if (!local _player) then {
 				_newPlyr = _group createUnit[_class, _location, [], 0, "CAN_COLLIDE"];
 				
 				// new Dynamicsimulation
-				_newPlyr enableDynamicSimulation true;
-				_newPlyr triggerDynamicSimulation true;
+				if(["CfgDynamicSimulation", "playerDynamicSimulationSystem", true] call EPOCH_fnc_returnConfigEntryV2)then
+				{
+					_newPlyr enableDynamicSimulation true;
+					_newPlyr triggerDynamicSimulation true;
+				};
 				
 				addToRemainsCollector[_newPlyr];
 
