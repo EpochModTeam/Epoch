@@ -117,9 +117,9 @@ _config = configFile >> "CfgEpoch";
 	if (count _pos1 >= 4) then {
 		_dir1 = _pos1 deleteAt 3;
 	};
-	
+
 	if !(_useWorldPos) then {
-		_pos1 = _debug modelToWorld (_x select 1);
+		_pos1 = _debug modelToWorld _pos1;
 	};
 
 	_exitClass = _x select 2;
