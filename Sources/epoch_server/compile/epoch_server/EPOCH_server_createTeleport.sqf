@@ -144,7 +144,7 @@ _config = configFile >> "CfgEpoch";
 	_veh1 = createVehicle[_enterClass, _pos1, [], 0, "CAN_COLLIDE"];
 	// force addaction on any other objects that are not setup properly
 	if !(_veh1 isKindOf "Transport_EPOCH") then {
-		[_veh1, [(localize "STR_EPOCH_Teleport"), {(_this select 0) call EPOCH_EnterBuilding}, [], 1, true, true, "Action", "alive _target", 3, false, "Epoch_Action_Point"]] remoteExec ["addAction", -2, _veh1, true];
+		[_veh1, [(localize "STR_EPOCH_Teleport"), {(_this select 0) call EPOCH_EnterBuilding}, [], 1, true, true, "Action", "alive _target", 3, false, ""]] remoteExec ["addAction", -2, _veh1, true];
 	};
 	_veh1 enableSimulationGlobal false;
 	_veh1 allowDamage false;
@@ -156,7 +156,7 @@ _config = configFile >> "CfgEpoch";
 		_veh2 = createVehicle[_exitClass, _pos, [], 0, "CAN_COLLIDE"];
 		// force addaction on any other objects that are not setup properly
 		if !(_veh2 isKindOf "Transport_EPOCH") then {
-			[_veh2, [(localize "STR_EPOCH_Teleport"), {(_this select 0) call EPOCH_EnterBuilding}, [], 1, true, true, "Action", "alive _target", 3, false, "Epoch_Action_Point"]] remoteExec ["addAction", -2, _veh1, true];
+			[_veh2, [(localize "STR_EPOCH_Teleport"), {(_this select 0) call EPOCH_EnterBuilding}, [], 1, true, true, "Action", "alive _target", 3, false, ""]] remoteExec ["addAction", -2, _veh1, true];
 		};
 		_veh2 enableSimulationGlobal false;
 		_veh2 allowDamage false;
