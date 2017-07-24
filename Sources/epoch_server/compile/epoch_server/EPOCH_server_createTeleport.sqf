@@ -110,12 +110,24 @@ _config = configFile >> "CfgEpoch";
 		_useWorldPos = (_x select 4) isEqualTo "true";
 	};
 	_pos1 = _x select 1;
+
+	// allow forth position element to set direction if set
+	_dir1 = 0;
+	_dir2 = 0;
+	if (count _pos1 >= 4) then {
+		_dir1 = _pos1 deleteAt 3;
+	};
+	
 	if !(_useWorldPos) then {
 		_pos1 = _debug modelToWorld (_x select 1);
 	};
 
 	_exitClass = _x select 2;
 	_pos = _x select 3;
+	// allow forth position element to set direction if set
+	if (count _pos >= 4) then {
+		_dir2 = _pos deleteAt 3;
+	};
 
 	// load template props for marker location
 	if (_pos isEqualType "") then {
@@ -126,15 +138,7 @@ _config = configFile >> "CfgEpoch";
 		_pro2 = createVehicle ["ProtectionZone_Invisible_F", _pos, [], 0, "CAN_COLLIDE"];
 	};
 
-	// allow forth position element to set direction if set
-	_dir1 = 0;
-	_dir2 = 0;
-	if (count _pos1 >= 4) then {
-		_dir1 = _pos1 deleteAt 3;
-	};
-	if (count _pos >= 4) then {
-		_dir2 = _pos deleteAt 3;
-	};
+
 
 	_pro1 = createVehicle ["ProtectionZone_Invisible_F", _pos1, [], 0, "CAN_COLLIDE"];
 	_veh1 = createVehicle[_enterClass, _pos1, [], 0, "CAN_COLLIDE"];
