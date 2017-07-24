@@ -77,6 +77,7 @@ if (_slot != -1) then {
                                 _BaseClass = _vehicle getvariable ["VEHICLE_BaseClass",""];
                                 if !(_BaseClass isequalto "") then {
                                     _item = _BaseClass;
+									_itemsIn set [_foreachindex,_item];
                                 };
                                 removeFromRemainsCollector[_vehicle];
 								deleteVehicle _vehicle;
