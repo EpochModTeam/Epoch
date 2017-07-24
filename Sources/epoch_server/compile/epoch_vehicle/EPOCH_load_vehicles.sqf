@@ -213,8 +213,11 @@ for "_i" from 1 to _maxVehicleLimit do {
                         };
 
 						// new Dynamicsimulation
-						_vehicle enableSimulationGlobal false; // turn it off until activated by dynamicSim
-						_vehicle enableDynamicSimulation true;
+						if(["CfgDynamicSimulation", "vehicleDynamicSimulationSystem", true] call EPOCH_fnc_returnConfigEntryV2)then
+						{
+							_vehicle enableSimulationGlobal false; // turn it off until activated by dynamicSim
+							_vehicle enableDynamicSimulation true;
+						};
 
 						// turrets
 						/*
