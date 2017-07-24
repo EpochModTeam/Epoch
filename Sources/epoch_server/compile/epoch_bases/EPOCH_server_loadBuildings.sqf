@@ -93,9 +93,12 @@ for "_i" from 0 to _this do {
 			_baseObj setposATL _location;
 
 			// new Dynamicsimulation
-			_baseObj enableSimulationGlobal false; // turn off sim on server start, let dynSim activate it to true
-			_baseObj enableDynamicSimulation true;
-			_baseObj triggerDynamicSimulation false; // this object doesnt need to turn anything on in the server
+			if(["CfgDynamicSimulation", "baseDynamicSimulationSystem", true] call EPOCH_fnc_returnConfigEntryV2)then
+			{
+				_baseObj enableSimulationGlobal false; // turn off sim on server start, let dynSim activate it to true
+				_baseObj enableDynamicSimulation true;
+				_baseObj triggerDynamicSimulation false; // this object doesnt need to turn anything on in the server
+			};
 			
 			// spawn additional object for trap
 			_ammoClass = (_cfgBaseBuilding >> _class >> "ammoClass");
