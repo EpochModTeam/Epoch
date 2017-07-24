@@ -13,7 +13,7 @@
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server/compile/epoch_server/EPOCH_server_createTeleport.sqf
 */
 //[[[cog import generate_private_arrays ]]]
-private ["_array","_center","_class","_cloneClasses","_config","_deSimulate","_debug","_debug1","_debugLocation","_dir","_enterClass","_ep","_exitClass","_light","_lightLocation","_loadBaseTemplateConfig","_markerName","_part","_partPos","_pos","_pos1","_pro1","_pro2","_protection","_useWorldPos","_veh1","_veh2"];
+private ["_array","_center","_class","_cloneClasses","_config","_deSimulate","_debug","_debug1","_debugLocation","_dir","_dir1","_dir2","_enterClass","_ep","_exitClass","_light","_lightLocation","_loadBaseTemplateConfig","_markerName","_part","_partPos","_pos","_pos1","_pro1","_pro2","_protection","_useWorldPos","_veh1","_veh2"];
 //[[[end]]]
 _loadBaseTemplateConfig = {
 	private ["_partPos","_part","_array","_center","_deSimulate"];
@@ -126,20 +126,38 @@ _config = configFile >> "CfgEpoch";
 		_pro2 = createVehicle ["ProtectionZone_Invisible_F", _pos, [], 0, "CAN_COLLIDE"];
 	};
 
+	// allow forth position element to set direction if set
+	_dir1 = 0;
+	_dir2 = 0;
+	if (count _pos1 >= 4) then {
+		_dir1 = _pos1 deleteAt 3;
+	};
+	if (count _pos >= 4) then {
+		_dir2 = _pos deleteAt 3;
+	};
+
 	_pro1 = createVehicle ["ProtectionZone_Invisible_F", _pos1, [], 0, "CAN_COLLIDE"];
 	_veh1 = createVehicle[_enterClass, _pos1, [], 0, "CAN_COLLIDE"];
+	// force addaction on any other objects that are not setup properly
+	if !(_veh1 isKindOf "Transport_EPOCH") then {
+		[_veh1, [(localize "STR_EPOCH_Teleport"), {(_this select 0) call EPOCH_EnterBuilding}, [], 1, true, true, "Action", "alive _target", 3, false, "Epoch_Action_Point"]] remoteExec ["addAction", -2, _veh1, true];
+	};
 	_veh1 enableSimulationGlobal false;
 	_veh1 allowDamage false;
 	_veh1 setVariable["ParentBuilding", _pos];
-	_veh1 setDir 0;
+	_veh1 setDir _dir1;
 	_veh1 setposATL _pos1;
 
 	if (_exitClass != "") then {
 		_veh2 = createVehicle[_exitClass, _pos, [], 0, "CAN_COLLIDE"];
+		// force addaction on any other objects that are not setup properly
+		if !(_veh2 isKindOf "Transport_EPOCH") then {
+			[_veh2, [(localize "STR_EPOCH_Teleport"), {(_this select 0) call EPOCH_EnterBuilding}, [], 1, true, true, "Action", "alive _target", 3, false, "Epoch_Action_Point"]] remoteExec ["addAction", -2, _veh1, true];
+		};
 		_veh2 enableSimulationGlobal false;
 		_veh2 allowDamage false;
 		_veh2 setVariable["ParentBuilding", _pos1];
-		_veh2 setDir 0;
+		_veh2 setDir _dir2;
 		_veh2 setposATL _pos;
 	};
 
