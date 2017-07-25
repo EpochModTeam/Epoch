@@ -22,6 +22,8 @@
 		{{"Water source", "", "water", {2,{"water"}}, 3, 1, 0, 0}}
 
 	};
+	
+	WARNING: DO NOT inherit from existing items, create each item as unique entry, only inherit defaults such as part or kit!
 */
 /*[[[cog from arma_config_tools import *; json_to_arma()]]]*/
 /*
@@ -1031,8 +1033,20 @@ class CfgCrafting
         previewScale = 0.28;
         previewVector = -0.5;
 	};
-	class KitVehicleUpgradeI_200_EPOCH : KitVehicleUpgradeI_100_EPOCH{};
-	class KitVehicleUpgradeI_300_EPOCH : KitVehicleUpgradeI_100_EPOCH{};
+	class KitVehicleUpgradeI_200_EPOCH : Kit
+	{
+		recipe[] = { {"ItemVehDoc1",1}, {"CircuitParts",1}, {"ItemCables",1}, {"VehicleRepairLg",2} }; //update rest of items
+        previewPosition[] = {0.798208,1,0.227936};
+        previewScale = 0.28;
+        previewVector = -0.5;
+	};
+	class KitVehicleUpgradeI_300_EPOCH : Kit
+	{
+		recipe[] = { {"ItemVehDoc1",1}, {"CircuitParts",1}, {"ItemCables",1}, {"VehicleRepairLg",2} }; //update rest of items
+        previewPosition[] = {0.798208,1,0.227936};
+        previewScale = 0.28;
+        previewVector = -0.5;
+	};
 	class KitVehicleUpgradeII_100_EPOCH : Kit //doc2, tire
 	{
 		recipe[] = { {"ItemVehDoc2",1}, {"SpareTire",1}, {"KitTankTrap",2}, {"ItemAluminumBar10oz",2} };
@@ -1040,17 +1054,41 @@ class CfgCrafting
         previewScale = 0.28;
         previewVector = -0.5;
 	};
-	class KitVehicleUpgradeII_200_EPOCH : KitVehicleUpgradeII_100_EPOCH{};
-	class KitVehicleUpgradeII_300_EPOCH : KitVehicleUpgradeII_100_EPOCH{};
-	class KitVehicleUpgradeIII_100_EPOCH : Kit //doc3, pipes
+	class KitVehicleUpgradeII_200_EPOCH : Kit
 	{
-		recipe[] = { {"ItemVehDoc3",1}, {"ItemPipes",2}, {"KitShelf",2}, {"ItemBurlap",2} };
+		recipe[] = { {"ItemVehDoc2",1}, {"SpareTire",1}, {"KitTankTrap",2}, {"ItemAluminumBar10oz",2} };
         previewPosition[] = {0.798208,1,0.227936};
         previewScale = 0.28;
         previewVector = -0.5;
 	};
-	class KitVehicleUpgradeIII_200_EPOCH : KitVehicleUpgradeIII_100_EPOCH{};
-	class KitVehicleUpgradeIII_300_EPOCH : KitVehicleUpgradeIII_100_EPOCH{};
+	class KitVehicleUpgradeII_300_EPOCH : Kit
+	{
+		recipe[] = { {"ItemVehDoc2",1}, {"SpareTire",1}, {"KitTankTrap",2}, {"ItemAluminumBar10oz",2} };
+        previewPosition[] = {0.798208,1,0.227936};
+        previewScale = 0.28;
+        previewVector = -0.5;
+	};
+	class KitVehicleUpgradeIII_100_EPOCH : Kit //doc3, pipes
+	{
+		recipe[] = { {"ItemVehDoc3",1}, {"ItemPipe",2}, {"KitShelf",2}, {"ItemBurlap",2} };
+        previewPosition[] = {0.798208,1,0.227936};
+        previewScale = 0.28;
+        previewVector = -0.5;
+	};
+	class KitVehicleUpgradeIII_200_EPOCH : Kit
+	{
+		recipe[] = { {"ItemVehDoc3",1}, {"ItemPipe",2}, {"KitShelf",2}, {"ItemBurlap",2} };
+        previewPosition[] = {0.798208,1,0.227936};
+        previewScale = 0.28;
+        previewVector = -0.5;
+	};
+	class KitVehicleUpgradeIII_300_EPOCH : Kit
+	{
+		recipe[] = { {"ItemVehDoc3",1}, {"ItemPipe",2}, {"KitShelf",2}, {"ItemBurlap",2} };
+        previewPosition[] = {0.798208,1,0.227936};
+        previewScale = 0.28;
+        previewVector = -0.5;
+	};
 	class KitVehicleUpgradeIV_100_EPOCH : Kit //doc4
 	{
 		recipe[] = { {"ItemVehDoc4",1}, {"CircuitParts",1}, {"ItemScraps",2}, {"jerrycan_epoch",2} };
@@ -1058,8 +1096,20 @@ class CfgCrafting
         previewScale = 0.28;
         previewVector = -0.5;
 	};
-	class KitVehicleUpgradeIV_200_EPOCH : KitVehicleUpgradeIV_100_EPOCH{};
-	class KitVehicleUpgradeIV_300_EPOCH : KitVehicleUpgradeIV_100_EPOCH{};
+	class KitVehicleUpgradeIV_200_EPOCH : Kit
+	{
+		recipe[] = { {"ItemVehDoc4",1}, {"CircuitParts",1}, {"ItemScraps",2}, {"jerrycan_epoch",2} };
+        previewPosition[] = {0.798208,1,0.227936};
+        previewScale = 0.28;
+        previewVector = -0.5;
+	};
+	class KitVehicleUpgradeIV_300_EPOCH : Kit
+	{
+		recipe[] = { {"ItemVehDoc4",1}, {"CircuitParts",1}, {"ItemScraps",2}, {"jerrycan_epoch",2} };
+        previewPosition[] = {0.798208,1,0.227936};
+        previewScale = 0.28;
+        previewVector = -0.5;
+	};
 	
     class ItemVehDoc1 : Part
     {
@@ -1097,7 +1147,7 @@ class CfgCrafting
 		previewScale = 0.45;
 		previewVector = 3.3;
     };
-    class ItemPipes : Part
+    class ItemPipe : Part
     {
         usedIn[] = {"KitVehicleUpgradeIII_100_EPOCH","KitVehicleUpgradeIII_100_EPOCH","KitVehicleUpgradeIII_300_EPOCH"};
         previewPosition[] = {0.802374,1,0.26};
