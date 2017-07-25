@@ -1,6 +1,9 @@
 // make sure we wait for Display #46
 waitUntil {!(isNull (findDisplay 46))};
 
+// disable fuel sources client side.
+{_x setFuelCargo 0;} foreach (missionNamespace getVariable ["EPOCH_staticFuelSources", []]);
+
 // setup display EH's
 if (isNil "EPOCH_display_setup_complete") then {
     EPOCH_display_setup_complete = true;

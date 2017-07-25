@@ -73,9 +73,6 @@ EPOCH_maxBuildingHeight = getNumber(_CfgEpochClient >> "maxBuildingHeight");
 //ON INIT and RESPAWN
 call EPOCH_clientInit;
 
-// disable fuel sources client side.
-{_x setFuelCargo 0;} foreach (missionNamespace getVariable ["EPOCH_staticFuelSources", []]);
-
 [] execFSM "epoch_code\system\SPVEH.fsm";
 [] execFSM "epoch_code\system\player_login.fsm";
 
