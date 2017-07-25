@@ -1044,7 +1044,7 @@ class CfgCrafting
 	class KitVehicleUpgradeII_300_EPOCH : KitVehicleUpgradeII_100_EPOCH{};
 	class KitVehicleUpgradeIII_100_EPOCH : Kit //doc3, pipes
 	{
-		recipe[] = { {"ItemVehDoc3",1}, {"ItemPipes",2}, {"KitShelf",2}, {"ItemBurlap",2} };
+		recipe[] = { {"ItemVehDoc3",1}, {"ItemPipe",2}, {"KitShelf",2}, {"ItemBurlap",2} };
         previewPosition[] = {0.798208,1,0.227936};
         previewScale = 0.28;
         previewVector = -0.5;
@@ -1097,7 +1097,7 @@ class CfgCrafting
 		previewScale = 0.45;
 		previewVector = 3.3;
     };
-    class ItemPipes : Part
+    class ItemPipe : Part
     {
         usedIn[] = {"KitVehicleUpgradeIII_100_EPOCH","KitVehicleUpgradeIII_100_EPOCH","KitVehicleUpgradeIII_300_EPOCH"};
         previewPosition[] = {0.802374,1,0.26};
