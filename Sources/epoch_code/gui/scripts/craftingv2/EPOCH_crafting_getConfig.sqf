@@ -17,7 +17,7 @@
 private ["_arr","_arrIn","_cCTime","_cDescFull","_cDescShort","_cDisplayName","_cModel","_cName","_cNearbyArr","_cPicture","_cPreviewArr","_cPreviewScale","_cPreviewVector","_cPriority","_cRecipeArr","_cType","_cUsedInArr","_out","_type0","_type1","_type2","_type3"];
 //[[[end]]]
 
-_arrIn = param [0,[0]];
+_arrIn = _this;
 if !(typeName (_arrIn select 0) isEqualTo "CONFIG") exitWith {[]};
 
 _type0 = []; _type1 = []; _type2 = []; _type3 = []; _out = [];
