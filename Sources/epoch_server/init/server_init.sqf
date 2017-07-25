@@ -13,7 +13,7 @@
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server/init/server_init.sqf
 */
 //[[[cog import generate_private_arrays ]]]
-private ["_ReservedSlots","_SideHQ1","_SideHQ2","_SideHQ3","_abortAndError","_allowedVehicleIndex","_allowedVehicleListName","_allowedVehiclesList","_allowedVehiclesListArray","_cfgServerVersion","_channelColor","_channelNumber","_channelTXT","_clientVersion","_config","_configSize","_configVersion","_date","_dateChanged","_epochConfig","_epochWorldPath","_existingStock","_hiveVersion","_index","_indexStock","_instanceID","_marker","_markercolor","_markertxt","_markertype","_pos","_radio","_response","_sapper","_serverConfig","_serverSettingsConfig","_servicepoints","_startTime","_staticDateTime","_timeDifference","_vehicleCount","_vehicleSlotLimit","_worldSize"];
+private ["_ReservedSlots","_SideHQ1","_SideHQ2","_SideHQ3","_abortAndError","_allowedVehicleIndex","_allowedVehicleListName","_allowedVehiclesList","_allowedVehiclesListArray","_cfgServerVersion","_channelColor","_channelNumber","_channelTXT","_clientVersion","_config","_configSize","_configVersion","_date","_dateChanged","_epochConfig","_epochWorldPath","_existingStock","_hiveVersion","_index","_indexStock","_instanceID","_marker","_markercolor","_markertxt","_markertype","_pos","_radio","_response","_sapper","_serverConfig","_serverSettingsConfig","_servicepoints","_startTime","_staticDateTime","_staticFuelSources","_timeDifference","_vehicleCount","_vehicleSlotLimit","_worldSize"];
 //[[[end]]]
 _startTime = diag_tickTime;
 missionNamespace setVariable ['Epoch_ServerVersion', getText(configFile >> "CfgMods" >> "Epoch" >> "version"), true];
@@ -260,8 +260,14 @@ _servicepoints = getArray (_config >> worldname >> 'ServicePoints');
 } forEach _ServicePoints;
 
 // Remove Auto-Refuel from all maps
+
 if ([_serverSettingsConfig, "disableAutoRefuel", true] call EPOCH_fnc_returnConfigEntry) then {
-    {_x setFuelCargo 0;} foreach ((epoch_centerMarkerPosition nearObjects ['Building',EPOCH_dynamicVehicleArea]) select {getFuelCargo _x > 0});
+    // get all fuel source objects on the map (Note: this maybe slow consider refactor with another command)
+    _staticFuelSources = ((epoch_centerMarkerPosition nearObjects ['Building',EPOCH_dynamicVehicleArea]) select {getFuelCargo _x > 0});
+    // globalize all fuel sources
+    missionNamespace setVariable ["EPOCH_staticFuelSources", _staticFuelSources, true];
+    // disable fuel sources server side. (Note: might not be needed since we also need to do this client side)
+    {_x setFuelCargo 0;} foreach _staticFuelSources;
 };
 
 // set time multiplier
