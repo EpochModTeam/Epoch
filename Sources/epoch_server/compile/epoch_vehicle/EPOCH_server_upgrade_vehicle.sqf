@@ -107,6 +107,10 @@ if(["CfgDynamicSimulation", "vehicleDynamicSimulationSystem", true] call EPOCH_f
 
 
 // add back old inventory
+clearWeaponCargoGlobal    _newveh;
+clearMagazineCargoGlobal  _newveh;
+clearBackpackCargoGlobal  _newveh;
+clearItemCargoGlobal	  _newveh;
 [_newveh,_cargo] call EPOCH_server_CargoFill;
 
 // save new vehicle to db
