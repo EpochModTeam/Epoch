@@ -6,7 +6,7 @@
 		Spawns Debris Dynamically on Roadways.
 
 	Improvements and or bugfixes and other contributions are welcome via the github:
-	https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server_settings/EpochEvents/DebrisSpawner.sqf
+	https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server_debris_event/EpochEvents/DebrisSpawner.sqf
 */
 //[[[cog import generate_private_arrays ]]]
 private ["_allRoads","_allowDebris","_debris","_debrisCounter","_debrisLocations","_debrisLocationsKey","_debrisLocationsTMP","_debug","_disallowedLocations","_expiresDebris","_export","_instanceID","_intersections","_marker","_maxDebrisLimit","_nearbyLocations","_newDebrisCounter","_object","_offsetX","_offsetY","_position","_response","_rng","_rngChance","_scriptHiveKey","_seed","_selectedDebris","_upperPos","_worldSize"];
