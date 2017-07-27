@@ -3,21 +3,25 @@ All changes for [Arma 3](https://arma3.com/) [Epoch Mod](https://epochmod.com) a
 
 ## [Unreleased]
 ### Added
+- Quarter and Half wood floors. @DirtySanchez
+- Added Digital Geiger counter sounds.
+- Barrel Bomb - large craft-able explosive that can be placed and detonated. @DirtySanchez
 - Documents and Vehicle Upgrade System. @DirtySanchez
 - Brown Briefcase that contains 100oz Silver. @DirtySanchez
 - CBA extended event handler and zeus curator support for Epoch Vehicles. @DirtySanchez
 - Initial support for Malden 2035 map released with A3 1.72+.
-- Base PlotPole ESP added to EpochAH. @SMVampire
+- Base PlotPole ESP added to Epoch Admin Panel. @SMVampire
 - Vector Base Building (uses Arrow keys by default and with SHIFT / ALT you can control the steps). @DirtySanchez & @Ignatz-Heman
 - Base Building elements can be detached to walk around the Element before saving. @Ignatz-Heman
 - Helper arrow to indicate door-opening direction for Base Building. @Ignatz-Heman
 - Option to drink directly from water sources. @Ignatz-HeMan
-- Epoch Events 3.0: Allow external events based on server side configs and pbos. New server side events can be added just dropping the pbo into @epochhive/addons folder. To make your own use Dynamic Debris Event as a template.
+- Epoch Events 3.0: External pbo template based events.
+- VIP Event - Reveals the map location of a random player that possesses a specific item (ItemBriefcaseGold100oz) every 15 minutes.
 - Dynamic Debris: Dynamically spawns vehicle and other debris on the roadways. Scans the roads on startup and uses a random seed generator to determine the locations of debris. Debris is spawned using createSimpleObject for best performance and is made to conform with the uppermost roadway surface.
 - Epoch Dev Libs, See https://github.com/EpochModTeam/Epoch/tree/experimental/Tools/DevFrameWork for more info. @raymix
 - Md5 hash function and Unit test to the hive. See usage example with EPOCH_fnc_server_hiveMD5 SQF function.
+- A3 Dynamic Simulation and CfgDynamicSimulation configs. @DirtySanchez
 ### Changed
-- Enabled A3 Dynamic Simulation on Vehicles.
 - Made ServicePoint more configurable @Ignatz-Heman
 - Base Building: Replaced 0/90/180/270° direction build mode with "Rotate 90°". @Ignatz-Heman
 - Base Building: Max building height now will be checked directly at building element placement. @Ignatz-Heman
@@ -26,6 +30,8 @@ All changes for [Arma 3](https://arma3.com/) [Epoch Mod](https://epochmod.com) a
 - Bump to hive version 0.6.0.0, Note: this requires epochserver hive extension updates server side.
 - Gas Station Auto-Refuel is now disabled on all maps. Use disableAutoRefuel = false; via epochconfig.hpp to disable. @SMVampire
 ### Fixed
+- Snapping with Vector Tilt @DirtySanchez
+- Sounds not working due to changes to 3dSay command in recent A3 updates. @DirtySanchez
 - Spawning at base above Water was not working correctly. @Ignatz-Heman
 - One step is higher on stairs, can't run up while crouched. #447 @Helion4
 - L85 Elcan optic issue. #678 @Helion4
