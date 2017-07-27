@@ -125,7 +125,7 @@ _config = configFile >> "CfgEpoch";
 	_exitClass = _x select 2;
 	_pos = _x select 3;
 	// allow forth position element to set direction if set
-	if (count _pos >= 4) then {
+	if (_pos isEqualType [] && {count _pos >= 4}) then {
 		_dir2 = _pos deleteAt 3;
 	};
 

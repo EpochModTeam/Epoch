@@ -16,7 +16,7 @@ All changes for [Arma 3](https://arma3.com/) [Epoch Mod](https://epochmod.com) a
 - Helper arrow to indicate door-opening direction for Base Building. @Ignatz-Heman
 - Option to drink directly from water sources. @Ignatz-HeMan
 - Epoch Events 3.0: External pbo template based events.
-- VIP Event - Reveals the map location of a random player that possesses a specific item (ItemBriefcaseGold100oz) every 15 minutes.
+- VIP Event - Reveals the map location of a random player that possesses a specific item (default: ItemBriefcaseGold100oz) every X (default: 15) minutes.
 - Dynamic Debris: Dynamically spawns vehicle and other debris on the roadways. Scans the roads on startup and uses a random seed generator to determine the locations of debris. Debris is spawned using createSimpleObject for best performance and is made to conform with the uppermost roadway surface.
 - Epoch Dev Libs, See https://github.com/EpochModTeam/Epoch/tree/experimental/Tools/DevFrameWork for more info. @raymix
 - Md5 hash function and Unit test to the hive. See usage example with EPOCH_fnc_server_hiveMD5 SQF function.
@@ -35,7 +35,7 @@ All changes for [Arma 3](https://arma3.com/) [Epoch Mod](https://epochmod.com) a
 - Spawning at base above Water was not working correctly. @Ignatz-Heman
 - One step is higher on stairs, can't run up while crouched. #447 @Helion4
 - L85 Elcan optic issue. #678 @Helion4
-- Zombie falsely triggers Mission success @Ignatz-Heman
+- Zombie falsely triggers Mission success. @Ignatz-Heman
 - Base Building 90° and 270° Snap was broken.
 - Sometimes snapped Base Building elements rotated back on save.
 - BE kick since 1.70.
