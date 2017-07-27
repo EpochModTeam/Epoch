@@ -215,6 +215,10 @@ if (_class != "") then {
 					{
 						_nearestObject = _x;
 						_isSnap = false;
+						
+						// Vector + Snapping
+						_snapMemoryPoint = "";
+						
 						_snapPosition = [0, 0, 0];
 						if (!isNull _nearestObject) then {
 							_snapConfig = _cfgBaseBuilding >> (typeOf _nearestObject);
@@ -237,6 +241,9 @@ if (_class != "") then {
 											_isSnap = true;
 											_snapPosition = _snapPos;
 											_snapType = _type;
+											
+											// Vector + Snapping
+											_snapMemoryPoint = _x;
 										};
 									};
 								} forEach _snapPoints;
@@ -256,15 +263,7 @@ if (_class != "") then {
 									_direction = 0;
 								};
 								if (EPOCH_snapDirection > 0) then {
-									if (EPOCH_snapDirection == 1) then {
-										_direction = _direction + 90;
-									};
-									if (EPOCH_snapDirection == 2) then {
-										_direction = _direction + 180;
-									};
-									if (EPOCH_snapDirection == 3) then {
-										_direction = _direction + 270;
-									};
+									_direction = _direction + (EPOCH_snapDirection * 90);
 								};
 								if (_direction > 360) then {
 									_direction = _direction - ((floor (_direction/360))*360);
@@ -275,7 +274,12 @@ if (_class != "") then {
 								{
 									detach _x;
 								} forEach attachedObjects player;
-								_dir2 = [vectorDir _nearestObject, _direction] call BIS_fnc_returnVector;
+								
+								// Vector + Snapping
+								_vectorDir = vectorDir _nearestObject;
+								_vectorUp = vectorup _nearestObject;
+								
+								_dir2 = [_vectorDir, _direction] call BIS_fnc_returnVector;
 								if (_pos2 select 2 > _maxHeight) then {
 									_pos2 set[2, _maxHeight];
 								};
@@ -284,6 +288,22 @@ if (_class != "") then {
 								};
 								_currentTarget setVectorDirAndUp[_dir2, (vectorUp _nearestObject)];
 								_currentTarget setposATL _snapPosition;
+								
+								// Vector + Snapping
+								if(!(_vectorUp select 0 == 0) || !(_vectorUp select 1 == 0) || !(	_vectorUp select 2 == 1)) then{
+									if(_snapType isEqualTo "perp")then{
+										if(_snapMemoryPoint in ["W","E"])then{
+											_nearestObject setDir ((getDir _nearestObject) + (EPOCH_snapDirection * 90));
+										};
+									};
+									_newDir = vectorDir _nearestObject;
+									_nearestObject setVectorDirAndUp [_vectorDir,_vectorUp];
+									_vectorDir = _newDir;
+									_currentTarget setposATL _snapPosition;
+									_currentTarget setDir ((getDir _currentTarget) + (EPOCH_snapDirection * 90));
+									_currentTarget setVectorDirAndUp [_vectorDir,_vectorUP];
+								};
+								
 								_snapped = true;
 								_arr_snapPoints = [];
 								EPOCH_arr_snapPoints = [];
