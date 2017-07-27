@@ -113,7 +113,7 @@ ExceptedBaseObjects[] = 		{	// Not Indestructible, also if in a Class of Indestr
 // Traders
 taxRate = 0.1; // controls the price increase for purchases
 starterTraderItems[] = { { "ItemSodaBurst", "meatballs_epoch", "MortarBucket", "CinderBlocks", "VehicleRepair", "CircuitParts", "ItemCorrugated", "PartPlankPack", "ItemRock", "ItemRope", "ItemStick" }, { 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5 } }; // Starter Items for fresh spawned trader first array is classnames second is quantity.
-NPCSlotsLimit = 20; // Max number of traders static or dynamic. Warning! Higher the number lower performance.
+NPCSlotsLimit = 30; // Max number of traders static or dynamic. Warning! Higher the number lower performance.
 forceStaticTraders = "true"; // disables traders moving from work to home
 
 forcedVehicleSpawnTable = ""; // leave blank for default. Options: "allowedVehiclesList","allowedVehiclesList_CUP","allowedVehiclesList_MAD","allowedVehiclesList_MADCUP"
