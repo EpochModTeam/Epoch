@@ -108,6 +108,7 @@ class CfgServerFunctions
 			class server_traderKilled {};
 			class localCleanup {};
 			class server_createTeleport {};
+			class server_getRealTime {};
 			class server_teleportPlayer {};
 			class returnConfig {};
 			class serverCommand {};
