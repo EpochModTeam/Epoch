@@ -25,6 +25,7 @@ antihack_checkFiles[] = { //script check, leave it blank to disable it
 	{"epoch_code\compile\interface_event_handlers\EPOCH_KeyDown.sqf", "EPOCH_KeyDown"}
 };
 antihack_addActionCheck = "true"; // false to disable addAction checks
+antihack_antiTeleportCheck = "true"; // false to disable antiTeleport checks
 adminMenu_Owner[] = {};
 adminMenu_OwnerSetting[] = {
 	"ESP-PLAYER",
