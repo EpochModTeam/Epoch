@@ -60,6 +60,13 @@ switch true do {
 					_currentDMG = 0;
 					{
 						_currentDMG = _x;
+						if (EPOCH_AdvancedVehicleRepair_Enabled) then {
+							if (_cursorTarget iskindof "Landvehicle" || _cursorTarget iskindof "SHIP" || _cursorTarget iskindof "AIR" || _cursorTarget iskindof "TANK") then {
+								if (_currentDMG > 0.9) then {
+									_currentDMG = 0;
+								};
+							};
+						};
 						if (_currentDMG > _highestDMG) then{
 							_highestDMG = _currentDMG;
 							_currentHIT = _forEachIndex;
@@ -68,9 +75,9 @@ switch true do {
 					if (_highestDMG > 0) then {
 						_newDMG = ((_highestDMG - 0.5) max 0);
 						if (local _cursorTarget) then {
-							[_cursorTarget,[_currentHIT,_newDMG]] call EPOCH_client_repairVehicle;
+							[_cursorTarget,[[_currentHIT,_newDMG]]] call EPOCH_client_repairVehicle;
 						} else {
-							[_cursorTarget,[_currentHIT,_newDMG],player,Epoch_personalToken] remoteExec ["EPOCH_server_repairVehicle",2];
+							[_cursorTarget,[[_currentHIT,_newDMG]],player,Epoch_personalToken] remoteExec ["EPOCH_server_repairVehicle",2];
 						};
 					} else {
 						if ((damage _cursorTarget) > 0) then {

@@ -229,9 +229,9 @@ switch _interactOption do {
 					_newDMG = ((_highestDMG - 0.5) max 0);
 
 					if (local _vehicle) then {
-						[_vehicle, [_currentHIT, _newDMG]] call EPOCH_client_repairVehicle;
+						[_vehicle, [[_currentHIT, _newDMG]]] call EPOCH_client_repairVehicle;
 					} else {
-						[_vehicle,[_currentHIT,_newDMG],player,Epoch_personalToken] remoteExec ["EPOCH_server_repairVehicle",2];
+						[_vehicle,[[_currentHIT,_newDMG]],player,Epoch_personalToken] remoteExec ["EPOCH_server_repairVehicle",2];
 					};
 
 				} else {
