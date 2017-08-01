@@ -90,6 +90,29 @@ class CfgEpochClient
     playerDisableRevenge = 0;
     playerRevengeMinAliveTime = 900;
     bankTransferTime[] = {0.0006,1.2,0.06};
+	
+	SuppressedCraftingItems[] = {"VehicleRepair","VehicleRepairLg"};	// Suppresed for usage of "Advanced Vehicle Repair"
+	UseAdvancedVehicleRepair = "true";
+	VehicleRepairs[] = {
+		{"HitHull",0.33,0.66,"ItemScraps","ItemCorrugated"},
+		{"HitBody",0.33,1,"ItemScraps","ItemCorrugated"},
+		{"HitLFWheel",0.33,1,"VehicleRepair","SpareTire"},
+		{"HitLF2Wheel",0.33,1,"VehicleRepair","SpareTire"},
+		{"HitLMWheel",0.33,1,"VehicleRepair","SpareTire"},
+		{"HitLBWheel",0.33,1,"VehicleRepair","SpareTire"},
+		{"HitRFWheel",0.33,1,"VehicleRepair","SpareTire"},
+		{"HitRF2Wheel",0.33,1,"VehicleRepair","SpareTire"},
+		{"HitRMWheel",0.33,1,"VehicleRepair","SpareTire"},
+		{"HitRBWheel",0.33,1,"VehicleRepair","SpareTire"},
+		{"HitEngine",0.33,0.91,"EngineParts","EngineBlock"},
+		{"glass",0.33,1,"ItemGlass","ItemGlass"},
+		{"HitFuel",0.1,0.66,"ItemDuctTape","FuelTank"},
+		{"HitHRotor",0.33,1,"ItemCorrugated","ItemRotor"},
+		{"HitVRotor",0.33,1,"ItemCorrugated","ItemRotor"},
+		{"HitWinch",0.33,0.91,"ItemCables","ItemCables"},
+		{"HitAvionics",0.33,0.91,"CircuitParts","CircuitParts"}
+	};
+	
     // include configs
     #include "CfgEpochClient\Altis.hpp"
     #include "CfgEpochClient\australia.hpp"

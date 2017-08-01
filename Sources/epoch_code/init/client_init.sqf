@@ -12,6 +12,7 @@
     Github:
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_code/init/client_init.sqf
 */
+EPOCH_Vehicle_MaintainLock = false;
 EPOCH_CraftingItem = "";
 EPOCH_ESP_TARGETS = [];
 EPOCH_ESPMAP_TARGETS = [];

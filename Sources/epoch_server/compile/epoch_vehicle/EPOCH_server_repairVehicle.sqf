@@ -19,11 +19,24 @@ if (_player distance _vehicle > 20) exitWith{};
 
 if ((_value select 0) isEqualTo "ALL") then {
 	_vehicle setDamage (_value select 1);
-} else {
+} 
+else {
 	if (local _vehicle) then {
-		_vehicle setHitIndex _value;
+		{
+			if ((_x select 0) isequaltype 0) then {
+				_vehicle setHitIndex _x;
+			}
+			else {
+				_vehicle setHitPointDamage _x;
+			};
+		} foreach _value;
 	} else {
 		[_vehicle, _value] remoteExec ['EPOCH_client_repairVehicle',_vehicle];
 	};
 };
+
+if !({_x > 0} count ((getAllHitPointsDamage _vehicle) select 2) > 0) then {
+	_vehicle setdamage 0;
+};
+
 _vehicle call EPOCH_server_save_vehicle;

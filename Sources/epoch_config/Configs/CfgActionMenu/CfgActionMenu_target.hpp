@@ -160,3 +160,305 @@ class pack_safe
 	icon = "x\addons\a3_epoch_code\Data\UI\buttons\build_pack.paa";
 	tooltip = "Pack Safe";
 };
+
+class VehMaintanance
+{
+	condition = "dyna_isVehicle && !EPOCH_Vehicle_MaintainLock && EPOCH_AdvancedVehicleRepair_Enabled";
+	action = "dyna_cursorTarget call EPOCH_client_VehicleMaintananceCheck;";
+    icon = "x\addons\a3_epoch_code\Data\UI\buttons\Repair_man.paa";
+	tooltip = "Vehicle Maintanance";
+	class Repair
+	{
+		condition = "!((EPOCH_VehicleRepairs select 0) isequalto []) || !((EPOCH_VehicleRepairs select 2) isequalto [])";
+		action = "";
+		icon = "epoch_code\customs\Repair_Wheel.paa";
+		tooltip = "Repair Vehicle";
+		class RepairHull
+		{
+			condition = "'HitHull' in (EPOCH_VehicleRepairs select 0)";
+			action = "[dyna_cursorTarget,'repair','HitHull'] spawn EPOCH_client_VehicleMaintananceDo";
+			icon = "epoch_code\customs\Repair_HullBody.paa";
+			tooltip = "Repair Hull";
+		};
+		class ReplaceHull
+		{
+			condition = "'HitHull' in (EPOCH_VehicleRepairs select 2)";
+			action = "[dyna_cursorTarget,'replace','HitHull'] spawn EPOCH_client_VehicleMaintananceDo";
+			icon = "epoch_code\customs\Replace_HullBody.paa";
+			tooltip = "Repair Hull";
+		};
+		class RepairEngine
+		{
+			condition = "'HitEngine' in (EPOCH_VehicleRepairs select 0)";
+			action = "[dyna_cursorTarget,'repair','HitEngine'] spawn EPOCH_client_VehicleMaintananceDo";
+			icon = "epoch_code\customs\Repair_Engine.paa";
+			tooltip = "Repair Engine";
+		};
+		class ReplaceEngine
+		{
+			condition = "'HitEngine' in (EPOCH_VehicleRepairs select 2)";
+			action = "[dyna_cursorTarget,'replace','HitEngine'] spawn EPOCH_client_VehicleMaintananceDo";
+			icon = "epoch_code\customs\Replace_Engine.paa";
+			tooltip = "Replace Engine";
+		};
+		class ReplaceGlass
+		{
+			condition = "'glass' in (EPOCH_VehicleRepairs select 0) || 'glass' in (EPOCH_VehicleRepairs select 2)";
+			action = "[dyna_cursorTarget,'replace','glass'] spawn EPOCH_client_VehicleMaintananceDo";
+			icon = "epoch_code\customs\Replace_Glass.paa";
+			tooltip = "Replace Glass";
+		};
+		class RepairBody
+		{
+			condition = "'HitBody' in (EPOCH_VehicleRepairs select 0)";
+			action = "[dyna_cursorTarget,'repair','HitBody'] spawn EPOCH_client_VehicleMaintananceDo";
+			icon = "epoch_code\customs\Repair_HullBody.paa";
+			tooltip = "Repair Body";
+		};
+		class ReplaceBody
+		{
+			condition = "'HitBody' in (EPOCH_VehicleRepairs select 2)";
+			action = "[dyna_cursorTarget,'replace','HitBody'] spawn EPOCH_client_VehicleMaintananceDo";
+			icon = "epoch_code\customs\Replace_HullBody.paa";
+			tooltip = "Repair Body";
+		};
+		class RepairFuel
+		{
+			condition = "'HitFuel' in (EPOCH_VehicleRepairs select 0)";
+			action = "[dyna_cursorTarget,'repair','HitFuel'] spawn EPOCH_client_VehicleMaintananceDo";
+			icon = "epoch_code\customs\Repair_Fuel.paa";
+			tooltip = "Repair Fuel Hose";
+		};
+		class RepairMainRotor
+		{
+			condition = "'HitHRotor' in (EPOCH_VehicleRepairs select 0)";
+			action = "[dyna_cursorTarget,'repair','HitHRotor'] spawn EPOCH_client_VehicleMaintananceDo";
+			icon = "epoch_code\customs\Repair_MainRotor.paa";
+			tooltip = "Repair Main Rotor";
+		};
+		class ReplaceFuel
+		{
+			condition = "'HitFuel' in (EPOCH_VehicleRepairs select 2)";
+			action = "[dyna_cursorTarget,'replace','HitFuel'] spawn EPOCH_client_VehicleMaintananceDo";
+			icon = "epoch_code\customs\Repair_Fuel.paa";
+			tooltip = "Replace Fuel Hose";
+		};
+		class ReplaceMainRotor
+		{
+			condition = "'HitHRotor' in (EPOCH_VehicleRepairs select 2)";
+			action = "[dyna_cursorTarget,'replace','HitHRotor'] spawn EPOCH_client_VehicleMaintananceDo";
+			icon = "epoch_code\customs\Replace_MainRotor.paa";
+			tooltip = "Replace Main Rotor";
+		};
+		class RepairTailRotor
+		{
+			condition = "'HitVRotor' in (EPOCH_VehicleRepairs select 0)";
+			action = "[dyna_cursorTarget,'repair','HitVRotor'] spawn EPOCH_client_VehicleMaintananceDo";
+			icon = "epoch_code\customs\Repair_TailRotor.paa";
+			tooltip = "Repair Tail Rotor";
+		};
+		class ReplaceTailRotor
+		{
+			condition = "'HitVRotor' in (EPOCH_VehicleRepairs select 2)";
+			action = "[dyna_cursorTarget,'replace','HitVRotor'] spawn EPOCH_client_VehicleMaintananceDo";
+			icon = "epoch_code\customs\Replace_TailRotor.paa";
+			tooltip = "Replace Tail Rotor";
+		};
+		class ReplaceWinch
+		{
+			condition = "'HitWinch' in (EPOCH_VehicleRepairs select 0) || 'HitWinch' in (EPOCH_VehicleRepairs select 2)";
+			action = "[dyna_cursorTarget,'replace','HitWinch'] spawn EPOCH_client_VehicleMaintananceDo";
+			icon = "epoch_code\customs\Replace_SLG.paa";
+			tooltip = "Replace Winch";
+		};
+		class RepairTire1
+		{
+			condition = "'HitLFWheel' in (EPOCH_VehicleRepairs select 0)";
+			action = "[dyna_cursorTarget,'repair','HitLFWheel'] spawn EPOCH_client_VehicleMaintananceDo";
+			icon = "epoch_code\customs\Repair_Wheel.paa";
+			tooltip = "Repair 1st Left Wheel";
+		};
+		class RepairTire2
+		{
+			condition = "'HitLF2Wheel' in (EPOCH_VehicleRepairs select 0)";
+			action = "[dyna_cursorTarget,'repair','HitLF2Wheel'] spawn EPOCH_client_VehicleMaintananceDo";
+			icon = "epoch_code\customs\Repair_Wheel.paa";
+			tooltip = "Repair 2nd Left Wheel";
+		};
+		class RepairTire3
+		{
+			condition = "'HitLMWheel' in (EPOCH_VehicleRepairs select 0)";
+			action = "[dyna_cursorTarget,'repair','HitLMWheel'] spawn EPOCH_client_VehicleMaintananceDo";
+			icon = "epoch_code\customs\Repair_Wheel.paa";
+			tooltip = "Repair 3rd Left Wheel";
+		};
+		class RepairTire4
+		{
+			condition = "'HitLBWheel' in (EPOCH_VehicleRepairs select 0)";
+			action = "[dyna_cursorTarget,'repair','HitLBWheel'] spawn EPOCH_client_VehicleMaintananceDo";
+			icon = "epoch_code\customs\Repair_Wheel.paa";
+			tooltip = "Repair 4th Left Wheel";
+		};
+		class RepairTire5
+		{
+			condition = "'HitRFWheel' in (EPOCH_VehicleRepairs select 0)";
+			action = "[dyna_cursorTarget,'repair','HitRFWheel'] spawn EPOCH_client_VehicleMaintananceDo";
+			icon = "epoch_code\customs\Repair_Wheel.paa";
+			tooltip = "Repair 1st Right Wheel";
+		};
+		class RepairTire6
+		{
+			condition = "'HitRF2Wheel' in (EPOCH_VehicleRepairs select 0)";
+			action = "[dyna_cursorTarget,'repair','HitRF2Wheel'] spawn EPOCH_client_VehicleMaintananceDo";
+			icon = "epoch_code\customs\Repair_Wheel.paa";
+			tooltip = "Repair 2nd Right Wheel";
+		};
+		class RepairTire7
+		{
+			condition = "'HitRMWheel' in (EPOCH_VehicleRepairs select 0)";
+			action = "[dyna_cursorTarget,'repair','HitRMWheel'] spawn EPOCH_client_VehicleMaintananceDo";
+			icon = "epoch_code\customs\Repair_Wheel.paa";
+			tooltip = "Repair 3rd Right Wheel";
+		};
+		class RepairTire8
+		{
+			condition = "'HitRBWheel' in (EPOCH_VehicleRepairs select 0)";
+			action = "[dyna_cursorTarget,'repair','HitRBWheel'] spawn EPOCH_client_VehicleMaintananceDo";
+			icon = "epoch_code\customs\Repair_Wheel.paa";
+			tooltip = "Repair 4th Right Wheel";
+		};
+		class ReplaceTire1
+		{
+			condition = "'HitLFWheel' in (EPOCH_VehicleRepairs select 2)";
+			action = "[dyna_cursorTarget,'replace','HitLFWheel'] spawn EPOCH_client_VehicleMaintananceDo";
+			icon = "epoch_code\customs\Replace_Wheel.paa";
+			tooltip = "Replace 1st Left Wheel";
+		};
+		class ReplaceTire2
+		{
+			condition = "'HitLF2Wheel' in (EPOCH_VehicleRepairs select 2)";
+			action = "[dyna_cursorTarget,'replace','HitLF2Wheel'] spawn EPOCH_client_VehicleMaintananceDo";
+			icon = "epoch_code\customs\Replace_Wheel.paa";
+			tooltip = "Replace 2nd Left Wheel";
+		};
+		class ReplaceTire3
+		{
+			condition = "'HitLMWheel' in (EPOCH_VehicleRepairs select 2)";
+			action = "[dyna_cursorTarget,'replace','HitLMWheel'] spawn EPOCH_client_VehicleMaintananceDo";
+			icon = "epoch_code\customs\Replace_Wheel.paa";
+			tooltip = "Replace 3rd Left Wheel";
+		};
+		class ReplaceTire4
+		{
+			condition = "'HitLBWheel' in (EPOCH_VehicleRepairs select 2)";
+			action = "[dyna_cursorTarget,'replace','HitLBWheel'] spawn EPOCH_client_VehicleMaintananceDo";
+			icon = "epoch_code\customs\Replace_Wheel.paa";
+			tooltip = "Replace 4th Left Wheel";
+		};
+		class ReplaceTire5
+		{
+			condition = "'HitRFWheel' in (EPOCH_VehicleRepairs select 2)";
+			action = "[dyna_cursorTarget,'replace','HitRFWheel'] spawn EPOCH_client_VehicleMaintananceDo";
+			icon = "epoch_code\customs\Replace_Wheel.paa";
+			tooltip = "Replace 1st Right Wheel";
+		};
+		class ReplaceTire6
+		{
+			condition = "'HitRF2Wheel' in (EPOCH_VehicleRepairs select 2)";
+			action = "[dyna_cursorTarget,'replace','HitRF2Wheel'] spawn EPOCH_client_VehicleMaintananceDo";
+			icon = "epoch_code\customs\Replace_Wheel.paa";
+			tooltip = "Replace 2nd Right Wheel";
+		};
+		class ReplaceTire7
+		{
+			condition = "'HitRMWheel' in (EPOCH_VehicleRepairs select 2)";
+			action = "[dyna_cursorTarget,'replace','HitRMWheel'] spawn EPOCH_client_VehicleMaintananceDo";
+			icon = "epoch_code\customs\Replace_Wheel.paa";
+			tooltip = "Replace 3rd Right Wheel";
+		};
+		class ReplaceTire8
+		{
+			condition = "'HitRBWheel' in (EPOCH_VehicleRepairs select 2)";
+			action = "[dyna_cursorTarget,'replace','HitRBWheel'] spawn EPOCH_client_VehicleMaintananceDo";
+			icon = "epoch_code\customs\Replace_Wheel.paa";
+			tooltip = "Replace 4th Right Wheel";
+		};
+		class RepairAvionics
+		{
+			condition = "'HitAvionics' in (EPOCH_VehicleRepairs select 0) || 'HitAvionics' in (EPOCH_VehicleRepairs select 2)";
+			action = "[dyna_cursorTarget,'replace','HitAvionics'] spawn EPOCH_client_VehicleMaintananceDo";
+			icon = "epoch_code\customs\Repair_Avionics.paa";
+			tooltip = "Repair Avionics";
+		};
+	};
+	class Remove
+	{
+		condition = "!((EPOCH_VehicleRepairs select 1) isequalto [])";
+		action = "";
+		icon = "epoch_code\customs\Remove_Wheel.paa";
+		tooltip = "Remove Parts";
+		class RemoveEngine
+		{
+			condition = "'HitEngine' in (EPOCH_VehicleRepairs select 1)";
+			action = "[dyna_cursorTarget,'remove','HitEngine'] spawn EPOCH_client_VehicleMaintananceDo";
+			icon = "epoch_code\customs\Remove_Engine.paa";
+			tooltip = "Remove Engine";
+		};
+		class RemoveTire1
+		{
+			condition = "'HitLFWheel' in (EPOCH_VehicleRepairs select 1)";
+			action = "[dyna_cursorTarget,'remove','HitLFWheel'] spawn EPOCH_client_VehicleMaintananceDo";
+			icon = "epoch_code\customs\Remove_Wheel.paa";
+			tooltip = "Remove 1st Left Wheel";
+		};
+		class RemoveTire2
+		{
+			condition = "'HitLF2Wheel' in (EPOCH_VehicleRepairs select 1)";
+			action = "[dyna_cursorTarget,'remove','HitLF2Wheel'] spawn EPOCH_client_VehicleMaintananceDo";
+			icon = "epoch_code\customs\Remove_Wheel.paa";
+			tooltip = "Remove 2nd Left Wheel";
+		};
+		class RemoveTire3
+		{
+			condition = "'HitLMWheel' in (EPOCH_VehicleRepairs select 1)";
+			action = "[dyna_cursorTarget,'remove','HitLMWheel'] spawn EPOCH_client_VehicleMaintananceDo";
+			icon = "epoch_code\customs\Remove_Wheel.paa";
+			tooltip = "Remove 3rd Left Wheel";
+		};
+		class RemoveTire4
+		{
+			condition = "'HitLBWheel' in (EPOCH_VehicleRepairs select 1)";
+			action = "[dyna_cursorTarget,'remove','HitLBWheel'] spawn EPOCH_client_VehicleMaintananceDo";
+			icon = "epoch_code\customs\Remove_Wheel.paa";
+			tooltip = "Remove 4th Left Wheel";
+		};
+		class RemoveTire5
+		{
+			condition = "'HitRFWheel' in (EPOCH_VehicleRepairs select 1)";
+			action = "[dyna_cursorTarget,'remove','HitRFWheel'] spawn EPOCH_client_VehicleMaintananceDo";
+			icon = "epoch_code\customs\Remove_Wheel.paa";
+			tooltip = "Remove 1st Right Wheel";
+		};
+		class RemoveTire6
+		{
+			condition = "'HitRF2Wheel' in (EPOCH_VehicleRepairs select 1)";
+			action = "[dyna_cursorTarget,'remove','HitRF2Wheel'] spawn EPOCH_client_VehicleMaintananceDo";
+			icon = "epoch_code\customs\Remove_Wheel.paa";
+			tooltip = "Remove 2nd Right Wheel";
+		};
+		class RemoveTire7
+		{
+			condition = "'HitRMWheel' in (EPOCH_VehicleRepairs select 1)";
+			action = "[dyna_cursorTarget,'remove','HitRMWheel'] spawn EPOCH_client_VehicleMaintananceDo";
+			icon = "epoch_code\customs\Remove_Wheel.paa";
+			tooltip = "Remove 3rd Right Wheel";
+		};
+		class RemoveTire8
+		{
+			condition = "'HitRBWheel' in (EPOCH_VehicleRepairs select 1)";
+			action = "[dyna_cursorTarget,'remove','HitRBWheel'] spawn EPOCH_client_VehicleMaintananceDo";
+			icon = "epoch_code\customs\Remove_Wheel.paa";
+			tooltip = "Remove 4th Right Wheel";
+		};
+	};
+};
