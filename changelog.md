@@ -21,6 +21,7 @@ All changes for [Arma 3](https://arma3.com/) [Epoch Mod](https://epochmod.com) a
 - Epoch Dev Libs, See https://github.com/EpochModTeam/Epoch/tree/experimental/Tools/DevFrameWork for more info. @raymix
 - Md5 hash function and Unit test to the hive. See usage example with EPOCH_fnc_server_hiveMD5 SQF function.
 - A3 Dynamic Simulation and CfgDynamicSimulation configs. @DirtySanchez
+- New feature - Favorites bar. Users can pin (almost) any item to the bar by dragging items from inventory to equip/un-equip (Weapons, attachments, head gear etc) or consume (eat, drink, build etc) using keyboard mapping without having gear open. Use ESC menu to change the mappings. @raymix
 ### Changed
 - Made ServicePoint more configurable @Ignatz-Heman
 - Base Building: Replaced 0/90/180/270° direction build mode with "Rotate 90°". @Ignatz-Heman
