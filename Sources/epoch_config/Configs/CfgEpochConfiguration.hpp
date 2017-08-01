@@ -15,6 +15,7 @@ class CfgEpochConfiguration
         icon = "\x\addons\a3_epoch_code\Data\owner.paa";
         controlGroup = "EpochConfigKeyMap";
     };
+	/*
     class HUD
     {
         name = "Customize HUD (WIP)";
@@ -22,6 +23,7 @@ class CfgEpochConfiguration
         icon = "\x\addons\a3_epoch_code\Data\owner.paa";
         controlGroup = "Epoch_main_config_dynamicHUD";
     };
+	*/
     class html
     {
         name = "Changelog";
