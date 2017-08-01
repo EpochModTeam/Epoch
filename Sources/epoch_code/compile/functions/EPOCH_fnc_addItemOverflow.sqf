@@ -1,7 +1,7 @@
 /*
 	Author: Aaron Clark - EpochMod.com
 
-    Contributors:
+    Contributors: Raimonds Virtoss
 
 	Description:
 	Epoch add item with overflow
@@ -20,12 +20,14 @@
         _this select 1: NUMBER - (Optional) Ammo count
 
 	Returns:
-	BOOL
+	BOOL 	True: item was dropped nearby
+			False: item was added to inventory
 */
 //[[[cog import generate_private_arrays ]]]
-private ["_nearByHolder","_wH","_wHPos"];
+private ["_dropped","_nearByHolder","_wH","_wHPos"];
 //[[[end]]]
 params [["_item","",[""]],["_count",1]];
+_dropped = false;
 for "_i" from 1 to _count do
 {
     if (player canAdd _item) then {
@@ -47,6 +49,7 @@ for "_i" from 1 to _count do
         if !(isNull _wh) then {
             _wh addItemCargoGlobal [_item,1];
         };
+		_dropped = true;
     };
 };
-true
+_dropped

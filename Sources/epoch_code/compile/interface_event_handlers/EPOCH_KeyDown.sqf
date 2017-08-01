@@ -38,6 +38,13 @@ if (_handled) exitWith{ true };
 if !(alive player) exitWith{ false };
 
 EPOCH_doRotate = false;
+EPOCH_modKeys = [_shift,_ctrl,_alt];
+'modifier' spawn epoch_favBar_draw;
+
+//Favorites bar
+if (_dikCode in [EPOCH_keysfav1,EPOCH_keysfav2,EPOCH_keysfav3,EPOCH_keysfav4,EPOCH_keysfav5]) then {
+	_this call epoch_favBar_action;
+};
 
 // increase vol
 if (_ctrl && _dikCode == EPOCH_keysVolumeUp) then {

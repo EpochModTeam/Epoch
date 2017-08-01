@@ -162,6 +162,9 @@ if (EPOCH_debugMode) then {
 // player to player trade loop
 call EPOCH_TradeLoop;
 
+//Updates favorites bar
+call epoch_favBar_refresh;
+
 // blank out unused hud elements and prepare for next loop
 _hudIndex = missionNamespace getVariable [format["EPOCH_dynHUD_%1","topRight"],1];
 for "_i" from _hudIndex to 9 do {

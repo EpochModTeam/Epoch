@@ -60,6 +60,17 @@ rmx_var_drag_MouseDown = false;
 rmx_var_dynamicHUD_groups = [];
 rmx_var_dynamicHUD_groupCTRL = [];
 
+//Favorites bar
+rmx_var_favBar_Item = "";
+EPOCH_modKeys = [false,false,false];
+
+//If disabled, players will not be able to use favorite bar
+EPOCH_fav_enableFavoriteBar = true;
+//If enabled, same slot weapons from favorites bar are equipped instantly, otherwise reload action is played (recommended for immersion)
+EPOCH_fav_FastWeaponSwitching = false; 
+//If enabled and inventory full, equipped weapon will be dropped on ground in favor for the new selected weapon, otherwise action will fail with message and weapon will not be equipped
+EPOCH_fav_DropIfOverflow = false; 
+
 ["EPOCH_onEachFrame", "onEachFrame", EPOCH_onEachFrame] call BIS_fnc_addStackedEventHandler;
 
 // Custom Keys
@@ -75,5 +86,12 @@ call EPOCH_clientInit;
 
 [] execFSM "epoch_code\system\SPVEH.fsm";
 [] execFSM "epoch_code\system\player_login.fsm";
+
+//Start processing right after Loading screen is done and game has started
+[] spawn {
+	waitUntil {!isNull (findDisplay 46) && (!isNil "EPOCH_loadingScreenDone")};
+	'load' call epoch_favBar_draw;
+};
+
 
 true

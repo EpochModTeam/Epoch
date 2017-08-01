@@ -28,6 +28,8 @@ private ["_bar","_bar_compare","_color","_colorCompare","_container","_display",
 //[[[end]]]
 disableSerialization;
 
+[] spawn epoch_favBar_inventory;
+
 EPOCH_InteractedItem = [];
 params ["_unit","_targetContainer","_secondaryContainer"];
 EPOCH_targetContainer = _targetContainer;

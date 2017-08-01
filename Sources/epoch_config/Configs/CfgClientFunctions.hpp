@@ -168,6 +168,8 @@ class CfgClientFunctions
             class maxArmorInit {};
             class initUI {};
             class refeshUI {};
+			class equip {};
+			class itemTypeSlot {};
         };
         class servicepoint
         {
@@ -192,6 +194,7 @@ class CfgClientFunctions
             class custom_EH_Take {};
             class custom_KeyMap {};
             class custom_OnEachFrame {};
+			class custom_radioActions {};
         };
         class messaging
         {
@@ -316,6 +319,15 @@ class CfgClientFunctions
             class gui3DModelPos {};
             class gui3DModelPosEH {};
         };
+		class favBar {
+			file = "epoch_code\gui\scripts\favBar";
+			class favBar_draw {};
+			class favBar_refresh {};
+			class favBar_action{};
+			class favBar_getItemByIDC {};
+			class favBar_inventory {};
+			class favBar_getGearItem {};
+		};
     };
 };
 
