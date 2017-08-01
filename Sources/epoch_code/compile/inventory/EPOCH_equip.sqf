@@ -336,9 +336,10 @@ _fnc_dropEquipAccessories = {
 	for "_i" from 0 to (count _itemsPlayer) do {
 		_itemsPlayer set [_i,toLower (_itemsPlayer select _i)];
 	};
-
+	_item = toLower _item;
 	_itemEquipped = _item in _itemsPlayer;
 	_equipped = (_loadout select _slot) select _accessory;
+	systemChat str [_item,_equipped];
 	if (!_itemInInventory && !_itemEquipped) exitWith {_return = 3};
 	if (_equipped != "") then {
 		_equipped = (_loadout select _slot) select _accessory;
@@ -357,10 +358,13 @@ _fnc_dropEquipAccessories = {
 		if (((toLower _equipped) != (toLower _item)) || _forceEquip && _return != 4) then {
 			(_loadout select _slot) set [_accessory,_item];
 			player setUnitLoadout _loadout;
+			player addItem _equipped;
+			player removeItem _item;
 		};
 	} else {
 		(_loadout select _slot) set [_accessory,_item];
 		player setUnitLoadout _loadout;
+		player removeItem _item;
 		_return = 1;
 	};
 
