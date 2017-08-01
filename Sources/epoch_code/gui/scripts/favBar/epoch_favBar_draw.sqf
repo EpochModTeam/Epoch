@@ -20,6 +20,12 @@ params ["_action","_idx","_bidx","_mod"];
 switch _action do {
 	case "load":
 	{
+		if (EPOCH_fav_resetOnLogin) then {
+			profileNamespace setVariable ["rmx_var_favBar_MNone",nil];
+			profileNamespace setVariable ["rmx_var_favBar_MCtrl",nil];
+			profileNamespace setVariable ["rmx_var_favBar_MShift",nil];
+			profileNamespace setVariable ["rmx_var_favBar_MAlt",nil];
+		};
 		rmx_var_favBar_MNone = profileNamespace getVariable ["rmx_var_favBar_MNone",["","","","",""]];
 		rmx_var_favBar_MCtrl = profileNamespace getVariable ["rmx_var_favBar_MCtrl",["","","","",""]];
 		rmx_var_favBar_MShift = profileNamespace getVariable ["rmx_var_favBar_MShift",["","","","",""]];
@@ -52,6 +58,7 @@ switch _action do {
 	};
 	case "add":
 	{
+		if (rmx_var_favBar_Item in EPOCH_fav_BannedItems) exitWith {"Item is not allowed in favorites!" call epoch_message; false};
 		if (rmx_var_favBar_Item in rmx_var_favBar_current) exitWith {"Item already exists in favorites!" call epoch_message; false}; //if duplicate
 		
 		_type = (rmx_var_favBar_Item call BIS_fnc_itemType) select 1;
