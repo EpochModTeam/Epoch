@@ -104,11 +104,11 @@ class CfgEpochClient
 		{"HitRF2Wheel",0.33,1,"VehicleRepair","SpareTire"},
 		{"HitRMWheel",0.33,1,"VehicleRepair","SpareTire"},
 		{"HitRBWheel",0.33,1,"VehicleRepair","SpareTire"},
-		{"HitEngine",0.33,0.91,"Ignatz_SparkPlug","Ignatz_Engine"},
-		{"glass",0.33,1,"Ignatz_Glass","Ignatz_Glass"},
-		{"HitFuel",0.1,0.66,"ItemDuctTape","Ignatz_FuelHose"},
-		{"HitHRotor",0.33,1,"ItemCorrugated","Ignatz_Rotor_Main"},
-		{"HitVRotor",0.33,1,"ItemCorrugated","Ignatz_Rotor_Tail"},
+		{"HitEngine",0.33,0.91,"EngineParts","EngineBlock"},
+		{"glass",0.33,1,"ItemGlass","ItemGlass"},
+		{"HitFuel",0.1,0.66,"ItemDuctTape","FuelTank"},
+		{"HitHRotor",0.33,1,"ItemCorrugated","ItemRotor"},
+		{"HitVRotor",0.33,1,"ItemCorrugated","ItemRotor"},
 		{"HitWinch",0.33,0.91,"ItemCables","ItemCables"},
 		{"HitAvionics",0.33,0.91,"CircuitParts","CircuitParts"}
 	};
