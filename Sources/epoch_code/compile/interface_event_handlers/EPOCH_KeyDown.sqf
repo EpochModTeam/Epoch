@@ -41,11 +41,6 @@ EPOCH_doRotate = false;
 EPOCH_modKeys = [_shift,_ctrl,_alt];
 'modifier' spawn epoch_favBar_draw;
 
-//Favorites bar
-if (_dikCode in [EPOCH_keysfav1,EPOCH_keysfav2,EPOCH_keysfav3,EPOCH_keysfav4,EPOCH_keysfav5]) then {
-	_this call epoch_favBar_action;
-};
-
 // increase vol
 if (_ctrl && _dikCode == EPOCH_keysVolumeUp) then {
 	EPOCH_soundLevel = (EPOCH_soundLevel + 0.1) min 1;
@@ -243,6 +238,14 @@ if (_dikCode in (actionKeys "TacticalView")) then {
 if (_dikCode in (actionKeys "NightVision")) then {
 	if (EPOCH_playerEnergy == 0) then {
 		["Night Vision Goggles: Need Energy", 5] call Epoch_message;
+		_handled = true;
+	};
+};
+
+//Favorites bar
+if (!_handled) then {
+	if (_dikCode in [EPOCH_keysfav1,EPOCH_keysfav2,EPOCH_keysfav3,EPOCH_keysfav4,EPOCH_keysfav5]) then {
+		_this call epoch_favBar_action;
 		_handled = true;
 	};
 };
