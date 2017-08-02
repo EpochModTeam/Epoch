@@ -6,3 +6,4 @@ default {rmx_var_favBar_current = rmx_var_favBar_MNone;};
 };
 call epoch_favBar_drawCurrent;
 call epoch_favBar_refresh;
+true 

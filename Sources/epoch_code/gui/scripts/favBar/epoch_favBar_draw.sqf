@@ -117,3 +117,4 @@ switch _action do {
 for "_i" from 1 to 5 do {
 	(["fav_pic_bg", _i] call epoch_getHUDCtrl) ctrlSetText "x\addons\a3_epoch_code\Data\UI\favbar\fav_bg.paa";
 };
+true

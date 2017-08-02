@@ -75,6 +75,7 @@ for "_i" from 1 to 5 do {
 	(["fav_pic_bg", _i] call epoch_getHUDCtrl) ctrlShow true;
 };
 
+true 
 /*
 {
 _crl = _display displayCtrl _x;
