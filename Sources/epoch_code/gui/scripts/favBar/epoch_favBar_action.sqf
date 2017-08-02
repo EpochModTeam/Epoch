@@ -38,7 +38,8 @@ if (_itemHasInteraction) then {
 
 	if (_slot in [3,4,5]) then {
 		_curSlot = _item call epoch_itemTypeSlot;
-		if (_curSlot == _slot && !EPOCH_fav_FastWeaponSwitching && _errorCode in [1,2]) then {player playAction "reloadMagazine";};
+		_Fav_FastWeaponSwitching = ["CfgEpochClient", "Fav_FastWeaponSwitching", true] call EPOCH_fnc_returnConfigEntryV2;
+		if (_curSlot == _slot && !_Fav_FastWeaponSwitching && _errorCode in [1,2]) then {player playAction "reloadMagazine";};
 	};
 	
 	if (_errorCode isEqualTo 2) then {"Not enough space, item dropped on the ground!" call epoch_message;};
