@@ -1,0 +1,1 @@
+ for %%f in (*.paa) do ( "D:\SteamLibrary\steamapps\common\Arma 3 Tools\TexView2\Pal2PacE.exe" "%%~nf.paa" "%%~nf.tga" )
