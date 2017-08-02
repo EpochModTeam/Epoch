@@ -34,7 +34,7 @@
 					17 - Grenades
 					17 - Unsure about these, modify script as required, but don't change existing structure
 */
-private ["_item"];
+private ["_item","_cat","_type"];
 params [["_item","",[""]]];
 if (_item == "") exitWith {false};
 
@@ -61,15 +61,4 @@ if (_type == "Grenade") exitWith {17};
 //unsure
 if (_type in ["Magazine","Shotgun","FirstAidKit","LaserDesignator","Medikit","MineDetector","Toolkit","VehicleWeapon","Unknown","UnknownEquipment","UnknownWeapon"]) exitWith {18};
 
-0
-
-
-			
-		
-			
-
-
-
-
-
-
+0 

@@ -14,7 +14,7 @@
 
 	Usage: none
 */
-
+private ["_item","_ammo","_cnt"];
 //switch
 
 _item = switch (_this) do {

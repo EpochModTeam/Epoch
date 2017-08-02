@@ -15,6 +15,7 @@
 */
 
 if !(EPOCH_fav_enableFavoriteBar) exitWith {false};
+private ["_playerItems","_equipped","_mod","_txt"];
 
 _playerItems = itemsWithMagazines  player;
 _equipped = [primaryWeapon player, secondaryWeapon player, handgunWeapon player, headgear player, goggles player, hmd player, binocular player];

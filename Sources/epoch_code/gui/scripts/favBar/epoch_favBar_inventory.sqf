@@ -24,7 +24,8 @@
 
 	Usage: none
 */
-//TODO: Maybe - spawn IDC cleanup thread, wait until display closes
+private ["_display","_c","_gIdx","_g"];
+
 if !(EPOCH_fav_enableFavoriteBar) exitWith {false};
 disableSerialization;
 waitUntil {!isNull findDisplay 602};
@@ -86,19 +87,3 @@ _c ctrlCommit 0;
 //Listboxes?
 //6325,1241
 //619,638,633
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -15,6 +15,7 @@
 
 	RETURNS: classname for item in inventory
 */
+private ["_return","_dispName","_idx","_className"];
 (_this select 1 select 0) params ["_dispName","_idx","_className"];
 _return = "";
 

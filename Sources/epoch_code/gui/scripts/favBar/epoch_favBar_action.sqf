@@ -13,7 +13,7 @@
 
 	Usage: none
 */
-private ["_item","_slot"];
+private ["_item","_slot","_dsp","_kee","_tileIdx","_itemHasInteraction","_force","_errorCode","_curSlot"];
 params ["_dsp","_kee"];
 
 _tileIdx = switch (_kee) do {

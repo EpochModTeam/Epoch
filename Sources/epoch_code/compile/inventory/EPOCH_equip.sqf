@@ -30,21 +30,21 @@
 				4 - not enough space
 				5 - accessory not compatible
 */
-private ["_item","_drop","_forceEquip"];
+private ["_item","_drop","_forceEquip","_return","_loadout","_slot","_uniform","_vest","_bpack","_uniformItems","_vestItems","_bPackItems","_itemInInventory",
+"_fnc_dropItem","_fnc_findItemInContainers","_fnc_moveWeaponFromContainer","_fnc_MoveWeaponToContainer","_fnc_canMoveToContainer","_fnc_dropEquipWeapon","_fnc_dropAssign",
+"_fnc_MoveShellToContainer","_fnc_moveShellFromContainer","_fnc_dropEquipShells","_fnc_findAccessorySlot","_fnc_dropEquipAccessories"];
 params [["_item","",[""]],["_drop",false,[false]],["_forceEquip",false,[false]]];
 
 _return = 0;
 if (_item == "") exitWith {_return};
 _slot = _item call epoch_itemTypeSlot;
 _loadout = getUnitLoadout player;
-_loadout params ["_pSlot","_sSlot","_hSlot","_uniform","_vest","_bpack","_helm","_goggles","_bino","_assigned"];
-_pSlot params ["_pWeapon","_pSilencer","_pLaser","_pOptic","_pMag","_pMag2","_pBipod"];
-_sSlot params ["_sWeapon","_sSilencer","_sLaser","_sOptic","_sMag","_sBipod"];
-_hSlot params ["_hWeapon","_hSilencer","_hLaser","_hOptic","_hMag","_hBipod"];
+_uniform = _loadout param [3,[]];
+_vest = _loadout param [4,[]]
+_bpack = _loadout param [5,[]]
 _uniformItems = _uniform param [1,[]];
 _vestItems = _vest param [1,[]];
 _bPackItems = _bPack param [1,[]];
-_binoculars = _bino param [0,[]];
 
 _itemInInventory = _item in ((magazines player) + (items player));
 
@@ -73,7 +73,7 @@ _fnc_dropItem = {
 };
 
 _fnc_findItemInContainers = {
-	private "_item";
+	private ["_item","_container","_index","_found","_currItem"];
 	params ["_item"];
 	
 	_container = 0;
@@ -96,7 +96,7 @@ _fnc_findItemInContainers = {
 		if _found exitWith {};
 	} forEach [_uniformItems,_vestItems,_bPackItems];
 	
-	[_container,_index,_found];
+	[_container,_index,_found]
 };	
 
 _fnc_moveWeaponFromContainer = {
@@ -292,7 +292,7 @@ _fnc_dropEquipShells = {
 _fnc_findAccessorySlot = {
 		_item = toLower _item;
 		
-		private ["_found","_slot","_accessory"];
+		private ["_found","_slot","_accessory","_compatibleMuzzles","_compatibleCows","_compatiblePointers","_compatibleBipods"];
 		_slot = 0;
 		_accessory = 0;
 		_found = false;
@@ -322,7 +322,7 @@ _fnc_findAccessorySlot = {
 			if (_item in _compatibleBipods) exitWith {_found = true; _accessory = 6};
 		} forEach [(primaryWeapon player),(secondaryWeapon player),(handgunWeapon player)];
 		
-		[_found,_slot,_accessory];
+		[_found,_slot,_accessory]
 };
 
 _fnc_dropEquipAccessories = {
@@ -339,7 +339,7 @@ _fnc_dropEquipAccessories = {
 	_item = toLower _item;
 	_itemEquipped = _item in _itemsPlayer;
 	_equipped = (_loadout select _slot) select _accessory;
-	systemChat str [_item,_equipped];
+
 	if (!_itemInInventory && !_itemEquipped) exitWith {_return = 3};
 	if (_equipped != "") then {
 		_equipped = (_loadout select _slot) select _accessory;
@@ -452,6 +452,7 @@ switch _slot do {
 	};
 	case 12: //mines
 	{
+		private ["_allMuzzles","_muzzle","_found","_mags"];
 			if (_itemInInventory) then {
 			_allMuzzles = getArray (configFile >> "CfgWeapons" >> "Put" >> "Muzzles");
 			
