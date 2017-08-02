@@ -60,3 +60,4 @@ for "_i" from 1 to 5 do {
 		};
 	};
 }forEach rmx_var_favBar_current;
+true 
