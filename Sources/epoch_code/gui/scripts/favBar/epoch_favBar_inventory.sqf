@@ -41,7 +41,7 @@ rmx_var_fav_selected = false;
 //(_this select 1 select 0 select 2)
 {
 	_c = _display displayCtrl _x;
-	_c ctrlAddEventHandler ["MouseButtonDown",(format ["'modifier' spawn epoch_favBar_draw; rmx_var_favBar_Item = %1 call epoch_favBar_getItemByIDC; rmx_var_fav_selected = true",_x])];
+	_c ctrlAddEventHandler ["MouseButtonDown",(format ["call epoch_favBar_modifier; rmx_var_favBar_Item = %1 call epoch_favBar_getItemByIDC; rmx_var_fav_selected = true",_x])];
 } forEach [610,620,641,622,621,644,623,611,624,642,626,625,627,612,628,643,630,629,631,6240,6216,6217,6238];
 
 _gIdx = 0;

@@ -35,7 +35,7 @@ _this call Epoch_custom_EH_KeyUp;
 if (_handled) exitWith{ true };
 
 EPOCH_modKeys = [_shift,_ctrl,_alt];
-'modifier' spawn epoch_favBar_draw;
+call epoch_favBar_modifier;
 
 //Main actions
 if (_dikCode == EPOCH_keysAction) then {

@@ -40,8 +40,8 @@ if (_item == "") exitWith {_return};
 _slot = _item call epoch_itemTypeSlot;
 _loadout = getUnitLoadout player;
 _uniform = _loadout param [3,[]];
-_vest = _loadout param [4,[]]
-_bpack = _loadout param [5,[]]
+_vest = _loadout param [4,[]];
+_bpack = _loadout param [5,[]];
 _uniformItems = _uniform param [1,[]];
 _vestItems = _vest param [1,[]];
 _bPackItems = _bPack param [1,[]];

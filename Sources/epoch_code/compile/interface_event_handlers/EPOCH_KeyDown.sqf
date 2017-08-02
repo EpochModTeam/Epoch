@@ -39,7 +39,7 @@ if !(alive player) exitWith{ false };
 
 EPOCH_doRotate = false;
 EPOCH_modKeys = [_shift,_ctrl,_alt];
-'modifier' spawn epoch_favBar_draw;
+call epoch_favBar_modifier;
 
 //Favorites bar
 if (_dikCode in [EPOCH_keysfav1,EPOCH_keysfav2,EPOCH_keysfav3,EPOCH_keysfav4,EPOCH_keysfav5]) then {

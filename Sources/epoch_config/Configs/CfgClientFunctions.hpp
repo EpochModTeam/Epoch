@@ -324,11 +324,13 @@ class CfgClientFunctions
 		class favBar {
 			file = "epoch_code\gui\scripts\favBar";
 			class favBar_draw {};
+			class favBar_drawCurrent {};
 			class favBar_refresh {};
 			class favBar_action{};
 			class favBar_getItemByIDC {};
 			class favBar_inventory {};
 			class favBar_getGearItem {};
+			class favBar_modifier {};
 		};
     };
 };
