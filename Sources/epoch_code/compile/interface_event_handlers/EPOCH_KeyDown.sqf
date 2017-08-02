@@ -107,7 +107,7 @@ if (_dikCode == EPOCH_keysAction) then {
 // Player only code
 if (vehicle player == player) then {
 
-	if (_dikCode == EPOCH_keysBuildMode1 && EPOCH_buildMode > 0) then {
+	if ((_dikCode == EPOCH_keysBuildMode1 && !EPOCH_favBar_itemConsumed) && EPOCH_buildMode > 0) then {
         EPOCH_buildMode = 0;
 		["Build Mode: Disabled", 5] call Epoch_message;
 		EPOCH_Target = objNull;
@@ -230,6 +230,8 @@ if (vehicle player == player) then {
 	};
 
 }; // end player only code
+
+EPOCH_favBar_itemConsumed = false;
 
 if (_dikCode in (actionKeys "Salute")) then {
 	if (_ctrl) then {

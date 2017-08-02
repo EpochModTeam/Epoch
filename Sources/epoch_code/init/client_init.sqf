@@ -62,6 +62,7 @@ rmx_var_dynamicHUD_groups = [];
 rmx_var_dynamicHUD_groupCTRL = [];
 
 //Favorites bar
+EPOCH_favBar_itemConsumed = false;
 rmx_var_favBar_Item = "";
 EPOCH_modKeys = [false,false,false];
 
