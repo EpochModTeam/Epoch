@@ -90,7 +90,9 @@ class CfgEpochClient
     playerDisableRevenge = 0;
     playerRevengeMinAliveTime = 900;
     bankTransferTime[] = {0.0006,1.2,0.06};
-	
+
+	Fav_BannedItems[] = {"FAK"};		// Items that can not be added to Fav-Bar
+
 	SuppressedCraftingItems[] = {"VehicleRepair","VehicleRepairLg"};	// Suppresed for usage of "Advanced Vehicle Repair"
 	UseAdvancedVehicleRepair = "true";
 	VehicleRepairs[] = {
