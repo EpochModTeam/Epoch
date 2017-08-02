@@ -71,8 +71,6 @@ EPOCH_fav_enableFavoriteBar = true;
 EPOCH_fav_FastWeaponSwitching = false; 
 //If enabled and inventory full, equipped weapon will be dropped on ground in favor for the new selected weapon, otherwise action will fail with message and weapon will not be equipped
 EPOCH_fav_DropIfOverflow = false;
-//Items that users are not allowed to pin
-EPOCH_fav_BannedItems = ["FAK"]; //add items that can be abused here
 //Reset all favorite items on every login (players will be required to re-add everything again).
 EPOCH_fav_resetOnLogin = true;
 
