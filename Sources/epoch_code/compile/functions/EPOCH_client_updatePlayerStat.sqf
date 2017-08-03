@@ -12,6 +12,9 @@
     Licence:
     Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
 
+	Github:
+    https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_code/compile/functions/EPOCH_client_updatePlayerStat.sqf
+	
 	usage: 
 	// This will add +15 to the "ZedKills" index and will also update the server variable
 	["ZedKills",15,true] call EPOCH_client_updatePlayerStat;
@@ -25,23 +28,16 @@
 */
 params [ ["_statType",""], ["_adjust",0], ["_toServer",false] ];
 
-if(isNull player)exitWith{
-	diag_log "EPOCHDebug: updatePlayerStats -1- player is null object";
-};
 if(_statType isEqualTo "")exitWith{
 	diag_log "EPOCHDebug: updatePlayerStats -2- stat type not defined";
 };
 if(_adjust isEqualTo 0)exitWith{
 	diag_log "EPOCHDebug: updatePlayerStats -3- stat adjustment is 0";
 };
-_playerUID = getplayerUID player;
-if(_playerUID isEqualTo "")exitWith{
-	diag_log "EPOCHDebug: updatePlayerStats -4- player UID is empty";
-};
 
-_statVarName = format["EPOCH_total%1",_statType];
-_currentStat = missionNameSpace getVariable[_statVarName,0];
-_newStat = _currentStat + _adjust;
+private _statVarName = format["EPOCH_total%1",_statType];
+private _currentStat = missionNameSpace getVariable[_statVarName,0];
+private _newStat = _currentStat + _adjust;
 missionNameSpace setVariable[_statVarName,_newStat];
 
 if(_toServer)then{
