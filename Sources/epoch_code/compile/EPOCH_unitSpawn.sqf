@@ -151,7 +151,6 @@ switch _unitClass do {
 		{
 			_unit = [] call EPOCH_zombieSpawn;
 			_units pushBack _unit;
-			_unit addEventHandler ["Killed", {["ZombieKills",1,true] call EPOCH_client_updatePlayerStat;}];
 		};
 	};
     case "I_Soldier_EPOCH": {
