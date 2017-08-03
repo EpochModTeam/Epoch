@@ -93,9 +93,17 @@ class CfgEpochClient
     playerRevengeMinAliveTime = 900;
     bankTransferTime[] = {0.0006,1.2,0.06};
 	
+	// Favorite Bar
+	Fav_enableFavoriteBar = "true";			// If disabled, players will not be able to use favorite bar
+	Fav_DropIfOverflow = "false";			// If enabled and inventory full, equipped weapon will be dropped on ground in favor for the new selected weapon, otherwise action will fail with message and weapon will not be equipped
+	Fav_FastWeaponSwitching = "false";		// If enabled, same slot weapons from favorites bar are equipped instantly, otherwise reload action is played (recommended for immersion)
+	Fav_BannedItems[] = {"FAK"};				// Items that users are not allowed to pin
+	
+	// Advanced Vehicle Repair
+	UseAdvancedVehicleRepair = "true";									// Switch On / Off Advanced Vehicle Repair (Does not effect SuppressedCraftingItems !)
+	DisallowSellOnDamage = "false";										// Prevent from selling Vehicles with one or more fully damaged wheel or engine
 	SuppressedCraftingItems[] = {"VehicleRepair","VehicleRepairLg"};	// Suppresed for usage of "Advanced Vehicle Repair"
-	UseAdvancedVehicleRepair = "true";
-	VehicleRepairs[] = {
+	VehicleRepairs[] = {												// {Hitpoint, dmg to repair, dmg to replace, mat to repair, mat to replace}
 		{"HitHull",0.33,0.66,"ItemScraps","ItemCorrugated"},
 		{"HitBody",0.33,1,"ItemScraps","ItemCorrugated"},
 		{"HitLFWheel",0.33,1,"VehicleRepair","SpareTire"},

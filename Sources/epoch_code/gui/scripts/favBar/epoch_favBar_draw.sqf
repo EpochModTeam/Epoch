@@ -14,22 +14,27 @@
 	Usage: none
 */
 disableSerialization;
-
+private ["_action","_idx","_bidx","_mod","_baritems","_Fav_BannedItems"];
 params ["_action","_idx","_bidx","_mod"];
+_Fav_BannedItems = ["CfgEpochClient", "Fav_BannedItems", []] call EPOCH_fnc_returnConfigEntryV2;
 
 switch _action do {
 	case "load":
 	{
-		if (EPOCH_fav_resetOnLogin) then {
-			profileNamespace setVariable ["rmx_var_favBar_MNone",nil];
-			profileNamespace setVariable ["rmx_var_favBar_MCtrl",nil];
-			profileNamespace setVariable ["rmx_var_favBar_MShift",nil];
-			profileNamespace setVariable ["rmx_var_favBar_MAlt",nil];
-		};
+		private ["_tmp","_c","_p"];
 		rmx_var_favBar_MNone = profileNamespace getVariable ["rmx_var_favBar_MNone",["","","","",""]];
 		rmx_var_favBar_MCtrl = profileNamespace getVariable ["rmx_var_favBar_MCtrl",["","","","",""]];
 		rmx_var_favBar_MShift = profileNamespace getVariable ["rmx_var_favBar_MShift",["","","","",""]];
 		rmx_var_favBar_MAlt = profileNamespace getVariable ["rmx_var_favBar_MAlt",["","","","",""]];
+        {
+            _baritems = _x;
+            {
+                if (_x in _Fav_BannedItems) then {
+                    _baritems set [_foreachindex,""];
+                };
+            } foreach _x;
+        } foreach [rmx_var_favBar_MNone,rmx_var_favBar_MCtrl,rmx_var_favBar_MShift,rmx_var_favBar_MAlt];
+		
 		rmx_var_favBar_current = rmx_var_favBar_MNone;
 		
 		waitUntil {uiSleep 0.1; ctrlShown (["fav_equipped", 1] call epoch_getHUDCtrl)};
@@ -46,19 +51,13 @@ switch _action do {
 			_c ctrlCommit 0;
 		};
 		
-		"draw_current" call epoch_favBar_draw;
+		call epoch_favBar_drawCurrent;
 		call epoch_favBar_refresh;
-	};
-	case "draw_current":
-	{
-		for "_i" from 0 to 4 do {
-			_c = (["fav_pic", _i+1] call epoch_getHUDCtrl);
-			_c ctrlSetText ((rmx_var_favBar_current select _i) call EPOCH_itemPicture);
-		};
 	};
 	case "add":
 	{
-		if (rmx_var_favBar_Item in EPOCH_fav_BannedItems) exitWith {"Item is not allowed in favorites!" call epoch_message; false};
+		private ["_type","_isBanned","_isAmmo","_isChemlight","_itemIsWeapon","_itemHasInteraction","_c"];
+		if (rmx_var_favBar_Item in _Fav_BannedItems) exitWith {"Item is not allowed in favorites!" call epoch_message; false};
 		if (rmx_var_favBar_Item in rmx_var_favBar_current) exitWith {"Item already exists in favorites!" call epoch_message; false}; //if duplicate
 		
 		_type = (rmx_var_favBar_Item call BIS_fnc_itemType) select 1;
@@ -115,31 +114,10 @@ switch _action do {
 			_c ctrlSetText "";
 		};
 	};
-	case "modifier":
-	{
-		switch EPOCH_modKeys do {
-			case [true,false,false]: //shift
-			{
-				rmx_var_favBar_current = rmx_var_favBar_MShift;
-			};
-			case [false,true,false]: //Ctrl
-			{
-				rmx_var_favBar_current = rmx_var_favBar_MCtrl;
-			};
-			case [false,false,true]: //Alt
-			{
-				rmx_var_favBar_current = rmx_var_favBar_MAlt;
-			};
-			default { //Any other combo or no modifier
-				rmx_var_favBar_current = rmx_var_favBar_MNone;
-			};
-		};
-		'draw_current' call epoch_favBar_draw;
-		call epoch_favBar_refresh;
-	};
 	default {systemChat "fail"};
 };
 
 for "_i" from 1 to 5 do {
 	(["fav_pic_bg", _i] call epoch_getHUDCtrl) ctrlSetText "x\addons\a3_epoch_code\Data\UI\favbar\fav_bg.paa";
 };
+true

@@ -38,12 +38,19 @@ if (_handled) exitWith{ true };
 if !(alive player) exitWith{ false };
 
 EPOCH_doRotate = false;
-EPOCH_modKeys = [_shift,_ctrl,_alt];
-'modifier' spawn epoch_favBar_draw;
+
+if !(EPOCH_modKeys isequalto [_shift,_ctrl,_alt]) then {
+	EPOCH_modKeys = [_shift,_ctrl,_alt];
+	call epoch_favBar_modifier;
+};
 
 //Favorites bar
 if (_dikCode in [EPOCH_keysfav1,EPOCH_keysfav2,EPOCH_keysfav3,EPOCH_keysfav4,EPOCH_keysfav5]) then {
-	_this call epoch_favBar_action;
+	if (isnull EPOCH_Target) then {
+		_this call epoch_favBar_action;
+	} else {
+		"Can't use while in building mode!" call epoch_message;
+	};
 };
 
 // increase vol
@@ -107,7 +114,7 @@ if (_dikCode == EPOCH_keysAction) then {
 // Player only code
 if (vehicle player == player) then {
 
-	if (_dikCode == EPOCH_keysBuildMode1 && EPOCH_buildMode > 0) then {
+	if ((_dikCode == EPOCH_keysBuildMode1 && !EPOCH_favBar_itemConsumed) && EPOCH_buildMode > 0) then {
         EPOCH_buildMode = 0;
 		["Build Mode: Disabled", 5] call Epoch_message;
 		EPOCH_Target = objNull;
@@ -230,6 +237,8 @@ if (vehicle player == player) then {
 	};
 
 }; // end player only code
+
+EPOCH_favBar_itemConsumed = false;
 
 if (_dikCode in (actionKeys "Salute")) then {
 	if (_ctrl) then {

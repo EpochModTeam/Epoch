@@ -72,6 +72,7 @@ class CfgClientFunctions
             class tradeFilter {};
             class takeCrypto {};
             class startBankTransfer {};
+			class calcDamageCost {};
         };
         class interface_event_handlers
         {
@@ -136,7 +137,8 @@ class CfgClientFunctions
             class giveAttributes {};
             class fnc_spawnEffects {};
             class fnc_arrayStringToBool {};
-			class client_updatePlayerStat {};
+			      class client_updatePlayerStat {};
+            class fnc_getHitPointsDamageAverage {};
         };
         class environment
         {
@@ -325,11 +327,13 @@ class CfgClientFunctions
 		class favBar {
 			file = "epoch_code\gui\scripts\favBar";
 			class favBar_draw {};
+			class favBar_drawCurrent {};
 			class favBar_refresh {};
 			class favBar_action{};
 			class favBar_getItemByIDC {};
 			class favBar_inventory {};
 			class favBar_getGearItem {};
+			class favBar_modifier {};
 		};
     };
 };

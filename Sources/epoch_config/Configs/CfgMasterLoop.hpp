@@ -44,6 +44,10 @@ class CfgMasterLoop
         {
             delay = 600;
         };
+		class Event8
+		{
+			delay = 5; //used for FavBar, adjust as required
+		};
     };
 };
 

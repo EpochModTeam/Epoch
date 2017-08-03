@@ -14,7 +14,8 @@
 	Usage: none
 */
 
-if !(EPOCH_fav_enableFavoriteBar) exitWith {false};
+if !(["CfgEpochClient", "Fav_enableFavoriteBar", true] call EPOCH_fnc_returnConfigEntryV2) exitWith {false};
+private ["_playerItems","_equipped","_mod","_txt"];
 
 _playerItems = itemsWithMagazines  player;
 _equipped = [primaryWeapon player, secondaryWeapon player, handgunWeapon player, headgear player, goggles player, hmd player, binocular player];
@@ -59,3 +60,4 @@ for "_i" from 1 to 5 do {
 		};
 	};
 }forEach rmx_var_favBar_current;
+true 
