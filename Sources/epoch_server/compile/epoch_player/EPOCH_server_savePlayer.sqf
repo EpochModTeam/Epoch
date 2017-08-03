@@ -12,7 +12,7 @@
     Github:
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server/compile/epoch_player/EPOCH_server_savePlayer.sqf
 */
-private["_return", "_pos", "_medical", "_playerUID", "_weapons", "_itemsplayer", "_weaponsplayer", "_appearance", "_dmg", "_allowSave", "_cIndex", "_Svars", "_current_crypto", "_group", "_revive", "_vehiclePlyr","_server_vars"];
+private["_return", "_return2", "_pos", "_medical", "_playerUID", "_weapons", "_itemsplayer", "_weaponsplayer", "_appearance", "_dmg", "_allowSave", "_cIndex", "_Svars", "_current_crypto", "_group", "_revive", "_vehiclePlyr","_server_vars","_stats"];
 params [["_player",objNull], ["_vars",[]]];
 
 if (isNull _player) exitWith {
@@ -88,6 +88,10 @@ if (_allowSave) then{
 	// save player
 	_return = ["Player", _playerUID, EPOCH_expiresPlayer, [[getDir _player, _pos, (call EPOCH_fn_InstanceID)], _medical, _appearance, _server_vars, _vars, _weapons, assignedItems _player, magazinesAmmo _player, _itemsplayer, _weaponsplayer, _group, _revive]] call EPOCH_fnc_server_hiveSETEX;
 
+	// save community stats
+	_stats = _player getVariable["COMMUNITY_STATS", EPOCH_defaultStatVars];
+	_return2 = ["CommunityStats", _playerUID, EPOCH_expiresCommunityStats, [_stats]] call EPOCH_fnc_server_hiveSETEX;	
+	
 	// kill player if blood pressure >= 180
 	if (_vars select 12 >= 180) then {
 		_player setDamage 1;

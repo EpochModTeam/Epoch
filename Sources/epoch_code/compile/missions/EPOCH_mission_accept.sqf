@@ -72,6 +72,7 @@ if !(isNull _trader) then {
 			EPOCH_mission_startTime = diag_ticktime;
 			EPOCH_ActiveTraderMission = [_inGameTasksconfig,_taskname,_missionname];
 		};
+		["TraderMissions",1,true] call EPOCH_client_updatePlayerStat;
 	}
 	else {
 		[format["Mission Not Allowed !",_menuCondition], 5] call Epoch_message; //Not formatting, is this intended?

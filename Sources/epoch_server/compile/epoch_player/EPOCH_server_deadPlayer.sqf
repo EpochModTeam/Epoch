@@ -13,7 +13,7 @@
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server/compile/epoch_player/EPOCH_server_deadPlayer.sqf
 */
 //[[[cog import generate_private_arrays ]]]
-private ["_bankBalance","_bankData","_cIndex","_current_crypto","_defaultVars","_playerName","_playerUID","_pos","_response","_triggerType","_vars"];
+private ["_bankBalance","_bankData","_cIndex","_current_crypto","_defaultVars","_playerName","_playerUID","_pos","_response","_triggerType","_vars","_killerUID","_deathType","_killerCommunityStats","_mIndex","_current_murders","_communityStats","_sIndex","_current_suicides","_dIndex","_current_deaths"];
 //[[[end]]]
 params ["_playerObj","_killer","_playerName",["_token","",[""]] ];
 
@@ -21,7 +21,9 @@ params ["_playerObj","_killer","_playerName",["_token","",[""]] ];
 if !([_playerObj, _token] call EPOCH_server_getPToken) exitWith{};
 
 _playerUID = getPlayerUID _playerObj;
+_killerUID = getPlayerUID _killer;
 _pos = getposATL _playerObj;
+_deathType = 666;
 
 if (_playerObj != _killer) then {
 	if (random 1 <= EPOCH_antagonistChancePDeath) then {
@@ -37,9 +39,22 @@ if (_playerObj != _killer) then {
 		_playerName = toString (_playerName);
 	};
 
-	['deathlog', format['%1 (%2) Killed By %3 (%4) with weapon %5 from %6m at %7', _playerName, _playerUID, name _killer, getPlayerUID _killer, currentWeapon _killer, _playerObj distance _killer, _pos]] call EPOCH_fnc_server_hiveLog;
+	['deathlog', format['%1 (%2) Killed By %3 (%4) with weapon %5 from %6m at %7', _playerName, _playerUID, name _killer, _killerUID, currentWeapon _killer, _playerObj distance _killer, _pos]] call EPOCH_fnc_server_hiveLog;
+	
+	if!(_killerUID isEqualTo "")then{
+		[_killer, "Murders", 1, true] call EPOCH_server_updatePlayerStats;
+	};
+	_deathType = 1;
 };
 
+switch(_deathType)do{
+	case 666: {
+		[_playerObj, "Suicides", 1] call EPOCH_server_updatePlayerStats;
+	};
+	case 1: {
+		[_playerObj, "Deaths", 1] call EPOCH_server_updatePlayerStats;
+	};
+};
 _defaultVars = call EPOCH_defaultVars_SEPXVar;
 // get vars array and current Crypto value
 _cIndex = EPOCH_customVars find "Crypto";

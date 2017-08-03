@@ -247,6 +247,9 @@ if (!local _player) then {
 
 				// send to player
 				[_newPlyr, _token, loadAbs _newPlyr] remoteExec ['EPOCH_clientRevive',_player];
+				
+				// send stat to reviver
+				[_reviver, "Revives", 1, true] call EPOCH_server_updatePlayerStats;
 			};
 		};
 	};
