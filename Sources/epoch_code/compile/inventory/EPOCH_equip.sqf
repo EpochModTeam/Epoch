@@ -369,7 +369,7 @@ _fnc_dropEquipAccessories = {
 	};
 
 	player selectWeapon ((_loadout select _slot) select 0);
-	if (!EPOCH_fav_FastWeaponSwitching) then {
+	if !(["CfgEpochClient", "Fav_FastWeaponSwitching", false] call EPOCH_fnc_returnConfigEntryV2) then {
 		player playAction "reloadMagazine";
 	};
 	_return

@@ -34,8 +34,10 @@ _handled = false;
 _this call Epoch_custom_EH_KeyUp;
 if (_handled) exitWith{ true };
 
-EPOCH_modKeys = [_shift,_ctrl,_alt];
-call epoch_favBar_modifier;
+if !(EPOCH_modKeys isequalto [_shift,_ctrl,_alt]) then {
+	EPOCH_modKeys = [_shift,_ctrl,_alt];
+	call epoch_favBar_modifier;
+};
 
 //Main actions
 if (_dikCode == EPOCH_keysAction) then {
