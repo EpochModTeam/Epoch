@@ -13,7 +13,7 @@
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server/compile/epoch_player/EPOCH_server_checkPlayer.sqf
 */
 //[[[cog import generate_private_arrays ]]]
-private ["_apperance","_arr","_class","_dead","_deadPlayer","_hitpoints","_isMale","_medical","_playerUID","_response","_vars"];
+private ["_apperance","_arr","_class","_dead","_deadPlayer","_hitpoints","_isMale","_medical","_playerUID","_response","_vars","_communityStatsArray"];
 //[[[end]]]
 params [["_playerObj",objNull]];
 if (_playerObj isEqualType objNull) then {
@@ -50,6 +50,13 @@ if (_playerObj isEqualType objNull) then {
 					_dead = true;
 				};
 			};
+			
+			// check status of community stats to prevent load / save issues
+			_communityStatsArray = ["CommunityStats", _playerUID] call EPOCH_fnc_server_hiveGETRANGE;
+			if((_communityStatsArray select 1) isEqualTo []) then{
+				_return = ["CommunityStats", _playerUID, EPOCH_expiresCommunityStats, [EPOCH_defaultStatVars]] call EPOCH_fnc_server_hiveSETEX;
+			};
+			
 			/* true => New Char
 			   false => load old Char */
 			['_checkPlayer_PVC', _dead] remoteExec ['EPOCH_playerLoginInit',_playerObj];

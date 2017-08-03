@@ -1,4 +1,4 @@
-/*%FSM<COMPILE "F:\Program Files (x86)\Steam\steamapps\common\Arma 3 Tools\FSMEditor\scriptedFSM.cfg, Epoch Login">*/
+/*%FSM<COMPILE "C:\Program Files (x86)\Steam\steamapps\common\Arma 3 Tools\FSMEditor\scriptedFSM.cfg, Epoch Login">*/
 /*%FSM<HEAD>*/
 /*
 item0[] = {"INIT",0,250,-25.000000,-375.000000,75.000000,-325.000000,0.000000,"INIT"};
@@ -18,7 +18,7 @@ item13[] = {"ERROR_PlayerUID",2,250,275.000000,125.000000,375.000000,175.000000,
 item14[] = {"",7,210,471.000061,145.999908,478.999939,154.000092,0.000000,""};
 item15[] = {"Timeout_No_Respo",4,218,125.000000,875.000000,225.000000,925.000000,0.000000,"Timeout" \n "No Response"};
 item16[] = {"Response",4,218,-150.000000,825.000000,-50.000000,875.000000,0.000000,"Response"};
-item17[] = {"Setup_Player_Var",2,250,-25.000000,1075.000000,75.000000,1125.000000,0.000000,"Setup Player" \n "Variables"};
+item17[] = {"Setup_Player_Var",2,4346,-25.000000,1075.000000,75.000000,1125.000000,0.000000,"Setup Player" \n "Variables"};
 item18[] = {"Request_Hive",2,250,-25.000000,575.000000,75.000000,625.000000,0.000000,"Request Hive"};
 item19[] = {"Timeout_No_Respo",4,218,125.000000,575.000000,225.000000,625.000000,0.000000,"Timeout" \n "No Response"};
 item20[] = {"ERROR_Server_not",2,250,275.000000,875.000000,375.000000,925.000000,0.000000,"ERROR" \n "Server not" \n "Response"};
@@ -62,7 +62,7 @@ item57[] = {"Select_Weapon",2,250,150.000000,1300.000000,250.000000,1350.000000,
 item58[] = {"true",8,218,225.000000,1375.000000,325.000000,1425.000000,0.000000,"true"};
 item59[] = {"Do_nothing",2,250,300.000000,1300.000000,400.000000,1350.000000,0.000000,"Do nothing"};
 item60[] = {"Check_New_Player",2,250,-25.000000,875.000000,75.000000,925.000000,0.000000,"Check" \n "New Player" \n "Setup"};
-item61[] = {"check_new__player",4,4314,-150.000000,925.000000,-50.000000,975.000000,0.000000,"check new " \n "player not null"};
+item61[] = {"check_new__player",4,218,-150.000000,925.000000,-50.000000,975.000000,0.000000,"check new " \n "player not null"};
 item62[] = {"true",4,218,-150.000000,-325.000000,-60.000000,-275.000000,0.000000,"true"};
 item63[] = {"Process_1",2,250,-25.000000,-275.000000,75.000000,-225.000000,0.000000,"Process"};
 item64[] = {"Wait_ArmA_Loading",4,218,-150.000000,-225.000000,-50.000000,-175.000000,0.000000,"Wait ArmA" \n "Loading Screen" \n "Done"};
@@ -183,8 +183,8 @@ link93[] = {82,76};
 link94[] = {83,16};
 link95[] = {83,22};
 link96[] = {84,31};
-globals[] = {0.000000,0,0,0,0,640,480,1,247,6316128,1,-423.640717,1096.514160,1778.978027,253.646729,577,604,1};
-window[] = {2,-1,-1,-1,-1,767,105,1089,0,3,595};
+globals[] = {0.000000,0,0,0,0,640,480,1,247,6316128,1,-374.618774,303.072205,1651.411377,653.207275,573,844,1};
+window[] = {2,-1,-1,-1,-1,863,96,1080,96,3,595};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -462,10 +462,13 @@ class FSM
                          "{" \n
                          "	missionNamespace setVariable[(format[""EPOCH_player%1"", EPOCH_customVars select _forEachIndex]), _x];" \n
                          "} forEach _playerVariables;" \n
-                         """Loading Player Variables... Please wait!"" call Epoch_updateLoadingScreen;" \n
+                         "{" \n
+                         "	missionNamespace setVariable[(format[""EPOCH_total%1"", EPOCH_communityStats select _forEachIndex]), _x];" \n
+                         "} forEach _communityStats;" \n
+                         """Loading Player Variables and Community Stats... Please wait!"" call Epoch_updateLoadingScreen;" \n
                          "progressLoadingScreen 0.7;" \n
                          "if (_debug) then {" \n
-                         "	diag_log ""EPOCH-LOGIN: Setup Player Variables"";" \n
+                         "	diag_log ""EPOCH-LOGIN: Setup Player Variables and Community Stats"";" \n
                          "};"/*%FSM</STATEINIT""">*/;
                         precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
                         class Links
@@ -1396,6 +1399,7 @@ class FSM
                                          "Epoch_canBeRevived = _C_SET deleteAt 0;" \n
                                          "Epoch_personalToken = _C_SET deleteAt 0;" \n
                                          "Epoch_my_Group = _C_SET deleteAt 0;" \n
+                                         "_communityStats = _C_SET deleteAt 0;" \n
                                          "" \n
                                          "_extraPayload = _C_SET deleteAt 0;" \n
                                          "" \n

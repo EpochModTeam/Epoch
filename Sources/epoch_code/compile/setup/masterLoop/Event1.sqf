@@ -225,6 +225,7 @@ if !(EPOCH_ActiveTraderMission isequalto []) then {
 		_LastMissionTrigger = 0;
 	};
 	if (call _taskCompleteCond) exitwith {
+		["CompletedMissions",1,true] call EPOCH_client_updatePlayerStat;
 		if (count _taskCompleteDiags > 0) then {
 			_diag = selectrandom _taskCompleteDiags;
 			[format ["%1",_diag], 5] call Epoch_message;

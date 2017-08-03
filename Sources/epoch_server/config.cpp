@@ -64,6 +64,8 @@ class CfgServerFunctions
 			class server_deadPlayerDetonate{};
 			class server_playerSetVariable{};
 			class server_PayCrypto{};
+			class fnc_updatePlayerStats{};
+			class server_updatePlayerStats{};
 		};
 		class epoch_traders {
 			class server_loadTraders {};

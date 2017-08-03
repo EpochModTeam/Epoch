@@ -57,6 +57,7 @@ switch _unitClass do {
 			_units pushBack _unit;
 			_unit call _disableAI;
 			[_unit,_trgt] execFSM "\x\addons\a3_epoch_code\System\cloak.fsm";
+			_unit addEventHandler ["Killed", {["AntagonistKills",1,true] call EPOCH_client_updatePlayerStat;}];
 		};
 	};
 	case "GreatWhite_F": {
@@ -67,6 +68,7 @@ switch _unitClass do {
 					_units pushBack _unit;
 					_unit call _disableAI;
 					[_unit] execFSM "\x\addons\a3_epoch_code\System\Shark_Brain.fsm";
+					_unit addEventHandler ["Killed", {["AntagonistKills",1,true] call EPOCH_client_updatePlayerStat;}];
 				};
 			};
 		};
@@ -90,6 +92,7 @@ switch _unitClass do {
 				_unit setVariable ["sapperHndl",_sapperHndl];
 				_unit addEventHandler ["FiredNear", format ["%1 setFSMVariable [""_sFiredNear"",[_this select 1, _this select 2]];",_sapperHndl]];
 				_unit addEventHandler ["Hit", format ["%1 setFSMVariable [""_sHit"",[_this select 1, _this select 2]];",_sapperHndl]];
+				_unit addEventHandler ["Killed", {["AntagonistKills",1,true] call EPOCH_client_updatePlayerStat;}];
 			};
 		};
 	};
@@ -104,6 +107,7 @@ switch _unitClass do {
 			_unit setVariable ["sapperHndl",_sapperHndl];
 			_unit addEventHandler ["FiredNear", format ["%1 setFSMVariable [""_sFiredNear"",[_this select 1, _this select 2]];",_sapperHndl]];
 			_unit addEventHandler ["Hit", format ["%1 setFSMVariable [""_sHit"",[_this select 1, _this select 2]];",_sapperHndl]];
+			_unit addEventHandler ["Killed", {["AntagonistKills",1,true] call EPOCH_client_updatePlayerStat;}];
 		};
 	};
 	case "Epoch_SapperB_F": {
@@ -117,6 +121,7 @@ switch _unitClass do {
 			_unit setVariable ["sapperHndl",_sapperHndl];
 			_unit addEventHandler ["FiredNear", format ["%1 setFSMVariable [""_sFiredNear"",[_this select 1, _this select 2]];",_sapperHndl]];
 			_unit addEventHandler ["Hit", format ["%1 setFSMVariable [""_sHit"",[_this select 1, _this select 2]];",_sapperHndl]];
+			_unit addEventHandler ["Killed", {["AntagonistKills",1,true] call EPOCH_client_updatePlayerStat;}];
 		};
 	};
 	case "I_UAV_01_F": {
@@ -132,6 +137,7 @@ switch _unitClass do {
 			_driver = _grp createUnit["I_UAV_AI", position _unit, [], 0, "CAN_COLLIDE"];
 			_driver moveInAny _unit;
 			[_unit, _trgt] execFSM "\x\addons\a3_epoch_code\System\Copter_brain.fsm";
+			_unit addEventHandler ["Killed", {["AIKills",1,true] call EPOCH_client_updatePlayerStat;}];
 		};
 	};
 	case "PHANTOM": {
@@ -145,6 +151,7 @@ switch _unitClass do {
 		{
 			_unit = [] call EPOCH_zombieSpawn;
 			_units pushBack _unit;
+			_unit addEventHandler ["Killed", {["ZombieKills",1,true] call EPOCH_client_updatePlayerStat;}];
 		};
 	};
     case "I_Soldier_EPOCH": {
@@ -180,6 +187,7 @@ switch _unitClass do {
         	_unit enableAI "MOVE";
         	_unit enableAI "ANIM";
         	_unit disableAI "FSM";
+			_unit addEventHandler ["Killed", {["AIKills",1,true] call EPOCH_client_updatePlayerStat;}];
             // randomize skill
         	for "_i" from 0 to ((count _arrSkills)-1) do {
         		_aiskill = floor random (_arrVals select _i);

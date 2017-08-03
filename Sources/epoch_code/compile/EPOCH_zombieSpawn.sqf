@@ -47,5 +47,6 @@ removegoggles _unit;
 _zedHandle = [_unit,true] execFSM "epoch_code\system\EPOCH_zombie_brain.fsm";
 _unit addEventHandler ["FiredNear", "(_this select 0) setVariable [""zFiredNear"",[_this select 1, _this select 2]];"];
 _unit addEventHandler ["Hit", "(_this select 0) setVariable  [""zHit"",[_this select 1, _this select 2]];"];
+_unit addEventHandler ["Killed", {["ZombieKills",1,true] call EPOCH_client_updatePlayerStat;}];
 
 _unit

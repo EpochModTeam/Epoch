@@ -54,6 +54,7 @@ private _configArray = [
     ["expiresBank", "7776000"],
     ["expiresVehicle", "604800"],
     ["expiresAIdata", "604800"],
+    ["expiresCommunityStats", "7776000"],
     ["hiveAdminCmdExec", false],
     ["hiveAdminSavePlayerList", true],
     ["hiveAdminCmdTime", 5],

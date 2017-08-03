@@ -13,7 +13,7 @@
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server/compile/epoch_player/EPOCH_server_loadPlayer.sqf
 */
 //[[[cog import generate_private_arrays ]]]
-private ["_CheckLocation","_allGroupMembers","_alreadyDead","_attachments","_backpack","_canBeRevived","_class","_currWeap","_deadPlayer","_defaultData","_dir","_equipped","_found","_goggles","_group","_headgear","_hitpoints","_instanceID","_itemsInContainers","_jammer","_jammers","_linkedItems","_location","_newLocation","_newPlyr","_normalMagazines","_playerData","_playerGroup","_playerGroupArray","_playerNetID","_playerUID","_reject","_serverSettingsConfig","_type","_uniform","_vars","_vest","_wMags","_wMagsArray","_weapon","_weaponsAndItems","_weaponsInContainers"];
+private ["_CheckLocation","_allGroupMembers","_alreadyDead","_attachments","_backpack","_canBeRevived","_class","_currWeap","_deadPlayer","_defaultData","_dir","_equipped","_found","_goggles","_group","_headgear","_hitpoints","_instanceID","_itemsInContainers","_jammer","_jammers","_linkedItems","_location","_newLocation","_newPlyr","_normalMagazines","_playerData","_playerGroup","_playerGroupArray","_playerNetID","_playerUID","_reject","_serverSettingsConfig","_type","_uniform","_vars","_vest","_wMags","_wMagsArray","_weapon","_weaponsAndItems","_weaponsInContainers","_communityStatsArray","_communityStats"];
 //[[[end]]]
 _reject = true;
 
@@ -306,7 +306,12 @@ if (!isNull _player) then {
 					_newPlyr setVariable["REVIVE", _canBeRevived];
 				};
 
-				[_playerNetID, _playerUID, [_newPlyr, _vars, _currWeap, loadAbs _newPlyr, _playerGroup, _canBeRevived, _newPlyr call EPOCH_server_setPToken,_playerGroupArray]] call EPOCH_server_pushPlayer;
+				// load community stats
+				_communityStatsArray = ["CommunityStats", _playerUID] call EPOCH_fnc_server_hiveGETRANGE;
+				_communityStats = ((_communityStatsArray select 1) select 0);
+				_newPlyr setVariable["COMMUNITY_STATS", _communityStats];		
+
+				[_playerNetID, _playerUID, [_newPlyr, _vars, _currWeap, loadAbs _newPlyr, _playerGroup, _canBeRevived, _newPlyr call EPOCH_server_setPToken,_playerGroupArray, _communityStats]] call EPOCH_server_pushPlayer;
                 //diag_log format["DEBUG (Load Player) Sent Group: %1 %2", _playerGroup, _playerGroupArray];
 
 				_newPlyr setVariable["SETUP", true, true];

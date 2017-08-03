@@ -136,6 +136,7 @@ class CfgClientFunctions
             class giveAttributes {};
             class fnc_spawnEffects {};
             class fnc_arrayStringToBool {};
+			class client_updatePlayerStat {};
         };
         class environment
         {
