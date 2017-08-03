@@ -14,7 +14,7 @@
 	Usage: none
 */
 
-if !(EPOCH_fav_enableFavoriteBar) exitWith {false};
+if !(["CfgEpochClient", "Fav_enableFavoriteBar", true] call EPOCH_fnc_returnConfigEntryV2) exitWith {false};
 private ["_playerItems","_equipped","_mod","_txt"];
 
 _playerItems = itemsWithMagazines  player;

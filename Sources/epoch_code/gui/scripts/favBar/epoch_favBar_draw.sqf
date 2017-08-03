@@ -14,23 +14,27 @@
 	Usage: none
 */
 disableSerialization;
-private ["_action","_idx","_bidx","_mod"];
+private ["_action","_idx","_bidx","_mod","_baritems","_Fav_BannedItems"];
 params ["_action","_idx","_bidx","_mod"];
+_Fav_BannedItems = ["CfgEpochClient", "Fav_BannedItems", []] call EPOCH_fnc_returnConfigEntryV2;
 
 switch _action do {
 	case "load":
 	{
 		private ["_tmp","_c","_p"];
-		if (EPOCH_fav_resetOnLogin) then {
-			profileNamespace setVariable ["rmx_var_favBar_MNone",nil];
-			profileNamespace setVariable ["rmx_var_favBar_MCtrl",nil];
-			profileNamespace setVariable ["rmx_var_favBar_MShift",nil];
-			profileNamespace setVariable ["rmx_var_favBar_MAlt",nil];
-		};
 		rmx_var_favBar_MNone = profileNamespace getVariable ["rmx_var_favBar_MNone",["","","","",""]];
 		rmx_var_favBar_MCtrl = profileNamespace getVariable ["rmx_var_favBar_MCtrl",["","","","",""]];
 		rmx_var_favBar_MShift = profileNamespace getVariable ["rmx_var_favBar_MShift",["","","","",""]];
 		rmx_var_favBar_MAlt = profileNamespace getVariable ["rmx_var_favBar_MAlt",["","","","",""]];
+        {
+            _baritems = _x;
+            {
+                if (_x in _Fav_BannedItems) then {
+                    _baritems set [_foreachindex,""];
+                };
+            } foreach _x;
+        } foreach [rmx_var_favBar_MNone,rmx_var_favBar_MCtrl,rmx_var_favBar_MShift,rmx_var_favBar_MAlt];
+		
 		rmx_var_favBar_current = rmx_var_favBar_MNone;
 		
 		waitUntil {uiSleep 0.1; ctrlShown (["fav_equipped", 1] call epoch_getHUDCtrl)};
@@ -53,8 +57,7 @@ switch _action do {
 	case "add":
 	{
 		private ["_type","_isBanned","_isAmmo","_isChemlight","_itemIsWeapon","_itemHasInteraction","_c"];
-		
-		if (rmx_var_favBar_Item in EPOCH_fav_BannedItems) exitWith {"Item is not allowed in favorites!" call epoch_message; false};
+		if (rmx_var_favBar_Item in _Fav_BannedItems) exitWith {"Item is not allowed in favorites!" call epoch_message; false};
 		if (rmx_var_favBar_Item in rmx_var_favBar_current) exitWith {"Item already exists in favorites!" call epoch_message; false}; //if duplicate
 		
 		_type = (rmx_var_favBar_Item call BIS_fnc_itemType) select 1;

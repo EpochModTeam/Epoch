@@ -26,7 +26,7 @@
 */
 private ["_display","_c","_gIdx","_g"];
 
-if !(EPOCH_fav_enableFavoriteBar) exitWith {false};
+if !(["CfgEpochClient", "Fav_enableFavoriteBar", true] call EPOCH_fnc_returnConfigEntryV2) exitWith {false};
 disableSerialization;
 waitUntil {!isNull findDisplay 602};
 
