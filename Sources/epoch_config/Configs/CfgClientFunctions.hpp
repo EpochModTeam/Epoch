@@ -72,6 +72,7 @@ class CfgClientFunctions
             class tradeFilter {};
             class takeCrypto {};
             class startBankTransfer {};
+			class calcDamageCost {};
         };
         class interface_event_handlers
         {
