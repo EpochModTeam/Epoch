@@ -43,6 +43,7 @@ class CfgClientFunctions
             class zombieSpawn {};
             class makeMarker {};
             class removeMarker {};
+			class unit_onKilledEH {};
         };
         class building
         {
