@@ -49,27 +49,16 @@ _type0 = []; _type1 = []; _type2 = []; _type3 = []; _out = [];
 	
 	if !(_Suppressed isequalto []) then {
 		if (_cName in _Suppressed) then {
-			_cPriority = -1;
+			_cRecipeArr = [];
 		};
-		_tmp = _cRecipeArr;
-		{
-			if (_x isequaltype []) then {
-				if ((_x select 0) in _Suppressed) then {
-					_cRecipeArr = _cRecipeArr - [_x];
-				};
-			}
-			else {
-				if (_x in _Suppressed) then {
-					_cRecipeArr = _cRecipeArr - [_x];
-				};
-			};
-		} foreach _tmp;
-		
 		{
 			if (_x in _cUsedInArr) then {
 				_cUsedInArr = _cUsedInArr - [_x];
 			};
 		} foreach _Suppressed;
+		if (_cRecipeArr isequalto [] && _cUsedInArr isequalto []) then {
+			_cPriority = -1;
+		};
 	};
 
 	switch (_cPriority) do {

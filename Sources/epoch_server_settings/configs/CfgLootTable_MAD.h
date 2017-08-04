@@ -60,6 +60,18 @@ class CfgLootTable_MAD
 				{ { "FAK", "item" }, 20 }
 		};
 	};
+	class Repairs
+	{
+		items[] = {
+				{ { "VehicleRepair", "item" }, 30 },
+				{ { "SpareTire", "item" }, 10 },
+				{ { "EngineParts", "item" }, 10 },
+				{ { "EngineBlock", "item" }, 10 },
+				{ { "ItemGlass", "item" }, 15 },
+				{ { "ItemDuctTape", "item" }, 20 },
+				{ { "ItemRotor", "item" }, 5 }
+		};
+	};
 	class Equipment
 	{
 		items[] = {
@@ -154,7 +166,7 @@ class CfgLootTable_MAD
 				{ { "ItemMixOil", "magazine" }, 4 },
 				{ { "ItemCoolerE", "magazine" }, 6 },
 				{ { "CircuitParts", "magazine" }, 8 },
-				{ { "VehicleRepair", "magazine" }, 7 },
+				{ { "Repairs", "CfgLootTable" }, 7 },
 				{ { "Towelette", "magazine" }, 14 },
 				{ { "HotColdPacks", "CfgLootTable" }, 9 },
 				{ { "PaintCans", "CfgLootTable" }, 9 },
@@ -233,7 +245,7 @@ class CfgLootTable_MAD
 				{ { "ItemMixOil", "magazine" }, 4 },
 				{ { "ItemCoolerE", "magazine" }, 6 },
 				{ { "CircuitParts", "magazine" }, 8 },
-				{ { "VehicleRepair", "magazine" }, 7 },
+				{ { "Repairs", "CfgLootTable" }, 7 },
 				{ { "Towelette", "magazine" }, 14 },
 				{ { "HotColdPacks", "CfgLootTable" }, 8 },
 				{ { "PaintCans", "CfgLootTable" }, 9 },
@@ -248,7 +260,7 @@ class CfgLootTable_MAD
 		items[] = {
 				{ { "MortarBucket", "magazine" }, 16 },
 				{ { "CinderBlocks", "magazine" }, 17 },
-				{ { "VehicleRepair", "magazine" }, 16 },
+				{ { "Repairs", "CfgLootTable" }, 16 },
 				{ { "CircuitParts", "magazine" }, 17 },
 				{ { "ItemCorrugated", "magazine" }, 17 },
 				{ { "ItemSolar", "magazine" }, 5 },
@@ -269,7 +281,7 @@ class CfgLootTable_MAD
 				{ { "jerrycan_epoch", "magazine" }, 5 },
 				{ { "CircuitParts", "magazine" }, 6 },
 				{ { "MortarBucket", "magazine" }, 9 },
-				{ { "VehicleRepair", "magazine" }, 10 },
+				{ { "Repairs", "CfgLootTable" }, 10 },
 				{ { "ItemCorrugated", "magazine" }, 11 },
 				{ { "CinderBlocks", "magazine" }, 12 },
 				{ { "JackKit", "magazine" }, 8 },
