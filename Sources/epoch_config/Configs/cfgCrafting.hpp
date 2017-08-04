@@ -147,7 +147,7 @@ class CfgCrafting
     };
     class CircuitParts : Part
     {
-        usedIn[] = {"EnergyPack","EnergyPackLg","KitPlotPole","ItemBattery","KitSolarGen","KitVehicleUpgradeI_100_EPOCH","KitVehicleUpgradeI_100_EPOCH","KitVehicleUpgradeI_100_EPOCH","KitVehicleUpgradeIV_100_EPOCH","KitVehicleUpgradeIV_200_EPOCH","KitVehicleUpgradeIV_300_EPOCH","BarrelBomb_EPOCH_Remote_Mag","BarrelBomb2_EPOCH_Remote_Mag"};
+        usedIn[] = {"EnergyPack","EnergyPackLg","KitPlotPole","ItemBattery","KitSolarGen","KitVehicleUpgradeI_200_EPOCH","KitVehicleUpgradeIV_200_EPOCH","BarrelBomb_EPOCH_Remote_Mag","BarrelBomb2_EPOCH_Remote_Mag"};
         previewPosition[] = {0.791044,1,0.256956};
         previewScale = 2;
         previewVector = 2.3;
@@ -188,7 +188,7 @@ class CfgCrafting
     };
 	class ItemAluminumBar10oz : Item
     {
-        usedIn[] = {"KitVehicleUpgradeII_100_EPOCH","KitVehicleUpgradeII_200_EPOCH","KitVehicleUpgradeII_300_EPOCH"};
+        usedIn[] = {"KitVehicleUpgradeII_200_EPOCH"};
         nearby[] = {{"Fire","","fire",{1,{"ALL"}},3,1,1,0}};
         recipe[] = {{"ItemAluminumBar",10},{"water_epoch",1}};
 		previewPosition[] = {0.797144,1,0.26};
@@ -286,7 +286,7 @@ class CfgCrafting
     };
     class ItemBurlap : Item
     {
-        usedIn[] = {"KitHesco3","KitVehicleUpgradeIII_100_EPOCH","KitVehicleUpgradeIII_200_EPOCH","KitVehicleUpgradeIII_300_EPOCH"};
+        usedIn[] = {"KitHesco3","KitVehicleUpgradeIII_200_EPOCH"};
         nearby[] = {{"Workbench","","workbench",{1,{"WorkBench_EPOCH"}},3,1,0,1}};
         recipe[] = {{"ItemKiloHemp",2}};
         previewPosition[] = {0.8,1,0.38};
@@ -330,7 +330,7 @@ class CfgCrafting
     };
     class ItemScraps : Item
     {
-        usedIn[] = {"ItemCorrugated","KitMetalTrap","MeleeRod","KitVehicleUpgradeIV_100_EPOCH","KitVehicleUpgradeIV_200_EPOCH","KitVehicleUpgradeIV_300_EPOCH"};
+        usedIn[] = {"ItemCorrugated","KitMetalTrap","MeleeRod","KitVehicleUpgradeIV_200_EPOCH"};
         nearby[] = {{"Fire","","fire",{1,{"ALL"}},3,1,1,0}};
         recipe[] = {{"PartOre",2}};
         previewPosition[] = {0.797144,1,0.309158};
@@ -339,7 +339,7 @@ class CfgCrafting
     };
     class ItemCorrugated : Item
     {
-        usedIn[] = {"KitShelf","ItemCorrugatedLg","VehicleRepairLg"};
+        usedIn[] = {"KitShelf","ItemCorrugatedLg","VehicleRepairLg","EngineParts"};
         nearby[] = {{"Fire","","fire",{1,{"ALL"}},3,1,1,0}};
         recipe[] = {{"ItemScraps",2}};
         previewPosition[] = {0.791088,1,0.300004};
@@ -360,25 +360,55 @@ class CfgCrafting
     };
     class jerrycan_epoch : Part
     {
-        usedIn[] = {"CSGAS","KitVehicleUpgradeIV_100_EPOCH","KitVehicleUpgradeIV_200_EPOCH","KitVehicleUpgradeIV_300_EPOCH","BarrelBomb_EPOCH_Remote_Mag","BarrelBomb2_EPOCH_Remote_Mag"};
+        usedIn[] = {"CSGAS","KitVehicleUpgradeIV_200_EPOCH","BarrelBomb_EPOCH_Remote_Mag","BarrelBomb2_EPOCH_Remote_Mag"};
         previewPosition[] = {0.802443,1,0.254301};
         previewScale = 0.6;
         previewVector = 4.9;
     };
     class VehicleRepair : Part
     {
-        usedIn[] = {"VehicleRepairLg"};
+        usedIn[] = {"VehicleRepairLg","EngineParts","SpareTire"};
         previewPosition[] = {0.787659,1,0.30098};
         previewScale = 0.45;
         previewVector = 1.5;
     };
     class VehicleRepairLg : Item
     {
+        usedIn[] = {"KitVehicleUpgradeI_200_EPOCH"};
         recipe[] = {"VehicleRepair","ItemCorrugated"};
         previewPosition[] = {0.798742,1,0.317871};
         previewScale = 0.25;
         previewVector = 0.7;
     };
+    class ItemDuctTape : Part
+    {
+        usedIn[] = {"SpareTire","EngineParts","ItemRotor"};
+        previewPosition[] = {0.807346,1,0.27};
+        previewScale = 1.8;
+        previewVector = -3.9;
+    };
+	class EngineParts : Item
+    {
+        usedIn[] = {"EngineBlock"};
+        recipe[] = {{"VehicleRepair",2},{"ItemCorrugated",1},{"ItemDuctTape",1} };
+        previewPosition[] = {0.807346,1,0.29};
+        previewScale = 0.38;
+        previewVector = 0.9;
+	};
+	class EngineBlock : Item
+    {
+        recipe[] = {{"EngineParts",1},{"ItemCorrugatedLg",1} };
+        previewPosition[] = {0.807346,1,0.29};
+        previewScale = 0.38;
+        previewVector = 0.5;
+	};
+	class ItemRotor : Item
+    {
+        recipe[] = {{"ItemCorrugatedLg",1},{"ItemDuctTape",1} };
+        previewPosition[] = {0.807346,1,0.29};
+        previewScale = 0.2;
+        previewVector = 0.5;
+	};
     class EpochRadio0 : Part
     {
         usedIn[] = {"EpochRadio1"};
@@ -698,7 +728,7 @@ class CfgCrafting
     };
     class ItemCorrugatedLg : Item
     {
-        usedIn[] = {"KitPlotPole","KitTankTrap","KitHesco3","KitSolarGen"};
+        usedIn[] = {"KitPlotPole","KitTankTrap","KitHesco3","KitSolarGen","ItemRotor","EngineBlock"};
         recipe[] = {{"ItemCorrugated",3}};
         nearby[] = {{"Workbench","","workbench",{1,{"WorkBench_EPOCH"}},3,1,0,1}};
         previewPosition[] = {0.797491,1,0.32899};
@@ -808,7 +838,7 @@ class CfgCrafting
     };
     class KitTankTrap : Kit
     {
-		usedIn[] = {"KitVehicleUpgradeII_100_EPOCH","KitVehicleUpgradeII_200_EPOCH","KitVehicleUpgradeII_300_EPOCH"};
+		usedIn[] = {"KitVehicleUpgradeII_200_EPOCH"};
         recipe[] = {{"ItemCorrugatedLg",1}};
         nearby[] = {{"Workbench","","workbench",{1,{"WorkBench_EPOCH"}},3,1,0,1}};
         model = "\x\addons\a3_epoch_assets_3\CfgVehicles\Defense\tank_trap.p3d";
@@ -854,7 +884,7 @@ class CfgCrafting
     };
     class KitShelf : Kit
     {
-		usedIn[] = {"KitVehicleUpgradeIII_100_EPOCH","KitVehicleUpgradeIII_200_EPOCH","KitVehicleUpgradeIII_300_EPOCH"};
+		usedIn[] = {"KitVehicleUpgradeIII_200_EPOCH"};
         recipe[] = {{"ItemCorrugated",3}};
         nearby[] = {{"Workbench","","workbench",{1,{"WorkBench_EPOCH"}},3,1,0,1}};
         model = "\x\addons\a3_epoch_assets\models\shelf.p3d";
@@ -915,7 +945,7 @@ class CfgCrafting
     };
     class ItemCables : Item
     {
-        usedIn[] = {"KitSolarGen","KitPlotPole","ItemCopperBar","KitVehicleUpgradeI_100_EPOCH","KitVehicleUpgradeI_200_EPOCH","KitVehicleUpgradeI_300_EPOCH"};
+        usedIn[] = {"KitSolarGen","KitPlotPole","ItemCopperBar","KitVehicleUpgradeI_200_EPOCH"};
         nearby[] = {{"Workbench","","workbench",{1,{"WorkBench_EPOCH"}},3,1,0,1}};
         recipe[] = {{"ItemCopperBar",1}};
         previewPosition[] = {0.802374,1,0.26};
@@ -1026,27 +1056,32 @@ class CfgCrafting
 		previewScale = 0.2;
 		previewVector = -1.8;
 	};
+/*
 	class KitVehicleUpgradeI_100_EPOCH : Kit //doc1
 	{
-		recipe[] = { {"ItemVehDoc1",1}, {"CircuitParts",1}, {"ItemCables",1}, {"VehicleRepairLg",2} }; //update rest of items
+		recipe[] = { {"ItemVehDoc1",1}, {"CircuitParts",1}, {"ItemCables",1}, {"VehicleRepair",3} }; //update rest of items
         previewPosition[] = {0.798208,1,0.227936};
         previewScale = 0.28;
         previewVector = -0.5;
 	};
+*/
 	class KitVehicleUpgradeI_200_EPOCH : Kit
 	{
-		recipe[] = { {"ItemVehDoc1",1}, {"CircuitParts",1}, {"ItemCables",1}, {"VehicleRepairLg",2} }; //update rest of items
+		recipe[] = { {"ItemVehDoc1",1}, {"CircuitParts",1}, {"ItemCables",1}, {"VehicleRepair",3} }; //update rest of items
         previewPosition[] = {0.798208,1,0.227936};
         previewScale = 0.28;
         previewVector = -0.5;
 	};
+/*
 	class KitVehicleUpgradeI_300_EPOCH : Kit
 	{
-		recipe[] = { {"ItemVehDoc1",1}, {"CircuitParts",1}, {"ItemCables",1}, {"VehicleRepairLg",2} }; //update rest of items
+		recipe[] = { {"ItemVehDoc1",1}, {"CircuitParts",1}, {"ItemCables",1}, {"VehicleRepair",3} }; //update rest of items
         previewPosition[] = {0.798208,1,0.227936};
         previewScale = 0.28;
         previewVector = -0.5;
 	};
+*/
+/*
 	class KitVehicleUpgradeII_100_EPOCH : Kit //doc2, tire
 	{
 		recipe[] = { {"ItemVehDoc2",1}, {"SpareTire",1}, {"KitTankTrap",2}, {"ItemAluminumBar10oz",2} };
@@ -1054,6 +1089,7 @@ class CfgCrafting
         previewScale = 0.28;
         previewVector = -0.5;
 	};
+*/
 	class KitVehicleUpgradeII_200_EPOCH : Kit
 	{
 		recipe[] = { {"ItemVehDoc2",1}, {"SpareTire",1}, {"KitTankTrap",2}, {"ItemAluminumBar10oz",2} };
@@ -1061,6 +1097,7 @@ class CfgCrafting
         previewScale = 0.28;
         previewVector = -0.5;
 	};
+/*
 	class KitVehicleUpgradeII_300_EPOCH : Kit
 	{
 		recipe[] = { {"ItemVehDoc2",1}, {"SpareTire",1}, {"KitTankTrap",2}, {"ItemAluminumBar10oz",2} };
@@ -1068,6 +1105,8 @@ class CfgCrafting
         previewScale = 0.28;
         previewVector = -0.5;
 	};
+*/
+/*
 	class KitVehicleUpgradeIII_100_EPOCH : Kit //doc3, pipes
 	{
 		recipe[] = { {"ItemVehDoc3",1}, {"ItemPipe",2}, {"KitShelf",2}, {"ItemBurlap",2} };
@@ -1075,6 +1114,7 @@ class CfgCrafting
         previewScale = 0.28;
         previewVector = -0.5;
 	};
+*/
 	class KitVehicleUpgradeIII_200_EPOCH : Kit
 	{
 		recipe[] = { {"ItemVehDoc3",1}, {"ItemPipe",2}, {"KitShelf",2}, {"ItemBurlap",2} };
@@ -1082,6 +1122,7 @@ class CfgCrafting
         previewScale = 0.28;
         previewVector = -0.5;
 	};
+/*
 	class KitVehicleUpgradeIII_300_EPOCH : Kit
 	{
 		recipe[] = { {"ItemVehDoc3",1}, {"ItemPipe",2}, {"KitShelf",2}, {"ItemBurlap",2} };
@@ -1089,6 +1130,8 @@ class CfgCrafting
         previewScale = 0.28;
         previewVector = -0.5;
 	};
+*/
+/*
 	class KitVehicleUpgradeIV_100_EPOCH : Kit //doc4
 	{
 		recipe[] = { {"ItemVehDoc4",1}, {"CircuitParts",1}, {"ItemScraps",2}, {"jerrycan_epoch",2} };
@@ -1096,6 +1139,7 @@ class CfgCrafting
         previewScale = 0.28;
         previewVector = -0.5;
 	};
+*/
 	class KitVehicleUpgradeIV_200_EPOCH : Kit
 	{
 		recipe[] = { {"ItemVehDoc4",1}, {"CircuitParts",1}, {"ItemScraps",2}, {"jerrycan_epoch",2} };
@@ -1103,6 +1147,7 @@ class CfgCrafting
         previewScale = 0.28;
         previewVector = -0.5;
 	};
+/*
 	class KitVehicleUpgradeIV_300_EPOCH : Kit
 	{
 		recipe[] = { {"ItemVehDoc4",1}, {"CircuitParts",1}, {"ItemScraps",2}, {"jerrycan_epoch",2} };
@@ -1110,10 +1155,10 @@ class CfgCrafting
         previewScale = 0.28;
         previewVector = -0.5;
 	};
-	
+*/	
     class ItemVehDoc1 : Part
     {
-        usedIn[] = {"KitVehicleUpgradeI_100_EPOCH","KitVehicleUpgradeI_200_EPOCH","KitVehicleUpgradeI_300_EPOCH"};
+        usedIn[] = {"KitVehicleUpgradeI_200_EPOCH"};
 		previewPosition[] = {0.802374,1,0.26};
 		previewScale = 1.2;
 		previewVector = 3.3;
@@ -1121,35 +1166,36 @@ class CfgCrafting
 	
     class ItemVehDoc2 : Part
     {
-        usedIn[] = {"KitVehicleUpgradeII_100_EPOCH","KitVehicleUpgradeII_200_EPOCH","KitVehicleUpgradeII_300_EPOCH"};
+        usedIn[] = {"KitVehicleUpgradeII_200_EPOCH"};
 		previewPosition[] = {0.802374,1,0.26};
 		previewScale = 1.2;
 		previewVector = 3.3;
     };
     class ItemVehDoc3 : Part
     {
-        usedIn[] = {"KitVehicleUpgradeIII_100_EPOCH","KitVehicleUpgradeIII_100_EPOCH","KitVehicleUpgradeIII_300_EPOCH"};
+        usedIn[] = {"KitVehicleUpgradeIII_200_EPOCH"};
 		previewPosition[] = {0.802374,1,0.26};
 		previewScale = 1.2;
 		previewVector = 3.3;
     };
     class ItemVehDoc4 : Part
     {
-        usedIn[] = {"KitVehicleUpgradeIV_100_EPOCH","KitVehicleUpgradeIV_200_EPOCH","KitVehicleUpgradeIV_300_EPOCH"};
+        usedIn[] = {"KitVehicleUpgradeIV_200_EPOCH"};
 		previewPosition[] = {0.802374,1,0.26};
 		previewScale = 1.2;
 		previewVector = 3.3;
     };
     class SpareTire : Part
     {
-        usedIn[] = {"KitVehicleUpgradeII_100_EPOCH","KitVehicleUpgradeII_200_EPOCH","KitVehicleUpgradeII_300_EPOCH"};
+        recipe[] = {{"VehicleRepair",2},{"ItemDuctTape",1} };
+        usedIn[] = {"KitVehicleUpgradeII_200_EPOCH"};
 		previewPosition[] = {0.802374,1,0.26};
 		previewScale = 0.45;
 		previewVector = 3.3;
     };
     class ItemPipe : Part
     {
-        usedIn[] = {"KitVehicleUpgradeIII_100_EPOCH","KitVehicleUpgradeIII_100_EPOCH","KitVehicleUpgradeIII_300_EPOCH"};
+        usedIn[] = {"KitVehicleUpgradeIII_200_EPOCH"};
         previewPosition[] = {0.802374,1,0.26};
         previewScale = 0.19;
         previewVector = 3.3;

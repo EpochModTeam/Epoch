@@ -327,6 +327,23 @@ class CfgItemInteractions
         interactText = "EAT";
         interactAttributes[] = {{"Hunger",3000}};
     };
+	class ItemPowderMilk : Food_base
+    {
+        interactAttributes[] = {{"Thirst",-350},{"Hunger",300}};
+    };
+	class ItemRicebox : Food_base
+    {
+        interactAttributes[] = {{"Thirst",-1000},{"Hunger",1200}};
+    };
+	class ItemCereals : Food_base
+    {
+        interactAttributes[] = {{"Thirst",-1000},{"Hunger",1200}};
+    };
+	class ItemVitamins : Food_base
+    {
+		interactText = "Take Pills";
+        interactAttributes[] = {{"Immunity",20},{"Stamina",50},{"BloodP",-10},{"Toxicity",-5},{"Thirst",-150}};
+    };
     class KitSpikeTrap : Item_Build_base
     {
         buildClass = "Spike_TRAP_SIM_EPOCH";
