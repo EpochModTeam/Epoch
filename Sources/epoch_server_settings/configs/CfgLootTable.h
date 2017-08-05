@@ -208,6 +208,10 @@ class CfgLootTable
 	class CanFood
 	{
 		items[] = {
+//				{ { "ItemPowderMilk", "magazine" }, 3 },		// coming soon
+//				{ { "ItemRicebox", "magazine" }, 3 },			// coming soon
+//				{ { "ItemCereals", "magazine" }, 3 },			// coming soon
+//				{ { "ItemVitamins", "magazine" }, 3 },			// coming soon
 				{ { "honey_epoch", "magazine" }, 5 },
 				{ { "emptyjar_epoch", "magazine" }, 13 },
 				{ { "FoodBioMeat", "magazine" }, 11 },
