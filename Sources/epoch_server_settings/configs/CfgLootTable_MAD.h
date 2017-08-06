@@ -208,6 +208,10 @@ class CfgLootTable_MAD
 	class CanFood
 	{
 		items[] = {
+				{ { "ItemPowderMilk", "magazine" }, 3 },
+				{ { "ItemRicebox", "magazine" }, 3 },
+				{ { "ItemCereals", "magazine" }, 3 },
+				{ { "ItemVitamins", "magazine" }, 3 },
 				{ { "honey_epoch", "magazine" }, 5 },
 				{ { "emptyjar_epoch", "magazine" }, 13 },
 				{ { "FoodBioMeat", "magazine" }, 11 },

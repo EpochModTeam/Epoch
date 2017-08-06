@@ -374,6 +374,30 @@ class CfgPricing
     {
         price = 50;
     };
+    class SpareTire
+    {
+        price = 50;
+    };
+    class EngineParts
+    {
+        price = 40;
+    };
+    class EngineBlock
+    {
+        price = 60;
+    };
+    class ItemGlass
+    {
+        price = 35;
+    };
+    class ItemDuctTape
+    {
+        price = 25;
+    };
+    class ItemRotor
+    {
+        price = 40;
+    };
     class WhiskeyNoodle
     {
         price = 80;
@@ -1879,6 +1903,22 @@ class CfgPricing
     class FoodWalkNSons
     {
         price = 5;
+    };
+    class ItemPowderMilk
+    {
+        price = 10;
+    };
+    class ItemRicebox
+    {
+        price = 50;
+    };
+    class ItemCereals
+    {
+        price = 50;
+    };
+    class ItemVitamins
+    {
+        price = 25;
     };
     class ItemSodaOrangeSherbet
     {
