@@ -245,6 +245,23 @@ class CfgBaseBuilding
         allowedSnapPoints[] = {"N","S","E","W"};
         energyCost = 0.5;
     };
+    class CinderFloor_EPOCH : Default
+    {
+        removeParts[] = {{"CinderBlocks",2},{"MortarBucket",2}};
+        simulClass = "CinderFloor_SIM_EPOCH";
+        staticClass = "CinderFloor_EPOCH";
+        GhostPreview = "CinderFloor_Ghost_EPOCH";
+        snapPointsPara[] = {"NF","SF","EF","WF","C","CB"};
+        snapPointsPerp[] = {"N","S","E","W","CinN","CinS","CinE","CinW"};
+        energyCost = 0.5;
+    };
+    class CinderFloor_SIM_EPOCH : Default
+    {
+        allowedSnapPoints[] = {"NF","SF","EF","WF","C"};
+        allowedSnapObjects[] = {"Const_floors_static_F","Constructions_foundation_F"};
+        removeParts[] = {};
+    };
+    class CinderFloor_Ghost_EPOCH : CinderFloor_SIM_EPOCH {};
     class CinderWallGarage_SIM_EPOCH : CinderWallGarage_EPOCH
     {
         allowedSnapObjects[] = {"Const_Cinder_static_F","Const_floors_static_F"};
