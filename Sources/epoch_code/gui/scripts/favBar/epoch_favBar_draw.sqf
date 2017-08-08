@@ -56,17 +56,16 @@ switch _action do {
 	};
 	case "add":
 	{
-		private ["_type","_isBanned","_isAmmo","_isChemlight","_itemIsWeapon","_itemHasInteraction","_c"];
+		private ["_type","_isBanned","_isAmmo","_itemIsWeapon","_itemHasInteraction","_c"];
 		if (rmx_var_favBar_Item in _Fav_BannedItems) exitWith {"Item is not allowed in favorites!" call epoch_message; false};
 		if (rmx_var_favBar_Item in rmx_var_favBar_current) exitWith {"Item already exists in favorites!" call epoch_message; false}; //if duplicate
 		
 		_type = (rmx_var_favBar_Item call BIS_fnc_itemType) select 1;
-		_isBanned = _type in ["BombLauncher", "Cannon", "GrenadeLauncher", "Launcher", "MissileLauncher", "RocketLauncher", "Magazine", "Mortar", "Shotgun","Rocket","Grenade"];
+		_isBanned = _type in ["BombLauncher", "Cannon", "GrenadeLauncher", "Launcher", "MissileLauncher", "RocketLauncher", "Magazine", "Mortar", "Shotgun","Rocket"];
 		_isAmmo = _type == "Bullet" && !(rmx_var_favBar_Item in ["EnergyPack","EnergyPackLg"]); 
-		_isChemlight = rmx_var_favBar_Item in ["Chemlight_green","Chemlight_red","Chemlight_yellow","Chemlight_blue"];
 		
 		//if (_type in ["AccessoryMuzzle","AccessoryPointer","AccessorySights","AccessoryBipod"]) exitWith {"Attachments are not supported at the moment!" call epoch_message; false};
-		if (_isBanned || _isAmmo || _isChemlight) exitWith {"Item cannot be added to favorites!" call epoch_message; false}; //Don't allow certain types
+		if (_isBanned || _isAmmo) exitWith {"Item cannot be added to favorites!" call epoch_message; false}; //Don't allow certain types
 		
 		_itemIsWeapon = [rmx_var_favBar_Item, "CfgWeapons"] call EPOCH_fnc_isAny;
 		_itemHasInteraction = str(missionConfigFile >> "CfgItemInteractions" >> rmx_var_favBar_Item) != "";
