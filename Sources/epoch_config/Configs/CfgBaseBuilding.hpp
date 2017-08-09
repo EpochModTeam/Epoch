@@ -219,6 +219,7 @@ class CfgBaseBuilding
     class WoodQuarterFloor_Ghost_EPOCH : WoodQuarterFloor_SIM_EPOCH {};
     class MetalFloor_EPOCH : Default
     {
+        upgradeBuilding[] = {{"CinderFloor_EPOCH",{{"CinderBlocks",2},{"MortarBucket",2}}}};
         removeParts[] = {{"ItemCorrugatedLg",2}};
         simulClass = "MetalFloor_SIM_EPOCH";
         staticClass = "MetalFloor_EPOCH";
