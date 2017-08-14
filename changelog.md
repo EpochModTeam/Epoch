@@ -3,26 +3,45 @@ All changes for [Arma 3](https://arma3.com/) [Epoch Mod](https://epochmod.com) a
 
 ## [Unreleased]
 ### Added
-- Quarter and Half wood floors. @DirtySanchez
-- Added Digital Geiger counter sounds.
-- Barrel Bomb - large craft-able explosive that can be placed and detonated. @DirtySanchez
-- Documents and Vehicle Upgrade System. @DirtySanchez
-- Brown Briefcase that contains 100oz Silver. @DirtySanchez
-- CBA extended event handler and zeus curator support for Epoch Vehicles. @DirtySanchez
-- Initial support for Malden 2035 map released with A3 1.72+.
-- Base PlotPole ESP added to Epoch Admin Panel. @SMVampire
+
+- Favorites bar. Users can pin (almost) any item to the bar by dragging items from inventory to equip/un-equip (Weapons, attachments, head gear etc) or consume (eat, drink, build etc) using keyboard mapping without having gear open. Use ESC menu to change the mappings. Server admins, see client_init.sqf for config. @raymix
+
+- Advanced Vehicle Repair System - Repairing your vehicle just got more realistic. Patch a leaky fuel tank with Duct Tape. If you blow a tire you now need to find a Spare. Engine too damaged? grab an engine block to repair it. @Ignatz-Heman
+- Repair Items: (ItemDuctTape, SpareTire, EngineParts, EngineBlock, ItemGlass, FuelTank, ItemRotor). @Helion
+- Vehicle Upgrade System - Upgrade your ride by using one of the new vehicle upgrade documents found in the world. @DirtySanchez
+
 - Vector Base Building (uses Arrow keys by default and with SHIFT / ALT you can control the steps). @DirtySanchez & @Ignatz-Heman
-- Base Building elements can be detached to walk around the Element before saving. @Ignatz-Heman
-- Helper arrow to indicate door-opening direction for Base Building. @Ignatz-Heman
+- New Base Building Objects: Quarter and Half wood floors @DirtySanchez, Cinder block full floor @Helion.
+
+- Medical items: Adrenaline Shot (adrenaline_epoch), Caffeine Pills (caffeinepills_epoch). Orlistat Pills (orlistat_epoch) by @Helion and configs by @DirtySanchez
+- Food items: ItemCereals, ItemPowderMilk_F, ItemRiceBox, ItemVitamins. @DirtySanchez
+
+- Digital Geiger Counter - used to detect Radiation. (Sounds @vbawol, Model @Helion and UI + digital font @raymix)
+- Barrel Bomb - large craft-able explosive that can be placed and detonated. @DirtySanchez
+- Brown Briefcase that contains 100oz Silver. @DirtySanchez
+- Old "Zombie Parts" Bag (ItemBioHazardBag).
+
 - Option to drink directly from water sources. @Ignatz-HeMan
-- Epoch Events 3.0: External pbo template based events.
+
+- Epoch Events 3.0: External pbo based events. see epoch_server_vip_event or epoch_server_debris_event for examples.
+
 - VIP Event - Reveals the map location of a random player that possesses a specific item (default: ItemBriefcaseGold100oz) every X (default: 15) minutes.
+
 - Dynamic Debris: Dynamically spawns vehicle and other debris on the roadways. Scans the roads on startup and uses a random seed generator to determine the locations of debris. Debris is spawned using createSimpleObject for best performance and is made to conform with the uppermost roadway surface.
+
 - Epoch Dev Libs, See https://github.com/EpochModTeam/Epoch/tree/experimental/Tools/DevFrameWork for more info. @raymix
+
 - Md5 hash function and Unit test to the hive. See usage example with EPOCH_fnc_server_hiveMD5 SQF function.
-- A3 Dynamic Simulation and CfgDynamicSimulation configs. @DirtySanchez
-- New feature - Favorites bar. Users can pin (almost) any item to the bar by dragging items from inventory to equip/un-equip (Weapons, attachments, head gear etc) or consume (eat, drink, build etc) using keyboard mapping without having gear open. Use ESC menu to change the mappings. Server admins, see client_init.sqf for config. @raymix
+
+- Dynamic Simulation is now fully enabled. See "CfgDynamicSimulation" for configs. @DirtySanchez
+
+- Initial support for Malden 2035 map released with A3 1.72+.
+
 ### Changed
+- CBA extended event handler and zeus curator support for Epoch Vehicles. @DirtySanchez
+- Base PlotPole ESP added to Epoch Admin Panel. @SMVampire
+- Helper arrow to indicate door-opening direction for Base Building. @Ignatz-Heman
+- Base Building elements can be detached to walk around the Element before saving. @Ignatz-Heman
 - Made ServicePoint more configurable @Ignatz-Heman
 - Base Building: Replaced 0/90/180/270° direction build mode with "Rotate 90°". @Ignatz-Heman
 - Base Building: Max building height now will be checked directly at building element placement. @Ignatz-Heman
@@ -35,7 +54,7 @@ All changes for [Arma 3](https://arma3.com/) [Epoch Mod](https://epochmod.com) a
 - Sounds not working due to changes to 3dSay command in recent A3 updates. @DirtySanchez
 - Spawning at base above Water was not working correctly. @Ignatz-Heman
 - One step is higher on stairs, can't run up while crouched. #447 @Helion4
-- L85 Elcan optic issue. #678 @Helion4
+- L85 Elcan optic issues. #678 @Helion4, @DirtySanchez
 - Zombie falsely triggers Mission success. @Ignatz-Heman
 - Base Building 90° and 270° Snap was broken.
 - Sometimes snapped Base Building elements rotated back on save.
