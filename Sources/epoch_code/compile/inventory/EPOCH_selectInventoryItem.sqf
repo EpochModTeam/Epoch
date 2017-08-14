@@ -46,8 +46,8 @@ if (_data == "") then {
     _container = switch (_idc) do {
         case 633: { uniformContainer player };
         case 638: { vestContainer player };
-        case 632: { EPOCH_targetContainer };
-        case 640: { EPOCH_secondaryContainer };
+        case 632: { if (isnull EPOCH_secondaryContainer) then {EPOCH_targetContainer} else {EPOCH_secondaryContainer} };
+        case 640: { EPOCH_targetContainer };
         default { backpackContainer player };
     };
     _weaponsAndItems = ((getWeaponCargo  _container) select 0);
