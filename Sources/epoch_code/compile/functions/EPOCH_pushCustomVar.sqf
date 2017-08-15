@@ -27,7 +27,6 @@ private ["_customVars","_lastSave","_time"];
 _time = if (_this) then [{15},{80}];
 _lastSave = missionNamespace getVariable["EPOCH_lastSave", diag_tickTime];
 if ((diag_tickTime - _lastSave) >= _time) then {
-	EPOCH_playerHitPoints = ((getAllHitPointsDamage player) param [2,[]]);
 	_customVars = [];
 	{
 		_customVars pushBack (missionNamespace getVariable format["EPOCH_player%1",_x]);
