@@ -25,6 +25,17 @@ _vehObj = createVehicle[_vehClass, _position, [], 0, _can_collide];
 _vehObj setVariable ["BIS_enableRandomization", false];
 if !(isNull _vehObj) then{
 	_vehObj call EPOCH_server_setVToken;
+
+	// add random damage to vehicle (avoid setting engine or fuel to 100% damage to prevent instant destruction)
+	if (_spawnDamaged) then {
+		{
+			_maxDamage = if (_x in ["HitEngine","HitFuel"]) then {0.9} else {1};
+			_vehObj setHitIndex [_forEachIndex,((random 1 max 0.1) min _maxDamage)];
+		} forEach ((getAllHitPointsDamage _vehObj) param [0,[]]);
+	};
+	// make vehicle immune from further damage.
+	_vehObj allowDamage false;
+
 	// Set Direction and position
 	if (_direction isEqualType []) then{
 		_vehObj setVectorDirAndUp _direction;
@@ -58,14 +69,6 @@ if !(isNull _vehObj) then{
 
 	// randomize fuel TODO push min max to config
 	_vehObj setFuel ((random 1 max 0.1) min 0.9);
-
-	// add random damage to vehicles (avoid setting engine or fuel to 100% damage to prevent instant destruction)
-	if (_spawnDamaged) then {
-		{
-			_maxDamage = if (_x in ["HitEngine","HitFuel"]) then {0.9} else {1};
-			_vehObj setHitIndex [_forEachIndex,((random 1 max 0.1) min _maxDamage)];
-		} forEach ((getAllHitPointsDamage _vehObj) param [0,[]]);
-	};
 
 	// get colors from config
 	_cfgEpochVehicles = 'CfgEpochVehicles' call EPOCH_returnConfig;
@@ -132,6 +135,9 @@ if !(isNull _vehObj) then{
 
 	// Add to A3 remains collector
 	addToRemainsCollector[_vehObj];
+
+	// make vehicle mortal again
+	_vehObj allowDamage true;
 
 } else {
 	diag_log format["DEBUG: Failed to create vehicle: %1", _this];

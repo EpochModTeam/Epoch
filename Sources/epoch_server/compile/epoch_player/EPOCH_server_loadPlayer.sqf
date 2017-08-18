@@ -178,16 +178,9 @@ if (!isNull _player) then {
 
 		_newPlyr = _group createUnit[_class, _location, [], 0, "CAN_COLLIDE"];
 		if !(isNull _newPlyr) then {
-			// disable damage server side
-			_newPlyr allowDamage false;
-			// add to cleanup
-			addToRemainsCollector[_newPlyr];
-			{
-				_newPlyr disableAI _x;
-			} forEach["FSM", "MOVE", "AUTOTARGET", "TARGET"];
 
-			_newPlyr setDir _dir;
-			_newPlyr setPosATL _location;
+			// disable AI on temp unit
+			_newPlyr disableAI "ALL";
 
 			if (!_alreadyDead) then {
 				// Medical
@@ -199,6 +192,12 @@ if (!isNull _player) then {
 				// player dead use default Data for appearance and loadout data
 				_playerData = _defaultData;
 			};
+
+			// disable further damage server side
+			_newPlyr allowDamage false;
+
+			_newPlyr setDir _dir;
+			_newPlyr setPosATL _location;
 
 			// set player loadout
 			if (_schemaVersion >= 1.0) then {
@@ -317,6 +316,10 @@ if (!isNull _player) then {
 				deleteVehicle _newPlyr;
 				diag_log "Epoch: DEBUG: _player object was null reject connection";
 			} else {
+
+				// add to cleanup
+				addToRemainsCollector[_newPlyr];
+
 				_reject = false;
 
 				if (_playerGroup != "") then {

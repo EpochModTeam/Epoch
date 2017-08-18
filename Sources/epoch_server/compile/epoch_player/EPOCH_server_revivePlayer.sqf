@@ -110,19 +110,17 @@ if (!local _player) then {
 				};
 
 				_newPlyr = _group createUnit[_class, _location, [], 0, "CAN_COLLIDE"];
-				
+
 				// new Dynamicsimulation
 				if(["CfgDynamicSimulation", "playerDynamicSimulationSystem", true] call EPOCH_fnc_returnConfigEntryV2)then
 				{
 					_newPlyr enableDynamicSimulation true;
 					_newPlyr triggerDynamicSimulation true;
 				};
-				
+
 				addToRemainsCollector[_newPlyr];
 
-				{
-					_newPlyr disableAI _x;
-				}forEach["FSM", "MOVE", "AUTOTARGET", "TARGET"];
+				_newPlyr disableAI "ALL";
 
 				_newPlyr setVariable ["SETUP", true];
 				_newPlyr setVariable ["PUID", _playerUID];
@@ -247,7 +245,7 @@ if (!local _player) then {
 
 				// send to player
 				[_newPlyr, _token, loadAbs _newPlyr] remoteExec ['EPOCH_clientRevive',_player];
-				
+
 				// send stat to reviver
 				[_reviver, "Revives", 1, true] call EPOCH_server_updatePlayerStats;
 			};

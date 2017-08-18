@@ -86,13 +86,6 @@ if (_allowSave) then{
 	// appearance now handled with getUnitLoadout, typeof is still need to determine players class.
 	_appearance = ["", "", "", "", "", typeOf _player];
 
-	/* Old unused method
-	_appearance = [goggles _player, headgear _player, vest _player, backpack _player, uniform _player, typeOf _player];
-	_itemsplayer = [getItemCargo(uniformContainer _player), getItemCargo(vestContainer _player), getItemCargo(backpackContainer _player)];
-	_weaponsplayer = [getWeaponCargo(uniformContainer _player), getWeaponCargo(vestContainer _player), getWeaponCargo(backpackContainer _player)];
-	_weapons = [currentWeapon _player, weaponsItems _player, [primaryWeapon _player, secondaryWeapon _player, handgunWeapon _player]];
-	*/
-
 	// new save format
 	_loadout = getUnitLoadout _player;
 
