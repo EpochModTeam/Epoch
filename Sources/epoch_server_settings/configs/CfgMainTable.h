@@ -246,7 +246,7 @@ class CfgMainTable
 	{
 		lootMin = 3;
 		LootMax = 6;
-		tables[] = { "Shipwreak" };
+		tables[] = { "Shipwreck" };
 		antagonists[] = {
 				{ "GreatWhite", 1 }
 		};

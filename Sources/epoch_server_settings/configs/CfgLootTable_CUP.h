@@ -1292,7 +1292,7 @@ class CfgLootTable_CUP
 		};
 	};
 
-	class Shipwreak
+	class Shipwreck
 	{
 		items[] = {
 				{ { "Gems", "CfgLootTable" }, 5 },

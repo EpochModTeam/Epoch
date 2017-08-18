@@ -989,7 +989,7 @@ maxAimingAccuracy -> maxGeneral - Set the maximum value for each available AI sk
 ### Changed
 - Suppress some group leader options by disabling use of 0-9, f1-f12, backspace, and commandmode.
 - Code lockout added to Take Krypto code to prevent spam.
-- Improved quality of shipwreak and pelican loots.
+- Improved quality of Shipwreck and pelican loots.
 - Disabled side chat on all servers, use Quartz radio instead.
 - Furniture spawning moved client side for better server performance.
 - Added cleanup on furniture, weaponholders, and Krypto devices every 20min if no players within 45m.

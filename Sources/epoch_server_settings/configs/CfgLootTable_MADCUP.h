@@ -1297,7 +1297,7 @@ class CfgLootTable_MADCUP
 		};
 	};
 
-	class Shipwreak
+	class Shipwreck
 	{
 		items[] = {
 				{ { "Gems", "CfgLootTable" }, 5 },
