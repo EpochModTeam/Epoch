@@ -27,6 +27,7 @@ if (_nlEnabled isEqualTo 1) then {
 	EP_light = "#lightpoint" createvehiclelocal _pos;
 	EP_light setposATL _pos;
 	EP_light attachTo [player,[0,8.11,_nlZ]]; //offset infront of player so that the darkness is 'following' them.
+	EP_light setLightDayLight false; //Sets light so it can only be used at night.
 	EP_light setLightBrightness _nlBright;
 	EP_light setLightAmbient [0.435, 0.439, 0.439];//Using new Colours.
 	EP_light setlightcolor [0.435, 0.439, 0.439];
