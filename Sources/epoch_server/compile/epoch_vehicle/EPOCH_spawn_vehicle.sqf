@@ -63,7 +63,7 @@ if !(isNull _vehObj) then{
 	if (_spawnDamaged) then {
 		{
 			_maxDamage = if (_x in ["HitEngine","HitFuel"]) then {0.9} else {1};
-			_vehObj setHitIndex [_forEachIndex,random(_maxDamage)];
+			_vehObj setHitIndex [_forEachIndex,((random 1 max 0.1) min _maxDamage)];
 		} forEach ((getAllHitPointsDamage _vehObj) param [0,[]]);
 	};
 
