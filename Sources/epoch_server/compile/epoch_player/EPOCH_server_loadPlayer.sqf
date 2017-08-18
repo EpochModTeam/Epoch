@@ -13,7 +13,7 @@
 	https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server/compile/epoch_player/EPOCH_server_loadPlayer.sqf
 */
 //[[[cog import generate_private_arrays ]]]
-private ["_CheckLocation","_allGroupMembers","_alreadyDead","_assignedItems","_attachments","_backpack","_backpackItems","_canBeRevived","_class","_communityStats","_communityStatsArray","_currWeap","_deadPlayer","_defaultData","_dir","_equipped","_found","_goggles","_group","_handgunWeapon","_headgear","_instanceID","_jammer","_jammers","_linkedItems","_loadout","_location","_newLocation","_newPlyr","_playerData","_playerGroup","_playerGroupArray","_playerNetID","_playerUID","_primaryWeapon","_reject","_secondaryWeapon","_serverSettingsConfig","_type","_uniform","_uniformItems","_vars","_vest","_vestItems","_wMags","_wMagsArray","_weapon"];
+private ["_CheckLocation","_allGroupMembers","_alreadyDead","_assignedItems","_attachments","_backpack","_backpackItems","_canBeRevived","_class","_communityStats","_communityStatsArray","_currentWeapon","_deadPlayer","_defaultData","_dir","_equipped","_found","_goggles","_group","_handgunWeapon","_headgear","_instanceID","_jammer","_jammers","_linkedItems","_loadout","_location","_newLocation","_newPlyr","_playerData","_playerGroup","_playerGroupArray","_playerNetID","_playerUID","_primaryWeapon","_reject","_secondaryWeapon","_serverSettingsConfig","_type","_uniform","_uniformItems","_vars","_vest","_vestItems","_wMags","_wMagsArray","_weapon"];
 //[[[end]]]
 _reject = true;
 
@@ -62,6 +62,7 @@ if (!isNull _player) then {
 		_backpackItems = [_serverSettingsConfig, "defaultbackpackItems", []] call EPOCH_fnc_returnConfigEntry;	// [["Medikit",1],["FirstAidKit",10],[["hgun_P07_F","","","",["16Rnd_9x21_Mag",16],[],""],1]];
 		_assignedItems = [_serverSettingsConfig, "defaultassignedItems", ["","","","",[],[],""]] call EPOCH_fnc_returnConfigEntry; // ["Rangefinder","","","",[],[],""]
 		_linkedItems = [_serverSettingsConfig, "defaultlinkedItems", ["ItemMap","","EpochRadio0","","",""]] call EPOCH_fnc_returnConfigEntry; // ["ItemMap","ItemGPS","ItemRadio","ItemCompass","ItemWatch","NVGoggles"]
+		_currentWeapon = [_serverSettingsConfig, "defaultSelectedWeapon", ""] call EPOCH_fnc_returnConfigEntry; // class of selected weapon
 
 		_loadout = [
 			_primaryWeapon,
@@ -77,7 +78,7 @@ if (!isNull _player) then {
 		];
 
 		// default data, if "Player" data format is changed update this array!
-		_defaultData = [[0, [], _instanceID, 1.0], [0, 0, 1, 0, [0,0,0,0,0,0,0,0,0,0,0]], ["", "", "", "", "", _class], [], call EPOCH_defaultVars_SEPXVar, _loadout, [], [], [], [], "", true];
+		_defaultData = [[0, [], _instanceID, 1.0], [0, 0, 1, 0, [0,0,0,0,0,0,0,0,0,0,0]], ["", "", "", "", _currentWeapon, _class], [], call EPOCH_defaultVars_SEPXVar, _loadout, [], [], [], [], "", true];
 
 		// If data does not validate against default or is too short, override with default data.
 		if !(_playerData isEqualTypeParams _defaultData) then {
@@ -199,9 +200,14 @@ if (!isNull _player) then {
 			_newPlyr setDir _dir;
 			_newPlyr setPosATL _location;
 
+			//
+
+
 			// set player loadout
 			if (_schemaVersion >= 1.0) then {
-				_playerData params ["","","","","","_loadout"];
+				_playerData params ["","","_apperance","","","_loadout"];
+				// get current weapon to send to param for selectWeapon
+				_currentWeapon = _apperance param [4,""];
 				_newPlyr setUnitLoadout [_loadout, false];
 				diag_log format["DEBUG: loaded player %1 with new schema Version %2", _newPlyr, _schemaVersion];
 
@@ -230,11 +236,11 @@ if (!isNull _player) then {
 					_newPlyr addVest _vest;
 				};
 				// Load Apperance END
-				_currWeap = "";
+
 				// Load inventory + defaults START
 				if (count _weaponsAndItems >= 3) then {
-					_weaponsAndItems params ["_currWeapTmp","_weaponsAndItemsArray","_equipped"];
-					_currWeap = _currWeapTmp;
+					_weaponsAndItems params ["_currentWeaponTmp","_weaponsAndItemsArray","_equipped"];
+					_currentWeapon = _currentWeaponTmp;
 					{
 						_weapon = _x deleteAt 0;
 						_type = getNumber(configfile >> "cfgweapons" >> _weapon >> "type");
@@ -352,7 +358,7 @@ if (!isNull _player) then {
 				_newPlyr setVariable["SETUP", true, true];
 
 				// Send message to player so they can take over the new body.
-				[_playerNetID, _playerUID, [_newPlyr, _vars, _currWeap, loadAbs _newPlyr, _playerGroup, _canBeRevived, _newPlyr call EPOCH_server_setPToken,_playerGroupArray, _communityStats, _hitpoints]] call EPOCH_server_pushPlayer;
+				[_playerNetID, _playerUID, [_newPlyr, _vars, _currentWeapon, loadAbs _newPlyr, _playerGroup, _canBeRevived, _newPlyr call EPOCH_server_setPToken,_playerGroupArray, _communityStats, _hitpoints]] call EPOCH_server_pushPlayer;
 
 				// revive test
 				_newPlyr setVariable ['#rev_enabled', true, true];

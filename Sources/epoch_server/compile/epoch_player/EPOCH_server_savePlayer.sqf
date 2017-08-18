@@ -13,7 +13,7 @@
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server/compile/epoch_player/EPOCH_server_savePlayer.sqf
 */
 //[[[cog import generate_private_arrays ]]]
-private ["_Svars","_allowSave","_appearance","_cIndex","_dmg","_group","_hitpoints","_itemsplayer","_loadout","_medical","_playerUID","_pos","_return","_return2","_revive","_schemaVersion","_server_vars","_stats","_vehiclePlyr","_weapons","_weaponsplayer"];
+private ["_Svars","_allowSave","_appearance","_cIndex","_dmg","_extraLoadoutInfo","_group","_hitpoints","_loadout","_medical","_playerUID","_pos","_return","_return2","_revive","_schemaVersion","_server_vars","_stats","_vehiclePlyr"];
 //[[[end]]]
 params [["_player",objNull], ["_vars",[]] ];
 
@@ -80,11 +80,14 @@ if (_allowSave) then{
 		};
 	};
 
-	_dmg = damage _player;
+	// get players hitpoint damage
 	_hitpoints = (getAllHitPointsDamage _player) param [2,[]];
-	_medical = [getBleedingRemaining _player, 0, getOxygenRemaining _player, _dmg, _hitpoints];
+
+	// build medical array
+	_medical = [getBleedingRemaining _player, 0, getOxygenRemaining _player, damage _player, _hitpoints];
+
 	// appearance now handled with getUnitLoadout, typeof is still need to determine players class.
-	_appearance = ["", "", "", "", "", typeOf _player];
+	_appearance = ["", "", "", "", currentWeapon _player, typeOf _player];
 
 	// new save format
 	_loadout = getUnitLoadout _player;

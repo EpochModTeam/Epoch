@@ -25,9 +25,7 @@ if (_playerObj isEqualType objNull) then {
 
 			_dead = false;
 			_isMale = true;
-
 			_instanceID = call EPOCH_fn_InstanceID;
-			_class = "Epoch_Female_F";
 
 			_arr = [];
 			if ((_response select 0) == 1 && (_response select 1) isEqualType []) then {
@@ -41,13 +39,9 @@ if (_playerObj isEqualType objNull) then {
 			if !(_arr isEqualTypeParams _defaultData) then {
 				_dead = true;
 			} else {
-				_medical = _arr select 1;
-				_apperance = _arr select 2;
-				_class = _apperance select 5;
-				if (_class == "Epoch_Female_F") then {
-					_isMale = false;
-				};
-				_vars = _arr select 4;
+				_arr params ["","_medical","_apperance","","_vars"];
+				_class = _apperance param [5, "Epoch_Female_F"];
+				_isMale = (_class == "Epoch_Male_F");
 				_medical params ["","","","_damage",["_hitpoints",[0,0,0,0,0,0,0,0,0,0,0]] ];
 				_deadPlayer = ["PlayerStats", _playerUID, 0] call EPOCH_fnc_server_hiveGETBIT;
 				// check if player is already dead or was critically hit HitHead = 2 or HitBody = 7 and if blood pressure too high.
