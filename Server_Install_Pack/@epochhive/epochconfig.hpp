@@ -101,6 +101,7 @@ expiresPlayer = "2592000";  // expiration date in seconds for players
 expiresBank = "7776000";  // expiration date in seconds for players bank
 expiresVehicle = "604800";  // expiration date in seconds for vehicles
 expiresAIdata = "604800";  // expiration date in seconds for NPC Trader inventory
+expiresCommunityStats = "7776000"; // expiration date in seconds for players community stats
 
 // Admin Features
 hiveAdminCmdExec = "false"; // true = enables extra (To Be Released) feature to allow execution of code via hive.
