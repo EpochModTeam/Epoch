@@ -13,7 +13,7 @@
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_code/init/both_init.sqf
 */
 //[[[cog import generate_private_arrays ]]]
-private ["_antagonistSpawnDefaults","_customVarsInit","_say3dsounds","_say3dsoundsConfig","_spawnLimits","_communityStatsInit"];
+private ["_antagonistSpawnDefaults","_cfgDynamicSimulation","_communityStatsInit","_customVarsInit","_dynSimToggle","_say3dsounds","_say3dsoundsConfig","_spawnLimits"];
 //[[[end]]]
 
 // detect if Ryan's Zombies and Deamons mod is present
@@ -34,7 +34,7 @@ if (["CfgEpochClient", "madArmaEnabled", true] call EPOCH_fnc_returnConfigEntryV
     };
 } else {
     EPOCH_mod_madArma_Enabled = false;
-};
+}; 
 
 // Check if Advanced Vehicle Repair is enabled
 if (["CfgEpochClient", "UseAdvancedVehicleRepair", true] call EPOCH_fnc_returnConfigEntryV2) then {
