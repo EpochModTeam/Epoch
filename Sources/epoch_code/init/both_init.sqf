@@ -34,7 +34,7 @@ if (["CfgEpochClient", "madArmaEnabled", true] call EPOCH_fnc_returnConfigEntryV
     };
 } else {
     EPOCH_mod_madArma_Enabled = false;
-}; 
+};
 
 // Check if Advanced Vehicle Repair is enabled
 if (["CfgEpochClient", "UseAdvancedVehicleRepair", true] call EPOCH_fnc_returnConfigEntryV2) then {
