@@ -461,4 +461,46 @@ class VehMaintanance
 			tooltip = "Remove 4th Right Wheel";
 		};
 	};
+	class UpgradeVehicle
+	{
+		condition = "dyna_isVehicle";
+		action = "dyna_cursorTarget call EPOCH_client_upgradeVehicleCheck;";
+		icon = "x\addons\a3_epoch_code\Data\UI\buttons\build_upgrade.paa";
+		tooltip = "Upgrade Vehicle";
+		class Upgrade0
+		{
+			condition = "(count Ignatz_VehicleUpgradeArray) > 0";
+			action = "(Ignatz_VehicleUpgradeArray select 0) call EPOCH_client_upgradeVehicle";
+			iconcode = "gettext (configfile >> 'CfgVehicles' >> (Ignatz_VehicleUpgradeArray select 0 select 1) >> 'picture')";
+			tooltipcode = "format ['Upgrade to %1 - %2',(Ignatz_VehicleUpgradeArray select 0 select 2),(Ignatz_VehicleUpgradeArray select 0 select 3)]";
+		};
+		class Upgrade1
+		{
+			condition = "(count Ignatz_VehicleUpgradeArray) > 1";
+			action = "(Ignatz_VehicleUpgradeArray select 1) call EPOCH_client_upgradeVehicle";
+			iconcode = "gettext (configfile >> 'CfgVehicles' >> (Ignatz_VehicleUpgradeArray select 1 select 1) >> 'picture')";
+			tooltipcode = "format ['Upgrade to %1 - %2',(Ignatz_VehicleUpgradeArray select 1 select 2),(Ignatz_VehicleUpgradeArray select 1 select 3)]";
+		};
+		class Upgrade2
+		{
+			condition = "(count Ignatz_VehicleUpgradeArray) > 2";
+			action = "(Ignatz_VehicleUpgradeArray select 2) call EPOCH_client_upgradeVehicle";
+			iconcode = "gettext (configfile >> 'CfgVehicles' >> (Ignatz_VehicleUpgradeArray select 2 select 1) >> 'picture')";
+			tooltipcode = "format ['Upgrade to %1 - %2',(Ignatz_VehicleUpgradeArray select 2 select 2),(Ignatz_VehicleUpgradeArray select 2 select 3)]";
+		};
+		class Upgrade3
+		{
+			condition = "(count Ignatz_VehicleUpgradeArray) > 3";
+			action = "(Ignatz_VehicleUpgradeArray select 3) call EPOCH_client_upgradeVehicle";
+			iconcode = "gettext (configfile >> 'CfgVehicles' >> (Ignatz_VehicleUpgradeArray select 3 select 1) >> 'picture')";
+			tooltipcode = "format ['Upgrade to %1 - %2',(Ignatz_VehicleUpgradeArray select 3 select 2),(Ignatz_VehicleUpgradeArray select 3 select 3)]";
+		};
+		class Upgrade4
+		{
+			condition = "(count Ignatz_VehicleUpgradeArray) > 4";
+			action = "(Ignatz_VehicleUpgradeArray select 4) call EPOCH_client_upgradeVehicle";
+			iconcode = "gettext (configfile >> 'CfgVehicles' >> (Ignatz_VehicleUpgradeArray select 4 select 1) >> 'picture')";
+			tooltipcode = "format ['Upgrade to %1 - %2',(Ignatz_VehicleUpgradeArray select 4 select 2),(Ignatz_VehicleUpgradeArray select 4 select 3)]";
+		};
+	};
 };

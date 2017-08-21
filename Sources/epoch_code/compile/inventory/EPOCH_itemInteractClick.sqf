@@ -64,6 +64,7 @@ else {
 	EPOCH_CraftingItem = "";
 };
 
+/* Moved to DynaMenu
 _config = 'CfgVehicleUpgrades' call EPOCH_returnConfig;
 if (isClass (_config >> _data)) then {
     {
@@ -80,6 +81,7 @@ if (isClass (_config >> _data)) then {
         };
     } foreach (nearestobjects [player,["Landvehicle","SHIP","AIR","TANK"],10]);
 };
+*/
 
 if !(_button_texts isEqualTo []) then {
     _display = ctrlParent (_this select 0);

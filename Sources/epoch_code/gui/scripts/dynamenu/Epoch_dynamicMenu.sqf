@@ -1,7 +1,7 @@
 /*
 	Author: Raimonds Virtoss - EpochMod.com
 
-    Contributors:
+    Contributors: He-Man
 
 	Description:
 	DESC-TBA
@@ -14,7 +14,7 @@
 */
 disableSerialization;
 //[[[cog import generate_private_arrays ]]]
-private ["_action","_arr","_buttonSettings","_c","_cfg","_checkConfigs","_config","_configs","_dName","_display","_entries","_hasTarget","_icon","_in","_selfOrTarget","_subclasses","_tTip","_tooltip","_tooltipcode","_x"];
+private ["_iconcode","_action","_arr","_buttonSettings","_c","_cfg","_checkConfigs","_config","_configs","_dName","_display","_entries","_hasTarget","_icon","_in","_selfOrTarget","_subclasses","_tTip","_tooltip","_tooltipcode","_x"];
 //[[[end]]]
 _in = [_this, 0, "",[""]] call BIS_fnc_param;
 
@@ -118,9 +118,21 @@ _checkConfigs = {
 						else {
 							_tooltip = getText(_x >> "tooltip");
 						};
+						
+						_icon = "";
+						_iconcode = getText(_x >> "iconcode");
+						if (_iconcode != "") then {
+							_icon = [] call compile _iconcode;
+						}
+						else {
+							_icon = getText(_x >> "icon");
+						};
+						if (!(_icon isequaltype "") || _icon isequalto "") then {
+							_icon = "x\addons\a3_epoch_code\Data\UI\buttons\player_inspect.paa";
+						};
 
 						_buttonSettings pushBack [
-							getText(_x >> "icon"),
+							_icon,
 							_tooltip,
 							_action
 						];

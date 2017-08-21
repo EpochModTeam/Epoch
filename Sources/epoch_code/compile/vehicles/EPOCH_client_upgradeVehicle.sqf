@@ -1,28 +1,32 @@
-if (isnil 'EPOCH_UpgradeVehicle') exitwith {
-	["Upgrade failed - Error",5] call Epoch_message;
-};
+/*
+	Author: He-Man / DirtySanchez
 
-EPOCH_UpgradeVehicle params ["_data",["_veh",objnull]]; 
-EPOCH_UpgradeVehicle = nil;
+    Contributors: 
 
+	Description:
+	Upgrade Vehicle
+
+    Licence:
+    Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
+
+    Github:
+    https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_code/compile/vehicles/EPOCH_client_upgradeVehicle.sqf
+*/
+
+private ["_vehType","_config","_reqMaterials","_crypto","_hasall","_missing","_has","_msg"];
+params [["_veh",objnull],["_classUpgrade",""],["_displayname",""],["_mattxt",""]];
+
+Ignatz_VehicleUpgradeArray = [];
 if (isnull _veh) exitwith {
 	["Upgrade failed - Vehicle not found",5] call Epoch_message;
 };
-if (player distance _veh > 12) exitwith {
-	["Upgrade failed - Vehicle to far away",5] call Epoch_message;
-};
-if !(local _veh) exitwith {
-	["Upgrade failed - Go in as Driver first",5] call Epoch_message;
-};
-if !(crew _veh isequalto []) exitwith {
-	["Upgrade failed - All passengers must leave the Vehicle",5] call Epoch_message;
-};
 
 _vehType = typeOf _veh;
-
 _config = 'CfgVehicleUpgrades' call EPOCH_returnConfig;
-_classUpgrade = gettext (_config >> _data >> _vehType >> "upgradeToVehicle");
-_reqMaterials = getArray (_config >> _data >> _vehType >> "ReqMaterials");
+if !(isclass (_config >> _vehType)) exitwith {
+	["Vehicle not upgradeable",5] call Epoch_message;
+};
+_reqMaterials = getArray (_config >> _vehType >> _classUpgrade >> "ReqMaterials");
 
 _crypto = 0;
 if(_reqMaterials isEqualTo [])exitWith{
@@ -51,6 +55,19 @@ if (!_hasall) exitwith {
 	} foreach _missing;
 	[_msg,5] call Epoch_message;
 };
+if !(local _veh) exitwith {
+	["Upgrade failed - Go in as Driver first",5] call Epoch_message;
+};
+if !(crew _veh isequalto []) exitwith {
+	["Upgrade failed - All passengers must leave the Vehicle",5] call Epoch_message;
+};
+if (player distance _veh > 15) exitwith {
+	["Upgrade failed - Vehicle to far away",5] call Epoch_message;
+};
+if (player distance _veh < 4.5) exitwith {
+	["Upgrade failed - Take a bit distance and try again",5] call Epoch_message;
+};
+
 {
 	_x params ["_count","_item"];
 	if (_item isequalto "Crypto") then {
@@ -62,4 +79,5 @@ if (!_hasall) exitwith {
 		};
 	};
 } forEach _reqMaterials;
+
 [[_veh,_classUpgrade,_crypto],player,Epoch_personalToken] remoteExec ["EPOCH_server_upgrade_vehicle",2];

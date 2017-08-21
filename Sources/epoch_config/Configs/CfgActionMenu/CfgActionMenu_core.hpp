@@ -21,7 +21,7 @@ class CfgActionMenu
 		dyna_cursorTargetType = "typeOf ([10] call EPOCH_fnc_cursorTarget)";
 		dyna_inVehicle = "vehicle player != player";
 		dyna_itemsPlayer = "items player";
-		dyna_sizeOf = "((sizeOf dyna_cursorTargetType/2) max 5) min 30";
+		dyna_sizeOf = "((sizeOf dyna_cursorTargetType/2) max 6) min 30";
 		dyna_distance = "(player distance dyna_cursorTarget) <= dyna_sizeOf";
 
 		dyna_buildMode = "([10] call EPOCH_fnc_cursorTarget) call EPOCH_checkBuild;";
