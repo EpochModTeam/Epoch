@@ -82,7 +82,7 @@ for "_e" from 0 to (_entries - 1) do {
 	_ctrl ctrlSetEventHandler ["mouseButtonDown", (_buttonSettings select _e select 2)];
 	_ctrl ctrlEnable true;
 
-	_ctrl2 = _display ctrlCreate ["rmx_rscPicture",-(66600 + _e)];
+	_ctrl2 = _display ctrlCreate ["RscPictureKeepAspect",-(66600 + _e)];
 	_ctrl2 ctrlSetTooltip (_buttonSettings select _e select 1);
 	_ctrl2 ctrlSetTooltipColorBox [0, 0, 0, 0];
 	_ctrl2 ctrlSetTooltipColorShade [0, 0, 0, 0];
