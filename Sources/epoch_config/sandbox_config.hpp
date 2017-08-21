@@ -9,7 +9,8 @@
     Github:
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_config/config.hpp
 */
-
+#define true 1
+#define false 0
 author = "Epoch Mod Team";
 class Header
 {
