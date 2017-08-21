@@ -9,6 +9,8 @@
     Licence:
     Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
 */
+
+private ["_slot","_pos","_dir","_cargo","_damage","_OldHitPoints","_typeVeh","_baseVeh","_color","_fuel","_newVeh","_checkclass","_cfgEpochVehicles","_availableColorsConfig","_colors","_textureSelectionIndex","_selections","_textures","_count","_newHitpoints","_idx","_dmg"];
 params [["_array",[]],["_player",objnull],["_token","",[""]]];
 if (_array isequalto []) exitwith {
 	diag_log "Array is empty";
@@ -35,22 +37,17 @@ _pos = getposasl _veh;
 _dir = getdir _veh;
 _cargo = _veh call EPOCH_server_CargoSave;
 _damage = damage _veh;
-_hitPoints = getAllHitPointsDamage _veh;
-_baseVeh = _veh getVariable ["VEHICLE_BASECLASS",""];
+_OldHitPoints = getAllHitPointsDamage _veh;
 _typeVeh = typeOf _veh;
-_colorVeh = _veh getVariable ["VEHICLE_TEXTURE",""];
+_baseVeh = _veh getVariable ["VEHICLE_BASECLASS",_typeVeh];
+_color = _veh getVariable ["VEHICLE_TEXTURE",""];
 _fuel = fuel _veh;
 deletevehicle _veh;
 waituntil {isnull _veh};
 _pos set [2,(_pos select 2)+0.5];
 _newVeh = createVehicle [_UpgradeVeh, [random 500, random 500,500], [], 0, "CAN_COLLIDE"];
 _newVeh setVariable ["VEHICLE_SLOT", _slot, true];
-if!(_baseVeh isEqualTo "")then
-{
-	_newVeh setVariable["VEHICLE_BASECLASS", _baseVeh];
-}else{
-	_newVeh setVariable["VEHICLE_BASECLASS", _typeVeh];
-};
+_newVeh setVariable ["VEHICLE_BASECLASS", _baseVeh];
 _newVeh call EPOCH_server_setVToken;
 _newVeh call EPOCH_server_vehicleInit;
 _newVeh setdir _dir;
@@ -60,23 +57,28 @@ _newVeh setposasl _pos;
 _newVeh setFuel _fuel;
 
 // apply persistent textures
+_checkclass = _typeVeh;
+if !(_newVeh iskindof _typeVeh) then {
+	_checkclass = _UpgradeVeh;
+};
 _cfgEpochVehicles = 'CfgEpochVehicles' call EPOCH_returnConfig;
-_newbaseVeh = _veh getVariable ["VEHICLE_BASECLASS",""];
-_availableColorsConfig = (_cfgEpochVehicles >> _newbaseVeh >> "availableColors");
-if (isArray(_availableColorsConfig)) then {
-	_color = _colorVeh;
-	_colors = getArray(_availableColorsConfig);
-	_textureSelectionIndex = (_cfgEpochVehicles >> _newbaseVeh >> "textureSelectionIndex");
-	_selections = if (isArray(_textureSelectionIndex)) then { getArray(_textureSelectionIndex) } else { [0] };
+_availableColorsConfig = (_cfgEpochVehicles >> _checkclass >> "availableColors");
+if (isArray(_availableColorsConfig)) then{
+	_colors = getArray (_availableColorsConfig);
+	_textureSelectionIndex = (_cfgEpochVehicles >> _checkclass >> "textureSelectionIndex");
+	_selections = if (isArray(_textureSelectionIndex)) then{ getArray(_textureSelectionIndex) } else { [0] };
+	_textures = _colors select 0;
+	if (!(_newVeh iskindof _typeVeh) || _color isequalto "") then {
+		_color = floor(random(count _textures));
+	};
 	_count = (count _colors) - 1;
 	{
-		_textures = _colors select 0;
-		if (_count >= _forEachIndex) then {
+		if (_count >= _forEachIndex) then{
 			_textures = _colors select _forEachIndex;
 		};
-		_newVeh setObjectTextureGlobal [_x, _textures  select _color];
+		_newVeh setObjectTextureGlobal[_x, (_textures select _color)];
 	} forEach _selections;
-	_newVeh setVariable ["VEHICLE_TEXTURE", _color];
+	_newVeh setVariable["VEHICLE_TEXTURE", _color];
 };
 
 // disable thermal imaging equipment
@@ -84,19 +86,17 @@ _newVeh disableTIEquipment true;
 
 // set damage and hitpoints
 _newVeh setDamage _damage;
-_allHitpoints = getAllHitPointsDamage _newVeh;
-if !(_allHitpoints isEqualTo []) then{
-	_actualHitpoints = _allHitpoints select 0;
-	if ((count _actualHitpoints) == (count _hitpoints)) then{
-		{
-			_dmg = _hitpoints param [_forEachIndex,0];
-			if (_x in ["HitFuel", "HitEngine"]) then {
-				_dmg = _dmg min 0.9;
-			};
-			_newVeh setHitIndex [_forEachIndex, _dmg];
-		} forEach _actualHitpoints;
+_newHitpoints = getAllHitPointsDamage _newVeh;
+{
+	_idx = (_newHitpoints select 0) find _x;
+	if (_idx > -1) then {
+		_dmg = _OldHitPoints select 2 select _foreachindex;
+		if (_x in ["HitFuel", "HitEngine"]) then {
+			_dmg = _dmg min 0.9;
+		};
+		_newVeh setHitPointDamage [_x, _dmg];
 	};
-};
+} foreach (_OldHitPoints select 0);
 
 // new Dynamicsimulation
 if(["CfgDynamicSimulation", "vehicleDynamicSimulationSystem", true] call EPOCH_fnc_returnConfigEntryV2)then
@@ -104,7 +104,6 @@ if(["CfgDynamicSimulation", "vehicleDynamicSimulationSystem", true] call EPOCH_f
 	_newveh enableSimulationGlobal false; // turn it off until activated by dynamicSim
 	_newveh enableDynamicSimulation true;
 };
-
 
 // add back old inventory
 clearWeaponCargoGlobal    _newveh;
