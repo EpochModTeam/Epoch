@@ -112,5 +112,20 @@ clearBackpackCargoGlobal  _newveh;
 clearItemCargoGlobal	  _newveh;
 [_newveh,_cargo] call EPOCH_server_CargoFill;
 
+// Remove forbidden Weapons and Ammo
+_serverSettingsConfig = configFile >> "CfgEpochServer";
+_removeweapons = [_serverSettingsConfig, "removevehweapons", []] call EPOCH_fnc_returnConfigEntry;
+_removemagazinesturret = [_serverSettingsConfig, "removevehmagazinesturret", []] call EPOCH_fnc_returnConfigEntry;
+if !(_removeweapons isequalto []) then {
+	{
+		_newVeh removeWeaponGlobal _x;
+	} foreach _removeweapons;
+};
+if !(_removemagazinesturret isequalto []) then {
+	{
+		_newVeh removeMagazinesTurret _x;
+	} foreach _removemagazinesturret;
+};
+
 // save new vehicle to db
 _newveh call EPOCH_Server_Save_Vehicle;
