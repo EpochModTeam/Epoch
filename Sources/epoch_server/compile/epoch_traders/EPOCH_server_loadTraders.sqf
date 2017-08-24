@@ -17,7 +17,7 @@ private ["_agent","_aiTables","_arr","_class","_currentStock","_existingStock","
 //[[[end]]]
 params [["_maxTraderLimit",0]];
 
-_staticTradersArray = [] + EPOCH_staticNPCTraderPos;
+_staticTradersArray = +EPOCH_staticNPCTraderPos;
 EPOCH_staticNPCTraderPos = nil;
 _staticTradersArray append getArray(configFile >> "CfgEpoch" >> worldName >> "staticNpcPos");
 _staticTradersArrCount = count _staticTradersArray;

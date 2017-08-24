@@ -396,7 +396,7 @@ class FSM
            "    {" \n
            "        _removed = _events deleteAt (_eventsMarkedForRemoval deleteAt _forEachIndex);" \n
            "        diag_log format[""DEBUG: removing event: %1"",_removed];" \n
-           "    } forEach ([] + _eventsMarkedForRemoval);" \n
+           "    } forEach (+_eventsMarkedForRemoval);" \n
            "};" \n
            "" \n
            "// restart script" \n

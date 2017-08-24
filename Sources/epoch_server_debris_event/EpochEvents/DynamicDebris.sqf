@@ -84,7 +84,7 @@ if (_status == 1 && _data isEqualType [] && !(_data isEqualTo [])) then {
                 _position set [1,(_position select 1) + _offsetY];
                 _position set [2,(_position select 2) - 1];
 
-                _upperPos = [] + _position;
+                _upperPos = +_position;
                 _upperPos set [2,(_position select 2) + 3];
 
                 _intersections = lineIntersectsSurfaces [_upperPos, _position, objNull, objNull, true, 1];
