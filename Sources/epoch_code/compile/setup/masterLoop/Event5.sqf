@@ -1,5 +1,16 @@
 _position = getPosATL player;
 
+// check if player is out of map bounds.
+_worldSize = worldSize/2;
+_outOfBounds = !(player inArea [[_worldSize,_worldSize,0], _worldSize, _worldSize, 0, true ]);
+if (_outOfBounds) then {
+	 ["You are out of the play area!", 5] call Epoch_message;
+
+} else {
+	// do in bounds radiation checks here.
+
+};
+
 EPOCH_nearestLocations = nearestLocations[player, ["NameCityCapital", "NameCity", "Airport"], 300];
 
 EPOCH_playerIsSwimming = false;
@@ -12,7 +23,7 @@ if !(surfaceIsWater _position) then {
 	};
 } else {
 	// spawn shark if player is deep water and not in vehicle
-	if (vehicle player == player) then{
+	if !(_isOnFoot) then{
 		_offsetZ = ((_position vectorDiff getPosASL player) select 2);
 		EPOCH_playerIsSwimming = (_offsetZ > 1.7);
 		if (_offsetZ > 50) then {

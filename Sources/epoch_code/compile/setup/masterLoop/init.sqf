@@ -18,6 +18,7 @@ if (isNil "EPOCH_display_setup_complete") then {
 
 _prevEquippedItem = [];
 _damagePlayer = damage player;
+_isOnFoot = isNull objectParent player;
 _panic = false;
 _prevEnergy = EPOCH_playerEnergy;
 

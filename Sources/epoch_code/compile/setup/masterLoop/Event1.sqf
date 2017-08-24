@@ -131,7 +131,8 @@ if (_forceBloodRise) then {
 };
 
 // check if player On Foot
-if (isNull objectParent player) then {
+_isOnFoot = isNull objectParent player;
+if (_isOnFoot) then {
 	_val = log(abs(speed player));
 	_staminaThreshold = [0.7,0.3] select EPOCH_playerIsSwimming;
 	if (_val > _staminaThreshold) then {
