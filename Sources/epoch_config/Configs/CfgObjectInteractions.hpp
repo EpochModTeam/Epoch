@@ -213,7 +213,7 @@ class CfgObjectInteractions
         bloodpAmount = 3;
         soundEffect[] = {"cultist_nearby"};
         canSee = "!(lineIntersects[eyePos _unit, aimPos _target, _unit, _target])";
-        ppEffect[] = {{{"filmGrain",2005,{0.1,-1,0.05,0.05,2,false},1},{"chromAberration",2006,{0.01,0.01,true},5},{"colorCorrections",2007,{1,1,0,{1.5,-1,-1.5,0.5},{5,3.5,-5,-0.5},{-3,5,-5,-0.5}},5},{"radialBlur",2008,{0.02,0.02,0.15,0.15},5}},2,{{},{{0,0,true},5},{{1,1,-0.01,{0.0,0.0,0.0,0.0},{1.5,1,1.2,0.6},{0.199,0.587,0.114,0.2}},5},{{0,0,0,0},5}},5,{}};
+        ppEffect[] = {{{"filmGrain",2005,{0.1,-1,0.05,0.05,2,"false"},1},{"chromAberration",2006,{0.01,0.01,"true"},5},{"colorCorrections",2007,{1,1,0,{1.5,-1,-1.5,0.5},{5,3.5,-5,-0.5},{-3,5,-5,-0.5}},5},{"radialBlur",2008,{0.02,0.02,0.15,0.15},5}},2,{{},{{0,0,"true"},5},{{1,1,-0.01,{0.0,0.0,0.0,0.0},{1.5,1,1.2,0.6},{0.199,0.587,0.114,0.2}},5},{{0,0,0,0},5}},5,{}};
         interactMode = 3;
         aliveState = 1;
         interactAttributes[] = {{"Toxicity",20,1},{"Soiled",20,1}};
