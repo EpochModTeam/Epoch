@@ -1,8 +1,8 @@
 /*%FSM<COMPILE "F:\Program Files (x86)\Steam\steamapps\common\Arma 3 Tools\FSMEditor\scriptedFSM.cfg, Epoch Login">*/
 /*%FSM<HEAD>*/
 /*
-item0[] = {"INIT",0,4346,-25.000000,-375.000000,75.000000,-325.000000,0.000000,"INIT"};
-item1[] = {"FINISH",1,250,-149.463196,1518.792480,-49.463196,1568.792480,0.000000,"FINISH"};
+item0[] = {"INIT",0,250,-25.000000,-375.000000,75.000000,-325.000000,0.000000,"INIT"};
+item1[] = {"FINISH",1,4346,-149.463196,1518.792480,-49.463196,1568.792480,0.000000,"FINISH"};
 item2[] = {"true",8,218,-150.000000,-125.000000,-50.000000,-75.000000,0.000000,"true"};
 item3[] = {"Version_Check",2,250,-25.000000,-75.000000,75.000000,-25.000000,0.000000,"Version Check"};
 item4[] = {"Player_Object_Re",4,218,-150.000000,75.000000,-50.000000,125.000000,0.000000,"Player" \n "Object Ready"};
@@ -183,8 +183,8 @@ link93[] = {82,76};
 link94[] = {83,16};
 link95[] = {83,22};
 link96[] = {84,31};
-globals[] = {0.000000,0,0,0,0,640,480,1,247,6316128,1,-406.572662,335.025604,359.874329,-776.300476,577,884,1};
-window[] = {2,-1,-1,-32000,-32000,871,104,1088,104,3,595};
+globals[] = {0.000000,0,0,0,0,640,480,1,247,6316128,1,-346.821808,275.273865,1776.441162,823.351685,577,884,1};
+window[] = {2,-1,-1,-1,-1,923,156,1140,156,3,595};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -198,17 +198,13 @@ class FSM
                         itemno = 0;
                         init = /*%FSM<STATEINIT""">*/"titleCut ["""", ""BLACK FADED"", 1337];" \n
                          "0 fadeSound 0;" \n
-                         "//player enableSimulation false;" \n
                          "" \n
-                         "_debug = true;" \n
+                         "// use config to control extra debug" \n
+                         "_debug = [""CfgEpochClient"", ""debug"", false] call EPOCH_fnc_returnConfigEntryV2;" \n
+                         "" \n
                          "_myTime = diag_tickTime;" \n
                          "if (_debug) then {" \n
                          "	diag_log ""EPOCH-LOGIN: Init"";" \n
-                         "};" \n
-                         "" \n
-                         "EPOCH_loginFSM = _thisFSM;" \n
-                         "EPOCH_playerLoginInit = {" \n
-                         "	EPOCH_loginFSM setFSMVariable [_this select 0, _this select 1];" \n
                          "};" \n
                          "" \n
                          "// init vars " \n
@@ -236,9 +232,6 @@ class FSM
                         name = "FINISH";
                         itemno = 1;
                         init = /*%FSM<STATEINIT""">*/"[] spawn EPOCH_masterLoop;" \n
-                         "" \n
-                         "EPOCH_loginFSM = nil;" \n
-                         "EPOCH_playerLoginInit = nil;" \n
                          "" \n
                          "// fade in sound and screen" \n
                          "3 fadeSound 1;" \n
@@ -497,7 +490,7 @@ class FSM
                         itemno = 18;
                         init = /*%FSM<STATEINIT""">*/"_myTime = diag_tickTime;" \n
                          "" \n
-                         "[player] remoteExec [""EPOCH_server_checkPlayer"",2];" \n
+                         "[player,_thisFSM] remoteExec [""EPOCH_server_checkPlayer"",2];" \n
                          "" \n
                          """Loading Player Data... Please wait!"" call Epoch_updateLoadingScreen;" \n
                          "progressLoadingScreen 0.5;" \n
@@ -1345,7 +1338,7 @@ class FSM
                         init = /*%FSM<STATEINIT""">*/"startLoadingScreen ["""",""EpochLoadingScreen""];" \n
                          """Gender Selected... Please wait!"" call Epoch_updateLoadingScreen;" \n
                          "" \n
-                         "[player,EPOCH_PlayerIsMale] remoteExec [""EPOCH_server_loadPlayer"",2];" \n
+                         "[player,EPOCH_PlayerIsMale,_thisFSM] remoteExec [""EPOCH_server_loadPlayer"",2];" \n
                          "EPOCH_PlayerIsMale = nil;"/*%FSM</STATEINIT""">*/;
                         precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
                         class Links

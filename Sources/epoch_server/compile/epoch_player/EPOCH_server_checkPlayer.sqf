@@ -15,7 +15,7 @@
 //[[[cog import generate_private_arrays ]]]
 private ["_apperance","_arr","_class","_communityStatsArray","_dead","_deadPlayer","_defaultData","_instanceID","_isMale","_medical","_playerUID","_response","_return","_vars"];
 //[[[end]]]
-params [["_playerObj",objNull]];
+params [["_playerObj",objNull],["_fsmHandle",0]];
 if (_playerObj isEqualType objNull) then {
 	if (!isNull _playerObj) then {
 		_playerUID = getPlayerUID _playerObj;
@@ -58,10 +58,10 @@ if (_playerObj isEqualType objNull) then {
 
 			/* true => New Char
 			   false => load old Char */
-			['_checkPlayer_PVC', _dead] remoteExec ['EPOCH_playerLoginInit',_playerObj];
+			[_fsmHandle,['_checkPlayer_PVC', _dead]] remoteExecCall ['setFSMVariable', _playerObj];
 
 			if (!_dead) then { //Load old Char
-				[_playerObj, _isMale] call EPOCH_server_loadPlayer;
+				[_playerObj, _isMale, _fsmHandle] call EPOCH_server_loadPlayer;
 			};
 		};
 	};

@@ -16,6 +16,8 @@ class CfgEpochClient
 {
     epochVersion = "1.0.0";
     ArmAVersion = 168;
+	debug = "false";  // true = enable extra rpt debug lines, false to disable
+
     sapperRngChance = 100; // increase number to reduce chances and reduce to increase. Default 100
     droneRngChance = 100; // increase number to reduce chances and reduce to increase. Default 100
     zombieRngChance = 50; // increase number to reduce chances and reduce to increase. Default 50

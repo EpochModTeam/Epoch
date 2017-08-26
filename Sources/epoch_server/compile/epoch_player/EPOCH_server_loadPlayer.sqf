@@ -17,7 +17,7 @@ private ["_CheckLocation","_allGroupMembers","_alreadyDead","_assignedItems","_a
 //[[[end]]]
 _reject = true;
 
-params [["_player",objNull,[objNull]],["_isMale",true]];
+params [["_player",objNull,[objNull]],["_isMale",true],["_fsmHandle",0]];
 
 if (!isNull _player) then {
 
@@ -358,7 +358,7 @@ if (!isNull _player) then {
 				_newPlyr setVariable["SETUP", true, true];
 
 				// Send message to player so they can take over the new body.
-				[_playerNetID, _playerUID, [_newPlyr, _vars, _currentWeapon, loadAbs _newPlyr, _playerGroup, _canBeRevived, _newPlyr call EPOCH_server_setPToken,_playerGroupArray, _communityStats, _hitpoints]] call EPOCH_server_pushPlayer;
+				[_playerNetID, _playerUID, [_newPlyr, _vars, _currentWeapon, loadAbs _newPlyr, _playerGroup, _canBeRevived, _newPlyr call EPOCH_server_setPToken,_playerGroupArray, _communityStats, _hitpoints], _fsmHandle] call EPOCH_server_pushPlayer;
 
 				// revive test
 				_newPlyr setVariable ['#rev_enabled', true, true];

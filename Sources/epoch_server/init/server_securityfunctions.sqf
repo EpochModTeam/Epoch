@@ -140,9 +140,10 @@ EPOCH_server_setPToken = compileFinal ("private '_var';_var = 'epochserver' call
 
 if (!_skn_enableAntihack) exitWith {
 	EPOCH_server_pushPlayer = compileFinal ("
-	_C_SET = _this select 2;
+	params ['_playerNetID','_playerUID','_C_SET','_fsmHandle'];
 	_C_SET pushBack '';
-	['_C_SET', _C_SET] remoteExec ['EPOCH_playerLoginInit',(_this select 0)];");
+	[_fsmHandle,['_C_SET', _C_SET]] remoteExecCall ['setFSMVariable', _playerNetID];
+	");
 	EPOCH_server_isPAdmin = compileFinal ("false");
 	EPOCH_server_Authed = compileFinal ("true");
 	EPOCH_server_disconnect = compileFinal("true");
@@ -515,16 +516,16 @@ if (_skn_PVSPrefix == "") then {
 };
 
 EPOCH_server_pushPlayer = compileFinal ("
-	_C_SET = _this select 2;
-	if (_this select 1 in "+ str _skn_adminUIDArray+") then {
-		(_this select 0) publicVariableClient '"+_skn_Admin_Code+"';
-		(_this select 0) publicVariableClient '"+_skn_pv_adminLog+"';
-		(_this select 0) publicVariableClient '"+_skn_pv_hackerLog+"';
+	params ['_playerNetID','_playerUID','_C_SET','_fsmHandle'];
+	if (_playerUID in "+ str _skn_adminUIDArray+") then {
+		_playerNetID publicVariableClient '"+_skn_Admin_Code+"';
+		_playerNetID publicVariableClient '"+_skn_pv_adminLog+"';
+		_playerNetID publicVariableClient '"+_skn_pv_hackerLog+"';
 		_C_SET pushBack '[] spawn "+_skn_Admin_Init+"';
 	} else {
 		_C_SET pushBack '[] spawn "+_skn_AH_Init+"';
 	};
-	['_C_SET', _C_SET] remoteExec ['EPOCH_playerLoginInit',(_this select 0)];
+	[_fsmHandle,['_C_SET', _C_SET]] remoteExecCall ['setFSMVariable', _playerNetID];
 	true
 ");
 EPOCH_server_isPAdmin = compileFinal ("if (isNull _this) then {false} else {getPlayerUID _this in "+str _skn_adminUIDArray+"}");
