@@ -84,7 +84,13 @@ _masterConfig = 'CfgBuildingLootPos' call EPOCH_returnConfig;
 
 _lootClasses = [];
 _lootClassesIgnore = ['Default'];
-'_cN = configName _x;if !(_cN in _lootClassesIgnore)then{_lootClasses pushBackUnique _cN};' configClasses _masterConfig;
+_configs = "true" configClasses _masterConfig;
+{
+	_cN = configName _x;
+	if !(_cN in _lootClassesIgnore)then{
+		_lootClasses pushBackUnique _cN;
+	};
+}forEach _configs;
 
 _lootBubble = {
 	private["_jammer", "_others", "_objects", "_nearObjects", "_building", "_lootDist", "_lootLoc", "_playerPos", "_distanceTraveled"];
