@@ -440,7 +440,7 @@ EPOCH_KeyDownCustom = {
 
 
             if (_ctrl) then {
-                EPB = []; "if (isclass _x) then {EPB pushBack (configName _x); true}" configClasses (getMissionConfig "CfgBuildingLootPos")
+                EPB = []; "if (isclass _x) then {EPB pushBack (configName _x)}; true" configClasses (getMissionConfig "CfgBuildingLootPos")
             } else {
 
                 _buildLoading = objNull;

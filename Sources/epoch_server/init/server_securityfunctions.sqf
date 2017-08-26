@@ -534,8 +534,7 @@ _sknBanANDSleepQuick = _skn_AH_Ban+"; uiSleep 1";
 
 // CfgPatches Check
 _sknPatches = [];
-_configs = "true" configClasses (configFile >> "CfgPatches");
-{_sknPatches pushBack (configName _x)}forEach _configs;
+"_sknPatches pushBack (configName _x); true" configClasses (configFile >> "CfgPatches");
 {_sknPatches pushBackUnique _x}forEach _skn_whitelist_cfgPatches;
 _skn_addonCheckCode = if (_skn_check_addons) then {"[] spawn{_config = '!(configName _x in "+str _sknPatches+")' configClasses (configFile >> 'CfgPatches');if !(_config isEqualTo []) then {[format['Disallowed Addon %1',_config],["+str (_skn_cfgPatchesCfg select 0)+",0]] call "+_skn_AH_Ban+"}};"} else {""};
 _skn_fileCheckCode = if (_skn_check_files isEqualTo []) then {""} else {"{if (str(compile preprocessFileLineNumbers (_x select 0)) != str(missionNamespace getVariable [_x select 1,'']))exitWith{[format['Modified File %1 (%2/%3)',_x select 1,count toArray str (compile preprocessFileLineNumbers (_x select 0)),count toArray str(missionNamespace getVariable [_x select 1,''])],0] call "+_skn_AH_Ban+"}} forEach "+str _skn_check_files+";"};
@@ -1476,7 +1475,7 @@ _skn_admincode = compileFinal ("
 		_masterConfig = 'CfgBuildingLootPos' call EPOCH_returnConfig;
 		_lootClasses = [];
 		_lootClassesIgnore = ['Default'];
-		'_cN = configName _x;if !(_cN in _lootClassesIgnore)then{_lootClasses pushBack _cN};' configClasses _masterConfig;
+		'_cN = configName _x;if !(_cN in _lootClassesIgnore)then{_lootClasses pushBack _cN}; true' configClasses _masterConfig;
 		_cntBuildings = 0;
 		{
 			if (_x call EPOCH_spawnLoot) then {
