@@ -37,38 +37,9 @@ EPOCH_chargeRate = 0;
 EPOCH_playerIsSwimming = false;
 
 // default data if mismatch
-if (count EPOCH_playerSpawnArray != count EPOCH_spawnIndex) then{
+if !(EPOCH_playerSpawnArray isEqualTypeParams EPOCH_spawnIndex) then{
 	EPOCH_playerSpawnArray = [];
 	{ EPOCH_playerSpawnArray pushBack 0 } forEach EPOCH_spawnIndex;
-};
-
-// HUD and Logic functions - todo move to client function.
-/*
-[_selVarName,_varIndex,_selVarType,_selVarSubData] call _fnc_returnHudVar
-*/
-_fnc_returnHudVar = {
-	params [["_selVarName",""],["_varIndex",0],["_selVarType",""],["_selVarSubData",""]];
-	switch (_selVarType) do {
-		case "getMissionNamespaceVariable": {missionNamespace getVariable[_selVarName,_selVarSubData]};
-		case "getPlayerHitPointDamage": {player getHitPointDamage _selVarSubData};
-		case "getPlayerOxygenRemaining": {getOxygenRemaining player};
-		case "getPlayerDamage": {damage player};
-		default {missionNamespace getVariable[format['EPOCH_player%1', _selVarName],EPOCH_defaultVars select _varIndex]};
-	}
-};
-/*
-[1,">=",0] call _fnc_arrayToLogic; // returns: true
-*/
-_fnc_arrayToLogic = {
-	params [["_v",""],["_t",""],["_d",""]];
-	switch (_t) do {
-		case ">=": {_v >= _d};
-		case "<=": {_v <= _d};
-		case "<": {_v < _d};
-		case ">": {_v > _d};
-		case "!=": {!(_v isEqualTo _d)};
-		default {_v isEqualTo _d};
-	}
 };
 
 // find radio
@@ -110,27 +81,6 @@ _lootBubble = {
 		};
 	};
 	EPOCH_lastPlayerPos = _playerPos;
-};
-
-// [control,bool] call _fadeUI;
-_fadeUI = {
-	params ["_ctrl","_bool"];
-	if (_bool) then {
-		if (ctrlFade _ctrl == 0) then {
-			_ctrl ctrlSetFade 1;
-			_ctrl ctrlCommit 0.5;
-		};
-		if (ctrlFade _ctrl == 1) then {
-			_ctrl ctrlSetFade 0;
-			_ctrl ctrlCommit 0.5;
-		};
-	} else {
-		if (ctrlFade _ctrl != 1) then {
-			_ctrl ctrlSetFade 0;
-			_ctrl ctrlCommit 0;
-		};
-	};
-	_bool
 };
 
 _cursorTarget = objNull;

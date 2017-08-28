@@ -51,7 +51,7 @@ EPOCH_currentTargetMode = _currentTargetMode;
 		if (_customVarLimits isEqualTo []) then {
 			_customVarLimits = EPOCH_customVarLimits select _varIndex;
 		};
-		_currentVarVal = [_selVarName,_varIndex,_selVarType,_selVarSubData] call _fnc_returnHudVar;
+		_currentVarVal = [_selVarName,_varIndex,_selVarType,_selVarSubData] call EPOCH_fnc_returnHudVar;
 		_customVarLimits params [["_playerLimitMax",100],["_playerLimitMin",0],["_playerWarnLimit",101],["_playerCriticalLimit",101],["_playerWarnLow",0],["_playerCriticalLow",0]];
 
 		_extraLogic = false;
@@ -63,7 +63,7 @@ EPOCH_currentTargetMode = _currentTargetMode;
 				_extraLogicType params [["_extraLogicVarName",""],["_extraLogicType",""],["_extraLogicDefaultValue",""]];
 			};
 			_extraVarIndex = EPOCH_customVars find _extraLogicVarName;
-			_extraLogic = [([_extraLogicVarName,_extraVarIndex,_extraLogicType,_extraLogicDefaultValue] call _fnc_returnHudVar),_extraLogicCond,_extraLogicData] call _fnc_arrayToLogic;
+			_extraLogic = [([_extraLogicVarName,_extraVarIndex,_extraLogicType,_extraLogicDefaultValue] call EPOCH_fnc_returnHudVar),_extraLogicCond,_extraLogicData] call EPOCH_fnc_arrayToLogic;
 		};
 
 		if (_playerLimitMax isEqualType "") then {
