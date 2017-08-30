@@ -37,7 +37,6 @@ if (_groupID != "") then {
 		
 		_x setVariable ["TEMPGROUP", nil];
 		[["resetTempGroup", true], _x] call EPOCH_sendRemoteExecClient;
-		[["tempGroupUpdate", []], _x] call EPOCH_sendRemoteExecClient;
 		if (isNull _group) then {
 			_group = createGroup [west, true];
 		};
@@ -45,6 +44,7 @@ if (_groupID != "") then {
 	} forEach (allPlayers select {(_x getVariable["TEMPGROUP", ""]) == _groupID});
 
 	//_return = ["TempGroup", _groupID] call EPOCH_fnc_server_hiveDEL;
+	[["tempGroupUpdate", []], _player] call EPOCH_sendRemoteExecClient;
 	_return = true;
 };
 _return
