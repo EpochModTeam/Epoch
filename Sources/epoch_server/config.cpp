@@ -101,7 +101,6 @@ class CfgServerFunctions
 			class server_CargoFill {};
 		};
 		class epoch_server {
-			class weightedArray {};
 			class precisionPos {};
 			class serverLootObject {};
 			class server_vehicleInit {};

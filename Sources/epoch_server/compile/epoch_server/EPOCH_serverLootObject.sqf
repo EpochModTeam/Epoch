@@ -29,7 +29,7 @@ if (isnull _object && !(_pos isequalto [])) then {
 	_object = createVehicle ["groundWeaponHolder",_pos,[],0,"CAN_COLLIDE"];
 };
 if !(isNull _object) then{
-	_lootTable = [_type, "CfgMainTable", "tables"] call EPOCH_weightedArray;
+	_lootTable = ["CfgMainTable", _type, "tables"] call EPOCH_fnc_weightedArray;
 	_lootTable params ["_lootTableArray","_weightedArray"];
 	if !(_lootTableArray isEqualTo []) then {
 		_loots = [];
@@ -41,7 +41,7 @@ if !(isNull _object) then{
 			_loots pushBack (_lootTableArray select(selectRandom _weightedArray));
 		};
 		{
-			_lootItemWeightedArray = [_x, _lootTableClass, "items"] call EPOCH_weightedArray;
+			_lootItemWeightedArray = [_lootTableClass, _x, "items"] call EPOCH_fnc_weightedArray;
 			_lootItemArray = _lootItemWeightedArray select 0;
 			if !(_lootItemArray isEqualTo[]) then {
 				_weightedItemArray = _lootItemWeightedArray select 1;
@@ -106,7 +106,7 @@ if !(isNull _object) then{
 						};
 						case "CfgLootTable": {
 							// go down the rabit hole
-							_lootItemWeightedArray = [_randomItem, _lootTableClass, "items"] call EPOCH_weightedArray;
+							_lootItemWeightedArray = [_lootTableClass, _randomItem, "items"] call EPOCH_fnc_weightedArray;
 							_lootItemArray = _lootItemWeightedArray select 0;
 							if !(_lootItemArray isEqualTo[]) then {
 								_weightedItemArray = _lootItemWeightedArray select 1;

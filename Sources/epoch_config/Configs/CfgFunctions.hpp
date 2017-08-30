@@ -32,6 +32,10 @@ class cfgFunctions
             {
                 file = "epoch_code\compile\both\EPOCH_isAny.sqf";
             };
+			class weightedArray
+            {
+                file = "epoch_code\compile\both\EPOCH_weightedArray.sqf";
+            };
             class compiler
             {
                 file = "epoch_code\compile\both\EPOCH_compiler.sqf";
