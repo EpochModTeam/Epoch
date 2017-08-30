@@ -1836,6 +1836,18 @@ class CfgPricing
     {
         price = 5;
     };
+	class Poppy
+    {
+        price = 50;
+    };
+	class Goldenseal
+	{
+        price = 25;
+    };
+	class Pumpkin
+	{
+		price = 5;
+	};
     class sardines_epoch
     {
         price = 2;
