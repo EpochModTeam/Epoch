@@ -88,35 +88,6 @@ EPOCH_communityStatsDefaults = _communityStatsInit;
 } forEach _communityStatsInit;
 EPOCH_communityStatsCount = count EPOCH_communityStats;
 
-
-// Init antagonist spawn limits
-EPOCH_spawnIndex = [];
-EPOCH_spawnLimits = [];
-_antagonistSpawnDefaults = [
-	["Epoch_Cloak_F", 1],
-	["GreatWhite_F", 2],
-	["Epoch_Sapper_F",2],
-    ["Epoch_SapperG_F",1],
-	["Epoch_SapperB_F",1],
-	["I_UAV_01_F",2],
-	["PHANTOM",1],
-	["B_Heli_Transport_01_F",1],
-	["EPOCH_RyanZombie_1",12]
-];
-_spawnLimits = ["CfgEpochClient", "antagonistSpawnIndex", _antagonistSpawnDefaults] call EPOCH_fnc_returnConfigEntryV2;
-{
-	_x params ["_spawnName","_spawnLimit"];
-	if (_spawnName isEqualTo "EPOCH_RyanZombie_1") then {
-		if (EPOCH_mod_Ryanzombies_Enabled) then {
-			EPOCH_spawnIndex pushBack _spawnName;
-			EPOCH_spawnLimits pushBack _spawnLimit;
-		};
-	} else {
-		EPOCH_spawnIndex pushBack _spawnName;
-		EPOCH_spawnLimits pushBack _spawnLimit;
-	};
-} forEach _spawnLimits;
-
 //GroupSize (number) // Price (String)
 EPOCH_group_upgrade_lvl = ["CfgEpochClient", "group_upgrade_lvl", [4,"100",6,"300",8,"500",10,"1000",12,"1500",13,"1750",14,"2000",15,"3000",16,"5000"]] call EPOCH_fnc_returnConfigEntryV2;
 

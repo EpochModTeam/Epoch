@@ -23,9 +23,8 @@ _panic = false;
 _prevEnergy = EPOCH_playerEnergy;
 
 // init config data
-_sapperRndChance = ["CfgEpochClient", "sapperRngChance", 100] call EPOCH_fnc_returnConfigEntryV2;
-_zombieRngChance = ["CfgEpochClient", "zombieRngChance", 50] call EPOCH_fnc_returnConfigEntryV2;
-_droneRndChance = ["CfgEpochClient", "droneRngChance", 100] call EPOCH_fnc_returnConfigEntryV2;
+_antagonistRndChance = ["CfgEpochClient", "antagonistRngChance", 100] call EPOCH_fnc_returnConfigEntryV2;
+
 _baseHungerLoss = ["CfgEpochClient", "baseHungerLoss", 2] call EPOCH_fnc_returnConfigEntryV2;
 _baseThirstLoss = ["CfgEpochClient", "baseThirstLoss", 2] call EPOCH_fnc_returnConfigEntryV2;
 _energyCostNV = ["CfgEpochClient", "energyCostNV", 3] call EPOCH_fnc_returnConfigEntryV2;
@@ -35,6 +34,47 @@ _hudConfigs = ["CfgEpochClient", "hudConfigs", []] call EPOCH_fnc_returnConfigEn
 
 EPOCH_chargeRate = 0;
 EPOCH_playerIsSwimming = false;
+
+_antagonistChanceDefaults = [
+	"Epoch_Cloak_F",0.07,
+	"Epoch_Sapper_F",0.25,
+	"Epoch_SapperG_F",0.12,
+	"Epoch_SapperB_F",0.06,
+	"I_UAV_01_F",0.2,
+	"PHANTOM",0.01,
+	"EPOCH_RyanZombie_1",0.25
+];
+_antagonistChances = ["CfgEpochClient", "antagonistChances", _antagonistChanceDefaults] call EPOCH_fnc_returnConfigEntryV2;
+
+
+// Init antagonist spawn limits
+EPOCH_spawnIndex = [];
+EPOCH_spawnLimits = [];
+_antagonistSpawnDefaults = [
+	["Epoch_Cloak_F", 1],
+	["GreatWhite_F", 2],
+	["Epoch_Sapper_F",2],
+    ["Epoch_SapperG_F",1],
+	["Epoch_SapperB_F",1],
+	["I_UAV_01_F",2],
+	["PHANTOM",1],
+	["B_Heli_Transport_01_F",1],
+	["EPOCH_RyanZombie_1",12]
+];
+_spawnLimits = ["CfgEpochClient", "antagonistSpawnIndex", _antagonistSpawnDefaults] call EPOCH_fnc_returnConfigEntryV2;
+
+{
+	_x params ["_spawnName","_spawnLimit"];
+	if (_spawnName isEqualTo "EPOCH_RyanZombie_1") then {
+		if (EPOCH_mod_Ryanzombies_Enabled) then {
+			EPOCH_spawnIndex pushBack _spawnName;
+			EPOCH_spawnLimits pushBack _spawnLimit;
+		};
+	} else {
+		EPOCH_spawnIndex pushBack _spawnName;
+		EPOCH_spawnLimits pushBack _spawnLimit;
+	};
+} forEach _spawnLimits;
 
 // default data if mismatch
 if !(EPOCH_playerSpawnArray isEqualTypeParams EPOCH_spawnIndex) then{

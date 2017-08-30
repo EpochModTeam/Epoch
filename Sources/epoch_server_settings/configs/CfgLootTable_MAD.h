@@ -1350,9 +1350,9 @@ class CfgLootTable_MAD
 				{ { "H_92_EPOCH", "item" }, 1 },
 				{ { "H_104_EPOCH", "item" }, 1 },
                 { { "H_105_EPOCH", "item" }, 1 },
-				{ { "wolf_mask_epoch", "item" }, 1 },
-				{ { "pkin_mask_epoch", "item" }, 1 },
-				{ { "clown_mask_epoch", "item" }, 1 }
+				{ { "wolf_mask_epoch", "item" }, 1, {"getDate", 1, "==", 10} }, // only available in october
+				{ { "pkin_mask_epoch", "item" }, 1, {"getDate", 1, "==", 10} }, // only available in october
+				{ { "clown_mask_epoch", "item" }, 1, {"getDate", 1, "==", 10} } // only available in october
 		};
 	};
 };

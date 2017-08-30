@@ -20,15 +20,6 @@ class CfgMainTable
 		lootMin = 1;
 		LootMax = 1;
 		tables[] = { "Food" };
-		antagonists[] = {
-				{ "Zombie", 40 },
-				{ "UAV", 15 },
-				{ "Cloak", 10 }, // Night = Epoch_Cloak_F, Day = Epoch_Sapper_F
-				{ "Sapper", 20 },
-                { "SapperG", 5 },
-				{ "SapperB", 5 },
-				{ "PHANTOM", 5 }
-		};
 	};
 	class Tree : Default
 	{
@@ -61,14 +52,6 @@ class CfgMainTable
 				{ "Equipment", 10 },
 				{ "Generic", 15 },
 				{ "GenericLarge", 18 }
-		};
-		antagonists[] = {
-				{ "Zombie", 45 },
-				{ "UAV", 15 },
-				{ "Cloak", 10 }, // Night = Epoch_Cloak_F, Day = Epoch_Sapper_F
-				{ "Sapper", 20 },
-				{ "SapperG", 5 },
-                { "SapperB", 5 }
 		};
 	};
 	class TrashSmall : Default

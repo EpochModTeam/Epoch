@@ -27,6 +27,13 @@ class CfgServerFunctions
 			class server_deleteGroup {};
 			class server_invitePlayer {};
 		};
+		class epoch_grouptemp {
+			class server_upgradeTempGroup {};
+			class server_updatePlayerTempGroup {};
+			class server_createTempGroup {};
+			class server_deleteTempGroup {};
+			class server_invitePlayerTempGroup {};
+		};
 		class epoch_bases {
 			class swapBuilding {};
 			class saveBuilding {};

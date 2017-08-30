@@ -46,21 +46,5 @@ if (alive _object) then {
 		};
 	};
 
-	if ((random 1) <= EPOCH_antagonistChanceTrash) then {
-		_nearPlayers = _posWH nearEntities[["Epoch_Male_F", "Epoch_Female_F"], 50];
-
-		if (!(_nearPlayers isEqualTo[])) then {
-			_target = selectRandom _nearPlayers;
-
-			_antagTable = ["Trash", "CfgMainTable", "antagonists"] call EPOCH_weightedArray;
-
-			_antagTableArray = _antagTable select 0;
-			if !(_antagTableArray isEqualTo[]) then{
-				_weightedArray = _antagTable select 1;
-				_triggerType = _antagTableArray select(selectRandom _weightedArray);
-				[_target, _triggerType] call EPOCH_server_triggerEvent;
-			};
-		};
-	};
 };
 true
