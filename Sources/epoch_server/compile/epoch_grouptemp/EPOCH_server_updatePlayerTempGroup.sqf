@@ -10,25 +10,28 @@
     Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
 
     Github:
-    https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server/compile/epoch_group/EPOCH_server_updatePlayerGroup.sqf
+    https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server/compile/epoch_grouptemp/EPOCH_server_updatePlayerTempGroup.sqf
 */
 //[[[cog import generate_private_arrays ]]]
-private ["_allPlayers","_contentArray","_found","_group","_memberrange","_modOrMember","_modOrMemberArray","_modOrMemberRevert","_removePlayerArray","_response","_selectedPlayerName"];
+private ["_allPlayers","_contentArray","_found","_group","_memberrange","_modOrMember","_modOrMemberArray","_modOrMemberRevert","_removePlayerArray","_response","_selectedPlayerName","_playerObj"];
 //[[[end]]]
 params [["_groupID",""],["_selectedPlayerUID",""],["_addOrRemove",false],["_modOrMemberVar",true],["_player",objnull],["_token",""]];
 
 if !([_player, _token] call EPOCH_server_getPToken) exitWith {};
 
-if (_groupID == "") exitWith{ diag_log format["Epoch: GROUP: No Group Selected %1", _this]; };
+if (_groupID == "") exitWith{ diag_log format["Epoch: GROUP: No Temp Group Selected %1", _this]; };
 
-diag_log format["Epoch: GROUP: Update %1", _this];
+diag_log format["Epoch: Temp GROUP: Update %1", _this];
 
 _modOrMember = if (_modOrMemberVar) then [{3},{4}];
 _modOrMemberRevert = if (_modOrMemberVar) then [{4},{3}];
+_contentArray = [];
+{
+	_contentArray = _x getVariable ["TEMPGROUPARRAY",[]];
+} forEach (allPlayers select {getPlayerUID _x == _groupID});
 
-_response = ["Group", _groupID] call EPOCH_fnc_server_hiveGETRANGE;
-if ((_response select 0) == 1 && (_response select 1) isEqualType []) then {
-	_contentArray = _response select 1;
+if !(_contentArray isEqualTo []) then {
+	
     _contentArray params ["_groupName","_leaderName","_groupSize","_modArray","_memberArray"];
     _allPlayers = allPlayers select {alive _x};
 
@@ -37,10 +40,10 @@ if ((_response select 0) == 1 && (_response select 1) isEqualType []) then {
 
 		{
 			_selectedPlayerName = if (alive _x) then {name _x};
-			if ((_x getVariable ["GROUP",""]) != _groupID) then {
+			if ((_x getVariable ["TEMPGROUP",""]) != _groupID) then {
 				_group = grpNull;
 				{
-					if ((_x getVariable["GROUP",""]) == _groupID) exitWith {
+					if ((_x getVariable["TEMPGROUP",""]) == _groupID) exitWith {
 						_group = group _x;
 					};
 				} forEach _allPlayers;
@@ -48,8 +51,8 @@ if ((_response select 0) == 1 && (_response select 1) isEqualType []) then {
 				if (isNull _group) then {
 					_group = createGroup [west, true];
 				};
-				_x setVariable ["GROUP", _groupID];
-				[["groupUidUpdate", _groupID], _x] call EPOCH_sendRemoteExecClient;
+				_x setVariable ["TEMPGROUP", _groupID];
+				[["tempGroupUidUpdate", _groupID], _x] call EPOCH_sendRemoteExecClient;
 				[_x] joinSilent _group;
 			};
 		} forEach (_allPlayers select {getPlayerUID _x == _selectedPlayerUID});
@@ -82,13 +85,26 @@ if ((_response select 0) == 1 && (_response select 1) isEqualType []) then {
 
 		//Remove
 		_found = false;
-
+		_group = grpNull;
 		{
-			_x setVariable ["GROUP", nil];
-			[_x] joinSilent (createGroup [west, true]);
-			[["resetGroup", true], _x] call EPOCH_sendRemoteExecClient;
-			[["groupUpdate", []], _x] call EPOCH_sendRemoteExecClient;
+			_permGroup = _x getVariable["GROUP",""];
+			_playerObj = _x;
 		} forEach (_allPlayers select {getPlayerUID _x == _selectedPlayerUID});
+		if !(_permGroup isEqualTo "")then
+		{
+			{
+				if ((_x getVariable["GROUP",""]) == _groupID) exitWith {
+					_group = group _x;
+				};
+			} forEach _allPlayers;
+		};
+		_playerObj setVariable ["TEMPGROUP", nil];
+		if (isNull _group) then {
+			_group = createGroup [west, true];
+		};
+		[_playerObj] joinSilent _group;
+		[["resetTempGroup", true], _playerObj] call EPOCH_sendRemoteExecClient;
+		[["tempGroupUpdate", []], _playerObj] call EPOCH_sendRemoteExecClient;
 		{
 			if (_x select 0 == _selectedPlayerUID) exitWith {
 				_memberArray deleteAt _forEachIndex;
@@ -114,9 +130,7 @@ if ((_response select 0) == 1 && (_response select 1) isEqualType []) then {
 	};
 
 	{
-		[["groupUpdate", _contentArray], _x] call EPOCH_sendRemoteExecClient;
-	} forEach (_allPlayers select {(_x getVariable["GROUP", ""]) == _groupID});
+		[["tempGroupUpdate", _contentArray], _x] call EPOCH_sendRemoteExecClient;
+	} forEach (_allPlayers select {(_x getVariable["TEMPGROUP", ""]) == _groupID});
 
-	// Save Group Data
-	["Group", _groupID, _contentArray] call EPOCH_fnc_server_hiveSET;
 };

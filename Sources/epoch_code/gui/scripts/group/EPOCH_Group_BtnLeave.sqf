@@ -16,7 +16,6 @@
 private ["_BtnLeave","_ret","_txt"];
 //[[[end]]]
 disableSerialization;
-_BtnLeave = (findDisplay -1300) displayCtrl 31;
 Epoch_my_Group params [
     ["_groupName",""],
     ["_leaderName",""],
@@ -25,7 +24,6 @@ Epoch_my_Group params [
     ["_memberArray",[]]
 ];
 if (getPlayerUID player == Epoch_my_GroupUID) then {
-	_BtnLeave ctrlSetText "Delete Group";
 	_txt = format["Do you want to delete your Group called %1?",_groupName];
 	_txt spawn {
 		_ret = [_this,"Epoch Group Menu",true,true] call BIS_fnc_GUImessage;

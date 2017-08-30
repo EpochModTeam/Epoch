@@ -10,7 +10,7 @@
     Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
 
     Github:
-    https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_code/gui/group/EPOCH_Group_onLoad.sqf
+    https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_code/gui/groupTemp/EPOCH_tempGroup_onLoad.sqf
 */
 //[[[cog import generate_private_arrays ]]]
 private ["_BtnInvite","_GroupMemberList","_InvitePlayerCombo","_currentMaxMember","_display","_found","_index","_myPlayerUID","_onlinePUID","_picture","_playerIsLeader","_playerIsMod","_playerUID","_players"];
@@ -22,7 +22,7 @@ _BtnInvite = _display displayCtrl 30;
 _GroupMemberList = _display displayCtrl 40;
 _InvitePlayerCombo = _display displayCtrl 41;
 
-Epoch_my_Group params [
+Epoch_my_tempGroup params [
     ["_groupName",""],
     ["_leaderName",""],
     ["_groupSize",0],
@@ -32,10 +32,10 @@ Epoch_my_Group params [
 
 _currentMaxMember = count(_modArray) + count(_memberArray) + 1;
 
-(_display displayCtrl 21) ctrlSetText format["Group Name: %1 (%2/%3 Slots)",_groupName,_currentMaxMember,_groupSize];
+(_display displayCtrl 21) ctrlSetText format["Temp Name: %1 (%2/%3 Slots)",_groupName,_currentMaxMember,_groupSize];
 
 _myPlayerUID = getPlayerUID player;
-_playerIsLeader = _myPlayerUID == Epoch_my_GroupUID;
+_playerIsLeader = _myPlayerUID == Epoch_my_tempGroupUID;
 _playerIsMod = {_x select 0 == _myPlayerUID}count (_modArray) > 0;
 (_display displayCtrl 32) ctrlEnable false;
 (_display displayCtrl 33) ctrlEnable false;
@@ -67,25 +67,11 @@ if (_currentMaxMember < _groupSize) then {
 		_InvitePlayerCombo lbSetCurSel 0;
 		lbsort _InvitePlayerCombo;
 	};
-} else {
-	if (_playerIsLeader || _playerIsMod) then {
-		_found = EPOCH_group_upgrade_lvl find _currentMaxMember;
-		if (count EPOCH_group_upgrade_lvl >= (_found+3)) then {
-			_BtnInvite ctrlSetText format ["Upgrade +%1 Slots for %2 Krypto",abs (_currentMaxMember-(EPOCH_group_upgrade_lvl select (_found+2))),EPOCH_group_upgrade_lvl select (_found+3)];
-		} else {
-			_BtnInvite ctrlSetText format ["No Upgrade Available!"];
-			_BtnInvite ctrlEnable false;
-		};
-	} else {
-		_BtnInvite ctrlSetText format ["You need to be the Owner or a Mod to Upgrade the group!"];
-		_BtnInvite ctrlEnable false;
-	};
 };
 
-if (_playerIsLeader) then {
-	(findDisplay -1300) displayCtrl 31 ctrlSetText "Delete Group";
+if (getPlayerUID player == Epoch_my_tempGroupUID) then {
+	(findDisplay -1300) displayCtrl 31 ctrlSetText "Delete TempGrp";
 };
-
 
 {
 	_picture = EPOCH_group_level_img select _forEachIndex; //0 = lead / 1 = mod / 2 = member
@@ -102,7 +88,7 @@ if (_playerIsLeader) then {
 	}forEach _x;
 }forEach
 [
-	[[Epoch_my_GroupUID,_leaderName]],
+	[[Epoch_my_tempGroupUID,_leaderName]],
 	_modArray,
 	_memberArray
 ];

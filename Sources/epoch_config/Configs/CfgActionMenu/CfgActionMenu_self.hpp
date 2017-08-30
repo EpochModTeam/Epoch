@@ -34,12 +34,26 @@ class player_inspect
 	icon = "x\addons\a3_epoch_code\Data\UI\buttons\player_inspect.paa";
 	tooltip = "Examine";
 };
-class player_group_menu
+class Groups
 {
 	condition = "true";
-	action = "call EPOCH_Inventory_Group;";
+	action = "";
 	icon = "x\addons\a3_epoch_code\Data\UI\buttons\group_menu_ca.paa";
-	tooltip = "Group Menu";
+	tooltip = "Groups Menu";
+	class Group
+	{
+		condition = "true";
+		action = "call EPOCH_Inventory_Group;";
+		icon = "perm_group_menu_ca.paa";//"x\addons\a3_epoch_code\Data\UI\buttons\perm_group_menu_ca.paa";
+		tooltip = "Perm Group Menu";
+	};
+	class TempGroup
+	{
+		condition = "true";
+		action = "call EPOCH_Inventory_TempGroup;";
+		icon = "temp_group_menu_ca.paa";//"x\addons\a3_epoch_code\Data\UI\buttons\temp_group_menu_ca.paa";
+		tooltip = "Temp Group Menu";
+	};
 };
 class player_group_requests
 {
@@ -47,6 +61,13 @@ class player_group_requests
 	action = "call EPOCH_Inventory_iGroup;";
 	icon = "x\addons\a3_epoch_code\Data\UI\buttons\group_requests_ca.paa";
 	tooltip = "Group Requests";
+};
+class player_tempGroup_requests
+{
+	condition = "!(Epoch_invited_tempGroupUIDs isEqualTo[])";
+	action = "call EPOCH_Inventory_itempGroup;";
+	icon = "x\addons\a3_epoch_code\Data\UI\buttons\group_requests_ca.paa";
+	tooltip = "Temp Group Requests";
 };
 
 class base_mode_enable
