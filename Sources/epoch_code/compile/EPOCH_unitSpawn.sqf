@@ -13,7 +13,7 @@
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_code/compile/EPOCH_unitSpawn.sqf
 */
 //[[[cog import generate_private_arrays ]]]
-private ["_aiskill","_arrSkills","_arrUnits","_arrVals","_bomb","_config","_currentLimit","_disableAI","_driver","_grp","_index","_jammerRange","_jammers","_loop","_minAISkill","_nonJammer","_nonTrader","_nonTraderAIRange","_pos","_restricted","_sapperHndl","_sapperNum","_spawnLimit","_targetPos","_unit","_units"];
+private ["_aiskill","_arrSkills","_arrUnits","_arrVals","_bomb","_config","_currentLimit","_disableAI","_driver","_grp","_index","_jammerRange","_jammers","_loop","_minAISkill","_missionConfig","_nonJammer","_nonTrader","_nonTraderAIRange","_pos","_restricted","_sapperHndl","_sapperNum","_spawnLimit","_targetPos","_unit","_units"];
 //[[[end]]]
 params ["_unitClass",["_trgt",player],["_doVariable",false],["_unitCount",1],["_extraData",[]] ];
 
@@ -162,20 +162,21 @@ switch _unitClass do {
 		_grp = createGroup [RESISTANCE, true];
 		_grp setBehaviour "COMBAT";
 		_grp setCombatMode "RED";
-        _minAISkill = getNumber (getMissionConfig "CfgEpochSoldier" >> "minAISkill");
-        _arrUnits = getArray (getMissionConfig "CfgEpochSoldier" >> "unitTypes");
+		_missionConfig = getMissionConfig "CfgEpochSoldier";
+        _minAISkill = getNumber (_missionConfig >> "minAISkill");
+        _arrUnits = getArray (_missionConfig >> "unitTypes");
         _arrSkills = ["aimingAccuracy","aimingShake","aimingSpeed","endurance","spotDistance","spotTime","courage","reloadSpeed","commanding","general"];
         _arrVals = [
-            getNumber (getMissionConfig "CfgEpochSoldier" >> "maxAimingAccuracy"),
-            getNumber (getMissionConfig "CfgEpochSoldier" >> "maxAimingShake"),
-            getNumber (getMissionConfig "CfgEpochSoldier" >> "maxAimingSpeed"),
-            getNumber (getMissionConfig "CfgEpochSoldier" >> "maxEndurance"),
-            getNumber (getMissionConfig "CfgEpochSoldier" >> "maxSpotDistance"),
-            getNumber (getMissionConfig "CfgEpochSoldier" >> "maxSpotTime"),
-            getNumber (getMissionConfig "CfgEpochSoldier" >> "maxCourage"),
-            getNumber (getMissionConfig "CfgEpochSoldier" >> "maxReloadSpeed"),
-            getNumber (getMissionConfig "CfgEpochSoldier" >> "maxCommanding"),
-            getNumber (getMissionConfig "CfgEpochSoldier" >> "maxGeneral")
+            getNumber (_missionConfig >> "maxAimingAccuracy"),
+            getNumber (_missionConfig >> "maxAimingShake"),
+            getNumber (_missionConfig >> "maxAimingSpeed"),
+            getNumber (_missionConfig >> "maxEndurance"),
+            getNumber (_missionConfig >> "maxSpotDistance"),
+            getNumber (_missionConfig >> "maxSpotTime"),
+            getNumber (_missionConfig >> "maxCourage"),
+            getNumber (_missionConfig >> "maxReloadSpeed"),
+            getNumber (_missionConfig >> "maxCommanding"),
+            getNumber (_missionConfig >> "maxGeneral")
         ];
         for "_i" from 0 to (_unitCount - 1) do {
         	_unit = _grp createUnit[selectRandom _arrUnits, _pos, [], 0, "FORM"];
