@@ -17,15 +17,14 @@ events[] = {
     // { 1200, "MessageServer", 0, 1},
     { 2700, "AirDrop", 0 , 1},
     { 2400, "EarthQuake", 0 , 1},
+	{ 2700, "Satellite", 0 , 1},
     { 900, "ChangeWeather", 1 , 1},
     { 1200, "ContainerSpawner", 0 , 1},
     { 300, "PlantSpawner", 0 , 1} //No comma on last Entry
 };
 
 // Antagonists
-antagonistChanceTrash = 0.09; //9% chance when player loot a trash object
 antagonistChancePDeath = 0.33; //33% chance when player was killed from a other player (selfkill doesn't count)
-antagonistChanceLoot = 0.09; //9% chance when player click "SEARCH" on a loot object
 
 // Player Related
 cloneCost = 100; 					// debt incurred on player death
@@ -89,6 +88,7 @@ forcedLootSpawnTable = ""; // leave blank for default. Options: "CfgLootTable","
 
 // Markers
 showEarthQuakes = "true"; // show mineral viens caused by earthquakes
+showSatellites = "true"; // show crashed Satellites
 showShippingContainers = "true"; // Show location of events based loots (plants, shipping container, Carnival)
 SHOW_TRADERS = "true"; // Show locations of traders
 SHOW_JAMMERS = "false"; // Shows location of base jammers
