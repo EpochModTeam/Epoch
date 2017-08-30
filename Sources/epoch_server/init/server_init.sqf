@@ -197,7 +197,7 @@ if (_staticDateTime isEqualto []) then {
     _response = "epochserver" callExtension "510";
     if (_response != "") then {
         diag_log format ["Epoch: Set Real Time: %1", _response];
-        _date = call compile _response;
+        _date = parseSimpleArray _response;
         _date resize 5;
         _date set[0, (_date select 0) + 21];
         _date set[3, (_date select 3) + _timeDifference];
