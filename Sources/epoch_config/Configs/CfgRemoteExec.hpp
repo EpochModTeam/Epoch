@@ -321,7 +321,7 @@ class CfgRemoteExec
             allowedTargets = 2;
             jip = 0;
         };
-		class EPOCH_server_invitePlayerTemp
+		class EPOCH_server_invitePlayerTempGroup
 		{
             allowedTargets = 2;
             jip = 0;

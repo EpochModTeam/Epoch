@@ -47,7 +47,7 @@ if (_playerUID == Epoch_my_tempGroupUID || {_x select 0 == _playerUID}count (_mo
                 params ["_playerUID","_txt","_groupName"];
 				_ret = [_txt,"Epoch Temp Group Menu",true,true] call BIS_fnc_GUImessage;
 				if (_ret) then {
-					[_playerUID,Epoch_my_tempGroupUID,_groupName,player,Epoch_personalToken] remoteExec ["EPOCH_server_invitePlayerTemp",2];
+					[_playerUID,Epoch_my_tempGroupUID,_groupName,player,Epoch_personalToken] remoteExec ["EPOCH_server_invitePlayerTempGroup",2];
 				};
 			};
 		};

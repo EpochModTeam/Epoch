@@ -32,7 +32,7 @@ class CfgServerFunctions
 			class server_updatePlayerTempGroup {};
 			class server_createTempGroup {};
 			class server_deleteTempGroup {};
-			class server_invitePlayerTemp {};
+			class server_invitePlayerTempGroup {};
 		};
 		class epoch_bases {
 			class swapBuilding {};
