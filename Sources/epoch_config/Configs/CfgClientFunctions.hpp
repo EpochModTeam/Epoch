@@ -295,11 +295,31 @@ class CfgClientFunctions
             class iGroup_refresh {};
             class Group_update {};
         };
+		 class groupTemp
+        {
+            file = "epoch_code\gui\scripts\groupTemp";
+			class tempGroup_invitePlayer {};
+            class tempGroup_BtnMod {};
+            class tempGroup_BtnInvite {};
+            class tempGroup_onLoad {};
+            class tempGroup_List {};
+            class tempGroup_Combo {};
+            class tempGroup_BtnLeave {};
+            class tempGroup_BtnKick {};
+            class cTempGroup_onLoad {};
+            class cTempGroup_BtnCreate {};
+            class iTempGroup_acceptInvite {};
+            class iTempGroup_onLoad {};
+            class iTempGroup_refresh {};
+            class tempGroup_update {}; 
+		};
         class gui_inventory
         {
             file = "epoch_code\gui\scripts\inventory";
             class Inventory_Group {};
             class Inventory_iGroup {};
+			class Inventory_tempGroup {};
+            class Inventory_itempGroup {};
         };
         class gui_missions
         {
