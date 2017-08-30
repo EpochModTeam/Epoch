@@ -43,7 +43,6 @@ if (_groupID != "") then {
 		[_x] joinSilent _group;
 	} forEach (allPlayers select {(_x getVariable["TEMPGROUP", ""]) == _groupID});
 
-	//_return = ["TempGroup", _groupID] call EPOCH_fnc_server_hiveDEL;
 	[["tempGroupUpdate", []], _player] call EPOCH_sendRemoteExecClient;
 	_return = true;
 };

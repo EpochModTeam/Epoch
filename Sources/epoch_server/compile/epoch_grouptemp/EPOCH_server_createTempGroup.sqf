@@ -49,8 +49,6 @@ if (_groupName != "") then {
 	_leader setVariable ["TEMPGROUP", _groupID];
 	_leader setVariable ["TEMPGROUPARRAY",_contentArray];
 	
-	// Save Group Data
-	//["TempGroup", _groupID, _contentArray] call EPOCH_fnc_server_hiveSET;
 	_return = true;
 };
 _return

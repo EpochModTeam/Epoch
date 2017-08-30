@@ -29,9 +29,7 @@ _contentArray = [];
 {
 	_contentArray = _x getVariable ["TEMPGROUPARRAY",[]];
 } forEach (allPlayers select {getPlayerUID _x == _groupID});
-diag_log format["eXpochDEBUG:1 _contentArray:%1",_contentArray];
- 
-//_response = ["TempGroup", _groupID] call EPOCH_fnc_server_hiveGETRANGE;
+
 if !(_contentArray isEqualTo []) then {
 	
     _contentArray params ["_groupName","_leaderName","_groupSize","_modArray","_memberArray"];
@@ -135,6 +133,4 @@ if !(_contentArray isEqualTo []) then {
 		[["tempGroupUpdate", _contentArray], _x] call EPOCH_sendRemoteExecClient;
 	} forEach (_allPlayers select {(_x getVariable["TEMPGROUP", ""]) == _groupID});
 
-	// Save Group Data
-	//["TempGroup", _groupID, _contentArray] call EPOCH_fnc_server_hiveSET;
 };
