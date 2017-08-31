@@ -22,7 +22,7 @@ if !([_player, _token] call EPOCH_server_getPToken) exitWith{};
 _return = false;
 _groupID = getPlayerUID _player;
 if (_groupID != "") then {
-
+	_allPlayers = allPlayers select {alive _x};
 	{
 		_group = grpNull;
 		_permGroup = _x getVariable["GROUP",""];
