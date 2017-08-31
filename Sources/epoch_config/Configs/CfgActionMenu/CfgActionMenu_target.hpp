@@ -504,3 +504,40 @@ class VehMaintanance
 		};
 	};
 };
+
+//Groups
+class Groups
+{
+	condition = "dyna_isPlayer";
+	action = "";
+	icon = "x\addons\a3_epoch_code\Data\UI\buttons\group_menu_ca.paa";
+	tooltip = "Groups Menu";
+	class Group
+	{
+		condition = "dyna_isPlayer";
+		action = "call EPOCH_Inventory_Group;";
+		icon = "x\addons\a3_epoch_code\Data\UI\buttons\perm_group_menu_ca.paa";
+		tooltip = "Perm Group Menu";
+	};
+	class TempGroup
+	{
+		condition = "dyna_isPlayer";
+		action = "call EPOCH_Inventory_TempGroup;";
+		icon = "x\addons\a3_epoch_code\Data\UI\buttons\temp_group_menu_ca.paa";
+		tooltip = "Temp Group Menu";
+	};
+};
+class player_group_requests
+{
+	condition = "dyna_isPlayer && !(Epoch_invited_GroupUIDs isEqualTo[])";
+	action = "call EPOCH_Inventory_iGroup;";
+	icon = "x\addons\a3_epoch_code\Data\UI\buttons\group_requests_ca.paa";
+	tooltip = "Group Requests";
+};
+class player_tempGroup_requests
+{
+	condition = "dyna_isPlayer && !(Epoch_invited_tempGroupUIDs isEqualTo[])";
+	action = "call EPOCH_Inventory_itempGroup;";
+	icon = "x\addons\a3_epoch_code\Data\UI\buttons\group_requests_ca.paa";
+	tooltip = "Temp Group Requests";
+};
