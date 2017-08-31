@@ -43,10 +43,8 @@ if !(_contentArray isEqualTo []) then {
 			if ((_x getVariable ["TEMPGROUP",""]) != _groupID) then {
 				_group = grpNull;
 				{
-					if ((_x getVariable["TEMPGROUP",""]) == _groupID) exitWith {
-						_group = group _x;
-					};
-				} forEach _allPlayers;
+					_group = group _x;
+				} forEach (_allPlayers select {(_x getVariable["TEMPGROUP", ""]) == _groupID});
 
 				if (isNull _group) then {
 					_group = createGroup [west, true];
@@ -56,6 +54,7 @@ if !(_contentArray isEqualTo []) then {
 				[_x] joinSilent _group;
 			};
 		} forEach (_allPlayers select {getPlayerUID _x == _selectedPlayerUID});
+		
 
 		// find player name from DB
 		if (_selectedPlayerName == "Dead Player") then {
@@ -86,6 +85,7 @@ if !(_contentArray isEqualTo []) then {
 		//Remove
 		_found = false;
 		_group = grpNull;
+		_permGroup = "";
 		{
 			_permGroup = _x getVariable["GROUP",""];
 			_playerObj = _x;
@@ -93,10 +93,8 @@ if !(_contentArray isEqualTo []) then {
 		if !(_permGroup isEqualTo "")then
 		{
 			{
-				if ((_x getVariable["GROUP",""]) == _groupID) exitWith {
-					_group = group _x;
-				};
-			} forEach _allPlayers;
+				_group = group _x;
+			} forEach (_allPlayers select {(_x getVariable["GROUP", ""]) == _permGroup});
 		};
 		_playerObj setVariable ["TEMPGROUP", nil];
 		if (isNull _group) then {
