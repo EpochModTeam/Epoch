@@ -3,7 +3,7 @@ false call EPOCH_pushCustomVar;
 _spawnChance = ((EPOCH_playerNuisance + EPOCH_playerSoiled)/2) max 1;
 // add more antagonist spawn chances
 if (random _antagonistRndChance < _spawnChance) then {
-	(selectRandomWeighted _antagonistChances) call EPOCH_unitSpawnIncrease;
+	(_antagonistChances call BIS_fnc_selectRandomWeighted) call EPOCH_unitSpawnIncrease;
 };
 // diag_log format["DEBUG: _spawnChance %1",_spawnChance];
 
