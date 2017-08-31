@@ -35,17 +35,17 @@ if(_return isEqualTo[]) then {
 				// check extra logic
 				_value = switch _extraLogicType do {
 					case "getDate": {
-						date select _extraLogicName
+						date select _extraLogicName;
 					};
 					case "getSunorMoon": {
-						sunOrMoon
+						sunOrMoon;
 					};
 					case "getMissionNamespaceVariable": {
-						missionNamespace getVariable [_extraLogicName, _extraLogicData]
+						missionNamespace getVariable [_extraLogicName, _extraLogicData];
 					};
 					// not really needed
 					default {
-						_extraLogicName
+						_extraLogicName;
 					};
 				};
 				_allow = [_value,_extraLogicCond,_extraLogicData] call EPOCH_fnc_arrayToLogic;
