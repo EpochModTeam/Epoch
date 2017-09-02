@@ -894,7 +894,7 @@ class FSM
                          "	player setHitIndex [_forEachIndex, _x];" \n
                          "}forEach _hitpoints;" \n
                          "" \n
-                         "true call EPOCH_fnc_Weather;" \n
+                         "" \n
                          "[5,100] spawn EPOCH_niteLight;" \n
                          "" \n
                          "if (_debug) then {" \n

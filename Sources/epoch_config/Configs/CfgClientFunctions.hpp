@@ -115,7 +115,6 @@ class CfgClientFunctions
 			class fnc_playerDeath {};
 			class fnc_playerFired {};
 			class fnc_isInsideBuilding {};
-			class fnc_Weather {};
 			class fnc_findSafePos {};
 			class fnc_addItemOverflow {};
 			class pushCustomVar {};

@@ -16,6 +16,8 @@ if (isNil "EPOCH_display_setup_complete") then {
     call epoch_dynamicHUD_start;
 };
 
+
+
 _prevEquippedItem = [];
 _damagePlayer = damage player;
 _isOnFoot = isNull objectParent player;
@@ -121,6 +123,11 @@ _lootBubble = {
 		};
 	};
 	EPOCH_lastPlayerPos = _playerPos;
+};
+
+// init weather temperature var if not already set
+if (isNil "EPOCH_CURRENT_WEATHER") then {
+	EPOCH_CURRENT_WEATHER = 75;
 };
 
 _cursorTarget = objNull;
