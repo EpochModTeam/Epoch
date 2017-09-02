@@ -69,7 +69,7 @@ if !(false call EPOCH_crafting_checkResources) exitWith {};
 			};
 		} forEach _itemRecipeItems;
 
-		_nearByBench = nearestObjects [position player,["WorkBench_EPOCH"],3];
+		_nearByBench = nearestObjects [player,["WorkBench_EPOCH"],3];
 
 		if (!(_nearByBench isEqualTo []) && (_needBench > 0)) then { //adds item on top of bench if bench was required
 			(_nearByBench select 0) addItemCargoGlobal [_item,1];

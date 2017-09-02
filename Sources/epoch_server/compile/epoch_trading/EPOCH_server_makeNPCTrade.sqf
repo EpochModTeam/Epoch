@@ -172,9 +172,9 @@ if (_slot != -1) then {
 									if !(EPOCH_VehicleSlots isEqualTo[])  then {
 										_position = getPosATL _player;
 
-										_helipad = nearestObjects[_position, ["Land_HelipadEmpty_F", "Land_HelipadCircle_F"], 100];
+										_helipad = nearestObjects[_player, ["Land_HelipadEmpty_F", "Land_HelipadCircle_F"], 100];
 										_helipads = [];
-										_smoke = nearestObject[_position, "SmokeShell"];
+										_smoke = nearestObject[_player, "SmokeShell"];
 										if (!isNull _smoke) then {
 											_helipad pushBack _smoke;
 										};
@@ -276,7 +276,7 @@ if (_slot != -1) then {
 
 								if (_item isKindOf "Bag_Base") then {
 									_wH = objNull;
-									_nearByHolder = nearestObjects [position _player,["groundWeaponHolder"],3];
+									_nearByHolder = nearestObjects [_player,["groundWeaponHolder"],3];
 									if (_nearByHolder isEqualTo []) then {
 									  _wHPos = _player modelToWorld [0,1,0];
 									  if (surfaceIsWater _wHPos) then {

@@ -20,7 +20,7 @@ params ["_item","_player",["_token","",[""]] ];
 if !([_player,_token] call EPOCH_server_getPToken) exitWith {};
 if (_item isKindOf "Bag_Base") then {
 	_wH = objNull;
-	_nearByHolder = nearestObjects [position _player,["groundWeaponHolder"],3];
+	_nearByHolder = nearestObjects [_player,["groundWeaponHolder"],3];
 	if (_nearByHolder isEqualTo []) then {
 		_wHPos = _player modelToWorld [0,1,0];
 		if (surfaceIsWater _wHPos) then {

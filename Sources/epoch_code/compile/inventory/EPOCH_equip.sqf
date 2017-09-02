@@ -6,23 +6,23 @@
 	Description: Equips or un-equips item (if equipped) instantly. Item has to exist in the inventory.
 				to switch weapons slowly use below in your code:
 				player playAction "reloadMagazine";
-				
+
 				_item - className
 				_drop - drop on ground if inventory full, weapons will be stripped off attachments
 						weapons stripped because attachments can only be added while weapon is equipped.
 				_forceEquip - disables un-equip and forces new item to be equipped at all times
-					
+
     Licence:
     Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
 
     Github:
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_code/compile/inventory/EPOCH_equip.sqf
 
-	Usage: 
+	Usage:
 	[_item, false] call epoch_equip; //don't drop item if inventory full. Does not equip requested item if another item already equipped, instead un-equips existing one.
 	[_item, true,true] call epoch_equip; //drops item if not enough space. Removes existing weapon and equips new one.
-	
-	RETURNS: 	
+
+	RETURNS:
 				0 - fail, item not provided
 				1 - success
 				2 - success, but item dropped on ground.
@@ -55,7 +55,7 @@ _fnc_dropItem = {
 	{
 		_wH = objNull;
 		if (isNil "_nearByHolder") then {
-			_nearByHolder = nearestObjects [position player,["groundWeaponHolder"],3];
+			_nearByHolder = nearestObjects [player,["groundWeaponHolder"],3];
 		};
 		if (_nearByHolder isEqualTo []) then {
 			_wHPos = player modelToWorld [0,1,0];
@@ -75,7 +75,7 @@ _fnc_dropItem = {
 _fnc_findItemInContainers = {
 	private ["_item","_container","_index","_found","_currItem"];
 	params ["_item"];
-	
+
 	_container = 0;
 	_index = 0;
 	_found = false;
@@ -95,15 +95,15 @@ _fnc_findItemInContainers = {
 		};
 		if _found exitWith {};
 	} forEach [_uniformItems,_vestItems,_bPackItems];
-	
+
 	[_container,_index,_found]
-};	
+};
 
 _fnc_moveWeaponFromContainer = {
 	private ["_idx","_container","_sIdx","_dIdx"]; //_dIdx can only be 0, 1 and 2
-	params ["_idx","_dIdx"]; 
+	params ["_idx","_dIdx"];
 	_idx params ["_container","_sIdx"];
-	
+
 	//copy old entry
 	_temp = ((_loadout select (_container + 3)) select 1) select _sIdx select 0;
 	//delete old entry
@@ -116,14 +116,14 @@ _fnc_moveWeaponFromContainer = {
 
 _fnc_MoveWeaponToContainer = {
 	private ["_container","_sIdx"]; //_sIdx can only be 0, 1 and 2
-	params ["_container","_sIdx"]; 
-	
-	/* 
+	params ["_container","_sIdx"];
+
+	/*
 	//Delete this block if no issues.
 	//Commented out because increasing index alone is not enough due to unique attachement placements or ammo size
 	_exists = _item call _fnc_findItemInContainers;
 	_exists params ["_container","_idx","_found"];
-	
+
 	if _found then {
 		_cnt = ((_loadout select (_container + 3)) select 1) select _idx select 1;
 		((_loadout select (_container + 3)) select 1) select _idx set [1,_cnt + 1];
@@ -134,7 +134,7 @@ _fnc_MoveWeaponToContainer = {
 
 	((_loadout select (_container + 3)) select 1) append [[_loadout select _sIdx,1]]; //cut out from above comment, looks like appending alone works great
 	_loadout set [_sIdx,[]];
-	
+
 	player setUnitLoadout _loadout;
 };
 
@@ -150,13 +150,13 @@ _fnc_canMoveToContainer = {
 _fnc_dropEquipWeapon = {
 	private ["_equipped","_slot"];
 	params ["_equipped","_slot"];
-	
+
 	if (!_itemInInventory && (_item != _equipped)) exitWith {_return = 3}; //Item not found
-	
+
 	if (_equipped != "") then { //something equipped already
 		if (player canAdd _equipped) then { //can we move it?
 			_container = _equipped call _fnc_canMoveToContainer;
-			
+
 			if (_container != 4) then {
 				[_container,_slot] call _fnc_MoveWeaponToContainer;
 				_return = 1;
@@ -193,13 +193,13 @@ _fnc_dropEquipWeapon = {
 _fnc_dropAssign= {
 	private ["_equipped"];
 	params ["_equipped"];
-	
+
 	if (!_itemInInventory && (_item != _equipped)) exitWith {_return = 3};
-	
+
 	if (_equipped != "") then {
 		if (player canAdd _equipped) then {
 			_container = _equipped call _fnc_canMoveToContainer;
-			
+
 			if (_container != 4) then {
 				player unassignItem _equipped;
 				_return = 1;
@@ -222,8 +222,8 @@ _fnc_dropAssign= {
 };
 _fnc_MoveShellToContainer = {
 	private ["_container"];
-	params ["_container"]; 
-	
+	params ["_container"];
+
 	_temp = _loadout select 0 select 5;
 	_temp2 = [(_temp select 0), 1, (_temp select 1)];
 	if ((_temp select 1) > 0) then { //only move if ammo not empty, delete otherwise
@@ -235,12 +235,12 @@ _fnc_MoveShellToContainer = {
 
 _fnc_moveShellFromContainer = {
 	private ["_idx","_container","_sIdx"]; //_dIdx can only be 0, 1 and 2
-	params ["_idx"]; 
+	params ["_idx"];
 	_idx params ["_container","_sIdx","_found"];
-	
+
 	if (_found) then {
 		_temp = ((_loadout select (_container + 3)) select 1) select _sIdx;
-		
+
 		if ((_temp select 1) > 1) then {
 			_cnt = (((_loadout select (_container + 3)) select 1) select _sIdx) select 1;
 			(((_loadout select (_container + 3)) select 1) select _sIdx) set [1,_cnt - 1];
@@ -255,13 +255,13 @@ _fnc_moveShellFromContainer = {
 _fnc_dropEquipShells = {
 	private ["_equipped"];
 	params ["_equipped"];
-	
+
 	if (!_itemInInventory && (_item != _equipped)) exitWith {_return = 3};
-	
+
 	if (_equipped != "") then {
 		if (player canAdd _equipped) then {
 			_container = _equipped call _fnc_canMoveToContainer;
-			
+
 			if (_container != 4) then {
 				[_container] call _fnc_MoveShellToContainer;
 				_return = 1;
@@ -287,11 +287,11 @@ _fnc_dropEquipShells = {
 		_return = 1;
 	};
 	_muzzle = (getArray (configFile >> "CfgWeapons" >> (primaryWeapon player) >> "muzzles"));
-	player selectWeapon (_muzzle select 1); 
+	player selectWeapon (_muzzle select 1);
 };
 _fnc_findAccessorySlot = {
 		_item = toLower _item;
-		
+
 		private ["_found","_slot","_accessory","_compatibleMuzzles","_compatibleCows","_compatiblePointers","_compatibleBipods"];
 		_slot = 0;
 		_accessory = 0;
@@ -315,23 +315,23 @@ _fnc_findAccessorySlot = {
 			for "_i" from 0 to (count _compatibleBipods) do {
 				_compatibleBipods set [_i,toLower (_compatibleBipods select _i)];
 			};
-			
+
 			if (_item in _compatibleMuzzles) exitWith {_found = true; _accessory = 1};
 			if (_item in _compatibleCows) exitWith {_found = true; _accessory = 3};
 			if (_item in _compatiblePointers) exitWith {_found = true; _accessory = 2};
 			if (_item in _compatibleBipods) exitWith {_found = true; _accessory = 6};
 		} forEach [(primaryWeapon player),(secondaryWeapon player),(handgunWeapon player)];
-		
+
 		[_found,_slot,_accessory]
 };
 
 _fnc_dropEquipAccessories = {
-	
+
 	_properties = call _fnc_findAccessorySlot;
 	_properties params ["_found","_slot","_accessory"];
-	
+
 	if !_found exitWith {_return = 5};
-	
+
 	_itemsPlayer = (primaryWeaponItems player + secondaryWeaponItems player + handgunItems player);
 	for "_i" from 0 to (count _itemsPlayer) do {
 		_itemsPlayer set [_i,toLower (_itemsPlayer select _i)];
@@ -410,7 +410,7 @@ switch _slot do {
 					"Use [Right Ctrl] + M to toggle GPS" call epoch_message;
 				};
 				case "ItemMap":
-				{	
+				{
 					openMap true;
 				};
 				case "ItemCompass":
@@ -455,7 +455,7 @@ switch _slot do {
 		private ["_allMuzzles","_muzzle","_found","_mags"];
 			if (_itemInInventory) then {
 			_allMuzzles = getArray (configFile >> "CfgWeapons" >> "Put" >> "Muzzles");
-			
+
 			_muzzle = "";
 			_found = false;
 			{
@@ -466,7 +466,7 @@ switch _slot do {
 				} forEach _mags;
 				if (_found) exitWith {};
 			} forEach _allMuzzles;
-			
+
 			player playActionNow "PutDown";
 			player selectWeapon _muzzle;
 			player fire [_muzzle, _muzzle, _item];
@@ -474,7 +474,7 @@ switch _slot do {
 		};
 	};
 	case 16: //Grenade launcher shells.
-	{	
+	{
 		_equipped = (primaryWeaponMagazine player) param [1,""];
 		_equipped call _fnc_dropEquipShells;
 	};

@@ -38,9 +38,9 @@ for "_i" from 1 to _maxStorageLimit do {
 
 			// legacy change class
 			_class = switch (_class_raw) do {
-			    case "LockBoxProxy_EPOCH": { "LockBox_EPOCH" };
-			    case "SafeProxy_EPOCH": { "Safe_EPOCH" };
-			    default { _class_raw };
+				case "LockBoxProxy_EPOCH": { "LockBox_EPOCH" };
+				case "SafeProxy_EPOCH": { "Safe_EPOCH" };
+				default { _class_raw };
 			};
 
 			if !(_inventory isEqualType []) then { _inventory = []; };

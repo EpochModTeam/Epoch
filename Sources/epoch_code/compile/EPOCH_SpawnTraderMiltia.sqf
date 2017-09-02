@@ -13,10 +13,10 @@
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_code/compile/EPOCH_SpawnTraderMiltia.sqf
 */
 //[[[cog import generate_private_arrays ]]]
-private ["_allpositions","_grp","_nrBuilds","_rndHouse","_startPos","_trgt","_unit"];
+private ["_allpositions","_grp","_nrBuilds","_rndHouse","_startPos","_unit"];
 //[[[end]]]
-_trgt = player;
-_nrBuilds = nearestObjects [getPosATL _trgt,["house"],50];
+
+_nrBuilds = nearestObjects [player,["house"],50];
 
 _grp = createGroup [RESISTANCE, true];
 for "_i" from 1 to 3 step 1 do

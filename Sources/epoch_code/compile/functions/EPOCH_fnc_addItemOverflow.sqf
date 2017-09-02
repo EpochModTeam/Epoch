@@ -35,7 +35,7 @@ for "_i" from 1 to _count do
     } else {
         _wH = objNull;
         if (isNil "_nearByHolder") then {
-            _nearByHolder = nearestObjects [position player,["groundWeaponHolder"],3];
+            _nearByHolder = nearestObjects [player,["groundWeaponHolder"],3];
         };
         if (_nearByHolder isEqualTo []) then {
             _wHPos = player modelToWorld [0,1,0];

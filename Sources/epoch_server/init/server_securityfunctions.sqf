@@ -391,7 +391,7 @@ for "_i" from 1 to 3 do {
 		};
 		if ("MAP-LOOT" in _case) then {
 			_temp = _temp + "
-				,['  Loot Marker', [], {"+_skn_tg_map_loot+" = !"+_skn_tg_map_loot+"; if ("+_skn_tg_map_loot+") then {waitUntil {"+_skn_mapLootArray+" = nearestObjects[getPos player, ['WH_Loot', 'Animated_Loot'], 10000];uiSleep 10;!"+_skn_tg_map_loot+"};"+_skn_mapLootArray+" = []};['Loot MARKER',if ("+_skn_tg_map_loot+") then [{2},{1}]] call "+_skn_adminLog_PVC+"}, '2', []]
+				,['  Loot Marker', [], {"+_skn_tg_map_loot+" = !"+_skn_tg_map_loot+"; if ("+_skn_tg_map_loot+") then {waitUntil {"+_skn_mapLootArray+" = nearestObjects[player, ['WH_Loot', 'Animated_Loot'], 10000];uiSleep 10;!"+_skn_tg_map_loot+"};"+_skn_mapLootArray+" = []};['Loot MARKER',if ("+_skn_tg_map_loot+") then [{2},{1}]] call "+_skn_adminLog_PVC+"}, '2', []]
 			";
 		};
 		if ("MAP-VEHICLE" in _case) then {
