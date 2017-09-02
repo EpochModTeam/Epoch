@@ -13,7 +13,7 @@
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server/compile/epoch_player/EPOCH_server_revivePlayer.sqf
 */
 //[[[cog import generate_private_arrays ]]]
-private ["_CorpseCrypto","_PlayerCrypto","_attachments","_backpack","_cIndex","_class","_currWeap","_currwh","_deleteprimary","_deletesecondary","_dir","_droppedPrimary","_droppedSecondary","_droppedWeapons","_equipped","_goggles","_group","_headgear","_items","_itemsplayer","_location","_magazinesAmmo","_newPlyr","_playerGroup","_playerUID","_primaryWeapon","_secondaryWeapon","_token","_type","_uniform","_vars","_vest","_wMags","_wMagsArray","_weapon","_weapons","_weaponsplayer","_wh"];
+private ["_loadout","_CorpseCrypto","_PlayerCrypto","_attachments","_cIndex","_class","_currwh","_deleteprimary","_deletesecondary","_dir","_droppedPrimary","_droppedSecondary","_droppedWeapons","_equipped","_group","_location","_newPlyr","_playerGroup","_playerUID","_primaryWeapon","_secondaryWeapon","_token","_type","_vars","_wMags","_wMagsArray","_weapon","_wh"];
 //[[[end]]]
 params ["_player","_reviver",["_token","",[""]] ];
 
@@ -46,20 +46,12 @@ if (!local _player) then {
 				_dir = getDir _player;
 				_playerGroup = _player getVariable["GROUP", ""];
 
-				_goggles = goggles _player;
-				_headgear = headgear _player;
-				_vest = vest _player;
-				_backpack = backpack _player;
-				_uniform = uniform _player;
-
-				_items = assignedItems _player;
-				_magazinesAmmo = magazinesAmmo _player;
+				// Load Inventory
+				_loadout = getUnitLoadout _player;
 
 				_primaryWeapon = "";
 				_secondaryWeapon = "";
-
 				_wh = nearestObjects[_player, ["WeaponHolderSimulated"], 12];
-
 				_droppedPrimary = [];
 				_droppedSecondary = [];
 				_droppedWeapons = [];
@@ -83,10 +75,6 @@ if (!local _player) then {
 				if !(_droppedPrimary isequalto []) then {_droppedWeapons pushback _droppedPrimary};
 				if !(_droppedSecondary isequalto []) then {_droppedWeapons pushback _droppedSecondary};
 				// diag_log ["DEBUG: _droppedWeapons %1", _droppedWeapons];
-
-				_itemsplayer = [getItemCargo(uniformContainer _player), getItemCargo(vestContainer _player), getItemCargo(backpackContainer _player)];
-				_weaponsplayer = [getWeaponCargo(uniformContainer _player), getWeaponCargo(vestContainer _player), getWeaponCargo(backpackContainer _player)];
-				_weapons = [currentWeapon _player, ((weaponsItems _player) + _droppedWeapons), [_primaryWeapon, _secondaryWeapon, handgunWeapon _player]];
 
 				hideObjectGlobal _player;
 
@@ -136,26 +124,12 @@ if (!local _player) then {
 				_newPlyr setFatigue 1;
 				_newPlyr setDamage 0.25;
 
-				// Apperance
-				if (_uniform != "") then {
-					_newPlyr addUniform _uniform;
-				};
-				if (_backpack != "") then {
-					_newPlyr addBackpack _backpack;
-				};
-				if (_goggles != "") then {
-					_newPlyr addGoggles _goggles;
-				};
-				if (_headgear != "") then {
-					_newPlyr addHeadgear _headgear;
-				};
-				if (_vest != "") then {
-					_newPlyr addVest _vest;
-				};
+				// Add inventory
+				_newPlyr setUnitLoadout [_loadout, false];
 
-				// Weapons
-				if (count _weapons >= 3) then {
-					_equipped = _weapons select 2;
+				// Dropped Weapons
+				if !(_droppedWeapons isequalto []) then {
+					_equipped = [_primaryWeapon,_secondaryWeapon];
 					{
 						_weapon = _x deleteAt 0;
 						_type = getNumber(configfile >> "cfgweapons" >> _weapon >> "type");
@@ -208,27 +182,8 @@ if (!local _player) then {
 								_newPlyr addItem _x;
 							}forEach _attachments;
 						};
-					} forEach (_weapons select 1);
-//					_currWeap = (_weapons select 0);
+					} forEach _droppedWeapons;
 				};
-				// Linked items
-				{
-					if (_x in ["Binocular","Rangefinder"]) then {
-						_newPlyr addWeapon _x;
-					} else {
-						_newPlyr linkItem _x;
-					};
-				}forEach _items;
-
-				// add items to containers
-				[_newPlyr, _itemsplayer] call EPOCH_fnc_addItemToX;
-
-				// add weapons to containers
-				[_newPlyr, _weaponsplayer] call EPOCH_fnc_addItemToX;
-
-				// Add magazines
-				{_newPlyr addMagazine _x;}forEach _magazinesAmmo;
-				// Load inventory + defaults END
 
 				// Final Push
 				_token = _newPlyr call EPOCH_server_setPToken;
