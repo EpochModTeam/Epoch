@@ -559,7 +559,7 @@ class FSM
                 {
                         name = "ERROR_Wrong_Server";
                         itemno = 25;
-                        init = /*%FSM<STATEINIT""">*/"_msg = format[""Server and Client running with different Version! (You: %1 // Server: %2)"",getText(configFile >> ""CfgMods"" >> ""Epoch"" >> ""version""),_serverVersion];" \n
+                        init = /*%FSM<STATEINIT""">*/"_msg = format[""Server and Client running with different Version! (You: %1 // Server: %2)"",getText(configFile >> ""CfgMods"" >> ""Epoch"" >> ""version""),Epoch_ServerVersion];" \n
                          "_msg call Epoch_updateLoadingScreen;" \n
                          "diag_log _msg;" \n
                          "" \n
