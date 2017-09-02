@@ -256,7 +256,7 @@ class CfgCrafting
     };
     class ItemStick : Item
     {
-        usedIn[] = {"WoodClub","MeleeMaul","CrudeHatchet","KitFirePlace","KitSpikeTrap","KitMetalTrap","MeleeRod","WoodLog_EPOCH"};
+        usedIn[] = {"WoodClub","MeleeMaul","CrudeHatchet","KitFirePlace","KitSpikeTrap","KitMetalTrap","MeleeRod"};
         recipe[] = {{"WoodLog_EPOCH",1}};
         previewPosition[] = {0.8,1,0.25};
         previewScale = 0.4;
@@ -800,7 +800,6 @@ class CfgCrafting
     };
 	class KitWoodHalfFloor : Kit
     {
-        usedIn[] = {"KitWoodFloor"};
         recipe[] = {{"KitWoodQuarterFloor",2}};
         nearby[] = {{"Workbench","","workbench",{1,{"WorkBench_EPOCH"}},3,1,0,1}};
         model = "\x\addons\a3_epoch_assets_1\models\Half_Floor.p3d";
