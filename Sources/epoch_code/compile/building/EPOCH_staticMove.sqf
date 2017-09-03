@@ -291,17 +291,23 @@ if (_class != "") then {
 								_currentTarget setposATL _snapPosition;
 								
 								// Vector + Snapping
-								if(!(_vectorUp select 0 == 0) || !(_vectorUp select 1 == 0) || !(	_vectorUp select 2 == 1)) then{
+								if(!(_vectorUp select 0 == 0) || !(_vectorUp select 1 == 0) || !(_vectorUp select 2 == 1)) then{
 									if(_snapType isEqualTo "perp")then{
-										if(_snapMemoryPoint in ["W","E"])then{
-											_tempClass = getText(_cfgBaseBuilding >> (typeOf _nearestObject) >> "GhostPreview");
-											EPOCH_tempTarget = _tempClass createVehicleLocal [0,0,0];
-											EPOCH_tempTarget setPosATL (getPosATL _nearestObject);
-											EPOCH_tempTarget setVectorDirAndUp [_vectorDir, _vectorUp];
-											EPOCH_tempTarget setDir ((getDir _nearestObject) + (EPOCH_snapDirection * 90));
-											_newDir = vectorDir EPOCH_tempTarget;
-											_vectorDir = _newDir;
+										_tempClass = getText(_cfgBaseBuilding >> (typeOf _nearestObject) >> "GhostPreview");
+										EPOCH_tempTarget = _tempClass createVehicleLocal [0,0,0];
+										EPOCH_tempTarget setPosATL (getPosATL _nearestObject);
+										EPOCH_tempTarget setVectorDirAndUp [_vectorDir, _vectorUp];
+										EPOCH_tempTarget setDir ((getDir _nearestObject) + (EPOCH_snapDirection * 90));
+										_tiltFB = (((_vectorUp select 0 < 0) && (_vectorUp select 1 > 0)) || ((_vectorUp select 0 > 0) && (_vectorUp select 1 < 0)));
+										_tiltLR = (((_vectorUp select 0 > 0) && (_vectorUp select 1 > 0)) || ((_vectorUp select 0 < 0) && (_vectorUp select 1 < 0)));
+										if( ((_tiltFB) && (_snapMemoryPoint in ["W","E"]) && (EPOCH_snapDirection in [0,2])) || ((_tiltLR) && (_snapMemoryPoint in ["N","S"]) && (EPOCH_snapDirection in [1,3])))then{
+											EPOCH_tempTarget setVectorUp _vectorUp;
 										};
+										if( ((_tiltFB) && (_snapMemoryPoint in ["N","S"])) || ((_tiltLR) && (_snapMemoryPoint in ["W","E"])) )then{
+											EPOCH_tempTarget setVectorUp _vectorUp;
+										};
+										_newDir = vectorDir EPOCH_tempTarget;
+										_vectorDir = _newDir;
 									};
 									_currentTarget setposATL _snapPosition;
 									_currentTarget setDir ((getDir _currentTarget) + (EPOCH_snapDirection * 90));
