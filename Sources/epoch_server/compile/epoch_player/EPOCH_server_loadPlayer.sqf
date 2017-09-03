@@ -322,6 +322,9 @@ if (!isNull _player) then {
 				deleteVehicle _newPlyr;
 				diag_log "Epoch: DEBUG: _player object was null reject connection";
 			} else {
+				// re-add Inventory (needed as workaround for Client / Server synchronizing issue in unitloadout)
+				_loadout = getUnitLoadout _newPlyr;
+				_newPlyr setUnitLoadout [_loadout, false];
 
 				// add to cleanup
 				addToRemainsCollector[_newPlyr];
