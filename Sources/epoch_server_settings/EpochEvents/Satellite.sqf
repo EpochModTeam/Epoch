@@ -25,6 +25,9 @@ if ((count _position) == 2) then{
 
 	_item = createVehicle[(selectRandom _satellites), _position, [], 0.0, "CAN_COLLIDE"];
 
+	// set rads
+	_item setVariable ["EPOCH_Rads", 100, true];
+
 	if (EPOCH_showSatellites) then{
 		_marker = createMarker[str(_position), _position];
 		_marker setMarkerShape "ICON";

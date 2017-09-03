@@ -1,5 +1,4 @@
 // init
-_forceUpdate = false;
 _forceBloodRise = false;
 _forceFatigue = false;
 _allowBloodDrop = false;
@@ -150,10 +149,7 @@ if (_forceStaminaDrop) then {
 	};
 };
 
-// force update
-if (_forceUpdate) then {
-	true call EPOCH_pushCustomVar;
-};
+
 
 // ~ debug
 if (EPOCH_debugMode) then {
@@ -272,4 +268,13 @@ if !(EPOCH_ActiveTraderMission isequalto []) then {
 			_taskDialogues deleteat _foreachindex;
 		};
 	} foreach _taskDialogues;
+};
+
+// Update read only vars
+EPOCH_playerRadiation = _playerRadiation;
+
+// force update
+if (EPOCH_forceUpdateNow) then {
+	EPOCH_forceUpdateNow = false;
+	call _fnc_forceUpdate;
 };

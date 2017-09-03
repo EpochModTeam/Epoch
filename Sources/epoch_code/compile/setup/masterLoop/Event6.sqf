@@ -1,5 +1,3 @@
-false call EPOCH_pushCustomVar;
-
 _spawnChance = ((EPOCH_playerNuisance + EPOCH_playerSoiled)/2) max 1;
 // add more antagonist spawn chances
 if (random _antagonistRndChance < _spawnChance) then {

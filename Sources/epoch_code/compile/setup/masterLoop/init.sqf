@@ -1,28 +1,59 @@
 // make sure we wait for Display #46
 waitUntil {!(isNull (findDisplay 46))};
 
+// force update within 15 seconds
+EPOCH_forceUpdate = false;
+_forceUpdate = false;
+// force update within 1 second
+EPOCH_forceUpdateNow = false;
+
+// init local player stat vars
+_playerRadiation = EPOCH_playerRadiation;
+
+// inline function to sync player stats to server
+_fnc_forceUpdate = {
+	private _customVars = [];
+	{
+		// use local var from inside master loop
+		switch (_x) do {
+			case ("Radiation"): {
+				_customVars pushBack _playerRadiation;
+			};
+			default {
+				_customVars pushBack (missionNamespace getVariable format["EPOCH_player%1",_x]);
+			};
+		};
+	} forEach (missionNamespace getVariable["EPOCH_customVars", []]);
+	[player,_customVars,missionNamespace getVariable "Epoch_personalToken"] remoteExec ["EPOCH_fnc_savePlayer",2];
+};
+
 // disable fuel sources client side.
 {_x setFuelCargo 0;} foreach (missionNamespace getVariable ["EPOCH_staticFuelSources", []]);
 
 // setup display EH's
 if (isNil "EPOCH_display_setup_complete") then {
-    EPOCH_display_setup_complete = true;
-    {
-    	(findDisplay 46) displayAddEventHandler [_x,(["CfgEpochClient", _x, ""] call EPOCH_fnc_returnConfigEntryV2)];
-    } forEach (["CfgEpochClient", "displayAddEventHandler", []] call EPOCH_fnc_returnConfigEntryV2);
-    // reset anim state
-    player switchMove "";
-    // setup Epoch Hud
-    call epoch_dynamicHUD_start;
+	EPOCH_display_setup_complete = true;
+	{
+		(findDisplay 46) displayAddEventHandler [_x,(["CfgEpochClient", _x, ""] call EPOCH_fnc_returnConfigEntryV2)];
+	} forEach (["CfgEpochClient", "displayAddEventHandler", []] call EPOCH_fnc_returnConfigEntryV2);
+	// reset anim state
+	player switchMove "";
+	// setup Epoch Hud
+	call epoch_dynamicHUD_start;
 };
 
 
+
+// Background radiation
+_backgroundRadiation = ["CfgEpochClient", "backgroundRadiation", 10] call EPOCH_fnc_returnConfigEntryV2;
+_radsLevel = 0;
 
 _prevEquippedItem = [];
 _damagePlayer = damage player;
 _isOnFoot = isNull objectParent player;
 _panic = false;
 _prevEnergy = EPOCH_playerEnergy;
+
 
 // init config data
 _antagonistRndChance = ["CfgEpochClient", "antagonistRngChance", 100] call EPOCH_fnc_returnConfigEntryV2;
@@ -50,13 +81,13 @@ _antagonistChances = ["CfgEpochClient", "antagonistChances", _antagonistChanceDe
 
 
 // Init antagonist spawn limits
-EPOCH_spawnIndex = [];
-EPOCH_spawnLimits = [];
+_spawnIndex = [];
+_spawnLimits = [];
 _antagonistSpawnDefaults = [
 	["Epoch_Cloak_F", 1],
 	["GreatWhite_F", 2],
 	["Epoch_Sapper_F",2],
-    ["Epoch_SapperG_F",1],
+	["Epoch_SapperG_F",1],
 	["Epoch_SapperB_F",1],
 	["I_UAV_01_F",2],
 	["PHANTOM",1],
@@ -69,19 +100,29 @@ _spawnLimits = ["CfgEpochClient", "antagonistSpawnIndex", _antagonistSpawnDefaul
 	_x params ["_spawnName","_spawnLimit"];
 	if (_spawnName isEqualTo "EPOCH_RyanZombie_1") then {
 		if (EPOCH_mod_Ryanzombies_Enabled) then {
-			EPOCH_spawnIndex pushBack _spawnName;
-			EPOCH_spawnLimits pushBack _spawnLimit;
+			_spawnIndex pushBack _spawnName;
+			_spawnLimits pushBack _spawnLimit;
 		};
 	} else {
-		EPOCH_spawnIndex pushBack _spawnName;
-		EPOCH_spawnLimits pushBack _spawnLimit;
+		_spawnIndex pushBack _spawnName;
+		_spawnLimits pushBack _spawnLimit;
 	};
 } forEach _spawnLimits;
 
+EPOCH_spawnIndex = _spawnIndex;
+EPOCH_spawnLimits = _spawnLimits;
+
+//
+_customVars = [];
+{
+	_customVars pushBack (missionNamespace getVariable format["EPOCH_player%1",_x]);
+} forEach (missionNamespace getVariable["EPOCH_customVars", []]);
+_prevCustomVars = _customVars;
+
 // default data if mismatch
-if !(EPOCH_playerSpawnArray isEqualTypeParams EPOCH_spawnIndex) then{
+if !(EPOCH_playerSpawnArray isEqualTypeParams _spawnIndex) then{
 	EPOCH_playerSpawnArray = [];
-	{ EPOCH_playerSpawnArray pushBack 0 } forEach EPOCH_spawnIndex;
+	{ EPOCH_playerSpawnArray pushBack 0 } forEach _spawnIndex;
 };
 
 // find radio

@@ -76,4 +76,4 @@ if !(alive player && alive _playerObject && !isPlayer _playerObject) then {
 	deleteVehicle _playerObject;
 };
 
-true call EPOCH_pushCustomVar;
+EPOCH_forceUpdateNow = true;

@@ -5,7 +5,7 @@ if !(EPOCH_arr_interactedObjs isEqualTo[]) then {
 
 if (damage player != _damagePlayer) then {
 	if (alive player) then {
-		true call EPOCH_pushCustomVar;
+		_forceUpdate = true;
 		_damagePlayer = damage player;
 	};
 };
@@ -33,16 +33,23 @@ if (currentVisionMode player == 1) then { //NV enabled
 
 // Sets visual effect
 if (EPOCH_playerAlcohol > 20) then {
-	_drunkVal = linearConversion [0,100,EPOCH_playerAlcohol,0.1,1,true];
-	[(round(_drunkVal * 10)/10), 2] call epoch_setDrunk;
+	_drunkVal = (linearConversion [0,100,EPOCH_playerAlcohol,0.1,1,true]) toFixed 2;
+	[_drunkVal, 2] call epoch_setDrunk;
 } else {
 	[0, 2] call epoch_setDrunk;
 };
 
 // Sets visual effect
 if (_playerRadiation > 1) then {
-	_radiationVal = linearConversion [0,100,_playerRadiation,0.1,1,true];
-	[(round(_radiationVal * 10)/10), 2] call epoch_setRadiation;
+	_radiationVal = (linearConversion [0,100,_playerRadiation,0.1,1,true]) toFixed 2;
+	[_radiationVal, 2] call epoch_setRadiation;
+
+	// if player has geiger counter make sound based on rads level
+	if ('GeigerCounter' in assignedItems player) then { // TODO change classname to match
+		_level = round(linearConversion [0,100,_radsLevel,0,3,true]);
+		_sound = format ["geiger_%1",_level];
+		playSound _sound;
+	};
 } else {
 	[0, 2] call epoch_setRadiation;
 };

@@ -68,18 +68,14 @@ _respawnButton ctrlEnable false;
 [_display] spawn {
 	disableSerialization;
 	params ["_display"];
-	with missionNamespace do {
-		false call EPOCH_pushCustomVar;
-	};
+	EPOCH_forceUpdate = true;
 	_startTime = diag_tickTime+5;
 	waitUntil {
 		uiSleep 0.2;
 	   (isNull _display) || ((_startTime - diag_tickTime) <= 0)
 	};
 	if (!isNull _display) then {
-		with missionNamespace do {
-			true call EPOCH_pushCustomVar;
-		};
+		EPOCH_forceUpdate = true;
 	};
 };
 
