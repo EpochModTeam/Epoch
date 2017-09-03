@@ -39,6 +39,14 @@ if (EPOCH_playerAlcohol > 20) then {
 	[0, 2] call epoch_setDrunk;
 };
 
+// Sets visual effect
+if (_playerRadiation > 1) then {
+	_radiationVal = linearConversion [0,100,_playerRadiation,0.1,1,true];
+	[(round(_radiationVal * 10)/10), 2] call epoch_setRadiation;
+} else {
+	[0, 2] call epoch_setRadiation;
+};
+
 EPOCH_playerEnergy = ((EPOCH_playerEnergy + _energyValue) min EPOCH_playerEnergyMax) max 0;
 
 if !(EPOCH_playerEnergy isEqualTo _prevEnergy) then {
