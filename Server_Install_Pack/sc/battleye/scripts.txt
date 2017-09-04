@@ -5,7 +5,7 @@
 7 setAmmo
 7 enableFatigue
 7 setUnitRecoilCoefficient
-7 setWeaponReloadingTime !="_unit setWeaponReloadingTime [_unit,_weapon,1];" !="_unit setWeaponReloadingTime [_unit,_weapon,1];" !="uzzle;\nplayer fire [_muzzle, _muzzle, _item];\nplayer setWeaponReloadingTime [player, _muzzle, 0];\n};\n};\ncase 16: \n{	\n_equipped ="
+7 setWeaponReloadingTime !="_unit setWeaponReloadingTime [_unit,_weapon,1];" !="_unit setWeaponReloadingTime [_unit,_weapon,1];" !="uzzle;\nplayer fire [_muzzle, _muzzle, _item];\nplayer setWeaponReloadingTime [player, _muzzle, 0];\n};\n};\ncase 16: \n{\n_equipped ="
 7 allMissionObjects !="_alljammer = allmissionobjects 'PlotPole_EPOCH';"
 7 callExtension
 7 showCommandingMenu !="showCommandingMenu '';" !="showCommandingMenu '#USER:"
