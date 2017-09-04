@@ -94,7 +94,7 @@ _antagonistSpawnDefaults = [
 	["B_Heli_Transport_01_F",1],
 	["EPOCH_RyanZombie_1",12]
 ];
-_spawnLimits = ["CfgEpochClient", "antagonistSpawnIndex", _antagonistSpawnDefaults] call EPOCH_fnc_returnConfigEntryV2;
+_antagonistSpawnLimits = ["CfgEpochClient", "antagonistSpawnIndex", _antagonistSpawnDefaults] call EPOCH_fnc_returnConfigEntryV2;
 
 {
 	_x params ["_spawnName","_spawnLimit"];
@@ -107,7 +107,7 @@ _spawnLimits = ["CfgEpochClient", "antagonistSpawnIndex", _antagonistSpawnDefaul
 		_spawnIndex pushBack _spawnName;
 		_spawnLimits pushBack _spawnLimit;
 	};
-} forEach _spawnLimits;
+} forEach _antagonistSpawnLimits;
 
 EPOCH_spawnIndex = _spawnIndex;
 EPOCH_spawnLimits = _spawnLimits;
