@@ -33,7 +33,7 @@ if (currentVisionMode player == 1) then { //NV enabled
 
 // Sets visual effect
 if (EPOCH_playerAlcohol > 20) then {
-	_drunkVal = (linearConversion [0,100,EPOCH_playerAlcohol,0.1,1,true]) toFixed 2;
+	_drunkVal = linearConversion [0,100,EPOCH_playerAlcohol,0.1,1,true];
 	[_drunkVal, 2] call epoch_setDrunk;
 } else {
 	[0, 2] call epoch_setDrunk;
@@ -41,11 +41,11 @@ if (EPOCH_playerAlcohol > 20) then {
 
 // Sets visual effect
 if (_playerRadiation > 1) then {
-	_radiationVal = (linearConversion [0,100,_playerRadiation,0.1,1,true]) toFixed 2;
+	_radiationVal = linearConversion [0,100,_playerRadiation,0.1,1,true];
 	[_radiationVal, 2] call epoch_setRadiation;
 
 	// if player has geiger counter make sound based on rads level
-	if ('GeigerCounter' in assignedItems player) then { // TODO change classname to match
+	if ('ItemGeigerCounter_EPOCH' in assignedItems player) then { // TODO change classname to match
 		_level = round(linearConversion [0,100,_radsLevel,0,3,true]);
 		_sound = format ["geiger_%1",_level];
 		playSound _sound;

@@ -51,7 +51,7 @@ All changes for [Arma 3](https://arma3.com/) [Epoch Mod](https://epochmod.com) a
 - Gas Station Auto-Refuel is now disabled on all maps. Use disableAutoRefuel = false; via epochconfig.hpp to disable. @SMVampire
 ### Fixed
 - Bad conversion: bool RPT spam caused by incorrect usage of configClasses. @DirtySanchez
-- Snapping with Vector Tilt @DirtySanchez
+- Snapping issues base building @DirtySanchez
 - Sounds not working due to changes to 3dSay command in recent A3 updates. @DirtySanchez
 - Spawning at base above Water was not working correctly. @Ignatz-Heman
 - One step is higher on stairs, can't run up while crouched. #447 @Helion4
