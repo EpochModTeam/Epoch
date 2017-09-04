@@ -41,6 +41,22 @@ class CfgObjectInteractions
     {
         interactMode = 1;
     };
+	class TentA_EPOCH : Default
+    {
+        interactMode = 4;
+    };
+    class TentA_SIM_EPOCH : Default
+    {
+        interactMode = 1;
+    };
+	class TentDome_EPOCH : Default
+	{
+		interactMode = 4;
+	};
+	class TentDome_SIM_EPOCH : Default
+	{
+		interactMode = 1;
+	};
     class StorageShelf_EPOCH : Default
     {
         interactMode = 4;

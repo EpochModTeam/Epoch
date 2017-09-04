@@ -550,6 +550,42 @@ class CfgBaseBuilding
         removeParts[] = {};
     };
     class Tipi_Ghost_EPOCH : Tipi_SIM_EPOCH {};
+	class TentA_EPOCH  : Default
+    {
+        removeParts[] = {{"Pelt_EPOCH",2},{"PartPlankPack",1}};
+        GhostPreview = "TentA_Ghost_EPOCH";
+        staticClass = "TentA_EPOCH";
+        simulClass = "TentA_SIM_EPOCH";
+        limitNearby = 2;
+        bypassJammer = 1;
+    };
+    class TentA_SIM_EPOCH : TentA_EPOCH
+    {
+        simulClass = "TentA_SIM_EPOCH";
+        staticClass = "TentA_EPOCH";
+        limitNearby = 2;
+        bypassJammer = 1;
+        removeParts[] = {};
+    };
+	class TentA_Ghost_EPOCH : TentA_SIM_EPOCH {};
+	class TentDome_EPOCH  : Default
+	{
+		removeParts[] = {{"Pelt_EPOCH",2},{"PartPlankPack",1}};
+		GhostPreview = "TentDome_Ghost_EPOCH";
+		staticClass = "TentDome_EPOCH";
+		simulClass = "TentDome_SIM_EPOCH";
+		limitNearby = 2;
+		bypassJammer = 1;
+	};
+	class TentDome_SIM_EPOCH : TentA_EPOCH
+	{
+		simulClass = "TentDome_SIM_EPOCH";
+		staticClass = "TentDome_EPOCH";
+		limitNearby = 2;
+		bypassJammer = 1;
+		removeParts[] = {};
+	};
+	class TentDome_Ghost_EPOCH : TentDome_SIM_EPOCH {};
     class StorageShelf_EPOCH : Default
     {
         removeParts[] = {{"ItemCorrugated",2}};

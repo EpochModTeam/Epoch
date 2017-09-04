@@ -11,7 +11,7 @@ All changes for [Arma 3](https://arma3.com/) [Epoch Mod](https://epochmod.com) a
 - Vehicle Upgrade System - Upgrade your ride by using one of the new vehicle upgrade documents found in the world. @DirtySanchez
 
 - Vector Base Building (uses Arrow keys by default and with SHIFT / ALT you can control the steps). @DirtySanchez & @Ignatz-Heman
-- New Base Building Objects: Quarter and Half wood floors @DirtySanchez, Cinder block full floor @Helion.
+- New Base Building Objects: Quarter and Half wood floors @DirtySanchez, Cinder block floor, Cinder wall with window. @Helion.
 
 - Medical items: Adrenaline Shot (adrenaline_epoch), Caffeine Pills (caffeinepills_epoch). Orlistat Pills (orlistat_epoch) by @Helion and configs by @DirtySanchez
 - Food items: ItemCereals, ItemPowderMilk_F, ItemRiceBox, ItemVitamins. @DirtySanchez
