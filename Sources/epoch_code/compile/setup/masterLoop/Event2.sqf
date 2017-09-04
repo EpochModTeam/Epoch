@@ -45,7 +45,7 @@ if (_playerRadiation > 1) then {
 	[_radiationVal, 2] call epoch_setRadiation;
 
 	// if player has geiger counter make sound based on rads level
-	if ('ItemGeigerCounter_EPOCH' in assignedItems player) then { // TODO change classname to match
+	if ('ItemGeigerCounter_EPOCH' in assignedItems player) then {
 		_level = round(linearConversion [0,100,_radsLevel,0,3,true]);
 		_sound = format ["geiger_%1",_level];
 		playSound _sound;

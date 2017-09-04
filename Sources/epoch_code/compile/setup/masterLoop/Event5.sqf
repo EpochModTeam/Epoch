@@ -22,7 +22,7 @@ if (_outOfBounds) then {
 		_radsLevel = (_radioActiveSite getVariable ["EPOCH_Rads", 0]) / (player distance _radioActiveSite);
 		_playerRadiation = ((_playerRadiation + _radsLevel) min 100) max 0;
 	} else {
-		// handle reduction of rads in master loop
+		// TODO handle reduction of rads in master loop
 		_anitRadiation = player getVariable ["EPOCH_antiRadiation", 0];
 		if (_anitRadiation > 0) then {
 			// lower radiation by 0.1 per tick
