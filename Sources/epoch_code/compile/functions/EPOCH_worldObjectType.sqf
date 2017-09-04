@@ -33,8 +33,10 @@ _selectedConfig = "";
 if (_object isEqualType objNull && !(isNull _object)) then {
     if !(_object isKindOf "All") then {
         (getModelInfo _object) params [["_modelName",""]];
-        // replace spaces and periods with underscores
-        _selectedConfig = (_modelName splitString " .") joinString "_";
+		if (!isnil "_modelName") then {
+			// replace spaces and periods with underscores
+			_selectedConfig = (_modelName splitString " .") joinString "_";
+		};
     } else {
         _selectedConfig = typeOf _object;
     };
