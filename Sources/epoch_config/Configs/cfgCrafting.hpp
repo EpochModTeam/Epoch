@@ -1196,15 +1196,15 @@ class CfgCrafting
     {
         usedIn[] = {"KitVehicleUpgradeIII_200_EPOCH"};
         previewPosition[] = {0.802374,1,0.26};
-        previewScale = 0.19;
-        previewVector = 3.3;
+        previewScale = 0.2;
+        previewVector = 0.5;
     };
 
 	class BarrelBomb_EPOCH_Remote_Mag : Kit
     {
         nearby[] = {{"Fire","","fire",{1,{"ALL"}},3,1,1,0}};
         recipe[] = {{"ItemBarrelE",1},{"jerrycan_epoch",3},{"ItemBattery",1},{"CircuitParts",1}};
-		previewPosition[] = {0.798043,1,0.259066};
+		previewPosition[] = {0.79545,1,0.42};
 		previewScale = 0.3;
 		previewVector = 0.3;
     };
