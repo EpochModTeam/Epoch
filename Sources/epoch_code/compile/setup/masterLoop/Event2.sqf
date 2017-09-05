@@ -178,7 +178,7 @@ EPOCH_playerThirst = (EPOCH_playerThirst - _thirstlossRate) max 0;
 
 call _lootBubble;
 
-EPOCH_playerStaminaMax = (100 * (round(EPOCH_playerAliveTime/360)/10)) min 2500;
+EPOCH_playerStaminaMax = (100 * (round(_playerAliveTime/360)/10)) min 2500;
 
 // downtick Nuisance
 (EPOCH_customVarLimits select (EPOCH_customVars find "Nuisance")) params [["_playerLimitMax",100],["_playerLimitMin",0]];

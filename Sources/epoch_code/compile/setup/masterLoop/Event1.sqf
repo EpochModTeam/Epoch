@@ -272,6 +272,7 @@ if !(EPOCH_ActiveTraderMission isequalto []) then {
 
 // Update read only vars
 EPOCH_playerRadiation = _playerRadiation;
+EPOCH_playerAliveTime = _playerAliveTime;
 
 // force update
 if (EPOCH_forceUpdateNow) then {

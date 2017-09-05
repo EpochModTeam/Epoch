@@ -9,6 +9,7 @@ EPOCH_forceUpdateNow = false;
 
 // init local player stat vars
 _playerRadiation = EPOCH_playerRadiation;
+_playerAliveTime = EPOCH_playerAliveTime;
 
 // inline function to sync player stats to server
 _fnc_forceUpdate = {
@@ -19,12 +20,15 @@ _fnc_forceUpdate = {
 			case ("Radiation"): {
 				_customVars pushBack _playerRadiation;
 			};
+			case ("AliveTime"):{
+				_customVars pushBack _playerAliveTime;
+			};
 			default {
 				_customVars pushBack (missionNamespace getVariable format["EPOCH_player%1",_x]);
 			};
 		};
-	} forEach (missionNamespace getVariable["EPOCH_customVars", []]);
-	[player,_customVars,missionNamespace getVariable "Epoch_personalToken"] remoteExec ["EPOCH_fnc_savePlayer",2];
+	} forEach EPOCH_customVars;
+	[player,_customVars,Epoch_personalToken] remoteExec ["EPOCH_fnc_savePlayer",2];
 };
 
 // disable fuel sources client side.
@@ -111,13 +115,6 @@ _antagonistSpawnLimits = ["CfgEpochClient", "antagonistSpawnIndex", _antagonistS
 
 EPOCH_spawnIndex = _spawnIndex;
 EPOCH_spawnLimits = _spawnLimits;
-
-//
-_customVars = [];
-{
-	_customVars pushBack (missionNamespace getVariable format["EPOCH_player%1",_x]);
-} forEach (missionNamespace getVariable["EPOCH_customVars", []]);
-_prevCustomVars = _customVars;
 
 // default data if mismatch
 if !(EPOCH_playerSpawnArray isEqualTypeParams _spawnIndex) then{
