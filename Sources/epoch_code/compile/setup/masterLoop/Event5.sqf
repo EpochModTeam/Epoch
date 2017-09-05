@@ -86,8 +86,8 @@ if !(_powerSources isEqualTo[]) then {
 // downtick Alcohol
 EPOCH_playerAlcohol = ((EPOCH_playerAlcohol - 1) min 100) max 0;
 
-_playerAliveTime = round(_playerAliveTime + (_tickTime - EPOCH_clientAliveTimer));
-EPOCH_clientAliveTimer = _tickTime;
+_playerAliveTime = round(_playerAliveTime + (_tickTime - _clientAliveTimer));
+_clientAliveTimer = _tickTime;
 
 // force update after 60 seconds
 _forceUpdate = true;

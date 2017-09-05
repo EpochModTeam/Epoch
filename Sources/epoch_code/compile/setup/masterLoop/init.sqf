@@ -11,6 +11,9 @@ EPOCH_forceUpdateNow = false;
 _playerRadiation = EPOCH_playerRadiation;
 _playerAliveTime = EPOCH_playerAliveTime;
 
+// start alive timer
+_clientAliveTimer = diag_tickTime;
+
 // inline function to sync player stats to server
 _fnc_forceUpdate = {
 	private _customVars = [];

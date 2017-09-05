@@ -33,7 +33,6 @@ EPOCH_equippedItem_PVS = [];
 EPOCH_nearPower = false;
 EPOCH_pendingP2ptradeTarget = objNull;
 EPOCH_lastNPCtradeTarget = objNull;
-EPOCH_clientAliveTimer = diag_tickTime;
 EPOCH_lastJumptime = diag_tickTime;
 EPOCH_lastAGTime = diag_tickTime;
 EPOCH_lastMineRocks = diag_tickTime;
