@@ -70,11 +70,9 @@ EPOCH_customVarsDefaults = [
 	["MissionArray",[],[]]
 ];
 _customVarsInit = ["CfgEpochClient", "customVarsDefaults", EPOCH_customVarsDefaults] call EPOCH_fnc_returnConfigEntryV2;
-{
-	EPOCH_customVars pushBack (_x select 0);
-	EPOCH_defaultVars pushBack (_x select 1);
-	EPOCH_customVarLimits pushBack (_x param [2,[]]);
-} forEach _customVarsInit;
+EPOCH_customVars = _customVarsInit apply {_x param [0,""]};
+EPOCH_defaultVars = _customVarsInit apply {_x param [1,0]};
+EPOCH_customVarLimits = _customVarsInit apply {_x param [2,[]]};
 EPOCH_customVarCount = count EPOCH_customVars;
 
 // Init Community Stats
