@@ -149,10 +149,13 @@ _lootClasses = [];
 _lootClassesIgnore = ['Default'];
 '_cN = configName _x;if !(_cN in _lootClassesIgnore)then{_lootClasses pushBackUnique _cN}; true' configClasses _masterConfig;
 
+
+
+_lastPlayerPos = getPosATL player;
 _lootBubble = {
 	private["_jammer", "_others", "_objects", "_nearObjects", "_building", "_lootDist", "_lootLoc", "_playerPos", "_distanceTraveled"];
 	_playerPos = getPosATL vehicle player;
-	_distanceTraveled = EPOCH_lastPlayerPos distance _playerPos;
+	_distanceTraveled = _lastPlayerPos distance _playerPos;
 	if (_distanceTraveled > 10 && _distanceTraveled < 200) then {
 		_lootDist = 30 + _distanceTraveled;
 		_lootLoc = player getRelPos [_lootDist, (random [-180,0,180])];
@@ -172,7 +175,7 @@ _lootBubble = {
 			};
 		};
 	};
-	EPOCH_lastPlayerPos = _playerPos;
+	_lastPlayerPos = _playerPos;
 };
 
 // init weather temperature var if not already set

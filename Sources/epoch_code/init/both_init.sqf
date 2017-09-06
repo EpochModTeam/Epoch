@@ -13,7 +13,7 @@
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_code/init/both_init.sqf
 */
 //[[[cog import generate_private_arrays ]]]
-private ["_antagonistSpawnDefaults","_cfgDynamicSimulation","_communityStatsInit","_customVarsInit","_dynSimToggle","_say3dsounds","_say3dsoundsConfig","_spawnLimits"];
+private ["_cfgDynamicSimulation","_communityStatsInit","_customVarsInit","_dynSimToggle"];
 //[[[end]]]
 
 // detect if Ryan's Zombies and Deamons mod is present
@@ -89,16 +89,9 @@ EPOCH_communityStatsCount = count EPOCH_communityStats;
 //GroupSize (number) // Price (String)
 EPOCH_group_upgrade_lvl = ["CfgEpochClient", "group_upgrade_lvl", [4,"100",6,"300",8,"500",10,"1000",12,"1500",13,"1750",14,"2000",15,"3000",16,"5000"]] call EPOCH_fnc_returnConfigEntryV2;
 
-// Init 3d sound handler
-EPOCH_sounds = [];
-_say3dsoundsConfig = 'CfgSay3Dhandler' call EPOCH_returnConfig;
-_say3dsounds = "isClass _x" configClasses (_say3dsoundsConfig);
-{
-	EPOCH_sounds pushBack (configName _x);
-} forEach _say3dsounds;
-
 // disable remote sensors on server and client as all Epoch AI is local to the side controlling it.
 disableRemoteSensors (["CfgEpochClient", "disableRemoteSensors", true] call EPOCH_fnc_returnConfigEntryV2);
+
 // Enable Dynamic simulation on both server and clients (maybe only needed server side)
 // DynSim is handled locally and yes server and clients will need these configurations
 _dynSimToggle = ["CfgDynamicSimulation", "enableDynamicSimulationSystem", true] call EPOCH_fnc_returnConfigEntryV2;
