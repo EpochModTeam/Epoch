@@ -61,7 +61,7 @@ switch _action do {
 		if (rmx_var_favBar_Item in rmx_var_favBar_current) exitWith {"Item already exists in favorites!" call epoch_message; false}; //if duplicate
 		
 		_type = (rmx_var_favBar_Item call BIS_fnc_itemType) select 1;
-		_isBanned = _type in ["BombLauncher", "Cannon", "GrenadeLauncher", "Launcher", "MissileLauncher", "RocketLauncher", "Magazine", "Mortar", "Shotgun","Rocket"];
+		_isBanned = _type in ["BombLauncher", "Cannon", "GrenadeLauncher", "Launcher", "MissileLauncher", "RocketLauncher", "Magazine", "Mortar", "Shotgun","Rocket", "BarrelBomb2_EPOCH_Remote_Mag","BarrelBomb_EPOCH_Remote_Mag"];
 		_isAmmo = _type == "Bullet" && !(rmx_var_favBar_Item in ["EnergyPack","EnergyPackLg"]); 
 		
 		//if (_type in ["AccessoryMuzzle","AccessoryPointer","AccessorySights","AccessoryBipod"]) exitWith {"Attachments are not supported at the moment!" call epoch_message; false};
