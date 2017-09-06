@@ -43,15 +43,15 @@ EPOCH_currentTargetMode = _currentTargetMode;
 // dynamic HUD start
 {
 	_x params [["_selectedVar",[]],["_HUDclass","topRight"],["_ctrlText",""],["_criticalAttributes",[]]];
-	_selectedVar params [["_selVarName",""],["_selVarType",""],["_selVarSubData",""],["_extraLogicRaw",[]],["_customVarLimits",[]]];
+	_selectedVar params [["_selVarName",""],["_selVarType",""],["_selVarSubData",""],["_extraLogicRaw",[]],["_selVarLimits",[]]];
 
-	_varIndex = EPOCH_customVars find _selVarName;
-	if (_varIndex != -1 || !(_customVarLimits isEqualTo [])) then {
-		if (_customVarLimits isEqualTo []) then {
-			_customVarLimits = EPOCH_customVarLimits select _varIndex;
+	_varIndex = _customVarNames find _selVarName;
+	if (_varIndex != -1 || !(_selVarLimits isEqualTo [])) then {
+		if (_selVarLimits isEqualTo []) then {
+			_selVarLimits = _customVarLimits select _varIndex;
 		};
 		_currentVarVal = [_selVarName,_varIndex,_selVarType,_selVarSubData] call EPOCH_fnc_returnHudVar;
-		_customVarLimits params [["_playerLimitMax",100],["_playerLimitMin",0],["_playerWarnLimit",101],["_playerCriticalLimit",101],["_playerWarnLow",0],["_playerCriticalLow",0]];
+		_selVarLimits params [["_playerLimitMax",100],["_playerLimitMin",0],["_playerWarnLimit",101],["_playerCriticalLimit",101],["_playerWarnLow",0],["_playerCriticalLow",0]];
 
 		_extraLogic = false;
 		if !(_extraLogicRaw isEqualTo []) then {
@@ -61,7 +61,7 @@ EPOCH_currentTargetMode = _currentTargetMode;
 			if (_extraLogicType isEqualType []) then {
 				_extraLogicType params [["_extraLogicVarName",""],["_extraLogicType",""],["_extraLogicDefaultValue",""]];
 			};
-			_extraVarIndex = EPOCH_customVars find _extraLogicVarName;
+			_extraVarIndex = _customVarNames find _extraLogicVarName;
 			_extraLogic = [([_extraLogicVarName,_extraVarIndex,_extraLogicType,_extraLogicDefaultValue] call EPOCH_fnc_returnHudVar),_extraLogicCond,_extraLogicData] call EPOCH_fnc_arrayToLogic;
 		};
 

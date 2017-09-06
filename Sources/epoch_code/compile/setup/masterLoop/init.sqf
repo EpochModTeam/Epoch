@@ -14,6 +14,12 @@ _playerAliveTime = EPOCH_playerAliveTime;
 // start alive timer
 _clientAliveTimer = diag_tickTime;
 
+// init player stat vars
+_customVarsInit = ["CfgEpochClient", "customVarsDefaults", EPOCH_customVarsDefaults] call EPOCH_fnc_returnConfigEntryV2;
+_customVarNames = _customVarsInit apply {_x param [0,""]};
+_defaultVarValues = _customVarsInit apply {_x param [1,0]};
+_customVarLimits = _customVarsInit apply {_x param [2,[]]};
+
 // inline function to sync player stats to server
 _fnc_forceUpdate = {
 	private _customVars = [];
@@ -27,10 +33,13 @@ _fnc_forceUpdate = {
 				_customVars pushBack _playerAliveTime;
 			};
 			default {
-				_customVars pushBack (missionNamespace getVariable format["EPOCH_player%1",_x]);
+				private _customVarIndex = _customVarNames find _x;
+				if (_customVarIndex != -1) then {
+					_customVars pushBack (missionNamespace getVariable [format["EPOCH_player%1",_x],_defaultVarValues select _customVarIndex]);
+				};
 			};
 		};
-	} forEach EPOCH_customVars;
+	} forEach _customVarNames;
 	[player,_customVars,Epoch_personalToken] remoteExec ["EPOCH_fnc_savePlayer",2];
 };
 

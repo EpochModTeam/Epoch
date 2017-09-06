@@ -181,5 +181,5 @@ call _lootBubble;
 EPOCH_playerStaminaMax = (100 * (round(_playerAliveTime/360)/10)) min 2500;
 
 // downtick Nuisance
-(EPOCH_customVarLimits select (EPOCH_customVars find "Nuisance")) params [["_playerLimitMax",100],["_playerLimitMin",0]];
+(_customVarLimits select (_customVarNames find "Nuisance")) params [["_playerLimitMax",100],["_playerLimitMin",0]];
 EPOCH_playerNuisance = ((EPOCH_playerNuisance - 1) min _playerLimitMax) max _playerLimitMin;
