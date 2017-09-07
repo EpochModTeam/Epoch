@@ -15,7 +15,7 @@
 class CfgEpochClient
 {
     epochVersion = "1.0.0";
-    ArmAVersion = 168;
+    ArmAVersion = 176;
 	debug = "false";  // true = enable extra rpt debug lines, false to disable
 
 	antagonistRngChance = 100; // increase number to reduce chances and reduce to increase. Default 100
