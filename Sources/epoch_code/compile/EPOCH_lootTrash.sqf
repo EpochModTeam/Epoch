@@ -13,7 +13,7 @@
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_code/compile/EPOCH_lootTrash.sqf
 */
 //[[[cog import generate_private_arrays ]]]
-private ["_animal","_animalPos","_animals","_bankTerminal","_blood","_bloodPos","_cfgItemInteractions","_cfgObjectInteractions","_config","_configWorldName","_destroyTrashObj","_found","_foundLootObject","_foundObjConfig","_foundObjType","_foundTerminal","_getWorldTypes","_id","_index","_inputWorldTypes","_interactAttributes","_lootAnimalObj","_objects","_output","_randomAIClass","_return","_trashClasses","_trashType"];
+private ["_animal","_animalPos","_animals","_bankTerminal","_blood","_bloodPos","_cfgItemInteractions","_cfgObjectInteractions","_config","_destroyTrashObj","_found","_foundLootObject","_foundObjConfig","_foundObjType","_foundTerminal","_getWorldTypes","_id","_index","_inputWorldTypes","_interactAttributes","_lootAnimalObj","_objects","_output","_randomAIClass","_return","_trashClasses","_trashType"];
 //[[[end]]]
 _return = false;
 if (diag_tickTime - EPOCH_lastTrash > 2)  then {

@@ -1,8 +1,8 @@
 _spawnChance = ((EPOCH_playerNuisance + EPOCH_playerSoiled)/2) max 1;
 // add more antagonist spawn chances
 if (random _antagonistRndChance < _spawnChance) then {
-	// TODO PRE 1.0 - replace below (selectRandomWeighted _antagonistChances)
-	(_antagonistChances call BIS_fnc_selectRandomWeighted) call EPOCH_unitSpawnIncrease;
+	// selectRandomWeighted arma 1.76 or higher
+	(selectRandomWeighted _antagonistChances) call EPOCH_unitSpawnIncrease;
 };
 // diag_log format["DEBUG: _spawnChance %1",_spawnChance];
 
