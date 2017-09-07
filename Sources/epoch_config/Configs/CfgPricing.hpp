@@ -3078,6 +3078,14 @@ class CfgPricing
     {
         price = 30;
     };
+    class BarrelBomb_EPOCH_Remote_Mag
+    {
+        price = 80;
+    };
+    class BarrelBomb2_EPOCH_Remote_Mag
+    {
+        price = 80;
+    };
     class B_AssaultPack_cbr
     {
         price = 10;

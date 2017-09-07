@@ -710,7 +710,9 @@ class CfgItemSort
 			"APERSMine_Range_Mag",
 			"APERSBoundingMine_Range_Mag",
 			"SLAMDirectionalMine_Wire_Mag",
-			"APERSTripMine_Wire_Mag"
+			"APERSTripMine_Wire_Mag",
+			"BarrelBomb_EPOCH_Remote_Mag",
+			"BarrelBomb2_EPOCH_Remote_Mag"
 		};
 		Hand[] = {
 			"SmokeShell",
@@ -731,14 +733,14 @@ class CfgItemSort
 			"FAK",
 			"Towelette",
 			"HeatPack",
-			"ColdPack"
+			"ColdPack",
+			"ItemVitamins"
 		};
 
 		Food[] = {
 			"ItemPowderMilk",
 			"ItemRicebox",
 			"ItemCereals",
-			"ItemVitamins",
 			"Pumpkin",
 			"FoodBioMeat",
 			"FoodMeeps",
@@ -772,7 +774,7 @@ class CfgItemSort
 			"ItemSodaMocha",
 			"ItemSodaBurst",
 			"ItemSodaRbull",
-			"ItemSodaAlpinedude"
+			"ItemSodaAlpineDude"
 		};
 		Basebuilding[] = {
 			"CircuitParts",
@@ -857,6 +859,12 @@ class CfgItemSort
 			"ItemVehDoc4",
 
 			// KryptoItems
+			"ItemTinBar10oz",
+			"ItemAluminumBar10oz",
+			"ItemCopperBar10oz",
+			"ItemSilverBar10oz",
+			"ItemBriefcaseSilver100oz",
+			
 			"PartOreGold",
 			"PartOreSilver",
 			"PartOre",
