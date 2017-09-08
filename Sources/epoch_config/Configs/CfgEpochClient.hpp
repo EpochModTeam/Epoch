@@ -160,6 +160,7 @@ class CfgEpochClient
 
 	// Advanced Vehicle Repair
 	UseAdvancedVehicleRepair = "true";									// Switch On / Off Advanced Vehicle Repair (Does not effect SuppressedCraftingItems !)
+	EnableRemoveParts = "true";											// Enable removing Tires / Engines from Vehicles
 	DisallowSellOnDamage = "false";										// Prevent from selling Vehicles with one or more fully damaged wheel or engine
 	SuppressedCraftingItems[] = {"VehicleRepairLg"};					// These Items can not be crafted (but can be used in recipe) - for usage of "Advanced Vehicle Repair"
 	VehicleRepairs[] = {												// {Hitpoint, dmg to repair, dmg to replace, mat to repair, mat to replace}

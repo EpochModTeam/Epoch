@@ -19,13 +19,9 @@ params ["_vehicle","_value"];
 if (local _vehicle) then {
 	{
 		if ((_x select 0) isequaltype 0) then {
-//			_currentDMG = _vehicle getHitIndex (_x select 0);
-//			_vehicle setHitIndex [_x select 0, (_currentDMG - 0.5) max 0];
 			_vehicle setHitIndex [_x select 0, _x select 1];
 		}
 		else {
-//			_currentDMG = _vehicle getHitPointDamage (_x select 0);
-//			_vehicle setHitPointDamage [_x select 0, (_currentDMG - 0.5) max 0];
 			_vehicle setHitPointDamage [_x select 0, _x select 1];
 		};
 	} foreach _value;

@@ -14,7 +14,7 @@
 */
 
 //[[[cog import generate_private_arrays ]]]
-private ["_allHitPointsDamage","_allRepaired","_line","_partName","_pos","_repaired","_vehName","_vehtype"];
+private ["_PreventRepairs","_allHitPointsDamage","_allRepaired","_line","_partName","_pos","_repaired","_vehName","_vehtype"];
 //[[[end]]]
 params [['_vehicle',objnull],['_args',[]] ];
 _args params [['_costs',0],['_updateInterval',1.2]];
@@ -36,22 +36,31 @@ _vehicle engineOn false;
 _repaired = [];
 _allRepaired = true;
 _allHitPointsDamage = getAllHitPointsDamage _vehicle;
+_PreventRepairs = ["CfgServicePoint", "PreventRepairs", []] call EPOCH_fnc_returnConfigEntryV2;
 {
 	if ((vehicle player != _vehicle) || (!local _vehicle) || speed _vehicle < -2 || speed _vehicle > 2) exitWith {
 		_allRepaired = false;
 		_line = format ['Repairing of %1 stopped', _vehName];
 		[_line,5] call Epoch_message;
 	};
-	if (!(_x in _repaired) && !(_x isequalto "") && (_allHitPointsDamage select 2 select _foreachindex) > 0) then {
+	_HitPointName = _x;
+	if (!(_HitPointName in _repaired) && !(_HitPointName isequalto "") && (_allHitPointsDamage select 2 select _foreachindex) > 0) then {
 		_partName = toarray _x;
 		_partName set [0,20];
 		_partName set [1,45];
 		_partName set [2,20];
 		_partName = toString _partName;
-		_vehicle setHitPointDamage [_x,0];
-		_line = format ['Repairing%1 ...', _partName];
-		[_line,5] call Epoch_message;
-		_repaired pushback _x;
+		if (({_HitPointName == (_x select 0) && (_vehicle getHitPointDamage _HitPointName) >= (_x select 1)} count _PreventRepairs) > 0) then {
+			_line = format ['Can not Repair full damaged %1', _partName];
+			[_line,5] call Epoch_message;
+			_allRepaired = false;
+		}
+		else {
+			_vehicle setHitPointDamage [_HitPointName,0];
+			_line = format ['Repairing%1 ...', _partName];
+			[_line,5] call Epoch_message;
+		};
+		_repaired pushback _HitPointName;
 		uisleep _updateInterval;
 	};
 } foreach (_allHitPointsDamage select 0);
@@ -63,5 +72,9 @@ if (_allRepaired) then {
 	_pos set [2,(_pos select 2)+0.25];
 	_vehicle setposatl _pos;
 	_line = format ['%1 full Repaired', _vehName];
+	[_line,5] call Epoch_message;
+}
+else {
+	_line = format ['%1 not full Repaired', _vehName];
 	[_line,5] call Epoch_message;
 };
