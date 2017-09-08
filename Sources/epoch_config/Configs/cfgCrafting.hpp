@@ -367,14 +367,13 @@ class CfgCrafting
     };
     class VehicleRepair : Part
     {
-        usedIn[] = {"VehicleRepairLg","EngineParts","SpareTire"};
+        usedIn[] = {"VehicleRepairLg","EngineParts","SpareTire","KitVehicleUpgradeI_200_EPOCH"};
         previewPosition[] = {0.787659,1,0.30098};
         previewScale = 0.45;
         previewVector = 1.5;
     };
     class VehicleRepairLg : Item
     {
-        usedIn[] = {"KitVehicleUpgradeI_200_EPOCH"};
         recipe[] = {"VehicleRepair","ItemCorrugated"};
         previewPosition[] = {0.798742,1,0.317871};
         previewScale = 0.25;

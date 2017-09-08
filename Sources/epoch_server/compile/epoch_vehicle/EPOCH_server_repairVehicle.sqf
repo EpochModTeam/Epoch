@@ -12,6 +12,7 @@
     Github:
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server/compile/epoch_vehicle/EPOCH_server_repairVehicle.sqf
 */
+private ["_god"];
 params ["_vehicle","_value","_player",["_token","",[""]]];
 if (isNull _vehicle) exitWith{};
 if !([_player,  _token] call EPOCH_server_getPToken) exitWith{};
@@ -22,6 +23,10 @@ if ((_value select 0) isEqualTo "ALL") then {
 } 
 else {
 	if (local _vehicle) then {
+		_god = !(isDamageAllowed _vehicle);
+		if (_god) then {
+			_vehicle allowdamage true;
+		};
 		{
 			if ((_x select 0) isequaltype 0) then {
 				_vehicle setHitIndex _x;
@@ -30,6 +35,9 @@ else {
 				_vehicle setHitPointDamage _x;
 			};
 		} foreach _value;
+		if (_god) then {
+			_vehicle allowdamage false;
+		};
 	} else {
 		[_vehicle, _value] remoteExec ['EPOCH_client_repairVehicle',_vehicle];
 	};

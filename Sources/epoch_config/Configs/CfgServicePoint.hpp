@@ -58,6 +58,17 @@ class CfgServicePoint {
 //								"Land_fs_feed_F",
 //								"Land_fs_roof_F"
 	};
+	PreventRepairs[] = {		// These Hitpints will not be repaired, if damage >= value (Prevent from Duping Tires / Engines)
+		{"HitLFWheel",1},		// {"HitPoint",value}
+		{"HitLF2Wheel",1},
+		{"HitLMWheel",1},
+		{"HitLBWheel",1},
+		{"HitRFWheel",1},
+		{"HitRF2Wheel",1},
+		{"HitRMWheel",1},
+		{"HitRBWheel",1},
+		{"HitEngine",1}
+	};
 	ServicePointDist = 40;
 	refuel_updateInterval = 1;
 	refuel_amount = 0.1;

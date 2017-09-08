@@ -12,10 +12,10 @@
     Github:
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_code/compile/vehicles/EPOCH_client_VehicleMaintananceCheck.sqf
 */
-private ["_veh","_config","_VehicleRepairs","_repairs","_removes","_replaces","_wheels","_wheelcounter","_torepair","_HitPointName","_Hit","_wheel","_repairarrays"];
+private ["_veh","_VehicleRepairs","_EnableRemoveParts","_repairs","_removes","_replaces","_wheels","_wheelcounter","_torepair","_HitPointName","_Hit","_wheel","_repairarrays"];
 _veh = _this;
-_config = 'CfgEpochClient' call EPOCH_returnConfig;
-_VehicleRepairs = getArray (_config >> "VehicleRepairs");
+_VehicleRepairs = ["CfgEpochClient", "VehicleRepairs", []] call EPOCH_fnc_returnConfigEntryV2;
+_EnableRemoveParts = ["CfgEpochClient", "EnableRemoveParts", true] call EPOCH_fnc_returnConfigEntryV2;
 _repairs = [];
 _removes = [];
 _replaces = [];
@@ -42,7 +42,7 @@ _torepair = (getAllHitPointsDamage _veh) select 0;
 			if (_Hit >= _limit1) exitwith {
 				_repairs pushback _searchedhit;
 			};
-			if !((_veh getvariable ["vehicle_slot","-1"]) isequalto "-1") then {
+			if (!((_veh getvariable ["vehicle_slot","-1"]) isequalto "-1") && _EnableRemoveParts) then {
 				if (_searchedhit in ["HitLFWheel","HitLF2Wheel","HitLMWheel","HitLBWheel","HitRFWheel","HitRF2Wheel","HitRMWheel","HitRBWheel","HitEngine"]) then {
 					_removes pushback _searchedhit;
 				};

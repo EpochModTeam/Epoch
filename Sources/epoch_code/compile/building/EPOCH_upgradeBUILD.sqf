@@ -116,7 +116,7 @@ if (_object isKindOf "Constructions_static_F") then {
 			_canUpgradePartCount = _canUpgradePartCount + _req;
 		} forEach _upgradeParts;
 
-		_doors = ["WoodLargeWallDoorL_EPOCH","WoodWall4_EPOCH"];
+		_doors = ["WoodLargeWallDoorL_EPOCH","WoodWall4_EPOCH","CinderWallDoorwHatch_EPOCH"];
 		_gates = ["CinderWallGarage_EPOCH"];
 		if (_canUpgrade) then {
 			_upgradeto = _upgrade select 0;

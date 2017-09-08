@@ -289,7 +289,7 @@ class CfgBaseBuilding
     class CinderWallHalf_Ghost_EPOCH : CinderWallHalf_SIM_EPOCH {};
     class CinderWall_EPOCH : Default
     {
-        upgradeBuilding[] = {{"CinderWallGarage_EPOCH",{{"ItemCorrugatedLg",1},{"CircuitParts",1}}}};
+        upgradeBuilding[] = {{"CinderWallGarage_EPOCH",{{"ItemCorrugatedLg",1},{"CircuitParts",1}}},{"CinderWallDoorwHatch_EPOCH",{{"ItemCorrugatedLg",1},{"CircuitParts",1}}}};
         removeParts[] = {{"CinderBlocks",4},{"ItemRock",2}};
         simulClass = "CinderWall_SIM_EPOCH";
         staticClass = "CinderWall_EPOCH";
@@ -304,6 +304,14 @@ class CfgBaseBuilding
         allowedSnapObjects[] = {"Const_Cinder_static_F","Const_floors_static_F"};
         upgradeBuilding[] = {};
         removeParts[] = {};
+    };
+    class CinderWallDoorwHatch_EPOCH : Default
+    {
+        removeParts[] = {{"CinderBlocks",4},{"ItemCorrugatedLg",1},{"CircuitParts",1}};
+        staticClass = "CinderWallDoorwHatch_EPOCH";
+        snapType = "snapPointsPara";
+        snapPointsPara[] = {"N","E","W"};
+        allowedSnapPoints[] = {"N","S","E","W"};
     };
     class WoodLargeWall_EPOCH : Default
     {
