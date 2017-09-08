@@ -117,7 +117,6 @@ class CfgClientFunctions
 			class fnc_isInsideBuilding {};
 			class fnc_findSafePos {};
 			class fnc_addItemOverflow {};
-			class pushCustomVar {};
 			class itemData {};
 			class itemPicture {};
 			class itemDisplayName {};
