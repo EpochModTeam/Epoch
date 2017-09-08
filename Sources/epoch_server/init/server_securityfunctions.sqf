@@ -1945,7 +1945,7 @@ _skn_admincode = compileFinal ("
 		if (_this == 69) then {
 			_optics = ['optic_Arco', 'optic_Hamr', 'optic_Aco', 'optic_ACO_grn', 'optic_Aco_smg', 'optic_ACO_grn_smg', 'optic_Holosight', 'optic_Holosight_smg', 'optic_SOS', 'optic_MRCO', 'optic_DMS', 'optic_Yorris', 'optic_MRD', 'optic_LRPS', 'optic_NVS', 'optic_tws', 'optic_tws_mg'];
 			_muzzles = ['muzzle_snds_H','muzzle_snds_L','muzzle_snds_M','muzzle_snds_B','muzzle_snds_H_MG','muzzle_snds_acp','Heal_EPOCH','Defib_EPOCH','Repair_EPOCH','acc_flashlight','acc_pointer_IR'];
-			_misc = ['Binocular','NVG_EPOCH','ItemCompass','ItemGPS','ItemMap','EpochRadio0','EpochRadio1','EpochRadio2','EpochRadio3','EpochRadio4','EpochRadio5','EpochRadio6','EpochRadio7','EpochRadio8','EpochRadio9','ItemWatch'];
+			_misc = ['Binocular','NVG_EPOCH','ItemCompass','ItemGPS','ItemGeigerCounter_EPOCH','ItemMap','EpochRadio0','EpochRadio1','EpochRadio2','EpochRadio3','EpochRadio4','EpochRadio5','EpochRadio6','EpochRadio7','EpochRadio8','EpochRadio9','ItemWatch'];
 			_attachments = _optics + _muzzles + _misc;
 			{
 				_config = 'CfgPricing' call EPOCH_returnConfig;

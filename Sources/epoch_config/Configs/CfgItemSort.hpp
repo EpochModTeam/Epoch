@@ -323,6 +323,7 @@ class CfgItemSort
 			"Laserdesignator",
 			"ItemCompass",
 			"ItemGPS",
+			"ItemGeigerCounter_EPOCH",
 			"ItemWatch",
 			"NVG_EPOCH",
 			"Binocular",
@@ -864,7 +865,7 @@ class CfgItemSort
 			"ItemCopperBar10oz",
 			"ItemSilverBar10oz",
 			"ItemBriefcaseSilver100oz",
-			
+
 			"PartOreGold",
 			"PartOreSilver",
 			"PartOre",

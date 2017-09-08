@@ -45,7 +45,8 @@ class CfgLootTable_MAD
 	{
 		items[] = {
 				{ { "ItemCompass", "item" }, 20 },
-				{ { "ItemGPS", "item" }, 10 },
+				{ { "ItemGeigerCounter_EPOCH", "item" }, 1 },
+				{ { "ItemGPS", "item" }, 9 },
 				{ { "EpochRadio0", "item" }, 3 },
 				{ { "EpochRadio1", "item" }, 3 },
 				{ { "EpochRadio2", "item" }, 3 },

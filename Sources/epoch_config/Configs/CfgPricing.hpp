@@ -326,6 +326,10 @@ class CfgPricing
     {
         price = 20;
     };
+	class ItemGeigerCounter_EPOCH
+	{
+		price = 500;
+	};
     class EpochRadio0
     {
         price = 2;
