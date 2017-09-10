@@ -1220,7 +1220,36 @@ class CfgCrafting
 		previewScale = 0.2;
 		previewVector = 0.1;
     };
-	
+	class ItemCanvas : Part
+	{
+		usedIn[] = {"KitTentA","KitTentDome"};
+		previewPosition[] = {0.802374,1,0.26};
+		previewScale = 0.45;
+		previewVector = 3.3;
+	};
+	class ItemSeedBag : Part
+	{
+		usedIn[] = {};
+		previewPosition[] = {0.802374,1,0.26};
+		previewScale = 0.45;
+		previewVector = 3.3;
+	};
+	class KitTentA : Kit
+	{
+		recipe[] = {{"ItemCanvas",2},{"ItemPipe",3}};
+		model = "\x\addons\a3_epoch_community\models\tent_camo.p3d";
+		previewPosition[] = {0.79545,1,0.42};
+		previewScale = 0.3;
+		previewVector = 0.3;
+	};
+	class KitTentDome : Kit
+	{
+		recipe[] = {{"ItemCanvas",3},{"ItemPipe",4}};
+		model = "\x\addons\a3_epoch_community\models\tent_dome.p3d";
+		previewPosition[] = {0.79545,1,0.42};
+		previewScale = 0.3;
+		previewVector = 0.3;
+	};
 };
 
 /*[[[end]]]*/

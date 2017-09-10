@@ -778,6 +778,8 @@ class CfgItemSort
 			"ItemSodaAlpineDude"
 		};
 		Basebuilding[] = {
+			"KitTentA",
+			"KitTentDome",
 			"CircuitParts",
 			"PartPlankPack",
 			"CinderBlocks",
@@ -813,6 +815,8 @@ class CfgItemSort
 		};
 
 		Items[] = {
+			"ItemCanvas",
+			"ItemSeedBag",
 			"SpareTire",
 			"EngineParts",
 			"EngineBlock",
@@ -900,7 +904,12 @@ class CfgItemSort
 			"PaintCanPur",
 			"PaintCanRed",
 			"PaintCanTeal",
-			"PaintCanYel"
+			"PaintCanYel",
+			"SeedPacket_GoldenSeal",
+			"SeedPacket_Hemp",
+			"SeedPacket_Poppy",
+			"SeedPacket_Pumpkin",
+			"SeedPacket_Sunflower"
 		};
 		Vehicles_Land[] = {
 			"ebike_epoch",								// Motorrad

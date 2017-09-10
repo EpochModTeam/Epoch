@@ -1852,6 +1852,26 @@ class CfgPricing
 	{
 		price = 5;
 	};
+	class SeedPacket_GoldenSeal
+	{
+		price = 5;
+	};
+	class SeedPacket_Hemp
+	{
+		price = 5;
+	};
+	class SeedPacket_Poppy
+	{
+		price = 5;
+	};
+	class SeedPacket_Pumpkin
+	{
+		price = 5;
+	};
+	class SeedPacket_Sunflower
+	{
+		price = 5;
+	};
     class sardines_epoch
     {
         price = 2;
@@ -2866,6 +2886,14 @@ class CfgPricing
     {
         price = 25;
     };
+	class ItemCanvas
+	{
+		price = 10;
+	};
+	class ItemSeedBag
+	{
+		price = 5;
+	};
     class ItemKiloHemp
     {
         price = 100;
@@ -2946,6 +2974,14 @@ class CfgPricing
     {
         price = 90;
     };
+	class KitTentA
+	{
+		price = 40;
+	};
+	class KitTentDome
+	{
+		price = 75;
+	};
     class KitWorkbench
     {
         price = 10;
