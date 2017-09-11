@@ -411,6 +411,16 @@ class CfgItemInteractions
         buildClass = "Workbench_SIM_EPOCH";
         isStorage = 1;
     };
+	class KitTentA : Item_Build_base
+    {
+        buildClass = "TentA_SIM_EPOCH";
+		isStorage = 1;
+    };
+	class KitTentDome : Item_Build_base
+    {
+        buildClass = "TentDome_SIM_EPOCH";
+		isStorage = 1;
+    };
     class KitFoundation : Item_Build_base
     {
         buildClass = "Foundation_EPOCH";
@@ -776,6 +786,12 @@ class CfgItemInteractions
     {
         interactReturnOnUse = "smallbackpack_pink_epoch";
     };
+	class ItemCanvas : Default {};
+	class ItemSeedBag : Default {};
+	class SeedPacket_GoldenSeal : Default {};
+	class SeedPacket_Hemp : Default {};
+	class SeedPacket_Poppy : Default {};
+	class SeedPacket_Pumpkin : Default {};
+	class SeedPacket_Sunflower : Default {};
 };
-
 /*[[[end]]]*/
