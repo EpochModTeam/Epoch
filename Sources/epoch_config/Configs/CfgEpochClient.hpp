@@ -88,7 +88,7 @@ class CfgEpochClient
 		{"Temp",98.6,{106.7,95,102,105,96,95}},
 		{"Hunger",1500,{5000,0,5001,5001,1250,0}},
 		{"Thirst",750,{2500,0,2501,2501,625,0}},
-		{"AliveTime",0,{-2,0}},
+		{"AliveTime",0,{-2,0}}, // local
 		{"Energy",0,{2500,0}},
 		{"Wet",0,{100,0,35,55,-1,-1}},
 		{"Soiled",0,{100,0,35,55,-1,-1}},
@@ -96,12 +96,12 @@ class CfgEpochClient
 		{"Toxicity",0,{100,0,35,55,-1,-1}},
 		{"Stamina",100,{"EPOCH_playerStaminaMax",0}},
 		{"Crypto",0,{250000,0}},
-		{"HitPoints",{0,0,0,0},{1,0,0.5,1,-1,-1}},
+		{"HitPoints",{0,0,0,0},{1,0,0.5,1,-1,-1}}, // only limits here used for HUD.
 		{"BloodP",100,{190,0,120,140,70,50}},
 		{"SpawnArray",{},{}},
-		{"Karma",0,{50000,-50000}},
+		{"Karma",0,{50000,-50000}}, // TODO remove or replace
 		{"Alcohol",0,{100,0,35,55,-1,-1}},
-		{"Radiation",0,{100,0,35,55,-1,-1}},
+		{"Radiation",0,{100,0,35,55,-1,-1}},  // local
 		{"Nuisance",0,{100,0}},
 		{"MissionArray",{},{}}
 	};
@@ -132,7 +132,7 @@ class CfgEpochClient
     InventoryClosed = "_this call EPOCH_InventoryClosed;_this call EPOCH_custom_EH_InventoryClosed";
     InventoryOpened = "_this call EPOCH_InventoryOpened||_this call EPOCH_custom_EH_InventoryOpened"; // the || here allows either function to block opening of inventory by returning true.
     Killed = "_this call EPOCH_fnc_playerDeath;_this call Epoch_custom_EH_Killed";
-    HandleRating = "0";
+    HandleRating = "-2000";
 	HandleScore = "";
     HandleDamage = "";
     HandleHeal = "";

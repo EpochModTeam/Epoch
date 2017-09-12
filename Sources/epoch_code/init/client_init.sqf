@@ -84,6 +84,9 @@ call EPOCH_clientInit;
 [] execFSM "epoch_code\system\SPVEH.fsm";
 [] execFSM "epoch_code\system\player_login.fsm";
 
+// testing for civilan males
+player addRating -2000;
+
 //Start processing right after Loading screen is done and game has started
 [] spawn {
 	waitUntil {!isNull (findDisplay 46) && (!isNil "EPOCH_loadingScreenDone")};
