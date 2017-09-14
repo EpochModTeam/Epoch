@@ -149,6 +149,9 @@ switch _interactOption do {
 		};
 	};
 	case 4: { // Refuel 4
+		if !(player == vehicle player) exitwith {
+			["Fill from outside!", 5] call Epoch_message;
+		};
 		_vehicles = player nearEntities [["LandVehicle","Ship","Air","Tank"], 30];
 		if (cursorTarget in _vehicles) then {
 			_vehicle = cursorTarget;
