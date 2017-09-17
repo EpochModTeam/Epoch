@@ -15,9 +15,8 @@ if (worldName == "VR") then {
 
 	_debug = false;
 	_expiresBunker = 14400; // four hours
-
+	_debugLocation = getMarkerPos "respawn_west";
 	_memoryPoints = ["one","two","three","four"];
-
 	_bunkerCounter = 0;
 	_newBunkerCounter = 0;
 
@@ -63,9 +62,6 @@ if (worldName == "VR") then {
 		// Generate Seed
 		_seed = random 999999;
 		diag_log format["Generating bunker with seed: %1",_seed];
-
-		// starting location corner of map
-		_debugLocation = getMarkerPos "respawn_west";
 		_location = ATLToASL _debugLocation;
 		_originalLocation = +_location;
 
@@ -125,7 +121,7 @@ if (worldName == "VR") then {
 	};
 
 	// move respawn point into first bunker.
-	if (!(isNull _firstBunker) && {_firstBunker distance _debugLocation > 2}) then {
+	if (!(isNull _firstBunker) && {_firstBunker distance _debugLocation > 1}) then {
 		deleteMarker "respawn_west";
 		createMarker ["respawn_west", getposATL _firstBunker];
 	};
