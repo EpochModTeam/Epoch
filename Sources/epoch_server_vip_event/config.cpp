@@ -33,6 +33,6 @@ class CfgEpochServerEvents
         usePrefix = 0; // usePrefix: 0 = use full file path, 1 = pre/postfix path (use if file is inside epoch settings pbo EpochEvents folder), 2 = pre/postfix path (use if file inside epoch events pbo EpochEvents folder).
         runNumTimes = -1; // runNumTimes: 0 = disabled, 1+ = number of times to execute before removing event, -1 = no limit.
         input[] = {"ItemBriefcaseGold100oz"}; // array input to execVM at time of run and accessed with _this inside of script.
-		disallowedWorlds = {"VR"};
+		disallowedWorlds[] = {"VR"};
     };
 };
