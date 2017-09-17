@@ -34,6 +34,9 @@ class VR : Default
 		// W [-14.4316,0.112793,-10.3098]
 		{ "Transport_C_EPOCH", { -0.286865, 8.17383, -10.3098 }, "", { 4089.82, 4597.71, 0.00143433 } }
 	};
+	lightPos[] = {};
+	debugBoxClass = "";
+	cloneClasses[] = {};
 	propsPos[] = {};
 	staticNpcPos[] = {};
 };
