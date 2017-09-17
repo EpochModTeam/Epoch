@@ -17,7 +17,7 @@ private ["_array","_center","_class","_cloneClasses","_config","_configWorld","_
 //[[[end]]]
 _loadBaseTemplateConfig = {
 	private ["_partPos","_part","_array","_center","_deSimulate"];
-	params ["_templateClass","_selectedTemplate","_pos"];
+	params ["_templateClass","_selectedTemplate","_pos","_class"];
     _array = getArray(configfile >> "CfgPropTemplate" >> _selectedTemplate);
 	_pos set [2,0];
     _center = createVehicle [_templateClass, _pos, [], 0, "CAN_COLLIDE"];
@@ -138,7 +138,7 @@ if !(_debugBox isEqualTo "") then {
 	if (_pos isEqualType "") then {
 		_markerName = _pos;
 		_pos = getMarkerPos _markerName;
-		["ProtectionZone_Invisible_F",_markerName,_pos] call _loadBaseTemplateConfig;
+		["ProtectionZone_Invisible_F",_markerName,_pos,_class] call _loadBaseTemplateConfig;
 	} else {
 		_pro2 = createVehicle ["ProtectionZone_Invisible_F", _pos, [], 0, "CAN_COLLIDE"];
 	};
