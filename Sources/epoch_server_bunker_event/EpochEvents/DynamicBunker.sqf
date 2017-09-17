@@ -9,7 +9,7 @@
 	https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server_bunker_event/EpochEvents/BunkerSpawner.sqf
 */
 //[[[cog import generate_private_arrays ]]]
-private ["_allBunkers","_animationStates","_bunkerClasses","_bunkerCounter","_bunkerLocationsKey","_bunkerLocationsTMP","_colCount","_debug","_debugLocation","_expiresBunker","_instanceID","_list","_loc1","_location","_maxBunkerLimitPerRow","_maxBunkerLimitSlots","_maxColumns","_memoryPoints","_modelInfo","_newBunkerCounter","_object","_originalLocation","_pOffset","_response","_rng","_rngChance","_rowCount","_score","_scriptHiveKey","_seed","_selectedBunker","_size","_veh"];
+private ["_allBunkers","_animationStates","_bunkerClasses","_bunkerCounter","_bunkerLocationsKey","_bunkerLocationsTMP","_colCount","_debug","_debugLocation","_expiresBunker","_firstBunker","_instanceID","_list","_loc1","_location","_maxBunkerLimitPerRow","_maxBunkerLimitSlots","_maxColumns","_memoryPoints","_modelInfo","_newBunkerCounter","_object","_originalLocation","_pOffset","_response","_rng","_rngChance","_rowCount","_score","_scriptHiveKey","_seed","_selectedBunker","_size","_veh"];
 //[[[end]]]
 if (worldName == "VR") then {
 
@@ -33,6 +33,8 @@ if (worldName == "VR") then {
 	_response = [_scriptHiveKey, _bunkerLocationsKey] call EPOCH_fnc_server_hiveGETRANGE;
 	_response params [["_status",0],["_data",[]] ];
 
+	_firstBunker = objNull;
+
 	// check for proper return and data type
 	if (_status == 1 && _data isEqualType [] && !(_data isEqualTo [])) then {
 
@@ -41,6 +43,7 @@ if (worldName == "VR") then {
 			if (_x isEqualType [] && !(_x isEqualTo [])) then {
 				_x params ["_selectedBunker", "_posWorld", ["_memoryPointsStatus",[]] ];
 				_object = createSimpleObject [_selectedBunker, _posWorld];
+				if (isNull _firstBunker) then {_firstBunker = _object;};
 				{
 					_object animate [_x,(_memoryPointsStatus param [_forEachIndex,1]),true];
 				} forEach _memoryPoints;
@@ -80,6 +83,7 @@ if (worldName == "VR") then {
 			if (_rng > _rngChance) then {
 				_selectedBunker = selectRandom _bunkerClasses;
 				_object = createSimpleObject [_selectedBunker, _location];
+				if (isNull _firstBunker) then {_firstBunker = _object;};
 				_allBunkers pushBack _object;
 				//_bunkerLocationsTMP pushBack [_selectedBunker,getPosWorld _object, vectorDir _object, vectorUp _object];
 				_newBunkerCounter = _newBunkerCounter + 1;
@@ -107,6 +111,7 @@ if (worldName == "VR") then {
 						_score = _score + 1;
 						_animationStates pushBack 0
 					} else {
+						_veh animate [_x,1,true];
 						_animationStates pushBack 1
 					};
 				};
@@ -117,6 +122,12 @@ if (worldName == "VR") then {
 
 		// save to DB
 	    [_scriptHiveKey, _bunkerLocationsKey, _expiresBunker, _bunkerLocationsTMP] call EPOCH_fnc_server_hiveSETEX;
+	};
+
+	// move respawn point into first bunker.
+	if (!(isNull _firstBunker) && {_firstBunker distance _debugLocation > 2}) then {
+		deleteMarker "respawn_west";
+		createMarker ["respawn_west", getposATL _firstBunker];
 	};
 
 	if (_debug) then {

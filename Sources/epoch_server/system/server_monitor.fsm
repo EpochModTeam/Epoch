@@ -31,7 +31,7 @@ link15[] = {8,2};
 link16[] = {9,2};
 link17[] = {10,2};
 globals[] = {0.000000,0,0,0,0,640,480,1,3,6316128,1,275.180084,1161.319580,208.497711,-659.879456,898,884,1};
-window[] = {2,-1,-1,-1,-1,786,26,1318,26,3,916};
+window[] = {2,-1,-1,-32000,-32000,994,234,1526,234,3,916};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -58,7 +58,7 @@ class FSM
        "// Load Epoch Events 3.0" \n
        "{" \n
        "    diag_log format[""Loading Settings for %1 event..."",configName _x];" \n
-       "    _events pushBack [getNumber (_x >> ""delay""),getText (_x >> ""script""),getNumber (_x >> ""runOnStart""),getNumber (_x >> ""usePrefix""),getNumber (_x >> ""runNumTimes"")];" \n
+       "    _events pushBack [getNumber (_x >> ""delay""),getText (_x >> ""script""),getNumber (_x >> ""runOnStart""),getNumber (_x >> ""usePrefix""),getNumber (_x >> ""runNumTimes""),getArray (_x >> ""disallowedWorlds"")];" \n
        "} forEach (""isClass _x"" configClasses (configFile >> ""CfgEpochServerEvents""));" \n
        "" \n
        "_cmdDelay = EPOCH_hiveAdminCmdTime;" \n
@@ -355,7 +355,7 @@ class FSM
            "_pvehTime = diag_tickTime;" \n
            "_newEvents = [];" \n
            "{" \n
-           "    _x params [""_time"", ""_scriptName"", [""_runAtStart"",0], [""_usePrePostfix"",1], [""_runNumTimes"",-1], [""_input"",[]]];" \n
+           "    _x params [""_time"", ""_scriptName"", [""_runAtStart"",0], [""_usePrePostfix"",1], [""_runNumTimes"",-1], [""_input"",[]], [""_disallowedWorlds"",[]] ];" \n
            "    _eventKey = format[""EPOCH_EVENT_%1"", _forEachIndex];" \n
            "    _eventCounter = format[""EPOCH_EVENT_COUNTER_%1"", _forEachIndex];" \n
            "    _lastTime = missionNamespace getVariable _eventKey;" \n
@@ -368,8 +368,8 @@ class FSM
            "        missionNamespace setVariable[_eventKey, _startTime];" \n
            "        _lastTime = _startTime;" \n
            "    };" \n
-           "    if (_counter >= _runNumTimes && _runNumTimes != -1) then {" \n
-           "		diag_log format[""DEBUG: server event expired %1"", _scriptName];" \n
+           "    if ((_counter >= _runNumTimes && _runNumTimes != -1) || worldName in _disallowedWorlds) then {" \n
+           "			diag_log format[""DEBUG: server event removed %1"", _scriptName];" \n
            "    } else {" \n
            "			_newEvents pushBack _x;" \n
            "        if ((diag_tickTime - _lastTime) >= _time) then {" \n
