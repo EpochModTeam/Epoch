@@ -1,14 +1,14 @@
 /*%FSM<COMPILE "F:\Program Files (x86)\Bohemia Interactive\Tools\FSM Editor Personal Edition\scriptedFSM.cfg, Server Monitor">*/
 /*%FSM<HEAD>*/
 /*
-item0[] = {"Init",0,4346,600.000000,-575.000000,700.000000,-525.000000,0.000000,"Init"};
+item0[] = {"Init",0,250,600.000000,-575.000000,700.000000,-525.000000,0.000000,"Init"};
 item1[] = {"_",8,218,600.000000,-500.000000,700.000000,-450.000000,0.000000,""};
 item2[] = {"Process",2,250,600.000000,-350.000000,700.000000,-300.000000,0.000000,"Process"};
 item3[] = {"Vehicle_and_Player",4,218,740.131958,-228.950928,840.131958,-178.950928,1.000000,"" \n "Vehicle and Player" \n "Checks"};
 item4[] = {"CMD_queue",4,218,450.000000,-450.000000,550.000000,-400.000000,10.000000,"CMD queue"};
 item5[] = {"Save_Players",4,218,450.000000,-375.000000,550.000000,-325.000000,3.000000,"Save" \n "Players"};
 item6[] = {"Cleanup",4,218,750.000000,-375.000000,850.000000,-325.000000,8.000000,"Cleanup"};
-item7[] = {"Events_and_Resta",4,218,450.000000,-225.000000,550.000000,-175.000000,0.000000,"Events" \n "and" \n "Restart"};
+item7[] = {"Events_and_Resta",4,4314,450.000000,-225.000000,550.000000,-175.000000,0.000000,"Events" \n "and" \n "Restart"};
 item8[] = {"Save_Vehicles",4,218,450.000000,-300.000000,550.000000,-250.000000,4.000000,"Save" \n "Vehicles"};
 item9[] = {"Cleanup_Handler",4,218,750.000000,-450.000000,850.000000,-400.000000,8.000000,"Cleanup" \n "Handler"};
 item10[] = {"Server_FPS",4,218,600.000000,-148.030182,700.000000,-98.030182,0.000000,"Server FPS"};
@@ -368,7 +368,6 @@ class FSM
            "        missionNamespace setVariable[_eventKey, _startTime];" \n
            "        _lastTime = _startTime;" \n
            "    };" \n
-           "	diag_log format[""DEBUG: worldname %1 in %2 for %3"", worldName,_disallowedWorlds,_scriptName];" \n
            "    if ((_counter >= _runNumTimes && _runNumTimes != -1) || worldName in _disallowedWorlds) then {" \n
            "			diag_log format[""DEBUG: server event removed %1"", _scriptName];" \n
            "    } else {" \n
