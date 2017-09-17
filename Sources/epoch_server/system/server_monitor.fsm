@@ -1,14 +1,14 @@
 /*%FSM<COMPILE "F:\Program Files (x86)\Bohemia Interactive\Tools\FSM Editor Personal Edition\scriptedFSM.cfg, Server Monitor">*/
 /*%FSM<HEAD>*/
 /*
-item0[] = {"Init",0,4346,600.000000,-575.000000,700.000000,-525.000000,0.000000,"Init"};
+item0[] = {"Init",0,250,600.000000,-575.000000,700.000000,-525.000000,0.000000,"Init"};
 item1[] = {"_",8,218,600.000000,-500.000000,700.000000,-450.000000,0.000000,""};
 item2[] = {"Process",2,250,600.000000,-350.000000,700.000000,-300.000000,0.000000,"Process"};
 item3[] = {"Vehicle_and_Player",4,218,740.131958,-228.950928,840.131958,-178.950928,1.000000,"" \n "Vehicle and Player" \n "Checks"};
 item4[] = {"CMD_queue",4,218,450.000000,-450.000000,550.000000,-400.000000,10.000000,"CMD queue"};
 item5[] = {"Save_Players",4,218,450.000000,-375.000000,550.000000,-325.000000,3.000000,"Save" \n "Players"};
 item6[] = {"Cleanup",4,218,750.000000,-375.000000,850.000000,-325.000000,8.000000,"Cleanup"};
-item7[] = {"Events_and_Resta",4,218,450.000000,-225.000000,550.000000,-175.000000,0.000000,"Events" \n "and" \n "Restart"};
+item7[] = {"Events_and_Resta",4,4314,450.000000,-225.000000,550.000000,-175.000000,0.000000,"Events" \n "and" \n "Restart"};
 item8[] = {"Save_Vehicles",4,218,450.000000,-300.000000,550.000000,-250.000000,4.000000,"Save" \n "Vehicles"};
 item9[] = {"Cleanup_Handler",4,218,750.000000,-450.000000,850.000000,-400.000000,8.000000,"Cleanup" \n "Handler"};
 item10[] = {"Server_FPS",4,218,600.000000,-148.030182,700.000000,-98.030182,0.000000,"Server FPS"};
@@ -31,7 +31,7 @@ link15[] = {8,2};
 link16[] = {9,2};
 link17[] = {10,2};
 globals[] = {0.000000,0,0,0,0,640,480,1,3,6316128,1,275.180084,1161.319580,208.497711,-659.879456,898,884,1};
-window[] = {2,-1,-1,-1,-1,916,156,1448,156,3,916};
+window[] = {2,-1,-1,-1,-1,786,26,1318,26,3,916};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -353,7 +353,7 @@ class FSM
           condition=/*%FSM<CONDITION""">*/"((diag_tickTime - _pvehTime) > 20)"/*%FSM</CONDITION""">*/;
           action=/*%FSM<ACTION""">*/"// Epoch Events" \n
            "_pvehTime = diag_tickTime;" \n
-           "_eventsMarkedForRemoval = [];" \n
+           "_newEvents = [];" \n
            "{" \n
            "    _x params [""_time"", ""_scriptName"", [""_runAtStart"",0], [""_usePrePostfix"",1], [""_runNumTimes"",-1], [""_input"",[]]];" \n
            "    _eventKey = format[""EPOCH_EVENT_%1"", _forEachIndex];" \n
@@ -369,8 +369,9 @@ class FSM
            "        _lastTime = _startTime;" \n
            "    };" \n
            "    if (_counter >= _runNumTimes && _runNumTimes != -1) then {" \n
-           "        _eventsMarkedForRemoval pushBack _forEachIndex;" \n
+           "		diag_log format[""DEBUG: server event expired %1"", _scriptName];" \n
            "    } else {" \n
+           "			_newEvents pushBack _x;" \n
            "        if ((diag_tickTime - _lastTime) >= _time) then {" \n
            "            missionNamespace setVariable[_eventKey, diag_tickTime];" \n
            "            _preFix = """";" \n
@@ -379,25 +380,19 @@ class FSM
            "                _preFix = ""\epoch_server_settings\EpochEvents\"";" \n
            "                _postFix = "".sqf"";" \n
            "            };" \n
-           "				    if (_usePrePostfix == 2) then {" \n
+           "				if (_usePrePostfix == 2) then {" \n
            "                _preFix = ""\epoch_server_events\EpochEvents\"";" \n
            "                _postFix = "".sqf"";" \n
            "            };" \n
            "            _handle = _input execVM format[""%1%2%3"",_preFix,_scriptName,_postFix];" \n
            "            _counter =  _counter + 1;" \n
            "            missionNamespace setVariable[_eventCounter, _counter];" \n
-           "            diag_log format[""DEBUG: _event %1"", _scriptName];" \n
+           "            diag_log format[""DEBUG: server event %1"", _scriptName];" \n
            "        };" \n
            "    };" \n
            "} forEach _events;" \n
            "// remove expired events" \n
-           "" \n
-           "if !(_eventsMarkedForRemoval isEqualTo []) then {" \n
-           "    {" \n
-           "        _removed = _events deleteAt (_eventsMarkedForRemoval deleteAt _forEachIndex);" \n
-           "        diag_log format[""DEBUG: removing event: %1"",_removed];" \n
-           "    } forEach (+_eventsMarkedForRemoval);" \n
-           "};" \n
+           "_events = _newEvents;" \n
            "" \n
            "// restart script" \n
            "if (_scriptBasedRestart) then {" \n
