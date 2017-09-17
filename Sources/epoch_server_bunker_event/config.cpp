@@ -27,8 +27,8 @@ class CfgPatches {
 class CfgEpochServerEvents
 {
     class DynamicBunker {
-        delay = 0; // delay in seconds between executions <SCALAR>,
-        script = "\epoch_server_debris_event\EpochEvents\DynamicBunker.sqf"; // script: name or full path if usePrefix is set to 0
+        delay = 1; // delay in seconds between executions <SCALAR>,
+        script = "\epoch_server_bunker_event\EpochEvents\DynamicBunker.sqf"; // script: name or full path if usePrefix is set to 0
         runOnStart = 1; // runOnStart: 1 = run script at startup, 0 normal delay
         usePrefix = 0; // usePrefix: 1 = pre/postfix path (use if file is inside epoch settings pbo EpochEvents folder), 2 = pre/postfix path (use if file inside epoch events pbo EpochEvents folder), 0 = use full file path
         runNumTimes = 1; // runNumTimes: -1 = no limit, 0 = disabled, 1+ = number of times to execute before removing event.
