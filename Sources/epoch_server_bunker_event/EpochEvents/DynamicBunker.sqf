@@ -3,36 +3,35 @@
 		Aaron Clark - EpochMod.com
 
 	Description:
-		Spawns Bunker Dynamically on Roadways.
+		Spawns Bunker Dynamically.
 
 	Improvements and or bugfixes and other contributions are welcome via the github:
 	https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server_bunker_event/EpochEvents/BunkerSpawner.sqf
 */
 //[[[cog import generate_private_arrays ]]]
-private ["_allBunkers","_animationStates","_bunkerClasses","_bunkerCounter","_bunkerLocations","_bunkerLocationsKey","_bunkerLocationsTMP","_colCount","_debug","_expiresBunker","_instanceID","_list","_loc1","_location","_maxBunkerLimit","_maxBunkerLimitPerRow","_maxBunkerLimitSlots","_maxColumns","_memoryPoints","_modelInfo","_newBunkerCounter","_object","_originalLocation","_pOffset","_response","_rng","_rngChance","_rowCount","_score","_scriptHiveKey","_seed","_selectedBunker","_size","_veh","_worldSize"];
+private ["_allBunkers","_animationStates","_bunkerClasses","_bunkerCounter","_bunkerLocationsKey","_bunkerLocationsTMP","_colCount","_debug","_debugLocation","_expiresBunker","_instanceID","_list","_loc1","_location","_maxBunkerLimitPerRow","_maxBunkerLimitSlots","_maxColumns","_memoryPoints","_modelInfo","_newBunkerCounter","_object","_originalLocation","_pOffset","_response","_rng","_rngChance","_rowCount","_score","_scriptHiveKey","_seed","_selectedBunker","_size","_veh"];
 //[[[end]]]
 if (worldName == "VR") then {
 
 	_debug = false;
-	_expiresBunker = 604800;
+	_expiresBunker = 14400; // four hours
 
 	_memoryPoints = ["one","two","three","four"];
 
 	_bunkerCounter = 0;
 	_newBunkerCounter = 0;
-	_worldSize = worldSize/2;
+
 	_instanceID = call EPOCH_fn_InstanceID;
 
-	_maxBunkerLimit = 500; // max total objects to spawn
-	_rngChance = 0.95; // Lower this to spawn more positions
+	_maxBunkerLimitSlots = 100;
+	_maxBunkerLimitPerRow = 10;
+
+	_rngChance = 0.3; // Lower this to spawn more positions
 	_scriptHiveKey = "EPOCH:DynamicBunker"; // change this to force a new seed to be generated.
 
 	_bunkerLocationsKey = format ["%1:%2", _instanceID, worldname];
 	_response = [_scriptHiveKey, _bunkerLocationsKey] call EPOCH_fnc_server_hiveGETRANGE;
-
 	_response params [["_status",0],["_data",[]] ];
-	_bunkerLocations = [];
-
 
 	// check for proper return and data type
 	if (_status == 1 && _data isEqualType [] && !(_data isEqualTo [])) then {
@@ -52,23 +51,19 @@ if (worldName == "VR") then {
 	} else {
 
 		// generate new bunker
-		_maxBunkerLimitSlots = 100;
-		_maxBunkerLimitPerRow = 10;
 		_size = 13.081;
-		_rngChance = 0.3;
 		_maxColumns = _maxBunkerLimitSlots / _maxBunkerLimitPerRow;
-
 		_allBunkers = [];
 		_bunkerLocationsTMP = [];
 		_newBunkerCounter = 0;
-
 
 		// Generate Seed
 		_seed = random 999999;
 		diag_log format["Generating bunker with seed: %1",_seed];
 
 		// starting location corner of map
-		_location = ATLToASL (getMarkerPos "respawn_west");
+		_debugLocation = getMarkerPos "respawn_west";
+		_location = ATLToASL _debugLocation;
 		_originalLocation = +_location;
 
 		_bunkerClasses = [
@@ -117,8 +112,7 @@ if (worldName == "VR") then {
 				};
 			} forEach _memoryPoints;
 			_modelInfo = getModelInfo _veh;
-			_bunkerLocationsTMP pushBack [_modelInfo select 1, getPosWorld _veh, _animationStates];
-
+			_bunkerLocationsTMP pushBack [_modelInfo select 1, getPosWorld _veh, _animationStates, _score];
 		} forEach _allBunkers;
 
 		// save to DB
