@@ -19,6 +19,7 @@ class CfgEpochClient
 	debug = "false";  // true = enable extra rpt debug lines, false to disable
 
 	antagonistRngChance = 100; // increase number to reduce chances and reduce to increase. Default 100
+	outOfBoundsRadiation = 10; // how much rads per tick (10sec), when outside play area.
 
     baseHungerLoss = 2; // increase number to speed up rate of Hunger loss
     baseThirstLoss = 2; // increase number to speed up rate of Thirst loss
@@ -132,7 +133,7 @@ class CfgEpochClient
     InventoryClosed = "_this call EPOCH_InventoryClosed;_this call EPOCH_custom_EH_InventoryClosed";
     InventoryOpened = "_this call EPOCH_InventoryOpened||_this call EPOCH_custom_EH_InventoryOpened"; // the || here allows either function to block opening of inventory by returning true.
     Killed = "_this call EPOCH_fnc_playerDeath;_this call Epoch_custom_EH_Killed";
-    HandleRating = "-2000";
+    HandleRating = "0";
 	HandleScore = "";
     HandleDamage = "";
     HandleHeal = "";
