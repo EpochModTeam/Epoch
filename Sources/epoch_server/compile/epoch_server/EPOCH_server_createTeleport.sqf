@@ -48,7 +48,7 @@ _loadBaseTemplateConfig = {
 _config = configFile >> "CfgEpoch";
 _configWorld = _config >> worldname;
 
-_debugBox = getArray(_configWorld >> "debugBoxClass"); // debugBoxClass = "" to disable
+_debugBox = getText(_configWorld >> "debugBoxClass"); // debugBoxClass = "" to disable
 if !(_debugBox isEqualTo "") then {
 	_debugLocation = getMarkerPos "respawn_west";
 	_debugLocation set[2, 0];
