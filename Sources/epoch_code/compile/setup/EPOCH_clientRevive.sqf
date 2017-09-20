@@ -57,6 +57,9 @@ if !(alive player && alive _playerObject && !isPlayer _playerObject) then {
         Epoch_canBeRevived = false;
         Epoch_personalToken = _personalToken;
 
+		// reset blood Pressure to warning level
+		EPOCH_playerBloodP = 120;
+
         // restart masterloop
         [] spawn EPOCH_masterLoop;
         [5, 100] call EPOCH_niteLight;
@@ -69,8 +72,6 @@ if !(alive player && alive _playerObject && !isPlayer _playerObject) then {
         	player addEventHandler [_x,(["CfgEpochClient", _x, ""] call EPOCH_fnc_returnConfigEntryV2)];
         } forEach (["CfgEpochClient", "addEventHandler", []] call EPOCH_fnc_returnConfigEntryV2);
 
-        // reset blood Pressure to warning level
-        EPOCH_playerBloodP = 120;
     };
 } else {
 	deleteVehicle _playerObject;

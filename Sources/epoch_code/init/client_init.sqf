@@ -89,11 +89,4 @@ addMissionEventHandler ["PlayerViewChanged", {if (cameraView isEqualTo "GROUP") 
 // testing for civilan males
 player addRating -2000;
 
-//Start processing right after Loading screen is done and game has started
-[] spawn {
-	waitUntil {!isNull (findDisplay 46) && (!isNil "EPOCH_loadingScreenDone")};
-	'load' call epoch_favBar_draw;
-};
-
-
 true

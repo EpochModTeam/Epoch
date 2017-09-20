@@ -1,5 +1,8 @@
 // make sure we wait for Display #46
-waitUntil {!(isNull (findDisplay 46))};
+waitUntil {!isNull (findDisplay 46) && (!isNil "EPOCH_loadingScreenDone")};
+
+// load favBar
+'load' call epoch_favBar_draw;
 
 // force update within 15 seconds
 EPOCH_forceUpdate = false;
@@ -10,6 +13,18 @@ EPOCH_forceUpdateNow = false;
 // init local player stat vars
 _playerRadiation = EPOCH_playerRadiation;
 _playerAliveTime = EPOCH_playerAliveTime;
+_playerNuisance = EPOCH_playerNuisance;
+_playerBloodP = EPOCH_playerBloodP;
+_playerHunger = EPOCH_playerHunger;
+_playerThirst = EPOCH_playerThirst;
+_playerSoiled = EPOCH_playerSoiled;
+_playerToxicity = EPOCH_playerToxicity;
+_playerImmunity = EPOCH_playerImmunity;
+_playerTemp = EPOCH_playerTemp;
+_playerWet = EPOCH_playerWet;
+_playerEnergy = EPOCH_playerEnergy;
+_playerAlcohol = EPOCH_playerAlcohol;
+_playerStamina = EPOCH_playerStamina;
 
 // start alive timer
 _clientAliveTimer = diag_tickTime;
@@ -20,17 +35,63 @@ _customVarNames = _customVarsInit apply {_x param [0,""]};
 _defaultVarValues = _customVarsInit apply {_x param [1,0]};
 _customVarLimits = _customVarsInit apply {_x param [2,[]]};
 
+// init limits
+/*
+{
+    _varLimits = _customVarLimits select _forEachIndex;
+	call compile format['_varLimits params [["_player%1Max",100],["_player%1Min",0]];',_x];
+} forEach _customVarNames;
+*/
+
+(_customVarLimits select (_customVarNames find "Temp")) params [["_playerTempMax",100],["_playerTempMin",0]];
+(_customVarLimits select (_customVarNames find "Hunger")) params [["_playerHungerMax",100],["_playerHungerMin",0]];
+(_customVarLimits select (_customVarNames find "Thirst")) params [["_playerThirstMax",100],["_playerThirstMin",0]];
+(_customVarLimits select (_customVarNames find "Energy")) params [["_playerEnergyMax",100],["_playerEnergyMin",0]];
+(_customVarLimits select (_customVarNames find "Wet")) params [["_playerWetMax",100],["_playerWetMin",0]];
+(_customVarLimits select (_customVarNames find "Soiled")) params [["_playerSoiledMax",100],["_playerSoiledMin",0]];
+(_customVarLimits select (_customVarNames find "Immunity")) params [["_playerImmunityMax",100],["_playerImmunityMin",0]];
+(_customVarLimits select (_customVarNames find "Toxicity")) params [["_playerToxicityMax",100],["_playerToxicityMin",0]];
+(_customVarLimits select (_customVarNames find "Stamina")) params [["_playerStaminaMax",100],["_playerStaminaMin",0]];
+(_customVarLimits select (_customVarNames find "BloodP")) params [["_playerBloodPMax",100],["_playerBloodPMin",0]];
+(_customVarLimits select (_customVarNames find "Alcohol")) params [["_playerAlcoholMax",100],["_playerAlcoholMin",0]];
+(_customVarLimits select (_customVarNames find "Radiation")) params [["_playerRadiationMax",100],["_playerRadiationMin",0]];
+(_customVarLimits select (_customVarNames find "Nuisance")) params [["_playerNuisanceMax",100],["_playerNuisanceMin",0]];
+
+EPOCH_playerEnergyMax = _playerEnergyMax;
+
 // inline function to sync player stats to server
 _fnc_forceUpdate = {
 	private _customVars = [];
 	{
 		// use local var from inside master loop
+		/*
+		call compile format['_customVars pushBack _player%1;',_x];
+		*/
+
 		switch (_x) do {
 			case ("Radiation"): {
 				_customVars pushBack _playerRadiation;
 			};
+			case ("Nuisance"): {
+				_customVars pushBack _playerNuisance;
+			};
+			case ("BloodP"): {
+				_customVars pushBack _playerBloodP;
+			};
 			case ("AliveTime"):{
 				_customVars pushBack _playerAliveTime;
+			};
+			case ("Hunger"):{
+				_customVars pushBack _playerHunger;
+			};
+			case ("Thirst"):{
+				_customVars pushBack _playerThirst;
+			};
+			case ("Alcohol"):{
+				_customVars pushBack _playerAlcohol;
+			};
+			case ("Energy"):{
+				_customVars pushBack _playerEnergy;
 			};
 			default {
 				private _customVarIndex = _customVarNames find _x;
@@ -61,14 +122,14 @@ if (isNil "EPOCH_display_setup_complete") then {
 
 
 // Background radiation
-_backgroundRadiation = ["CfgEpochClient", "backgroundRadiation", 10] call EPOCH_fnc_returnConfigEntryV2;
+_outOfBoundsRadiation = ["CfgEpochClient", "outOfBoundsRadiation", 10] call EPOCH_fnc_returnConfigEntryV2;
 _radsLevel = 0;
 
 _prevEquippedItem = [];
 _damagePlayer = damage player;
 _isOnFoot = isNull objectParent player;
 _panic = false;
-_prevEnergy = EPOCH_playerEnergy;
+_prevEnergy = _playerEnergy;
 
 
 // init config data
@@ -81,7 +142,7 @@ _energyRegenMax = ["CfgEpochClient", "energyRegenMax", 5] call EPOCH_fnc_returnC
 _energyRange = ["CfgEpochClient", "energyRange", 75] call EPOCH_fnc_returnConfigEntryV2;
 _hudConfigs = ["CfgEpochClient", "hudConfigs", []] call EPOCH_fnc_returnConfigEntryV2;
 
-EPOCH_chargeRate = 0;
+_chargeRate = 0;
 EPOCH_playerIsSwimming = false;
 
 _antagonistChanceDefaults = [

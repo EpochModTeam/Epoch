@@ -11,7 +11,7 @@ interactAttributes[] = {
 	{"Toxicity",0},
 	{"Stamina",0},
 	{"Wet",0},
-	{"BloodP",0},
+	{"BloodP",0},  // only increase is allowed
 	{"Karma",0},
 	{"Alcohol",0},
 	{"Radiation",0}
@@ -76,7 +76,7 @@ class CfgItemInteractions
     class honey_epoch : Food_Jar_base
     {
         interactText = "EAT";
-        interactAttributes[] = {{"Immunity",1},{"Stamina",30},{"BloodP",10}};
+        interactAttributes[] = {{"Immunity",1},{"Stamina",30}};
         interactActions[] = {{"EMPTY","[1,[],'emptyjar_epoch'] call EPOCH_consumeItem;"}};
     };
     class sardines_epoch : Food_TinCan_base
@@ -342,7 +342,7 @@ class CfgItemInteractions
 	class ItemVitamins : Food_base
     {
 		interactText = "Take Pills";
-        interactAttributes[] = {{"Immunity",20},{"Stamina",50},{"BloodP",-10},{"Toxicity",-5},{"Thirst",-150}};
+        interactAttributes[] = {{"Immunity",20},{"Stamina",50},{"Toxicity",-5},{"Thirst",-150}};
     };
     class KitSpikeTrap : Item_Build_base
     {
@@ -500,7 +500,7 @@ class CfgItemInteractions
     {
         interactAction = 6;
         interactText = "USE";
-        interactAttributes[] = {{"Immunity",10},{"Stamina",-100},{"BloodP",-10}};
+        interactAttributes[] = {{"Immunity",10},{"Stamina",-100}};
     };
     class Goldenseal : Default
     {

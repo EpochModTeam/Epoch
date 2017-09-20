@@ -1,4 +1,4 @@
-_spawnChance = ((EPOCH_playerNuisance + EPOCH_playerSoiled)/2) max 1;
+_spawnChance = ((_playerNuisance + _playerSoiled)/2) max 1;
 // add more antagonist spawn chances
 if (random _antagonistRndChance < _spawnChance) then {
 	// selectRandomWeighted arma 1.76 or higher

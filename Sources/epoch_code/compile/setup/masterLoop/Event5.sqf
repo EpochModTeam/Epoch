@@ -7,31 +7,21 @@ _powerSources = nearestObjects[player, ["Land_spp_Tower_F","Land_wpp_Turbine_V2_
 _nearbyRadioactiveObjects = (_powerSources + EPOCH_nearestLocations) select {_x getVariable ["EPOCH_Rads", 0] > 0};
 
 // check if player is out of map bounds.
+_radsLevel = 0;
 _worldSize = worldSize/2;
 _outOfBounds = !(player inArea [[_worldSize,_worldSize,0], _worldSize, _worldSize, 0, true ]);
 if (_outOfBounds) then {
 	// player is out of map bounds, give ten times background rads
 	 ["You are out of the play area!", 5] call Epoch_message;
-	 _radsLevel = _backgroundRadiation;
-	 _playerRadiation = ((_playerRadiation + _radsLevel) min 100) max 0;
+	 _radsLevel = _outOfBoundsRadiation;
 } else {
 	// radiated objects or locations nearby
 	if !(_nearbyRadioactiveObjects isEqualTo []) then {
 		// add extra rads based on intensity and distance from site.
-		_radioActiveSite = _nearbyRadioactiveObjects select 0;
-		_radsLevel = (_radioActiveSite getVariable ["EPOCH_Rads", 0]) / (player distance _radioActiveSite);
-		_playerRadiation = ((_playerRadiation + _radsLevel) min 100) max 0;
-	} else {
-		// TODO handle reduction of rads in master loop
-		_anitRadiation = player getVariable ["EPOCH_antiRadiation", 0];
-		if (_anitRadiation > 0) then {
-			// lower radiation by 0.1 per tick
-			_playerRadiation = ((_playerRadiation - 0.1) min 100) max 0;
-			// lower anti rad level
-			player setVariable ["EPOCH_antiRadiation", _anitRadiation - 1];
-		};
+		_radsLevel = ((_nearbyRadioactiveObjects select 0) getVariable ["EPOCH_Rads", 0]) / (player distance _radioActiveSite);
 	};
 };
+
 
 EPOCH_playerIsSwimming = false;
 
@@ -53,8 +43,7 @@ if !(surfaceIsWater _position) then {
 };
 
 // default power state
-EPOCH_nearPower = false;
-EPOCH_chargeRate = 0;
+_chargeRate = 0;
 
 // energy Charge from nearby power plants
 if !(_powerSources isEqualTo[]) then {
@@ -76,15 +65,13 @@ if !(_powerSources isEqualTo[]) then {
 	if (_totalCapacity > 0) then {
 		_players = player nearEntities[["Epoch_Male_F", "Epoch_Female_F"], _energyRange];
 		if (_players isEqualTo []) then {
-			EPOCH_chargeRate = ceil _totalCapacity;
+			_chargeRate = ceil _totalCapacity;
 		} else {
-			EPOCH_chargeRate = ceil (_totalCapacity / (count _players));
+			_chargeRate = ceil (_totalCapacity / (count _players));
 		};
-		EPOCH_nearPower = true;
 	};
 };
-// downtick Alcohol
-EPOCH_playerAlcohol = ((EPOCH_playerAlcohol - 1) min 100) max 0;
+
 
 _playerAliveTime = round(_playerAliveTime + (_tickTime - _clientAliveTimer));
 _clientAliveTimer = _tickTime;
