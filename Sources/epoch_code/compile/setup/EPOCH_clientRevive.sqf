@@ -71,6 +71,10 @@ if !(alive player && alive _playerObject && !isPlayer _playerObject) then {
 
         // reset blood Pressure to warning level
         EPOCH_playerBloodP = 120;
+
+		// testing for civilan males
+		waituntil {local _playerObject};
+		_playerObject addRating -2000;
     };
 } else {
 	deleteVehicle _playerObject;
