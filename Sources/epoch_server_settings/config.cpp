@@ -261,6 +261,7 @@ class CfgEpoch
 	#include "configs\maps\stratis.h"
 	#include "configs\maps\altis.h"
 	#include "configs\maps\chernarus.h"
+	#include "configs\maps\chernarusredux.h"
 	#include "configs\maps\chernarus_summer.h"
 	#include "configs\maps\australia.h"
 	#include "configs\maps\takistan.h"
