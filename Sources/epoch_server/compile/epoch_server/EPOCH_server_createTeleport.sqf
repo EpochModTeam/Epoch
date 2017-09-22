@@ -124,7 +124,7 @@ if !(_debugBox isEqualTo "") then {
 	};
 
 	if !(_useWorldPos) then {
-		_pos1 = _debug modelToWorld _pos1;
+		_pos1 = asltoatl (_debug modeltoworldworld _pos1);
 	};
 
 	_exitClass = _x select 2;
