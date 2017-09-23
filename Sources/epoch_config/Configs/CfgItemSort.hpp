@@ -802,6 +802,8 @@ class CfgItemSort
 			"KitWorkbench",
 			"KitWoodLadder",
 			"KitWoodTower",
+			"KitMetalTower",
+			"KitCinderTower",
 			"ItemLockbox",
 			"Pelt_EPOCH",
 			"ItemSafe",

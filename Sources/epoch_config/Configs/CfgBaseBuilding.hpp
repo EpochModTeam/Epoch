@@ -235,6 +235,29 @@ class CfgBaseBuilding
         removeParts[] = {};
     };
     class MetalFloor_Ghost_EPOCH : MetalFloor_SIM_EPOCH {};
+	
+	class MetalTower_EPOCH : Default
+    {
+        removeParts[] = {{"ItemCorrugatedLg",3}};
+		upgradeBuilding[] = {{"CinderTower_EPOCH",{{"CinderBlocks",4},{"MortarBucket",4}}}};
+        upgradeBuildingPart[] = {{"ItemCorrugatedLg",4}};
+        removeBuildingPart[] = {{"ItemCorrugatedLg",2}};
+        simulClass = "MetalTower_SIM_EPOCH";
+        staticClass = "MetalTower_EPOCH";
+        GhostPreview = "MetalTower_Ghost_EPOCH";
+        snapPointsPara[] = {"NF2","SF2","EF2","WF2","NF","SF","EF","WF","C","CB"};
+        snapPointsPerp[] = {"N","S","E","W","CinN","CinS","CinE","CinW"};
+        persistAnimations[] = {"NWall","EWall","SWall","WWall"};
+        energyCost = 0.5;
+    };
+    class MetalTower_SIM_EPOCH : MetalTower_EPOCH
+    {
+        allowedSnapPoints[] = {"NF2","SF2","EF2","WF2","CB"};
+        allowedSnapObjects[] = {"MetalTower_EPOCH","Const_floors_static_F","Constructions_foundation_F"};
+    };
+    class MetalTower_Ghost_EPOCH : MetalTower_SIM_EPOCH {};
+
+	
     class CinderWallGarage_EPOCH : Default
     {
         removeParts[] = {{"CinderBlocks",4},{"ItemCorrugatedLg",1},{"CircuitParts",1}};
@@ -313,7 +336,28 @@ class CfgBaseBuilding
         snapPointsPara[] = {"N","E","W"};
         allowedSnapPoints[] = {"N","S","E","W"};
     };
-    class WoodLargeWall_EPOCH : Default
+    
+	class CinderTower_EPOCH : Default
+    {
+        removeParts[] = {{"CinderBlocks",2}};
+        upgradeBuildingPart[] = {{"CinderBlocks",2},{"MortarBucket",2}};
+        removeBuildingPart[] = {{"CinderBlocks",2}};
+        simulClass = "CinderTower_SIM_EPOCH";
+        staticClass = "CinderTower_EPOCH";
+        GhostPreview = "CinderTower_Ghost_EPOCH";
+        snapPointsPara[] = {"NF2","SF2","EF2","WF2","NF","SF","EF","WF","C","CB"};
+        snapPointsPerp[] = {"N","S","E","W","CinN","CinS","CinE","CinW"};
+        persistAnimations[] = {"NWall","EWall","SWall","WWall"};
+        energyCost = 0.4;
+    };
+    class CinderTower_SIM_EPOCH : CinderTower_EPOCH
+    {
+        allowedSnapPoints[] = {"NF2","SF2","EF2","WF2","CB"};
+        allowedSnapObjects[] = {"CinderTower_EPOCH","Const_floors_static_F","Constructions_foundation_F"};
+    };
+    class CinderTower_Ghost_EPOCH : CinderTower_SIM_EPOCH {};
+	
+	class WoodLargeWall_EPOCH : Default
     {
         upgradeBuilding[] = {{"WoodWall1_EPOCH",{{"ItemPlywoodPack",1}}},{"WoodLargeWallCor_EPOCH",{{"ItemCorrugated",1}}}};
         removeParts[] = {{"PartPlankPack",2}};
@@ -560,7 +604,7 @@ class CfgBaseBuilding
     class Tipi_Ghost_EPOCH : Tipi_SIM_EPOCH {};
 	class TentA_EPOCH  : Default
     {
-        removeParts[] = {{"Pelt_EPOCH",2},{"PartPlankPack",1}};
+        removeParts[] = {{"KitTentA",1}};
         GhostPreview = "TentA_Ghost_EPOCH";
         staticClass = "TentA_EPOCH";
         simulClass = "TentA_SIM_EPOCH";
@@ -578,7 +622,7 @@ class CfgBaseBuilding
 	class TentA_Ghost_EPOCH : TentA_SIM_EPOCH {};
 	class TentDome_EPOCH  : Default
 	{
-		removeParts[] = {{"Pelt_EPOCH",2},{"PartPlankPack",1}};
+		removeParts[] = {{"KitTentDome",1}};
 		GhostPreview = "TentDome_Ghost_EPOCH";
 		staticClass = "TentDome_EPOCH";
 		simulClass = "TentDome_SIM_EPOCH";
