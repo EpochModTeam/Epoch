@@ -13,7 +13,7 @@
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server/compile/epoch_player/EPOCH_server_revivePlayer.sqf
 */
 //[[[cog import generate_private_arrays ]]]
-private ["_loadout","_CorpseCrypto","_PlayerCrypto","_attachments","_cIndex","_class","_currwh","_deleteprimary","_deletesecondary","_dir","_droppedPrimary","_droppedSecondary","_droppedWeapons","_equipped","_group","_location","_newPlyr","_playerGroup","_playerUID","_primaryWeapon","_secondaryWeapon","_token","_type","_vars","_wMags","_wMagsArray","_weapon","_wh"];
+private ["_loadout","_CorpseCrypto","_PlayerCrypto","_attachments","_cIndex","_class","_currwh","_deleteprimary","_deletesecondary","_dir","_droppedPrimary","_droppedSecondary","_droppedWeapons","_equipped","_group","_location","_newPlyr","_playerGroup","_playerUID","_primaryWeapon","_secondaryWeapon","_token","_type","_vars","_wMags","_wMagsArray","_weapon","_wh","_kIndex","_reviver","_reviverCStats","_reviverKarma","_reviverKarmaAdj"];
 //[[[end]]]
 params ["_player","_reviver",["_token","",[""]] ];
 
@@ -203,6 +203,14 @@ if (!local _player) then {
 
 				// send stat to reviver
 				[_reviver, "Revives", 1, true] call EPOCH_server_updatePlayerStats;
+				
+				// send karma stat to reviver
+				_kIndex = EPOCH_communityStats find "Karma";
+				_reviverCStats = _reviver getVariable["COMMUNITY_STATS", EPOCH_defaultStatVars];
+				_reviverKarma = _reviverCStats select _kIndex;
+				_reviverKarmaAdj = 5;
+				if(_reviverKarma < 0)then{_reviverKarmaAdj = -5};
+				[_reviver, "Karma", _reviverKarmaAdj, true] call EPOCH_server_updatePlayerStats;
 			};
 		};
 	};
