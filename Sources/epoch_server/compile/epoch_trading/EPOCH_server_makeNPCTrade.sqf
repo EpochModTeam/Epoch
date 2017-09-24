@@ -13,7 +13,7 @@
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server/compile/epoch_trading/EPOCH_server_makeNPCTrade.sqf
 */
 //[[[cog import generate_private_arrays ]]]
-private ["_MaxBankDebit","_SkipOut","_VAL","_aiItems","_bankBalance","_bankData","_cIndex","_config","_currQty","_current_crypto","_current_cryptoRaw","_errorMsg","_final_location","_foundSmoke","_group","_helipad","_helipads","_item","_itemClasses","_itemQty","_itemQtys","_itemTax","_itemWorth","_itemsIn","_itemsOut","_lockOwner","_makeTradeIn","_message","_nearByHolder","_objHiveKey","_objOwner","_playerCryptoLimit","_playerGroup","_playerNetID","_playerUID","_position","_qtyIndex","_response","_return","_returnIn","_returnOut","_road","_serverSettingsConfig","_slot","_smoke","_tax","_tmpposition","_tradeIn","_tradeOut","_tradeQtyTotal","_tradeTotal","_vars","_vehHiveKey","_vehObj","_vehSlot","_vehicle","_vehicleBought","_vehicleSold","_vehicles","_vehslot","_wH","_wHPos","_wp"];
+private ["_MaxBankDebit","_SkipOut","_VAL","_aiItems","_bankBalance","_bankData","_cIndex","_config","_currQty","_current_crypto","_current_cryptoRaw","_errorMsg","_final_location","_foundSmoke","_group","_helipad","_helipads","_item","_itemClasses","_itemQty","_itemQtys","_itemTax","_itemWorth","_itemsIn","_itemsOut","_lockOwner","_makeTradeIn","_message","_nearByHolder","_objHiveKey","_objOwner","_playerCryptoLimit","_playerGroup","_playerNetID","_playerUID","_position","_qtyIndex","_response","_return","_returnIn","_returnOut","_road","_serverSettingsConfig","_slot","_smoke","_tax","_tmpposition","_tradeIn","_tradeOut","_tradeQtyTotal","_tradeTotal","_vars","_vehHiveKey","_vehObj","_vehSlot","_vehicle","_vehicleBought","_vehicleSold","_vehicles","_vehslot","_wH","_wHPos","_wp","_kIndex","_playerCStats","_playerKarma","_playerKarmaAdj"];
 //[[[end]]]
 params ["_trader","_itemsIn","_itemsOut","_player",["_token","",[""]] ];
 
@@ -118,6 +118,13 @@ if (_slot != -1) then {
 					_current_crypto = _current_crypto + _itemWorth;
 					_tradeQtyTotal = _tradeQtyTotal + _itemQty;
 				};
+				// send karma stat to seller
+				_kIndex = EPOCH_communityStats find "Karma";
+				_playerCStats = _player getVariable["COMMUNITY_STATS", EPOCH_defaultStatVars];
+				_playerKarma = _playerCStats select _kIndex;
+				_playerKarmaAdj = 1;
+				if(_playerKarma < 0)then{_playerKarmaAdj = -1};
+				[_player, "Karma", _playerKarmaAdj, true] call EPOCH_server_updatePlayerStats;
 			};
 		};
 	} forEach _itemsIn;
@@ -294,6 +301,13 @@ if (_slot != -1) then {
 								_current_crypto = _current_crypto - _itemWorth;
 								_tradeQtyTotal = _tradeQtyTotal + _itemQty;
 							};
+							// send karma stat to buyer
+							_kIndex = EPOCH_communityStats find "Karma";
+							_playerCStats = _player getVariable["COMMUNITY_STATS", EPOCH_defaultStatVars];
+							_playerKarma = _playerCStats select _kIndex;
+							_playerKarmaAdj = 1;
+							if(_playerKarma < 0)then{_playerKarmaAdj = -1};
+							[_player, "Karma", _playerKarmaAdj, true] call EPOCH_server_updatePlayerStats;
 						};
 					};
 				};
