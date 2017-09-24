@@ -123,7 +123,7 @@ if (_slot != -1) then {
 				_playerCStats = _player getVariable["COMMUNITY_STATS", EPOCH_defaultStatVars];
 				_playerKarma = _playerCStats select _kIndex;
 				_playerKarmaAdj = 1;
-				if(_playerKarma > 0)then{_playerKarmaAdj = -1};
+				if(_playerKarma < 0)then{_playerKarmaAdj = -1};
 				[_player, "Karma", _playerKarmaAdj, true] call EPOCH_server_updatePlayerStats;
 			};
 		};
@@ -306,7 +306,7 @@ if (_slot != -1) then {
 							_playerCStats = _player getVariable["COMMUNITY_STATS", EPOCH_defaultStatVars];
 							_playerKarma = _playerCStats select _kIndex;
 							_playerKarmaAdj = 1;
-							if(_playerKarma > 0)then{_playerKarmaAdj = -1};
+							if(_playerKarma < 0)then{_playerKarmaAdj = -1};
 							[_player, "Karma", _playerKarmaAdj, true] call EPOCH_server_updatePlayerStats;
 						};
 					};
