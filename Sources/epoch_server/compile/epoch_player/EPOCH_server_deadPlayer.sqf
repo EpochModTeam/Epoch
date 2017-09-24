@@ -13,7 +13,7 @@
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server/compile/epoch_player/EPOCH_server_deadPlayer.sqf
 */
 //[[[cog import generate_private_arrays ]]]
-private ["_bankBalance","_bankData","_cIndex","_current_crypto","_defaultVars","_playerName","_playerUID","_pos","_response","_triggerType","_vars","_killerUID","_deathType","_killerCommunityStats","_mIndex","_current_murders","_communityStats","_sIndex","_current_suicides","_dIndex","_current_deaths","_playerKarmaAdj","_killerKarmaAdj","_kIndex","_playerCStats","_playerKarma","_playerIsNeutral","_playerIsBandit","_playerIsHero","_killerCStats","_killerKarma"];
+private ["_bankBalance","_bankData","_cIndex","_current_crypto","_defaultVars","_playerName","_playerUID","_pos","_response","_triggerType","_vars","_killerUID","_deathType","_killerCommunityStats","_mIndex","_current_murders","_communityStats","_sIndex","_current_suicides","_dIndex","_current_deaths","_playerKarmaAdj","_killerKarmaAdj","_kIndex","_playerCStats","_playerKarma","_playerIsNeutral","_playerIsBandit","_playerIsHero","_killerCStats","_killerKarma","_karmaLimitsArray","_lowKarmaLevel1","_highKarmaLevel1"];
 //[[[end]]]
 params ["_playerObj","_killer","_playerName",["_token","",[""]] ];
 
@@ -28,9 +28,15 @@ _pos = getposATL _playerObj;
 _kIndex = EPOCH_communityStats find "Karma";
 _playerCStats = _playerObj getVariable["COMMUNITY_STATS", EPOCH_defaultStatVars];
 _playerKarma = _playerCStats select _kIndex;
-_playerIsNeutral = (_playerKarma < 5000 && _playerKarma > -5000);
-_playerIsBandit = (_playerKarma <= -5000);
-_playerIsHero = (_playerKarma >= 5000);
+
+// set config karma levels
+_karmaLimitsArray = EPOCH_communityStatsLimits select _kIndex;
+_lowKarmaLevel1 = ((_karmaLimitsArray select 2) select 0);
+_highKarmaLevel1 = ((_karmaLimitsArray select 3) select 0);
+
+_playerIsNeutral = (_playerKarma < _highKarmaLevel1 && _playerKarma > _lowKarmaLevel1);
+_playerIsBandit = (_playerKarma <= _lowKarmaLevel1);
+_playerIsHero = (_playerKarma >= _highKarmaLevel1);
 
 // default deathType is suicide
 _deathType = 666;
@@ -67,17 +73,17 @@ if (_playerObj != _killer) then {
 		
 		// killer karma changes
 		_killerKarmaAdj = -5;
-		if(_killerKarma < 5000 && _killerKarma > -5000)then{
+		if(_killerKarma < _highKarmaLevel1 && _killerKarma > _lowKarmaLevel1)then{
 			if(_playerIsNeutral)then{_killerKarmaAdj = abs((-_killerKarma) * 0.03) + _playerKarmaAdj};
 			if(_playerIsBandit)then{_killerKarmaAdj = abs((_killerKarma) * 0.05) + _playerKarmaAdj};
 			if(_playerIsHero)then{_killerKarmaAdj = abs((-_killerKarma) * 0.025) + _playerKarmaAdj};
 		};
-		if(_killerKarma <= -5000)then{
+		if(_killerKarma <= _lowKarmaLevel1)then{
 			if(_playerIsNeutral)then{_killerKarmaAdj = abs((_killerKarma) * 0.05) + _playerKarmaAdj};
 			if(_playerIsBandit)then{_killerKarmaAdj = abs((-_killerKarma) * 0.15) + _playerKarmaAdj};
 			if(_playerIsHero)then{_killerKarmaAdj = abs((_killerKarma) * 0.15) + _playerKarmaAdj};
 		};
-		if(_killerKarma >= 5000)then{
+		if(_killerKarma >= _highKarmaLevel1)then{
 			if(_playerIsNeutral)then{_killerKarmaAdj = abs((-_killerKarma) * 0.10) + _playerKarmaAdj};
 			if(_playerIsBandit)then{_killerKarmaAdj = abs((_killerKarma) * 0.15) + _playerKarmaAdj};
 			if(_playerIsHero)then{_killerKarmaAdj = abs((-_killerKarma) * 0.25) + _playerKarmaAdj};
