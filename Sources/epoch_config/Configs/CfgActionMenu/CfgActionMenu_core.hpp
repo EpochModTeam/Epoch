@@ -32,6 +32,22 @@ class CfgActionMenu
 		dyna_canAcceptTrade = "if (!(isNull EPOCH_pendingP2ptradeTarget) && alive EPOCH_pendingP2ptradeTarget) then {((EPOCH_pendingP2ptradeTarget isKindOf 'Man') && (dyna_cursorTarget isEqualTo EPOCH_pendingP2ptradeTarget))} else {false}";
 		dyna_locked = "locked dyna_cursorTarget in [2,3]";
 		dyna_lockedInVehicle = "locked vehicle player in [2,3]";
+		
+		dyna_inDriver = "driver vehicle player == player";
+		dyna_inTurret = "gunner vehicle player == player";
+		dyna_vehicleRoleEmpty = "((assignedVehicleRole player) isEqualTo [])";
+		
+		dyna_blockTurrets = "['Horn', 'MiniCarHorn', 'SportCarHorn', 'TruckHorn2', 'TruckHorn', 'BikeHorn', 'CarHorn', 'TruckHorn3']";
+		
+		dyna_weaponsTurret = "if!(dyna_vehicleRoleEmpty)then{(vehicle player) weaponsTurret ((assignedVehicleRole player) select 1)}else{nil}";
+		dyna_weaponsTurretPath = "if(!isNil {dyna_weaponsTurret})then{((assignedVehicleRole player) select 1)}else{nil}";
+		dyna_weaponsTurretMags = "if(!isNil {dyna_weaponsTurret})then{vehicle player magazinesTurret dyna_weaponsTurretPath}else{[]}";
+		
+		dyna_driverTurret = "if(dyna_inDriver)then{vehicle player weaponsTurret[-1]}else{nil}";
+		dyna_driverTurretMags = "if(!isNil {dyna_driverTurret})then{vehicle player magazinesTurret[-1]}else{[]}";
+		
+		dyna_isGunning = "if(dyna_inVehicle && dyna_inTurret && !dyna_inDriver)then{(!isNil {dyna_weaponsTurret})}else{false}";
+		dyna_isDriving = "if(dyna_inVehicle && dyna_inDriver)then{(!isNil {dyna_driverTurret})}else{false}";
 	};
 
 	class self
