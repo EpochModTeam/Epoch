@@ -100,7 +100,7 @@ class CfgEpochClient
 		{"HitPoints",{0,0,0,0},{1,0,0.5,1,-1,-1}}, // only limits here used for HUD.
 		{"BloodP",100,{190,0,120,140,70,50}},
 		{"SpawnArray",{},{}},
-		{"Karma",0,{50000,-50000}}, // TODO remove or replace
+		{"NotUsed",0,{50000,-50000}}, // TODO remove or replace
 		{"Alcohol",0,{100,0,35,55,-1,-1}},
 		{"Radiation",0,{100,0,35,55,-1,-1}},  // local
 		{"Nuisance",0,{100,0}},
