@@ -120,6 +120,7 @@ class CfgEpochClient
 	};
 	defineCommunityStats[]  = {
 		// EPOCH_total + varName, starting value, {min,max or custom values}
+		{"Karma",1500,{-50000,50000,{-5000,-15000,-30000},{5000,15000,30000}}, // min, max, {Work In Progress levels}
 		{"Murders",0,{}},
 		{"Deaths",0,{}},
 		{"Suicides",0,{0,99999},500}, // min, max, "Suicide King" status
