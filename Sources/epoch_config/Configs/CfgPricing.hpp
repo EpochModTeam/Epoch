@@ -1810,7 +1810,7 @@ class CfgPricing
     };
     class WoodLog_EPOCH
     {
-        price = 1;
+        price = 2;
     };
     class ItemRope
     {
@@ -2900,7 +2900,7 @@ class CfgPricing
     };
     class PartPlankPack
     {
-        price = 2;
+        price = 4;
     };
     class CinderBlocks
     {
@@ -2926,21 +2926,45 @@ class CfgPricing
     {
         price = 10;
     };
+	class KitWoodQuarterFloor
+	{
+		price = 8; // price of 2 planks
+	};
+	class KitWoodHalfFloor
+	{
+		price = 16; // price of 4 planks
+	};
     class KitWoodFloor
     {
-        price = 10;
+        price = 32; // price of 8 planks
+    };
+	class KitMetalFloor
+    {
+        price = 100; // price of 4 ItemCorrugatedLg
+    };
+	class KitCinderFloor
+    {
+        price = 120; //price of 3 CinderBlocks and 3 MortarBucket
     };
     class KitWoodStairs
     {
-        price = 10;
+        price = 16; // price of 4 planks
     };
     class KitWoodTower
     {
-        price = 10;
+        price = 48; // price of 12 plank packs
+    };
+	class KitMetalTower
+    {
+        price = 150; // price of 6 ItemCorrugatedLg
+    };
+	class KitCinderTower
+    {
+        price = 200; //price of 5 CinderBlocks and 5 MortarBucket
     };
     class KitWoodRamp
     {
-        price = 14;
+        price = 24; // price of 6 planks
     };
     class KitSpikeTrap
     {
