@@ -35,6 +35,7 @@ hintSilent parseText format ["
 	<t size='1.0' font='puristaLight' align='center'>Build: %2</t><br/>
 
 	" + _customVars + "
+	<t size='1.15' font='puristaLight' align='left'>Karma: </t><t size='1.15' font='puristaLight' align='right'>%17</t><br/>
 	<br/>
 
 	<t size='1.15' font='puristaLight' align='left'>Fatigue: </t><t size='1.15' font='puristaLight' align='right'>%3</t><br/>
@@ -68,5 +69,6 @@ hintSilent parseText format ["
 	round diag_fps,
 	_hours,
 	round((serverTime/60)-(_hours*60)),
-	if (EPOCH_diag_fps isEqualType 0) then [{EPOCH_diag_fps},{"MANIPULATED"}]
+	if (EPOCH_diag_fps isEqualType 0) then [{EPOCH_diag_fps},{"MANIPULATED"}],
+	missionNamespace getVariable ["EPOCH_totalKarma",0]
 ];
