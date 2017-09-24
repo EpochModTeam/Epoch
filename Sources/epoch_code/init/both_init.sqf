@@ -62,6 +62,7 @@ EPOCH_customVarsDefaults = [
 	["Crypto",0,[250000,0]],
 	["HitPoints",[0,0,0,0],[1,1,1,1]],
 	["BloodP",100,[190,0]],
+	["NotUsed",0,[50000,-50000]],
 	["SpawnArray",[],[]],
 	["Alcohol",0,[100,0]],
 	["Radiation",0,[100,0]],
