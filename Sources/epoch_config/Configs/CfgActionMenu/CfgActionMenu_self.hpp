@@ -191,6 +191,34 @@ class veh_driverRemoveAmmo
 	icon = "x\addons\a3_epoch_code\Data\UI\buttons\RemoveMag.paa";
 	tooltipcode = "if!(dyna_driverTurretMags isEqualTo [])then{format['Remove Mag of %1',dyna_driverTurretMags select 0]}else{''}";
 };
+class veh_driverRearm1
+{
+	condition = "if(dyna_isDriving && (count dyna_driverTurret > 1))then{!((dyna_driverTurret select 1) in dyna_blockTurrets)}else{false}";
+	action = "[dyna_driverTurret select 1, [-1]] call EPOCH_vehicle_checkTurretAmmo";
+	icon = "x\addons\a3_epoch_code\Data\UI\buttons\Rearm.paa";
+	tooltipcode = "if(!isNil {dyna_driverTurret})then{format['Add Mag to %1',getText(configFile >> 'CfgWeapons' >> dyna_driverTurret select 1 >> 'displayName')]}else{''}";
+};
+class veh_driverRemoveAmmo1
+{
+	condition = "dyna_isDriving && (count dyna_driverTurret > 1) && !(dyna_driverTurretMags isEqualTo [])";
+	action = "[dyna_driverTurret select 1, [-1]] call EPOCH_vehicle_removeTurretAmmo";
+	icon = "x\addons\a3_epoch_code\Data\UI\buttons\RemoveMag.paa";
+	tooltipcode = "if!(dyna_driverTurretMags isEqualTo [])then{format['Remove Mag of %1',dyna_driverTurretMags select 1]}else{''}";
+};
+class veh_driverRearm2
+{
+	condition = "if(dyna_isDriving && (count dyna_driverTurret > 2))then{!((dyna_driverTurret select 1) in dyna_blockTurrets)}else{false}";
+	action = "[dyna_driverTurret select 2, [-1]] call EPOCH_vehicle_checkTurretAmmo";
+	icon = "x\addons\a3_epoch_code\Data\UI\buttons\Rearm.paa";
+	tooltipcode = "if(!isNil {dyna_driverTurret})then{format['Add Mag to %1',getText(configFile >> 'CfgWeapons' >> dyna_driverTurret select 2 >> 'displayName')]}else{''}";
+};
+class veh_driverRemoveAmmo2
+{
+	condition = "dyna_isDriving && (count dyna_driverTurret > 2) && !(dyna_driverTurretMags isEqualTo [])";
+	action = "[dyna_driverTurret select 2, [-1]] call EPOCH_vehicle_removeTurretAmmo";
+	icon = "x\addons\a3_epoch_code\Data\UI\buttons\RemoveMag.paa";
+	tooltipcode = "if!(dyna_driverTurretMags isEqualTo [])then{format['Remove Mag of %1',dyna_driverTurretMags select 2]}else{''}";
+};
 class veh_commanderRearm
 {
 	condition = "if(dyna_isCommanding)then{!((dyna_weaponsTurret select 0) in dyna_blockTurrets)}else{false}";
@@ -204,4 +232,18 @@ class veh_commanderRemoveAmmo
 	action = "[dyna_weaponsTurret select 0, dyna_weaponsTurretPath] call EPOCH_vehicle_removeCommanderAmmo";
 	icon = "x\addons\a3_epoch_code\Data\UI\buttons\RemoveMag.paa";
 	tooltipcode = "if(!isNil {dyna_weaponsTurret})then{format['Remove Mag from %1',getText(configFile >> 'CfgWeapons' >> dyna_weaponsTurret select 0 >> 'displayName')]}else{''}";
+};
+class veh_commanderRearm1
+{
+	condition = "if(dyna_isCommanding && (count dyna_weaponsTurret > 1))then{!((dyna_weaponsTurret select 1) in dyna_blockTurrets)}else{false}";
+	action = "[dyna_weaponsTurret select 1, dyna_weaponsTurretPath] call EPOCH_vehicle_checkTurretAmmo";
+	icon = "x\addons\a3_epoch_code\Data\UI\buttons\Rearm.paa";
+	tooltipcode = "if(!isNil {dyna_weaponsTurret})then{format['Add Mag to %1',getText(configFile >> 'CfgWeapons' >> dyna_weaponsTurret select 1 >> 'displayName')]}else{''}";
+};
+class veh_commanderRemoveAmmo1
+{
+	condition = "dyna_isCommanding && (count dyna_weaponsTurret > 1) && !(dyna_weaponsTurretMags isEqualTo [])";
+	action = "[dyna_weaponsTurret select 1, dyna_weaponsTurretPath] call EPOCH_vehicle_removeCommanderAmmo";
+	icon = "x\addons\a3_epoch_code\Data\UI\buttons\RemoveMag.paa";
+	tooltipcode = "if(!isNil {dyna_weaponsTurret})then{format['Remove Mag from %1',getText(configFile >> 'CfgWeapons' >> dyna_weaponsTurret select 1 >> 'displayName')]}else{''}";
 };
