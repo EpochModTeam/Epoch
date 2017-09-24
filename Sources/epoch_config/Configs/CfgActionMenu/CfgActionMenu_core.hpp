@@ -35,6 +35,7 @@ class CfgActionMenu
 		
 		dyna_inDriver = "driver vehicle player == player";
 		dyna_inTurret = "gunner vehicle player == player";
+		dyna_inCommander = "player isEqualTo commander objectParent player";
 		dyna_vehicleRoleEmpty = "((assignedVehicleRole player) isEqualTo [])";
 		
 		dyna_blockTurrets = "['Horn', 'MiniCarHorn', 'SportCarHorn', 'TruckHorn2', 'TruckHorn', 'BikeHorn', 'CarHorn', 'TruckHorn3']";
@@ -48,6 +49,7 @@ class CfgActionMenu
 		
 		dyna_isGunning = "if(dyna_inVehicle && dyna_inTurret && !dyna_inDriver)then{(!isNil {dyna_weaponsTurret})}else{false}";
 		dyna_isDriving = "if(dyna_inVehicle && dyna_inDriver)then{(!isNil {dyna_driverTurret})}else{false}";
+		dyna_isCommanding = "if(dyna_inVehicle && dyna_inCommander)then{(!isNil {dyna_weaponsTurret})}else{false}";
 	};
 
 	class self
