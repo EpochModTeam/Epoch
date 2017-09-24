@@ -78,12 +78,11 @@ EPOCH_customVarCount = count EPOCH_customVars;
 // Init Community Stats
 EPOCH_communityStats = [];
 EPOCH_defaultStatVars = [];
+EPOCH_communityStatsLimits = [];
 _communityStatsInit = ["CfgEpochClient", "defineCommunityStats", []] call EPOCH_fnc_returnConfigEntryV2;
-EPOCH_communityStatsDefaults = _communityStatsInit;
-{
-	EPOCH_communityStats pushBack (_x select 0);
-	EPOCH_defaultStatVars pushBack (_x select 1);
-} forEach _communityStatsInit;
+EPOCH_communityStats = _communityStatsInit apply {_x param [0,""]};
+EPOCH_defaultStatVars = _communityStatsInit apply {_x param [1,0]};
+EPOCH_communityStatsLimits = _communityStatsInit apply {_x param [2,[]]};
 EPOCH_communityStatsCount = count EPOCH_communityStats;
 
 //GroupSize (number) // Price (String)
