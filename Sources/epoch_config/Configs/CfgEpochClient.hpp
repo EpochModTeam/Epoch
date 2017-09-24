@@ -119,12 +119,11 @@ class CfgEpochClient
 		{{"HitPoints","getPlayerHitPointDamage","HitLegs"},"topRight","x\addons\a3_epoch_code\Data\UI\broken_ca.paa"}
 	};
 	defineCommunityStats[]  = {
-		// EPOCH_total + varName, starting value, {min,max or custom values array}
-		{"Karma",0,{-50000,50000}},
+		// EPOCH_total + varName, starting value, {min,max or custom values}
 		{"Murders",0,{}},
 		{"Deaths",0,{}},
-		{"Suicides",0,{}},
-		{"Revives",0,{}},
+		{"Suicides",0,{0,99999},500}, // min, max, "Suicide King" status
+		{"Revives",0,{0,99999},500}, // min, max, "Medic" status
 		{"TraderMissions",0,{}},
 		{"AIKills",0,{}},
 		{"AntagonistKills",0,{}},
