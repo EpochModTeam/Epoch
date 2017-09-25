@@ -12,7 +12,7 @@
     Github:
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_code/compile/vehicles/EPOCH_client_VehicleMaintananceCheck.sqf
 */
-private ["_veh","_VehicleRepairs","_EnableRemoveParts","_repairs","_removes","_replaces","_wheels","_wheelcounter","_torepair","_HitPointName","_Hit","_wheel","_repairarrays"];
+private ["_veh","_VehicleRepairs","_EnableRemoveParts","_repairs","_removes","_replaces","_wheels","_wheelcounter","_HitPointName","_Hit","_wheel","_repairarrays"];
 _veh = _this;
 _VehicleRepairs = ["CfgEpochClient", "VehicleRepairs", []] call EPOCH_fnc_returnConfigEntryV2;
 _EnableRemoveParts = ["CfgEpochClient", "EnableRemoveParts", true] call EPOCH_fnc_returnConfigEntryV2;
@@ -24,7 +24,6 @@ if (_veh iskindof "ebike_epoch") then {
 	_wheels = 2;
 };
 _wheelcounter = 0;
-_torepair = (getAllHitPointsDamage _veh) select 0;
 {
 	_HitPointName = _x;
 	_Hit = (getAllHitPointsDamage _veh) select 2 select _foreachindex;
@@ -62,22 +61,14 @@ _torepair = (getAllHitPointsDamage _veh) select 0;
 	} foreach _VehicleRepairs;
 } foreach ((getAllHitPointsDamage _veh) select 0);
 
+_repairarrays = [];
 {
-	if (_x in _repairs || _x in _replaces) then {
-		_torepair = _torepair - [_x];
-	}
-	else {
-		if (["glass",tolower _x] call Bis_fnc_instring) then {
-			_torepair = _torepair - [_x];
-		};
+	if (!(_x in _repairs || _x in _replaces || (["glass",tolower _x] call Bis_fnc_instring)) || _x isequalto "")  then {
+		_repairarrays pushback [_foreachindex, 0];
 	};
 } foreach ((getAllHitPointsDamage _veh) select 0);
 
-if !(_torepair isequalto []) then {
-	_repairarrays = [];
-	{
-		_repairarrays pushback [_x,0];
-	} foreach _torepair;
+if !(_repairarrays isequalto []) then {
 	if (local _veh) then {
 		[_veh, _repairarrays] call EPOCH_client_repairVehicle;
 	} else {
