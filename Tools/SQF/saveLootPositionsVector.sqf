@@ -41,34 +41,7 @@ BIS_fnc_returnVector = {
     _v
 };
 
-_import = ["Land_TentHangar_V1_F",
-"Land_TentHangar_V1_dam_F",
-"Land_Dome_Big_F",
-"Land_Dome_Small_F",
-"Land_GH_MainBuilding_entry_F",
-"Land_dp_smallTank_F",
-"Land_i_House_Big_01_V1_dam_F",
-"Land_i_House_Big_01_V2_dam_F",
-"Land_i_House_Big_01_V3_dam_F",
-"Land_u_House_Big_01_V1_dam_F",
-"Land_i_House_Big_02_V2_dam_F",
-"Land_i_Shop_01_V1_dam_F",
-"Land_i_Shop_01_V2_dam_F",
-"Land_i_Shop_01_V3_dam_F",
-"Land_u_Shop_01_V1_dam_F",
-"Land_i_Shop_02_V1_dam_F",
-"Land_i_Shop_02_V2_dam_F",
-"Land_i_Shop_02_V3_dam_F",
-"Land_u_Shop_02_V1_dam_F",
-"Land_i_House_Small_01_V1_dam_F",
-"Land_i_House_Small_01_V2_dam_F",
-"Land_i_House_Small_01_V3_dam_F",
-"Land_u_House_Small_01_V1_dam_F",
-"Land_i_House_Small_02_V1_dam_F",
-"Land_i_House_Small_02_V2_dam_F",
-"Land_i_House_Small_02_V3_dam_F",
-"Land_u_House_Small_02_V1_dam_F",
-"Land_i_House_Small_03_V1_dam_F"];
+_import = ["bunker_epoch"];
 
 EPB = [];
 {
@@ -99,7 +72,7 @@ ToolRack_EPOCH = [[[0,0,1.5],[0,0,-0.1]],[[0,0,1.5],[0,0,2.3]],[[0,0,1.5],[1,0,1
 Shoebox_EPOCH = [[[0,0,0.1],[0,0,-0.1]],[[0,0,0.1],[0,0,0.3]],[[0,0,0.1],[0.3,0,0.1]],[[0,0,0.1],[-0.3,0,0.1]],[[0,0,0.1],[0,0.2,0.1]],[[0,0,0.1],[0,-0.2,0.1]]];
 Tarp_EPOCH = [[[0,0,0.2],[0,0,-0.1]],[[0,0,0.2],[0,0,1]],[[0,0,0.2],[0.9,0,0.2]],[[0,0,0.2],[-0.9,0,0.2]],[[0,0,0.2],[0,1,0.2]],[[0,0,0.2],[0,-0.9,0.2]]];
 Freezer_EPOCH = [[[0,0,0.5],[0,0,-0.1]],[[0,0,0.5],[0,0,1.1]],[[0,0,0.5],[0.7,0,0.5]],[[0,0,0.5],[-0.7,0,0.5]],[[0,0,0.5],[0,0.5,0.5]],[[0,0,0.5],[0,-0.6,0.5]]];
-Cabinet_EPOCH = [[[0,0,0],[0,0,-0.4]],[[0,0,0],[0,0,0.4]],[[0,0,0],[0.2,0,0]],[[0,0,0],[-0.1,0,0]],[[0,0,0],[0,0.3,0]],[[0,0,0],[0,-0.3,0]]];
+Cabinet_EPOCH = [[[0,0,0],[0,0,-0.2]],[[0,0,0],[0,0,0.2]],[[0,0,0],[0.1,0,0]],[[0,0,0],[-0.1,0,0]],[[0,0,0],[0,0.15,0]],[[0,0,0],[0,-0.15,0]]];
 
 EPOCH_lootClassesRaw = [
     ["shelfPos", "Shelf_EPOCH", true],
@@ -565,7 +538,11 @@ EPOCH_LOOT = {
     };
 
     EP_building = createVehicle [_this, player modelToWorld [0,25,0] , [], 0, "CAN_COLLIDE"];
-    EP_building setDir Base_angle;
+	_memoryPoints = ["one","two","three","four"];
+	{
+		EP_building animate [_x,0,true];
+	} forEach _memoryPoints;
+	EP_building setDir Base_angle;
     EP_building setPosATL _curPos;
 
     _loots = [
@@ -708,8 +685,8 @@ KK_boundingBox = {
         {
             _x params ["_startV","_stopV"];
 
-            _start = DUMMY modelToWorld _startV;
-            _stop = DUMMY modelToWorld _stopV;
+            _start = DUMMY modelToWorld (_startV vectorMultiply 0.01);
+            _stop = DUMMY modelToWorld (_stopV vectorMultiply 0.01);
 
             _color = [1,1,1,1];
             _ins = lineIntersectsSurfaces [AGLToASL _start,AGLToASL _stop,EPOCH_vehTarget,player,true,1,"FIRE","NONE"];
