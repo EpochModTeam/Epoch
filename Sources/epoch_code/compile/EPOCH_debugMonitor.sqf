@@ -20,7 +20,7 @@ _hours = floor(servertime/60/60);
 _customVars = "";
 {
 	_val = missionNamespace getVariable [format ["EPOCH_player%1",_x],EPOCH_defaultVars select _forEachIndex];
-	if !(_x in ["AliveTime","SpawnArray","HitPoints","MissionArray"]) then {
+	if !(_x in ["AliveTime","SpawnArray","HitPoints","MissionArray","NotUsed"]) then {
 		if (_x == "Temp") then {
 			_customVars = _customVars + format["<t size='1.15' font='puristaLight' align='left'>%1: </t><t size='1.15' font='puristaLight' align='right'>%2°F | %3°C</t><br/>", _x,_val,_val call EPOCH_convertTemp];
 		} else {
@@ -35,6 +35,7 @@ hintSilent parseText format ["
 	<t size='1.0' font='puristaLight' align='center'>Build: %2</t><br/>
 
 	" + _customVars + "
+	<t size='1.15' font='puristaLight' align='left'>Karma: </t><t size='1.15' font='puristaLight' align='right'>%17</t><br/>
 	<br/>
 
 	<t size='1.15' font='puristaLight' align='left'>Fatigue: </t><t size='1.15' font='puristaLight' align='right'>%3</t><br/>
@@ -68,5 +69,6 @@ hintSilent parseText format ["
 	round diag_fps,
 	_hours,
 	round((serverTime/60)-(_hours*60)),
-	if (EPOCH_diag_fps isEqualType 0) then [{EPOCH_diag_fps},{"MANIPULATED"}]
+	if (EPOCH_diag_fps isEqualType 0) then [{EPOCH_diag_fps},{"MANIPULATED"}],
+	missionNamespace getVariable ["EPOCH_totalKarma",0]
 ];

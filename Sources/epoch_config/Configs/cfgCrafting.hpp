@@ -321,7 +321,7 @@ class CfgCrafting
     };
     class MortarBucket : Item
     {
-        usedIn[] = {"KitFoundation","KitCinderWall","KitHesco3"};
+        usedIn[] = {"KitFoundation","KitCinderWall","KitHesco3","KitCinderFloor","KitCinderTower"};
         nearby[] = {{"Fire","","fire",{1,{"ALL"}},3,1,1,0},{"Workbench","","workbench",{1,{"WorkBench_EPOCH"}},3,1,0,1}};
         recipe[] = {{"ItemRock",12},{"water_epoch",2}};
         previewPosition[] = {0.799442,1,0.426761};
@@ -348,7 +348,7 @@ class CfgCrafting
     };
     class CinderBlocks : Part
     {
-        usedIn[] = {"KitCinderWall"};
+        usedIn[] = {"KitCinderWall","KitCinderFloor","KitCinderTower"};
         previewPosition[] = {0.801866,1,0.35};
         previewScale = 0.2;
     };
@@ -727,7 +727,7 @@ class CfgCrafting
     };
     class ItemCorrugatedLg : Item
     {
-        usedIn[] = {"KitPlotPole","KitTankTrap","KitHesco3","KitSolarGen","ItemRotor","EngineBlock"};
+        usedIn[] = {"KitPlotPole","KitTankTrap","KitHesco3","KitSolarGen","ItemRotor","EngineBlock","KitMetalFloor","KitMetalTower"};
         recipe[] = {{"ItemCorrugated",3}};
         nearby[] = {{"Workbench","","workbench",{1,{"WorkBench_EPOCH"}},3,1,0,1}};
         previewPosition[] = {0.797491,1,0.32899};
@@ -790,7 +790,7 @@ class CfgCrafting
     class KitWoodFloor : Kit
     {
         usedIn[] = {"KitWoodTower"};
-        recipe[] = {{"PartPlankPack",4}};
+        recipe[] = {{"PartPlankPack",8}};
         nearby[] = {{"Workbench","","workbench",{1,{"WorkBench_EPOCH"}},3,1,0,1}};
         model = "\x\addons\a3_epoch_assets\models\Wooden_Floor.p3d";
         previewPosition[] = {0.800198,1,0.262418};
@@ -799,7 +799,7 @@ class CfgCrafting
     };
 	class KitWoodHalfFloor : Kit
     {
-        recipe[] = {{"KitWoodQuarterFloor",2}};
+        recipe[] = {{"KitWoodQuarterFloor",4}};
         nearby[] = {{"Workbench","","workbench",{1,{"WorkBench_EPOCH"}},3,1,0,1}};
         model = "\x\addons\a3_epoch_assets_1\models\Half_Floor.p3d";
         previewPosition[] = {0.800198,1,0.262418};
@@ -809,7 +809,7 @@ class CfgCrafting
 	class KitWoodQuarterFloor : Kit
     {
         usedIn[] = {"KitWoodHalfFloor"};
-        recipe[] = {{"PartPlankPack",1}};
+        recipe[] = {{"PartPlankPack",2}};
         nearby[] = {{"Workbench","","workbench",{1,{"WorkBench_EPOCH"}},3,1,0,1}};
         model = "\x\addons\a3_epoch_assets_1\models\Quarter_Floor.p3d";
         previewPosition[] = {0.800198,1,0.262418};
@@ -871,6 +871,45 @@ class CfgCrafting
         previewScale = 0.05;
         previewVector = 0;
     };
+	class KitMetalFloor : Kit
+    {
+        usedIn[] = {"KitMetalTower"};
+        recipe[] = {{"ItemCorrugatedLg",4}};
+        nearby[] = {{"Workbench","","workbench",{1,{"WorkBench_EPOCH"}},3,1,0,1}};
+        model = "\x\addons\a3_epoch_assets_1\models\metal_floor.p3d";
+        previewPosition[] = {0.800198,1,0.262418};
+        previewScale = 0.055;
+        previewVector = 3.6;
+    };
+	class KitMetalTower : Kit
+    {
+        recipe[] = {{"KitMetalFloor",1},{"ItemCorrugatedLg",2}};
+        nearby[] = {{"Workbench","","workbench",{1,{"WorkBench_EPOCH"}},3,1,0,1}};
+        model = "\x\addons\a3_epoch_community\Metal_Base_Tower\Metal_floor_tower.p3d";
+        previewPosition[] = {0.800653,1,0.378749};
+        previewScale = 0.05;
+        previewVector = 0;
+    };
+	class KitCinderFloor : Kit
+    {
+        usedIn[] = {"KitCinderTower"};
+        recipe[] = {{"CinderBlocks",3},{"MortarBucket",3}};
+        nearby[] = {{"Workbench","","workbench",{1,{"WorkBench_EPOCH"}},3,1,0,1}};
+        model = "\x\addons\a3_epoch_community\models\cinderfloor.p3d";
+        previewPosition[] = {0.800198,1,0.262418};
+        previewScale = 0.055;
+        previewVector = 3.6;
+    };
+	class KitCinderTower : Kit
+    {
+        recipe[] = {{"KitCinderFloor",1},{"CinderBlocks",2},{"MortarBucket",2}};
+        nearby[] = {{"Workbench","","workbench",{1,{"WorkBench_EPOCH"}},3,1,0,1}};
+        model = "\x\addons\a3_epoch_community\Cinder_Base_Tower\cinder_tower_upgrade.p3d";
+        previewPosition[] = {0.800653,1,0.378749};
+        previewScale = 0.05;
+        previewVector = 0;
+    };
+	
     class KitTiPi : Kit
     {
         recipe[] = {{"Pelt_EPOCH",4},{"PartPlankPack",2}};
@@ -1249,6 +1288,51 @@ class CfgCrafting
 		previewPosition[] = {0.79545,1,0.42};
 		previewScale = 0.3;
 		previewVector = 0.3;
+	};
+	class ItemBottlePlastic_Empty : Part
+	{
+		usedIn[] = {"ItemBottlePlastic_Dirty"};
+		previewPosition[] = {0.807346,1,0.43035};
+		previewScale = 2.5;
+	};
+	class ItemBottlePlastic_Dirty: Item
+	{
+		usedIn[] = {"ItemBottlePlastic_Clean"};
+        nearby[] = {{"Water source","","water",{2,{"water"}},3,1,0,0}};
+        recipe[] = {"ItemBottlePlastic_Empty"};
+        previewPosition[] = {0.807346,1,0.43035};
+        previewScale = 2.5;
+	};
+	class ItemBottlePlastic_Clean : Item
+	{
+		usedIn[] = {};
+		recipe[] = {"ItemBottlePlastic_Dirty","ItemWaterPurificationTablets"};
+		previewPosition[] = {0.807346,1,0.43035};
+		previewScale = 2.5;
+		displayName = "Clean Water in a plastic bottle";
+	};
+
+	class ItemCanteen_Empty : Part
+	{
+		usedIn[] = {"ItemCanteen_Dirty"};
+		previewPosition[] = {0.807346,1,0.43035};
+		previewScale = 2.5;
+	};
+	class ItemCanteen_Dirty : Item
+	{
+		usedIn[] = {"ItemCanteen_Clean"};
+		nearby[] = {{"Water source","","water",{2,{"water"}},3,1,0,0}};
+		recipe[] = {"ItemCanteen_Empty"};
+		previewPosition[] = {0.807346,1,0.43035};
+		previewScale = 2.5;
+	};
+	class ItemCanteen_Clean : Item
+	{
+		usedIn[] = {};
+		recipe[] = {"ItemCanteen_Dirty","ItemWaterPurificationTablets"};
+		previewPosition[] = {0.807346,1,0.43035};
+		previewScale = 2.5;
+		displayName = "Clean Water in a canteen";
 	};
 };
 

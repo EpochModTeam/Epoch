@@ -100,7 +100,7 @@ class CfgEpochClient
 		{"HitPoints",{0,0,0,0},{1,0,0.5,1,-1,-1}}, // limits here only used for HUD.
 		{"BloodP",100,{190,0,120,140,70,50}},
 		{"SpawnArray",{},{}},
-		{"Karma",0,{50000,-50000}}, // TODO remove or replace
+		{"NotUsed",0,{50000,-50000}}, // TODO remove or replace
 		{"Alcohol",0,{100,0,35,55,-1,-1}},
 		{"Radiation",0,{100,0,35,55,-1,-1}},  // local
 		{"Nuisance",0,{100,0}},
@@ -120,8 +120,6 @@ class CfgEpochClient
 		1000 // max
 	};
 
-	// add any stats and their starting number here for better community integration and neat stats tracking too!
-	defineCommunityStats[]  = {{"Murders",0},{"Deaths",0},{"Suicides",0},{"Revives",0},{"TraderMissions",0},{"AIKills",0},{"AntagonistKills",0},{"ZombieKills",0}};
     hudConfigs[] = {
 		{{"BloodP","","",{"getPlayerDamage",">=",0.7}},"topRight","x\addons\a3_epoch_code\Data\UI\bleeding_ca.paa",{"forceUpdate"}},
 		{{"Oxygen","getPlayerOxygenRemaining","",{},{1,0,2,2,1,0.55}},"topRight","x\addons\a3_epoch_code\Data\UI\oxygen_ca.paa"},
@@ -133,6 +131,18 @@ class CfgEpochClient
 		{"Soiled","topRight","x\addons\a3_epoch_code\Data\UI\soiled_ca.paa"},
 		{"Radiation","topRight","x\addons\a3_epoch_code\Data\UI\rads_ca.paa"},
 		{{"HitPoints","getPlayerHitPointDamage","HitLegs"},"topRight","x\addons\a3_epoch_code\Data\UI\broken_ca.paa"}
+	};
+	defineCommunityStats[]  = {
+		// EPOCH_total + varName, starting value, {min,max or custom values}
+		{"Karma",1500,{-50000,50000,{-5000,-15000,-30000},{5000,15000,30000}}}, // min, max, {Work In Progress levels}
+		{"Murders",0,{}},
+		{"Deaths",0,{}},
+		{"Suicides",0,{0,99999,500}}, // min, max, "Suicide King" status
+		{"Revives",0,{0,99999,500}}, // min, max, "Medic" status
+		{"TraderMissions",0,{}},
+		{"AIKills",0,{}},
+		{"AntagonistKills",0,{}},
+		{"ZombieKills",0,{}}
 	};
     group_upgrade_lvl[] = {4,"1000",6,"1500",8,"2000",10,"2500",12,"3000",14,"3500",16,"4000",32,"8000",64,"16000"}; // controls max group limit and cost
     // Event handler code
@@ -205,6 +215,7 @@ class CfgEpochClient
     #include "CfgEpochClient\Bornholm.hpp"
     #include "CfgEpochClient\Chernarus_Summer.hpp"
     #include "CfgEpochClient\Chernarus.hpp"
+	#include "CfgEpochClient\ChernarusRedux.hpp"
     #include "CfgEpochClient\Esseker.hpp"
     #include "CfgEpochClient\ProvingGrounds_PMC.hpp"
     #include "CfgEpochClient\Sara_dbe1.hpp"

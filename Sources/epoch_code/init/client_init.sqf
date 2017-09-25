@@ -86,7 +86,4 @@ addMissionEventHandler ["PlayerViewChanged", {if (cameraView isEqualTo "GROUP") 
 
 [] execFSM "epoch_code\system\player_login.fsm";
 
-// testing for civilan males
-player addRating -2000;
-
 true

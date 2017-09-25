@@ -376,6 +376,14 @@ class CfgItemInteractions
     {
         buildClass = "WoodTower_EPOCH";
     };
+	class KitMetalTower : Item_Build_base
+    {
+        buildClass = "MetalTower_EPOCH";
+    };
+	class KitCinderTower : Item_Build_base
+    {
+        buildClass = "CinderTower_EPOCH";
+    };
     class KitWoodRamp : Item_Build_base
     {
         buildClass = "WoodRamp_EPOCH";
@@ -793,5 +801,50 @@ class CfgItemInteractions
 	class SeedPacket_Poppy : Default {};
 	class SeedPacket_Pumpkin : Default {};
 	class SeedPacket_Sunflower : Default {};
+		class ItemBakedBeans : Food_TinCan_base
+	{
+		interactAttributes[] = {{"Hunger",800}};
+	};
+	class gyro_wrap_epoch : Food_base
+	{
+		interactAttributes[] = {{"Hunger",600}};
+	};
+	class icecream_epoch : Food_base
+	{
+		interactAttributes[] = {{"Hunger",200},{"Stamina",20}};
+	};
+	class redburger_epoch : Food_base
+	{
+		interactAttributes[] = {{"Hunger",600}};
+	};
+	class bluburger_epoch : Food_base
+	{
+		interactAttributes[] = {{"Hunger",600}};
+	};
+	class krypto_candy_epoch : Food_base
+	{
+		interactAttributes[] = {{"Hunger",500},{"Stamina",50}};
+	};
+	class ItemBottlePlastic_Clean : Drink_base 
+	{
+		interactAttributes[] = {{"Thirst",500},{"Stamina",50}};
+		interactReturnOnUse = "ItemBottlePlastic_Empty";
+	};
+	class ItemCanteen_Clean : Drink_base 
+	{
+		interactAttributes[] = {{"Thirst",1000},{"Stamina",50}};
+		interactReturnOnUse = "ItemCanteen_Empty";
+	};
+	class ItemBottlePlastic_Dirty: Drink_base
+	{
+		interactAttributes[] = {{"Thirst",500},{"Toxicity",5,1},{"Stamina",50}};
+	interactReturnOnUse = "ItemBottlePlastic_Empty";
+	};
+
+	class ItemCanteen_Dirty : Drink_base
+	{
+		interactAttributes[] = {{"Thirst",1000},{"Toxicity",5,1},{"Stamina",50}};
+	interactReturnOnUse = "ItemCanteen_Empty";
+	};
 };
 /*[[[end]]]*/

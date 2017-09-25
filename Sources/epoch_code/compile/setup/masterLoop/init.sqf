@@ -4,6 +4,9 @@ waitUntil {!isNull (findDisplay 46) && (!isNil "EPOCH_loadingScreenDone")};
 // load favBar
 'load' call epoch_favBar_draw;
 
+// set player rating
+player addRating -2000;
+
 // force update within 15 seconds
 EPOCH_forceUpdate = false;
 _forceUpdate = false;

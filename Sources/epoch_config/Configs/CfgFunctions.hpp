@@ -24,6 +24,10 @@ class cfgFunctions
         tag = "EPOCH";
         class functions
         {
+            class arrayToLogic
+            {
+                file = "epoch_code\compile\functions\EPOCH_fnc_arrayToLogic.sqf";
+            };
             class returnConfigEntryV2
             {
                 file = "epoch_code\compile\functions\EPOCH_fn_returnConfigEntryV2.sqf";

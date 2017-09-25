@@ -117,6 +117,7 @@ class CfgClientFunctions
 			class fnc_isInsideBuilding {};
 			class fnc_findSafePos {};
 			class fnc_addItemOverflow {};
+			class fnc_addMagazineOverflow {};
 			class itemData {};
 			class itemPicture {};
 			class itemDisplayName {};
@@ -156,6 +157,9 @@ class CfgClientFunctions
 			class client_upgradeVehicleCheck {};
 			class client_VehicleMaintananceCheck {};
 			class client_VehicleMaintananceDo {};
+			class vehicle_checkTurretAmmo {};
+			class vehicle_removeTurretAmmo {};
+			class vehicle_removeCommanderAmmo {};
 		};
 		class missions
 		{
