@@ -108,6 +108,7 @@ switch _do do {
 			['Error - Could not find Return Material!',5] call Epoch_message;
 		};
 		_repairarrays pushback [_hitpointname,1];
+		_secondlocalcheck = true;
 	};
 };
 
