@@ -1438,8 +1438,8 @@ _skn_admincode = compileFinal ("
 				player allowDamage false;
 				{
 					missionNamespace setVariable[format['EPOCH_player%1', _x], EPOCH_defaultVars select(EPOCH_customVars find _x)]
-				} forEach['Temp','Hunger','Thirst','Toxicity','Stamina','HitPoints','BloodP'];
-				EPOCH_playerEnergy = EPOCH_playerEnergyMax;
+				} forEach['Temp','Hunger','Thirst','Toxicity','Stamina','BloodP'];
+				EPOCH_playerEnergy = missionNamespace getVariable ['EPOCH_playerEnergyMax', 2500];
 				uiSleep 0.25;
 				!"+_skn_tg_godMode+"
 			};

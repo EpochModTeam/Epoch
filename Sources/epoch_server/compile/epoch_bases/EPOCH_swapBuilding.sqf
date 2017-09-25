@@ -25,6 +25,13 @@ if (!isNull _object && !(_class isEqualTo "")) then {
             case 1: {
                 _newObj attachTo [_object,[0,0,0]];
             };
+			/*
+			case 2: {
+				_newObj setPosWorld _objectPos;
+				_newObj setDir (getDir _object);
+                _newObj setVectorUp (vectorup _object);
+            };
+			*/
         };
         deleteVehicle _object;
 

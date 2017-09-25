@@ -30,7 +30,7 @@ class CfgSecConf
 		resetTempGroup = "Epoch_my_tempGroup = []; Epoch_my_tempGroupUID = '';";
         tempGroupUpdate = "Epoch_my_tempGroup = _this; call EPOCH_tempGroup_update;";
         tempGroupUidUpdate = "Epoch_my_tempGroupUID = _this;";
-        healPlayer = "{missionNamespace setVariable[format['EPOCH_player%1', _x], EPOCH_defaultVars select(EPOCH_customVars find _x)]} forEach['Temp','Hunger','Thirst','Toxicity','Stamina','HitPoints','BloodP','Alcohol','Radiation'];";
+        healPlayer = "{missionNamespace setVariable[format['EPOCH_player%1', _x], EPOCH_defaultVars select(EPOCH_customVars find _x)]} forEach['Temp','Hunger','Thirst','Toxicity','Stamina','BloodP','Alcohol','Radiation'];";
         tradeComplete = "EPOCH_TRADE_COMPLETE = _this;";
     };
 
