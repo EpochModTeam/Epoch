@@ -127,7 +127,6 @@ class CfgClientFunctions
 			class fnc_findSapperStalkLocation {};
 			class fnc_dirToFuzzy {};
 			class fnc_cursorTarget {};
-			class fnc_arrayToLogic {};
 			class fnc_returnHudVar {};
 			class fnc_triggerAntagonist {};
 			class fnc_playerDeathDetonate {};

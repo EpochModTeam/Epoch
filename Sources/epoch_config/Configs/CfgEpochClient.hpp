@@ -97,7 +97,7 @@ class CfgEpochClient
 		{"Toxicity",0,{100,0,35,55,-1,-1}},
 		{"Stamina",100,{"EPOCH_playerStaminaMax",0}},
 		{"Crypto",0,{250000,0}},
-		{"HitPoints",{0,0,0,0},{1,0,0.5,1,-1,-1}}, // only limits here used for HUD.
+		{"HitPoints",{0,0,0,0},{1,0,0.5,1,-1,-1}}, // limits here only used for HUD.
 		{"BloodP",100,{190,0,120,140,70,50}},
 		{"SpawnArray",{},{}},
 		{"NotUsed",0,{50000,-50000}}, // TODO remove or replace
@@ -106,6 +106,20 @@ class CfgEpochClient
 		{"Nuisance",0,{100,0}},
 		{"MissionArray",{},{}}
 	};
+	// Digest System
+	hunger[] = {
+		0, // default value
+		10, // loss rate
+		20, // increase rate
+		1000 // max
+	};
+	thirst[] = {
+		0, // default value
+		10, // loss rate
+		20, // increase rate
+		1000 // max
+	};
+
     hudConfigs[] = {
 		{{"BloodP","","",{"getPlayerDamage",">=",0.7}},"topRight","x\addons\a3_epoch_code\Data\UI\bleeding_ca.paa",{"forceUpdate"}},
 		{{"Oxygen","getPlayerOxygenRemaining","",{},{1,0,2,2,1,0.55}},"topRight","x\addons\a3_epoch_code\Data\UI\oxygen_ca.paa"},

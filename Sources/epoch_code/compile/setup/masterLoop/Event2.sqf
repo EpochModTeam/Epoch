@@ -17,7 +17,7 @@ if (damage player != _damagePlayer) then {
 // 1. number of players
 // 2. Other sources of drain (Lights)
 
-_energyValue = EPOCH_chargeRate min _energyRegenMax;
+_energyValue = _chargeRate min _energyRegenMax;
 _vehicle = vehicle player;
 if (_vehicle != player && isEngineOn _vehicle) then {
 	_energyValue = _energyValue + 5;
@@ -25,15 +25,15 @@ if (_vehicle != player && isEngineOn _vehicle) then {
 
 if (currentVisionMode player == 1) then { //NV enabled
 	_energyValue = _energyValue - _energyCostNV;
-	if (EPOCH_playerEnergy == 0) then {
+	if (_playerEnergy == 0) then {
 		player action["nvGogglesOff", player];
 		["Night Vision Goggles: Need Energy", 5] call Epoch_message;
 	};
 };
 
 // Sets visual effect
-if (EPOCH_playerAlcohol > 20) then {
-	_drunkVal = linearConversion [0,100,EPOCH_playerAlcohol,0.1,1,true];
+if (_playerAlcohol > 20) then {
+	_drunkVal = linearConversion [0,100,_playerAlcohol,0.1,1,true];
 	[_drunkVal, 2] call epoch_setDrunk;
 } else {
 	[0, 2] call epoch_setDrunk;
@@ -54,18 +54,23 @@ if (_playerRadiation > 1) then {
 	[0, 2] call epoch_setRadiation;
 };
 
-EPOCH_playerEnergy = ((EPOCH_playerEnergy + _energyValue) min EPOCH_playerEnergyMax) max 0;
+//  Energy Handler
+if (EPOCH_digestEnergy > 0) then {
+	_energyValue = _energyValue + EPOCH_digestEnergy;
+	EPOCH_digestEnergy = 0;
+};
+_playerEnergy = ((_playerEnergy + _energyValue) min _playerEnergyMax) max _playerEnergyMin;
 
-if !(EPOCH_playerEnergy isEqualTo _prevEnergy) then {
+if !(_playerEnergy isEqualTo _prevEnergy) then {
 	9993 cutRsc["EpochGameUI3", "PLAIN", 0, false];
 	_display3 = uiNamespace getVariable "EPOCH_EpochGameUI3";
-	_energyDiff = round(EPOCH_playerEnergy - _prevEnergy);
+	_energyDiff = round(_playerEnergy - _prevEnergy);
 	_diffText = if (_energyDiff > 0) then {format["+%1",_energyDiff]} else {format["%1",_energyDiff]};
-	(_display3 displayCtrl 21210) ctrlSetText format["%1/%2 %3", round(EPOCH_playerEnergy), EPOCH_playerEnergyMax, _diffText];
-	_prevEnergy = EPOCH_playerEnergy;
+	(_display3 displayCtrl 21210) ctrlSetText format["%1/%2 %3", round(_playerEnergy), _playerEnergyMax, _diffText];
+	_prevEnergy = _playerEnergy;
 };
 
-if (EPOCH_playerEnergy == 0) then {
+if (_playerEnergy == 0) then {
 	if (EPOCH_buildMode > 0) then {
 		EPOCH_buildMode = 0;
 		EPOCH_snapDirection = 0;
@@ -111,7 +116,7 @@ if (_isOnFoot) then {
 			_increaseWet = 10;
 		};
 	} else {
-		if (EPOCH_playerWet > 50 && _airTemp <= 32) then {
+		if (_playerWet > 50 && _airTemp <= 32) then {
 			_isNearFire = {inflamed _x} count (nearestObjects [player, ["ALL"], 3]);
 			if (!(call EPOCH_fnc_isInsideBuilding) && _isNearFire == 0) then {
 				_warming = false;
@@ -134,28 +139,34 @@ if ((getFatigue player) >= 0.7 && _airTemp > 100) then {
 	_maxTemp = _airTemp;
 };
 
+// Immunity Handler
+if (EPOCH_digestImmunity > 0) then {
+	_playerImmunity = ((_playerImmunity + EPOCH_digestImmunity) min _playerImmunityMax) max _playerImmunityMin;
+	EPOCH_digestImmunity = 0;
+};
+
 // toxic fever and immunity increase
-if (EPOCH_playerToxicity > 0) then {
-	EPOCH_playerImmunity = (EPOCH_playerImmunity + 0.1) min 100;
-	EPOCH_playerToxicity = (EPOCH_playerToxicity - 0.1) max 0;
+if (_playerToxicity > 0) then {
+	_playerImmunity = ((_playerImmunity + 0.1) min _playerImmunityMax) max _playerImmunityMin;
+	_playerToxicity = ((_playerToxicity - 0.1) min _playerToxicityMax) max _playerToxicityMin;
 	_maxTemp = 106.7 + 10;
 };
 
 if (_warming) then {
-	EPOCH_playerTemp = (EPOCH_playerTemp + 0.01) min _maxTemp;
+	_playerTemp = (_playerTemp + 0.01) min _maxTemp;
 } else {
-	EPOCH_playerTemp = (EPOCH_playerTemp - 0.01) max (95.0 - 10);
+	_playerTemp = (_playerTemp - 0.01) max (95.0 - 10);
 };
 
 // wet/dry
 if (_wet) then {
-	EPOCH_playerWet = (EPOCH_playerWet + _increaseWet) min 100;
-	if (EPOCH_playerWet > 50) then {
-		EPOCH_playerSoiled = (EPOCH_playerSoiled - 1) max 0;
+	_playerWet = ((_playerWet + _increaseWet) min _playerWetMax) max _playerWetMin;
+	if (_playerWet > 50) then {
+		_playerSoiled = ((_playerSoiled - 1) min _playerSoiledMax) max _playerSoiledMin;
 	};
 } else {
 	if (_warming) then {
-		EPOCH_playerWet = (EPOCH_playerWet - 1) max 0;
+		_playerWet = ((_playerWet - 1) min _playerWetMax) max _playerWetMin;
 	};
 };
 
@@ -164,7 +175,7 @@ _hungerlossRate = _baseHungerLoss * timeMultiplier;
 _thirstlossRate = _baseThirstLoss * timeMultiplier;
 
 // Increase hunger if player is Fatigued
-if (EPOCH_playerStamina < 100) then {
+if (_playerStamina < 100) then {
 	if ((getFatigue player) > 0) then {
 		_hungerlossRate = _hungerlossRate + (_hungerlossRate*(getFatigue player));
 	};
@@ -173,13 +184,58 @@ if (EPOCH_playerStamina < 100) then {
 	_hungerlossRate = (_hungerlossRate / 2);
 };
 
-EPOCH_playerHunger = (EPOCH_playerHunger - _hungerlossRate) max 0;
-EPOCH_playerThirst = (EPOCH_playerThirst - _thirstlossRate) max 0;
+//  Alcohol Handler
+if (EPOCH_digestAlcohol > 0) then {
+	_playerAlcohol = ((_playerAlcohol + EPOCH_digestAlcohol) min _playerAlcoholMax) max _playerAlcoholMin;
+	EPOCH_digestAlcohol = 0;
+} else {
+	// downtick Alcohol
+	_alcoholLossRate = 0.17;
+	_playerAlcohol = ((_playerAlcohol - _alcoholLossRate) min _playerAlcoholMax) max _playerAlcoholMin;
+};
 
-call _lootBubble;
+// Hunger Handler
+if (EPOCH_digestHunger > 0) then {
+	_playerHunger = ((_playerHunger + EPOCH_digestHunger) min _playerHungerMax) max _playerHungerMin;
+	EPOCH_digestHunger = 0;
+} else {
+	// downtick Hunger
+	_playerHunger = ((_playerHunger - _hungerlossRate) min _playerHungerMax) max _playerHungerMin;
+};
+
+// Thirst Handler
+if (EPOCH_digestThirst > 0) then {
+	_playerThirst = ((_playerThirst + EPOCH_digestThirst) min _playerThirstMax) max _playerThirstMin;
+	EPOCH_digestThirst = 0;
+} else {
+	// downtick Thirst
+	_playerThirst = ((_playerThirst - _thirstlossRate) min _playerThirstMax) max _playerThirstMin;
+};
+
+// Nuisance Handler, this only allows var to increse not decrease
+if (EPOCH_digestNuisance > 0) then {
+	_playerNuisance = ((_playerNuisance + EPOCH_digestNuisance) min _playerNuisanceMax) max _playerNuisanceMin;
+	EPOCH_digestNuisance = 0;
+} else {
+	// downtick Nuisance
+	_playerNuisance = ((_playerNuisance - 1) min _playerNuisanceMax) max _playerNuisanceMin;
+};
+
+// Radiation Handler
+if (EPOCH_digestRadiation < 0 && _radsLevel == 0) then {
+	// only lower rads if player has taken medicine and it no longer in a radiation zone.
+	_playerRadiation = ((_playerRadiation - 0.01) min _playerRadiationMax) max _playerRadiationMin;
+	EPOCH_digestRadiation = (EPOCH_digestRadiation + 1) min 0;
+} else {
+	// allow increase rads based on radiation levels and consumed rads
+	if (EPOCH_digestRadiation > 0) then {
+		_radsLevel = _radsLevel + EPOCH_digestRadiation;
+		EPOCH_digestRadiation = 0;
+	};
+	_playerRadiation = ((_playerRadiation + _radsLevel) min _playerRadiationMax) max _playerRadiationMin;
+};
 
 EPOCH_playerStaminaMax = (100 * (round(_playerAliveTime/360)/10)) min 2500;
 
-// downtick Nuisance
-(_customVarLimits select (_customVarNames find "Nuisance")) params [["_playerLimitMax",100],["_playerLimitMin",0]];
-EPOCH_playerNuisance = ((EPOCH_playerNuisance - 1) min _playerLimitMax) max _playerLimitMin;
+// process loot
+call _lootBubble;

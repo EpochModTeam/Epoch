@@ -22,7 +22,7 @@
 	NOTHING
 */
 //[[[cog import generate_private_arrays ]]]
-private ["_animConfigArray","_animationEffect","_animationEffectGlobal","_bleedAmount","_bleedChance","_bloodpAmount","_bloodpChance","_canSee","_cfgObjectInteraction","_distance","_doAttack","_fatigueChance","_ppEffect","_say3dsoundsConfig","_selectedMove","_selectedSound","_soundConfigArray","_soundEffect","_soundEffectGlobal","_switchMovehandlerConfig","_target","_toxicChance"];
+private ["_animConfigArray","_animationEffect","_animationEffectGlobal","_bleedAmount","_bleedChance","_bloodpAmount","_bloodpChance","_canSee","_cfgObjectInteraction","_distance","_doAttack","_fatigueChance","_ppEffect","_say3dsoundsConfig","_selectedMove","_selectedSound","_soundConfigArray","_soundEffect","_soundEffectGlobal","_switchMovehandlerConfig","_target","_toxicAmount","_toxicChance"];
 //[[[end]]]
 params [["_unit",objNull],["_target",player]];
 if (isNull _unit && isNull _target) exitWith {};
@@ -69,6 +69,7 @@ if (_doAttack) then {
 			_fatigueChance = getNumber (_cfgObjectInteraction >> "fatigueChance");
 			_bleedAmount = getNumber (_cfgObjectInteraction >> "bleedAmount");
 			_bloodpAmount = getNumber (_cfgObjectInteraction >> "bloodpAmount");
+			_toxicAmount = getNumber (_cfgObjectInteraction >> "toxicAmount");
 
 			_soundConfigArray = getArray (_cfgObjectInteraction >> "soundEffect");
 			_soundEffect = "";
@@ -112,13 +113,13 @@ if (_doAttack) then {
 				};
 
 				if (random 1 < _toxicChance) then {
-					EPOCH_playerToxicity = (EPOCH_playerToxicity + (random(100 - EPOCH_playerImmunity))) min 100;
+					EPOCH_digestToxicity = (EPOCH_digestToxicity + random(_toxicAmount)) min 100;
 				};
 				if (random 1 < _bleedChance) then {
 					player setBleedingRemaining((getBleedingRemaining player) + _bleedAmount);
 				};
 				if (random 1 < _bloodpChance) then {
-					EPOCH_playerBloodP = (EPOCH_playerBloodP + (_bloodpAmount + (EPOCH_playerBloodP - 100))) min 190;
+					EPOCH_digestBloodP = (EPOCH_digestBloodP + _bloodpAmount) min 100;
 					if !(_ppEffect isEqualTo []) then {
 						[_ppEffect] spawn EPOCH_fnc_spawnEffects;
 					};

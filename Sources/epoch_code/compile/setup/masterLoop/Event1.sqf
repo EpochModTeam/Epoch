@@ -3,7 +3,7 @@ _forceBloodRise = false;
 _forceFatigue = false;
 _allowBloodDrop = false;
 _forceStaminaDrop = false;
-_warnbloodPressure = EPOCH_playerBloodP > 120;
+_warnbloodPressure = _playerBloodP > 120;
 _increaseStamina = true;
 _val = 0;
 
@@ -104,7 +104,7 @@ EPOCH_currentTargetMode = _currentTargetMode;
 if (_forceBloodRise || _forceFatigue) then {
 	_increaseStamina = false;
 } else {
-	if (EPOCH_playerStamina > 0 && !_panic) then {
+	if (_playerStamina > 0 && !_panic) then {
 		_allowBloodDrop = true;
 	};
 };
@@ -118,16 +118,22 @@ if (_forceFatigue) then {
 	};
 };
 
-// force Blood Pressure Rise
-if (_forceBloodRise) then {
-	EPOCH_playerBloodP = (EPOCH_playerBloodP + 0.05) min 190;
+// Blood pressure handler
+if (EPOCH_digestBloodP > 0) then {
+	_playerBloodP = ((_playerBloodP + EPOCH_digestBloodP) min _playerBloodPMax) max _playerBloodPMin;
 } else {
-	if (_allowBloodDrop) then {
-		// allow player to bleed out
-		_lowerBPlimit = [100,0] select (isBleeding player);
-		EPOCH_playerBloodP = EPOCH_playerBloodP - 1 max _lowerBPlimit;
+	if (_forceBloodRise) then {
+		// force Blood Pressure Rise
+		_playerBloodP = (_playerBloodP + 0.05) min 190;
+	} else {
+		if (_allowBloodDrop) then {
+			// allow player to bleed out
+			_lowerBPlimit = [100,0] select (isBleeding player);
+			_playerBloodP = _playerBloodP - 1 max _lowerBPlimit;
+		};
 	};
 };
+
 
 // check if player On Foot
 _isOnFoot = isNull objectParent player;
@@ -141,11 +147,11 @@ if (_isOnFoot) then {
 
 // Decrease Stamina
 if (_forceStaminaDrop) then {
-	EPOCH_playerStamina = (EPOCH_playerStamina - (_val/4)) max 0;
+	_playerStamina = (_playerStamina - (_val/4)) max 0;
 } else {
 	// Increase Stamina if player is not Fatigued
 	if (_increaseStamina && (getFatigue player) == 0) then {
-		EPOCH_playerStamina = (EPOCH_playerStamina + 0.5) min EPOCH_playerStaminaMax;
+		_playerStamina = (_playerStamina + 0.5) min EPOCH_playerStaminaMax;
 	};
 };
 
@@ -273,6 +279,18 @@ if !(EPOCH_ActiveTraderMission isequalto []) then {
 // Update read only vars
 EPOCH_playerRadiation = _playerRadiation;
 EPOCH_playerAliveTime = _playerAliveTime;
+EPOCH_playerBloodP = _playerBloodP;
+EPOCH_playerNuisance = _playerNuisance;
+EPOCH_playerHunger = _playerHunger;
+EPOCH_playerThirst = _playerThirst;
+EPOCH_playerSoiled = _playerSoiled;
+EPOCH_playerToxicity = _playerToxicity;
+EPOCH_playerImmunity = _playerImmunity;
+EPOCH_playerTemp = _playerTemp;
+EPOCH_playerWet = _playerWet;
+EPOCH_playerEnergy = _playerEnergy;
+EPOCH_playerAlcohol = _playerAlcohol;
+EPOCH_playerStamina = _playerStamina;
 
 // force update
 if (EPOCH_forceUpdateNow) then {
