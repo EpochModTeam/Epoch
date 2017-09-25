@@ -11,17 +11,21 @@ All changes for [Arma 3](https://arma3.com/) [Epoch Mod](https://epochmod.com) a
 - Vehicle Upgrade System - Upgrade your ride by using one of the new vehicle upgrade documents found in the world. @DirtySanchez
 
 - Vector Base Building (uses Arrow keys by default and with SHIFT / ALT you can control the steps). @DirtySanchez & @Ignatz-Heman
-- New Base Building Objects: Quarter and Half wood floors @DirtySanchez, Cinder block floor, Cinder wall with window. @Helion.
+- New Base Building Objects: Quarter and Half wood floors @DirtySanchez, Cinder block floor, Cinder wall with a window. Metal and Cinder Towers @Helion.
 
 - Medical items: Adrenaline Shot (adrenaline_epoch), Caffeine Pills (caffeinepills_epoch). Orlistat Pills (orlistat_epoch) by @Helion and configs by @DirtySanchez
 - Food items: ItemCereals, ItemPowderMilk_F, ItemRiceBox, ItemVitamins. @DirtySanchez
 
-- Digital Geiger Counter - used to detect Radiation. (Sounds @vbawol, Model @Helion and UI + digital font @raymix)
+- 84 new Female outfits based on 20 top designs and 4 new pairs of jeans(Blue Patched, Arid Brown, Black/Brown, Black). @DirtySanchez, @ComatoseBadger
+
+- Vehicle Ammo Reloading from Inventory and Vehicle Ammo. @DirtySanchez
+- Digital Geiger Counter - used to detect Radiation. (Sounds @vbawol, Model @Helion, and UI + digital font @raymix)
 - Barrel Bomb - large craft-able explosive that can be placed and detonated. @DirtySanchez
 - Brown Briefcase that contains 100oz Silver. @DirtySanchez
 - Old "Zombie Parts" Bag (ItemBioHazardBag).
 
 - Option to drink directly from water sources. @Ignatz-HeMan
+- Karma changes for deaths, suicides, PvP(including hero* and bandit* levels), trader kills, revives, trading sales and purchases.
 
 - Epoch Events 3.0: External pbo based events. see epoch_server_vip_event or epoch_server_debris_event for examples.
 
@@ -38,15 +42,16 @@ All changes for [Arma 3](https://arma3.com/) [Epoch Mod](https://epochmod.com) a
 - Initial support for Malden 2035 map released with A3 1.72+.
 
 ### Changed
+- Karma now persists death and moved to community stats.
 - CBA extended event handler and zeus curator support for Epoch Vehicles. @DirtySanchez
 - Base PlotPole ESP added to Epoch Admin Panel. @SMVampire
-- Helper arrow to indicate door-opening direction for Base Building. @Ignatz-Heman
+- Helper arrow to indicate the door-opening direction for Base Building. @Ignatz-Heman
 - Base Building elements can be detached to walk around the Element before saving. @Ignatz-Heman
 - Made ServicePoint more configurable @Ignatz-Heman
 - Base Building: Replaced 0/90/180/270° direction build mode with "Rotate 90°". @Ignatz-Heman
 - Base Building: Max building height now will be checked directly at building element placement. @Ignatz-Heman
 - Separated Hunger and Thirst loss values to baseHungerLoss/baseThirstLoss and removed baseHTLoss from CfgEpochClient.
-- Hunger and Thirst loss rates are now effected by timeMultiplier.
+- Hunger and Thirst loss rates are now affected by timeMultiplier.
 - Bump to hive version 0.6.0.0, Note: this requires epochserver hive extension updates server side.
 - Gas Station Auto-Refuel is now disabled on all maps. Use disableAutoRefuel = false; via epochconfig.hpp to disable. @SMVampire
 ### Fixed
