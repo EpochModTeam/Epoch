@@ -9,18 +9,18 @@ if (!isNull _object && !(_class isEqualTo "")) then {
     _newObj = createVehicle [_class, ASLtoAGL _objectPos, [], 0, "CAN_COLLIDE"];
     if (!isNull _newObj) then {
         _object hideObjectGlobal true;
-		
+
 		// new Dynamicsimulation
 		if(["CfgDynamicSimulation", "baseDynamicSimulationSystem", true] call EPOCH_fnc_returnConfigEntryV2)then
 		{
 			_newObj enableDynamicSimulation true;
 			_newObj triggerDynamicSimulation false; // this object doesnt need to turn anything on in the server
 		};
-		
+
         switch (_method) do {
             case 0: {
-                _newObj setVectorDirAndUp [vectordir _object, vectorup _object];
                 _newObj setPosWorld _objectPos;
+                _newObj setVectorDirAndUp [vectordir _object, vectorup _object];
             };
             case 1: {
                 _newObj attachTo [_object,[0,0,0]];

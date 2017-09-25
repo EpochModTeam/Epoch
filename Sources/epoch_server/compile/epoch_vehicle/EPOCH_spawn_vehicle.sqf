@@ -38,11 +38,11 @@ if !(isNull _vehObj) then{
 
 	// Set Direction and position
 	if (_direction isEqualType []) then{
+		_vehObj setposATL _position;
 		_vehObj setVectorDirAndUp _direction;
-		_vehObj setposATL _position;
 	} else {
-		_vehObj setdir _direction;
 		_vehObj setposATL _position;
+		_vehObj setdir _direction;
 	};
 	// Normalize vehicle inventory
 	clearWeaponCargoGlobal    _vehObj;

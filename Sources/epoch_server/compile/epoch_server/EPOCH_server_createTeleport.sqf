@@ -94,11 +94,11 @@ if !(_debugBox isEqualTo "") then {
 
 	_ep allowDamage false;
 	if (_dir isEqualType []) then{
+		_ep setposATL _pos;
 		_ep setVectorDirAndUp _dir;
-		_ep setposATL _pos;
 	} else {
-		_ep setDir _dir;
 		_ep setposATL _pos;
+		_ep setDir _dir;
 	};
 
 	if (_deSimulate) then{

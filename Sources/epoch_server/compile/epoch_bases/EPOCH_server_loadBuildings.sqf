@@ -89,8 +89,8 @@ for "_i" from 0 to _this do {
 					} foreach _IndestructibleBaseObjects;
 				};
 			};
-			_baseObj setVectorDirAndUp _worldspace;
 			_baseObj setposATL _location;
+			_baseObj setVectorDirAndUp _worldspace;
 
 			// new Dynamicsimulation
 			if(["CfgDynamicSimulation", "baseDynamicSimulationSystem", true] call EPOCH_fnc_returnConfigEntryV2)then
@@ -99,7 +99,7 @@ for "_i" from 0 to _this do {
 				_baseObj enableDynamicSimulation true;
 				_baseObj triggerDynamicSimulation false; // this object doesnt need to turn anything on in the server
 			};
-			
+
 			// spawn additional object for trap
 			_ammoClass = (_cfgBaseBuilding >> _class >> "ammoClass");
 			if(isText _ammoClass) then {

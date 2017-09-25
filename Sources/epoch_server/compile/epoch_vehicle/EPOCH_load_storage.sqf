@@ -85,11 +85,11 @@ for "_i" from 1 to _maxStorageLimit do {
 			};
 
 			if (_dir isEqualType []) then {
+				_vehicle setposATL _location;
 				_vehicle setVectorDirAndUp _dir;
-				_vehicle setposATL _location;
 			} else {
-				_vehicle setDir _dir;
 				_vehicle setposATL _location;
+				_vehicle setDir _dir;
 			};
 
 			// temp set damage to mark for maint

@@ -115,8 +115,8 @@ if (_status == 1 && _data isEqualType [] && !(_data isEqualTo [])) then {
     if (_x isEqualType [] && !(_x isEqualTo [])) then {
         _x params ["_selectedDebris","_posWorld", "_vectorDir", "_vectorUp"];
         _object = createSimpleObject [_selectedDebris, _posWorld];
-        _object setVectorDirAndUp [_vectorDir,_vectorUp];
         _object setPosWorld _posWorld;
+		_object setVectorDirAndUp [_vectorDir,_vectorUp];
         _debrisCounter = _debrisCounter + 1;
     };
 } forEach _debrisLocations;

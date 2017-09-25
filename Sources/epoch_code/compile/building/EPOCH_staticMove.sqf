@@ -216,10 +216,10 @@ if (_class != "") then {
 					{
 						_nearestObject = _x;
 						_isSnap = false;
-						
+
 						// Vector + Snapping
 						_snapMemoryPoint = "";
-						
+
 						_snapPosition = [0, 0, 0];
 						if (!isNull _nearestObject) then {
 							_snapConfig = _cfgBaseBuilding >> (typeOf _nearestObject);
@@ -242,7 +242,7 @@ if (_class != "") then {
 											_isSnap = true;
 											_snapPosition = _snapPos;
 											_snapType = _type;
-											
+
 											// Vector + Snapping
 											_snapMemoryPoint = _x;
 										};
@@ -275,11 +275,11 @@ if (_class != "") then {
 								{
 									detach _x;
 								} forEach attachedObjects player;
-								
+
 								// Vector + Snapping
 								_vectorDir = vectorDir _nearestObject;
 								_vectorUp = vectorup _nearestObject;
-								
+
 								_dir2 = [_vectorDir, _direction] call BIS_fnc_returnVector;
 								if (_pos2 select 2 > _maxHeight) then {
 									_pos2 set[2, _maxHeight];
@@ -287,9 +287,10 @@ if (_class != "") then {
 								if (surfaceIsWater _snapPosition) then {
 									_snapPosition = ASLtoATL _snapPosition;
 								};
-								_currentTarget setVectorDirAndUp[_dir2, (vectorUp _nearestObject)];
+
 								_currentTarget setposATL _snapPosition;
-								
+								_currentTarget setVectorDirAndUp[_dir2, (vectorUp _nearestObject)];
+
 								// Vector + Snapping
 								if(!(_vectorUp select 0 == 0) || !(_vectorUp select 1 == 0) || !(_vectorUp select 2 == 1)) then{
 									_tiltFB = (((_vectorUp select 0 < 0) && (_vectorUp select 1 > 0)) || ((_vectorUp select 0 > 0) && (_vectorUp select 1 < 0)));
@@ -305,7 +306,7 @@ if (_class != "") then {
 										};
 										if( ((_tiltFB) && (_snapMemoryPoint in ["N","S"])) || ((_tiltLR) && (_snapMemoryPoint in ["W","E"])) )then{
 											EPOCH_tempTarget setVectorUp _vectorUp;
-										};	
+										};
 									};
 									if(_snapType isEqualTo "para")then{
 										if((_tiltFB) && (EPOCH_snapDirection in [0,2]))then{
@@ -317,12 +318,12 @@ if (_class != "") then {
 									};
 									_newDir = vectorDir EPOCH_tempTarget;
 									_vectorDir = _newDir;
-									
+
 									_currentTarget setposATL _snapPosition;
 									_currentTarget setDir ((getDir _currentTarget) + (EPOCH_snapDirection * 90));
 									_currentTarget setVectorDirAndUp [_vectorDir,_vectorUP];
 								};
-								
+
 								_snapped = true;
 								if(!isNil "EPOCH_tempTarget")then{
 									deleteVehicle EPOCH_tempTarget;
@@ -408,8 +409,8 @@ if (_class != "") then {
 						deleteVehicle _currentTarget;
 						_currentTarget = createVehicle[_simulClass, (_worldspace select 0), [], 0, "CAN_COLLIDE"];
 
-						_currentTarget setVectorDirAndUp[_worldspace select 1, _worldspace select 2];
 						_currentTarget setposATL(_worldspace select 0);
+						_currentTarget setVectorDirAndUp[_worldspace select 1, _worldspace select 2];
 
 					};
 				};
