@@ -1,8 +1,9 @@
 // make sure we wait for Display #46
+// waitUntil {!(isNull (findDisplay 46))};
 waitUntil {!isNull (findDisplay 46) && (!isNil "EPOCH_loadingScreenDone")};
 
 // load favBar
-'load' call epoch_favBar_draw;
+'load' spawn epoch_favBar_draw;
 
 // set player rating
 player addRating -2000;
