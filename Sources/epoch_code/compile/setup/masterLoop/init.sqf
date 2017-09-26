@@ -29,7 +29,7 @@ _customVarLimits = _customVarsInit apply {_x param [2,[]]};
 	_varDefault = _defaultVarValues select _foreachindex;
 	call compile format['if (isNil "_player%1Key") then {_player%1Key = "EPOCH_player%1"};
 	_varLimits params [["_player%1Max",100],["_player%1Min",0]];
-	_player%1 = missionNamespace getVariable [_player%1Key, _varDefault];
+	_player%1 = missionNamespace getVariable ["_player%1Key", _varDefault];
 	',_x];
 } forEach _customVarNames;
 
