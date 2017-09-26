@@ -30,8 +30,8 @@ _customVarLimits = _customVarsInit apply {_x param [2,[]]};
 	_varName = format["EPOCH_player%1",_x];
 	_varNameTmp = call compile format["_player%1Key",_x];
 	if !(isNil "_varNameTmp") then {_varName = _varNameTmp};
-	_varLimits params [[format["_player%1Max",_x],100],[format["_player%1Min",_x],0]];
-	call compile format['_player%1 = missionNamespace getVariable [_varName, _varDefault];',_x];
+	_varLimits params [[format["_player%1MaxRaw",_x],100],[format["_player%1MinRaw",_x],0]];
+	call compile format['_player%1 = missionNamespace getVariable [_varName, _varDefault]; _player%1Max = _player%1MaxRaw; _player%1Min = _player%1MinRaw',_x];
 } forEach _customVarNames;
 
 EPOCH_playerEnergyMax = _playerEnergyMax;
