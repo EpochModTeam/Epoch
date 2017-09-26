@@ -75,9 +75,11 @@ if (_version >= 1) then {
 						_code = "";
 						if (getNumber(_x >> "customHeader") == 1) then {
 							_code = _header + (preprocessFileLineNumbers _fnc_path);
+							diag_log _code;
 						} else {
 							_code = (preprocessFileLineNumbers _fnc_path);
 						};
+
 						missionNamespace setvariable [_var_name,compileFinal _code];
 						if (getNumber(_x >> "preInit") == 1) then {
 							call (missionNamespace getvariable _var_name);
