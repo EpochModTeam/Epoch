@@ -11,7 +11,7 @@ _spawnUnits = [];
 	if (_x > 0) then{
 		_spawnUnits pushBack(EPOCH_spawnIndex select _forEachIndex);
 	};
-} forEach EPOCH_playerSpawnArray;
+} forEach _playerSpawnArray;
 
 // test spawning one antagonist every 10 minutes select one unit at random to spawn
 if !(_spawnUnits isEqualTo[]) then{

@@ -1,21 +1,21 @@
 /*
 	Author: Aaron Clark - EpochMod.com - @vbawol
 
-    Contributors: @Skaronator @raymix @Fank
+	Contributors: @Skaronator @raymix @Fank
 
 	Description:
 	Key Down EH functions
 
-    Licence:
-    Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
+	Licence:
+	Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
 
-    Github:
-    https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_code/compile/interface_event_handlers/EPOCH_KeyDown.sqf
+	Github:
+	https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_code/compile/interface_event_handlers/EPOCH_KeyDown.sqf
 
-    Example:
-    _this call EPOCH_KeyDown;
+	Example:
+	_this call EPOCH_KeyDown;
 
-    Parameter(s):
+	Parameter(s):
 		_this select 0: CONTROL - _display
 		_this select 1: NUMBER - _dikcode
 		_this select 2: BOOL - Shift State
@@ -26,9 +26,11 @@
 	BOOL
 */
 //[[[cog import generate_private_arrays ]]]
-private ["_currentPos","_handled"];
+private ["_adj","_currentPos","_handled","_playerStaminaKey","_step"];
 //[[[end]]]
 params ["_display","_dikCode","_shift","_ctrl","_alt"];
+
+if (isNil "_playerStaminaKey") then {_playerStaminaKey = "EPOCH_playerStamina"};
 
 _handled = false;
 
@@ -115,10 +117,10 @@ if (_dikCode == EPOCH_keysAction) then {
 if (vehicle player == player) then {
 
 	if ((_dikCode == EPOCH_keysBuildMode1 && !EPOCH_favBar_itemConsumed) && EPOCH_buildMode > 0) then {
-        EPOCH_buildMode = 0;
+		EPOCH_buildMode = 0;
 		["Build Mode: Disabled", 5] call Epoch_message;
 		EPOCH_Target = objNull;
-        _handled = true;
+		_handled = true;
 	};
 
 	// H - holster unholster
@@ -202,13 +204,13 @@ if (vehicle player == player) then {
 					if ((primaryWeapon player != "") && (currentWeapon player == primaryWeapon player)) then {
 						player switchMove "AovrPercMrunSrasWrflDf";
 						[player, "AovrPercMrunSrasWrflDf", Epoch_personalToken] remoteExec ["EPOCH_server_handle_switchMove",2];
-                        EPOCH_playerStamina = (EPOCH_playerStamina - 30) max 0;
+						[_playerStaminaKey, -30, 1000 , 0] call EPOCH_fnc_setVariableLimited;
 						_handled = true;
 					} else {
 						if (currentWeapon player == "") then {
 							player switchMove "epoch_unarmed_jump";
 							[player, "epoch_unarmed_jump", Epoch_personalToken] remoteExec ["EPOCH_server_handle_switchMove",2];
-                            EPOCH_playerStamina = (EPOCH_playerStamina - 30) max 0;
+							[_playerStaminaKey, -30, 1000 , 0] call EPOCH_fnc_setVariableLimited;
 							_handled = true;
 						};
 					};

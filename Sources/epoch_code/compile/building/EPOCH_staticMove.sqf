@@ -172,7 +172,7 @@ if (_class != "") then {
 			_EPOCH_1 = diag_tickTime;
 			if !(isNull EPOCH_target) then {
 				_nearestObjects = nearestObjects[EPOCH_target, _allowedSnapObjects, 12];
-				EPOCH_playerEnergy = (EPOCH_playerEnergy - _energyCost) max 0;
+				["EPOCH_playerEnergy", -_energyCost, 5000 , 0] call EPOCH_fnc_setVariableLimited;
 			};
 		};
 		if !(_currentTargetAttachedTo isequalto EPOCH_target_attachedTo) then {

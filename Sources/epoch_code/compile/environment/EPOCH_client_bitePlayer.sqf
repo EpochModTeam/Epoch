@@ -113,13 +113,16 @@ if (_doAttack) then {
 				};
 
 				if (random 1 < _toxicChance) then {
-					EPOCH_digestToxicity = (EPOCH_digestToxicity + random(_toxicAmount)) min 100;
+					if (isNil "_playerToxicityKey") then {_playerToxicityKey = "EPOCH_playerToxicity"};
+					if (isNil "_playerImmunityKey") then {_playerImmunityKey = "EPOCH_playerImmunity"};
+					[_playerToxicityKey,random(_toxicAmount - (missionNamespace getVariable [_playerImmunityKey, 0])),100,0] call EPOCH_fnc_setVariableLimited;
 				};
 				if (random 1 < _bleedChance) then {
 					player setBleedingRemaining((getBleedingRemaining player) + _bleedAmount);
 				};
 				if (random 1 < _bloodpChance) then {
-					EPOCH_digestBloodP = (EPOCH_digestBloodP + _bloodpAmount) min 100;
+					if (isNil "_playerBloodPKey") then {_playerBloodPKey = "EPOCH_playerBloodP"};
+					[_playerBloodPKey,_bloodpAmount,100,0] call EPOCH_fnc_setVariableLimited;
 					if !(_ppEffect isEqualTo []) then {
 						[_ppEffect] spawn EPOCH_fnc_spawnEffects;
 					};

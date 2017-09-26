@@ -14,22 +14,6 @@ _forceUpdate = false;
 // force update within 1 second
 EPOCH_forceUpdateNow = false;
 
-// init local player stat vars
-_playerRadiation = EPOCH_playerRadiation;
-_playerAliveTime = EPOCH_playerAliveTime;
-_playerNuisance = EPOCH_playerNuisance;
-_playerBloodP = EPOCH_playerBloodP;
-_playerHunger = EPOCH_playerHunger;
-_playerThirst = EPOCH_playerThirst;
-_playerSoiled = EPOCH_playerSoiled;
-_playerToxicity = EPOCH_playerToxicity;
-_playerImmunity = EPOCH_playerImmunity;
-_playerTemp = EPOCH_playerTemp;
-_playerWet = EPOCH_playerWet;
-_playerEnergy = EPOCH_playerEnergy;
-_playerAlcohol = EPOCH_playerAlcohol;
-_playerStamina = EPOCH_playerStamina;
-
 // start alive timer
 _clientAliveTimer = diag_tickTime;
 
@@ -39,27 +23,15 @@ _customVarNames = _customVarsInit apply {_x param [0,""]};
 _defaultVarValues = _customVarsInit apply {_x param [1,0]};
 _customVarLimits = _customVarsInit apply {_x param [2,[]]};
 
-// init limits
-/*
+// init limits and keys
 {
     _varLimits = _customVarLimits select _forEachIndex;
-	call compile format['_varLimits params [["_player%1Max",100],["_player%1Min",0]];',_x];
+	_varDefault = _defaultVarValues select _foreachindex;
+	call compile format['if (isNil "_player%1Key") then {_player%1Key = "EPOCH_player%1"};
+	_varLimits params [["_player%1Max",100],["_player%1Min",0]];
+	_player%1 = missionNamespace getVariable [_player%1Key, _varDefault];
+	',_x];
 } forEach _customVarNames;
-*/
-
-(_customVarLimits select (_customVarNames find "Temp")) params [["_playerTempMax",100],["_playerTempMin",0]];
-(_customVarLimits select (_customVarNames find "Hunger")) params [["_playerHungerMax",100],["_playerHungerMin",0]];
-(_customVarLimits select (_customVarNames find "Thirst")) params [["_playerThirstMax",100],["_playerThirstMin",0]];
-(_customVarLimits select (_customVarNames find "Energy")) params [["_playerEnergyMax",100],["_playerEnergyMin",0]];
-(_customVarLimits select (_customVarNames find "Wet")) params [["_playerWetMax",100],["_playerWetMin",0]];
-(_customVarLimits select (_customVarNames find "Soiled")) params [["_playerSoiledMax",100],["_playerSoiledMin",0]];
-(_customVarLimits select (_customVarNames find "Immunity")) params [["_playerImmunityMax",100],["_playerImmunityMin",0]];
-(_customVarLimits select (_customVarNames find "Toxicity")) params [["_playerToxicityMax",100],["_playerToxicityMin",0]];
-(_customVarLimits select (_customVarNames find "Stamina")) params [["_playerStaminaMax",100],["_playerStaminaMin",0]];
-(_customVarLimits select (_customVarNames find "BloodP")) params [["_playerBloodPMax",100],["_playerBloodPMin",0]];
-(_customVarLimits select (_customVarNames find "Alcohol")) params [["_playerAlcoholMax",100],["_playerAlcoholMin",0]];
-(_customVarLimits select (_customVarNames find "Radiation")) params [["_playerRadiationMax",100],["_playerRadiationMin",0]];
-(_customVarLimits select (_customVarNames find "Nuisance")) params [["_playerNuisanceMax",100],["_playerNuisanceMin",0]];
 
 EPOCH_playerEnergyMax = _playerEnergyMax;
 
@@ -67,43 +39,9 @@ EPOCH_playerEnergyMax = _playerEnergyMax;
 _fnc_forceUpdate = {
 	private _customVars = [];
 	{
-		// use local var from inside master loop
-		/*
-		call compile format['_customVars pushBack _player%1;',_x];
-		*/
-
-		switch (_x) do {
-			case ("Radiation"): {
-				_customVars pushBack _playerRadiation;
-			};
-			case ("Nuisance"): {
-				_customVars pushBack _playerNuisance;
-			};
-			case ("BloodP"): {
-				_customVars pushBack _playerBloodP;
-			};
-			case ("AliveTime"):{
-				_customVars pushBack _playerAliveTime;
-			};
-			case ("Hunger"):{
-				_customVars pushBack _playerHunger;
-			};
-			case ("Thirst"):{
-				_customVars pushBack _playerThirst;
-			};
-			case ("Alcohol"):{
-				_customVars pushBack _playerAlcohol;
-			};
-			case ("Energy"):{
-				_customVars pushBack _playerEnergy;
-			};
-			default {
-				private _customVarIndex = _customVarNames find _x;
-				if (_customVarIndex != -1) then {
-					_customVars pushBack (missionNamespace getVariable [format["EPOCH_player%1",_x],_defaultVarValues select _customVarIndex]);
-				};
-			};
-		};
+		private _varName = call compile format["_player%1Key",_x];
+		if (isNil "_varName") then {_varName = format["EPOCH_player%1",_x]};
+		_customVars pushBack (missionNamespace getVariable [_varName,_defaultVarValues select _foreachindex]);
 	} forEach _customVarNames;
 	[player,_customVars,Epoch_personalToken] remoteExec ["EPOCH_fnc_savePlayer",2];
 };
@@ -194,9 +132,9 @@ EPOCH_spawnIndex = _spawnIndex;
 EPOCH_spawnLimits = _spawnLimits;
 
 // default data if mismatch
-if !(EPOCH_playerSpawnArray isEqualTypeParams _spawnIndex) then{
-	EPOCH_playerSpawnArray = [];
-	{ EPOCH_playerSpawnArray pushBack 0 } forEach _spawnIndex;
+if !(_playerSpawnArray isEqualTypeParams _spawnIndex) then{
+	_playerSpawnArray = [];
+	{ _playerSpawnArray pushBack 0 } forEach _spawnIndex;
 };
 
 // find radio

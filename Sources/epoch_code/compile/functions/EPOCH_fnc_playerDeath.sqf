@@ -31,8 +31,11 @@ _playerDeathScreen = getText(_config >> "playerDeathScreen");
 _playerRevengeMinAliveTime = getNumber(_config >> "playerRevengeMinAliveTime");
 if (_playerDeathScreen isEqualTo "") then {_playerDeathScreen = "TapOut"};
 _tapDiag = _playerDeathScreen;
-// diag_log format ["DEBUG: EPOCH_playerAliveTime %1",EPOCH_playerAliveTime];
-_doRevenge = ((getNumber(_config >> "playerDisableRevenge") isEqualTo 0) && EPOCH_playerAliveTime >= _playerRevengeMinAliveTime);
+
+if (isNil "_playerAliveTimeKey") then {_playerAliveTimeKey = "EPOCH_playerAliveTime"};
+_playerAliveTime = missionNamespace getVariable [_playerAliveTimeKey,[]];
+
+_doRevenge = ((getNumber(_config >> "playerDisableRevenge") isEqualTo 0) && _playerAliveTime >= _playerRevengeMinAliveTime);
 
 // test ejecting unit from vehicle if dead client side
 if (vehicle _unit != _unit) then {

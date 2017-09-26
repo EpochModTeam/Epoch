@@ -24,7 +24,7 @@
 	NOTHING
 */
 //[[[cog import generate_private_arrays ]]]
-private ["_prevPlayerObject"];
+private ["_playerBloodPKey","_prevPlayerObject"];
 //[[[end]]]
 params [
     ["_playerObject",objNull,[objNull]],
@@ -58,7 +58,8 @@ if !(alive player && alive _playerObject && !isPlayer _playerObject) then {
         Epoch_personalToken = _personalToken;
 
 		// reset blood Pressure to warning level
-		EPOCH_playerBloodP = 120;
+		if (isNil "_playerBloodPKey") then {_playerBloodPKey = "EPOCH_playerBloodP"};
+		missionNamespace setVariable [_playerBloodPKey, 120];
 
         // restart masterloop
         [] spawn EPOCH_masterLoop;

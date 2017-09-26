@@ -17,9 +17,9 @@ if (!isNull _cursorTarget && {!(EPOCH_target isEqualTo _cursorTarget)}) then {
 	if (isClass(_interaction)) then {
 		_currentTargetMode = getNumber (_interaction >> "interactMode");
 		_allowTarget = switch (getNumber (_interaction >> "aliveState")) do {
-		    case 1: {!(alive _cursorTarget)};
+			case 1: {!(alive _cursorTarget)};
 			case 2: {(alive _cursorTarget)};
-		    default {true};
+			default {true};
 		};
 		if (_allowTarget) then {
 			_currentTarget = _cursorTarget;
@@ -90,7 +90,7 @@ EPOCH_currentTargetMode = _currentTargetMode;
 				_forceUpdate = "forceUpdate" in _criticalAttributes;
 				_forceFatigue = "forceFatigue" in _criticalAttributes;
 				_forceBloodRise = "forceBloodRise" in _criticalAttributes;
-                [_curCtrl,0.55] call epoch_2DCtrlHeartbeat;
+				[_curCtrl,0.55] call epoch_2DCtrlHeartbeat;
 			};
 			// todo make this reversable or even limited to a color range.
 			_color = [_playerLimitMin,_playerLimitMax,_currentVarVal,1] call EPOCH_colorRange;
@@ -118,24 +118,16 @@ if (_forceFatigue) then {
 	};
 };
 
-// Blood pressure handler
-_digestBloodP = missionNamespace getVariable ["EPOCH_digestBloodP", 0];
-if (_digestBloodP > 0) then {
-	_playerBloodP = ((_playerBloodP + _digestBloodP) min _playerBloodPMax) max _playerBloodPMin;
-	missionNamespace setVariable ["EPOCH_digestBloodP", 0];
+// force Blood Pressure Rise
+if (_forceBloodRise) then {
+	_playerBloodP = [_playerBloodPKey, 0.05, _playerBloodPMax , _playerBloodPMin] call EPOCH_fnc_setVariableLimited;
 } else {
-	if (_forceBloodRise) then {
-		// force Blood Pressure Rise
-		_playerBloodP = (_playerBloodP + 0.05) min 190;
-	} else {
-		if (_allowBloodDrop) then {
-			// allow player to bleed out
-			_lowerBPlimit = [100,0] select (isBleeding player);
-			_playerBloodP = _playerBloodP - 1 max _lowerBPlimit;
-		};
+	if (_allowBloodDrop) then {
+		// allow player to bleed out
+		_lowerBPlimit = [_playerBloodPMin,0] select (isBleeding player);
+		_playerBloodP = [_playerBloodPKey, -1, _playerBloodPMax , _lowerBPlimit] call EPOCH_fnc_setVariableLimited;
 	};
 };
-
 
 // check if player On Foot
 _isOnFoot = isNull objectParent player;
@@ -149,11 +141,12 @@ if (_isOnFoot) then {
 
 // Decrease Stamina
 if (_forceStaminaDrop) then {
-	_playerStamina = (_playerStamina - (_val/4)) max 0;
+	_playerStamina = [_playerStaminaKey, -(_val/4), EPOCH_playerStaminaMax , 0] call EPOCH_fnc_setVariableLimited;
 } else {
 	// Increase Stamina if player is not Fatigued
 	if (_increaseStamina && (getFatigue player) == 0) then {
-		_playerStamina = (_playerStamina + 0.5) min EPOCH_playerStaminaMax;
+		// EPOCH_playerStamina = (EPOCH_playerStamina + 0.5) min EPOCH_playerStaminaMax;
+		_playerStamina = [_playerStaminaKey, 0.5, EPOCH_playerStaminaMax , 0] call EPOCH_fnc_setVariableLimited;
 	};
 };
 
@@ -161,7 +154,62 @@ if (_forceStaminaDrop) then {
 
 // ~ debug
 if (EPOCH_debugMode) then {
-	call EPOCH_debugMonitor;
+	private _hours = floor(servertime/60/60);
+	private _customVars = "";
+	{
+		if !(_x in ["AliveTime","SpawnArray","HitPoints","MissionArray","NotUsed"]) then {
+			private _varName = call compile format["_player%1Key",_x];
+			if (isNil "_varName") then {_varName = format["EPOCH_player%1",_x]};
+			private _val = missionNamespace getVariable [_varName,_defaultVarValues select _forEachIndex];
+			if (_x == "Temp") then {
+				_customVars = _customVars + format["<t size='1.15' font='puristaLight' align='left'>%1: </t><t size='1.15' font='puristaLight' align='right'>%2°F | %3°C</t><br/>", _x,_val,_val call EPOCH_convertTemp];
+			} else {
+				_customVars = _customVars + format["<t size='1.15' font='puristaLight' align='left'>%1: </t><t size='1.15' font='puristaLight' align='right'>%2</t><br/>", _x,_val];
+			};
+		}
+	}forEach _customVarNames;
+	hintSilent parseText format ["
+		<t size='1.25' font='puristaLight' align='center'>Welcome to Epoch!</t><br/>
+		<t size='1.18' font='puristaLight' align='center'>Current Version: %1</t><br/>
+		<t size='1.0' font='puristaLight' align='center'>Build: %2</t><br/>
+		" + _customVars + "
+		<t size='1.15' font='puristaLight' align='left'>Karma: </t><t size='1.15' font='puristaLight' align='right'>%17</t><br/>
+		<br/>
+
+		<t size='1.15' font='puristaLight' align='left'>Fatigue: </t><t size='1.15' font='puristaLight' align='right'>%3</t><br/>
+		<t size='1.15' font='puristaLight' align='left'>Damage: </t><t size='1.15' font='puristaLight' align='right'>%4</t><br/>
+		<t size='1.15' font='puristaLight' align='left'>Bleeding: </t><t size='1.15' font='puristaLight' align='right'>%5</t><br/>
+		<t size='1.15' font='puristaLight' align='left'>Bleed Time: </t><t size='1.15' font='puristaLight' align='right'>%6</t><br/>
+		<t size='1.15' font='puristaLight' align='left'>Oxygen: </t><t size='1.15' font='puristaLight' align='right'>%7</t><br/>
+		<br/>
+		<t size='1.15' font='puristaLight' align='left'>Air Temp: </t><t size='1.15' font='puristaLight' align='right'>%8</t><br/>
+		<t size='1.15' font='puristaLight' align='left'>Water Temp: </t><t size='1.15' font='puristaLight' align='right'>%9</t><br/>
+		<t size='1.15' font='puristaLight' align='left'>Rain: </t><t size='1.15' font='puristaLight' align='right'>%10</t><br/>
+		<t size='1.15' font='puristaLight' align='left'>Overcast: </t><t size='1.15' font='puristaLight' align='right'>%11</t><br/>
+		<br/>
+		<t size='1.15' font='puristaLight' align='left'>Hours Alive: </t><t size='1.15' font='puristaLight' align='right'>%12</t><br/>
+		<t size='1.15' font='puristaLight' align='left'>FPS: </t><t size='1.15' font='puristaLight' align='right'>%13</t><br/>
+		<t size='1.15' font='puristaLight' align='left'>Server uptime: </t><t size='1.15' font='puristaLight' align='right'>%14h %15m</t><br/>
+		<t size='1.15' font='puristaLight' align='left'>Server FPS: </t><t size='1.15' font='puristaLight' align='right'>%16</t><br/>",
+		getText(configFile >> "CfgMods" >> "Epoch" >> "version"),
+		getNumber(missionConfigFile >> "CfgEpochBuild" >> "build"),
+		(getFatigue player),
+		(damage player),
+		(isBleeding player),
+		(getBleedingRemaining player),
+		(getOxygenRemaining player),
+		format ["%1°F | %2°C",EPOCH_CURRENT_WEATHER,EPOCH_CURRENT_WEATHER call EPOCH_convertTemp],
+		format ["%1°F | %2°C",(EPOCH_CURRENT_WEATHER/2),(EPOCH_CURRENT_WEATHER/2) call EPOCH_convertTemp],
+		rain,
+		overcast,
+
+		round(_playerAliveTime/360)/10,
+		round diag_fps,
+		_hours,
+		round((serverTime/60)-(_hours*60)),
+		if (EPOCH_diag_fps isEqualType 0) then [{EPOCH_diag_fps},{"MANIPULATED"}],
+		missionNamespace getVariable ["EPOCH_totalKarma",0]
+	];
 };
 
 // player to player trade loop
@@ -279,20 +327,8 @@ if !(EPOCH_ActiveTraderMission isequalto []) then {
 };
 
 // Update read only vars
-EPOCH_playerRadiation = _playerRadiation;
-EPOCH_playerAliveTime = _playerAliveTime;
-EPOCH_playerBloodP = _playerBloodP;
-EPOCH_playerNuisance = _playerNuisance;
-EPOCH_playerHunger = _playerHunger;
-EPOCH_playerThirst = _playerThirst;
-EPOCH_playerSoiled = _playerSoiled;
-EPOCH_playerToxicity = _playerToxicity;
-EPOCH_playerImmunity = _playerImmunity;
-EPOCH_playerTemp = _playerTemp;
-EPOCH_playerWet = _playerWet;
-EPOCH_playerEnergy = _playerEnergy;
-EPOCH_playerAlcohol = _playerAlcohol;
-EPOCH_playerStamina = _playerStamina;
+EPOCH_playerAliveTime = missionNamespace getVariable [_playerAliveTimeKey, 0];
+EPOCH_playerEnergy = missionNamespace getVariable [_playerEnergyKey, 0];
 
 // force update
 if (EPOCH_forceUpdateNow) then {

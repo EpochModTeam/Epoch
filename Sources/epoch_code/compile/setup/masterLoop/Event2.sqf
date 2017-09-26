@@ -55,12 +55,7 @@ if (_playerRadiation > 1) then {
 };
 
 //  Energy Handler
-_digestEnergy = missionNamespace getVariable ["EPOCH_digestEnergy", 0];
-if (_digestEnergy > 0) then {
-	_energyValue = _energyValue + _digestEnergy;
-	missionNamespace setVariable ["EPOCH_digestEnergy", 0];
-};
-_playerEnergy = ((_playerEnergy + _energyValue) min _playerEnergyMax) max _playerEnergyMin;
+_playerEnergy = [_playerEnergyKey,_energyValue,_playerEnergyMax,_playerEnergyMin] call EPOCH_fnc_setVariableLimited;
 
 if !(_playerEnergy isEqualTo _prevEnergy) then {
 	9993 cutRsc["EpochGameUI3", "PLAIN", 0, false];
@@ -140,35 +135,34 @@ if ((getFatigue player) >= 0.7 && _airTemp > 100) then {
 	_maxTemp = _airTemp;
 };
 
-// Immunity Handler
-_digestImmunity = missionNamespace getVariable ["EPOCH_digestImmunity", 0];
-if (_digestImmunity > 0) then {
-	_playerImmunity = ((_playerImmunity + _digestImmunity) min _playerImmunityMax) max _playerImmunityMin;
-	missionNamespace setVariable ["EPOCH_digestImmunity", 0];
-};
+
 
 // toxic fever and immunity increase
 if (_playerToxicity > 0) then {
-	_playerImmunity = ((_playerImmunity + 0.1) min _playerImmunityMax) max _playerImmunityMin;
-	_playerToxicity = ((_playerToxicity - 0.1) min _playerToxicityMax) max _playerToxicityMin;
-	_maxTemp = 106.7 + 10;
+	_playerImmunity = [_playerImmunityKey,0.1,_playerImmunityMax,_playerImmunityMin] call EPOCH_fnc_setVariableLimited;
+	_playerToxicity = [_playerToxicityKey,-0.1,_playerToxicityMax,_playerToxicityMin] call EPOCH_fnc_setVariableLimited;
+	// allow player to overheat
+	_maxTemp = _playerTempMax + 10;
 };
 
+// Body Temp handler
 if (_warming) then {
-	_playerTemp = (_playerTemp + 0.01) min _maxTemp;
+	_playerTemp = [_playerTempKey,0.01,_maxTemp,_playerTempMin] call EPOCH_fnc_setVariableLimited;
 } else {
-	_playerTemp = (_playerTemp - 0.01) max (95.0 - 10);
+	_playerTemp = [_playerTempKey,-0.01,_maxTemp,(_playerTempMin - 10)] call EPOCH_fnc_setVariableLimited;
 };
 
 // wet/dry
 if (_wet) then {
 	_playerWet = ((_playerWet + _increaseWet) min _playerWetMax) max _playerWetMin;
 	if (_playerWet > 50) then {
-		_playerSoiled = ((_playerSoiled - 1) min _playerSoiledMax) max _playerSoiledMin;
+		_soiledLossRate = 1;
+		_playerSoiled = [_playerSoiledKey,-_soiledLossRate,_playerSoiledMax,_playerSoiledMin] call EPOCH_fnc_setVariableLimited;
 	};
 } else {
 	if (_warming) then {
-		_playerWet = ((_playerWet - 1) min _playerWetMax) max _playerWetMin;
+		_wetLossRate = 1;
+		_playerWet = [_playerWetKey,-_wetLossRate,_playerWetMax,_playerWetMin] call EPOCH_fnc_setVariableLimited;
 	};
 };
 
@@ -186,62 +180,28 @@ if (_playerStamina < 100) then {
 	_hungerlossRate = (_hungerlossRate / 2);
 };
 
-_digestAlcohol = missionNamespace getVariable ["EPOCH_digestAlcohol", 0];
 //  Alcohol Handler
-if (_digestAlcohol > 0) then {
-	_playerAlcohol = ((_playerAlcohol + _digestAlcohol) min _playerAlcoholMax) max _playerAlcoholMin;
-	missionNamespace setVariable ["EPOCH_digestAlcohol", 0];
-} else {
-	// downtick Alcohol
-	_alcoholLossRate = 0.17;
-	_playerAlcohol = ((_playerAlcohol - _alcoholLossRate) min _playerAlcoholMax) max _playerAlcoholMin;
-};
+_playerAlcohol = [_playerAlcoholKey,-_alcoholLossRate,_playerAlcoholMax,_playerAlcoholMin] call EPOCH_fnc_setVariableLimited;
 
 // Hunger Handler
-_digestHunger = missionNamespace getVariable ["EPOCH_digestHunger", 0];
-if (_digestHunger > 0) then {
-	_playerHunger = ((_playerHunger + _digestHunger) min _playerHungerMax) max _playerHungerMin;
-	missionNamespace setVariable ["EPOCH_digestHunger", 0];
-} else {
-	// downtick Hunger
-	_playerHunger = ((_playerHunger - _hungerlossRate) min _playerHungerMax) max _playerHungerMin;
-};
+_playerHunger = [_playerHungerKey,-_hungerlossRate,_playerHungerMax,_playerHungerMin] call EPOCH_fnc_setVariableLimited;
 
 // Thirst Handler
-_digestThirst = missionNamespace getVariable ["EPOCH_digestThirst", 0];
-if (_digestThirst > 0) then {
-	_playerThirst = ((_playerThirst + _digestThirst) min _playerThirstMax) max _playerThirstMin;
-	missionNamespace setVariable ["EPOCH_digestThirst", 0];
-} else {
-	// downtick Thirst
-	_playerThirst = ((_playerThirst - _thirstlossRate) min _playerThirstMax) max _playerThirstMin;
-};
+_playerThirst = [_playerThirstKey,-_thirstlossRate,_playerThirstMax,_playerThirstMin] call EPOCH_fnc_setVariableLimited;
 
-// Nuisance Handler, this only allows var to increse not decrease
-_digestNuisance = missionNamespace getVariable ["EPOCH_digestNuisance", 0];
-if (_digestNuisance > 0) then {
-	_playerNuisance = ((_playerNuisance + _digestNuisance) min _playerNuisanceMax) max _playerNuisanceMin;
-	missionNamespace setVariable ["EPOCH_digestNuisance", 0];
-} else {
-	// downtick Nuisance
-	_playerNuisance = ((_playerNuisance - 1) min _playerNuisanceMax) max _playerNuisanceMin;
-};
+// Nuisance Handler
+_playerEnergy = [_playerNuisanceKey,-1,_playerNuisanceMax,_playerNuisanceMin] call EPOCH_fnc_setVariableLimited;
 
 // Radiation Handler
-_digestRadiation = missionNamespace getVariable ["EPOCH_digestRadiation", 0];
-if (_digestRadiation < 0 && _radsLevel == 0) then {
+if (_radsLevel == 0) then {
 	// only lower rads if player has taken medicine and it no longer in a radiation zone.
-	_playerRadiation = ((_playerRadiation - 0.01) min _playerRadiationMax) max _playerRadiationMin;
-	missionNamespace setVariable ["EPOCH_digestRadiation", (_digestRadiation + 1) min 0];
+	_playerRadiation = [_playerRadiationKey,-0.01,_playerRadiationMax,_playerRadiationMin] call EPOCH_fnc_setVariableLimited;
 } else {
 	// allow increase rads based on radiation levels and consumed rads
-	if (_digestRadiation > 0) then {
-		_radsLevel = _radsLevel + _digestRadiation;
-		missionNamespace setVariable ["EPOCH_digestRadiation", 0];
-	};
-	_playerRadiation = ((_playerRadiation + _radsLevel) min _playerRadiationMax) max _playerRadiationMin;
+	_playerRadiation = [_playerRadiationKey,_radsLevel,_playerRadiationMax,_playerRadiationMin] call EPOCH_fnc_setVariableLimited;
 };
 
+// calculate max stamina
 EPOCH_playerStaminaMax = (100 * (round(_playerAliveTime/360)/10)) min 2500;
 
 // process loot

@@ -66,12 +66,10 @@ _skn_check_addons = [_serverSettingsConfig, "antihack_cfgPatchesCheck", true] ca
 _checkFiles = [
 	["epoch_code\compile\setup\EPOCH_clientInit.sqf", "EPOCH_clientInit"],
 	["epoch_code\compile\EPOCH_onEachFrame.sqf", "EPOCH_onEachFrame"],
-	["epoch_code\compile\setup\EPOCH_masterLoop.sqf", "EPOCH_masterLoop"],
 	["epoch_code\compile\setup\EPOCH_client_rejectPlayer.sqf", "EPOCH_client_rejectPlayer"],
-	["epoch_code\compile\setup\EPOCH_clientRespawn.sqf", "EPOCH_clientRespawn"],
-	["epoch_code\compile\interface_event_handlers\EPOCH_KeyDown.sqf", "EPOCH_KeyDown"]
+	["epoch_code\compile\setup\EPOCH_clientRespawn.sqf", "EPOCH_clientRespawn"]
 ];
-_skn_check_files = [_serverSettingsConfig, "antihack_checkFiles", _checkFiles] call EPOCH_fnc_returnConfigEntry;
+_skn_check_files = [_serverSettingsConfig, "antihack_checkFilesNew", _checkFiles] call EPOCH_fnc_returnConfigEntry;
 
 _skn_whitelist_cfgPatches = [_serverSettingsConfig, "antihack_whitelistedCfgPatches", []] call EPOCH_fnc_returnConfigEntry;
 _skn_adminsOwner = [_serverSettingsConfig, "adminMenu_Owner", []] call EPOCH_fnc_returnConfigEntry;

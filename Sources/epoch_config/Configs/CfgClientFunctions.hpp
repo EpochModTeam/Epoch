@@ -17,8 +17,12 @@ class CfgClientFunctions
 		{
 			file = "epoch_code\compile";
 			class localCleanup {};
-			class unitSpawnIncrease {};
-			class unitSpawnDecrease {};
+			class unitSpawnIncrease {
+				customHeader = 1;
+			};
+			class unitSpawnDecrease {
+				customHeader = 1;
+			};
 			class QuickTakeAll {};
 			class QuickTakeLoad {};
 			class effectCrypto {};
@@ -26,7 +30,6 @@ class CfgClientFunctions
 			class updateLoadingScreen {};
 			class EnterBuilding {};
 			class lootTrash {};
-			class debugMonitor {};
 			class interact {};
 			class chopWood {};
 			class fish {};
@@ -37,7 +40,9 @@ class CfgClientFunctions
 			class LootIT {};
 			class supportCopter {};
 			class consumeItem {};
-			class unitSpawn {};
+			class unitSpawn {
+				customHeader = 1;
+			};
 			class onEachFrame {};
 			class callSapperMigration {};
 			class zombieSpawn {};
@@ -53,7 +58,9 @@ class CfgClientFunctions
 			class fnc_SelectTargetBuild {};
 			class isBuildAllowed {};
 			class simulSwap {};
-			class staticMove {};
+			class staticMove {
+				customHeader = 1;
+			};
 			class upgradeBUILD {};
 			class removeBUILD {};
 			class changeWallState {};
@@ -77,7 +84,9 @@ class CfgClientFunctions
 		};
 		class interface_event_handlers
 		{
-			class KeyDown {};
+			class KeyDown {
+				customHeader = 1;
+			};
 			class KeyUp {};
 			class onChar {};
 		};
@@ -90,10 +99,14 @@ class CfgClientFunctions
 		};
 		class setup
 		{
-			class masterLoop {};
+			class masterLoop {
+				customHeader = 1;
+			};
 			class clientInit {};
 			class clientRespawn {};
-			class clientRevive {};
+			class clientRevive {
+				customHeader = 1;
+			};
 			class client_rejectPlayer {};
 			class clientKeyMap {};
 		};
@@ -112,8 +125,12 @@ class CfgClientFunctions
 			class returnConfigV2 {};
 			class colorRange {};
 			class convertTemp {};
-			class fnc_playerDeath {};
-			class fnc_playerFired {};
+			class fnc_playerDeath {
+				customHeader = 1;
+			};
+			class fnc_playerFired {
+				customHeader = 1;
+			};
 			class fnc_isInsideBuilding {};
 			class fnc_findSafePos {};
 			class fnc_addItemOverflow {};
@@ -127,7 +144,9 @@ class CfgClientFunctions
 			class fnc_findSapperStalkLocation {};
 			class fnc_dirToFuzzy {};
 			class fnc_cursorTarget {};
-			class fnc_returnHudVar {};
+			class fnc_returnHudVar {
+				customHeader = 1;
+			};
 			class fnc_triggerAntagonist {};
 			class fnc_playerDeathDetonate {};
 			class fnc_playerDeathMorph {};
@@ -135,17 +154,22 @@ class CfgClientFunctions
 			class fnc_playerAttachToAntagonist {};
 			class fnc_dynamicFSM {};
 			class fnc_vectorDivide {};
-			class giveAttributes {};
+			class giveAttributes {
+				customHeader = 1;
+			};
 			class fnc_spawnEffects {};
 			class fnc_arrayStringToBool {};
 			class client_updatePlayerStat {};
 			class fnc_getHitPointsDamageAverage {};
+			class fnc_setVariableLimited {};
 		};
 		class environment
 		{
 			class client_earthQuake {};
 			class client_loadAnimalBrain {};
-			class client_bitePlayer {};
+			class client_bitePlayer {
+				customHeader = 1;
+			};
 		};
 		class vehicles
 		{

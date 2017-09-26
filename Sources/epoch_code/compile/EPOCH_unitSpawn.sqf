@@ -13,7 +13,7 @@
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_code/compile/EPOCH_unitSpawn.sqf
 */
 //[[[cog import generate_private_arrays ]]]
-private ["_aiskill","_arrSkills","_arrUnits","_arrVals","_bomb","_config","_currentLimit","_disableAI","_driver","_grp","_index","_jammerRange","_jammers","_loop","_minAISkill","_missionConfig","_nonJammer","_nonTrader","_nonTraderAIRange","_pos","_restricted","_sapperHndl","_sapperNum","_spawnLimit","_targetPos","_unit","_units"];
+private ["_aiskill","_arrSkills","_arrUnits","_arrVals","_bomb","_config","_currentLimit","_disableAI","_driver","_grp","_index","_jammerRange","_jammers","_loop","_minAISkill","_missionConfig","_nonJammer","_nonTrader","_nonTraderAIRange","_playerSpawnArray","_playerSpawnArrayKey","_pos","_restricted","_sapperHndl","_sapperNum","_spawnLimit","_targetPos","_unit","_units"];
 //[[[end]]]
 params ["_unitClass",["_trgt",player],["_doVariable",false],["_unitCount",1],["_extraData",[]] ];
 
@@ -22,7 +22,9 @@ _bomb = objNull;
 _index = EPOCH_spawnIndex find _unitClass;
 _spawnLimit = 0;
 if (_index != -1) then {
-	_spawnLimit = EPOCH_playerSpawnArray select _index;
+	if (isNil "_playerSpawnArrayKey") then {_playerSpawnArrayKey = "EPOCH_playerSpawnArray"};
+	_playerSpawnArray = missionNamespace getVariable [_playerSpawnArrayKey,[]];
+	_spawnLimit = _playerSpawnArray select _index;
 };
 _currentLimit = count(_trgt nearEntities[_unitClass, 800]);
 if (!_doVariable && (_currentLimit >= _spawnLimit)) exitWith {

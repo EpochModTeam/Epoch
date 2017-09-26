@@ -28,7 +28,7 @@
 	NOTHING
 */
 //[[[cog import generate_private_arrays ]]]
-private ["_ammoConfig","_attachments","_currentDMG","_currentHIT","_cursorTarget","_gesture","_heal","_highestDMG","_newDMG","_nuisanceLevel","_repaired"];
+private ["_ammoConfig","_attachments","_currentDMG","_currentHIT","_cursorTarget","_gesture","_heal","_highestDMG","_newDMG","_nuisanceLevel","_playerNuisanceKey","_repaired"];
 //[[[end]]]
 params ["_unit","_weapon","_muzzle","_mode","_ammo","_magazine","_projectile"];
 EPOCH_lastFiredLocation = getPosATL player;
@@ -119,6 +119,7 @@ switch true do {
 		};
 		// Nuisance System 0.1
   		(EPOCH_customVarLimits select (EPOCH_customVars find "Nuisance")) params [["_playerLimitMax",100],["_playerLimitMin",0]];
-		EPOCH_digestNuisance = ((EPOCH_digestNuisance + _nuisanceLevel) min _playerLimitMax) max _playerLimitMin;
+		if (isNil "_playerNuisanceKey") then {_playerNuisanceKey = "EPOCH_playerNuisance"};
+		[_playerNuisanceKey,_nuisanceLevel,_playerLimitMax,_playerLimitMin] call EPOCH_fnc_setVariableLimited;
 	};
 };
