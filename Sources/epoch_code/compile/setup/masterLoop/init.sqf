@@ -25,12 +25,13 @@ _customVarLimits = _customVarsInit apply {_x param [2,[]]};
 
 // init limits and keys
 {
-    _varLimits = _customVarLimits select _forEachIndex;
+	_varLimits = _customVarLimits select _forEachIndex;
 	_varDefault = _defaultVarValues select _foreachindex;
-	call compile format['if (isNil "_player%1Key") then {_player%1Key = "EPOCH_player%1"};
-	_varLimits params [["_player%1Max",100],["_player%1Min",0]];
-	_player%1 = missionNamespace getVariable ["_player%1Key", _varDefault];
-	',_x];
+	_varName = format["EPOCH_player%1",_x];
+	_varNameTmp = call compile format["_player%1Key",_x];
+	if !(isNil "_varNameTmp") then {_varName = _varNameTmp};
+	_varLimits params [[format["_player%1Max",_x],100],[format["_player%1Min",_x],0]];
+	call compile format['_player%1 = missionNamespace getVariable [_varName, _varDefault];',_x];
 } forEach _customVarNames;
 
 EPOCH_playerEnergyMax = _playerEnergyMax;
