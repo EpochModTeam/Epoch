@@ -40,7 +40,7 @@ switch (_selVarType) do {
 		_customVarNames = _customVarsInit apply {_x param [0,""]};
 		_defaultVarValues = _customVarsInit apply {_x param [1,0]};
 		_customVarLimits = _customVarsInit apply {_x param [2,[]]};
-		_varName = format["EPOCH_player%1",_selectedVarName];
+		_varName = format["EPOCH_player%1",_selVarName];
 		if (_selVarName in _customVarNames) then {
 			_varNameTmp = call compile format["_player%1Key",_selVarName];
 			if !(isNil "_varNameTmp") then {_varName = _varNameTmp};
