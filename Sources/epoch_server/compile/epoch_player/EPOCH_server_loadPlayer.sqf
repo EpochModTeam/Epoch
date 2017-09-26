@@ -129,6 +129,8 @@ if (!isNull _player) then {
 		_alreadyDead = (_deadPlayer || (_damage == 1) || (_hitpoints select 2 == 1) || (_hitpoints select 7 == 1) || (_vars select 12 >= 180));
 
 		if (_alreadyDead || _prevInstance != _instanceID || (count _location) < 3 || !(_location isEqualType [])) then {
+			// reset hitpoints
+			_hitpoints = [0,0,0,0,0,0,0,0,0,0,0];
 			_dir = random 360;
 			// try to find respawn point by position
 			_newLocation = _server_vars param [0,[]]; // 0 = RESPAWN POS
