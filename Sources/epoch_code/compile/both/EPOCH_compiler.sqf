@@ -39,7 +39,7 @@ _customVarsInit = getArray(getMissionConfig "CfgEpochClient" >> "customVarsDefau
 _customVarNames = _customVarsInit apply {_x param [0,""]};
 _header = "";
 {
-    _header = _header + format["_player%1Key = EPOCH_%2;",_x, round(diag_tickTime + random 99999)];
+    _header = _header + format["_player%1Key = 'EPOCH_%2';",_x, round(diag_tickTime + random 99999)];
 } forEach _customVarNames;
 
 diag_log format["DEBUG: _header: %1",_header];
