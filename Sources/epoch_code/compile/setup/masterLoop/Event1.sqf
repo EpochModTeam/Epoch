@@ -119,8 +119,10 @@ if (_forceFatigue) then {
 };
 
 // Blood pressure handler
-if (EPOCH_digestBloodP > 0) then {
-	_playerBloodP = ((_playerBloodP + EPOCH_digestBloodP) min _playerBloodPMax) max _playerBloodPMin;
+_digestBloodP = missionNamespace getVariable ["EPOCH_digestBloodP", 0];
+if (_digestBloodP > 0) then {
+	_playerBloodP = ((_playerBloodP + _digestBloodP) min _playerBloodPMax) max _playerBloodPMin;
+	missionNamespace setVariable ["EPOCH_digestBloodP", 0];
 } else {
 	if (_forceBloodRise) then {
 		// force Blood Pressure Rise

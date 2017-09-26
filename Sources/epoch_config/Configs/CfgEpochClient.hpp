@@ -106,19 +106,6 @@ class CfgEpochClient
 		{"Nuisance",0,{100,0}},
 		{"MissionArray",{},{}}
 	};
-	// Digest System
-	hunger[] = {
-		0, // default value
-		10, // loss rate
-		20, // increase rate
-		1000 // max
-	};
-	thirst[] = {
-		0, // default value
-		10, // loss rate
-		20, // increase rate
-		1000 // max
-	};
 
     hudConfigs[] = {
 		{{"BloodP","","",{"getPlayerDamage",">=",0.7}},"topRight","x\addons\a3_epoch_code\Data\UI\bleeding_ca.paa",{"forceUpdate"}},

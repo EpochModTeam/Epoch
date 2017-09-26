@@ -55,9 +55,10 @@ if (_playerRadiation > 1) then {
 };
 
 //  Energy Handler
-if (EPOCH_digestEnergy > 0) then {
-	_energyValue = _energyValue + EPOCH_digestEnergy;
-	EPOCH_digestEnergy = 0;
+_digestEnergy = missionNamespace getVariable ["EPOCH_digestEnergy", 0];
+if (_digestEnergy > 0) then {
+	_energyValue = _energyValue + _digestEnergy;
+	missionNamespace setVariable ["EPOCH_digestEnergy", 0];
 };
 _playerEnergy = ((_playerEnergy + _energyValue) min _playerEnergyMax) max _playerEnergyMin;
 
@@ -140,9 +141,10 @@ if ((getFatigue player) >= 0.7 && _airTemp > 100) then {
 };
 
 // Immunity Handler
-if (EPOCH_digestImmunity > 0) then {
-	_playerImmunity = ((_playerImmunity + EPOCH_digestImmunity) min _playerImmunityMax) max _playerImmunityMin;
-	EPOCH_digestImmunity = 0;
+_digestImmunity = missionNamespace getVariable ["EPOCH_digestImmunity", 0];
+if (_digestImmunity > 0) then {
+	_playerImmunity = ((_playerImmunity + _digestImmunity) min _playerImmunityMax) max _playerImmunityMin;
+	missionNamespace setVariable ["EPOCH_digestImmunity", 0];
 };
 
 // toxic fever and immunity increase
@@ -184,10 +186,11 @@ if (_playerStamina < 100) then {
 	_hungerlossRate = (_hungerlossRate / 2);
 };
 
+_digestAlcohol = missionNamespace getVariable ["EPOCH_digestAlcohol", 0];
 //  Alcohol Handler
-if (EPOCH_digestAlcohol > 0) then {
-	_playerAlcohol = ((_playerAlcohol + EPOCH_digestAlcohol) min _playerAlcoholMax) max _playerAlcoholMin;
-	EPOCH_digestAlcohol = 0;
+if (_digestAlcohol > 0) then {
+	_playerAlcohol = ((_playerAlcohol + _digestAlcohol) min _playerAlcoholMax) max _playerAlcoholMin;
+	missionNamespace setVariable ["EPOCH_digestAlcohol", 0];
 } else {
 	// downtick Alcohol
 	_alcoholLossRate = 0.17;
@@ -195,42 +198,46 @@ if (EPOCH_digestAlcohol > 0) then {
 };
 
 // Hunger Handler
-if (EPOCH_digestHunger > 0) then {
-	_playerHunger = ((_playerHunger + EPOCH_digestHunger) min _playerHungerMax) max _playerHungerMin;
-	EPOCH_digestHunger = 0;
+_digestHunger = missionNamespace getVariable ["EPOCH_digestHunger", 0];
+if (_digestHunger > 0) then {
+	_playerHunger = ((_playerHunger + _digestHunger) min _playerHungerMax) max _playerHungerMin;
+	missionNamespace setVariable ["EPOCH_digestHunger", 0];
 } else {
 	// downtick Hunger
 	_playerHunger = ((_playerHunger - _hungerlossRate) min _playerHungerMax) max _playerHungerMin;
 };
 
 // Thirst Handler
-if (EPOCH_digestThirst > 0) then {
-	_playerThirst = ((_playerThirst + EPOCH_digestThirst) min _playerThirstMax) max _playerThirstMin;
-	EPOCH_digestThirst = 0;
+_digestThirst = missionNamespace getVariable ["EPOCH_digestThirst", 0];
+if (_digestThirst > 0) then {
+	_playerThirst = ((_playerThirst + _digestThirst) min _playerThirstMax) max _playerThirstMin;
+	missionNamespace setVariable ["EPOCH_digestThirst", 0];
 } else {
 	// downtick Thirst
 	_playerThirst = ((_playerThirst - _thirstlossRate) min _playerThirstMax) max _playerThirstMin;
 };
 
 // Nuisance Handler, this only allows var to increse not decrease
-if (EPOCH_digestNuisance > 0) then {
-	_playerNuisance = ((_playerNuisance + EPOCH_digestNuisance) min _playerNuisanceMax) max _playerNuisanceMin;
-	EPOCH_digestNuisance = 0;
+_digestNuisance = missionNamespace getVariable ["EPOCH_digestNuisance", 0];
+if (_digestNuisance > 0) then {
+	_playerNuisance = ((_playerNuisance + _digestNuisance) min _playerNuisanceMax) max _playerNuisanceMin;
+	missionNamespace setVariable ["EPOCH_digestNuisance", 0];
 } else {
 	// downtick Nuisance
 	_playerNuisance = ((_playerNuisance - 1) min _playerNuisanceMax) max _playerNuisanceMin;
 };
 
 // Radiation Handler
-if (EPOCH_digestRadiation < 0 && _radsLevel == 0) then {
+_digestRadiation = missionNamespace getVariable ["EPOCH_digestRadiation", 0];
+if (_digestRadiation < 0 && _radsLevel == 0) then {
 	// only lower rads if player has taken medicine and it no longer in a radiation zone.
 	_playerRadiation = ((_playerRadiation - 0.01) min _playerRadiationMax) max _playerRadiationMin;
-	EPOCH_digestRadiation = (EPOCH_digestRadiation + 1) min 0;
+	missionNamespace setVariable ["EPOCH_digestRadiation", (_digestRadiation + 1) min 0];
 } else {
 	// allow increase rads based on radiation levels and consumed rads
-	if (EPOCH_digestRadiation > 0) then {
-		_radsLevel = _radsLevel + EPOCH_digestRadiation;
-		EPOCH_digestRadiation = 0;
+	if (_digestRadiation > 0) then {
+		_radsLevel = _radsLevel + _digestRadiation;
+		missionNamespace setVariable ["EPOCH_digestRadiation", 0];
 	};
 	_playerRadiation = ((_playerRadiation + _radsLevel) min _playerRadiationMax) max _playerRadiationMin;
 };
