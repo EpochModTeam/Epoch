@@ -119,7 +119,8 @@ switch true do {
 		};
 		// Nuisance System 0.1
   		(EPOCH_customVarLimits select (EPOCH_customVars find "Nuisance")) params [["_playerLimitMax",100],["_playerLimitMin",0]];
-		if (isNil "_playerNuisanceKey") then {_playerNuisanceKey = "EPOCH_playerNuisance"};
-		[_playerNuisanceKey,_nuisanceLevel,_playerLimitMax,_playerLimitMin] call EPOCH_fnc_setVariableLimited;
+		_playerNuisanceKeyFinal = "EPOCH_playerNuisance";
+		if (isNil "_playerNuisanceKey") then {_playerAliveTimeKeyFinal = _playerNuisanceKey};
+		[_playerNuisanceKeyFinal,_nuisanceLevel,_playerLimitMax,_playerLimitMin] call EPOCH_fnc_setVariableLimited;
 	};
 };

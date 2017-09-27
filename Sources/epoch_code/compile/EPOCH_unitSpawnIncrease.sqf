@@ -18,7 +18,8 @@ private ["_index","_playerSpawnArray","_playerSpawnArrayKey"];
 params ["_spawnName", ["_increase",1]];
 _index = EPOCH_spawnIndex find _spawnName;
 if (_index != -1) then{
-	if (isNil "_playerSpawnArrayKey") then {_playerSpawnArrayKey = "EPOCH_playerSpawnArray"};
-	_playerSpawnArray = missionNamespace getVariable [_playerSpawnArrayKey,[]];
+	_playerSpawnArrayKeyFinal = "EPOCH_playerSpawnArray";
+	if (isNil "_playerSpawnArrayKey") then {_playerSpawnArrayKeyFinal = _playerSpawnArrayKey};
+	_playerSpawnArray = missionNamespace getVariable [_playerSpawnArrayKeyFinal,[]];
 	_playerSpawnArray set[_index, ((_playerSpawnArray select _index) + _increase) min (EPOCH_spawnLimits select _index)];
 };

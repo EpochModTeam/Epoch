@@ -23,7 +23,7 @@
 	BOOL
 */
 //[[[cog import generate_private_arrays ]]]
-private ["_config","_doRevenge","_playerDeathScreen","_playerKilledScreen","_playerRevengeMinAliveTime","_tapDiag"];
+private ["_config","_doRevenge","_playerAliveTime","_playerAliveTimeKeyFinal","_playerDeathScreen","_playerKilledScreen","_playerRevengeMinAliveTime","_tapDiag"];
 //[[[end]]]
 params [["_unit",objNull,[objNull]],["_killer",objNull,[objNull]] ];
 _config = 'CfgEpochClient' call EPOCH_returnConfig;
@@ -32,8 +32,9 @@ _playerRevengeMinAliveTime = getNumber(_config >> "playerRevengeMinAliveTime");
 if (_playerDeathScreen isEqualTo "") then {_playerDeathScreen = "TapOut"};
 _tapDiag = _playerDeathScreen;
 
-if (isNil "_playerAliveTimeKey") then {_playerAliveTimeKey = "EPOCH_playerAliveTime"};
-_playerAliveTime = missionNamespace getVariable [_playerAliveTimeKey,[]];
+_playerAliveTimeKeyFinal = "EPOCH_playerAliveTime";
+if (isNil "_playerAliveTimeKey") then {_playerAliveTimeKeyFinal = _playerAliveTimeKey};
+_playerAliveTime = missionNamespace getVariable [_playerAliveTimeKeyFinal,[]];
 
 _doRevenge = ((getNumber(_config >> "playerDisableRevenge") isEqualTo 0) && _playerAliveTime >= _playerRevengeMinAliveTime);
 

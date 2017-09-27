@@ -22,7 +22,7 @@
 	NOTHING
 */
 //[[[cog import generate_private_arrays ]]]
-private ["_animConfigArray","_animationEffect","_animationEffectGlobal","_bleedAmount","_bleedChance","_bloodpAmount","_bloodpChance","_canSee","_cfgObjectInteraction","_distance","_doAttack","_fatigueChance","_ppEffect","_say3dsoundsConfig","_selectedMove","_selectedSound","_soundConfigArray","_soundEffect","_soundEffectGlobal","_switchMovehandlerConfig","_target","_toxicAmount","_toxicChance"];
+private ["_animConfigArray","_animationEffect","_animationEffectGlobal","_bleedAmount","_bleedChance","_bloodpAmount","_bloodpChance","_canSee","_cfgObjectInteraction","_distance","_doAttack","_fatigueChance","_playerBloodPKeyFinal","_playerImmunityKeyFinal","_playerToxicityKeyFinal","_ppEffect","_say3dsoundsConfig","_selectedMove","_selectedSound","_soundConfigArray","_soundEffect","_soundEffectGlobal","_switchMovehandlerConfig","_target","_toxicAmount","_toxicChance"];
 //[[[end]]]
 params [["_unit",objNull],["_target",player]];
 if (isNull _unit && isNull _target) exitWith {};
@@ -113,16 +113,19 @@ if (_doAttack) then {
 				};
 
 				if (random 1 < _toxicChance) then {
-					if (isNil "_playerToxicityKey") then {_playerToxicityKey = "EPOCH_playerToxicity"};
-					if (isNil "_playerImmunityKey") then {_playerImmunityKey = "EPOCH_playerImmunity"};
-					[_playerToxicityKey,random(_toxicAmount - (missionNamespace getVariable [_playerImmunityKey, 0])),100,0] call EPOCH_fnc_setVariableLimited;
+					_playerToxicityKeyFinal = "EPOCH_playerToxicity";
+					_playerImmunityKeyFinal = "EPOCH_playerImmunity";
+					if (isNil "_playerToxicityKey") then {_playerToxicityKeyFinal = _playerToxicityKey};
+					if (isNil "_playerImmunityKey") then {_playerImmunityKeyFinal = _playerImmunityKey};
+					[_playerToxicityKeyFinal,random(_toxicAmount - (missionNamespace getVariable [_playerImmunityKeyFinal, 0])),100,0] call EPOCH_fnc_setVariableLimited;
 				};
 				if (random 1 < _bleedChance) then {
 					player setBleedingRemaining((getBleedingRemaining player) + _bleedAmount);
 				};
 				if (random 1 < _bloodpChance) then {
-					if (isNil "_playerBloodPKey") then {_playerBloodPKey = "EPOCH_playerBloodP"};
-					[_playerBloodPKey,_bloodpAmount,100,0] call EPOCH_fnc_setVariableLimited;
+					_playerBloodPKeyFinal = "EPOCH_playerBloodP";
+					if (isNil "_playerBloodPKey") then {_playerBloodPKeyFinal = _playerBloodPKey};
+					[_playerBloodPKeyFinal,_bloodpAmount,100,0] call EPOCH_fnc_setVariableLimited;
 					if !(_ppEffect isEqualTo []) then {
 						[_ppEffect] spawn EPOCH_fnc_spawnEffects;
 					};

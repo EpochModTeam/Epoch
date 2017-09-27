@@ -26,11 +26,12 @@
 	BOOL
 */
 //[[[cog import generate_private_arrays ]]]
-private ["_adj","_currentPos","_handled","_playerStaminaKey","_step"];
+private ["_adj","_currentPos","_handled","_playerStaminaKeyFinal","_step"];
 //[[[end]]]
 params ["_display","_dikCode","_shift","_ctrl","_alt"];
 
-if (isNil "_playerStaminaKey") then {_playerStaminaKey = "EPOCH_playerStamina"};
+_playerStaminaKeyFinal = "EPOCH_playerStamina";
+if (isNil "_playerStaminaKey") then {_playerStaminaKeyFinal = _playerStaminaKey};
 
 _handled = false;
 
@@ -204,13 +205,13 @@ if (vehicle player == player) then {
 					if ((primaryWeapon player != "") && (currentWeapon player == primaryWeapon player)) then {
 						player switchMove "AovrPercMrunSrasWrflDf";
 						[player, "AovrPercMrunSrasWrflDf", Epoch_personalToken] remoteExec ["EPOCH_server_handle_switchMove",2];
-						[_playerStaminaKey, -30, 1000 , 0] call EPOCH_fnc_setVariableLimited;
+						[_playerStaminaKeyFinal, -30, 1000 , 0] call EPOCH_fnc_setVariableLimited;
 						_handled = true;
 					} else {
 						if (currentWeapon player == "") then {
 							player switchMove "epoch_unarmed_jump";
 							[player, "epoch_unarmed_jump", Epoch_personalToken] remoteExec ["EPOCH_server_handle_switchMove",2];
-							[_playerStaminaKey, -30, 1000 , 0] call EPOCH_fnc_setVariableLimited;
+							[_playerStaminaKeyFinal, -30, 1000 , 0] call EPOCH_fnc_setVariableLimited;
 							_handled = true;
 						};
 					};
