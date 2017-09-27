@@ -20,10 +20,10 @@ _repairarrays = [];
 _config = 'CfgEpochClient' call EPOCH_returnConfig;
 _VehicleRepairs = getArray (_config >> "VehicleRepairs");
 if (isnull _veh) exitwith {
-	['Error - No Vehicle found',5] call Epoch_message; 
+	['Error - No Vehicle found',5] call Epoch_message;
 };
 if !(alive _veh) exitwith {
-	['Error - Vehicle already dead',5] call Epoch_message; 
+	['Error - Vehicle already dead',5] call Epoch_message;
 };
 
 if (EPOCH_Vehicle_MaintainLock) exitwith {};
@@ -43,11 +43,11 @@ switch _do do {
 			};
 		} foreach _VehicleRepairs;
 		if (_reqiredMat isequalto "") exitwith {
-			['Error - Can not find required Material',5] call Epoch_message; 
+			['Error - Can not find required Material',5] call Epoch_message;
 		};
 		if !(_reqiredMat in (magazines player)) exitwith {
 			_line = format ['You need %1 to repair',_reqiredMat call EPOCH_itemDisplayName];
-			[_line,5] call Epoch_message; 
+			[_line,5] call Epoch_message;
 		};
 		player removemagazine _reqiredMat;
 		if (_hitpointname isequalto "glass") then {
@@ -74,11 +74,11 @@ switch _do do {
 			};
 		} foreach _VehicleRepairs;
 		if (_reqiredMat isequalto "") exitwith {
-			['Error - Can not find required Material',5] call Epoch_message; 
+			['Error - Can not find required Material',5] call Epoch_message;
 		};
 		if !(_reqiredMat in (magazines player)) exitwith {
 			_line = format ['You need %1 to repair',_reqiredMat call EPOCH_itemDisplayName];
-			[_line,5] call Epoch_message; 
+			[_line,5] call Epoch_message;
 		};
 		player removemagazine _reqiredMat;
 		if (_hitpointname isequalto "glass") then {
@@ -94,8 +94,8 @@ switch _do do {
 	};
 	case 'remove': {
 		if !(local _veh) exitwith {
-			_line = 'Error - Go in as Driver first!';
-			['Error - Go in as Driver first!',5] call Epoch_message; 
+			_line = 'Error - You must get into drivers seat first!';
+			['Error - You must get into drivers seat first!',5] call Epoch_message;
 		};
 		_searchname = _hitpointname;
 		{
@@ -113,12 +113,14 @@ switch _do do {
 };
 
 if !(_repairarrays isequalto []) then {
-	player playMove 'AinvPknlMstpSnonWrflDnon_medic0';
-	player playMove 'AinvPknlMstpSnonWrflDnon_medicEnd'; 	
-	uisleep 5;
 	if (_secondlocalcheck && !local _veh) exitwith {
-		['Error - Go in as Driver first!',5] call Epoch_message; 
+		['Error - You must get into drivers seat first!',5] call Epoch_message;
 	};
+	player playMove 'AinvPknlMstpSnonWrflDnon_medic0';
+	player playMove 'AinvPknlMstpSnonWrflDnon_medicEnd';
+	_veh say3d 'vehicle_repair';
+	uisleep 5;
+
 	if !(_returnmat isequalto "") then {
 		_returnmat call EPOCH_fnc_addItemOverflow;
 	};
