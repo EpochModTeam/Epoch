@@ -50,6 +50,7 @@ _customVarLimits = _customVarsInit apply {_x param [2,[]]};
 (_customVarLimits select (_customVarNames find "Nuisance")) params [["_playerNuisanceMax",100],["_playerNuisanceMin",0]];
 (_defaultVarValues select (_customVarNames find "Nuisance")) params [["_playerNuisanceDefault",0]];
 
+(_defaultVarValues select (_customVarNames find "AliveTime")) params [["_playerAliveTimeDefault",0]];
 (_defaultVarValues select (_customVarNames find "HitPoints")) params [["_playerHitPointsDefault",0]];
 (_defaultVarValues select (_customVarNames find "SpawnArray")) params [["_playerSpawnArrayDefault",0]];
 (_defaultVarValues select (_customVarNames find "MissionArray")) params [["_playerMissionArrayDefault",0]];
@@ -111,7 +112,7 @@ _prevEquippedItem = [];
 _damagePlayer = damage player;
 _isOnFoot = isNull objectParent player;
 _panic = false;
-_prevEnergy = _playerEnergy;
+_prevEnergy = missionNamespace getVariable [_playerEnergyKey, _playerEnergynDefault];
 
 
 // init config data
@@ -119,6 +120,7 @@ _antagonistRndChance = ["CfgEpochClient", "antagonistRngChance", 100] call EPOCH
 
 _baseHungerLoss = ["CfgEpochClient", "baseHungerLoss", 2] call EPOCH_fnc_returnConfigEntryV2;
 _baseThirstLoss = ["CfgEpochClient", "baseThirstLoss", 2] call EPOCH_fnc_returnConfigEntryV2;
+_baseAlcoholLoss = ["CfgEpochClient", "baseAlcoholLoss", 0.17] call EPOCH_fnc_returnConfigEntryV2;
 _energyCostNV = ["CfgEpochClient", "energyCostNV", 3] call EPOCH_fnc_returnConfigEntryV2;
 _energyRegenMax = ["CfgEpochClient", "energyRegenMax", 5] call EPOCH_fnc_returnConfigEntryV2;
 _energyRange = ["CfgEpochClient", "energyRange", 75] call EPOCH_fnc_returnConfigEntryV2;

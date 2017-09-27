@@ -23,7 +23,7 @@
 	Returns:
 		NUMBER
 */
-params ["_key","_change","_max","_min"];
+params [["_key","",[""]],["_change",0],["_max",100],["_min",0]];
 private _result = (((missionNamespace getVariable [_key, 0]) + _change) min _max) max _min;
 missionNamespace setVariable [_key, _result];
 _result
