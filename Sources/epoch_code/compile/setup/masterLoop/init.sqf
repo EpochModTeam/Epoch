@@ -174,6 +174,7 @@ EPOCH_spawnIndex = _spawnIndex;
 EPOCH_spawnLimits = _spawnLimits;
 
 // default data if mismatch
+_playerSpawnArray = missionNamespace getVariable [_playerSpawnArrayKey, _playerSpawnArrayDefault];
 if !(_playerSpawnArray isEqualTypeParams _spawnIndex) then{
 	_playerSpawnArray = [];
 	{ _playerSpawnArray pushBack 0 } forEach _spawnIndex;
