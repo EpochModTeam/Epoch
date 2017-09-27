@@ -72,8 +72,9 @@ if !(_powerSources isEqualTo[]) then {
 	};
 };
 
-
+// alive time handler
 _playerAliveTime = round(_playerAliveTime + (_tickTime - _clientAliveTimer));
+missionNamespace setVariable [_playerAliveTimeKey, _playerAliveTime];
 _clientAliveTimer = _tickTime;
 
 // force update after 60 seconds

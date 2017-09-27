@@ -17,6 +17,10 @@ EPOCH_forceUpdateNow = false;
 // start alive timer
 _clientAliveTimer = diag_tickTime;
 
+if (isNil "_playerEnergyKey") then {
+	diag_log "DEBUG: _playerEnergyKey not set"
+};
+
 // init player stat vars
 _customVarsInit = ["CfgEpochClient", "customVarsDefaults", EPOCH_customVarsDefaults] call EPOCH_fnc_returnConfigEntryV2;
 _customVarNames = _customVarsInit apply {_x param [0,""]};
