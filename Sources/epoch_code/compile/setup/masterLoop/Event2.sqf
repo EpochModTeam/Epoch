@@ -198,7 +198,7 @@ _playerHunger = [_playerHungerKey,-_hungerlossRate,_playerHungerMax,_playerHunge
 _playerThirst = [_playerThirstKey,-_thirstlossRate,_playerThirstMax,_playerThirstMin] call EPOCH_fnc_setVariableLimited;
 
 // Nuisance Handler
-_playerEnergy = [_playerEnergyKey,-1,_playerEnergyMax,_playerEnergyMin] call EPOCH_fnc_setVariableLimited;
+_playerNuisance = [_playerNuisanceKey,-1,_playerNuisanceMax,_playerNuisanceMin] call EPOCH_fnc_setVariableLimited;
 
 // Radiation Handler
 if (_radsLevel == 0) then {
