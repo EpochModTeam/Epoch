@@ -18,7 +18,8 @@ if (_outOfBounds) then {
 	// radiated objects or locations nearby
 	if !(_nearbyRadioactiveObjects isEqualTo []) then {
 		// add extra rads based on intensity and distance from site.
-		_radsLevel = ((_nearbyRadioactiveObjects select 0) getVariable ["EPOCH_Rads", 0]) / (player distance _radioActiveSite);
+		_radioActiveSite = _nearbyRadioactiveObjects select 0;
+		_radsLevel = (_radioActiveSite getVariable ["EPOCH_Rads", 0]) / (player distance _radioActiveSite);
 	};
 };
 
