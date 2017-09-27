@@ -330,7 +330,7 @@ if !(EPOCH_ActiveTraderMission isequalto []) then {
 };
 
 // Update read only vars
-EPOCH_playerEnergy = missionNamespace getVariable [_playerEnergyKey, _playerEnergynDefault];
+EPOCH_playerEnergy = missionNamespace getVariable [_playerEnergyKey, _playerEnergyDefault];
 
 // force update
 if (EPOCH_forceUpdateNow) then {

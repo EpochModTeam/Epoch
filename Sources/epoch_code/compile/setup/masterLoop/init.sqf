@@ -112,7 +112,7 @@ _prevEquippedItem = [];
 _damagePlayer = damage player;
 _isOnFoot = isNull objectParent player;
 _panic = false;
-_prevEnergy = missionNamespace getVariable [_playerEnergyKey, _playerEnergynDefault];
+_prevEnergy = missionNamespace getVariable [_playerEnergyKey, _playerEnergyDefault];
 
 
 // init config data

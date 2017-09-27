@@ -25,7 +25,7 @@ if (_vehicle != player && isEngineOn _vehicle) then {
 
 if (currentVisionMode player == 1) then { //NV enabled
 	_energyValue = _energyValue - _energyCostNV;
-	_playerEnergy = missionNamespace getVariable [_playerEnergyKey, _playerEnergynDefault];
+	_playerEnergy = missionNamespace getVariable [_playerEnergyKey, _playerEnergyDefault];
 	if (_playerEnergy == 0) then {
 		player action["nvGogglesOff", player];
 		["Night Vision Goggles: Need Energy", 5] call Epoch_message;
