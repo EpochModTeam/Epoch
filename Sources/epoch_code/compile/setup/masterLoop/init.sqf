@@ -41,8 +41,9 @@ EPOCH_playerEnergyMax = _playerEnergyMax;
 _fnc_forceUpdate = {
 	private _customVars = [];
 	{
-		private _varName = call compile format["_player%1Key",_x];
-		if (isNil "_varName") then {_varName = format["EPOCH_player%1",_x]};
+		private _varName = format["EPOCH_player%1",_x];
+		private _varNameTmp = call compile format["_player%1Key",_x];
+		if !(isNil "_varNameTmp") then {_varName = _varNameTmp};
 		_customVars pushBack (missionNamespace getVariable [_varName,_defaultVarValues select _foreachindex]);
 	} forEach _customVarNames;
 	[player,_customVars,Epoch_personalToken] remoteExec ["EPOCH_fnc_savePlayer",2];

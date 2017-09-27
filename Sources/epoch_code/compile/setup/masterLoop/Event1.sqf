@@ -158,8 +158,9 @@ if (EPOCH_debugMode) then {
 	private _customVars = "";
 	{
 		if !(_x in ["AliveTime","SpawnArray","HitPoints","MissionArray","NotUsed"]) then {
-			private _varName = call compile format["_player%1Key",_x];
-			if (isNil "_varName") then {_varName = format["EPOCH_player%1",_x]};
+			private _varName = format["EPOCH_player%1",_x];
+			private _varNameTmp = call compile format["_player%1Key",_x];
+			if !(isNil "_varNameTmp") then {_varName = _varNameTmp};
 			private _val = missionNamespace getVariable [_varName,_defaultVarValues select _forEachIndex];
 			if (_x == "Temp") then {
 				_customVars = _customVars + format["<t size='1.15' font='puristaLight' align='left'>%1: </t><t size='1.15' font='puristaLight' align='right'>%2°F | %3°C</t><br/>", _x,_val,_val call EPOCH_convertTemp];
