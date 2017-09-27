@@ -3,6 +3,7 @@ _forceBloodRise = false;
 _forceFatigue = false;
 _allowBloodDrop = false;
 _forceStaminaDrop = false;
+_playerBloodP = missionNamespace getVariable [_playerBloodPKey, _playerBloodPDefault];
 _warnbloodPressure = _playerBloodP > 120;
 _increaseStamina = true;
 _val = 0;
@@ -104,6 +105,7 @@ EPOCH_currentTargetMode = _currentTargetMode;
 if (_forceBloodRise || _forceFatigue) then {
 	_increaseStamina = false;
 } else {
+	_playerStamina = missionNamespace getVariable [_playerStaminaKey, _playerStaminaDefault];
 	if (_playerStamina > 0 && !_panic) then {
 		_allowBloodDrop = true;
 	};
@@ -328,7 +330,6 @@ if !(EPOCH_ActiveTraderMission isequalto []) then {
 };
 
 // Update read only vars
-EPOCH_playerAliveTime = missionNamespace getVariable [_playerAliveTimeKey, 0];
 EPOCH_playerEnergy = missionNamespace getVariable [_playerEnergyKey, 0];
 
 // force update

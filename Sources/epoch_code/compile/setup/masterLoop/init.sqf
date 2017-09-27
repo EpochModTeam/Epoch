@@ -17,27 +17,60 @@ EPOCH_forceUpdateNow = false;
 // start alive timer
 _clientAliveTimer = diag_tickTime;
 
-if (isNil "_playerEnergyKey") then {
-	diag_log "DEBUG: _playerEnergyKey not set"
-};
-
 // init player stat vars
 _customVarsInit = ["CfgEpochClient", "customVarsDefaults", EPOCH_customVarsDefaults] call EPOCH_fnc_returnConfigEntryV2;
 _customVarNames = _customVarsInit apply {_x param [0,""]};
 _defaultVarValues = _customVarsInit apply {_x param [1,0]};
 _customVarLimits = _customVarsInit apply {_x param [2,[]]};
 
-// init limits and keys
+(_customVarLimits select (_customVarNames find "Temp")) params [["_playerTempMax",100],["_playerTempMin",0]];
+(_defaultVarValues select (_customVarNames find "Temp")) params [["_playerTempDefault",0]];
+(_customVarLimits select (_customVarNames find "Hunger")) params [["_playerHungerMax",100],["_playerHungerMin",0]];
+(_defaultVarValues select (_customVarNames find "Hunger")) params [["_playerHungerDefault",0]];
+(_customVarLimits select (_customVarNames find "Thirst")) params [["_playerThirstMax",100],["_playerThirstMin",0]];
+(_defaultVarValues select (_customVarNames find "Thirst")) params [["_playerThirstDefault",0]];
+(_customVarLimits select (_customVarNames find "Energy")) params [["_playerEnergyMax",100],["_playerEnergyMin",0]];
+(_defaultVarValues select (_customVarNames find "Energy")) params [["_playerEnergyDefault",0]];
+(_customVarLimits select (_customVarNames find "Wet")) params [["_playerWetMax",100],["_playerWetMin",0]];
+(_defaultVarValues select (_customVarNames find "Wet")) params [["_playerWetDefault",0]];
+(_customVarLimits select (_customVarNames find "Soiled")) params [["_playerSoiledMax",100],["_playerSoiledMin",0]];
+(_defaultVarValues select (_customVarNames find "Soiled")) params [["_playerSoiledDefault",0]];
+(_customVarLimits select (_customVarNames find "Immunity")) params [["_playerImmunityMax",100],["_playerImmunityMin",0]];
+(_defaultVarValues select (_customVarNames find "Immunity")) params [["_playerImmunityDefault",0]];
+(_customVarLimits select (_customVarNames find "Toxicity")) params [["_playerToxicityMax",100],["_playerToxicityMin",0]];
+(_defaultVarValues select (_customVarNames find "Toxicity")) params [["_playerToxicityDefault",0]];
+(_customVarLimits select (_customVarNames find "Stamina")) params [["_playerStaminaMax",100],["_playerStaminaMin",0]];
+(_defaultVarValues select (_customVarNames find "Stamina")) params [["_playerStaminaDefault",0]];
+(_customVarLimits select (_customVarNames find "BloodP")) params [["_playerBloodPMax",100],["_playerBloodPMin",0]];
+(_defaultVarValues select (_customVarNames find "BloodP")) params [["_playerBloodPDefault",0]];
+(_customVarLimits select (_customVarNames find "Alcohol")) params [["_playerAlcoholMax",100],["_playerAlcoholMin",0]];
+(_defaultVarValues select (_customVarNames find "Alcohol")) params [["_playerAlcoholDefault",0]];
+(_customVarLimits select (_customVarNames find "Radiation")) params [["_playerRadiationMax",100],["_playerRadiationMin",0]];
+(_defaultVarValues select (_customVarNames find "Radiation")) params [["_playerRadiationDefault",0]];
+(_customVarLimits select (_customVarNames find "Nuisance")) params [["_playerNuisanceMax",100],["_playerNuisanceMin",0]];
+(_defaultVarValues select (_customVarNames find "Nuisance")) params [["_playerNuisanceDefault",0]];
+
+(_defaultVarValues select (_customVarNames find "HitPoints")) params [["_playerHitPointsDefault",0]];
+(_defaultVarValues select (_customVarNames find "SpawnArray")) params [["_playerSpawnArrayDefault",0]];
+(_defaultVarValues select (_customVarNames find "MissionArray")) params [["_playerMissionArrayDefault",0]];
+
+// push inital vars to new gvars
 {
-	_varLimits = _customVarLimits select _forEachIndex;
 	_varDefault = _defaultVarValues select _foreachindex;
 	_varName = format["EPOCH_player%1",_x];
 	_varNameTmp = call compile format["_player%1Key",_x];
 	if !(isNil "_varNameTmp") then {_varName = _varNameTmp};
-	_varLimits params [[format["_player%1MaxRaw",_x],100],[format["_player%1MinRaw",_x],0]];
 	missionNamespace setVariable [_varName, missionNamespace getVariable [format["EPOCH_player%1",_x], _varDefault]];
-	call compile format['_player%1 = missionNamespace getVariable [_varName, _varDefault]; _player%1Max = _player%1MaxRaw; _player%1Min = _player%1MinRaw',_x];
 } forEach _customVarNames;
+
+// only changed within this loop
+_playerAliveTime = missionNamespace getVariable [_playerAliveTimeKey, _playerAliveTimeDefault];
+
+/* unused vars
+_playerHunger = missionNamespace getVariable [_playerHungerKey, _playerHungerDefault];
+_playerThirst = missionNamespace getVariable [_playerThirstKey, _playerThirstDefault];
+_playerTemp = missionNamespace getVariable [_playerTempKey, _playerTempDefault];
+*/
 
 EPOCH_playerEnergyMax = _playerEnergyMax;
 

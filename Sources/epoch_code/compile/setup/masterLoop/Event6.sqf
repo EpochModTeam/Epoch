@@ -1,3 +1,5 @@
+_playerNuisance = missionNamespace getVariable [_playerNuisanceKey, _playerNuisanceDefault];
+_playerSoiled = missionNamespace getVariable [_playerSoiledKey, _playerSoiledDefault];
 _spawnChance = ((_playerNuisance + _playerSoiled)/2) max 1;
 // add more antagonist spawn chances
 if (random _antagonistRndChance < _spawnChance) then {

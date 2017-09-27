@@ -25,6 +25,7 @@ if (_vehicle != player && isEngineOn _vehicle) then {
 
 if (currentVisionMode player == 1) then { //NV enabled
 	_energyValue = _energyValue - _energyCostNV;
+	_playerEnergy = missionNamespace getVariable [_playerEnergyKey, _playerEnergynDefault];
 	if (_playerEnergy == 0) then {
 		player action["nvGogglesOff", player];
 		["Night Vision Goggles: Need Energy", 5] call Epoch_message;
@@ -32,6 +33,7 @@ if (currentVisionMode player == 1) then { //NV enabled
 };
 
 // Sets visual effect
+_playerAlcohol = missionNamespace getVariable [_playerAlcoholKey, _playerAlcoholDefault];
 if (_playerAlcohol > 20) then {
 	_drunkVal = linearConversion [0,100,_playerAlcohol,0.1,1,true];
 	[_drunkVal, 2] call epoch_setDrunk;
@@ -40,6 +42,7 @@ if (_playerAlcohol > 20) then {
 };
 
 // Sets visual effect
+_playerRadiation = missionNamespace getVariable [_playerRadiationKey, _playerRadiationDefault];
 if (_playerRadiation > 1) then {
 	_radiationVal = linearConversion [0,100,_playerRadiation,0.1,1,true];
 	[_radiationVal, 2] call epoch_setRadiation;
@@ -112,6 +115,7 @@ if (_isOnFoot) then {
 			_increaseWet = 10;
 		};
 	} else {
+		_playerWet = missionNamespace getVariable [_playerWetKey, _playerWetDefault];
 		if (_playerWet > 50 && _airTemp <= 32) then {
 			_isNearFire = {inflamed _x} count (nearestObjects [player, ["ALL"], 3]);
 			if (!(call EPOCH_fnc_isInsideBuilding) && _isNearFire == 0) then {
@@ -138,6 +142,8 @@ if ((getFatigue player) >= 0.7 && _airTemp > 100) then {
 
 
 // toxic fever and immunity increase
+_playerToxicity = missionNamespace getVariable [_playerToxicityKey, _playerToxicityDefault];
+// _playerImmunity = missionNamespace getVariable [_playerImmunityKey, _playerImmunityDefault];
 if (_playerToxicity > 0) then {
 	_playerImmunity = [_playerImmunityKey,0.1,_playerImmunityMax,_playerImmunityMin] call EPOCH_fnc_setVariableLimited;
 	_playerToxicity = [_playerToxicityKey,-0.1,_playerToxicityMax,_playerToxicityMin] call EPOCH_fnc_setVariableLimited;
@@ -171,6 +177,7 @@ _hungerlossRate = _baseHungerLoss * timeMultiplier;
 _thirstlossRate = _baseThirstLoss * timeMultiplier;
 
 // Increase hunger if player is Fatigued
+_playerStamina = missionNamespace getVariable [_playerStaminaKey, _playerStaminaDefault];
 if (_playerStamina < 100) then {
 	if ((getFatigue player) > 0) then {
 		_hungerlossRate = _hungerlossRate + (_hungerlossRate*(getFatigue player));
@@ -190,7 +197,7 @@ _playerHunger = [_playerHungerKey,-_hungerlossRate,_playerHungerMax,_playerHunge
 _playerThirst = [_playerThirstKey,-_thirstlossRate,_playerThirstMax,_playerThirstMin] call EPOCH_fnc_setVariableLimited;
 
 // Nuisance Handler
-_playerEnergy = [_playerNuisanceKey,-1,_playerNuisanceMax,_playerNuisanceMin] call EPOCH_fnc_setVariableLimited;
+_playerEnergy = [_playerEnergyKey,-1,_playerEnergyMax,_playerEnergyMin] call EPOCH_fnc_setVariableLimited;
 
 // Radiation Handler
 if (_radsLevel == 0) then {
