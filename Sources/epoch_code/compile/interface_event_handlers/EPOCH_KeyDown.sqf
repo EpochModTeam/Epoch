@@ -31,7 +31,7 @@ private ["_adj","_currentPos","_handled","_playerStaminaKeyFinal","_step"];
 params ["_display","_dikCode","_shift","_ctrl","_alt"];
 
 _playerStaminaKeyFinal = "EPOCH_playerStamina";
-if (isNil "_playerStaminaKey") then {_playerStaminaKeyFinal = _playerStaminaKey};
+if !(isNil "_playerStaminaKey") then {_playerStaminaKeyFinal = _playerStaminaKey};
 
 _handled = false;
 

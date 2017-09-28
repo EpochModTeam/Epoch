@@ -115,8 +115,8 @@ if (_doAttack) then {
 				if (random 1 < _toxicChance) then {
 					_playerToxicityKeyFinal = "EPOCH_playerToxicity";
 					_playerImmunityKeyFinal = "EPOCH_playerImmunity";
-					if (isNil "_playerToxicityKey") then {_playerToxicityKeyFinal = _playerToxicityKey};
-					if (isNil "_playerImmunityKey") then {_playerImmunityKeyFinal = _playerImmunityKey};
+					if !(isNil "_playerToxicityKey") then {_playerToxicityKeyFinal = _playerToxicityKey};
+					if !(isNil "_playerImmunityKey") then {_playerImmunityKeyFinal = _playerImmunityKey};
 					[_playerToxicityKeyFinal,random(_toxicAmount - (missionNamespace getVariable [_playerImmunityKeyFinal, 0])),100,0] call EPOCH_fnc_setVariableLimited;
 				};
 				if (random 1 < _bleedChance) then {
@@ -124,7 +124,7 @@ if (_doAttack) then {
 				};
 				if (random 1 < _bloodpChance) then {
 					_playerBloodPKeyFinal = "EPOCH_playerBloodP";
-					if (isNil "_playerBloodPKey") then {_playerBloodPKeyFinal = _playerBloodPKey};
+					if !(isNil "_playerBloodPKey") then {_playerBloodPKeyFinal = _playerBloodPKey};
 					[_playerBloodPKeyFinal,_bloodpAmount,100,0] call EPOCH_fnc_setVariableLimited;
 					if !(_ppEffect isEqualTo []) then {
 						[_ppEffect] spawn EPOCH_fnc_spawnEffects;

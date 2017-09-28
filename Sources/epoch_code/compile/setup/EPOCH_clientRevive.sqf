@@ -59,7 +59,7 @@ if !(alive player && alive _playerObject && !isPlayer _playerObject) then {
 
 		// reset blood Pressure to warning level
 		_playerBloodPKeyFinal = "EPOCH_playerBloodP";
-		if (isNil "_playerBloodPKey") then {_playerBloodPKeyFinal = _playerBloodPKey};
+		if !(isNil "_playerBloodPKey") then {_playerBloodPKeyFinal = _playerBloodPKey};
 		missionNamespace setVariable [_playerBloodPKeyFinal, 120];
 
         // restart masterloop

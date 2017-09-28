@@ -23,7 +23,7 @@ _index = EPOCH_spawnIndex find _unitClass;
 _spawnLimit = 0;
 if (_index != -1) then {
 	_playerSpawnArrayKeyFinal = "EPOCH_playerSpawnArray";
-	if (isNil "_playerSpawnArrayKey") then {_playerSpawnArrayKeyFinal = _playerSpawnArrayKey};
+	if !(isNil "_playerSpawnArrayKey") then {_playerSpawnArrayKeyFinal = _playerSpawnArrayKey};
 	_playerSpawnArray = missionNamespace getVariable [_playerSpawnArrayKeyFinal,[]];
 	_spawnLimit = _playerSpawnArray select _index;
 };
