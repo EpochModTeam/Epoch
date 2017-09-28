@@ -34,7 +34,7 @@ class CfgEpochClient
     jammerPerGroup = 1;				// allowed number of jammers per group.
     jammerGLOnly = 1;               // allow only group leader to place Jammer
     minJammerDistance = 650;		// min distance to next Jammer
-    maxBuildingHeight = 33;			// Max Height, building is allowed.
+    maxBuildingHeight = 100;		// Max Height, building is allowed.
     buildingCountLimit = 200;		//overall building limit in range of jammer (overridden if "useGroupCountLimits=1")
     storageCountLimit = 100;		//overall storage limit in range of jammer (triggers only if "splitCountLimits=1" & "useGroupCountLimits=0")
     splitCountLimits = 0;			//1 = distinguish buildingCountLimit from storageCountLimit (ex.: buildingCountLimit=100, storageCountLimit=100 >> you can build 100 baseparts AND additional 100 storage objects like safes, lockboxes...)
