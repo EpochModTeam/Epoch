@@ -13,7 +13,7 @@
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_code/compile/EPOCH_unitSpawnIncrease.sqf
 */
 //[[[cog import generate_private_arrays ]]]
-private ["_index","_playerSpawnArray","_playerSpawnArrayKey"];
+private ["_index","_playerSpawnArray","_playerSpawnArrayKeyFinal"];
 //[[[end]]]
 params ["_spawnName", ["_increase",1]];
 _index = EPOCH_spawnIndex find _spawnName;
