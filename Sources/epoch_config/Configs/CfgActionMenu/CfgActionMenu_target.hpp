@@ -541,3 +541,13 @@ class player_tempGroup_requests
 	icon = "x\addons\a3_epoch_code\Data\UI\buttons\group_requests_ca.paa";
 	tooltip = "Temp Group Requests";
 };
+
+// Working defibrillator
+
+class player_revive
+{
+	condition = "dyna_isDeadPlayer && ('ItemDefibrillator' in dyna_magazinesPlayer)";
+	action = "[dyna_cursorTarget, player, Epoch_personalToken] remoteExec ['EPOCH_server_revivePlayer',2];";
+	icon = "x\addons\a3_epoch_code\Data\UI\buttons\group_requests_ca.paa";
+	tooltip = "Revive Player";
+};
