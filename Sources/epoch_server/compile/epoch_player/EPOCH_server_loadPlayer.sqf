@@ -324,9 +324,11 @@ if (!isNull _player) then {
 				deleteVehicle _newPlyr;
 				diag_log "Epoch: DEBUG: _player object was null reject connection";
 			} else {
+				//
+				// TESTING if this is extra setUnitLoadout the cause for random duping on login
 				// re-add Inventory (needed as workaround for Client / Server synchronizing issue in unitloadout)
-				_loadout = getUnitLoadout _newPlyr;
-				_newPlyr setUnitLoadout [_loadout, false];
+				//_loadout = getUnitLoadout _newPlyr;
+				//_newPlyr setUnitLoadout [_loadout, false];
 
 				// add to cleanup
 				addToRemainsCollector[_newPlyr];
@@ -364,7 +366,7 @@ if (!isNull _player) then {
 
 				// Send message to player so they can take over the new body.
 				[_playerNetID, _playerUID, [_newPlyr, _vars, _currentWeapon, loadAbs _newPlyr, _playerGroup, _canBeRevived, _newPlyr call EPOCH_server_setPToken,_playerGroupArray, _communityStats, _hitpoints], _fsmHandle] call EPOCH_server_pushPlayer;
-				diag_log str([_playerNetID, _playerUID, _player, [_newPlyr, (_player isEqualTo _newPlyr), _vars, _currentWeapon, loadAbs _newPlyr, _playerGroup, _canBeRevived, [],_playerGroupArray, _communityStats, _hitpoints], _fsmHandle]);
+				// diag_log str([_playerNetID, _playerUID, _player, [_newPlyr, (_player isEqualTo _newPlyr), _vars, _currentWeapon, loadAbs _newPlyr, _playerGroup, _canBeRevived, [],_playerGroupArray, _communityStats, _hitpoints], _fsmHandle]);
 
 				// revive test
 				_newPlyr setVariable ['#rev_enabled', true, true];
