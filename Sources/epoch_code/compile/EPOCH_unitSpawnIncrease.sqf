@@ -20,8 +20,6 @@ _index = EPOCH_spawnIndex find _spawnName;
 if (_index != -1) then{
 	_playerSpawnArrayKeyFinal = "EPOCH_playerSpawnArray";
 	if !(isNil "_playerSpawnArrayKey") then {_playerSpawnArrayKeyFinal = _playerSpawnArrayKey};
-
 	_playerSpawnArray = missionNamespace getVariable [_playerSpawnArrayKeyFinal,[]];
-	diag_log format["DEBUG: %1 %2",_playerSpawnArrayKeyFinal,_playerSpawnArray];
 	_playerSpawnArray set[_index, ((_playerSpawnArray select _index) + _increase) min (EPOCH_spawnLimits select _index)];
 };

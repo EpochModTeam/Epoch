@@ -179,6 +179,7 @@ if !(_playerSpawnArray isEqualTypeParams _spawnIndex) then{
 	_playerSpawnArray = [];
 	{ _playerSpawnArray pushBack 0 } forEach _spawnIndex;
 };
+missionNamespace setVariable [_playerSpawnArrayKey, _playerSpawnArray];
 
 // find radio
 {
