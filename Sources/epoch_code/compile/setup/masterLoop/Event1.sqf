@@ -126,7 +126,7 @@ if (_forceBloodRise) then {
 } else {
 	if (_allowBloodDrop) then {
 		// allow player to bleed out
-		_lowerBPlimit = [_playerBloodPMin,0] select (isBleeding player);
+		_lowerBPlimit = [100,0] select (isBleeding player);
 		_playerBloodP = [_playerBloodPKey, -1, _playerBloodPMax , _lowerBPlimit] call EPOCH_fnc_setVariableLimited;
 	};
 };
