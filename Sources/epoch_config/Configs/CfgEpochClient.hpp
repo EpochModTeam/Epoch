@@ -39,11 +39,11 @@ class CfgEpochClient
     storageCountLimit = 100;		//overall storage limit in range of jammer (triggers only if "splitCountLimits=1" & "useGroupCountLimits=0")
     splitCountLimits = 0;			//1 = distinguish buildingCountLimit from storageCountLimit (ex.: buildingCountLimit=100, storageCountLimit=100 >> you can build 100 baseparts AND additional 100 storage objects like safes, lockboxes...)
     useGroupCountLimits = 1;		//1 = enable leader and member counts (doesn´t affect "splitCountLimits")
-    buildingCountLeader = 125;		//ignore if "useGroupCountLimits=0"
+    buildingCountLeader = 250;		//ignore if "useGroupCountLimits=0"
     buildingCountPerMember = 5;		//ignore if "useGroupCountLimits=0"
     storageCountLeader = 10;		//ignore if "splitCountLimits=0" & "useGroupCountLimits=0"
     storageCountPerMember = 5;		//ignore if "splitCountLimits=0" & "useGroupCountLimits=0"
-    maxdoors = 8;					// Max allowed doors per Group
+    maxdoors = 10;					// Max allowed doors per Group
     maxgates = 5;					// Max allowed Gates per Group
 
     disableRemoteSensors = "true";  // disableRemoteSensors true/false
