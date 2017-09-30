@@ -364,6 +364,7 @@ if (!isNull _player) then {
 
 				// Send message to player so they can take over the new body.
 				[_playerNetID, _playerUID, [_newPlyr, _vars, _currentWeapon, loadAbs _newPlyr, _playerGroup, _canBeRevived, _newPlyr call EPOCH_server_setPToken,_playerGroupArray, _communityStats, _hitpoints], _fsmHandle] call EPOCH_server_pushPlayer;
+				diag_log str([_playerNetID, _playerUID, [_newPlyr, _vars, _currentWeapon, loadAbs _newPlyr, _playerGroup, _canBeRevived, _newPlyr call EPOCH_server_setPToken,_playerGroupArray, _communityStats, _hitpoints], _fsmHandle]);
 
 				// revive test
 				_newPlyr setVariable ['#rev_enabled', true, true];
