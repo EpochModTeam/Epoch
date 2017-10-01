@@ -105,6 +105,9 @@ switch _unitClass do {
 			_units pushBack _unit;
 			_bomb = createVehicle ["SmokeShellToxicSapper", _targetPos, [], 0, "CAN_COLLIDE"];
 			_bomb attachTo [_unit, [0,0,0],"Pelvis"];
+			[_bomb, player, Epoch_personalToken,_unit,false] remoteExec ["EPOCH_server_handle_sapperObjs",2];
+			_bomb = createVehicle ["Sapper_Charge_Ammo", _targetPos, [], 0, "CAN_COLLIDE"];
+			_bomb attachTo [_unit, [0,0,0],"Pelvis"];
 			_unit call _disableAI;
 			_sapperHndl = [_unit, _bomb, _trgt] execFSM "\x\addons\a3_epoch_code\System\Sapper_Brain2.fsm";
 			_unit setVariable ["sapperHndl",_sapperHndl];

@@ -86,7 +86,7 @@ if !(_attackers isEqualTo[]) then {
 	(_attackers select 0) call EPOCH_client_bitePlayer;
 	_panic = true;
 } else {
-	_toxicObjs = player nearobjects["SmokeShellCustom", 6];
+	_toxicObjs = player nearobjects["SmokeShellCustom", 12];
 	if!(_toxicObjs IsEqualTo[]) then {
 		(_toxicObjs select 0) call EPOCH_client_bitePlayer;
 		_panic = true;
