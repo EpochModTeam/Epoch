@@ -5,21 +5,23 @@ All changes for [Arma 3](https://arma3.com/) [Epoch Mod](https://epochmod.com) a
 ### Added
 - Favorites bar. Users can pin (almost) any item to the bar by dragging items from inventory to equip/un-equip (Weapons, attachments, head gear etc) or consume (eat, drink, build etc) using keyboard mapping without having gear open. Use ESC menu to change the mappings. Server admins, see client_init.sqf for config. @raymix
 - Advanced Vehicle Repair System - Repairing your vehicle just got more realistic. Patch a leaky fuel tank with Duct Tape. If you blow a tire you now need to find a Spare. Engine too damaged? grab an engine block to repair it. @Ignatz-Heman
-- Repair Items: (ItemDuctTape, SpareTire, EngineParts, EngineBlock, ItemGlass, FuelTank, ItemRotor). @Helion
+- Repair Items: (ItemDuctTape, SpareTire, EngineParts, EngineBlock, ItemGlass, FuelTank, ItemRotor). @Helion4
 - Vehicle Upgrade System - Upgrade your ride by using one of the new vehicle upgrade documents found in the world. @DirtySanchez
 - Vector Base Building (uses Arrow keys by default and with SHIFT / ALT you can control the steps). @DirtySanchez & @Ignatz-Heman
-- New Base Building Objects: Quarter and Half wood floors @DirtySanchez, Cinder block floor, Cinder wall with a window. Metal and Cinder Towers @Helion.
-- Medical items: Adrenaline Shot (adrenaline_epoch), Caffeine Pills (caffeinepills_epoch). Orlistat Pills (orlistat_epoch) by @Helion and configs by @DirtySanchez
+- New Base Building Objects: Quarter and Half wood floors @DirtySanchez, Cinder block floor, Cinder wall with a window. Metal and Cinder Towers @Helion4.
+- A-frame and Dome tents as insecure storage objects. @morgoth0, @DirtySanchez, @Helion4
+- Medical items: Adrenaline Shot (adrenaline_epoch), Caffeine Pills (caffeinepills_epoch). Orlistat Pills (orlistat_epoch) by @Helion4 and configs by @DirtySanchez
 - Food items: ItemCereals, ItemPowderMilk_F, ItemRiceBox, ItemVitamins. @DirtySanchez
 - 84 new Female outfits based on 20 top designs and 4 new pairs of jeans(Blue Patched, Arid Brown, Black/Brown, Black). @DirtySanchez, @ComatoseBadger
 - Vehicle Ammo Reloading from Inventory and Vehicle Ammo. @DirtySanchez
-- Digital Geiger Counter - used to detect Radiation. (Sounds @vbawol, Model @Helion, and UI + digital font @raymix)
+- Digital Geiger Counter - used to detect Radiation. (Sounds @vbawol, Model @Helion4, and UI + digital font @raymix)
 - Barrel Bomb - large craft-able explosive that can be placed and detonated. @DirtySanchez
 - Brown Briefcase that contains 100oz Silver. @DirtySanchez
 - Old "Zombie Parts" Bag (ItemBioHazardBag).
-- 5 new Halloween masks for October. @Helion
+- 5 new Halloween masks for October. @Helion4, @DirtySanchez
 - Option to drink directly from water sources. @Ignatz-HeMan
 - Karma changes for deaths, suicides, PvP(including hero* and bandit* levels), trader kills, revives, trading sales and purchases.
+- Custom map markers and icons by @xDrokZ, @DirtySanchez
 - Epoch Events 3.0: External pbo based events. see epoch_server_vip_event or epoch_server_debris_event for examples.
 - VIP Event - Reveals the map location of a random player that possesses a specific item (default: ItemBriefcaseGold100oz) every X (default: 15) minutes.
 - Dynamic Debris: Dynamically spawns vehicle and other debris on the roadways. Scans the roads on startup and uses a random seed generator to determine the locations of debris. Debris is spawned using createSimpleObject for best performance and is made to conform with the uppermost roadway surface.
@@ -29,6 +31,7 @@ All changes for [Arma 3](https://arma3.com/) [Epoch Mod](https://epochmod.com) a
 - Initial support for Malden 2035 map released with A3 1.72+.
 
 ### Changed
+- Player save and login optimized to use get|setUnitLoadout.
 - Karma now persists death and moved to community stats.
 - CBA extended event handler and zeus curator support for Epoch Vehicles. @DirtySanchez
 - Base PlotPole ESP added to Epoch Admin Panel. @SMVampire
@@ -42,12 +45,13 @@ All changes for [Arma 3](https://arma3.com/) [Epoch Mod](https://epochmod.com) a
 - Bump to hive version 0.6.0.0, Note: this requires epochserver hive extension updates server side.
 - Gas Station Auto-Refuel is now disabled on all maps. Use disableAutoRefuel = false; via epochconfig.hpp to disable. @SMVampire
 ### Fixed
+- Player stats variables are not obfuscated, and hitpoints tracked via server.
 - Bad conversion: bool RPT spam caused by incorrect usage of configClasses. @DirtySanchez
 - Snapping issues base building @DirtySanchez
 - Sounds not working due to changes to 3dSay command in recent A3 updates. @DirtySanchez
 - Spawning at base above Water was not working correctly. @Ignatz-Heman
-- One step is higher on stairs, can't run up while crouched. #447 @Helion4
-- L85 Elcan optic issues. #678 @Helion4, @DirtySanchez
+- One step is higher on stairs, can't run up while crouched. #447 @Helion44
+- L85 Elcan optic issues. #678 @Helion44, @DirtySanchez
 - Zombie falsely triggers Mission success. @Ignatz-Heman
 - Base Building 90° and 270° Snap was broken.
 - Sometimes snapped Base Building elements rotated back on save.
