@@ -28,6 +28,7 @@ All changes for [Arma 3](https://arma3.com/) [Epoch Mod](https://epochmod.com) a
 - Epoch Dev Libs, See https://github.com/EpochModTeam/Epoch/tree/experimental/Tools/DevFrameWork for more info. @raymix
 - Md5 hash function and Unit test to the hive. See usage example with EPOCH_fnc_server_hiveMD5 SQF function.
 - Dynamic Simulation is now fully enabled. See "CfgDynamicSimulation" for configs. @DirtySanchez
+- Conditional loot table options to allow omitting items from loot tables via custom logic.
 - Initial support for Malden 2035 map released with A3 1.72+.
 
 ### Changed
