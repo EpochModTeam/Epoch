@@ -325,7 +325,7 @@ if (!isNull _player) then {
 				diag_log "Epoch: DEBUG: _player object was null reject connection";
 			} else {
 				//
-				// TESTING if this is extra setUnitLoadout the cause for random duping on login
+				// TESTING if this extra setUnitLoadout is the cause for random duping on login (it seems it is, however now we have random loading issue.)
 				// re-add Inventory (needed as workaround for Client / Server synchronizing issue in unitloadout)
 				//_loadout = getUnitLoadout _newPlyr;
 				//_newPlyr setUnitLoadout [_loadout, false];
@@ -365,7 +365,7 @@ if (!isNull _player) then {
 				_newPlyr setVariable["SETUP", true, true];
 
 				// Send message to player so they can take over the new body.
-				[_playerNetID, _playerUID, [_newPlyr, _vars, _currentWeapon, loadAbs _newPlyr, _playerGroup, _canBeRevived, _newPlyr call EPOCH_server_setPToken,_playerGroupArray, _communityStats, _hitpoints], _fsmHandle] call EPOCH_server_pushPlayer;
+				[_playerNetID, _playerUID, [_newPlyr, _vars, _currentWeapon, loadAbs _newPlyr, _playerGroup, _canBeRevived, _newPlyr call EPOCH_server_setPToken,_playerGroupArray, _communityStats, _hitpoints], _fsmHandle, _player] call EPOCH_server_pushPlayer;
 				// diag_log str([_playerNetID, _playerUID, _player, [_newPlyr, (_player isEqualTo _newPlyr), _vars, _currentWeapon, loadAbs _newPlyr, _playerGroup, _canBeRevived, [],_playerGroupArray, _communityStats, _hitpoints], _fsmHandle]);
 
 				// revive test
