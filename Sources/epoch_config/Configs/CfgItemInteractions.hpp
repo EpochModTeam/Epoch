@@ -157,7 +157,7 @@ class CfgItemInteractions
     };
     class WhiskeyNoodle : Drink_base
     {
-        interactAttributes[] = {{"Thirst",800},{"Toxicity",-1},{"Radiation",-1}{"Stamina",50},{"Alcohol",10}};
+        interactAttributes[] = {{"Thirst",800},{"Toxicity",-1},{"Radiation",-1},{"Stamina",50},{"Alcohol",10}};
     };
     class water_epoch : Drink_Jar_base
     {
