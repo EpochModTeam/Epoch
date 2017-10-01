@@ -81,35 +81,35 @@ class CfgItemInteractions
     };
     class sardines_epoch : Food_TinCan_base
     {
-        interactAttributes[] = {{"Hunger",1000},{"Toxicity",7}};
+        interactAttributes[] = {{"Hunger",1000},{"Toxicity",7,1},{"Radiation",2,1}};
     };
     class meatballs_epoch : Food_TinCan_base
     {
-        interactAttributes[] = {{"Hunger",1200}};
+        interactAttributes[] = {{"Hunger",1200},{"Radiation",2,1}};
     };
     class scam_epoch : Food_TinCan_base
     {
-        interactAttributes[] = {{"Hunger",1000}};
+        interactAttributes[] = {{"Hunger",1000},{"Radiation",2,1}};
     };
     class sweetcorn_epoch : Food_TinCan_base
     {
-        interactAttributes[] = {{"Hunger",600}};
+        interactAttributes[] = {{"Hunger",600},{"Radiation",2,1}};
     };
     class FoodBioMeat : Food_TinCan_base
     {
-        interactAttributes[] = {{"Hunger",1000},{"Toxicity",7}};
+        interactAttributes[] = {{"Hunger",1000},{"Toxicity",7},{"Radiation",2,1}};
     };
     class TacticalBacon : Food_TinCan_base
     {
-        interactAttributes[] = {{"Hunger",500}};
+        interactAttributes[] = {{"Hunger",500},{"Radiation",2,1}};
     };
     class ItemTrout : Food_base
     {
-        interactAttributes[] = {{"Hunger",300},{"Toxicity",5}};
+        interactAttributes[] = {{"Hunger",300},{"Toxicity",5,1}};
     };
     class ItemSeaBass : Food_base
     {
-        interactAttributes[] = {{"Hunger",500},{"Toxicity",10}};
+        interactAttributes[] = {{"Hunger",500},{"Toxicity",10,1}};
     };
     class ItemTuna : Food_base
     {
@@ -157,7 +157,7 @@ class CfgItemInteractions
     };
     class WhiskeyNoodle : Drink_base
     {
-        interactAttributes[] = {{"Thirst",800},{"Toxicity",-1},{"Stamina",50},{"Alcohol",10}};
+        interactAttributes[] = {{"Thirst",800},{"Toxicity",-1},{"Radiation",-1}{"Stamina",50},{"Alcohol",10}};
     };
     class water_epoch : Drink_Jar_base
     {
@@ -259,7 +259,7 @@ class CfgItemInteractions
     {
         interactAction = 1;
         interactText = "EAT";
-        interactAttributes[] = {{"Hunger",300},{"Soiled",1},{"Toxicity",10,1}};
+        interactAttributes[] = {{"Hunger",300},{"Soiled",1},{"Toxicity",10,1},{"Radiation",2,1}};
     };
     class SnakeMeat_EPOCH : Default
     {
@@ -801,9 +801,9 @@ class CfgItemInteractions
 	class SeedPacket_Poppy : Default {};
 	class SeedPacket_Pumpkin : Default {};
 	class SeedPacket_Sunflower : Default {};
-		class ItemBakedBeans : Food_TinCan_base
+	class ItemBakedBeans : Food_TinCan_base
 	{
-		interactAttributes[] = {{"Hunger",800}};
+		interactAttributes[] = {{"Hunger",800},{"Radiation",2,1}};
 	};
 	class gyro_wrap_epoch : Food_base
 	{
@@ -825,25 +825,25 @@ class CfgItemInteractions
 	{
 		interactAttributes[] = {{"Hunger",500},{"Stamina",50}};
 	};
-	class ItemBottlePlastic_Clean : Drink_base 
+	class ItemBottlePlastic_Clean : Drink_base
 	{
 		interactAttributes[] = {{"Thirst",500},{"Stamina",50}};
 		interactReturnOnUse = "ItemBottlePlastic_Empty";
 	};
-	class ItemCanteen_Clean : Drink_base 
+	class ItemCanteen_Clean : Drink_base
 	{
 		interactAttributes[] = {{"Thirst",1000},{"Stamina",50}};
 		interactReturnOnUse = "ItemCanteen_Empty";
 	};
 	class ItemBottlePlastic_Dirty: Drink_base
 	{
-		interactAttributes[] = {{"Thirst",500},{"Toxicity",5,1},{"Stamina",50}};
+		interactAttributes[] = {{"Thirst",500},{"Toxicity",5,1},{"Stamina",50},{"Radiation",2,1}};
 	interactReturnOnUse = "ItemBottlePlastic_Empty";
 	};
 
 	class ItemCanteen_Dirty : Drink_base
 	{
-		interactAttributes[] = {{"Thirst",1000},{"Toxicity",5,1},{"Stamina",50}};
+		interactAttributes[] = {{"Thirst",1000},{"Toxicity",5,1},{"Stamina",50},{"Radiation",2,1}};
 	interactReturnOnUse = "ItemCanteen_Empty";
 	};
 };
