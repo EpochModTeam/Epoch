@@ -276,6 +276,28 @@ setTimeMultiplier ([_serverSettingsConfig, "timeMultiplier", 1] call EPOCH_fnc_r
 // globalize tax rate
 missionNamespace setVariable ["EPOCH_taxRate", [_serverSettingsConfig, "taxRate", 0.1] call EPOCH_fnc_returnConfigEntry, true];
 
+// pick random radioactive locations
+_radioactiveLocations = getArray(_epochConfig >> worldName >> "radioactiveLocations");
+if !(_radioactiveLocations isEqualTo []) then {
+	private _locations = nearestLocations[epoch_centerMarkerPosition, _radioactiveLocations, EPOCH_dynamicVehicleArea];
+	if !(_locations isEqualTo []) then {
+		for "_i" from 0 to (getNumber(_epochConfig >> worldName >> "radioactiveLocationsCount")) do
+		{
+			if (_locations isEqualTo []) exitWith {};
+			private _selectedLoc = selectRandom _locations;
+			_locations = _locations - [_selectedLoc];
+			_selectedLoc setVariable ["EPOCH_Rads", random 666, true];
+			private _position = locationPosition _selectedLoc;
+			_marker = name _selectedLoc;
+			_marker = createMarker[_marker, _position];
+			_marker setMarkerShape "ICON";
+			_marker setMarkerType "hd_warning";
+			_marker setMarkerColor "ColorRed";
+			// _marker setMarkerText "Radioactive";
+		};
+	};
+};
+
 // start accepting logins
 missionNamespace setVariable ["EPOCH_SERVER_READY", true, true];
 

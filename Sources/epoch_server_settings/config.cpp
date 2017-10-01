@@ -61,6 +61,8 @@ class CfgEpoch
 			{"NameCityCapital",4},
 			{"Airport",5}
 		};
+		radioactiveLocations[] = {"NameCityCapital", "NameCity", "Airport"};
+		radioactiveLocationsCount = 3;
 		traderBlds[] = {"House", "Building"};
 		traderHomes[] = {"House", "Building"};
 		traderUniforms[] = {"U_OG_leader", "U_C_Poloshirt_stripped", "U_C_Poloshirt_blue", "U_C_Poloshirt_burgundy", "U_C_Poloshirt_tricolour", "U_C_Poloshirt_salmon", "U_C_Poloshirt_redwhite", "U_C_Poor_1", "U_C_WorkerCoveralls", "U_C_Journalist", "U_C_Scientist", "U_OrestesBody"};
