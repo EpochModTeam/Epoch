@@ -12,7 +12,7 @@ interactAttributes[] = {
 	{"Stamina",0},
 	{"Wet",0},
 	{"BloodP",0},  // only increase is allowed
-	{"Karma",0},
+	{"NotUsed",0},
 	{"Alcohol",0},
 	{"Radiation",0}
 };
@@ -259,7 +259,7 @@ class CfgItemInteractions
     {
         interactAction = 1;
         interactText = "EAT";
-        interactAttributes[] = {{"Hunger",300},{"Soiled",1},{"Toxicity",10,1},{"Radiation",2,1}};
+        interactAttributes[] = {{"Hunger",300},{"Soiled",1},{"Toxicity",10,1}};
     };
     class SnakeMeat_EPOCH : Default
     {
@@ -301,13 +301,13 @@ class CfgItemInteractions
     {
         interactAction = 1;
         interactText = "EAT";
-        interactAttributes[] = {{"Hunger",500},{"Soiled",1},{"Toxicity",15,1},{"Karma",-10}};
+        interactAttributes[] = {{"Hunger",500},{"Soiled",1},{"Toxicity",15,1}};
     };
     class CookedDog_EPOCH : Default
     {
         interactAction = 1;
         interactText = "EAT";
-        interactAttributes[] = {{"Hunger",3000},{"Karma",-10}};
+        interactAttributes[] = {{"Hunger",3000}};
     };
     class CookedGoat_EPOCH : Default
     {
