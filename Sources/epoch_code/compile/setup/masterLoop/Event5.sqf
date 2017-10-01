@@ -1,10 +1,11 @@
 _position = getPosATL player;
 
-EPOCH_nearestLocations = nearestLocations[player, ["NameCityCapital", "NameCity", "Airport"], 300];
+_nearestLocations = nearestLocations[player, _radioactiveLocations, 300];
+EPOCH_nearestLocations = _nearestLocations;
 _powerSources = nearestObjects[player, ["Land_spp_Tower_F","Land_wpp_Turbine_V2_F","Land_wpp_Turbine_V1_F","SolarGen_EPOCH","Land_Wreck_Satellite_EPOCH"], _energyRange];
 
 // TODO: add more sources and config based check instead of global var
-_nearbyRadioactiveObjects = (_powerSources + EPOCH_nearestLocations) select {_x getVariable ["EPOCH_Rads", 0] > 0};
+_nearbyRadioactiveObjects = (_powerSources + _nearestLocations) select {_x getVariable ["EPOCH_Rads", 0] > 0};
 
 // check if player is out of map bounds.
 _radsLevel = 0;
@@ -27,7 +28,7 @@ if (_outOfBounds) then {
 EPOCH_playerIsSwimming = false;
 
 if !(surfaceIsWater _position) then {
-	if (EPOCH_nearestLocations isEqualTo []) then{
+	if (_nearestLocations isEqualTo []) then{
 		if (count(player nearEntities["Animal_Base_F", 800]) < 2) then {
 			call EPOCH_client_loadAnimalBrain;
 		};
