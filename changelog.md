@@ -3,42 +3,29 @@ All changes for [Arma 3](https://arma3.com/) [Epoch Mod](https://epochmod.com) a
 
 ## [Unreleased]
 ### Added
-
 - Favorites bar. Users can pin (almost) any item to the bar by dragging items from inventory to equip/un-equip (Weapons, attachments, head gear etc) or consume (eat, drink, build etc) using keyboard mapping without having gear open. Use ESC menu to change the mappings. Server admins, see client_init.sqf for config. @raymix
-
 - Advanced Vehicle Repair System - Repairing your vehicle just got more realistic. Patch a leaky fuel tank with Duct Tape. If you blow a tire you now need to find a Spare. Engine too damaged? grab an engine block to repair it. @Ignatz-Heman
 - Repair Items: (ItemDuctTape, SpareTire, EngineParts, EngineBlock, ItemGlass, FuelTank, ItemRotor). @Helion
 - Vehicle Upgrade System - Upgrade your ride by using one of the new vehicle upgrade documents found in the world. @DirtySanchez
-
 - Vector Base Building (uses Arrow keys by default and with SHIFT / ALT you can control the steps). @DirtySanchez & @Ignatz-Heman
 - New Base Building Objects: Quarter and Half wood floors @DirtySanchez, Cinder block floor, Cinder wall with a window. Metal and Cinder Towers @Helion.
-
 - Medical items: Adrenaline Shot (adrenaline_epoch), Caffeine Pills (caffeinepills_epoch). Orlistat Pills (orlistat_epoch) by @Helion and configs by @DirtySanchez
 - Food items: ItemCereals, ItemPowderMilk_F, ItemRiceBox, ItemVitamins. @DirtySanchez
-
 - 84 new Female outfits based on 20 top designs and 4 new pairs of jeans(Blue Patched, Arid Brown, Black/Brown, Black). @DirtySanchez, @ComatoseBadger
-
 - Vehicle Ammo Reloading from Inventory and Vehicle Ammo. @DirtySanchez
 - Digital Geiger Counter - used to detect Radiation. (Sounds @vbawol, Model @Helion, and UI + digital font @raymix)
 - Barrel Bomb - large craft-able explosive that can be placed and detonated. @DirtySanchez
 - Brown Briefcase that contains 100oz Silver. @DirtySanchez
 - Old "Zombie Parts" Bag (ItemBioHazardBag).
-
+- 5 new Halloween masks for October. @Helion
 - Option to drink directly from water sources. @Ignatz-HeMan
 - Karma changes for deaths, suicides, PvP(including hero* and bandit* levels), trader kills, revives, trading sales and purchases.
-
 - Epoch Events 3.0: External pbo based events. see epoch_server_vip_event or epoch_server_debris_event for examples.
-
 - VIP Event - Reveals the map location of a random player that possesses a specific item (default: ItemBriefcaseGold100oz) every X (default: 15) minutes.
-
 - Dynamic Debris: Dynamically spawns vehicle and other debris on the roadways. Scans the roads on startup and uses a random seed generator to determine the locations of debris. Debris is spawned using createSimpleObject for best performance and is made to conform with the uppermost roadway surface.
-
 - Epoch Dev Libs, See https://github.com/EpochModTeam/Epoch/tree/experimental/Tools/DevFrameWork for more info. @raymix
-
 - Md5 hash function and Unit test to the hive. See usage example with EPOCH_fnc_server_hiveMD5 SQF function.
-
 - Dynamic Simulation is now fully enabled. See "CfgDynamicSimulation" for configs. @DirtySanchez
-
 - Initial support for Malden 2035 map released with A3 1.72+.
 
 ### Changed
