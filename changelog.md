@@ -32,6 +32,7 @@ All changes for [Arma 3](https://arma3.com/) [Epoch Mod](https://epochmod.com) a
 - Initial support for Malden 2035 map released with A3 1.72+.
 
 ### Changed
+- Crafting recipes can now have item requirements and Crafting metal bars now require Smelting Tools.
 - Player save and login optimized to use get|setUnitLoadout.
 - Karma now persists death and moved to community stats.
 - CBA extended event handler and zeus curator support for Epoch Vehicles. @DirtySanchez

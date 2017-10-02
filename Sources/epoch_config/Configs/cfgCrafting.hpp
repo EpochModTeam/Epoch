@@ -19,7 +19,8 @@
 	{
 		{"Fire", "", "fire", {1,{"ALL"}}, 3, 1, 1, 0},
 		{"Water source","","water",{0,{"barrelwater_f.p3d", "water_source_f.p3d", "pumpa.p3d", "misc_wellpump.p3d"}},3,1,0,0},
-		{{"Water source", "", "water", {2,{"water"}}, 3, 1, 0, 0}}
+		{{"Water source", "", "water", {2,{"water"}}, 3, 1, 0, 0}},
+		{{"Inventory", "", "workbench", {3,"SmeltingTools_EPOCH"}, 0, 1, 0, 0}}
 
 	};
 
@@ -1001,7 +1002,7 @@ class CfgCrafting
     class ItemCopperBar : Item
     {
         usedIn[] = {"ItemCables","ItemCopperBar10oz","EnergyPack"};
-        nearby[] = {{"Fire","","fire",{1,{"ALL"}},3,1,1,0}};
+        nearby[] = {{"Inventory", "", "workbench", {3,"SmeltingTools_EPOCH"}, 0, 1, 0, 0},{"Fire","","fire",{1,{"ALL"}},3,1,1,0}};
         recipe[] = {{"ItemCables",1},{"water_epoch",1}};
         previewPosition[] = {0.797144,1,0.27};
         previewScale = 1.3;
@@ -1010,7 +1011,7 @@ class CfgCrafting
 	class ItemCopperBar10oz : Item
     {
         usedIn[] = {};
-        nearby[] = {{"Fire","","fire",{1,{"ALL"}},3,1,1,0}};
+        nearby[] = {{"Inventory", "", "workbench", {3,"SmeltingTools_EPOCH"}, 0, 1, 0, 0},{"Fire","","fire",{1,{"ALL"}},3,1,1,0}};
         recipe[] = {{"ItemCopperBar",10},{"water_epoch",1}};
 		previewPosition[] = {0.797144,1,0.26};
 		previewScale = 0.7;
@@ -1019,7 +1020,7 @@ class CfgCrafting
     class ItemGoldBar : Item
     {
         usedIn[] = {"ItemGoldBar10oz","EnergyPackLg"};
-        nearby[] = {{"Fire","","fire",{1,{"ALL"}},3,1,1,0}};
+        nearby[] = {{"Inventory", "", "workbench", {3,"SmeltingTools_EPOCH"}, 0, 1, 0, 0},{"Fire","","fire",{1,{"ALL"}},3,1,1,0}};
         recipe[] = {{"PartOreGold",2},{"water_epoch",1}};
         previewPosition[] = {0.8,1,0.26};
         previewScale = 2.5;
@@ -1028,7 +1029,7 @@ class CfgCrafting
     class ItemSilverBar : Item
     {
         usedIn[] = {"ItemSilverBar10oz"};
-        nearby[] = {{"Fire","","fire",{1,{"ALL"}},3,1,1,0}};
+        nearby[] = {{"Inventory", "", "workbench", {3,"SmeltingTools_EPOCH"}, 0, 1, 0, 0},{"Fire","","fire",{1,{"ALL"}},3,1,1,0}};
         recipe[] = {{"PartOreSilver",2},{"water_epoch",1}};
         previewPosition[] = {0.8,1,0.26};
         previewScale = 2.5;
@@ -1037,7 +1038,7 @@ class CfgCrafting
     class ItemGoldBar10oz : Item
     {
         usedIn[] = {"ItemBriefcaseGold100oz"};
-        nearby[] = {{"Fire","","fire",{1,{"ALL"}},3,1,1,0}};
+        nearby[] = {{"Inventory", "", "workbench", {3,"SmeltingTools_EPOCH"}, 0, 1, 0, 0},{"Fire","","fire",{1,{"ALL"}},3,1,1,0}};
         recipe[] = {{"ItemGoldBar",10},{"water_epoch",1}};
         previewPosition[] = {0.801715,1,0.331674};
         previewScale = 1.5;
@@ -1046,7 +1047,7 @@ class CfgCrafting
 	class ItemSilverBar10oz : Item
     {
         usedIn[] = {"ItemBriefcaseSilver100oz"};
-        nearby[] = {{"Fire","","fire",{1,{"ALL"}},3,1,1,0}};
+        nearby[] = {{"Inventory", "", "workbench", {3,"SmeltingTools_EPOCH"}, 0, 1, 0, 0},{"Fire","","fire",{1,{"ALL"}},3,1,1,0}};
         recipe[] = {{"ItemSilverBar",10},{"water_epoch",1}};
         previewPosition[] = {0.801715,1,0.331674};
         previewScale = 1.5;
