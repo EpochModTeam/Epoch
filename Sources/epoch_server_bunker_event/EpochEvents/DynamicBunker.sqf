@@ -25,7 +25,7 @@ if (worldName == "VR") then {
 	_maxBunkerLimitSlots = 100;
 	_maxBunkerLimitPerRow = 10;
 
-	_rngChance = 0.3; // Lower this to spawn more positions
+	_rngChance = 0; // Lower this to spawn more positions
 	_scriptHiveKey = "EPOCH:DynamicBunker"; // change this to force a new seed to be generated.
 
 	_bunkerLocationsKey = format ["%1:%2", _instanceID, worldname];
@@ -87,6 +87,7 @@ if (worldName == "VR") then {
 			_location set [0,(_location select 0) + _size];
 			_rowCount = _rowCount + 1;
 			if (_rowCount >= _maxBunkerLimitPerRow) then {
+				_rngChance = 0.3;
 				_colCount = _colCount + 1;
 				_rowCount = 0;
 				_location set [0,_originalLocation select 0];
