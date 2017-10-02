@@ -278,15 +278,17 @@ missionNamespace setVariable ["EPOCH_taxRate", [_serverSettingsConfig, "taxRate"
 
 // pick random radioactive locations
 _radioactiveLocations = getArray(_epochConfig >> worldName >> "radioactiveLocations");
+_radioactiveLocationsTmp = [];
 if !(_radioactiveLocations isEqualTo []) then {
 	private _locations = nearestLocations[epoch_centerMarkerPosition, _radioactiveLocations, EPOCH_dynamicVehicleArea];
 	if !(_locations isEqualTo []) then {
+
 		for "_i" from 0 to (getNumber(_epochConfig >> worldName >> "radioactiveLocationsCount")) do
 		{
 			if (_locations isEqualTo []) exitWith {};
 			private _selectedLoc = selectRandom _locations;
 			_locations = _locations - [_selectedLoc];
-			_selectedLoc setVariable ["EPOCH_Rads", random 666, true];
+			_radioactiveLocationsTmp pushBack [_selectedLoc,random 666];
 			private _position = locationPosition _selectedLoc;
 			_marker = name _selectedLoc;
 			_marker = createMarker[_marker, _position];
@@ -297,6 +299,7 @@ if !(_radioactiveLocations isEqualTo []) then {
 		};
 	};
 };
+missionNamespace setVariable ["EPOCH_radioactiveLocations", _radioactiveLocationsTmp, true];
 
 // start accepting logins
 missionNamespace setVariable ["EPOCH_SERVER_READY", true, true];
