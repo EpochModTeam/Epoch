@@ -330,7 +330,22 @@ if !(EPOCH_ActiveTraderMission isequalto []) then {
 };
 
 // Update read only vars
-EPOCH_playerEnergy = missionNamespace getVariable [_playerEnergyKey, _playerEnergyDefault];
+if !(_playerTempKey isEqualTo "EPOCH_playerTemp") then {
+	EPOCH_playerTemp = missionNamespace getVariable [_playerTempKey, _playerTempDefault];
+	EPOCH_playerHunger = missionNamespace getVariable [_playerHungerKey, _playerHungerDefault];
+	EPOCH_playerThirst = missionNamespace getVariable [_playerThirstKey, _playerThirstDefault];
+	EPOCH_playerAliveTime = missionNamespace getVariable [_playerAliveTimeKey, _playerAliveTimeDefault];
+	EPOCH_playerEnergy = missionNamespace getVariable [_playerEnergyKey, _playerEnergyDefault];
+	EPOCH_playerWet = missionNamespace getVariable [_playerWetKey, _playerWetDefault];
+	EPOCH_playerSoiled = missionNamespace getVariable [_playerSoiledKey, _playerSoiledDefault];
+	EPOCH_playerImmunity = missionNamespace getVariable [_playerImmunityKey, _playerImmunityDefault];
+	EPOCH_playerToxicity = missionNamespace getVariable [_playerToxicityKey, _playerToxicityDefault];
+	EPOCH_playerStamina = missionNamespace getVariable [_playerStaminaKey, _playerStaminaDefault];
+	EPOCH_playerBloodP = missionNamespace getVariable [_playerBloodPKey, _playerBloodPDefault];
+	EPOCH_playerAlcohol = missionNamespace getVariable [_playerAlcoholKey, _playerAlcoholDefault];
+	EPOCH_playerRadiation = missionNamespace getVariable [_playerRadiationKey, _playerRadiationDefault];
+	EPOCH_playerNuisance = missionNamespace getVariable [_playerNuisanceKey, _playerNuisanceDefault];
+};
 
 // force update
 if (EPOCH_forceUpdateNow) then {
