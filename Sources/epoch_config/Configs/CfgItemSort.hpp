@@ -938,7 +938,9 @@ class CfgItemSort
 			"bluburger_epoch",
 			"redburger_epoch",
 			"gyro_wrap_epoch",
-			"icecream_epoch"		
+			"icecream_epoch",
+			"Hemp",
+			"Sunflower"
 		};
 
 		Drink[] = {
