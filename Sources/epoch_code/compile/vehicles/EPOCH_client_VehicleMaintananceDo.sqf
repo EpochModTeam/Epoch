@@ -115,14 +115,14 @@ switch _do do {
 if !(_repairarrays isequalto []) then {
 	player playMove 'AinvPknlMstpSnonWrflDnon_medic0';
 	player playMove 'AinvPknlMstpSnonWrflDnon_medicEnd';
+	_veh say3d 'vehicle_repair';
 	uisleep 5;
 	if (_secondlocalcheck && !local _veh) exitwith {
-		['Error - You must get into drivers seat first!',5] call Epoch_message;
+		['Vehicle owner Changed - Go in as driver and try again!',5] call Epoch_message;
 	};
 	if !(_returnmat isequalto "") then {
 		_returnmat call EPOCH_fnc_addItemOverflow;
 	};
-	_veh say3d 'vehicle_repair';
 	if (local _veh) then {
 		[_veh, _repairarrays] call EPOCH_client_repairVehicle;
 	} else {
