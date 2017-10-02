@@ -116,6 +116,10 @@ class CfgPricing
     {
         price = 10;
     };
+    class SmeltingTools_EPOCH
+    {
+        price = 75;
+    };
     class ItemBriefcaseE
     {
         price = 10;
@@ -1967,6 +1971,30 @@ class CfgPricing
     class ItemVitamins
     {
         price = 25;
+    };
+    class atropine_epoch
+    {
+        price = 20;
+    };
+    class krypto_candy_epoch
+    {
+        price = 50;
+    };
+    class bluburger_epoch
+    {
+        price = 35;
+    };
+    class redburger_epoch
+    {
+        price = 35;
+    };
+    class gyro_wrap_epoch
+    {
+        price = 40;
+    };
+    class icecream_epoch
+    {
+        price = 20;
     };
     class ItemSodaOrangeSherbet
     {
