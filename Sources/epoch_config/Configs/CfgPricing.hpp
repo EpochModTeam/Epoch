@@ -4655,6 +4655,222 @@ class CfgPricing
 	{
 		price = 350;
 	};
+    class 60Rnd_CMFlareMagazine
+    {
+        price = 30;
+    };
+    class 120Rnd_CMFlareMagazine
+    {
+        price = 60;
+    };
+    class 240Rnd_CMFlareMagazine
+    {
+        price = 120;
+    };
+    class 60Rnd_CMFlare_Chaff_Magazine
+    {
+        price = 30;
+    };
+    class 120Rnd_CMFlare_Chaff_Magazine
+    {
+        price = 60;
+    };
+    class 240Rnd_CMFlare_Chaff_Magazine
+    {
+        price = 120;
+    };
+    class 192Rnd_CMFlare_Chaff_Magazine
+    {
+        price = 96;
+    };
+    class 168Rnd_CMFlare_Chaff_Magazine
+    {
+        price = 84;
+    };
+    class 300Rnd_CMFlare_Chaff_Magazine
+    {
+        price = 150;
+    };
+    class SmokeLauncherMag
+    {
+        price = 50;
+    };
+    class SmokeLauncherMag_boat
+    {
+        price = 50;
+    };
+    class 200Rnd_65x39_Belt
+    {
+        price = 350;
+    };
+    class 200Rnd_65x39_Belt_Tracer_Red
+    {
+        price = 350;
+    };
+    class 200Rnd_65x39_Belt_Tracer_Green
+    {
+        price = 350;
+    };
+    class 200Rnd_65x39_Belt_Tracer_Yellow
+    {
+        price = 350;
+    };
+    class 1000Rnd_65x39_Belt
+    {
+        price = 650;
+    };
+    class 1000Rnd_65x39_Belt_Tracer_Red
+    {
+        price = 650;
+    };
+    class 1000Rnd_65x39_Belt_Green
+    {
+        price = 650;
+    };
+    class 1000Rnd_65x39_Belt_Tracer_Green
+    {
+        price = 650;
+    };
+    class 1000Rnd_65x39_Belt_Yellow
+    {
+        price = 650;
+    };
+    class 1000Rnd_65x39_Belt_Tracer_Yellow
+    {
+        price = 650;
+    };
+    class 2000Rnd_65x39_Belt
+    {
+        price = 1000;
+    };
+    class 2000Rnd_65x39_Belt_Tracer_Red
+    {
+        price = 1000;
+    };
+    class 2000Rnd_65x39_Belt_Green
+    {
+        price = 1000;
+    };
+    class 2000Rnd_65x39_Belt_Tracer_Green
+    {
+        price = 1000;
+    };
+    class 2000Rnd_65x39_Belt_Tracer_Green_Splash
+    {
+        price = 1000;
+    };
+    class 2000Rnd_65x39_Belt_Yellow
+    {
+        price = 1000;
+    };
+    class 2000Rnd_65x39_Belt_Tracer_Yellow
+    {
+        price = 1000;
+    };
+    class 2000Rnd_65x39_Belt_Tracer_Yellow_Splash
+    {
+        price = 1000;
+    };
+    class 8Rnd_82mm_Mo_shells
+    {
+        price = 350;
+    };
+    class 8Rnd_82mm_Mo_Flare_white
+    {
+        price = 350;
+    };
+    class 8Rnd_82mm_Mo_Smoke_white
+    {
+        price = 350;
+    };
+    class 8Rnd_82mm_Mo_guided
+    {
+        price = 350;
+    };
+    class 8Rnd_82mm_Mo_LG
+    {
+        price = 350;
+    };
+    class 24Rnd_PG_missiles
+    {
+        price = 4000;
+    };
+    class 12Rnd_PG_missiles
+    {
+        price = 2000;
+    };
+    class 24Rnd_missiles
+    {
+        price = 3500;
+    };
+    class 12Rnd_missiles
+    {
+        price = 1750;
+    };
+    class 60Rnd_40mm_GPR_shells
+    {
+        price = 500;
+    };
+    class 60Rnd_40mm_GPR_Tracer_Red_shells
+    {
+        price = 500;
+    };
+    class 60Rnd_40mm_GPR_Tracer_Green_shells
+    {
+        price = 500;
+    };
+    class 60Rnd_40mm_GPR_Tracer_Yellow_shells
+    {
+        price = 500;
+    };
+    class 40Rnd_40mm_APFSDS_shells
+    {
+        price = 350;
+    };
+    class 40Rnd_40mm_APFSDS_Tracer_Red_shells
+    {
+        price = 350;
+    };
+    class 40Rnd_40mm_APFSDS_Tracer_Green_shells
+    {
+        price = 350;
+    };
+    class 40Rnd_40mm_APFSDS_Tracer_Yellow_shells
+    {
+        price = 350;
+    };
+    class 140Rnd_30mm_MP_shells
+    {
+        price = 750;
+    };
+    class 140Rnd_30mm_MP_shells_Tracer_Red
+    {
+        price = 750;
+    };
+    class 140Rnd_30mm_MP_shells_Tracer_Green
+    {
+        price = 750;
+    };
+    class 140Rnd_30mm_MP_shells_Tracer_Yellow
+    {
+        price = 750;
+    };
+    class 60Rnd_30mm_APFSDS_shells
+    {
+        price = 450;
+    };
+    class 60Rnd_30mm_APFSDS_shells_Tracer_Red
+    {
+        price = 450;
+    };
+    class 60Rnd_30mm_APFSDS_shells_Tracer_Green
+    {
+        price = 450;
+    };
+    class 60Rnd_30mm_APFSDS_shells_Tracer_Yellow
+    {
+        price = 450;
+    };
     class U_JeansPatched1_uniform
     {
         price = 5;
