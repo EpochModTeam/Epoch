@@ -904,7 +904,7 @@ class CfgItemSort
 			"HeatPack",
 			"ColdPack",
 			"ItemVitamins",
-			"atropine_epoch";
+			"atropine_epoch"
 		};
 
 		Food[] = {
