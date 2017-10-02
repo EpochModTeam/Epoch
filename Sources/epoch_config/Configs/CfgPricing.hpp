@@ -1701,11 +1701,11 @@ class CfgPricing
     };
     class CUP_bipod_Harris_1A2_L
     {
-        price = 15;
+        price = 0;
     };
     class CUP_bipod_VLTOR_Modpod
     {
-        price = 15;
+        price = 0;
     };
     class CUP_Mxx_camo
     {
@@ -2720,35 +2720,35 @@ class CfgPricing
     };
     class bipod_01_F_snd
     {
-        price = 15;
+        price = 0;
     };
     class bipod_01_F_blk
     {
-        price = 15;
+        price = 0;
     };
     class bipod_01_F_mtp
     {
-        price = 15;
+        price = 0;
     };
     class bipod_02_F_blk
     {
-        price = 15;
+        price = 0;
     };
     class bipod_02_F_tan
     {
-        price = 15;
+        price = 0;
     };
     class bipod_02_F_hex
     {
-        price = 15;
+        price = 0;
     };
     class bipod_03_F_blk
     {
-        price = 15;
+        price = 0;
     };
     class bipod_03_F_oli
     {
-        price = 15;
+        price = 0;
     };
     class Elcan_epoch
     {
@@ -4720,7 +4720,7 @@ class CfgPricing
     class optic_Holosight_blk_F       { price = 5;  };
     class optic_Holosight_khk_F       { price = 5;  };
     class optic_Holosight_smg_blk_F   { price = 5;  };
-    class bipod_01_F_khk              { price = 2;  };
+    class bipod_01_F_khk              { price = 0;  };
     class 30Rnd_9x21_Mag_SMG_02						{ price = 3;};
     class 30Rnd_9x21_Mag_SMG_02_Tracer_Red          { price = 2;  };
     class 30Rnd_9x21_Mag_SMG_02_Tracer_Yellow       { price = 2;  };
