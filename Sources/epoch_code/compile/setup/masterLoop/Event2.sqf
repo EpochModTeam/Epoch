@@ -160,7 +160,7 @@ if (_warming) then {
 
 // wet/dry
 if (_wet) then {
-	_playerWet = ((_playerWet + _increaseWet) min _playerWetMax) max _playerWetMin;
+	_playerWet = [_playerWetKey,_increaseWet,_playerWetMax,_playerWetMin] call EPOCH_fnc_setVariableLimited;
 	if (_playerWet > 50) then {
 		_soiledLossRate = 1;
 		_playerSoiled = [_playerSoiledKey,-_soiledLossRate,_playerSoiledMax,_playerSoiledMin] call EPOCH_fnc_setVariableLimited;
