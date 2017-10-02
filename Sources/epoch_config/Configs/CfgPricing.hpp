@@ -4655,6 +4655,362 @@ class CfgPricing
 	{
 		price = 350;
 	};
+    class U_JeansPatched1_uniform
+    {
+        price = 5;
+    };
+    class U_JeansPatched2_uniform
+    {
+        price = 5;
+    };
+    class U_JeansPatched3_uniform
+    {
+        price = 5;
+    };
+    class U_JeansPatched4_uniform
+    {
+        price = 5;
+    };
+    class U_JeansPatched5_uniform
+    {
+        price = 5;
+    };
+    class U_JeansPatched6_uniform
+    {
+        price = 5;
+    };
+    class U_JeansPatched7_uniform
+    {
+        price = 5;
+    };
+    class U_JeansPatched8_uniform
+    {
+        price = 5;
+    };
+    class U_JeansPatched9_uniform
+    {
+        price = 5;
+    };
+    class U_JeansPatched10_uniform
+    {
+        price = 5;
+    };
+    class U_JeansPatched11_uniform
+    {
+        price = 5;
+    };
+    class U_JeansPatched12_uniform
+    {
+        price = 5;
+    };
+    class U_JeansPatched13_uniform
+    {
+        price = 5;
+    };
+    class U_JeansPatched14_uniform
+    {
+        price = 5;
+    };
+    class U_JeansPatched15_uniform
+    {
+        price = 5;
+    };
+    class U_JeansPatched16_uniform
+    {
+        price = 5;
+    };
+    class U_JeansPatched17_uniform
+    {
+        price = 5;
+    };
+    class U_JeansPatched18_uniform
+    {
+        price = 5;
+    };
+    class U_JeansPatched19_uniform
+    {
+        price = 5;
+    };
+    class U_JeansPatched20_uniform
+    {
+        price = 5;
+    };
+    class U_JeansPatched21_uniform
+    {
+        price = 5;
+    };
+    class U_JeansBlkBrn1_uniform
+    {
+        price = 5;
+    };
+    class U_JeansBlkBrn2_uniform
+    {
+        price = 5;
+    };
+    class U_JeansBlkBrn3_uniform
+    {
+        price = 5;
+    };
+    class U_JeansBlkBrn4_uniform
+    {
+        price = 5;
+    };
+    class U_JeansBlkBrn5_uniform
+    {
+        price = 5;
+    };
+    class U_JeansBlkBrn6_uniform
+    {
+        price = 5;
+    };
+    class U_JeansBlkBrn7_uniform
+    {
+        price = 5;
+    };
+    class U_JeansBlkBrn8_uniform
+    {
+        price = 5;
+    };
+    class U_JeansBlkBrn9_uniform
+    {
+        price = 5;
+    };
+    class U_JeansBlkBrn10_uniform
+    {
+        price = 5;
+    };
+    class U_JeansBlkBrn11_uniform
+    {
+        price = 5;
+    };
+    class U_JeansBlkBrn12_uniform
+    {
+        price = 5;
+    };
+    class U_JeansBlkBrn13_uniform
+    {
+        price = 5;
+    };
+    class U_JeansBlkBrn14_uniform
+    {
+        price = 5;
+    };
+    class U_JeansBlkBrn15_uniform
+    {
+        price = 5;
+    };
+    class U_JeansBlkBrn16_uniform
+    {
+        price = 5;
+    };
+    class U_JeansBlkBrn17_uniform
+    {
+        price = 5;
+    };
+    class U_JeansBlkBrn18_uniform
+    {
+        price = 5;
+    };
+    class U_JeansBlkBrn19_uniform
+    {
+        price = 5;
+    };
+    class U_JeansBlkBrn20_uniform
+    {
+        price = 5;
+    };
+    class U_JeansBlkBrn21_uniform
+    {
+        price = 5;
+    };
+    class U_JeansArBrn1_uniform
+    {
+        price = 5;
+    };
+    class U_JeansArBrn2_uniform
+    {
+        price = 5;
+    };
+    class U_JeansArBrn3_uniform
+    {
+        price = 5;
+    };
+    class U_JeansArBrn4_uniform
+    {
+        price = 5;
+    };
+    class U_JeansArBrn5_uniform
+    {
+        price = 5;
+    };
+    class U_JeansArBrn6_uniform
+    {
+        price = 5;
+    };
+    class U_JeansArBrn7_uniform
+    {
+        price = 5;
+    };
+    class U_JeansArBrn8_uniform
+    {
+        price = 5;
+    };
+    class U_JeansArBrn9_uniform
+    {
+        price = 5;
+    };
+    class U_JeansArBrn10_uniform
+    {
+        price = 5;
+    };
+    class U_JeansArBrn11_uniform
+    {
+        price = 5;
+    };
+    class U_JeansArBrn12_uniform
+    {
+        price = 5;
+    };
+    class U_JeansArBrn13_uniform
+    {
+        price = 5;
+    };
+    class U_JeansArBrn14_uniform
+    {
+        price = 5;
+    };
+    class U_JeansArBrn15_uniform
+    {
+        price = 5;
+    };
+    class U_JeansArBrn16_uniform
+    {
+        price = 5;
+    };
+    class U_JeansArBrn17_uniform
+    {
+        price = 5;
+    };
+    class U_JeansArBrn18_uniform
+    {
+        price = 5;
+    };
+    class U_JeansArBrn19_uniform
+    {
+        price = 5;
+    };
+    class U_JeansArBrn20_uniform
+    {
+        price = 5;
+    };
+    class U_JeansArBrn21_uniform
+    {
+        price = 5;
+    };
+    class U_JeansBlack1_uniform
+    {
+        price = 5;
+    };
+    class U_JeansBlack2_uniform
+    {
+        price = 5;
+    };
+    class U_JeansBlack3_uniform
+    {
+        price = 5;
+    };
+    class U_JeansBlack4_uniform
+    {
+        price = 5;
+    };
+    class U_JeansBlack5_uniform
+    {
+        price = 5;
+    };
+    class U_JeansBlack6_uniform
+    {
+        price = 5;
+    };
+    class U_JeansBlack7_uniform
+    {
+        price = 5;
+    };
+    class U_JeansBlack8_uniform
+    {
+        price = 5;
+    };
+    class U_JeansBlack9_uniform
+    {
+        price = 5;
+    };
+    class U_JeansBlack10_uniform
+    {
+        price = 5;
+    };
+    class U_JeansBlack11_uniform
+    {
+        price = 5;
+    };
+    class U_JeansBlack12_uniform
+    {
+        price = 5;
+    };
+    class U_JeansBlack13_uniform
+    {
+        price = 5;
+    };
+    class U_JeansBlack14_uniform
+    {
+        price = 5;
+    };
+    class U_JeansBlack15_uniform
+    {
+        price = 5;
+    };
+    class U_JeansBlack16_uniform
+    {
+        price = 5;
+    };
+    class U_JeansBlack17_uniform
+    {
+        price = 5;
+    };
+    class U_JeansBlack18_uniform
+    {
+        price = 5;
+    };
+    class U_JeansBlack19_uniform
+    {
+        price = 5;
+    };
+    class U_JeansBlack20_uniform
+    {
+        price = 5;
+    };
+    class U_JeansBlack21_uniform
+    {
+        price = 5;
+    };
+    class hockey_mask_epoch
+    {
+        price = 30;
+    };
+    class plague_mask_epoch
+    {
+        price = 30;
+    };
+    class ghostface_mask_epoch
+    {
+        price = 30;
+    };
+    class skull_mask_epoch
+    {
+        price = 30;
+    };
+    class witch_mask_epoch
+    {
+        price = 30;
+    };	
     ///////////////////////////////////////////////////////////////////////////////
     // Apex Items & Weapons
     ///////////////////////////////////////////////////////////////////////////////
