@@ -1840,6 +1840,10 @@ class CfgPricing
     {
         price = 5;
     };
+	class Kit_Garden
+	{
+		price = 24;
+	};
 	class Poppy
     {
         price = 50;

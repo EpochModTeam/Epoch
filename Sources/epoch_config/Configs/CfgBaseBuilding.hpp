@@ -235,7 +235,7 @@ class CfgBaseBuilding
         removeParts[] = {};
     };
     class MetalFloor_Ghost_EPOCH : MetalFloor_SIM_EPOCH {};
-	
+
 	class MetalTower_EPOCH : Default
     {
         removeParts[] = {{"ItemCorrugatedLg",3}};
@@ -257,7 +257,7 @@ class CfgBaseBuilding
     };
     class MetalTower_Ghost_EPOCH : MetalTower_SIM_EPOCH {};
 
-	
+
     class CinderWallGarage_EPOCH : Default
     {
         removeParts[] = {{"CinderBlocks",4},{"ItemCorrugatedLg",1},{"CircuitParts",1}};
@@ -269,6 +269,24 @@ class CfgBaseBuilding
         allowedSnapPoints[] = {"N","S","E","W"};
         energyCost = 0.5;
     };
+	// Kit_Garden
+	class Garden_EPOCH : Default
+    {
+        removeParts[] = {{"Kit_Garden",1}};
+        simulClass = "Garden_SIM_EPOCH";
+        staticClass = "Garden_EPOCH";
+        GhostPreview = "Garden_Ghost_EPOCH";
+        snapPointsPara[] = {"NF","SF","EF","WF","C","CB"};
+        snapPointsPerp[] = {"N","S","E","W","CinN","CinS","CinE","CinW"};
+        energyCost = 0.5;
+    };
+    class Garden_SIM_EPOCH : Default
+    {
+        allowedSnapPoints[] = {"NF","SF","EF","WF","C"};
+        allowedSnapObjects[] = {"Const_floors_static_F","Constructions_foundation_F"};
+        removeParts[] = {};
+    };
+    class Garden_Ghost_EPOCH : Garden_SIM_EPOCH {};
     class CinderFloor_EPOCH : Default
     {
         removeParts[] = {{"CinderBlocks",2},{"MortarBucket",2}};
@@ -336,7 +354,7 @@ class CfgBaseBuilding
         snapPointsPara[] = {"N","E","W"};
         allowedSnapPoints[] = {"N","S","E","W"};
     };
-    
+
 	class CinderTower_EPOCH : Default
     {
         removeParts[] = {{"CinderBlocks",2}};
@@ -356,7 +374,7 @@ class CfgBaseBuilding
         allowedSnapObjects[] = {"CinderTower_EPOCH","Const_floors_static_F","Constructions_foundation_F"};
     };
     class CinderTower_Ghost_EPOCH : CinderTower_SIM_EPOCH {};
-	
+
 	class WoodLargeWall_EPOCH : Default
     {
         upgradeBuilding[] = {{"WoodWall1_EPOCH",{{"ItemPlywoodPack",1}}},{"WoodLargeWallCor_EPOCH",{{"ItemCorrugated",1}}}};

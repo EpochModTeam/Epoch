@@ -22,7 +22,7 @@
 		{{"Water source", "", "water", {2,{"water"}}, 3, 1, 0, 0}}
 
 	};
-	
+
 	WARNING: DO NOT inherit from existing items, create each item as unique entry, only inherit defaults such as part or kit!
 */
 /*[[[cog from arma_config_tools import *; json_to_arma()]]]*/
@@ -909,7 +909,7 @@ class CfgCrafting
         previewScale = 0.05;
         previewVector = 0;
     };
-	
+
     class KitTiPi : Kit
     {
         recipe[] = {{"Pelt_EPOCH",4},{"PartPlankPack",2}};
@@ -963,6 +963,15 @@ class CfgCrafting
         previewPosition[] = {0.797638,1,0.341915};
         previewScale = 0.07;
         previewVector = 0;
+    };
+	class Kit_Garden : Kit
+    {
+        recipe[] = {{"ItemRock",4},{"water_epoch",4}}; // temp
+        nearby[] = {{"Workbench","","workbench",{1,{"WorkBench_EPOCH"}},3,1,0,1}};
+        model = "\x\addons\a3_epoch_community\models\Farming\epoch_Garden.p3d";
+		previewPosition[] = {0.800198,1,0.262418};
+		previewScale = 0.055;
+		previewVector = 3.6;
     };
     class KitPlotPole : Kit
     {
@@ -1192,7 +1201,7 @@ class CfgCrafting
         previewScale = 0.28;
         previewVector = -0.5;
 	};
-*/	
+*/
     class ItemVehDoc1 : Part
     {
         usedIn[] = {"KitVehicleUpgradeI_200_EPOCH"};
@@ -1200,7 +1209,7 @@ class CfgCrafting
 		previewScale = 1.2;
 		previewVector = 3.3;
     };
-	
+
     class ItemVehDoc2 : Part
     {
         usedIn[] = {"KitVehicleUpgradeII_200_EPOCH"};
