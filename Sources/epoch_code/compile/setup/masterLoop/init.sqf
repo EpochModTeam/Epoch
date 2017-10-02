@@ -195,9 +195,7 @@ _masterConfig = 'CfgBuildingLootPos' call EPOCH_returnConfig;
 
 _lootClasses = [];
 _lootClassesIgnore = ['Default'];
-'_cN = configName _x;if !(_cN in _lootClassesIgnore)then{_lootClasses pushBackUnique _cN}; true' configClasses _masterConfig;
-
-
+'_cN = configName _x;if !(_cN in _lootClassesIgnore)then{_lootClasses pushBackUnique (toLower _cN)}; true' configClasses _masterConfig;
 
 _lastPlayerPos = getPosATL player;
 _lootBubble = {
@@ -207,7 +205,7 @@ _lootBubble = {
 	if (_distanceTraveled > 10 && _distanceTraveled < 200) then {
 		_lootDist = 30 + _distanceTraveled;
 		_lootLoc = player getRelPos [_lootDist, (random [-180,0,180])];
-		_objects = nearestObjects[_lootLoc, _lootClasses, 30];
+		_objects = (_lootLoc nearObjects 30) select {((toLower (typeof _x)) in _lootClasses)};
 		_jammer = nearestObjects [_lootLoc, ["PlotPole_EPOCH","ProtectionZone_Invisible_F"], _buildingJammerRange];
 		if (!(_objects isEqualTo[]) && (_jammer isEqualTo[])) then {
 			_building = selectRandom _objects;
