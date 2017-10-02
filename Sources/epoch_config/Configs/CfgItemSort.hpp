@@ -778,6 +778,7 @@ class CfgItemSort
 			"ItemSodaAlpineDude"
 		};
 		Basebuilding[] = {
+			"Kit_Garden",
 			"KitTentA",
 			"KitTentDome",
 			"CircuitParts",
