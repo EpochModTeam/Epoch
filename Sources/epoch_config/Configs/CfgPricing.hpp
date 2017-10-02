@@ -1840,42 +1840,50 @@ class CfgPricing
     {
         price = 5;
     };
-	class Kit_Garden
-	{
-		price = 24;
-	};
-	class Poppy
+    class Kit_Garden
+    {
+        price = 24;
+    };
+    class Poppy
     {
         price = 50;
     };
-	class Goldenseal
-	{
+    class Goldenseal
+    {
         price = 25;
     };
-	class Pumpkin
-	{
-		price = 5;
-	};
-	class SeedPacket_GoldenSeal
-	{
-		price = 5;
-	};
-	class SeedPacket_Hemp
-	{
-		price = 5;
-	};
-	class SeedPacket_Poppy
-	{
-		price = 5;
-	};
-	class SeedPacket_Pumpkin
-	{
-		price = 5;
-	};
-	class SeedPacket_Sunflower
-	{
-		price = 5;
-	};
+    class Pumpkin
+    {
+        price = 5;
+    };
+    class Hemp
+    {
+        price = 25;
+    };
+    class Sunflower
+    {
+        price = 20;
+    };
+    class SeedPacket_GoldenSeal
+    {
+        price = 5;
+    };
+    class SeedPacket_Hemp
+    {
+        price = 5;
+    };
+    class SeedPacket_Poppy
+    {
+        price = 5;
+    };
+    class SeedPacket_Pumpkin
+    {
+        price = 5;
+    };
+    class SeedPacket_Sunflower
+    {
+        price = 5;
+    };
     class sardines_epoch
     {
         price = 2;
