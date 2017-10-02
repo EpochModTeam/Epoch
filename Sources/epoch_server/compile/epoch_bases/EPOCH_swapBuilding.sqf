@@ -19,8 +19,9 @@ if (!isNull _object && !(_class isEqualTo "")) then {
 
         switch (_method) do {
             case 0: {
-                _newObj setPosWorld _objectPos;
-                _newObj setVectorDirAndUp [vectordir _object, vectorup _object];
+                _newObj setposATL (getPosATL _object);
+				_newObj setDir (getDir _object);
+				_newObj setVectorDirAndUp [vectorDir _object, vectorUP _object];
             };
             case 1: {
                 _newObj attachTo [_object,[0,0,0]];
@@ -38,7 +39,7 @@ if (!isNull _object && !(_class isEqualTo "")) then {
         // force nearby players to reveal new object faster
         _playersNear = _newObj nearEntities[["Epoch_Male_F", "Epoch_Female_F"], 300];
         {
-            [_x, _newObj] remoteExec ['reveal',_x];
+            [_newObj, {player reveal _this}] remoteExec ["call", _x];
         }forEach _playersNear;
 
     };

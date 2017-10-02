@@ -287,9 +287,8 @@ if (_class != "") then {
 								if (surfaceIsWater _snapPosition) then {
 									_snapPosition = ASLtoATL _snapPosition;
 								};
-
-								_currentTarget setposATL _snapPosition;
 								_currentTarget setVectorDirAndUp[_dir2, (vectorUp _nearestObject)];
+								_currentTarget setposATL _snapPosition;
 
 								// Vector + Snapping
 								if(!(_vectorUp select 0 == 0) || !(_vectorUp select 1 == 0) || !(_vectorUp select 2 == 1)) then{
