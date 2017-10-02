@@ -62,4 +62,9 @@ class CfgActionMenu
 	{
 		#include "CfgActionMenu_target.hpp"
 	};
+	
+	class map
+	{
+		#include "CfgActionMenu_map.hpp"
+	};
 };

@@ -33,14 +33,18 @@ _hasTarget = !(dyna_cursorTarget isEqualTo objNull);
 if (isNull _display && dialog) exitWith {false call Epoch_dynamicMenuCleanup; false};
 
 if (isNull _display) then {
-	if (_hasTarget) then {
-		createDialog "rmx_dynamenu";
+	if!(visibleMap)then{
+		if (_hasTarget) then {
+			createDialog "rmx_dynamenu";
+		} else {
+			findDisplay 46 createDisplay "rmx_dynamenu";
+		}
 	} else {
-		findDisplay 46 createDisplay "rmx_dynamenu";
+		findDisplay 12 createDisplay "rmx_dynamenu";
 	};
 };
 
-_selfOrTarget = if !(_hasTarget) then {"self"} else {"target"};
+_selfOrTarget = if!(visibleMap)then{ if !(_hasTarget) then {"self"} else {"target"} } else {"map"};
 _checkConfigs = {
 
 	_config = switch (_in) do {
@@ -100,7 +104,7 @@ _checkConfigs = {
 			{
 				if (call compile (getText(_x >> "condition"))) then {
 
-					if (_selfOrTarget isEqualTo "self" || dyna_distance) then {
+					if (_selfOrTarget in ["self","map"] || dyna_distance) then {
 
 						_subclasses = configProperties [_x, "isClass _x",true];
 
@@ -145,7 +149,7 @@ _checkConfigs = {
 };
 
 call _checkConfigs;
-if (_buttonSettings isEqualTo []) then {_selfOrTarget = "self"; call _checkConfigs;};
+if (_buttonSettings isEqualTo []) then {_selfOrTarget = if!(visibleMap)then{"self"}else{"map"}; call _checkConfigs;};
 
 _entries = count _buttonSettings;
 if !(_entries <= 0) then {
