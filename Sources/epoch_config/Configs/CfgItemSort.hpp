@@ -595,6 +595,9 @@ class CfgItemSort
 			"9rnd_45X88_magazine",
 			"6Rnd_GreenSignal_F",
 			"6Rnd_RedSignal_F",
+			"6Rnd_BlueSignal_F",
+			"6Rnd_PurpleSignal_F",
+			"6Rnd_OrangeSignal_F",
 
 			// light Mags
 			"30Rnd_65x39_caseless_green",
@@ -689,7 +692,82 @@ class CfgItemSort
 			"3Rnd_SmokeYellow_Grenade_shell",
 			"3Rnd_SmokePurple_Grenade_shell",
 			"3Rnd_SmokeBlue_Grenade_shell",
-			"3Rnd_SmokeOrange_Grenade_shell"
+			"3Rnd_SmokeOrange_Grenade_shell",
+			
+			// Vehicle Mags
+			"500Rnd_127x99_mag",
+			"500Rnd_127x99_mag_Tracer_Red",
+			"500Rnd_127x99_mag_Tracer_Green",
+			"500Rnd_127x99_mag_Tracer_Yellow",
+			"200Rnd_127x99_mag",
+			"200Rnd_127x99_mag_Tracer_Red",
+			"200Rnd_127x99_mag_Tracer_Green",
+			"200Rnd_127x99_mag_Tracer_Yellow",
+			"100Rnd_127x99_mag",
+			"100Rnd_127x99_mag_Tracer_Red",
+			"100Rnd_127x99_mag_Tracer_Green",
+			"100Rnd_127x99_mag_Tracer_Yellow",
+			"2000Rnd_762x51_Belt",
+			"200Rnd_40mm_G_belt",
+			"32Rnd_40mm_G_belt",
+			"64Rnd_40mm_G_belt",
+			"96Rnd_40mm_G_belt",
+			"200Rnd_20mm_G_belt",
+			"40Rnd_20mm_G_belt",
+			"60Rnd_CMFlareMagazine",
+			"120Rnd_CMFlareMagazine",
+			"240Rnd_CMFlareMagazine",
+			"60Rnd_CMFlare_Chaff_Magazine",
+			"120Rnd_CMFlare_Chaff_Magazine",
+			"240Rnd_CMFlare_Chaff_Magazine",
+			"192Rnd_CMFlare_Chaff_Magazine",
+			"168Rnd_CMFlare_Chaff_Magazine",
+			"300Rnd_CMFlare_Chaff_Magazine",
+			"SmokeLauncherMag",
+			"SmokeLauncherMag_boat",
+			"200Rnd_65x39_Belt",
+			"200Rnd_65x39_Belt_Tracer_Red",
+			"200Rnd_65x39_Belt_Tracer_Green",
+			"200Rnd_65x39_Belt_Tracer_Yellow",
+			"1000Rnd_65x39_Belt",
+			"1000Rnd_65x39_Belt_Tracer_Red",
+			"1000Rnd_65x39_Belt_Green",
+			"1000Rnd_65x39_Belt_Tracer_Green",
+			"1000Rnd_65x39_Belt_Yellow",
+			"1000Rnd_65x39_Belt_Tracer_Yellow",
+			"2000Rnd_65x39_Belt",
+			"2000Rnd_65x39_Belt_Tracer_Red",
+			"2000Rnd_65x39_Belt_Green",
+			"2000Rnd_65x39_Belt_Tracer_Green",
+			"2000Rnd_65x39_Belt_Tracer_Green_Splash",
+			"2000Rnd_65x39_Belt_Yellow",
+			"2000Rnd_65x39_Belt_Tracer_Yellow",
+			"2000Rnd_65x39_Belt_Tracer_Yellow_Splash",
+			"8Rnd_82mm_Mo_shells",
+			"8Rnd_82mm_Mo_Flare_white",
+			"8Rnd_82mm_Mo_Smoke_white",
+			"8Rnd_82mm_Mo_guided",
+			"8Rnd_82mm_Mo_LG",
+			"24Rnd_PG_missiles",
+			"12Rnd_PG_missiles",
+			"24Rnd_missiles",
+			"12Rnd_missiles",
+			"60Rnd_40mm_GPR_shells",
+			"60Rnd_40mm_GPR_Tracer_Red_shells",
+			"60Rnd_40mm_GPR_Tracer_Green_shells",
+			"60Rnd_40mm_GPR_Tracer_Yellow_shells",
+			"40Rnd_40mm_APFSDS_shells",
+			"40Rnd_40mm_APFSDS_Tracer_Red_shells",
+			"40Rnd_40mm_APFSDS_Tracer_Green_shells",
+			"40Rnd_40mm_APFSDS_Tracer_Yellow_shells",
+			"140Rnd_30mm_MP_shells",
+			"140Rnd_30mm_MP_shells_Tracer_Red",
+			"140Rnd_30mm_MP_shells_Tracer_Green",
+			"140Rnd_30mm_MP_shells_Tracer_Yellow",
+			"60Rnd_30mm_APFSDS_shells",
+			"60Rnd_30mm_APFSDS_shells_Tracer_Red",
+			"60Rnd_30mm_APFSDS_shells_Tracer_Green",
+			"60Rnd_30mm_APFSDS_shells_Tracer_Yellow"
 		};
 
 		Attachments[] = {
@@ -825,7 +903,8 @@ class CfgItemSort
 			"Towelette",
 			"HeatPack",
 			"ColdPack",
-			"ItemVitamins"
+			"ItemVitamins",
+			"atropine_epoch";
 		};
 
 		Food[] = {
@@ -854,7 +933,12 @@ class CfgItemSort
 			"GoatCarcass_EPOCH",
 			"RabbitCarcass_EPOCH",
 			"SheepCarcass_EPOCH",
-			"SnakeCarcass_EPOCH"
+			"SnakeCarcass_EPOCH",
+			"krypto_candy_epoch",
+			"bluburger_epoch",
+			"redburger_epoch",
+			"gyro_wrap_epoch",
+			"icecream_epoch"		
 		};
 
 		Drink[] = {
@@ -904,7 +988,8 @@ class CfgItemSort
 			"ItemPlywoodPack",
 			"ItemComboLock",
 			"ItemPipe",
-			"ItemBulb"
+			"ItemBulb",
+			"SmeltingTools_EPOCH"
 		};
 
 		Items[] = {
