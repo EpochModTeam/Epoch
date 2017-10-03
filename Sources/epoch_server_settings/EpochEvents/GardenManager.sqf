@@ -15,6 +15,11 @@ _teenClasses = ["SaplingTeen_GoldenSeal","SaplingTeen_Hemp","SaplingTeen_Poppy",
 _matureClasses = ["GoldenSeal","Hemp","Poppy","Pumpkin","Sunflower"];
 _spoil = false;
 
+// init var if not set
+if (isNil "EPOCH_activeGardens") then {EPOCH_activeGardens = []};
+// remove any null objects
+EPOCH_activeGardens = EPOCH_activeGardens - [objNull];
+
 _modifiedGardens = [];
 {
 	_garden = _x;
@@ -61,7 +66,7 @@ _modifiedGardens = [];
 		_modifiedGardens pushBack _garden;
 	};
 
-} forEach (missionNamespace getVariable ["EPOCH_activeGardens", []]);
+} forEach EPOCH_activeGardens;
 
 // force all modified gardens to save via queue
 if !(_modifiedGardens isEqualTo []) then {
