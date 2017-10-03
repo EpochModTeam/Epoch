@@ -2,7 +2,6 @@
 
 class CfgItemSort
 {
-
 	class MainCategories
 	{
 		classes[] = {
@@ -103,7 +102,7 @@ class CfgItemSort
 			"U_JeansBlack19_uniform",
 			"U_JeansBlack20_uniform",
 			"U_JeansBlack21_uniform",
-			
+
 			"U_O_CombatUniform_ocamo",
 			"U_O_GhillieSuit",
 			"U_O_PilotCoveralls",
@@ -693,7 +692,7 @@ class CfgItemSort
 			"3Rnd_SmokePurple_Grenade_shell",
 			"3Rnd_SmokeBlue_Grenade_shell",
 			"3Rnd_SmokeOrange_Grenade_shell",
-			
+
 			// Vehicle Mags
 			"500Rnd_127x99_mag",
 			"500Rnd_127x99_mag_Tracer_Red",
