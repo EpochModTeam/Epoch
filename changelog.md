@@ -10,6 +10,7 @@ All changes for [Arma 3](https://arma3.com/) [Epoch Mod](https://epochmod.com) a
 - Vector Base Building (uses Arrow keys by default and with SHIFT / ALT you can control the steps). @DirtySanchez & @Ignatz-Heman
 - New Base Building Objects: Quarter and Half wood floors @DirtySanchez, Cinder block floor, Cinder wall with a window. Metal and Cinder Towers @Helion4.
 - A-frame and Dome tents as insecure storage objects. @morgoth0, @DirtySanchez, @Helion4
+- Farming system - craft-able garden plot allows you to grow seeds into mature plants. Models by @Helion4, configs by @DirtySanchez
 - Medical items: Adrenaline Shot (adrenaline_epoch), Caffeine Pills (caffeinepills_epoch). Orlistat Pills (orlistat_epoch) by @Helion4 and configs by @DirtySanchez
 - Food items: ItemCereals, ItemPowderMilk_F, ItemRiceBox, ItemVitamins. @DirtySanchez
 - 84 new Female outfits based on 20 top designs and 4 new pairs of jeans(Blue Patched, Arid Brown, Black/Brown, Black). @DirtySanchez, @ComatoseBadger
