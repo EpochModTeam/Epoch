@@ -38,9 +38,7 @@ if (!isNull _object && !(_class isEqualTo "")) then {
 
         // force nearby players to reveal new object faster
         _playersNear = _newObj nearEntities[["Epoch_Male_F", "Epoch_Female_F"], 300];
-        {
-            [_newObj, {player reveal _this}] remoteExec ["call", _x];
-        }forEach _playersNear;
+        [_newObj, {player reveal _this}] remoteExec ["call", _playersNear];
 
     };
 };
