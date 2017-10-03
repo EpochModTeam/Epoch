@@ -57,7 +57,9 @@ class CfgClientFunctions
 			class countdown {};
 			class fnc_SelectTargetBuild {};
 			class isBuildAllowed {};
-			class simulSwap {};
+			class simulSwap {
+				customHeader = 1;
+			};
 			class staticMove {
 				customHeader = 1;
 			};

@@ -26,12 +26,14 @@
 	BOOL
 */
 //[[[cog import generate_private_arrays ]]]
-private ["_adj","_currentPos","_handled","_playerStaminaKeyFinal","_step"];
+private ["_adj","_currentPos","_handled","_playerEnergy","_playerEnergyKeyFinal","_playerStaminaKeyFinal","_step"];
 //[[[end]]]
 params ["_display","_dikCode","_shift","_ctrl","_alt"];
 
 _playerStaminaKeyFinal = "EPOCH_playerStamina";
+_playerEnergyKeyFinal = "EPOCH_playerEnergy";
 if !(isNil "_playerStaminaKey") then {_playerStaminaKeyFinal = _playerStaminaKey};
+if !(isNil "_playerEnergyKey") then {_playerEnergyKeyFinal = _playerEnergyKey};
 
 _handled = false;
 
@@ -253,7 +255,8 @@ if (_dikCode in (actionKeys "TacticalView")) then {
 	_handled = true;
 };
 if (_dikCode in (actionKeys "NightVision")) then {
-	if (EPOCH_playerEnergy == 0) then {
+	_playerEnergy = missionNamespace getVariable [_playerEnergyKeyFinal,[]];
+	if (_playerEnergy == 0) then {
 		["Night Vision Goggles: Need Energy", 5] call Epoch_message;
 		_handled = true;
 	};

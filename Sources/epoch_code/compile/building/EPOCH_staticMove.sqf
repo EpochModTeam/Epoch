@@ -23,7 +23,7 @@
 	NOTHING
 */
 //[[[cog import generate_private_arrays ]]]
-private ["_AnchorPos","_EPOCH_1","_EPOCH_2","_MoveObject","_Snapdirection","_allowedSnapObjects","_allowedSnapPoints","_arr_snapPoints","_baselineSnapPos","_cfgBaseBuilding","_class","_currentOffSet","_currentPos","_currentTarget","_currentTargetAttachedTo","_dir2","_direction","_distance","_energyCost","_helper","_ins","_isSnap","_lastCheckTime","_maxHeight","_maxSnapDistance","_nearestObject","_nearestObjects","_newDirAndUp","_numberOfContacts","_objSlot","_objType","_offSet","_offsetZPos","_pOffset","_pos1_snap","_pos2","_pos2ATL","_pos2_snap","_pos_snapObj","_rejectMove","_simulClass","_snapChecks","_snapConfig","_snapDistance","_snapPointsPara","_snapPointsPerp","_snapPos","_snapPos1","_snapPosition","_snapType","_snapped","_stabilityCheck","_worldspace","_snapMemoryPoint","_vectorDir","_vectorUp","_tempClass","_newDir"];
+private ["_AnchorPos","_EPOCH_1","_EPOCH_2","_MoveObject","_Snapdirection","_allowedSnapObjects","_allowedSnapPoints","_arr_snapPoints","_baselineSnapPos","_cfgBaseBuilding","_class","_currentOffSet","_currentPos","_currentTarget","_currentTargetAttachedTo","_dir2","_direction","_distance","_energyCost","_helper","_ins","_isSnap","_lastCheckTime","_maxHeight","_maxSnapDistance","_nearestObject","_nearestObjects","_newDir","_newDirAndUp","_numberOfContacts","_objSlot","_objType","_offSet","_offsetZPos","_pOffset","_playerEnergy","_playerEnergyKeyFinal","_pos1_snap","_pos2","_pos2ATL","_pos2_snap","_pos_snapObj","_rejectMove","_simulClass","_snapChecks","_snapConfig","_snapDistance","_snapMemoryPoint","_snapPointsPara","_snapPointsPerp","_snapPos","_snapPos1","_snapPosition","_snapType","_snapped","_stabilityCheck","_tempClass","_tiltFB","_tiltLR","_vectorDir","_vectorUp","_worldspace"];
 //[[[end]]]
 if !(isNil "EPOCH_simulSwap_Lock") exitWith{};
 
@@ -37,7 +37,11 @@ if (isNull _object) exitWith{ EPOCH_target = objNull; };
 // exit if item is not given
 if (_item == "") exitWith{ EPOCH_target = objNull; };
 
-if (EPOCH_playerEnergy <= 0) exitWith{
+_playerEnergyKeyFinal = "EPOCH_playerEnergy";
+if !(isNil "_playerEnergyKey") then {_playerEnergyKeyFinal = _playerEnergyKey};
+_playerEnergy = missionNamespace getVariable [_playerEnergyKeyFinal,[]];
+
+if (_playerEnergy <= 0) exitWith{
 	["Need Energy", 5] call Epoch_message;
 };
 
@@ -172,7 +176,7 @@ if (_class != "") then {
 			_EPOCH_1 = diag_tickTime;
 			if !(isNull EPOCH_target) then {
 				_nearestObjects = nearestObjects[EPOCH_target, _allowedSnapObjects, 12];
-				["EPOCH_playerEnergy", -_energyCost, 5000 , 0] call EPOCH_fnc_setVariableLimited;
+				[_playerEnergyKeyFinal, -_energyCost, 2500 , 0] call EPOCH_fnc_setVariableLimited;
 			};
 		};
 		if !(_currentTargetAttachedTo isequalto EPOCH_target_attachedTo) then {
