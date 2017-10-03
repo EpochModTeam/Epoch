@@ -206,6 +206,7 @@ _lootBubble = {
 		_lootDist = 30 + _distanceTraveled;
 		_lootLoc = player getRelPos [_lootDist, (random [-180,0,180])];
 		_objects = (_lootLoc nearObjects 30) select {((toLower (typeof _x)) in _lootClasses)};
+		diag_log format["DEBUG: loot objects %1",_objects];
 		_jammer = nearestObjects [_lootLoc, ["PlotPole_EPOCH","ProtectionZone_Invisible_F"], _buildingJammerRange];
 		if (!(_objects isEqualTo[]) && (_jammer isEqualTo[])) then {
 			_building = selectRandom _objects;
