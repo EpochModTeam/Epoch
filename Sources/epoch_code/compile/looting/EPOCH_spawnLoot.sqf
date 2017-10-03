@@ -37,7 +37,7 @@ if (_selectedConfig isEqualTo "") then {
 	};
 };
 
-diag_log format["DEBUG: _selectedConfig %1",_selectedConfig];
+//diag_log format["DEBUG: _selectedConfig %1",_selectedConfig];
 
 _masterConfig = 'CfgBuildingLootPos' call EPOCH_returnConfig;
 _config = _masterConfig >> _selectedConfig;
