@@ -24,7 +24,7 @@
 	BOOL
 */
 //[[[cog import generate_private_arrays ]]]
-private ["_cfgBaseBuilding","_class","_color","_colors","_config","_delete","_dir","_item","_lootBias","_lootLimit","_lootType","_loots","_masterConfig","_pos","_posName","_positions","_possibleCount","_possibleLoots","_randomIndex","_return","_selectedLoot"];
+private ["_cfgBaseBuilding","_class","_color","_colors","_config","_delete","_dir","_item","_lootBias","_lootLimit","_lootType","_loots","_masterConfig","_pos","_posName","_positions","_possibleCount","_possibleLoots","_randomIndex","_return","_selectedConfig","_selectedLoot"];
 //[[[end]]]
 params [["_building",objNull,[objNull]], ["_lootCheckBufferLimit",333], ["_lootObjectLimit",33]];
 

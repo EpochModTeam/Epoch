@@ -49,7 +49,7 @@ All changes for [Arma 3](https://arma3.com/) [Epoch Mod](https://epochmod.com) a
 - Bump to hive version 0.6.0.0, Note: this requires epochserver hive extension updates server side.
 - Gas Station Auto-Refuel is now disabled on all maps. Use disableAutoRefuel = false; via epochconfig.hpp to disable. @SMVampire
 ### Fixed
-- Player stats variables are not obfuscated, and hitpoints tracked via server.
+- Player stats variables are now obfuscated, and hitpoints tracked via the server.
 - Bad conversion: bool RPT spam caused by incorrect usage of configClasses. @DirtySanchez
 - Snapping issues base building @DirtySanchez
 - Sounds not working due to changes to 3dSay command in recent A3 updates. @DirtySanchez
