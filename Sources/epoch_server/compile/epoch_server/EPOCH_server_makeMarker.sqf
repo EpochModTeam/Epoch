@@ -37,9 +37,10 @@ switch _trgtType do {
 
 	case 1: {
 		if!(isNull _trgtObj)then{
-			{
-			[_x,_mPos,_mShape,_mType,_mColor,_mSize,_mBrush,_mDir,_mText,_mAlpha,_mrkrName] remoteExec ['EPOCH_makeMarker',_x];
-			}foreach (units group _trgtObj);
+			private _targets = (units group _trgtObj);
+			if !(_targets isEqualTo []) then {
+				[nil,_mPos,_mShape,_mType,_mColor,_mSize,_mBrush,_mDir,_mText,_mAlpha,_mrkrName] remoteExec ['EPOCH_makeMarker',_targets];
+			};
 		};
 	};
 
@@ -57,10 +58,8 @@ switch _trgtType do {
 	};
 
 	case 3: {
-		if(isArray _trgtObj && count _trgtObj > 0)then{
-			{
-			[_x,_mPos,_mShape,_mType,_mColor,_mSize,_mBrush,_mDir,_mText,_mAlpha,_mrkrName] remoteExec ['EPOCH_makeMarker',_x];
-			}foreach _trgtObj;
+		if(_trgtObj isEqualType [] && {!(_trgtObj isEqualTo [])})then{
+			[nil,_mPos,_mShape,_mType,_mColor,_mSize,_mBrush,_mDir,_mText,_mAlpha,_mrkrName] remoteExec ['EPOCH_makeMarker',_trgtObj];
 		};
 	};
 

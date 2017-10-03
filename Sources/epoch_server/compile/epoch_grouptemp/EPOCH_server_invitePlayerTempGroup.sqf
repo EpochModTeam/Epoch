@@ -14,7 +14,7 @@
 */
 params ["_playerUID","_var1","_var2","_player",["_token","",[""]]];
 if !([_player, _token] call EPOCH_server_getPToken) exitWith{};
-
-{
-	[_var1, _var2] remoteExec ['EPOCH_tempGroup_invitePlayer',_x];
-} forEach (allPlayers select {getPlayerUID _x == _playerUID});
+private _targets = allPlayers select {getPlayerUID _x == _playerUID};
+if !(_targets isEqualTo []) then {
+	[_var1, _var2] remoteExec ['EPOCH_tempGroup_invitePlayer',_targets];
+};

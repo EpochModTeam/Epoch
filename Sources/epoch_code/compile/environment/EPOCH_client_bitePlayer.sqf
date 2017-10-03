@@ -36,11 +36,12 @@ if (isNull objectParent _target) then {
 	} else {
 		// send attack to other player
 		if (isPlayer _target) then {
-			[_unit,_target] remoteExec ["EPOCH_client_bitePlayer", _target];
+			[_unit] remoteExec ["EPOCH_client_bitePlayer", _target];
 		};
 	};
 } else {
 	// target is inside a vehicle, target entire vehicle crew
+	private _targets = [];
 	{
 		if (_x isEqualTo player) then {
 			// handle attack for local player if inside vehicle
@@ -49,10 +50,13 @@ if (isNull objectParent _target) then {
 		} else {
 			// send attack to other players
 			if (isPlayer _x) then {
-				[_unit,_x] remoteExec ["EPOCH_client_bitePlayer", _x];
+				_targets pushBack _x;
 			};
 		};
 	} forEach (crew _target);
+	if !(_targets isEqualTo []) then {
+		[_unit] remoteExec ["EPOCH_client_bitePlayer", _targets];
+	};
 };
 
 if (_doAttack) then {
