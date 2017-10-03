@@ -24,6 +24,7 @@ _ExceptedBaseObjects = [_serverSettingsConfig, "ExceptedBaseObjects", []] call E
 
 _diag = diag_tickTime;
 EPOCH_StorageSlots = [];
+EPOCH_activeGardens = [];
 for "_i" from 1 to _maxStorageLimit do {
 	_storageSlotIndex = EPOCH_StorageSlots pushBack str(_i);
 	_vehHiveKey = format ["%1:%2", (call EPOCH_fn_InstanceID), _i];
@@ -73,6 +74,11 @@ for "_i" from 1 to _maxStorageLimit do {
 			};
 
 			_vehicle = createVehicle[_class, [0,0,0], [], 0, "CAN_COLLIDE"];
+
+			// find gardens
+			if (_class isEqualTo "Garden_EPOCH") then {
+				EPOCH_activeGardens pushBack _vehicle;
+			};
 
 			if (_UseIndestructible) then {
 				if ({_vehicle iskindof _x} count _ExceptedBaseObjects == 0) then {

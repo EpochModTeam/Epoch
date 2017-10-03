@@ -46,6 +46,11 @@ if (isText _staticClassConfig) then {
 
 			_storageObj = [_staticClass,_vehicle] call EPOCH_swapBuilding;
 
+			// add new gardens to manager
+			if (_staticClass isEqualTo "Garden_EPOCH") then {
+				EPOCH_activeGardens pushBackUnique _storageObj;
+			};
+
 			if (_UseIndestructible) then {
 				if ({_storageObj iskindof _x} count _ExceptedBaseObjects == 0) then {
 					{
