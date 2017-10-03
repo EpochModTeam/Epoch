@@ -4768,6 +4768,7 @@ class CfgBuildingLootPos
 	        { {-5.7334,5.8186,0.188561}, 355.754 }
 	    };
 	};
+	class 4_way_bunker_p3d : bunker_epoch {};
 };
 
 /*[[[end]]]*/

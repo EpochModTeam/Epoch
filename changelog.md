@@ -9,6 +9,7 @@ All changes for [Arma 3](https://arma3.com/) [Epoch Mod](https://epochmod.com) a
 - Vehicle Upgrade System - Upgrade your ride by using one of the new vehicle upgrade documents found in the world. @DirtySanchez
 - Vector Base Building (uses Arrow keys by default and with SHIFT / ALT you can control the steps). @DirtySanchez & @Ignatz-Heman
 - New Base Building Objects: Quarter and Half wood floors @DirtySanchez, Cinder block floor, Cinder wall with a window. Metal and Cinder Towers @Helion4.
+- Added the following new buildables (bringing most buildables from A2/Epoch to A3 using standard ARMA models): Burn Barrel, Light Pole, Small (forest and desert) Camo Nets, Large (forest and desert) Camo Nets, Camp Fire, Field Toilet, Scaffolding, Sink (water source), Single and Double Portable Lights, Lifeguard Tower, Sun Shade, Fuel Pump, Small Sandbag Bunker, Short Sandbag Wall, Long Sandbag Wall, Bar Gate and Water Pump, @morgoth0 (Grahame) and @DirtySanchez
 - A-frame and Dome tents as insecure storage objects. @morgoth0, @DirtySanchez, @Helion4
 - Farming system - craft-able garden plot allows you to grow seeds into mature plants. Models by @Helion4, configs by @DirtySanchez
 - Medical items: Adrenaline Shot (adrenaline_epoch), Caffeine Pills (caffeinepills_epoch). Orlistat Pills (orlistat_epoch) by @Helion4 and configs by @DirtySanchez

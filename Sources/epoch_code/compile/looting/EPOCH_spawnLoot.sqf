@@ -28,8 +28,17 @@ private ["_cfgBaseBuilding","_class","_color","_colors","_config","_delete","_di
 //[[[end]]]
 params [["_building",objNull,[objNull]], ["_lootCheckBufferLimit",333], ["_lootObjectLimit",33]];
 
+_selectedConfig = typeOf _building;
+if (_selectedConfig isEqualTo "") then {
+	(getModelInfo _building) params [["_modelName",""]];
+	if (!isnil "_modelName") then {
+		// replace spaces and periods with underscores
+		_selectedConfig = (_modelName splitString " .") joinString "_";
+	};
+};
+
 _masterConfig = 'CfgBuildingLootPos' call EPOCH_returnConfig;
-_config = _masterConfig >> (typeOf _building);
+_config = _masterConfig >> _selectedConfig;
 _cfgBaseBuilding = 'CfgBaseBuilding' call EPOCH_returnConfig;
 
 // exit with false if building is not lootable
