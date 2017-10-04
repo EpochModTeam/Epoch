@@ -1972,10 +1972,6 @@ class CfgPricing
     {
         price = 25;
     };
-    class atropine_epoch
-    {
-        price = 20;
-    };
     class krypto_candy_epoch
     {
         price = 50;
@@ -5282,7 +5278,7 @@ class CfgPricing
     class witch_mask_epoch
     {
         price = 30;
-    };	
+    };
     ///////////////////////////////////////////////////////////////////////////////
     // Apex Items & Weapons
     ///////////////////////////////////////////////////////////////////////////////
