@@ -29,7 +29,7 @@ if !(isNull _vehObj) then{
 	// add random damage to vehicle (avoid setting engine or fuel to 100% damage to prevent instant destruction)
 	if (_spawnDamaged) then {
 		{
-			_maxDamage = if (_x in ["HitEngine","HitFuel","HitHull"]) then {0.9} else {1};
+			_maxDamage = if (_x in ["HitEngine","HitFuel","HitHull"]) then {0.8} else {1};
 			_vehObj setHitIndex [_forEachIndex,((random 1 max 0.1) min _maxDamage)];
 		} forEach ((getAllHitPointsDamage _vehObj) param [0,[]]);
 	};
