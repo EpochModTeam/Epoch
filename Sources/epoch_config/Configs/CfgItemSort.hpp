@@ -903,7 +903,11 @@ class CfgItemSort
 			"HeatPack",
 			"ColdPack",
 			"ItemVitamins",
-			"atropine_epoch"
+			"adrenaline_epoch",
+			"atropine_epoch",
+			"morphine_epoch",
+			"caffeinepills_epoch",
+			"orlistat_epoch"
 		};
 
 		Food[] = {

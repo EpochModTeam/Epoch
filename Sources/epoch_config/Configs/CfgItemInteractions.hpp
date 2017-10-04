@@ -1,6 +1,21 @@
 /*
 Legend:
-interactAction: 0 = examine, 1 = eat, 2 = drink, 3 = build
+interactAction: 0 = examine,
+                1 = eat,
+				2 = drink,
+				3 = build,
+				4 = refuel,
+				5 = siphon, 
+                6 = Soiled-25,
+				7 = Warm+1,
+				8 = Cold-1, 
+				9 = Energy 100, 
+				10 = Repair Light,
+				11 = Repair Heavy,
+				12 = base painting, 
+				13 = Heal Player, 
+				14 = Unpack Backpack,
+				15 = Read
 interactAttributes[] = {
 	{"Temp",0},
 	{"Hunger",0},
@@ -846,5 +861,34 @@ class CfgItemInteractions
 		interactAttributes[] = {{"Thirst",1000},{"Toxicity",5,1},{"Stamina",50},{"Radiation",2,1}};
 	interactReturnOnUse = "ItemCanteen_Empty";
 	};
+	class adrenaline_epoch : FAK
+    {
+        interactAction = 13; // Radiation consume item action needed
+        interactText = "USE";
+    };
+	class atropine_epoch : FAK
+    {
+        interactAction = 13; // Radiation consume item action needed
+        interactText = "USE";
+    };
+	class morphine_epoch : FAK
+    {
+        interactAction = 13; // part specific healing action needed
+        interactText = "USE";
+		interactAttributes[] = {{"Thirst",-50},{"Stamina",-20}};
+    };
+	class caffeinepills_epoch : FAK
+    {
+        interactAction = 1; // some type of boost system is needed as well as new action to feed it 
+        interactText = "EAT";
+		interactAttributes[] = {{"Thirst",-20},{"Stamina",50}};
+		
+    };
+	class orlistat_epoch : FAK
+    {
+        interactAction = 1; // some type of boost system is needed as well as new action to feed it
+        interactText = "EAT";
+		interactAttributes[] = {{"Thirst",-20},{"Stamina",50}};
+    };
 };
 /*[[[end]]]*/

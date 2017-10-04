@@ -2040,6 +2040,26 @@ class CfgPricing
     {
         price = 2;
     };
+	class adrenaline_epoch
+	{
+        price = 10;
+    };
+	class atropine_epoch
+	{
+        price = 10;
+    };
+	class morphine_epoch
+	{
+        price = 10;
+    };
+	class caffeinepills_epoch
+	{
+        price = 10;
+    };
+	class orlistat_epoch
+	{
+        price = 10;
+    };
     class sr25_epoch
     {
         price = 50;
