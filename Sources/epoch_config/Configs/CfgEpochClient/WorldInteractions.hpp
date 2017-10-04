@@ -76,6 +76,10 @@ class CfgWorldInteractions  {
     class Land_ATM_02_malden_F : bankTerminal {};
     class Land_PhoneBooth_01_malden_F : bankTerminal {};
     class Land_PhoneBooth_02_malden_F : bankTerminal {};
+    class atm_01_malden_f_p3d : bankTerminal {};
+    class atm_02_malden_f_p3d : bankTerminal {};
+    class phonebooth_01_malden_f_p3d : bankTerminal {};
+    class phonebooth_02_malden_f_p3d : bankTerminal {};
     class sharpstone_03_lc_p3d : Rocks {};
     class sharpstone_02_lc_p3d : Rocks {};
     class sharpstone_01_lc_p3d : Rocks {};
