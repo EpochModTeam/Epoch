@@ -13,7 +13,7 @@
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server/compile/epoch_vehicle/EPOCH_spawn_vehicles.sqf
 */
 //[[[cog import generate_private_arrays ]]]
-private ["_allCitys","_allCitysDync","_allowedTypes","_cityPos","_collide","_direction","_find","_getRandomPos","_isShip","_limit","_marker","_nearBy","_newPosition","_position","_preferedPos","_range","_road","_roads","_selectedCity","_serverMapConfig","_slot","_spawnCount","_spawnPositionSize","_spawnPositionSizeDefaults","_vehClass","_vehCount","_vehObj"];
+private ["_tmppos","_check","_allCitys","_allCitysDync","_allowedTypes","_cityPos","_collide","_direction","_find","_getRandomPos","_isShip","_limit","_marker","_nearBy","_newPosition","_position","_preferedPos","_range","_road","_roads","_selectedCity","_serverMapConfig","_slot","_spawnCount","_spawnPositionSize","_spawnPositionSizeDefaults","_vehClass","_vehCount","_vehObj"];
 //[[[end]]]
 params [["_allowedVehiclesList",[]] ];
 
@@ -91,10 +91,23 @@ for "_i" from 1 to _spawnCount do {
 		_isShip = _vehClass isKindOf "Ship";
 		if (_isShip || (_vehClass isKindOf "Air")) then{
 			if (_isShip) then{
-			_position = [epoch_centerMarkerPosition, 0, EPOCH_dynamicVehicleArea, 10, 0, 4000, 1] call BIS_fnc_findSafePos;
-			_position = [_position, 0, 100, 10, 2, 4000, 0] call BIS_fnc_findSafePos;
+				_position = [epoch_centerMarkerPosition, 0, EPOCH_dynamicVehicleArea, 0, 0, 4000, 1] call BIS_fnc_findSafePos;
+				_position = [_position, 0, 100, 10, 2, 4000, 0] call BIS_fnc_findSafePos;
 			} else {
-			_position = [epoch_centerMarkerPosition, 0, EPOCH_dynamicVehicleArea, 10, 0, 1000, 0] call BIS_fnc_findSafePos;
+				_position = [epoch_centerMarkerPosition, 0, EPOCH_dynamicVehicleArea, 10, 0, 5000, 0] call BIS_fnc_findSafePos;
+				_tmppos = _position;
+				_check = [];
+				for "_i" from 1 to 10 do {	// Check max 10 times for a Flat and Empty Position in Area
+					_check = _tmppos isFlatEmpty [5, -1, .4, 7, 0, false];
+					if !((_check) isequalto []) exitwith {
+						_position = _tmppos;
+					};
+					_tmppos = [_position, 0, 150, 10, 0, .3, 0] call BIS_fnc_findSafePos;
+				};
+				if (_check isequalto []) then {		// Suppress Vehicle Spawn on this position and try again next Restart
+					diag_log format ["Vehicle Spawn at %1 supressed - No good spot found",_position];
+					_position = [];
+				};
 			};
 		} else {
 
