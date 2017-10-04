@@ -172,7 +172,7 @@ class CfgItemInteractions
     };
     class WhiskeyNoodle : Drink_base
     {
-        interactAttributes[] = {{"Thirst",800},{"Toxicity",-1},{"Radiation",-1},{"Stamina",50},{"Alcohol",10}};
+        interactAttributes[] = {{"Thirst",400},{"Toxicity",-1},{"Radiation",-1},{"Stamina",50},{"Alcohol",10},{"BloodP",1}};
     };
     class water_epoch : Drink_Jar_base
     {
@@ -538,7 +538,7 @@ class CfgItemInteractions
     {
         interactAction = 6;
         interactText = "USE";
-        interactAttributes[] = {{"Toxicity",-50}};
+        interactAttributes[] = {{"Toxicity",-5}};
     };
     class Pumpkin : Default
     {
@@ -862,42 +862,39 @@ class CfgItemInteractions
 	class ItemBottlePlastic_Dirty: Drink_base
 	{
 		interactAttributes[] = {{"Thirst",500},{"Toxicity",5,1},{"Stamina",50},{"Radiation",2,1}};
-	interactReturnOnUse = "ItemBottlePlastic_Empty";
+		interactReturnOnUse = "ItemBottlePlastic_Empty";
 	};
 
 	class ItemCanteen_Dirty : Drink_base
 	{
 		interactAttributes[] = {{"Thirst",1000},{"Toxicity",5,1},{"Stamina",50},{"Radiation",2,1}};
-	interactReturnOnUse = "ItemCanteen_Empty";
+		interactReturnOnUse = "ItemCanteen_Empty";
 	};
-	class adrenaline_epoch : FAK
+	class adrenaline_epoch : Drink_base
     {
-        interactAction = 13; // Radiation consume item action needed
+        interactText = "USE"; // todo digest system to give attributes over time
+		interactAttributes[] = {{"Thirst",-50},{"Stamina",120},{"BloodP",20},{"Toxicity",5}};
+    };
+	class atropine_epoch : Drink_base
+    {
+        interactText = "USE"; // todo digest system to give attributes over time
+		interactAttributes[] = {{"Thirst",-50},{"Stamina",-20},{"Toxicity",-5},{"Immunity",-1}};
+    };
+	class morphine_epoch : Default
+    {
+        interactAction = 16; // currently heals most damaged hitpoint first on self and gives attributes
         interactText = "USE";
+		interactAttributes[] = {{"Thirst",-20},{"Stamina",-50},{"Toxicity",5},{"BloodP",5}};
     };
-	class atropine_epoch : FAK
+	class caffeinepills_epoch : Food_base
     {
-        interactAction = 13; // Radiation consume item action needed
-        interactText = "USE";
+        // todo digest system to give attributes over time (some type of boost system is needed as well as new action to feed it)
+        interactAttributes[] = {{"Thirst",-20},{"Stamina",50},{"Toxicity",1}};
     };
-	class morphine_epoch : FAK
+	class orlistat_epoch : Food_base
     {
-        interactAction = 13; // part specific healing action needed
-        interactText = "USE";
-		interactAttributes[] = {{"Thirst",-50},{"Stamina",-20}};
-    };
-	class caffeinepills_epoch : FAK
-    {
-        interactAction = 1; // some type of boost system is needed as well as new action to feed it
-        interactText = "EAT";
-		interactAttributes[] = {{"Thirst",-20},{"Stamina",50}};
-
-    };
-	class orlistat_epoch : FAK
-    {
-        interactAction = 1; // some type of boost system is needed as well as new action to feed it
-        interactText = "EAT";
-		interactAttributes[] = {{"Thirst",-20},{"Stamina",50}};
+		// todo should reduce hunger downtick for a duration, if too much is taken causes bowel issues?
+		interactAttributes[] = {{"Thirst",-20},{"Hunger",25},{"BloodP",-1}};
     };
 };
 /*[[[end]]]*/
