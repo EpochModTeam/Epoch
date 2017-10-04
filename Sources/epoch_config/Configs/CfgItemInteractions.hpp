@@ -399,6 +399,10 @@ class CfgItemInteractions
     {
         buildClass = "CinderTower_EPOCH";
     };
+	class KitCinderFloor : Item_Build_base
+	{
+		buildClass = "CinderFloor_EPOCH";
+	};
     class KitWoodRamp : Item_Build_base
     {
         buildClass = "WoodRamp_EPOCH";
@@ -464,6 +468,11 @@ class CfgItemInteractions
     {
         buildClass = "CinderWallHalf_EPOCH";
     };
+	class Kit_Garden : Item_Build_base
+	{
+		buildClass = "Garden_EPOCH";
+		isStorage = 1;
+	};
     class PaintCanBase : Default
     {
         interactAction = 12;
