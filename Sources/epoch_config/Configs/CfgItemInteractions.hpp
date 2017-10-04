@@ -473,6 +473,86 @@ class CfgItemInteractions
 		buildClass = "Garden_EPOCH";
 		isStorage = 1;
 	};
+    class KitBurnBarrel : Item_Build_base
+    {
+        buildClass = "BurnBarrel_EPOCH";
+    };
+    class KitLightPole : Item_Build_base
+    {
+        buildClass = "LightPole_EPOCH";
+    };
+    class KitSmallForestCamoNet : Item_Build_base
+    {
+        buildClass = "SmallForestCamoNet_EPOCH";
+    };
+    class KitSmallDesertCamoNet : Item_Build_base
+    {
+        buildClass = "SmallDesertCamoNet_EPOCH";
+    };
+    class KitLargeForestCamoNet : Item_Build_base
+    {
+        buildClass = "LargeForestCamoNet_EPOCH";
+    };
+    class KitLargeDesertCamoNet : Item_Build_base
+    {
+        buildClass = "LargeDesertCamoNet_EPOCH";
+    };
+    class KitFirePlace_02 : Item_Build_base
+    {
+        buildClass = "FirePlace_02_EPOCH";
+    };
+    class KitFieldToilet : Item_Build_base
+    {
+        buildClass = "FieldToilet_EPOCH";
+    };
+    class KitScaffolding : Item_Build_base
+    {
+        buildClass = "Scaffolding_EPOCH";
+    };
+    class KitSink : Item_Build_base
+    {
+        buildClass = "Sink_EPOCH";
+    };
+    class KitPortableLight_Single : Item_Build_base
+    {
+        buildClass = "PortableLight_Single_EPOCH";
+    };
+    class KitPortableLight_Double : Item_Build_base
+    {
+        buildClass = "PortableLight_Double_EPOCH";
+    };
+    class KitWatchTower : Item_Build_base
+    {
+        buildClass = "WatchTower_EPOCH";
+    };
+    class KitSunShade : Item_Build_base
+    {
+        buildClass = "SunShade_EPOCH";
+    };
+    class KitFuelPump : Item_Build_base
+    {
+        buildClass = "FuelPump_EPOCH";
+    };
+    class KitBagBunker : Item_Build_base
+    {
+        buildClass = "BagBunker_EPOCH";
+    };
+    class KitSandBagWall : Item_Build_base
+    {
+        buildClass = "SandBagWall_EPOCH";
+    };
+    class KitSandBagWallLong : Item_Build_base
+    {
+        buildClass = "SandBagWallLong_EPOCH";
+    };
+    class KitBarGate : Item_Build_base
+    {
+        buildClass = "BarGate_EPOCH";
+    };
+    class KitWaterPump : Item_Build_base
+    {
+        buildClass = "WaterPump_EPOCH";
+    };
     class PaintCanBase : Default
     {
         interactAction = 12;

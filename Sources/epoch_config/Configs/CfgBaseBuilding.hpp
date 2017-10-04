@@ -724,6 +724,253 @@ class CfgBaseBuilding
         energyCost = 0.1;
     };
     class Jack_SIM_EPOCH : Jack_EPOCH {};
+    class BurnBarrel_EPOCH : Default
+    {
+        removeParts[] = {{"KitBurnBarrel",1}};
+        GhostPreview = "BurnBarrel_Ghost_EPOCH";
+        staticClass = "BurnBarrel_EPOCH";
+        simulClass = "BurnBarrel_SIM_EPOCH";
+    };
+    class BurnBarrel_SIM_EPOCH : BurnBarrel_EPOCH
+    {
+        removeParts[] = {};
+    };
+    class BurnBarrel_Ghost_EPOCH : BurnBarrel_SIM_EPOCH {};
+    class LightPole_EPOCH : Default
+    {
+        removeParts[] = {{"KitLightPole",1}};
+        GhostPreview = "LightPole_Ghost_EPOCH";
+        staticClass = "LightPole_EPOCH";
+        simulClass = "LightPole_SIM_EPOCH";
+    };
+    class LightPole_SIM_EPOCH : LightPole_EPOCH
+    {
+        removeParts[] = {};
+    };
+    class LightPole_Ghost_EPOCH : LightPole_SIM_EPOCH {};
+    class SmallForestCamoNet_EPOCH : Default
+    {
+        removeParts[] = {{"KitSmallForestCamoNet",1}};
+        GhostPreview = "SmallForestCamoNet_Ghost_EPOCH";
+        staticClass = "SmallForestCamoNet_EPOCH";
+        simulClass = "SmallForestCamoNet_SIM_EPOCH";
+    };
+    class SmallForestCamoNet_SIM_EPOCH : SmallForestCamoNet_EPOCH
+    {
+        removeParts[] = {};
+    };
+    class SmallForestCamoNet_Ghost_EPOCH : SmallForestCamoNet_SIM_EPOCH {};
+    class SmallDesertCamoNet_EPOCH : Default
+    {
+        removeParts[] = {{"KitSmallDesertCamoNet",1}};
+        GhostPreview = "SmallDesertCamoNet_Ghost_EPOCH";
+        staticClass = "SmallDesertCamoNet_EPOCH";
+        simulClass = "SmallDesertCamoNet_SIM_EPOCH";
+    };
+    class SmallDesertCamoNet_SIM_EPOCH : SmallDesertCamoNet_EPOCH
+    {
+        removeParts[] = {};
+    };
+    class SmallDesertCamoNet_Ghost_EPOCH : SmallDesertCamoNet_SIM_EPOCH {};
+    class LargeForestCamoNet_EPOCH : Default
+    {
+        removeParts[] = {{"KitLargeForestCamoNet",1}};
+        GhostPreview = "LargeForestCamoNet_Ghost_EPOCH";
+        staticClass = "LargeForestCamoNet_EPOCH";
+        simulClass = "LargeForestCamoNet_SIM_EPOCH";
+    };
+    class LargeForestCamoNet_SIM_EPOCH : LargeForestCamoNet_EPOCH
+    {
+        removeParts[] = {};
+    };
+    class LargeForestCamoNet_Ghost_EPOCH : LargeForestCamoNet_SIM_EPOCH {};
+    class LargeDesertCamoNet_EPOCH : Default
+    {
+        removeParts[] = {{"KitLargeDesertCamoNet",1}};
+        GhostPreview = "LargeDesertCamoNet_Ghost_EPOCH";
+        staticClass = "LargeDesertCamoNet_EPOCH";
+        simulClass = "LargeDesertCamoNet_SIM_EPOCH";
+    };
+    class LargeDesertCamoNet_SIM_EPOCH : LargeDesertCamoNet_EPOCH
+    {
+        removeParts[] = {};
+    };
+    class LargeDesertCamoNet_Ghost_EPOCH : LargeDesertCamoNet_SIM_EPOCH {};
+    class FirePlace_02_EPOCH : Default
+    {
+        removeParts[] = {{"KitFirePlace_02",1}};
+        GhostPreview = "FirePlace_02_Ghost_EPOCH";
+        staticClass = "FirePlace_02_EPOCH";
+        simulClass = "FirePlace_02_SIM_EPOCH";
+    };
+    class FirePlace_02_SIM_EPOCH : FirePlace_02_EPOCH
+    {
+        removeParts[] = {};
+    };
+    class FirePlace_02_Ghost_EPOCH : FirePlace_02_SIM_EPOCH {};
+    class FieldToilet_EPOCH : Default
+    {
+        removeParts[] = {{"KitFieldToilet",1}};
+        GhostPreview = "FieldToilet_Ghost_EPOCH";
+        staticClass = "FieldToilet_EPOCH";
+        simulClass = "FieldToilet_SIM_EPOCH";
+    };
+    class FieldToilet_SIM_EPOCH : FieldToilet_EPOCH
+    {
+        removeParts[] = {};
+    };
+    class FieldToilet_Ghost_EPOCH : FieldToilet_SIM_EPOCH {};
+    class Scaffolding_EPOCH : Default
+    {
+        removeParts[] = {{"KitScaffolding",1}};
+        GhostPreview = "Scaffolding_Ghost_EPOCH";
+        staticClass = "Scaffolding_EPOCH";
+        simulClass = "Scaffolding_SIM_EPOCH";
+    };
+    class Scaffolding_SIM_EPOCH : Scaffolding_EPOCH
+    {
+        removeParts[] = {};
+    };
+    class Scaffolding_Ghost_EPOCH : Scaffolding_SIM_EPOCH {};
+    class Sink_EPOCH : Default
+    {
+        removeParts[] = {{"KitSink",1}};
+        GhostPreview = "Sink_Ghost_EPOCH";
+        staticClass = "Sink_EPOCH";
+        simulClass = "Sink_SIM_EPOCH";
+    };
+    class Sink_SIM_EPOCH : Sink_EPOCH
+    {
+        removeParts[] = {};
+    };
+    class Sink_Ghost_EPOCH : Sink_SIM_EPOCH {};
+    class PortableLight_Single_EPOCH : Default
+    {
+        removeParts[] = {{"KitPortableLight_Single",1}};
+        GhostPreview = "PortableLight_Single_Ghost_EPOCH";
+        staticClass = "PortableLight_Single_EPOCH";
+        simulClass = "PortableLight_Single_SIM_EPOCH";
+    };
+    class PortableLight_Single_SIM_EPOCH : PortableLight_Single_EPOCH
+    {
+        removeParts[] = {};
+    };
+    class PortableLight_Single_Ghost_EPOCH : PortableLight_Single_SIM_EPOCH {};
+    class PortableLight_Double_EPOCH : Default
+    {
+        removeParts[] = {{"KitPortableLight_Double",1}};
+        GhostPreview = "PortableLight_Double_Ghost_EPOCH";
+        staticClass = "PortableLight_Double_EPOCH";
+        simulClass = "PortableLight_Double_SIM_EPOCH";
+    };
+    class PortableLight_Double_SIM_EPOCH : PortableLight_Double_EPOCH
+    {
+        removeParts[] = {};
+    };
+    class PortableLight_Double_Ghost_EPOCH : PortableLight_Double_SIM_EPOCH {};
+    class WatchTower_EPOCH : Default
+    {
+        removeParts[] = {{"KitWatchTower",1}};
+        GhostPreview = "WatchTower_Ghost_EPOCH";
+        staticClass = "WatchTower_EPOCH";
+        simulClass = "WatchTower_SIM_EPOCH";
+    };
+    class WatchTower_SIM_EPOCH : WatchTower_EPOCH
+    {
+        removeParts[] = {};
+    };
+    class WatchTower_Ghost_EPOCH : WatchTower_SIM_EPOCH {};
+    class SunShade_EPOCH : Default
+    {
+        removeParts[] = {{"KitSunShade",1}};
+        GhostPreview = "SunShade_Ghost_EPOCH";
+        staticClass = "SunShade_EPOCH";
+        simulClass = "SunShade_SIM_EPOCH";
+    };
+    class SunShade_SIM_EPOCH : SunShade_EPOCH
+    {
+        removeParts[] = {};
+    };
+    class SunShade_Ghost_EPOCH : SunShade_SIM_EPOCH {};
+    class FuelPump_EPOCH : Default
+    {
+        removeParts[] = {{"KitFuelPump",1}};
+        GhostPreview = "FuelPump_Ghost_EPOCH";
+        staticClass = "FuelPump_EPOCH";
+        simulClass = "FuelPump_SIM_EPOCH";
+    };
+    class FuelPump_SIM_EPOCH : FuelPump_EPOCH
+    {
+        removeParts[] = {};
+    };
+    class FuelPump_Ghost_EPOCH : FuelPump_SIM_EPOCH {};
+    class BagBunker_EPOCH : Default
+    {
+        removeParts[] = {{"KitBagBunker",1}};
+        GhostPreview = "BagBunker_Ghost_EPOCH";
+        staticClass = "BagBunker_EPOCH";
+        simulClass = "BagBunker_SIM_EPOCH";
+    };
+    class BagBunker_SIM_EPOCH : BagBunker_EPOCH
+    {
+        removeParts[] = {};
+    };
+    class BagBunker_Ghost_EPOCH : BagBunker_SIM_EPOCH {};
+    class SandbagWall_EPOCH : Default
+    {
+        removeParts[] = {{"KitSandbagWall",1}};
+        GhostPreview = "SandbagWall_Ghost_EPOCH";
+        staticClass = "SandbagWall_EPOCH";
+        simulClass = "SandbagWall_SIM_EPOCH";
+    };
+    class SandbagWall_SIM_EPOCH : SandbagWall_EPOCH
+    {
+        removeParts[] = {};
+    };
+    class SandbagWall_Ghost_EPOCH : SandbagWall_SIM_EPOCH {};
+    class SandbagWallLong_EPOCH : Default
+    {
+        removeParts[] = {{"KitSandbagWallLong",1}};
+        GhostPreview = "SandbagWallLong_Ghost_EPOCH";
+        staticClass = "SandbagWallLong_EPOCH";
+        simulClass = "SandbagWallLong_SIM_EPOCH";
+    };
+    class SandbagWallLong_SIM_EPOCH : SandbagWallLong_EPOCH
+    {
+        removeParts[] = {};
+    };
+    class SandbagWallLong_Ghost_EPOCH : SandbagWallLong_SIM_EPOCH {};
+    class BarGate_EPOCH : Default
+    {
+        removeParts[] = {{"KitBarGate",1}};
+        GhostPreview = "BarGate_Ghost_EPOCH";
+        staticClass = "BarGate_EPOCH";
+        simulClass = "BarGate_SIM_EPOCH";
+    };
+    class BarGate_SIM_EPOCH : BarGate_EPOCH
+    {
+        removeParts[] = {};
+    };
+    class BarGate_Ghost_EPOCH : BarGate_SIM_EPOCH {};
+    class WaterPump_EPOCH : Default
+    {
+        removeParts[] = {{"KitWaterPump",1}};
+        GhostPreview = "WaterPump_Ghost_EPOCH";
+        staticClass = "WaterPump_EPOCH";
+        simulClass = "WaterPump_SIM_EPOCH";
+    };
+    class WaterPump_SIM_EPOCH : WaterPump_EPOCH
+    {
+        removeParts[] = {};
+    };
+    class WaterPump_Ghost_EPOCH : WaterPump_SIM_EPOCH {};
+    class IG_Box_s : Default
+    {
+        removeParts[] = {{"Kit_IG_Box_s",1}};
+        GhostPreview = "IG_Box_s";
+        staticClass = "IG_Box_s";
+        simulClass = "IG_Box_s_SIM";
+    };
 };
 
 /*[[[end]]]*/
