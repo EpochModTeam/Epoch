@@ -51,7 +51,17 @@ if (worldName == "VR") then {
 		_location = ATLToASL _debugLocation;
 		_originalLocation = +_location;
 		_bunkerClasses = [
-			"bunker_epoch"
+			"bunker_epoch",
+			"bunker_epoch_01",
+			"bunker_epoch_02",
+			"bunker_epoch_03",
+			"bunker_epoch_04",
+			"bunker_epoch_05",
+			"bunker_epoch_06",
+			"bunker_epoch_07",
+			"bunker_epoch_08",
+			"bunker_epoch_09",
+			"bunker_epoch_10"
 		];
 		_rowCount = 0;
 		_colCount = 0;
