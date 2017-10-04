@@ -5,15 +5,15 @@ interactAction: 0 = examine,
 				2 = drink,
 				3 = build,
 				4 = refuel,
-				5 = siphon, 
+				5 = siphon,
                 6 = Soiled-25,
 				7 = Warm+1,
-				8 = Cold-1, 
-				9 = Energy 100, 
+				8 = Cold-1,
+				9 = Energy 100,
 				10 = Repair Light,
 				11 = Repair Heavy,
-				12 = base painting, 
-				13 = Heal Player, 
+				12 = base painting,
+				13 = Heal Player,
 				14 = Unpack Backpack,
 				15 = Read
 interactAttributes[] = {
@@ -26,7 +26,7 @@ interactAttributes[] = {
 	{"Toxicity",0},
 	{"Stamina",0},
 	{"Wet",0},
-	{"BloodP",0},  // only increase is allowed
+	{"BloodP",0},
 	{"NotUsed",0},
 	{"Alcohol",0},
 	{"Radiation",0}
@@ -879,10 +879,10 @@ class CfgItemInteractions
     };
 	class caffeinepills_epoch : FAK
     {
-        interactAction = 1; // some type of boost system is needed as well as new action to feed it 
+        interactAction = 1; // some type of boost system is needed as well as new action to feed it
         interactText = "EAT";
 		interactAttributes[] = {{"Thirst",-20},{"Stamina",50}};
-		
+
     };
 	class orlistat_epoch : FAK
     {

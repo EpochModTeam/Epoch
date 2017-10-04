@@ -129,7 +129,7 @@ if (_doAttack) then {
 				if (random 1 < _bloodpChance) then {
 					_playerBloodPKeyFinal = "EPOCH_playerBloodP";
 					if !(isNil "_playerBloodPKey") then {_playerBloodPKeyFinal = _playerBloodPKey};
-					[_playerBloodPKeyFinal,_bloodpAmount,100,0] call EPOCH_fnc_setVariableLimited;
+					[_playerBloodPKeyFinal,_bloodpAmount,190,0] call EPOCH_fnc_setVariableLimited;
 					if !(_ppEffect isEqualTo []) then {
 						[_ppEffect] spawn EPOCH_fnc_spawnEffects;
 					};
