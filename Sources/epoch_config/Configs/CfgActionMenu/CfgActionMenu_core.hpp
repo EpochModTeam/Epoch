@@ -34,23 +34,10 @@ class CfgActionMenu
 		dyna_locked = "locked dyna_cursorTarget in [2,3]";
 		dyna_lockedInVehicle = "locked vehicle player in [2,3]";
 		
-		dyna_inDriver = "driver vehicle player == player";
-		dyna_inTurret = "gunner vehicle player == player";
-		dyna_inCommander = "player isEqualTo commander objectParent player";
-		dyna_vehicleRoleEmpty = "((assignedVehicleRole player) isEqualTo [])";
-		
-		dyna_blockTurrets = "['Horn', 'MiniCarHorn', 'SportCarHorn', 'TruckHorn2', 'TruckHorn', 'BikeHorn', 'CarHorn', 'TruckHorn3']";
-		
-		dyna_weaponsTurret = "if!(dyna_vehicleRoleEmpty)then{(vehicle player) weaponsTurret ((assignedVehicleRole player) select 1)}else{nil}";
-		dyna_weaponsTurretPath = "if(!isNil {dyna_weaponsTurret})then{((assignedVehicleRole player) select 1)}else{nil}";
-		dyna_weaponsTurretMags = "if(!isNil {dyna_weaponsTurret})then{vehicle player magazinesTurret dyna_weaponsTurretPath}else{[]}";
-		
-		dyna_driverTurret = "if(dyna_inDriver)then{vehicle player weaponsTurret[-1]}else{nil}";
-		dyna_driverTurretMags = "if(!isNil {dyna_driverTurret})then{vehicle player magazinesTurret[-1]}else{[]}";
-		
-		dyna_isGunning = "if(dyna_inVehicle && dyna_inTurret && !dyna_inDriver)then{(!isNil {dyna_weaponsTurret})}else{false}";
-		dyna_isDriving = "if(dyna_inVehicle && dyna_inDriver)then{(!isNil {dyna_driverTurret})}else{false}";
-		dyna_isCommanding = "if(dyna_inVehicle && dyna_inCommander)then{(!isNil {dyna_weaponsTurret})}else{false}";
+		dyna_blockWeapons = "[]";
+		dyna_Turret = "if (!dyna_inVehicle) then {[]} else {if ((assignedVehicleRole player) isequalto ['driver']) then {[-1]} else {if (count (assignedVehicleRole player) == 2) then {(assignedVehicleRole player) select 1}else {[]}}}";
+		dyna_weaponsTurret = "if (!dyna_inVehicle) then {[]}else {((vehicle player) weaponsTurret dyna_Turret) select {!((getArray(configFile >> 'CfgWeapons' >> _x >> 'magazines')) select {!((getText (configFile >> 'CfgMagazines' >> _x >> 'picture')) isequalto '')} isequalto [])}}";
+		dyna_WeapsMagsTurret = "call {_out = [];if (dyna_inVehicle) then {_added = [];{_weapon = _x;_WeaponMags = ((vehicle player) magazinesTurret dyna_Turret) select {(_x in (getArray (configFile >> 'CfgWeapons' >> _weapon >> 'magazines'))) && !((getText (configFile >> 'CfgMagazines' >> _x >> 'picture')) isequalto '')};if !(_WeaponMags isequalto []) then {{if !(_x in _added) then {_out pushback [_weapon,_x];_added pushback _x;};} foreach _WeaponMags;};} foreach dyna_weaponsTurret;};_out}";
 	};
 
 	class self

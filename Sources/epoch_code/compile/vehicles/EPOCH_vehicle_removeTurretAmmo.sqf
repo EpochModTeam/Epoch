@@ -2,7 +2,7 @@
 
 	Author: DirtySanchez - ported from DonkeyPunch eXpoch http://DonkeyPunch.INFO
 
-    Contributors:
+    Contributors: He-Man
 	
 	Licence:
     Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
@@ -10,31 +10,28 @@
     Github:
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_code/compile/vehicles/EPOCH_vehicle_removeTurretAmmo.sqf
 */
-params["_weaponTurret", "_turretPath"];
+private ["_AllMagsDetailTurret","_selectedmag","_magAmmoCount","_return","_magtxt","_weapontxt","_msg"];
+params["_vehicle","_weaponTurret","_ammo", "_turretPath"];
 
-if(isNil {_weaponTurret})exitWith{diag_log "[EpochDebug] removeTurretAmmo _weaponTurret was nil"};
-
-if(isNil {_turretPath})exitWith{diag_log "[EpochDebug] removeTurretAmmo _turretPath was nil"};
-
-private _magsTurretDetails = magazinesAmmo vehicle player;
-if(_magsTurretDetails isEqualTo [])exitWith{
-	private _nameTurret = getText(configFile >> "CfgWeapons" >> _weaponTurret >> "displayName");
-	[format["The %1 does not have any ammo",_nameTurret],5] call Epoch_message;
+_AllMagsDetailTurret = ((magazinesAllTurrets _vehicle) select {_x param [1] isequalto _turretPath}) select {_x param [0] isequalto _ammo};
+if (_AllMagsDetailTurret isequalto []) exitwith {
+	["Error - No ammo found",5] call Epoch_message;
 };
+_selectedmag = _AllMagsDetailTurret deleteat 0;
+_magAmmoCount = _selectedmag select 2;
+_vehicle removeMagazinesTurret [_ammo,_turretPath];
+{
+	_vehicle addMagazineTurret [_x select 0, _turretPath, _x select 2];
+} foreach _AllMagsDetailTurret;
+reload _vehicle;
+_return = [_ammo,_magAmmoCount] call EPOCH_fnc_addMagazineOverflow;
 
-private _magsTurret = (_magsTurretDetails select 0) select 0;
-private _magAmmo = (_magsTurretDetails select 0) select 1;
-
-_return = [_magsTurret,_magAmmo] call EPOCH_fnc_addMagazineOverflow;
-if(_return isEqualTo 0)exitWith{diag_log "[EpochDebug] removeCommanderAmmo _return epoch_equip failed"};
-if(_return isEqualTo 1)then{
-	[format["You have removed 1 can of %1 with %2 rounds",_magsTurret, _magAmmo],5] call Epoch_message;
+_magtxt = getText (configFile >> 'CfgMagazines' >> _ammo >> 'displayName');
+_weapontxt = getText (configFile >> 'CfgWeapons' >> _weaponTurret >> 'displayName');
+_msg = switch _return do {
+	case 0: {"Error - return epoch_equip failed"};
+	case 1: {format ["Removed 1 can %1 with %2 rounds from %3",_magtxt,_magAmmoCount, _weapontxt]};
+	case 2: {format ["Dropped 1 can of %1 with %2 rounds on the ground!",_magtxt,_magAmmoCount, _weapontxt]};
+	case 3: {format ["You dont have enough space for %1!",_magtxt]};
 };
-if(_return isEqualTo 2)then{
-	[format["You dropped 1 can of %1 with %2 rounds on the ground!",_magsTurret, _magAmmo],5] call Epoch_message;
-};
-if(_return isEqualTo 3)then{
-	[format["You dont have enough space for %1!",_magsTurret],5] call Epoch_message;
-};
-vehicle player removeMagazineTurret [_magsTurret,_turretPath];
-reload vehicle player;
+[_msg,5] call Epoch_message;
