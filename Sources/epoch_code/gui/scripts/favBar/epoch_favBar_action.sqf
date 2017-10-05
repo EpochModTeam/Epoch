@@ -25,6 +25,7 @@ _tileIdx = switch (_kee) do {
 };
 
 _item = rmx_var_favBar_current select _tileIdx;
+if (_item isequalto "") exitwith {false};
 _throw = "";
 	{
 		if (_item in (getarray (_x >> "Magazines"))) exitwith {

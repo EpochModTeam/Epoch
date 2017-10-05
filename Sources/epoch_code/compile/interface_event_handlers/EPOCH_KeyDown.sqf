@@ -52,7 +52,7 @@ if !(EPOCH_modKeys isequalto [_shift,_ctrl,_alt]) then {
 //Favorites bar
 if (_dikCode in [EPOCH_keysfav1,EPOCH_keysfav2,EPOCH_keysfav3,EPOCH_keysfav4,EPOCH_keysfav5]) then {
 	if (isnull EPOCH_Target) then {
-		_this call epoch_favBar_action;
+		_handled = _this call epoch_favBar_action;
 	} else {
 		"Can't use while in building mode!" call epoch_message;
 	};
