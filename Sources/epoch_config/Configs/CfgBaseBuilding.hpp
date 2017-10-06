@@ -964,13 +964,6 @@ class CfgBaseBuilding
         removeParts[] = {};
     };
     class WaterPump_Ghost_EPOCH : WaterPump_SIM_EPOCH {};
-    class IG_Box_s : Default
-    {
-        removeParts[] = {{"Kit_IG_Box_s",1}};
-        GhostPreview = "IG_Box_s";
-        staticClass = "IG_Box_s";
-        simulClass = "IG_Box_s_SIM";
-    };
 };
 
 /*[[[end]]]*/
