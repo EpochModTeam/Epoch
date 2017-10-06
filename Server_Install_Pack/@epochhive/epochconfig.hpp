@@ -42,9 +42,9 @@ defaultBackpack =			"";
 defaultprimaryWeapon[] =	{};								// {"arifle_MX_pointer_F","","acc_pointer_IR","",{"30Rnd_65x39_caseless_mag",29},{},""};
 defaultsecondaryWeapon[] = 	{};								// {"launch_NLAW_F","","","",{"NLAW_F",1},{},""};
 defaulthandgunWeapon[] =	{};								// {"hgun_P07_F","","","",{"16Rnd_9x21_Mag",16},{},""};
-defaultuniformItems[] =		{};								// {{"FirstAidKit",1},{"30Rnd_65x39_caseless_mag",2,30},{"Chemlight_green",1,1}};
+defaultuniformItems[] =		{};								// {{"FAK",1},{"30Rnd_65x39_caseless_mag",2,30},{"Chemlight_green",1,1}};
 defaultvestItems[] =		{};								// {{"30Rnd_65x39_caseless_mag",3,30},{"16Rnd_9x21_Mag",2,16},{"SmokeShell",1,1},{"SmokeShellGreen",1,1},{"SmokeShellBlue",1,1},{"SmokeShellOrange",1,1},{"Chemlight_green",1,1}};
-defaultbackpackItems[] =	{};								// {{"Medikit",1},{"FirstAidKit",10},{{"hgun_P07_F","","","",{"16Rnd_9x21_Mag",16},{},""},1}};
+defaultbackpackItems[] =	{};								// {{"Medikit",1},{"FAK",10},{{"hgun_P07_F","","","",{"16Rnd_9x21_Mag",16},{},""},1}};
 defaultassignedItems[] =	{};								// {"Rangefinder","","","",{},{},""}
 defaultlinkedItems[] =		{"ItemMap","","EpochRadio0","","",""};	// {"ItemMap","ItemGPS","ItemRadio","ItemCompass","ItemWatch","NVGoggles"};
 

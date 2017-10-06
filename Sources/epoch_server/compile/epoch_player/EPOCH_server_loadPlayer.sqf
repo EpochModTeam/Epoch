@@ -57,9 +57,9 @@ if (!isNull _player) then {
 		_primaryWeapon = [_serverSettingsConfig, "defaultprimaryWeapon", []] call EPOCH_fnc_returnConfigEntry;	// ["arifle_MX_pointer_F","","acc_pointer_IR","",["30Rnd_65x39_caseless_mag",29],[],""];
 		_secondaryWeapon = [_serverSettingsConfig, "defaultsecondaryWeapon", []] call EPOCH_fnc_returnConfigEntry;  // ["launch_NLAW_F","","","",["NLAW_F",1],[],""];
 		_handgunWeapon = [_serverSettingsConfig, "defaulthandgunWeapon", []] call EPOCH_fnc_returnConfigEntry;	// ["hgun_P07_F","","","",["16Rnd_9x21_Mag",16],[],""];
-		_uniformItems = [_serverSettingsConfig, "defaultuniformItems", []] call EPOCH_fnc_returnConfigEntry;	 // [["FirstAidKit",1],["30Rnd_65x39_caseless_mag",2,30],["Chemlight_green",1,1]];
+		_uniformItems = [_serverSettingsConfig, "defaultuniformItems", []] call EPOCH_fnc_returnConfigEntry;	 // [["FAK",1],["30Rnd_65x39_caseless_mag",2,30],["Chemlight_green",1,1]];
 		_vestItems = [_serverSettingsConfig, "defaultvestItems", []] call EPOCH_fnc_returnConfigEntry;		// [["30Rnd_65x39_caseless_mag",3,30],["16Rnd_9x21_Mag",2,16],["SmokeShell",1,1],["SmokeShellGreen",1,1],["SmokeShellBlue",1,1],["SmokeShellOrange",1,1],["Chemlight_green",1,1]];
-		_backpackItems = [_serverSettingsConfig, "defaultbackpackItems", []] call EPOCH_fnc_returnConfigEntry;	// [["Medikit",1],["FirstAidKit",10],[["hgun_P07_F","","","",["16Rnd_9x21_Mag",16],[],""],1]];
+		_backpackItems = [_serverSettingsConfig, "defaultbackpackItems", []] call EPOCH_fnc_returnConfigEntry;	// [["Medikit",1],["FAK",10],[["hgun_P07_F","","","",["16Rnd_9x21_Mag",16],[],""],1]];
 		_assignedItems = [_serverSettingsConfig, "defaultassignedItems", ["","","","",[],[],""]] call EPOCH_fnc_returnConfigEntry; // ["Rangefinder","","","",[],[],""]
 		_linkedItems = [_serverSettingsConfig, "defaultlinkedItems", ["ItemMap","","EpochRadio0","","",""]] call EPOCH_fnc_returnConfigEntry; // ["ItemMap","ItemGPS","ItemRadio","ItemCompass","ItemWatch","NVGoggles"]
 		_currentWeapon = [_serverSettingsConfig, "defaultSelectedWeapon", ""] call EPOCH_fnc_returnConfigEntry; // class of selected weapon
