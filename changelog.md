@@ -32,6 +32,7 @@ All changes for [Arma 3](https://arma3.com/) [Epoch Mod](https://epochmod.com) a
 - Dynamic Simulation is now fully enabled. See "CfgDynamicSimulation" for configs. @DirtySanchez
 - Conditional loot table options to allow omitting items from loot tables via custom logic.
 - Initial support for Malden 2035 map released with A3 1.72+.
+- Map support for Chernarus Redux. @xDrokZ and @morgoth0
 
 ### Changed
 - Crafting recipes can now have item requirements and Crafting metal bars now require Smelting Tools.
