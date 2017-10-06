@@ -25,13 +25,13 @@ _modifiedGardens = [];
 	_garden = _x;
 	_cargo = magazineCargo _x;
 	// find all seeds
-	_seeds = _cargo select {(typeOf _x) in _seedClasses};
+	_seeds = _cargo select {_x in _seedClasses};
 	// find all baby plants
-	_babies = _cargo select {(typeOf _x) in _babyClasses};
+	_babies = _cargo select {_x in _babyClasses};
 	// find all teen plants
-	_teens = _cargo select {(typeOf _x) in _teenClasses};
+	_teens = _cargo select {_x in _teenClasses};
 	// find all mature plants
-	_mature = _cargo select {(typeOf _x) in _matureClasses};
+	_mature = _cargo select {_x in _matureClasses};
 
 	// normalize storage
 	clearWeaponCargoGlobal _x;
