@@ -264,7 +264,7 @@ class CfgItemSort
 
 			// Backpacks Apex
 			"B_Bergen_tna_F",
-			"B_AssaultPack_tna",
+			"B_AssaultPack_tna_F",
 			"B_ViperHarness_ghex_F",
 			"B_ViperHarness_blk_F",
 			"B_ViperHarness_hex_F",
