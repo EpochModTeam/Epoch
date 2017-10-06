@@ -26,6 +26,12 @@ _vehicle removeMagazinesTurret [_ammo,_turretPath];
 reload _vehicle;
 _return = [_ammo,_magAmmoCount] call EPOCH_fnc_addMagazineOverflow;
 
+_vehicle call EPOCH_interact;
+if !(EPOCH_arr_interactedObjs isEqualTo[]) then {
+	[EPOCH_arr_interactedObjs] remoteExec['EPOCH_server_save_vehicles', 2];
+	EPOCH_arr_interactedObjs = [];
+};
+
 _magtxt = getText (configFile >> 'CfgMagazines' >> _ammo >> 'displayName');
 _weapontxt = getText (configFile >> 'CfgWeapons' >> _weaponTurret >> 'displayName');
 _msg = switch _return do {

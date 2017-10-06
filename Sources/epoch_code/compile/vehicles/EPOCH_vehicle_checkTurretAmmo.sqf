@@ -52,5 +52,10 @@ else {
 	{
 		_return = _x call EPOCH_fnc_addMagazineOverflow;
 	} foreach _readd;
+	_vehicle call EPOCH_interact;
+	if !(EPOCH_arr_interactedObjs isEqualTo[]) then {
+		[EPOCH_arr_interactedObjs] remoteExec['EPOCH_server_save_vehicles', 2];
+		EPOCH_arr_interactedObjs = [];
+	};
 	[format["Added 1 can %1 with %2 rounds to %3",getText (configFile >> 'CfgMagazines' >> _ammo >> 'displayName'),_magAmmoCount,getText (configFile >> 'CfgWeapons' >> _weaponTurret >> 'displayName')],5] call Epoch_message;
 };
