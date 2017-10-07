@@ -13,7 +13,7 @@
 	https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server/compile/epoch_player/EPOCH_server_loadPlayer.sqf
 */
 //[[[cog import generate_private_arrays ]]]
-private ["_CheckLocation","_allGroupMembers","_alreadyDead","_assignedItems","_attachments","_backpack","_backpackItems","_canBeRevived","_class","_communityStats","_communityStatsArray","_currentWeapon","_deadPlayer","_defaultData","_dir","_equipped","_found","_goggles","_group","_handgunWeapon","_headgear","_instanceID","_jammer","_jammers","_linkedItems","_loadout","_location","_newLocation","_newPlyr","_playerData","_playerGroup","_playerGroupArray","_playerNetID","_playerUID","_primaryWeapon","_reject","_secondaryWeapon","_serverSettingsConfig","_type","_uniform","_uniformItems","_vars","_vest","_vestItems","_wMags","_wMagsArray","_weapon"];
+private ["_Primary","_CheckLocation","_allGroupMembers","_alreadyDead","_assignedItems","_attachments","_backpack","_backpackItems","_canBeRevived","_class","_communityStats","_communityStatsArray","_currentWeapon","_deadPlayer","_defaultData","_dir","_equipped","_found","_goggles","_group","_handgunWeapon","_headgear","_instanceID","_jammer","_jammers","_linkedItems","_loadout","_location","_newLocation","_newPlyr","_playerData","_playerGroup","_playerGroupArray","_playerNetID","_playerUID","_primaryWeapon","_reject","_secondaryWeapon","_serverSettingsConfig","_type","_uniform","_uniformItems","_vars","_vest","_vestItems","_wMags","_wMagsArray","_weapon"];
 //[[[end]]]
 _reject = true;
 
@@ -210,7 +210,26 @@ if (!isNull _player) then {
 				_playerData params ["","","_apperance","","","_loadout"];
 				// get current weapon to send to param for selectWeapon
 				_currentWeapon = _apperance param [4,""];
-				_newPlyr setUnitLoadout [_loadout, false];
+//				_newPlyr setUnitLoadout [_loadout, false];
+				
+				// Workaround for Client / Server synchronizing issue in unitloadout
+				_Primary = _loadout select 0;
+				_loadout set [0,[]];
+				_newPlyr setunitloadout _loadout;
+				_primaryweapon = _Primary deleteat 0;
+				{ 
+					if (_x isequaltype []) then { 
+						_newPlyr addMagazine _x; 
+					}; 
+				} foreach _Primary;
+				_newPlyr addweapon _primaryweapon; 
+				removeAllPrimaryWeaponItems _newPlyr; 
+				{ 
+					if (_x isequaltype "") then { 
+						_newPlyr addPrimaryWeaponItem _x; 
+					}; 
+				} forEach _Primary;
+				
 				diag_log format["DEBUG: loaded player %1 with new schema Version %2", _newPlyr, _schemaVersion];
 
 			} else {
@@ -324,11 +343,6 @@ if (!isNull _player) then {
 				deleteVehicle _newPlyr;
 				diag_log "Epoch: DEBUG: _player object was null reject connection";
 			} else {
-				//
-				// TESTING if this extra setUnitLoadout is the cause for random duping on login (it seems it is, however now we have random loading issue.)
-				// re-add Inventory (needed as workaround for Client / Server synchronizing issue in unitloadout)
-				//_loadout = getUnitLoadout _newPlyr;
-				//_newPlyr setUnitLoadout [_loadout, false];
 
 				// add to cleanup
 				addToRemainsCollector[_newPlyr];
