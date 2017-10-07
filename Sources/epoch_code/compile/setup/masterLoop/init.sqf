@@ -71,12 +71,7 @@ _customVarLimits = _customVarsInit apply {_x param [2,[]]};
 // only changed within this loop
 _playerAliveTime = missionNamespace getVariable [_playerAliveTimeKey, _playerAliveTimeDefault];
 
-/* unused vars
-_playerHunger = missionNamespace getVariable [_playerHungerKey, _playerHungerDefault];
-_playerThirst = missionNamespace getVariable [_playerThirstKey, _playerThirstDefault];
-_playerTemp = missionNamespace getVariable [_playerTempKey, _playerTempDefault];
-*/
-
+// init Energy Max
 EPOCH_playerEnergyMax = _playerEnergyMax;
 
 // inline function to sync player stats to server

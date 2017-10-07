@@ -16,6 +16,7 @@ All changes for [Arma 3](https://arma3.com/) [Epoch Mod](https://epochmod.com) a
 - Food items: ItemCereals, ItemPowderMilk_F, ItemRiceBox, ItemVitamins. @DirtySanchez
 - 84 new Female outfits based on 20 top designs and 4 new pairs of jeans(Blue Patched, Arid Brown, Black/Brown, Black). @DirtySanchez, @ComatoseBadger
 - Vehicle Ammo Reloading from Inventory and Vehicle Ammo. @DirtySanchez
+- Radiation System with radioactive out of bounds, locations, and random crashed satellites. Model @Helion4
 - Digital Geiger Counter - used to detect Radiation. (Sounds @vbawol, Model @Helion4, and UI + digital font @raymix)
 - Barrel Bomb - large craft-able explosive that can be placed and detonated. @DirtySanchez
 - Brown Briefcase that contains 100oz Silver. @DirtySanchez
