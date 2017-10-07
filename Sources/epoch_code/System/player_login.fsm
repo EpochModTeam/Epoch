@@ -626,7 +626,7 @@ class FSM
                                         priority = 0.000000;
                                         to="Setup_Player_Var";
                                         precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-                                        condition=/*%FSM<CONDITION""">*/"_playerObject == player"/*%FSM</CONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"_playerObject == player && local _playerObject"/*%FSM</CONDITION""">*/;
                                         action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
                                 };
                                 /*%FSM</LINK>*/
