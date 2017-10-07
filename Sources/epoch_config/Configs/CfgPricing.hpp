@@ -2056,6 +2056,24 @@ class CfgPricing
 	{
         price = 10;
     };
+	
+	class nanite_cream_epoch
+	{
+        price = 25;
+    };
+	class nanite_gun_epoch
+	{
+        price = 100;
+    };
+	class nanite_pills_epoch
+	{
+        price = 10;
+    };
+	class iodide_pills_epoch
+	{
+        price = 20;
+    };
+	
     class sr25_epoch
     {
         price = 50;

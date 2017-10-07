@@ -976,5 +976,25 @@ class CfgItemInteractions
 		// todo should reduce hunger downtick for a duration, if too much is taken causes bowel issues?
 		interactAttributes[] = {{"Thirst",-20},{"Hunger",25},{"BloodP",-1}};
     };
+	class nanite_cream_epoch : Default
+    {
+        interactText = "USE";
+		interactAttributes[] = {{"Radiation",-25},{"Soiled",20},{"Toxicity",5},{"Immunity",5}};
+    };
+	class nanite_gun_epoch : Default
+    {
+        interactText = "USE";
+		interactAttributes[] = {{"Radiation",-100},{"Toxicity",5},{"Immunity",5}};
+    };
+	class nanite_pills_epoch : Default
+    {
+        interactText = "USE";
+		interactAttributes[] = {{"Radiation",-10},{"Thirst",-50},{"Toxicity",5},{"Immunity",5}};
+    };
+	class iodide_pills_epoch : Default
+    {
+        interactText = "USE";
+		interactAttributes[] = {{"Radiation",-15},{"Thirst",-50},{"Immunity",5}};
+    };
 };
 /*[[[end]]]*/

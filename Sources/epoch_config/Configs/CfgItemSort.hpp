@@ -908,7 +908,11 @@ class CfgItemSort
 			"atropine_epoch",
 			"morphine_epoch",
 			"caffeinepills_epoch",
-			"orlistat_epoch"
+			"orlistat_epoch",
+			"nanite_cream_epoch",
+			"nanite_gun_epoch",
+			"nanite_pills_epoch",
+			"iodide_pills_epoch"
 		};
 
 		Food[] = {
