@@ -2056,7 +2056,6 @@ class CfgPricing
 	{
         price = 10;
     };
-	
 	class nanite_cream_epoch
 	{
         price = 25;
@@ -2073,7 +2072,6 @@ class CfgPricing
 	{
         price = 20;
     };
-	
     class sr25_epoch
     {
         price = 50;
