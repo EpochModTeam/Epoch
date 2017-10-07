@@ -1951,7 +1951,7 @@ _skn_admincode = compileFinal ("
 			}forEach _attachments;
 		};
 		if (_this == 70) then {
-			_headgear = ['wolf_mask_epoch','pkin_mask_epoch','clown_mask_epoch'];
+			_headgear = ['wolf_mask_epoch','pkin_mask_epoch','clown_mask_epoch','hockey_mask_epoch','plague_mask_epoch','ghostface_mask_epoch','skull_mask_epoch','witch_mask_epoch','radiation_mask_epoch'];
 			for '_h' from 1 to 104 do
 			{
 				_headgear pushBack format['H_%1_EPOCH',_h];
