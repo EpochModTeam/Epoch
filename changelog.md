@@ -36,6 +36,7 @@ All changes for [Arma 3](https://arma3.com/) [Epoch Mod](https://epochmod.com) a
 - Map support for Chernarus Redux. @xDrokZ and @morgoth0
 
 ### Changed
+- Male players can wear nearly all uniforms now. @Ignatz-Heman
 - Crafting recipes can now have item requirements and Crafting metal bars now require Smelting Tools.
 - Player save and login optimized to use get|setUnitLoadout.
 - Karma now persists death and moved to community stats.
@@ -51,6 +52,7 @@ All changes for [Arma 3](https://arma3.com/) [Epoch Mod](https://epochmod.com) a
 - Bump to hive version 0.6.0.0, Note: this requires epochserver hive extension updates server side.
 - Gas Station Auto-Refuel is now disabled on all maps. Use disableAutoRefuel = false; via epochconfig.hpp to disable. @SMVampire
 ### Fixed
+- Players are given negative rating so that AI will attack properly even if player side is civilian. @morgoth0, @Ignatz-Heman
 - Player stats variables are now obfuscated, and hitpoints tracked via the server.
 - Bad conversion: bool RPT spam caused by incorrect usage of configClasses. @DirtySanchez
 - Snapping issues base building @DirtySanchez
