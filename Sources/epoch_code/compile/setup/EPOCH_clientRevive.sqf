@@ -62,6 +62,9 @@ if !(alive player && alive _playerObject && !isPlayer _playerObject) then {
 		if !(isNil "_playerBloodPKey") then {_playerBloodPKeyFinal = _playerBloodPKey};
 		missionNamespace setVariable [_playerBloodPKeyFinal, 120];
 
+		// Wait until _playerObject is local before adding Rating and EH's
+		waituntil {local _playerObject};
+
         // restart masterloop
         [] spawn EPOCH_masterLoop;
         [5, 100] call EPOCH_niteLight;
@@ -76,8 +79,7 @@ if !(alive player && alive _playerObject && !isPlayer _playerObject) then {
 
 
 		// testing for civilan males
-		waituntil {local _playerObject};
-		_playerObject addRating -2000;
+		_playerObject addRating -2001;
     };
 } else {
 	deleteVehicle _playerObject;
