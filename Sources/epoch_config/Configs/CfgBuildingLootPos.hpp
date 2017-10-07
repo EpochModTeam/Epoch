@@ -14,11 +14,12 @@ class CfgBuildingLootPos
         lockerPos[] = {};
         toolRackPos[] = {};
         shoeboxPos[] = {};
+		toiletPos[] = {};
         lootBias = 40;
         limit = 3;
         lootType = "normal";
-        normal[] = {{"shelfPos","Shelf_EPOCH",true},{"fridgePos","Fridge_EPOCH",true},{"bedPos","Bed_EPOCH",false},{"couchPos","Couch_EPOCH",false},{"wardrobePos","wardrobe_epoch",false},{"cookerPos","cooker_epoch",false},{"chairPos",{"Chair_EPOCH","ChairRed_EPOCH"},true},{"filingPos","Filing_epoch",true},{"pelicanPos","Pelican_EPOCH",false},{"tablePos","Table_EPOCH",false},{"lockerPos","Locker_EPOCH",false},{"toolRackPos","ToolRack_EPOCH",false},{"shoeboxPos","Shoebox_EPOCH",false},{"palletPos","Tarp_EPOCH",false},{"freezerPos","Freezer_EPOCH",false},{"cabinetPos","Cabinet_EPOCH",false}};
-        mil[] = {{"shelfPos","Shelf_EPOCH",true},{"fridgePos","Fridge_EPOCH",true},{"bedPos","Bunk_EPOCH",false},{"couchPos","Couch_EPOCH",false},{"wardrobePos","wardrobe_epoch",false},{"cookerPos","cooker_epoch",false},{"chairPos",{"Chair_EPOCH","ChairRed_EPOCH"},true},{"filingPos","Filing_epoch",true},{"pelicanPos","Pelican_EPOCH",false},{"tablePos","Table_EPOCH",false},{"lockerPos","Locker_EPOCH",false},{"toolRackPos","ToolRack_EPOCH",false},{"shoeboxPos","Shoebox_EPOCH",false},{"palletPos","Tarp_EPOCH",false},{"freezerPos","Freezer_EPOCH",false},{"cabinetPos","Cabinet_EPOCH",false}};
+        normal[] = {{"shelfPos","Shelf_EPOCH",true},{"fridgePos","Fridge_EPOCH",true},{"bedPos","Bed_EPOCH",false},{"couchPos","Couch_EPOCH",false},{"wardrobePos","wardrobe_epoch",false},{"cookerPos","cooker_epoch",false},{"chairPos",{"Chair_EPOCH","ChairRed_EPOCH"},true},{"filingPos","Filing_epoch",true},{"pelicanPos","Pelican_EPOCH",false},{"tablePos","Table_EPOCH",false},{"lockerPos","Locker_EPOCH",false},{"toolRackPos","ToolRack_EPOCH",false},{"shoeboxPos","Shoebox_EPOCH",false},{"palletPos","Tarp_EPOCH",false},{"freezerPos","Freezer_EPOCH",false},{"cabinetPos","Cabinet_EPOCH",false}}; //,{"toiletPos","toilet_epoch",false} needs POS below
+        mil[] = {{"shelfPos","Shelf_EPOCH",true},{"fridgePos","Fridge_EPOCH",true},{"bedPos","Bunk_EPOCH",false},{"couchPos","Couch_EPOCH",false},{"wardrobePos","wardrobe_epoch",false},{"cookerPos","cooker_epoch",false},{"chairPos",{"Chair_EPOCH","ChairRed_EPOCH"},true},{"filingPos","Filing_epoch",true},{"pelicanPos","Pelican_EPOCH",false},{"tablePos","Table_EPOCH",false},{"lockerPos","Locker_EPOCH",false},{"toolRackPos","ToolRack_EPOCH",false},{"shoeboxPos","Shoebox_EPOCH",false},{"palletPos","Tarp_EPOCH",false},{"freezerPos","Freezer_EPOCH",false},{"cabinetPos","Cabinet_EPOCH",false}}; //,{"toiletPos","toilet_epoch",false} needs POS below
     };
     class Land_Kiosk_redburger_F : Default
     {
