@@ -47,7 +47,7 @@ _skn_badDisplaysArray = [_cfg_blacklistConfig, "badDisplays", [-1337,17,19,30,32
 _skn_badAnimations	= [_cfg_blacklistConfig, "animations", ['AmovPercMstpSnonWnonDnon_exerciseKata','AmovPercMstpSnonWnonDnon_exercisePushup','GestureSpasm1','GestureSpasm4','GestureNod']] call EPOCH_fnc_returnConfigEntry;
 
 _cfg_variablesConfig  = (_config >> "variables");
-_skn_badVarCheckArray = [_cfg_variablesConfig, "badVars", ['ESP_map','ESP_mainMap','ESP_adminMap','AntiAntiAntiAntiHax','fnc_usec_damageHandler','fnc_usec_unconscious','VAGINA_secret','yolo','VERSION','life_fnc_handleDamage','EPOCH_spawnVehicle_PVS','CLASS911_Menu','nuke_vars','JJMMEE_INIT_MENU','PLAYERON','PLAYERNEXT2','ALTISLIFEON','LY_Menu','PLAY','LY_SwaggerLikeUs','BIS_fnc_dbg_reminder_value','BIS_fnc_dbg_reminder']] call EPOCH_fnc_returnConfigEntry;
+_skn_badVarCheckArray = [_cfg_variablesConfig, "badVars", ['EPOCH_GMODE','ESP_map','ESP_mainMap','ESP_adminMap','AntiAntiAntiAntiHax','fnc_usec_damageHandler','fnc_usec_unconscious','VAGINA_secret','yolo','VERSION','life_fnc_handleDamage','EPOCH_spawnVehicle_PVS','CLASS911_Menu','nuke_vars','JJMMEE_INIT_MENU','PLAYERON','PLAYERNEXT2','ALTISLIFEON','LY_Menu','PLAY','LY_SwaggerLikeUs','BIS_fnc_dbg_reminder_value','BIS_fnc_dbg_reminder']] call EPOCH_fnc_returnConfigEntry;
 _skn_nilVarCheckArray = [_cfg_variablesConfig, "nilVars", ['EPOCH_antiWallCount','EPOCH_playerEnergy','EPOCH_playerHunger','EPOCH_playerStamina','EPOCH_playerCrypto','EPOCH_target','EPOCH_ESP_TARGETS','EPOCH_ESPMAP_TARGETS','EPOCH_taxRate','EPOCH_ESP_VEHICLEPLAYER','EPOCH_ESP_PLAYER','EPOCH_ESP_VEHICLES']] call EPOCH_fnc_returnConfigEntry;
 _skn_commandMenuArray = [(_config >> "commandMenu"), "menus",['','RscSelectTeam','RscTeam','RscMoveHigh','#GETIN','#RscStatus','#WATCH0','RscCombatMode','RscMenuReply','RscCallSupport','#CUSTOM_RADIO','#User:BIS_fnc_addCommMenuItem_menu','RscRadio','RscReply','#ACTION','RscMenuFormations','#WATCH','RscGroupRootMenu','RscMainMenu','RscMenuMove','RscWatchDir','RscWatchMoveDir','#User:BIS_Menu_GroupCommunication','RscMenuStatus','RscFormations']] call EPOCH_fnc_returnConfigEntry;
 
@@ -1434,14 +1434,12 @@ _skn_admincode = compileFinal ("
 				player setBleedingRemaining 0;
 				player setOxygenRemaining 1;
 				player allowDamage false;
-				{
-					missionNamespace setVariable[format['EPOCH_player%1', _x], EPOCH_defaultVars select(EPOCH_customVars find _x)]
-				} forEach['Temp','Hunger','Thirst','Toxicity','Stamina','BloodP'];
-				EPOCH_playerEnergy = missionNamespace getVariable ['EPOCH_playerEnergyMax', 2500];
+				[true, {EPOCH_GMODE = _this}] remoteExec ['call', player];
 				uiSleep 0.25;
 				!"+_skn_tg_godMode+"
 			};
 			player allowDamage true;
+			[nil, {EPOCH_GMODE = _this}] remoteExec ['call', player];
 			player setVariable ['EPOCH_gm_enabled',false,true];
 		} else {
 			['God Mode',1] call "+_skn_adminLog_PVC+";

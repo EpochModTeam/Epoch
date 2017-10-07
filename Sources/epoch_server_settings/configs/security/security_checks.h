@@ -87,7 +87,7 @@ class CfgSecConf
         class whitelist {
             #include "data\custom_vars.h" // whitelisted variables
         };
-        badVars[] = {"ESP_map","ESP_mainMap","ESP_adminMap","AntiAntiAntiAntiHax","fnc_usec_damageHandler","fnc_usec_unconscious","VAGINA_secret","yolo","VERSION","life_fnc_handleDamage","EPOCH_spawnVehicle_PVS","CLASS911_Menu","nuke_vars","JJMMEE_INIT_MENU","PLAYERON","PLAYERNEXT2","ALTISLIFEON","LY_Menu","PLAY","LY_SwaggerLikeUs","BIS_fnc_dbg_reminder_value","BIS_fnc_dbg_reminder"};
+        badVars[] = {"EPOCH_GMODE","ESP_map","ESP_mainMap","ESP_adminMap","AntiAntiAntiAntiHax","fnc_usec_damageHandler","fnc_usec_unconscious","VAGINA_secret","yolo","VERSION","life_fnc_handleDamage","EPOCH_spawnVehicle_PVS","CLASS911_Menu","nuke_vars","JJMMEE_INIT_MENU","PLAYERON","PLAYERNEXT2","ALTISLIFEON","LY_Menu","PLAY","LY_SwaggerLikeUs","BIS_fnc_dbg_reminder_value","BIS_fnc_dbg_reminder"};
         nilVars[] = {"EPOCH_antiWallCount","EPOCH_playerEnergy","EPOCH_playerHunger","EPOCH_playerStamina","EPOCH_playerCrypto","EPOCH_target","EPOCH_ESP_TARGETS","EPOCH_ESPMAP_TARGETS","EPOCH_taxRate","EPOCH_ESP_VEHICLEPLAYER","EPOCH_ESP_PLAYER","EPOCH_ESP_VEHICLES"};
     };
 

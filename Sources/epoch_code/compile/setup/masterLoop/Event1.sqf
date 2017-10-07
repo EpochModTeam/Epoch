@@ -329,6 +329,17 @@ if !(EPOCH_ActiveTraderMission isequalto []) then {
 	} foreach _taskDialogues;
 };
 
+// AH use only
+if !(isNil "EPOCH_GMODE") then {
+	{
+		_varDefault = _defaultVarValues select _foreachindex;
+		_varName = format["EPOCH_player%1",_x];
+		_varNameTmp = call compile format["_player%1Key",_x];
+		if !(isNil "_varNameTmp") then {_varName = _varNameTmp};
+		missionNamespace setVariable [_varName, _varDefault];
+	} forEach _gmVars;
+};
+
 // Update read only vars
 if !(_playerTempKey isEqualTo "EPOCH_playerTemp") then {
 	EPOCH_playerTemp = missionNamespace getVariable [_playerTempKey, _playerTempDefault];

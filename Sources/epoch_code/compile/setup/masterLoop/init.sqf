@@ -18,6 +18,7 @@ EPOCH_forceUpdateNow = false;
 _clientAliveTimer = diag_tickTime;
 
 // init player stat vars
+_gmVars = ["CfgEpochClient", "gmVars", ["Temp","Hunger","Thirst","Toxicity","Stamina","BloodP","Alcohol","Radiation"]] call EPOCH_fnc_returnConfigEntryV2;
 _customVarsInit = ["CfgEpochClient", "customVarsDefaults", EPOCH_customVarsDefaults] call EPOCH_fnc_returnConfigEntryV2;
 _customVarNames = _customVarsInit apply {_x param [0,""]};
 _defaultVarValues = _customVarsInit apply {_x param [1,0]};
