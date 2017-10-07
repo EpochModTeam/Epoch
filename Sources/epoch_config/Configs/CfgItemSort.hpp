@@ -392,7 +392,8 @@ class CfgItemSort
 			"ghostface_mask_epoch",
 			"skull_mask_epoch",
 			"witch_mask_epoch",
-
+			"radiation_mask_epoch",
+			
 			// Headgear Apex
 			"H_HelmetLeaderO_ghex_F",
 			"H_HelmetCrew_O_ghex_F",
