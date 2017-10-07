@@ -1429,8 +1429,7 @@ _skn_admincode = compileFinal ("
 		"+_skn_tg_godMode+" = !"+_skn_tg_godMode+";
 		if ("+_skn_tg_godMode+") then {
 			['God Mode',2] call "+_skn_adminLog_PVC+";
-			player setVariable ['EPOCH_gm_enabled',true,true];
-			[true, {EPOCH_GMODE = _this}] remoteExec ['call', player];
+			EPOCH_GMODE = true;
 			waitUntil {
 				player setBleedingRemaining 0;
 				player setOxygenRemaining 1;
@@ -1439,8 +1438,7 @@ _skn_admincode = compileFinal ("
 				!"+_skn_tg_godMode+"
 			};
 			player allowDamage true;
-			[nil, {EPOCH_GMODE = _this}] remoteExec ['call', player];
-			player setVariable ['EPOCH_gm_enabled',false,true];
+			EPOCH_GMODE = nil;
 		} else {
 			['God Mode',1] call "+_skn_adminLog_PVC+";
 		}

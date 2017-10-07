@@ -1,1 +1,1 @@
-5 "" !=(traderName|Offer|Accept|BUILD_SLOT|TRADE_ACTIVE|last_targeter|epoch_(antagobj|antagBomb|gm_enabled)) !="bis_fnc_objectvar_var" !="bis_fnc_selectrespawntemplate_respawned" !="#(rev_enabled|var)" !="cup_tow_towedveh"
+5 "" !=(traderName|Offer|Accept|BUILD_SLOT|TRADE_ACTIVE|last_targeter|epoch_(antagobj|antagBomb)) !="bis_fnc_objectvar_var" !="bis_fnc_selectrespawntemplate_respawned" !="#(rev_enabled|var)" !="cup_tow_towedveh"
