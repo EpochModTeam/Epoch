@@ -1430,11 +1430,11 @@ _skn_admincode = compileFinal ("
 		if ("+_skn_tg_godMode+") then {
 			['God Mode',2] call "+_skn_adminLog_PVC+";
 			player setVariable ['EPOCH_gm_enabled',true,true];
+			[true, {EPOCH_GMODE = _this}] remoteExec ['call', player];
 			waitUntil {
 				player setBleedingRemaining 0;
 				player setOxygenRemaining 1;
 				player allowDamage false;
-				[true, {EPOCH_GMODE = _this}] remoteExec ['call', player];
 				uiSleep 0.25;
 				!"+_skn_tg_godMode+"
 			};
