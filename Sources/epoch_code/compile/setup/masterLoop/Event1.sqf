@@ -332,12 +332,12 @@ if !(EPOCH_ActiveTraderMission isequalto []) then {
 // AH use only
 if !(isNil "EPOCH_GMODE") then {
 	{
-		_varDefault = _defaultVarValues select _foreachindex;
+		_varDefault = _gModeVarValues select _foreachindex;
 		_varName = format["EPOCH_player%1",_x];
 		_varNameTmp = call compile format["_player%1Key",_x];
 		if !(isNil "_varNameTmp") then {_varName = _varNameTmp};
 		missionNamespace setVariable [_varName, _varDefault];
-	} forEach _gmVars;
+	} forEach _gModeVarNames;
 };
 
 // Update read only vars

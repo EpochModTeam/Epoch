@@ -108,9 +108,18 @@ class CfgEpochClient
 		{"Nuisance",0,{100,0}},
 		{"MissionArray",{},{}}
 	};
-	// Vars that get reset to defaults if godmode is enabled
-	gmVars[] = {"Temp","Hunger","Thirst","Toxicity","Stamina","BloodP","Alcohol","Radiation"};
-
+	// Vars and the value that gets set if godmode is enabled
+	gmVars[] = {
+		{"Temp",98.6},
+		{"Hunger",2500},
+		{"Thirst",1500},
+		{"Energy",2500},
+		{"Toxicity",0},
+		{"Stamina",100},
+		{"BloodP",100},
+		{"Alcohol",0},
+		{"Radiation",0}
+	};
     hudConfigs[] = {
 		{{"BloodP","","",{"getPlayerDamage",">=",0.7}},"topRight","x\addons\a3_epoch_code\Data\UI\bleeding_ca.paa",{"forceUpdate"}},
 		{{"Oxygen","getPlayerOxygenRemaining","",{},{1,0,2,2,1,0.55}},"topRight","x\addons\a3_epoch_code\Data\UI\oxygen_ca.paa"},
