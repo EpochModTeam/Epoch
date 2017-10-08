@@ -4927,6 +4927,311 @@ class CfgPricing
     {
         price = 450;
     };
+
+	// new male start
+	class U_C_Commoner1_1
+	{
+	 price = 7;
+	};
+	class U_C_Poor_2
+	{
+	 price = 7;
+	};
+	class U_C_HunterBody_grn
+	{
+	 price = 7;
+	};
+	class U_C_Poor_shorts_1
+	{
+	 price = 7;
+	};
+	class U_C_Commoner_shorts
+	{
+	 price = 7;
+	};
+	class U_C_ShirtSurfer_shorts
+	{
+	 price = 7;
+	};
+	class U_C_TeeSurfer_shorts_1
+	{
+	 price = 7;
+	};
+	class U_C_TeeSurfer_shorts_2
+	{
+	 price = 7;
+	};
+	class U_NikosBody
+	{
+	 price = 7;
+	};
+	class U_NikosAgedBody
+	{
+	 price = 7;
+	};
+	class U_IG_Guerilla1_1
+	{
+	 price = 7;
+	};
+	class U_IG_leader
+	{
+	 price = 7;
+	};
+	class U_IG_Guerilla2_1
+	{
+	 price = 7;
+	};
+	class U_IG_Guerilla2_3
+	{
+	 price = 7;
+	};
+	class U_IG_Guerilla2_2
+	{
+	 price = 7;
+	};
+	class U_IG_Guerilla3_1
+	{
+	 price = 7;
+	};
+	class U_IG_Guerrilla_6_1
+	{
+	 price = 7;
+	};
+	class U_OG_Guerrilla_6_1
+	{
+	 price = 7;
+	};
+	class U_I_CombatUniform
+	{
+	 price = 7;
+	};
+	class U_I_CombatUniform_shortsleeve
+	{
+	 price = 7;
+	};
+	class U_I_HeliPilotCoveralls
+	{
+	 price = 7;
+	};
+	class U_I_pilotCoveralls
+	{
+	 price = 7;
+	};
+	class U_I_OfficerUniform
+	{
+	 price = 7;
+	};
+	class U_I_Wetsuit
+	{
+	 price = 7;
+	};
+	class U_I_GhillieSuit
+	{
+	 price = 7;
+	};
+	class U_I_CombatUniform_tshirt
+	{
+	 price = 7;
+	};
+	class U_O_OfficerUniform_ocamo
+	{
+	 price = 7;
+	};
+	class U_O_SpecopsUniform_ocamo
+	{
+	 price = 7;
+	};
+	class U_O_CombatUniform_oucamo
+	{
+	 price = 7;
+	};
+	class U_Marshal
+	{
+	 price = 7;
+	};
+	class U_B_Protagonist_VR
+	{
+	 price = 7;
+	};
+	class U_O_Protagonist_VR
+	{
+	 price = 7;
+	};
+	class U_I_Protagonist_VR
+	{
+	 price = 7;
+	};
+	class U_I_FullGhillie_lsh
+	{
+	 price = 7;
+	};
+	class U_I_FullGhillie_sard
+	{
+	 price = 7;
+	};
+	class U_I_FullGhillie_ard
+	{
+	 price = 7;
+	};
+	class U_I_C_Soldier_Para_1_F
+	{
+	 price = 7;
+	};
+	class U_I_C_Soldier_Para_2_F
+	{
+	 price = 7;
+	};
+	class U_I_C_Soldier_Para_3_F
+	{
+	 price = 7;
+	};
+	class U_I_C_Soldier_Para_4_F
+	{
+	 price = 7;
+	};
+	class U_I_C_Soldier_Para_5_F
+	{
+	 price = 7;
+	};
+	class U_I_C_Soldier_Bandit_1_F
+	{
+	 price = 7;
+	};
+	class U_I_C_Soldier_Bandit_2_F
+	{
+	 price = 7;
+	};
+	class U_I_C_Soldier_Bandit_3_F
+	{
+	 price = 7;
+	};
+	class U_I_C_Soldier_Bandit_4_F
+	{
+	 price = 7;
+	};
+	class U_I_C_Soldier_Bandit_5_F
+	{
+	 price = 7;
+	};
+	class U_I_C_Soldier_Camo_F
+	{
+	 price = 7;
+	};
+	class U_O_T_Soldier_F
+	{
+	 price = 7;
+	};
+	class U_O_T_Officer_F
+	{
+	 price = 7;
+	};
+	class U_O_T_Sniper_F
+	{
+	 price = 7;
+	};
+	class U_O_T_FullGhillie_tna_F
+	{
+	 price = 7;
+	};
+	class U_O_V_Soldier_Viper_F
+	{
+	 price = 7;
+	};
+	class U_O_V_Soldier_Viper_hex_F
+	{
+	 price = 7;
+	};
+	class U_C_man_sport_1_F
+	{
+	 price = 7;
+	};
+	class U_C_man_sport_2_F
+	{
+	 price = 7;
+	};
+	class U_C_man_sport_3_F
+	{
+	 price = 7;
+	};
+	class U_C_Man_casual_1_F
+	{
+	 price = 7;
+	};
+	class U_C_Man_casual_2_F
+	{
+	 price = 7;
+	};
+	class U_C_Man_casual_3_F
+	{
+	 price = 7;
+	};
+	class U_C_Man_casual_4_F
+	{
+	 price = 7;
+	};
+	class U_C_Man_casual_5_F
+	{
+	 price = 7;
+	};
+	class U_C_Man_casual_6_F
+	{
+	 price = 7;
+	};
+	class U_C_IDAP_Man_cargo_F
+	{
+	 price = 7;
+	};
+	class U_C_IDAP_Man_jeans_F
+	{
+	 price = 7;
+	};
+	class U_C_IDAP_Man_TeeShorts_F
+	{
+	 price = 7;
+	};
+	class U_C_IDAP_Man_Tee_F
+	{
+	 price = 7;
+	};
+	class U_C_IDAP_Man_casual_F
+	{
+	 price = 7;
+	};
+	class U_C_IDAP_Man_shorts_F
+	{
+	 price = 7;
+	};
+	class U_C_ConstructionCoverall_Red_F
+	{
+	 price = 7;
+	};
+	class U_C_ConstructionCoverall_vrana_F
+	{
+	 price = 7;
+	};
+	class U_C_ConstructionCoverall_Black_F
+	{
+	 price = 7;
+	};
+	class U_C_ConstructionCoverall_Blue_F
+	{
+	 price = 7;
+	};
+	class U_C_Paramedic_01_F
+	{
+	 price = 7;
+	};
+	class U_C_IDAP_Man_Casual_F
+	{
+	 price = 7;
+	};
+	class U_C_Mechanic_01_F
+	{
+	 price = 7;
+	};
+
+	// new male stop
+
     class U_JeansPatched1_uniform
     {
         price = 5;

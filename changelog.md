@@ -15,6 +15,7 @@ All changes for [Arma 3](https://arma3.com/) [Epoch Mod](https://epochmod.com) a
 - Medical items: Adrenaline Shot (adrenaline_epoch), Caffeine Pills (caffeinepills_epoch). Orlistat Pills (orlistat_epoch) by @Helion4 and configs by @DirtySanchez
 - Food items: ItemCereals, ItemPowderMilk_F, ItemRiceBox, ItemVitamins. @DirtySanchez
 - 84 new Female outfits based on 20 top designs and 4 new pairs of jeans(Blue Patched, Arid Brown, Black/Brown, Black). @DirtySanchez, @ComatoseBadger
+- Pricing and loot table additions for 75 additional male uniforms.
 - Vehicle Ammo Reloading from Inventory and Vehicle Ammo. @DirtySanchez
 - Radiation System with radioactive out of bounds, locations, and random crashed satellites. Model @Helion4
 - Digital Geiger Counter - used to detect Radiation. (Sounds @vbawol, Model @Helion4, and UI + digital font @raymix)
@@ -36,7 +37,7 @@ All changes for [Arma 3](https://arma3.com/) [Epoch Mod](https://epochmod.com) a
 - Map support for Chernarus Redux. @xDrokZ and @morgoth0
 
 ### Changed
-- Male players can wear nearly all uniforms now. @Ignatz-Heman
+- Male players can wear civilian compatible uniforms. Note that West (side = 1) is still reserved for females. @Ignatz-Heman
 - Crafting recipes can now have item requirements and Crafting metal bars now require Smelting Tools.
 - Player save and login optimized to use get|setUnitLoadout.
 - Karma now persists death and moved to community stats.
@@ -63,7 +64,7 @@ All changes for [Arma 3](https://arma3.com/) [Epoch Mod](https://epochmod.com) a
 - Zombie falsely triggers Mission success. @Ignatz-Heman
 - Base Building 90° and 270° Snap was broken.
 - Sometimes snapped Base Building elements rotated back on save.
-- BE kick since 1.70.
+- BE kicks since 1.76.
 
 ## [0.5.0.0] - 2017-03-17
 ### Added
