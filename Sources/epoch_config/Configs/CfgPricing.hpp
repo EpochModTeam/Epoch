@@ -5221,10 +5221,6 @@ class CfgPricing
 	{
 	 price = 7;
 	};
-	class U_C_IDAP_Man_Casual_F
-	{
-	 price = 7;
-	};
 	class U_C_Mechanic_01_F
 	{
 	 price = 7;
