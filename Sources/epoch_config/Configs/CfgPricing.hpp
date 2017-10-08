@@ -4723,18 +4723,6 @@ class CfgPricing
 	{
 		price = 350;
 	};
-    class 60Rnd_CMFlareMagazine
-    {
-        price = 30;
-    };
-    class 120Rnd_CMFlareMagazine
-    {
-        price = 60;
-    };
-    class 240Rnd_CMFlareMagazine
-    {
-        price = 120;
-    };
     class 60Rnd_CMFlare_Chaff_Magazine
     {
         price = 30;
