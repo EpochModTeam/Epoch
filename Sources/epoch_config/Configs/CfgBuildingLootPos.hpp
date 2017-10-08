@@ -288,6 +288,7 @@ class CfgBuildingLootPos
     class Land_Cargo_Tower_V1_No7_F : Land_Cargo_Tower_V1_F {};
     class Land_Cargo_Tower_V2_F : Land_Cargo_Tower_V1_F {};
     class Land_Cargo_Tower_V3_F : Land_Cargo_Tower_V1_F {};
+	class Land_Cargo_Tower_V4_F : Land_Cargo_Tower_V1_F { };
     class Land_Cargo_Patrol_V1_F : Default
     {
         lootType = "mil";
@@ -298,6 +299,7 @@ class CfgBuildingLootPos
     };
     class Land_Cargo_Patrol_V2_F : Land_Cargo_Patrol_V1_F {};
     class Land_Cargo_Patrol_V3_F : Land_Cargo_Patrol_V1_F {};
+	class Land_Cargo_Patrol_V4_F : Land_Cargo_Patrol_V1_F { };
     class Land_Medevac_house_V1_F : Default
     {
         lootType = "mil";
@@ -344,6 +346,7 @@ class CfgBuildingLootPos
     };
     class Land_Cargo_HQ_V2_F : Land_Cargo_HQ_V1_F {};
     class Land_Cargo_HQ_V3_F : Land_Cargo_HQ_V1_F {};
+	class Land_Cargo_HQ_V4_F : Land_Cargo_HQ_V1_F { };
     class Land_Cargo_House_V1_F : Default
     {
         lootType = "mil";
@@ -358,6 +361,7 @@ class CfgBuildingLootPos
     };
     class Land_Cargo_House_V2_F : Land_Cargo_House_V1_F {};
     class Land_Cargo_House_V3_F : Land_Cargo_House_V1_F {};
+	class Land_Cargo_House_V4_F : Land_Cargo_House_V1_F {};
     class Land_dp_smallFactory_F : Default
     {
         shelfPos[] = {{{-1.50586,4.79297,-1.87129},180.159}};
@@ -490,6 +494,7 @@ class CfgBuildingLootPos
         tablePos[] = {{{-0.646484,0.492188,-0.766783},90.0316}};
         palletPos[] = {{{3.13672,-1.19922,-0.69166},0},{{-3.17773,-3.54102,-0.69166},0}};
     };
+	class Land_BagBunker_01_large_green_F : Land_BagBunker_Large_F {};
     class Land_BagBunker_Tower_F : Default
     {
         lootType = "mil";
@@ -497,6 +502,7 @@ class CfgBuildingLootPos
         shoeboxPos[] = {{{2.37891,-1.93555,-0.873341},0}};
         palletPos[] = {{{-0.732422,2.07617,-2.17334},348},{{-0.771484,-2.21094,-2.17334},0}};
     };
+	class Land_HBarrier_01_tower_green_F : Land_BagBunker_Tower_F {};
     class Land_Offices_01_V1_F : Default
     {
         limit = 6;

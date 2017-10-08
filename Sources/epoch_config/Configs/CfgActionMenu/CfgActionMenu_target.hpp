@@ -48,7 +48,7 @@ class veh_gear
 };
 class veh_lock
 {
-	condition = "dyna_isVehicle && !dyna_locked";
+	condition = "if (dyna_cursorTarget iskindof 'Bicycle') exitwith {false};dyna_isVehicle && !dyna_locked";
 	action = "[dyna_cursorTarget, true, player, Epoch_personalToken] remoteExec ['EPOCH_server_lockVehicle',2];";
 	icon = "x\addons\a3_epoch_code\Data\UI\buttons\pad_cannot_lock.paa";
 	tooltip = "Lock";

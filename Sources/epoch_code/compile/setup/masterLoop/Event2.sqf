@@ -20,9 +20,10 @@ if (damage player != _damagePlayer) then {
 _energyValue = _chargeRate min _energyRegenMax;
 _vehicle = vehicle player;
 if (_vehicle != player && isEngineOn _vehicle) then {
-	_energyValue = _energyValue + 5;
+	if !(_vehicle iskindof "Bicycle") then {
+		_energyValue = _energyValue + 5;
+	};
 };
-
 if (currentVisionMode player == 1) then { //NV enabled
 	_energyValue = _energyValue - _energyCostNV;
 	_playerEnergy = missionNamespace getVariable [_playerEnergyKey, _playerEnergyDefault];
