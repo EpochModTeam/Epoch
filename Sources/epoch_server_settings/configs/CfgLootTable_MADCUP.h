@@ -2078,7 +2078,13 @@ class CfgLootTable_MADCUP
                 { { "H_105_EPOCH", "item" }, 1 },
 				{ { "wolf_mask_epoch", "item" }, 1, {"getDate", 1, "==", 10} }, // only available in october
 				{ { "pkin_mask_epoch", "item" }, 1, {"getDate", 1, "==", 10} }, // only available in october
-				{ { "clown_mask_epoch", "item" }, 1, {"getDate", 1, "==", 10} } // only available in october
+				{ { "clown_mask_epoch", "item" }, 1, {"getDate", 1, "==", 10} }, // only available in october
+				{ { "hockey_mask_epoch", "item" }, 1, {"getDate", 1, "==", 10} }, // only available in october
+				{ { "plague_mask_epoch", "item" }, 1, {"getDate", 1, "==", 10} }, // only available in october
+				{ { "ghostface_mask_epoch", "item" }, 1, {"getDate", 1, "==", 10} }, // only available in october
+				{ { "skull_mask_epoch", "item" }, 1, {"getDate", 1, "==", 10} }, // only available in october
+				{ { "witch_mask_epoch", "item" }, 1, {"getDate", 1, "==", 10} }, // only available in october
+				{ { "radiation_mask_epoch", "item" }, 1 }
 		};
 	};
 };
