@@ -89,6 +89,7 @@ showHUD[] =
 #include "Configs\CfgVehicleUpgrades.hpp"
 #include "Configs\CfgReadingDocuments.hpp"
 #include "Configs\CfgDynamicSimulation.hpp"
+#include "Configs\CfgMarkerSets.hpp"
 
 // A3 specific configs
 #include "Configs\CfgFunctions.hpp"

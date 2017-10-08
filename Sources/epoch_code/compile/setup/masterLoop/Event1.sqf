@@ -358,6 +358,25 @@ if !(_playerTempKey isEqualTo "EPOCH_playerTemp") then {
 	EPOCH_playerNuisance = missionNamespace getVariable [_playerNuisanceKey, _playerNuisanceDefault];
 };
 
+// Check for PlayerMarker and Update or Remove it
+_config = 'CfgLocalMarkerSets' call EPOCH_returnConfig;
+_markerArray = getArray(_config >> 'PlayerMarker' >> 'markerArray');
+_markerName = (_markerArray select 0) select 0;
+
+if(_markerName in allMapMarkers)then{
+	if!('ItemGPS' in (assignedItems player))then{
+		['PlayerMarker'] call EPOCH_fnc_deleteLocalMarkerSet;
+		if(((getArray(_config >> 'DeathMarker' >> 'markerArray') select 0) select 0) in allMapMarkers)then{
+			['DeathMarker'] call EPOCH_fnc_deleteLocalMarkerSet;
+		};
+	}else{
+		{ 
+			(_x select 0) setMarkerPosLocal (position player);
+			if(count(_x) >= 8)then{(_x select 0) setMarkerTextLocal (call compile (_x select 7))};
+		}forEach _markerArray;
+	};
+};
+
 // force update
 if (EPOCH_forceUpdateNow) then {
 	EPOCH_forceUpdateNow = false;

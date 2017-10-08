@@ -176,6 +176,8 @@ class CfgEpochClient
     playerKilledScreen = "TapOut2";
     playerDisableRevenge = 0;
     playerRevengeMinAliveTime = 900;
+	playerLocationMarkerGPSOnly = 1; // Map marker toggle in map dyna menu with assigned GPS only
+	playerDeathMarkerGPSOnly = 1; // Map marker toggle in map dyna menu on death with assigned GPS only
     bankTransferTime[] = {0.0006,1.2,0.06};
 
 	// Favorite Bar
