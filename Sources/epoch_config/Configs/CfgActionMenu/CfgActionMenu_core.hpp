@@ -22,6 +22,7 @@ class CfgActionMenu
 		dyna_inVehicle = "vehicle player != player";
 		dyna_itemsPlayer = "items player";
 		dyna_magazinesPlayer = "magazines player";
+		dyna_assigneditems = "assignedItems player";
 		dyna_sizeOf = "((sizeOf dyna_cursorTargetType/2) max 6) min 30";
 		dyna_distance = "(player distance dyna_cursorTarget) <= dyna_sizeOf";
 
@@ -38,6 +39,14 @@ class CfgActionMenu
 		dyna_Turret = "if (!dyna_inVehicle) then {[]} else {if ((assignedVehicleRole player) isequalto ['driver']) then {[-1]} else {if (count (assignedVehicleRole player) == 2) then {(assignedVehicleRole player) select 1}else {[]}}}";
 		dyna_weaponsTurret = "if (!dyna_inVehicle) then {[]}else {((vehicle player) weaponsTurret dyna_Turret) select {!((getArray(configFile >> 'CfgWeapons' >> _x >> 'magazines')) select {!((getText (configFile >> 'CfgMagazines' >> _x >> 'picture')) isequalto '')} isequalto [])}}";
 		dyna_WeapsMagsTurret = "call {_out = [];if (dyna_inVehicle) then {_added = [];{_weapon = _x;_WeaponMags = ((vehicle player) magazinesTurret dyna_Turret) select {(_x in (getArray (configFile >> 'CfgWeapons' >> _weapon >> 'magazines'))) && !((getText (configFile >> 'CfgMagazines' >> _x >> 'picture')) isequalto '')};if !(_WeaponMags isequalto []) then {{if !(_x in _added) then {_out pushback [_weapon,_x];_added pushback _x;};} foreach _WeaponMags;};} foreach dyna_weaponsTurret;};_out}";
+		
+		dyna_mapPlayerMarkerON = "(getNumber(('CfgEpochClient' call EPOCH_returnConfig) >> 'playerLocationMarkerGPSOnly') isEqualTo 1)";
+		dyna_mapPlayerMarker = "(((getArray(('CfgLocalMarkerSets' call EPOCH_returnConfig) >> 'PlayerMarker' >> 'markerArray') select 0) select 0) in allMapMarkers)";
+		
+		dyna_deathMarkerON = "(getNumber(('CfgEpochClient' call EPOCH_returnConfig) >> 'playerDeathMarkerGPSOnly') isEqualTo 1)";
+		dyna_deathMarker = "profileNameSpace getVariable['EPOCHLastKnownDeath',[]]";
+		dyna_deathMarkerAvail = "!(dyna_deathMarker isEqualTo [])";
+		dyna_mapDeathMarker = "(((getArray(('CfgLocalMarkerSets' call EPOCH_returnConfig) >> 'DeathMarker' >> 'markerArray') select 0) select 0) in allMapMarkers)";
 	};
 
 	class self

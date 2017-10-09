@@ -164,6 +164,8 @@ class CfgClientFunctions
 			class client_updatePlayerStat {};
 			class fnc_getHitPointsDamageAverage {};
 			class fnc_setVariableLimited {};
+			class fnc_createLocalMarkerSet {};
+			class fnc_deleteLocalMarkerSet {};
 		};
 		class environment
 		{

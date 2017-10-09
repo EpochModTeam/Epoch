@@ -43,6 +43,13 @@ if (vehicle _unit != _unit) then {
 	_unit action["Eject", vehicle _unit];
 };
 
+// save death position
+profileNameSpace setVariable["EPOCHLastKnownDeath",[]];
+_deathMarkerON = (getNumber(_config >> "playerDeathMarkerGPSOnly") isEqualTo 1);
+if(_deathMarkerON && ('ItemGPS' in (assignedItems _unit)))then{
+	profileNameSpace setVariable["EPOCHLastKnownDeath",getPos _unit];
+};
+
 [player,_killer,toArray profileName,Epoch_personalToken] remoteExec ["EPOCH_server_deadPlayer",2];
 
 // disable build mode
