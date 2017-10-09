@@ -16,7 +16,7 @@ class CfgEpochClient
 {
     epochVersion = "1.0.0";
     ArmAVersion = 176;
-	debug = "false";  // true = enable extra rpt debug lines, false to disable
+	debug = "true";  // true = enable extra rpt debug lines, false to disable
 
 	antagonistRngChance = 100; // increase number to reduce chances and reduce to increase. Default 100
 	outOfBoundsRadiation = 10; // how much rads per tick (10sec), when outside play area.
