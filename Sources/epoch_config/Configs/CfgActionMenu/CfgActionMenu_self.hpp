@@ -123,20 +123,20 @@ class Drink
 class ServicePoint
 {
 	condition = "call EPOCH_SP_Check";
-	action = "call EPOCH_SP_Start;";
+	action = "[dyna_Turret] call EPOCH_SP_Start;";
     icon = "x\addons\a3_epoch_code\Data\UI\buttons\Repair_man.paa";
 	tooltip = "Service Point";
 
 	class Refuel
 	{
-		condition = "true";
+		condition = "!isnil 'Ignatz_Refuel'";
 		action = "(Ignatz_Refuel select 1) spawn EPOCH_SP_Refuel";
         icon = "x\addons\a3_epoch_code\Data\UI\buttons\vehicle_refuel.paa";
 		tooltipcode = "Ignatz_Refuel select 0";
 	};
 	class Repair
 	{
-		condition = "true";
+		condition = "!isnil 'Ignatz_Repair'";
 		action = "(Ignatz_Repair select 1) spawn EPOCH_SP_Repair";
         icon = "x\addons\a3_epoch_code\Data\UI\buttons\repair.paa";
 		tooltipcode = "Ignatz_Repair select 0";

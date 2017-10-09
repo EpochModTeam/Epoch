@@ -19,7 +19,7 @@ private ["_ServicePointClasses","_config","_inSP","_nearClasses","_servicepointD
 
 _vehicle = vehicle player;
 if (_vehicle == player) exitwith {false};
-if !(local _vehicle) exitwith {false};
+// if !(local _vehicle) exitwith {false};
 if (speed _vehicle > 2 || speed _vehicle < -2) exitwith {false};
 if (((getpos _vehicle) select 2) > 1) exitwith {false};
 if (!(_vehicle iskindof 'ship') && (((getposasl _vehicle)  select 2) < 1)) exitwith {false};
