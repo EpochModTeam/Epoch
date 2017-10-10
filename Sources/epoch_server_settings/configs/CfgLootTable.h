@@ -1164,7 +1164,6 @@ class CfgLootTable
 				{ { "U_C_ConstructionCoverall_Black_F", "item" }, 1 },
 				{ { "U_C_ConstructionCoverall_Blue_F", "item" }, 1 },
 				{ { "U_C_Paramedic_01_F", "item" }, 1 },
-				{ { "U_C_IDAP_Man_Casual_F", "item" }, 1 },
 				{ { "U_C_Mechanic_01_F", "item" }, 1 }
 
 		};
