@@ -46,7 +46,7 @@ _compatibleUniformClasses = EP select {(3 in getArray(_x >> "modelSides")) && !(
 _compatibleUniforms = [];
 {
 	_uniform = getText(_x >> "uniformClass");
-	if (_uniform != "") then {
+	if !(_uniform in ["","-"]) then {
 		_compatibleUniforms pushBackUnique _uniform;
 	};
 } forEach _compatibleUniformClasses;
@@ -57,6 +57,7 @@ _badUniforms = [];
 		_badUniforms pushBackUnique _x;
 	};
 } forEach _existing;
+EP = _badUniforms;
 
 // remove
 _finalUniforms = _compatibleUniforms - _existing;
