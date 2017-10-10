@@ -37,7 +37,7 @@ class deathMarker_on
 class deathMarker_off
 {
 	condition = "dyna_deathMarkerON && dyna_mapDeathMarker";
-	action = "{deleteMarkerLocal _x}forEach ['DeathMarker','DeathMarker1','DeathMarker2']";
+	action = "{deleteMarkerLocal _x}forEach ['DeathMarker1','DeathMarker2','DeathMarker3']";
 	icon = "x\addons\a3_epoch_community\icons\skull.paa";
 	tooltip = "Toggle OFF death marker";
 };
