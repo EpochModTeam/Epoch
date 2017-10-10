@@ -17,6 +17,7 @@
 	_loot = selectRandomWeighted _lootTable;
 */
 //[[[cog import generate_private_arrays ]]]
+private ["_allow","_itemType","_lootTableArray","_lootTableName","_return","_totalChances","_value","_weightedArray"];
 //[[[end]]]
 params ["_configName","_keyName","_arrayName"];
 
