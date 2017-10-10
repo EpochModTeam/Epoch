@@ -17,7 +17,6 @@
 	_loot = selectRandomWeighted _lootTable;
 */
 //[[[cog import generate_private_arrays ]]]
-private ["_allow","_itemType","_lootTableArray","_lootTableName","_newChances","_return","_selectedloot","_totalChances","_value","_weightedArray"];
 //[[[end]]]
 params ["_configName","_keyName","_arrayName"];
 
@@ -89,8 +88,7 @@ if(_return isEqualTo[]) then {
 	{_totalChances = _totalChances + _x} count _weightedArray;
 	_return = [];
 	{
-		_selectedloot = _lootTableArray select _forEachIndex;
-		_return append [_selectedloot,linearConversion [0,_totalChances,_x,0,1]];
+		_return append [_lootTableArray select _forEachIndex,linearConversion [0,_totalChances,_x,0,1]];
 	} forEach _weightedArray;
 
 	// cache loot final loot table
