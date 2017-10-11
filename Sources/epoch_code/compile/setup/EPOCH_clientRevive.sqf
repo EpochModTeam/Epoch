@@ -76,10 +76,6 @@ if !(alive player && alive _playerObject && !isPlayer _playerObject) then {
         	player removeEventHandler [_x, 0];
         	player addEventHandler [_x,(["CfgEpochClient", _x, ""] call EPOCH_fnc_returnConfigEntryV2)];
         } forEach (["CfgEpochClient", "addEventHandler", []] call EPOCH_fnc_returnConfigEntryV2);
-
-
-		// testing for civilan males
-		_playerObject addRating -2001;
     };
 } else {
 	deleteVehicle _playerObject;

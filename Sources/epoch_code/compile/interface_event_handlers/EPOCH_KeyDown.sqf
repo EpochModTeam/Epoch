@@ -262,11 +262,4 @@ if (_dikCode in (actionKeys "NightVision")) then {
 	};
 };
 
-if !(player == vehicle player) then {
-    if (_dikCode in(actionKeys "Gear") && (isnull (finddisplay 602))) then {
-        (vehicle player) action ['Gear', (vehicle player)];
-        _handled = true;
-    };
-};
-
 _handled
