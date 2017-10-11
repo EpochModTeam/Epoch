@@ -81,11 +81,16 @@ if (_class != "") then {
 
 	_objSlot = _object getVariable["BUILD_SLOT", -1];
 
-	deleteVehicle _object;
-
 	_pos2 = player modelToWorldVisual[EPOCH_X_OFFSET, EPOCH_Y_OFFSET, EPOCH_Z_OFFSET];
 
-	EPOCH_target = createVehicle[_class, _pos2, [], 0, "CAN_COLLIDE"];
+	// object already ghost
+	if (_objType isEqualTo _class) then {
+		EPOCH_target = _object;
+	} else {
+		deleteVehicle _object;
+		EPOCH_target = createVehicle[_class, _pos2, [], 0, "CAN_COLLIDE"];
+	};
+
 	// send to server
 	[EPOCH_target] remoteExec ["EPOCH_localCleanup",2];
 

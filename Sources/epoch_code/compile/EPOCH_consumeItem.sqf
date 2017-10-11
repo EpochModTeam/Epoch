@@ -13,7 +13,7 @@
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_code/compile/EPOCH_consumeItem.sqf
 */
 //[[[cog import generate_private_arrays ]]]
-private ["_buildClass","_buildingCountLimit","_buildingJammerRange","_canCapacity","_cfgBaseBuilding","_cfgItemInteractions","_color","_currentDMG","_currentFuel","_currentHIT","_fuelCapacity","_highestDMG","_inputCount","_interactAttributes","_interactOption","_interactReturnOnUse","_isOk","_isStorage","_magazineSize","_magazineSizeMax","_magazinesAmmoFull","_newDMG","_newFuel","_object","_otherObjects","_output","_paintCanColor","_paintCanIndex","_partCheck","_pos","_removeItem","_transportFuel","_unifiedInteract","_vehicle","_vehicles"];
+private ["_buildClass","_buildingCountLimit","_buildingJammerRange","_canCapacity","_cfgBaseBuilding","_cfgItemInteractions","_color","_currentDMG","_currentFuel","_currentHIT","_fuelCapacity","_ghostClass","_highestDMG","_inputCount","_interactAttributes","_interactOption","_interactReturnOnUse","_isOk","_isStorage","_magazineSize","_magazineSizeMax","_magazinesAmmoFull","_msg","_newDMG","_newFuel","_object","_otherObjects","_output","_paintCanColor","_paintCanIndex","_partCheck","_pos","_removeItem","_transportFuel","_unifiedInteract","_vehicle","_vehicles"];
 //[[[end]]]
 
 EPOCH_InteractedItem params ["_text","_item","_pic"];
@@ -133,6 +133,11 @@ switch _interactOption do {
 									};
 								}
 								else {
+									// use ghost GhostPreview if set
+									_ghostClass = getText(_cfgBaseBuilding >> _buildClass >> "GhostPreview");
+									if !(_ghostClass isEqualTo "") then {
+										_buildClass = _ghostClass;
+									};
 									_object=createVehicle[_buildClass,_pos,[],0,"CAN_COLLIDE"];
 									_object setDir ((getDir player) - 180);
 									[format["Press '%1' to drop object.", "1"], 5] call Epoch_message;
@@ -234,7 +239,7 @@ switch _interactOption do {
 					_newDMG = ((_highestDMG - 0.5) max 0);
 
 					if (local _vehicle) then {
-						[_vehicle, [[_currentHIT, _newDMG]]] call EPOCH_client_repairVehicle;
+						[_vehicle, [[_currentHIT, _newDMG]] ] call EPOCH_client_repairVehicle;
 					} else {
 						[_vehicle,[[_currentHIT,_newDMG]],player,Epoch_personalToken] remoteExec ["EPOCH_server_repairVehicle",2];
 					};
