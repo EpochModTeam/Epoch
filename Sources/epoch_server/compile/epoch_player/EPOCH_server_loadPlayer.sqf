@@ -212,28 +212,8 @@ if (!isNull _player) then {
 				_currentWeapon = _apperance param [4,""];
 //				_newPlyr setUnitLoadout [_loadout, false];
 				
-				// Workaround for Client / Server synchronizing issue in unitloadout
-				_Primary = _loadout select 0;
-				if !(_Primary isequalto []) then {
-					_loadout set [0,[]];
-					_newPlyr setunitloadout _loadout;
-					_primaryweapon = _Primary deleteat 0;
-					{ 
-						if (_x isequaltype []) then { 
-							_newPlyr addMagazine _x; 
-						}; 
-					} foreach _Primary;
-					_newPlyr addweapon _primaryweapon; 
-					removeAllPrimaryWeaponItems _newPlyr; 
-					{ 
-						if (_x isequaltype "") then { 
-							_newPlyr addPrimaryWeaponItem _x; 
-						}; 
-					} forEach _Primary;
-				}
-				else {
-					_newPlyr setunitloadout _loadout;
-				};
+				// Workaround for Client / Server synchronizing issue in SetUnitLoadout
+				[_newPlyr,_loadout] call Epoch_server_SetUnitLoadout;
 				
 				diag_log format["DEBUG: loaded player %1 with new schema Version %2", _newPlyr, _schemaVersion];
 

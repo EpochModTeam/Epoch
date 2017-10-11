@@ -65,6 +65,7 @@ class CfgServerFunctions
 			class server_onPlayerDisconnect {};
 			class server_deadPlayer {};
 			class server_revivePlayer {};
+			class server_SetUnitLoadout {};
 			class server_storeCrypto {};
 			class server_equippedItem {};
 			class server_unpackBackpack {};
