@@ -1,5 +1,6 @@
 //new2
 5 "BIS_fnc_dynamictext" !="\"BIS_fnc_dynamictext\"" !="'BIS_fnc_dynamictext'"
+5 loadFile
 5 forceRespawn !="ForceRespawnDuration" !="reviveHandleForceRespawnAction" !="forcerespawn player;"
 5 setFriend
 5 setAmmo
@@ -64,7 +65,6 @@
 5 ctrlModelUp
 5 ctrlSetDirection
 5 deleteVehicleCrew !="fn_deleteVehicleCrew.sqf" !="\"BIS_fnc_deleteVehicleCrew\""
-5 loadFile
 5 selectPlayer !="selectPlayer _playerObject;"
 5 setGroupIconsVisible
 5 setGroupIconsVisible
