@@ -70,5 +70,5 @@ _modifiedGardens = [];
 
 // force all modified gardens to save via queue
 if !(_modifiedGardens isEqualTo []) then {
-	_modifiedGardens call EPOCH_server_save_vehicles;
+	[_modifiedGardens] call EPOCH_server_save_vehicles;
 };
