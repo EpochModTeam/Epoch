@@ -61,9 +61,9 @@ class Mission
 			id=0;
 		};
 		class Item1
-		{
+ 	       {
 			dataType="Marker";
-			position[]={13812.688,0,6877.9214};
+			position[]={2404,0,16540};
 			name="respawn_east";
 			type="Empty";
 			id=1;
@@ -71,7 +71,7 @@ class Mission
 		class Item2
 		{
 			dataType="Marker";
-			position[]={13812.688,0,6877.9214};
+			position[]={2404,0,16540};
 			name="respawn_west";
 			type="Empty";
 			id=2;
