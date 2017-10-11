@@ -21,6 +21,7 @@ private ["_allow","_itemType","_lootTableArray","_lootTableName","_return","_tot
 //[[[end]]]
 params ["_configName","_keyName","_arrayName"];
 
+_debug = ["CfgEpochClient", "debug", false] call EPOCH_fnc_returnConfigEntryV2;
 _lootTableName = format["EPOCH_LT_%1_%2_%3",_configName,_keyName,_arrayName];
 _return = missionNamespace getVariable[_lootTableName,[]];
 
@@ -33,7 +34,10 @@ if(_return isEqualTo[]) then {
 		if(_x isEqualType []) then {
 			_x params ["_tname","_tqty",["_extraLogicRaw", [] ]];
 			_tname params ["_item",["_itemType","NA"]];
-			if (_configName isEqualTo "CfgMainTable") then {_itemType = "CfgLootTable"};
+			// if (_configName isEqualTo "CfgMainTable") then {_itemType = "CfgLootTable"};
+			if (_debug) then {
+				diag_log format["DEBUG: _tname: _item %1 _itemType: %2",_item,_itemType];
+			};
 			_allow = true;
 			if !(_extraLogicRaw isEqualTo[]) then {
 				_extraLogicRaw params [["_extraLogicType",""],["_extraLogicName",""],["_extraLogicCond",""],["_extraLogicData",""]];
@@ -68,9 +72,11 @@ if(_return isEqualTo[]) then {
 					case "weapon": {
 						_allow = isClass (configFile >> "CfgWeapons" >> _item);
 					};
+					/*
 					case "CfgLootTable": {
 						_allow = isClass (missionConfigFile >> "CfgLootTable" >> _item);
 					};
+					*/
 				};
 			};
 			// add to loot table
@@ -96,7 +102,7 @@ if(_return isEqualTo[]) then {
 	missionNamespace setVariable[_lootTableName,_return];
 
 	// debug
-	if (["CfgEpochClient", "debug", false] call EPOCH_fnc_returnConfigEntryV2) then {
+	if (_debug) then {
 		diag_log format["DEBUG: LootTable: %1 DATA: %2",_lootTableName,_return];
 	};
 };
