@@ -23,7 +23,7 @@
 	NOTHING
 */
 //[[[cog import generate_private_arrays ]]]
-private ["_AnchorPos","_EPOCH_1","_EPOCH_2","_MoveObject","_Snapdirection","_allowedSnapObjects","_allowedSnapPoints","_arr_snapPoints","_baselineSnapPos","_cfgBaseBuilding","_class","_currentOffSet","_currentPos","_currentTarget","_currentTargetAttachedTo","_dir2","_direction","_distance","_energyCost","_helper","_ins","_isSnap","_lastCheckTime","_maxHeight","_maxSnapDistance","_nearestObject","_nearestObjects","_newDir","_newDirAndUp","_numberOfContacts","_objSlot","_objType","_offSet","_offsetZPos","_pOffset","_playerEnergy","_playerEnergyKeyFinal","_pos1_snap","_pos2","_pos2ATL","_pos2_snap","_pos_snapObj","_rejectMove","_simulClass","_snapChecks","_snapConfig","_snapDistance","_snapMemoryPoint","_snapPointsPara","_snapPointsPerp","_snapPos","_snapPos1","_snapPosition","_snapType","_snapped","_stabilityCheck","_tempClass","_tiltFB","_tiltLR","_vectorDir","_vectorUp","_worldspace"];
+private ["_AnchorPos","_EPOCH_1","_EPOCH_2","_MoveObject","_Snapdirection","_allowedSnapObjects","_allowedSnapPoints","_arr_snapPoints","_baselineSnapPos","_cfgBaseBuilding","_class","_currentOffSet","_currentPos","_currentTarget","_currentTargetAttachedTo","_dir2","_direction","_distance","_energyCost","_helper","_ins","_isSnap","_lastCheckTime","_maxHeight","_maxSnapDistance","_nearestObject","_nearestObjects","_newDir","_newDirAndUp","_numberOfContacts","_objSlot","_objType","_offSet","_offsetZPos","_pOffset","_playerEnergy","_playerEnergyKeyFinal","_pos1_snap","_pos2","_pos2ATL","_pos2_snap","_pos_snapObj","_rejectMove","_simulClass","_snapChecks","_snapConfig","_snapDistance","_snapMemoryPoint","_snapPointsPara","_snapPointsPerp","_snapPos","_snapPos1","_snapPosition","_snapType","_snapped","_stabilityCheck","_staticClass","_tempClass","_tiltFB","_tiltLR","_vectorDir","_vectorUp","_worldspace"];
 //[[[end]]]
 if !(isNil "EPOCH_simulSwap_Lock") exitWith{};
 
@@ -57,7 +57,8 @@ if (_class != "") then {
 	_energyCost = getNumber(_cfgBaseBuilding >> _objType >> "energyCost");
 	_maxHeight = getNumber(_cfgBaseBuilding >> _objType >> "maxHeight");
 	_simulClass = getText(_cfgBaseBuilding >> _objType >> "simulClass");
-	_snapChecks = getArray(("CfgSnapChecks" call EPOCH_returnConfig) >> _objType >> "nails");
+	_staticClass = getText(_cfgBaseBuilding >> _objType >> "staticClass");
+	_snapChecks = getArray(("CfgSnapChecks" call EPOCH_returnConfig) >> _staticClass >> "nails");
 	_allowedSnapPoints = getArray(_cfgBaseBuilding >> _class >> "allowedSnapPoints");
 	_allowedSnapObjects = getArray(_cfgBaseBuilding >> _class >> "allowedSnapObjects");
 
