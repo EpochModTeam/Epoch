@@ -894,7 +894,7 @@ class CfgLootTable
 	{
 		items[] = {
 				{ { "MetalBars", "CfgLootTable" }, 9 },
-				{ { "ItemBriefcaseGold100oz", "magazine" }, 1 }
+				{ { "ItemGoldBar", "magazine" }, 2 }
 		};
 	};
 	class Epoch_Sapper_F

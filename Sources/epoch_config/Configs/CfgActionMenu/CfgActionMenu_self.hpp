@@ -30,7 +30,7 @@ class veh_unLock
 class player_inspect
 {
 	condition = "!dyna_inVehicle";
-	action = "call EPOCH_lootTrash;";
+	action = "if !(underwater player) then {call EPOCH_lootTrash}else {if !(((nearestobjects [player,['container_epoch','weaponholdersimulated','GroundWeaponHolder'],5]) select {(_x getvariable ['EPOCH_Loot',false]) || (_x iskindof 'container_epoch' && _x animationPhase 'open_lid' > 0.5)}) isequalto []) then {call EPOCH_QuickTakeLoad} else {call EPOCH_lootTrash}};";
 	icon = "x\addons\a3_epoch_code\Data\UI\buttons\player_inspect.paa";
 	tooltip = "Examine";
 };
