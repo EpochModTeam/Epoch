@@ -24,9 +24,6 @@ if (_outOfBounds) then {
 	};
 };
 
-
-EPOCH_playerIsSwimming = false;
-
 if !(surfaceIsWater _position) then {
 	if (_nearestLocations isEqualTo []) then{
 		if (count(player nearEntities["Animal_Base_F", 800]) < 2) then {
@@ -37,7 +34,6 @@ if !(surfaceIsWater _position) then {
 	// spawn shark if player is deep water and not in vehicle
 	if !(_isOnFoot) then{
 		_offsetZ = ((_position vectorDiff getPosASL player) select 2);
-		EPOCH_playerIsSwimming = (_offsetZ > 1.7);
 		if (_offsetZ > 50) then {
 			["GreatWhite_F", player, true] call EPOCH_unitSpawn;
 		};

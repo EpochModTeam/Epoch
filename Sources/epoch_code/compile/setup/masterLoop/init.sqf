@@ -124,7 +124,6 @@ _hudConfigs = ["CfgEpochClient", "hudConfigs", []] call EPOCH_fnc_returnConfigEn
 _radioactiveLocations = ["CfgEpochClient", "radioactiveLocations", ["NameCityCapital", "NameCity", "Airport"]] call EPOCH_fnc_returnConfigEntryV2;
 
 _chargeRate = 0;
-EPOCH_playerIsSwimming = false;
 
 _antagonistChanceDefaults = [
 	"Epoch_Cloak_F",0.07,

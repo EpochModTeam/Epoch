@@ -135,7 +135,7 @@ if (_forceBloodRise) then {
 _isOnFoot = isNull objectParent player;
 if (_isOnFoot) then {
 	_val = log(abs(speed player));
-	_staminaThreshold = [0.7,0.3] select EPOCH_playerIsSwimming;
+	_staminaThreshold = [0.7,0.3] select (underwater player);
 	if (_val > _staminaThreshold) then {
 		_forceStaminaDrop = true;
 	};
@@ -370,7 +370,7 @@ if(_markerName in allMapMarkers)then{
 			['DeathMarker'] call EPOCH_fnc_deleteLocalMarkerSet;
 		};
 	}else{
-		{ 
+		{
 			(_x select 0) setMarkerPosLocal (position player);
 			if(count(_x) >= 8)then{(_x select 0) setMarkerTextLocal (call compile (_x select 7))};
 		}forEach _markerArray;

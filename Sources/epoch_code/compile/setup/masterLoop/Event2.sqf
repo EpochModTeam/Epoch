@@ -106,7 +106,7 @@ _increaseWet = 0;
 _wetsuit = (getText(configfile >> "cfgweapons" >> uniform player >> "itemInfo" >> "uniformType") == "Neopren");
 
 if (_isOnFoot) then {
-	if (EPOCH_playerIsSwimming) then {
+	if (underwater player) then {
 		// do nothing if player is wearing a wetsuit
 		if (!_wetsuit) then {
 			if (_waterTemp <= 50) then {

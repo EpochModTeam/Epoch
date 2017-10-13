@@ -25,7 +25,6 @@ EPOCH_group_level_img = ["x\addons\a3_epoch_code\data\owner.paa", "x\addons\a3_e
 if (isNil 'EPOCH_diag_fps') then {
 	EPOCH_diag_fps = 0;
 };
-EPOCH_playerIsSwimming = false;
 EPOCH_lastTrash = diag_tickTime;
 EPOCH_tradeDone = false;
 EPOCH_bankBalance = 0;
