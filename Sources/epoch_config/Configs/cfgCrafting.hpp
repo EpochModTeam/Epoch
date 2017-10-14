@@ -1242,7 +1242,7 @@ class CfgCrafting
     };
     class ItemPipe : Part
     {
-        usedIn[] = {"KitVehicleUpgradeIII_200_EPOCH"};
+        usedIn[] = {"KitVehicleUpgradeIII_200_EPOCH","KitTentA","KitTentDome","KitScaffolding","KitSink","KitSunShade","KitWaterPump"};
         previewPosition[] = {0.802374,1,0.26};
         previewScale = 0.2;
         previewVector = 0.5;
