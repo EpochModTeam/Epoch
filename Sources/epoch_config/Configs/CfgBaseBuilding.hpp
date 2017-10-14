@@ -240,7 +240,7 @@ class CfgBaseBuilding
     {
         removeParts[] = {{"ItemCorrugatedLg",3}};
 		upgradeBuilding[] = {{"CinderTower_EPOCH",{{"CinderBlocks",4},{"MortarBucket",4}}}};
-        upgradeBuildingPart[] = {{"ItemCorrugatedLg",4}};
+        upgradeBuildingPart[] = {{"ItemCorrugatedLg",2}};
         removeBuildingPart[] = {{"ItemCorrugatedLg",2}};
         simulClass = "MetalTower_SIM_EPOCH";
         staticClass = "MetalTower_EPOCH";
@@ -572,6 +572,7 @@ class CfgBaseBuilding
     class WoodTower_EPOCH : Default
     {
         removeParts[] = {{"PartPlankPack",4}};
+		upgradeBuilding[] = {{"MetalTower_EPOCH",{{"ItemCorrugatedLg",4}}}};
         upgradeBuildingPart[] = {{"ItemPlywoodPack",1},{"PartPlankPack",2}};
         removeBuildingPart[] = {{"ItemPlywoodPack",1},{"PartPlankPack",2}};
         simulClass = "WoodTower_SIM_EPOCH";

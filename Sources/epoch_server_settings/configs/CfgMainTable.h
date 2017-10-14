@@ -501,6 +501,18 @@ class CfgMainTable
 				{ "Grenades", 2 }
 		};
 	};
+	class Toilet_EPOCH : Default
+	{
+		lootMin = 3;
+		LootMax = 6;
+		tables[] = {
+				{ "Primitive", 10 },
+				{ "Food", 10 },
+				{ "Grenades", 2 },
+				{ "Gems", 2 },
+				{ "Medical", 2 }
+		};
+	};
 	class Cargo_Container : Default
 	{
 		lootMin = 10;
