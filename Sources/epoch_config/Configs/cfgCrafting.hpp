@@ -340,7 +340,7 @@ class CfgCrafting
     };
     class ItemCorrugated : Item
     {
-        usedIn[] = {"KitShelf","ItemCorrugatedLg","VehicleRepairLg","EngineParts","ItemSink","ItemFieldToilet","ItemWaterPump","ItemLightPole"};
+        usedIn[] = {"KitShelf","ItemCorrugatedLg","VehicleRepairLg","EngineParts","KitSink","KitFieldToilet","KitWaterPump","KitLightPole"};
         nearby[] = {{"Fire","","fire",{1,{"ALL"}},3,1,1,0}};
         recipe[] = {{"ItemScraps",2}};
         previewPosition[] = {0.791088,1,0.300004};
@@ -910,7 +910,6 @@ class CfgCrafting
         previewScale = 0.05;
         previewVector = 0;
     };
-
     class KitTiPi : Kit
     {
         recipe[] = {{"Pelt_EPOCH",4},{"PartPlankPack",2}};
@@ -1210,7 +1209,6 @@ class CfgCrafting
 		previewScale = 1.2;
 		previewVector = 3.3;
     };
-
     class ItemVehDoc2 : Part
     {
         usedIn[] = {"KitVehicleUpgradeII_200_EPOCH"};
@@ -1261,7 +1259,6 @@ class CfgCrafting
         previewScale = 0.95;
         previewVector = 4.9;
     };
-
 	class BarrelBomb_EPOCH_Remote_Mag : Kit
     {
         nearby[] = {{"Fire","","fire",{1,{"ALL"}},3,1,1,0}};
@@ -1294,75 +1291,84 @@ class CfgCrafting
 	{
 		recipe[] = {{"ItemCanvas",2},{"ItemPipe",3}};
 		model = "\x\addons\a3_epoch_community\models\tent_camo.p3d";
-		previewPosition[] = {0.79545,1,0.42};
-		previewScale = 0.3;
+		previewPosition[] = {0.8,1,0.3};
+		previewScale = 0.5;
 		previewVector = 0.3;
 	};
 	class KitTentDome : Kit
 	{
 		recipe[] = {{"ItemCanvas",3},{"ItemPipe",4}};
 		model = "\x\addons\a3_epoch_community\models\tent_dome.p3d";
-		previewPosition[] = {0.79545,1,0.42};
-		previewScale = 0.3;
+		previewPosition[] = {0.8,1,0.3};
+		previewScale = 0.5;
 		previewVector = 0.3;
+	};
+	class ItemWaterPurificationTablets : Part
+	{
+		usedIn[] = {"ItemBottlePlastic_Clean","ItemCanteen_Clean"};
+		previewPosition[] = {0.8,1,0.26};
+		previewScale = 1;
+		previewVector = 1;
 	};
 	class ItemBottlePlastic_Empty : Part
 	{
 		usedIn[] = {"ItemBottlePlastic_Dirty"};
-		previewPosition[] = {0.807346,1,0.43035};
-		previewScale = 2.5;
+		previewPosition[] = {0.8,1,0.26};
+		previewScale = 1;
+		previewVector = 1;
 	};
 	class ItemBottlePlastic_Dirty: Item
 	{
 		usedIn[] = {"ItemBottlePlastic_Clean"};
         nearby[] = {{"Water source","","water",{2,{"water"}},3,1,0,0}};
         recipe[] = {"ItemBottlePlastic_Empty"};
-        previewPosition[] = {0.807346,1,0.43035};
-        previewScale = 2.5;
+		previewPosition[] = {0.8,1,0.26};
+		previewScale = 1;
+		previewVector = 1;
 	};
 	class ItemBottlePlastic_Clean : Item
 	{
-		usedIn[] = {};
 		recipe[] = {"ItemBottlePlastic_Dirty","ItemWaterPurificationTablets"};
-		previewPosition[] = {0.807346,1,0.43035};
-		previewScale = 2.5;
-		displayName = "Clean Water in a plastic bottle";
+		previewPosition[] = {0.8,1,0.26};
+		previewScale = 1;
+		previewVector = 1;
 	};
-
 	class ItemCanteen_Empty : Part
 	{
 		usedIn[] = {"ItemCanteen_Dirty"};
-		previewPosition[] = {0.807346,1,0.43035};
-		previewScale = 2.5;
+		previewPosition[] = {0.8,1,0.26};
+		previewScale = 1;
+		previewVector = 1;
 	};
 	class ItemCanteen_Dirty : Item
 	{
 		usedIn[] = {"ItemCanteen_Clean"};
 		nearby[] = {{"Water source","","water",{2,{"water"}},3,1,0,0}};
 		recipe[] = {"ItemCanteen_Empty"};
-		previewPosition[] = {0.807346,1,0.43035};
-		previewScale = 2.5;
+		previewPosition[] = {0.8,1,0.26};
+		previewScale = 1;
+		previewVector = 1;
 	};
 	class ItemCanteen_Clean : Item
 	{
 		usedIn[] = {};
 		recipe[] = {"ItemCanteen_Dirty","ItemWaterPurificationTablets"};
-		previewPosition[] = {0.807346,1,0.43035};
-		previewScale = 2.5;
-		displayName = "Clean Water in a canteen";
+		previewPosition[] = {0.8,1,0.26};
+		previewScale = 1;
+		previewVector = 1;
 	};
     class lighter_epoch : Part
     {
         usedIn[] = {"KitBurnBarrel"};
 		previewPosition[] = {0.79545,1,0.234395};
         previewScale = 2.5;
-		previewVector = 0.5;
+		previewVector = -90;
     };
     class KitBurnBarrel : Kit
     {
         recipe[] = {{"ItemBarrelE",1},{"jerrycan_epoch",1},{"WoodLog_EPOCH",3},{"lighter_epoch",1}};
 		model = "\A3\Structures_F\Items\Vessels\MetalBarrel_empty_F.p3d";
-		previewPosition[] = {0.79545,1,0.234395};
+		previewPosition[] = {0.8,1,0.26};
 		previewScale = 0.30;
     };
     class KitLightPole : Kit
@@ -1388,8 +1394,8 @@ class CfgCrafting
         recipe[] = {{"ItemPipe",16},{"PartPlankPack",2},{"ItemRope",12},{"ItemCanvas",4}};
         nearby[] = {{"Workbench","","workbench",{1,{"WorkBench_EPOCH"}},3,1,0,1}};
 		model = "\A3\Structures_F\Civ\Constructions\Scaffolding_F.p3d";
-        previewPosition[] = {0.82,1,0.27};
-        previewScale = 0.021;
+        previewPosition[] = {0.8,1,0.27};
+        previewScale = 0.02;
         previewVector = 0;
     };
     class KitSink : Kit
@@ -1397,8 +1403,8 @@ class CfgCrafting
         recipe[] = {{"ItemCorrugatedLg",2},{"ItemPipe",1},{"ItemCorrugated",2}};
         nearby[] = {{"Workbench","","workbench",{1,{"WorkBench_EPOCH"}},3,1,0,1}};
 		model = "\A3\Structures_F\Civ\Accessories\Sink_F.p3d";
-        previewPosition[] = {0.796787,1,0.27};
-        previewScale = 0.1;
+        previewPosition[] = {0.8,1,0.27};
+        previewScale = 0.15;
         previewVector = 0;
     };
     class KitPortableLight_Single : Kit
@@ -1432,31 +1438,31 @@ class CfgCrafting
         recipe[] = {{"ItemCanvas",1},{"ItemPipe",1},{"ItemRope",1},{"ItemStick",4}};
         nearby[] = {{"Workbench","","workbench",{1,{"WorkBench_EPOCH"}},3,1,0,1}};
 		model = "\A3\Structures_F_EPC\Civ\Camping\Sunshade_03_F.p3d";
-        previewPosition[] = {0.796787,1,0.22};
-        previewScale = 0.06;
+        previewPosition[] = {0.796787,1,0.27};
+        previewScale = 0.09;
         previewVector = 0;
     };
     class KitSandbagWall : Kit
     {
         recipe[] = {{"ItemBurlap",2},{"MortarBucket",2}};
 		model = "A3\Structures_F\Mil\BagFence\BagFence_Short_F.p3d";
-        previewPosition[] = {0.796787,1,0.22};
-        previewScale = 0.15;
+        previewPosition[] = {0.8,1,0.27};
+        previewScale = 0.17;
         previewVector = 0;
     };
     class KitSandbagWallLong : Kit
     {
         recipe[] = {{"ItemBurlap",4},{"MortarBucket",4}};
 		model = "A3\Structures_F\Mil\BagFence\BagFence_Long_F.p3d";
-        previewPosition[] = {0.796787,1,0.22};
-        previewScale = 0.1;
+        previewPosition[] = {0.8,1,0.27};
+        previewScale = 0.12;
         previewVector = 0;
     };
     class KitBagBunker : Kit
     {
         recipe[] = {{"ItemBurlap",8},{"MortarBucket",8},{"KitWoodFloor",1},{"PartPlankPack",2}};
 		model = "\A3\Structures_F\Mil\BagBunker\BagBunker_Small_F.p3d";
-        previewPosition[] = {0.81,1,0.22};
+        previewPosition[] = {0.8,1,0.27};
         previewScale = 0.055;
         previewVector = 0;
     };
@@ -1464,7 +1470,7 @@ class CfgCrafting
     {
         recipe[] = {{"PartPlankPack",6},{"CinderBlocks",1}};
 		model = "\A3\Structures_F\Walls\BarGate_F.p3d";
-        previewPosition[] = {0.796787,1,0.22};
+        previewPosition[] = {0.8,1,0.26};
         previewScale = 0.035;
         previewVector = 0;
     };
@@ -1472,8 +1478,8 @@ class CfgCrafting
     {
         recipe[] = {{"CinderBlocks",4},{"MortarBucket",4},{"ItemPipe",2},{"ItemCorrugated",2}};
 		model = "\A3\Structures_F\Civ\Accessories\Water_source_F.p3d";
-        previewPosition[] = {0.796787,1,0.25};
-        previewScale = 0.08;
+        previewPosition[] = {0.8,1,0.27};
+        previewScale = 0.09;
         previewVector = 0;
     };
 };
