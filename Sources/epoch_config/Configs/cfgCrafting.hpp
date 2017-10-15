@@ -251,7 +251,7 @@ class CfgCrafting
     };
     class ItemRock : Part
     {
-        usedIn[] = {"KitFirePlace","MeleeMaul","CrudeHatchet","MortarBucket"};
+        usedIn[] = {"KitFirePlace","MeleeMaul","CrudeHatchet","MortarBucket","Kit_Garden"};
         previewPosition[] = {0.796998,1,0.35};
         previewScale = 1.3;
     };
@@ -703,7 +703,7 @@ class CfgCrafting
     };
     class water_epoch : Item
     {
-        usedIn[] = {"clean_water_epoch", "MortarBucket","ItemCopperBar","ItemCopperBar10oz","ItemGoldBar","ItemSilverBar","ItemGoldBar10oz","ItemSilverBar10oz","ItemAluminumBar","ItemAluminumBar10oz","ItemTinBar","ItemTinBar10oz"};
+        usedIn[] = {"clean_water_epoch", "MortarBucket","ItemCopperBar","ItemCopperBar10oz","ItemGoldBar","ItemSilverBar","ItemGoldBar10oz","ItemSilverBar10oz","ItemAluminumBar","ItemAluminumBar10oz","ItemTinBar","ItemTinBar10oz","Kit_Garden"};
         nearby[] = {{"Water source","","water",{2,{"water"}},3,1,0,0}};
         recipe[] = {"emptyjar_epoch"};
         previewPosition[] = {0.807346,1,0.43035};
