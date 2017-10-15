@@ -3082,6 +3082,10 @@ class CfgPricing
     {
         price = 10;
     };
+    class KitBarbedWire
+    {
+        price = 100;
+    };
     class KitWoodFoundation
     {
         price = 20;
