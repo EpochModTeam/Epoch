@@ -53,15 +53,15 @@ disableRandomization[] = {"All"};
 
 showHUD[] =
 {
-	true, // Scripted HUD (same as showHUD command)
-	true, // Vehicle + soldier info
-	true, // Vehicle radar
-	true, // Vehicle compass
-	true, // Tank direction indicator
-	false, // Commanding menu
-	false, // Group Bar
-	true, // HUD Weapon Cursors
-	false // Squad Radar
+	true, 	// Scripted HUD (same as showHUD command)
+	true, 	// Vehicle + soldier info
+	true, 	// Vehicle radar
+	true, 	// Vehicle compass
+	true, 	// Tank direction indicator
+	false, 	// Commanding menu
+	false, 	// Group Bar
+	true, 	// HUD Weapon Cursors
+	true 	// Vehicle display panels
 };
 
 #include "Configs\CfgServicePoint.hpp"
