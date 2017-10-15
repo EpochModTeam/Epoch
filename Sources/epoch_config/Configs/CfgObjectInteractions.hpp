@@ -66,6 +66,10 @@ class CfgObjectInteractions
     {
         interactMode = 4;
     };
+    class Garden_EPOCH : Default
+    {
+        interactMode = 4;
+    };
     class Foundation_EPOCH : Default
     {
         interactMode = 1;
