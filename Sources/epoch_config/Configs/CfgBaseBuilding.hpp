@@ -287,6 +287,14 @@ class CfgBaseBuilding
         removeParts[] = {};
     };
     class Garden_Ghost_EPOCH : Garden_SIM_EPOCH {};
+	class BarbedWire_EPOCH : Default
+    {
+        removeParts[] = {{"ItemScraps",10},{"ItemRope",2}};
+        simulClass = "BarbedWire_EPOCH";
+        staticClass = "BarbedWire_EPOCH";
+        GhostPreview = "BarbedWire_EPOCH";
+        energyCost = 0.5;
+    };
     class CinderFloor_EPOCH : Default
     {
         removeParts[] = {{"CinderBlocks",2},{"MortarBucket",2}};

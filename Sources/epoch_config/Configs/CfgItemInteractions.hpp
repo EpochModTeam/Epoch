@@ -553,6 +553,10 @@ class CfgItemInteractions
     {
         buildClass = "WaterPump_EPOCH";
     };
+    class KitBarbedWire : Item_Build_base
+    {
+        buildClass = "BarbedWire_EPOCH";
+    };
     class PaintCanBase : Default
     {
         interactAction = 12;

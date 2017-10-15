@@ -279,7 +279,7 @@ class CfgCrafting
     };
     class ItemRope : Item
     {
-        usedIn[] = {"WoodClub","MeleeMaul","CrudeHatchet","MeleeRod","KitSunShade","KitScaffolding"};
+        usedIn[] = {"WoodClub","MeleeMaul","CrudeHatchet","MeleeRod","KitSunShade","KitScaffolding","KitBarbedWire"};
         nearby[] = {{"Workbench","","workbench",{1,{"WorkBench_EPOCH"}},3,1,0,1}};
         recipe[] = {{"ItemKiloHemp",1}};
         previewPosition[] = {0.8,1,0.35};
@@ -331,7 +331,7 @@ class CfgCrafting
     };
     class ItemScraps : Item
     {
-        usedIn[] = {"ItemCorrugated","KitMetalTrap","MeleeRod","KitVehicleUpgradeIV_200_EPOCH"};
+        usedIn[] = {"ItemCorrugated","KitMetalTrap","MeleeRod","KitVehicleUpgradeIV_200_EPOCH","KitBarbedWire"};
         nearby[] = {{"Fire","","fire",{1,{"ALL"}},3,1,1,0}};
         recipe[] = {{"PartOre",2}};
         previewPosition[] = {0.797144,1,0.309158};
@@ -728,7 +728,7 @@ class CfgCrafting
     };
     class ItemCorrugatedLg : Item
     {
-        usedIn[] = {"KitPlotPole","KitTankTrap","KitHesco3","KitSolarGen","ItemRotor","EngineBlock","KitMetalFloor","KitMetalTower","KitFieldToilet","KitSink","KitPortableLight_Single","KitPortableLight_Double"};
+        usedIn[] = {"KitPlotPole","KitTankTrap","KitHesco3","KitSolarGen","ItemRotor","EngineBlock","KitMetalFloor","KitMetalTower","KitFieldToilet","KitSink","KitPortableLight_Single","KitPortableLight_Double","KitBarbedWire"};
         recipe[] = {{"ItemCorrugated",3}};
         nearby[] = {{"Workbench","","workbench",{1,{"WorkBench_EPOCH"}},3,1,0,1}};
         previewPosition[] = {0.797491,1,0.32899};
@@ -966,12 +966,21 @@ class CfgCrafting
     };
 	class Kit_Garden : Kit
     {
-        recipe[] = {{"ItemRock",4},{"water_epoch",4}}; // temp
+        recipe[] = {{"ItemRock",4},{"water_epoch",4},{"PartPlankPack",4}};
         nearby[] = {{"Workbench","","workbench",{1,{"WorkBench_EPOCH"}},3,1,0,1}};
         model = "\x\addons\a3_epoch_community\models\Farming\epoch_Garden.p3d";
 		previewPosition[] = {0.800198,1,0.262418};
 		previewScale = 0.055;
 		previewVector = 3.6;
+    };
+	class KitBarbedWire : Kit
+    {
+        recipe[] = {{"ItemCorrugatedLg",2},{"ItemScraps",10},{"ItemRope",4}};
+        nearby[] = {{"Workbench","","workbench",{1,{"WorkBench_EPOCH"}},3,1,0,1}};
+        model = "x\addons\a3_epoch_community\models\barbed_wire.p3d";
+		previewPosition[] = {0.8,1,0.3};
+		previewScale = 0.038;
+		previewVector = 0;
     };
     class KitPlotPole : Kit
     {
