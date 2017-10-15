@@ -34,7 +34,7 @@ if ((["flare", tolower _weaponTurret] call BIS_fnc_inString) || (["smoke", tolow
 _ammoTurret = getArray(configFile >> "CfgWeapons" >> _weaponTurret >> "magazines");
 _availAmmo = (magazines player) arrayIntersect _ammoTurret;
 if (count _availAmmo == 0) then {
-	[format["You need a can of %1 or any of its variants",_ammoTurret select 0],5] call Epoch_message;
+	[format["You need a can of %1 or any of its variants",getText (configFile >> 'CfgMagazines' >> (_ammoTurret select 0) >> 'displayName')],5] call Epoch_message;
 }
 else {
 	_ammo = _availAmmo select 0;

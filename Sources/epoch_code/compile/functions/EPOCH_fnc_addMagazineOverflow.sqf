@@ -38,23 +38,29 @@ if (player canAdd _item) then {
 	_return = 3;
 	if(_canDrop)then{
         _wH = objNull;
-        if (isNil "_nearByHolder") then {
-            _nearByHolder = nearestObjects [player,["groundWeaponHolder"],3];
-        };
-        if (_nearByHolder isEqualTo []) then {
-            _wHPos = player modelToWorld [0,1,0];
-            if (surfaceIsWater _wHPos) then {
-                _wHPos = ASLToATL _wHPos;
-            };
-            _wH = createVehicle ["groundWeaponHolder",_wHPos, [], 0, "CAN_COLLIDE"];
-        } else {
-            _wH = _nearByHolder select 0;
-        };
+		if (player != vehicle player && vehicle player canAdd _item) then {
+			_return = 4;
+			_wh = vehicle player;
+		}
+		else {
+			_return = 2;
+			if (isNil "_nearByHolder") then {
+				_nearByHolder = nearestObjects [player,["groundWeaponHolder"],3];
+			};
+			if (_nearByHolder isEqualTo []) then {
+				_wHPos = player modelToWorld [0,1,0];
+				if (surfaceIsWater _wHPos) then {
+					_wHPos = ASLToATL _wHPos;
+				};
+				_wH = createVehicle ["groundWeaponHolder",_wHPos, [], 0, "CAN_COLLIDE"];
+			} else {
+				_wH = _nearByHolder select 0;
+			};
+		};
         if !(isNull _wh) then {
             //_wh addItemCargoGlobal [_item,1];
 			_wh addMagazineAmmoCargo [_item, 1, _count];
         };
-		_return = 2;
     };
 };
 _return

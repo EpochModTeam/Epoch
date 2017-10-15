@@ -39,5 +39,6 @@ _msg = switch _return do {
 	case 1: {format ["Removed 1 can %1 with %2 rounds from %3",_magtxt,_magAmmoCount, _weapontxt]};
 	case 2: {format ["Dropped 1 can of %1 with %2 rounds on the ground!",_magtxt,_magAmmoCount, _weapontxt]};
 	case 3: {format ["You dont have enough space for %1!",_magtxt]};
+	case 4: {format ["Put 1 can of %1 with %2 rounds into Vehicle!",_magtxt,_magAmmoCount, _weapontxt]};
 };
 [_msg,5] call Epoch_message;
