@@ -269,6 +269,15 @@ class CfgBaseBuilding
         allowedSnapPoints[] = {"N","S","E","W"};
         energyCost = 0.5;
     };
+    class CinderWall_window_EPOCH : Default
+    {
+        removeParts[] = {{"CinderBlocks",4},{"ItemCorrugatedLg",2},{"ItemGlass",1}};
+        staticClass = "CinderWall_window_EPOCH";
+        snapType = "snapPointsPara";
+        snapPointsPara[] = {"N","E","W"};
+        allowedSnapPoints[] = {"N","S","E","W"};
+        energyCost = 0.5;
+    };	
 	// Kit_Garden
 	class Garden_EPOCH : Default
     {
@@ -338,7 +347,7 @@ class CfgBaseBuilding
     class CinderWallHalf_Ghost_EPOCH : CinderWallHalf_SIM_EPOCH {};
     class CinderWall_EPOCH : Default
     {
-        upgradeBuilding[] = {{"CinderWallGarage_EPOCH",{{"ItemCorrugatedLg",1},{"CircuitParts",1}}},{"CinderWallDoorwHatch_EPOCH",{{"ItemCorrugatedLg",1},{"CircuitParts",1}}}};
+        upgradeBuilding[] = {{"CinderWallGarage_EPOCH",{{"ItemCorrugatedLg",1},{"CircuitParts",1}}},{"CinderWallDoorwHatch_EPOCH",{{"ItemCorrugatedLg",1},{"CircuitParts",1}}},{"CinderWall_window_EPOCH",{{"ItemCorrugatedLg",2},{"ItemGlass",1}}}};
         removeParts[] = {{"CinderBlocks",4},{"ItemRock",2}};
         simulClass = "CinderWall_SIM_EPOCH";
         staticClass = "CinderWall_EPOCH";
