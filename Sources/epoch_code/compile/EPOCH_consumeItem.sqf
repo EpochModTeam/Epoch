@@ -62,30 +62,33 @@ switch _interactOption do {
 		_magazineSizeMax = getNumber (configfile >> "CfgMagazines" >> _item >> "count");
 		// allow repack for all magazines with greater than 1 bullet
 		if (_magazineSizeMax > 1) then {
-
-			_magazineSize = 0;
-			_magazinesAmmoFull = magazinesAmmoFull player;
-			{
-				if (_item isEqualTo (_x select 0)) then {
-					if (!(_x select 2)) then {
-						_magazineSize = _magazineSize + (_x select 1);
-					};
+			[_item,_magazineSizeMax] spawn {
+				params ["_item","_magazineSizeMax"];
+				if (player == vehicle player) then {
+					closeDialog 0;
+					player playMove 'AinvPknlMstpSnonWrflDnon_medic0';
+					player playMove 'AinvPknlMstpSnonWrflDnon_medicEnd';
+					uisleep 5;
 				};
-			} forEach _magazinesAmmoFull;
-
-			// remove all
-			player removeMagazines _item;
-
-			// Add full magazines back to player
-			for "_i" from 1 to floor (_magazineSize / _magazineSizeMax) do
-			{
-			    player addMagazine [_item, _magazineSizeMax];
+				_magazineSize = 0;
+				_magazinesAmmoFull = magazinesAmmoFull player;
+				{
+					if (_item isEqualTo (_x select 0)) then {
+						if (!(_x select 2)) then {
+							_magazineSize = _magazineSize + (_x select 1);
+						};
+					};
+				} forEach _magazinesAmmoFull;
+				player removeMagazines _item;
+				for "_i" from 1 to floor (_magazineSize / _magazineSizeMax) do
+				{
+					player addMagazine [_item, _magazineSizeMax];
+				};
+				if ((_magazineSize % _magazineSizeMax) > 0) then {
+					player addMagazine [_item, floor (_magazineSize % _magazineSizeMax)];
+				};
+				["Ammo Repacked", 5] call Epoch_message;
 			};
-			// Add last non full magazine
-			if ((_magazineSize % _magazineSizeMax) > 0) then {
-				player addMagazine [_item, floor (_magazineSize % _magazineSizeMax)];
-			};
- 			["Ammo Repacked", 5] call Epoch_message;
 		};
 	};
 	case 1: _unifiedInteract; // Eat 1
@@ -170,15 +173,23 @@ switch _interactOption do {
 			_newFuel = _newFuel / _fuelCapacity;
 
 			if (_item call _removeItem) then {
-				_interactReturnOnUse call EPOCH_fnc_addItemOverflow;
-				// send
-				[_vehicle,_newFuel,player,Epoch_personalToken] remoteExec ["EPOCH_server_fillVehicle",2];
-
-				["Fuel Added", 5] call Epoch_message;
+				[_interactReturnOnUse,_vehicle,_newFuel] spawn {
+					params ["_interactReturnOnUse","_vehicle","_newFuel"];
+					closeDialog 0;
+					player playMove 'AinvPknlMstpSnonWrflDnon_medic0';
+					player playMove 'AinvPknlMstpSnonWrflDnon_medicEnd';
+					uisleep 5;
+					_interactReturnOnUse call EPOCH_fnc_addItemOverflow;
+					[_vehicle,_newFuel,player,Epoch_personalToken] remoteExec ["EPOCH_server_fillVehicle",2];
+					["Fuel Added", 5] call Epoch_message;
+				};
 			};
 		};
 	};
 	case 5: {
+		if !(player == vehicle player) exitwith {
+			["Siphon from outside!", 5] call Epoch_message;
+		};
 		_vehicles = player nearEntities [["LandVehicle","Ship","Air","Tank"], 30];
 		_canCapacity = _interactAttributes param [0,10];
 		if (cursorTarget in _vehicles) then {
@@ -187,9 +198,16 @@ switch _interactOption do {
 			_newFuel = (((fuel _vehicle) * _fuelCapacity) - _canCapacity) / _fuelCapacity;
 			if (_newFuel > 0) then {
 				if (_item call _removeItem) then {
-					_interactReturnOnUse call EPOCH_fnc_addItemOverflow;
-					[_vehicle,_newFuel,player,Epoch_personalToken] remoteExec ["EPOCH_server_fillVehicle",2];
-					["Fuel Siphoned", 5] call Epoch_message;
+					[_interactReturnOnUse,_vehicle,_newFuel] spawn {
+						params ["_interactReturnOnUse","_vehicle","_newFuel"];
+						closeDialog 0;
+						player playMove 'AinvPknlMstpSnonWrflDnon_medic0';
+						player playMove 'AinvPknlMstpSnonWrflDnon_medicEnd';
+						uisleep 5;
+						_interactReturnOnUse call EPOCH_fnc_addItemOverflow;
+						[_vehicle,_newFuel,player,Epoch_personalToken] remoteExec ["EPOCH_server_fillVehicle",2];
+						["Fuel Siphoned", 5] call Epoch_message;
+					};
 				};
 			} else {
 				["Not Enough Fuel", 5] call Epoch_message;
@@ -204,8 +222,15 @@ switch _interactOption do {
 
 			if (_transportFuel > _canCapacity) then {
 				if (_item call _removeItem) then {
-					_interactReturnOnUse call EPOCH_fnc_addItemOverflow;
-					["Fuel Siphoned", 5] call Epoch_message;
+					[_interactReturnOnUse] spawn {
+						params ["_interactReturnOnUse"];
+						closeDialog 0;
+						player playMove 'AinvPknlMstpSnonWrflDnon_medic0';
+						player playMove 'AinvPknlMstpSnonWrflDnon_medicEnd';
+						uisleep 5;
+						_interactReturnOnUse call EPOCH_fnc_addItemOverflow;
+						["Fuel Siphoned", 5] call Epoch_message;
+					};
 				};
 			} else {
 				["Not Enough Fuel", 5] call Epoch_message;
@@ -217,49 +242,66 @@ switch _interactOption do {
 	case 8: _unifiedInteract; //Cold -1
 	case 9: _unifiedInteract; //Energy 100
 	case 10: { // Repair 10 - Lite
+		if !(player == vehicle player) exitwith {
+			["Repair from outside!", 5] call Epoch_message;
+		};
 		_vehicles = player nearEntities [["LandVehicle","Ship","Air","Tank"], 30];
 		_vehicle = cursorTarget;
 		if (_vehicle in _vehicles) then {
 
 			if (_item call _removeItem) then {
-
-				_highestDMG = 0;
-				_currentHIT = -1;
-				_currentDMG = 0;
-				{
-					_currentDMG = _x;
-					if (_currentDMG > _highestDMG) then {
-					    _highestDMG = _currentDMG;
-						_currentHIT = _forEachIndex;
-					};
-				}forEach ((getAllHitPointsDamage _vehicle) param [2,[]]);
-
-				if (_highestDMG > 0) then {
-
-					_newDMG = ((_highestDMG - 0.5) max 0);
-
-					if (local _vehicle) then {
-						[_vehicle, [[_currentHIT, _newDMG]] ] call EPOCH_client_repairVehicle;
+				[_vehicle] spawn {
+					params ["_vehicle"];
+					closeDialog 0;
+					player playMove 'AinvPknlMstpSnonWrflDnon_medic0';
+					player playMove 'AinvPknlMstpSnonWrflDnon_medicEnd';
+					_vehicle say3d 'vehicle_repair';
+					uisleep 5;
+					_highestDMG = 0;
+					_currentHIT = -1;
+					_currentDMG = 0;
+					{
+						_currentDMG = _x;
+						if (_currentDMG > _highestDMG) then {
+							_highestDMG = _currentDMG;
+							_currentHIT = _forEachIndex;
+						};
+					}forEach ((getAllHitPointsDamage _vehicle) param [2,[]]);
+					if (_highestDMG > 0) then {
+						_newDMG = ((_highestDMG - 0.5) max 0);
+						if (local _vehicle) then {
+							[_vehicle, [[_currentHIT, _newDMG]] ] call EPOCH_client_repairVehicle;
+						} else {
+							[_vehicle,[[_currentHIT,_newDMG]],player,Epoch_personalToken] remoteExec ["EPOCH_server_repairVehicle",2];
+						};
 					} else {
-						[_vehicle,[[_currentHIT,_newDMG]],player,Epoch_personalToken] remoteExec ["EPOCH_server_repairVehicle",2];
+						if ((damage _vehicle) > 0) then {
+							[_vehicle,["ALL",0],player,Epoch_personalToken] remoteExec ["EPOCH_server_repairVehicle",2];
+						};
 					};
-
-				} else {
-					if ((damage _vehicle) > 0) then {
-						[_vehicle,["ALL",0],player,Epoch_personalToken] remoteExec ["EPOCH_server_repairVehicle",2];
-					};
+					["Vehicle Partially Repaired", 5] call Epoch_message;
 				};
-				["Vehicle Partially Repaired", 5] call Epoch_message;
 			};
 		};
 	};
 	case 11: { // Repair 11 - Heavy
+		if !(player == vehicle player) exitwith {
+			["Repair from outside!", 5] call Epoch_message;
+		};
 		_vehicles = player nearEntities [["LandVehicle","Ship","Air","Tank"], 30];
 		_vehicle = cursorTarget;
 		if (_vehicle in _vehicles) then {
 			if (_item call _removeItem) then {
-				[_vehicle,["ALL",0],player,Epoch_personalToken] remoteExec ["EPOCH_server_repairVehicle",2];
-				["Vehicle Fully Repaired", 5] call Epoch_message;
+				[_vehicle] spawn {
+					params ["_vehicle"];
+					closeDialog 0;
+					player playMove 'AinvPknlMstpSnonWrflDnon_medic0';
+					player playMove 'AinvPknlMstpSnonWrflDnon_medicEnd';
+					uisleep 5;
+					_vehicle say3d 'vehicle_repair';
+					[_vehicle,["ALL",0],player,Epoch_personalToken] remoteExec ["EPOCH_server_repairVehicle",2];
+					["Vehicle Fully Repaired", 5] call Epoch_message;
+				};
 			};
 		};
 	};
@@ -300,11 +342,20 @@ switch _interactOption do {
 		};
 		if (damage _vehicle != 0 || {_x > 0} count ((getallhitpointsdamage _vehicle) select 2) > 0) then {
 			if (_item call _removeItem) then {
-				[_vehicle,["ALL",0],player,Epoch_personalToken] remoteExec ["EPOCH_server_repairVehicle",2];
-				if (_vehicle isEqualTo player) then {
-					["Healed yourself", 5] call Epoch_message;
-				} else {
-					["Healed other player", 5] call Epoch_message;
+				[_vehicle] spawn {
+					params ["_vehicle"];
+					if (player == vehicle player) then {
+						closeDialog 0;
+						player playMove 'AinvPknlMstpSnonWrflDnon_medic0';
+						player playMove 'AinvPknlMstpSnonWrflDnon_medicEnd';
+						uisleep 5;
+					};
+					[_vehicle,["ALL",0],player,Epoch_personalToken] remoteExec ["EPOCH_server_repairVehicle",2];
+					if (_vehicle isEqualTo player) then {
+						["Healed yourself", 5] call Epoch_message;
+					} else {
+						["Healed other player", 5] call Epoch_message;
+					};
 				};
 			};
 		};
@@ -332,21 +383,30 @@ switch _interactOption do {
 		_vehicle = player;
 		if (damage _vehicle != 0 || {_x > 0} count ((getallhitpointsdamage _vehicle) select 2) > 0) then {
 			if (call _unifiedInteract) then {
-				private _out = [];
-				{
-					if (_x > 0) then {
-						_out pushback [_foreachindex,((_x - 0.2) min 0.45) max 0];
+				[_vehicle,_item] spawn {
+					params ["_vehicle","_item"];
+					if (player == vehicle player) then {
+						closeDialog 0;
+						player playMove 'AinvPknlMstpSnonWrflDnon_medic0';
+						player playMove 'AinvPknlMstpSnonWrflDnon_medicEnd';
+						uisleep 5;
 					};
-				}forEach ((getAllHitPointsDamage _vehicle) param [2,0]);
-				if (_out isequalto []) then {
-					if ((damage _vehicle) > 0) then {
-						_out = ["ALL",0];
+					private _out = [];
+					{
+						if (_x > 0) then {
+							_out pushback [_foreachindex,((_x - 0.2) min 0.45) max 0];
+						};
+					}forEach ((getAllHitPointsDamage _vehicle) param [2,0]);
+					if (_out isequalto []) then {
+						if ((damage _vehicle) > 0) then {
+							_out = ["ALL",0];
+						};
 					};
+					if !(_out isequalto []) then {
+						[_vehicle,_out,player,Epoch_personalToken] remoteExec ["EPOCH_server_repairVehicle",2];
+					};
+					[format["Used %1 on yourself",_item call EPOCH_itemDisplayName], 5] call Epoch_message;
 				};
-				if !(_out isequalto []) then {
-					[_vehicle,_out,player,Epoch_personalToken] remoteExec ["EPOCH_server_repairVehicle",2];
-				};
-				[format["Used %1 on yourself",_item call EPOCH_itemDisplayName], 5] call Epoch_message;
 			};
 		};
 	};
