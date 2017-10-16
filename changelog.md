@@ -37,6 +37,7 @@ All changes for [Arma 3](https://arma3.com/) [Epoch Mod](https://epochmod.com) a
 - Map support for Chernarus Redux. @xDrokZ and @morgoth0
 
 ### Changed
+- Mineral nodes can now only be harvested using the sledge hammer.
 - Crafting recipes can now have item requirements and Crafting metal bars now require Smelting Tools.
 - Player save and login optimized to use get|setUnitLoadout.
 - Karma now persists death and moved to community stats.
