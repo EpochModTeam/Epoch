@@ -6085,35 +6085,5 @@ class Mission
 			};
 			id=402;
 		};
-		class Item204
-		{
-			dataType="Group";
-			side="Civilian";
-			class Entities
-			{
-				items=1;
-				class Item0
-				{
-					dataType="Object";
-					class PositionInfo
-					{
-						position[]={8.4882975,0,8.1249542};
-						angles[]={0,4.7169838,0};
-					};
-					side="Civilian";
-					flags=3;
-					class Attributes
-					{
-						isPlayable=1;
-					};
-					id=405;
-					type="VirtualMan_EPOCH";
-				};
-			};
-			class Attributes
-			{
-			};
-			id=404;
-		};
 	};
 };
