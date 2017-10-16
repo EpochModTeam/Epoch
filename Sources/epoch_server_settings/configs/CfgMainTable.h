@@ -28,6 +28,34 @@ class CfgMainTable
 		LootMax = 6;
 		tables[] = { "Tree" };
 	};
+	class Rock : Default
+	{
+		chance = 1;
+		lootMin = 3;
+		LootMax = 6;
+		tables[] = { "Rock" };
+	};
+	class Ore : Default
+	{
+		chance = 1;
+		lootMin = 3;
+		LootMax = 6;
+		tables[] = { "Mine" };
+	};
+	class Cinder : Default
+	{
+		chance = 1;
+		lootMin = 3;
+		LootMax = 6;
+		tables[] = { "Cinder" };
+	};
+	class Wreck : Default
+	{
+		chance = 1;
+		lootMin = 3;
+		LootMax = 6;
+		tables[] = { "Wreck" };
+	};
 	class Bush : Default
 	{
 		chance = 1;
@@ -230,27 +258,24 @@ class CfgMainTable
 		lootMin = 3;
 		LootMax = 6;
 		tables[] = { "Shipwreck" };
-		antagonists[] = {
-				{ "GreatWhite", 1 }
-		};
 	};
 	class MineralDepositCopper_EPOCH : Default
 	{
 		lootMin = 5;
 		LootMax = 10;
-		tables[] = { "Mine" };
+		tables[] = { "CopperMine" };
 	};
 	class MineralDepositGold_EPOCH : Default
 	{
 		lootMin = 5;
 		LootMax = 10;
-		tables[] = { "Mine" };
+		tables[] = { "GoldMine" };
 	};
 	class MineralDepositSilver_EPOCH : Default
 	{
 		lootMin = 5;
 		LootMax = 10;
-		tables[] = { "Mine" };
+		tables[] = { "SilverMine" };
 	};
 	class Shelf_EPOCH : Default
 	{

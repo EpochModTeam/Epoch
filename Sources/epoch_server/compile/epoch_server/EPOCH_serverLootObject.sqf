@@ -27,6 +27,7 @@ if !(EPOCH_forcedLootSpawnTable isEqualTo "") then {
 _randomizeMagazineAmmoCount = ["CfgEpochClient", "randomizeMagazineAmmoCount", true] call EPOCH_fnc_returnConfigEntryV2;
 if (isnull _object && !(_pos isequalto [])) then {
 	_object = createVehicle ["groundWeaponHolder",_pos,[],0,"CAN_COLLIDE"];
+	_object setPosATL _pos;
 };
 if !(isNull _object) then{
 	_lootTable = ["CfgMainTable", _type, "tables"] call EPOCH_fnc_weightedArray;

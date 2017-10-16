@@ -20,6 +20,25 @@ class CfgLootTable_CUP
 				{ { "WoodLog_EPOCH", "magazine" }, 1 }
 		};
 	};
+	class Rock
+	{
+		items[] = {
+				{ { "PartOre", "magazine" }, 1 },
+				{ { "ItemRock", "magazine" }, 2 }
+		};
+	};
+	class Cinder
+	{
+		items[] = {
+				{ { "CinderBlocks", "magazine" }, 1 }
+		};
+	};
+	class Wreck
+	{
+		items[] = {
+				{ { "ItemScraps", "magazine" }, 1 }
+		};
+	};
 	class Bush
 	{
 		items[] = {
@@ -1338,6 +1357,33 @@ class CfgLootTable_CUP
 				{ { "PartOreGold", "magazine" }, 20 },
 				{ { "PartOreSilver", "magazine" }, 30 },
 				{ { "PartOre", "magazine" }, 35 }
+		};
+	};
+	class CopperMine
+	{
+		items[] = {
+				{ { "Gems", "CfgLootTable" }, 15 },
+				{ { "PartOreGold", "magazine" }, 20 },
+				{ { "PartOreSilver", "magazine" }, 30 },
+				{ { "PartOre", "magazine" }, 35 }
+		};
+	};
+	class SilverMine
+	{
+		items[] = {
+				{ { "Gems", "CfgLootTable" }, 15 },
+				{ { "PartOreGold", "magazine" }, 20 },
+				{ { "PartOreSilver", "magazine" }, 35 },
+				{ { "PartOre", "magazine" }, 30 }
+		};
+	};
+	class GoldMine
+	{
+		items[] = {
+				{ { "Gems", "CfgLootTable" }, 20 },
+				{ { "PartOreGold", "magazine" }, 35 },
+				{ { "PartOreSilver", "magazine" }, 20 },
+				{ { "PartOre", "magazine" }, 25 }
 		};
 	};
 	class Food
