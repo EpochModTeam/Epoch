@@ -328,30 +328,25 @@ switch _interactOption do {
 		};
 	};
 
-	case 16: { //Heal hitpoint with most damage first
+	case 16: { // Morphine
 		_vehicle = player;
 		if (damage _vehicle != 0 || {_x > 0} count ((getallhitpointsdamage _vehicle) select 2) > 0) then {
 			if (call _unifiedInteract) then {
-				_highestDMG = 0;
-				_currentHIT = -1;
-				_currentDMG = 0;
+				private _out = [];
 				{
-					_currentDMG = _x;
-					if (_currentDMG > _highestDMG) then {
-						_highestDMG = _currentDMG;
-						_currentHIT = _forEachIndex;
+					if (_x > 0) then {
+						_out pushback [_foreachindex,((_x - 0.2) min 0.45) max 0];
 					};
-				}forEach ((getAllHitPointsDamage _vehicle) param [2,[]]);
-				if (_highestDMG > 0) then {
-					_newDMG = ((_highestDMG - 0.5) max 0);
-					[_vehicle,[[_currentHIT,_newDMG]],player,Epoch_personalToken] remoteExec ["EPOCH_server_repairVehicle",2];
-				} else {
+				}forEach ((getAllHitPointsDamage _vehicle) param [2,0]);
+				if (_out isequalto []) then {
 					if ((damage _vehicle) > 0) then {
-						[_vehicle,["ALL",0],player,Epoch_personalToken] remoteExec ["EPOCH_server_repairVehicle",2];
+						_out = ["ALL",0];
 					};
 				};
-				private _itemName = _item call EPOCH_itemDisplayName;
-				[format["Used %1 on yourself",_itemName], 5] call Epoch_message;
+				if !(_out isequalto []) then {
+					[_vehicle,_out,player,Epoch_personalToken] remoteExec ["EPOCH_server_repairVehicle",2];
+				};
+				[format["Used %1 on yourself",_item call EPOCH_itemDisplayName], 5] call Epoch_message;
 			};
 		};
 	};
