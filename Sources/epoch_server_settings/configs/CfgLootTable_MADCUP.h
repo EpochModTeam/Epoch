@@ -77,19 +77,19 @@ class CfgLootTable_MADCUP
 				{ { "EpochRadio8", "item" }, 1 },
 				{ { "EpochRadio9", "item" }, 1 },
 				{ { "ItemWatch", "item" }, 30 },
-				{ { "FAK", "item" }, 20 }
+				{ { "FAK", "magazine" }, 20 }
 		};
 	};
 	class Repairs
 	{
 		items[] = {
-				{ { "VehicleRepair", "item" }, 30 },
-				{ { "SpareTire", "item" }, 10 },
-				{ { "EngineParts", "item" }, 10 },
-				{ { "EngineBlock", "item" }, 10 },
-				{ { "ItemGlass", "item" }, 15 },
-				{ { "ItemDuctTape", "item" }, 20 },
-				{ { "ItemRotor", "item" }, 5 }
+				{ { "VehicleRepair", "magazine" }, 30 },
+				{ { "SpareTire", "magazine" }, 10 },
+				{ { "EngineParts", "magazine" }, 10 },
+				{ { "EngineBlock", "magazine" }, 10 },
+				{ { "ItemGlass", "magazine" }, 15 },
+				{ { "ItemDuctTape", "magazine" }, 20 },
+				{ { "ItemRotor", "magazine" }, 5 }
 		};
 	};
 	class Equipment
@@ -1402,7 +1402,7 @@ class CfgLootTable_MADCUP
 	class Medical
 	{
 		items[] = {
-				{ { "FAK", "item" }, 97 },
+				{ { "FAK", "magazine" }, 97 },
 				{ { "Heal_EPOCH", "item" }, 2 },
 				{ { "Defib_EPOCH", "item" }, 1 },
 				{ { "EnergyPack", "magazine" }, 1 }
