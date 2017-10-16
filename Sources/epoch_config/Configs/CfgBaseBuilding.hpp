@@ -412,7 +412,7 @@ class CfgBaseBuilding
     class WoodLargeWall_Ghost_EPOCH : WoodLargeWall_SIM_EPOCH {};
     class WoodWall1_EPOCH : Default
     {
-        upgradeBuilding[] = {{"WoodWall2_EPOCH",{{"PartPlankPack",1}}},{"WoodLargeWallCor_EPOCH",{{"ItemCorrugated",1}}}};
+        upgradeBuilding[] = {{"WoodWall2_EPOCH",{{"PartPlankPack",1}}},{"WoodLargeWallCor_EPOCH",{{"ItemCorrugated",1}}},{"WoodWallWindow_EPOCH",{{"ItemGlass",2}}}};
         removeParts[] = {{"PartPlankPack",2}};
         simulClass = "WoodWall1_SIM_EPOCH";
         staticClass = "WoodWall1_EPOCH";
@@ -428,6 +428,15 @@ class CfgBaseBuilding
         energyCost = 0.2;
         upgradeBuilding[] = {};
         removeParts[] = {};
+    };
+    class WoodWallWindow_EPOCH : Default
+    {
+        removeParts[] = {{"ItemGlass",2},{"PartPlankPack",2}};
+        staticClass = "WoodWallWindow_EPOCH";
+        snapType = "snapPointsPara";
+        snapPointsPara[] = {"N","E","W"};
+        allowedSnapPoints[] = {"N","S","E","W"};
+        energyCost = 0.5;
     };
     class WoodLargeWallCor_EPOCH : Default
     {
