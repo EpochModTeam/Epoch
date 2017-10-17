@@ -270,9 +270,100 @@ class CfgCrafting
         previewScale = 0.5;
         previewVector = 0;
     };
-    class ItemKiloHemp : Part
+	class ItemSeedBag : Item
+	{
+		nearby[] = {{"Workbench","","workbench",{1,{"WorkBench_EPOCH"}},3,1,0,1}};
+		usedIn[] = {"SeedPacket_Hemp","SeedPacket_GoldenSeal","SeedPacket_Poppy","SeedPacket_Pumpkin","SeedPacket_Sunflower"};
+		recipe[] = {{"ItemCanvas",1}};
+		previewPosition[] = {0.80573,1,0.461778};
+		previewScale = 0.5;
+		previewVector = 0;
+	};
+	class Hemp : Part
+	{
+		usedIn[] = {"ItemKiloHemp","SeedPacket_Hemp"};
+		previewPosition[] = {0.80573,1,0.461778};
+		previewScale = 0.5;
+		previewVector = 0;
+	};
+	class GoldenSeal : Part
+	{
+		usedIn[] = {"SeedPacket_GoldenSeal"};
+		previewPosition[] = {0.80573,1,0.461778};
+		previewScale = 0.5;
+		previewVector = 0;
+	};
+	class Poppy : Part
+	{
+		usedIn[] = {"SeedPacket_Poppy"};
+		previewPosition[] = {0.80573,1,0.461778};
+		previewScale = 0.5;
+		previewVector = 0;
+	};
+	class Pumpkin : Part
+	{
+		usedIn[] = {"SeedPacket_Pumpkin"};
+		previewPosition[] = {0.80573,1,0.461778};
+		previewScale = 0.5;
+		previewVector = 0;
+	};
+	class Sunflower : Part
+	{
+		usedIn[] = {"SeedPacket_Sunflower"};
+		previewPosition[] = {0.80573,1,0.461778};
+		previewScale = 0.5;
+		previewVector = 0;
+	};
+	class SeedPacket_Hemp : Item
     {
-        usedIn[] = {"ItemRope","ItemBurlap"};
+        nearby[] = {{"Workbench","","workbench",{1,{"WorkBench_EPOCH"}},3,1,0,1}};
+		recipe[] = {{"Hemp",1},{"ItemSeedBag",1}};
+		craftCount = 2;
+        previewPosition[] = {0.796267,1,0.322762};
+        previewScale = 0.9;
+        previewVector = 1.4;
+    };
+	class SeedPacket_GoldenSeal : Item
+	{
+		nearby[] = {{"Workbench","","workbench",{1,{"WorkBench_EPOCH"}},3,1,0,1}};
+		recipe[] = {{"GoldenSeal",1},{"ItemSeedBag",1}};
+		craftCount = 2;
+		previewPosition[] = {0.796267,1,0.322762};
+		previewScale = 0.9;
+		previewVector = 1.4;
+	};
+	class SeedPacket_Poppy : Item
+	{
+		nearby[] = {{"Workbench","","workbench",{1,{"WorkBench_EPOCH"}},3,1,0,1}};
+		recipe[] = {{"Poppy",1},{"ItemSeedBag",1}};
+		craftCount = 2;
+		previewPosition[] = {0.796267,1,0.322762};
+		previewScale = 0.9;
+		previewVector = 1.4;
+	};
+	class SeedPacket_Pumpkin : Item
+	{
+		nearby[] = {{"Workbench","","workbench",{1,{"WorkBench_EPOCH"}},3,1,0,1}};
+		recipe[] = {{"Pumpkin",1},{"ItemSeedBag",1}};
+		craftCount = 2;
+		previewPosition[] = {0.796267,1,0.322762};
+		previewScale = 0.9;
+		previewVector = 1.4;
+	};
+	class SeedPacket_Sunflower : Item
+	{
+		nearby[] = {{"Workbench","","workbench",{1,{"WorkBench_EPOCH"}},3,1,0,1}};
+		recipe[] = {{"Sunflower",1},{"ItemSeedBag",1}};
+		craftCount = 2;
+		previewPosition[] = {0.796267,1,0.322762};
+		previewScale = 0.9;
+		previewVector = 1.4;
+	};
+    class ItemKiloHemp : Item
+    {
+        usedIn[] = {"ItemRope","ItemBurlap","ItemCanvas"};
+		nearby[] = {{"Workbench","","workbench",{1,{"WorkBench_EPOCH"}},3,1,0,1}};
+		recipe[] = {{"Hemp",2}};
         previewPosition[] = {0.796267,1,0.322762};
         previewScale = 0.9;
         previewVector = 1.4;
@@ -1260,9 +1351,11 @@ class CfgCrafting
         previewScale = 0.2;
         previewVector = 0.5;
     };
-    class ItemCanvas : Part
+    class ItemCanvas : Item
     {
         usedIn[] = {"KitTentA","KitTentDome","KitSunShade","KitWatchTower","KitScaffolding"};
+		nearby[] = {{"Workbench","","workbench",{1,{"WorkBench_EPOCH"}},3,1,0,1}};
+		recipe[] = {{"ItemKiloHemp",1}};
         previewPosition[] = {0.802443,1,0.254301};
         previewScale = 0.8;
         previewVector = 4.9;

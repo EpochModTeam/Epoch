@@ -290,18 +290,32 @@ class CfgLootTable_CUP
 				{ { "CanFood", "CfgLootTable" }, 8 },
 				{ { "Primitive", "CfgLootTable" }, 21 },
 				{ { "lighter_epoch", "magazine" }, 1 },
+				{ { "Seeds", "CfgLootTable" }, 1 },
 				{ { "ItemAluminumBar", "magazine" }, 2 },
 				{ { "ItemCopperBar", "magazine" }, 2 },
 				{ { "ItemTinBar", "magazine" }, 1 }
 		};
 	};
+	class Seeds
+	{
+		items[] = {
+				{ { "ItemSeedBag", "magazine" }, 10 },
+				{ { "SeedPacket_Hemp", "magazine" }, 1 },
+				{ { "SeedPacket_GoldenSeal", "magazine" }, 1 },
+				{ { "SeedPacket_Poppy", "magazine" }, 1 },
+				{ { "SeedPacket_Pumpkin", "magazine" }, 2 },
+				{ { "SeedPacket_Sunflower", "magazine" }, 2 }
+		};
+	};
 	class Primitive
 	{
 		items[] = {
-				{ { "ItemRock", "magazine" }, 1 },
-				{ { "ItemRope", "magazine" }, 1 },
-				{ { "ItemStick", "magazine" }, 1 },
-				{ { "ItemScraps", "magazine" }, 1 }
+				{ { "ItemRock", "magazine" }, 5 },
+				{ { "ItemRope", "magazine" }, 2 },
+				{ { "ItemStick", "magazine" }, 5 },
+				{ { "ItemScraps", "magazine" }, 1 },
+				{ { "ItemCanvas", "magazine" }, 1 },
+				{ { "ItemBurlap", "magazine" }, 1 }
 		};
 	};
 	class Sodas
