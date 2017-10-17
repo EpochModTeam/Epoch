@@ -33,6 +33,9 @@ _classUpgrade = getarray (_config >> _vehType >> "upgradeToVehicle");
 if (_classUpgrade isequalto []) exitwith {
 	["Vehicle not upgradeable",5] call Epoch_message;
 };
+if ((_veh getvariable ["Vehicle_Slot","-1"]) isequalto "-1") exitwith {
+	["Vehicle not upgradeable",5] call Epoch_message;
+};
 
 {
 	_classUpgrade = _x;
