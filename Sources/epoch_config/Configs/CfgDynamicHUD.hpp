@@ -15,8 +15,8 @@ defaultPopulate:
 	1 - left
 	2 - down
 	3 - up
-	4 - horizontal grow
-	5 - vertical grow
+	4 - horizontal grow (starts from center, evens on left, odds on right)
+	5 - vertical grow (same as above)
 
 offSetX: Positive = right, Negative = left
 offSetY: Positive = down, Negative = up
@@ -91,6 +91,17 @@ class rmx_dynamicHUD
         arraySize = 5;
         width = 4;
         height = 1;
+    };
+    class geigerCounter
+    {
+        classname = "RscPicture";
+        defaultPos = 8;
+        defaultPopulate = 3;
+        arraySize = 8;
+        width = 10;
+        height = 2.5;
+		offSetX = -0.25;
+		offSetY = -1;
     };
 };
 
