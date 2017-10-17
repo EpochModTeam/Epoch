@@ -14,7 +14,7 @@
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_code/gui/scripts/craftingv2/EPOCH_crafting_getConfig.sqf
 */
 //[[[cog import generate_private_arrays ]]]
-private ["_cfg","_Suppressed","_arr","_arrIn","_cCTime","_cDescFull","_cDescShort","_cDisplayName","_cModel","_cName","_cNearbyArr","_cPicture","_cPreviewArr","_cPreviewScale","_cPreviewVector","_cPriority","_cRecipeArr","_cType","_cUsedInArr","_out","_type0","_type1","_type2","_type3"];
+private ["_Suppressed","_arr","_arrIn","_cCTime","_cDescFull","_cDescShort","_cDisplayName","_cModel","_cName","_cNearbyArr","_cPicture","_cPreviewArr","_cPreviewScale","_cPreviewVector","_cPriority","_cRecipeArr","_cRecipeReturn","_cType","_cUsedInArr","_cfg","_craftCount","_out","_type0","_type1","_type2","_type3"];
 //[[[end]]]
 
 _arrIn = _this;
@@ -46,7 +46,9 @@ _type0 = []; _type1 = []; _type2 = []; _type3 = []; _out = [];
 	_cPreviewVector = getNumber (_x >> "previewVector");
 	_cDescFull = getText (_x >> "descriptionFull");
 	_cType = getNumber (_x >> "type");
-	
+	_craftCount = getNumber (_x >> "craftCount");
+	_cRecipeReturn = getArray (_x >> "recipeReturn");
+
 	if !(_Suppressed isequalto []) then {
 		if (_cName in _Suppressed) then {
 			_cRecipeArr = [];
@@ -61,11 +63,12 @@ _type0 = []; _type1 = []; _type2 = []; _type3 = []; _out = [];
 		};
 	};
 
+
 	switch (_cPriority) do {
-		case 0: {_type0 pushBack [_cName,_cDisplayName,_cPicture,_cDescShort,_cModel,_cPriority,_cCTime,_cRecipeArr,_cNearbyArr,_cUsedInArr,_cPreviewArr,_cPreviewScale,_cPreviewVector,_cType,_cDescFull]};
-		case 1: {_type1 pushBack [_cName,_cDisplayName,_cPicture,_cDescShort,_cModel,_cPriority,_cCTime,_cRecipeArr,_cNearbyArr,_cUsedInArr,_cPreviewArr,_cPreviewScale,_cPreviewVector,_cType,_cDescFull]};
-		case 2: {_type2 pushBack [_cName,_cDisplayName,_cPicture,_cDescShort,_cModel,_cPriority,_cCTime,_cRecipeArr,_cNearbyArr,_cUsedInArr,_cPreviewArr,_cPreviewScale,_cPreviewVector,_cType,_cDescFull]};
-		case 3: {_type3 pushBack [_cName,_cDisplayName,_cPicture,_cDescShort,_cModel,_cPriority,_cCTime,_cRecipeArr,_cNearbyArr,_cUsedInArr,_cPreviewArr,_cPreviewScale,_cPreviewVector,_cType,_cDescFull]};
+		case 0: {_type0 pushBack [_cName,_cDisplayName,_cPicture,_cDescShort,_cModel,_cPriority,_cCTime,_cRecipeArr,_cNearbyArr,_cUsedInArr,_cPreviewArr,_cPreviewScale,_cPreviewVector,_cType,_cDescFull,_craftCount,_cRecipeReturn]};
+		case 1: {_type1 pushBack [_cName,_cDisplayName,_cPicture,_cDescShort,_cModel,_cPriority,_cCTime,_cRecipeArr,_cNearbyArr,_cUsedInArr,_cPreviewArr,_cPreviewScale,_cPreviewVector,_cType,_cDescFull,_craftCount,_cRecipeReturn]};
+		case 2: {_type2 pushBack [_cName,_cDisplayName,_cPicture,_cDescShort,_cModel,_cPriority,_cCTime,_cRecipeArr,_cNearbyArr,_cUsedInArr,_cPreviewArr,_cPreviewScale,_cPreviewVector,_cType,_cDescFull,_craftCount,_cRecipeReturn]};
+		case 3: {_type3 pushBack [_cName,_cDisplayName,_cPicture,_cDescShort,_cModel,_cPriority,_cCTime,_cRecipeArr,_cNearbyArr,_cUsedInArr,_cPreviewArr,_cPreviewScale,_cPreviewVector,_cType,_cDescFull,_craftCount,_cRecipeReturn]};
 	};
 
 } forEach _this;

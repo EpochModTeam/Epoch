@@ -13,12 +13,11 @@
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_code/gui/scripts/craftingv2/EPOCH_crafting_checkNearby.sqf
 */
 //[[[cog import generate_private_arrays ]]]
-private ["_check","_countAlive","_countOnFire","_doObjectChecks","_find","_nearObjects","_result","_test1","_test2","_tmpResult"];
+private ["_check","_countAlive","_countOnFire","_find","_nearObjects","_result","_test1","_test2","_tmpResult"];
 //[[[end]]]
 params ["","","",["_arr",[2,""]],["_dist",0],["_cnt",1],["_inflamed",0],["_alive",0]];
 _arr params ["_type","_check"];
 _result = false;
-_doObjectChecks = true;
 switch (_type) do {
 	case 0:
 	{
@@ -50,27 +49,18 @@ switch (_type) do {
 			if (_tmpResult) exitWith {_result = _tmpResult};
 		} forEach _nearObjects;
 	};
-	case 3:
-	{
-		private _has = {_x == _check} count ((magazines player)+(items player));
-		_result = (_has <= _cnt);
-		_doObjectChecks = false;
-	};
 };
 
-// exit now if already false
-if !(_result) exitWith {false};
+if !(_result) exitWith {false}; //not enough objects
 
-if (_doObjectChecks && _inflamed > 0) then {
+if (_inflamed > 0) then {
 	_countOnFire = 0;
 	_countOnFire = {inflamed _x} count _nearObjects;
 	_result = (_cnt <= _countOnFire);
 };
-
-// exit now if already false
 if !(_result) exitWith {false};
 
-if (_doObjectChecks && _alive > 0) then {
+if (_alive > 0) then {
 	_countAlive = 0;
 	_countAlive = {alive _x} count _nearObjects;
 	_result = (_cnt <= _countAlive);
