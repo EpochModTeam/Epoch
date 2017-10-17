@@ -891,7 +891,7 @@ class CfgCrafting
     };
 	class KitWoodHalfFloor : Kit
     {
-        recipe[] = {{"KitWoodQuarterFloor",4}};
+        recipe[] = {{"PartPlankPack",4}};
         nearby[] = {{"Workbench","","workbench",{1,{"WorkBench_EPOCH"}},3,1,0,1}};
         model = "\x\addons\a3_epoch_assets_1\models\Half_Floor.p3d";
         previewPosition[] = {0.800198,1,0.262418};
@@ -900,7 +900,6 @@ class CfgCrafting
     };
 	class KitWoodQuarterFloor : Kit
     {
-        usedIn[] = {"KitWoodHalfFloor"};
         recipe[] = {{"PartPlankPack",2}};
         nearby[] = {{"Workbench","","workbench",{1,{"WorkBench_EPOCH"}},3,1,0,1}};
         model = "\x\addons\a3_epoch_assets_1\models\Quarter_Floor.p3d";

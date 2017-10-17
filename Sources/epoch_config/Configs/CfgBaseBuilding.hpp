@@ -163,7 +163,7 @@ class CfgBaseBuilding
     class WoodFloor_EPOCH : Default
     {
         upgradeBuilding[] = {{"MetalFloor_EPOCH",{{"ItemCorrugatedLg",2}}}};
-        removeParts[] = {{"PartPlankPack",2}};
+        removeParts[] = {{"PartPlankPack",4}};
         simulClass = "WoodFloor_SIM_EPOCH";
         staticClass = "WoodFloor_EPOCH";
         GhostPreview = "WoodFloor_Ghost_EPOCH";
@@ -182,7 +182,7 @@ class CfgBaseBuilding
 	class WoodHalfFloor_EPOCH : Default
     {
         upgradeBuilding[] = {{"WoodFloor_EPOCH",{{"KitWoodHalfFloor",1}}}};
-        removeParts[] = {{"KitWoodHalfFloor",1}};
+        removeParts[] = {{"PartPlankPack",2}};
         simulClass = "WoodHalfFloor_SIM_EPOCH";
         staticClass = "WoodHalfFloor_EPOCH";
         GhostPreview = "WoodHalfFloor_Ghost_EPOCH";
@@ -201,7 +201,7 @@ class CfgBaseBuilding
 	class WoodQuarterFloor_EPOCH : Default
     {
         upgradeBuilding[] = {{"WoodHalfFloor_EPOCH",{{"KitWoodQuarterFloor",1}}}};
-        removeParts[] = {{"KitWoodQuarterFloor",1}};
+        removeParts[] = {{"PartPlankPack",1}};
         simulClass = "WoodQuarterFloor_SIM_EPOCH";
         staticClass = "WoodQuarterFloor_EPOCH";
         GhostPreview = "WoodQuarterFloor_Ghost_EPOCH";
