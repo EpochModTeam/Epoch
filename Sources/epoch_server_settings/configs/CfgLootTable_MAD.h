@@ -92,6 +92,15 @@ class CfgLootTable_MAD
 				{ { "ItemRotor", "magazine" }, 5 }
 		};
 	};
+	class VehicleDocs
+	{
+		items[] = {
+				{ { "ItemVehDoc1", "magazine" }, 20 },
+				{ { "ItemVehDoc2", "magazine" }, 15 },
+				{ { "ItemVehDoc3", "magazine" }, 4 },
+				{ { "ItemVehDoc4", "magazine" }, 2 }
+		};
+	};
 	class Equipment
 	{
 		items[] = {
@@ -277,6 +286,7 @@ class CfgLootTable_MAD
 	class GenericBed
 	{
 		items[] = {
+				{ { "VehicleDocs", "CfgLootTable" }, 3 },
 				{ { "ItemLockbox", "magazine" }, 5 },
 				{ { "ItemMixOil", "magazine" }, 4 },
 				{ { "ItemCoolerE", "magazine" }, 6 },
@@ -294,6 +304,7 @@ class CfgLootTable_MAD
 	class GenericLarge
 	{
 		items[] = {
+				{ { "VehicleDocs", "CfgLootTable" }, 4 },
 				{ { "MortarBucket", "magazine" }, 16 },
 				{ { "CinderBlocks", "magazine" }, 17 },
 				{ { "Repairs", "CfgLootTable" }, 16 },
@@ -312,6 +323,7 @@ class CfgLootTable_MAD
 	class GenericAuto
 	{
 		items[] = {
+				{ { "VehicleDocs", "CfgLootTable" }, 4 },
 				{ { "ItemSafe", "magazine" }, 1 },
 				{ { "ItemLockbox", "magazine" }, 4 },
 				{ { "jerrycan_epoch", "magazine" }, 5 },
