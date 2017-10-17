@@ -270,7 +270,7 @@ class CfgCrafting
         previewScale = 0.5;
         previewVector = 0;
     };
-	class ItemSeedBag : Item
+	class ItemSeedBag : Part
 	{
 		nearby[] = {{"Workbench","","workbench",{1,{"WorkBench_EPOCH"}},3,1,0,1}};
 		usedIn[] = {"SeedPacket_Hemp","SeedPacket_GoldenSeal","SeedPacket_Poppy","SeedPacket_Pumpkin","SeedPacket_Sunflower"};
@@ -828,7 +828,7 @@ class CfgCrafting
     };
     class PartPlankPack : Item
     {
-        usedIn[] = {"KitStudWall","KitWoodFloor","KitWoodFoundation","KitWoodStairs","KitWoodRamp","KitWoodLadder","KitWoodTower","KitTiPi","KitWorkbench","KitSpikeTrap","KitMetalTrap","KitWoodQuarterFloor","KitBarGate","KitBagBunker","KitWatchTower","KitLightPole","KitScaffolding"};
+        usedIn[] = {"KitStudWall","KitWoodFloor","KitWoodFoundation","KitWoodStairs","KitWoodRamp","KitWoodLadder","KitWoodTower","KitTiPi","KitWorkbench","KitSpikeTrap","KitMetalTrap","KitWoodQuarterFloor","KitWoodHalfFloor","KitBarGate","KitBagBunker","KitWatchTower","KitLightPole","KitScaffolding"};
         recipe[] = {{"WoodLog_EPOCH",2}};
         previewPosition[] = {0.797837,1,0.288258};
         previewScale = 0.2;
@@ -1394,13 +1394,6 @@ class CfgCrafting
 		previewScale = 0.2;
 		previewVector = 0.1;
     };
-	class ItemSeedBag : Part
-	{
-		usedIn[] = {};
-		previewPosition[] = {0.802374,1,0.26};
-		previewScale = 0.45;
-		previewVector = 3.3;
-	};
 	class KitTentA : Kit
 	{
 		recipe[] = {{"ItemCanvas",2},{"ItemPipe",3}};
