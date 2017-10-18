@@ -66,7 +66,7 @@ if (worldName == "VR") then {
 			"bunker_epoch_12", 0.05, // concrete mid wall
 			"bunker_epoch_13", 0.05, // tall concrete maze 2
 			"bunker_epoch_14", 0.08, // odd concrete walls
-			"bunker_epoch_15" 0.05   // concrete mid wall maze
+			"bunker_epoch_15", 0.05   // concrete mid wall maze
 		];
 		_rowCount = 0;
 		_colCount = 0;
