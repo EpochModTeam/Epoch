@@ -4848,6 +4848,87 @@ class CfgBuildingLootPos
         freezerPos[] = {{{-5.04785,1.56201,-1.60012},90}};
         cabinetPos[] = {{{-8.79102,-1.59473,-0.300119},0}};
     };
+    class Land_i_House_Small_03_V1_dam_F : Default 
+	{
+      tablePos[] =   {{{3.97192,-5.14429,-0.399977},184.648}};
+      shoeboxPos[] = {{{1.03833,1.97803,-0.399977},359.648}};
+      KitchenSinkPos[] = {{{-4.81128,2.74316,-0.399977},269.648}};
+      toiletPos[] =  {{{1.43848,5.02466,-0.399977},359.648}};
+    };
+    class Land_u_House_Small_02_V1_dam_F : Default 
+	{
+      chairPos[] = {{{2.06104,-0.303467,-1.07093},273.648}};
+      tablePos[] = {{{6.60864,-2.21667,-1.07093},179.648}};
+    };
+    class Land_i_House_Small_02_V3_dam_F : Default 
+	{
+      couchPos[] = {{{6.16943,-1.03198,-0.925534},4.99999}};
+    };
+    class Land_i_House_Small_02_V2_dam_F : Default 
+	{
+      bedPos[] = {{{6.95679,-0.921143,-0.999897},358}};
+      toolRackPos[] = {{{0.935547,0.244019,-1.04277},88}};
+    };
+    class Land_i_House_Small_02_V1_dam_F : Default 
+	{
+      shoeboxPos[] = {{{2.6355,-2.07544,-0.927456},88}};
+      freezerPos[] = {{{7.27197,-1.90771,-0.927456},88}};
+      KitchenSinkPos[] = {{{7.29883,1.40063,-0.927456},90}};
+    };
+    class Land_i_Barracks_V1_dam_F : Default 
+	{
+      shelfPos[] = {{{-13.2607,1.86938,3.88759},264}};
+      chairPos[] = {{{7.35889,-3.00977,0.487596},88},{{-7.59131,3.71997,0.487596},88}};
+      filingPos[] = {{{-7.45801,-2.66504,0.487596},88},{{-6.35718,-5.19971,3.85143},264},{{-13.4155,-3.57056,3.85143},264}};
+      pelicanPos[] = {{{-5.95459,2.20557,3.88759},264}};
+      lockerPos[] = {{{13.9585,2.92456,0.487596},88}};
+      shoeboxPos[] = {{{9.35645,-3.33105,0.487596},88}};
+    };
+    class Land_i_Barracks_V2_dam_F : Land_i_Barracks_V1_dam_F{};
+
+    class Land_TentHangar_V1_F : Default 
+	{
+      couchPos[] = { {{8.67236,-3.95703,-4.10237},356}};
+      lockerPos[] = { {{-9.604,1.47412,-4.10237},264}};
+      palletPos[] = {{{-7.19678,-5.23047,-4.10237},356},{{8.93481,6.54126,-4.0674},356}};
+    };
+    class Land_TentHangar_V1_dam_F : Land_TentHangar_V1_F {};
+
+    class Land_Dome_Big_F : Default 
+	{
+      chairPos[] = {{{16.2844,15.4109,-10.1997},356},{{-13.9492,-19.0752,-10.1997},216}};
+      pelicanPos[] = {{{21.5835,-2.73999,-10.1997},356}};
+      palletPos[] = {{{-5.73926,-1.4939,-10.1997},356},{{3.42236,10.5425,-10.1997},356},{{-8.70752,20.2468,-10.1997},356}};
+    };
+    class Land_Dome_Small_F : Default 
+	{
+      chairPos[] = {{{2.98877,12.7253,-6.98321},329},{{-4.11328,-12.5012,-6.98321},216}};
+      palletPos[] = {{{-1.65088,1.33276,-6.98321},329},{{10.731,-0.450806,-6.94824},329}};
+    };
+    class Land_GH_MainBuilding_entry_F : Default 
+	{
+      palletPos[] = {{{-2.0636,-18.1663,-0.128474},329}};
+    };
+
+    class Land_i_House_Big_01_V1_dam_F : Land_i_House_Big_01_V1_F {};
+    class Land_i_House_Big_01_V2_dam_F : Land_i_House_Big_01_V1_F {};
+    class Land_i_House_Big_01_V3_dam_F : Land_i_House_Big_01_V1_F {};
+    class Land_u_House_Big_01_V1_dam_F : Land_i_House_Big_01_V1_F {};
+    class Land_i_House_Big_02_V2_dam_F : Land_i_House_Big_02_V1_F {};
+    class Land_i_Shop_01_V1_dam_F : Land_i_Shop_01_V1_F {};
+    class Land_i_Shop_01_V2_dam_F : Land_i_Shop_01_V1_F {};
+    class Land_i_Shop_01_V3_dam_F : Land_i_Shop_01_V1_F {};
+    class Land_u_Shop_01_V1_dam_F : Land_i_Shop_01_V1_F {};
+    class Land_i_Shop_02_V1_dam_F : Land_i_Shop_02_V1_F {};
+    class Land_i_Shop_02_V2_dam_F : Land_i_Shop_02_V1_F {};
+    class Land_i_Shop_02_V3_dam_F : Land_i_Shop_02_V1_F {};
+    class Land_u_Shop_02_V1_dam_F : Land_i_Shop_02_V1_F {};
+    class Land_i_House_Small_01_V1_dam_F : Land_i_House_Small_01_V1_F {};
+    class Land_i_House_Small_01_V2_dam_F : Land_i_House_Small_01_V1_F {};
+    class Land_i_House_Small_01_V3_dam_F : Land_i_House_Small_01_V1_F {};
+    class Land_u_House_Small_01_V1_dam_F : Land_i_House_Small_01_V1_F {};
+	
+	
 	class bunker_epoch : Default {
 	    shelfPos[] = {
 	        { {-6.09766,-2.83032,0.188561}, 269 }
