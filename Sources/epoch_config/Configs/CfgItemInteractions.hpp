@@ -907,8 +907,12 @@ class CfgItemInteractions
 	class SeedPacket_GoldenSeal : Default {};
 	class SeedPacket_Hemp : Default {};
 	class SeedPacket_Poppy : Default {};
-	class SeedPacket_Pumpkin : Default {};
-	class SeedPacket_Sunflower : Default {};
+	class SeedPacket_Pumpkin : Default {
+		 interactActions[] = {{"EAT","[1,[['Immunity',1],['Toxicity',-1],['Stamina',15],['Hunger',100]],'ItemSeedBag'] call EPOCH_consumeItem;"}};
+	};
+	class SeedPacket_Sunflower : Default {
+		 interactActions[] = {{"EAT","[1,[['Immunity',1],['Toxicity',-2],['Stamina',30],['Hunger',100]],'ItemSeedBag'] call EPOCH_consumeItem;"}};
+	};
 	class ItemBakedBeans : Food_TinCan_base
 	{
 		interactAttributes[] = {{"Hunger",800},{"Radiation",2,1}};
