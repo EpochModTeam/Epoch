@@ -9,7 +9,7 @@
 	https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server_bunker_event/EpochEvents/BunkerSpawner.sqf
 */
 //[[[cog import generate_private_arrays ]]]
-private ["_allBunkers","_animationStates","_bunkerClasses","_bunkerCounter","_bunkerLocationsKey","_bunkerLocations","_colCount","_debug","_debugLocation","_expiresBunker","_firstBunker","_instanceID","_list","_loc1","_location","_maxBunkerLimitPerRow","_maxBunkerLimitSlots","_maxColumns","_memoryPoints","_modelInfo","_newBunkerCounter","_object","_originalLocation","_pOffset","_response","_rng","_rngChance","_rowCount","_score","_scriptHiveKey","_seed","_selectedBunker","_size","_veh"];
+private ["_allBunkers","_animationStates","_bunkerCounter","_bunkerLocations","_bunkerLocationsKey","_colCount","_debug","_debugLocation","_expiresBunker","_firstBunker","_instanceID","_list","_loc1","_location","_maxBunkerLimitPerRow","_maxBunkerLimitSlots","_maxColumns","_memoryPoints","_modelInfo","_newBunkerCounter","_object","_originalLocation","_pOffset","_response","_rng","_rngChance","_rowCount","_score","_scriptHiveKey","_seed","_selectedBunker","_size","_valuesAndWeights","_veh"];
 //[[[end]]]
 if (worldName == "VR") then {
 
@@ -22,11 +22,11 @@ if (worldName == "VR") then {
 
 	_instanceID = call EPOCH_fn_InstanceID;
 
-	_maxBunkerLimitSlots = 100;
-	_maxBunkerLimitPerRow = 10;
+	_maxBunkerLimitSlots = 1000;
+	_maxBunkerLimitPerRow = 100;
 
 	_rngChance = 0; // Lower this to spawn more positions
-	_scriptHiveKey = "EPOCH:DynamicBunker007"; // change this to force a new seed to be generated.
+	_scriptHiveKey = "EPOCH:DynamicBunker001"; // change this to force a new seed to be generated.
 
 	_bunkerLocationsKey = format ["%1:%2", _instanceID, worldname];
 	_response = [_scriptHiveKey, _bunkerLocationsKey] call EPOCH_fnc_server_hiveGETRANGE;
@@ -50,23 +50,23 @@ if (worldName == "VR") then {
 		diag_log format["Generating bunker with seed: %1",_seed];
 		_location = ATLToASL _debugLocation;
 		_originalLocation = +_location;
-		_bunkerClasses = [
-			"bunker_epoch",
-			"bunker_epoch_01",
-			"bunker_epoch_02",
-			"bunker_epoch_03",
-			"bunker_epoch_04",
-			"bunker_epoch_05",
-			"bunker_epoch_06",
-			"bunker_epoch_07",
-			"bunker_epoch_08",
-			"bunker_epoch_09",
-			"bunker_epoch_10",
-			"bunker_epoch_11",
-			"bunker_epoch_12",
-			"bunker_epoch_13",
-			"bunker_epoch_14",
-			"bunker_epoch_15"
+		_valuesAndWeights = [
+			"bunker_epoch", 0.2, // empty bunker
+			"bunker_epoch_01", 0.1, // tall concrete maze 1
+			"bunker_epoch_02", 0.05, // Epoch Corp storage
+			// "bunker_epoch_03", 0.01, // save for xmas
+			"bunker_epoch_04", 0.05, // generator room
+			// "bunker_epoch_05", 0.01, // invisible walls
+			"bunker_epoch_06", 0.05, // jail
+			"bunker_epoch_07", 0.05, // clone chamber
+			"bunker_epoch_08", 0.01, // epoch celebration room
+			"bunker_epoch_09", 0.05, // tallest concrete walls
+			"bunker_epoch_10", 0.05, // knee high concrete walls
+			"bunker_epoch_11", 0.1, // sewer
+			"bunker_epoch_12", 0.05, // concrete mid wall
+			"bunker_epoch_13", 0.05, // tall concrete maze 2
+			"bunker_epoch_14", 0.08, // odd concrete walls
+			"bunker_epoch_15" 0.05   // concrete mid wall maze
 		];
 		_rowCount = 0;
 		_colCount = 0;
@@ -75,7 +75,7 @@ if (worldName == "VR") then {
 			if (_colCount > _maxColumns) exitWith {};
 			_rng = _seed random [_location select 0,_location select 1];
 			if (_rng > _rngChance) then {
-				_selectedBunker = selectRandom _bunkerClasses;
+				_selectedBunker = selectRandomWeighted _valuesAndWeights;
 				_object = createSimpleObject [_selectedBunker, _location];
 				_allBunkers pushBack _object;
 				_newBunkerCounter = _newBunkerCounter + 1;
