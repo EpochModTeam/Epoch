@@ -61,7 +61,12 @@ if (worldName == "VR") then {
 			"bunker_epoch_07",
 			"bunker_epoch_08",
 			"bunker_epoch_09",
-			"bunker_epoch_10"
+			"bunker_epoch_10",
+			"bunker_epoch_11",
+			"bunker_epoch_12",
+			"bunker_epoch_13",
+			"bunker_epoch_14",
+			"bunker_epoch_15"
 		];
 		_rowCount = 0;
 		_colCount = 0;
