@@ -228,7 +228,7 @@ class CfgBaseBuilding
         snapPointsPerp[] = {"N","S","E","W","CinN","CinS","CinE","CinW"};
         energyCost = 0.5;
     };
-    class MetalFloor_SIM_EPOCH : Default
+    class MetalFloor_SIM_EPOCH : MetalFloor_EPOCH
     {
         allowedSnapPoints[] = {"NF","SF","EF","WF","C"};
         allowedSnapObjects[] = {"Const_floors_static_F","Constructions_foundation_F"};
