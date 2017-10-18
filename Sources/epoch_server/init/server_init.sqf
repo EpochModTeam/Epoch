@@ -13,7 +13,7 @@
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server/init/server_init.sqf
 */
 //[[[cog import generate_private_arrays ]]]
-private ["_ReservedSlots","_SideHQ1","_SideHQ2","_SideHQ3","_abortAndError","_allowedVehicleIndex","_allowedVehicleListName","_allowedVehiclesList","_allowedVehiclesListArray","_cfgServerVersion","_channelColor","_channelNumber","_channelTXT","_clientVersion","_config","_configSize","_configVersion","_date","_dateChanged","_epochConfig","_epochWorldPath","_existingStock","_hiveVersion","_index","_indexStock","_instanceID","_marker","_markercolor","_markertxt","_markertype","_pos","_radio","_response","_sapper","_serverConfig","_serverSettingsConfig","_servicepoints","_startTime","_staticDateTime","_staticFuelSources","_timeDifference","_vehicleCount","_vehicleSlotLimit","_worldSize"];
+private ["_ReservedSlots","_SideHQ1","_SideHQ2","_SideHQ3","_abortAndError","_allowedVehicleIndex","_allowedVehicleListName","_allowedVehiclesList","_allowedVehiclesListArray","_cfgServerVersion","_channelColor","_channelNumber","_channelTXT","_clientVersion","_config","_configSize","_configVersion","_date","_dateChanged","_epochConfig","_epochWorldPath","_existingStock","_hiveVersion","_index","_indexStock","_instanceID","_marker","_markers","_markercolor","_markertxt","_markertype","_pos","_radio","_response","_sapper","_serverConfig","_serverSettingsConfig","_servicepoints","_startTime","_staticDateTime","_staticFuelSources","_timeDifference","_vehicleCount","_vehicleSlotLimit","_worldSize"];
 //[[[end]]]
 _startTime = diag_tickTime;
 missionNamespace setVariable ['Epoch_ServerVersion', getText(configFile >> "CfgMods" >> "Epoch" >> "version"), true];
@@ -245,14 +245,8 @@ _servicepoints = getArray (_config >> worldname >> 'ServicePoints');
 		};
 	};
 	if !(_markertype isequalto "") then {
-		_marker = createMarker [('ServicePointMarker'+(str _foreachindex)), _pos];
-		_marker setmarkertype _markertype;
-		if !(_markercolor isequalto "") then {
-			_marker setmarkercolor _markercolor;
-		};
-		if !(_markertxt isequalto "") then {
-			_marker setMarkerText _markertxt;
-		};
+		//_marker = createMarker [('ServicePointMarker'+(str _foreachindex)), _pos];
+		_markers = ["ServicePoint", _pos] call EPOCH_server_createGlobalMarkerSet;
 		if !(surfaceiswater _pos) then {
 			"Land_HelipadCircle_F" createvehicle _pos;
 		};
@@ -290,12 +284,7 @@ if !(_radioactiveLocations isEqualTo []) then {
 			_locations = _locations - [_selectedLoc];
 			_radioactiveLocationsTmp pushBack [_selectedLoc,random 666];
 			private _position = locationPosition _selectedLoc;
-			_marker = name _selectedLoc;
-			_marker = createMarker[_marker, _position];
-			_marker setMarkerShape "ICON";
-			_marker setMarkerType "hd_warning";
-			_marker setMarkerColor "ColorRed";
-			// _marker setMarkerText "Radioactive";
+			_markers = ["Radiation", _position] call EPOCH_server_createGlobalMarkerSet;
 		};
 	};
 };

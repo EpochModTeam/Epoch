@@ -6,7 +6,7 @@
 	https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server_settings/EpochEvents/Earthquake.sqf
 */
 //[[[cog import generate_private_arrays ]]]
-private ["_chance","_item","_marker","_minerals","_playersNearEpicenter","_position"];
+private ["_chance","_item","_markers","_minerals","_playersNearEpicenter","_position"];
 //[[[end]]]
 _position = [epoch_centerMarkerPosition, 0, EPOCH_dynamicVehicleArea, 10, 0, 1000, 0] call BIS_fnc_findSafePos;
 if ((count _position) == 2) then{
@@ -24,11 +24,7 @@ if ((count _position) == 2) then{
 		_minerals = ["MineralDepositCopper_EPOCH", "MineralDepositGold_EPOCH", "MineralDepositSilver_EPOCH"];
 		_item = createVehicle[(selectRandom _minerals), _position, [], 0.0, "CAN_COLLIDE"];
 		if (EPOCH_showEarthQuakes) then{
-			_marker = createMarker[str(_position), _position];
-			_marker setMarkerShape "ICON";
-			_marker setMarkerType "hd_objective";
-			// _marker setMarkerText "Mineral";
-			_marker setMarkerColor "ColorGrey";
+			_markers = ["EarthQuake",_position] call EPOCH_server_createGlobalMarkerSet;
 		};
 	};
 };

@@ -7,3 +7,5 @@
 */
 
 {[_x,100] call EPOCH_server_effectCrypto;} forEach (allPlayers select {alive _x});
+
+// Add on screen notification large crypto symbol and maybe audio clip CHA-CHING, configurable option for hosts

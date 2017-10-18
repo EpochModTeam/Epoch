@@ -6,7 +6,7 @@
 	https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server_settings/EpochEvents/Satellite.sqf
 */
 //[[[cog import generate_private_arrays ]]]
-private ["_satellite","_marker","_playersNearEpicenter","_position","_satellites"];
+private ["_satellite","_markers","_playersNearEpicenter","_position","_satellites"];
 //[[[end]]]
 _position = [epoch_centerMarkerPosition, 0, EPOCH_dynamicVehicleArea, 10, 0, 1000, 0] call BIS_fnc_findSafePos;
 if ((count _position) == 2) then{
@@ -25,10 +25,6 @@ if ((count _position) == 2) then{
 	_satellite setVariable ["EPOCH_Rads", 10, true];
 
 	if (EPOCH_showSatellites) then{
-		_marker = createMarker[str(_position), _position];
-		_marker setMarkerShape "ICON";
-		_marker setMarkerType "hd_warning";
-		// _marker setMarkerText "Satellite";
-		_marker setMarkerColor "ColorGreen";
+		_markers = ["Satellite",_position] call EPOCH_server_createGlobalMarkerSet;
 	};
 };

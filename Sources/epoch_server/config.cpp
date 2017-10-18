@@ -123,6 +123,8 @@ class CfgServerFunctions
 			class serverCommand {};
 			class server_makeMarker {};
 			class server_removeMarker {};
+			class server_createGlobalMarkerSet {};
+			class server_deleteGlobalMarkerSet {};
 		};
 		class epoch_missions {
 			class Server_createObject {};

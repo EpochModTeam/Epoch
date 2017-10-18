@@ -13,13 +13,15 @@
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server/compile/epoch_server/EPOCH_server_traderKilled.sqf
 */
 //[[[cog import generate_private_arrays ]]]
-private ["_marker","_objHiveKey","_slot","_playerCStats","_playerKarma","_playerKarmaAdj","_kIndex"];
+private ["_markers","_objHiveKey","_slot","_playerCStats","_playerKarma","_playerKarmaAdj","_kIndex"];
 //[[[end]]]
 params ["_trader","_player"];
 if (!isNull _trader) then {
-	_marker = _trader getVariable["MARKER_REF",""];
-	if (_marker != "") then {
-		_marker setMarkerColor "ColorRed";
+	_markers = _trader getVariable["MARKER_REF",""];
+	if (_markers != []) then {
+		{
+			_x setMarkerColor "ColorRed";
+		}forEach _markers;
 	};
 	_slot = _trader getVariable["AI_SLOT", -1];
 	if (_slot != -1) then {

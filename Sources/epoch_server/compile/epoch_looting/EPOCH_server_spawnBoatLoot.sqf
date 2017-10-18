@@ -22,11 +22,7 @@ private ["_item","_marker"];
 		_item setMass 220;
 
 		if (EPOCH_SHOW_BOATLOOT) then {
-			_marker = createMarker[str(_x), _x];
-			_marker setMarkerShape "ICON";
-			_marker setMarkerType "mil_dot";
-			// _marker setMarkerText "Shipwreck";
-			_marker setMarkerColor "ColorOrange";
+			_markers = ["Shipwreck",_x] call EPOCH_server_createGlobalMarkerSet;
 		};
 	};
 } foreach (getArray (configFile >> "CfgEpoch" >> worldname >> "containerPos"));

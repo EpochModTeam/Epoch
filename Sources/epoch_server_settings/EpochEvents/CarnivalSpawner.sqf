@@ -6,7 +6,7 @@
 	https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server_settings/EpochEvents/CarnivalSpawner.sqf
 */
 //[[[cog import generate_private_arrays ]]]
-private ["_ferrisPosition","_item","_marker"];
+private ["_ferrisPosition","_item","_markers"];
 //[[[end]]]
 _ferrisPosition = [epoch_centerMarkerPosition, 0, EPOCH_dynamicVehicleArea, 10, 0, 4000, 0] call BIS_fnc_findSafePos;
 if ((count _ferrisPosition) == 2) then{
@@ -18,10 +18,6 @@ if ((count _ferrisPosition) == 2) then{
 	} forEach["Carnival_Tent", "Land_Slide_F", "Carnival_Tent", "Land_Carousel_01_F", "Carnival_Tent", "Carnival_Tent"];
 
 	if (EPOCH_showShippingContainers) then{
-		_marker = createMarker[str(_ferrisPosition), _ferrisPosition];
-		_marker setMarkerShape "ICON";
-		_marker setMarkerType "mil_dot";
-		// _marker setMarkerText "Ferris";
-		_marker setMarkerColor "ColorOrange";
+		_markers = ["Carnival",_ferrisPosition] call EPOCH_server_createGlobalMarkerSet;
 	};
 };

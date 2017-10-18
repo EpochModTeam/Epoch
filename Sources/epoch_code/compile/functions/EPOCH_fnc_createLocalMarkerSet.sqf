@@ -34,7 +34,7 @@ if(_mClass isEqualTo "") exitWith {
 };
 
 // get config for custom marker sets
-_config = 'CfgLocalMarkerSets' call EPOCH_returnConfig;
+_config = 'CfgMarkerSets' call EPOCH_returnConfig;
 if !(isclass (_config >> _mClass)) exitwith {
 	diag_log "EPOCHDebug: createLocalMarkerSet -2- not a class markerClass, nothing to create";
 };
