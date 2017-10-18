@@ -395,6 +395,10 @@ class CfgItemInteractions
     {
         buildClass = "MetalTower_EPOCH";
     };
+	class KitMetalFloor : Item_Build_base
+	{
+		buildClass = "MetalFloor_EPOCH";
+	};
 	class KitCinderTower : Item_Build_base
     {
         buildClass = "CinderTower_EPOCH";
