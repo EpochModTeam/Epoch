@@ -9,7 +9,7 @@
 	https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server_bunker_event/EpochEvents/BunkerSpawner.sqf
 */
 //[[[cog import generate_private_arrays ]]]
-private ["_allBunkers","_animationStates","_bunkerCounter","_bunkerLocations","_bunkerLocationsKey","_colCount","_debug","_debugLocation","_expiresBunker","_firstBunker","_instanceID","_list","_loc1","_location","_maxBunkerLimitPerRow","_maxBunkerLimitSlots","_maxColumns","_memoryPoints","_modelInfo","_newBunkerCounter","_object","_originalLocation","_pOffset","_response","_rng","_rngChance","_rowCount","_score","_scriptHiveKey","_seed","_selectedBunker","_size","_valuesAndWeights","_veh"];
+private ["_allBunkers","_animationStates","_bunkerCounter","_bunkerLocations","_bunkerLocationsKey","_colCount","_debug","_debugLocation","_expiresBunker","_firstBunker","_instanceID","_list","_loc1","_location","_maxRows","_maxBunkerLimitSlots","_maxColumns","_memoryPoints","_modelInfo","_newBunkerCounter","_object","_originalLocation","_pOffset","_response","_rng","_rngChance","_rowCount","_score","_scriptHiveKey","_seed","_selectedBunker","_size","_valuesAndWeights","_veh"];
 //[[[end]]]
 if (worldName == "VR") then {
 
@@ -21,12 +21,12 @@ if (worldName == "VR") then {
 	_newBunkerCounter = 0;
 
 	_instanceID = call EPOCH_fn_InstanceID;
-
-	_maxBunkerLimitSlots = 1000;
-	_maxBunkerLimitPerRow = 100;
+	// size
+	_maxRows = 100;
+	_maxColumns = 100;
 
 	_rngChance = 0; // Lower this to spawn more positions
-	_scriptHiveKey = "EPOCH:DynamicBunker001"; // change this to force a new seed to be generated.
+	_scriptHiveKey = "EPOCH:DynamicBunker002"; // change this to force a new seed to be generated.
 
 	_bunkerLocationsKey = format ["%1:%2", _instanceID, worldname];
 	_response = [_scriptHiveKey, _bunkerLocationsKey] call EPOCH_fnc_server_hiveGETRANGE;
@@ -42,7 +42,7 @@ if (worldName == "VR") then {
 
 		// generate new bunker
 		_size = 13.081;
-		_maxColumns = _maxBunkerLimitSlots / _maxBunkerLimitPerRow;
+
 		_allBunkers = [];
 		_newBunkerCounter = 0;
 		// Generate Seed
@@ -82,7 +82,7 @@ if (worldName == "VR") then {
 			};
 			_location set [0,(_location select 0) + _size];
 			_rowCount = _rowCount + 1;
-			if (_rowCount >= _maxBunkerLimitPerRow) then {
+			if (_rowCount >= _maxRows) then {
 				_rngChance = 0.3;
 				_colCount = _colCount + 1;
 				_rowCount = 0;
@@ -110,8 +110,8 @@ if (worldName == "VR") then {
 			_modelInfo = getModelInfo _veh;
 			_bunkerLocations pushBack [_modelInfo select 1, getPosWorld _veh, _animationStates, _score];
 		} forEach _allBunkers;
-		// remove temp bunkers
-		_allBunkers apply {deleteVehicle _x};
+		// remove temp bunkers, otherwise door ways do not seem to animate
+		{deleteVehicle _x} forEach _allBunkers;
 		// save to DB
 		[_scriptHiveKey, _bunkerLocationsKey, _expiresBunker, _bunkerLocations] call EPOCH_fnc_server_hiveSETEX;
 	};
