@@ -33,9 +33,7 @@ _location = getMarkerPos "respawn_west";
 _location set[2, 0];
 
 _player = (group _player) createUnit [_class, _location, [], 0, "CAN_COLLIDE"];
-{
-	_player disableAI _x;
-} forEach["FSM", "MOVE", "AUTOTARGET", "TARGET"];
+_player disableAI "ALL";
 
 _player setDir _dir;
 _player setPosATL _location;

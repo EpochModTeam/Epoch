@@ -28,7 +28,7 @@ if !(false call EPOCH_crafting_checkResources) exitWith {};
 //craft button
 [] spawn {
 
-	private ["_fnc_UILock","_itemCraftTime","_selection","_craftItem","_item","_itemName","_itemCraftTime","_itemRecipeItems","_itemType","_nearbyReq","_hasNearby","_canCraft","_wH","_nearByHolder","_wHPos"];
+	private ["_craftReturn","_needBench","_craftCount","_fnc_UILock","_itemCraftTime","_selection","_craftItem","_item","_itemName","_itemCraftTime","_itemRecipeItems","_itemType","_nearbyReq","_hasNearby","_canCraft","_wH","_nearByHolder","_wHPos"];
 	disableSerialization;
 
 	_fnc_UILock = {
@@ -50,7 +50,9 @@ if !(false call EPOCH_crafting_checkResources) exitWith {};
 	_itemRecipeItems = _craftItem select 7;
 	_itemType = _craftItem select 13;
 	_nearbyReq = _craftItem select 8;
-	_needBench = {"WorkBench_EPOCH" in (_x select 3 select 1)} count (_craftItem select 8);
+	_needBench = {"WorkBench_EPOCH" in (_x select 3 select 1)} count _nearbyReq;
+	_craftCount = _craftItem param [15,1];
+	_craftReturn = _craftItem param [16,[]];
 
 	for "_c" from 1 to rmx_var_craftQTYOut do {
 		false call _fnc_UILock;
@@ -69,13 +71,18 @@ if !(false call EPOCH_crafting_checkResources) exitWith {};
 			};
 		} forEach _itemRecipeItems;
 
-		_nearByBench = nearestObjects [position player,["WorkBench_EPOCH"],3];
+		_nearByBench = nearestObjects [player,["WorkBench_EPOCH"],3];
 
 		if (!(_nearByBench isEqualTo []) && (_needBench > 0)) then { //adds item on top of bench if bench was required
-			(_nearByBench select 0) addItemCargoGlobal [_item,1];
+			(_nearByBench select 0) addItemCargoGlobal [_item,_craftCount];
 		} else {
-			_item call EPOCH_fnc_addItemOverflow;
+			[_item,_craftCount] call EPOCH_fnc_addItemOverflow;
 		};
+
+		// return items
+		{
+			_x call EPOCH_fnc_addItemOverflow;
+		} forEach _craftReturn;
 
 		call EPOCH_crafting_LB_click;
 	};

@@ -20,15 +20,6 @@ class CfgMainTable
 		lootMin = 1;
 		LootMax = 1;
 		tables[] = { "Food" };
-		antagonists[] = {
-				{ "Zombie", 40 },
-				{ "UAV", 15 },
-				{ "Cloak", 10 }, // Night = Epoch_Cloak_F, Day = Epoch_Sapper_F
-				{ "Sapper", 20 },
-                { "SapperG", 5 },
-				{ "SapperB", 5 },
-				{ "PHANTOM", 5 }
-		};
 	};
 	class Tree : Default
 	{
@@ -36,6 +27,34 @@ class CfgMainTable
 		lootMin = 3;
 		LootMax = 6;
 		tables[] = { "Tree" };
+	};
+	class Rock : Default
+	{
+		chance = 1;
+		lootMin = 3;
+		LootMax = 6;
+		tables[] = { "Rock" };
+	};
+	class Ore : Default
+	{
+		chance = 1;
+		lootMin = 3;
+		LootMax = 6;
+		tables[] = { "Mine" };
+	};
+	class Cinder : Default
+	{
+		chance = 1;
+		lootMin = 3;
+		LootMax = 6;
+		tables[] = { "Cinder" };
+	};
+	class Wreck : Default
+	{
+		chance = 1;
+		lootMin = 3;
+		LootMax = 6;
+		tables[] = { "Wreck" };
 	};
 	class Bush : Default
 	{
@@ -61,14 +80,6 @@ class CfgMainTable
 				{ "Equipment", 10 },
 				{ "Generic", 15 },
 				{ "GenericLarge", 18 }
-		};
-		antagonists[] = {
-				{ "Zombie", 45 },
-				{ "UAV", 15 },
-				{ "Cloak", 10 }, // Night = Epoch_Cloak_F, Day = Epoch_Sapper_F
-				{ "Sapper", 20 },
-				{ "SapperG", 5 },
-                { "SapperB", 5 }
 		};
 	};
 	class TrashSmall : Default
@@ -246,28 +257,25 @@ class CfgMainTable
 	{
 		lootMin = 3;
 		LootMax = 6;
-		tables[] = { "Shipwreak" };
-		antagonists[] = {
-				{ "GreatWhite", 1 }
-		};
+		tables[] = { "Shipwreck" };
 	};
 	class MineralDepositCopper_EPOCH : Default
 	{
 		lootMin = 5;
 		LootMax = 10;
-		tables[] = { "Mine" };
+		tables[] = { "CopperMine" };
 	};
 	class MineralDepositGold_EPOCH : Default
 	{
 		lootMin = 5;
 		LootMax = 10;
-		tables[] = { "Mine" };
+		tables[] = { "GoldMine" };
 	};
 	class MineralDepositSilver_EPOCH : Default
 	{
 		lootMin = 5;
 		LootMax = 10;
-		tables[] = { "Mine" };
+		tables[] = { "SilverMine" };
 	};
 	class Shelf_EPOCH : Default
 	{
@@ -516,6 +524,18 @@ class CfgMainTable
 				{ "Hand", 10 },
 				{ "Generic", 10 },
 				{ "Grenades", 2 }
+		};
+	};
+	class Toilet_EPOCH : Default
+	{
+		lootMin = 3;
+		LootMax = 6;
+		tables[] = {
+				{ "Primitive", 10 },
+				{ "Food", 10 },
+				{ "Grenades", 2 },
+				{ "Gems", 2 },
+				{ "Medical", 2 }
 		};
 	};
 	class Cargo_Container : Default

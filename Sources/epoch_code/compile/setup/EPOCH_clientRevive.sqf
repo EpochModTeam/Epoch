@@ -24,7 +24,7 @@
 	NOTHING
 */
 //[[[cog import generate_private_arrays ]]]
-private ["_prevPlayerObject"];
+private ["_playerBloodPKeyFinal","_prevPlayerObject"];
 //[[[end]]]
 params [
     ["_playerObject",objNull,[objNull]],
@@ -57,6 +57,14 @@ if !(alive player && alive _playerObject && !isPlayer _playerObject) then {
         Epoch_canBeRevived = false;
         Epoch_personalToken = _personalToken;
 
+		// reset blood Pressure to warning level
+		_playerBloodPKeyFinal = "EPOCH_playerBloodP";
+		if !(isNil "_playerBloodPKey") then {_playerBloodPKeyFinal = _playerBloodPKey};
+		missionNamespace setVariable [_playerBloodPKeyFinal, 120];
+
+		// Wait until _playerObject is local before adding Rating and EH's
+		waituntil {local _playerObject};
+
         // restart masterloop
         [] spawn EPOCH_masterLoop;
         [5, 100] call EPOCH_niteLight;
@@ -68,12 +76,9 @@ if !(alive player && alive _playerObject && !isPlayer _playerObject) then {
         	player removeEventHandler [_x, 0];
         	player addEventHandler [_x,(["CfgEpochClient", _x, ""] call EPOCH_fnc_returnConfigEntryV2)];
         } forEach (["CfgEpochClient", "addEventHandler", []] call EPOCH_fnc_returnConfigEntryV2);
-
-        // reset blood Pressure to warning level
-        EPOCH_playerBloodP = 120;
     };
 } else {
 	deleteVehicle _playerObject;
 };
 
-true call EPOCH_pushCustomVar;
+EPOCH_forceUpdateNow = true;

@@ -13,10 +13,13 @@
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_code/compile/EPOCH_unitSpawnDecrease.sqf
 */
 //[[[cog import generate_private_arrays ]]]
-private ["_index"];
+private ["_index","_playerSpawnArray","_playerSpawnArrayKeyFinal"];
 //[[[end]]]
 params ["_spawnName", ["_decrease",1]];
 _index = EPOCH_spawnIndex find _spawnName;
 if (_index != -1) then{
-  EPOCH_playerSpawnArray set[_index, ((EPOCH_playerSpawnArray select _index) - _decrease) max 0];
+	_playerSpawnArrayKeyFinal = "EPOCH_playerSpawnArray";
+	if !(isNil "_playerSpawnArrayKey") then {_playerSpawnArrayKeyFinal = _playerSpawnArrayKey};
+	_playerSpawnArray = missionNamespace getVariable [_playerSpawnArrayKeyFinal,[]];
+	_playerSpawnArray set[_index, ((_playerSpawnArray select _index) - _decrease) max 0];
 };

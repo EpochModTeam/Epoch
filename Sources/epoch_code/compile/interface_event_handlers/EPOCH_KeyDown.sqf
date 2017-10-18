@@ -1,21 +1,21 @@
 /*
 	Author: Aaron Clark - EpochMod.com - @vbawol
 
-    Contributors: @Skaronator @raymix @Fank
+	Contributors: @Skaronator @raymix @Fank
 
 	Description:
 	Key Down EH functions
 
-    Licence:
-    Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
+	Licence:
+	Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
 
-    Github:
-    https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_code/compile/interface_event_handlers/EPOCH_KeyDown.sqf
+	Github:
+	https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_code/compile/interface_event_handlers/EPOCH_KeyDown.sqf
 
-    Example:
-    _this call EPOCH_KeyDown;
+	Example:
+	_this call EPOCH_KeyDown;
 
-    Parameter(s):
+	Parameter(s):
 		_this select 0: CONTROL - _display
 		_this select 1: NUMBER - _dikcode
 		_this select 2: BOOL - Shift State
@@ -26,9 +26,14 @@
 	BOOL
 */
 //[[[cog import generate_private_arrays ]]]
-private ["_currentPos","_handled"];
+private ["_adj","_currentPos","_handled","_playerEnergy","_playerEnergyKeyFinal","_playerStaminaKeyFinal","_step"];
 //[[[end]]]
 params ["_display","_dikCode","_shift","_ctrl","_alt"];
+
+_playerStaminaKeyFinal = "EPOCH_playerStamina";
+_playerEnergyKeyFinal = "EPOCH_playerEnergy";
+if !(isNil "_playerStaminaKey") then {_playerStaminaKeyFinal = _playerStaminaKey};
+if !(isNil "_playerEnergyKey") then {_playerEnergyKeyFinal = _playerEnergyKey};
 
 _handled = false;
 
@@ -38,6 +43,20 @@ if (_handled) exitWith{ true };
 if !(alive player) exitWith{ false };
 
 EPOCH_doRotate = false;
+
+if !(EPOCH_modKeys isequalto [_shift,_ctrl,_alt]) then {
+	EPOCH_modKeys = [_shift,_ctrl,_alt];
+	call epoch_favBar_modifier;
+};
+
+//Favorites bar
+if (_dikCode in [EPOCH_keysfav1,EPOCH_keysfav2,EPOCH_keysfav3,EPOCH_keysfav4,EPOCH_keysfav5]) then {
+	if (isnull EPOCH_Target) then {
+		_handled = _this call epoch_favBar_action;
+	} else {
+		"Can't use while in building mode!" call epoch_message;
+	};
+};
 
 // increase vol
 if (_ctrl && _dikCode == EPOCH_keysVolumeUp) then {
@@ -100,15 +119,11 @@ if (_dikCode == EPOCH_keysAction) then {
 // Player only code
 if (vehicle player == player) then {
 
-	if (_dikCode == EPOCH_keysBuildMode1 && EPOCH_buildMode > 0) then {
-        EPOCH_buildMode = 0;
-		EPOCH_snapDirection = 0;
+	if ((_dikCode == EPOCH_keysBuildMode1 && !EPOCH_favBar_itemConsumed) && EPOCH_buildMode > 0) then {
+		EPOCH_buildMode = 0;
 		["Build Mode: Disabled", 5] call Epoch_message;
 		EPOCH_Target = objNull;
-		EPOCH_Z_OFFSET = 0;
-		EPOCH_X_OFFSET = 0;
-		EPOCH_Y_OFFSET = 5;
-        _handled = true;
+		_handled = true;
 	};
 
 	// H - holster unholster
@@ -128,16 +143,28 @@ if (vehicle player == player) then {
 
 	if (EPOCH_buildMode > 0) then {
 		if (!_ctrl) then {
+			_step = 0.5;
+			if(_shift)then{_step = 1.5;};
+			if(_alt)then{_step = 0.01;};
 			switch (_dikCode) do {
-			case EPOCH_keysBuildMovUp: { EPOCH_Z_OFFSET = (EPOCH_Z_OFFSET + 0.1) min 6; _handled = true };
-			case EPOCH_keysBuildMovDn: { EPOCH_Z_OFFSET = (EPOCH_Z_OFFSET - 0.1) max - 3; _handled = true };
-			case EPOCH_keysBuildMovFwd: { EPOCH_Y_OFFSET = (EPOCH_Y_OFFSET + 0.1) min 5; _handled = true };
-			case EPOCH_keysBuildMovBak: { EPOCH_Y_OFFSET = (EPOCH_Y_OFFSET - 0.1) max 2; _handled = true };
-			case EPOCH_keysBuildMovL: { EPOCH_X_OFFSET = (EPOCH_X_OFFSET + 0.1) min 5; _handled = true };
-			case EPOCH_keysBuildMovR: { EPOCH_X_OFFSET = (EPOCH_X_OFFSET - 0.1) max - 5; _handled = true };
-			case EPOCH_keysBuildRotL: { EPOCH_buildDirection = (EPOCH_buildDirection + 1) min 360; EPOCH_doRotate = true; _handled = true };
-			case EPOCH_keysBuildRotR: { EPOCH_buildDirection = (EPOCH_buildDirection - 1) max 0; EPOCH_doRotate = true; _handled = true };
-			//case EPOCH_keysBuildIt: { cursorTarget call EPOCH_fnc_SelectTarget; _handled = true };
+				case EPOCH_keysBuildMovUp: { _adj = 0.1;if(_shift)then{_adj = 0.5};if(_alt)then{_adj = 0.01};EPOCH_Z_OFFSET = (EPOCH_Z_OFFSET + _adj) min 6; _handled = true };
+				case EPOCH_keysBuildMovDn: { _adj = 0.1;if(_shift)then{_adj = 0.5};if(_alt)then{_adj = 0.01};EPOCH_Z_OFFSET = (EPOCH_Z_OFFSET - _adj) max - 3; _handled = true };
+				case EPOCH_keysBuildMovFwd: { _adj = 0.1;if(_shift)then{_adj = 0.5};if(_alt)then{_adj = 0.01};EPOCH_Y_OFFSET = (EPOCH_Y_OFFSET + _adj) min 5; _handled = true };
+				case EPOCH_keysBuildMovBak: { _adj = 0.1;if(_shift)then{_adj = 0.5};if(_alt)then{_adj = 0.01};EPOCH_Y_OFFSET = (EPOCH_Y_OFFSET - _adj) max -5; _handled = true };
+				case EPOCH_keysBuildMovL: { _adj = 0.1;if(_shift)then{_adj = 0.5};if(_alt)then{_adj = 0.01};EPOCH_X_OFFSET = (EPOCH_X_OFFSET + _adj) min 5; _handled = true };
+				case EPOCH_keysBuildMovR: { _adj = 0.1;if(_shift)then{_adj = 0.5};if(_alt)then{_adj = 0.01};EPOCH_X_OFFSET = (EPOCH_X_OFFSET - _adj) max -5; _handled = true };
+				case EPOCH_keysBuildRotL: { _adj = 1;if(_shift)then{_adj = 2.5};if(_alt)then{_adj = 0.5};EPOCH_buildDirection = (EPOCH_buildDirection + _adj) min 180; EPOCH_doRotate = true; _handled = true };
+				case EPOCH_keysBuildRotR: { _adj = 1;if(_shift)then{_adj = 2.5};if(_alt)then{_adj = 0.5};EPOCH_buildDirection = (EPOCH_buildDirection - _adj) max -180; EPOCH_doRotate = true; _handled = true };
+				/*case EPOCH_keysBuildIt: { cursorTarget call EPOCH_fnc_SelectTarget; _handled = true };*/
+				case eXpoch_keysVectorResetObject: { EPOCH_X_OFFSET = 0;EPOCH_Y_OFFSET = 5;EPOCH_Z_OFFSET = 0;EPOCH_buildDirection = 0;EPOCH_buildDirectionPitch = 0;EPOCH_buildDirectionRoll = 0;EPOCH_doRotate = true;_handled = true };
+			};
+			if (Epoch_target iskindof 'Const_Ghost_EPOCH') then {
+				switch (_dikCode) do {
+					case eXpoch_keysVectorTiltL: {_adj = 1;if(_shift)then{_adj = 2.5};if(_alt)then{_adj = 0.5};EPOCH_buildDirectionRoll = (EPOCH_buildDirectionRoll - _adj) max -180; EPOCH_doRotate = true; _handled = true };
+					case eXpoch_keysVectorTiltR: {_adj = 1;if(_shift)then{_adj = 2.5};if(_alt)then{_adj = 0.5};EPOCH_buildDirectionRoll = (EPOCH_buildDirectionRoll + _adj) min 180; EPOCH_doRotate = true; _handled = true };
+					case eXpoch_keysVectorTiltAwy: {_adj = 1;if(_shift)then{_adj = 2.5};if(_alt)then{_adj = 0.5};EPOCH_buildDirectionPitch = (EPOCH_buildDirectionPitch - _adj) max -180; EPOCH_doRotate = true; _handled = true };
+					case eXpoch_keysVectorTiltTwd: {_adj = 1;if(_shift)then{_adj = 2.5};if(_alt)then{_adj = 0.5};EPOCH_buildDirectionPitch = (EPOCH_buildDirectionPitch + _adj) min 180; EPOCH_doRotate = true; _handled = true };
+				};
 			};
 		};
 	};
@@ -180,13 +207,13 @@ if (vehicle player == player) then {
 					if ((primaryWeapon player != "") && (currentWeapon player == primaryWeapon player)) then {
 						player switchMove "AovrPercMrunSrasWrflDf";
 						[player, "AovrPercMrunSrasWrflDf", Epoch_personalToken] remoteExec ["EPOCH_server_handle_switchMove",2];
-                        EPOCH_playerStamina = (EPOCH_playerStamina - 30) max 0;
+						[_playerStaminaKeyFinal, -30, 1000 , 0] call EPOCH_fnc_setVariableLimited;
 						_handled = true;
 					} else {
 						if (currentWeapon player == "") then {
 							player switchMove "epoch_unarmed_jump";
 							[player, "epoch_unarmed_jump", Epoch_personalToken] remoteExec ["EPOCH_server_handle_switchMove",2];
-                            EPOCH_playerStamina = (EPOCH_playerStamina - 30) max 0;
+							[_playerStaminaKeyFinal, -30, 1000 , 0] call EPOCH_fnc_setVariableLimited;
 							_handled = true;
 						};
 					};
@@ -216,6 +243,8 @@ if (vehicle player == player) then {
 
 }; // end player only code
 
+EPOCH_favBar_itemConsumed = false;
+
 if (_dikCode in (actionKeys "Salute")) then {
 	if (_ctrl) then {
 		player playactionNow "GestureFinger";
@@ -226,7 +255,8 @@ if (_dikCode in (actionKeys "TacticalView")) then {
 	_handled = true;
 };
 if (_dikCode in (actionKeys "NightVision")) then {
-	if (EPOCH_playerEnergy == 0) then {
+	_playerEnergy = missionNamespace getVariable [_playerEnergyKeyFinal,[]];
+	if (_playerEnergy == 0) then {
 		["Night Vision Goggles: Need Energy", 5] call Epoch_message;
 		_handled = true;
 	};

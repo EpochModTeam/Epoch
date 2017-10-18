@@ -20,7 +20,7 @@ class CfgPatches {
 		units[] = {};
 		weapons[] = {};
 		requiredVersion = 0.1;
-		epochVersion = "0.5.0.0";
+		epochVersion = "1.0.0";
 		requiredAddons[] = {};
 		#include "build.hpp"
 	};
@@ -61,11 +61,19 @@ class CfgEpoch
 			{"NameCityCapital",4},
 			{"Airport",5}
 		};
+		radioactiveLocations[] = {"NameCityCapital", "NameCity", "Airport"};
+		radioactiveLocationsCount = 3;
 		traderBlds[] = {"House", "Building"};
 		traderHomes[] = {"House", "Building"};
 		traderUniforms[] = {"U_OG_leader", "U_C_Poloshirt_stripped", "U_C_Poloshirt_blue", "U_C_Poloshirt_burgundy", "U_C_Poloshirt_tricolour", "U_C_Poloshirt_salmon", "U_C_Poloshirt_redwhite", "U_C_Poor_1", "U_C_WorkerCoveralls", "U_C_Journalist", "U_C_Scientist", "U_OrestesBody"};
 		containerPos[] = {};
 		telePos[] = {};
+		lightPos[] = {
+			{-16.623,-8.50195,-10.5417},
+			{15.0352,-9.08594,-10.5417}
+		};
+		debugBoxClass = "Debug_static_F";
+		cloneClasses[] = {"clone_empty_static_F", "clone_male_static_F", "clone_female_static_F"};
 		propsPos[] = {};
 		staticNpcPos[] = {};
         forcedVehicleSpawnTable = "";
@@ -255,6 +263,7 @@ class CfgEpoch
 	#include "configs\maps\stratis.h"
 	#include "configs\maps\altis.h"
 	#include "configs\maps\chernarus.h"
+	#include "configs\maps\chernarusredux.h"
 	#include "configs\maps\chernarus_summer.h"
 	#include "configs\maps\australia.h"
 	#include "configs\maps\takistan.h"
@@ -273,4 +282,5 @@ class CfgEpoch
 	#include "configs\maps\Woodland_ACR.h"
 	#include "configs\maps\Napf.h"
 	#include "configs\maps\tanoa.h"
+    #include "configs\maps\Malden.h"
 };

@@ -1,7 +1,7 @@
 /*
 	Author: Raimonds Virtoss - EpochMod.com
 
-    Contributors:
+    Contributors: He-Man
 
 	Description:
 	DESC-TBA
@@ -14,7 +14,7 @@
 */
 disableSerialization;
 //[[[cog import generate_private_arrays ]]]
-private ["_action","_arr","_buttonSettings","_c","_cfg","_checkConfigs","_config","_configs","_dName","_display","_entries","_hasTarget","_icon","_in","_selfOrTarget","_subclasses","_tTip","_tooltip","_tooltipcode","_x"];
+private ["_iconcode","_action","_arr","_buttonSettings","_c","_cfg","_checkConfigs","_config","_configs","_dName","_display","_entries","_hasTarget","_icon","_in","_selfOrTarget","_subclasses","_tTip","_tooltip","_tooltipcode","_x"];
 //[[[end]]]
 _in = [_this, 0, "",[""]] call BIS_fnc_param;
 
@@ -33,14 +33,18 @@ _hasTarget = !(dyna_cursorTarget isEqualTo objNull);
 if (isNull _display && dialog) exitWith {false call Epoch_dynamicMenuCleanup; false};
 
 if (isNull _display) then {
-	if (_hasTarget) then {
-		createDialog "rmx_dynamenu";
+	if!(visibleMap)then{
+		if (_hasTarget) then {
+			createDialog "rmx_dynamenu";
+		} else {
+			findDisplay 46 createDisplay "rmx_dynamenu";
+		}
 	} else {
-		findDisplay 46 createDisplay "rmx_dynamenu";
+		findDisplay 12 createDisplay "rmx_dynamenu";
 	};
 };
 
-_selfOrTarget = if !(_hasTarget) then {"self"} else {"target"};
+_selfOrTarget = if!(visibleMap)then{ if !(_hasTarget) then {"self"} else {"target"} } else {"map"};
 _checkConfigs = {
 
 	_config = switch (_in) do {
@@ -100,7 +104,7 @@ _checkConfigs = {
 			{
 				if (call compile (getText(_x >> "condition"))) then {
 
-					if (_selfOrTarget isEqualTo "self" || dyna_distance) then {
+					if (_selfOrTarget in ["self","map"] || dyna_distance) then {
 
 						_subclasses = configProperties [_x, "isClass _x",true];
 
@@ -118,9 +122,21 @@ _checkConfigs = {
 						else {
 							_tooltip = getText(_x >> "tooltip");
 						};
+						
+						_icon = "";
+						_iconcode = getText(_x >> "iconcode");
+						if (_iconcode != "") then {
+							_icon = [] call compile _iconcode;
+						}
+						else {
+							_icon = getText(_x >> "icon");
+						};
+						if (!(_icon isequaltype "") || _icon isequalto "") then {
+							_icon = "x\addons\a3_epoch_code\Data\UI\buttons\player_inspect.paa";
+						};
 
 						_buttonSettings pushBack [
-							getText(_x >> "icon"),
+							_icon,
 							_tooltip,
 							_action
 						];
@@ -133,7 +149,7 @@ _checkConfigs = {
 };
 
 call _checkConfigs;
-if (_buttonSettings isEqualTo []) then {_selfOrTarget = "self"; call _checkConfigs;};
+if (_buttonSettings isEqualTo []) then {_selfOrTarget = if!(visibleMap)then{"self"}else{"map"}; call _checkConfigs;};
 
 _entries = count _buttonSettings;
 if !(_entries <= 0) then {

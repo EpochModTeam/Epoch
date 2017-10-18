@@ -1,10 +1,10 @@
 // init
-_forceUpdate = false;
 _forceBloodRise = false;
 _forceFatigue = false;
 _allowBloodDrop = false;
 _forceStaminaDrop = false;
-_warnbloodPressure = EPOCH_playerBloodP > 120;
+_playerBloodP = missionNamespace getVariable [_playerBloodPKey, _playerBloodPDefault];
+_warnbloodPressure = _playerBloodP > 120;
 _increaseStamina = true;
 _val = 0;
 
@@ -18,9 +18,9 @@ if (!isNull _cursorTarget && {!(EPOCH_target isEqualTo _cursorTarget)}) then {
 	if (isClass(_interaction)) then {
 		_currentTargetMode = getNumber (_interaction >> "interactMode");
 		_allowTarget = switch (getNumber (_interaction >> "aliveState")) do {
-		    case 1: {!(alive _cursorTarget)};
+			case 1: {!(alive _cursorTarget)};
 			case 2: {(alive _cursorTarget)};
-		    default {true};
+			default {true};
 		};
 		if (_allowTarget) then {
 			_currentTarget = _cursorTarget;
@@ -44,15 +44,15 @@ EPOCH_currentTargetMode = _currentTargetMode;
 // dynamic HUD start
 {
 	_x params [["_selectedVar",[]],["_HUDclass","topRight"],["_ctrlText",""],["_criticalAttributes",[]]];
-	_selectedVar params [["_selVarName",""],["_selVarType",""],["_selVarSubData",""],["_extraLogicRaw",[]],["_customVarLimits",[]]];
+	_selectedVar params [["_selVarName",""],["_selVarType",""],["_selVarSubData",""],["_extraLogicRaw",[]],["_selVarLimits",[]]];
 
-	_varIndex = EPOCH_customVars find _selVarName;
-	if (_varIndex != -1 || !(_customVarLimits isEqualTo [])) then {
-		if (_customVarLimits isEqualTo []) then {
-			_customVarLimits = EPOCH_customVarLimits select _varIndex;
+	_varIndex = _customVarNames find _selVarName;
+	if (_varIndex != -1 || !(_selVarLimits isEqualTo [])) then {
+		if (_selVarLimits isEqualTo []) then {
+			_selVarLimits = _customVarLimits select _varIndex;
 		};
-		_currentVarVal = [_selVarName,_varIndex,_selVarType,_selVarSubData] call _fnc_returnHudVar;
-		_customVarLimits params [["_playerLimitMax",100],["_playerLimitMin",0],["_playerWarnLimit",101],["_playerCriticalLimit",101],["_playerWarnLow",0],["_playerCriticalLow",0]];
+		_currentVarVal = [_selVarName,_varIndex,_selVarType,_selVarSubData] call EPOCH_fnc_returnHudVar;
+		_selVarLimits params [["_playerLimitMax",100],["_playerLimitMin",0],["_playerWarnLimit",101],["_playerCriticalLimit",101],["_playerWarnLow",0],["_playerCriticalLow",0]];
 
 		_extraLogic = false;
 		if !(_extraLogicRaw isEqualTo []) then {
@@ -62,8 +62,8 @@ EPOCH_currentTargetMode = _currentTargetMode;
 			if (_extraLogicType isEqualType []) then {
 				_extraLogicType params [["_extraLogicVarName",""],["_extraLogicType",""],["_extraLogicDefaultValue",""]];
 			};
-			_extraVarIndex = EPOCH_customVars find _extraLogicVarName;
-			_extraLogic = [([_extraLogicVarName,_extraVarIndex,_extraLogicType,_extraLogicDefaultValue] call _fnc_returnHudVar),_extraLogicCond,_extraLogicData] call _fnc_arrayToLogic;
+			_extraVarIndex = _customVarNames find _extraLogicVarName;
+			_extraLogic = [([_extraLogicVarName,_extraVarIndex,_extraLogicType,_extraLogicDefaultValue] call EPOCH_fnc_returnHudVar),_extraLogicCond,_extraLogicData] call EPOCH_fnc_arrayToLogic;
 		};
 
 		if (_playerLimitMax isEqualType "") then {
@@ -91,7 +91,7 @@ EPOCH_currentTargetMode = _currentTargetMode;
 				_forceUpdate = "forceUpdate" in _criticalAttributes;
 				_forceFatigue = "forceFatigue" in _criticalAttributes;
 				_forceBloodRise = "forceBloodRise" in _criticalAttributes;
-                [_curCtrl,0.55] call epoch_2DCtrlHeartbeat;
+				[_curCtrl,0.55] call epoch_2DCtrlHeartbeat;
 			};
 			// todo make this reversable or even limited to a color range.
 			_color = [_playerLimitMin,_playerLimitMax,_currentVarVal,1] call EPOCH_colorRange;
@@ -105,7 +105,8 @@ EPOCH_currentTargetMode = _currentTargetMode;
 if (_forceBloodRise || _forceFatigue) then {
 	_increaseStamina = false;
 } else {
-	if (EPOCH_playerStamina > 0 && !_panic) then {
+	_playerStamina = missionNamespace getVariable [_playerStaminaKey, _playerStaminaDefault];
+	if (_playerStamina > 0 && !_panic) then {
 		_allowBloodDrop = true;
 	};
 };
@@ -121,19 +122,20 @@ if (_forceFatigue) then {
 
 // force Blood Pressure Rise
 if (_forceBloodRise) then {
-	EPOCH_playerBloodP = (EPOCH_playerBloodP + 0.05) min 190;
+	_playerBloodP = [_playerBloodPKey, 0.05, _playerBloodPMax , _playerBloodPMin] call EPOCH_fnc_setVariableLimited;
 } else {
 	if (_allowBloodDrop) then {
 		// allow player to bleed out
 		_lowerBPlimit = [100,0] select (isBleeding player);
-		EPOCH_playerBloodP = EPOCH_playerBloodP - 1 max _lowerBPlimit;
+		_playerBloodP = [_playerBloodPKey, -1, _playerBloodPMax , _lowerBPlimit] call EPOCH_fnc_setVariableLimited;
 	};
 };
 
 // check if player On Foot
-if (isNull objectParent player) then {
+_isOnFoot = isNull objectParent player;
+if (_isOnFoot) then {
 	_val = log(abs(speed player));
-	_staminaThreshold = [0.7,0.3] select EPOCH_playerIsSwimming;
+	_staminaThreshold = [0.7,0.3] select (underwater player);
 	if (_val > _staminaThreshold) then {
 		_forceStaminaDrop = true;
 	};
@@ -141,22 +143,76 @@ if (isNull objectParent player) then {
 
 // Decrease Stamina
 if (_forceStaminaDrop) then {
-	EPOCH_playerStamina = (EPOCH_playerStamina - (_val/4)) max 0;
+	_playerStamina = [_playerStaminaKey, -(_val/4), EPOCH_playerStaminaMax , 0] call EPOCH_fnc_setVariableLimited;
 } else {
 	// Increase Stamina if player is not Fatigued
 	if (_increaseStamina && (getFatigue player) == 0) then {
-		EPOCH_playerStamina = (EPOCH_playerStamina + 0.5) min EPOCH_playerStaminaMax;
+		// EPOCH_playerStamina = (EPOCH_playerStamina + 0.5) min EPOCH_playerStaminaMax;
+		_playerStamina = [_playerStaminaKey, 0.5, EPOCH_playerStaminaMax , 0] call EPOCH_fnc_setVariableLimited;
 	};
 };
 
-// force update
-if (_forceUpdate) then {
-	true call EPOCH_pushCustomVar;
-};
+
 
 // ~ debug
 if (EPOCH_debugMode) then {
-	call EPOCH_debugMonitor;
+	private _hours = floor(servertime/60/60);
+	private _customVars = "";
+	{
+		if !(_x in ["AliveTime","SpawnArray","HitPoints","MissionArray","NotUsed"]) then {
+			private _varName = format["EPOCH_player%1",_x];
+			private _varNameTmp = call compile format["_player%1Key",_x];
+			if !(isNil "_varNameTmp") then {_varName = _varNameTmp};
+			private _val = missionNamespace getVariable [_varName,_defaultVarValues select _forEachIndex];
+			if (_x == "Temp") then {
+				_customVars = _customVars + format["<t size='1.15' font='puristaLight' align='left'>%1: </t><t size='1.15' font='puristaLight' align='right'>%2°F | %3°C</t><br/>", _x,_val,_val call EPOCH_convertTemp];
+			} else {
+				_customVars = _customVars + format["<t size='1.15' font='puristaLight' align='left'>%1: </t><t size='1.15' font='puristaLight' align='right'>%2</t><br/>", _x,_val];
+			};
+		}
+	}forEach _customVarNames;
+	hintSilent parseText format ["
+		<t size='1.25' font='puristaLight' align='center'>Welcome to Epoch!</t><br/>
+		<t size='1.18' font='puristaLight' align='center'>Current Version: %1</t><br/>
+		<t size='1.0' font='puristaLight' align='center'>Build: %2</t><br/>
+		" + _customVars + "
+		<t size='1.15' font='puristaLight' align='left'>Karma: </t><t size='1.15' font='puristaLight' align='right'>%17</t><br/>
+		<br/>
+
+		<t size='1.15' font='puristaLight' align='left'>Fatigue: </t><t size='1.15' font='puristaLight' align='right'>%3</t><br/>
+		<t size='1.15' font='puristaLight' align='left'>Damage: </t><t size='1.15' font='puristaLight' align='right'>%4</t><br/>
+		<t size='1.15' font='puristaLight' align='left'>Bleeding: </t><t size='1.15' font='puristaLight' align='right'>%5</t><br/>
+		<t size='1.15' font='puristaLight' align='left'>Bleed Time: </t><t size='1.15' font='puristaLight' align='right'>%6</t><br/>
+		<t size='1.15' font='puristaLight' align='left'>Oxygen: </t><t size='1.15' font='puristaLight' align='right'>%7</t><br/>
+		<br/>
+		<t size='1.15' font='puristaLight' align='left'>Air Temp: </t><t size='1.15' font='puristaLight' align='right'>%8</t><br/>
+		<t size='1.15' font='puristaLight' align='left'>Water Temp: </t><t size='1.15' font='puristaLight' align='right'>%9</t><br/>
+		<t size='1.15' font='puristaLight' align='left'>Rain: </t><t size='1.15' font='puristaLight' align='right'>%10</t><br/>
+		<t size='1.15' font='puristaLight' align='left'>Overcast: </t><t size='1.15' font='puristaLight' align='right'>%11</t><br/>
+		<br/>
+		<t size='1.15' font='puristaLight' align='left'>Hours Alive: </t><t size='1.15' font='puristaLight' align='right'>%12</t><br/>
+		<t size='1.15' font='puristaLight' align='left'>FPS: </t><t size='1.15' font='puristaLight' align='right'>%13</t><br/>
+		<t size='1.15' font='puristaLight' align='left'>Server uptime: </t><t size='1.15' font='puristaLight' align='right'>%14h %15m</t><br/>
+		<t size='1.15' font='puristaLight' align='left'>Server FPS: </t><t size='1.15' font='puristaLight' align='right'>%16</t><br/>",
+		getText(configFile >> "CfgMods" >> "Epoch" >> "version"),
+		getNumber(missionConfigFile >> "CfgEpochBuild" >> "build"),
+		(getFatigue player),
+		(damage player),
+		(isBleeding player),
+		(getBleedingRemaining player),
+		(getOxygenRemaining player),
+		format ["%1°F | %2°C",EPOCH_CURRENT_WEATHER,EPOCH_CURRENT_WEATHER call EPOCH_convertTemp],
+		format ["%1°F | %2°C",(EPOCH_CURRENT_WEATHER/2),(EPOCH_CURRENT_WEATHER/2) call EPOCH_convertTemp],
+		rain,
+		overcast,
+
+		round(_playerAliveTime/360)/10,
+		round diag_fps,
+		_hours,
+		round((serverTime/60)-(_hours*60)),
+		if (EPOCH_diag_fps isEqualType 0) then [{EPOCH_diag_fps},{"MANIPULATED"}],
+		missionNamespace getVariable ["EPOCH_totalKarma",0]
+	];
 };
 
 // player to player trade loop
@@ -271,4 +327,58 @@ if !(EPOCH_ActiveTraderMission isequalto []) then {
 			_taskDialogues deleteat _foreachindex;
 		};
 	} foreach _taskDialogues;
+};
+
+// AH use only
+if !(isNil "EPOCH_GMODE") then {
+	{
+		_varDefault = _gModeVarValues select _foreachindex;
+		_varName = format["EPOCH_player%1",_x];
+		_varNameTmp = call compile format["_player%1Key",_x];
+		if !(isNil "_varNameTmp") then {_varName = _varNameTmp};
+		missionNamespace setVariable [_varName, _varDefault];
+	} forEach _gModeVarNames;
+};
+
+// Update read only vars
+if !(_playerTempKey isEqualTo "EPOCH_playerTemp") then {
+	EPOCH_playerTemp = missionNamespace getVariable [_playerTempKey, _playerTempDefault];
+	EPOCH_playerHunger = missionNamespace getVariable [_playerHungerKey, _playerHungerDefault];
+	EPOCH_playerThirst = missionNamespace getVariable [_playerThirstKey, _playerThirstDefault];
+	EPOCH_playerAliveTime = missionNamespace getVariable [_playerAliveTimeKey, _playerAliveTimeDefault];
+	EPOCH_playerEnergy = missionNamespace getVariable [_playerEnergyKey, _playerEnergyDefault];
+	EPOCH_playerWet = missionNamespace getVariable [_playerWetKey, _playerWetDefault];
+	EPOCH_playerSoiled = missionNamespace getVariable [_playerSoiledKey, _playerSoiledDefault];
+	EPOCH_playerImmunity = missionNamespace getVariable [_playerImmunityKey, _playerImmunityDefault];
+	EPOCH_playerToxicity = missionNamespace getVariable [_playerToxicityKey, _playerToxicityDefault];
+	EPOCH_playerStamina = missionNamespace getVariable [_playerStaminaKey, _playerStaminaDefault];
+	EPOCH_playerBloodP = missionNamespace getVariable [_playerBloodPKey, _playerBloodPDefault];
+	EPOCH_playerAlcohol = missionNamespace getVariable [_playerAlcoholKey, _playerAlcoholDefault];
+	EPOCH_playerRadiation = missionNamespace getVariable [_playerRadiationKey, _playerRadiationDefault];
+	EPOCH_playerNuisance = missionNamespace getVariable [_playerNuisanceKey, _playerNuisanceDefault];
+};
+
+// Check for PlayerMarker and Update or Remove it
+_config = 'CfgLocalMarkerSets' call EPOCH_returnConfig;
+_markerArray = getArray(_config >> 'PlayerMarker' >> 'markerArray');
+_markerName = (_markerArray select 0) select 0;
+
+if(_markerName in allMapMarkers)then{
+	if!('ItemGPS' in (assignedItems player))then{
+		['PlayerMarker'] call EPOCH_fnc_deleteLocalMarkerSet;
+		if(((getArray(_config >> 'DeathMarker' >> 'markerArray') select 0) select 0) in allMapMarkers)then{
+			['DeathMarker'] call EPOCH_fnc_deleteLocalMarkerSet;
+		};
+	}else{
+		{
+			(_x select 0) setMarkerPosLocal (position player);
+			if(count(_x) >= 8)then{(_x select 0) setMarkerTextLocal (call compile (_x select 7))};
+		}forEach _markerArray;
+	};
+};
+
+// force update
+if (EPOCH_forceUpdateNow) then {
+	EPOCH_forceUpdateNow = false;
+	call _fnc_forceUpdate;
 };

@@ -13,7 +13,7 @@
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server/init/server_init.sqf
 */
 //[[[cog import generate_private_arrays ]]]
-private ["_ReservedSlots","_SideHQ1","_SideHQ2","_SideHQ3","_abortAndError","_allowedVehicleIndex","_allowedVehicleListName","_allowedVehiclesList","_allowedVehiclesListArray","_cfgServerVersion","_channelColor","_channelNumber","_channelTXT","_clientVersion","_config","_configSize","_configVersion","_date","_dateChanged","_epochConfig","_epochWorldPath","_existingStock","_hiveVersion","_index","_indexStock","_instanceID","_marker","_radio","_response","_sapper","_serverConfig","_serverSettingsConfig","_servicepoints","_startTime","_staticDateTime","_timeDifference","_vehicleCount","_vehicleSlotLimit","_worldSize"];
+private ["_ReservedSlots","_SideHQ1","_SideHQ2","_SideHQ3","_abortAndError","_allowedVehicleIndex","_allowedVehicleListName","_allowedVehiclesList","_allowedVehiclesListArray","_cfgServerVersion","_channelColor","_channelNumber","_channelTXT","_clientVersion","_config","_configSize","_configVersion","_date","_dateChanged","_epochConfig","_epochWorldPath","_existingStock","_hiveVersion","_index","_indexStock","_instanceID","_marker","_markercolor","_markertxt","_markertype","_pos","_radio","_response","_sapper","_serverConfig","_serverSettingsConfig","_servicepoints","_startTime","_staticDateTime","_staticFuelSources","_timeDifference","_vehicleCount","_vehicleSlotLimit","_worldSize"];
 //[[[end]]]
 _startTime = diag_tickTime;
 missionNamespace setVariable ['Epoch_ServerVersion', getText(configFile >> "CfgMods" >> "Epoch" >> "version"), true];
@@ -163,7 +163,7 @@ diag_log "Epoch: Spawning vehicles";
 _allowedVehiclesListArray = [];
 {
     _x params ["_vehClass","_velimit"];
-    _vehicleCount = {typeOf _x == _vehClass} count vehicles;
+     _vehicleCount = {(_x getvariable ["VEHICLE_BaseClass",typeOf _x]) == _vehClass} count vehicles;
 
     // Load how many of this vehicle are in stock at any trader.
     _indexStock = EPOCH_traderStoredVehicles find _vehClass;
@@ -197,7 +197,7 @@ if (_staticDateTime isEqualto []) then {
     _response = "epochserver" callExtension "510";
     if (_response != "") then {
         diag_log format ["Epoch: Set Real Time: %1", _response];
-        _date = call compile _response;
+        _date = parseSimpleArray _response;
         _date resize 5;
         _date set[0, (_date select 0) + 21];
         _date set[3, (_date select 3) + _timeDifference];
@@ -224,21 +224,82 @@ if (_dateChanged) then {
 _config = 'CfgServicePoint' call EPOCH_returnConfig;
 _servicepoints = getArray (_config >> worldname >> 'ServicePoints');
 {
-	_marker = createMarker [('ServicePointMarker'+(str _forEachIndex)), _x];
-	_marker setmarkertype "mil_dot";
-	_marker setmarkercolor 'ColorBlack';
-	_marker setMarkerText ("Service Point");
-	if !(surfaceiswater _x) then {
-		"Land_HelipadCircle_F" createvehicle _x;
+	_pos = _x;
+	_markertype = "mil_dot";
+	_markercolor = "ColorBlack";
+	_markertxt = "Service Point";
+	if (count _x > 3) then {
+		_pos = _x select 0;
+		if ((_x select 3) isequaltype "") then {
+			_markertype = _x select 3;
+		};
+		if (count _x > 4) then {
+			if ((_x select 4) isequaltype "") then {
+				_markercolor = _x select 4;
+			};
+		};
+		if (count _x > 5) then {
+			if ((_x select 5) isequaltype "") then {
+				_markertxt = _x select 5;
+			};
+		};
 	};
-} forEach _servicepoints;
+	if !(_markertype isequalto "") then {
+		_marker = createMarker [('ServicePointMarker'+(str _foreachindex)), _pos];
+		_marker setmarkertype _markertype;
+		if !(_markercolor isequalto "") then {
+			_marker setmarkercolor _markercolor;
+		};
+		if !(_markertxt isequalto "") then {
+			_marker setMarkerText _markertxt;
+		};
+		if !(surfaceiswater _pos) then {
+			"Land_HelipadCircle_F" createvehicle _pos;
+		};
+	};
+} forEach _ServicePoints;
 
+// Remove Auto-Refuel from all maps
+
+if ([_serverSettingsConfig, "disableAutoRefuel", true] call EPOCH_fnc_returnConfigEntry) then {
+    // get all fuel source objects on the map (Note: this maybe slow consider refactor with another command)
+    _staticFuelSources = ((epoch_centerMarkerPosition nearObjects ['Building',EPOCH_dynamicVehicleArea]) select {getFuelCargo _x > 0});
+    // globalize all fuel sources
+    missionNamespace setVariable ["EPOCH_staticFuelSources", _staticFuelSources, true];
+    // disable fuel sources server side. (Note: might not be needed since we also need to do this client side)
+    {_x setFuelCargo 0;} foreach _staticFuelSources;
+};
 
 // set time multiplier
 setTimeMultiplier ([_serverSettingsConfig, "timeMultiplier", 1] call EPOCH_fnc_returnConfigEntry);
 
 // globalize tax rate
 missionNamespace setVariable ["EPOCH_taxRate", [_serverSettingsConfig, "taxRate", 0.1] call EPOCH_fnc_returnConfigEntry, true];
+
+// pick random radioactive locations
+_radioactiveLocations = getArray(_epochConfig >> worldName >> "radioactiveLocations");
+_radioactiveLocationsTmp = [];
+if !(_radioactiveLocations isEqualTo []) then {
+	private _locations = nearestLocations[epoch_centerMarkerPosition, _radioactiveLocations, EPOCH_dynamicVehicleArea];
+	if !(_locations isEqualTo []) then {
+
+		for "_i" from 0 to (getNumber(_epochConfig >> worldName >> "radioactiveLocationsCount")) do
+		{
+			if (_locations isEqualTo []) exitWith {};
+			private _selectedLoc = selectRandom _locations;
+			_locations = _locations - [_selectedLoc];
+			_radioactiveLocationsTmp pushBack [_selectedLoc,random 666];
+			private _position = locationPosition _selectedLoc;
+			_marker = name _selectedLoc;
+			_marker = createMarker[_marker, _position];
+			_marker setMarkerShape "ICON";
+			_marker setMarkerType "hd_warning";
+			_marker setMarkerColor "ColorRed";
+			// _marker setMarkerText "Radioactive";
+		};
+	};
+};
+missionNamespace setVariable ["EPOCH_radioactiveLocations", _radioactiveLocationsTmp, true];
 
 // start accepting logins
 missionNamespace setVariable ["EPOCH_SERVER_READY", true, true];

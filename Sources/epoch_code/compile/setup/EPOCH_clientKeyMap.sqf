@@ -35,6 +35,11 @@ _keyMap =
 
 	["Volume + (ctrl)","EPOCH_keysVolumeUp",0x0D],
 	["Volume - (ctrl)","EPOCH_keysVolumeDown",0x0C],
+	["Favorite Bar 1", "EPOCH_keysfav1", 0x02],
+	["Favorite Bar 2", "EPOCH_keysfav2", 0x03],
+	["Favorite Bar 3", "EPOCH_keysfav3", 0x04],
+	["Favorite Bar 4", "EPOCH_keysfav4", 0x05],
+	["Favorite Bar 5", "EPOCH_keysfav5", 0x06],
 	["Build: Mode 1", "EPOCH_keysBuildMode1", 2],
 	// ["Build: Mode 2", "EPOCH_keysBuildMode2", 3],
 	// ["Build: Direction", "EPOCH_keysBuildDir", 4],
@@ -46,8 +51,15 @@ _keyMap =
 	["Build: Move LEFT", "EPOCH_keysBuildMovL", 0xD2],
 	["Build: Move RIGHT", "EPOCH_keysBuildMovR", 0xD3],
 	["Build: Rotate LEFT", "EPOCH_keysBuildRotL", 0x12],
-	["Build: Rotate RIGHT", "EPOCH_keysBuildRotR", 0x10]
+	["Build: Rotate RIGHT", "EPOCH_keysBuildRotR", 0x10],
+	["Build: Vector LEFT", "eXpoch_keysVectorTiltL", 0xCB],
+	["Build: Vector RIGHT", "eXpoch_keysVectorTiltR", 0xCD],
+	["Build: Vector AWAY", "eXpoch_keysVectorTiltAwy", 0xC8],
+	["Build: Vector TOWARD", "eXpoch_keysVectorTiltTwd", 0xD0],
+	["Build: Reset Object", "eXpoch_keysVectorResetObject", 0x4C]
 ];
+
+_keyMap call EPOCH_custom_KeyMap;
 
 switch (_args) do {
 	case 0: //load variables

@@ -12,8 +12,10 @@
     Github:
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server/compile/epoch_player/EPOCH_server_savePlayer.sqf
 */
-private["_return", "_pos", "_medical", "_playerUID", "_weapons", "_itemsplayer", "_weaponsplayer", "_appearance", "_dmg", "_allowSave", "_cIndex", "_Svars", "_current_crypto", "_group", "_revive", "_vehiclePlyr","_server_vars"];
-params [["_player",objNull], ["_vars",[]]];
+//[[[cog import generate_private_arrays ]]]
+private ["_Svars","_allowSave","_appearance","_cIndex","_dmg","_extraLoadoutInfo","_group","_hitpoints","_loadout","_medical","_playerUID","_pos","_return","_return2","_revive","_schemaVersion","_server_vars","_stats","_vehiclePlyr"];
+//[[[end]]]
+params [["_player",objNull], ["_vars",[]] ];
 
 if (isNull _player) exitWith {
 	diag_log "DEBUG SAVE ABORT null player object";
@@ -78,15 +80,27 @@ if (_allowSave) then{
 		};
 	};
 
-	_dmg = damage _player;
-	_medical = [getBleedingRemaining _player, 0, getOxygenRemaining _player, _dmg];
-	_appearance = [goggles _player, headgear _player, vest _player, backpack _player, uniform _player, typeOf _player];
-	_itemsplayer = [getItemCargo(uniformContainer _player), getItemCargo(vestContainer _player), getItemCargo(backpackContainer _player)];
-	_weaponsplayer = [getWeaponCargo(uniformContainer _player), getWeaponCargo(vestContainer _player), getWeaponCargo(backpackContainer _player)];
-	_weapons = [currentWeapon _player, weaponsItems _player, [primaryWeapon _player, secondaryWeapon _player, handgunWeapon _player]];
+	// get players hitpoint damage
+	_hitpoints = (getAllHitPointsDamage _player) param [2,[]];
+
+	// build medical array
+	_medical = [getBleedingRemaining _player, 0, getOxygenRemaining _player, damage _player, _hitpoints];
+
+	// appearance now handled with getUnitLoadout, typeof is still need to determine players class.
+	_appearance = ["", "", "", "", currentWeapon _player, typeOf _player];
+
+	// new save format
+	_loadout = getUnitLoadout _player;
+
+	// change this if needed
+	_schemaVersion = 1.0;
 
 	// save player
-	_return = ["Player", _playerUID, EPOCH_expiresPlayer, [[getDir _player, _pos, (call EPOCH_fn_InstanceID)], _medical, _appearance, _server_vars, _vars, _weapons, assignedItems _player, magazinesAmmo _player, _itemsplayer, _weaponsplayer, _group, _revive]] call EPOCH_fnc_server_hiveSETEX;
+	_return = ["Player", _playerUID, EPOCH_expiresPlayer, [[getDir _player, _pos, (call EPOCH_fn_InstanceID), _schemaVersion], _medical, _appearance, _server_vars, _vars, _loadout, [], [], [], [], _group, _revive]] call EPOCH_fnc_server_hiveSETEX;
+
+	// save community stats
+	_stats = _player getVariable["COMMUNITY_STATS", EPOCH_defaultStatVars];
+	_return2 = ["CommunityStats", _playerUID, EPOCH_expiresCommunityStats, [_stats]] call EPOCH_fnc_server_hiveSETEX;
 
 	// kill player if blood pressure >= 180
 	if (_vars select 12 >= 180) then {

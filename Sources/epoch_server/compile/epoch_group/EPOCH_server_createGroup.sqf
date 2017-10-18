@@ -60,8 +60,8 @@ if (_current_crypto >= _upgradePrice) then {
 
 		_contentArray = [_groupName, _leaderName, EPOCH_group_upgrade_lvl_SEPXVar select 0, [], []];
 
-		[["groupUpdate", _contentArray], (owner _leader)] call EPOCH_sendRemoteExecClient;
-		[["groupUidUpdate", _groupID], (owner _leader)] call EPOCH_sendRemoteExecClient;
+		[["groupUpdate", _contentArray], _leader] call EPOCH_sendRemoteExecClient;
+		[["groupUidUpdate", _groupID], _leader] call EPOCH_sendRemoteExecClient;
 
 		_leader setVariable ["GROUP", _groupID];
 

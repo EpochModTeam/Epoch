@@ -25,7 +25,7 @@ private ["_item","_marker"];
 			_marker = createMarker[str(_x), _x];
 			_marker setMarkerShape "ICON";
 			_marker setMarkerType "mil_dot";
-			// _marker setMarkerText "Shipwreak";
+			// _marker setMarkerText "Shipwreck";
 			_marker setMarkerColor "ColorOrange";
 		};
 	};

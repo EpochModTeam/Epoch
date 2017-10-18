@@ -110,7 +110,7 @@ if !(_jammer isEqualTo []) then {
 				_buildingCountLimit = _buildingCountLeader + (_buildingCountPerMember * _membercount);
 			};
 			if (_useSplitCountLimits) then {
-				if(_objType in ["WorkBench_EPOCH","StorageShelf_EPOCH","Tipi_EPOCH","LockBox_EPOCH","Safe_EPOCH","StorageShelf_SIM_EPOCH","LockBox_SIM_EPOCH","Safe_SIM_EPOCH","Workbench_SIM_EPOCH","Tipi_SIM_EPOCH"]) then {
+				if(_objType in ["WorkBench_EPOCH","StorageShelf_EPOCH","Tipi_EPOCH","TentA_EPOCH","TentDome_EPOCH","LockBox_EPOCH","Safe_EPOCH","StorageShelf_SIM_EPOCH","LockBox_SIM_EPOCH","Safe_SIM_EPOCH","Workbench_SIM_EPOCH","Tipi_SIM_EPOCH"]) then {
 					if ((count (nearestObjects[_nearestJammer,["Buildable_Storage","Constructions_lockedstatic_F","LockBox_SIM_EPOCH","Safe_SIM_EPOCH","StorageShelf_SIM_EPOCH","WorkBench_SIM_EPOCH"],_buildingJammerRange]-[_obj])) >= _storageCountLimit) exitwith {
 						_buildingAllowed = false;
 						[format["Building Disallowed: Max. %1 Storage Objects",_storageCountLimit],5] call Epoch_message

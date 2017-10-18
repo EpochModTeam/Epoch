@@ -17,7 +17,7 @@ private ["_agent","_aiTables","_arr","_class","_currentStock","_existingStock","
 //[[[end]]]
 params [["_maxTraderLimit",0]];
 
-_staticTradersArray = [] + EPOCH_staticNPCTraderPos;
+_staticTradersArray = +EPOCH_staticNPCTraderPos;
 EPOCH_staticNPCTraderPos = nil;
 _staticTradersArray append getArray(configFile >> "CfgEpoch" >> worldName >> "staticNpcPos");
 _staticTradersArrCount = count _staticTradersArray;
@@ -29,7 +29,7 @@ _storedVehicleLimit = [_serverSettingsConfig, "storedVehicleLimit", 20] call EPO
 
 EPOCH_storedVehicleCount = 0;
 
-for "_i" from 0 to _maxTraderLimit do {
+for "_i" from 0 to (_maxTraderLimit-1) do {
 	_traderSlotIndex = EPOCH_TraderSlots pushBack _i;
 
 	// Spawn static traders first

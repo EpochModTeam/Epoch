@@ -71,8 +71,8 @@ for "_i" from 1 to _maxVehicleLimit do {
 					_vehicle = createVehicle [_class, _location, [], 0, "CAN_COLLIDE"];
 					_allVehicles pushBack _vehicle;
 					_vehicle call EPOCH_server_setVToken;
-					_vehicle setVectorDirAndUp _worldspace;
 					_vehicle setposATL _location;
+					_vehicle setVectorDirAndUp _worldspace;
 					_vehicle setDamage _damage;
 
 					_allHitpoints = getAllHitPointsDamage _vehicle;

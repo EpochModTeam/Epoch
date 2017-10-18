@@ -163,7 +163,7 @@ class CfgBaseBuilding
     class WoodFloor_EPOCH : Default
     {
         upgradeBuilding[] = {{"MetalFloor_EPOCH",{{"ItemCorrugatedLg",2}}}};
-        removeParts[] = {{"PartPlankPack",2}};
+        removeParts[] = {{"PartPlankPack",4}};
         simulClass = "WoodFloor_SIM_EPOCH";
         staticClass = "WoodFloor_EPOCH";
         GhostPreview = "WoodFloor_Ghost_EPOCH";
@@ -179,8 +179,47 @@ class CfgBaseBuilding
         removeParts[] = {};
     };
     class WoodFloor_Ghost_EPOCH : WoodFloor_SIM_EPOCH {};
+	class WoodHalfFloor_EPOCH : Default
+    {
+        upgradeBuilding[] = {{"WoodFloor_EPOCH",{{"KitWoodHalfFloor",1}}}};
+        removeParts[] = {{"PartPlankPack",2}};
+        simulClass = "WoodHalfFloor_SIM_EPOCH";
+        staticClass = "WoodHalfFloor_EPOCH";
+        GhostPreview = "WoodHalfFloor_Ghost_EPOCH";
+        snapPointsPara[] = {"NF","SF","EF","WF","C","CB"};
+        snapPointsPerp[] = {"N","S","E","W","CinN","CinS","CinE","CinW"};
+        energyCost = 0.2;
+    };
+    class WoodHalfFloor_SIM_EPOCH : WoodHalfFloor_EPOCH
+    {
+        allowedSnapPoints[] = {"NF","SF","EF","WF","C"};
+        allowedSnapObjects[] = {"WoodHalfFloor_EPOCH"};
+        upgradeBuilding[] = {};
+        removeParts[] = {};
+    };
+    class WoodHalfFloor_Ghost_EPOCH : WoodHalfFloor_SIM_EPOCH {};
+	class WoodQuarterFloor_EPOCH : Default
+    {
+        upgradeBuilding[] = {{"WoodHalfFloor_EPOCH",{{"KitWoodQuarterFloor",1}}}};
+        removeParts[] = {{"PartPlankPack",1}};
+        simulClass = "WoodQuarterFloor_SIM_EPOCH";
+        staticClass = "WoodQuarterFloor_EPOCH";
+        GhostPreview = "WoodQuarterFloor_Ghost_EPOCH";
+        snapPointsPara[] = {"NF","SF","EF","WF","C","CB"};
+        snapPointsPerp[] = {"N","S","E","W","CinN","CinS","CinE","CinW"};
+        energyCost = 0.1;
+    };
+    class WoodQuarterFloor_SIM_EPOCH : WoodQuarterFloor_EPOCH
+    {
+        allowedSnapPoints[] = {"NF","SF","EF","WF","C"};
+        allowedSnapObjects[] = {"WoodQuarterFloor_EPOCH"};
+        upgradeBuilding[] = {};
+        removeParts[] = {};
+    };
+    class WoodQuarterFloor_Ghost_EPOCH : WoodQuarterFloor_SIM_EPOCH {};
     class MetalFloor_EPOCH : Default
     {
+        upgradeBuilding[] = {{"CinderFloor_EPOCH",{{"CinderBlocks",2},{"MortarBucket",2}}}};
         removeParts[] = {{"ItemCorrugatedLg",2}};
         simulClass = "MetalFloor_SIM_EPOCH";
         staticClass = "MetalFloor_EPOCH";
@@ -196,6 +235,29 @@ class CfgBaseBuilding
         removeParts[] = {};
     };
     class MetalFloor_Ghost_EPOCH : MetalFloor_SIM_EPOCH {};
+
+	class MetalTower_EPOCH : Default
+    {
+        removeParts[] = {{"ItemCorrugatedLg",3}};
+		upgradeBuilding[] = {{"CinderTower_EPOCH",{{"CinderBlocks",4},{"MortarBucket",4}}}};
+        upgradeBuildingPart[] = {{"ItemCorrugatedLg",2}};
+        removeBuildingPart[] = {{"ItemCorrugatedLg",2}};
+        simulClass = "MetalTower_SIM_EPOCH";
+        staticClass = "MetalTower_EPOCH";
+        GhostPreview = "MetalTower_Ghost_EPOCH";
+        snapPointsPara[] = {"NF2","SF2","EF2","WF2","NF","SF","EF","WF","C","CB"};
+        snapPointsPerp[] = {"N","S","E","W","CinN","CinS","CinE","CinW"};
+        persistAnimations[] = {"NWall","EWall","SWall","WWall"};
+        energyCost = 0.5;
+    };
+    class MetalTower_SIM_EPOCH : MetalTower_EPOCH
+    {
+        allowedSnapPoints[] = {"NF2","SF2","EF2","WF2","CB"};
+        allowedSnapObjects[] = {"MetalTower_EPOCH","Const_floors_static_F","Constructions_foundation_F"};
+    };
+    class MetalTower_Ghost_EPOCH : MetalTower_SIM_EPOCH {};
+
+
     class CinderWallGarage_EPOCH : Default
     {
         removeParts[] = {{"CinderBlocks",4},{"ItemCorrugatedLg",1},{"CircuitParts",1}};
@@ -207,6 +269,58 @@ class CfgBaseBuilding
         allowedSnapPoints[] = {"N","S","E","W"};
         energyCost = 0.5;
     };
+    class CinderWall_window_EPOCH : Default
+    {
+        removeParts[] = {{"CinderBlocks",4},{"ItemCorrugatedLg",2},{"ItemGlass",1}};
+        staticClass = "CinderWall_window_EPOCH";
+        snapType = "snapPointsPara";
+        snapPointsPara[] = {"N","E","W"};
+        allowedSnapPoints[] = {"N","S","E","W"};
+        energyCost = 0.5;
+    };	
+	// Kit_Garden
+	class Garden_EPOCH : Default
+    {
+        removeParts[] = {{"Kit_Garden",1}};
+        simulClass = "Garden_SIM_EPOCH";
+        staticClass = "Garden_EPOCH";
+        GhostPreview = "Garden_Ghost_EPOCH";
+        snapPointsPara[] = {"NF","SF","EF","WF","C","CB"};
+        snapPointsPerp[] = {"N","S","E","W","CinN","CinS","CinE","CinW"};
+        energyCost = 0.5;
+    };
+    class Garden_SIM_EPOCH : Garden_EPOCH
+    {
+        allowedSnapPoints[] = {"NF","SF","EF","WF","C"};
+        allowedSnapObjects[] = {"Const_floors_static_F","Constructions_foundation_F"};
+        removeParts[] = {};
+    };
+    class Garden_Ghost_EPOCH : Garden_SIM_EPOCH {};
+	class BarbedWire_EPOCH : Default
+    {
+        removeParts[] = {{"ItemScraps",10},{"ItemRope",2}};
+        simulClass = "BarbedWire_EPOCH";
+        staticClass = "BarbedWire_EPOCH";
+        GhostPreview = "BarbedWire_EPOCH";
+        energyCost = 0.5;
+    };
+    class CinderFloor_EPOCH : Default
+    {
+        removeParts[] = {{"CinderBlocks",2},{"MortarBucket",2}};
+        simulClass = "CinderFloor_SIM_EPOCH";
+        staticClass = "CinderFloor_EPOCH";
+        GhostPreview = "CinderFloor_Ghost_EPOCH";
+        snapPointsPara[] = {"NF","SF","EF","WF","C","CB"};
+        snapPointsPerp[] = {"N","S","E","W","CinN","CinS","CinE","CinW"};
+        energyCost = 0.5;
+    };
+    class CinderFloor_SIM_EPOCH : CinderFloor_EPOCH
+    {
+        allowedSnapPoints[] = {"NF","SF","EF","WF","C"};
+        allowedSnapObjects[] = {"Const_floors_static_F","Constructions_foundation_F"};
+        removeParts[] = {};
+    };
+    class CinderFloor_Ghost_EPOCH : CinderFloor_SIM_EPOCH {};
     class CinderWallGarage_SIM_EPOCH : CinderWallGarage_EPOCH
     {
         allowedSnapObjects[] = {"Const_Cinder_static_F","Const_floors_static_F"};
@@ -233,7 +347,7 @@ class CfgBaseBuilding
     class CinderWallHalf_Ghost_EPOCH : CinderWallHalf_SIM_EPOCH {};
     class CinderWall_EPOCH : Default
     {
-        upgradeBuilding[] = {{"CinderWallGarage_EPOCH",{{"ItemCorrugatedLg",1},{"CircuitParts",1}}}};
+        upgradeBuilding[] = {{"CinderWallGarage_EPOCH",{{"ItemCorrugatedLg",1},{"CircuitParts",1}}},{"CinderWallDoorwHatch_EPOCH",{{"ItemCorrugatedLg",1},{"CircuitParts",1}}},{"CinderWall_window_EPOCH",{{"ItemCorrugatedLg",2},{"ItemGlass",1}}}};
         removeParts[] = {{"CinderBlocks",4},{"ItemRock",2}};
         simulClass = "CinderWall_SIM_EPOCH";
         staticClass = "CinderWall_EPOCH";
@@ -249,7 +363,36 @@ class CfgBaseBuilding
         upgradeBuilding[] = {};
         removeParts[] = {};
     };
-    class WoodLargeWall_EPOCH : Default
+    class CinderWallDoorwHatch_EPOCH : Default
+    {
+        removeParts[] = {{"CinderBlocks",4},{"ItemCorrugatedLg",1},{"CircuitParts",1}};
+        staticClass = "CinderWallDoorwHatch_EPOCH";
+        snapType = "snapPointsPara";
+        snapPointsPara[] = {"N","E","W"};
+        allowedSnapPoints[] = {"N","S","E","W"};
+    };
+
+	class CinderTower_EPOCH : Default
+    {
+        removeParts[] = {{"CinderBlocks",2}};
+        upgradeBuildingPart[] = {{"CinderBlocks",2},{"MortarBucket",2}};
+        removeBuildingPart[] = {{"CinderBlocks",2}};
+        simulClass = "CinderTower_SIM_EPOCH";
+        staticClass = "CinderTower_EPOCH";
+        GhostPreview = "CinderTower_Ghost_EPOCH";
+        snapPointsPara[] = {"NF2","SF2","EF2","WF2","NF","SF","EF","WF","C","CB"};
+        snapPointsPerp[] = {"N","S","E","W","CinN","CinS","CinE","CinW"};
+        persistAnimations[] = {"NWall","EWall","SWall","WWall"};
+        energyCost = 0.4;
+    };
+    class CinderTower_SIM_EPOCH : CinderTower_EPOCH
+    {
+        allowedSnapPoints[] = {"NF2","SF2","EF2","WF2","CB"};
+        allowedSnapObjects[] = {"CinderTower_EPOCH","Const_floors_static_F","Constructions_foundation_F"};
+    };
+    class CinderTower_Ghost_EPOCH : CinderTower_SIM_EPOCH {};
+
+	class WoodLargeWall_EPOCH : Default
     {
         upgradeBuilding[] = {{"WoodWall1_EPOCH",{{"ItemPlywoodPack",1}}},{"WoodLargeWallCor_EPOCH",{{"ItemCorrugated",1}}}};
         removeParts[] = {{"PartPlankPack",2}};
@@ -269,7 +412,7 @@ class CfgBaseBuilding
     class WoodLargeWall_Ghost_EPOCH : WoodLargeWall_SIM_EPOCH {};
     class WoodWall1_EPOCH : Default
     {
-        upgradeBuilding[] = {{"WoodWall2_EPOCH",{{"PartPlankPack",1}}},{"WoodLargeWallCor_EPOCH",{{"ItemCorrugated",1}}}};
+        upgradeBuilding[] = {{"WoodWall2_EPOCH",{{"PartPlankPack",1}}},{"WoodLargeWallCor_EPOCH",{{"ItemCorrugated",1}}},{"WoodWallWindow_EPOCH",{{"ItemGlass",2}}}};
         removeParts[] = {{"PartPlankPack",2}};
         simulClass = "WoodWall1_SIM_EPOCH";
         staticClass = "WoodWall1_EPOCH";
@@ -285,6 +428,15 @@ class CfgBaseBuilding
         energyCost = 0.2;
         upgradeBuilding[] = {};
         removeParts[] = {};
+    };
+    class WoodWallWindow_EPOCH : Default
+    {
+        removeParts[] = {{"ItemGlass",2},{"PartPlankPack",2}};
+        staticClass = "WoodWallWindow_EPOCH";
+        snapType = "snapPointsPara";
+        snapPointsPara[] = {"N","E","W"};
+        allowedSnapPoints[] = {"N","S","E","W"};
+        energyCost = 0.5;
     };
     class WoodLargeWallCor_EPOCH : Default
     {
@@ -446,6 +598,7 @@ class CfgBaseBuilding
     class WoodTower_EPOCH : Default
     {
         removeParts[] = {{"PartPlankPack",4}};
+		upgradeBuilding[] = {{"MetalTower_EPOCH",{{"ItemCorrugatedLg",4}}}};
         upgradeBuildingPart[] = {{"ItemPlywoodPack",1},{"PartPlankPack",2}};
         removeBuildingPart[] = {{"ItemPlywoodPack",1},{"PartPlankPack",2}};
         simulClass = "WoodTower_SIM_EPOCH";
@@ -494,6 +647,42 @@ class CfgBaseBuilding
         removeParts[] = {};
     };
     class Tipi_Ghost_EPOCH : Tipi_SIM_EPOCH {};
+	class TentA_EPOCH  : Default
+    {
+        removeParts[] = {{"KitTentA",1}};
+        GhostPreview = "TentA_Ghost_EPOCH";
+        staticClass = "TentA_EPOCH";
+        simulClass = "TentA_SIM_EPOCH";
+        limitNearby = 2;
+        bypassJammer = 1;
+    };
+    class TentA_SIM_EPOCH : TentA_EPOCH
+    {
+        simulClass = "TentA_SIM_EPOCH";
+        staticClass = "TentA_EPOCH";
+        limitNearby = 2;
+        bypassJammer = 1;
+        removeParts[] = {};
+    };
+	class TentA_Ghost_EPOCH : TentA_SIM_EPOCH {};
+	class TentDome_EPOCH  : Default
+	{
+		removeParts[] = {{"KitTentDome",1}};
+		GhostPreview = "TentDome_Ghost_EPOCH";
+		staticClass = "TentDome_EPOCH";
+		simulClass = "TentDome_SIM_EPOCH";
+		limitNearby = 2;
+		bypassJammer = 1;
+	};
+	class TentDome_SIM_EPOCH : TentA_EPOCH
+	{
+		simulClass = "TentDome_SIM_EPOCH";
+		staticClass = "TentDome_EPOCH";
+		limitNearby = 2;
+		bypassJammer = 1;
+		removeParts[] = {};
+	};
+	class TentDome_Ghost_EPOCH : TentDome_SIM_EPOCH {};
     class StorageShelf_EPOCH : Default
     {
         removeParts[] = {{"ItemCorrugated",2}};
@@ -562,6 +751,246 @@ class CfgBaseBuilding
         energyCost = 0.1;
     };
     class Jack_SIM_EPOCH : Jack_EPOCH {};
+    class BurnBarrel_EPOCH : Default
+    {
+        removeParts[] = {{"KitBurnBarrel",1}};
+        GhostPreview = "BurnBarrel_Ghost_EPOCH";
+        staticClass = "BurnBarrel_EPOCH";
+        simulClass = "BurnBarrel_SIM_EPOCH";
+    };
+    class BurnBarrel_SIM_EPOCH : BurnBarrel_EPOCH
+    {
+        removeParts[] = {};
+    };
+    class BurnBarrel_Ghost_EPOCH : BurnBarrel_SIM_EPOCH {};
+    class LightPole_EPOCH : Default
+    {
+        removeParts[] = {{"KitLightPole",1}};
+        GhostPreview = "LightPole_Ghost_EPOCH";
+        staticClass = "LightPole_EPOCH";
+        simulClass = "LightPole_SIM_EPOCH";
+    };
+    class LightPole_SIM_EPOCH : LightPole_EPOCH
+    {
+        removeParts[] = {};
+    };
+    class LightPole_Ghost_EPOCH : LightPole_SIM_EPOCH {};
+    class SmallForestCamoNet_EPOCH : Default
+    {
+        removeParts[] = {{"KitSmallForestCamoNet",1}};
+        GhostPreview = "SmallForestCamoNet_Ghost_EPOCH";
+        staticClass = "SmallForestCamoNet_EPOCH";
+        simulClass = "SmallForestCamoNet_SIM_EPOCH";
+    };
+    class SmallForestCamoNet_SIM_EPOCH : SmallForestCamoNet_EPOCH
+    {
+        removeParts[] = {};
+    };
+    class SmallForestCamoNet_Ghost_EPOCH : SmallForestCamoNet_SIM_EPOCH {};
+    class SmallDesertCamoNet_EPOCH : Default
+    {
+        removeParts[] = {{"KitSmallDesertCamoNet",1}};
+        GhostPreview = "SmallDesertCamoNet_Ghost_EPOCH";
+        staticClass = "SmallDesertCamoNet_EPOCH";
+        simulClass = "SmallDesertCamoNet_SIM_EPOCH";
+    };
+    class SmallDesertCamoNet_SIM_EPOCH : SmallDesertCamoNet_EPOCH
+    {
+        removeParts[] = {};
+    };
+    class SmallDesertCamoNet_Ghost_EPOCH : SmallDesertCamoNet_SIM_EPOCH {};
+    class LargeForestCamoNet_EPOCH : Default
+    {
+        removeParts[] = {{"KitLargeForestCamoNet",1}};
+        GhostPreview = "LargeForestCamoNet_Ghost_EPOCH";
+        staticClass = "LargeForestCamoNet_EPOCH";
+        simulClass = "LargeForestCamoNet_SIM_EPOCH";
+    };
+    class LargeForestCamoNet_SIM_EPOCH : LargeForestCamoNet_EPOCH
+    {
+        removeParts[] = {};
+    };
+    class LargeForestCamoNet_Ghost_EPOCH : LargeForestCamoNet_SIM_EPOCH {};
+    class LargeDesertCamoNet_EPOCH : Default
+    {
+        removeParts[] = {{"KitLargeDesertCamoNet",1}};
+        GhostPreview = "LargeDesertCamoNet_Ghost_EPOCH";
+        staticClass = "LargeDesertCamoNet_EPOCH";
+        simulClass = "LargeDesertCamoNet_SIM_EPOCH";
+    };
+    class LargeDesertCamoNet_SIM_EPOCH : LargeDesertCamoNet_EPOCH
+    {
+        removeParts[] = {};
+    };
+    class LargeDesertCamoNet_Ghost_EPOCH : LargeDesertCamoNet_SIM_EPOCH {};
+    class FirePlace_02_EPOCH : Default
+    {
+        removeParts[] = {{"KitFirePlace_02",1}};
+        GhostPreview = "FirePlace_02_Ghost_EPOCH";
+        staticClass = "FirePlace_02_EPOCH";
+        simulClass = "FirePlace_02_SIM_EPOCH";
+    };
+    class FirePlace_02_SIM_EPOCH : FirePlace_02_EPOCH
+    {
+        removeParts[] = {};
+    };
+    class FirePlace_02_Ghost_EPOCH : FirePlace_02_SIM_EPOCH {};
+    class FieldToilet_EPOCH : Default
+    {
+        removeParts[] = {{"KitFieldToilet",1}};
+        GhostPreview = "FieldToilet_Ghost_EPOCH";
+        staticClass = "FieldToilet_EPOCH";
+        simulClass = "FieldToilet_SIM_EPOCH";
+    };
+    class FieldToilet_SIM_EPOCH : FieldToilet_EPOCH
+    {
+        removeParts[] = {};
+    };
+    class FieldToilet_Ghost_EPOCH : FieldToilet_SIM_EPOCH {};
+    class Scaffolding_EPOCH : Default
+    {
+        removeParts[] = {{"KitScaffolding",1}};
+        GhostPreview = "Scaffolding_Ghost_EPOCH";
+        staticClass = "Scaffolding_EPOCH";
+        simulClass = "Scaffolding_SIM_EPOCH";
+    };
+    class Scaffolding_SIM_EPOCH : Scaffolding_EPOCH
+    {
+        removeParts[] = {};
+    };
+    class Scaffolding_Ghost_EPOCH : Scaffolding_SIM_EPOCH {};
+    class Sink_EPOCH : Default
+    {
+        removeParts[] = {{"KitSink",1}};
+        GhostPreview = "Sink_Ghost_EPOCH";
+        staticClass = "Sink_EPOCH";
+        simulClass = "Sink_SIM_EPOCH";
+    };
+    class Sink_SIM_EPOCH : Sink_EPOCH
+    {
+        removeParts[] = {};
+    };
+    class Sink_Ghost_EPOCH : Sink_SIM_EPOCH {};
+    class PortableLight_Single_EPOCH : Default
+    {
+        removeParts[] = {{"KitPortableLight_Single",1}};
+        GhostPreview = "PortableLight_Single_Ghost_EPOCH";
+        staticClass = "PortableLight_Single_EPOCH";
+        simulClass = "PortableLight_Single_SIM_EPOCH";
+    };
+    class PortableLight_Single_SIM_EPOCH : PortableLight_Single_EPOCH
+    {
+        removeParts[] = {};
+    };
+    class PortableLight_Single_Ghost_EPOCH : PortableLight_Single_SIM_EPOCH {};
+    class PortableLight_Double_EPOCH : Default
+    {
+        removeParts[] = {{"KitPortableLight_Double",1}};
+        GhostPreview = "PortableLight_Double_Ghost_EPOCH";
+        staticClass = "PortableLight_Double_EPOCH";
+        simulClass = "PortableLight_Double_SIM_EPOCH";
+    };
+    class PortableLight_Double_SIM_EPOCH : PortableLight_Double_EPOCH
+    {
+        removeParts[] = {};
+    };
+    class PortableLight_Double_Ghost_EPOCH : PortableLight_Double_SIM_EPOCH {};
+    class WatchTower_EPOCH : Default
+    {
+        removeParts[] = {{"KitWatchTower",1}};
+        GhostPreview = "WatchTower_Ghost_EPOCH";
+        staticClass = "WatchTower_EPOCH";
+        simulClass = "WatchTower_SIM_EPOCH";
+    };
+    class WatchTower_SIM_EPOCH : WatchTower_EPOCH
+    {
+        removeParts[] = {};
+    };
+    class WatchTower_Ghost_EPOCH : WatchTower_SIM_EPOCH {};
+    class SunShade_EPOCH : Default
+    {
+        removeParts[] = {{"KitSunShade",1}};
+        GhostPreview = "SunShade_Ghost_EPOCH";
+        staticClass = "SunShade_EPOCH";
+        simulClass = "SunShade_SIM_EPOCH";
+    };
+    class SunShade_SIM_EPOCH : SunShade_EPOCH
+    {
+        removeParts[] = {};
+    };
+    class SunShade_Ghost_EPOCH : SunShade_SIM_EPOCH {};
+    class FuelPump_EPOCH : Default
+    {
+        removeParts[] = {{"KitFuelPump",1}};
+        GhostPreview = "FuelPump_Ghost_EPOCH";
+        staticClass = "FuelPump_EPOCH";
+        simulClass = "FuelPump_SIM_EPOCH";
+    };
+    class FuelPump_SIM_EPOCH : FuelPump_EPOCH
+    {
+        removeParts[] = {};
+    };
+    class FuelPump_Ghost_EPOCH : FuelPump_SIM_EPOCH {};
+    class BagBunker_EPOCH : Default
+    {
+        removeParts[] = {{"KitBagBunker",1}};
+        GhostPreview = "BagBunker_Ghost_EPOCH";
+        staticClass = "BagBunker_EPOCH";
+        simulClass = "BagBunker_SIM_EPOCH";
+    };
+    class BagBunker_SIM_EPOCH : BagBunker_EPOCH
+    {
+        removeParts[] = {};
+    };
+    class BagBunker_Ghost_EPOCH : BagBunker_SIM_EPOCH {};
+    class SandbagWall_EPOCH : Default
+    {
+        removeParts[] = {{"KitSandbagWall",1}};
+        GhostPreview = "SandbagWall_Ghost_EPOCH";
+        staticClass = "SandbagWall_EPOCH";
+        simulClass = "SandbagWall_SIM_EPOCH";
+    };
+    class SandbagWall_SIM_EPOCH : SandbagWall_EPOCH
+    {
+        removeParts[] = {};
+    };
+    class SandbagWall_Ghost_EPOCH : SandbagWall_SIM_EPOCH {};
+    class SandbagWallLong_EPOCH : Default
+    {
+        removeParts[] = {{"KitSandbagWallLong",1}};
+        GhostPreview = "SandbagWallLong_Ghost_EPOCH";
+        staticClass = "SandbagWallLong_EPOCH";
+        simulClass = "SandbagWallLong_SIM_EPOCH";
+    };
+    class SandbagWallLong_SIM_EPOCH : SandbagWallLong_EPOCH
+    {
+        removeParts[] = {};
+    };
+    class SandbagWallLong_Ghost_EPOCH : SandbagWallLong_SIM_EPOCH {};
+    class BarGate_EPOCH : Default
+    {
+        removeParts[] = {{"KitBarGate",1}};
+        GhostPreview = "BarGate_Ghost_EPOCH";
+        staticClass = "BarGate_EPOCH";
+        simulClass = "BarGate_SIM_EPOCH";
+    };
+    class BarGate_SIM_EPOCH : BarGate_EPOCH
+    {
+        removeParts[] = {};
+    };
+    class BarGate_Ghost_EPOCH : BarGate_SIM_EPOCH {};
+    class WaterPump_EPOCH : Default
+    {
+        removeParts[] = {{"KitWaterPump",1}};
+        GhostPreview = "WaterPump_Ghost_EPOCH";
+        staticClass = "WaterPump_EPOCH";
+        simulClass = "WaterPump_SIM_EPOCH";
+    };
+    class WaterPump_SIM_EPOCH : WaterPump_EPOCH
+    {
+        removeParts[] = {};
+    };
+    class WaterPump_Ghost_EPOCH : WaterPump_SIM_EPOCH {};
 };
 
 /*[[[end]]]*/

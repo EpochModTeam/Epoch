@@ -301,6 +301,46 @@ class CfgRemoteExec
             allowedTargets = 2;
             jip = 0;
         };
+		class EPOCH_server_upgrade_vehicle
+        {
+            allowedTargets = 2;
+            jip = 0;
+        };
+		class EPOCH_fnc_updatePlayerStats
+        {
+            allowedTargets = 2;
+            jip = 0;
+        };
+		class EPOCH_client_updatePlayerStat
+        {
+            allowedTargets = 1;
+            jip = 0;
+        };
+		class EPOCH_server_createTempGroup
+		{
+            allowedTargets = 2;
+            jip = 0;
+        };
+		class EPOCH_server_invitePlayerTempGroup
+		{
+            allowedTargets = 2;
+            jip = 0;
+        };
+		class EPOCH_server_updatePlayerTempGroup
+		{
+            allowedTargets = 2;
+            jip = 0;
+        };
+		class EPOCH_server_deleteTempGroup
+		{
+            allowedTargets = 2;
+            jip = 0;
+        };
+		class EPOCH_server_upgradeTempGroup
+		{
+            allowedTargets = 2;
+            jip = 0;
+        };
     };
     class Commands
     {

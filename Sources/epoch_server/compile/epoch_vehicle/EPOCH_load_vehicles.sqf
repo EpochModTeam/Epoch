@@ -1,35 +1,35 @@
 /*
 	Author: Aaron Clark - EpochMod.com
 
-    Contributors:
+	Contributors:
 
 	Description:
-    Load Vehicles
+	Load Vehicles
 
-    Licence:
-    Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
+	Licence:
+	Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
 
-    Github:
-    https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server/compile/epoch_vehicle/EPOCH_load_vehicles.sqf
+	Github:
+	https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server/compile/epoch_vehicle/EPOCH_load_vehicles.sqf
 */
 //[[[cog import generate_private_arrays ]]]
-private ["_actualHitpoints","_allHitpoints","_allVehicles","_allowDamage","_arr","_arrNum","_attachments","_availableColorsConfig","_cfgEpochVehicles","_class","_color","_colors","_config","_count","_damage","_dataFormat","_dataFormatCount","_diag","_dmg","_found","_hitpoints","_immuneIfStartInBase","_jammerOwner","_jammerRange","_jammers","_location","_lockedOwner","_magazineName","_magazineSize","_magazineSizeMax","_mags","_marker","_nearestJammer","_objQty","_objType","_objTypes","_qty","_removemagazinesturret","_removeweapons","_response","_selections","_serverSettingsConfig","_simulationHandler","_textureSelectionIndex","_textures","_vehHiveKey","_vehLockHiveKey","_vehicle","_vehicleDamages","_vehicleSlotIndex","_wMags","_wMagsArray","_worldspace"];
+private ["_actualHitpoints","_allHitpoints","_allVehicles","_allowDamage","_arr","_arrNum","_availableColorsConfig","_cfgEpochVehicles","_check","_class","_colors","_config","_count","_dataFormat","_dataFormatCount","_diag","_dmg","_found","_immuneIfStartInBase","_jammerOwner","_jammerRange","_jammers","_location","_lockedOwner","_marker","_nearestJammer","_removemagazinesturret","_removeweapons","_response","_selections","_serverSettingsConfig","_textureSelectionIndex","_textures","_vehHiveKey","_vehLockHiveKey","_vehicle","_vehicleSlotIndex"];
 //[[[end]]]
 params [["_maxVehicleLimit",0]];
 
 _diag = diag_tickTime;
-_dataFormat = ["", [], 0, [], 0, [], [], 0];
+_dataFormat = ["", [], 0, [], 0, [], [], 0, ""];
 _dataFormatCount = count _dataFormat;
 EPOCH_VehicleSlots = [];
 _allVehicles = [];
-_vehicleDamages = [];
+
 
 _config = 'CfgEpochClient' call EPOCH_returnConfig;
 _jammerRange = getNumber(_config >> "buildingJammerRange");
 
 _serverSettingsConfig = configFile >> "CfgEpochServer";
 _immuneIfStartInBase = [_serverSettingsConfig, "immuneIfStartInBase", true] call EPOCH_fnc_returnConfigEntry;
-_simulationHandler = [_serverSettingsConfig, "simulationHandlerOld", false] call EPOCH_fnc_returnConfigEntry;
+
 _removeweapons = [_serverSettingsConfig, "removevehweapons", []] call EPOCH_fnc_returnConfigEntry;
 _removemagazinesturret = [_serverSettingsConfig, "removevehmagazinesturret", []] call EPOCH_fnc_returnConfigEntry;
 
@@ -43,6 +43,18 @@ for "_i" from 1 to _maxVehicleLimit do {
 		_arr = _response select 1;
 		_arrNum = count _arr;
 
+		// New Upgrade System adds to DB array, check and correct older saved vehicles
+		if (_arrNum < _dataFormatCount) then {
+			{
+				_check = _arr select _foreachindex;
+				if (isnil '_check') then {
+					_arr pushback (_dataFormat select _foreachindex);
+				};
+			} foreach _dataFormat;
+			// recount array
+			_arrNum = count _arr;
+		};
+
 		if (_arrNum == _dataFormatCount) then {
 
 			// Validate and replace invaild data
@@ -50,11 +62,10 @@ for "_i" from 1 to _maxVehicleLimit do {
 				if !((_arr select _forEachIndex) isEqualType _x) then {_arr set[_forEachIndex, _x]};
 			} forEach _dataFormat;
 
-			_class = _arr select 0;
-			_worldspace = _arr select 1;
-			_damage = _arr select 2;
+			_arr params ["_class","_worldspace","_damage","_hitpoints","_fuel","_inventory","_ammo","_color","_baseClass"];
 
 			if (_class != "" && _damage < 1) then {
+				// remove location from worldspace and set to new var
 				_location = _worldspace deleteAt 0;
 
 				if !(_location isEqualTo []) then {
@@ -72,163 +83,13 @@ for "_i" from 1 to _maxVehicleLimit do {
 
 					// spawn vehicle at temp location.
 					_vehicle = createVehicle [_class, _location, [], 0, "CAN_COLLIDE"];
+					// turn off BIS randomization
+					_vehicle setVariable ["BIS_enableRandomization", false];
 					if !(isNull _vehicle) then {
-						// make vehicle immune from damage.
-						_vehicle allowDamage false;
-						// store spawned vehicles in array to make one call to remains handler
-						_allVehicles pushBack _vehicle;
-						// remove selected slot from array and set on vehicle
-						EPOCH_VehicleSlots deleteAt _vehicleSlotIndex;
-						_vehicle setVariable ["VEHICLE_SLOT", str(_i), true];
-						// set server side token and init vehicle event handlers.
-						_vehicle call EPOCH_server_setVToken;
-						_vehicle call EPOCH_server_vehicleInit;
-						// set final direction and postion of vehicle
-						_vehicle setVectorDirAndUp _worldspace;
-						_vehicle setposATL _location;
-						// push damage to temp array to apply damage after some delay
-						_vehicleDamages pushBack [_vehicle,_damage,(_arr select 3)];
-						// set fuel level
-						_vehicle setFuel (_arr select 4);
-						// apply persistent textures
-						_cfgEpochVehicles = 'CfgEpochVehicles' call EPOCH_returnConfig;
-						_availableColorsConfig = (_cfgEpochVehicles >> _class >> "availableColors");
-						if (isArray(_availableColorsConfig)) then {
-							_color = _arr select 7;
-							_colors = getArray(_availableColorsConfig);
-							_textureSelectionIndex = (_cfgEpochVehicles >> _class >> "textureSelectionIndex");
-							_selections = if (isArray(_textureSelectionIndex)) then { getArray(_textureSelectionIndex) } else { [0] };
-							_count = (count _colors) - 1;
-							{
-								_textures = _colors select 0;
-								if (_count >= _forEachIndex) then {
-									_textures = _colors select _forEachIndex;
-								};
-								_vehicle setObjectTextureGlobal [_x, _textures  select _color];
-							} forEach _selections;
-							_vehicle setVariable ["VEHICLE_TEXTURE", _color];
-						};
-						// disable thermal imaging equipment
-						_vehicle disableTIEquipment true;
-						// lock all vehicles
-						_vehicle lock true;
-						// load vehicle inventory
-						clearWeaponCargoGlobal    _vehicle;
-						clearMagazineCargoGlobal  _vehicle;
-						clearBackpackCargoGlobal  _vehicle;
-						clearItemCargoGlobal      _vehicle;
-
-						if !(_removeweapons isequalto []) then {
-							{
-								_vehicle removeWeaponGlobal _x;
-							} foreach _removeweapons;
-						};
-						if !(_removemagazinesturret isequalto []) then {
-							{
-								_vehicle removeMagazinesTurret _x;
-							} foreach _removemagazinesturret;
-						};
-
-						{
-							_objType = _forEachIndex;
-							_objTypes = _x;
-							_objQty = [];
-							if (_objType in [1, 2, 3]) then {
-								_objTypes = _x select 0;
-								_objQty = _x select 1;
-							};
-							{
-								switch _objType do {
-									// Weapon cargo
-									case 0: {
-										if (_x isEqualType []) then {
-											if ((count _x) >= 4) then {
-												_vehicle addWeaponCargoGlobal[_x deleteAt 0, 1];
-												_attachments = [];
-												_wMags = false;
-												_wMagsArray = [];
-												// suppressor, laser, optics, magazines(array), bipods
-												{
-													// magazines
-													if (_x isEqualType []) then{
-														_wMags = true;
-														_wMagsArray = _x;
-													} else {
-														// attachments
-														if (_x != "") then{
-															_attachments pushBack _x;
-														};
-													};
-												} forEach _x;
-												// add all attachments to vehicle
-												// TODO replace with adding attachments directly to gun (Arma feature dependant)
-												{
-													_vehicle addItemCargoGlobal[_x, 1];
-												} forEach _attachments;
-												if (_wMags) then{
-													if (_wMagsArray isEqualType [] && (count _wMagsArray) >= 2) then{
-														_vehicle addMagazineAmmoCargo[_wMagsArray select 0, 1, _wMagsArray select 1];
-													};
-												};
-											};
-										};
-									};
-									// Magazine cargo
-									case 1: {
-										_magazineName = _x;
-										_magazineSize = _objQty select _forEachIndex;
-										if ((_magazineName isEqualType "STRING") && (_magazineSize isEqualType 0)) then {
-											_magazineSizeMax = getNumber (configFile >> "CfgMagazines" >> _magazineName >> "count");
-											if (_magazineSizeMax >= 1) then {
-												// Add full magazines cargo
-												_vehicle addMagazineAmmoCargo [_magazineName, floor (_magazineSize / _magazineSizeMax), _magazineSizeMax];
-												// Add last non full magazine
-												if ((_magazineSize % _magazineSizeMax) > 0) then {
-													_vehicle addMagazineAmmoCargo [_magazineName, 1, floor (_magazineSize % _magazineSizeMax)];
-												};
-											};
-										};
-									};
-									// Backpack cargo
-									case 2: {
-										if (_x isEqualType "STRING") then {
-											_qty = _objQty select _forEachIndex;
-											_vehicle addBackpackCargoGlobal [_x, _qty];
-										};
-									};
-									// Item cargo
-									case 3: {
-										if (_x isEqualType "STRING") then {
-											_qty = _objQty select _forEachIndex;
-											_vehicle addItemCargoGlobal [_x, _qty];
-										};
-									};
-								};
-							} forEach _objTypes;
-						} forEach (_arr select 5);
-
-						// remove and add back magazines
-						if !((_arr select 6) isequalto []) then {
-							if ((_arr select 6 select 0) isequaltype true) then {
-								{
-									_vehicle removeMagazinesTurret [_x select 0, _x select 1];
-								} foreach magazinesAllTurrets _vehicle;
-								{
-									if ((_x select 2) > 0) then {
-										_vehicle addMagazineTurret [_x select 0,_x select 1,_x select 2];
-									};
-								} foreach (_arr select 6 select 1);
-							}
-							else {
-								{_vehicle removeMagazineGlobal _x}count (magazines _vehicle);
-								{_vehicle addMagazine _x}count (_arr select 6);
-							};
-						};
 
 						// set damage and hitpoints
 						_vehicle setDamage _damage;
 						_allHitpoints = getAllHitPointsDamage _vehicle;
-						_hitpoints = _arr select 3;
 						if !(_allHitpoints isEqualTo []) then{
 							_actualHitpoints = _allHitpoints select 0;
 							if ((count _actualHitpoints) == (count _hitpoints)) then{
@@ -242,48 +103,119 @@ for "_i" from 1 to _maxVehicleLimit do {
 							};
 						};
 
-                        // allow damage
-                        _allowDamage = true;
-                        if (_immuneIfStartInBase) then {
-                            _jammers = nearestObjects[_vehicle, ["PlotPole_EPOCH"], _jammerRange];
-                            if!(_jammers isEqualTo [])then {
-                                // get jammer owner
-                                _nearestJammer = _jammers select 0;
-                                _jammerOwner = _nearestJammer getVariable["BUILD_OWNER", "-2"];
-                                // get vehicle lock owner
-                                _lockedOwner = "-1";
-                                _vehLockHiveKey = format["%1:%2", (call EPOCH_fn_InstanceID), str(_i)];
-                                (["VehicleLock", _vehLockHiveKey] call EPOCH_fnc_server_hiveGETRANGE) params [["_status", 0 ],["_payload", [] ]];
-                                if (_status isEqualTo 1) then {
-                                    _lockedOwner = _payload param [0,"-1"];
-                                };
-                                // if match keep vehicle immune till first unlock
-                                if (_jammerOwner isEqualTo _lockedOwner) then {
-                                    _vehicle setVariable ["EPOCH_disallowedDamage", true];
-                                    _allowDamage = false;
-                                };
-                            };
-                        };
+						// make vehicle immune from further damage.
+						_vehicle allowDamage false;
 
-                        if (_allowDamage) then {
-                            _vehicle allowDamage true;
-                        };
+						// store spawned vehicles in array to make one call to remains handler
+						_allVehicles pushBack _vehicle;
+						// remove selected slot from array and set on vehicle
+						EPOCH_VehicleSlots deleteAt _vehicleSlotIndex;
+						_vehicle setVariable ["VEHICLE_SLOT", str(_i), true];
+						// set server side token and init vehicle event handlers.
+						_vehicle call EPOCH_server_setVToken;
+						_vehicle call EPOCH_server_vehicleInit;
+						// set final direction and postion of vehicle
+						_vehicle setposATL _location;
+						_vehicle setVectorDirAndUp _worldspace;
 
-						// vehicle simulation handler
-						if (_simulationHandler) then{
-							_vehicle enableSimulationGlobal false;
+						// set fuel level
+						_vehicle setFuel _fuel;
+						// apply persistent textures
+						_cfgEpochVehicles = 'CfgEpochVehicles' call EPOCH_returnConfig;
+						_availableColorsConfig = (_cfgEpochVehicles >> _class >> "availableColors");
+						if (isArray(_availableColorsConfig)) then {
+							_colors = getArray(_availableColorsConfig);
+							_textureSelectionIndex = (_cfgEpochVehicles >> _class >> "textureSelectionIndex");
+							_selections = if (isArray(_textureSelectionIndex)) then { getArray(_textureSelectionIndex) } else { [0] };
+							_count = (count _colors) - 1;
+							{
+								_textures = _colors select 0;
+								if (_count >= _forEachIndex) then {
+									_textures = _colors select _forEachIndex;
+								};
+								_vehicle setObjectTextureGlobal [_x, _textures  select _color];
+							} forEach _selections;
+							_vehicle setVariable ["VEHICLE_TEXTURE", _color];
 						};
-						// turrets
-						/*
-						_mags = _vehicle magazinesTurret [0];
+						if !(_baseClass isequalto "") then {
+							_vehicle setvariable ["VEHICLE_BASECLASS",_baseClass];
+						};
+						// disable thermal imaging equipment
+						_vehicle disableTIEquipment true;
+						// lock all vehicles
+						_vehicle lock true;
+						// load vehicle inventory
+						clearWeaponCargoGlobal _vehicle;
+						clearMagazineCargoGlobal _vehicle;
+						clearBackpackCargoGlobal _vehicle;
+						clearItemCargoGlobal _vehicle;
+
+						if !(_removeweapons isequalto []) then {
+							{
+								_vehicle removeWeaponGlobal _x;
+							} foreach _removeweapons;
+						};
+						if !(_removemagazinesturret isequalto []) then {
+							{
+								_vehicle removeMagazinesTurret _x;
+							} foreach _removemagazinesturret;
+						};
+
+						// utilize He-Man's new Cargo functions
+						[_vehicle,_inventory] call EPOCH_server_CargoFill;
+
+						// remove and add back magazines
+						if !(_ammo isequalto []) then {
+							if ((_ammo select 0) isequaltype true) then {
+								{
+									_vehicle removeMagazinesTurret [_x select 0, _x select 1];
+								} foreach magazinesAllTurrets _vehicle;
+								{
+									if ((_x select 2) > 0) then {
+										_vehicle addMagazineTurret [_x select 0,_x select 1,_x select 2];
+									};
+								} foreach (_ammo select 1);
+							}
+							else {
+								{_vehicle removeMagazineGlobal _x}count (magazines _vehicle);
+								{_vehicle addMagazine _x}count _ammo;
+							};
+						};
+
+						// allow damage
+						_allowDamage = true;
+						if (_immuneIfStartInBase) then {
+							_jammers = nearestObjects[_vehicle, ["PlotPole_EPOCH"], _jammerRange];
+							if!(_jammers isEqualTo [])then {
+								// get jammer owner
+								_nearestJammer = _jammers select 0;
+								_jammerOwner = _nearestJammer getVariable["BUILD_OWNER", "-2"];
+								// get vehicle lock owner
+								_lockedOwner = "-1";
+								_vehLockHiveKey = format["%1:%2", (call EPOCH_fn_InstanceID), str(_i)];
+								(["VehicleLock", _vehLockHiveKey] call EPOCH_fnc_server_hiveGETRANGE) params [["_status", 0 ],["_payload", [] ]];
+								if (_status isEqualTo 1) then {
+									_lockedOwner = _payload param [0,"-1"];
+								};
+								// if match keep vehicle immune till first unlock
+								if (_jammerOwner isEqualTo _lockedOwner) then {
+									_vehicle setVariable ["EPOCH_disallowedDamage", true];
+									_allowDamage = false;
+								};
+							};
+						};
+
+						if (_allowDamage) then {
+							_vehicle allowDamage true;
+						};
+
+						// new Dynamicsimulation
+						if(["CfgDynamicSimulation", "vehicleDynamicSimulationSystem", true] call EPOCH_fnc_returnConfigEntryV2)then
 						{
-							_object removeMagazinesTurret [_x, [0]];
-						} forEach _mags;
-						_mags = _vehicle magazinesTurret [-1];
-						{
-							_object removeMagazinesTurret [_x, [-1]];
-						} forEach _mags;
-						*/
+							_vehicle enableSimulationGlobal false; // turn it off until activated by dynamicSim
+							_vehicle enableDynamicSimulation true;
+						};
+
 						if (EPOCH_DEBUG_VEH) then {
 							_marker = createMarker [str(_location) , _location];
 							_marker setMarkerShape "ICON";

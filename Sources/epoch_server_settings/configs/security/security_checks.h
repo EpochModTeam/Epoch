@@ -16,14 +16,21 @@ class CfgSecConf
 {
     debug = "false";
 
+    class vehicles {
+        safeVehicles[] = {"I_UAV_01_F","B_Heli_Transport_01_F","Steerable_Parachute_F","NonSteerable_Parachute_F","Land_Camping_Light_F","container_epoch"};
+    };
+
     class remoteExecClient{
-        functions[] = {"bankBalance", "resetGroup", "groupUpdate", "groupUidUpdate", "healPlayer","tradeComplete"};
+        functions[] = {"bankBalance", "resetGroup", "groupUpdate", "groupUidUpdate", "healPlayer","tradeComplete","resetTempGroup","tempGroupUpdate","tempGroupUidUpdate"};
         // code
         bankBalance = "EPOCH_bankBalance = _this;";
         resetGroup = "Epoch_my_Group = []; Epoch_my_GroupUID = '';";
         groupUpdate = "Epoch_my_Group = _this; call EPOCH_Group_update;";
         groupUidUpdate = "Epoch_my_GroupUID = _this;";
-        healPlayer = "{missionNamespace setVariable[format['EPOCH_player%1', _x], EPOCH_defaultVars select(EPOCH_customVars find _x)]} forEach['Temp','Hunger','Thirst','Toxicity','Stamina','HitPoints','BloodP','Alcohol','Radiation'];";
+		resetTempGroup = "Epoch_my_tempGroup = []; Epoch_my_tempGroupUID = '';";
+        tempGroupUpdate = "Epoch_my_tempGroup = _this; call EPOCH_tempGroup_update;";
+        tempGroupUidUpdate = "Epoch_my_tempGroupUID = _this;";
+        healPlayer = "{missionNamespace setVariable[format['EPOCH_player%1', _x], EPOCH_defaultVars select(EPOCH_customVars find _x)]} forEach['Temp','Hunger','Thirst','Toxicity','Stamina','BloodP','Alcohol','Radiation'];";
         tradeComplete = "EPOCH_TRADE_COMPLETE = _this;";
     };
 
@@ -80,7 +87,7 @@ class CfgSecConf
         class whitelist {
             #include "data\custom_vars.h" // whitelisted variables
         };
-        badVars[] = {"ESP_map","ESP_mainMap","ESP_adminMap","AntiAntiAntiAntiHax","fnc_usec_damageHandler","fnc_usec_unconscious","VAGINA_secret","yolo","VERSION","life_fnc_handleDamage","EPOCH_spawnVehicle_PVS","CLASS911_Menu","nuke_vars","JJMMEE_INIT_MENU","PLAYERON","PLAYERNEXT2","ALTISLIFEON","LY_Menu","PLAY","LY_SwaggerLikeUs","BIS_fnc_dbg_reminder_value","BIS_fnc_dbg_reminder"};
+        badVars[] = {"EPOCH_GMODE","ESP_map","ESP_mainMap","ESP_adminMap","AntiAntiAntiAntiHax","fnc_usec_damageHandler","fnc_usec_unconscious","VAGINA_secret","yolo","VERSION","life_fnc_handleDamage","EPOCH_spawnVehicle_PVS","CLASS911_Menu","nuke_vars","JJMMEE_INIT_MENU","PLAYERON","PLAYERNEXT2","ALTISLIFEON","LY_Menu","PLAY","LY_SwaggerLikeUs","BIS_fnc_dbg_reminder_value","BIS_fnc_dbg_reminder"};
         nilVars[] = {"EPOCH_antiWallCount","EPOCH_playerEnergy","EPOCH_playerHunger","EPOCH_playerStamina","EPOCH_playerCrypto","EPOCH_target","EPOCH_ESP_TARGETS","EPOCH_ESPMAP_TARGETS","EPOCH_taxRate","EPOCH_ESP_VEHICLEPLAYER","EPOCH_ESP_PLAYER","EPOCH_ESP_VEHICLES"};
     };
 

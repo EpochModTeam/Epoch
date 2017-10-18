@@ -26,4 +26,5 @@ _gIdx = -1;
 	if ((_x select 0) isEqualTo _gName) exitWith {_gIdx = _forEachIndex};
 } forEach rmx_var_dynamicHUD_groupCTRL;
 if (_gIdx == -1) exitWith {controlNull};
-(rmx_var_dynamicHUD_groupCTRL select _gIdx) select _cIdx
+
+((rmx_var_dynamicHUD_groupCTRL select _gIdx) param [_cIdx,controlNull])

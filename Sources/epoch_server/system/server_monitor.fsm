@@ -4,15 +4,14 @@
 item0[] = {"Init",0,250,600.000000,-575.000000,700.000000,-525.000000,0.000000,"Init"};
 item1[] = {"_",8,218,600.000000,-500.000000,700.000000,-450.000000,0.000000,""};
 item2[] = {"Process",2,250,600.000000,-350.000000,700.000000,-300.000000,0.000000,"Process"};
-item3[] = {"De_simulate_Vehicle",4,218,750.000000,-225.000000,850.000000,-175.000000,2.000000,"De-simulate" \n "Vehicle Check"};
-item4[] = {"Simulate_Vehicle",4,218,750.000000,-300.000000,850.000000,-250.000000,1.000000,"Simulate" \n "Vehicle Check"};
-item5[] = {"CMD_queue",4,218,450.000000,-450.000000,550.000000,-400.000000,10.000000,"CMD queue"};
-item6[] = {"Save_Players",4,218,450.000000,-375.000000,550.000000,-325.000000,3.000000,"Save" \n "Players"};
-item7[] = {"Cleanup",4,218,750.000000,-375.000000,850.000000,-325.000000,8.000000,"Cleanup"};
-item8[] = {"Events",4,4314,450.000000,-225.000000,550.000000,-175.000000,0.000000,"Events"};
-item9[] = {"Save_Vehicles",4,218,450.000000,-300.000000,550.000000,-250.000000,4.000000,"Save" \n "Vehicles"};
-item10[] = {"Cleanup_Handler",4,218,750.000000,-450.000000,850.000000,-400.000000,8.000000,"Cleanup" \n "Handler"};
-item11[] = {"Server_FPS",4,218,600.000000,-225.000000,700.000000,-175.000000,0.000000,"Server FPS"};
+item3[] = {"Vehicle_and_Player",4,218,740.131958,-228.950928,840.131958,-178.950928,1.000000,"" \n "Vehicle and Player" \n "Checks"};
+item4[] = {"CMD_queue",4,218,450.000000,-450.000000,550.000000,-400.000000,10.000000,"CMD queue"};
+item5[] = {"Save_Players",4,218,450.000000,-375.000000,550.000000,-325.000000,3.000000,"Save" \n "Players"};
+item6[] = {"Cleanup",4,218,750.000000,-375.000000,850.000000,-325.000000,8.000000,"Cleanup"};
+item7[] = {"Events_and_Resta",4,4314,450.000000,-225.000000,550.000000,-175.000000,0.000000,"Events" \n "and" \n "Restart"};
+item8[] = {"Save_Vehicles",4,218,450.000000,-300.000000,550.000000,-250.000000,4.000000,"Save" \n "Vehicles"};
+item9[] = {"Cleanup_Handler",4,218,750.000000,-450.000000,850.000000,-400.000000,8.000000,"Cleanup" \n "Handler"};
+item10[] = {"Server_FPS",4,218,600.000000,-148.030182,700.000000,-98.030182,0.000000,"Server FPS"};
 link0[] = {0,1};
 link1[] = {1,2};
 link2[] = {2,3};
@@ -23,16 +22,14 @@ link6[] = {2,7};
 link7[] = {2,8};
 link8[] = {2,9};
 link9[] = {2,10};
-link10[] = {2,11};
-link11[] = {3,2};
-link12[] = {4,2};
-link13[] = {5,2};
-link14[] = {6,2};
-link15[] = {7,2};
-link16[] = {8,2};
-link17[] = {9,2};
-link18[] = {10,2};
-link19[] = {11,2};
+link10[] = {3,2};
+link11[] = {4,2};
+link12[] = {5,2};
+link13[] = {6,2};
+link14[] = {7,2};
+link15[] = {8,2};
+link16[] = {9,2};
+link17[] = {10,2};
 globals[] = {0.000000,0,0,0,0,640,480,1,3,6316128,1,275.180084,1161.319580,208.497711,-659.879456,898,884,1};
 window[] = {2,-1,-1,-1,-1,968,208,1500,208,3,916};
 *//*%FSM</HEAD>*/
@@ -47,13 +44,22 @@ class FSM
       name = "Init";
       init = /*%FSM<STATEINIT""">*/"diag_log ""Loaded Server FSM"";" \n
        "" \n
+       "_cfgSecConf = (configFile >> ""CfgSecConf"");" \n
+       "_cfgSecConf_vehicles = (_cfgSecConf >> ""vehicles"");" \n
+       "_safeVehicles = [_cfgSecConf_vehicles, ""safeVehicles"", [""I_UAV_01_F"",""B_Heli_Transport_01_F"",""Steerable_Parachute_F"",""NonSteerable_Parachute_F"",""Land_Camping_Light_F"",""container_epoch""]] call EPOCH_fnc_returnConfigEntry;" \n
+       "" \n
        "_serverSettingsConfig = configFile >> ""CfgEpochServer"";" \n
        "_ahInitAuthCfg = [_serverSettingsConfig, ""antihack_ahInitAuthCfg"", [0,180]] call EPOCH_fnc_returnConfigEntry;" \n
        "_events = [_serverSettingsConfig, ""events"", []] call EPOCH_fnc_returnConfigEntry;" \n
-       "_simulationHandler = [_serverSettingsConfig, ""simulationHandlerOld"", false] call EPOCH_fnc_returnConfigEntry;" \n
        "" \n
        "_initAhInitBanOrLog = _ahInitAuthCfg select 0;" \n
        "_initTimeLimit = _ahInitAuthCfg select 1;" \n
+       "" \n
+       "// Load Epoch Events 3.0" \n
+       "{" \n
+       "    diag_log format[""Loading Settings for %1 event..."",configName _x];" \n
+       "    _events pushBack [getNumber (_x >> ""delay""),getText (_x >> ""script""),getNumber (_x >> ""runOnStart""),getNumber (_x >> ""usePrefix""),getNumber (_x >> ""runNumTimes""),getArray (_x >> ""input""),getArray (_x >> ""disallowedWorlds"")];" \n
+       "} forEach (""isClass _x"" configClasses (configFile >> ""CfgEpochServerEvents""));" \n
        "" \n
        "_cmdDelay = EPOCH_hiveAdminCmdTime;" \n
        "_cmdRun = EPOCH_hiveAdminCmdExec;" \n
@@ -66,8 +72,6 @@ class FSM
        "_serverLocked = false;" \n
        "_serverRestarting = false;" \n
        "" \n
-       "_activeVehicles = [];" \n
-       "_toBeDesimulated = [];" \n
        "_players = [];" \n
        "_prevPlayers = [];" \n
        "_cleanupItems = [];" \n
@@ -75,8 +79,6 @@ class FSM
        "EPOCH_diag_fps = -1;" \n
        "_serverFpsTime = diag_tickTime;" \n
        "_serverFPSCheckFine = true;" \n
-       "" \n
-       "_safeVehicles = [""I_UAV_01_F"",""B_Heli_Transport_01_F"",""Steerable_Parachute_F"",""NonSteerable_Parachute_F"",""Land_Camping_Light_F"",""container_epoch""];" \n
        "" \n
        "_delayTimeSim = diag_tickTime;" \n
        "_delayTimeCMD = diag_tickTime;" \n
@@ -91,74 +93,73 @@ class FSM
        "_instanceID =  call EPOCH_fn_InstanceID;" \n
        "" \n
        "_checkAuth = {" \n
-       "	_puid = _this select 0;" \n
-       "	_player = _this select 1;" \n
-       "	if !(isNull _player) then {" \n
-       "		if !(_puid call EPOCH_server_Authed) then {" \n
-       "			_lastCheck = _player getVariable ""LAST_AUTH_CHECK"";" \n
-       "			if (isNil ""_lastCheck"") then {" \n
-       "				_player setVariable[""LAST_AUTH_CHECK"", diag_tickTime];" \n
-       "				_lastCheck = diag_tickTime;" \n
-       "			};" \n
-       "			if (diag_tickTime - _lastCheck > _initTimeLimit) then {" \n
-       "				_player setVariable[""LAST_AUTH_CHECK"", nil];" \n
-       "				if (_initAhInitBanOrLog == 0) then {" \n
-       "					'epochserver' callExtension format['820|%1|EpochMod.com Autoban #R2', _puid];" \n
-       "					['ahb', format['%1 (%2): Player not Authenticated', name _player, _puid]] call EPOCH_fnc_server_hiveLog;" \n
-       "				} else {" \n
-       "					['ahl', format['%1 (%2): Player not Authenticated', name _player, _puid]] call EPOCH_fnc_server_hiveLog;" \n
-       "				};" \n
-       "			};" \n
-       "		} else {" \n
-       "			_player setVariable[""LAST_AUTH_CHECK"", nil];" \n
-       "		};" \n
-       "	};" \n
+       "    params [""_puid"",""_player""];" \n
+       "    if !(isNull _player) then {" \n
+       "        if !(_puid call EPOCH_server_Authed) then {" \n
+       "            private _lastCheck = _player getVariable ""LAST_AUTH_CHECK"";" \n
+       "            if (isNil ""_lastCheck"") then {" \n
+       "                _player setVariable[""LAST_AUTH_CHECK"", diag_tickTime];" \n
+       "                _lastCheck = diag_tickTime;" \n
+       "            };" \n
+       "            if (diag_tickTime - _lastCheck > _initTimeLimit) then {" \n
+       "                _player setVariable[""LAST_AUTH_CHECK"", nil];" \n
+       "                if (_initAhInitBanOrLog == 0) then {" \n
+       "                    'epochserver' callExtension format['820|%1|EpochMod.com Autoban #R2', _puid];" \n
+       "                    ['ahb', format['%1 (%2): Player not Authenticated', name _player, _puid]] call EPOCH_fnc_server_hiveLog;" \n
+       "                } else {" \n
+       "                    ['ahl', format['%1 (%2): Player not Authenticated', name _player, _puid]] call EPOCH_fnc_server_hiveLog;" \n
+       "                };" \n
+       "            };" \n
+       "        } else {" \n
+       "            _player setVariable[""LAST_AUTH_CHECK"", nil];" \n
+       "        };" \n
+       "    };" \n
        "};" \n
        "" \n
        "_cleanIt = {" \n
-       "	if !(isNull _this) then {" \n
-       "		_lastCheck = _this getVariable ""LAST_CHECK"";" \n
-       "		if (isNil ""_lastCheck"") then {" \n
-       "			_this setVariable[""LAST_CHECK"", diag_tickTime];" \n
-       "			_lastCheck = diag_tickTime;" \n
-       "		};" \n
-       "		if (diag_tickTime - _lastCheck > 1200) then {" \n
-       "			_list = _this nearEntities[[""Epoch_Male_F"", ""Epoch_Female_F"", ""LandVehicle"", ""Ship"", ""Air"", ""Tank""], 45];" \n
-       "			if ({ isPlayer _x }count _list == 0) then {" \n
-       "				_this setVariable [""LAST_CHECK"",nil];" \n
-       "				//diag_log format[""DEBUG: _cleanIT del %1"", _this];" \n
-       "				deleteVehicle _this;" \n
-       "" \n
-       "			};" \n
-       "		};" \n
-       "	};" \n
+       "    if !(isNull _this) then {" \n
+       "        private _lastCheck = _this getVariable ""LAST_CHECK"";" \n
+       "        if (isNil ""_lastCheck"") then {" \n
+       "            _this setVariable[""LAST_CHECK"", diag_tickTime];" \n
+       "            _lastCheck = diag_tickTime;" \n
+       "        };" \n
+       "        if (diag_tickTime - _lastCheck > 1200) then {" \n
+       "            private _list = (_this nearEntities [[""Epoch_Male_F"",""Epoch_Female_F"",""LandVehicle"",""Ship"",""Air"",""Tank""], 45]) select {isPlayer _x};" \n
+       "            if (_list isEqualTo []) then {" \n
+       "                _this setVariable [""LAST_CHECK"",nil];" \n
+       "                //diag_log format[""DEBUG: _cleanIT del %1"", _this];" \n
+       "                deleteVehicle _this;" \n
+       "            };" \n
+       "        };" \n
+       "    };" \n
        "};" \n
        "" \n
        "_cleanIt2 = {" \n
-       "	if !(isNull _this) then {" \n
-       "		_removed = false;" \n
-       "		_lastCheck = _this getVariable ""LAST_CHECK"";" \n
-       "		if (isNil ""_lastCheck"") then {" \n
-       "			_this setVariable[""LAST_CHECK"", diag_tickTime];" \n
-       "			_lastCheck = diag_tickTime;" \n
-       "		};" \n
-       "		if (diag_tickTime - _lastCheck > 1200) then {" \n
-       "			_list = _this nearEntities[[""Epoch_Male_F"", ""Epoch_Female_F"", ""LandVehicle"", ""Ship"", ""Air"", ""Tank""], 45];" \n
-       "			if ({ isPlayer _x }count _list == 0) then {" \n
-       "				{" \n
-       "					deleteVehicle _x;" \n
-       "				}forEach nearestObjects[_this, [""WeaponHolder""], 2];" \n
-       "				_this setVariable [""LAST_CHECK"",nil];" \n
-       "				//diag_log format[""DEBUG: _cleanIT2 del %1"", _this];" \n
-       "				deleteVehicle _this;" \n
-       "				_removed = true;" \n
-       "			};" \n
-       "		};" \n
-       "		if !(_removed) then {" \n
-       "			EPOCH_cleanupQueue pushBack _this;" \n
-       "		};" \n
-       "	};" \n
-       "};"/*%FSM</STATEINIT""">*/;
+       "    if !(isNull _this) then {" \n
+       "        private _removed = false;" \n
+       "        private _lastCheck = _this getVariable ""LAST_CHECK"";" \n
+       "        if (isNil ""_lastCheck"") then {" \n
+       "            _this setVariable[""LAST_CHECK"", diag_tickTime];" \n
+       "            _lastCheck = diag_tickTime;" \n
+       "        };" \n
+       "        if (diag_tickTime - _lastCheck > 1200) then {" \n
+       "            private _list = (_this nearEntities [[""Epoch_Male_F"",""Epoch_Female_F"",""LandVehicle"",""Ship"",""Air"",""Tank""], 45]) select {isPlayer _x};" \n
+       "            if (_list isEqualTo []) then {" \n
+       "                {" \n
+       "                    deleteVehicle _x;" \n
+       "                }forEach nearestObjects[_this, [""WeaponHolder""], 2];" \n
+       "                _this setVariable [""LAST_CHECK"",nil];" \n
+       "                //diag_log format[""DEBUG: _cleanIT2 del %1"", _this];" \n
+       "                deleteVehicle _this;" \n
+       "                _removed = true;" \n
+       "            };" \n
+       "        };" \n
+       "        if !(_removed) then {" \n
+       "            EPOCH_cleanupQueue pushBack _this;" \n
+       "        };" \n
+       "    };" \n
+       "};" \n
+       ""/*%FSM</STATEINIT""">*/;
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
       class Links
       {
@@ -203,6 +204,21 @@ class FSM
            ""/*%FSM</ACTION""">*/;
         };
         /*%FSM</LINK>*/
+        /*%FSM<LINK "Cleanup_Handler">*/
+        class Cleanup_Handler
+        {
+          priority = 8.000000;
+          to="Process";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"((diag_tickTime - _lastObjectCleanup) > 300)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/"_lastObjectCleanup = diag_tickTime;" \n
+           "" \n
+           "// TODO need better way allMissionObjects is not performant" \n
+           "if (_cleanupItems isEqualTo []) then {" \n
+           "	_cleanupItems = allMissionObjects ""groundWeaponHolder"" + entities ""WeaponHolderSimulated"";" \n
+           "};"/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
         /*%FSM<LINK "Cleanup">*/
         class Cleanup
         {
@@ -217,21 +233,6 @@ class FSM
            "};" \n
            "if !(EPOCH_cleanupQueue isEqualTo []) then {" \n
            "	(EPOCH_cleanupQueue deleteAt 0) call _cleanIt2;" \n
-           "};"/*%FSM</ACTION""">*/;
-        };
-        /*%FSM</LINK>*/
-        /*%FSM<LINK "Cleanup_Handler">*/
-        class Cleanup_Handler
-        {
-          priority = 8.000000;
-          to="Process";
-          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"((diag_tickTime - _lastObjectCleanup) > 300)"/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/"_lastObjectCleanup = diag_tickTime;" \n
-           "" \n
-           "// TODO need better way allMissionObjects is not performant" \n
-           "if (_cleanupItems isEqualTo []) then {" \n
-           "	_cleanupItems = allMissionObjects ""groundWeaponHolder"" + entities ""WeaponHolderSimulated"";" \n
            "};"/*%FSM</ACTION""">*/;
         };
         /*%FSM</LINK>*/
@@ -275,41 +276,12 @@ class FSM
            "if (_savePlayerList) then {" \n
            "	[""PLAYERS"", (call EPOCH_fn_InstanceID), _players] call EPOCH_fnc_server_hiveSET;" \n
            "};" \n
-           "" \n
+           "// Group cleanup" \n
            "{if (units _x isEqualTo []) then {deleteGroup _x}}forEach allGroups"/*%FSM</ACTION""">*/;
         };
         /*%FSM</LINK>*/
-        /*%FSM<LINK "De_simulate_Vehicle">*/
-        class De_simulate_Vehicle
-        {
-          priority = 2.000000;
-          to="Process";
-          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"((diag_tickTime - _delayTimeDeSim) > 12)"/*%FSM</CONDITION""">*/;
-          action=/*%FSM<ACTION""">*/"_delayTimeDeSim = diag_tickTime;" \n
-           "" \n
-           "if !(_activeVehicles isEqualTo []) then {" \n
-           "	_selectedVehicle = _activeVehicles deleteAt 0;" \n
-           "	if !(isNull _selectedVehicle) then {" \n
-           "		_deSim = false;" \n
-           "		if (crew _selectedVehicle isEqualTo []) then {" \n
-           "			if ((getPos _selectedVehicle) select 2 < 1) then {" \n
-           "				if ({isPlayer _x} count (_selectedVehicle nearEntities[[""CAManBase"", ""LandVehicle"", ""Ship"", ""Air"", ""Tank""], 300]) == 0) then {" \n
-           "					_selectedVehicle enableSimulationGlobal false;" \n
-           "					_deSim = true;" \n
-           "				};" \n
-           "			};" \n
-           "		};" \n
-           "		// add vehicle to back of list for later de-simulation" \n
-           "		if !(_deSim) then {" \n
-           "			_activeVehicles pushBack _selectedVehicle;" \n
-           "		};" \n
-           "	};" \n
-           "};"/*%FSM</ACTION""">*/;
-        };
-        /*%FSM</LINK>*/
-        /*%FSM<LINK "Simulate_Vehicle">*/
-        class Simulate_Vehicle
+        /*%FSM<LINK "Vehicle_and_Player">*/
+        class Vehicle_and_Player
         {
           priority = 1.000000;
           to="Process";
@@ -317,39 +289,37 @@ class FSM
           condition=/*%FSM<CONDITION""">*/"((diag_tickTime - _delayTimeSim) > 5)"/*%FSM</CONDITION""">*/;
           action=/*%FSM<ACTION""">*/"_delayTimeSim = diag_tickTime;" \n
            "_playersTemp = [];" \n
-           "{	" \n
-           "	{" \n
-           "		if !(typeOf _x in _safeVehicles) then {" \n
-           "			if (_x call EPOCH_server_getVToken) then {" \n
-           "				if (_simulationHandler && !(simulationEnabled _x)) then {" \n
-           "					_x enableSimulationGlobal true;" \n
-           "					_activeVehicles pushBack _x;" \n
-           "				};" \n
-           "			} else {" \n
-           "				if ((objectCurators _x) isEqualTo []) then {" \n
-           "					diag_log format[""DEBUG: Invalid Vehicle Token, deleted %1"",_x];" \n
-           "					deleteVehicle _x;" \n
-           "				};" \n
-           "			};" \n
-           "		};" \n
-           "	}forEach (_x nearEntities[[""LandVehicle"", ""Ship"", ""Air"", ""Tank""], 300]);" \n
+           "{" \n
+           "    private _vehicle = vehicle _x;" \n
+           "    // if player is inside a vehicle check vehicle is in allowed safe vehicles list." \n
+           "    if (_vehicle != _x && {!(typeOf _vehicle in _safeVehicles)}) then {" \n
+           "        // check if vehicle has token set server side and ignore vehicle if was spawned by a Curator (zeus)" \n
+           "        if ((objectCurators _vehicle) isEqualTo [] && {!(_vehicle call EPOCH_server_getVToken)}) then {" \n
+           "            diag_log format[""ADMIN: Invalid Vehicle detected and deleted %1 with %2 driving"",_vehicle,_x];" \n
+           "            deleteVehicle _vehicle;" \n
+           "        };" \n
+           "    };" \n
            "" \n
-           "	_pUID = getPlayerUID _x;" \n
+           "    private _pUID = getPlayerUID _x;" \n
+           "    // Add all player UIDs to array for use later." \n
+           "    if (_pUID != """") then { _playersTemp pushBack _pUID; };" \n
            "" \n
-           "	if !(_x call EPOCH_server_isPAdmin) then {" \n
-           "		if (isObjectHidden _x) then {" \n
-           "			_x hideObjectGlobal false;" \n
-           "		};" \n
-           "		if (_pUID != """") then {" \n
-           "			_playersTemp pushBack _pUID;" \n
-           "			[_pUID, _x] call _checkAuth;" \n
-           "		};" \n
-           "	} else {" \n
-           "		if (_pUID != """") then { _playersTemp pushBack _pUID; };" \n
-           "	};" \n
+           "    // If player is not admin check perform checks." \n
+           "    if !(_x call EPOCH_server_isPAdmin) then {" \n
+           "        // check if player is hidden and if so force back visable." \n
+           "        if (isObjectHidden _x) then {" \n
+           "            _x hideObjectGlobal false;" \n
+           "            diag_log format[""ADMIN: Warning!!! player was hidden and forced visable %1"",_x];" \n
+           "        };" \n
+           "        // check player has authenticated with reverse token check." \n
+           "        if (_pUID != """") then {" \n
+           "            [_pUID, _x] call _checkAuth;" \n
+           "        };" \n
+           "    };" \n
            "" \n
            "}forEach allPlayers;" \n
-           "_players = _playersTemp;"/*%FSM</ACTION""">*/;
+           "_players = _playersTemp;" \n
+           ""/*%FSM</ACTION""">*/;
         };
         /*%FSM</LINK>*/
         /*%FSM<LINK "Server_FPS">*/
@@ -374,8 +344,8 @@ class FSM
            ""/*%FSM</ACTION""">*/;
         };
         /*%FSM</LINK>*/
-        /*%FSM<LINK "Events">*/
-        class Events
+        /*%FSM<LINK "Events_and_Resta">*/
+        class Events_and_Resta
         {
           priority = 0.000000;
           to="Process";
@@ -383,30 +353,46 @@ class FSM
           condition=/*%FSM<CONDITION""">*/"((diag_tickTime - _pvehTime) > 20)"/*%FSM</CONDITION""">*/;
           action=/*%FSM<ACTION""">*/"// Epoch Events" \n
            "_pvehTime = diag_tickTime;" \n
+           "_newEvents = [];" \n
            "{" \n
-           "	_x params [""_time"", ""_scriptName"", [""_runAtStart"",0],[""_usePrePostfix"",1]];" \n
-           "	_eventKey = format[""EPOCH_EVENT_%1"", _forEachIndex];" \n
-           "	_lastTime = missionNamespace getVariable _eventKey;" \n
-           "	if (isNil ""_lastTime"") then {" \n
-           "		_startTime = diag_tickTime;" \n
-           "		if (_runAtStart isEqualTo 1) then {" \n
-           "			_startTime = diag_tickTime - _time;" \n
-           "		};" \n
-           "		missionNamespace setVariable[_eventKey, _startTime];" \n
-           "		_lastTime = _startTime;" \n
-           "	};" \n
-           "	if ((diag_tickTime - _lastTime) >= _time) then {" \n
-           "		missionNamespace setVariable[_eventKey, diag_tickTime];" \n
-           "		_preFix = """";" \n
-           "		_postFix = """";" \n
-           "		if (_usePrePostfix == 1) then {" \n
-           "			_preFix = ""\epoch_server_settings\EpochEvents\"";" \n
-           "			_postFix = "".sqf"";" \n
-           "		};" \n
-           "		_handle = [] execVM format[""%1%2%3"",_preFix,_scriptName,_postFix];" \n
-           "		diag_log format[""DEBUG: _event %1"", _scriptName];" \n
-           "	};" \n
+           "    _x params [""_time"", ""_scriptName"", [""_runAtStart"",0], [""_usePrePostfix"",1], [""_runNumTimes"",-1], [""_input"",[]], [""_disallowedWorlds"",[]] ];" \n
+           "    _eventKey = format[""EPOCH_EVENT_%1"", _forEachIndex];" \n
+           "    _eventCounter = format[""EPOCH_EVENT_COUNTER_%1"", _forEachIndex];" \n
+           "    _lastTime = missionNamespace getVariable _eventKey;" \n
+           "    _counter = missionNamespace getVariable [_eventCounter,0];" \n
+           "    if (isNil ""_lastTime"") then {" \n
+           "        _startTime = diag_tickTime;" \n
+           "        if (_runAtStart isEqualTo 1) then {" \n
+           "            _startTime = diag_tickTime - _time;" \n
+           "        };" \n
+           "        missionNamespace setVariable[_eventKey, _startTime];" \n
+           "        _lastTime = _startTime;" \n
+           "    };" \n
+           "    if ((_counter >= _runNumTimes && _runNumTimes != -1) || worldName in _disallowedWorlds) then {" \n
+           "			diag_log format[""DEBUG: server event removed %1"", _scriptName];" \n
+           "    } else {" \n
+           "			_newEvents pushBack _x;" \n
+           "        if ((diag_tickTime - _lastTime) >= _time) then {" \n
+           "            missionNamespace setVariable[_eventKey, diag_tickTime];" \n
+           "            _preFix = """";" \n
+           "            _postFix = """";" \n
+           "            if (_usePrePostfix == 1) then {" \n
+           "                _preFix = ""\epoch_server_settings\EpochEvents\"";" \n
+           "                _postFix = "".sqf"";" \n
+           "            };" \n
+           "				if (_usePrePostfix == 2) then {" \n
+           "                _preFix = ""\epoch_server_events\EpochEvents\"";" \n
+           "                _postFix = "".sqf"";" \n
+           "            };" \n
+           "            _handle = _input execVM format[""%1%2%3"",_preFix,_scriptName,_postFix];" \n
+           "            _counter =  _counter + 1;" \n
+           "            missionNamespace setVariable[_eventCounter, _counter];" \n
+           "            diag_log format[""DEBUG: server event %1"", _scriptName];" \n
+           "        };" \n
+           "    };" \n
            "} forEach _events;" \n
+           "// remove expired events" \n
+           "_events = _newEvents;" \n
            "" \n
            "// restart script" \n
            "if (_scriptBasedRestart) then {" \n
@@ -444,7 +430,6 @@ class FSM
            "		};" \n
            "	};" \n
            "};" \n
-           "" \n
            ""/*%FSM</ACTION""">*/;
         };
         /*%FSM</LINK>*/

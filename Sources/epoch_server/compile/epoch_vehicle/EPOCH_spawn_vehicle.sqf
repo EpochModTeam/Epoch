@@ -21,15 +21,28 @@ _serverSettingsConfig = configFile >> "CfgEpochServer";
 _removeweapons = [_serverSettingsConfig, "removevehweapons", []] call EPOCH_fnc_returnConfigEntry;
 _removemagazinesturret = [_serverSettingsConfig, "removevehmagazinesturret", []] call EPOCH_fnc_returnConfigEntry;
 _vehObj = createVehicle[_vehClass, _position, [], 0, _can_collide];
+// turn off BIS randomization
+_vehObj setVariable ["BIS_enableRandomization", false];
 if !(isNull _vehObj) then{
 	_vehObj call EPOCH_server_setVToken;
+
+	// add random damage to vehicle (avoid setting engine or fuel to 100% damage to prevent instant destruction)
+	if (_spawnDamaged) then {
+		{
+			_maxDamage = if (_x in ["HitEngine","HitFuel","HitHull"]) then {0.8} else {1};
+			_vehObj setHitIndex [_forEachIndex,((random 1 max 0.1) min _maxDamage)];
+		} forEach ((getAllHitPointsDamage _vehObj) param [0,[]]);
+	};
+	// make vehicle immune from further damage.
+	_vehObj allowDamage false;
+
 	// Set Direction and position
 	if (_direction isEqualType []) then{
+		_vehObj setposATL _position;
 		_vehObj setVectorDirAndUp _direction;
-		_vehObj setposATL _position;
 	} else {
-		_vehObj setdir _direction;
 		_vehObj setposATL _position;
+		_vehObj setdir _direction;
 	};
 	// Normalize vehicle inventory
 	clearWeaponCargoGlobal    _vehObj;
@@ -56,14 +69,6 @@ if !(isNull _vehObj) then{
 
 	// randomize fuel TODO push min max to config
 	_vehObj setFuel ((random 1 max 0.1) min 0.9);
-
-	// add random damage to vehicles (avoid setting engine or fuel to 100% damage to prevent instant destruction)
-	if (_spawnDamaged) then {
-		{
-			_maxDamage = if (_x in ["HitEngine","HitFuel"]) then {0.9} else {1};
-			_vehObj setHitIndex [_forEachIndex,random(_maxDamage)];
-		} forEach ((getAllHitPointsDamage _vehObj) param [0,[]]);
-	};
 
 	// get colors from config
 	_cfgEpochVehicles = 'CfgEpochVehicles' call EPOCH_returnConfig;
@@ -106,6 +111,14 @@ if !(isNull _vehObj) then{
 	  ["VehicleLock", _vehLockHiveKey] call EPOCH_fnc_server_hiveDEL;
 	};
 
+	// new Dynamicsimulation
+	if(["CfgDynamicSimulation", "vehicleDynamicSimulationSystem", true] call EPOCH_fnc_returnConfigEntryV2)then
+	{
+		_vehObj enableSimulationGlobal false; // turn it off until activated by dynamicSim
+		_vehObj enableDynamicSimulation true;
+	};
+
+
 	// SAVE VEHICLE
 	_vehObj call EPOCH_server_save_vehicle;
 
@@ -122,6 +135,9 @@ if !(isNull _vehObj) then{
 
 	// Add to A3 remains collector
 	addToRemainsCollector[_vehObj];
+
+	// make vehicle mortal again
+	_vehObj allowDamage true;
 
 } else {
 	diag_log format["DEBUG: Failed to create vehicle: %1", _this];

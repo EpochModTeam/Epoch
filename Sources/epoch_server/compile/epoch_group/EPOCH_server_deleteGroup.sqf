@@ -30,5 +30,6 @@ if (_groupID != "") then {
 	} forEach (allPlayers select {(_x getVariable["GROUP", ""]) == _groupID});
 
 	_return = ["Group", _groupID] call EPOCH_fnc_server_hiveDEL;
+	[["groupUpdate", []], _player] call EPOCH_sendRemoteExecClient;
 };
 _return

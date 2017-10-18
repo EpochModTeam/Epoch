@@ -1,6 +1,21 @@
 /*
 Legend:
-interactAction: 0 = examine, 1 = eat, 2 = drink, 3 = build
+interactAction: 0 = examine,
+                1 = eat,
+				2 = drink,
+				3 = build,
+				4 = refuel,
+				5 = siphon,
+                6 = Soiled-25,
+				7 = Warm+1,
+				8 = Cold-1,
+				9 = Energy 100,
+				10 = Repair Light,
+				11 = Repair Heavy,
+				12 = base painting,
+				13 = Heal Player,
+				14 = Unpack Backpack,
+				15 = Read
 interactAttributes[] = {
 	{"Temp",0},
 	{"Hunger",0},
@@ -12,7 +27,7 @@ interactAttributes[] = {
 	{"Stamina",0},
 	{"Wet",0},
 	{"BloodP",0},
-	{"Karma",0},
+	{"NotUsed",0},
 	{"Alcohol",0},
 	{"Radiation",0}
 };
@@ -76,40 +91,40 @@ class CfgItemInteractions
     class honey_epoch : Food_Jar_base
     {
         interactText = "EAT";
-        interactAttributes[] = {{"Immunity",1},{"Stamina",30},{"BloodP",10}};
+        interactAttributes[] = {{"Immunity",1},{"Stamina",30}};
         interactActions[] = {{"EMPTY","[1,[],'emptyjar_epoch'] call EPOCH_consumeItem;"}};
     };
     class sardines_epoch : Food_TinCan_base
     {
-        interactAttributes[] = {{"Hunger",1000},{"Toxicity",7}};
+        interactAttributes[] = {{"Hunger",1000},{"Toxicity",7,1},{"Radiation",2,1}};
     };
     class meatballs_epoch : Food_TinCan_base
     {
-        interactAttributes[] = {{"Hunger",1200}};
+        interactAttributes[] = {{"Hunger",1200},{"Radiation",2,1}};
     };
     class scam_epoch : Food_TinCan_base
     {
-        interactAttributes[] = {{"Hunger",1000}};
+        interactAttributes[] = {{"Hunger",1000},{"Radiation",2,1}};
     };
     class sweetcorn_epoch : Food_TinCan_base
     {
-        interactAttributes[] = {{"Hunger",600}};
+        interactAttributes[] = {{"Hunger",600},{"Radiation",2,1}};
     };
     class FoodBioMeat : Food_TinCan_base
     {
-        interactAttributes[] = {{"Hunger",1000},{"Toxicity",7}};
+        interactAttributes[] = {{"Hunger",1000},{"Toxicity",7},{"Radiation",2,1}};
     };
     class TacticalBacon : Food_TinCan_base
     {
-        interactAttributes[] = {{"Hunger",500}};
+        interactAttributes[] = {{"Hunger",500},{"Radiation",2,1}};
     };
     class ItemTrout : Food_base
     {
-        interactAttributes[] = {{"Hunger",300},{"Toxicity",5}};
+        interactAttributes[] = {{"Hunger",300},{"Toxicity",5,1}};
     };
     class ItemSeaBass : Food_base
     {
-        interactAttributes[] = {{"Hunger",500},{"Toxicity",10}};
+        interactAttributes[] = {{"Hunger",500},{"Toxicity",10,1}};
     };
     class ItemTuna : Food_base
     {
@@ -157,7 +172,7 @@ class CfgItemInteractions
     };
     class WhiskeyNoodle : Drink_base
     {
-        interactAttributes[] = {{"Thirst",800},{"Toxicity",-1},{"Stamina",50},{"Alcohol",10}};
+        interactAttributes[] = {{"Thirst",400},{"Toxicity",-1},{"Radiation",-1},{"Stamina",50},{"Alcohol",10},{"BloodP",1}};
     };
     class water_epoch : Drink_Jar_base
     {
@@ -301,13 +316,13 @@ class CfgItemInteractions
     {
         interactAction = 1;
         interactText = "EAT";
-        interactAttributes[] = {{"Hunger",500},{"Soiled",1},{"Toxicity",15,1},{"Karma",-10}};
+        interactAttributes[] = {{"Hunger",500},{"Soiled",1},{"Toxicity",15,1}};
     };
     class CookedDog_EPOCH : Default
     {
         interactAction = 1;
         interactText = "EAT";
-        interactAttributes[] = {{"Hunger",3000},{"Karma",-10}};
+        interactAttributes[] = {{"Hunger",3000}};
     };
     class CookedGoat_EPOCH : Default
     {
@@ -327,6 +342,23 @@ class CfgItemInteractions
         interactText = "EAT";
         interactAttributes[] = {{"Hunger",3000}};
     };
+	class ItemPowderMilk : Food_base
+    {
+        interactAttributes[] = {{"Thirst",-350},{"Hunger",300}};
+    };
+	class ItemRicebox : Food_base
+    {
+        interactAttributes[] = {{"Thirst",-1000},{"Hunger",1200}};
+    };
+	class ItemCereals : Food_base
+    {
+        interactAttributes[] = {{"Thirst",-1000},{"Hunger",1200}};
+    };
+	class ItemVitamins : Food_base
+    {
+		interactText = "Take Pills";
+        interactAttributes[] = {{"Immunity",20},{"Stamina",50},{"Toxicity",-5},{"Thirst",-150}};
+    };
     class KitSpikeTrap : Item_Build_base
     {
         buildClass = "Spike_TRAP_SIM_EPOCH";
@@ -343,7 +375,15 @@ class CfgItemInteractions
     {
         buildClass = "WoodFloor_EPOCH";
     };
-    class KitWoodStairs : Item_Build_base
+    class KitWoodHalfFloor : Item_Build_base
+    {
+        buildClass = "WoodHalfFloor_EPOCH";
+    };
+	class KitWoodQuarterFloor : Item_Build_base
+    {
+        buildClass = "WoodQuarterFloor_EPOCH";
+    };
+	class KitWoodStairs : Item_Build_base
     {
         buildClass = "WoodStairs_EPOCH";
     };
@@ -351,6 +391,18 @@ class CfgItemInteractions
     {
         buildClass = "WoodTower_EPOCH";
     };
+	class KitMetalTower : Item_Build_base
+    {
+        buildClass = "MetalTower_EPOCH";
+    };
+	class KitCinderTower : Item_Build_base
+    {
+        buildClass = "CinderTower_EPOCH";
+    };
+	class KitCinderFloor : Item_Build_base
+	{
+		buildClass = "CinderFloor_EPOCH";
+	};
     class KitWoodRamp : Item_Build_base
     {
         buildClass = "WoodRamp_EPOCH";
@@ -386,6 +438,16 @@ class CfgItemInteractions
         buildClass = "Workbench_SIM_EPOCH";
         isStorage = 1;
     };
+	class KitTentA : Item_Build_base
+    {
+        buildClass = "TentA_SIM_EPOCH";
+		isStorage = 1;
+    };
+	class KitTentDome : Item_Build_base
+    {
+        buildClass = "TentDome_SIM_EPOCH";
+		isStorage = 1;
+    };
     class KitFoundation : Item_Build_base
     {
         buildClass = "Foundation_EPOCH";
@@ -405,6 +467,95 @@ class CfgItemInteractions
     class KitCinderWall : Item_Build_base
     {
         buildClass = "CinderWallHalf_EPOCH";
+    };
+	class Kit_Garden : Item_Build_base
+	{
+		buildClass = "Garden_EPOCH";
+		isStorage = 1;
+	};
+    class KitBurnBarrel : Item_Build_base
+    {
+        buildClass = "BurnBarrel_EPOCH";
+    };
+    class KitLightPole : Item_Build_base
+    {
+        buildClass = "LightPole_EPOCH";
+    };
+    class KitSmallForestCamoNet : Item_Build_base
+    {
+        buildClass = "SmallForestCamoNet_EPOCH";
+    };
+    class KitSmallDesertCamoNet : Item_Build_base
+    {
+        buildClass = "SmallDesertCamoNet_EPOCH";
+    };
+    class KitLargeForestCamoNet : Item_Build_base
+    {
+        buildClass = "LargeForestCamoNet_EPOCH";
+    };
+    class KitLargeDesertCamoNet : Item_Build_base
+    {
+        buildClass = "LargeDesertCamoNet_EPOCH";
+    };
+    class KitFirePlace_02 : Item_Build_base
+    {
+        buildClass = "FirePlace_02_EPOCH";
+    };
+    class KitFieldToilet : Item_Build_base
+    {
+        buildClass = "FieldToilet_EPOCH";
+    };
+    class KitScaffolding : Item_Build_base
+    {
+        buildClass = "Scaffolding_EPOCH";
+    };
+    class KitSink : Item_Build_base
+    {
+        buildClass = "Sink_EPOCH";
+    };
+    class KitPortableLight_Single : Item_Build_base
+    {
+        buildClass = "PortableLight_Single_EPOCH";
+    };
+    class KitPortableLight_Double : Item_Build_base
+    {
+        buildClass = "PortableLight_Double_EPOCH";
+    };
+    class KitWatchTower : Item_Build_base
+    {
+        buildClass = "WatchTower_EPOCH";
+    };
+    class KitSunShade : Item_Build_base
+    {
+        buildClass = "SunShade_EPOCH";
+    };
+    class KitFuelPump : Item_Build_base
+    {
+        buildClass = "FuelPump_EPOCH";
+    };
+    class KitBagBunker : Item_Build_base
+    {
+        buildClass = "BagBunker_EPOCH";
+    };
+    class KitSandBagWall : Item_Build_base
+    {
+        buildClass = "SandBagWall_EPOCH";
+    };
+    class KitSandBagWallLong : Item_Build_base
+    {
+        buildClass = "SandBagWallLong_EPOCH";
+    };
+    class KitBarGate : Item_Build_base
+    {
+        buildClass = "BarGate_EPOCH";
+    };
+    class KitWaterPump : Item_Build_base
+    {
+        buildClass = "WaterPump_EPOCH";
+    };
+    class KitBarbedWire : Item_Build_base
+    {
+        buildClass = "BarbedWire_EPOCH";
     };
     class PaintCanBase : Default
     {
@@ -465,13 +616,13 @@ class CfgItemInteractions
     {
         interactAction = 6;
         interactText = "USE";
-        interactAttributes[] = {{"Immunity",10},{"Stamina",-100},{"BloodP",-10}};
+        interactAttributes[] = {{"Immunity",10},{"Stamina",-100}};
     };
     class Goldenseal : Default
     {
         interactAction = 6;
         interactText = "USE";
-        interactAttributes[] = {{"Toxicity",-50}};
+        interactAttributes[] = {{"Toxicity",-5}};
     };
     class Pumpkin : Default
     {
@@ -532,7 +683,7 @@ class CfgItemInteractions
     class ItemKeyYellow : ItemKey {};
     class ItemDoc1 : Default
     {
-        interactAction = -1;
+        interactAction = 15;
         interactText = "READ";
     };
     class ItemDoc2 : ItemDoc1 {};
@@ -546,13 +697,29 @@ class CfgItemInteractions
     class ItemVehDoc2 : ItemDoc1 {};
     class ItemVehDoc3 : ItemDoc1 {};
     class ItemVehDoc4 : ItemDoc1 {};
+	class KitVehicleUpgradeI_100_EPOCH : ItemDoc1 {};
+	class KitVehicleUpgradeI_200_EPOCH : ItemDoc1 {};
+	class KitVehicleUpgradeI_300_EPOCH : ItemDoc1 {};
+	class KitVehicleUpgradeII_100_EPOCH : ItemDoc1 {};
+	class KitVehicleUpgradeII_200_EPOCH : ItemDoc1 {};
+	class KitVehicleUpgradeII_300_EPOCH : ItemDoc1 {};
+	class KitVehicleUpgradeIII_100_EPOCH : ItemDoc1 {};
+	class KitVehicleUpgradeIII_200_EPOCH : ItemDoc1 {};
+	class KitVehicleUpgradeIII_300_EPOCH : ItemDoc1 {};
+	class KitVehicleUpgradeIV_100_EPOCH : ItemDoc1 {};
+	class KitVehicleUpgradeIV_200_EPOCH : ItemDoc1 {};
+	class KitVehicleUpgradeIV_300_EPOCH : ItemDoc1 {};
     class ItemBulb : Default {};
     class ItemBurlap : Default {};
     class ItemBriefcaseE : Default {};
     class ItemBriefcaseGold100oz : Default {};
+	class ItemBriefcaseSilver100oz : Default {};
     class ItemAluminumBar : Default {};
+	class ItemAluminumBar10oz : Default {};
     class ItemCopperBar : Default {};
+	class ItemCopperBar10oz : Default {};
     class ItemTinBar : Default {};
+	class ItemTinBar10oz : Default {};
     class ItemPlywoodPack : Default {};
     class ItemComboLock : Default {};
     class CircuitParts : Default {};
@@ -579,6 +746,7 @@ class CfgItemInteractions
     class ItemDocument : Default {};
     class ItemDocumentMission : Default {};
     class ItemSilverBar : Default {};
+	class ItemSilverBar10oz : Default {};
     class ItemGoldBar : Default {};
     class ItemGoldBar10oz : Default {};
     class ItemRock : Default {};
@@ -734,6 +902,103 @@ class CfgItemInteractions
     {
         interactReturnOnUse = "smallbackpack_pink_epoch";
     };
-};
+	class ItemCanvas : Default {};
+	class ItemSeedBag : Default {};
+	class SeedPacket_GoldenSeal : Default {};
+	class SeedPacket_Hemp : Default {};
+	class SeedPacket_Poppy : Default {};
+	class SeedPacket_Pumpkin : Default {};
+	class SeedPacket_Sunflower : Default {};
+	class ItemBakedBeans : Food_TinCan_base
+	{
+		interactAttributes[] = {{"Hunger",800},{"Radiation",2,1}};
+	};
+	class gyro_wrap_epoch : Food_base
+	{
+		interactAttributes[] = {{"Hunger",600}};
+	};
+	class icecream_epoch : Food_base
+	{
+		interactAttributes[] = {{"Hunger",200},{"Stamina",20}};
+	};
+	class redburger_epoch : Food_base
+	{
+		interactAttributes[] = {{"Hunger",600}};
+	};
+	class bluburger_epoch : Food_base
+	{
+		interactAttributes[] = {{"Hunger",600}};
+	};
+	class krypto_candy_epoch : Food_base
+	{
+		interactAttributes[] = {{"Hunger",500},{"Stamina",50}};
+	};
+	class ItemBottlePlastic_Clean : Drink_base
+	{
+		interactAttributes[] = {{"Thirst",500},{"Stamina",50}};
+		interactReturnOnUse = "ItemBottlePlastic_Empty";
+	};
+	class ItemCanteen_Clean : Drink_base
+	{
+		interactAttributes[] = {{"Thirst",1000},{"Stamina",50}};
+		interactReturnOnUse = "ItemCanteen_Empty";
+	};
+	class ItemBottlePlastic_Dirty: Drink_base
+	{
+		interactAttributes[] = {{"Thirst",500},{"Toxicity",5,1},{"Stamina",50},{"Radiation",2,1}};
+		interactReturnOnUse = "ItemBottlePlastic_Empty";
+	};
 
+	class ItemCanteen_Dirty : Drink_base
+	{
+		interactAttributes[] = {{"Thirst",1000},{"Toxicity",5,1},{"Stamina",50},{"Radiation",2,1}};
+		interactReturnOnUse = "ItemCanteen_Empty";
+	};
+	class adrenaline_epoch : Drink_base
+    {
+        interactText = "USE"; // todo digest system to give attributes over time
+		interactAttributes[] = {{"Thirst",-50},{"Stamina",120},{"BloodP",20},{"Toxicity",5}};
+    };
+	class atropine_epoch : Drink_base
+    {
+        interactText = "USE"; // todo digest system to give attributes over time
+		interactAttributes[] = {{"Thirst",-50},{"Stamina",-20},{"Toxicity",-5},{"Immunity",-1}};
+    };
+	class morphine_epoch : Default
+    {
+        interactAction = 16; // currently heals most damaged hitpoint first on self and gives attributes
+        interactText = "USE";
+		interactAttributes[] = {{"Thirst",-20},{"Stamina",-50},{"Toxicity",5},{"BloodP",5}};
+    };
+	class caffeinepills_epoch : Food_base
+    {
+        // todo digest system to give attributes over time (some type of boost system is needed as well as new action to feed it)
+        interactAttributes[] = {{"Thirst",-20},{"Stamina",50},{"Toxicity",1}};
+    };
+	class orlistat_epoch : Food_base
+    {
+		// todo should reduce hunger downtick for a duration, if too much is taken causes bowel issues?
+		interactAttributes[] = {{"Thirst",-20},{"Hunger",25},{"BloodP",-1}};
+    };
+	class nanite_cream_epoch : Default
+    {
+        interactText = "USE";
+		interactAttributes[] = {{"Radiation",-25},{"Soiled",20},{"Toxicity",5},{"Immunity",5}};
+    };
+	class nanite_gun_epoch : Default
+    {
+        interactText = "USE";
+		interactAttributes[] = {{"Radiation",-100},{"Toxicity",5},{"Immunity",5}};
+    };
+	class nanite_pills_epoch : Default
+    {
+        interactText = "USE";
+		interactAttributes[] = {{"Radiation",-10},{"Thirst",-50},{"Toxicity",5},{"Immunity",5}};
+    };
+	class iodide_pills_epoch : Default
+    {
+        interactText = "USE";
+		interactAttributes[] = {{"Radiation",-15},{"Thirst",-50},{"Immunity",5}};
+    };
+};
 /*[[[end]]]*/

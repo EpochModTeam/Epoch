@@ -20,6 +20,8 @@ params ["_building","_player",["_token","",[""]] ];
 if !([_player, _token] call EPOCH_server_getPToken) exitWith{};
 if (isNull _building) exitWith{};
 if (_player distance _building > 20) exitWith{};
+if (_building getvariable ['Build_LockedForRemoving',false]) exitwith {};
+_building setvariable ['Build_LockedForRemoving',true];
 
 // TODO add group check here since this should only be removed by group or owner of pole
 _objType = typeOf _building;

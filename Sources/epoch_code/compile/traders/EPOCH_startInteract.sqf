@@ -18,7 +18,7 @@ if (!isNull cursorTarget) then {
 	};
 };
 if (isNull _target) then {
-	_targets = nearestObjects [getPosATL player, ["WeaponHolder", "WeaponHolderSimulated"], 3];
+	_targets = nearestObjects [player, ["WeaponHolder", "WeaponHolderSimulated"], 3];
 	if !(_targets isEqualTo []) then {
 		_target = _targets select 0;
 		_forceGear = true;

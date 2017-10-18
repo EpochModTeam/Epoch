@@ -15,8 +15,8 @@ defaultPopulate:
 	1 - left
 	2 - down
 	3 - up
-	4 - horizontal grow
-	5 - vertical grow
+	4 - horizontal grow (starts from center, evens on left, odds on right)
+	5 - vertical grow (same as above)
 
 offSetX: Positive = right, Negative = left
 offSetY: Positive = down, Negative = up
@@ -45,7 +45,7 @@ class rmx_dynamicHUD
 {
     class topRight
     {
-        classname = "RscPicture";
+        classname = "RscPictureKeepAspect";
         defaultPos = 2;
         defaultPopulate = 1;
         arraySize = 10;
@@ -56,14 +56,52 @@ class rmx_dynamicHUD
         angle[] = {-5,0.5,0.5,0.5};
         scale[] = {1,0.05};
     };
-    class botcenter
+    class fav_pic_bg
+    {
+        classname = "RscPictureKeepAspect";
+        defaultPos = 7;
+        defaultPopulate = 0;
+        arraySize = 5;
+        width = 4;
+        height = 4;
+    };
+    class fav_pic
+    {
+        classname = "RscPictureKeepAspect";
+        defaultPos = 7;
+        defaultPopulate = 0;
+        arraySize = 5;
+        width = 4;
+        height = 4;
+    };
+    class fav_equipped
     {
         classname = "RscPicture";
         defaultPos = 7;
-        defaultPopulate = 4;
-        arraySize = 9;
-        width = 5;
-        height = 5;
+        defaultPopulate = 0;
+        arraySize = 5;
+        width = 4;
+        height = 4;
+    };
+    class fav_keymap
+    {
+        classname = "fav_keymap";
+        defaultPos = 7;
+        defaultPopulate = 0;
+        arraySize = 5;
+        width = 4;
+        height = 1;
+    };
+    class geigerCounter
+    {
+        classname = "RscPicture";
+        defaultPos = 8;
+        defaultPopulate = 3;
+        arraySize = 8;
+        width = 10;
+        height = 2.5;
+		offSetX = -0.25;
+		offSetY = -1;
     };
 };
 
