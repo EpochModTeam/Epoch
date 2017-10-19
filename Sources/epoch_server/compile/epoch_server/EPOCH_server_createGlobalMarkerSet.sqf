@@ -53,7 +53,7 @@ _return = [];
 {
 	// double check all, use these defaults if not defined
 	_x params [ 
-		["_mName",format["globalMarker__%1", Epoch_markerCounterGlobal]],
+		["_mName",format["EPOCH_globalMarker_%1", Epoch_markerCounterGlobal]],
 		["_mShape","ICON"],
 		["_mType","hd_dot"],
 		["_mColor","ColorBlack"],
@@ -62,7 +62,7 @@ _return = [];
 		["_mDir",0],
 		["_mText",""]
 	];
-	_mName = format["globalMarker_%1", Epoch_markerCounterGlobal];
+	_mName = format["EPOCH_globalMarker_%1", Epoch_markerCounterGlobal];
 	_marker = createMarker [_mName, _mPos];
 	_return pushBack _mName;
 	_mName setMarkerShape _mShape;
