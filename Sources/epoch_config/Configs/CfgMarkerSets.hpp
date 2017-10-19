@@ -77,9 +77,9 @@ class CfgMarkerSets
 	};
 	class Radiation {
         markerArray[] = {
-            {"","ICON","EpochBG_Triangle","ColorBlack",0.3,{1.8,1.8}}, 
-            {"","ICON","EpochActive_Triangle","ColorYellow",1,{1.7,1.7}}, 
-            {"","ICON","EpochRadiation","ColorYellow",1,{0.95,0.95}}
+           {"","ICON","EpochBG_Triangle","ColorBlack",0.3,{1.5,1.5}}, 
+            {"","ICON","EpochActive_Triangle","ColorYellow",1,{1.3,1.3}}, 
+            {"","ICON","EpochRadiation","ColorYellow",1,{0.75,0.75}}
         };
 	};
 	class Satellite {
@@ -160,9 +160,9 @@ class CfgMarkerSets
 	};
 	class Shipwreck {
 		markerArray[] = {
-			{"","ICON","EpochBG_Circle","ColorWhite",0.15,{1.2,1.2}}, 
-            {"","ICON","EpochActive_Circle","ColorOrange",1,{1.2,1.2}}, 
-            {"","ICON","EpochShipwreck","ColorOrange",1,{1.3,1.3}}
+			{"","ICON","EpochBG_Circle","ColorWhite",0.15,{0.8,0.8}}, 
+            {"","ICON","EpochActive_Circle","ColorOrange",1,{0.8,0.8}}, 
+            {"","ICON","EpochShipwreck","ColorOrange",1,{0.7,0.7}}
 		};
 	};
 };
