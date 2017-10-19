@@ -1762,216 +1762,160 @@ _skn_admincode = compileFinal ("
 		_button = _this call "+_skn_getCtrl+";
 		_button ctrlSetTextColor [1, 0, 0, 1];
 		{_x call "+_skn_getCtrl+" ctrlSetTextColor [1, 1, 1, 1]}forEach([61,62,63,64,65,66,67,68,69,70,71]-[_this]);
+		_cfgPricing = 'CfgPricing' call EPOCH_returnConfig;
 		if (_this == 61) then {
 			_airVehicles = ""
-					getText(_x >> 'displayName') != '' &&
-					getText(_x >> 'picture') != '' &&
-					getNumber(_x >> 'type') != 0 &&
-					getText (_x >> 'vehicleClass') in ['Air']
+				getText(_x >> 'displayName') != '' &&
+				getText(_x >> 'picture') != '' &&
+				getNumber(_x >> 'type') != 0 &&
+				getText (_x >> 'vehicleClass') in ['Air'] &&
+				isClass(_cfgPricing >> configName _x)
 			""configClasses (configFile >> 'CfgVehicles');
 			{
-				_config = 'CfgPricing' call EPOCH_returnConfig;
-				if (isClass(_config >> configName _x)) then{
-					_index = _ctrl lbAdd format['%1', getText(_x >> 'displayName')];
-					_ctrl lbSetData[_index, str[configName _x, 6, 0]];
-					_ctrl lbSetPicture[_index, getText(_x >> 'picture')];
-				};
+				_index = _ctrl lbAdd format['%1', getText(_x >> 'displayName')];
+				_ctrl lbSetData[_index, str[configName _x, 6, 0]];
+				_ctrl lbSetPicture[_index, getText(_x >> 'picture')];
 			}forEach _airVehicles;
 		};
 		if (_this == 62) then {
 			_landVehicles = ""
-					getText(_x >> 'displayName') != '' &&
-					getText(_x >> 'picture') != '' &&
-					configName _x != 'PaperCar' &&
-					getText (_x >> 'vehicleClass') in ['Car']
+				getText(_x >> 'displayName') != '' &&
+				getText(_x >> 'picture') != '' &&
+				configName _x != 'PaperCar' &&
+				getText (_x >> 'vehicleClass') in ['Car'] &&
+				isClass(_cfgPricing >> configName _x)
 			""configClasses (configFile >> 'CfgVehicles');
 			{
-				_config = 'CfgPricing' call EPOCH_returnConfig;
-				if (isClass(_config >> configName _x)) then{
-					_index = _ctrl lbAdd format['%1', getText(_x >> 'displayName')];
-					_ctrl lbSetData[_index, str[configName _x, 6, 1]];
-					_ctrl lbSetPicture[_index, getText(_x >> 'picture')];
-				};
+				_index = _ctrl lbAdd format['%1', getText(_x >> 'displayName')];
+				_ctrl lbSetData[_index, str[configName _x, 6, 1]];
+				_ctrl lbSetPicture[_index, getText(_x >> 'picture')];
 			}forEach _landVehicles;
 		};
 		if (_this == 63) then {
 			_shipVehicles = ""
-					getText(_x >> 'displayName') != '' &&
-					getText(_x >> 'picture') != '' &&
-					getNumber(_x >> 'type') in [1,2,3,4] &&
-					getText (_x >> 'vehicleClass') in ['Ship']
+				getText(_x >> 'displayName') != '' &&
+				getText(_x >> 'picture') != '' &&
+				getNumber(_x >> 'type') in [1,2,3,4] &&
+				getText (_x >> 'vehicleClass') in ['Ship'] &&
+				isClass(_cfgPricing >> configName _x)
 			""configClasses (configFile >> 'CfgVehicles');
 			{
-				_config = 'CfgPricing' call EPOCH_returnConfig;
-				if (isClass(_config >> configName _x)) then{
-					_index = _ctrl lbAdd format['%1', getText(_x >> 'displayName')];
-					_ctrl lbSetData[_index, str[configName _x, 6, 2]];
-					_ctrl lbSetPicture[_index, getText(_x >> 'picture')];
-				};
+				_index = _ctrl lbAdd format['%1', getText(_x >> 'displayName')];
+				_ctrl lbSetData[_index, str[configName _x, 6, 2]];
+				_ctrl lbSetPicture[_index, getText(_x >> 'picture')];
 			}forEach _shipVehicles;
 		};
 		if (_this == 64) then {
 			_weapons = ""
-					getText(_x >> 'displayName') != '' &&
-					getText(_x >> 'picture') != '' &&
-					getNumber(_x >> 'scope') in [0,2] &&
-					getNumber(_x >> 'type') in [1,2,4]
+				getText(_x >> 'displayName') != '' &&
+				getText(_x >> 'picture') != '' &&
+				getNumber(_x >> 'scope') in [1,2] &&
+				getNumber(_x >> 'type') in [1,2,4] &&
+				isClass(_cfgPricing >> configName _x)
 			""configClasses (configFile >> 'CfgWeapons');
 			{
-				_config = 'CfgPricing' call EPOCH_returnConfig;
-				if (isClass(_config >> configName _x)) then{
-					_index = _ctrl lbAdd format['%1', getText(_x >> 'displayName')];
-					_type = getNumber(_x >> 'type') - 1;
-					if (getNumber(_x >> 'type') == 4) then { _type = 2 };
-					_ctrl lbSetData[_index, str[configName _x, _type, _type + 3]];
-					_ctrl lbSetPicture[_index, getText(_x >> 'picture')];
-				};
+				_index = _ctrl lbAdd format['%1', getText(_x >> 'displayName')];
+				_type = getNumber(_x >> 'type') - 1;
+				if (getNumber(_x >> 'type') == 4) then { _type = 2 };
+				_ctrl lbSetData[_index, str[configName _x, _type, _type + 3]];
+				_ctrl lbSetPicture[_index, getText(_x >> 'picture')];
 			}forEach _weapons;
 		};
 		if (_this == 65) then {
 			_magazines = ""
-					getText(_x >> 'displayName') != '' &&
-					getText(_x >> 'picture') != '' &&
-					getNumber(_x >> 'scope') in [0,2] &&
-					getText(_x >> 'ammo') != ''
+				getText(_x >> 'displayName') != '' &&
+				getText(_x >> 'picture') != '' &&
+				getNumber(_x >> 'scope') in [1,2] &&
+				getText(_x >> 'ammo') != '' &&
+				isClass(_cfgPricing >> configName _x)
 			""configClasses (configFile >> 'CfgMagazines');
 			{
-				_config = 'CfgPricing' call EPOCH_returnConfig;
-				if (isClass(_config >> configName _x)) then{
-					_index = _ctrl lbAdd format['%1', getText(_x >> 'displayName')];
-					_ctrl lbSetData[_index, str[configName _x, -1, 6]];
-					_ctrl lbSetPicture[_index, getText(_x >> 'picture')];
-				};
+				_index = _ctrl lbAdd format['%1', getText(_x >> 'displayName')];
+				_ctrl lbSetData[_index, str[configName _x, -1, 6]];
+				_ctrl lbSetPicture[_index, getText(_x >> 'picture')];
 			}forEach _magazines;
 		};
 		if (_this == 66) then {
 			_magazines = ""
-			getText(_x >> 'displayName') != '' &&
-			getText(_x >> 'picture') != '' &&
-			getNumber(_x >> 'scope') in[0, 2] &&
-			getText(_x >> 'ammo') == ''
+				getText(_x >> 'displayName') != '' &&
+				getText(_x >> 'picture') != '' &&
+				getNumber(_x >> 'scope') in [1,2] &&
+				getText(_x >> 'ammo') == '' &&
+				isClass(_cfgPricing >> configName _x)
 			""configClasses(configFile >> 'CfgMagazines');
 			{
-				_config = 'CfgPricing' call EPOCH_returnConfig;
-				if (isClass(_config >> configName _x)) then{
-					_index = _ctrl lbAdd format['%1', getText(_x >> 'displayName')];
-					_ctrl lbSetData[_index, str[configName _x, -1, 7]];
-					_ctrl lbSetPicture[_index, getText(_x >> 'picture')];
-				};
+				_index = _ctrl lbAdd format['%1', getText(_x >> 'displayName')];
+				_ctrl lbSetData[_index, str[configName _x, -1, 7]];
+				_ctrl lbSetPicture[_index, getText(_x >> 'picture')];
 			}forEach _magazines;
 		};
 		if (_this == 67) then {
-
-			_backpack = ""getText(_x >> 'displayName') != '' && getText(_x >> 'picture') != '' &&  getNumber(_x >> 'isbackpack') == 1""configClasses(configFile >> 'CfgVehicles');
+			_backpack = ""
+				getText(_x >> 'displayName') != '' &&
+				getText(_x >> 'picture') != '' &&
+				getNumber(_x >> 'isbackpack') == 1 &&
+				isClass(_cfgPricing >> configName _x)
+			""configClasses(configFile >> 'CfgVehicles');
 			{
-				_config = 'CfgPricing' call EPOCH_returnConfig;
-				if (isClass(_config >> configName _x)) then{
-					_index = _ctrl lbAdd format['%1', getText(_x >> 'displayName')];
-					_ctrl lbSetData[_index, str[configName _x, 3, 8]];
-					_ctrl lbSetPicture[_index, getText(_x >> 'picture')];
-				};
+				_index = _ctrl lbAdd format['%1', getText(_x >> 'displayName')];
+				_ctrl lbSetData[_index, str[configName _x, 3, 8]];
+				_ctrl lbSetPicture[_index, getText(_x >> 'picture')];
 			}forEach _backpack;
 		};
 		if (_this == 68) then {
-			_uniforms = ['U_O_FullGhillie_lsh',
-				'U_O_FullGhillie_sard',
-				'U_O_FullGhillie_ard',
-				'U_O_CombatUniform_ocamo',
-				'U_O_GhillieSuit',
-				'U_O_PilotCoveralls',
-				'U_O_Wetsuit',
-				'U_OG_Guerilla1_1',
-				'U_OG_Guerilla2_1',
-				'U_OG_Guerilla2_2',
-				'U_OG_Guerilla2_3',
-				'U_OG_Guerilla3_1',
-				'U_OG_Guerilla3_2',
-				'U_OG_leader',
-				'U_C_Poloshirt_stripped',
-				'U_C_Poloshirt_blue',
-				'U_C_Poloshirt_burgundy',
-				'U_C_Poloshirt_tricolour',
-				'U_C_Poloshirt_salmon',
-				'U_C_Poloshirt_redwhite',
-				'U_C_Poor_1',
-				'U_C_WorkerCoveralls',
-				'U_C_Journalist',
-				'U_C_Scientist',
-				'U_OrestesBody',
-				'U_Wetsuit_uniform',
-				'U_Wetsuit_White',
-				'U_Wetsuit_Blue',
-				'U_Wetsuit_Purp',
-				'U_Wetsuit_Camo',
-				'U_CamoRed_uniform',
-                'U_CamoAloha_uniform',
-                'U_CamoBiker_uniform',
-                'U_CamoBubblegum_uniform',
-                'U_CamoLumberjack_uniform',
-                'U_CamoOutback_uniform',
-                'U_CamoPink_uniform',
-                'U_CamoPinkPolka_uniform',
-				'U_CamoBrn_uniform',
-				'U_CamoBlue_uniform',
-				'U_Camo_uniform',
-				'U_ghillie1_uniform',
-				'U_ghillie2_uniform',
-				'U_ghillie3_uniform',
-				'U_C_Driver_1',
-				'U_C_Driver_2',
-				'U_C_Driver_3',
-				'U_C_Driver_4',
-				'U_C_Driver_1_black',
-				'U_C_Driver_1_blue',
-				'U_C_Driver_1_green',
-				'U_C_Driver_1_red',
-				'U_C_Driver_1_white',
-				'U_C_Driver_1_yellow',
-				'U_C_Driver_1_orange',
-				'U_C_Driver_1_red'];
-
+			_uniforms = ""
+				getText(_x >> 'displayName') != '' &&
+				getText(_x >> 'picture') != '' &&
+				getNumber(_x >> 'scope') in [1,2] &&
+				getNumber(_x >> 'ItemInfo' >> 'type') in [801] &&
+				isClass(_cfgPricing >> configName _x)
+			""configClasses(configFile >> 'CfgWeapons');
 			{
-				_index = _ctrl lbAdd format['%1', getText(configFile >> 'CfgWeapons' >> _x >> 'displayName')];
-				_ctrl lbSetData[_index, str[_x, -1, 9]];
-				_ctrl lbSetPicture[_index, getText(configFile >> 'CfgWeapons' >> _x >> 'picture')];
+				_index = _ctrl lbAdd format['%1', getText(_x >> 'displayName')];
+				_ctrl lbSetData[_index, str[configName _x, -1, 9]];
+				_ctrl lbSetPicture[_index, getText(_x >> 'picture')];
 			}forEach _uniforms;
 		};
 		if (_this == 69) then {
-			_optics = ['optic_Arco', 'optic_Hamr', 'optic_Aco', 'optic_ACO_grn', 'optic_Aco_smg', 'optic_ACO_grn_smg', 'optic_Holosight', 'optic_Holosight_smg', 'optic_SOS', 'optic_MRCO', 'optic_DMS', 'optic_Yorris', 'optic_MRD', 'optic_LRPS', 'optic_NVS', 'optic_tws', 'optic_tws_mg'];
-			_muzzles = ['muzzle_snds_H','muzzle_snds_L','muzzle_snds_M','muzzle_snds_B','muzzle_snds_H_MG','muzzle_snds_acp','Heal_EPOCH','Defib_EPOCH','Repair_EPOCH','acc_flashlight','acc_pointer_IR'];
-			_misc = ['Binocular','NVG_EPOCH','ItemCompass','ItemGPS','ItemGeigerCounter_EPOCH','ItemMap','EpochRadio0','EpochRadio1','EpochRadio2','EpochRadio3','EpochRadio4','EpochRadio5','EpochRadio6','EpochRadio7','EpochRadio8','EpochRadio9','ItemWatch'];
-			_attachments = _optics + _muzzles + _misc;
+			_attachments = ""
+				getText(_x >> 'displayName') != '' &&
+				getText(_x >> 'picture') != '' &&
+				getNumber(_x >> 'scope') in [1,2] &&
+				((configName _x) call BIS_fnc_itemType) select 0 in ['Item'] &&
+				isClass(_cfgPricing >> configName _x)
+			""configClasses(configFile >> 'CfgWeapons');
 			{
-				_config = 'CfgPricing' call EPOCH_returnConfig;
-				if (isClass(_config >> _x)) then{
-					_index = _ctrl lbAdd format['%1', getText(configFile >> 'CfgWeapons' >> _x >> 'displayName')];
-					_ctrl lbSetData[_index, str[_x, -1, 9]];
-					_ctrl lbSetPicture[_index, getText(configFile >> 'CfgWeapons' >> _x >> 'picture')];
-				};
+				_index = _ctrl lbAdd format['%1', getText(_x >> 'displayName')];
+				_ctrl lbSetData[_index, str[configName _x, -1, 9]];
+				_ctrl lbSetPicture[_index, getText(_x >> 'picture')];
 			}forEach _attachments;
 		};
 		if (_this == 70) then {
-			_headgear = ['wolf_mask_epoch','pkin_mask_epoch','clown_mask_epoch','hockey_mask_epoch','plague_mask_epoch','ghostface_mask_epoch','skull_mask_epoch','witch_mask_epoch','radiation_mask_epoch'];
-			for '_h' from 1 to 104 do
+			_headgear = ""
+				getText(_x >> 'displayName') != '' &&
+				getText(_x >> 'picture') != '' &&
+				getNumber(_x >> 'scope') in [1,2] &&
+				((configName _x) call BIS_fnc_itemType) select 1 in ['Headgear'] &&
+				isClass(_cfgPricing >> configName _x)
+			""configClasses(configFile >> 'CfgWeapons');
 			{
-				_headgear pushBack format['H_%1_EPOCH',_h];
-			};
-			{
-				_index = _ctrl lbAdd format['%1', getText(configFile >> 'cfgWeapons' >> _x >> 'displayName')];
-				_ctrl lbSetData[_index, str[_x, -1, 9]];
-				_ctrl lbSetPicture[_index, getText(configFile >> 'cfgWeapons' >> _x >> 'picture')];
+				_index = _ctrl lbAdd format['%1', getText(_x >> 'displayName')];
+				_ctrl lbSetData[_index, str[configName _x, -1, 9]];
+				_ctrl lbSetPicture[_index, getText(_x >> 'picture')];
 			}forEach _headgear;
 		};
 		if (_this == 71) then {
-			_vests = [];
-			for '_v' from 1 to 40 do
+			_vests = ""
+				getText(_x >> 'displayName') != '' &&
+				getText(_x >> 'picture') != '' &&
+				getNumber(_x >> 'scope') in [1,2] &&
+				((configName _x) call BIS_fnc_itemType) select 1 in ['Vest'] &&
+				isClass(_cfgPricing >> configName _x)
+			""configClasses(configFile >> 'CfgWeapons');
 			{
-				_vests pushBack format['V_%1_EPOCH', _v];
-			};
-			{
-				_index = _ctrl lbAdd format['%1', getText(configFile >> 'cfgWeapons' >> _x >> 'displayName')];
-				_ctrl lbSetData[_index, str[_x, -1, 9]];
-				_ctrl lbSetPicture[_index, getText(configFile >> 'cfgWeapons' >> _x >> 'picture')];
+				_index = _ctrl lbAdd format['%1', getText(_x >> 'displayName')];
+				_ctrl lbSetData[_index, str[configName _x, -1, 9]];
+				_ctrl lbSetPicture[_index, getText(_x >> 'picture')];
 			}forEach _vests;
 		};
 	};
