@@ -94,7 +94,7 @@ if(isNil {Epoch_markerCounter})then{Epoch_markerCounter = 0};
 		_mName setMarkerColorLocal _mColor
 	};
 		
-	if(_mName isEqualTo (format["marker_%1", Epoch_markerCounter]))then{
+	if(_mName isEqualTo (format["EPOCH_marker_%1", Epoch_markerCounter]))then{
 		Epoch_markerCounter = Epoch_markerCounter + 1;
 	};
 }forEach _markerArray;
