@@ -28,7 +28,7 @@
 */
 private["_config", "_markerArray", "_markerName", "_ccText"];
 
-params [ ["_mClass",""], ["_mPos",[0,0,0]], ["_data",[]] ];
+params [ ["_mClass",""], ["_mPos",[0,0,0]], ["_OverrideTxt",""] ];
 if(_mClass isEqualTo "") exitWith {
 	diag_log "EPOCHDebug: createLocalMarkerSet -1- empty markerClass, nothing to create";
 };
@@ -83,12 +83,18 @@ if(isNil {Epoch_markerCounter})then{Epoch_markerCounter = 0};
 	_mName setMarkerSizeLocal _mSize;
 	_mName setMarkerDirLocal _mDir;
 	
-	if(_mText isEqualTo "playerName")then{
-		_mText = str(name player);
+	if (!(_OverrideTxt isequalto "") && _OverrideTxt isequaltype "") then {
+		_mName setMarkerText _OverrideTxt;
+	}
+	else {
+		if(_mText isEqualTo "playerName")then{
+			_mText = str(name player);
+		};
+		if!(_mText isEqualTo "")then{
+			_ccText = call compile _mText;
+			_mName setMarkerText _ccText;
+		};
 	};
-	
-	_ccText = call compile _mText;
-	_mName setMarkerTextLocal _ccText;
 	
 	if!(_mColor isEqualTo "")then{
 		_mName setMarkerColorLocal _mColor

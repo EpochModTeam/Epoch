@@ -225,28 +225,15 @@ _config = 'CfgServicePoint' call EPOCH_returnConfig;
 _servicepoints = getArray (_config >> worldname >> 'ServicePoints');
 {
 	_pos = _x;
-	_markertype = "mil_dot";
-	_markercolor = "ColorBlack";
 	_markertxt = "Service Point";
 	if (count _x > 3) then {
 		_pos = _x select 0;
 		if ((_x select 3) isequaltype "") then {
-			_markertype = _x select 3;
-		};
-		if (count _x > 4) then {
-			if ((_x select 4) isequaltype "") then {
-				_markercolor = _x select 4;
-			};
-		};
-		if (count _x > 5) then {
-			if ((_x select 5) isequaltype "") then {
-				_markertxt = _x select 5;
-			};
+			_markertxt = _x select 3;
 		};
 	};
-	if !(_markertype isequalto "") then {
-		//_marker = createMarker [('ServicePointMarker'+(str _foreachindex)), _pos];
-		_markers = ["ServicePoint", _pos] call EPOCH_server_createGlobalMarkerSet;
+	if !(_markertxt isequalto "") then {
+		_markers = ["ServicePoint", _pos,_markertxt] call EPOCH_server_createGlobalMarkerSet;
 		if !(surfaceiswater _pos) then {
 			"Land_HelipadCircle_F" createvehicle _pos;
 		};

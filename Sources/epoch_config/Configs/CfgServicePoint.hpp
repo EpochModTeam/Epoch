@@ -9,26 +9,20 @@ class CfgServicePoint {
 									pos1,
 									dist1,
 									{VehType_1,VehType_1,...},
-									"Markertype1",
-									"MarkerColor1",
 									"MarkerText1"
 								},
 								{
 									pos2,
 									dist2,
 									{VehType,VehType,...},
-									"Markertype2",
-									"MarkerColor2",
 									"MarkerText2"
 								}
 */
 								{								// Central
 									{13325,14477,0},						// Pos
 									40,										// max distance
-									{"Landvehicle","Ship","Tank","AIR"},			// Vehicle Types for SP
-									"loc_BusStop",							// Marker Type
-									"ColorWhite",							// Marker Color
-									"Service Point Land / Ship / Air"				// Marker Text
+									{"Landvehicle","Ship","Tank","AIR"},	// Vehicle Types for SP
+									"Service Point Land / Ship / Air"		// Marker Text (Leave it Blank to disable Marker)
 								}
 							};
 	};

@@ -28,7 +28,7 @@
 */
 private["_config", "_markerArray", "_ccText"];
 
-params [ ["_mClass",""], ["_mPos",[0,0,0]], ["_data",[]] ];
+params [ ["_mClass",""], ["_mPos",[0,0,0]], ["_OverrideTxt",""] ];
 if(_mClass isEqualTo "") exitWith {
 	diag_log "EPOCHDebug: createGlobalMarkerSet -1- empty markerClass, nothing to create";
 };
@@ -76,9 +76,14 @@ _return = [];
 	_mName setMarkerSize _mSize;
 	_mName setMarkerDir _mDir;
 	
-	if!(_mText isEqualTo "")then{
-		_ccText = call compile _mText;
-		_mName setMarkerText _ccText;
+	if (!(_OverrideTxt isequalto "") && _OverrideTxt isequaltype "") then {
+		_mName setMarkerText _OverrideTxt;
+	}
+	else {
+		if!(_mText isEqualTo "")then{
+			_ccText = call compile _mText;
+			_mName setMarkerText _ccText;
+		};
 	};
 	
 	if!(_mColor isEqualTo "")then{
