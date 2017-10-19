@@ -15,11 +15,12 @@ class CfgBuildingLootPos
         toolRackPos[] = {};
         shoeboxPos[] = {};
 		toiletPos[] = {};
+		kitchenSinkPos[] = {};
         lootBias = 40;
         limit = 3;
         lootType = "normal";
-        normal[] = {{"shelfPos","Shelf_EPOCH",true},{"fridgePos","Fridge_EPOCH",true},{"bedPos","Bed_EPOCH",false},{"couchPos","Couch_EPOCH",false},{"wardrobePos","wardrobe_epoch",false},{"cookerPos","cooker_epoch",false},{"chairPos",{"Chair_EPOCH","ChairRed_EPOCH"},true},{"filingPos","Filing_epoch",true},{"pelicanPos","Pelican_EPOCH",false},{"tablePos","Table_EPOCH",false},{"lockerPos","Locker_EPOCH",false},{"toolRackPos","ToolRack_EPOCH",false},{"shoeboxPos","Shoebox_EPOCH",false},{"palletPos","Tarp_EPOCH",false},{"freezerPos","Freezer_EPOCH",false},{"cabinetPos","Cabinet_EPOCH",false},{"toiletPos","toilet_epoch",false}};
-        mil[] = {{"shelfPos","Shelf_EPOCH",true},{"fridgePos","Fridge_EPOCH",true},{"bedPos","Bunk_EPOCH",false},{"couchPos","Couch_EPOCH",false},{"wardrobePos","wardrobe_epoch",false},{"cookerPos","cooker_epoch",false},{"chairPos",{"Chair_EPOCH","ChairRed_EPOCH"},true},{"filingPos","Filing_epoch",true},{"pelicanPos","Pelican_EPOCH",false},{"tablePos","Table_EPOCH",false},{"lockerPos","Locker_EPOCH",false},{"toolRackPos","ToolRack_EPOCH",false},{"shoeboxPos","Shoebox_EPOCH",false},{"palletPos","Tarp_EPOCH",false},{"freezerPos","Freezer_EPOCH",false},{"cabinetPos","Cabinet_EPOCH",false},{"toiletPos","toilet_epoch",false}};
+        normal[] = {{"shelfPos","Shelf_EPOCH",true},{"fridgePos","Fridge_EPOCH",true},{"bedPos","Bed_EPOCH",false},{"couchPos","Couch_EPOCH",false},{"wardrobePos","wardrobe_epoch",false},{"cookerPos","cooker_epoch",false},{"chairPos",{"Chair_EPOCH","ChairRed_EPOCH"},true},{"filingPos","Filing_epoch",true},{"pelicanPos","Pelican_EPOCH",false},{"tablePos","Table_EPOCH",false},{"lockerPos","Locker_EPOCH",false},{"toolRackPos","ToolRack_EPOCH",false},{"shoeboxPos","Shoebox_EPOCH",false},{"palletPos","Tarp_EPOCH",false},{"freezerPos","Freezer_EPOCH",false},{"cabinetPos","Cabinet_EPOCH",false},{"toiletPos","toilet_epoch",false},{"kitchenSinkPos","KitchenSink_epoch",false}};
+        mil[] = {{"shelfPos","Shelf_EPOCH",true},{"fridgePos","Fridge_EPOCH",true},{"bedPos","Bunk_EPOCH",false},{"couchPos","Couch_EPOCH",false},{"wardrobePos","wardrobe_epoch",false},{"cookerPos","cooker_epoch",false},{"chairPos",{"Chair_EPOCH","ChairRed_EPOCH"},true},{"filingPos","Filing_epoch",true},{"pelicanPos","Pelican_EPOCH",false},{"tablePos","Table_EPOCH",false},{"lockerPos","Locker_EPOCH",false},{"toolRackPos","ToolRack_EPOCH",false},{"shoeboxPos","Shoebox_EPOCH",false},{"palletPos","Tarp_EPOCH",false},{"freezerPos","Freezer_EPOCH",false},{"cabinetPos","Cabinet_EPOCH",false},{"toiletPos","toilet_epoch",false},{"kitchenSinkPos","KitchenSink_epoch",false}};
     };
     class Land_Kiosk_redburger_F : Default
     {
@@ -677,7 +678,7 @@ class CfgBuildingLootPos
         shoeboxPos[] = {{{-5.70313,-4.57422,-5.49586},271.096}};
         palletPos[] = {{{-4.17969,-5.43848,-5.50872},238}};
     };
-    class Land_Church_01_V2_F : Land_Church_01_V1_F {};	
+    class Land_Church_01_V2_F : Land_Church_01_V1_F {};
     class Land_Castle_01_tower_F : Default
     {
         shelfPos[] = {{{2.58398,2.0791,-9.50637},85.6591}};
@@ -4848,34 +4849,34 @@ class CfgBuildingLootPos
         freezerPos[] = {{{-5.04785,1.56201,-1.60012},90}};
         cabinetPos[] = {{{-8.79102,-1.59473,-0.300119},0}};
     };
-    class Land_i_House_Small_03_V1_dam_F : Default 
+    class Land_i_House_Small_03_V1_dam_F : Default
 	{
       tablePos[] =   {{{3.97192,-5.14429,-0.399977},184.648}};
       shoeboxPos[] = {{{1.03833,1.97803,-0.399977},359.648}};
       KitchenSinkPos[] = {{{-4.81128,2.74316,-0.399977},269.648}};
       toiletPos[] =  {{{1.43848,5.02466,-0.399977},359.648}};
     };
-    class Land_u_House_Small_02_V1_dam_F : Default 
+    class Land_u_House_Small_02_V1_dam_F : Default
 	{
       chairPos[] = {{{2.06104,-0.303467,-1.07093},273.648}};
       tablePos[] = {{{6.60864,-2.21667,-1.07093},179.648}};
     };
-    class Land_i_House_Small_02_V3_dam_F : Default 
+    class Land_i_House_Small_02_V3_dam_F : Default
 	{
       couchPos[] = {{{6.16943,-1.03198,-0.925534},4.99999}};
     };
-    class Land_i_House_Small_02_V2_dam_F : Default 
+    class Land_i_House_Small_02_V2_dam_F : Default
 	{
       bedPos[] = {{{6.95679,-0.921143,-0.999897},358}};
       toolRackPos[] = {{{0.935547,0.244019,-1.04277},88}};
     };
-    class Land_i_House_Small_02_V1_dam_F : Default 
+    class Land_i_House_Small_02_V1_dam_F : Default
 	{
       shoeboxPos[] = {{{2.6355,-2.07544,-0.927456},88}};
       freezerPos[] = {{{7.27197,-1.90771,-0.927456},88}};
       KitchenSinkPos[] = {{{7.29883,1.40063,-0.927456},90}};
     };
-    class Land_i_Barracks_V1_dam_F : Default 
+    class Land_i_Barracks_V1_dam_F : Default
 	{
       shelfPos[] = {{{-13.2607,1.86938,3.88759},264}};
       chairPos[] = {{{7.35889,-3.00977,0.487596},88},{{-7.59131,3.71997,0.487596},88}};
@@ -4886,7 +4887,7 @@ class CfgBuildingLootPos
     };
     class Land_i_Barracks_V2_dam_F : Land_i_Barracks_V1_dam_F{};
 
-    class Land_TentHangar_V1_F : Default 
+    class Land_TentHangar_V1_F : Default
 	{
       couchPos[] = { {{8.67236,-3.95703,-4.10237},356}};
       lockerPos[] = { {{-9.604,1.47412,-4.10237},264}};
@@ -4894,18 +4895,18 @@ class CfgBuildingLootPos
     };
     class Land_TentHangar_V1_dam_F : Land_TentHangar_V1_F {};
 
-    class Land_Dome_Big_F : Default 
+    class Land_Dome_Big_F : Default
 	{
       chairPos[] = {{{16.2844,15.4109,-10.1997},356},{{-13.9492,-19.0752,-10.1997},216}};
       pelicanPos[] = {{{21.5835,-2.73999,-10.1997},356}};
       palletPos[] = {{{-5.73926,-1.4939,-10.1997},356},{{3.42236,10.5425,-10.1997},356},{{-8.70752,20.2468,-10.1997},356}};
     };
-    class Land_Dome_Small_F : Default 
+    class Land_Dome_Small_F : Default
 	{
       chairPos[] = {{{2.98877,12.7253,-6.98321},329},{{-4.11328,-12.5012,-6.98321},216}};
       palletPos[] = {{{-1.65088,1.33276,-6.98321},329},{{10.731,-0.450806,-6.94824},329}};
     };
-    class Land_GH_MainBuilding_entry_F : Default 
+    class Land_GH_MainBuilding_entry_F : Default
 	{
       palletPos[] = {{{-2.0636,-18.1663,-0.128474},329}};
     };
@@ -4927,8 +4928,8 @@ class CfgBuildingLootPos
     class Land_i_House_Small_01_V2_dam_F : Land_i_House_Small_01_V1_F {};
     class Land_i_House_Small_01_V3_dam_F : Land_i_House_Small_01_V1_F {};
     class Land_u_House_Small_01_V1_dam_F : Land_i_House_Small_01_V1_F {};
-	
-	
+
+
 	class bunker_epoch : Default {
 	    shelfPos[] = {
 	        { {-6.09766,-2.83032,0.188561}, 269 }
@@ -4964,7 +4965,7 @@ class CfgBuildingLootPos
 	        { {-5.7334,5.8186,0.188561}, 355.754 }
 	    };
 	};
-	class bunker_epoch_01 : Default 
+	class bunker_epoch_01 : Default
 	{
         bedPos[] =      {{{-5.6062,-4.66162,0.198561},0}};
         wardrobePos[] = {{{-4.96973,-1.5188,0.198561},0}};
@@ -4975,30 +4976,30 @@ class CfgBuildingLootPos
         lockerPos[] =   {{{-2.90576,-5.85986,0.198561},180}};
         toolRackPos[] = {{{-0.807129,0.849365,0.198561},0.999984}};
     };
-    class bunker_epoch_02 : Default 
+    class bunker_epoch_02 : Default
 	{
         filingPos[] =  {{{-4.68335,6.02905,0.198561}, 0 }};
         pelicanPos[] = {{{3.39038,4.75586,0.998561},106},{{3.44043,-5.27368,1.09856},187}};
         tablePos[] =   {{{-5.69214,-5.26318,0.198561},270}};
         shoeboxPos[] = {{{-0.34082,-0.652588,0.198561},0}};
     };
-    class bunker_epoch_03 : Default 
+    class bunker_epoch_03 : Default
     {
         palletPos[] =  {{{5.12939,-4.6543,0.198561},280},{{-5.00098,4.79419,0.198561},280},{{-4.95093,-4.89502,0.198561},280},{{4.92627,5.02051,0.198561},280}};
         freezerPos[] = {{{0.429932,-0.184326,0.198561},280}};
 	};
-    class bunker_epoch_04 : Default 
+    class bunker_epoch_04 : Default
 	{
         shelfPos[] =    {{{5.03784,6.09985,0.198561},358}};
         couchPos[] =    {{{5.24194,-4.54272,0.198561},358}};
         toolRackPos[] = {{{-6.33521,-2.39136,0.198561},269}};
         palletPos[] =   {{{-4.91284,5.15063,0.198561},358}};
     };
-    class bunker_epoch_05 : Default 
+    class bunker_epoch_05 : Default
 	{
         toolRackPos[] = {{{-6.34375,-4.08228,0.198561},269 },{{4.22607,6.44775,0.198561},358}};
     };
-    class bunker_epoch_06 : Default 
+    class bunker_epoch_06 : Default
 	{
         bedPos[] =     {{{0.781494,-0.343262,0.398561},357}};
         couchPos[] =   {{{4.94385,-4.66699,0.398561},0.999985}};
@@ -5006,7 +5007,7 @@ class CfgBuildingLootPos
         palletPos[] =  {{{-4.90674,-4.79785,0.398561},0.999985}};
         freezerPos[] = {{{-4.82007,5.51099,0.398561},0.999985}};
     };
-    class bunker_epoch_07 : Default 
+    class bunker_epoch_07 : Default
 	{
         fridgePos[] =  {{{-5.98901,5.21826,0.198561},271}};
         couchPos[] =   {{{4.22314,4.99194,0.198561},271}};
@@ -5014,20 +5015,20 @@ class CfgBuildingLootPos
         tablePos[] =   {{{5.75464,-2.42407,0.198561},91}};
         lockerPos[] =  {{{3.51074,-5.99731,-0.00143862},181}};
     };
-    class bunker_epoch_08 : Default 
+    class bunker_epoch_08 : Default
 	{
         pelicanPos[] = {{{5.34814,-5.12524,0.0985613},157}};
         tablePos[] =   {{{5.72852,4.86255,0.0985613},90}};
         palletPos[] =  {{{-1.03052,-1.6283,0.0985613},90},{{-5.45703,5.45093,0.0985613},90}};
     };
-    class bunker_epoch_09 : Default 
+    class bunker_epoch_09 : Default
 	{
         filingPos[] =   {{{-0.427002,-3.22974,0.198561},270}};
         lockerPos[] =   {{{3.94238,3.28931,0.198561},0}};
         toolRackPos[] = {{{-4.68579,2.68604,0.198561},90}};
         cabinetPos[] =  {{{-2.53271,-5.63306,1.59856},0}};
     };
-    class bunker_epoch_10 : Default 
+    class bunker_epoch_10 : Default
     {
         filingPos[] =  {{{5.95313,-5.95898,0.198561},93}};
         pelicanPos[] = {{{1.65479,0.0246582,0.198561},93}};
@@ -5035,11 +5036,11 @@ class CfgBuildingLootPos
         palletPos[] =  {{{1.10596,2.43481,0.198561},360}};
         freezerPos[] = {{{2.24316,-2.00635,0.198561},90}};
     };
-    class bunker_epoch_11 : Default 
+    class bunker_epoch_11 : Default
 	{
         palletPos[] = {{{-0.422363,-0.419922,0.198561},90},{{1.23438,-3.04443,0.198561},90},{{2.97192,1.48828,0.198561},90},{{-1.42578,3.52393,0.198561},90},{{-4.94702,-1.37012,0.198561},90}};
     };
-    class bunker_epoch_12 : Default 
+    class bunker_epoch_12 : Default
 	{
         cookerPos[] = {{{-0.17749,3.62891,0.198561},0}};
         chairPos[] =  {{{-2.82349,3.24341,0.198561},319}};
@@ -5047,7 +5048,7 @@ class CfgBuildingLootPos
         lockerPos[] = {{{3.52197,0.408203,0.198561},90}};
         palletPos[] = {{{2.68945,-2.72729,0.198561},90}};
     };
-    class bunker_epoch_13 : Default 
+    class bunker_epoch_13 : Default
 	{
         wardrobePos[] = {{{-5.40405,3.79126,0.0153623},180}};
         cookerPos[] =   {{{3.54663,4.09839,0.215362},180}};
@@ -5055,14 +5056,14 @@ class CfgBuildingLootPos
         filingPos[] =   {{{-1.15649,3.83398,0.0153623},89}};
         pelicanPos[] =  {{{-3.9458,-3.77197,0.115362},53}};
     };
-    class bunker_epoch_14 : Default 
+    class bunker_epoch_14 : Default
 	{
         fridgePos[] = {{{3.50195,-3.10852,0.232163},93}};
         cookerPos[] = {{{5.59717,5.83398,0.232163},359}};
         filingPos[] = {{{-5.47656,2.58411,0.232163},359}};
         tablePos[] =  {{{-3.96191,-3.97363,0.232163},90}};
     };
-    class bunker_epoch_15 : Default 
+    class bunker_epoch_15 : Default
 	{
         fridgePos[] = {{{5.34229,-1.59033,0.198561},180}};
         chairPos[] = {{{2.95605,2.72632,0.198561},313}};
