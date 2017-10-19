@@ -84,7 +84,7 @@ if(isNil {Epoch_markerCounter})then{Epoch_markerCounter = 0};
 	_mName setMarkerDirLocal _mDir;
 	
 	if (!(_OverrideTxt isequalto "") && _OverrideTxt isequaltype "") then {
-		_mName setMarkerText _OverrideTxt;
+		_mName setMarkerTextlocal _OverrideTxt;
 	}
 	else {
 		if(_mText isEqualTo "playerName")then{
@@ -92,7 +92,7 @@ if(isNil {Epoch_markerCounter})then{Epoch_markerCounter = 0};
 		};
 		if!(_mText isEqualTo "")then{
 			_ccText = call compile _mText;
-			_mName setMarkerText _ccText;
+			_mName setMarkerTextlocal _ccText;
 		};
 	};
 	
