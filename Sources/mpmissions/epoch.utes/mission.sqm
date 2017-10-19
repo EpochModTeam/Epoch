@@ -22,7 +22,8 @@ binarizationWanted=0;
 addons[]=
 {
 	"A3_epoch_config",
-	"cup_utes_config"
+	"cup_utes_config",
+	"a3_characters_f"
 };
 randomSeed=12032465;
 class ScenarioData

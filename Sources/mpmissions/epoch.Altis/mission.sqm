@@ -22,7 +22,8 @@ binarizationWanted=0;
 addons[]=
 {
 	"A3_epoch_config",
-	"a3_map_altis"
+	"a3_map_altis",
+	"a3_characters_f"
 };
 randomSeed=12032465;
 class ScenarioData

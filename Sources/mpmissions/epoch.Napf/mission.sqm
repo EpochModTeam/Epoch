@@ -21,7 +21,8 @@ class EditorData
 binarizationWanted=0;
 addons[]=
 {
-	"a3_epoch_config"
+	"a3_epoch_config",
+	"a3_characters_f"
 };
 randomSeed=12032465;
 class ScenarioData
