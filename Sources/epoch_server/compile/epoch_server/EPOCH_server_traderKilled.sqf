@@ -17,8 +17,8 @@ private ["_markers","_objHiveKey","_slot","_playerCStats","_playerKarma","_playe
 //[[[end]]]
 params ["_trader","_player"];
 if (!isNull _trader) then {
-	_markers = _trader getVariable["MARKER_REF",""];
-	if (_markers != []) then {
+	_markers = _trader getVariable["MARKER_REF",[]];
+	if !(_markers isequalto []) then {
 		{
 			_x setMarkerColor "ColorRed";
 		}forEach _markers;
