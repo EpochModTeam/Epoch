@@ -376,57 +376,58 @@ if(_markerName in allMapMarkers)then{
 		}forEach _markerArray;
 	};
 };
-
-if(visibleMap)then{
-    _mapControl = (findDisplay 12) displayCtrl 51;
-    _mapScale = ctrlMapScale _mapControl;
-    _zoomMarkers = allMapMarkers;
-    if(isNil {EPOCH_lastMapScale})then{EPOCH_lastMapScale = 0};
-	for "_i" from 0 to ((count _zoomMarkers) - 1) do {
-	    _zoomMarker = _zoomMarkers select _i;
-		private "_markerString";
-		_markerString = toArray _zoomMarker;
-		_markerString resize 6;
-		if (toString _markerString == "EPOCH_") then {		
-			switch(true)do{
-				case ( (_mapScale >= 0.95) && (_mapScale <= 1) ): {
-					_zoomMarker setMarkerSizeLocal [0.666,0.666];
-					//_zoomMarker setMarkerAlphaLocal 0;
-				};
-				case ( (_mapScale >= 0.75) && (_mapScale < 0.95) ): {
-					_zoomMarker setMarkerSizeLocal [0.8,0.8];
-				};
-				case ( (_mapScale >= 0.55) && (_mapScale < 0.75) ): {
-					_zoomMarker setMarkerSizeLocal [0.9,0.9];
-				};
-				case ( (_mapScale >= 0.5) && (_mapScale < 0.55) ): {
-					_zoomMarker setMarkerSizeLocal [1.0,1.0];
-				};
-				case ( (_mapScale >= 0.45) && (_mapScale < 0.5) ): {
-					_zoomMarker setMarkerSizeLocal [1.1,1.1];
-				};
-				case ( (_mapScale >= 0.35) && (_mapScale < 0.45) ): {
-					_zoomMarker setMarkerSizeLocal [1.2,1.2];
-				};
-				case ( (_mapScale >= 0.25) && (_mapScale < 0.35) ): {
-					_zoomMarker setMarkerSizeLocal [1.3,1.3];
-				};
-				case ( (_mapScale >= 0.15) && (_mapScale < 0.25) ): {
-					_zoomMarker setMarkerSizeLocal [1.4,1.4];
-				};
-				case ( (_mapScale >= 0.1) && (_mapScale < 0.15) ): {
-					_zoomMarker setMarkerSizeLocal [1.5,1.5];
-				};
-				case ( (_mapScale >= 0.0666) && (_mapScale < 0.1) ): {
-					_zoomMarker setMarkerSizeLocal [1.6,1.6];
-				};
-				case ( (_mapScale >= 0) && (_mapScale < 0.0666) ): {
-					_zoomMarker setMarkerSizeLocal [1.7,1.7];
+if(getNumber(('CfgEpochClient' call EPOCH_returnConfig) >> 'mapOnZoomSetMarkerSize') isEqualTo 1)then{
+	if(visibleMap)then{
+		_mapControl = (findDisplay 12) displayCtrl 51;
+		_mapScale = ctrlMapScale _mapControl;
+		_zoomMarkers = allMapMarkers;
+		if(isNil {EPOCH_lastMapScale})then{EPOCH_lastMapScale = 0};
+		for "_i" from 0 to ((count _zoomMarkers) - 1) do {
+			_zoomMarker = _zoomMarkers select _i;
+			private "_markerString";
+			_markerString = toArray _zoomMarker;
+			_markerString resize 6;
+			if (toString _markerString == "EPOCH_") then {		
+				switch(true)do{
+					case ( (_mapScale >= 0.95) && (_mapScale <= 1) ): {
+						_zoomMarker setMarkerSizeLocal [0.666,0.666];
+						//_zoomMarker setMarkerAlphaLocal 0;
+					};
+					case ( (_mapScale >= 0.75) && (_mapScale < 0.95) ): {
+						_zoomMarker setMarkerSizeLocal [0.8,0.8];
+					};
+					case ( (_mapScale >= 0.55) && (_mapScale < 0.75) ): {
+						_zoomMarker setMarkerSizeLocal [0.9,0.9];
+					};
+					case ( (_mapScale >= 0.5) && (_mapScale < 0.55) ): {
+						_zoomMarker setMarkerSizeLocal [1.0,1.0];
+					};
+					case ( (_mapScale >= 0.45) && (_mapScale < 0.5) ): {
+						_zoomMarker setMarkerSizeLocal [1.1,1.1];
+					};
+					case ( (_mapScale >= 0.35) && (_mapScale < 0.45) ): {
+						_zoomMarker setMarkerSizeLocal [1.2,1.2];
+					};
+					case ( (_mapScale >= 0.25) && (_mapScale < 0.35) ): {
+						_zoomMarker setMarkerSizeLocal [1.3,1.3];
+					};
+					case ( (_mapScale >= 0.15) && (_mapScale < 0.25) ): {
+						_zoomMarker setMarkerSizeLocal [1.4,1.4];
+					};
+					case ( (_mapScale >= 0.1) && (_mapScale < 0.15) ): {
+						_zoomMarker setMarkerSizeLocal [1.5,1.5];
+					};
+					case ( (_mapScale >= 0.0666) && (_mapScale < 0.1) ): {
+						_zoomMarker setMarkerSizeLocal [1.6,1.6];
+					};
+					case ( (_mapScale >= 0) && (_mapScale < 0.0666) ): {
+						_zoomMarker setMarkerSizeLocal [1.7,1.7];
+					};
 				};
 			};
 		};
+		EPOCH_lastMapScale = _mapScale;
 	};
-	EPOCH_lastMapScale = _mapScale;
 };
 
 // force update
