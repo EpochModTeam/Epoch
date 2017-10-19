@@ -72,7 +72,7 @@ class CfgMarkerSets
         markerArray[] = {
             {"","ICON","EpochBG_Circle","ColorGrey",0.25,{0.85,0.85}}, 
             {"","ICON","EpochActive_Circle","ColorBlack",1,{0.85,0.85}}, 
-            {"","ICON","EpochService","ColorGrey",1,{0.9,0.9},0,"'Service Point'"}
+            {"","ICON","EpochService","ColorWhite",1,{0.9,0.9},0,"'Service Point'"}
         };
 	};
 	class Radiation {
