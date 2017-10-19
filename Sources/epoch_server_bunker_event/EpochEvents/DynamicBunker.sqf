@@ -22,11 +22,11 @@ if (worldName == "VR") then {
 
 	_instanceID = call EPOCH_fn_InstanceID;
 	// size
-	_maxRows = 100;
-	_maxColumns = 100;
+	_maxRows = 20;
+	_maxColumns = 20;
 
 	_rngChance = 0; // Lower this to spawn more positions
-	_scriptHiveKey = "EPOCH:DynamicBunker002"; // change this to force a new seed to be generated.
+	_scriptHiveKey = "EPOCH:DynamicBunker003"; // change this to force a new seed to be generated.
 
 	_bunkerLocationsKey = format ["%1:%2", _instanceID, worldname];
 	_response = [_scriptHiveKey, _bunkerLocationsKey] call EPOCH_fnc_server_hiveGETRANGE;
@@ -38,6 +38,20 @@ if (worldName == "VR") then {
 	// check for proper return and data type
 	if (_status == 1 && _data isEqualType [] && !(_data isEqualTo [])) then {
 		_bunkerLocations = _data;
+
+		// spawn cached bunkers
+		{
+			if (_x isEqualType [] && !(_x isEqualTo [])) then {
+				_x params ["_selectedBunker", "_posWorld", ["_memoryPointsStatus",[]] ];
+				_object = createSimpleObject [_selectedBunker, _posWorld];
+				if (isNull _firstBunker) then {_firstBunker = _object;};
+				{
+					_object animate [_x,(_memoryPointsStatus param [_forEachIndex,1]),true];
+				} forEach _memoryPoints;
+				_bunkerCounter = _bunkerCounter + 1;
+			};
+		} forEach _bunkerLocations;
+
 	} else {
 
 		// generate new bunker
@@ -77,6 +91,7 @@ if (worldName == "VR") then {
 			if (_rng > _rngChance) then {
 				_selectedBunker = selectRandomWeighted _valuesAndWeights;
 				_object = createSimpleObject [_selectedBunker, _location];
+				if (isNull _firstBunker) then {_firstBunker = _object;};
 				_allBunkers pushBack _object;
 				_newBunkerCounter = _newBunkerCounter + 1;
 			};
@@ -101,33 +116,21 @@ if (worldName == "VR") then {
 					_list = nearestObjects[_loc1, [], 1];
 					if !(_list isEqualTo []) then {
 						_score = _score + 1;
-						_animationStates pushBack 0
+						_animationStates pushBack 0;
+						_veh animate [_x,0];
 					} else {
-						_animationStates pushBack 1
+						_animationStates pushBack 1;
+						_veh animate [_x,1];
 					};
 				};
 			} forEach _memoryPoints;
 			_modelInfo = getModelInfo _veh;
 			_bunkerLocations pushBack [_modelInfo select 1, getPosWorld _veh, _animationStates, _score];
 		} forEach _allBunkers;
-		// remove temp bunkers, otherwise door ways do not seem to animate
-		{deleteVehicle _x} forEach _allBunkers;
+
 		// save to DB
 		[_scriptHiveKey, _bunkerLocationsKey, _expiresBunker, _bunkerLocations] call EPOCH_fnc_server_hiveSETEX;
 	};
-
-	// spawn final bunkers
-	{
-		if (_x isEqualType [] && !(_x isEqualTo [])) then {
-			_x params ["_selectedBunker", "_posWorld", ["_memoryPointsStatus",[]] ];
-			_object = createSimpleObject [_selectedBunker, _posWorld];
-			if (isNull _firstBunker) then {_firstBunker = _object;};
-			{
-				_object animate [_x,(_memoryPointsStatus param [_forEachIndex,1]),true];
-			} forEach _memoryPoints;
-			_bunkerCounter = _bunkerCounter + 1;
-		};
-	} forEach _bunkerLocations;
 
 	// move respawn point into first bunker.
 	if (!(isNull _firstBunker) && {_firstBunker distance _debugLocation > 1}) then {
