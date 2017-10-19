@@ -158,7 +158,7 @@ class CfgPricing
     };
     class ItemPlywoodPack
     {
-        price = 100;
+        price = 10;
     };
     class ItemComboLock
     {
@@ -1846,7 +1846,7 @@ class CfgPricing
     };
     class Kit_Garden
     {
-        price = 24;
+        price = 40;
     };
     class Poppy
     {
@@ -1930,19 +1930,19 @@ class CfgPricing
     };
     class ItemTrout
     {
-        price = 2;
+        price = 5;
     };
     class ItemTroutCooked
     {
-        price = 20;
+        price = 10;
     };
     class ItemSeaBass
     {
-        price = 5;
+        price = 6;
     };
     class ItemSeaBassCooked
     {
-        price = 50;
+        price = 12;
     };
     class ItemTuna
     {
@@ -1950,7 +1950,7 @@ class CfgPricing
     };
     class ItemTunaCooked
     {
-        price = 100;
+        price = 20;
     };
     class FoodWalkNSons
     {
@@ -1958,15 +1958,15 @@ class CfgPricing
     };
     class ItemPowderMilk
     {
-        price = 10;
+        price = 2;
     };
     class ItemRicebox
     {
-        price = 50;
+        price = 3;
     };
     class ItemCereals
     {
-        price = 50;
+        price = 3;
     };
     class ItemVitamins
     {
@@ -1974,23 +1974,23 @@ class CfgPricing
     };
     class krypto_candy_epoch
     {
-        price = 50;
+        price = 3;
     };
     class bluburger_epoch
     {
-        price = 35;
+        price = 3;
     };
     class redburger_epoch
     {
-        price = 35;
+        price = 3;
     };
     class gyro_wrap_epoch
     {
-        price = 40;
+        price = 3;
     };
     class icecream_epoch
     {
-        price = 20;
+        price = 2;
     };
     class ItemSodaOrangeSherbet
     {
@@ -2996,7 +2996,7 @@ class CfgPricing
     };
     class KitStudWall
     {
-        price = 10;
+        price = 16;
     };
 	class KitWoodQuarterFloor
 	{
@@ -3040,11 +3040,11 @@ class CfgPricing
     };
     class KitSpikeTrap
     {
-        price = 25;
+        price = 42;
     };
     class KitMetalTrap
     {
-        price = 25;
+        price = 46;
     };
     class KitTankTrap
     {
@@ -3052,11 +3052,11 @@ class CfgPricing
     };
     class KitHesco3
     {
-        price = 25;
+        price = 120;
     };
     class KitWoodLadder
     {
-        price = 10;
+        price = 16;
     };
     class KitFirePlace
     {
@@ -3064,47 +3064,47 @@ class CfgPricing
     };
     class KitTiPi
     {
-        price = 10;
+        price = 12;
     };
     class KitShelf
     {
-        price = 90;
+        price = 24;
     };
 	class KitTentA
 	{
-		price = 40;
+		price = 50;
 	};
 	class KitTentDome
 	{
-		price = 75;
+		price = 70;
 	};
     class KitWorkbench
     {
-        price = 10;
+        price = 8;
     };
     class KitBarbedWire
     {
-        price = 100;
+        price = 90;
     };
     class KitWoodFoundation
     {
-        price = 20;
+        price = 32;
     };
     class KitFoundation
     {
-        price = 90;
+        price = 80;
     };
     class KitPlotPole
     {
-        price = 300;
+        price = 250;
     };
     class KitSolarGen
     {
-        price = 200;
+        price = 325;
     };
     class KitCinderWall
     {
-        price = 140;
+        price = 80;
     };
     class ItemSolar
     {
