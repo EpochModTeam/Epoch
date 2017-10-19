@@ -7,6 +7,34 @@
 	Global Markers are mostly for server use
 	Use ['Name',position] call EPOCH_server_createGlobalMarkerSet;
 	
+	
+		Config setup and small explanation:
+	
+	{_markerName, _markerShape, _markerTypeOrBrush, _markerColor, _markerAlpha, _markerSize, _markerDir, _markerTextorCode},
+	
+	_markerName - setting this as "" will assume marker name as a counter starting with marker_0
+	
+	_markerShape - Selects the shape of the marker. Shape can be "ICON", "RECTANGLE" or "ELLIPSE".
+				 - if Shape is not ICON it will look for a Brush in the next variable
+	
+	_markerTypeOrBrush - (type) this can be any marker from CfgMarkers. ie "KIA" from arma 3 or "EpochSkull" in epoch community assets
+					 - (brush) https://community.bistudio.com/wiki/setMarkerBrushLocal for more info
+	
+	_markerColor(optional) - follows arma 3 colors. ie "ColorBlue", "ColorPink"
+	
+	_markerAlpha(optional) - alpha channel 0-1 value
+	
+	_markerSize(optional) -  [x,y] https://community.bistudio.com/wiki/setMarkerSize
+	
+	_markerDir(optional) - degrees
+	
+	_markerTextorCode(optional) - this is the text that will be displayed next to the marker
+	
+	
+		Marker sets:
+	
+	Active Marker sets include 1 Active shape, 1 Background(BG) shape and 1 Epoch marker or your marker of choice
+	for example the PlayerMarker below is 1 EpochActive_Hex, 1 EpochBG_Hex and the EpochGPS marker
 */
 class CfgMarkerSets
 {
