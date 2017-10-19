@@ -28,8 +28,9 @@
 	
 	_markerDir(optional) - degrees
 	
-	_markerTextorCode(optional) - this is the text that will be displayed next to the marker
-	
+	_markerTextOrCode(optional) - Text - place any text in here as: "'Service Point #1'"
+								- Code - place any code in here such as: "str(player name)"
+									   - for GPS coords use this: "format['%1/%2',(format[mapGridPosition player]) select  [0,3],(format[mapGridPosition player]) select  [3,3]]"
 	
 		Marker sets:
 	
