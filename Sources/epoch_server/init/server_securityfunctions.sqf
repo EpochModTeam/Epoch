@@ -1326,11 +1326,13 @@ _skn_admincode = compileFinal ("
 			if ("+_skn_tg_map_vehicle+") then {
 				_size = (1/ctrlMapScale _display) max 20;
 				{
-					if (alive _x) then {
-						_display drawIcon [
-							getText (configFile >> 'CfgVehicles' >> typeOf _x >> 'Icon'), _x call _getDmgColor, visiblePosition _x, _size, _size, getDir _x,
-							getText (configFile >> 'CfgVehicles' >> typeOf _x >> 'displayName')
-						];
+					if((_x isKindOf 'LandVehicle') || (_x isKindOf 'Ship') || (_x isKindOf 'Air') || (_x isKindOf 'Tank'))then{
+						if (alive _x) then {
+							_display drawIcon [
+								getText (configFile >> 'CfgVehicles' >> typeOf _x >> 'Icon'), _x call _getDmgColor, visiblePosition _x, _size, _size, getDir _x,
+								getText (configFile >> 'CfgVehicles' >> typeOf _x >> 'displayName')
+							];
+						};
 					};
 				}forEach vehicles;
 			};
