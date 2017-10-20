@@ -108,6 +108,10 @@ class CfgPricing
     {
         price = 10;
     };
+    class ItemVehDocRara
+    {
+        price = 25;
+    };
     class ItemBulb
     {
         price = 10;
