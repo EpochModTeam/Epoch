@@ -319,7 +319,7 @@ if (worldName == "VR") then {
 	} else {
 
 		// generate new bunker
-		_size = 13.081;
+		_size = 13.08;
 
 		_allBunkers = [];
 		_newBunkerCounter = 0;
