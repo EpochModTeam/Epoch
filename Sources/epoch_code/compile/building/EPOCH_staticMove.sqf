@@ -277,11 +277,13 @@ if (_class != "") then {
 								else {
 									_direction = 0;
 								};
+/*
 								if(_dirLock)then{
 									["Snap Direction LOCKED to 0 and 180", 5] call Epoch_message;
 									if(EPOCH_snapDirection isEqualTo 3)then{EPOCH_snapDirection = 0;};
 									if(EPOCH_snapDirection isEqualTo 1)then{EPOCH_snapDirection = 2;};
 								};
+*/
 								if (EPOCH_snapDirection > 0) then {
 									_direction = _direction + (EPOCH_snapDirection * 90);
 								};
