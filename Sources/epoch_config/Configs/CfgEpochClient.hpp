@@ -125,11 +125,11 @@ class CfgEpochClient
 		{{"Oxygen","getPlayerOxygenRemaining","",{},{1,0,2,2,1,0.55}},"topRight","x\addons\a3_epoch_code\Data\UI\oxygen_ca.paa"},
 		{"Hunger","topRight","x\addons\a3_epoch_code\Data\UI\hunger_ca.paa",{"forceBloodRise"}},
 		{"Thirst","topRight","x\addons\a3_epoch_code\Data\UI\thirst_ca.paa",{"forceBloodRise"}},
-		{"Temp","topRight",{"x\addons\a3_epoch_code\Data\UI\hot_ca.paa","x\addons\a3_epoch_code\Data\UI\cold_ca.paa"},{"forceFatigue"}},
-		{"Toxicity","topRight","x\addons\a3_epoch_code\Data\UI\hazzard_ca.paa"},
+		{"Temp","topRight",{"x\addons\a3_epoch_code\Data\UI\hot_ca.paa","x\addons\a3_epoch_code\Data\UI\cold_ca.paa"},{{"forceFatigue","forceBloodRise"},{"forceFatigue","forceBloodDrop"}}},
+		{"Toxicity","topRight","x\addons\a3_epoch_code\Data\UI\hazzard_ca.paa",{"forceBloodRise"}},
 		{"Alcohol","topRight","x\addons\a3_epoch_code\Data\UI\drunk_ca.paa"},
 		{"Soiled","topRight","x\addons\a3_epoch_code\Data\UI\soiled_ca.paa"},
-		{"Radiation","topRight","x\addons\a3_epoch_code\Data\UI\rads_ca.paa"},
+		{"Radiation","topRight","x\addons\a3_epoch_code\Data\UI\rads_ca.paa",{"forceBloodRise"}},
 		{{"HitPoints","getPlayerHitPointDamage","HitLegs"},"topRight","x\addons\a3_epoch_code\Data\UI\broken_ca.paa"}
 	};
 	defineCommunityStats[]  = {

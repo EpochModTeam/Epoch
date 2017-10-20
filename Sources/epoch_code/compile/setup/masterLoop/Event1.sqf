@@ -1,5 +1,6 @@
 // init
 _forceBloodRise = false;
+_forceBloodDrop = false;
 _forceFatigue = false;
 _allowBloodDrop = false;
 _forceStaminaDrop = false;
@@ -88,9 +89,13 @@ EPOCH_currentTargetMode = _currentTargetMode;
 			_curCtrl ctrlSetText _ctrlText;
 			_critical = (_criticalHigh || _criticalLow);
 			if (_critical) then {
+				if ((_criticalAttributes param [0,""]) isEqualType []) then {
+					_criticalAttributes = _criticalAttributes select _criticalLow;
+				};
 				_forceUpdate = "forceUpdate" in _criticalAttributes;
 				_forceFatigue = "forceFatigue" in _criticalAttributes;
 				_forceBloodRise = "forceBloodRise" in _criticalAttributes;
+				_forceBloodDrop = "forceBloodDrop" in _criticalAttributes;
 				[_curCtrl,0.55] call epoch_2DCtrlHeartbeat;
 			};
 			// todo make this reversable or even limited to a color range.
@@ -124,9 +129,9 @@ if (_forceFatigue) then {
 if (_forceBloodRise) then {
 	_playerBloodP = [_playerBloodPKey, 0.05, _playerBloodPMax , _playerBloodPMin] call EPOCH_fnc_setVariableLimited;
 } else {
-	if (_allowBloodDrop) then {
-		// allow player to bleed out
-		_lowerBPlimit = [100,0] select (isBleeding player);
+	if (_allowBloodDrop || _forceBloodDrop) then {
+		// allow player to bleed out or die from hypothermia
+		_lowerBPlimit = [100,0] select (isBleeding player || _forceBloodDrop);
 		_playerBloodP = [_playerBloodPKey, -1, _playerBloodPMax , _lowerBPlimit] call EPOCH_fnc_setVariableLimited;
 	};
 };
@@ -387,7 +392,7 @@ if(getNumber(('CfgEpochClient' call EPOCH_returnConfig) >> 'mapOnZoomSetMarkerSi
 			private "_markerString";
 			_markerString = toArray _zoomMarker;
 			_markerString resize 6;
-			if (toString _markerString == "EPOCH_") then {		
+			if (toString _markerString == "EPOCH_") then {
 				switch(true)do{
 					case ( (_mapScale >= 0.95) && (_mapScale <= 1) ): {
 						_zoomMarker setMarkerSizeLocal [0.666,0.666];
