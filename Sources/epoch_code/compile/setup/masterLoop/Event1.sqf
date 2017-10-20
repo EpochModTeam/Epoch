@@ -391,7 +391,6 @@ if(getNumber(('CfgEpochClient' call EPOCH_returnConfig) >> 'mapOnZoomSetMarkerSi
 		
 		if(isNil {EPOCH_lastMapScale})then{EPOCH_lastMapScale = 0};
 		
-		//if( (_mapScale != EPOCH_lastMapScale) && ((_mapScale >=0.15) && (_mapScale <=0.95)) )then{
 		if(_mapScale != EPOCH_lastMapScale)then{
 			EPOCH_lastMapScale = _mapScale;
 			for "_i" from 0 to ((count _mapMarkers) - 1) do {
@@ -401,12 +400,11 @@ if(getNumber(('CfgEpochClient' call EPOCH_returnConfig) >> 'mapOnZoomSetMarkerSi
 				_markerString resize 6;
 				if (toString _markerString == "EPOCH_") then {
 					_var = uiNamespace getVariable[_zoomMarker,[0.8,0.8]];					
-					_sizeX = (((_var select 0) / _mapScale) min 2.5) max 0.666;
-					_sizeY = (((_var select 1) / _mapScale) min 2.5) max 0.666;
+					_sizeX = (((_var select 0) / _mapScale) min 1.8) max 0.666;
+					_sizeY = (((_var select 1) / _mapScale) min 1.8) max 0.666;
 					_zoomMarker setMarkerSizeLocal [_sizeX,_sizeY];
 				};
 			};
-			// EPOCH_lastMapScale = _mapScale;
 		};
 	};
 };
