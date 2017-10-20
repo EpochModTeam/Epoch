@@ -326,7 +326,7 @@ if (worldName == "VR") then {
 		// Generate Seed
 		_seed = random 999999;
 		diag_log format["Generating bunker with seed: %1",_seed];
-		_location = _debugLocation;
+		_location = ATLToASL _debugLocation;
 		_originalLocation = +_location;
 		_valuesAndWeights = [
 			"bunker_epoch", 0.2, // empty bunker
@@ -354,8 +354,8 @@ if (worldName == "VR") then {
 			_rng = _seed random [_location select 0,_location select 1];
 			if (_rng > _rngChance) then {
 				_selectedBunker = selectRandomWeighted _valuesAndWeights;
-				// _object = createSimpleObject [_selectedBunker, _location];
-				_object = createVehicle [_selectedBunker, _location, [], 0, "CAN_COLLIDE"];
+				_object = createSimpleObject [_selectedBunker, _location];
+				//_object = createVehicle [_selectedBunker, _location, [], 0, "CAN_COLLIDE"];
 				if (isNull _firstBunker) then {_firstBunker = _object;};
 				_allBunkers pushBack _object;
 				_newBunkerCounter = _newBunkerCounter + 1;
