@@ -38,6 +38,7 @@ if (isClass _missionConfig) then{
 _customVarsInit = getArray(getMissionConfig "CfgEpochClient" >> "customVarsDefaults");
 _customVarNames = _customVarsInit apply {_x param [0,""]};
 
+// customHeader
 _randomValues = [];
 _header = "";
 {
