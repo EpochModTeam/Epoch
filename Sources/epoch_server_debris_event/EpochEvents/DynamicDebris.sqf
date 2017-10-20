@@ -11,6 +11,9 @@
 //[[[cog import generate_private_arrays ]]]
 private ["_allRoads","_allowDebris","_debris","_debrisCounter","_debrisLocations","_debrisLocationsKey","_debrisLocationsTMP","_debug","_disallowedLocations","_expiresDebris","_export","_instanceID","_intersections","_marker","_maxDebrisLimit","_nearbyLocations","_newDebrisCounter","_object","_offsetX","_offsetY","_position","_response","_rng","_rngChance","_scriptHiveKey","_seed","_selectedDebris","_upperPos","_worldSize"];
 //[[[end]]]
+// exit if already ran once.
+if (isNil "EPOCH_DynamicDebrisEnabled") exitWith {};
+EPOCH_DynamicDebrisEnabled = true;
 _debug = false;
 _expiresDebris = 604800;
 _debris = [
