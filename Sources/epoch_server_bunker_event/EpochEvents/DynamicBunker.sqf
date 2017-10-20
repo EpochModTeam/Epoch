@@ -26,7 +26,7 @@ if (worldName == "VR") then {
 	_maxColumns = 20;
 
 	_rngChance = 0; // Lower this to spawn more positions
-	_scriptHiveKey = "EPOCH:DynamicBunker003"; // change this to force a new seed to be generated.
+	_scriptHiveKey = "EPOCH:DynamicBunker004"; // change this to force a new seed to be generated.
 
 	_bunkerLocationsKey = format ["%1:%2", _instanceID, worldname];
 	_response = [_scriptHiveKey, _bunkerLocationsKey] call EPOCH_fnc_server_hiveGETRANGE;
@@ -62,7 +62,7 @@ if (worldName == "VR") then {
 		// Generate Seed
 		_seed = random 999999;
 		diag_log format["Generating bunker with seed: %1",_seed];
-		_location = ATLToASL _debugLocation;
+		_location = _debugLocation;
 		_originalLocation = +_location;
 		_valuesAndWeights = [
 			"bunker_epoch", 0.2, // empty bunker
