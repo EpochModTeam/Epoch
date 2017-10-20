@@ -140,8 +140,6 @@ if ((getFatigue player) >= 0.7 && _airTemp > 100) then {
 	_maxTemp = _airTemp;
 };
 
-
-
 // toxic fever and immunity increase
 _playerToxicity = missionNamespace getVariable [_playerToxicityKey, _playerToxicityDefault];
 // _playerImmunity = missionNamespace getVariable [_playerImmunityKey, _playerImmunityDefault];
@@ -202,11 +200,8 @@ _playerThirst = [_playerThirstKey,-_thirstlossRate,_playerThirstMax,_playerThirs
 _playerNuisance = [_playerNuisanceKey,-1,_playerNuisanceMax,_playerNuisanceMin] call EPOCH_fnc_setVariableLimited;
 
 // Radiation Handler
-if (_radsLevel == 0) then {
-	// only lower rads if player has taken medicine and it no longer in a radiation zone.
-	_playerRadiation = [_playerRadiationKey,-0.01,_playerRadiationMax,_playerRadiationMin] call EPOCH_fnc_setVariableLimited;
-} else {
-	// allow increase rads based on radiation levels and consumed rads
+if (_radsLevel > 0) then {
+	// increase rads based on radiation levels
 	_playerRadiation = [_playerRadiationKey,_radsLevel,_playerRadiationMax,_playerRadiationMin] call EPOCH_fnc_setVariableLimited;
 };
 
