@@ -852,6 +852,19 @@ class CfgLootTable_MAD
 				{ { "PartOre", "magazine" }, 25 }
 		};
 	};
+	class Satellite
+	{
+		items[] = {
+				{ { "MetalBars", "CfgLootTable" }, 5 },
+				{ { "CircuitParts", "magazine" }, 1 },
+				{ { "Gems", "CfgLootTable" }, 3 },
+				{ { "ItemScraps", "magazine" }, 1 },
+				{ { "ItemCorrugated", "magazine" }, 2 },
+				{ { "ItemSolar", "magazine" }, 1 },
+				{ { "ItemBattery", "magazine" }, 1 },
+				{ { "ItemCables", "magazine" }, 1 }
+		};
+	};
 	class Food
 	{
 		items[] = {

@@ -277,6 +277,13 @@ class CfgMainTable
 		LootMax = 10;
 		tables[] = { "SilverMine" };
 	};
+	class Land_Wreck_Satellite_EPOCH : Default
+	{
+		lootMin = 8;
+		LootMax = 14;
+		tables[] = { "Satellite" };
+	};
+	class satellite_p3d : Land_Wreck_Satellite_EPOCH {};
 	class Shelf_EPOCH : Default
 	{
 		lootMin = 3;
