@@ -89,7 +89,8 @@ _return = [];
 	if!(_mColor isEqualTo "")then{
 		_mName setMarkerColor _mColor
 	};
-		
+
+	missionNameSpace setVariable[_mName, _mSize, true];
 	Epoch_markerCounterGlobal = Epoch_markerCounterGlobal + 1;
 }forEach _markerArray;
 

@@ -42,17 +42,17 @@ class CfgMarkerSets
 	brushes[] = {"Solid","SolidFull","Horizontal","Vertical","Grid","FDiagonal","BDiagonal","DiagGrid","Cross","Border","SolidBorder"};
 	class PlayerMarker {
 		markerArray[] = {
-			{"EPOCH_PlayerMarker1","ICON","EpochActive_Hex","ColorBlue",1,{0.9,0.9}},
-			{"EPOCH_PlayerMarker2","ICON","EpochBG_Hex","ColorWhite",0.3,{0.9,0.9}},
-			{"EPOCH_PlayerMarker3","ICON","EpochGPS","ColorBlue",1,{0.8,0.8},0,"format['%1/%2',(format[mapGridPosition player]) select  [0,3],(format[mapGridPosition player]) select  [3,3]]"}
+			{"EPOCH_PlayerMarker1","ICON","EpochActive_Hex","ColorBlue",1,{0.6,0.6}},
+			{"EPOCH_PlayerMarker2","ICON","EpochBG_Hex","ColorWhite",0.3,{0.6,0.6}},
+			{"EPOCH_PlayerMarker3","ICON","EpochGPS","ColorBlue",1,{0.5,0.5},0,"format['%1/%2',(format[mapGridPosition player]) select  [0,3],(format[mapGridPosition player]) select  [3,3]]"}
 		};
 	};
 	class DeathMarker {
 		markerArray[] = {
 			
-			{"EPOCH_DeathMarker1","ICON","EpochActive_Circle","ColorRed",1,{0.9,0.9}},
-			{"EPOCH_DeathMarker2","ICON","EpochBG_Circle","ColorPink",0.3,{0.9,0.9}},
-			{"EPOCH_DeathMarker3","ICON","EpochSkull","ColorRed",1,{0.8,0.8},0,"str(name player)"}
+			{"EPOCH_DeathMarker1","ICON","EpochActive_Circle","ColorRed",1,{0.6,0.6}},
+			{"EPOCH_DeathMarker2","ICON","EpochBG_Circle","ColorPink",0.3,{0.6,0.6}},
+			{"EPOCH_DeathMarker3","ICON","EpochSkull","ColorRed",1,{0.5,0.5},0,"str(name player)"}
 		};
 	};
 	class EpochDebugBox {
@@ -106,16 +106,16 @@ class CfgMarkerSets
 	};
 	class Radiation {
         markerArray[] = {
-           {"","ICON","EpochBG_Triangle","ColorBlack",0.3,{1.5,1.5}}, 
-            {"","ICON","EpochActive_Triangle","ColorYellow",1,{1.3,1.3}}, 
-            {"","ICON","EpochRadiation","ColorYellow",1,{0.75,0.75}}
+           {"","ICON","EpochBG_Triangle","ColorBlack",0.3,{1.3,1.3}}, 
+            {"","ICON","EpochActive_Triangle","ColorYellow",1,{1.1,1.1}}, 
+            {"","ICON","EpochRadiation","ColorYellow",1,{0.6,0.6}}
         };
 	};
 	class Satellite {
         markerArray[] = {
-            {"","ICON","EpochBG_Triangle","ColorBlack",0.15,{1.5,1.5},58}, 
-            {"","ICON","EpochActive_Triangle","ColorYellow",0.5,{1.3,1.3},58}, 
-            {"","ICON","EpochSatellite","ColorYellow",1,{0.75,0.75},58}
+            {"","ICON","EpochBG_Triangle","ColorBlack",0.15,{1.3,1.3},58}, 
+            {"","ICON","EpochActive_Triangle","ColorYellow",0.5,{1.1,1.1},58}, 
+            {"","ICON","EpochSatellite","ColorYellow",1,{0.6,0.6},58}
         };
 	};
 	class MissionNoob {

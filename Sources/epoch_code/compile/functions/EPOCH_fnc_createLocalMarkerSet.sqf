@@ -96,7 +96,8 @@ if(isNil {Epoch_markerCounter})then{Epoch_markerCounter = 0};
 	if!(_mColor isEqualTo "")then{
 		_mName setMarkerColorLocal _mColor
 	};
-		
+	
+	missionNameSpace setVariable[_mName, _mSize];
 	if(_mName isEqualTo (format["EPOCH_marker_%1", Epoch_markerCounter]))then{
 		Epoch_markerCounter = Epoch_markerCounter + 1;
 	};
