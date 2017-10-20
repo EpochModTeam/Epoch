@@ -1908,6 +1908,30 @@ class CfgPricing
     {
         price = 2;
     };
+	class ChickenCarcass_EPOCH
+	{
+        price = 1;
+    };
+	class SnakeCarcass_EPOCH
+	{
+        price = 1;
+    };
+	class RabbitCarcass_EPOCH
+	{
+        price = 1;
+    };
+	class GoatCarcass_EPOCH
+	{
+        price = 1;
+    };
+	class DogCarcass_EPOCH
+	{
+        price = 1;
+    };
+	class SheepCarcass_EPOCH
+	{
+        price = 1;
+    };
     class CookedSheep_EPOCH
     {
         price = 5;
