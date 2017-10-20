@@ -304,6 +304,12 @@ class CfgBaseBuilding
         GhostPreview = "BarbedWire_Ghost_EPOCH";
         energyCost = 0.5;
     };
+	class BarbedWire_SIM_EPOCH : BarbedWire_EPOCH
+    {
+		allowedSnapObjects[] = {"BarbedWire_SIM_EPOCH"};
+		removeParts[] = {};
+	};
+	class BarbedWire_Ghost_EPOCH : BarbedWire_SIM_EPOCH {};
     class CinderFloor_EPOCH : Default
     {
         removeParts[] = {{"CinderBlocks",2},{"MortarBucket",2}};
