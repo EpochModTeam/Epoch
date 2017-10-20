@@ -223,12 +223,16 @@ if (_class != "") then {
 					_Snapdirection = EPOCH_snapDirection;
 					EP_snapPos = [0,0,0];
 					_snapped = false;
+					_dirlock = false;
 					{
 						_nearestObject = _x;
 						_isSnap = false;
 
 						// Vector + Snapping
 						_snapMemoryPoint = "";
+						if( ((typeOf _nearestObject) isEqualTo _staticClass) || ((_nearestObject isKindOf "Const_floors_static_F") && (_staticClass isKindOf "Const_floors_static_F")) || ((_nearestObject isKindOf "Const_Cinder_static_F") && (_staticClass isKindOf "Const_Cinder_static_F")) || ((_nearestObject isKindOf "Const_WoodWalls_static_F") && (_staticClass isKindOf "Const_WoodWalls_static_F")) )then{
+							_dirLock = true;
+						};
 
 						_snapPosition = [0, 0, 0];
 						if (!isNull _nearestObject) then {
@@ -272,6 +276,11 @@ if (_class != "") then {
 								}
 								else {
 									_direction = 0;
+								};
+								if(_dirLock)then{
+									["Snap Direction LOCKED to 0 and 180", 5] call Epoch_message;
+									if(EPOCH_snapDirection isEqualTo 3)then{EPOCH_snapDirection = 0;};
+									if(EPOCH_snapDirection isEqualTo 1)then{EPOCH_snapDirection = 2;};
 								};
 								if (EPOCH_snapDirection > 0) then {
 									_direction = _direction + (EPOCH_snapDirection * 90);
@@ -325,7 +334,12 @@ if (_class != "") then {
 										_currentTarget setVectorDirAndUp [_vectorDir,_vectorUP];
 									};
 								};
-
+								
+								if(_dirLock)then{
+									_currentTarget setVectorDirAndUp [_dir2,_vectorUP];
+									_currentTarget setposATL _snapPosition;
+								};
+								
 								_snapped = true;
 								_arr_snapPoints = [];
 								EPOCH_arr_snapPoints = [];
