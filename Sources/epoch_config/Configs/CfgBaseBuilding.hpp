@@ -299,9 +299,9 @@ class CfgBaseBuilding
 	class BarbedWire_EPOCH : Default
     {
         removeParts[] = {{"ItemScraps",10},{"ItemRope",2}};
-        simulClass = "BarbedWire_EPOCH";
+        simulClass = "BarbedWire_SIM_EPOCH";
         staticClass = "BarbedWire_EPOCH";
-        GhostPreview = "BarbedWire_EPOCH";
+        GhostPreview = "BarbedWire_Ghost_EPOCH";
         energyCost = 0.5;
     };
     class CinderFloor_EPOCH : Default
