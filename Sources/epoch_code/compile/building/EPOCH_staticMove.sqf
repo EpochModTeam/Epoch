@@ -246,7 +246,7 @@ if (_class != "") then {
 								_x params ["_snapPoints","_type"];
 								{
 									if (_x in _allowedSnapPoints) then {
-										_pOffset = _nearestObject selectionPosition _x;
+										_pOffset = getArray (_snapConfig >> _x);
 										_snapPos = _nearestObject modelToWorldVisual _pOffset;
 										if (surfaceIsWater _snapPos) then {
 											_snapPos set[2, ((getPosASL _nearestObject) select 2) + (_pOffset select 2)];
@@ -334,12 +334,12 @@ if (_class != "") then {
 										_currentTarget setVectorDirAndUp [_vectorDir,_vectorUP];
 									};
 								};
-								
+
 								if(_dirLock)then{
 									_currentTarget setVectorDirAndUp [_dir2,_vectorUP];
 									_currentTarget setposATL _snapPosition;
 								};
-								
+
 								_snapped = true;
 								_arr_snapPoints = [];
 								EPOCH_arr_snapPoints = [];

@@ -22,7 +22,7 @@
 	NOTHING
 */
 //[[[cog import generate_private_arrays ]]]
-private ["_allowedSnapObjects","_allowedSnapPoints","_cfgBaseBuilding","_class","_create","_currentTarget","_dir2","_direction","_disallowed","_distance","_distanceMod","_distanceNear","_energyCost","_isSnap","_lastCheckTime","_maxHeight","_nearestObject","_nearestObjectRaw","_newObj","_objSlot","_objType","_object","_oemType","_offset","_onContactEH","_pOffset","_playerEnergy","_playerEnergyKeyFinal","_playerdistance","_pos2","_prevSnapDistance","_previousDistanceNear","_rejectMove","_return","_simulClassConfig","_snapArrayPara","_snapArrayPerp","_snapDistance","_snapObjects","_snapPointsPara","_snapPointsPerp","_snapPos","_snapPosition","_snapType","_textureSlot","_up2","_vel2","_velocityTransformation","_worldspace"];
+private ["_allowedSnapObjects","_allowedSnapPoints","_cfgBaseBuilding","_class","_create","_currentTarget","_dir2","_direction","_disallowed","_distance","_distanceMod","_distanceNear","_energyCost","_isSnap","_lastCheckTime","_maxHeight","_nearestObject","_nearestObjectRaw","_newObj","_objSlot","_objType","_object","_oemType","_offset","_onContactEH","_pOffset","_playerEnergy","_playerEnergyKeyFinal","_playerdistance","_pos2","_prevSnapDistance","_previousDistanceNear","_rejectMove","_return","_simulClassConfig","_snapArrayPara","_snapArrayPerp","_snapConfig","_snapDistance","_snapObjects","_snapPointsPara","_snapPointsPerp","_snapPos","_snapPosition","_snapType","_textureSlot","_up2","_vel2","_velocityTransformation","_worldspace"];
 //[[[end]]]
 
 if !(isNil "EPOCH_simulSwap_Lock") exitWith{};
@@ -147,12 +147,13 @@ if (isText(_simulClassConfig)) then {
 					} forEach _allowedSnapObjects;
 				};
 				if (!isNull _nearestObject) then {
-					_snapPointsPara = getArray(_cfgBaseBuilding >> (typeOf _nearestObject) >> "snapPointsPara");
-					_snapPointsPerp = getArray(_cfgBaseBuilding >> (typeOf _nearestObject) >> "snapPointsPerp");
+					_snapConfig = _cfgBaseBuilding >> (typeOf _nearestObject);
+					_snapPointsPara = getArray(_snapConfig >> "snapPointsPara");
+					_snapPointsPerp = getArray(_snapConfig >> "snapPointsPerp");
 					_snapArrayPara = [];
 					{
 						if (_x in _allowedSnapPoints) then {
-							_pOffset = _nearestObject selectionPosition _x;
+							_pOffset = getArray (_snapConfig >> _x);
 							_snapPos = _nearestObject modelToWorld _pOffset;
 							if ((_pos2 distance _snapPos) < 3) then {
 								_snapArrayPara pushBackUnique _snapPos;
@@ -162,7 +163,7 @@ if (isText(_simulClassConfig)) then {
 					_snapArrayPerp = [];
 					{
 						if (_x in _allowedSnapPoints) then {
-							_pOffset = _nearestObject selectionPosition _x;
+							_pOffset = getArray (_snapConfig >> _x);
 							_snapPos = _nearestObject modelToWorld _pOffset;
 							if ((_pos2 distance _snapPos) < 3) then {
 								_snapArrayPerp pushBackUnique _snapPos;
