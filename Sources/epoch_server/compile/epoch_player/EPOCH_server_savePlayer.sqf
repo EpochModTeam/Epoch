@@ -86,7 +86,7 @@ if (_allowSave) then{
 	// build medical array
 	_medical = [getBleedingRemaining _player, 0, getOxygenRemaining _player, damage _player, _hitpoints];
 
-	// appearance now handled with getUnitLoadout, typeof is still need to determine players class.
+	// appearance now handled with getUnitLoadout, typeof is still needed to determine players class.
 	_appearance = ["", "", "", "", currentWeapon _player, typeOf _player];
 
 	// new save format
@@ -107,6 +107,7 @@ if (_allowSave) then{
 	_bloodPressure = _vars param [_bloodPIndex,100];
 	if (_bloodPressure >= 180 || _bloodPressure <= 10) then {
 		_player setDamage 1;
+		["PlayerStats", _playerUID, 0, 1] call EPOCH_fnc_server_hiveSETBIT;
 	} else {
 		// set player alive bit
 		["PlayerStats", _playerUID, 0, 0] call EPOCH_fnc_server_hiveSETBIT;
