@@ -394,12 +394,12 @@ for "_i" from 1 to 3 do {
 		};
 		if ("MAP-LOOT" in _case) then {
 			_temp = _temp + "
-				,['  Loot Marker', [], {"+_skn_tg_map_loot+" = !"+_skn_tg_map_loot+"; if ("+_skn_tg_map_loot+") then {waitUntil {"+_skn_mapLootArray+" = (position player) nearObjects[['WH_Loot', 'Animated_Loot'], 2500];uiSleep 10;!"+_skn_tg_map_loot+"};"+_skn_mapLootArray+" = []};['Loot MARKER',if ("+_skn_tg_map_loot+") then [{2},{1}]] call "+_skn_adminLog_PVC+"}, '2', []]
+				,['  Loot Marker', [], {"+_skn_tg_map_loot+" = !"+_skn_tg_map_loot+"; if ("+_skn_tg_map_loot+") then {waitUntil {"+_skn_mapLootArray+" = (position player) nearObjects[['WH_Loot', 'Animated_Loot'], 12500];uiSleep 10;!"+_skn_tg_map_loot+"};"+_skn_mapLootArray+" = []};['Loot MARKER',if ("+_skn_tg_map_loot+") then [{2},{1}]] call "+_skn_adminLog_PVC+"}, '2', []]
 			";
 		};
 		if ("MAP-ANIMALS" in _case) then {
 			_temp = _temp + "
-				,['  Animal Marker', [], {"+_skn_tg_map_animals+" = !"+_skn_tg_map_animals+"; if ("+_skn_tg_map_animals+") then {waitUntil {"+_skn_mapAnimalArray+" = nearestObjects[player, ['Sheep_random_EPOCH','Goat_random_EPOCH','Snake_random_EPOCH','Snake2_random_EPOCH','Hen_random_EPOCH','Cock_random_EPOCH','Fin_random_EPOCH','Alsatian_random_EPOCH','Rabbit_EPOCH'], 2500];uiSleep 10;!"+_skn_tg_map_animals+"};"+_skn_mapAnimalArray+" = []};['Animal MARKER',if ("+_skn_tg_map_animals+") then [{2},{1}]] call "+_skn_adminLog_PVC+"}, '2', []]
+				,['  Animal Marker', [], {"+_skn_tg_map_animals+" = !"+_skn_tg_map_animals+"; if ("+_skn_tg_map_animals+") then {waitUntil {"+_skn_mapAnimalArray+" = nearestObjects[player, ['Sheep_random_EPOCH','Goat_random_EPOCH','Snake_random_EPOCH','Snake2_random_EPOCH','Hen_random_EPOCH','Cock_random_EPOCH','Fin_random_EPOCH','Alsatian_random_EPOCH','Rabbit_EPOCH'], 12500];uiSleep 10;!"+_skn_tg_map_animals+"};"+_skn_mapAnimalArray+" = []};['Animal MARKER',if ("+_skn_tg_map_animals+") then [{2},{1}]] call "+_skn_adminLog_PVC+"}, '2', []]
 			";
 		};
 		if ("MAP-VEHICLE" in _case) then {
@@ -409,7 +409,7 @@ for "_i" from 1 to 3 do {
 		};
 		if ("MAP-AI" in _case) then {
 			_temp = _temp + "
-				,['  AI Marker', [], {"+_skn_tg_map_ai+" = !"+_skn_tg_map_ai+"; if ("+_skn_tg_map_ai+") then {waitUntil {"+_skn_mapAIArray+" = nearestObjects[player, ['I_Soldier_EPOCH','I_Soldier1_EPOCH','I_Soldier2_EPOCH','I_Soldier3_EPOCH','O_recon_F'], 2500];uiSleep 10;!"+_skn_tg_map_ai+"};"+_skn_mapAIArray+" = []}; ['AI MARKER',if ("+_skn_tg_map_ai+") then [{2},{1}]] call "+_skn_adminLog_PVC+"}, '2', []]
+				,['  AI Marker', [], {"+_skn_tg_map_ai+" = !"+_skn_tg_map_ai+"; if ("+_skn_tg_map_ai+") then {waitUntil {"+_skn_mapAIArray+" = nearestObjects[player, ['I_Soldier_EPOCH','I_Soldier1_EPOCH','I_Soldier2_EPOCH','I_Soldier3_EPOCH','O_recon_F'], 12500];uiSleep 10;!"+_skn_tg_map_ai+"};"+_skn_mapAIArray+" = []}; ['AI MARKER',if ("+_skn_tg_map_ai+") then [{2},{1}]] call "+_skn_adminLog_PVC+"}, '2', []]
 			";
 		};
 		if ("MAP-TRADER" in _case) then {
