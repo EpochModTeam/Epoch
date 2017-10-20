@@ -908,14 +908,25 @@ class CfgItemInteractions
     };
 	class ItemCanvas : Default {};
 	class ItemSeedBag : Default {};
-	class SeedPacket_GoldenSeal : Default {};
-	class SeedPacket_Hemp : Default {};
-	class SeedPacket_Poppy : Default {};
-	class SeedPacket_Pumpkin : Default {
-		 interactActions[] = {{"EAT","[1,[['Immunity',1],['Toxicity',-1],['Stamina',15],['Hunger',100]],'ItemSeedBag'] call EPOCH_consumeItem;"}};
+	class SeedPacket_GoldenSeal : Food_base {
+		interactAttributes[] = {{"Toxicity",-1}};
+		interactReturnOnUse = "ItemSeedBag";
 	};
-	class SeedPacket_Sunflower : Default {
-		 interactActions[] = {{"EAT","[1,[['Immunity',1],['Toxicity',-2],['Stamina',30],['Hunger',100]],'ItemSeedBag'] call EPOCH_consumeItem;"}};
+	class SeedPacket_Hemp : Food_base {
+		interactAttributes[] = {{"Immunity",1},{"Stamina",30},{"Hunger",100}};
+		interactReturnOnUse = "ItemSeedBag";
+	};
+	class SeedPacket_Poppy : Food_base {
+		interactAttributes[] = {{"Immunity",1},{"Stamina",30},{"Hunger",50}};
+		interactReturnOnUse = "ItemSeedBag";
+	};
+	class SeedPacket_Pumpkin : Food_base {
+		interactAttributes[] = {{"Immunity",1},{"Stamina",30},{"Hunger",100}};
+		interactReturnOnUse = "ItemSeedBag";
+	};
+	class SeedPacket_Sunflower : Food_base {
+		interactAttributes[] = {{"Immunity",1},{"Toxicity",-2},{"Stamina",30},{"Hunger",100}};
+		interactReturnOnUse = "ItemSeedBag";
 	};
 	class ItemBakedBeans : Food_TinCan_base
 	{
@@ -988,22 +999,22 @@ class CfgItemInteractions
 		// todo should reduce hunger downtick for a duration, if too much is taken causes bowel issues?
 		interactAttributes[] = {{"Thirst",-20},{"Hunger",25},{"BloodP",-1}};
     };
-	class nanite_cream_epoch : Default
+	class nanite_cream_epoch : Food_base
     {
         interactText = "USE";
 		interactAttributes[] = {{"Radiation",-25},{"Soiled",20},{"Toxicity",5},{"Immunity",5}};
     };
-	class nanite_gun_epoch : Default
+	class nanite_gun_epoch : Food_base
     {
         interactText = "USE";
 		interactAttributes[] = {{"Radiation",-100},{"Toxicity",5},{"Immunity",5}};
     };
-	class nanite_pills_epoch : Default
+	class nanite_pills_epoch : Food_base
     {
         interactText = "USE";
 		interactAttributes[] = {{"Radiation",-10},{"Thirst",-50},{"Toxicity",5},{"Immunity",5}};
     };
-	class iodide_pills_epoch : Default
+	class iodide_pills_epoch : Food_base
     {
         interactText = "USE";
 		interactAttributes[] = {{"Radiation",-15},{"Thirst",-50},{"Immunity",5}};

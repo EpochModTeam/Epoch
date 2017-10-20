@@ -408,6 +408,8 @@ switch _interactOption do {
 					[format["Used %1 on yourself",_item call EPOCH_itemDisplayName], 5] call Epoch_message;
 				};
 			};
+		} else {
+			[format["%1 is not needed at this time",_item call EPOCH_itemDisplayName], 5] call Epoch_message;
 		};
 	};
 
