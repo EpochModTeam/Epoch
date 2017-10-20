@@ -100,7 +100,7 @@ _skn_cfgPatchesCfg = [_serverSettingsConfig, "antihack_cfgPatchesMode", [2]] cal
 _skn_PVSPrefix = [_serverSettingsConfig, "antihack_PVSPrefix", "EPAH_"] call EPOCH_fnc_returnConfigEntry;
 
 // build array with X number of random strings
-_rndVAR_Count = 84; // 85 = number of (_skn_rndVA deleteAt 0)
+_rndVAR_Count = 99; // 86 = number of (_skn_rndVA deleteAt 0)
 _skn_rndVA = parseSimpleArray ('epochserver' callExtension format['810|%1', _rndVAR_Count]);
 
 EPOCH_hiveWhitelistVarsArray = [];
