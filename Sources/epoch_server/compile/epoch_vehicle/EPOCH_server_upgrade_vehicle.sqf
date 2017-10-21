@@ -116,6 +116,10 @@ clearItemCargoGlobal	  _newveh;
 _serverSettingsConfig = configFile >> "CfgEpochServer";
 _removeweapons = [_serverSettingsConfig, "removevehweapons", []] call EPOCH_fnc_returnConfigEntry;
 _removemagazinesturret = [_serverSettingsConfig, "removevehmagazinesturret", []] call EPOCH_fnc_returnConfigEntry;
+_disableVehicleTIE = [_serverSettingsConfig, "disableVehicleTIE", true] call EPOCH_fnc_returnConfigEntry;
+if (_disableVehicleTIE) then {
+	_newVeh disableTIEquipment true;
+};
 if !(_removeweapons isequalto []) then {
 	{
 		_newVeh removeWeaponGlobal _x;
