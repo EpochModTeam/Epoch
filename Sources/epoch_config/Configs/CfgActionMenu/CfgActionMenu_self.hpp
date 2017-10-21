@@ -219,3 +219,46 @@ class veh_RemoveAmmo4
 	icon = "x\addons\a3_epoch_code\Data\UI\buttons\RemoveMag.paa";
 	tooltipcode = "format['Remove %1 from %2',getText(configFile >> 'CfgMagazines' >> (dyna_WeapsMagsTurret select 3 select 1) >> 'displayName'),getText(configFile >> 'CfgWeapons' >> (dyna_WeapsMagsTurret select 3 select 0) >> 'displayName')]";
 };
+
+class geiger_menu
+{
+	condition = "'ItemGeigerCounter_EPOCH' in dyna_assigneditems";
+    icon = "x\addons\a3_epoch_assets_1\pictures\geiger\geiger_radiation.paa";
+	tooltip = "Geiger counter settings";
+
+	class geiger_toggle
+	{
+		condition = "true";
+		action = "call epoch_geiger_show_hide";
+        icon = "x\addons\a3_epoch_assets_1\pictures\geiger\geiger_toggle.paa";
+		tooltip = "Toggle HUD";
+	};
+	class geiger_counter_mute
+	{
+		condition = "!EPOCH_geiger_mute_counter";
+		action = "EPOCH_geiger_mute_counter = !EPOCH_geiger_mute_counter";
+        icon = "x\addons\a3_epoch_assets_1\pictures\geiger\geiger_volumeoff.paa";
+		tooltip = "Mute counter";
+	};
+	class geiger_counter_unmute
+	{
+		condition = "EPOCH_geiger_mute_counter";
+		action = "EPOCH_geiger_mute_counter = !EPOCH_geiger_mute_counter";
+        icon = "x\addons\a3_epoch_assets_1\pictures\geiger\geiger_volumeon.paa";
+		tooltip = "Unmute counter";
+	};
+	class geiger_warning_mute
+	{
+		condition = "!EPOCH_geiger_mute_warning";
+		action = "EPOCH_geiger_mute_warning = !EPOCH_geiger_mute_warning";
+        icon = "x\addons\a3_epoch_assets_1\pictures\geiger\geiger_alarmoff.paa";
+		tooltip = "Mute warnings";
+	};
+	class geiger_warning_unmute
+	{
+		condition = "EPOCH_geiger_mute_warning";
+		action = "EPOCH_geiger_mute_warning = !EPOCH_geiger_mute_warning";
+        icon = "x\addons\a3_epoch_assets_1\pictures\geiger\geiger_alarmon.paa";
+		tooltip = "Unmute warnings";
+	};
+};

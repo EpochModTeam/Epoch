@@ -269,7 +269,9 @@ if !(_radioactiveLocations isEqualTo []) then {
 			if (_locations isEqualTo []) exitWith {};
 			private _selectedLoc = selectRandom _locations;
 			_locations = _locations - [_selectedLoc];
-			_radioactiveLocationsTmp pushBack [_selectedLoc,random 666];
+			_locSize = size _selectedLoc;
+			_radius = sqrt((_locSize select 0)^2 + (_locSize select 1)^2);
+			_radioactiveLocationsTmp pushBack [_selectedLoc,[random 666,_radius]];
 			private _position = locationPosition _selectedLoc;
 			_markers = ["Radiation", _position] call EPOCH_server_createGlobalMarkerSet;
 		};

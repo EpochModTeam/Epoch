@@ -5,7 +5,7 @@ EPOCH_nearestLocations = _nearestLocations;
 _powerSources = nearestObjects[player, ["Land_spp_Tower_F","Land_wpp_Turbine_V2_F","Land_wpp_Turbine_V1_F","SolarGen_EPOCH","Land_Wreck_Satellite_EPOCH"], _energyRange];
 
 // TODO: add more sources and config based check instead of global var
-_nearbyRadioactiveObjects = (_powerSources + _nearestLocations) select {_x getVariable ["EPOCH_Rads", 0] > 0};
+_nearbyRadioactiveObjects = (_powerSources + _nearestLocations) select {(_x getVariable ["EPOCH_Rads", []]) select 0 > 0};
 
 // check if player is out of map bounds.
 _radsLevel = 0;
@@ -20,7 +20,7 @@ if (_outOfBounds) then {
 	if !(_nearbyRadioactiveObjects isEqualTo []) then {
 		// add extra rads based on intensity and distance from site.
 		_radioActiveSite = _nearbyRadioactiveObjects select 0;
-		_radsLevel = (_radioActiveSite getVariable ["EPOCH_Rads", 0]) / (player distance _radioActiveSite);
+		_radsLevel = ((_radioActiveSite getVariable ["EPOCH_Rads", 0])select 0) / (player distance _radioActiveSite);
 	};
 };
 

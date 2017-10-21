@@ -423,6 +423,10 @@ switch _slot do {
 					//can't find a way to display it in A3
 					"Use [O] to toggle watch" call epoch_message;
 				};
+				case "ItemGeigerCounter_EPOCH":
+				{
+					call epoch_geiger_show_hide;
+				};
 				case default
 				{
 					//do stuff with radios here

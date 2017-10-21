@@ -22,7 +22,7 @@ if ((count _position) == 2) then{
 	};
 
 	// set rads
-	_satellite setVariable ["EPOCH_Rads", 10, true];
+	_satellite setVariable ["EPOCH_Rads", [30,50], true]; //30 rads within 50 meters
 
 	if (EPOCH_showSatellites) then{
 		_markers = ["Satellite",_position] call EPOCH_server_createGlobalMarkerSet;

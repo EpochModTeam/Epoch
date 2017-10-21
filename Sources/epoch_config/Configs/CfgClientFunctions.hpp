@@ -387,6 +387,12 @@ class CfgClientFunctions
 			class favBar_getGearItem {};
 			class favBar_modifier {};
 		};
+		class geiger {
+			file = "epoch_code\gui\scripts\geiger";
+			class geiger_animate {};
+			class geiger_show_hide {};
+			class geiger_simulate {};
+		};
 	};
 };
 

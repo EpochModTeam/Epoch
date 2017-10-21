@@ -58,6 +58,13 @@ EPOCH_buildOption = 0;
 EPOCH_nearestLocations = [];
 EPOCH_lastFiredLocation = [];
 
+//Radiation
+EPOCH_geiger_shown = false;
+EPOCH_geiger_on = false;
+EPOCH_geiger_mute_counter = false;
+EPOCH_geiger_mute_warning = false;
+EPOCH_ambientRadiation = 0; //TODO: needs to go server side. Adds constant incremental radiation to all players. Use in special events.
+
 rmx_var_drag_MouseDown = false;
 rmx_var_dynamicHUD_groups = [];
 rmx_var_dynamicHUD_groupCTRL = [];
