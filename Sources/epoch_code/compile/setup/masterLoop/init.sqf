@@ -117,6 +117,7 @@ _antagonistRndChance = ["CfgEpochClient", "antagonistRngChance", 100] call EPOCH
 _baseHungerLoss = ["CfgEpochClient", "baseHungerLoss", 2] call EPOCH_fnc_returnConfigEntryV2;
 _baseThirstLoss = ["CfgEpochClient", "baseThirstLoss", 2] call EPOCH_fnc_returnConfigEntryV2;
 _baseAlcoholLoss = ["CfgEpochClient", "baseAlcoholLoss", 0.17] call EPOCH_fnc_returnConfigEntryV2;
+_lossMultiplier = if (["CfgEpochClient", "accelerateHTALoss", true] call EPOCH_fnc_returnConfigEntryV2) then {timeMultiplier} else {1};
 _energyCostNV = ["CfgEpochClient", "energyCostNV", 3] call EPOCH_fnc_returnConfigEntryV2;
 _energyRegenMax = ["CfgEpochClient", "energyRegenMax", 5] call EPOCH_fnc_returnConfigEntryV2;
 _energyRange = ["CfgEpochClient", "energyRange", 75] call EPOCH_fnc_returnConfigEntryV2;
@@ -335,13 +336,8 @@ EPOCH_ActiveTraderMission = [];
 _LastMissionTrigger = 0;
 
 // setup radio active locations
-//Commented out by Raymix: Does not set variable on locations for some reason
-/*
 {
 	_x params ["_loc", "_rads"];
-	_locSize = size _loc;
-	_radius = sqrt((_locSize select 0)^2 + (_locSize select 1)^2);
-	_loc setVariable ["EPOCH_Rads", [_rads,_radius]];
+	_loc setVariable ["EPOCH_Rads", _rads];
 } forEach (missionNamespace getVariable ["EPOCH_radioactiveLocations", []]);
-*/
 //
