@@ -37,8 +37,6 @@ if (isClass _missionConfig) then{
 // custom header for interscript communications
 _customVarsInit = getArray(getMissionConfig "CfgEpochClient" >> "customVarsDefaults");
 _customVarNames = _customVarsInit apply {_x param [0,""]};
-
-// customHeader
 _randomValues = [];
 _header = "";
 {
