@@ -336,8 +336,10 @@ EPOCH_ActiveTraderMission = [];
 _LastMissionTrigger = 0;
 
 // setup radio active locations
+//Commented out by Raymix: Does not ser variable on locations for some reason
+/*
 {
 	_x params ["_loc", "_rads"];
 	_loc setVariable ["EPOCH_Rads", _rads];
 } forEach (missionNamespace getVariable ["EPOCH_radioactiveLocations", []]);
-//
+*/
