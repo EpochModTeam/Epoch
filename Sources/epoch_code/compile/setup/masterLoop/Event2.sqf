@@ -172,9 +172,14 @@ if (_wet) then {
 };
 
 // Hunger / Thirst
-_hungerlossRate = _baseHungerLoss * timeMultiplier;
-_thirstlossRate = _baseThirstLoss * timeMultiplier;
-_alcoholLossRate = _baseAlcoholLoss * timeMultiplier;
+_hungerlossRate = _baseHungerLoss;
+_thirstlossRate = _baseThirstLoss;
+_alcoholLossRate = _baseAlcoholLoss;
+if (_accelerateHTALoss) then {
+	_hungerlossRate = _baseHungerLoss * timeMultiplier;
+	_thirstlossRate = _baseThirstLoss * timeMultiplier;
+	_alcoholLossRate = _baseAlcoholLoss * timeMultiplier;
+};
 
 // Increase hunger if player is Fatigued
 _playerStamina = missionNamespace getVariable [_playerStaminaKey, _playerStaminaDefault];
