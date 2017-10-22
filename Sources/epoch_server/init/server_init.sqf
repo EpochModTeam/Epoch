@@ -264,7 +264,7 @@ if !(_radioactiveLocations isEqualTo []) then {
 	private _locations = nearestLocations[epoch_centerMarkerPosition, _radioactiveLocations, EPOCH_dynamicVehicleArea];
 	if !(_locations isEqualTo []) then {
 
-		for "_i" from 0 to (getNumber(_epochConfig >> worldName >> "radioactiveLocationsCount")) do
+		for "_i" from 0 to ((getNumber(_epochConfig >> worldName >> "radioactiveLocationsCount"))-1) do
 		{
 			if (_locations isEqualTo []) exitWith {};
 			private _selectedLoc = selectRandom _locations;
