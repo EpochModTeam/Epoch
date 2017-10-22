@@ -60,9 +60,8 @@ EPOCH_lastFiredLocation = [];
 
 //Radiation
 EPOCH_geiger_shown = false;
-EPOCH_geiger_on = false;
-EPOCH_geiger_mute_counter = false;
-EPOCH_geiger_mute_warning = false;
+EPOCH_geiger_mute_counter = true;
+EPOCH_geiger_mute_warning = true;
 EPOCH_ambientRadiation = 0; //TODO: needs to go server side. Adds constant incremental radiation to all players. Use in special events.
 
 rmx_var_drag_MouseDown = false;
