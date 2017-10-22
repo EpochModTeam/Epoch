@@ -1,4 +1,4 @@
-/*%FSM<COMPILE "E:\SteamLibrary\steamapps\common\Arma 3 Tools\FSMEditor\scriptedFSM.cfg, traders">*/
+/*%FSM<COMPILE "C:\Program Files (x86)\Steam\steamapps\common\Arma 3 Tools\FSMEditor\scriptedFSM.cfg, traders">*/
 /*%FSM<HEAD>*/
 /*
 item0[] = {"trader",0,250,-200.000000,-275.000000,-100.000000,-225.000000,0.000000,"trader"};
@@ -18,10 +18,10 @@ item13[] = {"criteria",2,250,-200.000000,-25.000000,-100.000000,25.000000,0.0000
 item14[] = {"interrupt_action",2,250,50.000000,-25.000000,150.000000,25.000000,0.000000,"interrupt action"};
 item15[] = {"player",4,218,50.000000,-125.000000,150.000000,-75.000000,10.000000,"player"};
 item16[] = {"_",8,218,50.000000,-200.000000,150.000000,-150.000000,5.000000,""};
-item17[] = {"go_work",4,4314,307.360077,-260.220886,397.360077,-210.220947,70.000000,"go work"};
+item17[] = {"go_work",4,218,307.360077,-260.220886,397.360077,-210.220947,70.000000,"go work"};
 item18[] = {"go_home",4,218,350.000000,-200.000000,450.000000,-150.000000,60.000000,"go home"};
 item19[] = {"work",4,218,175.000000,250.000000,275.000000,300.000000,60.000000,"work"};
-item20[] = {"move_to_work",2,250,425.000000,250.000000,525.000000,300.000000,0.000000,"move to work"};
+item20[] = {"move_to_work",2,4346,425.000000,250.000000,525.000000,300.000000,0.000000,"move to work"};
 item21[] = {"home",4,218,100.000000,300.000000,200.000000,350.000000,50.000000,"home"};
 item22[] = {"move_to_home",2,250,425.000000,325.000000,525.000000,375.000000,0.000000,"move to home"};
 item23[] = {"look_at",4,218,225.000000,-300.000000,325.000000,-250.000000,80.000000,"look at"};
@@ -72,8 +72,8 @@ link37[] = {26,7};
 link38[] = {27,28};
 link39[] = {28,1};
 link40[] = {29,7};
-globals[] = {0.000000,0,0,0,0,640,480,1,92,6316128,1,-256.926910,577.747742,523.678101,-359.150879,832,884,1};
-window[] = {2,-1,-1,-32000,-32000,707,182,1207,182,3,850};
+globals[] = {0.000000,0,0,0,0,640,480,1,92,6316128,1,-256.926910,577.747742,523.678101,-359.150879,828,844,1};
+window[] = {2,-1,-1,-32000,-32000,557,1952,2977,32,3,850};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -440,9 +440,9 @@ class FSM
                          "_allowInterrupt = true;" \n
                          "" \n
                          "_markers = _trader getVariable[""MARKER_REF"",[]];" \n
-                         "if (_markers != []) then {" \n
+                         "if !(_markers isEqualTo []) then {" \n
                          "	[_markers] call EPOCH_server_deleteGlobalMarkerSet;" \n
-                         "	['DynamicTrader', _pos] call EPOCH_server_createGlobalMarkerSet;" \n
+                         "	['DynamicTrader', _work] call EPOCH_server_createGlobalMarkerSet;" \n
                          "	_trader setVariable['MARKER_REF', _markers];" \n
                          "};" \n
                          ""/*%FSM</STATEINIT""">*/;
@@ -477,10 +477,10 @@ class FSM
                          "_atWork = false;" \n
                          "_allowInterrupt = true;" \n
                          "" \n
-                         "_markers = _trader getVariable[""MARKER_REF"",[]];" \n
-                         "if (_markers != []) then {" \n
+                         "_markers = _trader getVariable[""MARKER_REF"",[] ];" \n
+                         "if !(_markers isEqualTo []) then {" \n
                          "	[_markers] call EPOCH_server_deleteGlobalMarkerSet;" \n
-                         "	['DynamicTrader', _pos] call EPOCH_server_createGlobalMarkerSet;" \n
+                         "	['DynamicTrader', _home] call EPOCH_server_createGlobalMarkerSet;" \n
                          "	_trader setVariable['MARKER_REF', _markers];" \n
                          "};" \n
                          ""/*%FSM</STATEINIT""">*/;
