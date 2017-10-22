@@ -48,12 +48,6 @@ if (_outOfBounds) then {
 	};
 };
 
-//Reduce % radiation from max armor value possible
-_maxArmor = (missionNamespace getVariable ["EPOCH_MAX_ARMOR",[0,0,0,2300]]) select 3;
-_currentArmor = ((uniform player) call EPOCH_uniformArmorCalc) + ((vest player) call EPOCH_gearArmorCalc) + ((headgear player) call EPOCH_gearArmorCalc); 
-_currentArmorPercent = 100 - (_currentArmor / _maxArmor * 100);
-_radsLevel = _currentArmorPercent / 100 * _radsLevel;
-
 //Reduce radiation by 50% for respirators (easy to find loot in construction sites?)
 if ("respirator_placeholder" in assignedItems player) then {
 	_radsLevel = _radsLevel / 2;
@@ -66,6 +60,12 @@ if ("radiation_mask_epoch" in assignedItems player) then {
 if (uniform player == "hazmat_placeholder") then {
 	_radsLevel = 0;
 };
+
+//Reduce % radiation from max armor value possible
+_maxArmor = (missionNamespace getVariable ["EPOCH_MAX_ARMOR",[0,0,0,2300]]) select 3;
+_currentArmor = ((uniform player) call EPOCH_uniformArmorCalc) + ((vest player) call EPOCH_gearArmorCalc) + ((headgear player) call EPOCH_gearArmorCalc); 
+_currentArmorPercent = 100 - (_currentArmor / _maxArmor * 100);
+_radsLevel = _currentArmorPercent / 100 * _radsLevel;
 
 // Radiation Handler
 if (_radsLevel > 0) then {
