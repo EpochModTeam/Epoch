@@ -48,17 +48,14 @@ if (_outOfBounds) then {
 	};
 };
 
+//Reduce radiation by 90%
+if ("radiation_mask_epoch" in assignedItems player) then {
+	_radsLevel = _radsLevel - (90 / 100 * _radsLevel);
+};
+
 //Reduce radiation by 50% for respirators (easy to find loot in construction sites?)
 if ("respirator_placeholder" in assignedItems player) then {
 	_radsLevel = _radsLevel / 2;
-};
-//Reduce radiation by 90%
-if ("radiation_mask_epoch" in assignedItems player) then {
-	_radsLevel = 90 / 100 * _radsLevel;
-};
-//Reduce radiation by 100% TODO: move this to top, no point in doing all this calc if hazmat is on.
-if (uniform player == "hazmat_placeholder") then {
-	_radsLevel = 0;
 };
 
 //Reduce % radiation from max armor value possible
@@ -66,6 +63,11 @@ _maxArmor = (missionNamespace getVariable ["EPOCH_MAX_ARMOR",[0,0,0,2300]]) sele
 _currentArmor = ((uniform player) call EPOCH_uniformArmorCalc) + ((vest player) call EPOCH_gearArmorCalc) + ((headgear player) call EPOCH_gearArmorCalc); 
 _currentArmorPercent = 100 - (_currentArmor / _maxArmor * 100);
 _radsLevel = _currentArmorPercent / 100 * _radsLevel;
+
+//Reduce radiation by 100% TODO: move this to top, no point in doing all this calc if hazmat is on.
+if (uniform player == "hazmat_placeholder") then {
+	_radsLevel = 0;
+};
 
 // Radiation Handler
 if (_radsLevel > 0) then {
