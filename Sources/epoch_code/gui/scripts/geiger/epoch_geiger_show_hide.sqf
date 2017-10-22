@@ -36,7 +36,7 @@ if (ctrlText(["geigerCounter", 1] call epoch_getHUDCtrl) isEqualTo "") then {
 	
 	uiNamespace setVariable ["EPOCH_geiger_LCD",_lcd];
 	uiNamespace setVariable ["EPOCH_geiger_LED",_led];
-	
+	if (EPOCH_playerEnergy <= 20) then {"Low Energy!" call epoch_message;};
 } else {
 	call _removeControls;
 };
