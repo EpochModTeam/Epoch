@@ -32,6 +32,7 @@ _immuneIfStartInBase = [_serverSettingsConfig, "immuneIfStartInBase", true] call
 
 _removeweapons = [_serverSettingsConfig, "removevehweapons", []] call EPOCH_fnc_returnConfigEntry;
 _removemagazinesturret = [_serverSettingsConfig, "removevehmagazinesturret", []] call EPOCH_fnc_returnConfigEntry;
+_disableVehicleTIE = [_serverSettingsConfig, "disableVehicleTIE", true] call EPOCH_fnc_returnConfigEntry;
 
 for "_i" from 1 to _maxVehicleLimit do {
 	_vehicleSlotIndex = EPOCH_VehicleSlots pushBack str(_i);
@@ -141,7 +142,9 @@ for "_i" from 1 to _maxVehicleLimit do {
 							_vehicle setvariable ["VEHICLE_BASECLASS",_baseClass];
 						};
 						// disable thermal imaging equipment
-						_vehicle disableTIEquipment true;
+						if (_disableVehicleTIE) then {
+							_vehicle disableTIEquipment true;
+						};
 						// lock all vehicles
 						_vehicle lock true;
 						// load vehicle inventory

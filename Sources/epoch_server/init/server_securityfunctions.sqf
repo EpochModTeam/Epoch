@@ -1140,6 +1140,7 @@ call compile ("'"+_skn_doAdminRequest+"' addPublicVariableEventHandler {
 					_serverSettingsConfig = configFile >> 'CfgEpochServer';
 					_removeweapons = [_serverSettingsConfig, 'removevehweapons', []] call EPOCH_fnc_returnConfigEntry;
 					_removemagazinesturret = [_serverSettingsConfig, 'removevehmagazinesturret', []] call EPOCH_fnc_returnConfigEntry;
+					_disableVehicleTIE = [_serverSettingsConfig, 'disableVehicleTIE', true] call EPOCH_fnc_returnConfigEntry;
 					_position = getPosATL _target;
 
 					_slot = EPOCH_VehicleSlots select 0;
@@ -1151,7 +1152,9 @@ call compile ("'"+_skn_doAdminRequest+"' addPublicVariableEventHandler {
 					_vehObj call EPOCH_server_setVToken;
 					addToRemainsCollector[_vehObj];
 
-					_vehObj disableTIEquipment true;
+					if (_disableVehicleTIE) then {
+						_vehObj disableTIEquipment true;
+					};
 
 					clearWeaponCargoGlobal	_vehObj;
 					clearMagazineCargoGlobal  _vehObj;

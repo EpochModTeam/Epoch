@@ -28,6 +28,7 @@ _simulationHandler = [_serverSettingsConfig, "simulationHandlerOld", false] call
 _immuneVehicleSpawn = [_serverSettingsConfig, "immuneVehicleSpawn", false] call EPOCH_fnc_returnConfigEntry;
 _removeweapons = [_serverSettingsConfig, "removevehweapons", []] call EPOCH_fnc_returnConfigEntry;
 _removemagazinesturret = [_serverSettingsConfig, "removevehmagazinesturret", []] call EPOCH_fnc_returnConfigEntry;
+_disableVehicleTIE = [_serverSettingsConfig, "disableVehicleTIE", true] call EPOCH_fnc_returnConfigEntry;
 
 for "_i" from 1 to _maxVehicleLimit do {
 	_vehicleSlotIndex = EPOCH_VehicleSlots pushBack str(_i);
@@ -131,7 +132,9 @@ for "_i" from 1 to _maxVehicleLimit do {
 						} foreach _removemagazinesturret;
 					};
 
-					_vehicle disableTIEquipment true;
+					if (_disableVehicleTIE) then {
+						_vehicle disableTIEquipment true;
+					};
 
 					_vehicle lock true;
 

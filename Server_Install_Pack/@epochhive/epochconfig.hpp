@@ -61,6 +61,7 @@ removevehmagazinesturret[] = {	// Remove these Magazines from the given Turret f
 	{"24Rnd_missiles",{-1}},
 	{"200Rnd_40mm_G_belt",{0}}
 };
+disableVehicleTIE = "true";
 
 // BaseBuilding
 UseIndestructible = "false";			// Enable / Disable Indestructible BaseObjects
