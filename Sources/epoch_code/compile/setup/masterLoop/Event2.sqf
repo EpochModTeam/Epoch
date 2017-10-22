@@ -45,8 +45,9 @@ if (_playerAlcohol > 20) then {
 // Sets visual effect
 _playerRadiation = missionNamespace getVariable [_playerRadiationKey, _playerRadiationDefault];
 if (_playerRadiation > 1) then {
-	_radiationVal = linearConversion [0,100,_playerRadiation,0.1,1,true];
-	[_radiationVal, 2] call epoch_setRadiation;
+	_radiationVal = linearConversion [0,100,_playerRadiation,1,10,true];
+	[(ceil _radiationVal)/10, 2] call epoch_setRadiation;
+	diag_log ((ceil _radiationVal)/10);
 } else {
 	[0, 2] call epoch_setRadiation;
 };
@@ -192,11 +193,6 @@ _playerThirst = [_playerThirstKey,-_thirstlossRate,_playerThirstMax,_playerThirs
 // Nuisance Handler
 _playerNuisance = [_playerNuisanceKey,-1,_playerNuisanceMax,_playerNuisanceMin] call EPOCH_fnc_setVariableLimited;
 
-// Radiation Handler
-if (_radsLevel > 0) then {
-	// increase rads based on radiation levels
-	_playerRadiation = [_playerRadiationKey,_radsLevel,_playerRadiationMax,_playerRadiationMin] call EPOCH_fnc_setVariableLimited;
-};
 
 // calculate max stamina
 EPOCH_playerStaminaMax = (100 * (round(_playerAliveTime/360)/10)) min 2500;

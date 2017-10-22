@@ -5,12 +5,29 @@ EPOCH_nearestLocations = _nearestLocations;
 _powerSources = nearestObjects[player, ["Land_spp_Tower_F","Land_wpp_Turbine_V2_F","Land_wpp_Turbine_V1_F","SolarGen_EPOCH","Land_Wreck_Satellite_EPOCH"], _energyRange];
 
 // TODO: add more sources and config based check instead of global var
-_nearbyRadioactiveObjects = (_powerSources + _nearestLocations) select {(_x getVariable ["EPOCH_Rads", []]) select 0 > 0};
+// _nearestLocations removed as they don't support getVariable
+// All sources used as a temp solution
+_allSources = nearestObjects[player, ["All"], _energyRange];
+_nearbyRadioactiveObjects = _allSources select {(_x getVariable ["EPOCH_Rads", []]) select 0 > 0};
 
 // check if player is out of map bounds.
 _radsLevel = 0;
 _worldSize = worldSize/2;
 _outOfBounds = !(player inArea [[_worldSize,_worldSize,0], _worldSize, _worldSize, 0, true ]);
+
+{
+	if ((_x select 0) in _nearestLocations) then {
+		_x select 1 params ["_str","_intensity"];
+		_dist = player distance getPos (_x select 0);
+		_radIntensity = if (_dist <= _intensity) then {
+			_str / _dist
+		} else {
+			0
+		};
+		_radsLevel = _radsLevel + _radIntensity;
+	};
+}foreach EPOCH_radioactiveLocations; 
+
 if (_outOfBounds) then {
 	// player is out of map bounds, give ten times background rads
 	 ["You are out of the play area!", 5] call Epoch_message;
@@ -18,10 +35,41 @@ if (_outOfBounds) then {
 } else {
 	// radiated objects or locations nearby
 	if !(_nearbyRadioactiveObjects isEqualTo []) then {
-		// add extra rads based on intensity and distance from site.
-		_radioActiveSite = _nearbyRadioactiveObjects select 0;
-		_radsLevel = ((_radioActiveSite getVariable ["EPOCH_Rads", 0])select 0) / (player distance _radioActiveSite);
+		{
+			_x getVariable "EPOCH_Rads" params ["_str","_intensity"];
+			_dist = player distance _x;
+			_radIntensity = if (_dist <= _intensity) then {
+				_str / _dist
+			} else {
+				0
+			};
+			_radsLevel = _radsLevel + _radIntensity;
+		}forEach _nearbyRadioactiveObjects;
 	};
+};
+
+//Reduce % radiation from max armor value possible
+_maxArmor = (missionNamespace getVariable ["EPOCH_MAX_ARMOR",[0,0,0,2300]]) select 3;
+_currentArmorPercent = (((uniform player) call EPOCH_uniformArmorCalc) + ((vest player) call EPOCH_gearArmorCalc) + ((headgear player) call EPOCH_gearArmorCalc)) / _maxArmor * 100;
+_radsLevel = _currentArmorPercent / 100 * _radsLevel;
+
+//Reduce radiation by 50% for respirators (easy to find loot in construction sites?)
+if ("respirator_placeholder" in assignedItems player) then {
+	_radsLevel = _radsLevel / 2;
+};
+//Reduce radiation by 90%
+if ("radiation_mask_epoch" in assignedItems player) then {
+	_radsLevel = 90 / 100 * _radsLevel;
+};
+//Reduce radiation by 100% TODO: move this to top, no point in doing all this calc if hazmat is on.
+if (uniform player == "hazmat_placeholder") then {
+	_radsLevel = 0;
+};
+
+// Radiation Handler
+if (_radsLevel > 0) then {
+	// increase rads based on radiation levels
+	_playerRadiation = [_playerRadiationKey,_radsLevel,_playerRadiationMax,_playerRadiationMin] call EPOCH_fnc_setVariableLimited;
 };
 
 if !(surfaceIsWater _position) then {
