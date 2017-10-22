@@ -1,6 +1,6 @@
 _position = getPosATL player;
 
-_nearestLocations = nearestLocations[player, _radioactiveLocations, 300];
+_nearestLocations = nearestLocations[player, ["NameLocal"], 300];
 EPOCH_nearestLocations = _nearestLocations;
 _powerSources = nearestObjects[player, ["Land_spp_Tower_F","Land_wpp_Turbine_V2_F","Land_wpp_Turbine_V1_F","SolarGen_EPOCH","Land_Wreck_Satellite_EPOCH"], _energyRange];
 

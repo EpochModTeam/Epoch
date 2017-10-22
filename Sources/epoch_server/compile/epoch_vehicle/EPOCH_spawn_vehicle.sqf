@@ -20,6 +20,7 @@ if !(isClass (configFile >> "CfgVehicles" >> _vehClass)) exitWith {objNull};
 _serverSettingsConfig = configFile >> "CfgEpochServer";
 _removeweapons = [_serverSettingsConfig, "removevehweapons", []] call EPOCH_fnc_returnConfigEntry;
 _removemagazinesturret = [_serverSettingsConfig, "removevehmagazinesturret", []] call EPOCH_fnc_returnConfigEntry;
+_disableVehicleTIE = [_serverSettingsConfig, "disableVehicleTIE", true] call EPOCH_fnc_returnConfigEntry;
 _vehObj = createVehicle[_vehClass, _position, [], 0, _can_collide];
 // turn off BIS randomization
 _vehObj setVariable ["BIS_enableRandomization", false];
@@ -62,7 +63,9 @@ if !(isNull _vehObj) then{
 	};
 
 	// Disable Termal Equipment
-	_vehObj disableTIEquipment true;
+	if (_disableVehicleTIE) then {
+		_vehObj disableTIEquipment true;
+	};
 
 	// Vehicle Lock
 	_vehObj lock _locked;
