@@ -87,7 +87,7 @@ if (_allowSave) then{
 	_medical = [getBleedingRemaining _player, 0, getOxygenRemaining _player, damage _player, _hitpoints];
 
 	// appearance now handled with getUnitLoadout, typeof is still needed to determine players class.
-	_appearance = ["", "", "", animationState _player, currentWeapon _player, typeOf _player];
+	_appearance = ["", "", "", "", currentWeapon _player, typeOf _player];
 
 	// new save format
 	_loadout = getUnitLoadout _player;

@@ -203,14 +203,10 @@ if (!isNull _player) then {
 			_newPlyr setDir _dir;
 			_newPlyr setPosATL _location;
 
-			//init anim state
-			_currentAnimationState = "";
-
 			// set player loadout
 			if (_schemaVersion >= 1.0) then {
 				_playerData params ["","","_appearance","","","_loadout"];
 				// get current weapon to send to param for selectWeapon
-				_currentAnimationState  = _appearance param [3,""];
 				_currentWeapon = _appearance param [4,""];
 //				_newPlyr setUnitLoadout [_loadout, false];
 
@@ -366,7 +362,7 @@ if (!isNull _player) then {
 				_newPlyr setVariable["SETUP", true, true];
 
 				// Send message to player so they can take over the new body.
-				[_playerNetID, _playerUID, [_newPlyr, _vars, _currentWeapon, loadAbs _newPlyr, _playerGroup, _canBeRevived, _newPlyr call EPOCH_server_setPToken,_playerGroupArray, _communityStats, _hitpoints, _currentAnimationState], _fsmHandle, _player] call EPOCH_server_pushPlayer;
+				[_playerNetID, _playerUID, [_newPlyr, _vars, _currentWeapon, loadAbs _newPlyr, _playerGroup, _canBeRevived, _newPlyr call EPOCH_server_setPToken,_playerGroupArray, _communityStats, _hitpoints], _fsmHandle, _player] call EPOCH_server_pushPlayer;
 				// diag_log str([_playerNetID, _playerUID, _player, [_newPlyr, (_player isEqualTo _newPlyr), _vars, _currentWeapon, loadAbs _newPlyr, _playerGroup, _canBeRevived, [],_playerGroupArray, _communityStats, _hitpoints], _fsmHandle]);
 
 				// revive test

@@ -22,7 +22,6 @@
 	NOTHING
 */
 disableSerialization;
-params [["_currentAnimationState",""]];
 _config = 'CfgMasterLoop' call EPOCH_returnConfig;
 _build_sqf = preprocessFile getText (_config >> "Init" >> "file");
 _configs = "true" configClasses (_config >> "Events");

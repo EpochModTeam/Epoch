@@ -1,11 +1,5 @@
 // make sure we wait for Display #46
-// waitUntil {!(isNull (findDisplay 46))};
 waitUntil {!isNull (findDisplay 46) && (!isNil "EPOCH_loadingScreenDone")};
-
-// test to set last animation state
-if (["CfgEpochClient", "setAnimStateEnabled", false] call EPOCH_fnc_returnConfigEntryV2) then {
-	player playMoveNow _currentAnimationState;
-};
 
 // load favBar
 'load' spawn epoch_favBar_draw;
