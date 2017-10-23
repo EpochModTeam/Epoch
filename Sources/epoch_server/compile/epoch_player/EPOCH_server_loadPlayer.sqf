@@ -203,8 +203,8 @@ if (!isNull _player) then {
 			_newPlyr setDir _dir;
 			_newPlyr setPosATL _location;
 
-			//
-
+			//init anim state
+			_currentAnimationState = "";
 
 			// set player loadout
 			if (_schemaVersion >= 1.0) then {

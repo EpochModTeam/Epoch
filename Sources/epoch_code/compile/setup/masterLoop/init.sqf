@@ -2,6 +2,12 @@
 // waitUntil {!(isNull (findDisplay 46))};
 waitUntil {!isNull (findDisplay 46) && (!isNil "EPOCH_loadingScreenDone")};
 
+// test to set last animation state
+params [["_currentAnimationState",""]];
+if (["CfgEpochClient", "setAnimStateEnabled", false] call EPOCH_fnc_returnConfigEntryV2) then {
+	player playMoveNow _currentAnimationState;
+};
+
 // load favBar
 'load' spawn epoch_favBar_draw;
 
@@ -335,4 +341,3 @@ _EPOCH_BuildTraderMisson = {
 _epoch_tradermissionarray = [];
 EPOCH_ActiveTraderMission = [];
 _LastMissionTrigger = 0;
-

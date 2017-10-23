@@ -13,7 +13,7 @@
 	https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_code/epoch_code/compile/functions/EPOCH_giveAttributes.sqf
 
 	Example:
-	_color = _x call EPOCH_giveAttributes
+	_text = _x call EPOCH_giveAttributes
 
 	Parameter(s):
 		_this select 0: STRING - Player Stat Name
