@@ -13,7 +13,7 @@
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server/init/server_init.sqf
 */
 //[[[cog import generate_private_arrays ]]]
-private ["_ReservedSlots","_SideHQ1","_SideHQ2","_SideHQ3","_abortAndError","_allBunkers","_allowedVehicleIndex","_allowedVehicleListName","_allowedVehiclesList","_allowedVehiclesListArray","_animationStates","_bunkerCounter","_bunkerLocations","_bunkerLocationsKey","_cfgServerVersion","_channelColor","_channelNumber","_channelTXT","_clientVersion","_colCount","_config","_configSize","_configVersion","_date","_dateChanged","_debug","_debugLocation","_epochConfig","_epochWorldPath","_existingStock","_firstBunker","_hiveVersion","_index","_indexStock","_instanceID","_list","_loc1","_location","_locations","_markers","_markertxt","_maxColumns","_maxRows","_memoryPoints","_modelInfo","_newBunkerCounter","_object","_originalLocation","_pOffset","_pos","_radio","_radioactiveLocations","_radioactiveLocationsTmp","_response","_rng","_rngChance","_rowCount","_sapper","_score","_scriptHiveKey","_seed","_selectedBunker","_serverConfig","_serverSettingsConfig","_servicepoints","_size","_startTime","_staticDateTime","_staticFuelSources","_timeDifference","_valuesAndWeights","_veh","_vehicleCount","_vehicleSlotLimit","_worldSize"];
+private ["_ReservedSlots","_SideHQ1","_SideHQ2","_SideHQ3","_abortAndError","_allBunkers","_allowedVehicleIndex","_allowedVehicleListName","_allowedVehiclesList","_allowedVehiclesListArray","_animationStates","_blacklist","_bunkerCounter","_bunkerLocations","_bunkerLocationsKey","_cfgServerVersion","_channelColor","_channelNumber","_channelTXT","_clientVersion","_colCount","_config","_configSize","_configVersion","_customRadioactiveLocations","_date","_dateChanged","_debug","_debugLocation","_distance","_epochConfig","_epochWorldPath","_existingStock","_firstBunker","_hiveVersion","_index","_indexStock","_instanceID","_list","_loc1","_locName","_locPOS","_locSize","_location","_locations","_markers","_markertxt","_maxColumns","_maxRows","_memoryPoints","_modelInfo","_nearBLObj","_newBunkerCounter","_object","_originalLocation","_pOffset","_pos","_radio","_radioactiveLocations","_radioactiveLocationsTmp","_radius","_response","_rng","_rngChance","_rowCount","_sapper","_score","_scriptHiveKey","_seed","_selectedBunker","_serverConfig","_serverSettingsConfig","_servicepoints","_size","_startTime","_staticDateTime","_staticFuelSources","_timeDifference","_valuesAndWeights","_veh","_vehicleCount","_vehicleSlotLimit","_worldSize"];
 //[[[end]]]
 _startTime = diag_tickTime;
 missionNamespace setVariable ['Epoch_ServerVersion', getText(configFile >> "CfgMods" >> "Epoch" >> "version"), true];
@@ -63,6 +63,28 @@ if (EPOCH_modCUPWeaponsEnabled) then {
 };
 if (EPOCH_modCUPVehiclesEnabled) then {
     diag_log "Epoch: CUP Vehicles detected";
+};
+
+// detect if Ryan's Zombies and Deamons mod is present
+if (["CfgEpochClient", "ryanZombiesEnabled", true] call EPOCH_fnc_returnConfigEntryV2) then {
+    EPOCH_mod_Ryanzombies_Enabled = (parseNumber (getText (configFile >> "CfgPatches" >> "Ryanzombies" >> "version")) >= 4.5);
+    if (EPOCH_mod_Ryanzombies_Enabled) then {
+        diag_log "Epoch: Ryanzombies detected";
+		missionNamespace setVariable ["EPOCH_mod_Ryanzombies_Enabled", true, true];
+    };
+} else {
+    EPOCH_mod_Ryanzombies_Enabled = false;
+};
+
+// detect if Mad Arma is present
+if (["CfgEpochClient", "madArmaEnabled", true] call EPOCH_fnc_returnConfigEntryV2) then {
+    EPOCH_mod_madArma_Enabled = (parseNumber (getText (configFile >> "CfgPatches" >> "bv_wheels" >> "version")) >= 2016);
+    if (EPOCH_mod_madArma_Enabled) then {
+        diag_log "Epoch: Mad Arma detected";
+		missionNamespace setVariable ["EPOCH_mod_madArma_Enabled", true, true];
+    };
+} else {
+    EPOCH_mod_madArma_Enabled = false;
 };
 
 diag_log "Epoch: Init Variables";

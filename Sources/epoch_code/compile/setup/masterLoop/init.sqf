@@ -154,10 +154,11 @@ _antagonistSpawnDefaults = [
 ];
 _antagonistSpawnLimits = ["CfgEpochClient", "antagonistSpawnIndex", _antagonistSpawnDefaults] call EPOCH_fnc_returnConfigEntryV2;
 
+_mod_Ryanzombies_Enabled = missionNamespace getVariable ["EPOCH_mod_Ryanzombies_Enabled",false];
 {
 	_x params ["_spawnName","_spawnLimit"];
 	if (_spawnName isEqualTo "EPOCH_RyanZombie_1") then {
-		if (EPOCH_mod_Ryanzombies_Enabled) then {
+		if (_mod_Ryanzombies_Enabled) then {
 			_spawnIndex pushBack _spawnName;
 			_spawnLimits pushBack _spawnLimit;
 		};

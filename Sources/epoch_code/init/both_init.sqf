@@ -16,26 +16,6 @@
 private ["_cfgDynamicSimulation","_communityStatsInit","_customVarsInit","_dynSimToggle"];
 //[[[end]]]
 
-// detect if Ryan's Zombies and Deamons mod is present
-if (["CfgEpochClient", "ryanZombiesEnabled", true] call EPOCH_fnc_returnConfigEntryV2) then {
-    EPOCH_mod_Ryanzombies_Enabled = (parseNumber (getText (configFile >> "CfgPatches" >> "Ryanzombies" >> "version")) >= 4.5);
-    if (EPOCH_mod_Ryanzombies_Enabled) then {
-        diag_log "Epoch: Ryanzombies detected";
-    };
-} else {
-    EPOCH_mod_Ryanzombies_Enabled = false;
-};
-
-// detect if Mad Arma is present
-if (["CfgEpochClient", "madArmaEnabled", true] call EPOCH_fnc_returnConfigEntryV2) then {
-    EPOCH_mod_madArma_Enabled = (parseNumber (getText (configFile >> "CfgPatches" >> "bv_wheels" >> "version")) >= 2016);
-    if (EPOCH_mod_madArma_Enabled) then {
-        diag_log "Epoch: Mad Arma detected";
-    };
-} else {
-    EPOCH_mod_madArma_Enabled = false;
-};
-
 // Check if Advanced Vehicle Repair is enabled
 if (["CfgEpochClient", "UseAdvancedVehicleRepair", true] call EPOCH_fnc_returnConfigEntryV2) then {
 	EPOCH_AdvancedVehicleRepair_Enabled = true;
