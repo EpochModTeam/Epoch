@@ -283,6 +283,20 @@ if !(_radioactiveLocations isEqualTo []) then {
 			_markers = ["Radiation", _position] call EPOCH_server_createGlobalMarkerSet;
 		};
 	};
+	_customRadioactiveLocations = getArray(_epochConfig >> worldName >> "customRadioactiveLocations");
+	if !(_customRadioactiveLocations isEqualTo []) then {
+		{
+			_x params [["_position",[0,0,0]],["_radius",0],["_className",""] ];
+			if ((!(_position isEqualTo [0,0,0]) && !(_radius isEqualTo 0) && !(_className isEqualTo "")) && ((nearestObjects [_position, _blacklist, _distance]) isEqualTo [])) then{
+				_object = (_x select 2) createVehicle _position;
+				_object setVariable ["EPOCH_Rads",[random 666,(_x select 1)],true];
+				_markers = ["Radiation", _position] call EPOCH_server_createGlobalMarkerSet;
+				_object setVariable ["EPOCH_MarkerSet",_markers,true];
+			}else{
+				diag_log "EPOCHDebug:Check your custom radioactive locations for errors or blacklisted locations";
+			};
+		}forEach _customRadioactiveLocations;
+	};
 };
 missionNamespace setVariable ["EPOCH_radioactiveLocations", _radioactiveLocationsTmp, true];
 

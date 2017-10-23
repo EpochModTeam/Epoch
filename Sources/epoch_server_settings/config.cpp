@@ -66,6 +66,11 @@ class CfgEpoch
 		// Block radioactive locations spawn
 		radioactiveLocBLObjects[] = {"PlotPole_EPOCH"};
 		radioactiveLocBLDistance = 500;
+		customRadioactiveLocations[] = { // position , intensity , object to spawn radiated
+			// {{11650,11900,0}, 500, "Land_Device_assembled_F"},
+			// {{0,0,0}, 0, ""} //any of these will throw an error in the rpt
+			// leave this empty to spawn 0 custom locations
+		};
 		traderBlds[] = {"House", "Building"};
 		traderHomes[] = {"House", "Building"};
 		traderUniforms[] = {"U_OG_leader", "U_C_Poloshirt_stripped", "U_C_Poloshirt_blue", "U_C_Poloshirt_burgundy", "U_C_Poloshirt_tricolour", "U_C_Poloshirt_salmon", "U_C_Poloshirt_redwhite", "U_C_Poor_1", "U_C_WorkerCoveralls", "U_C_Journalist", "U_C_Scientist", "U_OrestesBody"};
