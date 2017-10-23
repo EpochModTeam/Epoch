@@ -27,9 +27,14 @@ _rads = 0;
 } forEach _radObjects; //sum up radiation of all objects in vicinity and in FOV
 
 {
-	if ((_x select 0) in EPOCH_nearestLocations) then {
+	_location = [];
+	_LocName = (_x select 0) joinString " ";
+	{
+		if( (str _x) == _LocName ) exitwith { _location = _x; };
+	} foreach EPOCH_nearestLocations;
+	if !(_location isEqualTo []) then {
 		_x select 1 params ["_str","_intensity"];
-		_dist = player distance getPos (_x select 0);
+		_dist = player distance getPos _location;
 		_radIntensity = if (_dist <= _intensity) then {
 			_str / _dist
 		} else {
