@@ -1,11 +1,5 @@
 disableSerialization;
 _rads = param [0,0,[0]];
-_play = {
-	if (!EPOCH_geiger_mute_counter) then {
-		playSound "geiger_epoch_tick";
-		playSound "geiger_epoch_tick"; //makes geiger louder, remove if affects performance
-	};
-};
 _lcd = uiNamespace getVariable ["EPOCH_geiger_LCD",controlNull];
 _led = uiNamespace getVariable ["EPOCH_geiger_LED",controlNull];
 
@@ -31,7 +25,7 @@ if (_rads >= 10) then {
 for "_i" from 1 to (ceil _rads) do {
 	if (!EPOCH_geiger_mute_counter) then {
 		playSound "geiger_epoch_tick";
-		playSound "geiger_epoch_tick"; //makes geiger louder, remove if affects performance
+		//playSound "geiger_epoch_tick"; //makes geiger louder, remove if affects performance
 	};
 	_led ctrlSetText "x\addons\a3_epoch_assets_1\pictures\geiger\geiger_4on";
 	uiSleep (random 0.5);
