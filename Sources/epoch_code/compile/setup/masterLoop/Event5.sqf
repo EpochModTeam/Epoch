@@ -7,7 +7,7 @@ _powerSources = nearestObjects[player, ["Land_spp_Tower_F","Land_wpp_Turbine_V2_
 // TODO: add more sources and config based check instead of global var
 // _nearestLocations removed as they don't support getVariable
 // All sources used as a temp solution
-_allSources = nearestObjects[player, ["All"], _energyRange];
+_allSources = nearestObjects[player, ["All"], _radiatedObjMaxRange];
 _nearbyRadioactiveObjects = _allSources select {(_x getVariable ["EPOCH_Rads", []]) select 0 > 0};
 
 // check if player is out of map bounds.

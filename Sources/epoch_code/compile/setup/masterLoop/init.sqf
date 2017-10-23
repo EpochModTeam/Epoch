@@ -123,6 +123,7 @@ _energyRegenMax = ["CfgEpochClient", "energyRegenMax", 5] call EPOCH_fnc_returnC
 _energyRange = ["CfgEpochClient", "energyRange", 75] call EPOCH_fnc_returnConfigEntryV2;
 _hudConfigs = ["CfgEpochClient", "hudConfigs", []] call EPOCH_fnc_returnConfigEntryV2;
 _radioactiveLocations = ["CfgEpochClient", "radioactiveLocations", ["NameCityCapital", "NameCity", "Airport"]] call EPOCH_fnc_returnConfigEntryV2;
+_radiatedObjMaxRange = ["CfgEpochClient", "radiatedObjMaxFalloutDist", 75] call EPOCH_fnc_returnConfigEntryV2;
 
 _chargeRate = 0;
 
