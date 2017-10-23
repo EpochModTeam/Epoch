@@ -64,7 +64,7 @@ class CfgEpoch
 		radioactiveLocations[] = {"NameCityCapital", "NameCity", "Airport"};
 		radioactiveLocationsCount = 3;
 		// Block radioactive locations spawn
-		radioactiveLocBLObjects = ["PlotPole_EPOCH"];
+		radioactiveLocBLObjects[] = {"PlotPole_EPOCH"};
 		radioactiveLocBLDistance = 500;
 		traderBlds[] = {"House", "Building"};
 		traderHomes[] = {"House", "Building"};
