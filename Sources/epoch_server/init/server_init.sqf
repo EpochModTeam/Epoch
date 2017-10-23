@@ -265,20 +265,21 @@ _radioactiveLocationsTmp = [];
 if !(_radioactiveLocations isEqualTo []) then {
 	private _locations = nearestLocations[epoch_centerMarkerPosition, _radioactiveLocations, EPOCH_dynamicVehicleArea];
 	if !(_locations isEqualTo []) then {
-
+		{
+			_locPOS = locationPosition _x;
+			_nearBLObj = nearestObjects [_locPOS, _blacklist, _distance];
+			if!(_nearBLObj isEqualTo [])then{_locations = _locations - [_x]};
+		}forEach _locations;
 		for "_i" from 0 to ((getNumber(_epochConfig >> worldName >> "radioactiveLocationsCount"))-1) do
 		{
 			if (_locations isEqualTo []) exitWith {};
-			_nearBLObj = nearestObjects [_position, _blacklist, _distance];
-			if(_nearBLObj isEqualTo [])then{
-				private _selectedLoc = selectRandom _locations;
-				_locations = _locations - [_selectedLoc];
-				_locSize = size _selectedLoc;
-				_radius = sqrt((_locSize select 0)^2 + (_locSize select 1)^2);
-				_radioactiveLocationsTmp pushBack [_selectedLoc,[random 666,_radius]];
-				private _position = locationPosition _selectedLoc;
-				_markers = ["Radiation", _position] call EPOCH_server_createGlobalMarkerSet;
-			};
+			private _selectedLoc = selectRandom _locations;
+			_locations = _locations - [_selectedLoc];
+			_locSize = size _selectedLoc;
+			_radius = sqrt((_locSize select 0)^2 + (_locSize select 1)^2);
+			_radioactiveLocationsTmp pushBack [_selectedLoc,[random 666,_radius]];
+			private _position = locationPosition _selectedLoc;
+			_markers = ["Radiation", _position] call EPOCH_server_createGlobalMarkerSet;
 		};
 	};
 };
