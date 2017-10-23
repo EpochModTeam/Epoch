@@ -46,10 +46,10 @@ _defaultScaleY = _scale * GUI_GRID_H;
 _distance = 0.6 + _entries / 100;
 
 //edit scaling here (divisor only, larger values produce smaller image)
-_scaleLargeX = _defaultScaleX / (1.5 + _entries / 10); //anim
-_scaleLargeY = _defaultScaleY / (1.5 + _entries / 10);
-_scaleSmallX = _defaultScaleX / (3 + _entries / 10); //icons
-_scaleSmallY = _defaultScaleY / (3 + _entries / 10);
+_scaleLargeX = _defaultScaleX / (1 + _entries / 10); //anim
+_scaleLargeY = _defaultScaleY / (1 + _entries / 10);
+_scaleSmallX = _defaultScaleX / (2 + _entries / 10); //icons
+_scaleSmallY = _defaultScaleY / (2 + _entries / 10);
 
 _points = 360 / _entries;
 
@@ -73,12 +73,13 @@ for "_e" from 0 to (_entries - 1) do {
 	_ctrl ctrlSetPosition (_positions select _e);
 	_ctrl ctrlSetFade 1;
 	_ctrl ctrlCommit 0;
+	[_ctrl,0.55,0.2] call BIS_fnc_ctrlSetScale;
 	_ctrl ctrlSetTooltip (_buttonSettings select _e select 1);
 
 	_ctrl ctrlSetTooltipColorBox [0, 0, 0, 0];
 	_ctrl ctrlSetTooltipColorShade [0, 0, 0, 0];
-	_ctrl ctrlSetEventHandler ["mouseEnter", "_c = _this select 0; _c ctrlSetFade 0; [_c,0.85,0.1] call BIS_fnc_ctrlSetScale"];
-	_ctrl ctrlSetEventHandler ["mouseExit", "_c = _this select 0; _c ctrlSetFade 1; [_c,1,0.1] call BIS_fnc_ctrlSetScale"];
+	_ctrl ctrlSetEventHandler ["mouseEnter", "_c = _this select 0; _c ctrlSetFade 0; [_c,0.8,0.2] call BIS_fnc_ctrlSetScale"];
+	_ctrl ctrlSetEventHandler ["mouseExit", "_c = _this select 0; _c ctrlSetFade 1; [_c,0.55,0.2] call BIS_fnc_ctrlSetScale"];
 	_ctrl ctrlSetEventHandler ["mouseButtonDown", (_buttonSettings select _e select 2)];
 	_ctrl ctrlEnable true;
 
@@ -87,8 +88,12 @@ for "_e" from 0 to (_entries - 1) do {
 	_ctrl2 ctrlSetTooltipColorBox [0, 0, 0, 0];
 	_ctrl2 ctrlSetTooltipColorShade [0, 0, 0, 0];
 	_ctrl2 ctrlSetText (_buttonSettings select _e select 0);
+	
+	_ctrl2 ctrlSetPosition [0.5,0.5,0,0];
+	_ctrl2 ctrlCommit 0;
+	
 	_ctrl2 ctrlSetPosition (_positions2 select _e);
-	_ctrl2 ctrlCommit 0.1;
+	_ctrl2 ctrlCommit 0.2;
 
 	_arr = missionNamespace getVariable ["rmx_var_dynaControls",[]];
 	_arr append [_ctrl,_ctrl2];
