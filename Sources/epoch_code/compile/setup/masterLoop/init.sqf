@@ -3,7 +3,6 @@
 waitUntil {!isNull (findDisplay 46) && (!isNil "EPOCH_loadingScreenDone")};
 
 // test to set last animation state
-params [["_currentAnimationState",""]];
 if (["CfgEpochClient", "setAnimStateEnabled", false] call EPOCH_fnc_returnConfigEntryV2) then {
 	player playMoveNow _currentAnimationState;
 };
