@@ -183,8 +183,8 @@ link93[] = {82,76};
 link94[] = {83,16};
 link95[] = {83,22};
 link96[] = {84,31};
-globals[] = {0.000000,0,0,0,0,640,480,1,247,6316128,1,-274.133728,202.585022,1414.458496,684.095581,577,884,1};
-window[] = {2,-1,-1,-1,-1,949,182,1166,182,3,595};
+globals[] = {0.000000,0,0,0,0,640,480,1,247,6316128,1,-186.944763,447.567810,1487.860596,515.747681,577,884,1};
+window[] = {2,-1,-1,-1,-1,871,104,1088,104,3,595};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -231,7 +231,9 @@ class FSM
                 {
                         name = "FINISH";
                         itemno = 1;
-                        init = /*%FSM<STATEINIT""">*/"[] spawn EPOCH_masterLoop;" \n
+                        init = /*%FSM<STATEINIT""">*/"player playMoveNow _animationState;" \n
+                         "" \n
+                         "[] spawn EPOCH_masterLoop;" \n
                          "" \n
                          "// fade in sound and screen" \n
                          "3 fadeSound 1;" \n
@@ -1397,8 +1399,7 @@ class FSM
                                          "Epoch_my_Group = _C_SET deleteAt 0;" \n
                                          "_communityStats = _C_SET deleteAt 0;" \n
                                          "_hitpoints = _C_SET deleteAt 0;" \n
-                                         "_animationState = _C_SET deleteAt 0; // todo do something with _animationState" \n
-                                         "" \n
+                                         "_animationState = _C_SET deleteAt 0;" \n
                                          "_extraPayload = _C_SET deleteAt 0;" \n
                                          "" \n
                                          ""/*%FSM</ACTION""">*/;
