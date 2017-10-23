@@ -63,7 +63,6 @@ if (!isNull _player) then {
 		_assignedItems = [_serverSettingsConfig, "defaultassignedItems", ["","","","",[],[],""]] call EPOCH_fnc_returnConfigEntry; // ["Rangefinder","","","",[],[],""]
 		_linkedItems = [_serverSettingsConfig, "defaultlinkedItems", ["ItemMap","","EpochRadio0","","",""]] call EPOCH_fnc_returnConfigEntry; // ["ItemMap","ItemGPS","ItemRadio","ItemCompass","ItemWatch","NVGoggles"]
 		_currentWeapon = [_serverSettingsConfig, "defaultSelectedWeapon", ""] call EPOCH_fnc_returnConfigEntry; // class of selected weapon
-		_defaultAnimationState = [_serverSettingsConfig, "defaultAnimationState", ""] call EPOCH_fnc_returnConfigEntry; // class of selected weapon
 
 		_loadout = [
 			_primaryWeapon,
@@ -79,7 +78,7 @@ if (!isNull _player) then {
 		];
 
 		// default data, if "Player" data format is changed update this array!
-		_defaultData = [[0, [], _instanceID, 1.0], [0, 0, 1, 0, [0,0,0,0,0,0,0,0,0,0,0]], ["", "", "", _defaultAnimationState, _currentWeapon, _class], [], call EPOCH_defaultVars_SEPXVar, _loadout, [], [], [], [], "", true];
+		_defaultData = [[0, [], _instanceID, 1.0], [0, 0, 1, 0, [0,0,0,0,0,0,0,0,0,0,0]], ["", "", "", "", _currentWeapon, _class], [], call EPOCH_defaultVars_SEPXVar, _loadout, [], [], [], [], "", true];
 
 		// If data does not validate against default or is too short, override with default data.
 		if !(_playerData isEqualTypeParams _defaultData) then {
