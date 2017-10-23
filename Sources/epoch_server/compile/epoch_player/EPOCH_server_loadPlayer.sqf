@@ -63,6 +63,7 @@ if (!isNull _player) then {
 		_assignedItems = [_serverSettingsConfig, "defaultassignedItems", ["","","","",[],[],""]] call EPOCH_fnc_returnConfigEntry; // ["Rangefinder","","","",[],[],""]
 		_linkedItems = [_serverSettingsConfig, "defaultlinkedItems", ["ItemMap","","EpochRadio0","","",""]] call EPOCH_fnc_returnConfigEntry; // ["ItemMap","ItemGPS","ItemRadio","ItemCompass","ItemWatch","NVGoggles"]
 		_currentWeapon = [_serverSettingsConfig, "defaultSelectedWeapon", ""] call EPOCH_fnc_returnConfigEntry; // class of selected weapon
+		_defaultAnimationState = [_serverSettingsConfig, "defaultAnimationState", ""] call EPOCH_fnc_returnConfigEntry; // class of selected weapon
 
 		_loadout = [
 			_primaryWeapon,
@@ -78,7 +79,7 @@ if (!isNull _player) then {
 		];
 
 		// default data, if "Player" data format is changed update this array!
-		_defaultData = [[0, [], _instanceID, 1.0], [0, 0, 1, 0, [0,0,0,0,0,0,0,0,0,0,0]], ["", "", "", "", _currentWeapon, _class], [], call EPOCH_defaultVars_SEPXVar, _loadout, [], [], [], [], "", true];
+		_defaultData = [[0, [], _instanceID, 1.0], [0, 0, 1, 0, [0,0,0,0,0,0,0,0,0,0,0]], ["", "", "", _defaultAnimationState, _currentWeapon, _class], [], call EPOCH_defaultVars_SEPXVar, _loadout, [], [], [], [], "", true];
 
 		// If data does not validate against default or is too short, override with default data.
 		if !(_playerData isEqualTypeParams _defaultData) then {
@@ -207,22 +208,23 @@ if (!isNull _player) then {
 
 			// set player loadout
 			if (_schemaVersion >= 1.0) then {
-				_playerData params ["","","_apperance","","","_loadout"];
+				_playerData params ["","","_appearance","","","_loadout"];
 				// get current weapon to send to param for selectWeapon
-				_currentWeapon = _apperance param [4,""];
+				_currentAnimationState  = _appearance param [3,""];
+				_currentWeapon = _appearance param [4,""];
 //				_newPlyr setUnitLoadout [_loadout, false];
-				
+
 				// Workaround for Client / Server synchronizing issue in SetUnitLoadout
 				[_newPlyr,_loadout] call Epoch_server_SetUnitLoadout;
-				
+
 				diag_log format["DEBUG: loaded player %1 with new schema Version %2", _newPlyr, _schemaVersion];
 
 			} else {
 				// Legacy code start
 				// Apperance + Weapons
-				_playerData params ["","","_apperance","","","_weaponsAndItems","_linkedItems","_normalMagazines","_itemsInContainers","_weaponsInContainers"];
+				_playerData params ["","","_appearance","","","_weaponsAndItems","_linkedItems","_normalMagazines","_itemsInContainers","_weaponsInContainers"];
 				// load Apperance
-				_apperance params ["_goggles","_headgear","_vest","_backpack","_uniform"];
+				_appearance params ["_goggles","_headgear","_vest","_backpack","_uniform"];
 
 				// old data format for 0.5 and prior.
 				// Load Apperance START
@@ -364,7 +366,7 @@ if (!isNull _player) then {
 				_newPlyr setVariable["SETUP", true, true];
 
 				// Send message to player so they can take over the new body.
-				[_playerNetID, _playerUID, [_newPlyr, _vars, _currentWeapon, loadAbs _newPlyr, _playerGroup, _canBeRevived, _newPlyr call EPOCH_server_setPToken,_playerGroupArray, _communityStats, _hitpoints], _fsmHandle, _player] call EPOCH_server_pushPlayer;
+				[_playerNetID, _playerUID, [_newPlyr, _vars, _currentWeapon, loadAbs _newPlyr, _playerGroup, _canBeRevived, _newPlyr call EPOCH_server_setPToken,_playerGroupArray, _communityStats, _hitpoints, _currentAnimationState], _fsmHandle, _player] call EPOCH_server_pushPlayer;
 				// diag_log str([_playerNetID, _playerUID, _player, [_newPlyr, (_player isEqualTo _newPlyr), _vars, _currentWeapon, loadAbs _newPlyr, _playerGroup, _canBeRevived, [],_playerGroupArray, _communityStats, _hitpoints], _fsmHandle]);
 
 				// revive test

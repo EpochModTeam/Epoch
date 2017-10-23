@@ -1,4 +1,4 @@
-/*%FSM<COMPILE "C:\Program Files (x86)\Steam\steamapps\common\Arma 3 Tools\FSMEditor\scriptedFSM.cfg, Epoch Login">*/
+/*%FSM<COMPILE "F:\Program Files (x86)\Steam\steamapps\common\Arma 3 Tools\FSMEditor\scriptedFSM.cfg, Epoch Login">*/
 /*%FSM<HEAD>*/
 /*
 item0[] = {"INIT",0,250,-25.000000,-375.000000,75.000000,-325.000000,0.000000,"INIT"};
@@ -183,8 +183,8 @@ link93[] = {82,76};
 link94[] = {83,16};
 link95[] = {83,22};
 link96[] = {84,31};
-globals[] = {0.000000,0,0,0,0,640,480,1,247,6316128,1,-618.033569,546.485168,2139.147705,423.870514,573,844,1};
-window[] = {2,-1,-1,-1,-1,959,-1728,-744,192,3,595};
+globals[] = {0.000000,0,0,0,0,640,480,1,247,6316128,1,-274.133728,202.585022,1414.458496,684.095581,577,884,1};
+window[] = {2,-1,-1,-1,-1,949,182,1166,182,3,595};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -1397,6 +1397,7 @@ class FSM
                                          "Epoch_my_Group = _C_SET deleteAt 0;" \n
                                          "_communityStats = _C_SET deleteAt 0;" \n
                                          "_hitpoints = _C_SET deleteAt 0;" \n
+                                         "_animationState = _C_SET deleteAt 0; // todo do something with _animationState" \n
                                          "" \n
                                          "_extraPayload = _C_SET deleteAt 0;" \n
                                          "" \n
