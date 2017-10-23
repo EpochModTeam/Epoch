@@ -21,7 +21,7 @@ class CfgEpochClient
 	antagonistRngChance = 100; // increase number to reduce chances and reduce to increase. Default 100
 	outOfBoundsRadiation = 10; // how much rads per tick (10sec), when outside play area.
 	radioactiveLocations[] = {"NameCityCapital", "NameCity", "Airport"}; // used for random radioactive locations and to suppress animal spawns within cities.
-
+	geigerCounterEnergyUsage = 10; // default loss of 10 energy every 10sec of use
 
     baseHungerLoss = 2; // increase number to speed up rate of Hunger loss
     baseThirstLoss = 2; // increase number to speed up rate of Thirst loss

@@ -51,6 +51,11 @@ if (_playerRadiation > 1) then {
 	[0, 2] call epoch_setRadiation;
 };
 
+// Geiger Deplete Energy
+if (EPOCH_geiger_shown) then {
+	_energyValue = _energyValue - (["CfgEpochClient", "outOfBoundsRadiation", 10] call EPOCH_fnc_returnConfigEntryV2);
+};
+
 //  Energy Handler
 _playerEnergy = [_playerEnergyKey,_energyValue,_playerEnergyMax,_playerEnergyMin] call EPOCH_fnc_setVariableLimited;
 
