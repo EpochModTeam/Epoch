@@ -391,16 +391,20 @@ if(getNumber(('CfgEpochClient' call EPOCH_returnConfig) >> 'mapOnZoomSetMarkerSi
 		if(_mapScale != EPOCH_lastMapScale)then{
 			EPOCH_lastMapScale = _mapScale;
 			for "_i" from 0 to ((count _mapMarkers) - 1) do {
+				if(_mapScale != EPOCH_lastMapScale)exitWith{};
 				_zoomMarker = _mapMarkers select _i;
 				private "_markerString";
 				_markerString = toArray _zoomMarker;
 				_markerString resize 6;
 				if (toString _markerString == "EPOCH_") then {
-					_mSize = missionNamespace getVariable[_zoomMarker,[0.8,0.8]];	
-					_adjusted = _mapScale * 2.25;
-					_sizeX = (((_mSize select 0) / _adjusted) min 2.333) max 0.666;
-					_sizeY = (((_mSize select 1) / _adjusted) min 2.333) max 0.666;
-					_zoomMarker setMarkerSizeLocal [_sizeX,_sizeY];
+					_mSize = missionNamespace getVariable[_zoomMarker,[0.666,0.666]];	
+					_adj = 1.666;
+					_mapScaler = getArray(_config >> "mapScalerPresets");
+					{
+						if(_mapScale <= (_x select 0))then{_adj = (_x select 1)};
+					}forEach _mapScaler;
+					_min = (0.666/_mapScale) min 2.666;
+					_zoomMarker setMarkerSizeLocal [(((_mSize select 0) / (_mapScale * _adj)) min _min) max 0.666, (((_mSize select 1) / (_mapScale * _adj)) min _min) max 0.666];
 				};
 			};
 		};
