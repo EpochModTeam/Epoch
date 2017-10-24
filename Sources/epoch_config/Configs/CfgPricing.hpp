@@ -3038,13 +3038,29 @@ class CfgPricing
     {
         price = 32; // price of 8 planks
     };
+	class KitMetalQuarterFloor
+	{
+		price = 25; // price of 1 ItemCorrugatedLg
+	};
+	class KitMetalHalfFloor
+	{
+		price = 50; // price of 2 ItemCorrugatedLg
+	};
 	class KitMetalFloor
     {
         price = 100; // price of 4 ItemCorrugatedLg
     };
+	class KitCinderQuarterFloor
+	{
+		price = 40; //price of 1 CinderBlocks and 1 MortarBucket
+	};
+	class KitCinderHalfFloor
+	{
+		price = 80; //price of 2 CinderBlocks and 2 MortarBucket
+	};
 	class KitCinderFloor
     {
-        price = 120; //price of 3 CinderBlocks and 3 MortarBucket
+        price = 160; //price of 4 CinderBlocks and 4 MortarBucket
     };
     class KitWoodStairs
     {
