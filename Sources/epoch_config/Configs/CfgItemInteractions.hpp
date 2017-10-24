@@ -399,6 +399,14 @@ class CfgItemInteractions
 	{
 		buildClass = "MetalFloor_EPOCH";
 	};
+	class KitMetalHalfFloor : Item_Build_base
+    {
+        buildClass = "MetalHalfFloor_EPOCH";
+    };
+	class KitMetalQuarterFloor : Item_Build_base
+    {
+        buildClass = "MetalQuarterFloor_EPOCH";
+    };
 	class KitCinderTower : Item_Build_base
     {
         buildClass = "CinderTower_EPOCH";
@@ -407,6 +415,14 @@ class CfgItemInteractions
 	{
 		buildClass = "CinderFloor_EPOCH";
 	};
+	class KitCinderHalfFloor : Item_Build_base
+    {
+        buildClass = "CinderHalfFloor_EPOCH";
+    };
+	class KitCinderQuarterFloor : Item_Build_base
+    {
+        buildClass = "CinderQuarterFloor_EPOCH";
+    };
     class KitWoodRamp : Item_Build_base
     {
         buildClass = "WoodRamp_EPOCH";

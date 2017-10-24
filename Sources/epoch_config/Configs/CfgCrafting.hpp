@@ -406,7 +406,7 @@ class CfgCrafting
     };
     class MortarBucket : Item
     {
-        usedIn[] = {"KitFoundation","KitCinderWall","KitHesco3","KitCinderFloor","KitCinderTower","KitSandbagWall","KitSandbagWallLong","KitBagBunker","KitWaterPump"};
+        usedIn[] = {"KitFoundation","KitCinderWall","KitHesco3","KitCinderFloor","KitCinderHalfFloor","KitCinderQuarterFloor","KitCinderTower","KitSandbagWall","KitSandbagWallLong","KitBagBunker","KitWaterPump"};
         nearby[] = {{"Fire","","fire",{1,{"ALL"}},3,1,1,0},{"Workbench","","workbench",{1,{"WorkBench_EPOCH"}},3,1,0,1}};
         recipe[] = {{"ItemRock",12},{"water_epoch",2}};
         previewPosition[] = {0.799442,1,0.426761};
@@ -433,7 +433,7 @@ class CfgCrafting
     };
     class CinderBlocks : Part
     {
-        usedIn[] = {"KitCinderWall","KitCinderFloor","KitCinderTower","KitBarGate","KitWaterPump"};
+        usedIn[] = {"KitCinderWall","KitCinderFloor","KitCinderHalfFloor","KitCinderQuarterFloor","KitCinderTower","KitBarGate","KitWaterPump"};
         previewPosition[] = {0.801866,1,0.35};
         previewScale = 0.2;
     };
@@ -812,7 +812,7 @@ class CfgCrafting
     };
     class ItemCorrugatedLg : Item
     {
-        usedIn[] = {"KitPlotPole","KitTankTrap","KitHesco3","KitSolarGen","ItemRotor","EngineBlock","KitMetalFloor","KitMetalTower","KitFieldToilet","KitSink","KitPortableLight_Single","KitPortableLight_Double","KitBarbedWire"};
+        usedIn[] = {"KitPlotPole","KitTankTrap","KitHesco3","KitSolarGen","ItemRotor","EngineBlock","KitMetalFloor","KitMetalHalfFloor","KitMetalQuarterFloor","KitMetalTower","KitFieldToilet","KitSink","KitPortableLight_Single","KitPortableLight_Double","KitBarbedWire"};
         recipe[] = {{"ItemCorrugated",3}};
         nearby[] = {{"Workbench","","workbench",{1,{"WorkBench_EPOCH"}},3,1,0,1}};
         previewPosition[] = {0.797491,1,0.32899};
@@ -959,8 +959,26 @@ class CfgCrafting
     {
         usedIn[] = {"KitMetalTower"};
         recipe[] = {{"ItemCorrugatedLg",4}};
-        nearby[] = {{"Workbench","","workbench",{1,{"WorkBench_EPOCH"}},3,1,0,1}};
+        nearby[] = {{"Fire","","fire",{1,{"ALL"}},3,1,1,0},{"Workbench","","workbench",{1,{"WorkBench_EPOCH"}},3,1,0,1}};
         model = "\x\addons\a3_epoch_assets_1\models\metal_floor.p3d";
+        previewPosition[] = {0.800198,1,0.262418};
+        previewScale = 0.055;
+        previewVector = 3.6;
+    };
+	class KitMetalHalfFloor : Kit
+    {
+        recipe[] = {{"ItemCorrugatedLg",2}};
+        nearby[] = {{"Fire","","fire",{1,{"ALL"}},3,1,1,0},{"Workbench","","workbench",{1,{"WorkBench_EPOCH"}},3,1,0,1}};
+        model = "\x\addons\a3_epoch_community\models\metal_floor_half.p3d";
+        previewPosition[] = {0.800198,1,0.262418};
+        previewScale = 0.055;
+        previewVector = 3.6;
+    };
+	class KitMetalQuarterFloor : Kit
+    {
+        recipe[] = {{"ItemCorrugatedLg",1}};
+        nearby[] = {{"Fire","","fire",{1,{"ALL"}},3,1,1,0},{"Workbench","","workbench",{1,{"WorkBench_EPOCH"}},3,1,0,1}};
+        model = "\x\addons\a3_epoch_community\models\metal_floor_quarter.p3d";
         previewPosition[] = {0.800198,1,0.262418};
         previewScale = 0.055;
         previewVector = 3.6;
@@ -977,9 +995,27 @@ class CfgCrafting
 	class KitCinderFloor : Kit
     {
         usedIn[] = {"KitCinderTower"};
-        recipe[] = {{"CinderBlocks",3},{"MortarBucket",3}};
+        recipe[] = {{"CinderBlocks",4},{"MortarBucket",4}};
         nearby[] = {{"Workbench","","workbench",{1,{"WorkBench_EPOCH"}},3,1,0,1}};
         model = "\x\addons\a3_epoch_community\models\cinderfloor.p3d";
+        previewPosition[] = {0.800198,1,0.262418};
+        previewScale = 0.055;
+        previewVector = 3.6;
+    };
+	class KitCinderHalfFloor : Kit
+    {
+        recipe[] = {{"CinderBlocks",2},{"MortarBucket",2}};
+        nearby[] = {{"Workbench","","workbench",{1,{"WorkBench_EPOCH"}},3,1,0,1}};
+        model = "\x\addons\a3_epoch_community\models\cinderfloor_half.p3d";
+        previewPosition[] = {0.800198,1,0.262418};
+        previewScale = 0.055;
+        previewVector = 3.6;
+    };
+	class KitCinderQuarterFloor : Kit
+    {
+        recipe[] = {{"CinderBlocks",1},{"MortarBucket",1}};
+        nearby[] = {{"Workbench","","workbench",{1,{"WorkBench_EPOCH"}},3,1,0,1}};
+        model = "\x\addons\a3_epoch_community\models\cinderfloor_quarter.p3d";
         previewPosition[] = {0.800198,1,0.262418};
         previewScale = 0.055;
         previewVector = 3.6;
