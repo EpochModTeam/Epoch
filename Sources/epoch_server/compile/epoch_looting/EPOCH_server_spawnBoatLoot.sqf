@@ -31,3 +31,26 @@ if (getNumber(configFile >> "CfgEpoch" >> worldname >> "shipwreckLootEnabled") i
 		} foreach _shipwrecks;
 	};
 };
+
+
+
+
+*/
+//[[[cog import generate_private_arrays ]]]
+private ["_shipwrecks","_item","_markers"];
+//[[[end]]]
+_cfgEpoch = configFile >> "CfgEpoch" >> worldname;
+if (getNumber(_cfgEpoch >> "shipwreckLootEnabled") isEqualTo 1) then {
+	_worldSize = worldSize/2;
+	_shipwrecks = nearestTerrainObjects [ [_worldSize, _worldSize], ["SHIPWRECK"], _worldSize];
+	_total = getNumber(_cfgEpoch >> "maxSpawnedShipwrecks");
+	for "_i" from 0 to _total-1 do{
+		_wreck = selectRandom _shipwrecks;
+		_shipwrecks = _shipwrecks - [_wrecks];
+		_item = createVehicle["container_epoch", _wreck, [], 0, "NONE"];
+		_item setMass 220;
+		if (EPOCH_SHOW_BOATLOOT) then {
+			_markers = ["Shipwreck",_wreck] call EPOCH_server_createGlobalMarkerSet;
+		};
+	};
+};

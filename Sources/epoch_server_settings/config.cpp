@@ -61,6 +61,8 @@ class CfgEpoch
 			{"NameCityCapital",4},
 			{"Airport",5}
 		};
+		
+		// Radiation System
 		radioactiveLocations[] = {"NameCityCapital", "NameCity", "Airport"};
 		radioactiveLocationsCount = 3;
 		// Block radioactive locations spawn
@@ -71,10 +73,17 @@ class CfgEpoch
 			// {{0,0,0}, 0, ""} //any of these will throw an error in the rpt
 			// leave this empty to spawn 0 custom locations
 		};
+		
+		// Traders
 		traderBlds[] = {"House", "Building"};
 		traderHomes[] = {"House", "Building"};
 		traderUniforms[] = {"U_OG_leader", "U_C_Poloshirt_stripped", "U_C_Poloshirt_blue", "U_C_Poloshirt_burgundy", "U_C_Poloshirt_tricolour", "U_C_Poloshirt_salmon", "U_C_Poloshirt_redwhite", "U_C_Poor_1", "U_C_WorkerCoveralls", "U_C_Journalist", "U_C_Scientist", "U_OrestesBody"};
+		
+		// Shipwrecks
 		shipwreckLootEnabled = 1;
+		maxSpawnedShipwrecks = 12;
+		
+		// Debug Box 
 		telePos[] = {};
 		lightPos[] = {
 			{-16.623,-8.50195,-10.5417},
@@ -82,6 +91,7 @@ class CfgEpoch
 		};
 		debugBoxClass = "Debug_static_F";
 		cloneClasses[] = {"clone_empty_static_F", "clone_male_static_F", "clone_female_static_F"};
+		
 		propsPos[] = {};
 		staticNpcPos[] = {};
         forcedVehicleSpawnTable = "";
