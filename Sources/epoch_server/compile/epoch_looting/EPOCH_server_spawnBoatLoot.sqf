@@ -15,16 +15,18 @@
 //[[[cog import generate_private_arrays ]]]
 private ["_shipwrecks","_item","_markers"];
 //[[[end]]]
-_worldSize = worldSize/2;
-_shipwrecks = nearestTerrainObjects [ [_worldSize, _worldSize], [], _worldSize, false ];
-{
-	// 20 percent chance for loot to spawn
-	if ((random 1) <= 0.4) then {
-		_item = createVehicle["container_epoch", _x, [], 0, "NONE"];
-		_item setMass 220;
+if (getNumber(configFile >> "CfgEpoch" >> worldname >> "shipwreckLootEnabled") isEqualTo 1) then {
+	_worldSize = worldSize/2;
+	_shipwrecks = nearestTerrainObjects [ [_worldSize, _worldSize], [], _worldSize, false ];
+	{
+		// 20 percent chance for loot to spawn
+		if ((random 1) <= 0.4) then {
+			_item = createVehicle["container_epoch", _x, [], 0, "NONE"];
+			_item setMass 220;
 
-		if (EPOCH_SHOW_BOATLOOT) then {
-			_markers = ["Shipwreck",_x] call EPOCH_server_createGlobalMarkerSet;
+			if (EPOCH_SHOW_BOATLOOT) then {
+				_markers = ["Shipwreck",_x] call EPOCH_server_createGlobalMarkerSet;
+			};
 		};
-	};
-} foreach _shipwrecks;
+	} foreach _shipwrecks;
+};

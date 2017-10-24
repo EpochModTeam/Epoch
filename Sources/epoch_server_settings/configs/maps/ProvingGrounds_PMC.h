@@ -29,8 +29,9 @@ class ProvingGrounds_PMC : Default
 		{"VegetationFir",1},
 		{"ViewPoint",1}
 	};
+	shipwreckLootEnabled = 0;
 	traderBlds[] = {"House", "Building"};
-	containerPos[] = {};
+
 	telePos[] = {
 		// N [-0.286865,8.17383,-10.3098]
 		// S [-0.415527,-7.05298,-10.3098]

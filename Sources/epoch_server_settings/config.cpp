@@ -74,7 +74,7 @@ class CfgEpoch
 		traderBlds[] = {"House", "Building"};
 		traderHomes[] = {"House", "Building"};
 		traderUniforms[] = {"U_OG_leader", "U_C_Poloshirt_stripped", "U_C_Poloshirt_blue", "U_C_Poloshirt_burgundy", "U_C_Poloshirt_tricolour", "U_C_Poloshirt_salmon", "U_C_Poloshirt_redwhite", "U_C_Poor_1", "U_C_WorkerCoveralls", "U_C_Journalist", "U_C_Scientist", "U_OrestesBody"};
-		containerPos[] = {};
+		shipwreckLootEnabled = 1;
 		telePos[] = {};
 		lightPos[] = {
 			{-16.623,-8.50195,-10.5417},
