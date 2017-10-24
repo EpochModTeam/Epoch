@@ -802,7 +802,8 @@ class CfgWorldInteractions  {
 	class Pipes_large_F_p3d : Wrecks {};
 	class Pipes_small_F_p3d : Wrecks {};
 	class garbagebarrel_01_english_f_p3d : Trash {};
-	class uwrech_fishingboat_f_p3d : Wrecks {};
+	class uwreck_fishingboat_f_p3d : Wrecks {};
+	class wreck_traw_f_p3d : Wrecks {};
 	// ore classes
 	class MineralDepositCopper_EPOCH : Ore {};
 	class MineralDepositGold_EPOCH : Ore {};
