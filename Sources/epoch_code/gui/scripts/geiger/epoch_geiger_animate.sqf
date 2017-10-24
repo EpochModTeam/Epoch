@@ -5,7 +5,13 @@ _led = uiNamespace getVariable ["EPOCH_geiger_LED",controlNull];
 
 if (_rads >= 10) then {
 	if (!EPOCH_geiger_mute_warning) then {
-		playSound "geiger_epoch_alarm";
+		if (EPOCH_playerEnergy > 0) then {
+			if (EPOCH_playerEnergy < 5) then {
+				playSound "geiger_epoch_alarm_low";
+			} else {
+				playSound "geiger_epoch_alarm";
+			};
+		};
 	};
 	[] spawn {
 		disableSerialization;
@@ -24,8 +30,14 @@ if (_rads >= 10) then {
 	
 for "_i" from 1 to (ceil _rads) do {
 	if (!EPOCH_geiger_mute_counter) then {
-		playSound "geiger_epoch_tick";
-		//playSound "geiger_epoch_tick"; //makes geiger louder, remove if affects performance
+		if (EPOCH_playerEnergy > 0) then {
+			
+			if (EPOCH_playerEnergy < 5) then {
+				playSound "geiger_epoch_tick_low";
+			} else {
+				playSound "geiger_epoch_tick";
+			};
+		};
 	};
 	_led ctrlSetText "x\addons\a3_epoch_assets_1\pictures\geiger\geiger_4on";
 	uiSleep (random 0.5);
