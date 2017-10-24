@@ -46,7 +46,14 @@ defaultuniformItems[] =		{};								// {{"FAK",1},{"30Rnd_65x39_caseless_mag",2,
 defaultvestItems[] =		{};								// {{"30Rnd_65x39_caseless_mag",3,30},{"16Rnd_9x21_Mag",2,16},{"SmokeShell",1,1},{"SmokeShellGreen",1,1},{"SmokeShellBlue",1,1},{"SmokeShellOrange",1,1},{"Chemlight_green",1,1}};
 defaultbackpackItems[] =	{};								// {{"Medikit",1},{"FAK",10},{{"hgun_P07_F","","","",{"16Rnd_9x21_Mag",16},{},""},1}};
 defaultassignedItems[] =	{};								// {"Rangefinder","","","",{},{},""}
-defaultlinkedItems[] =		{"ItemMap","","EpochRadio0","","",""};	// {"ItemMap","ItemGPS","EpochRadio0","ItemCompass","ItemWatch","NVG_EPOCH"};
+defaultlinkedItems[] =		{
+	"ItemMap", // "ItemMap"
+	"", // "ItemGPS" or "ItemGeigerCounter_EPOCH",
+	"EpochRadio0", // "EpochRadio0" through "EpochRadio9"
+	"", // "ItemCompass"
+	"", // "ItemWatch"
+	""  // "NVG_EPOCH" or "radiation_mask_epoch"
+};
 
 // vehicles - Max vehicle slots is calculated from per vehicle limits below. Warning! Higher the number lower the performance.
 disableAutoRefuel = "true"; // Removes auto refuel from all buildings at server startup.
