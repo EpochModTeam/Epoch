@@ -22,14 +22,10 @@ if (getNumber(configFile >> "CfgEpoch" >> worldname >> "shipwreckLootEnabled") i
 		_shipwrecks = (_shipwrecks call BIS_fnc_arrayShuffle) resize 12;
 	};
 	{
-		// 20 percent chance for loot to spawn
-		if ((random 1) <= 0.4) then {
-			_item = createVehicle["container_epoch", _x, [], 0, "NONE"];
-			_item setMass 220;
-
-			if (EPOCH_SHOW_BOATLOOT) then {
-				_markers = ["Shipwreck",_x] call EPOCH_server_createGlobalMarkerSet;
-			};
+		_item = createVehicle["container_epoch", _x, [], 0, "NONE"];
+		_item setMass 220;
+		if (EPOCH_SHOW_BOATLOOT) then {
+			_markers = ["Shipwreck",_x] call EPOCH_server_createGlobalMarkerSet;
 		};
 	} foreach _shipwrecks;
 };
