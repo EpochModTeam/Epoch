@@ -328,7 +328,7 @@ class CfgBaseBuilding
         snapPointsPara[] = {"NF","SF","EF","WF","C","CB"};
         snapPointsPerp[] = {"N","S","E","W","CinN","CinS","CinE","CinW"};
         energyCost = 0.5;
-		// snap points for WoodFloor_EPOCH
+		// snap points for MetalFloor_EPOCH
 		C[] = {0,0,3.31243};
 		CB[] = {0,0,0.268722};
 		CinN[] = {0,2.87136,-0.000576986};
@@ -347,6 +347,10 @@ class CfgBaseBuilding
 		SF[] = {0,-5.237,0};
 		EF[] = {5.237,0,0};
 		WF[] = {-5.237,0,0};
+		NQF[] = {0,3.92775,0};
+		SQF[] = {0,-3.92775,0};
+		EQF[] = {3.92775,0,0};
+		WQF[] = {-3.92775,0,0};
     };
     class MetalFloor_SIM_EPOCH : MetalFloor_EPOCH
     {
@@ -573,7 +577,7 @@ class CfgBaseBuilding
         snapPointsPara[] = {"NF","SF","EF","WF","C","CB"};
         snapPointsPerp[] = {"N","S","E","W","CinN","CinS","CinE","CinW"};
         energyCost = 0.5;
-		// snap points for MetalFloor_EPOCH
+		// snap points for CinderFloor_EPOCH
 		C[] = {0,0,3.31243};
 		CB[] = {0,0,0.268722};
 		CinN[] = {0,2.87136,-0.000576986};
@@ -592,6 +596,10 @@ class CfgBaseBuilding
 		SF[] = {0,-5.237,0};
 		EF[] = {5.237,0,0};
 		WF[] = {-5.237,0,0};
+		NQF[] = {0,3.92775,0};
+		SQF[] = {0,-3.92775,0};
+		EQF[] = {3.92775,0,0};
+		WQF[] = {-3.92775,0,0};
     };
     class CinderFloor_SIM_EPOCH : CinderFloor_EPOCH
     {
