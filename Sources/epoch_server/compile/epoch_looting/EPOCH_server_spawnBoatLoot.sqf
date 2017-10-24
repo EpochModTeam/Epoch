@@ -18,14 +18,16 @@ private ["_shipwrecks","_item","_markers"];
 if (getNumber(configFile >> "CfgEpoch" >> worldname >> "shipwreckLootEnabled") isEqualTo 1) then {
 	_worldSize = worldSize/2;
 	_shipwrecks = nearestTerrainObjects [ [_worldSize, _worldSize], ["SHIPWRECK"], _worldSize, false ];
-	if (count _shipwrecks > 12) then {
-		_shipwrecks = (_shipwrecks call BIS_fnc_arrayShuffle) resize 12;
-	};
-	{
-		_item = createVehicle["container_epoch", _x, [], 0, "NONE"];
-		_item setMass 220;
-		if (EPOCH_SHOW_BOATLOOT) then {
-			_markers = ["Shipwreck",_x] call EPOCH_server_createGlobalMarkerSet;
+	if !(isNil "_shipwrecks") then {
+		if (count _shipwrecks > 12) then {
+			_shipwrecks = (_shipwrecks call BIS_fnc_arrayShuffle) resize 12;
 		};
-	} foreach _shipwrecks;
+		{
+			_item = createVehicle["container_epoch", _x, [], 0, "NONE"];
+			_item setMass 220;
+			if (EPOCH_SHOW_BOATLOOT) then {
+				_markers = ["Shipwreck",_x] call EPOCH_server_createGlobalMarkerSet;
+			};
+		} foreach _shipwrecks;
+	};
 };
