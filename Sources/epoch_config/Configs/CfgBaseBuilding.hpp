@@ -325,7 +325,7 @@ class CfgBaseBuilding
         simulClass = "MetalFloor_SIM_EPOCH";
         staticClass = "MetalFloor_EPOCH";
         GhostPreview = "MetalFloor_Ghost_EPOCH";
-        snapPointsPara[] = {"NF","SF","EF","WF","C","CB"};
+        snapPointsPara[] = {"NF","SF","EF","WF","C","CB","NQF","SQF","EQF","WQF"};
         snapPointsPerp[] = {"N","S","E","W","CinN","CinS","CinE","CinW"};
         energyCost = 0.5;
 		// snap points for MetalFloor_EPOCH
@@ -574,7 +574,7 @@ class CfgBaseBuilding
         simulClass = "CinderFloor_SIM_EPOCH";
         staticClass = "CinderFloor_EPOCH";
         GhostPreview = "CinderFloor_Ghost_EPOCH";
-        snapPointsPara[] = {"NF","SF","EF","WF","C","CB"};
+        snapPointsPara[] = {"NF","SF","EF","WF","C","CB","NQF","SQF","EQF","WQF"};
         snapPointsPerp[] = {"N","S","E","W","CinN","CinS","CinE","CinW"};
         energyCost = 0.5;
 		// snap points for CinderFloor_EPOCH
