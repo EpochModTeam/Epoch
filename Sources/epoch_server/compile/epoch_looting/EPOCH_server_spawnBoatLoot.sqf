@@ -13,8 +13,10 @@
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server/compile/epoch_looting/EPOCH_server_spawnBoatLoot.sqf
 */
 //[[[cog import generate_private_arrays ]]]
-private ["_item","_marker"];
+private ["_shipwrecks","_item","_markers"];
 //[[[end]]]
+_worldSize = worldSize/2;
+_shipwrecks = nearestTerrainObjects [ [_worldSize, _worldSize], [], _worldSize, false ];
 {
 	// 20 percent chance for loot to spawn
 	if ((random 1) <= 0.4) then {
@@ -25,4 +27,4 @@ private ["_item","_marker"];
 			_markers = ["Shipwreck",_x] call EPOCH_server_createGlobalMarkerSet;
 		};
 	};
-} foreach (getArray (configFile >> "CfgEpoch" >> worldname >> "containerPos"));
+} foreach _shipwrecks;
