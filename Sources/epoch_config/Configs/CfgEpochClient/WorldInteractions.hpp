@@ -797,6 +797,8 @@ class CfgWorldInteractions  {
     class Land_fishing_boat : Wrecks {};
 	class Land_Wreck_Satellite_EPOCH : Wrecks {};
 	class satellite_p3d : Wrecks {};
+	class Land_Pipes_large_F : Wrecks {};
+	class Land_Pipes_small_F : Wrecks {};
 	// ore classes
 	class MineralDepositCopper_EPOCH : Ore {};
 	class MineralDepositGold_EPOCH : Ore {};
