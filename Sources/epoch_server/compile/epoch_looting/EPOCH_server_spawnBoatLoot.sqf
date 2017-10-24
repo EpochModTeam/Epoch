@@ -17,7 +17,7 @@ private ["_shipwrecks","_item","_markers"];
 //[[[end]]]
 if (getNumber(configFile >> "CfgEpoch" >> worldname >> "shipwreckLootEnabled") isEqualTo 1) then {
 	_worldSize = worldSize/2;
-	_shipwrecks = nearestTerrainObjects [ [_worldSize, _worldSize], [], _worldSize, false ];
+	_shipwrecks = nearestTerrainObjects [ [_worldSize, _worldSize], ["SHIPWRECK"], _worldSize, false ];
 	if (count _shipwrecks > 12) then {
 		_shipwrecks = (_shipwrecks call BIS_fnc_arrayShuffle) resize 12;
 	};
