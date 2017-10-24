@@ -71,7 +71,6 @@ class FSM
        "_prevRestartIn = 0;" \n
        "_serverLocked = false;" \n
        "_serverRestarting = false;" \n
-       "" \n
        "_players = [];" \n
        "_prevPlayers = [];" \n
        "_cleanupItems = [];" \n
@@ -353,8 +352,8 @@ class FSM
           condition=/*%FSM<CONDITION""">*/"((diag_tickTime - _pvehTime) > 20)"/*%FSM</CONDITION""">*/;
           action=/*%FSM<ACTION""">*/"// Epoch Events" \n
            "_pvehTime = diag_tickTime;" \n
-           "_events append _injectedEvents;" \n
-           "_injectedEvents = [];" \n
+           "_events append (missionNamespace getVariable [""EPOCH_dynamicEvents"", []]);" \n
+           "missionNamespace setVariable [""EPOCH_dynamicEvents"", nil];" \n
            "_newEvents = [];" \n
            "{" \n
            "	_x params [""_time"", ""_scriptName"", [""_runAtStart"",0], [""_usePrePostfix"",1], [""_runNumTimes"",-1], [""_input"",[]], [""_disallowedWorlds"",[]] ];" \n
