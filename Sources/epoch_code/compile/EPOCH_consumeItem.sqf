@@ -50,7 +50,7 @@ _unifiedInteract = {
 		{
 			_output = _x call EPOCH_giveAttributes;
 			if (_output != "") then {
-				[_output, 5] call Epoch_message;
+				[_output, 5] call Epoch_message_stack;
 			};
 		} foreach _interactAttributes;
 	};
@@ -372,7 +372,7 @@ switch _interactOption do {
 		_msg = getArray(missionConfigFile >> "CfgReadingDocuments" >> _item >> "displayMessage");
 		if!(_msg isEqualTo [])then{
 			{
-				[_x,5] call Epoch_message;
+				[_x,5] call Epoch_message_stack;
 			}forEach _msg;
 		}else{
 			["This document can't be read yet. Blame DirtySanchez!",5] call Epoch_message;
