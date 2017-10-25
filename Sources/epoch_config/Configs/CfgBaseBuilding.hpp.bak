@@ -199,7 +199,7 @@ class CfgBaseBuilding
         simulClass = "WoodFloor_SIM_EPOCH";
         staticClass = "WoodFloor_EPOCH";
         GhostPreview = "WoodFloor_Ghost_EPOCH";
-        snapPointsPara[] = {"NF","SF","EF","WF","C","CB","NHW","SHW","EHW","WHW","NQ1","NQ2","SQ1","SQ2","EQ1","EQ2","WQ1","WQ2"};
+        snapPointsPara[] = {"NF","SF","EF","WF","C","CB","NQF","SQF","EQF","WQF"};
         snapPointsPerp[] = {"N","S","E","W","CinN","CinS","CinE","CinW"};
         energyCost = 0.2;
 		// snap points for WoodFloor_EPOCH
@@ -221,18 +221,10 @@ class CfgBaseBuilding
 		SF[] = {0,-5.237,0};
 		EF[] = {5.237,0,0};
 		WF[] = {-5.237,0,0};
-		NHW[] = {0,3.92775,0};
-		SHW[] = {0,-3.92775,0};
-		EHW[] = {3.92775,0,0};
-		WHW[] = {-3.92775,0,0};
-		NQ1[] = {1.30925,3.92775,0};
-		NQ2[] = {-1.30925,3.92775,0};
-		SQ1[] = {1.30925,-3.92775,0};
-		SQ2[] = {-1.30925,-3.92775,0};
-		EQ1[] = {1.30925,0,0};
-		EQ2[] = {3.92775,0,0};
-		WQ1[] = {-1.30925,0,0};
-		WQ2[] = {-3.92775,0,0};
+		NQF[] = {0,3.92775,0};
+		SQF[] = {0,-3.92775,0};
+		EQF[] = {3.92775,0,0};
+		WQF[] = {-3.92775,0,0};
     };
     class WoodFloor_SIM_EPOCH : WoodFloor_EPOCH
     {
@@ -249,7 +241,7 @@ class CfgBaseBuilding
         simulClass = "WoodHalfFloor_SIM_EPOCH";
         staticClass = "WoodHalfFloor_EPOCH";
         GhostPreview = "WoodHalfFloor_Ghost_EPOCH";
-        snapPointsPara[] = {"NF","SF","EF","WF","C","CB","NHW","SHW","EHW","WHW","NQ1","NQ2","SQ1","SQ2","EQ1","EQ2","WQ1","WQ2"};
+        snapPointsPara[] = {"NF","SF","EF","WF","C","CB","NQF","SQF","EQF","WQF"};
         snapPointsPerp[] = {"N","S","E","W","CinN","CinS","CinE","CinW"};
         energyCost = 0.2;
 		// snap points for WoodHalfFloor_EPOCH
@@ -271,34 +263,19 @@ class CfgBaseBuilding
 		SF[] = {0,-5.237,0};
 		EF[] = {3.92775,0,0};
 		WF[] = {-3.92775,0,0};
-		NHW[] = {0,3.92775,0};
-		SHW[] = {0,-3.92775,0};
-		EHW[] = {2.6185,0,0};
-		WHW[] = {-2.6185,0,0};
-		NQ1[] = {1.30925,3.92775,0};
-		NQ2[] = {-1.30925,3.92775,0};
-		SQ1[] = {1.30925,-3.92775,0};
-		SQ2[] = {-1.30925,-3.92775,0};
-		EQ1[] = {1.30925,0,0};
-		EQ2[] = {3.92775,0,0};
-		WQ1[] = {-1.30925,0,0};
-		WQ2[] = {-3.92775,0,0};
+		NQF[] = {0,3.92775,0};
+		SQF[] = {0,-3.92775,0};
+		EQF[] = {2.6185,0,0};
+		WQF[] = {-2.6185,0,0};
     };
     class WoodHalfFloor_SIM_EPOCH : WoodHalfFloor_EPOCH
     {
-<<<<<<< HEAD
-        allowedSnapPoints[] = {"NF","SF","EF","WF","NHW","SHW","EHW","WHW"};
-=======
         allowedSnapPoints[] = {"NF","SF","EF","WF","NQF","SQF","EQF","WQF","C"};
->>>>>>> origin/experimental
         allowedSnapObjects[] = {"Const_floors_static_F"};
         upgradeBuilding[] = {};
         removeParts[] = {};
     };
     class WoodHalfFloor_Ghost_EPOCH : WoodHalfFloor_SIM_EPOCH {};
-<<<<<<< HEAD
-    class MetalFloor_EPOCH : WoodFloor_EPOCH
-=======
 	class WoodQuarterFloor_EPOCH : Default
     {
         upgradeBuilding[] = {{"MetalQuarterFloor_EPOCH",{{"ItemCorrugatedLg",1}}}};
@@ -342,54 +319,125 @@ class CfgBaseBuilding
     };
     class WoodQuarterFloor_Ghost_EPOCH : WoodQuarterFloor_SIM_EPOCH {};
     class MetalFloor_EPOCH : Default
->>>>>>> origin/experimental
     {
         upgradeBuilding[] = {{"CinderFloor_EPOCH",{{"CinderBlocks",3},{"MortarBucket",3}}}};
         removeParts[] = {{"ItemCorrugatedLg",1},{"ItemCorrugated",1}};
         simulClass = "MetalFloor_SIM_EPOCH";
         staticClass = "MetalFloor_EPOCH";
         GhostPreview = "MetalFloor_Ghost_EPOCH";
+        snapPointsPara[] = {"NF","SF","EF","WF","C","CB","NQF","SQF","EQF","WQF"};
+        snapPointsPerp[] = {"N","S","E","W","CinN","CinS","CinE","CinW"};
         energyCost = 0.5;
+		// snap points for MetalFloor_EPOCH
+		C[] = {0,0,3.31243};
+		CB[] = {0,0,0.268722};
+		CinN[] = {0,2.87136,-0.000576986};
+		CinE[] = {2.87868,0,-0.000576986};
+		CinS[] = {0,-2.86826,-0.000576986};
+		CinW[] = {-2.88969,0,-0.000576986};
+		N[] = {0,2.46379,0.269223};
+		E[] = {2.47112,0,0.269223};
+		S[] = {0,-2.46097,0.269223};
+		W[] = {-2.4783,0,0.269223};
+		NE[] = {2.47112,2.46379,0.269223};
+		NW[] = {-2.4783,2.46379,0.269223};
+		SE[] = {2.47112,-2.46097,0.269223};
+		SW[] = {-2.4783,-2.46097,0.269223};
+		NF[] = {0,5.237,0};
+		SF[] = {0,-5.237,0};
+		EF[] = {5.237,0,0};
+		WF[] = {-5.237,0,0};
+		NQF[] = {0,3.92775,0};
+		SQF[] = {0,-3.92775,0};
+		EQF[] = {3.92775,0,0};
+		WQF[] = {-3.92775,0,0};
     };
-    class MetalFloor_SIM_EPOCH : WoodFloor_SIM_EPOCH{};
+    class MetalFloor_SIM_EPOCH : MetalFloor_EPOCH
+    {
+        allowedSnapPoints[] = {"NF","SF","EF","WF","C"};
+        allowedSnapObjects[] = {"Const_floors_static_F","Constructions_foundation_F"};
+        removeParts[] = {};
+    };
     class MetalFloor_Ghost_EPOCH : MetalFloor_SIM_EPOCH {};
-	class MetalHalfFloor_EPOCH : WoodHalfFloor_EPOCH
+	class MetalHalfFloor_EPOCH : Default
     {
         upgradeBuilding[] = {{"CinderHalfFloor_EPOCH",{{"CinderBlocks",2},{"MortarBucket",2}}}};
         removeParts[] = {{"ItemCorrugatedLg",1}};
         simulClass = "MetalHalfFloor_SIM_EPOCH";
         staticClass = "MetalHalfFloor_EPOCH";
         GhostPreview = "MetalHalfFloor_Ghost_EPOCH";
+        snapPointsPara[] = {"NF","SF","EF","WF","C","CB","NQF","SQF","EQF","WQF"};
+        snapPointsPerp[] = {"N","S","E","W","CinN","CinS","CinE","CinW"};
         energyCost = 0.2;
+		// snap points for MetalHalfFloor_EPOCH
+		C[] = {0,0,3.31243};
+		CB[] = {0,0,0.268722};
+		CinN[] = {0,2.87136,-0.000576986};
+		CinE[] = {1.444845,0,-0.000576986};
+		CinS[] = {0,-2.86826,-0.000576986};
+		CinW[] = {-1.444845,0,-0.000576986};
+		N[] = {0,2.46379,0.269223};
+		E[] = {1.15,0,0.269223};
+		S[] = {0,-2.46097,0.269223};
+		W[] = {-1.15,0,0.269223};
+		NE[] = {1.23556,2.46379,0.269223};
+		NW[] = {-1.23915,2.46379,0.269223};
+		SE[] = {1.23556,-2.46097,0.269223};
+		SW[] = {-1.23915,-2.46097,0.269223};
+		NF[] = {0,5.237,0};
+		SF[] = {0,-5.237,0};
+		EF[] = {3.92775,0,0};
+		WF[] = {-3.92775,0,0};
+		NQF[] = {0,3.92775,0};
+		SQF[] = {0,-3.92775,0};
+		EQF[] = {2.6185,0,0};
+		WQF[] = {-2.6185,0,0};
     };
     class MetalHalfFloor_SIM_EPOCH : MetalHalfFloor_EPOCH
     {
-<<<<<<< HEAD
-        allowedSnapPoints[] = {"NF","SF","EF","WF","NHW","SHW","EHW","WHW"};
-=======
         allowedSnapPoints[] = {"NF","SF","EF","WF","NQF","SQF","EQF","WQF","C"};
->>>>>>> origin/experimental
         allowedSnapObjects[] = {"Const_floors_static_F"};
         upgradeBuilding[] = {};
         removeParts[] = {};
     };
     class MetalHalfFloor_Ghost_EPOCH : MetalHalfFloor_SIM_EPOCH {};
-	class MetalQuarterFloor_EPOCH : WoodQuarterFloor_EPOCH
+	class MetalQuarterFloor_EPOCH : Default
     {
         upgradeBuilding[] = {{"CinderQuarterFloor_EPOCH",{{"CinderBlocks",1},{"MortarBucket",1}}}};
         removeParts[] = {{"ItemCorrugated",1}};
         simulClass = "MetalQuarterFloor_SIM_EPOCH";
         staticClass = "MetalQuarterFloor_EPOCH";
         GhostPreview = "MetalQuarterFloor_Ghost_EPOCH";
+        snapPointsPara[] = {"NQF","SQF","EQF","WQF","C","CB","NF","SF","EF","WF"};
+        snapPointsPerp[] = {"N","S","E","W","CinN","CinS","CinE","CinW"};
         energyCost = 0.1;
+		// snap points for MetalQuarterFloor_EPOCH
+		C[] = {0,0,3.31243};
+		CB[] = {0,0,0.268722};
+		CinN[] = {0,1.43568,-0.000576986};
+		CinE[] = {1.444845,0,-0.000576986};
+		CinS[] = {0,-1.43412,-0.000576986};
+		CinW[] = {-1.444845,0,-0.000576986};
+		N[] = {0,1.15,0.269223};
+		E[] = {1.15,0,0.269223};
+		S[] = {0,-1.15,0.269223};
+		W[] = {-1.15,0,0.269223};
+		NE[] = {1.23556,1.231895,0.269223};
+		NW[] = {-1.23915,1.231895,0.269223};
+		SE[] = {1.23556,-1.230485,0.269223};
+		SW[] = {-1.23915,-1.230485,0.269223};
+		NF[] = {0,3.92775,0};
+		SF[] = {0,-3.92775,0};
+		EF[] = {3.92775,0,0};
+		WF[] = {-3.92775,0,0};
+		NQF[] = {0,2.6185,0};
+		SQF[] = {0,-2.6185,0};
+		EQF[] = {2.6185,0,0};
+		WQF[] = {-2.6185,0,0};
     };
     class MetalQuarterFloor_SIM_EPOCH : MetalQuarterFloor_EPOCH
     {
-<<<<<<< HEAD
-        allowedSnapPoints[] = {"NHW","SHW","EHW","WHW","NQ1","NQ2","SQ1","SQ2","EQ1","EQ2","WQ1","WQ2"};
-=======
         allowedSnapPoints[] = {"NQF","SQF","EQF","WQF","C"};
->>>>>>> origin/experimental
         allowedSnapObjects[] = {"Const_floors_static_F"};
         upgradeBuilding[] = {};
         removeParts[] = {};
@@ -520,46 +568,126 @@ class CfgBaseBuilding
 		removeParts[] = {};
 	};
 	class BarbedWire_Ghost_EPOCH : BarbedWire_SIM_EPOCH {};
-    class CinderFloor_EPOCH : WoodFloor_EPOCH
+    class CinderFloor_EPOCH : Default
     {
         removeParts[] = {{"CinderBlocks",2},{"MortarBucket",1}};
         simulClass = "CinderFloor_SIM_EPOCH";
         staticClass = "CinderFloor_EPOCH";
         GhostPreview = "CinderFloor_Ghost_EPOCH";
-        energyCost = 1;
+        snapPointsPara[] = {"NF","SF","EF","WF","C","CB","NQF","SQF","EQF","WQF"};
+        snapPointsPerp[] = {"N","S","E","W","CinN","CinS","CinE","CinW"};
+        energyCost = 0.5;
+		// snap points for CinderFloor_EPOCH
+		C[] = {0,0,3.31243};
+		CB[] = {0,0,0.268722};
+		CinN[] = {0,2.87136,-0.000576986};
+		CinE[] = {2.87868,0,-0.000576986};
+		CinS[] = {0,-2.86826,-0.000576986};
+		CinW[] = {-2.88969,0,-0.000576986};
+		N[] = {0,2.46379,0.269223};
+		E[] = {2.47112,0,0.269223};
+		S[] = {0,-2.46097,0.269223};
+		W[] = {-2.4783,0,0.269223};
+		NE[] = {2.47112,2.46379,0.269223};
+		NW[] = {-2.4783,2.46379,0.269223};
+		SE[] = {2.47112,-2.46097,0.269223};
+		SW[] = {-2.4783,-2.46097,0.269223};
+		NF[] = {0,5.237,0};
+		SF[] = {0,-5.237,0};
+		EF[] = {5.237,0,0};
+		WF[] = {-5.237,0,0};
+		NQF[] = {0,3.92775,0};
+		SQF[] = {0,-3.92775,0};
+		EQF[] = {3.92775,0,0};
+		WQF[] = {-3.92775,0,0};
     };
-    class CinderFloor_SIM_EPOCH : WoodFloor_SIM_EPOCH{};
+    class CinderFloor_SIM_EPOCH : CinderFloor_EPOCH
+    {
+        allowedSnapPoints[] = {"NF","SF","EF","WF","C"};
+        allowedSnapObjects[] = {"Const_floors_static_F","Constructions_foundation_F"};
+        removeParts[] = {};
+    };
     class CinderFloor_Ghost_EPOCH : CinderFloor_SIM_EPOCH {};
-	class CinderHalfFloor_EPOCH : WoodHalfFloor_EPOCH
+	class CinderHalfFloor_EPOCH : Default
     {
 		upgradeBuilding[] = {};
         removeParts[] = {{"CinderBlocks",1},{"MortarBucket",1}};
         simulClass = "CinderHalfFloor_SIM_EPOCH";
         staticClass = "CinderHalfFloor_EPOCH";
         GhostPreview = "CinderHalfFloor_Ghost_EPOCH";
-        energyCost = 0.5;
+        snapPointsPara[] = {"NF","SF","EF","WF","C","CB","NQF","SQF","EQF","WQF"};
+        snapPointsPerp[] = {"N","S","E","W","CinN","CinS","CinE","CinW"};
+        energyCost = 0.2;
+		// snap points for CinderHalfFloor_EPOCH
+		C[] = {0,0,3.31243};
+		CB[] = {0,0,0.268722};
+		CinN[] = {0,2.87136,-0.000576986};
+		CinE[] = {1.444845,0,-0.000576986};
+		CinS[] = {0,-2.86826,-0.000576986};
+		CinW[] = {-1.444845,0,-0.000576986};
+		N[] = {0,2.46379,0.269223};
+		E[] = {1.15,0,0.269223};
+		S[] = {0,-2.46097,0.269223};
+		W[] = {-1.15,0,0.269223};
+		NE[] = {1.23556,2.46379,0.269223};
+		NW[] = {-1.23915,2.46379,0.269223};
+		SE[] = {1.23556,-2.46097,0.269223};
+		SW[] = {-1.23915,-2.46097,0.269223};
+		NF[] = {0,5.237,0};
+		SF[] = {0,-5.237,0};
+		EF[] = {3.92775,0,0};
+		WF[] = {-3.92775,0,0};
+		NQF[] = {0,3.92775,0};
+		SQF[] = {0,-3.92775,0};
+		EQF[] = {2.6185,0,0};
+		WQF[] = {-2.6185,0,0};
     };
     class CinderHalfFloor_SIM_EPOCH : CinderHalfFloor_EPOCH
     {
-        allowedSnapPoints[] = {"NF","SF","EF","WF","NHW","SHW","EHW","WHW"};
-        allowedSnapObjects[] = {"Const_floors_static_F"};
+        allowedSnapPoints[] = {"NF","SF","EF","WF","NQF","SQF","EQF","WQF","C"};
+        allowedSnapObjects[] = {"CinderHalfFloor_EPOCH","CinderFloor_EPOCH","CinderQuarterFloor_EPOCH"};
         upgradeBuilding[] = {};
         removeParts[] = {};
     };
     class CinderHalfFloor_Ghost_EPOCH : CinderHalfFloor_SIM_EPOCH {};
-	class CinderQuarterFloor_EPOCH : WoodQuarterFloor_EPOCH
+	class CinderQuarterFloor_EPOCH : Default
     {
         upgradeBuilding[] = {};
         removeParts[] = {{"CinderBlocks",1}};
         simulClass = "CinderQuarterFloor_SIM_EPOCH";
         staticClass = "CinderQuarterFloor_EPOCH";
         GhostPreview = "CinderQuarterFloor_Ghost_EPOCH";
-        energyCost = 0.25;
+        snapPointsPara[] = {"NQF","SQF","EQF","WQF","C","CB","NF","SF","EF","WF"};
+        snapPointsPerp[] = {"N","S","E","W","CinN","CinS","CinE","CinW"};
+        energyCost = 0.1;
+		// snap points for CinderQuarterFloor_EPOCH
+		C[] = {0,0,3.31243};
+		CB[] = {0,0,0.268722};
+		CinN[] = {0,1.43568,-0.000576986};
+		CinE[] = {1.444845,0,-0.000576986};
+		CinS[] = {0,-1.43412,-0.000576986};
+		CinW[] = {-1.444845,0,-0.000576986};
+		N[] = {0,1.15,0.269223};
+		E[] = {1.15,0,0.269223};
+		S[] = {0,-1.15,0.269223};
+		W[] = {-1.15,0,0.269223};
+		NE[] = {1.23556,1.231895,0.269223};
+		NW[] = {-1.23915,1.231895,0.269223};
+		SE[] = {1.23556,-1.230485,0.269223};
+		SW[] = {-1.23915,-1.230485,0.269223};
+		NF[] = {0,3.92775,0};
+		SF[] = {0,-3.92775,0};
+		EF[] = {3.92775,0,0};
+		WF[] = {-3.92775,0,0};
+		NQF[] = {0,2.6185,0};
+		SQF[] = {0,-2.6185,0};
+		EQF[] = {2.6185,0,0};
+		WQF[] = {-2.6185,0,0};
     };
     class CinderQuarterFloor_SIM_EPOCH : CinderQuarterFloor_EPOCH
     {
-        allowedSnapPoints[] = {"NHW","SHW","EHW","WHW","NQ1","NQ2","SQ1","SQ2","EQ1","EQ2","WQ1","WQ2"};
-        allowedSnapObjects[] = {"Const_floors_static_F"};
+        allowedSnapPoints[] = {"NQF","SQF","EQF","WQF","C"};
+        allowedSnapObjects[] = {"CinderQuarterFloor_EPOCH","CinderHalfFloor_EPOCH","CinderFloor_EPOCH"};
         upgradeBuilding[] = {};
         removeParts[] = {};
     };
