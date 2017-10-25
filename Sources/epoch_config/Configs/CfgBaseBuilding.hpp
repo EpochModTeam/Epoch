@@ -271,6 +271,7 @@ class CfgBaseBuilding
     class WoodHalfFloor_SIM_EPOCH : WoodHalfFloor_EPOCH
     {
         allowedSnapPoints[] = {"NF","SF","EF","WF","NQF","SQF","EQF","WQF","C"};
+        allowedSnapObjects[] = {"Const_floors_static_F"};
         upgradeBuilding[] = {};
         removeParts[] = {};
     };
@@ -312,6 +313,7 @@ class CfgBaseBuilding
     class WoodQuarterFloor_SIM_EPOCH : WoodQuarterFloor_EPOCH
     {
         allowedSnapPoints[] = {"NQF","SQF","EQF","WQF","C"};
+        allowedSnapObjects[] = {"Const_floors_static_F"};
         upgradeBuilding[] = {};
         removeParts[] = {};
     };
@@ -394,6 +396,7 @@ class CfgBaseBuilding
     class MetalHalfFloor_SIM_EPOCH : MetalHalfFloor_EPOCH
     {
         allowedSnapPoints[] = {"NF","SF","EF","WF","NQF","SQF","EQF","WQF","C"};
+        allowedSnapObjects[] = {"Const_floors_static_F"};
         upgradeBuilding[] = {};
         removeParts[] = {};
     };
@@ -435,6 +438,7 @@ class CfgBaseBuilding
     class MetalQuarterFloor_SIM_EPOCH : MetalQuarterFloor_EPOCH
     {
         allowedSnapPoints[] = {"NQF","SQF","EQF","WQF","C"};
+        allowedSnapObjects[] = {"Const_floors_static_F"};
         upgradeBuilding[] = {};
         removeParts[] = {};
     };
