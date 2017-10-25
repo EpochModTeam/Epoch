@@ -246,7 +246,7 @@ if (!isnil "EPOCH_ResetTraderMission") then {
 	EPOCH_ActiveTraderMission = [];
 	_EPOCH_TraderMissionArray = [];
 	_LastMissionTrigger = 0;
-	["Mission sucessfully resettet", 5] call Epoch_message;
+	["Mission sucessfully resettet", 5,[[0,0,0,0.5],[1,0.5,0,1]]] call Epoch_message;
 	EPOCH_ResetTraderMission = nil;
 };
 
@@ -264,7 +264,7 @@ if !(EPOCH_ActiveTraderMission isequalto []) then {
 	if (diag_ticktime > _taskFailTime || call _taskFailedCond) exitwith {
 		if (count _taskFailedDiags > 0) then {
 			_diag = selectRandom _taskFailedDiags;
-			[format ["%1",_diag], 5] call Epoch_message;
+			[format ["%1",_diag], 5,[[0,0,0,0.5],[1,0.5,0,1]]] call Epoch_message;
 		};
 		if !(_taskFailedSQF isequalto '') then {
 			call compile format ["[_taskName,_plyr,_unit,_taskItem] execVM ""%1""",_taskFailedSQF];
@@ -285,7 +285,7 @@ if !(EPOCH_ActiveTraderMission isequalto []) then {
 	if (call _taskCompleteCond) exitwith {
 		if (count _taskCompleteDiags > 0) then {
 			_diag = selectrandom _taskCompleteDiags;
-			[format ["%1",_diag], 5] call Epoch_message;
+			[format ["%1",_diag], 5,[[0,0,0,0.5],[1,0.5,0,1]]] call Epoch_message;
 		};
 		if(count _taskReward > 0) then {
 			[player,Epoch_personalToken,_taskReward,[],objNull,false] remoteExec ["EPOCH_Server_createObject",2];
@@ -327,7 +327,7 @@ if !(EPOCH_ActiveTraderMission isequalto []) then {
 		if (call _taskDiagCond) exitwith {
 			_diag = selectRandom _taskDiag;
 			if !(_diag isequalto "") then {
-				[format ["%1",_diag], 5] call Epoch_message;
+				[format ["%1",_diag], 5,[[0,0,0,0.5],[1,0.5,0,1]]] call Epoch_message;
 			};
 			_taskDialogues deleteat _foreachindex;
 		};

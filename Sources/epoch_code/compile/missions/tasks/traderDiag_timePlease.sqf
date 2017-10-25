@@ -12,4 +12,4 @@ if(count _min < 2)then{
 _min = "0" + _min;
 };
 
-[format ["The time is %1:%2.",_hour, _min], 5] call Epoch_message;
+[format ["The time is %1:%2.",_hour, _min], 5,[[0,0,0,0.5],[1,0.5,0,1]]] call Epoch_message;

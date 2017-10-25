@@ -56,7 +56,7 @@ class uavMissionStart{
 	callevents[]			= {
 		{
 			"missionNameSpace getVariable [""InSafeZone"",false]",
-			"['Mission not allowed in Safe Zone',5] call Epoch_Message",
+			"['Mission not allowed in Safe Zone',5,[[0,0,0,0.5],[1,0.5,0,1]]] call Epoch_Message",
 			{}
 		}
 		

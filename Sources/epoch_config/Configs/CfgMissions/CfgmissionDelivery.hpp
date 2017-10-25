@@ -70,7 +70,7 @@ class doDelivery {
 	callevents[]			= {	// {{ARRAY1},{ARRAY2},... }
 		{	// {"condition",{"Message1","Message2", ...},{"NextTask1","NextTask2", ...}}
 			"(EPOCH_task_startTime + 480 < diag_tickTime) && (count (((player nearentities [['C_Man_1'],500]) apply {_x getVariable ['AI_SLOT',-1]}) select {_x in (uiNameSpace getVariable ['axeStartTraders',[]])}) > 0)",
-			"[""Hey, what are you doing here ? Get on with your task !"", 5] call Epoch_message",
+			"[""Hey, what are you doing here ? Get on with your task !"", 5,[[0,0,0,0.5],[1,0.5,0,1]]] call Epoch_message",
 			{}
 		}
 	};

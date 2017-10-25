@@ -62,13 +62,13 @@ if (_dikCode in [EPOCH_keysfav1,EPOCH_keysfav2,EPOCH_keysfav3,EPOCH_keysfav4,EPO
 if (_ctrl && _dikCode == EPOCH_keysVolumeUp) then {
 	EPOCH_soundLevel = (EPOCH_soundLevel + 0.1) min 1;
 	5 fadeSound EPOCH_soundLevel;
-	[format["Internal sound level: %1%2", EPOCH_soundLevel * 100, "%"], 5] call Epoch_message;
+	[format["Internal sound level: %1%2", EPOCH_soundLevel * 100, "%"], 5,[[0,0,0,0.5],[0,1,1,1]]] call Epoch_message;
 };
 // lower vol
 if (_ctrl && _dikCode == EPOCH_keysVolumeDown) then {
 	EPOCH_soundLevel = (EPOCH_soundLevel - 0.1) max 0.1;
 	5 fadeSound EPOCH_soundLevel;
-	[format["Internal sound level: %1%2", EPOCH_soundLevel * 100,"%"], 5] call Epoch_message;
+	[format["Internal sound level: %1%2", EPOCH_soundLevel * 100,"%"], 5,[[0,0,0,0.5],[0,1,1,1]]] call Epoch_message;
 };
 
 // ESC default to cancel
@@ -91,9 +91,9 @@ if (_dikCode == 0x01) then {
 if (_dikCode == EPOCH_keysDebugMon) then {
 	EPOCH_debugMode = !EPOCH_debugMode;
 	if (EPOCH_debugMode) then {
-		["Debug Mode Enabled", 5] call Epoch_message;
+		["Debug Mode Enabled", 5,[[0,0,0,0.5],[1,1,0,1]]] call Epoch_message;
 	} else {
-		["Debug Mode Disabled", 5] call Epoch_message;
+		["Debug Mode Disabled", 5,[[0,0,0,0.5],[1,1,0,1]]] call Epoch_message;
 		hintSilent "";
 	};
 	_handled = true;
