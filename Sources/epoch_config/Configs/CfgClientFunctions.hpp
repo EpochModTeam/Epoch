@@ -237,6 +237,7 @@ class CfgClientFunctions
 		{
 			file = "epoch_code\gui\scripts\messaging";
 			class message {};
+			class message_stack {};
 			class message_old1 {};
 			class message_old2 {};
 		};
