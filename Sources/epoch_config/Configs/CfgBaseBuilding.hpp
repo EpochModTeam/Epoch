@@ -229,10 +229,10 @@ class CfgBaseBuilding
 		NQ2[] = {-1.30925,3.92775,0};
 		SQ1[] = {1.30925,-3.92775,0};
 		SQ2[] = {-1.30925,-3.92775,0};
-		EQ1[] = {1.30925,0,0};
-		EQ2[] = {3.92775,0,0};
-		WQ1[] = {-1.30925,0,0};
-		WQ2[] = {-3.92775,0,0};
+		EQ1[] = {3.92775,1.30925,0,0};
+		EQ2[] = {3.92775,-1.30925,0};
+		WQ1[] = {-3.92775,1.30925,0};
+		WQ2[] = {-3.92775,-1.30925,0};
     };
     class WoodFloor_SIM_EPOCH : WoodFloor_EPOCH
     {
@@ -279,10 +279,10 @@ class CfgBaseBuilding
 		NQ2[] = {-1.30925,3.92775,0};
 		SQ1[] = {1.30925,-3.92775,0};
 		SQ2[] = {-1.30925,-3.92775,0};
-		EQ1[] = {1.30925,0,0};
-		EQ2[] = {3.92775,0,0};
-		WQ1[] = {-1.30925,0,0};
-		WQ2[] = {-3.92775,0,0};
+		EQ1[] = {3.92775,1.30925,0,0};
+		EQ2[] = {3.92775,-1.30925,0};
+		WQ1[] = {-3.92775,1.30925,0};
+		WQ2[] = {-3.92775,-1.30925,0};
     };
     class WoodHalfFloor_SIM_EPOCH : WoodHalfFloor_EPOCH
     {
@@ -299,7 +299,7 @@ class CfgBaseBuilding
         simulClass = "WoodQuarterFloor_SIM_EPOCH";
         staticClass = "WoodQuarterFloor_EPOCH";
         GhostPreview = "WoodQuarterFloor_Ghost_EPOCH";
-        snapPointsPara[] = {"NQF","SQF","EQF","WQF","C","CB","NF","SF","EF","WF"};
+        snapPointsPara[] = {"NF","SF","EF","WF","C","CB","NHW","SHW","EHW","WHW","NQ1","NQ2","SQ1","SQ2","EQ1","EQ2","WQ1","WQ2"};
         snapPointsPerp[] = {"N","S","E","W","CinN","CinS","CinE","CinW"};
         energyCost = 0.1;
 		// snap points for WoodQuarterFloor_EPOCH
@@ -329,10 +329,10 @@ class CfgBaseBuilding
 		NQ2[] = {-1.30925,3.92775,0};
 		SQ1[] = {1.30925,-3.92775,0};
 		SQ2[] = {-1.30925,-3.92775,0};
-		EQ1[] = {1.30925,0,0};
-		EQ2[] = {3.92775,0,0};
-		WQ1[] = {-1.30925,0,0};
-		WQ2[] = {-3.92775,0,0};
+		EQ1[] = {3.92775,1.30925,0,0};
+		EQ2[] = {3.92775,-1.30925,0};
+		WQ1[] = {-3.92775,1.30925,0};
+		WQ2[] = {-3.92775,-1.30925,0};
     };
 	class WoodQuarterFloor_SIM_EPOCH : WoodQuarterFloor_EPOCH
     {
