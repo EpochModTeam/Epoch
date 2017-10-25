@@ -321,14 +321,22 @@ class CfgBaseBuilding
 		SF[] = {0,-3.92775,0};
 		EF[] = {3.92775,0,0};
 		WF[] = {-3.92775,0,0};
-		NQF[] = {0,2.6185,0};
-		SQF[] = {0,-2.6185,0};
-		EQF[] = {2.6185,0,0};
-		WQF[] = {-2.6185,0,0};
+		NHW[] = {0,3.92775,0};
+		SHW[] = {0,-3.92775,0};
+		EHW[] = {2.6185,0,0};
+		WHW[] = {-2.6185,0,0};
+		NQ1[] = {1.30925,3.92775,0};
+		NQ2[] = {-1.30925,3.92775,0};
+		SQ1[] = {1.30925,-3.92775,0};
+		SQ2[] = {-1.30925,-3.92775,0};
+		EQ1[] = {1.30925,0,0};
+		EQ2[] = {3.92775,0,0};
+		WQ1[] = {-1.30925,0,0};
+		WQ2[] = {-3.92775,0,0};
     };
 	class WoodQuarterFloor_SIM_EPOCH : WoodQuarterFloor_EPOCH
     {
-        allowedSnapPoints[] = {"NQF","SQF","EQF","WQF","C"};
+        allowedSnapPoints[] = {"NHW","SHW","EHW","WHW","NQ1","NQ2","SQ1","SQ2","EQ1","EQ2","WQ1","WQ2"};
         allowedSnapObjects[] = {"Const_floors_static_F"};
         upgradeBuilding[] = {};
         removeParts[] = {};
@@ -343,7 +351,13 @@ class CfgBaseBuilding
         GhostPreview = "MetalFloor_Ghost_EPOCH";
         energyCost = 0.5;
     };
-    class MetalFloor_SIM_EPOCH : WoodFloor_SIM_EPOCH{};
+    class MetalFloor_SIM_EPOCH : WoodFloor_SIM_EPOCH
+	{
+		allowedSnapPoints[] = {"NF","SF","EF","WF","C"};
+        allowedSnapObjects[] = {"Const_floors_static_F","Constructions_foundation_F"};
+        upgradeBuilding[] = {};
+        removeParts[] = {};
+	};
     class MetalFloor_Ghost_EPOCH : MetalFloor_SIM_EPOCH {};
 	class MetalHalfFloor_EPOCH : WoodHalfFloor_EPOCH
     {
@@ -512,7 +526,13 @@ class CfgBaseBuilding
         GhostPreview = "CinderFloor_Ghost_EPOCH";
         energyCost = 1;
     };
-    class CinderFloor_SIM_EPOCH : WoodFloor_SIM_EPOCH{};
+    class CinderFloor_SIM_EPOCH : WoodFloor_SIM_EPOCH
+	{
+		allowedSnapPoints[] = {"NF","SF","EF","WF","C"};
+        allowedSnapObjects[] = {"Const_floors_static_F","Constructions_foundation_F"};
+        upgradeBuilding[] = {};
+        removeParts[] = {};
+	};
     class CinderFloor_Ghost_EPOCH : CinderFloor_SIM_EPOCH {};
 	class CinderHalfFloor_EPOCH : WoodHalfFloor_EPOCH
     {
