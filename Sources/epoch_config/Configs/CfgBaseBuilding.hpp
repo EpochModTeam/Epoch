@@ -194,7 +194,7 @@ class CfgBaseBuilding
     class WoodRamp_Ghost_EPOCH : WoodRamp_SIM_EPOCH {};
     class WoodFloor_EPOCH : Default
     {
-        upgradeBuilding[] = {{"MetalFloor_EPOCH",{{"ItemCorrugatedLg",2}}}};
+        upgradeBuilding[] = {{"MetalFloor_EPOCH",{{"ItemCorrugatedLg",3}}}};
         removeParts[] = {{"PartPlankPack",4}};
         simulClass = "WoodFloor_SIM_EPOCH";
         staticClass = "WoodFloor_EPOCH";
@@ -236,7 +236,7 @@ class CfgBaseBuilding
     class WoodFloor_Ghost_EPOCH : WoodFloor_SIM_EPOCH {};
 	class WoodHalfFloor_EPOCH : Default
     {
-        upgradeBuilding[] = {{"WoodFloor_EPOCH",{{"KitWoodHalfFloor",1}}}};
+        upgradeBuilding[] = {{"MetalHalfFloor_EPOCH",{{"ItemCorrugatedLg",2}}}};
         removeParts[] = {{"PartPlankPack",2}};
         simulClass = "WoodHalfFloor_SIM_EPOCH";
         staticClass = "WoodHalfFloor_EPOCH";
@@ -271,14 +271,13 @@ class CfgBaseBuilding
     class WoodHalfFloor_SIM_EPOCH : WoodHalfFloor_EPOCH
     {
         allowedSnapPoints[] = {"NF","SF","EF","WF","NQF","SQF","EQF","WQF","C"};
-        allowedSnapObjects[] = {"WoodHalfFloor_EPOCH","WoodFloor_EPOCH","WoodQuarterFloor_EPOCH"};
         upgradeBuilding[] = {};
         removeParts[] = {};
     };
     class WoodHalfFloor_Ghost_EPOCH : WoodHalfFloor_SIM_EPOCH {};
 	class WoodQuarterFloor_EPOCH : Default
     {
-        upgradeBuilding[] = {{"WoodHalfFloor_EPOCH",{{"KitWoodQuarterFloor",1}}}};
+        upgradeBuilding[] = {{"MetalQuarterFloor_EPOCH",{{"ItemCorrugatedLg",1}}}};
         removeParts[] = {{"PartPlankPack",1}};
         simulClass = "WoodQuarterFloor_SIM_EPOCH";
         staticClass = "WoodQuarterFloor_EPOCH";
@@ -313,15 +312,14 @@ class CfgBaseBuilding
     class WoodQuarterFloor_SIM_EPOCH : WoodQuarterFloor_EPOCH
     {
         allowedSnapPoints[] = {"NQF","SQF","EQF","WQF","C"};
-        allowedSnapObjects[] = {"WoodQuarterFloor_EPOCH","WoodHalfFloor_EPOCH","WoodFloor_EPOCH"};
         upgradeBuilding[] = {};
         removeParts[] = {};
     };
     class WoodQuarterFloor_Ghost_EPOCH : WoodQuarterFloor_SIM_EPOCH {};
     class MetalFloor_EPOCH : Default
     {
-        upgradeBuilding[] = {{"CinderFloor_EPOCH",{{"CinderBlocks",2},{"MortarBucket",2}}}};
-        removeParts[] = {{"ItemCorrugatedLg",2}};
+        upgradeBuilding[] = {{"CinderFloor_EPOCH",{{"CinderBlocks",3},{"MortarBucket",3}}}};
+        removeParts[] = {{"ItemCorrugatedLg",1},{"ItemCorrugated",1}};
         simulClass = "MetalFloor_SIM_EPOCH";
         staticClass = "MetalFloor_EPOCH";
         GhostPreview = "MetalFloor_Ghost_EPOCH";
@@ -361,7 +359,7 @@ class CfgBaseBuilding
     class MetalFloor_Ghost_EPOCH : MetalFloor_SIM_EPOCH {};
 	class MetalHalfFloor_EPOCH : Default
     {
-        upgradeBuilding[] = {{"MetalFloor_EPOCH",{{"KitMetalHalfFloor",1}}}};
+        upgradeBuilding[] = {{"CinderHalfFloor_EPOCH",{{"CinderBlocks",2},{"MortarBucket",2}}}};
         removeParts[] = {{"ItemCorrugatedLg",1}};
         simulClass = "MetalHalfFloor_SIM_EPOCH";
         staticClass = "MetalHalfFloor_EPOCH";
@@ -396,15 +394,14 @@ class CfgBaseBuilding
     class MetalHalfFloor_SIM_EPOCH : MetalHalfFloor_EPOCH
     {
         allowedSnapPoints[] = {"NF","SF","EF","WF","NQF","SQF","EQF","WQF","C"};
-        allowedSnapObjects[] = {"MetalHalfFloor_EPOCH","MetalFloor_EPOCH","MetalQuarterFloor_EPOCH"};
         upgradeBuilding[] = {};
         removeParts[] = {};
     };
     class MetalHalfFloor_Ghost_EPOCH : MetalHalfFloor_SIM_EPOCH {};
 	class MetalQuarterFloor_EPOCH : Default
     {
-        upgradeBuilding[] = {{"MetalHalfFloor_EPOCH",{{"KitMetalQuarterFloor",1}}}};
-        removeParts[] = {};
+        upgradeBuilding[] = {{"CinderQuarterFloor_EPOCH",{{"CinderBlocks",1},{"MortarBucket",1}}}};
+        removeParts[] = {{"ItemCorrugated",1}};
         simulClass = "MetalQuarterFloor_SIM_EPOCH";
         staticClass = "MetalQuarterFloor_EPOCH";
         GhostPreview = "MetalQuarterFloor_Ghost_EPOCH";
@@ -438,7 +435,6 @@ class CfgBaseBuilding
     class MetalQuarterFloor_SIM_EPOCH : MetalQuarterFloor_EPOCH
     {
         allowedSnapPoints[] = {"NQF","SQF","EQF","WQF","C"};
-        allowedSnapObjects[] = {"MetalQuarterFloor_EPOCH","MetalHalfFloor_EPOCH","MetalFloor_EPOCH"};
         upgradeBuilding[] = {};
         removeParts[] = {};
     };
@@ -446,10 +442,10 @@ class CfgBaseBuilding
 
 	class MetalTower_EPOCH : Default
     {
-        removeParts[] = {{"ItemCorrugatedLg",3}};
+        removeParts[] = {{"ItemCorrugatedLg",2}};
 		upgradeBuilding[] = {{"CinderTower_EPOCH",{{"CinderBlocks",4},{"MortarBucket",4}}}};
         upgradeBuildingPart[] = {{"ItemCorrugatedLg",2}};
-        removeBuildingPart[] = {{"ItemCorrugatedLg",2}};
+        removeBuildingPart[] = {{"ItemCorrugatedLg",1}};
         simulClass = "MetalTower_SIM_EPOCH";
         staticClass = "MetalTower_EPOCH";
         GhostPreview = "MetalTower_Ghost_EPOCH";
@@ -570,7 +566,7 @@ class CfgBaseBuilding
 	class BarbedWire_Ghost_EPOCH : BarbedWire_SIM_EPOCH {};
     class CinderFloor_EPOCH : Default
     {
-        removeParts[] = {{"CinderBlocks",2},{"MortarBucket",2}};
+        removeParts[] = {{"CinderBlocks",2},{"MortarBucket",1}};
         simulClass = "CinderFloor_SIM_EPOCH";
         staticClass = "CinderFloor_EPOCH";
         GhostPreview = "CinderFloor_Ghost_EPOCH";
@@ -610,7 +606,7 @@ class CfgBaseBuilding
     class CinderFloor_Ghost_EPOCH : CinderFloor_SIM_EPOCH {};
 	class CinderHalfFloor_EPOCH : Default
     {
-        upgradeBuilding[] = {{"CinderFloor_EPOCH",{{"KitCinderHalfFloor",1}}}};
+		upgradeBuilding[] = {};
         removeParts[] = {{"CinderBlocks",1},{"MortarBucket",1}};
         simulClass = "CinderHalfFloor_SIM_EPOCH";
         staticClass = "CinderHalfFloor_EPOCH";
@@ -652,8 +648,8 @@ class CfgBaseBuilding
     class CinderHalfFloor_Ghost_EPOCH : CinderHalfFloor_SIM_EPOCH {};
 	class CinderQuarterFloor_EPOCH : Default
     {
-        upgradeBuilding[] = {{"CinderHalfFloor_EPOCH",{{"KitCinderQuarterFloor",1}}}};
-        removeParts[] = {};
+        upgradeBuilding[] = {};
+        removeParts[] = {{"CinderBlocks",1}};
         simulClass = "CinderQuarterFloor_SIM_EPOCH";
         staticClass = "CinderQuarterFloor_EPOCH";
         GhostPreview = "CinderQuarterFloor_Ghost_EPOCH";
@@ -760,7 +756,7 @@ class CfgBaseBuilding
 
 	class CinderTower_EPOCH : Default
     {
-        removeParts[] = {{"CinderBlocks",2}};
+        removeParts[] = {{"CinderBlocks",2},{"MortarBucket",2}};
         upgradeBuildingPart[] = {{"CinderBlocks",2},{"MortarBucket",2}};
         removeBuildingPart[] = {{"CinderBlocks",2}};
         simulClass = "CinderTower_SIM_EPOCH";
@@ -1042,6 +1038,10 @@ class CfgBaseBuilding
 		SF[] = {0,-5.237,3.06};
 		EF[] = {5.237,0,3.06};
 		WF[] = {-5.237,0,3.06};
+		NQF[] = {0,3.92775,3.06};
+		SQF[] = {0,-3.92775,3.06};
+		EQF[] = {3.92775,0,3.06};
+		WQF[] = {-3.92775,0,3.06};
     };
     class WoodStairs_SIM_EPOCH : WoodStairs_EPOCH
     {
@@ -1057,7 +1057,7 @@ class CfgBaseBuilding
         simulClass = "WoodStairs2_SIM_EPOCH";
         staticClass = "WoodStairs2_EPOCH";
         GhostPreview = "WoodStairs2_EPOCH";
-        snapPointsPara[] = {"NF2","SF2","EF2","WF2","NF","SF","EF","WF","C","CB"};
+        snapPointsPara[] = {"NF2","SF2","EF2","WF2","NF","SF","EF","WF","C","CB","NQF","SQF","EQF","WQF"};
         snapPointsPerp[] = {"N","S","E","W","CinN","CinS","CinE","CinW"};
         energyCost = 0.3;
 		// snap points for WoodStairs_EPOCH
@@ -1083,6 +1083,10 @@ class CfgBaseBuilding
 		SF[] = {0,-5.237,3.06};
 		EF[] = {5.237,0,3.06};
 		WF[] = {-5.237,0,3.06};
+		NQF[] = {0,3.92775,3.06};
+		SQF[] = {0,-3.92775,3.06};
+		EQF[] = {3.92775,0,3.06};
+		WQF[] = {-3.92775,0,3.06};
     };
     class WoodStairs2_SIM_EPOCH : WoodStairs2_EPOCH
     {

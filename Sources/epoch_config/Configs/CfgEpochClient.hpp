@@ -194,11 +194,15 @@ class CfgEpochClient
 	EnableRemoveParts = "true";											// Enable removing Tires / Engines from Vehicles
 	DisallowSellOnDamage = "false";										// Prevent from selling Vehicles with one or more fully damaged wheel or engine
 	SuppressedCraftingItems[] = {										// These Items can not be crafted (but can be used in recipe)
-			"VehicleRepairLg",		// Supressed for Advanced Vehicle Repair (no longer needed)
-			"KitMetalFloor",		// Item is Upgradeable, but you can remove it here to make it also Craftable
-			"KitMetalTower",		// Item is Upgradeable, but you can remove it here to make it also Craftable
-			"KitCinderFloor",		// Item is Upgradeable, but you can remove it here to make it also Craftable
-			"KitCinderTower"		// Item is Upgradeable, but you can remove it here to make it also Craftable
+			"VehicleRepairLg",			// Supressed for Advanced Vehicle Repair (no longer needed)
+			"KitMetalQuarterFloor",		// Item is Upgradeable, but you can remove it here to make it also Craftable
+			"KitMetalHalfFloor",		// Item is Upgradeable, but you can remove it here to make it also Craftable
+			"KitMetalFloor",			// Item is Upgradeable, but you can remove it here to make it also Craftable
+			"KitMetalTower",			// Item is Upgradeable, but you can remove it here to make it also Craftable
+			"KitCinderQuarterFloor",	// Item is Upgradeable, but you can remove it here to make it also Craftable
+			"KitCinderHalfFloor",		// Item is Upgradeable, but you can remove it here to make it also Craftable
+			"KitCinderFloor",			// Item is Upgradeable, but you can remove it here to make it also Craftable
+			"KitCinderTower"			// Item is Upgradeable, but you can remove it here to make it also Craftable
 	};
 	VehicleRepairs[] = {												// {Hitpoint, dmg to repair, dmg to replace, mat to repair, mat to replace}
 		{"HitHull",0.33,0.66,"ItemScraps","ItemCorrugated"},
