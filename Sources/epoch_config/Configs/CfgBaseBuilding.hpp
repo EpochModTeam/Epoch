@@ -334,7 +334,7 @@ class CfgBaseBuilding
         removeParts[] = {};
     };
     class WoodQuarterFloor_Ghost_EPOCH : WoodQuarterFloor_SIM_EPOCH {};
-    class MetalFloor_EPOCH : WoodFloor_EPOCH
+    class MetalFloor_EPOCH : WoodFloor_EPOCH // merge
     {
         upgradeBuilding[] = {{"CinderFloor_EPOCH",{{"CinderBlocks",3},{"MortarBucket",3}}}};
         removeParts[] = {{"ItemCorrugatedLg",1},{"ItemCorrugated",1}};
