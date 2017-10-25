@@ -32,7 +32,9 @@ if(_customCol isEqualTo [])then{
 	_txtCol = if((_customCol select 1)isEqualTypeAll 0) then [{_customCol select 1},{_txtCol = [1,1,1,0.95]}];
 };
 
-_msg = str (parseText str _msg); //Parses and converts text back to small string
+if !(typeName _msg isEqualTo "STRING") then { //Needed to remove quotations from strings
+	_msg = str (parseText str _msg); //Parses and converts text back to small string
+};
 
 if !(isNil "rmx_var_msgQueue") exitWith {rmx_var_msgQueue pushBack [_msg, _time, [_bgCol,_txtCol]]};
 
