@@ -286,19 +286,12 @@ class CfgBaseBuilding
     };
     class WoodHalfFloor_SIM_EPOCH : WoodHalfFloor_EPOCH
     {
-<<<<<<< HEAD
         allowedSnapPoints[] = {"NF","SF","EF","WF","NHW","SHW","EHW","WHW"};
-=======
-        allowedSnapPoints[] = {"NF","SF","EF","WF","NQF","SQF","EQF","WQF","C"};
->>>>>>> origin/experimental
         allowedSnapObjects[] = {"Const_floors_static_F"};
         upgradeBuilding[] = {};
         removeParts[] = {};
     };
     class WoodHalfFloor_Ghost_EPOCH : WoodHalfFloor_SIM_EPOCH {};
-<<<<<<< HEAD
-    class MetalFloor_EPOCH : WoodFloor_EPOCH
-=======
 	class WoodQuarterFloor_EPOCH : Default
     {
         upgradeBuilding[] = {{"MetalQuarterFloor_EPOCH",{{"ItemCorrugatedLg",1}}}};
@@ -333,7 +326,7 @@ class CfgBaseBuilding
 		EQF[] = {2.6185,0,0};
 		WQF[] = {-2.6185,0,0};
     };
-    class WoodQuarterFloor_SIM_EPOCH : WoodQuarterFloor_EPOCH
+	class WoodQuarterFloor_SIM_EPOCH : WoodQuarterFloor_EPOCH
     {
         allowedSnapPoints[] = {"NQF","SQF","EQF","WQF","C"};
         allowedSnapObjects[] = {"Const_floors_static_F"};
@@ -341,8 +334,7 @@ class CfgBaseBuilding
         removeParts[] = {};
     };
     class WoodQuarterFloor_Ghost_EPOCH : WoodQuarterFloor_SIM_EPOCH {};
-    class MetalFloor_EPOCH : Default
->>>>>>> origin/experimental
+    class MetalFloor_EPOCH : WoodFloor_EPOCH
     {
         upgradeBuilding[] = {{"CinderFloor_EPOCH",{{"CinderBlocks",3},{"MortarBucket",3}}}};
         removeParts[] = {{"ItemCorrugatedLg",1},{"ItemCorrugated",1}};
@@ -364,11 +356,7 @@ class CfgBaseBuilding
     };
     class MetalHalfFloor_SIM_EPOCH : MetalHalfFloor_EPOCH
     {
-<<<<<<< HEAD
         allowedSnapPoints[] = {"NF","SF","EF","WF","NHW","SHW","EHW","WHW"};
-=======
-        allowedSnapPoints[] = {"NF","SF","EF","WF","NQF","SQF","EQF","WQF","C"};
->>>>>>> origin/experimental
         allowedSnapObjects[] = {"Const_floors_static_F"};
         upgradeBuilding[] = {};
         removeParts[] = {};
@@ -385,11 +373,7 @@ class CfgBaseBuilding
     };
     class MetalQuarterFloor_SIM_EPOCH : MetalQuarterFloor_EPOCH
     {
-<<<<<<< HEAD
-        allowedSnapPoints[] = {"NHW","SHW","EHW","WHW","NQ1","NQ2","SQ1","SQ2","EQ1","EQ2","WQ1","WQ2"};
-=======
-        allowedSnapPoints[] = {"NQF","SQF","EQF","WQF","C"};
->>>>>>> origin/experimental
+		allowedSnapPoints[] = {"NHW","SHW","EHW","WHW","NQ1","NQ2","SQ1","SQ2","EQ1","EQ2","WQ1","WQ2"};
         allowedSnapObjects[] = {"Const_floors_static_F"};
         upgradeBuilding[] = {};
         removeParts[] = {};
