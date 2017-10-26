@@ -58,6 +58,7 @@ if (_objSlot != -1) then {
 				_ammoObj = createVehicle [_ammoClass, [0,0,0], [], 0, "CAN_COLLIDE"];
 				_ammoObj attachTo [_newObj,[0,0,0]];
 				_newObj setVariable ["EPOCH_TRAP_OBJ",_ammoObj];
+				_newObj addEventHandler ["Explosion", {(_this select 0) setDamage 1}];
 			};
 
 			_newObj	setDamage _damage;

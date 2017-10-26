@@ -108,6 +108,7 @@ for "_i" from 0 to _this do {
 				_ammoObj setVectorDirAndUp _worldspace;
 				_ammoObj setposATL _location;
 				_baseObj setVariable ["EPOCH_TRAP_OBJ",_ammoObj];
+				_baseObj addEventHandler ["Explosion", {(_this select 0) setDamage 1}];
 			};
 
 			// set persistent Animations
