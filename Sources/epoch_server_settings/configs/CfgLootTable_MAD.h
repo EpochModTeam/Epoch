@@ -784,10 +784,7 @@ class CfgLootTable_MAD
 				{ { "Gems", "CfgLootTable" }, 5 },
 				{ { "MetalBars", "CfgLootTable" }, 26 },
 				{ { "PartOreGold", "magazine" }, 10 },
-				{ { "PartOreSilver", "magazine" }, 13 },
-				{ { "ItemKiloHemp", "magazine" }, 12 },
-				{ { "ItemScraps", "magazine" }, 16 },
-				{ { "PartOre", "magazine" }, 18 }
+				{ { "PartOreSilver", "magazine" }, 13 }
 		};
 	};
 	class MetalBars
