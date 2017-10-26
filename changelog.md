@@ -1,7 +1,7 @@
 # Change Log
 All changes for [Arma 3](https://arma3.com/) [Epoch Mod](https://epochmod.com) are listed in this changelog.
 
-## [Unreleased]
+##[1.0.0.0] - 2017-10-26
 ### Added
 - Favorites bar. Users can pin (almost) any item to the bar by dragging items from inventory to equip/un-equip (Weapons, attachments, head gear, etc.) or consume (eat, drink, build, etc.) using keyboard mapping without having gear open. Use ESC menu to change the mappings. Server admins, see client_init.sqf for config. @raymix
 - Advanced Vehicle Repair System - Repairing your vehicle just got more realistic. Patch a leaky fuel tank with Duct Tape. If you blow a tire you now need to find a Spare. Engine too damaged? grab an engine block to repair it. @Ignatz-Heman
