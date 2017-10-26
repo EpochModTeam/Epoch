@@ -104,11 +104,12 @@ class CfgLootTable_CUP
 	class Equipment
 	{
 		items[] = {
-				{ { "Rangefinder", "weapon" }, 5 },
-				{ { "Binocular", "item" }, 35 },
-				{ { "NVG_EPOCH", "item" }, 10 },
+				{ { "Rangefinder", "weapon" }, 15 },
+				{ { "Binocular", "item" }, 40 },
+				{ { "NVG_EPOCH", "item" }, 5 },
 				{ { "acc_flashlight", "item" }, 15 },
-				{ { "acc_pointer_IR", "item" }, 15 },
+				{ { "acc_flashlight_pistol", "item" }, 10 },
+				{ { "acc_pointer_IR", "item" }, 5 },
 				// Marksman DLC
 				{ { "Bipods", "CfgLootTable" }, 5 },
 				// CUP

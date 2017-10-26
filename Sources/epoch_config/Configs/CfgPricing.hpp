@@ -430,6 +430,10 @@ class CfgPricing
     {
         price = 5;
     };
+	class acc_flashlight_pistol
+	{
+        price = 5;
+    };
     class acc_pointer_IR
     {
         price = 5;
