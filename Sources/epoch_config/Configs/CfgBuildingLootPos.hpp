@@ -705,18 +705,45 @@ class CfgBuildingLootPos
     };
     class Land_i_House_Small_02_V2_F : Land_i_House_Small_02_V1_F {};
     class Land_i_House_Small_02_V3_F : Land_i_House_Small_02_V1_F {};
-    class Land_i_House_Small_02_b_blue_F : Land_i_House_Small_02_V1_F {};
-    class Land_i_House_Small_02_b_pink_F : Land_i_House_Small_02_V1_F {};
-    class Land_i_House_Small_02_b_whiteblue_F : Land_i_House_Small_02_V1_F {};
-    class Land_i_House_Small_02_b_white_F : Land_i_House_Small_02_V1_F {};
-    class Land_i_House_Small_02_b_brown_F : Land_i_House_Small_02_V1_F {};
-    class Land_i_House_Small_02_b_yellow_F : Land_i_House_Small_02_V1_F {};
-    class Land_i_House_Small_02_c_blue_F : Land_i_House_Small_02_V1_F {};
-    class Land_i_House_Small_02_c_pink_F : Land_i_House_Small_02_V1_F {};
-    class Land_i_House_Small_02_c_whiteblue_F : Land_i_House_Small_02_V1_F {};
-    class Land_i_House_Small_02_c_white_F : Land_i_House_Small_02_V1_F {};
-    class Land_i_House_Small_02_c_brown_F : Land_i_House_Small_02_V1_F {};
-    class Land_i_House_Small_02_c_yellow_F : Land_i_House_Small_02_V1_F {};
+	class Land_i_House_Small_02_b_whiteblue_F : Default {
+	    fridgePos[] = {
+	        { {-5.15283,-0.370117,-0.533894}, 270 }
+	    };
+	    bedPos[] = {
+	        { {4.48145,0.750977,-0.610384}, 360 }
+	    };
+	    couchPos[] = {
+	        { {-2.45703,-1.98438,-0.634064}, 4.99997 },
+	        { {6.25391,0.797852,-0.726635}, 2.0285 }
+	    };
+	    wardrobePos[] = {
+	        { {-0.522461,-2.36426,-0.622379}, 270.9 }
+	    };
+	    cookerPos[] = {
+	        { {-5.14209,1.80957,-0.625494}, 271 }
+	    };
+	    chairPos[] = {
+	        { {-0.303223,-0.370117,-0.631815}, 271 },
+	        { {1.70459,-3.11914,-0.66921}, 189.8 }
+	    };
+	    tablePos[] = {
+	        { {2.26221,2.12109,-0.627096}, 360 }
+	    };
+	    toiletPos[] = {
+	        { {-5.104,-3.36426,-0.615711}, 266 }
+	    };
+	};
+	class Land_i_House_Small_02_b_blue_F : Land_i_House_Small_02_b_whiteblue_F {};
+	class Land_i_House_Small_02_b_pink_F : Land_i_House_Small_02_b_whiteblue_F {};
+    class Land_i_House_Small_02_b_white_F : Land_i_House_Small_02_b_whiteblue_F {};
+    class Land_i_House_Small_02_b_brown_F : Land_i_House_Small_02_b_whiteblue_F {};
+    class Land_i_House_Small_02_b_yellow_F : Land_i_House_Small_02_b_whiteblue_F {};
+    class Land_i_House_Small_02_c_blue_F : Land_i_House_Small_02_b_whiteblue_F {};
+    class Land_i_House_Small_02_c_pink_F : Land_i_House_Small_02_b_whiteblue_F {};
+    class Land_i_House_Small_02_c_whiteblue_F : Land_i_House_Small_02_b_whiteblue_F {};
+    class Land_i_House_Small_02_c_white_F : Land_i_House_Small_02_b_whiteblue_F {};
+    class Land_i_House_Small_02_c_brown_F : Land_i_House_Small_02_b_whiteblue_F {};
+    class Land_i_House_Small_02_c_yellow_F : Land_i_House_Small_02_b_whiteblue_F {};
     class Land_Chapel_V1_F : Default
     {
         wardrobePos[] = {{{6.00195,-3.92969,-2.83485},179.372},{{6.51758,3.87891,-2.83486},0.951279}};
@@ -863,7 +890,29 @@ class CfgBuildingLootPos
 		toiletPos[] = {{{-1.56445,0.117188,0.047205},180.667}};
     };
     class Land_u_Addon_02_V1_F : Land_i_Addon_02_V1_F {};
-    class Land_i_Addon_02_b_white_F : Land_i_Addon_02_V1_F {};
+	class Land_i_Addon_02_b_white_F : Default {
+	    fridgePos[] = {
+	        { {4.36523,3.05859,0.0886669}, 0 }
+	    };
+	    bedPos[] = {
+	        { {0.267578,2.0752,0.0914993}, 180 }
+	    };
+	    wardrobePos[] = {
+	        { {2.27539,3.04395,0.0924225}, 0.999984 }
+	    };
+	    chairPos[] = {
+	        { {1.26514,-0.660156,0.0912437}, 180 }
+	    };
+	    tablePos[] = {
+	        { {3.0249,-0.619141,0.0996017}, 180 }
+	    };
+	    palletPos[] = {
+	        { {0.418945,-1.67969,-10}, 180 }
+	    };
+	    toiletPos[] = {
+	        { {5.76465,2.99609,0.0392551}, 0 }
+	    };
+	};
     class Land_d_Addon_02_V1_F : Default
     {
         couchPos[] = {{{-0.962891,2.74805,0.41301},261.447}};
@@ -932,12 +981,31 @@ class CfgBuildingLootPos
         toolRackPos[] = {{{3.20313,3.35938,-0.126961},88.6889}};
 		toiletPos[] = {{{1.87305,4.05859,-0.134884},0.344559}};
     };
-    class Land_i_Stone_Shed_01_b_clay_F : Land_i_Stone_Shed_V1_F {};
-    class Land_i_Stone_Shed_01_b_raw_F : Land_i_Stone_Shed_V1_F {};
-    class Land_i_Stone_Shed_01_b_white_F : Land_i_Stone_Shed_V1_F {};
-    class Land_i_Stone_Shed_01_c_clay_F : Land_i_Stone_Shed_V1_F {};
-    class Land_i_Stone_Shed_01_c_raw_F : Land_i_Stone_Shed_V1_F {};
-    class Land_i_Stone_Shed_01_c_white_F : Land_i_Stone_Shed_V1_F {};
+	class Land_i_Stone_Shed_01_b_clay_F : Default {
+	    bedPos[] = {
+	        { {2.52246,0.351074,-0.128504}, 90 }
+	    };
+	    couchPos[] = {
+	        { {0.87207,3.16895,-0.026947}, 270 }
+	    };
+	    chairPos[] = {
+	        { {-0.571289,1.96582,-0.128511}, 280 }
+	    };
+	    tablePos[] = {
+	        { {0.279297,-0.111328,-0.126944}, 178.227 }
+	    };
+	    toolRackPos[] = {
+	        { {6.00293,3.41748,-0.126961}, 90 }
+	    };
+	    toiletPos[] = {
+	        { {5.24414,3.92529,-0.134884}, 360 }
+	    };
+	};
+    class Land_i_Stone_Shed_01_b_raw_F : Land_i_Stone_Shed_01_b_clay_F {};
+    class Land_i_Stone_Shed_01_b_white_F : Land_i_Stone_Shed_01_b_clay_F {};
+    class Land_i_Stone_Shed_01_c_clay_F : Land_i_Stone_Shed_01_b_clay_F {};
+    class Land_i_Stone_Shed_01_c_raw_F : Land_i_Stone_Shed_01_b_clay_F {};
+    class Land_i_Stone_Shed_01_c_white_F : Land_i_Stone_Shed_01_b_clay_F {};
 
     class Land_d_Stone_HouseBig_V1_F : Default
     {
@@ -4928,6 +4996,313 @@ class CfgBuildingLootPos
     class Land_i_House_Small_01_V2_dam_F : Land_i_House_Small_01_V1_F {};
     class Land_i_House_Small_01_V3_dam_F : Land_i_House_Small_01_V1_F {};
     class Land_u_House_Small_01_V1_dam_F : Land_i_House_Small_01_V1_F {};
+
+	class Land_spp_Transformer_F : Default {
+	    palletPos[] = {
+	        { {-2.33301,-1.54736,-10}, 126.752 }
+	    };
+	};
+
+	class Land_Pier_addon : Default {
+	    shoeboxPos[] = {
+	        { {-3.15479,-1.13086,-0.577168}, 303.465 }
+	    };
+	    palletPos[] = {
+	        { {5.02979,-0.545898,-0.582138}, 175.465 }
+	    };
+	};
+	class Land_Barn_01_grey_F : Default {
+	    shelfPos[] = {
+	        { {-8.36279,2.08594,-0.802982}, 270 },
+	        { {8.39307,2.12988,-0.796082}, 89 },
+	        { {8.38916,-2.67285,-0.794535}, 91.752 }
+	    };
+	    couchPos[] = {
+	        { {-2.93018,-2.88867,-0.802755}, 94.752 }
+	    };
+	    tablePos[] = {
+	        { {-8.08936,-2.2793,-0.802982}, 269.752 }
+	    };
+	    toolRackPos[] = {
+	        { {-5.1792,2.32813,-0.802982}, 271 }
+	    };
+	    shoeboxPos[] = {
+	        { {-7.04297,-3.72949,0.0970173}, 341.552 }
+	    };
+	    palletPos[] = {
+	        { {1.13916,2.80273,-0.801611}, 274 },
+	        { {4.77686,-3.38477,-0.796951}, 273 }
+	    };
+	};
+	class Land_Barn_01_brown_F : Land_Barn_01_grey_F {};
+
+	class Land_Metal_Shed_F : Default {
+	    toolRackPos[] = {
+	        { {-2.18555,-3.85742,-1.23042}, 179 }
+	    };
+	    shoeboxPos[] = {
+	        { {-4.51074,0.143066,-10}, 110 }
+	    };
+	    palletPos[] = {
+	        { {-0.787109,-0.699707,-10}, 193 },
+	        { {1.30273,-0.723145,-10}, 153 }
+	    };
+	};
+	class Land_Shed_08_brown_F : Default {
+	    bedPos[] = {
+	        { {-2.29199,-1.36182,-1.00694}, 9.99997 }
+	    };
+	    wardrobePos[] = {
+	        { {-4.81738,-1.14258,-0.94993}, 268 }
+	    };
+	    chairPos[] = {
+	        { {-1.73926,2.5293,-0.988781}, 20 }
+	    };
+	    tablePos[] = {
+	        { {0.0458984,-1.74316,-1.00677}, 270 }
+	    };
+	    shoeboxPos[] = {
+	        { {-3.67969,3.28027,-0.187668}, 180 }
+	    };
+	    palletPos[] = {
+	        { {4.63672,1.23193,-0.994326}, 250 }
+	    };
+	};
+	class Land_Shed_08_grey_F : Land_Shed_08_brown_F {};
+
+	class Land_Stone_Shed_V1_ruins_F : Default {
+	    shoeboxPos[] = {
+	        { {3.69434,2.58398,1.25675}, 190 }
+	    };
+	    palletPos[] = {
+	        { {0.112305,0.968262,1.08651}, 239 }
+	    };
+	};
+	class Land_Grave_rocks_F : Default {
+	    shoeboxPos[] = {
+	        { {0.675781,-0.0419922,0.158855}, 182.9 }
+	    };
+	};
+	class Land_TBox_F : Default {
+	    shoeboxPos[] = {
+	        { {-0.991211,1.70605,-10}, 0.999985 }
+	    };
+	    palletPos[] = {
+	        { {-0.726563,-1.90234,-10}, 13 }
+	    };
+	};
+	class Land_Supermarket_01_malden_F : Default {
+	    shelfPos[] = {
+	        { {-2.60059,10.2754,-1.50662}, 89.154 },
+	        { {7.64258,11.6714,-1.50955}, 89.154 }
+	    };
+	    fridgePos[] = {
+	        { {7.49316,9.19189,-1.48759}, 89.5859 }
+	    };
+	    cookerPos[] = {
+	        { {-5.12695,2.104,-1.50335}, 282.154 }
+	    };
+	    filingPos[] = {
+	        { {-5.38574,7.01904,-1.50443}, 179.154 }
+	    };
+	    lockerPos[] = {
+	        { {-5.2334,10.0562,-1.47596}, 270.996 }
+	    };
+		shoeboxPos[] = {
+			{ {5.75977,2.52051,-1.50255}, 290 },
+			{ {-0.841797,-7.60205,-0.514952}, 310 },
+			{ {2.91797,-7.49902,-0.51544}, 330 }
+		};
+	    palletPos[] = {
+	        { {1.44336,-2.16846,-1.49765}, 350.154 },
+	        { {1.14258,-8.13672,-1.47687}, 263.154 }
+	    };
+	    freezerPos[] = {
+	        { {-5.20117,-2.84277,-1.50252}, 268.154 },
+	        { {7.40625,7.4043,-1.47617}, 92 }
+	    };
+	    cabinetPos[] = {
+	        { {6.16016,6.85205,-0.205524}, 268.154 }
+	    };
+	    toiletPos[] = {
+	        { {-5.33301,11.7261,-1.50726}, 350.154 }
+	    };
+	};
+	class Land_fs_roof_F : Default {
+	    shoeboxPos[] = {
+	        { {-2.50488,0.224609,-2.1651}, 313 }
+	    };
+	};
+	class Land_Bunker_01_big_F : Default {
+		lootType = "mil";
+	    shelfPos[] = {
+	        { {-0.57666,2.49512,-0.0691071}, 0.451775 }
+	    };
+	    bedPos[] = {
+	        { {-3.55566,1.28809,-0.0723591}, 95 }
+	    };
+	    pelicanPos[] = {
+	        { {0.932129,-3.37988,-0.0662937}, 233.452 },
+	        { {-1.23535,-5.16211,-0.057478}, 0.451786 }
+	    };
+	    lockerPos[] = {
+	        { {-0.548828,-2.99414,-0.0700665}, 90.4518 }
+	    };
+	    shoeboxPos[] = {
+	        { {-4.65869,-0.330078,0.008358}, 110.452 }
+	    };
+	    cabinetPos[] = {
+	        { {-2.31494,-4.04199,1.11855}, 270.452 }
+	    };
+	};
+	class Land_Bunker_01_small_F : Default {
+		lootType = "mil";
+	    pelicanPos[] = {
+	        { {0.750977,1.12305,0.148882}, 9.99997 }
+	    };
+	    shoeboxPos[] = {
+	        { {-1.03125,1.42383,0.293089}, 153 }
+	    };
+	    cabinetPos[] = {
+	        { {-0.260742,1.55176,1.10681}, 90.9999 }
+	    };
+	};
+	class Land_i_Garage_V1_dam_F : Default {
+	    shelfPos[] = {
+	        { {-3.66797,-3.03369,-0.145458}, 192 }
+	    };
+	    toolRackPos[] = {
+	        { {2.46387,-3.35156,-0.160837}, 182 }
+	    };
+	    palletPos[] = {
+	        { {1.53613,0.891113,-0.160868}, 182 }
+	    };
+	    freezerPos[] = {
+	        { {4.55469,-2.6377,-0.166363}, 99.4322 }
+	    };
+	};
+	class Land_Stone_HouseBig_V1_ruins_F : Default {
+	    shoeboxPos[] = {
+	        { {2.78027,1.70898,0.916737}, 210 }
+	    };
+	    palletPos[] = {
+	        { {-0.262695,1.80664,1.84048}, 356 }
+	    };
+	};
+	class Land_Stone_HouseSmall_V1_ruins_F : Default {
+	    shelfPos[] = {
+	        { {0.160156,-1.12891,0.57814}, 90 }
+	    };
+	    palletPos[] = {
+	        { {-4.82813,2.50977,0.975464}, 210 },
+	        { {6.55859,1.61523,0.799408}, 261.9 }
+	    };
+	};
+	class Land_Bunker_01_HQ_F : Default {
+		lootType = "mil";
+	    shelfPos[] = {
+	        { {-0.306641,-0.130371,-0.993013}, 92.7387 }
+	    };
+	    pelicanPos[] = {
+	        { {0.732422,0.122559,-1.05364}, 266.739 },
+	        { {4.08887,2.13428,-1.02561}, 7 }
+	    };
+	    shoeboxPos[] = {
+	        { {-2.08887,2.6709,-0.989424}, 106.739 }
+	    };
+	    cabinetPos[] = {
+	        { {-2.75488,0.821289,0.109707}, 359.739 }
+	    };
+	};
+	class Land_Carousel_01_F : Default {
+	    shoeboxPos[] = {
+	        { {0.105469,0.0498047,0.479246}, 93.2 }
+	    };
+	};
+	class Land_Bunker_01_tall_F : Default {
+		lootType = "mil";
+	    shelfPos[] = {
+	        { {-2.83789,1.38379,-3.42283}, 267.864 }
+	    };
+	    pelicanPos[] = {
+	        { {-1.03516,0.21875,1.37418}, 20 },
+	        { {-1.99414,-0.817383,-3.49438}, 237.358 }
+	    };
+	    shoeboxPos[] = {
+	        { {0.681641,0.616211,1.49148}, 213.2 },
+	        { {2.7002,1.9541,1.48981}, 143.2 }
+	    };
+	};
+	class Land_ReservoirTank_01_military_F : Default {
+		lootType = "mil";
+	    shelfPos[] = {
+	        { {2.38135,-0.182617,-12.8069}, 269 }
+	    };
+	};
+	class Land_Cargo_House_V3_derelict_F : Default {
+		lootType = "mil";
+	    shelfPos[] = {
+	        { {-2.58203,-0.36377,-0.0428944}, 269 }
+	    };
+	    filingPos[] = {
+	        { {2.09277,-0.495605,-0.0437584}, 120 }
+	    };
+	    pelicanPos[] = {
+	        { {1.90625,0.526367,-0.0736256}, 69.1639 }
+	    };
+	};
+	class Land_Cargo_Patrol_V2_ruins_F : Default {
+		lootType = "mil";
+	    pelicanPos[] = {
+	        { {1.94385,1.6875,-0.575218}, 70.5285 }
+	    };
+	    shoeboxPos[] = {
+	        { {2.26416,0.265625,-0.515388}, 107.5 }
+	    };
+	};
+	class Land_cmp_Shed_F : Default {
+	    palletPos[] = {
+	        { {-5.33643,-0.695313,-10}, 107.5 },
+	        { {-4.94482,2.17676,-10}, 67.5 }
+	    };
+	};
+	class Land_ReservoirTank_V1_F : Default {
+	    shelfPos[] = {
+	        { {2.39355,-0.24707,-12.7961}, 259.5 }
+	    };
+	};
+	class Land_Unfinished_Building_01_noLadder_F : Default {
+	    shelfPos[] = {
+	        { {-4.89355,5.66748,1.16652}, 271 },
+	        { {-4.18066,6.06885,-2.34162}, 359.5 }
+	    };
+	    toolRackPos[] = {
+	        { {-5.11914,3.43164,1.25501}, 270 }
+	    };
+	    shoeboxPos[] = {
+	        { {1.06934,0.99707,1.16328}, 280 }
+	    };
+	    palletPos[] = {
+	        { {-1.85254,-1.68066,1.17049}, 280 },
+	        { {0.128906,2.68799,1.17328}, 260 },
+	        { {-2.81738,-1.42041,-2.33168}, 253 },
+	        { {-1.02344,5.35107,-2.32672}, 360 }
+	    };
+	};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 	class bunker_epoch : Default {
