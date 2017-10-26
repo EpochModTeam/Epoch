@@ -182,6 +182,10 @@ class CfgItemInteractions
     {
         interactAttributes[] = {{"Thirst",500},{"Stamina",50}};
     };
+	class HotAxeSauce_epoch : Drink_Jar_base
+    {
+        interactAttributes[] = {{"Thirst",-500},{"Immunity",1},{"Stamina",5}};
+    };
     class ItemSodaRbull : Soda_base
     {
         interactAttributes[] = {{"Thirst",1000},{"Stamina",100}};
