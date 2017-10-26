@@ -89,9 +89,16 @@ for "_i" from 0 to _this do {
 					} foreach _IndestructibleBaseObjects;
 				};
 			};
-			_baseObj setVectorDirAndUp _worldspace;
 			_baseObj setposATL _location;
+			_baseObj setVectorDirAndUp _worldspace;
 
+			// new Dynamicsimulation
+			if(["CfgDynamicSimulation", "baseDynamicSimulationSystem", true] call EPOCH_fnc_returnConfigEntryV2)then
+			{
+				_baseObj enableSimulationGlobal false; // turn off sim on server start, let dynSim activate it to true
+				_baseObj enableDynamicSimulation true;
+				_baseObj triggerDynamicSimulation false; // this object doesnt need to turn anything on in the server
+			};
 
 			// spawn additional object for trap
 			_ammoClass = (_cfgBaseBuilding >> _class >> "ammoClass");
@@ -101,6 +108,7 @@ for "_i" from 0 to _this do {
 				_ammoObj setVectorDirAndUp _worldspace;
 				_ammoObj setposATL _location;
 				_baseObj setVariable ["EPOCH_TRAP_OBJ",_ammoObj];
+				_baseObj addEventHandler ["Explosion", {(_this select 0) setDamage 1}];
 			};
 
 			// set persistent Animations

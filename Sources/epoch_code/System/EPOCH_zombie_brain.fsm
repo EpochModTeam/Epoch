@@ -1,11 +1,11 @@
 /*%FSM<COMPILE "F:\Program Files (x86)\Steam\steamapps\common\Arma 3 Tools\FSMEditor\scriptedFSM.cfg, zombie">*/
 /*%FSM<HEAD>*/
 /*
-item0[] = {"brainz",0,4346,-25.000000,75.000000,75.000000,125.000000,0.000000,"brainz"};
+item0[] = {"brainz",0,250,-25.000000,75.000000,75.000000,125.000000,0.000000,"brainz"};
 item1[] = {"_",8,218,125.000000,-175.000000,225.000000,-125.000000,0.000000,""};
 item2[] = {"instinct",2,250,125.000000,-250.000000,225.000000,-200.000000,0.000000,"instinct"};
 item3[] = {"check",4,218,275.000000,-250.000000,375.000000,-200.000000,5.000000,"check"};
-item4[] = {"pre_dispose",2,250,-75.000000,-100.000000,25.000000,-50.000000,0.000000,"pre dispose"};
+item4[] = {"pre_dispose",2,4346,-75.000000,-100.000000,25.000000,-50.000000,0.000000,"pre dispose"};
 item5[] = {"dispose_1",4,218,-75.000000,-275.000000,25.000000,-225.000000,100.000000,"dispose"};
 item6[] = {"wait_dispose",4,218,-100.000000,-25.000000,0.000000,25.000000,0.000000,"wait" \n "dispose"};
 item7[] = {"reset_vars",2,250,125.000000,-100.000000,225.000000,-50.000000,0.000000,"reset vars"};
@@ -28,7 +28,7 @@ item23[] = {"hearing___target",4,218,600.000000,-225.000000,700.000000,-175.0000
 item24[] = {"spin",2,250,-50.000000,-425.000000,50.000000,-375.000000,0.000000,"spin"};
 item25[] = {"wait",4,218,75.000000,-425.000000,175.000000,-375.000000,0.000000,"wait"};
 item26[] = {"scream",4,218,200.000000,-425.000000,300.000000,-375.000000,80.000000,"scream"};
-item27[] = {"____FAKE____",9,0,0.000000,0.000000,0.000000,0.000000,0.000000,"____FAKE____"};
+item27[] = {"____FAKE____",9,0,0.000000,0.000000,5135053892148252000000000000000000.000000,0.000000,0.000000,"____FAKE____"};
 link0[] = {0,17};
 link1[] = {1,2};
 link2[] = {2,3};
@@ -70,8 +70,8 @@ link37[] = {24,25};
 link38[] = {25,2};
 link39[] = {26,2};
 link40[] = {27,10};
-globals[] = {0.000000,0,0,0,0,640,480,1,267,6316128,1,-268.969421,732.515686,320.848328,-611.003845,978,854,1};
-window[] = {2,-1,-1,-32000,-32000,551,26,1051,26,3,996};
+globals[] = {0.000000,0,0,0,0,640,480,1,267,6316128,1,-268.969421,732.515686,320.848328,-611.003845,978,884,1};
+window[] = {2,-1,-1,-1,-1,733,208,1233,208,3,996};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -93,8 +93,8 @@ class FSM
                          "_fsmPath = ""epoch_code\system"";" \n
                          "_zombie setBehaviour ""CARELESS"";" \n
                          "_zombie setUnitPos ""UP""; " \n
-                         "_trgtArr =  [""Epoch_Man_Base_F"",""Epoch_Female_base_F""];" \n
-                         "_vehArray = [""Car""];" \n
+                         "_trgtArr =  [""Epoch_Male_F"",""Epoch_Female_F"",""LandVehicle"",""Ship"",""Air"",""Tank""];" \n
+                         "" \n
                          "_trgt = player;" \n
                          "_t =  diag_tickTime;" \n
                          "_zedPos = getPosATL _zombie;" \n
@@ -406,7 +406,7 @@ class FSM
                 {
                         name = "pre_dispose";
                         itemno = 4;
-                        init = /*%FSM<STATEINIT""">*/"_nrTrgts = _zedPos nearEntities [_trgtArr, 480];" \n
+                        init = /*%FSM<STATEINIT""">*/"_nrTrgts = (_zedPos nearEntities [_trgtArr, 480]) select {isPlayer _x};" \n
                          "_canSee = [];" \n
                          "{" \n
                          "	if !(lineIntersects [eyePos _trgt, eyePos _zombie, _zombie, _trgt]) then{" \n
@@ -622,8 +622,7 @@ class FSM
                                         precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
                                         condition=/*%FSM<CONDITION""">*/"_sanityCheck > 90 && !_moving && _smellCoeff > 0 && !_inSafe"/*%FSM</CONDITION""">*/;
                                         action=/*%FSM<ACTION""">*/"_nrstTrgt = objNull;" \n
-                                         "//_nrTrgts = _zedPos nearEntities [_trgtArr, _smellDist];" \n
-                                         "_nrTrgts =  nearestObjects [_zedPos, _trgtArr, _smellDist];" \n
+                                         "_nrTrgts = (_zedPos nearEntities [_trgtArr, _sightDist]) select {isPlayer _x};" \n
                                          "_avPos = [0,0,0];" \n
                                          "_upwindPos = [0,0,0];" \n
                                          "_smellTrgtPos = [];" \n
@@ -658,8 +657,7 @@ class FSM
                                         to="checking_status";
                                         precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
                                         condition=/*%FSM<CONDITION""">*/"_sanityCheck > 85 && _sightCoeff > 0 && !_inSafe"/*%FSM</CONDITION""">*/;
-                                        action=/*%FSM<ACTION""">*/"//_nrTrgts = _zedPos nearEntities [_trgtArr, _sightDist];" \n
-                                         "_nrTrgts =  nearestObjects [_zedPos, _trgtArr, _sightDist];" \n
+                                        action=/*%FSM<ACTION""">*/"_nrTrgts = (_zedPos nearEntities [_trgtArr, _sightDist]) select {isPlayer _x};" \n
                                          "_sightPos = [0,0,0];" \n
                                          "_avPos = [0,0,0];" \n
                                          "" \n
@@ -671,7 +669,7 @@ class FSM
                                          "" \n
                                          "" \n
                                          "	{" \n
-                                         "	_sight = [_zombie, ""VIEW""] checkVisibility [eyePos _zombie,aimPos _x];" \n
+                                         "	_sight = [_zombie, ""VIEW""] checkVisibility [eyePos _zombie,aimPos (driver _x)];" \n
                                          "		if(alive _x)then{" \n
                                          "			if(_sight >= 0.62)then{" \n
                                          "				_thisPos = getPosATL _x;" \n

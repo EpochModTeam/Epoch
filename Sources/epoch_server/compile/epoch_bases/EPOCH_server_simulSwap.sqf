@@ -56,10 +56,9 @@ if (_objSlot != -1) then {
 			if (isText _ammoClass) then {
 				_ammoClass = getText _ammoClass;
 				_ammoObj = createVehicle [_ammoClass, [0,0,0], [], 0, "CAN_COLLIDE"];
-				//_ammoObj setVectorDirAndUp [(_worldspace select 1),(_worldspace select 2)];
-				//_ammoObj setposATL (_worldspace select 0);
 				_ammoObj attachTo [_newObj,[0,0,0]];
 				_newObj setVariable ["EPOCH_TRAP_OBJ",_ammoObj];
+				_newObj addEventHandler ["Explosion", {(_this select 0) setDamage 1}];
 			};
 
 			_newObj	setDamage _damage;

@@ -20,44 +20,31 @@ params [["_object",objNull,[objNull]],["_type",0,[0]],["_player",objNull,[objNul
 if (isNull _object) exitWith{};
 if !([_player, _token] call EPOCH_server_getPToken) exitWith{};
 
-if (!(_object isKindOf "All")) then {
+if (alive _object) then {
 
-	if (alive _object) then {
+	_config = 'CfgEpochClient' call EPOCH_returnConfig;
+	_payout = getArray(_config >> worldname >> "TrashClasses") param [_type, "Trash"];
 
-		_config = 'CfgEpochClient' call EPOCH_returnConfig;
-		_payout = getArray(_config >> worldname >> "TrashClasses") param [_type, "Trash"];
+	_posWH = getPosATL _player;
 
-		_posWH = getPosATL _player;
-		_object setdamage 1;
+    if (isSimpleObject _object) then {
+        // just remove for now, object will respawn on restart.
+        deleteVehicle _object;
+    } else {
+        _object setdamage 1;
+    };
 
-		_item = createVehicle["groundWeaponHolder", _posWH, [], 0.0, "CAN_COLLIDE"];
-		_item setPosATL _posWH;
+	_item = createVehicle["groundWeaponHolder", _posWH, [], 0.0, "CAN_COLLIDE"];
+	_item setPosATL _posWH;
 
-		_config = (configFile >> "CfgMainTable" >> _payout);
-		if (isClass _config) then {
-			if (random 1 < getNumber(_config >> "chance")) then {
-				[_item, _payout] call EPOCH_serverLootObject;
-				_errorMsg = "You found something!";
-				[_errorMsg, 5] remoteExec ['Epoch_message',_player];
-			};
-		};
-
-		if ((random 1) <= EPOCH_antagonistChanceTrash) then {
-			_nearPlayers = _posWH nearEntities[["Epoch_Male_F", "Epoch_Female_F"], 50];
-
-			if (!(_nearPlayers isEqualTo[])) then {
-				_target = selectRandom _nearPlayers;
-
-				_antagTable = ["Trash", "CfgMainTable", "antagonists"] call EPOCH_weightedArray;
-
-				_antagTableArray = _antagTable select 0;
-				if !(_antagTableArray isEqualTo[]) then{
-					_weightedArray = _antagTable select 1;
-					_triggerType = _antagTableArray select(selectRandom _weightedArray);
-					[_target, _triggerType] call EPOCH_server_triggerEvent;
-				};
-			};
+	_config = (configFile >> "CfgMainTable" >> _payout);
+	if (isClass _config) then {
+		if (random 1 < getNumber(_config >> "chance")) then {
+			[_item, _payout] call EPOCH_serverLootObject;
+			_errorMsg = "You found something!";
+			[_errorMsg, 5] remoteExec ['Epoch_message',_player];
 		};
 	};
+
 };
 true

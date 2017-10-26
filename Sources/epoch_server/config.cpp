@@ -9,7 +9,7 @@ class CfgPatches {
 		units[] = {};
 		weapons[] = {};
 		requiredVersion = 0.1;
-		requiredAddons[] = {"A3_epoch_server_core","A3_epoch_config","A3_server_settings"};
+		requiredAddons[] = {"A3_epoch_server_core","A3_epoch_config","A3_server_settings","A3_server_events"};
 		#include "build.hpp"
 	};
 };
@@ -26,6 +26,13 @@ class CfgServerFunctions
 			class server_createGroup {};
 			class server_deleteGroup {};
 			class server_invitePlayer {};
+		};
+		class epoch_grouptemp {
+			class server_upgradeTempGroup {};
+			class server_updatePlayerTempGroup {};
+			class server_createTempGroup {};
+			class server_deleteTempGroup {};
+			class server_invitePlayerTempGroup {};
 		};
 		class epoch_bases {
 			class swapBuilding {};
@@ -58,12 +65,15 @@ class CfgServerFunctions
 			class server_onPlayerDisconnect {};
 			class server_deadPlayer {};
 			class server_revivePlayer {};
+			class server_SetUnitLoadout {};
 			class server_storeCrypto {};
 			class server_equippedItem {};
 			class server_unpackBackpack {};
 			class server_deadPlayerDetonate{};
 			class server_playerSetVariable{};
 			class server_PayCrypto{};
+			class fnc_updatePlayerStats{};
+			class server_updatePlayerStats{};
 		};
 		class epoch_traders {
 			class server_loadTraders {};
@@ -94,9 +104,11 @@ class CfgServerFunctions
 			class server_packStorage {};
 			class server_packJack {};
 			class spawn_vehicle {};
+			class server_upgrade_vehicle {};
+			class server_CargoSave {};
+			class server_CargoFill {};
 		};
 		class epoch_server {
-			class weightedArray {};
 			class precisionPos {};
 			class serverLootObject {};
 			class server_vehicleInit {};
@@ -105,11 +117,14 @@ class CfgServerFunctions
 			class server_traderKilled {};
 			class localCleanup {};
 			class server_createTeleport {};
+			class server_getRealTime {};
 			class server_teleportPlayer {};
 			class returnConfig {};
 			class serverCommand {};
 			class server_makeMarker {};
 			class server_removeMarker {};
+			class server_createGlobalMarkerSet {};
+			class server_deleteGlobalMarkerSet {};
 		};
 		class epoch_missions {
 			class Server_createObject {};
@@ -129,7 +144,7 @@ class CfgServerFunctions
 };
 class CfgServerVersion
 {
-	client = "0.5.0.0";
-	config = "0.5.0.0";
-	hive = "0.5.1.8";
+	client = "1.0.0";
+	config = "1.0.0";
+	hive = "0.6.0.0";
 };

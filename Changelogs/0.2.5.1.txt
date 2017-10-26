@@ -1,2 +1,0 @@
-[New] Control sound volume in-game with Ctrl plus - or +.
-[Fixed] Issue that caused admin panel to bug out and close all dialogs.

@@ -61,10 +61,10 @@ if (surfaceIsWater _currentPos) then {
                         _fish = selectRandom _fishes;
                         if (_fish != "") then {
                             _fish call EPOCH_fnc_addItemOverflow;
-                            ["Fish Caught", 5] call Epoch_message;
+                            ["Fish Caught", 5,[[0,0,0,0.5],[0,1,0,1]]] call Epoch_message;
                         };
                     } else {
-                        ["Fish Got Away", 5] call Epoch_message;
+                        ["Fish Got Away", 5,[[0,0,0,0.5],[1,0,0,1]]] call Epoch_message;
                     };
                 };
             };

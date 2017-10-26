@@ -18,6 +18,7 @@ class CfgObjectInteractions
         fatigueChance = 0;
         bleedAmount = 0;
         bloodpAmount = 0;
+		toxicAmount = 0;
         soundEffect[] = {};
         soundEffectGlobal = 0;
         animationEffect[] = {};
@@ -41,11 +42,31 @@ class CfgObjectInteractions
     {
         interactMode = 1;
     };
+	class TentA_EPOCH : Default
+    {
+        interactMode = 4;
+    };
+    class TentA_SIM_EPOCH : Default
+    {
+        interactMode = 1;
+    };
+	class TentDome_EPOCH : Default
+	{
+		interactMode = 4;
+	};
+	class TentDome_SIM_EPOCH : Default
+	{
+		interactMode = 1;
+	};
     class StorageShelf_EPOCH : Default
     {
         interactMode = 4;
     };
     class WorkBench_EPOCH : Default
+    {
+        interactMode = 4;
+    };
+    class Garden_EPOCH : Default
     {
         interactMode = 4;
     };
@@ -150,6 +171,7 @@ class CfgObjectInteractions
         interactMode = 3;
         distance = 3;
         toxicChance = 0.2;
+		toxicAmount = 10;
         bloodpChance = 1;
         fatigueChance = 0.5;
         bleedAmount = 30;
@@ -165,6 +187,7 @@ class CfgObjectInteractions
         interactMode = 3;
         distance = 3;
         toxicChance = 0.1;
+		toxicAmount = 10;
         bloodpChance = 1;
         fatigueChance = 0.5;
         bleedAmount = 30;
@@ -194,6 +217,7 @@ class CfgObjectInteractions
     {
         distance = 6;
         toxicChance = 1;
+		toxicAmount = 100;
         bleedChance = 0;
         bloodpChance = 1;
         fatigueChance = 1;
@@ -222,6 +246,7 @@ class CfgObjectInteractions
     {
         distance = 3;
         toxicChance = 0.1;
+		toxicAmount = 10;
         bloodpChance = 0.9;
         fatigueChance = 0.4;
         bleedAmount = 30;

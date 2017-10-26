@@ -135,7 +135,7 @@ class FSM
                                         condition=/*%FSM<CONDITION""">*/"!(_moveTo isEqualTo _nextPos)"/*%FSM</CONDITION""">*/;
                                         action=/*%FSM<ACTION""">*/"_doMove = true;" \n
                                          "_decisionMade = true;" \n
-                                         "_moveTo = [] + _nextPos;" \n
+                                         "_moveTo = +_nextPos;" \n
                                          ""/*%FSM</ACTION""">*/;
                                 };
                                 /*%FSM</LINK>*/

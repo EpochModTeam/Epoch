@@ -41,34 +41,7 @@ BIS_fnc_returnVector = {
     _v
 };
 
-_import = ["Land_TentHangar_V1_F",
-"Land_TentHangar_V1_dam_F",
-"Land_Dome_Big_F",
-"Land_Dome_Small_F",
-"Land_GH_MainBuilding_entry_F",
-"Land_dp_smallTank_F",
-"Land_i_House_Big_01_V1_dam_F",
-"Land_i_House_Big_01_V2_dam_F",
-"Land_i_House_Big_01_V3_dam_F",
-"Land_u_House_Big_01_V1_dam_F",
-"Land_i_House_Big_02_V2_dam_F",
-"Land_i_Shop_01_V1_dam_F",
-"Land_i_Shop_01_V2_dam_F",
-"Land_i_Shop_01_V3_dam_F",
-"Land_u_Shop_01_V1_dam_F",
-"Land_i_Shop_02_V1_dam_F",
-"Land_i_Shop_02_V2_dam_F",
-"Land_i_Shop_02_V3_dam_F",
-"Land_u_Shop_02_V1_dam_F",
-"Land_i_House_Small_01_V1_dam_F",
-"Land_i_House_Small_01_V2_dam_F",
-"Land_i_House_Small_01_V3_dam_F",
-"Land_u_House_Small_01_V1_dam_F",
-"Land_i_House_Small_02_V1_dam_F",
-"Land_i_House_Small_02_V2_dam_F",
-"Land_i_House_Small_02_V3_dam_F",
-"Land_u_House_Small_02_V1_dam_F",
-"Land_i_House_Small_03_V1_dam_F"];
+_import = ["Land_New_WiredFence_10m_F","Land_New_WiredFence_5m_F","Land_New_WiredFence_10m_Dam_F","Land_LampHalogen_F","Land_LampStreet_F","Land_spp_Transformer_F","Land_Stone_Gate_F","Land_Pier_F","Land_Pier_addon","Land_PierLadder_F","Land_nav_pier_m_F","Land_Barn_01_grey_F","Land_LampShabby_F","Land_LampHarbour_F","Land_PowerLine_01_pole_small_F","Land_PowerLine_01_wire_50m_F","Land_PowerLine_01_wire_50m_main_F","Land_Metal_Shed_F","Land_PowerLine_01_pole_transformer_F","Land_Shed_08_brown_F","Land_Pier_small_F","Land_WallCity_01_gate_yellow_F","Land_Stone_Shed_V1_ruins_F","Land_Barn_01_brown_F","Land_Shed_08_grey_F","Land_Net_Fence_Gate_F","Land_Grave_rocks_F","Land_LampStreet_small_F","Land_TBox_F","Land_BellTower_02_V1_F","Land_City_Gate_F","Land_WallCity_01_gate_pink_F","Land_Supermarket_01_malden_F","Land_WallCity_01_gate_blue_F","Land_PowerLine_01_pole_junction_F","Land_PowerLine_01_pole_tall_F","Land_fs_roof_F","Land_fs_feed_F","Land_BellTower_01_V1_F","Land_BellTower_02_V2_F","Land_Pier_Box_F","Land_GH_Stairs_F","Land_WallCity_01_gate_grey_F","Land_WoodenWall_02_s_gate_closed_F","Land_Bunker_01_big_F","Land_Lighthouse_03_green_F","Land_Bunker_01_small_F","Land_i_Garage_V1_dam_F","Land_WallCity_01_gate_whiteblue_F","Land_Stone_HouseBig_V1_ruins_F","Land_Stone_HouseSmall_V1_ruins_F","Land_Bunker_01_HQ_F","Land_ConcreteWall_01_l_gate_closed_F","Land_Lighthouse_03_red_F","Land_Carousel_01_F","Land_Canal_Wall_Stairs_F","Land_Bunker_01_tall_F","Land_ReservoirTank_01_military_F","Land_DomeDebris_01_hex_damaged_green_F","Land_DomeDebris_01_hex_green_F","Land_Cargo_House_V3_derelict_F","Land_DomeDebris_01_struts_large_green_F","Land_spp_Mirror_Broken_F","Land_spp_Mirror_ruins_F","Land_Cargo_Patrol_V2_ruins_F","Land_DomeDebris_01_struts_small_green_F","Land_TTowerSmall_1_F","Land_PipeFence_01_m_gate_v1_closed_F","Land_TTowerSmall_2_F","Land_PipeFence_01_m_gate_v2_closed_F","Land_FuelStation_01_roof_malevil_F","Land_FuelStation_01_pump_malevil_F","Land_cmp_Shed_F","Land_NetFence_02_m_gate_v1_closed_F","Land_ReservoirTank_V1_F","Land_HelipadCircle_F","Land_IndPipe2_big_ground2_F","Land_IndPipe2_big_ground1_F","Land_IndPipe2_big_18ladder_F","Land_IndPipe2_bigL_L_F","Land_Grave_forest_F","Land_NavigLight","Land_Runway_PAPI_3","Land_Runway_PAPI_2","Land_Runway_PAPI","Land_Runway_PAPI_4","Land_NavigLight_3_F","Land_Flush_Light_red_F","Land_Flush_Light_green_F","Land_runway_edgelight","Land_Flush_Light_yellow_F","Land_runway_edgelight_blue_F","Land_HelipadCivil_F","Land_LampAirport_F","Land_HelipadSquare_F","Land_HelipadRescue_F","Land_IndPipe2_bigL_R_F","Land_ReservoirTank_Airport_F","Land_Communication_F","Land_FuelStation_Feed_F","Land_Unfinished_Building_01_noLadder_F"];
 
 EPB = [];
 {
@@ -99,7 +72,9 @@ ToolRack_EPOCH = [[[0,0,1.5],[0,0,-0.1]],[[0,0,1.5],[0,0,2.3]],[[0,0,1.5],[1,0,1
 Shoebox_EPOCH = [[[0,0,0.1],[0,0,-0.1]],[[0,0,0.1],[0,0,0.3]],[[0,0,0.1],[0.3,0,0.1]],[[0,0,0.1],[-0.3,0,0.1]],[[0,0,0.1],[0,0.2,0.1]],[[0,0,0.1],[0,-0.2,0.1]]];
 Tarp_EPOCH = [[[0,0,0.2],[0,0,-0.1]],[[0,0,0.2],[0,0,1]],[[0,0,0.2],[0.9,0,0.2]],[[0,0,0.2],[-0.9,0,0.2]],[[0,0,0.2],[0,1,0.2]],[[0,0,0.2],[0,-0.9,0.2]]];
 Freezer_EPOCH = [[[0,0,0.5],[0,0,-0.1]],[[0,0,0.5],[0,0,1.1]],[[0,0,0.5],[0.7,0,0.5]],[[0,0,0.5],[-0.7,0,0.5]],[[0,0,0.5],[0,0.5,0.5]],[[0,0,0.5],[0,-0.6,0.5]]];
-Cabinet_EPOCH = [[[0,0,0],[0,0,-0.4]],[[0,0,0],[0,0,0.4]],[[0,0,0],[0.2,0,0]],[[0,0,0],[-0.1,0,0]],[[0,0,0],[0,0.3,0]],[[0,0,0],[0,-0.3,0]]];
+Cabinet_EPOCH = [[[0,0,0],[0,0,-0.2]],[[0,0,0],[0,0,0.2]],[[0,0,0],[0.1,0,0]],[[0,0,0],[-0.1,0,0]],[[0,0,0],[0,0.15,0]],[[0,0,0],[0,-0.15,0]]];
+
+// ,{"toiletPos","toilet_epoch",false},{"kitchenSinkPos","KitchenSink_epoch",false}
 
 EPOCH_lootClassesRaw = [
     ["shelfPos", "Shelf_EPOCH", true],
@@ -117,7 +92,9 @@ EPOCH_lootClassesRaw = [
     ["shoeboxPos", "Shoebox_EPOCH", false],
     ["palletPos", "Tarp_EPOCH", false],
     ["freezerPos", "Freezer_EPOCH", false],
-      ["cabinetPos", "Cabinet_EPOCH", false]
+      ["cabinetPos", "Cabinet_EPOCH", false],
+	  ["toiletPos", "toilet_epoch", false],
+	  ["kitchenSinkPos", "KitchenSink_epoch", false]
 ];
 EPOCH_lootSIMClassesRaw = [
     ["shelfPos", "Shelf_SIM_EPOCH", true],
@@ -135,7 +112,9 @@ EPOCH_lootSIMClassesRaw = [
     ["shoeboxPos", "Shoebox_SIM_EPOCH", false],
     ["palletPos", "Tarp_SIM_EPOCH", false],
     ["freezerPos", "Freezer_SIM_EPOCH", false],
-      ["cabinetPos", "Cabinet_EPOCH", false]
+      ["cabinetPos", "Cabinet_EPOCH", false],
+	  ["toiletPos", "toilet_SIM_epoch", false],
+	  ["kitchenSinkPos", "KitchenSink_SIM_epoch", false]
 ];
 
 EPOCH_lootClassesCustom = [];
@@ -440,7 +419,7 @@ EPOCH_KeyDownCustom = {
 
 
             if (_ctrl) then {
-                EPB = []; "if (isclass _x) then {EPB pushBack (configName _x); true}" configClasses (getMissionConfig "CfgBuildingLootPos")
+                EPB = []; "if (isclass _x) then {EPB pushBack (configName _x)}; true" configClasses (getMissionConfig "CfgBuildingLootPos")
             } else {
 
                 _buildLoading = objNull;
@@ -565,7 +544,11 @@ EPOCH_LOOT = {
     };
 
     EP_building = createVehicle [_this, player modelToWorld [0,25,0] , [], 0, "CAN_COLLIDE"];
-    EP_building setDir Base_angle;
+	_memoryPoints = ["one","two","three","four"];
+	{
+		EP_building animate [_x,0,true];
+	} forEach _memoryPoints;
+	EP_building setDir Base_angle;
     EP_building setPosATL _curPos;
 
     _loots = [
@@ -584,7 +567,9 @@ EPOCH_LOOT = {
         ["shoeboxPos", "Shoebox_EPOCH", false],
         ["palletPos", "Tarp_EPOCH", false],
         ["freezerPos", "Freezer_EPOCH", false],
-        ["cabinetPos", "Cabinet_EPOCH", false]
+        ["cabinetPos", "Cabinet_EPOCH", false],
+		["toiletPos", "toilet_epoch", false],
+	  	["kitchenSinkPos", "KitchenSink_epoch", false]
     ];
 
     _building = EP_building;
@@ -708,8 +693,8 @@ KK_boundingBox = {
         {
             _x params ["_startV","_stopV"];
 
-            _start = DUMMY modelToWorld _startV;
-            _stop = DUMMY modelToWorld _stopV;
+            _start = DUMMY modelToWorld (_startV vectorMultiply 0.01);
+            _stop = DUMMY modelToWorld (_stopV vectorMultiply 0.01);
 
             _color = [1,1,1,1];
             _ins = lineIntersectsSurfaces [AGLToASL _start,AGLToASL _stop,EPOCH_vehTarget,player,true,1,"FIRE","NONE"];

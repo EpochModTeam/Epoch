@@ -14,11 +14,19 @@
 /*[[[cog from arma_config_tools import *; json_to_arma()]]]*/
 class CfgEpochClient
 {
-    epochVersion = "0.5.0.0";
-    ArmAVersion = 168;
-    sapperRngChance = 100; // increase number to reduce chances and reduce to increase. Default 100
-    droneRngChance = 100; // increase number to reduce chances and reduce to increase. Default 100
-    zombieRngChance = 50; // increase number to reduce chances and reduce to increase. Default 50
+    epochVersion = "1.0.0";
+    ArmAVersion = 176;
+	debug = "true";  // true = enable extra rpt debug lines, false to disable
+
+	antagonistRngChance = 100; // increase number to reduce chances and reduce to increase. Default 100
+	outOfBoundsRadiation = 10; // how much rads per tick (10sec), when outside play area.
+	radioactiveLocations[] = {"NameCityCapital", "NameCity", "Airport"}; // used for random radioactive locations and to suppress animal spawns within cities.
+	radiatedObjMaxFalloutDist = 125; // max distance radiated object can affect player (number in meters)
+	geigerCounterEnergyUsage = 10; // default loss of 10 energy every 10sec of use
+
+    baseHungerLoss = 2; // increase number to speed up rate of Hunger loss
+    baseThirstLoss = 2; // increase number to speed up rate of Thirst loss
+	accelerateHTALoss = "true"; // use server's time acceleration to increase the rate of Hunger, Thirst and Alcohol loss
 
     buildingNearbyMilitary = 0; //1 to allow building nearby
     buildingNearbyMilitaryRange = 300; //Define radius of blocked area
@@ -30,16 +38,16 @@ class CfgEpochClient
     jammerPerGroup = 1;				// allowed number of jammers per group.
     jammerGLOnly = 1;               // allow only group leader to place Jammer
     minJammerDistance = 650;		// min distance to next Jammer
-    maxBuildingHeight = 33;			// Max Height, building is allowed.
+    maxBuildingHeight = 100;		// Max Height, building is allowed.
     buildingCountLimit = 200;		//overall building limit in range of jammer (overridden if "useGroupCountLimits=1")
     storageCountLimit = 100;		//overall storage limit in range of jammer (triggers only if "splitCountLimits=1" & "useGroupCountLimits=0")
     splitCountLimits = 0;			//1 = distinguish buildingCountLimit from storageCountLimit (ex.: buildingCountLimit=100, storageCountLimit=100 >> you can build 100 baseparts AND additional 100 storage objects like safes, lockboxes...)
     useGroupCountLimits = 1;		//1 = enable leader and member counts (doesn´t affect "splitCountLimits")
-    buildingCountLeader = 125;		//ignore if "useGroupCountLimits=0"
+    buildingCountLeader = 250;		//ignore if "useGroupCountLimits=0"
     buildingCountPerMember = 5;		//ignore if "useGroupCountLimits=0"
     storageCountLeader = 10;		//ignore if "splitCountLimits=0" & "useGroupCountLimits=0"
     storageCountPerMember = 5;		//ignore if "splitCountLimits=0" & "useGroupCountLimits=0"
-    maxdoors = 8;					// Max allowed doors per Group
+    maxdoors = 10;					// Max allowed doors per Group
     maxgates = 5;					// Max allowed Gates per Group
 
     disableRemoteSensors = "true";  // disableRemoteSensors true/false
@@ -50,17 +58,100 @@ class CfgEpochClient
 
     EPOCH_news[] = {"Word is that Sappers have a new boss.","Dogs will often lure them monsters away.","My dog was blown up. I miss him.."};
     deathMorphClass[] = {"Epoch_Sapper_F","Epoch_SapperG_F","Epoch_SapperB_F","I_UAV_01_F","Epoch_Cloak_F"}; //Random selection of these classes when player morphs after death. Currently available: Epoch_Cloak_F, Epoch_SapperB_F, Epoch_Sapper_F, I_UAV_01_F
-    niteLight[] = {1,1.88,22}; //Set ambient lighting at night: {Brightness of light,Height of light}. Default (Low Ambient): {1.88,22} | Twilight: {7.2,88} | Distant: {12.8,142}
+    niteLight[] = {0,1.88,22}; // 0 = disabled or 1 = enabled, Set ambient lighting at night: {Brightness of light,Height of light}. Default (Low Ambient): {1.88,22} | Twilight: {7.2,88} | Distant: {12.8,142}
     ryanZombiesEnabled = "true";
-    antagonistSpawnIndex[] = {{"Epoch_Cloak_F",1},{"GreatWhite_F",2},{"Epoch_Sapper_F",2},{"Epoch_SapperG_F",1},{"Epoch_SapperB_F",1},{"I_UAV_01_F",2},{"PHANTOM",1},{"B_Heli_Transport_01_F",1},{"EPOCH_RyanZombie_1",12},{"I_Soldier_EPOCH",1}}; // {"type", limit}
-    customVarsDefaults[] = {{"Temp",98.6,{106.7,95,102,105,96,95}},{"Hunger",1500,{5000,0,5001,5001,1250,0}},{"Thirst",750,{2500,0,2501,2501,625,0}},{"AliveTime",0,{-2,0}},{"Energy",0,{2500,0}},{"Wet",0,{100,0,35,55,-1,-1}},{"Soiled",0,{100,0,35,55,-1,-1}},{"Immunity",0,{100,0}},{"Toxicity",0,{100,0,35,55,-1,-1}},{"Stamina",100,{"EPOCH_playerStaminaMax",0}},{"Crypto",0,{250000,0}},{"HitPoints",{0,0,0,0},{1,0,0.5,1,-1,-1}},{"BloodP",100,{190,0,120,140,70,50}},{"SpawnArray",{},{}},{"Karma",0,{50000,-50000}},{"Alcohol",0,{100,0,35,55,-1,-1}},{"Radiation",0,{100,0,35,55,-1,-1}},{"Nuisance",0,{100,0}},{"MissionArray",{},{}}}; // EPOCH_player + varName, default value, {max,min,high-warn,high-critical,low-warn,low-critical}
-    hudConfigs[] = {{{"BloodP","","",{"getPlayerDamage",">=",0.7}},"topRight","x\addons\a3_epoch_code\Data\UI\bleeding_ca.paa",{"forceUpdate"}},{{"Oxygen","getPlayerOxygenRemaining","",{},{1,0,2,2,1,0.55}},"topRight","x\addons\a3_epoch_code\Data\UI\oxygen_ca.paa"},{"Hunger","topRight","x\addons\a3_epoch_code\Data\UI\hunger_ca.paa",{"forceBloodRise"}},{"Thirst","topRight","x\addons\a3_epoch_code\Data\UI\thirst_ca.paa",{"forceBloodRise"}},{"Temp","topRight",{"x\addons\a3_epoch_code\Data\UI\hot_ca.paa","x\addons\a3_epoch_code\Data\UI\cold_ca.paa"},{"forceFatigue"}},{"Toxicity","topRight","x\addons\a3_epoch_code\Data\UI\hazzard_ca.paa"},{"Alcohol","topRight","x\addons\a3_epoch_code\Data\UI\drunk_ca.paa"},{"Soiled","topRight","x\addons\a3_epoch_code\Data\UI\soiled_ca.paa"},{"Radiation","topRight","x\addons\a3_epoch_code\Data\UI\rads_ca.paa"},{{"HitPoints","getPlayerHitPointDamage","HitLegs"},"topRight","x\addons\a3_epoch_code\Data\UI\broken_ca.paa"}};
+
+	antagonistChances[] = {
+		// {"type", chance}
+		"Epoch_Cloak_F",0.06,
+		"GreatWhite_F",0,
+		"Epoch_Sapper_F",0.12,
+		"Epoch_SapperG_F",0.06,
+		"Epoch_SapperB_F",0.03,
+		"I_UAV_01_F",0.12,
+		"PHANTOM",0.03,
+		"B_Heli_Transport_01_F",0,
+		"EPOCH_RyanZombie_1",0.12,
+		"I_Soldier_EPOCH",0
+	};
+
+	antagonistSpawnIndex[] = {
+		// {"type", limit}
+		{"Epoch_Cloak_F",1},
+		{"GreatWhite_F",2},
+		{"Epoch_Sapper_F",2},
+		{"Epoch_SapperG_F",1},
+		{"Epoch_SapperB_F",1},
+		{"I_UAV_01_F",2},
+		{"PHANTOM",1},
+		{"B_Heli_Transport_01_F",1},
+		{"EPOCH_RyanZombie_1",12},
+		{"I_Soldier_EPOCH",1}
+	};
+	customVarsDefaults[] = {
+		// EPOCH_player + varName, default value, {max,min,high-warn,high-critical,low-warn,low-critical}
+		{"Temp",98.6,{106.7,95,102,105,96,95}},
+		{"Hunger",1500,{5000,0,5001,5001,1250,0}},
+		{"Thirst",750,{2500,0,2501,2501,625,0}},
+		{"AliveTime",0,{-2,0}}, // local
+		{"Energy",0,{2500,0}},
+		{"Wet",0,{100,0,35,55,-1,-1}},
+		{"Soiled",0,{100,0,35,55,-1,-1}},
+		{"Immunity",0,{100,0}},
+		{"Toxicity",0,{100,0,35,55,-1,-1}},
+		{"Stamina",100,{"EPOCH_playerStaminaMax",0}},
+		{"Crypto",0,{250000,0}},
+		{"HitPoints",{0,0,0,0},{1,0,0.5,1,-1,-1}}, // limits here only used for HUD.
+		{"BloodP",100,{190,0,120,140,70,50}},
+		{"SpawnArray",{},{}},
+		{"NotUsed",0,{50000,-50000}}, // TODO remove or replace
+		{"Alcohol",0,{100,0,35,55,-1,-1}},
+		{"Radiation",0,{100,0,35,55,-1,-1}},  // local
+		{"Nuisance",0,{100,0}},
+		{"MissionArray",{},{}}
+	};
+	// Vars and the value that gets set if godmode is enabled
+	gmVars[] = {
+		{"Temp",98.6},
+		{"Hunger",2500},
+		{"Thirst",1500},
+		{"Energy",2500},
+		{"Toxicity",0},
+		{"Stamina",100},
+		{"BloodP",100},
+		{"Alcohol",0},
+		{"Radiation",0}
+	};
+    hudConfigs[] = {
+		{{"BloodP","","",{"getPlayerDamage",">=",0.7}},"topRight","x\addons\a3_epoch_code\Data\UI\bleeding_ca.paa",{"forceUpdate"}},
+		{{"Oxygen","getPlayerOxygenRemaining","",{},{1,0,2,2,1,0.55}},"topRight","x\addons\a3_epoch_code\Data\UI\oxygen_ca.paa"},
+		{"Hunger","topRight","x\addons\a3_epoch_code\Data\UI\hunger_ca.paa",{"forceBloodRise"}},
+		{"Thirst","topRight","x\addons\a3_epoch_code\Data\UI\thirst_ca.paa",{"forceBloodRise"}},
+		{"Temp","topRight",{"x\addons\a3_epoch_code\Data\UI\hot_ca.paa","x\addons\a3_epoch_code\Data\UI\cold_ca.paa"},{{"forceFatigue","forceBloodRise"},{"forceFatigue","forceBloodDrop"}}},
+		{"Toxicity","topRight","x\addons\a3_epoch_code\Data\UI\hazzard_ca.paa",{"forceBloodRise"}},
+		{"Alcohol","topRight","x\addons\a3_epoch_code\Data\UI\drunk_ca.paa"},
+		{"Soiled","topRight","x\addons\a3_epoch_code\Data\UI\soiled_ca.paa"},
+		{"Radiation","topRight","x\addons\a3_epoch_code\Data\UI\rads_ca.paa",{"forceBloodRise"}},
+		{{"HitPoints","getPlayerHitPointDamage","HitLegs"},"topRight","x\addons\a3_epoch_code\Data\UI\broken_ca.paa"}
+	};
+	defineCommunityStats[]  = {
+		// EPOCH_total + varName, starting value, {min,max or custom values}
+		{"Karma",1500,{-50000,50000,{-5000,-15000,-30000},{5000,15000,30000}}}, // min, max, {Work In Progress levels}
+		{"Murders",0,{}},
+		{"Deaths",0,{}},
+		{"Suicides",0,{0,99999,500}}, // min, max, "Suicide King" status
+		{"Revives",0,{0,99999,500}}, // min, max, "Medic" status
+		{"TraderMissions",0,{}},
+		{"AIKills",0,{}},
+		{"AntagonistKills",0,{}},
+		{"ZombieKills",0,{}}
+	};
     group_upgrade_lvl[] = {4,"1000",6,"1500",8,"2000",10,"2500",12,"3000",14,"3500",16,"4000",32,"8000",64,"16000"}; // controls max group limit and cost
     // Event handler code
     displayAddEventHandler[] = {"keyDown","keyUp"};
     keyDown = "(_this call EPOCH_KeyDown)";
     keyUp = "(_this call EPOCH_KeyUp)";
-    addEventHandler[] = {"Respawn","Put","Take","InventoryClosed","InventoryOpened","FiredMan","Killed","HandleRating","GetInMan","GetOutMan"};
+    addEventHandler[] = {"Respawn","Put","Take","InventoryClosed","InventoryOpened","FiredMan","Killed","HandleRating","HandleScore","GetInMan","GetOutMan"};
     Respawn = "(_this select 0) call EPOCH_clientRespawn";
     Put = "(_this select 1) call EPOCH_interact;_this call EPOCH_PutHandler;_this call Epoch_custom_EH_Put";
     Take = "(_this select 1) call EPOCH_interact;_this call EPOCH_UnisexCheck;_this call Epoch_custom_EH_Take";
@@ -68,7 +159,8 @@ class CfgEpochClient
     InventoryClosed = "_this call EPOCH_InventoryClosed;_this call EPOCH_custom_EH_InventoryClosed";
     InventoryOpened = "_this call EPOCH_InventoryOpened||_this call EPOCH_custom_EH_InventoryOpened"; // the || here allows either function to block opening of inventory by returning true.
     Killed = "_this call EPOCH_fnc_playerDeath;_this call Epoch_custom_EH_Killed";
-    HandleRating = "EPOCH_playerKarma = EPOCH_playerKarma + (_this select 1);0";
+    HandleRating = "0";
+	HandleScore = "";
     HandleDamage = "";
     HandleHeal = "";
     Dammaged = "";
@@ -86,13 +178,59 @@ class CfgEpochClient
     playerKilledScreen = "TapOut2";
     playerDisableRevenge = 0;
     playerRevengeMinAliveTime = 900;
+    playerLocationMarkerGPSOnly = 1; // Map marker toggle in map dyna menu with assigned GPS only
+    playerDeathMarkerGPSOnly = 1; // Map marker toggle in map dyna menu on death with assigned GPS only
+    mapOnZoomSetMarkerSize = 1; // When in map markers will change to larger size as player zooms in
     bankTransferTime[] = {0.0006,1.2,0.06};
+
+	// Favorite Bar
+	Fav_enableFavoriteBar = "true";			// If disabled, players will not be able to use favorite bar
+	Fav_DropIfOverflow = "false";			// If enabled and inventory full, equipped weapon will be dropped on ground in favor for the new selected weapon, otherwise action will fail with message and weapon will not be equipped
+	Fav_FastWeaponSwitching = "false";		// If enabled, same slot weapons from favorites bar are equipped instantly, otherwise reload action is played (recommended for immersion)
+	Fav_BannedItems[] = {"FAK"};				// Items that users are not allowed to pin
+
+	// Advanced Vehicle Repair
+	UseAdvancedVehicleRepair = "true";									// Switch On / Off Advanced Vehicle Repair (Does not effect SuppressedCraftingItems !)
+	EnableRemoveParts = "true";											// Enable removing Tires / Engines from Vehicles
+	DisallowSellOnDamage = "false";										// Prevent from selling Vehicles with one or more fully damaged wheel or engine
+	SuppressedCraftingItems[] = {										// These Items can not be crafted (but can be used in recipe)
+			"VehicleRepairLg",			// Supressed for Advanced Vehicle Repair (no longer needed)
+			"KitMetalQuarterFloor",		// Item is Upgradeable, but you can remove it here to make it also Craftable
+			"KitMetalHalfFloor",		// Item is Upgradeable, but you can remove it here to make it also Craftable
+			"KitMetalFloor",			// Item is Upgradeable, but you can remove it here to make it also Craftable
+			"KitMetalTower",			// Item is Upgradeable, but you can remove it here to make it also Craftable
+			"KitCinderQuarterFloor",	// Item is Upgradeable, but you can remove it here to make it also Craftable
+			"KitCinderHalfFloor",		// Item is Upgradeable, but you can remove it here to make it also Craftable
+			"KitCinderFloor",			// Item is Upgradeable, but you can remove it here to make it also Craftable
+			"KitCinderTower"			// Item is Upgradeable, but you can remove it here to make it also Craftable
+	};
+	VehicleRepairs[] = {												// {Hitpoint, dmg to repair, dmg to replace, mat to repair, mat to replace}
+		{"HitHull",0.33,0.66,"ItemScraps","ItemCorrugated"},
+		{"HitBody",0.33,1,"ItemScraps","ItemCorrugated"},
+		{"HitLFWheel",0.33,1,"VehicleRepair","SpareTire"},
+		{"HitLF2Wheel",0.33,1,"VehicleRepair","SpareTire"},
+		{"HitLMWheel",0.33,1,"VehicleRepair","SpareTire"},
+		{"HitLBWheel",0.33,1,"VehicleRepair","SpareTire"},
+		{"HitRFWheel",0.33,1,"VehicleRepair","SpareTire"},
+		{"HitRF2Wheel",0.33,1,"VehicleRepair","SpareTire"},
+		{"HitRMWheel",0.33,1,"VehicleRepair","SpareTire"},
+		{"HitRBWheel",0.33,1,"VehicleRepair","SpareTire"},
+		{"HitEngine",0.33,0.91,"EngineParts","EngineBlock"},
+		{"glass",0.33,1,"ItemGlass","ItemGlass"},
+		{"HitFuel",0.1,0.66,"ItemDuctTape","FuelTank"},
+		{"HitHRotor",0.33,1,"ItemCorrugated","ItemRotor"},
+		{"HitVRotor",0.33,1,"ItemCorrugated","ItemRotor"},
+		{"HitWinch",0.33,0.91,"ItemCables","ItemCables"},
+		{"HitAvionics",0.33,0.91,"CircuitParts","CircuitParts"}
+	};
+
     // include configs
     #include "CfgEpochClient\Altis.hpp"
     #include "CfgEpochClient\australia.hpp"
     #include "CfgEpochClient\Bornholm.hpp"
     #include "CfgEpochClient\Chernarus_Summer.hpp"
     #include "CfgEpochClient\Chernarus.hpp"
+	#include "CfgEpochClient\ChernarusRedux.hpp"
     #include "CfgEpochClient\Esseker.hpp"
     #include "CfgEpochClient\ProvingGrounds_PMC.hpp"
     #include "CfgEpochClient\Sara_dbe1.hpp"
@@ -104,6 +242,7 @@ class CfgEpochClient
     #include "CfgEpochClient\vr.hpp"
     #include "CfgEpochClient\Zargabad.hpp"
     #include "CfgEpochClient\Tanoa.hpp"
+    #include "CfgEpochClient\Malden.hpp"
     #include "CfgEpochClient\WorldInteractions.hpp"
 };
 class CfgEpochSoldier

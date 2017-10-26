@@ -3,7 +3,7 @@
  By Aaron Clark - Epoch Mod
 */
 //[[[cog import generate_private_arrays ]]]
-private ["_activeControl","_bg","_btn_arr","_buffer","_buttonTXT","_button_gen","_button_texts","_cfgItemInteractions","_config","_control","_data","_display","_interactActions","_interactOption","_magCount","_pos","_start_idc","_type","_y2d"];
+private ["_CfgEpochClient","_Suppressed","_activeControl","_bg","_btn_arr","_buffer","_buttonTXT","_button_gen","_button_texts","_cfgItemInteractions","_config","_control","_data","_display","_interactActions","_interactOption","_magCount","_pos","_start_idc","_type","_y2d"];
 //[[[end]]]
 _button_texts = [];
 
@@ -21,6 +21,8 @@ _buttonTXT = "";
 _magCount = 1;
 _interactActions = [];
 _config = (configfile >> "CfgWeapons" >> _data);
+_CfgEpochClient = 'CfgEpochClient' call EPOCH_returnConfig;
+_Suppressed = getarray (_CfgEpochClient >> "SuppressedCraftingItems");
 // _cfgItemInteractions = (('CfgItemInteractions' call EPOCH_returnConfig) >> _data);
 _cfgItemInteractions = ["CfgItemInteractions", _data] call EPOCH_returnConfigV2;
 if (isClass (_config)) then {
@@ -29,6 +31,7 @@ if (isClass (_config)) then {
     _buttonTXT = getText(_cfgItemInteractions >> "interactText");
     _interactActions = getArray(_cfgItemInteractions >> "interactActions");
 } else {
+	if (EPOCH_AdvancedVehicleRepair_Enabled && _data in ["VehicleRepair","VehicleRepairLg"]) exitwith {};
     _config = (configfile >> "CfgMagazines" >> _data);
     _type = getNumber (_config >> "type");
     _interactOption = getNumber (_cfgItemInteractions >> "interactAction");
@@ -53,12 +56,32 @@ if (_magCount > 1) then {
 };
 
 _config = 'CfgCrafting' call EPOCH_returnConfig;
-if (isClass (_config >> _data)) then {
-    EPOCH_CraftingItem = EPOCH_InteractedItem select 0;
-    _button_texts pushBack ["CRAFT","EPOCH_CraftingItem call EPOCH_crafting_load;"];
-} else {
-    EPOCH_CraftingItem = "";
+if (isClass (_config >> _data) && !(_data in _Suppressed)) then {
+	EPOCH_CraftingItem = EPOCH_InteractedItem select 0;
+	_button_texts pushBack ["CRAFT","EPOCH_CraftingItem call EPOCH_crafting_load;"];
+}
+else {
+	EPOCH_CraftingItem = "";
 };
+
+/* Moved to DynaMenu
+_config = 'CfgVehicleUpgrades' call EPOCH_returnConfig;
+if (isClass (_config >> _data)) then {
+    {
+        if (isclass (_config >> _data >> (typeof _x))) exitwith {
+            EPOCH_UpgradeVehicle = [_data,_x];
+            _reqMaterials = getArray (_config >> _data >> (typeof _x) >> "ReqMaterials");
+            _itemtxt = "required: ";
+            {
+                _itemtxt = _itemtxt + str (_x select 0) + ((_x select 1) call EPOCH_itemDisplayName) + ", ";
+            } foreach _reqMaterials;
+            _txt1 = format ["Upgrade %1", (typeof _x) call EPOCH_itemDisplayName];
+            _txt2 = "EPOCH_UpgradeVehicle call EPOCH_Client_UpgradeVehicle;";
+            _button_texts pushBack [_txt1,_txt2];
+        };
+    } foreach (nearestobjects [player,["Landvehicle","SHIP","AIR","TANK"],10]);
+};
+*/
 
 if !(_button_texts isEqualTo []) then {
     _display = ctrlParent (_this select 0);

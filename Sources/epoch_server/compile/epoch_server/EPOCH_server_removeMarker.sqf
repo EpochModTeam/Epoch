@@ -31,9 +31,10 @@ switch _trgtType do {
 
 	case 1: {
 		if!(isNull _trgtObj)then{
-			{
-			[_mrkrName] remoteExec ['EPOCH_removeMarker',_x];
-			}foreach (units group _trgtObj);
+			private _targets = (units group _trgtObj);
+			if !(_targets isEqualTo []) then {
+				[_mrkrName] remoteExec ['EPOCH_removeMarker',_targets];
+			};
 		};
 	};
 
@@ -42,10 +43,10 @@ switch _trgtType do {
 	};
 
 	case 3: {
-		if(isArray _trgtObj && count _trgtObj > 0)then{
-			{
-			[_mrkrName] remoteExec ['EPOCH_removeMarker',_x];
-			}foreach _trgtObj;
+		if(_trgtObj isEqualType [] && {!(_trgtObj isEqualTo [])})then{
+			if !(_trgtObj isEqualTo []) then {
+				[_mrkrName] remoteExec ['EPOCH_removeMarker',_trgtObj];
+			};
 		};
 	};
 

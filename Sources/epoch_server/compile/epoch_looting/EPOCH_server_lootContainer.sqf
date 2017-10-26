@@ -55,13 +55,4 @@ if !(_object in EPOCH_cleanupQueue) then {
 		[_errorMsg, 5] remoteExec ['Epoch_message',_player];
 	};
 
-	if ((random 1) <= EPOCH_antagonistChanceLoot) then{
-		_antagTable = [_type, "CfgMainTable", "antagonists"] call EPOCH_weightedArray;
-		_antagTableArray = _antagTable select 0;
-		if !(_antagTableArray isEqualTo[]) then{
-			_weightedArray = _antagTable select 1;
-			_triggerType = _antagTableArray select(selectRandom _weightedArray);
-			[_player, _triggerType] call EPOCH_server_triggerEvent;
-		};
-	};
 };

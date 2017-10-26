@@ -2,7 +2,6 @@
 
 class CfgItemSort
 {
-
 	class MainCategories
 	{
 		classes[] = {
@@ -265,7 +264,7 @@ class CfgItemSort
 
 			// Backpacks Apex
 			"B_Bergen_tna_F",
-			"B_AssaultPack_tna",
+			"B_AssaultPack_tna_F",
 			"B_ViperHarness_ghex_F",
 			"B_ViperHarness_blk_F",
 			"B_ViperHarness_hex_F",
@@ -393,7 +392,8 @@ class CfgItemSort
 			"ghostface_mask_epoch",
 			"skull_mask_epoch",
 			"witch_mask_epoch",
-
+			"radiation_mask_epoch",
+			
 			// Headgear Apex
 			"H_HelmetLeaderO_ghex_F",
 			"H_HelmetCrew_O_ghex_F",
@@ -413,6 +413,7 @@ class CfgItemSort
 			"Laserdesignator",
 			"ItemCompass",
 			"ItemGPS",
+			"ItemGeigerCounter_EPOCH",
 			"ItemWatch",
 			"NVG_EPOCH",
 			"Binocular",
@@ -594,6 +595,9 @@ class CfgItemSort
 			"9rnd_45X88_magazine",
 			"6Rnd_GreenSignal_F",
 			"6Rnd_RedSignal_F",
+			"6Rnd_BlueSignal_F",
+			"6Rnd_PurpleSignal_F",
+			"6Rnd_OrangeSignal_F",
 
 			// light Mags
 			"30Rnd_65x39_caseless_green",
@@ -688,7 +692,79 @@ class CfgItemSort
 			"3Rnd_SmokeYellow_Grenade_shell",
 			"3Rnd_SmokePurple_Grenade_shell",
 			"3Rnd_SmokeBlue_Grenade_shell",
-			"3Rnd_SmokeOrange_Grenade_shell"
+			"3Rnd_SmokeOrange_Grenade_shell",
+
+			// Vehicle Mags
+			"500Rnd_127x99_mag",
+			"500Rnd_127x99_mag_Tracer_Red",
+			"500Rnd_127x99_mag_Tracer_Green",
+			"500Rnd_127x99_mag_Tracer_Yellow",
+			"200Rnd_127x99_mag",
+			"200Rnd_127x99_mag_Tracer_Red",
+			"200Rnd_127x99_mag_Tracer_Green",
+			"200Rnd_127x99_mag_Tracer_Yellow",
+			"100Rnd_127x99_mag",
+			"100Rnd_127x99_mag_Tracer_Red",
+			"100Rnd_127x99_mag_Tracer_Green",
+			"100Rnd_127x99_mag_Tracer_Yellow",
+			"2000Rnd_762x51_Belt",
+			"200Rnd_40mm_G_belt",
+			"32Rnd_40mm_G_belt",
+			"64Rnd_40mm_G_belt",
+			"96Rnd_40mm_G_belt",
+			"200Rnd_20mm_G_belt",
+			"40Rnd_20mm_G_belt",
+			"60Rnd_CMFlare_Chaff_Magazine",
+			"120Rnd_CMFlare_Chaff_Magazine",
+			"240Rnd_CMFlare_Chaff_Magazine",
+			"192Rnd_CMFlare_Chaff_Magazine",
+			"168Rnd_CMFlare_Chaff_Magazine",
+			"300Rnd_CMFlare_Chaff_Magazine",
+			"SmokeLauncherMag",
+			"SmokeLauncherMag_boat",
+			"200Rnd_65x39_Belt",
+			"200Rnd_65x39_Belt_Tracer_Red",
+			"200Rnd_65x39_Belt_Tracer_Green",
+			"200Rnd_65x39_Belt_Tracer_Yellow",
+			"1000Rnd_65x39_Belt",
+			"1000Rnd_65x39_Belt_Tracer_Red",
+			"1000Rnd_65x39_Belt_Green",
+			"1000Rnd_65x39_Belt_Tracer_Green",
+			"1000Rnd_65x39_Belt_Yellow",
+			"1000Rnd_65x39_Belt_Tracer_Yellow",
+			"2000Rnd_65x39_Belt",
+			"2000Rnd_65x39_Belt_Tracer_Red",
+			"2000Rnd_65x39_Belt_Green",
+			"2000Rnd_65x39_Belt_Tracer_Green",
+			"2000Rnd_65x39_Belt_Tracer_Green_Splash",
+			"2000Rnd_65x39_Belt_Yellow",
+			"2000Rnd_65x39_Belt_Tracer_Yellow",
+			"2000Rnd_65x39_Belt_Tracer_Yellow_Splash",
+			"8Rnd_82mm_Mo_shells",
+			"8Rnd_82mm_Mo_Flare_white",
+			"8Rnd_82mm_Mo_Smoke_white",
+			"8Rnd_82mm_Mo_guided",
+			"8Rnd_82mm_Mo_LG",
+			"24Rnd_PG_missiles",
+			"12Rnd_PG_missiles",
+			"24Rnd_missiles",
+			"12Rnd_missiles",
+			"60Rnd_40mm_GPR_shells",
+			"60Rnd_40mm_GPR_Tracer_Red_shells",
+			"60Rnd_40mm_GPR_Tracer_Green_shells",
+			"60Rnd_40mm_GPR_Tracer_Yellow_shells",
+			"40Rnd_40mm_APFSDS_shells",
+			"40Rnd_40mm_APFSDS_Tracer_Red_shells",
+			"40Rnd_40mm_APFSDS_Tracer_Green_shells",
+			"40Rnd_40mm_APFSDS_Tracer_Yellow_shells",
+			"140Rnd_30mm_MP_shells",
+			"140Rnd_30mm_MP_shells_Tracer_Red",
+			"140Rnd_30mm_MP_shells_Tracer_Green",
+			"140Rnd_30mm_MP_shells_Tracer_Yellow",
+			"60Rnd_30mm_APFSDS_shells",
+			"60Rnd_30mm_APFSDS_shells_Tracer_Red",
+			"60Rnd_30mm_APFSDS_shells_Tracer_Green",
+			"60Rnd_30mm_APFSDS_shells_Tracer_Yellow"
 		};
 
 		Attachments[] = {
@@ -800,7 +876,9 @@ class CfgItemSort
 			"APERSMine_Range_Mag",
 			"APERSBoundingMine_Range_Mag",
 			"SLAMDirectionalMine_Wire_Mag",
-			"APERSTripMine_Wire_Mag"
+			"APERSTripMine_Wire_Mag",
+			"BarrelBomb_EPOCH_Remote_Mag",
+			"BarrelBomb2_EPOCH_Remote_Mag"
 		};
 		Hand[] = {
 			"SmokeShell",
@@ -821,10 +899,23 @@ class CfgItemSort
 			"FAK",
 			"Towelette",
 			"HeatPack",
-			"ColdPack"
+			"ColdPack",
+			"ItemVitamins",
+			"adrenaline_epoch",
+			"atropine_epoch",
+			"morphine_epoch",
+			"caffeinepills_epoch",
+			"orlistat_epoch",
+			"nanite_cream_epoch",
+			"nanite_gun_epoch",
+			"nanite_pills_epoch",
+			"iodide_pills_epoch"
 		};
 
 		Food[] = {
+			"ItemPowderMilk",
+			"ItemRicebox",
+			"ItemCereals",
 			"Pumpkin",
 			"FoodBioMeat",
 			"FoodMeeps",
@@ -847,7 +938,14 @@ class CfgItemSort
 			"GoatCarcass_EPOCH",
 			"RabbitCarcass_EPOCH",
 			"SheepCarcass_EPOCH",
-			"SnakeCarcass_EPOCH"
+			"SnakeCarcass_EPOCH",
+			"krypto_candy_epoch",
+			"bluburger_epoch",
+			"redburger_epoch",
+			"gyro_wrap_epoch",
+			"icecream_epoch",
+			"Hemp",
+			"Sunflower"
 		};
 
 		Drink[] = {
@@ -858,9 +956,13 @@ class CfgItemSort
 			"ItemSodaMocha",
 			"ItemSodaBurst",
 			"ItemSodaRbull",
-			"ItemSodaAlpinedude"
+			"ItemSodaAlpineDude"
 		};
 		Basebuilding[] = {
+			"KitBarbedWire",
+			"Kit_Garden",
+			"KitTentA",
+			"KitTentDome",
 			"CircuitParts",
 			"PartPlankPack",
 			"CinderBlocks",
@@ -870,6 +972,8 @@ class CfgItemSort
 			"ItemCorrugatedLg",
 			"KitStudWall",
 			"KitWoodFloor",
+			"KitWoodHalfFloor",
+			"KitWoodQuarterFloor",
 			"KitWoodStairs",
 			"KitWoodRamp",
 			"KitFirePlace",
@@ -883,19 +987,36 @@ class CfgItemSort
 			"KitWorkbench",
 			"KitWoodLadder",
 			"KitWoodTower",
+			"KitMetalFloor",
+			"KitMetalHalfFloor",
+			"KitMetalQuarterFloor",
+			"KitMetalTower",
+			"KitCinderFloor",
+			"KitCinderHalfFloor",
+			"KitCinderQuarterFloor",
+			"KitCinderTower",
 			"ItemLockbox",
 			"Pelt_EPOCH",
 			"ItemSafe",
 			"ItemSolar",
 			"ItemCables",
 			"ItemBattery",
-			"ItemPlywoodPack"
-			//"ItemComboLock",
-			//"ItemPipe",
-			//"ItemBulb"
+			"ItemPlywoodPack",
+			"ItemComboLock",
+			"ItemPipe",
+			"ItemBulb",
+			"SmeltingTools_EPOCH"
 		};
 
 		Items[] = {
+			"ItemCanvas",
+			"ItemSeedBag",
+			"SpareTire",
+			"EngineParts",
+			"EngineBlock",
+			"ItemGlass",
+			"ItemDuctTape",
+			"ItemRotor",
 			"VehicleRepair",
 			"VehicleRepairLg",
 			"ItemDocument",
@@ -915,28 +1036,34 @@ class CfgItemSort
 			"EnergyPackLg",
 			"ItemBarrelF",
 			"ItemBarrelE",
-			//"ItemBurlap",
-			//"ItemKey",
-			//"ItemKeyBlue",
-			//"ItemKeyGreen",
-			//"ItemKeyRed",
-			//"ItemKeyYellow",
-			//"ItemHotwire",
-			//"ItemKeyKit",
-			//"ItemDoc1",
-			//"ItemDoc2",
-			//"ItemDoc3",
-			//"ItemDoc4",
-			//"ItemDoc5",
-			//"ItemDoc6",
-			//"ItemDoc7",
-			//"ItemDoc8",
-			//"ItemVehDoc1",
-			//"ItemVehDoc2",
-			//"ItemVehDoc3",
-			//"ItemVehDoc4",
+			"ItemBurlap",
+			"ItemKey",
+			"ItemKeyBlue",
+			"ItemKeyGreen",
+			"ItemKeyRed",
+			"ItemKeyYellow",
+			"ItemHotwire",
+			"ItemKeyKit",
+			"ItemDoc1",
+			"ItemDoc2",
+			"ItemDoc3",
+			"ItemDoc4",
+			"ItemDoc5",
+			"ItemDoc6",
+			"ItemDoc7",
+			"ItemDoc8",
+			"ItemVehDoc1",
+			"ItemVehDoc2",
+			"ItemVehDoc3",
+			"ItemVehDoc4",
 
 			// KryptoItems
+			"ItemTinBar10oz",
+			"ItemAluminumBar10oz",
+			"ItemCopperBar10oz",
+			"ItemSilverBar10oz",
+			"ItemBriefcaseSilver100oz",
+
 			"PartOreGold",
 			"PartOreSilver",
 			"PartOre",
@@ -959,8 +1086,8 @@ class CfgItemSort
 			"ItemTinBar",
 			"ItemEmptyTin",
 			"ItemSodaEmpty",
-			//"ItemBriefcaseE",
-			//"ItemBriefcaseGold100oz",
+			"ItemBriefcaseE",
+			"ItemBriefcaseGold100oz",
 
 			"PaintCanClear",
 			"PaintCanBlk",
@@ -971,7 +1098,12 @@ class CfgItemSort
 			"PaintCanPur",
 			"PaintCanRed",
 			"PaintCanTeal",
-			"PaintCanYel"
+			"PaintCanYel",
+			"SeedPacket_GoldenSeal",
+			"SeedPacket_Hemp",
+			"SeedPacket_Poppy",
+			"SeedPacket_Pumpkin",
+			"SeedPacket_Sunflower"
 		};
 		Vehicles_Land[] = {
 			"ebike_epoch",								// Motorrad

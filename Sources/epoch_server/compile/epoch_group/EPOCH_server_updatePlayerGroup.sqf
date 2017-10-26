@@ -87,6 +87,7 @@ if ((_response select 0) == 1 && (_response select 1) isEqualType []) then {
 			_x setVariable ["GROUP", nil];
 			[_x] joinSilent (createGroup [west, true]);
 			[["resetGroup", true], _x] call EPOCH_sendRemoteExecClient;
+			[["groupUpdate", []], _x] call EPOCH_sendRemoteExecClient;
 		} forEach (_allPlayers select {getPlayerUID _x == _selectedPlayerUID});
 		{
 			if (_x select 0 == _selectedPlayerUID) exitWith {

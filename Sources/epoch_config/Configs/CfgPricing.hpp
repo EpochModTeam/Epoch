@@ -108,6 +108,10 @@ class CfgPricing
     {
         price = 10;
     };
+    class ItemVehDocRara
+    {
+        price = 25;
+    };
     class ItemBulb
     {
         price = 10;
@@ -115,6 +119,10 @@ class CfgPricing
     class ItemBurlap
     {
         price = 10;
+    };
+    class SmeltingTools_EPOCH
+    {
+        price = 75;
     };
     class ItemBriefcaseE
     {
@@ -124,21 +132,37 @@ class CfgPricing
     {
         price = 10000;
     };
+	class ItemBriefcaseSilver100oz
+    {
+        price = 1000;
+    };
     class ItemAluminumBar
     {
         price = 10;
+    };
+	class ItemAluminumBar10oz
+    {
+        price = 100;
     };
     class ItemCopperBar
     {
         price = 100;
     };
+	class ItemCopperBar10oz
+    {
+        price = 1000;
+    };
     class ItemTinBar
     {
         price = 1;
     };
+	class ItemTinBar10oz
+    {
+        price = 10;
+    };
     class ItemPlywoodPack
     {
-        price = 100;
+        price = 10;
     };
     class ItemComboLock
     {
@@ -310,6 +334,10 @@ class CfgPricing
     {
         price = 20;
     };
+	class ItemGeigerCounter_EPOCH
+	{
+		price = 500;
+	};
     class EpochRadio0
     {
         price = 2;
@@ -358,6 +386,30 @@ class CfgPricing
     {
         price = 50;
     };
+    class SpareTire
+    {
+        price = 50;
+    };
+    class EngineParts
+    {
+        price = 40;
+    };
+    class EngineBlock
+    {
+        price = 60;
+    };
+    class ItemGlass
+    {
+        price = 35;
+    };
+    class ItemDuctTape
+    {
+        price = 25;
+    };
+    class ItemRotor
+    {
+        price = 40;
+    };
     class WhiskeyNoodle
     {
         price = 80;
@@ -376,6 +428,10 @@ class CfgPricing
     };
     class acc_flashlight
     {
+        price = 5;
+    };
+	class acc_flashlight_pistol
+	{
         price = 5;
     };
     class acc_pointer_IR
@@ -1657,11 +1713,11 @@ class CfgPricing
     };
     class CUP_bipod_Harris_1A2_L
     {
-        price = 15;
+        price = 0;
     };
     class CUP_bipod_VLTOR_Modpod
     {
-        price = 15;
+        price = 0;
     };
     class CUP_Mxx_camo
     {
@@ -1766,7 +1822,7 @@ class CfgPricing
     };
     class WoodLog_EPOCH
     {
-        price = 1;
+        price = 2;
     };
     class ItemRope
     {
@@ -1796,6 +1852,50 @@ class CfgPricing
     {
         price = 5;
     };
+    class Kit_Garden
+    {
+        price = 40;
+    };
+    class Poppy
+    {
+        price = 50;
+    };
+    class Goldenseal
+    {
+        price = 25;
+    };
+    class Pumpkin
+    {
+        price = 5;
+    };
+    class Hemp
+    {
+        price = 25;
+    };
+    class Sunflower
+    {
+        price = 20;
+    };
+    class SeedPacket_GoldenSeal
+    {
+        price = 5;
+    };
+    class SeedPacket_Hemp
+    {
+        price = 5;
+    };
+    class SeedPacket_Poppy
+    {
+        price = 5;
+    };
+    class SeedPacket_Pumpkin
+    {
+        price = 5;
+    };
+    class SeedPacket_Sunflower
+    {
+        price = 5;
+    };
     class sardines_epoch
     {
         price = 2;
@@ -1815,6 +1915,30 @@ class CfgPricing
     class sweetcorn_epoch
     {
         price = 2;
+    };
+	class ChickenCarcass_EPOCH
+	{
+        price = 1;
+    };
+	class SnakeCarcass_EPOCH
+	{
+        price = 1;
+    };
+	class RabbitCarcass_EPOCH
+	{
+        price = 1;
+    };
+	class GoatCarcass_EPOCH
+	{
+        price = 1;
+    };
+	class DogCarcass_EPOCH
+	{
+        price = 1;
+    };
+	class SheepCarcass_EPOCH
+	{
+        price = 1;
     };
     class CookedSheep_EPOCH
     {
@@ -1838,19 +1962,19 @@ class CfgPricing
     };
     class ItemTrout
     {
-        price = 2;
+        price = 5;
     };
     class ItemTroutCooked
     {
-        price = 20;
+        price = 10;
     };
     class ItemSeaBass
     {
-        price = 5;
+        price = 6;
     };
     class ItemSeaBassCooked
     {
-        price = 50;
+        price = 12;
     };
     class ItemTuna
     {
@@ -1858,11 +1982,47 @@ class CfgPricing
     };
     class ItemTunaCooked
     {
-        price = 100;
+        price = 20;
     };
     class FoodWalkNSons
     {
         price = 5;
+    };
+    class ItemPowderMilk
+    {
+        price = 2;
+    };
+    class ItemRicebox
+    {
+        price = 3;
+    };
+    class ItemCereals
+    {
+        price = 3;
+    };
+    class ItemVitamins
+    {
+        price = 25;
+    };
+    class krypto_candy_epoch
+    {
+        price = 3;
+    };
+    class bluburger_epoch
+    {
+        price = 3;
+    };
+    class redburger_epoch
+    {
+        price = 3;
+    };
+    class gyro_wrap_epoch
+    {
+        price = 3;
+    };
+    class icecream_epoch
+    {
+        price = 2;
     };
     class ItemSodaOrangeSherbet
     {
@@ -1907,6 +2067,42 @@ class CfgPricing
     class ColdPack
     {
         price = 2;
+    };
+	class adrenaline_epoch
+	{
+        price = 10;
+    };
+	class atropine_epoch
+	{
+        price = 10;
+    };
+	class morphine_epoch
+	{
+        price = 10;
+    };
+	class caffeinepills_epoch
+	{
+        price = 10;
+    };
+	class orlistat_epoch
+	{
+        price = 10;
+    };
+	class nanite_cream_epoch
+	{
+        price = 25;
+    };
+	class nanite_gun_epoch
+	{
+        price = 100;
+    };
+	class nanite_pills_epoch
+	{
+        price = 10;
+    };
+	class iodide_pills_epoch
+	{
+        price = 20;
     };
     class sr25_epoch
     {
@@ -2504,6 +2700,18 @@ class CfgPricing
     {
         price = 2;
     };
+	class 6Rnd_BlueSignal_F
+	{
+        price = 2;
+    };
+	class 6Rnd_PurpleSignal_F
+	{
+        price = 2;
+    };
+	class 6Rnd_OrangeSignal_F
+	{
+        price = 2;
+    };
     class EnergyPack
     {
         price = 3;
@@ -2616,35 +2824,35 @@ class CfgPricing
     };
     class bipod_01_F_snd
     {
-        price = 15;
+        price = 0;
     };
     class bipod_01_F_blk
     {
-        price = 15;
+        price = 0;
     };
     class bipod_01_F_mtp
     {
-        price = 15;
+        price = 0;
     };
     class bipod_02_F_blk
     {
-        price = 15;
+        price = 0;
     };
     class bipod_02_F_tan
     {
-        price = 15;
+        price = 0;
     };
     class bipod_02_F_hex
     {
-        price = 15;
+        price = 0;
     };
     class bipod_03_F_blk
     {
-        price = 15;
+        price = 0;
     };
     class bipod_03_F_oli
     {
-        price = 15;
+        price = 0;
     };
     class Elcan_epoch
     {
@@ -2738,6 +2946,10 @@ class CfgPricing
     {
         price = 1000;
     };
+	class ItemSilverBar10oz
+    {
+        price = 100;
+    };
     class ItemTopaz
     {
         price = 25;
@@ -2778,13 +2990,21 @@ class CfgPricing
     {
         price = 25;
     };
+	class ItemCanvas
+	{
+		price = 10;
+	};
+	class ItemSeedBag
+	{
+		price = 5;
+	};
     class ItemKiloHemp
     {
         price = 100;
     };
     class PartPlankPack
     {
-        price = 2;
+        price = 4;
     };
     class CinderBlocks
     {
@@ -2808,31 +3028,71 @@ class CfgPricing
     };
     class KitStudWall
     {
-        price = 10;
+        price = 16;
     };
+	class KitWoodQuarterFloor
+	{
+		price = 8; // price of 2 planks
+	};
+	class KitWoodHalfFloor
+	{
+		price = 16; // price of 4 planks
+	};
     class KitWoodFloor
     {
-        price = 10;
+        price = 32; // price of 8 planks
+    };
+	class KitMetalQuarterFloor
+	{
+		price = 25; // price of 1 ItemCorrugatedLg
+	};
+	class KitMetalHalfFloor
+	{
+		price = 50; // price of 2 ItemCorrugatedLg
+	};
+	class KitMetalFloor
+    {
+        price = 100; // price of 4 ItemCorrugatedLg
+    };
+	class KitCinderQuarterFloor
+	{
+		price = 40; //price of 1 CinderBlocks and 1 MortarBucket
+	};
+	class KitCinderHalfFloor
+	{
+		price = 80; //price of 2 CinderBlocks and 2 MortarBucket
+	};
+	class KitCinderFloor
+    {
+        price = 160; //price of 4 CinderBlocks and 4 MortarBucket
     };
     class KitWoodStairs
     {
-        price = 10;
+        price = 16; // price of 4 planks
     };
     class KitWoodTower
     {
-        price = 10;
+        price = 48; // price of 12 plank packs
+    };
+	class KitMetalTower
+    {
+        price = 150; // price of 6 ItemCorrugatedLg
+    };
+	class KitCinderTower
+    {
+        price = 200; //price of 5 CinderBlocks and 5 MortarBucket
     };
     class KitWoodRamp
     {
-        price = 14;
+        price = 24; // price of 6 planks
     };
     class KitSpikeTrap
     {
-        price = 25;
+        price = 42;
     };
     class KitMetalTrap
     {
-        price = 25;
+        price = 46;
     };
     class KitTankTrap
     {
@@ -2840,11 +3100,11 @@ class CfgPricing
     };
     class KitHesco3
     {
-        price = 25;
+        price = 120;
     };
     class KitWoodLadder
     {
-        price = 10;
+        price = 16;
     };
     class KitFirePlace
     {
@@ -2852,35 +3112,47 @@ class CfgPricing
     };
     class KitTiPi
     {
-        price = 10;
+        price = 12;
     };
     class KitShelf
     {
-        price = 90;
+        price = 24;
     };
+	class KitTentA
+	{
+		price = 50;
+	};
+	class KitTentDome
+	{
+		price = 70;
+	};
     class KitWorkbench
     {
-        price = 10;
+        price = 8;
+    };
+    class KitBarbedWire
+    {
+        price = 90;
     };
     class KitWoodFoundation
     {
-        price = 20;
+        price = 32;
     };
     class KitFoundation
     {
-        price = 90;
+        price = 80;
     };
     class KitPlotPole
     {
-        price = 300;
+        price = 250;
     };
     class KitSolarGen
     {
-        price = 200;
+        price = 325;
     };
     class KitCinderWall
     {
-        price = 140;
+        price = 80;
     };
     class ItemSolar
     {
@@ -2993,6 +3265,14 @@ class CfgPricing
     class APERSTripMine_Wire_Mag
     {
         price = 30;
+    };
+    class BarrelBomb_EPOCH_Remote_Mag
+    {
+        price = 80;
+    };
+    class BarrelBomb2_EPOCH_Remote_Mag
+    {
+        price = 80;
     };
     class B_AssaultPack_cbr
     {
@@ -3974,6 +4254,11 @@ class CfgPricing
     {
         price = 750;
     };
+	class C_Offroad_01_EPOCH1: C_Offroad_01_EPOCH{};
+	class C_Offroad_01_EPOCH2: C_Offroad_01_EPOCH{};
+	class C_Offroad_01_EPOCH3: C_Offroad_01_EPOCH{};
+	class C_Offroad_01_EPOCH4: C_Offroad_01_EPOCH{};
+	class C_Offroad_01_EPOCH5: C_Offroad_01_EPOCH{};
     class C_Quadbike_01_EPOCH
     {
         price = 500;
@@ -3982,14 +4267,26 @@ class CfgPricing
     {
         price = 750;
     };
+	class C_Hatchback_01_EPOCH1: C_Hatchback_01_EPOCH{};
+	class C_Hatchback_01_EPOCH2: C_Hatchback_01_EPOCH{};
+	class C_Hatchback_01_EPOCH3: C_Hatchback_01_EPOCH{};
+	class C_Hatchback_01_EPOCH4: C_Hatchback_01_EPOCH{};
     class C_Hatchback_02_EPOCH
     {
         price = 1000;
     };
+	class C_Hatchback_02_EPOCH1: C_Hatchback_02_EPOCH{};
+	class C_Hatchback_02_EPOCH2: C_Hatchback_02_EPOCH{};
+	class C_Hatchback_02_EPOCH3: C_Hatchback_02_EPOCH{};
+	class C_Hatchback_02_EPOCH4: C_Hatchback_02_EPOCH{};
     class C_SUV_01_EPOCH
     {
         price = 750;
     };
+	class C_SUV_01_EPOCH1: C_SUV_01_EPOCH{};
+	class C_SUV_01_EPOCH2: C_SUV_01_EPOCH{};
+	class C_SUV_01_EPOCH3: C_SUV_01_EPOCH{};
+	class C_SUV_01_EPOCH4: C_SUV_01_EPOCH{};
     class C_Rubberboat_EPOCH
     {
         price = 500;
@@ -4046,6 +4343,10 @@ class CfgPricing
     {
         price = 2500;
     };
+	class B_G_Offroad_01_armed_EPOCH1: B_G_Offroad_01_armed_EPOCH{};
+	class B_G_Offroad_01_armed_EPOCH2: B_G_Offroad_01_armed_EPOCH{};
+	class B_G_Offroad_01_armed_EPOCH3: B_G_Offroad_01_armed_EPOCH{};
+	class B_G_Offroad_01_armed_EPOCH4: B_G_Offroad_01_armed_EPOCH{};
     class B_Truck_01_transport_EPOCH
     {
         price = 1000;
@@ -4398,7 +4699,947 @@ class CfgPricing
     {
         price = 10;
     };
+	class 500Rnd_127x99_mag
+	{
+		price = 500;
+	};
+	class 500Rnd_127x99_mag_Tracer_Red
+	{
+		price = 500;
+	};
+	class 500Rnd_127x99_mag_Tracer_Green
+	{
+		price = 500;
+	};
+	class 500Rnd_127x99_mag_Tracer_Yellow
+	{
+		price = 500;
+	};
+	class 200Rnd_127x99_mag
+	{
+		price = 200;
+	};
+	class 200Rnd_127x99_mag_Tracer_Red
+	{
+		price = 200;
+	};
+	class 200Rnd_127x99_mag_Tracer_Green
+	{
+		price = 200;
+	};
+	class 200Rnd_127x99_mag_Tracer_Yellow
+	{
+		price = 200;
+	};
+	class 100Rnd_127x99_mag
+	{
+		price = 100;
+	};
+	class 100Rnd_127x99_mag_Tracer_Red
+	{
+		price = 100;
+	};
+	class 100Rnd_127x99_mag_Tracer_Green
+	{
+		price = 100;
+	};
+	class 100Rnd_127x99_mag_Tracer_Yellow
+	{
+		price = 100;
+	};
+	class 2000Rnd_762x51_Belt
+	{
+		price = 1250;
+	};
+	class 200Rnd_40mm_G_belt
+	{
+		price = 650;
+	};
+	class 32Rnd_40mm_G_belt
+	{
+		price = 350;
+	};
+	class 64Rnd_40mm_G_belt
+	{
+		price = 400;
+	};
+	class 96Rnd_40mm_G_belt
+	{
+		price = 500;
+	};
+	class 200Rnd_20mm_G_belt
+	{
+		price = 550;
+	};
+	class 40Rnd_20mm_G_belt
+	{
+		price = 350;
+	};
+    class 60Rnd_CMFlare_Chaff_Magazine
+    {
+        price = 30;
+    };
+    class 120Rnd_CMFlare_Chaff_Magazine
+    {
+        price = 60;
+    };
+    class 240Rnd_CMFlare_Chaff_Magazine
+    {
+        price = 120;
+    };
+    class 192Rnd_CMFlare_Chaff_Magazine
+    {
+        price = 96;
+    };
+    class 168Rnd_CMFlare_Chaff_Magazine
+    {
+        price = 84;
+    };
+    class 300Rnd_CMFlare_Chaff_Magazine
+    {
+        price = 150;
+    };
+    class SmokeLauncherMag
+    {
+        price = 50;
+    };
+    class SmokeLauncherMag_boat
+    {
+        price = 50;
+    };
+    class 200Rnd_65x39_Belt
+    {
+        price = 350;
+    };
+    class 200Rnd_65x39_Belt_Tracer_Red
+    {
+        price = 350;
+    };
+    class 200Rnd_65x39_Belt_Tracer_Green
+    {
+        price = 350;
+    };
+    class 200Rnd_65x39_Belt_Tracer_Yellow
+    {
+        price = 350;
+    };
+    class 1000Rnd_65x39_Belt
+    {
+        price = 650;
+    };
+    class 1000Rnd_65x39_Belt_Tracer_Red
+    {
+        price = 650;
+    };
+    class 1000Rnd_65x39_Belt_Green
+    {
+        price = 650;
+    };
+    class 1000Rnd_65x39_Belt_Tracer_Green
+    {
+        price = 650;
+    };
+    class 1000Rnd_65x39_Belt_Yellow
+    {
+        price = 650;
+    };
+    class 1000Rnd_65x39_Belt_Tracer_Yellow
+    {
+        price = 650;
+    };
+    class 2000Rnd_65x39_Belt
+    {
+        price = 1000;
+    };
+    class 2000Rnd_65x39_Belt_Tracer_Red
+    {
+        price = 1000;
+    };
+    class 2000Rnd_65x39_Belt_Green
+    {
+        price = 1000;
+    };
+    class 2000Rnd_65x39_Belt_Tracer_Green
+    {
+        price = 1000;
+    };
+    class 2000Rnd_65x39_Belt_Tracer_Green_Splash
+    {
+        price = 1000;
+    };
+    class 2000Rnd_65x39_Belt_Yellow
+    {
+        price = 1000;
+    };
+    class 2000Rnd_65x39_Belt_Tracer_Yellow
+    {
+        price = 1000;
+    };
+    class 2000Rnd_65x39_Belt_Tracer_Yellow_Splash
+    {
+        price = 1000;
+    };
+    class 8Rnd_82mm_Mo_shells
+    {
+        price = 350;
+    };
+    class 8Rnd_82mm_Mo_Flare_white
+    {
+        price = 350;
+    };
+    class 8Rnd_82mm_Mo_Smoke_white
+    {
+        price = 350;
+    };
+    class 8Rnd_82mm_Mo_guided
+    {
+        price = 350;
+    };
+    class 8Rnd_82mm_Mo_LG
+    {
+        price = 350;
+    };
+    class 24Rnd_PG_missiles
+    {
+        price = 4000;
+    };
+    class 12Rnd_PG_missiles
+    {
+        price = 2000;
+    };
+    class 24Rnd_missiles
+    {
+        price = 3500;
+    };
+    class 12Rnd_missiles
+    {
+        price = 1750;
+    };
+    class 60Rnd_40mm_GPR_shells
+    {
+        price = 500;
+    };
+    class 60Rnd_40mm_GPR_Tracer_Red_shells
+    {
+        price = 500;
+    };
+    class 60Rnd_40mm_GPR_Tracer_Green_shells
+    {
+        price = 500;
+    };
+    class 60Rnd_40mm_GPR_Tracer_Yellow_shells
+    {
+        price = 500;
+    };
+    class 40Rnd_40mm_APFSDS_shells
+    {
+        price = 350;
+    };
+    class 40Rnd_40mm_APFSDS_Tracer_Red_shells
+    {
+        price = 350;
+    };
+    class 40Rnd_40mm_APFSDS_Tracer_Green_shells
+    {
+        price = 350;
+    };
+    class 40Rnd_40mm_APFSDS_Tracer_Yellow_shells
+    {
+        price = 350;
+    };
+    class 140Rnd_30mm_MP_shells
+    {
+        price = 750;
+    };
+    class 140Rnd_30mm_MP_shells_Tracer_Red
+    {
+        price = 750;
+    };
+    class 140Rnd_30mm_MP_shells_Tracer_Green
+    {
+        price = 750;
+    };
+    class 140Rnd_30mm_MP_shells_Tracer_Yellow
+    {
+        price = 750;
+    };
+    class 60Rnd_30mm_APFSDS_shells
+    {
+        price = 450;
+    };
+    class 60Rnd_30mm_APFSDS_shells_Tracer_Red
+    {
+        price = 450;
+    };
+    class 60Rnd_30mm_APFSDS_shells_Tracer_Green
+    {
+        price = 450;
+    };
+    class 60Rnd_30mm_APFSDS_shells_Tracer_Yellow
+    {
+        price = 450;
+    };
 
+	// new male start
+	class U_C_Commoner1_1
+	{
+	 price = 7;
+	};
+	class U_C_Poor_2
+	{
+	 price = 7;
+	};
+	class U_C_HunterBody_grn
+	{
+	 price = 7;
+	};
+	class U_C_Poor_shorts_1
+	{
+	 price = 7;
+	};
+	class U_C_Commoner_shorts
+	{
+	 price = 7;
+	};
+	class U_C_ShirtSurfer_shorts
+	{
+	 price = 7;
+	};
+	class U_C_TeeSurfer_shorts_1
+	{
+	 price = 7;
+	};
+	class U_C_TeeSurfer_shorts_2
+	{
+	 price = 7;
+	};
+	class U_NikosBody
+	{
+	 price = 7;
+	};
+	class U_NikosAgedBody
+	{
+	 price = 7;
+	};
+	class U_IG_Guerilla1_1
+	{
+	 price = 7;
+	};
+	class U_IG_leader
+	{
+	 price = 7;
+	};
+	class U_IG_Guerilla2_1
+	{
+	 price = 7;
+	};
+	class U_IG_Guerilla2_3
+	{
+	 price = 7;
+	};
+	class U_IG_Guerilla2_2
+	{
+	 price = 7;
+	};
+	class U_IG_Guerilla3_1
+	{
+	 price = 7;
+	};
+	class U_IG_Guerrilla_6_1
+	{
+	 price = 7;
+	};
+	class U_OG_Guerrilla_6_1
+	{
+	 price = 7;
+	};
+	class U_I_CombatUniform
+	{
+	 price = 7;
+	};
+	class U_I_CombatUniform_shortsleeve
+	{
+	 price = 7;
+	};
+	class U_I_HeliPilotCoveralls
+	{
+	 price = 7;
+	};
+	class U_I_pilotCoveralls
+	{
+	 price = 7;
+	};
+	class U_I_OfficerUniform
+	{
+	 price = 7;
+	};
+	class U_I_Wetsuit
+	{
+	 price = 7;
+	};
+	class U_I_GhillieSuit
+	{
+	 price = 7;
+	};
+	class U_I_CombatUniform_tshirt
+	{
+	 price = 7;
+	};
+	class U_O_OfficerUniform_ocamo
+	{
+	 price = 7;
+	};
+	class U_O_SpecopsUniform_ocamo
+	{
+	 price = 7;
+	};
+	class U_O_CombatUniform_oucamo
+	{
+	 price = 7;
+	};
+	class U_Marshal
+	{
+	 price = 7;
+	};
+	class U_B_Protagonist_VR
+	{
+	 price = 7;
+	};
+	class U_O_Protagonist_VR
+	{
+	 price = 7;
+	};
+	class U_I_Protagonist_VR
+	{
+	 price = 7;
+	};
+	class U_I_FullGhillie_lsh
+	{
+	 price = 7;
+	};
+	class U_I_FullGhillie_sard
+	{
+	 price = 7;
+	};
+	class U_I_FullGhillie_ard
+	{
+	 price = 7;
+	};
+	class U_I_C_Soldier_Para_1_F
+	{
+	 price = 7;
+	};
+	class U_I_C_Soldier_Para_2_F
+	{
+	 price = 7;
+	};
+	class U_I_C_Soldier_Para_3_F
+	{
+	 price = 7;
+	};
+	class U_I_C_Soldier_Para_4_F
+	{
+	 price = 7;
+	};
+	class U_I_C_Soldier_Para_5_F
+	{
+	 price = 7;
+	};
+	class U_I_C_Soldier_Bandit_1_F
+	{
+	 price = 7;
+	};
+	class U_I_C_Soldier_Bandit_2_F
+	{
+	 price = 7;
+	};
+	class U_I_C_Soldier_Bandit_3_F
+	{
+	 price = 7;
+	};
+	class U_I_C_Soldier_Bandit_4_F
+	{
+	 price = 7;
+	};
+	class U_I_C_Soldier_Bandit_5_F
+	{
+	 price = 7;
+	};
+	class U_I_C_Soldier_Camo_F
+	{
+	 price = 7;
+	};
+	class U_O_T_Soldier_F
+	{
+	 price = 7;
+	};
+	class U_O_T_Officer_F
+	{
+	 price = 7;
+	};
+	class U_O_T_Sniper_F
+	{
+	 price = 7;
+	};
+	class U_O_T_FullGhillie_tna_F
+	{
+	 price = 7;
+	};
+	class U_O_V_Soldier_Viper_F
+	{
+	 price = 7;
+	};
+	class U_O_V_Soldier_Viper_hex_F
+	{
+	 price = 7;
+	};
+	class U_C_man_sport_1_F
+	{
+	 price = 7;
+	};
+	class U_C_man_sport_2_F
+	{
+	 price = 7;
+	};
+	class U_C_man_sport_3_F
+	{
+	 price = 7;
+	};
+	class U_C_Man_casual_1_F
+	{
+	 price = 7;
+	};
+	class U_C_Man_casual_2_F
+	{
+	 price = 7;
+	};
+	class U_C_Man_casual_3_F
+	{
+	 price = 7;
+	};
+	class U_C_Man_casual_4_F
+	{
+	 price = 7;
+	};
+	class U_C_Man_casual_5_F
+	{
+	 price = 7;
+	};
+	class U_C_Man_casual_6_F
+	{
+	 price = 7;
+	};
+	class U_C_IDAP_Man_cargo_F
+	{
+	 price = 7;
+	};
+	class U_C_IDAP_Man_jeans_F
+	{
+	 price = 7;
+	};
+	class U_C_IDAP_Man_TeeShorts_F
+	{
+	 price = 7;
+	};
+	class U_C_IDAP_Man_Tee_F
+	{
+	 price = 7;
+	};
+	class U_C_IDAP_Man_casual_F
+	{
+	 price = 7;
+	};
+	class U_C_IDAP_Man_shorts_F
+	{
+	 price = 7;
+	};
+	class U_C_ConstructionCoverall_Red_F
+	{
+	 price = 7;
+	};
+	class U_C_ConstructionCoverall_vrana_F
+	{
+	 price = 7;
+	};
+	class U_C_ConstructionCoverall_Black_F
+	{
+	 price = 7;
+	};
+	class U_C_ConstructionCoverall_Blue_F
+	{
+	 price = 7;
+	};
+	class U_C_Paramedic_01_F
+	{
+	 price = 7;
+	};
+	class U_C_Mechanic_01_F
+	{
+	 price = 7;
+	};
+
+	// new male stop
+
+    class U_JeansPatched1_uniform
+    {
+        price = 5;
+    };
+    class U_JeansPatched2_uniform
+    {
+        price = 5;
+    };
+    class U_JeansPatched3_uniform
+    {
+        price = 5;
+    };
+    class U_JeansPatched4_uniform
+    {
+        price = 5;
+    };
+    class U_JeansPatched5_uniform
+    {
+        price = 5;
+    };
+    class U_JeansPatched6_uniform
+    {
+        price = 5;
+    };
+    class U_JeansPatched7_uniform
+    {
+        price = 5;
+    };
+    class U_JeansPatched8_uniform
+    {
+        price = 5;
+    };
+    class U_JeansPatched9_uniform
+    {
+        price = 5;
+    };
+    class U_JeansPatched10_uniform
+    {
+        price = 5;
+    };
+    class U_JeansPatched11_uniform
+    {
+        price = 5;
+    };
+    class U_JeansPatched12_uniform
+    {
+        price = 5;
+    };
+    class U_JeansPatched13_uniform
+    {
+        price = 5;
+    };
+    class U_JeansPatched14_uniform
+    {
+        price = 5;
+    };
+    class U_JeansPatched15_uniform
+    {
+        price = 5;
+    };
+    class U_JeansPatched16_uniform
+    {
+        price = 5;
+    };
+    class U_JeansPatched17_uniform
+    {
+        price = 5;
+    };
+    class U_JeansPatched18_uniform
+    {
+        price = 5;
+    };
+    class U_JeansPatched19_uniform
+    {
+        price = 5;
+    };
+    class U_JeansPatched20_uniform
+    {
+        price = 5;
+    };
+    class U_JeansPatched21_uniform
+    {
+        price = 5;
+    };
+    class U_JeansBlkBrn1_uniform
+    {
+        price = 5;
+    };
+    class U_JeansBlkBrn2_uniform
+    {
+        price = 5;
+    };
+    class U_JeansBlkBrn3_uniform
+    {
+        price = 5;
+    };
+    class U_JeansBlkBrn4_uniform
+    {
+        price = 5;
+    };
+    class U_JeansBlkBrn5_uniform
+    {
+        price = 5;
+    };
+    class U_JeansBlkBrn6_uniform
+    {
+        price = 5;
+    };
+    class U_JeansBlkBrn7_uniform
+    {
+        price = 5;
+    };
+    class U_JeansBlkBrn8_uniform
+    {
+        price = 5;
+    };
+    class U_JeansBlkBrn9_uniform
+    {
+        price = 5;
+    };
+    class U_JeansBlkBrn10_uniform
+    {
+        price = 5;
+    };
+    class U_JeansBlkBrn11_uniform
+    {
+        price = 5;
+    };
+    class U_JeansBlkBrn12_uniform
+    {
+        price = 5;
+    };
+    class U_JeansBlkBrn13_uniform
+    {
+        price = 5;
+    };
+    class U_JeansBlkBrn14_uniform
+    {
+        price = 5;
+    };
+    class U_JeansBlkBrn15_uniform
+    {
+        price = 5;
+    };
+    class U_JeansBlkBrn16_uniform
+    {
+        price = 5;
+    };
+    class U_JeansBlkBrn17_uniform
+    {
+        price = 5;
+    };
+    class U_JeansBlkBrn18_uniform
+    {
+        price = 5;
+    };
+    class U_JeansBlkBrn19_uniform
+    {
+        price = 5;
+    };
+    class U_JeansBlkBrn20_uniform
+    {
+        price = 5;
+    };
+    class U_JeansBlkBrn21_uniform
+    {
+        price = 5;
+    };
+    class U_JeansArBrn1_uniform
+    {
+        price = 5;
+    };
+    class U_JeansArBrn2_uniform
+    {
+        price = 5;
+    };
+    class U_JeansArBrn3_uniform
+    {
+        price = 5;
+    };
+    class U_JeansArBrn4_uniform
+    {
+        price = 5;
+    };
+    class U_JeansArBrn5_uniform
+    {
+        price = 5;
+    };
+    class U_JeansArBrn6_uniform
+    {
+        price = 5;
+    };
+    class U_JeansArBrn7_uniform
+    {
+        price = 5;
+    };
+    class U_JeansArBrn8_uniform
+    {
+        price = 5;
+    };
+    class U_JeansArBrn9_uniform
+    {
+        price = 5;
+    };
+    class U_JeansArBrn10_uniform
+    {
+        price = 5;
+    };
+    class U_JeansArBrn11_uniform
+    {
+        price = 5;
+    };
+    class U_JeansArBrn12_uniform
+    {
+        price = 5;
+    };
+    class U_JeansArBrn13_uniform
+    {
+        price = 5;
+    };
+    class U_JeansArBrn14_uniform
+    {
+        price = 5;
+    };
+    class U_JeansArBrn15_uniform
+    {
+        price = 5;
+    };
+    class U_JeansArBrn16_uniform
+    {
+        price = 5;
+    };
+    class U_JeansArBrn17_uniform
+    {
+        price = 5;
+    };
+    class U_JeansArBrn18_uniform
+    {
+        price = 5;
+    };
+    class U_JeansArBrn19_uniform
+    {
+        price = 5;
+    };
+    class U_JeansArBrn20_uniform
+    {
+        price = 5;
+    };
+    class U_JeansArBrn21_uniform
+    {
+        price = 5;
+    };
+    class U_JeansBlack1_uniform
+    {
+        price = 5;
+    };
+    class U_JeansBlack2_uniform
+    {
+        price = 5;
+    };
+    class U_JeansBlack3_uniform
+    {
+        price = 5;
+    };
+    class U_JeansBlack4_uniform
+    {
+        price = 5;
+    };
+    class U_JeansBlack5_uniform
+    {
+        price = 5;
+    };
+    class U_JeansBlack6_uniform
+    {
+        price = 5;
+    };
+    class U_JeansBlack7_uniform
+    {
+        price = 5;
+    };
+    class U_JeansBlack8_uniform
+    {
+        price = 5;
+    };
+    class U_JeansBlack9_uniform
+    {
+        price = 5;
+    };
+    class U_JeansBlack10_uniform
+    {
+        price = 5;
+    };
+    class U_JeansBlack11_uniform
+    {
+        price = 5;
+    };
+    class U_JeansBlack12_uniform
+    {
+        price = 5;
+    };
+    class U_JeansBlack13_uniform
+    {
+        price = 5;
+    };
+    class U_JeansBlack14_uniform
+    {
+        price = 5;
+    };
+    class U_JeansBlack15_uniform
+    {
+        price = 5;
+    };
+    class U_JeansBlack16_uniform
+    {
+        price = 5;
+    };
+    class U_JeansBlack17_uniform
+    {
+        price = 5;
+    };
+    class U_JeansBlack18_uniform
+    {
+        price = 5;
+    };
+    class U_JeansBlack19_uniform
+    {
+        price = 5;
+    };
+    class U_JeansBlack20_uniform
+    {
+        price = 5;
+    };
+    class U_JeansBlack21_uniform
+    {
+        price = 5;
+    };
+    class hockey_mask_epoch
+    {
+        price = 30;
+    };
+    class plague_mask_epoch
+    {
+        price = 30;
+    };
+    class ghostface_mask_epoch
+    {
+        price = 30;
+    };
+    class skull_mask_epoch
+    {
+        price = 30;
+    };
+    class witch_mask_epoch
+    {
+        price = 30;
+    };
+	class radiation_mask_epoch
+    {
+        price = 75;
+    };
     ///////////////////////////////////////////////////////////////////////////////
     // Apex Items & Weapons
     ///////////////////////////////////////////////////////////////////////////////
@@ -4468,7 +5709,7 @@ class CfgPricing
     class optic_Holosight_blk_F       { price = 5;  };
     class optic_Holosight_khk_F       { price = 5;  };
     class optic_Holosight_smg_blk_F   { price = 5;  };
-    class bipod_01_F_khk              { price = 2;  };
+    class bipod_01_F_khk              { price = 0;  };
     class 30Rnd_9x21_Mag_SMG_02						{ price = 3;};
     class 30Rnd_9x21_Mag_SMG_02_Tracer_Red          { price = 2;  };
     class 30Rnd_9x21_Mag_SMG_02_Tracer_Yellow       { price = 2;  };

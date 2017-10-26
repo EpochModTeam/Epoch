@@ -1,5 +1,5 @@
 //[[[cog import generate_private_arrays ]]]
-private ["_aiItems","_allowAdd","_array","_config","_cryptoCount","_index","_item","_itemClasses","_itemQtys","_itemTax","_itemWorth","_limit","_qtyIndex","_sizeOut","_slot","_stockLimit","_tax","_uiItem","_worth"];
+private ["_errormsg","_aiItems","_allowAdd","_array","_config","_cryptoCount","_index","_item","_itemClasses","_itemQtys","_itemTax","_itemWorth","_limit","_qtyIndex","_sizeOut","_slot","_stockLimit","_tax","_uiItem","_worth"];
 //[[[end]]]
 params ["_control","_selected"];
 
@@ -8,6 +8,7 @@ if !(isNull EPOCH_lastNPCtradeTarget) then {
 	_allowAdd = true;
 	_stockLimit = false;
 	_uiItem = (_selected select 0) lbData (_selected select 1);
+	_errormsg = "Limit one per trade";
 
 	_config = 'CfgPricing' call EPOCH_returnConfig;
 	if (isClass(_config >> _uiItem)) then{
@@ -33,6 +34,23 @@ if !(isNull EPOCH_lastNPCtradeTarget) then {
 			};
 
 			if (_uiItem isKindOf "Air" || _uiItem isKindOf "Ship" || _uiItem isKindOf "LandVehicle" || _uiItem isKindOf "Tank") then {
+				if (["CfgEpochClient", "DisallowSellOnDamage", false] call EPOCH_fnc_returnConfigEntryV2) then {
+					{
+						_vehicle = _x;
+						if (local _vehicle && (typeof _vehicle) isequalto _uiItem) then {
+							{
+								if ((["wheel",tolower _x] call bis_fnc_instring) || _x isequalto "HitEngine") then {
+									if (((getAllHitPointsDamage _vehicle) select 2 select _foreachindex) >= 1) then {
+										_allowAdd = false;
+										_errormsg = "Cannot be sold - too much damage";
+									};
+								};
+								if (!_allowAdd) exitwith {};
+							} foreach ((getAllHitPointsDamage _vehicle) select 0);
+						};
+						if (!_allowAdd) exitwith {};
+					} foreach (EPOCH_lastNPCtradeTarget nearEntities[[_uiItem], 30]);
+				};
 
 				// check if a vehicle is already on the list
 				_sizeOut = lbSize 41501;
@@ -94,7 +112,7 @@ if !(isNull EPOCH_lastNPCtradeTarget) then {
 			if (_stockLimit) then{
 				["Trader has the maximum amount of this item", 5] call Epoch_message;
 			} else {
-				["Limit one per trade", 5] call Epoch_message;
+				[_errormsg, 5] call Epoch_message;
 			};
 		};
 	};

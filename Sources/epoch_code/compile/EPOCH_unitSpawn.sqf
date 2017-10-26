@@ -13,7 +13,7 @@
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_code/compile/EPOCH_unitSpawn.sqf
 */
 //[[[cog import generate_private_arrays ]]]
-private ["_aiskill","_arrSkills","_arrUnits","_arrVals","_bomb","_config","_currentLimit","_disableAI","_driver","_grp","_index","_jammerRange","_jammers","_loop","_minAISkill","_nonJammer","_nonTrader","_nonTraderAIRange","_pos","_restricted","_sapperHndl","_sapperNum","_spawnLimit","_targetPos","_unit","_units"];
+private ["_aiskill","_arrSkills","_arrUnits","_arrVals","_bomb","_config","_currentLimit","_disableAI","_driver","_grp","_index","_jammerRange","_jammers","_loop","_minAISkill","_missionConfig","_nonJammer","_nonTrader","_nonTraderAIRange","_playerSpawnArray","_playerSpawnArrayKeyFinal","_pos","_restricted","_sapperHndl","_sapperNum","_spawnLimit","_targetPos","_unit","_units"];
 //[[[end]]]
 params ["_unitClass",["_trgt",player],["_doVariable",false],["_unitCount",1],["_extraData",[]] ];
 
@@ -22,7 +22,10 @@ _bomb = objNull;
 _index = EPOCH_spawnIndex find _unitClass;
 _spawnLimit = 0;
 if (_index != -1) then {
-	_spawnLimit = EPOCH_playerSpawnArray select _index;
+	_playerSpawnArrayKeyFinal = "EPOCH_playerSpawnArray";
+	if !(isNil "_playerSpawnArrayKey") then {_playerSpawnArrayKeyFinal = _playerSpawnArrayKey};
+	_playerSpawnArray = missionNamespace getVariable [_playerSpawnArrayKeyFinal,[]];
+	_spawnLimit = _playerSpawnArray select _index;
 };
 _currentLimit = count(_trgt nearEntities[_unitClass, 800]);
 if (!_doVariable && (_currentLimit >= _spawnLimit)) exitWith {
@@ -57,6 +60,7 @@ switch _unitClass do {
 			_units pushBack _unit;
 			_unit call _disableAI;
 			[_unit,_trgt] execFSM "\x\addons\a3_epoch_code\System\cloak.fsm";
+			_unit addEventHandler ["Killed", {[_this, "AntagonistKills", 1, true] call Epoch_unit_onKilledEH;}];
 		};
 	};
 	case "GreatWhite_F": {
@@ -67,6 +71,7 @@ switch _unitClass do {
 					_units pushBack _unit;
 					_unit call _disableAI;
 					[_unit] execFSM "\x\addons\a3_epoch_code\System\Shark_Brain.fsm";
+					_unit addEventHandler ["Killed", {[_this, "AntagonistKills", 1, true] call Epoch_unit_onKilledEH;}];
 				};
 			};
 		};
@@ -90,6 +95,7 @@ switch _unitClass do {
 				_unit setVariable ["sapperHndl",_sapperHndl];
 				_unit addEventHandler ["FiredNear", format ["%1 setFSMVariable [""_sFiredNear"",[_this select 1, _this select 2]];",_sapperHndl]];
 				_unit addEventHandler ["Hit", format ["%1 setFSMVariable [""_sHit"",[_this select 1, _this select 2]];",_sapperHndl]];
+				_unit addEventHandler ["Killed", {[_this, "AntagonistKills", 1, true] call Epoch_unit_onKilledEH;}];
 			};
 		};
 	};
@@ -99,11 +105,15 @@ switch _unitClass do {
 			_units pushBack _unit;
 			_bomb = createVehicle ["SmokeShellToxicSapper", _targetPos, [], 0, "CAN_COLLIDE"];
 			_bomb attachTo [_unit, [0,0,0],"Pelvis"];
+			[_bomb, player, Epoch_personalToken,_unit,false] remoteExec ["EPOCH_server_handle_sapperObjs",2];
+			_bomb = createVehicle ["Sapper_Charge_Ammo", _targetPos, [], 0, "CAN_COLLIDE"];
+			_bomb attachTo [_unit, [0,0,0],"Pelvis"];
 			_unit call _disableAI;
 			_sapperHndl = [_unit, _bomb, _trgt] execFSM "\x\addons\a3_epoch_code\System\Sapper_Brain2.fsm";
 			_unit setVariable ["sapperHndl",_sapperHndl];
 			_unit addEventHandler ["FiredNear", format ["%1 setFSMVariable [""_sFiredNear"",[_this select 1, _this select 2]];",_sapperHndl]];
 			_unit addEventHandler ["Hit", format ["%1 setFSMVariable [""_sHit"",[_this select 1, _this select 2]];",_sapperHndl]];
+			_unit addEventHandler ["Killed", {[_this, "AntagonistKills", 1, true] call Epoch_unit_onKilledEH;}];
 		};
 	};
 	case "Epoch_SapperB_F": {
@@ -117,6 +127,7 @@ switch _unitClass do {
 			_unit setVariable ["sapperHndl",_sapperHndl];
 			_unit addEventHandler ["FiredNear", format ["%1 setFSMVariable [""_sFiredNear"",[_this select 1, _this select 2]];",_sapperHndl]];
 			_unit addEventHandler ["Hit", format ["%1 setFSMVariable [""_sHit"",[_this select 1, _this select 2]];",_sapperHndl]];
+			_unit addEventHandler ["Killed", {[_this, "AntagonistKills", 1, true] call Epoch_unit_onKilledEH;}];
 		};
 	};
 	case "I_UAV_01_F": {
@@ -132,6 +143,7 @@ switch _unitClass do {
 			_driver = _grp createUnit["I_UAV_AI", position _unit, [], 0, "CAN_COLLIDE"];
 			_driver moveInAny _unit;
 			[_unit, _trgt] execFSM "\x\addons\a3_epoch_code\System\Copter_brain.fsm";
+			_unit addEventHandler ["Killed", {[_this, "AIKills", 1, true] call Epoch_unit_onKilledEH;}];
 		};
 	};
 	case "PHANTOM": {
@@ -156,20 +168,21 @@ switch _unitClass do {
 		_grp = createGroup [RESISTANCE, true];
 		_grp setBehaviour "COMBAT";
 		_grp setCombatMode "RED";
-        _minAISkill = getNumber (getMissionConfig "CfgEpochSoldier" >> "minAISkill");
-        _arrUnits = getArray (getMissionConfig "CfgEpochSoldier" >> "unitTypes");
+		_missionConfig = getMissionConfig "CfgEpochSoldier";
+        _minAISkill = getNumber (_missionConfig >> "minAISkill");
+        _arrUnits = getArray (_missionConfig >> "unitTypes");
         _arrSkills = ["aimingAccuracy","aimingShake","aimingSpeed","endurance","spotDistance","spotTime","courage","reloadSpeed","commanding","general"];
         _arrVals = [
-            getNumber (getMissionConfig "CfgEpochSoldier" >> "maxAimingAccuracy"),
-            getNumber (getMissionConfig "CfgEpochSoldier" >> "maxAimingShake"),
-            getNumber (getMissionConfig "CfgEpochSoldier" >> "maxAimingSpeed"),
-            getNumber (getMissionConfig "CfgEpochSoldier" >> "maxEndurance"),
-            getNumber (getMissionConfig "CfgEpochSoldier" >> "maxSpotDistance"),
-            getNumber (getMissionConfig "CfgEpochSoldier" >> "maxSpotTime"),
-            getNumber (getMissionConfig "CfgEpochSoldier" >> "maxCourage"),
-            getNumber (getMissionConfig "CfgEpochSoldier" >> "maxReloadSpeed"),
-            getNumber (getMissionConfig "CfgEpochSoldier" >> "maxCommanding"),
-            getNumber (getMissionConfig "CfgEpochSoldier" >> "maxGeneral")
+            getNumber (_missionConfig >> "maxAimingAccuracy"),
+            getNumber (_missionConfig >> "maxAimingShake"),
+            getNumber (_missionConfig >> "maxAimingSpeed"),
+            getNumber (_missionConfig >> "maxEndurance"),
+            getNumber (_missionConfig >> "maxSpotDistance"),
+            getNumber (_missionConfig >> "maxSpotTime"),
+            getNumber (_missionConfig >> "maxCourage"),
+            getNumber (_missionConfig >> "maxReloadSpeed"),
+            getNumber (_missionConfig >> "maxCommanding"),
+            getNumber (_missionConfig >> "maxGeneral")
         ];
         for "_i" from 0 to (_unitCount - 1) do {
         	_unit = _grp createUnit[selectRandom _arrUnits, _pos, [], 0, "FORM"];
@@ -180,6 +193,7 @@ switch _unitClass do {
         	_unit enableAI "MOVE";
         	_unit enableAI "ANIM";
         	_unit disableAI "FSM";
+			_unit addEventHandler ["Killed", {[_this, "AIKills", 1, true] call Epoch_unit_onKilledEH;}];
             // randomize skill
         	for "_i" from 0 to ((count _arrSkills)-1) do {
         		_aiskill = floor random (_arrVals select _i);

@@ -22,14 +22,44 @@
 	NOTHING
 */
 //[[[cog import generate_private_arrays ]]]
-private ["_animConfigArray","_animationEffect","_animationEffectGlobal","_bleedAmount","_bleedChance","_bloodpAmount","_bloodpChance","_canSee","_cfgObjectInteraction","_distance","_fatigueChance","_handle","_handles","_ppEffect","_say3dsoundsConfig","_selectedMove","_selectedSound","_soundConfigArray","_soundEffect","_soundEffectGlobal","_switchMovehandlerConfig","_toxicChance"];
+private ["_animConfigArray","_animationEffect","_animationEffectGlobal","_bleedAmount","_bleedChance","_bloodpAmount","_bloodpChance","_canSee","_cfgObjectInteraction","_distance","_doAttack","_fatigueChance","_playerBloodPKeyFinal","_playerImmunityKeyFinal","_playerToxicityKeyFinal","_ppEffect","_say3dsoundsConfig","_selectedMove","_selectedSound","_soundConfigArray","_soundEffect","_soundEffectGlobal","_switchMovehandlerConfig","_target","_toxicAmount","_toxicChance"];
 //[[[end]]]
 params [["_unit",objNull],["_target",player]];
 if (isNull _unit && isNull _target) exitWith {};
-if !(_target isEqualTo player) then {
-	// re to other player
-	[_unit,_target] remoteExec ["EPOCH_client_bitePlayer", _target];
+_doAttack = false;
+
+// check if target is on foot
+if (isNull objectParent _target) then {
+	if (_target isEqualTo player) then {
+		// handle attack for local player
+		_doAttack = true;
+	} else {
+		// send attack to other player
+		if (isPlayer _target) then {
+			[_unit] remoteExec ["EPOCH_client_bitePlayer", _target];
+		};
+	};
 } else {
+	// target is inside a vehicle, target entire vehicle crew
+	private _targets = [];
+	{
+		if (_x isEqualTo player) then {
+			// handle attack for local player if inside vehicle
+			_target = _x;
+			_doAttack = true;
+		} else {
+			// send attack to other players
+			if (isPlayer _x) then {
+				_targets pushBack _x;
+			};
+		};
+	} forEach (crew _target);
+	if !(_targets isEqualTo []) then {
+		[_unit] remoteExec ["EPOCH_client_bitePlayer", _targets];
+	};
+};
+
+if (_doAttack) then {
 
 	if !(isNull _unit && alive _unit) then {
 
@@ -43,6 +73,7 @@ if !(_target isEqualTo player) then {
 			_fatigueChance = getNumber (_cfgObjectInteraction >> "fatigueChance");
 			_bleedAmount = getNumber (_cfgObjectInteraction >> "bleedAmount");
 			_bloodpAmount = getNumber (_cfgObjectInteraction >> "bloodpAmount");
+			_toxicAmount = getNumber (_cfgObjectInteraction >> "toxicAmount");
 
 			_soundConfigArray = getArray (_cfgObjectInteraction >> "soundEffect");
 			_soundEffect = "";
@@ -86,13 +117,19 @@ if !(_target isEqualTo player) then {
 				};
 
 				if (random 1 < _toxicChance) then {
-					EPOCH_playerToxicity = (EPOCH_playerToxicity + (random(100 - EPOCH_playerImmunity))) min 100;
+					_playerToxicityKeyFinal = "EPOCH_playerToxicity";
+					_playerImmunityKeyFinal = "EPOCH_playerImmunity";
+					if !(isNil "_playerToxicityKey") then {_playerToxicityKeyFinal = _playerToxicityKey};
+					if !(isNil "_playerImmunityKey") then {_playerImmunityKeyFinal = _playerImmunityKey};
+					[_playerToxicityKeyFinal,random(_toxicAmount - (missionNamespace getVariable [_playerImmunityKeyFinal, 0])),100,0] call EPOCH_fnc_setVariableLimited;
 				};
 				if (random 1 < _bleedChance) then {
 					player setBleedingRemaining((getBleedingRemaining player) + _bleedAmount);
 				};
 				if (random 1 < _bloodpChance) then {
-					EPOCH_playerBloodP = (EPOCH_playerBloodP + (_bloodpAmount + (EPOCH_playerBloodP - 100))) min 190;
+					_playerBloodPKeyFinal = "EPOCH_playerBloodP";
+					if !(isNil "_playerBloodPKey") then {_playerBloodPKeyFinal = _playerBloodPKey};
+					[_playerBloodPKeyFinal,_bloodpAmount,190,0] call EPOCH_fnc_setVariableLimited;
 					if !(_ppEffect isEqualTo []) then {
 						[_ppEffect] spawn EPOCH_fnc_spawnEffects;
 					};

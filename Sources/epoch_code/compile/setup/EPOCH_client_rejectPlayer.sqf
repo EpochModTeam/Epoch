@@ -13,7 +13,7 @@
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_code/compile/setup/EPOCH_client_rejectPlayer.sqf
 
     Example:
-    call EPOCH_clientInit;
+    true remoteExec ['EPOCH_client_rejectPlayer',_player];
 
     Parameter(s):
 		_this: BOOL - true = set bad publicVariable to server forces kick

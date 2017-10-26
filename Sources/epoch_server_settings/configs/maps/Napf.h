@@ -30,7 +30,7 @@ class Napf : Default
 		{"ViewPoint",1}
 	};
 	traderBlds[] = {"House", "Building"};
-	containerPos[] = {};
+	shipwreckLootEnabled = 0;
 	telePos[] = {
 		// N [-0.286865,8.17383,-10.3098]
 		// S [-0.415527,-7.05298,-10.3098]

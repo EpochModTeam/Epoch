@@ -197,7 +197,7 @@ class milFindCrashSite{
 	callEventCondition1 = "count (units group player select {_x distance milCrashPos < 800}) > 0";
 	callEventCondition2 = "count (units group player select {_x distance milCrashPos < 480}) > 0 && random 100 < 12";
 	callEventCondition3 = "";
-	callEventCALL1 = "_diag = format [""Great work the UAV has spotted %1 nearly on-site."",name ((units group player select {_x distance milCrashPos < 800}) select 0)];[_diag, 5] call Epoch_message;";
+	callEventCALL1 = "_diag = format [""Great work the UAV has spotted %1 nearly on-site."",name ((units group player select {_x distance milCrashPos < 800}) select 0)];[_diag, 5,[[0,0,0,0.5],[1,0.5,0,1]]] call Epoch_message;";
 	callEventFSM1 = "";
 	callEventSQF1 = "";
 	callEventTask1 = "";

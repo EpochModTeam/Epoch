@@ -24,9 +24,18 @@ if (EPOCH_velTransform) then {
 			EPOCH_target setvelocitytransformation[_pos1, (EP_velocityTransformation select 0), _vel1, (EP_velocityTransformation select 1), _dir1, (EP_velocityTransformation select 2), _up1, (EP_velocityTransformation select 3), _interval];
 		} else {
 			_pos2 = player modelToWorld[EPOCH_X_OFFSET, EPOCH_Y_OFFSET, EPOCH_Z_OFFSET];
+			if !(EPOCH_maxBuildingHeight == 0) then {
+				if (_pos2 select 2 > EPOCH_maxBuildingHeight) then {
+					_pos2 set[2, EPOCH_maxBuildingHeight];
+				};
+			};
 			if ((_pos2 select 2) < 0) then { _pos2 set[2, 0] };
 			if ((_pos1 distance _pos2) > 0) then {
-				EPOCH_target setvelocitytransformation[_pos1, AGLtoASL _pos2, _vel1, _vel1, _dir1, _dir1, _up1, _up1, _interval];
+				_newpos = AGLtoASL _pos2;
+				if (surfaceiswater _pos2) then {
+					_newpos = _pos2;
+				};
+				EPOCH_target setvelocitytransformation[_pos1, _newpos, _vel1, _vel1, _dir1, _dir1, _up1, _up1, _interval];
 			};
 		};
 	} else {
@@ -50,7 +59,7 @@ if (!isNull EPOCH_currentTarget && vehicle player == player) then {
 				_icon = "\x\addons\a3_epoch_code\Data\UI\loading_bar_%1.paa";
 				_color = [100,0,_stability,1] call EPOCH_colorRange;
 			};
-			case 1: { 
+			case 1: {
 				// _text = if (EPOCH_buildMode > 0) then[{_text}, { format ["Hold (%1)",EPOCH_keysBuildMode1 call BIS_fnc_keyCode] }];
 				_stability = if (EPOCH_buildMode > 0) then[{_currentTarget getVariable["stability", 100]}, {100 - round(damage _currentTarget * 100)}];
 				_icon = "\x\addons\a3_epoch_code\Data\UI\loading_bar_%1.paa";

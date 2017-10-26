@@ -13,7 +13,7 @@
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server/compile/epoch_traders/EPOCH_server_spawnTraders.sqf
 */
 //[[[cog import generate_private_arrays ]]]
-private ["_acceptableBlds","_agent","_aiClass","_aiTables","_buildingHome","_buildingWork","_buildings","_checkBuilding","_config","_endTime","_home","_homes","_marker","_objHiveKey","_pos","_position","_randomAIUniform","_return","_schedule","_slot","_spawnCount","_startTime","_traderHomes","_usedBuildings","_work"];
+private ["_acceptableBlds","_agent","_aiClass","_aiTables","_buildingHome","_buildingWork","_buildings","_checkBuilding","_config","_endTime","_home","_homes","_markers","_objHiveKey","_pos","_position","_randomAIUniform","_return","_schedule","_slot","_spawnCount","_startTime","_traderHomes","_usedBuildings","_work"];
 //[[[end]]]
 _spawnCount = count EPOCH_TraderSlots;
 _config = (configFile >> "CfgEpoch" >> worldName);
@@ -67,11 +67,8 @@ for "_i" from 1 to _spawnCount do {
 				};
 				["AI", _objHiveKey, [_aiClass, _home, [_work, _schedule]] ] call EPOCH_fnc_server_hiveSET;
 				if (EPOCH_SHOW_TRADERS) then {
-					_marker = createMarker[str(_agent), (_pos)];
-					_marker setMarkerShape "ICON";
-					_marker setMarkerType "mil_dot";
-					_marker setMarkerColor "ColorKhaki";
-					_agent setVariable["MARKER_REF", _marker];
+					_markers = ["NewDynamicTrader",_pos] call EPOCH_server_createGlobalMarkerSet;
+					_agent setVariable["MARKER_REF", _markers];
 				};
 			};
 		};

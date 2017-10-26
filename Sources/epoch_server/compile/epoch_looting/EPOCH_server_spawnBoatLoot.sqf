@@ -13,20 +13,21 @@
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server/compile/epoch_looting/EPOCH_server_spawnBoatLoot.sqf
 */
 //[[[cog import generate_private_arrays ]]]
-private ["_item","_marker"];
+private ["_shipwrecks","_item","_markers"];
 //[[[end]]]
-{
-	// 20 percent chance for loot to spawn
-	if ((random 1) <= 0.4) then {
-		_item = createVehicle["container_epoch", _x, [], 0, "NONE"];
+_cfgEpoch = configFile >> "CfgEpoch" >> worldname;
+if (getNumber(_cfgEpoch >> "shipwreckLootEnabled") isEqualTo 1) then {
+	_worldSize = worldSize/2;
+	_shipwrecks = nearestTerrainObjects [ [_worldSize, _worldSize], ["SHIPWRECK"], _worldSize];
+	_total = getNumber(_cfgEpoch >> "maxSpawnedShipwrecks");
+	for "_i" from 1 to _total do {
+		if (_shipwrecks isEqualTo []) exitWith {};
+		_wreck = selectRandom _shipwrecks;
+		_shipwrecks = _shipwrecks - [_wreck];
+		_item = createVehicle["container_epoch", _wreck, [], 0, "NONE"];
 		_item setMass 220;
-
 		if (EPOCH_SHOW_BOATLOOT) then {
-			_marker = createMarker[str(_x), _x];
-			_marker setMarkerShape "ICON";
-			_marker setMarkerType "mil_dot";
-			// _marker setMarkerText "Shipwreak";
-			_marker setMarkerColor "ColorOrange";
+			_markers = ["Shipwreck",_wreck] call EPOCH_server_createGlobalMarkerSet;
 		};
 	};
-} foreach (getArray (configFile >> "CfgEpoch" >> worldname >> "containerPos"));
+};

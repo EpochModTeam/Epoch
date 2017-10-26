@@ -1,70 +1,183 @@
 // make sure we wait for Display #46
-waitUntil {!(isNull (findDisplay 46))};
+waitUntil {!isNull (findDisplay 46) && (!isNil "EPOCH_loadingScreenDone")};
+
+// load favBar
+'load' spawn epoch_favBar_draw;
+
+// force update within 15 seconds
+EPOCH_forceUpdate = false;
+_forceUpdate = false;
+// force update within 1 second
+EPOCH_forceUpdateNow = false;
+
+// start alive timer
+_clientAliveTimer = diag_tickTime;
+
+// init player stat vars
+_gmVarsInit = ["CfgEpochClient", "gmVars", [["Temp",98.6],["Hunger",500],["Thirst",500],["Toxicity",0],["Stamina",10],["BloodP",100],["Alcohol",0],["Radiation",0]]] call EPOCH_fnc_returnConfigEntryV2;
+_gModeVarNames = _gmVarsInit apply {_x param [0,""]};
+_gModeVarValues = _gmVarsInit apply {_x param [1,0]};
+
+_customVarsInit = ["CfgEpochClient", "customVarsDefaults", EPOCH_customVarsDefaults] call EPOCH_fnc_returnConfigEntryV2;
+_customVarNames = _customVarsInit apply {_x param [0,""]};
+_defaultVarValues = _customVarsInit apply {_x param [1,0]};
+_customVarLimits = _customVarsInit apply {_x param [2,[]]};
+
+(_customVarLimits select (_customVarNames find "Temp")) params [["_playerTempMax",100],["_playerTempMin",0]];
+(_defaultVarValues select (_customVarNames find "Temp")) params [["_playerTempDefault",0]];
+(_customVarLimits select (_customVarNames find "Hunger")) params [["_playerHungerMax",100],["_playerHungerMin",0]];
+(_defaultVarValues select (_customVarNames find "Hunger")) params [["_playerHungerDefault",0]];
+(_customVarLimits select (_customVarNames find "Thirst")) params [["_playerThirstMax",100],["_playerThirstMin",0]];
+(_defaultVarValues select (_customVarNames find "Thirst")) params [["_playerThirstDefault",0]];
+(_customVarLimits select (_customVarNames find "Energy")) params [["_playerEnergyMax",100],["_playerEnergyMin",0]];
+(_defaultVarValues select (_customVarNames find "Energy")) params [["_playerEnergyDefault",0]];
+(_customVarLimits select (_customVarNames find "Wet")) params [["_playerWetMax",100],["_playerWetMin",0]];
+(_defaultVarValues select (_customVarNames find "Wet")) params [["_playerWetDefault",0]];
+(_customVarLimits select (_customVarNames find "Soiled")) params [["_playerSoiledMax",100],["_playerSoiledMin",0]];
+(_defaultVarValues select (_customVarNames find "Soiled")) params [["_playerSoiledDefault",0]];
+(_customVarLimits select (_customVarNames find "Immunity")) params [["_playerImmunityMax",100],["_playerImmunityMin",0]];
+(_defaultVarValues select (_customVarNames find "Immunity")) params [["_playerImmunityDefault",0]];
+(_customVarLimits select (_customVarNames find "Toxicity")) params [["_playerToxicityMax",100],["_playerToxicityMin",0]];
+(_defaultVarValues select (_customVarNames find "Toxicity")) params [["_playerToxicityDefault",0]];
+(_customVarLimits select (_customVarNames find "Stamina")) params [["_playerStaminaMax",100],["_playerStaminaMin",0]];
+(_defaultVarValues select (_customVarNames find "Stamina")) params [["_playerStaminaDefault",0]];
+(_customVarLimits select (_customVarNames find "BloodP")) params [["_playerBloodPMax",100],["_playerBloodPMin",0]];
+(_defaultVarValues select (_customVarNames find "BloodP")) params [["_playerBloodPDefault",0]];
+(_customVarLimits select (_customVarNames find "Alcohol")) params [["_playerAlcoholMax",100],["_playerAlcoholMin",0]];
+(_defaultVarValues select (_customVarNames find "Alcohol")) params [["_playerAlcoholDefault",0]];
+(_customVarLimits select (_customVarNames find "Radiation")) params [["_playerRadiationMax",100],["_playerRadiationMin",0]];
+(_defaultVarValues select (_customVarNames find "Radiation")) params [["_playerRadiationDefault",0]];
+(_customVarLimits select (_customVarNames find "Nuisance")) params [["_playerNuisanceMax",100],["_playerNuisanceMin",0]];
+(_defaultVarValues select (_customVarNames find "Nuisance")) params [["_playerNuisanceDefault",0]];
+
+(_defaultVarValues select (_customVarNames find "AliveTime")) params [["_playerAliveTimeDefault",0]];
+(_defaultVarValues select (_customVarNames find "HitPoints")) params [["_playerHitPointsDefault",0]];
+(_defaultVarValues select (_customVarNames find "SpawnArray")) params [["_playerSpawnArrayDefault",0]];
+(_defaultVarValues select (_customVarNames find "MissionArray")) params [["_playerMissionArrayDefault",0]];
+
+// push inital vars to new gvars
+{
+	_varDefault = _defaultVarValues select _foreachindex;
+	_varName = format["EPOCH_player%1",_x];
+	_varNameTmp = call compile format["_player%1Key",_x];
+	if !(isNil "_varNameTmp") then {_varName = _varNameTmp};
+	missionNamespace setVariable [_varName, missionNamespace getVariable [format["EPOCH_player%1",_x], _varDefault]];
+} forEach _customVarNames;
+
+// only changed within this loop
+_playerAliveTime = missionNamespace getVariable [_playerAliveTimeKey, _playerAliveTimeDefault];
+
+// init Energy Max
+EPOCH_playerEnergyMax = _playerEnergyMax;
+
+// inline function to sync player stats to server
+_fnc_forceUpdate = {
+	private _customVars = [];
+	{
+		private _varName = format["EPOCH_player%1",_x];
+		private _varNameTmp = call compile format["_player%1Key",_x];
+		if !(isNil "_varNameTmp") then {_varName = _varNameTmp};
+		_customVars pushBack (missionNamespace getVariable [_varName,_defaultVarValues select _foreachindex]);
+	} forEach _customVarNames;
+	[player,_customVars,Epoch_personalToken] remoteExec ["EPOCH_fnc_savePlayer",2];
+};
+
+// disable fuel sources client side.
+{_x setFuelCargo 0;} foreach (missionNamespace getVariable ["EPOCH_staticFuelSources", []]);
 
 // setup display EH's
 if (isNil "EPOCH_display_setup_complete") then {
-    EPOCH_display_setup_complete = true;
-    {
-    	(findDisplay 46) displayAddEventHandler [_x,(["CfgEpochClient", _x, ""] call EPOCH_fnc_returnConfigEntryV2)];
-    } forEach (["CfgEpochClient", "displayAddEventHandler", []] call EPOCH_fnc_returnConfigEntryV2);
-    // reset anim state
-    player switchMove "";
-    // setup Epoch Hud
-    call epoch_dynamicHUD_start;
+	EPOCH_display_setup_complete = true;
+	{
+		(findDisplay 46) displayAddEventHandler [_x,(["CfgEpochClient", _x, ""] call EPOCH_fnc_returnConfigEntryV2)];
+	} forEach (["CfgEpochClient", "displayAddEventHandler", []] call EPOCH_fnc_returnConfigEntryV2);
+	// reset anim state
+	player switchMove "";
+	// setup Epoch Hud
+	call epoch_dynamicHUD_start;
 };
+
+
+
+// Background radiation
+_outOfBoundsRadiation = ["CfgEpochClient", "outOfBoundsRadiation", 10] call EPOCH_fnc_returnConfigEntryV2;
+_radsLevel = 0;
 
 _prevEquippedItem = [];
 _damagePlayer = damage player;
+_isOnFoot = isNull objectParent player;
 _panic = false;
-_prevEnergy = EPOCH_playerEnergy;
+_prevEnergy = missionNamespace getVariable [_playerEnergyKey, _playerEnergyDefault];
+
 
 // init config data
-EPOCH_sapperRndChance = ["CfgEpochClient", "sapperRngChance", 100] call EPOCH_fnc_returnConfigEntryV2;
-EPOCH_zombieRngChance = ["CfgEpochClient", "zombieRngChance", 50] call EPOCH_fnc_returnConfigEntryV2;
-EPOCH_droneRndChance = ["CfgEpochClient", "droneRngChance", 100] call EPOCH_fnc_returnConfigEntryV2;
-_baseHTLoss = ["CfgEpochClient", "baseHTLoss", 8] call EPOCH_fnc_returnConfigEntryV2;
+_antagonistRndChance = ["CfgEpochClient", "antagonistRngChance", 100] call EPOCH_fnc_returnConfigEntryV2;
+
+_baseHungerLoss = ["CfgEpochClient", "baseHungerLoss", 2] call EPOCH_fnc_returnConfigEntryV2;
+_baseThirstLoss = ["CfgEpochClient", "baseThirstLoss", 2] call EPOCH_fnc_returnConfigEntryV2;
+_baseAlcoholLoss = ["CfgEpochClient", "baseAlcoholLoss", 0.17] call EPOCH_fnc_returnConfigEntryV2;
+_lossMultiplier = if (["CfgEpochClient", "accelerateHTALoss", true] call EPOCH_fnc_returnConfigEntryV2) then {timeMultiplier} else {1};
 _energyCostNV = ["CfgEpochClient", "energyCostNV", 3] call EPOCH_fnc_returnConfigEntryV2;
 _energyRegenMax = ["CfgEpochClient", "energyRegenMax", 5] call EPOCH_fnc_returnConfigEntryV2;
 _energyRange = ["CfgEpochClient", "energyRange", 75] call EPOCH_fnc_returnConfigEntryV2;
 _hudConfigs = ["CfgEpochClient", "hudConfigs", []] call EPOCH_fnc_returnConfigEntryV2;
+_radioactiveLocations = ["CfgEpochClient", "radioactiveLocations", ["NameCityCapital", "NameCity", "Airport"]] call EPOCH_fnc_returnConfigEntryV2;
+_radiatedObjMaxRange = ["CfgEpochClient", "radiatedObjMaxFalloutDist", 75] call EPOCH_fnc_returnConfigEntryV2;
 
-EPOCH_chargeRate = 0;
-EPOCH_playerIsSwimming = false;
+_chargeRate = 0;
+
+_antagonistChanceDefaults = [
+	"Epoch_Cloak_F",0.07,
+	"Epoch_Sapper_F",0.25,
+	"Epoch_SapperG_F",0.12,
+	"Epoch_SapperB_F",0.06,
+	"I_UAV_01_F",0.2,
+	"PHANTOM",0.01,
+	"EPOCH_RyanZombie_1",0.25
+];
+_antagonistChances = ["CfgEpochClient", "antagonistChances", _antagonistChanceDefaults] call EPOCH_fnc_returnConfigEntryV2;
+
+
+// Init antagonist spawn limits
+_spawnIndex = [];
+_spawnLimits = [];
+_antagonistSpawnDefaults = [
+	["Epoch_Cloak_F", 1],
+	["GreatWhite_F", 2],
+	["Epoch_Sapper_F",2],
+	["Epoch_SapperG_F",1],
+	["Epoch_SapperB_F",1],
+	["I_UAV_01_F",2],
+	["PHANTOM",1],
+	["B_Heli_Transport_01_F",1],
+	["EPOCH_RyanZombie_1",12]
+];
+_antagonistSpawnLimits = ["CfgEpochClient", "antagonistSpawnIndex", _antagonistSpawnDefaults] call EPOCH_fnc_returnConfigEntryV2;
+
+_mod_Ryanzombies_Enabled = missionNamespace getVariable ["EPOCH_mod_Ryanzombies_Enabled",false];
+{
+	_x params ["_spawnName","_spawnLimit"];
+	if (_spawnName isEqualTo "EPOCH_RyanZombie_1") then {
+		if (_mod_Ryanzombies_Enabled) then {
+			_spawnIndex pushBack _spawnName;
+			_spawnLimits pushBack _spawnLimit;
+		};
+	} else {
+		_spawnIndex pushBack _spawnName;
+		_spawnLimits pushBack _spawnLimit;
+	};
+} forEach _antagonistSpawnLimits;
+
+EPOCH_spawnIndex = _spawnIndex;
+EPOCH_spawnLimits = _spawnLimits;
 
 // default data if mismatch
-if (count EPOCH_playerSpawnArray != count EPOCH_spawnIndex) then{
-	EPOCH_playerSpawnArray = [];
-	{ EPOCH_playerSpawnArray pushBack 0 } forEach EPOCH_spawnIndex;
+_playerSpawnArray = missionNamespace getVariable [_playerSpawnArrayKey, _playerSpawnArrayDefault];
+if !(_playerSpawnArray isEqualTypeParams _spawnIndex) then{
+	_playerSpawnArray = [];
+	{ _playerSpawnArray pushBack 0 } forEach _spawnIndex;
 };
-
-// HUD and Logic functions - todo move to client function.
-/*
-[_selVarName,_varIndex,_selVarType,_selVarSubData] call _fnc_returnHudVar
-*/
-_fnc_returnHudVar = {
-	params [["_selVarName",""],["_varIndex",0],["_selVarType",""],["_selVarSubData",""]];
-	switch (_selVarType) do {
-		case "getMissionNamespaceVariable": {missionNamespace getVariable[_selVarName,_selVarSubData]};
-		case "getPlayerHitPointDamage": {player getHitPointDamage _selVarSubData};
-		case "getPlayerOxygenRemaining": {getOxygenRemaining player};
-		case "getPlayerDamage": {damage player};
-		default {missionNamespace getVariable[format['EPOCH_player%1', _selVarName],EPOCH_defaultVars select _varIndex]};
-	}
-};
-/*
-[1,">=",0] call _fnc_arrayToLogic; // returns: true
-*/
-_fnc_arrayToLogic = {
-	params [["_v",""],["_t",""],["_d",""]];
-	switch (_t) do {
-		case ">=": {_v >= _d};
-		case "<=": {_v <= _d};
-		case "<": {_v < _d};
-		case ">": {_v > _d};
-		case "!=": {!(_v isEqualTo _d)};
-		default {_v isEqualTo _d};
-	}
-};
+missionNamespace setVariable [_playerSpawnArrayKey, _playerSpawnArray];
 
 // find radio
 {
@@ -79,16 +192,27 @@ _masterConfig = 'CfgBuildingLootPos' call EPOCH_returnConfig;
 
 _lootClasses = [];
 _lootClassesIgnore = ['Default'];
-'_cN = configName _x;if !(_cN in _lootClassesIgnore)then{_lootClasses pushBackUnique _cN};' configClasses _masterConfig;
+'_cN = configName _x;if !(_cN in _lootClassesIgnore)then{_lootClasses pushBackUnique (toLower _cN)}; true' configClasses _masterConfig;
 
+_lastPlayerPos = getPosATL player;
 _lootBubble = {
 	private["_jammer", "_others", "_objects", "_nearObjects", "_building", "_lootDist", "_lootLoc", "_playerPos", "_distanceTraveled"];
 	_playerPos = getPosATL vehicle player;
-	_distanceTraveled = EPOCH_lastPlayerPos distance _playerPos;
+	_distanceTraveled = _lastPlayerPos distance _playerPos;
 	if (_distanceTraveled > 10 && _distanceTraveled < 200) then {
 		_lootDist = 30 + _distanceTraveled;
 		_lootLoc = player getRelPos [_lootDist, (random [-180,0,180])];
-		_objects = nearestObjects[_lootLoc, _lootClasses, 30];
+		_objects = (_lootLoc nearObjects 30) select {
+			private _selectedConfig = typeOf _x;
+			if (_selectedConfig isEqualTo "") then {
+				(getModelInfo _x) params [["_modelName",""]];
+				if (!isnil "_modelName") then {
+					_selectedConfig = (_modelName splitString " .") joinString "_";
+				};
+			};
+			((toLower _selectedConfig) in _lootClasses)
+		};
+		// diag_log format["DEBUG: loot objects %1",_objects];
 		_jammer = nearestObjects [_lootLoc, ["PlotPole_EPOCH","ProtectionZone_Invisible_F"], _buildingJammerRange];
 		if (!(_objects isEqualTo[]) && (_jammer isEqualTo[])) then {
 			_building = selectRandom _objects;
@@ -104,28 +228,12 @@ _lootBubble = {
 			};
 		};
 	};
-	EPOCH_lastPlayerPos = _playerPos;
+	_lastPlayerPos = _playerPos;
 };
 
-// [control,bool] call _fadeUI;
-_fadeUI = {
-	params ["_ctrl","_bool"];
-	if (_bool) then {
-		if (ctrlFade _ctrl == 0) then {
-			_ctrl ctrlSetFade 1;
-			_ctrl ctrlCommit 0.5;
-		};
-		if (ctrlFade _ctrl == 1) then {
-			_ctrl ctrlSetFade 0;
-			_ctrl ctrlCommit 0.5;
-		};
-	} else {
-		if (ctrlFade _ctrl != 1) then {
-			_ctrl ctrlSetFade 0;
-			_ctrl ctrlCommit 0;
-		};
-	};
-	_bool
+// init weather temperature var if not already set
+if (isNil "EPOCH_CURRENT_WEATHER") then {
+	EPOCH_CURRENT_WEATHER = 75;
 };
 
 _cursorTarget = objNull;
@@ -140,13 +248,13 @@ _EPOCH_BuildTraderMisson = {
 	_taskTitle = getText ( _inGameTasksconfig >> _taskName >> "title");
 	_taskSQF = getText ( _inGameTasksconfig >> _taskName >> "initsqf");
 	if !(_taskSQF isequalto '') then {
-		call compile format ["[_taskName,player,_unit,_taskItem] execVM ""%1""",_taskSQF];	
+		call compile format ["[_taskName,player,_unit,_taskItem] execVM ""%1""",_taskSQF];
 	};
 	_taskCall = getText ( _inGameTasksconfig >> _taskName >> "initcall");
 	if !(_taskCall isequalto '') then {
 		call compile _taskCall;
 	};
-	
+
 	_taskDelay = diag_ticktime + (getNumber ( _inGameTasksconfig >> _taskName >> "triggerDelay"));
 	_triggerintervall = getNumber ( _inGameTasksconfig >> _taskName >> "triggerintervall");
 	_taskItems = getArray ( _inGameTasksconfig >> _taskName >> "items");
@@ -179,7 +287,7 @@ _EPOCH_BuildTraderMisson = {
 		if(_taskMarkerType == 2)then{
 			_markerPos set [0, (_markerPos select 0) + (floor (random _taskMarkerRad) - (_taskMarkerRad / 2))];
 			_markerPos set [1, (_markerPos select 1) + (floor (random _taskMarkerRad) - (_taskMarkerRad / 2))];
-		};		
+		};
 		[[_taskMarkerVis,player],_markerPos,"ELLIPSE","mil_dot",_taskMarkerText,"ColorYellow",[_taskMarkerRad,_taskMarkerRad], "SolidBorder", 42, 0.6,_mkrName] remoteExec ["EPOCH_server_makeMarker",2];
 	};
 	_taskDialogues = [];
@@ -203,13 +311,13 @@ _EPOCH_BuildTraderMisson = {
 	_taskFailedSQF = getText ( _inGameTasksconfig >> _taskName >> "failedSQF");
 	_taskFailedCall = compile getText ( _inGameTasksconfig >> _taskName >> "failedCall");
 	_nextTask = getArray ( _inGameTasksconfig >> _taskName >> "failedTask");
-	
+
 	_taskCompleteCond = compile getText ( _inGameTasksconfig >> _taskName >> "completeCondition");
 	_taskReward = getArray ( _inGameTasksconfig >> _taskName >> "reward");
 	_taskCompleteDiags = getArray ( _inGameTasksconfig >> _taskName >> "completedialogues");
 	_taskCompleteCall = compile getText ( _inGameTasksconfig >> _taskName >> "completedCALL");
 	_taskNextTrigger = getArray ( _inGameTasksconfig >> _taskName >> "nextTask");
-	
+
 	_missionCleanUpCall = compile getText ( _inGameTasksconfig >> _taskName >>  "cleanUpCall");
 	_taskCleanup = getNumber ( _inGameTasksconfig >> _taskName >>  "cleanUp");
 	_return = [

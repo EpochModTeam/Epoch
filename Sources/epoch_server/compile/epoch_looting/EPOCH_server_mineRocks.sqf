@@ -13,44 +13,47 @@
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server/compile/epoch_looting/EPOCH_server_mineRocks.sqf
 */
 //[[[cog import generate_private_arrays ]]]
-private ["_item","_lootables","_nearbyWH","_payout","_payoutQty","_posWH","_selectedPayout"];
+private ["_config","_posWH","_selectedConfig"];
 //[[[end]]]
 params ["_object","_index","_player",["_token","",[""]] ];
 if !([_player, _token] call EPOCH_server_getPToken) exitWith{};
 
-if !(_object isKindOf "All") then {
-	if (alive _object) then {
+// make sure object still exists and is proper object type and alive.
+if (_object isEqualType objNull && {!(isNull _object)} && {alive _object}) then {
 
-		_posWH = getPosATL _player;
-		_posWH set[2, 0];
+	_posWH = getPosATL _player;
+	_posWH set[2, 0];
 
-		// defaults
-		_selectedPayout = ["ItemRock", 4];
-		// Not Rock
-		if (_index >= 0) then {
-			_selectedPayout = ["ItemScraps", 2];
-			if (_index == 0) then {
-				_selectedPayout = ["CinderBlocks", 1];
-			};
-		} else {
-			_lootables = [["PartOre", 2], ["ItemRock", 4]];
-			_selectedPayout = selectRandom _lootables;
-		};
-
-		_payout = _selectedPayout select 0;
-		_payoutQty = _selectedPayout select 1;
-
-		_object setdamage ((damage _object) + (1/_payoutQty)) min 1;
-
-		_nearbyWH = nearestObjects[_posWH, ["groundWeaponHolder"], 2];
-		if !(_nearbyWH isEqualTo[]) then {
-			_posWH = getPosATL(_nearbyWH select 0);
-			(_nearbyWH select 0) addMagazineCargoGlobal[_payout, _payoutQty];
-		} else {
-			_item = createVehicle["groundWeaponHolder", _posWH, [], 0, "CAN_COLLIDE"];
-			_item setPosATL _posWH;
-			_item addMagazineCargoGlobal[_payout, _payoutQty];
+	// define loot table class
+	_selectedConfig = typeOf _object;
+	if (_selectedConfig isEqualTo "") then {
+		// handle simple/terrain objects
+		(getModelInfo _object) params [["_modelName",""]];
+		if (!isnil "_modelName") then {
+			// replace spaces and periods with underscores
+			_selectedConfig = (_modelName splitString " .") joinString "_";
 		};
 	};
+
+	_config = configFile >> "CfgMainTable" >> _selectedConfig;
+	if !(isClass(_config)) then {
+		// allow override with generic loot classes if object class is not in CfgMainTable
+		switch (_index) do {
+			case 0: { _selectedConfig = "Rock" };
+			case 1: { _selectedConfig = "Cinder" };
+			case 2: { _selectedConfig = "Wreck" };
+			case 3: { _selectedConfig = "Ore" };
+		};
+	};
+
+	if (isSimpleObject _object) then {
+		// just remove for now, object will respawn on restart.
+		deleteVehicle _object;
+	} else {
+		_object setdamage 1;
+	};
+
+	// output loot
+	[objNull, _selectedConfig, false, _posWH] call EPOCH_serverLootObject;
 };
 true

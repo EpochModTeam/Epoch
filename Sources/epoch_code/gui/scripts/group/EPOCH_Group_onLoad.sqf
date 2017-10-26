@@ -82,6 +82,10 @@ if (_currentMaxMember < _groupSize) then {
 	};
 };
 
+if (_playerIsLeader) then {
+	(findDisplay -1300) displayCtrl 31 ctrlSetText "Delete Group";
+};
+
 
 {
 	_picture = EPOCH_group_level_img select _forEachIndex; //0 = lead / 1 = mod / 2 = member

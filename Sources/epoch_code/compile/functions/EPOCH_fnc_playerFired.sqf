@@ -28,7 +28,7 @@
 	NOTHING
 */
 //[[[cog import generate_private_arrays ]]]
-private ["_ammoConfig","_attachments","_currentDMG","_currentHIT","_cursorTarget","_gesture","_heal","_highestDMG","_newDMG","_nuisanceLevel","_repaired"];
+private ["_ammoConfig","_attachments","_currentDMG","_currentHIT","_cursorTarget","_gesture","_heal","_highestDMG","_newDMG","_nuisanceLevel","_playerNuisanceKeyFinal","_repaired"];
 //[[[end]]]
 params ["_unit","_weapon","_muzzle","_mode","_ammo","_magazine","_projectile"];
 EPOCH_lastFiredLocation = getPosATL player;
@@ -60,6 +60,13 @@ switch true do {
 					_currentDMG = 0;
 					{
 						_currentDMG = _x;
+						if (EPOCH_AdvancedVehicleRepair_Enabled) then {
+							if (_cursorTarget iskindof "Landvehicle" || _cursorTarget iskindof "SHIP" || _cursorTarget iskindof "AIR" || _cursorTarget iskindof "TANK") then {
+								if (_currentDMG > 0.9) then {
+									_currentDMG = 0;
+								};
+							};
+						};
 						if (_currentDMG > _highestDMG) then{
 							_highestDMG = _currentDMG;
 							_currentHIT = _forEachIndex;
@@ -68,9 +75,9 @@ switch true do {
 					if (_highestDMG > 0) then {
 						_newDMG = ((_highestDMG - 0.5) max 0);
 						if (local _cursorTarget) then {
-							[_cursorTarget,[_currentHIT,_newDMG]] call EPOCH_client_repairVehicle;
+							[_cursorTarget,[[_currentHIT,_newDMG]]] call EPOCH_client_repairVehicle;
 						} else {
-							[_cursorTarget,[_currentHIT,_newDMG],player,Epoch_personalToken] remoteExec ["EPOCH_server_repairVehicle",2];
+							[_cursorTarget,[[_currentHIT,_newDMG]],player,Epoch_personalToken] remoteExec ["EPOCH_server_repairVehicle",2];
 						};
 					} else {
 						if ((damage _cursorTarget) > 0) then {
@@ -111,7 +118,9 @@ switch true do {
 			_nuisanceLevel = _nuisanceLevel / 2;
 		};
 		// Nuisance System 0.1
-  		(EPOCH_customVarLimits select (EPOCH_customVars find "Nuisance")) params [["_playerLimitMax",100],["_playerLimitMin",0]];
-		EPOCH_playerNuisance = ((EPOCH_playerNuisance + _nuisanceLevel) min _playerLimitMax) max _playerLimitMin;
+		(EPOCH_customVarLimits select (EPOCH_customVars find "Nuisance")) params [["_playerLimitMax",100],["_playerLimitMin",0]];
+		_playerNuisanceKeyFinal = "EPOCH_playerNuisance";
+		if !(isNil "_playerNuisanceKey") then {_playerNuisanceKeyFinal = _playerNuisanceKey};
+		[_playerNuisanceKeyFinal,_nuisanceLevel,_playerLimitMax,_playerLimitMin] call EPOCH_fnc_setVariableLimited;
 	};
 };

@@ -27,6 +27,9 @@ if !(isNull _object) then {
 	};
 	deleteVehicle _object;
 	_item = createVehicle["groundWeaponHolder", [0,0,0], [], 0.0, "CAN_COLLIDE"];
+	if (_objectClass isequalto "GreatWhite_F") then {
+		_item setvariable ["EPOCH_Loot",true,true];
+	};
 	_item setPosATL _pos;
 	_class = "SeaFood";
 	_config = configFile >> "CfgMainTable" >> _objectClass;

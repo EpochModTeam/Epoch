@@ -16,15 +16,14 @@ antihack_banDuration = 5; // Default 5 minute ban. -1 = permanent ban.
 antihack_kickReasons[] = {
 	"Mod mismatch, check that the mods you have enabled match server."
 };
-antihack_checkFiles[] = { //script check, leave it blank to disable it
+antihack_checkFilesNew[] = { //script check, leave it blank to disable it
 	{"epoch_code\compile\setup\EPOCH_clientInit.sqf", "EPOCH_clientInit"},
 	{"epoch_code\compile\EPOCH_onEachFrame.sqf", "EPOCH_onEachFrame"},
-	{"epoch_code\compile\setup\EPOCH_masterLoop.sqf", "EPOCH_masterLoop"},
 	{"epoch_code\compile\setup\EPOCH_client_rejectPlayer.sqf", "EPOCH_client_rejectPlayer"},
-	{"epoch_code\compile\setup\EPOCH_clientRespawn.sqf", "EPOCH_clientRespawn"},
-	{"epoch_code\compile\interface_event_handlers\EPOCH_KeyDown.sqf", "EPOCH_KeyDown"}
+	{"epoch_code\compile\setup\EPOCH_clientRespawn.sqf", "EPOCH_clientRespawn"}
 };
 antihack_addActionCheck = "true"; // false to disable addAction checks
+antihack_antiTeleportCheck = "true"; // false to disable antiTeleport checks
 adminMenu_Owner[] = {};
 adminMenu_OwnerSetting[] = {
 	"ESP-PLAYER",
@@ -37,10 +36,12 @@ adminMenu_OwnerSetting[] = {
 	"INFRONT-TELEPORT",
 	"MAP-PLAYER",
 	"MAP-CORPSE",
-	// "MAP-LOOT",
+	"MAP-LOOT",
+	"MAP-ANIMALS",
 	"MAP-VEHICLE",
 	"MAP-AI",
-	// "MAP-BASEBUILDING",
+	"MAP-TRADER",
+	"MAP-BASEBUILDING",
 	"TARGET-HEAL",
 	"TARGET-AMMO",
 	"TARGET-KILL",

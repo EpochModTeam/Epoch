@@ -22,7 +22,8 @@ binarizationWanted=0;
 addons[]=
 {
 	"A3_epoch_config",
-	"cup_zargabad_config"
+	"cup_zargabad_config",
+	"a3_characters_f"
 };
 randomSeed=12032465;
 class ScenarioData
@@ -6092,36 +6093,6 @@ class Mission
 			{
 			};
 			id=403;
-		};
-		class Item205
-		{
-			dataType="Group";
-			side="Civilian";
-			class Entities
-			{
-				items=1;
-				class Item0
-				{
-					dataType="Object";
-					class PositionInfo
-					{
-						position[]={4331.02,0,148.62354};
-						angles[]={0,4.7169838,0};
-					};
-					side="Civilian";
-					flags=3;
-					class Attributes
-					{
-						isPlayable=1;
-					};
-					id=406;
-					type="VirtualMan_EPOCH";
-				};
-			};
-			class Attributes
-			{
-			};
-			id=405;
 		};
 	};
 };

@@ -49,7 +49,7 @@ if !(isNull _trader) then {
 		if !(EPOCH_ActiveTraderMission isequalto []) exitwith {
 			EPOCH_ActiveTraderMission params ['','',['_missionname','ERROR']];
 			_msg = format ['You are already running %1. Finish or cancel it first',_missionname];
-			[_msg, 5] call Epoch_message;
+			[_msg, 5,[[0,0,0,0.5],[1,0.5,0,1]]] call Epoch_message;
 		};
 
 		if (_simpleTask > 0) then {	//Simple Task
@@ -72,11 +72,12 @@ if !(isNull _trader) then {
 			EPOCH_mission_startTime = diag_ticktime;
 			EPOCH_ActiveTraderMission = [_inGameTasksconfig,_taskname,_missionname];
 		};
+		["TraderMissions",1,true] call EPOCH_client_updatePlayerStat;
 	}
 	else {
-		[format["Mission Not Allowed !",_menuCondition], 5] call Epoch_message; //Not formatting, is this intended?
+		[format["Mission Not Allowed !",_menuCondition], 5,[[0,0,0,0.5],[1,0.5,0,1]]] call Epoch_message; //Not formatting, is this intended?
 	};
 }
 else {
-	["Trader Lost. Goodbye.", 5] call Epoch_message;
+	["Trader Lost. Goodbye.", 5,[[0,0,0,0.5],[1,0.5,0,1]]] call Epoch_message;
 };

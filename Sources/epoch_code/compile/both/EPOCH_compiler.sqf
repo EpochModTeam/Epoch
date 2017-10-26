@@ -24,7 +24,7 @@
 	BOOL
 */
 //[[[cog import generate_private_arrays ]]]
-private ["_config","_config_name","_file","_file_raw","_file_tag","_fnc_path","_missionConfig","_tag","_var_name","_version"];
+private ["_code","_config","_config_name","_customVarNames","_customVarsInit","_file","_file_raw","_file_tag","_fnc_path","_header","_missionConfig","_randomValues","_rng","_tag","_var_name","_version"];
 //[[[end]]]
 params [["_configName","",[""] ] ];
 
@@ -33,6 +33,22 @@ _missionConfig = (getMissionConfig _configName);
 if (isClass _missionConfig) then{
 	_config = _missionConfig;
 };
+
+// custom header for interscript communications
+_customVarsInit = getArray(getMissionConfig "CfgEpochClient" >> "customVarsDefaults");
+_customVarNames = _customVarsInit apply {_x param [0,""]};
+_randomValues = [];
+_header = "";
+{
+	while {true} do {
+		_rng = round(diag_tickTime + random 99999);
+		if !(_rng in _randomValues) exitWith {
+			_randomValues pushBack _rng;
+			_header = _header + format["_player%1Key = 'EPOCH_%2';",_x, _rng];
+		};
+	};
+} forEach _customVarNames;
+
 _version = getNumber(_config >> "version");
 if (_version >= 1) then {
 	{
@@ -63,7 +79,14 @@ if (_version >= 1) then {
 						if (_file_raw != "") then {
 							_fnc_path = _file_raw;
 						};
-						missionNamespace setvariable [_var_name,compileFinal preprocessFileLineNumbers _fnc_path];
+						_code = "";
+						if (getNumber(_x >> "customHeader") == 1) then {
+							_code = _header + (preprocessFileLineNumbers _fnc_path);
+						} else {
+							_code = (preprocessFileLineNumbers _fnc_path);
+						};
+
+						missionNamespace setvariable [_var_name,compileFinal _code];
 						if (getNumber(_x >> "preInit") == 1) then {
 							call (missionNamespace getvariable _var_name);
 						};

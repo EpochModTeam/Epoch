@@ -13,7 +13,7 @@
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server_core/compile/epoch_hive/fn_server_hiveUnitTest.sqf
 */
 //[[[cog import generate_private_arrays ]]]
-private ["_charCheck","_expires","_payload","_payload_64k","_payload_64k_count","_response","_startTime","_testID"];
+private ["_charCheck","_expires","_hashes","_payload","_payload_64k","_payload_64k_count","_response","_startTime","_testID"];
 //[[[end]]]
 _testID = "1234567890";
 _payload = "32D1ECB8511569B43A5CC39DF4261CACDA912C798B066EE1E1EE06E2F09D02073C1B3FC638F091D58E7691DA7D0F7E1F01371CB58346572A015F6F93429F3BDC";
@@ -147,3 +147,9 @@ diag_log format ["Epoch UnitTest: EPOCH_fnc_server_hiveLog Time: %2 : %1 ", _res
 _startTime = diag_tickTime;
 _response = ['TEST_LOG', _payload_64k] call EPOCH_fnc_server_hiveLog;
 diag_log format ["Epoch UnitTest: EPOCH_fnc_server_hiveLog 64k Time: %2 : %1 ", _response, (diag_tickTime-_startTime)];
+
+// MD5 HASH
+_hashes = ["Hello World","Lorem Ipsum"] call EPOCH_fnc_server_hiveMD5;
+// _hashes = ["b10a8db164e0754105b7a99be72e3fe5", "6dbd01b4309de2c22b027eb35a3ce18b"]
+_charCheck = _hashes isEqualTo ["b10a8db164e0754105b7a99be72e3fe5", "6dbd01b4309de2c22b027eb35a3ce18b"];
+diag_log format ["Epoch UnitTest: EPOCH_fnc_server_hiveMD5 Time: %2 : %1 ", ["isOK:",_charCheck], (diag_tickTime-_startTime)];

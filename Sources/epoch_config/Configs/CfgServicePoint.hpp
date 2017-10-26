@@ -1,7 +1,29 @@
 class CfgServicePoint {
 	class Altis {
 		ServicePoints[] =	{	// Array of coords for ServicePoints
-								{13325,14477,0}
+/*
+								{pos1},
+								{pos2}
+								OR
+								{
+									pos1,
+									dist1,
+									{VehType_1,VehType_1,...},
+									"MarkerText1"
+								},
+								{
+									pos2,
+									dist2,
+									{VehType,VehType,...},
+									"MarkerText2"
+								}
+*/
+								{								// Central
+									{13325,14477,0},						// Pos
+									40,										// max distance
+									{"Landvehicle","Ship","Tank","AIR"},	// Vehicle Types for SP
+									"Service Point Land / Ship / Air"		// Marker Text (Leave it Blank to disable Marker)
+								}
 							};
 	};
 	class Tanoa {
@@ -24,11 +46,22 @@ class CfgServicePoint {
 
 							};
 	};
-	ServicePointClasses[] = {	// Array of Classnames, where also are ServicePoints
+	ServicePointClasses[] = {	// Array of Classnames where also are ServicePoints (not separat configurable for Vehicle types / distance)
 //								"Land_Pillar_Pier_F",
 //								"Land_CarService_F",
 //								"Land_fs_feed_F",
 //								"Land_fs_roof_F"
+	};
+	PreventRepairs[] = {		// These Hitpints will not be repaired, if damage >= value (Prevent from Duping Tires / Engines)
+		{"HitLFWheel",1},		// {"HitPoint",value}
+		{"HitLF2Wheel",1},
+		{"HitLMWheel",1},
+		{"HitLBWheel",1},
+		{"HitRFWheel",1},
+		{"HitRF2Wheel",1},
+		{"HitRMWheel",1},
+		{"HitRBWheel",1},
+		{"HitEngine",1}
 	};
 	ServicePointDist = 40;
 	refuel_updateInterval = 1;
@@ -249,6 +282,12 @@ class CfgServicePoint {
 				{"SmokeLauncherMag_boat",{-1},1,100},
 				{"200Rnd_127x99_mag_Tracer_Green",{1},3,300}
 			}
-		}
+		},
+		{
+            "mosquito_epoch_armedG",
+            {
+                {"3Rnd_MosquitoGrenade",{-1},1,60}
+            }
+        }
 	};
 };

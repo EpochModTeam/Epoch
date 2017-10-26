@@ -28,6 +28,10 @@ if (!isNull _player) then {
 		deleteVehicle _player;
 	};
 };
+// Delete any left over units with same PUID
+{
+    deleteVehicle _x;
+} forEach (allUnits select {_x getVariable["PUID", "0"] == _uid});
 _uid call EPOCH_server_disconnect;
 ['Disconnected', [_uid, _name]] call EPOCH_fnc_server_hiveLog;
 _return

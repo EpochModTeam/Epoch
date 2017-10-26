@@ -9,7 +9,6 @@
     Github:
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_config/config.hpp
 */
-
 author = "Epoch Mod Team";
 class Header
 {
@@ -52,6 +51,19 @@ wreckRemovalMaxTime = 360;
 
 disableRandomization[] = {"All"};
 
+showHUD[] =
+{
+	true, 	// Scripted HUD (same as showHUD command)
+	true, 	// Vehicle + soldier info
+	true, 	// Vehicle radar
+	true, 	// Vehicle compass
+	true, 	// Tank direction indicator
+	false, 	// Commanding menu
+	false, 	// Group Bar
+	true, 	// HUD Weapon Cursors
+	true 	// Vehicle display panels
+};
+
 #include "Configs\CfgServicePoint.hpp"
 #include "Configs\CfgItemSort.hpp"
 #include "Configs\CfgTraderMissions.hpp"
@@ -74,6 +86,10 @@ disableRandomization[] = {"All"};
 #include "Configs\CfgItemInteractions.hpp"
 #include "Configs\CfgSay3Dhandler.hpp"
 #include "Configs\CfgSwitchMovehandler.hpp"
+#include "Configs\CfgVehicleUpgrades.hpp"
+#include "Configs\CfgReadingDocuments.hpp"
+#include "Configs\CfgDynamicSimulation.hpp"
+#include "Configs\CfgMarkerSets.hpp"
 
 // A3 specific configs
 #include "Configs\CfgFunctions.hpp"

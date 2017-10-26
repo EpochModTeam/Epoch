@@ -17,7 +17,7 @@ private ["_cN","_cP","_near","_nearObjects","_out","_player","_recipe"];
 //[[[end]]]
 params ["_recipes"];
 
-_nearObjects = nearestObjects [position player,["WeaponHolder","LandVehicle","Air"],10];
+_nearObjects = nearestObjects [player,["WeaponHolder","LandVehicle","Air"],10];
 
 _near = []; _out = [];
 {

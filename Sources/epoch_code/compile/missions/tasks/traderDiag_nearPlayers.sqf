@@ -11,4 +11,4 @@ if (count _plyrs < 2) then {
 	_plyr = selectRandom _plyrs;
 	_trdrMsg = format["%2 %1.",name _plyr, selectRandom ["The last person picked up by the UAV was","I did spot someone earlier, their name was","I heard there was somebody new in the area, "]];
 };
-[_trdrMsg, 5] call Epoch_message;
+[_trdrMsg, 5,[[0,0,0,0.5],[1,0.5,0,1]]] call Epoch_message;

@@ -15,4 +15,4 @@ _trader setVariable ["traderName",_newName, true];
 
 };
 _responseArr = ["I don't know. You can only be regenerated so many times before the memory starts to go..","You again..! Go bother someone else.",format["There was a time when names mattered, call me %1.",name _trader],"My name..? What does it matter.","Hey buddy you rock up here unannounced and suddenly we're friends ? On your bike if you aren't buying or selling.",format["My name.. I am known as %1",name _trader], format["When names mattered I was called %1",name _trader],"I forget.. At least, I try to forget."];
-[selectRandom _responseArr, 5] call Epoch_message;
+[selectRandom _responseArr, 5,[[0,0,0,0.5],[1,0.5,0,1]]] call Epoch_message;

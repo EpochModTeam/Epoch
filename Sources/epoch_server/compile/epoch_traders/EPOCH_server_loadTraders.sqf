@@ -13,11 +13,11 @@
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server/compile/epoch_traders/EPOCH_server_loadTraders.sqf
 */
 //[[[cog import generate_private_arrays ]]]
-private ["_agent","_aiTables","_arr","_class","_currentStock","_existingStock","_home","_indexStock","_limit","_marker","_objHiveKey","_pos","_randomAIUniform","_response","_schedule","_serverSettingsConfig","_staticTrader","_staticTradersArrCount","_staticTradersArray","_storedVehicleLimit","_toBeRemoved","_traderSlotIndex","_work"];
+private ["_agent","_aiTables","_arr","_class","_currentStock","_existingStock","_home","_indexStock","_limit","_markers","_objHiveKey","_pos","_randomAIUniform","_response","_schedule","_serverSettingsConfig","_staticTrader","_staticTradersArrCount","_staticTradersArray","_storedVehicleLimit","_toBeRemoved","_traderSlotIndex","_work"];
 //[[[end]]]
 params [["_maxTraderLimit",0]];
 
-_staticTradersArray = [] + EPOCH_staticNPCTraderPos;
+_staticTradersArray = +EPOCH_staticNPCTraderPos;
 EPOCH_staticNPCTraderPos = nil;
 _staticTradersArray append getArray(configFile >> "CfgEpoch" >> worldName >> "staticNpcPos");
 _staticTradersArrCount = count _staticTradersArray;
@@ -29,7 +29,7 @@ _storedVehicleLimit = [_serverSettingsConfig, "storedVehicleLimit", 20] call EPO
 
 EPOCH_storedVehicleCount = 0;
 
-for "_i" from 0 to _maxTraderLimit do {
+for "_i" from 0 to (_maxTraderLimit-1) do {
 	_traderSlotIndex = EPOCH_TraderSlots pushBack _i;
 
 	// Spawn static traders first
@@ -110,12 +110,8 @@ for "_i" from 0 to _maxTraderLimit do {
 		EPOCH_TraderSlots deleteAt _traderSlotIndex;
 
 		if (EPOCH_SHOW_TRADERS) then {
-			_marker = createMarker [str(_agent), (_pos)];
-			_marker setMarkerShape "ICON";
-			_marker setMarkerType "mil_dot";
-			_marker setMarkerColor "ColorBlack";
-
-			_agent setVariable["MARKER_REF", _marker];
+			_markers = ["StaticTrader",_pos] call EPOCH_server_createGlobalMarkerSet;
+			_agent setVariable["MARKER_REF", _markers];
 		};
 	} else {
 		// Spawn dynamic traders
@@ -227,11 +223,8 @@ for "_i" from 0 to _maxTraderLimit do {
 				EPOCH_TraderSlots deleteAt _traderSlotIndex;
 
 				if (EPOCH_SHOW_TRADERS) then {
-					_marker = createMarker [str(_agent), (_pos)];
-					_marker setMarkerShape "ICON";
-					_marker setMarkerType "mil_dot";
-					_marker setMarkerColor "ColorBrown";
-					_agent setVariable["MARKER_REF", _marker];
+					_markers = ["DynamicTrader",_pos] call EPOCH_server_createGlobalMarkerSet;
+					_agent setVariable["MARKER_REF", _markers];
 				};
 			};
 		};

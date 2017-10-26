@@ -22,7 +22,8 @@ binarizationWanted=0;
 addons[]=
 {
 	"A3_epoch_config",
-	"cup_utes_config"
+	"cup_utes_config",
+	"a3_characters_f"
 };
 randomSeed=12032465;
 class ScenarioData
@@ -6084,36 +6085,6 @@ class Mission
 			{
 			};
 			id=402;
-		};
-		class Item204
-		{
-			dataType="Group";
-			side="Civilian";
-			class Entities
-			{
-				items=1;
-				class Item0
-				{
-					dataType="Object";
-					class PositionInfo
-					{
-						position[]={4154.1626,0,3645.7505};
-						angles[]={0,4.7169838,0};
-					};
-					side="Civilian";
-					flags=3;
-					class Attributes
-					{
-						isPlayable=1;
-					};
-					id=405;
-					type="VirtualMan_EPOCH";
-				};
-			};
-			class Attributes
-			{
-			};
-			id=404;
 		};
 	};
 };

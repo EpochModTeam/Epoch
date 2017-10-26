@@ -15,7 +15,7 @@
 	https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server_settings/EpochEvents/PlantSpawner.sqf
 */
 //[[[cog import generate_private_arrays ]]]
-private ["_debug","_decayTime","_jammers","_marker","_nearbyLocations","_plant","_plantCount","_plants","_playersNearby","_position","_restricted","_scatter","_selectedLocation","_showPlantMarkers","_timeStamp"];
+private ["_debug","_decayTime","_jammers","_markers","_nearbyLocations","_plant","_plantCount","_plants","_playersNearby","_position","_restricted","_scatter","_selectedLocation","_showPlantMarkers","_timeStamp"];
 //[[[end]]]
 
 // SET THIS TO TRUE TO GET MESSAGES IN LOG.
@@ -97,10 +97,7 @@ if ((count _position) == 2) then{
 
 	// SET UP THE MARKER.
 	if (_showPlantMarkers) then{
-		_marker = createMarker[str(_position), _position];
-		_marker setMarkerShape "ICON";
-		_marker setMarkerType "waypoint";
-		_marker setMarkerColor "ColorGreen";
+		_markers = ["PlantSpawn",_position] call EPOCH_server_createGlobalMarkerSet;
 	};
 
 	// TICK COUNTER + 1 SPAWNED PLANT PATCH.
@@ -115,23 +112,27 @@ if ((count _position) == 2) then{
 			EPOCH_plantCounter = EPOCH_plantCounter - 1;
 			// DELETE THAT MARKER.
 			if (_showPlantMarkers) then{
-				deleteMarker _marker;
+				[_markers] call EPOCH_server_deleteGlobalMarkerSet;
 			};
 			// remove any left over "dead" plants (only if decayTime is reached)
 			{deleteVehicle _x} forEach _plantsLeft;
 		};
 		// set marker to brown to show 50% decay but not if already marked as picked (red).
-		if !(getMarkerColor _marker in ["ColorRed","ColorBrown"]) then {
-			if ((diag_tickTime - _timeStamp) > (_decayTime/2)) then {
-				_marker setMarkerColor "ColorBrown";
+		{
+			if !(getMarkerColor _x in ["ColorRed","ColorBrown"]) then {
+				if ((diag_tickTime - _timeStamp) > (_decayTime/2)) then {
+					_x setMarkerColor "ColorBrown";
+				};
 			};
-		};
+		}forEach _markers;
 		// WAIT FOR A PLAYER TO Pick one plant then set marker to red
 		if (count _plantsLeft != _plantCount) then {
 			if (_showPlantMarkers) then{
-				if (getMarkerColor _marker != "ColorRed") then {
-					_marker setMarkerColor "ColorRed";
-				};
+				{	
+					if (getMarkerColor _x != "ColorRed") then {
+						_x setMarkerColor "ColorRed";
+					};
+				}forEach _markers;
 			};
 		};
 		sleep 30;

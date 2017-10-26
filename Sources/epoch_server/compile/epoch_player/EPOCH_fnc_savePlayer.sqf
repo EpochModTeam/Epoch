@@ -14,5 +14,5 @@
 */
 params ["_player","",["_token","",[""]]];
 if([_player,_token] call EPOCH_server_getPToken)then{
-    _this call EPOCH_server_savePlayer
-}
+    _this call EPOCH_server_savePlayer;
+};

@@ -12,26 +12,51 @@ lootMultiplier = 0.5; // 1 = max loot bias. This controls how much loot can payo
 // Events
 WeatherStaticForecast[] = {}; // Default: {75.5,0,{0,0,0},0,{1,1}}; // Clear day; {19,1,{1,1,40},1,{5,5}}; // Cold Foggy Rainy Overcast Windy; Format: {temp <scalar>,rain <scalar>,fog <array>,overcast <scalar>,wind <array>}
 events[] = {
-    { 3600, "CarnivalSpawner", 0 , 1}, // SECOND <scalar>, EVENT <string>, INIT <scalar> 1 = run script at startup, 0 normal delay, PREPOSTFIX <scalar> 1 = use pre/postfix path (inside epoch settings pbo) 0 = use full file path
+    { 3600, "CarnivalSpawner", 0 , 1, -1, {} ,{"VR"}}, // SECOND <scalar>, EVENT <string>, INIT <scalar> 1 = run script at startup or 0 normal delay, PREPOSTFIX <scalar> 1 = use pre/postfix path (inside epoch settings pbo) 0 = use full file path, RUNNUMTIMES <scalar> -1 infinite, execVM payload <array>, disallowed worlds <array>
     // { 1800, "PaydayEvent", 0, 1},
     // { 1200, "MessageServer", 0, 1},
-    { 2700, "AirDrop", 0 , 1},
-    { 2400, "EarthQuake", 0 , 1},
-    { 900, "ChangeWeather", 1 , 1},
-    { 1200, "ContainerSpawner", 0 , 1},
-    { 300, "PlantSpawner", 0 , 1} //No comma on last Entry
+    { 2700, "AirDrop", 0 , 1, -1, {} ,{"VR"}},
+    { 2400, "EarthQuake", 0 , 1, -1, {} ,{"VR"}},
+	{ 2700, "Satellite", 0 , 1, -1, {} ,{"VR"}},
+    { 900, "ChangeWeather", 1 , 1, -1, {} ,{"VR"}},
+    { 1200, "ContainerSpawner", 0 , 1, -1, {} ,{"VR"}},
+	{ 1440, "GardenManager", 0 , 1, -1, {} ,{"VR"}},
+    { 300, "PlantSpawner", 0 , 1 , -1, {} ,{"VR"}} //No comma on last Entry
 };
 
 // Antagonists
-antagonistChanceTrash = 0.09; //9% chance when player loot a trash object
 antagonistChancePDeath = 0.33; //33% chance when player was killed from a other player (selfkill doesn't count)
-antagonistChanceLoot = 0.09; //9% chance when player click "SEARCH" on a loot object
 
 // Player Related
 cloneCost = 100; 					// debt incurred on player death
 MaxBankDebitforTrade = -50000;		// If Player has less money on Bank, Crypto from Trade goes directly to Bank instead to Player
 
+// Default Loadout
+defaultUniformFemale =		"U_Test_uniform";
+defaultVestFemale =			"V_F41_EPOCH";
+defaultUniformMale =		"U_Test1_uniform";
+defaultVestMale =			"V_41_EPOCH";
+defaultGoggles =			"";
+defaultHeadgear =			"";
+defaultBackpack =			"";
+defaultprimaryWeapon[] =	{};								// {"arifle_MX_pointer_F","","acc_pointer_IR","",{"30Rnd_65x39_caseless_mag",29},{},""};
+defaultsecondaryWeapon[] = 	{};								// {"launch_NLAW_F","","","",{"NLAW_F",1},{},""};
+defaulthandgunWeapon[] =	{};								// {"hgun_P07_F","","","",{"16Rnd_9x21_Mag",16},{},""};
+defaultuniformItems[] =		{};								// {{"FAK",1},{"30Rnd_65x39_caseless_mag",2,30},{"Chemlight_green",1,1}};
+defaultvestItems[] =		{};								// {{"30Rnd_65x39_caseless_mag",3,30},{"16Rnd_9x21_Mag",2,16},{"SmokeShell",1,1},{"SmokeShellGreen",1,1},{"SmokeShellBlue",1,1},{"SmokeShellOrange",1,1},{"Chemlight_green",1,1}};
+defaultbackpackItems[] =	{};								// {{"Medikit",1},{"FAK",10},{{"hgun_P07_F","","","",{"16Rnd_9x21_Mag",16},{},""},1}};
+defaultassignedItems[] =	{};								// {"Rangefinder","","","",{},{},""}
+defaultlinkedItems[] =		{
+	"ItemMap", // "ItemMap"
+	"", // "ItemGPS" or "ItemGeigerCounter_EPOCH",
+	"EpochRadio0", // "EpochRadio0" through "EpochRadio9"
+	"", // "ItemCompass"
+	"", // "ItemWatch"
+	""  // "NVG_EPOCH" or "radiation_mask_epoch"
+};
+
 // vehicles - Max vehicle slots is calculated from per vehicle limits below. Warning! Higher the number lower the performance.
+disableAutoRefuel = "true"; // Removes auto refuel from all buildings at server startup.
 simulationHandlerOld = "false"; // When enabled this feature disables simulation on vehicles that are not nea players. Can help improve client fps at the cost of server fps.
 vehicleLockTime = 1800; // Controls how many seconds it takes to allow another person/group to unlock vehicle.
 removevehweapons[] = {			// remove these Weapons from spawned Vehicles
@@ -43,6 +68,7 @@ removevehmagazinesturret[] = {	// Remove these Magazines from the given Turret f
 	{"24Rnd_missiles",{-1}},
 	{"200Rnd_40mm_G_belt",{0}}
 };
+disableVehicleTIE = "true";
 
 // BaseBuilding
 UseIndestructible = "false";			// Enable / Disable Indestructible BaseObjects
@@ -71,6 +97,7 @@ forcedLootSpawnTable = ""; // leave blank for default. Options: "CfgLootTable","
 
 // Markers
 showEarthQuakes = "true"; // show mineral viens caused by earthquakes
+showSatellites = "true"; // show crashed Satellites
 showShippingContainers = "true"; // Show location of events based loots (plants, shipping container, Carnival)
 SHOW_TRADERS = "true"; // Show locations of traders
 SHOW_JAMMERS = "false"; // Shows location of base jammers
@@ -83,6 +110,7 @@ expiresPlayer = "2592000";  // expiration date in seconds for players
 expiresBank = "7776000";  // expiration date in seconds for players bank
 expiresVehicle = "604800";  // expiration date in seconds for vehicles
 expiresAIdata = "604800";  // expiration date in seconds for NPC Trader inventory
+expiresCommunityStats = "7776000"; // expiration date in seconds for players community stats
 
 // Admin Features
 hiveAdminCmdExec = "false"; // true = enables extra (To Be Released) feature to allow execution of code via hive.

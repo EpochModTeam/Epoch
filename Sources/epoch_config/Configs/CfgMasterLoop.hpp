@@ -44,6 +44,14 @@ class CfgMasterLoop
         {
             delay = 600;
         };
+		class Event8
+		{
+			delay = 5; //used for FavBar, adjust as required
+		};
+		class Event9
+		{
+			delay = 2; //used for geiger counter UI
+		};
     };
 };
 

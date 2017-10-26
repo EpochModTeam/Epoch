@@ -20,6 +20,25 @@ class CfgLootTable_CUP
 				{ { "WoodLog_EPOCH", "magazine" }, 1 }
 		};
 	};
+	class Rock
+	{
+		items[] = {
+				{ { "PartOre", "magazine" }, 1 },
+				{ { "ItemRock", "magazine" }, 2 }
+		};
+	};
+	class Cinder
+	{
+		items[] = {
+				{ { "CinderBlocks", "magazine" }, 1 }
+		};
+	};
+	class Wreck
+	{
+		items[] = {
+				{ { "ItemScraps", "magazine" }, 1 }
+		};
+	};
 	class Bush
 	{
 		items[] = {
@@ -45,7 +64,8 @@ class CfgLootTable_CUP
 	{
 		items[] = {
 				{ { "ItemCompass", "item" }, 20 },
-				{ { "ItemGPS", "item" }, 10 },
+				{ { "ItemGeigerCounter_EPOCH", "item" }, 1 },
+				{ { "ItemGPS", "item" }, 9 },
 				{ { "EpochRadio0", "item" }, 3 },
 				{ { "EpochRadio1", "item" }, 3 },
 				{ { "EpochRadio2", "item" }, 3 },
@@ -57,17 +77,39 @@ class CfgLootTable_CUP
 				{ { "EpochRadio8", "item" }, 1 },
 				{ { "EpochRadio9", "item" }, 1 },
 				{ { "ItemWatch", "item" }, 30 },
-				{ { "FAK", "item" }, 20 }
+				{ { "FAK", "magazine" }, 20 }
+		};
+	};
+	class Repairs
+	{
+		items[] = {
+				{ { "VehicleRepair", "magazine" }, 30 },
+				{ { "SpareTire", "magazine" }, 10 },
+				{ { "EngineParts", "magazine" }, 10 },
+				{ { "EngineBlock", "magazine" }, 10 },
+				{ { "ItemGlass", "magazine" }, 15 },
+				{ { "ItemDuctTape", "magazine" }, 20 },
+				{ { "ItemRotor", "magazine" }, 5 }
+		};
+	};
+	class VehicleDocs
+	{
+		items[] = {
+				{ { "ItemVehDoc1", "magazine" }, 20 },
+				{ { "ItemVehDoc2", "magazine" }, 15 },
+				{ { "ItemVehDoc3", "magazine" }, 4 },
+				{ { "ItemVehDoc4", "magazine" }, 2 }
 		};
 	};
 	class Equipment
 	{
 		items[] = {
-				{ { "Rangefinder", "weapon" }, 5 },
-				{ { "Binocular", "item" }, 35 },
-				{ { "NVG_EPOCH", "item" }, 10 },
+				{ { "Rangefinder", "weapon" }, 15 },
+				{ { "Binocular", "item" }, 40 },
+				{ { "NVG_EPOCH", "item" }, 5 },
 				{ { "acc_flashlight", "item" }, 15 },
-				{ { "acc_pointer_IR", "item" }, 15 },
+				{ { "acc_flashlight_pistol", "item" }, 10 },
+				{ { "acc_pointer_IR", "item" }, 5 },
 				// Marksman DLC
 				{ { "Bipods", "CfgLootTable" }, 5 },
 				// CUP
@@ -250,7 +292,7 @@ class CfgLootTable_CUP
 				{ { "ItemMixOil", "magazine" }, 4 },
 				{ { "ItemCoolerE", "magazine" }, 6 },
 				{ { "CircuitParts", "magazine" }, 8 },
-				{ { "VehicleRepair", "magazine" }, 7 },
+				{ { "Repairs", "CfgLootTable" }, 7 },
 				{ { "Towelette", "magazine" }, 14 },
 				{ { "HotColdPacks", "CfgLootTable" }, 9 },
 				{ { "PaintCans", "CfgLootTable" }, 9 },
@@ -258,18 +300,37 @@ class CfgLootTable_CUP
 				{ { "CanFood", "CfgLootTable" }, 8 },
 				{ { "Primitive", "CfgLootTable" }, 21 },
 				{ { "lighter_epoch", "magazine" }, 1 },
+				{ { "Seeds", "CfgLootTable" }, 1 },
 				{ { "ItemAluminumBar", "magazine" }, 2 },
 				{ { "ItemCopperBar", "magazine" }, 2 },
-				{ { "ItemTinBar", "magazine" }, 1 }
+				{ { "ItemTinBar", "magazine" }, 1 },
+				{ { "ItemCanteen_Dirty", "magazine" }, 5 },
+				{ { "ItemCanteen_Clean", "magazine" }, 1 },
+				{ { "ItemBottlePlastic_Dirty", "magazine" }, 5 },
+				{ { "ItemBottlePlastic_Clean", "magazine" }, 1 }
+
+		};
+	};
+	class Seeds
+	{
+		items[] = {
+				{ { "ItemSeedBag", "magazine" }, 10 },
+				{ { "SeedPacket_Hemp", "magazine" }, 1 },
+				{ { "SeedPacket_GoldenSeal", "magazine" }, 1 },
+				{ { "SeedPacket_Poppy", "magazine" }, 1 },
+				{ { "SeedPacket_Pumpkin", "magazine" }, 2 },
+				{ { "SeedPacket_Sunflower", "magazine" }, 2 }
 		};
 	};
 	class Primitive
 	{
 		items[] = {
-				{ { "ItemRock", "magazine" }, 1 },
-				{ { "ItemRope", "magazine" }, 1 },
-				{ { "ItemStick", "magazine" }, 1 },
-				{ { "ItemScraps", "magazine" }, 1 }
+				{ { "ItemRock", "magazine" }, 5 },
+				{ { "ItemRope", "magazine" }, 2 },
+				{ { "ItemStick", "magazine" }, 5 },
+				{ { "ItemScraps", "magazine" }, 1 },
+				{ { "ItemCanvas", "magazine" }, 1 },
+				{ { "ItemBurlap", "magazine" }, 1 }
 		};
 	};
 	class Sodas
@@ -289,17 +350,28 @@ class CfgLootTable_CUP
 	class CanFood
 	{
 		items[] = {
+				{ { "ItemPowderMilk", "magazine" }, 3 },
+				{ { "ItemRicebox", "magazine" }, 3 },
+				{ { "ItemCereals", "magazine" }, 3 },
+				{ { "ItemVitamins", "magazine" }, 3 },
 				{ { "honey_epoch", "magazine" }, 5 },
 				{ { "emptyjar_epoch", "magazine" }, 13 },
+				{ { "water_epoch", "magazine" }, 3 },
+				{ { "clean_water_epoch", "magazine" }, 1 },
 				{ { "FoodBioMeat", "magazine" }, 11 },
 				{ { "sardines_epoch", "magazine" }, 11 },
 				{ { "meatballs_epoch", "magazine" }, 13 },
 				{ { "scam_epoch", "magazine" }, 14 },
 				{ { "sweetcorn_epoch", "magazine" }, 14 },
-				{ { "FoodSnooter", "magazine" }, 9 },
+				{ { "FoodSnooter", "magazine" }, 5 },
+				{ { "krypto_candy_epoch", "magazine" }, 4 },
 				{ { "TacticalBacon", "magazine" }, 5 },
 				{ { "FoodMeeps", "magazine" }, 1 },
-				{ { "ItemEmptyTin", "magazine" }, 5 }
+				{ { "ItemEmptyTin", "magazine" }, 5 },
+				{ { "ItemBakedBeans", "magazine" }, 3 },
+				{ { "HotAxeSauce_epoch", "magazine" }, 1 }
+
+
 		};
 	};
 
@@ -322,11 +394,12 @@ class CfgLootTable_CUP
 	class GenericBed
 	{
 		items[] = {
+				{ { "VehicleDocs", "CfgLootTable" }, 3 },
 				{ { "ItemLockbox", "magazine" }, 5 },
 				{ { "ItemMixOil", "magazine" }, 4 },
 				{ { "ItemCoolerE", "magazine" }, 6 },
 				{ { "CircuitParts", "magazine" }, 8 },
-				{ { "VehicleRepair", "magazine" }, 7 },
+				{ { "Repairs", "CfgLootTable" }, 7 },
 				{ { "Towelette", "magazine" }, 14 },
 				{ { "HotColdPacks", "CfgLootTable" }, 8 },
 				{ { "PaintCans", "CfgLootTable" }, 9 },
@@ -339,9 +412,10 @@ class CfgLootTable_CUP
 	class GenericLarge
 	{
 		items[] = {
+				{ { "VehicleDocs", "CfgLootTable" }, 4 },
 				{ { "MortarBucket", "magazine" }, 16 },
 				{ { "CinderBlocks", "magazine" }, 17 },
-				{ { "VehicleRepair", "magazine" }, 16 },
+				{ { "Repairs", "CfgLootTable" }, 16 },
 				{ { "CircuitParts", "magazine" }, 17 },
 				{ { "ItemCorrugated", "magazine" }, 17 },
 				{ { "ItemSolar", "magazine" }, 5 },
@@ -355,12 +429,13 @@ class CfgLootTable_CUP
 	class GenericAuto
 	{
 		items[] = {
+				{ { "VehicleDocs", "CfgLootTable" }, 4 },
 				{ { "ItemSafe", "magazine" }, 1 },
 				{ { "ItemLockbox", "magazine" }, 4 },
 				{ { "jerrycan_epoch", "magazine" }, 5 },
 				{ { "CircuitParts", "magazine" }, 6 },
 				{ { "MortarBucket", "magazine" }, 9 },
-				{ { "VehicleRepair", "magazine" }, 10 },
+				{ { "Repairs", "CfgLootTable" }, 10 },
 				{ { "ItemCorrugated", "magazine" }, 11 },
 				{ { "CinderBlocks", "magazine" }, 12 },
 				{ { "JackKit", "magazine" }, 8 },
@@ -996,13 +1071,15 @@ class CfgLootTable_CUP
 	class Tools
 	{
 		items[] = {
-				{ { "Hatchet", "weapon" }, 62 },
+				{ { "Hatchet", "weapon" }, 40 },
 				{ { "MeleeSledge", "weapon" }, 20 },
 				{ { "ChainSaw", "weapon" }, 10 },
 				{ { "Plunger", "weapon" }, 4 },
 				{ { "MeleeSword", "weapon" }, 1 },
 				{ { "MeleeRod", "weapon" }, 2 },
-				{ { "lighter_epoch", "magazine" }, 1 }
+				{ { "lighter_epoch", "magazine" }, 1 },
+				{ { "SmeltingTools_EPOCH", "magazine" }, 10 }
+
 		};
 	};
 
@@ -1276,16 +1353,13 @@ class CfgLootTable_CUP
 		};
 	};
 
-	class Shipwreak
+	class Shipwreck
 	{
 		items[] = {
 				{ { "Gems", "CfgLootTable" }, 5 },
 				{ { "MetalBars", "CfgLootTable" }, 26 },
 				{ { "PartOreGold", "magazine" }, 10 },
-				{ { "PartOreSilver", "magazine" }, 13 },
-				{ { "ItemKiloHemp", "magazine" }, 12 },
-				{ { "ItemScraps", "magazine" }, 16 },
-				{ { "PartOre", "magazine" }, 18 }
+				{ { "PartOreSilver", "magazine" }, 13 }
 		};
 	};
 	class MetalBars
@@ -1323,21 +1397,74 @@ class CfgLootTable_CUP
 				{ { "PartOre", "magazine" }, 35 }
 		};
 	};
+	class CopperMine
+	{
+		items[] = {
+				{ { "Gems", "CfgLootTable" }, 15 },
+				{ { "PartOreGold", "magazine" }, 20 },
+				{ { "PartOreSilver", "magazine" }, 30 },
+				{ { "PartOre", "magazine" }, 35 }
+		};
+	};
+	class SilverMine
+	{
+		items[] = {
+				{ { "Gems", "CfgLootTable" }, 15 },
+				{ { "PartOreGold", "magazine" }, 20 },
+				{ { "PartOreSilver", "magazine" }, 35 },
+				{ { "PartOre", "magazine" }, 30 }
+		};
+	};
+	class GoldMine
+	{
+		items[] = {
+				{ { "Gems", "CfgLootTable" }, 20 },
+				{ { "PartOreGold", "magazine" }, 35 },
+				{ { "PartOreSilver", "magazine" }, 20 },
+				{ { "PartOre", "magazine" }, 25 }
+		};
+	};
+	class Satellite
+	{
+		items[] = {
+				{ { "MetalBars", "CfgLootTable" }, 5 },
+				{ { "CircuitParts", "magazine" }, 1 },
+				{ { "Gems", "CfgLootTable" }, 3 },
+				{ { "ItemScraps", "magazine" }, 1 },
+				{ { "ItemCorrugated", "magazine" }, 2 },
+				{ { "ItemSolar", "magazine" }, 1 },
+				{ { "ItemBattery", "magazine" }, 1 },
+				{ { "ItemCables", "magazine" }, 1 }
+		};
+	};
 	class Food
 	{
 		items[] = {
-				{ { "ItemCoolerE", "magazine" }, 4 },
-				{ { "Sodas", "CfgLootTable" }, 47 },
-				{ { "CanFood", "CfgLootTable" }, 49 }
+				{ { "ItemCoolerE", "magazine" }, 3 },
+				{ { "bluburger_epoch", "magazine" }, 4 },
+				{ { "redburger_epoch", "magazine" }, 4 },
+				{ { "gyro_wrap_epoch", "magazine" }, 4 },
+				{ { "icecream_epoch", "magazine" }, 3 },
+				{ { "Sodas", "CfgLootTable" }, 45 },
+				{ { "CanFood", "CfgLootTable" }, 40 }
 		};
 	};
 	class Medical
 	{
 		items[] = {
-				{ { "FAK", "item" }, 97 },
+				{ { "FAK", "magazine" }, 50 },
 				{ { "Heal_EPOCH", "item" }, 2 },
 				{ { "Defib_EPOCH", "item" }, 1 },
-				{ { "EnergyPack", "magazine" }, 1 }
+				{ {"atropine_epoch", "magazine" }, 6 },
+				{ {"adrenaline_epoch", "magazine" }, 5 },
+				{ {"morphine_epoch", "magazine" }, 3 },
+				{ {"caffeinepills_epoch", "magazine" }, 10 },
+				{ {"orlistat_epoch", "magazine" }, 5 },
+				{ {"nanite_cream_epoch", "magazine" }, 3 },
+				{ {"nanite_gun_epoch", "magazine" }, 1 },
+				{ {"nanite_pills_epoch", "magazine" }, 5 },
+				{ {"iodide_pills_epoch", "magazine" }, 5 },
+				{ {"ItemWaterPurificationTablets", "magazine" }, 5 }
 		};
 	};
 	class BaseBuilding
@@ -1395,14 +1522,14 @@ class CfgLootTable_CUP
 	class Fin_random_EPOCH
 	{
 		items[] = {
-				{ { "GoatCarcass_EPOCH", "magazine" }, 1 },
+				{ { "DogCarcass_EPOCH", "magazine" }, 1 },
 				{ { "Pelt_EPOCH", "magazine" }, 1 }
 		};
 	};
 	class Alsatian_Random_EPOCH
 	{
 		items[] = {
-				{ { "GoatCarcass_EPOCH", "magazine" }, 1 },
+				{ { "DogCarcass_EPOCH", "magazine" }, 1 },
 				{ { "Pelt_EPOCH", "magazine" }, 1 }
 		};
 	};
@@ -1634,7 +1761,75 @@ class CfgLootTable_CUP
 				{ { "U_C_Scientist", "item" }, 1 },
 				{ { "U_OrestesBody", "item" }, 1 },
 				{ { "DLCUniforms", "CfgLootTable" }, 1 },
-				{ { "MaleUniforms_FullGhillieMarkDLC", "CfgLootTable" }, 1 }
+				{ { "MaleUniforms_FullGhillieMarkDLC", "CfgLootTable" }, 1 },
+
+				// new uniforms
+				{ { "U_C_Commoner1_1", "item" }, 1 },
+				{ { "U_C_Poor_2", "item" }, 1 },
+				{ { "U_C_HunterBody_grn", "item" }, 1 },
+				{ { "U_C_Poor_shorts_1", "item" }, 1 },
+				{ { "U_C_Commoner_shorts", "item" }, 1 },
+				{ { "U_C_ShirtSurfer_shorts", "item" }, 1 },
+				{ { "U_C_TeeSurfer_shorts_1", "item" }, 1 },
+				{ { "U_C_TeeSurfer_shorts_2", "item" }, 1 },
+				{ { "U_NikosBody", "item" }, 1 },
+				{ { "U_NikosAgedBody", "item" }, 1 },
+				{ { "U_IG_Guerilla1_1", "item" }, 1 },
+				{ { "U_IG_leader", "item" }, 1 },
+				{ { "U_IG_Guerilla2_1", "item" }, 1 },
+				{ { "U_IG_Guerilla2_3", "item" }, 1 },
+				{ { "U_IG_Guerilla2_2", "item" }, 1 },
+				{ { "U_IG_Guerilla3_1", "item" }, 1 },
+				{ { "U_IG_Guerrilla_6_1", "item" }, 1 },
+				{ { "U_OG_Guerrilla_6_1", "item" }, 1 },
+				{ { "U_I_CombatUniform", "item" }, 1 },
+				{ { "U_I_CombatUniform_shortsleeve", "item" }, 1 },
+				{ { "U_I_HeliPilotCoveralls", "item" }, 1 },
+				{ { "U_I_pilotCoveralls", "item" }, 1 },
+				{ { "U_I_OfficerUniform", "item" }, 1 },
+				{ { "U_I_Wetsuit", "item" }, 1 },
+				{ { "U_I_GhillieSuit", "item" }, 1 },
+				{ { "U_I_CombatUniform_tshirt", "item" }, 1 },
+				{ { "U_O_OfficerUniform_ocamo", "item" }, 1 },
+				{ { "U_O_SpecopsUniform_ocamo", "item" }, 1 },
+				{ { "U_O_CombatUniform_oucamo", "item" }, 1 },
+				{ { "U_Marshal", "item" }, 1 },
+				{ { "U_I_FullGhillie_lsh", "item" }, 1 },
+				{ { "U_I_FullGhillie_sard", "item" }, 1 },
+				{ { "U_I_FullGhillie_ard", "item" }, 1 },
+				{ { "U_I_C_Soldier_Para_1_F", "item" }, 1 },
+				{ { "U_I_C_Soldier_Para_2_F", "item" }, 1 },
+				{ { "U_I_C_Soldier_Para_3_F", "item" }, 1 },
+				{ { "U_I_C_Soldier_Para_4_F", "item" }, 1 },
+				{ { "U_I_C_Soldier_Para_5_F", "item" }, 1 },
+				{ { "U_I_C_Soldier_Bandit_1_F", "item" }, 1 },
+				{ { "U_I_C_Soldier_Bandit_2_F", "item" }, 1 },
+				{ { "U_I_C_Soldier_Bandit_3_F", "item" }, 1 },
+				{ { "U_I_C_Soldier_Bandit_4_F", "item" }, 1 },
+				{ { "U_I_C_Soldier_Bandit_5_F", "item" }, 1 },
+				{ { "U_I_C_Soldier_Camo_F", "item" }, 1 },
+				{ { "U_O_T_Soldier_F", "item" }, 1 },
+				{ { "U_O_T_Officer_F", "item" }, 1 },
+				{ { "U_O_T_Sniper_F", "item" }, 1 },
+				{ { "U_O_T_FullGhillie_tna_F", "item" }, 1 },
+				{ { "U_O_V_Soldier_Viper_F", "item" }, 1 },
+				{ { "U_O_V_Soldier_Viper_hex_F", "item" }, 1 },
+				{ { "U_C_man_sport_1_F", "item" }, 1 },
+				{ { "U_C_man_sport_2_F", "item" }, 1 },
+				{ { "U_C_man_sport_3_F", "item" }, 1 },
+				{ { "U_C_Man_casual_1_F", "item" }, 1 },
+				{ { "U_C_Man_casual_2_F", "item" }, 1 },
+				{ { "U_C_Man_casual_3_F", "item" }, 1 },
+				{ { "U_C_Man_casual_4_F", "item" }, 1 },
+				{ { "U_C_Man_casual_5_F", "item" }, 1 },
+				{ { "U_C_Man_casual_6_F", "item" }, 1 },
+				// LoW DLC
+				{ { "U_C_ConstructionCoverall_Red_F", "item" }, 1 },
+				{ { "U_C_ConstructionCoverall_vrana_F", "item" }, 1 },
+				{ { "U_C_ConstructionCoverall_Black_F", "item" }, 1 },
+				{ { "U_C_ConstructionCoverall_Blue_F", "item" }, 1 },
+				{ { "U_C_Paramedic_01_F", "item" }, 1 },
+				{ { "U_C_Mechanic_01_F", "item" }, 1 }
 		};
 	};
 
@@ -1707,7 +1902,92 @@ class CfgLootTable_CUP
 				{ { "U_Camo_uniform", "item" }, 1 },
 				{ { "U_ghillie1_uniform", "item" }, 1 },
 				{ { "U_ghillie2_uniform", "item" }, 1 },
-				{ { "U_ghillie3_uniform", "item" }, 1 }
+				{ { "U_ghillie3_uniform", "item" }, 1 },
+
+				{ { "U_JeansPatched1_uniform", "item" }, 1 },
+				{ { "U_JeansPatched2_uniform", "item" }, 1 },
+				{ { "U_JeansPatched3_uniform", "item" }, 1 },
+				{ { "U_JeansPatched4_uniform", "item" }, 1 },
+				{ { "U_JeansPatched5_uniform", "item" }, 1 },
+				{ { "U_JeansPatched6_uniform", "item" }, 1 },
+				{ { "U_JeansPatched7_uniform", "item" }, 1 },
+				{ { "U_JeansPatched8_uniform", "item" }, 1 },
+				{ { "U_JeansPatched9_uniform", "item" }, 1 },
+				{ { "U_JeansPatched10_uniform", "item" }, 1 },
+				{ { "U_JeansPatched11_uniform", "item" }, 1 },
+				{ { "U_JeansPatched12_uniform", "item" }, 1 },
+				{ { "U_JeansPatched13_uniform", "item" }, 1 },
+				{ { "U_JeansPatched14_uniform", "item" }, 1 },
+				{ { "U_JeansPatched15_uniform", "item" }, 1 },
+				{ { "U_JeansPatched16_uniform", "item" }, 1 },
+				{ { "U_JeansPatched17_uniform", "item" }, 1 },
+				{ { "U_JeansPatched18_uniform", "item" }, 1 },
+				{ { "U_JeansPatched19_uniform", "item" }, 1 },
+				{ { "U_JeansPatched20_uniform", "item" }, 1 },
+				{ { "U_JeansPatched21_uniform", "item" }, 1 },
+				{ { "U_JeansBlkBrn1_uniform", "item" }, 1 },
+				{ { "U_JeansBlkBrn2_uniform", "item" }, 1 },
+				{ { "U_JeansBlkBrn3_uniform", "item" }, 1 },
+				{ { "U_JeansBlkBrn4_uniform", "item" }, 1 },
+				{ { "U_JeansBlkBrn5_uniform", "item" }, 1 },
+				{ { "U_JeansBlkBrn6_uniform", "item" }, 1 },
+				{ { "U_JeansBlkBrn7_uniform", "item" }, 1 },
+				{ { "U_JeansBlkBrn8_uniform", "item" }, 1 },
+				{ { "U_JeansBlkBrn9_uniform", "item" }, 1 },
+				{ { "U_JeansBlkBrn10_uniform", "item" }, 1 },
+				{ { "U_JeansBlkBrn11_uniform", "item" }, 1 },
+				{ { "U_JeansBlkBrn12_uniform", "item" }, 1 },
+				{ { "U_JeansBlkBrn13_uniform", "item" }, 1 },
+				{ { "U_JeansBlkBrn14_uniform", "item" }, 1 },
+				{ { "U_JeansBlkBrn15_uniform", "item" }, 1 },
+				{ { "U_JeansBlkBrn16_uniform", "item" }, 1 },
+				{ { "U_JeansBlkBrn17_uniform", "item" }, 1 },
+				{ { "U_JeansBlkBrn18_uniform", "item" }, 1 },
+				{ { "U_JeansBlkBrn19_uniform", "item" }, 1 },
+				{ { "U_JeansBlkBrn20_uniform", "item" }, 1 },
+				{ { "U_JeansBlkBrn21_uniform", "item" }, 1 },
+				{ { "U_JeansArBrn1_uniform", "item" }, 1 },
+				{ { "U_JeansArBrn2_uniform", "item" }, 1 },
+				{ { "U_JeansArBrn3_uniform", "item" }, 1 },
+				{ { "U_JeansArBrn4_uniform", "item" }, 1 },
+				{ { "U_JeansArBrn5_uniform", "item" }, 1 },
+				{ { "U_JeansArBrn6_uniform", "item" }, 1 },
+				{ { "U_JeansArBrn7_uniform", "item" }, 1 },
+				{ { "U_JeansArBrn8_uniform", "item" }, 1 },
+				{ { "U_JeansArBrn9_uniform", "item" }, 1 },
+				{ { "U_JeansArBrn10_uniform", "item" }, 1 },
+				{ { "U_JeansArBrn11_uniform", "item" }, 1 },
+				{ { "U_JeansArBrn12_uniform", "item" }, 1 },
+				{ { "U_JeansArBrn13_uniform", "item" }, 1 },
+				{ { "U_JeansArBrn14_uniform", "item" }, 1 },
+				{ { "U_JeansArBrn15_uniform", "item" }, 1 },
+				{ { "U_JeansArBrn16_uniform", "item" }, 1 },
+				{ { "U_JeansArBrn17_uniform", "item" }, 1 },
+				{ { "U_JeansArBrn18_uniform", "item" }, 1 },
+				{ { "U_JeansArBrn19_uniform", "item" }, 1 },
+				{ { "U_JeansArBrn20_uniform", "item" }, 1 },
+				{ { "U_JeansArBrn21_uniform", "item" }, 1 },
+				{ { "U_JeansBlack1_uniform", "item" }, 1 },
+				{ { "U_JeansBlack2_uniform", "item" }, 1 },
+				{ { "U_JeansBlack3_uniform", "item" }, 1 },
+				{ { "U_JeansBlack4_uniform", "item" }, 1 },
+				{ { "U_JeansBlack5_uniform", "item" }, 1 },
+				{ { "U_JeansBlack6_uniform", "item" }, 1 },
+				{ { "U_JeansBlack7_uniform", "item" }, 1 },
+				{ { "U_JeansBlack8_uniform", "item" }, 1 },
+				{ { "U_JeansBlack9_uniform", "item" }, 1 },
+				{ { "U_JeansBlack10_uniform", "item" }, 1 },
+				{ { "U_JeansBlack11_uniform", "item" }, 1 },
+				{ { "U_JeansBlack12_uniform", "item" }, 1 },
+				{ { "U_JeansBlack13_uniform", "item" }, 1 },
+				{ { "U_JeansBlack14_uniform", "item" }, 1 },
+				{ { "U_JeansBlack15_uniform", "item" }, 1 },
+				{ { "U_JeansBlack16_uniform", "item" }, 1 },
+				{ { "U_JeansBlack17_uniform", "item" }, 1 },
+				{ { "U_JeansBlack18_uniform", "item" }, 1 },
+				{ { "U_JeansBlack19_uniform", "item" }, 1 },
+				{ { "U_JeansBlack20_uniform", "item" }, 1 },
+				{ { "U_JeansBlack21_uniform", "item" }, 1 }
 		};
 	};
 
@@ -1889,9 +2169,15 @@ class CfgLootTable_CUP
 				{ { "H_92_EPOCH", "item" }, 1 },
 				{ { "H_104_EPOCH", "item" }, 1 },
                 { { "H_105_EPOCH", "item" }, 1 },
-				{ { "wolf_mask_epoch", "item" }, 1 },
-				{ { "pkin_mask_epoch", "item" }, 1 },
-				{ { "clown_mask_epoch", "item" }, 1 }
+				{ { "wolf_mask_epoch", "item" }, 1, {"getDate", 1, "==", 10} }, // only available in october
+				{ { "pkin_mask_epoch", "item" }, 1, {"getDate", 1, "==", 10} }, // only available in october
+				{ { "clown_mask_epoch", "item" }, 1, {"getDate", 1, "==", 10} }, // only available in october
+				{ { "hockey_mask_epoch", "item" }, 1, {"getDate", 1, "==", 10} }, // only available in october
+				{ { "plague_mask_epoch", "item" }, 1, {"getDate", 1, "==", 10} }, // only available in october
+				{ { "ghostface_mask_epoch", "item" }, 1, {"getDate", 1, "==", 10} }, // only available in october
+				{ { "skull_mask_epoch", "item" }, 1, {"getDate", 1, "==", 10} }, // only available in october
+				{ { "witch_mask_epoch", "item" }, 1, {"getDate", 1, "==", 10} }, // only available in october
+				{ { "radiation_mask_epoch", "item" }, 1 }
 		};
 	};
 };

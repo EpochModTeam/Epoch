@@ -23,7 +23,7 @@
 	BOOL
 */
 //[[[cog import generate_private_arrays ]]]
-private ["_config","_doRevenge","_playerDeathScreen","_playerKilledScreen","_playerRevengeMinAliveTime","_tapDiag"];
+private ["_config","_doRevenge","_playerAliveTime","_playerAliveTimeKeyFinal","_playerDeathScreen","_playerKilledScreen","_playerRevengeMinAliveTime","_tapDiag"];
 //[[[end]]]
 params [["_unit",objNull,[objNull]],["_killer",objNull,[objNull]] ];
 _config = 'CfgEpochClient' call EPOCH_returnConfig;
@@ -31,12 +31,23 @@ _playerDeathScreen = getText(_config >> "playerDeathScreen");
 _playerRevengeMinAliveTime = getNumber(_config >> "playerRevengeMinAliveTime");
 if (_playerDeathScreen isEqualTo "") then {_playerDeathScreen = "TapOut"};
 _tapDiag = _playerDeathScreen;
-// diag_log format ["DEBUG: EPOCH_playerAliveTime %1",EPOCH_playerAliveTime];
-_doRevenge = ((getNumber(_config >> "playerDisableRevenge") isEqualTo 0) && EPOCH_playerAliveTime >= _playerRevengeMinAliveTime);
+
+_playerAliveTimeKeyFinal = "EPOCH_playerAliveTime";
+if !(isNil "_playerAliveTimeKey") then {_playerAliveTimeKeyFinal = _playerAliveTimeKey};
+_playerAliveTime = missionNamespace getVariable [_playerAliveTimeKeyFinal,[]];
+
+_doRevenge = ((getNumber(_config >> "playerDisableRevenge") isEqualTo 0) && _playerAliveTime >= _playerRevengeMinAliveTime);
 
 // test ejecting unit from vehicle if dead client side
 if (vehicle _unit != _unit) then {
 	_unit action["Eject", vehicle _unit];
+};
+
+// save death position
+profileNameSpace setVariable["EPOCHLastKnownDeath",[]];
+_deathMarkerON = (getNumber(_config >> "playerDeathMarkerGPSOnly") isEqualTo 1);
+if(_deathMarkerON && ('ItemGPS' in (assignedItems _unit)))then{
+	profileNameSpace setVariable["EPOCHLastKnownDeath",getPos _unit];
 };
 
 [player,_killer,toArray profileName,Epoch_personalToken] remoteExec ["EPOCH_server_deadPlayer",2];
@@ -56,7 +67,7 @@ if (Epoch_canBeRevived) then {
 	createDialog _tapDiag;
 } else {
 	setPlayerRespawnTime 15;
-	["You can be just revived once per life!", 5] call Epoch_message;
+	["You can be just revived once per life!", 5,[[0,0,0,0.5],[1,0,0,1]]] call Epoch_message;
 };
 
 [_killer, _tapDiag] spawn{

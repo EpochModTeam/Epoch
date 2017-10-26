@@ -13,7 +13,7 @@
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server/compile/epoch_player/EPOCH_server_revivePlayer.sqf
 */
 //[[[cog import generate_private_arrays ]]]
-private ["_CorpseCrypto","_PlayerCrypto","_attachments","_backpack","_cIndex","_class","_currWeap","_currwh","_deleteprimary","_deletesecondary","_dir","_droppedPrimary","_droppedSecondary","_droppedWeapons","_equipped","_goggles","_group","_headgear","_items","_itemsplayer","_location","_magazinesAmmo","_newPlyr","_playerGroup","_playerUID","_primaryWeapon","_secondaryWeapon","_token","_type","_uniform","_vars","_vest","_wMags","_wMagsArray","_weapon","_weapons","_weaponsplayer","_wh"];
+private ["_loadout","_CorpseCrypto","_PlayerCrypto","_attachments","_cIndex","_class","_currwh","_deleteprimary","_deletesecondary","_dir","_droppedPrimary","_droppedSecondary","_droppedWeapons","_equipped","_group","_location","_newPlyr","_playerGroup","_playerUID","_token","_type","_vars","_wMags","_wMagsArray","_weapon","_wh","_kIndex","_reviver","_reviverCStats","_reviverKarma","_reviverKarmaAdj"];
 //[[[end]]]
 params ["_player","_reviver",["_token","",[""]] ];
 
@@ -46,23 +46,12 @@ if (!local _player) then {
 				_dir = getDir _player;
 				_playerGroup = _player getVariable["GROUP", ""];
 
-				_goggles = goggles _player;
-				_headgear = headgear _player;
-				_vest = vest _player;
-				_backpack = backpack _player;
-				_uniform = uniform _player;
-
-				_items = assignedItems _player;
-				_magazinesAmmo = magazinesAmmo _player;
-
-				_primaryWeapon = "";
-				_secondaryWeapon = "";
+				// Load Inventory
+				_loadout = getUnitLoadout _player;
 
 				_wh = nearestObjects[_player, ["WeaponHolderSimulated"], 12];
-
 				_droppedPrimary = [];
 				_droppedSecondary = [];
-				_droppedWeapons = [];
 				_deleteprimary = [];
 				_deletesecondary = [];
 				reverse _wh;
@@ -71,22 +60,23 @@ if (!local _player) then {
 					{
 						_type = getNumber(configfile >> "cfgweapons" >> (_x select 0) >> "type");
 						switch _type do {
-							case 1: {_droppedPrimary = _x; _primaryWeapon = _x select 0; _deleteprimary = [_currwh]};
-							case 4: {_droppedSecondary = _x; _secondaryWeapon = _x select 0;_deletesecondary = [_currwh]};
+							case 1: {_droppedPrimary = _x; _deleteprimary = [_currwh]};
+							case 4: {_droppedSecondary = _x; _deletesecondary = [_currwh]};
 						};
 					} forEach (weaponsItemsCargo _x);
 				} foreach _wh;
 				{
 					if (!isnull _x) then {deletevehicle _x};
 				} foreach (_deleteprimary+_deletesecondary);
-
-				if !(_droppedPrimary isequalto []) then {_droppedWeapons pushback _droppedPrimary};
-				if !(_droppedSecondary isequalto []) then {_droppedWeapons pushback _droppedSecondary};
-				// diag_log ["DEBUG: _droppedWeapons %1", _droppedWeapons];
-
-				_itemsplayer = [getItemCargo(uniformContainer _player), getItemCargo(vestContainer _player), getItemCargo(backpackContainer _player)];
-				_weaponsplayer = [getWeaponCargo(uniformContainer _player), getWeaponCargo(vestContainer _player), getWeaponCargo(backpackContainer _player)];
-				_weapons = [currentWeapon _player, ((weaponsItems _player) + _droppedWeapons), [_primaryWeapon, _secondaryWeapon, handgunWeapon _player]];
+				if (count _droppedPrimary == 6) then {
+					_droppedPrimary set [6,_droppedPrimary select 5];
+					_droppedPrimary set [5,[]];
+				
+				};
+				if (count _droppedSecondary == 6) then {
+					_droppedSecondary set [6,_droppedSecondary select 5];
+					_droppedSecondary set [5,[]];
+				};
 
 				hideObjectGlobal _player;
 
@@ -111,11 +101,16 @@ if (!local _player) then {
 
 				_newPlyr = _group createUnit[_class, _location, [], 0, "CAN_COLLIDE"];
 
+				// new Dynamicsimulation
+				if(["CfgDynamicSimulation", "playerDynamicSimulationSystem", true] call EPOCH_fnc_returnConfigEntryV2)then
+				{
+					_newPlyr enableDynamicSimulation true;
+					_newPlyr triggerDynamicSimulation true;
+				};
+
 				addToRemainsCollector[_newPlyr];
 
-				{
-					_newPlyr disableAI _x;
-				}forEach["FSM", "MOVE", "AUTOTARGET", "TARGET"];
+				_newPlyr disableAI "ALL";
 
 				_newPlyr setVariable ["SETUP", true];
 				_newPlyr setVariable ["PUID", _playerUID];
@@ -131,99 +126,13 @@ if (!local _player) then {
 				_newPlyr setFatigue 1;
 				_newPlyr setDamage 0.25;
 
-				// Apperance
-				if (_uniform != "") then {
-					_newPlyr addUniform _uniform;
-				};
-				if (_backpack != "") then {
-					_newPlyr addBackpack _backpack;
-				};
-				if (_goggles != "") then {
-					_newPlyr addGoggles _goggles;
-				};
-				if (_headgear != "") then {
-					_newPlyr addHeadgear _headgear;
-				};
-				if (_vest != "") then {
-					_newPlyr addVest _vest;
-				};
+				// Add inventory
+				_loadout set [0,_droppedPrimary];
+				_loadout set [1,_droppedSecondary];
+//				_newPlyr setUnitLoadout [_loadout, false];
 
-				// Weapons
-				if (count _weapons >= 3) then {
-					_equipped = _weapons select 2;
-					{
-						_weapon = _x deleteAt 0;
-						_type = getNumber(configfile >> "cfgweapons" >> _weapon >> "type");
-						_attachments = [];
-						_wMags = false;
-						_wMagsArray = [];
-						// suppressor, laser, optics
-						{
-							// magazines
-							if (_x isEqualType []) then{
-								_wMags = true;
-								_wMagsArray pushback _x;
-							} else {
-								// attachments
-								if (_x != "") then{
-									_attachments pushBack _x;
-								};
-							};
-						} forEach _x;
-						if (_wMags) then {
-							{
-								_newPlyr addMagazine _x;
-							} foreach _wMagsArray;
-						};
-						// add weapon if equiped
-						if (_weapon in _equipped) then {
-							_equipped = _equipped - [_weapon];
-							if (_weapon != "") then {
-								_newPlyr addWeapon _weapon;
-							};
-							switch _type do {
-								case 1: { // primary
-									removeAllPrimaryWeaponItems _newPlyr;
-									{ _newPlyr addPrimaryWeaponItem _x }forEach _attachments;
-								};
-								case 2:	{ // handgun
-									removeAllHandgunItems _newPlyr;
-									{ _newPlyr addHandgunItem _x }forEach _attachments;
-								};
-								case 4:	{ // secondary
-									// removeAllSecondaryWeaponItems player; does not exist ?
-									{
-										_newPlyr removeSecondaryWeaponItem _x;
-									} forEach(secondaryWeaponItems _newPlyr);
-									{ _newPlyr addSecondaryWeaponItem _x }forEach _attachments;
-								};
-							};
-						}else{
-							{
-								_newPlyr addItem _x;
-							}forEach _attachments;
-						};
-					} forEach (_weapons select 1);
-//					_currWeap = (_weapons select 0);
-				};
-				// Linked items
-				{
-					if (_x in ["Binocular","Rangefinder"]) then {
-						_newPlyr addWeapon _x;
-					} else {
-						_newPlyr linkItem _x;
-					};
-				}forEach _items;
-
-				// add items to containers
-				[_newPlyr, _itemsplayer] call EPOCH_fnc_addItemToX;
-
-				// add weapons to containers
-				[_newPlyr, _weaponsplayer] call EPOCH_fnc_addItemToX;
-
-				// Add magazines
-				{_newPlyr addMagazine _x;}forEach _magazinesAmmo;
-				// Load inventory + defaults END
+				// Workaround for Client / Server synchronizing issue in SetUnitLoadout
+				[_newPlyr,_loadout] call Epoch_server_SetUnitLoadout;
 
 				// Final Push
 				_token = _newPlyr call EPOCH_server_setPToken;
@@ -240,6 +149,17 @@ if (!local _player) then {
 
 				// send to player
 				[_newPlyr, _token, loadAbs _newPlyr] remoteExec ['EPOCH_clientRevive',_player];
+
+				// send stat to reviver
+				[_reviver, "Revives", 1, true] call EPOCH_server_updatePlayerStats;
+				
+				// send karma stat to reviver
+				_kIndex = EPOCH_communityStats find "Karma";
+				_reviverCStats = _reviver getVariable["COMMUNITY_STATS", EPOCH_defaultStatVars];
+				_reviverKarma = _reviverCStats select _kIndex;
+				_reviverKarmaAdj = 5;
+				if(_reviverKarma < 0)then{_reviverKarmaAdj = -5};
+				[_reviver, "Karma", _reviverKarmaAdj, true] call EPOCH_server_updatePlayerStats;
 			};
 		};
 	};
