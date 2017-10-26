@@ -47,7 +47,7 @@ class CfgMarkerSets
 		{0.30,2.75},
 		{0.21,3.25},
 		{0.12,3.5},
-		{0.8,3.75}
+		{0.08,3.75}
 	};
 	class PlayerMarker {
 		markerArray[] = {
