@@ -20,7 +20,8 @@ if (getNumber(_cfgEpoch >> "shipwreckLootEnabled") isEqualTo 1) then {
 	_worldSize = worldSize/2;
 	_shipwrecks = nearestTerrainObjects [ [_worldSize, _worldSize], ["SHIPWRECK"], _worldSize];
 	_total = getNumber(_cfgEpoch >> "maxSpawnedShipwrecks");
-	for "_i" from 0 to _total-1 do{
+	for "_i" from 1 to _total do {
+		if (_shipwrecks isEqualTo []) exitWith {};
 		_wreck = selectRandom _shipwrecks;
 		_shipwrecks = _shipwrecks - [_wreck];
 		_item = createVehicle["container_epoch", _wreck, [], 0, "NONE"];
