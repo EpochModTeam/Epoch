@@ -20,7 +20,7 @@ class build_upgrade
 	//action = "dyna_cursorTarget call EPOCH_QuickUpgrade;"; //TODO: scripted dyna menu
 	action = "";
 	icon = "x\addons\a3_epoch_code\Data\UI\buttons\build_upgrade.paa";
-	tooltip = "Upgrade";
+	tooltipcode = "format['Upgrade %1',getText(configFile >> 'CfgVehicles' >> (typeof dyna_cursorTarget) >> 'displayName')]";
 	class special {}; //uses external config, hardcoded
 };
 class build_remove
@@ -28,14 +28,14 @@ class build_remove
 	condition = "dyna_buildMode select 1";
 	action = "dyna_cursorTarget call EPOCH_removeBUILD;";
 	icon = "x\addons\a3_epoch_code\Data\UI\buttons\build_remove.paa";
-	tooltip = "Remove";
+	tooltipcode = "format['Remove %1',getText(configFile >> 'CfgVehicles' >> (typeof dyna_cursorTarget) >> 'displayName')]";
 };
 class build_move
 {
 	condition = "dyna_buildMode select 2";
 	action = "dyna_cursorTarget call EPOCH_fnc_SelectTargetBuild;";
 	icon = "x\addons\a3_epoch_code\Data\UI\buttons\build_move.paa";
-	tooltip = "Move";
+	tooltipcode = "format['Move %1',getText(configFile >> 'CfgVehicles' >> (typeof dyna_cursorTarget) >> 'displayName')]";
 };
 
 //Vehicle interaction
