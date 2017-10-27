@@ -17,7 +17,7 @@ private ["_ReservedSlots","_SideHQ1","_SideHQ2","_SideHQ3","_abortAndError","_al
 //[[[end]]]
 _startTime = diag_tickTime;
 missionNamespace setVariable ['Epoch_ServerVersion', getText(configFile >> "CfgMods" >> "Epoch" >> "version"), true];
-diag_log format["Epoch: Starting ArmA3 Epoch Server, Version %1",Epoch_ServerVersion];
+diag_log format["Epoch: Starting ArmA3 Epoch Server, Version %1. Note: If server crashes directly after this point check that Redis is running and the connection info is correct.",Epoch_ServerVersion];
 
 _abortAndError = {
     // kick all players with reverse BE kicks
