@@ -939,6 +939,7 @@ class CfgItemSort
 			"RabbitCarcass_EPOCH",
 			"SheepCarcass_EPOCH",
 			"SnakeCarcass_EPOCH",
+			"ItemBakedBeans",
 			"krypto_candy_epoch",
 			"bluburger_epoch",
 			"redburger_epoch",
@@ -949,6 +950,14 @@ class CfgItemSort
 		};
 
 		Drink[] = {
+			"water_epoch",
+			"clean_water_epoch",
+			"ItemCanteen_Empty",
+			"ItemCanteen_Dirty",
+			"ItemCanteen_Clean",
+			"ItemBottlePlastic_Empty",
+			"ItemBottlePlastic_Dirty",
+			"ItemBottlePlastic_Clean",
 			"WhiskeyNoodle",
 			"FoodWalkNSons",
 			"ItemSodaOrangeSherbet",
