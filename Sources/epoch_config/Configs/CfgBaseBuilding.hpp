@@ -351,7 +351,7 @@ class CfgBaseBuilding
         GhostPreview = "MetalFloor_Ghost_EPOCH";
         energyCost = 0.5;
     };
-    class MetalFloor_SIM_EPOCH : WoodFloor_SIM_EPOCH
+    class MetalFloor_SIM_EPOCH : MetalFloor_EPOCH
 	{
 		allowedSnapPoints[] = {"NF","SF","EF","WF","C"};
         allowedSnapObjects[] = {"Const_floors_static_F","Constructions_foundation_F"};
@@ -526,7 +526,7 @@ class CfgBaseBuilding
         GhostPreview = "CinderFloor_Ghost_EPOCH";
         energyCost = 1;
     };
-    class CinderFloor_SIM_EPOCH : WoodFloor_SIM_EPOCH
+    class CinderFloor_SIM_EPOCH : CinderFloor_EPOCH
 	{
 		allowedSnapPoints[] = {"NF","SF","EF","WF","C"};
         allowedSnapObjects[] = {"Const_floors_static_F","Constructions_foundation_F"};
