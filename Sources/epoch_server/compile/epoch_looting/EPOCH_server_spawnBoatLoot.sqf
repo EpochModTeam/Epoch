@@ -27,10 +27,12 @@ if (getNumber(_cfgEpoch >> "shipwreckLootEnabled") isEqualTo 1) then {
 	if(_count < _total)then{diag_log "EPOCHDebug: not enough shipwrecks to fill your needs on this map, trying all available locations!"};
 	
 	_distFromOthers = getNumber(_cfgEpoch >> "distFromOtherShipwrecks");
-	_tooClose = false;
 	_spawnedLoot = [];
-	for "_i" from 1 to (_total min _count) do {
+	for "_i" from 1 to _total do {
+		if(_shipwrecks isEqualTo [])exitWith{diag_log "EPOCHDebug: no more shipwrecks found"};
+		_tooClose = false;
 		_wreck = selectRandom _shipwrecks;
+		if(isNil "_wreck")exitWith{};
 		{
 			if(!(_spawnedLoot isEqualTo []) && ((_wreck distance _x) < _distFromOthers))exitWith{
 				diag_log "EPOCHDebug: Shipwreck too close to another shipwreck";
@@ -41,7 +43,8 @@ if (getNumber(_cfgEpoch >> "shipwreckLootEnabled") isEqualTo 1) then {
 		
 		_shipwrecks = _shipwrecks - [_wreck];
 		if!(_tooClose)then{
-			_item = createVehicle["container_epoch", _wreck, [], 0, "NONE"];
+			_position = [_wreck,1,20,3,1,20,0] call BIS_fnc_findSafePos;
+			_item = createVehicle["container_epoch",_position, [], 0, "NONE"];
 			_spawnedLoot pushback _wreck;
 			_item setMass 220;
 
