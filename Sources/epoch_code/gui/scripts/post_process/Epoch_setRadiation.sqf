@@ -42,9 +42,8 @@ switch _level do {
 	};
 	case 0.1:
 	{
-		[(rmx_var_RadiationHandles select 0), _speed, [0.185533,1,1,1,0,true]] call epoch_postprocessAdjust;
-		[(rmx_var_RadiationHandles select 1), _speed, [1,1,0,0,0,0,0,0,0,0,1,0,0,0,0]] call epoch_postprocessAdjust;
-		[(rmx_var_RadiationHandles select 2), _speed, [0,0,0]] call epoch_postprocessAdjust;
+		rmx_var_RadiationHandles call epoch_postprocessDestroy;
+		rmx_var_RadiationHandles = nil;
 	};
 	case 0.2:
 	{
