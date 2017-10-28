@@ -353,9 +353,9 @@ _fnc_dropEquipAccessories = {
 			_equipped call _fnc_dropItem;
 			(_loadout select _slot) set [_accessory,""];
 			player setUnitLoadout _loadout;
-			_return = 1;
+			_return = 2;
 		};
-		if (((toLower _equipped) != (toLower _item)) || _forceEquip && _return != 4) then {
+		if ((((toLower _equipped) != (toLower _item)) || _forceEquip) && _return != 4) then {
 			(_loadout select _slot) set [_accessory,_item];
 			player setUnitLoadout _loadout;
 			player addItem _equipped;
