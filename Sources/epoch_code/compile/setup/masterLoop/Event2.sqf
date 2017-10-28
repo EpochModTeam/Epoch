@@ -44,8 +44,8 @@ if (_playerAlcohol > 20) then {
 
 // Sets visual effect
 _playerRadiation = missionNamespace getVariable [_playerRadiationKey, _playerRadiationDefault];
-if (_playerRadiation > 1) then {
-	_radiationVal = linearConversion [0,100,_playerRadiation,1,10,true];
+if (_playerRadiation > _radiationEffectsThreshold) then {
+	_radiationVal = linearConversion [0,100,_playerRadiation,0,10,true];
 	[(ceil _radiationVal)/10, 2] call epoch_setRadiation;
 } else {
 	[0, 2] call epoch_setRadiation;

@@ -102,6 +102,8 @@ if (isNil "EPOCH_display_setup_complete") then {
 // Background radiation
 _outOfBoundsRadiation = ["CfgEpochClient", "outOfBoundsRadiation", 10] call EPOCH_fnc_returnConfigEntryV2;
 _radsLevel = 0;
+// Radiation screen effects threshold
+_radiationEffectsThreshold = ["CfgEpochClient", "radiationEffectsThreshold", 10] call EPOCH_fnc_returnConfigEntryV2;
 
 _prevEquippedItem = [];
 _damagePlayer = damage player;
