@@ -2028,6 +2028,10 @@ class CfgPricing
     {
         price = 2;
     };
+    class HotAxeSauce_epoch
+    {
+        price = 2;
+    };
     class ItemSodaOrangeSherbet
     {
         price = 4;

@@ -945,6 +945,7 @@ class CfgItemSort
 			"redburger_epoch",
 			"gyro_wrap_epoch",
 			"icecream_epoch",
+			"HotAxeSauce_epoch",
 			"Hemp",
 			"Sunflower"
 		};
