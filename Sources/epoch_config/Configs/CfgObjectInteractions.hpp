@@ -70,6 +70,10 @@ class CfgObjectInteractions
     {
         interactMode = 4;
     };
+    class FieldToilet_EPOCH : Default
+    {
+        interactMode = 4;
+    };
     class Foundation_EPOCH : Default
     {
         interactMode = 1;

@@ -969,6 +969,20 @@ class CfgItemSort
 			"ItemSodaAlpineDude"
 		};
 		Basebuilding[] = {
+			"FieldToilet_EPOCH",
+			"KitSandbagWall",
+			"KitSandbagWallLong",
+			"KitBurnBarrel",
+			"KitLightPole",
+			"KitPortableLight_Single",
+			"KitPortableLight_Double",
+			"KitScaffolding",
+			"KitSink",
+			"KitWatchTower",
+			"KitSunShade",
+			"KitBagBunker",
+			"KitBarGate",
+			"KitWaterPump",
 			"KitBarbedWire",
 			"Kit_Garden",
 			"KitTentA",

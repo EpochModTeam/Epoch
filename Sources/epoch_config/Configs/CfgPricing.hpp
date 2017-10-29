@@ -3158,6 +3158,62 @@ class CfgPricing
 	{
 		price = 70;
 	};
+	class KitFieldToilet
+	{
+		price = 66;
+	};
+	class KitSandbagWall
+	{
+		price = 60;
+	};
+	class KitSandbagWallLong
+	{
+		price = 120;
+	};
+	class KitBurnBarrel
+	{
+		price = 116;
+	};
+	class KitLightPole
+	{
+		price = 158;
+	};
+	class KitPortableLight_Single
+	{
+		price = 185;
+	};
+	class KitPortableLight_Double
+	{
+		price = 295;
+	};
+	class KitScaffolding
+	{
+		price = 268;
+	};
+	class KitSink
+	{
+		price = 76;
+	};
+	class KitWatchTower
+	{
+		price = 72;
+	};
+	class KitSunShade
+	{
+		price = 29;
+	};
+	class KitBagBunker
+	{
+		price = 280;
+	};
+	class KitBarGate
+	{
+		price = 44;
+	};
+	class KitWaterPump
+	{
+		price = 196;
+	};
     class KitWorkbench
     {
         price = 8;
