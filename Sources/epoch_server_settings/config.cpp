@@ -82,6 +82,7 @@ class CfgEpoch
 		// Shipwrecks
 		shipwreckLootEnabled = 1;
 		maxSpawnedShipwrecks = 12;
+		distFromOtherShipwrecks = 750;
 		
 		// Debug Box 
 		telePos[] = {};

@@ -2004,6 +2004,10 @@ class CfgPricing
     {
         price = 25;
     };
+    class ItemBakedBeans
+    {
+        price = 3;
+    };
     class krypto_candy_epoch
     {
         price = 3;
@@ -2021,6 +2025,10 @@ class CfgPricing
         price = 3;
     };
     class icecream_epoch
+    {
+        price = 2;
+    };
+    class HotAxeSauce_epoch
     {
         price = 2;
     };
@@ -2049,6 +2057,30 @@ class CfgPricing
         price = 5;
     };
     class clean_water_epoch
+    {
+        price = 10;
+    };
+    class ItemCanteen_Empty
+    {
+        price = 8;
+    };
+    class ItemCanteen_Dirty
+    {
+        price = 10;
+    };
+    class ItemCanteen_Clean
+    {
+        price = 12;
+    };
+    class ItemBottlePlastic_Empty
+    {
+        price = 6;
+    };
+    class ItemBottlePlastic_Dirty
+    {
+        price = 8;
+    };
+    class ItemBottlePlastic_Clean
     {
         price = 10;
     };
@@ -3125,6 +3157,62 @@ class CfgPricing
 	class KitTentDome
 	{
 		price = 70;
+	};
+	class KitFieldToilet
+	{
+		price = 66;
+	};
+	class KitSandbagWall
+	{
+		price = 60;
+	};
+	class KitSandbagWallLong
+	{
+		price = 120;
+	};
+	class KitBurnBarrel
+	{
+		price = 116;
+	};
+	class KitLightPole
+	{
+		price = 158;
+	};
+	class KitPortableLight_Single
+	{
+		price = 185;
+	};
+	class KitPortableLight_Double
+	{
+		price = 295;
+	};
+	class KitScaffolding
+	{
+		price = 268;
+	};
+	class KitSink
+	{
+		price = 76;
+	};
+	class KitWatchTower
+	{
+		price = 72;
+	};
+	class KitSunShade
+	{
+		price = 29;
+	};
+	class KitBagBunker
+	{
+		price = 280;
+	};
+	class KitBarGate
+	{
+		price = 44;
+	};
+	class KitWaterPump
+	{
+		price = 196;
 	};
     class KitWorkbench
     {

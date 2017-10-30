@@ -8,11 +8,11 @@ item3[] = {"Vehicle_and_Player",4,218,750.986694,-310.854675,850.986694,-260.854
 item4[] = {"CMD_queue",4,218,450.000000,-450.000000,550.000000,-400.000000,10.000000,"CMD queue"};
 item5[] = {"Save_Players",4,218,450.000000,-375.000000,550.000000,-325.000000,3.000000,"Save" \n "Players"};
 item6[] = {"Cleanup",4,218,750.000000,-375.000000,850.000000,-325.000000,8.000000,"Cleanup"};
-item7[] = {"Events_Manager",4,4314,599.992371,-192.435822,699.992371,-142.435822,0.000000,"Events" \n "Manager"};
+item7[] = {"Events_Manager",4,218,599.992371,-192.435822,699.992371,-142.435822,0.000000,"Events" \n "Manager"};
 item8[] = {"Save_Vehicles",4,218,450.000000,-300.000000,550.000000,-250.000000,4.000000,"Save" \n "Vehicles"};
 item9[] = {"Cleanup_Handler",4,218,750.000000,-450.000000,850.000000,-400.000000,8.000000,"Cleanup" \n "Handler"};
 item10[] = {"Server_FPS",4,218,746.045227,-248.683014,846.045227,-198.683014,0.000000,"Server FPS"};
-item11[] = {"Forced_Restart",4,218,684.856567,-214.145233,784.856567,-164.145233,0.000000,"Forced" \n "Restart"};
+item11[] = {"Forced_Restart",4,4314,684.856567,-214.145233,784.856567,-164.145233,0.000000,"Forced" \n "Restart"};
 link0[] = {0,1};
 link1[] = {1,2};
 link2[] = {2,3};
@@ -34,7 +34,7 @@ link17[] = {9,2};
 link18[] = {10,2};
 link19[] = {11,2};
 globals[] = {0.000000,0,0,0,0,640,480,1,5,6316128,1,275.180084,1161.319580,208.497711,-659.879456,898,884,1};
-window[] = {2,-1,-1,-1,-1,838,78,1370,78,3,916};
+window[] = {2,-1,-1,-1,-1,864,104,1396,104,3,916};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -71,6 +71,7 @@ class FSM
        "_scriptBasedRestart = EPOCH_ServerRestart;" \n
        "_forceRestartTime = EPOCH_forceRestartTime;" \n
        "_forceRestartTimeWarning = _forceRestartTime-300;" \n
+       "" \n
        "_prevRestartIn = 0;" \n
        "_serverLocked = false;" \n
        "_serverRestarting = false;" \n
@@ -91,6 +92,7 @@ class FSM
        "_lastObjectCleanup1 = diag_tickTime;" \n
        "" \n
        "_pvehTime = diag_tickTime;" \n
+       "_forcedrestartTimer = diag_tickTime;" \n
        "" \n
        "_instanceID =  call EPOCH_fn_InstanceID;" \n
        "" \n
@@ -427,8 +429,9 @@ class FSM
           priority = 0.000000;
           to="Process";
           precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"((diag_tickTime - _pvehTime) > 20)"/*%FSM</CONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"((diag_tickTime - _forcedrestartTimer) > 20)"/*%FSM</CONDITION""">*/;
           action=/*%FSM<ACTION""">*/"// restart script" \n
+           "_forcedrestartTimer = diag_tickTime;" \n
            "if (_scriptBasedRestart) then {" \n
            "	if (diag_tickTime >=  _forceRestartTimeWarning) then {" \n
            "		if (!_serverLocked) then {" \n

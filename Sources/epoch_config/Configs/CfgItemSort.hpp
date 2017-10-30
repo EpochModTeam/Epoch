@@ -939,16 +939,26 @@ class CfgItemSort
 			"RabbitCarcass_EPOCH",
 			"SheepCarcass_EPOCH",
 			"SnakeCarcass_EPOCH",
+			"ItemBakedBeans",
 			"krypto_candy_epoch",
 			"bluburger_epoch",
 			"redburger_epoch",
 			"gyro_wrap_epoch",
 			"icecream_epoch",
+			"HotAxeSauce_epoch",
 			"Hemp",
 			"Sunflower"
 		};
 
 		Drink[] = {
+			"water_epoch",
+			"clean_water_epoch",
+			"ItemCanteen_Empty",
+			"ItemCanteen_Dirty",
+			"ItemCanteen_Clean",
+			"ItemBottlePlastic_Empty",
+			"ItemBottlePlastic_Dirty",
+			"ItemBottlePlastic_Clean",
 			"WhiskeyNoodle",
 			"FoodWalkNSons",
 			"ItemSodaOrangeSherbet",
@@ -959,6 +969,20 @@ class CfgItemSort
 			"ItemSodaAlpineDude"
 		};
 		Basebuilding[] = {
+			"FieldToilet_EPOCH",
+			"KitSandbagWall",
+			"KitSandbagWallLong",
+			"KitBurnBarrel",
+			"KitLightPole",
+			"KitPortableLight_Single",
+			"KitPortableLight_Double",
+			"KitScaffolding",
+			"KitSink",
+			"KitWatchTower",
+			"KitSunShade",
+			"KitBagBunker",
+			"KitBarGate",
+			"KitWaterPump",
 			"KitBarbedWire",
 			"Kit_Garden",
 			"KitTentA",

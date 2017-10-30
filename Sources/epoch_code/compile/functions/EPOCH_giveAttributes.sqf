@@ -54,7 +54,7 @@ if (_customVarIndex != -1) then {
 	};
 	_currentVal = missionNamespace getVariable [_varName, _defaultVarValues select _customVarIndex];
 	if (_randomizeData isEqualTo 1) then {
-		_data = round(random _data);
+		_data = parseNumber ((random _data) toFixed 2);
 	};
 	if (_data != 0) then {
 		_newValue = ((_currentVal + _data) min _max) max _min;
