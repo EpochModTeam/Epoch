@@ -89,6 +89,7 @@ class CfgLootTable
 				{ { "EngineBlock", "magazine" }, 10 },
 				{ { "ItemGlass", "magazine" }, 15 },
 				{ { "ItemDuctTape", "magazine" }, 20 },
+				{ { "FuelTank", "magazine" }, 4 },
 				{ { "ItemRotor", "magazine" }, 5 }
 		};
 	};
