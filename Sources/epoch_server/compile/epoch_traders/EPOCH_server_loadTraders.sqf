@@ -13,16 +13,16 @@
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server/compile/epoch_traders/EPOCH_server_loadTraders.sqf
 */
 //[[[cog import generate_private_arrays ]]]
-private ["_agent","_aiTables","_arr","_class","_currentStock","_existingStock","_home","_indexStock","_limit","_markers","_objHiveKey","_pos","_randomAIUniform","_response","_schedule","_serverSettingsConfig","_staticTrader","_staticTradersArrCount","_staticTradersArray","_storedVehicleLimit","_toBeRemoved","_traderSlotIndex","_work"];
+private ["_agent","_aiTables","_arr","_class","_config","_currentStock","_existingStock","_home","_indexStock","_limit","_markers","_objHiveKey","_pos","_randomAIUniform","_response","_schedule","_serverSettingsConfig","_staticTrader","_staticTradersArrCount","_staticTradersArray","_storedVehicleLimit","_toBeRemoved","_traderSlotIndex","_work"];
 //[[[end]]]
 params [["_maxTraderLimit",0]];
 
 _staticTradersArray = +EPOCH_staticNPCTraderPos;
 EPOCH_staticNPCTraderPos = nil;
-_staticTradersArray append getArray(configFile >> "CfgEpoch" >> worldName >> "staticNpcPos");
+_config = (configFile >> "CfgEpoch" >> worldName);
+_staticTradersArray append getArray(_config >> "staticNpcPos");
 _staticTradersArrCount = count _staticTradersArray;
-// TODO: configize
-_aiTables = ["U_OG_leader", "U_C_Poloshirt_stripped", "U_C_Poloshirt_blue", "U_C_Poloshirt_burgundy", "U_C_Poloshirt_tricolour", "U_C_Poloshirt_salmon", "U_C_Poloshirt_redwhite", "U_C_Poor_1", "U_C_WorkerCoveralls", "U_C_Journalist", "U_C_Scientist", "U_OrestesBody"];
+_aiTables = getArray(_config >> "traderUniforms");
 
 _serverSettingsConfig = configFile >> "CfgEpochServer";
 _storedVehicleLimit = [_serverSettingsConfig, "storedVehicleLimit", 20] call EPOCH_fnc_returnConfigEntry;
