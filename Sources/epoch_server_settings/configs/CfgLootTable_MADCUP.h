@@ -422,6 +422,7 @@ class CfgLootTable_MADCUP
 				{ { "ItemSolar", "magazine" }, 5 },
 				{ { "ItemBattery", "magazine" }, 5 },
 				{ { "ItemCables", "magazine" }, 5 },
+				{ { "ItemPipe", "magazine" }, 5 },
 				{ { "ItemSafe", "magazine" }, 1 },
 				{ { "ItemBarrelE", "magazine" }, 1 }
 		};
