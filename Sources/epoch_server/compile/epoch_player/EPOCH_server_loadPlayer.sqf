@@ -351,7 +351,7 @@ if (!isNull _player) then {
 
 				// load community stats
 				_communityStatsArray = ["CommunityStats", _playerUID] call EPOCH_fnc_server_hiveGETRANGE;
-				_communityStats = ((_communityStatsArray select 1) select 0);
+				_communityStats = (_communityStatsArray param [1,[]]) param [0,[]];
 				_newPlyr setVariable["COMMUNITY_STATS", _communityStats];
 
 				// re enable damage server side
