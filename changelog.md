@@ -5,7 +5,6 @@ All changes for [Arma 3](https://arma3.com/) [Epoch Mod](https://epochmod.com) a
 ### Added
 Plant Spawner: vehicle object for sunflower. @Helion4
 
-## Build: 1077
 ## [1.0.0.1077] - 2017-11-05
 ### Added
 - Make temp Vehicles Lockable + Lock hints.
