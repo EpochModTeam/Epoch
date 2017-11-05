@@ -1,6 +1,39 @@
 # Change Log
 All changes for [Arma 3](https://arma3.com/) [Epoch Mod](https://epochmod.com) are listed in this changelog.
 
+## [1.1.0.0] - Unreleased
+### Added
+Plant Spawner: vehicle object for sunflower. @Helion4
+
+## Build: 1077
+## [1.0.0.1077] - 2017-11-05
+### Added
+- Make temp Vehicles Lockable + Lock hints.
+- FuelTank to Loot / Crafting / Pricing.
+- Missing itemPipe to loot tables.
+### Fixed
+- Rpt error for community stats.
+- CameraView Check moved to master loop.
+### Changed
+- Make use of traderUniforms config for AI trader classes.
+- Adjust the order of marker sets.
+
+## [1.0.0.1074] - 2017-10-30
+### Added
+- Missing Prices / Itemsorts + Objectinteracts configs.
+- Note about a possible crash point on server startup if Redis is not running.
+- Hint for Building to move / remove / upgrade.
+- Config variable radiationEffectsThreshold to control what level PP effects are seen, (default 10%).
+### Fixed
+- Fix for radiation post process effects when under 10% irradiated.
+- Fix inherits for metal and cinder floor.
+- Forced restart is now working properly again.
+- Fav Bar now returns "Not enough Space" message if there isn't enough space to store current accessory.
+- Fix for Horizontal Barrel Bomb BE kick.
+### Changed
+- Random attributes now use 2 decimal places instead of rounding.
+- Shipwrecks now use safe pos for shipwreck loot containers positions.
+
 ## [1.0.0.0] - 2017-10-26
 ### Added
 - Favorites bar. Users can pin (almost) any item to the bar by dragging items from inventory to equip/un-equip (Weapons, attachments, head gear, etc.) or consume (eat, drink, build, etc.) using keyboard mapping without having gear open. Use ESC menu to change the mappings. Server admins, see client_init.sqf for config. @raymix
