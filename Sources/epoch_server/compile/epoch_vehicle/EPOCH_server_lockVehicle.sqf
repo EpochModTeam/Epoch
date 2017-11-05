@@ -13,7 +13,7 @@
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server/compile/epoch_vehicle/EPOCH_server_lockVehicle.sqf
 */
 //[[[cog import generate_private_arrays ]]]
-private ["_crew","_driver","_isLocked","_lockOwner","_lockedOwner","_logic","_playerGroup","_playerUID","_response","_vehLockHiveKey","_vehSlot"];
+private ["_VehLockMessages","_msg","_crew","_driver","_isLocked","_lockOwner","_lockedOwner","_logic","_playerGroup","_playerUID","_response","_vehLockHiveKey","_vehSlot"];
 //[[[end]]]
 params [
     ["_vehicle",objNull,[objNull]],
@@ -25,6 +25,8 @@ params [
 if (isNull _vehicle) exitWith {};
 if !([_player,_token] call EPOCH_server_getPToken) exitWith {};
 if (_player distance _vehicle > 20) exitWith {};
+
+_VehLockMessages = ['CfgEpochClient' call EPOCH_returnConfig, "VehLockMessages", true] call EPOCH_fnc_returnConfigEntry;
 
 // Group access
 _playerUID = getPlayerUID _player;
@@ -43,6 +45,9 @@ if (_vehSlot != "ABORT") then {
 	if ((_response select 0) == 1 && (_response select 1) isEqualType [] && !((_response select 1) isEqualTo[])) then {
 		_lockedOwner = _response select 1 select 0;
 	};
+}
+else {
+	_lockedOwner = _vehicle getvariable ["EPOCH_LockedOwner","-1"];
 };
 
 // get locked state
@@ -56,6 +61,7 @@ _crew = [];
 		_crew pushBack _x;
 	};
 } forEach (crew _vehicle);
+
 
 // if vehicle has a crew and player is not inside vehicle only allow locking if already owner
 _logic = if !(_crew isEqualTo []) then {
@@ -75,7 +81,12 @@ _logic = if !(_crew isEqualTo []) then {
 if (_logic) then {
 
 	if (_value) then {
-		["VehicleLock", _vehLockHiveKey, EPOCH_vehicleLockTime, [_lockOwner]] call EPOCH_fnc_server_hiveSETEX;
+		if !(_vehSlot isequalto "ABORT") then {
+			["VehicleLock", _vehLockHiveKey, EPOCH_vehicleLockTime, [_lockOwner]] call EPOCH_fnc_server_hiveSETEX;
+		}
+		else {
+			_vehicle setvariable ["EPOCH_LockedOwner",_lockOwner];
+		};
 	} else {
         // re-allow damage (server-side) on first unlock
         if (_vehicle getVariable ["EPOCH_disallowedDamage", false]) then {
@@ -89,5 +100,14 @@ if (_logic) then {
 		_vehicle lock _value;
 	} else {
 		[_vehicle, _value] remoteExec ['EPOCH_client_lockVehicle',_vehicle];
+	};
+	if (_VehLockMessages) then {
+		_msg = if (_value) then {"Vehicle Locked"} else {"Vehicle unlocked"};
+		[_msg,5] remoteExec ["Epoch_Message",_player];
+	};
+}
+else {
+	if (_VehLockMessages) then {
+		["You are not the owner",5] remoteExec ["Epoch_Message",_player];
 	};
 };
