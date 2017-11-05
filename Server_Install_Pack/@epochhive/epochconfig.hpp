@@ -59,6 +59,7 @@ defaultlinkedItems[] =		{
 disableAutoRefuel = "true"; // Removes auto refuel from all buildings at server startup.
 simulationHandlerOld = "false"; // When enabled this feature disables simulation on vehicles that are not nea players. Can help improve client fps at the cost of server fps.
 vehicleLockTime = 1800; // Controls how many seconds it takes to allow another person/group to unlock vehicle.
+VehLockMessages = "true";		// Give players a hint, that the Vehicle is locked / unlocked
 removevehweapons[] = {			// remove these Weapons from spawned Vehicles
 	"missiles_DAR","gatling_30mm","gatling_20mm","missiles_DAGR","cannon_30mm_Plane_CAS_02_F","Missile_AA_03_Plane_CAS_02_F","Missile_AGM_01_Plane_CAS_02_F","Rocket_03_HE_Plane_CAS_02_F",
 	"Rocket_03_AP_Plane_CAS_02_F","Bomb_03_Plane_CAS_02_F","Bomb_04_Plane_CAS_01_F","Rocket_04_AP_Plane_CAS_01_F","Rocket_04_HE_Plane_CAS_01_F","Missile_AGM_02_Plane_CAS_01_F","Missile_AA_04_Plane_CAS_01_F",

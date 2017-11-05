@@ -410,6 +410,10 @@ class CfgPricing
     {
         price = 40;
     };
+    class FuelTank
+    {
+        price = 48;
+    };
     class WhiskeyNoodle
     {
         price = 80;

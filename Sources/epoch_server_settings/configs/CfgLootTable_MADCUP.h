@@ -89,6 +89,7 @@ class CfgLootTable_MADCUP
 				{ { "EngineBlock", "magazine" }, 10 },
 				{ { "ItemGlass", "magazine" }, 15 },
 				{ { "ItemDuctTape", "magazine" }, 20 },
+				{ { "FuelTank", "magazine" }, 4 },
 				{ { "ItemRotor", "magazine" }, 5 }
 		};
 	};
@@ -421,6 +422,7 @@ class CfgLootTable_MADCUP
 				{ { "ItemSolar", "magazine" }, 5 },
 				{ { "ItemBattery", "magazine" }, 5 },
 				{ { "ItemCables", "magazine" }, 5 },
+				{ { "ItemPipe", "magazine" }, 5 },
 				{ { "ItemSafe", "magazine" }, 1 },
 				{ { "ItemBarrelE", "magazine" }, 1 }
 		};

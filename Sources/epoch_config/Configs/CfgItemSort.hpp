@@ -1041,6 +1041,7 @@ class CfgItemSort
 			"ItemGlass",
 			"ItemDuctTape",
 			"ItemRotor",
+			"FuelTank",
 			"VehicleRepair",
 			"VehicleRepairLg",
 			"ItemDocument",

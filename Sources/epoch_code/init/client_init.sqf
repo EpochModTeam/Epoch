@@ -86,9 +86,6 @@ EPOCH_maxBuildingHeight = getNumber(_CfgEpochClient >> "maxBuildingHeight");
 //ON INIT and RESPAWN
 call EPOCH_clientInit;
 
-// prevents use of group view, and maybe useful for other checks.
-addMissionEventHandler ["PlayerViewChanged", {if (cameraView isEqualTo "GROUP") then {vehicle player switchCamera "Internal";};}];
-
 [] execFSM "epoch_code\system\player_login.fsm";
 
 true

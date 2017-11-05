@@ -424,7 +424,7 @@ class CfgCrafting
     };
     class ItemCorrugated : Item
     {
-        usedIn[] = {"KitShelf","ItemCorrugatedLg","VehicleRepairLg","EngineParts","KitSink","KitFieldToilet","KitWaterPump","KitLightPole"};
+        usedIn[] = {"KitShelf","ItemCorrugatedLg","VehicleRepairLg","EngineParts","KitSink","KitFieldToilet","KitWaterPump","KitLightPole","FuelTank"};
         nearby[] = {{"Fire","","fire",{1,{"ALL"}},3,1,1,0}};
         recipe[] = {{"ItemScraps",2}};
         previewPosition[] = {0.791088,1,0.300004};
@@ -452,7 +452,7 @@ class CfgCrafting
     };
     class VehicleRepair : Part
     {
-        usedIn[] = {"VehicleRepairLg","EngineParts","SpareTire","KitVehicleUpgradeI_200_EPOCH"};
+        usedIn[] = {"VehicleRepairLg","EngineParts","SpareTire","KitVehicleUpgradeI_200_EPOCH","FuelTank"};
         previewPosition[] = {0.787659,1,0.30098};
         previewScale = 0.45;
         previewVector = 1.5;
@@ -492,6 +492,13 @@ class CfgCrafting
         previewPosition[] = {0.807346,1,0.29};
         previewScale = 0.2;
         previewVector = 0.5;
+	};
+	class FuelTank : Item
+    {
+        recipe[] = {{"ItemCorrugated",1},{"VehicleRepair",1} };
+        previewPosition[] = {0.8,1,0.26};
+        previewScale = 0.4;
+        previewVector = 1;
 	};
     class EpochRadio0 : Part
     {
