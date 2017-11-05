@@ -411,6 +411,11 @@ if(getNumber(('CfgEpochClient' call EPOCH_returnConfig) >> 'mapOnZoomSetMarkerSi
 	};
 };
 
+// prevents use of group view
+if (cameraview isequalto "GROUP") then {
+	vehicle player switchCamera "Internal";
+};
+
 // force update
 if (EPOCH_forceUpdateNow) then {
 	EPOCH_forceUpdateNow = false;
