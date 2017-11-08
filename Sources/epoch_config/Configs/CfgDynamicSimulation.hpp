@@ -9,7 +9,7 @@ class CfgDynamicSimulation
 	baseDynamicSimulationSystem = true; // plot pole and base pieces
 
 	// Distances and Coef
-	isMovingCoefValue = 2;
+	isMovingCoefValue = 3;
 	groupDynSimDistance = 1600;
 	vehicleDynSimDistance = 1600;
 	emptyVehicleDynSimDistance = 1600;
