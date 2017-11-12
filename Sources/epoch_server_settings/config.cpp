@@ -52,7 +52,6 @@ class CfgEpoch
 	class Default
 	{
 		worldSize = 12000;
-		plantLimit = 10;
 		vehicleSpawnTypes[] = {
 			{"FlatAreaCity",1},
 			{"FlatAreaCitySmall",1},
@@ -79,11 +78,6 @@ class CfgEpoch
 		traderHomes[] = {"House", "Building"};
 		traderUniforms[] = {"U_OG_leader", "U_C_Poloshirt_stripped", "U_C_Poloshirt_blue", "U_C_Poloshirt_burgundy", "U_C_Poloshirt_tricolour", "U_C_Poloshirt_salmon", "U_C_Poloshirt_redwhite", "U_C_Poor_1", "U_C_WorkerCoveralls", "U_C_Journalist", "U_C_Scientist", "U_OrestesBody"};
 		
-		// Shipwrecks
-		shipwreckLootEnabled = 1;
-		maxSpawnedShipwrecks = 12;
-		distFromOtherShipwrecks = 750;
-		
 		// Debug Box 
 		telePos[] = {};
 		lightPos[] = {
@@ -92,6 +86,70 @@ class CfgEpoch
 		};
 		debugBoxClass = "Debug_static_F";
 		cloneClasses[] = {"clone_empty_static_F", "clone_male_static_F", "clone_female_static_F"};
+		
+		// Settings for Events, Missions, etc
+		spawnDistanceFromPlayers = 500;
+		spawnDistanceFromJammers = 1000;
+		spawnDistanceFromTraders = 2000;
+		HeightenedPlayerVsPlayer = 1; // 0 = OFF
+
+		// Shipwrecks Loot Box Spawner
+		shipwreckLootEnabled = 1; // 0 = OFF
+		debugShipwreckLoot = 0; // 1 = ON
+		showBoatLootMarkers = 1;
+		maxSpawnedShipwrecks = 12;
+		distFromOtherShipwrecks = 750;
+		shipwreckDecayMarkerColor = "ColorBrown"; // decay changes icon (_markers select 2)
+		shipwreckCompromisedColor = "ColorRed"; // compromised changes active surround (_markers select 0)
+
+		// Plant Spawner
+		debugPlantSpawner = 0;
+		showPlantMarkers = 1;
+		maxPlantSpawns = 5;
+		distFromOtherPlants = 2500;
+		plantDecayTime = 1200; //Half this time results in decayMarkerColor marker
+		plantDecayMarkerColor = "ColorBrown";
+		plantCompromisedColor = "ColorRed";
+		availablePlants[] = {"Goldenseal_EPOCH", "Goldenseal_EPOCH", "Goldenseal_EPOCH", "Poppy_EPOCH", "Pumpkin_EPOCH"};
+
+		// Carnival and Loot Box Spawner
+		debugCarnivalSpawner = 0;
+		showCarnivalMarkers = 1;
+		maxCarnivalSpawns = 2;
+		distFromOtherCarnivals = 5000;
+		carnivalDecayTime = 3600;
+		carnivalDecayMarkerColor = "ColorBrown";
+		carnivalCompromisedColor = "ColorRed";
+		carnivalSpawnedObjects[] = {"Carnival_Tent", "Land_Slide_F", "Carnival_Tent", "Land_Carousel_01_F", "Carnival_Tent", "Carnival_Tent"};
+		
+		// EarthQuake and Mineral Deposit Spawner
+		debugEarthquakeSpawner = 0;
+		showEarthquakeMarkers = 1;
+		maxEarthquakeSpawns = 3;
+		distFromOtherEarthquakes = 1500;
+		earthquakeDecayTime = 2400;
+		earthquakeDecayMarkerColor = "ColorBrown";
+		earthquakeCompromisedColor = "ColorRed";
+		availableMinerals[] = {"MineralDepositCopper_EPOCH", "MineralDepositGold_EPOCH", "MineralDepositSilver_EPOCH"};
+		
+		// Container Spawner
+		debugContainerSpawner = 0;
+		showContainerMarkers = 1;
+		maxContainerSpawns = 5;
+		distFromOtherContainers = 3500;
+		containerDecayTime = 1200;
+		containerDecayMarkerColor = "ColorBrown";
+		containerCompromisedColor = "ColorRed";
+		
+		// Satellite Crash Spawner
+		debugSatelliteSpawner = 0;
+		showSatelliteMarkers = 1;
+		maxSatelliteSpawns = 5;
+		distFromOtherSatellites = 2500;
+		satelliteDecayTime = 2700;
+		satelliteDecayMarkerColor = "ColorBrown";
+		satelliteCompromisedColor = "ColorRed";
+		availableSatellites[] = {"Land_Wreck_Satellite_EPOCH"};
 		
 		propsPos[] = {};
 		staticNpcPos[] = {};
