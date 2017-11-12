@@ -6,7 +6,7 @@ _powerSources = nearestObjects[player, ["Land_spp_Tower_F","Land_wpp_Turbine_V2_
 
 // TODO: add more sources and config based check instead of global var
 // _nearestLocations removed as they don't support getVariable
-// All sources used as a temp solution
+// All sources used as a temp solution, please re-use as much as you can.
 _allSources = nearestObjects[player, ["All"], _radiatedObjMaxRange];
 _nearbyRadioactiveObjects = _allSources select {(_x getVariable ["EPOCH_Rads", []]) select 0 > 0};
 
@@ -75,11 +75,17 @@ if (uniform player == "hazmat_placeholder") then {
 };
 
 // Radiation Handler
-if (_radsLevel > 0) then {
-	// increase rads based on radiation levels
-	_playerRadiation = [_playerRadiationKey,_radsLevel,_playerRadiationMax,_playerRadiationMin] call EPOCH_fnc_setVariableLimited;
-};
+_playerRadiation = missionNamespace getVariable [_playerRadiationKey, _playerRadiationDefault];
+_playerImmunity = missionNamespace getVariable [_playerImmunityKey, _playerImmunityDefault];
 
+if (_radsLevel > 0) then { // increase rads based on radiation levels
+    _playerRadiation = [_playerRadiationKey,_radsLevel,_playerRadiationMax,_playerRadiationMin] call EPOCH_fnc_setVariableLimited;
+} else { //Decrease rad level, but at a cost of immunity loss
+    if (_playerRadiation  > 0) then {
+		_playerRadiation = [_playerRadiationKey,(_baseRadiationLoss * _playerImmunity / 100),_playerRadiationMax,_playerRadiationMin] call EPOCH_fnc_setVariableLimited;
+        _playerImmunity = [_playerImmunityKey,_baseRadiationLossImmunityPenalty,_playerImmunityMax,_playerImmunityMin] call EPOCH_fnc_setVariableLimited;
+    };
+};
 if !(surfaceIsWater _position) then {
 	if (_nearestLocations isEqualTo []) then{
 		if (count(player nearEntities["Animal_Base_F", 800]) < 2) then {

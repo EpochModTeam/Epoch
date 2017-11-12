@@ -24,7 +24,10 @@ class CfgEpochClient
 	radiatedObjMaxFalloutDist = 125; // max distance radiated object can affect player (number in meters)
 	geigerCounterEnergyUsage = 10; // default loss of 10 energy every 10sec of use
 	radiationEffectsThreshold = 10; // default level for screen effects to indicate a player's rad dosage (0-100)
-
+	
+	baseRadiationLoss = -1; //default radiation loss every 1 minute, calculated from total immunity. No immunity no reduction.
+	baseRadiationLossImmunityPenalty = -1; //immunity is reduced as a penalty for radiation loss effect
+	
     baseHungerLoss = 2; // increase number to speed up rate of Hunger loss
     baseThirstLoss = 2; // increase number to speed up rate of Thirst loss
 	accelerateHTALoss = "true"; // use server's time acceleration to increase the rate of Hunger, Thirst and Alcohol loss

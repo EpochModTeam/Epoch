@@ -140,7 +140,6 @@ if ((getFatigue player) >= 0.7 && _airTemp > 100) then {
 
 // toxic fever and immunity increase
 _playerToxicity = missionNamespace getVariable [_playerToxicityKey, _playerToxicityDefault];
-// _playerImmunity = missionNamespace getVariable [_playerImmunityKey, _playerImmunityDefault];
 if (_playerToxicity > 0) then {
 	_playerImmunity = [_playerImmunityKey,0.1,_playerImmunityMax,_playerImmunityMin] call EPOCH_fnc_setVariableLimited;
 	_playerToxicity = [_playerToxicityKey,-0.1,_playerToxicityMax,_playerToxicityMin] call EPOCH_fnc_setVariableLimited;
