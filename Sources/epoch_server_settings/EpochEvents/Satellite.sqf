@@ -6,7 +6,7 @@
 	https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server_settings/EpochEvents/Satellite.sqf
 */
 //[[[cog import generate_private_arrays ]]]
-private ["_satellite","_markers","_playersNearEpicenter","_position","_satellites"];
+private ["_cfgEpoch", "_debug", "_limit", "_counter", "_others", "_distFromOthers", "_position", "_goodPos", "_satellites", "_satellite", "_debugMkr", "_markers", "_originalColors", "_showMarkers", "_decayMarkerColor", "_compromisedColor", "_decayTime", "_serverSettingsConfig", "_timeMultiplier", "_rEvents","_thisEvent"];
 //[[[end]]]
 _cfgEpoch = configFile >> "CfgEpoch" >> worldname;
 _debug = if(getNumber(_cfgEpoch >> "debugSatelliteSpawner") isEqualTo 1)then{true}else{false};

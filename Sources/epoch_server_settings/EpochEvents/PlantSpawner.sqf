@@ -17,7 +17,7 @@
 	https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server_settings/EpochEvents/PlantSpawner.sqf
 */
 //[[[cog import generate_private_arrays ]]]
-private ["_cfgEpoch", "_debug", "_limit", "_counter", "_distFromOthers", "_others", "_nearbyLocations", "_position", "_selectedLocation", "_goodPos", "_plantsArray", "_plant", "_plantCount", "_scatter", "_plants", "_plantPos", "_debugMkr", "_markers", "_originalColors", "_showMarkers", "_decayMarkerColor", "_compromisedColor", "_decayTime", "_rEvents","_thisEvent"];
+private ["_cfgEpoch", "_debug", "_limit", "_counter", "_others", "_distFromOthers", "_nearbyLocations", "_position", "_selectedLocation", "_goodPos", "_plantsArray", "_plant", "_plantCount", "_scatter", "_plants", "_plantPos", "_debugMkr", "_markers", "_originalColors", "_showMarkers", "_decayMarkerColor", "_compromisedColor", "_decayTime", "_serverSettingsConfig", "_timeMultiplier", "_rEvents","_thisEvent"];
 //[[[end]]]
 _cfgEpoch = configFile >> "CfgEpoch" >> worldname;
 _debug = if(getNumber(_cfgEpoch >> "debugPlantSpawner") isEqualTo 1)then{true}else{false};

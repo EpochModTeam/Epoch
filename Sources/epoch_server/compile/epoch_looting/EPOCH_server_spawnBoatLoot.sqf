@@ -13,16 +13,10 @@
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server/compile/epoch_looting/EPOCH_server_spawnBoatLoot.sqf
 */
 //[[[cog import generate_private_arrays ]]]
-private ["_cfgEpoch","_debug","_showBoatMarkers","_decayMarkerColor","_compromisedColor","_worldSize","_shipwrecks","_total","_count","_distFromOthers","_tooClose","_spawnedLoot","_wreck","_item","_markers","_position","_debugMkr","_heightenedPVP"];
+private ["_cfgEpoch", "_debug", "_worldSize", "_shipwrecks", "_total", "_count", "_distFromOthers", "_spawnedLoot","_tooClose", "_wreck", "_position", "_item", "_debugMkr", "_markers", "_originalColors", "_showMarkers", "_decayMarkerColor", "_compromisedColor", "_rEvents", "_thisEvent"];
 //[[[end]]]
 _cfgEpoch = configFile >> "CfgEpoch" >> worldname;
 _debug = if(getNumber(_cfgEpoch >> "debugShipwreckLoot") isEqualTo 1)then{true}else{false};
-_showBoatMarkers = if(getNumber(_cfgEpoch >> "showBoatLootMarkers") isEqualTo 1)then{true}else{false};
-_decayMarkerColor = getText(_cfgEpoch >> "shipwreckDecayMarkerColor");
-_compromisedColor = getText(_cfgEpoch >> "shipwreckCompromisedColor");
-_heightenedPVP = if(getNumber(_cfgEpoch >> "HeightenedPlayerVsPlayer") isEqualTo 1)then{true}else{false};
-_markers = [];
-_originalColors = [];
 
 if (getNumber(_cfgEpoch >> "shipwreckLootEnabled") isEqualTo 1) then {
 	_worldSize = worldSize/2;
@@ -64,21 +58,28 @@ if (getNumber(_cfgEpoch >> "shipwreckLootEnabled") isEqualTo 1) then {
 			};
 			_item setMass 220;
 			_item setVariable["EPOCH_Loot",false,true];
-			if (_showBoatMarkers) then {
-				_markers = ["Shipwreck",_wreck] call EPOCH_server_createGlobalMarkerSet;
+
+			// SET UP THE MARKER.
+			_markers = [];
+			_originalColors = [];
+			_showMarkers = if(getNumber(_cfgEpoch >> "showBoatLootMarkers") isEqualTo 1)then{true}else{false};
+			_decayMarkerColor = getText(_cfgEpoch >> "shipwreckDecayMarkerColor");
+			_compromisedColor = getText(_cfgEpoch >> "shipwreckCompromisedColor");
+			if (_showMarkers) then{
+				_markers = ["Shipwreck",_position] call EPOCH_server_createGlobalMarkerSet;
 				{
 					_originalColors pushBack (getMarkerColor _x);
 				}forEach _markers;
-			};
-			
-			// Check for HeightenedPlayerVsPlayer false and remove comprimised coloring
-			if((_showBoatMarkers) && !(_heightenedPVP))then{
-				_compromisedColor = getMarkerColor (_markers select 0);
+				
+				// Check for HeightenedPlayerVsPlayer false and remove comprimised coloring
+				if!(getNumber(_cfgEpoch >> "HeightenedPlayerVsPlayer") isEqualTo 1)then{
+					_compromisedColor = getMarkerColor (_markers select 0);
+				};
 			};
 
 			_rEvents = missionNameSpace getVariable["EPOCH_RunningEvents",[]];
-			_shipwreckEvent = [_position, [_item], [], "shipwreckCounter", diag_tickTime, 99999, _showBoatMarkers, _markers, _originalColors, _decayMarkerColor, _compromisedColor];
-			missionNameSpace setVariable["EPOCH_RunningEvents",_rEvents + [_shipwreckEvent]];
+			_thisEvent = [_position, [_item], [], "shipwreckCounter", diag_tickTime, 99999, _showBoatMarkers, _markers, _originalColors, _decayMarkerColor, _compromisedColor];
+			missionNameSpace setVariable["EPOCH_RunningEvents",_rEvents + [_thisEvent]];
 		};
 	};
 	if(_debug)then{

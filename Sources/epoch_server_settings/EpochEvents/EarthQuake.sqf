@@ -8,7 +8,7 @@
 	https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server_settings/EpochEvents/Earthquake.sqf
 */
 //[[[cog import generate_private_arrays ]]]
-private ["_cfgEpoch", "_debug", "_limit", "_counter", "_others", "_distFromOthers", "_position", "_goodPos", "_playersNearEpicenter", "_chance", "_minerals", "_item", "_debugMkr", "_markers", "_originalColors", "_showMarkers", "_decayMarkerColor", "_compromisedColor", "_spawned", "_decayTime", "_rEvents", "_thisEvent"];
+private ["_cfgEpoch", "_debug", "_limit", "_counter", "_others", "_distFromOthers", "_position", "_goodPos", "_playersNearEpicenter", "_chance", "_minerals", "_item", "_debugMkr", "_markers", "_originalColors", "_showMarkers", "_decayMarkerColor", "_compromisedColor", "_spawned", "_decayTime", "_serverSettingsConfig", "_timeMultiplier", "_rEvents", "_thisEvent"];
 //[[[end]]]
 _cfgEpoch = configFile >> "CfgEpoch" >> worldname;
 _debug = if(getNumber(_cfgEpoch >> "debugEarthquakeSpawner") isEqualTo 1)then{true}else{false};

@@ -6,7 +6,7 @@
 	https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server_settings/EpochEvents/CarnivalSpawner.sqf
 */
 //[[[cog import generate_private_arrays ]]]
-private ["_cfgEpoch", "_debug", "_showMarkers", "_limit", "_counter", "_decayTime", "_distFromOthers", "_others", "_position", "_goodPos", "_objs","_item", "_lootPos", "_lootPos", "_loot", "_debugMkr", "_markers", "_originalColors", "_decayMarkerColor", "_compromisedColor", "_rEvents", "_thisEvent"];
+private ["_cfgEpoch", "_debug", "_showMarkers", "_limit", "_counter", "_others", "_distFromOthers", "_position", "_goodPos", "_objs","_item", "_lootPos", "_loot", "_debugMkr", "_markers", "_originalColors", "_decayMarkerColor", "_compromisedColor", "_decayTime", "_serverSettingsConfig", "_timeMultiplier", "_rEvents", "_thisEvent"];
 //[[[end]]]
 _cfgEpoch = configFile >> "CfgEpoch" >> worldname;
 _debug = if(getNumber(_cfgEpoch >> "debugCarnivalSpawner") isEqualTo 1)then{true}else{false};
