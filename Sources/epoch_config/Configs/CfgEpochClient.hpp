@@ -19,6 +19,8 @@ class CfgEpochClient
 	debug = "true";  // true = enable extra rpt debug lines, false to disable
 
 	antagonistRngChance = 100; // increase number to reduce chances and reduce to increase. Default 100
+	NuisanceMulti = 0.5;		// Multi for Nuisance increase on shooting - higher Nuisance effect at least antagonist spawn change. (0-1, default 0.5)
+
 	outOfBoundsRadiation = 10; // how much rads per tick (10sec), when outside play area.
 	radioactiveLocations[] = {"NameCityCapital", "NameCity", "Airport"}; // used for random radioactive locations and to suppress animal spawns within cities.
 	radiatedObjMaxFalloutDist = 125; // max distance radiated object can affect player (number in meters)

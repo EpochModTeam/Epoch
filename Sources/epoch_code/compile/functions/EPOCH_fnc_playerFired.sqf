@@ -108,7 +108,7 @@ switch true do {
 	};
 	default {
 		_ammoConfig = (configFile >> "CfgAmmo" >> _ammo);
-		_nuisanceLevel = ceil(getNumber (_ammoConfig >> "audibleFire") * getNumber (_ammoConfig >> "caliber"));
+		_nuisanceLevel = ceil ((getNumber (_ammoConfig >> "audibleFire") * getNumber (_ammoConfig >> "caliber"))*Epoch_NuisanceMulti);
 		// reduce when not in a city or town
 		if (EPOCH_nearestLocations isEqualTo[]) then{
 			_nuisanceLevel = _nuisanceLevel / 2;
