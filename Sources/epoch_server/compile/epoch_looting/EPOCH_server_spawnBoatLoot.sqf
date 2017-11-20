@@ -78,7 +78,7 @@ if (getNumber(_cfgEpoch >> "shipwreckLootEnabled") isEqualTo 1) then {
 			};
 
 			_rEvents = missionNameSpace getVariable["EPOCH_RunningEvents",[]];
-			_thisEvent = [_position, [_item], [], "shipwreckCounter", diag_tickTime, 99999, _showBoatMarkers, _markers, _originalColors, _decayMarkerColor, _compromisedColor];
+			_thisEvent = [_position, [_item], [], "shipwreckCounter", diag_tickTime, 99999, _showMarkers, _markers, _originalColors, _decayMarkerColor, _compromisedColor];
 			missionNameSpace setVariable["EPOCH_RunningEvents",_rEvents + [_thisEvent]];
 		};
 	};
