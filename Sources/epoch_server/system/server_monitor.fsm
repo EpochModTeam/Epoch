@@ -171,7 +171,7 @@ class FSM
                          "            if (_list isEqualTo []) then {" \n
                          "                {" \n
                          "                    deleteVehicle _x;" \n
-                         "                }forEach nearestObjects[_this, [""WeaponHolder""], 2];" \n
+                         "                }forEach ((nearestObjects [_this, [""WeaponHolder""], 2]) select {!(_x iskindof ""Constructions_lockedstatic_F"" || _x iskindof ""Buildable_Storage"")});" \n
                          "                _this setVariable [""LAST_CHECK"",nil];" \n
                          "                //diag_log format[""DEBUG: _cleanIT2 del %1"", _this];" \n
                          "                deleteVehicle _this;" \n
