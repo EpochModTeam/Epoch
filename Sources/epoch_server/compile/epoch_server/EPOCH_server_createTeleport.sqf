@@ -81,30 +81,32 @@ if !(_debugBox isEqualTo "") then {
 
 // spawn area props
 {
-	_class = _x select 0;
-	_pos = _x select 1;
-	_dir = _x select 2;
-
-	_deSimulate = _class isKindOf "ThingX";
-	if (count _x >= 4) then {
-		_deSimulate = (_x select 3) isEqualTo "true";
-	};
+	_x params [
+		["_class",""],
+		["_pos",[0,0,0]],
+		["_dir",0],
+		["_disableSim","true"],
+		["_dynSim","false"],
+		["_allowDmg","false"],
+		["_dmg",0]
+	];
 
 	_ep = createVehicle[_class, _pos, [], 0, "CAN_COLLIDE"];
-
-	_ep allowDamage false;
+	_ep setposATL _pos;
 	if (_dir isEqualType []) then{
-		_ep setposATL _pos;
 		_ep setVectorDirAndUp _dir;
 	} else {
-		_ep setposATL _pos;
 		_ep setDir _dir;
 	};
-
-	if (_deSimulate) then{
+	_deSimulate = _class isKindOf "ThingX";
+	if((_deSimulate) || (_disableSim isEqualTo "true"))then{
 		_ep enableSimulationGlobal false;
 	};
-
+	if(["CfgDynamicSimulation", "enableDynamicSimulationSystem", true] call EPOCH_fnc_returnConfigEntryV2)then{
+		_ep enableDynamicSimulation (_dynSim isEqualTo "true");
+	};
+	_ep allowDamage (_allowDmg isEqualTo "true");
+	_ep setDamage (_dmg min 0.75);
 } forEach(getArray(_configWorld >> "propsPos"));
 
 {

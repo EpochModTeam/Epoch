@@ -151,7 +151,22 @@ class CfgEpoch
 		satelliteCompromisedColor = "ColorRed";
 		availableSatellites[] = {"Land_Wreck_Satellite_EPOCH"};
 		
-		propsPos[] = {};
+	propsPos[] = {
+			// Will accept several variations of this entry to place objects on the map
+			// _className - STRING - Class name of the object to spawn
+			// _position - ARRAY - posATL of the object placement
+			// _direction - NUMBER or ARRAY - Accepts direction 0-360 or accepts Vector Direction and UP array
+			// _deSimulate - BOOLEAN - Turns simulation off at spawn to save on performance
+			// _dynamicSimulation(OPTIONAL) - BOOLEAN - Add the object to arma3 dynamic sim system
+			// _destruction(OPTIONAL) - BOOLEAN - Setting this to true will allow damage to the object
+			// _damage(OPTIONAL) - NUMBER - Preset damage limited to maximum 0.75 (75% damaged)
+			
+			// EXAMPLES:
+			// {_classname, _position, _direction, _deSimulate, _dynamicSimulation, _destruction, _damage},
+			// 1 {"Land_MarketShelter_F", { 13315.3, 14512.4, 0.0361125 }, 119.966, true},
+			// 2 {"Land_MarketShelter_F", { 13315.3, 14512.4, 0.0361125 }, {{0,0,0},{0,0,1}}, true},
+			// 3 {"Land_MarketShelter_F", { 13315.3, 14512.4, 0.0361125 }, {{0,0,0},{0,0,1}}, true, true, false, 0},
+		};
 		staticNpcPos[] = {};
         forcedVehicleSpawnTable = "";
         forcedLootSpawnTable = "";
