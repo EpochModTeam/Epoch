@@ -13,7 +13,7 @@
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_code/init/both_init.sqf
 */
 //[[[cog import generate_private_arrays ]]]
-private ["_cfgDynamicSimulation","_communityStatsInit","_customVarsInit","_dynSimToggle"];
+private ["_communityStatsInit","_customVarsInit","_dynSimToggle"];
 //[[[end]]]
 
 // Check if Advanced Vehicle Repair is enabled
@@ -71,16 +71,3 @@ EPOCH_group_upgrade_lvl = ["CfgEpochClient", "group_upgrade_lvl", [4,"100",6,"30
 // disable remote sensors on server and client as all Epoch AI is local to the side controlling it.
 disableRemoteSensors (["CfgEpochClient", "disableRemoteSensors", true] call EPOCH_fnc_returnConfigEntryV2);
 
-// Enable Dynamic simulation on both server and clients (maybe only needed server side)
-// DynSim is handled locally and yes server and clients will need these configurations
-_dynSimToggle = ["CfgDynamicSimulation", "enableDynamicSimulationSystem", true] call EPOCH_fnc_returnConfigEntryV2;
-enableDynamicSimulationSystem _dynSimToggle;
-if(_dynSimToggle)then
-{
-	_cfgDynamicSimulation = 'CfgDynamicSimulation' call EPOCH_returnConfig;
-	"IsMoving" setDynamicSimulationDistanceCoef getNumber(_cfgDynamicSimulation >> "isMovingCoefValue");
-	"Group" setDynamicSimulationDistance getNumber(_cfgDynamicSimulation >> "groupDynSimDistance");
-	"Vehicle" setDynamicSimulationDistance getNumber(_cfgDynamicSimulation >> "vehicleDynSimDistance");
-	"EmptyVehicle" setDynamicSimulationDistance getNumber(_cfgDynamicSimulation >> "emptyVehicleDynSimDistance");
-	"Prop" setDynamicSimulationDistance getNumber(_cfgDynamicSimulation >> "propDynSimDistance");
-};

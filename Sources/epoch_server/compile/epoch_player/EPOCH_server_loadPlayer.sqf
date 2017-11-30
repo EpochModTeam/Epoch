@@ -369,7 +369,7 @@ if (!isNull _player) then {
 				// [] remoteExec ["bis_fnc_reviveInit",_player];
 
 				// new Dynamicsimulation
-				if(["CfgDynamicSimulation", "playerDynamicSimulationSystem", true] call EPOCH_fnc_returnConfigEntryV2)then
+				if([configFile >> "CfgEpochServer", "playerDynamicSimulationSystem", true] call EPOCH_fnc_returnConfigEntry)then
 				{
 					_newPlyr enableDynamicSimulation true;
 					_newPlyr triggerDynamicSimulation true;

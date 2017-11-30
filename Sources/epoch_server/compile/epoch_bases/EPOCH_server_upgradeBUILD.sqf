@@ -29,7 +29,9 @@ if (_objSlot != -1) then {
 		_class = _upgrade select 0;
 		_newObj = [_class,_object] call EPOCH_swapBuilding;
 		_newObj setVariable ["BUILD_SLOT",_objSlot,true];
-		_newObj call EPOCH_server_buildingInit;
+		if (isDamageAllowed _newObj) then {		// Only needed, if damage is allowed
+			_newObj call EPOCH_server_buildingInit;
+		};
 		_newObj call EPOCH_saveBuilding;
 	};
 } else {

@@ -13,13 +13,17 @@
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server/compile/epoch_bases/EPOCH_server_loadBuildings.sqf
 */
 //[[[cog import generate_private_arrays ]]]
-private ["_ExceptedBaseObjects","_IndestructibleBaseObjects","_UseIndestructible","_VAL","_ammoClass","_ammoObj","_anims","_animsData","_arr","_arrCount","_baseObj","_buildingJammerRange","_cfgBaseBuilding","_cfgEpochClient","_class","_color","_damage","_location","_marker","_maxTTL","_owner","_response","_serverSettingsConfig","_storageSlot","_textureSlot","_ttl","_vehHiveKey","_worldspace"];
+private ["_Simulated","_DamageAllowed","_ExceptedBaseObjects","_IndestructibleBaseObjects","_UseIndestructible","_VAL","_ammoClass","_ammoObj","_anims","_animsData","_arr","_arrCount","_baseObj","_buildingJammerRange","_cfgBaseBuilding","_cfgEpochClient","_class","_color","_damage","_location","_marker","_maxTTL","_owner","_response","_serverSettingsConfig","_storageSlot","_textureSlot","_ttl","_vehHiveKey","_worldspace"];
 //[[[end]]]
 _maxTTL = parseNumber EPOCH_expiresBuilding;
 _serverSettingsConfig = configFile >> "CfgEpochServer";
+_baseDynamicSimulationSystem = [_serverSettingsConfig, "baseDynamicSimulationSystem", true] call EPOCH_fnc_returnConfigEntry;
 _UseIndestructible = [_serverSettingsConfig, "UseIndestructible", false] call EPOCH_fnc_returnConfigEntry;
 _IndestructibleBaseObjects = [_serverSettingsConfig, "IndestructibleBaseObjects", []] call EPOCH_fnc_returnConfigEntry;
 _ExceptedBaseObjects = [_serverSettingsConfig, "ExceptedBaseObjects", []] call EPOCH_fnc_returnConfigEntry;
+_UseDeSimulateObjects = [_serverSettingsConfig, "UseDeSimulateObjects", true] call EPOCH_fnc_returnConfigEntry;
+_DeSimulateObjects = [_serverSettingsConfig, "DeSimulateObjects", []] call EPOCH_fnc_returnConfigEntry;
+_ExceptedDeSymObjects = [_serverSettingsConfig, "ExceptedDeSymObjects", []] call EPOCH_fnc_returnConfigEntry;
 _cfgEpochClient = 'CfgEpochClient' call EPOCH_returnConfig;
 _cfgBaseBuilding = 'CfgBaseBuilding' call EPOCH_returnConfig;
 _buildingJammerRange = getNumber(_cfgEpochClient >> "buildingJammerRange");
@@ -30,6 +34,8 @@ _VAL = ["", [], "", "", 0, []];
 for "_i" from 0 to _this do {
 	_vehHiveKey = format ["%1:%2", (call EPOCH_fn_InstanceID),_i];
 	_response = ["Building", _vehHiveKey] call EPOCH_fnc_server_hiveGETTTL;
+	_Simulated = true;
+	_DamageAllowed = true;
 
 	if ((_response select 0) == 1 && (_response select 1) isEqualType [] && !((_response select 1) isEqualTo [])) then {
 		_arr = _response select 1;
@@ -81,20 +87,30 @@ for "_i" from 0 to _this do {
 
 			_baseObj = createVehicle [_class, [0,0,0], [], 0, "CAN_COLLIDE"];
 			if (_UseIndestructible) then {
-				if ({_baseObj iskindof _x} count _ExceptedBaseObjects == 0) then {
+				if ({_class iskindof _x} count _ExceptedBaseObjects == 0) then {
 					{
-						if (_baseObj iskindof _x) exitwith {
+						if (_class iskindof _x) exitwith {
 							_baseObj allowdamage false;
+							_DamageAllowed = false;
 						};
 					} foreach _IndestructibleBaseObjects;
+				};
+			};
+			if (_UseDeSimulateObjects) then {
+				if ({_class iskindof _x} count _ExceptedDeSymObjects == 0) then {
+					{
+						if (_class iskindof _x) exitwith {
+							_baseObj enablesimulationglobal false;
+							_Simulated = false;
+						};
+					} foreach _DeSimulateObjects;
 				};
 			};
 			_baseObj setposATL _location;
 			_baseObj setVectorDirAndUp _worldspace;
 
-			// new Dynamicsimulation
-			if(["CfgDynamicSimulation", "baseDynamicSimulationSystem", true] call EPOCH_fnc_returnConfigEntryV2)then
-			{
+			if (_Simulated && _baseDynamicSimulationSystem) then {		// Only needed, if simulation is not disabled
+				// new Dynamicsimulation
 				_baseObj enableSimulationGlobal false; // turn off sim on server start, let dynSim activate it to true
 				_baseObj enableDynamicSimulation true;
 				_baseObj triggerDynamicSimulation false; // this object doesnt need to turn anything on in the server
@@ -138,7 +154,9 @@ for "_i" from 0 to _this do {
 			};
 
 			_baseObj setDamage _damage;
-			_baseObj call EPOCH_server_buildingInit;
+			if (_DamageAllowed) then {		// Only needed, if damage is allowed
+				_baseObj call EPOCH_server_buildingInit;
+			};
 			_baseObj setVariable ["BUILD_SLOT", _i, true];
 
 			if (_owner != "-1") then {

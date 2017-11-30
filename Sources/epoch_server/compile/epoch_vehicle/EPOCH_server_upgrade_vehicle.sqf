@@ -99,7 +99,7 @@ _newHitpoints = getAllHitPointsDamage _newVeh;
 } foreach (_OldHitPoints select 0);
 
 // new Dynamicsimulation
-if(["CfgDynamicSimulation", "vehicleDynamicSimulationSystem", true] call EPOCH_fnc_returnConfigEntryV2)then
+if([configFile >> "CfgEpochServer", "vehicleDynamicSimulationSystem", true] call EPOCH_fnc_returnConfigEntry)then
 {
 	_newveh enableSimulationGlobal false; // turn it off until activated by dynamicSim
 	_newveh enableDynamicSimulation true;

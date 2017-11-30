@@ -91,7 +91,17 @@ diag_log "Epoch: Init Variables";
 call compile preprocessFileLineNumbers "\epoch_server\init\server_variables.sqf";
 call compile preprocessFileLineNumbers "\epoch_server\init\server_securityfunctions.sqf";
 
-
+// Enable Dynamic simulation
+_dynSimToggle = [_serverSettingsConfig, "enableDynamicSimulationSystem", true] call EPOCH_fnc_returnConfigEntry;
+enableDynamicSimulationSystem _dynSimToggle;
+if(_dynSimToggle)then
+{
+	"IsMoving" setDynamicSimulationDistanceCoef ([_serverSettingsConfig, "isMovingCoefValue", 2] call EPOCH_fnc_returnConfigEntry);
+	"Group" setDynamicSimulationDistance ([_serverSettingsConfig, "groupDynSimDistance", 500] call EPOCH_fnc_returnConfigEntry);
+	"Vehicle" setDynamicSimulationDistance ([_serverSettingsConfig, "vehicleDynSimDistance", 350] call EPOCH_fnc_returnConfigEntry);
+	"EmptyVehicle" setDynamicSimulationDistance ([_serverSettingsConfig, "emptyVehicleDynSimDistance", 250] call EPOCH_fnc_returnConfigEntry);
+	"Prop" setDynamicSimulationDistance ([_serverSettingsConfig, "propDynSimDistance", 500] call EPOCH_fnc_returnConfigEntry);
+};
 ["I", _instanceID, "86400", ["CONTINUE"]] call EPOCH_fnc_server_hiveSETEX;
 diag_log format["Epoch: Start Hive, Instance ID: '%1'", _instanceID];
 

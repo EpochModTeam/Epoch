@@ -35,12 +35,12 @@ if (_objSlot != -1) then {
 			_textureSlot = _object getVariable["TEXTURE_SLOT", 0];
 			_damage = damage _object;
 
-			//_worldspace = [getposATL _object,vectordir _object,vectorup _object];
-			//_newObj = createVehicle [_class, [0,0,0], [], 0, "CAN_COLLIDE"];
 			_newObj = [_class,_object] call EPOCH_swapBuilding;
 
 			_newObj setVariable ["BUILD_SLOT",_objSlot,true];
-			_newObj call EPOCH_server_buildingInit;
+			if (isDamageAllowed _newObj) then {		// Only needed, if damage is allowed
+				_newObj call EPOCH_server_buildingInit;
+			};
 
 			if (_textureSlot != 0) then {
 				// get texture path from index

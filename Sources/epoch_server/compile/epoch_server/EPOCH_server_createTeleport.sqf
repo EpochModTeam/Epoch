@@ -102,7 +102,7 @@ if !(_debugBox isEqualTo "") then {
 	if((_deSimulate) || (_disableSim isEqualTo "true"))then{
 		_ep enableSimulationGlobal false;
 	};
-	if(["CfgDynamicSimulation", "enableDynamicSimulationSystem", true] call EPOCH_fnc_returnConfigEntryV2)then{
+	if([configFile >> "CfgEpochServer", "enableDynamicSimulationSystem", true] call EPOCH_fnc_returnConfigEntry)then
 		_ep enableDynamicSimulation (_dynSim isEqualTo "true");
 	};
 	_ep allowDamage (_allowDmg isEqualTo "true");

@@ -10,13 +10,42 @@ if (!isNull _object && !(_class isEqualTo "")) then {
     if (!isNull _newObj) then {
         _object hideObjectGlobal true;
 
-		// new Dynamicsimulation
-		if(["CfgDynamicSimulation", "baseDynamicSimulationSystem", true] call EPOCH_fnc_returnConfigEntryV2)then
-		{
-			_newObj enableDynamicSimulation true;
-			_newObj triggerDynamicSimulation false; // this object doesnt need to turn anything on in the server
+		_serverSettingsConfig = configFile >> "CfgEpochServer";
+		_UseIndestructible = [_serverSettingsConfig, "UseIndestructible", false] call EPOCH_fnc_returnConfigEntry;
+		_IndestructibleBaseObjects = [_serverSettingsConfig, "IndestructibleBaseObjects", []] call EPOCH_fnc_returnConfigEntry;
+		_ExceptedBaseObjects = [_serverSettingsConfig, "ExceptedBaseObjects", []] call EPOCH_fnc_returnConfigEntry;
+		_UseDeSimulateObjects = [_serverSettingsConfig, "UseDeSimulateObjects", true] call EPOCH_fnc_returnConfigEntry;
+		_DeSimulateObjects = [_serverSettingsConfig, "DeSimulateObjects", []] call EPOCH_fnc_returnConfigEntry;
+		_ExceptedDeSymObjects = [_serverSettingsConfig, "ExceptedDeSymObjects", []] call EPOCH_fnc_returnConfigEntry;
+		_Simulated = true;
+		if (_UseIndestructible) then {
+			if ({_class iskindof _x} count _ExceptedBaseObjects == 0) then {
+				{
+					if (_class iskindof _x) exitwith {
+						_newObj allowdamage false;
+					};
+				} foreach _IndestructibleBaseObjects;
+			};
 		};
-
+		if (_UseDeSimulateObjects) then {
+			if ({_class iskindof _x} count _ExceptedDeSymObjects == 0) then {
+				{
+					if (_class iskindof _x) exitwith {
+						_newObj enablesimulationglobal false;
+						_Simulated = false;
+					};
+				} foreach _DeSimulateObjects;
+			};
+		};
+		if (_Simulated) then {		// Only needed, if simulation is not disabled
+			// new Dynamicsimulation
+			if([configFile >> "CfgEpochServer", "baseDynamicSimulationSystem", true] call EPOCH_fnc_returnConfigEntry)then
+			{
+				_newObj enableDynamicSimulation true;
+				_newObj triggerDynamicSimulation false; // this object doesnt need to turn anything on in the server
+			};
+		};
+	
         switch (_method) do {
             case 0: {
                 _newObj setposATL (getPosATL _object);

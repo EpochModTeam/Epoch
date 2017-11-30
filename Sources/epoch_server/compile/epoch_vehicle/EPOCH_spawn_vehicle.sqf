@@ -115,7 +115,7 @@ if !(isNull _vehObj) then{
 	};
 
 	// new Dynamicsimulation
-	if(["CfgDynamicSimulation", "vehicleDynamicSimulationSystem", true] call EPOCH_fnc_returnConfigEntryV2)then
+	if([configFile >> "CfgEpochServer", "vehicleDynamicSimulationSystem", true] call EPOCH_fnc_returnConfigEntry)then
 	{
 		_vehObj enableSimulationGlobal false; // turn it off until activated by dynamicSim
 		_vehObj enableDynamicSimulation true;

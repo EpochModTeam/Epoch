@@ -29,6 +29,7 @@ _jammerRange = getNumber(_config >> "buildingJammerRange");
 
 _serverSettingsConfig = configFile >> "CfgEpochServer";
 _immuneIfStartInBase = [_serverSettingsConfig, "immuneIfStartInBase", true] call EPOCH_fnc_returnConfigEntry;
+_vehicleDynamicSimulationSystem = [_serverSettingsConfig, "vehicleDynamicSimulationSystem", true] call EPOCH_fnc_returnConfigEntry;
 
 _removeweapons = [_serverSettingsConfig, "removevehweapons", []] call EPOCH_fnc_returnConfigEntry;
 _removemagazinesturret = [_serverSettingsConfig, "removevehmagazinesturret", []] call EPOCH_fnc_returnConfigEntry;
@@ -213,7 +214,7 @@ for "_i" from 1 to _maxVehicleLimit do {
 						};
 
 						// new Dynamicsimulation
-						if(["CfgDynamicSimulation", "vehicleDynamicSimulationSystem", true] call EPOCH_fnc_returnConfigEntryV2)then
+						if(_vehicleDynamicSimulationSystem)then
 						{
 							_vehicle enableSimulationGlobal false; // turn it off until activated by dynamicSim
 							_vehicle enableDynamicSimulation true;

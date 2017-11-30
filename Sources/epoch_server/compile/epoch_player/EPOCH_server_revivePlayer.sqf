@@ -102,7 +102,7 @@ if (!local _player) then {
 				_newPlyr = _group createUnit[_class, _location, [], 0, "CAN_COLLIDE"];
 
 				// new Dynamicsimulation
-				if(["CfgDynamicSimulation", "playerDynamicSimulationSystem", true] call EPOCH_fnc_returnConfigEntryV2)then
+				if([configFile >> "CfgEpochServer", "playerDynamicSimulationSystem", true] call EPOCH_fnc_returnConfigEntry)then
 				{
 					_newPlyr enableDynamicSimulation true;
 					_newPlyr triggerDynamicSimulation true;
