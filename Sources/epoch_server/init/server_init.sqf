@@ -100,7 +100,7 @@ if(_dynSimToggle)then
 	"Group" setDynamicSimulationDistance ([_serverSettingsConfig, "groupDynSimDistance", 500] call EPOCH_fnc_returnConfigEntry);
 	"Vehicle" setDynamicSimulationDistance ([_serverSettingsConfig, "vehicleDynSimDistance", 350] call EPOCH_fnc_returnConfigEntry);
 	"EmptyVehicle" setDynamicSimulationDistance ([_serverSettingsConfig, "emptyVehicleDynSimDistance", 250] call EPOCH_fnc_returnConfigEntry);
-	"Prop" setDynamicSimulationDistance ([_serverSettingsConfig, "propDynSimDistance", 500] call EPOCH_fnc_returnConfigEntry);
+	"Prop" setDynamicSimulationDistance ([_serverSettingsConfig, "propDynSimDistance", 50] call EPOCH_fnc_returnConfigEntry);
 };
 ["I", _instanceID, "86400", ["CONTINUE"]] call EPOCH_fnc_server_hiveSETEX;
 diag_log format["Epoch: Start Hive, Instance ID: '%1'", _instanceID];
