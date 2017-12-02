@@ -74,12 +74,14 @@ switch true do {
 					}forEach((getAllHitPointsDamage _cursorTarget) param[2,[]]);
 					if (_highestDMG > 0) then {
 						_newDMG = ((_highestDMG - 0.5) max 0);
+						["Partially healed / repaired",5] call epoch_message;
 						if (local _cursorTarget) then {
 							[_cursorTarget,[[_currentHIT,_newDMG]]] call EPOCH_client_repairVehicle;
 						} else {
 							[_cursorTarget,[[_currentHIT,_newDMG]],player,Epoch_personalToken] remoteExec ["EPOCH_server_repairVehicle",2];
 						};
 					} else {
+						["Full healed / repaired or too much damaged",5] call epoch_message;
 						if ((damage _cursorTarget) > 0) then {
 							[_cursorTarget,["ALL",0],player,Epoch_personalToken] remoteExec ["EPOCH_server_repairVehicle",2];
 						};
