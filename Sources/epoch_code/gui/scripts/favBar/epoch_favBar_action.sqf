@@ -37,7 +37,7 @@ if !(_throw isequalto "") then {
 }
 else {
 	_itemHasInteraction = str(missionConfigFile >> "CfgItemInteractions" >> _item) != "";
-	if (_itemHasInteraction) then {
+	if ((_itemHasInteraction) && (_item in magazines player)) then {
 		EPOCH_InteractedItem = ["",_item,""];
 		[] call EPOCH_consumeItem;
 		EPOCH_favBar_itemConsumed = true;
@@ -53,7 +53,11 @@ else {
 			_Fav_FastWeaponSwitching = ["CfgEpochClient", "Fav_FastWeaponSwitching", false] call EPOCH_fnc_returnConfigEntryV2;
 			if (_curSlot == _slot && !_Fav_FastWeaponSwitching && _errorCode in [1,2]) then {player playAction "reloadMagazine";};
 		};
-	
+		if(_errorCode in [0,3]) then{
+			if(!(true in EPOCH_modKeys) && (_kee isEqualTo 2))then{player selectWeapon (primaryWeapon player)};
+			if(!(true in EPOCH_modKeys) && (_kee isEqualTo 3))then{player selectWeapon (handgunWeapon player)};
+			if(!(true in EPOCH_modKeys) && (_kee isEqualTo 4))then{player selectWeapon (secondaryWeapon player)};
+		};
 		if (_errorCode isEqualTo 2) then {"Not enough space, item dropped on the ground!" call epoch_message;};
 		if (_errorCode isEqualTo 4 && _item != (currentWeapon player)) then {"Not enough space!" call epoch_message;};
 		if (_errorCode isEqualTo 3) then {"Item not found!" call epoch_message;};
