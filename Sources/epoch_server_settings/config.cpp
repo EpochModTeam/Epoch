@@ -375,4 +375,12 @@ class CfgEpoch
 	#include "configs\maps\Napf.h"
 	#include "configs\maps\tanoa.h"
     #include "configs\maps\Malden.h"
+    #include "configs\maps\abramia.h"
+    #include "configs\maps\dingor.h"
+    #include "configs\maps\IslaDuala3.h"
+    #include "configs\maps\Kapaulio.h"
+    #include "configs\maps\lingor3.h"
+    #include "configs\maps\Panthera3.h"
+    #include "configs\maps\Winthera3.h"
+    
 };
