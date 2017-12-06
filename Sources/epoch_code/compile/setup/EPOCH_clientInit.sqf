@@ -53,3 +53,15 @@ EPOCH_playerStaminaMax = 100;
 enableSentences false;
 enableRadio false;
 player setVariable["BIS_noCoreConversations", true];
+
+EPOCH_ArmaSlingLoad = true;
+_r3fON = if(!isNil "R3F_LOG_CFG_can_lift")then{if!(R3F_LOG_CFG_can_lift isEqualTo [])then{true}else{false}}else{false};
+_advSling = if(!isNil "ASL_ROPE_INIT")then{if(ASL_ROPE_INIT)then{true}else{false}}else{false};
+if (_r3fON || _advSling)then{
+	EPOCH_ArmaSlingLoad = false;
+};
+
+// handle actions, prevactions, nextactions
+inGameUISetEventHandler ["Action", "if(!(_this isEqualTo []) && !(_this select 10 in ['PrevAction','NextAction']))then{_this call EPOCH_handleUIActions}"];
+//inGameUISetEventHandler ["NextAction", "_this call EPOCH_handleUIActions"];
+//inGameUISetEventHandler ["PrevAction", "_this call EPOCH_handleUIActions"];

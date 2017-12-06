@@ -91,6 +91,7 @@ class CfgClientFunctions
 			};
 			class KeyUp {};
 			class onChar {};
+			class handleUIActions {};
 		};
 		class event_handlers
 		{
@@ -207,6 +208,7 @@ class CfgClientFunctions
 			class refeshUI {};
 			class equip {};
 			class itemTypeSlot {};
+			class usedItemRepack {};
 		};
 		class servicepoint
 		{

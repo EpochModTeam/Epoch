@@ -1824,6 +1824,10 @@ class CfgPricing
     {
         price = 50;
     };
+	class ItemFireExtinguisher
+	{
+		price = 50;
+	}
     class WoodLog_EPOCH
     {
         price = 2;

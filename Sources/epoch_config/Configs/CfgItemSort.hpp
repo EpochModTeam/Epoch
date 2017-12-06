@@ -1128,7 +1128,8 @@ class CfgItemSort
 			"SeedPacket_Hemp",
 			"SeedPacket_Poppy",
 			"SeedPacket_Pumpkin",
-			"SeedPacket_Sunflower"
+			"SeedPacket_Sunflower",
+			"ItemFireExtinguisher"
 		};
 		Vehicles_Land[] = {
 			"ebike_epoch",								// Motorrad

@@ -72,7 +72,7 @@ if (_ctrl && _dikCode == EPOCH_keysVolumeDown) then {
 };
 
 // ESC default to cancel
-if (_dikCode == 0x01) then {
+if (_dikCode in (actionKeys "ingamePause")) then {
 	if !(isNull EPOCH_Target) then {
 		if !(EPOCH_Target isKindOf "ThingX") then {
 			deleteVehicle EPOCH_Target;
@@ -261,6 +261,31 @@ if (_dikCode in (actionKeys "NightVision")) then {
 	if (_playerEnergy == 0) then {
 		["Night Vision Goggles: Need Energy", 5] call Epoch_message;
 		_handled = true;
+	};
+};
+
+if(!_ctrl && (_dikCode in (actionKeys "HeliRopeAction")))then{
+	_msg = "";
+	if(EPOCH_ArmaSlingLoad)then{
+		if(driver vehicle player isEqualTo player)then{
+			_slung = ropeAttachedObjects vehicle player;
+			if(_slung isEqualTo [])then{
+				if!('ItemRope' in magazines player) then {
+					_msg = "You need rope to hook";
+					_handled = true;
+				}else{
+					player removeItem 'ItemRope';
+				};
+			}else{
+				player addItem 'ItemRope';
+			};
+		};
+	}else{
+		_msg = "Hook/Unhook Malfunction, overrode by R3F or AdvSlingLoad";
+		_handled = true;
+	};
+	if!(_msg isEqualTo "")then{
+		[_msg,5,[[0,0,0,0.2],[1,1,1,1]]] call Epoch_message_stack;
 	};
 };
 
