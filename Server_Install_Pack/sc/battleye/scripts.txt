@@ -7,7 +7,7 @@
 5 enableFatigue
 5 setUnitRecoilCoefficient
 5 setWeaponReloadingTime !="_unit setWeaponReloadingTime [_unit,_weapon,1];" !="_unit setWeaponReloadingTime [_unit,_weapon,1];" !="player fire [_muzzle, _muzzle, _item];\nplayer setWeaponReloadingTime [player, _muzzle, 0];"
-5 allMissionObjects !="_alljammer = allmissionobjects 'PlotPole_EPOCH';"
+5 allMissionObjects !="_alljammer = allmissionobjects 'PlotPole_EPOCH';" !="allMissionObjects \"Timeline_F\""
 5 callExtension
 5 showCommandingMenu !="showCommandingMenu '';" !="showCommandingMenu '#USER:"
 5 enableCollisionWith

@@ -4,6 +4,10 @@ All changes for [Arma 3](https://arma3.com/) [Epoch Mod](https://epochmod.com) a
 ## [1.1.0.0] - Unreleased
 ### Added
 Plant Spawner: vehicle object for sunflower. @Helion4
+### Fixed
+False BE kicks since Arma 3 1.80 update.
+### Changed
+RCon Port is now set to 2307 by default since changes in A3 1.78 prevent use of 2306.
 
 ## [1.0.0.1077] - 2017-11-05
 ### Added
