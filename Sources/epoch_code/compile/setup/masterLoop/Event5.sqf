@@ -70,8 +70,8 @@ _currentArmorPercent = 100 - (_currentArmor / _maxArmor * 100);
 _radsLevel = _currentArmorPercent / 100 * _radsLevel;
 
 //Reduce radiation by 100% TODO: move this to top, no point in doing all this calc if hazmat is on.
-if (uniform player == "hazmat_placeholder") then {
-	_radsLevel = 0;
+if (uniform player in ["Epoch_RadiationSuit_F","Epoch_RadiationSuit_M"]) then {
+    _radsLevel = 0;
 };
 
 // Radiation Handler
