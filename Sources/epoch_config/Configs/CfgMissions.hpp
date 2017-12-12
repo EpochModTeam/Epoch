@@ -15,7 +15,7 @@
 
 class EpochMissionList{
 //	traderMissionClasses[] = {"missionMonster","missionDelivery","missionEscort","missionUav","missionSapper","missionSkull","missionMilitary","gameCaptureTheJammer","gameCarRace","infoTime","infoName","infoNews","infoVehicles","infoPeople","helpAirDrop","debugResetMission"}; //Exclude from here to remove from menu and trigger
-	traderMissionClasses[] = {"missionfishing","missionMonster","missionDelivery","missionUav","infoTime","infoName","infoNews","infoVehicles","infoPeople","debugResetMission"}; //Exclude from here to remove from menu and trigger
+	traderMissionClasses[] = {"missionfishing","missionDelivery","missionUav","infoTime","infoName","infoNews","infoVehicles","infoPeople","debugResetMission"}; //Exclude from here to remove from menu and trigger
 	traderMissionActiveNames[] = {}; //Not currently used (WIP)
 	traderMissionLongDesc[] = {}; //Not currently used (WIP)
 	traderMissionActiveLongDesc[] = {}; //Not currently used (WIP)
