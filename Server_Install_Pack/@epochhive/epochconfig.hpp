@@ -56,7 +56,6 @@ forceRestartTime      = 14400; 			// 4 hour restarts
 // vehicles - Max vehicle slots is calculated from per vehicle limits below. Warning! Higher the number lower the performance.
 	disableAutoRefuel = "true"; 		// Removes auto refuel from all buildings at server startup.
 	simulationHandlerOld = "false"; 	// When enabled this feature disables simulation on vehicles that are not nea players. Can help improve client fps at the cost of server fps.
-	vehicleLockTime = 1800; 			// Controls how many seconds it takes to allow another person/group to unlock vehicle.
 	VehLockMessages = "true";			// Give players a hint, that the Vehicle is locked / unlocked
 	removevehweapons[] = {				// remove these Weapons from spawned Vehicles
 		"missiles_DAR","gatling_30mm","gatling_20mm","missiles_DAGR","cannon_30mm_Plane_CAS_02_F","Missile_AA_03_Plane_CAS_02_F","Missile_AGM_01_Plane_CAS_02_F","Rocket_03_HE_Plane_CAS_02_F",
@@ -136,6 +135,7 @@ forceRestartTime      = 14400; 			// 4 hour restarts
 	DEBUG_VEH = "false"; 				// DEBUG ONLY used to debug spawing of vehicles
 
 // Hive Related
+	vehicleLockTime = "1800"; 			// Controls how many seconds it takes to allow another person/group to unlock vehicle.
 	expiresBuilding = "604800";  		// expiration date in seconds for buildings
 	expiresPlayer = "2592000";  		// expiration date in seconds for players
 	expiresBank = "7776000";  			// expiration date in seconds for players bank
