@@ -13,7 +13,7 @@ timeout 2
 
 :: RESTARTING THE ARMA 3 SERVER BE SURE TO EDIT THIS TO YOUR SERVER .EXE LOCATION -NOTE ALSO THIS IS WHERE YOU DEFINE WHERE YOU CONFIG.CFG IS
 echo Starting ARMA 3 Server...
-C:\Windows\System32\cmd.exe /C start "arma3"  "C:\EpochServer\Epochserver_x64.exe"  "[email protected];" "[email protected];" -config=C:\EpochServer\sc\server.cfg -port=2302 -profiles=sc -cfg=C:\EpochServer\sc\basic.cfg -name=sc -BEPath=C:\EpochServer\battleye -autoINIT -Loadmissiontomemory
+C:\Windows\System32\cmd.exe /C start "arma3"  "C:\EpochServer\Epochserver_x64.exe"  "-mod=@Epoch;" "-serverMod=@EpochHive;" -config=C:\EpochServer\sc\server.cfg -port=2302 -profiles=sc -cfg=C:\EpochServer\sc\basic.cfg -name=sc -autoINIT -Loadmissiontomemory
 echo ARMA 3 Server has started
 timeout 60
 
