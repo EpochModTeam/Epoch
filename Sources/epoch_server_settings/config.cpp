@@ -64,13 +64,16 @@ class CfgEpoch
 		// Radiation System
 		radioactiveLocations[] = {"NameCityCapital", "NameCity", "Airport"};
 		radioactiveLocationsCount = 3;
-		// Block radioactive locations spawn
+		
+		// BlackList radioactive locations spawn by object and distance
 		radioactiveLocBLObjects[] = {"PlotPole_EPOCH"};
 		radioactiveLocBLDistance = 500;
-		customRadioactiveLocations[] = { // position , intensity , object to spawn radiated
+		
+		// Custom Locations for Radiation
+		customRadioactiveLocations[] = {
+			// {{position , intensity , object},
 			// {{11650,11900,0}, 500, "Land_Device_assembled_F"},
 			// {{0,0,0}, 0, ""} //any of these will throw an error in the rpt
-			// leave this empty to spawn 0 custom locations
 		};
 		
 		// Traders
@@ -151,7 +154,7 @@ class CfgEpoch
 		satelliteCompromisedColor = "ColorRed";
 		availableSatellites[] = {"Land_Wreck_Satellite_EPOCH"};
 		
-	propsPos[] = {
+		propsPos[] = {
 			// Will accept several variations of this entry to place objects on the map
 			// _className - STRING - Class name of the object to spawn
 			// _position - ARRAY - posATL of the object placement
@@ -168,8 +171,6 @@ class CfgEpoch
 			// 3 {"Land_MarketShelter_F", { 13315.3, 14512.4, 0.0361125 }, {{0,0,0},{0,0,1}}, true, true, false, 0},
 		};
 		staticNpcPos[] = {};
-        forcedVehicleSpawnTable = "";
-        forcedLootSpawnTable = "";
 		allowedVehiclesList[] = {
 		    {"C_Offroad_01_EPOCH",8},
 		    {"C_Quadbike_01_EPOCH",8},
