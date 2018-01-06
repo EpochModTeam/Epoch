@@ -15,6 +15,7 @@
 */
 
 params ["_unit","_position","_vehicle"];
+call EPOCH_niteLight;
 if (_unit == player) then {
 	_this spawn {
 		private ["_animationstate","_StartTime","_eyepos","_dirTo","_end","_start"];

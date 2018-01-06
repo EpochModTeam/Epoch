@@ -13,6 +13,7 @@
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_code/compile/EPOCH_getInMan_EH.sqf
 */
 params ["_unit","_position","_vehicle"];
+call EPOCH_niteLight;
 if (_unit == player) then {
 	// Disable build mode
 	if (EPOCH_buildMode > 0) then {
