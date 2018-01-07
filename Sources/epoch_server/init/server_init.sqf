@@ -184,8 +184,8 @@ if !(EPOCH_forcedVehicleSpawnTable isEqualTo "") then {
 _allowedVehiclesList = getArray(_epochConfig >> worldName >> _allowedVehicleListName);
 _vehicleSlotLimit = 0;
 {_vehicleSlotLimit = _vehicleSlotLimit + (_x select 1)} forEach _allowedVehiclesList;
-_ReservedSlots = 50;
-_vehicleSlotLimit = _vehicleSlotLimit + _ReservedSlots;
+_ReservedVehSlots = [_serverSettingsConfig, "ReservedVehSlots", 50] call EPOCH_fnc_returnConfigEntry;
+_vehicleSlotLimit = _vehicleSlotLimit + _ReservedVehSlots;
 if (EPOCH_useOldLoadVehicles) then {
     _vehicleSlotLimit call EPOCH_load_vehicles_old;
 } else {

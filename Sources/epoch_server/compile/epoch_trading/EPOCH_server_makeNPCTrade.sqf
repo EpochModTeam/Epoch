@@ -19,6 +19,7 @@ params ["_trader","_itemsIn","_itemsOut","_player",["_token","",[""]] ];
 
 _playerUID = getplayeruid _player;
 
+_serverSettingsConfig = configFile >> "CfgEpochServer";
 _vehicleSold = false;
 _vehicleBought = false;
 
@@ -103,20 +104,18 @@ if (_slot != -1) then {
 			if (_makeTradeIn) then {
 
 				_returnIn pushBack _item;
-
-				_qtyIndex = _itemClasses find _item;
-				if (_qtyIndex == -1) then {
-					_itemClasses pushBack  _item;
-					_itemQtys pushBack _itemQty;
-					_tradeIn = _tradeIn + _itemWorth;
-					_current_crypto = _current_crypto + _itemWorth;
-					_tradeQtyTotal = _tradeQtyTotal + _itemQty;
-				} else {
-					_currQty = _itemQtys select _qtyIndex;
-					_itemQtys set[_qtyIndex, (_currQty + _itemQty)];
-					_tradeIn = _tradeIn + _itemWorth;
-					_current_crypto = _current_crypto + _itemWorth;
-					_tradeQtyTotal = _tradeQtyTotal + _itemQty;
+				_tradeIn = _tradeIn + _itemWorth;
+				_current_crypto = _current_crypto + _itemWorth;
+				_tradeQtyTotal = _tradeQtyTotal + _itemQty;
+				if !(_item in ([_serverSettingsConfig, "TraderItemsDeleteInstant", []] call EPOCH_fnc_returnConfigEntry)) then {
+					_qtyIndex = _itemClasses find _item;
+					if (_qtyIndex == -1) then {
+						_itemClasses pushBack  _item;
+						_itemQtys pushBack _itemQty;
+					} else {
+						_currQty = _itemQtys select _qtyIndex;
+						_itemQtys set[_qtyIndex, (_currQty + _itemQty)];
+					};
 				};
 				// send karma stat to seller
 				_kIndex = EPOCH_communityStats find "Karma";
@@ -133,7 +132,6 @@ if (_slot != -1) then {
 		if ((_response select 0) == 1 && (_response select 1) isEqualType []) then {
 			_bankData = _response select 1;
 			if !(_bankData isEqualTo[]) then {
-				_serverSettingsConfig = configFile >> "CfgEpochServer";
 				_MaxBankDebit = [_serverSettingsConfig, "MaxBankDebitforTrade", -999999] call EPOCH_fnc_returnConfigEntry;
 				_bankBalance = _bankData select 0;
 				if (_bankBalance < _MaxBankDebit) then {

@@ -54,6 +54,7 @@ forceRestartTime      = 14400; 			// 4 hour restarts
 	};
 
 // vehicles - Max vehicle slots is calculated from per vehicle limits below. Warning! Higher the number lower the performance.
+	ReservedVehSlots = 50;				// Reserved Vehicle Slots (only needed, if you store non-Epoch Vehicles in the Database)
 	disableAutoRefuel = "true"; 		// Removes auto refuel from all buildings at server startup.
 	simulationHandlerOld = "false"; 	// When enabled this feature disables simulation on vehicles that are not nea players. Can help improve client fps at the cost of server fps.
 	VehLockMessages = "true";			// Give players a hint, that the Vehicle is locked / unlocked
@@ -121,7 +122,24 @@ forceRestartTime      = 14400; 			// 4 hour restarts
 	};
 	NPCSlotsLimit = 30; 				// Max number of traders static or dynamic. Warning! Higher the number lower performance.
 	forceStaticTraders = "true"; 		// disables traders moving from work to home
+	TraderGodMode = "false";			// If true, Trader can not be killed by Players
+	storedVehicleLimit = 15;			// Vehicles more than x stored in ALL Traders will automatically be deleted on Restart. 
+	StaticTraderItemPurge[] = {100,15};	// {ItemCount,ReducePercent} - If a static trader have more than x different items, on restart the items will be reduced by y percent
+	DynamicTraderRespawnCount = 100		// If a dynamic Trader have more than x different Items, he will respawn on another Spot (with start Items)
+	TraderItemCountPerItem[] = {50,5};	// If the Trader has more than x pieces of an Item, it will be reduced to y pieces (on Restart)
+	TraderItemsDeleteInstant[] = {		// List of Items, that will be deleted from Trader instant after sell
+		// "ItemVehDoc1",
+		// "ItemVehDoc2",
+		// "ItemVehDoc3",
+		// "ItemVehDoc4"
+	};
+	TraderItemsDeleteRestart[] = {		// List of Items, that will be deleted from Trader on Restart
+		// "ItemLockbox",
+		// "ItemSafe",
+		// "ItemGoldBar10oz"
+	};
 
+// Spawntables
 	forcedVehicleSpawnTable = ""; 		// leave blank for default. Options: "allowedVehiclesList","allowedVehiclesList_CUP","allowedVehiclesList_MAD","allowedVehiclesList_MADCUP"
 	forcedLootSpawnTable = ""; 			// leave blank for default. Options: "CfgLootTable","CfgLootTable_CUP","CfgLootTable_MAD","CfgLootTable_MADCUP"
 
