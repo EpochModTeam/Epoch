@@ -116,6 +116,7 @@ if (!local _player) then {
 				_newPlyr setVariable ["PUID", _playerUID];
 				_newPlyr setVariable ["GROUP", _playerGroup];
 				_newPlyr setVariable ["REVIVE", false];
+				_newPlyr setVariable ["SERVER_VARS",_player getVariable ["SERVER_VARS",[]]];
 
 				// _player playActionNow "Die";
 
