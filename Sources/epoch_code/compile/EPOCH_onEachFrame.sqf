@@ -141,7 +141,7 @@ if (EPOCH_drawIcon3d) then {
 	_distance = player distance _x;
 	if (_distance < 9) then {
 		_pos = _x;
-		_color = [1, 1, 1, 0.7];
+		_color = [1, 1, 0, 0.7];
 		_size = 1;
 		drawIcon3D["x\addons\a3_epoch_code\Data\UI\snap_ca.paa", _color, _pos, _size, _size, 0, "", 1, _size / 60, "PuristaMedium"];
 	};
