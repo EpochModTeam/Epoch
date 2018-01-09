@@ -69,7 +69,7 @@ class CatchFish {
 	};
 	callevents[]			= {	// {{ARRAY1},{ARRAY2},... }
 	};
-	abandonTime 			= 600;
+	abandonTime 			= 1200;
 	failedCondition 		= "!alive player";
 	faileddialogues[] 		= {"I guess you have better things to do. - Mission Failed","Mission Failed - You took to long."};
 	completeCondition		= "{_x in magazines player} count ([""CfgEpochClient"", ""fishLoots"", [""ItemTuna"",""ItemSeaBass"",""ItemSeaBass"",""ItemSeaBass"",""ItemTrout"",""ItemTrout"",""ItemTrout"",""ItemTrout"",""ItemTrout"",""ItemTrout""]] call EPOCH_fnc_returnConfigEntryV2) > 0";
