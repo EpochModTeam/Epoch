@@ -48,7 +48,9 @@ if !(_object in EPOCH_cleanupQueue) then {
 
 		[_object, _type] call EPOCH_serverLootObject;
 		// force player to open gear on this object.
-		[_object, {player action["Gear", _this]}] remoteExec ["call", _player];
+		if !(_type isequalto "Cargo_Container") then {
+			[_object, {player action["Gear", _this]}] remoteExec ["call", _player];
+		};
 	} else {
 		[_object, "Food"] call EPOCH_serverLootObject;
 		// force player to open gear on this object.

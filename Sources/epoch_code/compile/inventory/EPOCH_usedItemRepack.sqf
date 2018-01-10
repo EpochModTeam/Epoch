@@ -53,13 +53,14 @@ if(count _itemMags > 1)then{
 // adjust the item
 if!(_chg isEqualTo 0)then{
 	_index = ((count _itemMags) - 1);
-	_usedItemArray = _itemMags select _index;
+	_usedItemArray = _itemMags deleteat _index;
 	_usedItemArray params ["_mag","_count"];
 	_itemMags pushBack [_mag, (_count + _chg)];
-	_itemMags = _itemMags - [_usedItemArray];
 	_player removeMagazines _mag;
 	{
-		_player addMagazine _x;
-		[format["You have used your %1", _displayName],5,[[0,0,0,0.2],[1,1,1,1]]] call Epoch_message_stack;
+		if ((_x select 1) > 0) then {
+			_player addMagazine _x;
+		};
 	}forEach _itemMags;
+	[format["You have used your %1", _displayName],5,[[0,0,0,0.2],[1,1,1,1]]] call Epoch_message_stack;
 };

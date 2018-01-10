@@ -14,7 +14,7 @@
 */
 class Altis : Default
 {
-	worldSize = 20000;
+	worldSize = 25000;
 	plantLimit = 10;
 	// vehicles - Max vehicle slots is calculated from per vehicle limits below. Warning! Higher the number lower the performance.
 	vehicleSpawnTypes[] = {

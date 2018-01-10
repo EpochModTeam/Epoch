@@ -84,7 +84,7 @@ for "_i" from 1 to _maxVehicleLimit do {
 					};
 
 					// spawn vehicle at temp location.
-					_vehicle = createVehicle [_class, _location, [], 0, "CAN_COLLIDE"];
+					_vehicle = createVehicle [_class, [random 500, random 500,500], [], 0, "CAN_COLLIDE"];
 					// turn off BIS randomization
 					_vehicle setVariable ["BIS_enableRandomization", false];
 					if !(isNull _vehicle) then {
