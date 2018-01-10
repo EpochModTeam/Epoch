@@ -58,7 +58,7 @@ if!(_chg isEqualTo 0)then{
 	_itemMags pushBack [_mag, (_count + _chg)];
 	_player removeMagazines _mag;
 	{
-		if ((_x select 1) > 0) then {
+		if ((_x select 1) > 0) then {		// Do not add back an empty mag, as it can not be handled by any scripts and is useless
 			_player addMagazine _x;
 		};
 	}forEach _itemMags;

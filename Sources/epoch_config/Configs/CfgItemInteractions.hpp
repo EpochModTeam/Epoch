@@ -229,6 +229,13 @@ class CfgItemInteractions
         interactReturnOnUse = "jerrycan_epoch";
         interactAttributes[] = {10};
     };
+    class lighter_epoch : Default
+    {
+        interactAction = 5;
+        interactText = "Fill";
+        interactReturnOnUse = "lighter_epoch";
+        interactAttributes[] = {2};
+    };
     class FAK : Default
     {
         interactAction = 13;
@@ -793,7 +800,6 @@ class CfgItemInteractions
     class hatchet_swing : Default {};
     class WoodLog_EPOCH : Default {};
     class ItemCoolerE : Default {};
-    class lighter_epoch : Default {};
     class Item_AssaultPack_cbr : Item_Packed_base
     {
         interactReturnOnUse = "B_AssaultPack_cbr";

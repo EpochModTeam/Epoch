@@ -188,7 +188,7 @@ switch _interactOption do {
 	};
 	case 5: {
 		if !(player == vehicle player) exitwith {
-			["Siphon from outside!", 5] call Epoch_message;
+			["Fill from outside!", 5] call Epoch_message;
 		};
 		_vehicles = player nearEntities [["LandVehicle","Ship","Air","Tank"], 30];
 		_canCapacity = _interactAttributes param [0,10];
@@ -198,15 +198,15 @@ switch _interactOption do {
 			_newFuel = (((fuel _vehicle) * _fuelCapacity) - _canCapacity) / _fuelCapacity;
 			if (_newFuel > 0) then {
 				if (_item call _removeItem) then {
-					[_interactReturnOnUse,_vehicle,_newFuel] spawn {
-						params ["_interactReturnOnUse","_vehicle","_newFuel"];
+					[_interactReturnOnUse,_vehicle,_newFuel,_item] spawn {
+						params ["_interactReturnOnUse","_vehicle","_newFuel","_item"];
 						closeDialog 0;
 						player playMove 'AinvPknlMstpSnonWrflDnon_medic0';
 						player playMove 'AinvPknlMstpSnonWrflDnon_medicEnd';
 						uisleep 5;
 						_interactReturnOnUse call EPOCH_fnc_addItemOverflow;
 						[_vehicle,_newFuel,player,Epoch_personalToken] remoteExec ["EPOCH_server_fillVehicle",2];
-						["Fuel Siphoned", 5] call Epoch_message;
+						[format["%1 Filled",_item call EPOCH_itemDisplayName], 5] call Epoch_message;
 					};
 				};
 			} else {
@@ -222,14 +222,14 @@ switch _interactOption do {
 
 			if (_transportFuel > _canCapacity) then {
 				if (_item call _removeItem) then {
-					[_interactReturnOnUse] spawn {
-						params ["_interactReturnOnUse"];
+					[_interactReturnOnUse,_item] spawn {
+						params ["_interactReturnOnUse","_item"];
 						closeDialog 0;
 						player playMove 'AinvPknlMstpSnonWrflDnon_medic0';
 						player playMove 'AinvPknlMstpSnonWrflDnon_medicEnd';
 						uisleep 5;
 						_interactReturnOnUse call EPOCH_fnc_addItemOverflow;
-						["Fuel Siphoned", 5] call Epoch_message;
+						[format["%1 Filled",_item call EPOCH_itemDisplayName], 5] call Epoch_message;
 					};
 				};
 			} else {
