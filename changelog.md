@@ -30,7 +30,6 @@ All changes for [Arma 3](https://arma3.com/) [Epoch Mod](https://epochmod.com) a
 - RCon Port is now set to 2307 by default since changes in A3 1.78 prevent use of 2306.
 - SnapPoints for Building objects (especially half / quarter Floors) @He-Man
 - Some performance tweaks
-- Moved default rcon Port to 2307 (as 2306 is now used as default client BE-Port)
 - Inventory will be opened automatically, if "you found something"
 - EPOCH Events reworked (Markers will change if players near / event looted) @DirtySanchez
 
