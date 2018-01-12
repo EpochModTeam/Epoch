@@ -3,11 +3,36 @@ All changes for [Arma 3](https://arma3.com/) [Epoch Mod](https://epochmod.com) a
 
 ## [1.1.0.0] - Unreleased
 ### Added
-Plant Spawner: vehicle object for sunflower. @Helion4
+- Plant Spawner: vehicle object for sunflower. @Helion4
+- Examples for Vehicle upgrades for Server Admins into CfgVehicleUpgrades.hpp @He-Man
+- Make Lighter refillable at Fuel-Sources (Gasstations / Vehicles)
+- Make Trader more configurable in epochconfig.hpp @He-Man
+- Added Examples for Batchfiles to control Server Restarts @DirtySanchez
+- default pops for "center" marker
+- More map supports
+- Lighter is needed to imflame fires @DirtySanchez
+- FireExtinguisher is needed to "put our fire" on Burn Barrel @DirtySanchez
+- Rope is needed for SlingLoad (get back on release) @DirtySanchez
+- R3F compatibility for SlingLoad @DirtySanchez
+- Hints while using Vehicle Repair (MultiGun) @He-Man
+- Config to completely disabale Simulation for BaseParts (if not needed) @He-Man
+- Made Radiation configureable by cfgepochclient.hpp @Raymix
+- Hints for lock / unlock Vehicles / Storages
 ### Fixed
-False BE kicks since Arma 3 1.80 update.
+- False BE kicks since Arma 3 1.80 update.
+- Nightlight now also follow players inside Vehicles @He-Man
+- Fixed fault disabled DynamicDebris @morgoth
+- Without Advanced Vehicle Repair, Vehicle upgrade was not available @He-Man
+- Base Storages could be deleted if near Loot containers were auto-deleted @He-Man
+- Some Tarp Loot was spawned under the Floor @He-Man
+- Reworked wall check by getting out of Vehicles @He-Man
 ### Changed
-RCon Port is now set to 2307 by default since changes in A3 1.78 prevent use of 2306.
+- RCon Port is now set to 2307 by default since changes in A3 1.78 prevent use of 2306.
+- SnapPoints for Building objects (especially half / quarter Floors) @He-Man
+- Some performance tweaks
+- Moved default rcon Port to 2307 (as 2306 is now used as default client BE-Port)
+- Inventory will be opened automatically, if "you found something"
+- EPOCH Events reworked (Markers will change if players near / event looted) @DirtySanchez
 
 ## [1.0.0.1077] - 2017-11-05
 ### Added
