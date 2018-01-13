@@ -79,7 +79,6 @@ class CfgClientFunctions
 			class startNPCTraderMenu {};
 			class NPCTraderMenuFilter {};
 			class startNpcTrade {};
-			class tradeFilter {};
 			class takeCrypto {};
 			class startBankTransfer {};
 			class calcDamageCost {};

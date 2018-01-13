@@ -1,7 +1,7 @@
 /*
 	Author: Aaron Clark - EpochMod.com
 
-    Contributors:
+    Contributors: He-Man - Ignatz-Gaming
 
 	Description:
     NPC trade mech
@@ -12,9 +12,13 @@
     Github:
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server/compile/epoch_trading/EPOCH_server_makeNPCTrade.sqf
 */
-//[[[cog import generate_private_arrays ]]]
-private ["_MaxBankDebit","_SkipOut","_VAL","_aiItems","_bankBalance","_bankData","_cIndex","_config","_currQty","_current_crypto","_current_cryptoRaw","_errorMsg","_final_location","_foundSmoke","_group","_helipad","_helipads","_item","_itemClasses","_itemQty","_itemQtys","_itemTax","_itemWorth","_itemsIn","_itemsOut","_lockOwner","_makeTradeIn","_message","_nearByHolder","_objHiveKey","_objOwner","_playerCryptoLimit","_playerGroup","_playerNetID","_playerUID","_position","_qtyIndex","_response","_return","_returnIn","_returnOut","_road","_serverSettingsConfig","_slot","_smoke","_tax","_tmpposition","_tradeIn","_tradeOut","_tradeQtyTotal","_tradeTotal","_vars","_vehHiveKey","_vehObj","_vehSlot","_vehicle","_vehicleBought","_vehicleSold","_vehicles","_vehslot","_wH","_wHPos","_wp","_kIndex","_playerCStats","_playerKarma","_playerKarmaAdj"];
-//[[[end]]]
+
+private [	"_MaxBankDebit","_SkipOut","_VAL","_aiItems","_bankBalance","_bankData","_cIndex","_config","_currQty","_current_crypto","_current_cryptoRaw","_errorMsg","_final_location","_foundSmoke",
+			"_group","_helipad","_helipads","_item","_itemClasses","_itemQty","_itemQtys","_itemTax","_itemWorth","_itemsIn","_itemsOut","_lockOwner","_makeTradeIn","_message","_nearByHolder",
+			"_objHiveKey","_objOwner","_playerCryptoLimit","_playerGroup","_playerNetID","_playerUID","_position","_qtyIndex","_response","_return","_returnIn","_returnOut","_road",
+			"_serverSettingsConfig","_slot","_smoke","_tax","_tmpposition","_tradeIn","_tradeOut","_tradeQtyTotal","_tradeTotal","_vars","_vehHiveKey","_vehObj","_vehSlot","_vehicle","_vehicleBought",
+			"_vehicleSold","_vehicles","_vehslot","_wH","_wHPos","_wp","_kIndex","_playerCStats","_playerKarma","_playerKarmaAdj"
+];
 params ["_trader","_itemsIn","_itemsOut","_player",["_token","",[""]] ];
 
 _playerUID = getplayeruid _player;
@@ -54,56 +58,48 @@ if (_slot != -1) then {
 	_itemClasses = _aiItems select 0;
 	_itemQtys = _aiItems select 1;
 	{
-		_item = _x;
-		_itemQty = 1;
-
-		if (isClass (_config >> _item)) then{
+		_x params ["_item","_itemQty"];
+		if (isClass (_config >> _item)) then {
 			_itemWorth = getNumber(_config >> _item >> "price");
-
+			_maxrnd = 1;
+			if ([_item,"cfgMagazines"] call Epoch_fnc_isAny) then {
+				_maxrnd = getnumber (configfile >> "cfgMagazines" >> _item >> "count");
+			};
+			_itemWorth = round (_itemWorth*(_itemQty/_maxrnd));
 			_makeTradeIn = false;
-
 			if (_item isKindOf "Air" || _item isKindOf "Ship" || _item isKindOf "LandVehicle" || _item isKindOf "Tank") then{
-
 				_vehicles = _trader nearEntities[[_item], 30];
 				if !(_vehicles isEqualTo[]) then {
-
 					_vehicle = _vehicles select 0;
 					if (!isNull _vehicle) then {
-
 						_playerNetID = owner _player;
 						if (_playerNetID == (owner _vehicle)) then {
-
 							_vehSlot = _vehicle getVariable["VEHICLE_SLOT", "ABORT"];
                             if (!_vehicleSold && _vehSlot != "ABORT") then {
                                 _BaseClass = _vehicle getvariable ["VEHICLE_BaseClass",""];
                                 if !(_BaseClass isequalto "") then {
                                     _item = _BaseClass;
-									_itemsIn set [_foreachindex,_item];
+									_itemsIn set [_foreachindex,[_item,_itemQty]];
                                 };
-                                removeFromRemainsCollector[_vehicle];
+                                removeFromRemainsCollector [_vehicle];
 								deleteVehicle _vehicle;
 								_vehicleSold = true;
-
 								_vehHiveKey = format["%1:%2", (call EPOCH_fn_InstanceID), _vehSlot];
 								_VAL = [];
 								["Vehicle", _vehHiveKey, _VAL] call EPOCH_fnc_server_hiveSET;
-
 								EPOCH_VehicleSlots pushBack _vehSlot;
-
 								missionNamespace setVariable ['EPOCH_VehicleSlotCount', count EPOCH_VehicleSlots, true];
-
 								_makeTradeIn = true;
 							};
 						};
 					};
 				};
-			} else {
+			}
+			else {
 				_makeTradeIn = true;
 			};
-
 			if (_makeTradeIn) then {
-
-				_returnIn pushBack _item;
+				_returnIn pushBack [_item,_itemQty];
 				_tradeIn = _tradeIn + _itemWorth;
 				_current_crypto = _current_crypto + _itemWorth;
 				_tradeQtyTotal = _tradeQtyTotal + _itemQty;
@@ -114,7 +110,7 @@ if (_slot != -1) then {
 						_itemQtys pushBack _itemQty;
 					} else {
 						_currQty = _itemQtys select _qtyIndex;
-						_itemQtys set[_qtyIndex, (_currQty + _itemQty)];
+						_itemQtys set [_qtyIndex, (_currQty + _itemQty)];
 					};
 				};
 				// send karma stat to seller
@@ -127,80 +123,73 @@ if (_slot != -1) then {
 			};
 		};
 	} forEach _itemsIn;
-
-		_response = ["Bank", _playerUID] call EPOCH_fnc_server_hiveGETRANGE;
-		if ((_response select 0) == 1 && (_response select 1) isEqualType []) then {
-			_bankData = _response select 1;
-			if !(_bankData isEqualTo[]) then {
-				_MaxBankDebit = [_serverSettingsConfig, "MaxBankDebitforTrade", -999999] call EPOCH_fnc_returnConfigEntry;
-				_bankBalance = _bankData select 0;
-				if (_bankBalance < _MaxBankDebit) then {
-					if (_tradeIn > 0) then {
-						_bankBalance = _bankBalance + _tradeIn;
-						_return = ["Bank", _playerUID, EPOCH_expiresBank, [_bankBalance]] call EPOCH_fnc_server_hiveSETEX;
-						_message = _message + "Items sold, but the Money goes to your Bank - to much Bank-Debit";
-					}
-					else {
-						_message = _message + "Purchase not possible - to much Bank-Debit";
-					};
-					_current_crypto = _current_cryptoRaw;
-					_tradeIn = 0;
-					_itemsIn = [];
-					_itemsOut = [];
-					_SkipOut = true;
+	_response = ["Bank", _playerUID] call EPOCH_fnc_server_hiveGETRANGE;
+	if ((_response select 0) == 1 && (_response select 1) isEqualType []) then {
+		_bankData = _response select 1;
+		if !(_bankData isEqualTo[]) then {
+			_MaxBankDebit = [_serverSettingsConfig, "MaxBankDebitforTrade", -999999] call EPOCH_fnc_returnConfigEntry;
+			_bankBalance = _bankData select 0;
+			if (_bankBalance < _MaxBankDebit) then {
+				if (_tradeIn > 0) then {
+					_bankBalance = _bankBalance + _tradeIn;
+					_return = ["Bank", _playerUID, EPOCH_expiresBank, [_bankBalance]] call EPOCH_fnc_server_hiveSETEX;
+					_message = _message + "Items sold, but the Money goes to your Bank - to much Bank-Debit";
+				}
+				else {
+					_message = _message + "Purchase not possible - to much Bank-Debit";
 				};
+				_current_crypto = _current_cryptoRaw;
+				_tradeIn = 0;
+				_itemsIn = [];
+				_itemsOut = [];
+				_SkipOut = true;
 			};
 		};
+	};
 
 	if (!_SkipOut) then {
 		{
-			_item = _x;
-			_itemQty = 1;
+			_x params ["_item","_itemQty"];
 			if (isClass (_config >> _item)) then{
 				_itemWorth = getNumber(_config >> _item >> "price");
 				_itemTax = getNumber(_config >> _item >> "tax");
 				_tax = _itemWorth * (EPOCH_taxRate + _itemTax);
-				_itemWorth = ceil(_itemWorth + _tax);
+				_itemWorth = ceil (_itemWorth + _tax);
+				_maxrnd = 1;
+				if ([_item,"cfgMagazines"] call Epoch_fnc_isAny) then {
+					_maxrnd = getnumber (configfile >> "cfgMagazines" >> _item >> "count");
+				};
+				_itemWorth = round (_itemWorth*(_itemQty/_maxrnd));
 				_qtyIndex = _itemClasses find _item;
-				// add items to array
 				if (_qtyIndex != -1) then {
-
 					_currQty = _itemQtys select _qtyIndex;
 					if (_currQty >= _itemQty) then {
-
 						if (_current_crypto >= _itemWorth) then {
-
 							if (_item isKindOf "Air" || _item isKindOf "Ship" || _item isKindOf "LandVehicle" || _item isKindOf "Tank") then{
-
 								if (!_vehicleBought) then {
-
 									if !(EPOCH_VehicleSlots isEqualTo[])  then {
 										_position = getPosATL _player;
-
 										_helipad = nearestObjects[_player, ["Land_HelipadEmpty_F", "Land_HelipadCircle_F"], 100];
 										_helipads = [];
 										_smoke = nearestObject[_player, "SmokeShell"];
 										if (!isNull _smoke) then {
 											_helipad pushBack _smoke;
 										};
-
-										// water check
 										if (_item isKindOf "Ship") then {
 											{
 												if (surfaceIsWater (getposATL _x)) then {
 													_helipads pushBack _x;
 												}
 											} forEach _helipad;
-										} else {
+										}
+										else {
 											{
 												if !(surfaceIsWater (getposATL _x)) then {
 													_helipads pushBack _x;
 												}
 											} forEach _helipad;
 										};
-
 										if !(_helipads isEqualTo[]) then {
-
 											_foundSmoke = false;
 											{
 												if (_x isKindOf "SmokeShell") then {
@@ -208,7 +197,8 @@ if (_slot != -1) then {
 													if (_objOwner == owner _player) then {
 														_position = getPosATL _x;
 														_foundSmoke = true;
-													} else {
+													}
+													else {
 														{
 															if (_objOwner == owner _x) exitWith{
 																_position = getPosATL _x;
@@ -222,12 +212,14 @@ if (_slot != -1) then {
 											if !(_foundSmoke) then {
 												_position = getPosATL (_helipads select 0);
 											};
-										} else {
+										}
+										else {
 											_tmpposition = [];
 											if (_item isKindOf "Ship") then {
 												_tmpposition = [_position, 20, 150, 5, 0, 1000, 1] call BIS_fnc_findSafePos;
 												_tmpposition = [_tmpposition, 0, 60, 10, 2, 1000, 0] call BIS_fnc_findSafePos;
-											} else {
+											}
+											else {
 												_tmpposition = [_position, 20, 120, 5, 0, 2000, 0] call BIS_fnc_findSafePos;
 											};
 											if ((count _tmpposition) == 2) then {
@@ -244,29 +236,21 @@ if (_slot != -1) then {
 												};
 											};
 										};
-										// select available slot
 										_vehslot = EPOCH_VehicleSlots select 0;
-										// Remove from available slots
 										EPOCH_VehicleSlots = EPOCH_VehicleSlots - [_vehslot];
 										missionNamespace setVariable ['EPOCH_VehicleSlotCount', count EPOCH_VehicleSlots, true];
 										_vehicleBought = true;
-
-										// Group access
 										_lockOwner = getPlayerUID _player;
 										_playerGroup = _player getVariable["GROUP", ""];
 										if (_playerGroup != "") then {
 											_lockOwner = _playerGroup;
 										};
-
 										_vehObj = [_item,_position,random 360,true,_vehslot,_lockOwner,"NONE",false,false] call EPOCH_spawn_vehicle;
 										_final_location = getPosATL _vehObj;
-
 										_group = group _player;
 										_wp = _group addWaypoint [_final_location, 0];
 										deleteWaypoint [_group, 0];
-
-										_returnOut pushBack _item;
-
+										_returnOut pushBack [_item,_itemQty];
 										_itemQtys set[_qtyIndex, (_currQty - _itemQty)];
 										_tradeOut = _tradeOut - _itemWorth;
 										_current_crypto = _current_crypto - _itemWorth;
@@ -277,8 +261,8 @@ if (_slot != -1) then {
 										[_errorMsg, 5] remoteExec ['Epoch_message',_player];
 									};
 								};
-							} else {
-
+							}
+							else {
 								if (_item isKindOf "Bag_Base") then {
 									_wH = objNull;
 									_nearByHolder = nearestObjects [_player,["groundWeaponHolder"],3];
@@ -288,13 +272,14 @@ if (_slot != -1) then {
 										_wHPos = ASLToATL _wHPos;
 									  };
 									  _wH = createVehicle ["groundWeaponHolder",_wHPos, [], 0, "CAN_COLLIDE"];
-									} else {
+									}
+									else {
 									  _wH = _nearByHolder select 0;
 									};
 									_wH addBackpackCargoGlobal [_item,1];
 								};
-								_returnOut pushBack _item;
-								_itemQtys set[_qtyIndex, (_currQty - _itemQty)];
+								_returnOut pushBack [_item,_itemQty];
+								_itemQtys set [_qtyIndex, (_currQty - _itemQty)];
 								_tradeOut = _tradeOut - _itemWorth;
 								_current_crypto = _current_crypto - _itemWorth;
 								_tradeQtyTotal = _tradeQtyTotal + _itemQty;
@@ -312,8 +297,6 @@ if (_slot != -1) then {
 			};
 		} forEach _itemsOut;
 	};
-
-
 	if !(_itemsIn isEqualTo []) then {
 		if (_itemsIn isEqualTo _returnIn) then {
 			_message = _message + "All Items sold";
@@ -336,10 +319,7 @@ if (_slot != -1) then {
 			_message = _message + "Not all Items purchased";
 		};
 	};
-
 	_tradeTotal = _tradeIn + _tradeOut;
-
-
 	if !(_returnIn isequalto [] && _returnOut isEqualTo []) then {
 		_trader setVariable["AI_ITEMS", [_itemClasses, _itemQtys], true];
 		_objHiveKey = format["%1:%2", (call EPOCH_fn_InstanceID), _slot];
