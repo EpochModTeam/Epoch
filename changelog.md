@@ -32,6 +32,13 @@ All changes for [Arma 3](https://arma3.com/) [Epoch Mod](https://epochmod.com) a
 - Some performance tweaks
 - Inventory will be opened automatically, if "you found something"
 - EPOCH Events reworked (Markers will change if players near / event looted) @DirtySanchez
+- Traders will no longer refill sold magazines @He-Man
+   - Magazines will automatic be repacked in Trader
+   - First the trader offers full magazines
+   - If no full magazine is available, the Trader offer the last not full magazine
+   - Not full magazines are colored: Yellow (nearly full) -> Red (nearly empty)
+   - You also get a Tooltip, how much bullets left in magazine
+   - The prices are calculated by the left bullets in the magazine
 
 ## [1.0.0.1077] - 2017-11-05
 ### Added
