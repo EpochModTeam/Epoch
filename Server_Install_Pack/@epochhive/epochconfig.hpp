@@ -54,9 +54,8 @@ forceRestartTime      = 14400; 			// 4 hour restarts
 	};
 
 // vehicles - Max vehicle slots is calculated from per vehicle limits below. Warning! Higher the number lower the performance.
-	ReservedVehSlots = 50;				// Reserved Vehicle Slots (only needed, if you store non-Epoch Vehicles in the Database)
+	ReservedVehSlots = 50;				// Reserved Vehicle Slots (only needed, if you manually spawn in additional Vehicles - AdminTool / Blackmarket...)
 	disableAutoRefuel = "true"; 		// Removes auto refuel from all buildings at server startup.
-	simulationHandlerOld = "false"; 	// When enabled this feature disables simulation on vehicles that are not nea players. Can help improve client fps at the cost of server fps.
 	VehLockMessages = "true";			// Give players a hint, that the Vehicle is locked / unlocked
 	removevehweapons[] = {				// remove these Weapons from spawned Vehicles
 		"missiles_DAR","gatling_30mm","gatling_20mm","missiles_DAGR","cannon_30mm_Plane_CAS_02_F","Missile_AA_03_Plane_CAS_02_F","Missile_AGM_01_Plane_CAS_02_F","Rocket_03_HE_Plane_CAS_02_F",
