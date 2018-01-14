@@ -117,8 +117,8 @@ for "_i" from 1 to _maxVehicleLimit do {
 						_vehicle call EPOCH_server_setVToken;
 						_vehicle call EPOCH_server_vehicleInit;
 						// set final direction and postion of vehicle
-						_vehicle setposATL _location;
 						_vehicle setVectorDirAndUp _worldspace;
+						_vehicle setposATL _location;
 
 						// set fuel level
 						_vehicle setFuel _fuel;
