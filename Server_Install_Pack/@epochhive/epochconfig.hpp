@@ -47,7 +47,7 @@ forceRestartTime      = 14400; 			// 4 hour restarts
 	defaultlinkedItems[] =		{
 		"ItemMap", 						// "ItemMap"
 		"", 							// "ItemGPS" or "ItemGeigerCounter_EPOCH",
-		"EpochRadio0", 					// "EpochRadio0" through "EpochRadio9"
+		"", 							// "EpochRadio0" through "EpochRadio9"
 		"", 							// "ItemCompass"
 		"", 							// "ItemWatch"
 		""  							// "NVG_EPOCH" or "radiation_mask_epoch"
