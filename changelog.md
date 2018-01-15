@@ -5,32 +5,38 @@ All changes for [Arma 3](https://arma3.com/) [Epoch Mod](https://epochmod.com) a
 ### Added
 - Plant Spawner: vehicle object for sunflower. @Helion4
 - Examples for Vehicle upgrades for Server Admins into CfgVehicleUpgrades.hpp @He-Man
-- Make Lighter refillable at Fuel-Sources (Gasstations / Vehicles)
+- Make Lighter refillable at Fuel-Sources (Gasstations / Vehicles) @He-Man
 - Make Trader more configurable in epochconfig.hpp @He-Man
 - Added Examples for Batchfiles to control Server Restarts @DirtySanchez
-- default pops for "center" marker
-- More map supports
+- default pops for "center" marker @AWOL
+- More map supports @AWOL
 - Lighter is needed to imflame fires @DirtySanchez
 - FireExtinguisher is needed to "put our fire" on Burn Barrel @DirtySanchez
 - Rope is needed for SlingLoad (get back on release) @DirtySanchez
 - R3F compatibility for SlingLoad @DirtySanchez
 - Hints while using Vehicle Repair (MultiGun) @He-Man
-- Config to completely disabale Simulation for BaseParts (if not needed) @He-Man
+- Config to completely disable Simulation for BaseParts (if not needed) @He-Man
 - Made Radiation configureable by cfgepochclient.hpp @Raymix
-- Hints for lock / unlock Vehicles / Storages
+- Hints for lock / unlock Vehicles / Storages @He-Man
+- Nuisance multiplicator in cfgepochclient.hpp @He-Man
+- Reduce rads over time at cost of immunity @Raymix
+- Wearable Male & Female wearable full radiation suit @Helion4
+- December seasonal items (Santa / Snowman) @Helion4
 ### Fixed
 - False BE kicks since Arma 3 1.80 update.
 - Nightlight now also follow players inside Vehicles @He-Man
-- Fixed fault disabled DynamicDebris @morgoth
+- Fixed fault disabled DynamicDebris @morgoth0
+- SERVER_VARS (BaseSpawn) was not saved on revive @morgoth0
 - Without Advanced Vehicle Repair, Vehicle upgrade was not available @He-Man
 - Base Storages could be deleted if near Loot containers were auto-deleted @He-Man
 - Some Tarp Loot was spawned under the Floor @He-Man
 - Reworked wall check by getting out of Vehicles @He-Man
+- Garden Plot had no physical ground @Helion4
 ### Changed
-- RCon Port is now set to 2307 by default since changes in A3 1.78 prevent use of 2306.
+- RCon Port is now set to 2307 by default since changes in A3 1.78 prevent use of 2306. @AWOL
 - SnapPoints for Building objects (especially half / quarter Floors) @He-Man
 - Some performance tweaks
-- Inventory will be opened automatically, if "you found something"
+- Inventory will be opened automatically, if "you found something" @AWOL
 - EPOCH Events reworked (Markers will change if players near / event looted) @DirtySanchez
 - Traders will no longer refill sold magazines @He-Man
    - Magazines will automatic be repacked in Trader
