@@ -89,7 +89,7 @@ if (alive _this) then {
 							_added = true;
 							player removemagazines _item;
 							{
-								player addmagazine _x;
+								_x call EPOCH_fnc_addMagazineOverflow;
 							} foreach _itemMags;
 						};
 					};

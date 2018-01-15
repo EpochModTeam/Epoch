@@ -20,6 +20,5 @@ if (_player distance _unit > 20) exitWith{};
 // TODO configize
 if (typeOf _unit == "Jack_SIM_EPOCH") then {
 	deleteVehicle _unit;
-	// TODO handle overflow
-	_player addMagazine["JackKit", 1];
+	["JackKit", 1] call EPOCH_fnc_addMagazineOverflow;
 };

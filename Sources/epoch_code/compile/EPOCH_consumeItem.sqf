@@ -82,10 +82,10 @@ switch _interactOption do {
 				player removeMagazines _item;
 				for "_i" from 1 to floor (_magazineSize / _magazineSizeMax) do
 				{
-					player addMagazine [_item, _magazineSizeMax];
+					[_item, _magazineSizeMax] call EPOCH_fnc_addMagazineOverflow;
 				};
 				if ((_magazineSize % _magazineSizeMax) > 0) then {
-					player addMagazine [_item, floor (_magazineSize % _magazineSizeMax)];
+					[_item, floor (_magazineSize % _magazineSizeMax)] call EPOCH_fnc_addMagazineOverflow;
 				};
 				["Ammo Repacked", 5] call Epoch_message;
 			};

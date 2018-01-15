@@ -59,7 +59,7 @@ if!(_chg isEqualTo 0)then{
 	_player removeMagazines _mag;
 	{
 		if ((_x select 1) > 0) then {		// Do not add back an empty mag, as it can not be handled by any scripts and is useless
-			_player addMagazine _x;
+			_x call EPOCH_fnc_addMagazineOverflow;
 		};
 	}forEach _itemMags;
 	[format["You have used your %1", _displayName],5,[[0,0,0,0.2],[1,1,1,1]]] call Epoch_message_stack;
