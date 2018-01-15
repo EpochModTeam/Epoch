@@ -124,7 +124,7 @@ forceRestartTime      = 14400; 			// 4 hour restarts
 	TraderGodMode = "false";			// If true, Trader can not be killed by Players
 	storedVehicleLimit = 15;			// Vehicles more than x stored in ALL Traders will automatically be deleted on Restart. 
 	StaticTraderItemPurge[] = {100,15};	// {ItemCount,ReducePercent} - If a static trader have more than x different items, on restart the items will be reduced by y percent
-	DynamicTraderRespawnCount = 100		// If a dynamic Trader have more than x different Items, he will respawn on another Spot (with start Items)
+	DynamicTraderRespawnCount = 100;	// If a dynamic Trader have more than x different Items, he will respawn on another Spot (with start Items)
 	TraderItemCountPerItem[] = {50,5};	// If the Trader has more than x pieces of an Item, it will be reduced to y pieces (on Restart)
 	TraderItemsDeleteInstant[] = {		// List of Items, that will be deleted from Trader instant after sell
 		// "ItemVehDoc1",
