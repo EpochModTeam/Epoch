@@ -1,10 +1,9 @@
 /*
-	Author: [Ignatz] He-Man
+	Author: He-Man
 
     Contributors:
 
-	Description:
-	Autorun script
+	Description: Autorun script
 
     Licence:
     Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike

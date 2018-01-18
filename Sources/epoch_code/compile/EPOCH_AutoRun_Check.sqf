@@ -20,17 +20,17 @@
 private["_canAutoRun","_currentPos"];
 _canAutoRun = true;
 if !(istouchingground player) exitwith {
-	false;
+	false
 };
 if !((vehicle player) == player) exitwith {
-	false;
+	false
 };
 if ((getPosasl player) select 2 < -0.5) exitwith {
-	false;
+	false
 };
 if ((player getHitPointDamage "HitLegs") >= 0.5) exitwith {
 	["Can not AutoRun - Your legs are Broken!",5] call Epoch_Message;
-	false;
+	false
 };
 if !(player nearObjects["Const_All_Walls_F", 6] isEqualTo[]) then {
 	_currentPos = player modelToWorld [0, 1, 1];
