@@ -1127,9 +1127,9 @@ class CfgCrafting
 	class SmeltingTools_EPOCH : Part
 	{
 		usedIn[] = {"ItemCopperBar","ItemCopperBar10oz","ItemGoldBar","ItemSilverBar","ItemGoldBar10oz","ItemSilverBar10oz"};
-		previewPosition[] = {0.802374,1,0.26};
-		previewScale = 0.19;
-		previewVector = 3.3;
+		previewPosition[] = {0.8,1,0.25};
+		previewScale = 0.6;
+		previewVector = 1.2;
 	};
     class ItemCables : Item
     {
