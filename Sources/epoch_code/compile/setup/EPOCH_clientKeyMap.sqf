@@ -32,6 +32,7 @@ _keyMap =
 	["Action","EPOCH_keysAction",0x39],
 	["Holster Weapon", "EPOCH_keysHolster", 35],
 	["Debug Monitor", "EPOCH_keysDebugMon", 41],
+	["AutoRun", "EPOCH_keysAutoRun", 0x11],
 
 	["Volume + (ctrl)","EPOCH_keysVolumeUp",0x0D],
 	["Volume - (ctrl)","EPOCH_keysVolumeDown",0x0C],

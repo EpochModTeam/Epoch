@@ -49,6 +49,8 @@ class CfgClientFunctions
 			class makeMarker {};
 			class removeMarker {};
 			class unit_onKilledEH {};
+			class AutoRun_Check {};
+			class AutoRun {};
 		};
 		class building
 		{

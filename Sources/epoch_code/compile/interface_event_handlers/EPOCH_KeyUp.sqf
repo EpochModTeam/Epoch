@@ -47,5 +47,28 @@ if (_dikCode == EPOCH_keysAction) then {
 if (_dikCode in(actionKeys "Gear")) then {
 	EPOCH_gearKeyPressed = false;
 };
+if (player == vehicle player) then {
+	if (_dikCode == EPOCH_keysAutoRun) then {
+		if (EPOCH_IsAutoRunning) then {
+			EPOCH_IsAutoRunning = false;
+			player switchMove "";
+		}
+		else {
+			if (EPOCH_keysAutoRun in (actionKeys "moveForward")) then {
+				if (EPOCH_LastAutoRunKeyPressed + 0.2 > diag_ticktime) then {
+						if (call EPOCH_AutoRun_Check) then {
+							EPOCH_IsAutoRunning = true;
+						};
+				};
+			}
+			else {
+				if (call EPOCH_AutoRun_Check) then {
+					EPOCH_IsAutoRunning = true;
+				};
+			};
+		};
+		EPOCH_LastAutoRunKeyPressed = diag_ticktime;
+	};
+};
 
 _handled

@@ -111,7 +111,7 @@ _isOnFoot = isNull objectParent player;
 _panic = false;
 _prevEnergy = missionNamespace getVariable [_playerEnergyKey, _playerEnergyDefault];
 
-
+_EPOCH_Autorunspeed = 1;
 // init config data
 _antagonistRndChance = ["CfgEpochClient", "antagonistRngChance", 100] call EPOCH_fnc_returnConfigEntryV2;
 

@@ -57,6 +57,8 @@ EPOCH_arr_interactedObjs = [];
 EPOCH_buildOption = 0;
 EPOCH_nearestLocations = [];
 EPOCH_lastFiredLocation = [];
+EPOCH_IsAutoRunning = false;
+EPOCH_LastAutoRunKeyPressed = diag_ticktime;
 
 //Radiation
 EPOCH_geiger_shown = false;

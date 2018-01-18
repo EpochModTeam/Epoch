@@ -242,7 +242,12 @@ if (vehicle player == player) then {
 			// _handled = call EPOCH_lootTrash;
 		};
 	};
-
+	if (EPOCH_IsAutoRunning) then {
+		if (_dikCode in ((actionKeys "moveForward") + (actionKeys "TurnLeft") + (actionKeys "TurnRight") + (actionKeys "moveBack"))) then {
+			EPOCH_IsAutoRunning = false;
+			player switchMove "";
+		};
+	};
 }; // end player only code
 
 EPOCH_favBar_itemConsumed = false;

@@ -22,6 +22,13 @@ All changes for [Arma 3](https://arma3.com/) [Epoch Mod](https://epochmod.com) a
 - Reduce rads over time at cost of immunity @Raymix
 - Wearable Male & Female wearable full radiation suit @Helion4
 - December seasonal items (Santa / Snowman) @Helion4
+- Autorun function (suggested by Ghostrider) @He-Man
+   - Default Key is "W"
+   - You can change the key in EPOCH ESC Menu
+   - If choosen key is same as "moveforward" (default), you have to 2x tap it, else you only have to 1x tap it
+   - If your legs are broken, you get a hint "can not autorun - legs are broken"
+   - If the terrain is too steep, you only walk in AutoRun
+   - Inside Water, you can not Autorun
 ### Fixed
 - False BE kicks since Arma 3 1.80 update.
 - Nightlight now also follow players inside Vehicles @He-Man
