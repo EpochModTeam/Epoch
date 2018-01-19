@@ -19,6 +19,9 @@
 
 private["_canAutoRun","_currentPos"];
 _canAutoRun = true;
+if !(alive player) exitwith {
+	false
+};
 if !(istouchingground player) exitwith {
 	false
 };

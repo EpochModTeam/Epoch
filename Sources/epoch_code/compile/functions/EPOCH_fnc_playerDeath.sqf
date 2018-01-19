@@ -62,6 +62,8 @@ EPOCH_buildMode = 0;
 EPOCH_snapDirection = 0;
 EPOCH_Target = objNull;
 
+EPOCH_IsAutoRunning = false;
+
 // playerKilledScreen
 _playerKilledScreen = getText(_config >> "playerKilledScreen");
 if (_playerKilledScreen isEqualTo "") then {_playerKilledScreen = "TapOut2"};
