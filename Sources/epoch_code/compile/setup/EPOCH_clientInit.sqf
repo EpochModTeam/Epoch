@@ -40,6 +40,7 @@ EPOCH_Z_OFFSET = 0;
 EPOCH_X_OFFSET = 0;
 EPOCH_Y_OFFSET = 5;
 EPOCH_arr_snapPoints = [];
+EPOCH_arr_snapObjects = [];
 EPOCH_prevTarget = objNull;
 EPOCH_interactOption = 0;
 EPOCH_playerStaminaMax = 100;

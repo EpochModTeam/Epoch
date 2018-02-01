@@ -1,1 +1,1 @@
-5 "" !="EPAH_[a-z]{5,10}" !="BIS_fnc_objectVar_obj2_[0-9]{1,10}" !="bis_fnc_sharedObjectives_serverUpdate"
+5 "" !="EPAH_[a-z]{5,10}" !="BIS_fnc_objectVar_obj2_[0-9]{1,10}" !="bis_fnc_sharedObjectives_serverUpdate" !="PLAYER_REJECT_ServerVersion"

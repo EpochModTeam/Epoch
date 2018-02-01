@@ -29,6 +29,7 @@ All changes for [Arma 3](https://arma3.com/) [Epoch Mod](https://epochmod.com) a
    - If your legs are broken, you get a hint "can not autorun - legs are broken"
    - If the terrain is too steep, you only walk in AutoRun
    - Inside Water, you can not Autorun
+- Helper 3D-Icon + Line on the part, where element is snapped on (while Base-Building) @He-Man
 ### Fixed
 - False BE kicks since Arma 3 1.80 update.
 - Nightlight now also follow players inside Vehicles @He-Man
@@ -41,7 +42,7 @@ All changes for [Arma 3](https://arma3.com/) [Epoch Mod](https://epochmod.com) a
 - Garden Plot had no physical ground @Helion4
 ### Changed
 - RCon Port is now set to 2307 by default since changes in A3 1.78 prevent use of 2306. @AWOL
-- SnapPoints for Building objects (especially half / quarter Floors) @He-Man
+- SnapPoints for Building objects (especially full / half / quarter Floors) @He-Man
 - Some performance tweaks
 - Inventory will be opened automatically, if "you found something" @AWOL
 - EPOCH Events reworked (Markers will change if players near / event looted) @DirtySanchez
@@ -52,6 +53,7 @@ All changes for [Arma 3](https://arma3.com/) [Epoch Mod](https://epochmod.com) a
    - Not full magazines are colored: Yellow (nearly full) -> Red (nearly empty)
    - You also get a Tooltip, how much bullets left in magazine
    - The prices are calculated by the left bullets in the magazine
+- Increased snap-distance for Foundations (much easier to find snap positions) @He-Man
 
 ## [1.0.0.1077] - 2017-11-05
 ### Added

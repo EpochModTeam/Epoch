@@ -12,36 +12,6 @@
     Github:
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_code/compile/EPOCH_onEachFrame.sqf
 */
-if (EPOCH_velTransform) then {
-	if (EPOCH_playerEnergy > 0) then {
-		_pos1 = getPosASL EPOCH_target;
-		_vel1 = velocity EPOCH_target;
-		_dir1 = vectorDir EPOCH_target;
-		_up1 = vectorUp EPOCH_target;
-		_interval = 0.1;
-
-		if !(EP_velocityTransformation isEqualTo []) then {
-			EPOCH_target setvelocitytransformation[_pos1, (EP_velocityTransformation select 0), _vel1, (EP_velocityTransformation select 1), _dir1, (EP_velocityTransformation select 2), _up1, (EP_velocityTransformation select 3), _interval];
-		} else {
-			_pos2 = player modelToWorld[EPOCH_X_OFFSET, EPOCH_Y_OFFSET, EPOCH_Z_OFFSET];
-			if !(EPOCH_maxBuildingHeight == 0) then {
-				if (_pos2 select 2 > EPOCH_maxBuildingHeight) then {
-					_pos2 set[2, EPOCH_maxBuildingHeight];
-				};
-			};
-			if ((_pos2 select 2) < 0) then { _pos2 set[2, 0] };
-			if ((_pos1 distance _pos2) > 0) then {
-				_newpos = AGLtoASL _pos2;
-				if (surfaceiswater _pos2) then {
-					_newpos = _pos2;
-				};
-				EPOCH_target setvelocitytransformation[_pos1, _newpos, _vel1, _vel1, _dir1, _dir1, _up1, _up1, _interval];
-			};
-		};
-	} else {
-		EPOCH_velTransform = false;
-	};
-};
 if (!isNull EPOCH_currentTarget && vehicle player == player) then {
 	_currentTarget = EPOCH_currentTarget;
 
@@ -137,15 +107,52 @@ if (EPOCH_drawIcon3d) then {
 	}forEach EPOCH_arr_countdown;
 };
 
-{
-	_distance = player distance _x;
-	if (_distance < 9) then {
-		_pos = _x;
-		_color = [1, 1, 0, 0.7];
-		_size = 1;
-		drawIcon3D["x\addons\a3_epoch_code\Data\UI\snap_ca.paa", _color, _pos, _size, _size, 0, "", 1, _size / 60, "PuristaMedium"];
+if !(isnull EPOCH_target) then {
+	if (EPOCH_velTransform) then {
+		if (EPOCH_playerEnergy > 0) then {
+			_pos1 = getPosASL EPOCH_target;
+			_vel1 = velocity EPOCH_target;
+			_dir1 = vectorDir EPOCH_target;
+			_up1 = vectorUp EPOCH_target;
+			_interval = 0.1;
+
+			if !(EP_velocityTransformation isEqualTo []) then {
+				EPOCH_target setvelocitytransformation[_pos1, (EP_velocityTransformation select 0), _vel1, (EP_velocityTransformation select 1), _dir1, (EP_velocityTransformation select 2), _up1, (EP_velocityTransformation select 3), _interval];
+			} else {
+				_pos2 = player modelToWorld[EPOCH_X_OFFSET, EPOCH_Y_OFFSET, EPOCH_Z_OFFSET];
+				if !(EPOCH_maxBuildingHeight == 0) then {
+					if (_pos2 select 2 > EPOCH_maxBuildingHeight) then {
+						_pos2 set[2, EPOCH_maxBuildingHeight];
+					};
+				};
+				if ((_pos2 select 2) < 0) then { _pos2 set[2, 0] };
+				if ((_pos1 distance _pos2) > 0) then {
+					_newpos = AGLtoASL _pos2;
+					if (surfaceiswater _pos2) then {
+						_newpos = _pos2;
+					};
+					EPOCH_target setvelocitytransformation[_pos1, _newpos, _vel1, _vel1, _dir1, _dir1, _up1, _up1, _interval];
+				};
+			};
+		} else {
+			EPOCH_velTransform = false;
+		};
 	};
-}forEach EPOCH_arr_snapPoints;
+	{
+		_distance = player distance _x;
+		if (_distance < 9) then {
+			_pos = _x;
+			_color = [1, 1, 0, 0.7];
+			_size = 1;
+			drawIcon3D["x\addons\a3_epoch_code\Data\UI\snap_ca.paa", _color, _pos, _size, _size, 0, "", 1, _size / 60, "PuristaMedium"];
+		};
+	}forEach EPOCH_arr_snapPoints;
+	if !(EPOCH_arr_snapObjects isequalto []) then {
+		EPOCH_arr_snapObjects params [["_SnapObj1",objNull],["_SnapObj2",objNull]];
+		drawIcon3D ["\a3\ui_f\data\map\diary\icons\unitgroup_ca.paa", [1,0,0,1], ASLtoATL (getposASL _SnapObj1), 1.5, 1.5,0];
+		drawLine3D [ASLToAGL (getposasl _SnapObj1),ASLToAGL (getposasl _SnapObj2), [1,0,0,1]];
+	};
+};
 
 {
 	if (!isNull _x) then {

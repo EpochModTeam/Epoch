@@ -145,6 +145,7 @@ if (_class != "") then {
 			_currentOffSet = _offSet;
 			EPOCH_doRotate = false;
 			EPOCH_arr_snapPoints = [];
+			EPOCH_arr_snapObjects = [];
 			EP_snap = objnull;
 			_pos2ATL = _pos2;
 			if (surfaceIsWater _pos2ATL) then {
@@ -359,6 +360,7 @@ if (_class != "") then {
 									};
 									if (count _arr_snapPoints >= 2) exitWith { EPOCH_arr_snapPoints = _arr_snapPoints; }
 								} forEach _snapChecks;
+								EPOCH_arr_snapObjects = [_nearestObject, _currentTarget];
 							};
 						};
 						if (_snapped) exitwith {};
@@ -378,6 +380,7 @@ if (_class != "") then {
 	};
 
 	EPOCH_arr_snapPoints = [];
+	EPOCH_arr_snapObjects = [];
 
 	{
 		detach _x;
