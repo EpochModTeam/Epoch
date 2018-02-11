@@ -104,6 +104,8 @@ class CfgEpoch
 		distFromOtherShipwrecks = 750;
 		shipwreckDecayMarkerColor = "ColorBrown"; // decay changes icon (_markers select 2)
 		shipwreckCompromisedColor = "ColorRed"; // compromised changes active surround (_markers select 0)
+		shipwreckCustomWrecks[] = {"Land_UWreck_FishingBoat_F", "Land_UWreck_Heli_Attack_02_F", "Land_UWreck_MV22_F"};
+		shipwreckCustomLocs[] = {};
 
 		// Plant Spawner
 		debugPlantSpawner = 0;

@@ -13,22 +13,32 @@
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server/compile/epoch_looting/EPOCH_server_spawnBoatLoot.sqf
 */
 //[[[cog import generate_private_arrays ]]]
-private ["_cfgEpoch", "_debug", "_worldSize", "_shipwrecks", "_total", "_count", "_distFromOthers", "_spawnedLoot","_tooClose", "_wreck", "_position", "_item", "_debugMkr", "_markers", "_originalColors", "_showMarkers", "_decayMarkerColor", "_compromisedColor", "_rEvents", "_thisEvent"];
+private ["_cfgEpoch", "_debug", "_worldSize", "_shipwrecks", "_customLocs", "_customWrecks", "_totalCustomLocs", "_customWreck", "_total", "_count", "_distFromOthers", "_spawnedLoot","_tooClose", "_wreck", "_position", "_item", "_debugMkr", "_markers", "_originalColors", "_showMarkers", "_decayMarkerColor", "_compromisedColor", "_rEvents", "_thisEvent"];
 //[[[end]]]
 _cfgEpoch = configFile >> "CfgEpoch" >> worldname;
 _debug = if(getNumber(_cfgEpoch >> "debugShipwreckLoot") isEqualTo 1)then{true}else{false};
-
+// Check for shipwreck loot allowed
 if (getNumber(_cfgEpoch >> "shipwreckLootEnabled") isEqualTo 1) then {
+	// Check for total shipwrecks allowed
+	_total = getNumber(_cfgEpoch >> "maxSpawnedShipwrecks");
+	if(_total isEqualTo 0)exitWith{if(_debug)then{diag_log "EPOCHDebug: no shipwrecks allowed"}};
+	// Load shipwrecks and custom locations
 	_worldSize = worldSize/2;
 	_shipwrecks = nearestTerrainObjects [ [_worldSize, _worldSize], ["SHIPWRECK"], _worldSize];
-	_total = getNumber(_cfgEpoch >> "maxSpawnedShipwrecks");
-	
+	_customLocs = getArray(_cfgEpoch >> "shipwreckCustomLocs");
+	_customWrecks = getArray(_cfgEpoch >> "shipwreckCustomWrecks");
+	_totalCustomLocs = count(_customLocs);
+	if(_totalCustomLocs > 0)then{
+		for "_c" from 0 to _totalCustomLocs-1 do {
+			_customWreck = (selectRandom _customWrecks) createVehicle (_customLocs select _c);
+			_shipwrecks pushBack _customWreck;
+		};	
+	};	
 	if(_shipwrecks isEqualTo [])exitWith{if(_debug)then{diag_log "EPOCHDebug: no shipwrecks found"}};
-	if(_total isEqualTo 0)exitWith{if(_debug)then{diag_log "EPOCHDebug: no shipwrecks allowed"}};
-	
+	// Check combined array count
 	_count = count(_shipwrecks);
 	if(_count < _total)then{if(_debug)then{diag_log "EPOCHDebug: not enough shipwrecks to fill your needs on this map, trying all available locations!"}};
-	
+	// Start spawning loot
 	_distFromOthers = getNumber(_cfgEpoch >> "distFromOtherShipwrecks");
 	_spawnedLoot = [];
 	for "_i" from 1 to _total do {
