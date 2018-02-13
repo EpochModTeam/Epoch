@@ -1,5 +1,5 @@
 /*
-	Earthquake and Mineral Deposit Event
+	Money Drop Event
 	by He-Man - EpochMod.com
 	
 	Improvements and or bugfixes and other contributions are welcome via the github:
