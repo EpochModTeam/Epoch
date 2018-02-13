@@ -106,7 +106,7 @@ class CfgEpoch
 		shipwreckCompromisedColor = "ColorRed"; // compromised changes active surround (_markers select 0)
 		shipwreckCustomWrecks[] = {"Land_UWreck_FishingBoat_F", "Land_UWreck_Heli_Attack_02_F", "Land_UWreck_MV22_F"};
 		shipwreckCustomLocs[] = {};
-
+		
 		// Plant Spawner
 		debugPlantSpawner = 0;
 		showPlantMarkers = 1;
@@ -136,7 +136,17 @@ class CfgEpoch
 		earthquakeDecayMarkerColor = "ColorBrown";
 		earthquakeCompromisedColor = "ColorRed";
 		availableMinerals[] = {"MineralDepositCopper_EPOCH", "MineralDepositGold_EPOCH", "MineralDepositSilver_EPOCH"};
-		
+
+		// MoneyDrop
+		debugMoneyDrop = 0;
+		showMoneyMarkers = 1;
+		maxMoneyDrops = 3;
+		distFromOtherMoneyDrops = 1500;
+		MoneyDropDecayTime = 2400;
+		MoneyDropDecayMarkerColor = "ColorBrown";
+		MoneyDropCompromisedColor = "ColorRed";
+		MoneyDropValues[] = {{3,6},{50,120}};		// {{min money lumps, max money lumps},{min crypto per lump, max crypto per lump}}
+
 		// Container Spawner
 		debugContainerSpawner = 0;
 		showContainerMarkers = 1;

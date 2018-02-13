@@ -25,6 +25,9 @@ _getCrypto = _object getVariable["Crypto", 0];
 if (_getCrypto > 0) then {
 	// remove crypto from object
 	_object setVariable["Crypto", nil, true];
+	if (_object getvariable ["RemoveOnTake",false]) then {
+		deletevehicle _object;
+	};
     // send data back to player
 	[_player,_getCrypto] call EPOCH_server_effectCrypto;
 	// debug and logging.

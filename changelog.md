@@ -4,6 +4,7 @@ All changes for [Arma 3](https://arma3.com/) [Epoch Mod](https://epochmod.com) a
 ## [1.1.0.0] - Unreleased
 ### Added
 - Plant Spawner: vehicle object for sunflower. @Helion4
+- MoneyDrop Event: Random Money lump with Mapmarker (like Plants) @He-Man
 - Examples for Vehicle upgrades for Server Admins into CfgVehicleUpgrades.hpp @He-Man
 - Make Lighter refillable at Fuel-Sources (Gasstations / Vehicles) @He-Man
 - Make Trader more configurable in epochconfig.hpp @He-Man
