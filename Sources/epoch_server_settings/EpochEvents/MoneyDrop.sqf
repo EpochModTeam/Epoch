@@ -36,7 +36,7 @@ for "_i" from 0 to 100 step 1 do {
 if ((count _position) == 2) then{
 	_playersNearEpicenter = _position nearEntities[["Epoch_Male_F", "Epoch_Female_F"], 1000];
 	// decrease chance with more players
-	_chance = 0.2 + (linearConversion [1, 100, (count allPlayers), 0, 0.5, true]);
+	_chance = 0.1 + (linearConversion [1, 100, (count allPlayers), 0, 0.5, true]);
 	if ((random 1) < _chance) then {
 
 		_values = getArray(_cfgEpoch >> "MoneyDropValues");

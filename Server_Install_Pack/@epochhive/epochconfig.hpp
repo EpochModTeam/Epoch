@@ -19,7 +19,7 @@ forceRestartTime      = 14400; 			// 4 hour restarts
 		{ 900, "ChangeWeather", 1 , 1, -1, {} ,{"VR"}},
 		{ 1200, "ContainerSpawner", 0 , 1, -1, {} ,{"VR"}},
 		{ 1440, "GardenManager", 0 , 1, -1, {} ,{"VR"}},
-		{ 600, "MoneyDrop", 0 , 1 , -1, {} ,{"VR"}}, //No comma on last Entry
+		{ 900, "MoneyDrop", 0 , 1 , -1, {} ,{"VR"}}, //No comma on last Entry
 		{ 300, "PlantSpawner", 0 , 1 , -1, {} ,{"VR"}} //No comma on last Entry
 	};
 
