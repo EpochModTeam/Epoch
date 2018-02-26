@@ -74,6 +74,7 @@ _respawnButton ctrlEnable false;
 	   (isNull _display) || ((_startTime - diag_tickTime) <= 0)
 	};
 	if (!isNull _display) then {
+		player setUnitLoadout (getUnitLoadout player);
 		missionnamespace setvariable ["EPOCH_forceUpdateNow",true];
 	};
 };
