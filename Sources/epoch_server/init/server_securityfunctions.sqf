@@ -2147,7 +2147,6 @@ _skn_admincode = compileFinal ("
 	};
 };
 "+_skn_infrontTP+" = {
-	"+_skn_tg_infrontTP+" = !"+_skn_tg_infrontTP+";
 	if ("+_skn_tg_infrontTP+") then {
 		if (vehicle player == player) then {
 			_distance = 10;
