@@ -1132,28 +1132,84 @@ class CfgItemSort
 			"ItemFireExtinguisher"
 		};
 		Vehicles_Land[] = {
-			"ebike_epoch",								// Motorrad
+			"ebike_epoch",								// Motorcycle
 			"C_Offroad_01_EPOCH",						// Offroader
+			"C_Offroad_01_EPOCH1",
+			"C_Offroad_01_EPOCH2",
+			"C_Offroad_01_EPOCH3",
+			"C_Offroad_01_EPOCH4",
 			"C_Quadbike_01_EPOCH",						// Quad
-			"C_Hatchback_01_EPOCH",						// Limousine
-			"C_Hatchback_02_EPOCH",						// Sportlimousine
+			"C_Hatchback_01_EPOCH",						// Hatchback
+			"C_Hatchback_01_EPOCH1",
+			"C_Hatchback_01_EPOCH2",
+			"C_Hatchback_01_EPOCH3",
+			"C_Hatchback_01_EPOCH4",
+			"C_Hatchback_02_EPOCH",						// Hatchback Sport
+			"C_Hatchback_02_EPOCH1",
+			"C_Hatchback_02_EPOCH2",
+			"C_Hatchback_02_EPOCH3",
+			"C_Hatchback_02_EPOCH4",
 			"C_SUV_01_EPOCH",							// SUV
-			"C_Van_01_box_EPOCH",						// Truck Boxer
+			"C_SUV_01_EPOCH1",
+			"C_SUV_01_EPOCH2",
+			"C_SUV_01_EPOCH3",
+			"C_SUV_01_EPOCH4",
+			"C_Van_01_box_EPOCH",						// Truck Box
+			"C_Van_01_box_EPOCH1",
+			"C_Van_01_box_EPOCH2",
+			"C_Van_01_box_EPOCH3",
+			"C_Van_01_box_EPOCH4",
 			"C_Van_01_transport_EPOCH",					// Truck
+			"C_Van_01_transport_EPOCH1",
+			"C_Van_01_transport_EPOCH2",
+			"C_Van_01_transport_EPOCH3",
+			"C_Van_01_transport_EPOCH4",
 
 			"K01",										// Kart
 			"K02",										// Kart Blueking
 			"K03",										// Kart Redstone
 			"K04",										// Kart Vrana
 
-			"B_Truck_01_transport_EPOCH",				// HEMTT Transport - Personen
-			"B_Truck_01_covered_EPOCH",					// HEMTT Transporter abgedeckt
-			"B_Truck_01_mover_EPOCH",					// HEMTT
-			"B_Truck_01_box_EPOCH",
-			"O_Truck_02_covered_EPOCH",
-			"O_Truck_02_transport_EPOCH",
-			"O_Truck_03_covered_EPOCH",
-			"O_Truck_03_transport_F",
+			"B_Truck_01_transport_EPOCH",				// HEMTT Transport
+			"B_Truck_01_transport_EPOCH1",
+			"B_Truck_01_transport_EPOCH2",
+			"B_Truck_01_transport_EPOCH3",
+			"B_Truck_01_transport_EPOCH4",
+			"B_Truck_01_covered_EPOCH",					// HEMTT Covered
+			"B_Truck_01_covered_EPOCH1",
+			"B_Truck_01_covered_EPOCH2",
+			"B_Truck_01_covered_EPOCH3",
+			"B_Truck_01_covered_EPOCH4",
+			"B_Truck_01_mover_EPOCH",					// HEMTT Mover
+			"B_Truck_01_mover_EPOCH1",
+			"B_Truck_01_mover_EPOCH2",
+			"B_Truck_01_mover_EPOCH3",
+			"B_Truck_01_mover_EPOCH4",
+			"B_Truck_01_box_EPOCH",						// HEMTT Box
+			"B_Truck_01_box_EPOCH1",
+			"B_Truck_01_box_EPOCH2",
+			"B_Truck_01_box_EPOCH3",
+			"B_Truck_01_box_EPOCH4",
+			"O_Truck_02_covered_EPOCH",					// Zamak Covered
+			"O_Truck_02_covered_EPOCH1",
+			"O_Truck_02_covered_EPOCH2",
+			"O_Truck_02_covered_EPOCH3",
+			"O_Truck_02_covered_EPOCH4",
+			"O_Truck_02_transport_EPOCH",				// Zamak Transport
+			"O_Truck_02_transport_EPOCH1",
+			"O_Truck_02_transport_EPOCH2",
+			"O_Truck_02_transport_EPOCH3",
+			"O_Truck_02_transport_EPOCH4",
+			"O_Truck_03_covered_EPOCH",					// Tempest Covered
+			"O_Truck_03_covered_EPOCH1",
+			"O_Truck_03_covered_EPOCH2",
+			"O_Truck_03_covered_EPOCH3",
+			"O_Truck_03_covered_EPOCH4",
+			"O_Truck_03_transport_F",					// Tempest Transport
+			"O_Truck_03_transport_F1",
+			"O_Truck_03_transport_F2",
+			"O_Truck_03_transport_F3",
+			"O_Truck_03_transport_F4",
 
 			// Funktions Fahrzeuge |Repair,Heal,Tank|
 			"C_Offroad_01_repair_F",
@@ -1163,7 +1219,11 @@ class CfgItemSort
 			"B_Truck_01_ammo_F",
 			"B_Truck_01_fuel_F",
 			"B_Truck_01_medical_F",
-			"O_Truck_02_box_EPOCH",
+			"O_Truck_02_box_EPOCH",						// Zamak Box (Medical)
+			"O_Truck_02_box_EPOCH1",
+			"O_Truck_02_box_EPOCH2",
+			"O_Truck_02_box_EPOCH3",
+			"O_Truck_02_box_EPOCH4",
 			"O_Truck_02_medical_F",
 			"O_Truck_02_Ammo_F",
 			"O_Truck_02_fuel_F",
@@ -1175,10 +1235,28 @@ class CfgItemSort
 			"O_G_Offroad_01_armed_F",
 			"I_G_Offroad_01_armed_F",
 			"B_G_Offroad_01_armed_F",
+			"B_G_Offroad_01_armed_EPOCH",
+			"B_G_Offroad_01_armed_EPOCH1",
+			"B_G_Offroad_01_armed_EPOCH2",
+			"B_G_Offroad_01_armed_EPOCH3",
+			"B_G_Offroad_01_armed_EPOCH4",
 			"B_MRAP_01_EPOCH",
+			"B_MRAP_01_EPOCH1",
+			"B_MRAP_01_EPOCH2",
+			"B_MRAP_01_EPOCH3",
+			"B_MRAP_01_EPOCH4",
 			"O_MRAP_02_F",
+			"O_MRAP_02_EPOCH",
+			"O_MRAP_02_EPOCH1",
+			"O_MRAP_02_EPOCH2",
+			"O_MRAP_02_EPOCH3",
+			"O_MRAP_02_EPOCH4",
 			"I_MRAP_03_F",
 			"I_MRAP_03_EPOCH",
+			"I_MRAP_03_EPOCH1",
+			"I_MRAP_03_EPOCH2",
+			"I_MRAP_03_EPOCH3",
+			"I_MRAP_03_EPOCH4",
 			"B_MRAP_01_hmg_F",
 			"O_MRAP_02_hmg_F",
 			"I_MRAP_03_hmg_F",
@@ -1240,6 +1318,9 @@ class CfgItemSort
 			"C_Heli_light_01_furious_F",
 			"C_Heli_light_01_wave_F",
 			"C_Heli_light_01_sheriff_F",
+			"C_Heli_Light_01_civil_EPOCH",
+			"C_Heli_Light_01_civil_2seat_EPOCH",
+			"C_Heli_Light_01_civil_4seat_EPOCH",
 
 			"O_Heli_Light_02_unarmed_EPOCH",
 			"I_Heli_light_03_unarmed_EPOCH",
@@ -1259,13 +1340,11 @@ class CfgItemSort
 			"I_Heli_light_03_F",
 
 			// Apex
-			"B_T_VTOL_01_vehicle_blue_F",
-			"B_T_VTOL_01_infantry_blue_F",
-			"B_T_VTOL_01_infantry_olive_F",
+			"B_T_VTOL_01_vehicle_blue_EPOCH",
+			"B_T_VTOL_01_infantry_olive_EPOCH",
 
-			"O_T_VTOL_02_vehicle_grey_F",
-			"O_T_VTOL_02_vehicle_F",
-			"O_T_VTOL_02_infantry_F"
+			"O_T_VTOL_02_infantry_EPOCH",
+			"O_T_VTOL_02_vehicle_grey_EPOCH"
 		};
 
 		Vehicles_Ship[] = {

@@ -41,6 +41,7 @@ All changes for [Arma 3](https://arma3.com/) [Epoch Mod](https://epochmod.com) a
 - Some Tarp Loot was spawned under the Floor @He-Man
 - Reworked wall check by getting out of Vehicles @He-Man
 - Garden Plot had no physical ground @Helion4
+- Some Vehicles were missing in EPOCH Admin Spawn Menu @He-Man
 ### Changed
 - RCon Port is now set to 2307 by default since changes in A3 1.78 prevent use of 2306. @AWOL
 - SnapPoints for Building objects (especially full / half / quarter Floors) @He-Man
@@ -55,6 +56,13 @@ All changes for [Arma 3](https://arma3.com/) [Epoch Mod](https://epochmod.com) a
    - You also get a Tooltip, how much bullets left in magazine
    - The prices are calculated by the left bullets in the magazine
 - Increased snap-distance for Foundations (much easier to find snap positions) @He-Man
+- Reworked and added EPOCH Vehicle Classes @He-Man
+   - Each upgrade increase Speed, Torque, Fuel, Terrainbehaviour, Load and Armor
+   - Hatchback >= lvl2 will no longer stuck in forests
+   - Added M900 forced without Backseats -> "C_Heli_Light_01_civil_2seat_EPOCH"
+   - Added M900 forced with Backseats -> "C_Heli_Light_01_civil_4seat_EPOCH"
+   - The Random M900 will also stay available -> "C_Heli_Light_01_civil_EPOCH"
+   - Added very low EPOCH variants of VTOL and Xi'an (eventually we have to change them with the next update a bit)
 
 ## [1.0.0.1077] - 2017-11-05
 ### Added

@@ -4403,10 +4403,18 @@ class CfgPricing
     {
         price = 1000;
     };
+	class C_Van_01_box_EPOCH1: C_Van_01_box_EPOCH{};
+	class C_Van_01_box_EPOCH2: C_Van_01_box_EPOCH{};
+	class C_Van_01_box_EPOCH3: C_Van_01_box_EPOCH{};
+	class C_Van_01_box_EPOCH4: C_Van_01_box_EPOCH{};
     class C_Van_01_transport_EPOCH
     {
         price = 1000;
     };
+	class C_Van_01_transport_EPOCH1: C_Van_01_transport_EPOCH{};
+	class C_Van_01_transport_EPOCH2: C_Van_01_transport_EPOCH{};
+	class C_Van_01_transport_EPOCH3: C_Van_01_transport_EPOCH{};
+	class C_Van_01_transport_EPOCH4: C_Van_01_transport_EPOCH{};
     class C_Boat_Civil_01_EPOCH
     {
         price = 750;
@@ -4431,10 +4439,26 @@ class CfgPricing
     {
         price = 2500;
     };
+	class B_MRAP_01_EPOCH1: B_MRAP_01_EPOCH{};
+	class B_MRAP_01_EPOCH2: B_MRAP_01_EPOCH{};
+	class B_MRAP_01_EPOCH3: B_MRAP_01_EPOCH{};
+	class B_MRAP_01_EPOCH4: B_MRAP_01_EPOCH{};
+    class O_MRAP_02_EPOCH
+    {
+        price = 2500;
+    };
+	class O_MRAP_02_EPOCH1: O_MRAP_02_EPOCH{};
+	class O_MRAP_02_EPOCH2: O_MRAP_02_EPOCH{};
+	class O_MRAP_02_EPOCH3: O_MRAP_02_EPOCH{};
+	class O_MRAP_02_EPOCH4: O_MRAP_02_EPOCH{};
     class I_MRAP_03_EPOCH
     {
         price = 2500;
     };
+	class I_MRAP_03_EPOCH1: I_MRAP_03_EPOCH{};
+	class I_MRAP_03_EPOCH2: I_MRAP_03_EPOCH{};
+	class I_MRAP_03_EPOCH3: I_MRAP_03_EPOCH{};
+	class I_MRAP_03_EPOCH4: I_MRAP_03_EPOCH{};
     class B_G_Offroad_01_armed_EPOCH
     {
         price = 2500;
@@ -4447,34 +4471,66 @@ class CfgPricing
     {
         price = 1000;
     };
+	class B_Truck_01_transport_EPOCH1: B_Truck_01_transport_EPOCH {};
+	class B_Truck_01_transport_EPOCH2: B_Truck_01_transport_EPOCH {};
+	class B_Truck_01_transport_EPOCH3: B_Truck_01_transport_EPOCH {};
+	class B_Truck_01_transport_EPOCH4: B_Truck_01_transport_EPOCH {};
     class B_Truck_01_covered_EPOCH
     {
         price = 1000;
     };
+	class B_Truck_01_covered_EPOCH1: B_Truck_01_covered_EPOCH {};
+	class B_Truck_01_covered_EPOCH2: B_Truck_01_covered_EPOCH {};
+	class B_Truck_01_covered_EPOCH3: B_Truck_01_covered_EPOCH {};
+	class B_Truck_01_covered_EPOCH4: B_Truck_01_covered_EPOCH {};
     class B_Truck_01_mover_EPOCH
     {
         price = 1000;
     };
+	class B_Truck_01_mover_EPOCH1: B_Truck_01_mover_EPOCH {};
+	class B_Truck_01_mover_EPOCH2: B_Truck_01_mover_EPOCH {};
+	class B_Truck_01_mover_EPOCH3: B_Truck_01_mover_EPOCH {};
+	class B_Truck_01_mover_EPOCH4: B_Truck_01_mover_EPOCH {};
     class B_Truck_01_box_EPOCH
     {
         price = 1000;
     };
+	class B_Truck_01_box_EPOCH1: B_Truck_01_box_EPOCH {};
+	class B_Truck_01_box_EPOCH2: B_Truck_01_box_EPOCH {};
+	class B_Truck_01_box_EPOCH3: B_Truck_01_box_EPOCH {};
+	class B_Truck_01_box_EPOCH4: B_Truck_01_box_EPOCH {};
     class O_Truck_02_covered_EPOCH
     {
         price = 1000;
     };
+	class O_Truck_02_covered_EPOCH1: O_Truck_02_covered_EPOCH {};
+	class O_Truck_02_covered_EPOCH2: O_Truck_02_covered_EPOCH {};
+	class O_Truck_02_covered_EPOCH3: O_Truck_02_covered_EPOCH {};
+	class O_Truck_02_covered_EPOCH4: O_Truck_02_covered_EPOCH {};
     class O_Truck_02_transport_EPOCH
     {
         price = 1000;
     };
+	class O_Truck_02_transport_EPOCH1: O_Truck_02_transport_EPOCH {};
+	class O_Truck_02_transport_EPOCH2: O_Truck_02_transport_EPOCH {};
+	class O_Truck_02_transport_EPOCH3: O_Truck_02_transport_EPOCH {};
+	class O_Truck_02_transport_EPOCH4: O_Truck_02_transport_EPOCH {};
     class O_Truck_03_covered_EPOCH
     {
         price = 1000;
     };
+	class O_Truck_03_covered_EPOCH1: O_Truck_03_covered_EPOCH {};
+	class O_Truck_03_covered_EPOCH2: O_Truck_03_covered_EPOCH {};
+	class O_Truck_03_covered_EPOCH3: O_Truck_03_covered_EPOCH {};
+	class O_Truck_03_covered_EPOCH4: O_Truck_03_covered_EPOCH {};
     class O_Truck_02_box_EPOCH
     {
         price = 1000;
     };
+	class O_Truck_02_box_EPOCH1: O_Truck_02_box_EPOCH {};
+	class O_Truck_02_box_EPOCH2: O_Truck_02_box_EPOCH {};
+	class O_Truck_02_box_EPOCH3: O_Truck_02_box_EPOCH {};
+	class O_Truck_02_box_EPOCH4: O_Truck_02_box_EPOCH {};
     class O_Heli_Light_02_unarmed_EPOCH
     {
         price = 2500;
@@ -4491,6 +4547,8 @@ class CfgPricing
     {
         price = 2500;
     };
+	class C_Heli_Light_01_civil_2seat_EPOCH: C_Heli_Light_01_civil_EPOCH {};
+	class C_Heli_Light_01_civil_4seat_EPOCH: C_Heli_Light_01_civil_EPOCH {};
     class O_Heli_Transport_04_EPOCH
     {
         price = 2500;
@@ -4779,14 +4837,16 @@ class CfgPricing
     {
         price = 4400;
     };
-    class B_T_VTOL_01_infantry_F
+    class B_T_VTOL_01_vehicle_blue_EPOCH
     {
         price = 10000;
     };
-    class B_T_VTOL_01_vehicle_F
-    {
+    class B_T_VTOL_01_infantry_olive_EPOCH: B_T_VTOL_01_vehicle_blue_EPOCH {};
+	class O_T_VTOL_02_infantry_EPOCH
+	{
         price = 10000;
-    };
+	};
+	class O_T_VTOL_02_vehicle_grey_EPOCH: O_T_VTOL_02_infantry_EPOCH {};
     class B_UavTerminal
     {
         price = 10;
