@@ -63,6 +63,7 @@ All changes for [Arma 3](https://arma3.com/) [Epoch Mod](https://epochmod.com) a
    - Added M900 forced with Backseats -> "C_Heli_Light_01_civil_4seat_EPOCH"
    - The Random M900 will also stay available -> "C_Heli_Light_01_civil_EPOCH"
    - Added very low EPOCH variants of VTOL and Xi'an (eventually we have to change them with the next update a bit)
+   - Added Door-Animations to some Vehicles by GetIn / GetOut
 
 ## [1.0.0.1077] - 2017-11-05
 ### Added
