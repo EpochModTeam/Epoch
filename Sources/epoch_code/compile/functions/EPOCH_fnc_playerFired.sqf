@@ -97,8 +97,8 @@ switch true do {
 	};
 	case (_ammo isKindOf "B_Swing" || _ammo isKindOf "B_Stick") : {
 		player playActionNow "SledgeSwing";
-		call EPOCH_mineRocks;
-		if (_weapon isEqualTo "MeleeSword") then {
+		if (_weapon in ["MeleeSword","Power_Sword"]) then {
+			call EPOCH_mineRocks;
 			call EPOCH_chopWood;
 		};
 		if (_weapon isEqualTo "MeleeRod") then {
