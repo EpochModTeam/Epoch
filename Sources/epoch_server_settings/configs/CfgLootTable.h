@@ -1141,7 +1141,7 @@ class CfgLootTable
 				{ { "B_AssaultPack_rgr", "backpack" }, 5 },
 				{ { "B_AssaultPack_sgg", "backpack" }, 5 },
 				{ { "B_AssaultPack_blk", "backpack" }, 5 },
-
+				{ { "B_AssaultPack_tna_F", "backpack" }, 5 },
 
 				{ { "B_Carryall_cbr", "backpack" }, 1 },
 				{ { "B_Carryall_khk", "backpack" }, 1 },
