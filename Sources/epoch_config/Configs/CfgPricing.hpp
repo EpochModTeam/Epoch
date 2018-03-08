@@ -4467,6 +4467,14 @@ class CfgPricing
 	class B_G_Offroad_01_armed_EPOCH2: B_G_Offroad_01_armed_EPOCH{};
 	class B_G_Offroad_01_armed_EPOCH3: B_G_Offroad_01_armed_EPOCH{};
 	class B_G_Offroad_01_armed_EPOCH4: B_G_Offroad_01_armed_EPOCH{};
+    class B_Truck_01_mover_EPOCH
+    {
+        price = 1000;
+    };
+	class B_Truck_01_mover_EPOCH1: B_Truck_01_mover_EPOCH {};
+	class B_Truck_01_mover_EPOCH2: B_Truck_01_mover_EPOCH {};
+	class B_Truck_01_mover_EPOCH3: B_Truck_01_mover_EPOCH {};
+	class B_Truck_01_mover_EPOCH4: B_Truck_01_mover_EPOCH {};
     class B_Truck_01_transport_EPOCH
     {
         price = 1000;
@@ -4483,14 +4491,6 @@ class CfgPricing
 	class B_Truck_01_covered_EPOCH2: B_Truck_01_covered_EPOCH {};
 	class B_Truck_01_covered_EPOCH3: B_Truck_01_covered_EPOCH {};
 	class B_Truck_01_covered_EPOCH4: B_Truck_01_covered_EPOCH {};
-    class B_Truck_01_mover_EPOCH
-    {
-        price = 1000;
-    };
-	class B_Truck_01_mover_EPOCH1: B_Truck_01_mover_EPOCH {};
-	class B_Truck_01_mover_EPOCH2: B_Truck_01_mover_EPOCH {};
-	class B_Truck_01_mover_EPOCH3: B_Truck_01_mover_EPOCH {};
-	class B_Truck_01_mover_EPOCH4: B_Truck_01_mover_EPOCH {};
     class B_Truck_01_box_EPOCH
     {
         price = 1000;
@@ -4499,14 +4499,6 @@ class CfgPricing
 	class B_Truck_01_box_EPOCH2: B_Truck_01_box_EPOCH {};
 	class B_Truck_01_box_EPOCH3: B_Truck_01_box_EPOCH {};
 	class B_Truck_01_box_EPOCH4: B_Truck_01_box_EPOCH {};
-    class O_Truck_02_covered_EPOCH
-    {
-        price = 1000;
-    };
-	class O_Truck_02_covered_EPOCH1: O_Truck_02_covered_EPOCH {};
-	class O_Truck_02_covered_EPOCH2: O_Truck_02_covered_EPOCH {};
-	class O_Truck_02_covered_EPOCH3: O_Truck_02_covered_EPOCH {};
-	class O_Truck_02_covered_EPOCH4: O_Truck_02_covered_EPOCH {};
     class O_Truck_02_transport_EPOCH
     {
         price = 1000;
@@ -4515,14 +4507,14 @@ class CfgPricing
 	class O_Truck_02_transport_EPOCH2: O_Truck_02_transport_EPOCH {};
 	class O_Truck_02_transport_EPOCH3: O_Truck_02_transport_EPOCH {};
 	class O_Truck_02_transport_EPOCH4: O_Truck_02_transport_EPOCH {};
-    class O_Truck_03_covered_EPOCH
+    class O_Truck_02_covered_EPOCH
     {
         price = 1000;
     };
-	class O_Truck_03_covered_EPOCH1: O_Truck_03_covered_EPOCH {};
-	class O_Truck_03_covered_EPOCH2: O_Truck_03_covered_EPOCH {};
-	class O_Truck_03_covered_EPOCH3: O_Truck_03_covered_EPOCH {};
-	class O_Truck_03_covered_EPOCH4: O_Truck_03_covered_EPOCH {};
+	class O_Truck_02_covered_EPOCH1: O_Truck_02_covered_EPOCH {};
+	class O_Truck_02_covered_EPOCH2: O_Truck_02_covered_EPOCH {};
+	class O_Truck_02_covered_EPOCH3: O_Truck_02_covered_EPOCH {};
+	class O_Truck_02_covered_EPOCH4: O_Truck_02_covered_EPOCH {};
     class O_Truck_02_box_EPOCH
     {
         price = 1000;
@@ -4531,6 +4523,22 @@ class CfgPricing
 	class O_Truck_02_box_EPOCH2: O_Truck_02_box_EPOCH {};
 	class O_Truck_02_box_EPOCH3: O_Truck_02_box_EPOCH {};
 	class O_Truck_02_box_EPOCH4: O_Truck_02_box_EPOCH {};
+	class O_Truck_03_transport_EPOCH
+	{
+        price = 1000;
+	};
+	class O_Truck_03_transport_EPOCH1: O_Truck_03_transport_EPOCH {};
+	class O_Truck_03_transport_EPOCH2: O_Truck_03_transport_EPOCH {};
+	class O_Truck_03_transport_EPOCH3: O_Truck_03_transport_EPOCH {};
+	class O_Truck_03_transport_EPOCH4: O_Truck_03_transport_EPOCH {};
+    class O_Truck_03_covered_EPOCH
+    {
+        price = 1000;
+    };
+	class O_Truck_03_covered_EPOCH1: O_Truck_03_covered_EPOCH {};
+	class O_Truck_03_covered_EPOCH2: O_Truck_03_covered_EPOCH {};
+	class O_Truck_03_covered_EPOCH3: O_Truck_03_covered_EPOCH {};
+	class O_Truck_03_covered_EPOCH4: O_Truck_03_covered_EPOCH {};
     class O_Heli_Light_02_unarmed_EPOCH
     {
         price = 2500;
