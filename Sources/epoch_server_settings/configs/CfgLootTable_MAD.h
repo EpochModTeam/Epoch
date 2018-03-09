@@ -652,11 +652,11 @@ class CfgLootTable_MAD
 				{ { "MeleeSledge", "weapon" }, 20 },
 				{ { "ChainSaw", "weapon" }, 10 },
 				{ { "Plunger", "weapon" }, 4 },
-				{ { "MeleeSword", "weapon" }, 1 },
+				{ { "MeleeSword", "weapon" }, 2 },
+				{ { "Power_Sword", "weapon" }, 1 },
 				{ { "MeleeRod", "weapon" }, 2 },
 				{ { "lighter_epoch", "magazine" }, 1 },
 				{ { "SmeltingTools_EPOCH", "magazine" }, 10 }
-
 		};
 	};
 

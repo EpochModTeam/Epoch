@@ -626,6 +626,7 @@ class CfgItemSort
 			"WoodClub",
 			"Plunger",
 			"MeleeSword",
+			"Power_Sword",
 			"MeleeRod",
 			"speargun_epoch",
 			"ChainSaw"

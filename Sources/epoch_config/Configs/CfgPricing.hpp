@@ -2677,6 +2677,10 @@ class CfgPricing
     {
         price = 1111;
     };
+    class Power_Sword
+    {
+        price = 1111;
+    };
     class MeleeRod
     {
         price = 100;
