@@ -31,6 +31,7 @@ All changes for [Arma 3](https://arma3.com/) [Epoch Mod](https://epochmod.com) a
    - If the terrain is too steep, you only walk in AutoRun
    - Inside Water, you can not Autorun
 - Helper 3D-Icon + Line on the part, where element is snapped on (while Base-Building) @He-Man
+- Config in cfgepochclient.hpp to block ATM's in Plotpole range @He-Man
 ### Fixed
 - False BE kicks since Arma 3 1.80 update.
 - Nightlight now also follow players inside Vehicles @He-Man

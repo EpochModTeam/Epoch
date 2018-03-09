@@ -56,6 +56,7 @@ class CfgEpochClient
     maxdoors = 10;					// Max allowed doors per Group
     maxgates = 5;					// Max allowed Gates per Group
 
+	AtmBlockedAtPlot = "true";		// Block ATM's in Plotpole-Range
     disableRemoteSensors = "true";  // disableRemoteSensors true/false
 
     epochMessageBackgroundCol[] = {0,0,0,0.2};  //Epoch_message background color (format: {R,G,B,A})

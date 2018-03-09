@@ -90,6 +90,12 @@ if (diag_tickTime - EPOCH_lastTrash > 2)  then {
 		};
 	};
 	if (!isNull _bankTerminal) then {
+		_AtmBlockedAtPlot = ["CfgEpochClient", "AtmBlockedAtPlot", false] call EPOCH_fnc_returnConfigEntryV2;
+		_buildingJammerRange = getNumber(_config >> "buildingJammerRange");
+		_jammer = nearestObjects[player, ["PlotPole_EPOCH"], _buildingJammerRange];
+		if (!(_jammer isequalto []) && _AtmBlockedAtPlot) exitwith {
+			["Bank Terminal blocked by Jammer Signal",5] call Epoch_Message;		
+		};
 		// make balance request
 		if (isNil "EPOCH_bankTransferActive") then {
 			[player, [], Epoch_personalToken] remoteExec ["EPOCH_server_storeCrypto",2];
