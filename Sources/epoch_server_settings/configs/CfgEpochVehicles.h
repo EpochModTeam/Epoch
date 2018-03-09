@@ -42,6 +42,10 @@ class CfgEpochVehicles
         textureSelectionIndex[] = {0};
         availableColors[] = {{ "\A3\soft_f_gamma\van_01\Data\van_01_ext_CO.paa","\A3\soft_f_gamma\van_01\Data\van_01_ext_red_CO.paa" }};
     };
+	class C_Van_01_transport_EPOCH1: C_Van_01_transport_EPOCH{};
+	class C_Van_01_transport_EPOCH2: C_Van_01_transport_EPOCH{};
+	class C_Van_01_transport_EPOCH3: C_Van_01_transport_EPOCH{};
+	class C_Van_01_transport_EPOCH4: C_Van_01_transport_EPOCH{};
     class C_Hatchback_02_EPOCH {
         textureSelectionIndex[] = {0};
 		availableColors[] = {{ "\A3\soft_f_gamma\Hatchback_01\data\Hatchback_01_ext_SPORT01_CO.paa","\A3\soft_f_gamma\Hatchback_01\data\Hatchback_01_ext_SPORT02_CO.paa","\A3\soft_f_gamma\Hatchback_01\data\Hatchback_01_ext_SPORT03_CO.paa","\A3\soft_f_gamma\Hatchback_01\data\Hatchback_01_ext_SPORT04_CO.paa","\A3\soft_f_gamma\Hatchback_01\data\Hatchback_01_ext_SPORT05_CO.paa","\A3\soft_f_gamma\Hatchback_01\data\Hatchback_01_ext_SPORT06_CO.paa" }};
@@ -58,8 +62,14 @@ class CfgEpochVehicles
         textureSelectionIndex[] = {0};
         availableColors[] = {{ "\A3\soft_f_gamma\van_01\Data\van_01_ext_CO.paa","\A3\soft_f_gamma\van_01\Data\van_01_ext_red_CO.paa" }};
     };
+	class C_Van_01_box_EPOCH1: C_Van_01_box_EPOCH{};
+	class C_Van_01_box_EPOCH2: C_Van_01_box_EPOCH{};
+	class C_Van_01_box_EPOCH3: C_Van_01_box_EPOCH{};
+	class C_Van_01_box_EPOCH4: C_Van_01_box_EPOCH{};
     class C_Heli_Light_01_civil_EPOCH {
         textureSelectionIndex[] = { 0 };
         availableColors[] = { { "A3\Air_f\Heli_Light_01\Data\Heli_Light_01_ext_co.paa", "\a3\air_f\Heli_Light_01\Data\heli_light_01_ext_blue_co.paa", "\a3\air_f\Heli_Light_01\Data\heli_light_01_ext_co.paa", "\a3\air_f\Heli_Light_01\Data\heli_light_01_ext_ion_co.paa", "\a3\air_f\Heli_Light_01\Data\Skins\heli_light_01_ext_blueLine_co.paa", "\a3\air_f\Heli_Light_01\Data\Skins\heli_light_01_ext_digital_co.paa", "\a3\air_f\Heli_Light_01\Data\Skins\heli_light_01_ext_elliptical_co.paa", "\a3\air_f\Heli_Light_01\Data\Skins\heli_light_01_ext_furious_co.paa", "\a3\air_f\Heli_Light_01\Data\Skins\heli_light_01_ext_graywatcher_co.paa", "\a3\air_f\Heli_Light_01\Data\Skins\heli_light_01_ext_jeans_co.paa", "\a3\air_f\Heli_Light_01\Data\Skins\heli_light_01_ext_light_co.paa", "\a3\air_f\Heli_Light_01\Data\Skins\heli_light_01_ext_shadow_co.paa", "\a3\air_f\Heli_Light_01\Data\Skins\heli_light_01_ext_sheriff_co.paa", "\a3\air_f\Heli_Light_01\Data\Skins\heli_light_01_ext_speedy_co.paa", "\a3\air_f\Heli_Light_01\Data\Skins\heli_light_01_ext_sunset_co.paa", "\a3\air_f\Heli_Light_01\Data\Skins\heli_light_01_ext_vrana_co.paa", "\a3\air_f\Heli_Light_01\Data\Skins\heli_light_01_ext_wasp_co.paa", "\a3\air_f\Heli_Light_01\Data\Skins\heli_light_01_ext_wave_co.paa" } };
     };
+	class C_Heli_Light_01_civil_2seat_EPOCH: C_Heli_Light_01_civil_EPOCH{};
+	class C_Heli_Light_01_civil_4seat_EPOCH: C_Heli_Light_01_civil_EPOCH{};
 };
