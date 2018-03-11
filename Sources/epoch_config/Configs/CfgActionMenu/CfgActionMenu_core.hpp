@@ -20,6 +20,7 @@ class CfgActionMenu
 		dyna_cursorTarget = "([10] call EPOCH_fnc_cursorTarget)";
 		dyna_cursorTargetType = "typeOf ([10] call EPOCH_fnc_cursorTarget)";
 		dyna_inVehicle = "vehicle player != player";
+		dyna_IsDriver = "dyna_inVehicle && player == (driver (vehicle player))";
 		dyna_itemsPlayer = "items player";
 		dyna_magazinesPlayer = "magazines player";
 		dyna_assigneditems = "assignedItems player";
@@ -47,6 +48,8 @@ class CfgActionMenu
 		dyna_deathMarker = "profileNameSpace getVariable['EPOCHLastKnownDeath',[]]";
 		dyna_deathMarkerAvail = "!(dyna_deathMarker isEqualTo [])";
 		dyna_mapDeathMarker = "(((getArray(('CfgMarkerSets' call EPOCH_returnConfig) >> 'DeathMarker' >> 'markerArray') select 0) select 0) in allMapMarkers)";
+		
+		dyna_AtHome = "call {_config = 'CfgEpochClient' call EPOCH_returnConfig;_buildingJammerRange = getNumber(_config >> 'buildingJammerRange');_nearjammers = nearestobjects [player,['Plotpole_EPOCH'],_buildingJammerRange];if (_nearjammers isEqualTo []) exitwith {false};_nearestJammer = _nearjammers select 0;((_nearestJammer getVariable['BUILD_OWNER', '-1']) in[getPlayerUID player, Epoch_my_GroupUID])}";
 	};
 
 	class self
