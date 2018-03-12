@@ -166,6 +166,17 @@ class CfgEpoch
 		satelliteCompromisedColor = "ColorRed";
 		availableSatellites[] = {"Land_Wreck_Satellite_EPOCH"};
 		
+		// HeliCrashes and Loot Box Spawner
+		HeliCrashesEnabled = 1; // 0 = OFF
+		debugHeliCrashes = 0; // 1 = ON
+		showHeliCrashMarkers = 1;
+		maxSpawnedHeliCrashes = 4;
+		distFromOtherHeliCrashes = 2000;
+		heliCrashDecayMarkerColor = "ColorBrown"; // decay changes icon (_markers select 2)
+		heliCrashCompromisedColor = "ColorRed"; // compromised changes active surround (_markers select 0)
+		availableHeliCrashes[] = {"Land_Wreck_Heli_Attack_01_F","Land_Wreck_Heli_Attack_02_F"};
+		heliCrashCustomLocs[] = {};
+		
 		propsPos[] = {
 			// Will accept several variations of this entry to place objects on the map
 			// _className - STRING - Class name of the object to spawn

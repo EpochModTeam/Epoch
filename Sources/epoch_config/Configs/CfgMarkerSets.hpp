@@ -209,4 +209,11 @@ class CfgMarkerSets
 			{"","ICON","","ColorGreen",0.2,{0.8,0.8}}
 		};
 	};
+	class HeliCrash {
+		markerArray[] = {
+            {"","ICON","EpochActive_Circle","ColorOrange",1,{0.6,0.6}},
+            {"","ICON","EpochBG_Circle","ColorWhite",0.15,{0.6,0.6}},
+            {"","ICON","EpochHeli2","ColorOrange",1,{0.5,0.5}}
+		};
+	};
 };

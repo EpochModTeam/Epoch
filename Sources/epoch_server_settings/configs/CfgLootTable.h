@@ -801,6 +801,20 @@ class CfgLootTable
 				{ { "PartOreSilver", "magazine" }, 13 }
 		};
 	};
+	
+	class HeliCrash
+	{
+		items[] = {
+				{ { "Medical", "CfgLootTable" }, 5 },
+				{ { "Food", "CfgLootTable" }, 26 },
+				{ { "Backpack", "CfgLootTable" }, 10 },
+				{ { "Uniforms", "CfgLootTable" }, 13 },
+				{ { "Explosives", "CfgLootTable" }, 10 },
+				{ { "Hand", "CfgLootTable" }, 10 },
+				{ { "Vests", "CfgLootTable" }, 10 }
+		}
+	};
+	
 	class MetalBars
 	{
 		items[] = {
