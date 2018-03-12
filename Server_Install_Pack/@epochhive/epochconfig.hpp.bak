@@ -19,8 +19,8 @@ forceRestartTime      = 14400; 			// 4 hour restarts
 			{}, //execVM payload <array>
 			{"VR"} //disallowed worlds <array>
 		}, 
-		// { 1800, "PaydayEvent", 0, 2},
-		// { 1200, "MessageServer", 0, 2},
+		// { 1800, "PaydayEvent", 0, 1},
+		// { 1200, "MessageServer", 0, 1},
 		{ 2700, "AirDrop", 0 , 2, -1, {} ,{"VR"}},
 		{ 2400, "EarthQuake", 0 , 2, -1, {} ,{"VR"}},
 		{ 2700, "Satellite", 0 , 2, -1, {} ,{"VR"}},
