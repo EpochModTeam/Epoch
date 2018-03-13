@@ -812,7 +812,7 @@ class CfgLootTable
 				{ { "Explosives", "CfgLootTable" }, 10 },
 				{ { "Hand", "CfgLootTable" }, 10 },
 				{ { "Vests", "CfgLootTable" }, 10 }
-		}
+		};
 	};
 	
 	class MetalBars
