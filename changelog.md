@@ -22,7 +22,7 @@ All changes for [Arma 3](https://arma3.com/) [Epoch Mod](https://epochmod.com) a
 - Nuisance multiplicator in cfgepochclient.hpp @He-Man
 - Reduce rads over time at cost of immunity @Raymix
 - Wearable Male & Female wearable full radiation suit @Helion4
-- December seasonal items (Santa / Snowman) @Helion4
+- December seasonal items (Santa hat / Snowman) @Helion4
 - Autorun function (suggested by Ghostrider) @He-Man
    - Default Key is "W"
    - You can change the key in EPOCH ESC Menu
@@ -32,6 +32,7 @@ All changes for [Arma 3](https://arma3.com/) [Epoch Mod](https://epochmod.com) a
    - Inside Water, you can not Autorun
 - Helper 3D-Icon + Line on the part, where element is snapped on (while Base-Building) @He-Man
 - Config in cfgepochclient.hpp to block ATM's in Plotpole range @He-Man
+- Power Sword @Helion
 ### Fixed
 - False BE kicks since Arma 3 1.80 update.
 - Nightlight now also follow players inside Vehicles @He-Man
