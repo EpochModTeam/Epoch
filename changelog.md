@@ -1,7 +1,7 @@
 # Change Log
 All changes for [Arma 3](https://arma3.com/) [Epoch Mod](https://epochmod.com) are listed in this changelog.
 
-## [1.1.0.0] - Unreleased
+## [1.1.0.0] - 2018-03-15
 ### Added
 - Plant Spawner: vehicle object for sunflower. @Helion4
 - MoneyDrop Event: Random Money lump with Mapmarker (like Plants) @He-Man
