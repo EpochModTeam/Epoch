@@ -16,6 +16,10 @@ class CfgMasterLoop
     {
         condition = "alive player";
         file = "epoch_code\compile\setup\masterLoop";
+        class Event0
+        {
+            delay = 0.4;
+        };
         class Event1
         {
             delay = 1;

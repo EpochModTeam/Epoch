@@ -66,6 +66,7 @@ if !(alive player && alive _playerObject && !isPlayer _playerObject) then {
 		waituntil {local _playerObject};
 
         // restart masterloop
+		EPOCH_forceUpdateNow = nil;		// Set to nil and wait later until Masterloop has redefined it
         [] spawn EPOCH_masterLoop;
         [5, 100] call EPOCH_niteLight;
 
@@ -76,9 +77,10 @@ if !(alive player && alive _playerObject && !isPlayer _playerObject) then {
         	player removeEventHandler [_x, 0];
         	player addEventHandler [_x,(["CfgEpochClient", _x, ""] call EPOCH_fnc_returnConfigEntryV2)];
         } forEach (["CfgEpochClient", "addEventHandler", []] call EPOCH_fnc_returnConfigEntryV2);
+		waituntil {uisleep 0.5; !isnil "EPOCH_forceUpdateNow"};	// Wait until Materloop is has set this Variable to false
+		EPOCH_forceUpdateNow = true;
     };
 } else {
 	deleteVehicle _playerObject;
 };
 
-EPOCH_forceUpdateNow = true;

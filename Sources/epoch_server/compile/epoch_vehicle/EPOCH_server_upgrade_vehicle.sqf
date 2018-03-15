@@ -50,9 +50,6 @@ _newVeh setVariable ["VEHICLE_SLOT", _slot, true];
 _newVeh setVariable ["VEHICLE_BASECLASS", _baseVeh];
 _newVeh call EPOCH_server_setVToken;
 _newVeh call EPOCH_server_vehicleInit;
-_newVeh setdir _dir;
-_newVeh setposasl _pos;
-
 // set fuel level
 _newVeh setFuel _fuel;
 
@@ -99,7 +96,7 @@ _newHitpoints = getAllHitPointsDamage _newVeh;
 } foreach (_OldHitPoints select 0);
 
 // new Dynamicsimulation
-if(["CfgDynamicSimulation", "vehicleDynamicSimulationSystem", true] call EPOCH_fnc_returnConfigEntryV2)then
+if([configFile >> "CfgEpochServer", "vehicleDynamicSimulationSystem", true] call EPOCH_fnc_returnConfigEntry)then
 {
 	_newveh enableSimulationGlobal false; // turn it off until activated by dynamicSim
 	_newveh enableDynamicSimulation true;
@@ -130,6 +127,9 @@ if !(_removemagazinesturret isequalto []) then {
 		_newVeh removeMagazinesTurret _x;
 	} foreach _removemagazinesturret;
 };
+
+_newVeh setdir _dir;
+_newVeh setposasl _pos;
 
 // save new vehicle to db
 _newveh call EPOCH_Server_Save_Vehicle;

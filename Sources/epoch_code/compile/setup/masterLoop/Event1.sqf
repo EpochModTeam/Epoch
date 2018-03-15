@@ -418,6 +418,8 @@ if (cameraview isequalto "GROUP") then {
 
 // force update
 if (EPOCH_forceUpdateNow) then {
+	_forceUpdate = false;
+	EPOCH_forceUpdate = false;
 	EPOCH_forceUpdateNow = false;
 	call _fnc_forceUpdate;
 };

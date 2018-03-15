@@ -29,6 +29,7 @@ _jammerRange = getNumber(_config >> "buildingJammerRange");
 
 _serverSettingsConfig = configFile >> "CfgEpochServer";
 _immuneIfStartInBase = [_serverSettingsConfig, "immuneIfStartInBase", true] call EPOCH_fnc_returnConfigEntry;
+_vehicleDynamicSimulationSystem = [_serverSettingsConfig, "vehicleDynamicSimulationSystem", true] call EPOCH_fnc_returnConfigEntry;
 
 _removeweapons = [_serverSettingsConfig, "removevehweapons", []] call EPOCH_fnc_returnConfigEntry;
 _removemagazinesturret = [_serverSettingsConfig, "removevehmagazinesturret", []] call EPOCH_fnc_returnConfigEntry;
@@ -83,7 +84,7 @@ for "_i" from 1 to _maxVehicleLimit do {
 					};
 
 					// spawn vehicle at temp location.
-					_vehicle = createVehicle [_class, _location, [], 0, "CAN_COLLIDE"];
+					_vehicle = createVehicle [_class, [random 500, random 500,500], [], 0, "CAN_COLLIDE"];
 					// turn off BIS randomization
 					_vehicle setVariable ["BIS_enableRandomization", false];
 					if !(isNull _vehicle) then {
@@ -116,8 +117,8 @@ for "_i" from 1 to _maxVehicleLimit do {
 						_vehicle call EPOCH_server_setVToken;
 						_vehicle call EPOCH_server_vehicleInit;
 						// set final direction and postion of vehicle
-						_vehicle setposATL _location;
 						_vehicle setVectorDirAndUp _worldspace;
+						_vehicle setposATL _location;
 
 						// set fuel level
 						_vehicle setFuel _fuel;
@@ -213,7 +214,7 @@ for "_i" from 1 to _maxVehicleLimit do {
 						};
 
 						// new Dynamicsimulation
-						if(["CfgDynamicSimulation", "vehicleDynamicSimulationSystem", true] call EPOCH_fnc_returnConfigEntryV2)then
+						if(_vehicleDynamicSimulationSystem)then
 						{
 							_vehicle enableSimulationGlobal false; // turn it off until activated by dynamicSim
 							_vehicle enableDynamicSimulation true;

@@ -14,17 +14,22 @@
 /*[[[cog from arma_config_tools import *; json_to_arma()]]]*/
 class CfgEpochClient
 {
-    epochVersion = "1.0.0";
+    epochVersion = "1.1.0";
     ArmAVersion = 176;
 	debug = "true";  // true = enable extra rpt debug lines, false to disable
 
 	antagonistRngChance = 100; // increase number to reduce chances and reduce to increase. Default 100
+	NuisanceMulti = 0.5;		// Multi for Nuisance increase on shooting - higher Nuisance effect at least antagonist spawn change. (0-1, default 0.5)
+
 	outOfBoundsRadiation = 10; // how much rads per tick (10sec), when outside play area.
 	radioactiveLocations[] = {"NameCityCapital", "NameCity", "Airport"}; // used for random radioactive locations and to suppress animal spawns within cities.
 	radiatedObjMaxFalloutDist = 125; // max distance radiated object can affect player (number in meters)
 	geigerCounterEnergyUsage = 10; // default loss of 10 energy every 10sec of use
 	radiationEffectsThreshold = 10; // default level for screen effects to indicate a player's rad dosage (0-100)
-
+	
+	baseRadiationLoss = -1; //default radiation loss every 1 minute, calculated from total immunity. No immunity no reduction.
+	baseRadiationLossImmunityPenalty = -1; //immunity is reduced as a penalty for radiation loss effect
+	
     baseHungerLoss = 2; // increase number to speed up rate of Hunger loss
     baseThirstLoss = 2; // increase number to speed up rate of Thirst loss
 	accelerateHTALoss = "true"; // use server's time acceleration to increase the rate of Hunger, Thirst and Alcohol loss
@@ -51,6 +56,7 @@ class CfgEpochClient
     maxdoors = 10;					// Max allowed doors per Group
     maxgates = 5;					// Max allowed Gates per Group
 
+	AtmBlockedAtPlot = "true";		// Block ATM's in Plotpole-Range
     disableRemoteSensors = "true";  // disableRemoteSensors true/false
 
     epochMessageBackgroundCol[] = {0,0,0,0.2};  //Epoch_message background color (format: {R,G,B,A})

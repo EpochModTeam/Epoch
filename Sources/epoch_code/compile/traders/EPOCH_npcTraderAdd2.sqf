@@ -1,88 +1,156 @@
-//[[[cog import generate_private_arrays ]]]
-private ["_allowAdd","_array","_config","_cryptoCount","_index","_item","_itemIcon","_itemName","_itemTax","_itemWorth","_qty","_sizeOut","_tax","_uiItem","_uiQty","_worth"];
-//[[[end]]]
+/*
+	Author: He-Man - Ignatz-Gaming
+
+    Contributors: Raimonds Virtoss
+
+	Description:
+	Move Items in Tradermenu from Traderinventory to TraderOut window
+
+    Licence:
+    Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
+
+    Github:
+    https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_code/compile/traders/EPOCH_npcTraderAdd2.sqf
+*/
+
+private [	"_PlayerItemsOutBox","_TraderItemsBox","_TraderItemsOutBox","_CryptoInCtrl","_CryptoOutCtrl","_allowAdd","_uiItem","_rounds","_itemIcon","_itemName","_itemColor","_errormsg","_soldrounds","_tooltip","_config",
+			"_ItemIndex","_sizeOut","_item","_maxrnd","_uiQty","_index","_cryptoCount","_worth","_itemTax","_tax"
+];
 params ["_control","_selected"];
+_selected params ["_CurControl","_id"];
 
-_allowAdd = true;
+_PlayerItemsOutBox = 41501;
+_TraderItemsBox = 41503;
+_TraderItemsOutBox = 41502;
+_CryptoInCtrl = 41004;
+_CryptoOutCtrl = 41005;
 
-_uiItem = (_selected select 0) lnbData[(_selected select 1), 0];
 
-_config = 'CfgPricing' call EPOCH_returnConfig;
-if (isClass (_config >> _uiItem)) then{
 
-	if (_uiItem isKindOf "Air" || _uiItem isKindOf "Ship" || _uiItem isKindOf "LandVehicle" || _uiItem isKindOf "Tank") then {
-
-		// check if a vehicle is already on the list
-		_sizeOut = lbSize 41501;
-		//_array = [];
-		if (_sizeOut > 0) then {
-			for "_i" from 0 to(_sizeOut - 1) do {
-				_item = lbData[41501, _i];
-				//_array pushBack _item;
-				if (_item isKindOf "Air" || _item isKindOf "Ship" || _item isKindOf "LandVehicle" || _item isKindOf "Tank") exitWith{
-					_allowAdd = false;
+if !(isNull EPOCH_lastNPCtradeTarget) then {
+	_allowAdd = true;
+	_uiItem = _CurControl lnbData [_id, 0];
+	_rounds = _CurControl lnbValue [_id, 0];
+	_itemIcon = _CurControl lnbPicture [_id, 0];
+	_itemName = _CurControl lnbText [_id, 2];
+	_itemColor = _CurControl lnbColor [_id, 2];
+	_errormsg = "";
+	_soldrounds = 0;
+	_tooltip = "";
+	
+	
+	_config = 'CfgPricing' call EPOCH_returnConfig;
+	if (isClass (_config >> _uiItem)) then{
+		_ItemIndex = (EPOCH_NpcTradeTraderItems select 0) find _uiItem;
+		if (_ItemIndex > -1) then {
+			if (_uiItem isKindOf "Air" || _uiItem isKindOf "Ship" || _uiItem isKindOf "LandVehicle" || _uiItem isKindOf "Tank") then {
+				_sizeOut = lbSize _PlayerItemsOutBox;
+				if (_sizeOut > 0) then {
+					for "_i" from 0 to(_sizeOut - 1) do {
+						_item = lbData [_PlayerItemsOutBox, _i];
+						if (_item isKindOf "Air" || _item isKindOf "Ship" || _item isKindOf "LandVehicle" || _item isKindOf "Tank") exitWith{
+							_allowAdd = false;
+							_errormsg = "Limit one per trade";
+						};
+					};
+				};
+				if (!_allowAdd) exitwith {};
+				_sizeOut = lbSize _TraderItemsOutBox;
+				if (_sizeOut > 0) then {
+					for "_i" from 0 to(_sizeOut - 1) do {
+						_item = lbData [_TraderItemsOutBox, _i];
+						if (_item isKindOf "Air" || _item isKindOf "Ship" || _item isKindOf "LandVehicle" || _item isKindOf "Tank") exitWith{
+							_allowAdd = false;
+							_errormsg = "Limit one per trade";
+						};
+					};
 				};
 			};
-		};
-		_sizeOut = lbSize 41502;
-		//_array = [];
-		if (_sizeOut > 0) then {
-			for "_i" from 0 to(_sizeOut - 1) do {
-				_item = lbData[41502, _i];
-				if (_item isKindOf "Air" || _item isKindOf "Ship" || _item isKindOf "LandVehicle" || _item isKindOf "Tank") exitWith{
-					_allowAdd = false;
+			if (_allowAdd) then {
+				_maxrnd = 1;
+				if ([_uiItem,"cfgMagazines"] call Epoch_fnc_isAny) then {
+					_maxrnd = getnumber (configfile >> "cfgMagazines" >> _uiItem >> "count");
 				};
+				if ((_rounds/_maxrnd) >= 1) then {
+					_soldrounds = _maxrnd;
+				}
+				else {
+					_soldrounds = _rounds;
+				};
+				_rounds = _rounds - _soldrounds;
+				if (_rounds < 1) then {
+					_CurControl lnbDeleteRow _id;
+				}
+				else {
+					_uiQty = _rounds /_maxrnd;
+					if (_uiQty >= 1) then {
+						_uiQty = floor _uiQty;
+					}
+					else {
+						_uiQty = ceil _uiQty;
+						_tooltip = format ["%1 rounds left in Magazine",_rounds];
+					};
+					lnbSetText [_TraderItemsBox, [_id, 1], str (_uiQty)];
+					lnbSetValue [_TraderItemsBox, [_id, 0], _rounds];
+					if !(_tooltip isequalto "") then {
+						lbSetTooltip [_TraderItemsBox, _id*3, _tooltip];
+						lnbSetColor [_TraderItemsBox,[_id,2],[1,(_rounds/_maxrnd),0,1]];
+					};
+				};
+				if (_soldrounds > 0) then {
+					_index = lbAdd [_control, _itemName];
+					lbSetData [_control, _index, _uiItem];
+					lbSetValue [_control,_index, _soldrounds];
+					lbSetPicture [_control, _index, _itemIcon];
+					lbSetColor [_control,_index,_itemColor];
+					if ([_uiItem,"cfgMagazines"] call Epoch_fnc_isAny) then {
+						_maxrnd = getnumber (configfile >> "cfgMagazines" >> _uiItem >> "count");
+						if !((_soldrounds/_maxrnd) >= 1) then {
+							_tooltip = format ["%1 rounds left in Magazine",_soldrounds];
+							lbSetTooltip [_control,_index,_tooltip];
+						};
+					};
+				};
+				(EPOCH_NpcTradeTraderItems select 1) set [_ItemIndex,_rounds];
+				_cryptoCount = 0;
+				_sizeOut = lbSize _PlayerItemsOutBox;
+				if (_sizeOut > 0) then {
+					for "_i" from 0 to (_sizeOut - 1) do {
+						_item = lbData [_PlayerItemsOutBox, _i];
+						_rounds = lbValue [_PlayerItemsOutBox, _i];
+						_worth = getNumber (_config >> _item >> "price");
+						_maxrnd = 1;
+						if ([_item,"cfgMagazines"] call Epoch_fnc_isAny) then {
+							_maxrnd = getnumber (configfile >> "cfgMagazines" >> _item >> "count");
+						};
+						_worth = round (_worth*(_rounds/_maxrnd));
+						_cryptoCount = _cryptoCount + _worth;
+					};
+				};
+				ctrlSetText [_CryptoInCtrl, (format["%1 Krypto", _cryptoCount])];
+				_cryptoCount = 0;
+				_sizeOut = lbSize _TraderItemsOutBox;
+				if (_sizeOut > 0) then {
+					for "_i" from 0 to (_sizeOut - 1) do {
+						_item = lbData [_TraderItemsOutBox, _i];
+						_rounds = lbValue [_TraderItemsOutBox, _i];
+						_worth = getNumber (_config >> _item >> "price");
+						_itemTax = getNumber (_config >> _item >> "tax");
+						_tax = _worth * (EPOCH_taxRate + _itemTax);
+						_worth = ceil(_worth + _tax);
+						_maxrnd = 1;
+						if ([_item,"cfgMagazines"] call Epoch_fnc_isAny) then {
+							_maxrnd = getnumber (configfile >> "cfgMagazines" >> _item >> "count");
+						};
+						_worth = round (_worth*(_rounds/_maxrnd));
+						_cryptoCount = _cryptoCount + _worth;
+					};
+				};
+				ctrlSetText [_CryptoOutCtrl, (format["%1 Krypto", _cryptoCount])];
+			}
+			else {
+				["Limit one per trade", 5] call Epoch_message;
 			};
 		};
-		// disallow adding item to list of already one
-
-
-	};
-
-	if (_allowAdd) then {
-		_itemName = (_selected select 0) lnbText[(_selected select 1), 2];
-		_index = lbAdd [_control, _itemName];
-		lbSetData [_control, _index, _uiItem];
-
-		_itemIcon = (_selected select 0) lnbPicture [(_selected select 1), 0];
-		lbSetPicture [_control, _index, _itemIcon];
-
-		_uiQty = (_selected select 0) lnbValue [(_selected select 1), 0];
-		if (_uiQty <= 1) then {
-			(_selected select 0) lnbDeleteRow (_selected select 1);
-		} else {
-			_qty = _uiQty - 1;
-			lnbSetText[41503, [(_selected select 1), 1], str(_qty)];
-			lnbSetValue[41503, [(_selected select 1), 0], _qty];
-		};
-
-		_cryptoCount = 0;
-		_sizeOut = lbSize 41501;
-		//_array = [];
-		if (_sizeOut > 0) then {
-			for "_i" from 0 to (_sizeOut - 1) do {
-				_item = lbData [41501, _i];
-				//_array pushBack _item;
-				_worth = getNumber(_config >> _item >> "price");
-				_cryptoCount = _cryptoCount + _worth;
-			};
-		};
-		ctrlSetText [41004, (format ["%1 Krypto", _cryptoCount])];
-
-		_cryptoCount = 0;
-		_sizeOut = lbSize 41502;
-		if (_sizeOut > 0) then {
-			for "_i" from 0 to (_sizeOut - 1) do {
-				_item = lbData [41502, _i];
-				_itemWorth = getNumber(_config >> _item >> "price");
-				_itemTax = getNumber(_config >> _item >> "tax");
-				_tax = _itemWorth * (EPOCH_taxRate + _itemTax);
-				_itemWorth = ceil(_itemWorth + _tax);
-				_cryptoCount = _cryptoCount + _itemWorth;
-			};
-		};
-		ctrlSetText [41005, (format ["%1 Krypto", _cryptoCount])];
-	} else {
-		["Limit one per trade", 5] call Epoch_message;
 	};
 };

@@ -650,11 +650,11 @@ class CfgLootTable
 				{ { "MeleeSledge", "weapon" }, 20 },
 				{ { "ChainSaw", "weapon" }, 10 },
 				{ { "Plunger", "weapon" }, 4 },
-				{ { "MeleeSword", "weapon" }, 1 },
+				{ { "MeleeSword", "weapon" }, 2 },
+				{ { "Power_Sword", "weapon" }, 1 },
 				{ { "MeleeRod", "weapon" }, 2 },
 				{ { "lighter_epoch", "magazine" }, 1 },
 				{ { "SmeltingTools_EPOCH", "magazine" }, 10 }
-
 		};
 	};
 
@@ -801,6 +801,20 @@ class CfgLootTable
 				{ { "PartOreSilver", "magazine" }, 13 }
 		};
 	};
+	
+	class HeliCrash
+	{
+		items[] = {
+				{ { "Medical", "CfgLootTable" }, 5 },
+				{ { "Food", "CfgLootTable" }, 26 },
+				{ { "Backpack", "CfgLootTable" }, 10 },
+				{ { "Uniforms", "CfgLootTable" }, 13 },
+				{ { "Explosives", "CfgLootTable" }, 10 },
+				{ { "Hand", "CfgLootTable" }, 10 },
+				{ { "Vests", "CfgLootTable" }, 10 }
+		};
+	};
+	
 	class MetalBars
 	{
 		items[] = {
@@ -1141,7 +1155,7 @@ class CfgLootTable
 				{ { "B_AssaultPack_rgr", "backpack" }, 5 },
 				{ { "B_AssaultPack_sgg", "backpack" }, 5 },
 				{ { "B_AssaultPack_blk", "backpack" }, 5 },
-
+				{ { "B_AssaultPack_tna_F", "backpack" }, 5 },
 
 				{ { "B_Carryall_cbr", "backpack" }, 1 },
 				{ { "B_Carryall_khk", "backpack" }, 1 },

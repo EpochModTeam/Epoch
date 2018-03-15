@@ -68,14 +68,14 @@ _respawnButton ctrlEnable false;
 [_display] spawn {
 	disableSerialization;
 	params ["_display"];
-	EPOCH_forceUpdate = true;
 	_startTime = diag_tickTime+5;
 	waitUntil {
 		uiSleep 0.2;
 	   (isNull _display) || ((_startTime - diag_tickTime) <= 0)
 	};
 	if (!isNull _display) then {
-		EPOCH_forceUpdate = true;
+		player setUnitLoadout (getUnitLoadout player);
+		missionnamespace setvariable ["EPOCH_forceUpdateNow",true];
 	};
 };
 

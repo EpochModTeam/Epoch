@@ -91,7 +91,17 @@ diag_log "Epoch: Init Variables";
 call compile preprocessFileLineNumbers "\epoch_server\init\server_variables.sqf";
 call compile preprocessFileLineNumbers "\epoch_server\init\server_securityfunctions.sqf";
 
-
+// Enable Dynamic simulation
+_dynSimToggle = [_serverSettingsConfig, "enableDynamicSimulationSystem", true] call EPOCH_fnc_returnConfigEntry;
+enableDynamicSimulationSystem _dynSimToggle;
+if(_dynSimToggle)then
+{
+	"IsMoving" setDynamicSimulationDistanceCoef ([_serverSettingsConfig, "isMovingCoefValue", 2] call EPOCH_fnc_returnConfigEntry);
+	"Group" setDynamicSimulationDistance ([_serverSettingsConfig, "groupDynSimDistance", 500] call EPOCH_fnc_returnConfigEntry);
+	"Vehicle" setDynamicSimulationDistance ([_serverSettingsConfig, "vehicleDynSimDistance", 350] call EPOCH_fnc_returnConfigEntry);
+	"EmptyVehicle" setDynamicSimulationDistance ([_serverSettingsConfig, "emptyVehicleDynSimDistance", 250] call EPOCH_fnc_returnConfigEntry);
+	"Prop" setDynamicSimulationDistance ([_serverSettingsConfig, "propDynSimDistance", 50] call EPOCH_fnc_returnConfigEntry);
+};
 ["I", _instanceID, "86400", ["CONTINUE"]] call EPOCH_fnc_server_hiveSETEX;
 diag_log format["Epoch: Start Hive, Instance ID: '%1'", _instanceID];
 
@@ -174,8 +184,8 @@ if !(EPOCH_forcedVehicleSpawnTable isEqualTo "") then {
 _allowedVehiclesList = getArray(_epochConfig >> worldName >> _allowedVehicleListName);
 _vehicleSlotLimit = 0;
 {_vehicleSlotLimit = _vehicleSlotLimit + (_x select 1)} forEach _allowedVehiclesList;
-_ReservedSlots = 50;
-_vehicleSlotLimit = _vehicleSlotLimit + _ReservedSlots;
+_ReservedVehSlots = [_serverSettingsConfig, "ReservedVehSlots", 50] call EPOCH_fnc_returnConfigEntry;
+_vehicleSlotLimit = _vehicleSlotLimit + _ReservedVehSlots;
 if (EPOCH_useOldLoadVehicles) then {
     _vehicleSlotLimit call EPOCH_load_vehicles_old;
 } else {

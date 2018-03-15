@@ -501,7 +501,7 @@ for "_i" from 1 to 3 do {
 
 	_temp = _temp + "
 		,['Key Binds',[],'','1',[]]
-		,['  3 Key - Teleport In Front',[],'','1',[]]
+		,['  5 Key - Teleport In Front',[],'','1',[]]
 		,['  F2 - Cancel Spectating',[],'','1',[]]
 		,['  F5 - Delete Target',[],'','1',[]]
 		];
@@ -1815,10 +1815,10 @@ _skn_admincode = compileFinal ("
 		_cfgPricing = 'CfgPricing' call EPOCH_returnConfig;
 		if (_this == 61) then {
 			_airVehicles = ""
+				(configName _x) iskindof 'AIR' &&
 				getText(_x >> 'displayName') != '' &&
 				getText(_x >> 'picture') != '' &&
 				getNumber(_x >> 'type') != 0 &&
-				getText (_x >> 'vehicleClass') in ['Air'] &&
 				isClass(_cfgPricing >> configName _x)
 			""configClasses (configFile >> 'CfgVehicles');
 			{
@@ -1829,10 +1829,10 @@ _skn_admincode = compileFinal ("
 		};
 		if (_this == 62) then {
 			_landVehicles = ""
+				(configName _x) iskindof 'LandVehicle' &&
 				getText(_x >> 'displayName') != '' &&
 				getText(_x >> 'picture') != '' &&
 				configName _x != 'PaperCar' &&
-				getText (_x >> 'vehicleClass') in ['Car'] &&
 				isClass(_cfgPricing >> configName _x)
 			""configClasses (configFile >> 'CfgVehicles');
 			{
@@ -1843,10 +1843,10 @@ _skn_admincode = compileFinal ("
 		};
 		if (_this == 63) then {
 			_shipVehicles = ""
+				(configName _x) iskindof 'SHIP' &&
 				getText(_x >> 'displayName') != '' &&
 				getText(_x >> 'picture') != '' &&
 				getNumber(_x >> 'type') in [1,2,3,4] &&
-				getText (_x >> 'vehicleClass') in ['Ship'] &&
 				isClass(_cfgPricing >> configName _x)
 			""configClasses (configFile >> 'CfgVehicles');
 			{
@@ -2147,7 +2147,6 @@ _skn_admincode = compileFinal ("
 	};
 };
 "+_skn_infrontTP+" = {
-	"+_skn_tg_infrontTP+" = !"+_skn_tg_infrontTP+";
 	if ("+_skn_tg_infrontTP+") then {
 		if (vehicle player == player) then {
 			_distance = 10;

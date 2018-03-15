@@ -259,6 +259,12 @@ class CfgMainTable
 		LootMax = 6;
 		tables[] = { "Shipwreck" };
 	};
+	class container_helicrash_epoch : Default
+	{
+		lootMin = 6;
+		LootMax = 10;
+		tables[] = { "HeliCrash" };
+	};
 	class MineralDepositCopper_EPOCH : Default
 	{
 		lootMin = 5;

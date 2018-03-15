@@ -31,7 +31,7 @@ if (_item in ["Hatchet","CrudeHatchet"]) then {
 		player addMagazine "Hatchet_swing";
 	};
 };
-if (_item in ["MeleeSledge","MeleeMaul","MeleeSword"]) then {
+if (_item in ["MeleeSledge","MeleeMaul","MeleeSword","Power_Sword"]) then {
 	if !("sledge_swing" in _mags) then {
 		player addMagazine "sledge_swing";
 	};

@@ -24,7 +24,6 @@ EPOCH_VehicleSlots = [];
 _allVehicles = [];
 
 _serverSettingsConfig = configFile >> "CfgEpochServer";
-_simulationHandler = [_serverSettingsConfig, "simulationHandlerOld", false] call EPOCH_fnc_returnConfigEntry;
 _immuneVehicleSpawn = [_serverSettingsConfig, "immuneVehicleSpawn", false] call EPOCH_fnc_returnConfigEntry;
 _removeweapons = [_serverSettingsConfig, "removevehweapons", []] call EPOCH_fnc_returnConfigEntry;
 _removemagazinesturret = [_serverSettingsConfig, "removevehmagazinesturret", []] call EPOCH_fnc_returnConfigEntry;
@@ -254,10 +253,6 @@ for "_i" from 1 to _maxVehicleLimit do {
 						_marker setMarkerType "mil_dot";
 						_marker setMarkerText _class;
 						_marker setMarkerColor "ColorGreen";
-					};
-
-					if (_simulationHandler) then{
-						_vehicle enableSimulationGlobal false;
 					};
 				};
 			};

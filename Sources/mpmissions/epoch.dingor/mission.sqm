@@ -1,0 +1,6099 @@
+version=53;
+class EditorData
+{
+	moveGridStep=1;
+	angleGridStep=0.2617994;
+	scaleGridStep=1;
+	autoGroupingDist=10;
+	toggles=1;
+	class ItemIDProvider
+	{
+		nextID=2;
+	};
+	class Camera
+	{
+		pos[]={929.11755,30.959999,9112.7178};
+		dir[]={0.1081438,-0.21725178,0.97011107};
+		up[]={0.024069432,0.97611481,0.21591686};
+		aside[]={0.99384779,-1.4409306e-007,-0.11079042};
+	};
+};
+binarizationWanted=0;
+addons[]=
+{
+	"A3_Ui_F",
+	"A3_epoch_config"
+};
+class AddonsMetaData
+{
+	class List
+	{
+		items=2;
+		class Item0
+		{
+			className="A3_Ui_F";
+			name="Arma 3 - User Interface";
+			author="Bohemia Interactive";
+			url="https://www.arma3.com";
+		};
+		class Item1
+		{
+			className="A3_epoch_config";
+			name="A3_epoch_config";
+		};
+	};
+};
+randomSeed=12032465;
+class ScenarioData
+{
+	author="[VB]AWOL";
+};
+class Mission
+{
+	class Intel
+	{
+		briefingName="Epoch Mod";
+		timeOfChanges=28800;
+		startWeather=0;
+		startWind=0;
+		forecastWeather=0;
+		forecastWind=0;
+		forecastWaves=0;
+		year=2035;
+		month=6;
+		day=24;
+		hour=12;
+		minute=0;
+		startFogDecay=0;
+		forecastFogDecay=0;
+	};
+	class Entities
+	{
+		items=203;
+		class Item0
+		{
+			dataType="Marker";
+			position[]={5493.7646,7.8920898,5000.9497};
+			name="center";
+			type="Empty";
+			id=0;
+			atlOffset=-4.1990528;
+		};
+		class Item1
+		{
+			dataType="Marker";
+			position[]={944.10492,5.96,9218.8789};
+			name="respawn_east";
+			type="Empty";
+			id=1;
+		};
+		class Item2
+		{
+			dataType="Marker";
+			position[]={944.10492,5.96,9218.8789};
+			name="respawn_west";
+			type="Empty";
+			id=2;
+		};
+		class Item3
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=4;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=3;
+		};
+		class Item4
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=6;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=5;
+		};
+		class Item5
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=8;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=7;
+		};
+		class Item6
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=10;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=9;
+		};
+		class Item7
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=12;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=11;
+		};
+		class Item8
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=14;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=13;
+		};
+		class Item9
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=16;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=15;
+		};
+		class Item10
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=18;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=17;
+		};
+		class Item11
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=20;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=19;
+		};
+		class Item12
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=22;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=21;
+		};
+		class Item13
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=24;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=23;
+		};
+		class Item14
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=26;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=25;
+		};
+		class Item15
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=28;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=27;
+		};
+		class Item16
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=30;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=29;
+		};
+		class Item17
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=32;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=31;
+		};
+		class Item18
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=34;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=33;
+		};
+		class Item19
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=36;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=35;
+		};
+		class Item20
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=38;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=37;
+		};
+		class Item21
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=40;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=39;
+		};
+		class Item22
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=42;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=41;
+		};
+		class Item23
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=44;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=43;
+		};
+		class Item24
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=46;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=45;
+		};
+		class Item25
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=48;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=47;
+		};
+		class Item26
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=50;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=49;
+		};
+		class Item27
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=52;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=51;
+		};
+		class Item28
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=54;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=53;
+		};
+		class Item29
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=56;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=55;
+		};
+		class Item30
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=58;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=57;
+		};
+		class Item31
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=60;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=59;
+		};
+		class Item32
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=62;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=61;
+		};
+		class Item33
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=64;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=63;
+		};
+		class Item34
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=66;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=65;
+		};
+		class Item35
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=68;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=67;
+		};
+		class Item36
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=70;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=69;
+		};
+		class Item37
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=72;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=71;
+		};
+		class Item38
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=74;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=73;
+		};
+		class Item39
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=76;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=75;
+		};
+		class Item40
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=78;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=77;
+		};
+		class Item41
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=80;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=79;
+		};
+		class Item42
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=82;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=81;
+		};
+		class Item43
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=84;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=83;
+		};
+		class Item44
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=86;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=85;
+		};
+		class Item45
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=88;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=87;
+		};
+		class Item46
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=90;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=89;
+		};
+		class Item47
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=92;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=91;
+		};
+		class Item48
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=94;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=93;
+		};
+		class Item49
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=96;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=95;
+		};
+		class Item50
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=98;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=97;
+		};
+		class Item51
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=100;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=99;
+		};
+		class Item52
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=102;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=101;
+		};
+		class Item53
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=104;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=103;
+		};
+		class Item54
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=106;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=105;
+		};
+		class Item55
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=108;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=107;
+		};
+		class Item56
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=110;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=109;
+		};
+		class Item57
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=112;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=111;
+		};
+		class Item58
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=114;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=113;
+		};
+		class Item59
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=116;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=115;
+		};
+		class Item60
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=118;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=117;
+		};
+		class Item61
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=120;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=119;
+		};
+		class Item62
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=122;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=121;
+		};
+		class Item63
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=124;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=123;
+		};
+		class Item64
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=126;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=125;
+		};
+		class Item65
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=128;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=127;
+		};
+		class Item66
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=130;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=129;
+		};
+		class Item67
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=132;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=131;
+		};
+		class Item68
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=134;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=133;
+		};
+		class Item69
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=136;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=135;
+		};
+		class Item70
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=138;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=137;
+		};
+		class Item71
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=140;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=139;
+		};
+		class Item72
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=142;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=141;
+		};
+		class Item73
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=144;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=143;
+		};
+		class Item74
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=146;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=145;
+		};
+		class Item75
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=148;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=147;
+		};
+		class Item76
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=150;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=149;
+		};
+		class Item77
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=152;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=151;
+		};
+		class Item78
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=154;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=153;
+		};
+		class Item79
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=156;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=155;
+		};
+		class Item80
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=158;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=157;
+		};
+		class Item81
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=160;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=159;
+		};
+		class Item82
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=162;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=161;
+		};
+		class Item83
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=164;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=163;
+		};
+		class Item84
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=166;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=165;
+		};
+		class Item85
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=168;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=167;
+		};
+		class Item86
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=170;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=169;
+		};
+		class Item87
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=172;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=171;
+		};
+		class Item88
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=174;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=173;
+		};
+		class Item89
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=176;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=175;
+		};
+		class Item90
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=178;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=177;
+		};
+		class Item91
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=180;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=179;
+		};
+		class Item92
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=182;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=181;
+		};
+		class Item93
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=184;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=183;
+		};
+		class Item94
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=186;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=185;
+		};
+		class Item95
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=188;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=187;
+		};
+		class Item96
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=190;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=189;
+		};
+		class Item97
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=192;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=191;
+		};
+		class Item98
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=194;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=193;
+		};
+		class Item99
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=196;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=195;
+		};
+		class Item100
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=198;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=197;
+		};
+		class Item101
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=200;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=199;
+		};
+		class Item102
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=202;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=201;
+		};
+		class Item103
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=204;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=203;
+		};
+		class Item104
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=206;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=205;
+		};
+		class Item105
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=208;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=207;
+		};
+		class Item106
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=210;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=209;
+		};
+		class Item107
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=212;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=211;
+		};
+		class Item108
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=214;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=213;
+		};
+		class Item109
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=216;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=215;
+		};
+		class Item110
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=218;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=217;
+		};
+		class Item111
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=220;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=219;
+		};
+		class Item112
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=222;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=221;
+		};
+		class Item113
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=224;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=223;
+		};
+		class Item114
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=226;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=225;
+		};
+		class Item115
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=228;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=227;
+		};
+		class Item116
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=230;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=229;
+		};
+		class Item117
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=232;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=231;
+		};
+		class Item118
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=234;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=233;
+		};
+		class Item119
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=236;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=235;
+		};
+		class Item120
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=238;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=237;
+		};
+		class Item121
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=240;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=239;
+		};
+		class Item122
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=242;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=241;
+		};
+		class Item123
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=244;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=243;
+		};
+		class Item124
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=246;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=245;
+		};
+		class Item125
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=248;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=247;
+		};
+		class Item126
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=250;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=249;
+		};
+		class Item127
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=252;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=251;
+		};
+		class Item128
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=254;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=253;
+		};
+		class Item129
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=256;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=255;
+		};
+		class Item130
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=258;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=257;
+		};
+		class Item131
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=260;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=259;
+		};
+		class Item132
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=262;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=261;
+		};
+		class Item133
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=264;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=263;
+		};
+		class Item134
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=266;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=265;
+		};
+		class Item135
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=268;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=267;
+		};
+		class Item136
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=270;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=269;
+		};
+		class Item137
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=272;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=271;
+		};
+		class Item138
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=274;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=273;
+		};
+		class Item139
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=276;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=275;
+		};
+		class Item140
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=278;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=277;
+		};
+		class Item141
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=280;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=279;
+		};
+		class Item142
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=282;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=281;
+		};
+		class Item143
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=284;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=283;
+		};
+		class Item144
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=286;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=285;
+		};
+		class Item145
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=288;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=287;
+		};
+		class Item146
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=290;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=289;
+		};
+		class Item147
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=292;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=291;
+		};
+		class Item148
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=294;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=293;
+		};
+		class Item149
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=296;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=295;
+		};
+		class Item150
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=298;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=297;
+		};
+		class Item151
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=300;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=299;
+		};
+		class Item152
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=302;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=301;
+		};
+		class Item153
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=304;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=303;
+		};
+		class Item154
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=306;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=305;
+		};
+		class Item155
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=308;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=307;
+		};
+		class Item156
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=310;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=309;
+		};
+		class Item157
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=312;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=311;
+		};
+		class Item158
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=314;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=313;
+		};
+		class Item159
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=316;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=315;
+		};
+		class Item160
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=318;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=317;
+		};
+		class Item161
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=320;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=319;
+		};
+		class Item162
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=322;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=321;
+		};
+		class Item163
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=324;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=323;
+		};
+		class Item164
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=326;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=325;
+		};
+		class Item165
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=328;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=327;
+		};
+		class Item166
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=330;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=329;
+		};
+		class Item167
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=332;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=331;
+		};
+		class Item168
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=334;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=333;
+		};
+		class Item169
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=336;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=335;
+		};
+		class Item170
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=338;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=337;
+		};
+		class Item171
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=340;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=339;
+		};
+		class Item172
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=342;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=341;
+		};
+		class Item173
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=344;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=343;
+		};
+		class Item174
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=346;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=345;
+		};
+		class Item175
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=348;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=347;
+		};
+		class Item176
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=350;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=349;
+		};
+		class Item177
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=352;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=351;
+		};
+		class Item178
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=354;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=353;
+		};
+		class Item179
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=356;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=355;
+		};
+		class Item180
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=358;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=357;
+		};
+		class Item181
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=360;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=359;
+		};
+		class Item182
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=362;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=361;
+		};
+		class Item183
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=364;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=363;
+		};
+		class Item184
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=366;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=365;
+		};
+		class Item185
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=368;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=367;
+		};
+		class Item186
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=370;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=369;
+		};
+		class Item187
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=372;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=371;
+		};
+		class Item188
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=374;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=373;
+		};
+		class Item189
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=376;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=375;
+		};
+		class Item190
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=378;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=377;
+		};
+		class Item191
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=380;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=379;
+		};
+		class Item192
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=382;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=381;
+		};
+		class Item193
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=384;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=383;
+		};
+		class Item194
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=386;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=385;
+		};
+		class Item195
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=388;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=387;
+		};
+		class Item196
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=390;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=389;
+		};
+		class Item197
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=392;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=391;
+		};
+		class Item198
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=394;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=393;
+		};
+		class Item199
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=396;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=395;
+		};
+		class Item200
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=398;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=397;
+		};
+		class Item201
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=400;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=399;
+		};
+		class Item202
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={944.10492,5.9614382,9218.8789};
+						angles[]={0,4.7169838,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						isPlayable=1;
+					};
+					id=402;
+					type="VirtualMan_EPOCH";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=401;
+		};
+	};
+};

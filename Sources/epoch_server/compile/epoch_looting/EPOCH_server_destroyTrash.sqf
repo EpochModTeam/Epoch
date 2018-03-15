@@ -41,8 +41,8 @@ if (alive _object) then {
 	if (isClass _config) then {
 		if (random 1 < getNumber(_config >> "chance")) then {
 			[_item, _payout] call EPOCH_serverLootObject;
-			_errorMsg = "You found something!";
-			[_errorMsg, 5] remoteExec ['Epoch_message',_player];
+			// force player to open gear on this object.
+			[_item, {player action["Gear", _this]}] remoteExec ["call", _player];
 		};
 	};
 

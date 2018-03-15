@@ -1,65 +1,64 @@
 /*
-	Author: Aaron Clark - EpochMod.com
+	Author: He-Man - Ignatz-Gaming
 
-    Contributors: He-Man
+    Contributors: Raimonds Virtoss
 
 	Description:
-	NPC trade code
+	Move Items in Tradermenu from TraderOut window to Traderinventory
 
     Licence:
     Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
 
     Github:
-    https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_code/traders/EPOCH_startNpcTrade.sqf
-
-    Example:
-    cursorTarget call EPOCH_startNpcTrade;
-
-    Parameter(s):
-		_this: OBJECT
-
-	Returns:
-	NOTHING
+    https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_code/compile/traders/EPOCH_startNpcTrade.sqf
 */
-//[[[cog import generate_private_arrays ]]]
-private ["_addWeaponToHands","_arrayIn","_arrayOut","_config","_current_crypto","_errorMsg","_item","_itemTax","_itemWorth","_sizeOut","_tax","_type","_vehSlot","_vehicle","_vehicles"];
-//[[[end]]]
+
+private ["_PlayerItemsOutBox","_TraderItemsOutBox","_config","_current_crypto","_sizeIn","_arrayIn","_item","_rounds","_mags","_itemMags","_index","_sizeOut","_arrayOut","_itemWorth","_itemTax","_tax","_maxrnd"];
 
 if (!isNil "EPOCH_TRADE_STARTED") exitWith{};
 if (isNull _this) exitWith{};
 
 if (alive _this) then {
-
+	_PlayerItemsOutBox = 41501;
+	_TraderItemsOutBox = 41502;
 	_config = 'CfgPricing' call EPOCH_returnConfig;
-
 	_current_crypto = EPOCH_playerCrypto;
-
-	// _arrayIn = Sell Array
-	_sizeOut = lbSize 41501;
+	_sizeIn = lbSize _PlayerItemsOutBox;
 	_arrayIn = [];
-	if (_sizeOut > 0) then {
-		for "_i" from 0 to(_sizeOut - 1) do {
-			_item = lbData[41501, _i];
-
+	if (_sizeIn > 0) then {
+		for "_i" from 0 to (_sizeIn - 1) do {
+			_item = lbData [_PlayerItemsOutBox, _i];
+			_rounds = lbValue [_PlayerItemsOutBox, _i];
 			if (isClass (_config >> _item)) then{
-
-				// test remove items to be sold and add to array
+				_itemWorth = getNumber (_config >> _item >> "price");
+				_maxrnd = 1;
+				if ([_item,"cfgMagazines"] call Epoch_fnc_isAny) then {
+					_maxrnd = getnumber (configfile >> "cfgMagazines" >> _item >> "count");
+				};
+				_itemWorth = round (_itemWorth*(_rounds/_maxrnd));
+				_added = false;
 				if ([_item, "CfgWeapons"] call EPOCH_fnc_isAny) then {
 					if (_item in items player) then {
 						player removeItem _item;
-						_arrayIn pushBack _item;
-					} else {
+						_arrayIn pushBack [_item,_rounds];
+						_added = true;
+					}
+					else {
 						if (_item == primaryweapon player) then {
 							player removeweapon _item;
-							_arrayIn pushBack _item;
+							_arrayIn pushBack [_item,_rounds];
+							_added = true;
 						};
 					};
-				} else {
+				}
+				else {
 					if ([_item, "CfgVehicles"] call EPOCH_fnc_isAny) then {
 						if (_item == backpack player) then {
 							removeBackpack player;
-							_arrayIn pushBack _item;
-						} else {
+							_arrayIn pushBack [_item,_rounds];
+							_added = true;
+						}
+						else {
 							_vehicles = _this nearEntities[[_item], 30];
 							if (!(_vehicles isEqualTo[])) then {
 								_vehicle = _vehicles select 0;
@@ -67,56 +66,66 @@ if (alive _this) then {
 									if (local _vehicle) then {
 										_vehSlot = _vehicle getVariable["VEHICLE_SLOT", "ABORT"];
 										if (_vehSlot != "ABORT") then {
-											_arrayIn pushBack _item;
-											// will be removed server side
+											_arrayIn pushBack [_item,_rounds];
+											_added = true;
 										};
 									};
 								};
 							};
 						};
-					} else {
-						if (_item in magazines player) then {
-							player removeMagazine _item;
-							_arrayIn pushBack _item;
+					}
+					else {
+						_mags = magazinesAmmo player;
+						_itemMags = [];
+						{
+							_x params ["_className","_count"];
+							if (_className isequalto _item) then {
+								_itemMags pushBack _x;
+							};
+						} forEach _mags;
+						_index = _itemMags find [_item,_rounds];
+						if (_index >= 0) then {
+							_arrayIn pushback (_itemMags deleteat _index);
+							_added = true;
+							player removemagazines _item;
+							{
+								_x call EPOCH_fnc_addMagazineOverflow;
+							} foreach _itemMags;
 						};
 					};
 				};
-				// test
-
-
-
-			};
-		};
-	};
-
-	// _arrayOut = Purchase Array
-	_sizeOut = lbSize 41502;
-	_arrayOut = [];
-	if (_sizeOut > 0) then {
-		for "_i" from 0 to(_sizeOut - 1) do {
-			_item = lbData[41502, _i];
-
-			if (isClass (_config >> _item)) then{
-				_itemWorth = getNumber(_config >> "price");
-				_itemTax = getNumber(_config >> "tax");
-				_tax = _itemWorth * (EPOCH_taxRate + _itemTax);
-				_itemWorth = ceil(_itemWorth + _tax);
-
-				if (_current_crypto >= _itemWorth) then {
-					_current_crypto = _current_crypto - _itemWorth;
-					_arrayOut pushBack _item;
+				if (_added) then {
+					_current_crypto = _current_crypto + _itemWorth;
 				};
 			};
 		};
 	};
-
-	if (!(_arrayIn isEqualTo[]) || !(_arrayOut isEqualTo[])) then {
+	_sizeOut = lbSize _TraderItemsOutBox;
+	_arrayOut = [];
+	if (_sizeOut > 0) then {
+		for "_i" from 0 to (_sizeOut - 1) do {
+			_item = lbData [_TraderItemsOutBox, _i];
+			_rounds = lbValue [_TraderItemsOutBox, _i];
+			if (isClass (_config >> _item)) then {
+				_itemWorth = getNumber (_config >> _item >> "price");
+				_itemTax = getNumber (_config >> _item >> "tax");
+				_tax = _itemWorth * (EPOCH_taxRate + _itemTax);
+				_itemWorth = ceil (_itemWorth + _tax);
+				_maxrnd = 1;
+				if ([_item,"cfgMagazines"] call Epoch_fnc_isAny) then {
+					_maxrnd = getnumber (configfile >> "cfgMagazines" >> _item >> "count");
+				};
+				_itemWorth = round (_itemWorth*(_rounds/_maxrnd));
+				if (_current_crypto >= _itemWorth) then {
+					_current_crypto = _current_crypto - _itemWorth;
+					_arrayOut pushBack [_item,_rounds];
+				};
+			};
+		};
+	};
+	if !(_arrayIn isEqualTo[] && _arrayOut isEqualTo[]) then {
 		EPOCH_TRADE_STARTED = true;
-
-		// make trade
 		[_this, _arrayIn, _arrayOut, player, Epoch_personalToken] remoteExec ["EPOCH_server_makeNPCTrade",2];
-
-		// close menu
 		closeDialog 0;
 	};
 };

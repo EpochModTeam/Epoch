@@ -29,6 +29,7 @@ if (!isNull _trader) then {
 		[_player, "UAV"] call EPOCH_server_triggerEvent;
 		_objHiveKey = format ["%1:%2", (call EPOCH_fn_InstanceID), _slot];
 		["AI", _objHiveKey] call EPOCH_fnc_server_hiveDEL;
+		["AI_ITEMS", _objHiveKey] call EPOCH_fnc_server_hiveDEL;
 	};
 	// send karma stat to seller
 	_kIndex = EPOCH_communityStats find "Karma";

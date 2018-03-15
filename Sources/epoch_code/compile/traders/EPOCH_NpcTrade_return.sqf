@@ -1,7 +1,7 @@
 /*
 	Author: Aaron Clark - EpochMod.com
 
-    Contributors: He-Man
+    Contributors: He-Man - Ignatz-Gaming
 
 	Description:
 	NPC trade code
@@ -22,7 +22,7 @@
 	NOTHING
 */
 //[[[cog import generate_private_arrays ]]]
-private ["_addWeaponToHands","_arrayIn","_arrayOut","_config","_current_crypto","_errorMsg","_item","_itemTax","_itemWorth","_sizeOut","_tax","_type","_vehSlot","_vehicle","_vehicles"];
+private ["_addWeaponToHands","_item","_type"];
 //[[[end]]]
 params [["_returnIn",[]],["_returnOut",[]],["_message",""]];
 
@@ -31,8 +31,9 @@ if (isNil "EPOCH_TRADE_STARTED") exitWith{};
 if !(_returnOut isEqualTo[]) then {
 	// add purchased items
 	{
-		if ([_x, "CfgWeapons"] call EPOCH_fnc_isAny) then {
-			_type = getNumber(configfile >> "CfgWeapons" >> (_x) >> "type");
+		_x params ["_item","_count"];
+		if ([_item, "CfgWeapons"] call EPOCH_fnc_isAny) then {
+			_type = getNumber(configfile >> "CfgWeapons" >> _item >> "type");
 			_addWeaponToHands = false;
 			switch (_type) do {
 				case 1: {
@@ -52,15 +53,15 @@ if !(_returnOut isEqualTo[]) then {
 				};
 			};
 			if (_addWeaponToHands) then {
-				player addWeapon _x;
+				player addWeapon _item;
 			}
 			else {
-				_x call EPOCH_fnc_addItemOverflow;
+				_item call EPOCH_fnc_addItemOverflow;
 			};
 		}
 		else {
-			if ([_x, "CfgMagazines"] call EPOCH_fnc_isAny) then {
-				_x call EPOCH_fnc_addItemOverflow;
+			if ([_item, "CfgMagazines"] call EPOCH_fnc_isAny) then {
+				[_item,_count] call EPOCH_fnc_addMagazineOverflow;
 			};
 		};
 	} forEach _returnOut;
@@ -71,3 +72,4 @@ if !(_message isequalto "") then {
 };
 
 EPOCH_TRADE_STARTED = nil;
+

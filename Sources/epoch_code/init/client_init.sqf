@@ -57,6 +57,8 @@ EPOCH_arr_interactedObjs = [];
 EPOCH_buildOption = 0;
 EPOCH_nearestLocations = [];
 EPOCH_lastFiredLocation = [];
+EPOCH_IsAutoRunning = false;
+EPOCH_LastAutoRunKeyPressed = diag_ticktime;
 
 //Radiation
 EPOCH_geiger_shown = false;
@@ -80,8 +82,8 @@ EPOCH_keysActionPressed = false; //prevents EH spam
 0 call EPOCH_clientKeyMap;
 
 // load some frequently used configs to variables
-private _CfgEpochClient = 'CfgEpochClient' call EPOCH_returnConfig;
-EPOCH_maxBuildingHeight = getNumber(_CfgEpochClient >> "maxBuildingHeight");
+EPOCH_maxBuildingHeight = ["CfgEpochClient", "maxBuildingHeight", 100] call EPOCH_fnc_returnConfigEntryV2;
+Epoch_NuisanceMulti = ["CfgEpochClient", "NuisanceMulti", 0.5] call EPOCH_fnc_returnConfigEntryV2;
 
 //ON INIT and RESPAWN
 call EPOCH_clientInit;

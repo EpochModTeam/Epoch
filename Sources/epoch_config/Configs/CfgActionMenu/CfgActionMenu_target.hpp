@@ -163,13 +163,13 @@ class pack_safe
 
 class VehMaintanance
 {
-	condition = "dyna_isVehicle && !EPOCH_Vehicle_MaintainLock && EPOCH_AdvancedVehicleRepair_Enabled";
+	condition = "dyna_isVehicle && !EPOCH_Vehicle_MaintainLock";
 	action = "dyna_cursorTarget call EPOCH_client_VehicleMaintananceCheck;";
     icon = "x\addons\a3_epoch_code\Data\UI\buttons\Repair_man.paa";
 	tooltip = "Vehicle Maintanance";
 	class Repair
 	{
-		condition = "!((EPOCH_VehicleRepairs select 0) isequalto []) || !((EPOCH_VehicleRepairs select 2) isequalto [])";
+		condition = "(!((EPOCH_VehicleRepairs select 0) isequalto []) || !((EPOCH_VehicleRepairs select 2) isequalto [])) && EPOCH_AdvancedVehicleRepair_Enabled";
 		action = "";
 		icon = "x\addons\a3_epoch_code\Data\UI\buttons\Repair_Wheel.paa";
 		tooltip = "Repair Vehicle";
@@ -393,7 +393,7 @@ class VehMaintanance
 	};
 	class Remove
 	{
-		condition = "!((EPOCH_VehicleRepairs select 1) isequalto [])";
+		condition = "!((EPOCH_VehicleRepairs select 1) isequalto []) && EPOCH_AdvancedVehicleRepair_Enabled";
 		action = "";
 		icon = "x\addons\a3_epoch_code\Data\UI\buttons\Remove_Wheel.paa";
 		tooltip = "Remove Parts";

@@ -1,6 +1,100 @@
 # Change Log
 All changes for [Arma 3](https://arma3.com/) [Epoch Mod](https://epochmod.com) are listed in this changelog.
 
+## [1.1.0.0] - Unreleased
+### Added
+- Plant Spawner: vehicle object for sunflower. @Helion4
+- MoneyDrop Event: Random Money lump with Mapmarker (like Plants) @He-Man
+- Examples for Vehicle upgrades for Server Admins into CfgVehicleUpgrades.hpp @He-Man
+- Make Lighter refillable at Fuel-Sources (Gasstations / Vehicles) @He-Man
+- Make Trader more configurable in epochconfig.hpp @He-Man
+- Added Examples for Batchfiles to control Server Restarts @DirtySanchez
+- default pops for "center" marker @AWOL
+- More map supports @AWOL
+- Lighter is needed to imflame fires @DirtySanchez
+- FireExtinguisher is needed to "put our fire" on Burn Barrel @DirtySanchez
+- Rope is needed for SlingLoad (get back on release) @DirtySanchez
+- R3F compatibility for SlingLoad @DirtySanchez
+- Hints while using Vehicle Repair (MultiGun) @He-Man
+- Config to completely disable Simulation for BaseParts (if not needed) @He-Man
+- Made Radiation configureable by cfgepochclient.hpp @Raymix
+- Hints for lock / unlock Vehicles / Storages @He-Man
+- Nuisance multiplicator in cfgepochclient.hpp @He-Man
+- Reduce rads over time at cost of immunity @Raymix
+- Wearable Male & Female wearable full radiation suit @Helion4
+- December seasonal items (Santa hat / Snowman) @Helion4
+- Autorun function (suggested by Ghostrider) @He-Man
+   - Default Key is "W"
+   - You can change the key in EPOCH ESC Menu
+   - If choosen key is same as "moveforward" (default), you have to 2x tap it, else you only have to 1x tap it
+   - If your legs are broken, you get a hint "can not autorun - legs are broken"
+   - If the terrain is too steep, you only walk in AutoRun
+   - Inside Water, you can not Autorun
+- Helper 3D-Icon + Line on the part, where element is snapped on (while Base-Building) @He-Man
+- Config in cfgepochclient.hpp to block ATM's in Plotpole range @He-Man
+- Power Sword @Helion
+### Fixed
+- False BE kicks since Arma 3 1.80 update.
+- Nightlight now also follow players inside Vehicles @He-Man
+- Fixed fault disabled DynamicDebris @morgoth0
+- SERVER_VARS (BaseSpawn) was not saved on revive @morgoth0
+- Without Advanced Vehicle Repair, Vehicle upgrade was not available @He-Man
+- Base Storages could be deleted if near Loot containers were auto-deleted @He-Man
+- Some Tarp Loot was spawned under the Floor @He-Man
+- Reworked wall check by getting out of Vehicles @He-Man
+- Garden Plot had no physical ground @Helion4
+- Some Vehicles were missing in EPOCH Admin Spawn Menu @He-Man
+### Changed
+- RCon Port is now set to 2307 by default since changes in A3 1.78 prevent use of 2306. @AWOL
+- SnapPoints for Building objects (especially full / half / quarter Floors) @He-Man
+- Some performance tweaks
+- Inventory will be opened automatically, if "you found something" @AWOL
+- EPOCH Events reworked (Markers will change if players near / event looted) @DirtySanchez
+- Traders will no longer refill sold magazines @He-Man
+   - Magazines will automatic be repacked in Trader
+   - First the trader offers full magazines
+   - If no full magazine is available, the Trader offer the last not full magazine
+   - Not full magazines are colored: Yellow (nearly full) -> Red (nearly empty)
+   - You also get a Tooltip, how much bullets left in magazine
+   - The prices are calculated by the left bullets in the magazine
+- Increased snap-distance for Foundations (much easier to find snap positions) @He-Man
+- Reworked and added EPOCH Vehicle Classes @He-Man
+   - Each upgrade increase Speed, Torque, Fuel, Terrainbehaviour, Load and Armor
+   - Hatchback >= lvl2 will no longer stuck in forests
+   - Added M900 forced without Backseats -> "C_Heli_Light_01_civil_2seat_EPOCH"
+   - Added M900 forced with Backseats -> "C_Heli_Light_01_civil_4seat_EPOCH"
+   - The Random M900 will also stay available -> "C_Heli_Light_01_civil_EPOCH"
+   - Added very low EPOCH variants of VTOL and Xi'an (eventually we have to change them with the next update a bit)
+   - Added Door-Animations to some Vehicles by GetIn / GetOut
+
+## [1.0.0.1077] - 2017-11-05
+### Added
+- Make temp Vehicles Lockable + Lock hints.
+- FuelTank to Loot / Crafting / Pricing.
+- Missing itemPipe to loot tables.
+### Fixed
+- Rpt error for community stats.
+- CameraView Check moved to master loop.
+### Changed
+- Make use of traderUniforms config for AI trader classes.
+- Adjust the order of marker sets.
+
+## [1.0.0.1074] - 2017-10-30
+### Added
+- Missing Prices / Itemsorts + Objectinteracts configs.
+- Note about a possible crash point on server startup if Redis is not running.
+- Hint for Building to move / remove / upgrade.
+- Config variable radiationEffectsThreshold to control what level PP effects are seen, (default 10%).
+### Fixed
+- Fix for radiation post process effects when under 10% irradiated.
+- Fix inherits for metal and cinder floor.
+- Forced restart is now working properly again.
+- Fav Bar now returns "Not enough Space" message if there isn't enough space to store current accessory.
+- Fix for Horizontal Barrel Bomb BE kick.
+### Changed
+- Random attributes now use 2 decimal places instead of rounding.
+- Shipwrecks now use safe pos for shipwreck loot containers positions.
+
 ## [1.0.0.0] - 2017-10-26
 ### Added
 - Favorites bar. Users can pin (almost) any item to the bar by dragging items from inventory to equip/un-equip (Weapons, attachments, head gear, etc.) or consume (eat, drink, build, etc.) using keyboard mapping without having gear open. Use ESC menu to change the mappings. Server admins, see client_init.sqf for config. @raymix

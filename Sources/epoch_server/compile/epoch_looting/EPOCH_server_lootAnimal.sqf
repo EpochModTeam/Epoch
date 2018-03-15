@@ -38,7 +38,7 @@ if !(isNull _object) then {
 	};
 	[_item, _class, true] call EPOCH_serverLootObject;
 
-	_errorMsg = "You found something!";
-	[_errorMsg, 5] remoteExec ['Epoch_message',_player];
+	// force player to open gear on this object.
+	[_item, {player action["Gear", _this]}] remoteExec ["call", _player];
 };
 true

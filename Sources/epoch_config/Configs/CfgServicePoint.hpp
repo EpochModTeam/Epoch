@@ -79,6 +79,7 @@ class CfgServicePoint {
 		{"Ship",0},
 		{"Landvehicle",0}
 	};
+	/* Get all Weapons and Turrets with "magazinesAllTurrets vehicle" -> https://community.bistudio.com/wiki/magazinesAllTurrets */
 	VehiclesAndAmmo[] = {
 /*
 		{

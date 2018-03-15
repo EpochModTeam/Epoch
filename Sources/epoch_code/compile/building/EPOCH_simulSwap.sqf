@@ -218,6 +218,7 @@ if (isText(_simulClassConfig)) then {
 					_dir2 = [vectorDir _nearestObject, _direction] call BIS_fnc_returnVector;
 					_up2 = (vectorUp _nearestObject);
 					EP_velocityTransformation = [AGLToASL _pos2,_vel2,_dir2,_up2];
+					EPOCH_arr_snapObjects = [_nearestObject, _currentTarget];
 				};
 			};
 			if (!_isSnap) then {
@@ -230,6 +231,7 @@ if (isText(_simulClassConfig)) then {
 				} else {
 					EP_velocityTransformation = [];
 				};
+				EPOCH_arr_snapObjects = [];
 			};
 		};
 		[_playerEnergyKeyFinal, -_energyCost, 2500 , 0] call EPOCH_fnc_setVariableLimited;
@@ -237,6 +239,7 @@ if (isText(_simulClassConfig)) then {
 	};
 	_currentTarget removeEventHandler["EpeContactStart", _onContactEH];
 	EPOCH_velTransform = false;
+	EPOCH_arr_snapObjects = [];
 	_disallowed = ["Tarp_SIM_EPOCH", "Freezer_SIM_EPOCH", "Fridge_SIM_EPOCH", "Shelf_SIM_EPOCH", "Pelican_SIM_EPOCH", "Wardrobe_SIM_EPOCH", "Bed_SIM_EPOCH", "Couch_SIM_EPOCH", "Cooker_SIM_EPOCH", "Chair_SIM_EPOCH", "Filing_SIM_EPOCH", "Table_SIM_EPOCH", "Locker_SIM_EPOCH", "ToolRack_SIM_EPOCH", "Shoebox_SIM_EPOCH", "Bunk_SIM_EPOCH", "Jack_SIM_EPOCH", "toilet_SIM_EPOCH", "KitchenSink_SIM_EPOCH"];
 	if !(_class in _disallowed) then {
 		_currentTarget spawn EPOCH_countdown;

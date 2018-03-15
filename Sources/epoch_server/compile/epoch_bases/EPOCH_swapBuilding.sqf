@@ -1,6 +1,6 @@
 // _newObj = [_class,_object] call EPOCH_swapBuilding;
 //[[[cog import generate_private_arrays ]]]
-private ["_newObj","_objectPos","_playersNear"];
+private ["_newObj","_objectPos"];
 //[[[end]]]
 params [["_class",""],["_object",objNull],["_method",0]];
 _newObj = objNull;
@@ -9,14 +9,6 @@ if (!isNull _object && !(_class isEqualTo "")) then {
     _newObj = createVehicle [_class, ASLtoAGL _objectPos, [], 0, "CAN_COLLIDE"];
     if (!isNull _newObj) then {
         _object hideObjectGlobal true;
-
-		// new Dynamicsimulation
-		if(["CfgDynamicSimulation", "baseDynamicSimulationSystem", true] call EPOCH_fnc_returnConfigEntryV2)then
-		{
-			_newObj enableDynamicSimulation true;
-			_newObj triggerDynamicSimulation false; // this object doesnt need to turn anything on in the server
-		};
-
         switch (_method) do {
             case 0: {
                 _newObj setposATL (getPosATL _object);
@@ -36,10 +28,25 @@ if (!isNull _object && !(_class isEqualTo "")) then {
         };
         deleteVehicle _object;
 
-        // force nearby players to reveal new object faster
-        _playersNear = _newObj nearEntities[["Epoch_Male_F", "Epoch_Female_F"], 300];
-        [_newObj, {player reveal _this}] remoteExec ["call", _playersNear];
-
+		_serverSettingsConfig = configFile >> "CfgEpochServer";
+		_UseIndestructible = [_serverSettingsConfig, "UseIndestructible", false] call EPOCH_fnc_returnConfigEntry;
+		_IndestructibleBaseObjects = [_serverSettingsConfig, "IndestructibleBaseObjects", []] call EPOCH_fnc_returnConfigEntry;
+		_ExceptedBaseObjects = [_serverSettingsConfig, "ExceptedBaseObjects", []] call EPOCH_fnc_returnConfigEntry;
+		if (_UseIndestructible) then {
+			if ({_class iskindof _x} count _ExceptedBaseObjects == 0) then {
+				{
+					if (_class iskindof _x) exitwith {
+						_newObj allowdamage false;
+					};
+				} foreach _IndestructibleBaseObjects;
+			};
+		};
+		// new Dynamicsimulation
+		if([configFile >> "CfgEpochServer", "baseDynamicSimulationSystem", true] call EPOCH_fnc_returnConfigEntry)then
+		{
+			_newObj enableDynamicSimulation true;
+			_newObj triggerDynamicSimulation false; // this object doesnt need to turn anything on in the server
+		};
     };
 };
 _newObj

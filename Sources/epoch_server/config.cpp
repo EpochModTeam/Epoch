@@ -125,6 +125,7 @@ class CfgServerFunctions
 			class server_removeMarker {};
 			class server_createGlobalMarkerSet {};
 			class server_deleteGlobalMarkerSet {};
+			class server_isNearChecks {};
 		};
 		class epoch_missions {
 			class Server_createObject {};
@@ -144,7 +145,7 @@ class CfgServerFunctions
 };
 class CfgServerVersion
 {
-	client = "1.0.0";
-	config = "1.0.0";
+	client = "1.1.0";
+	config = "1.1.0";
 	hive = "0.6.0.0";
 };

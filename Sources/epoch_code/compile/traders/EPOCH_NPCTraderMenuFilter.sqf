@@ -1,32 +1,30 @@
 /*
-	Author: Aaron Clark - EpochMod.com
+	Author: He-Man - Ignatz-Gaming
 
-    Contributors: He-Man
+    Contributors: Raimonds Virtoss
 
 	Description:
-	NPC trade filter code
+	Filter Items in Trader Dialog
 
     Licence:
     Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
 
     Github:
-    https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_code/traders/EPOCH_NPCTraderMenuFilter.sqf
-
-    Example:
-    onLBSelChanged = "_this call EPOCH_NPCTraderMenuFilter";
-
-    Parameter(s):
-		_this select 0: CONTROL
-        _this select 1: NUMBER - Index ID
-
-	Returns:
-	NOTHING
+    https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_code/compile/traders/EPOCH_NPCTraderFilter.sqf
 */
+
 disableSerialization;
-//[[[cog import generate_private_arrays ]]]
-private ["_FilterArray","_MainCategorie","_MainCategoriearray","_SubCategorieItems","_aiItems","_config","_control","_display","_id","_isPlayerFilter","_item","_itemCount","_itemOfferCount","_items","_name","_offerArray","_picture","_playeritems","_qty","_qtys","_sizeOut","_slot","_sortarray","_subcategories","_type","_vehicles"];
-//[[[end]]]
+private [	"_PlayerFilerDropDown","_PlayerItemsBox","_PlayerItemsOutBox","_TraderItemsBox","_TraderItemsOutBox","_config","_MainCategoriearray","_FilterArray","_MainCategorie","_subcategories","_SubCategorieItems",
+			"_slot","_isPlayerFilter","_item","_rounds","_maxrnd","_tooltip","_qty","_id","_vehicles","_VehOfferArray","_sizeOut","_type","_itemCount","_itemOfferCount","_name","_picture","_items","_qtys","_sortarray"
+];
 params ["_control","_index"];
+
+_PlayerFilerDropDown = 42100;
+_PlayerItemsBox = 41500;
+_PlayerItemsOutBox = 41501;
+_TraderItemsBox = 41503;
+_TraderItemsOutBox = 41502;
+
 _config = 'CfgItemSort' call EPOCH_returnConfig;
 _MainCategoriearray = getarray (_config >> "MainCategories" >> "Classes");
 _FilterArray = [];
@@ -46,96 +44,109 @@ if (_index != 0) then {
 };
 if !(isNull EPOCH_lastNPCtradeTarget) then {
 	_slot = EPOCH_lastNPCtradeTarget getVariable["AI_SLOT", -1];
-	_isPlayerFilter = (ctrlIDC _control == 42100);
 	if (_slot != -1) then {
+		_isPlayerFilter = (ctrlIDC _control == _PlayerFilerDropDown);
 		if (_isPlayerFilter) then {
-			_sizeOut = lbSize 41501;
-			_offerArray = [];
-			if (_sizeOut > 0) then {
-				for "_i" from 0 to (_sizeOut - 1) do {
-					_item = lbData [41501, _i];
-					_offerArray pushBack _item;
-				};
-			};
-			lbClear 41500;
-			_playeritems = ((items player)+(magazines player));
-			if (primaryWeapon player != "") then {
-				_playeritems pushback primaryWeapon player;
-			};
-			if (count backpackItems player == 0 && count backpackmagazines player == 0 && backpack player != "") then {
-				_playeritems pushback backpack player;
-			};
-
+			lbClear _PlayerItemsBox;
 			{
 				_item = _x;
+				_rounds = 1;
+				if (_item isequaltype []) then {
+					_item = _x select 0;
+					_rounds = _x select 1;
+				};
 				if !(_item isequalto "") then {
+					_maxrnd = 1;
+					_tooltip = "";
+					if ([_item,"cfgMagazines"] call Epoch_fnc_isAny) then {
+						_maxrnd = getnumber (configfile >> "cfgMagazines" >> _item >> "count");
+					};
+					_qty = _rounds/_maxrnd;
+					if (_qty < 1) then {
+						_tooltip = format ["%1 rounds left in Magazine",_rounds];
+					};
 					if (_index == 0 || (tolower _item) in _FilterArray) then {
-						_itemCount = {_x == _item} count ((items player)+(magazines player)+[backpack player]+[primaryweapon player]);
-						_itemOfferCount = {_x == _item} count _offerArray;
-						if (_itemCount > _itemOfferCount) then {
-							_offerArray pushBack _item;
-							_id = lbAdd [41500, _x call EPOCH_itemDisplayName];
-							lbSetData [41500, _id, _x];
-							lbSetPicture [41500, _id, _x call EPOCH_itemPicture];
+						_id = lbAdd [_PlayerItemsBox, _item call EPOCH_itemDisplayName];
+						lbSetData [_PlayerItemsBox, _id, _item];
+						lbSetValue [_PlayerItemsBox, _id, _rounds];
+						lbSetPicture [_PlayerItemsBox, _id, _item call EPOCH_itemPicture];
+						if !(_tooltip isequalto "") then {
+							lbSetTooltip [_PlayerItemsBox, _id, _tooltip];
+							lbSetColor [_PlayerItemsBox,_id,[1,(_rounds/_maxrnd),0,1]];
 						};
 					};
 				};
-			} forEach _playeritems;
+			} forEach EPOCH_NpcTradePlayerItems;
 
 			_vehicles = player nearEntities [["LandVehicle","Ship","Air","Tank"], 30];
-			{
-				if (local _x) then {
-					_type = typeOf _x;
-					if (_index == 0 || (tolower _type) in _FilterArray) then {
-						_itemCount = { typeOf _x == _type } count _vehicles;
-						_itemOfferCount = { _x == _type } count _offerArray;
-						if (_itemCount > _itemOfferCount) then {
-							_offerArray pushBack _type;
-							_config = configFile >> "CfgVehicles" >> _type;
-							_name = getText(_config >> "displayName");
-							_picture = getText(_config >> "picture");
-							_id = lbAdd[41500, _name];
-							lbSetData[41500, _id, _type];
-							lbSetPicture[41500, _id, _picture];
+			if !(_vehicles isequalto []) then {
+				_VehOfferArray = [];
+				_sizeOut = lbSize _PlayerItemsOutBox;
+				if (_sizeOut > 0) then {
+					for "_i" from 0 to (_sizeOut - 1) do {
+						_item = lbData [_PlayerItemsOutBox, _i];
+						if (_item iskindof "Landvehicle" || _item iskindof "AIR" || _item iskindof "SHIP" || _item iskindof "TANK") then {
+							_VehOfferArray pushBack _item;
 						};
 					};
 				};
-			} forEach _vehicles;
-            _display = (findDisplay -8);
-			_control = (_display displayCtrl 41500);
-			lbsort _control;
+				{
+					if (local _x) then {
+						_type = typeOf _x;
+						if (_index == 0 || (tolower _type) in _FilterArray) then {
+							_itemCount = { typeOf _x == _type } count _vehicles;
+							_itemOfferCount = { _x == _type } count _VehOfferArray;
+							if (_itemCount > _itemOfferCount) then {
+								_config = configFile >> "CfgVehicles" >> _type;
+								_name = getText(_config >> "displayName");
+								_picture = getText(_config >> "picture");
+								_id = lbAdd[_PlayerItemsBox, _name];
+								lbSetData[_PlayerItemsBox, _id, _type];
+								lbSetValue [_PlayerItemsBox, _id, 1];
+								lbSetPicture[_PlayerItemsBox, _id, _picture];
+							};
+						};
+					};
+				} forEach _vehicles;
+			};
+			lbsort ((findDisplay -8) displayCtrl _PlayerItemsBox);
 		}
 		else {
-			lbClear 41503;
-			_sizeOut = lbSize 41502;
-			_offerArray = [];
-			if (_sizeOut > 0) then {
-				for "_i" from 0 to (_sizeOut - 1) do {
-					_id = lbData [41502, _i];
-					_offerArray pushBack _id;
-				};
-			};
-			_aiItems = EPOCH_lastNPCtradeTarget getVariable["AI_ITEMS", []];
-			if ((count _aiItems) == 2) then {
-				_items = _aiItems select 0;
-				_qtys = _aiItems select 1;
+			lbClear _TraderItemsBox;
+			if ((count EPOCH_NpcTradeTraderItems) == 2) then {
+				_items = EPOCH_NpcTradeTraderItems select 0;
+				_qtys = EPOCH_NpcTradeTraderItems select 1;
 				_sortarray = [];
 				{
 					_sortarray pushback [_x call EPOCH_itemDisplayName,_x,_qtys select _foreachindex];
 				} foreach _items;
 				_sortarray sort true;
-
 				{
-					_item = _x select 1;
-
+					_x params ["_displayname","_item","_rounds"];
 					if !(_item isequalto "") then {
 						if (_index == 0 || (tolower _item) in _FilterArray) then {
-							_qty = ((_x select 2) - ({_x == _item} count _offerArray));
+							_maxrnd = 1;
+							_tooltip = "";
+							if ([_item,"cfgMagazines"] call Epoch_fnc_isAny) then {
+								_maxrnd = getnumber (configfile >> "cfgMagazines" >> _item >> "count");
+							};
+							_qty = (_rounds/_maxrnd);
+							if (_qty >= 1) then {
+								_qty = floor _qty;
+							}
+							else {
+								_qty = ceil _qty;
+								_tooltip = format ["%1 rounds left in Magazine",_rounds];
+							};
 							if (_qty > 0) then {
-								_id = lnbAddRow[41503, ["", str(_qty),_x select 0]];
-								lnbSetData [41503, [_id,0], _item];
-								lnbSetValue [41503, [_id,0], _qty];
-								lnbSetPicture [41503, [_id,0], _item call EPOCH_itemPicture];
+								_id = lnbAddRow [_TraderItemsBox, ["", str(_qty),_displayname]];
+								lnbSetData [_TraderItemsBox, [_id,0], _item];
+								lnbSetValue [_TraderItemsBox, [_id,0], _rounds];
+								lnbSetPicture [_TraderItemsBox, [_id,0], _item call EPOCH_itemPicture];
+								if !(_tooltip isequalto "") then {
+									lbSetTooltip [_TraderItemsBox, _id*3, _tooltip];
+									lnbSetColor [_TraderItemsBox,[_id,2],[1,(_rounds/_maxrnd),0,1]];
+								};
 							};
 						};
 					};

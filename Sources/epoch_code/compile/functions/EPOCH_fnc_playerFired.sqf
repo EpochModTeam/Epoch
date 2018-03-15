@@ -74,12 +74,14 @@ switch true do {
 					}forEach((getAllHitPointsDamage _cursorTarget) param[2,[]]);
 					if (_highestDMG > 0) then {
 						_newDMG = ((_highestDMG - 0.5) max 0);
+						["Partially healed / repaired",5] call epoch_message;
 						if (local _cursorTarget) then {
 							[_cursorTarget,[[_currentHIT,_newDMG]]] call EPOCH_client_repairVehicle;
 						} else {
 							[_cursorTarget,[[_currentHIT,_newDMG]],player,Epoch_personalToken] remoteExec ["EPOCH_server_repairVehicle",2];
 						};
 					} else {
+						["Full healed / repaired or too much damaged",5] call epoch_message;
 						if ((damage _cursorTarget) > 0) then {
 							[_cursorTarget,["ALL",0],player,Epoch_personalToken] remoteExec ["EPOCH_server_repairVehicle",2];
 						};
@@ -95,8 +97,8 @@ switch true do {
 	};
 	case (_ammo isKindOf "B_Swing" || _ammo isKindOf "B_Stick") : {
 		player playActionNow "SledgeSwing";
-		call EPOCH_mineRocks;
-		if (_weapon isEqualTo "MeleeSword") then {
+		if (_weapon in ["MeleeSword","Power_Sword"]) then {
+			call EPOCH_mineRocks;
 			call EPOCH_chopWood;
 		};
 		if (_weapon isEqualTo "MeleeRod") then {
@@ -108,7 +110,7 @@ switch true do {
 	};
 	default {
 		_ammoConfig = (configFile >> "CfgAmmo" >> _ammo);
-		_nuisanceLevel = ceil(getNumber (_ammoConfig >> "audibleFire") * getNumber (_ammoConfig >> "caliber"));
+		_nuisanceLevel = ceil ((getNumber (_ammoConfig >> "audibleFire") * getNumber (_ammoConfig >> "caliber"))*Epoch_NuisanceMulti);
 		// reduce when not in a city or town
 		if (EPOCH_nearestLocations isEqualTo[]) then{
 			_nuisanceLevel = _nuisanceLevel / 2;

@@ -49,6 +49,8 @@ class CfgClientFunctions
 			class makeMarker {};
 			class removeMarker {};
 			class unit_onKilledEH {};
+			class AutoRun_Check {};
+			class AutoRun {};
 		};
 		class building
 		{
@@ -79,7 +81,6 @@ class CfgClientFunctions
 			class startNPCTraderMenu {};
 			class NPCTraderMenuFilter {};
 			class startNpcTrade {};
-			class tradeFilter {};
 			class takeCrypto {};
 			class startBankTransfer {};
 			class calcDamageCost {};
@@ -91,6 +92,7 @@ class CfgClientFunctions
 			};
 			class KeyUp {};
 			class onChar {};
+			class handleUIActions {};
 		};
 		class event_handlers
 		{
@@ -207,6 +209,7 @@ class CfgClientFunctions
 			class refeshUI {};
 			class equip {};
 			class itemTypeSlot {};
+			class usedItemRepack {};
 		};
 		class servicepoint
 		{

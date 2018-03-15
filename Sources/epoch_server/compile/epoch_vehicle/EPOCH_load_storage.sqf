@@ -105,8 +105,9 @@ for "_i" from 1 to _maxStorageLimit do {
 
 			_vehicle setVariable ["STORAGE_SLOT", str(_i), true];
 
-			_vehicle call EPOCH_server_storageInit;
-
+			if (isDamageAllowed _vehicle) then {
+				_vehicle call EPOCH_server_storageInit;
+			};
 			if (count _arr >= 5) then {
 				_color = _arr select 4;
 				_cfgBaseBuilding = 'CfgBaseBuilding' call EPOCH_returnConfig;

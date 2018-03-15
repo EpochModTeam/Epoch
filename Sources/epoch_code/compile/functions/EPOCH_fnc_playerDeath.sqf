@@ -43,6 +43,11 @@ if (vehicle _unit != _unit) then {
 	_unit action["Eject", vehicle _unit];
 };
 
+// Close display 999 (BIS_fnc_guiMessage), as it prevent display 46 from closing -> kick to lobby
+if (!isnull (finddisplay 999)) then {
+	(finddisplay 999) closedisplay 0;
+};
+
 // save death position
 profileNameSpace setVariable["EPOCHLastKnownDeath",[]];
 _deathMarkerON = (getNumber(_config >> "playerDeathMarkerGPSOnly") isEqualTo 1);
@@ -56,6 +61,8 @@ if(_deathMarkerON && ('ItemGPS' in (assignedItems _unit)))then{
 EPOCH_buildMode = 0;
 EPOCH_snapDirection = 0;
 EPOCH_Target = objNull;
+
+EPOCH_IsAutoRunning = false;
 
 // playerKilledScreen
 _playerKilledScreen = getText(_config >> "playerKilledScreen");

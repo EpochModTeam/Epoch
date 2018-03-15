@@ -111,10 +111,12 @@ _isOnFoot = isNull objectParent player;
 _panic = false;
 _prevEnergy = missionNamespace getVariable [_playerEnergyKey, _playerEnergyDefault];
 
-
+_EPOCH_Autorunspeed = 1;
 // init config data
 _antagonistRndChance = ["CfgEpochClient", "antagonistRngChance", 100] call EPOCH_fnc_returnConfigEntryV2;
 
+_baseRadiationLoss = ["CfgEpochClient", "baseRadiationLoss", -0.1] call EPOCH_fnc_returnConfigEntryV2;
+_baseRadiationLossImmunityPenalty = ["CfgEpochClient", "baseRadiationLossImmunityPenalty", -0.1] call EPOCH_fnc_returnConfigEntryV2;
 _baseHungerLoss = ["CfgEpochClient", "baseHungerLoss", 2] call EPOCH_fnc_returnConfigEntryV2;
 _baseThirstLoss = ["CfgEpochClient", "baseThirstLoss", 2] call EPOCH_fnc_returnConfigEntryV2;
 _baseAlcoholLoss = ["CfgEpochClient", "baseAlcoholLoss", 0.17] call EPOCH_fnc_returnConfigEntryV2;

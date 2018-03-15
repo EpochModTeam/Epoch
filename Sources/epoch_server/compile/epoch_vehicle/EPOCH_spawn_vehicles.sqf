@@ -112,7 +112,7 @@ for "_i" from 1 to _spawnCount do {
 		} else {
 
 			if (_allCitysDync isEqualTo []) then {
-				_position = [epoch_centerMarkerPosition, 0, EPOCH_dynamicVehicleArea, 10, 0, 1000, 0] call BIS_fnc_findSafePos;
+				_position = [epoch_centerMarkerPosition, 0, EPOCH_dynamicVehicleArea, 3, 0, 1000, 0] call BIS_fnc_findSafePos;
 			} else {
 				_selectedCity = _allCitysDync deleteAt (floor random(count _allCitysDync));
 				_cityPos = getArray(_selectedCity >> "position");
