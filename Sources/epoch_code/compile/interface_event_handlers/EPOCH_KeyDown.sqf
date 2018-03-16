@@ -272,17 +272,19 @@ if (_dikCode in (actionKeys "NightVision")) then {
 if(!_ctrl && (_dikCode in (actionKeys "HeliRopeAction")))then{
 	_msg = "";
 	if(EPOCH_ArmaSlingLoad)then{
-		if(driver vehicle player isEqualTo player)then{
-			_slung = ropeAttachedObjects vehicle player;
-			if(_slung isEqualTo [])then{
-				if!('ItemRope' in magazines player) then {
-					_msg = "You need rope to hook";
-					_handled = true;
+		if (["CfgEpochClient", "ActionHookRope", true] call EPOCH_fnc_returnConfigEntryV2) then {
+			if(driver vehicle player isEqualTo player)then{
+				_slung = ropeAttachedObjects vehicle player;
+				if(_slung isEqualTo [])then{
+					if!('ItemRope' in magazines player) then {
+						_msg = "You need rope to hook";
+						_handled = true;
+					}else{
+						player removeItem 'ItemRope';
+					};
 				}else{
-					player removeItem 'ItemRope';
+					player addItem 'ItemRope';
 				};
-			}else{
-				player addItem 'ItemRope';
 			};
 		};
 	}else{
@@ -293,5 +295,4 @@ if(!_ctrl && (_dikCode in (actionKeys "HeliRopeAction")))then{
 		[_msg,5,[[0,0,0,0.2],[1,1,1,1]]] call Epoch_message_stack;
 	};
 };
-
 _handled

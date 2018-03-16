@@ -58,6 +58,10 @@ class CfgEpochClient
 
 	AtmBlockedAtPlot = "true";		// Block ATM's in Plotpole-Range
     disableRemoteSensors = "true";  // disableRemoteSensors true/false
+	
+	ActionFireOnLighter = "true";				// Lighter is needed to inflame fires
+	ActionBurnBarrelOffExtinguisher = "true";	// FireExtinguisher is needed to put off fires
+	ActionHookRope = "true";					// Rope is needed to hook vehicles (get back on release)
 
     epochMessageBackgroundCol[] = {0,0,0,0.2};  //Epoch_message background color (format: {R,G,B,A})
     epochMessageTextCol[] = {1,1,1,0.95};       //Epoch_message text color (format: {R,G,B,A})
