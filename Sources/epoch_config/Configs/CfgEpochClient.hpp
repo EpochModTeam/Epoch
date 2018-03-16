@@ -60,7 +60,7 @@ class CfgEpochClient
     disableRemoteSensors = "true";  // disableRemoteSensors true/false
 	
 	ActionFireOnLighter = "true";				// Lighter is needed to inflame fires
-	ActionBurnBarrelOffExtinguisher = "true";	// FireExtinguisher is needed to put off fires
+	ActionBurnBarrelOffExtinguisher = "true";	// FireExtinguisher is needed to put off Burn Barrels
 	ActionHookRope = "true";					// Rope is needed to hook vehicles (get back on release)
 
     epochMessageBackgroundCol[] = {0,0,0,0.2};  //Epoch_message background color (format: {R,G,B,A})
