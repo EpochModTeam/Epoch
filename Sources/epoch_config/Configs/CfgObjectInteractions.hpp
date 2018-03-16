@@ -231,6 +231,7 @@ class CfgObjectInteractions
         ppEffect[] = {};
     };
 	class SmokeShellToxic_Ammo : SmokeShellCustom {};
+	class SmokeShellToxicSapper : SmokeShellCustom {};
     class Epoch_Cloak_F : Default
     {
         distance = 30;
