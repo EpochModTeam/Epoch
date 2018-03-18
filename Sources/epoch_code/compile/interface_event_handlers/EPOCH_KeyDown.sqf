@@ -270,6 +270,7 @@ if (_dikCode in (actionKeys "NightVision")) then {
 };
 
 if(!_ctrl && (_dikCode in (actionKeys "HeliRopeAction")))then{
+	if (player == vehicle player) exitwith {};
 	_msg = "";
 	if(EPOCH_ArmaSlingLoad)then{
 		if (["CfgEpochClient", "ActionHookRope", true] call EPOCH_fnc_returnConfigEntryV2) then {
