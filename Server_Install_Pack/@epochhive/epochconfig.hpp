@@ -63,6 +63,7 @@ forceRestartTime      = 14400; 			// 4 hour restarts
 	};
 
 // vehicles - Max vehicle slots is calculated from per vehicle limits below. Warning! Higher the number lower the performance.
+	immuneIfStartInBase = "false";			// Protect vehicles from damage in bases until first unlocked after restart
 	ReservedVehSlots = 50;				// Reserved Vehicle Slots (only needed, if you manually spawn in additional Vehicles - AdminTool / Blackmarket...)
 	disableAutoRefuel = "true"; 		// Removes auto refuel from all buildings at server startup.
 	VehLockMessages = "true";			// Give players a hint, that the Vehicle is locked / unlocked
