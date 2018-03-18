@@ -90,6 +90,8 @@ forceRestartTime      = 14400; 			// 4 hour restarts
 										"Safe_EPOCH"
 									};
 	ExceptedBaseObjects[] = 		{	// Not Indestructible, also if in a Class of IndestructibleBaseObjects
+										"Spike_TRAP_EPOCH",
+										"Metal_TRAP_EPOCH",
 										"CinderWallGarage_EPOCH",
 										"WoodLargeWallDoorL_EPOCH",
 										"WoodLargeWallDoor_EPOCH",
