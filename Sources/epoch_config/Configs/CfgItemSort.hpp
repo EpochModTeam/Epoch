@@ -171,6 +171,10 @@ class CfgItemSort
 			"U_O_FullGhillie_sard",
 			"U_O_FullGhillie_ard",
 			
+		// Radiation Suits
+			"Epoch_RadiationSuit_M",
+			"Epoch_RadiationSuit_F",
+			
 		// CIV
 			"U_I_OfficerUniform",
 			"U_I_C_Soldier_Para_1_F",

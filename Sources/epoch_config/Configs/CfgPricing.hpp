@@ -3514,6 +3514,14 @@ class CfgPricing
     {
         price = 22;
     };
+    class Epoch_RadiationSuit_M
+    {
+        price = 7;
+    };
+    class Epoch_RadiationSuit_F
+    {
+        price = 7;
+    };
     class U_O_FullGhillie_lsh
     {
         price = 7;
