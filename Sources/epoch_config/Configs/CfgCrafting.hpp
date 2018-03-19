@@ -1395,7 +1395,7 @@ class CfgCrafting
     };
     class ItemCanvas : Item
     {
-        usedIn[] = {"KitTentA","KitTentDome","KitSunShade","KitWatchTower","KitScaffolding"};
+        usedIn[] = {"KitTentA","KitTentDome","KitSunShade","KitWatchTower","KitScaffolding","ItemSeedBag"};
 		nearby[] = {{"Workbench","","workbench",{1,{"WorkBench_EPOCH"}},3,1,0,1}};
 		recipe[] = {{"ItemKiloHemp",1}};
         previewPosition[] = {0.802443,1,0.254301};
