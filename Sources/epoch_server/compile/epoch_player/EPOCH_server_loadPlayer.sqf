@@ -349,9 +349,6 @@ if (!isNull _player) then {
 				_communityStats = (_communityStatsArray param [1,[]]) param [0,[]];
 				_newPlyr setVariable["COMMUNITY_STATS", _communityStats];
 
-				// re enable damage server side
-				_newPlyr allowDamage true;
-
 				// Flag new body as ready for use.
 				_newPlyr setVariable["SETUP", true, true];
 
@@ -365,6 +362,9 @@ if (!isNull _player) then {
 				// revive test
 				_newPlyr setVariable ['#rev_enabled', true, true];
 				// [] remoteExec ["bis_fnc_reviveInit",_player];
+				
+				// re enable damage server side
+				_newPlyr allowDamage true;
 
 				// new Dynamicsimulation
 				if([configFile >> "CfgEpochServer", "playerDynamicSimulationSystem", true] call EPOCH_fnc_returnConfigEntry)then
