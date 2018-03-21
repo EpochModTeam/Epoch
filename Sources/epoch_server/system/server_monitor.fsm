@@ -326,7 +326,7 @@ class FSM
                                          "    // if player is inside a vehicle check vehicle is in allowed safe vehicles list." \n
                                          "    if (_vehicle != _x && {!(typeOf _vehicle in _safeVehicles)}) then {" \n
                                          "        // check if vehicle has token set server side and ignore vehicle if was spawned by a Curator (zeus)" \n
-                                         "        if ((objectCurators _vehicle) isEqualTo [] && {!(_vehicle call EPOCH_server_getVToken)}) then {" \n
+                                         "        if ((objectCurators _vehicle) isEqualTo [] && {!(_vehicle call EPOCH_server_getVToken)} && !(_vehicle iskindof ""Ejection_Seat_Base_F"")) then {" \n
                                          "            diag_log format[""ADMIN: Invalid Vehicle detected and deleted %1 with %2 driving"",_vehicle,_x];" \n
                                          "            deleteVehicle _vehicle;" \n
                                          "        };" \n
