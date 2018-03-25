@@ -1,6 +1,10 @@
 # Change Log
 All changes for [Arma 3](https://arma3.com/) [Epoch Mod](https://epochmod.com) are listed in this changelog.
 
+## [1.1.1.0] - Unreleased
+
+
+
 ## [1.1.0.0] - 2018-03-15
 ### Added
 - Plant Spawner: vehicle object for sunflower. @Helion4
