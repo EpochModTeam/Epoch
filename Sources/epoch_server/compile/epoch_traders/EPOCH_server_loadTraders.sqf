@@ -53,15 +53,13 @@ _TraderItemsClean = {
 	for "_k" from 1 to (count (_arr select 0)) do {
 		_delete = false;
 		_item = _arr select 0 select _idx;
-		_limit = ["CfgTraderLimits", _item, 100] call EPOCH_fnc_returnConfigEntryV2;
 		_currentStock = (_arr select 1) param[_idx, 0];
 		if (_currentStock >= (_TraderItemCountPerItem select 0)) then {
 			_currentStock = _TraderItemCountPerItem select 1;
 			(_arr select 1) set [_idx,_currentStock];
 			_arrchanged = true;
 		};
-		if (_limit == 0 || _currentStock == 0) then {
-//			diag_log format ["EPOCH_DEBUG: TraderSlot: %1 | Removed %2 from Trader | _limit: %3 | _currentStock: %4",_i,str _item, _limit,_currentStock];
+		if (_currentStock == 0) then {
 			_arrchanged = true;
 			_delete = true;
 		} 
@@ -72,11 +70,6 @@ _TraderItemsClean = {
 				_delete = true;
 			}
 			else {
-				if (_currentStock > _limit) then {
-					_arrchanged = true;
-					(_arr select 1) set [_idx,_limit];
-					_currentStock = _limit;
-				};
 				if (_item isKindOf "Air" || _item isKindOf "Ship" || _item isKindOf "LandVehicle" || _item isKindOf "Tank") then {
 					_newstock = 0;
 					for "_k" from 1 to _currentStock do {

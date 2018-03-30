@@ -57,11 +57,6 @@ if !(isNull EPOCH_lastNPCtradeTarget) then {
 						};
 					};
 				};
-				_limit = ["CfgTraderLimits", _uiItem, 100] call EPOCH_fnc_returnConfigEntryV2;
-				if (_itemQty >= _limit) then{
-					_stockLimit = true;
-					_allowAdd = false;
-				};
 			};
 			if (_uiItem isKindOf "Air" || _uiItem isKindOf "Ship" || _uiItem isKindOf "LandVehicle" || _uiItem isKindOf "Tank") then {
 				_sizeOut = lbSize _PlayerItemsOutBox;
