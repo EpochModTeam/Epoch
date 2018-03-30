@@ -61,7 +61,7 @@ _TraderItemsClean = {
 		_currentStock = _currentStock / _maxrnd;
 		if (_currentStock >= (_TraderItemCountPerItem select 0)) then {
 			_currentStock = _TraderItemCountPerItem select 1;
-			(_arr select 1) set [_idx,_currentStock];
+			(_arr select 1) set [_idx,_currentStock*_maxrnd];
 			_arrchanged = true;
 		};
 		if (_currentStock == 0) then {
