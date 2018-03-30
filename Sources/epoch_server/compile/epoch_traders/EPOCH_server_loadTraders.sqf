@@ -14,8 +14,8 @@
 */
 //[[[cog import generate_private_arrays ]]]
 private [	"_TraderGodMode","_StaticTraderItemPurge","_DynamicTraderRespawnCount","_TraderItemsDeleteRestart","_TraderInit","_TraderItemsClean","_newstock","_agent","_aiTables",
-			"_arr","_config","_currentStock","_existingStock","_indexStock","_limit","_markers","_objHiveKey","_pos","_randomAIUniform","_response","_response2","_schedule",
-			"_serverSettingsConfig","_staticTrader","_staticTradersArrCount","_staticTradersArray","_storedVehicleLimit","_traderSlotIndex","_work","_arrchanged","_deleteat"
+			"_arr","_config","_currentStock","_existingStock","_indexStock","_markers","_objHiveKey","_pos","_randomAIUniform","_response","_response2","_schedule",
+			"_serverSettingsConfig","_staticTrader","_staticTradersArrCount","_staticTradersArray","_storedVehicleLimit","_traderSlotIndex","_work","_arrchanged","_deleteat","_maxrnd"
 		];
 //[[[end]]]
 params [["_maxTraderLimit",0]];
@@ -54,6 +54,11 @@ _TraderItemsClean = {
 		_delete = false;
 		_item = _arr select 0 select _idx;
 		_currentStock = (_arr select 1) param[_idx, 0];
+		_maxrnd = 1;
+		if ([_item,"cfgMagazines"] call Epoch_fnc_isAny) then {
+			_maxrnd = getnumber (configfile >> "cfgMagazines" >> _item >> "count");
+		};
+		_currentStock = _currentStock / _maxrnd;
 		if (_currentStock >= (_TraderItemCountPerItem select 0)) then {
 			_currentStock = _TraderItemCountPerItem select 1;
 			(_arr select 1) set [_idx,_currentStock];

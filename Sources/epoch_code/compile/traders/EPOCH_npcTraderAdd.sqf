@@ -14,7 +14,7 @@
 */
 
 private [	"_PlayerFilerDropDown","_PlayerItemsBox","_PlayerItemsOutBox","_TraderItemsOutBox","_CryptoInCtrl","_CryptoOutCtrl","_allowAdd","_uiItem","_rounds","_itemIcon","_itemColor","_errormsg","_stockLimit","_config",
-			"_itemClasses","_itemQtys","_qtyIndex","_limit","_sizeOut","_item","_vehicle","_itemName","_index","_maxrnd","_ItemIndex","_cryptoCount","_worth","_itemTax","_tax"
+			"_itemClasses","_itemQtys","_qtyIndex","_sizeOut","_item","_vehicle","_itemName","_index","_maxrnd","_ItemIndex","_cryptoCount","_worth","_itemTax","_tax"
 ];
 params ["_control","_selected"];
 _selected params ["_CurControl","_id"];
