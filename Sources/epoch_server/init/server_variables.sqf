@@ -88,3 +88,15 @@ private _serverSettingsConfig = configFile >> "CfgEpochServer";
     private _varData = [_serverSettingsConfig,_x select 0,_x select 1] call EPOCH_fnc_returnConfigEntry;
     missionNamespace setVariable[format["EPOCH_%1", _x select 0], _varData];
 }forEach _configArray;
+
+// Convert Starter Trader Magazines from mags to rounds
+{
+	_maxrnd = 1;
+	if ([_x,"cfgMagazines"] call Epoch_fnc_isAny) then {
+		_maxrnd = getnumber (configfile >> "cfgMagazines" >> _x >> "count");
+	};
+	if (_maxrnd > 1) then {
+		_currentStock = (EPOCH_starterTraderItems select 1 select _foreachindex)*_maxrnd; 
+		(EPOCH_starterTraderItems select 1) set [_foreachindex, _currentStock];
+	};
+} foreach (EPOCH_starterTraderItems select 0);
