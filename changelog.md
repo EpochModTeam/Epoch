@@ -2,8 +2,21 @@
 All changes for [Arma 3](https://arma3.com/) [Epoch Mod](https://epochmod.com) are listed in this changelog.
 
 ## [1.1.1.0] - Unreleased
-
-
+### Added
+- Config in cfgepochclient.hpp to disable needed items for FireOn / BurnBarrelOff / Hook
+- Missing Config entry "immuneIfStartInBase" in epochconfig.hpp
+- Radiation Suits to Loot, Pricing and Itemsort
+### Fixed
+- Mine Rocks / Chop Wood was only possible with Swords after 1.1.0 update.
+- Alive Toxic Sapper was not toxic
+- Binocular with "B" was not working, if you are using R3F or AdvSlingLoad
+- Models for Radiation Suits
+- Traps were Indestructible by using indestructible "Constructions_static_F"
+- Hopefully less login issues on BaseSpawn
+- Kick by using Jet ejector seats
+- Wrong calculated Bullets in Traders
+### Changed
+- Build mode is now also available while looking onto Building Elements (only in your PlotRange)
 
 ## [1.1.0.0] - 2018-03-15
 ### Added
