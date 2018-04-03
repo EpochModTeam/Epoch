@@ -15,6 +15,7 @@ All changes for [Arma 3](https://arma3.com/) [Epoch Mod](https://epochmod.com) a
 - Hopefully less login issues on BaseSpawn
 - Kick by using Jet ejector seats
 - Wrong calculated Bullets in Traders
+- Locked Vehicles were unlocked after upgrade
 ### Changed
 - Build mode is now also available while looking onto Building Elements (only in your PlotRange)
 

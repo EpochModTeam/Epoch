@@ -10,7 +10,7 @@
     Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
 */
 
-private ["_slot","_pos","_dir","_cargo","_damage","_OldHitPoints","_typeVeh","_baseVeh","_color","_fuel","_newVeh","_checkclass","_cfgEpochVehicles","_availableColorsConfig","_colors","_textureSelectionIndex","_selections","_textures","_count","_newHitpoints","_idx","_dmg"];
+private ["_slot","_pos","_dir","_cargo","_damage","_OldHitPoints","_typeVeh","_baseVeh","_color","_fuel","_newVeh","_checkclass","_cfgEpochVehicles","_availableColorsConfig","_colors","_textureSelectionIndex","_selections","_textures","_count","_newHitpoints","_idx","_dmg","_lock"];
 params [["_array",[]],["_player",objnull],["_token","",[""]]];
 if (_array isequalto []) exitwith {
 	diag_log "Array is empty";
@@ -42,6 +42,7 @@ _typeVeh = typeOf _veh;
 _baseVeh = _veh getVariable ["VEHICLE_BASECLASS",_typeVeh];
 _color = _veh getVariable ["VEHICLE_TEXTURE",""];
 _fuel = fuel _veh;
+_lock = locked _veh;
 deletevehicle _veh;
 waituntil {isnull _veh};
 _pos set [2,(_pos select 2)+0.5];
@@ -52,7 +53,7 @@ _newVeh call EPOCH_server_setVToken;
 _newVeh call EPOCH_server_vehicleInit;
 // set fuel level
 _newVeh setFuel _fuel;
-
+_newVeh lock _lock;
 // apply persistent textures
 _checkclass = _typeVeh;
 if !(_newVeh iskindof _typeVeh) then {
