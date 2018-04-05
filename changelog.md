@@ -16,6 +16,7 @@ All changes for [Arma 3](https://arma3.com/) [Epoch Mod](https://epochmod.com) a
 - Kick by using Jet ejector seats
 - Wrong calculated Bullets in Traders
 - Locked Vehicles were unlocked after upgrade
+- Everybody was able to open Hatch on Windows / Doors on foreign Bases
 ### Changed
 - Build mode is now also available while looking onto Building Elements (only in your PlotRange)
 
