@@ -13,12 +13,13 @@
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_code/compile/traders/EPOCH_startNpcTrade.sqf
 */
 
-private ["_PlayerItemsOutBox","_TraderItemsOutBox","_config","_current_crypto","_sizeIn","_arrayIn","_item","_rounds","_mags","_itemMags","_index","_sizeOut","_arrayOut","_itemWorth","_itemTax","_tax","_maxrnd"];
+private ["_EnableTempVehTrade","_PlayerItemsOutBox","_TraderItemsOutBox","_config","_current_crypto","_sizeIn","_arrayIn","_item","_rounds","_mags","_itemMags","_index","_sizeOut","_arrayOut","_itemWorth","_itemTax","_tax","_maxrnd"];
 
 if (!isNil "EPOCH_TRADE_STARTED") exitWith{};
 if (isNull _this) exitWith{};
 
 if (alive _this) then {
+	_EnableTempVehTrade = ["CfgEpochClient", "EnableTempVehTrade", false] call EPOCH_fnc_returnConfigEntryV2;
 	_PlayerItemsOutBox = 41501;
 	_TraderItemsOutBox = 41502;
 	_config = 'CfgPricing' call EPOCH_returnConfig;
@@ -65,7 +66,7 @@ if (alive _this) then {
 								if (!isNull _vehicle) then {
 									if (local _vehicle) then {
 										_vehSlot = _vehicle getVariable["VEHICLE_SLOT", "ABORT"];
-										if (_vehSlot != "ABORT") then {
+										if (_vehSlot != "ABORT" || _EnableTempVehTrade) then {
 											_arrayIn pushBack [_item,_rounds];
 											_added = true;
 										};
