@@ -68,10 +68,8 @@ for "_i" from 1 to _maxVehicleLimit do {
 
 			if (_class != "" && _damage < 1) then {
 				// remove location from worldspace and set to new var
-				_location = _worldspace deleteAt 0;
-
+				_worldspace params [["_location",[]],["_VectorDir",[0,0,0]],["_VectorUp",[0,0,1]],["_useposworld",false]];
 				if !(_location isEqualTo []) then {
-
 					// increased position precision
 					if (count _location == 2) then{
 						_location = (_location select 0) vectorAdd (_location select 1);
@@ -117,9 +115,13 @@ for "_i" from 1 to _maxVehicleLimit do {
 						_vehicle call EPOCH_server_setVToken;
 						_vehicle call EPOCH_server_vehicleInit;
 						// set final direction and postion of vehicle
-						_vehicle setVectorDirAndUp _worldspace;
-						_vehicle setposATL _location;
-
+						_vehicle setVectorDirAndUp [_VectorDir,_VectorUp];
+						if (_useposworld) then {
+							_vehicle setposWorld _location;
+						}
+						else {
+							_vehicle setposATL _location;
+						};
 						// set fuel level
 						_vehicle setFuel _fuel;
 						// apply persistent textures
