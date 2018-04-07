@@ -161,10 +161,10 @@ if (vehicle player == player) then {
 				};
 				if (Epoch_target iskindof 'Const_Ghost_EPOCH') then {
 					switch (_dikCode) do {
-						case eXpoch_keysVectorTiltL: {_adj = 1;if(_shift)then{_adj = 2.5};if(_alt)then{_adj = 0.5};EPOCH_buildDirectionRoll = (EPOCH_buildDirectionRoll - _adj) max -EPOCH_MaxBuildingTiltLR; EPOCH_doRotate = true; _handled = true };
-						case eXpoch_keysVectorTiltR: {_adj = 1;if(_shift)then{_adj = 2.5};if(_alt)then{_adj = 0.5};EPOCH_buildDirectionRoll = (EPOCH_buildDirectionRoll + _adj) min EPOCH_MaxBuildingTiltLR; EPOCH_doRotate = true; _handled = true };
-						case eXpoch_keysVectorTiltAwy: {_adj = 1;if(_shift)then{_adj = 2.5};if(_alt)then{_adj = 0.5};EPOCH_buildDirectionPitch = (EPOCH_buildDirectionPitch - _adj) max -EPOCH_MaxBuildingTiltFB; EPOCH_doRotate = true; _handled = true };
-						case eXpoch_keysVectorTiltTwd: {_adj = 1;if(_shift)then{_adj = 2.5};if(_alt)then{_adj = 0.5};EPOCH_buildDirectionPitch = (EPOCH_buildDirectionPitch + _adj) min EPOCH_MaxBuildingTiltFB; EPOCH_doRotate = true; _handled = true };
+						case eXpoch_keysVectorTiltL: {_adj = 1;if(_shift)then{_adj = 2.5};if(_alt)then{_adj = 0.5};EPOCH_buildDirectionRoll = (EPOCH_buildDirectionRoll - _adj) max -EPOCH_MaxBuildingTilt; EPOCH_doRotate = true; _handled = true };
+						case eXpoch_keysVectorTiltR: {_adj = 1;if(_shift)then{_adj = 2.5};if(_alt)then{_adj = 0.5};EPOCH_buildDirectionRoll = (EPOCH_buildDirectionRoll + _adj) min EPOCH_MaxBuildingTilt; EPOCH_doRotate = true; _handled = true };
+						case eXpoch_keysVectorTiltAwy: {_adj = 1;if(_shift)then{_adj = 2.5};if(_alt)then{_adj = 0.5};EPOCH_buildDirectionPitch = (EPOCH_buildDirectionPitch - _adj) max -EPOCH_MaxBuildingTilt; EPOCH_doRotate = true; _handled = true };
+						case eXpoch_keysVectorTiltTwd: {_adj = 1;if(_shift)then{_adj = 2.5};if(_alt)then{_adj = 0.5};EPOCH_buildDirectionPitch = (EPOCH_buildDirectionPitch + _adj) min EPOCH_MaxBuildingTilt; EPOCH_doRotate = true; _handled = true };
 					};
 				};
 			};

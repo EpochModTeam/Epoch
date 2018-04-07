@@ -56,8 +56,7 @@ class CfgEpochClient
     maxdoors = 10;					// Max allowed doors per Group
     maxgates = 5;					// Max allowed Gates per Group
 
-	MaxBuildingTiltLR = 180;		// Max degrees players can tilt building elements left / right
-	MaxBuildingTiltFB = 180;		// Max degrees players can tilt building elements forward backward
+	MaxBuildingTilt = 180;			// Max degrees players can tilt building elements
 
 	AtmBlockedAtPlot = "true";		// Block ATM's in Plotpole-Range
     disableRemoteSensors = "true";  // disableRemoteSensors true/false
