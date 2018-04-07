@@ -6,6 +6,7 @@ All changes for [Arma 3](https://arma3.com/) [Epoch Mod](https://epochmod.com) a
 - Config in cfgepochclient.hpp to disable needed items for FireOn / BurnBarrelOff / Hook
 - Missing Config entry "immuneIfStartInBase" in epochconfig.hpp
 - Radiation Suits to Loot, Pricing and Itemsort
+- Config to restrict tilting angle for Vectorbuilding to cfgEpochClient.hpp
 ### Fixed
 - Mine Rocks / Chop Wood was only possible with Swords after 1.1.0 update.
 - Alive Toxic Sapper was not toxic
@@ -17,8 +18,11 @@ All changes for [Arma 3](https://arma3.com/) [Epoch Mod](https://epochmod.com) a
 - Wrong calculated Bullets in Traders
 - Locked Vehicles were unlocked after upgrade
 - Everybody was able to open Hatch on Windows / Doors on foreign Bases
+- Ban for "RscMenuTeam" commandmenu
 ### Changed
 - Build mode is now also available while looking onto Building Elements (only in your PlotRange)
+- Reworked Vehicle Load / Save comands for more precise Vehicle Spawn
+- Made Temp-Vehicles tradeable (will not be stored in Trader after selling them)
 
 ## [1.1.0.0] - 2018-03-15
 ### Added
