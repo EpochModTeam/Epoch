@@ -273,14 +273,25 @@ _servicepoints = getArray (_config >> worldname >> 'ServicePoints');
 } forEach _ServicePoints;
 
 // Remove Auto-Refuel from all maps
-
-if ([_serverSettingsConfig, "disableAutoRefuel", true] call EPOCH_fnc_returnConfigEntry) then {
+if ([_serverSettingsConfig, "disableAutoRefuel", false] call EPOCH_fnc_returnConfigEntry) then {
     // get all fuel source objects on the map (Note: this maybe slow consider refactor with another command)
     _staticFuelSources = ((epoch_centerMarkerPosition nearObjects ['Building',EPOCH_dynamicVehicleArea]) select {getFuelCargo _x > 0});
     // globalize all fuel sources
     missionNamespace setVariable ["EPOCH_staticFuelSources", _staticFuelSources, true];
-    // disable fuel sources server side. (Note: might not be needed since we also need to do this client side)
-    {_x setFuelCargo 0;} foreach _staticFuelSources;
+}
+else {
+	// Remove Auto-Refuel in PlotPole-Range
+	if ([_serverSettingsConfig, "disableFuelNearPlots", true] call EPOCH_fnc_returnConfigEntry) then {
+		_buildingJammerRange = ["CfgEpochClient", "buildingJammerRange", 75] call EPOCH_fnc_returnConfigEntryV2;
+		_staticFuelSources = [];
+		{
+			{
+				_staticFuelSources pushback _x;
+			} foreach (((_x nearObjects ['Building',_buildingJammerRange]) select {getFuelCargo _x > 0}));
+		
+		} foreach (allmissionobjects "Plotpole_EPOCH");
+		missionNamespace setVariable ["EPOCH_staticFuelSources", _staticFuelSources, true];
+	};
 };
 
 // set time multiplier
