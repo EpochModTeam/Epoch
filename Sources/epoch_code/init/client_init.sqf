@@ -83,6 +83,8 @@ EPOCH_keysActionPressed = false; //prevents EH spam
 
 // load some frequently used configs to variables
 EPOCH_maxBuildingHeight = ["CfgEpochClient", "maxBuildingHeight", 100] call EPOCH_fnc_returnConfigEntryV2;
+EPOCH_MaxBuildingTiltLR = ["CfgEpochClient", "MaxBuildingTiltLR", 180] call EPOCH_fnc_returnConfigEntryV2;
+EPOCH_MaxBuildingTiltFB = ["CfgEpochClient", "MaxBuildingTiltFB", 180] call EPOCH_fnc_returnConfigEntryV2;
 Epoch_NuisanceMulti = ["CfgEpochClient", "NuisanceMulti", 0.5] call EPOCH_fnc_returnConfigEntryV2;
 
 //ON INIT and RESPAWN
