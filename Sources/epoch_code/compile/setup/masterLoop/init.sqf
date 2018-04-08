@@ -13,6 +13,9 @@ EPOCH_forceUpdateNow = false;
 // start alive timer
 _clientAliveTimer = diag_tickTime;
 
+// Fade Black Screen
+_fadedblack = false;
+
 // init player stat vars
 _gmVarsInit = ["CfgEpochClient", "gmVars", [["Temp",98.6],["Hunger",500],["Thirst",500],["Toxicity",0],["Stamina",10],["BloodP",100],["Alcohol",0],["Radiation",0]]] call EPOCH_fnc_returnConfigEntryV2;
 _gModeVarNames = _gmVarsInit apply {_x param [0,""]};
