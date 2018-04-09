@@ -45,10 +45,10 @@ class CfgBaseBuilding
 		maxSnapDistance = 4.5;
 		// snap points for Foundation_EPOCH
 		C[] = {0,0,0.806411};
-		N[] = {0,10.463,0};
-		E[] = {10.463,0,0};
-		S[] = {0,-10.463,0};
-		W[] = {-10.463,0,0};
+		N[] = {0,10.474,0};
+		E[] = {10.474,0,0};
+		S[] = {0,-10.474,0};
+		W[] = {-10.474,0,0};
 		NE[] = {2.47112,2.46379,0.269223};
 		NW[] = {-2.4783,2.46379,0.269223};
 		SE[] = {2.47112,-2.46097,0.269223};
@@ -76,10 +76,10 @@ class CfgBaseBuilding
 		maxSnapDistance = 3;
 		// snap points for Foundation_EPOCH
 		C[] = {0,0,0.806411};
-		N[] = {0,10.463,0};
-		E[] = {10.463,0,0};
-		S[] = {0,-10.463,0};
-		W[] = {-10.463,0,0};
+		N[] = {0,10.474,0};
+		E[] = {10.474,0,0};
+		S[] = {0,-10.474,0};
+		W[] = {-10.474,0,0};
 		NE[] = {2.47112,2.46379,0.269223};
 		NW[] = {-2.4783,2.46379,0.269223};
 		SE[] = {2.47112,-2.46097,0.269223};
@@ -473,8 +473,8 @@ class CfgBaseBuilding
         energyCost = 0.5;
 		// snap points for CinderWall_EPOCH
 		N[] = {0,0,3.06034};
-		E[] = {5.18644,0,0};
-		W[] = {-5.19304,0,0};
+		E[] = {5.237,0,0};
+		W[] = {-5.237,0,0};
     };
     class CinderWall_window_EPOCH : Default
     {
@@ -486,8 +486,8 @@ class CfgBaseBuilding
         energyCost = 0.5;
 		// snap points for CinderWall_EPOCH
 		N[] = {0,0,3.06034};
-		E[] = {5.18644,0,0};
-		W[] = {-5.19304,0,0};
+		E[] = {5.237,0,0};
+		W[] = {-5.237,0,0};
     };
 	// Kit_Garden
 	class Garden_EPOCH : Default
@@ -543,7 +543,7 @@ class CfgBaseBuilding
 
     class CinderWallGarage_SIM_EPOCH : CinderWallGarage_EPOCH
     {
-        allowedSnapObjects[] = {"Const_Cinder_static_F","Const_floors_static_F"};
+        allowedSnapObjects[] = {"Const_Cinder_static_F","Const_floors_static_F","Const_WoodWalls_static_F"};
         removeParts[] = {};
     };
     class CinderWallHalf_EPOCH : Default
@@ -559,13 +559,13 @@ class CfgBaseBuilding
         allowedSnapPoints[] = {"N","S","E","W"};
 		// snap points for CinderWallHalf_EPOCH
 		N[] = {0,0,1.57378};
-		E[] = {5.18644,0,0};
-		W[] = {-5.19304,0,0};
+		E[] = {5.237,0,0};
+		W[] = {-5.237,0,0};
 
     };
     class CinderWallHalf_SIM_EPOCH : CinderWallHalf_EPOCH
     {
-        allowedSnapObjects[] = {"Const_Cinder_static_F","Const_floors_static_F"};
+        allowedSnapObjects[] = {"Const_Cinder_static_F","Const_floors_static_F","Const_WoodWalls_static_F"};
         removeParts[] = {};
         upgradeBuilding[] = {};
     };
@@ -583,13 +583,13 @@ class CfgBaseBuilding
         energyCost = 0.4;
 		// snap points for CinderWall_EPOCH
 		N[] = {0,0,3.06034};
-		E[] = {5.18644,0,0};
-		W[] = {-5.19304,0,0};
+		E[] = {5.237,0,0};
+		W[] = {-5.237,0,0};
 
     };
     class CinderWall_SIM_EPOCH : CinderWall_EPOCH
     {
-        allowedSnapObjects[] = {"Const_Cinder_static_F","Const_floors_static_F"};
+        allowedSnapObjects[] = {"Const_Cinder_static_F","Const_floors_static_F","Const_WoodWalls_static_F"};
         upgradeBuilding[] = {};
         removeParts[] = {};
     };
@@ -602,8 +602,8 @@ class CfgBaseBuilding
         allowedSnapPoints[] = {"N","S","E","W"};
 		// snap points for CinderWall_EPOCH
 		N[] = {0,0,3.06034};
-		E[] = {5.18644,0,0};
-		W[] = {-5.19304,0,0};
+		E[] = {5.237,0,0};
+		W[] = {-5.237,0,0};
     };
 	class WoodLargeWall_EPOCH : Default
     {
@@ -617,14 +617,14 @@ class CfgBaseBuilding
         allowedSnapPoints[] = {"N","S","E","W"};
 		// snap points for WoodLargeWall_EPOCH
 		N[] = {0,0,3.06034};
-		E[] = {5.23785,0,0};
-		W[] = {-5.26294,0,0};
+		E[] = {5.237,0,0};
+		W[] = {-5.237,0,0};
     };
     class WoodLargeWall_SIM_EPOCH : WoodLargeWall_EPOCH
     {
         upgradeBuilding[] = {};
         removeParts[] = {};
-        allowedSnapObjects[] = {"Const_floors_static_F","Const_WoodWalls_static_F"};
+        allowedSnapObjects[] = {"Const_floors_static_F","Const_WoodWalls_static_F","Const_Cinder_static_F"};
     };
     class WoodLargeWall_Ghost_EPOCH : WoodLargeWall_SIM_EPOCH {};
     class WoodWall1_EPOCH : Default
@@ -640,12 +640,12 @@ class CfgBaseBuilding
         energyCost = 0.2;
 		// snap points for WoodLargeWall_EPOCH
 		N[] = {0,0,3.06034};
-		E[] = {5.23785,0,0};
-		W[] = {-5.26294,0,0};
+		E[] = {5.237,0,0};
+		W[] = {-5.237,0,0};
     };
     class WoodWall1_SIM_EPOCH : WoodWall1_EPOCH
     {
-        allowedSnapObjects[] = {"Const_floors_static_F","Const_WoodWalls_static_F"};
+        allowedSnapObjects[] = {"Const_floors_static_F","Const_WoodWalls_static_F","Const_Cinder_static_F"};
         energyCost = 0.2;
         upgradeBuilding[] = {};
         removeParts[] = {};
@@ -660,8 +660,8 @@ class CfgBaseBuilding
         energyCost = 0.5;
 		// snap points for WoodLargeWall_EPOCH
 		N[] = {0,0,3.06034};
-		E[] = {5.23785,0,0};
-		W[] = {-5.26294,0,0};
+		E[] = {5.237,0,0};
+		W[] = {-5.237,0,0};
     };
     class WoodLargeWallCor_EPOCH : Default
     {
@@ -677,12 +677,12 @@ class CfgBaseBuilding
         availableTextures[] = {"\x\addons\a3_epoch_assets\textures\cor\corrugated_co.paa","\x\addons\a3_epoch_assets\textures\cor\corrugated_black_co.paa","\x\addons\a3_epoch_assets\textures\cor\corrugated_blue_co.paa","\x\addons\a3_epoch_assets\textures\cor\corrugated_brown_co.paa","\x\addons\a3_epoch_assets\textures\cor\corrugated_green_co.paa","\x\addons\a3_epoch_assets\textures\cor\corrugated_orange_co.paa","\x\addons\a3_epoch_assets\textures\cor\corrugated_purple_co.paa","\x\addons\a3_epoch_assets\textures\cor\corrugated_red_co.paa","\x\addons\a3_epoch_assets\textures\cor\corrugated_teal_co.paa","\x\addons\a3_epoch_assets\textures\cor\corrugated_yellow_co.paa"};
 		// snap points for WoodLargeWall_EPOCH
 		N[] = {0,0,3.06034};
-		E[] = {5.23785,0,0};
-		W[] = {-5.26294,0,0};
+		E[] = {5.237,0,0};
+		W[] = {-5.237,0,0};
     };
     class WoodLargeWallCor_SIM_EPOCH : WoodLargeWallCor_EPOCH
     {
-        allowedSnapObjects[] = {"Const_floors_static_F","Const_WoodWalls_static_F"};
+        allowedSnapObjects[] = {"Const_floors_static_F","Const_WoodWalls_static_F","Const_Cinder_static_F"};
         upgradeBuilding[] = {};
         removeParts[] = {};
     };
@@ -698,12 +698,12 @@ class CfgBaseBuilding
         energyCost = 0.2;
 		// snap points for WoodLargeWall_EPOCH
 		N[] = {0,0,3.06034};
-		E[] = {5.23785,0,0};
-		W[] = {-5.26294,0,0};
+		E[] = {5.237,0,0};
+		W[] = {-5.237,0,0};
     };
     class WoodWall2_SIM_EPOCH : WoodWall2_EPOCH
     {
-        allowedSnapObjects[] = {"Const_floors_static_F","Const_WoodWalls_static_F"};
+        allowedSnapObjects[] = {"Const_floors_static_F","Const_WoodWalls_static_F","Const_Cinder_static_F"};
         upgradeBuilding[] = {};
         removeParts[] = {};
     };
@@ -720,12 +720,12 @@ class CfgBaseBuilding
         availableTextures[] = {"\x\addons\a3_epoch_assets\textures\cor\corrugated_co.paa","\x\addons\a3_epoch_assets\textures\cor\corrugated_black_co.paa","\x\addons\a3_epoch_assets\textures\cor\corrugated_blue_co.paa","\x\addons\a3_epoch_assets\textures\cor\corrugated_brown_co.paa","\x\addons\a3_epoch_assets\textures\cor\corrugated_green_co.paa","\x\addons\a3_epoch_assets\textures\cor\corrugated_orange_co.paa","\x\addons\a3_epoch_assets\textures\cor\corrugated_purple_co.paa","\x\addons\a3_epoch_assets\textures\cor\corrugated_red_co.paa","\x\addons\a3_epoch_assets\textures\cor\corrugated_teal_co.paa","\x\addons\a3_epoch_assets\textures\cor\corrugated_yellow_co.paa"};
 		// snap points for WoodLargeWall_EPOCH
 		N[] = {0,0,3.06034};
-		E[] = {5.23785,0,0};
-		W[] = {-5.26294,0,0};
+		E[] = {5.237,0,0};
+		W[] = {-5.237,0,0};
     };
     class WoodLargeWallDoorway_SIM_EPOCH : WoodLargeWallDoorway_EPOCH
     {
-        allowedSnapObjects[] = {"Const_floors_static_F","Const_WoodWalls_static_F"};
+        allowedSnapObjects[] = {"Const_floors_static_F","Const_WoodWalls_static_F","Const_Cinder_static_F"};
         upgradeBuilding[] = {};
         removeParts[] = {};
     };
@@ -741,12 +741,12 @@ class CfgBaseBuilding
         energyCost = 0.2;
 		// snap points for WoodLargeWall_EPOCH
 		N[] = {0,0,3.06034};
-		E[] = {5.23785,0,0};
-		W[] = {-5.26294,0,0};
+		E[] = {5.237,0,0};
+		W[] = {-5.237,0,0};
     };
     class WoodWall3_SIM_EPOCH : WoodWall3_EPOCH
     {
-        allowedSnapObjects[] = {"Const_floors_static_F","Const_WoodWalls_static_F"};
+        allowedSnapObjects[] = {"Const_floors_static_F","Const_WoodWalls_static_F","Const_Cinder_static_F"};
         upgradeBuilding[] = {};
         removeParts[] = {};
     };
@@ -763,12 +763,12 @@ class CfgBaseBuilding
         energyCost = 0.2;
 		// snap points for WoodLargeWall_EPOCH
 		N[] = {0,0,3.06034};
-		E[] = {5.23785,0,0};
-		W[] = {-5.26294,0,0};
+		E[] = {5.237,0,0};
+		W[] = {-5.237,0,0};
     };
     class WoodLargeWallDoor_SIM_EPOCH : WoodLargeWallDoor_EPOCH
     {
-        allowedSnapObjects[] = {"Const_floors_static_F","Const_WoodWalls_static_F"};
+        allowedSnapObjects[] = {"Const_floors_static_F","Const_WoodWalls_static_F","Const_Cinder_static_F"};
         upgradeBuilding[] = {};
         removeParts[] = {};
     };
@@ -783,12 +783,12 @@ class CfgBaseBuilding
         energyCost = 0.2;
 		// snap points for WoodLargeWall_EPOCH
 		N[] = {0,0,3.06034};
-		E[] = {5.23785,0,0};
-		W[] = {-5.26294,0,0};
+		E[] = {5.237,0,0};
+		W[] = {-5.237,0,0};
     };
     class WoodWall4_SIM_EPOCH : WoodWall4_EPOCH
     {
-        allowedSnapObjects[] = {"Const_floors_static_F","Const_WoodWalls_static_F"};
+        allowedSnapObjects[] = {"Const_floors_static_F","Const_WoodWalls_static_F","Const_Cinder_static_F"};
         upgradeBuilding[] = {};
         removeParts[] = {};
     };
@@ -804,12 +804,12 @@ class CfgBaseBuilding
         energyCost = 0.2;
 		// snap points for WoodLargeWall_EPOCH
 		N[] = {0,0,3.06034};
-		E[] = {5.23785,0,0};
-		W[] = {-5.26294,0,0};
+		E[] = {5.237,0,0};
+		W[] = {-5.237,0,0};
     };
     class WoodLargeWallDoorL_SIM_EPOCH : WoodLargeWallDoorL_EPOCH
     {
-        allowedSnapObjects[] = {"Const_floors_static_F","Const_WoodWalls_static_F"};
+        allowedSnapObjects[] = {"Const_floors_static_F","Const_WoodWalls_static_F","Const_Cinder_static_F"};
         upgradeBuilding[] = {};
         removeParts[] = {};
     };
@@ -871,7 +871,7 @@ class CfgBaseBuilding
     };
     class WoodStairs_SIM_EPOCH : WoodStairs_EPOCH
     {
-        allowedSnapPoints[] = {"NF","SF","EF","WF","CB"};
+        allowedSnapPoints[] = {"NF","SF","EF","WF","CB","CS"};
         allowedSnapObjects[] = {"Const_floors_static_F","Constructions_foundation_F"};
         upgradeBuilding[] = {};
         removeParts[] = {};
@@ -893,6 +893,7 @@ class CfgBaseBuilding
 		WF2[] = {-5.237,-0.003,0};
 		C[] = {-0.000251044,-0.00293543,6.37273};
 		CB[] = {-0.000299305,-0.000390954,3.32902};
+		CS[] = {-0.000251044,-0.00293543,3.060298};		// 2x WoodStairs without Space for Floor
 		CinN[] = {0.0214193,2.87136,3.05972};
 		CinE[] = {2.87868,-0.000390954,3.05972};
 		CinS[] = {0.0214193,-2.86826,3.05972};
