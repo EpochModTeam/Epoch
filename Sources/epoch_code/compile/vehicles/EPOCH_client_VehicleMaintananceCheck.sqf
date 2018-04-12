@@ -25,10 +25,11 @@ if (_veh iskindof "ebike_epoch") then {
 };
 _wheelcounter = 0;
 {
-	_HitPointName = _x;
+	_HitPointName = tolower _x;
 	_Hit = (getAllHitPointsDamage _veh) select 2 select _foreachindex;
 	{
 		_x params ["_searchedhit","_limit1","_limit2"];
+		_searchedhit = tolower _searchedhit;
 		if (_searchedhit isequalto _HitPointName) then {
 			_wheel = ["wheel",tolower _searchedhit] call bis_fnc_instring;
 			if (_wheel) then {
