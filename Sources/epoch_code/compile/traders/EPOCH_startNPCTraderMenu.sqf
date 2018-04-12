@@ -25,6 +25,9 @@ if (alive _target) then {
 		if (primaryWeapon player != "") then {
 			EPOCH_NpcTradePlayerItems pushback primaryWeapon player;
 		};
+		if (secondaryWeapon player != "") then {
+			EPOCH_NpcTradePlayerItems pushback secondaryWeapon player;
+		};
 		if (count backpackItems player == 0 && count backpackmagazines player == 0 && backpack player != "") then {
 			EPOCH_NpcTradePlayerItems pushback backpack player;
 		};

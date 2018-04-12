@@ -45,7 +45,7 @@ if (alive _this) then {
 						_added = true;
 					}
 					else {
-						if (_item == primaryweapon player) then {
+						if (_item in [primaryweapon player, secondaryweapon player]) then {
 							player removeweapon _item;
 							_arrayIn pushBack [_item,_rounds];
 							_added = true;
