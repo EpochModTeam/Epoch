@@ -14,6 +14,7 @@
 */
 private ["_secondlocalcheck","_repairarrays","_config","_VehicleRepairs","_reqiredMat","_searchname","_line","_returnmat"];
 params ["_veh","_do","_hitpointname"];
+_hitpointname = tolower _hitpointname;
 _secondlocalcheck = false;
 _returnmat = "";
 _repairarrays = [];
@@ -33,11 +34,12 @@ switch _do do {
 	case 'repair': {
 		_reqiredMat = "";
 		_searchname = _hitpointname;
-		if (["glass",tolower _hitpointname] call Bis_fnc_instring) then {
+		if (["glass",_hitpointname] call Bis_fnc_instring) then {
 			_searchname = "glass";
 		};
 		{
 			_x params ["_name","","","_repairmat"];
+			_name = tolower _name;
 			if (_searchname isequalto _name) exitwith {
 				_reqiredMat = _repairmat;
 			};
@@ -64,11 +66,12 @@ switch _do do {
 	case 'replace': {
 		_reqiredMat = "";
 		_searchname = _hitpointname;
-		if (["glass",tolower _hitpointname] call Bis_fnc_instring) then {
+		if (["glass", _hitpointname] call Bis_fnc_instring) then {
 			_searchname = "glass";
 		};
 		{
 			_x params ["_name","","","","_replacemat"];
+			_name = tolower _name;
 			if (_searchname isequalto _name) exitwith {
 				_reqiredMat = _replacemat;
 			};
@@ -100,6 +103,7 @@ switch _do do {
 		_searchname = _hitpointname;
 		{
 			_x params ["_name","","","","_replacemat"];
+			_name = tolower _name;
 			if (_searchname isequalto _name) exitwith {
 				_returnmat = _replacemat;
 			};

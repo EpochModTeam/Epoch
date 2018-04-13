@@ -31,7 +31,7 @@ _wheelcounter = 0;
 		_x params ["_searchedhit","_limit1","_limit2"];
 		_searchedhit = tolower _searchedhit;
 		if (_searchedhit isequalto _HitPointName) then {
-			_wheel = ["wheel",tolower _searchedhit] call bis_fnc_instring;
+			_wheel = ["wheel",_searchedhit] call bis_fnc_instring;
 			if (_wheel) then {
 				_wheelcounter = _wheelcounter + 1;
 			};
@@ -43,7 +43,7 @@ _wheelcounter = 0;
 				_repairs pushback _searchedhit;
 			};
 			if (!((_veh getvariable ["vehicle_slot","-1"]) isequalto "-1") && _EnableRemoveParts) then {
-				if (_searchedhit in ["HitLFWheel","HitLF2Wheel","HitLMWheel","HitLBWheel","HitRFWheel","HitRF2Wheel","HitRMWheel","HitRBWheel","HitEngine"]) then {
+				if (_searchedhit in ["hitlfwheel","hitlf2wheel","hitlmwheel","hitlbwheel","hitrfwheel","hitrf2wheel","hitrmwheel","hitrbwheel","hitengine"]) then {
 					_removes pushback _searchedhit;
 				};
 			};
@@ -51,7 +51,7 @@ _wheelcounter = 0;
 		else {
 			if (_searchedhit isequalto "glass") then {
 				if ("glass" in _repairs) exitwith {};
-				_glass = ["glass",tolower _HitPointName] call bis_fnc_instring;
+				_glass = ["glass",_HitPointName] call bis_fnc_instring;
 				if (_glass) then {
 					if (_Hit >= _limit1) exitwith {
 						_repairs pushback _searchedhit;
@@ -64,7 +64,8 @@ _wheelcounter = 0;
 
 _repairarrays = [];
 {
-	if (!(_x in _repairs || _x in _replaces || (["glass",tolower _x] call Bis_fnc_instring)) || _x isequalto "")  then {
+	_HitPointName = tolower _x;
+	if (!(_HitPointName in _repairs || _HitPointName in _replaces || (["glass",_HitPointName] call Bis_fnc_instring)) || _x isequalto "")  then {
 		_repairarrays pushback [_foreachindex, 0];
 	};
 } foreach ((getAllHitPointsDamage _veh) select 0);
