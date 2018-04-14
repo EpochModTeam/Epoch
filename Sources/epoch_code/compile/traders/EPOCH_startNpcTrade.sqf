@@ -45,7 +45,30 @@ if (alive _this) then {
 						_added = true;
 					}
 					else {
-						if (_item in [primaryweapon player, secondaryweapon player]) then {
+						if (_item in [primaryweapon player,secondaryweapon player]) then {
+							_index = if (_item == primaryweapon player) then {0} else {1};
+							{
+								if (_foreachindex > 0) then {
+									_weaponaddon = _x;
+									_count = 1;
+									if !(_weaponaddon isequalto [] || _weaponaddon isequalto "") then {
+										if (_weaponaddon isequaltype []) then {
+											if (count _weaponaddon > 1) then {
+												_weaponaddon = _x select 0;
+												_count = _x select 1;
+											};
+										};
+										if ([_weaponaddon, "CfgWeapons"] call EPOCH_fnc_isAny) then {
+											_weaponaddon call EPOCH_fnc_addItemOverflow;
+										}
+										else {
+											if ([_weaponaddon, "CfgMagazines"] call EPOCH_fnc_isAny) then {
+												[_weaponaddon,_count] call EPOCH_fnc_addMagazineOverflow;
+											};
+										};
+									};
+								};
+							} foreach ((getunitloadout player) select _index);
 							player removeweapon _item;
 							_arrayIn pushBack [_item,_rounds];
 							_added = true;
