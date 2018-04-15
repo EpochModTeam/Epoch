@@ -7,6 +7,9 @@ All changes for [Arma 3](https://arma3.com/) [Epoch Mod](https://epochmod.com) a
 - Missing Config entry "immuneIfStartInBase" in epochconfig.hpp
 - Radiation Suits to Loot, Pricing and Itemsort
 - Config to restrict tilting angle for Vectorbuilding to cfgEpochClient.hpp
+- Config to disable Fuelsources in PlotPole Range to epochconfig.hpp
+- Secondary Weapon can now be sold directly from hand
+- Attachments from sold weapons from hand will be put back into your Inventory
 ### Fixed
 - Mine Rocks / Chop Wood was only possible with Swords after 1.1.0 update.
 - Alive Toxic Sapper was not toxic
@@ -19,10 +22,13 @@ All changes for [Arma 3](https://arma3.com/) [Epoch Mod](https://epochmod.com) a
 - Locked Vehicles were unlocked after upgrade
 - Everybody was able to open Hatch on Windows / Doors on foreign Bases
 - Ban for "RscMenuTeam" commandmenu
+- Adjusted some SnapPoints for Basebuilding to be more accurate
+- Advanced Vehicle Repair was broken after last Arma Update (Tank DLC)
 ### Changed
 - Build mode is now also available while looking onto Building Elements (only in your PlotRange)
 - Reworked Vehicle Load / Save comands for more precise Vehicle Spawn
 - Made Temp-Vehicles tradeable (will not be stored in Trader after selling them)
+- Wood / Cinder Walls can now snap to each other
 
 ## [1.1.0.0] - 2018-03-15
 ### Added
