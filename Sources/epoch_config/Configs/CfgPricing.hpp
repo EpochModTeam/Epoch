@@ -112,6 +112,10 @@ class CfgPricing
     {
         price = 25;
     };
+    class ItemWaterPurificationTablets
+    {
+        price = 10;
+    };
     class ItemBulb
     {
         price = 10;
