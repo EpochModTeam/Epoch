@@ -8,6 +8,25 @@
 */
 class CfgBaseBuilding
 {
+// Power Sources (only for Energy Calculations)
+	class Land_spp_Tower_F
+	{
+        powerCapacity = 10;
+        powerType = 1;			// Solar
+	};
+	class Land_wpp_Turbine_V1_F
+	{
+        powerCapacity = 10;
+        powerType = 2;			// Wind
+	};
+	class Land_wpp_Turbine_V2_F : Land_wpp_Turbine_V1_F {};
+	class Land_Wreck_Satellite_EPOCH
+	{
+        powerCapacity = 10;
+        powerType = 3;			// Satellite
+	};
+
+// BaseBuilding
     class Default
     {
         upgradeBuilding[] = {};

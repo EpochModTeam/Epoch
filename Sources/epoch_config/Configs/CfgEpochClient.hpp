@@ -195,6 +195,19 @@ class CfgEpochClient
     playerDeathMarkerGPSOnly = 1; // Map marker toggle in map dyna menu on death with assigned GPS only
     mapOnZoomSetMarkerSize = 1; // When in map markers will change to larger size as player zooms in
     bankTransferTime[] = {0.0006,1.2,0.06};
+	
+	// Player (Building) Energy
+	energyPowerSources[]	= {				// Add PowerCapacity and PowerType in CfgBaseBuilding, if you add something here!
+		"Land_spp_Tower_F",
+		"Land_wpp_Turbine_V2_F",
+		"Land_wpp_Turbine_V1_F",
+		"SolarGen_EPOCH",
+		"Land_Wreck_Satellite_EPOCH"
+	};
+	energyRange				= 75;			// Range to check for energy sources
+	energyRegenMax			= 5;			// Max energy increase value (every 10 seconds) 
+	energyCostNV			= 3;			// Energy loss value by using nightvision (every 10 seconds)
+	energyRegenInVeh 		= 5;			// Energy increase value in Vehicles with Engine On (every 10 seconds)
 
 	// Favorite Bar
 	Fav_enableFavoriteBar = "true";			// If disabled, players will not be able to use favorite bar

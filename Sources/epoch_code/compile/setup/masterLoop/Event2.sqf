@@ -21,7 +21,7 @@ _energyValue = _chargeRate min _energyRegenMax;
 _vehicle = vehicle player;
 if (_vehicle != player && isEngineOn _vehicle) then {
 	if !(_vehicle iskindof "Bicycle") then {
-		_energyValue = _energyValue + 5;
+		_energyValue = _energyValue + _energyRegenInVeh;
 	};
 };
 if (currentVisionMode player == 1) then { //NV enabled
