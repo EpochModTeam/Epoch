@@ -28,7 +28,7 @@ if !(false call EPOCH_crafting_checkResources) exitWith {};
 //craft button
 [] spawn {
 
-	private ["_craftReturn","_needBench","_craftCount","_fnc_UILock","_itemCraftTime","_selection","_craftItem","_item","_itemName","_itemCraftTime","_itemRecipeItems","_itemType","_nearbyReq","_hasNearby","_canCraft","_wH","_nearByHolder","_wHPos"];
+	private ["_GiveBackRounds","_TotalroundsIn","_TotalMaxRoundsIn","_roundsCheck","_maxMagrnd","_maxMagRndTmp","_roundsCheckTmp","_magsammosearched","_craftReturn","_needBench","_craftCount","_fnc_UILock","_itemCraftTime","_selection","_craftItem","_item","_itemName","_itemCraftTime","_itemRecipeItems","_itemType","_nearbyReq","_hasNearby","_canCraft","_wH","_nearByHolder","_wHPos"];
 	disableSerialization;
 
 	_fnc_UILock = {
@@ -53,6 +53,8 @@ if !(false call EPOCH_crafting_checkResources) exitWith {};
 	_needBench = {"WorkBench_EPOCH" in (_x select 3 select 1)} count _nearbyReq;
 	_craftCount = _craftItem param [15,1];
 	_craftReturn = _craftItem param [16,[]];
+	
+	_BulletCalculateOnCraft = ["CfgEpochClient", "BulletCalculateOnCraft", false] call EPOCH_fnc_returnConfigEntryV2;
 
 	for "_c" from 1 to rmx_var_craftQTYOut do {
 		false call _fnc_UILock;
@@ -64,19 +66,63 @@ if !(false call EPOCH_crafting_checkResources) exitWith {};
 
 		if !(_canCraft && rmx_var_craftingLOOPS) exitWith {};
 
+		_GiveBackRounds = 0;
+		_TotalroundsIn = 0;
+		_TotalMaxRoundsIn = 0;
+		_roundsCheck = false;
+		_maxMagrnd = (getnumber (configfile >> "cfgMagazines" >> _item >> "count")) max 1;
 		{
 			if !(_x isEqualType []) then {_x = [_x,1]};
-			for "_r" from 1 to (_x select 1) do {
-				player removeItem (_x select 0); //removes any type of item, but only if not in special slots
+			_x params ["_recipetype","_recipetypecount"];
+			_recipetype = tolower _recipetype;
+			_maxMagRndTmp = getnumber (configfile >> "cfgMagazines" >> _recipetype >> "count");
+			_roundsCheckTmp = ([_recipetype,"cfgMagazines"] call Epoch_fnc_isAny && [_item,"cfgMagazines"] call Epoch_fnc_isAny && _maxMagrnd > 1 && _maxMagRndTmp > 1 && _BulletCalculateOnCraft);
+			for "_r" from 1 to _recipetypecount do {
+				if (_roundsCheckTmp) then {
+					_roundsCheck = true;
+					_magsammosearched = [];
+					{
+						_x params ["_type","_rounds"];
+						if ((tolower _type) isequalto _recipetype) then {
+							_magsammosearched pushback _x;
+						};
+					} foreach (magazinesammo player);
+					_TotalMaxRoundsIn = _TotalMaxRoundsIn + _maxMagRndTmp;
+					_TotalroundsIn = _TotalroundsIn + ((_magsammosearched deleteat 0) select 1);
+					player removemagazines _recipetype;
+					{
+						_x call EPOCH_fnc_addMagazineOverflow;
+					} foreach _magsammosearched;
+				}
+				else {
+					player removeItem _recipetype; //removes any type of item, but only if not in special slots
+				};
 			};
 		} forEach _itemRecipeItems;
+		
+		if (_roundsCheck) then {
+			_GiveBackRounds = (_maxMagrnd * (_TotalroundsIn / _TotalMaxRoundsIn));
+		};
 
 		_nearByBench = nearestObjects [player,["WorkBench_EPOCH"],3];
 
 		if (!(_nearByBench isEqualTo []) && (_needBench > 0)) then { //adds item on top of bench if bench was required
-			(_nearByBench select 0) addItemCargoGlobal [_item,_craftCount];
-		} else {
-			[_item,_craftCount] call EPOCH_fnc_addItemOverflow;
+			if (_roundsCheck) then {
+				(_nearByBench select 0) addMagazineAmmoCargo [_item, _craftCount, ((ceil (_GiveBackRounds / _craftCount)) min _maxMagrnd) max 1];
+			}
+			else {
+				(_nearByBench select 0) addItemCargoGlobal [_item,_craftCount];
+			};
+		}
+		else {
+			if (_roundsCheck) then {
+				for "_i" from 1 to _craftCount do {
+					[_item,((ceil (_GiveBackRounds / _craftCount)) min _maxMagrnd) max 1] call EPOCH_fnc_addMagazineOverflow;
+				};
+			}
+			else {
+				[_item,_craftCount] call EPOCH_fnc_addItemOverflow;
+			};
 		};
 
 		// return items

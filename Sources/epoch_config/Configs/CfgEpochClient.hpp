@@ -216,6 +216,8 @@ class CfgEpochClient
 	Fav_BannedItems[] = {"FAK"};				// Items that users are not allowed to pin
 
 	EnableTempVehTrade = "false";			// Enable selling of temp Vehicles (not handled by Epoch). Temp Vehicles will not be stored in Traders, but can be sold
+	BulletCalculateOnCraft = "true";		// Enable Bullet Calculation on Crafting - Example: If you craft a large EnergyPack with 3 half full EnergyPacks, you will only get a half filled large EnergyPack back
+
 	// Advanced Vehicle Repair
 	UseAdvancedVehicleRepair = "true";									// Switch On / Off Advanced Vehicle Repair (Does not effect SuppressedCraftingItems !)
 	EnableRemoveParts = "true";											// Enable removing Tires / Engines from Vehicles
