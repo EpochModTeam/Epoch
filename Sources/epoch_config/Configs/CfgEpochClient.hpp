@@ -216,7 +216,6 @@ class CfgEpochClient
 	Fav_BannedItems[] = {"FAK"};				// Items that users are not allowed to pin
 
 	EnableTempVehTrade = "false";			// Enable selling of temp Vehicles (not handled by Epoch). Temp Vehicles will not be stored in Traders, but can be sold
-
 	// Advanced Vehicle Repair
 	UseAdvancedVehicleRepair = "true";									// Switch On / Off Advanced Vehicle Repair (Does not effect SuppressedCraftingItems !)
 	EnableRemoveParts = "true";											// Enable removing Tires / Engines from Vehicles
@@ -230,7 +229,9 @@ class CfgEpochClient
 			"KitCinderQuarterFloor",	// Item is Upgradeable, but you can remove it here to make it also Craftable
 			"KitCinderHalfFloor",		// Item is Upgradeable, but you can remove it here to make it also Craftable
 			"KitCinderFloor",			// Item is Upgradeable, but you can remove it here to make it also Craftable
-			"KitCinderTower"			// Item is Upgradeable, but you can remove it here to make it also Craftable
+			"KitCinderTower",			// Item is Upgradeable, but you can remove it here to make it also Craftable
+			"KitSolarCharger",			// Supressed until Client Files update!
+			"KitSolarChargerXL"			// Supressed until Client Files update!
 	};
 	VehicleRepairs[] = {												// {Hitpoint, dmg to repair, dmg to replace, mat to repair, mat to replace}
 		{"HitHull",0.33,0.66,"ItemScraps","ItemCorrugated"},

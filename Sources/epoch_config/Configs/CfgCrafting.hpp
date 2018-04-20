@@ -148,7 +148,7 @@ class CfgCrafting
     };
     class CircuitParts : Part
     {
-        usedIn[] = {"EnergyPack","EnergyPackLg","KitPlotPole","ItemBattery","KitSolarGen","KitVehicleUpgradeI_200_EPOCH","KitVehicleUpgradeIV_200_EPOCH","BarrelBomb_EPOCH_Remote_Mag","BarrelBomb2_EPOCH_Remote_Mag","KitPortableLight_Single","KitPortableLight_Double"};
+        usedIn[] = {"EnergyPack","EnergyPackLg","KitPlotPole","ItemBattery","KitSolarGen","KitSolarCharger","KitSolarChargerXL","KitVehicleUpgradeI_200_EPOCH","KitVehicleUpgradeIV_200_EPOCH","BarrelBomb_EPOCH_Remote_Mag","BarrelBomb2_EPOCH_Remote_Mag","KitPortableLight_Single","KitPortableLight_Double"};
         previewPosition[] = {0.791044,1,0.256956};
         previewScale = 2;
         previewVector = 2.3;
@@ -819,7 +819,7 @@ class CfgCrafting
     };
     class ItemCorrugatedLg : Item
     {
-        usedIn[] = {"KitPlotPole","KitTankTrap","KitHesco3","KitSolarGen","ItemRotor","EngineBlock","KitMetalFloor","KitMetalHalfFloor","KitMetalQuarterFloor","KitMetalTower","KitFieldToilet","KitSink","KitPortableLight_Single","KitPortableLight_Double","KitBarbedWire"};
+        usedIn[] = {"KitPlotPole","KitTankTrap","KitHesco3","KitSolarGen","KitSolarCharger","KitSolarChargerXL","ItemRotor","EngineBlock","KitMetalFloor","KitMetalHalfFloor","KitMetalQuarterFloor","KitMetalTower","KitFieldToilet","KitSink","KitPortableLight_Single","KitPortableLight_Double","KitBarbedWire"};
         recipe[] = {{"ItemCorrugated",3}};
         nearby[] = {{"Workbench","","workbench",{1,{"WorkBench_EPOCH"}},3,1,0,1}};
         previewPosition[] = {0.797491,1,0.32899};
@@ -1119,7 +1119,7 @@ class CfgCrafting
     };
     class ItemSolar : Part
     {
-        usedIn[] = {"KitSolarGen"};
+        usedIn[] = {"KitSolarGen","KitSolarCharger","KitSolarChargerXL"};
         previewPosition[] = {0.802374,1,0.26};
         previewScale = 0.19;
         previewVector = 3.3;
@@ -1133,7 +1133,7 @@ class CfgCrafting
 	};
     class ItemCables : Item
     {
-        usedIn[] = {"KitSolarGen","KitPlotPole","ItemCopperBar","KitVehicleUpgradeI_200_EPOCH"};
+        usedIn[] = {"KitSolarGen","KitSolarCharger","KitSolarChargerXL","KitPlotPole","ItemCopperBar","KitVehicleUpgradeI_200_EPOCH"};
         nearby[] = {{"Workbench","","workbench",{1,{"WorkBench_EPOCH"}},3,1,0,1}};
         recipe[] = {{"ItemCopperBar",1}};
         previewPosition[] = {0.802374,1,0.26};
@@ -1227,7 +1227,7 @@ class CfgCrafting
     };
     class ItemBattery : Item
     {
-        usedIn[] = {"KitSolarGen","KitPlotPole","BarrelBomb_EPOCH_Remote_Mag","BarrelBomb2_EPOCH_Remote_Mag"};
+        usedIn[] = {"KitSolarGen","KitSolarCharger","KitSolarChargerXL","KitPlotPole","BarrelBomb_EPOCH_Remote_Mag","BarrelBomb2_EPOCH_Remote_Mag"};
         nearby[] = {{"Workbench","","workbench",{1,{"WorkBench_EPOCH"}},3,1,0,1}};
         recipe[] = {{"EnergyPackLg",3},{"CircuitParts",1}};
         previewPosition[] = {0.802374,1,0.276733};
@@ -1236,6 +1236,24 @@ class CfgCrafting
     class KitSolarGen : Kit
     {
         recipe[] = {{"ItemSolar",1},{"ItemCables",1},{"ItemBattery",1},{"ItemCorrugatedLg",2},{"CircuitParts",2}};
+        nearby[] = {{"Workbench","","workbench",{1,{"WorkBench_EPOCH"}},3,1,0,1}};
+        model = "\x\addons\a3_epoch_assets_3\CfgVehicles\Solar_Generator_Complete\Solar_generator.p3d";
+        previewPosition[] = {0.804979,1,0.39189};
+        previewScale = 0.11;
+        previewVector = 0;
+    };
+    class KitSolarCharger : Kit
+    {
+        recipe[] = {{"ItemSolar",1},{"ItemCables",1},{"ItemBattery",1},{"ItemCorrugatedLg",2},{"CircuitParts",2}};
+        nearby[] = {{"Workbench","","workbench",{1,{"WorkBench_EPOCH"}},3,1,0,1}};
+        model = "\x\addons\a3_epoch_assets_3\CfgVehicles\Solar_Generator_Complete\Solar_generator.p3d";
+        previewPosition[] = {0.804979,1,0.39189};
+        previewScale = 0.11;
+        previewVector = 0;
+    };
+    class KitSolarChargerXL : Kit
+    {
+        recipe[] = {{"ItemSolar",2},{"ItemCables",2},{"ItemBattery",2},{"ItemCorrugatedLg",2},{"CircuitParts",2}};
         nearby[] = {{"Workbench","","workbench",{1,{"WorkBench_EPOCH"}},3,1,0,1}};
         model = "\x\addons\a3_epoch_assets_3\CfgVehicles\Solar_Generator_Complete\Solar_generator.p3d";
         previewPosition[] = {0.804979,1,0.39189};

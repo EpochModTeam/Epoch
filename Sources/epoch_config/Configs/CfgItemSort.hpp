@@ -1068,6 +1068,8 @@ class CfgItemSort
 			"KitPlotPole",
 			"KitCinderWall",
 			"KitSolarGen",
+			"KitSolarCharger",
+			"KitSolarChargerXL",
 			"KitWorkbench",
 			"KitWoodLadder",
 			"KitWoodTower",

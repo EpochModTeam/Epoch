@@ -3254,6 +3254,14 @@ class CfgPricing
     {
         price = 325;
     };
+    class KitSolarCharger
+    {
+        price = 325;
+    };
+    class KitSolarChargerXL
+    {
+        price = 325;
+    };
     class KitCinderWall
     {
         price = 80;

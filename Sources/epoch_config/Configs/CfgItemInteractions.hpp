@@ -504,6 +504,16 @@ class CfgItemInteractions
 		buildClass = "Garden_EPOCH";
 		isStorage = 1;
 	};
+	class KitSolarCharger : Item_Build_base
+	{
+		buildClass = "SolarCharger_EPOCH";
+		isStorage = 1;
+	};
+	class KitSolarChargerXL : Item_Build_base
+	{
+		buildClass = "SolarChargerXL_EPOCH";
+		isStorage = 1;
+	};
     class KitBurnBarrel : Item_Build_base
     {
         buildClass = "BurnBarrel_EPOCH";

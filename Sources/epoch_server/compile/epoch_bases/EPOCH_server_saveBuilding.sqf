@@ -46,6 +46,10 @@ if (isText _staticClassConfig) then {
 			if (_staticClass isEqualTo "Garden_EPOCH") then {
 				EPOCH_activeGardens pushBackUnique _storageObj;
 			};
+			
+			if (_staticClass in ["SolarCharger_EPOCH","SolarChargerXL_EPOCH"]) then {
+				EPOCH_activeSolars pushBackUnique _storageObj;
+			};
 
 			if (getNumber(_cfgBaseBuilding >> _staticClass >> "isSecureStorage") == 1) then{
 				_storageObj setVariable["EPOCH_Locked", false, true];

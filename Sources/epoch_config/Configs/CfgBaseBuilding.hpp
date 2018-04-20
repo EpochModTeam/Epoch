@@ -1131,6 +1131,30 @@ class CfgBaseBuilding
         removeParts[] = {};
     };
     class WorkBench_Ghost_EPOCH : WorkBench_SIM_EPOCH {};
+    class SolarCharger_EPOCH : Default
+    {
+        removeParts[] = {{"KitSolarCharger",1}};
+        GhostPreview = "SolarCharger_Ghost_EPOCH";
+        staticClass = "SolarCharger_EPOCH";
+        simulClass = "SolarCharger_SIM_EPOCH";
+    };
+    class SolarCharger_SIM_EPOCH : SolarCharger_EPOCH
+    {
+        removeParts[] = {};
+    };
+    class SolarCharger_Ghost_EPOCH : SolarCharger_SIM_EPOCH {};
+    class SolarChargerXL_EPOCH : Default
+    {
+        removeParts[] = {{"KitSolarChargerXL",1}};
+        GhostPreview = "SolarChargerXL_Ghost_EPOCH";
+        staticClass = "SolarChargerXL_EPOCH";
+        simulClass = "SolarChargerXL_SIM_EPOCH";
+    };
+    class SolarChargerXL_SIM_EPOCH : SolarChargerXL_EPOCH
+    {
+        removeParts[] = {};
+    };
+    class SolarChargerXL_Ghost_EPOCH : SolarChargerXL_SIM_EPOCH {};
     class LockBox_EPOCH : Default
     {
         returnOnPack[] = {{"ItemLockbox",1}};

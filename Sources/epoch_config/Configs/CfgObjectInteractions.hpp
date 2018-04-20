@@ -70,6 +70,14 @@ class CfgObjectInteractions
     {
         interactMode = 4;
     };
+    class SolarCharger_EPOCH : Default
+    {
+        interactMode = 4;
+    };
+    class SolarChargerXL_EPOCH : Default
+    {
+        interactMode = 4;
+    };
     class FieldToilet_EPOCH : Default
     {
         interactMode = 4;
