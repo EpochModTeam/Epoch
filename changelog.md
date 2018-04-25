@@ -1,7 +1,7 @@
 # Change Log
 All changes for [Arma 3](https://arma3.com/) [Epoch Mod](https://epochmod.com) are listed in this changelog.
 
-## [1.1.1.0] - Unreleased
+## [1.2.0.0] - Unreleased
 ### Added
 - Config in cfgepochclient.hpp to disable needed items for FireOn / BurnBarrelOff / Hook
 - Missing Config entry "immuneIfStartInBase" in epochconfig.hpp
@@ -10,6 +10,7 @@ All changes for [Arma 3](https://arma3.com/) [Epoch Mod](https://epochmod.com) a
 - Config to disable Fuelsources in PlotPole Range to epochconfig.hpp
 - Secondary Weapon can now be sold directly from hand
 - Attachments from sold weapons from hand will be put back into your Inventory
+- Solar Charger for EnergyPacks - Put an EnergyPack into the Charger and wait...
 ### Fixed
 - Mine Rocks / Chop Wood was only possible with Swords after 1.1.0 update.
 - Alive Toxic Sapper was not toxic
@@ -24,11 +25,17 @@ All changes for [Arma 3](https://arma3.com/) [Epoch Mod](https://epochmod.com) a
 - Ban for "RscMenuTeam" commandmenu
 - Adjusted some SnapPoints for Basebuilding to be more accurate
 - Advanced Vehicle Repair was broken after last Arma Update (Tank DLC)
+- Added missing ItemWaterPurificationTablets to pricing
+- MultiGun was not working on very large Vehicles (VTOL)
+- GoldenSeal will no longer dissapear when fully grown in a Garden
 ### Changed
 - Build mode is now also available while looking onto Building Elements (only in your PlotRange)
 - Reworked Vehicle Load / Save comands for more precise Vehicle Spawn
 - Made Temp-Vehicles tradeable (will not be stored in Trader after selling them)
 - Wood / Cinder Walls can now snap to each other
+- Energy from windsources / solarsources is now calculated by wind / overcast
+- Ammo of crafted Mags are calculated by the left ammo of used Mags (example: EnergyPacks)
+- Consumed EnergyPacks give only energy calculated by left ammo in the Pack
 
 ## [1.1.0.0] - 2018-03-15
 ### Added
