@@ -29,7 +29,6 @@ All changes for [Arma 3](https://arma3.com/) [Epoch Mod](https://epochmod.com) a
 - MultiGun was not working on very large Vehicles (VTOL)
 - GoldenSeal will no longer dissapear when fully grown in a Garden
 ### Changed
-- Build mode is now also available while looking onto Building Elements (only in your PlotRange)
 - Reworked Vehicle Load / Save comands for more precise Vehicle Spawn
 - Made Temp-Vehicles tradeable (will not be stored in Trader after selling them)
 - Wood / Cinder Walls can now snap to each other
