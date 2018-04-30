@@ -13,7 +13,7 @@
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_code/compile/EPOCH_consumeItem.sqf
 */
 //[[[cog import generate_private_arrays ]]]
-private ["_ePacks","_maxMagRndTmp","_multi","_buildClass","_buildingCountLimit","_buildingJammerRange","_canCapacity","_cfgBaseBuilding","_cfgItemInteractions","_color","_currentDMG","_currentFuel","_currentHIT","_fuelCapacity","_ghostClass","_highestDMG","_inputCount","_interactAttributes","_interactOption","_interactReturnOnUse","_isOk","_isStorage","_magazineSize","_magazineSizeMax","_magazinesAmmoFull","_msg","_newDMG","_newFuel","_object","_otherObjects","_output","_paintCanColor","_paintCanIndex","_partCheck","_pos","_removeItem","_transportFuel","_unifiedInteract","_vehicle","_vehicles"];
+private ["_buildClass","_buildingCountLimit","_buildingJammerRange","_canCapacity","_cfgBaseBuilding","_cfgItemInteractions","_color","_currentDMG","_currentFuel","_currentHIT","_fuelCapacity","_ghostClass","_highestDMG","_inputCount","_interactAttributes","_interactOption","_interactReturnOnUse","_isOk","_isStorage","_magazineSize","_magazineSizeMax","_magazinesAmmoFull","_msg","_newDMG","_newFuel","_object","_otherObjects","_output","_paintCanColor","_paintCanIndex","_partCheck","_pos","_removeItem","_transportFuel","_unifiedInteract","_vehicle","_vehicles"];
 //[[[end]]]
 
 EPOCH_InteractedItem params ["_text","_item","_pic"];
@@ -42,13 +42,32 @@ if (_inputCount >= 3) then {
 _removeItem = {([player,_this] call BIS_fnc_invRemove) == 1};
 
 _unifiedInteract = {
-	private _removed = _item call _removeItem;
+	private ["_removed","_multi","_maxMagRnd","_totalMags","_remove"];
+	_removed = false;
+	_multi = 1;
+	_maxMagRnd = getnumber (configfile >> "cfgMagazines" >> _item >> "count");
+	if (_maxMagRnd > 1) then {
+		_totalMags = (magazinesammo player) select {(_x select 0) isequalto _item};
+		if !(_totalMags isequalto []) then {
+			_remove = _totalMags deleteat 0;
+			_removed = true;
+			_remove params ["_class","_rounds"];
+			_multi = _rounds / _maxMagRnd;
+			player removemagazines _item;
+			{
+				_x call EPOCH_fnc_addMagazineOverflow;
+			} foreach _totalMags;
+		};
+	}
+	else {
+		_removed = _item call _removeItem;
+	};
 	if (_removed) then {
 		if (_interactReturnOnUse != "") then {
 			_interactReturnOnUse call EPOCH_fnc_addItemOverflow;
 		};
 		{
-			_output = _x call EPOCH_giveAttributes;
+			_output = [_x select 0, round ((_x select 1) * _multi)] call EPOCH_giveAttributes;
 			if (_output != "") then {
 				[_output, 5] call Epoch_message_stack;
 			};
@@ -240,32 +259,7 @@ switch _interactOption do {
 	case 6: _unifiedInteract; //Clean -25
 	case 7: _unifiedInteract; //Warm + 1
 	case 8: _unifiedInteract; //Cold -1
-	case 9: { 					//Energy 100
-		_ePacks = [];
-		{
-			if ((_x select 0) isequalto _item) then {
-				_ePacks pushback _x;
-			};
-		} foreach (magazinesammo player);
-		if !(_ePacks isequalto []) then {
-			_maxMagRndTmp = getnumber (configfile >> "cfgMagazines" >> _item >> "count");
-			if (_maxMagRndTmp > 0) then {
-				_remove = _ePacks deleteat 0;
-				_remove params ["_class","_rounds"];
-				player removemagazines _item;
-				{
-					_x call EPOCH_fnc_addMagazineOverflow;
-				} foreach _ePacks;
-				_multi = _rounds / _maxMagRndTmp;
-				{
-					_output = [_x select 0, round ((_x select 1) * _multi)] call EPOCH_giveAttributes;
-					if (_output != "") then {
-						[_output, 5] call Epoch_message_stack;
-					};
-				} foreach _interactAttributes;
-			};
-		};
-	};
+	case 9: _unifiedInteract; //Energy 100
 	case 10: { // Repair 10 - Lite
 		if !(player == vehicle player) exitwith {
 			["Repair from outside!", 5] call Epoch_message;
