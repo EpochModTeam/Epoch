@@ -13,7 +13,7 @@
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server/compile/epoch_player/EPOCH_server_revivePlayer.sqf
 */
 //[[[cog import generate_private_arrays ]]]
-private ["_loadout","_CorpseCrypto","_PlayerCrypto","_attachments","_cIndex","_class","_currwh","_deleteprimary","_deletesecondary","_dir","_droppedPrimary","_droppedSecondary","_droppedWeapons","_equipped","_group","_location","_newPlyr","_playerGroup","_playerUID","_token","_type","_vars","_wMags","_wMagsArray","_weapon","_wh","_kIndex","_reviver","_reviverCStats","_reviverKarma","_reviverKarmaAdj"];
+private ["_loadout","_CorpseCrypto","_PlayerCrypto","_attachments","_cIndex","_class","_currwh","_deleteprimary","_deletesecondary","_dir","_droppedPrimary","_droppedSecondary","_droppedWeapons","_equipped","_group","_garbage","_location","_newPlyr","_playerGroup","_playerUID","_token","_type","_vars","_wMags","_wMagsArray","_weapon","_wh","_kIndex","_reviver","_reviverCStats","_reviverKarma","_reviverKarmaAdj"];
 //[[[end]]]
 params ["_player","_reviver",["_token","",[""]] ];
 
@@ -98,7 +98,10 @@ if (!local _player) then {
 					_group = createGroup [west, true];
 					diag_log format["DEBUG Group Created: %1", _group];
 				};
-
+				
+				_garbage = createVehicle [selectrandom ["MedicalGarbage_01_1x1_v1_F","MedicalGarbage_01_1x1_v3_F","MedicalGarbage_01_1x1_v2_F"], _location, [], 0, "CAN_COLLIDE"];
+				EPOCH_cleanupQueue pushBack _garbage;
+				
 				_newPlyr = _group createUnit[_class, _location, [], 0, "CAN_COLLIDE"];
 
 				// new Dynamicsimulation
