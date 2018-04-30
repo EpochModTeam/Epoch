@@ -28,10 +28,10 @@ if (!isNull _vehicle) then {
 		_hitpoints = (getAllHitPointsDamage _vehicle) param [2,[]];
 
 		_inventory = _vehicle call EPOCH_server_CargoSave;
-		
+
 		_colorSlot = _vehicle getVariable ["VEHICLE_TEXTURE",0];
 		_baseType = _vehicle getVariable ["VEHICLE_BASECLASS",""];
-		_VAL = [typeOf _vehicle,[getposworld _vehicle,vectordir _vehicle,vectorup _vehicle,true],damage _vehicle,_hitpoints,fuel _vehicle,_inventory,[true,magazinesAllTurrets _vehicle],_colorSlot,_baseType];
+		_VAL = [typeOf _vehicle,[getposworld _vehicle,vectordir _vehicle,vectorup _vehicle,true],damage _vehicle,_hitpoints,fuel _vehicle,_inventory,[true,magazinesAllTurrets _vehicle],_colorSlot,_baseType, getPlateNumber _vehicle];
 		["Vehicle", _vehHiveKey, EPOCH_expiresVehicle, _VAL] call EPOCH_fnc_server_hiveSETEX;
 	};
 };

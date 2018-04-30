@@ -18,7 +18,7 @@ private ["_actualHitpoints","_allHitpoints","_allVehicles","_allowDamage","_arr"
 params [["_maxVehicleLimit",0]];
 
 _diag = diag_tickTime;
-_dataFormat = ["", [], 0, [], 0, [], [], 0, ""];
+_dataFormat = ["", [], 0, [], 0, [], [], 0, "", ""];
 _dataFormatCount = count _dataFormat;
 EPOCH_VehicleSlots = [];
 _allVehicles = [];
@@ -64,7 +64,7 @@ for "_i" from 1 to _maxVehicleLimit do {
 				if !((_arr select _forEachIndex) isEqualType _x) then {_arr set[_forEachIndex, _x]};
 			} forEach _dataFormat;
 
-			_arr params ["_class","_worldspace","_damage","_hitpoints","_fuel","_inventory","_ammo","_color","_baseClass"];
+			_arr params ["_class","_worldspace","_damage","_hitpoints","_fuel","_inventory","_ammo","_color","_baseClass",["_plateNumber",""]];
 
 			if (_class != "" && _damage < 1) then {
 				// remove location from worldspace and set to new var
@@ -209,6 +209,11 @@ for "_i" from 1 to _maxVehicleLimit do {
 									_allowDamage = false;
 								};
 							};
+						};
+
+						// add previous license plate
+						if !(_plateNumber isEqualTo "") then {
+							_vehicle setPlateNumber _plateNumber;
 						};
 
 						if (_allowDamage) then {
