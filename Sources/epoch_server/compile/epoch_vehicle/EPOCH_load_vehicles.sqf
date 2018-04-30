@@ -13,7 +13,7 @@
 	https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server/compile/epoch_vehicle/EPOCH_load_vehicles.sqf
 */
 //[[[cog import generate_private_arrays ]]]
-private ["_actualHitpoints","_allHitpoints","_allVehicles","_allowDamage","_arr","_arrNum","_availableColorsConfig","_cfgEpochVehicles","_check","_class","_colors","_config","_count","_dataFormat","_dataFormatCount","_diag","_dmg","_found","_immuneIfStartInBase","_jammerOwner","_jammerRange","_jammers","_location","_lockedOwner","_marker","_nearestJammer","_removemagazinesturret","_removeweapons","_response","_selections","_serverSettingsConfig","_textureSelectionIndex","_textures","_vehHiveKey","_vehLockHiveKey","_vehicle","_vehicleSlotIndex"];
+private ["_actualHitpoints","_allHitpoints","_allVehicles","_allowDamage","_arr","_arrNum","_availableColorsConfig","_cfgEpochVehicles","_check","_class","_colors","_config","_count","_dataFormat","_dataFormatCount","_diag","_disableVehicleTIE","_dmg","_found","_immuneIfStartInBase","_jammerOwner","_jammerRange","_jammers","_location","_lockedOwner","_marker","_nearestJammer","_removemagazinesturret","_removeweapons","_response","_selections","_serverSettingsConfig","_textureSelectionIndex","_textures","_vehHiveKey","_vehLockHiveKey","_vehicle","_vehicleDynamicSimulationSystem","_vehicleSlotIndex"];
 //[[[end]]]
 params [["_maxVehicleLimit",0]];
 
