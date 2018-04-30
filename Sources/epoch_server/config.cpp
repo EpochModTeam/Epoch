@@ -107,6 +107,7 @@ class CfgServerFunctions
 			class server_upgrade_vehicle {};
 			class server_CargoSave {};
 			class server_CargoFill {};
+			class server_removemagoritemcargo {};
 		};
 		class epoch_server {
 			class precisionPos {};
