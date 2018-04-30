@@ -1,4 +1,33 @@
-params [["_vehicle",objnull]];
+/*
+	Author: He-Man - Ignatz-Gaming
+
+    Contributors:
+
+	Description:
+	Reads Cargo Inventory and push it back in a Variable
+
+    Licence:
+    Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
+
+    Github:
+	https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server/compile/epoch_vehicle/EPOCH_server_CargoSave.sqf
+	
+    Example:
+    _Inventory = [_vehicle, _dominimize] call EPOCH_server_CargoSave;
+
+    Parameter(s):
+		_this select 0: OBJ - Storage or Vehicle
+        _this select 1: BOOL - Minimize the Magazine Array
+
+	Returns:
+	ARRAY
+*/
+
+
+private [
+	"_wepsItemsCargo","_magsAmmoCargo","_containers","_allContainers","_cargo","_magsAmmoCargox","_wepsItemsCargox","_magsAmmoCargoMinimized","_cargoIndex","_wepsItemsCargoNormalized","_selectedWeaponComponents","_selectedWeapon",
+	"_weaponComponents","_weapon","_newComponents","_inventory","_ItemCargo","_ItemCargox"];
+params [["_vehicle",objnull],["_unpack",true]];
 // may not be needed but should prevent <null> in DB.
 _wepsItemsCargo = weaponsItemsCargo _vehicle;
 if (isNil "_wepsItemsCargo") then {
@@ -8,31 +37,48 @@ _magsAmmoCargo = magazinesAmmoCargo _vehicle;
 if (isNil "_magsAmmoCargo") then {
 	_magsAmmoCargo = [];
 };
+_ItemCargo = getItemCargo _vehicle;
+if (isNil "_ItemCargo") then {
+	_ItemCargo = [[],[]];
+};
 
+_containers = [];
+_allContainers = (everycontainer _vehicle);
 {
-	_cargo = _x select 1;
-	_magsAmmoCargox = magazinesAmmoCargo _cargo;
-	{
-		_magsAmmoCargo pushback _x;
-	} foreach _magsAmmoCargox;
-	_wepsItemsCargox = weaponsItemsCargo _cargo;
-	{
-		_wepsItemsCargo pushback _x;
-	} foreach _wepsItemsCargox;
-} foreach everycontainer _vehicle;
+	_x params ["_type","_cargo"];
+	if (_unpack) then {
+		_magsAmmoCargox = magazinesAmmoCargo _cargo;
+		{
+			_magsAmmoCargo pushback _x;
+		} foreach _magsAmmoCargox;
+		_wepsItemsCargox = weaponsItemsCargo _cargo;
+		{
+			_wepsItemsCargo pushback _x;
+		} foreach _wepsItemsCargox;
+		_ItemCargox = getItemCargo _cargo;
+		_ItemCargox params ["_items","_itemcounts"];
+		{
+			_cargoIndex = (_ItemCargo select 0) find _x;
+			if (_cargoIndex >= 0) then {
+				(_ItemCargo select 1) set [_cargoIndex,(_ItemCargo select 1 select _cargoIndex) + (_itemcounts select _foreachindex)];
+			}
+			else {
+				(_ItemCargo select 0) pushback (_items select _foreachindex);
+				(_ItemCargo select 1) pushback (_itemcounts select _foreachindex);
+			};
+		} foreach _items;
+	}
+	else {
+		_containerInventory = _cargo call EPOCH_server_CargoSave;
+		_containers pushback [_type , _containerInventory];
+	};
+} foreach _allContainers;
 
 // minimize magazine ammo cargo
 _magsAmmoCargoMinimized = [[],[]];
 {
-	// find cargo in temp var
-	_cargoIndex = _magsAmmoCargoMinimized find (_x select 0);
-	if (_cargoIndex >= 0) then {
-		(_magsAmmoCargoMinimized select 1) set [_cargoIndex, ((_magsAmmoCargoMinimized select 1) select _cargoIndex) + (_x select 1)]; // get count & add current
-	}
-	else {
-		(_magsAmmoCargoMinimized select 0) pushBack (_x select 0); // classname
-		(_magsAmmoCargoMinimized select 1) pushBack (_x select 1); // count
-	};
+	(_magsAmmoCargoMinimized select 0) pushBack (_x select 0);
+	(_magsAmmoCargoMinimized select 1) pushBack (_x select 1);
 } forEach _magsAmmoCargo;
 
 // convert and normalize
@@ -49,7 +95,6 @@ _wepsItemsCargoNormalized = [];
 		// remove attachments that are already linked via config
 		if (_x isEqualType "" && {(tolower _x) in _weaponComponents}) then {
 			_newComponents pushBack "";
-			//diag_log format ["DEBUG: suppressed saving of %1 for weapon %2 config %3", _x, [_selectedWeapon,_selectedWeaponComponents],[_weapon,_weaponComponents]];
 		} else {
 			_newComponents pushBack _x;
 		};
@@ -61,6 +106,7 @@ _inventory = [
 	_wepsItemsCargoNormalized,
 	_magsAmmoCargoMinimized,
 	getBackpackCargo _vehicle,
-	getItemCargo _vehicle
+	_ItemCargo,
+	_containers
 ];
 _inventory
