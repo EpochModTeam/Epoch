@@ -51,6 +51,7 @@ class CfgClientFunctions
 			class unit_onKilledEH {};
 			class AutoRun_Check {};
 			class AutoRun {};
+			class DefibrillatorUse {};
 		};
 		class building
 		{

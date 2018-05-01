@@ -1055,5 +1055,10 @@ class CfgItemInteractions
         interactText = "USE";
 		interactAttributes[] = {{"Radiation",-15},{"Thirst",-50},{"Immunity",5}};
     };
+    class ItemDefibrillator : Default
+    {
+        interactAction = 17;
+        interactText = "ReCharge";
+    };
 };
 /*[[[end]]]*/

@@ -545,8 +545,8 @@ class player_tempGroup_requests
 
 class player_revive
 {
-	condition = "dyna_isDeadPlayer && ('ItemDefibrillator' in dyna_magazinesPlayer)";
-	action = "[dyna_cursorTarget, player, Epoch_personalToken] remoteExec ['EPOCH_server_revivePlayer',2];";
-	icon = "x\addons\a3_epoch_code\Data\UI\buttons\group_requests_ca.paa";
-	tooltip = "Revive Player";
+	condition = "dyna_isDeadPlayer && isplayer dyna_cursorTarget";
+	action = "dyna_cursorTarget call EPOCH_DefibrillatorUse;";
+	icon = "x\addons\a3_epoch_code\Data\UI\buttons\Revive.paa";
+	tooltipcode = "format ['Revive %1',name dyna_cursorTarget]";
 };
