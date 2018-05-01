@@ -36,8 +36,8 @@ if (currentVisionMode player == 1) then { //NV enabled
 // Sets visual effect
 _playerAlcohol = missionNamespace getVariable [_playerAlcoholKey, _playerAlcoholDefault];
 if (_playerAlcohol > 20) then {
-	_drunkVal = linearConversion [0,100,_playerAlcohol,0.1,1,true];
-	[_drunkVal, 2] call epoch_setDrunk;
+	_drunkVal = linearConversion [0,100,_playerAlcohol,0,10,true];
+	[(ceil _drunkVal)/10, 2] call epoch_setDrunk;
 } else {
 	[0, 2] call epoch_setDrunk;
 };
