@@ -31,7 +31,7 @@ _contentArray = [];
 } forEach (allPlayers select {getPlayerUID _x == _groupID});
 
 if !(_contentArray isEqualTo []) then {
-	
+
     _contentArray params ["_groupName","_leaderName","_groupSize","_modArray","_memberArray"];
     _allPlayers = allPlayers select {alive _x};
 
@@ -54,13 +54,13 @@ if !(_contentArray isEqualTo []) then {
 				[_x] joinSilent _group;
 			};
 		} forEach (_allPlayers select {getPlayerUID _x == _selectedPlayerUID});
-		
+
 
 		// find player name from DB
 		if (_selectedPlayerName == "Dead Player") then {
 			_memberrange = ["PlayerData", _selectedPlayerUID] call EPOCH_fnc_server_hiveGETRANGE;
 			if (count (_memberrange select 1) > 0) then {
-				if (typename (_memberrange select 1 select 0) == "STRING") then {
+				if ((_memberrange select 1 select 0) isEqualType "STRING") then {
 					_selectedPlayerName = _memberrange select 1 select 0;
 				};
 			};

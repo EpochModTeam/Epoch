@@ -20,7 +20,7 @@ private ["_arr","_ctrl","_ctrlCurrent","_ctrlDefault","_ctrlEdit","_data","_defa
 //[[[end]]]
 params ["_ctrl"];
 
-_display = if (typeName _ctrl isEqualTo "CONTROL") then {ctrlParent _ctrl} else {displayNull};
+_display = if (_ctrl isEqualType controlNull) then {ctrlParent _ctrl} else {displayNull};
 _input = if (_ctrl isEqualType "STRING") then {_ctrl} else {str _ctrl};
 
 switch (_input) do {

@@ -58,7 +58,7 @@ if ((_response select 0) == 1 && (_response select 1) isEqualType []) then {
 		if (_selectedPlayerName == "Dead Player") then {
 			_memberrange = ["PlayerData", _selectedPlayerUID] call EPOCH_fnc_server_hiveGETRANGE;
 			if (count (_memberrange select 1) > 0) then {
-				if (typename (_memberrange select 1 select 0) == "STRING") then {
+				if ((_memberrange select 1 select 0) isEqualType "STRING") then {
 					_selectedPlayerName = _memberrange select 1 select 0;
 				};
 			};
