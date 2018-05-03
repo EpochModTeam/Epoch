@@ -598,6 +598,10 @@ class CfgItemInteractions
     {
         buildClass = "BarbedWire_EPOCH";
     };
+    class BaseCam : Item_Build_base
+    {
+        buildClass = "BaseCam_EPOCH";
+    };
     class PaintCanBase : Default
     {
         interactAction = 12;

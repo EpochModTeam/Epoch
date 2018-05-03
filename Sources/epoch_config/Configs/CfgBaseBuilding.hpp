@@ -500,13 +500,14 @@ class CfgBaseBuilding
         removeParts[] = {{"CinderBlocks",4},{"ItemCorrugatedLg",2},{"ItemGlass",1}};
         staticClass = "CinderWall_window_EPOCH";
         snapType = "snapPointsPara";
-        snapPointsPara[] = {"N","E","W"};
+        snapPointsPara[] = {"N","E","W","CAM"};
         allowedSnapPoints[] = {"N","S","E","W"};
         energyCost = 0.5;
 		// snap points for CinderWall_EPOCH
 		N[] = {0,0,3.06034};
 		E[] = {5.237,0,0};
 		W[] = {-5.237,0,0};
+		CAM[] = {0,-0.47,2.8};
     };
 	// Kit_Garden
 	class Garden_EPOCH : Default
@@ -574,13 +575,13 @@ class CfgBaseBuilding
         GhostPreview = "CinderWallHalf_Ghost_EPOCH";
         energyCost = 0.2;
         snapType = "snapPointsPara";
-        snapPointsPara[] = {"N","E","W"};
+        snapPointsPara[] = {"N","E","W","CAM"};
         allowedSnapPoints[] = {"N","S","E","W"};
 		// snap points for CinderWallHalf_EPOCH
 		N[] = {0,0,1.57378};
 		E[] = {5.237,0,0};
 		W[] = {-5.237,0,0};
-
+		CAM[] = {0,-0.47,1.4};
     };
     class CinderWallHalf_SIM_EPOCH : CinderWallHalf_EPOCH
     {
@@ -597,14 +598,14 @@ class CfgBaseBuilding
         staticClass = "CinderWall_EPOCH";
         GhostPreview = "CinderWall_EPOCH";
         snapType = "snapPointsPara";
-        snapPointsPara[] = {"N","E","W"};
+        snapPointsPara[] = {"N","E","W","CAM"};
         allowedSnapPoints[] = {"N","S","E","W"};
         energyCost = 0.4;
 		// snap points for CinderWall_EPOCH
 		N[] = {0,0,3.06034};
 		E[] = {5.237,0,0};
 		W[] = {-5.237,0,0};
-
+		CAM[] = {0,-0.47,2.8};
     };
     class CinderWall_SIM_EPOCH : CinderWall_EPOCH
     {
@@ -617,12 +618,13 @@ class CfgBaseBuilding
         removeParts[] = {{"CinderBlocks",4},{"ItemCorrugatedLg",1},{"CircuitParts",1}};
         staticClass = "CinderWallDoorwHatch_EPOCH";
         snapType = "snapPointsPara";
-        snapPointsPara[] = {"N","E","W"};
+        snapPointsPara[] = {"N","E","W","CAM"};
         allowedSnapPoints[] = {"N","S","E","W"};
 		// snap points for CinderWall_EPOCH
 		N[] = {0,0,3.06034};
 		E[] = {5.237,0,0};
 		W[] = {-5.237,0,0};
+		CAM[] = {0,-0.47,2.8};
     };
 	class WoodLargeWall_EPOCH : Default
     {
@@ -654,13 +656,14 @@ class CfgBaseBuilding
         staticClass = "WoodWall1_EPOCH";
         GhostPreview = "WoodWall1_EPOCH";
         snapType = "snapPointsPara";
-        snapPointsPara[] = {"N","E","W"};
+        snapPointsPara[] = {"N","E","W","CAM"};
         allowedSnapPoints[] = {"N","S","E","W"};
         energyCost = 0.2;
 		// snap points for WoodLargeWall_EPOCH
 		N[] = {0,0,3.06034};
 		E[] = {5.237,0,0};
 		W[] = {-5.237,0,0};
+		CAM[] = {0,-0.47,2.8};
     };
     class WoodWall1_SIM_EPOCH : WoodWall1_EPOCH
     {
@@ -674,13 +677,14 @@ class CfgBaseBuilding
         removeParts[] = {{"ItemGlass",2},{"PartPlankPack",2}};
         staticClass = "WoodWallWindow_EPOCH";
         snapType = "snapPointsPara";
-        snapPointsPara[] = {"N","E","W"};
+        snapPointsPara[] = {"N","E","W","CAM"};
         allowedSnapPoints[] = {"N","S","E","W"};
         energyCost = 0.5;
 		// snap points for WoodLargeWall_EPOCH
 		N[] = {0,0,3.06034};
 		E[] = {5.237,0,0};
 		W[] = {-5.237,0,0};
+		CAM[] = {0,-0.47,2.8};
     };
     class WoodLargeWallCor_EPOCH : Default
     {
@@ -690,7 +694,7 @@ class CfgBaseBuilding
         staticClass = "WoodLargeWallCor_EPOCH";
         GhostPreview = "WoodLargeWallCor_EPOCH";
         snapType = "snapPointsPara";
-        snapPointsPara[] = {"N","E","W"};
+        snapPointsPara[] = {"N","E","W","CAM"};
         allowedSnapPoints[] = {"N","S","E","W"};
         energyCost = 0.2;
         availableTextures[] = {"\x\addons\a3_epoch_assets\textures\cor\corrugated_co.paa","\x\addons\a3_epoch_assets\textures\cor\corrugated_black_co.paa","\x\addons\a3_epoch_assets\textures\cor\corrugated_blue_co.paa","\x\addons\a3_epoch_assets\textures\cor\corrugated_brown_co.paa","\x\addons\a3_epoch_assets\textures\cor\corrugated_green_co.paa","\x\addons\a3_epoch_assets\textures\cor\corrugated_orange_co.paa","\x\addons\a3_epoch_assets\textures\cor\corrugated_purple_co.paa","\x\addons\a3_epoch_assets\textures\cor\corrugated_red_co.paa","\x\addons\a3_epoch_assets\textures\cor\corrugated_teal_co.paa","\x\addons\a3_epoch_assets\textures\cor\corrugated_yellow_co.paa"};
@@ -698,6 +702,7 @@ class CfgBaseBuilding
 		N[] = {0,0,3.06034};
 		E[] = {5.237,0,0};
 		W[] = {-5.237,0,0};
+		CAM[] = {0,-0.47,2.8};
     };
     class WoodLargeWallCor_SIM_EPOCH : WoodLargeWallCor_EPOCH
     {
@@ -712,13 +717,14 @@ class CfgBaseBuilding
         simulClass = "WoodWall2_SIM_EPOCH";
         staticClass = "WoodWall2_EPOCH";
         GhostPreview = "WoodWall2_EPOCH";
-        snapPointsPara[] = {"N","E","W"};
+        snapPointsPara[] = {"N","E","W","CAM"};
         allowedSnapPoints[] = {"N","S","E","W"};
         energyCost = 0.2;
 		// snap points for WoodLargeWall_EPOCH
 		N[] = {0,0,3.06034};
 		E[] = {5.237,0,0};
 		W[] = {-5.237,0,0};
+		CAM[] = {0,-0.47,2.8};
     };
     class WoodWall2_SIM_EPOCH : WoodWall2_EPOCH
     {
@@ -733,7 +739,7 @@ class CfgBaseBuilding
         simulClass = "WoodLargeWallDoorway_SIM_EPOCH";
         staticClass = "WoodLargeWallDoorway_EPOCH";
         GhostPreview = "WoodLargeWallDoorway_EPOCH";
-        snapPointsPara[] = {"N","E","W"};
+        snapPointsPara[] = {"N","E","W","CAM"};
         allowedSnapPoints[] = {"N","S","E","W"};
         energyCost = 0.2;
         availableTextures[] = {"\x\addons\a3_epoch_assets\textures\cor\corrugated_co.paa","\x\addons\a3_epoch_assets\textures\cor\corrugated_black_co.paa","\x\addons\a3_epoch_assets\textures\cor\corrugated_blue_co.paa","\x\addons\a3_epoch_assets\textures\cor\corrugated_brown_co.paa","\x\addons\a3_epoch_assets\textures\cor\corrugated_green_co.paa","\x\addons\a3_epoch_assets\textures\cor\corrugated_orange_co.paa","\x\addons\a3_epoch_assets\textures\cor\corrugated_purple_co.paa","\x\addons\a3_epoch_assets\textures\cor\corrugated_red_co.paa","\x\addons\a3_epoch_assets\textures\cor\corrugated_teal_co.paa","\x\addons\a3_epoch_assets\textures\cor\corrugated_yellow_co.paa"};
@@ -741,6 +747,7 @@ class CfgBaseBuilding
 		N[] = {0,0,3.06034};
 		E[] = {5.237,0,0};
 		W[] = {-5.237,0,0};
+		CAM[] = {0,-0.47,2.8};
     };
     class WoodLargeWallDoorway_SIM_EPOCH : WoodLargeWallDoorway_EPOCH
     {
@@ -755,13 +762,14 @@ class CfgBaseBuilding
         simulClass = "WoodWall3_SIM_EPOCH";
         staticClass = "WoodWall3_EPOCH";
         GhostPreview = "WoodWall3_EPOCH";
-        snapPointsPara[] = {"N","E","W"};
+        snapPointsPara[] = {"N","E","W","CAM"};
         allowedSnapPoints[] = {"N","S","E","W"};
         energyCost = 0.2;
 		// snap points for WoodLargeWall_EPOCH
 		N[] = {0,0,3.06034};
 		E[] = {5.237,0,0};
 		W[] = {-5.237,0,0};
+		CAM[] = {0,-0.47,2.8};
     };
     class WoodWall3_SIM_EPOCH : WoodWall3_EPOCH
     {
@@ -776,7 +784,7 @@ class CfgBaseBuilding
         simulClass = "WoodLargeWallDoor_SIM_EPOCH";
         staticClass = "WoodLargeWallDoor_EPOCH";
         GhostPreview = "WoodLargeWallDoor_EPOCH";
-        snapPointsPara[] = {"N","E","W"};
+        snapPointsPara[] = {"N","E","W","CAM"};
         allowedSnapPoints[] = {"N","S","E","W"};
         availableTextures[] = {"\x\addons\a3_epoch_assets\textures\cor\corrugated_co.paa","\x\addons\a3_epoch_assets\textures\cor\corrugated_black_co.paa","\x\addons\a3_epoch_assets\textures\cor\corrugated_blue_co.paa","\x\addons\a3_epoch_assets\textures\cor\corrugated_brown_co.paa","\x\addons\a3_epoch_assets\textures\cor\corrugated_green_co.paa","\x\addons\a3_epoch_assets\textures\cor\corrugated_orange_co.paa","\x\addons\a3_epoch_assets\textures\cor\corrugated_purple_co.paa","\x\addons\a3_epoch_assets\textures\cor\corrugated_red_co.paa","\x\addons\a3_epoch_assets\textures\cor\corrugated_teal_co.paa","\x\addons\a3_epoch_assets\textures\cor\corrugated_yellow_co.paa"};
         energyCost = 0.2;
@@ -784,6 +792,7 @@ class CfgBaseBuilding
 		N[] = {0,0,3.06034};
 		E[] = {5.237,0,0};
 		W[] = {-5.237,0,0};
+		CAM[] = {0,-0.47,2.8};
     };
     class WoodLargeWallDoor_SIM_EPOCH : WoodLargeWallDoor_EPOCH
     {
@@ -797,13 +806,14 @@ class CfgBaseBuilding
         simulClass = "WoodWall4_SIM_EPOCH";
         staticClass = "WoodWall4_EPOCH";
         GhostPreview = "WoodWall4_EPOCH";
-        snapPointsPara[] = {"N","E","W"};
+        snapPointsPara[] = {"N","E","W","CAM"};
         allowedSnapPoints[] = {"N","S","E","W"};
         energyCost = 0.2;
 		// snap points for WoodLargeWall_EPOCH
 		N[] = {0,0,3.06034};
 		E[] = {5.237,0,0};
 		W[] = {-5.237,0,0};
+		CAM[] = {0,-0.47,2.8};
     };
     class WoodWall4_SIM_EPOCH : WoodWall4_EPOCH
     {
@@ -817,7 +827,7 @@ class CfgBaseBuilding
         simulClass = "WoodLargeWallDoorL_SIM_EPOCH";
         staticClass = "WoodLargeWallDoorL_EPOCH";
         GhostPreview = "WoodLargeWallDoorL_EPOCH";
-        snapPointsPara[] = {"N","E","W"};
+        snapPointsPara[] = {"N","E","W","CAM"};
         allowedSnapPoints[] = {"N","S","E","W"};
         availableTextures[] = {"\x\addons\a3_epoch_assets\textures\cor\corrugated_co.paa","\x\addons\a3_epoch_assets\textures\cor\corrugated_black_co.paa","\x\addons\a3_epoch_assets\textures\cor\corrugated_blue_co.paa","\x\addons\a3_epoch_assets\textures\cor\corrugated_brown_co.paa","\x\addons\a3_epoch_assets\textures\cor\corrugated_green_co.paa","\x\addons\a3_epoch_assets\textures\cor\corrugated_orange_co.paa","\x\addons\a3_epoch_assets\textures\cor\corrugated_purple_co.paa","\x\addons\a3_epoch_assets\textures\cor\corrugated_red_co.paa","\x\addons\a3_epoch_assets\textures\cor\corrugated_teal_co.paa","\x\addons\a3_epoch_assets\textures\cor\corrugated_yellow_co.paa"};
         energyCost = 0.2;
@@ -825,6 +835,7 @@ class CfgBaseBuilding
 		N[] = {0,0,3.06034};
 		E[] = {5.237,0,0};
 		W[] = {-5.237,0,0};
+		CAM[] = {0,-0.47,2.8};
     };
     class WoodLargeWallDoorL_SIM_EPOCH : WoodLargeWallDoorL_EPOCH
     {
@@ -1435,6 +1446,20 @@ class CfgBaseBuilding
         removeParts[] = {};
     };
     class WaterPump_Ghost_EPOCH : WaterPump_SIM_EPOCH {};
+    class BaseCam_EPOCH : Default
+    {
+        removeParts[] = {{"BaseCam",1}};
+        GhostPreview = "BaseCam_Ghost_EPOCH";
+        staticClass = "BaseCam_EPOCH";
+        simulClass = "BaseCam_SIM_EPOCH";
+    };
+    class BaseCam_SIM_EPOCH : BaseCam_EPOCH
+    {
+        removeParts[] = {};
+        allowedSnapPoints[] = {"CAM"};
+        allowedSnapObjects[] = {"Const_WoodWalls_static_F","Const_Cinder_static_F"};
+    };
+    class BaseCam_Ghost_EPOCH : BaseCam_SIM_EPOCH {};
 };
 
 /*[[[end]]]*/

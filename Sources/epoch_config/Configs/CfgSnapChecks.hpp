@@ -51,6 +51,15 @@ class CfgSnapChecks
     class MetalTower_EPOCH : WoodStairs_EPOCH {};
     class CinderTower_EPOCH : WoodStairs_EPOCH {};
     class WoodRamp_EPOCH : WoodStairs_EPOCH {};
+    class BaseCam_EPOCH
+	{
+        nails[] = {
+			{{0,0.15,-0.06},{0,0.3,0.04}},
+			{{0,0.15,-0.06},{0,0.3,-0.16}},
+			{{0,0.15,-0.06},{-0.1,0.3,-0.06}},
+			{{0,0.15,-0.06},{0.1,0.3,-0.06}}
+		};
+	};
 };
 
 /*[[[end]]]*/
