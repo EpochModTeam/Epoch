@@ -85,8 +85,21 @@ if (isText _staticClassConfig) then {
 
 			if (_objSlot != -1) then {
 				_newVehicle = [_vehicle, false] call EPOCH_server_simulSwap;
-
-				_newVehicle setVariable["BUILD_OWNER", _playerUID, true];
+				
+				// add BaseCam to public array
+				if (_newVehicle iskindof "BaseCam_EPOCH") then {
+					_playerGroup = _player getVariable["GROUP", ""];
+					_Owner = _playerUID;
+					if (_playerGroup != "") then {
+						_Owner = _playerGroup;
+					};
+					_newVehicle setVariable["BUILD_OWNER", _Owner, true];
+					EPOCH_BaseCams pushBackUnique _newVehicle;
+					publicvariable "EPOCH_BaseCams";
+				}
+				else {
+					_newVehicle setVariable["BUILD_OWNER", _playerUID, true];
+				};
 				_newVehicle call EPOCH_saveBuilding;
 			};
 
