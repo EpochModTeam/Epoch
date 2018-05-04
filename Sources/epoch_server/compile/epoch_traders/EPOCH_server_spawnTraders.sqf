@@ -55,19 +55,25 @@ for "_i" from 1 to _spawnCount do {
 				if (daytime > _startTime && daytime < _endTime) then {
 					_pos = _work;
 				};
-				_agent = createAgent[_aiClass, _pos, [], 0, "CAN_COLLIDE"];
-				addToRemainsCollector[_agent];
+				_agent = objnull;
+				if ((Epoch_ServerRealtime select 1) isequalto 12) then {
+					_agent = createvehicle ["snowmanDeco_EPOCH", _pos, [], 0, "NONE"];
+				}
+				else {
+					_agent = createAgent [_aiClass, _pos, [], 0, "CAN_COLLIDE"];
+					addToRemainsCollector[_agent];
+					_agent addUniform _randomAIUniform;
+					if !(EPOCH_forceStaticTraders) then {
+						[_agent, _home, [_work, _schedule]] execFSM "\epoch_server\system\Trader_brain.fsm";
+					};
+				};
 				_agent allowdamage !_TraderGodMode;
-				_agent addUniform _randomAIUniform;
 				_slot = EPOCH_TraderSlots deleteAt 0;
 				_agent setVariable["AI_SLOT", _slot, true];
 				_agent setVariable["AI_ITEMS", EPOCH_starterTraderItems, true];
 				_objHiveKey = format["%1:%2", (call EPOCH_fn_InstanceID), _slot];
 				["AI_ITEMS", _objHiveKey, EPOCH_expiresAIdata, EPOCH_starterTraderItems] call EPOCH_fnc_server_hiveSETEX;
 				_agent addEventHandler["Killed", { _this call EPOCH_server_traderKilled; }];
-				if !(EPOCH_forceStaticTraders) then {
-					[_agent, _home, [_work, _schedule]] execFSM "\epoch_server\system\Trader_brain.fsm";
-				};
 				["AI", _objHiveKey, [_aiClass, _home, [_work, _schedule]] ] call EPOCH_fnc_server_hiveSET;
 				if (EPOCH_SHOW_TRADERS) then {
 					_markers = ["NewDynamicTrader",_pos] call EPOCH_server_createGlobalMarkerSet;

@@ -91,6 +91,16 @@ diag_log "Epoch: Init Variables";
 call compile preprocessFileLineNumbers "\epoch_server\init\server_variables.sqf";
 call compile preprocessFileLineNumbers "\epoch_server\init\server_securityfunctions.sqf";
 
+// Set Server RealTime
+Epoch_ServerRealtime = date;
+_response = "epochserver" callExtension "510";
+if (_response != "") then {
+	diag_log format ["Epoch: Set Real Time: %1", _response];
+	_date = parseSimpleArray _response;
+	_date resize 5;
+	Epoch_ServerRealtime = _date;
+};
+
 // Enable Dynamic simulation
 _dynSimToggle = [_serverSettingsConfig, "enableDynamicSimulationSystem", true] call EPOCH_fnc_returnConfigEntry;
 enableDynamicSimulationSystem _dynSimToggle;
@@ -226,15 +236,10 @@ _staticDateTime = [_serverSettingsConfig, "StaticDateTime", []] call EPOCH_fnc_r
 _timeDifference = [_serverSettingsConfig, "timeDifference", 0] call EPOCH_fnc_returnConfigEntry;
 
 if (_staticDateTime isEqualto []) then {
-    _response = "epochserver" callExtension "510";
-    if (_response != "") then {
-        diag_log format ["Epoch: Set Real Time: %1", _response];
-        _date = parseSimpleArray _response;
-        _date resize 5;
-        _date set[0, (_date select 0) + 21];
-        _date set[3, (_date select 3) + _timeDifference];
-        _dateChanged = true;
-    };
+	_date = Epoch_ServerRealtime;
+	_date set[0, (_date select 0) + 21];
+	_date set[3, (_date select 3) + _timeDifference];
+	_dateChanged = true;
 } else {
     {
         if (_x != 0) then {

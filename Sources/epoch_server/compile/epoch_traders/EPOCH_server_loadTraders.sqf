@@ -35,17 +35,19 @@ _TraderItemCountPerItem = [_serverSettingsConfig, "TraderItemCountPerItem", [100
 _TraderItemsDeleteRestart = [_serverSettingsConfig, "TraderItemsDeleteRestart", []] call EPOCH_fnc_returnConfigEntry;
 
 _TraderInit = {
-	addToRemainsCollector[_this];
 	_this allowdamage !_TraderGodMode;
-	_this addUniform _randomAIUniform;
 	_this setDir _dir;
 	_this setVariable ["AI_SLOT", _i, true];
 	_this setVariable ["AI_ITEMS", _arr, true];
-	_this disableAI "FSM";
-	_this setBehaviour "CARELESS";
-	_this setCombatMode "RED";
-	_this setSkill 0;
 	_this addEventHandler ["Killed", { _this call EPOCH_server_traderKilled; }];
+	if (_this iskindof "MAN") then {
+		addToRemainsCollector[_this];
+		_this addUniform _randomAIUniform;
+		_this disableAI "FSM";
+		_this setBehaviour "CARELESS";
+		_this setCombatMode "RED";
+		_this setSkill 0;
+	};
 };
 _TraderItemsClean = {
 	private ["_idx","_delete","_k"];
@@ -153,7 +155,13 @@ for "_i" from 0 to (_maxTraderLimit-1) do {
 			};
 		};
 		EPOCH_TraderSlots deleteAt _traderSlotIndex;
-		_agent = createAgent [_class, _pos, [], 0, "CAN_COLLIDE"];
+		_agent = objnull;
+		if ((Epoch_ServerRealtime select 1) isequalto 12) then {
+			_agent = createvehicle ["snowmanDeco_EPOCH", _pos, [], 0, "NONE"];
+		}
+		else {
+			_agent = createAgent [_class, _pos, [], 0, "CAN_COLLIDE"];
+		};
 		_agent call _TraderInit;
 		_agent setPosATL _pos;
 		if (_arrchanged) then {
@@ -185,15 +193,21 @@ for "_i" from 0 to (_maxTraderLimit-1) do {
 				};
 				if !(count (_arr select 0) >= _DynamicTraderRespawnCount) then {
 					EPOCH_TraderSlots deleteAt _traderSlotIndex;
-					_agent = createAgent [_class, _pos, [], 0, "NONE"];
+					_agent = objnull;
+					if ((Epoch_ServerRealtime select 1) isequalto 12) then {
+						_agent = createvehicle ["snowmanDeco_EPOCH", _pos, [], 0, "NONE"];
+					}
+					else {
+						_agent = createAgent [_class, _pos, [], 0, "NONE"];
+						if !(EPOCH_forceStaticTraders) then {
+							[_agent, _home, _work] execFSM "\epoch_server\system\Trader_brain.fsm";
+						};
+					};
 					_dir = random 360;
 					_agent call _TraderInit;
 					if (_arrchanged) then {
 //						diag_log format ["EPOCH_DEBUG: TraderSlot: %1 | Saved",_i];
 						["AI_ITEMS", _objHiveKey, EPOCH_expiresAIdata, _arr] call EPOCH_fnc_server_hiveSETEX;
-					};
-					if !(EPOCH_forceStaticTraders) then {
-						[_agent, _home, _work] execFSM "\epoch_server\system\Trader_brain.fsm";
 					};
 					if (EPOCH_SHOW_TRADERS) then {
 						_markers = ["DynamicTrader",_pos] call EPOCH_server_createGlobalMarkerSet;
