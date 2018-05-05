@@ -143,8 +143,18 @@ for "_i" from 0 to _this do {
 			};
 
 			// Handle Jammers and create marker if EPOCH_SHOW_JAMMERS set true.
-			if (_class isKindOf "PlotPole_EPOCH") then {
-				if (EPOCH_SHOW_JAMMERS) then {
+			if (_class in ["PlotPole_EPOCH","BaseCam_EPOCH"]) then {
+				if (_owner != "-1") then {
+					_baseObj setVariable ["BUILD_OWNER", _owner, true];
+				};
+
+				// add BaseCam to public array
+				if (_class isequalto "BaseCam_EPOCH") then {
+					EPOCH_BaseCams pushBackUnique _baseObj;
+					// Set PubVar later after all Cams are loaded in
+				};
+
+				if (_class isequalto "PlotPole_EPOCH" && EPOCH_SHOW_JAMMERS) then {
 					_marker = createMarker [str(_location), _location];
 					_marker setMarkerShape "ICON";
 					// TODO allow players to change this per base
@@ -159,16 +169,6 @@ for "_i" from 0 to _this do {
 				_baseObj call EPOCH_server_buildingInit;
 			};
 			_baseObj setVariable ["BUILD_SLOT", _i, true];
-
-			if (_owner != "-1") then {
-				_baseObj setVariable ["BUILD_OWNER", _owner, true];
-			};
-
-			// add BaseCam to public array
-			if (_class isequalto "BaseCam_EPOCH") then {
-				EPOCH_BaseCams pushBackUnique _baseObj;
-				// Set PubVar later after all Cams are loaded in
-			};
 
 			if (_textureSlot != 0) then {
 				// get texture path from index

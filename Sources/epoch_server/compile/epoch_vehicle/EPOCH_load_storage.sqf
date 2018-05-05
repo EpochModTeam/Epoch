@@ -134,13 +134,12 @@ for "_i" from 1 to _maxStorageLimit do {
 			};
 
 			if (count _arr >= 6) then {
-				_vehicle setVariable ["STORAGE_OWNERS", _arr select 5];
 				if (_class isKindOf 'Constructions_lockedstatic_F') then{
 					// set locked state of secure storage
 					if ((_arr select 6) != -1) then {
 						_vehicle setVariable["EPOCH_Locked", true, true];
-						//_vehicle enableSimulationGlobal false;
 					};
+					_vehicle setVariable ["STORAGE_OWNERS", _arr select 5];
 				};
 			};
 
