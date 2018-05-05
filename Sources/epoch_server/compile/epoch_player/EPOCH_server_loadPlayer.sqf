@@ -17,7 +17,7 @@ private ["_Primary","_CheckLocation","_allGroupMembers","_alreadyDead","_assigne
 //[[[end]]]
 _reject = true;
 
-params [["_player",objNull,[objNull]],["_isMale",true],["_fsmHandle",0]];
+params [["_player",objNull,[objNull]],["_isMale",true],["_fsmHandle",0],["_playerData",[]]];
 
 if (!isNull _player) then {
 
@@ -30,16 +30,17 @@ if (!isNull _player) then {
 
 	if (_playerUID != "") then {
 
-		// Make Hive call
-		_playerData = [];
-		(["Player", _playerUID] call EPOCH_fnc_server_hiveGETRANGE) params [
-			["_status", 0 ],
-			["_playerDataTmp", [] ]
-		];
-		if (_status == 1 && _playerDataTmp isEqualType []) then {
-			_playerData = _playerDataTmp;
+		if (_playerdata isequalto []) then {
+			// Make Hive call
+			(["Player", _playerUID] call EPOCH_fnc_server_hiveGETRANGE) params [
+				["_status", 0 ],
+				["_playerDataTmp", [] ]
+			];
+			if (_status == 1 && _playerDataTmp isEqualType []) then {
+				_playerData = _playerDataTmp;
+			};
 		};
-
+		
 		// Apperance defaults
 		_uniform = [_serverSettingsConfig, "defaultUniformFemale", "U_Test_uniform"] call EPOCH_fnc_returnConfigEntry;
 		_class = "Epoch_Female_F";
@@ -178,6 +179,7 @@ if (!isNull _player) then {
 		};
 
 		_newPlyr = _group createUnit[_class, getMarkerPos "respawn_west", [], 0, "CAN_COLLIDE"];
+		_newPlyr hideobjectglobal true;
 		if !(isNull _newPlyr) then {
 
 			// disable AI on temp unit
@@ -198,122 +200,14 @@ if (!isNull _player) then {
 			_newPlyr allowDamage false;
 
 			// set player loadout
-			if (_schemaVersion >= 1.0) then {
-				_playerData params ["","","_appearance","","","_loadout"];
-				// get current weapon to send to param for selectWeapon
-				_currentWeapon = _appearance param [4,""];
+			_playerData params ["","","_appearance","","","_loadout"];
+			// get current weapon to send to param for selectWeapon
+			_currentWeapon = _appearance param [4,""];
 //				_newPlyr setUnitLoadout [_loadout, false];
 
-				// Workaround for Client / Server synchronizing issue in SetUnitLoadout
-				[_newPlyr,_loadout] call Epoch_server_SetUnitLoadout;
-
-				diag_log format["DEBUG: loaded player %1 with new schema Version %2", _newPlyr, _schemaVersion];
-
-			} else {
-				// Legacy code start
-				// Apperance + Weapons
-				_playerData params ["","","_appearance","","","_weaponsAndItems","_linkedItems","_normalMagazines","_itemsInContainers","_weaponsInContainers"];
-				// load Apperance
-				_appearance params ["_goggles","_headgear","_vest","_backpack","_uniform"];
-
-				// old data format for 0.5 and prior.
-				// Load Apperance START
-				if (_uniform != "") then {
-					_newPlyr addUniform _uniform;
-				};
-				if (_backpack != "") then {
-					_newPlyr addBackpack _backpack;
-				};
-				if (_goggles != "") then {
-					_newPlyr addGoggles _goggles;
-				};
-				if (_headgear != "") then {
-					_newPlyr addHeadgear _headgear;
-				};
-				if (_vest != "") then {
-					_newPlyr addVest _vest;
-				};
-				// Load Apperance END
-
-				// Load inventory + defaults START
-				if (count _weaponsAndItems >= 3) then {
-					_weaponsAndItems params ["_currentWeaponTmp","_weaponsAndItemsArray","_equipped"];
-					_currentWeapon = _currentWeaponTmp;
-					{
-						_weapon = _x deleteAt 0;
-						_type = getNumber(configfile >> "cfgweapons" >> _weapon >> "type");
-						_attachments = [];
-						_wMags = false;
-						_wMagsArray = [];
-						// suppressor, laser, optics, magazines(array), bipods
-						{
-							// magazines
-							if (_x isEqualType []) then{
-								_wMags = true;
-								_wMagsArray pushback _x;
-							} else {
-								// attachments
-								if (_x != "") then{
-									_attachments pushBack _x;
-								};
-							};
-						} forEach _x;
-						if (_wMags) then {
-							{
-								_newPlyr addMagazine _x;
-							} foreach _wMagsArray;
-						};
-						// add weapon if equiped
-						if (_weapon in _equipped) then {
-							_equipped = _equipped - [_weapon];
-							if (_weapon != "") then {
-								_newPlyr addWeapon _weapon;
-							};
-							switch (_type) do {
-								case 1: { // primary
-									removeAllPrimaryWeaponItems _newPlyr;
-									{ _newPlyr addPrimaryWeaponItem _x } forEach _attachments;
-								};
-								case 2:	{ // handgun
-									removeAllHandgunItems _newPlyr;
-									{ _newPlyr addHandgunItem _x } forEach _attachments;
-								};
-								case 4:	{ // secondary
-									// removeAllSecondaryWeaponItems player; does not exist ?
-									{
-										_newPlyr removeSecondaryWeaponItem _x;
-									} forEach (secondaryWeaponItems _newPlyr);
-									{ _newPlyr addSecondaryWeaponItem _x } forEach _attachments;
-								};
-							};
-						}else{
-							{
-								_newPlyr addItem _x;
-							} forEach _attachments;
-						};
-					} forEach _weaponsAndItemsArray;
-				};
-
-				// Linked items
-				{
-					if (_x in["Binocular", "Rangefinder","Laserdesignator","Laserdesignator_02","Laserdesignator_03","Laserdesignator_01_khk_F","Laserdesignator_02_ghex_F"]) then {
-						_newPlyr addWeapon _x;
-					} else {
-						_newPlyr linkItem _x;
-					};
-				} forEach _linkedItems;
-
-				// add items to containers
-				[_newPlyr, _itemsInContainers] call EPOCH_fnc_addItemToX;
-
-				// add weapons to containers
-				[_newPlyr, _weaponsInContainers] call EPOCH_fnc_addItemToX;
-
-				// Add magazines
-				{_newPlyr addMagazine _x} forEach _normalMagazines;
-				// Load inventory + defaults END
-				// Legacy code stop
-			};
+			// Workaround for Client / Server synchronizing issue in SetUnitLoadout
+			[_newPlyr,_loadout] call Epoch_server_SetUnitLoadout;
+			_loadabs = loadabs _newPlyr;
 
 			// Final Push
 			if (isNull _player) then {
@@ -350,21 +244,14 @@ if (!isNull _player) then {
 				_newPlyr setVariable["COMMUNITY_STATS", _communityStats];
 
 				// Flag new body as ready for use.
-				_newPlyr setVariable["SETUP", true, true];
+				_newPlyr setVariable["FinalDest", [_location,_dir], true];
 
 				// Send message to player so they can take over the new body.
-				_player setPosATL _location;
-				_newPlyr setDir _dir;
-				_newPlyr setPosATL _location;
-				[_playerNetID, _playerUID, [_newPlyr, _vars, _currentWeapon, loadAbs _newPlyr, _playerGroup, _canBeRevived, _newPlyr call EPOCH_server_setPToken,_playerGroupArray, _communityStats, _hitpoints], _fsmHandle, _player] call EPOCH_server_pushPlayer;
-				// diag_log str([_playerNetID, _playerUID, _player, [_newPlyr, (_player isEqualTo _newPlyr), _vars, _currentWeapon, loadAbs _newPlyr, _playerGroup, _canBeRevived, [],_playerGroupArray, _communityStats, _hitpoints], _fsmHandle]);
+				[_playerNetID, _playerUID, [_newPlyr, _vars, _currentWeapon, _loadabs, _playerGroup, _canBeRevived, _newPlyr call EPOCH_server_setPToken,_playerGroupArray, _communityStats, _hitpoints], _fsmHandle, _player] call EPOCH_server_pushPlayer;
 
 				// revive test
 				_newPlyr setVariable ['#rev_enabled', true, true];
 				// [] remoteExec ["bis_fnc_reviveInit",_player];
-				
-				// re enable damage server side
-				_newPlyr allowDamage true;
 
 				// new Dynamicsimulation
 				if([configFile >> "CfgEpochServer", "playerDynamicSimulationSystem", true] call EPOCH_fnc_returnConfigEntry)then

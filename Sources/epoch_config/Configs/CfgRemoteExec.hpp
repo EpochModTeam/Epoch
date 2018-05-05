@@ -26,6 +26,11 @@ class CfgRemoteExec
     {
         mode = 1;
         jip = 0;
+		class EPOCH_server_SetFinalPlayerPos
+		{
+		  allowedTargets=2;
+		  jip = 0;
+		};
         class bis_fnc_reviveinitaddplayer
         {
             allowedTargets = 2;

@@ -95,9 +95,11 @@ if (_allowSave) then{
 	// change this if needed
 	_schemaVersion = 1.0;
 
-	// save player
-	_return = ["Player", _playerUID, EPOCH_expiresPlayer, [[getDir _player, _pos, (call EPOCH_fn_InstanceID), _schemaVersion], _medical, _appearance, _server_vars, _vars, _loadout, [], [], [], [], _group, _revive]] call EPOCH_fnc_server_hiveSETEX;
-
+	// Finally check, if Loadout is a valid Array (will never return an empty Array on units!)
+	if !(_loadout isequalto []) then {
+		// save player
+		_return = ["Player", _playerUID, EPOCH_expiresPlayer, [[getDir _player, _pos, (call EPOCH_fn_InstanceID), _schemaVersion], _medical, _appearance, _server_vars, _vars, _loadout, [], [], [], [], _group, _revive]] call EPOCH_fnc_server_hiveSETEX;
+	};
 	// save community stats
 	_stats = _player getVariable["COMMUNITY_STATS", EPOCH_defaultStatVars];
 	_return2 = ["CommunityStats", _playerUID, EPOCH_expiresCommunityStats, [_stats]] call EPOCH_fnc_server_hiveSETEX;

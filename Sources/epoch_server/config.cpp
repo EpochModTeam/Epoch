@@ -74,6 +74,7 @@ class CfgServerFunctions
 			class server_PayCrypto{};
 			class fnc_updatePlayerStats{};
 			class server_updatePlayerStats{};
+			class server_SetFinalPlayerPos{};
 		};
 		class epoch_traders {
 			class server_loadTraders {};
