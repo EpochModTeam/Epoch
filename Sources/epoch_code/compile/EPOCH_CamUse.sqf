@@ -12,7 +12,7 @@
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_code/compile/EPOCH_CamUse.sqf
 */
 
-private ["_mycams","_buildingJammerRange","_curcam","_display","_AutoCam","_ActiveCam","_campos","_CamFov","_CamDir","_CamDist","_EpochCam","_targetpos","_dirs"];
+private ["_mycams","_buildingJammerRange","_curcam"];
 
 _mycams = EPOCH_BaseCams select {(_x getVariable["BUILD_OWNER", "-1"]) in [getPlayerUID player, Epoch_my_GroupUID]};
 if (["CfgEpochClient", "BaseCamOnlyHome",true] call EPOCH_fnc_returnConfigEntryV2) then {
@@ -35,6 +35,7 @@ if (isnull Epoch_ActiveCam) exitwith {
 };
 
 [] spawn {
+	private ["_display","_AutoCam","_ActiveCam","_campos","_CamFov","_CamDir","_CamDist","_EpochCam","_targetpos","_dirs","_intensity","_sharpness","_h","_oldalpha","_newalpha"];
 	createdialog 'Epoch_CamDialog';
 	waituntil {!isnull finddisplay -1200};
 	_display = finddisplay -1200;
