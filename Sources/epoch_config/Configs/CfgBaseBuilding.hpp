@@ -909,6 +909,7 @@ class CfgBaseBuilding
     class WoodStairs_Ghost_EPOCH : WoodStairs_SIM_EPOCH {};
     class WoodStairs2_EPOCH : Default
     {
+        upgradeBuilding[] = {{"Stairs_Hatch_EPOCH",{{"ItemPipe",1},{"CircuitParts",1}}}};
         removeParts[] = {{"PartPlankPack",4}};
         simulClass = "WoodStairs2_SIM_EPOCH";
         staticClass = "WoodStairs2_EPOCH";
@@ -964,6 +965,68 @@ class CfgBaseBuilding
 		
     };
     class WoodStairs2_SIM_EPOCH : WoodStairs2_EPOCH
+    {
+        allowedSnapPoints[] = {"NF","SF","EF","WF","CB"};
+        allowedSnapObjects[] = {"Const_floors_static_F","Constructions_foundation_F"};
+        removeParts[] = {};
+    };
+    class Stairs_Hatch_EPOCH : Default
+    {
+		removeParts[] = {{"PartPlankPack",4},{"ItemPipe",1},{"CircuitParts",1}};
+        simulClass = "Stairs_Hatch_SIM_EPOCH";
+        staticClass = "Stairs_Hatch_EPOCH";
+        GhostPreview = "Stairs_Hatch_EPOCH";
+        snapPointsPara[] = {"NF2","SF2","EF2","WF2","NF","SF","EF","WF","C","CB","NWQF","NQF","NEQF","SWQF","SQF","SEQF","ENQF","EQF","ESQF","WNQF","WQF","WSQF","NWHF","NEHF","SWHF","SEHF","WNHF","WSHF","ENHF","ESHF"};
+        snapPointsPerp[] = {"N","S","E","W","CinN","CinS","CinE","CinW"};
+        energyCost = 0.3;
+		// snap points for WoodStairs_EPOCH
+		NF2[] = {0,5.237,0};
+		SF2[] = {0,-5.237,0};
+		EF2[] = {5.237,0,0};
+		WF2[] = {-5.237,-0.003,0};
+		C[] = {-0.000251044,-0.00293543,6.37273};
+		CB[] = {-0.000299305,-0.000390954,3.32902};
+		CS[] = {-0.000251044,-0.00293543,3.060298};		// 2x WoodStairs without Space for Floor
+		CinN[] = {0.0214193,2.87136,3.05972};
+		CinE[] = {2.87868,-0.000390954,3.05972};
+		CinS[] = {0.0214193,-2.86826,3.05972};
+		CinW[] = {-2.88969,-0.000390954,3.05972};
+		N[] = {0.0195083,2.46379,3.32952};
+		E[] = {2.47112,-0.000253316,3.32952};
+		S[] = {0.0195083,-2.46097,3.32952};
+		W[] = {-2.4783,-0.000253316,3.32952};
+		NE[] = {2.47112,2.46379,3.32952};
+		NW[] = {-2.4783,2.46379,3.32952};
+		SE[] = {2.47112,-2.46097,3.32952};
+		SW[] = {-2.4783,-2.46097,3.32952};
+		NF[] = {0,5.237,3.06};
+		SF[] = {0,-5.237,3.06};
+		EF[] = {5.237,0,3.06};
+		WF[] = {-5.237,0,3.06};
+		NWQF[] = {-1.30925,3.92775,3.06};
+		NQF[] = {0,3.92775,3.06};
+		NEQF[] = {1.30925,3.92775,3.06};
+		SWQF[] = {-1.30925,-3.92775,3.06};
+		SQF[] = {0,-3.92775,3.06};
+		SEQF[] = {1.30925,-3.92775,3.06};
+		ENQF[] = {3.92775,1.30925,3.06};
+		EQF[] = {3.92775,0,3.06};
+		ESQF[] = {3.92775,-1.30925,3.06};
+		WNQF[] = {-3.92775,1.30925,3.06};
+		WQF[] = {-3.92775,0,3.06};
+		WSQF[] = {-3.92775,-1.30925,3.06};
+		
+		NWHF[] = {-1.30925,5.237,3.06};
+		NEHF[] = {1.30925,5.237,3.06};
+		SWHF[] = {-1.30925,-5.237,3.06};
+		SEHF[] = {1.30925,-5.237,3.06};
+		WNHF[] = {-5.237,1.30925,3.06};
+		WSHF[] = {-5.237,-1.30925,3.06};
+		ENHF[] = {5.237,1.30925,3.06};
+		ESHF[] = {5.237,-1.30925,3.06};
+		
+    };
+    class Stairs_Hatch_SIM_EPOCH : Stairs_Hatch_EPOCH
     {
         allowedSnapPoints[] = {"NF","SF","EF","WF","CB"};
         allowedSnapObjects[] = {"Const_floors_static_F","Constructions_foundation_F"};
