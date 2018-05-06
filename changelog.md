@@ -3,38 +3,51 @@ All changes for [Arma 3](https://arma3.com/) [Epoch Mod](https://epochmod.com) a
 
 ## [1.2.0.0] - Unreleased
 ### Added
-- Config in cfgepochclient.hpp to disable needed items for FireOn / BurnBarrelOff / Hook
-- Missing Config entry "immuneIfStartInBase" in epochconfig.hpp
-- Radiation Suits to Loot, Pricing and Itemsort
-- Config to restrict tilting angle for Vectorbuilding to cfgEpochClient.hpp
-- Config to disable Fuelsources in PlotPole Range to epochconfig.hpp
-- Secondary Weapon can now be sold directly from hand
-- Attachments from sold weapons from hand will be put back into your Inventory
-- Solar Charger for EnergyPacks - Put an EnergyPack into the Charger and wait...
+- Config in cfgepochclient.hpp to disable needed items for FireOn / BurnBarrelOff / Hook @He-Man
+- Missing Config entry "immuneIfStartInBase" in epochconfig.hpp @G-Dog
+- Radiation Suits to Loot, Pricing and Itemsort @He-Man
+- Config to restrict tilting angle for Vectorbuilding to cfgEpochClient.hpp @He-Man
+- Config to disable Fuelsources in PlotPole Range to epochconfig.hpp @He-Man
+- Secondary Weapon can now be sold directly from hand @He-Man
+- Attachments from sold weapons from hand will be put back into your Inventory @He-Man
+- Solar Charger for EnergyPacks - Put an EnergyPack into the Charger and wait... @He-Man
+- 4 Hoverboard Classes: @Helion4
+   - "hoverboard_epoch_1"
+   - "hoverboard_epoch_bttf"
+   - "hoverboard_epoch_a3"
+   - "hoverboard_epoch_cargo"
+- Mountainbike "MBK_01_EPOCH" @Helion4
+- BaseCam + BaseCam Terminal @Helion & He-Man
+   - Build Cams at your Base and watch them through the Terminal
+
 ### Fixed
-- Mine Rocks / Chop Wood was only possible with Swords after 1.1.0 update.
-- Alive Toxic Sapper was not toxic
-- Binocular with "B" was not working, if you are using R3F or AdvSlingLoad
-- Models for Radiation Suits
-- Traps were Indestructible by using indestructible "Constructions_static_F"
-- Hopefully less login issues on BaseSpawn
-- Kick by using Jet ejector seats
-- Wrong calculated Bullets in Traders
-- Locked Vehicles were unlocked after upgrade
-- Everybody was able to open Hatch on Windows / Doors on foreign Bases
-- Ban for "RscMenuTeam" commandmenu
-- Adjusted some SnapPoints for Basebuilding to be more accurate
-- Advanced Vehicle Repair was broken after last Arma Update (Tank DLC)
-- Added missing ItemWaterPurificationTablets to pricing
-- MultiGun was not working on very large Vehicles (VTOL)
-- GoldenSeal will no longer dissapear when fully grown in a Garden
+- Mine Rocks / Chop Wood was only possible with Swords after 1.1.0 update. @He-Man
+- Alive Toxic Sapper was not toxic @He-Man
+- Binocular with "B" was not working, if you are using R3F or AdvSlingLoad @He-Man
+- Models for Radiation Suits @Helion4
+- Traps were Indestructible by using indestructible "Constructions_static_F" @He-Man
+- Hopefully less login issues on BaseSpawn @He-Man
+- Kick by using Jet ejector seats @He-Man
+- Wrong calculated Bullets in Traders @He-Man
+- Locked Vehicles were unlocked after upgrade @He-Man
+- Everybody was able to open Hatch on Windows / Doors on foreign Bases @He-Man
+- Ban for "RscMenuTeam" commandmenu @He-Man
+- Adjusted some SnapPoints for Basebuilding to be more accurate @He-Man
+- Advanced Vehicle Repair was broken after last Arma Update (Tank DLC) @He-Man
+- Added missing ItemWaterPurificationTablets to pricing @G-Dog
+- MultiGun was not working on very large Vehicles (VTOL) @He-Man
+- GoldenSeal will no longer disapear when fully grown in a Garden @He-Man
+- Items in Subcontainers (Items in BackPacks in COntainers) were not saved @He-Man
+- Drunk effects were not working correctly @He-Man
 ### Changed
-- Reworked Vehicle Load / Save comands for more precise Vehicle Spawn
-- Made Temp-Vehicles tradeable (will not be stored in Trader after selling them)
-- Wood / Cinder Walls can now snap to each other
-- Energy from windsources / solarsources is now calculated by wind / overcast
-- Ammo of crafted Mags are calculated by the left ammo of used Mags (example: EnergyPacks)
-- Consumed EnergyPacks give only energy calculated by left ammo in the Pack
+- Reworked Vehicle Load / Save commands for more precise Vehicle Spawn @He-Man
+- Made Temp-Vehicles tradeable (will not be stored in Trader after selling them) @He-Man
+- Wood / Cinder Walls can now snap to each other @He-Man
+- Energy from windsources / solarsources is now calculated by wind / overcast @He-Man
+- Ammo of crafted Mags are calculated by the left ammo of used Mags (example: EnergyPacks) @He-Man
+- Consumed EnergyPacks give only energy calculated by left ammo in the Pack @He-Man
+- Some script optimizations @AWOL
+- Pricing adjustemts @AWOL
 
 ## [1.1.0.0] - 2018-03-15
 ### Added
