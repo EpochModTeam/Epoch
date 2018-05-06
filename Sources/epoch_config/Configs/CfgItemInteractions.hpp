@@ -1064,5 +1064,9 @@ class CfgItemInteractions
         interactAction = 17;
         interactText = "ReCharge";
     };
+    class BaseCamTerminal : Default
+    {
+        interactActions[] = {{"Watch","call Epoch_CamUse;"}};
+    };
 };
 /*[[[end]]]*/

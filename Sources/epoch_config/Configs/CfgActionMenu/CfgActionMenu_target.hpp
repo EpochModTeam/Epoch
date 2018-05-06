@@ -550,3 +550,13 @@ class player_revive
 	icon = "x\addons\a3_epoch_code\Data\UI\buttons\Revive.paa";
 	tooltipcode = "format ['Revive %1',name dyna_cursorTarget]";
 };
+
+class BaseCam
+{
+	condition = "dyna_cursorTargetType isEqualTo 'BaseCamTerminal_EPOCH'";
+	action = "call Epoch_CamUse;";
+	icon = "x\addons\a3_epoch_code\Data\UI\buttons\Camera.paa";
+	tooltip = "Watch BaseCam";
+};
+
+
