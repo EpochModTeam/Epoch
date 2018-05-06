@@ -3262,6 +3262,14 @@ class CfgPricing
     {
         price = 325;
     };
+    class BaseCam
+    {
+        price = 250;
+    };
+    class BaseCamTerminal
+    {
+        price = 250;
+    };
     class KitCinderWall
     {
         price = 80;

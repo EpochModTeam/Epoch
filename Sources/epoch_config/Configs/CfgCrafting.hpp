@@ -148,7 +148,7 @@ class CfgCrafting
     };
     class CircuitParts : Part
     {
-        usedIn[] = {"EnergyPack","EnergyPackLg","KitPlotPole","ItemBattery","KitSolarGen","KitSolarCharger","KitSolarChargerXL","KitVehicleUpgradeI_200_EPOCH","KitVehicleUpgradeIV_200_EPOCH","BarrelBomb_EPOCH_Remote_Mag","BarrelBomb2_EPOCH_Remote_Mag","KitPortableLight_Single","KitPortableLight_Double"};
+        usedIn[] = {"EnergyPack","EnergyPackLg","KitPlotPole","ItemBattery","KitSolarGen","KitSolarCharger","KitSolarChargerXL","KitVehicleUpgradeI_200_EPOCH","KitVehicleUpgradeIV_200_EPOCH","BarrelBomb_EPOCH_Remote_Mag","BarrelBomb2_EPOCH_Remote_Mag","KitPortableLight_Single","KitPortableLight_Double","BaseCam","BaseCamTerminal"};
         previewPosition[] = {0.791044,1,0.256956};
         previewScale = 2;
         previewVector = 2.3;
@@ -415,7 +415,7 @@ class CfgCrafting
     };
     class ItemScraps : Item
     {
-        usedIn[] = {"ItemCorrugated","KitMetalTrap","MeleeRod","KitVehicleUpgradeIV_200_EPOCH","KitBarbedWire"};
+        usedIn[] = {"ItemCorrugated","KitMetalTrap","MeleeRod","KitVehicleUpgradeIV_200_EPOCH","KitBarbedWire","BaseCam","BaseCamTerminal"};
         nearby[] = {{"Fire","","fire",{1,{"ALL"}},3,1,1,0}};
         recipe[] = {{"PartOre",2}};
         previewPosition[] = {0.797144,1,0.309158};
@@ -466,9 +466,16 @@ class CfgCrafting
     };
     class ItemDuctTape : Part
     {
-        usedIn[] = {"SpareTire","EngineParts","ItemRotor"};
+        usedIn[] = {"SpareTire","EngineParts","ItemRotor","BaseCam","BaseCamTerminal"};
         previewPosition[] = {0.807346,1,0.27};
         previewScale = 1.8;
+        previewVector = -3.9;
+    };
+    class ItemGlass : Part
+    {
+        usedIn[] = {"BaseCam", "BaseCamTerminal"};
+        previewPosition[] = {0.807346,1,0.27};
+        previewScale = 0.55;
         previewVector = -3.9;
     };
 	class EngineParts : Item
@@ -1133,7 +1140,7 @@ class CfgCrafting
 	};
     class ItemCables : Item
     {
-        usedIn[] = {"KitSolarGen","KitSolarCharger","KitSolarChargerXL","KitPlotPole","ItemCopperBar","KitVehicleUpgradeI_200_EPOCH"};
+        usedIn[] = {"KitSolarGen","KitSolarCharger","KitSolarChargerXL","KitPlotPole","ItemCopperBar","KitVehicleUpgradeI_200_EPOCH","BaseCam","BaseCamTerminal"};
         nearby[] = {{"Workbench","","workbench",{1,{"WorkBench_EPOCH"}},3,1,0,1}};
         recipe[] = {{"ItemCopperBar",1}};
         previewPosition[] = {0.802374,1,0.26};
@@ -1250,6 +1257,8 @@ class CfgCrafting
         previewPosition[] = {0.804979,1,0.39189};
         previewScale = 0.11;
         previewVector = 0;
+		descriptionShort = "Solar Charger Kit";
+		descriptionFull = "Used to charge small Energy Packs";
     };
     class KitSolarChargerXL : Kit
     {
@@ -1259,6 +1268,30 @@ class CfgCrafting
         previewPosition[] = {0.804979,1,0.39189};
         previewScale = 0.11;
         previewVector = 0;
+		descriptionShort = "Solar Charger Kit XL";
+		descriptionFull = "Used to charge large Energy Packs";
+    };
+    class BaseCam : Kit
+    {
+        recipe[] = {{"ItemCables",1},{"ItemGlass",1},{"ItemDuctTape",1},{"ItemScraps",2},{"CircuitParts",2}};
+        nearby[] = {{"Workbench","","workbench",{1,{"WorkBench_EPOCH"}},3,1,0,1}};
+        model = "\x\addons\a3_epoch_community\models\base_cam.p3d";
+        previewPosition[] = {0.804979,1,0.3};
+        previewScale = 0.5;
+        previewVector = 0;
+		descriptionShort = "Base Camera";
+		descriptionFull = "Protect your Base with a Camera.<br/>A BaseCam Terminal is needed,<br/>to check your Base Cameras";
+    };
+    class BaseCamTerminal : Kit
+    {
+        recipe[] = {{"ItemCables",1},{"ItemGlass",1},{"ItemDuctTape",1},{"ItemScraps",2},{"CircuitParts",2}};
+        nearby[] = {{"Workbench","","workbench",{1,{"WorkBench_EPOCH"}},3,1,0,1}};
+        model = "\x\addons\a3_epoch_community\models\base_cam_terminal.p3d";
+        previewPosition[] = {0.804979,1,0.3};
+        previewScale = 0.5;
+        previewVector = 0;
+		descriptionShort = "Base Camera Terminal";
+		descriptionFull = "Check your Base Cameras with this Terminal";
     };
 	class MeleeRod : Kit
 	{

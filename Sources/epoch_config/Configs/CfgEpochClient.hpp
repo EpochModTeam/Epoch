@@ -55,6 +55,7 @@ class CfgEpochClient
     storageCountPerMember = 5;		//ignore if "splitCountLimits=0" & "useGroupCountLimits=0"
     maxdoors = 10;					// Max allowed doors per Group
     maxgates = 5;					// Max allowed Gates per Group
+    maxCams = 2;					// Max allowed BaseCams per Group
 
 	MaxBuildingTilt = 180;			// Max degrees players can tilt building elements
 

@@ -1070,6 +1070,8 @@ class CfgItemSort
 			"KitSolarGen",
 			"KitSolarCharger",
 			"KitSolarChargerXL",
+			"BaseCam",
+			"BaseCamTerminal",
 			"KitWorkbench",
 			"KitWoodLadder",
 			"KitWoodTower",

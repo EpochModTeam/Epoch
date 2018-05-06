@@ -663,7 +663,7 @@ class CfgBaseBuilding
 		N[] = {0,0,3.06034};
 		E[] = {5.237,0,0};
 		W[] = {-5.237,0,0};
-		CAM[] = {0,-0.47,2.8};
+		CAM[] = {0,-0.4,2.8};
     };
     class WoodWall1_SIM_EPOCH : WoodWall1_EPOCH
     {
@@ -684,7 +684,7 @@ class CfgBaseBuilding
 		N[] = {0,0,3.06034};
 		E[] = {5.237,0,0};
 		W[] = {-5.237,0,0};
-		CAM[] = {0,-0.47,2.8};
+		CAM[] = {0,-0.4,2.8};
     };
     class WoodLargeWallCor_EPOCH : Default
     {
@@ -724,7 +724,7 @@ class CfgBaseBuilding
 		N[] = {0,0,3.06034};
 		E[] = {5.237,0,0};
 		W[] = {-5.237,0,0};
-		CAM[] = {0,-0.47,2.8};
+		CAM[] = {0,-0.4,2.8};
     };
     class WoodWall2_SIM_EPOCH : WoodWall2_EPOCH
     {
@@ -769,7 +769,7 @@ class CfgBaseBuilding
 		N[] = {0,0,3.06034};
 		E[] = {5.237,0,0};
 		W[] = {-5.237,0,0};
-		CAM[] = {0,-0.47,2.8};
+		CAM[] = {0,-0.4,2.8};
     };
     class WoodWall3_SIM_EPOCH : WoodWall3_EPOCH
     {
@@ -813,7 +813,7 @@ class CfgBaseBuilding
 		N[] = {0,0,3.06034};
 		E[] = {5.237,0,0};
 		W[] = {-5.237,0,0};
-		CAM[] = {0,-0.47,2.8};
+		CAM[] = {0,-0.4,2.8};
     };
     class WoodWall4_SIM_EPOCH : WoodWall4_EPOCH
     {
@@ -1460,6 +1460,18 @@ class CfgBaseBuilding
         allowedSnapObjects[] = {"Const_WoodWalls_static_F","Const_Cinder_static_F"};
     };
     class BaseCam_Ghost_EPOCH : BaseCam_SIM_EPOCH {};
+    class BaseCamTerminal_EPOCH : Default
+    {
+        removeParts[] = {{"BaseCamTerminal",1}};
+        GhostPreview = "BaseCamTerminal_Ghost_EPOCH";
+        staticClass = "BaseCamTerminal_EPOCH";
+        simulClass = "BaseCamTerminal_SIM_EPOCH";
+    };
+    class BaseCamTerminal_SIM_EPOCH : BaseCamTerminal_EPOCH
+    {
+        removeParts[] = {};
+    };
+    class BaseCamTerminal_Ghost_EPOCH : BaseCamTerminal_SIM_EPOCH {};
 };
 
 /*[[[end]]]*/
