@@ -1195,6 +1195,11 @@ class CfgItemSort
 			"ItemFireExtinguisher"
 		};
 		Vehicles_Land[] = {
+			"hoverboard_epoch_1",
+			"hoverboard_epoch_bttf",
+			"hoverboard_epoch_a3",
+			"hoverboard_epoch_cargo",
+			"MBK_01_EPOCH",
 			"ebike_epoch",								// Motorcycle
 			"C_Offroad_01_EPOCH",						// Offroader
 			"C_Offroad_01_EPOCH1",

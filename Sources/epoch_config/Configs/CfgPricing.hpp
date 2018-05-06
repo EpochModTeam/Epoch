@@ -4388,6 +4388,23 @@ class CfgPricing
 	class C_Offroad_01_EPOCH3: C_Offroad_01_EPOCH{};
 	class C_Offroad_01_EPOCH4: C_Offroad_01_EPOCH{};
 	class C_Offroad_01_EPOCH5: C_Offroad_01_EPOCH{};
+    class hoverboard_epoch_1
+    {
+        price = 1000;
+		tax = 0.9;
+    };
+	class hoverboard_epoch_bttf: hoverboard_epoch_1{};
+	class hoverboard_epoch_a3: hoverboard_epoch_1{};
+    class hoverboard_epoch_cargo
+    {
+        price = 1200;
+		tax = 0.9;
+    };
+    class MBK_01_EPOCH
+    {
+        price = 1250;
+		tax = 0.9;
+    };
     class C_Quadbike_01_EPOCH
     {
         price = 2500;
