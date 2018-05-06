@@ -19,6 +19,7 @@ All changes for [Arma 3](https://arma3.com/) [Epoch Mod](https://epochmod.com) a
 - Mountainbike "MBK_01_EPOCH" @Helion4
 - BaseCam + BaseCam Terminal @Helion & He-Man
    - Build Cams at your Base and watch them through the Terminal
+- Wooden Stairs with lockable Bars on the top (upgradeable from Wooden Stairs) @Helion4
 
 ### Fixed
 - Mine Rocks / Chop Wood was only possible with Swords after 1.1.0 update. @He-Man
