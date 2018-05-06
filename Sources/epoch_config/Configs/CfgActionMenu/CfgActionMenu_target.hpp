@@ -26,7 +26,7 @@ class build_remove
 {
 	condition = "dyna_buildMode select 1";
 	action = "dyna_cursorTarget call EPOCH_removeBUILD;";
-	icon = "x\addons\a3_epoch_code\Data\UI\buttons\build_remove.paa";
+	icon = "x\addons\a3_epoch_code\Data\UI\buttons\build_trash.paa";
 	tooltipcode = "format['Remove %1',getText(configFile >> 'CfgVehicles' >> (typeof dyna_cursorTarget) >> 'displayName')]";
 };
 class build_move
