@@ -99,7 +99,7 @@ class CfgCrafting
 	/** --------- RECIPES BELOW --------- **/
     class ItemCoolerE : Part
     {
-        usedIn[] = {"ItemCooler0","ItemCooler1","ItemCooler2","ItemCooler3","ItemCooler4"};
+        usedIn[] = {"ItemCooler0","ItemCooler1","ItemCooler2","ItemCooler3","ItemCooler4","KitSnowman"};
         previewPosition[] = {0.795709,1,0.415296};
         previewScale = 0.8;
         previewVector = 0;
@@ -793,6 +793,13 @@ class CfgCrafting
         previewScale = 0.4;
         previewVector = 2.1;
     };
+    class icecream_epoch : Part
+    {
+        usedIn[] = {"KitSnowman"};
+        previewPosition[] = {0.796141,1,0.27};
+        previewScale = 0.7;
+        previewVector = 2.1;
+    };
     class emptyjar_epoch : Part
     {
         usedIn[] = {"water_epoch"};
@@ -809,7 +816,7 @@ class CfgCrafting
     };
     class clean_water_epoch : Item
     {
-        usedIn[] = {"EnergyPack"};
+        usedIn[] = {"EnergyPack","KitSnowman"};
         nearby[] = {{"Fire","","fire",{1,{"ALL"}},3,1,1,0}};
         recipe[] = {"water_epoch"};
         previewPosition[] = {0.807346,1,0.43035};
@@ -835,7 +842,7 @@ class CfgCrafting
     };
     class PartPlankPack : Item
     {
-        usedIn[] = {"KitStudWall","KitWoodFloor","KitWoodFoundation","KitWoodStairs","KitWoodRamp","KitWoodLadder","KitWoodTower","KitTiPi","KitWorkbench","KitSpikeTrap","KitMetalTrap","KitWoodQuarterFloor","KitWoodHalfFloor","KitBarGate","KitBagBunker","KitWatchTower","KitLightPole","KitScaffolding"};
+        usedIn[] = {"KitStudWall","KitWoodFloor","KitWoodFoundation","KitWoodStairs","KitWoodRamp","KitWoodLadder","KitWoodTower","KitTiPi","KitWorkbench","KitSpikeTrap","KitMetalTrap","KitWoodQuarterFloor","KitWoodHalfFloor","KitBarGate","KitBagBunker","KitWatchTower","KitLightPole","KitScaffolding","KitPlyThirdWall_EPOCH"};
         recipe[] = {{"WoodLog_EPOCH",2}};
         previewPosition[] = {0.797837,1,0.288258};
         previewScale = 0.2;
@@ -844,7 +851,7 @@ class CfgCrafting
     };
     class ItemPlywoodPack : Item
     {
-        usedIn[] = {};
+        usedIn[] = {"KitPlyThirdWall_EPOCH"};
         recipe[] = {{"WoodLog_EPOCH",3}};
         previewPosition[] = {0.797837,1,0.288258};
         previewScale = 0.2;
@@ -881,6 +888,15 @@ class CfgCrafting
     {
         recipe[] = {{"PartPlankPack",4}};
         model = "\x\addons\a3_epoch_assets\models\Wooden_Wall_SIM.p3d";
+        nearby[] = {{"Workbench","","workbench",{1,{"WorkBench_EPOCH"}},3,1,0,1}};
+        previewPosition[] = {0.797675,1,0.398882};
+        previewScale = 0.07;
+        previewVector = 0;
+    };
+    class KitPlyThirdWall_EPOCH : Kit
+    {
+        recipe[] = {{"PartPlankPack",2},{"ItemPlywoodPack",1}};
+        model = "\x\addons\a3_epoch_community\models\third_ply_wall.p3d";
         nearby[] = {{"Workbench","","workbench",{1,{"WorkBench_EPOCH"}},3,1,0,1}};
         previewPosition[] = {0.797675,1,0.398882};
         previewScale = 0.07;
@@ -1123,6 +1139,17 @@ class CfgCrafting
         previewPosition[] = {0.801378,1,0.464834};
         previewScale = 0.055;
         previewVector = 0;
+    };
+    class KitSnowman : Kit
+    {
+        recipe[] = {{"ItemCoolerE",1},{"icecream_epoch",1},{"clean_water_epoch",2}};
+		model = "\x\addons\a3_epoch_community\models\hol_x\epoch_snowman.p3d";
+        nearby[] = {{"Workbench","","workbench",{1,{"WorkBench_EPOCH"}},3,1,0,1}};
+        previewPosition[] = {0.801378,1,0.29};
+        previewScale = 0.15;
+        previewVector = 0;
+		descriptionShort = "Snowman";
+		descriptionFull = "Nice deco for Wintertime";
     };
     class ItemSolar : Part
     {

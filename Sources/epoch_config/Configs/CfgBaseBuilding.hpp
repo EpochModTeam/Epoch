@@ -648,6 +648,28 @@ class CfgBaseBuilding
         allowedSnapObjects[] = {"Const_floors_static_F","Const_WoodWalls_static_F","Const_Cinder_static_F"};
     };
     class WoodLargeWall_Ghost_EPOCH : WoodLargeWall_SIM_EPOCH {};
+	class PlyThirdWall_EPOCH : Default
+    {
+        upgradeBuilding[] = {};
+        removeParts[] = {{"PartPlankPack",1},{"ItemPlywoodPack",1}};
+        simulClass = "PlyThirdWall_SIM_EPOCH";
+        staticClass = "PlyThirdWall_EPOCH";
+        GhostPreview = "PlyThirdWall_Ghost_EPOCH";
+        snapType = "snapPointsPara";
+        snapPointsPara[] = {"N","E","W"};
+        allowedSnapPoints[] = {"N","S","E","W"};
+		// snap points for WoodLargeWall_EPOCH
+		N[] = {0,0,1.02012};
+		E[] = {5.237,0,0};
+		W[] = {-5.237,0,0};
+    };
+    class PlyThirdWall_SIM_EPOCH : PlyThirdWall_EPOCH
+    {
+        upgradeBuilding[] = {};
+        removeParts[] = {};
+        allowedSnapObjects[] = {"Const_floors_static_F","Const_WoodWalls_static_F","Const_Cinder_static_F"};
+    };
+    class PlyThirdWall_Ghost_EPOCH : PlyThirdWall_SIM_EPOCH {};
     class WoodWall1_EPOCH : Default
     {
         upgradeBuilding[] = {{"WoodWall2_EPOCH",{{"PartPlankPack",1}}},{"WoodLargeWallCor_EPOCH",{{"ItemCorrugated",1}}},{"WoodWallWindow_EPOCH",{{"ItemGlass",2}}}};
@@ -1535,6 +1557,18 @@ class CfgBaseBuilding
         removeParts[] = {};
     };
     class BaseCamTerminal_Ghost_EPOCH : BaseCamTerminal_SIM_EPOCH {};
+    class snowman_EPOCH : Default
+    {
+        removeParts[] = {{1,"KitSnowman"}};
+        GhostPreview = "snowman_Ghost_EPOCH";
+        staticClass = "snowman_EPOCH";
+        simulClass = "snowman_SIM_EPOCH";
+    };
+    class snowman_SIM_EPOCH : snowman_EPOCH
+    {
+        removeParts[] = {};
+    };
+    class snowman_Ghost_EPOCH : snowman_SIM_EPOCH {};
 };
 
 /*[[[end]]]*/

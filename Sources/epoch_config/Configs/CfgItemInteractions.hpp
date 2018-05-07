@@ -1069,5 +1069,13 @@ class CfgItemInteractions
         buildClass = "BaseCamTerminal_EPOCH";
         interactActions[] = {{"Watch","call Epoch_CamUse;"}};
     };
+    class KitSnowman : Item_Build_base
+    {
+        buildClass = "snowman_EPOCH";
+    };
+    class KitPlyThirdWall_EPOCH : Item_Build_base
+    {
+        buildClass = "PlyThirdWall_EPOCH";
+    };
 };
 /*[[[end]]]*/
