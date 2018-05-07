@@ -110,7 +110,7 @@ class select_jammer
 {
 	condition = "dyna_cursorTargetType isEqualTo 'PlotPole_EPOCH' && (damage dyna_cursorTarget < 1)";
 	action = "[dyna_cursorTarget,player,Epoch_personalToken] remoteExec [""EPOCH_server_makeSP"",2];";
-	icon = "x\addons\a3_epoch_code\Data\UI\buttons\player_inspect.paa";
+	icon = "x\addons\a3_epoch_code\Data\UI\buttons\spawnpoint.paa";
 	tooltip = "Make Spawnpoint";
 };
 
