@@ -10,8 +10,8 @@ All changes for [Arma 3](https://arma3.com/) [Epoch Mod](https://epochmod.com) a
 - Config to disable Fuelsources in PlotPole Range to epochconfig.hpp @He-Man
 - Secondary Weapon can now be sold directly from hand @He-Man
 - Attachments from sold weapons from hand will be put back into your Inventory @He-Man
-- Solar Charger for EnergyPacks - Put an EnergyPack into the Charger and wait... @He-Man
-- 4 Hoverboard Classes: @Helion4
+- Solar Charger for EnergyPacks - Put an EnergyPack into the Charger and wait... @ Helion & He-Man
+- 4 Hoverboard Vehicles: @Helion4
    - "hoverboard_epoch_1"
    - "hoverboard_epoch_bttf"
    - "hoverboard_epoch_a3"
@@ -38,8 +38,9 @@ All changes for [Arma 3](https://arma3.com/) [Epoch Mod](https://epochmod.com) a
 - Added missing ItemWaterPurificationTablets to pricing @G-Dog
 - MultiGun was not working on very large Vehicles (VTOL) @He-Man
 - GoldenSeal will no longer disapear when fully grown in a Garden @He-Man
-- Items in Subcontainers (Items in BackPacks in COntainers) were not saved @He-Man
+- Items in Subcontainers (Items in BackPacks in Containers) were not saved @He-Man
 - Drunk effects were not working correctly @He-Man
+- Model / Graphics fix for Cinder Floors @Helion4
 ### Changed
 - Reworked Vehicle Load / Save commands for more precise Vehicle Spawn @He-Man
 - Made Temp-Vehicles tradeable (will not be stored in Trader after selling them) @He-Man
