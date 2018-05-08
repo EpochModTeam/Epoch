@@ -13,7 +13,7 @@
 	https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server/compile/epoch_player/EPOCH_server_SetUnitLoadout.sqf
 */
 //[[[cog import generate_private_arrays ]]]
-private ["_type"];
+private ["_type","_loadabs"];
 //[[[end]]]
 
 params ["_newPlyr","_loadout"];
@@ -83,6 +83,11 @@ if !(_bpack isequalto "") then {
 	[Vestcontainer _newPlyr, _vestitems],
 	[BackpackContainer _newPlyr, _bpackitems]
 ];
-				
 
-true
+_loadabs = loadabs _newPlyr;
+if !(uniform _newPlyr isequalto _uniform && vest _newPlyr isequalto _vest && backpack _newPlyr isequalto _bpack) then {
+	diag_log format ["EPOCH Debug: Setunitloadout failed - Unifmorm should: %1 is: %2 - Vest should: %3 is: %4 - Backpack should: %5 is: %6",_uniform,uniform _newPlyr,_vest,vest _newPlyr,_bpack,backpack _newPlyr];
+	_loadabs = -1;
+};
+
+_loadabs

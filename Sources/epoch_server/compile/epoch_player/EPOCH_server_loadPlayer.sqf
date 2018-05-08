@@ -206,8 +206,10 @@ if (!isNull _player) then {
 //				_newPlyr setUnitLoadout [_loadout, false];
 
 			// Workaround for Client / Server synchronizing issue in SetUnitLoadout
-			[_newPlyr,_loadout] call Epoch_server_SetUnitLoadout;
-			_loadabs = loadabs _newPlyr;
+			_loadabs = [_newPlyr,_loadout] call Epoch_server_SetUnitLoadout;
+			if (_loadabs isequalto -1) then {
+				deleteVehicle _newPlyr;
+			}; 
 
 			// Final Push
 			if (isNull _player) then {
