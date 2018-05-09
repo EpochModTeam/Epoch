@@ -3078,6 +3078,9 @@ class CfgPricing
     {
         price = 16;
     };
+	class KitPlyThirdWall_EPOCH {
+		price = 18;
+	};
 	class KitWoodQuarterFloor
 	{
 		price = 8; // price of 2 planks
@@ -3133,6 +3136,10 @@ class CfgPricing
     class KitWoodRamp
     {
         price = 24; // price of 6 planks
+    };
+    class KitSnowman
+    {
+        price = 72;
     };
     class KitSpikeTrap
     {
