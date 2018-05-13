@@ -303,7 +303,7 @@ if (!isnull (finddisplay -1200) && !isnull Epoch_ActiveCam) then {
 		Epoch_CamTrigger = diag_ticktime - 0.2;
 	};
 	if (diag_ticktime - Epoch_CamTrigger < 0.1) then {
-		_multi = 2;
+		_multi = 3;
 	};
 	Epoch_CamTrigger = diag_ticktime;
 	switch _dikCode do {
@@ -320,11 +320,11 @@ if (!isnull (finddisplay -1200) && !isnull Epoch_ActiveCam) then {
 		};
 		case Epoch_KB_BaseCamUp: {	/* Num 8 */
 			Epoch_AutoCam = false;
-			Epoch_CamAdjust = [0,-4*_multi,0];
+			Epoch_CamAdjust = [0,8*_multi,0];
 		};
 		case Epoch_KB_BaseCamDown: {	/* Num 2 */
 			Epoch_AutoCam = false;
-			Epoch_CamAdjust = [0,4*_multi,0];
+			Epoch_CamAdjust = [0,-8*_multi,0];
 		};
 		case Epoch_KB_BaseCamZoomOut: {	/* Num - */
 			Epoch_AutoCam = false;
