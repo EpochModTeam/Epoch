@@ -931,7 +931,7 @@ class CfgBaseBuilding
     class WoodStairs_Ghost_EPOCH : WoodStairs_SIM_EPOCH {};
     class WoodStairs2_EPOCH : Default
     {
-        upgradeBuilding[] = {{"Stairs_Hatch_EPOCH",{{"ItemPipe",1},{"CircuitParts",1}}}};
+        upgradeBuilding[] = {{"WoodStairs3_EPOCH",{{"ItemPipe",1},{"CircuitParts",1}}}};
         removeParts[] = {{"PartPlankPack",4}};
         simulClass = "WoodStairs2_SIM_EPOCH";
         staticClass = "WoodStairs2_EPOCH";
@@ -992,12 +992,12 @@ class CfgBaseBuilding
         allowedSnapObjects[] = {"Const_floors_static_F","Constructions_foundation_F"};
         removeParts[] = {};
     };
-    class Stairs_Hatch_EPOCH : Default
+    class WoodStairs3_EPOCH : Default
     {
 		removeParts[] = {{"PartPlankPack",4},{"ItemPipe",1},{"CircuitParts",1}};
-        simulClass = "Stairs_Hatch_SIM_EPOCH";
-        staticClass = "Stairs_Hatch_EPOCH";
-        GhostPreview = "Stairs_Hatch_EPOCH";
+        simulClass = "WoodStairs3_SIM_EPOCH";
+        staticClass = "WoodStairs3_EPOCH";
+        GhostPreview = "WoodStairs3_Ghost_EPOCH";
         snapPointsPara[] = {"NF2","SF2","EF2","WF2","NF","SF","EF","WF","C","CB","NWQF","NQF","NEQF","SWQF","SQF","SEQF","ENQF","EQF","ESQF","WNQF","WQF","WSQF","NWHF","NEHF","SWHF","SEHF","WNHF","WSHF","ENHF","ESHF"};
         snapPointsPerp[] = {"N","S","E","W","CinN","CinS","CinE","CinW"};
         energyCost = 0.3;
@@ -1048,7 +1048,7 @@ class CfgBaseBuilding
 		ESHF[] = {5.237,-1.30925,3.06};
 		
     };
-    class Stairs_Hatch_SIM_EPOCH : Stairs_Hatch_EPOCH
+    class WoodStairs3_SIM_EPOCH : WoodStairs3_EPOCH
     {
         allowedSnapPoints[] = {"NF","SF","EF","WF","CB"};
         allowedSnapObjects[] = {"Const_floors_static_F","Constructions_foundation_F"};
