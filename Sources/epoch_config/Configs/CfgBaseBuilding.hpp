@@ -997,7 +997,7 @@ class CfgBaseBuilding
 		removeParts[] = {{"PartPlankPack",4},{"ItemPipe",1},{"CircuitParts",1}};
         simulClass = "WoodStairs3_SIM_EPOCH";
         staticClass = "WoodStairs3_EPOCH";
-        GhostPreview = "WoodStairs3_Ghost_EPOCH";
+        GhostPreview = "WoodStairs3_EPOCH";
         snapPointsPara[] = {"NF2","SF2","EF2","WF2","NF","SF","EF","WF","C","CB","NWQF","NQF","NEQF","SWQF","SQF","SEQF","ENQF","EQF","ESQF","WNQF","WQF","WSQF","NWHF","NEHF","SWHF","SEHF","WNHF","WSHF","ENHF","ESHF"};
         snapPointsPerp[] = {"N","S","E","W","CinN","CinS","CinE","CinW"};
         energyCost = 0.3;
