@@ -115,10 +115,17 @@ class base_mode_attach
 };
 class Drink
 {
-	condition = "_nearObjects = nearestObjects [player, [], 2];_check = 'water';_ok = false;{if (alive _x) then {_ok = [_x, _check] call EPOCH_worldObjectType;};if (_ok) exitWith {};} forEach _nearObjects;_ok";
+	condition = "dyna_Watersource";
 	action = "if (currentweapon player == '') then {player playmove 'AinvPknlMstpSnonWnonDnon_Putdown_AmovPknlMstpSnonWnonDnon';}else {if (currentweapon player == handgunweapon player) then {player playmove 'AinvPknlMstpSrasWpstDnon_Putdown_AmovPknlMstpSrasWpstDnon';}else {	player playmove 'AinvPknlMstpSrasWrflDnon_Putdown_AmovPknlMstpSrasWrflDnon';};};{_output = _x call EPOCH_giveAttributes;if (_output != '') then {[_output, 5] call Epoch_message_stack;};} foreach [['Toxicity',4,1],['Stamina',10],['Thirst',100]];";
 	icon = "x\addons\a3_epoch_code\Data\UI\buttons\Drink.paa";
 	tooltip = "Drink";
+};
+class Wash
+{
+	condition = "dyna_Watersource";
+	action = "player playMove 'AinvPknlMstpSnonWrflDnon_medic0';player playMove 'AinvPknlMstpSnonWrflDnon_medicEnd';{_output = _x call EPOCH_giveAttributes;if (_output != '') then {[_output, 5] call Epoch_message_stack;};} foreach [['Soiled',-25]];";
+	icon = "x\addons\a3_epoch_code\Data\UI\buttons\player_inspect.paa";
+	tooltip = "Wash yourself";
 };
 class ServicePoint
 {
