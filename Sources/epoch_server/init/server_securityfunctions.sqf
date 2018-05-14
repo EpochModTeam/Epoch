@@ -456,7 +456,7 @@ for "_i" from 1 to 3 do {
 			_temp = _temp + ",['  Godmode', [], "+_skn_godMode+", '2', []]";
 		};
 		if ("HEAL" in _case) then {
-			_temp = _temp + ",['  Heal',[],{[103,netId player] call "+_skn_adminRequest_PVC+"},'4',[0.016,0.702,0.078,1]]";
+			_temp = _temp + ",['  Heal self',[],{[103,netId player] call "+_skn_adminRequest_PVC+"},'-1',[0.016,0.702,0.078,1]]";
 		};
 		if ("VEHICLEREPAIR" in _case) then {
 			_temp = _temp + ",['  Repair Vehicle', [], "+_skn_repairVehicle+", '0', []]";
