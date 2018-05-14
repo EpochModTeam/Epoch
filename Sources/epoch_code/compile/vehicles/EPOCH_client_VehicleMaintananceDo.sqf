@@ -32,7 +32,7 @@ EPOCH_Vehicle_MaintainLock = true;
 
 switch _do do {
 	case 'repair': {
-		_reqiredMat = "";
+		_reqiredMat = "NONE";
 		_searchname = _hitpointname;
 		if (["glass",_hitpointname] call Bis_fnc_instring) then {
 			_searchname = "glass";
@@ -44,14 +44,16 @@ switch _do do {
 				_reqiredMat = _repairmat;
 			};
 		} foreach _VehicleRepairs;
-		if (_reqiredMat isequalto "") exitwith {
+		if (_reqiredMat isequalto "NONE") exitwith {
 			['Error - Can not find required Material',5] call Epoch_message;
 		};
-		if !(_reqiredMat in (magazines player)) exitwith {
+		if (!(_reqiredMat in (magazines player)) && !(_reqiredMat isequalto "")) exitwith {
 			_line = format ['You need %1 to repair',_reqiredMat call EPOCH_itemDisplayName];
 			[_line,5] call Epoch_message;
 		};
-		player removemagazine _reqiredMat;
+		if !(_reqiredMat isequalto "") then {
+			player removemagazine _reqiredMat;
+		};
 		if (_hitpointname isequalto "glass") then {
 			{
 				if (["glass",tolower _x] call Bis_fnc_instring) then {
@@ -64,7 +66,7 @@ switch _do do {
 		};
 	};
 	case 'replace': {
-		_reqiredMat = "";
+		_reqiredMat = "NONE";
 		_searchname = _hitpointname;
 		if (["glass", _hitpointname] call Bis_fnc_instring) then {
 			_searchname = "glass";
@@ -76,14 +78,16 @@ switch _do do {
 				_reqiredMat = _replacemat;
 			};
 		} foreach _VehicleRepairs;
-		if (_reqiredMat isequalto "") exitwith {
+		if (_reqiredMat isequalto "NONE") exitwith {
 			['Error - Can not find required Material',5] call Epoch_message;
 		};
-		if !(_reqiredMat in (magazines player)) exitwith {
+		if (!(_reqiredMat in (magazines player)) && !(_reqiredMat isequalto "")) exitwith {
 			_line = format ['You need %1 to repair',_reqiredMat call EPOCH_itemDisplayName];
 			[_line,5] call Epoch_message;
 		};
-		player removemagazine _reqiredMat;
+		if !(_reqiredMat isequalto "") then {
+			player removemagazine _reqiredMat;
+		};
 		if (_hitpointname isequalto "glass") then {
 			{
 				if (["glass",tolower _x] call Bis_fnc_instring) then {

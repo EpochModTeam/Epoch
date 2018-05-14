@@ -25,11 +25,11 @@ if (_veh iskindof "ebike_epoch") then {
 };
 _wheelcounter = 0;
 {
-	_HitPointName = tolower _x;
-	_Hit = (getAllHitPointsDamage _veh) select 2 select _foreachindex;
+	_x params ["_searchedhit","_limit1","_limit2"];
+	_searchedhit = tolower _searchedhit;
 	{
-		_x params ["_searchedhit","_limit1","_limit2"];
-		_searchedhit = tolower _searchedhit;
+		_HitPointName = tolower _x;
+		_Hit = (getAllHitPointsDamage _veh) select 2 select _foreachindex;
 		if (_searchedhit isequalto _HitPointName) then {
 			_wheel = ["wheel",_searchedhit] call bis_fnc_instring;
 			if (_wheel) then {
@@ -59,8 +59,8 @@ _wheelcounter = 0;
 				};
 			};
 		};
-	} foreach _VehicleRepairs;
-} foreach ((getAllHitPointsDamage _veh) select 0);
+	} foreach ((getAllHitPointsDamage _veh) select 0);
+} foreach _VehicleRepairs;
 
 _repairarrays = [];
 {
