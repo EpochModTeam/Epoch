@@ -124,7 +124,7 @@ class Wash
 {
 	condition = "dyna_Watersource";
 	action = "player playMove 'AinvPknlMstpSnonWrflDnon_medic0';player playMove 'AinvPknlMstpSnonWrflDnon_medicEnd';{_output = _x call EPOCH_giveAttributes;if (_output != '') then {[_output, 5] call Epoch_message_stack;};} foreach [['Soiled',-25]];";
-	icon = "x\addons\a3_epoch_code\Data\UI\buttons\player_inspect.paa";
+	icon = "x\addons\a3_epoch_code\Data\UI\buttons\Washing.paa";
 	tooltip = "Wash yourself";
 };
 class ServicePoint
