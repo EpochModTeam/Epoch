@@ -10,14 +10,14 @@ All changes for [Arma 3](https://arma3.com/) [Epoch Mod](https://epochmod.com) a
 - Config to disable Fuelsources in PlotPole Range to epochconfig.hpp @He-Man
 - Secondary Weapon can now be sold directly from hand @He-Man
 - Attachments from sold weapons from hand will be put back into your Inventory @He-Man
-- Solar Charger for EnergyPacks - Put an EnergyPack into the Charger and wait... @ Helion & He-Man
+- Solar Charger for EnergyPacks - Put an EnergyPack into the Charger and wait... @Helion4, @He-Man
 - 4 Hoverboard Vehicles: @Helion4
    - "hoverboard_epoch_1"
    - "hoverboard_epoch_bttf"
    - "hoverboard_epoch_a3"
    - "hoverboard_epoch_cargo"
 - Mountainbike "MBK_01_EPOCH" @Helion4
-- BaseCam + BaseCam Terminal @Helion & He-Man
+- BaseCam + BaseCam Terminal @Helion4, @He-Man
    - Build Cams at your Base and watch them through the Terminal
 - Wooden Stairs with lockable Bars on the top (upgradeable from Wooden Stairs) @Helion4
 
@@ -48,8 +48,9 @@ All changes for [Arma 3](https://arma3.com/) [Epoch Mod](https://epochmod.com) a
 - Energy from windsources / solarsources is now calculated by wind / overcast @He-Man
 - Ammo of crafted Mags are calculated by the left ammo of used Mags (example: EnergyPacks) @He-Man
 - Consumed EnergyPacks give only energy calculated by left ammo in the Pack @He-Man
-- Some script optimizations @AWOL
-- Pricing adjustemts @AWOL
+- Moved server "EpochEvents" folder from epoch_server_settings.pbo to epoch_server_events.pbo @DirtySanchez, @vbawol
+- Some script optimizations @vbawol
+- Pricing adjustemts @vbawol
 
 ## [1.1.0.0] - 2018-03-15
 ### Added
@@ -59,8 +60,8 @@ All changes for [Arma 3](https://arma3.com/) [Epoch Mod](https://epochmod.com) a
 - Make Lighter refillable at Fuel-Sources (Gasstations / Vehicles) @He-Man
 - Make Trader more configurable in epochconfig.hpp @He-Man
 - Added Examples for Batchfiles to control Server Restarts @DirtySanchez
-- default pops for "center" marker @AWOL
-- More map supports @AWOL
+- default pops for "center" marker @vbawol
+- More map supports @vbawol
 - Lighter is needed to imflame fires @DirtySanchez
 - FireExtinguisher is needed to "put our fire" on Burn Barrel @DirtySanchez
 - Rope is needed for SlingLoad (get back on release) @DirtySanchez
@@ -95,10 +96,10 @@ All changes for [Arma 3](https://arma3.com/) [Epoch Mod](https://epochmod.com) a
 - Garden Plot had no physical ground @Helion4
 - Some Vehicles were missing in EPOCH Admin Spawn Menu @He-Man
 ### Changed
-- RCon Port is now set to 2307 by default since changes in A3 1.78 prevent use of 2306. @AWOL
+- RCon Port is now set to 2307 by default since changes in A3 1.78 prevent use of 2306. @vbawol
 - SnapPoints for Building objects (especially full / half / quarter Floors) @He-Man
 - Some performance tweaks
-- Inventory will be opened automatically, if "you found something" @AWOL
+- Inventory will be opened automatically, if "you found something" @vbawol
 - EPOCH Events reworked (Markers will change if players near / event looted) @DirtySanchez
 - Traders will no longer refill sold magazines @He-Man
    - Magazines will automatic be repacked in Trader
