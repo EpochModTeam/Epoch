@@ -37,20 +37,20 @@ All changes for [Arma 3](https://arma3.com/) [Epoch Mod](https://epochmod.com) a
 - Advanced Vehicle Repair was broken after last Arma Update (Tank DLC) @He-Man
 - Added missing ItemWaterPurificationTablets to pricing @G-Dog
 - MultiGun was not working on very large Vehicles (VTOL) @He-Man
-- GoldenSeal will no longer disapear when fully grown in a Garden @He-Man
+- GoldenSeal will no longer disappear when fully grown in a Garden @He-Man
 - Items in Subcontainers (Items in BackPacks in Containers) were not saved @He-Man
 - Drunk effects were not working correctly @He-Man
 - Model / Graphics fix for Cinder Floors @Helion4
 ### Changed
 - Reworked Vehicle Load / Save commands for more precise Vehicle Spawn @He-Man
-- Made Temp-Vehicles tradeable (will not be stored in Trader after selling them) @He-Man
+- Made Temp-Vehicles tradable (will not be stored in Trader after selling them) @He-Man
 - Wood / Cinder Walls can now snap to each other @He-Man
 - Energy from windsources / solarsources is now calculated by wind / overcast @He-Man
 - Ammo of crafted Mags are calculated by the left ammo of used Mags (example: EnergyPacks) @He-Man
 - Consumed EnergyPacks give only energy calculated by left ammo in the Pack @He-Man
 - Moved server "EpochEvents" folder from epoch_server_settings.pbo to epoch_server_events.pbo @DirtySanchez, @vbawol
 - Some script optimizations @vbawol
-- Pricing adjustemts @vbawol
+- Vehicle pricing adjustments "import tariffs" @vbawol
 
 ## [1.1.0.0] - 2018-03-15
 ### Added
@@ -62,13 +62,13 @@ All changes for [Arma 3](https://arma3.com/) [Epoch Mod](https://epochmod.com) a
 - Added Examples for Batchfiles to control Server Restarts @DirtySanchez
 - default pops for "center" marker @vbawol
 - More map supports @vbawol
-- Lighter is needed to imflame fires @DirtySanchez
+- Lighter is needed to inflame fires @DirtySanchez
 - FireExtinguisher is needed to "put our fire" on Burn Barrel @DirtySanchez
 - Rope is needed for SlingLoad (get back on release) @DirtySanchez
 - R3F compatibility for SlingLoad @DirtySanchez
 - Hints while using Vehicle Repair (MultiGun) @He-Man
 - Config to completely disable Simulation for BaseParts (if not needed) @He-Man
-- Made Radiation configureable by cfgepochclient.hpp @Raymix
+- Made Radiation configurable by cfgepochclient.hpp @Raymix
 - Hints for lock / unlock Vehicles / Storages @He-Man
 - Nuisance multiplicator in cfgepochclient.hpp @He-Man
 - Reduce rads over time at cost of immunity @Raymix
