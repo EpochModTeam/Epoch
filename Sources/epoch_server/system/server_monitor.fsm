@@ -544,11 +544,7 @@ class FSM
                                          "			missionNamespace setVariable[_eventKey, diag_tickTime];" \n
                                          "			_preFix = """";" \n
                                          "			_postFix = """";" \n
-                                         "			if (_usePrePostfix == 1) then {" \n
-                                         "				_preFix = ""\epoch_server_settings\EpochEvents\"";" \n
-                                         "				_postFix = "".sqf"";" \n
-                                         "			};" \n
-                                         "			if (_usePrePostfix == 2) then {" \n
+                                         "			if (_usePrePostfix in [1,2]) then {" \n
                                          "				_preFix = ""\epoch_server_events\EpochEvents\"";" \n
                                          "				_postFix = "".sqf"";" \n
                                          "			};" \n
