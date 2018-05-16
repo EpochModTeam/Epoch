@@ -28,6 +28,11 @@ if (alive _this) then {
 	_arrayIn = [];
 	if (_sizeIn > 0) then {
 		for "_i" from 0 to (_sizeIn - 1) do {
+			_onHand = false;
+			_itemName = lbText [_PlayerItemsOutBox, _i];
+			if ((_itemName find " (in hand)") > -1) then {
+				_onHand = true;
+			};
 			_item = lbData [_PlayerItemsOutBox, _i];
 			_rounds = lbValue [_PlayerItemsOutBox, _i];
 			if (isClass (_config >> _item)) then{
@@ -39,14 +44,14 @@ if (alive _this) then {
 				_itemWorth = round (_itemWorth*(_rounds/_maxrnd));
 				_added = false;
 				if ([_item, "CfgWeapons"] call EPOCH_fnc_isAny) then {
-					if (_item in items player) then {
+					if (_item in items player && !_onHand) then {
 						player removeItem _item;
 						_arrayIn pushBack [_item,_rounds];
 						_added = true;
 					}
 					else {
-						if (_item in [primaryweapon player,secondaryweapon player]) then {
-							_index = if (_item == primaryweapon player) then {0} else {1};
+						if (_item in [primaryweapon player,secondaryweapon player, handgunweapon player]) then {
+							_index = if (_item == primaryweapon player) then {0} else {if (_item == secondaryweapon player) then {1} else {2}};
 							{
 								if (_foreachindex > 0) then {
 									_weaponaddon = _x;

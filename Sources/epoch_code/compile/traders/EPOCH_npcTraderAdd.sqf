@@ -13,8 +13,8 @@
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_code/compile/traders/EPOCH_npcTraderAdd.sqf
 */
 
-private [	"_PlayerFilerDropDown","_PlayerItemsBox","_PlayerItemsOutBox","_TraderItemsOutBox","_CryptoInCtrl","_CryptoOutCtrl","_allowAdd","_uiItem","_rounds","_itemIcon","_itemColor","_errormsg","_stockLimit","_config",
-			"_itemClasses","_itemQtys","_qtyIndex","_sizeOut","_item","_vehicle","_itemName","_index","_maxrnd","_ItemIndex","_cryptoCount","_worth","_itemTax","_tax"
+private [	"_PlayerFilerDropDown","_PlayerItemsBox","_PlayerItemsOutBox","_TraderItemsOutBox","_CryptoInCtrl","_CryptoOutCtrl","_allowAdd","_uiItem","_rounds","_itemIcon","_itemColor","_errormsg","_config",
+			"_sizeOut","_item","_vehicle","_itemName","_index","_maxrnd","_ItemIndex","_cryptoCount","_worth","_itemTax","_tax"
 ];
 params ["_control","_selected"];
 _selected params ["_CurControl","_id"];
@@ -33,31 +33,10 @@ if !(isNull EPOCH_lastNPCtradeTarget) then {
 	_itemIcon = _CurControl lbPicture _id;
 	_itemColor = _CurControl lbColor _id;
 	_errormsg = "";
-	_stockLimit = false;
 
 	_config = 'CfgPricing' call EPOCH_returnConfig;
 	if (isClass (_config >> _uiItem)) then {
 		if (_control == _PlayerItemsOutBox) then {
-			_itemClasses = EPOCH_NpcTradeTraderItems select 0;
-			_itemQtys = EPOCH_NpcTradeTraderItems select 1;
-			_qtyIndex = _itemClasses find _uiItem;
-			if (_qtyIndex != -1) then {
-				_itemQty = _itemQtys select _qtyIndex;
-				_maxrnd = 1;
-				if ([_uiItem,"cfgMagazines"] call Epoch_fnc_isAny) then {
-					_maxrnd = getnumber (configfile >> "cfgMagazines" >> _uiItem >> "count");
-				};
-				_itemQty = _itemQty / _maxrnd;
-				_sizeIn = lbSize _PlayerItemsOutBox;
-				if (_sizeIn > 0) then {
-					for "_i" from 0 to (_sizeIn - 1) do {
-						_InItem = lbData [_PlayerItemsOutBox, _i];
-						if ((lbData [_PlayerItemsOutBox, _i]) == _uiItem) then {
-							_itemQty = _itemQty + ((lbValue [_PlayerItemsOutBox, _i])/_maxrnd);
-						};
-					};
-				};
-			};
 			if (_uiItem isKindOf "Air" || _uiItem isKindOf "Ship" || _uiItem isKindOf "LandVehicle" || _uiItem isKindOf "Tank") then {
 				_sizeOut = lbSize _PlayerItemsOutBox;
 				if (_sizeOut > 0) then {
@@ -109,7 +88,12 @@ if !(isNull EPOCH_lastNPCtradeTarget) then {
 			lbSetPicture [_control, _index, _itemIcon];
 			lbSetColor [_control,_index,_itemColor];
 			if (_control == _PlayerItemsBox && !(_uiItem iskindof "Landvehicle" || _uiItem iskindof "SHIP" || _uiItem iskindof "AIR" || _uiItem iskindof "TANK")) then {
-				EPOCH_NpcTradePlayerItems pushback [_uiItem,_rounds];
+				if ((_itemName find " (in Hand)") > -1) then {
+					EPOCH_NpcTradePlayerItems pushback [_uiItem,"Hand"];
+				}
+				else {
+					EPOCH_NpcTradePlayerItems pushback [_uiItem,_rounds];
+				};
 			}
 			else {
 				if ([_uiItem,"cfgMagazines"] call Epoch_fnc_isAny) then {
@@ -119,9 +103,15 @@ if !(isNull EPOCH_lastNPCtradeTarget) then {
 						lbSetTooltip [_control,_index,_tooltip];
 					};
 				};
-				_ItemIndex = EPOCH_NpcTradePlayerItems find [_uiItem,_rounds];
+				_ItemIndex = -1;
+				if ((_itemName find " (in Hand)") > -1) then {
+					_ItemIndex = EPOCH_NpcTradePlayerItems find [_uiItem,"Hand"];
+				};
 				if (_ItemIndex < 0) then {
 					_ItemIndex = EPOCH_NpcTradePlayerItems find _uiItem;
+					if (_ItemIndex < 0) then {
+						_ItemIndex = EPOCH_NpcTradePlayerItems find [_uiItem,_rounds];
+					};
 				};
 				if (_ItemIndex > -1) then {
 					EPOCH_NpcTradePlayerItems deleteat _ItemIndex;
@@ -168,12 +158,7 @@ if !(isNull EPOCH_lastNPCtradeTarget) then {
 			};
 		}
 		else {
-			if (_stockLimit) then{
-				["Trader has the maximum amount of this item", 5] call Epoch_message;
-			}
-			else {
-				[_errormsg, 5] call Epoch_message;
-			};
+			[_errormsg, 5] call Epoch_message;
 		};
 	};
 }

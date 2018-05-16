@@ -23,10 +23,13 @@ if (alive _target) then {
 		EPOCH_lastNPCtradeTarget = _target;
 		EPOCH_NpcTradePlayerItems = (items player)+(magazinesammo player);
 		if (primaryWeapon player != "") then {
-			EPOCH_NpcTradePlayerItems pushback primaryWeapon player;
+			EPOCH_NpcTradePlayerItems pushback [primaryWeapon player,"Hand"];
 		};
 		if (secondaryWeapon player != "") then {
-			EPOCH_NpcTradePlayerItems pushback secondaryWeapon player;
+			EPOCH_NpcTradePlayerItems pushback [secondaryWeapon player,"Hand"];
+		};
+		if (handgunWeapon player != "") then {
+			EPOCH_NpcTradePlayerItems pushback [handgunWeapon player,"Hand"];
 		};
 		if (count backpackItems player == 0 && count backpackmagazines player == 0 && backpack player != "") then {
 			EPOCH_NpcTradePlayerItems pushback backpack player;
