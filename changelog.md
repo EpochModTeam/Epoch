@@ -20,7 +20,9 @@ All changes for [Arma 3](https://arma3.com/) [Epoch Mod](https://epochmod.com) a
 - BaseCam + BaseCam Terminal @Helion4, @He-Man
    - Build Cams at your Base and watch them through the Terminal
 - Wooden Stairs with lockable Bars on the top (upgradeable from Wooden Stairs) @Helion4
-
+- Wood and Metal Garage Doors as upgradeable Baseparts @Helion4, @He-Man
+- 1/3 Plywood wall directly craftable @Helion4, @He-Man
+- You can now wash yourself with a soap in your inventory at water sources (reduce Soiled) @Helion4, @He-Man
 ### Fixed
 - Mine Rocks / Chop Wood was only possible with Swords after 1.1.0 update. @He-Man
 - Alive Toxic Sapper was not toxic @He-Man
@@ -51,6 +53,7 @@ All changes for [Arma 3](https://arma3.com/) [Epoch Mod](https://epochmod.com) a
 - Moved server "EpochEvents" folder from epoch_server_settings.pbo to epoch_server_events.pbo @DirtySanchez, @vbawol
 - Some script optimizations @vbawol
 - Vehicle pricing adjustments "import tariffs" @vbawol
+- Some now Icons for Dynamenu @Forelle Vierkant
 
 ## [1.1.0.0] - 2018-03-15
 ### Added
