@@ -710,7 +710,7 @@ class CfgBaseBuilding
     };
     class WoodLargeWallCor_EPOCH : Default
     {
-        upgradeBuilding[] = {{"WoodLargeWallDoorway_EPOCH",{{"PartPlankPack",1}}},{"MetalWallGarage_EPOCH",{{"PartPlankPack",4},{"ItemCorrugated",1},{"CircuitParts",1}}}};
+        upgradeBuilding[] = {{"WoodLargeWallDoorway_EPOCH",{{"PartPlankPack",1}}},{"MetalWallGarage_EPOCH",{{"ItemCorrugated",1},{"PartPlankPack",4},{"CircuitParts",1}}}};
         removeParts[] = {{"PartPlankPack",2},{"ItemCorrugated",1}};
         simulClass = "WoodLargeWallCor_SIM_EPOCH";
         staticClass = "WoodLargeWallCor_EPOCH";

@@ -101,7 +101,7 @@ if (_object isKindOf "Constructions_static_F") then {
 
 		_canUpgrade = true;
 		_canUpgradePartCount = 0;
-		_missingParts = "";
+		_missingParts = "Missing: ";
 		{
 			_part = _x select 0;
 			_req = _x select 1;
@@ -111,7 +111,7 @@ if (_object isKindOf "Constructions_static_F") then {
 				_missingCount = _req - _partCheck;
 
 				_canUpgrade = false;
-				_missingParts = _missingParts + format["Missing %1 %2, ", _missingCount, (_part call EPOCH_itemDisplayName)];
+				_missingParts = _missingParts + format["%1 %2, ", _missingCount, (_part call EPOCH_itemDisplayName)];
 			};
 			_canUpgradePartCount = _canUpgradePartCount + _req;
 		} forEach _upgradeParts;
@@ -124,14 +124,14 @@ if (_object isKindOf "Constructions_static_F") then {
 				_countdoors = count (nearestobjects [_nearestJammer,_doors,_buildingJammerRange]);
 				if (_countdoors >= _maxdoors) then {
 					_canUpgrade = false;
-					_missingParts = _missingParts + format["Can not upgrade to locked Door! Max %1 allowed per Base!", _maxdoors];
+					_missingParts = format["Can not upgrade to locked Door! Max %1 allowed per Base!", _maxdoors];
 				};
 			};
 			if (_upgradeto in _gates) then {
 				_countgates = count (nearestobjects [_nearestJammer,_gates,_buildingJammerRange]);
 				if (_countgates >= _maxgates) then {
 					_canUpgrade = false;
-					_missingParts = _missingParts + format["Can not upgrade to Gate! Max %1 allowed per Base!", _maxgates];
+					_missingParts = format["Can not upgrade to Gate! Max %1 allowed per Base!", _maxgates];
 				};
 			};
 		};
