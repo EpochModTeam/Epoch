@@ -1217,7 +1217,7 @@ class CfgLootTable
 				{ { "U_OrestesBody", "item" }, 1 },
 				{ { "DLCUniforms", "CfgLootTable" }, 1 },
 				{ { "MaleUniforms_FullGhillieMarkDLC", "CfgLootTable" }, 1 },
-				{ { "Epoch_RadiationSuit_M", "item" }, 1 },
+				{ { "U_RadiationSuit_M_uniform", "item" }, 1 },
 
 				// new uniforms
 				{ { "U_C_Commoner1_1", "item" }, 1 },
@@ -1361,7 +1361,7 @@ class CfgLootTable
 				{ { "U_ghillie1_uniform", "item" }, 1 },
 				{ { "U_ghillie2_uniform", "item" }, 1 },
 				{ { "U_ghillie3_uniform", "item" }, 1 },
-				{ { "Epoch_RadiationSuit_F", "item" }, 1 },
+				{ { "U_RadiationSuit_F_uniform", "item" }, 1 },
 
 				{ { "U_JeansPatched1_uniform", "item" }, 1 },
 				{ { "U_JeansPatched2_uniform", "item" }, 1 },

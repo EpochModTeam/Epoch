@@ -3541,11 +3541,11 @@ class CfgPricing
     {
         price = 22;
     };
-    class Epoch_RadiationSuit_M
+    class U_RadiationSuit_M_uniform
     {
         price = 7;
     };
-    class Epoch_RadiationSuit_F
+    class U_RadiationSuit_F_uniform
     {
         price = 7;
     };
