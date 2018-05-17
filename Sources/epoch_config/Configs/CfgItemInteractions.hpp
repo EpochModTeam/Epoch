@@ -999,7 +999,7 @@ class CfgItemInteractions
 	};
 	class ItemCanteen_Clean : Drink_base
 	{
-		interactAttributes[] = {{"Thirst",1000},{"Stamina",50}};
+		interactAttributes[] = {{"Thirst",1000},{"Stamina",100}};
 		interactReturnOnUse = "ItemCanteen_Empty";
 	};
 	class ItemBottlePlastic_Dirty: Drink_base
@@ -1010,7 +1010,7 @@ class CfgItemInteractions
 
 	class ItemCanteen_Dirty : Drink_base
 	{
-		interactAttributes[] = {{"Thirst",1000},{"Toxicity",5,1},{"Stamina",50},{"Radiation",2,1}};
+		interactAttributes[] = {{"Thirst",1000},{"Toxicity",10,1},{"Stamina",100},{"Radiation",4,1}};
 		interactReturnOnUse = "ItemCanteen_Empty";
 	};
 	class adrenaline_epoch : Drink_base
