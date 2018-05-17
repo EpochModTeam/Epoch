@@ -672,7 +672,7 @@ class CfgBaseBuilding
     class PlyThirdWall_Ghost_EPOCH : PlyThirdWall_SIM_EPOCH {};
     class WoodWall1_EPOCH : Default
     {
-        upgradeBuilding[] = {{"WoodWall2_EPOCH",{{"PartPlankPack",1}}},{"WoodLargeWallCor_EPOCH",{{"ItemCorrugated",1}}},{"WoodWallWindow_EPOCH",{{"ItemGlass",2}}}};
+        upgradeBuilding[] = {{"WoodWall2_EPOCH",{{"PartPlankPack",1}}},{"WoodLargeWallCor_EPOCH",{{"ItemCorrugated",1}}},{"WoodWallWindow_EPOCH",{{"ItemGlass",2}}},{"WoodWallGarage_EPOCH",{{"ItemPlywoodPack",1},{"PartPlankPack",4},{"CircuitParts",1}}}};
         removeParts[] = {{"PartPlankPack",2}};
         simulClass = "WoodWall1_SIM_EPOCH";
         staticClass = "WoodWall1_EPOCH";
@@ -748,6 +748,26 @@ class CfgBaseBuilding
 		W[] = {-5.237,0,0};
 	};
     class MetalWallGarage_SIM_EPOCH : MetalWallGarage_EPOCH
+    {
+        allowedSnapObjects[] = {"Const_Cinder_static_F","Const_floors_static_F","Const_WoodWalls_static_F"};
+        removeParts[] = {};
+    };
+	class WoodWallGarage_EPOCH : Default
+	{
+        removeParts[] = {{"PartPlankPack",2},{"CircuitParts",1}};
+        simulClass = "WoodWallGarage_SIM_EPOCH";
+        staticClass = "WoodWallGarage_EPOCH";
+        GhostPreview = "WoodWallGarage_EPOCH";
+        snapType = "snapPointsPara";
+        snapPointsPara[] = {"N","E","W"};
+        allowedSnapPoints[] = {"N","S","E","W"};
+        energyCost = 0.5;
+		// snap points for CinderWall_EPOCH
+		N[] = {0,0,3.06034};
+		E[] = {5.237,0,0};
+		W[] = {-5.237,0,0};
+	};
+    class WoodWallGarage_SIM_EPOCH : MetalWallGarage_EPOCH
     {
         allowedSnapObjects[] = {"Const_Cinder_static_F","Const_floors_static_F","Const_WoodWalls_static_F"};
         removeParts[] = {};
