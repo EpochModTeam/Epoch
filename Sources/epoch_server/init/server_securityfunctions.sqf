@@ -1426,7 +1426,7 @@ _skn_admincode = compileFinal ("
 		_minutes = round((serverTime/60)-(_hours*60));
 
 		if (!dialog) then {createDialog 'Skaronator_AdminMenu';
-		{(_x call "+_skn_getCtrl+") ctrlShow false}forEach[40,41,42,43,50,51,52,60,61,62,63,64,65,66,67,68,69,70,71] };
+		{(_x call "+_skn_getCtrl+") ctrlShow false}forEach[40,41,4101,42,43,50,51,52,60,61,62,63,64,65,66,67,68,69,70,71] };
 		if (getPlayerUID player in "+str _skn_blockedSpawnMenuUID+") then {ctrlEnable [21,false]};
 		ctrlEnable [22,false];
 		(1 call "+_skn_getCtrl+") ctrlSetText format['Players %1 of %2',count allPlayers,playersNumber civilian];
@@ -1810,10 +1810,12 @@ _skn_admincode = compileFinal ("
 	"+_skn_fillSpawnMenu+" = {
 		_ctrl = 41 call "+_skn_getCtrl+";
 		lbclear _ctrl;
-		_button = _this call "+_skn_getCtrl+";
-		_button ctrlSetTextColor [1, 0, 0, 1];
+		if !(_this isequalto 4101) then {
+			_button = _this call "+_skn_getCtrl+";
+			_button ctrlSetTextColor [1, 0, 0, 1];
+			{_x call "+_skn_getCtrl+" ctrlSetTextColor [1, 1, 1, 1]}forEach([61,62,63,64,65,66,67,68,69,70,71]-[_this]);
+		};
 		_searchtxt = tolower (ctrlText((findDisplay -1337) displayCtrl 4101));
-		{_x call "+_skn_getCtrl+" ctrlSetTextColor [1, 1, 1, 1]}forEach([61,62,63,64,65,66,67,68,69,70,71]-[_this]);
 		_cfgPricing = 'CfgPricing' call EPOCH_returnConfig;
 		if ("+_skn_tg_spawnTyp+" == 61) then {
 			_airVehicles = ""
