@@ -52,7 +52,7 @@ _mycams spawn {
 	_AutoCam = Epoch_AutoCam; 
 	Epoch_CamAdjust = [0,0,0];
 	_ActiveCam = Epoch_ActiveCam;
-	_campos = Epoch_ActiveCam getRelPos [0.15,180];
+	_campos = Epoch_ActiveCam getRelPos [0.2,180];
 	_campos set [2,(getposatl Epoch_ActiveCam select 2)];
 	if (isnil "Epoch_CamFilmGrain") then {
 		Epoch_CamFilmGrain = ppEffectCreate ["FilmGrain", 2000 + 25];
@@ -84,7 +84,7 @@ _mycams spawn {
 		if !(_ActiveCam isequalto Epoch_ActiveCam) then {
 			_ActiveCam = Epoch_ActiveCam;
 			camDestroy _EpochCam;
-			_campos = Epoch_ActiveCam getRelPos [0.15,180];
+			_campos = Epoch_ActiveCam getRelPos [0.2,180];
 			_campos set [2,(getposatl Epoch_ActiveCam select 2)];
 			_CamFov = 0.7;
 			_CamDir = 0;
@@ -102,7 +102,7 @@ _mycams spawn {
 		if !(Epoch_AutoCam) then {
 			_targetheight = ((_targetheight + _height) min 50) max -150;
 			_CamDir = ((_CamDir + _dir) max -45) min 45;
-			_CamFov = ((_CamFov + _zoom) min 2) max 0.1;
+			_CamFov = ((_CamFov + _zoom) min 1.25) max 0.35;
 		}
 		else {
 			_targetheight = ((getposasl Epoch_ActiveCam) select 2)-50;
