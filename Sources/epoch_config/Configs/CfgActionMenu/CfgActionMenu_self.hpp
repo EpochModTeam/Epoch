@@ -123,7 +123,7 @@ class Drink
 class Wash
 {
 	condition = "dyna_Watersource";
-	action = "if !('Soap_Epoch' in magazines player) exitwith {['You need a Soap to wash yourself',5] call Epoch_Message;};[] spawn {player playMove 'AinvPknlMstpSnonWrflDnon_medic0';player playMove 'AinvPknlMstpSnonWrflDnon_medicEnd';['Washing ...',5] call Epoch_Message;player removeitem "Soap_Epoch";uisleep 6;{_output = _x call EPOCH_giveAttributes;	if (_output != '') then {[_output, 5] call Epoch_message_stack;};} foreach [['Soiled',-25]];};";
+	action = "if !('Soap_Epoch' in magazines player) exitwith {['You need a Soap to wash yourself',5] call Epoch_Message;};[] spawn {player playMove 'AinvPknlMstpSnonWrflDnon_medic0';player playMove 'AinvPknlMstpSnonWrflDnon_medicEnd';['Washing ...',5] call Epoch_Message;player removeitem 'Soap_Epoch';uisleep 6;{_output = _x call EPOCH_giveAttributes;	if (_output != '') then {[_output, 5] call Epoch_message_stack;};} foreach [['Soiled',-25]];};";
 	icon = "x\addons\a3_epoch_code\Data\UI\buttons\Washing.paa";
 	tooltip = "Wash yourself";
 };

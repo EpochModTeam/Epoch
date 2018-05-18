@@ -116,15 +116,15 @@ if (_object isKindOf "Constructions_static_F") then {
 			_canUpgradePartCount = _canUpgradePartCount + _req;
 		} forEach _upgradeParts;
 
-		_doors = ["WoodLargeWallDoorL_EPOCH","WoodWall4_EPOCH","CinderWallDoorwHatch_EPOCH"];
-		_gates = ["CinderWallGarage_EPOCH"];
+		_doors = ["WoodLargeWallDoorL_EPOCH","WoodWall4_EPOCH","CinderWallDoorwHatch_EPOCH","WoodStairs3_EPOCH"];
+		_gates = ["CinderWallGarage_EPOCH","WoodWallGarage_EPOCH","MetalWallGarage_EPOCH"];
 		if (_canUpgrade) then {
 			_upgradeto = _upgrade select 0;
 			if (_upgradeto in _doors) then {
 				_countdoors = count (nearestobjects [_nearestJammer,_doors,_buildingJammerRange]);
 				if (_countdoors >= _maxdoors) then {
 					_canUpgrade = false;
-					_missingParts = format["Can not upgrade to locked Door! Max %1 allowed per Base!", _maxdoors];
+					_missingParts = format["Can not upgrade to locked Door / Stairs! Max %1 allowed per Base!", _maxdoors];
 				};
 			};
 			if (_upgradeto in _gates) then {
