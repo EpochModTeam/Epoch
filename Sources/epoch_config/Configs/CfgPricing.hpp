@@ -2100,6 +2100,10 @@ class CfgPricing
     {
         price = 3;
     };
+    class Soap_Epoch
+    {
+        price = 4;
+    };
     class Towelette
     {
         price = 1;

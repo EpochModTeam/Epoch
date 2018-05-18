@@ -908,6 +908,7 @@ class CfgLootTable
 	{
 		items[] = {
 				{ { "FAK", "magazine" }, 50 },
+				{ { "Soap_Epoch", "magazine" }, 3 },
 				{ { "Heal_EPOCH", "item" }, 2 },
 				{ { "Defib_EPOCH", "item" }, 1 },
 				{ {"atropine_epoch", "magazine" }, 6 },

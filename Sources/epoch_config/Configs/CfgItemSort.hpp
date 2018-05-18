@@ -952,6 +952,7 @@ class CfgItemSort
 
 		Medical[] = {
 			"FAK",
+			"Soap_Epoch",
 			"Towelette",
 			"HeatPack",
 			"ColdPack",
