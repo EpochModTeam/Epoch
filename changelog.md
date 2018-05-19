@@ -8,7 +8,7 @@ All changes for [Arma 3](https://arma3.com/) [Epoch Mod](https://epochmod.com) a
 - Radiation Suits to Loot, Pricing and Itemsort @He-Man
 - Config to restrict tilting angle for Vectorbuilding to cfgEpochClient.hpp @He-Man
 - Config to disable Fuelsources in PlotPole Range to epochconfig.hpp @He-Man
-- Reworked Trader Menu a bit  @He-Man
+- Reworked Trader Menu @He-Man
    - Secondary Weapon can now be sold directly from hand
    - Attachments from sold weapons from hand will be put back into your Inventory
    - Weapons in hand are now marked in menu as "in Hand"
