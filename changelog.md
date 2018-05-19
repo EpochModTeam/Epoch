@@ -8,8 +8,10 @@ All changes for [Arma 3](https://arma3.com/) [Epoch Mod](https://epochmod.com) a
 - Radiation Suits to Loot, Pricing and Itemsort @He-Man
 - Config to restrict tilting angle for Vectorbuilding to cfgEpochClient.hpp @He-Man
 - Config to disable Fuelsources in PlotPole Range to epochconfig.hpp @He-Man
-- Secondary Weapon can now be sold directly from hand @He-Man
-- Attachments from sold weapons from hand will be put back into your Inventory @He-Man
+- Reworked Trader Menu a bit  @He-Man
+   - Secondary Weapon can now be sold directly from hand
+   - Attachments from sold weapons from hand will be put back into your Inventory
+   - Weapons in hand are now marked in menu as "in Hand"
 - Solar Charger for EnergyPacks - Put an EnergyPack into the Charger and wait... @Helion4, @He-Man
 - 4 Hoverboard Vehicles: @Helion4
    - "hoverboard_epoch_1"
@@ -17,12 +19,15 @@ All changes for [Arma 3](https://arma3.com/) [Epoch Mod](https://epochmod.com) a
    - "hoverboard_epoch_a3"
    - "hoverboard_epoch_cargo"
 - Mountainbike "MBK_01_EPOCH" @Helion4
+- Helicopter UH1H "uh1h_Epoch" @Helion4
 - BaseCam + BaseCam Terminal @Helion4, @He-Man
    - Build Cams at your Base and watch them through the Terminal
 - Wooden Stairs with lockable Bars on the top (upgradeable from Wooden Stairs) @Helion4
 - Wood and Metal Garage Doors as upgradeable Baseparts @Helion4, @He-Man
 - 1/3 Plywood wall directly craftable @Helion4, @He-Man
 - You can now wash yourself with a soap in your inventory at water sources (reduce Soiled) @Helion4, @He-Man
+- 2 new masks (Thor Helmet "thor_mask_epoch" and Iron Man Mask "iron_mask_epoch") @Helion4
+- Search field in Admin spawn window (Admintool) @He-Man
 ### Fixed
 - Mine Rocks / Chop Wood was only possible with Swords after 1.1.0 update. @He-Man
 - Alive Toxic Sapper was not toxic @He-Man
@@ -43,6 +48,8 @@ All changes for [Arma 3](https://arma3.com/) [Epoch Mod](https://epochmod.com) a
 - Items in Subcontainers (Items in BackPacks in Containers) were not saved @He-Man
 - Drunk effects were not working correctly @He-Man
 - Model / Graphics fix for Cinder Floors @Helion4
+- Snapped Walls on Stairs sometimes were not fixed correctly @Helion4
+- Quadbike handling was a bit too slippery @Helion4
 ### Changed
 - Reworked Vehicle Load / Save commands for more precise Vehicle Spawn @He-Man
 - Made Temp-Vehicles tradable (will not be stored in Trader after selling them) @He-Man
