@@ -229,6 +229,7 @@ class CfgEpoch
 		    {"O_Heli_Transport_04_box_EPOCH",1},
 		    {"O_Heli_Transport_04_covered_EPOCH",1},
 		    {"B_Heli_Transport_03_unarmed_EPOCH",1},
+			{"uh1h_Epoch",1},
 		    {"jetski_epoch",7},
 		    {"MBK_01_EPOCH",2},
 		    {"hoverboard_epoch_1",1},

@@ -435,6 +435,8 @@ class CfgItemSort
 			"H_F3_EPOCH",
 			"H_F4_EPOCH",
 			"H_F5_EPOCH",
+			"thor_mask_epoch",
+			"iron_mask_epoch",
 			"wolf_mask_epoch",
 			"pkin_mask_epoch",
 			"clown_mask_epoch",
@@ -1408,6 +1410,7 @@ class CfgItemSort
 			"O_Heli_Transport_04_box_EPOCH",
 			"O_Heli_Transport_04_covered_EPOCH",
 			"B_Heli_Light_01_EPOCH",
+			"uh1h_Epoch",
 
 			"B_Heli_Light_01_armed_F",
 			"B_Heli_Transport_01_EPOCH",

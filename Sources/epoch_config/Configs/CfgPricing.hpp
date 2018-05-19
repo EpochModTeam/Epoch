@@ -4628,6 +4628,11 @@ class CfgPricing
 	class O_Truck_03_covered_EPOCH2: O_Truck_03_covered_EPOCH {};
 	class O_Truck_03_covered_EPOCH3: O_Truck_03_covered_EPOCH {};
 	class O_Truck_03_covered_EPOCH4: O_Truck_03_covered_EPOCH {};
+    class uh1h_Epoch
+    {
+        price = 22500;
+		tax = 0.9;
+    };
     class O_Heli_Light_02_unarmed_EPOCH
     {
         price = 25000;
@@ -5945,6 +5950,14 @@ class CfgPricing
     class U_JeansBlack21_uniform
     {
         price = 5;
+    };
+    class thor_mask_epoch
+    {
+        price = 30;
+    };
+    class iron_mask_epoch
+    {
+        price = 30;
     };
     class hockey_mask_epoch
     {

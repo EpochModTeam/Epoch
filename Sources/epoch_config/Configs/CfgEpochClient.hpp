@@ -233,12 +233,6 @@ class CfgEpochClient
 			"KitCinderHalfFloor",		// Item is Upgradeable, but you can remove it here to make it also Craftable
 			"KitCinderFloor",			// Item is Upgradeable, but you can remove it here to make it also Craftable
 			"KitCinderTower"			// Item is Upgradeable, but you can remove it here to make it also Craftable
-//			"KitSolarCharger",			// Supress for 1.1.0 !!!
-//			"KitSolarChargerXL",		// Supress for 1.1.0 !!!
-//			"BaseCam",					// Supress for 1.1.0 !!!
-//			"BaseCamTerminal",			// Supress for 1.1.0 !!!
-//			"KitSnowman",				// Supress for 1.1.0 !!!
-//			"KitPlyThirdWall_EPOCH"		// Supress for 1.1.0 !!!
 	};
 	VehicleRepairs[] = {												// {Hitpoint, dmg to repair, dmg to replace, mat to repair, mat to replace}
 		{"HitHull",0.33,0.66,"ItemScraps","ItemCorrugated"},
