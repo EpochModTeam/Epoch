@@ -1,7 +1,7 @@
 # Change Log
 All changes for [Arma 3](https://arma3.com/) [Epoch Mod](https://epochmod.com) are listed in this changelog.
 
-## [1.2.0.0] - Unreleased
+## [1.2.0.0] - 2018-05-24
 ### Added
 - Config in cfgepochclient.hpp to disable needed items for FireOn / BurnBarrelOff / Hook @He-Man
 - Missing Config entry "immuneIfStartInBase" in epochconfig.hpp @G-Dog
