@@ -28,6 +28,10 @@ class CfgSnapChecks
     class CinderWallDoorwHatch_EPOCH : WoodLargeWall_EPOCH {};
     class CinderWall_EPOCH : WoodLargeWall_EPOCH {};
     class CinderWallHalf_EPOCH : WoodLargeWall_EPOCH {};
+	class PlyThirdWall_EPOCH : WoodLargeWall_EPOCH
+    {
+        nails[] = {{{2.46932,0,0.120775},{2.46932,0,-0.190775}},{{-2.46932,0,0.120775},{-2.46932,0,-0.190775}},{{0,0,1},{2.76932,0,1}},{{0,0,1},{-2.76932,0,1}}};
+    };
     class WoodFloor_Epoch
     {
         nails[] = {{{0,0,0.15},{2.8555,0,0.15}},{{0,0,0.15},{0,2.8555,0.15}},{{0,0,0.15},{-2.8555,0,0.15}},{{0,0,0.15},{0,-2.8555,0.15}},{{2.5555,0,0.15},{2.5555,0,-0.15}},{{-2.5555,0,0.15},{-2.5555,0,-0.15}},{{0,-2.5555,0.15},{0,-2.5555,-0.15}},{{0,2.5555,0.15},{0,2.5555,-0.15}}};
@@ -51,6 +55,15 @@ class CfgSnapChecks
     class MetalTower_EPOCH : WoodStairs_EPOCH {};
     class CinderTower_EPOCH : WoodStairs_EPOCH {};
     class WoodRamp_EPOCH : WoodStairs_EPOCH {};
+    class BaseCam_EPOCH
+	{
+        nails[] = {
+			{{0,0.15,-0.06},{0,0.3,0.04}},
+			{{0,0.15,-0.06},{0,0.3,-0.16}},
+			{{0,0.15,-0.06},{-0.1,0.3,-0.06}},
+			{{0,0.15,-0.06},{0.1,0.3,-0.06}}
+		};
+	};
 };
 
 /*[[[end]]]*/

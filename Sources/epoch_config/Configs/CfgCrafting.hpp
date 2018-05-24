@@ -99,7 +99,7 @@ class CfgCrafting
 	/** --------- RECIPES BELOW --------- **/
     class ItemCoolerE : Part
     {
-        usedIn[] = {"ItemCooler0","ItemCooler1","ItemCooler2","ItemCooler3","ItemCooler4"};
+        usedIn[] = {"ItemCooler0","ItemCooler1","ItemCooler2","ItemCooler3","ItemCooler4","KitSnowman"};
         previewPosition[] = {0.795709,1,0.415296};
         previewScale = 0.8;
         previewVector = 0;
@@ -148,7 +148,7 @@ class CfgCrafting
     };
     class CircuitParts : Part
     {
-        usedIn[] = {"EnergyPack","EnergyPackLg","KitPlotPole","ItemBattery","KitSolarGen","KitVehicleUpgradeI_200_EPOCH","KitVehicleUpgradeIV_200_EPOCH","BarrelBomb_EPOCH_Remote_Mag","BarrelBomb2_EPOCH_Remote_Mag","KitPortableLight_Single","KitPortableLight_Double"};
+        usedIn[] = {"EnergyPack","EnergyPackLg","KitPlotPole","ItemBattery","KitSolarGen","KitSolarCharger","KitSolarChargerXL","KitVehicleUpgradeI_200_EPOCH","KitVehicleUpgradeIV_200_EPOCH","BarrelBomb_EPOCH_Remote_Mag","BarrelBomb2_EPOCH_Remote_Mag","KitPortableLight_Single","KitPortableLight_Double","BaseCam","BaseCamTerminal"};
         previewPosition[] = {0.791044,1,0.256956};
         previewScale = 2;
         previewVector = 2.3;
@@ -415,7 +415,7 @@ class CfgCrafting
     };
     class ItemScraps : Item
     {
-        usedIn[] = {"ItemCorrugated","KitMetalTrap","MeleeRod","KitVehicleUpgradeIV_200_EPOCH","KitBarbedWire"};
+        usedIn[] = {"ItemCorrugated","KitMetalTrap","MeleeRod","KitVehicleUpgradeIV_200_EPOCH","KitBarbedWire","BaseCam","BaseCamTerminal"};
         nearby[] = {{"Fire","","fire",{1,{"ALL"}},3,1,1,0}};
         recipe[] = {{"PartOre",2}};
         previewPosition[] = {0.797144,1,0.309158};
@@ -466,9 +466,16 @@ class CfgCrafting
     };
     class ItemDuctTape : Part
     {
-        usedIn[] = {"SpareTire","EngineParts","ItemRotor"};
+        usedIn[] = {"SpareTire","EngineParts","ItemRotor","BaseCam","BaseCamTerminal"};
         previewPosition[] = {0.807346,1,0.27};
         previewScale = 1.8;
+        previewVector = -3.9;
+    };
+    class ItemGlass : Part
+    {
+        usedIn[] = {"BaseCam", "BaseCamTerminal"};
+        previewPosition[] = {0.807346,1,0.27};
+        previewScale = 0.55;
         previewVector = -3.9;
     };
 	class EngineParts : Item
@@ -786,6 +793,13 @@ class CfgCrafting
         previewScale = 0.4;
         previewVector = 2.1;
     };
+    class icecream_epoch : Part
+    {
+        usedIn[] = {"KitSnowman"};
+        previewPosition[] = {0.796141,1,0.27};
+        previewScale = 0.7;
+        previewVector = 2.1;
+    };
     class emptyjar_epoch : Part
     {
         usedIn[] = {"water_epoch"};
@@ -802,7 +816,7 @@ class CfgCrafting
     };
     class clean_water_epoch : Item
     {
-        usedIn[] = {"EnergyPack"};
+        usedIn[] = {"EnergyPack","KitSnowman"};
         nearby[] = {{"Fire","","fire",{1,{"ALL"}},3,1,1,0}};
         recipe[] = {"water_epoch"};
         previewPosition[] = {0.807346,1,0.43035};
@@ -819,7 +833,7 @@ class CfgCrafting
     };
     class ItemCorrugatedLg : Item
     {
-        usedIn[] = {"KitPlotPole","KitTankTrap","KitHesco3","KitSolarGen","ItemRotor","EngineBlock","KitMetalFloor","KitMetalHalfFloor","KitMetalQuarterFloor","KitMetalTower","KitFieldToilet","KitSink","KitPortableLight_Single","KitPortableLight_Double","KitBarbedWire"};
+        usedIn[] = {"KitPlotPole","KitTankTrap","KitHesco3","KitSolarGen","KitSolarCharger","KitSolarChargerXL","ItemRotor","EngineBlock","KitMetalFloor","KitMetalHalfFloor","KitMetalQuarterFloor","KitMetalTower","KitFieldToilet","KitSink","KitPortableLight_Single","KitPortableLight_Double","KitBarbedWire"};
         recipe[] = {{"ItemCorrugated",3}};
         nearby[] = {{"Workbench","","workbench",{1,{"WorkBench_EPOCH"}},3,1,0,1}};
         previewPosition[] = {0.797491,1,0.32899};
@@ -828,7 +842,7 @@ class CfgCrafting
     };
     class PartPlankPack : Item
     {
-        usedIn[] = {"KitStudWall","KitWoodFloor","KitWoodFoundation","KitWoodStairs","KitWoodRamp","KitWoodLadder","KitWoodTower","KitTiPi","KitWorkbench","KitSpikeTrap","KitMetalTrap","KitWoodQuarterFloor","KitWoodHalfFloor","KitBarGate","KitBagBunker","KitWatchTower","KitLightPole","KitScaffolding"};
+        usedIn[] = {"KitStudWall","KitWoodFloor","KitWoodFoundation","KitWoodStairs","KitWoodRamp","KitWoodLadder","KitWoodTower","KitTiPi","KitWorkbench","KitSpikeTrap","KitMetalTrap","KitWoodQuarterFloor","KitWoodHalfFloor","KitBarGate","KitBagBunker","KitWatchTower","KitLightPole","KitScaffolding","KitPlyThirdWall_EPOCH"};
         recipe[] = {{"WoodLog_EPOCH",2}};
         previewPosition[] = {0.797837,1,0.288258};
         previewScale = 0.2;
@@ -837,7 +851,7 @@ class CfgCrafting
     };
     class ItemPlywoodPack : Item
     {
-        usedIn[] = {};
+        usedIn[] = {"KitPlyThirdWall_EPOCH"};
         recipe[] = {{"WoodLog_EPOCH",3}};
         previewPosition[] = {0.797837,1,0.288258};
         previewScale = 0.2;
@@ -878,6 +892,17 @@ class CfgCrafting
         previewPosition[] = {0.797675,1,0.398882};
         previewScale = 0.07;
         previewVector = 0;
+    };
+    class KitPlyThirdWall_EPOCH : Kit
+    {
+        recipe[] = {{"PartPlankPack",2},{"ItemPlywoodPack",1}};
+        model = "\x\addons\a3_epoch_community\models\third_ply_wall.p3d";
+        nearby[] = {{"Workbench","","workbench",{1,{"WorkBench_EPOCH"}},3,1,0,1}};
+        previewPosition[] = {0.797675,1,0.398882};
+        previewScale = 0.07;
+        previewVector = 0;
+		descriptionShort = "1/3 Plywood Wall";
+		descriptionFull = "Base building material";
     };
     class KitWoodFloor : Kit
     {
@@ -1117,9 +1142,20 @@ class CfgCrafting
         previewScale = 0.055;
         previewVector = 0;
     };
+    class KitSnowman : Kit
+    {
+        recipe[] = {{"ItemCoolerE",1},{"icecream_epoch",1},{"clean_water_epoch",2}};
+		model = "\x\addons\a3_epoch_community\models\hol_x\epoch_snowman.p3d";
+        nearby[] = {{"Workbench","","workbench",{1,{"WorkBench_EPOCH"}},3,1,0,1}};
+        previewPosition[] = {0.801378,1,0.29};
+        previewScale = 0.15;
+        previewVector = 0;
+		descriptionShort = "Snowman";
+		descriptionFull = "Nice deco for Wintertime";
+    };
     class ItemSolar : Part
     {
-        usedIn[] = {"KitSolarGen"};
+        usedIn[] = {"KitSolarGen","KitSolarCharger","KitSolarChargerXL"};
         previewPosition[] = {0.802374,1,0.26};
         previewScale = 0.19;
         previewVector = 3.3;
@@ -1133,7 +1169,7 @@ class CfgCrafting
 	};
     class ItemCables : Item
     {
-        usedIn[] = {"KitSolarGen","KitPlotPole","ItemCopperBar","KitVehicleUpgradeI_200_EPOCH"};
+        usedIn[] = {"KitSolarGen","KitSolarCharger","KitSolarChargerXL","KitPlotPole","ItemCopperBar","KitVehicleUpgradeI_200_EPOCH","BaseCam","BaseCamTerminal"};
         nearby[] = {{"Workbench","","workbench",{1,{"WorkBench_EPOCH"}},3,1,0,1}};
         recipe[] = {{"ItemCopperBar",1}};
         previewPosition[] = {0.802374,1,0.26};
@@ -1227,7 +1263,7 @@ class CfgCrafting
     };
     class ItemBattery : Item
     {
-        usedIn[] = {"KitSolarGen","KitPlotPole","BarrelBomb_EPOCH_Remote_Mag","BarrelBomb2_EPOCH_Remote_Mag"};
+        usedIn[] = {"KitSolarGen","KitSolarCharger","KitSolarChargerXL","KitPlotPole","BarrelBomb_EPOCH_Remote_Mag","BarrelBomb2_EPOCH_Remote_Mag"};
         nearby[] = {{"Workbench","","workbench",{1,{"WorkBench_EPOCH"}},3,1,0,1}};
         recipe[] = {{"EnergyPackLg",3},{"CircuitParts",1}};
         previewPosition[] = {0.802374,1,0.276733};
@@ -1241,6 +1277,50 @@ class CfgCrafting
         previewPosition[] = {0.804979,1,0.39189};
         previewScale = 0.11;
         previewVector = 0;
+    };
+    class KitSolarCharger : Kit
+    {
+        recipe[] = {{"ItemSolar",1},{"ItemCables",1},{"ItemBattery",1},{"ItemCorrugatedLg",2},{"CircuitParts",2}};
+        nearby[] = {{"Workbench","","workbench",{1,{"WorkBench_EPOCH"}},3,1,0,1}};
+        model = "\x\addons\a3_epoch_assets_3\CfgVehicles\Solar_Generator_Complete\Solar_generator.p3d";
+        previewPosition[] = {0.804979,1,0.39189};
+        previewScale = 0.11;
+        previewVector = 0;
+		descriptionShort = "Solar Charger Kit";
+		descriptionFull = "Used to charge small Energy Packs";
+    };
+    class KitSolarChargerXL : Kit
+    {
+        recipe[] = {{"ItemSolar",2},{"ItemCables",2},{"ItemBattery",2},{"ItemCorrugatedLg",2},{"CircuitParts",2}};
+        nearby[] = {{"Workbench","","workbench",{1,{"WorkBench_EPOCH"}},3,1,0,1}};
+        model = "\x\addons\a3_epoch_assets_3\CfgVehicles\Solar_Generator_Complete\Solar_generator.p3d";
+        previewPosition[] = {0.804979,1,0.39189};
+        previewScale = 0.11;
+        previewVector = 0;
+		descriptionShort = "Solar Charger Kit XL";
+		descriptionFull = "Used to charge large Energy Packs";
+    };
+    class BaseCam : Kit
+    {
+        recipe[] = {{"ItemCables",1},{"ItemGlass",1},{"ItemDuctTape",1},{"ItemScraps",2},{"CircuitParts",2}};
+        nearby[] = {{"Workbench","","workbench",{1,{"WorkBench_EPOCH"}},3,1,0,1}};
+        model = "\x\addons\a3_epoch_community\models\base_cam.p3d";
+        previewPosition[] = {0.804979,1,0.3};
+        previewScale = 0.5;
+        previewVector = 0;
+		descriptionShort = "Base Camera";
+		descriptionFull = "Protect your Base with a Camera.<br/>A BaseCam Terminal is needed,<br/>to check your Base Cameras";
+    };
+    class BaseCamTerminal : Kit
+    {
+        recipe[] = {{"ItemCables",1},{"ItemGlass",1},{"ItemDuctTape",1},{"ItemScraps",2},{"CircuitParts",2}};
+        nearby[] = {{"Workbench","","workbench",{1,{"WorkBench_EPOCH"}},3,1,0,1}};
+        model = "\x\addons\a3_epoch_community\models\base_cam_terminal.p3d";
+        previewPosition[] = {0.804979,1,0.3};
+        previewScale = 0.5;
+        previewVector = 0;
+		descriptionShort = "Base Camera Terminal";
+		descriptionFull = "Check your Base Cameras with this Terminal";
     };
 	class MeleeRod : Kit
 	{
@@ -1395,7 +1475,7 @@ class CfgCrafting
     };
     class ItemCanvas : Item
     {
-        usedIn[] = {"KitTentA","KitTentDome","KitSunShade","KitWatchTower","KitScaffolding"};
+        usedIn[] = {"KitTentA","KitTentDome","KitSunShade","KitWatchTower","KitScaffolding","ItemSeedBag"};
 		nearby[] = {{"Workbench","","workbench",{1,{"WorkBench_EPOCH"}},3,1,0,1}};
 		recipe[] = {{"ItemKiloHemp",1}};
         previewPosition[] = {0.802443,1,0.254301};

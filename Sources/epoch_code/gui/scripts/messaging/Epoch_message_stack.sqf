@@ -12,7 +12,7 @@
 
 	Usage:
 	"TEST" call Epoch_message_stack
-	
+
 	["===================================",5,[[0,0,0,0.2],[1,0.5,0,1]]] call Epoch_message_stack;
 	["World!",5,[[0,0,0,0.2],[1,1,1,1]]] call Epoch_message_stack;
 	["Hello",5,[[0,0,0,0.2],[1,1,1,1]]] call Epoch_message_stack;
@@ -34,7 +34,7 @@ if(_customCol isEqualTo [])then{
 	_bgCol = if((_customCol select 0)isEqualTypeAll 0) then [{_customCol select 0},{_bgCol = [0,0,0,0.2]}];
 	_txtCol = if((_customCol select 1)isEqualTypeAll 0) then [{_customCol select 1},{_txtCol = [1,1,1,0.95]}];
 };
-if !(typeName _msg isEqualTo "STRING") then { //Needed to remove quotations from strings
+if !(_msg isEqualType "STRING") then { //Needed to remove quotations from strings
 	_msg = str (parseText str _msg); //Parses and converts text back to small string
 };
 
@@ -53,7 +53,7 @@ rmx_var_msgStackQueue = [[_msg, _time, [_bgCol,_txtCol]] ];
 	_cStartPos = [safeZoneX,((_yPos - _ySize) * GUI_GRID_H + GUI_GRID_Y),safeZoneW, _ySize * GUI_GRID_H];
 
 	_ctrlArr = [1];
-	
+
 	_fnc_reorganizeCtrls = {
 		if !(_ctrlArr isEqualTo []) then {
 			{
@@ -64,7 +64,7 @@ rmx_var_msgStackQueue = [[_msg, _time, [_bgCol,_txtCol]] ];
 			} forEach _ctrlArr;
 		};
 	};
-	
+
 	while {(count _ctrlArr) > 0} do {
 		if ((_ctrlArr select 0) isEqualTo 1) then {_ctrlArr = [];};
 		if !(rmx_var_msgStackQueue isEqualTo []) then {
@@ -72,19 +72,19 @@ rmx_var_msgStackQueue = [[_msg, _time, [_bgCol,_txtCol]] ];
 			_time = diag_tickTime + (rmx_var_msgStackQueue select 0 select 1);
 			_col = (rmx_var_msgStackQueue select 0)select 2;
 			rmx_var_msgStackQueue deleteAt 0;
-			
+
 			_c = _dsp ctrlCreate ["rmx_t1", call epoch_getIDC];
 			_c ctrlSetBackgroundColor (_col select 0);
 			_c ctrlSetText _msg;
 			_c ctrlSetTextColor (_col select 1);
-			
+
 			_c ctrlSetPosition _cStartPos;
 			_c ctrlSetFade 1;
 			_c ctrlCommit 0;
-			
+
 			_c ctrlSetFade 0;
 			_c ctrlCommit 0.5;
-			
+
 			_ctrlArr pushBack [_c,_time];
 			call _fnc_reorganizeCtrls;
 		};

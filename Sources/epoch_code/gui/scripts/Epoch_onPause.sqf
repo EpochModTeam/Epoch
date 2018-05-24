@@ -68,13 +68,14 @@ _respawnButton ctrlEnable false;
 [_display] spawn {
 	disableSerialization;
 	params ["_display"];
-	_startTime = diag_tickTime+5;
+	_startTime = diag_tickTime+4;
 	waitUntil {
 		uiSleep 0.2;
 	   (isNull _display) || ((_startTime - diag_tickTime) <= 0)
 	};
 	if (!isNull _display) then {
 		player setUnitLoadout (getUnitLoadout player);
+		uisleep 1;	// give one second to broadcast clothing change
 		missionnamespace setvariable ["EPOCH_forceUpdateNow",true];
 	};
 };

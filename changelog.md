@@ -1,6 +1,67 @@
 # Change Log
 All changes for [Arma 3](https://arma3.com/) [Epoch Mod](https://epochmod.com) are listed in this changelog.
 
+## [1.2.0.0] - Unreleased
+### Added
+- Config in cfgepochclient.hpp to disable needed items for FireOn / BurnBarrelOff / Hook @He-Man
+- Missing Config entry "immuneIfStartInBase" in epochconfig.hpp @G-Dog
+- Radiation Suits to Loot, Pricing and Itemsort @He-Man
+- Config to restrict tilting angle for Vectorbuilding to cfgEpochClient.hpp @He-Man
+- Config to disable Fuelsources in PlotPole Range to epochconfig.hpp @He-Man
+- Reworked Trader Menu @He-Man
+   - Secondary Weapon can now be sold directly from hand
+   - Attachments from sold weapons from hand will be put back into your Inventory
+   - Weapons in hand are now marked in menu as "in Hand"
+- Solar Charger for EnergyPacks - Put an EnergyPack into the Charger and wait... @Helion4, @He-Man
+- 4 Hoverboard Vehicles: @Helion4
+   - "hoverboard_epoch_1"
+   - "hoverboard_epoch_bttf"
+   - "hoverboard_epoch_a3"
+   - "hoverboard_epoch_cargo"
+- Mountainbike "MBK_01_EPOCH" @Helion4
+- Helicopter UH1H "uh1h_Epoch" @Helion4
+- BaseCam + BaseCam Terminal @Helion4, @He-Man
+   - Build Cams at your Base and watch them through the Terminal
+- Wooden Stairs with lockable Bars on the top (upgradeable from Wooden Stairs) @Helion4
+- Wood and Metal Garage Doors as upgradeable Baseparts @Helion4, @He-Man
+- 1/3 Plywood wall directly craftable @Helion4, @He-Man
+- You can now wash yourself with a soap in your inventory at water sources (reduce Soiled) @Helion4, @He-Man
+- 2 new masks (Thor Helmet "thor_mask_epoch" and Iron Man Mask "iron_mask_epoch") @Helion4
+- Search field in Admin spawn window (Admintool) @He-Man
+### Fixed
+- Mine Rocks / Chop Wood was only possible with Swords after 1.1.0 update. @He-Man
+- Alive Toxic Sapper was not toxic @He-Man
+- Binocular with "B" was not working, if you are using R3F or AdvSlingLoad @He-Man
+- Models for Radiation Suits @Helion4
+- Traps were Indestructible by using indestructible "Constructions_static_F" @He-Man
+- Hopefully less login issues on BaseSpawn @He-Man
+- Kick by using Jet ejector seats @He-Man
+- Wrong calculated Bullets in Traders @He-Man
+- Locked Vehicles were unlocked after upgrade @He-Man
+- Everybody was able to open Hatch on Windows / Doors on foreign Bases @He-Man
+- Ban for "RscMenuTeam" commandmenu @He-Man
+- Adjusted some SnapPoints for Basebuilding to be more accurate @He-Man
+- Advanced Vehicle Repair was broken after last Arma Update (Tank DLC) @He-Man
+- Added missing ItemWaterPurificationTablets to pricing @G-Dog
+- MultiGun was not working on very large Vehicles (VTOL) @He-Man
+- GoldenSeal will no longer disappear when fully grown in a Garden @He-Man
+- Items in Subcontainers (Items in BackPacks in Containers) were not saved @He-Man
+- Drunk effects were not working correctly @He-Man
+- Model / Graphics fix for Cinder Floors @Helion4
+- Snapped Walls on Stairs sometimes were not fixed correctly @Helion4
+- Quadbike handling was a bit too slippery @Helion4
+### Changed
+- Reworked Vehicle Load / Save commands for more precise Vehicle Spawn @He-Man
+- Made Temp-Vehicles tradable (will not be stored in Trader after selling them) @He-Man
+- Wood / Cinder Walls can now snap to each other @He-Man
+- Energy from windsources / solarsources is now calculated by wind / overcast @He-Man
+- Ammo of crafted Mags are calculated by the left ammo of used Mags (example: EnergyPacks) @He-Man
+- Consumed EnergyPacks give only energy calculated by left ammo in the Pack @He-Man
+- Moved server "EpochEvents" folder from epoch_server_settings.pbo to epoch_server_events.pbo @DirtySanchez, @vbawol
+- Some script optimizations @vbawol
+- Vehicle pricing adjustments "import tariffs" @vbawol
+- Some now Icons for Dynamenu @Forelle Vierkant
+
 ## [1.1.0.0] - 2018-03-15
 ### Added
 - Plant Spawner: vehicle object for sunflower. @Helion4
@@ -9,15 +70,15 @@ All changes for [Arma 3](https://arma3.com/) [Epoch Mod](https://epochmod.com) a
 - Make Lighter refillable at Fuel-Sources (Gasstations / Vehicles) @He-Man
 - Make Trader more configurable in epochconfig.hpp @He-Man
 - Added Examples for Batchfiles to control Server Restarts @DirtySanchez
-- default pops for "center" marker @AWOL
-- More map supports @AWOL
-- Lighter is needed to imflame fires @DirtySanchez
+- default pops for "center" marker @vbawol
+- More map supports @vbawol
+- Lighter is needed to inflame fires @DirtySanchez
 - FireExtinguisher is needed to "put our fire" on Burn Barrel @DirtySanchez
 - Rope is needed for SlingLoad (get back on release) @DirtySanchez
 - R3F compatibility for SlingLoad @DirtySanchez
 - Hints while using Vehicle Repair (MultiGun) @He-Man
 - Config to completely disable Simulation for BaseParts (if not needed) @He-Man
-- Made Radiation configureable by cfgepochclient.hpp @Raymix
+- Made Radiation configurable by cfgepochclient.hpp @Raymix
 - Hints for lock / unlock Vehicles / Storages @He-Man
 - Nuisance multiplicator in cfgepochclient.hpp @He-Man
 - Reduce rads over time at cost of immunity @Raymix
@@ -45,10 +106,10 @@ All changes for [Arma 3](https://arma3.com/) [Epoch Mod](https://epochmod.com) a
 - Garden Plot had no physical ground @Helion4
 - Some Vehicles were missing in EPOCH Admin Spawn Menu @He-Man
 ### Changed
-- RCon Port is now set to 2307 by default since changes in A3 1.78 prevent use of 2306. @AWOL
+- RCon Port is now set to 2307 by default since changes in A3 1.78 prevent use of 2306. @vbawol
 - SnapPoints for Building objects (especially full / half / quarter Floors) @He-Man
 - Some performance tweaks
-- Inventory will be opened automatically, if "you found something" @AWOL
+- Inventory will be opened automatically, if "you found something" @vbawol
 - EPOCH Events reworked (Markers will change if players near / event looted) @DirtySanchez
 - Traders will no longer refill sold magazines @He-Man
    - Magazines will automatic be repacked in Trader

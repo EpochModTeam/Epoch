@@ -74,6 +74,7 @@ class CfgServerFunctions
 			class server_PayCrypto{};
 			class fnc_updatePlayerStats{};
 			class server_updatePlayerStats{};
+			class server_SetFinalPlayerPos{};
 		};
 		class epoch_traders {
 			class server_loadTraders {};
@@ -107,6 +108,7 @@ class CfgServerFunctions
 			class server_upgrade_vehicle {};
 			class server_CargoSave {};
 			class server_CargoFill {};
+			class server_removemagoritemcargo {};
 		};
 		class epoch_server {
 			class precisionPos {};
@@ -145,7 +147,7 @@ class CfgServerFunctions
 };
 class CfgServerVersion
 {
-	client = "1.1.0";
-	config = "1.1.0";
+	client = "1.2.0";
+	config = "1.2.0";
 	hive = "0.6.0.0";
 };

@@ -20,7 +20,7 @@ class CfgPatches {
 		units[] = {};
 		weapons[] = {};
 		requiredVersion = 0.1;
-		epochVersion = "1.1.0";
+		epochVersion = "1.2.0";
 		requiredAddons[] = {};
 		#include "build.hpp"
 	};
@@ -229,7 +229,13 @@ class CfgEpoch
 		    {"O_Heli_Transport_04_box_EPOCH",1},
 		    {"O_Heli_Transport_04_covered_EPOCH",1},
 		    {"B_Heli_Transport_03_unarmed_EPOCH",1},
+			{"uh1h_Epoch",1},
 		    {"jetski_epoch",7},
+		    {"MBK_01_EPOCH",2},
+		    {"hoverboard_epoch_1",1},
+		    {"hoverboard_epoch_cargo",1},
+		    {"hoverboard_epoch_bttf",1},
+		    {"hoverboard_epoch_a3",1},
 		    {"K01",2},
 		    {"K02",2},
 		    {"K03",2},

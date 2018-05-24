@@ -21,7 +21,7 @@ _arrIn = _this;
 _cfg = 'CfgEpochClient' call EPOCH_returnConfig;
 _Suppressed = getarray (_cfg >> "SuppressedCraftingItems");
 
-if !(typeName (_arrIn select 0) isEqualTo "CONFIG") exitWith {[]};
+if !((_arrIn select 0) isEqualType configNull) exitWith {[]};
 
 _type0 = []; _type1 = []; _type2 = []; _type3 = []; _out = [];
 {

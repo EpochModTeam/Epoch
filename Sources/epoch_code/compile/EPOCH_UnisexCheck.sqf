@@ -49,6 +49,10 @@ if (configName(inheritsFrom(configFile >> "CfgWeapons" >> _item)) == "ItemRadio"
 	};
 };
 
+if (_item in ["EnergyPack","EnergyPackLg"] && (typeof _container) in ["SolarCharger_EPOCH","SolarChargerXL_EPOCH"]) then {
+	["Stop Charging ...",5,[[1,0,0,0.2],[1,1,1,1]]] call Epoch_Message;
+};
+
 // Unisex vest check
 _woman = getNumber(configFile >> "CfgVehicles" >> (typeOf player) >> "woman");
 _config = configfile >> "cfgweapons" >> _item;

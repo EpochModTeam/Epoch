@@ -95,7 +95,7 @@ class base_mode_snap_direction
 {
 	condition = "EPOCH_buildMode == 1";
 	action = "EPOCH_snapDirection = EPOCH_snapDirection + 1; if (EPOCH_snapDirection > 3) then {EPOCH_snapDirection = 0};[format['SNAP DIRECTION: %1°', EPOCH_snapDirection*90], 5] call Epoch_message;";
-	icon = "x\addons\a3_epoch_code\Data\UI\buttons\build_move.paa";
+	icon = "x\addons\a3_epoch_code\Data\UI\buttons\build_rotate.paa";
 	tooltip = "Build Mode: Rotate 90°";
 	tooltipcode = "format ['Build Mode: Switch Snap Direction to %1° (current %2°)',if (EPOCH_snapDirection < 3) then {(EPOCH_snapDirection+1)*90} else {0},EPOCH_snapDirection*90]";
 };
@@ -103,22 +103,29 @@ class base_mode_detach
 {
 	condition = "EPOCH_buildMode > 0 && !isnull EPOCH_target && EPOCH_target_attachedTo isequalto player && Epoch_target iskindof 'Const_Ghost_EPOCH'";
 	action = "EPOCH_target_attachedTo = objnull; ['Object Detached', 5] call Epoch_message;";
-	icon = "x\addons\a3_epoch_code\Data\UI\buttons\build_move.paa";
+	icon = "x\addons\a3_epoch_code\Data\UI\buttons\build_detach.paa";
 	tooltip = "Build Mode: Detach Object";
 };
 class base_mode_attach
 {
 	condition = "EPOCH_buildMode > 0 && !isnull EPOCH_target && !(EPOCH_target_attachedTo isequalto player) && Epoch_target iskindof 'Const_Ghost_EPOCH'";
 	action = "EPOCH_target_attachedTo = player; ['Object Attached', 5] call Epoch_message;";
-	icon = "x\addons\a3_epoch_code\Data\UI\buttons\build_move.paa";
+	icon = "x\addons\a3_epoch_code\Data\UI\buttons\build_attach.paa";
 	tooltip = "Build Mode: Attach Object";
 };
 class Drink
 {
-	condition = "_nearObjects = nearestObjects [player, [], 2];_check = 'water';_ok = false;{if (alive _x) then {_ok = [_x, _check] call EPOCH_worldObjectType;};if (_ok) exitWith {};} forEach _nearObjects;_ok";
-	action = "if (currentweapon player == '') then {player playmove 'AinvPknlMstpSnonWnonDnon_Putdown_AmovPknlMstpSnonWnonDnon';}else {if (currentweapon player == handgunweapon player) then {player playmove 'AinvPknlMstpSrasWpstDnon_Putdown_AmovPknlMstpSrasWpstDnon';}else {	player playmove 'AinvPknlMstpSrasWrflDnon_Putdown_AmovPknlMstpSrasWrflDnon';};};{_output = _x call EPOCH_giveAttributes;if (_output != '') then {[_output, 5] call Epoch_message_stack;};} foreach [['Toxicity',4,1],['Stamina',10],['Thirst',100]];";
+	condition = "dyna_Watersource";
+	action = "if (currentweapon player == '') then {player playmove 'AinvPknlMstpSnonWnonDnon_Putdown_AmovPknlMstpSnonWnonDnon';}else {if (currentweapon player == handgunweapon player) then {player playmove 'AinvPknlMstpSrasWpstDnon_Putdown_AmovPknlMstpSrasWpstDnon';}else {	player playmove 'AinvPknlMstpSrasWrflDnon_Putdown_AmovPknlMstpSrasWrflDnon';};};{_output = _x call EPOCH_giveAttributes;if (_output != '') then {[_output, 5] call Epoch_message_stack;};} foreach [['Thirst',100],['Toxicity',1,1],['Stamina',10]];";
 	icon = "x\addons\a3_epoch_code\Data\UI\buttons\Drink.paa";
 	tooltip = "Drink";
+};
+class Wash
+{
+	condition = "dyna_Watersource";
+	action = "if !('Soap_Epoch' in magazines player) exitwith {['You need a Soap to wash yourself',5] call Epoch_Message;};[] spawn {player playMove 'AinvPknlMstpSnonWrflDnon_medic0';player playMove 'AinvPknlMstpSnonWrflDnon_medicEnd';['Washing ...',5] call Epoch_Message;player removeitem 'Soap_Epoch';uisleep 6;{_output = _x call EPOCH_giveAttributes;	if (_output != '') then {[_output, 5] call Epoch_message_stack;};} foreach [['Soiled',-25]];};";
+	icon = "x\addons\a3_epoch_code\Data\UI\buttons\Washing.paa";
+	tooltip = "Wash yourself";
 };
 class ServicePoint
 {

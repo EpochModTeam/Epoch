@@ -27,6 +27,7 @@ forceRestartTime      = 14400; 			// 4 hour restarts
 		{ 900, "ChangeWeather", 1 , 2, -1, {} ,{"VR"}},
 		{ 1200, "ContainerSpawner", 0 , 2, -1, {} ,{"VR"}},
 		{ 1440, "GardenManager", 0 , 2, -1, {} ,{"VR"}},
+		{ 1440, "SolarChargerManager", 0 , 2, -1, {} ,{"VR"}},
 		{ 900, "MoneyDrop", 0 , 2 , -1, {} ,{"VR"}},
 		{ 300, "PlantSpawner", 0 , 2 , -1, {} ,{"VR"}} //No comma on last Entry
 	};
@@ -63,8 +64,10 @@ forceRestartTime      = 14400; 			// 4 hour restarts
 	};
 
 // vehicles - Max vehicle slots is calculated from per vehicle limits below. Warning! Higher the number lower the performance.
+	immuneIfStartInBase = "true";			// Protect vehicles from damage in bases until first unlocked after restart
 	ReservedVehSlots = 50;				// Reserved Vehicle Slots (only needed, if you manually spawn in additional Vehicles - AdminTool / Blackmarket...)
-	disableAutoRefuel = "true"; 		// Removes auto refuel from all buildings at server startup.
+	disableAutoRefuel = "false"; 		// Removes auto refuel from all buildings at server startup.
+	disableFuelNearPlots = "false";		// Removes auto refuel in PlotPole-Ranges at server startup.
 	VehLockMessages = "true";			// Give players a hint, that the Vehicle is locked / unlocked
 	removevehweapons[] = {				// remove these Weapons from spawned Vehicles
 		"missiles_DAR","gatling_30mm","gatling_20mm","missiles_DAGR","cannon_30mm_Plane_CAS_02_F","Missile_AA_03_Plane_CAS_02_F","Missile_AGM_01_Plane_CAS_02_F","Rocket_03_HE_Plane_CAS_02_F",
@@ -89,6 +92,8 @@ forceRestartTime      = 14400; 			// 4 hour restarts
 										"Safe_EPOCH"
 									};
 	ExceptedBaseObjects[] = 		{	// Not Indestructible, also if in a Class of IndestructibleBaseObjects
+										"Spike_TRAP_EPOCH",
+										"Metal_TRAP_EPOCH",
 										"CinderWallGarage_EPOCH",
 										"WoodLargeWallDoorL_EPOCH",
 										"WoodLargeWallDoor_EPOCH",

@@ -37,7 +37,7 @@ switch true do {
 		if (!isNull cursorTarget) then {
 			_cursorTarget = cursorTarget;
 			_repaired = false;
-			if ((player distance _cursorTarget) <= 6) then {
+			if ((player distance _cursorTarget) <= (((SizeOf (TypeOf _cursorTarget))/2) max 6) min 12) then {
 				_attachments = handgunItems player;
 				_heal = false;
 				if (_cursorTarget isKindOf "Man") then {
@@ -97,12 +97,14 @@ switch true do {
 	};
 	case (_ammo isKindOf "B_Swing" || _ammo isKindOf "B_Stick") : {
 		player playActionNow "SledgeSwing";
-		if (_weapon in ["MeleeSword","Power_Sword"]) then {
-			call EPOCH_mineRocks;
-			call EPOCH_chopWood;
-		};
 		if (_weapon isEqualTo "MeleeRod") then {
 			call EPOCH_fish;
+		}
+		else {
+			call EPOCH_mineRocks;
+			if (_weapon in ["MeleeSword","Power_Sword"]) then {
+				call EPOCH_chopWood;
+			};
 		};
 	};
 	case (_ammo isKindOf "ChainSaw_Bullet"): {

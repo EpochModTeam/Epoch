@@ -112,6 +112,10 @@ class CfgPricing
     {
         price = 25;
     };
+    class ItemWaterPurificationTablets
+    {
+        price = 10;
+    };
     class ItemBulb
     {
         price = 10;
@@ -2096,6 +2100,10 @@ class CfgPricing
     {
         price = 3;
     };
+    class Soap_Epoch
+    {
+        price = 4;
+    };
     class Towelette
     {
         price = 1;
@@ -3074,6 +3082,9 @@ class CfgPricing
     {
         price = 16;
     };
+	class KitPlyThirdWall_EPOCH {
+		price = 18;
+	};
 	class KitWoodQuarterFloor
 	{
 		price = 8; // price of 2 planks
@@ -3129,6 +3140,10 @@ class CfgPricing
     class KitWoodRamp
     {
         price = 24; // price of 6 planks
+    };
+    class KitSnowman
+    {
+        price = 72;
     };
     class KitSpikeTrap
     {
@@ -3249,6 +3264,22 @@ class CfgPricing
     class KitSolarGen
     {
         price = 325;
+    };
+    class KitSolarCharger
+    {
+        price = 325;
+    };
+    class KitSolarChargerXL
+    {
+        price = 325;
+    };
+    class BaseCam
+    {
+        price = 250;
+    };
+    class BaseCamTerminal
+    {
+        price = 250;
     };
     class KitCinderWall
     {
@@ -3513,6 +3544,14 @@ class CfgPricing
     class I_UAV_01_backpack_F
     {
         price = 22;
+    };
+    class U_RadiationSuit_M_uniform
+    {
+        price = 7;
+    };
+    class U_RadiationSuit_F_uniform
+    {
+        price = 7;
     };
     class U_O_FullGhillie_lsh
     {
@@ -4352,20 +4391,40 @@ class CfgPricing
     };
     class C_Offroad_01_EPOCH
     {
-        price = 750;
+        price = 7500;
+		tax = 0.9;
     };
 	class C_Offroad_01_EPOCH1: C_Offroad_01_EPOCH{};
 	class C_Offroad_01_EPOCH2: C_Offroad_01_EPOCH{};
 	class C_Offroad_01_EPOCH3: C_Offroad_01_EPOCH{};
 	class C_Offroad_01_EPOCH4: C_Offroad_01_EPOCH{};
 	class C_Offroad_01_EPOCH5: C_Offroad_01_EPOCH{};
+    class hoverboard_epoch_1
+    {
+        price = 1000;
+		tax = 0.9;
+    };
+	class hoverboard_epoch_bttf: hoverboard_epoch_1{};
+	class hoverboard_epoch_a3: hoverboard_epoch_1{};
+    class hoverboard_epoch_cargo
+    {
+        price = 1200;
+		tax = 0.9;
+    };
+    class MBK_01_EPOCH
+    {
+        price = 1250;
+		tax = 0.9;
+    };
     class C_Quadbike_01_EPOCH
     {
-        price = 500;
+        price = 2500;
+		tax = 0.9;
     };
     class C_Hatchback_01_EPOCH
     {
-        price = 750;
+        price = 7500;
+		tax = 0.9;
     };
 	class C_Hatchback_01_EPOCH1: C_Hatchback_01_EPOCH{};
 	class C_Hatchback_01_EPOCH2: C_Hatchback_01_EPOCH{};
@@ -4373,7 +4432,8 @@ class CfgPricing
 	class C_Hatchback_01_EPOCH4: C_Hatchback_01_EPOCH{};
     class C_Hatchback_02_EPOCH
     {
-        price = 1000;
+        price = 10000;
+		tax = 0.9;
     };
 	class C_Hatchback_02_EPOCH1: C_Hatchback_02_EPOCH{};
 	class C_Hatchback_02_EPOCH2: C_Hatchback_02_EPOCH{};
@@ -4381,7 +4441,8 @@ class CfgPricing
 	class C_Hatchback_02_EPOCH4: C_Hatchback_02_EPOCH{};
     class C_SUV_01_EPOCH
     {
-        price = 750;
+        price = 7500;
+		tax = 0.9;
     };
 	class C_SUV_01_EPOCH1: C_SUV_01_EPOCH{};
 	class C_SUV_01_EPOCH2: C_SUV_01_EPOCH{};
@@ -4390,22 +4451,27 @@ class CfgPricing
     class C_Rubberboat_EPOCH
     {
         price = 500;
+		tax = 0.9;
     };
     class C_Rubberboat_02_EPOCH
     {
         price = 500;
+		tax = 0.9;
     };
     class C_Rubberboat_03_EPOCH
     {
         price = 500;
+		tax = 0.9;
     };
     class C_Rubberboat_04_EPOCH
     {
         price = 500;
+		tax = 0.9;
     };
     class C_Van_01_box_EPOCH
     {
-        price = 1000;
+        price = 10000;
+		tax = 0.9;
     };
 	class C_Van_01_box_EPOCH1: C_Van_01_box_EPOCH{};
 	class C_Van_01_box_EPOCH2: C_Van_01_box_EPOCH{};
@@ -4413,7 +4479,8 @@ class CfgPricing
 	class C_Van_01_box_EPOCH4: C_Van_01_box_EPOCH{};
     class C_Van_01_transport_EPOCH
     {
-        price = 1000;
+        price = 10000;
+		tax = 0.9;
     };
 	class C_Van_01_transport_EPOCH1: C_Van_01_transport_EPOCH{};
 	class C_Van_01_transport_EPOCH2: C_Van_01_transport_EPOCH{};
@@ -4421,27 +4488,33 @@ class CfgPricing
 	class C_Van_01_transport_EPOCH4: C_Van_01_transport_EPOCH{};
     class C_Boat_Civil_01_EPOCH
     {
-        price = 750;
+        price = 7500;
+		tax = 0.9;
     };
     class C_Boat_Civil_01_police_EPOCH
     {
-        price = 750;
+        price = 7500;
+		tax = 0.9;
     };
     class C_Boat_Civil_01_rescue_EPOCH
     {
-        price = 750;
+        price = 7500;
+		tax = 0.9;
     };
     class B_Heli_Light_01_EPOCH
     {
-        price = 2500;
+        price = 25000;
+		tax = 0.9;
     };
     class B_SDV_01_EPOCH
     {
-        price = 1000;
+        price = 10000;
+		tax = 0.9;
     };
     class B_MRAP_01_EPOCH
     {
-        price = 2500;
+        price = 45000;
+		tax = 0.9;
     };
 	class B_MRAP_01_EPOCH1: B_MRAP_01_EPOCH{};
 	class B_MRAP_01_EPOCH2: B_MRAP_01_EPOCH{};
@@ -4449,7 +4522,8 @@ class CfgPricing
 	class B_MRAP_01_EPOCH4: B_MRAP_01_EPOCH{};
     class O_MRAP_02_EPOCH
     {
-        price = 2500;
+        price = 45000;
+		tax = 0.9;
     };
 	class O_MRAP_02_EPOCH1: O_MRAP_02_EPOCH{};
 	class O_MRAP_02_EPOCH2: O_MRAP_02_EPOCH{};
@@ -4457,7 +4531,8 @@ class CfgPricing
 	class O_MRAP_02_EPOCH4: O_MRAP_02_EPOCH{};
     class I_MRAP_03_EPOCH
     {
-        price = 2500;
+        price = 45000;
+		tax = 0.9;
     };
 	class I_MRAP_03_EPOCH1: I_MRAP_03_EPOCH{};
 	class I_MRAP_03_EPOCH2: I_MRAP_03_EPOCH{};
@@ -4465,7 +4540,8 @@ class CfgPricing
 	class I_MRAP_03_EPOCH4: I_MRAP_03_EPOCH{};
     class B_G_Offroad_01_armed_EPOCH
     {
-        price = 2500;
+        price = 25000;
+		tax = 0.9;
     };
 	class B_G_Offroad_01_armed_EPOCH1: B_G_Offroad_01_armed_EPOCH{};
 	class B_G_Offroad_01_armed_EPOCH2: B_G_Offroad_01_armed_EPOCH{};
@@ -4473,7 +4549,8 @@ class CfgPricing
 	class B_G_Offroad_01_armed_EPOCH4: B_G_Offroad_01_armed_EPOCH{};
     class B_Truck_01_mover_EPOCH
     {
-        price = 1000;
+        price = 10000;
+		tax = 0.9;
     };
 	class B_Truck_01_mover_EPOCH1: B_Truck_01_mover_EPOCH {};
 	class B_Truck_01_mover_EPOCH2: B_Truck_01_mover_EPOCH {};
@@ -4481,7 +4558,8 @@ class CfgPricing
 	class B_Truck_01_mover_EPOCH4: B_Truck_01_mover_EPOCH {};
     class B_Truck_01_transport_EPOCH
     {
-        price = 1000;
+        price = 10000;
+		tax = 0.9;
     };
 	class B_Truck_01_transport_EPOCH1: B_Truck_01_transport_EPOCH {};
 	class B_Truck_01_transport_EPOCH2: B_Truck_01_transport_EPOCH {};
@@ -4489,7 +4567,8 @@ class CfgPricing
 	class B_Truck_01_transport_EPOCH4: B_Truck_01_transport_EPOCH {};
     class B_Truck_01_covered_EPOCH
     {
-        price = 1000;
+        price = 10000;
+		tax = 0.9;
     };
 	class B_Truck_01_covered_EPOCH1: B_Truck_01_covered_EPOCH {};
 	class B_Truck_01_covered_EPOCH2: B_Truck_01_covered_EPOCH {};
@@ -4497,7 +4576,8 @@ class CfgPricing
 	class B_Truck_01_covered_EPOCH4: B_Truck_01_covered_EPOCH {};
     class B_Truck_01_box_EPOCH
     {
-        price = 1000;
+        price = 10000;
+		tax = 0.9;
     };
 	class B_Truck_01_box_EPOCH1: B_Truck_01_box_EPOCH {};
 	class B_Truck_01_box_EPOCH2: B_Truck_01_box_EPOCH {};
@@ -4505,7 +4585,8 @@ class CfgPricing
 	class B_Truck_01_box_EPOCH4: B_Truck_01_box_EPOCH {};
     class O_Truck_02_transport_EPOCH
     {
-        price = 1000;
+        price = 10000;
+		tax = 0.9;
     };
 	class O_Truck_02_transport_EPOCH1: O_Truck_02_transport_EPOCH {};
 	class O_Truck_02_transport_EPOCH2: O_Truck_02_transport_EPOCH {};
@@ -4513,7 +4594,8 @@ class CfgPricing
 	class O_Truck_02_transport_EPOCH4: O_Truck_02_transport_EPOCH {};
     class O_Truck_02_covered_EPOCH
     {
-        price = 1000;
+        price = 10000;
+		tax = 0.9;
     };
 	class O_Truck_02_covered_EPOCH1: O_Truck_02_covered_EPOCH {};
 	class O_Truck_02_covered_EPOCH2: O_Truck_02_covered_EPOCH {};
@@ -4521,7 +4603,8 @@ class CfgPricing
 	class O_Truck_02_covered_EPOCH4: O_Truck_02_covered_EPOCH {};
     class O_Truck_02_box_EPOCH
     {
-        price = 1000;
+        price = 10000;
+		tax = 0.9;
     };
 	class O_Truck_02_box_EPOCH1: O_Truck_02_box_EPOCH {};
 	class O_Truck_02_box_EPOCH2: O_Truck_02_box_EPOCH {};
@@ -4529,7 +4612,8 @@ class CfgPricing
 	class O_Truck_02_box_EPOCH4: O_Truck_02_box_EPOCH {};
 	class O_Truck_03_transport_EPOCH
 	{
-        price = 1000;
+        price = 10000;
+		tax = 0.9;
 	};
 	class O_Truck_03_transport_EPOCH1: O_Truck_03_transport_EPOCH {};
 	class O_Truck_03_transport_EPOCH2: O_Truck_03_transport_EPOCH {};
@@ -4537,49 +4621,64 @@ class CfgPricing
 	class O_Truck_03_transport_EPOCH4: O_Truck_03_transport_EPOCH {};
     class O_Truck_03_covered_EPOCH
     {
-        price = 1000;
+        price = 10000;
+		tax = 0.9;
     };
 	class O_Truck_03_covered_EPOCH1: O_Truck_03_covered_EPOCH {};
 	class O_Truck_03_covered_EPOCH2: O_Truck_03_covered_EPOCH {};
 	class O_Truck_03_covered_EPOCH3: O_Truck_03_covered_EPOCH {};
 	class O_Truck_03_covered_EPOCH4: O_Truck_03_covered_EPOCH {};
+    class uh1h_Epoch
+    {
+        price = 22500;
+		tax = 0.9;
+    };
     class O_Heli_Light_02_unarmed_EPOCH
     {
-        price = 2500;
+        price = 25000;
+		tax = 0.9;
     };
     class I_Heli_Transport_02_EPOCH
     {
-        price = 2500;
+        price = 25000;
+		tax = 0.9;
     };
     class I_Heli_light_03_unarmed_EPOCH
     {
-        price = 2500;
+        price = 25000;
+		tax = 0.9;
     };
     class C_Heli_Light_01_civil_EPOCH
     {
-        price = 2500;
+        price = 25000;
+		tax = 0.9;
     };
 	class C_Heli_Light_01_civil_2seat_EPOCH: C_Heli_Light_01_civil_EPOCH {};
 	class C_Heli_Light_01_civil_4seat_EPOCH: C_Heli_Light_01_civil_EPOCH {};
     class O_Heli_Transport_04_EPOCH
     {
-        price = 2500;
+        price = 25000;
+		tax = 0.9;
     };
     class O_Heli_Transport_04_bench_EPOCH
     {
-        price = 2500;
+        price = 25000;
+		tax = 0.9;
     };
     class O_Heli_Transport_04_box_EPOCH
     {
-        price = 2500;
+        price = 25000;
+		tax = 0.9;
     };
     class O_Heli_Transport_04_covered_EPOCH
     {
-        price = 2500;
+        price = 25000;
+		tax = 0.9;
     };
     class B_Heli_Transport_03_unarmed_EPOCH
     {
-        price = 2500;
+        price = 25000;
+		tax = 0.9;
     };
     class I_UAV_01_F
     {
@@ -4588,275 +4687,343 @@ class CfgPricing
     class jetski_epoch
     {
         price = 500;
+		tax = 0.9;
     };
     class ebike_epoch
     {
-        price = 1500;
+        price = 3500;
+		tax = 0.9;
     };
     class mosquito_epoch
     {
         price = 1500;
+		tax = 0.9;
     };
     class K01
     {
         price = 300;
+		tax = 0.9;
     };
     class K02
     {
         price = 300;
+		tax = 0.9;
     };
     class K03
     {
         price = 300;
+		tax = 0.9;
     };
     class K04
     {
         price = 300;
+		tax = 0.9;
     };
     class CUP_C_Fishing_Boat_Chernarus
     {
         price = 800;
+		tax = 0.9;
     };
     class CUP_C_LR_Transport_CTK
     {
         price = 800;
+		tax = 0.9;
     };
     class CUP_B_Zodiac_USMC
     {
         price = 800;
+		tax = 0.9;
     };
     class CUP_C_Skoda_Red_CIV
     {
         price = 800;
+		tax = 0.9;
     };
     class CUP_C_Skoda_White_CIV
     {
         price = 800;
+		tax = 0.9;
     };
     class CUP_C_Skoda_Blue_CIV
     {
         price = 800;
+		tax = 0.9;
     };
     class CUP_C_Skoda_Green_CIV
     {
         price = 800;
+		tax = 0.9;
     };
     class CUP_C_SUV_CIV
     {
         price = 1500;
+		tax = 0.9;
     };
     class CUP_B_HMMWV_Transport_USA
     {
         price = 2500;
+		tax = 0.9;
     };
     class CUP_B_HMMWV_Unarmed_USA
     {
         price = 2500;
+		tax = 0.9;
     };
     class CUP_C_SUV_TK
     {
         price = 2000;
+		tax = 0.9;
     };
     class CUP_B_LR_Transport_CZ_D
     {
         price = 1100;
+		tax = 0.9;
     };
     class CUP_C_Datsun_Covered
     {
         price = 800;
+		tax = 0.9;
     };
     class CUP_C_Datsun_Plain
     {
         price = 800;
+		tax = 0.9;
     };
     class CUP_C_Datsun_Tubeframe
     {
         price = 800;
+		tax = 0.9;
     };
     class CUP_C_Datsun_4seat
     {
         price = 800;
+		tax = 0.9;
     };
     class CUP_C_Datsun
     {
         price = 800;
+		tax = 0.9;
     };
     class CUP_C_Golf4_green_Civ
     {
         price = 800;
+		tax = 0.9;
     };
     class CUP_C_Golf4_red_Civ
     {
         price = 800;
+		tax = 0.9;
     };
     class CUP_C_Golf4_blue_Civ
     {
         price = 800;
+		tax = 0.9;
     };
     class CUP_C_Golf4_black_Civ
     {
         price = 800;
+		tax = 0.9;
     };
     class CUP_C_Golf4_kitty_Civ
     {
         price = 800;
+		tax = 0.9;
     };
     class CUP_C_Golf4_reptile_Civ
     {
         price = 800;
+		tax = 0.9;
     };
     class CUP_C_Golf4_camodigital_Civ
     {
         price = 800;
+		tax = 0.9;
     };
     class CUP_C_Golf4_camodark_Civ
     {
         price = 800;
+		tax = 0.9;
     };
     class CUP_C_Golf4_camo_Civ
     {
         price = 800;
+		tax = 0.9;
     };
     class CUP_B_M1030
     {
         price = 500;
+		tax = 0.9;
     };
     class CUP_C_Ural_Civ_03
     {
         price = 1200;
+		tax = 0.9;
     };
     class CUP_C_Ural_Open_Civ_03
     {
         price = 1200;
+		tax = 0.9;
     };
     class CUP_C_Ural_Civ_02
     {
         price = 1200;
+		tax = 0.9;
     };
     class CUP_B_TowingTractor_USMC
     {
         price = 800;
+		tax = 0.9;
     };
     class CUP_C_C47_CIV
     {
         price = 1600;
+		tax = 0.9;
     };
     class CUP_B_LR_Transport_CZ_W
     {
         price = 800;
+		tax = 0.9;
     };
     class CUP_C_Golf4_white_Civ
     {
         price = 800;
+		tax = 0.9;
     };
     class CUP_C_Golf4_whiteblood_Civ
     {
         price = 800;
+		tax = 0.9;
     };
     class CUP_C_Golf4_yellow_Civ
     {
         price = 800;
+		tax = 0.9;
     };
     class CUP_C_Octavia_CIV
     {
         price = 1600;
+		tax = 0.9;
     };
     class CUP_C_Ural_Civ_01
     {
         price = 1000;
+		tax = 0.9;
     };
     class CUP_C_Ural_Open_Civ_01
     {
         price = 1000;
+		tax = 0.9;
     };
     class CUP_B_Ural_CDF
     {
         price = 1000;
+		tax = 0.9;
     };
     class CUP_B_Ural_Open_CDF
     {
         price = 1000;
+		tax = 0.9;
     };
     class CUP_C_Ural_Open_Civ_02
     {
         price = 1000;
+		tax = 0.9;
     };
     class CUP_B_HMMWV_Ambulance_USA
     {
         price = 1500;
+		tax = 0.9;
     };
     class CUP_C_UAZ_Unarmed_TK_CIV
     {
         price = 1000;
+		tax = 0.9;
     };
     class CUP_C_UAZ_Open_TK_CIV
     {
         price = 1000;
+		tax = 0.9;
     };
     class CUP_B_UAZ_Unarmed_CDF
     {
         price = 1000;
+		tax = 0.9;
     };
     class CUP_B_Ural_Empty_CDF
     {
         price = 1000;
+		tax = 0.9;
     };
     class CUP_C_DC3_CIV
     {
         price = 2400;
+		tax = 0.9;
     };
     class C_Boat_Transport_02_F
     {
         price = 1200;
+		tax = 0.9;
     };
     class C_Scooter_Transport_01_F
     {
         price = 1200;
+		tax = 0.9;
     };
     class C_Offroad_02_unarmed_F
     {
         price = 3500;
+		tax = 0.9;
     };
     class I_C_Offroad_02_unarmed_F
     {
         price = 3500;
+		tax = 0.9;
     };
     class B_T_LSV_01_unarmed_F
     {
         price = 4400;
+		tax = 0.9;
     };
     class O_LSV_02_unarmed_F
     {
         price = 4300;
+		tax = 0.9;
     };
     class O_T_LSV_02_unarmed_F
     {
         price = 4600;
+		tax = 0.9;
     };
     class C_Plane_Civil_01_F
     {
         price = 5000;
+		tax = 0.9;
     };
     class C_Plane_Civil_01_racing_F
     {
         price = 5000;
+		tax = 0.9;
     };
     class B_CTRG_LSV_01_light_F
     {
         price = 4400;
+		tax = 0.9;
     };
     class B_LSV_01_unarmed_F
     {
         price = 4400;
+		tax = 0.9;
     };
     class B_T_VTOL_01_vehicle_blue_EPOCH
     {
         price = 10000;
+		tax = 0.9;
     };
     class B_T_VTOL_01_infantry_olive_EPOCH: B_T_VTOL_01_vehicle_blue_EPOCH {};
 	class O_T_VTOL_02_infantry_EPOCH
 	{
         price = 10000;
+		tax = 0.9;
 	};
 	class O_T_VTOL_02_vehicle_grey_EPOCH: O_T_VTOL_02_infantry_EPOCH {};
     class B_UavTerminal
@@ -5783,6 +5950,14 @@ class CfgPricing
     class U_JeansBlack21_uniform
     {
         price = 5;
+    };
+    class thor_mask_epoch
+    {
+        price = 30;
+    };
+    class iron_mask_epoch
+    {
+        price = 30;
     };
     class hockey_mask_epoch
     {

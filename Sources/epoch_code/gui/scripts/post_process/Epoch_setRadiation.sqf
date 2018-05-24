@@ -25,25 +25,25 @@ private ["_cc","_ci","_fg","_priority"];
 params [["_level",0,[0]],["_speed",0,[0]] ];
 
 if (isNil "rmx_var_RadiationHandles") then {
-
 	_priority = 16;
 	_fg = ["filmGrain",_priority] call epoch_postProcessCreate;
 	_cc = ["colorCorrections",_priority] call epoch_postProcessCreate;
 	_ci = ["colorInversion",_priority] call epoch_postProcessCreate;
-
 	rmx_var_RadiationHandles = [_fg,_cc,_ci];
+
+	// Preload defaults
+	[(rmx_var_RadiationHandles select 0), 0, [0.005,1.25,2.01,0.75,1.0,true]] call epoch_postprocessAdjust;
+	[(rmx_var_RadiationHandles select 1), 0, [1,1,0,[0,0,0,0],[1,1,1,1],[0.299,0.587,0.114,0],[-1,-1,0,0,0,0,0]]] call epoch_postprocessAdjust;
+	[(rmx_var_RadiationHandles select 2), 0, [0,0,0]] call epoch_postprocessAdjust;
 };
 
 switch _level do {
-	case 0:
-	{
-		rmx_var_RadiationHandles call epoch_postprocessDestroy;
-		rmx_var_RadiationHandles = nil;
-	};
+	case 0;
 	case 0.1:
 	{
-		rmx_var_RadiationHandles call epoch_postprocessDestroy;
-		rmx_var_RadiationHandles = nil;
+		(rmx_var_RadiationHandles select 0) ppEffectEnable false;
+		(rmx_var_RadiationHandles select 1) ppEffectEnable false;
+		(rmx_var_RadiationHandles select 2) ppEffectEnable false;
 	};
 	case 0.2:
 	{

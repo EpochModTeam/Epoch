@@ -13,12 +13,13 @@
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_code/compile/traders/EPOCH_startNpcTrade.sqf
 */
 
-private ["_PlayerItemsOutBox","_TraderItemsOutBox","_config","_current_crypto","_sizeIn","_arrayIn","_item","_rounds","_mags","_itemMags","_index","_sizeOut","_arrayOut","_itemWorth","_itemTax","_tax","_maxrnd"];
+private ["_EnableTempVehTrade","_PlayerItemsOutBox","_TraderItemsOutBox","_config","_current_crypto","_sizeIn","_arrayIn","_item","_rounds","_mags","_itemMags","_index","_sizeOut","_arrayOut","_itemWorth","_itemTax","_tax","_maxrnd"];
 
 if (!isNil "EPOCH_TRADE_STARTED") exitWith{};
 if (isNull _this) exitWith{};
 
 if (alive _this) then {
+	_EnableTempVehTrade = ["CfgEpochClient", "EnableTempVehTrade", false] call EPOCH_fnc_returnConfigEntryV2;
 	_PlayerItemsOutBox = 41501;
 	_TraderItemsOutBox = 41502;
 	_config = 'CfgPricing' call EPOCH_returnConfig;
@@ -27,6 +28,11 @@ if (alive _this) then {
 	_arrayIn = [];
 	if (_sizeIn > 0) then {
 		for "_i" from 0 to (_sizeIn - 1) do {
+			_onHand = false;
+			_itemName = lbText [_PlayerItemsOutBox, _i];
+			if ((_itemName find " (in hand)") > -1) then {
+				_onHand = true;
+			};
 			_item = lbData [_PlayerItemsOutBox, _i];
 			_rounds = lbValue [_PlayerItemsOutBox, _i];
 			if (isClass (_config >> _item)) then{
@@ -38,13 +44,36 @@ if (alive _this) then {
 				_itemWorth = round (_itemWorth*(_rounds/_maxrnd));
 				_added = false;
 				if ([_item, "CfgWeapons"] call EPOCH_fnc_isAny) then {
-					if (_item in items player) then {
+					if (_item in items player && !_onHand) then {
 						player removeItem _item;
 						_arrayIn pushBack [_item,_rounds];
 						_added = true;
 					}
 					else {
-						if (_item == primaryweapon player) then {
+						if (_item in [primaryweapon player,secondaryweapon player, handgunweapon player]) then {
+							_index = if (_item == primaryweapon player) then {0} else {if (_item == secondaryweapon player) then {1} else {2}};
+							{
+								if (_foreachindex > 0) then {
+									_weaponaddon = _x;
+									_count = 1;
+									if !(_weaponaddon isequalto [] || _weaponaddon isequalto "") then {
+										if (_weaponaddon isequaltype []) then {
+											if (count _weaponaddon > 1) then {
+												_weaponaddon = _x select 0;
+												_count = _x select 1;
+											};
+										};
+										if ([_weaponaddon, "CfgWeapons"] call EPOCH_fnc_isAny) then {
+											_weaponaddon call EPOCH_fnc_addItemOverflow;
+										}
+										else {
+											if ([_weaponaddon, "CfgMagazines"] call EPOCH_fnc_isAny) then {
+												[_weaponaddon,_count] call EPOCH_fnc_addMagazineOverflow;
+											};
+										};
+									};
+								};
+							} foreach ((getunitloadout player) select _index);
 							player removeweapon _item;
 							_arrayIn pushBack [_item,_rounds];
 							_added = true;
@@ -65,7 +94,7 @@ if (alive _this) then {
 								if (!isNull _vehicle) then {
 									if (local _vehicle) then {
 										_vehSlot = _vehicle getVariable["VEHICLE_SLOT", "ABORT"];
-										if (_vehSlot != "ABORT") then {
+										if (_vehSlot != "ABORT" || _EnableTempVehTrade) then {
 											_arrayIn pushBack [_item,_rounds];
 											_added = true;
 										};

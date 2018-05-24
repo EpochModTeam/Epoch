@@ -61,7 +61,7 @@ if (_playerObj isEqualType objNull) then {
 			[_fsmHandle,['_checkPlayer_PVC', _dead]] remoteExecCall ['setFSMVariable', _playerObj];
 
 			if (!_dead) then { //Load old Char
-				[_playerObj, _isMale, _fsmHandle] call EPOCH_server_loadPlayer;
+				[_playerObj, _isMale, _fsmHandle, _arr] call EPOCH_server_loadPlayer;
 			};
 		};
 	};

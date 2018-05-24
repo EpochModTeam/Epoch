@@ -13,7 +13,7 @@
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_code/compile/functions/EPOCH_fn_returnConfigEntryV2.sqf
 
     Example:
-    _sapperRndChance = ["CfgEpochClient", "sapperRngChance", 100] call EPOCH_fnc_returnConfigEntryV2;
+    _config = ["CfgEpochClient", "sapperRngChance", 100] call EPOCH_fnc_returnConfigEntryV2;
 
     Parameter(s):
 		_this select 0: STRING - Config Class
@@ -24,7 +24,7 @@
 	MIXED
 */
 //[[[cog import generate_private_arrays ]]]
-private ["_config","_finalconfig","_missionconfig","_sapperRndChance","_varData"];
+private ["_config","_finalconfig","_missionconfig","_varData"];
 //[[[end]]]
 params ["_configClass","_variableName","_defaultData"];
 _varData = _defaultData;

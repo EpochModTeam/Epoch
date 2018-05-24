@@ -49,7 +49,7 @@ _skn_badAnimations	= [_cfg_blacklistConfig, "animations", ['AmovPercMstpSnonWnon
 _cfg_variablesConfig  = (_config >> "variables");
 _skn_badVarCheckArray = [_cfg_variablesConfig, "badVars", ['EPOCH_GMODE','ESP_map','ESP_mainMap','ESP_adminMap','AntiAntiAntiAntiHax','fnc_usec_damageHandler','fnc_usec_unconscious','VAGINA_secret','yolo','VERSION','life_fnc_handleDamage','EPOCH_spawnVehicle_PVS','CLASS911_Menu','nuke_vars','JJMMEE_INIT_MENU','PLAYERON','PLAYERNEXT2','ALTISLIFEON','LY_Menu','PLAY','LY_SwaggerLikeUs','BIS_fnc_dbg_reminder_value','BIS_fnc_dbg_reminder']] call EPOCH_fnc_returnConfigEntry;
 _skn_nilVarCheckArray = [_cfg_variablesConfig, "nilVars", ['EPOCH_antiWallCount','EPOCH_playerEnergy','EPOCH_playerHunger','EPOCH_playerStamina','EPOCH_playerCrypto','EPOCH_target','EPOCH_ESP_TARGETS','EPOCH_ESPMAP_TARGETS','EPOCH_taxRate','EPOCH_ESP_VEHICLEPLAYER','EPOCH_ESP_PLAYER','EPOCH_ESP_VEHICLES']] call EPOCH_fnc_returnConfigEntry;
-_skn_commandMenuArray = [(_config >> "commandMenu"), "menus",['','RscSelectTeam','RscTeam','RscMoveHigh','#GETIN','#RscStatus','#WATCH0','RscCombatMode','RscMenuReply','RscCallSupport','#CUSTOM_RADIO','#User:BIS_fnc_addCommMenuItem_menu','RscRadio','RscReply','#ACTION','RscMenuFormations','#WATCH','RscGroupRootMenu','RscMainMenu','RscMenuMove','RscWatchDir','RscWatchMoveDir','#User:BIS_Menu_GroupCommunication','RscMenuStatus','RscFormations']] call EPOCH_fnc_returnConfigEntry;
+_skn_commandMenuArray = [(_config >> "commandMenu"), "menus",['','RscSelectTeam','RscTeam','RscMenuTeam','RscMoveHigh','#GETIN','#RscStatus','#WATCH0','RscCombatMode','RscMenuReply','RscCallSupport','#CUSTOM_RADIO','#User:BIS_fnc_addCommMenuItem_menu','RscRadio','RscReply','#ACTION','RscMenuFormations','#WATCH','RscGroupRootMenu','RscMainMenu','RscMenuMove','RscWatchDir','RscWatchMoveDir','#User:BIS_Menu_GroupCommunication','RscMenuStatus','RscFormations']] call EPOCH_fnc_returnConfigEntry;
 
 _skn_addEHConfig		= (_config >> "addEventHandler");
 _skn_displayAddEHChecks = [_skn_addEHConfig, "checks",[]] call EPOCH_fnc_returnConfigEntry;
@@ -456,7 +456,7 @@ for "_i" from 1 to 3 do {
 			_temp = _temp + ",['  Godmode', [], "+_skn_godMode+", '2', []]";
 		};
 		if ("HEAL" in _case) then {
-			_temp = _temp + ",['  Heal',[],{[103,netId player] call "+_skn_adminRequest_PVC+"},'4',[0.016,0.702,0.078,1]]";
+			_temp = _temp + ",['  Heal self',[],{[103,netId player] call "+_skn_adminRequest_PVC+"},'-1',[0.016,0.702,0.078,1]]";
 		};
 		if ("VEHICLEREPAIR" in _case) then {
 			_temp = _temp + ",['  Repair Vehicle', [], "+_skn_repairVehicle+", '0', []]";
@@ -1426,7 +1426,7 @@ _skn_admincode = compileFinal ("
 		_minutes = round((serverTime/60)-(_hours*60));
 
 		if (!dialog) then {createDialog 'Skaronator_AdminMenu';
-		{(_x call "+_skn_getCtrl+") ctrlShow false}forEach[40,41,42,43,50,51,52,60,61,62,63,64,65,66,67,68,69,70,71] };
+		{(_x call "+_skn_getCtrl+") ctrlShow false}forEach[40,41,4101,42,43,50,51,52,60,61,62,63,64,65,66,67,68,69,70,71] };
 		if (getPlayerUID player in "+str _skn_blockedSpawnMenuUID+") then {ctrlEnable [21,false]};
 		ctrlEnable [22,false];
 		(1 call "+_skn_getCtrl+") ctrlSetText format['Players %1 of %2',count allPlayers,playersNumber civilian];
@@ -1734,6 +1734,7 @@ _skn_admincode = compileFinal ("
 			"+_skn_tg_spawnTyp+" = _idc;
 			_idc call "+_skn_fillSpawnMenu+";
 		};
+		if (_idc == 4101) then {_idc call "+_skn_fillSpawnMenu+"};
 	');
 	"+_skn_spawnSpawnMenu+" = {
 		_target = objNull;
@@ -1796,30 +1797,34 @@ _skn_admincode = compileFinal ("
 			_ctrl lbDelete _currentSelect;
 		'];
 
-		{_i = _x call "+_skn_getCtrl+";_i ctrlShow true;_i ctrlSetFade 1;_i ctrlcommit 0;_i ctrlSetFade 0;_i ctrlcommit 0.8}forEach[40,41,42,43,50,51,52,60,61,62,63,64,65,66,67,68,69,70,71];
+		{_i = _x call "+_skn_getCtrl+";_i ctrlShow true;_i ctrlSetFade 1;_i ctrlcommit 0;_i ctrlSetFade 0;_i ctrlcommit 0.8}forEach[40,41,4101,42,43,50,51,52,60,61,62,63,64,65,66,67,68,69,70,71];
 		"+_skn_tg_spawnTyp+" call "+_skn_fillSpawnMenu+";
 	};
 	"+_skn_removespawnMenu+" = {
 		if (ctrlShown (40 call "+_skn_getCtrl+")) then {
-			{_i = _x call "+_skn_getCtrl+";_i ctrlShow true;_i ctrlSetFade 1;_i ctrlcommit 0.8}forEach[40,41,42,43,50,51,52,60,61,62,63,64,65,66,67,68,69,70,71];
-			[] spawn {uiSleep 0.8;{_x call "+_skn_getCtrl+" ctrlShow false}forEach[40,41,42,43,50,51,52,60,61,62,63,64,65,66,67,68,69,70,71]};
+			{_i = _x call "+_skn_getCtrl+";_i ctrlShow true;_i ctrlSetFade 1;_i ctrlcommit 0.8}forEach[40,41,4101,42,43,50,51,52,60,61,62,63,64,65,66,67,68,69,70,71];
+			[] spawn {uiSleep 0.8;{_x call "+_skn_getCtrl+" ctrlShow false}forEach[40,41,4101,42,43,50,51,52,60,61,62,63,64,65,66,67,68,69,70,71]};
 			true
 		} else {false};
 	};
 	"+_skn_fillSpawnMenu+" = {
 		_ctrl = 41 call "+_skn_getCtrl+";
 		lbclear _ctrl;
-		_button = _this call "+_skn_getCtrl+";
-		_button ctrlSetTextColor [1, 0, 0, 1];
-		{_x call "+_skn_getCtrl+" ctrlSetTextColor [1, 1, 1, 1]}forEach([61,62,63,64,65,66,67,68,69,70,71]-[_this]);
+		if !(_this isequalto 4101) then {
+			_button = _this call "+_skn_getCtrl+";
+			_button ctrlSetTextColor [1, 0, 0, 1];
+			{_x call "+_skn_getCtrl+" ctrlSetTextColor [1, 1, 1, 1]}forEach([61,62,63,64,65,66,67,68,69,70,71]-[_this]);
+		};
+		_searchtxt = tolower (ctrlText((findDisplay -1337) displayCtrl 4101));
 		_cfgPricing = 'CfgPricing' call EPOCH_returnConfig;
-		if (_this == 61) then {
+		if ("+_skn_tg_spawnTyp+" == 61) then {
 			_airVehicles = ""
 				(configName _x) iskindof 'AIR' &&
 				getText(_x >> 'displayName') != '' &&
 				getText(_x >> 'picture') != '' &&
 				getNumber(_x >> 'type') != 0 &&
-				isClass(_cfgPricing >> configName _x)
+				isClass(_cfgPricing >> configName _x) &&
+				((tolower (configName _x)) find (tolower _searchtxt) > -1 || tolower (getText(_x >> 'displayName')) find (tolower _searchtxt) > -1)
 			""configClasses (configFile >> 'CfgVehicles');
 			{
 				_index = _ctrl lbAdd format['%1', getText(_x >> 'displayName')];
@@ -1827,13 +1832,14 @@ _skn_admincode = compileFinal ("
 				_ctrl lbSetPicture[_index, getText(_x >> 'picture')];
 			}forEach _airVehicles;
 		};
-		if (_this == 62) then {
+		if ("+_skn_tg_spawnTyp+" == 62) then {
 			_landVehicles = ""
 				(configName _x) iskindof 'LandVehicle' &&
 				getText(_x >> 'displayName') != '' &&
 				getText(_x >> 'picture') != '' &&
 				configName _x != 'PaperCar' &&
-				isClass(_cfgPricing >> configName _x)
+				isClass(_cfgPricing >> configName _x) &&
+				((tolower (configName _x)) find (tolower _searchtxt) > -1 || tolower (getText(_x >> 'displayName')) find (tolower _searchtxt) > -1)
 			""configClasses (configFile >> 'CfgVehicles');
 			{
 				_index = _ctrl lbAdd format['%1', getText(_x >> 'displayName')];
@@ -1841,13 +1847,14 @@ _skn_admincode = compileFinal ("
 				_ctrl lbSetPicture[_index, getText(_x >> 'picture')];
 			}forEach _landVehicles;
 		};
-		if (_this == 63) then {
+		if ("+_skn_tg_spawnTyp+" == 63) then {
 			_shipVehicles = ""
 				(configName _x) iskindof 'SHIP' &&
 				getText(_x >> 'displayName') != '' &&
 				getText(_x >> 'picture') != '' &&
 				getNumber(_x >> 'type') in [1,2,3,4] &&
-				isClass(_cfgPricing >> configName _x)
+				isClass(_cfgPricing >> configName _x) &&
+				((tolower (configName _x)) find (tolower _searchtxt) > -1 || tolower (getText(_x >> 'displayName')) find (tolower _searchtxt) > -1)
 			""configClasses (configFile >> 'CfgVehicles');
 			{
 				_index = _ctrl lbAdd format['%1', getText(_x >> 'displayName')];
@@ -1855,13 +1862,14 @@ _skn_admincode = compileFinal ("
 				_ctrl lbSetPicture[_index, getText(_x >> 'picture')];
 			}forEach _shipVehicles;
 		};
-		if (_this == 64) then {
+		if ("+_skn_tg_spawnTyp+" == 64) then {
 			_weapons = ""
 				getText(_x >> 'displayName') != '' &&
 				getText(_x >> 'picture') != '' &&
 				getNumber(_x >> 'scope') in [1,2] &&
 				getNumber(_x >> 'type') in [1,2,4] &&
-				isClass(_cfgPricing >> configName _x)
+				isClass(_cfgPricing >> configName _x) &&
+				((tolower (configName _x)) find (tolower _searchtxt) > -1 || tolower (getText(_x >> 'displayName')) find (tolower _searchtxt) > -1)
 			""configClasses (configFile >> 'CfgWeapons');
 			{
 				_index = _ctrl lbAdd format['%1', getText(_x >> 'displayName')];
@@ -1871,13 +1879,14 @@ _skn_admincode = compileFinal ("
 				_ctrl lbSetPicture[_index, getText(_x >> 'picture')];
 			}forEach _weapons;
 		};
-		if (_this == 65) then {
+		if ("+_skn_tg_spawnTyp+" == 65) then {
 			_magazines = ""
 				getText(_x >> 'displayName') != '' &&
 				getText(_x >> 'picture') != '' &&
 				getNumber(_x >> 'scope') in [1,2] &&
 				getText(_x >> 'ammo') != '' &&
-				isClass(_cfgPricing >> configName _x)
+				isClass(_cfgPricing >> configName _x) &&
+				((tolower (configName _x)) find (tolower _searchtxt) > -1 || tolower (getText(_x >> 'displayName')) find (tolower _searchtxt) > -1)
 			""configClasses (configFile >> 'CfgMagazines');
 			{
 				_index = _ctrl lbAdd format['%1', getText(_x >> 'displayName')];
@@ -1885,13 +1894,14 @@ _skn_admincode = compileFinal ("
 				_ctrl lbSetPicture[_index, getText(_x >> 'picture')];
 			}forEach _magazines;
 		};
-		if (_this == 66) then {
+		if ("+_skn_tg_spawnTyp+" == 66) then {
 			_magazines = ""
 				getText(_x >> 'displayName') != '' &&
 				getText(_x >> 'picture') != '' &&
 				getNumber(_x >> 'scope') in [1,2] &&
 				getText(_x >> 'ammo') == '' &&
-				isClass(_cfgPricing >> configName _x)
+				isClass(_cfgPricing >> configName _x) &&
+				((tolower (configName _x)) find (tolower _searchtxt) > -1 || tolower (getText(_x >> 'displayName')) find (tolower _searchtxt) > -1)
 			""configClasses(configFile >> 'CfgMagazines');
 			{
 				_index = _ctrl lbAdd format['%1', getText(_x >> 'displayName')];
@@ -1899,12 +1909,13 @@ _skn_admincode = compileFinal ("
 				_ctrl lbSetPicture[_index, getText(_x >> 'picture')];
 			}forEach _magazines;
 		};
-		if (_this == 67) then {
+		if ("+_skn_tg_spawnTyp+" == 67) then {
 			_backpack = ""
 				getText(_x >> 'displayName') != '' &&
 				getText(_x >> 'picture') != '' &&
 				getNumber(_x >> 'isbackpack') == 1 &&
-				isClass(_cfgPricing >> configName _x)
+				isClass(_cfgPricing >> configName _x) &&
+				((tolower (configName _x)) find (tolower _searchtxt) > -1 || tolower (getText(_x >> 'displayName')) find (tolower _searchtxt) > -1)
 			""configClasses(configFile >> 'CfgVehicles');
 			{
 				_index = _ctrl lbAdd format['%1', getText(_x >> 'displayName')];
@@ -1912,13 +1923,14 @@ _skn_admincode = compileFinal ("
 				_ctrl lbSetPicture[_index, getText(_x >> 'picture')];
 			}forEach _backpack;
 		};
-		if (_this == 68) then {
+		if ("+_skn_tg_spawnTyp+" == 68) then {
 			_uniforms = ""
 				getText(_x >> 'displayName') != '' &&
 				getText(_x >> 'picture') != '' &&
 				getNumber(_x >> 'scope') in [1,2] &&
 				getNumber(_x >> 'ItemInfo' >> 'type') in [801] &&
-				isClass(_cfgPricing >> configName _x)
+				isClass(_cfgPricing >> configName _x) &&
+				((tolower (configName _x)) find (tolower _searchtxt) > -1 || tolower (getText(_x >> 'displayName')) find (tolower _searchtxt) > -1)
 			""configClasses(configFile >> 'CfgWeapons');
 			{
 				_index = _ctrl lbAdd format['%1', getText(_x >> 'displayName')];
@@ -1926,13 +1938,14 @@ _skn_admincode = compileFinal ("
 				_ctrl lbSetPicture[_index, getText(_x >> 'picture')];
 			}forEach _uniforms;
 		};
-		if (_this == 69) then {
+		if ("+_skn_tg_spawnTyp+" == 69) then {
 			_attachments = ""
 				getText(_x >> 'displayName') != '' &&
 				getText(_x >> 'picture') != '' &&
 				getNumber(_x >> 'scope') in [1,2] &&
 				((configName _x) call BIS_fnc_itemType) select 0 in ['Item'] &&
-				isClass(_cfgPricing >> configName _x)
+				isClass(_cfgPricing >> configName _x) &&
+				((tolower (configName _x)) find (tolower _searchtxt) > -1 || tolower (getText(_x >> 'displayName')) find (tolower _searchtxt) > -1)
 			""configClasses(configFile >> 'CfgWeapons');
 			{
 				_index = _ctrl lbAdd format['%1', getText(_x >> 'displayName')];
@@ -1940,13 +1953,14 @@ _skn_admincode = compileFinal ("
 				_ctrl lbSetPicture[_index, getText(_x >> 'picture')];
 			}forEach _attachments;
 		};
-		if (_this == 70) then {
+		if ("+_skn_tg_spawnTyp+" == 70) then {
 			_headgear = ""
 				getText(_x >> 'displayName') != '' &&
 				getText(_x >> 'picture') != '' &&
 				getNumber(_x >> 'scope') in [1,2] &&
 				((configName _x) call BIS_fnc_itemType) select 1 in ['Headgear'] &&
-				isClass(_cfgPricing >> configName _x)
+				isClass(_cfgPricing >> configName _x) &&
+				((tolower (configName _x)) find (tolower _searchtxt) > -1 || tolower (getText(_x >> 'displayName')) find (tolower _searchtxt) > -1)
 			""configClasses(configFile >> 'CfgWeapons');
 			{
 				_index = _ctrl lbAdd format['%1', getText(_x >> 'displayName')];
@@ -1954,13 +1968,14 @@ _skn_admincode = compileFinal ("
 				_ctrl lbSetPicture[_index, getText(_x >> 'picture')];
 			}forEach _headgear;
 		};
-		if (_this == 71) then {
+		if ("+_skn_tg_spawnTyp+" == 71) then {
 			_vests = ""
 				getText(_x >> 'displayName') != '' &&
 				getText(_x >> 'picture') != '' &&
 				getNumber(_x >> 'scope') in [1,2] &&
 				((configName _x) call BIS_fnc_itemType) select 1 in ['Vest'] &&
-				isClass(_cfgPricing >> configName _x)
+				isClass(_cfgPricing >> configName _x) &&
+				((tolower (configName _x)) find (tolower _searchtxt) > -1 || tolower (getText(_x >> 'displayName')) find (tolower _searchtxt) > -1)
 			""configClasses(configFile >> 'CfgWeapons');
 			{
 				_index = _ctrl lbAdd format['%1', getText(_x >> 'displayName')];

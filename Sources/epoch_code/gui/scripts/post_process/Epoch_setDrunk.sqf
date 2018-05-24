@@ -24,19 +24,21 @@ private ["_priority","_wd","_db"];
 params [["_level",0,[0]],["_speed",0,[0]]];
 
 if (isNil "rmx_var_drunkHandles") then {
-
 	_priority = 15;
 	_wd = ["wetdistortion",_priority] call epoch_postProcessCreate;
 	_db = ["dynamicBlur",_priority] call epoch_postProcessCreate;
-
 	rmx_var_drunkHandles = [_wd,_db];
+
+	// Preload defaults
+	[(rmx_var_drunkHandles select 0), 0, [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]] call epoch_postprocessAdjust;
+	[(rmx_var_drunkHandles select 1), 0, [0]] call epoch_postprocessAdjust;
 };
 
 switch _level do {
 	case 0:
 	{
-		rmx_var_drunkHandles call epoch_postprocessDestroy;
-		rmx_var_drunkHandles = nil;
+		(rmx_var_drunkHandles select 0) ppEffectEnable false;
+		(rmx_var_drunkHandles select 1) ppEffectEnable false;
 	};
 	case 0.1:
 	{

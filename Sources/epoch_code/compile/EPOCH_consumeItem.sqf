@@ -42,13 +42,32 @@ if (_inputCount >= 3) then {
 _removeItem = {([player,_this] call BIS_fnc_invRemove) == 1};
 
 _unifiedInteract = {
-	private _removed = _item call _removeItem;
+	private ["_removed","_multi","_maxMagRnd","_totalMags","_remove"];
+	_removed = false;
+	_multi = 1;
+	_maxMagRnd = getnumber (configfile >> "cfgMagazines" >> _item >> "count");
+	if (_maxMagRnd > 1) then {
+		_totalMags = (magazinesammo player) select {(_x select 0) isequalto _item};
+		if !(_totalMags isequalto []) then {
+			_remove = _totalMags deleteat 0;
+			_removed = true;
+			_remove params ["_class","_rounds"];
+			_multi = _rounds / _maxMagRnd;
+			player removemagazines _item;
+			{
+				_x call EPOCH_fnc_addMagazineOverflow;
+			} foreach _totalMags;
+		};
+	}
+	else {
+		_removed = _item call _removeItem;
+	};
 	if (_removed) then {
 		if (_interactReturnOnUse != "") then {
 			_interactReturnOnUse call EPOCH_fnc_addItemOverflow;
 		};
 		{
-			_output = _x call EPOCH_giveAttributes;
+			_output = [_x select 0, round ((_x select 1) * _multi)] call EPOCH_giveAttributes;
 			if (_output != "") then {
 				[_output, 5] call Epoch_message_stack;
 			};
@@ -410,6 +429,47 @@ switch _interactOption do {
 			};
 		} else {
 			[format["%1 is not needed at this time",_item call EPOCH_itemDisplayName], 5] call Epoch_message;
+		};
+	};
+	case 17: { // Defibrillator
+		_maxMagRnd = getnumber (configfile >> "cfgMagazines" >> _item >> "count");
+		_totalDefis = (magazinesammo player) select {(_x select 0) isequalto _item};
+		_totalMags = (magazinesammo player) select {(_x select 0) in ["EnergyPackLg","EnergyPack"]};
+		if (_totalDefis isequalto []) exitwith {};
+		if !(_totalMags isequalto []) then {
+			_CurDefiArr = [];
+			{
+				if ((_x select 1) < _maxMagRnd) exitwith {
+					_CurDefiArr = _totalDefis deleteat _foreachindex;
+				};
+			} foreach _totalDefis;
+			if (_CurDefiArr isequalto []) exitwith {
+				["Defibrillator is already fully charged",5] call Epoch_Message;
+			};
+			_remove = _totalMags deleteat 0;
+			_remove params ["_class","_rounds"];
+			_charge = _rounds min (_maxMagRnd - (_CurDefiArr select 1));
+			if (_rounds - _charge > 0) then {
+				_remove set [1,_rounds - _charge];
+				_totalMags pushback _remove;
+			};
+			if (_charge > 0) then {
+				_CurDefiArr set [1,(_CurDefiArr select 1) + _charge];
+				_totalDefis pushback _CurDefiArr;
+				player removemagazines _item;
+				player removemagazines "EnergyPackLg";
+				player removemagazines "EnergyPack";
+				{
+					_x call EPOCH_fnc_addMagazineOverflow;
+				} foreach _totalMags;
+				{
+					_x call EPOCH_fnc_addMagazineOverflow;
+				} foreach _totalDefis;
+				[format ["Recharged Defibrillator with %1 Energy",_charge],5] call Epoch_Message;
+			};
+		}
+		else {
+			["You need an Energy Pack",5] call Epoch_Message;
 		};
 	};
 

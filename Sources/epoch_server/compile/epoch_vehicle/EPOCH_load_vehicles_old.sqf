@@ -51,7 +51,7 @@ for "_i" from 1 to _maxVehicleLimit do {
 			_damage = _arr select 2;
 
 			if (_class != "" && _damage < 1) then {
-				_location = _worldspace deleteAt 0;
+				_worldspace params [["_location",[]],["_VectorDir",[0,0,0]],["_VectorUp",[0,0,1]],["_useposworld",false]];
 
 				if !(_location isEqualTo []) then {
 
@@ -68,11 +68,16 @@ for "_i" from 1 to _maxVehicleLimit do {
 						_class = ["O_Heli_Transport_04_EPOCH","O_Heli_Transport_04_bench_EPOCH","O_Heli_Transport_04_box_EPOCH","O_Heli_Transport_04_covered_EPOCH","B_Heli_Transport_03_unarmed_EPOCH","O_Truck_03_covered_EPOCH"] select _found;
 					};
 
-					_vehicle = createVehicle [_class, _location, [], 0, "CAN_COLLIDE"];
+					_vehicle = createVehicle [_class, [random 500, random 500,500], [], 0, "CAN_COLLIDE"];
 					_allVehicles pushBack _vehicle;
 					_vehicle call EPOCH_server_setVToken;
-					_vehicle setposATL _location;
-					_vehicle setVectorDirAndUp _worldspace;
+					if (_useposworld) then {
+						_vehicle setposWorld _location;
+					}
+					else {
+						_vehicle setposATL _location;
+					};
+					_vehicle setVectorDirAndUp [_VectorDir,_VectorUp];
 					_vehicle setDamage _damage;
 
 					_allHitpoints = getAllHitPointsDamage _vehicle;

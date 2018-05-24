@@ -13,12 +13,12 @@
 	https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server/compile/epoch_vehicle/EPOCH_load_vehicles.sqf
 */
 //[[[cog import generate_private_arrays ]]]
-private ["_actualHitpoints","_allHitpoints","_allVehicles","_allowDamage","_arr","_arrNum","_availableColorsConfig","_cfgEpochVehicles","_check","_class","_colors","_config","_count","_dataFormat","_dataFormatCount","_diag","_dmg","_found","_immuneIfStartInBase","_jammerOwner","_jammerRange","_jammers","_location","_lockedOwner","_marker","_nearestJammer","_removemagazinesturret","_removeweapons","_response","_selections","_serverSettingsConfig","_textureSelectionIndex","_textures","_vehHiveKey","_vehLockHiveKey","_vehicle","_vehicleSlotIndex"];
+private ["_actualHitpoints","_allHitpoints","_allVehicles","_allowDamage","_arr","_arrNum","_availableColorsConfig","_cfgEpochVehicles","_check","_class","_colors","_config","_count","_dataFormat","_dataFormatCount","_diag","_disableVehicleTIE","_dmg","_found","_immuneIfStartInBase","_jammerOwner","_jammerRange","_jammers","_location","_lockedOwner","_marker","_nearestJammer","_removemagazinesturret","_removeweapons","_response","_selections","_serverSettingsConfig","_textureSelectionIndex","_textures","_vehHiveKey","_vehLockHiveKey","_vehicle","_vehicleDynamicSimulationSystem","_vehicleSlotIndex"];
 //[[[end]]]
 params [["_maxVehicleLimit",0]];
 
 _diag = diag_tickTime;
-_dataFormat = ["", [], 0, [], 0, [], [], 0, ""];
+_dataFormat = ["", [], 0, [], 0, [], [], 0, "", ""];
 _dataFormatCount = count _dataFormat;
 EPOCH_VehicleSlots = [];
 _allVehicles = [];
@@ -64,14 +64,12 @@ for "_i" from 1 to _maxVehicleLimit do {
 				if !((_arr select _forEachIndex) isEqualType _x) then {_arr set[_forEachIndex, _x]};
 			} forEach _dataFormat;
 
-			_arr params ["_class","_worldspace","_damage","_hitpoints","_fuel","_inventory","_ammo","_color","_baseClass"];
+			_arr params ["_class","_worldspace","_damage","_hitpoints","_fuel","_inventory","_ammo","_color","_baseClass",["_plateNumber",""]];
 
 			if (_class != "" && _damage < 1) then {
 				// remove location from worldspace and set to new var
-				_location = _worldspace deleteAt 0;
-
+				_worldspace params [["_location",[]],["_VectorDir",[0,0,0]],["_VectorUp",[0,0,1]],["_useposworld",false]];
 				if !(_location isEqualTo []) then {
-
 					// increased position precision
 					if (count _location == 2) then{
 						_location = (_location select 0) vectorAdd (_location select 1);
@@ -117,9 +115,13 @@ for "_i" from 1 to _maxVehicleLimit do {
 						_vehicle call EPOCH_server_setVToken;
 						_vehicle call EPOCH_server_vehicleInit;
 						// set final direction and postion of vehicle
-						_vehicle setVectorDirAndUp _worldspace;
-						_vehicle setposATL _location;
-
+						_vehicle setVectorDirAndUp [_VectorDir,_VectorUp];
+						if (_useposworld) then {
+							_vehicle setposWorld _location;
+						}
+						else {
+							_vehicle setposATL _location;
+						};
 						// set fuel level
 						_vehicle setFuel _fuel;
 						// apply persistent textures
@@ -207,6 +209,11 @@ for "_i" from 1 to _maxVehicleLimit do {
 									_allowDamage = false;
 								};
 							};
+						};
+
+						// add previous license plate
+						if !(_plateNumber isEqualTo "") then {
+							_vehicle setPlateNumber _plateNumber;
 						};
 
 						if (_allowDamage) then {

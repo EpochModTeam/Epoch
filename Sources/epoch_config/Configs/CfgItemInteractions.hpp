@@ -504,6 +504,16 @@ class CfgItemInteractions
 		buildClass = "Garden_EPOCH";
 		isStorage = 1;
 	};
+	class KitSolarCharger : Item_Build_base
+	{
+		buildClass = "SolarCharger_EPOCH";
+		isStorage = 1;
+	};
+	class KitSolarChargerXL : Item_Build_base
+	{
+		buildClass = "SolarChargerXL_EPOCH";
+		isStorage = 1;
+	};
     class KitBurnBarrel : Item_Build_base
     {
         buildClass = "BurnBarrel_EPOCH";
@@ -587,6 +597,10 @@ class CfgItemInteractions
     class KitBarbedWire : Item_Build_base
     {
         buildClass = "BarbedWire_EPOCH";
+    };
+    class BaseCam : Item_Build_base
+    {
+        buildClass = "BaseCam_EPOCH";
     };
     class PaintCanBase : Default
     {
@@ -985,7 +999,7 @@ class CfgItemInteractions
 	};
 	class ItemCanteen_Clean : Drink_base
 	{
-		interactAttributes[] = {{"Thirst",1000},{"Stamina",50}};
+		interactAttributes[] = {{"Thirst",1000},{"Stamina",100}};
 		interactReturnOnUse = "ItemCanteen_Empty";
 	};
 	class ItemBottlePlastic_Dirty: Drink_base
@@ -996,7 +1010,7 @@ class CfgItemInteractions
 
 	class ItemCanteen_Dirty : Drink_base
 	{
-		interactAttributes[] = {{"Thirst",1000},{"Toxicity",5,1},{"Stamina",50},{"Radiation",2,1}};
+		interactAttributes[] = {{"Thirst",1000},{"Toxicity",10,1},{"Stamina",100},{"Radiation",4,1}};
 		interactReturnOnUse = "ItemCanteen_Empty";
 	};
 	class adrenaline_epoch : Drink_base
@@ -1044,6 +1058,24 @@ class CfgItemInteractions
     {
         interactText = "USE";
 		interactAttributes[] = {{"Radiation",-15},{"Thirst",-50},{"Immunity",5}};
+    };
+    class ItemDefibrillator : Default
+    {
+        interactAction = 17;
+        interactText = "ReCharge";
+    };
+    class BaseCamTerminal : Item_Build_base
+    {
+        buildClass = "BaseCamTerminal_EPOCH";
+        interactActions[] = {{"Watch","call Epoch_CamUse;"}};
+    };
+    class KitSnowman : Item_Build_base
+    {
+        buildClass = "snowman_EPOCH";
+    };
+    class KitPlyThirdWall_EPOCH : Item_Build_base
+    {
+        buildClass = "PlyThirdWall_EPOCH";
     };
 };
 /*[[[end]]]*/

@@ -92,7 +92,7 @@ class CfgSecConf
     };
 
     class commandMenu {
-        menus[] = {"","RscSelectTeam","RscTeam","RscMoveHigh","#GETIN","#RscStatus","#WATCH0","RscCombatMode","RscMenuReply","RscCallSupport","#CUSTOM_RADIO","#User:BIS_fnc_addCommMenuItem_menu","RscRadio","RscReply","#ACTION","RscMenuFormations","#WATCH","RscGroupRootMenu","RscMainMenu","RscMenuMove","RscWatchDir","RscWatchMoveDir","#User:BIS_Menu_GroupCommunication","RscMenuStatus","RscFormations"};
+        menus[] = {"","RscSelectTeam","RscTeam","RscMenuTeam","RscMoveHigh","#GETIN","#RscStatus","#WATCH0","RscCombatMode","RscMenuReply","RscCallSupport","#CUSTOM_RADIO","#User:BIS_fnc_addCommMenuItem_menu","RscRadio","RscReply","#ACTION","RscMenuFormations","#WATCH","RscGroupRootMenu","RscMainMenu","RscMenuMove","RscWatchDir","RscWatchMoveDir","#User:BIS_Menu_GroupCommunication","RscMenuStatus","RscFormations"};
     };
 
     // RscDisplay (onload, unload) scanning is automatic and will ensure data matches the server.

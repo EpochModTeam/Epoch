@@ -161,10 +161,10 @@ if (vehicle player == player) then {
 				};
 				if (Epoch_target iskindof 'Const_Ghost_EPOCH') then {
 					switch (_dikCode) do {
-						case eXpoch_keysVectorTiltL: {_adj = 1;if(_shift)then{_adj = 2.5};if(_alt)then{_adj = 0.5};EPOCH_buildDirectionRoll = (EPOCH_buildDirectionRoll - _adj) max -180; EPOCH_doRotate = true; _handled = true };
-						case eXpoch_keysVectorTiltR: {_adj = 1;if(_shift)then{_adj = 2.5};if(_alt)then{_adj = 0.5};EPOCH_buildDirectionRoll = (EPOCH_buildDirectionRoll + _adj) min 180; EPOCH_doRotate = true; _handled = true };
-						case eXpoch_keysVectorTiltAwy: {_adj = 1;if(_shift)then{_adj = 2.5};if(_alt)then{_adj = 0.5};EPOCH_buildDirectionPitch = (EPOCH_buildDirectionPitch - _adj) max -180; EPOCH_doRotate = true; _handled = true };
-						case eXpoch_keysVectorTiltTwd: {_adj = 1;if(_shift)then{_adj = 2.5};if(_alt)then{_adj = 0.5};EPOCH_buildDirectionPitch = (EPOCH_buildDirectionPitch + _adj) min 180; EPOCH_doRotate = true; _handled = true };
+						case eXpoch_keysVectorTiltL: {_adj = 1;if(_shift)then{_adj = 2.5};if(_alt)then{_adj = 0.5};EPOCH_buildDirectionRoll = (EPOCH_buildDirectionRoll - _adj) max -EPOCH_MaxBuildingTilt; EPOCH_doRotate = true; _handled = true };
+						case eXpoch_keysVectorTiltR: {_adj = 1;if(_shift)then{_adj = 2.5};if(_alt)then{_adj = 0.5};EPOCH_buildDirectionRoll = (EPOCH_buildDirectionRoll + _adj) min EPOCH_MaxBuildingTilt; EPOCH_doRotate = true; _handled = true };
+						case eXpoch_keysVectorTiltAwy: {_adj = 1;if(_shift)then{_adj = 2.5};if(_alt)then{_adj = 0.5};EPOCH_buildDirectionPitch = (EPOCH_buildDirectionPitch - _adj) max -EPOCH_MaxBuildingTilt; EPOCH_doRotate = true; _handled = true };
+						case eXpoch_keysVectorTiltTwd: {_adj = 1;if(_shift)then{_adj = 2.5};if(_alt)then{_adj = 0.5};EPOCH_buildDirectionPitch = (EPOCH_buildDirectionPitch + _adj) min EPOCH_MaxBuildingTilt; EPOCH_doRotate = true; _handled = true };
 					};
 				};
 			};
@@ -270,19 +270,22 @@ if (_dikCode in (actionKeys "NightVision")) then {
 };
 
 if(!_ctrl && (_dikCode in (actionKeys "HeliRopeAction")))then{
+	if (player == vehicle player) exitwith {};
 	_msg = "";
 	if(EPOCH_ArmaSlingLoad)then{
-		if(driver vehicle player isEqualTo player)then{
-			_slung = ropeAttachedObjects vehicle player;
-			if(_slung isEqualTo [])then{
-				if!('ItemRope' in magazines player) then {
-					_msg = "You need rope to hook";
-					_handled = true;
+		if (["CfgEpochClient", "ActionHookRope", true] call EPOCH_fnc_returnConfigEntryV2) then {
+			if(driver vehicle player isEqualTo player)then{
+				_slung = ropeAttachedObjects vehicle player;
+				if(_slung isEqualTo [])then{
+					if!('ItemRope' in magazines player) then {
+						_msg = "You need rope to hook";
+						_handled = true;
+					}else{
+						player removeItem 'ItemRope';
+					};
 				}else{
-					player removeItem 'ItemRope';
+					player addItem 'ItemRope';
 				};
-			}else{
-				player addItem 'ItemRope';
 			};
 		};
 	}else{
@@ -294,4 +297,47 @@ if(!_ctrl && (_dikCode in (actionKeys "HeliRopeAction")))then{
 	};
 };
 
+if (!isnull (finddisplay -1200) && !isnull Epoch_ActiveCam) then {
+	_multi = 1;
+	if (isnil 'Epoch_CamTrigger') then {
+		Epoch_CamTrigger = diag_ticktime - 0.2;
+	};
+	if (diag_ticktime - Epoch_CamTrigger < 0.1) then {
+		_multi = 3;
+	};
+	Epoch_CamTrigger = diag_ticktime;
+	switch _dikCode do {
+		case Epoch_KB_BaseCamNextCam: {	/* Num Enter */
+			call Epoch_CamUse;
+		};
+		case Epoch_KB_BaseCamLeft: {	/* Num 4 */
+			Epoch_AutoCam = false;
+			Epoch_CamAdjust = [-3*_multi,0,0];
+		};
+		case Epoch_KB_BaseCamRight: {	/* Num 6 */
+			Epoch_AutoCam = false;
+			Epoch_CamAdjust = [3*_multi,0,0];
+		};
+		case Epoch_KB_BaseCamUp: {	/* Num 8 */
+			Epoch_AutoCam = false;
+			Epoch_CamAdjust = [0,8*_multi,0];
+		};
+		case Epoch_KB_BaseCamDown: {	/* Num 2 */
+			Epoch_AutoCam = false;
+			Epoch_CamAdjust = [0,-8*_multi,0];
+		};
+		case Epoch_KB_BaseCamZoomOut: {	/* Num - */
+			Epoch_AutoCam = false;
+			Epoch_CamAdjust = [0,0,0.1*_multi];
+		};
+		case Epoch_KB_BaseCamZoomIn: { /* Num + */
+			Epoch_AutoCam = false;
+			Epoch_CamAdjust = [0,0,-0.1*_multi];
+		};
+		case Epoch_KB_BaseCamAutoCam: { /* Num 0 */
+			Epoch_AutoCam = true;
+			Epoch_CamAdjust = [0,0,0];
+		};
+	};
+};
 _handled

@@ -25,6 +25,7 @@ _ExceptedBaseObjects = [_serverSettingsConfig, "ExceptedBaseObjects", []] call E
 _diag = diag_tickTime;
 EPOCH_StorageSlots = [];
 EPOCH_activeGardens = [];
+EPOCH_activeSolars = [];
 for "_i" from 1 to _maxStorageLimit do {
 	_storageSlotIndex = EPOCH_StorageSlots pushBack str(_i);
 	_vehHiveKey = format ["%1:%2", (call EPOCH_fn_InstanceID), _i];
@@ -79,6 +80,10 @@ for "_i" from 1 to _maxStorageLimit do {
 			if (_class isEqualTo "Garden_EPOCH") then {
 				EPOCH_activeGardens pushBack _vehicle;
 			};
+			
+			if (_class in ["SolarCharger_EPOCH","SolarChargerXL_EPOCH"]) then {
+				EPOCH_activeSolars pushBack _vehicle;
+			};
 
 			if (_UseIndestructible) then {
 				if ({_vehicle iskindof _x} count _ExceptedBaseObjects == 0) then {
@@ -129,13 +134,12 @@ for "_i" from 1 to _maxStorageLimit do {
 			};
 
 			if (count _arr >= 6) then {
-				_vehicle setVariable ["STORAGE_OWNERS", _arr select 5];
 				if (_class isKindOf 'Constructions_lockedstatic_F') then{
 					// set locked state of secure storage
 					if ((_arr select 6) != -1) then {
 						_vehicle setVariable["EPOCH_Locked", true, true];
-						//_vehicle enableSimulationGlobal false;
 					};
+					_vehicle setVariable ["STORAGE_OWNERS", _arr select 5];
 				};
 			};
 

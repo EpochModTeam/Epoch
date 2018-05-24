@@ -44,6 +44,9 @@ EPOCH_arr_snapObjects = [];
 EPOCH_prevTarget = objNull;
 EPOCH_interactOption = 0;
 EPOCH_playerStaminaMax = 100;
+Epoch_ActiveCam = objnull;
+Epoch_AutoCam = true;
+Epoch_CamAdjust = [0,0,0];
 
 {
 	missionNamespace setVariable [format ["EPOCH_player%1",_x],EPOCH_defaultVars select _forEachIndex];

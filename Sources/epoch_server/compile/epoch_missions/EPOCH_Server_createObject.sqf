@@ -18,7 +18,7 @@ private ["_allowedVehicleListName","_allowedVehiclesList","_backpacks","_cfgPric
 params ["_player",["_token","",[""]],["_objArr",[]],["_pos",[]],["_wepHolder",objNull],["_clearCargo",true],["_objSpc","CAN_COLLIDE"],["_driverType",""],["_gunnerType",""],["_commanderType",""],["_crewType",""],["_doDamage",false]];
 
 if !([_player,_token]call EPOCH_server_getPToken) exitWith {};
-if (typeName _objArr != "ARRAY")then{_objArr = [_objArr];};
+if !(_objArr isEqualType [])then{_objArr = [_objArr];};
 if (count _objArr < 1) exitWith {};
 
 diag_log format["Epoch: Attempt Create Object: %1 for %2",_objArr, name _player];

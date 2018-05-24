@@ -12,7 +12,7 @@ private ["_babies","_babyClasses","_cargo","_garden","_mature","_matureClasses",
 _seedClasses = ["SeedPacket_GoldenSeal","SeedPacket_Hemp","SeedPacket_Poppy","SeedPacket_Pumpkin","SeedPacket_Sunflower"];
 _babyClasses = ["Sapling_GoldenSeal","Sapling_Hemp","Sapling_Poppy","Sapling_Pumpkin","Sapling_Sunflower"];
 _teenClasses = ["SaplingTeen_GoldenSeal","SaplingTeen_Hemp","SaplingTeen_Poppy","SaplingTeen_Pumpkin","SaplingTeen_Sunflower"];
-_matureClasses = ["GoldenSeal","Hemp","Poppy","Pumpkin","Sunflower"];
+_matureClasses = ["Goldenseal","Hemp","Poppy","Pumpkin","Sunflower"];
 _spoil = false;
 
 // init var if not set

@@ -15,6 +15,7 @@
 //[[[cog import generate_private_arrays ]]]
 private ["_Simulated","_DamageAllowed","_ExceptedBaseObjects","_IndestructibleBaseObjects","_UseIndestructible","_VAL","_ammoClass","_ammoObj","_anims","_animsData","_arr","_arrCount","_baseObj","_buildingJammerRange","_cfgBaseBuilding","_cfgEpochClient","_class","_color","_damage","_location","_marker","_maxTTL","_owner","_response","_serverSettingsConfig","_storageSlot","_textureSlot","_ttl","_vehHiveKey","_worldspace"];
 //[[[end]]]
+EPOCH_BaseCams = [];
 _maxTTL = parseNumber EPOCH_expiresBuilding;
 _serverSettingsConfig = configFile >> "CfgEpochServer";
 _baseDynamicSimulationSystem = [_serverSettingsConfig, "baseDynamicSimulationSystem", true] call EPOCH_fnc_returnConfigEntry;
@@ -142,8 +143,18 @@ for "_i" from 0 to _this do {
 			};
 
 			// Handle Jammers and create marker if EPOCH_SHOW_JAMMERS set true.
-			if (_class isKindOf "PlotPole_EPOCH") then {
-				if (EPOCH_SHOW_JAMMERS) then {
+			if (_class in ["PlotPole_EPOCH","BaseCam_EPOCH"]) then {
+				if (_owner != "-1") then {
+					_baseObj setVariable ["BUILD_OWNER", _owner, true];
+				};
+
+				// add BaseCam to public array
+				if (_class isequalto "BaseCam_EPOCH") then {
+					EPOCH_BaseCams pushBackUnique _baseObj;
+					// Set PubVar later after all Cams are loaded in
+				};
+
+				if (_class isequalto "PlotPole_EPOCH" && EPOCH_SHOW_JAMMERS) then {
 					_marker = createMarker [str(_location), _location];
 					_marker setMarkerShape "ICON";
 					// TODO allow players to change this per base
@@ -158,10 +169,6 @@ for "_i" from 0 to _this do {
 				_baseObj call EPOCH_server_buildingInit;
 			};
 			_baseObj setVariable ["BUILD_SLOT", _i, true];
-
-			if (_owner != "-1") then {
-				_baseObj setVariable ["BUILD_OWNER", _owner, true];
-			};
 
 			if (_textureSlot != 0) then {
 				// get texture path from index
@@ -188,5 +195,6 @@ for "_i" from 0 to _this do {
 		EPOCH_BuildingSlots set [_i,0];
 	};
 };
+publicvariable "EPOCH_BaseCams";
 missionNamespace setVariable ["EPOCH_BuildingSlotCount", {_x == 0} count EPOCH_BuildingSlots, true];
 true

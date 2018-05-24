@@ -13,7 +13,7 @@
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server/compile/epoch_player/EPOCH_server_revivePlayer.sqf
 */
 //[[[cog import generate_private_arrays ]]]
-private ["_loadout","_CorpseCrypto","_PlayerCrypto","_attachments","_cIndex","_class","_currwh","_deleteprimary","_deletesecondary","_dir","_droppedPrimary","_droppedSecondary","_droppedWeapons","_equipped","_group","_location","_newPlyr","_playerGroup","_playerUID","_token","_type","_vars","_wMags","_wMagsArray","_weapon","_wh","_kIndex","_reviver","_reviverCStats","_reviverKarma","_reviverKarmaAdj"];
+private ["_loadabs","_loadout","_CorpseCrypto","_PlayerCrypto","_attachments","_cIndex","_class","_currwh","_deleteprimary","_deletesecondary","_dir","_droppedPrimary","_droppedSecondary","_droppedWeapons","_equipped","_group","_garbage","_location","_newPlyr","_playerGroup","_playerUID","_token","_type","_vars","_wMags","_wMagsArray","_weapon","_wh","_kIndex","_reviver","_reviverCStats","_reviverKarma","_reviverKarmaAdj"];
 //[[[end]]]
 params ["_player","_reviver",["_token","",[""]] ];
 
@@ -133,7 +133,16 @@ if (!local _player) then {
 //				_newPlyr setUnitLoadout [_loadout, false];
 
 				// Workaround for Client / Server synchronizing issue in SetUnitLoadout
-				[_newPlyr,_loadout] call Epoch_server_SetUnitLoadout;
+				_loadabs = [_newPlyr,_loadout] call Epoch_server_SetUnitLoadout;
+				if (_loadabs isequalto -1) exitwith {
+					removeFromRemainsCollector [_newPlyr];
+					deletevehicle _newPlyr;
+					_player setvariable ['Reviving',false];
+					_player hideObjectGlobal false;
+				};
+
+				_garbage = createVehicle [selectrandom ["MedicalGarbage_01_1x1_v1_F","MedicalGarbage_01_1x1_v3_F","MedicalGarbage_01_1x1_v2_F"], _location, [], 0, "CAN_COLLIDE"];
+				EPOCH_cleanupQueue pushBack _garbage;
 
 				// Final Push
 				_token = _newPlyr call EPOCH_server_setPToken;
@@ -149,7 +158,7 @@ if (!local _player) then {
 				};
 
 				// send to player
-				[_newPlyr, _token, loadAbs _newPlyr] remoteExec ['EPOCH_clientRevive',_player];
+				[_newPlyr, _token, _loadabs] remoteExec ['EPOCH_clientRevive',_player];
 
 				// send stat to reviver
 				[_reviver, "Revives", 1, true] call EPOCH_server_updatePlayerStats;

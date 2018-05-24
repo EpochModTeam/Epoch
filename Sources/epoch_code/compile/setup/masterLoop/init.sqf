@@ -13,6 +13,9 @@ EPOCH_forceUpdateNow = false;
 // start alive timer
 _clientAliveTimer = diag_tickTime;
 
+// Fade Black Screen
+_fadedblack = false;
+
 // init player stat vars
 _gmVarsInit = ["CfgEpochClient", "gmVars", [["Temp",98.6],["Hunger",500],["Thirst",500],["Toxicity",0],["Stamina",10],["BloodP",100],["Alcohol",0],["Radiation",0]]] call EPOCH_fnc_returnConfigEntryV2;
 _gModeVarNames = _gmVarsInit apply {_x param [0,""]};
@@ -122,6 +125,8 @@ _baseThirstLoss = ["CfgEpochClient", "baseThirstLoss", 2] call EPOCH_fnc_returnC
 _baseAlcoholLoss = ["CfgEpochClient", "baseAlcoholLoss", 0.17] call EPOCH_fnc_returnConfigEntryV2;
 _lossMultiplier = if (["CfgEpochClient", "accelerateHTALoss", true] call EPOCH_fnc_returnConfigEntryV2) then {timeMultiplier} else {1};
 _energyCostNV = ["CfgEpochClient", "energyCostNV", 3] call EPOCH_fnc_returnConfigEntryV2;
+_energyPowerSources = ["CfgEpochClient", "energyPowerSources", ["Land_spp_Tower_F","Land_wpp_Turbine_V2_F","Land_wpp_Turbine_V1_F","SolarGen_EPOCH","Land_Wreck_Satellite_EPOCH"]] call EPOCH_fnc_returnConfigEntryV2;
+_energyRegenInVeh = ["CfgEpochClient", "energyChargeInVeh", 5] call EPOCH_fnc_returnConfigEntryV2;
 _energyRegenMax = ["CfgEpochClient", "energyRegenMax", 5] call EPOCH_fnc_returnConfigEntryV2;
 _energyRange = ["CfgEpochClient", "energyRange", 75] call EPOCH_fnc_returnConfigEntryV2;
 _hudConfigs = ["CfgEpochClient", "hudConfigs", []] call EPOCH_fnc_returnConfigEntryV2;

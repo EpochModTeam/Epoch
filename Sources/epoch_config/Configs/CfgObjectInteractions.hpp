@@ -70,6 +70,14 @@ class CfgObjectInteractions
     {
         interactMode = 4;
     };
+    class SolarCharger_EPOCH : Default
+    {
+        interactMode = 4;
+    };
+    class SolarChargerXL_EPOCH : Default
+    {
+        interactMode = 4;
+    };
     class FieldToilet_EPOCH : Default
     {
         interactMode = 4;
@@ -231,6 +239,7 @@ class CfgObjectInteractions
         ppEffect[] = {};
     };
 	class SmokeShellToxic_Ammo : SmokeShellCustom {};
+	class SmokeShellToxicSapper : SmokeShellCustom {};
     class Epoch_Cloak_F : Default
     {
         distance = 30;

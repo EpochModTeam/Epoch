@@ -23,7 +23,7 @@
 	BOOL
 */
 //[[[cog import generate_private_arrays ]]]
-private ["_alljammer","_buildingAllowed","_buildingCountLeader","_buildingCountLimit","_buildingCountPerMember","_buildingJammerRange","_bypassJammer","_c","_cfgBaseBuilding","_config","_ghostClass","_isAllowed","_jammer","_jammerGLOnly","_jammerPerGroup","_limitNearby","_maxBuildingHeight","_membercount","_minJammerDistance","_myPosATL","_nearestJammer","_obj","_objType","_objectscount","_ownedJammerExists","_range","_restricted","_restrictedArray","_restrictedLocations","_restrictedLocationsArray","_restrictedLocationsRange","_simulClass","_staticClass","_storageCountLeader","_storageCountLimit","_storageCountPerMember","_useGroupCountLimits","_useSplitCountLimits"];
+private ["_CamCountLimit","_alljammer","_buildingAllowed","_buildingCountLeader","_buildingCountLimit","_buildingCountPerMember","_buildingJammerRange","_bypassJammer","_c","_cfgBaseBuilding","_config","_ghostClass","_isAllowed","_jammer","_jammerGLOnly","_jammerPerGroup","_limitNearby","_maxBuildingHeight","_membercount","_minJammerDistance","_myPosATL","_nearestJammer","_obj","_objType","_objectscount","_ownedJammerExists","_range","_restricted","_restrictedArray","_restrictedLocations","_restrictedLocationsArray","_restrictedLocationsRange","_simulClass","_staticClass","_storageCountLeader","_storageCountLimit","_storageCountPerMember","_useGroupCountLimits","_useSplitCountLimits"];
 //[[[end]]]
 
 _buildingAllowed = true;
@@ -49,6 +49,7 @@ _storageCountPerMember = getNumber(_config >> "storageCountPerMember");
 _minJammerDistance = getNumber(_config >> "minJammerDistance");
 _maxBuildingHeight = getNumber(_config >> "maxBuildingHeight");
 _jammerPerGroup = getNumber(_config >> "jammerPerGroup");
+_CamCountLimit = getNumber(_config >> "maxCams");
 if(getNumber(_config >> "useGroupCountLimits") == 0)then{_useGroupCountLimits=false};
 if(getNumber(_config >> "splitCountLimits") == 1)then{_useSplitCountLimits=true};
 if(getNumber(_config >> "jammerGLOnly") == 0)then{_jammerGLOnly=false};
@@ -59,6 +60,7 @@ if(_storageCountLeader == 0)then{_storageCountLeader = 100};
 if(_minJammerDistance == 0)then{_minJammerDistance = _buildingJammerRange*3};
 if(_maxBuildingHeight == 0)then{_maxBuildingHeight = 100};
 if(_jammerPerGroup == 0)then{_jammerPerGroup = 2};
+if(_CamCountLimit == 0)then{_CamCountLimit = 2};
 
 // input
 params ["_objType"];
@@ -132,6 +134,12 @@ if !(_jammer isEqualTo []) then {
 			if !((getPosATL player) select 2 < _maxBuildingHeight) exitwith {
 				_buildingAllowed = false;
 				["Building Disallowed: Max building height reached",5] call Epoch_message;
+			};
+			if (_objType isequalto "BaseCam_EPOCH" && _buildingAllowed) then {
+				if ((count (nearestObjects[_nearestJammer,["BaseCam_EPOCH","BaseCam_SIM_EPOCH","BaseCam_Ghost_EPOCH"],_buildingJammerRange]-[_obj])) >= _CamCountLimit) then {
+					_buildingAllowed = false;
+					[format["Building Disallowed: Max %1 Cams per Base!", _CamCountLimit], 5] call Epoch_message;
+				};
 			};
 		};
 	};

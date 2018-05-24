@@ -14,7 +14,7 @@
 /*[[[cog from arma_config_tools import *; json_to_arma()]]]*/
 class CfgEpochClient
 {
-    epochVersion = "1.1.0";
+    epochVersion = "1.2.0";
     ArmAVersion = 176;
 	debug = "true";  // true = enable extra rpt debug lines, false to disable
 
@@ -55,9 +55,16 @@ class CfgEpochClient
     storageCountPerMember = 5;		//ignore if "splitCountLimits=0" & "useGroupCountLimits=0"
     maxdoors = 10;					// Max allowed doors per Group
     maxgates = 5;					// Max allowed Gates per Group
+    maxCams = 2;					// Max allowed BaseCams per Group
+
+	MaxBuildingTilt = 180;			// Max degrees players can tilt building elements
 
 	AtmBlockedAtPlot = "true";		// Block ATM's in Plotpole-Range
     disableRemoteSensors = "true";  // disableRemoteSensors true/false
+	
+	ActionFireOnLighter = "true";				// Lighter is needed to inflame fires
+	ActionBurnBarrelOffExtinguisher = "true";	// FireExtinguisher is needed to put off Burn Barrels
+	ActionHookRope = "true";					// Rope is needed to hook vehicles (get back on release)
 
     epochMessageBackgroundCol[] = {0,0,0,0.2};  //Epoch_message background color (format: {R,G,B,A})
     epochMessageTextCol[] = {1,1,1,0.95};       //Epoch_message text color (format: {R,G,B,A})
@@ -189,12 +196,28 @@ class CfgEpochClient
     playerDeathMarkerGPSOnly = 1; // Map marker toggle in map dyna menu on death with assigned GPS only
     mapOnZoomSetMarkerSize = 1; // When in map markers will change to larger size as player zooms in
     bankTransferTime[] = {0.0006,1.2,0.06};
+	
+	// Player (Building) Energy
+	energyPowerSources[]	= {				// Add PowerCapacity and PowerType in CfgBaseBuilding, if you add something here!
+		"Land_spp_Tower_F",
+		"Land_wpp_Turbine_V2_F",
+		"Land_wpp_Turbine_V1_F",
+		"SolarGen_EPOCH",
+		"Land_Wreck_Satellite_EPOCH"
+	};
+	energyRange				= 75;			// Range to check for energy sources
+	energyRegenMax			= 5;			// Max energy increase value (every 10 seconds) 
+	energyCostNV			= 3;			// Energy loss value by using nightvision (every 10 seconds)
+	energyRegenInVeh 		= 5;			// Energy increase value in Vehicles with Engine On (every 10 seconds)
 
 	// Favorite Bar
 	Fav_enableFavoriteBar = "true";			// If disabled, players will not be able to use favorite bar
 	Fav_DropIfOverflow = "false";			// If enabled and inventory full, equipped weapon will be dropped on ground in favor for the new selected weapon, otherwise action will fail with message and weapon will not be equipped
 	Fav_FastWeaponSwitching = "false";		// If enabled, same slot weapons from favorites bar are equipped instantly, otherwise reload action is played (recommended for immersion)
 	Fav_BannedItems[] = {"FAK"};				// Items that users are not allowed to pin
+
+	EnableTempVehTrade = "false";			// Enable selling of temp Vehicles (not handled by Epoch). Temp Vehicles will not be stored in Traders, but can be sold
+	BulletCalculateOnCraft = "true";		// Enable Bullet Calculation on Crafting - Example: If you craft a large EnergyPack with 3 half full EnergyPacks, you will only get a half filled large EnergyPack back
 
 	// Advanced Vehicle Repair
 	UseAdvancedVehicleRepair = "true";									// Switch On / Off Advanced Vehicle Repair (Does not effect SuppressedCraftingItems !)
@@ -214,21 +237,25 @@ class CfgEpochClient
 	VehicleRepairs[] = {												// {Hitpoint, dmg to repair, dmg to replace, mat to repair, mat to replace}
 		{"HitHull",0.33,0.66,"ItemScraps","ItemCorrugated"},
 		{"HitBody",0.33,1,"ItemScraps","ItemCorrugated"},
-		{"HitLFWheel",0.33,1,"VehicleRepair","SpareTire"},
-		{"HitLF2Wheel",0.33,1,"VehicleRepair","SpareTire"},
-		{"HitLMWheel",0.33,1,"VehicleRepair","SpareTire"},
-		{"HitLBWheel",0.33,1,"VehicleRepair","SpareTire"},
-		{"HitRFWheel",0.33,1,"VehicleRepair","SpareTire"},
-		{"HitRF2Wheel",0.33,1,"VehicleRepair","SpareTire"},
-		{"HitRMWheel",0.33,1,"VehicleRepair","SpareTire"},
-		{"HitRBWheel",0.33,1,"VehicleRepair","SpareTire"},
 		{"HitEngine",0.33,0.91,"EngineParts","EngineBlock"},
 		{"glass",0.33,1,"ItemGlass","ItemGlass"},
 		{"HitFuel",0.1,0.66,"ItemDuctTape","FuelTank"},
 		{"HitHRotor",0.33,1,"ItemCorrugated","ItemRotor"},
 		{"HitVRotor",0.33,1,"ItemCorrugated","ItemRotor"},
 		{"HitWinch",0.33,0.91,"ItemCables","ItemCables"},
-		{"HitAvionics",0.33,0.91,"CircuitParts","CircuitParts"}
+		{"HitAvionics",0.33,0.91,"CircuitParts","CircuitParts"},
+		// Wheels - Do not change the order (front to back wheels) here!
+		{"HitLFWheel",0.33,1,"VehicleRepair","SpareTire"},
+		{"HitRFWheel",0.33,1,"VehicleRepair","SpareTire"},
+		{"HitLF2Wheel",0.33,1,"VehicleRepair","SpareTire"},
+		{"HitRF2Wheel",0.33,1,"VehicleRepair","SpareTire"},
+		{"HitLMWheel",0.33,1,"VehicleRepair","SpareTire"},
+		{"HitRMWheel",0.33,1,"VehicleRepair","SpareTire"},
+		{"HitLBWheel",0.33,1,"VehicleRepair","SpareTire"},
+		{"HitRBWheel",0.33,1,"VehicleRepair","SpareTire"},
+		// Mountainbike wheels
+		{"HitFWheel",0.33,0.91,"",""},
+		{"HitBWheel",0.33,0.91,"",""}
 	};
 
     // include configs

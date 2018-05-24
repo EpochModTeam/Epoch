@@ -29,7 +29,7 @@ class CfgActionMenu
 
 		dyna_buildMode = "([10] call EPOCH_fnc_cursorTarget) call EPOCH_checkBuild;";
 		dyna_isVehicle = "if (!(isNull dyna_cursorTarget) && alive dyna_cursorTarget) then {((dyna_cursorTarget isKindOf 'LandVehicle') || (dyna_cursorTarget isKindOf 'Air') || (dyna_cursorTarget isKindOf 'Ship') || (dyna_cursorTarget isKindOf 'Tank'))} else {false}";
-		dyna_isTrader = "if (!(isNull dyna_cursorTarget) && alive dyna_cursorTarget) then {((dyna_cursorTarget isKindOf 'Man') && (dyna_cursorTarget != player) && (!isPlayer dyna_cursorTarget) && ((dyna_cursorTarget getVariable['AI_SLOT', -1]) != -1))} else {false}";
+		dyna_isTrader = "if (!(isNull dyna_cursorTarget) && alive dyna_cursorTarget) then {((dyna_cursorTarget != player) && (!isPlayer dyna_cursorTarget) && ((dyna_cursorTarget getVariable['AI_SLOT', -1]) != -1))} else {false}";
 		dyna_isPlayer = "if (!(isNull dyna_cursorTarget) && alive dyna_cursorTarget) then {((dyna_cursorTarget isKindOf 'Man') && (dyna_cursorTarget != player) && (isPlayer dyna_cursorTarget))} else {false}";
 		dyna_isDeadPlayer = "if (!(isNull dyna_cursorTarget) && !(alive dyna_cursorTarget)) then {(dyna_cursorTargetType in ['Epoch_Male_F','Epoch_Female_F'])} else {false}";
 		dyna_canAcceptTrade = "if (!(isNull EPOCH_pendingP2ptradeTarget) && alive EPOCH_pendingP2ptradeTarget) then {((EPOCH_pendingP2ptradeTarget isKindOf 'Man') && (dyna_cursorTarget isEqualTo EPOCH_pendingP2ptradeTarget))} else {false}";
@@ -50,6 +50,7 @@ class CfgActionMenu
 		dyna_mapDeathMarker = "(((getArray(('CfgMarkerSets' call EPOCH_returnConfig) >> 'DeathMarker' >> 'markerArray') select 0) select 0) in allMapMarkers)";
 		
 		dyna_AtHome = "call {_config = 'CfgEpochClient' call EPOCH_returnConfig;_buildingJammerRange = getNumber(_config >> 'buildingJammerRange');_nearjammers = nearestobjects [player,['Plotpole_EPOCH'],_buildingJammerRange];if (_nearjammers isEqualTo []) exitwith {false};_nearestJammer = _nearjammers select 0;((_nearestJammer getVariable['BUILD_OWNER', '-1']) in[getPlayerUID player, Epoch_my_GroupUID])}";
+		dyna_Watersource = "call {_nearObjects = nearestObjects [player, [], 2];_check = 'water';_ok = false;{if (alive _x) then {_ok = [_x, _check] call EPOCH_worldObjectType;};if (_ok) exitWith {};} forEach _nearObjects;_ok}";
 	};
 
 	class self

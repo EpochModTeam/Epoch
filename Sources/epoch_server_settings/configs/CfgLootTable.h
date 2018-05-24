@@ -212,8 +212,8 @@ class CfgLootTable
 				{ { "ItemCanteen_Dirty", "magazine" }, 5 },
 				{ { "ItemCanteen_Clean", "magazine" }, 1 },
 				{ { "ItemBottlePlastic_Dirty", "magazine" }, 5 },
-				{ { "ItemBottlePlastic_Clean", "magazine" }, 1 }
-
+				{ { "ItemBottlePlastic_Clean", "magazine" }, 1 },
+				{ { "ItemFireExtinguisher", "magazine" }, 1 }
 		};
 	};
 
@@ -326,6 +326,7 @@ class CfgLootTable
 				{ { "Repairs", "CfgLootTable" }, 16 },
 				{ { "CircuitParts", "magazine" }, 17 },
 				{ { "ItemCorrugated", "magazine" }, 17 },
+				{ { "ItemBulb", "magazine" }, 2 },
 				{ { "ItemSolar", "magazine" }, 5 },
 				{ { "ItemBattery", "magazine" }, 5 },
 				{ { "ItemCables", "magazine" }, 5 },
@@ -348,6 +349,7 @@ class CfgLootTable
 				{ { "MortarBucket", "magazine" }, 9 },
 				{ { "Repairs", "CfgLootTable" }, 10 },
 				{ { "ItemCorrugated", "magazine" }, 11 },
+				{ { "ItemBulb", "magazine" }, 2 },
 				{ { "CinderBlocks", "magazine" }, 12 },
 				{ { "JackKit", "magazine" }, 8 },
 				{ { "ItemCoolerE", "magazine" }, 13 },
@@ -906,6 +908,7 @@ class CfgLootTable
 	{
 		items[] = {
 				{ { "FAK", "magazine" }, 50 },
+				{ { "Soap_Epoch", "magazine" }, 3 },
 				{ { "Heal_EPOCH", "item" }, 2 },
 				{ { "Defib_EPOCH", "item" }, 1 },
 				{ {"atropine_epoch", "magazine" }, 6 },
@@ -1215,6 +1218,7 @@ class CfgLootTable
 				{ { "U_OrestesBody", "item" }, 1 },
 				{ { "DLCUniforms", "CfgLootTable" }, 1 },
 				{ { "MaleUniforms_FullGhillieMarkDLC", "CfgLootTable" }, 1 },
+				{ { "U_RadiationSuit_M_uniform", "item" }, 1 },
 
 				// new uniforms
 				{ { "U_C_Commoner1_1", "item" }, 1 },
@@ -1358,6 +1362,7 @@ class CfgLootTable
 				{ { "U_ghillie1_uniform", "item" }, 1 },
 				{ { "U_ghillie2_uniform", "item" }, 1 },
 				{ { "U_ghillie3_uniform", "item" }, 1 },
+				{ { "U_RadiationSuit_F_uniform", "item" }, 1 },
 
 				{ { "U_JeansPatched1_uniform", "item" }, 1 },
 				{ { "U_JeansPatched2_uniform", "item" }, 1 },
@@ -1624,6 +1629,8 @@ class CfgLootTable
 				{ { "H_92_EPOCH", "item" }, 1 },
 				{ { "H_104_EPOCH", "item" }, 1 },
                 { { "H_105_EPOCH", "item" }, 1 },
+				{ { "thor_mask_epoch", "item" }, 1, },
+				{ { "iron_mask_epoch", "item" }, 1, },
 				{ { "wolf_mask_epoch", "item" }, 1, {"getDate", 1, "==", 10} }, // only available in october
 				{ { "pkin_mask_epoch", "item" }, 1, {"getDate", 1, "==", 10} }, // only available in october
 				{ { "clown_mask_epoch", "item" }, 1, {"getDate", 1, "==", 10} }, // only available in october

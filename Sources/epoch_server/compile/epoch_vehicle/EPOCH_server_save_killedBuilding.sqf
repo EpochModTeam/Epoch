@@ -29,6 +29,12 @@ if (!isNull _building) then {
 		EPOCH_BuildingSlots set [_vehSlot, 0];
 		missionNamespace setVariable ['EPOCH_BuildingSlotCount', { _x == 0 } count EPOCH_BuildingSlots, true];
 
+		// If is BaseCam, remove from Array
+		if (_building iskindof "BaseCam_EPOCH") then {
+			EPOCH_BaseCams = EPOCH_BaseCams - [_building];
+			publicvariable "EPOCH_BaseCams";
+		};
+
 		['BuildingKilled', format["%1 was killed by %2 at %3", typeOf _building, _killer, getPosATL _building]] call EPOCH_fnc_server_hiveLog;
 	};
 };

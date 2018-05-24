@@ -51,9 +51,15 @@ if !(isNull EPOCH_lastNPCtradeTarget) then {
 			{
 				_item = _x;
 				_rounds = 1;
+				_onHand = false;
 				if (_item isequaltype []) then {
 					_item = _x select 0;
-					_rounds = _x select 1;
+					if ((_x select 1) isequalto "Hand") then {
+						_onHand = true;
+					}
+					else {
+						_rounds = _x select 1;
+					};
 				};
 				if !(_item isequalto "") then {
 					_maxrnd = 1;
@@ -66,13 +72,16 @@ if !(isNull EPOCH_lastNPCtradeTarget) then {
 						_tooltip = format ["%1 rounds left in Magazine",_rounds];
 					};
 					if (_index == 0 || (tolower _item) in _FilterArray) then {
-						_id = lbAdd [_PlayerItemsBox, _item call EPOCH_itemDisplayName];
+						_id = lbAdd [_PlayerItemsBox, (_item call EPOCH_itemDisplayName) + (if (_onHand) then {" (in Hand)"} else {""})];
 						lbSetData [_PlayerItemsBox, _id, _item];
 						lbSetValue [_PlayerItemsBox, _id, _rounds];
 						lbSetPicture [_PlayerItemsBox, _id, _item call EPOCH_itemPicture];
 						if !(_tooltip isequalto "") then {
 							lbSetTooltip [_PlayerItemsBox, _id, _tooltip];
 							lbSetColor [_PlayerItemsBox,_id,[1,(_rounds/_maxrnd),0,1]];
+						};
+						if (_onHand) then {
+							lbSetColor [_PlayerItemsBox,_id,[1,1,1,0.5]];
 						};
 					};
 				};

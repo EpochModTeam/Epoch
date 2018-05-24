@@ -2,7 +2,7 @@ _position = getPosATL player;
 
 _nearestLocations = nearestLocations[player, _radioactiveLocations, 300];
 EPOCH_nearestLocations = _nearestLocations;
-_powerSources = nearestObjects[player, ["Land_spp_Tower_F","Land_wpp_Turbine_V2_F","Land_wpp_Turbine_V1_F","SolarGen_EPOCH","Land_Wreck_Satellite_EPOCH"], _energyRange];
+_powerSources = nearestObjects[player, _energyPowerSources, _energyRange];
 
 // TODO: add more sources and config based check instead of global var
 // _nearestLocations removed as they don't support getVariable
@@ -109,25 +109,26 @@ _chargeRate = 0;
 if !(_powerSources isEqualTo[]) then {
 	_totalCapacity = 0;
 	{
-			_powerClass = typeOf _x;
-			_powerCap = getNumber(_cfgBaseBuilding >> _powerClass >> "powerCapacity");
-			_powerType = getNumber(_cfgBaseBuilding >> _powerClass >> "powerType");
-			if (_powerCap == 0) then {
-				_powerCap = 100;
-			};
-			if (_powerType == 1) then {
-				if (sunOrMoon < 1) then {
-					_powerCap = _powerCap/2;
-				};
-			};
-			_totalCapacity = _totalCapacity + _powerCap;
+		_powerClass = typeOf _x;
+		_powerCap = getNumber(_cfgBaseBuilding >> _powerClass >> "powerCapacity");
+		_powerType = getNumber(_cfgBaseBuilding >> _powerClass >> "powerType");
+		if (_powerCap == 0) then {
+			_powerCap = 100;
+		};
+		_powerCap = switch _powerType do {
+			case 1: {if (sunOrMoon == 1) then {_powerCap * (1-overcast)} else {(_powerCap * (1 - overcast))/2}};
+			case 2: {_powerCap * windstr};
+			case 3: {_powerCap * (1 - ((player distance _x) / _energyRange))};
+			default {_powerCap};
+		};
+		_totalCapacity = _totalCapacity + _powerCap;
 	} forEach _powerSources;
 	if (_totalCapacity > 0) then {
 		_players = player nearEntities[["Epoch_Male_F", "Epoch_Female_F"], _energyRange];
 		if (_players isEqualTo []) then {
-			_chargeRate = ceil _totalCapacity;
+			_chargeRate = round _totalCapacity;
 		} else {
-			_chargeRate = ceil (_totalCapacity / (count _players));
+			_chargeRate = round (_totalCapacity / (count _players));
 		};
 	};
 };

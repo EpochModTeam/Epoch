@@ -13,7 +13,7 @@
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server/compile/epoch_vehicle/EPOCH_server_save_vehicle.sqf
 */
 //[[[cog import generate_private_arrays ]]]
-private ["_VAL","_cargo","_cargoIndex","_colorSlot","_hitpoints","_inventory","_magsAmmoCargo","_magsAmmoCargoMinimized","_magsAmmoCargox","_newComponents","_selectedWeapon","_selectedWeaponComponents","_startTime","_vehHiveKey","_vehSlot","_weapon","_weaponComponents","_wepsItemsCargo","_wepsItemsCargoNormalized","_wepsItemsCargox"];
+private ["_VAL","_baseType","_colorSlot","_hitpoints","_inventory","_vehHiveKey","_vehSlot"];
 //[[[end]]]
 params [["_vehicle",objNull]];
 
@@ -28,10 +28,10 @@ if (!isNull _vehicle) then {
 		_hitpoints = (getAllHitPointsDamage _vehicle) param [2,[]];
 
 		_inventory = _vehicle call EPOCH_server_CargoSave;
-		
+
 		_colorSlot = _vehicle getVariable ["VEHICLE_TEXTURE",0];
 		_baseType = _vehicle getVariable ["VEHICLE_BASECLASS",""];
-		_VAL = [typeOf _vehicle,[(getposATL _vehicle call EPOCH_precisionPos),vectordir _vehicle,vectorup _vehicle],damage _vehicle,_hitpoints,fuel _vehicle,_inventory,[true,magazinesAllTurrets _vehicle],_colorSlot,_baseType];
+		_VAL = [typeOf _vehicle,[getposworld _vehicle,vectordir _vehicle,vectorup _vehicle,true],damage _vehicle,_hitpoints,fuel _vehicle,_inventory,[true,magazinesAllTurrets _vehicle],_colorSlot,_baseType, getPlateNumber _vehicle];
 		["Vehicle", _vehHiveKey, EPOCH_expiresVehicle, _VAL] call EPOCH_fnc_server_hiveSETEX;
 	};
 };

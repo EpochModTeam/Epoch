@@ -17,12 +17,13 @@ private [	"_MaxBankDebit","_SkipOut","_VAL","_aiItems","_bankBalance","_bankData
 			"_group","_helipad","_helipads","_item","_itemClasses","_itemQty","_itemQtys","_itemTax","_itemWorth","_itemsIn","_itemsOut","_lockOwner","_makeTradeIn","_message","_nearByHolder",
 			"_objHiveKey","_objOwner","_playerCryptoLimit","_playerGroup","_playerNetID","_playerUID","_position","_qtyIndex","_response","_return","_returnIn","_returnOut","_road",
 			"_serverSettingsConfig","_slot","_smoke","_tax","_tmpposition","_tradeIn","_tradeOut","_tradeQtyTotal","_tradeTotal","_vars","_vehHiveKey","_vehObj","_vehSlot","_vehicle","_vehicleBought",
-			"_vehicleSold","_vehicles","_vehslot","_wH","_wHPos","_wp","_kIndex","_playerCStats","_playerKarma","_playerKarmaAdj"
+			"_vehicleSold","_vehicles","_vehslot","_wH","_wHPos","_wp","_kIndex","_playerCStats","_playerKarma","_playerKarmaAdj","_EnableTempVehTrade"
 ];
 params ["_trader","_itemsIn","_itemsOut","_player",["_token","",[""]] ];
 
 _playerUID = getplayeruid _player;
 
+_EnableTempVehTrade = ["CfgEpochClient", "EnableTempVehTrade", false] call EPOCH_fnc_returnConfigEntryV2;
 _serverSettingsConfig = configFile >> "CfgEpochServer";
 _vehicleSold = false;
 _vehicleBought = false;
@@ -75,7 +76,15 @@ if (_slot != -1) then {
 						_playerNetID = owner _player;
 						if (_playerNetID == (owner _vehicle)) then {
 							_vehSlot = _vehicle getVariable["VEHICLE_SLOT", "ABORT"];
-                            if (!_vehicleSold && _vehSlot != "ABORT") then {
+                            if (!_vehicleSold && (_vehSlot != "ABORT" || _EnableTempVehTrade)) then {
+								_vehicleSold = true;
+								_makeTradeIn = true;
+								if (_vehSlot == "ABORT") exitwith {
+									_itemQty = 0;
+									_itemsIn set [_foreachindex,[_item,_itemQty]];
+									removeFromRemainsCollector [_vehicle];
+									deleteVehicle _vehicle;
+								};
                                 _BaseClass = _vehicle getvariable ["VEHICLE_BaseClass",""];
                                 if !(_BaseClass isequalto "") then {
                                     _item = _BaseClass;
@@ -83,13 +92,11 @@ if (_slot != -1) then {
                                 };
                                 removeFromRemainsCollector [_vehicle];
 								deleteVehicle _vehicle;
-								_vehicleSold = true;
 								_vehHiveKey = format["%1:%2", (call EPOCH_fn_InstanceID), _vehSlot];
 								_VAL = [];
 								["Vehicle", _vehHiveKey, _VAL] call EPOCH_fnc_server_hiveSET;
 								EPOCH_VehicleSlots pushBack _vehSlot;
 								missionNamespace setVariable ['EPOCH_VehicleSlotCount', count EPOCH_VehicleSlots, true];
-								_makeTradeIn = true;
 							};
 						};
 					};
