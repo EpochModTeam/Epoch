@@ -1450,7 +1450,7 @@ _skn_admincode = compileFinal ("
 		_minutes = round((serverTime/60)-(_hours*60));
 
 		if (!dialog) then {createDialog 'Skaronator_AdminMenu';
-		{(_x call "+_skn_getCtrl+") ctrlShow false}forEach[40,41,4101,42,43,50,51,52,60,61,62,63,64,65,66,67,68,69,70,71] };
+		{(_x call "+_skn_getCtrl+") ctrlShow false}forEach[40,41,4101,42,43,50,51,52,60,6000,61,62,63,64,65,66,67,68,69,70,71] };
 		if (getPlayerUID player in "+str _skn_blockedSpawnMenuUID+") then {ctrlEnable [21,false]};
 		ctrlEnable [22,false];
 		(1 call "+_skn_getCtrl+") ctrlSetText format['Players %1 of %2',count allPlayers,playersNumber civilian];
@@ -1754,7 +1754,7 @@ _skn_admincode = compileFinal ("
 		if (_idc == 50) then {lbClear 43;"+_skn_tg_limitSpawn+" = [true,true,true,true,true,true,true,true,true,true,true]};
 		if (_idc == 51) then {true call "+_skn_spawnSpawnMenu+"};
 		if (_idc == 52) then {false call "+_skn_spawnSpawnMenu+"};
-		if (_idc in [61,62,63,64,65,66,67,68,69,70,71]) then {
+		if (_idc in [6000,61,62,63,64,65,66,67,68,69,70,71]) then {
 			"+_skn_tg_spawnTyp+" = _idc;
 			_idc call "+_skn_fillSpawnMenu+";
 		};
@@ -1821,13 +1821,13 @@ _skn_admincode = compileFinal ("
 			_ctrl lbDelete _currentSelect;
 		'];
 
-		{_i = _x call "+_skn_getCtrl+";_i ctrlShow true;_i ctrlSetFade 1;_i ctrlcommit 0;_i ctrlSetFade 0;_i ctrlcommit 0.8}forEach[40,41,4101,42,43,50,51,52,60,61,62,63,64,65,66,67,68,69,70,71];
+		{_i = _x call "+_skn_getCtrl+";_i ctrlShow true;_i ctrlSetFade 1;_i ctrlcommit 0;_i ctrlSetFade 0;_i ctrlcommit 0.8}forEach[40,41,4101,42,43,50,51,52,60,6000,61,62,63,64,65,66,67,68,69,70,71];
 		"+_skn_tg_spawnTyp+" call "+_skn_fillSpawnMenu+";
 	};
 	"+_skn_removespawnMenu+" = {
 		if (ctrlShown (40 call "+_skn_getCtrl+")) then {
-			{_i = _x call "+_skn_getCtrl+";_i ctrlShow true;_i ctrlSetFade 1;_i ctrlcommit 0.8}forEach[40,41,4101,42,43,50,51,52,60,61,62,63,64,65,66,67,68,69,70,71];
-			[] spawn {uiSleep 0.8;{_x call "+_skn_getCtrl+" ctrlShow false}forEach[40,41,4101,42,43,50,51,52,60,61,62,63,64,65,66,67,68,69,70,71]};
+			{_i = _x call "+_skn_getCtrl+";_i ctrlShow true;_i ctrlSetFade 1;_i ctrlcommit 0.8}forEach[40,41,4101,42,43,50,51,52,60,6000,61,62,63,64,65,66,67,68,69,70,71];
+			[] spawn {uiSleep 0.8;{_x call "+_skn_getCtrl+" ctrlShow false}forEach[40,41,4101,42,43,50,51,52,60,6000,61,62,63,64,65,66,67,68,69,70,71]};
 			true
 		} else {false};
 	};
@@ -1837,11 +1837,11 @@ _skn_admincode = compileFinal ("
 		if !(_this isequalto 4101) then {
 			_button = _this call "+_skn_getCtrl+";
 			_button ctrlSetTextColor [1, 0, 0, 1];
-			{_x call "+_skn_getCtrl+" ctrlSetTextColor [1, 1, 1, 1]}forEach([61,62,63,64,65,66,67,68,69,70,71]-[_this]);
+			{_x call "+_skn_getCtrl+" ctrlSetTextColor [1, 1, 1, 1]}forEach([6000,61,62,63,64,65,66,67,68,69,70,71]-[_this]);
 		};
 		_searchtxt = tolower (ctrlText((findDisplay -1337) displayCtrl 4101));
 		_cfgPricing = 'CfgPricing' call EPOCH_returnConfig;
-		if ("+_skn_tg_spawnTyp+" == 61) then {
+		if ("+_skn_tg_spawnTyp+" == 61 || "+_skn_tg_spawnTyp+" == 6000) then {
 			_airVehicles = ""
 				(configName _x) iskindof 'AIR' &&
 				getText(_x >> 'displayName') != '' &&
@@ -1856,7 +1856,7 @@ _skn_admincode = compileFinal ("
 				_ctrl lbSetPicture[_index, getText(_x >> 'picture')];
 			}forEach _airVehicles;
 		};
-		if ("+_skn_tg_spawnTyp+" == 62) then {
+		if ("+_skn_tg_spawnTyp+" == 62 || "+_skn_tg_spawnTyp+" == 6000) then {
 			_landVehicles = ""
 				(configName _x) iskindof 'LandVehicle' &&
 				getText(_x >> 'displayName') != '' &&
@@ -1871,7 +1871,7 @@ _skn_admincode = compileFinal ("
 				_ctrl lbSetPicture[_index, getText(_x >> 'picture')];
 			}forEach _landVehicles;
 		};
-		if ("+_skn_tg_spawnTyp+" == 63) then {
+		if ("+_skn_tg_spawnTyp+" == 63 || "+_skn_tg_spawnTyp+" == 6000) then {
 			_shipVehicles = ""
 				(configName _x) iskindof 'SHIP' &&
 				getText(_x >> 'displayName') != '' &&
@@ -1886,7 +1886,7 @@ _skn_admincode = compileFinal ("
 				_ctrl lbSetPicture[_index, getText(_x >> 'picture')];
 			}forEach _shipVehicles;
 		};
-		if ("+_skn_tg_spawnTyp+" == 64) then {
+		if ("+_skn_tg_spawnTyp+" == 64 || "+_skn_tg_spawnTyp+" == 6000) then {
 			_weapons = ""
 				getText(_x >> 'displayName') != '' &&
 				getText(_x >> 'picture') != '' &&
@@ -1903,7 +1903,7 @@ _skn_admincode = compileFinal ("
 				_ctrl lbSetPicture[_index, getText(_x >> 'picture')];
 			}forEach _weapons;
 		};
-		if ("+_skn_tg_spawnTyp+" == 65) then {
+		if ("+_skn_tg_spawnTyp+" == 65 || "+_skn_tg_spawnTyp+" == 6000) then {
 			_magazines = ""
 				getText(_x >> 'displayName') != '' &&
 				getText(_x >> 'picture') != '' &&
@@ -1918,7 +1918,7 @@ _skn_admincode = compileFinal ("
 				_ctrl lbSetPicture[_index, getText(_x >> 'picture')];
 			}forEach _magazines;
 		};
-		if ("+_skn_tg_spawnTyp+" == 66) then {
+		if ("+_skn_tg_spawnTyp+" == 66 || "+_skn_tg_spawnTyp+" == 6000) then {
 			_magazines = ""
 				getText(_x >> 'displayName') != '' &&
 				getText(_x >> 'picture') != '' &&
@@ -1933,7 +1933,7 @@ _skn_admincode = compileFinal ("
 				_ctrl lbSetPicture[_index, getText(_x >> 'picture')];
 			}forEach _magazines;
 		};
-		if ("+_skn_tg_spawnTyp+" == 67) then {
+		if ("+_skn_tg_spawnTyp+" == 67 || "+_skn_tg_spawnTyp+" == 6000) then {
 			_backpack = ""
 				getText(_x >> 'displayName') != '' &&
 				getText(_x >> 'picture') != '' &&
@@ -1947,7 +1947,7 @@ _skn_admincode = compileFinal ("
 				_ctrl lbSetPicture[_index, getText(_x >> 'picture')];
 			}forEach _backpack;
 		};
-		if ("+_skn_tg_spawnTyp+" == 68) then {
+		if ("+_skn_tg_spawnTyp+" == 68 || "+_skn_tg_spawnTyp+" == 6000) then {
 			_uniforms = ""
 				getText(_x >> 'displayName') != '' &&
 				getText(_x >> 'picture') != '' &&
@@ -1962,7 +1962,7 @@ _skn_admincode = compileFinal ("
 				_ctrl lbSetPicture[_index, getText(_x >> 'picture')];
 			}forEach _uniforms;
 		};
-		if ("+_skn_tg_spawnTyp+" == 69) then {
+		if ("+_skn_tg_spawnTyp+" == 69 || "+_skn_tg_spawnTyp+" == 6000) then {
 			_attachments = ""
 				getText(_x >> 'displayName') != '' &&
 				getText(_x >> 'picture') != '' &&
@@ -1977,7 +1977,7 @@ _skn_admincode = compileFinal ("
 				_ctrl lbSetPicture[_index, getText(_x >> 'picture')];
 			}forEach _attachments;
 		};
-		if ("+_skn_tg_spawnTyp+" == 70) then {
+		if ("+_skn_tg_spawnTyp+" == 70 || "+_skn_tg_spawnTyp+" == 6000) then {
 			_headgear = ""
 				getText(_x >> 'displayName') != '' &&
 				getText(_x >> 'picture') != '' &&
@@ -1992,7 +1992,7 @@ _skn_admincode = compileFinal ("
 				_ctrl lbSetPicture[_index, getText(_x >> 'picture')];
 			}forEach _headgear;
 		};
-		if ("+_skn_tg_spawnTyp+" == 71) then {
+		if ("+_skn_tg_spawnTyp+" == 71 || "+_skn_tg_spawnTyp+" == 6000) then {
 			_vests = ""
 				getText(_x >> 'displayName') != '' &&
 				getText(_x >> 'picture') != '' &&
