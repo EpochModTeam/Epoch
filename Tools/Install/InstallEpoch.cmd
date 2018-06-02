@@ -5,7 +5,7 @@ SET ARMASVRPATH=C:\Arma3Server
 SET ARMAAPPID=107410
 
 :: Workshop IDs:
-:: EpochExperimental = 455221958
+:: EpochExperimental = 1399517607
 :: Normal Epoch = 421839251
 SET ARMAWORKSHOPID=421839251
 
