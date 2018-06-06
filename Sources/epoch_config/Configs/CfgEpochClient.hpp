@@ -178,10 +178,12 @@ class CfgEpochClient
     HandleDamage = "";
     HandleHeal = "";
     Dammaged = "";
-    Hit = "";
+    Hit = "_this call EPOCH_custom_EH_Hit";
     HitPart = "";
     GetInMan = "_this call EPOCH_getInMan;_this call Epoch_custom_EH_GetInMan";
     GetOutMan = "_this call EPOCH_getOutMan;_this call Epoch_custom_EH_GetOutMan";
+	SeatSwitchedMan = "_this call EPOCH_custom_EH_SeatSwitchedMan";
+	FiredNear = "_this call EPOCH_custom_EH_FiredNear";
     // suppress these units from spawning near Jammer or Traders
     nonJammerAI[] = {"B_Heli_Transport_01_F","PHANTOM","EPOCH_Sapper_F","Epoch_SapperG_F","Epoch_SapperB_F","I_UAV_01_F","EPOCH_RyanZombie_1"};
     nonTraderAI[] = {"B_Heli_Transport_01_F","PHANTOM","EPOCH_Sapper_F","Epoch_SapperG_F","Epoch_SapperB_F","I_UAV_01_F","Epoch_Cloak_F","GreatWhite_F","EPOCH_RyanZombie_1"};
