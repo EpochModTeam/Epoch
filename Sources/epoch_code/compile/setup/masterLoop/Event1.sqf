@@ -364,17 +364,30 @@ if !(_playerTempKey isEqualTo "EPOCH_playerTemp") then {
 };
 
 // Check for PlayerMarker and Update or Remove it
-if(_PlayerMarkerName in allMapMarkers)then{
-	if!('ItemGPS' in (assignedItems player))then{
-		['PlayerMarker'] call EPOCH_fnc_deleteLocalMarkerSet;
-		if(_DeathMarkerName in allMapMarkers)then{
-			['DeathMarker'] call EPOCH_fnc_deleteLocalMarkerSet;
-		};
-	}else{
+if (_PlayerMarkerEnabled && EPOCH_PlayerMarkerOn && 'ItemGPS' in (assignedItems player)) then {
+	if (_PlayerMarkerName in allMapMarkers) then {
 		{
 			(_x select 0) setMarkerPosLocal (position player);
 			if(count(_x) >= 8)then{(_x select 0) setMarkerTextLocal (call compile (_x select 7))};
 		}forEach _PlayerMarkerArray;
+	}
+	else {
+		['PlayerMarker',position player] call EPOCH_fnc_createLocalMarkerSet;
+	};
+}
+else {
+	if (_PlayerMarkerName in allMapMarkers) then {
+		['PlayerMarker'] call EPOCH_fnc_deleteLocalMarkerSet;
+	};
+};
+if (_DeathMarkerEnabled && EPOCH_DeathMarkerOn && !(_DeathMarker isEqualTo [])) then {
+	if !(_DeathMarkerName in allMapMarkers) then {
+		['DeathMarker',_DeathMarker] call EPOCH_fnc_createLocalMarkerSet
+	};
+}
+else {
+	if (_DeathMarkerName in allMapMarkers) then {
+		['DeathMarker'] call EPOCH_fnc_deleteLocalMarkerSet;
 	};
 };
 if(_mapOnZoomSetMarkerSize isEqualTo 1)then{

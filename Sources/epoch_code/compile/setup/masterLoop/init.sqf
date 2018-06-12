@@ -136,7 +136,9 @@ _PlayerMarkerArray = getArray(('CfgMarkerSets' call EPOCH_returnConfig) >> 'Play
 _PlayerMarkerName = (_PlayerMarkerArray param [0,[]]) param [0,"EPOCH_PlayerMarker1"];
 _DeathMarkerName = ((getArray (('CfgMarkerSets' call EPOCH_returnConfig) >> 'DeathMarker' >> 'markerArray')) param [0,[]]) param [0,"EPOCH_DeathMarker1"];
 _mapOnZoomSetMarkerSize = ["CfgEpochClient", "mapOnZoomSetMarkerSize", 0] call EPOCH_fnc_returnConfigEntryV2;
-
+_PlayerMarkerEnabled = (["CfgEpochClient", "playerLocationMarkerGPSOnly", 0] call EPOCH_fnc_returnConfigEntryV2) isequalto 1;
+_DeathMarkerEnabled = (["CfgEpochClient", "playerDeathMarkerGPSOnly", 0] call EPOCH_fnc_returnConfigEntryV2) isequalto 1;
+_DeathMarker = profileNameSpace getVariable ['EPOCHLastKnownDeath',[]];
 _chargeRate = 0;
 
 _antagonistChanceDefaults = [
