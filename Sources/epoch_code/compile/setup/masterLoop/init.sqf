@@ -132,6 +132,10 @@ _energyRange = ["CfgEpochClient", "energyRange", 75] call EPOCH_fnc_returnConfig
 _hudConfigs = ["CfgEpochClient", "hudConfigs", []] call EPOCH_fnc_returnConfigEntryV2;
 _radioactiveLocations = ["CfgEpochClient", "radioactiveLocations", ["NameCityCapital", "NameCity", "Airport"]] call EPOCH_fnc_returnConfigEntryV2;
 _radiatedObjMaxRange = ["CfgEpochClient", "radiatedObjMaxFalloutDist", 75] call EPOCH_fnc_returnConfigEntryV2;
+_PlayerMarkerArray = getArray(('CfgMarkerSets' call EPOCH_returnConfig) >> 'PlayerMarker' >> 'markerArray');
+_PlayerMarkerName = (_PlayerMarkerArray param [0,[]]) param [0,"EPOCH_PlayerMarker1"];
+_DeathMarkerName = ((getArray (('CfgMarkerSets' call EPOCH_returnConfig) >> 'DeathMarker' >> 'markerArray')) param [0,[]]) param [0,"EPOCH_DeathMarker1"];
+_mapOnZoomSetMarkerSize = ["CfgEpochClient", "mapOnZoomSetMarkerSize", 0] call EPOCH_fnc_returnConfigEntryV2;
 
 _chargeRate = 0;
 

@@ -364,24 +364,20 @@ if !(_playerTempKey isEqualTo "EPOCH_playerTemp") then {
 };
 
 // Check for PlayerMarker and Update or Remove it
-_config = 'CfgMarkerSets' call EPOCH_returnConfig;
-_markerArray = getArray(_config >> 'PlayerMarker' >> 'markerArray');
-_markerName = (_markerArray select 0) select 0;
-
-if(_markerName in allMapMarkers)then{
+if(_PlayerMarkerName in allMapMarkers)then{
 	if!('ItemGPS' in (assignedItems player))then{
 		['PlayerMarker'] call EPOCH_fnc_deleteLocalMarkerSet;
-		if(((getArray(_config >> 'DeathMarker' >> 'markerArray') select 0) select 0) in allMapMarkers)then{
+		if(_DeathMarkerName in allMapMarkers)then{
 			['DeathMarker'] call EPOCH_fnc_deleteLocalMarkerSet;
 		};
 	}else{
 		{
 			(_x select 0) setMarkerPosLocal (position player);
 			if(count(_x) >= 8)then{(_x select 0) setMarkerTextLocal (call compile (_x select 7))};
-		}forEach _markerArray;
+		}forEach _PlayerMarkerArray;
 	};
 };
-if(getNumber(('CfgEpochClient' call EPOCH_returnConfig) >> 'mapOnZoomSetMarkerSize') isEqualTo 1)then{
+if(_mapOnZoomSetMarkerSize isEqualTo 1)then{
 	if(visibleMap)then{
 		_mapScale = ctrlMapScale ((findDisplay 12) displayCtrl 51);
 		_mapMarkers = allMapMarkers;

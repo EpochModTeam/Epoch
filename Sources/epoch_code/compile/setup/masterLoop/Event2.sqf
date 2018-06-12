@@ -53,7 +53,7 @@ if (_playerRadiation > _radiationEffectsThreshold) then {
 
 // Geiger Deplete Energy
 if (EPOCH_geiger_shown) then {
-	_energyValue = _energyValue - (["CfgEpochClient", "outOfBoundsRadiation", 10] call EPOCH_fnc_returnConfigEntryV2);
+	_energyValue = _energyValue - _outOfBoundsRadiation;
 };
 
 //  Energy Handler
