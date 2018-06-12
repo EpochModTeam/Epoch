@@ -364,7 +364,7 @@ if !(_playerTempKey isEqualTo "EPOCH_playerTemp") then {
 };
 
 // Check for PlayerMarker and Update or Remove it
-if (_PlayerMarkerEnabled && EPOCH_PlayerMarkerOn && 'ItemGPS' in (assignedItems player)) then {
+if (_PlayerMarkerEnabled && EPOCH_PlayerMarkerOn && {'ItemGPS' in (assignedItems player)}) then {
 	if (_PlayerMarkerName in allMapMarkers) then {
 		{
 			(_x select 0) setMarkerPosLocal (position player);
