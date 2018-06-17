@@ -93,6 +93,7 @@ showHUD[] =
 // A3 specific configs
 #include "Configs\CfgFunctions.hpp"
 #include "Configs\CfgRemoteExec.hpp"
+#include "Configs\CfgDisabledCommands.hpp"
 
 class CfgEpochBuild
 {
