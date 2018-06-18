@@ -33,5 +33,10 @@ if (underwater player) then {
 	if (_ins isEqualTo []) exitWith { objNull };
 	(_ins select 0 param [3,objNull])
 } else {
-	cursorTarget
+	if (!isnull cursorTarget) then {
+		cursorTarget
+	}
+	else {
+		cursorobject
+	};
 }
