@@ -8,7 +8,7 @@ forceRestartTime      = 14400; 			// 4 hour restarts
 	lootMultiplier 		= 0.5; 			// 1 = max loot bias. This controls how much loot can payout per Epoch loot container.
 
 // Events
-	WeatherStaticForecast[] = {}; 		// Default: {75.5,0,{0,0,0},0,{1,1}}; // Clear day; {19,1,{1,1,40},1,{5,5}}; // Cold Foggy Rainy Overcast Windy; Format: {temp <scalar>,rain <scalar>,fog <array>,overcast <scalar>,wind <array>}
+	WeatherStaticForecast[] = {}; 		// Default: {75.5,0,{0,0,0},0,{1,1}}; // Clear day; Format: {temp <scalar>,rain <scalar>,fog <array>,overcast <scalar>,wind <array>}
 	events[] = {
 		{
 			3600, // SECOND <scalar>,
