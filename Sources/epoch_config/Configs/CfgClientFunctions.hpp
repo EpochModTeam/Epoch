@@ -315,6 +315,14 @@ class CfgClientFunctions
 			class crafting_LB_doubleClick {};
 			class crafting_colorScheme {};
 		};
+		class e_pad
+		{
+			file = "epoch_code\gui\scripts\e_pad";
+			class EPad_clearscreen {};
+			class EPad_dialog {};
+			class EPad_Reset {};
+			class SaveVarsToProfile {};
+		};
 		class group
 		{
 			file = "epoch_code\gui\scripts\group";

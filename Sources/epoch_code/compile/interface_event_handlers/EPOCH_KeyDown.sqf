@@ -99,6 +99,13 @@ if (_dikCode == EPOCH_keysDebugMon) then {
 	_handled = true;
 };
 
+// E-Pad
+if (_dikCode == EPOCH_keysEPad) then {
+	if (isnull (finddisplay 9898)) then {
+		createdialog 'epoch_tablet_gui';
+	};
+};
+
 //Action Menu
 if (_dikCode == EPOCH_keysAction) then {
 	//_handled = true;
@@ -246,6 +253,16 @@ if (vehicle player == player) then {
 		if (_dikCode in ((actionKeys "moveForward") + (actionKeys "TurnLeft") + (actionKeys "TurnRight") + (actionKeys "moveBack"))) then {
 			EPOCH_IsAutoRunning = false;
 			player switchMove "";
+		};
+	};
+	if (_dikCode == EPOCH_Earplugs) then {
+		if (EPOCH_Earplugsin) then {
+			EPOCH_Earplugsin = false;
+			1 fadeSound 1;
+		}
+		else {
+			EPOCH_Earplugsin = true;
+			1 fadeSound 0.15;
 		};
 	};
 }; // end player only code
