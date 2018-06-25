@@ -34,7 +34,10 @@ if (!isNull _building) then {
 			EPOCH_BaseCams = EPOCH_BaseCams - [_building];
 			publicvariable "EPOCH_BaseCams";
 		};
-
+		if (_building iskindof "PlotPole_EPOCH") then {
+			EPOCH_Plotpoles = EPOCH_Plotpoles - [_building];
+			publicvariable "EPOCH_Plotpoles";
+		};
 		// Check if building killer is the owner and log accordingly
 		if (_killer isequaltype objnull) then {
 			if ((_building getVariable["BUILD_OWNER", "-1"]) in [getPlayerUID _killer, _killer getVariable["GROUP", ""]]) then
