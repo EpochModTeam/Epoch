@@ -294,7 +294,7 @@ else {
 				_staticFuelSources pushback _x;
 			} foreach (((_x nearObjects ['Building',_buildingJammerRange]) select {getFuelCargo _x > 0}));
 		
-		} foreach (allmissionobjects "Plotpole_EPOCH");
+		} foreach (missionnamespace getvariable ["Epoch_Plotpoles",allmissionobjects 'PlotPole_EPOCH']);
 		missionNamespace setVariable ["EPOCH_staticFuelSources", _staticFuelSources, true];
 	};
 };
