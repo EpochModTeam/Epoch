@@ -150,14 +150,12 @@ else {
 			_buildingAllowed = false;
 			["The Group Leader must place the Jammer!", 5] call Epoch_message;
 		};
-		// TODO: rework not ideal to use allmissionobjects
-		_alljammer = allmissionobjects 'PlotPole_EPOCH';
 		_c = 0;
 		{
 			if ((_x getVariable["BUILD_OWNER", "-1"]) in[getPlayerUID player, Epoch_my_GroupUID]) then {
 				_c = _c+1;
 			};
-		} foreach _alljammer;
+		} foreach (missionnamespace getvariable ["Epoch_Plotpoles",allmissionobjects 'PlotPole_EPOCH']);
 		if (_c >= _jammerPerGroup) then {
 			_buildingAllowed = false;
 			[format["Building Disallowed: Max %1 Jammer per Group!", _jammerPerGroup], 5] call Epoch_message;
