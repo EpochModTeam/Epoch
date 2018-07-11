@@ -1282,7 +1282,7 @@ class CfgCrafting
     {
         recipe[] = {{"ItemSolar",1},{"ItemCables",1},{"ItemBattery",1},{"ItemCorrugatedLg",2},{"CircuitParts",2}};
         nearby[] = {{"Workbench","","workbench",{1,{"WorkBench_EPOCH"}},3,1,0,1}};
-        model = "\x\addons\a3_epoch_assets_3\CfgVehicles\Solar_Generator_Complete\Solar_generator.p3d";
+        model = "\x\addons\a3_epoch_community\models\Solar_generator_charger.p3d";
         previewPosition[] = {0.804979,1,0.39189};
         previewScale = 0.11;
         previewVector = 0;
@@ -1293,7 +1293,7 @@ class CfgCrafting
     {
         recipe[] = {{"ItemSolar",2},{"ItemCables",2},{"ItemBattery",2},{"ItemCorrugatedLg",2},{"CircuitParts",2}};
         nearby[] = {{"Workbench","","workbench",{1,{"WorkBench_EPOCH"}},3,1,0,1}};
-        model = "\x\addons\a3_epoch_assets_3\CfgVehicles\Solar_Generator_Complete\Solar_generator.p3d";
+        model = "\x\addons\a3_epoch_community\models\Solar_generator_charger.p3d";
         previewPosition[] = {0.804979,1,0.39189};
         previewScale = 0.11;
         previewVector = 0;
