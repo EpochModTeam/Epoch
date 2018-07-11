@@ -23,8 +23,10 @@ if (_unit == player) then {
 		EPOCH_Target = objNull;
 	};
 	if (missionnamespace getvariable ["EPOCH_AutoEarplug",false]) then {
-		systemchat 'Earplugs have been auto-inserted...';
-		EPOCH_Earplugsin = true;
-		1 fadeSound 0.15;
+		if !(EPOCH_Earplugsin) then {
+			systemchat 'Earplugs have been auto-inserted...';
+			EPOCH_Earplugsin = true;
+			1 fadeSound 0.15;
+		};
 	};
 };

@@ -177,8 +177,8 @@ class e_pad_config
 			Icon = "";
 			color[] = {1,1,1,1};
 			colortoggled[] = {0,1,0,1};
-			action = "call compile preprocessfilelinenumbers ""epoch_code\gui\scripts\e_pad\Apps\traderDiag_nearVehicles.sqf""";
-			Tooltip = "Vehicles Nearby?";
+			action = "[250,1000] call compile preprocessfilelinenumbers ""epoch_code\gui\scripts\e_pad\Apps\traderDiag_nearVehicles.sqf""";
+			Tooltip = "Scan for near Vehicles (costs 250 energy)";
 			ToggleVar = "";
 			ToggleAble = "false";
 		};
@@ -189,8 +189,8 @@ class e_pad_config
 			Icon = "";
 			color[] = {1,1,1,1};
 			colortoggled[] = {0,1,0,1};
-			action = "call compile preprocessfilelinenumbers ""epoch_code\gui\scripts\e_pad\Apps\traderDiag_nearPlayers.sqf""";
-			Tooltip = "Players Nearby?";
+			action = "[250,250] call compile preprocessfilelinenumbers ""epoch_code\gui\scripts\e_pad\Apps\traderDiag_nearPlayers.sqf""";
+			Tooltip = "Scan for near Players (costs 250 energy)";
 			ToggleVar = "";
 			ToggleAble = "false";
 		};
