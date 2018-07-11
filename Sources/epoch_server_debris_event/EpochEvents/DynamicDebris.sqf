@@ -97,6 +97,9 @@ if (_status == 1 && _data isEqualType [] && !(_data isEqualTo [])) then {
                     if !(isNull _intersectObject) then {
                         _allowDebris = !((typeOf _intersectObject) in _debris);
                     };
+					if (_allowDebris) then {
+						_allowDebris = ((ASLtoATL _intersectPosASL) nearentities [["Landvehicle","SHIP","AIR","TANK"],15]) isequalto [];
+					};
                     if (_allowDebris) then {
                         _object = createSimpleObject [_selectedDebris, _intersectPosASL];
                         _object setDir random 360;
@@ -117,10 +120,12 @@ if (_status == 1 && _data isEqualType [] && !(_data isEqualTo [])) then {
     if (_debrisCounter >= _maxDebrisLimit) exitWith {};
     if (_x isEqualType [] && !(_x isEqualTo [])) then {
         _x params ["_selectedDebris","_posWorld", "_vectorDir", "_vectorUp"];
-        _object = createSimpleObject [_selectedDebris, _posWorld];
-        _object setPosWorld _posWorld;
-		_object setVectorDirAndUp [_vectorDir,_vectorUp];
-        _debrisCounter = _debrisCounter + 1;
+		if (((ASLtoATL _posWorld) nearentities [["Landvehicle","SHIP","AIR","TANK"],15]) isequalto []) then {
+			_object = createSimpleObject [_selectedDebris, _posWorld];
+			_object setPosWorld _posWorld;
+			_object setVectorDirAndUp [_vectorDir,_vectorUp];
+			_debrisCounter = _debrisCounter + 1;
+		};
     };
 } forEach _debrisLocations;
 
