@@ -196,13 +196,11 @@ class CfgEpochVehicles
         availableColors[] = {
 			{
 				"A3\Air_F_Exp\Plane_Civil_01\Data\btt_ext_01_Racer_co.paa",
-				"\x\addons\a3_epoch_community\textures\vehicle_customskins\btt_ext_01_Racer_brownblack_rusty.paa",
-				"\x\addons\a3_epoch_community\textures\vehicle_customskins\btt_ext_01_Tribal_brownblack_rusty.paa"
+				"\x\addons\a3_epoch_community\textures\vehicle_customskins\btt_ext_01_Racer_brownblack_rusty.paa"
 			},
 			{
 				"A3\Air_F_Exp\Plane_Civil_01\Data\btt_ext_02_Racer_co.paa",
-				"\x\addons\a3_epoch_community\textures\vehicle_customskins\btt_ext_02_Racer_brownblack_rusty.paa",
-				"\x\addons\a3_epoch_community\textures\vehicle_customskins\btt_ext_02_Tribal_brownblack_rusty.paa"
+				"\x\addons\a3_epoch_community\textures\vehicle_customskins\btt_ext_02_Racer_brownblack_rusty.paa"
 			}
 		};
     };
