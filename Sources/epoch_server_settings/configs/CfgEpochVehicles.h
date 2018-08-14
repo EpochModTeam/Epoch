@@ -66,6 +66,9 @@ class CfgEpochVehicles
 				"\A3\Soft_F_Gamma\SUV_01\Data\SUV_01_ext_02_CO.paa",
 				"\A3\Soft_F_Gamma\SUV_01\Data\SUV_01_ext_03_CO.paa",
 				"\A3\Soft_F_Gamma\SUV_01\Data\SUV_01_ext_04_CO.paa",
+				"\x\addons\a3_epoch_community\textures\vehicle_customskins\SUV_01_ext_02_black_rusty.paa",
+				"\x\addons\a3_epoch_community\textures\vehicle_customskins\SUV_01_ext_04_orange_rusty.paa",
+				"\x\addons\a3_epoch_community\textures\vehicle_customskins\SUV_01_ext_red_rusty.paa",
 				"\x\addons\a3_epoch_community\textures\vehicle_customskins\SUV_01_ext_rusty.paa"
 			}
 		};
@@ -156,9 +159,9 @@ class CfgEpochVehicles
 				"\a3\air_f\Heli_Light_01\Data\Skins\heli_light_01_ext_vrana_co.paa",
 				"\a3\air_f\Heli_Light_01\Data\Skins\heli_light_01_ext_wasp_co.paa",
 				"\a3\air_f\Heli_Light_01\Data\Skins\heli_light_01_ext_wave_co.paa",
-				"\x\addons\a3_epoch_community\textures\vehicle_customskins\Heli_Light_01_ext_white_rusty.paa",
-				"\x\addons\a3_epoch_community\textures\vehicle_customskins\Heli_Light_01_ext_white_rusty.paa",	// increase change
-				"\x\addons\a3_epoch_community\textures\vehicle_customskins\Heli_Light_01_ext_white_rusty.paa"	// increase change
+				"\x\addons\a3_epoch_community\textures\vehicle_customskins\Heli_Light_01_ext_blue_rusty.paa",
+				"\x\addons\a3_epoch_community\textures\vehicle_customskins\Heli_Light_01_ext_ION_rusty.paa",	
+				"\x\addons\a3_epoch_community\textures\vehicle_customskins\Heli_Light_01_ext_white_rusty.paa"
 			}
 		};
     };
@@ -173,6 +176,7 @@ class CfgEpochVehicles
 				"A3\Air_F_Exp\Plane_Civil_01\Data\btt_ext_01_Tribal_co.paa",
 				"\x\addons\a3_epoch_community\textures\vehicle_customskins\btt_ext_01_RedLine_brownblack_rusty.paa",
 				"\x\addons\a3_epoch_community\textures\vehicle_customskins\btt_ext_01_Tribal_brownblack_rusty.paa",
+				"\x\addons\a3_epoch_community\textures\vehicle_customskins\btt_ext_01_white_brownblack_rusty.paa",
 				"\x\addons\a3_epoch_community\textures\vehicle_customskins\btt_ext_01_white_browngreen_rusty.paa"
 			},
 			{
@@ -181,6 +185,7 @@ class CfgEpochVehicles
 				"A3\Air_F_Exp\Plane_Civil_01\Data\btt_ext_02_Tribal_co.paa",
 				"\x\addons\a3_epoch_community\textures\vehicle_customskins\btt_ext_02_RedLine_brownblack_rusty.paa",
 				"\x\addons\a3_epoch_community\textures\vehicle_customskins\btt_ext_02_Tribal_brownblack_rusty.paa",
+				"\x\addons\a3_epoch_community\textures\vehicle_customskins\btt_ext_02_white_brownblack_rusty.paa",
 				"\x\addons\a3_epoch_community\textures\vehicle_customskins\btt_ext_02_white_browngreen_rusty.paa"
 			}
 		};
