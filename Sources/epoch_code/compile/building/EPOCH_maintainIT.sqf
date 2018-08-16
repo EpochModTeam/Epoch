@@ -35,7 +35,7 @@ if (EPOCH_playerCrypto > 0) then {
   if (_maintainCount > 0) then {
 
     if (EPOCH_playerCrypto < _maintainCount) exitwith {
-      [format ["You need %1 Krypto to maintain your base.",_maintainCount], 5] call Epoch_message;
+      [format ["You need %1 Crypto to maintain your base.",_maintainCount], 5] call Epoch_message;
     };
 
     _rnd = format ["rmx_var_temp%1%2",floor random 100, selectRandom ["A","B","C","D","E","F"]];
@@ -54,7 +54,7 @@ if (EPOCH_playerCrypto > 0) then {
       EPOCH_maintainLockout = nil;
     };
 
-    [format["Cost %1 Krypto to maintain base.", _maintainCount], 5] call Epoch_message;
+    [format["Cost %1 Crypto to maintain base.", _maintainCount], 5] call Epoch_message;
   } else {
     ["Nothing needs Maintaining", 5] call Epoch_message;
   };
