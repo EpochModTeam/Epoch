@@ -49,7 +49,7 @@ if (_playerUID == Epoch_my_GroupUID || {_x select 0 == _playerUID}count (_modArr
 			_upgradePrice = parseNumber	(EPOCH_group_upgrade_lvl select (_found+3));
 			if ((EPOCH_playerCrypto-_upgradePrice) >= 0) then {
 				_upgradeSlots = EPOCH_group_upgrade_lvl select (_found+2);
-				_txt = format["Do you want to upgrade your group from %1 to %2 slots for %3 Krypto?",_groupSize,_upgradeSlots,_upgradePrice];
+				_txt = format["Do you want to upgrade your group from %1 to %2 slots for %3 Crypto?",_groupSize,_upgradeSlots,_upgradePrice];
 				[_txt,_upgradePrice] spawn {
                     params ["_txt","_upgradePrice"];
 					_ret = [_txt,"Epoch Group Menu",true,true] call BIS_fnc_GUImessage;
@@ -58,7 +58,7 @@ if (_playerUID == Epoch_my_GroupUID || {_x select 0 == _playerUID}count (_modArr
 					};
 				};
 			} else {
-				["You don't have enough Krypto to upgrade your group!","Epoch Group Menu",true,false] spawn BIS_fnc_GUImessage;
+				["You don't have enough Crypto to upgrade your group!","Epoch Group Menu",true,false] spawn BIS_fnc_GUImessage;
 			};
 		};
 	};
