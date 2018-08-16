@@ -49,7 +49,7 @@ if (isClass (_config >> _uiItem)) then {
 			_cryptoCount = _cryptoCount + _worth;
 		};
 	};
-	ctrlSetText [_CryptoInCtrl, (format["%1 Krypto", _cryptoCount])];
+	ctrlSetText [_CryptoInCtrl, (format["%1 Crypto", _cryptoCount])];
 	_cryptoCount = 0;
 	_sizeOut = lbSize _TraderItemsOutBox;
 	if (_sizeOut > 0) then {
@@ -68,5 +68,5 @@ if (isClass (_config >> _uiItem)) then {
 			_cryptoCount = _cryptoCount + _worth;
 		};
 	};
-	ctrlSetText [_CryptoOutCtrl, (format["%1 Krypto", _cryptoCount])];
+	ctrlSetText [_CryptoOutCtrl, (format["%1 Crypto", _cryptoCount])];
 };
