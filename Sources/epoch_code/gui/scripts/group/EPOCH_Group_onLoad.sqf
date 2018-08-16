@@ -71,7 +71,7 @@ if (_currentMaxMember < _groupSize) then {
 	if (_playerIsLeader || _playerIsMod) then {
 		_found = EPOCH_group_upgrade_lvl find _currentMaxMember;
 		if (count EPOCH_group_upgrade_lvl >= (_found+3)) then {
-			_BtnInvite ctrlSetText format ["Upgrade +%1 Slots for %2 Krypto",abs (_currentMaxMember-(EPOCH_group_upgrade_lvl select (_found+2))),EPOCH_group_upgrade_lvl select (_found+3)];
+			_BtnInvite ctrlSetText format ["Upgrade +%1 Slots for %2 Crypto",abs (_currentMaxMember-(EPOCH_group_upgrade_lvl select (_found+2))),EPOCH_group_upgrade_lvl select (_found+3)];
 		} else {
 			_BtnInvite ctrlSetText format ["No Upgrade Available!"];
 			_BtnInvite ctrlEnable false;
