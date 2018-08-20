@@ -12,7 +12,8 @@
     Github:
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_config/Configs/CfgActionMenu/CfgActionMenu_map.hpp
 */
-
+/*
+// Moved to E-Pad
 class playerMarker_on
 {
 	condition = "!EPOCH_PlayerMarkerOn";
@@ -41,3 +42,4 @@ class deathMarker_off
 	icon = "x\addons\a3_epoch_community\icons\skull.paa";
 	tooltip = "Toggle OFF death marker";
 };
+*/

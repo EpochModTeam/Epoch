@@ -157,4 +157,4 @@ if (_animate) then {
 		_display displayCtrl _x ctrlcommit 0.5;
 	} foreach [1614,1615,1714,1715];
 };
-ctrlSetFocus (_display displayctrl 1600);
+ctrlSetFocus (_display displayctrl 1599);

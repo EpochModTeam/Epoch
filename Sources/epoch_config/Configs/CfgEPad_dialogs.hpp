@@ -548,6 +548,16 @@ class epoch_tablet_gui
 			w = 0.635763 * safezoneW;
 			h = 0.80322 * safezoneH;
 		};
+		class Spacer: RscButtonPDATrans
+		{
+			idc = 1599;
+			x = 0 * safezoneW + safezoneX;
+			y = 0 * safezoneH + safezoneY;
+			w = 0 * safezoneW;
+			h = 0 * safezoneH;
+			action = "";
+			tooltip = "";
+		};
 		class close: RscButtonPDATrans
 		{
 			idc = 1600;

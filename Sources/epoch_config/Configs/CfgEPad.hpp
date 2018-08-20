@@ -4,7 +4,8 @@ class e_pad_config
 		{"EPOCH_AutoEarplug","true"},
 		{"EPOCH_debugMode","false"},
 		{"EPOCH_PlayerMarkerOn","false"},
-		{"EPOCH_DeathMarkerOn","false"}
+		{"EPOCH_DeathMarkerOn","false"},
+		{"EPOCH_EpadButtonOn","true"}
 	};
 	class Apps
 	{
@@ -41,6 +42,17 @@ class e_pad_config
 			Tooltip = "Settings";
 			ToggleVar = "";
 			ToggleAble = "false";
+			class EpadButton {
+				ButtonText = "";
+				Description = "Epad Dyna";
+				Icon = "epoch_code\customs\images\epoch_tablet_back.paa";
+				color[] = {1,0,0,1};
+				colortoggled[] = {0,1,0,1};
+				action = "";
+				Tooltip = "Add / Remove E-Pad Button from DynaMenu (you can still open it with F10)";
+				ToggleVar = "EPOCH_EpadButtonOn";
+				ToggleAble = "true";
+			};
 			class Reset {
 				ButtonText = "Reset";
 				Description = "Reset Settings";
