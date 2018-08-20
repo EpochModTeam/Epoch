@@ -231,6 +231,7 @@ _lootBubble = {
 		_jammer = nearestObjects [_lootLoc, ["PlotPole_EPOCH","ProtectionZone_Invisible_F"], _buildingJammerRange];
 		if (!(_objects isEqualTo[]) && (_jammer isEqualTo[])) then {
 			_building = selectRandom _objects;
+			if (_building getvariable ["EPOCH_Skiploot",false]) exitwith {};
 			if !(_building in EPOCH_LootedBlds) then {
 				_others = _building nearEntities[["Epoch_Male_F", "Epoch_Female_F"], 15];
 				if (_others isEqualTo[]) then {
