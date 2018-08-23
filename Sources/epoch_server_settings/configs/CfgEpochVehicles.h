@@ -33,7 +33,8 @@ class CfgEpochVehicles
 				"\x\addons\a3_epoch_community\textures\vehicle_customskins\Hatchback_01_ext_darkbeige_rusty.paa",
 				"\x\addons\a3_epoch_community\textures\vehicle_customskins\Hatchback_01_ext_darkblue_rusty.paa",
 				"\x\addons\a3_epoch_community\textures\vehicle_customskins\Hatchback_01_ext_grey_rusty.paa",
-				"\x\addons\a3_epoch_community\textures\vehicle_customskins\Hatchback_01_ext_orange_rusty.paa.",
+				"\x\addons\a3_epoch_community\textures\vehicle_customskins\Hatchback_01_ext_orange_rusty.paa",
+				"\x\addons\a3_epoch_community\textures\vehicle_customskins\Hatchback_01_ext_beige_rusty.paa",
 				"\x\addons\a3_epoch_community\textures\vehicle_customskins\Hatchback_01_ext_tgreen_rusty.paa"
 			}
 		};
