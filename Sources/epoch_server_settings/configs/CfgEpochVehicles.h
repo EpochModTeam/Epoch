@@ -29,7 +29,13 @@ class CfgEpochVehicles
 				"\A3\soft_f_gamma\Hatchback_01\data\Hatchback_01_ext_BASE08_CO.paa",
 				"\A3\soft_f_gamma\Hatchback_01\data\Hatchback_01_ext_BASE09_CO.paa",
 				"\x\addons\a3_epoch_community\textures\vehicle_customskins\Hatchback_01_ext_white_rusty.paa",
-				"\x\addons\a3_epoch_community\textures\vehicle_customskins\Hatchback_01_ext_white_rusty.paa"	// increase change
+				"\x\addons\a3_epoch_community\textures\vehicle_customskins\Hatchback_01_ext_bluebright_rusty.paa",
+				"\x\addons\a3_epoch_community\textures\vehicle_customskins\Hatchback_01_ext_darkbeige_rusty.paa",
+				"\x\addons\a3_epoch_community\textures\vehicle_customskins\Hatchback_01_ext_darkblue_rusty.paa",
+				"\x\addons\a3_epoch_community\textures\vehicle_customskins\Hatchback_01_ext_grey_rusty.paa",
+				"\x\addons\a3_epoch_community\textures\vehicle_customskins\Hatchback_01_ext_orange_rusty.paa",
+				"\x\addons\a3_epoch_community\textures\vehicle_customskins\Hatchback_01_ext_beige_rusty.paa",
+				"\x\addons\a3_epoch_community\textures\vehicle_customskins\Hatchback_01_ext_tgreen_rusty.paa"
 			}
 		};
     };
@@ -190,7 +196,16 @@ class CfgEpochVehicles
 			}
 		};
     };
-	
+    class I_Heli_Light_03_unarmed_EPOCH {
+        textureSelectionIndex[] = {0};
+        availableColors[] = {
+			{
+				"A3\air_f_epb\Heli_Light_03\data\Heli_Light_03_base_CO.paa",
+				"\x\addons\a3_epoch_community\textures\vehicle_customskins\Heli_Light_03_base_rusty.paa"
+			}
+		};
+    };
+	class I_Heli_Light_03_unarmed_EPOCH: I_Heli_Light_03_unarmed_EPOCH{};
     class C_Plane_Civil_01_racing_F {
         textureSelectionIndex[] = {0,1};
         availableColors[] = {
