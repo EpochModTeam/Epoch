@@ -543,6 +543,7 @@ class epoch_tablet_gui
 		{
 			idc = 1200;
 			text = "epoch_code\customs\images\epoch_tablet_back.paa";
+//			text = "x\addons\a3_epoch_code\Data\UI\epad\epoch_tablet_back.paa";
 			x = 0.184983 * safezoneW + safezoneX;
 			y = 0.114894 * safezoneH + safezoneY;
 			w = 0.635763 * safezoneW;
@@ -914,6 +915,7 @@ class epoch_tablet_gui
 		{
 			idc = 1714;
 			text = "epoch_code\customs\images\back_ca.paa";
+//			text = "x\addons\a3_epoch_code\Data\UI\epad\back_ca.paa";
 			tooltip = "prev page";                                                             
 			x = 0.414086 * safezoneW + safezoneX;
 			y = 0.599027 * safezoneH + safezoneY;
@@ -958,6 +960,7 @@ class epoch_tablet_gui
 		{
 			idc = 1715;
 			text = "epoch_code\customs\images\next.paa";
+//			text = "x\addons\a3_epoch_code\Data\UI\epad\next.paa";
 			tooltip = "next page";                                                             
 			x = 0.528638 * safezoneW + safezoneX;
 			y = 0.599027 * safezoneH + safezoneY;
@@ -1076,6 +1079,7 @@ class server_info_picture
        {
 			idc = 98999;
 			text = "epoch_code\customs\images\server_info_ca.paa";
+//			text = "x\addons\a3_epoch_code\Data\UI\epad\server_info_ca.paa";
 			x = 0.184983 * safezoneW + safezoneX;
 			y = 0.114894 * safezoneH + safezoneY;
 			w = 0.635763 * safezoneW;
