@@ -205,7 +205,6 @@ class CfgEpochVehicles
 			}
 		};
     };
-	class I_Heli_Light_03_unarmed_EPOCH: I_Heli_Light_03_unarmed_EPOCH{};
     class C_Plane_Civil_01_racing_F {
         textureSelectionIndex[] = {0,1};
         availableColors[] = {
