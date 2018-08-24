@@ -23,7 +23,7 @@
 	BOOL
 */
 //[[[cog import generate_private_arrays ]]]
-private ["_CamCountLimit","_alljammer","_buildingAllowed","_buildingCountLeader","_buildingCountLimit","_buildingCountPerMember","_buildingJammerRange","_bypassJammer","_c","_cfgBaseBuilding","_config","_ghostClass","_isAllowed","_jammer","_jammerGLOnly","_jammerPerGroup","_limitNearby","_maxBuildingHeight","_membercount","_minJammerDistance","_myPosATL","_nearestJammer","_obj","_objType","_objectscount","_ownedJammerExists","_range","_restricted","_restrictedArray","_restrictedLocations","_restrictedLocationsArray","_restrictedLocationsRange","_simulClass","_staticClass","_storageCountLeader","_storageCountLimit","_storageCountPerMember","_useGroupCountLimits","_useSplitCountLimits"];
+private ["_StorageClasses","_BuildingClasses","_CamCountLimit","_alljammer","_buildingAllowed","_buildingCountLeader","_buildingCountLimit","_buildingCountPerMember","_buildingJammerRange","_bypassJammer","_c","_cfgBaseBuilding","_config","_ghostClass","_isAllowed","_jammer","_jammerGLOnly","_jammerPerGroup","_limitNearby","_maxBuildingHeight","_membercount","_minJammerDistance","_myPosATL","_nearestJammer","_obj","_objType","_objectscount","_ownedJammerExists","_range","_restricted","_restrictedArray","_restrictedLocations","_restrictedLocationsArray","_restrictedLocationsRange","_simulClass","_staticClass","_storageCountLeader","_storageCountLimit","_storageCountPerMember","_useGroupCountLimits","_useSplitCountLimits"];
 //[[[end]]]
 
 _buildingAllowed = true;
@@ -61,6 +61,9 @@ if(_minJammerDistance == 0)then{_minJammerDistance = _buildingJammerRange*3};
 if(_maxBuildingHeight == 0)then{_maxBuildingHeight = 100};
 if(_jammerPerGroup == 0)then{_jammerPerGroup = 2};
 if(_CamCountLimit == 0)then{_CamCountLimit = 2};
+
+_StorageClasses = ["Buildable_Storage","Buildable_Storage_SIM","Buildable_Storage_Ghost","Constructions_lockedstatic_F","Secure_Storage_Temp"];
+_BuildingClasses = ["Constructions_static_F","Constructions_foundation_F","Const_Ghost_EPOCH"];
 
 // input
 params ["_objType"];
@@ -112,21 +115,21 @@ if !(_jammer isEqualTo []) then {
 				_buildingCountLimit = _buildingCountLeader + (_buildingCountPerMember * _membercount);
 			};
 			if (_useSplitCountLimits) then {
-				if(_objType in ["WorkBench_EPOCH","StorageShelf_EPOCH","Tipi_EPOCH","TentA_EPOCH","TentDome_EPOCH","LockBox_EPOCH","Safe_EPOCH","StorageShelf_SIM_EPOCH","LockBox_SIM_EPOCH","Safe_SIM_EPOCH","Workbench_SIM_EPOCH","Tipi_SIM_EPOCH"]) then {
-					if ((count (nearestObjects[_nearestJammer,["Buildable_Storage","Constructions_lockedstatic_F","LockBox_SIM_EPOCH","Safe_SIM_EPOCH","StorageShelf_SIM_EPOCH","WorkBench_SIM_EPOCH"],_buildingJammerRange]-[_obj])) >= _storageCountLimit) exitwith {
+				if({_objType iskindof _x} count _StorageClasses > 0) then {
+					if ((count (nearestObjects[_nearestJammer,_StorageClasses,_buildingJammerRange]-[_obj])) >= _storageCountLimit) exitwith {
 						_buildingAllowed = false;
 						[format["Building Disallowed: Max. %1 Storage Objects",_storageCountLimit],5] call Epoch_message
 					};
 				}
 				else {
-					if ((count (nearestObjects[_nearestJammer,["Constructions_static_F","Constructions_foundation_F","Const_Ghost_EPOCH"],_buildingJammerRange]-[_obj])) >= _buildingCountLimit) exitwith {
+					if ((count (nearestObjects[_nearestJammer,_BuildingClasses,_buildingJammerRange]-[_obj])) >= _buildingCountLimit) exitwith {
 						_buildingAllowed = false;
 						[format["Building Disallowed: Max. %1 Constructions",_buildingCountLimit],5] call Epoch_message
 					};
 				};
 			}
 			else {
-				if ((count (nearestObjects [_nearestJammer,["Buildable_Storage","Constructions_lockedstatic_F","LockBox_SIM_EPOCH","Safe_SIM_EPOCH","StorageShelf_SIM_EPOCH","WorkBench_SIM_EPOCH","Constructions_static_F","Constructions_foundation_F","Const_Ghost_EPOCH"],_buildingJammerRange]-[_obj])) >= _buildingCountLimit) exitwith {
+				if ((count (nearestObjects [_nearestJammer,(_StorageClasses + _BuildingClasses),_buildingJammerRange]-[_obj])) >= _buildingCountLimit) exitwith {
 					_buildingAllowed = false;
 					[format["Building Disallowed, Frequency Overloaded: Limit %1",_buildingCountLimit],5] call Epoch_message
 				};
