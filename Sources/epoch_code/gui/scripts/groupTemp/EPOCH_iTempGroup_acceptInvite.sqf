@@ -13,6 +13,9 @@
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_code/gui/groupTemp/EPOCH_itempGroup_acceptInvite.sqf
 */
 if (Epoch_invited_tempGroupUID != "") then {
+	if !(Epoch_my_tempGroupUID == "") exitwith {
+		["Leave your current Group first...",5] call Epoch_Message;
+	};
 	[Epoch_invited_tempGroupUID,getPlayerUID player,true,false,player,Epoch_personalToken] remoteExec ["EPOCH_server_updatePlayerTempGroup",2];
 };
 (findDisplay -1500) closeDisplay 0;
