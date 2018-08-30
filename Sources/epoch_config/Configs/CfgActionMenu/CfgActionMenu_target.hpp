@@ -50,14 +50,14 @@ class veh_lock
 	condition = "if (dyna_cursorTarget iskindof 'Bicycle') exitwith {false};dyna_isVehicle && !dyna_locked";
 	action = "[dyna_cursorTarget, true, player, Epoch_personalToken] remoteExec ['EPOCH_server_lockVehicle',2];";
 	icon = "x\addons\a3_epoch_code\Data\UI\buttons\pad_cannot_lock.paa";
-	tooltip = "Lock";
+	tooltipcode = "format['Lock %1',getText(configFile >> 'CfgVehicles' >> (typeof dyna_cursorTarget) >> 'displayName')]";
 };
 class veh_unLock
 {
 	condition = "dyna_isVehicle && dyna_locked";
 	action = "[dyna_cursorTarget, false, player, Epoch_personalToken] remoteExec ['EPOCH_server_lockVehicle',2];";
 	icon = "x\addons\a3_epoch_code\Data\UI\buttons\pad_can_unlock.paa";
-	tooltip = "Unlock";
+	tooltipcode = "format['Unlock %1',getText(configFile >> 'CfgVehicles' >> (typeof dyna_cursorTarget) >> 'displayName')]";
 };
 
 //Trader interaction
