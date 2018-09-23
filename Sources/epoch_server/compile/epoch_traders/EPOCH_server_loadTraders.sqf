@@ -205,6 +205,12 @@ for "_i" from 0 to (_maxTraderLimit-1) do {
 					};
 					_dir = random 360;
 					_agent call _TraderInit;
+					if (surfaceiswater _pos) then {
+						_agent setPosASL _pos;
+					}
+					else {
+						_agent setPosATL _pos;
+					};
 					if (_arrchanged) then {
 //						diag_log format ["EPOCH_DEBUG: TraderSlot: %1 | Saved",_i];
 						["AI_ITEMS", _objHiveKey, EPOCH_expiresAIdata, _arr] call EPOCH_fnc_server_hiveSETEX;

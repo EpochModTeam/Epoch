@@ -68,6 +68,12 @@ for "_i" from 1 to _spawnCount do {
 					};
 				};
 				_agent allowdamage !_TraderGodMode;
+				if (surfaceiswater _pos) then {
+					_agent setPosASL _pos;
+				}
+				else {
+					_agent setPosATL _pos;
+				};
 				_slot = EPOCH_TraderSlots deleteAt 0;
 				_agent setVariable["AI_SLOT", _slot, true];
 				_agent setVariable["AI_ITEMS", EPOCH_starterTraderItems, true];
