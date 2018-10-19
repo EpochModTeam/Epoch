@@ -69,36 +69,31 @@ if (_slot != -1) then {
 			_itemWorth = round (_itemWorth*(_itemQty/_maxrnd));
 			_makeTradeIn = false;
 			if (_item isKindOf "Air" || _item isKindOf "Ship" || _item isKindOf "LandVehicle" || _item isKindOf "Tank") then{
-				_vehicles = _trader nearEntities[[_item], 30];
+				_vehicles = (nearestobjects [_trader,[_item],30]) select {owner _x == owner _player && alive _x};
 				if !(_vehicles isEqualTo[]) then {
 					_vehicle = _vehicles select 0;
-					if (!isNull _vehicle) then {
-						_playerNetID = owner _player;
-						if (_playerNetID == (owner _vehicle)) then {
-							_vehSlot = _vehicle getVariable["VEHICLE_SLOT", "ABORT"];
-                            if (!_vehicleSold && (_vehSlot != "ABORT" || _EnableTempVehTrade)) then {
-								_vehicleSold = true;
-								_makeTradeIn = true;
-								if (_vehSlot == "ABORT") exitwith {
-									_itemQty = 0;
-									_itemsIn set [_foreachindex,[_item,_itemQty]];
-									removeFromRemainsCollector [_vehicle];
-									deleteVehicle _vehicle;
-								};
-                                _BaseClass = _vehicle getvariable ["VEHICLE_BaseClass",""];
-                                if !(_BaseClass isequalto "") then {
-                                    _item = _BaseClass;
-									_itemsIn set [_foreachindex,[_item,_itemQty]];
-                                };
-                                removeFromRemainsCollector [_vehicle];
-								deleteVehicle _vehicle;
-								_vehHiveKey = format["%1:%2", (call EPOCH_fn_InstanceID), _vehSlot];
-								_VAL = [];
-								["Vehicle", _vehHiveKey, _VAL] call EPOCH_fnc_server_hiveSET;
-								EPOCH_VehicleSlots pushBack _vehSlot;
-								missionNamespace setVariable ['EPOCH_VehicleSlotCount', count EPOCH_VehicleSlots, true];
-							};
+					_vehSlot = _vehicle getVariable["VEHICLE_SLOT", "ABORT"];
+					if (!_vehicleSold && (_vehSlot != "ABORT" || _EnableTempVehTrade)) then {
+						_vehicleSold = true;
+						_makeTradeIn = true;
+						if (_vehSlot == "ABORT") exitwith {
+							_itemQty = 0;
+							_itemsIn set [_foreachindex,[_item,_itemQty]];
+							removeFromRemainsCollector [_vehicle];
+							deleteVehicle _vehicle;
 						};
+						_BaseClass = _vehicle getvariable ["VEHICLE_BaseClass",""];
+						if !(_BaseClass isequalto "") then {
+							_item = _BaseClass;
+							_itemsIn set [_foreachindex,[_item,_itemQty]];
+						};
+						removeFromRemainsCollector [_vehicle];
+						deleteVehicle _vehicle;
+						_vehHiveKey = format["%1:%2", (call EPOCH_fn_InstanceID), _vehSlot];
+						_VAL = [];
+						["Vehicle", _vehHiveKey, _VAL] call EPOCH_fnc_server_hiveSET;
+						EPOCH_VehicleSlots pushBack _vehSlot;
+						missionNamespace setVariable ['EPOCH_VehicleSlotCount', count EPOCH_VehicleSlots, true];
 					};
 				};
 			}

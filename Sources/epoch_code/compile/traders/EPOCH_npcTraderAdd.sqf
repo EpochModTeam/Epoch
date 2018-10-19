@@ -65,7 +65,7 @@ if !(isNull EPOCH_lastNPCtradeTarget) then {
 						_vehicle = _x;
 						if (local _vehicle && (typeof _vehicle) isequalto _uiItem) then {
 							{
-								if ((["wheel",tolower _x] call bis_fnc_instring) || _x isequalto "HitEngine") then {
+								if ((["wheel",tolower _x] call bis_fnc_instring) || (tolower _x) isequalto "hitengine") then {
 									if (((getAllHitPointsDamage _vehicle) select 2 select _foreachindex) >= 1) then {
 										_allowAdd = false;
 										_errormsg = "Cannot be sold - too much damage";
