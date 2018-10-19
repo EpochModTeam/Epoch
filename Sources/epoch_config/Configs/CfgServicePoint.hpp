@@ -18,11 +18,29 @@ class CfgServicePoint {
 									"MarkerText2"
 								}
 */
-								{								// Central
-									{13325,14477,0},						// Pos
+								{											// Kavala Pier
+									{3238,12907,0},							// Pos
 									40,										// max distance
-									{"Landvehicle","Ship","Tank","AIR"},	// Vehicle Types for SP
-									"Service Point Land / Ship / Air"		// Marker Text (Leave it Blank to disable Marker)
+									{"Ship"},								// Vehicle Types for SP
+									"Service Point Ship"					// Marker Text (Leave it Blank to disable Marker)
+								},
+								{											// Kavala Workshop
+									{3755,13472.5,0},						// Pos
+									40,										// max distance
+									{"Landvehicle","TANK"},					// Vehicle Types for SP
+									"Service Point Land"					// Marker Text (Leave it Blank to disable Marker)
+								},
+								{											// Airfield Workshop
+									{14160,16533.5,0},						// Pos
+									40,										// max distance
+									{"Landvehicle","TANK"},					// Vehicle Types for SP
+									"Service Point Land"					// Marker Text (Leave it Blank to disable Marker)
+								},
+								{											// Airfield Terminal
+									{14641.5,16754.5,0},					// Pos
+									40,										// max distance
+									{"AIR"},								// Vehicle Types for SP
+									"Service Point AIR"						// Marker Text (Leave it Blank to disable Marker)
 								}
 							};
 	};
