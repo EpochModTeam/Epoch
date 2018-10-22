@@ -15,13 +15,23 @@
 
 class EpochMissionList{
 //	traderMissionClasses[] = {"missionMonster","missionDelivery","missionEscort","missionUav","missionSapper","missionSkull","missionMilitary","gameCaptureTheJammer","gameCarRace","infoTime","infoName","infoNews","infoVehicles","infoPeople","helpAirDrop","debugResetMission"}; //Exclude from here to remove from menu and trigger
-	traderMissionClasses[] = {"missionfishing","missionDelivery","missionUav","infoTime","infoName","infoNews","infoVehicles","infoPeople","debugResetMission"}; //Exclude from here to remove from menu and trigger
+	traderMissionClasses[] = {"missionDocCheck","missionfishing","missionDelivery","missionUav","infoTime","infoName","infoNews","infoVehicles","infoPeople","debugResetMission"}; //Exclude from here to remove from menu and trigger
 	traderMissionActiveNames[] = {}; //Not currently used (WIP)
 	traderMissionLongDesc[] = {}; //Not currently used (WIP)
 	traderMissionActiveLongDesc[] = {}; //Not currently used (WIP)
 };
 
 class epochMissions {
+	class missionDocCheck{
+		missionName = "Check unknown documents"; //Name of mission as it appears in trader list
+		missionToolTip= "Trader can check your unknown document and eventually find out, what it is."; //Tooltip for trader menu
+		missionDesc = "You must have a unknown document in your inventory. The trader will check, what it is."; //Misison description as it appears in trader menu.
+		missionDeny = ""; //Specify a call compile condition. If it returns true the mission will be dis-allowed. Title will be rust coloured and prefixed with NOT ALLOWED.
+		missionDenyToolTip = ""; //Provides a tooltip explaining why the mission is denied. prefixed with NOT ALLOWED.
+		tasksList[] = {"DocCheckAccept"}; //Must contain a list of tasks used for this mission, in order. Used to control trader menu when mission is active. WIP - To control mission from this array alone.
+		missionTrigger = ""; //A dynamic trigger that sets off the mission anywhere in-game. e.g. player != vehicle player Not currently used (WIP)
+		missionTriggerDialog[] = {""}; //Randomly selected dialogue that is shown when mission is dynamically triggered. Not currently used (WIP)
+	};
 	class missionfishing{
 		missionName = "Bring me a fresh Fish"; //Name of mission as it appears in trader list
 		missionToolTip= "Bring the Trader a fresh Fish from the Water."; //Tooltip for trader menu
