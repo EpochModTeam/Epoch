@@ -15,7 +15,8 @@
 //[[[cog import generate_private_arrays ]]]
 private [	"_TraderGodMode","_StaticTraderItemPurge","_DynamicTraderRespawnCount","_TraderItemsDeleteRestart","_TraderInit","_TraderItemsClean","_newstock","_agent","_aiTables",
 			"_arr","_config","_currentStock","_existingStock","_indexStock","_markers","_objHiveKey","_pos","_randomAIUniform","_response","_response2","_schedule",
-			"_serverSettingsConfig","_staticTrader","_staticTradersArrCount","_staticTradersArray","_storedVehicleLimit","_traderSlotIndex","_work","_arrchanged","_deleteat","_maxrnd"
+			"_serverSettingsConfig","_staticTrader","_staticTradersArrCount","_staticTradersArray","_storedVehicleLimit","_traderSlotIndex","_work","_arrchanged","_deleteat","_maxrnd",
+			"_WinterDeco","_HelloweenDeco"
 		];
 //[[[end]]]
 params [["_maxTraderLimit",0]];
@@ -34,6 +35,9 @@ _DynamicTraderRespawnCount = [_serverSettingsConfig, "DynamicTraderRespawnCount"
 _TraderItemCountPerItem = [_serverSettingsConfig, "TraderItemCountPerItem", [100,100]] call EPOCH_fnc_returnConfigEntry;
 _TraderItemsDeleteRestart = [_serverSettingsConfig, "TraderItemsDeleteRestart", []] call EPOCH_fnc_returnConfigEntry;
 
+_WinterDeco = (Epoch_ServerRealtime select 1) isequalto 12;
+_HelloweenDeco = ((Epoch_ServerRealtime select 1) == 10 && (Epoch_ServerRealtime select 2) >= 24) || ((Epoch_ServerRealtime select 1) == 11 && (Epoch_ServerRealtime select 2) <= 3);
+
 _TraderInit = {
 	_this allowdamage !_TraderGodMode;
 	_this setDir _dir;
@@ -47,6 +51,10 @@ _TraderInit = {
 		_this setBehaviour "CARELESS";
 		_this setCombatMode "RED";
 		_this setSkill 0;
+		if (_HelloweenDeco) then {
+			removeHeadgear _this;
+			_this addHeadgear (selectrandom ["thor_mask_epoch","iron_mask_epoch","wolf_mask_epoch","pkin_mask_epoch","clown_mask_epoch","hockey_mask_epoch","plague_mask_epoch","ghostface_mask_epoch","skull_mask_epoch","witch_mask_epoch"]);
+		};
 	};
 };
 _TraderItemsClean = {
@@ -156,7 +164,7 @@ for "_i" from 0 to (_maxTraderLimit-1) do {
 		};
 		EPOCH_TraderSlots deleteAt _traderSlotIndex;
 		_agent = objnull;
-		if ((Epoch_ServerRealtime select 1) isequalto 12) then {
+		if (_WinterDeco) then {
 			_agent = createvehicle ["snowmanDeco_EPOCH", _pos, [], 0, "NONE"];
 		}
 		else {
@@ -194,7 +202,7 @@ for "_i" from 0 to (_maxTraderLimit-1) do {
 				if !(count (_arr select 0) >= _DynamicTraderRespawnCount) then {
 					EPOCH_TraderSlots deleteAt _traderSlotIndex;
 					_agent = objnull;
-					if ((Epoch_ServerRealtime select 1) isequalto 12) then {
+					if (_WinterDeco) then {
 						_agent = createvehicle ["snowmanDeco_EPOCH", _pos, [], 0, "NONE"];
 					}
 					else {

@@ -13,7 +13,10 @@
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server/compile/epoch_traders/EPOCH_server_spawnTraders.sqf
 */
 //[[[cog import generate_private_arrays ]]]
-private ["_serverSettingsConfig","_acceptableBlds","_agent","_aiClass","_aiTables","_buildingHome","_buildingWork","_buildings","_checkBuilding","_config","_endTime","_home","_homes","_markers","_objHiveKey","_pos","_position","_randomAIUniform","_return","_schedule","_slot","_spawnCount","_startTime","_traderHomes","_usedBuildings","_work"];
+private [	"_serverSettingsConfig","_acceptableBlds","_agent","_aiClass","_aiTables","_buildingHome","_buildingWork","_buildings","_checkBuilding","_config","_endTime","_home",
+			"_homes","_markers","_objHiveKey","_pos","_position","_randomAIUniform","_return","_schedule","_slot","_spawnCount","_startTime","_traderHomes","_usedBuildings","_work",
+			"_WinterDeco","_HelloweenDeco"
+];
 //[[[end]]]
 _serverSettingsConfig = configFile >> "CfgEpochServer";
 _TraderGodMode = [_serverSettingsConfig, "TraderGodMode", false] call EPOCH_fnc_returnConfigEntry;
@@ -22,6 +25,10 @@ _config = (configFile >> "CfgEpoch" >> worldName);
 _aiTables = getArray(_config >> "traderUniforms");
 _acceptableBlds = getArray(_config >> "traderBlds");
 _traderHomes = getArray(_config >> "traderHomes");
+
+_WinterDeco = (Epoch_ServerRealtime select 1) isequalto 12;
+_HelloweenDeco = ((Epoch_ServerRealtime select 1) == 10 && (Epoch_ServerRealtime select 2) >= 24) || ((Epoch_ServerRealtime select 1) == 11 && (Epoch_ServerRealtime select 2) <= 3);
+
 _usedBuildings = [];
 _checkBuilding = {
 	private ["_return"];
@@ -56,7 +63,7 @@ for "_i" from 1 to _spawnCount do {
 					_pos = _work;
 				};
 				_agent = objnull;
-				if ((Epoch_ServerRealtime select 1) isequalto 12) then {
+				if (_WinterDeco) then {
 					_agent = createvehicle ["snowmanDeco_EPOCH", _pos, [], 0, "NONE"];
 				}
 				else {
@@ -65,6 +72,10 @@ for "_i" from 1 to _spawnCount do {
 					_agent addUniform _randomAIUniform;
 					if !(EPOCH_forceStaticTraders) then {
 						[_agent, _home, [_work, _schedule]] execFSM "\epoch_server\system\Trader_brain.fsm";
+					};
+					if (_HelloweenDeco) then {
+						removeHeadgear _agent;
+						_agent addHeadgear (selectrandom ["thor_mask_epoch","iron_mask_epoch","wolf_mask_epoch","pkin_mask_epoch","clown_mask_epoch","hockey_mask_epoch","plague_mask_epoch","ghostface_mask_epoch","skull_mask_epoch","witch_mask_epoch"]);
 					};
 				};
 				_agent allowdamage !_TraderGodMode;
