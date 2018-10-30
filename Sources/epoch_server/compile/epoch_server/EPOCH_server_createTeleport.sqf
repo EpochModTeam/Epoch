@@ -110,13 +110,7 @@ if !(_debugBox isEqualTo "") then {
 } forEach(getArray(_configWorld >> "propsPos"));
 
 {
-	_enterClass = _x select 0;
-
-	_useWorldPos = false;
-	if (count _x >= 5) then {
-		_useWorldPos = (_x select 4) isEqualTo "true";
-	};
-	_pos1 = _x select 1;
+	_x params ["_enterClass","_pos1","_exitClass","_pos",["_useWorldPos",false]];
 
 	// allow forth position element to set direction if set
 	_dir1 = 0;
@@ -129,8 +123,6 @@ if !(_debugBox isEqualTo "") then {
 		_pos1 = asltoatl (_debug modeltoworldworld _pos1);
 	};
 
-	_exitClass = _x select 2;
-	_pos = _x select 3;
 	// allow forth position element to set direction if set
 	if (_pos isEqualType [] && {count _pos >= 4}) then {
 		_dir2 = _pos deleteAt 3;
