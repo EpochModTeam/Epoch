@@ -34,7 +34,7 @@ class DocCheckStart{
 	markerVisible			= 0;
 	markerRadius 			= 0;
 	markerText 				= "";
-	initcall 				= "EPOCH_Mission_StartPos = getpos player";
+	initcall 				= "EPOCH_Mission_StartPos = getposatl player";
 	cleanUpCall 			= "EPOCH_Mission_StartPos = nil;";
 	dialogues[]				= {
 		{
@@ -48,7 +48,7 @@ class DocCheckStart{
 	};
 	callevents[]			= {
 		{
-			"player distance EPOCH_Mission_StartPos > 5",
+			"(getposatl player) distance EPOCH_Mission_StartPos > 5",
 			"[selectrandom ['Abort - Come back or I can not check your document!','Abort - Hey, I need your document. Come back!','Abort - If you run away, I can not check your document!'],5,[[0,0,0,0.5],[1,0.5,0,1]]] call epoch_message",
 			{"DocCheckAbord"}
 		},
@@ -61,7 +61,7 @@ class DocCheckStart{
 	abandonTime 			= 240;
 	failedCondition 		= "!(alive player)";
 	faileddialogues[] 		= {};
-	completeCondition		= "'ItemDocument' in magazines player && diag_tickTime - EPOCH_task_startTime >= 12 && alive player && player distance EPOCH_Mission_StartPos <= 5";
+	completeCondition		= "'ItemDocument' in magazines player && diag_tickTime - EPOCH_task_startTime >= 12 && alive player && (getposatl player) distance EPOCH_Mission_StartPos <= 5";
 	completedialogues[] 	= {};
 	completedCALL 			= "if !('ItemDocument' in magazines player) exitwith {}; player removeMagazine 'ItemDocument'; if ((random 100) > 70) exitwith {[selectrandom ['Oh no, your document is too much damaged. Sorry!','Sorry, I can not read this document. It is only trash. Sorry!'],5] call epoch_message};_randomdoc = selectRandomWeighted ['ItemVehDoc1',10,'ItemVehDoc2',6,'ItemVehDoc3',4,'ItemVehDoc4',2,'ItemVehDocRara',1]; [format ['Oh great, it is a %1 - I put it in your pocket',_randomdoc call EPOCH_itemDisplayName],5,[[0,0,0,0.5],[1,0.5,0,1]]] call Epoch_Message; _randomdoc call EPOCH_fnc_addItemOverflow";
 	reward[] 				= {};
