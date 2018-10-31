@@ -15,7 +15,7 @@
 //[[[cog import generate_private_arrays ]]]
 private [	"_serverSettingsConfig","_acceptableBlds","_agent","_aiClass","_aiTables","_buildingHome","_buildingWork","_buildings","_checkBuilding","_config","_endTime","_home",
 			"_homes","_markers","_objHiveKey","_pos","_position","_randomAIUniform","_return","_schedule","_slot","_spawnCount","_startTime","_traderHomes","_usedBuildings","_work",
-			"_WinterDeco","_HelloweenDeco"
+			"_WinterDeco","_HelloweenDeco","_buildingJammerRange"
 ];
 //[[[end]]]
 _serverSettingsConfig = configFile >> "CfgEpochServer";
@@ -25,6 +25,7 @@ _config = (configFile >> "CfgEpoch" >> worldName);
 _aiTables = getArray(_config >> "traderUniforms");
 _acceptableBlds = getArray(_config >> "traderBlds");
 _traderHomes = getArray(_config >> "traderHomes");
+_buildingJammerRange = ["CfgEpochClient", "buildingJammerRange", 75] call EPOCH_fnc_returnConfigEntryV2;
 
 _WinterDeco = (Epoch_ServerRealtime select 1) isequalto 12;
 _HelloweenDeco = ((Epoch_ServerRealtime select 1) == 10 && (Epoch_ServerRealtime select 2) >= 24) || ((Epoch_ServerRealtime select 1) == 11 && (Epoch_ServerRealtime select 2) <= 3);
@@ -55,46 +56,48 @@ for "_i" from 1 to _spawnCount do {
 				_usedBuildings pushBack _buildingWork;
 				_home = selectRandom (_buildingHome buildingPos -1);
 				_work = selectRandom (_buildingWork buildingPos -1);
-				_startTime = floor(random 16);
-				_endTime = _startTime + 8;
-				_schedule = [_startTime, _endTime];
-				_pos = _home;
-				if (daytime > _startTime && daytime < _endTime) then {
-					_pos = _work;
-				};
-				_agent = objnull;
-				if (_WinterDeco) then {
-					_agent = createvehicle ["snowmanDeco_EPOCH", _pos, [], 0, "NONE"];
-				}
-				else {
-					_agent = createAgent [_aiClass, _pos, [], 0, "CAN_COLLIDE"];
-					addToRemainsCollector[_agent];
-					_agent addUniform _randomAIUniform;
-					if !(EPOCH_forceStaticTraders) then {
-						[_agent, _home, [_work, _schedule]] execFSM "\epoch_server\system\Trader_brain.fsm";
+				if ((nearestobjects [_home,["Plotpole_EPOCH"],_buildingJammerRange]) isequalto [] && (nearestobjects [_work,["Plotpole_EPOCH"],_buildingJammerRange]) isequalto []) then {
+					_startTime = floor(random 16);
+					_endTime = _startTime + 8;
+					_schedule = [_startTime, _endTime];
+					_pos = _home;
+					if (daytime > _startTime && daytime < _endTime) then {
+						_pos = _work;
 					};
-					if (_HelloweenDeco) then {
-						removeHeadgear _agent;
-						_agent addHeadgear (selectrandom ["thor_mask_epoch","iron_mask_epoch","wolf_mask_epoch","pkin_mask_epoch","clown_mask_epoch","hockey_mask_epoch","plague_mask_epoch","ghostface_mask_epoch","skull_mask_epoch","witch_mask_epoch"]);
+					_agent = objnull;
+					if (_WinterDeco) then {
+						_agent = createvehicle ["snowmanDeco_EPOCH", _pos, [], 0, "NONE"];
+					}
+					else {
+						_agent = createAgent [_aiClass, _pos, [], 0, "CAN_COLLIDE"];
+						addToRemainsCollector[_agent];
+						_agent addUniform _randomAIUniform;
+						if !(EPOCH_forceStaticTraders) then {
+							[_agent, _home, [_work, _schedule]] execFSM "\epoch_server\system\Trader_brain.fsm";
+						};
+						if (_HelloweenDeco) then {
+							removeHeadgear _agent;
+							_agent addHeadgear (selectrandom ["thor_mask_epoch","iron_mask_epoch","wolf_mask_epoch","pkin_mask_epoch","clown_mask_epoch","hockey_mask_epoch","plague_mask_epoch","ghostface_mask_epoch","skull_mask_epoch","witch_mask_epoch"]);
+						};
 					};
-				};
-				_agent allowdamage !_TraderGodMode;
-				if (surfaceiswater _pos) then {
-					_agent setPosASL _pos;
-				}
-				else {
-					_agent setPosATL _pos;
-				};
-				_slot = EPOCH_TraderSlots deleteAt 0;
-				_agent setVariable["AI_SLOT", _slot, true];
-				_agent setVariable["AI_ITEMS", EPOCH_starterTraderItems, true];
-				_objHiveKey = format["%1:%2", (call EPOCH_fn_InstanceID), _slot];
-				["AI_ITEMS", _objHiveKey, EPOCH_expiresAIdata, EPOCH_starterTraderItems] call EPOCH_fnc_server_hiveSETEX;
-				_agent addEventHandler["Killed", { _this call EPOCH_server_traderKilled; }];
-				["AI", _objHiveKey, [_aiClass, _home, [_work, _schedule]] ] call EPOCH_fnc_server_hiveSET;
-				if (EPOCH_SHOW_TRADERS) then {
-					_markers = ["NewDynamicTrader",_pos] call EPOCH_server_createGlobalMarkerSet;
-					_agent setVariable["MARKER_REF", _markers];
+					_agent allowdamage !_TraderGodMode;
+					if (surfaceiswater _pos) then {
+						_agent setPosASL _pos;
+					}
+					else {
+						_agent setPosATL _pos;
+					};
+					_slot = EPOCH_TraderSlots deleteAt 0;
+					_agent setVariable["AI_SLOT", _slot, true];
+					_agent setVariable["AI_ITEMS", EPOCH_starterTraderItems, true];
+					_objHiveKey = format["%1:%2", (call EPOCH_fn_InstanceID), _slot];
+					["AI_ITEMS", _objHiveKey, EPOCH_expiresAIdata, EPOCH_starterTraderItems] call EPOCH_fnc_server_hiveSETEX;
+					_agent addEventHandler["Killed", { _this call EPOCH_server_traderKilled; }];
+					["AI", _objHiveKey, [_aiClass, _home, [_work, _schedule]] ] call EPOCH_fnc_server_hiveSET;
+					if (EPOCH_SHOW_TRADERS) then {
+						_markers = ["NewDynamicTrader",_pos] call EPOCH_server_createGlobalMarkerSet;
+						_agent setVariable["MARKER_REF", _markers];
+					};
 				};
 			};
 		};
