@@ -3082,6 +3082,10 @@ class CfgPricing
     {
         price = 16;
     };
+    class KitJailWall
+    {
+        price = 56;
+    };
 	class KitPlyThirdWall_EPOCH {
 		price = 18;
 	};

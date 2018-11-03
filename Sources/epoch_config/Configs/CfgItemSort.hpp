@@ -1058,6 +1058,7 @@ class CfgItemSort
 			"ItemCorrugated",
 			"ItemCorrugatedLg",
 			"KitStudWall",
+			"KitJailWall",
 			"KitPlyThirdWall_EPOCH",
 			"KitWoodFloor",
 			"KitWoodHalfFloor",
