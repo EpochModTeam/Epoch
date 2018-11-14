@@ -36,7 +36,7 @@ _TraderItemCountPerItem = [_serverSettingsConfig, "TraderItemCountPerItem", [100
 _TraderItemsDeleteRestart = [_serverSettingsConfig, "TraderItemsDeleteRestart", []] call EPOCH_fnc_returnConfigEntry;
 _buildingJammerRange = ["CfgEpochClient", "buildingJammerRange", 75] call EPOCH_fnc_returnConfigEntryV2;
 
-_WinterDeco = (Epoch_ServerRealtime select 1) isequalto 12;
+_WinterDeco = (Epoch_ServerRealtime select 1) == 12 && (Epoch_ServerRealtime select 2) > 20;
 _HelloweenDeco = ((Epoch_ServerRealtime select 1) == 10 && (Epoch_ServerRealtime select 2) >= 24) || ((Epoch_ServerRealtime select 1) == 11 && (Epoch_ServerRealtime select 2) <= 3);
 
 _TraderInit = {
