@@ -156,6 +156,7 @@ forceRestartTime      = 14400; 			// 4 hour restarts
 		// "ItemSafe",
 		// "ItemGoldBar10oz"
 	};
+	TraderDeco = "true";				// If true, Traders get around Halloween / Christmas some seasonal decoration
 
 // Spawntables
 	forcedVehicleSpawnTable = ""; 		// leave blank for default. Options: "allowedVehiclesList","allowedVehiclesList_CUP","allowedVehiclesList_MAD","allowedVehiclesList_MADCUP"

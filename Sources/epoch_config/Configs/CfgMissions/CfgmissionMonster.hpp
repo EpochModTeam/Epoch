@@ -24,7 +24,7 @@ class prepForMonsterEscort {
 	callevents[]			= {	// {{ARRAY1},{ARRAY2},... }
 		{	// {"condition",{"Message1","Message2", ...},{"NextTask1","NextTask2", ...}}
 			"true",
-			"uiNameSpace setVariable ['axeStartTraders',(player nearentities [[""C_Man_1""],500]) apply {_x getVariable [""AI_SLOT"",-1]}]",
+			"uiNameSpace setVariable ['axeStartTraders',EPOCH_Traders select {_x distance player < 500 && alive _x}]",
 			{}
 		},
 		{	// {"condition",{"Message1","Message2", ...},{"NextTask1","NextTask2", ...}}
@@ -85,11 +85,11 @@ class EscortMonster {
 			{"Go forward, my Monster will follow you!","Hurry up a bit. My Monster is hungry..."}
 		},
 		{
-			"(count (player nearentities [[""C_Man_1""],42]) > 0) && (count (((player nearentities [[""C_Man_1""],42]) apply {_x getVariable [""AI_SLOT"",-1]}) select {_x in (uiNameSpace getVariable [""axeStartTraders"",[]])}) < 1)",
+			"({player distance _x < 42 && !((_x getvariable ['AI_SLOT',-1]) == -1) && alive _x && !(_x in (uiNameSpace getVariable ['axeStartTraders',[]]))} count EPOCH_Traders > 0)",
 			{"Well done, you have a trader nearby, go see him","Looks like you found another trader, well done, deliver the Monster.","UAV has spotted another trader nearby, go deliver the Monster."}
 		},
 		{
-			"(EPOCH_task_startTime + 480 < diag_tickTime) && ((player nearentities [[""C_Man_1""],500]) apply {_x getVariable [""AI_SLOT"",-1]} isEqualTo (uiNameSpace getVariable [""axeStartTraders"",[]]))",
+			"(EPOCH_task_startTime + 480 < diag_tickTime) && ({player distance _x < 500 && !((_x getvariable ['AI_SLOT',-1]) == -1) && alive _x && (_x in (uiNameSpace getVariable ['axeStartTraders',[]]))} count EPOCH_Traders > 0)",
 			{"Hey, what are you doing here ? Get on with your task!"}
 		}
 	};
@@ -98,7 +98,7 @@ class EscortMonster {
 	abandonTime 			= 2000;
 	failedCondition 		= "!alive EPOCH_Monster || !alive player || EPOCH_Monster distance player > 500";
 	faileddialogues[] 		= {"Oh no, you lost my Monster - Mission Failed","My Monster ist gone, Mission Over!"};
-	completeCondition		= "player distance EPOCH_Monster < 50 && (count (player nearentities [[""C_Man_1""],20]) > 0) && (count (((player nearentities [[""C_Man_1""],20]) apply {_x getVariable [""AI_SLOT"",-1]}) select {_x in (uiNameSpace getVariable [""axeStartTraders"",[]])}) < 1)";
+	completeCondition		= "player distance EPOCH_Monster < 50 && ({player distance _x < 20 && !((_x getvariable ['AI_SLOT',-1]) == -1) && alive _x && !(_x in (uiNameSpace getVariable ['axeStartTraders',[]]))} count EPOCH_Traders > 0)";
 	completedialogues[] 	= {"Hey, you bring me my friends Monster?","Great Job there. Step into my office traveller.","You made it, thanks for bringing me the Monster."};
 	completedCALL 			= "";
 	reward[] 				= {};

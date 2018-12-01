@@ -9,7 +9,7 @@ class StartFishMission {
 	markerVisible			= 0;
 	markerRadius 			= 0;
 	markerText 				= "";
-	initcall 				= "uiNameSpace setVariable ['axeStartTraders',(player nearentities [[""C_Man_1""],20]) apply {_x getVariable [""AI_SLOT"",-1]}]; EPOCH_Mission_StartPos = getpos player";
+	initcall 				= "uiNameSpace setVariable ['axeStartTraders',EPOCH_Traders select {_x distance player < 20 && alive _x}]; EPOCH_Mission_StartPos = getpos player";
 	cleanUpCall 			= "uiNameSpace setVariable ['axeStartTraders', nil];EPOCH_Mission_StartPos = nil";
 	dialogues[]				= {	// {{ARRAY1},{ARRAY2},... }
 		{	// {"condition",{"Message1","Message2", ...}}
@@ -103,7 +103,7 @@ class BringTheFish {
 	abandonTime 			= 1200;
 	failedCondition 		= "!alive player";
 	faileddialogues[] 		= {"I guess you have better things to do. - Mission Failed","Mission Failed - You took to long."};
-	completeCondition		= "((player nearentities [[""C_Man_1""],20]) apply {_x getVariable [""AI_SLOT"",-1]} isEqualTo (uiNameSpace getVariable [""axeStartTraders"",[]])) && {_x in magazines player} count ([""CfgEpochClient"", ""fishLoots"", [""ItemTuna"",""ItemSeaBass"",""ItemSeaBass"",""ItemSeaBass"",""ItemTrout"",""ItemTrout"",""ItemTrout"",""ItemTrout"",""ItemTrout"",""ItemTrout""]] call EPOCH_fnc_returnConfigEntryV2) > 0";
+	completeCondition		= "({player distance _x < 20 && !((_x getvariable ['AI_SLOT',-1]) == -1) && alive _x && (_x in (uiNameSpace getVariable ['axeStartTraders',[]]))} count EPOCH_Traders > 0) && {_x in magazines player} count (['CfgEpochClient', 'fishLoots', ['ItemTuna','ItemSeaBass','ItemSeaBass','ItemSeaBass','ItemTrout','ItemTrout','ItemTrout','ItemTrout','ItemTrout','ItemTrout']] call EPOCH_fnc_returnConfigEntryV2) > 0";
 	completedialogues[] 	= {"Hey, you bring me my Fish? - THANKS!!!","Great Job there. Step into my office traveller.","You made it, thanks for bringing me the Fish."};
 	completedCALL 			= "{if (_x in magazines player) exitwith {player removeMagazine _x}} foreach ([""CfgEpochClient"", ""fishLoots"", [""ItemTuna"",""ItemSeaBass"",""ItemSeaBass"",""ItemSeaBass"",""ItemTrout"",""ItemTrout"",""ItemTrout"",""ItemTrout"",""ItemTrout"",""ItemTrout""]] call EPOCH_fnc_returnConfigEntryV2)";
 	reward[] 				= {};

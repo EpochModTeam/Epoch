@@ -234,7 +234,7 @@ class uavMission2{
 	markerVisible			= 0;
 	markerRadius 			= 220;
 	markerText 				= "UAV Trader";
-	initcall 				= "_obj = selectRandom (player nearentities [[""C_Man_1""],10500] select {_x getVariable [""AI_SLOT"",-1] > -1 && player distance _x > 50});EPOCH_taskMarkerPos = getPosATL _obj;";
+	initcall 				= "_obj = selectRandom (Epoch_Traders select {player distance _x > 50 && alive _x && !((_x getvariable ['AI_SLOT',-1]) == -1)});EPOCH_taskMarkerPos = getPosATL _obj;";
 	cleanUpCall 			= "[(driver axeUAV)] joinSilent grpNull; removeFromRemainsCollector [axeUAV]; deletevehicle axeUAV";
 	dialogues[]				= {
 		{

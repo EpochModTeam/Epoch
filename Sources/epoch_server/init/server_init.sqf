@@ -177,10 +177,12 @@ diag_log "Epoch: Loading teleports and static props";
 call EPOCH_server_createTeleport;
 
 diag_log "Epoch: Loading NPC traders";
+EPOCH_Traders = [];
 EPOCH_NPCSlotsLimit call EPOCH_server_loadTraders;
 
 diag_log "Epoch: Spawning NPC traders";
 call EPOCH_server_spawnTraders;
+publicvariable "EPOCH_Traders";
 
 diag_log "Epoch: Loading vehicles";
 // Vehicle slot limit set to total of all allowed limits

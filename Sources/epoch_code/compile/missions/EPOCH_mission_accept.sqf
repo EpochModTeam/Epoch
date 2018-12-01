@@ -19,7 +19,7 @@ _missionIndex = lbCurSel 1500;
 _missionAllowed = true;
 _missionClasses = getArray(getMissionConfig "EpochMissionList" >> "traderMissionClasses");
 
-_nrEnts = player nearEntities ["Man", 20];
+_nrEnts = EPOCH_Traders select {alive _x && player distance _x < 20};
 _trader = objNull;
 {
 	if ((_x getVariable ["AI_SLOT", -1]) > -1) exitWith {

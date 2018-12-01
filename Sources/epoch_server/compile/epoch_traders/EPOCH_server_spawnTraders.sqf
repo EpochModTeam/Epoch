@@ -15,7 +15,7 @@
 //[[[cog import generate_private_arrays ]]]
 private [	"_serverSettingsConfig","_acceptableBlds","_agent","_aiClass","_aiTables","_buildingHome","_buildingWork","_buildings","_checkBuilding","_config","_endTime","_home",
 			"_homes","_markers","_objHiveKey","_pos","_position","_randomAIUniform","_return","_schedule","_slot","_spawnCount","_startTime","_traderHomes","_usedBuildings","_work",
-			"_WinterDeco","_HelloweenDeco","_buildingJammerRange"
+			"_WinterDeco","_HelloweenDeco","_buildingJammerRange","_TraderDeco"
 ];
 //[[[end]]]
 _serverSettingsConfig = configFile >> "CfgEpochServer";
@@ -25,10 +25,11 @@ _config = (configFile >> "CfgEpoch" >> worldName);
 _aiTables = getArray(_config >> "traderUniforms");
 _acceptableBlds = getArray(_config >> "traderBlds");
 _traderHomes = getArray(_config >> "traderHomes");
+_TraderDeco = [_serverSettingsConfig, "TraderDeco", true] call EPOCH_fnc_returnConfigEntry;
 _buildingJammerRange = ["CfgEpochClient", "buildingJammerRange", 75] call EPOCH_fnc_returnConfigEntryV2;
 
-_WinterDeco = (Epoch_ServerRealtime select 1) == 12 && (Epoch_ServerRealtime select 2) > 20;
-_HelloweenDeco = ((Epoch_ServerRealtime select 1) == 10 && (Epoch_ServerRealtime select 2) >= 24) || ((Epoch_ServerRealtime select 1) == 11 && (Epoch_ServerRealtime select 2) <= 3);
+_WinterDeco = (Epoch_ServerRealtime select 1) == 12 && (Epoch_ServerRealtime select 2) > 20 && _TraderDeco;
+_HelloweenDeco = (((Epoch_ServerRealtime select 1) == 10 && (Epoch_ServerRealtime select 2) >= 24) || ((Epoch_ServerRealtime select 1) == 11 && (Epoch_ServerRealtime select 2) <= 3)) && _TraderDeco;
 
 _usedBuildings = [];
 _checkBuilding = {
@@ -98,6 +99,7 @@ for "_i" from 1 to _spawnCount do {
 						_markers = ["NewDynamicTrader",_pos] call EPOCH_server_createGlobalMarkerSet;
 						_agent setVariable["MARKER_REF", _markers];
 					};
+					EPOCH_Traders pushback _agent;
 				};
 			};
 		};
