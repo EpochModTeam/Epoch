@@ -2,6 +2,7 @@ if (isNull(findDisplay -13)) exitWith{};
 // perform wait while menu is still open
 
 if (isNil "EPOCH_bankTransferActive") then {
+	if !(alive player) exitwith {};
 	EPOCH_bankTransferActive = true;
 
 	ctrlEnable[1600, false];
@@ -33,6 +34,7 @@ if (isNil "EPOCH_bankTransferActive") then {
 			_sleep = ((_totalTransfer * _timePerCrypto) min _maxWait) max _minWait;
 			for "_i" from 0 to 100 do {
 				if (isNull(findDisplay -13)) exitWith{};
+				if !(alive player) exitwith {};
 				_progress = _progress + 1;
 				if (_progress >= 100) exitWith{};
 				ctrlSetText[1200, format["\x\addons\a3_epoch_code\Data\UI\loading_bar_%1.paa", _progress]];
