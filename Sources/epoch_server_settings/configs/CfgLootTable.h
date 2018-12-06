@@ -378,6 +378,7 @@ class CfgLootTable
 				{ { "Rollins_F", "weapon" }, 9 },
 				{ { "SMG_01_F", "weapon" }, 9 },
 				{ { "SMG_02_F", "weapon" }, 9 },
+				{ { "Rifle_SMG_03", "CfgLootTable" }, 9 },
 				{ { "hgun_PDW2000_F", "weapon" }, 10 }
 		};
 	};
@@ -388,6 +389,28 @@ class CfgLootTable
 				{ { "l85a2_epoch", "weapon" }, 1 },
 				{ { "l85a2_pink_epoch", "weapon" }, 1 },
 				{ { "l85a2_ugl_epoch", "weapon" }, 1 }
+		};
+	};
+	
+	class Rifle_SMG_03
+	{
+		items[] = {
+				{ { "SMG_03_TR_black", "weapon" }, 1 },
+//				{ { "SMG_03_TR_camo", "weapon" }, 1 },
+//				{ { "SMG_03_TR_khaki", "weapon" }, 1 },
+//				{ { "SMG_03_TR_hex", "weapon" }, 1 },
+//				{ { "SMG_03C_TR_black", "weapon" }, 1 },
+				{ { "SMG_03C_TR_camo", "weapon" }, 1 },
+//				{ { "SMG_03C_TR_khaki", "weapon" }, 1 },
+//				{ { "SMG_03C_TR_hex", "weapon" }, 1 },
+//				{ { "SMG_03_black", "weapon" }, 1 },
+//				{ { "SMG_03_camo", "weapon" }, 1 },
+				{ { "SMG_03_khaki", "weapon" }, 1 },
+//				{ { "SMG_03_hex", "weapon" }, 1 },
+//				{ { "SMG_03C_black", "weapon" }, 1 },
+//				{ { "SMG_03C_camo", "weapon" }, 1 },
+//				{ { "SMG_03C_khaki", "weapon" }, 1 },
+				{ { "SMG_03C_hex", "weapon" }, 1 }
 		};
 	};
 
@@ -475,7 +498,8 @@ class CfgLootTable
 				{ { "RifleAmmo_30Rnd_556x45_Stanag", "CfgLootTable" }, 13 },
 				{ { "RifleAmmo_30Rnd_45ACP_Mag_SMG_01", "CfgLootTable" }, 16 },
 				{ { "30Rnd_9x21_Mag", "magazine" }, 17 },
-				{ { "5Rnd_rollins_mag", "magazine" }, 20 }
+				{ { "5Rnd_rollins_mag", "magazine" }, 20 },
+				{ { "50Rnd_570x28_SMG_03", "magazine" }, 10 }
 		};
 	};
 
@@ -763,7 +787,8 @@ class CfgLootTable
 				{ { "Muzzles_MultiGun", "CfgLootTable" }, 1 },
 				// Marksman DLC
 				{ { "Muzzles_338MarkDLC", "CfgLootTable" }, 1 },
-				{ { "Muzzles_93mmgMarkDLC", "CfgLootTable" }, 1 }
+				{ { "Muzzles_93mmgMarkDLC", "CfgLootTable" }, 1 },
+				{ { "muzzle_snds_570", "item" }, 1 }
 		};
 	};
 

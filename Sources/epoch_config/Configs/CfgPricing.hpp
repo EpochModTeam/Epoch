@@ -2244,7 +2244,55 @@ class CfgPricing
     {
         price = 35;
     };
-    class hgun_PDW2000_F
+	class SMG_03_TR_black {
+		price = 35;
+	};
+	class SMG_03_TR_camo {
+		price = 35;
+	};
+	class SMG_03_TR_khaki {
+		price = 35;
+	};
+	class SMG_03_TR_hex {
+		price = 35;
+	};
+	class SMG_03C_TR_black {
+		price = 35;
+	};
+	class SMG_03C_TR_camo {
+		price = 35;
+	};
+	class SMG_03C_TR_khaki {
+		price = 35;
+	};
+	class SMG_03C_TR_hex {
+		price = 35;
+	};
+	class SMG_03_black {
+		price = 35;
+	};
+	class SMG_03_camo {
+		price = 35;
+	};
+	class SMG_03_khaki {
+		price = 35;
+	};
+	class SMG_03_hex {
+		price = 35;
+	};
+	class SMG_03C_black {
+		price = 35;
+	};
+	class SMG_03C_camo {
+		price = 35;
+	};
+	class SMG_03C_khaki {
+		price = 35;
+	};
+	class SMG_03C_hex {
+		price = 35;
+	};
+	class hgun_PDW2000_F
     {
         price = 35;
     };
@@ -2569,6 +2617,10 @@ class CfgPricing
         price = 5;
         tax = 0.9;
     };
+	class 50Rnd_570x28_SMG_03{
+		price = 5;
+		tax = 0.9;
+	};
     class 20rnd_762_magazine
     {
         price = 5;
@@ -2938,6 +2990,9 @@ class CfgPricing
     {
         price = 5;
     };
+	class muzzle_snds_570 {
+		price = 5;
+	};
     class Heal_EPOCH
     {
         price = 3;
