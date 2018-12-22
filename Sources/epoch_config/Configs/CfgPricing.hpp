@@ -2612,6 +2612,69 @@ class CfgPricing
     {
         price = 100;
     };
+	
+	// A2 Weapons
+    class a2_ak47s_gold_EPOCH
+    {
+        price = 100;
+    };
+    class a2_AK107_EPOCH
+    {
+        price = 100;
+    };
+    class a2_bizon_epoch
+    {
+        price = 100;
+    };
+    class a2_dmr_epoch
+    {
+        price = 100;
+    };
+    class a2_dmr_epoch_scoped
+    {
+        price = 100;
+    };
+    class a2_fnfal_epoch
+    {
+        price = 100;
+    };
+    class a2_G36_C_epoch
+    {
+        price = 100;
+    };
+    class a2_Mg36_epoch
+    {
+        price = 100;
+    };
+    class a2_leeenfield_epoch
+    {
+        price = 100;
+    };
+    class a2_m110_epoch
+    {
+        price = 100;
+    };
+    class a2_mk16_epoch
+    {
+        price = 100;
+    };
+    class a2_mk17_epoch
+    {
+        price = 100;
+    };
+    class a2_svd_epoch
+    {
+        price = 100;
+    };
+    class a2_VSS_vintorez_epoch
+    {
+        price = 100;
+    };
+    class a2_aks74un_EPOCH
+    {
+        price = 100;
+    };
+
     class 30rnd_556_magazine
     {
         price = 5;
@@ -2681,6 +2744,54 @@ class CfgPricing
         price = 6;
         tax = 0.9;
     };
+	
+	// A2 Mags
+    class Bizon_64Rnd_9x19
+    {
+        price = 5;
+        tax = 0.9;
+    };
+    class 20Rnd_762x51_DMR
+    {
+        price = 5;
+        tax = 0.9;
+    };
+    class 20Rnd_762x51_FNFAL
+    {
+        price = 5;
+        tax = 0.9;
+    };
+    class 30Rnd_556x45_G36
+    {
+        price = 5;
+        tax = 0.9;
+    };
+    class a2_akyellow_mag_EPOCH
+    {
+        price = 5;
+        tax = 0.9;
+    };
+    class 10Rnd_303
+    {
+        price = 5;
+        tax = 0.9;
+    };
+    class 100Rnd_556x45_BetaCMag
+    {
+        price = 5;
+        tax = 0.9;
+    };
+    class 10Rnd_762x54_SVD
+    {
+        price = 5;
+        tax = 0.9;
+    };
+    class 10Rnd_9x39_SP5_VSS
+    {
+        price = 5;
+        tax = 0.9;
+    };
+
     class Rangefinder
     {
         price = 4;

@@ -558,6 +558,23 @@ class CfgItemSort
 			"M14Grn_EPOCH",
 			"AKM_EPOCH",
 
+			// A2 Weapons
+			"a2_ak47s_gold_EPOCH",
+			"a2_AK107_EPOCH",
+			"a2_bizon_epoch",
+			"a2_dmr_epoch",
+			"a2_dmr_epoch_scoped",
+			"a2_fnfal_epoch",
+			"a2_G36_C_epoch",
+			"a2_Mg36_epoch",
+			"a2_leeenfield_epoch",
+			"a2_m110_epoch",
+			"a2_mk16_epoch",
+			"a2_mk17_epoch",
+			"a2_svd_epoch",
+			"a2_VSS_vintorez_epoch",
+			"a2_aks74un_EPOCH",
+
 			// Apex
 			"arifle_AK12_F",
 			"arifle_MX_khk_F",
@@ -691,6 +708,17 @@ class CfgItemSort
 			"10Rnd_762x54_Mag",
 			"20rnd_762_magazine",
 			"30Rnd_762x39_Mag",
+
+			// A2 Mags
+			"Bizon_64Rnd_9x19",
+			"20Rnd_762x51_DMR",
+			"20Rnd_762x51_FNFAL",
+			"30Rnd_556x45_G36",
+			"a2_akyellow_mag_EPOCH",
+			"10Rnd_303",
+			"100Rnd_556x45_BetaCMag",
+			"10Rnd_762x54_SVD",
+			"10Rnd_9x39_SP5_VSS",
 
 			// Apex
 			"30Rnd_762x39_Mag_F",
