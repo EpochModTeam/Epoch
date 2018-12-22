@@ -4507,6 +4507,66 @@ class CfgPricing
 	class C_SUV_01_EPOCH2: C_SUV_01_EPOCH{};
 	class C_SUV_01_EPOCH3: C_SUV_01_EPOCH{};
 	class C_SUV_01_EPOCH4: C_SUV_01_EPOCH{};
+	class A2_Golf_EPOCH
+	{
+        price = 7500;
+		tax = 0.9;
+	};
+	class A2_HMMWV_EPOCH
+	{
+        price = 7500;
+		tax = 0.9;
+	};
+	class A2_HMMWV_load_EPOCH
+	{
+        price = 7500;
+		tax = 0.9;
+	};
+	class A2_Lada_EPOCH
+	{
+        price = 7500;
+		tax = 0.9;
+	};
+	class A2_SUV_EPOCH
+	{
+        price = 7500;
+		tax = 0.9;
+	};
+	class A2_SUV_load_EPOCH
+	{
+        price = 7500;
+		tax = 0.9;
+	};
+	class A2_SUV_armed_EPOCH
+	{
+        price = 10000;
+		tax = 0.9;
+	};
+	class A2_UAZ_EPOCH
+	{
+        price = 7500;
+		tax = 0.9;
+	};
+	class A2_UAZ_Open_EPOCH
+	{
+        price = 7500;
+		tax = 0.9;
+	};
+	class A2_Ural_EPOCH
+	{
+        price = 7500;
+		tax = 0.9;
+	};
+	class A2_Vodnik_EPOCH
+	{
+        price = 7500;
+		tax = 0.9;
+	};
+	class A2_Volha_EPOCH
+	{
+        price = 7500;
+		tax = 0.9;
+	};
     class C_Rubberboat_EPOCH
     {
         price = 500;
@@ -4689,7 +4749,42 @@ class CfgPricing
 	class O_Truck_03_covered_EPOCH4: O_Truck_03_covered_EPOCH {};
     class uh1h_Epoch
     {
-        price = 22500;
+		price = 22500;
+		tax = 0.9;
+    };
+    class uh1h_armed_EPOCH
+    {
+		price = 30000;
+		tax = 0.9;
+    };
+    class uh1h_armed_plus_EPOCH
+    {
+		price = 35000;
+		tax = 0.9;
+    };
+    class a2_mi8_EPOCH
+    {
+		price = 22500;
+		tax = 0.9;
+    };
+    class a2_ch47f_armed_EPOCH
+    {
+		price = 30000;
+		tax = 0.9;
+    };
+    class a2_ch47f_armed_plus_EPOCH
+    {
+		price = 35000;
+		tax = 0.9;
+    };
+    class C_Heli_Light_01_armed_EPOCH
+    {
+		price = 30000;
+		tax = 0.9;
+    };
+    class C_Heli_Light_01_armed_plus_EPOCH
+    {
+		price = 35000;
 		tax = 0.9;
     };
     class O_Heli_Light_02_unarmed_EPOCH

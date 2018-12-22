@@ -1298,6 +1298,20 @@ class CfgItemSort
 			"O_Truck_03_transport_EPOCH2",
 			"O_Truck_03_transport_EPOCH3",
 			"O_Truck_03_transport_EPOCH4",
+			
+			// A2 Landvehicles
+			"A2_Golf_EPOCH",
+			"A2_HMMWV_EPOCH",
+			"A2_HMMWV_load_EPOCH",
+			"A2_Lada_EPOCH",
+			"A2_SUV_EPOCH",
+			"A2_SUV_load_EPOCH",
+			"A2_SUV_armed_EPOCH",
+			"A2_UAZ_EPOCH",
+			"A2_UAZ_Open_EPOCH",
+			"A2_Ural_EPOCH",
+			"A2_Vodnik_EPOCH",
+			"A2_Volha_EPOCH",
 
 			// Funktions Fahrzeuge |Repair,Heal,Tank|
 			"C_Offroad_01_repair_F",
@@ -1427,7 +1441,16 @@ class CfgItemSort
 			"O_Heli_Transport_04_box_EPOCH",
 			"O_Heli_Transport_04_covered_EPOCH",
 			"B_Heli_Light_01_EPOCH",
+
+			// A2 AirVehicles
 			"uh1h_Epoch",
+			"uh1h_armed_EPOCH",
+			"uh1h_armed_plus_EPOCH",
+			"a2_mi8_EPOCH",
+			"a2_ch47f_armed_EPOCH",
+			"a2_ch47f_armed_plus_EPOCH",
+			"C_Heli_Light_01_armed_EPOCH",
+			"C_Heli_Light_01_armed_plus_EPOCH",
 
 			"B_Heli_Light_01_armed_F",
 			"B_Heli_Transport_01_EPOCH",
