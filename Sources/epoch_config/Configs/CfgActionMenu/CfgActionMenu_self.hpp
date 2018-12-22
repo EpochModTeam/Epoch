@@ -273,7 +273,6 @@ class Epad
 {
 	condition = "EPOCH_EpadButtonOn";
 	action = "if (isnull (finddisplay 9898)) then {createdialog 'epoch_tablet_gui';};";
-	icon = "epoch_code\customs\images\Epad.paa";
-//	icon = "x\addons\a3_epoch_code\Data\UI\buttons\Epad.paa";
+	icon = "x\addons\a3_epoch_code\Data\UI\buttons\Epad.paa";
 	tooltip = "E-Pad";
 };

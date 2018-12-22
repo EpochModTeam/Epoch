@@ -35,8 +35,7 @@ class e_pad_config
 		{
 			ButtonText = "";
 			Description = "Settings";
-			Icon = "epoch_code\customs\images\settings_ca.paa";
-//			icon = "x\addons\a3_epoch_code\Data\UI\epad\settings_ca.paa";
+			icon = "x\addons\a3_epoch_code\Data\UI\epad\settings_ca.paa";
 			color[] = {1,1,0,1};
 			colortoggled[] = {0,1,0,1};
 			action = "";
@@ -46,8 +45,7 @@ class e_pad_config
 			class EpadButton {
 				ButtonText = "";
 				Description = "Epad Dyna";
-				Icon = "epoch_code\customs\images\epoch_tablet_back.paa";
-//				icon = "x\addons\a3_epoch_code\Data\UI\epad\epoch_tablet_back.paa";
+				icon = "x\addons\a3_epoch_code\Data\UI\epad\epoch_tablet_back.paa";
 				color[] = {1,0,0,1};
 				colortoggled[] = {0,1,0,1};
 				action = "";
@@ -70,8 +68,7 @@ class e_pad_config
 			{
 				ButtonText = "";
 				Description = "Playermarker";
-				icon = "epoch_code\customs\images\gps.paa";
-//				icon = "x\addons\a3_epoch_code\Data\UI\epad\gps.paa";
+				icon = "x\addons\a3_epoch_code\Data\UI\epad\gps.paa";
 				color[] = {1,0,0,1};
 				colortoggled[] = {0,1,0,1};
 				action = "if (!EPOCH_PlayerMarkerOn) then {if !('ItemGPS' in (assignedItems player)) then {['You need a GPS to see your Position',5] call epoch_message}}";
@@ -83,8 +80,7 @@ class e_pad_config
 			{
 				ButtonText = "";
 				Description = "DeathMarker";
-				icon = "epoch_code\customs\images\skull.paa";
-//				icon = "x\addons\a3_epoch_code\Data\UI\epad\skull.paa";
+				icon = "x\addons\a3_epoch_code\Data\UI\epad\skull.paa";
 				color[] = {1,0,0,1};
 				colortoggled[] = {0,1,0,1};
 				action = "if (!EPOCH_DeathMarkerOn) then {if ((profileNameSpace getVariable ['EPOCHLastKnownDeath',[]]) isequalto []) then {['You had no GPS on last death',5] call epoch_message}}";
@@ -95,8 +91,7 @@ class e_pad_config
 			class Earplug {
 				ButtonText = "";
 				Description = "Auto-Earplugs";
-				icon = "epoch_code\customs\images\Earplugs.paa";
-//				icon = "x\addons\a3_epoch_code\Data\UI\epad\Earplugs.paa";
+				icon = "x\addons\a3_epoch_code\Data\UI\epad\Earplugs.paa";
 				color[] = {1,0,0,1};
 				colortoggled[] = {0,1,0,1};
 				action = "";
@@ -131,8 +126,7 @@ class e_pad_config
 		{
 			ButtonText = "";
 			Description = "Server Info";
-			Icon = "epoch_code\customs\images\server_info_icon_ca.paa";
-//			icon = "x\addons\a3_epoch_code\Data\UI\epad\server_info_icon_ca.paa";
+			icon = "x\addons\a3_epoch_code\Data\UI\epad\server_info_icon_ca.paa";
 			color[] = {1,1,1,1};
 			colortoggled[] = {0,1,0,1};
 			action = "createDialog 'server_info_picture'";
@@ -144,8 +138,7 @@ class e_pad_config
 		{
 			ButtonText = "";
 			Description = "Debug";
-			Icon = "epoch_code\customs\images\debug_ca.paa";
-//			icon = "x\addons\a3_epoch_code\Data\UI\epad\debug_ca.paa";
+			icon = "x\addons\a3_epoch_code\Data\UI\epad\debug_ca.paa";
 			color[] = {1,0,0,1};
 			colortoggled[] = {0,1,0,1};
 			action = "if !(EPOCH_debugMode) then {['Debug Mode Enabled', 5,[[0,0,0,0.5],[1,1,0,1]]] call Epoch_message;} else {['Debug Mode Disabled', 5,[[0,0,0,0.5],[1,1,0,1]]] call Epoch_message;hintSilent ''};";
@@ -157,8 +150,7 @@ class e_pad_config
 		{
 			ButtonText = "";
 			Description = "Reviveable?";
-			Icon = "epoch_code\customs\images\Reviveable.paa";
-//			icon = "x\addons\a3_epoch_code\Data\UI\epad\Reviveable.paa";
+			icon = "x\addons\a3_epoch_code\Data\UI\epad\Reviveable.paa";
 			color[] = {1,0,0,1};
 			colortoggled[] = {0,1,0,1};
 			action = "";
