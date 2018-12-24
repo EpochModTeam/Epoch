@@ -836,7 +836,6 @@ class CfgWorldInteractions  {
     class t_quercus3sW_p3d : Trees {};
     class t_carpinus2sW_p3d : Trees {};
     class s_misc_fallenspruce_p3d : Trees {};
-    class t_stub_picea_p3d : Trees {};
     class s_misc_stub1_p3d : Trees {};
     class t_acer2sW_p3d : Trees {};
     class t_betula2wW_p3d : Trees {};
