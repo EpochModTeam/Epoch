@@ -47,16 +47,20 @@ _TraderInit = {
 	_this setVariable ["AI_ITEMS", _arr, true];
 	_this addEventHandler ["Killed", { _this call EPOCH_server_traderKilled; }];
 	EPOCH_Traders pushback _this;
-	if (_this iskindof "MAN") then {
-		addToRemainsCollector[_this];
-		_this addUniform _randomAIUniform;
-		_this disableAI "FSM";
-		_this setBehaviour "CARELESS";
-		_this setCombatMode "RED";
-		_this setSkill 0;
-		if (_HelloweenDeco) then {
+	addToRemainsCollector[_this];
+	_this addUniform _randomAIUniform;
+	_this disableAI "FSM";
+	_this setBehaviour "CARELESS";
+	_this setCombatMode "RED";
+	_this setSkill 0;
+	if (_HelloweenDeco) then {
+		removeHeadgear _this;
+		_this addHeadgear (selectrandom ["thor_mask_epoch","iron_mask_epoch","wolf_mask_epoch","pkin_mask_epoch","clown_mask_epoch","hockey_mask_epoch","plague_mask_epoch","ghostface_mask_epoch","skull_mask_epoch","witch_mask_epoch"]);
+	}
+	else {
+		if (_WinterDeco) then {
 			removeHeadgear _this;
-			_this addHeadgear (selectrandom ["thor_mask_epoch","iron_mask_epoch","wolf_mask_epoch","pkin_mask_epoch","clown_mask_epoch","hockey_mask_epoch","plague_mask_epoch","ghostface_mask_epoch","skull_mask_epoch","witch_mask_epoch"]);
+			_this addHeadgear "santa_hat_epoch";
 		};
 	};
 };
@@ -166,13 +170,7 @@ for "_i" from 0 to (_maxTraderLimit-1) do {
 			};
 		};
 		EPOCH_TraderSlots deleteAt _traderSlotIndex;
-		_agent = objnull;
-		if (_WinterDeco) then {
-			_agent = createvehicle ["snowmanDeco_EPOCH", _pos, [], 0, "NONE"];
-		}
-		else {
-			_agent = createAgent [_class, _pos, [], 0, "CAN_COLLIDE"];
-		};
+		_agent = createAgent [_class, _pos, [], 0, "CAN_COLLIDE"];
 		_agent call _TraderInit;
 		_agent setPosATL _pos;
 		if (_arrchanged) then {
@@ -204,15 +202,9 @@ for "_i" from 0 to (_maxTraderLimit-1) do {
 				};
 				if (!(count (_arr select 0) >= _DynamicTraderRespawnCount) && (nearestobjects [_pos,["Plotpole_EPOCH"],_buildingJammerRange]) isequalto []) then {
 					EPOCH_TraderSlots deleteAt _traderSlotIndex;
-					_agent = objnull;
-					if (_WinterDeco) then {
-						_agent = createvehicle ["snowmanDeco_EPOCH", _pos, [], 0, "NONE"];
-					}
-					else {
-						_agent = createAgent [_class, _pos, [], 0, "NONE"];
-						if !(EPOCH_forceStaticTraders) then {
-							[_agent, _home, _work] execFSM "\epoch_server\system\Trader_brain.fsm";
-						};
+					_agent = createAgent [_class, _pos, [], 0, "NONE"];
+					if !(EPOCH_forceStaticTraders) then {
+						[_agent, _home, _work] execFSM "\epoch_server\system\Trader_brain.fsm";
 					};
 					_dir = random 360;
 					_agent call _TraderInit;

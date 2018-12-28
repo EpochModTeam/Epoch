@@ -65,20 +65,20 @@ for "_i" from 1 to _spawnCount do {
 					if (daytime > _startTime && daytime < _endTime) then {
 						_pos = _work;
 					};
-					_agent = objnull;
-					if (_WinterDeco) then {
-						_agent = createvehicle ["snowmanDeco_EPOCH", _pos, [], 0, "NONE"];
+					_agent = createAgent [_aiClass, _pos, [], 0, "CAN_COLLIDE"];
+					addToRemainsCollector[_agent];
+					_agent addUniform _randomAIUniform;
+					if !(EPOCH_forceStaticTraders) then {
+						[_agent, _home, [_work, _schedule]] execFSM "\epoch_server\system\Trader_brain.fsm";
+					};
+					if (_HelloweenDeco) then {
+						removeHeadgear _agent;
+						_agent addHeadgear (selectrandom ["thor_mask_epoch","iron_mask_epoch","wolf_mask_epoch","pkin_mask_epoch","clown_mask_epoch","hockey_mask_epoch","plague_mask_epoch","ghostface_mask_epoch","skull_mask_epoch","witch_mask_epoch"]);
 					}
 					else {
-						_agent = createAgent [_aiClass, _pos, [], 0, "CAN_COLLIDE"];
-						addToRemainsCollector[_agent];
-						_agent addUniform _randomAIUniform;
-						if !(EPOCH_forceStaticTraders) then {
-							[_agent, _home, [_work, _schedule]] execFSM "\epoch_server\system\Trader_brain.fsm";
-						};
-						if (_HelloweenDeco) then {
+						if (_WinterDeco) then {
 							removeHeadgear _agent;
-							_agent addHeadgear (selectrandom ["thor_mask_epoch","iron_mask_epoch","wolf_mask_epoch","pkin_mask_epoch","clown_mask_epoch","hockey_mask_epoch","plague_mask_epoch","ghostface_mask_epoch","skull_mask_epoch","witch_mask_epoch"]);
+							_agent addHeadgear "santa_hat_epoch";
 						};
 					};
 					_agent allowdamage !_TraderGodMode;
