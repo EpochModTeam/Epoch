@@ -118,6 +118,12 @@ forceRestartTime      = 14400; 			// 4 hour restarts
 							};
 	ExceptedDeSymObjects[] = 	{		// Not Desymulated, also if in a Class of DeSimulateObjects
 								};
+	DisableDoorsOnObj[] =	{			// Add speacial Vars to disable Doors (no effect in Epoch, but 3rd party addons like enhanced movement)
+								"WoodLargeWallDoorL_EPOCH",
+								"WoodWall4_EPOCH",
+								"WoodLargeWallDoorL_EPOCH",
+								"CinderWallDoorwHatch_EPOCH"
+							};
 
 // Dynamic Simulation System
 	enableDynamicSimulationSystem 		= "true";	// enable / disable the complete dynamic simulation system

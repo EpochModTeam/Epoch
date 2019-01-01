@@ -32,6 +32,11 @@ if (!isNull _object && !(_class isEqualTo "")) then {
 		_UseIndestructible = [_serverSettingsConfig, "UseIndestructible", false] call EPOCH_fnc_returnConfigEntry;
 		_IndestructibleBaseObjects = [_serverSettingsConfig, "IndestructibleBaseObjects", []] call EPOCH_fnc_returnConfigEntry;
 		_ExceptedBaseObjects = [_serverSettingsConfig, "ExceptedBaseObjects", []] call EPOCH_fnc_returnConfigEntry;
+		_DisableDoorsOnObj = [_serverSettingsConfig, "DisableDoorsOnObj", []] call EPOCH_fnc_returnConfigEntry;
+		if (_class in _DisableDoorsOnObj) then {
+			_baseObj setvariable ["bis_disabled_door",1,true];
+			_baseObj setvariable ["bis_disabled_hatch",1,true];
+		};
 		if (_UseIndestructible) then {
 			if ({_class iskindof _x} count _ExceptedBaseObjects == 0) then {
 				{

@@ -26,6 +26,7 @@ _ExceptedBaseObjects = [_serverSettingsConfig, "ExceptedBaseObjects", []] call E
 _UseDeSimulateObjects = [_serverSettingsConfig, "UseDeSimulateObjects", true] call EPOCH_fnc_returnConfigEntry;
 _DeSimulateObjects = [_serverSettingsConfig, "DeSimulateObjects", []] call EPOCH_fnc_returnConfigEntry;
 _ExceptedDeSymObjects = [_serverSettingsConfig, "ExceptedDeSymObjects", []] call EPOCH_fnc_returnConfigEntry;
+_DisableDoorsOnObj = [_serverSettingsConfig, "DisableDoorsOnObj", []] call EPOCH_fnc_returnConfigEntry;
 _cfgEpochClient = 'CfgEpochClient' call EPOCH_returnConfig;
 _cfgBaseBuilding = 'CfgBaseBuilding' call EPOCH_returnConfig;
 _buildingJammerRange = getNumber(_cfgEpochClient >> "buildingJammerRange");
@@ -88,6 +89,10 @@ for "_i" from 0 to _this do {
 		if (isClass (configFile >> "CfgVehicles" >> _class) && (_damage < 1) && !(_class isKindOf 'Constructions_lockedstatic_F')) then {
 
 			_baseObj = createVehicle [_class, [0,0,0], [], 0, "CAN_COLLIDE"];
+			if (_class in _DisableDoorsOnObj) then {
+				_baseObj setvariable ["bis_disabled_door",1,true];
+				_baseObj setvariable ["bis_disabled_hatch",1,true];
+			};
 			if (_UseIndestructible) then {
 				if ({_class iskindof _x} count _ExceptedBaseObjects == 0) then {
 					{
