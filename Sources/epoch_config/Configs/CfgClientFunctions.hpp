@@ -53,6 +53,7 @@ class CfgClientFunctions
 			class AutoRun {};
 			class DefibrillatorUse {};
 			class CamUse {};
+			class DefuseBomb {};
 		};
 		class building
 		{

@@ -65,6 +65,8 @@ class CfgEpochClient
 	ActionFireOnLighter = "true";				// Lighter is needed to inflame fires
 	ActionBurnBarrelOffExtinguisher = "true";	// FireExtinguisher is needed to put off Burn Barrels
 	ActionHookRope = "true";					// Rope is needed to hook vehicles (get back on release)
+	
+	DefuseBombChance = 0.4;						// Chance for successfully defuse a bomb -> If fail, the bomb will explode
 
     epochMessageBackgroundCol[] = {0,0,0,0.2};  //Epoch_message background color (format: {R,G,B,A})
     epochMessageTextCol[] = {1,1,1,0.95};       //Epoch_message text color (format: {R,G,B,A})
