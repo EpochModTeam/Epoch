@@ -94,4 +94,14 @@ call EPOCH_clientInit;
 
 [] execFSM "epoch_code\system\player_login.fsm";
 
+if (isclass (configFile >> "CfgPatches" >> "ace_common")) then {
+	if (["CfgEpochClient", "DisableDoorInteractForACE", true] call EPOCH_fnc_returnConfigEntryV2) then {
+		[] spawn {
+			private _start = diag_ticktime;
+			waituntil {!isnil "MACRO_DOOR_REACH_DISTANCE" || diag_ticktime - _start > 90};
+			MACRO_DOOR_REACH_DISTANCE = -1;
+		};
+	};
+};
+
 true
