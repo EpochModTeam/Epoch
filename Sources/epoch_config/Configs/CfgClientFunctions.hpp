@@ -144,6 +144,7 @@ class CfgClientFunctions
 			class fnc_addMagazineOverflow {};
 			class itemData {};
 			class itemPicture {};
+			class itemDisplayName {};
 			class SortArrayByDistance {};
 			class fnc_findRandomPosBehind {};
 			class fnc_stringLeft {};

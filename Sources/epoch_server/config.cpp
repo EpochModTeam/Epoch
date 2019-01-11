@@ -128,6 +128,7 @@ class CfgServerFunctions
 			class server_createGlobalMarkerSet {};
 			class server_deleteGlobalMarkerSet {};
 			class server_isNearChecks {};
+			class server_DefuseBomb {};
 		};
 		class epoch_missions {
 			class Server_createObject {};

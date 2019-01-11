@@ -12,9 +12,7 @@ if (alive player && !isnull _object) then {
 	if !(_reward isequalto "") then {
 		_chance = ["CfgEpochClient", "DefuseBombChance", 0.4] call EPOCH_fnc_returnConfigEntryV2;
 		if (_chance >= ((random 100) / 100)) then {
-			deletevehicle _object;
-			_reward call EPOCH_fnc_addItemOverflow;
-			[format ['Sucessfully defused %1 - You have it now in your Inventory',_reward call Epoch_ItemDisplayName],5] call Epoch_Message;
+			[_object,false,player,Epoch_personalToken] remoteexec ["EPOCH_server_DefuseBomb",2];
 		}
 		else {
 				['Oh No... The Bomb will explode in a few seconds... RUN!!!!',5] call Epoch_Message; 
@@ -22,8 +20,7 @@ if (alive player && !isnull _object) then {
 					playSound3D ['a3\sounds_f\air\heli_attack_02\alarm.wss', player, false,getposasl _object, 1, 1, 300];
 					uisleep 1;
 				};
-				'HelicopterExploSmall' createVehicle (position _object);
-				deletevehicle _object;
+				[_object,true,player,Epoch_personalToken] remoteexec ["EPOCH_server_DefuseBomb",2];
 		};
 	}
 	else {
