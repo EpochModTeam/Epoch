@@ -901,6 +901,8 @@ class CfgCrafting
         previewPosition[] = {0.797675,1,0.398882};
         previewScale = 0.07;
         previewVector = 0;
+		descriptionShort = "Jail Wall";
+		descriptionFull = "Used to hold opponent players";
     };
     class KitPlyThirdWall_EPOCH : Kit
     {
