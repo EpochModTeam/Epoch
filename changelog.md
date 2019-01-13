@@ -1,6 +1,81 @@
 # Change Log
 All changes for [Arma 3](https://arma3.com/) [Epoch Mod](https://epochmod.com) are listed in this changelog.
 
+## [1.3.0.0] - 2019-xx-xx
+### Added
+- Several A2 Vehicles ported into Epoch
+   === LandVehicles ===
+   - A2_Golf_EPOCH
+   - A2_HMMWV_EPOCH
+   - A2_HMMWV_load_EPOCH
+   - A2_Lada_EPOCH
+   - A2_SUV_EPOCH
+   - A2_SUV_load_EPOCH
+   - A2_SUV_armed_EPOCH (not finished)
+   - A2_UAZ_EPOCH
+   - A2_UAZ_Open_EPOCH
+   - A2_Ural_EPOCH
+   - A2_Vodnik_EPOCH
+   - A2_Volha_EPOCH
+   === AirVehicles ===
+   - a2_mi8_EPOCH
+   - a2_ch47f_armed_EPOCH
+   - a2_ch47f_armed_plus_EPOCH
+   - uh1h_armed_EPOCH
+   - uh1h_armed_plus_EPOCH
+- A lower Pawnee variant
+   - C_Heli_Light_01_armed_EPOCH
+   - C_Heli_Light_01_armed_plus_EPOCH
+- Several A2 Weapons ported into Epoch
+   - a2_ak47s_gold_EPOCH 		Mass: 150
+   - a2_AK107_EPOCH				Mass: 200
+   - a2_bizon_epoch				Mass: 100
+   - a2_dmr_epoch				Mass: 250
+   - a2_dmr_epoch_scoped		Mass: 250
+   - a2_fnfal_epoch				Mass: 200
+   - a2_G36_C_epoch				Mass: 150
+   - a2_Mg36_epoch				Mass: 150
+   - a2_leeenfield_epoch		Mass: 150
+   - a2_m110_epoch				Mass: 150
+   - a2_mk16_epoch				Mass: 150
+   - a2_mk17_epoch				Mass: 180
+   - a2_svd_epoch				Mass: 200
+   - a2_VSS_vintorez_epoch 		Mass: 150
+   - a2_aks74un_EPOCH			Mass: 150
+- Several A2 Backpacks ported into Epoch
+   - Assault_Pack_Epoch (CIV Assault Pack): 		Load: 300
+   - Patrol_Pack_Epoch (Patrol Pack): 				Load: 300
+   - TK_RPG_Backpack_Epoch (RPG Pack): 				Load: 300
+   - CZ_VestPouch_Epoch (Vest Pouch): 				Load: 340
+   - civil_assault_pack_Epoch (CIV Assault Pack): 	Load: 400
+   - S_Gunbag_Epoch (Gunbag): 						Load: 420
+   - ALICE_Pack_Epoch (Alice Pack): 				Load: 480
+   - US_Backpack_Epoch (Coyote BackPack) : 			Load: 500
+   - CZ_Backpack_Epoch (Camo CZ BackPack): 			Load: 520
+   - L_Gunbag_Epoch (Large Gunbag): 				Load: 580
+- Tablet (E-Pad) Epoch - Can be found in Space Menu
+   - You can simply add "Apps" by a config - https://github.com/EpochModTeam/Epoch/blob/experimental/Sources/epoch_config/Configs/CfgEPad.hpp
+- JailWall and JailDoor to Basebuilding items
+- Sounds to Door animations for building parts
+- Rusty textures for some Vehicles
+- Button to search in all configs to spawn items in AdminMenu
+- Fix to prevent rope-break while lifting Vehicles
+- Removed buildings are no longer logged as "killed", but as removed, if the owner has removed it
+- All Plotpoles are now stored in the Variable "EPOCH_Plotpoles" (for Clients and Server)
+- Earplugs (Default F4 - Auto-Earplugs on Vehicle enter can be toggled in E-Pad)
+- UAV's are now usable by Space-Menu (DynaMenu)
+### Fixed
+- Model for SolarCharger was the same as SolarGenerator in Crafting Menu
+- If already in a group, you can not join another group
+- Position for Traders above water were bugged
+### Changed
+- Metal Garage model is now better to identify (looked nearly the same as walls)
+- Teleporters are now Boothes and no interaction is needed to teleport
+- SIM / Ghost storages have now his own base-Class - "Buildable_Storage_SIM" and "Buildable_Storage_Ghost"
+- RadSuit now also protect against Toxic
+- Simplified Weather script Event
+- Config for seasonal Trader Clothings
+
 ## [1.2.0.0] - 2018-05-24
 ### Added
 - Config in cfgepochclient.hpp to disable needed items for FireOn / BurnBarrelOff / Hook @He-Man
