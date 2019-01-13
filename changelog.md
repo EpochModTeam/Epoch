@@ -53,7 +53,7 @@ All changes for [Arma 3](https://arma3.com/) [Epoch Mod](https://epochmod.com) a
    - US_Backpack_Epoch (Coyote BackPack) : 			Load: 500
    - CZ_Backpack_Epoch (Camo CZ BackPack): 			Load: 520
    - L_Gunbag_Epoch (Large Gunbag): 				Load: 580
-- Tablet (E-Pad) - Can be found in Space Menu
+- Tablet (E-Pad) - Can be found in Space Menu (DynaMenu)
    - You can simply add "Apps" by a config - https://github.com/EpochModTeam/Epoch/blob/experimental/Sources/epoch_config/Configs/CfgEPad.hpp
 - JailWall and JailDoor to Basebuilding items
 - Sounds to Door animations for building parts
@@ -64,6 +64,8 @@ All changes for [Arma 3](https://arma3.com/) [Epoch Mod](https://epochmod.com) a
 - All Plotpoles are now stored in the Variable "EPOCH_Plotpoles" (for Clients and Server)
 - Earplugs (Default F4 - Auto-Earplugs on Vehicle enter can be toggled in E-Pad)
 - UAV's are now usable by Space-Menu (DynaMenu)
+- Configs to disable Door interactions for enhanced movement and ACE Mod
+- You can now defuse bombs via Space-Menu (DynaMenu)
 ### Fixed
 - Model for SolarCharger was the same as SolarGenerator in Crafting Menu
 - If already in a group, you can not join another group
