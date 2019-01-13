@@ -4,7 +4,7 @@ All changes for [Arma 3](https://arma3.com/) [Epoch Mod](https://epochmod.com) a
 ## [1.3.0.0] - 2019-xx-xx
 ### Added
 - Several A2 Vehicles ported into Epoch
-   === LandVehicles ===
+   - === LandVehicles ===
    - A2_Golf_EPOCH
    - A2_HMMWV_EPOCH
    - A2_HMMWV_load_EPOCH
@@ -17,7 +17,7 @@ All changes for [Arma 3](https://arma3.com/) [Epoch Mod](https://epochmod.com) a
    - A2_Ural_EPOCH
    - A2_Vodnik_EPOCH
    - A2_Volha_EPOCH
-   === AirVehicles ===
+   - === AirVehicles ===
    - a2_mi8_EPOCH
    - a2_ch47f_armed_EPOCH
    - a2_ch47f_armed_plus_EPOCH
@@ -53,7 +53,7 @@ All changes for [Arma 3](https://arma3.com/) [Epoch Mod](https://epochmod.com) a
    - US_Backpack_Epoch (Coyote BackPack) : 			Load: 500
    - CZ_Backpack_Epoch (Camo CZ BackPack): 			Load: 520
    - L_Gunbag_Epoch (Large Gunbag): 				Load: 580
-- Tablet (E-Pad) Epoch - Can be found in Space Menu
+- Tablet (E-Pad) - Can be found in Space Menu
    - You can simply add "Apps" by a config - https://github.com/EpochModTeam/Epoch/blob/experimental/Sources/epoch_config/Configs/CfgEPad.hpp
 - JailWall and JailDoor to Basebuilding items
 - Sounds to Door animations for building parts
@@ -71,7 +71,7 @@ All changes for [Arma 3](https://arma3.com/) [Epoch Mod](https://epochmod.com) a
 ### Changed
 - Metal Garage model is now better to identify (looked nearly the same as walls)
 - Teleporters are now Boothes and no interaction is needed to teleport
-- SIM / Ghost storages have now his own base-Class - "Buildable_Storage_SIM" and "Buildable_Storage_Ghost"
+- SIM / Ghost storages have now their own baseClasses - "Buildable_Storage_SIM" and "Buildable_Storage_Ghost"
 - RadSuit now also protect against Toxic
 - Simplified Weather script Event
 - Config for seasonal Trader Clothings
