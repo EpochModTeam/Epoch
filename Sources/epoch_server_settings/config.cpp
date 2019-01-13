@@ -242,7 +242,29 @@ class CfgEpoch
 		    {"K04",2},
 		    {"ebike_epoch",7},
 		    {"mosquito_epoch",5},
-			{"C_Heli_Light_01_civil_EPOCH",5}
+			{"C_Heli_Light_01_civil_EPOCH",5},
+			
+			// A2 Vehicles
+			{"A2_Golf_EPOCH",3},
+			{"A2_HMMWV_EPOCH",3},
+			{"A2_HMMWV_load_EPOCH",3},
+			{"A2_Lada_EPOCH",3},
+			{"A2_SUV_EPOCH",3},
+			{"A2_SUV_load_EPOCH",3},
+//			{"A2_SUV_armed_EPOCH",2}, // (not finished)
+			{"A2_UAZ_EPOCH",3},
+			{"A2_UAZ_Open_EPOCH",3},
+			{"A2_Ural_EPOCH",3},
+			{"A2_Vodnik_EPOCH",3},
+			{"A2_Volha_EPOCH",3},
+
+			{"a2_mi8_EPOCH",1},
+			{"a2_ch47f_armed_EPOCH",1},
+			{"a2_ch47f_armed_plus_EPOCH",1},
+			{"uh1h_armed_EPOCH",1},
+			{"uh1h_armed_plus_EPOCH",1},
+			{"C_Heli_Light_01_armed_EPOCH",1},
+			{"C_Heli_Light_01_armed_plus_EPOCH",1}
 		};
 		allowedVehiclesList_CUP[] = {
 			{"C_Offroad_01_EPOCH",4},
@@ -334,7 +356,29 @@ class CfgEpoch
 			{"CUP_C_UAZ_Open_TK_CIV",2},
 			{"CUP_B_UAZ_Unarmed_CDF",2},
 			{"CUP_B_Ural_Empty_CDF",2},
-			{"CUP_C_DC3_CIV",2}
+			{"CUP_C_DC3_CIV",2},
+
+			// A2 Vehicles
+			{"A2_Golf_EPOCH",3},
+			{"A2_HMMWV_EPOCH",3},
+			{"A2_HMMWV_load_EPOCH",3},
+			{"A2_Lada_EPOCH",3},
+			{"A2_SUV_EPOCH",3},
+			{"A2_SUV_load_EPOCH",3},
+//			{"A2_SUV_armed_EPOCH",2}, // (not finished)
+			{"A2_UAZ_EPOCH",3},
+			{"A2_UAZ_Open_EPOCH",3},
+			{"A2_Ural_EPOCH",3},
+			{"A2_Vodnik_EPOCH",3},
+			{"A2_Volha_EPOCH",3},
+			
+			{"a2_mi8_EPOCH",1},
+			{"a2_ch47f_armed_EPOCH",1},
+			{"a2_ch47f_armed_plus_EPOCH",1},
+			{"uh1h_armed_EPOCH",1},
+			{"uh1h_armed_plus_EPOCH",1},
+			{"C_Heli_Light_01_armed_EPOCH",1},
+			{"C_Heli_Light_01_armed_plus_EPOCH",1}
 		};
         allowedVehiclesList_MAD[] = {
 			{"jetski_epoch",5},

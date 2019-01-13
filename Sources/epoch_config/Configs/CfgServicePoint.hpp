@@ -108,6 +108,53 @@ class CfgServicePoint {
 			}
 		},
 */
+
+		{
+			"a2_ch47f_armed_EPOCH",
+			{
+				{"200Rnd_65x39_Belt",{1},3,200},
+				{"200Rnd_65x39_Belt",{2},3,200}
+			}
+		},
+		{
+			"a2_ch47f_armed_plus_EPOCH",
+			{
+				{"200Rnd_762x51_Belt",{0},3,200},
+				{"200Rnd_762x51_Belt",{1},3,200}
+			}
+		},
+		{
+			"uh1h_armed_EPOCH",
+			{
+				{"200Rnd_65x39_Belt",{1},3,200},
+				{"200Rnd_65x39_Belt",{2},3,200}
+			}
+		},
+		{
+			"uh1h_armed_plus_EPOCH",
+			{
+				{"200Rnd_762x51_Belt",{0},3,200},
+				{"200Rnd_762x51_Belt",{1},3,200}
+			}
+		},
+		{
+			"C_Heli_Light_01_armed_EPOCH",
+			{
+				{"200Rnd_65x39_Belt",{-1},3,200}
+			}
+		},
+		{
+			"C_Heli_Light_01_armed_plus_EPOCH",
+			{
+				{"200Rnd_762x51_Belt",{-1},3,200}
+			}
+		},
+		{
+			"A2_SUV_armed_EPOCH",
+			{
+				{"200Rnd_762x51_Belt",{0},3,200}
+			}
+		},
 		{
 			"B_G_Offroad_01_armed_F",
 			{
