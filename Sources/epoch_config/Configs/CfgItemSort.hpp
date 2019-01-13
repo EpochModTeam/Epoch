@@ -321,7 +321,19 @@ class CfgItemSort
 			"B_ViperLightHarness_ghex_F",
 			"B_ViperLightHarness_blk_F",
 			"B_Carryall_ghex_F",
-			"B_FieldPack_ghex_F"
+			"B_FieldPack_ghex_F",
+
+			// A2 Backpacks
+			"Assault_Pack_Epoch",
+			"Patrol_Pack_Epoch",
+			"TK_RPG_Backpack_Epoch",
+			"CZ_VestPouch_Epoch",
+			"civil_assault_pack_Epoch",
+			"S_Gunbag_Epoch",
+			"ALICE_Pack_Epoch",
+			"US_Backpack_Epoch",
+			"CZ_Backpack_Epoch",
+			"L_Gunbag_Epoch"
 		};
 
 		HeadGear[] = {

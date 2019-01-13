@@ -6348,7 +6348,7 @@ class CfgPricing
     class B_Bergen_hex_F                    {  price = 40; };
     class B_Bergen_tna_F                    {  price = 40; };
     class B_AssaultPack_tna_F               { price = 10; };
-    class B_Carryall_ghex_F                 {  price = 30; };
+    class B_Carryall_ghex_F                 {  price = 40; };
     class B_FieldPack_ghex_F                {  price = 12; };
     class B_ViperHarness_base_F             { price = 25; };
     class B_ViperHarness_blk_F              { price = 25; };
@@ -6362,6 +6362,17 @@ class CfgPricing
     class B_ViperLightHarness_hex_F         {  price = 20; };
     class B_ViperLightHarness_khk_F         {  price = 20; };
     class B_ViperLightHarness_oli_F         {  price = 20; };
+	// A2 Backpacks
+	class Assault_Pack_Epoch				{  price = 30; };
+	class Patrol_Pack_Epoch					{  price = 30; };
+	class TK_RPG_Backpack_Epoch				{  price = 30; };
+	class CZ_VestPouch_Epoch				{  price = 35; };
+	class civil_assault_pack_Epoch			{  price = 35; };
+	class S_Gunbag_Epoch					{  price = 35; };
+	class ALICE_Pack_Epoch					{  price = 40; };
+	class US_Backpack_Epoch					{  price = 40; };
+	class CZ_Backpack_Epoch					{  price = 40; };
+	class L_Gunbag_Epoch					{  price = 40; };
     // MAD ARMA
     class revolver01                        { price = 55; };
     class VG_sawed_off_01                   { price = 120; };

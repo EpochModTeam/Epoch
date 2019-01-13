@@ -1204,7 +1204,18 @@ class CfgLootTable_MAD
 				{ { "smallbackpack_red_epoch", "backpack" }, 4 },
 				{ { "smallbackpack_green_epoch", "backpack" }, 4 },
 				{ { "smallbackpack_teal_epoch", "backpack" }, 4 },
-				{ { "smallbackpack_pink_epoch", "backpack" }, 4 }
+				{ { "smallbackpack_pink_epoch", "backpack" }, 4 },
+
+				{ { "Assault_Pack_Epoch", "backpack" }, 5 },
+				{ { "Patrol_Pack_Epoch", "backpack" }, 5 },
+				{ { "TK_RPG_Backpack_Epoch", "backpack" }, 4 },
+				{ { "CZ_VestPouch_Epoch", "backpack" }, 4 },
+				{ { "civil_assault_pack_Epoch", "backpack" }, 3 },
+				{ { "S_Gunbag_Epoch", "backpack" }, 3 },
+				{ { "ALICE_Pack_Epoch", "backpack" }, 2 },
+				{ { "US_Backpack_Epoch", "backpack" }, 2 },
+				{ { "CZ_Backpack_Epoch", "backpack" }, 1 },
+				{ { "L_Gunbag_Epoch", "backpack" }, 1 }
 		};
 	};
 
