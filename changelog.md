@@ -55,6 +55,18 @@ All changes for [Arma 3](https://arma3.com/) [Epoch Mod](https://epochmod.com) a
    - L_Gunbag_Epoch (Large Gunbag): 				Load: 580
 - Tablet (E-Pad) - Can be found in Space Menu (DynaMenu)
    - You can simply add "Apps" by a config - https://github.com/EpochModTeam/Epoch/blob/experimental/Sources/epoch_config/Configs/CfgEPad.hpp
+   - Default Apps:
+      - Enable E-Pad in DynaMenu
+      - Show Playermarker on Map (GPS is needed)
+      - Show dead Playermarker on Map (GPS on death was needed)
+      - Enable / Disable Auto-Earplugs on Vehicle enter
+      - Server Infos / Rules / Settings (load predefined html-sites)
+      - Switch on / off debug monitor
+      - Check, if you are reviveable or not
+      - Read some news (random messages)
+      - Check for nearby Vehicles (cost 250 Krypto)
+      - Check for nearby Players (cost 250 Krypto)
+      - Kill yourself (suicide)
 - JailWall and JailDoor to Basebuilding items
 - Sounds to Door animations for building parts
 - Rusty textures for some Vehicles
