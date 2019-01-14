@@ -20,15 +20,28 @@ class e_pad_config
 			IconCode = "if (true) then {'addons\MyIcon.paa'} else {''}";		// Variable Icon - will overwrite static Icon, if defined
 			color[] = {1,1,1,1};												// default color for Icon / Button text
 			colortoggled[] = {0,1,0,1};											// Icon / Button color if toggleable and variable is toggled (true)
+			html = "epoch_code\customs\E_Pad\ServerInfos.html";					// Path to a html-file (if defined or not "", the action will only load this web site into the e-pad)
 			action = "";														// code to run on button click
 			Tooltip = "PLACE-HOLDER";											// Static Tooltip
 			TooltipCode = "if (true) then {'My ToolTip'} else {''}";			// Variable Tooltip - will overwrite static Tooltip, if defined
 			ToggleVar = "";														// Script will check this variable. If true, Button is toggled and color change to "colortoggled"
 			ToggleAble = "false";												// if "true", the defined variable will be toggled (and saved to profile) on buttonclick
-			class SubMenu {														// On Buttonclick, a new submenu will be opened with defined classes here
-				...
-				...
-			}
+			class SubMenu {														// If a Sub-Menu is defined, on Buttonclick, a new submenu will be opened with defined classes here
+				ButtonText = "app10";
+				ButtonTextCode = "if (true) then {'Text'} else {''}";
+				Description = "";
+				DescriptionCode = "if (true) then {'Desctription'} else {''}";
+				Icon = "";
+				IconCode = "if (true) then {'addons\MyIcon.paa'} else {''}";
+				color[] = {1,1,1,1};
+				colortoggled[] = {0,1,0,1};
+				html = "epoch_code\customs\E_Pad\ServerInfos.html";
+				action = "";
+				Tooltip = "PLACE-HOLDER";
+				TooltipCode = "if (true) then {'My ToolTip'} else {''}";
+				ToggleVar = "";
+				ToggleAble = "false";
+			};
 		};
 */
 		class settings
@@ -52,17 +65,6 @@ class e_pad_config
 				Tooltip = "Add / Remove E-Pad Button from DynaMenu (you can still open it with F10)";
 				ToggleVar = "EPOCH_EpadButtonOn";
 				ToggleAble = "true";
-			};
-			class Reset {
-				ButtonText = "Reset";
-				Description = "Reset Settings";
-				Icon = "";
-				color[] = {1,1,0,1};
-				colortoggled[] = {0,1,0,1};
-				action = "[] spawn {_confirm = ['Reset all E-Pad Settings? Sure?','WARNING!',true,true] call BIS_fnc_guiMessage; if (_confirm) then {call Epoch_EPad_Reset; [] call EPOCH_EPad_dialog}}";
-				Tooltip = "Reset all settings";
-				ToggleVar = "";
-				ToggleAble = "false";
 			};
 			class playerMarker
 			{
@@ -99,6 +101,18 @@ class e_pad_config
 				ToggleVar = "EPOCH_AutoEarplug";
 				ToggleAble = "true";
 			};
+			class Reset {
+				ButtonText = "Reset";
+				Description = "Reset Settings";
+				Icon = "";
+				color[] = {1,1,0,1};
+				colortoggled[] = {0,1,0,1};
+				action = "[] spawn {_confirm = ['Reset all E-Pad Settings? Sure?','WARNING!',true,true] call BIS_fnc_guiMessage; if (_confirm) then {call Epoch_EPad_Reset; [] call EPOCH_EPad_dialog}}";
+				Tooltip = "Reset all settings";
+				ToggleVar = "";
+				ToggleAble = "false";
+			};
+/*
 			class SubSub {
 				ButtonText = "SubMenu";
 				Description = "Sub Menu";
@@ -121,18 +135,58 @@ class e_pad_config
 					ToggleAble = "false";
 				};
 			};
+*/
 		};
-		class info
+		class infos
 		{
 			ButtonText = "";
-			Description = "Server Info";
+			Description = "Infos";
 			icon = "x\addons\a3_epoch_code\Data\UI\epad\server_info_icon_ca.paa";
 			color[] = {1,1,1,1};
 			colortoggled[] = {0,1,0,1};
-			action = "createDialog 'server_info_picture'";
-			Tooltip = "Display server Info";
+			action = "";
+			Tooltip = "Info-Menu";
 			ToggleVar = "";
 			ToggleAble = "false";
+			class serverinfo
+			{
+				ButtonText = "";
+				Description = "Server Info";
+				icon = "x\addons\a3_epoch_code\Data\UI\epad\server_info_icon_ca.paa";
+				color[] = {1,1,1,1};
+				colortoggled[] = {0,1,0,1};
+				html = "epoch_code\customs\E_Pad\ServerInfos.html";
+				action = "";
+				Tooltip = "Display Server Infos";
+				ToggleVar = "";
+				ToggleAble = "false";
+			};
+			class serversettings
+			{
+				ButtonText = "";
+				Description = "Server Rules";
+				icon = "x\addons\a3_epoch_code\Data\UI\epad\server_info_icon_ca.paa";
+				color[] = {1,1,1,1};
+				colortoggled[] = {0,1,0,1};
+				html = "epoch_code\customs\E_Pad\ServerSettings.html";
+				action = "";
+				Tooltip = "Display Server Settings";
+				ToggleVar = "";
+				ToggleAble = "false";
+			};
+			class serverrules
+			{
+				ButtonText = "";
+				Description = "Server Rules";
+				icon = "x\addons\a3_epoch_code\Data\UI\epad\server_info_icon_ca.paa";
+				color[] = {1,1,1,1};
+				colortoggled[] = {0,1,0,1};
+				html = "epoch_code\customs\E_Pad\ServerRules.html";
+				action = "createDialog 'server_info_picture'";
+				Tooltip = "Display Server Rules";
+				ToggleVar = "";
+				ToggleAble = "false";
+			};
 		};
 		class debug
 		{
@@ -165,20 +219,8 @@ class e_pad_config
 			Icon = "";
 			color[] = {1,1,1,1};
 			colortoggled[] = {0,1,0,1};
-			action = "call compile preprocessfilelinenumbers ""epoch_code\gui\scripts\e_pad\Apps\traderDiag_news.sqf""";
+			action = "call compile preprocessfilelinenumbers 'epoch_code\customs\E_Pad\traderDiag_news.sqf'";
 			Tooltip = "News";
-			ToggleVar = "";
-			ToggleAble = "false";
-		};
-		class web
-		{
-			ButtonText = "WEB";
-			Description = "Web links";
-			Icon = "";
-			color[] = {1,1,1,1};
-			colortoggled[] = {0,1,0,1};
-			action = "call compile preprocessfilelinenumbers ""epoch_code\gui\scripts\e_pad\Apps\web.sqf""";
-			Tooltip = "WEB LINK";
 			ToggleVar = "";
 			ToggleAble = "false";
 		};
@@ -189,7 +231,7 @@ class e_pad_config
 			Icon = "";
 			color[] = {1,1,1,1};
 			colortoggled[] = {0,1,0,1};
-			action = "[250,1000] call compile preprocessfilelinenumbers ""epoch_code\gui\scripts\e_pad\Apps\traderDiag_nearVehicles.sqf""";
+			action = "[250,1000] call compile preprocessfilelinenumbers 'epoch_code\customs\E_Pad\traderDiag_nearVehicles.sqf'";
 			Tooltip = "Scan for near Vehicles (costs 250 energy)";
 			ToggleVar = "";
 			ToggleAble = "false";
@@ -201,8 +243,20 @@ class e_pad_config
 			Icon = "";
 			color[] = {1,1,1,1};
 			colortoggled[] = {0,1,0,1};
-			action = "[250,250] call compile preprocessfilelinenumbers ""epoch_code\gui\scripts\e_pad\Apps\traderDiag_nearPlayers.sqf""";
+			action = "[250,250] call compile preprocessfilelinenumbers 'epoch_code\customs\E_Pad\traderDiag_nearPlayers.sqf'";
 			Tooltip = "Scan for near Players (costs 250 energy)";
+			ToggleVar = "";
+			ToggleAble = "false";
+		};
+		class suicide
+		{
+			ButtonText = "KILL";
+			Description = "Kill yourself";
+			Icon = "";
+			color[] = {1,1,1,1};
+			colortoggled[] = {0,1,0,1};
+			action = "[] spawn {_confirm = ['Are you sure to kill yourself?','Suicide!',true,true] call BIS_fnc_guiMessage;if (_confirm) then {while {dialog} do {closedialog 0};disableUserInput true;Player playAction 'GestureSuicide';uisleep 3;Player setdamage 1;disableUserInput false;};};";
+			Tooltip = "Kill yourself to respawn";
 			ToggleVar = "";
 			ToggleAble = "false";
 		};

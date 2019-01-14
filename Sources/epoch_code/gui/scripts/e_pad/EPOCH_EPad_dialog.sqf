@@ -30,15 +30,21 @@ for "_i" from ((Epoch_E_Pad_Page-1)*13) to (((count _configs)-1) min (((Epoch_E_
 	_subclasses = configProperties [_configx, "isClass _x",true];
 	_action = format ["%1;",getText(_configx >> "action")];
 	_togglevar = getText(_configx >> "ToggleVar");
-	if !(_subclasses isEqualTo []) then {
-		_action = _action + format ["Epoch_E_Pad_Page = 1; [%1] call EPOCH_EPad_dialog", _arr + [(configName _configx)]];
-	}
-	else {
-		if (tolower (getText(_configx >> "ToggleAble")) isequalto "true") then {
-			if !(_togglevar isequalto "") then {
-				_action = _action + format ["%1 = %2; ['Epoch_ToggleVars','%1',%2] call Epoch_SaveVarsToProfile; [%3] call EPOCH_EPad_dialog",_togglevar,!(missionnamespace getvariable [format ["%1",_togglevar],false]),_arr];
+	_html = getText (_configx >> "html");
+	if (_html isequalto "") then {
+		if !(_subclasses isEqualTo []) then {
+			_action = _action + format ["Epoch_E_Pad_Page = 1; [%1] call EPOCH_EPad_dialog", _arr + [(configName _configx)]];
+		}
+		else {
+			if (tolower (getText(_configx >> "ToggleAble")) isequalto "true") then {
+				if !(_togglevar isequalto "") then {
+					_action = _action + format ["%1 = %2; ['Epoch_ToggleVars','%1',%2] call Epoch_SaveVarsToProfile; [%3] call EPOCH_EPad_dialog",_togglevar,!(missionnamespace getvariable [format ["%1",_togglevar],false]),_arr];
+				};
 			};
 		};
+	}
+	else {
+		_action = format ["disableserialization;call EPOCH_EPad_clearscreen;_htmlctrlsgrp = ((finddisplay 9898) displayctrl 1900); _htmlctrlsgrp ctrlshow true; _htmlctrl = _htmlctrlsgrp controlsGroupCtrl 1901;_htmlctrl htmlLoad %1;",str _html];
 	};
 
 	_ButtonText = "";
