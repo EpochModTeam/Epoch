@@ -148,11 +148,24 @@ class e_pad_config
 			Tooltip = "Info-Menu";
 			ToggleVar = "";
 			ToggleAble = "false";
+			class contact
+			{
+				ButtonText = "";
+				Description = "Contact";
+				icon = "x\addons\a3_epoch_code\Data\UI\epad\Contact1.paa";
+				color[] = {1,1,1,1};
+				colortoggled[] = {0,1,0,1};
+				html = "epoch_code\customs\E_Pad\ServerContacts.html";
+				action = "";
+				Tooltip = "COntact us";
+				ToggleVar = "";
+				ToggleAble = "false";
+			};
 			class serverinfo
 			{
 				ButtonText = "";
 				Description = "Server Info";
-				icon = "x\addons\a3_epoch_code\Data\UI\epad\server_info_icon_ca.paa";
+				icon = "x\addons\a3_epoch_code\Data\UI\epad\info.paa";
 				color[] = {1,1,1,1};
 				colortoggled[] = {0,1,0,1};
 				html = "epoch_code\customs\E_Pad\ServerInfos.html";
@@ -164,7 +177,7 @@ class e_pad_config
 			class serversettings
 			{
 				ButtonText = "";
-				Description = "Server Rules";
+				Description = "Server Settings";
 				icon = "x\addons\a3_epoch_code\Data\UI\epad\server_info_icon_ca.paa";
 				color[] = {1,1,1,1};
 				colortoggled[] = {0,1,0,1};
@@ -178,7 +191,7 @@ class e_pad_config
 			{
 				ButtonText = "";
 				Description = "Server Rules";
-				icon = "x\addons\a3_epoch_code\Data\UI\epad\server_info_icon_ca.paa";
+				icon = "x\addons\a3_epoch_code\Data\UI\epad\Rules.paa";
 				color[] = {1,1,1,1};
 				colortoggled[] = {0,1,0,1};
 				html = "epoch_code\customs\E_Pad\ServerRules.html";
@@ -250,9 +263,9 @@ class e_pad_config
 		};
 		class suicide
 		{
-			ButtonText = "KILL";
+			ButtonText = "";
 			Description = "Kill yourself";
-			Icon = "";
+			icon = "x\addons\a3_epoch_code\Data\UI\epad\suicide.paa";
 			color[] = {1,1,1,1};
 			colortoggled[] = {0,1,0,1};
 			action = "[] spawn {_confirm = ['Are you sure to kill yourself?','Suicide!',true,true] call BIS_fnc_guiMessage;if (_confirm) then {while {dialog} do {closedialog 0};disableUserInput true;Player playAction 'GestureSuicide';uisleep 3;Player setdamage 1;disableUserInput false;};};";
