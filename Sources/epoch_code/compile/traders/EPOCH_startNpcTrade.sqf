@@ -88,7 +88,7 @@ if (alive _this) then {
 							_added = true;
 						}
 						else {
-							_vehicles = (nearestobjects [_this,[_item], 30]) select {local _x && alive _x};
+							_vehicles = (nearestobjects [_this,[_item], ["CfgEpochClient", "MaxVehTradeDist", 30] call EPOCH_fnc_returnConfigEntryV2]) select {local _x && alive _x};
 							if (!(_vehicles isEqualTo[])) then {
 								_vehicle = _vehicles select 0;
 								_vehSlot = _vehicle getVariable["VEHICLE_SLOT", "ABORT"];

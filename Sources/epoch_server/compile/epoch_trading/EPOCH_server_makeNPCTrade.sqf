@@ -17,7 +17,7 @@ private [	"_MaxBankDebit","_SkipOut","_VAL","_aiItems","_bankBalance","_bankData
 			"_group","_helipad","_helipads","_item","_itemClasses","_itemQty","_itemQtys","_itemTax","_itemWorth","_itemsIn","_itemsOut","_lockOwner","_makeTradeIn","_message","_nearByHolder",
 			"_objHiveKey","_objOwner","_playerCryptoLimit","_playerGroup","_playerNetID","_playerUID","_position","_qtyIndex","_response","_return","_returnIn","_returnOut","_road",
 			"_serverSettingsConfig","_slot","_smoke","_tax","_tmpposition","_tradeIn","_tradeOut","_tradeQtyTotal","_tradeTotal","_vars","_vehHiveKey","_vehObj","_vehSlot","_vehicle","_vehicleBought",
-			"_vehicleSold","_vehicles","_vehslot","_wH","_wHPos","_wp","_kIndex","_playerCStats","_playerKarma","_playerKarmaAdj","_EnableTempVehTrade"
+			"_vehicleSold","_vehicles","_vehslot","_wH","_wHPos","_wp","_kIndex","_playerCStats","_playerKarma","_playerKarmaAdj","_EnableTempVehTrade","_MaxVehTradeDist"
 ];
 params ["_trader","_itemsIn","_itemsOut","_player",["_token","",[""]] ];
 
@@ -58,6 +58,7 @@ if (_slot != -1) then {
 	_aiItems = _trader getVariable["AI_ITEMS", [[], []] ];
 	_itemClasses = _aiItems select 0;
 	_itemQtys = _aiItems select 1;
+	_MaxVehTradeDist = ["CfgEpochClient", "MaxVehTradeDist", 30] call EPOCH_fnc_returnConfigEntryV2;
 	{
 		_x params ["_item","_itemQty"];
 		if (isClass (_config >> _item)) then {
@@ -69,7 +70,7 @@ if (_slot != -1) then {
 			_itemWorth = round (_itemWorth*(_itemQty/_maxrnd));
 			_makeTradeIn = false;
 			if (_item isKindOf "Air" || _item isKindOf "Ship" || _item isKindOf "LandVehicle" || _item isKindOf "Tank") then{
-				_vehicles = (nearestobjects [_trader,[_item],30]) select {owner _x == owner _player && alive _x};
+				_vehicles = (nearestobjects [_trader,[_item],_MaxVehTradeDist]) select {owner _x == owner _player && alive _x};
 				if !(_vehicles isEqualTo[]) then {
 					_vehicle = _vehicles select 0;
 					_vehSlot = _vehicle getVariable["VEHICLE_SLOT", "ABORT"];

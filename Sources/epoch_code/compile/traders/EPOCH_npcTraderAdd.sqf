@@ -75,7 +75,7 @@ if !(isNull EPOCH_lastNPCtradeTarget) then {
 							} foreach ((getAllHitPointsDamage _vehicle) select 0);
 						};
 						if (!_allowAdd) exitwith {};
-					} foreach (EPOCH_lastNPCtradeTarget nearEntities [[_uiItem], 30]);
+					} foreach (EPOCH_lastNPCtradeTarget nearEntities [[_uiItem], ["CfgEpochClient", "MaxVehTradeDist", 30] call EPOCH_fnc_returnConfigEntryV2]);
 				};
 			};
 		};

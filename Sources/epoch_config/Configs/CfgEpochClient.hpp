@@ -224,10 +224,11 @@ class CfgEpochClient
 	EnableTempVehTrade = "false";			// Enable selling of temp Vehicles (not handled by Epoch). Temp Vehicles will not be stored in Traders, but can be sold
 	BulletCalculateOnCraft = "true";		// Enable Bullet Calculation on Crafting - Example: If you craft a large EnergyPack with 3 half full EnergyPacks, you will only get a half filled large EnergyPack back
 
-	// Advanced Vehicle Repair
+	// Vehicle Settings
+	DisallowSellOnDamage = "false";										// Prevent from selling Vehicles with one or more fully damaged wheel or engine
+	MaxVehTradeDist = 30;												// Max distance where Players can sell Vehicles to Traders
 	UseAdvancedVehicleRepair = "true";									// Switch On / Off Advanced Vehicle Repair (Does not effect SuppressedCraftingItems !)
 	EnableRemoveParts = "true";											// Enable removing Tires / Engines from Vehicles
-	DisallowSellOnDamage = "false";										// Prevent from selling Vehicles with one or more fully damaged wheel or engine
 	SuppressedCraftingItems[] = {										// These Items can not be crafted (but can be used in recipe)
 			"VehicleRepairLg",			// Supressed for Advanced Vehicle Repair (no longer needed)
 			"KitMetalQuarterFloor",		// Item is Upgradeable, but you can remove it here to make it also Craftable
