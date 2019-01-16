@@ -23,7 +23,7 @@ All changes for [Arma 3](https://arma3.com/) [Epoch Mod](https://epochmod.com) a
       - a2_ch47f_armed_plus_EPOCH
       - uh1h_armed_EPOCH
       - uh1h_armed_plus_EPOCH
-- A lower Pawnee variant
+   - A lower Pawnee variant
       - C_Heli_Light_01_armed_EPOCH
       - C_Heli_Light_01_armed_plus_EPOCH
 - Several A2 Weapons ported into Epoch
