@@ -14,7 +14,7 @@
 /*[[[cog from arma_config_tools import *; json_to_arma()]]]*/
 class CfgEpochClient
 {
-    epochVersion = "1.2.0";
+    epochVersion = "1.3.0";
     ArmAVersion = 176;
 	debug = "true";  // true = enable extra rpt debug lines, false to disable
 
