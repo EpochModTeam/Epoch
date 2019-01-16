@@ -5,27 +5,27 @@ All changes for [Arma 3](https://arma3.com/) [Epoch Mod](https://epochmod.com) a
 ### Added
 - Several A2 Vehicles ported into Epoch
    - === LandVehicles ===
-   - A2_Golf_EPOCH
-   - A2_HMMWV_EPOCH
-   - A2_HMMWV_load_EPOCH
-   - A2_Lada_EPOCH
-   - A2_SUV_EPOCH
-   - A2_SUV_load_EPOCH
-   - A2_SUV_armed_EPOCH (not finished)
-   - A2_UAZ_EPOCH
-   - A2_UAZ_Open_EPOCH
-   - A2_Ural_EPOCH
-   - A2_Vodnik_EPOCH
-   - A2_Volha_EPOCH
+      - A2_Golf_EPOCH
+      - A2_HMMWV_EPOCH
+      - A2_HMMWV_load_EPOCH
+      - A2_Lada_EPOCH
+      - A2_SUV_EPOCH
+      - A2_SUV_load_EPOCH
+      - A2_SUV_armed_EPOCH (not finished)
+      - A2_UAZ_EPOCH
+      - A2_UAZ_Open_EPOCH
+      - A2_Ural_EPOCH
+      - A2_Vodnik_EPOCH
+      - A2_Volha_EPOCH
    - === AirVehicles ===
-   - a2_mi8_EPOCH
-   - a2_ch47f_armed_EPOCH
-   - a2_ch47f_armed_plus_EPOCH
-   - uh1h_armed_EPOCH
-   - uh1h_armed_plus_EPOCH
+      - a2_mi8_EPOCH
+      - a2_ch47f_armed_EPOCH
+      - a2_ch47f_armed_plus_EPOCH
+      - uh1h_armed_EPOCH
+      - uh1h_armed_plus_EPOCH
 - A lower Pawnee variant
-   - C_Heli_Light_01_armed_EPOCH
-   - C_Heli_Light_01_armed_plus_EPOCH
+      - C_Heli_Light_01_armed_EPOCH
+      - C_Heli_Light_01_armed_plus_EPOCH
 - Several A2 Weapons ported into Epoch
    - a2_ak47s_gold_EPOCH 		Mass: 150
    - a2_AK107_EPOCH				Mass: 200
@@ -78,14 +78,16 @@ All changes for [Arma 3](https://arma3.com/) [Epoch Mod](https://epochmod.com) a
 - UAV's are now usable by Space-Menu (DynaMenu)
 - Configs to disable Door interactions for enhanced movement and ACE Mod
 - You can now defuse bombs via Space-Menu (DynaMenu)
+- Config to change the max vehicle trade distance to cfgEpochclient.hpp
 ### Fixed
 - Model for SolarCharger was the same as SolarGenerator in Crafting Menu
 - If already in a group, you can not join another group
 - Position for Traders above water were bugged
+- Mosquito behavior was a bit too heavy
 ### Changed
 - Metal Garage model is now better to identify (looked nearly the same as walls)
-- Teleporters are now Boothes and no interaction is needed to teleport
-- SIM / Ghost storages have now their own baseClasses - "Buildable_Storage_SIM" and "Buildable_Storage_Ghost"
+- Teleporters are now Booths and no interaction is needed to teleport
+- SIM / Ghost storages have now own baseClasses - "Buildable_Storage_SIM" / "Buildable_Storage_Ghost"
 - RadSuit now also protect against Toxic
 - Simplified Weather script Event
 - Config for seasonal Trader Clothings
