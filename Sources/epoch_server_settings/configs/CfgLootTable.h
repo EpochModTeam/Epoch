@@ -505,14 +505,16 @@ class CfgLootTable
 	};
 	class RifleAmmo_A2
 	{
-				{ { "Bizon_64Rnd_9x18", "magazine" }, 4 },
+		items[] = {
+				{ { "Bizon_64Rnd_9x18", "magazine" }, 2 },
 				{ { "20Rnd_762x51_DMR", "magazine" }, 2 },
 				{ { "20Rnd_762x51_FNFAL", "magazine" }, 2 },
-				{ { "30Rnd_556x45_G36", "magazine" }, 4 },
+				{ { "30Rnd_556x45_G36", "magazine" }, 2 },
 				{ { "10Rnd_303", "magazine" }, 2 },
 				{ { "100Rnd_556x45_BetaCMag", "magazine" }, 2 },
 				{ { "10Rnd_762x54_SVD", "magazine" }, 2 },
 				{ { "10Rnd_9x39_SP5_VSS", "magazine" }, 2 }
+		};
 	};
 	class RifleAmmo_30Rnd_556x45_Stanag
 	{
