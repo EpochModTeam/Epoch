@@ -20,7 +20,7 @@ class CfgPatches {
 		units[] = {};
 		weapons[] = {};
 		requiredVersion = 0.1;
-		epochVersion = "1.2.0";
+		epochVersion = "1.3.0";
 		requiredAddons[] = {};
 		#include "build.hpp"
 	};
