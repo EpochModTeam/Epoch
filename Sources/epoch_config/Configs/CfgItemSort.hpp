@@ -722,7 +722,7 @@ class CfgItemSort
 			"30Rnd_762x39_Mag",
 
 			// A2 Mags
-			"Bizon_64Rnd_9x19",
+			"Bizon_64Rnd_9x18",
 			"20Rnd_762x51_DMR",
 			"20Rnd_762x51_FNFAL",
 			"30Rnd_556x45_G36",

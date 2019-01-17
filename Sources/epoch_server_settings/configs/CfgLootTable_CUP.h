@@ -834,8 +834,20 @@ class CfgLootTable_CUP
 				{ { "30Rnd_9x21_Mag", "magazine" }, 12 },
 				{ { "5Rnd_rollins_mag", "magazine" }, 15 },
 				{ { "50Rnd_570x28_SMG_03", "magazine" }, 10 },
+				{ { "RifleAmmo_A2", "CfgLootTable" }, 10 },
 				{ { "CUP_RifleAmmo", "CfgLootTable" }, 26 }
 		};
+	};
+	class RifleAmmo_A2
+	{
+				{ { "Bizon_64Rnd_9x18", "magazine" }, 4 },
+				{ { "20Rnd_762x51_DMR", "magazine" }, 2 },
+				{ { "20Rnd_762x51_FNFAL", "magazine" }, 2 },
+				{ { "30Rnd_556x45_G36", "magazine" }, 4 },
+				{ { "10Rnd_303", "magazine" }, 2 },
+				{ { "100Rnd_556x45_BetaCMag", "magazine" }, 2 },
+				{ { "10Rnd_762x54_SVD", "magazine" }, 2 },
+				{ { "10Rnd_9x39_SP5_VSS", "magazine" }, 2 }
 	};
 	class CUP_RifleAmmo
 	{

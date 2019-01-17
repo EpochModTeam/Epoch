@@ -2746,7 +2746,7 @@ class CfgPricing
     };
 	
 	// A2 Mags
-    class Bizon_64Rnd_9x19
+    class Bizon_64Rnd_9x18
     {
         price = 5;
         tax = 0.9;
