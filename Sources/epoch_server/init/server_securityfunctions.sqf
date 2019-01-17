@@ -1619,12 +1619,6 @@ _skn_admincode = compileFinal ("
 			if (!dialog) then {openMap [false, false]};
 		};
 	};
-	"+_skn_deleteMenu+" = [
-		['Delete Menu',true],
-		[format ['%1',typeOf "+_skn_tg_delete+"], [-1], '', -5, [['expression', '']], '1', '0'],
-		['Delete', [2], '', -5, [['expression', '[] spawn "+_skn_deleteNow+"']], '1', '1'],
-		['Exit', [0], '', -5, [['expression', '']], '1', '1']
-	];
 	"+_skn_deleteNow+" = {
 		if (!isNull "+_skn_tg_delete+") then {
 			if (!isPlayer "+_skn_tg_delete+") then {
@@ -1634,10 +1628,15 @@ _skn_admincode = compileFinal ("
 		"+_skn_tg_delete+" = objNull;
 	};
 	"+_skn_delete+" = {
-		showCommandingMenu '';
 		if (!isNull cursorTarget) then {
-			"+_skn_tg_delete+" = cursorTarget;
-			showCommandingMenu '#USER:"+_skn_deleteMenu+"';
+			if ("+_skn_tg_delete+" isEqualto cursorTarget) then {
+				call "+_skn_deleteNow+";
+			}
+			else {
+				"+_skn_tg_delete+" = cursorTarget;
+				hintSilent parsetext format ['Delete %1?<br/>Press again to confirm!',typeof "+_skn_tg_delete+"];
+				systemchat format ['Delete %1? Press again to confirm!',typeof "+_skn_tg_delete+"];
+			};
 		};
 	};
 	"+_skn_fnc_Spec+" = {
