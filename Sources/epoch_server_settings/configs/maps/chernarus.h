@@ -29,7 +29,6 @@ class Chernarus : Default
 		{"VegetationFir",1},
 		{"ViewPoint",1}
 	};
-	traderBlds[] = { "Land_A_FuelStation_Build", "Land_A_GeneralStore_01", "Land_A_GeneralStore_01a", "Land_A_Office01", "Land_Ind_Garage01", "Land_Ind_Workshop01_04", "Land_Ind_Workshop01_L", "Land_Shed_Ind02", "Land_Tovarna2", "Land_sara_hasic_zbroj" };
 	telePos[] = {
 		// N [-0.286865,8.17383,-10.3098, 0]
 		// S [-0.415527,-7.05298,-10.3098, 180]

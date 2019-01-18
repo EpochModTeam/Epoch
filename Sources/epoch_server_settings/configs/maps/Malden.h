@@ -24,7 +24,6 @@ class Malden : Default
 		{"NameCityCapital",4},
 		{"Airport",5}
 	};
-    traderBlds[] = { "Land_Kiosk_blueking_F", "Land_FuelStation_Build_F", "Land_CarService_F", "Land_i_Garage_V1_F", "Land_i_Shed_Ind_F", "Land_i_Shop_01_V1_F" };
 	telePos[] = {
 		// N [-0.286865,8.17383,-10.3098, 0]
 		// S [-0.415527,-7.05298,-10.3098, 180]

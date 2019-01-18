@@ -29,7 +29,6 @@ class Esseker : Default
 		{"VegetationFir",1},
 		{"ViewPoint",1}
 	};
-	traderBlds[] = { "Land_i_House_Big_02_V3_dam_F", "Land_A_GeneralStore_01", "Land_A_GeneralStore_01a", "Land_sara_domek_zluty", "Land_Tovarna2", "Land_Shed_Ind02", "Land_i_House_Big_01_V3_dam_F", "Land_HouseV2_02_Interier", "Land_i_House_Small_01_V3_dam_F", "Land_HouseV_1I4", "Land_dum_rasovna", "Land_FuelStation_Build_F", "Land_CarService_F", "Land_u_House_Small_02_V1_F", "Land_i_Stone_HouseSmall_V1_F", "Land_i_Stone_Shed_V1_F"};
 	shipwreckLootEnabled = 0;
 	telePos[] = {
 		// N [-0.286865,8.17383,-10.3098, 0]

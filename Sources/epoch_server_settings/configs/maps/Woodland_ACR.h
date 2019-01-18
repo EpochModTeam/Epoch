@@ -29,7 +29,6 @@ class Woodland_ACR : Default
 		{"VegetationFir",1},
 		{"ViewPoint",1}
 	};
-	traderBlds[] = {"House", "Building"};
 	shipwreckLootEnabled = 0;
 	telePos[] = {
 		// N [-0.286865,8.17383,-10.3098, 0]

@@ -30,7 +30,6 @@ class Shapur_BAF : Default
 		{"ViewPoint",1}
 	};
 	shipwreckLootEnabled = 0;
-	traderBlds[] = {"House", "Building"};
 
 	telePos[] = {
 		// N [-0.286865,8.17383,-10.3098, 0]

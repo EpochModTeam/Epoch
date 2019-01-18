@@ -15,7 +15,7 @@
 //[[[cog import generate_private_arrays ]]]
 private [	"_serverSettingsConfig","_acceptableBlds","_agent","_aiClass","_aiTables","_buildingHome","_buildingWork","_buildings","_checkBuilding","_config","_endTime","_home",
 			"_homes","_markers","_objHiveKey","_pos","_position","_randomAIUniform","_return","_schedule","_slot","_spawnCount","_startTime","_traderHomes","_usedBuildings","_work",
-			"_WinterDeco","_HelloweenDeco","_buildingJammerRange","_TraderDeco"
+			"_WinterDeco","_HelloweenDeco","_buildingJammerRange","_TraderDeco","_TraderMinDistance","_traderblockblds","_Traderblocks"
 ];
 //[[[end]]]
 _serverSettingsConfig = configFile >> "CfgEpochServer";
@@ -24,6 +24,14 @@ _spawnCount = count EPOCH_TraderSlots;
 _config = (configFile >> "CfgEpoch" >> worldName);
 _aiTables = getArray(_config >> "traderUniforms");
 _acceptableBlds = getArray(_config >> "traderBlds");
+_TraderMinDistance = getnumber(_config >> "TraderMinDistance");
+if (_TraderMinDistance isEqualto 0) then {
+	_TraderMinDistance = worldsize / 12;
+};
+_traderblockblds = getArray(_config >> "traderblockblds");
+if (_traderblockblds isEqualto []) then {
+	_traderblockblds = ["pier","bridge","fireescape","medevac_house","pillboxbunker"];
+};
 _traderHomes = getArray(_config >> "traderHomes");
 _TraderDeco = [_serverSettingsConfig, "TraderDeco", true] call EPOCH_fnc_returnConfigEntry;
 _buildingJammerRange = ["CfgEpochClient", "buildingJammerRange", 75] call EPOCH_fnc_returnConfigEntryV2;
@@ -40,10 +48,19 @@ _checkBuilding = {
 	_return = !((_building buildingPos -1) isEqualTo []);
 	if !(_return) exitWith {_return};
 	_return = (_building nearEntities [_aiClass, 50]) isEqualTo [];
+	if !(_return) exitWith {_return};
+	_return = ({(tolower (typeOf _building) find _x) > -1} count _traderblockblds) < 1;
 	_return
 };
+_Traderblocks = [];
+{
+	if (alive _x) then {
+		_Traderblocks pushback [getpos _x, _TraderMinDistance];
+	};
+} foreach EPOCH_Traders;
+
 for "_i" from 1 to _spawnCount do {
-	_position = [epoch_centerMarkerPosition, 0, EPOCH_dynamicVehicleArea, 20, 0, 4000, 0] call BIS_fnc_findSafePos;
+	_position = [epoch_centerMarkerPosition, 0, EPOCH_dynamicVehicleArea, 0, 0, 1000, 0, _Traderblocks] call BIS_fnc_findSafePos;
 	if (count _position == 2) then {
 		_randomAIUniform = selectRandom _aiTables;
 		_aiClass = "C_man_1";
@@ -100,6 +117,7 @@ for "_i" from 1 to _spawnCount do {
 						_agent setVariable["MARKER_REF", _markers];
 					};
 					EPOCH_Traders pushback _agent;
+					_Traderblocks pushback [getpos _agent, _TraderMinDistance];
 				};
 			};
 		};
