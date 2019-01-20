@@ -100,7 +100,7 @@ if (isNil "EPOCH_display_setup_complete") then {
 	call epoch_dynamicHUD_start;
 };
 
-
+player setVariable["BIS_noCoreConversations", true];
 
 // Background radiation
 _outOfBoundsRadiation = ["CfgEpochClient", "outOfBoundsRadiation", 10] call EPOCH_fnc_returnConfigEntryV2;

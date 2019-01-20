@@ -56,7 +56,7 @@ Epoch_CamAdjust = [0,0,0];
 0 fadeRadio 0;
 enableSentences false;
 enableRadio false;
-player setVariable["BIS_noCoreConversations", true];
+// player setVariable["BIS_noCoreConversations", true]; // Moved to Masterloop (Player is not loaded in here)
 
 EPOCH_ArmaSlingLoad = true;
 _r3fON = if(!isNil "R3F_LOG_CFG_can_lift")then{if!(R3F_LOG_CFG_can_lift isEqualTo [])then{true}else{false}}else{false};
