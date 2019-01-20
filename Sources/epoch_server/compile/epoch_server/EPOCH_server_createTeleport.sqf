@@ -85,7 +85,7 @@ if !(_debugBox isEqualTo "") then {
 		["_class",""],
 		["_pos",[0,0,0]],
 		["_dir",0],
-		["_disableSim","true"],
+		["_disableSim","false"],
 		["_dynSim","false"],
 		["_allowDmg","false"],
 		["_dmg",0]
