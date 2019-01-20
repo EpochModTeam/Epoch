@@ -66,7 +66,7 @@ class CfgEpochClient
 	ActionBurnBarrelOffExtinguisher = "true";	// FireExtinguisher is needed to put off Burn Barrels
 	ActionHookRope = "true";					// Rope is needed to hook vehicles (get back on release)
 	
-	DefuseBombChance = 0.4;						// Chance for successfully defuse a bomb -> If fail, the bomb will explode
+	DefuseBombChance = 0.6;						// Chance for successfully defuse a bomb -> If fail, the bomb will explode
 	DisableDoorInteractForACE = "true";			// If true, Door-Interactions from ACE-Mod will be blocked (no effect, if ACE is not running)
 
     epochMessageBackgroundCol[] = {0,0,0,0.2};  //Epoch_message background color (format: {R,G,B,A})
@@ -75,7 +75,7 @@ class CfgEpochClient
 
     EPOCH_news[] = {"Word is that Sappers have a new boss.","Dogs will often lure them monsters away.","My dog was blown up. I miss him.."};
     deathMorphClass[] = {"Epoch_Sapper_F","Epoch_SapperG_F","Epoch_SapperB_F","I_UAV_01_F","Epoch_Cloak_F"}; //Random selection of these classes when player morphs after death. Currently available: Epoch_Cloak_F, Epoch_SapperB_F, Epoch_Sapper_F, I_UAV_01_F
-    niteLight[] = {0,1.88,22}; // 0 = disabled or 1 = enabled, Set ambient lighting at night: {Brightness of light,Height of light}. Default (Low Ambient): {1.88,22} | Twilight: {7.2,88} | Distant: {12.8,142}
+    niteLight[] = {1,1.88,22}; // 0 = disabled or 1 = enabled, Set ambient lighting at night: {Brightness of light,Height of light}. Default (Low Ambient): {1.88,22} | Twilight: {7.2,88} | Distant: {12.8,142}
     ryanZombiesEnabled = "true";
 
 	antagonistChances[] = {

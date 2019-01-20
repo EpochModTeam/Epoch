@@ -239,9 +239,11 @@ if (!isnil "EPOCH_ResetTraderMission") then {
 		EPOCH_taskMarker = nil;
 	};
 	if !(_EPOCH_TraderMissionArray isequalto []) then {
-		_EPOCH_TraderMissionArray params ["_mainblock"];
+		_EPOCH_TraderMissionArray params ["_mainblock","","","","","_taskFailed"];
 		_mainblock params ["","","","","",["_missionCleanUpCall",""]];
 		call _missionCleanUpCall;
+		_taskFailed params ['','','','',["_taskFailedCall",""]];
+		call _taskFailedCall;
 	};
 	EPOCH_ActiveTraderMission = [];
 	_EPOCH_TraderMissionArray = [];

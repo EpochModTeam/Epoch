@@ -10,7 +10,7 @@ uisleep 5;
 if (alive player && !isnull _object) then {
 	_reward = gettext (configfile >> "cfgammo" >> _type >> "defaultMagazine");
 	if !(_reward isequalto "") then {
-		_chance = ["CfgEpochClient", "DefuseBombChance", 0.4] call EPOCH_fnc_returnConfigEntryV2;
+		_chance = ["CfgEpochClient", "DefuseBombChance", 0.6] call EPOCH_fnc_returnConfigEntryV2;
 		if (_chance >= ((random 100) / 100)) then {
 			[_object,false,player,Epoch_personalToken] remoteexec ["EPOCH_server_DefuseBomb",2];
 		}

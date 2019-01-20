@@ -190,10 +190,10 @@ if (vehicle player == player) then {
 	};
 
 	if (_dikCode in(actionKeys "moveFastForward") || _dikCode in(actionKeys "moveForward")) then {
-		if ((diag_tickTime - EPOCH_lastAGTime) > 1) then {
+		if ((diag_tickTime - EPOCH_lastAGTime) > 0.5) then {
 			EPOCH_lastAGTime = diag_tickTime;
 			if !(player nearObjects["Const_All_Walls_F", 6] isEqualTo[]) then {
-				_currentPos = player modelToWorld[0, 1, 1];
+				_currentPos = player modelToWorld[0, 1.75, 1];
 				if !(surfaceIsWater _currentPos) then {
 					_currentPos = ATLtoASL _currentPos;
 				};
