@@ -231,7 +231,6 @@ class CfgEpoch
 		    {"O_Heli_Transport_04_box_EPOCH",1},
 		    {"O_Heli_Transport_04_covered_EPOCH",1},
 		    {"B_Heli_Transport_03_unarmed_EPOCH",1},
-			{"uh1h_Epoch",1},
 		    {"jetski_epoch",7},
 		    {"MBK_01_EPOCH",2},
 		    {"hoverboard_epoch_1",1},
@@ -253,7 +252,7 @@ class CfgEpoch
 			{"A2_Lada_EPOCH",3},
 			{"A2_SUV_EPOCH",3},
 			{"A2_SUV_load_EPOCH",3},
-//			{"A2_SUV_armed_EPOCH",2}, // (not finished)
+			{"A2_SUV_armed_EPOCH",2},
 			{"A2_UAZ_EPOCH",3},
 			{"A2_UAZ_Open_EPOCH",3},
 			{"A2_Ural_EPOCH",3},
@@ -261,8 +260,10 @@ class CfgEpoch
 			{"A2_Volha_EPOCH",3},
 
 			{"a2_mi8_EPOCH",1},
+			{"a2_ch47f_EPOCH",1},
 			{"a2_ch47f_armed_EPOCH",1},
 			{"a2_ch47f_armed_plus_EPOCH",1},
+			{"uh1h_Epoch",1},
 			{"uh1h_armed_EPOCH",1},
 			{"uh1h_armed_plus_EPOCH",1},
 			{"C_Heli_Light_01_armed_EPOCH",1},
@@ -367,16 +368,18 @@ class CfgEpoch
 			{"A2_Lada_EPOCH",3},
 			{"A2_SUV_EPOCH",3},
 			{"A2_SUV_load_EPOCH",3},
-//			{"A2_SUV_armed_EPOCH",2}, // (not finished)
+			{"A2_SUV_armed_EPOCH",2},
 			{"A2_UAZ_EPOCH",3},
 			{"A2_UAZ_Open_EPOCH",3},
 			{"A2_Ural_EPOCH",3},
 			{"A2_Vodnik_EPOCH",3},
 			{"A2_Volha_EPOCH",3},
-			
+
 			{"a2_mi8_EPOCH",1},
+			{"a2_ch47f_EPOCH",1},
 			{"a2_ch47f_armed_EPOCH",1},
 			{"a2_ch47f_armed_plus_EPOCH",1},
+			{"uh1h_Epoch",1},
 			{"uh1h_armed_EPOCH",1},
 			{"uh1h_armed_plus_EPOCH",1},
 			{"C_Heli_Light_01_armed_EPOCH",1},
