@@ -27,7 +27,7 @@ params [
 ];
 if (isNull _object) exitWith{};
 if !([_player,  _token] call EPOCH_server_getPToken) exitWith{};
-if (_player distance _object > 20) exitWith{};
+if (_player distance _object > 50) exitWith{};
 if (_value) then {
     'HelicopterExploSmall' createVehicle (position _object);
     deletevehicle _object;
