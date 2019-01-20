@@ -42,8 +42,9 @@ if !(isNull _vehObj) then{
 		_vehObj setposATL _position;
 		_vehObj setVectorDirAndUp _direction;
 	} else {
-		_vehObj setposATL _position;
 		_vehObj setdir _direction;
+		_vehObj setVectorUp surfaceNormal _position;		
+		_vehObj setposATL _position;
 	};
 	// Normalize vehicle inventory
 	clearWeaponCargoGlobal    _vehObj;

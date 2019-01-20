@@ -133,7 +133,7 @@ for "_i" from 1 to _spawnCount do {
 		_collide = "CAN_COLLIDE";
 		if (_getRandomPos) then{
 			_collide = "NONE";
-			_position set[2, 0];
+			_position set[2, 0.1];
 			if (surfaceIsWater _position) then{
 				_position = ASLToATL _position;
 			};
