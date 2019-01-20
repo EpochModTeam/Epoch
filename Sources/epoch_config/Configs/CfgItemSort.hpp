@@ -1009,6 +1009,7 @@ class CfgItemSort
 		};
 
 		Medical[] = {
+			"ItemDefibrillator",
 			"FAK",
 			"Soap_Epoch",
 			"Towelette",

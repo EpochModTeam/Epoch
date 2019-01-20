@@ -3112,6 +3112,9 @@ class CfgPricing
     {
         price = 5;
     };
+	class ItemDefibrillator {
+		price = 5;
+	};
     class Repair_EPOCH
     {
         price = 2;

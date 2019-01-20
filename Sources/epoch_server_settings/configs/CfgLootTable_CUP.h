@@ -1495,6 +1495,7 @@ class CfgLootTable_CUP
 	class Medical
 	{
 		items[] = {
+				{ { "ItemDefibrillator", "magazine" }, 1 },
 				{ { "FAK", "magazine" }, 50 },
 				{ { "Soap_Epoch", "magazine" }, 3 },
 				{ { "Heal_EPOCH", "item" }, 2 },
