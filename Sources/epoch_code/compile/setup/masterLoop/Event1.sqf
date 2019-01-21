@@ -132,7 +132,7 @@ if (_forceBloodRise) then {
 	if (_allowBloodDrop || _forceBloodDrop) then {
 		// allow player to bleed out or die from hypothermia
 		_lowerBPlimit = [100,0] select (isBleeding player || _forceBloodDrop);
-		_playerBloodP = [_playerBloodPKey, -1, _playerBloodPMax , _lowerBPlimit] call EPOCH_fnc_setVariableLimited;
+		_playerBloodP = [_playerBloodPKey, -0.1, _playerBloodPMax , _lowerBPlimit] call EPOCH_fnc_setVariableLimited;
 	};
 };
 

@@ -1488,6 +1488,7 @@ class CfgItemSort
 			"uh1h_armed_EPOCH",
 			"uh1h_armed_plus_EPOCH",
 			"a2_mi8_EPOCH",
+			"a2_ch47f_EPOCH",
 			"a2_ch47f_armed_EPOCH",
 			"a2_ch47f_armed_plus_EPOCH",
 			"C_Heli_Light_01_armed_EPOCH",

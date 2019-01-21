@@ -471,12 +471,33 @@ class CfgLootTable_MADCUP
 				{ { "SMG_02_F", "weapon" }, 9 },
 				{ { "Rifle_SMG_03", "CfgLootTable" }, 9 },
 				{ { "hgun_PDW2000_F", "weapon" }, 10 },
+				{ { "A2_Rifles", "CfgLootTable" }, 10 },
 				// CUP custom
 				{ { "CUP_arifles", "CfgLootTable" }, 5 },
 				{ { "CUP_shotguns", "CfgLootTable" }, 5 },
 				{ { "CUP_smg", "CfgLootTable" }, 5 }
 
 
+		};
+	};
+	class A2_Rifles
+	{
+		items[] = {
+				{ { "a2_ak47s_gold_EPOCH", "weapon" }, 1 },
+				{ { "a2_AK107_EPOCH", "weapon" }, 1 },
+				{ { "a2_bizon_epoch", "weapon" }, 1 },
+				{ { "a2_dmr_epoch", "weapon" }, 1 },
+				{ { "a2_dmr_epoch_scoped", "weapon" }, 1 },
+				{ { "a2_fnfal_epoch", "weapon" }, 1 },
+				{ { "a2_G36_C_epoch", "weapon" }, 1 },
+				{ { "a2_Mg36_epoch", "weapon" }, 1 },
+				{ { "a2_leeenfield_epoch", "weapon" }, 1 },
+				{ { "a2_m110_epoch", "weapon" }, 1 },
+				{ { "a2_mk16_epoch", "weapon" }, 1 },
+				{ { "a2_mk17_epoch", "weapon" }, 1 },
+				{ { "a2_svd_epoch", "weapon" }, 1 },
+				{ { "a2_VSS_vintorez_epoch", "weapon" }, 1 },
+				{ { "a2_aks74un_EPOCH", "weapon" }, 1 }
 		};
 	};
 	class CUP_arifles

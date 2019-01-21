@@ -597,7 +597,7 @@ class Defuse_Bomb
 {
 	condition = "if (player != vehicle player) exitwith {false};if (player distance dyna_cursorTarget > 3.5) exitwith {false};!((gettext (configfile >> 'cfgammo' >> (typeof dyna_cursorTarget) >> 'defaultMagazine')) isEqualTo '')";
 	action = "dyna_cursorTarget spawn Epoch_DefuseBomb";
-	icon = "epoch_code\customs\Defuse.paa";
+	icon = "x\addons\a3_epoch_code\Data\UI\buttons\Defuse.paa";
 	tooltip = "Defuse Bomb";
 };
 

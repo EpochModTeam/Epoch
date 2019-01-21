@@ -4881,6 +4881,11 @@ class CfgPricing
 		price = 22500;
 		tax = 0.9;
     };
+    class a2_ch47f_EPOCH
+    {
+		price = 22500;
+		tax = 0.9;
+    };
     class a2_ch47f_armed_EPOCH
     {
 		price = 30000;
