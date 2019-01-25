@@ -25,7 +25,7 @@ _config = switch (_in) do {
 	};
 };
 _configs = "true" configClasses _config;
-for "_i" from ((Epoch_E_Pad_Page-1)*13) to (((count _configs)-1) min (((Epoch_E_Pad_Page-1)*13)+12)) do {
+for "_i" from ((Epoch_E_Pad_Page-1)*12) to (((count _configs)-1) min (((Epoch_E_Pad_Page-1)*12)+11)) do {
 	_configx = _configs select _i;
 	_subclasses = configProperties [_configx, "isClass _x",true];
 	_action = format ["%1;",getText(_configx >> "action")];
