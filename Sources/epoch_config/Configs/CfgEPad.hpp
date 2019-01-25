@@ -90,6 +90,18 @@ class e_pad_config
 				ToggleVar = "EPOCH_DeathMarkerOn";
 				ToggleAble = "true";
 			};
+			class blockedMarker
+			{
+				ButtonText = "";
+				Description = "Blocked Areas";
+				icon = "x\addons\a3_epoch_code\Data\UI\epad\blocked.paa";
+				color[] = {1,0,0,1};
+				colortoggled[] = {0,1,0,1};
+				action = "call compile preprocessfilelinenumbers 'epoch_code\customs\E_Pad\BlockedAreas.sqf'";
+				tooltip = "Show / Hide blocked areas on the map";
+				ToggleVar = "Epoch_BlockedMarkeron";
+				ToggleAble = "true";
+			};
 			class Earplug {
 				ButtonText = "";
 				Description = "Auto-Earplugs";
@@ -178,7 +190,7 @@ class e_pad_config
 			{
 				ButtonText = "";
 				Description = "Server Settings";
-				icon = "x\addons\a3_epoch_code\Data\UI\epad\server_info_icon_ca.paa";
+				icon = "x\addons\a3_epoch_code\Data\UI\epad\seversettings.paa";
 				color[] = {1,1,1,1};
 				colortoggled[] = {0,1,0,1};
 				html = "epoch_code\customs\E_Pad\ServerSettings.html";
