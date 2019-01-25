@@ -19,6 +19,7 @@ All changes for [Arma 3](https://arma3.com/) [Epoch Mod](https://epochmod.com) a
       - A2_Volha_EPOCH
    - === AirVehicles ===
       - a2_mi8_EPOCH
+      - a2_ch47f_EPOCH
       - a2_ch47f_armed_EPOCH
       - a2_ch47f_armed_plus_EPOCH
       - uh1h_armed_EPOCH
@@ -67,6 +68,7 @@ All changes for [Arma 3](https://arma3.com/) [Epoch Mod](https://epochmod.com) a
       - Check for nearby Vehicles (cost 250 Krypto)
       - Check for nearby Players (cost 250 Krypto)
       - Kill yourself (suicide)
+	  - Show Blocked Areas on the Map (building disallowed)
 - JailWall and JailDoor to Basebuilding items
 - Sounds to Door animations for building parts
 - Rusty textures for some Vehicles
@@ -91,6 +93,7 @@ All changes for [Arma 3](https://arma3.com/) [Epoch Mod](https://epochmod.com) a
 - RadSuit now also protect against Toxic
 - Simplified Weather script Event
 - Config for seasonal Trader Clothings
+- PlotPoles have now a smaller geometry to fit into 1 wall height bases
 
 ## [1.2.0.0] - 2018-05-24
 ### Added
