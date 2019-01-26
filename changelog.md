@@ -55,7 +55,6 @@ All changes for [Arma 3](https://arma3.com/) [Epoch Mod](https://epochmod.com) a
    - CZ_Backpack_Epoch (Camo CZ BackPack): 			Load: 520
    - L_Gunbag_Epoch (Large Gunbag): 				Load: 580
 - Tablet (E-Pad) - Can be found in Space Menu (DynaMenu)
-   - You can simply add "Apps" by a config - https://github.com/EpochModTeam/Epoch/blob/experimental/Sources/epoch_config/Configs/CfgEPad.hpp
    - Default Apps:
       - Enable E-Pad in DynaMenu
       - Show Playermarker on Map (GPS is needed)
@@ -74,13 +73,9 @@ All changes for [Arma 3](https://arma3.com/) [Epoch Mod](https://epochmod.com) a
 - Rusty textures for some Vehicles
 - Button to search in all configs to spawn items in AdminMenu
 - Fix to prevent rope-break while lifting Vehicles
-- Removed buildings are no longer logged as "killed", but as removed, if the owner has removed it
-- All Plotpoles are now stored in the Variable "EPOCH_Plotpoles" (for Clients and Server)
 - Earplugs (Default F4 - Auto-Earplugs on Vehicle enter can be toggled in E-Pad)
 - UAV's are now usable by Space-Menu (DynaMenu)
-- Configs to disable Door interactions for enhanced movement and ACE Mod
 - You can now defuse bombs via Space-Menu (DynaMenu)
-- Config to change the max vehicle trade distance to cfgEpochclient.hpp
 ### Fixed
 - Model for SolarCharger was the same as SolarGenerator in Crafting Menu
 - If already in a group, you can not join another group
@@ -89,12 +84,25 @@ All changes for [Arma 3](https://arma3.com/) [Epoch Mod](https://epochmod.com) a
 ### Changed
 - Metal Garage model is now better to identify (looked nearly the same as walls)
 - Teleporters are now Booths and no interaction is needed to teleport
-- SIM / Ghost storages have now own baseClasses - "Buildable_Storage_SIM" / "Buildable_Storage_Ghost"
 - RadSuit now also protect against Toxic
-- Simplified Weather script Event
-- Config for seasonal Trader Clothings
 - PlotPoles have now a smaller geometry to fit into 1 wall height bases
+- Reworked the looting script to be more targeted on players next destinations
+### Server Owners
+- The changes in the loot scripts will spawn much more loot now!
+   - Check if you have to reduce the  Lootbias / lootMultiplier, if you have adjusted it!
+- You can simply add "Apps" to the E-Pad in:
+   - https://github.com/EpochModTeam/Epoch/blob/experimental/Sources/epoch_config/Configs/CfgEPad.hpp
+- Added a config to use seasonal TraderDeco to epochconfig.hpp
+- Simplified Weather script Event (check epochconfig.hpp)
+- SIM / Ghost storages have now own baseClasses - "Buildable_Storage_SIM" / "Buildable_Storage_Ghost"
+- Added config to change the max vehicle trade distance to cfgEpochclient.hpp
+- Added config to disable Door interactions for enhanced movement (DisableDoorsOnObj) to epochconfig.hpp
+- Added config to disable Door interactions for ACE Mod to cfgEpochclient.hpp
+- All Plotpoles are now stored in the Variable "EPOCH_Plotpoles" (for Clients and Server)
+- Removed buildings are no longer logged as "killed", but as removed in the DB
 
+
+   
 ## [1.2.0.0] - 2018-05-24
 ### Added
 - Config in cfgepochclient.hpp to disable needed items for FireOn / BurnBarrelOff / Hook @He-Man
