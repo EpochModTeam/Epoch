@@ -380,7 +380,7 @@ class CfgLootTable
 				{ { "SMG_02_F", "weapon" }, 9 },
 				{ { "Rifle_SMG_03", "CfgLootTable" }, 9 },
 				{ { "hgun_PDW2000_F", "weapon" }, 10 },
-				{ { "A2_Rifles", "CfgLootTable" }, 10 }
+				{ { "A2_Rifles", "CfgLootTable" }, 15 }
 		};
 	};
 	class A2_Rifles

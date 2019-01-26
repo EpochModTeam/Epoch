@@ -16,6 +16,10 @@ _clientAliveTimer = diag_tickTime;
 // Fade Black Screen
 _fadedblack = false;
 
+// Lootspawner
+_LootSpawned = false;
+_LootBiasAdd = 30;
+
 // init player stat vars
 _gmVarsInit = ["CfgEpochClient", "gmVars", [["Temp",98.6],["Hunger",500],["Thirst",500],["Toxicity",0],["Stamina",10],["BloodP",100],["Alcohol",0],["Radiation",0]]] call EPOCH_fnc_returnConfigEntryV2;
 _gModeVarNames = _gmVarsInit apply {_x param [0,""]};
@@ -210,41 +214,102 @@ _lootClassesIgnore = ['Default'];
 '_cN = configName _x;if !(_cN in _lootClassesIgnore)then{_lootClasses pushBackUnique (toLower _cN)}; true' configClasses _masterConfig;
 
 _lastPlayerPos = getPosATL player;
+_pushbacklootedbld = {
+	private ["_lootCheckBufferLimit"];
+	_lootCheckBufferLimit = 333;
+	EPOCH_LootedBlds pushBackUnique _this;
+	if (count EPOCH_LootedBlds >= _lootCheckBufferLimit) then {
+		EPOCH_LootedBlds deleteAt 0;
+	};
+};
 _lootBubble = {
-	private["_jammer", "_others", "_objects", "_nearObjects", "_building", "_lootDist", "_lootLoc", "_playerPos", "_distanceTraveled"];
+	private["_jammer", "_others", "_objects", "_nearObjects", "_building", "_lootDist", "_lootLoc", "_playerPos", "_distanceTraveled","_AddBias","_dir","_minlootdist","_maxlootdist"];
+	_LootBiasAdd = _this;
 	_playerPos = getPosATL vehicle player;
-	_distanceTraveled = _lastPlayerPos distance _playerPos;
-	if (_distanceTraveled > 10 && _distanceTraveled < 200) then {
-		_lootDist = 30 + _distanceTraveled;
-		_lootLoc = player getRelPos [_lootDist, (random [-180,0,180])];
-		_objects = (_lootLoc nearObjects 30) select {
-			private _selectedConfig = typeOf _x;
-			if (_selectedConfig isEqualTo "") then {
-				(getModelInfo _x) params [["_modelName",""]];
-				if (!isnil "_modelName") then {
-					_selectedConfig = (_modelName splitString " .") joinString "_";
-				};
+	_distanceTraveled = _lastPlayerPos distance2D _playerPos;
+	_nearestbuilding = nearestBuilding player;
+	if (player distance _nearestbuilding < (((sizeOf (typeOf _nearestbuilding))/2) min 15)) then {
+		private _selectedConfig = typeOf _nearestbuilding;
+		if (_selectedConfig isEqualTo "") then {
+			(getModelInfo _nearestbuilding) params [["_modelName",""]];
+			if (!isnil "_modelName") then {
+				_selectedConfig = (_modelName splitString " .") joinString "_";
 			};
-			((toLower _selectedConfig) in _lootClasses)
 		};
-		// diag_log format["DEBUG: loot objects %1",_objects];
-		_jammer = nearestObjects [_lootLoc, ["PlotPole_EPOCH","ProtectionZone_Invisible_F"], _buildingJammerRange];
-		if (!(_objects isEqualTo[]) && (_jammer isEqualTo[])) then {
-			_building = selectRandom _objects;
-			if (_building getvariable ["EPOCH_Skiploot",false]) exitwith {};
-			if !(_building in EPOCH_LootedBlds) then {
-				_others = _building nearEntities[["Epoch_Male_F", "Epoch_Female_F"], 15];
-				if (_others isEqualTo[]) then {
-					_nearObjects = nearestObjects[_building, ["WH_Loot", "Animated_Loot"], sizeOf (typeOf _building)];
-					//diag_log format["DEBUG: sizeof %1 %2",sizeOf (typeOf _building), typeOf _building];
-					if (_nearObjects isEqualTo[]) then {
-						[_building] call EPOCH_spawnLoot;
+		if ((toLower _selectedConfig) in _lootClasses) then {	
+			_nearestbuilding call _pushbacklootedbld;
+		};
+	};
+	if (_distanceTraveled > 10) then {
+		_lastPlayerPos = _playerPos;
+		if (_distanceTraveled < 100) then {
+/*
+			_minlootdist = 30;
+			_maxlootdist = 80;
+			_dir = 30;
+			if (player == vehicle player) then {
+				_LootBiasAdd = _LootBiasAdd + 1;
+				_minlootdist = 15;
+				_maxlootdist = 50;
+				_dir = 45;
+			};
+*/
+			_minlootdist = 30;
+			_maxlootdist = 75;
+			_dir = 30;
+			if (speed (vehicle player) < 30) then {
+				_LootBiasAdd = (_LootBiasAdd + 0.5) min 50;
+				_minlootdist = 15;
+				_maxlootdist = 50;
+				_dir = 45;
+			};
+//			_lootDist = _minlootdist + (_maxlootdist - _minlootdist)/2;
+			_lootDist = (_distanceTraveled max _minlootdist) min _maxlootdist;
+			systemchat format ["lootDist: %1",_lootDist];
+			_lootLoc = player getRelPos [_lootDist, (random [-_dir,0,_dir])];
+			if (surfaceiswater _lootLoc) then {
+				_lootLoc set [2,(getPosASL vehicle player) select 2];
+			};
+//			_objects = (_lootLoc nearObjects 50) select {
+			_objects = (nearestObjects [_lootLoc, [], 50]) select {
+				!(_x in EPOCH_LootedBlds) &&
+				{_x distance player > _minlootdist} &&
+				{_x distance player < _maxlootdist} &&
+				{
+					private _selectedConfig = typeOf _x;
+					if (_selectedConfig isEqualTo "") then {
+						(getModelInfo _x) params [["_modelName",""]];
+						if (!isnil "_modelName") then {
+							_selectedConfig = (_modelName splitString " .") joinString "_";
+						};
+					};
+					((toLower _selectedConfig) in _lootClasses)
+				}
+			};
+			if (count _objects > 4) then {		// remove the farthest away buildings
+				_objects resize 4;
+			};
+			systemchat format ["possible buildings: %1",count _objects];
+			// diag_log format["DEBUG: loot objects %1",_objects];
+			_jammer = (_lootLoc nearObjects ["PlotPole_EPOCH", _buildingJammerRange + 50]) + (_lootLoc nearObjects ["ProtectionZone_Invisible_F", 25]);
+			if (!(_objects isEqualTo[]) && (_jammer isEqualTo[])) then {
+				_building = selectRandom _objects;
+				if (_building getvariable ["EPOCH_Skiploot",false]) exitwith {};
+				if !(_building in EPOCH_LootedBlds) then {
+					_others = _building nearEntities[["Epoch_Male_F", "Epoch_Female_F"], 15];
+					if (_others isEqualTo[]) then {
+						_nearObjects = nearestObjects[_building, ["WH_Loot", "Animated_Loot"], 25 min ((sizeOf (typeOf _building))/2)];
+						//diag_log format["DEBUG: sizeof %1 %2",sizeOf (typeOf _building), typeOf _building];
+						if (_nearObjects isEqualTo[]) then {
+							_building call _pushbacklootedbld;
+							_LootBiasAdd = if ([_building,_LootBiasAdd] call EPOCH_spawnLoot) then {(_LootBiasAdd - 7) max 0} else {_LootBiasAdd};
+						};
 					};
 				};
 			};
 		};
 	};
-	_lastPlayerPos = _playerPos;
+	_LootBiasAdd
 };
 
 // init weather temperature var if not already set

@@ -202,5 +202,3 @@ _playerNuisance = [_playerNuisanceKey,-1,_playerNuisanceMax,_playerNuisanceMin] 
 // calculate max stamina
 EPOCH_playerStaminaMax = (100 * (round(_playerAliveTime/360)/10)) min 2500;
 
-// process loot
-call _lootBubble;
