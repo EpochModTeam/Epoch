@@ -477,7 +477,7 @@ for "_i" from 1 to 3 do {
 			_temp = _temp + ",['  Give Ammo',[],{[200,_this select 1] call "+_skn_adminRequest_PVC+"},'4',[]]";
 		};
 		if ("TARGET-VEHICLEREPAIR" in _case) then {
-			_temp = _temp + ",['  Repair Vehicle', [], "+_skn_flipVehicle+", '0', []]";
+			_temp = _temp + ",['  Repair Vehicle', [], "+_skn_repairVehicle+", '4', []]";
 		};
 		if ("TARGET-CRYPTO" in _case) then {
 			{
@@ -1532,7 +1532,7 @@ _skn_admincode = compileFinal ("
 				_veh = vehicle player
 			}
 		} else {
-			_player = netId (_this select 1);
+			_player = objectfromnetId (_this select 1);
 			if (vehicle _player != _player) then {
 				_veh = vehicle _player
 			}
