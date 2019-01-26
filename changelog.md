@@ -1,7 +1,7 @@
 # Change Log
 All changes for [Arma 3](https://arma3.com/) [Epoch Mod](https://epochmod.com) are listed in this changelog.
 
-## [1.3.0.0] - 2019-xx-xx
+## [1.3.0.0] - 2019-01-31
 ### Added
 - Several A2 Vehicles ported into Epoch
    - === LandVehicles ===
@@ -100,8 +100,6 @@ All changes for [Arma 3](https://arma3.com/) [Epoch Mod](https://epochmod.com) a
 - Added config to disable Door interactions for ACE Mod to cfgEpochclient.hpp
 - All Plotpoles are now stored in the Variable "EPOCH_Plotpoles" (for Clients and Server)
 - Removed buildings are no longer logged as "killed", but as removed in the DB
-
-
    
 ## [1.2.0.0] - 2018-05-24
 ### Added
