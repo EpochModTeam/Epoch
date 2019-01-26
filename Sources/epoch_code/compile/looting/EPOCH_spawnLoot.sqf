@@ -66,7 +66,6 @@ if ((random 100) < _lootBias) then {
     } forEach _loots;
 
     if !(_possibleLoots isEqualTo []) then {
-		systemchat format ["Loot Spawned - lootLimit: %1",_lootLimit];
         for "_i" from 1 to _lootLimit do
         {
             _return = true;

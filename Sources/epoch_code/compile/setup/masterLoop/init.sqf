@@ -243,17 +243,6 @@ _lootBubble = {
 	if (_distanceTraveled > 10) then {
 		_lastPlayerPos = _playerPos;
 		if (_distanceTraveled < 100) then {
-/*
-			_minlootdist = 30;
-			_maxlootdist = 80;
-			_dir = 30;
-			if (player == vehicle player) then {
-				_LootBiasAdd = _LootBiasAdd + 1;
-				_minlootdist = 15;
-				_maxlootdist = 50;
-				_dir = 45;
-			};
-*/
 			_minlootdist = 30;
 			_maxlootdist = 75;
 			_dir = 30;
@@ -263,14 +252,11 @@ _lootBubble = {
 				_maxlootdist = 50;
 				_dir = 45;
 			};
-//			_lootDist = _minlootdist + (_maxlootdist - _minlootdist)/2;
 			_lootDist = (_distanceTraveled max _minlootdist) min _maxlootdist;
-			systemchat format ["lootDist: %1",_lootDist];
 			_lootLoc = player getRelPos [_lootDist, (random [-_dir,0,_dir])];
 			if (surfaceiswater _lootLoc) then {
 				_lootLoc set [2,(getPosASL vehicle player) select 2];
 			};
-//			_objects = (_lootLoc nearObjects 50) select {
 			_objects = (nearestObjects [_lootLoc, [], 50]) select {
 				!(_x in EPOCH_LootedBlds) &&
 				{_x distance player > _minlootdist} &&
@@ -289,7 +275,6 @@ _lootBubble = {
 			if (count _objects > 4) then {		// remove the farthest away buildings
 				_objects resize 4;
 			};
-			systemchat format ["possible buildings: %1",count _objects];
 			// diag_log format["DEBUG: loot objects %1",_objects];
 			_jammer = (_lootLoc nearObjects ["PlotPole_EPOCH", _buildingJammerRange + 50]) + (_lootLoc nearObjects ["ProtectionZone_Invisible_F", 25]);
 			if (!(_objects isEqualTo[]) && (_jammer isEqualTo[])) then {
