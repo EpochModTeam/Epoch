@@ -29,16 +29,15 @@ class Esseker : Default
 		{"VegetationFir",1},
 		{"ViewPoint",1}
 	};
-	traderBlds[] = { "Land_i_House_Big_02_V3_dam_F", "Land_A_GeneralStore_01", "Land_A_GeneralStore_01a", "Land_sara_domek_zluty", "Land_Tovarna2", "Land_Shed_Ind02", "Land_i_House_Big_01_V3_dam_F", "Land_HouseV2_02_Interier", "Land_i_House_Small_01_V3_dam_F", "Land_HouseV_1I4", "Land_dum_rasovna", "Land_FuelStation_Build_F", "Land_CarService_F", "Land_u_House_Small_02_V1_F", "Land_i_Stone_HouseSmall_V1_F", "Land_i_Stone_Shed_V1_F"};
 	shipwreckLootEnabled = 0;
 	telePos[] = {
-		// N [-0.286865,8.17383,-10.3098]
-		// S [-0.415527,-7.05298,-10.3098]
-		// E [13.5127,0.410156,-10.3098]
-		// W [-14.4316,0.112793,-10.3098]
-		{ "Transport_N_EPOCH", { -0.286865, 8.17383, -10.3098 }, "", { 5073.31, 8903.09, 0 } },
-		{ "Transport_W_EPOCH", { -14.4316, 0.112793, -10.3098 }, "", { 4407.77, 6054.78, 0 } },
-		{ "Transport_E_EPOCH", { 13.5127,0.410156,-10.3098 }, "", { 8692.93, 3854.72, 0 } }
+		// N [-0.286865,8.17383,-10.3098, 0]
+		// S [-0.415527,-7.05298,-10.3098, 180]
+		// E [13.5127,0.410156,-10.3098, 90]
+		// W [-14.4316,0.112793,-10.3098, -90]
+		{ "TP_Booth_n_EPOCH", { -0.286865, 8.17383, -10.3098, 0}, "", { 5073.31, 8903.09, 0 } },
+		{ "TP_Booth_w_EPOCH", { -14.4316, 0.112793, -10.3098, -90}, "", { 4407.77, 6054.78, 0 } },
+		{ "TP_Booth_e_EPOCH", { 13.5127,0.410156,-10.3098, 90}, "", { 8692.93, 3854.72, 0 } }
 	};
 
 	propsPos[] = {

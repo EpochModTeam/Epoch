@@ -211,13 +211,15 @@ class CfgMainTable
 		lootMin = 3;
 		LootMax = 6;
 		tables[] = {
+				{ "Rifle", 2 },
+				{ "SniperRifle", 1 },
 				{ "Items", 9 },
 				{ "Equipment", 9 },
 				{ "Pistols", 4 },
 				{ "PistolAmmo", 8 },
-				{ "Uniforms", 14 },
-				{ "Vests", 12 },
-				{ "Headgear", 12 },
+				{ "Uniforms", 10 },
+				{ "Vests", 10 },
+				{ "Headgear", 8 },
 				{ "Hand", 6 },
 				{ "Generic", 6 },
 				{ "GenericBed", 10 },
@@ -233,17 +235,18 @@ class CfgMainTable
 				{ "Equipment", 8 },
 				{ "Pistols", 4 },
 				{ "PistolAmmo", 5 },
-				{ "Rifle", 1 },
+				{ "Rifle", 4 },
+				{ "SniperRifle", 2 },
 				{ "MachinegunAmmo", 6 },
 				{ "RifleAmmo", 6 },
 				{ "Grenades", 5 },
-				{ "Uniforms", 7 },
+				{ "Uniforms", 6 },
 				{ "Vests", 6 },
 				{ "Headgear", 6 },
 				{ "Hand", 9 },
 				{ "Generic", 11 },
 				{ "GenericBed", 6 },
-				{ "Backpack", 7 },
+				{ "Backpack", 8 },
 				{ "HighExplosives", 5 }
 		};
 	};
@@ -307,11 +310,12 @@ class CfgMainTable
 				{ "Uniforms", 4 },
 				{ "Vests", 5 },
 				{ "Headgear", 5 },
-				{ "Rifle", 1 },
+				{ "Rifle", 3 },
 				{ "Hand", 4 },
-				{ "Explosives", 11 },
+				{ "Explosives", 8 },
 				{ "Generic", 10 },
-				{ "Food", 7 }
+				{ "Food", 6 },
+				{ "Backpack", 2 }
 		};
 	};
 	class Fridge_EPOCH : Default
@@ -337,7 +341,7 @@ class CfgMainTable
 		lootMin = 2;
 		LootMax = 4;
 		tables[] = {
-				{ "Pistols", 12 },
+				{ "Pistols", 10 },
 				{ "Scopes", 10 },
 				{ "Muzzles", 10 },
 				{ "Machinegun", 10 },
@@ -351,16 +355,18 @@ class CfgMainTable
 		lootMin = 3;
 		LootMax = 6;
 		tables[] = {
+				{ "Rifle", 3 },
+				{ "SniperRifle", 2 },
 				{ "Items", 5 },
-				{ "Equipment", 8},
-				{ "Pistols", 3 },
+				{ "Equipment", 7},
+				{ "Pistols", 4 },
 				{ "PistolAmmo", 5 },
-				{ "Scopes", 5 },
-				{ "Muzzles", 5 },
-				{ "Uniforms", 6 },
-				{ "Vests", 6 },
-				{ "Headgear", 8 },
-				{ "Food", 9 },
+				{ "Scopes", 3 },
+				{ "Muzzles", 3 },
+				{ "Uniforms", 5 },
+				{ "Vests", 5 },
+				{ "Headgear", 6 },
+				{ "Food", 7 },
 				{ "RifleAmmo", 7 },
 				{ "MachinegunAmmo", 3 },
 				{ "SniperRifleAmmo", 2 },
@@ -380,19 +386,19 @@ class CfgMainTable
 				{ "Equipment", 6 },
 				{ "Pistols", 5 },
 				{ "PistolAmmo", 6 },
-				{ "Scopes", 5 },
-				{ "Muzzles", 5 },
+				{ "Scopes", 4 },
+				{ "Muzzles", 3 },
 				{ "Uniforms", 5 },
 				{ "Vests", 5 },
-				{ "Headgear", 5 },
-				{ "Food", 8 },
-				{ "Rifle", 2 },
+				{ "Headgear", 3 },
+				{ "Food", 6 },
+				{ "Rifle", 3 },
 				{ "RifleAmmo", 4 },
 				{ "Machinegun", 1 },
 				{ "MachinegunAmmo", 4 },
 				{ "SniperRifle", 1 },
 				{ "SniperRifleAmmo", 3 },
-				{ "Hand", 6 },
+				{ "Hand", 4 },
 				{ "Generic", 7 },
 				{ "GenericBed", 9 },
 				{ "Backpack", 6 },
@@ -404,6 +410,8 @@ class CfgMainTable
 		lootMin = 3;
 		LootMax = 6;
 		tables[] = {
+				{ "Rifle", 3 },
+				{ "SniperRifle", 1 },
 				{ "Items", 6 },
 				{ "Equipment", 6 },
 				{ "Pistols", 5 },
@@ -412,11 +420,11 @@ class CfgMainTable
 				{ "Muzzles", 5 },
 				{ "Uniforms", 7 },
 				{ "Vests", 5 },
-				{ "Headgear", 13 },
-				{ "Food", 11 },
+				{ "Headgear", 6 },
+				{ "Food", 8 },
 				{ "RifleAmmo", 8 },
 				{ "MachinegunAmmo", 6 },
-				{ "Hand", 8 },
+				{ "Hand", 6 },
 				{ "Generic", 10 }
 		};
 	};
@@ -444,8 +452,8 @@ class CfgMainTable
 				{ "PistolAmmo", 10 },
 				{ "Scopes", 6 },
 				{ "Muzzles", 6 },
-				{ "Vests", 6 },
-				{ "Headgear", 8 },
+				{ "Vests", 4 },
+				{ "Headgear", 6 },
 				{ "Food", 8 },
 				{ "RifleAmmo", 7 },
 				{ "SniperRifleAmmo", 6 },
@@ -465,8 +473,8 @@ class CfgMainTable
 				{ "PistolAmmo", 10 },
 				{ "Scopes", 6 },
 				{ "Muzzles", 6 },
-				{ "Vests", 6 },
-				{ "Headgear", 8 },
+				{ "Vests", 4 },
+				{ "Headgear", 6 },
 				{ "Food", 8 },
 				{ "RifleAmmo", 7 },
 				{ "SniperRifleAmmo", 6 },
@@ -480,18 +488,20 @@ class CfgMainTable
 		lootMin = 2;
 		LootMax = 6;
 		tables[] = {
+				{ "Rifle", 3 },
+				{ "SniperRifle", 2 },
 				{ "Items", 7 },
 				{ "Equipment", 7 },
 				{ "Pistols", 5 },
 				{ "PistolAmmo", 9 },
-				{ "Scopes", 6 },
-				{ "Muzzles", 6 },
-				{ "Vests", 6 },
-				{ "Headgear", 6 },
+				{ "Scopes", 5 },
+				{ "Muzzles", 5 },
+				{ "Vests", 4 },
+				{ "Headgear", 4 },
 				{ "RifleAmmo", 7 },
 				{ "SniperRifleAmmo", 3 },
 				{ "MachinegunAmmo", 4 },
-				{ "Hand", 9 },
+				{ "Hand", 7 },
 				{ "Generic", 10 },
 				{ "Tools", 15 }
 		};

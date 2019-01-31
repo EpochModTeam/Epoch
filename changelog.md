@@ -1,6 +1,106 @@
 # Change Log
 All changes for [Arma 3](https://arma3.com/) [Epoch Mod](https://epochmod.com) are listed in this changelog.
 
+## [1.3.0.0] - 2019-01-31
+### Added
+- Several A2 Vehicles ported into Epoch
+   - === LandVehicles ===
+      - A2_Golf_EPOCH
+      - A2_HMMWV_EPOCH
+      - A2_HMMWV_load_EPOCH
+      - A2_Lada_EPOCH
+      - A2_SUV_EPOCH
+      - A2_SUV_load_EPOCH
+      - A2_SUV_armed_EPOCH (not finished)
+      - A2_UAZ_EPOCH
+      - A2_UAZ_Open_EPOCH
+      - A2_Ural_EPOCH
+      - A2_Vodnik_EPOCH
+      - A2_Volha_EPOCH
+   - === AirVehicles ===
+      - a2_mi8_EPOCH
+      - a2_ch47f_EPOCH
+      - a2_ch47f_armed_EPOCH
+      - a2_ch47f_armed_plus_EPOCH
+      - uh1h_armed_EPOCH
+      - uh1h_armed_plus_EPOCH
+   - A lower Pawnee variant
+      - C_Heli_Light_01_armed_EPOCH
+      - C_Heli_Light_01_armed_plus_EPOCH
+- Several A2 Weapons ported into Epoch
+   - a2_ak47s_gold_EPOCH 		Mass: 150
+   - a2_AK107_EPOCH				Mass: 200
+   - a2_bizon_epoch				Mass: 100
+   - a2_dmr_epoch				Mass: 250
+   - a2_dmr_epoch_scoped		Mass: 250
+   - a2_fnfal_epoch				Mass: 200
+   - a2_G36_C_epoch				Mass: 150
+   - a2_Mg36_epoch				Mass: 150
+   - a2_leeenfield_epoch		Mass: 150
+   - a2_m110_epoch				Mass: 150
+   - a2_mk16_epoch				Mass: 150
+   - a2_mk17_epoch				Mass: 180
+   - a2_svd_epoch				Mass: 200
+   - a2_VSS_vintorez_epoch 		Mass: 150
+   - a2_aks74un_EPOCH			Mass: 150
+- Several A2 Backpacks ported into Epoch
+   - Assault_Pack_Epoch (CIV Assault Pack): 		Load: 300
+   - Patrol_Pack_Epoch (Patrol Pack): 				Load: 300
+   - TK_RPG_Backpack_Epoch (RPG Pack): 				Load: 300
+   - CZ_VestPouch_Epoch (Vest Pouch): 				Load: 340
+   - civil_assault_pack_Epoch (CIV Assault Pack): 	Load: 400
+   - S_Gunbag_Epoch (Gunbag): 						Load: 420
+   - ALICE_Pack_Epoch (Alice Pack): 				Load: 480
+   - US_Backpack_Epoch (Coyote BackPack) : 			Load: 500
+   - CZ_Backpack_Epoch (Camo CZ BackPack): 			Load: 520
+   - L_Gunbag_Epoch (Large Gunbag): 				Load: 580
+- Tablet (E-Pad) - Can be found in Space Menu (DynaMenu)
+   - Default Apps:
+      - Enable E-Pad in DynaMenu
+      - Show Playermarker on Map (GPS is needed)
+      - Show dead Playermarker on Map (GPS on death was needed)
+      - Enable / Disable Auto-Earplugs on Vehicle enter
+      - Server Infos / Rules / Settings (load predefined html-sites)
+      - Switch on / off debug monitor
+      - Check, if you are reviveable or not
+      - Read some news (random messages)
+      - Check for nearby Vehicles (cost 250 Krypto)
+      - Check for nearby Players (cost 250 Krypto)
+      - Kill yourself (suicide)
+	  - Show Blocked Areas on the Map (building disallowed)
+- JailWall and JailDoor to Basebuilding items
+- Sounds to Door animations for building parts
+- Rusty textures for some Vehicles
+- Button to search in all configs to spawn items in AdminMenu
+- Fix to prevent rope-break while lifting Vehicles
+- Earplugs (Default F4 - Auto-Earplugs on Vehicle enter can be toggled in E-Pad)
+- UAV's are now usable by Space-Menu (DynaMenu)
+- You can now defuse bombs via Space-Menu (DynaMenu)
+### Fixed
+- Model for SolarCharger was the same as SolarGenerator in Crafting Menu
+- If already in a group, you can not join another group
+- Position for Traders above water were bugged
+- Mosquito behavior was a bit too heavy
+### Changed
+- Metal Garage model is now better to identify (looked nearly the same as walls)
+- Teleporters are now Booths and no interaction is needed to teleport
+- RadSuit now also protect against Toxic
+- PlotPoles have now a smaller geometry to fit into 1 wall height bases
+- Reworked the looting script to be more targeted on players next destinations
+### Server Owners
+- The changes in the loot scripts will spawn much more loot now!
+   - Check if you have to reduce the  Lootbias / lootMultiplier, if you have adjusted it!
+- You can simply add "Apps" to the E-Pad in:
+   - https://github.com/EpochModTeam/Epoch/blob/experimental/Sources/epoch_config/Configs/CfgEPad.hpp
+- Added a config to use seasonal TraderDeco to epochconfig.hpp
+- Simplified Weather script Event (check epochconfig.hpp)
+- SIM / Ghost storages have now own baseClasses - "Buildable_Storage_SIM" / "Buildable_Storage_Ghost"
+- Added config to change the max vehicle trade distance to cfgEpochclient.hpp
+- Added config to disable Door interactions for enhanced movement (DisableDoorsOnObj) to epochconfig.hpp
+- Added config to disable Door interactions for ACE Mod to cfgEpochclient.hpp
+- All Plotpoles are now stored in the Variable "EPOCH_Plotpoles" (for Clients and Server)
+- Removed buildings are no longer logged as "killed", but as removed in the DB
+   
 ## [1.2.0.0] - 2018-05-24
 ### Added
 - Config in cfgepochclient.hpp to disable needed items for FireOn / BurnBarrelOff / Hook @He-Man

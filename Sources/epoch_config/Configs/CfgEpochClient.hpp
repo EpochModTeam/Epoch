@@ -14,7 +14,7 @@
 /*[[[cog from arma_config_tools import *; json_to_arma()]]]*/
 class CfgEpochClient
 {
-    epochVersion = "1.2.0";
+    epochVersion = "1.3.0";
     ArmAVersion = 176;
 	debug = "true";  // true = enable extra rpt debug lines, false to disable
 
@@ -65,6 +65,9 @@ class CfgEpochClient
 	ActionFireOnLighter = "true";				// Lighter is needed to inflame fires
 	ActionBurnBarrelOffExtinguisher = "true";	// FireExtinguisher is needed to put off Burn Barrels
 	ActionHookRope = "true";					// Rope is needed to hook vehicles (get back on release)
+	
+	DefuseBombChance = 0.6;						// Chance for successfully defuse a bomb -> If fail, the bomb will explode
+	DisableDoorInteractForACE = "true";			// If true, Door-Interactions from ACE-Mod will be blocked (no effect, if ACE is not running)
 
     epochMessageBackgroundCol[] = {0,0,0,0.2};  //Epoch_message background color (format: {R,G,B,A})
     epochMessageTextCol[] = {1,1,1,0.95};       //Epoch_message text color (format: {R,G,B,A})
@@ -72,7 +75,7 @@ class CfgEpochClient
 
     EPOCH_news[] = {"Word is that Sappers have a new boss.","Dogs will often lure them monsters away.","My dog was blown up. I miss him.."};
     deathMorphClass[] = {"Epoch_Sapper_F","Epoch_SapperG_F","Epoch_SapperB_F","I_UAV_01_F","Epoch_Cloak_F"}; //Random selection of these classes when player morphs after death. Currently available: Epoch_Cloak_F, Epoch_SapperB_F, Epoch_Sapper_F, I_UAV_01_F
-    niteLight[] = {0,1.88,22}; // 0 = disabled or 1 = enabled, Set ambient lighting at night: {Brightness of light,Height of light}. Default (Low Ambient): {1.88,22} | Twilight: {7.2,88} | Distant: {12.8,142}
+    niteLight[] = {1,1.88,22}; // 0 = disabled or 1 = enabled, Set ambient lighting at night: {Brightness of light,Height of light}. Default (Low Ambient): {1.88,22} | Twilight: {7.2,88} | Distant: {12.8,142}
     ryanZombiesEnabled = "true";
 
 	antagonistChances[] = {
@@ -165,7 +168,7 @@ class CfgEpochClient
     displayAddEventHandler[] = {"keyDown","keyUp"};
     keyDown = "(_this call EPOCH_KeyDown)";
     keyUp = "(_this call EPOCH_KeyUp)";
-    addEventHandler[] = {"Respawn","Put","Take","InventoryClosed","InventoryOpened","FiredMan","Killed","HandleRating","HandleScore","GetInMan","GetOutMan"};
+    addEventHandler[] = {"Respawn","Put","Take","InventoryClosed","InventoryOpened","FiredMan","Killed","HandleRating","HandleScore","GetInMan","GetOutMan","Hit","SeatSwitchedMan","FiredNear"};
     Respawn = "(_this select 0) call EPOCH_clientRespawn";
     Put = "(_this select 1) call EPOCH_interact;_this call EPOCH_PutHandler;_this call Epoch_custom_EH_Put";
     Take = "(_this select 1) call EPOCH_interact;_this call EPOCH_UnisexCheck;_this call Epoch_custom_EH_Take";
@@ -178,10 +181,12 @@ class CfgEpochClient
     HandleDamage = "";
     HandleHeal = "";
     Dammaged = "";
-    Hit = "";
+    Hit = "_this call EPOCH_custom_EH_Hit";
     HitPart = "";
     GetInMan = "_this call EPOCH_getInMan;_this call Epoch_custom_EH_GetInMan";
     GetOutMan = "_this call EPOCH_getOutMan;_this call Epoch_custom_EH_GetOutMan";
+	SeatSwitchedMan = "_this call EPOCH_custom_EH_SeatSwitchedMan";
+	FiredNear = "_this call EPOCH_custom_EH_FiredNear";
     // suppress these units from spawning near Jammer or Traders
     nonJammerAI[] = {"B_Heli_Transport_01_F","PHANTOM","EPOCH_Sapper_F","Epoch_SapperG_F","Epoch_SapperB_F","I_UAV_01_F","EPOCH_RyanZombie_1"};
     nonTraderAI[] = {"B_Heli_Transport_01_F","PHANTOM","EPOCH_Sapper_F","Epoch_SapperG_F","Epoch_SapperB_F","I_UAV_01_F","Epoch_Cloak_F","GreatWhite_F","EPOCH_RyanZombie_1"};
@@ -219,10 +224,11 @@ class CfgEpochClient
 	EnableTempVehTrade = "false";			// Enable selling of temp Vehicles (not handled by Epoch). Temp Vehicles will not be stored in Traders, but can be sold
 	BulletCalculateOnCraft = "true";		// Enable Bullet Calculation on Crafting - Example: If you craft a large EnergyPack with 3 half full EnergyPacks, you will only get a half filled large EnergyPack back
 
-	// Advanced Vehicle Repair
+	// Vehicle Settings
+	DisallowSellOnDamage = "false";										// Prevent from selling Vehicles with one or more fully damaged wheel or engine
+	MaxVehTradeDist = 30;												// Max distance where Players can sell Vehicles to Traders
 	UseAdvancedVehicleRepair = "true";									// Switch On / Off Advanced Vehicle Repair (Does not effect SuppressedCraftingItems !)
 	EnableRemoveParts = "true";											// Enable removing Tires / Engines from Vehicles
-	DisallowSellOnDamage = "false";										// Prevent from selling Vehicles with one or more fully damaged wheel or engine
 	SuppressedCraftingItems[] = {										// These Items can not be crafted (but can be used in recipe)
 			"VehicleRepairLg",			// Supressed for Advanced Vehicle Repair (no longer needed)
 			"KitMetalQuarterFloor",		// Item is Upgradeable, but you can remove it here to make it also Craftable

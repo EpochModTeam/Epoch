@@ -4,8 +4,8 @@ SET STEAMPW=changeme
 SET ARMASVRPATH=C:\Arma3Server
 SET ARMAAPPID=107410
 SET MODFOLDER=@Epoch
-:: Workshop IDs: EpochExperimental = 455221958 Normal Epoch = 421839251
-SET ARMAWORKSHOPID=455221958
+:: Workshop IDs: EpochExperimental = 1399517607 Normal Epoch = 421839251
+SET ARMAWORKSHOPID=1399517607
 :: remove old folder
 rd /s/q "%ARMASVRPATH%\%MODFOLDER%"
 :: update workshop mod

@@ -108,6 +108,7 @@ class doUAVSpawn{
 	abandonTime 			= 240;
 	failedCondition 		= "!('B_UavTerminal' in assignedItems player) || !(alive player)";
 	faileddialogues[] 		= {"Lost it already.. Mission Over","Not a willing pilot eh ? Try again later.","Equipment Lost.. Mission Failed !"};
+	failedCall				= "player unassignItem 'B_UavTerminal'; player removeItem 'B_UavTerminal'";
 	completeCondition 		= "!(isNull axeUAV)";
 	completedialogues[] 	= {};
 	completedCALL			= "";
@@ -138,6 +139,7 @@ class doUAVAttach{
 	abandonTime 			= 1200;
 	failedCondition 		= "!('B_UavTerminal' in assignedItems player) || !(alive axeUAV) || !(alive player) || cameraon != axeUAV";
 	faileddialogues[] 		= {"Lost it already.. Mission Over","Not a natural pilot. Try again later.","Mission Failed !"};
+	failedCall				= "player unassignItem 'B_UavTerminal'; player removeItem 'B_UavTerminal'";
 	completeCondition 		= "(getPosATL axeUAV select 2) > 10";
 	completedialogues[] 	= {};
 	completedCALL 			= "if(SunOrMoon < 1)then{player action [""lightOn"", axeUAV];};";
@@ -178,6 +180,7 @@ class takeOffUAV{
 	abandonTime 			= 240;
 	failedCondition 		= "!('B_UavTerminal' in assignedItems player) || !(alive axeUAV) || !(alive player) || cameraon != axeUAV";
 	faileddialogues[] 		= {"Oh dear, that didn't go well..","Try again later.","Misison Failed !"};
+	failedCall				= "player unassignItem 'B_UavTerminal'; player removeItem 'B_UavTerminal'";
 	completeCondition 		= "false";
 	completedialogues[] 	= {};
 	completedCALL 			= "";
@@ -197,7 +200,7 @@ class uavMission1{
 	markerRadius 			= 180;
 	markerText 				= "Trader House Recon";
 	initcall 				= "_obj = selectRandom (nearestObjects [axeUAV,[""HOUSE""],2500]);EPOCH_taskMarkerPos = getPosATL _obj;";
-	cleanUpCall 			= "[(driver axeUAV)] joinSilent grpNull; removeFromRemainsCollector [axeUAV]; deletevehicle axeUAV";
+	cleanUpCall 			= "[(driver axeUAV)] joinSilent grpNull; removeFromRemainsCollector [axeUAV]; deletevehicle axeUAV;player unassignItem 'B_UavTerminal'; player removeItem 'B_UavTerminal'";
 	dialogues[]				= {
 		{
 			"true",
@@ -234,8 +237,8 @@ class uavMission2{
 	markerVisible			= 0;
 	markerRadius 			= 220;
 	markerText 				= "UAV Trader";
-	initcall 				= "_obj = selectRandom (player nearentities [[""C_Man_1""],10500] select {_x getVariable [""AI_SLOT"",-1] > -1 && player distance _x > 50});EPOCH_taskMarkerPos = getPosATL _obj;";
-	cleanUpCall 			= "[(driver axeUAV)] joinSilent grpNull; removeFromRemainsCollector [axeUAV]; deletevehicle axeUAV";
+	initcall 				= "_obj = selectRandom (Epoch_Traders select {player distance _x > 50 && alive _x && !((_x getvariable ['AI_SLOT',-1]) == -1)});EPOCH_taskMarkerPos = getPosATL _obj;";
+	cleanUpCall 			= "[(driver axeUAV)] joinSilent grpNull; removeFromRemainsCollector [axeUAV]; deletevehicle axeUAV;player unassignItem 'B_UavTerminal'; player removeItem 'B_UavTerminal'";
 	dialogues[]				= {
 		{
 			"true",

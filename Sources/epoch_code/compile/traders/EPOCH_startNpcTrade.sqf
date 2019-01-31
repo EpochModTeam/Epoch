@@ -88,17 +88,13 @@ if (alive _this) then {
 							_added = true;
 						}
 						else {
-							_vehicles = _this nearEntities[[_item], 30];
+							_vehicles = (nearestobjects [_this,[_item], ["CfgEpochClient", "MaxVehTradeDist", 30] call EPOCH_fnc_returnConfigEntryV2]) select {local _x && alive _x};
 							if (!(_vehicles isEqualTo[])) then {
 								_vehicle = _vehicles select 0;
-								if (!isNull _vehicle) then {
-									if (local _vehicle) then {
-										_vehSlot = _vehicle getVariable["VEHICLE_SLOT", "ABORT"];
-										if (_vehSlot != "ABORT" || _EnableTempVehTrade) then {
-											_arrayIn pushBack [_item,_rounds];
-											_added = true;
-										};
-									};
+								_vehSlot = _vehicle getVariable["VEHICLE_SLOT", "ABORT"];
+								if (_vehSlot != "ABORT" || _EnableTempVehTrade) then {
+									_arrayIn pushBack [_item,_rounds];
+									_added = true;
 								};
 							};
 						};

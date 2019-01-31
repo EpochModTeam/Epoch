@@ -5,7 +5,7 @@ REM path to compiled mod
 SET WORKSHOP_PATH=C:\Program Files (x86)\Steam\steamapps\common\Arma 3\@epochhive
 
 REM steam workshop id to update
-SET WORKSHOPID=558243173
+SET WORKSHOPID=1399533789
 
 REM Arma 3 tools folder path
 SET TOOLSPATH=C:\Program Files (x86)\Steam\steamapps\common\Arma 3 Tools

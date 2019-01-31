@@ -424,7 +424,7 @@ class CfgCrafting
     };
     class ItemCorrugated : Item
     {
-        usedIn[] = {"KitShelf","ItemCorrugatedLg","VehicleRepairLg","EngineParts","KitSink","KitFieldToilet","KitWaterPump","KitLightPole","FuelTank"};
+        usedIn[] = {"KitShelf","ItemCorrugatedLg","VehicleRepairLg","EngineParts","KitSink","KitFieldToilet","KitWaterPump","KitLightPole","FuelTank","KitJailWall"};
         nearby[] = {{"Fire","","fire",{1,{"ALL"}},3,1,1,0}};
         recipe[] = {{"ItemScraps",2}};
         previewPosition[] = {0.791088,1,0.300004};
@@ -893,6 +893,17 @@ class CfgCrafting
         previewScale = 0.07;
         previewVector = 0;
     };
+    class KitJailWall : Kit
+    {
+        recipe[] = {{"ItemPipe",4},{"ItemCorrugated",2}};
+        model = "\x\addons\a3_epoch_community\models\jail_walls\jail_wall_01.p3d";
+        nearby[] = {{"Workbench","","workbench",{1,{"WorkBench_EPOCH"}},3,1,0,1}};
+        previewPosition[] = {0.797675,1,0.398882};
+        previewScale = 0.07;
+        previewVector = 0;
+		descriptionShort = "Jail Wall";
+		descriptionFull = "Used to hold opponent players";
+    };
     class KitPlyThirdWall_EPOCH : Kit
     {
         recipe[] = {{"PartPlankPack",2},{"ItemPlywoodPack",1}};
@@ -1282,7 +1293,7 @@ class CfgCrafting
     {
         recipe[] = {{"ItemSolar",1},{"ItemCables",1},{"ItemBattery",1},{"ItemCorrugatedLg",2},{"CircuitParts",2}};
         nearby[] = {{"Workbench","","workbench",{1,{"WorkBench_EPOCH"}},3,1,0,1}};
-        model = "\x\addons\a3_epoch_assets_3\CfgVehicles\Solar_Generator_Complete\Solar_generator.p3d";
+        model = "\x\addons\a3_epoch_community\models\Solar_generator_charger.p3d";
         previewPosition[] = {0.804979,1,0.39189};
         previewScale = 0.11;
         previewVector = 0;
@@ -1293,7 +1304,7 @@ class CfgCrafting
     {
         recipe[] = {{"ItemSolar",2},{"ItemCables",2},{"ItemBattery",2},{"ItemCorrugatedLg",2},{"CircuitParts",2}};
         nearby[] = {{"Workbench","","workbench",{1,{"WorkBench_EPOCH"}},3,1,0,1}};
-        model = "\x\addons\a3_epoch_assets_3\CfgVehicles\Solar_Generator_Complete\Solar_generator.p3d";
+        model = "\x\addons\a3_epoch_community\models\Solar_generator_charger.p3d";
         previewPosition[] = {0.804979,1,0.39189};
         previewScale = 0.11;
         previewVector = 0;
@@ -1468,7 +1479,7 @@ class CfgCrafting
     };
     class ItemPipe : Part
     {
-        usedIn[] = {"KitVehicleUpgradeIII_200_EPOCH","KitTentA","KitTentDome","KitScaffolding","KitSink","KitSunShade","KitWaterPump"};
+        usedIn[] = {"KitVehicleUpgradeIII_200_EPOCH","KitTentA","KitTentDome","KitScaffolding","KitSink","KitSunShade","KitWaterPump","KitJailWall"};
         previewPosition[] = {0.802374,1,0.26};
         previewScale = 0.2;
         previewVector = 0.5;

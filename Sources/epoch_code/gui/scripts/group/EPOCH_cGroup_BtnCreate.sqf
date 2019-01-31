@@ -48,6 +48,6 @@ if (count (_array-[32]) == 0) then { //32 = SPACE
 			};
 		};
 	} else {
-		["You don't have enough Krypto to create a group!","Epoch Group Menu",true,false] spawn BIS_fnc_GUImessage;
+		["You don't have enough Crypto to create a group!","Epoch Group Menu",true,false] spawn BIS_fnc_GUImessage;
 	};
 };

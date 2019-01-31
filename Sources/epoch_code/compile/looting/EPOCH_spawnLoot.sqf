@@ -24,10 +24,10 @@
 	BOOL
 */
 //[[[cog import generate_private_arrays ]]]
-private ["_cfgBaseBuilding","_class","_color","_colors","_config","_delete","_dir","_item","_lootBias","_lootLimit","_lootType","_loots","_masterConfig","_pos","_posName","_positions","_possibleCount","_possibleLoots","_randomIndex","_return","_selectedConfig","_selectedLoot"];
+private ["_cfgBaseBuilding","_class","_color","_colors","_config","_delete","_dir","_item","_lootBias","_lootLimit","_lootType","_loots","_masterConfig","_pos","_posName","_positions","_possibleCount","_possibleLoots","_randomIndex","_return","_selectedConfig","_selectedLoot","_lootObjectLimit"];
 //[[[end]]]
-params [["_building",objNull,[objNull]], ["_lootCheckBufferLimit",333], ["_lootObjectLimit",33]];
-
+params [["_building",objNull,[objNull]], ["_LootBiasAdd",0]];
+_lootObjectLimit = 33;
 _selectedConfig = typeOf _building;
 if (_selectedConfig isEqualTo "") then {
 	(getModelInfo _building) params [["_modelName",""]];
@@ -47,16 +47,12 @@ _cfgBaseBuilding = 'CfgBaseBuilding' call EPOCH_returnConfig;
 _return = false;
 if !(isClass(_config)) exitWith {_return};
 
-_lootBias = getNumber(_config >> "lootBias");
+_lootBias = getNumber(_config >> "lootBias") + _LootBiasAdd;
+_lootBias = _lootBias / ((count (((position player) nearEntities 75) select {isplayer _x && alive _x})) max 1);
 _lootType = getText(_config >> "lootType");
 _loots = getArray(_config >> _lootType);
-_lootLimit = ceil random(getNumber(_config >> "limit"));
+_lootLimit = (round random(getNumber(_config >> "limit"))) max 1;
 _posName = "";
-
-EPOCH_LootedBlds pushBackUnique _building;
-if (count EPOCH_LootedBlds >= _lootCheckBufferLimit) then {
-    EPOCH_LootedBlds deleteAt 0;
-};
 
 if ((random 100) < _lootBias) then {
     _possibleLoots = [];

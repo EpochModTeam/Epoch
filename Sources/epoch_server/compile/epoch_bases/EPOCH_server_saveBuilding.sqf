@@ -100,6 +100,10 @@ if (isText _staticClassConfig) then {
 				else {
 					_newVehicle setVariable["BUILD_OWNER", _playerUID, true];
 				};
+				if (_newVehicle isKindOf "PlotPole_EPOCH") then {
+					EPOCH_Plotpoles pushBackUnique _newVehicle;
+					publicvariable "EPOCH_Plotpoles";
+				};				
 				_newVehicle call EPOCH_saveBuilding;
 			};
 

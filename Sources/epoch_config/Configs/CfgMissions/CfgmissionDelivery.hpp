@@ -28,7 +28,7 @@ class prepForDelivery {
 	faileddialogues[] 		= {"I guess you have better things to do.","Try again later.","You didn't pick up the document. Misison Failed !"};
 	completeCondition		= "('ItemDocumentMission' in magazines player)";
 	completedialogues[] 	= {"That's great, let's get out of here.","Good, you have the document, let's move on.","Ok, well done. We can start now."};
-	completedCALL 			= "uiNameSpace setVariable ['axeStartTraders',(player nearentities [['C_Man_1'],500]) apply {_x getVariable ['AI_SLOT',-1]} select {!(_x == -1)}]";
+	completedCALL 			= "uiNameSpace setVariable ['axeStartTraders',EPOCH_Traders select {_x distance player < 500 && alive _x}]";
 	reward[] 				= {};
 	cleanUp 				= 0;
 	nextTask[] 				= {"doDelivery"};
@@ -63,13 +63,13 @@ class doDelivery {
 			{"Don't leave that document anywhere.","If you lose that document you will fail the mission."}
 		},
 		{
-			"(count (((player nearentities [['C_Man_1'],42]) apply {_x getvariable ['AI_SLOT',-1]}) select {!(_x == -1)}) > 0) && (count (((player nearentities [['C_Man_1'],42]) apply {_x getVariable ['AI_SLOT',-1]}) select {_x in (uiNameSpace getVariable ['axeStartTraders',[]])}) < 1)",
+			"({player distance _x < 42 && !((_x getvariable ['AI_SLOT',-1]) == -1) && alive _x && !(_x in (uiNameSpace getVariable ['axeStartTraders',[]]))} count EPOCH_Traders > 0)",
 			{"Well done, you have a trader nearby, go see him","Looks like you found another trader, well done, deliver the message.","UAV has spotted another trader nearby, go deliver the message."}
 		}
 	};
 	callevents[]			= {	// {{ARRAY1},{ARRAY2},... }
 		{	// {"condition",{"Message1","Message2", ...},{"NextTask1","NextTask2", ...}}
-			"(EPOCH_task_startTime + 480 < diag_tickTime) && (count (((player nearentities [['C_Man_1'],500]) apply {_x getVariable ['AI_SLOT',-1]}) select {_x in (uiNameSpace getVariable ['axeStartTraders',[]])}) > 0)",
+			"(EPOCH_task_startTime + 480 < diag_tickTime) && ({player distance _x < 500 && !((_x getvariable ['AI_SLOT',-1]) == -1) && alive _x && (_x in (uiNameSpace getVariable ['axeStartTraders',[]]))} count EPOCH_Traders > 0)",
 			"[""Hey, what are you doing here ? Get on with your task !"", 5,[[0,0,0,0.5],[1,0.5,0,1]]] call Epoch_message",
 			{}
 		}
@@ -77,7 +77,7 @@ class doDelivery {
 	abandonTime 			= 1800;
 	failedCondition 		= "false";
 	faileddialogues[] 		= {"Looks like you took too long buddy, Mission Over.","You need to be quicker next time, Mission Over !","Misison Failed - You took too long, better luck next time."};
-	completeCondition		= "(count (((player nearentities [['C_Man_1'],6]) apply {_x getvariable ['AI_SLOT',-1]}) select {!(_x == -1)}) > 0) && (count (((player nearentities [['C_Man_1'],6]) apply {_x getVariable ['AI_SLOT',-1]}) select {_x in (uiNameSpace getVariable ['axeStartTraders',[]])}) < 1)";
+	completeCondition		= "({player distance _x < 6 && !((_x getvariable ['AI_SLOT',-1]) == -1) && alive _x && !(_x in (uiNameSpace getVariable ['axeStartTraders',[]]))} count EPOCH_Traders > 0)";
 	completedialogues[] 	= {"Hey there pal, it looks like you have something for me ?","Great Job there. Step into my office traveller.","You made it, time to take a look at that message."};
 	completedCALL 			= "";
 	reward[] 				= {};

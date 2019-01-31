@@ -237,35 +237,42 @@ class geiger_menu
 	{
 		condition = "true";
 		action = "call epoch_geiger_show_hide";
-     		icon = "x\addons\a3_epoch_code\Data\UI\buttons\geiger_toggle.paa";
+		icon = "x\addons\a3_epoch_code\Data\UI\buttons\geiger_toggle.paa";
 		tooltip = "Toggle HUD";
 	};
 	class geiger_counter_mute
 	{
 		condition = "!EPOCH_geiger_mute_counter";
 		action = "EPOCH_geiger_mute_counter = !EPOCH_geiger_mute_counter";
-  		icon = "x\addons\a3_epoch_code\Data\UI\buttons\geiger_volumeoff.paa";
+		icon = "x\addons\a3_epoch_code\Data\UI\buttons\geiger_volumeoff.paa";
 		tooltip = "Mute counter";
 	};
 	class geiger_counter_unmute
 	{
 		condition = "EPOCH_geiger_mute_counter";
 		action = "EPOCH_geiger_mute_counter = !EPOCH_geiger_mute_counter";
-     		icon = "x\addons\a3_epoch_code\Data\UI\buttons\geiger_volumeon.paa";
+		icon = "x\addons\a3_epoch_code\Data\UI\buttons\geiger_volumeon.paa";
 		tooltip = "Unmute counter";
 	};
 	class geiger_warning_mute
 	{
 		condition = "!EPOCH_geiger_mute_warning";
 		action = "EPOCH_geiger_mute_warning = !EPOCH_geiger_mute_warning";
-     		icon = "x\addons\a3_epoch_code\Data\UI\buttons\geiger_alarmoff.paa";
+		icon = "x\addons\a3_epoch_code\Data\UI\buttons\geiger_alarmoff.paa";
 		tooltip = "Mute warnings";
 	};
 	class geiger_warning_unmute
 	{
 		condition = "EPOCH_geiger_mute_warning";
 		action = "EPOCH_geiger_mute_warning = !EPOCH_geiger_mute_warning";
-    		icon = "x\addons\a3_epoch_code\Data\UI\buttons\geiger_alarmon.paa";
+		icon = "x\addons\a3_epoch_code\Data\UI\buttons\geiger_alarmon.paa";
 		tooltip = "Unmute warnings";
 	};
+};
+class Epad
+{
+	condition = "EPOCH_EpadButtonOn";
+	action = "if (isnull (finddisplay 9898)) then {createdialog 'epoch_tablet_gui';};";
+	icon = "x\addons\a3_epoch_code\Data\UI\buttons\Epad.paa";
+	tooltip = "E-Pad";
 };

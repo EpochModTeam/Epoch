@@ -44,7 +44,7 @@ if (_vehiclePlyr != _player) then {
 _allowSave = _vars isEqualTypeParams EPOCH_defaultVars;
 if (_allowSave) then{
 
-	if !(_vars isEqualTo EPOCH_defaultVars_SEPXVar) then{
+	if !(_vars isEqualTo (call EPOCH_defaultVars_SEPXVar)) then{
 		private _serverOnly = ["Crypto"];
 		_Svars = _player getVariable["VARS", call EPOCH_defaultVars_SEPXVar];
 		{

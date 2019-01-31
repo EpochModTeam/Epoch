@@ -16,6 +16,7 @@
 private ["_Simulated","_DamageAllowed","_ExceptedBaseObjects","_IndestructibleBaseObjects","_UseIndestructible","_VAL","_ammoClass","_ammoObj","_anims","_animsData","_arr","_arrCount","_baseObj","_buildingJammerRange","_cfgBaseBuilding","_cfgEpochClient","_class","_color","_damage","_location","_marker","_maxTTL","_owner","_response","_serverSettingsConfig","_storageSlot","_textureSlot","_ttl","_vehHiveKey","_worldspace"];
 //[[[end]]]
 EPOCH_BaseCams = [];
+EPOCH_Plotpoles = [];
 _maxTTL = parseNumber EPOCH_expiresBuilding;
 _serverSettingsConfig = configFile >> "CfgEpochServer";
 _baseDynamicSimulationSystem = [_serverSettingsConfig, "baseDynamicSimulationSystem", true] call EPOCH_fnc_returnConfigEntry;
@@ -25,6 +26,7 @@ _ExceptedBaseObjects = [_serverSettingsConfig, "ExceptedBaseObjects", []] call E
 _UseDeSimulateObjects = [_serverSettingsConfig, "UseDeSimulateObjects", true] call EPOCH_fnc_returnConfigEntry;
 _DeSimulateObjects = [_serverSettingsConfig, "DeSimulateObjects", []] call EPOCH_fnc_returnConfigEntry;
 _ExceptedDeSymObjects = [_serverSettingsConfig, "ExceptedDeSymObjects", []] call EPOCH_fnc_returnConfigEntry;
+_DisableDoorsOnObj = [_serverSettingsConfig, "DisableDoorsOnObj", []] call EPOCH_fnc_returnConfigEntry;
 _cfgEpochClient = 'CfgEpochClient' call EPOCH_returnConfig;
 _cfgBaseBuilding = 'CfgBaseBuilding' call EPOCH_returnConfig;
 _buildingJammerRange = getNumber(_cfgEpochClient >> "buildingJammerRange");
@@ -87,6 +89,15 @@ for "_i" from 0 to _this do {
 		if (isClass (configFile >> "CfgVehicles" >> _class) && (_damage < 1) && !(_class isKindOf 'Constructions_lockedstatic_F')) then {
 
 			_baseObj = createVehicle [_class, [0,0,0], [], 0, "CAN_COLLIDE"];
+			{
+				_x params ["_ClassX",["_VarsX",[]]];
+				if ((tolower _class) isequalto (tolower _ClassX)) exitwith {
+					{
+						_x params ["_VarNameX","_ValueX"];
+						_baseObj setvariable [_VarNameX,_ValueX,true];
+					} foreach _VarsX;
+				};
+			} foreach _DisableDoorsOnObj;
 			if (_UseIndestructible) then {
 				if ({_class iskindof _x} count _ExceptedBaseObjects == 0) then {
 					{
@@ -154,13 +165,16 @@ for "_i" from 0 to _this do {
 					// Set PubVar later after all Cams are loaded in
 				};
 
-				if (_class isequalto "PlotPole_EPOCH" && EPOCH_SHOW_JAMMERS) then {
-					_marker = createMarker [str(_location), _location];
-					_marker setMarkerShape "ICON";
-					// TODO allow players to change this per base
-					_marker setMarkerType "mil_dot";
-					// _marker setMarkerText _class;
-					_marker setMarkerColor "ColorBlue";
+				if (_class isequalto "PlotPole_EPOCH") then {
+					EPOCH_Plotpoles pushbackunique _baseObj;
+					if (EPOCH_SHOW_JAMMERS) then {
+						_marker = createMarker [str(_location), _location];
+						_marker setMarkerShape "ICON";
+						// TODO allow players to change this per base
+						_marker setMarkerType "mil_dot";
+						// _marker setMarkerText _class;
+						_marker setMarkerColor "ColorBlue";
+					};
 				};
 			};
 
@@ -196,5 +210,6 @@ for "_i" from 0 to _this do {
 	};
 };
 publicvariable "EPOCH_BaseCams";
+publicvariable "EPOCH_Plotpoles";
 missionNamespace setVariable ["EPOCH_BuildingSlotCount", {_x == 0} count EPOCH_BuildingSlots, true];
 true

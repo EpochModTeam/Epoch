@@ -659,7 +659,7 @@ KK_boundingBox = {
 
 
 
-"EPOCH_onEachFrame" call BIS_fnc_removeaddStackedEventHandler;
+"EPOCH_onEachFrame" call BIS_fnc_removeStackedEventHandler;
 ["EPOCH_onEachFrame", "onEachFrame", {
 
     if (!isnull(EPOCH_vehTarget)) then {

@@ -50,14 +50,14 @@ class veh_lock
 	condition = "if (dyna_cursorTarget iskindof 'Bicycle') exitwith {false};dyna_isVehicle && !dyna_locked";
 	action = "[dyna_cursorTarget, true, player, Epoch_personalToken] remoteExec ['EPOCH_server_lockVehicle',2];";
 	icon = "x\addons\a3_epoch_code\Data\UI\buttons\pad_cannot_lock.paa";
-	tooltip = "Lock";
+	tooltipcode = "format['Lock %1',getText(configFile >> 'CfgVehicles' >> (typeof dyna_cursorTarget) >> 'displayName')]";
 };
 class veh_unLock
 {
 	condition = "dyna_isVehicle && dyna_locked";
 	action = "[dyna_cursorTarget, false, player, Epoch_personalToken] remoteExec ['EPOCH_server_lockVehicle',2];";
 	icon = "x\addons\a3_epoch_code\Data\UI\buttons\pad_can_unlock.paa";
-	tooltip = "Unlock";
+	tooltipcode = "format['Unlock %1',getText(configFile >> 'CfgVehicles' >> (typeof dyna_cursorTarget) >> 'displayName')]";
 };
 
 //Trader interaction
@@ -81,7 +81,7 @@ class player_takeCrypto
 	condition = "dyna_isDeadPlayer || (dyna_cursorTarget getVariable [""Crypto"",0]) > 0";
 	action = "dyna_cursorTarget call EPOCH_takeCrypto;";
 	icon = "x\addons\a3_epoch_code\Data\UI\buttons\krypto.paa";
-	tooltip = "Take Krypto";
+	tooltip = "Take Crypto";
 };
 class player_trade
 {
@@ -585,6 +585,20 @@ class BaseCam
 	action = "call Epoch_CamUse;";
 	icon = "x\addons\a3_epoch_code\Data\UI\buttons\Camera.paa";
 	tooltip = "Watch BaseCam";
+};
+class ConnectUAV
+{
+	condition = "(dyna_cursorTarget iskindof 'UAV_01_base_F' || dyna_cursorTarget iskindof 'UAV_06_base_F') && alive dyna_cursorTarget";
+	action = "if ({_x in (assigneditems player)} count ['B_UavTerminal','O_UavTerminal','I_UavTerminal','C_UavTerminal'] > 0) then {dyna_cursorTarget spawn {_unit = _this;if (isnull (driver _unit)) then {_plyr = player;_grp = createGroup side _plyr;_driver = _grp createUnit[""I_UAV_AI"", position _unit, [], 0, ""CAN_COLLIDE""];_driver moveInAny _unit;uisleep 0.5;};player action [""SwitchToUAVDriver"", _unit];};}else {['You need an UAV-Terminal to connect',5] call epoch_message;};";
+	icon = "x\addons\a3_epoch_code\Data\UI\buttons\epoch_UAV.paa";
+	tooltip = "Connect to UAV";
+};
+class Defuse_Bomb
+{
+	condition = "if (player != vehicle player) exitwith {false};if (player distance dyna_cursorTarget > 3.5) exitwith {false};!((gettext (configfile >> 'cfgammo' >> (typeof dyna_cursorTarget) >> 'defaultMagazine')) isEqualTo '')";
+	action = "dyna_cursorTarget spawn Epoch_DefuseBomb";
+	icon = "x\addons\a3_epoch_code\Data\UI\buttons\Defuse.paa";
+	tooltip = "Defuse Bomb";
 };
 
 

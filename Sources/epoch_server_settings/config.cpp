@@ -20,7 +20,7 @@ class CfgPatches {
 		units[] = {};
 		weapons[] = {};
 		requiredVersion = 0.1;
-		epochVersion = "1.2.0";
+		epochVersion = "1.3.0";
 		requiredAddons[] = {};
 		#include "build.hpp"
 	};
@@ -77,9 +77,11 @@ class CfgEpoch
 		};
 		
 		// Traders
-		traderBlds[] = {"House", "Building"};
-		traderHomes[] = {"House", "Building"};
-		traderUniforms[] = {"U_OG_leader", "U_C_Poloshirt_stripped", "U_C_Poloshirt_blue", "U_C_Poloshirt_burgundy", "U_C_Poloshirt_tricolour", "U_C_Poloshirt_salmon", "U_C_Poloshirt_redwhite", "U_C_Poor_1", "U_C_WorkerCoveralls", "U_C_Journalist", "U_C_Scientist", "U_OrestesBody"};
+		traderBlds[] = {"Building"};
+		traderHomes[] = {"Building"};
+		traderUniforms[] = {"U_OG_leader", "U_C_Poloshirt_stripped", "U_C_Poloshirt_blue", "U_C_Poloshirt_burgundy", "U_C_Poloshirt_tricolour", "U_C_Poloshirt_salmon", "U_C_Poloshirt_redwhite", "U_C_Poor_1", "U_C_WorkerCoveralls", "U_C_Journalist", "U_C_Scientist", "U_OrestesBody", "U_Chav_EPOCH"};
+//		TraderMinDistance = 1500;		// Min distance between Traders. If not defined, Server will calculate it by MapSize
+		traderblockblds[] = {"pier","bridge","fireescape","medevac_house","pillboxbunker"};		// If a building include this chars in the classname (tolower!!!) they will be blocked for Traders
 		
 		// Debug Box 
 		telePos[] = {};
@@ -229,7 +231,6 @@ class CfgEpoch
 		    {"O_Heli_Transport_04_box_EPOCH",1},
 		    {"O_Heli_Transport_04_covered_EPOCH",1},
 		    {"B_Heli_Transport_03_unarmed_EPOCH",1},
-			{"uh1h_Epoch",1},
 		    {"jetski_epoch",7},
 		    {"MBK_01_EPOCH",2},
 		    {"hoverboard_epoch_1",1},
@@ -242,7 +243,31 @@ class CfgEpoch
 		    {"K04",2},
 		    {"ebike_epoch",7},
 		    {"mosquito_epoch",5},
-			{"C_Heli_Light_01_civil_EPOCH",5}
+			{"C_Heli_Light_01_civil_EPOCH",5},
+			
+			// A2 Vehicles
+			{"A2_Golf_EPOCH",3},
+			{"A2_HMMWV_EPOCH",3},
+			{"A2_HMMWV_load_EPOCH",3},
+			{"A2_Lada_EPOCH",3},
+			{"A2_SUV_EPOCH",3},
+			{"A2_SUV_load_EPOCH",3},
+			{"A2_SUV_armed_EPOCH",2},
+			{"A2_UAZ_EPOCH",3},
+			{"A2_UAZ_Open_EPOCH",3},
+			{"A2_Ural_EPOCH",3},
+			{"A2_Vodnik_EPOCH",3},
+			{"A2_Volha_EPOCH",3},
+
+			{"a2_mi8_EPOCH",1},
+			{"a2_ch47f_EPOCH",1},
+			{"a2_ch47f_armed_EPOCH",1},
+			{"a2_ch47f_armed_plus_EPOCH",1},
+			{"uh1h_Epoch",1},
+			{"uh1h_armed_EPOCH",1},
+			{"uh1h_armed_plus_EPOCH",1},
+			{"C_Heli_Light_01_armed_EPOCH",1},
+			{"C_Heli_Light_01_armed_plus_EPOCH",1}
 		};
 		allowedVehiclesList_CUP[] = {
 			{"C_Offroad_01_EPOCH",4},
@@ -334,7 +359,31 @@ class CfgEpoch
 			{"CUP_C_UAZ_Open_TK_CIV",2},
 			{"CUP_B_UAZ_Unarmed_CDF",2},
 			{"CUP_B_Ural_Empty_CDF",2},
-			{"CUP_C_DC3_CIV",2}
+			{"CUP_C_DC3_CIV",2},
+
+			// A2 Vehicles
+			{"A2_Golf_EPOCH",3},
+			{"A2_HMMWV_EPOCH",3},
+			{"A2_HMMWV_load_EPOCH",3},
+			{"A2_Lada_EPOCH",3},
+			{"A2_SUV_EPOCH",3},
+			{"A2_SUV_load_EPOCH",3},
+			{"A2_SUV_armed_EPOCH",2},
+			{"A2_UAZ_EPOCH",3},
+			{"A2_UAZ_Open_EPOCH",3},
+			{"A2_Ural_EPOCH",3},
+			{"A2_Vodnik_EPOCH",3},
+			{"A2_Volha_EPOCH",3},
+
+			{"a2_mi8_EPOCH",1},
+			{"a2_ch47f_EPOCH",1},
+			{"a2_ch47f_armed_EPOCH",1},
+			{"a2_ch47f_armed_plus_EPOCH",1},
+			{"uh1h_Epoch",1},
+			{"uh1h_armed_EPOCH",1},
+			{"uh1h_armed_plus_EPOCH",1},
+			{"C_Heli_Light_01_armed_EPOCH",1},
+			{"C_Heli_Light_01_armed_plus_EPOCH",1}
 		};
         allowedVehiclesList_MAD[] = {
 			{"jetski_epoch",5},

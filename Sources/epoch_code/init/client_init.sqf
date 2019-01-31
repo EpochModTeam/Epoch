@@ -58,7 +58,10 @@ EPOCH_buildOption = 0;
 EPOCH_nearestLocations = [];
 EPOCH_lastFiredLocation = [];
 EPOCH_IsAutoRunning = false;
+EPOCH_Earplugsin = false;
 EPOCH_LastAutoRunKeyPressed = diag_ticktime;
+EPOCH_PlayerMarkerOn = false;
+EPOCH_DeathMarkerOn = false;
 
 //Radiation
 EPOCH_geiger_shown = false;
@@ -90,5 +93,15 @@ Epoch_NuisanceMulti = ["CfgEpochClient", "NuisanceMulti", 0.5] call EPOCH_fnc_re
 call EPOCH_clientInit;
 
 [] execFSM "epoch_code\system\player_login.fsm";
+
+if (isclass (configFile >> "CfgPatches" >> "ace_common")) then {
+	if (["CfgEpochClient", "DisableDoorInteractForACE", true] call EPOCH_fnc_returnConfigEntryV2) then {
+		[] spawn {
+			private _start = diag_ticktime;
+			waituntil {!isnil "MACRO_DOOR_REACH_DISTANCE" || diag_ticktime - _start > 90};
+			MACRO_DOOR_REACH_DISTANCE = -1;
+		};
+	};
+};
 
 true

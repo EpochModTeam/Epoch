@@ -1831,7 +1831,7 @@ class CfgPricing
 	class ItemFireExtinguisher
 	{
 		price = 50;
-	}
+	};
     class WoodLog_EPOCH
     {
         price = 2;
@@ -2244,7 +2244,55 @@ class CfgPricing
     {
         price = 35;
     };
-    class hgun_PDW2000_F
+	class SMG_03_TR_black {
+		price = 35;
+	};
+	class SMG_03_TR_camo {
+		price = 35;
+	};
+	class SMG_03_TR_khaki {
+		price = 35;
+	};
+	class SMG_03_TR_hex {
+		price = 35;
+	};
+	class SMG_03C_TR_black {
+		price = 35;
+	};
+	class SMG_03C_TR_camo {
+		price = 35;
+	};
+	class SMG_03C_TR_khaki {
+		price = 35;
+	};
+	class SMG_03C_TR_hex {
+		price = 35;
+	};
+	class SMG_03_black {
+		price = 35;
+	};
+	class SMG_03_camo {
+		price = 35;
+	};
+	class SMG_03_khaki {
+		price = 35;
+	};
+	class SMG_03_hex {
+		price = 35;
+	};
+	class SMG_03C_black {
+		price = 35;
+	};
+	class SMG_03C_camo {
+		price = 35;
+	};
+	class SMG_03C_khaki {
+		price = 35;
+	};
+	class SMG_03C_hex {
+		price = 35;
+	};
+	class hgun_PDW2000_F
     {
         price = 35;
     };
@@ -2564,11 +2612,78 @@ class CfgPricing
     {
         price = 100;
     };
+	
+	// A2 Weapons
+    class a2_ak47s_gold_EPOCH
+    {
+        price = 100;
+    };
+    class a2_AK107_EPOCH
+    {
+        price = 100;
+    };
+    class a2_bizon_epoch
+    {
+        price = 100;
+    };
+    class a2_dmr_epoch
+    {
+        price = 100;
+    };
+    class a2_dmr_epoch_scoped
+    {
+        price = 100;
+    };
+    class a2_fnfal_epoch
+    {
+        price = 100;
+    };
+    class a2_G36_C_epoch
+    {
+        price = 100;
+    };
+    class a2_Mg36_epoch
+    {
+        price = 100;
+    };
+    class a2_leeenfield_epoch
+    {
+        price = 100;
+    };
+    class a2_m110_epoch
+    {
+        price = 100;
+    };
+    class a2_mk16_epoch
+    {
+        price = 100;
+    };
+    class a2_mk17_epoch
+    {
+        price = 100;
+    };
+    class a2_svd_epoch
+    {
+        price = 100;
+    };
+    class a2_VSS_vintorez_epoch
+    {
+        price = 100;
+    };
+    class a2_aks74un_EPOCH
+    {
+        price = 100;
+    };
+
     class 30rnd_556_magazine
     {
         price = 5;
         tax = 0.9;
     };
+	class 50Rnd_570x28_SMG_03{
+		price = 5;
+		tax = 0.9;
+	};
     class 20rnd_762_magazine
     {
         price = 5;
@@ -2629,6 +2744,54 @@ class CfgPricing
         price = 6;
         tax = 0.9;
     };
+	
+	// A2 Mags
+    class Bizon_64Rnd_9x18
+    {
+        price = 5;
+        tax = 0.9;
+    };
+    class 20Rnd_762x51_DMR
+    {
+        price = 5;
+        tax = 0.9;
+    };
+    class 20Rnd_762x51_FNFAL
+    {
+        price = 5;
+        tax = 0.9;
+    };
+    class 30Rnd_556x45_G36
+    {
+        price = 5;
+        tax = 0.9;
+    };
+    class a2_akyellow_mag_EPOCH
+    {
+        price = 5;
+        tax = 0.9;
+    };
+    class 10Rnd_303
+    {
+        price = 5;
+        tax = 0.9;
+    };
+    class 100Rnd_556x45_BetaCMag
+    {
+        price = 5;
+        tax = 0.9;
+    };
+    class 10Rnd_762x54_SVD
+    {
+        price = 5;
+        tax = 0.9;
+    };
+    class 10Rnd_9x39_SP5_VSS
+    {
+        price = 5;
+        tax = 0.9;
+    };
+
     class Rangefinder
     {
         price = 4;
@@ -2938,6 +3101,9 @@ class CfgPricing
     {
         price = 5;
     };
+	class muzzle_snds_570 {
+		price = 5;
+	};
     class Heal_EPOCH
     {
         price = 3;
@@ -2946,6 +3112,9 @@ class CfgPricing
     {
         price = 5;
     };
+	class ItemDefibrillator {
+		price = 5;
+	};
     class Repair_EPOCH
     {
         price = 2;
@@ -3081,6 +3250,10 @@ class CfgPricing
     class KitStudWall
     {
         price = 16;
+    };
+    class KitJailWall
+    {
+        price = 56;
     };
 	class KitPlyThirdWall_EPOCH {
 		price = 18;
@@ -4448,6 +4621,66 @@ class CfgPricing
 	class C_SUV_01_EPOCH2: C_SUV_01_EPOCH{};
 	class C_SUV_01_EPOCH3: C_SUV_01_EPOCH{};
 	class C_SUV_01_EPOCH4: C_SUV_01_EPOCH{};
+	class A2_Golf_EPOCH
+	{
+        price = 7500;
+		tax = 0.9;
+	};
+	class A2_HMMWV_EPOCH
+	{
+        price = 7500;
+		tax = 0.9;
+	};
+	class A2_HMMWV_load_EPOCH
+	{
+        price = 7500;
+		tax = 0.9;
+	};
+	class A2_Lada_EPOCH
+	{
+        price = 7500;
+		tax = 0.9;
+	};
+	class A2_SUV_EPOCH
+	{
+        price = 7500;
+		tax = 0.9;
+	};
+	class A2_SUV_load_EPOCH
+	{
+        price = 7500;
+		tax = 0.9;
+	};
+	class A2_SUV_armed_EPOCH
+	{
+        price = 10000;
+		tax = 0.9;
+	};
+	class A2_UAZ_EPOCH
+	{
+        price = 7500;
+		tax = 0.9;
+	};
+	class A2_UAZ_Open_EPOCH
+	{
+        price = 7500;
+		tax = 0.9;
+	};
+	class A2_Ural_EPOCH
+	{
+        price = 7500;
+		tax = 0.9;
+	};
+	class A2_Vodnik_EPOCH
+	{
+        price = 7500;
+		tax = 0.9;
+	};
+	class A2_Volha_EPOCH
+	{
+        price = 7500;
+		tax = 0.9;
+	};
     class C_Rubberboat_EPOCH
     {
         price = 500;
@@ -4630,7 +4863,47 @@ class CfgPricing
 	class O_Truck_03_covered_EPOCH4: O_Truck_03_covered_EPOCH {};
     class uh1h_Epoch
     {
-        price = 22500;
+		price = 22500;
+		tax = 0.9;
+    };
+    class uh1h_armed_EPOCH
+    {
+		price = 30000;
+		tax = 0.9;
+    };
+    class uh1h_armed_plus_EPOCH
+    {
+		price = 35000;
+		tax = 0.9;
+    };
+    class a2_mi8_EPOCH
+    {
+		price = 22500;
+		tax = 0.9;
+    };
+    class a2_ch47f_EPOCH
+    {
+		price = 22500;
+		tax = 0.9;
+    };
+    class a2_ch47f_armed_EPOCH
+    {
+		price = 30000;
+		tax = 0.9;
+    };
+    class a2_ch47f_armed_plus_EPOCH
+    {
+		price = 35000;
+		tax = 0.9;
+    };
+    class C_Heli_Light_01_armed_EPOCH
+    {
+		price = 30000;
+		tax = 0.9;
+    };
+    class C_Heli_Light_01_armed_plus_EPOCH
+    {
+		price = 35000;
 		tax = 0.9;
     };
     class O_Heli_Light_02_unarmed_EPOCH
@@ -6083,7 +6356,7 @@ class CfgPricing
     class B_Bergen_hex_F                    {  price = 40; };
     class B_Bergen_tna_F                    {  price = 40; };
     class B_AssaultPack_tna_F               { price = 10; };
-    class B_Carryall_ghex_F                 {  price = 30; };
+    class B_Carryall_ghex_F                 {  price = 40; };
     class B_FieldPack_ghex_F                {  price = 12; };
     class B_ViperHarness_base_F             { price = 25; };
     class B_ViperHarness_blk_F              { price = 25; };
@@ -6097,6 +6370,17 @@ class CfgPricing
     class B_ViperLightHarness_hex_F         {  price = 20; };
     class B_ViperLightHarness_khk_F         {  price = 20; };
     class B_ViperLightHarness_oli_F         {  price = 20; };
+	// A2 Backpacks
+	class Assault_Pack_Epoch				{  price = 30; };
+	class Patrol_Pack_Epoch					{  price = 30; };
+	class TK_RPG_Backpack_Epoch				{  price = 30; };
+	class CZ_VestPouch_Epoch				{  price = 35; };
+	class civil_assault_pack_Epoch			{  price = 35; };
+	class S_Gunbag_Epoch					{  price = 35; };
+	class ALICE_Pack_Epoch					{  price = 40; };
+	class US_Backpack_Epoch					{  price = 40; };
+	class CZ_Backpack_Epoch					{  price = 40; };
+	class L_Gunbag_Epoch					{  price = 40; };
     // MAD ARMA
     class revolver01                        { price = 55; };
     class VG_sawed_off_01                   { price = 120; };

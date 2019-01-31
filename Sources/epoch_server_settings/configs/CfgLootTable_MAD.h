@@ -378,16 +378,59 @@ class CfgLootTable_MAD
 				{ { "Rollins_F", "weapon" }, 9 },
 				{ { "SMG_01_F", "weapon" }, 9 },
 				{ { "SMG_02_F", "weapon" }, 9 },
-				{ { "hgun_PDW2000_F", "weapon" }, 10 }
+				{ { "Rifle_SMG_03", "CfgLootTable" }, 9 },
+				{ { "hgun_PDW2000_F", "weapon" }, 10 },
+				{ { "A2_Rifles", "CfgLootTable" }, 15 }
 		};
 	};
-
+	class A2_Rifles
+	{
+		items[] = {
+				{ { "a2_ak47s_gold_EPOCH", "weapon" }, 1 },
+				{ { "a2_AK107_EPOCH", "weapon" }, 1 },
+				{ { "a2_bizon_epoch", "weapon" }, 1 },
+				{ { "a2_dmr_epoch", "weapon" }, 1 },
+				{ { "a2_dmr_epoch_scoped", "weapon" }, 1 },
+				{ { "a2_fnfal_epoch", "weapon" }, 1 },
+				{ { "a2_G36_C_epoch", "weapon" }, 1 },
+				{ { "a2_Mg36_epoch", "weapon" }, 1 },
+				{ { "a2_leeenfield_epoch", "weapon" }, 1 },
+				{ { "a2_m110_epoch", "weapon" }, 1 },
+				{ { "a2_mk16_epoch", "weapon" }, 1 },
+				{ { "a2_mk17_epoch", "weapon" }, 1 },
+				{ { "a2_svd_epoch", "weapon" }, 1 },
+				{ { "a2_VSS_vintorez_epoch", "weapon" }, 1 },
+				{ { "a2_aks74un_EPOCH", "weapon" }, 1 }
+		};
+	};
 	class Rifle_l85a2_epoch
 	{
 		items[] = {
 				{ { "l85a2_epoch", "weapon" }, 1 },
 				{ { "l85a2_pink_epoch", "weapon" }, 1 },
 				{ { "l85a2_ugl_epoch", "weapon" }, 1 }
+		};
+	};
+	
+	class Rifle_SMG_03
+	{
+		items[] = {
+				{ { "SMG_03_TR_black", "weapon" }, 1 },
+//				{ { "SMG_03_TR_camo", "weapon" }, 1 },
+//				{ { "SMG_03_TR_khaki", "weapon" }, 1 },
+//				{ { "SMG_03_TR_hex", "weapon" }, 1 },
+//				{ { "SMG_03C_TR_black", "weapon" }, 1 },
+				{ { "SMG_03C_TR_camo", "weapon" }, 1 },
+//				{ { "SMG_03C_TR_khaki", "weapon" }, 1 },
+//				{ { "SMG_03C_TR_hex", "weapon" }, 1 },
+//				{ { "SMG_03_black", "weapon" }, 1 },
+//				{ { "SMG_03_camo", "weapon" }, 1 },
+				{ { "SMG_03_khaki", "weapon" }, 1 },
+//				{ { "SMG_03_hex", "weapon" }, 1 },
+//				{ { "SMG_03C_black", "weapon" }, 1 },
+//				{ { "SMG_03C_camo", "weapon" }, 1 },
+//				{ { "SMG_03C_khaki", "weapon" }, 1 },
+				{ { "SMG_03C_hex", "weapon" }, 1 }
 		};
 	};
 
@@ -477,10 +520,24 @@ class CfgLootTable_MAD
 				{ { "RifleAmmo_30Rnd_556x45_Stanag", "CfgLootTable" }, 13 },
 				{ { "RifleAmmo_30Rnd_45ACP_Mag_SMG_01", "CfgLootTable" }, 16 },
 				{ { "30Rnd_9x21_Mag", "magazine" }, 17 },
-				{ { "5Rnd_rollins_mag", "magazine" }, 20 }
+				{ { "5Rnd_rollins_mag", "magazine" }, 20 },
+				{ { "50Rnd_570x28_SMG_03", "magazine" }, 10 },
+				{ { "RifleAmmo_A2", "CfgLootTable" }, 10 },
 		};
 	};
-
+	class RifleAmmo_A2
+	{
+		items[] = {
+				{ { "Bizon_64Rnd_9x18", "magazine" }, 2 },
+				{ { "20Rnd_762x51_DMR", "magazine" }, 2 },
+				{ { "20Rnd_762x51_FNFAL", "magazine" }, 2 },
+				{ { "30Rnd_556x45_G36", "magazine" }, 2 },
+				{ { "10Rnd_303", "magazine" }, 2 },
+				{ { "100Rnd_556x45_BetaCMag", "magazine" }, 2 },
+				{ { "10Rnd_762x54_SVD", "magazine" }, 2 },
+				{ { "10Rnd_9x39_SP5_VSS", "magazine" }, 2 }
+		};
+	};
 	class RifleAmmo_30Rnd_556x45_Stanag
 	{
 		items[] = {
@@ -766,7 +823,8 @@ class CfgLootTable_MAD
 				{ { "Muzzles_MultiGun", "CfgLootTable" }, 1 },
 				// Marksman DLC
 				{ { "Muzzles_338MarkDLC", "CfgLootTable" }, 1 },
-				{ { "Muzzles_93mmgMarkDLC", "CfgLootTable" }, 1 }
+				{ { "Muzzles_93mmgMarkDLC", "CfgLootTable" }, 1 },
+				{ { "muzzle_snds_570", "item" }, 1 }
 		};
 	};
 
@@ -896,6 +954,7 @@ class CfgLootTable_MAD
 	class Medical
 	{
 		items[] = {
+				{ { "ItemDefibrillator", "magazine" }, 1 },
 				{ { "FAK", "magazine" }, 50 },
 				{ { "Soap_Epoch", "magazine" }, 3 },
 				{ { "Heal_EPOCH", "item" }, 2 },
@@ -1179,7 +1238,18 @@ class CfgLootTable_MAD
 				{ { "smallbackpack_red_epoch", "backpack" }, 4 },
 				{ { "smallbackpack_green_epoch", "backpack" }, 4 },
 				{ { "smallbackpack_teal_epoch", "backpack" }, 4 },
-				{ { "smallbackpack_pink_epoch", "backpack" }, 4 }
+				{ { "smallbackpack_pink_epoch", "backpack" }, 4 },
+
+				{ { "Assault_Pack_Epoch", "backpack" }, 5 },
+				{ { "Patrol_Pack_Epoch", "backpack" }, 5 },
+				{ { "TK_RPG_Backpack_Epoch", "backpack" }, 4 },
+				{ { "CZ_VestPouch_Epoch", "backpack" }, 4 },
+				{ { "civil_assault_pack_Epoch", "backpack" }, 3 },
+				{ { "S_Gunbag_Epoch", "backpack" }, 3 },
+				{ { "ALICE_Pack_Epoch", "backpack" }, 2 },
+				{ { "US_Backpack_Epoch", "backpack" }, 2 },
+				{ { "CZ_Backpack_Epoch", "backpack" }, 1 },
+				{ { "L_Gunbag_Epoch", "backpack" }, 1 }
 		};
 	};
 

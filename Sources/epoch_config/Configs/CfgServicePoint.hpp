@@ -18,11 +18,29 @@ class CfgServicePoint {
 									"MarkerText2"
 								}
 */
-								{								// Central
-									{13325,14477,0},						// Pos
+								{											// Kavala Pier
+									{3238,12907,0},							// Pos
 									40,										// max distance
-									{"Landvehicle","Ship","Tank","AIR"},	// Vehicle Types for SP
-									"Service Point Land / Ship / Air"		// Marker Text (Leave it Blank to disable Marker)
+									{"Ship"},								// Vehicle Types for SP
+									"Service Point Ship"					// Marker Text (Leave it Blank to disable Marker)
+								},
+								{											// Kavala Workshop
+									{3755,13472.5,0},						// Pos
+									40,										// max distance
+									{"Landvehicle","TANK"},					// Vehicle Types for SP
+									"Service Point Land"					// Marker Text (Leave it Blank to disable Marker)
+								},
+								{											// Airfield Workshop
+									{14160,16533.5,0},						// Pos
+									40,										// max distance
+									{"Landvehicle","TANK"},					// Vehicle Types for SP
+									"Service Point Land"					// Marker Text (Leave it Blank to disable Marker)
+								},
+								{											// Airfield Terminal
+									{14641.5,16754.5,0},					// Pos
+									40,										// max distance
+									{"AIR"},								// Vehicle Types for SP
+									"Service Point AIR"						// Marker Text (Leave it Blank to disable Marker)
 								}
 							};
 	};
@@ -90,6 +108,53 @@ class CfgServicePoint {
 			}
 		},
 */
+
+		{
+			"a2_ch47f_armed_EPOCH",
+			{
+				{"200Rnd_65x39_Belt",{1},3,200},
+				{"200Rnd_65x39_Belt",{2},3,200}
+			}
+		},
+		{
+			"a2_ch47f_armed_plus_EPOCH",
+			{
+				{"200Rnd_762x51_Belt",{0},3,200},
+				{"200Rnd_762x51_Belt",{1},3,200}
+			}
+		},
+		{
+			"uh1h_armed_EPOCH",
+			{
+				{"200Rnd_65x39_Belt",{1},3,200},
+				{"200Rnd_65x39_Belt",{2},3,200}
+			}
+		},
+		{
+			"uh1h_armed_plus_EPOCH",
+			{
+				{"200Rnd_762x51_Belt",{0},3,200},
+				{"200Rnd_762x51_Belt",{1},3,200}
+			}
+		},
+		{
+			"C_Heli_Light_01_armed_EPOCH",
+			{
+				{"200Rnd_65x39_Belt",{-1},3,200}
+			}
+		},
+		{
+			"C_Heli_Light_01_armed_plus_EPOCH",
+			{
+				{"200Rnd_762x51_Belt",{-1},3,200}
+			}
+		},
+		{
+			"A2_SUV_armed_EPOCH",
+			{
+				{"200Rnd_762x51_Belt",{0},3,200}
+			}
+		},
 		{
 			"B_G_Offroad_01_armed_F",
 			{

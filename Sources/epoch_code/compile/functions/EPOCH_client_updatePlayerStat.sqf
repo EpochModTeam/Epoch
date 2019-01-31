@@ -41,5 +41,5 @@ private _newStat = _currentStat + _adjust;
 missionNameSpace setVariable[_statVarName,_newStat];
 
 if(_toServer)then{
-	[player, _statType, _adjust, false, Epoch_personalToken] remoteExec ["EPOCH_fnc_updatePlayerStats",2];
+	[player, objNull, _statType, _adjust, false, Epoch_personalToken] remoteExec ["EPOCH_fnc_updatePlayerStats",2];
 };

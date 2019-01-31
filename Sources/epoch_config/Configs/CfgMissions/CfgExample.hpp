@@ -59,6 +59,7 @@ class sampletask {
 	abandonTime 			= 240;					// Timeout for task
 	failedCondition 		= "false";				// Failed Condition for Task
 	faileddialogues[] 		= {"Text1","Text2"};	// Array of random dialogues when task failed
+	failedCall				= "";					//  Code to call when task failed
 	completeCondition		= "'B_UavTerminal' in assignedItems player";	// Condition to complete the task succesfully
 	completedialogues[] 	= {"Text1","Text2"};	// Array of random dialogues when task completed successfully
 	completedCALL 			= "";					// Code to call when task completed successfully

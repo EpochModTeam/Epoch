@@ -65,7 +65,7 @@ if !(isNull EPOCH_lastNPCtradeTarget) then {
 						_vehicle = _x;
 						if (local _vehicle && (typeof _vehicle) isequalto _uiItem) then {
 							{
-								if ((["wheel",tolower _x] call bis_fnc_instring) || _x isequalto "HitEngine") then {
+								if ((["wheel",tolower _x] call bis_fnc_instring) || (tolower _x) isequalto "hitengine") then {
 									if (((getAllHitPointsDamage _vehicle) select 2 select _foreachindex) >= 1) then {
 										_allowAdd = false;
 										_errormsg = "Cannot be sold - too much damage";
@@ -75,7 +75,7 @@ if !(isNull EPOCH_lastNPCtradeTarget) then {
 							} foreach ((getAllHitPointsDamage _vehicle) select 0);
 						};
 						if (!_allowAdd) exitwith {};
-					} foreach (EPOCH_lastNPCtradeTarget nearEntities [[_uiItem], 30]);
+					} foreach (EPOCH_lastNPCtradeTarget nearEntities [[_uiItem], ["CfgEpochClient", "MaxVehTradeDist", 30] call EPOCH_fnc_returnConfigEntryV2]);
 				};
 			};
 		};
@@ -133,7 +133,7 @@ if !(isNull EPOCH_lastNPCtradeTarget) then {
 					_cryptoCount = _cryptoCount + _worth;
 				};
 			};
-			ctrlSetText [_CryptoInCtrl, (format["%1 Krypto", _cryptoCount])];
+			ctrlSetText [_CryptoInCtrl, (format["%1 Crypto", _cryptoCount])];
 			_cryptoCount = 0;
 			_sizeOut = lbSize _TraderItemsOutBox;
 			if (_sizeOut > 0) then {
@@ -152,7 +152,7 @@ if !(isNull EPOCH_lastNPCtradeTarget) then {
 					_cryptoCount = _cryptoCount + _worth;
 				};
 			};
-			ctrlSetText [_CryptoOutCtrl, (format["%1 Krypto", _cryptoCount])];
+			ctrlSetText [_CryptoOutCtrl, (format["%1 Crypto", _cryptoCount])];
 			if (_control == _PlayerItemsBox) then {
 				lbSetCurSel [_PlayerFilerDropDown, 0];
 			};

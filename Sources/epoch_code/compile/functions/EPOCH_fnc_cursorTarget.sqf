@@ -33,5 +33,13 @@ if (underwater player) then {
 	if (_ins isEqualTo []) exitWith { objNull };
 	(_ins select 0 param [3,objNull])
 } else {
-	cursorTarget
+	if (player distance cursorobject < 3.5 && {!((gettext (configfile >> "cfgammo" >> (typeof cursorobject) >> "defaultMagazine")) isEqualTo "")}) exitwith {
+		cursorobject
+	};
+	if (!isnull cursorTarget) then {
+		cursorTarget
+	}
+	else {
+		cursorobject
+	};
 }

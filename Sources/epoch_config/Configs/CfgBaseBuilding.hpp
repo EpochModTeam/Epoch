@@ -432,6 +432,7 @@ class CfgBaseBuilding
     class MetalQuarterFloor_Ghost_EPOCH : MetalQuarterFloor_SIM_EPOCH {};
     class CinderFloor_EPOCH : WoodFloor_EPOCH
     {
+        upgradeBuilding[] = {};
         removeParts[] = {{"CinderBlocks",2},{"MortarBucket",1}};
         simulClass = "CinderFloor_SIM_EPOCH";
         staticClass = "CinderFloor_EPOCH";
@@ -648,6 +649,40 @@ class CfgBaseBuilding
         allowedSnapObjects[] = {"Const_floors_static_F","Const_WoodWalls_static_F","Const_Cinder_static_F"};
     };
     class WoodLargeWall_Ghost_EPOCH : WoodLargeWall_SIM_EPOCH {};
+	class JailWall_EPOCH : Default
+    {
+        upgradeBuilding[] = {{"JailWallDoor_EPOCH",{{"ItemPipe",2},{"ItemCorrugated",2}}}};
+        removeParts[] = {{"ItemPipe",2},{"ItemScraps",2}};
+        simulClass = "JailWall_SIM_EPOCH";
+        staticClass = "JailWall_EPOCH";
+        GhostPreview = "JailWall_Ghost_EPOCH";
+        snapType = "snapPointsPara";
+        snapPointsPara[] = {"N","E","W"};
+        allowedSnapPoints[] = {"N","S","E","W"};
+		// snap points for WoodLargeWall_EPOCH
+		N[] = {0,0,3.06034};
+		E[] = {5.237,0,0};
+		W[] = {-5.237,0,0};
+    };
+    class JailWall_SIM_EPOCH : JailWall_EPOCH
+    {
+        upgradeBuilding[] = {};
+        removeParts[] = {};
+        allowedSnapObjects[] = {"Const_floors_static_F","Const_WoodWalls_static_F","Const_Cinder_static_F"};
+    };
+    class JailWall_Ghost_EPOCH : JailWall_SIM_EPOCH {};
+    class JailWallDoor_EPOCH : Default
+    {
+        removeParts[] = {{"ItemPipe",3},{"ItemScraps",4}};
+        staticClass = "JailWallDoor_EPOCH";
+        snapType = "snapPointsPara";
+        snapPointsPara[] = {"N","E","W"};
+        allowedSnapPoints[] = {"N","S","E","W"};
+		// snap points for WoodLargeWall_EPOCH
+		N[] = {0,0,3.06034};
+		E[] = {5.237,0,0};
+		W[] = {-5.237,0,0};
+    };
 	class PlyThirdWall_EPOCH : Default
     {
         upgradeBuilding[] = {};

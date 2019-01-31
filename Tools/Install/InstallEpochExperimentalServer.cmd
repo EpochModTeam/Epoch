@@ -3,7 +3,7 @@ SET STEAMUN=admin@youremail.net
 SET STEAMPW=changeme
 SET ARMASVRPATH=C:\Arma3Server
 SET ARMAAPPID=107410
-SET ARMAWORKSHOPID=558243173
+SET ARMAWORKSHOPID=1399533789
 :: update workshop mod
 START "" /WAIT steamcmd.exe +login %STEAMUN% %STEAMPW% +workshop_download_item %ARMAAPPID% %ARMAWORKSHOPID% validate +quit
 :: copy files back to server

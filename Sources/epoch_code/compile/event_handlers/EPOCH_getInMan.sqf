@@ -22,4 +22,11 @@ if (_unit == player) then {
 		["BUILD MODE: DISABLED", 5] call Epoch_message;
 		EPOCH_Target = objNull;
 	};
+	if (missionnamespace getvariable ["EPOCH_AutoEarplug",false]) then {
+		if !(EPOCH_Earplugsin) then {
+			systemchat 'Earplugs have been auto-inserted...';
+			EPOCH_Earplugsin = true;
+			1 fadeSound 0.15;
+		};
+	};
 };

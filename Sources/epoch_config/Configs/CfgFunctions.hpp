@@ -40,6 +40,10 @@ class cfgFunctions
             {
                 file = "epoch_code\compile\both\EPOCH_weightedArray.sqf";
             };
+			class itemDisplayName
+            {
+                file = "epoch_code\compile\both\EPOCH_itemDisplayName.sqf";
+            };
             class compiler
             {
                 file = "epoch_code\compile\both\EPOCH_compiler.sqf";

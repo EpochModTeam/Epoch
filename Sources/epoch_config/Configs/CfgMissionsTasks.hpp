@@ -19,4 +19,5 @@ class inGameTasks {
 #include "CfgMissions\CfgmissionMilitary.hpp"
 #include "CfgMissions\CfgmissionMonster.hpp"
 #include "CfgMissions\CfgmissionFish.hpp"
+#include "CfgMissions\CfgDocCheck.hpp"
 };

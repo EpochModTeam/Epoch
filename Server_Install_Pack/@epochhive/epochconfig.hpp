@@ -8,7 +8,12 @@ forceRestartTime      = 14400; 			// 4 hour restarts
 	lootMultiplier 		= 0.5; 			// 1 = max loot bias. This controls how much loot can payout per Epoch loot container.
 
 // Events
-	WeatherStaticForecast[] = {}; 		// Default: {75.5,0,{0,0,0},0,{1,1}}; // Clear day; {19,1,{1,1,40},1,{5,5}}; // Cold Foggy Rainy Overcast Windy; Format: {temp <scalar>,rain <scalar>,fog <array>,overcast <scalar>,wind <array>}
+	WeatherChances[] = {
+		0.5,							// Sun
+		0.3,							// Mid
+		0.1,							// Rain
+		0.1								// Rain+
+	};
 	events[] = {
 		{
 			3600, // SECOND <scalar>,
@@ -113,6 +118,13 @@ forceRestartTime      = 14400; 			// 4 hour restarts
 							};
 	ExceptedDeSymObjects[] = 	{		// Not Desymulated, also if in a Class of DeSimulateObjects
 								};
+	DisableDoorsOnObj[] =	{			// Add special Vars to disable Doors (no effect in Epoch, but 3rd party addons like enhanced movement)
+	//							{"BuildingClass",				{{"Variable1",Value1},{"Variable2",Value2}, ...			}	},
+								{"WoodLargeWallDoorL_EPOCH",	{{"bis_disabled_door",1}								}	},
+								{"WoodWall4_EPOCH",				{{"bis_disabled_door",1}								}	},
+								{"CinderWallDoorwHatch_EPOCH",	{{"bis_disabled_door",1},{"bis_disabled_hatch",1}		}	},
+								{"WoodStairs3_EPOCH",			{{"bis_disabled_bars_long",1}							}	}
+							};
 
 // Dynamic Simulation System
 	enableDynamicSimulationSystem 		= "true";	// enable / disable the complete dynamic simulation system
@@ -151,6 +163,7 @@ forceRestartTime      = 14400; 			// 4 hour restarts
 		// "ItemSafe",
 		// "ItemGoldBar10oz"
 	};
+	TraderDeco = "true";				// If true, Traders get around Halloween / Christmas some seasonal decoration
 
 // Spawntables
 	forcedVehicleSpawnTable = ""; 		// leave blank for default. Options: "allowedVehiclesList","allowedVehiclesList_CUP","allowedVehiclesList_MAD","allowedVehiclesList_MADCUP"

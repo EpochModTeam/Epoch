@@ -34,7 +34,24 @@ if (!isNull _building) then {
 			EPOCH_BaseCams = EPOCH_BaseCams - [_building];
 			publicvariable "EPOCH_BaseCams";
 		};
-
-		['BuildingKilled', format["%1 was killed by %2 at %3", typeOf _building, _killer, getPosATL _building]] call EPOCH_fnc_server_hiveLog;
+		if (_building iskindof "PlotPole_EPOCH") then {
+			EPOCH_Plotpoles = EPOCH_Plotpoles - [_building];
+			publicvariable "EPOCH_Plotpoles";
+		};
+		// Check if building killer is the owner and log accordingly
+		if (_killer isequaltype objnull) then {
+			if ((_building getVariable["BUILD_OWNER", "-1"]) in [getPlayerUID _killer, _killer getVariable["GROUP", ""]]) then
+			{
+				['BuildingRemoved', format["%1 was removed by %2 (owner) at %3", typeOf _building, _killer, getPosATL _building]] call EPOCH_fnc_server_hiveLog;
+			}
+			else
+			{
+				['BuildingKilled', format["%1 was killed by %2 at %3", typeOf _building, _killer, getPosATL _building]] call EPOCH_fnc_server_hiveLog;
+			};
+		}
+		else {
+			// Killer is no Obj, but a String (some AdminTools use it)
+			['BuildingRemoved', format["%1 was removed by %2 at %3", typeOf _building, _killer, getPosATL _building]] call EPOCH_fnc_server_hiveLog;
+		};
 	};
 };

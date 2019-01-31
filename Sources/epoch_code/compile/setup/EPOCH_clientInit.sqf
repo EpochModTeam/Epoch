@@ -56,7 +56,7 @@ Epoch_CamAdjust = [0,0,0];
 0 fadeRadio 0;
 enableSentences false;
 enableRadio false;
-player setVariable["BIS_noCoreConversations", true];
+// player setVariable["BIS_noCoreConversations", true]; // Moved to Masterloop (Player is not loaded in here)
 
 EPOCH_ArmaSlingLoad = true;
 _r3fON = if(!isNil "R3F_LOG_CFG_can_lift")then{if!(R3F_LOG_CFG_can_lift isEqualTo [])then{true}else{false}}else{false};
@@ -69,3 +69,42 @@ if (_r3fON || _advSling)then{
 inGameUISetEventHandler ["Action", "if(!(_this isEqualTo []) && !(_this select 10 in ['PrevAction','NextAction']))then{_this call EPOCH_handleUIActions}"];
 //inGameUISetEventHandler ["NextAction", "_this call EPOCH_handleUIActions"];
 //inGameUISetEventHandler ["PrevAction", "_this call EPOCH_handleUIActions"];
+
+// Load / Overwrite Vars from ProfileNamespace
+_cfg = "e_pad_config" call EPOCH_returnConfig;
+_startvars = getarray (_cfg >> "LoadVarsFromProfile");
+_arr = profilenamespace getvariable ["Epoch_ToggleVars",[[],[]]];
+_todelete = [];
+{
+	_x params ["_varname",["_default","false",[""]]];
+	if (_varname isequaltype "" && !(_varname isequalto "")) then {
+		_value = if ((tolower _default) isequalto "true") then {true} else {false};
+		_find = (_arr select 0) find _varname;
+		if (_find > -1) then {
+			_tmpvalue = (_arr select 1 select _find);
+			if (_tmpvalue isequaltype true) then {
+				_value = _tmpvalue;
+			}
+			else {
+				_todelete pushback _x;
+			};
+		}
+		else {
+			(_arr select 0) pushback _varname;
+			(_arr select 1) pushback _default;
+		};
+		missionnamespace setvariable [_varname,_value];
+	};
+} foreach _startvars;
+{
+	_find = (_arr select 0) find _x ;
+	if (_find > -1) then {
+		(_arr select 0) deleteat _find;
+		(_arr select 1) deleteat _find;
+	};
+} foreach _todelete;
+if !(_arr isequalto (profilenamespace getvariable ["Epoch_ToggleVars",[[],[]]])) then {
+	profilenamespace setvariable ["Epoch_ToggleVars",_arr];
+	saveprofilenamespace;
+};
+

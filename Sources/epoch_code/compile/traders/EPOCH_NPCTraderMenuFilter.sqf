@@ -87,7 +87,7 @@ if !(isNull EPOCH_lastNPCtradeTarget) then {
 				};
 			} forEach EPOCH_NpcTradePlayerItems;
 
-			_vehicles = player nearEntities [["LandVehicle","Ship","Air","Tank"], 30];
+			_vehicles = player nearEntities [["LandVehicle","Ship","Air","Tank"], ["CfgEpochClient", "MaxVehTradeDist", 30] call EPOCH_fnc_returnConfigEntryV2];
 			if !(_vehicles isequalto []) then {
 				_VehOfferArray = [];
 				_sizeOut = lbSize _PlayerItemsOutBox;

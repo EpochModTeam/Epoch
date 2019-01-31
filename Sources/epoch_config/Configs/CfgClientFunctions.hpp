@@ -53,6 +53,7 @@ class CfgClientFunctions
 			class AutoRun {};
 			class DefibrillatorUse {};
 			class CamUse {};
+			class DefuseBomb {};
 		};
 		class building
 		{
@@ -225,14 +226,17 @@ class CfgClientFunctions
 		{
 			file = "epoch_code\customs";
 			class custom_EH_FiredMan {};
+			class custom_EH_FiredNear {};
 			class custom_EH_GetInMan {};
 			class custom_EH_GetOutMan {};
+			class custom_EH_Hit {};
 			class custom_EH_InventoryClosed {};
 			class custom_EH_InventoryOpened {};
 			class custom_EH_KeyDown {};
 			class custom_EH_KeyUp {};
 			class custom_EH_Killed {};
 			class custom_EH_Put {};
+			class custom_EH_SeatSwitchedMan {};
 			class custom_EH_Take {};
 			class custom_KeyMap {};
 			class custom_OnEachFrame {};
@@ -311,6 +315,14 @@ class CfgClientFunctions
 			class crafting_LB_defaults {};
 			class crafting_LB_doubleClick {};
 			class crafting_colorScheme {};
+		};
+		class e_pad
+		{
+			file = "epoch_code\gui\scripts\e_pad";
+			class EPad_clearscreen {};
+			class EPad_dialog {};
+			class EPad_Reset {};
+			class SaveVarsToProfile {};
 		};
 		class group
 		{

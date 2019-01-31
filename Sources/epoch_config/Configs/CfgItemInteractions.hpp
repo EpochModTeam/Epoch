@@ -382,6 +382,10 @@ class CfgItemInteractions
     {
         buildClass = "WoodLargeWall_EPOCH";
     };
+    class KitJailWall : Item_Build_base
+    {
+        buildClass = "JailWall_EPOCH";
+    };
     class KitWoodFloor : Item_Build_base
     {
         buildClass = "WoodFloor_EPOCH";

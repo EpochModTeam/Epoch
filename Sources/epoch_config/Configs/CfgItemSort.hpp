@@ -321,7 +321,19 @@ class CfgItemSort
 			"B_ViperLightHarness_ghex_F",
 			"B_ViperLightHarness_blk_F",
 			"B_Carryall_ghex_F",
-			"B_FieldPack_ghex_F"
+			"B_FieldPack_ghex_F",
+
+			// A2 Backpacks
+			"Assault_Pack_Epoch",
+			"Patrol_Pack_Epoch",
+			"TK_RPG_Backpack_Epoch",
+			"CZ_VestPouch_Epoch",
+			"civil_assault_pack_Epoch",
+			"S_Gunbag_Epoch",
+			"ALICE_Pack_Epoch",
+			"US_Backpack_Epoch",
+			"CZ_Backpack_Epoch",
+			"L_Gunbag_Epoch"
 		};
 
 		HeadGear[] = {
@@ -521,6 +533,22 @@ class CfgItemSort
 			"arifle_Mk20_GL_plain_F",
 			"SMG_01_F",
 			"SMG_02_F",
+			"SMG_03_TR_black",
+			"SMG_03_TR_camo",
+			"SMG_03_TR_khaki",
+			"SMG_03_TR_hex",
+			"SMG_03C_TR_black",
+			"SMG_03C_TR_camo",
+			"SMG_03C_TR_khaki",
+			"SMG_03C_TR_hex",
+			"SMG_03_black",
+			"SMG_03_camo",
+			"SMG_03_khaki",
+			"SMG_03_hex",
+			"SMG_03C_black",
+			"SMG_03C_camo",
+			"SMG_03C_khaki",
+			"SMG_03C_hex",
 			"hgun_PDW2000_F",
 			"arifle_MXM_Black_F",
 			"arifle_MX_GL_Black_F",
@@ -541,6 +569,23 @@ class CfgItemSort
 			"M14_EPOCH",
 			"M14Grn_EPOCH",
 			"AKM_EPOCH",
+
+			// A2 Weapons
+			"a2_ak47s_gold_EPOCH",
+			"a2_AK107_EPOCH",
+			"a2_bizon_epoch",
+			"a2_dmr_epoch",
+			"a2_dmr_epoch_scoped",
+			"a2_fnfal_epoch",
+			"a2_G36_C_epoch",
+			"a2_Mg36_epoch",
+			"a2_leeenfield_epoch",
+			"a2_m110_epoch",
+			"a2_mk16_epoch",
+			"a2_mk17_epoch",
+			"a2_svd_epoch",
+			"a2_VSS_vintorez_epoch",
+			"a2_aks74un_EPOCH",
 
 			// Apex
 			"arifle_AK12_F",
@@ -669,12 +714,23 @@ class CfgItemSort
 			"30Rnd_45ACP_Mag_SMG_01_Tracer_Green",
 			"5Rnd_rollins_mag",
 			"30rnd_556_magazine",
-
+			"50Rnd_570x28_SMG_03",
 			// mid Mags
 			"20Rnd_762x51_Mag",
 			"10Rnd_762x54_Mag",
 			"20rnd_762_magazine",
 			"30Rnd_762x39_Mag",
+
+			// A2 Mags
+			"Bizon_64Rnd_9x18",
+			"20Rnd_762x51_DMR",
+			"20Rnd_762x51_FNFAL",
+			"30Rnd_556x45_G36",
+			"a2_akyellow_mag_EPOCH",
+			"10Rnd_303",
+			"100Rnd_556x45_BetaCMag",
+			"10Rnd_762x54_SVD",
+			"10Rnd_9x39_SP5_VSS",
 
 			// Apex
 			"30Rnd_762x39_Mag_F",
@@ -900,7 +956,7 @@ class CfgItemSort
 			"muzzle_snds_B",
 			"muzzle_snds_H_MG",
 			"muzzle_snds_acp",
-
+			"muzzle_snds_570",
 			// Muzzles Marksman
 			"muzzle_snds_338_black",
 			"muzzle_snds_338_green",
@@ -953,6 +1009,7 @@ class CfgItemSort
 		};
 
 		Medical[] = {
+			"ItemDefibrillator",
 			"FAK",
 			"Soap_Epoch",
 			"Towelette",
@@ -995,6 +1052,9 @@ class CfgItemSort
 			"ItemTrout",
 			"ItemSeaBass",
 			"ItemTuna",
+			"ItemTroutCooked",
+			"ItemSeaBassCooked",
+			"ItemTunaCooked",
 			"honey_epoch",
 			"TacticalBacon",
 			"ChickenCarcass_EPOCH",
@@ -1058,6 +1118,7 @@ class CfgItemSort
 			"ItemCorrugated",
 			"ItemCorrugatedLg",
 			"KitStudWall",
+			"KitJailWall",
 			"KitPlyThirdWall_EPOCH",
 			"KitWoodFloor",
 			"KitWoodHalfFloor",
@@ -1281,6 +1342,20 @@ class CfgItemSort
 			"O_Truck_03_transport_EPOCH2",
 			"O_Truck_03_transport_EPOCH3",
 			"O_Truck_03_transport_EPOCH4",
+			
+			// A2 Landvehicles
+			"A2_Golf_EPOCH",
+			"A2_HMMWV_EPOCH",
+			"A2_HMMWV_load_EPOCH",
+			"A2_Lada_EPOCH",
+			"A2_SUV_EPOCH",
+			"A2_SUV_load_EPOCH",
+			"A2_SUV_armed_EPOCH",
+			"A2_UAZ_EPOCH",
+			"A2_UAZ_Open_EPOCH",
+			"A2_Ural_EPOCH",
+			"A2_Vodnik_EPOCH",
+			"A2_Volha_EPOCH",
 
 			// Funktions Fahrzeuge |Repair,Heal,Tank|
 			"C_Offroad_01_repair_F",
@@ -1410,7 +1485,17 @@ class CfgItemSort
 			"O_Heli_Transport_04_box_EPOCH",
 			"O_Heli_Transport_04_covered_EPOCH",
 			"B_Heli_Light_01_EPOCH",
+
+			// A2 AirVehicles
 			"uh1h_Epoch",
+			"uh1h_armed_EPOCH",
+			"uh1h_armed_plus_EPOCH",
+			"a2_mi8_EPOCH",
+			"a2_ch47f_EPOCH",
+			"a2_ch47f_armed_EPOCH",
+			"a2_ch47f_armed_plus_EPOCH",
+			"C_Heli_Light_01_armed_EPOCH",
+			"C_Heli_Light_01_armed_plus_EPOCH",
 
 			"B_Heli_Light_01_armed_F",
 			"B_Heli_Transport_01_EPOCH",

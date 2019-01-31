@@ -134,7 +134,7 @@ if (_class != "") then {
 	_AnchorPos = [];
 	_helper = objnull;
 
-	if (typeof EPOCH_target in ["CinderWallHalf_Ghost_EPOCH","WoodLargeWall_Ghost_EPOCH"]) then {
+	if (typeof EPOCH_target in ["CinderWallHalf_Ghost_EPOCH","WoodLargeWall_Ghost_EPOCH","JailWall_Ghost_EPOCH"]) then {
 		_helper = "Sign_Arrow_Direction_Yellow_F" createVehicleLocal (getpos EPOCH_target);
 		_helper attachto [EPOCH_target, [0, -0.5, 1]];
 		_helper setdir 180;

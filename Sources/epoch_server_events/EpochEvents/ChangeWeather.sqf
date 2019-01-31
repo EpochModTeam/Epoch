@@ -1,113 +1,75 @@
-/*
-    Weather Control System
-	by Aaron Clark - EpochMod.com
 
-	Improvements and or bugfixes and other contributions are welcome via the github:
-	https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server_settings/EpochEvents/ChangeWeather.sqf
-*/
-//[[[cog import generate_private_arrays ]]]
-private ["_fog","_force","_lightning","_overcast","_rain","_randomDayRainTemp","_randomDayTemp","_randomDirection","_randomFogAfterRainBase","_randomFogAfterRainDecay","_randomFogAfterRainValue","_randomFogBase","_randomFogDecay","_randomFogValue","_randomLightningValue","_randomNightRainTemp","_randomNightTemp","_randomOvercastValue","_randomRainValue","_randomWindStr","_staticWeatherForecast","_temp","_weatherChangeTime","_windVal","_windValX","_windValY"];
-//[[[end]]]
+private ["_Changetime","_randomNightTemp","_randomNightRainTemp","_randomDayTemp","_randomDayRainTemp","_WeatherSettings","_selectedweather","_temp"];
 
-// Initalize variable for tracking time between runs.
-if (isNil "EPOCH_lastWeatherChange") then {
-	EPOCH_lastWeatherChange = diag_tickTime;
-};
+_Changetime = 120;
+_randomNightTemp = [-5,50,85];
+_randomNightRainTemp = [-10,50,70];
+_randomDayTemp = [20,75,100];
+_randomDayRainTemp = [15,75,85];
+_WeatherSettings = [
+	[// Sun
+		[0, 0.2, 5],	// Fog
+		0.2,			// Overcast
+		0.2,			// Waves
+		0.25,			// Wind
+		0.1,			// Gust
+		0,				// Rain
+		0,				// Lightnings
+		0				// Rainbow
+	],
+	[// Mid
+		[0.05, 0.1, 5],
+		0.5,
+		0.4,
+		0.25,
+		0.3,
+		0.1,
+		0.1,
+		1
+	],
+	[// Rain
+		[0.1, 0.2, 5],
+		0.7,
+		0.5,
+		0.25,
+		0.5,
+		0.3,
+		0.5,
+		0.5
+	],
+	[// Rain+
+		[0.15, 0.2, 5],
+		1,
+		1,
+		0.25,
+		0.5,
+		1,
+		1,
+		0.5
+	]
+];
 
-// get the time between weather change events to use as tranistion time.
-_weatherChangeTime = diag_tickTime - EPOCH_lastWeatherChange;
+_selectedweather = _WeatherSettings selectRandomWeighted EPOCH_WeatherChances;
+_selectedweather params ["_fog","_overcast","_waves","_windstr","_gusts","_rain","_lightnings","_rainbow"];
 
-// increment timer to current time.
-EPOCH_lastWeatherChange = diag_tickTime;
-
-_force = false;
-
-// use config static weather if set.
-_staticWeatherForecast = [];
-if !(EPOCH_WeatherStaticForecast isEqualTo []) then {
-    _staticWeatherForecast = EPOCH_WeatherStaticForecast;
-} else {
-	// Make database call to get "Weather:InstanceID" that can be set in the database to allow for weather controls outside of the game.
-	(["Weather", (call EPOCH_fn_InstanceID)] call EPOCH_fnc_server_hiveGETRANGE) params [["_status", 0 ], ["_data", [] ]];
-	if (_status == 1 && _data isEqualType [] && !(_data isEqualTo[])) then {
-        _staticWeatherForecast = _data;
-	};
-};
-_staticWeatherForecast params ["_tempOVRD","_rainOVRD","_fogOVRD","_overcastOVRD","_windOVRD","_lightningOVRD"];
-
-/*
-    New weather configs
-    BAD WEATHER:
-*/
-_randomNightTemp = [0,10,32];
-_randomNightRainTemp = [-10,5,25];
-_randomDayTemp = [50,95,112];
-_randomDayRainTemp = [50,75,99];
-
-_randomFogValue = [0,0.1,0.2] vectorMultiply (1-rain);
-_randomFogDecay = [0,0.1,0.2] vectorMultiply (1-rain);
-_randomFogBase = [0,10,20] vectorMultiply (1-rain);
-
-_randomFogAfterRainValue = [0,0.15,0.25];
-_randomFogAfterRainDecay = [0,0.20,0];
-_randomFogAfterRainBase = [0,12,25];
-
-_randomRainValue = [0,1,0];
-_randomOvercastValue = [0,1,0];
-_randomLightningValue = [0,1,0];
-
-_randomDirection = random 360;
-_randomWindStr = random 20;
-// config end
-
-_rain = if (isNil "_rainOVRD") then { random _randomRainValue } else { _rainOVRD };
-_windVal = [cos _randomDirection,sin _randomDirection,0] vectorMultiply (_randomWindStr * _rain);
-_windVal params ["_windValX","_windValY"];
-
-// wind.
+// cooler at night / rain
 if (_rain > 0.1) then {
     _randomNightTemp = _randomNightRainTemp;
     _randomDayTemp = _randomDayRainTemp;
-} else {
-    // use increase fog settings if just it rained
-    if (humidity > 0.5) then {
-        _randomFogValue = _randomFogAfterRainValue vectorMultiply humidity;
-        _randomFogDecay = _randomFogAfterRainDecay vectorMultiply humidity;
-        _randomFogBase = _randomFogAfterRainBase vectorMultiply humidity;
-    };
 };
-
-if !(isNil "_windOVRD") then {
-    _windValX = _windOVRD select 0;
-    _windValY = _windOVRD select 1;
-};
-
-// cooler at night
-_temp = if (sunOrMoon < 1) then { random _randomNightTemp } else { random _randomDayTemp };
-
-// force reduced fog if temps are out of range
-if (_temp < 32 || _temp > 75) then {
-    _randomFogValue = _randomFogValue vectorMultiply 0.1;
-    _randomFogDecay = _randomFogValue vectorMultiply 0.1;
-    _randomFogBase = _randomFogValue vectorMultiply 0.1;
-};
-
-_fog = if (isNil "_fogOVRD") then { [random _randomFogValue, random _randomFogDecay, random _randomFogBase] } else { _fogOVRD };
-_overcast = if (isNil "_overcastOVRD") then { random _randomOvercastValue } else { _overcastOVRD };
-_lightning = if (isNil "_lightningOVRD") then { random _randomLightningValue } else { _lightningOVRD };
-
-_weatherChangeTime setFog _fog;
-_weatherChangeTime setOvercast _overcast;
-_weatherChangeTime setRain _rain;
-_weatherChangeTime setLightnings _lightning;
-setWind[_windValX, _windValY, true];
-
+_temp = if (sunOrMoon < 1) then {random _randomNightTemp} else {random _randomDayTemp};
+_temp = round _temp;
 // push temp to all players and JIP.
-missionNamespace setVariable ["EPOCH_CURRENT_WEATHER", if (isNil "_tempOVRD") then { round(_temp) } else { _tempOVRD }, true];
+missionNamespace setVariable ["EPOCH_CURRENT_WEATHER",_temp, true];
 
-// will force weather change if set to true (will cause lag).
-if (_force) then {
-	forceWeatherChange;
-};
+_Changetime setFog _fog;
+_Changetime setOvercast _overcast;
+_Changetime setWaves _waves;
+_Changetime setWindStr _windstr;
+_Changetime setGusts _gusts;
+_Changetime setRain _rain;
+_Changetime setLightnings _lightnings;
+_Changetime setRainbow _rainbow;
 
-diag_log format["Epoch: Weather Change - fog: %1 rain: %2 overcast: %3 wind: %4 wind-xy: %5 forced: %6", _fog, _overcast, _rain, [_randomDirection,_randomWindStr], [_windValX,_windValY], _force];
+diag_log format["Epoch: Weather Change - temp: %1 | fog: %2 | overcast: %3 | waves: %4 | windstr: %5 | gusts: %6 | rain: %7 | Lightnings: %8 | rainbow: %9",_temp, _fog, _overcast, _waves, _windstr, _gusts, _rain, _lightnings, _rainbow];
+

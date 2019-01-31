@@ -22,9 +22,11 @@ _canAutoRun = true;
 if !(alive player) exitwith {
 	false
 };
+/*
 if !(istouchingground player) exitwith {
 	false
 };
+*/
 if !((vehicle player) == player) exitwith {
 	false
 };

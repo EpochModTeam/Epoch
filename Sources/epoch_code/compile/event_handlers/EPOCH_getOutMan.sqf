@@ -36,4 +36,11 @@ if (_unit == player) then {
 			};
 		} forEach lineintersectsobjs [_start, _end, player, _vehicle, true, 2];
 	};
+	if (missionnamespace getvariable ["EPOCH_AutoEarplug",false]) then {
+		if (EPOCH_Earplugsin) then {
+			systemchat 'Earplugs have been auto-removed...';
+			EPOCH_Earplugsin = false;
+			1 fadeSound 1;
+		};
+	};
 };

@@ -21,23 +21,6 @@
 	Returns:
 	STRING
 */
-//[[[cog import generate_private_arrays ]]]
-private ["_displayName","_return"];
-//[[[end]]]
-params ["_item"];
-_return = "";
-if ([_item, "CfgVehicles"] call EPOCH_fnc_isAny) then {
-  _return = getText(configfile >> "CfgVehicles" >> _item >> "DisplayName");
-} else {
-	if ([_item, "CfgWeapons"] call EPOCH_fnc_isAny) then {
-	  _return = getText(configfile >> "CfgWeapons" >> _item >> "DisplayName");
-	} else {
-		if ([_item, "CfgMagazines"] call EPOCH_fnc_isAny) then {
-		  _return = getText(configfile >> "CfgMagazines" >> _item >> "DisplayName");
-		};
-	};
-};
-if (_return isequalto "") then {
-    _return = _item;
-};
-_return;
+// Changed function name for usage Server and Client side
+
+_this call EPOCH_fnc_itemDisplayName;

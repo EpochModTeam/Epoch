@@ -18,7 +18,8 @@ private ["_line","_magname","_vehName","_vehtype"];
 //[[[end]]]
 params ['_vehicle','_ammotype','_turret','_reloagmags','_ammocount','_costs'];
 
-if (!local _vehicle) exitWith {
+//if (!local _vehicle) exitWith {
+if !(_vehicle turretLocal _turret) exitwith {
 	_line = 'Rearm denied - Go in as driver first!';
 	[_line,5] call Epoch_message;
 };

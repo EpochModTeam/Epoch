@@ -13,6 +13,9 @@
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_code/gui/group/EPOCH_iGroup_acceptInvite.sqf
 */
 if (Epoch_invited_GroupUID != "") then {
+	if !(Epoch_my_GroupUID == "") exitwith {
+		["Leave your current Group first...",5] call Epoch_Message;
+	};
 	[Epoch_invited_GroupUID,getPlayerUID player,true,false,player,Epoch_personalToken] remoteExec ["EPOCH_server_updatePlayerGroup",2];
 };
 (findDisplay -1500) closeDisplay 0;

@@ -29,16 +29,15 @@ class Australia : Default
 		{"VegetationFir",1},
 		{"ViewPoint",1}
 	};
-	traderBlds[] = { "Land_A_FuelStation_Build", "Land_A_GeneralStore_01", "Land_A_GeneralStore_01a", "Land_A_Office01", "Land_Ind_Garage01", "Land_Ind_Workshop01_04", "Land_Ind_Workshop01_L", "Land_Shed_Ind02", "Land_Tovarna2", "Land_sara_hasic_zbroj" };
 	telePos[] = {
-		// N [-0.286865,8.17383,-10.3098]
-		// S [-0.415527,-7.05298,-10.3098]
-		// E [13.5127,0.410156,-10.3098]
-		// W [-14.4316,0.112793,-10.3098]
-			{ "Transport_C_EPOCH", { -0.415527, -7.05298, -10.3098 }, "", { 24398.3, 13971.6, 0 } }, // Central
-			{ "Transport_E_EPOCH", { 13.5127, 0.410156, -10.3098 }, "", { 34751.5, 13431.9, 0 } }, // East
-			{ "Transport_N_EPOCH", { -0.286865, 8.17383, -10.3098 }, "", { 19032.7, 33974.6, 0 } }, // North
-			{ "Transport_W_EPOCH", { -14.4316, 0.112793, -10.3098 }, "", { 4056.35, 19435.9, 0 } }  // West
+		// N [-0.286865,8.17383,-10.3098, 0]
+		// S [-0.415527,-7.05298,-10.3098, 180]
+		// E [13.5127,0.410156,-10.3098, 90]
+		// W [-14.4316,0.112793,-10.3098, -90]
+			{ "TP_Booth_c_EPOCH", { -0.415527, -7.05298, -10.3098, 180}, "", { 24398.3, 13971.6, 0 } }, // Central
+			{ "TP_Booth_e_EPOCH", { 13.5127, 0.410156, -10.3098, 90}, "", { 34751.5, 13431.9, 0 } }, // East
+			{ "TP_Booth_n_EPOCH", { -0.286865, 8.17383, -10.3098, 0}, "", { 19032.7, 33974.6, 0 } }, // North
+			{ "TP_Booth_w_EPOCH", { -14.4316, 0.112793, -10.3098, -90}, "", { 4056.35, 19435.9, 0 } }  // West
 	};
 	propsPos[] = {
     // North camp

@@ -20,7 +20,13 @@ private ["_cfg","_color","_configs","_ctrl","_ctrlPos","_getIDC","_group","_grou
 params [["_display",displayNull,[displayNull] ] ];
 
 _offset = if (isServer) then {40 * GUI_GRID_W + GUI_GRID_X;} else {
-	if (getNumber (getMissionConfig "enableDebugConsole") > 0) then {
+	
+        private _dbgC = getMissionConfigValue ["enableDebugConsole",0]; 
+	private _dbgCOpen = if (_dbgC isEqualType []) then { 
+		getPlayerUID player in _dbgC 
+	} else { 
+		(serverCommandAvailable "#lock" && _dbgC == 1) || _dbgC == 2 };
+        if (_dbgCOpen) then {
 		40 * GUI_GRID_W + GUI_GRID_X;
 	} else {
 		17 * GUI_GRID_W + GUI_GRID_X;

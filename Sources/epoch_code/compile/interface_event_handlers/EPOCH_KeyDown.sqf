@@ -99,6 +99,24 @@ if (_dikCode == EPOCH_keysDebugMon) then {
 	_handled = true;
 };
 
+// E-Pad
+if (_dikCode == EPOCH_keysEPad) then {
+	if (isnull (finddisplay 9898)) then {
+		createdialog 'epoch_tablet_gui';
+	};
+};
+
+if (_dikCode == EPOCH_Earplugs) then {
+	if (EPOCH_Earplugsin) then {
+		EPOCH_Earplugsin = false;
+		1 fadeSound 1;
+	}
+	else {
+		EPOCH_Earplugsin = true;
+		1 fadeSound 0.15;
+	};
+};
+
 //Action Menu
 if (_dikCode == EPOCH_keysAction) then {
 	//_handled = true;
@@ -172,10 +190,10 @@ if (vehicle player == player) then {
 	};
 
 	if (_dikCode in(actionKeys "moveFastForward") || _dikCode in(actionKeys "moveForward")) then {
-		if ((diag_tickTime - EPOCH_lastAGTime) > 1) then {
+		if ((diag_tickTime - EPOCH_lastAGTime) > 0.5) then {
 			EPOCH_lastAGTime = diag_tickTime;
 			if !(player nearObjects["Const_All_Walls_F", 6] isEqualTo[]) then {
-				_currentPos = player modelToWorld[0, 1, 1];
+				_currentPos = player modelToWorld[0, 1.75, 1];
 				if !(surfaceIsWater _currentPos) then {
 					_currentPos = ATLtoASL _currentPos;
 				};
