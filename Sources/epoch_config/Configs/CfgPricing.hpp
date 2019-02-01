@@ -2766,11 +2766,6 @@ class CfgPricing
         price = 5;
         tax = 0.9;
     };
-    class a2_akyellow_mag_EPOCH
-    {
-        price = 5;
-        tax = 0.9;
-    };
     class 10Rnd_303
     {
         price = 5;

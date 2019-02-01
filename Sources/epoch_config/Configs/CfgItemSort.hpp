@@ -726,7 +726,6 @@ class CfgItemSort
 			"20Rnd_762x51_DMR",
 			"20Rnd_762x51_FNFAL",
 			"30Rnd_556x45_G36",
-			"a2_akyellow_mag_EPOCH",
 			"10Rnd_303",
 			"100Rnd_556x45_BetaCMag",
 			"10Rnd_762x54_SVD",
