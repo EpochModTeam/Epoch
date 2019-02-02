@@ -29,4 +29,9 @@ if (_unit == player) then {
 			1 fadeSound 0.15;
 		};
 	};
+	if (_vehicle getvariable ["Vehicle_Slot","-1"] isequalto "-1") then {
+		if (!(_vehicle iskindof "Paraglide") && !(_vehicle iskindof "Ejection_Seat_Base_F")) then {
+			['WARNING! This is a temp Vehicle and will despawn after Restart!',5] call Epoch_Message;
+		};	
+	};
 };
