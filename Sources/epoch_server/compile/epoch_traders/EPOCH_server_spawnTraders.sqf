@@ -30,7 +30,7 @@ if (_TraderMinDistance isEqualto 0) then {
 };
 _traderblockblds = getArray(_config >> "traderblockblds");
 if (_traderblockblds isEqualto []) then {
-	_traderblockblds = ["pier","bridge","fireescape","medevac_house","pillboxbunker"];
+	_traderblockblds = ["pier","bridge","fireescape","medevac_house","pillboxbunker","containerine"];
 };
 _traderHomes = getArray(_config >> "traderHomes");
 _TraderDeco = [_serverSettingsConfig, "TraderDeco", true] call EPOCH_fnc_returnConfigEntry;
