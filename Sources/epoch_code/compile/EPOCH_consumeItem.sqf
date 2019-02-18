@@ -114,7 +114,6 @@ switch _interactOption do {
 	case 2: _unifiedInteract; //Drink 2
 	case 3: { // Build 3
 		closeDialog 0;
-		_buildingCountLimit = ["CfgEpochClient", "buildingCountLimit", 200] call EPOCH_fnc_returnConfigEntryV2;
 		_partCheck = _item in (magazines player);
 
 		_buildClass = getText(_cfgItemInteractions >> "buildClass");
