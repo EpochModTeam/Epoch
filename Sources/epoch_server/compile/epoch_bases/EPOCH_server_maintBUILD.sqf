@@ -26,7 +26,7 @@
 	NOTHING
 */
 //[[[cog import generate_private_arrays ]]]
-private ["_buildingJammerRange","_cIndex","_cfgEpochClient","_counter","_current_crypto","_objSlot","_playerCryptoLimit","_playerUID","_storSlot","_vars"];
+private ["_cIndex","_counter","_current_crypto","_objSlot","_playerCryptoLimit","_playerUID","_storSlot","_vars"];
 //[[[end]]]
 params [["_object",objNull],"_player","_maintCount",["_token","",[""]] ];
 
@@ -34,14 +34,10 @@ if !([_player, _token] call EPOCH_server_getPToken) exitWith{};
 if (isNull _object) exitWith{};
 if (_player distance _object > 20) exitWith{};
 
-_cfgEpochClient = 'CfgEpochClient' call EPOCH_returnConfig;
-_buildingJammerRange = getNumber(_cfgEpochClient >> "buildingJammerRange");
-if (_buildingJammerRange == 0) then { _buildingJammerRange = 75; };
-
 _playerUID = getPlayerUID _player;
 _counter = 0;
 
-if (typeOf _object == "PlotPole_EPOCH") then {
+if (typeOf _object in (call EPOCH_JammerClasses)) then {
 
 	_objSlot = _object getVariable["BUILD_SLOT", -1];
 	if (_objSlot != -1) then {
@@ -76,7 +72,7 @@ if (typeOf _object == "PlotPole_EPOCH") then {
 						};
 					};
 					if (_counter > _maintCount) exitWith{};
-				} forEach nearestObjects[_object, ["Constructions_static_F","Constructions_foundation_F","Buildable_Storage","Constructions_lockedstatic_F"], _buildingJammerRange];
+				} forEach nearestObjects[_object, ["Constructions_static_F","Constructions_foundation_F","Buildable_Storage","Constructions_lockedstatic_F"], call EPOCH_MaxJammerRange];
 
 				// effect crypto
 				_playerCryptoLimit = EPOCH_customVarLimits select _cIndex;

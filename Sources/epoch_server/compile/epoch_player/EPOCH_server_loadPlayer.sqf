@@ -143,7 +143,7 @@ if (!isNull _player) then {
 				if (surfaceiswater _newLocation) then {
 					_CheckLocation = ATLToASL _newLocation;
 				};
-				_jammers = nearestObjects[_CheckLocation, ["PlotPole_EPOCH"], 6];
+				_jammers = nearestObjects[_CheckLocation, call EPOCH_JammerClasses, 6];
 				if !(_jammers isEqualTo[]) then {
 					// get nearby object
 					_jammer = _jammers param [0,objNull];

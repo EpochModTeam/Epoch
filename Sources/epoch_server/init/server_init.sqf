@@ -289,14 +289,13 @@ if ([_serverSettingsConfig, "disableAutoRefuel", false] call EPOCH_fnc_returnCon
 else {
 	// Remove Auto-Refuel in PlotPole-Range
 	if ([_serverSettingsConfig, "disableFuelNearPlots", true] call EPOCH_fnc_returnConfigEntry) then {
-		_buildingJammerRange = ["CfgEpochClient", "buildingJammerRange", 75] call EPOCH_fnc_returnConfigEntryV2;
 		_staticFuelSources = [];
 		{
 			{
 				_staticFuelSources pushback _x;
-			} foreach (((_x nearObjects ['Building',_buildingJammerRange]) select {getFuelCargo _x > 0}));
+			} foreach (((_x nearObjects ['Building',call EPOCH_MaxJammerRange]) select {getFuelCargo _x > 0}));
 		
-		} foreach (missionnamespace getvariable ["Epoch_Plotpoles",allmissionobjects 'PlotPole_EPOCH']);
+		} foreach (missionnamespace getvariable ["Epoch_Plotpoles",_allplots = [];{_allplots pushback (allmissionobjects _x)} foreach (call EPOCH_JammerClasses);_allplots]);
 		missionNamespace setVariable ["EPOCH_staticFuelSources", _staticFuelSources, true];
 	};
 };
@@ -309,7 +308,7 @@ missionNamespace setVariable ["EPOCH_taxRate", [_serverSettingsConfig, "taxRate"
 
 // pick random radioactive locations
 _radioactiveLocations = getArray(_epochConfig >> worldName >> "radioactiveLocations");
-_blacklist = getArray(_epochConfig >> worldName >> "radioactiveLocBLObjects");
+_blacklist = (call EPOCH_JammerClasses) + (getArray(_epochConfig >> worldName >> "radioactiveLocBLObjects"));
 _distance = getNumber(_epochConfig >> worldName >> "radioactiveLocBLDistance");
 _radioactiveLocationsTmp = [];
 if !(_radioactiveLocations isEqualTo []) then {

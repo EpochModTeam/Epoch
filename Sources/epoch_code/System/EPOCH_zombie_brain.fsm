@@ -109,7 +109,6 @@ class FSM
                          "_checkFreq = getNumber (getMissionConfig ""CfgEpochRyanZombie"" >> ""reflexSpeed"");" \n
                          "_welcomeWait = random 4;" \n
                          "_config = 'CfgEpochClient' call EPOCH_returnConfig;" \n
-                         "_jammerRange = getNumber(_config >> ""buildingJammerRange"");" \n
                          "_zSmell = getArray (getMissionConfig ""CfgEpochRyanZombie"" >> ""smell"");" \n
                          "_zSight = getArray (getMissionConfig ""CfgEpochRyanZombie"" >> ""sight"");" \n
                          "_zHear = getArray (getMissionConfig ""CfgEpochRyanZombie"" >> ""hearing"");" \n
@@ -251,7 +250,6 @@ class FSM
                          "axeDebug = _doDebug ;" \n
                          "if(_doDebug)then{" \n
                          "axeDebug = true;" \n
-                         "_jammerRange = 75;" \n
                          "axeZed = _zombie;" \n
                          "_debugDo = ""START"";" \n
                          "_mkrName = """";" \n

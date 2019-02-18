@@ -16,7 +16,7 @@
 private [	"_TraderGodMode","_StaticTraderItemPurge","_DynamicTraderRespawnCount","_TraderItemsDeleteRestart","_TraderInit","_TraderItemsClean","_newstock","_agent","_aiTables",
 			"_arr","_config","_currentStock","_existingStock","_indexStock","_markers","_objHiveKey","_pos","_randomAIUniform","_response","_response2","_schedule",
 			"_serverSettingsConfig","_staticTrader","_staticTradersArrCount","_staticTradersArray","_storedVehicleLimit","_traderSlotIndex","_work","_arrchanged","_deleteat","_maxrnd",
-			"_WinterDeco","_HelloweenDeco","_buildingJammerRange","_TraderDeco"
+			"_WinterDeco","_HelloweenDeco","_TraderDeco"
 		];
 //[[[end]]]
 params [["_maxTraderLimit",0]];
@@ -35,7 +35,6 @@ _DynamicTraderRespawnCount = [_serverSettingsConfig, "DynamicTraderRespawnCount"
 _TraderItemCountPerItem = [_serverSettingsConfig, "TraderItemCountPerItem", [100,100]] call EPOCH_fnc_returnConfigEntry;
 _TraderItemsDeleteRestart = [_serverSettingsConfig, "TraderItemsDeleteRestart", []] call EPOCH_fnc_returnConfigEntry;
 _TraderDeco = [_serverSettingsConfig, "TraderDeco", true] call EPOCH_fnc_returnConfigEntry;
-_buildingJammerRange = ["CfgEpochClient", "buildingJammerRange", 75] call EPOCH_fnc_returnConfigEntryV2;
 
 _WinterDeco = (Epoch_ServerRealtime select 1) == 12 && (Epoch_ServerRealtime select 2) > 20 && _TraderDeco;
 _HelloweenDeco = (((Epoch_ServerRealtime select 1) == 10 && (Epoch_ServerRealtime select 2) >= 24) || ((Epoch_ServerRealtime select 1) == 11 && (Epoch_ServerRealtime select 2) <= 3)) && _TraderDeco;
@@ -200,7 +199,7 @@ for "_i" from 0 to (_maxTraderLimit-1) do {
 				if (daytime > (_schedule select 0) && daytime < (_schedule select 1)) then {
 					_pos = (_work select 0);
 				};
-				if (!(count (_arr select 0) >= _DynamicTraderRespawnCount) && (nearestobjects [_pos,["Plotpole_EPOCH"],_buildingJammerRange]) isequalto []) then {
+				if (!(count (_arr select 0) >= _DynamicTraderRespawnCount) && (nearestobjects [_pos,call EPOCH_JammerClasses,call EPOCH_MaxJammerRange]) isequalto []) then {
 					EPOCH_TraderSlots deleteAt _traderSlotIndex;
 					_agent = createAgent [_class, _pos, [], 0, "NONE"];
 					if !(EPOCH_forceStaticTraders) then {

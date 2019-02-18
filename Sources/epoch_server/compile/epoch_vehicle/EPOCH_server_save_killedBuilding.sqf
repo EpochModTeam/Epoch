@@ -34,7 +34,7 @@ if (!isNull _building) then {
 			EPOCH_BaseCams = EPOCH_BaseCams - [_building];
 			publicvariable "EPOCH_BaseCams";
 		};
-		if (_building iskindof "PlotPole_EPOCH") then {
+		if (_building in (call EPOCH_JammerClasses)) then {
 			EPOCH_Plotpoles = EPOCH_Plotpoles - [_building];
 			publicvariable "EPOCH_Plotpoles";
 		};

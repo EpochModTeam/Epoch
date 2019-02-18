@@ -91,8 +91,7 @@ if (diag_tickTime - EPOCH_lastTrash > 2)  then {
 	};
 	if (!isNull _bankTerminal) then {
 		_AtmBlockedAtPlot = ["CfgEpochClient", "AtmBlockedAtPlot", false] call EPOCH_fnc_returnConfigEntryV2;
-		_buildingJammerRange = getNumber(_config >> "buildingJammerRange");
-		_jammer = nearestObjects[player, ["PlotPole_EPOCH"], _buildingJammerRange];
+		_jammer = (nearestObjects[player, call EPOCH_JammerClasses, call EPOCH_MaxJammerRange]) select {player distance _x < (getnumber (getmissionconfig ("CfgEpochClient" >> "CfgJammers" >> (typeof _x) >> "buildingJammerRange")))};
 		if (!(_jammer isequalto []) && _AtmBlockedAtPlot) exitwith {
 			["Bank Terminal blocked by Jammer Signal",5] call Epoch_Message;		
 		};

@@ -69,7 +69,7 @@ if (isText _staticClassConfig) then {
 	} else {
 
 		// TODO: optimize by using config var
-		if (_vehicle isKindOf "ThingX" || _vehicle isKindOf "Const_Ghost_EPOCH" || _vehicle isKindOf "PlotPole_EPOCH") then {
+		if (_vehicle isKindOf "ThingX" || _vehicle isKindOf "Const_Ghost_EPOCH" || ({_vehicle isKindOf _x} count (call EPOCH_JammerClasses) > -1)) then {
 
 			_objSlot = _vehicle getVariable["BUILD_SLOT", -1];
 			if (_objSlot == -1) then{
@@ -100,7 +100,7 @@ if (isText _staticClassConfig) then {
 				else {
 					_newVehicle setVariable["BUILD_OWNER", _playerUID, true];
 				};
-				if (_newVehicle isKindOf "PlotPole_EPOCH") then {
+				if ({_newVehicle isKindOf _x} count (call EPOCH_JammerClasses) > -1) then {
 					EPOCH_Plotpoles pushBackUnique _newVehicle;
 					publicvariable "EPOCH_Plotpoles";
 				};				

@@ -13,7 +13,7 @@
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_code/compile/EPOCH_consumeItem.sqf
 */
 //[[[cog import generate_private_arrays ]]]
-private ["_buildClass","_buildingCountLimit","_buildingJammerRange","_canCapacity","_cfgBaseBuilding","_cfgItemInteractions","_color","_currentDMG","_currentFuel","_currentHIT","_fuelCapacity","_ghostClass","_highestDMG","_inputCount","_interactAttributes","_interactOption","_interactReturnOnUse","_isOk","_isStorage","_magazineSize","_magazineSizeMax","_magazinesAmmoFull","_msg","_newDMG","_newFuel","_object","_otherObjects","_output","_paintCanColor","_paintCanIndex","_partCheck","_pos","_removeItem","_transportFuel","_unifiedInteract","_vehicle","_vehicles"];
+private ["_buildClass","_buildingCountLimit","_canCapacity","_cfgBaseBuilding","_cfgItemInteractions","_color","_currentDMG","_currentFuel","_currentHIT","_fuelCapacity","_ghostClass","_highestDMG","_inputCount","_interactAttributes","_interactOption","_interactReturnOnUse","_isOk","_isStorage","_magazineSize","_magazineSizeMax","_magazinesAmmoFull","_msg","_newDMG","_newFuel","_object","_otherObjects","_output","_paintCanColor","_paintCanIndex","_partCheck","_pos","_removeItem","_transportFuel","_unifiedInteract","_vehicle","_vehicles"];
 //[[[end]]]
 
 EPOCH_InteractedItem params ["_text","_item","_pic"];
@@ -114,7 +114,6 @@ switch _interactOption do {
 	case 2: _unifiedInteract; //Drink 2
 	case 3: { // Build 3
 		closeDialog 0;
-		_buildingJammerRange = ["CfgEpochClient", "buildingJammerRange", 75] call EPOCH_fnc_returnConfigEntryV2;
 		_buildingCountLimit = ["CfgEpochClient", "buildingCountLimit", 200] call EPOCH_fnc_returnConfigEntryV2;
 		_partCheck = _item in (magazines player);
 
@@ -141,7 +140,7 @@ switch _interactOption do {
 
 								if (_buildClass isKindOf "ThingX") then {
 									// prevent spawning if another simulated object exists still
-									_otherObjects = nearestObjects[player, [_buildClass], _buildingJammerRange];
+									_otherObjects = nearestObjects[player, [_buildClass], 100];
 									if (_otherObjects isEqualTo []) then {
 										_object=createVehicle[_buildClass,_pos,[],0,"CAN_COLLIDE"];
 										_object setDir ((getDir player) - 180);
