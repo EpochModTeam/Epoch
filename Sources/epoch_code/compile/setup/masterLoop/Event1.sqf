@@ -31,7 +31,7 @@ if (!isNull _cursorTarget && {!(EPOCH_target isEqualTo _cursorTarget)}) then {
 		if (_cursorTarget isKindOf "AllVehicles") then {
 			_currentTarget = _cursorTarget;
 		} else {
-			if (_cursorTarget isKindOf "Constructions_modular_F" || _cursorTarget isKindOf "Constructions_static_F") then {
+			if (_cursorTarget isKindOf "Constructions_modular_F" || {_cursorTarget isKindOf "Constructions_static_F"} || {(typeof _cursorTarget) in (call Epoch_JammerClasses)}) then {
 				_currentTargetMode = 1;
 				_currentTarget = _cursorTarget;
 			};

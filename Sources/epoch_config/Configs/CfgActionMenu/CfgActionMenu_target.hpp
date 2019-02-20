@@ -101,14 +101,14 @@ class player_trade_accept
 //User action replacement
 class maintain_jammer
 {
-	condition = "dyna_cursorTargetType isEqualTo 'PlotPole_EPOCH' && (damage dyna_cursorTarget < 1)";
+	condition = "dyna_cursorTargetType in (call EPOCH_JammerClasses) && (damage dyna_cursorTarget < 1)";
 	action = "dyna_cursorTarget call EPOCH_maintainIT;";
 	icon = "x\addons\a3_epoch_code\Data\UI\buttons\build_maintain.paa";
 	tooltip = "Maintain";
 };
 class select_jammer
 {
-	condition = "dyna_cursorTargetType isEqualTo 'PlotPole_EPOCH' && (damage dyna_cursorTarget < 1)";
+	condition = "dyna_cursorTargetType in (call EPOCH_JammerClasses) && (damage dyna_cursorTarget < 1)";
 	action = "[dyna_cursorTarget,player,Epoch_personalToken] remoteExec [""EPOCH_server_makeSP"",2];";
 	icon = "x\addons\a3_epoch_code\Data\UI\buttons\spawnpoint.paa";
 	tooltip = "Make Spawnpoint";

@@ -66,7 +66,7 @@ class CfgEpoch
 		radioactiveLocationsCount = 3;
 		
 		// BlackList radioactive locations spawn by object and distance
-		radioactiveLocBLObjects[] = {"PlotPole_EPOCH"};
+		radioactiveLocBLObjects[] = {};		// PlotPoles are already blacklisted by script
 		radioactiveLocBLDistance = 500;
 		
 		// Custom Locations for Radiation

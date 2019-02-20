@@ -13,7 +13,7 @@
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_code/compile/EPOCH_unitSpawn.sqf
 */
 //[[[cog import generate_private_arrays ]]]
-private ["_aiskill","_arrSkills","_arrUnits","_arrVals","_bomb","_config","_currentLimit","_disableAI","_driver","_grp","_index","_jammerRange","_jammers","_loop","_minAISkill","_missionConfig","_nonJammer","_nonTrader","_nonTraderAIRange","_playerSpawnArray","_playerSpawnArrayKeyFinal","_pos","_restricted","_sapperHndl","_sapperNum","_spawnLimit","_targetPos","_unit","_units"];
+private ["_aiskill","_arrSkills","_arrUnits","_arrVals","_bomb","_config","_currentLimit","_disableAI","_driver","_grp","_index","_jammers","_loop","_minAISkill","_missionConfig","_nonJammer","_nonTrader","_nonTraderAIRange","_playerSpawnArray","_playerSpawnArrayKeyFinal","_pos","_restricted","_sapperHndl","_sapperNum","_spawnLimit","_targetPos","_unit","_units"];
 //[[[end]]]
 params ["_unitClass",["_trgt",player],["_doVariable",false],["_unitCount",1],["_extraData",[]] ];
 
@@ -41,9 +41,7 @@ _unit = objNull;
 _targetPos = getPosATL _trgt;
 _targetPos set [2,0];
 
-_config = 'CfgEpochClient' call EPOCH_returnConfig;
-_jammerRange = getNumber(_config >> "buildingJammerRange");
-_jammers = nearestObjects[_targetPos, ["PlotPole_EPOCH"], _jammerRange];
+_jammers = (nearestObjects[_targetPos, call EPOCH_JammerClasses, call EPOCH_MaxJammerRange]) select {_targetPos distance _x < (getnumber (getmissionconfig "CfgEpochClient" >> "CfgJammers" >> (typeof _x) >> "buildingJammerRange"))};
 if(!(_jammers isEqualTo []) && (_unitClass in _nonJammer))exitWith{};
 
 _restricted = nearestObjects [_targetPos, ["ProtectionZone_Invisible_F"], _nonTraderAIRange];

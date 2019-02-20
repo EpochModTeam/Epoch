@@ -15,7 +15,7 @@
 //[[[cog import generate_private_arrays ]]]
 private [	"_serverSettingsConfig","_acceptableBlds","_agent","_aiClass","_aiTables","_buildingHome","_buildingWork","_buildings","_checkBuilding","_config","_endTime","_home",
 			"_homes","_markers","_objHiveKey","_pos","_position","_randomAIUniform","_return","_schedule","_slot","_spawnCount","_startTime","_traderHomes","_usedBuildings","_work",
-			"_WinterDeco","_HelloweenDeco","_buildingJammerRange","_TraderDeco","_TraderMinDistance","_traderblockblds","_Traderblocks"
+			"_WinterDeco","_HelloweenDeco","_TraderDeco","_TraderMinDistance","_traderblockblds","_Traderblocks"
 ];
 //[[[end]]]
 _serverSettingsConfig = configFile >> "CfgEpochServer";
@@ -34,7 +34,6 @@ if (_traderblockblds isEqualto []) then {
 };
 _traderHomes = getArray(_config >> "traderHomes");
 _TraderDeco = [_serverSettingsConfig, "TraderDeco", true] call EPOCH_fnc_returnConfigEntry;
-_buildingJammerRange = ["CfgEpochClient", "buildingJammerRange", 75] call EPOCH_fnc_returnConfigEntryV2;
 
 _WinterDeco = (Epoch_ServerRealtime select 1) == 12 && (Epoch_ServerRealtime select 2) > 20 && _TraderDeco;
 _HelloweenDeco = (((Epoch_ServerRealtime select 1) == 10 && (Epoch_ServerRealtime select 2) >= 24) || ((Epoch_ServerRealtime select 1) == 11 && (Epoch_ServerRealtime select 2) <= 3)) && _TraderDeco;
@@ -74,7 +73,7 @@ for "_i" from 1 to _spawnCount do {
 				_usedBuildings pushBack _buildingWork;
 				_home = selectRandom (_buildingHome buildingPos -1);
 				_work = selectRandom (_buildingWork buildingPos -1);
-				if ((nearestobjects [_home,["Plotpole_EPOCH"],_buildingJammerRange]) isequalto [] && (nearestobjects [_work,["Plotpole_EPOCH"],_buildingJammerRange]) isequalto []) then {
+				if ((nearestobjects [_home,call EPOCH_JammerClasses, call EPOCH_MaxJammerRange]) isequalto [] && (nearestobjects [_work,call EPOCH_JammerClasses, call EPOCH_MaxJammerRange]) isequalto []) then {
 					_startTime = floor(random 16);
 					_endTime = _startTime + 8;
 					_schedule = [_startTime, _endTime];

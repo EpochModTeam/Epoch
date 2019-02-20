@@ -107,6 +107,8 @@ forceRestartTime      = 14400; 			// 4 hour restarts
 	UseDeSimulateObjects	=	"true";	// Disable Simulation for specifed Base Objects
 	DeSimulateObjects[] =	{			// Base Objects to disable Simulation. Can be Names or Classes
 								"PlotPole_EPOCH",
+								"PlotPole_L_EPOCH",
+								"PlotPole_XL_EPOCH",
 								"WoodFoundation_EPOCH","Foundation_EPOCH",
 								"WoodQuarterFloor_EPOCH","WoodHalfFloor_EPOCH","WoodFloor_EPOCH",
 								"MetalQuarterFloor_EPOCH","MetalHalfFloor_EPOCH","MetalFloor_EPOCH",

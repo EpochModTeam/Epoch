@@ -12,12 +12,15 @@
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_code/compile/EPOCH_CamUse.sqf
 */
 
-private ["_mycams","_buildingJammerRange","_curcam"];
+private ["_mycams","_curcam"];
 
 _mycams = EPOCH_BaseCams select {(_x getVariable["BUILD_OWNER", "-1"]) in [getPlayerUID player, Epoch_my_GroupUID]};
 if (["CfgEpochClient", "BaseCamOnlyHome",true] call EPOCH_fnc_returnConfigEntryV2) then {
-	_buildingJammerRange = ["CfgEpochClient", "buildingJammerRange",75] call EPOCH_fnc_returnConfigEntryV2;
-	_mycams = _mycams select {!(((nearestobjects [_x,["Plotpole_EPOCH"],_buildingJammerRange]) select {(_x getVariable["BUILD_OWNER", "-1"]) in [getPlayerUID player, Epoch_my_GroupUID]}) isequalto [])};
+	_mycams = _mycams select {
+		_cam = _x;
+		_jammer = (nearestObjects[player, call EPOCH_JammerClasses, call EPOCH_MaxJammerRange]) select {_cam distance _x < (getnumber (getmissionconfig "CfgEpochClient" >> "CfgJammers" >> (typeof _x) >> "buildingJammerRange"))};
+		!((_jammer select {(_x getVariable["BUILD_OWNER", "-1"]) in [getPlayerUID player, Epoch_my_GroupUID]}) isequalto [])
+	};
 };
 if !(_mycams isequalto []) then {
 	_curcam = _mycams find Epoch_ActiveCam;

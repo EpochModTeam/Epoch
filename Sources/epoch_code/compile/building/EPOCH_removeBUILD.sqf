@@ -22,19 +22,12 @@
 	BOOL - true if removed
 */
 //[[[cog import generate_private_arrays ]]]
-private ["_buildingAllowed","_buildingCountLimit","_buildingJammerRange","_config","_jammer","_nearestJammer","_objType","_ownedJammerExists","_removeParts","_return","_stability","_targeter"];
+private ["_buildingAllowed","_jammer","_nearestJammer","_objType","_ownedJammerExists","_removeParts","_return","_stability","_targeter"];
 //[[[end]]]
 
 _buildingAllowed = true;
 _ownedJammerExists = false;
 _nearestJammer = objNull;
-_config = 'CfgEpochClient' call EPOCH_returnConfig;
-_buildingJammerRange = getNumber(_config >> "buildingJammerRange");
-_buildingCountLimit = getNumber(_config >> "buildingCountLimit");
-
-// defaults
-if (_buildingJammerRange == 0) then { _buildingJammerRange = 75; };
-if (_buildingCountLimit == 0) then { _buildingCountLimit = 200; };
 
 EPOCH_buildOption = 0;
 
@@ -57,14 +50,14 @@ if (_stability > 0) exitWith{
 	};
 };
 
-if (_objType == "PlotPole_EPOCH") then {
+if (_objType in (call EPOCH_JammerClasses)) then {
 	if ((_object getVariable["BUILD_OWNER", "-1"]) != getPlayerUID player) then{
 		_buildingAllowed = false;
 		["Remove Disallowed: Frequency Blocked", 5] call Epoch_message;
 	};
 }
 else {
-	_jammer = nearestObjects[player, ["PlotPole_EPOCH"], _buildingJammerRange];
+	_jammer = (nearestObjects[player, call EPOCH_JammerClasses, call EPOCH_MaxJammerRange]) select {player distance _x < (getnumber (getmissionconfig "CfgEpochClient" >> "CfgJammers" >> (typeof _x) >> "buildingJammerRange"))};
 	if !(_jammer isEqualTo[]) then{
 		{
 			if (alive _x) exitWith{

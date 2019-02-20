@@ -13,7 +13,7 @@
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server/compile/epoch_bases/EPOCH_server_loadBuildings.sqf
 */
 //[[[cog import generate_private_arrays ]]]
-private ["_Simulated","_DamageAllowed","_ExceptedBaseObjects","_IndestructibleBaseObjects","_UseIndestructible","_VAL","_ammoClass","_ammoObj","_anims","_animsData","_arr","_arrCount","_baseObj","_buildingJammerRange","_cfgBaseBuilding","_cfgEpochClient","_class","_color","_damage","_location","_marker","_maxTTL","_owner","_response","_serverSettingsConfig","_storageSlot","_textureSlot","_ttl","_vehHiveKey","_worldspace"];
+private ["_Simulated","_DamageAllowed","_ExceptedBaseObjects","_IndestructibleBaseObjects","_UseIndestructible","_VAL","_ammoClass","_ammoObj","_anims","_animsData","_arr","_arrCount","_baseObj","_cfgBaseBuilding","_class","_color","_damage","_location","_marker","_maxTTL","_owner","_response","_serverSettingsConfig","_storageSlot","_textureSlot","_ttl","_vehHiveKey","_worldspace"];
 //[[[end]]]
 EPOCH_BaseCams = [];
 EPOCH_Plotpoles = [];
@@ -27,10 +27,7 @@ _UseDeSimulateObjects = [_serverSettingsConfig, "UseDeSimulateObjects", true] ca
 _DeSimulateObjects = [_serverSettingsConfig, "DeSimulateObjects", []] call EPOCH_fnc_returnConfigEntry;
 _ExceptedDeSymObjects = [_serverSettingsConfig, "ExceptedDeSymObjects", []] call EPOCH_fnc_returnConfigEntry;
 _DisableDoorsOnObj = [_serverSettingsConfig, "DisableDoorsOnObj", []] call EPOCH_fnc_returnConfigEntry;
-_cfgEpochClient = 'CfgEpochClient' call EPOCH_returnConfig;
 _cfgBaseBuilding = 'CfgBaseBuilding' call EPOCH_returnConfig;
-_buildingJammerRange = getNumber(_cfgEpochClient >> "buildingJammerRange");
-if (_buildingJammerRange == 0) then { _buildingJammerRange = 75; };
 
 _VAL = ["", [], "", "", 0, []];
 
@@ -154,7 +151,7 @@ for "_i" from 0 to _this do {
 			};
 
 			// Handle Jammers and create marker if EPOCH_SHOW_JAMMERS set true.
-			if (_class in ["PlotPole_EPOCH","BaseCam_EPOCH"]) then {
+			if (_class in ((call EPOCH_JammerClasses) + ["BaseCam_EPOCH"])) then {
 				if (_owner != "-1") then {
 					_baseObj setVariable ["BUILD_OWNER", _owner, true];
 				};
@@ -165,7 +162,7 @@ for "_i" from 0 to _this do {
 					// Set PubVar later after all Cams are loaded in
 				};
 
-				if (_class isequalto "PlotPole_EPOCH") then {
+				if (_class in (call EPOCH_JammerClasses)) then {
 					EPOCH_Plotpoles pushbackunique _baseObj;
 					if (EPOCH_SHOW_JAMMERS) then {
 						_marker = createMarker [str(_location), _location];
