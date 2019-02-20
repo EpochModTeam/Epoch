@@ -275,7 +275,7 @@ _lootBubble = {
 				_objects resize 4;
 			};
 			// diag_log format["DEBUG: loot objects %1",_objects];
-			_jammer = ((_lootLoc nearObjects [call EPOCH_JammerClasses, (call EPOCH_MaxJammerRange) + 50]) select {_x distance _lootLoc < ((getnumber (getmissionconfig >> "cfgEpochClient" >> "CfgJammers" >> (typeof _x) >> "buildingJammerRange"))+50)}) + (_lootLoc nearObjects ["ProtectionZone_Invisible_F", 25]);
+			_jammer = ((nearestObjects [_lootLoc, call EPOCH_JammerClasses, ((call EPOCH_MaxJammerRange) + 50)]) select {_x distance _lootLoc < ((getnumber (getmissionconfig "cfgEpochClient" >> "CfgJammers" >> (typeof _x) >> "buildingJammerRange"))+50)}) + (_lootLoc nearObjects ["ProtectionZone_Invisible_F", 25]);
 			if (!(_objects isEqualTo[]) && (_jammer isEqualTo[])) then {
 				_building = selectRandom _objects;
 				if (_building getvariable ["EPOCH_Skiploot",false]) exitwith {};

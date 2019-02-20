@@ -67,7 +67,7 @@ _ghostClass = getText(_cfgBaseBuilding >> _objType >> "GhostPreview");
 _bypassJammer = getNumber(_cfgBaseBuilding >> _staticClass >> "bypassJammer");
 
 // Jammer
-_jammer = (nearestObjects[player, _JammerCheckClasses, call EPOCH_MaxJammerRange]) select {player distance _x < (getnumber (getmissionconfig (_JammerConfig >> (typeof _x) >> "buildingJammerRange")))};
+_jammer = (nearestObjects[player, _JammerCheckClasses, call EPOCH_MaxJammerRange]) select {player distance _x < (getnumber (_JammerConfig >> (typeof _x) >> "buildingJammerRange"))};
 if !(_jammer isEqualTo []) then {
 	if (_objType in _JammerCheckClasses) then {
 		{
@@ -99,10 +99,10 @@ if !(_jammer isEqualTo []) then {
 				["_memberArray",[]]
 			];
 			_membercount = count _modArray + count _memberArray;
-			_buildingJammerRange = getnumber (getmissionconfig (_JammerConfig >> "buildingJammerRange"));
-			_storageCountLimit = (getnumber (getmissionconfig (_JammerConfig >> "storageCountLimit"))) + ((getnumber (getmissionconfig (_JammerConfig >> "storageCountPerMember"))) * _membercount);
-			_buildingCountLimit = (getnumber (getmissionconfig (_JammerConfig >> "buildingCountLimit"))) + ((getnumber (getmissionconfig (_JammerConfig >> "buildingCountPerMember"))) * _membercount);
-			_CamCountLimit = getnumber (getmissionconfig (_JammerConfig >> "maxCams"));
+			_buildingJammerRange = getnumber (_JammerConfig >> "buildingJammerRange");
+			_storageCountLimit = (getnumber (_JammerConfig >> "storageCountLimit")) + ((getnumber (_JammerConfig >> "storageCountPerMember")) * _membercount);
+			_buildingCountLimit = (getnumber (_JammerConfig >> "buildingCountLimit")) + ((getnumber (_JammerConfig >> "buildingCountPerMember")) * _membercount);
+			_CamCountLimit = getnumber (_JammerConfig >> "maxCams");
 
 			if (_useSplitCountLimits) then {
 				if({_objType iskindof _x} count _StorageClasses > 0) then {
@@ -148,7 +148,7 @@ else {
 			if ((_x getVariable["BUILD_OWNER", "-1"]) in[getPlayerUID player, Epoch_my_GroupUID]) then {
 				_c = _c+1;
 			};
-		} foreach (missionnamespace getvariable ["Epoch_Plotpoles",_allplots = [];{_allplots pushback (allmissionobjects _x)} foreach (call EPOCH_JammerClasses);_allplots]);
+		} foreach (missionnamespace getvariable ["Epoch_Plotpoles",call {_allplots = [];{_allplots append (allmissionobjects _x)} foreach (call EPOCH_JammerClasses);_allplots}]);
 		if (_c >= _jammerPerGroup) then {
 			_buildingAllowed = false;
 			[format["Building Disallowed: Max %1 Jammer per Group!", _jammerPerGroup], 5] call Epoch_message;

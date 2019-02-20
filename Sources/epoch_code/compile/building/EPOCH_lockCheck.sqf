@@ -25,7 +25,7 @@
 private ["_jammed","_jammer"];
 //[[[end]]]
 
-_jammer = (nearestObjects[player, call EPOCH_JammerClasses, call EPOCH_MaxJammerRange]) select {player distance _x < (getnumber (getmissionconfig ("CfgEpochClient" >> "CfgJammers" >> (typeof _x) >> "buildingJammerRange")))};
+_jammer = (nearestObjects[player, call EPOCH_JammerClasses, call EPOCH_MaxJammerRange]) select {player distance _x < (getnumber (getmissionconfig "CfgEpochClient" >> "CfgJammers" >> (typeof _x) >> "buildingJammerRange"))};
 _jammed = false;
 if !(_jammer isEqualTo[]) then {
   {

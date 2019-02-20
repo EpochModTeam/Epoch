@@ -13,7 +13,7 @@
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_code/init/both_init.sqf
 */
 //[[[cog import generate_private_arrays ]]]
-private ["_communityStatsInit","_customVarsInit","_dynSimToggle","_JammerConfig","_cfgBaseBuilding","_JammerClass","_preview"];
+private ["_communityStatsInit","_customVarsInit","_dynSimToggle","_JammerConfig","_JammerClass","_preview"];
 //[[[end]]]
 
 // Check if Advanced Vehicle Repair is enabled
@@ -75,7 +75,7 @@ disableRemoteSensors (["CfgEpochClient", "disableRemoteSensors", true] call EPOC
 EPOCH_JammerClasses = [];
 EPOCH_JammerGhosts = [];
 EPOCH_MaxJammerRange = 75;
-_JammerConfig = (getmissionconfig >> "CfgEpochClient" >> "CfgJammers");
+_JammerConfig = (getmissionconfig "CfgEpochClient" >> "CfgJammers");
 if !(isclass _JammerConfig) exitwith {
 	diag_log "EPOCH_debug: Error: No Jammerclasses defined in CfgEpochClient";
 };
@@ -86,19 +86,18 @@ if !(isclass _JammerConfig) exitwith {
 	if (_JammerRangeX > EPOCH_MaxJammerRange) then {
 		EPOCH_MaxJammerRange = _JammerRangeX;
 	};
-} foreach (configclasses _JammerConfig);
+} foreach ("true" configClasses _JammerConfig);
 if (EPOCH_JammerClasses isEqualTo []) then {
 	diag_log "EPOCH_debug: Error: Jammerconfig in CfgEpochClient seems to be wrong";
 };
-_cfgBaseBuilding = 'CfgBaseBuilding' call EPOCH_returnConfig;
 {
 	_JammerClass = _x;
 	{
-		_preview = gettext (_cfgBaseBuilding >> _JammerClass >> _x);
-		if !(_preview isEqualTo "" || _preview isEqualTo _x) then {
+		_preview = gettext (getmissionconfig "CfgBaseBuilding" >> _JammerClass >> _x);
+		if !(_preview isEqualTo "" || _preview isEqualTo _JammerClass) then {
 			EPOCH_JammerGhosts pushBackUnique _preview;
 		};
-	} foreach ["GhostPreview","simClass"];
+	} foreach ["GhostPreview","simulClass"];
 } foreach EPOCH_JammerClasses;
 EPOCH_JammerClasses = compilefinal (str EPOCH_JammerClasses);
 EPOCH_MaxJammerRange = compilefinal (str EPOCH_MaxJammerRange);

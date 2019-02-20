@@ -295,7 +295,7 @@ else {
 				_staticFuelSources pushback _x;
 			} foreach (((_x nearObjects ['Building',call EPOCH_MaxJammerRange]) select {getFuelCargo _x > 0}));
 		
-		} foreach (missionnamespace getvariable ["Epoch_Plotpoles",_allplots = [];{_allplots pushback (allmissionobjects _x)} foreach (call EPOCH_JammerClasses);_allplots]);
+		} foreach (missionnamespace getvariable ["Epoch_Plotpoles",call {_allplots = [];{_allplots append (allmissionobjects _x)} foreach (call EPOCH_JammerClasses);_allplots}]);
 		missionNamespace setVariable ["EPOCH_staticFuelSources", _staticFuelSources, true];
 	};
 };

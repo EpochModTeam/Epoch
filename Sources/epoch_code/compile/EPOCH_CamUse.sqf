@@ -18,8 +18,8 @@ _mycams = EPOCH_BaseCams select {(_x getVariable["BUILD_OWNER", "-1"]) in [getPl
 if (["CfgEpochClient", "BaseCamOnlyHome",true] call EPOCH_fnc_returnConfigEntryV2) then {
 	_mycams = _mycams select {
 		_cam = _x;
-		_jammer = (nearestObjects[player, call EPOCH_JammerClasses, call EPOCH_MaxJammerRange]) select {_cam distance _x < (getnumber (getmissionconfig ("CfgEpochClient" >> "CfgJammers" >> (typeof _x) >> "buildingJammerRange")))};
-		!(_jammer select {(_x getVariable["BUILD_OWNER", "-1"]) in [getPlayerUID player, Epoch_my_GroupUID]}) isequalto []) &&
+		_jammer = (nearestObjects[player, call EPOCH_JammerClasses, call EPOCH_MaxJammerRange]) select {_cam distance _x < (getnumber (getmissionconfig "CfgEpochClient" >> "CfgJammers" >> (typeof _x) >> "buildingJammerRange"))};
+		!((_jammer select {(_x getVariable["BUILD_OWNER", "-1"]) in [getPlayerUID player, Epoch_my_GroupUID]}) isequalto [])
 	};
 };
 if !(_mycams isequalto []) then {

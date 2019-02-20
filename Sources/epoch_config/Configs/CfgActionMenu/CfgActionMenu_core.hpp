@@ -49,7 +49,7 @@ class CfgActionMenu
 		dyna_deathMarkerAvail = "!(dyna_deathMarker isEqualTo [])";
 		dyna_mapDeathMarker = "(((getArray(('CfgMarkerSets' call EPOCH_returnConfig) >> 'DeathMarker' >> 'markerArray') select 0) select 0) in allMapMarkers)";
 		
-		dyna_AtHome = "call {_nearjammers = (nearestObjects[player, _JammerCheckClasses, call EPOCH_MaxJammerRange]) select {player distance _x < (getnumber (getmissionconfig (_JammerConfig >> (typeof _x) >> 'buildingJammerRange')))};if (_nearjammers isEqualTo []) exitwith {false};_nearestJammer = _nearjammers select 0;((_nearestJammer getVariable['BUILD_OWNER', '-1']) in[getPlayerUID player, Epoch_my_GroupUID])}";
+		dyna_AtHome = "call {_nearjammers = (nearestObjects[player, call EPOCH_JammerClasses, call EPOCH_MaxJammerRange]) select {player distance _x < (getnumber (getmissionconfig 'cfgEpochClient' >> 'CfgJammers' >> (typeof _x) >> 'buildingJammerRange'))};if (_nearjammers isEqualTo []) exitwith {false};_nearestJammer = _nearjammers select 0;((_nearestJammer getVariable['BUILD_OWNER', '-1']) in[getPlayerUID player, Epoch_my_GroupUID])}";
 		dyna_Watersource = "call {_nearObjects = nearestObjects [player, [], 2];_check = 'water';_ok = false;{if (alive _x) then {_ok = [_x, _check] call EPOCH_worldObjectType;};if (_ok) exitWith {};} forEach _nearObjects;_ok}";
 	};
 

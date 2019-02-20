@@ -1,6 +1,6 @@
 // _newObj = [_class,_object] call EPOCH_swapBuilding;
 //[[[cog import generate_private_arrays ]]]
-private ["_newObj","_objectPos"];
+private ["_newObj","_objectPos","_owner"];
 //[[[end]]]
 params [["_class",""],["_object",objNull],["_method",0]];
 _newObj = objNull;
@@ -8,6 +8,10 @@ if (!isNull _object && !(_class isEqualTo "")) then {
     _objectPos = getPosWorld _object;
     _newObj = createVehicle [_class, ASLtoAGL _objectPos, [], 0, "CAN_COLLIDE"];
     if (!isNull _newObj) then {
+		_owner = _object getvariable ["Build_Owner",""];
+		if !(_owner isEqualTo "") then {
+			_newObj setVariable ["BUILD_OWNER", _owner, true];
+		};
         _object hideObjectGlobal true;
         switch (_method) do {
             case 0: {

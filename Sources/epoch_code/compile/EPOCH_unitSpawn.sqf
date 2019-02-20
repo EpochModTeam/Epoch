@@ -41,7 +41,7 @@ _unit = objNull;
 _targetPos = getPosATL _trgt;
 _targetPos set [2,0];
 
-_jammers = (nearestObjects[_targetPos, call EPOCH_JammerClasses, call EPOCH_MaxJammerRange]) select {_targetPos distance _x < (getnumber (getmissionconfig ("CfgEpochClient" >> "CfgJammers" >> (typeof _x) >> "buildingJammerRange")))};
+_jammers = (nearestObjects[_targetPos, call EPOCH_JammerClasses, call EPOCH_MaxJammerRange]) select {_targetPos distance _x < (getnumber (getmissionconfig "CfgEpochClient" >> "CfgJammers" >> (typeof _x) >> "buildingJammerRange"))};
 if(!(_jammers isEqualTo []) && (_unitClass in _nonJammer))exitWith{};
 
 _restricted = nearestObjects [_targetPos, ["ProtectionZone_Invisible_F"], _nonTraderAIRange];

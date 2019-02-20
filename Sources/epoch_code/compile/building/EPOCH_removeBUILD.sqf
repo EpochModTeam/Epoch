@@ -57,7 +57,7 @@ if (_objType in (call EPOCH_JammerClasses)) then {
 	};
 }
 else {
-	_jammer = (nearestObjects[player, call EPOCH_JammerClasses, call EPOCH_MaxJammerRange]) select {player distance _x < (getnumber (getmissionconfig ("CfgEpochClient" >> "CfgJammers" >> (typeof _x) >> "buildingJammerRange")))};
+	_jammer = (nearestObjects[player, call EPOCH_JammerClasses, call EPOCH_MaxJammerRange]) select {player distance _x < (getnumber (getmissionconfig "CfgEpochClient" >> "CfgJammers" >> (typeof _x) >> "buildingJammerRange"))};
 	if !(_jammer isEqualTo[]) then{
 		{
 			if (alive _x) exitWith{

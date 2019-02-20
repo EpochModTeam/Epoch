@@ -62,13 +62,13 @@ class CfgEpochClient
 		class PlotPole_L_EPOCH : PlotPole_EPOCH	// inherits from "PlotPole_EPOCH" (not defined values will be taken from PlotPole_EPOCH)
 		{
 			buildingJammerRange = 		100;	// jammer range in meters
-			buildingCountLimit = 		250;	// Max Building Elements per Base
+			buildingCountLimit = 		225;	// Max Building Elements per Base
 			storageCountLimit = 		125;	// Max Storage Elements per Base
 		};
 		class PlotPole_XL_EPOCH : PlotPole_L_EPOCH
 		{
-			buildingJammerRange = 		150;	// jammer range in meters
-			buildingCountLimit = 		300;	// Max Building Elements per Base
+			buildingJammerRange = 		125;	// jammer range in meters
+			buildingCountLimit = 		250;	// Max Building Elements per Base
 			storageCountLimit = 		150;	// Max Storage Elements per Base
 		};
 	};

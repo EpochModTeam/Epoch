@@ -51,7 +51,7 @@ if (_stability > 0) exitWith{
 	};
 };
 
-_jammer = (nearestObjects[_object, call EPOCH_JammerClasses, call EPOCH_MaxJammerRange]) select {alive _x && {_object distance _x < (getnumber (getmissionconfig ("CfgEpochClient" >> "CfgJammers" >> (typeof _x) >> "buildingJammerRange")))}};
+_jammer = (nearestObjects[_object, call EPOCH_JammerClasses, call EPOCH_MaxJammerRange]) select {alive _x && {_object distance _x < (getnumber (getmissionconfig "CfgEpochClient" >> "CfgJammers" >> (typeof _x) >> "buildingJammerRange"))}};
 
 if !(_jammer isEqualTo[]) then {
 	_nearestJammer = _jammer select 0;
@@ -65,11 +65,11 @@ if !(_jammer isEqualTo[]) then {
 };
 if !(_buildingAllowed)exitWith{ false };
 
-if (_object isKindOf "Constructions_static_F") then {
+if (_object isKindOf "Constructions_static_F" || {(typeof _object) in (call EPOCH_JammerClasses)}) then {
 
 	// take upgrade item from player here
 	_config = 'CfgBaseBuilding' call EPOCH_returnConfig;
-	_config2 = getmissionconfig ("CfgEpochClient" >> "CfgJammers" >> (typeof _object));
+	_config2 = getmissionconfig "CfgEpochClient" >> "CfgJammers" >> (typeof _object);
 
 	_upgrades = getArray(_config >> (typeOf _object) >> "upgradeBuilding");
 	if !(_upgrades isEqualTo []) then {
@@ -99,7 +99,7 @@ if (_object isKindOf "Constructions_static_F") then {
 		if (_canUpgrade) then {
 			_doors = ["CfgEpochClient", "DoorClasses", ["WoodLargeWallDoorL_EPOCH","WoodWall4_EPOCH","CinderWallDoorwHatch_EPOCH","WoodStairs3_EPOCH","JailWallDoor_EPOCH"]] call EPOCH_fnc_returnConfigEntryV2;
 			_gates = ["CfgEpochClient", "GateClasses", ["CinderWallGarage_EPOCH","WoodWallGarage_EPOCH","MetalWallGarage_EPOCH"]] call EPOCH_fnc_returnConfigEntryV2;
-			_JammerConfig = getmissionconfig ("CfgEpochClient" >> "CfgJammers" >> (typeof _nearestJammer);
+			_JammerConfig = getmissionconfig "CfgEpochClient" >> "CfgJammers" >> (typeof _nearestJammer);
 			_buildingJammerRange = getnumber (_JammerConfig >> "buildingJammerRange");
 			_maxdoors = getnumber (_JammerConfig >> "maxdoors");
 			_maxgates = getnumber (_JammerConfig >> "maxgates");
