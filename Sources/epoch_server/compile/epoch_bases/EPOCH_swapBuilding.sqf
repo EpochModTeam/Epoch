@@ -1,6 +1,6 @@
 // _newObj = [_class,_object] call EPOCH_swapBuilding;
 //[[[cog import generate_private_arrays ]]]
-private ["_newObj","_objectPos","_owner"];
+private ["_newObj","_objectPos","_owner","_UpdatePlots"];
 //[[[end]]]
 params [["_class",""],["_object",objNull],["_method",0]];
 _newObj = objNull;
@@ -11,6 +11,18 @@ if (!isNull _object && !(_class isEqualTo "")) then {
 		_owner = _object getvariable ["Build_Owner",""];
 		if !(_owner isEqualTo "") then {
 			_newObj setVariable ["BUILD_OWNER", _owner, true];
+		};
+		_UpdatePlots = false;
+		if (_object in EPOCH_Plotpoles) then {
+			EPOCH_Plotpoles = EPOCH_Plotpoles - [_object];
+			_UpdatePlots = true;
+		};
+		if (_class in (call EPOCH_JammerClasses)) then {
+			EPOCH_Plotpoles pushback _newObj;
+			_UpdatePlots = true;
+		};
+		if (_UpdatePlots) then {
+			publicvariable 'EPOCH_Plotpoles';
 		};
         _object hideObjectGlobal true;
         switch (_method) do {

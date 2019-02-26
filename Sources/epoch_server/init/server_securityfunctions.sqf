@@ -422,7 +422,7 @@ for "_i" from 1 to 3 do {
 		};
 		if ("MAP-BASEBUILDING" in _case) then {
 			_temp = _temp + "
-				,['  Base Building Marker', [], {"+_skn_tg_map_basebuilding+" = !"+_skn_tg_map_basebuilding+"; if ("+_skn_tg_map_basebuilding+") then {waitUntil {"+_skn_mapBasesArray+" = Epoch_PlotPoles;uiSleep 15;!"+_skn_tg_map_basebuilding+"};"+_skn_mapBasesArray+" = []}; ['Base Building MARKER',if ("+_skn_tg_map_basebuilding+") then [{2},{1}]] call "+_skn_adminLog_PVC+"}, '2', []]
+				,['  Base Building Marker', [], {"+_skn_tg_map_basebuilding+" = !"+_skn_tg_map_basebuilding+"; if ("+_skn_tg_map_basebuilding+") then {waitUntil {"+_skn_mapBasesArray+" = (Epoch_PlotPoles - [objnull]);uiSleep 15;!"+_skn_tg_map_basebuilding+"};"+_skn_mapBasesArray+" = []}; ['Base Building MARKER',if ("+_skn_tg_map_basebuilding+") then [{2},{1}]] call "+_skn_adminLog_PVC+"}, '2', []]
 			";
 		};
 	};
