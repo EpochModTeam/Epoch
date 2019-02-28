@@ -530,6 +530,13 @@ class VehMaintanance
 			tooltipcode = "format ['Upgrade to %1 - %2',(Ignatz_VehicleUpgradeArray select 4 select 2),(Ignatz_VehicleUpgradeArray select 4 select 3)]";
 		};
 	};
+	class ChangePlate
+	{
+		condition = "{dyna_cursorTarget iskindof _x} count ['Van_01_base_F','Van_02_base_F','SUV_01_base_F','Hatchback_01_base_F','Offroad_01_base_F','Offroad_02_base_F'] > 0";
+		action = "[dyna_cursorTarget,player] spawn EPOCH_vehicle_ChangeLicensePlate";
+		icon = "x\addons\a3_epoch_code\Data\UI\buttons\Epoch_LicensePlate.paa";
+		tooltip = "Change License Plate";
+	};
 };
 
 //Groups

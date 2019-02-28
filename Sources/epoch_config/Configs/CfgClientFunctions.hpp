@@ -192,6 +192,7 @@ class CfgClientFunctions
 			class client_VehicleMaintananceDo {};
 			class vehicle_checkTurretAmmo {};
 			class vehicle_removeTurretAmmo {};
+			class vehicle_ChangeLicensePlate {};
 		};
 		class missions
 		{
