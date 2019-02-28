@@ -40,6 +40,7 @@ class CfgEpochClient
     restrictedLocations[] = {"NameCityCapital"};
     restrictedLocationsRange = 300;
     buildingRequireJammer = 1;		//1 = require jammer to build
+	buildingJammerRange = 125; 		// Unused by Epoch, but leave it to prevent issues with custom scripts (should be set to the max possible JammerRange from cfgJammers)
     jammerPerGroup = 1;				// allowed number of jammers per group.
     jammerGLOnly = 1;               // allow only group leader to place Jammer
     minJammerDistance = 650;		// min distance to next Jammer
