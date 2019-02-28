@@ -1375,6 +1375,21 @@ class CfgBaseBuilding
     {
         returnOnPack[] = {};
     };
+    class GunSafe_EPOCH : Default
+    {
+        returnOnPack[] = {{"ItemGunSafe",1}};
+        simulClass = "GunSafe_SIM_EPOCH";
+        staticClass = "GunSafe_EPOCH";
+        weaponHolderProxy = "SafeProxy_EPOCH";
+        GhostPreview = "GunSafe_EPOCH";
+        bypassJammer = 1;
+        limitNearby = 2;
+        isSecureStorage = 1;
+    };
+    class GunSafe_SIM_EPOCH : GunSafe_EPOCH
+    {
+        returnOnPack[] = {};
+    };
     class Jack_EPOCH : Default
     {
         simulClass = "Jack_SIM_EPOCH";

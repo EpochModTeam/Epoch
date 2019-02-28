@@ -1151,6 +1151,7 @@ class CfgItemSort
 			"ItemLockbox",
 			"Pelt_EPOCH",
 			"ItemSafe",
+			"ItemGunSafe",
 			"ItemSolar",
 			"ItemCables",
 			"ItemBattery",

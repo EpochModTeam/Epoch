@@ -27,6 +27,10 @@ _playerGroup = _player getVariable["GROUP", ""];
 _fnc_Lock_Unlock = {
 	_locked = !_locked;
 	_unit setVariable ["EPOCH_Locked", _locked, true];
+	if (_unit iskindof "GunSafe_EPOCH") then {
+		_animations = if (_locked) then {[['door1',0],['door2',0],['handle1',0],['handle2',0]]} else {[['handle1',1],['handle2',1],['door1',1],['door2',1]]};
+		[_unit,_animations,[0,1,0]] remoteexec ['EPOCH_fnc_AnimateScheduled',_player];
+	};
 	_LockStateChanged = true;
 };
 

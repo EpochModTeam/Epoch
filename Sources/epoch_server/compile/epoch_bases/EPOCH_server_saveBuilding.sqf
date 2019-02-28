@@ -53,6 +53,11 @@ if (isText _staticClassConfig) then {
 
 			if (getNumber(_cfgBaseBuilding >> _staticClass >> "isSecureStorage") == 1) then{
 				_storageObj setVariable["EPOCH_Locked", false, true];
+				if (_storageObj isKindOf "GunSafe_EPOCH") then {
+					{
+						_storageObj animate [_x,1];
+					} foreach ["door1","door2","handle1","handle2"];
+				};
 			};
 
 			_storageObj setVariable["STORAGE_OWNERS", [_playerUID]];

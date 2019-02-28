@@ -131,14 +131,14 @@ class lock_lockbox
 };
 class unlock_safe
 {
-	condition = "(dyna_cursorTargetType in ['Safe_EPOCH','SafeProxy_EPOCH']) && (dyna_cursorTarget getVariable ['EPOCH_Locked',false])";
+	condition = "(dyna_cursorTargetType in ['Safe_EPOCH','SafeProxy_EPOCH','GunSafe_EPOCH']) && (dyna_cursorTarget getVariable ['EPOCH_Locked',false])";
 	action = "dyna_cursorTarget call Epoch_secureStorageHandler";
 	icon = "x\addons\a3_epoch_code\Data\UI\buttons\pad_can_unlock.paa";
 	tooltip = "Unlock Safe";
 };
 class lock_safe
 {
-	condition = "(dyna_cursorTargetType in ['Safe_EPOCH','SafeProxy_EPOCH']) && !(dyna_cursorTarget getVariable ['EPOCH_Locked',false])";
+	condition = "(dyna_cursorTargetType in ['Safe_EPOCH','SafeProxy_EPOCH','GunSafe_EPOCH']) && !(dyna_cursorTarget getVariable ['EPOCH_Locked',false])";
 	action = "dyna_cursorTarget call Epoch_secureStorageHandler";
 	icon = "x\addons\a3_epoch_code\Data\UI\buttons\pad_cannot_lock.paa";
 	tooltip = "Lock Safe";
@@ -154,7 +154,7 @@ class pack_lockbox
 };
 class pack_safe
 {
-	condition = "(dyna_cursorTargetType in ['Safe_EPOCH','SafeProxy_EPOCH']) && (dyna_cursorTarget getVariable ['EPOCH_Locked',false])";
+	condition = "(dyna_cursorTargetType in ['Safe_EPOCH','SafeProxy_EPOCH','GunSafe_EPOCH']) && (dyna_cursorTarget getVariable ['EPOCH_Locked',false])";
 	action = "[dyna_cursorTarget,player,Epoch_personalToken] remoteExec ['EPOCH_server_packStorage',2];";
 	icon = "x\addons\a3_epoch_code\Data\UI\buttons\build_pack.paa";
 	tooltip = "Pack Safe";
