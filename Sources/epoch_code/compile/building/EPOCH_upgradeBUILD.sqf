@@ -23,7 +23,7 @@
 	NOTHING
 */
 //[[[cog import generate_private_arrays ]]]
-private ["_buildingAllowed","_canUpgrade","_canUpgradePartCount","_config","_config2","_countdoors","_countgates","_doors","_gates","_jammer","_maxdoors","_maxgates","_missingCount","_missingParts","_nearestJammer","_ownedJammerExists","_part","_partCheck","_removedPartCount","_req","_return","_stability","_targeter","_upgrade","_upgradeParts","_upgrades","_upgradeto","_buildingJammerRange","_JammerConfig"];
+private ["_buildingAllowed","_canUpgrade","_canUpgradePartCount","_config","_config2","_countdoors","_countgates","_doors","_gates","_jammer","_maxdoors","_maxgates","_missingCount","_missingParts","_nearestJammer","_ownedJammerExists","_part","_partCheck","_removedPartCount","_req","_return","_stability","_targeter","_upgrade","_upgradeParts","_upgrades","_upgradeto","_buildingJammerRange","_JammerConfig","_CryptoCosts"];
 //[[[end]]]
 params [
 	["_object",objNull,[objNull]],
@@ -82,10 +82,17 @@ if (_object isKindOf "Constructions_static_F" || {(typeof _object) in (call EPOC
 		_canUpgrade = true;
 		_canUpgradePartCount = 0;
 		_missingParts = "Missing: ";
+		_CryptoCosts = 0;
 		{
 			_part = _x select 0;
 			_req = _x select 1;
-			_partCheck = {_x == _part} count (magazines player);
+			_partCheck = if (_part IsEqualTo "Krypto") then {
+				_CryptoCosts = _CryptoCosts + _req;
+				EPOCH_PlayerCrypto
+			}
+			else {
+				{_x == _part} count (magazines player)
+			};
 
 			if (_partCheck < _req) then {
 				_missingCount = _req - _partCheck;
@@ -126,17 +133,23 @@ if (_object isKindOf "Constructions_static_F" || {(typeof _object) in (call EPOC
 		_removedPartCount = 0;
 		if (_canUpgrade) then {
 			{
-				for "_i" from 1 to (_x select 1) do {
-					if ((_x select 0) in (magazines player)) then {
-						player removeMagazine (_x select 0);
-						_removedPartCount = _removedPartCount + 1;
+				_x params ["_part","_req"];
+				if !(_part IsEqualTo "Krypto") then {
+					for "_i" from 1 to _req do {
+						if (_part in (magazines player)) then {
+							player removeMagazine _part;
+							_removedPartCount = _removedPartCount + 1;
+						};
 					};
+				}
+				else {
+					_removedPartCount = _removedPartCount + _req;
 				};
 			} forEach _upgradeParts;
 
 			if (_canUpgradePartCount == _removedPartCount) then {
 				// send to server for upgrade
-				[_object,player,Epoch_upgradeIndex,Epoch_personalToken] remoteExec ["EPOCH_server_upgradeBUILD",2];
+				[_object,player,Epoch_upgradeIndex,Epoch_personalToken,_CryptoCosts] remoteExec ["EPOCH_server_upgradeBUILD",2];
 				Epoch_upgradeIndex = nil;
 				_return = true;
 				["Upgraded", 5] call Epoch_message;
