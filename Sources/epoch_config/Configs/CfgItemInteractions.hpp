@@ -503,6 +503,22 @@ class CfgItemInteractions
     {
         buildClass = "PlotPole_SIM_EPOCH";
     };
+    class KitPlotPole_M : Item_Build_base
+    {
+        buildClass = "PlotPole_M_SIM_EPOCH";
+    };
+    class KitPlotPole_L : Item_Build_base
+    {
+        buildClass = "PlotPole_L_SIM_EPOCH";
+    };
+    class KitPlotPole_XL : Item_Build_base
+    {
+        buildClass = "PlotPole_XL_SIM_EPOCH";
+    };
+    class KitPlotPole_XXL : Item_Build_base
+    {
+        buildClass = "PlotPole_XXL_SIM_EPOCH";
+    };
     class KitCinderWall : Item_Build_base
     {
         buildClass = "CinderWallHalf_EPOCH";
