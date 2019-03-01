@@ -3434,6 +3434,22 @@ class CfgPricing
     {
         price = 250;
     };
+    class KitPlotPole_M
+    {
+        price = 350;
+    };
+    class KitPlotPole_L
+    {
+        price = 450;
+    };
+    class KitPlotPole_XL
+    {
+        price = 550;
+    };
+    class KitPlotPole_XXL
+    {
+        price = 650;
+    };
     class KitSolarGen
     {
         price = 325;
