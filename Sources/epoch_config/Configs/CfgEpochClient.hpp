@@ -60,17 +60,29 @@ class CfgEpochClient
 			maxgates = 					5;		// Max Gates per Base
 			maxCams = 					2;		// Max Cams per Base
 		};
-		class PlotPole_L_EPOCH : PlotPole_EPOCH	// inherits from "PlotPole_EPOCH" (not defined values will be taken from PlotPole_EPOCH)
+		class PlotPole_M_EPOCH : PlotPole_EPOCH	// inherits from "PlotPole_EPOCH" (not defined values will be taken from PlotPole_EPOCH)
 		{
 			buildingJammerRange = 		100;	// jammer range in meters
-			buildingCountLimit = 		225;	// Max Building Elements per Base
-			storageCountLimit = 		125;	// Max Storage Elements per Base
+			buildingCountLimit = 		215;	// Max Building Elements per Base
+			storageCountLimit = 		115;	// Max Storage Elements per Base
+		};
+		class PlotPole_L_EPOCH : PlotPole_M_EPOCH
+		{
+			buildingJammerRange = 		125;	// jammer range in meters
+			buildingCountLimit = 		230;	// Max Building Elements per Base
+			storageCountLimit = 		130;	// Max Storage Elements per Base
 		};
 		class PlotPole_XL_EPOCH : PlotPole_L_EPOCH
 		{
-			buildingJammerRange = 		125;	// jammer range in meters
-			buildingCountLimit = 		250;	// Max Building Elements per Base
-			storageCountLimit = 		150;	// Max Storage Elements per Base
+			buildingJammerRange = 		150;	// jammer range in meters
+			buildingCountLimit = 		245;	// Max Building Elements per Base
+			storageCountLimit = 		145;	// Max Storage Elements per Base
+		};
+		class PlotPole_XXL_EPOCH : PlotPole_XL_EPOCH
+		{
+			buildingJammerRange = 		175;	// jammer range in meters
+			buildingCountLimit = 		260;	// Max Building Elements per Base
+			storageCountLimit = 		160;	// Max Storage Elements per Base
 		};
 	};
 	StorageClasses[] = {"Buildable_Storage","Buildable_Storage_SIM","Buildable_Storage_Ghost","Constructions_lockedstatic_F","Secure_Storage_Temp"};
