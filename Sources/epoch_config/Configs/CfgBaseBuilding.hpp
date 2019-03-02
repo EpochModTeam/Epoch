@@ -207,6 +207,10 @@ class CfgBaseBuilding
         simulClass = "PlotPole_M_SIM_EPOCH";
         bypassJammer = 1;
     };
+    class PlotPole_M_SIM_EPOCH : PlotPole_M_EPOCH
+    {
+        removeParts[] = {};
+    };
     class PlotPole_L_EPOCH : Default
     {
         upgradeBuilding[] = {{"PlotPole_XL_EPOCH",{{"ItemCorrugatedLg",5},{"EnergyPackLg",2},{"CircuitParts",3},{"ItemBattery",3},{"ItemPipe",1}}}};
@@ -215,6 +219,10 @@ class CfgBaseBuilding
         staticClass = "PlotPole_L_EPOCH";
         simulClass = "PlotPole_L_SIM_EPOCH";
         bypassJammer = 1;
+    };
+    class PlotPole_L_SIM_EPOCH : PlotPole_L_EPOCH
+    {
+        removeParts[] = {};
     };
     class PlotPole_XL_EPOCH : Default
     {
@@ -225,6 +233,10 @@ class CfgBaseBuilding
         simulClass = "PlotPole_XL_SIM_EPOCH";
         bypassJammer = 1;
     };
+    class PlotPole_XL_SIM_EPOCH : PlotPole_XL_EPOCH
+    {
+        removeParts[] = {};
+    };
     class PlotPole_XXL_EPOCH : Default
     {
         upgradeBuilding[] = {};
@@ -233,6 +245,10 @@ class CfgBaseBuilding
         staticClass = "PlotPole_XXL_EPOCH";
         simulClass = "PlotPole_XXL_SIM_EPOCH";
         bypassJammer = 1;
+    };
+    class PlotPole_XXL_SIM_EPOCH : PlotPole_XXL_EPOCH
+    {
+        removeParts[] = {};
     };
     class WoodRamp_EPOCH : Default
     {
