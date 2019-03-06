@@ -14,12 +14,12 @@ All changes for [Arma 3](https://arma3.com/) [Epoch Mod](https://epochmod.com) a
 ### Changed
 ### Server Owners
 - Configs for upgradeable PlotPoles are located in ("CfgEpochclient" >> "CfgJammers")
-- BE-Kicks in DLC Shop
+- Fixed BE-Kicks in DLC Shop
 - Another login stuck fix (Loadabs-Check)
 - Added possibility the usage of "Krypto" as needed material for building upgrades
    - Example CfgBaseBuilding:
       - upgradeBuilding[] = {{"PlotPole_L_EPOCH",{{"Krypto",1500}}}};
-   - Fixed Ban for "commandMenu - RscMenuEngage"
+- Fixed Ban for "commandMenu - RscMenuEngage"
 
 ## [1.3.0.0] - 2019-01-31
 ### Added
