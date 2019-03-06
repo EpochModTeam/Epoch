@@ -1,6 +1,25 @@
 # Change Log
 All changes for [Arma 3](https://arma3.com/) [Epoch Mod](https://epochmod.com) are listed in this changelog.
 
+## [1.3.1.0] - 2019-xx-xx
+### Added
+- Several PlotPole-Types (S/M/L/XL/XXL) with different Range / Limits
+- On entering temp Vehicles, Payers will get a hint "Vehicle will despawn after restart"
+- 2nd Variant of a lockable Safe "GunSafe_EPOCH"
+- License Plates of Vehicles can now be changed by Dyna-Menu (Space-Menu)
+### Fixed
+- BE-Kicks in DLC Shop
+- Another login stuck fix (Loadabs-Check)
+- Prevent Traders from spawning on containers
+- Advanced Vehicle Repair was not working as expected within custom "SafeZones"
+- Reset Toxic after revive
+### Changed
+### Server Owners
+- Added possibility the usage of "Krypto" as needed material for building upgrades
+   - Example CfgBaseBuilding:
+      - upgradeBuilding[] = {{"PlotPole_L_EPOCH",{{"Krypto",1500}}}};
+   - Fixed Ban for "commandMenu - RscMenuEngage"
+
 ## [1.3.0.0] - 2019-01-31
 ### Added
 - Several A2 Vehicles ported into Epoch
