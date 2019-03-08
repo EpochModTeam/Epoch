@@ -46,6 +46,7 @@ if(getNumber(_config >> "jammerGLOnly") == 0)then{_jammerGLOnly=false};
 
 _StorageClasses = ["CfgEpochClient", "StorageClasses", ["Buildable_Storage","Buildable_Storage_SIM","Buildable_Storage_Ghost","Constructions_lockedstatic_F","Secure_Storage_Temp"]] call EPOCH_fnc_returnConfigEntryV2;
 _BuildingClasses = ["CfgEpochClient", "BuildingClasses", ["Constructions_static_F","Constructions_foundation_F","Const_Ghost_EPOCH"]] call EPOCH_fnc_returnConfigEntryV2;
+_minJammerDistance = ["CfgEpochClient", "minJammerDistance", 650] call EPOCH_fnc_returnConfigEntryV2;
 _maxBuildingHeight = ["CfgEpochClient", "maxBuildingHeight", 100] call EPOCH_fnc_returnConfigEntryV2;
 _jammerPerGroup = ["CfgEpochClient", "jammerPerGroup", 1] call EPOCH_fnc_returnConfigEntryV2;
 
@@ -67,7 +68,7 @@ _ghostClass = getText(_cfgBaseBuilding >> _objType >> "GhostPreview");
 _bypassJammer = getNumber(_cfgBaseBuilding >> _staticClass >> "bypassJammer");
 
 // Jammer
-_jammer = (nearestObjects[player, _JammerCheckClasses, call EPOCH_MaxJammerRange]) select {player distance _x < (getnumber (_JammerConfig >> (typeof _x) >> "buildingJammerRange"))};
+_jammer = (nearestObjects[player, _JammerCheckClasses, _minJammerDistance]-[_obj]);
 if !(_jammer isEqualTo []) then {
 	if (_objType in _JammerCheckClasses) then {
 		{
@@ -79,7 +80,7 @@ if !(_jammer isEqualTo []) then {
 	}
 	else {
 		{
-			if (alive _x) exitWith{
+			if (alive _x && player distance _x < (getnumber (_JammerConfig >> (typeof _x) >> "buildingJammerRange"))) exitWith{
 				_nearestJammer = _x;
 				_JammerConfig = (_JammerConfig >> (typeof _nearestJammer));
 			};
