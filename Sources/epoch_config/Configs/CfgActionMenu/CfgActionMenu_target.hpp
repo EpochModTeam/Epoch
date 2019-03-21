@@ -78,7 +78,7 @@ class tra_shop
 
 class player_takeCrypto
 {
-	condition = "dyna_isDeadPlayer || (dyna_cursorTarget getVariable [""Crypto"",0]) > 0";
+	condition = "dyna_isDeadPlayer || !(((nearestobjects [player,[],5]) select {(_x getvariable ['Crypto',0]) > 0}) isEqualTo [])";
 	action = "dyna_cursorTarget call EPOCH_takeCrypto;";
 	icon = "x\addons\a3_epoch_code\Data\UI\buttons\krypto.paa";
 	tooltip = "Take Crypto";

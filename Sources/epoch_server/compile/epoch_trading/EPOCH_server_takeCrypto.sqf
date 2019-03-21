@@ -15,21 +15,21 @@
 //[[[cog import generate_private_arrays ]]]
 private ["_getCrypto"];
 //[[[end]]]
-params ["_player",["_token","",[""]],"_object"];
+params ["_player",["_token","",[""]],["_CryptoItems",[]]];
 
 if !([_player,_token] call EPOCH_server_getPToken) exitWith {};
-if (isNull _object) exitWith {};
-if (_player distance _object > 10) exitWith {};
 
-_getCrypto = _object getVariable["Crypto", 0];
-if (_getCrypto > 0) then {
-	// remove crypto from object
-	_object setVariable["Crypto", nil, true];
-	if (_object getvariable ["RemoveOnTake",false]) then {
-		deletevehicle _object;
+_getCrypto = 0;
+{
+	if (_player distance _x < 10) then {
+		_getCrypto = _getCrypto + (_x getVariable ["Crypto", 0]);
+		_x setVariable ["Crypto", nil, true];
+		if (_x getvariable ["RemoveOnTake",false]) then {
+			deletevehicle _x;
+		};
 	};
-    // send data back to player
+} foreach _CryptoItems;
+if (_getCrypto > 0) then {
 	[_player,_getCrypto] call EPOCH_server_effectCrypto;
-	// debug and logging.
-	diag_log format["Epoch: ADMIN: %1 picked up %2 Crypto from object %3 with puid %4 at %5", getPlayerUID _player, _getCrypto, [_object, typeOf _object],_object getVariable['PUID', ''],getposATL _object];
+	diag_log format["Epoch: ADMIN: %1 picked up %2 Crypto at %3", getPlayerUID _player, _getCrypto, getposATL _player];
 };
