@@ -196,6 +196,7 @@ class CfgBaseBuilding
     };
     class PlotPole_SIM_EPOCH : PlotPole_EPOCH
     {
+        upgradeBuilding[] = {};
         removeParts[] = {};
     };
     class PlotPole_M_EPOCH : Default
@@ -209,6 +210,7 @@ class CfgBaseBuilding
     };
     class PlotPole_M_SIM_EPOCH : PlotPole_M_EPOCH
     {
+        upgradeBuilding[] = {};
         removeParts[] = {};
     };
     class PlotPole_L_EPOCH : Default
@@ -222,6 +224,7 @@ class CfgBaseBuilding
     };
     class PlotPole_L_SIM_EPOCH : PlotPole_L_EPOCH
     {
+        upgradeBuilding[] = {};
         removeParts[] = {};
     };
     class PlotPole_XL_EPOCH : Default
@@ -235,6 +238,7 @@ class CfgBaseBuilding
     };
     class PlotPole_XL_SIM_EPOCH : PlotPole_XL_EPOCH
     {
+        upgradeBuilding[] = {};
         removeParts[] = {};
     };
     class PlotPole_XXL_EPOCH : Default
@@ -248,6 +252,7 @@ class CfgBaseBuilding
     };
     class PlotPole_XXL_SIM_EPOCH : PlotPole_XXL_EPOCH
     {
+        upgradeBuilding[] = {};
         removeParts[] = {};
     };
     class WoodRamp_EPOCH : Default
