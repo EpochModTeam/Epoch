@@ -7,6 +7,7 @@ All changes for [Arma 3](https://arma3.com/) [Epoch Mod](https://epochmod.com) a
 - On entering temp Vehicles, Payers will get a hint "Vehicle will despawn after restart"
 - 2nd Variant of a lockable Safe "GunSafe_EPOCH"
 - License Plates of Vehicles can now be changed by Dyna-Menu (Space-Menu)
+- Put Krypto to ground (within Inventory)
 ### Fixed
 - Prevent Traders from spawning on containers
 - Advanced Vehicle Repair was not working as expected within custom "SafeZones"
