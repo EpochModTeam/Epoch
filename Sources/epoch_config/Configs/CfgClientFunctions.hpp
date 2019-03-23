@@ -215,6 +215,7 @@ class CfgClientFunctions
 			class equip {};
 			class itemTypeSlot {};
 			class usedItemRepack {};
+			class CryptoButtons {};
 		};
 		class servicepoint
 		{

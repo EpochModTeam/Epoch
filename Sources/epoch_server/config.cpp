@@ -129,6 +129,7 @@ class CfgServerFunctions
 			class server_deleteGlobalMarkerSet {};
 			class server_isNearChecks {};
 			class server_DefuseBomb {};
+			class server_PutCrypto {};
 		};
 		class epoch_missions {
 			class Server_createObject {};
