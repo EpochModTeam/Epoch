@@ -84,6 +84,7 @@ class CfgLootTable_MAD
 	{
 		items[] = {
 				{ { "ItemSafe", "magazine" }, 1 },
+//				{ { "ItemSafe_s", "magazine" }, 1 },	// Variant with less Load than the normal Safe
 				{ { "ItemGunSafe", "magazine" }, 1 }
 		};
 	};

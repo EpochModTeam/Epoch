@@ -330,6 +330,11 @@ class CfgPricing
         price = 1250;
         tax = 0.5;
     };
+    class ItemSafe_s
+    {
+        price = 1250;
+        tax = 0.5;
+    };
     class ItemGunSafe
     {
         price = 1250;

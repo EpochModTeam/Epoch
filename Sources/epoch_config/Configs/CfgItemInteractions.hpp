@@ -249,6 +249,10 @@ class CfgItemInteractions
     {
         buildClass = "Safe_SIM_EPOCH";
     };
+    class ItemSafe_s : Item_Build_base
+    {
+        buildClass = "Safe_s_SIM_EPOCH";
+    };
     class ItemGunSafe : Item_Build_base
     {
         buildClass = "GunSafe_SIM_EPOCH";
