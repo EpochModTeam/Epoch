@@ -88,6 +88,7 @@ forceRestartTime      = 14400; 			// 4 hour restarts
 // BaseBuilding
 	StorageSlotsLimit 	= 1500; 		// Max storage slots allowed. Warning! Higher the number lower performance.
 	BuildingSlotsLimit 	= 1500; 		// Max building slots allowed. Warning! Higher the number lower performance.
+	AutoLockStorages	= "false";		// Auto Lock Lockable Storages on Server Start / Restart (if true, unlocked storages will get locked after restarts)
 	UseIndestructible 	= "false";		// Enable / Disable Indestructible BaseObjects
 	IndestructibleBaseObjects[] = 	{	// Can be Names or Classes
 										"Constructions_static_F",
