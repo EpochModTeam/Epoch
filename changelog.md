@@ -12,6 +12,7 @@ All changes for [Arma 3](https://arma3.com/) [Epoch Mod](https://epochmod.com) a
 - Prevent Traders from spawning on containers
 - Advanced Vehicle Repair was not working as expected within custom "SafeZones"
 - Reset Toxic after revive
+- Delay for accurate position on swap building while basebuilding
 ### Changed
 ### Server Owners
 - Configs for upgradeable PlotPoles are located in ("CfgEpochclient" >> "CfgJammers")
@@ -21,6 +22,8 @@ All changes for [Arma 3](https://arma3.com/) [Epoch Mod](https://epochmod.com) a
    - Example CfgBaseBuilding:
       - upgradeBuilding[] = {{"PlotPole_L_EPOCH",{{"Krypto",1500}}}};
 - Fixed Ban for "commandMenu - RscMenuEngage"
+- New var "AutoLockStorages" in epochconfig.hpp to auto-lock storages on server start
+- Added optional safe variant with less Load than the normal Safe "ItemSafe_s"
 
 ## [1.3.0.0] - 2019-01-31
 ### Added
