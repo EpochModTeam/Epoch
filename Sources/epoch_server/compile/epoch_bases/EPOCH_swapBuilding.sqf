@@ -33,6 +33,7 @@ if (!isNull _object && !(_class isEqualTo "")) then {
             };
             case 1: {
                 _newObj attachTo [_object,[0,0,0]];
+		detach _newObj;
             };
 			/*
 			case 2: {
