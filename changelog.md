@@ -4,10 +4,14 @@ All changes for [Arma 3](https://arma3.com/) [Epoch Mod](https://epochmod.com) a
 ## [1.3.1.0] - 2019-xx-xx
 ### Added
 - Upgradeable PlotPoles (S/M/L/XL/XXL) with different Range / Limits
+   - https://plays.tv/video/5c9925a6770ac037e4
 - On entering temp Vehicles, Payers will get a hint "Vehicle will despawn after restart"
 - 2nd Variant of a lockable Safe "GunSafe_EPOCH"
+   - https://plays.tv/video/5c9926466b9589c5c6
 - License Plates of Vehicles can now be changed by Dyna-Menu (Space-Menu)
+   - https://plays.tv/video/5c99293fdea086f319
 - Put Krypto to ground (within Inventory)
+   - https://plays.tv/video/5c992604c58e543366
 ### Fixed
 - Prevent Traders from spawning on containers
 - Advanced Vehicle Repair was not working as expected within custom "SafeZones"
