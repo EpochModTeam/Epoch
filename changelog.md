@@ -1,7 +1,7 @@
 # Change Log
 All changes for [Arma 3](https://arma3.com/) [Epoch Mod](https://epochmod.com) are listed in this changelog.
 
-## [1.3.1.0] - 2019-xx-xx
+## [1.3.1.0] - 2019-03-28
 ### Added
 - Upgradeable PlotPoles (S/M/L/XL/XXL) with different Range / Limits
    - https://plays.tv/video/5c9925a6770ac037e4
