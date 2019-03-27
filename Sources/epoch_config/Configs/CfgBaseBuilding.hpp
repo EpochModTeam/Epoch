@@ -187,7 +187,7 @@ class CfgBaseBuilding
     };
     class PlotPole_EPOCH : Default
     {
-        upgradeBuilding[] = {{"PlotPole_L_EPOCH",{{"ItemCorrugatedLg",5},{"EnergyPackLg",2},{"CircuitParts",3},{"ItemBattery",3},{"ItemPipe",1}}}};
+        upgradeBuilding[] = {{"PlotPole_M_EPOCH",{{"ItemCorrugatedLg",5},{"EnergyPackLg",2},{"CircuitParts",3},{"ItemBattery",3},{"ItemPipe",1}}}};
         removeParts[] = {{"KitPlotPole",1}};
         GhostPreview = "PlotPole_EPOCH";
         staticClass = "PlotPole_EPOCH";
@@ -201,7 +201,7 @@ class CfgBaseBuilding
     };
     class PlotPole_M_EPOCH : Default
     {
-        upgradeBuilding[] = {{"PlotPole_XL_EPOCH",{{"ItemCorrugatedLg",5},{"EnergyPackLg",2},{"CircuitParts",3},{"ItemBattery",3},{"ItemPipe",1}}}};
+        upgradeBuilding[] = {{"PlotPole_L_EPOCH",{{"ItemCorrugatedLg",5},{"EnergyPackLg",2},{"CircuitParts",3},{"ItemBattery",3},{"ItemPipe",1}}}};
         removeParts[] = {{"KitPlotPole_M",1}};
         GhostPreview = "PlotPole_M_EPOCH";
         staticClass = "PlotPole_M_EPOCH";
@@ -229,7 +229,7 @@ class CfgBaseBuilding
     };
     class PlotPole_XL_EPOCH : Default
     {
-        upgradeBuilding[] = {};
+        upgradeBuilding[] = {{"PlotPole_XXL_EPOCH",{{"ItemCorrugatedLg",5},{"EnergyPackLg",2},{"CircuitParts",3},{"ItemBattery",3},{"ItemPipe",1}}}};
         removeParts[] = {{"KitPlotPole_XL",1}};
         GhostPreview = "PlotPole_XL_EPOCH";
         staticClass = "PlotPole_XL_EPOCH";
