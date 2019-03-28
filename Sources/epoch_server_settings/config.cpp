@@ -20,7 +20,7 @@ class CfgPatches {
 		units[] = {};
 		weapons[] = {};
 		requiredVersion = 0.1;
-		epochVersion = "1.3.0";
+		epochVersion = "1.3.1";
 		requiredAddons[] = {};
 		#include "build.hpp"
 	};
@@ -66,7 +66,7 @@ class CfgEpoch
 		radioactiveLocationsCount = 3;
 		
 		// BlackList radioactive locations spawn by object and distance
-		radioactiveLocBLObjects[] = {"PlotPole_EPOCH"};
+		radioactiveLocBLObjects[] = {};		// PlotPoles are already blacklisted by script
 		radioactiveLocBLDistance = 500;
 		
 		// Custom Locations for Radiation
@@ -81,7 +81,7 @@ class CfgEpoch
 		traderHomes[] = {"Building"};
 		traderUniforms[] = {"U_OG_leader", "U_C_Poloshirt_stripped", "U_C_Poloshirt_blue", "U_C_Poloshirt_burgundy", "U_C_Poloshirt_tricolour", "U_C_Poloshirt_salmon", "U_C_Poloshirt_redwhite", "U_C_Poor_1", "U_C_WorkerCoveralls", "U_C_Journalist", "U_C_Scientist", "U_OrestesBody", "U_Chav_EPOCH"};
 //		TraderMinDistance = 1500;		// Min distance between Traders. If not defined, Server will calculate it by MapSize
-		traderblockblds[] = {"pier","bridge","fireescape","medevac_house","pillboxbunker"};		// If a building include this chars in the classname (tolower!!!) they will be blocked for Traders
+		traderblockblds[] = {"pier","bridge","fireescape","medevac_house","pillboxbunker","containerine"};		// If a building include this chars in the classname (tolower!!!) they will be blocked for Traders
 		
 		// Debug Box 
 		telePos[] = {};

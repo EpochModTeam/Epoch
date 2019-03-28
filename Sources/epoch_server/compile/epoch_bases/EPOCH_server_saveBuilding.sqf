@@ -53,6 +53,11 @@ if (isText _staticClassConfig) then {
 
 			if (getNumber(_cfgBaseBuilding >> _staticClass >> "isSecureStorage") == 1) then{
 				_storageObj setVariable["EPOCH_Locked", false, true];
+				if (_storageObj isKindOf "GunSafe_EPOCH") then {
+					{
+						_storageObj animate [_x,1];
+					} foreach ["door1","door2","handle1","handle2"];
+				};
 			};
 
 			_storageObj setVariable["STORAGE_OWNERS", [_playerUID]];
@@ -69,7 +74,7 @@ if (isText _staticClassConfig) then {
 	} else {
 
 		// TODO: optimize by using config var
-		if (_vehicle isKindOf "ThingX" || _vehicle isKindOf "Const_Ghost_EPOCH" || _vehicle isKindOf "PlotPole_EPOCH") then {
+		if (_vehicle isKindOf "ThingX" || _vehicle isKindOf "Const_Ghost_EPOCH" || ({_vehicle isKindOf _x} count (call EPOCH_JammerClasses) > 0)) then {
 
 			_objSlot = _vehicle getVariable["BUILD_SLOT", -1];
 			if (_objSlot == -1) then{
@@ -100,7 +105,8 @@ if (isText _staticClassConfig) then {
 				else {
 					_newVehicle setVariable["BUILD_OWNER", _playerUID, true];
 				};
-				if (_newVehicle isKindOf "PlotPole_EPOCH") then {
+				if ({_newVehicle isKindOf _x} count (call EPOCH_JammerClasses) > 0) then {
+					EPOCH_Plotpoles = EPOCH_Plotpoles - [ObjNull];
 					EPOCH_Plotpoles pushBackUnique _newVehicle;
 					publicvariable "EPOCH_Plotpoles";
 				};				

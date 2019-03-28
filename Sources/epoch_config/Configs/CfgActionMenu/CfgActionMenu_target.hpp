@@ -78,7 +78,7 @@ class tra_shop
 
 class player_takeCrypto
 {
-	condition = "dyna_isDeadPlayer || (dyna_cursorTarget getVariable [""Crypto"",0]) > 0";
+	condition = "dyna_isDeadPlayer || !(((nearestobjects [player,[],5]) select {(_x getvariable ['Crypto',0]) > 0}) isEqualTo [])";
 	action = "dyna_cursorTarget call EPOCH_takeCrypto;";
 	icon = "x\addons\a3_epoch_code\Data\UI\buttons\krypto.paa";
 	tooltip = "Take Crypto";
@@ -101,14 +101,14 @@ class player_trade_accept
 //User action replacement
 class maintain_jammer
 {
-	condition = "dyna_cursorTargetType isEqualTo 'PlotPole_EPOCH' && (damage dyna_cursorTarget < 1)";
+	condition = "dyna_cursorTargetType in (call EPOCH_JammerClasses) && (damage dyna_cursorTarget < 1)";
 	action = "dyna_cursorTarget call EPOCH_maintainIT;";
 	icon = "x\addons\a3_epoch_code\Data\UI\buttons\build_maintain.paa";
 	tooltip = "Maintain";
 };
 class select_jammer
 {
-	condition = "dyna_cursorTargetType isEqualTo 'PlotPole_EPOCH' && (damage dyna_cursorTarget < 1)";
+	condition = "dyna_cursorTargetType in (call EPOCH_JammerClasses) && (damage dyna_cursorTarget < 1)";
 	action = "[dyna_cursorTarget,player,Epoch_personalToken] remoteExec [""EPOCH_server_makeSP"",2];";
 	icon = "x\addons\a3_epoch_code\Data\UI\buttons\spawnpoint.paa";
 	tooltip = "Make Spawnpoint";
@@ -131,14 +131,14 @@ class lock_lockbox
 };
 class unlock_safe
 {
-	condition = "(dyna_cursorTargetType in ['Safe_EPOCH','SafeProxy_EPOCH']) && (dyna_cursorTarget getVariable ['EPOCH_Locked',false])";
+	condition = "(dyna_cursorTargetType in ['Safe_EPOCH','SafeProxy_EPOCH','GunSafe_EPOCH']) && (dyna_cursorTarget getVariable ['EPOCH_Locked',false])";
 	action = "dyna_cursorTarget call Epoch_secureStorageHandler";
 	icon = "x\addons\a3_epoch_code\Data\UI\buttons\pad_can_unlock.paa";
 	tooltip = "Unlock Safe";
 };
 class lock_safe
 {
-	condition = "(dyna_cursorTargetType in ['Safe_EPOCH','SafeProxy_EPOCH']) && !(dyna_cursorTarget getVariable ['EPOCH_Locked',false])";
+	condition = "(dyna_cursorTargetType in ['Safe_EPOCH','SafeProxy_EPOCH','GunSafe_EPOCH']) && !(dyna_cursorTarget getVariable ['EPOCH_Locked',false])";
 	action = "dyna_cursorTarget call Epoch_secureStorageHandler";
 	icon = "x\addons\a3_epoch_code\Data\UI\buttons\pad_cannot_lock.paa";
 	tooltip = "Lock Safe";
@@ -154,7 +154,7 @@ class pack_lockbox
 };
 class pack_safe
 {
-	condition = "(dyna_cursorTargetType in ['Safe_EPOCH','SafeProxy_EPOCH']) && (dyna_cursorTarget getVariable ['EPOCH_Locked',false])";
+	condition = "(dyna_cursorTargetType in ['Safe_EPOCH','SafeProxy_EPOCH','GunSafe_EPOCH']) && (dyna_cursorTarget getVariable ['EPOCH_Locked',false])";
 	action = "[dyna_cursorTarget,player,Epoch_personalToken] remoteExec ['EPOCH_server_packStorage',2];";
 	icon = "x\addons\a3_epoch_code\Data\UI\buttons\build_pack.paa";
 	tooltip = "Pack Safe";
@@ -529,6 +529,13 @@ class VehMaintanance
 			iconcode = "gettext (configfile >> 'CfgVehicles' >> (Ignatz_VehicleUpgradeArray select 4 select 1) >> 'picture')";
 			tooltipcode = "format ['Upgrade to %1 - %2',(Ignatz_VehicleUpgradeArray select 4 select 2),(Ignatz_VehicleUpgradeArray select 4 select 3)]";
 		};
+	};
+	class ChangePlate
+	{
+		condition = "{dyna_cursorTarget iskindof _x} count ['Van_01_base_F','Van_02_base_F','SUV_01_base_F','Hatchback_01_base_F','Offroad_01_base_F','Offroad_02_base_F'] > 0";
+		action = "[dyna_cursorTarget,player] spawn EPOCH_vehicle_ChangeLicensePlate";
+		icon = "x\addons\a3_epoch_code\Data\UI\buttons\Epoch_LicensePlate.paa";
+		tooltip = "Change License Plate";
 	};
 };
 

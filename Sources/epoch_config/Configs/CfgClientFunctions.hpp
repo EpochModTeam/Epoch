@@ -171,6 +171,7 @@ class CfgClientFunctions
 			class fnc_setVariableLimited {};
 			class fnc_createLocalMarkerSet {};
 			class fnc_deleteLocalMarkerSet {};
+			class fnc_AnimateScheduled {};
 		};
 		class environment
 		{
@@ -192,6 +193,7 @@ class CfgClientFunctions
 			class client_VehicleMaintananceDo {};
 			class vehicle_checkTurretAmmo {};
 			class vehicle_removeTurretAmmo {};
+			class vehicle_ChangeLicensePlate {};
 		};
 		class missions
 		{
@@ -213,6 +215,7 @@ class CfgClientFunctions
 			class equip {};
 			class itemTypeSlot {};
 			class usedItemRepack {};
+			class CryptoButtons {};
 		};
 		class servicepoint
 		{

@@ -8,7 +8,7 @@
 
 	_position - position on map
 	_traderCheck - BOOL - check _position distance near ProtectionZone_Invisible_F
-	_jammerCheck - BOOL - check _position distance near PlotPole_EPOCH
+	_jammerCheck - BOOL - check _position distance near PlotPoles
 	_playerCheck - BOOL - check _position distance near other Players
 	_others - ARRAY - positions to check with _distFromOthers
 	_distFromOthers - NUMBER - How far away from _others array in meters
@@ -30,7 +30,7 @@ if(_traderCheck)then{
 
 //CHECK FOR JAMMERS IN THE AREA WITHIN CONFIG RANGE
 if(_jammerCheck)then{
-	_jammers = nearestObjects[_position, ["PlotPole_EPOCH"], _distFromJammers];
+	_jammers = nearestObjects[_position, call EPOCH_JammerClasses, _distFromJammers];
 	if(count _jammers > 0) then {
 		_return = false;
 	};

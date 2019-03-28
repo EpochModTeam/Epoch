@@ -88,6 +88,7 @@ forceRestartTime      = 14400; 			// 4 hour restarts
 // BaseBuilding
 	StorageSlotsLimit 	= 1500; 		// Max storage slots allowed. Warning! Higher the number lower performance.
 	BuildingSlotsLimit 	= 1500; 		// Max building slots allowed. Warning! Higher the number lower performance.
+	AutoLockStorages	= "false";		// Auto Lock Lockable Storages on Server Start / Restart (if true, unlocked storages will get locked after restarts)
 	UseIndestructible 	= "false";		// Enable / Disable Indestructible BaseObjects
 	IndestructibleBaseObjects[] = 	{	// Can be Names or Classes
 										"Constructions_static_F",
@@ -107,6 +108,8 @@ forceRestartTime      = 14400; 			// 4 hour restarts
 	UseDeSimulateObjects	=	"true";	// Disable Simulation for specifed Base Objects
 	DeSimulateObjects[] =	{			// Base Objects to disable Simulation. Can be Names or Classes
 								"PlotPole_EPOCH",
+								"PlotPole_L_EPOCH",
+								"PlotPole_XL_EPOCH",
 								"WoodFoundation_EPOCH","Foundation_EPOCH",
 								"WoodQuarterFloor_EPOCH","WoodHalfFloor_EPOCH","WoodFloor_EPOCH",
 								"MetalQuarterFloor_EPOCH","MetalHalfFloor_EPOCH","MetalFloor_EPOCH",

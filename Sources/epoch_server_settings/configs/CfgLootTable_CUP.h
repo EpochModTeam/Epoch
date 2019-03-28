@@ -80,6 +80,14 @@ class CfgLootTable_CUP
 				{ { "FAK", "magazine" }, 20 }
 		};
 	};
+	class Safes
+	{
+		items[] = {
+				{ { "ItemSafe", "magazine" }, 1 },
+//				{ { "ItemSafe_s", "magazine" }, 1 },	// Variant with less Load than the normal Safe
+				{ { "ItemGunSafe", "magazine" }, 1 }
+		};
+	};
 	class Repairs
 	{
 		items[] = {
@@ -424,7 +432,7 @@ class CfgLootTable_CUP
 				{ { "ItemBattery", "magazine" }, 5 },
 				{ { "ItemCables", "magazine" }, 5 },
 				{ { "ItemPipe", "magazine" }, 5 },
-				{ { "ItemSafe", "magazine" }, 1 },
+				{ { "Safes", "CfgLootTable" }, 1 },
 				{ { "ItemBarrelE", "magazine" }, 1 }
 		};
 	};
@@ -433,7 +441,7 @@ class CfgLootTable_CUP
 	{
 		items[] = {
 				{ { "VehicleDocs", "CfgLootTable" }, 4 },
-				{ { "ItemSafe", "magazine" }, 1 },
+				{ { "Safes", "CfgLootTable" }, 1 },
 				{ { "ItemLockbox", "magazine" }, 4 },
 				{ { "jerrycan_epoch", "magazine" }, 5 },
 				{ { "CircuitParts", "magazine" }, 6 },
@@ -1550,7 +1558,7 @@ class CfgLootTable_CUP
 				{ { "KitCinderWall", "magazine" }, 5 },
 				{ { "KitFoundation", "magazine" }, 5 },
 				{ { "KitWoodFoundation", "magazine" }, 14 },
-				{ { "ItemSafe", "magazine" }, 1 }
+				{ { "Safes", "CfgLootTable" }, 1 }
 		};
 	};
 
@@ -1563,7 +1571,7 @@ class CfgLootTable_CUP
 				{ { "BaseBuilding", "CfgLootTable" }, 20 },
 				{ { "GenericLarge", "CfgLootTable" }, 24 },
 				{ { "ItemLockbox", "magazine" }, 4 },
-				{ { "ItemSafe", "magazine" }, 1 },
+				{ { "Safes", "CfgLootTable" }, 1 },
 				{ { "Generic", "CfgLootTable" }, 10 },
 				{ { "Tools", "CfgLootTable" }, 19 }
 		};

@@ -23,7 +23,7 @@
 	NOTHING
 */
 //[[[cog import generate_private_arrays ]]]
-private ["_buildingAllowed","_buildingCountLimit","_buildingJammerRange","_canUpgrade","_canUpgradePartCount","_config","_config2","_countdoors","_countgates","_doors","_gates","_jammer","_maxdoors","_maxgates","_missingCount","_missingParts","_nearestJammer","_ownedJammerExists","_part","_partCheck","_removedPartCount","_req","_return","_stability","_targeter","_upgrade","_upgradeParts","_upgrades","_upgradeto"];
+private ["_buildingAllowed","_canUpgrade","_canUpgradePartCount","_config","_config2","_countdoors","_countgates","_doors","_gates","_jammer","_maxdoors","_maxgates","_missingCount","_missingParts","_nearestJammer","_ownedJammerExists","_part","_partCheck","_removedPartCount","_req","_return","_stability","_targeter","_upgrade","_upgradeParts","_upgrades","_upgradeto","_buildingJammerRange","_JammerConfig","_CryptoCosts"];
 //[[[end]]]
 params [
 	["_object",objNull,[objNull]],
@@ -37,13 +37,6 @@ if (isNull _object) exitWith {false};
 _buildingAllowed = true;
 _ownedJammerExists = false;
 _nearestJammer = objNull;
-_config = 'CfgEpochClient' call EPOCH_returnConfig;
-_buildingJammerRange = getNumber(_config >> "buildingJammerRange");
-_buildingCountLimit = getNumber(_config >> "buildingCountLimit");
-
-// defaults
-if (_buildingJammerRange == 0) then { _buildingJammerRange = 75; };
-if (_buildingCountLimit == 0) then { _buildingCountLimit = 200; };
 
 EPOCH_buildOption = 1;
 
@@ -58,38 +51,25 @@ if (_stability > 0) exitWith{
 	};
 };
 
-_jammer = nearestObjects[player, ["PlotPole_EPOCH"], _buildingJammerRange];
+_jammer = (nearestObjects[_object, call EPOCH_JammerClasses, call EPOCH_MaxJammerRange]) select {alive _x && {_object distance _x < (getnumber (getmissionconfig "CfgEpochClient" >> "CfgJammers" >> (typeof _x) >> "buildingJammerRange"))}};
 
 if !(_jammer isEqualTo[]) then {
-		{
-			if (alive _x) exitWith{
-				_nearestJammer = _x;
-			};
-		} foreach _jammer;
-
-		if !(isNull _nearestJammer) then {
-			if ((_nearestJammer getVariable["BUILD_OWNER", "-1"]) in[getPlayerUID player, Epoch_my_GroupUID]) then {
-				_ownedJammerExists = true;
-			}
-			else {
-				_buildingAllowed = false;
-				["Upgrade Disallowed: Frequency Blocked", 5] call Epoch_message;
-			};
-		};
+	_nearestJammer = _jammer select 0;
+	if ((_nearestJammer getVariable["BUILD_OWNER", "-1"]) in[getPlayerUID player, Epoch_my_GroupUID]) then {
+		_ownedJammerExists = true;
+	}
+	else {
+		_buildingAllowed = false;
+		["Upgrade Disallowed: Frequency Blocked", 5] call Epoch_message;
+	};
 };
 if !(_buildingAllowed)exitWith{ false };
 
-if (_object isKindOf "Constructions_static_F") then {
+if (_object isKindOf "Constructions_static_F" || {(typeof _object) in (call EPOCH_JammerClasses)}) then {
 
 	// take upgrade item from player here
 	_config = 'CfgBaseBuilding' call EPOCH_returnConfig;
-	_config2 = 'CfgEpochClient' call EPOCH_returnConfig;
-	_buildingJammerRange = getNumber(_config2 >> "buildingJammerRange");
-	_maxdoors = getNumber(_config2 >> "maxdoors");
-	_maxgates = getNumber(_config2 >> "maxgates");
-	if (_buildingJammerRange == 0) then {_buildingJammerRange = 150};
-	if (_maxdoors == 0) then {_maxdoors = 12};
-	if (_maxgates == 0) then {_maxgates = 10};
+	_config2 = getmissionconfig "CfgEpochClient" >> "CfgJammers" >> (typeof _object);
 
 	_upgrades = getArray(_config >> (typeOf _object) >> "upgradeBuilding");
 	if !(_upgrades isEqualTo []) then {
@@ -102,10 +82,17 @@ if (_object isKindOf "Constructions_static_F") then {
 		_canUpgrade = true;
 		_canUpgradePartCount = 0;
 		_missingParts = "Missing: ";
+		_CryptoCosts = 0;
 		{
 			_part = _x select 0;
 			_req = _x select 1;
-			_partCheck = {_x == _part} count (magazines player);
+			_partCheck = if (_part IsEqualTo "Krypto") then {
+				_CryptoCosts = _CryptoCosts + _req;
+				EPOCH_PlayerCrypto
+			}
+			else {
+				{_x == _part} count (magazines player)
+			};
 
 			if (_partCheck < _req) then {
 				_missingCount = _req - _partCheck;
@@ -116,9 +103,16 @@ if (_object isKindOf "Constructions_static_F") then {
 			_canUpgradePartCount = _canUpgradePartCount + _req;
 		} forEach _upgradeParts;
 
-		_doors = ["WoodLargeWallDoorL_EPOCH","WoodWall4_EPOCH","CinderWallDoorwHatch_EPOCH","WoodStairs3_EPOCH","JailWallDoor_EPOCH"];
-		_gates = ["CinderWallGarage_EPOCH","WoodWallGarage_EPOCH","MetalWallGarage_EPOCH"];
 		if (_canUpgrade) then {
+			_doors = ["CfgEpochClient", "DoorClasses", ["WoodLargeWallDoorL_EPOCH","WoodWall4_EPOCH","CinderWallDoorwHatch_EPOCH","WoodStairs3_EPOCH","JailWallDoor_EPOCH"]] call EPOCH_fnc_returnConfigEntryV2;
+			_gates = ["CfgEpochClient", "GateClasses", ["CinderWallGarage_EPOCH","WoodWallGarage_EPOCH","MetalWallGarage_EPOCH"]] call EPOCH_fnc_returnConfigEntryV2;
+			_JammerConfig = getmissionconfig "CfgEpochClient" >> "CfgJammers" >> (typeof _nearestJammer);
+			_buildingJammerRange = getnumber (_JammerConfig >> "buildingJammerRange");
+			_maxdoors = getnumber (_JammerConfig >> "maxdoors");
+			_maxgates = getnumber (_JammerConfig >> "maxgates");
+			if (_maxdoors == 0) then {_maxdoors = 12};
+			if (_maxgates == 0) then {_maxgates = 10};
+
 			_upgradeto = _upgrade select 0;
 			if (_upgradeto in _doors) then {
 				_countdoors = count (nearestobjects [_nearestJammer,_doors,_buildingJammerRange]);
@@ -139,17 +133,23 @@ if (_object isKindOf "Constructions_static_F") then {
 		_removedPartCount = 0;
 		if (_canUpgrade) then {
 			{
-				for "_i" from 1 to (_x select 1) do {
-					if ((_x select 0) in (magazines player)) then {
-						player removeMagazine (_x select 0);
-						_removedPartCount = _removedPartCount + 1;
+				_x params ["_part","_req"];
+				if !(_part IsEqualTo "Krypto") then {
+					for "_i" from 1 to _req do {
+						if (_part in (magazines player)) then {
+							player removeMagazine _part;
+							_removedPartCount = _removedPartCount + 1;
+						};
 					};
+				}
+				else {
+					_removedPartCount = _removedPartCount + _req;
 				};
 			} forEach _upgradeParts;
 
 			if (_canUpgradePartCount == _removedPartCount) then {
 				// send to server for upgrade
-				[_object,player,Epoch_upgradeIndex,Epoch_personalToken] remoteExec ["EPOCH_server_upgradeBUILD",2];
+				[_object,player,Epoch_upgradeIndex,Epoch_personalToken,_CryptoCosts] remoteExec ["EPOCH_server_upgradeBUILD",2];
 				Epoch_upgradeIndex = nil;
 				_return = true;
 				["Upgraded", 5] call Epoch_message;

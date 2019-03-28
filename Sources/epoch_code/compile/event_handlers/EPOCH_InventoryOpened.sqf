@@ -52,14 +52,17 @@ else {
 		_savecontainer = _sec;
 	};
 };
-if (!isnull _savecontainer && !_blocked) then {
+if (!_blocked) then {
 	_savecontainer spawn {
 		waituntil {!isnull (findDisplay 602)};
-		while {!isnull (findDisplay 602)} do {
-			_stored = [itemcargo _this, magazinecargo _this, backpackcargo _this];
-			waituntil {uisleep 0.5; !(_stored isequalto [itemcargo _this, magazinecargo _this, backpackcargo _this]) || isnull (findDisplay 602)};
-			if !(_stored isequalto [itemcargo _this, magazinecargo _this, backpackcargo _this]) then {
-				_this call EPOCH_interact;
+		call EPOCH_CryptoButtons;
+		if (!isnull _this) then {
+			while {!isnull (findDisplay 602)} do {
+				_stored = [itemcargo _this, magazinecargo _this, backpackcargo _this];
+				waituntil {uisleep 0.5; !(_stored isequalto [itemcargo _this, magazinecargo _this, backpackcargo _this]) || isnull (findDisplay 602)};
+				if !(_stored isequalto [itemcargo _this, magazinecargo _this, backpackcargo _this]) then {
+					_this call EPOCH_interact;
+				};
 			};
 		};
 	};
