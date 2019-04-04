@@ -54,7 +54,10 @@ if !(_source isEqualTo _unit) then {
 			};
 		};
 		case "B_KnockOut": {
-			_unit setUnconscious true;
+			if !(lifeState _unit == "INCAPACITATED") then {
+				EPOCH_HandleDamageTimeOut = diag_ticktime + 1;
+				_unit setUnconscious true;
+			};
 		};
 	};
 };
