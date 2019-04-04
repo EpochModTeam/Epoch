@@ -1425,7 +1425,7 @@ class CfgBaseBuilding
         limitNearby = 2;
         isSecureStorage = 1;
     };
-    class Safe_s_SIM_EPOCH : Safe_EPOCH
+    class Safe_s_SIM_EPOCH : Safe_s_EPOCH
     {
         returnOnPack[] = {};
     };
