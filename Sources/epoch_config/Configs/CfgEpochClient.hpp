@@ -18,6 +18,8 @@ class CfgEpochClient
     ArmAVersion = 176;
 	debug = "true";  // true = enable extra rpt debug lines, false to disable
 
+	UseOldRevive = "false";		// Revive / Heal Player has been changed to use "HandleDamage" Eventhandler. If scripts are breaking it for you, set it to true (not recommended!)
+
 	antagonistRngChance = 100; // increase number to reduce chances and reduce to increase. Default 100
 	NuisanceMulti = 0.5;		// Multi for Nuisance increase on shooting - higher Nuisance effect at least antagonist spawn change. (0-1, default 0.5)
 
@@ -199,7 +201,7 @@ class CfgEpochClient
     displayAddEventHandler[] = {"keyDown","keyUp"};
     keyDown = "(_this call EPOCH_KeyDown)";
     keyUp = "(_this call EPOCH_KeyUp)";
-    addEventHandler[] = {"Respawn","Put","Take","InventoryClosed","InventoryOpened","FiredMan","Killed","HandleRating","HandleScore","GetInMan","GetOutMan","Hit","SeatSwitchedMan","FiredNear"};
+    addEventHandler[] = {"Respawn","Put","Take","InventoryClosed","InventoryOpened","FiredMan","Killed","HandleRating","HandleScore","HandleDamage","GetInMan","GetOutMan","Hit","SeatSwitchedMan","FiredNear"};
     Respawn = "(_this select 0) call EPOCH_clientRespawn";
     Put = "(_this select 1) call EPOCH_interact;_this call EPOCH_PutHandler;_this call Epoch_custom_EH_Put";
     Take = "(_this select 1) call EPOCH_interact;_this call EPOCH_UnisexCheck;_this call Epoch_custom_EH_Take";
@@ -209,7 +211,7 @@ class CfgEpochClient
     Killed = "_this call EPOCH_fnc_playerDeath;_this call Epoch_custom_EH_Killed";
     HandleRating = "0";
 	HandleScore = "";
-    HandleDamage = "";
+    HandleDamage = "_this call EPOCH_HandleDamage;_this call EPOCH_custom_EH_HandleDamage";
     HandleHeal = "";
     Dammaged = "";
     Hit = "_this call EPOCH_custom_EH_Hit";
