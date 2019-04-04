@@ -14,11 +14,11 @@
 */
 params ["_unit", "_selection", "_damage", "_source", "_projectile", "_hitIndex", "_instigator", "_hitPoint"];
 if !(_source isEqualTo _unit) then {
+	if ((missionnamespace getvariable ["EPOCH_HandleDamageTimeOut",diag_ticktime]) > diag_ticktime) exitwith {};	// prevent multiple actions here
 	switch _projectile do {
 		case "B_EnergyPack": {
 			if (_source distance _unit > 10) exitwith {};
 			if (missionnamespace getvariable ["EPOCH_OldRevive",false]) exitwith {};
-			if ((missionnamespace getvariable ["EPOCH_HandleDamageTimeOut",diag_ticktime]) > diag_ticktime) exitwith {};	// prevent multiple actions here
 			EPOCH_HandleDamageTimeOut = diag_ticktime + 0.1;
 			_attachments = handgunItems _source;
 			if ("Heal_EPOCH" in _attachments) then {
