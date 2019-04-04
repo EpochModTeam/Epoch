@@ -57,6 +57,7 @@ if !(_source isEqualTo _unit) then {
 			if !(lifeState _unit == "INCAPACITATED") then {
 				EPOCH_HandleDamageTimeOut = diag_ticktime + 1;
 				_unit setUnconscious true;
+				EPOCH_UnconsciousTime = diag_ticktime + 60 + (random 120);
 			};
 		};
 	};

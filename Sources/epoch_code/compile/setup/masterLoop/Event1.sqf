@@ -427,6 +427,13 @@ if (cameraview isequalto "GROUP") then {
 	vehicle player switchCamera "Internal";
 };
 
+if (lifeState player == "INCAPACITATED") then {
+	if ((missionnamespace getvariable ["EPOCH_UnconsciousTime",diag_ticktime]) < diag_ticktime) then {
+		player setUnconscious false;
+		player playMoveNow 'AmovPercMstpSnonWnonDnon';
+	};
+};
+
 // force update
 if (EPOCH_forceUpdateNow) then {
 	_forceUpdate = false;
