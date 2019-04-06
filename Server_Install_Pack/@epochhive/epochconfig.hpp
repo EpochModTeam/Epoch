@@ -68,6 +68,8 @@ forceRestartTime      = 14400; 			// 4 hour restarts
 		""  							// "NVG_EPOCH" or "radiation_mask_epoch"
 	};
 
+	UseCustomTextures = "false";		// if true, Vehicles and Building parts textures will be saved and loaded to the DB (Paintshop)
+
 // vehicles - Max vehicle slots is calculated from per vehicle limits below. Warning! Higher the number lower the performance.
 	immuneIfStartInBase = "true";			// Protect vehicles from damage in bases until first unlocked after restart
 	ReservedVehSlots = 50;				// Reserved Vehicle Slots (only needed, if you manually spawn in additional Vehicles - AdminTool / Blackmarket...)

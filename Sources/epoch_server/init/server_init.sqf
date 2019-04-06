@@ -169,6 +169,8 @@ for "_i" from 0 to 9 do {
     EPOCH_customChannels pushBack _index;
 };
 
+UseCustomTextures = ([_serverSettingsConfig, "UseCustomTextures", false] call EPOCH_fnc_returnConfigEntry);
+
 //Execute Server Functions
 diag_log "Epoch: Loading buildings";
 EPOCH_BuildingSlotsLimit call EPOCH_server_loadBuildings;

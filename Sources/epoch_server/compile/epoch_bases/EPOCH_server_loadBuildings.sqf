@@ -181,12 +181,20 @@ for "_i" from 0 to _this do {
 			};
 			_baseObj setVariable ["BUILD_SLOT", _i, true];
 
-			if (_textureSlot != 0) then {
-				// get texture path from index
-				_color = getArray (_cfgBaseBuilding >> _class >> "availableTextures");
-				if !(_color isEqualTo []) then {
-					_baseObj setObjectTextureGlobal [0, (_color select _textureSlot)];
-					_baseObj setVariable ["TEXTURE_SLOT", _textureSlot, true];
+			if (_arrCount >= 7 && (missionnamespace getvariable ["UseCustomTextures",false])) then {
+				_Textures = _arr select 6;
+				{
+					_baseObj setobjecttextureglobal [_foreachindex,_x];
+				} foreach _Textures;
+			}
+			else {
+				if (_textureSlot != 0) then {
+					// get texture path from index
+					_color = getArray (_cfgBaseBuilding >> _class >> "availableTextures");
+					if !(_color isEqualTo []) then {
+						_baseObj setObjectTextureGlobal [0, (_color select _textureSlot)];
+						_baseObj setVariable ["TEXTURE_SLOT", _textureSlot, true];
+					};
 				};
 			};
 
