@@ -2,7 +2,7 @@
 //[[[cog import generate_private_arrays ]]]
 private ["_newObj","_objectPos","_owner","_UpdatePlots"];
 //[[[end]]]
-params [["_class",""],["_object",objNull],["_method",1]];
+params [["_class",""],["_object",objNull],["_method",2]];
 _newObj = objNull;
 if (!isNull _object && !(_class isEqualTo "")) then {
     _objectPos = getPosWorld _object;
