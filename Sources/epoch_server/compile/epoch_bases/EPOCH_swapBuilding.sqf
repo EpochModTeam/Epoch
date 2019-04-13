@@ -28,20 +28,18 @@ if (!isNull _object && !(_class isEqualTo "")) then {
         switch (_method) do {
             case 0: {
                 _newObj setposATL (getPosATL _object);
-				_newObj setDir (getDir _object);
-				_newObj setVectorDirAndUp [vectorDir _object, vectorUP _object];
+		_newObj setDir (getDir _object);
+		_newObj setVectorDirAndUp [vectorDir _object, vectorUP _object];
             };
             case 1: {
                 _newObj attachTo [_object,[0,0,0]];
 		detach _newObj;
-            };
-			/*
-			case 2: {
-				_newObj setPosWorld _objectPos;
-				_newObj setDir (getDir _object);
+            };	
+	    case 2: {
+		_newObj setDir (getDir _object);
+		_newObj setPosWorld (getPosWorld _object);
                 _newObj setVectorUp (vectorup _object);
             };
-			*/
         };
         deleteVehicle _object;
 
