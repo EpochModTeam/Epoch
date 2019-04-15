@@ -115,14 +115,14 @@ if (_object isKindOf "Constructions_static_F" || {(typeof _object) in (call EPOC
 
 			_upgradeto = _upgrade select 0;
 			if (_upgradeto in _doors) then {
-				_countdoors = count (nearestobjects [_nearestJammer,_doors,_buildingJammerRange]);
+				_countdoors = count ((nearestobjects [_nearestJammer,_doors,_buildingJammerRange]) - [_object]);
 				if (_countdoors >= _maxdoors) then {
 					_canUpgrade = false;
 					_missingParts = format["Can not upgrade to locked Door / Stairs! Max %1 allowed per Base!", _maxdoors];
 				};
 			};
 			if (_upgradeto in _gates) then {
-				_countgates = count (nearestobjects [_nearestJammer,_gates,_buildingJammerRange]);
+				_countgates = count ((nearestobjects [_nearestJammer,_gates,_buildingJammerRange]) - [_object]);
 				if (_countgates >= _maxgates) then {
 					_canUpgrade = false;
 					_missingParts = format["Can not upgrade to Gate! Max %1 allowed per Base!", _maxgates];
