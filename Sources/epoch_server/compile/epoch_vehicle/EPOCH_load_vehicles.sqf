@@ -121,10 +121,11 @@ for "_i" from 1 to _maxVehicleLimit do {
 						// set fuel level
 						_vehicle setFuel _fuel;
 						// apply persistent textures
-						if (missionnamespace getvariable ["UseCustomTextures",false]) then {
+						if ((missionnamespace getvariable ["UseCustomTextures",false]) && {!(_Textures isEqualTo [])}) then {
 							{
 								_vehicle setobjecttextureglobal [_foreachindex,_x];
 							} foreach _Textures;
+							_vehicle setVariable ["VEHICLE_TEXTURE", _color];
 						}
 						else {
 							_cfgEpochVehicles = 'CfgEpochVehicles' call EPOCH_returnConfig;
