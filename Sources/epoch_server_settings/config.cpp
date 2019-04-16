@@ -461,5 +461,6 @@ class CfgEpoch
     #include "configs\maps\lingor3.h"
     #include "configs\maps\Panthera3.h"
     #include "configs\maps\Winthera3.h"
+	#include "configs\maps\lythium.h"
     
 };
