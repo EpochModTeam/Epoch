@@ -13,9 +13,21 @@
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_code/compile/event_handlers/EPOCH_InventoryOpened.sqf
 */
 //[[[cog import generate_private_arrays ]]]
-private ["_stored","_savecontainer","_blocked","_containerlocked","_seclocked"];
+private ["_InvTarget","_stored","_savecontainer","_blocked","_containerlocked","_seclocked"];
 //[[[end]]]
 params ["_unit","_container","_sec"];
+
+_InvTarget = ObjNull;
+{
+	if (_x isKindOf "MAN" && {player distance _x < 2} && {lifeState _x == "INCAPACITATED"} && {!(_x in [_container,_sec])}) exitwith {
+		_InvTarget = _x;
+	};
+} foreach [cursortarget,cursorobject];
+if (!isnull _InvTarget) exitwith {
+	player action ["Gear",_InvTarget];
+	true
+};
+
 setMousePosition[0.5, 0.5];
 call EPOCH_showStats;
 _this spawn EPOCH_initUI;
