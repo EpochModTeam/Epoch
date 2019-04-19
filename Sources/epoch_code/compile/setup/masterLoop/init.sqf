@@ -15,6 +15,15 @@ _clientAliveTimer = diag_tickTime;
 
 // Fade Black Screen
 _fadedblack = false;
+_UnFadeCheck = {
+	if(_fadedblack) then {
+		[] spawn {
+			uisleep 1.5;
+			TitleText ['','PLAIN DOWN'];
+		};
+		_fadedblack = false;
+	};
+};
 
 // Lootspawner
 _LootSpawned = false;

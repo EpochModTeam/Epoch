@@ -10,16 +10,31 @@ if (EPOCH_IsAutoRunning) then {
 	};
 };
 
-if (animationstate player in ['aadjpknlmstpsraswpstddown','aadjpknlmstpsraswrflddown'] && cameraview == 'GUNNER' && (player weapondirection (currentweapon player)) select 2 < -0.88) then {
-	_fadedblack = true;
-	TitleText ['Stop BugUsing!','BLACK FADED'];
+if (player == vehicle player && {getPosATL player select 2 > 0.4} && {cameraview == 'GUNNER'}) then {
+	_weapondir = player weapondirection (currentweapon player);
+	if (animationstate player in ['aadjpknlmstpsraswpstddown','aadjpknlmstpsraswrflddown'] && {_weapondir select 2 < -0.88}) then {
+		player switchCamera "EXTERNAL";
+		player playAction "AdjustF";
+		_fadedblack = true;
+		TitleText ['Stop BugUsing!','BLACK FADED'];
+	}
+	else {
+		_eyePos = eyepos player;
+		_eyedist = 0.25;
+		_end = [((_eyePos select 0)+_eyedist*(_weapondir select 0)),((_eyePos select 1)+_eyedist*(_weapondir select 1)),((_eyePos select 2)+_eyedist*(_weapondir select 2))];
+		_objects = lineintersectswith [_eyePos,_end,player];
+		_objects = _objects select {_x iskindof "Constructions_static_F"};
+		if !(_objects isequalto []) then {
+			player switchCamera "EXTERNAL";
+			_fadedblack = true;
+			TitleText ['Stop BugUsing!','BLACK FADED'];
+		}
+		else {
+			call _UnFadeCheck;
+		};
+	};
 }
 else {
-	if(_fadedblack) then {
-		[] spawn {
-			uisleep 2;
-			TitleText ['','PLAIN DOWN'];
-		};
-		_fadedblack = false;
-	};
+	call _UnFadeCheck;
 };
+
