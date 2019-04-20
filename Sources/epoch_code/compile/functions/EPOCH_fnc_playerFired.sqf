@@ -41,6 +41,7 @@ switch true do {
 				_attachments = handgunItems player;
 				_heal = false;
 				if (_cursorTarget isKindOf "Man") then {
+					if !(missionnamespace getvariable ["EPOCH_OldRevive",false]) exitwith {};
 					if ("Heal_EPOCH" in _attachments) then {
 						_heal = true;
 					};

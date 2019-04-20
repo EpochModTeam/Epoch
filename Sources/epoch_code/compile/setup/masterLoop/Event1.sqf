@@ -31,7 +31,7 @@ if (!isNull _cursorTarget && {!(EPOCH_target isEqualTo _cursorTarget)}) then {
 		if (_cursorTarget isKindOf "AllVehicles") then {
 			_currentTarget = _cursorTarget;
 		} else {
-			if (_cursorTarget isKindOf "Constructions_modular_F" || _cursorTarget isKindOf "Constructions_static_F") then {
+			if (_cursorTarget isKindOf "Constructions_modular_F" || {_cursorTarget isKindOf "Constructions_static_F"} || {(typeof _cursorTarget) in (call Epoch_JammerClasses)}) then {
 				_currentTargetMode = 1;
 				_currentTarget = _cursorTarget;
 			};
@@ -425,6 +425,13 @@ if(_mapOnZoomSetMarkerSize isEqualTo 1)then{
 // prevents use of group view
 if (cameraview isequalto "GROUP") then {
 	vehicle player switchCamera "Internal";
+};
+
+if (lifeState player == "INCAPACITATED") then {
+	if ((missionnamespace getvariable ["EPOCH_UnconsciousTime",diag_ticktime]) < diag_ticktime) then {
+		player setUnconscious false;
+		player playMoveNow 'AmovPercMstpSnonWnonDnon';
+	};
 };
 
 // force update

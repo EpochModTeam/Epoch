@@ -101,6 +101,7 @@ class CfgClientFunctions
 		{
 			class getInMan {};
 			class getOutMan {};
+			class HandleDamage {};
 			class InventoryClosed {};
 			class InventoryOpened {};
 		};
@@ -171,6 +172,7 @@ class CfgClientFunctions
 			class fnc_setVariableLimited {};
 			class fnc_createLocalMarkerSet {};
 			class fnc_deleteLocalMarkerSet {};
+			class fnc_AnimateScheduled {};
 		};
 		class environment
 		{
@@ -192,6 +194,7 @@ class CfgClientFunctions
 			class client_VehicleMaintananceDo {};
 			class vehicle_checkTurretAmmo {};
 			class vehicle_removeTurretAmmo {};
+			class vehicle_ChangeLicensePlate {};
 		};
 		class missions
 		{
@@ -213,6 +216,7 @@ class CfgClientFunctions
 			class equip {};
 			class itemTypeSlot {};
 			class usedItemRepack {};
+			class CryptoButtons {};
 		};
 		class servicepoint
 		{
@@ -229,6 +233,7 @@ class CfgClientFunctions
 			class custom_EH_FiredNear {};
 			class custom_EH_GetInMan {};
 			class custom_EH_GetOutMan {};
+			class custom_EH_HandleDamage {};
 			class custom_EH_Hit {};
 			class custom_EH_InventoryClosed {};
 			class custom_EH_InventoryOpened {};

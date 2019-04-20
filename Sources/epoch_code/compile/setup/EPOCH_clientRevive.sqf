@@ -62,6 +62,10 @@ if !(alive player && alive _playerObject && !isPlayer _playerObject) then {
 		if !(isNil "_playerBloodPKey") then {_playerBloodPKeyFinal = _playerBloodPKey};
 		missionNamespace setVariable [_playerBloodPKeyFinal, 120];
 
+		_playerToxicityKeyFinal = "EPOCH_playerToxicity";
+		if !(isNil "_playerToxicityKey") then {_playerToxicityKeyFinal = _playerToxicityKey};
+		missionNamespace setVariable [_playerToxicityKeyFinal, 0];
+
 		// Wait until _playerObject is local before adding Rating and EH's
 		waituntil {local _playerObject};
 

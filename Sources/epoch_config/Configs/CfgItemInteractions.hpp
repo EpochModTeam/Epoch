@@ -249,6 +249,14 @@ class CfgItemInteractions
     {
         buildClass = "Safe_SIM_EPOCH";
     };
+    class ItemSafe_s : Item_Build_base
+    {
+        buildClass = "Safe_s_SIM_EPOCH";
+    };
+    class ItemGunSafe : Item_Build_base
+    {
+        buildClass = "GunSafe_SIM_EPOCH";
+    };
     class JackKit : Item_Build_base
     {
         buildClass = "Jack_SIM_EPOCH";
@@ -498,6 +506,22 @@ class CfgItemInteractions
     class KitPlotPole : Item_Build_base
     {
         buildClass = "PlotPole_SIM_EPOCH";
+    };
+    class KitPlotPole_M : Item_Build_base
+    {
+        buildClass = "PlotPole_M_SIM_EPOCH";
+    };
+    class KitPlotPole_L : Item_Build_base
+    {
+        buildClass = "PlotPole_L_SIM_EPOCH";
+    };
+    class KitPlotPole_XL : Item_Build_base
+    {
+        buildClass = "PlotPole_XL_SIM_EPOCH";
+    };
+    class KitPlotPole_XXL : Item_Build_base
+    {
+        buildClass = "PlotPole_XXL_SIM_EPOCH";
     };
     class KitCinderWall : Item_Build_base
     {

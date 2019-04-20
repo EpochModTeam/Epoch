@@ -5,7 +5,7 @@ _trader = objNull;
 _nrMn = nearestObjects [player, ["C_Man_1"], 16];
 _trader = _nrMn select 0;
 if(_trader getVariable ["traderName",""]== "")then{
-_nameArr = ["Aaron Clark","Kenneth Bente","Damian Clark","Raimonds Virtoss","Richie","Paden Sturtevant","Darren Harrison","Paul Tomany","Dan","Darren Harrison","Niklas Wagner","Andrew Gregory","Isaac Gregory","Florian Kinder","Denis Erygin","Alan Denham"];
+_nameArr = ["Aaron Clark","Kenneth Bente","Damian Clark","Raimonds Virtoss","Richie","Paden Sturtevant","Darren Harrison","Dan","Darren Harrison","Niklas Wagner","Andrew Gregory","Isaac Gregory","Florian Kinder","Denis Erygin","Alan Denham"];
 _trdrCurrName = name _trader;
 if((random 100) < 6 && !(_trdrCurrName in _nameArr))then{
 _newName = selectRandom _nameArr;

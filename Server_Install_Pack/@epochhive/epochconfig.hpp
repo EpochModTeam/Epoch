@@ -68,6 +68,8 @@ forceRestartTime      = 14400; 			// 4 hour restarts
 		""  							// "NVG_EPOCH" or "radiation_mask_epoch"
 	};
 
+	UseCustomTextures = "false";		// if true, Vehicles and Building parts textures will be saved and loaded to the DB (Paintshop)
+
 // vehicles - Max vehicle slots is calculated from per vehicle limits below. Warning! Higher the number lower the performance.
 	immuneIfStartInBase = "true";			// Protect vehicles from damage in bases until first unlocked after restart
 	ReservedVehSlots = 50;				// Reserved Vehicle Slots (only needed, if you manually spawn in additional Vehicles - AdminTool / Blackmarket...)
@@ -88,6 +90,7 @@ forceRestartTime      = 14400; 			// 4 hour restarts
 // BaseBuilding
 	StorageSlotsLimit 	= 1500; 		// Max storage slots allowed. Warning! Higher the number lower performance.
 	BuildingSlotsLimit 	= 1500; 		// Max building slots allowed. Warning! Higher the number lower performance.
+	AutoLockStorages	= "false";		// Auto Lock Lockable Storages on Server Start / Restart (if true, unlocked storages will get locked after restarts)
 	UseIndestructible 	= "false";		// Enable / Disable Indestructible BaseObjects
 	IndestructibleBaseObjects[] = 	{	// Can be Names or Classes
 										"Constructions_static_F",
@@ -107,6 +110,8 @@ forceRestartTime      = 14400; 			// 4 hour restarts
 	UseDeSimulateObjects	=	"true";	// Disable Simulation for specifed Base Objects
 	DeSimulateObjects[] =	{			// Base Objects to disable Simulation. Can be Names or Classes
 								"PlotPole_EPOCH",
+								"PlotPole_L_EPOCH",
+								"PlotPole_XL_EPOCH",
 								"WoodFoundation_EPOCH","Foundation_EPOCH",
 								"WoodQuarterFloor_EPOCH","WoodHalfFloor_EPOCH","WoodFloor_EPOCH",
 								"MetalQuarterFloor_EPOCH","MetalHalfFloor_EPOCH","MetalFloor_EPOCH",

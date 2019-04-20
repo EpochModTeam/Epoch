@@ -13,19 +13,15 @@
 	https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server/compile/epoch_vehicle/EPOCH_load_vehicles.sqf
 */
 //[[[cog import generate_private_arrays ]]]
-private ["_actualHitpoints","_allHitpoints","_allVehicles","_allowDamage","_arr","_arrNum","_availableColorsConfig","_cfgEpochVehicles","_check","_class","_colors","_config","_count","_dataFormat","_dataFormatCount","_diag","_disableVehicleTIE","_dmg","_found","_immuneIfStartInBase","_jammerOwner","_jammerRange","_jammers","_location","_lockedOwner","_marker","_nearestJammer","_removemagazinesturret","_removeweapons","_response","_selections","_serverSettingsConfig","_textureSelectionIndex","_textures","_vehHiveKey","_vehLockHiveKey","_vehicle","_vehicleDynamicSimulationSystem","_vehicleSlotIndex"];
+private ["_actualHitpoints","_allHitpoints","_allVehicles","_allowDamage","_arr","_arrNum","_availableColorsConfig","_cfgEpochVehicles","_check","_class","_colors","_count","_dataFormat","_dataFormatCount","_diag","_disableVehicleTIE","_dmg","_found","_immuneIfStartInBase","_jammerOwner","_jammers","_location","_lockedOwner","_marker","_nearestJammer","_removemagazinesturret","_removeweapons","_response","_selections","_serverSettingsConfig","_textureSelectionIndex","_textures","_vehHiveKey","_vehLockHiveKey","_vehicle","_vehicleDynamicSimulationSystem","_vehicleSlotIndex"];
 //[[[end]]]
 params [["_maxVehicleLimit",0]];
 
 _diag = diag_tickTime;
-_dataFormat = ["", [], 0, [], 0, [], [], 0, "", ""];
+_dataFormat = ["", [], 0, [], 0, [], [], 0, "", "", []];
 _dataFormatCount = count _dataFormat;
 EPOCH_VehicleSlots = [];
 _allVehicles = [];
-
-
-_config = 'CfgEpochClient' call EPOCH_returnConfig;
-_jammerRange = getNumber(_config >> "buildingJammerRange");
 
 _serverSettingsConfig = configFile >> "CfgEpochServer";
 _immuneIfStartInBase = [_serverSettingsConfig, "immuneIfStartInBase", true] call EPOCH_fnc_returnConfigEntry;
@@ -64,7 +60,7 @@ for "_i" from 1 to _maxVehicleLimit do {
 				if !((_arr select _forEachIndex) isEqualType _x) then {_arr set[_forEachIndex, _x]};
 			} forEach _dataFormat;
 
-			_arr params ["_class","_worldspace","_damage","_hitpoints","_fuel","_inventory","_ammo","_color","_baseClass",["_plateNumber",""]];
+			_arr params ["_class","_worldspace","_damage","_hitpoints","_fuel","_inventory","_ammo","_color","_baseClass",["_plateNumber",""],["_Textures",[]]];
 
 			if (_class != "" && _damage < 1) then {
 				// remove location from worldspace and set to new var
@@ -125,21 +121,29 @@ for "_i" from 1 to _maxVehicleLimit do {
 						// set fuel level
 						_vehicle setFuel _fuel;
 						// apply persistent textures
-						_cfgEpochVehicles = 'CfgEpochVehicles' call EPOCH_returnConfig;
-						_availableColorsConfig = (_cfgEpochVehicles >> _class >> "availableColors");
-						if (isArray(_availableColorsConfig)) then {
-							_colors = getArray(_availableColorsConfig);
-							_textureSelectionIndex = (_cfgEpochVehicles >> _class >> "textureSelectionIndex");
-							_selections = if (isArray(_textureSelectionIndex)) then { getArray(_textureSelectionIndex) } else { [0] };
-							_count = (count _colors) - 1;
+						if ((missionnamespace getvariable ["UseCustomTextures",false]) && {!(_Textures isEqualTo [])}) then {
 							{
-								_textures = _colors select 0;
-								if (_count >= _forEachIndex) then {
-									_textures = _colors select _forEachIndex;
-								};
-								_vehicle setObjectTextureGlobal [_x, _textures  select _color];
-							} forEach _selections;
+								_vehicle setobjecttextureglobal [_foreachindex,_x];
+							} foreach _Textures;
 							_vehicle setVariable ["VEHICLE_TEXTURE", _color];
+						}
+						else {
+							_cfgEpochVehicles = 'CfgEpochVehicles' call EPOCH_returnConfig;
+							_availableColorsConfig = (_cfgEpochVehicles >> _class >> "availableColors");
+							if (isArray(_availableColorsConfig)) then {
+								_colors = getArray(_availableColorsConfig);
+								_textureSelectionIndex = (_cfgEpochVehicles >> _class >> "textureSelectionIndex");
+								_selections = if (isArray(_textureSelectionIndex)) then { getArray(_textureSelectionIndex) } else { [0] };
+								_count = (count _colors) - 1;
+								{
+									_textures = _colors select 0;
+									if (_count >= _forEachIndex) then {
+										_textures = _colors select _forEachIndex;
+									};
+									_vehicle setObjectTextureGlobal [_x, _textures  select _color];
+								} forEach _selections;
+								_vehicle setVariable ["VEHICLE_TEXTURE", _color];
+							};
 						};
 						if !(_baseClass isequalto "") then {
 							_vehicle setvariable ["VEHICLE_BASECLASS",_baseClass];
@@ -191,7 +195,7 @@ for "_i" from 1 to _maxVehicleLimit do {
 						// allow damage
 						_allowDamage = true;
 						if (_immuneIfStartInBase) then {
-							_jammers = nearestObjects[_vehicle, ["PlotPole_EPOCH"], _jammerRange];
+							_jammers = nearestObjects[_vehicle, call EPOCH_JammerClasses,call EPOCH_MaxJammerRange];
 							if!(_jammers isEqualTo [])then {
 								// get jammer owner
 								_nearestJammer = _jammers select 0;

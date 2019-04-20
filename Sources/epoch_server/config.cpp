@@ -129,6 +129,7 @@ class CfgServerFunctions
 			class server_deleteGlobalMarkerSet {};
 			class server_isNearChecks {};
 			class server_DefuseBomb {};
+			class server_PutCrypto {};
 		};
 		class epoch_missions {
 			class Server_createObject {};
@@ -148,7 +149,7 @@ class CfgServerFunctions
 };
 class CfgServerVersion
 {
-	client = "1.3.0";
-	config = "1.3.0";
+	client = "1.3.1";
+	config = "1.3.1";
 	hive = "0.6.0.0";
 };

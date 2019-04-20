@@ -187,6 +187,7 @@ class CfgBaseBuilding
     };
     class PlotPole_EPOCH : Default
     {
+        upgradeBuilding[] = {{"PlotPole_M_EPOCH",{{"ItemCorrugatedLg",5},{"EnergyPackLg",2},{"CircuitParts",3},{"ItemBattery",3},{"ItemPipe",1}}}};
         removeParts[] = {{"KitPlotPole",1}};
         GhostPreview = "PlotPole_EPOCH";
         staticClass = "PlotPole_EPOCH";
@@ -195,6 +196,63 @@ class CfgBaseBuilding
     };
     class PlotPole_SIM_EPOCH : PlotPole_EPOCH
     {
+        upgradeBuilding[] = {};
+        removeParts[] = {};
+    };
+    class PlotPole_M_EPOCH : Default
+    {
+        upgradeBuilding[] = {{"PlotPole_L_EPOCH",{{"ItemCorrugatedLg",5},{"EnergyPackLg",2},{"CircuitParts",3},{"ItemBattery",3},{"ItemPipe",1}}}};
+        removeParts[] = {{"KitPlotPole_M",1}};
+        GhostPreview = "PlotPole_M_EPOCH";
+        staticClass = "PlotPole_M_EPOCH";
+        simulClass = "PlotPole_M_SIM_EPOCH";
+        bypassJammer = 1;
+    };
+    class PlotPole_M_SIM_EPOCH : PlotPole_M_EPOCH
+    {
+        upgradeBuilding[] = {};
+        removeParts[] = {};
+    };
+    class PlotPole_L_EPOCH : Default
+    {
+        upgradeBuilding[] = {{"PlotPole_XL_EPOCH",{{"ItemCorrugatedLg",5},{"EnergyPackLg",2},{"CircuitParts",3},{"ItemBattery",3},{"ItemPipe",1}}}};
+        removeParts[] = {{"KitPlotPole_L",1}};
+        GhostPreview = "PlotPole_L_EPOCH";
+        staticClass = "PlotPole_L_EPOCH";
+        simulClass = "PlotPole_L_SIM_EPOCH";
+        bypassJammer = 1;
+    };
+    class PlotPole_L_SIM_EPOCH : PlotPole_L_EPOCH
+    {
+        upgradeBuilding[] = {};
+        removeParts[] = {};
+    };
+    class PlotPole_XL_EPOCH : Default
+    {
+        upgradeBuilding[] = {{"PlotPole_XXL_EPOCH",{{"ItemCorrugatedLg",5},{"EnergyPackLg",2},{"CircuitParts",3},{"ItemBattery",3},{"ItemPipe",1}}}};
+        removeParts[] = {{"KitPlotPole_XL",1}};
+        GhostPreview = "PlotPole_XL_EPOCH";
+        staticClass = "PlotPole_XL_EPOCH";
+        simulClass = "PlotPole_XL_SIM_EPOCH";
+        bypassJammer = 1;
+    };
+    class PlotPole_XL_SIM_EPOCH : PlotPole_XL_EPOCH
+    {
+        upgradeBuilding[] = {};
+        removeParts[] = {};
+    };
+    class PlotPole_XXL_EPOCH : Default
+    {
+        upgradeBuilding[] = {};
+        removeParts[] = {{"KitPlotPole_XXL",1}};
+        GhostPreview = "PlotPole_XXL_EPOCH";
+        staticClass = "PlotPole_XXL_EPOCH";
+        simulClass = "PlotPole_XXL_SIM_EPOCH";
+        bypassJammer = 1;
+    };
+    class PlotPole_XXL_SIM_EPOCH : PlotPole_XXL_EPOCH
+    {
+        upgradeBuilding[] = {};
         removeParts[] = {};
     };
     class WoodRamp_EPOCH : Default
@@ -1353,6 +1411,36 @@ class CfgBaseBuilding
         isSecureStorage = 1;
     };
     class Safe_SIM_EPOCH : Safe_EPOCH
+    {
+        returnOnPack[] = {};
+    };
+    class Safe_s_EPOCH : Default
+    {
+        returnOnPack[] = {{"ItemSafe_s",1}};
+        simulClass = "Safe_s_SIM_EPOCH";
+        staticClass = "Safe_s_EPOCH";
+        weaponHolderProxy = "SafeProxy_EPOCH";
+        GhostPreview = "Safe_s_EPOCH";
+        bypassJammer = 1;
+        limitNearby = 2;
+        isSecureStorage = 1;
+    };
+    class Safe_s_SIM_EPOCH : Safe_s_EPOCH
+    {
+        returnOnPack[] = {};
+    };
+    class GunSafe_EPOCH : Default
+    {
+        returnOnPack[] = {{"ItemGunSafe",1}};
+        simulClass = "GunSafe_SIM_EPOCH";
+        staticClass = "GunSafe_EPOCH";
+        weaponHolderProxy = "SafeProxy_EPOCH";
+        GhostPreview = "GunSafe_EPOCH";
+        bypassJammer = 1;
+        limitNearby = 2;
+        isSecureStorage = 1;
+    };
+    class GunSafe_SIM_EPOCH : GunSafe_EPOCH
     {
         returnOnPack[] = {};
     };

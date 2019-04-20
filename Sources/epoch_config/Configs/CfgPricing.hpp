@@ -330,6 +330,16 @@ class CfgPricing
         price = 1250;
         tax = 0.5;
     };
+    class ItemSafe_s
+    {
+        price = 1250;
+        tax = 0.5;
+    };
+    class ItemGunSafe
+    {
+        price = 1250;
+        tax = 0.5;
+    };
     class ItemCompass
     {
         price = 3;
@@ -3428,6 +3438,22 @@ class CfgPricing
     class KitPlotPole
     {
         price = 250;
+    };
+    class KitPlotPole_M
+    {
+        price = 350;
+    };
+    class KitPlotPole_L
+    {
+        price = 450;
+    };
+    class KitPlotPole_XL
+    {
+        price = 550;
+    };
+    class KitPlotPole_XXL
+    {
+        price = 650;
     };
     class KitSolarGen
     {

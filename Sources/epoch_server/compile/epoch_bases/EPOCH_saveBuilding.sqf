@@ -28,7 +28,13 @@ if !(isNull _this) then {
 		{
 			_animPhases pushBack (_this animationPhase _x)
 		} foreach (getArray(_cfgBaseBuilding >> _class >> "persistAnimations"));
-		_VAL = [_class, _worldspace, _this getVariable["EPOCH_secureStorage", "-1"], _this getVariable["BUILD_OWNER", "-1"], _this getVariable["TEXTURE_SLOT", 0], _animPhases];
+
+		_Textures = [];
+		if (missionnamespace getvariable ["UseCustomTextures",false]) then {
+			_Textures = getObjectTextures _this;
+		};
+
+		_VAL = [_class, _worldspace, _this getVariable["EPOCH_secureStorage", "-1"], _this getVariable["BUILD_OWNER", "-1"], _this getVariable["TEXTURE_SLOT", 0], _animPhases, _Textures];
 		["Building", _objHiveKey, EPOCH_expiresBuilding, _VAL] call EPOCH_fnc_server_hiveSETEX;
 		_return = true;
 	};

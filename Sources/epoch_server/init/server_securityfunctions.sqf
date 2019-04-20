@@ -49,7 +49,7 @@ _skn_badAnimations	= [_cfg_blacklistConfig, "animations", ['AmovPercMstpSnonWnon
 _cfg_variablesConfig  = (_config >> "variables");
 _skn_badVarCheckArray = [_cfg_variablesConfig, "badVars", ['EPOCH_GMODE','ESP_map','ESP_mainMap','ESP_adminMap','AntiAntiAntiAntiHax','fnc_usec_damageHandler','fnc_usec_unconscious','VAGINA_secret','yolo','VERSION','life_fnc_handleDamage','EPOCH_spawnVehicle_PVS','CLASS911_Menu','nuke_vars','JJMMEE_INIT_MENU','PLAYERON','PLAYERNEXT2','ALTISLIFEON','LY_Menu','PLAY','LY_SwaggerLikeUs','BIS_fnc_dbg_reminder_value','BIS_fnc_dbg_reminder']] call EPOCH_fnc_returnConfigEntry;
 _skn_nilVarCheckArray = [_cfg_variablesConfig, "nilVars", ['EPOCH_antiWallCount','EPOCH_playerEnergy','EPOCH_playerHunger','EPOCH_playerStamina','EPOCH_playerCrypto','EPOCH_target','EPOCH_ESP_TARGETS','EPOCH_ESPMAP_TARGETS','EPOCH_taxRate','EPOCH_ESP_VEHICLEPLAYER','EPOCH_ESP_PLAYER','EPOCH_ESP_VEHICLES']] call EPOCH_fnc_returnConfigEntry;
-_skn_commandMenuArray = [(_config >> "commandMenu"), "menus",['','RscSelectTeam','RscTeam','RscMenuTeam','RscMoveHigh','#GETIN','#RscStatus','#WATCH0','RscCombatMode','RscMenuReply','RscCallSupport','#CUSTOM_RADIO','#User:BIS_fnc_addCommMenuItem_menu','RscRadio','RscReply','#ACTION','RscMenuFormations','#WATCH','RscGroupRootMenu','RscMainMenu','RscMenuMove','RscWatchDir','RscWatchMoveDir','#User:BIS_Menu_GroupCommunication','RscMenuStatus','RscFormations']] call EPOCH_fnc_returnConfigEntry;
+_skn_commandMenuArray = [(_config >> "commandMenu"), "menus",['','RscMenuEngage','RscSelectTeam','RscTeam','RscMenuTeam','RscMoveHigh','#GETIN','#RscStatus','#WATCH0','RscCombatMode','RscMenuReply','RscCallSupport','#CUSTOM_RADIO','#User:BIS_fnc_addCommMenuItem_menu','RscRadio','RscReply','#ACTION','RscMenuFormations','#WATCH','RscGroupRootMenu','RscMainMenu','RscMenuMove','RscWatchDir','RscWatchMoveDir','#User:BIS_Menu_GroupCommunication','RscMenuStatus','RscFormations']] call EPOCH_fnc_returnConfigEntry;
 
 _skn_addEHConfig		= (_config >> "addEventHandler");
 _skn_displayAddEHChecks = [_skn_addEHConfig, "checks",[]] call EPOCH_fnc_returnConfigEntry;
@@ -422,7 +422,7 @@ for "_i" from 1 to 3 do {
 		};
 		if ("MAP-BASEBUILDING" in _case) then {
 			_temp = _temp + "
-				,['  Base Building Marker', [], {"+_skn_tg_map_basebuilding+" = !"+_skn_tg_map_basebuilding+"; if ("+_skn_tg_map_basebuilding+") then {waitUntil {"+_skn_mapBasesArray+" = ([worldSize/2,worldSize/2,0]) nearObjects['PlotPole_EPOCH', 12500];uiSleep 15;!"+_skn_tg_map_basebuilding+"};"+_skn_mapBasesArray+" = []}; ['Base Building MARKER',if ("+_skn_tg_map_basebuilding+") then [{2},{1}]] call "+_skn_adminLog_PVC+"}, '2', []]
+				,['  Base Building Marker', [], {"+_skn_tg_map_basebuilding+" = !"+_skn_tg_map_basebuilding+"; if ("+_skn_tg_map_basebuilding+") then {waitUntil {"+_skn_mapBasesArray+" = (Epoch_PlotPoles - [objnull]);uiSleep 15;!"+_skn_tg_map_basebuilding+"};"+_skn_mapBasesArray+" = []}; ['Base Building MARKER',if ("+_skn_tg_map_basebuilding+") then [{2},{1}]] call "+_skn_adminLog_PVC+"}, '2', []]
 			";
 		};
 	};

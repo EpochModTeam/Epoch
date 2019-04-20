@@ -14,9 +14,11 @@
 /*[[[cog from arma_config_tools import *; json_to_arma()]]]*/
 class CfgEpochClient
 {
-    epochVersion = "1.3.0";
+    epochVersion = "1.3.1";
     ArmAVersion = 176;
 	debug = "true";  // true = enable extra rpt debug lines, false to disable
+
+	UseOldRevive = "false";		// Revive / Heal Player has been changed to use "HandleDamage" Eventhandler. If scripts are breaking it for you, set it to true (not recommended!)
 
 	antagonistRngChance = 100; // increase number to reduce chances and reduce to increase. Default 100
 	NuisanceMulti = 0.5;		// Multi for Nuisance increase on shooting - higher Nuisance effect at least antagonist spawn change. (0-1, default 0.5)
@@ -40,24 +42,55 @@ class CfgEpochClient
     restrictedLocations[] = {"NameCityCapital"};
     restrictedLocationsRange = 300;
     buildingRequireJammer = 1;		//1 = require jammer to build
-    buildingJammerRange = 75; 		// jammer range in meters
+	buildingJammerRange = 125; 		// Unused by Epoch, but leave it to prevent issues with custom scripts (should be set to the max possible JammerRange from cfgJammers)
     jammerPerGroup = 1;				// allowed number of jammers per group.
     jammerGLOnly = 1;               // allow only group leader to place Jammer
     minJammerDistance = 650;		// min distance to next Jammer
     maxBuildingHeight = 100;		// Max Height, building is allowed.
-    buildingCountLimit = 200;		//overall building limit in range of jammer (overridden if "useGroupCountLimits=1")
-    storageCountLimit = 100;		//overall storage limit in range of jammer (triggers only if "splitCountLimits=1" & "useGroupCountLimits=0")
     splitCountLimits = 0;			//1 = distinguish buildingCountLimit from storageCountLimit (ex.: buildingCountLimit=100, storageCountLimit=100 >> you can build 100 baseparts AND additional 100 storage objects like safes, lockboxes...)
-    useGroupCountLimits = 1;		//1 = enable leader and member counts (doesn´t affect "splitCountLimits")
-    buildingCountLeader = 250;		//ignore if "useGroupCountLimits=0"
-    buildingCountPerMember = 5;		//ignore if "useGroupCountLimits=0"
-    storageCountLeader = 10;		//ignore if "splitCountLimits=0" & "useGroupCountLimits=0"
-    storageCountPerMember = 5;		//ignore if "splitCountLimits=0" & "useGroupCountLimits=0"
-    maxdoors = 10;					// Max allowed doors per Group
-    maxgates = 5;					// Max allowed Gates per Group
-    maxCams = 2;					// Max allowed BaseCams per Group
-
 	MaxBuildingTilt = 180;			// Max degrees players can tilt building elements
+	
+	class CfgJammers {
+		class PlotPole_EPOCH 					// Jammer Classname
+		{
+			buildingJammerRange = 		75;		// jammer range in meters
+			buildingCountLimit = 		200;	// Max Building Elements per Base
+			storageCountLimit = 		100;	// Max Storage Elements per Base
+			buildingCountPerMember = 	5;		// Additional Building elements per Member
+			storageCountPerMember = 	5;		// Additional Storage elements per Member
+			maxdoors = 					10;		// Max Doors per Base
+			maxgates = 					5;		// Max Gates per Base
+			maxCams = 					2;		// Max Cams per Base
+		};
+		class PlotPole_M_EPOCH : PlotPole_EPOCH	// inherits from "PlotPole_EPOCH" (not defined values will be taken from PlotPole_EPOCH)
+		{
+			buildingJammerRange = 		100;	// jammer range in meters
+			buildingCountLimit = 		215;	// Max Building Elements per Base
+			storageCountLimit = 		115;	// Max Storage Elements per Base
+		};
+		class PlotPole_L_EPOCH : PlotPole_M_EPOCH
+		{
+			buildingJammerRange = 		125;	// jammer range in meters
+			buildingCountLimit = 		230;	// Max Building Elements per Base
+			storageCountLimit = 		130;	// Max Storage Elements per Base
+		};
+		class PlotPole_XL_EPOCH : PlotPole_L_EPOCH
+		{
+			buildingJammerRange = 		150;	// jammer range in meters
+			buildingCountLimit = 		245;	// Max Building Elements per Base
+			storageCountLimit = 		145;	// Max Storage Elements per Base
+		};
+		class PlotPole_XXL_EPOCH : PlotPole_XL_EPOCH
+		{
+			buildingJammerRange = 		175;	// jammer range in meters
+			buildingCountLimit = 		260;	// Max Building Elements per Base
+			storageCountLimit = 		160;	// Max Storage Elements per Base
+		};
+	};
+	StorageClasses[] = {"Buildable_Storage","Buildable_Storage_SIM","Buildable_Storage_Ghost","Constructions_lockedstatic_F","Secure_Storage_Temp"};
+	BuildingClasses[] = {"Constructions_static_F","Constructions_foundation_F","Const_Ghost_EPOCH"};
+	DoorClasses[] = {"WoodLargeWallDoorL_EPOCH","WoodWall4_EPOCH","CinderWallDoorwHatch_EPOCH","WoodStairs3_EPOCH","JailWallDoor_EPOCH"};
+	GateClasses[] = {"CinderWallGarage_EPOCH","WoodWallGarage_EPOCH","MetalWallGarage_EPOCH"};
 
 	AtmBlockedAtPlot = "true";		// Block ATM's in Plotpole-Range
     disableRemoteSensors = "true";  // disableRemoteSensors true/false
@@ -168,7 +201,7 @@ class CfgEpochClient
     displayAddEventHandler[] = {"keyDown","keyUp"};
     keyDown = "(_this call EPOCH_KeyDown)";
     keyUp = "(_this call EPOCH_KeyUp)";
-    addEventHandler[] = {"Respawn","Put","Take","InventoryClosed","InventoryOpened","FiredMan","Killed","HandleRating","HandleScore","GetInMan","GetOutMan","Hit","SeatSwitchedMan","FiredNear"};
+    addEventHandler[] = {"Respawn","Put","Take","InventoryClosed","InventoryOpened","FiredMan","Killed","HandleRating","HandleScore","HandleDamage","GetInMan","GetOutMan","Hit","SeatSwitchedMan","FiredNear"};
     Respawn = "(_this select 0) call EPOCH_clientRespawn";
     Put = "(_this select 1) call EPOCH_interact;_this call EPOCH_PutHandler;_this call Epoch_custom_EH_Put";
     Take = "(_this select 1) call EPOCH_interact;_this call EPOCH_UnisexCheck;_this call Epoch_custom_EH_Take";
@@ -178,7 +211,7 @@ class CfgEpochClient
     Killed = "_this call EPOCH_fnc_playerDeath;_this call Epoch_custom_EH_Killed";
     HandleRating = "0";
 	HandleScore = "";
-    HandleDamage = "";
+    HandleDamage = "_this call EPOCH_HandleDamage;_this call EPOCH_custom_EH_HandleDamage";
     HandleHeal = "";
     Dammaged = "";
     Hit = "_this call EPOCH_custom_EH_Hit";
