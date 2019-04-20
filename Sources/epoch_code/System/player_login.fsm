@@ -1076,7 +1076,7 @@ class FSM
                                          "if (_playerCheck) then {" \n
                                          "    _PlayerPosCheck = !((_playerObject getVariable [""FinalDest"",[]]) isequalto []);" \n
                                          "    if (_PlayerPosCheck) then {" \n
-                                         "        _playerCheckMass = ((abs(_loadabs - (loadabs _playerObject))) < 0.005);" \n
+                                         "        _playerCheckMass = ((_loadabs toFixed 2) isEqualTo ((loadabs _playerObject) toFixed 2));" \n
                                          "        if (_playerCheckMass) then {" \n
                                          "            _state = true;" \n
                                          "        };" \n
