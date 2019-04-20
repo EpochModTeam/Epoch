@@ -23,7 +23,7 @@ if (player == vehicle player && {getPosATL player select 2 > 0.4} && {cameraview
 		_eyedist = 0.25;
 		_end = [((_eyePos select 0)+_eyedist*(_weapondir select 0)),((_eyePos select 1)+_eyedist*(_weapondir select 1)),((_eyePos select 2)+_eyedist*(_weapondir select 2))];
 		_objects = lineintersectswith [_eyePos,_end,player];
-		_objects = _objects select {_x iskindof "Constructions_static_F"};
+		_objects = _objects select {((_x iskindof "Constructions_static_F") and not(_x isKindOf "WoodLargeWall_EPOCH"))};
 		if !(_objects isequalto []) then {
 			player switchCamera "EXTERNAL";
 			_fadedblack = true;
