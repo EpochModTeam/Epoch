@@ -27,7 +27,7 @@ private ["_buildingJammerRange","_maintainCount","_rnd"];
 
 if !(isNil "EPOCH_maintainLockout") exitWith {["Already Maintaining a base.", 5] call Epoch_message;};
 if (EPOCH_playerCrypto > 0) then {
-  _buildingJammerRange = getnumber (getmissionconfig "CfgEpochClient" >> "CfgJammers" >> (typeof _this) >> "buildingJammerRange");;
+  _buildingJammerRange = getnumber (getmissionconfig "CfgEpochClient" >> "CfgJammers" >> (typeof _this) >> "buildingJammerRange");
   if (_buildingJammerRange == 0) then { _buildingJammerRange = 75; };
 
   _maintainCount = {(damage _x) > 0} count nearestObjects[_this, ["Constructions_static_F","Constructions_foundation_F","Buildable_Storage","Constructions_lockedstatic_F"], _buildingJammerRange];
