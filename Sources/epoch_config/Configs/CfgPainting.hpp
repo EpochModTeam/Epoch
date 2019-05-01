@@ -3,6 +3,8 @@ class CfgPainting {
 	{
 		PaintingCosts = 500;
 		icon = "x\addons\a3_epoch_code\Data\UI\buttons\Paint.paa";
+		
+		// All color classes created in "DefaultVehicle" will be available for all sub-classes that inherits from ": DefaultVehicle"
 		class Pink
 		{
 			ColorName = "Pink";
@@ -14,12 +16,12 @@ class CfgPainting {
 	};
     class C_Hatchback_01_EPOCH : DefaultVehicle
 	{
-		class White
+		class White																	// Classname only to identify the color (not used in any script)
 		{
-			ColorName = "White";
-			iconcolor[] = {1, 1, 1, 1};
+			ColorName = "White";													// Used for the Tooltip in DynaMenu
+			iconcolor[] = {1, 1, 1, 1};												// If defined, the DynaMenu-Icon will get colored with this color (0-1 instead of 0-255!) {R,G,B,Alpha}
 			textures[] = {
-				{0,"\A3\soft_f_gamma\Hatchback_01\data\Hatchback_01_ext_CO.paa"}
+				{0,"\A3\soft_f_gamma\Hatchback_01\data\Hatchback_01_ext_CO.paa"}	// {selectionNumber,texture} see also https://community.bistudio.com/wiki/setObjectTextureGlobal
 			};
 		};
 		class Green
