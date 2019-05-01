@@ -33,7 +33,7 @@ if (!isNull _vehicle) then {
 		_baseType = _vehicle getVariable ["VEHICLE_BASECLASS",""];
 
 		_Textures = [];
-		if (missionnamespace getvariable ["UseCustomTextures",false]) then {
+		if (missionnamespace getvariable ["UseCustomTextures",false] || _colorSlot isEqualTo -1) then {
 			_Textures = getObjectTextures _vehicle;
 		};
 

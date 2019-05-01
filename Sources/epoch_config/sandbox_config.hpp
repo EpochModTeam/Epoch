@@ -73,6 +73,7 @@ showHUD[] =
 #include "Configs\cfgPricing.hpp"
 #include "Configs\CfgDynamicHUD.hpp"
 #include "Configs\CfgEPad.hpp"
+#include "Configs\CfgPainting.hpp"
 
 #include "Configs\CfgEpochClient.hpp"
 

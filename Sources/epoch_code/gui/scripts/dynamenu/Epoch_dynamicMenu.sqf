@@ -53,6 +53,17 @@ _checkConfigs = {
 			_cfg = "CfgBaseBuilding" call EPOCH_returnConfig;
 			(_cfg >> dyna_cursorTargetType)
 		};
+		case "PaintGarage":
+		{
+			private _cfgtmp = "CfgPainting" call EPOCH_returnConfig;
+			_garageveh = ((dyna_cursorTarget nearentities 10) select {isclass (_cfgtmp >> (typeof _x))}) param [0, objnull];
+			if (isnull _garageveh) exitwith {
+				["No Paintable Vehicle found in Garage",5] call Epoch_message;
+				(_cfg >> _selfOrTarget)
+			};
+			dyna_Paintobj = _garageveh;
+			(_cfgtmp >> (typeof _garageveh))
+		};
 		case "":
 		{
 			(_cfg >> _selfOrTarget)
@@ -97,6 +108,25 @@ _checkConfigs = {
 			} forEach (getArray (_config >> "upgradeBuilding"));
 
 
+		};
+		case "PaintGarage":
+		{
+			if !(isClass _config) exitWith {_in = "";};
+
+			_icon = gettext (_config >> "icon");
+			{
+				_tooltip = gettext (_x >> "ColorName");
+				_iconcolor = getarray (_x >> "iconcolor");
+				private _textures = getarray (_x >> "textures");
+				if (_textures isEqualTo []) exitwith {_in = "";};
+				_action = format ["[dyna_cursorTarget,dyna_Paintobj,%1] call EPOCH_vehicle_Paintgarage; true call Epoch_dynamicMenuCleanup;",_textures];
+				_buttonSettings pushBack [
+					_icon,
+					_tooltip,
+					_action,
+					_iconcolor
+				];
+			} forEach (configProperties [_config, "isClass _x",true]);
 		};
 		default
 		{

@@ -121,7 +121,7 @@ for "_i" from 1 to _maxVehicleLimit do {
 						// set fuel level
 						_vehicle setFuel _fuel;
 						// apply persistent textures
-						if ((missionnamespace getvariable ["UseCustomTextures",false]) && {!(_Textures isEqualTo [])}) then {
+						if (((missionnamespace getvariable ["UseCustomTextures",false]) || _color isEqualTo -1) && {!(_Textures isEqualTo [])}) then {
 							{
 								_vehicle setobjecttextureglobal [_foreachindex,_x];
 							} foreach _Textures;

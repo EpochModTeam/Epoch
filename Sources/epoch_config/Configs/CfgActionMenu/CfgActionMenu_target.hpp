@@ -22,6 +22,14 @@ class build_upgrade
 	tooltipcode = "format['Upgrade %1',getText(configFile >> 'CfgVehicles' >> (typeof dyna_cursorTarget) >> 'displayName')]";
 	class special {}; //uses external config, hardcoded
 };
+class PaintGarage
+{
+	condition = "dyna_cursortargettype in ['paintshop']";
+	action = "";
+	icon = "x\addons\a3_epoch_code\Data\UI\buttons\Paint.paa";
+	tooltip = "Paint Garage";
+	class special {}; //uses external config, hardcoded
+};
 class build_remove
 {
 	condition = "dyna_buildMode select 1";

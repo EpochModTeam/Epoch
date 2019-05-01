@@ -26,6 +26,11 @@ class CfgRemoteExec
     {
         mode = 1;
         jip = 0;
+		class EPOCH_server_PaintVehicle
+		{
+		  allowedTargets=2;
+		  jip = 0;
+		};
 		class EPOCH_server_PutCrypto
 		{
 		  allowedTargets=2;

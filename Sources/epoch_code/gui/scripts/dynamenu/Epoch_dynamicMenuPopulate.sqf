@@ -88,6 +88,13 @@ for "_e" from 0 to (_entries - 1) do {
 	_ctrl2 ctrlSetTooltipColorBox [0, 0, 0, 0];
 	_ctrl2 ctrlSetTooltipColorShade [0, 0, 0, 0];
 	_ctrl2 ctrlSetText (_buttonSettings select _e select 0);
+	if (count (_buttonSettings select _e) > 3) then {
+		if ((_buttonSettings select _e select 3) isEqualType []) then {
+			if !((_buttonSettings select _e select 3) isEqualTo []) then {
+				_ctrl2 ctrlSetTextColor (_buttonSettings select _e select 3);
+			};
+		};
+	};
 	
 	_ctrl2 ctrlSetPosition [0.5,0.5,0,0];
 	_ctrl2 ctrlCommit 0;

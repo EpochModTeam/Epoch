@@ -41,6 +41,7 @@ _OldHitPoints = getAllHitPointsDamage _veh;
 _typeVeh = typeOf _veh;
 _baseVeh = _veh getVariable ["VEHICLE_BASECLASS",_typeVeh];
 _color = _veh getVariable ["VEHICLE_TEXTURE",""];
+_textures = getobjecttextures _veh;
 _fuel = fuel _veh;
 _lock = locked _veh;
 deletevehicle _veh;
@@ -55,28 +56,36 @@ _newVeh call EPOCH_server_vehicleInit;
 _newVeh setFuel _fuel;
 _newVeh lock _lock;
 // apply persistent textures
-_checkclass = _typeVeh;
-if !(_newVeh iskindof _typeVeh) then {
-	_checkclass = _UpgradeVeh;
-};
-_cfgEpochVehicles = 'CfgEpochVehicles' call EPOCH_returnConfig;
-_availableColorsConfig = (_cfgEpochVehicles >> _checkclass >> "availableColors");
-if (isArray(_availableColorsConfig)) then{
-	_colors = getArray (_availableColorsConfig);
-	_textureSelectionIndex = (_cfgEpochVehicles >> _checkclass >> "textureSelectionIndex");
-	_selections = if (isArray(_textureSelectionIndex)) then{ getArray(_textureSelectionIndex) } else { [0] };
-	_textures = _colors select 0;
-	if (!(_newVeh iskindof _typeVeh) || _color isequalto "") then {
-		_color = floor(random(count _textures));
-	};
-	_count = (count _colors) - 1;
+if (_color isEqualTo -1 && {(_newVeh iskindof _typeVeh)}) then {
 	{
-		if (_count >= _forEachIndex) then{
-			_textures = _colors select _forEachIndex;
-		};
-		_newVeh setObjectTextureGlobal[_x, (_textures select _color)];
-	} forEach _selections;
+		_newVeh SetObjectTextureGlobal [_foreachindex,_x];
+	} foreach _textures;
 	_newVeh setVariable["VEHICLE_TEXTURE", _color];
+}
+else {
+	_checkclass = _typeVeh;
+	if !(_newVeh iskindof _typeVeh) then {
+		_checkclass = _UpgradeVeh;
+	};
+	_cfgEpochVehicles = 'CfgEpochVehicles' call EPOCH_returnConfig;
+	_availableColorsConfig = (_cfgEpochVehicles >> _checkclass >> "availableColors");
+	if (isArray(_availableColorsConfig)) then{
+		_colors = getArray (_availableColorsConfig);
+		_textureSelectionIndex = (_cfgEpochVehicles >> _checkclass >> "textureSelectionIndex");
+		_selections = if (isArray(_textureSelectionIndex)) then{ getArray(_textureSelectionIndex) } else { [0] };
+		_textures = _colors select 0;
+		if (!(_newVeh iskindof _typeVeh) || _color isequalto "") then {
+			_color = floor(random(count _textures));
+		};
+		_count = (count _colors) - 1;
+		{
+			if (_count >= _forEachIndex) then{
+				_textures = _colors select _forEachIndex;
+			};
+			_newVeh setObjectTextureGlobal[_x, (_textures select _color)];
+		} forEach _selections;
+		_newVeh setVariable["VEHICLE_TEXTURE", _color];
+	};
 };
 
 // disable thermal imaging equipment
