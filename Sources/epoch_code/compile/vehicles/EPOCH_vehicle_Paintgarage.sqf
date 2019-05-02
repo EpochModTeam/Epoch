@@ -8,7 +8,7 @@ _this spawn {
 	_ok = true;
 	_Check1 = {
 		_out1 = true;
-		if (_Vehicle distance2D _Building > 1.5) exitwith {
+		if (_Vehicle distance2D _Building > 2.5) exitwith {
 			["Park in center of the Garage",5] call Epoch_Message;
 			false
 		};

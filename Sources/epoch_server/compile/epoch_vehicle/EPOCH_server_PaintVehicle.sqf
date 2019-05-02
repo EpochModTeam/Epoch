@@ -20,7 +20,7 @@ if(_PaintingCosts > 0)then{
 };
 if (_ok) then {
 	{
-		_vehicle SetObjectTextureGlobal _x;
+		_vehicle SetObjectTextureGlobal [_foreachindex,_x];
 	} foreach _Textures;
 	_vehicle setVariable ["VEHICLE_TEXTURE", -1];
 	EPOCH_saveVehQueue pushBackUnique _vehicle;

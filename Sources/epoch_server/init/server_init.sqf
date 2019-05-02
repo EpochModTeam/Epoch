@@ -171,6 +171,15 @@ for "_i" from 0 to 9 do {
 
 UseCustomTextures = ([_serverSettingsConfig, "UseCustomTextures", false] call EPOCH_fnc_returnConfigEntry);
 
+if (([_serverSettingsConfig, "ReplaceCarService", false] call EPOCH_fnc_returnConfigEntry)) then {
+	{
+		private _shop = "paintshop" createvehicle (getpos _x);
+		_shop setposatl (getposatl _x);
+		_shop setVectorDirAndUp [VectorDir _x, VectorUp _x];
+		_x HideobjectGlobal true;
+	} foreach (epoch_centerMarkerPosition nearObjects ["Land_CarService_F", EPOCH_dynamicVehicleArea]);
+};
+
 //Execute Server Functions
 diag_log "Epoch: Loading buildings";
 EPOCH_BuildingSlotsLimit call EPOCH_server_loadBuildings;
