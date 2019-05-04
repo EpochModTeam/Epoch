@@ -1,6 +1,9 @@
 _this spawn {
 	params ["_Building","_Vehicle",["_Textures",[]]];
-	_PaintingCosts = getnumber (missionconfigfile >> "CfgPainting" >> (typeof _Vehicle) >> "PaintingCosts");
+	_PaintingCosts = getnumber (missionconfigfile >> "CfgPainting" >> "DefaultVehicle" >> "PaintingCosts");
+	if (isclass (missionconfigfile >> "CfgPainting" >> (typeof _Vehicle))) then {
+		_PaintingCosts = getnumber (missionconfigfile >> "CfgPainting" >> (typeof _Vehicle) >> "PaintingCosts");
+	};
 	if (EPOCH_playerCrypto < _PaintingCosts) exitWith {
 		_line = format ['You need %1 Crypto for Painting', _PaintingCosts];
 		[_line,5] call Epoch_message;
