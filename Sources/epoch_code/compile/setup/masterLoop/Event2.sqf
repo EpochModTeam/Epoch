@@ -202,3 +202,18 @@ _playerNuisance = [_playerNuisanceKey,-1,_playerNuisanceMax,_playerNuisanceMin] 
 // calculate max stamina
 EPOCH_playerStaminaMax = (100 * (round(_playerAliveTime/360)/10)) min 2500;
 
+if (_isOnFoot) then {
+	_Walkdist = _lastPlayerPos2 distance (getposATL player);
+	if (_Walkdist < 150) then {
+		_TotalWalkDist = _TotalWalkDist + _Walkdist;
+		["WalkDist",_TotalWalkDist,false,true] call EPOCH_client_updatePlayerStat;
+	};
+};
+_lastPlayerPos2 = getposATL player;
+if (_playerAliveTime > _MaxAliveTime) then {
+	_MaxAliveTime = _playerAliveTime;
+	["MaxAliveTime",_MaxAliveTime,false,true] call EPOCH_client_updatePlayerStat;
+};
+_PlayTime = _PlayTime + diag_ticktime - _PlayTimeTimer;
+["PlayTime",_PlayTime,false,true] call EPOCH_client_updatePlayerStat;
+_PlayTimeTimer = diag_ticktime;

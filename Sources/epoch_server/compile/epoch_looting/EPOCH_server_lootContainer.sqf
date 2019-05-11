@@ -24,6 +24,8 @@ if (_player distance _object > 20) exitWith{};
 
 if !(_object in EPOCH_cleanupQueue) then {
 
+	[_player,"LootedObjs",1,true] call EPOCH_server_updatePlayerStats;
+
 	EPOCH_cleanupQueue pushBack _object;
 
 	_type = typeOf _object;

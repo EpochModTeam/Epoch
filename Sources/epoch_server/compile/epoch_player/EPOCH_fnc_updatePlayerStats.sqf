@@ -12,15 +12,18 @@
     Github:
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server/compile/epoch_player/EPOCH_fnc_updatePlayerStats.sqf
 */
-params ["_player","_killer","_statType","_adjust","_toClient",["_token","",[""]]];
+params ["_player",["_killer",ObjNull],["_statType",""],["_adjust",0],["_toClient",false],["_token","",[""]],["_isTotal",false]];
 
 if(isNull _player)exitWith{
 	diag_log "EPOCHDebug: fnc_updatePlayerStats -1a- player is Null";
 };
-if(isNull _killer)exitWith{
-	diag_log "EPOCHDebug: fnc_updatePlayerStats -1b- non local killer is Null";
+if(!isplayer _player)exitWith{
+	diag_log "EPOCHDebug: fnc_updatePlayerStats -1b- is not a player";
 };
 
 if([_player,_token] call EPOCH_server_getPToken)then{
-	[_killer, _statType, _adjust, _toClient] call EPOCH_server_updatePlayerStats;
+	if (!isnull _killer) then {
+		_player = _killer;
+	};
+	[_player, _statType, _adjust, _toClient, _isTotal] call EPOCH_server_updatePlayerStats;
 };

@@ -26,7 +26,7 @@
 	_toServer - BOOLEAN: (OPTIONAL): false by default
 	
 */
-params [ ["_statType",""], ["_adjust",0], ["_toServer",false] ];
+params [ ["_statType",""], ["_adjust",0], ["_toServer",false], ["_isTotal",false]];
 
 if(_statType isEqualTo "")exitWith{
 	diag_log "EPOCHDebug: updatePlayerStats -2- stat type not defined";
@@ -38,8 +38,11 @@ if(_adjust isEqualTo 0)exitWith{
 private _statVarName = format["EPOCH_total%1",_statType];
 private _currentStat = missionNameSpace getVariable[_statVarName,0];
 private _newStat = _currentStat + _adjust;
+if (_isTotal) then {
+	_newStat = _adjust;
+};
 missionNameSpace setVariable[_statVarName,_newStat];
 
 if(_toServer)then{
-	[player, objNull, _statType, _adjust, false, Epoch_personalToken] remoteExec ["EPOCH_fnc_updatePlayerStats",2];
+	[player, ObjNull, _statType, _adjust, false, Epoch_personalToken, _isTotal] remoteExec ["EPOCH_fnc_updatePlayerStats",2];
 };

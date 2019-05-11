@@ -95,7 +95,13 @@ _fnc_forceUpdate = {
 		if !(isNil "_varNameTmp") then {_varName = _varNameTmp};
 		_customVars pushBack (missionNamespace getVariable [_varName,_defaultVarValues select _foreachindex]);
 	} forEach _customVarNames;
-	[player,_customVars,Epoch_personalToken] remoteExec ["EPOCH_fnc_savePlayer",2];
+	_stats = [
+		["WalkDist",round _TotalWalkDist,true],
+		["MaxAliveTime",_MaxAliveTime,true],
+		["PlayTime", round _PlayTime, true],
+		["LootedObjs",missionnamespace getvariable ["EPOCH_totalLootedObjs",0], true]
+	];
+	[player,_customVars,Epoch_personalToken,_stats] remoteExec ["EPOCH_fnc_savePlayer",2];
 };
 
 // disable fuel sources client side.
@@ -222,6 +228,12 @@ _lootClassesIgnore = ['Default'];
 '_cN = configName _x;if !(_cN in _lootClassesIgnore)then{_lootClasses pushBackUnique (toLower _cN)}; true' configClasses _masterConfig;
 
 _lastPlayerPos = getPosATL player;
+_lastPlayerPos2 = getPosATL player;
+_TotalWalkDist = missionnamespace getvariable ["EPOCH_totalWalkDist",0];
+_MaxAliveTime = missionnamespace getvariable ["EPOCH_totalMaxAliveTime",0];
+_PlayTime = missionnamespace getvariable ["EPOCH_totalPlayTime",0];
+_PlayTimeTimer = diag_ticktime;
+
 _pushbacklootedbld = {
 	private ["_lootCheckBufferLimit"];
 	_lootCheckBufferLimit = 333;

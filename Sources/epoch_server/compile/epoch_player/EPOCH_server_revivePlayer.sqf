@@ -157,6 +157,7 @@ if (!local _player) then {
 					_vars set[_cIndex, _PlayerCrypto];
 					_newPlyr setVariable['VARS', _vars];
 				};
+				_newPlyr setvariable ["COMMUNITY_STATS",_player getVariable["COMMUNITY_STATS", EPOCH_defaultStatVars]];
 
 				// send to player
 				[_newPlyr, _token, _loadabs] remoteExec ['EPOCH_clientRevive',_player];

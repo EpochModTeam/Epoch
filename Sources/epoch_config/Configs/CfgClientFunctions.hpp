@@ -54,6 +54,7 @@ class CfgClientFunctions
 			class DefibrillatorUse {};
 			class CamUse {};
 			class DefuseBomb {};
+			class PlayerStatsDialog {};
 		};
 		class building
 		{

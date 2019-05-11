@@ -285,5 +285,17 @@ class e_pad_config
 			ToggleVar = "";
 			ToggleAble = "false";
 		};
+		class PlayerStats
+		{
+			ButtonText = "";
+			Description = "Player Statistic";
+			icon = "x\addons\a3_epoch_code\Data\UI\epad\PlayerStats.paa";
+			color[] = {1,1,1,1};
+			colortoggled[] = {0,1,0,1};
+			action = "if (isnull (finddisplay -1200)) then {createdialog 'PlayerStatsDialog'};";
+			Tooltip = "Player Statistic";
+			ToggleVar = "";
+			ToggleAble = "false";
+		};
 	};
 };

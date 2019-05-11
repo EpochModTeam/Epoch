@@ -243,6 +243,23 @@ if (!isNull _player) then {
 				// load community stats
 				_communityStatsArray = ["CommunityStats", _playerUID] call EPOCH_fnc_server_hiveGETRANGE;
 				_communityStats = (_communityStatsArray param [1,[]]) param [0,[]];
+				if (_communityStats isEqualTo []) then {
+					_communityStats = EPOCH_defaultStatVars;
+				};
+				if (count _communityStats < EPOCH_communityStatsCount) then {
+					{
+						private _check = _communityStats select _foreachindex;
+						if (isnil '_check') then {
+							_communityStats pushback _x;
+						};
+					} foreach EPOCH_defaultStatVars;
+				};
+				_Index = EPOCH_communityStats find "ConnectCount";
+				if (_Index > -1) then {
+					_currentStat = _communityStats select _Index;
+					_communityStats set[_Index, _currentStat + 1];
+				};
+				
 				_newPlyr setVariable["COMMUNITY_STATS", _communityStats];
 
 				// Flag new body as ready for use.

@@ -194,8 +194,51 @@ class CfgEpochClient
 		{"TraderMissions",0,{}},
 		{"AIKills",0,{}},
 		{"AntagonistKills",0,{}},
-		{"ZombieKills",0,{}}
+		{"ZombieKills",0,{}},
+		{"WalkDist",0,{}},
+		{"MaxAliveTime",0,{}},
+		{"NPCTrades",0,{}},
+		{"PlayTime",0,{}},
+		{"LootedObjs",0,{}},
+		{"CraftedItems",0,{}},
+		{"ConnectCount",0,{}},
+		{"BuildingsSet",0,{}},
+		{"AIDeaths",0,{}},
 	};
+	PlayerStatsDialogEntries[] = {
+		{
+			{"ConnectCount","Times connected"},
+			{"PlayTime","Playtime (hours)","%1/3600 toFixed 2"},
+			{"MaxAliveTime","Max Alivetime (hours)","%1/3600 toFixed 2"},
+			{"Walkdist","Distance Walked (Km)","%1/1000 toFixed 2"}
+		},
+		{
+			{"LootedObjs","Objects Looted"},
+			{"NPCTrades","Trades at Trader"},
+			{"BuildingsSet","Placed Buildings"},
+			{"CraftedItems","Crafted Items"}
+		},
+		{
+			{"Karma","Karma"},
+			{"Revives","Player Revived"},
+			{"TraderMissions","Tradermissions"}
+		},
+		{
+			{"Murders","Player Kills"},
+			{"AIKills","AI Kills"},
+			{"AntagonistKills","Antagonist Kills"},
+			{"ZombieKills","Zombie Kills"}
+		},
+		{
+			{"Deaths","Deaths by Player"},
+			{"AIDeaths","Deaths by AI"},
+			{"Suicides","Suicides"}
+		},
+		{
+			{"","K/D PvP","(Epoch_totalMurders/(Epoch_totalDeaths max 1)) toFixed 1"},
+			{"","K/D PvE","(Epoch_totalAIKills/(Epoch_totalAIDeaths max 1)) toFixed 1"}
+		}
+	};	
     group_upgrade_lvl[] = {4,"1000",6,"1500",8,"2000",10,"2500",12,"3000",14,"3500",16,"4000",32,"8000",64,"16000"}; // controls max group limit and cost
     // Event handler code
     displayAddEventHandler[] = {"keyDown","keyUp"};
