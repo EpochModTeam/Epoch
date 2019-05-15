@@ -204,13 +204,14 @@ class CfgEpochClient
 		{"ConnectCount",0,{}},
 		{"BuildingsSet",0,{}},
 		{"AIDeaths",0,{}},
+		{"PublicStats",1,{}}	// DO not change this! Players can disable it within the E-Pad by themself!
 	};
 	PlayerStatsDialogEntries[] = {
 		{
 			{"ConnectCount","Times connected"},
 			{"PlayTime","Playtime (hours)","%1/3600 toFixed 2"},
 			{"MaxAliveTime","Max Alivetime (hours)","%1/3600 toFixed 2"},
-			{"Walkdist","Distance Walked (Km)","%1/1000 toFixed 2"}
+			{"WalkDist","Distance Walked (Km)","%1/1000 toFixed 2"}
 		},
 		{
 			{"LootedObjs","Objects Looted"},
@@ -238,6 +239,20 @@ class CfgEpochClient
 			{"","K/D PvP","(Epoch_totalMurders/(Epoch_totalDeaths max 1)) toFixed 1"},
 			{"","K/D PvE","(Epoch_totalAIKills/(Epoch_totalAIDeaths max 1)) toFixed 1"}
 		}
+	};
+	TopStatsDialogEntries[] = {
+		{"PlayTime","Playtime (hours)","%1/3600 toFixed 2"},
+		{"MaxAliveTime","Max Alivetime (hours)","%1/3600 toFixed 2"},
+		{"WalkDist","Distance Walked (Km)","%1/1000 toFixed 2"},
+		{"LootedObjs","Objects Looted"},
+		{"NPCTrades","Trades at Trader"},
+		{"BuildingsSet","Placed Buildings"},
+		{"CraftedItems","Crafted Items"},
+		{"Karma","Karma"},
+		{"Murders","Player Kills"},
+		{"AIKills","AI Kills"},
+		{"Deaths","Deaths by Player"},
+		{"AIDeaths","Deaths by AI"}
 	};	
     group_upgrade_lvl[] = {4,"1000",6,"1500",8,"2000",10,"2500",12,"3000",14,"3500",16,"4000",32,"8000",64,"16000"}; // controls max group limit and cost
     // Event handler code

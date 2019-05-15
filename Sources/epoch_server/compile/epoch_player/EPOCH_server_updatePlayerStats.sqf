@@ -39,7 +39,7 @@ if(isNull _playerObj)exitWith{
 if(_statType isEqualTo "")exitWith{
 	diag_log "EPOCHDebug: playerUpdateStats -2- stat type not defined";
 };
-if(_adjust isEqualTo 0)exitWith{
+if(_adjust isEqualTo 0 && !_isTotal)exitWith{
 	diag_log "EPOCHDebug: playerUpdateStats -3- stat adjustment is 0";
 };
 _playerUID = getplayerUID _playerObj;

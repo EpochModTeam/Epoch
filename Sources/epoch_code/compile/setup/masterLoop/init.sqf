@@ -99,9 +99,10 @@ _fnc_forceUpdate = {
 		["WalkDist",round _TotalWalkDist,true],
 		["MaxAliveTime",_MaxAliveTime,true],
 		["PlayTime", round _PlayTime, true],
-		["LootedObjs",missionnamespace getvariable ["EPOCH_totalLootedObjs",0], true]
+		["PublicStats",missionnamespace getvariable ["EPOCH_totalPublicStats",1], true]
 	];
-	[player,_customVars,Epoch_personalToken,_stats] remoteExec ["EPOCH_fnc_savePlayer",2];
+	[player,_customVars,Epoch_personalToken,_stats,_UpdateTopStats] remoteExec ["EPOCH_fnc_savePlayer",2];
+	_UpdateTopStats = false;
 };
 
 // disable fuel sources client side.
@@ -233,6 +234,8 @@ _TotalWalkDist = missionnamespace getvariable ["EPOCH_totalWalkDist",0];
 _MaxAliveTime = missionnamespace getvariable ["EPOCH_totalMaxAliveTime",0];
 _PlayTime = missionnamespace getvariable ["EPOCH_totalPlayTime",0];
 _PlayTimeTimer = diag_ticktime;
+_UpdateTopStats = false;
+EPOCH_MyStatsPublic = !((missionnamespace getvariable ["EPOCH_totalPublicStats",1]) isEqualTo 0);
 
 _pushbacklootedbld = {
 	private ["_lootCheckBufferLimit"];

@@ -131,6 +131,7 @@ class CfgServerFunctions
 			class server_isNearChecks {};
 			class server_DefuseBomb {};
 			class server_PutCrypto {};
+			class server_UpdateTopStats{};
 		};
 		class epoch_missions {
 			class Server_createObject {};

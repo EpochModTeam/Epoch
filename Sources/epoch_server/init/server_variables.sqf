@@ -100,3 +100,41 @@ private _serverSettingsConfig = configFile >> "CfgEpochServer";
 		(EPOCH_starterTraderItems select 1) set [_foreachindex, _currentStock];
 	};
 } foreach (EPOCH_starterTraderItems select 0);
+
+// Load / Build Top-Statistics
+_TopStatsVarsDb = (['CommunityStats', '0_TopStatsVars'] call EPOCH_fnc_server_hiveGETRANGE) param [1,[]];
+_TopStatsDb = (['CommunityStats', '0_TopStats'] call EPOCH_fnc_server_hiveGETRANGE) param [1,[]];
+EPOCH_TopStatsVars = (["CfgEpochClient", "TopStatsDialogEntries", []] call EPOCH_fnc_returnConfigEntryV2) apply {_x param [0,""]};
+EPOCH_TopStats = [];
+{
+	_added1 = false;
+	if (count _TopStatsVarsDb >= _foreachindex) then {
+		if (_x isEqualTo (_TopStatsVarsDb select _foreachindex)) then {
+			if (count _TopStatsDb >= _foreachindex) then {
+				_newstats2 = [];
+				{
+					_x params ["_value","_UID","_name"];
+					_communityStats = ((["CommunityStats", _UID] call EPOCH_fnc_server_hiveGETRANGE) param [1,[]]) param [0,[]];
+					if !(_communityStats isequalto []) then {
+						_name = "Unknown";
+						_array = (['PlayerData', _UID] call EPOCH_fnc_server_hiveGETRANGE) param [1,[]];
+						if !(_array isequalto []) then {
+							_name = _array select 0;
+						};
+						_newstats2 pushback [_value,_UID,_name];
+					};
+				} foreach (_TopStatsDb select _foreachindex);
+				EPOCH_TopStats pushback _newstats2;
+				_added1 = true;
+			};
+		};
+	};
+	if (!_added1) then {
+		EPOCH_TopStats pushback [];
+	};
+} foreach EPOCH_TopStatsVars;
+if !(EPOCH_TopStatsVars isEqualTo _TopStatsVarsDb) then {
+	["CommunityStats", "0_TopStatsVars", EPOCH_expiresCommunityStats, EPOCH_TopStatsVars] call EPOCH_fnc_server_hiveSETEX;
+};
+publicvariable "EPOCH_TopStats";
+publicvariable "EPOCH_TopStatsVars";

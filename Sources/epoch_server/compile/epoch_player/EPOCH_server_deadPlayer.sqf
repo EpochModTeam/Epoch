@@ -118,7 +118,9 @@ if (_current_crypto > 0) then{
 };
 
 // save community stats (skipped in EPOCH_server_savePlayer for dead Players)
-["CommunityStats", _playerUID, EPOCH_expiresCommunityStats, [_playerObj getVariable["COMMUNITY_STATS", EPOCH_defaultStatVars]]] call EPOCH_fnc_server_hiveSETEX;
+_stats = _playerObj getVariable["COMMUNITY_STATS", EPOCH_defaultStatVars];
+["CommunityStats", _playerUID, EPOCH_expiresCommunityStats, [_stats]] call EPOCH_fnc_server_hiveSETEX;
+[_playerObj,_stats] call EPOCH_server_UpdateTopStats;
 
 [_playerObj, _defaultVars] call EPOCH_server_savePlayer;
 

@@ -55,6 +55,7 @@ class CfgClientFunctions
 			class CamUse {};
 			class DefuseBomb {};
 			class PlayerStatsDialog {};
+			class ServerStatsDialog {};
 		};
 		class building
 		{

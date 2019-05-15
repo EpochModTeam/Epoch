@@ -436,6 +436,7 @@ if (lifeState player == "INCAPACITATED") then {
 
 // force update
 if (EPOCH_forceUpdateNow) then {
+	_UpdateTopStats = true;
 	_forceUpdate = false;
 	EPOCH_forceUpdate = false;
 	EPOCH_forceUpdateNow = false;

@@ -1,5 +1,21 @@
+/*
+	Author: He-Man - EpochMod.com
+
+	Contributors:
+
+	Description:
+	Fill Player Stats Dialog
+
+	Licence:
+	Arma Public License Share Alike (APL-SA) - https://www.bistudio.com/community/licenses/arma-public-license-share-alike
+
+	Github:
+	https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_code/compile/EPOCH_PlayerStatsDialog.sqf
+*/
+private ["_display","_UsedStats","_ctrlNo","_txt","_value"];
 disableSerialization;
 _display = findDisplay -1200;
+if (isnull _display) exitwith {};
 _UsedStats = ["CfgEpochClient", "PlayerStatsDialogEntries", []] call EPOCH_fnc_returnConfigEntryV2;
 _ctrlNo = 1100;
 {

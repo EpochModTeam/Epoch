@@ -12,11 +12,14 @@
     Github:
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server/compile/epoch_player/EPOCH_fnc_savePlayer.sqf
 */
-params ["_player","",["_token","",[""]],["_stats",[]]];
+params ["_player","",["_token","",[""]],["_stats",[]],["_UpdateTopStats",false]];
 if([_player,_token] call EPOCH_server_getPToken)then{
 	{
 		_x params ["_statType","_adjust","_isTotal"];
 		[_player, _statType, _adjust, false,_isTotal] call Epoch_server_updatePlayerStats;
 	} foreach _stats;
+	if (_UpdateTopStats) then {
+		[_player, _player getVariable["COMMUNITY_STATS", []] ] call EPOCH_server_UpdateTopStats;
+	};
     _this call EPOCH_server_savePlayer;
 };

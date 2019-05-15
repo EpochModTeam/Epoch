@@ -113,6 +113,17 @@ class e_pad_config
 				ToggleVar = "EPOCH_AutoEarplug";
 				ToggleAble = "true";
 			};
+			class PublicStats {
+				ButtonText = "";
+				Description = "Public Stats";
+				icon = "x\addons\a3_epoch_code\Data\UI\epad\ServerStats.paa";
+				color[] = {1,0,0,1};
+				colortoggled[] = {0,1,0,1};
+				action = "EPOCH_totalPublicStats = if (EPOCH_MyStatsPublic) then {0} else {1};EPOCH_forceUpdateNow = true";
+				Tooltip = "Enable / Disable your Stats in Server Stats";
+				ToggleVar = "EPOCH_MyStatsPublic";
+				ToggleAble = "true";
+			};
 			class Reset {
 				ButtonText = "Reset";
 				Description = "Reset Settings";
@@ -294,6 +305,18 @@ class e_pad_config
 			colortoggled[] = {0,1,0,1};
 			action = "if (isnull (finddisplay -1200)) then {createdialog 'PlayerStatsDialog'};";
 			Tooltip = "Player Statistic";
+			ToggleVar = "";
+			ToggleAble = "false";
+		};
+		class ServerStats
+		{
+			ButtonText = "";
+			Description = "Server Statistic";
+			icon = "x\addons\a3_epoch_code\Data\UI\epad\ServerStats.paa";
+			color[] = {1,1,1,1};
+			colortoggled[] = {0,1,0,1};
+			action = "if (isnull (finddisplay -1200)) then {createdialog 'ServerStatsDialog'};";
+			Tooltip = "Server Statistic";
 			ToggleVar = "";
 			ToggleAble = "false";
 		};
