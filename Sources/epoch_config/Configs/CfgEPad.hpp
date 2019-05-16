@@ -301,7 +301,7 @@ class e_pad_config
 			ButtonText = "";
 			Description = "Player Statistic";
 			icon = "x\addons\a3_epoch_code\Data\UI\epad\PlayerStats.paa";
-			color[] = {1,1,1,1};
+			color[] = {0,0,1,1};
 			colortoggled[] = {0,1,0,1};
 			action = "if (isnull (finddisplay -1200)) then {createdialog 'PlayerStatsDialog'};";
 			Tooltip = "Player Statistic";
@@ -313,7 +313,7 @@ class e_pad_config
 			ButtonText = "";
 			Description = "Server Statistic";
 			icon = "x\addons\a3_epoch_code\Data\UI\epad\ServerStats.paa";
-			color[] = {1,1,1,1};
+			color[] = {0,0,1,1};
 			colortoggled[] = {0,1,0,1};
 			action = "if (isnull (finddisplay -1200)) then {createdialog 'ServerStatsDialog'};";
 			Tooltip = "Server Statistic";
