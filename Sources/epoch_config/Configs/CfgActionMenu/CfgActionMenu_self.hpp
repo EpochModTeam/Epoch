@@ -115,7 +115,7 @@ class base_mode_attach
 };
 class Drink
 {
-	condition = "dyna_Watersource";
+	condition = "dyna_Watersource || dyna_DirtyWatersource";
 	action = "if (currentweapon player == '') then {player playmove 'AinvPknlMstpSnonWnonDnon_Putdown_AmovPknlMstpSnonWnonDnon';}else {if (currentweapon player == handgunweapon player) then {player playmove 'AinvPknlMstpSrasWpstDnon_Putdown_AmovPknlMstpSrasWpstDnon';}else {	player playmove 'AinvPknlMstpSrasWrflDnon_Putdown_AmovPknlMstpSrasWrflDnon';};};{_output = _x call EPOCH_giveAttributes;if (_output != '') then {[_output, 5] call Epoch_message_stack;};} foreach [['Thirst',100],['Toxicity',1,1],['Stamina',10]];";
 	icon = "x\addons\a3_epoch_code\Data\UI\buttons\Drink.paa";
 	tooltip = "Drink";
