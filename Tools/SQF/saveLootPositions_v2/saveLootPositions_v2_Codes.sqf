@@ -1,7 +1,5 @@
 if (isnil "LootMarkersPositions" && isnil "LootMarkers") then {
 	_Skipbuildings = [
-		"Land_LandMark_F",
-		"Land_wpp_Turbine_V2_F",
 		"Land_Mil_Barracks_L",
 		"Land_Mil_Guardhouse",
 		"Land_Mil_ControlTower_ruins",
@@ -52,7 +50,6 @@ if (isnil "LootMarkersPositions" && isnil "LootMarkers") then {
 		"Land_House_1W04_ruins_F"
 	];
 	_skipstrings = [
-		"land_powerwire",
 		"land_containerline",
 		"land_telephoneline",
 		"land_power_pole",
@@ -356,15 +353,9 @@ player allowdamage false;
 					_idx = round (random ((count LootMarkersPositions)-1));
 					systemchat format ["Index = %1",_idx];
 					player setpos (LootMarkersPositions select _idx);
-					Building = (nearestObjects [player, [LootMarkers select _idx],200]) param [0,objnull];
-					if !(isnull Building) then {
-						systemchat format ['Selected Building = %1',typeof Building];
-						hint format ['Selected Building = %1',typeof Building];
-					}
-					else {
-						systemchat "Error - Building not found";
-						hint "Error - Building not found";
-					};
+					Building = nearestObject [player, LootMarkers select _idx];
+					systemchat format ['Selected Building = %1',typeof Building];
+					hint format ['Selected Building = %1',typeof Building];
 				}
 				else {
 					hint "No more positions found!";
