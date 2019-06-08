@@ -17,39 +17,50 @@ if !(_source isEqualTo _unit) then {
 	if ((missionnamespace getvariable ["EPOCH_HandleDamageTimeOut",diag_ticktime]) > diag_ticktime) exitwith {};	// prevent multiple actions here
 	switch _projectile do {
 		case "B_EnergyPack": {
-			if (_source distance _unit > 10) exitwith {};
-			if (missionnamespace getvariable ["EPOCH_OldRevive",false]) exitwith {};
 			EPOCH_HandleDamageTimeOut = diag_ticktime + 0.1;
-			_attachments = handgunItems _source;
-			if ("Heal_EPOCH" in _attachments) then {
-				if (lifeState _unit == "INCAPACITATED") exitwith {
+			if (currentweapon _source isEqualTo "pvcrifle_01_epoch") then {
+				if !(lifeState _unit == "INCAPACITATED") then {
 					EPOCH_HandleDamageTimeOut = diag_ticktime + 1;
-					_unit setUnconscious false;
-					_unit playMoveNow 'AmovPercMstpSnonWnonDnon';
+					_unit setUnconscious true;
+					EPOCH_UnconsciousTime = diag_ticktime + 60 + (random 120);
+					["You are Knocked out for a while...",5] call Epoch_Message;
 				};
-				_highestDMG = 0;
-				_currentHIT = -1;
-				_currentDMG = 0;
-				{
-					_currentDMG = _x;
-					if (_currentDMG > _highestDMG) then{
-						_highestDMG = _currentDMG;
-						_currentHIT = _forEachIndex;
+			}
+			else {
+				if (_source distance _unit > 10) exitwith {};
+				if !(missionnamespace getvariable ["EPOCH_OldRevive",false]) then {
+					_attachments = handgunItems _source;
+					if ("Heal_EPOCH" in _attachments) then {
+						if (lifeState _unit == "INCAPACITATED") exitwith {
+							EPOCH_HandleDamageTimeOut = diag_ticktime + 1;
+							_unit setUnconscious false;
+							_unit playMoveNow 'AmovPercMstpSnonWnonDnon';
+						};
+						_highestDMG = 0;
+						_currentHIT = -1;
+						_currentDMG = 0;
+						{
+							_currentDMG = _x;
+							if (_currentDMG > _highestDMG) then{
+								_highestDMG = _currentDMG;
+								_currentHIT = _forEachIndex;
+							};
+						}forEach((getAllHitPointsDamage _unit) param[2,[]]);
+						if (_highestDMG > 0) then {
+							_newDMG = 0; 
+							[_unit,[[_currentHIT,_newDMG]]] call EPOCH_client_repairVehicle;
+						} else {
+							if ((damage _unit) > 0) then {
+								[_unit,["ALL",0],player,Epoch_personalToken] remoteExec ["EPOCH_server_repairVehicle",2];
+							};
+						};
 					};
-				}forEach((getAllHitPointsDamage _unit) param[2,[]]);
-				if (_highestDMG > 0) then {
-					_newDMG = 0; 
-					[_unit,[[_currentHIT,_newDMG]]] call EPOCH_client_repairVehicle;
-				} else {
-					if ((damage _unit) > 0) then {
-						[_unit,["ALL",0],player,Epoch_personalToken] remoteExec ["EPOCH_server_repairVehicle",2];
+					if ("Defib_EPOCH" in _attachments) then {
+						if !(alive _unit) then {
+							EPOCH_HandleDamageTimeOut = diag_ticktime + 1;
+							[_unit,_source,Epoch_personalToken] remoteExec ["EPOCH_server_revivePlayer",2];
+						};
 					};
-				};
-			};
-			if ("Defib_EPOCH" in _attachments) then {
-				if !(alive _unit) then {
-					EPOCH_HandleDamageTimeOut = diag_ticktime + 1;
-					[_unit,_source,Epoch_personalToken] remoteExec ["EPOCH_server_revivePlayer",2];
 				};
 			};
 		};
@@ -58,6 +69,7 @@ if !(_source isEqualTo _unit) then {
 				EPOCH_HandleDamageTimeOut = diag_ticktime + 1;
 				_unit setUnconscious true;
 				EPOCH_UnconsciousTime = diag_ticktime + 60 + (random 120);
+				["You are Knocked out for a while...",5] call Epoch_Message;
 			};
 		};
 	};
