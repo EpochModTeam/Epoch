@@ -362,6 +362,7 @@ class CfgEpochClient
     #include "CfgEpochClient\Chernarus_Summer.hpp"
     #include "CfgEpochClient\Chernarus.hpp"
 	#include "CfgEpochClient\ChernarusRedux.hpp"
+    #include "CfgEpochClient\Enoch.hpp"
     #include "CfgEpochClient\Esseker.hpp"
     #include "CfgEpochClient\ProvingGrounds_PMC.hpp"
     #include "CfgEpochClient\Sara_dbe1.hpp"

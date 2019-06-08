@@ -202,15 +202,15 @@ class CfgEpoch
 		    {"C_Hatchback_01_EPOCH",10},
 		    {"C_Hatchback_02_EPOCH",10},
 		    {"C_SUV_01_EPOCH",10},
-		    {"C_Rubberboat_EPOCH",5},
-		    {"C_Rubberboat_02_EPOCH",5},
-		    {"C_Rubberboat_03_EPOCH",5},
-		    {"C_Rubberboat_04_EPOCH",5},
+		    {"C_Rubberboat_EPOCH",2},
+		    {"C_Rubberboat_02_EPOCH",2},
+		    {"C_Rubberboat_03_EPOCH",2},
+		    {"C_Rubberboat_04_EPOCH",2},
 		    {"C_Van_01_box_EPOCH",8},
 		    {"C_Van_01_transport_EPOCH",9},
-		    {"C_Boat_Civil_01_EPOCH",5},
-		    {"C_Boat_Civil_01_police_EPOCH",5},
-		    {"C_Boat_Civil_01_rescue_EPOCH",5},
+		    {"C_Boat_Civil_01_EPOCH",2},
+		    {"C_Boat_Civil_01_police_EPOCH",2},
+		    {"C_Boat_Civil_01_rescue_EPOCH",2},
 		    {"B_Heli_Light_01_EPOCH",2},
 		    {"B_SDV_01_EPOCH",2},
 		    {"B_MRAP_01_EPOCH",3},
@@ -231,7 +231,7 @@ class CfgEpoch
 		    {"O_Heli_Transport_04_box_EPOCH",1},
 		    {"O_Heli_Transport_04_covered_EPOCH",1},
 		    {"B_Heli_Transport_03_unarmed_EPOCH",1},
-		    {"jetski_epoch",7},
+		    {"jetski_epoch",2},
 		    {"MBK_01_EPOCH",2},
 		    {"hoverboard_epoch_1",1},
 		    {"hoverboard_epoch_cargo",1},
@@ -281,7 +281,7 @@ class CfgEpoch
 		    {"C_Rubberboat_04_EPOCH",2},
 		    {"C_Van_01_box_EPOCH",4},
 		    {"C_Van_01_transport_EPOCH",4},
-		    {"C_Boat_Civil_01_EPOCH",5},
+		    {"C_Boat_Civil_01_EPOCH",2},
 		    {"C_Boat_Civil_01_police_EPOCH",2},
 		    {"C_Boat_Civil_01_rescue_EPOCH",2},
 		    {"B_Heli_Light_01_EPOCH",2},
@@ -304,7 +304,7 @@ class CfgEpoch
 		    {"O_Heli_Transport_04_box_EPOCH",1},
 		    {"O_Heli_Transport_04_covered_EPOCH",1},
 		    {"B_Heli_Transport_03_unarmed_EPOCH",1},
-		    {"jetski_epoch",3},
+		    {"jetski_epoch",2},
 		    {"K01",1},
 		    {"K02",1},
 		    {"K03",1},
@@ -393,7 +393,7 @@ class CfgEpoch
             {"plymouth_rock_1",5},
             {"warrig_black",5},
             {"nux_car_1",10},
-            {"interceptor_1",5},
+            {"interceptor_1",5}
 		};
         allowedVehiclesList_MADCUP[] = {
             {"jetski_epoch",3},
@@ -427,7 +427,7 @@ class CfgEpoch
 			{"CUP_C_Golf4_white_Civ",1},
 			{"CUP_C_Golf4_whiteblood_Civ",1},
 			{"CUP_C_Golf4_yellow_Civ",1},
-			{"CUP_C_Octavia_CIV",1},
+			{"CUP_C_Octavia_CIV",1}
 		};
 	};
 	#include "configs\maps\bornholm.h"
@@ -462,5 +462,5 @@ class CfgEpoch
     #include "configs\maps\Panthera3.h"
     #include "configs\maps\Winthera3.h"
 	#include "configs\maps\lythium.h"
-    
+	#include "configs\maps\Enoch.h"
 };
