@@ -49,7 +49,12 @@ if (isnil "LootMarkersPositions" && isnil "LootMarkers") then {
 		"Land_Chapel_02_yellow_ruins_F",
 		"Land_Radar_01_antenna_F",
 		"Land_FeedStorage_01_F",
-		"Land_House_1W04_ruins_F"
+		"Land_House_1W04_ruins_F",
+		"Land_Smokestack_01_factory_F",
+		"Land_HouseRuin_Small_01_half_F",
+		"Land_CoalPlant_01_Conveyor_F",
+		"Land_Cross_01_small_F",
+		"Land_GuardTower_02_F"
 	];
 	_skipstrings = [
 		"land_powerwire",
