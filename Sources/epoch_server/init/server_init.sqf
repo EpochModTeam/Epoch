@@ -154,7 +154,8 @@ if (isClass _epochWorldPath) then {
 };
 epoch_centerMarkerPosition = getMarkerPos "center";
 if (epoch_centerMarkerPosition isEqualTo [0,0,0]) then {
-    diag_log "Epoch: Error cannot find center marker!";
+    diag_log "Epoch: Error cannot find center marker! - default used instead";
+	epoch_centerMarkerPosition = [worldSize / 2, worldsize / 2, 0];
 };
 EPOCH_dynamicVehicleArea = _worldSize / 2;
 

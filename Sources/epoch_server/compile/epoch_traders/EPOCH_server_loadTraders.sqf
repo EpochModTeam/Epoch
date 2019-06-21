@@ -24,6 +24,9 @@ params [["_maxTraderLimit",0]];
 _staticTradersArray = +EPOCH_staticNPCTraderPos;
 EPOCH_staticNPCTraderPos = nil;
 _config = (configFile >> "CfgEpoch" >> worldName);
+if !(isclass _config) then {
+	_config = (configFile >> "CfgEpoch" >> "Default");
+};
 _staticTradersArray append getArray(_config >> "staticNpcPos");
 _staticTradersArrCount = count _staticTradersArray;
 _aiTables = getArray(_config >> "traderUniforms");

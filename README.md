@@ -16,3 +16,8 @@ http://www.bistudio.com/community/licenses/arma-public-license-share-alike
 Credits:
 =====
 https://github.com/EpochModTeam/Epoch/blob/release/CREDITS.md
+
+Instructions:
+=====
+- Server Install: https://epochmod.com/forum/topic/44751-dec2017-arma-3-epochmod-server-installation-and-setup/
+- If your wanted Map is currently not supported, use the "epoch._ChangeMe.pbo" and rename it to "epoch.MapName.pbo" to use a fallback config

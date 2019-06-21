@@ -51,7 +51,7 @@ class CfgEpoch
 {
 	class Default
 	{
-		worldSize = 12000;
+//		worldSize = 12000;
 		vehicleSpawnTypes[] = {
 			{"FlatAreaCity",1},
 			{"FlatAreaCitySmall",1},
@@ -84,7 +84,16 @@ class CfgEpoch
 		traderblockblds[] = {"pier","bridge","fireescape","medevac_house","pillboxbunker","containerine"};		// If a building include this chars in the classname (tolower!!!) they will be blocked for Traders
 		
 		// Debug Box 
-		telePos[] = {};
+		telePos[] = {
+		// N [-0.286865,8.17383,-10.3098, 0]
+		// S [-0.415527,-7.05298,-10.3098, 180]
+		// E [13.5127,0.410156,-10.3098, 90]
+		// W [-14.4316,0.112793,-10.3098, -90]
+			{ "TP_Booth_n_EPOCH", { -0.286865,8.17383,-10.3098, 0}, "", "north" }, // Trader city 1
+			{ "TP_Booth_s_EPOCH", { -0.415527,-7.05298,-10.3098, 180}, "", "south" }, // Trader city 2
+			{ "TP_Booth_w_EPOCH", { -14.4316, 0.112793, -10.3098, -90}, "", "west" }, // Trader city 3
+			{ "TP_Booth_e_EPOCH", { 13.5127, 0.410156, -10.3098, 90}, "", "east" } // Trader city 4
+		};
 		lightPos[] = {
 			{-16.623,-8.50195,-10.5417},
 			{15.0352,-9.08594,-10.5417}
