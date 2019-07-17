@@ -852,4 +852,5 @@ class CfgWorldInteractions  {
     class b_prunusW_p3d : Bushes {};
 	class garbagebin_03_f_p3d : TrashSmall {};
 	class concretewell_02_f_p3d : Water {};
+	class Land_ConcreteWell_02_F : Water {};
 };
