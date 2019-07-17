@@ -54,7 +54,24 @@ if (isnil "LootMarkersPositions" && isnil "LootMarkers") then {
 		"Land_HouseRuin_Small_01_half_F",
 		"Land_CoalPlant_01_Conveyor_F",
 		"Land_Cross_01_small_F",
-		"Land_GuardTower_02_F"
+		"Land_GuardTower_02_F",
+		"Land_Church_04_small_red_damaged_F",
+		"Land_Slum_House01_ruins_F",
+		"Land_HighVoltageEnd_F",
+		"Land_WaterTower_02_F",
+		"Land_Shed_05_ruins_F",
+		"Land_Cowshed_01_A_F",
+		"Land_Cowshed_01_C_F",
+		"Land_Shed_Ind_old_ruins_F",
+		"Land_Smokestack_03_F",
+		"Land_Smokestack_02_F",
+		"Land_Radar_01_cooler_F",
+		"Land_Substation_01_F",
+		"Land_Radar_01_airshaft_F",
+		"Land_MobileRadar_01_generator_F",
+		"Land_HouseRuin_Big_02_half_F",
+		"Land_CoalPlant_01_LoadingHouse_F",
+		"Land_DeerStand_01_F"
 	];
 	_skipstrings = [
 		"land_powerwire",
@@ -91,7 +108,8 @@ if (isnil "LootMarkersPositions" && isnil "LootMarkers") then {
 		"barrier",
 		"bagfence",
 		"luggage",
-		"helipad"
+		"helipad",
+		"pump"
 	];
 	LootMarkersPositions = [];
 	LootMarkers = [];
@@ -134,7 +152,6 @@ if (isnil "LootMarkersPositions" && isnil "LootMarkers") then {
 
 
 Itemarray = ["toilet_epoch","Shelf_EPOCH","Fridge_EPOCH","Bunk_EPOCH","Couch_EPOCH","wardrobe_epoch","cooker_epoch","ChairRed_EPOCH","Filing_epoch","Pelican_EPOCH","Table_EPOCH","Locker_EPOCH","ToolRack_EPOCH","Shoebox_EPOCH","Tarp_EPOCH","Freezer_EPOCH","Cabinet_EPOCH","KitchenSink_epoch"];
-Skipbuildings = ["Land_Mil_Barracks_L","Land_Mil_Guardhouse","Land_Mil_ControlTower_ruins","Land_Mil_ControlTower","Land_Mil_Barracks","Land_Mil_House","Land_SS_hangar","Land_a_stationhouse","Land_Misc_WaterStation","Land_HouseV_3I4","Land_HouseV_3I3","Land_HouseV_3I2","Land_HouseV_3I1","Land_HouseV_2T2","Land_HouseV_2T1","Land_HouseV_2L","Land_HouseV_2I","Land_HouseV_1t","Land_HouseV_1L2","Land_Church_04_small_red_damaged_F","Land_Slum_House01_ruins_F","Land_HighVoltageEnd_F","Land_WaterTower_02_F","Land_Shed_05_ruins_F"];
 ItemArrayCount = count Itemarray;
 SkippedBuildings = [];
 Item = objNull;
@@ -182,7 +199,7 @@ player allowdamage false;
 				else {
 					Building = nearestbuilding player;
 				};
-				if (isClass(missionConfigFile >> "CfgBuildingLootPos" >> (typeof cursorobject)) || (typeof Building) in Skipbuildings) then {
+				if (isClass(missionConfigFile >> "CfgBuildingLootPos" >> (typeof cursorobject))) then {
 					systemchat format ['WARNING !!! %1 is already in LootList!!!',typeof Building];
 					hint format ['WARNING !!! %1 is already in LootList!!!',typeof Building];
 					Building = ObjNull;
