@@ -147,10 +147,26 @@ forceRestartTime      = 14400; 			// 4 hour restarts
 
 // Traders
 	taxRate = 0.1; 						// controls the price increase for purchases
+/*
 	starterTraderItems[] = { 			// Starter Items for fresh spawned trader first array is classnames second is quantity.
 		{"ItemSodaBurst","meatballs_epoch","MortarBucket","CinderBlocks","VehicleRepair","CircuitParts","ItemCorrugated","PartPlankPack","ItemRock","ItemRope","ItemStick"},
 		{5,5,5,5,5,5,5,5,5,5,5}
 	};
+*/
+	starterTraderItems[] = { 			// Starter Items for fresh spawned trader (old / above variant is also still working!)
+		{"ItemSodaBurst",5},
+		{"meatballs_epoch",5},
+		{"MortarBucket",5},
+		{"CinderBlocks",5},
+		{"VehicleRepair",5},
+		{"CircuitParts",5},
+		{"ItemCorrugated",5},
+		{"PartPlankPack",5},
+		{"ItemRock",5},
+		{"ItemRope",5},
+		{"ItemStick",5}
+	};
+
 	NPCSlotsLimit = 30; 				// Max number of traders static or dynamic. Warning! Higher the number lower performance.
 	forceStaticTraders = "true"; 		// disables traders moving from work to home
 	TraderGodMode = "false";			// If true, Trader can not be killed by Players

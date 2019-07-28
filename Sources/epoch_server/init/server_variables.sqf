@@ -89,6 +89,21 @@ private _serverSettingsConfig = configFile >> "CfgEpochServer";
     missionNamespace setVariable[format["EPOCH_%1", _x select 0], _varData];
 }forEach _configArray;
 
+// Convert Starter Trader items from alternative syntax
+if (count EPOCH_starterTraderItems == 0) then {
+	EPOCH_starterTraderItems = [[],[]];
+};
+if ((EPOCH_starterTraderItems select 0) isEqualTypeArray ["",0]) then {
+	private _EPOCH_starterTraderItems = [[],[]];
+	{
+		if (_x isEqualTypeArray ["",0]) then {
+			(_EPOCH_starterTraderItems select 0) pushback (_x select 0);
+			(_EPOCH_starterTraderItems select 1) pushback (_x select 1);
+		};
+	} foreach EPOCH_starterTraderItems;
+	EPOCH_starterTraderItems = _EPOCH_starterTraderItems;
+};
+
 // Convert Starter Trader Magazines from mags to rounds
 {
 	_maxrnd = 1;
