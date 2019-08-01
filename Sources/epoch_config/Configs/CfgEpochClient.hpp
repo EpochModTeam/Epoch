@@ -355,6 +355,32 @@ class CfgEpochClient
 		{"HitBWheel",0.33,0.91,"",""}
 	};
 
+/*	// Lower difficult VehicleRepairs example	
+	VehicleRepairs[] = {												// {Hitpoint, dmg to repair, dmg to replace, mat to repair, mat to replace}
+		{"HitHull",0.33,0.66,"ItemScraps","ItemCorrugated"},
+		{"HitBody",0.33,1,"ItemScraps","ItemCorrugated"},
+		{"HitEngine",0.33,0.91,"VehicleRepair","VehicleRepair"},
+		{"glass",0.33,1,"ItemGlass","ItemGlass"},
+		{"HitFuel",0.1,0.66,"ItemDuctTape","ItemDuctTape"},
+		{"HitHRotor",0.33,1,"ItemCorrugated","ItemCorrugated"},
+		{"HitVRotor",0.33,1,"ItemCorrugated","ItemCorrugated"},
+		{"HitWinch",0.33,0.91,"ItemCables","ItemCables"},
+		{"HitAvionics",0.33,0.91,"CircuitParts","CircuitParts"},
+		// Wheels - Do not change the order (front to back wheels) here!
+		{"HitLFWheel",0.33,1,"VehicleRepair","VehicleRepair"},
+		{"HitRFWheel",0.33,1,"VehicleRepair","VehicleRepair"},
+		{"HitLF2Wheel",0.33,1,"VehicleRepair","VehicleRepair"},
+		{"HitRF2Wheel",0.33,1,"VehicleRepair","VehicleRepair"},
+		{"HitLMWheel",0.33,1,"VehicleRepair","VehicleRepair"},
+		{"HitRMWheel",0.33,1,"VehicleRepair","VehicleRepair"},
+		{"HitLBWheel",0.33,1,"VehicleRepair","VehicleRepair"},
+		{"HitRBWheel",0.33,1,"VehicleRepair","VehicleRepair"},
+		// Mountainbike wheels
+		{"HitFWheel",0.33,0.91,"",""},
+		{"HitBWheel",0.33,0.91,"",""}
+	};
+*/
+
     // include configs
     #include "CfgEpochClient\Altis.hpp"
     #include "CfgEpochClient\australia.hpp"
