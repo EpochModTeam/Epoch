@@ -24,7 +24,7 @@ class build_upgrade
 };
 class PaintGarage
 {
-	condition = "(dyna_cursortargettype isEqualTo 'paintshop' && {player distance2d (dyna_cursorTarget modelToWorld (dyna_cursorTarget selectionPosition 'action1')) < 1}) || dyna_cursortargettype in ['Add other Buildings here']";
+	condition = "(dyna_cursortargettype isEqualTo 'paintshop' && {player distance2d (dyna_cursorTarget modelToWorld (dyna_cursorTarget selectionPosition 'action1')) < 1.5}) || dyna_cursortargettype in ['Add other Buildings here']";
 	action = "";
 	icon = "x\addons\a3_epoch_code\Data\UI\buttons\Paint.paa";
 	tooltip = "Paint Garage";
