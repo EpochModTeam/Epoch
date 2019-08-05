@@ -40,6 +40,7 @@ private _configArray = [
     ["showShippingContainers", true],
     ["cloneCost", 100],
     ["vehicleLockTime", "1800"],
+    ["vehicleLockTimeHome", "259200"],
     ["antagonistChancePDeath", 0.33],
     ["taxRate", 0.1],
     ["starterTraderItems", [[], []]],
