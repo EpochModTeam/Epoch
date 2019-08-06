@@ -112,6 +112,13 @@ class CfgMarkerSets
             {"","ICON","EpochService","ColorWhite",1,{0.9,0.9},0,"'Service Point'"}
         };
 	};
+	class PaintGarage {
+        markerArray[] = {
+            {"","ICON","EpochActive_Circle","ColorBlack",1,{0.85,0.85}},
+            {"","ICON","EpochBG_Circle","ColorGrey",0.25,{0.85,0.85}}, 
+            {"","ICON","EpochService","ColorBlue",1,{0.9,0.9},0,"'Paint Garage'"}
+        };
+	};
 	class Radiation {
         markerArray[] = {
             {"","ICON","EpochActive_Triangle","ColorYellow",1,{0.7,0.7}},
