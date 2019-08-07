@@ -196,7 +196,7 @@ if (([_serverSettingsConfig, "ReplaceCarService", false] call EPOCH_fnc_returnCo
 	} foreach (epoch_centerMarkerPosition nearObjects ["Land_CarService_F", EPOCH_dynamicVehicleArea]);
 };
 {
-	_markers = ["PaintGarage", (getpos _x),"Paint Garage"] call EPOCH_server_createGlobalMarkerSet;
+	_markers = ["PaintGarage", (getpos _x)] call EPOCH_server_createGlobalMarkerSet;
 } foreach (allmissionobjects "paintshop");
 
 diag_log "Epoch: Loading vehicles";
