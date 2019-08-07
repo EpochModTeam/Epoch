@@ -86,7 +86,7 @@ forceRestartTime      = 14400; 			// 4 hour restarts
 		{"200Rnd_40mm_G_belt",{0}}
 	};
 	disableVehicleTIE = "true";
-	ReplaceCarService = "false";		// Replace all "Land_CarService_F" with "paintshop" on the Map on Server Start
+	ReplaceCarService = "true";		// Replace all "Land_CarService_F" with "paintshop" on the Map on Server Start
 
 // BaseBuilding
 	StorageSlotsLimit 	= 1500; 		// Max storage slots allowed. Warning! Higher the number lower performance.
