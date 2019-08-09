@@ -111,7 +111,8 @@ _fnc_moveWeaponFromContainer = {
 	//add new entry
 	_loadout set [_dIdx,_temp];
 	//save changes
-	player setUnitLoadout _loadout;
+//	player setUnitLoadout _loadout;
+	[player,_loadout] call Epoch_SetUnitLoadout;
 };
 
 _fnc_MoveWeaponToContainer = {
@@ -135,7 +136,8 @@ _fnc_MoveWeaponToContainer = {
 	((_loadout select (_container + 3)) select 1) append [[_loadout select _sIdx,1]]; //cut out from above comment, looks like appending alone works great
 	_loadout set [_sIdx,[]];
 
-	player setUnitLoadout _loadout;
+//	player setUnitLoadout _loadout;
+	[player,_loadout] call Epoch_SetUnitLoadout;
 };
 
 _fnc_canMoveToContainer = {
@@ -230,7 +232,8 @@ _fnc_MoveShellToContainer = {
 		((_loadout select (_container + 3)) select 1) append [_temp2]; //cut out from above comment, looks like appending alone works great
 	};
 	(_loadout select 0) set [5,[]];
-	player setUnitLoadout _loadout;
+//	player setUnitLoadout _loadout;
+	[player,_loadout] call Epoch_SetUnitLoadout;
 };
 
 _fnc_moveShellFromContainer = {
@@ -248,7 +251,8 @@ _fnc_moveShellFromContainer = {
 			((_loadout select (_container + 3)) select 1) deleteAt _sIdx;
 		};
 		(_loadout select 0) set [5,[_temp select 0,_temp select 2]];
-		player setUnitLoadout _loadout;
+//		player setUnitLoadout _loadout;
+		[player,_loadout] call Epoch_SetUnitLoadout;
 	};
 };
 
@@ -272,7 +276,8 @@ _fnc_dropEquipShells = {
 			if !(_drop) exitWith {_return = 4;};
 			_equipped call _fnc_dropItem;
 			(_loadout select 0) set [5,[]];
-			player setUnitLoadout _loadout;
+//			player setUnitLoadout _loadout;
+			[player,_loadout] call Epoch_SetUnitLoadout;
 			_return = 2;
 		};
 		if (_forceEquip && _return != 4) then {
@@ -345,25 +350,29 @@ _fnc_dropEquipAccessories = {
 		_equipped = (_loadout select _slot) select _accessory;
 		if (player canAdd _equipped) then {
 			(_loadout select _slot) set [_accessory,""];
-			player setUnitLoadout _loadout;
+//			player setUnitLoadout _loadout;
+			[player,_loadout] call Epoch_SetUnitLoadout;
 			player addItem _equipped;
 			_return = 1;
 		} else {
 			if !(_drop) exitWith {_return = 4;};
 			_equipped call _fnc_dropItem;
 			(_loadout select _slot) set [_accessory,""];
-			player setUnitLoadout _loadout;
+//			player setUnitLoadout _loadout;
+			[player,_loadout] call Epoch_SetUnitLoadout;
 			_return = 2;
 		};
 		if ((((toLower _equipped) != (toLower _item)) || _forceEquip) && _return != 4) then {
 			(_loadout select _slot) set [_accessory,_item];
-			player setUnitLoadout _loadout;
+//			player setUnitLoadout _loadout;
+			[player,_loadout] call Epoch_SetUnitLoadout;
 			player addItem _equipped;
 			player removeItem _item;
 		};
 	} else {
 		(_loadout select _slot) set [_accessory,_item];
-		player setUnitLoadout _loadout;
+//		player setUnitLoadout _loadout;
+		[player,_loadout] call Epoch_SetUnitLoadout;
 		player removeItem _item;
 		_return = 1;
 	};

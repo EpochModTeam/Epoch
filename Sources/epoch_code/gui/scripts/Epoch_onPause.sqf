@@ -74,7 +74,7 @@ _respawnButton ctrlEnable false;
 	   (isNull _display) || ((_startTime - diag_tickTime) <= 0)
 	};
 	if (!isNull _display) then {
-		player setUnitLoadout (getUnitLoadout player);
+		[player,(getUnitLoadout player)] call (missionnamespace getvariable ["Epoch_SetUnitLoadout",{}]);
 		uisleep 1;	// give one second to broadcast clothing change
 		missionnamespace setvariable ["EPOCH_forceUpdateNow",true];
 	};

@@ -220,6 +220,7 @@ class CfgClientFunctions
 			class itemTypeSlot {};
 			class usedItemRepack {};
 			class CryptoButtons {};
+			class SetUnitLoadout {};
 		};
 		class servicepoint
 		{
