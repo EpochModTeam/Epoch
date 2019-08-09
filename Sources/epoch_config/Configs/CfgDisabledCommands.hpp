@@ -99,7 +99,7 @@ class CfgDisabledCommands
             args[] = {{},{"ARRAY"}};
         };
     };
-
+/*
     class FORCEADDUNIFORM
     {
         class SYNTAX1
@@ -108,7 +108,7 @@ class CfgDisabledCommands
             args[] = {{"OBJECT"},{"STRING"}};
         };
     };
-
+*/
     class REMOVEALLMPEVENTHANDLERS
     {
         class SYNTAX1
