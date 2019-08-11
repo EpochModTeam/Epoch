@@ -16,7 +16,10 @@
 private ["_type","_loadabs"];
 //[[[end]]]
 
-params ["_newPlyr","_loadout"];
+params ["_newPlyr","_loadout",["_key",-1000]];
+_tmpkey = (missionNamespace getVariable _playerRandomVarKey);
+if (isnil "_tmpkey") exitwith {};
+if !(_key isEqualTo (missionNamespace getVariable _playerRandomVarKey)) exitwith {};
 				
 //	_loadout params ["_primaryarr","_secondaryarr","_handgunarr","_uniformarr","_vestarr","_bpackarr","_HeadGear","_Glasses","_Rangefinderarr","_LinedItemsarr"];
 _loadout = +_loadout;

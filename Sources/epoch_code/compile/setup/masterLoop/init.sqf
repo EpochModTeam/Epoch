@@ -79,6 +79,7 @@ _customVarLimits = _customVarsInit apply {_x param [2,[]]};
 	if !(isNil "_varNameTmp") then {_varName = _varNameTmp};
 	missionNamespace setVariable [_varName, missionNamespace getVariable [format["EPOCH_player%1",_x], _varDefault]];
 } forEach _customVarNames;
+missionNamespace setVariable [call compile "_playerRandomVarKey", round (diag_tickTime + random 99999)];
 
 // only changed within this loop
 _playerAliveTime = missionNamespace getVariable [_playerAliveTimeKey, _playerAliveTimeDefault];

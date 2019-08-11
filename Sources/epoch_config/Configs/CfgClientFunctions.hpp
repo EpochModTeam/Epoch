@@ -216,11 +216,18 @@ class CfgClientFunctions
 			class maxArmorInit {};
 			class initUI {};
 			class refeshUI {};
-			class equip {};
+			class equip {
+				customHeader = 1;
+			};
 			class itemTypeSlot {};
 			class usedItemRepack {};
 			class CryptoButtons {};
-			class SetUnitLoadout {};
+			class SetUnitLoadout {
+				customHeader = 1;
+			};
+			class ReloadLoadout {
+				customHeader = 1;
+			};
 		};
 		class servicepoint
 		{
