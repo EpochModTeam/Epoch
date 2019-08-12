@@ -46,3 +46,4 @@
 5 deleteVehicleCrew !="fn_deleteVehicleCrew.sqf" !="\"BIS_fnc_deleteVehicleCrew\""
 5 selectPlayer !="selectPlayer _playerObject;"
 5 playSound3D !="playSound3D [_soundEffectFinal, _unit, false, getPosASL _unit, 1, 1, _soundEffectRange];" !="playSound3D ['a3\sounds_f\air\heli_attack_02\alarm.wss', player, false,getposasl _object, 1, 1, 300];" !="playSound3D [\"a3\Sounds_F\environment\animals\Goats\Goat_\" + selectRandom"
+5 setUnitLoadout !="Epoch_SetUnitLoadout" !="_newPlyr setunitloadout _loadout;"
