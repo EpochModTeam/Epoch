@@ -1,6 +1,56 @@
 # Change Log
 All changes for [Arma 3](https://arma3.com/) [Epoch Mod](https://epochmod.com) are listed in this changelog.
 
+## [1.3.2.0] - 2019-xx-xx
+### Added
+- Non Leathal Weapons (WIP)
+   - Make opponents unconscious with special weapons
+   - Unconscious players can be woken up
+      - by a MultiGun with Heal Player attachment
+      - after a random timer (60-180 seconds)
+- Paint Garages (with map markers) around the map for painting Vehicles
+   - Park your Vehicle in / on the Garage and hold Space (DynaMenu) on the Terminal
+   - Costs: 500 Krypto (Configureable by Admins)
+- Player / Server Statistics (within the E-Pad)
+      - Times connected / Playtime (hours) / Max Alivetime (hours) / Distance Walked (Km)
+      - Objects Looted / Trades at Trader / Placed Buildings / Crafted Items
+      - Karma / Player Revived / Tradermissions
+      - Player Kills / AI Kills / Antagonist Kills / Zombie Kills
+      - Deaths by Player / Deaths by AI / Suicides
+      - K/D PvP / K/D PvE
+- Hint how long your Vehicle will stay locked on lock
+
+### Fixed
+- Players could instant get killed on contact with new placed BaseBuilding Parts
+   - Unfortunately this will bring back some delayed accurate position on swap building
+
+### Changed
+- Vehicles locked inside your own PlotPole-Range have now a longer Locktime
+   - Inside your PlotPole-Range: 3 days
+   - Outside your PlotPole-Range: 30 minutes
+
+### Server Owners
+- Added Compatibility to Lythium and Livonia Map
+- Added a MultiMap compatibility
+   - Make it possible to run also not official supported maps
+   - Use the mission.sqm within the epoch._ChangeMe folder
+   - Spawn (Debug-Box) is set to [0,0] and spawn positions are random created on restarts
+- Custom Textures (e.g. from Paintshop) can now be saved to the Database
+   - set "UseCustomTextures" in epochconfig.hpp to "true"
+   - force saving Vehicles after painting by:
+      - Client side Scripts: _vehicle call EPOCH_interact;
+      - Server side Scripts: _vehicle call EPOCH_server_save_vehicle;
+- To adjust the new BaseLock-Time, use "vehicleLockTimeHome" in epochconfig.hpp
+- Configs for the Painting Garage (available colors / Costs) can be found in CfgPainting.hpp
+- SetUnitLoadout has been replaced by an Epoch function.
+   - To simply strip and reload Inventory, use "call EPOCH_ReloadLoadout";
+- Player Login Mass-Check
+   - Another fix to prevent login issues
+   - If you still have issues, make sure these positions are very close in your mission.sqm:
+      - respawn_east
+      - respawn_west
+      - all VirtualMan_EPOCH Entities
+
 ## [1.3.1.0] - 2019-03-28
 ### Added
 - Upgradeable PlotPoles (S/M/L/XL/XXL) with different Range / Limits
