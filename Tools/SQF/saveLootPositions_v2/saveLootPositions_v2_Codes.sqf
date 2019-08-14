@@ -71,7 +71,27 @@ if (isnil "LootMarkersPositions" && isnil "LootMarkers") then {
 		"Land_MobileRadar_01_generator_F",
 		"Land_HouseRuin_Big_02_half_F",
 		"Land_CoalPlant_01_LoadingHouse_F",
-		"Land_DeerStand_01_F"
+		"Land_DeerStand_01_F",
+		"Land_ruin_01",
+		"Land_Church_02a",
+		"Land_Loudspeakers_F",
+		"Land_A_FuelStation_Shed",
+		"Land_fortified_nest_small",
+		"Land_CncBlock_D",
+		"clone_empty_static_F",
+		"Land_Psi_bouda",
+		"Land_Slums01_8m",
+		"Land_Razorwire_F",
+		"Land_Ind_Shed_01_end",
+		"Land_TentA_F",
+		"Land_Wall_CGry_5_D",
+		"Land_ruin_wall",
+		"Land_ruin_rubble",
+		"Land_PaperBox_closed_F",
+		"Land_Tyres_F",
+		"Land_Ind_BoardsPack2",
+		"Land_JunkPile_F",
+		"Land_CratesShabby_F"
 	];
 	_skipstrings = [
 		"land_powerwire",
