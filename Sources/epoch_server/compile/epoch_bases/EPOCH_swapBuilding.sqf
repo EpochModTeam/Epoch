@@ -39,6 +39,7 @@ if (!isNull _object && !(_class isEqualTo "")) then {
 		_newObj setDir (getDir _object);
 		_newObj setPosWorld (getPosWorld _object);
                 _newObj setVectorUp (vectorup _object);
+                _newObj setVectorDir (vectorDir _object);
             };
         };
         deleteVehicle _object;
