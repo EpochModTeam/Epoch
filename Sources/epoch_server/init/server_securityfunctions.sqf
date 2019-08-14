@@ -1279,7 +1279,7 @@ _skn_admincode = compileFinal ("
 	"+_skn_tg_old_esp+" = false;
 	"+_skn_tg_godMode+" = false;
 	"+_skn_tg_old_espMap+" = false;
-	"+_skn_tg_spawnTyp+" = 64;
+	"+_skn_tg_spawnTyp+" = 6000;
 	"+_skn_tg_hideAdmin+" = false;
 	"+_skn_tg_infrontTP+" = false;
 
