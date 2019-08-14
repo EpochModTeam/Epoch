@@ -3,14 +3,14 @@ All changes for [Arma 3](https://arma3.com/) [Epoch Mod](https://epochmod.com) a
 
 ## [1.3.2.0] - 2019-xx-xx
 ### Added
-- Non Leathal Weapons (WIP)
+- Non Lethal Weapons (WIP)
    - Make opponents unconscious with special weapons
    - Unconscious players can be woken up
       - by a MultiGun with Heal Player attachment
       - after a random timer (60-180 seconds)
 - Paint Garages (with map markers) around the map for painting Vehicles
    - Park your Vehicle in / on the Garage and hold Space (DynaMenu) on the Terminal
-   - Costs: 500 Krypto (Configureable by Admins)
+   - Costs: 500 Krypto (Configurable by Admins)
 - Player / Server Statistics (within the E-Pad)
       - Times connected / Playtime (hours) / Max Alivetime (hours) / Distance Walked (Km)
       - Objects Looted / Trades at Trader / Placed Buildings / Crafted Items
