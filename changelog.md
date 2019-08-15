@@ -23,11 +23,13 @@ All changes for [Arma 3](https://arma3.com/) [Epoch Mod](https://epochmod.com) a
 ### Fixed
 - Players could instant get killed on contact with new placed BaseBuilding Parts
    - Unfortunately this will bring back some delayed accurate position on swap building
+- Players Glasses (Goggles) were not correctly added on login / revive
 
 ### Changed
 - Vehicles locked inside your own PlotPole-Range have now a longer Locktime
    - Inside your PlotPole-Range: 3 days
    - Outside your PlotPole-Range: 30 minutes
+- Weapon attachments are no longer dismounted within containers on restarts
 
 ### Server Owners
 - Added Compatibility to Lythium and Livonia Map
