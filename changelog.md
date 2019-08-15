@@ -30,6 +30,7 @@ All changes for [Arma 3](https://arma3.com/) [Epoch Mod](https://epochmod.com) a
    - Inside your PlotPole-Range: 3 days
    - Outside your PlotPole-Range: 30 minutes
 - Weapon attachments are no longer dismounted within containers on restarts
+- Colorized Vehicle / Storage Locked / Unlocked messages
 
 ### Server Owners
 - Added Compatibility to Lythium and Livonia Map
