@@ -46,6 +46,8 @@ if !(alive player && alive _playerObject && !isPlayer _playerObject) then {
 
         // wait for loadAbs to sync
         waitUntil {_loadAbs isEqualTo (loadAbs _playerObject)};
+		
+		_goggles = goggles _playerObject;
 
         // switch to new playerObject
         selectPlayer _playerObject;
@@ -76,6 +78,9 @@ if !(alive player && alive _playerObject && !isPlayer _playerObject) then {
 
         closeDialog 0;
         ("BIS_fnc_respawnCounter" call BIS_fnc_rscLayer) cutText ["","PLAIN"];
+
+		removeGoggles player;
+		player addGoggles _goggles;
 
         {
         	player removeEventHandler [_x, 0];

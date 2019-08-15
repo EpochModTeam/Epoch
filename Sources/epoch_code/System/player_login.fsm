@@ -602,6 +602,7 @@ class FSM
                         itemno = 27;
                         init = /*%FSM<STATEINIT""">*/"_ply = player;" \n
                          "_group = group player;" \n
+                         "_goggles = goggles _playerObject;" \n
                          "" \n
                          "selectPlayer _playerObject;" \n
                          "" \n
@@ -896,7 +897,12 @@ class FSM
                 {
                         name = "Setup_EH_s_and_H";
                         itemno = 50;
-                        init = /*%FSM<STATEINIT""">*/"{" \n
+                        init = /*%FSM<STATEINIT""">*/"" \n
+                         "if (!_newChar || !(_goggles isEqualTo """")) then {" \n
+                         "	removeGoggles player;" \n
+                         "	player addGoggles _goggles" \n
+                         "};" \n
+                         "{" \n
                          "	player addEventHandler [_x,([""CfgEpochClient"", _x, """"] call EPOCH_fnc_returnConfigEntryV2)];" \n
                          "} forEach ([""CfgEpochClient"", ""addEventHandler"", []] call EPOCH_fnc_returnConfigEntryV2);" \n
                          "" \n
