@@ -190,7 +190,7 @@ publicvariable "EPOCH_Traders";
 if (([_serverSettingsConfig, "ReplaceCarService", false] call EPOCH_fnc_returnConfigEntry)) then {
 	{
 		private _shop = "paintshop" createvehicle (getpos _x);
-		_shop setposatl (getposatl _x);
+		_shop setposatl ((getposatl _x) vectorAdd [0,0,0.1]);
 		_shop setVectorDirAndUp [VectorDir _x, VectorUp _x];
 		_x HideobjectGlobal true;
 	} foreach (epoch_centerMarkerPosition nearObjects ["Land_CarService_F", EPOCH_dynamicVehicleArea]);
