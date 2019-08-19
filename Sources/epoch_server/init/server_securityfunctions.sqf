@@ -2071,7 +2071,7 @@ _skn_admincode = compileFinal ("
 	if (_sorted isEqualTo []) then {_sorted = [player]};
 	_skn_fnc_addPlayerToList = {
 		_player = _this select 0;
-		_index = _ctrl lbAdd format ['%1', name _player];
+		_index = _ctrl lbAdd format ['%1', format ['%1 [%2 h]',name _player,((_player getvariable ['EPOCH_playerPlayTime',0])/60/60) toFixed 1]];
 		_ctrl lbSetData [_index, netId _player];
 		_ctrl lbSetColor [_index, _this select 1];
 		if (vehicle _player == _player) then {

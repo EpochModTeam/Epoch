@@ -53,6 +53,8 @@ All changes for [Arma 3](https://arma3.com/) [Epoch Mod](https://epochmod.com) a
       - respawn_east
       - respawn_west
       - all VirtualMan_EPOCH Entities
+- Players playtimes are now shown in the Playerlist in Adminmenu
+   - https://cdn.discordapp.com/attachments/474595539107971072/613059969943601208/unknown.png
 
 ## [1.3.1.0] - 2019-03-28
 ### Added

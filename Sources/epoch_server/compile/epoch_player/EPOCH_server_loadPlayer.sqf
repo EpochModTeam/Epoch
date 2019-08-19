@@ -273,6 +273,11 @@ if (!isNull _player) then {
 					_currentStat = _communityStats select _Index;
 					_communityStats set[_Index, _currentStat + 1];
 				};
+				_Index = EPOCH_communityStats find "PlayTime";
+				if (_Index > -1) then {
+					_currentStat = _communityStats select _Index;
+					_newPlyr setVariable["EPOCH_playerPlayTime", _currentStat, true];
+				};
 				
 				_newPlyr setVariable["COMMUNITY_STATS", _communityStats];
 
