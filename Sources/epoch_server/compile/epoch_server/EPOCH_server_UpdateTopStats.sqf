@@ -38,10 +38,8 @@ if !((_playerUID isequalto '') || (_vars isequalto [])) then {
 					if (_makepublic isEqualTo 0) exitwith {
 						_ThisStatArr deleteat _foreachindex;
 					};
-					if !(_value isequalto _playerValue) then {
-						_x set [0,_playerValue];
-						_x set [2,_playername];
-					};
+					_x set [0,_playerValue];
+					_x set [2,_playername];
 				};
 			} foreach _x;
 			if (!_playerisin && (_makepublic > 0)) then {

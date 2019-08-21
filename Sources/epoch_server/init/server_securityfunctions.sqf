@@ -510,6 +510,7 @@ for "_i" from 1 to 3 do {
 	_temp = _temp + "
 		,['Key Binds',[],'','1',[]]
 		,['  5 Key - Teleport In Front',[],'','1',[]]
+		,['  4 Key - Fly Up',[],'','1',[]]
 		,['  F2 - Cancel Spectating',[],'','1',[]]
 		,['  F5 - Delete Target',[],'','1',[]]
 		,['  7 - (Un)Lock Target',[],'','1',[]]
