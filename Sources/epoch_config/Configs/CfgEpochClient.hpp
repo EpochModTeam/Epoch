@@ -49,6 +49,7 @@ class CfgEpochClient
     maxBuildingHeight = 100;		// Max Height, building is allowed.
     splitCountLimits = 0;			//1 = distinguish buildingCountLimit from storageCountLimit (ex.: buildingCountLimit=100, storageCountLimit=100 >> you can build 100 baseparts AND additional 100 storage objects like safes, lockboxes...)
 	MaxBuildingTilt = 180;			// Max degrees players can tilt building elements
+	EnablePhysicsOnBuild = "true";	// Building parts need Snap (hold) points to not fall on the ground while building
 	
 	class CfgJammers {
 		class PlotPole_EPOCH 					// Jammer Classname

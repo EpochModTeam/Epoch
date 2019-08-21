@@ -61,6 +61,7 @@ All changes for [Arma 3](https://arma3.com/) [Epoch Mod](https://epochmod.com) a
 - Players playtimes are now shown in the Playerlist in Adminmenu
    - https://cdn.discordapp.com/attachments/474595539107971072/613059969943601208/unknown.png
 - Added a function to jump up for Admins in Adminmenu
+- Added an option "EnablePhysicsOnBuild" to cfgEpochClient.hpp to disable physics while Building
 
 ## [1.3.1.0] - 2019-03-28
 ### Added
