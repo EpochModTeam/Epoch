@@ -11,14 +11,15 @@ All changes for [Arma 3](https://arma3.com/) [Epoch Mod](https://epochmod.com) a
 - Paint Garages (with map markers) around the map for painting Vehicles
    - Park your Vehicle in / on the Garage and hold Space (DynaMenu) on the Terminal
    - Costs: 500 Krypto (Configurable by Admins)
+   - https://plays.tv/video/5d5d721191c8f06d14
 - Player / Server Statistics (within the E-Pad)
-      - Times connected / Playtime (hours) / Max Alivetime (hours) / Distance Walked (Km)
-      - Objects Looted / Trades at Trader / Placed Buildings / Crafted Items
-      - Karma / Player Revived / Tradermissions
-      - Player Kills / AI Kills / Antagonist Kills / Zombie Kills
-      - Deaths by Player / Deaths by AI / Suicides
-      - K/D PvP / K/D PvE
-- Hint how long your Vehicle will stay locked on lock
+   - Times connected / Playtime (hours) / Max Alivetime (hours) / Distance Walked (Km)
+   - Objects Looted / Trades at Trader / Placed Buildings / Crafted Items
+   - Karma / Player Revived / Tradermissions
+   - Player Kills / AI Kills / Antagonist Kills / Zombie Kills
+   - Deaths by Player / Deaths by AI / Suicides
+   - K/D PvP / K/D PvE
+   - https://plays.tv/video/5d5d716b0b171855fe
 
 ### Fixed
 - Players could instant get killed on contact with new placed BaseBuilding Parts
@@ -26,11 +27,15 @@ All changes for [Arma 3](https://arma3.com/) [Epoch Mod](https://epochmod.com) a
 - Players Glasses (Goggles) were not correctly added on login / revive
 
 ### Changed
-- Vehicles locked inside your own PlotPole-Range have now a longer Locktime
-   - Inside your PlotPole-Range: 3 days
-   - Outside your PlotPole-Range: 30 minutes
 - Weapon attachments are no longer dismounted within containers on restarts
-- Colorized Vehicle / Storage Locked / Unlocked messages
+- Vehicle / Storage Lock
+   - Colorized Vehicle / Storage Lock messages
+   - Hint how long your Vehicle will stay locked on lock
+   - Vehicles locked inside your own PlotPole-Range have now a longer Locktime
+      - Inside your PlotPole-Range: 3 days
+      - Outside your PlotPole-Range: 30 minutes
+   - https://plays.tv/video/5d5d71d2137413ba08
+- Increased UAV sounds
 
 ### Server Owners
 - Added Compatibility to Lythium and Livonia Map
@@ -55,6 +60,7 @@ All changes for [Arma 3](https://arma3.com/) [Epoch Mod](https://epochmod.com) a
       - all VirtualMan_EPOCH Entities
 - Players playtimes are now shown in the Playerlist in Adminmenu
    - https://cdn.discordapp.com/attachments/474595539107971072/613059969943601208/unknown.png
+- Added a function to jump up for Admins in Adminmenu
 
 ## [1.3.1.0] - 2019-03-28
 ### Added
