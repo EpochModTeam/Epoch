@@ -114,9 +114,7 @@ class CfgMarkerSets
 	};
 	class PaintGarage {
         markerArray[] = {
-            {"","ICON","EpochActive_Circle","ColorBlack",0.5,{0.6,0.6}},
-            {"","ICON","EpochBG_Circle","ColorGrey",0.25,{0.6,0.6}}, 
-            {"","ICON","EpochPaint","ColorBlue",0.5,{0.5,0.5},0}
+            {"","ICON","EpochPaint","ColorBlue",0.5,{0.1,0.1},0}
         };
 	};
 	class Radiation {
