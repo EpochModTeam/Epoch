@@ -103,8 +103,8 @@ class CfgServicePoint {
 		{
 			"typeof vehicle",
 			{
-				{"Ammoclass",{Turretpath},MaxMagsCount,PricePerMag},
-				{"Ammoclass",{Turretpath},MaxMagsCount,PricePerMag}
+				{"Ammoclass",{Turretpath},MaxMagsCount,PricePerMag,Bullets per mag (optional, if you want to reduce bullets per mag)},
+				{"Ammoclass",{Turretpath},MaxMagsCount,PricePerMag,Bullets per mag (optional, if you want to reduce bullets per mag)}
 			}
 		},
 */
