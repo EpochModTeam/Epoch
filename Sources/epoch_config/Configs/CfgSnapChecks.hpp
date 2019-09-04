@@ -28,6 +28,7 @@ class CfgSnapChecks
     class CinderWallDoorwHatch_EPOCH : WoodLargeWall_EPOCH {};
     class CinderWall_EPOCH : WoodLargeWall_EPOCH {};
     class CinderWallHalf_EPOCH : WoodLargeWall_EPOCH {};
+	class JailWall_EPOCH : WoodLargeWall_EPOCH {};
 	class PlyThirdWall_EPOCH : WoodLargeWall_EPOCH
     {
         nails[] = {{{2.46932,0,0.120775},{2.46932,0,-0.190775}},{{-2.46932,0,0.120775},{-2.46932,0,-0.190775}},{{0,0,1},{2.76932,0,1}},{{0,0,1},{-2.76932,0,1}}};
@@ -46,6 +47,10 @@ class CfgSnapChecks
     };
     class MetalFloor_EPOCH : WoodFloor_Epoch {};
     class CinderFloor_EPOCH : WoodFloor_Epoch {};
+	class MetalHalfFloor_EPOCH : WoodHalfFloor_EPOCH {};
+	class CinderHalfFloor_EPOCH : WoodHalfFloor_EPOCH {};
+	class MetalQuarterFloor_EPOCH : WoodQuarterFloor_EPOCH {};
+	class CinderQuarterFloor_EPOCH : WoodQuarterFloor_EPOCH {};
     class WoodStairs_EPOCH
     {
         nails[] = {{{0.1,0,0.05},{0.1,0,-0.2}},{{-0.1,0,0.05},{-0.1,0,-0.2}}};
