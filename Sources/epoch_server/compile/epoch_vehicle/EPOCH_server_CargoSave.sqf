@@ -27,7 +27,7 @@
 private [
 	"_wepsItemsCargo","_magsAmmoCargo","_containers","_allContainers","_cargo","_magsAmmoCargox","_wepsItemsCargox","_magsAmmoCargoMinimized","_cargoIndex",
 	"_inventory","_ItemCargo","_ItemCargox"];
-params [["_vehicle",objnull],["_unpack",true]];
+params [["_vehicle",objnull],["_unpack",false]];
 // may not be needed but should prevent <null> in DB.
 _wepsItemsCargo = weaponsItemsCargo _vehicle;
 if (isNil "_wepsItemsCargo") then {
