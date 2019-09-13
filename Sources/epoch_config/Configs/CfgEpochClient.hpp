@@ -260,7 +260,7 @@ class CfgEpochClient
     displayAddEventHandler[] = {"keyDown","keyUp"};
     keyDown = "(_this call EPOCH_KeyDown)";
     keyUp = "(_this call EPOCH_KeyUp)";
-    addEventHandler[] = {"Respawn","Put","Take","InventoryClosed","InventoryOpened","FiredMan","Killed","HandleRating","HandleScore","HandleDamage","GetInMan","GetOutMan","Hit","SeatSwitchedMan","FiredNear"};
+    addEventHandler[] = {"Respawn","Put","Take","InventoryClosed","InventoryOpened","FiredMan","Killed","HandleRating","HandleScore","HandleDamage","GetInMan","GetOutMan","Hit","SeatSwitchedMan","FiredNear","WeaponAssembled"};
     Respawn = "(_this select 0) call EPOCH_clientRespawn";
     Put = "(_this select 1) call EPOCH_interact;_this call EPOCH_PutHandler;_this call Epoch_custom_EH_Put";
     Take = "(_this select 1) call EPOCH_interact;_this call EPOCH_UnisexCheck;_this call Epoch_custom_EH_Take";
@@ -279,6 +279,7 @@ class CfgEpochClient
     GetOutMan = "_this call EPOCH_getOutMan;_this call Epoch_custom_EH_GetOutMan";
 	SeatSwitchedMan = "_this call EPOCH_custom_EH_SeatSwitchedMan";
 	FiredNear = "_this call EPOCH_custom_EH_FiredNear";
+	WeaponAssembled = "clearItemCargoGlobal (_this select 1)";
     // suppress these units from spawning near Jammer or Traders
     nonJammerAI[] = {"B_Heli_Transport_01_F","PHANTOM","EPOCH_Sapper_F","Epoch_SapperG_F","Epoch_SapperB_F","I_UAV_01_F","EPOCH_RyanZombie_1"};
     nonTraderAI[] = {"B_Heli_Transport_01_F","PHANTOM","EPOCH_Sapper_F","Epoch_SapperG_F","Epoch_SapperB_F","I_UAV_01_F","Epoch_Cloak_F","GreatWhite_F","EPOCH_RyanZombie_1"};
