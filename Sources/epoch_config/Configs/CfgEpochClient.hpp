@@ -19,6 +19,8 @@ class CfgEpochClient
 	debug = "true";  // true = enable extra rpt debug lines, false to disable
 
 	UseOldRevive = "false";		// Revive / Heal Player has been changed to use "HandleDamage" Eventhandler. If scripts are breaking it for you, set it to true (not recommended!)
+	UnconsciousChance = 30;			// Change in percent to get unconscious by a hit with an Axe / Sledge / Sword
+	UnconsciousTime[] = {60,180};	// Min / Max time for unconscious after you got a hit from a non lethal weapon / Axe / Sledge / Sword
 
 	antagonistRngChance = 100; // increase number to reduce chances and reduce to increase. Default 100
 	NuisanceMulti = 0.5;		// Multi for Nuisance increase on shooting - higher Nuisance effect at least antagonist spawn change. (0-1, default 0.5)
