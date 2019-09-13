@@ -15,13 +15,13 @@
 params ["_unit", "_selection", "_damage", "_source", "_projectile", "_hitIndex", "_instigator", "_hitPoint"];
 if !(_source isEqualTo _unit) then {
 	if ((missionnamespace getvariable ["EPOCH_HandleDamageTimeOut",diag_ticktime]) > diag_ticktime) exitwith {};	// prevent multiple actions here
+	EPOCH_HandleDamageTimeOut = diag_ticktime + 0.1;
 	switch _projectile do {
 		case "B_EnergyPack": {
-			EPOCH_HandleDamageTimeOut = diag_ticktime + 0.1;
 			if (_source distance _unit > 10) exitwith {};
 			if !(missionnamespace getvariable ["EPOCH_OldRevive",false]) then {
 				_attachments = handgunItems _source;
-				if ("Heal_EPOCH" in _attachments) then {
+				if ("Heal_EPOCH" in _attachments) exitwith {
 					if (lifeState _unit == "INCAPACITATED") exitwith {
 						EPOCH_HandleDamageTimeOut = diag_ticktime + 1;
 						_unit setUnconscious false;
@@ -46,7 +46,7 @@ if !(_source isEqualTo _unit) then {
 						};
 					};
 				};
-				if ("Defib_EPOCH" in _attachments) then {
+				if ("Defib_EPOCH" in _attachments) exitwith {
 					if !(alive _unit) then {
 						EPOCH_HandleDamageTimeOut = diag_ticktime + 1;
 						[_unit,_source,Epoch_personalToken] remoteExec ["EPOCH_server_revivePlayer",2];
