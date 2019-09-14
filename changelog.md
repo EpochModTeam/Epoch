@@ -25,9 +25,11 @@ All changes for [Arma 3](https://arma3.com/) [Epoch Mod](https://epochmod.com) a
 - Players could instant get killed on contact with new placed BaseBuilding Parts
    - Unfortunately this will bring back some delayed accurate position on swap building
 - Players Glasses (Goggles) were not correctly added on login / revive
+- Some Building Parts where falling down on build (also when snapped correctly)
 
 ### Changed
 - Weapon attachments are no longer dismounted within containers on restarts
+- Clothings (BackPacks / Vests / Uniforms) in storages will no longer get unpacked on restarts
 - Vehicle / Storage Lock
    - Colorized Vehicle / Storage Lock messages
    - Hint how long your Vehicle will stay locked on lock
@@ -36,6 +38,8 @@ All changes for [Arma 3](https://arma3.com/) [Epoch Mod](https://epochmod.com) a
       - Outside your PlotPole-Range: 30 minutes
    - https://plays.tv/video/5d5d71d2137413ba08
 - Increased UAV sounds
+- Added item description to Trader items
+   - https://cdn.discordapp.com/attachments/474595539107971072/622554669830373399/unknown.png
 
 ### Server Owners
 - Added Compatibility to Lythium and Livonia Map
