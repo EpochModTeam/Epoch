@@ -3735,10 +3735,6 @@ class CfgPricing
     {
         price = 22;
     };
-    class I_UAV_01_backpack_F
-    {
-        price = 22;
-    };
     class U_RadiationSuit_M_uniform
     {
         price = 7;
@@ -6402,7 +6398,13 @@ class CfgPricing
 	class US_Backpack_Epoch					{  price = 40; };
 	class CZ_Backpack_Epoch					{  price = 40; };
 	class L_Gunbag_Epoch					{  price = 40; };
-    // MAD ARMA
+	
+	class I_UAV_01_backpack_F 				{  price = 40; };
+	class C_IDAP_UAV_06_backpack_F			{  price = 40; };
+	class C_IDAP_UAV_06_antimine_backpack_F {  price = 40; };
+	class B_UAV_06_medical_backpack_F		{  price = 40; };
+
+		// MAD ARMA
     class revolver01                        { price = 55; };
     class VG_sawed_off_01                   { price = 120; };
     class Devastator_01                     { price = 180; };

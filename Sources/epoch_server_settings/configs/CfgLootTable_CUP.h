@@ -1766,6 +1766,7 @@ class CfgLootTable_CUP
 	class Backpack
 	{
 		items[] = {
+				{ { "Backpack_UAV", "CfgLootTable" }, 1 },
 				{ { "B_AssaultPack_cbr", "backpack" }, 5 },
 				{ { "B_AssaultPack_dgtl", "backpack" }, 5 },
 				{ { "B_AssaultPack_khk", "backpack" }, 5 },
@@ -1820,7 +1821,15 @@ class CfgLootTable_CUP
 				{ { "L_Gunbag_Epoch", "backpack" }, 1 }
 		};
 	};
-
+	class Backpack_UAV
+	{
+		items[] = {
+				{ { "I_UAV_01_backpack_F", "backpack" }, 1 },
+				{ { "C_IDAP_UAV_06_backpack_F", "backpack" }, 1 },
+				{ { "C_IDAP_UAV_06_antimine_backpack_F", "backpack" }, 1 },
+				{ { "B_UAV_06_medical_backpack_F", "backpack" }, 1 }
+		};
+	};
 	class Uniforms
 	{
 		items[] = {

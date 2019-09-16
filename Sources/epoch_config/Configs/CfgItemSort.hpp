@@ -333,7 +333,12 @@ class CfgItemSort
 			"ALICE_Pack_Epoch",
 			"US_Backpack_Epoch",
 			"CZ_Backpack_Epoch",
-			"L_Gunbag_Epoch"
+			"L_Gunbag_Epoch",
+			
+			"I_UAV_01_backpack_F",
+			"C_IDAP_UAV_06_backpack_F",
+			"C_IDAP_UAV_06_antimine_backpack_F",
+			"B_UAV_06_medical_backpack_F"			
 		};
 
 		HeadGear[] = {
