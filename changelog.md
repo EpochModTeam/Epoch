@@ -20,12 +20,17 @@ All changes for [Arma 3](https://arma3.com/) [Epoch Mod](https://epochmod.com) a
    - Deaths by Player / Deaths by AI / Suicides
    - K/D PvP / K/D PvE
    - https://plays.tv/video/5d5d716b0b171855fe
+- Hint in Inventory for Heal / Revive / Repair to be used as MultiGun Attachment 
+- Item description to Trader items
+   - https://cdn.discordapp.com/attachments/474595539107971072/622554669830373399/unknown.png
+- UAV Backpacks - Assemble and then use via DynaMenu (SpaceMenu)
 
 ### Fixed
 - Players could instant get killed on contact with new placed BaseBuilding Parts
    - Unfortunately this will bring back some delayed accurate position on swap building
 - Players Glasses (Goggles) were not correctly added on login / revive
 - Some Building Parts where falling down on build (also when snapped correctly)
+- Texture for Solar Generator / Charger was broken
 
 ### Changed
 - Weapon attachments are no longer dismounted within containers on restarts
@@ -38,8 +43,9 @@ All changes for [Arma 3](https://arma3.com/) [Epoch Mod](https://epochmod.com) a
       - Outside your PlotPole-Range: 30 minutes
    - https://plays.tv/video/5d5d71d2137413ba08
 - Increased UAV sounds
-- Added item description to Trader items
-   - https://cdn.discordapp.com/attachments/474595539107971072/622554669830373399/unknown.png
+- Changed Taru / Huron / Mohawk Door Sounds (more decent sound)
+- changed unarmed jump animation
+- UAV-Support (AI's) will now spawn a bit more away from your Position
 
 ### Server Owners
 - Added Compatibility to Lythium and Livonia Map
@@ -66,6 +72,8 @@ All changes for [Arma 3](https://arma3.com/) [Epoch Mod](https://epochmod.com) a
    - https://cdn.discordapp.com/attachments/474595539107971072/613059969943601208/unknown.png
 - Added a function to jump up for Admins in Adminmenu
 - Added an option "EnablePhysicsOnBuild" to cfgEpochClient.hpp to disable physics while Building
+- Changed syntax in cfgServicePoints to allow inherits from other Vehicle Classes
+   - Some more infos can be found here: https://epochmod.com/forum/topic/34454-repair-rearming-script/?do=findComment&comment=307310
 
 ## [1.3.1.0] - 2019-03-28
 ### Added
