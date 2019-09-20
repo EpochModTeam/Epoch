@@ -154,6 +154,11 @@ class CfgServicePoint {
 		};
 		class O_G_Offroad_01_armed_F : B_G_Offroad_01_armed_F {};
 		class I_G_Offroad_01_armed_F : B_G_Offroad_01_armed_F {};
+		class B_G_Offroad_01_armed_EPOCH : B_G_Offroad_01_armed_F {};
+		class B_G_Offroad_01_armed_EPOCH1 : B_G_Offroad_01_armed_F {};
+		class B_G_Offroad_01_armed_EPOCH2 : B_G_Offroad_01_armed_F {};
+		class B_G_Offroad_01_armed_EPOCH3 : B_G_Offroad_01_armed_F {};
+		class B_G_Offroad_01_armed_EPOCH4 : B_G_Offroad_01_armed_F {};
 		class I_MRAP_03 {
 			MagsTurrets[] = {
 				{"SmokeLauncherMag",{0},1,150}
@@ -190,6 +195,11 @@ class CfgServicePoint {
 				{"5000Rnd_762x51_Belt",{-1},1,1600}
 			};
 		};
+		class B_Heli_Light_01_armed_EPOCH {
+			MagsTurrets[] = {
+				{"1000Rnd_762x51_Belt",{-1},1,1200}
+			};
+		};
 		class O_Heli_Light_02_unarmed_EPOCH {
 			MagsTurrets[] = {
 				{"168Rnd_CMFlare_Chaff_Magazine",{-1},1,150}
@@ -208,6 +218,7 @@ class CfgServicePoint {
 				{"2000Rnd_65x39_Belt_Tracer_Red",{2},1,1200}
 			};
 		};
+		class B_Heli_Transport_01_camo_EPOCH : B_Heli_Transport_01_EPOCH {};
 		class I_Heli_Transport_02_F {
 			MagsTurrets[] = {
 				{"168Rnd_CMFlare_Chaff_Magazine",{-1},1,150}
@@ -232,6 +243,14 @@ class CfgServicePoint {
 				{"168Rnd_CMFlare_Chaff_Magazine",{-1},1,150}
 			};
 		};
+		class O_Heli_Transport_04_box_EPOCH {
+			MagsTurrets[] = {
+				{"168Rnd_CMFlare_Chaff_Magazine",{-1},1,150}
+			};
+		};
+		class O_Heli_Transport_04_bench_EPOCH : O_Heli_Transport_04_box_EPOCH {};
+		class O_Heli_Transport_04_covered_EPOCH : O_Heli_Transport_04_box_EPOCH {};
+		class O_Heli_Transport_04_EPOCH : O_Heli_Transport_04_box_EPOCH {};
 		class B_T_VTOL_01_vehicle_blue_F {
 			MagsTurrets[] = {
 				{"240Rnd_CMFlare_Chaff_Magazine",{-1},1,150}
