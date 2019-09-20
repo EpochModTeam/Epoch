@@ -77,6 +77,11 @@ for "_i" from 0 to _this do {
 
 		_worldspace params ["_pos","_vectordir","_vectorup",["_useworld",false]];
 		_vectordirup = [_vectordir,_vectorup];
+		
+		// increased position precision
+		if (count _pos == 2) then{
+			_pos = (_pos select 0) vectorAdd (_pos select 1);
+		};
 
 		// remove old safes on && !(_class isKindOf 'Constructions_lockedstatic_F')
 		if (isClass (configFile >> "CfgVehicles" >> _class) && (_damage < 1) && !(_class isKindOf 'Constructions_lockedstatic_F')) then {

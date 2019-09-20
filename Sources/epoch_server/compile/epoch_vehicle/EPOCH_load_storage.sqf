@@ -52,6 +52,11 @@ for "_i" from 1 to _maxStorageLimit do {
 			_worldspace params ["_pos","_vectordir","_vectorup",["_useworld",false]];
 			_vectordirup = [_vectordir,_vectorup];
 
+			// increased position precision
+			if (count _pos == 2) then{
+				_pos = (_pos select 0) vectorAdd(_pos select 1);
+			};
+
 			_vehicle = createVehicle[_class, [0,0,0], [], 0, "CAN_COLLIDE"];
 
 			// find gardens
