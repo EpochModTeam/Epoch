@@ -112,106 +112,106 @@ class CfgServicePoint {
 			MagsTurrets[] = {
 				{"200Rnd_65x39_Belt",{1},3,200},
 				{"200Rnd_65x39_Belt",{2},3,200}
-            };
+			};
 		};
 		class a2_ch47f_armed_plus_EPOCH {
 			MagsTurrets[] = {
 				{"200Rnd_762x51_Belt",{0},3,200},
 				{"200Rnd_762x51_Belt",{1},3,200}
-            };
+			};
 		};
 		class uh1h_armed_EPOCH {
 			MagsTurrets[] = {
 				{"200Rnd_65x39_Belt",{1},3,200},
 				{"200Rnd_65x39_Belt",{2},3,200}
-            };
+			};
 		};
 		class uh1h_armed_plus_EPOCH {
 			MagsTurrets[] = {
 				{"200Rnd_762x51_Belt",{0},3,200},
 				{"200Rnd_762x51_Belt",{1},3,200}
-            };
+			};
 		};
 		class C_Heli_Light_01_armed_EPOCH {
 			MagsTurrets[] = {
 				{"200Rnd_65x39_Belt",{-1},3,200}
-            };
+			};
 		};
 		class C_Heli_Light_01_armed_plus_EPOCH {
 			MagsTurrets[] = {
 				{"200Rnd_762x51_Belt",{-1},3,200}
-            };
+			};
 		};
 		class A2_SUV_armed_EPOCH {
 			MagsTurrets[] = {
 				{"200Rnd_762x51_Belt",{0},3,200}
-            };
+			};
 		};
 		class B_G_Offroad_01_armed_F {
 			MagsTurrets[] = {
 				{"100Rnd_127x99_mag_Tracer_Yellow",{0},4,200}
-            };
+			};
 		};
 		class O_G_Offroad_01_armed_F : B_G_Offroad_01_armed_F {};
 		class I_G_Offroad_01_armed_F : B_G_Offroad_01_armed_F {};
 		class I_MRAP_03 {
 			MagsTurrets[] = {
 				{"SmokeLauncherMag",{0},1,150}
-            };
+			};
 		};
 		class I_MRAP_03_EPOCH {
 			MagsTurrets[] = {
-            };
+			};
 		};
 		class O_MRAP_02_F {
 			MagsTurrets[] = {
 				{"SmokeLauncherMag",{-1},1,150}
-            };
+			};
 		};
 		class B_LSV_01_armed_olive_F {
 			MagsTurrets[] = {
 				{"100Rnd_127x99_mag_Tracer_Red",{0},3,200},
 				{"130Rnd_338_Mag",{1},3,260}
-            };
+			};
 		};
 		class B_LSV_01_armed_black_F : B_LSV_01_armed_olive_F {};
 		class O_T_LSV_02_armed_black_F {
 			MagsTurrets[] = {
 				{"500Rnd_65x39_Belt_Tracer_Green_Splash",{0},3,500}
-            };
+			};
 		};
 		class O_T_LSV_02_armed_ghex_F : O_T_LSV_02_armed_black_F {};
 		class B_SDV_01_EPOCH {
 			MagsTurrets[] = {
-            };
+			};
 		};
 		class B_Heli_Light_01_armed_F {
 			MagsTurrets[] = {
 				{"5000Rnd_762x51_Belt",{-1},1,1600}
-            };
+			};
 		};
 		class O_Heli_Light_02_unarmed_EPOCH {
 			MagsTurrets[] = {
 				{"168Rnd_CMFlare_Chaff_Magazine",{-1},1,150}
-            };
+			};
 		};
 		class O_Heli_Light_02_v2_F {
 			MagsTurrets[] = {
 				{"2000Rnd_65x39_Belt_Tracer_Green_Splash",{-1},1,1200},
 				{"168Rnd_CMFlare_Chaff_Magazine",{-1},1,150}
-            };
+			};
 		};
 		class B_Heli_Transport_01_EPOCH {
 			MagsTurrets[] = {
 				{"168Rnd_CMFlare_Chaff_Magazine",{-1},1,150},
 				{"2000Rnd_65x39_Belt_Tracer_Red",{1},1,1200},
 				{"2000Rnd_65x39_Belt_Tracer_Red",{2},1,1200}
-            };
+			};
 		};
 		class I_Heli_Transport_02_F {
 			MagsTurrets[] = {
 				{"168Rnd_CMFlare_Chaff_Magazine",{-1},1,150}
-            };
+			};
 		};
 		class I_Heli_Transport_02_EPOCH : I_Heli_Transport_02_F {};
 		class B_Heli_Transport_03_F {
@@ -219,54 +219,54 @@ class CfgServicePoint {
 				{"168Rnd_CMFlare_Chaff_Magazine",{-1},1,150},
 				{"2000Rnd_65x39_Belt_Tracer_Red",{1},1,1200},
 				{"2000Rnd_65x39_Belt_Tracer_Red",{2},1,1200}
-            };
+			};
 		};
 		class B_Heli_Transport_03_black_F : B_Heli_Transport_03_F {};
 		class B_Heli_Transport_03_unarmed_EPOCH {
 			MagsTurrets[] = {
 				{"168Rnd_CMFlare_Chaff_Magazine",{-1},1,150}
-            };
+			};
 		};
 		class I_Heli_light_03_unarmed_EPOCH {
 			MagsTurrets[] = {
 				{"168Rnd_CMFlare_Chaff_Magazine",{-1},1,150}
-            };
+			};
 		};
 		class B_T_VTOL_01_vehicle_blue_F {
 			MagsTurrets[] = {
 				{"240Rnd_CMFlare_Chaff_Magazine",{-1},1,150}
-            };
+			};
 		};
 		class B_T_VTOL_01_infantry_olive_F : B_T_VTOL_01_vehicle_blue_F {};
 		class B_T_VTOL_01_infantry_blue_F : B_T_VTOL_01_vehicle_blue_F {};
 		class O_T_VTOL_02_vehicle_F {
 			MagsTurrets[] = {
 				{"168Rnd_CMFlare_Chaff_Magazine",{-1},1,150}
-            };
+			};
 		};
 		class O_T_VTOL_02_vehicle_grey_F : O_T_VTOL_02_vehicle_F {};
 		class O_T_VTOL_02_infantry_F : O_T_VTOL_02_vehicle_F {};
 		class B_Heli_Attack_01_F {
 			MagsTurrets[] = {
 				{"240Rnd_CMFlare_Chaff_Magazine",{-1},1,150}
-            };
+			};
 		};
 		class O_Heli_Attack_02_black_F {
 			MagsTurrets[] = {
 				{"192Rnd_CMFlare_Chaff_Magazine",{-1},1,150}
-            };
+			};
 		};
 		class O_Heli_Attack_02_F : O_Heli_Attack_02_black_F {};
 		class O_Boat_Armed_01_hmg_F {
 			MagsTurrets[] = {
 				{"SmokeLauncherMag_boat",{-1},1,100},
 				{"200Rnd_127x99_mag_Tracer_Green",{1},3,300}
-            };
+			};
 		};
 		class mosquito_epoch_armedG {
 			MagsTurrets[] = {
                 {"3Rnd_MosquitoGrenade",{-1},1,60}
-            };
+			};
         };
 	};
 };
