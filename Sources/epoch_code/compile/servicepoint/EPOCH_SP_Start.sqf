@@ -14,7 +14,7 @@
 */
 
 //[[[cog import generate_private_arrays ]]]
-private ["_Ignatz_SP_Array","_VehiclesAndAmmo","_actionName","_actionTitle","_ammocount","_ammotype","_cost","_costs","_costsFree","_costsText","_fnc_actionTitle","_fnc_getCosts","_magname","_maxammototal","_maxmags","_missingammo","_ownedcompletemags","_refuel_amount","_refuel_costs","_refuel_updateInterval","_reloagmags","_repairTime","_repair_costs","_totalammocount","_turret","_typeName","_vehicle"];
+private ["_Ignatz_SP_Array","_AmmoConfig","_VehiclesWithAmmo","_VehicleAmmo","_actionName","_actionTitle","_ammocount","_ammotype","_cost","_costs","_costsFree","_costsText","_fnc_actionTitle","_fnc_getCosts","_magname","_maxammototal","_maxmags","_missingammo","_ownedcompletemags","_refuel_amount","_refuel_costs","_refuel_updateInterval","_reloagmags","_repairTime","_repair_costs","_totalammocount","_turret","_typeName","_vehicle"];
 //[[[end]]]
 Ignatz_Refuel = nil;
 Ignatz_Repair = nil;
@@ -31,7 +31,8 @@ _refuel_costs = 			["CfgServicePoint", "refuel_costs", []] call EPOCH_fnc_return
 _refuel_updateInterval = 	["CfgServicePoint", "refuel_updateInterval", 1] call EPOCH_fnc_returnConfigEntryV2;
 _refuel_amount = 			["CfgServicePoint", "refuel_amount", 0.1] call EPOCH_fnc_returnConfigEntryV2;
 _repairTime = 				["CfgServicePoint", "repairTime", 1.2] call EPOCH_fnc_returnConfigEntryV2;
-_VehiclesAndAmmo = 			["CfgServicePoint", "VehiclesAndAmmo", []] call EPOCH_fnc_returnConfigEntryV2;
+_AmmoConfig = 				(missionconfigfile >> "CfgServicePoint" >> "VehiclesAndAmmo");
+_VehiclesWithAmmo = 		("true" configClasses _AmmoConfig) apply {configname _x};
 
 _Ignatz_SP_Array = [];
 _costsFree = 'free';
@@ -63,7 +64,8 @@ _fnc_actionTitle = {
 };
 
 {
-	if ((typeof _vehicle) == _x select 0) exitwith {
+	if ((tolower (typeof _vehicle)) == (tolower _x)) exitwith {
+		_VehicleAmmo = getArray (_AmmoConfig >> _x >> "MagsTurrets");
 		{
 			_x params ["_ammotype","_turret","_maxmags","_costs",["_ammocount",getNumber (configfile >> "CfgMagazines" >> (_x select 0) >> "count")]];
 			if (_myturret isequalto _turret) then {
@@ -91,9 +93,9 @@ _fnc_actionTitle = {
 					_Ignatz_SP_Array pushback [_actionTitle,[_vehicle,_ammotype,_turret,_reloagmags,_ammocount,_costs]];
 				};
 			};
-		} foreach (_x select 1);
+		} foreach _VehicleAmmo;
 	};
-} foreach _VehiclesAndAmmo;
+} foreach _VehiclesWithAmmo;
 
 if (player == driver _vehicle) then {
 	_costs = [_vehicle, _refuel_costs] call _fnc_getCosts;
