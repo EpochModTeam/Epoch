@@ -421,6 +421,8 @@ class CfgEpochSoldier
     maxReloadSpeed = 0.5;
     maxCommanding = 0.4;
     maxGeneral = 0.4;
+	minspawndist = 120;
+	maxspawndist = 200;
 };
 class CfgEpochSapper
 {
