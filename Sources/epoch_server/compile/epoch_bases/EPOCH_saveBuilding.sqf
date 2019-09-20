@@ -22,7 +22,7 @@ if !(isNull _this) then {
 		_cfgBaseBuilding = 'CfgBaseBuilding' call EPOCH_returnConfig;
 		_this setDamage 0;
 		_class = typeOf _this;
-		_worldspace = [(getposATL _this call EPOCH_precisionPos), vectordir _this, vectorup _this];
+		_worldspace = [getposworld _this, vectordir _this, vectorup _this, true];
 		_objHiveKey = format["%1:%2", (call EPOCH_fn_InstanceID), _objSlot];
 		_animPhases = [];
 		{

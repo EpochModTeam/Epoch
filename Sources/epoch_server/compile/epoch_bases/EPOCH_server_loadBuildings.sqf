@@ -75,12 +75,8 @@ for "_i" from 0 to _this do {
 		// experiment with damage factor based on time only for now.
 		_damage = ((1 - (_ttl / _maxTTL)) min 1) max 0;
 
-		_location = _worldspace deleteAt 0;
-
-		// increased position precision
-		if (count _location == 2) then{
-			_location = (_location select 0) vectorAdd (_location select 1);
-		};
+		_worldspace params ["_pos","_vectordir","_vectorup",["_useworld",false]];
+		_vectordirup = [_vectordir,_vectorup];
 
 		// remove old safes on && !(_class isKindOf 'Constructions_lockedstatic_F')
 		if (isClass (configFile >> "CfgVehicles" >> _class) && (_damage < 1) && !(_class isKindOf 'Constructions_lockedstatic_F')) then {
@@ -115,8 +111,13 @@ for "_i" from 0 to _this do {
 					} foreach _DeSimulateObjects;
 				};
 			};
-			_baseObj setposATL _location;
-			_baseObj setVectorDirAndUp _worldspace;
+			if (_useworld) then {
+				_baseObj setposworld _pos;
+			}
+			else {
+				_baseObj setposATL _pos;
+			};
+			_baseObj setVectorDirAndUp _vectordirup;
 
 			if (_Simulated && _baseDynamicSimulationSystem) then {		// Only needed, if simulation is not disabled
 				// new Dynamicsimulation
@@ -130,8 +131,13 @@ for "_i" from 0 to _this do {
 			if(isText _ammoClass) then {
 				_ammoClass = getText _ammoClass;
 				_ammoObj = createVehicle [_ammoClass, [0,0,0], [], 0, "CAN_COLLIDE"];
-				_ammoObj setVectorDirAndUp _worldspace;
-				_ammoObj setposATL _location;
+				if (_useworld) then {
+					_ammoObj setposworld _pos;
+				}
+				else {
+					_ammoObj setposATL _location;
+				};
+					_ammoObj setVectorDirAndUp _vectordirup;
 				_baseObj setVariable ["EPOCH_TRAP_OBJ",_ammoObj];
 				_baseObj addEventHandler ["Explosion", {(_this select 0) setDamage 1}];
 			};
@@ -165,7 +171,7 @@ for "_i" from 0 to _this do {
 				if (_class in (call EPOCH_JammerClasses)) then {
 					EPOCH_Plotpoles pushbackunique _baseObj;
 					if (EPOCH_SHOW_JAMMERS) then {
-						_marker = createMarker [str(_location), _location];
+						_marker = createMarker [str(_pos), _pos];
 						_marker setMarkerShape "ICON";
 						// TODO allow players to change this per base
 						_marker setMarkerType "mil_dot";
@@ -200,7 +206,7 @@ for "_i" from 0 to _this do {
 
 			EPOCH_BuildingSlots set [_i,1];
 			if (EPOCH_DEBUG_VEH) then {
-				_marker = createMarker [str(_location) , _location];
+				_marker = createMarker [str(_pos) , _pos];
 				_marker setMarkerShape "ICON";
 				_marker setMarkerType "mil_dot";
 				_marker setMarkerText _class;
