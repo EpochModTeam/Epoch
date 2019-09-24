@@ -24,6 +24,8 @@ All changes for [Arma 3](https://arma3.com/) [Epoch Mod](https://epochmod.com) a
 - Item description to Trader items
    - https://cdn.discordapp.com/attachments/474595539107971072/622554669830373399/unknown.png
 - UAV Backpacks - Assemble and then use via DynaMenu (SpaceMenu)
+- Animated Heli Crash (with scattered loot)
+   - https://plays.tv/video/5d8a717407926fbfc2
 
 ### Fixed
 - Players could instant get killed on contact with new placed BaseBuilding Parts
