@@ -598,6 +598,31 @@ class CfgMainTable
 				{ "Grenades", 2 }
 		};
 	};
+	class HeliCrash
+	{
+		lootMin = 10;
+		LootMax = 20;
+		tables[] = {
+			{ "SniperRifle", 1 },
+			{ "Generic", 5 },
+			{ "Sodas", 4 },
+			{ "CanFood", 4 },
+			{ "Rifle", 3 },
+			{ "Machinegun", 2 },
+			{ "Tools", 2 },
+			{ "Pistols", 3 },
+			{ "Scopes", 2 },
+			{ "Bipods", 2 },
+			{ "Muzzles", 2 },
+			{ "Medical", 2 },
+			{ "Explosives", 2 },
+			{ "HighExplosives", 1 },
+			{ "Backpack", 1 },
+			{ "Uniforms", 1 },
+			{ "Vests", 1 },
+			{ "HeadgearArmored", 2 }
+		};
+	};
 	class Mission_Payout1
 	{
 		lootMin = 4;

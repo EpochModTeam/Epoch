@@ -183,9 +183,10 @@ class CfgEpoch
 		showHeliCrashMarkers = 1;
 		maxSpawnedHeliCrashes = 4;
 		distFromOtherHeliCrashes = 2000;
+		HeliCrashDecayTime = 2400;
 		heliCrashDecayMarkerColor = "ColorBrown"; // decay changes icon (_markers select 2)
 		heliCrashCompromisedColor = "ColorRed"; // compromised changes active surround (_markers select 0)
-		availableHeliCrashes[] = {"Land_Wreck_Heli_Attack_01_F","Land_Wreck_Heli_Attack_02_F"};
+		availableHeliCrashes[] = {{"O_Heli_Attack_02_F","Land_Wreck_Heli_Attack_02_F"},{"B_Heli_Attack_01_F","Land_Wreck_Heli_Attack_01_F"}};
 		heliCrashCustomLocs[] = {};
 		
 		propsPos[] = {

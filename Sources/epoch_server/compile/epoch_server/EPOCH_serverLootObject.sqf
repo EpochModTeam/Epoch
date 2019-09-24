@@ -15,7 +15,7 @@
 //[[[cog import generate_private_arrays ]]]
 private ["_config","_debug","_exit","_loop","_lootItemArray","_lootItemWeightedArray","_lootTable","_lootTableClass","_lootTableIndex","_loots","_magazineSize","_mags","_maxLoot","_maxPayout","_minLoot","_pricingConfig","_quan","_randomItem","_randomItemArray","_randomizeMagazineAmmoCount","_weightedItemArray"];
 //[[[end]]]
-params ["_object","_type",["_forceSpawn",false],["_pos",[]] ];
+params ["_object","_type",["_forceSpawn",false],["_pos",[]],["_scatter",[]]];
 _debug = true;
 _pricingConfig = 'CfgPricing' call EPOCH_returnConfig;
 
@@ -25,11 +25,12 @@ if !(EPOCH_forcedLootSpawnTable isEqualTo "") then {
     _lootTableClass = EPOCH_forcedLootSpawnTable;
 };
 _randomizeMagazineAmmoCount = ["CfgEpochClient", "randomizeMagazineAmmoCount", true] call EPOCH_fnc_returnConfigEntryV2;
-if (isnull _object && !(_pos isequalto [])) then {
+if (isnull _object && !(_pos isequalto []) && (_scatter isequalto [])) then {
 	_object = createVehicle ["groundWeaponHolder",_pos,[],0,"CAN_COLLIDE"];
 	_object setPosATL _pos;
 };
-if !(isNull _object) then{
+if (!isNull _object || !(_scatter isequalto [])) then{
+	_scatter params [["_doScatter",false],["_ScatterRadiusArr",[6,12]]];
 	_lootTable = ["CfgMainTable", _type, "tables"] call EPOCH_fnc_weightedArray;
 	if !(_lootTable isEqualTo []) then {
 		_loots = [];
@@ -41,6 +42,11 @@ if !(isNull _object) then{
 			_loots pushBack (selectRandomWeighted _lootTable);
 		};
 		{
+			if (_doScatter) then {
+				_randomPos = [_pos,_ScatterRadiusArr call BIS_fnc_randomInt,[0,359] call BIS_fnc_randomInt] call BIS_fnc_relPos;
+				_object = createVehicle ["groundweaponholder",_randomPos,[],0,"CAN_COLLIDE"];
+				_object setPosATL [_randomPos select 0, _randomPos select 1, 0.1];
+			};
 			_lootItemWeightedArray = [_lootTableClass, _x, "items"] call EPOCH_fnc_weightedArray;
 			if !(_lootItemWeightedArray isEqualTo[]) then {
 				_randomItemArray = selectRandomWeighted _lootItemWeightedArray;

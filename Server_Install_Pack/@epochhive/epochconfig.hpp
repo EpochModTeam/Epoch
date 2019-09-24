@@ -26,6 +26,7 @@ forceRestartTime      = 14400; 			// 4 hour restarts
 		}, 
 		// { 1800, "PaydayEvent", 0, 2},
 		// { 1200, "MessageServer", 0, 2},
+		{ 1200, "HeliCrash", 0 , 2, -1, {} ,{"VR"}},
 		{ 2700, "AirDrop", 0 , 2, -1, {} ,{"VR"}},
 		{ 2400, "EarthQuake", 0 , 2, -1, {} ,{"VR"}},
 		{ 2700, "Satellite", 0 , 2, -1, {} ,{"VR"}},
