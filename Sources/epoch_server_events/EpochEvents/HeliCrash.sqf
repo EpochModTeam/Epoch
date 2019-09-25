@@ -61,7 +61,7 @@ if ((random 1) < _chance) then {
 		uisleep 0.5;
 		if !(surfaceiswater _pos) then {
 			_veh = createVehicle [_veharray select 1, _pos, [], 0, "CAN_COLLIDE"];
-			_veh setvectorup [0,0,1];
+			_veh setVectorUp surfaceNormal _pos;		
 			_veh setPosatl _pos;
 			[objnull,"HeliCrash",false,_pos,[true,[6,12]]] call EPOCH_serverLootObject;
 			// Place markers and get decay, compromised and original colors
