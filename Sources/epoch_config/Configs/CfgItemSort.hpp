@@ -515,6 +515,11 @@ class CfgItemSort
 			"1911_pistol_epoch",
 			"hgun_Pistol_Signal_F",
 
+			"pvcrifle_01_F",
+			"nl_Shotgun",
+			"nl_auto_xbow",
+			"hgun_Pistol_tranq_01",
+
 			// light Rifle
 			"l85a2_epoch",
 			"l85a2_pink_epoch",
@@ -704,6 +709,13 @@ class CfgItemSort
 			"6Rnd_BlueSignal_F",
 			"6Rnd_PurpleSignal_F",
 			"6Rnd_OrangeSignal_F",
+			
+			"NL_pvc_bb_mag",
+			"NL_shot_bb_mag",
+			"xbow_mag_bolt",
+			"xbow_mag_tranq",
+			"xbow_mag_exp",
+			"tranq_dart_mag",
 
 			// light Mags
 			"30Rnd_65x39_caseless_green",

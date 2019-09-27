@@ -2386,6 +2386,32 @@ class CfgPricing
         price = 2;
         tax = 0.9;
     };
+
+    class NL_pvc_bb_mag 
+    {
+        price = 20;
+    };
+    class NL_shot_bb_mag 
+    {
+        price = 20;
+    };
+    class xbow_mag_bolt 
+    {
+        price = 20;
+    };
+    class xbow_mag_tranq 
+    {
+        price = 20;
+    };
+    class xbow_mag_exp 
+    {
+        price = 20;
+    };
+    class tranq_dart_mag
+    {
+        price = 5;
+    };
+
     class UGL_FlareWhite_F
     {
         price = 2;
@@ -2625,6 +2651,23 @@ class CfgPricing
     class AKM_EPOCH
     {
         price = 100;
+    };
+
+    class pvcrifle_01_F
+    {
+        price = 100;
+    };
+    class nl_Shotgun
+    {
+        price = 100;
+    };
+    class nl_auto_xbow
+    {
+        price = 100;
+    };
+    class hgun_Pistol_tranq_01
+    {
+        price = 20;
     };
 	
 	// A2 Weapons
