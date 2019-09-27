@@ -13,10 +13,11 @@
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server/compile/epoch_server/EPOCH_serverLootObject.sqf
 */
 //[[[cog import generate_private_arrays ]]]
-private ["_config","_debug","_exit","_loop","_lootItemArray","_lootItemWeightedArray","_lootTable","_lootTableClass","_lootTableIndex","_loots","_magazineSize","_mags","_maxLoot","_maxPayout","_minLoot","_pricingConfig","_quan","_randomItem","_randomItemArray","_randomizeMagazineAmmoCount","_weightedItemArray"];
+private ["_config","_debug","_exit","_loop","_lootItemArray","_lootItemWeightedArray","_lootTable","_lootTableClass","_lootTableIndex","_loots","_magazineSize","_mags","_maxLoot","_maxPayout","_minLoot","_pricingConfig","_quan","_randomItem","_randomItemArray","_randomizeMagazineAmmoCount","_weightedItemArray","_LootWHs"];
 //[[[end]]]
 params ["_object","_type",["_forceSpawn",false],["_pos",[]],["_scatter",[]]];
 _debug = true;
+_LootWHs = [];
 _pricingConfig = 'CfgPricing' call EPOCH_returnConfig;
 
 _lootTableIndex = if (EPOCH_modCUPVehiclesEnabled) then {if (EPOCH_mod_madArma_Enabled) then {3} else {1}} else {if (EPOCH_mod_madArma_Enabled) then {2} else {0}};
@@ -44,8 +45,9 @@ if (!isNull _object || !(_scatter isequalto [])) then{
 		{
 			if (_doScatter) then {
 				_randomPos = [_pos,_ScatterRadiusArr call BIS_fnc_randomInt,[0,359] call BIS_fnc_randomInt] call BIS_fnc_relPos;
-				_object = createVehicle ["groundweaponholder",_randomPos,[],0,"CAN_COLLIDE"];
+				_object = createVehicle ["Epoch_LootHolder",_randomPos,[],0,"CAN_COLLIDE"];
 				_object setPosATL [_randomPos select 0, _randomPos select 1, 0.1];
+				_LootWHs pushback _object;
 			};
 			_lootItemWeightedArray = [_lootTableClass, _x, "items"] call EPOCH_fnc_weightedArray;
 			if !(_lootItemWeightedArray isEqualTo[]) then {
@@ -129,3 +131,4 @@ if (!isNull _object || !(_scatter isequalto [])) then{
 		} forEach _loots;
 	};
 };
+_LootWHs
