@@ -210,6 +210,11 @@ class CfgEpochClient
 		{"PublicStats",1,{}}	// DO not change this! Players can disable it within the E-Pad by themself!
 	};
 	PlayerStatsDialogEntries[] = {
+/*
+		{
+			{"CommunityVariable","DisplayName","ExtraCalculation"}
+		},
+*/
 		{
 			{"ConnectCount","Times connected"},
 			{"PlayTime","Playtime (hours)","%1/3600 toFixed 2"},
@@ -223,7 +228,7 @@ class CfgEpochClient
 			{"CraftedItems","Crafted Items"}
 		},
 		{
-			{"Karma","Karma"},
+			{"Karma","Karma","round %1"},
 			{"Revives","Player Revived"},
 			{"TraderMissions","Tradermissions"}
 		},
@@ -244,6 +249,9 @@ class CfgEpochClient
 		}
 	};
 	TopStatsDialogEntries[] = {
+/*
+		{"CommunityVariable","DisplayName","ExtraCalculation"},
+*/
 		{"PlayTime","Playtime (hours)","%1/3600 toFixed 2"},
 		{"MaxAliveTime","Max Alivetime (hours)","%1/3600 toFixed 2"},
 		{"WalkDist","Distance Walked (Km)","%1/1000 toFixed 2"},
@@ -251,7 +259,7 @@ class CfgEpochClient
 		{"NPCTrades","Trades at Trader"},
 		{"BuildingsSet","Placed Buildings"},
 		{"CraftedItems","Crafted Items"},
-		{"Karma","Karma"},
+		{"Karma","Karma","round %1"},
 		{"Murders","Player Kills"},
 		{"AIKills","AI Kills"},
 		{"Deaths","Deaths by Player"},

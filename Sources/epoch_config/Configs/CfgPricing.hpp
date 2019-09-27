@@ -2434,6 +2434,10 @@ class CfgPricing
     {
         price = 4;
     };
+    class 1Rnd_HE_Grenade_shell
+    {
+        price = 3;
+    };
     class 3Rnd_HE_Grenade_shell
     {
         price = 10;

@@ -63,7 +63,7 @@ if ((random 1) < _chance) then {
 			_veh = createVehicle [_veharray select 1, _pos, [], 0, "CAN_COLLIDE"];
 			_veh setVectorUp surfaceNormal _pos;		
 			_veh setPosatl _pos;
-			[objnull,"HeliCrash",false,_pos,[true,[6,12]]] call EPOCH_serverLootObject;
+			_LootWHs = [objnull,"HeliCrash",false,_pos,[true,[6,12]]] call EPOCH_serverLootObject;
 			// Place markers and get decay, compromised and original colors
 			_markers = [];
 			_originalColors = [];
@@ -94,7 +94,7 @@ if ((random 1) < _chance) then {
 			_serverSettingsConfig = configFile >> "CfgEpochServer";
 			_timeMultiplier = ([_serverSettingsConfig, "timeMultiplier", 1] call EPOCH_fnc_returnConfigEntry);
 			_rEvents = missionNameSpace getVariable["EPOCH_RunningEvents",[]];
-			_thisEvent = [_pos, [_veh], [], "EPOCH_HeliCrashCounter", diag_tickTime, (_decayTime * _timeMultiplier), _showMarkers, _markers, _originalColors, _decayMarkerColor, _compromisedColor];
+			_thisEvent = [_pos, [_veh], _LootWHs, "EPOCH_HeliCrashCounter", diag_tickTime, (_decayTime * _timeMultiplier), _showMarkers, _markers, _originalColors, _decayMarkerColor, _compromisedColor];
 			missionNameSpace setVariable["EPOCH_RunningEvents",_rEvents + [_thisEvent]];
 
 			_effects = [];
