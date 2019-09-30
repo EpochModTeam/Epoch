@@ -3,7 +3,7 @@ All changes for [Arma 3](https://arma3.com/) [Epoch Mod](https://epochmod.com) a
 
 ## [1.3.2.0] - 2019-xx-xx
 ### Added
-- Non Lethal Weapons (WIP)
+- Non Lethal Weapons
    - Make opponents unconscious with special weapons
    - Unconscious players can be woken up
       - by a MultiGun with Heal Player attachment
@@ -48,6 +48,9 @@ All changes for [Arma 3](https://arma3.com/) [Epoch Mod](https://epochmod.com) a
 - Changed Taru / Huron / Mohawk Door Sounds (more decent sound)
 - changed unarmed jump animation
 - UAV-Support (AI's) will now spawn a bit more away from your Position
+- Changed / Fixed some Epoch asset models
+- Reduced Rain by default
+- Hunger / Thirst / Alcohol loss no longer depends on time multiplier by default
 
 ### Server Owners
 - Added Compatibility to Lythium and Livonia Map
@@ -76,6 +79,7 @@ All changes for [Arma 3](https://arma3.com/) [Epoch Mod](https://epochmod.com) a
 - Added an option "EnablePhysicsOnBuild" to cfgEpochClient.hpp to disable physics while Building
 - Changed syntax in cfgServicePoints to allow inherits from other Vehicle Classes
    - Some more infos can be found here: https://epochmod.com/forum/topic/34454-repair-rearming-script/?do=findComment&comment=307310
+- Added a config for the already available FastNight Event to epochconfig.hpp
 
 ## [1.3.1.0] - 2019-03-28
 ### Added
