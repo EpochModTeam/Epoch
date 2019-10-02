@@ -38,7 +38,7 @@ if (!isNull _object || !(_scatter isequalto [])) then{
 		_config = configFile >> "CfgMainTable" >> _type;
 		_minLoot = getNumber(_config >> "lootMin");
 		_maxLoot = getNumber(_config >> "lootMax");
-		_maxPayout = ((random(_maxLoot) * EPOCH_lootMultiplier) min _maxLoot) max _minLoot;
+		_maxPayout = (round (random(_maxLoot * EPOCH_lootMultiplier))) max _minLoot;
 		for "_k" from 1 to _maxPayout do {
 			_loots pushBack (selectRandomWeighted _lootTable);
 		};

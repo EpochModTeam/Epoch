@@ -25,6 +25,7 @@ EPOCH_staticTraderLocations = [];
 EPOCH_staticNPCTraderPos = [];
 EPOCH_traderStoredVehicles = [];
 EPOCH_traderStoredVehiclesCnt = [];
+Epoch_LootedBuildings = [];
 
 private _configArray = [
 	["serverRestart", false],
@@ -154,3 +155,8 @@ if !(EPOCH_TopStatsVars isEqualTo _TopStatsVarsDb) then {
 };
 publicvariable "EPOCH_TopStats";
 publicvariable "EPOCH_TopStatsVars";
+
+Epoch_LootCleanupTime = getNumber ((getmissionconfig "CfgBuildingLootPos") >> "LootCleanupTime");
+if (Epoch_LootCleanupTime == 0) then {
+	Epoch_LootCleanupTime = 300;
+};

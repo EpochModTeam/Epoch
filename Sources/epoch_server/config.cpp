@@ -54,6 +54,7 @@ class CfgServerFunctions
 			class server_knockDownTree {};
 			class server_mineRocks {};
 			class server_lootAnimal {};
+			class server_spawnLoot {};
 		};
 		class epoch_player {
             class fnc_addItemToX {};

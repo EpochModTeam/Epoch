@@ -266,10 +266,6 @@ class CfgClientFunctions
 			class message_old1 {};
 			class message_old2 {};
 		};
-		class looting
-		{
-			class spawnLoot {};
-		};
 		class gui
 		{
 			file = "epoch_code\gui\scripts";

@@ -5,7 +5,7 @@ forceRestartTime      = 14400; 			// 4 hour restarts
 	StaticDateTime[] 	= {}; 			// {0,0,0,8,0} would forces the server to start at 8am each time it is started while allowing the year, month and day to stay real time. Any values left at 0 will result in no change.
 	timeDifference 		= 0; 			// Server uses real time this will allow you to offset just the hour.
 	timeMultiplier 		= 4; 			// Sets a time multiplier for in-game time. The command range is now capped at 0.1 - 120 to avoid performance problems.
-	lootMultiplier 		= 0.5; 			// 1 = max loot multiplier. This controls how much loot can payout per Epoch loot container.
+	lootMultiplier 		= 1; 			// 1 = normal loot multiplier. This controls how much loot can payout per loot container.
 
 // Events
 	WeatherChances[] = {
