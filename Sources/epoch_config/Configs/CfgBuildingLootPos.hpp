@@ -36,9 +36,9 @@ class CfgBuildingLootPos
 		EpochLootChance = 20;		// 20% of this Building Types will hold default Epoch Loot
 		limit = 3;					// Max 3 Furnitures will spawn in this Building type
 
-		GroundSpawnChance = 60;		// 50% Chance for Ground Loot, if no Epoch Loot will spawn
+		GroundSpawnChance = 60;		// 60% Chance for Ground Loot, if no Epoch Loot will spawn
 		MinGroundContainers = 1;	// If Groundloot, min 1 Weaponholder will spawn in this building
-		MaxGroundContainers = 2;	// If Groundloot, max 5 Weaponholder will spawn in this building
+		MaxGroundContainers = 2;	// If Groundloot, max 2 Weaponholder will spawn in this building
 	};
     class Land_Kiosk_redburger_F : Default
     {
