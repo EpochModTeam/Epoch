@@ -51,6 +51,7 @@ All changes for [Arma 3](https://arma3.com/) [Epoch Mod](https://epochmod.com) a
 - Changed / Fixed some Epoch asset models
 - Reduced Rain by default
 - Hunger / Thirst / Alcohol loss no longer depends on time multiplier by default
+- Reworked Looting function (Epoch furnitures + additional ground Loot)
 
 ### Server Owners
 - Added Compatibility to Lythium and Livonia Map
@@ -80,6 +81,17 @@ All changes for [Arma 3](https://arma3.com/) [Epoch Mod](https://epochmod.com) a
 - Changed syntax in cfgServicePoints to allow inherits from other Vehicle Classes
    - Some more infos can be found here: https://epochmod.com/forum/topic/34454-repair-rearming-script/?do=findComment&comment=307310
 - Added a config for the already available FastNight Event to epochconfig.hpp
+- New Weapons + Mags:
+   - pvcrifle_01_F
+      - NL_pvc_bb_mag -> Knockout
+   - nl_Shotgun
+      - NL_shot_bb_mag -> Knockout
+   - nl_auto_xbow
+      - xbow_mag_bolt -> Kill
+      - xbow_mag_tranq -> Knockout
+      - xbow_mag_exp -> small explosion -> Kill
+   - hgun_Pistol_tranq_01
+      - tranq_dart_mag -> Knockout
 
 ## [1.3.1.0] - 2019-03-28
 ### Added
