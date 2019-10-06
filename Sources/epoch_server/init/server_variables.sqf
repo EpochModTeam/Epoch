@@ -160,3 +160,15 @@ Epoch_LootCleanupTime = getNumber ((getmissionconfig "CfgBuildingLootPos") >> "L
 if (Epoch_LootCleanupTime == 0) then {
 	Epoch_LootCleanupTime = 300;
 };
+
+Epoch_LootContainers = [];
+{
+	_x params ["","_class",""];
+	if (_class isEqualType []) then {
+		Epoch_LootContainers = Epoch_LootContainers + _class;
+	}
+	else {
+		Epoch_LootContainers pushback _class;
+	};
+} forEach (getArray (missionConfigFile >> "CfgBuildingLootPos" >> "Default" >> "lootTypes"));
+Epoch_LootContainers = compilefinal (str Epoch_LootContainers);

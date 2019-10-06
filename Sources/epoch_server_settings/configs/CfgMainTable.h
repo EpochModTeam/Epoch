@@ -745,8 +745,8 @@ class CfgMainTable
 	};
 	class Cabinet_EPOCH : Default
 	{
-		lootMin = 2;
-		LootMax = 4;
+		lootMin = 1;
+		LootMax = 3;
 		tables[] = {
 				{ "Medical", 1 }
 		};

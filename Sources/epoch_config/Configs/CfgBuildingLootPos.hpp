@@ -31,7 +31,7 @@ class CfgBuildingLootPos
 		toiletPos[] = {};
 		kitchenSinkPos[] = {};
         lootBias = 40;
-		lootTypes[] = {{"shelfPos","Shelf_EPOCH",true},{"fridgePos","Fridge_EPOCH",true},{"bedPos","Bed_EPOCH",false},{"couchPos","Couch_EPOCH",false},{"wardrobePos","wardrobe_epoch",false},{"cookerPos","cooker_epoch",false},{"chairPos",{"Chair_EPOCH","ChairRed_EPOCH"},true},{"filingPos","Filing_epoch",true},{"pelicanPos","Pelican_EPOCH",false},{"tablePos","Table_EPOCH",false},{"lockerPos","Locker_EPOCH",false},{"toolRackPos","ToolRack_EPOCH",false},{"shoeboxPos","Shoebox_EPOCH",false},{"palletPos","Tarp_EPOCH",false},{"freezerPos","Freezer_EPOCH",false},{"cabinetPos","Cabinet_EPOCH",false},{"toiletPos","toilet_epoch",false},{"kitchenSinkPos","KitchenSink_epoch",false}};
+		lootTypes[] = {{"shelfPos","Shelf_EPOCH",false},{"fridgePos","Fridge_EPOCH",false},{"bedPos","Bed_EPOCH",false},{"couchPos","Couch_EPOCH",false},{"wardrobePos","wardrobe_epoch",false},{"cookerPos","cooker_epoch",false},{"chairPos",{"Chair_EPOCH","ChairRed_EPOCH"},false},{"filingPos","Filing_epoch",false},{"pelicanPos","Pelican_EPOCH",false},{"tablePos","Table_EPOCH",false},{"lockerPos","Locker_EPOCH",false},{"toolRackPos","ToolRack_EPOCH",false},{"shoeboxPos","Shoebox_EPOCH",false},{"palletPos","Tarp_EPOCH",false},{"freezerPos","Freezer_EPOCH",false},{"cabinetPos","Cabinet_EPOCH",false},{"toiletPos","toilet_epoch",false},{"kitchenSinkPos","KitchenSink_epoch",false}};
 
 		EpochLootChance = 20;		// 20% of this Building Types will hold default Epoch Loot
 		limit = 3;					// Max 3 Furnitures will spawn in this Building type

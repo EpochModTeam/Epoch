@@ -249,26 +249,105 @@ _lootBubble = {
 		{(_x nearObjects ["PlotPole_Epoch", 100]) isEqualTo []} &&
 		{(_x nearObjects ["ProtectionZone_Invisible_F", 25]) isEqualTo []} &&
 		{(_x nearEntities[["Epoch_Male_F", "Epoch_Female_F"], 15]) isEqualTo []} &&
-		{!(isObjectHidden _x)} &&
+		{!(isObjectHidden _x)}
+	};
+	if !(_objects isEqualTo[]) then {
+		_LootsArray = [];
 		{
-			private _selectedConfig = typeOf _x;
+			_building = _x;
+			_building setvariable ["Epoch_LastLootCheck",diag_ticktime];
+			_selectedConfig = typeOf _building;
 			if (_selectedConfig isEqualTo "") then {
-				(getModelInfo _x) params [["_modelName",""]];
+				(getModelInfo _building) params [["_modelName",""]];
 				if (!isnil "_modelName") then {
 					_selectedConfig = (_modelName splitString " .") joinString "_";
 				};
 			};
-			((toLower _selectedConfig) in _lootClasses)
-		}
-	};
-	if !(_objects isEqualTo[]) then {
-		{
-			_x setvariable ["Epoch_LastLootCheck",diag_ticktime];
-		} foreach _objects;
-		[player,Epoch_personalToken,_objects] remoteExec ["EPOCH_server_spawnLoot",2];
+			_config = _masterConfig >> _selectedConfig;
+			if (isClass(_config)) then {
+				_buildingLoot = [];
+				if ((random 100) < (getNumber (_config >> "EpochLootChance"))) then {
+					_buildingLoot = [_building,"EpochLoot",[]];
+					_cfgBaseBuilding = 'CfgBaseBuilding' call EPOCH_returnConfig;
+					_loots = getArray(_config >> "loottypes");
+					_lootLimit = (round random(getNumber(_config >> "limit"))) max 1;
+					_possibleLoots = [];
+					{
+						_x params ["_posNameTMP","_class","_randomColor"];
+						_posName = _posNameTMP;
+						_positions = getArray(_config >> _posName);
+						{
+							_possibleLoots pushBack [_class,_randomColor,_x];
+						} forEach _positions;
+					} forEach _loots;
+					if !(_possibleLoots isEqualTo []) then {
+						for "_i" from 1 to _lootLimit do {
+							_possibleCount = count _possibleLoots;
+							if (_possibleCount > 0) then {
+								_randomIndex = (floor random(_possibleCount));
+								_selectedLoot = _possibleLoots deleteAt _randomIndex;
+								_selectedLoot params ["_class","_randomColor","_position"];
+								_position params ["_m2WPos","_relDir"];
+								_pos = _building modelToWorld _m2WPos;
+								if (_pos select 2 < 0) then {
+									_pos set[2, 0];
+								};
+								if (_class isEqualType []) then {
+									_class = selectRandom _class;
+								};
+								_dir = _relDir + (getDir _building);
+								_color = "";
+								if (_randomColor isEqualTo "true") then {
+									_colors = getArray(_cfgBaseBuilding >> _class >> "availableTextures");
+									if !(_colors isEqualTo[]) then {
+										_color = selectRandom _colors;
+									};
+								};
+								(_buildingLoot select 2) pushback [_class, _pos, _dir, _color];
+							};
+						};
+					};
+				}
+				else {
+					if ((random 100) < (getNumber (_config >> "GroundSpawnChance"))) then {
+						_buildingLoot = [_building,"GroundLoot",[]];
+						_MinGroundContainers = getNumber (_config >> "MinGroundContainers");
+						_MaxGroundContainers = getNumber (_config >> "MaxGroundContainers");
+						_lootType = getText(_config >> "lootType");
+						_loots = getArray(_config >> "loottypes");
+						_positions = [];
+						{
+							_x params ["_posName","_class","_randomColor"];
+							if !((tolower _posName) in ["cabinetpos","toolrackpos"]) then {
+								_positions = _positions + getArray (_config >> _posName);
+							};
+						} forEach _loots;
+						if !(_positions isEqualTo []) then {
+							for "_i" from 1 to (_MinGroundContainers + (round (random (_MaxGroundContainers - _MinGroundContainers)))) do {
+								if ((count _positions) > 0) then {
+									_position = _positions deleteat (floor (random (count _positions)));
+									_position params ["_m2WPos","_relDir"];
+									_pos = _building modelToWorld _m2WPos;
+									_pos vectoradd [0,0,0.1];
+									if (_pos select 2 < 0) then {
+										_pos set[2, 0];
+									};
+									(_buildingLoot select 2) pushback [_lootType,_pos];
+								};
+							};
+						};
+					};
+				};
+				if !(_buildingLoot isEqualTo []) then {
+					_LootsArray pushback _buildingLoot;
+				};
+			};
+		} foreach _objects;	
+		if !(_LootsArray isEqualTo []) then {
+			[player,Epoch_personalToken,_LootsArray] remoteExec ["EPOCH_server_spawnLoot",2];
+		};
 	};
 };
-call _lootBubble;
 
 // init weather temperature var if not already set
 if (isNil "EPOCH_CURRENT_WEATHER") then {
