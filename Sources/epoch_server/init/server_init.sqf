@@ -195,9 +195,11 @@ if (([_serverSettingsConfig, "ReplaceCarService", false] call EPOCH_fnc_returnCo
 		_x HideobjectGlobal true;
 	} foreach (epoch_centerMarkerPosition nearObjects ["Land_CarService_F", EPOCH_dynamicVehicleArea]);
 };
-{
-	_markers = ["PaintGarage", (getpos _x)] call EPOCH_server_createGlobalMarkerSet;
-} foreach (allmissionobjects "paintshop");
+if (([_serverSettingsConfig, "PaintShopIcons", false] call EPOCH_fnc_returnConfigEntry)) then {
+	{
+		_markers = ["PaintGarage", (getpos _x)] call EPOCH_server_createGlobalMarkerSet;
+	} foreach (allmissionobjects "paintshop");
+};
 
 diag_log "Epoch: Loading vehicles";
 // Vehicle slot limit set to total of all allowed limits

@@ -89,6 +89,7 @@ forceRestartTime      = 14400; 			// 4 hour restarts
 	};
 	disableVehicleTIE = "true";
 	ReplaceCarService = "true";		// Replace all "Land_CarService_F" with "paintshop" on the Map on Server Start
+	PaintShopIcons = "false";		// Create MapIcons for PaintShops
 
 // BaseBuilding
 	StorageSlotsLimit 	= 1500; 		// Max storage slots allowed. Warning! Higher the number lower performance.
