@@ -33,10 +33,10 @@ class CfgBuildingLootPos
         lootBias = 40;
 		lootTypes[] = {{"shelfPos","Shelf_EPOCH",false},{"fridgePos","Fridge_EPOCH",false},{"bedPos","Bed_EPOCH",false},{"couchPos","Couch_EPOCH",false},{"wardrobePos","wardrobe_epoch",false},{"cookerPos","cooker_epoch",false},{"chairPos",{"Chair_EPOCH","ChairRed_EPOCH"},false},{"filingPos","Filing_epoch",false},{"pelicanPos","Pelican_EPOCH",false},{"tablePos","Table_EPOCH",false},{"lockerPos","Locker_EPOCH",false},{"toolRackPos","ToolRack_EPOCH",false},{"shoeboxPos","Shoebox_EPOCH",false},{"palletPos","Tarp_EPOCH",false},{"freezerPos","Freezer_EPOCH",false},{"cabinetPos","Cabinet_EPOCH",false},{"toiletPos","toilet_epoch",false},{"kitchenSinkPos","KitchenSink_epoch",false}};
 
-		EpochLootChance = 20;		// 20% of this Building Types will hold default Epoch Loot
+		EpochLootChance = 15;		// 15% of this Building Types will hold default Epoch Loot
 		limit = 3;					// Max 3 Furnitures will spawn in this Building type
 
-		GroundSpawnChance = 60;		// 60% Chance for Ground Loot, if no Epoch Loot will spawn
+		GroundSpawnChance = 50;		// 50% Chance for Ground Loot, if no Epoch Loot will spawn
 		MinGroundContainers = 1;	// If Groundloot, min 1 Weaponholder will spawn in this building
 		MaxGroundContainers = 2;	// If Groundloot, max 2 Weaponholder will spawn in this building
 	};

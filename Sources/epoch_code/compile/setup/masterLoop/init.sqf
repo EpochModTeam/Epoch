@@ -221,6 +221,7 @@ missionNamespace setVariable [_playerSpawnArrayKey, _playerSpawnArray];
 
 // lootBubble Init
 _masterConfig = 'CfgBuildingLootPos' call EPOCH_returnConfig;
+_LootedBuildings = [];
 
 _lootClasses = [];
 _lootClassesIgnore = ['Default'];
@@ -244,17 +245,23 @@ _lootBubble = {
 	_lastPlayerPos = _playerPos;
 	if (missionnamespace getvariable ["InSafeZone",false]) exitwith {};
 	_objects = (player nearObjects ["Building", 60]) select {
-		!((_x getvariable ["Epoch_LastLootCheck",-10000]) > (diag_ticktime - _LootCleanupTime)) &&
-		{!(_x getvariable ["EPOCH_Skiploot",false])} &&
+		(_x distance player > 15) &&
+		{!(_x in _LootedBuildings)} &&
+		{(_x nearEntities[["Epoch_Male_F", "Epoch_Female_F"], 15]) isEqualTo []} &&
 		{(_x nearObjects ["PlotPole_Epoch", 100]) isEqualTo []} &&
 		{(_x nearObjects ["ProtectionZone_Invisible_F", 25]) isEqualTo []} &&
-		{(_x nearEntities[["Epoch_Male_F", "Epoch_Female_F"], 15]) isEqualTo []} &&
+		{!(_x getvariable ["EPOCH_Skiploot",false])} &&
 		{!(isObjectHidden _x)}
 	};
+//	systemchat format ["Found %1 not looted Buildings", count _objects];
 	if !(_objects isEqualTo[]) then {
 		_LootsArray = [];
 		{
 			_building = _x;
+			_LootedBuildings pushback _x;
+			if (count _LootedBuildings > 300) then {
+				_LootedBuildings deleteat 0;
+			};
 			_building setvariable ["Epoch_LastLootCheck",diag_ticktime];
 			_selectedConfig = typeOf _building;
 			if (_selectedConfig isEqualTo "") then {
@@ -263,14 +270,21 @@ _lootBubble = {
 					_selectedConfig = (_modelName splitString " .") joinString "_";
 				};
 			};
-			_config = _masterConfig >> _selectedConfig;
-			if (isClass(_config)) then {
-				_buildingLoot = [];
-				if ((random 100) < (getNumber (_config >> "EpochLootChance"))) then {
-					_buildingLoot = [_building,"EpochLoot",[]];
-					_cfgBaseBuilding = 'CfgBaseBuilding' call EPOCH_returnConfig;
+			_BuildingLootVars = missionnamespace getvariable [format ["Epoch_BuildingLootVars_%1",_selectedConfig],[]];
+			if (_BuildingLootVars isEqualTo []) then {
+				if (_foreachindex > 10) exitwith {		// Do not store more than 10 Building Types in one check
+					_BuildingLootVars = [false];
+				};
+				_config = _masterConfig >> _selectedConfig;
+				if (isClass(_config)) then {
+					_lootType = getText(_config >> "lootType");
+					_EpochLootChance = getNumber (_config >> "EpochLootChance");
+					_limit = getNumber (_config >> "limit");
+					_GroundSpawnChance = getNumber (_config >> "GroundSpawnChance");
+					_MinGroundContainers = getNumber (_config >> "MinGroundContainers");
+					_MaxGroundContainers = getNumber (_config >> "MaxGroundContainers");
 					_loots = getArray(_config >> "loottypes");
-					_lootLimit = (round random(getNumber(_config >> "limit"))) max 1;
+					_lootpositions = [];
 					_possibleLoots = [];
 					{
 						_x params ["_posNameTMP","_class","_randomColor"];
@@ -278,9 +292,27 @@ _lootBubble = {
 						_positions = getArray(_config >> _posName);
 						{
 							_possibleLoots pushBack [_class,_randomColor,_x];
+							if !((tolower _posName) in ["cabinetpos","toolrackpos"]) then {
+								_LootPositions = _LootPositions + getArray (_config >> _posName);
+							};
 						} forEach _positions;
 					} forEach _loots;
+					_BuildingLootVars = [true,_lootType,_EpochLootChance,_limit,_GroundSpawnChance,_MinGroundContainers,_MaxGroundContainers,_possibleLoots,_lootpositions];
+				};
+				if (_BuildingLootVars isEqualTo []) then {
+					_BuildingLootVars = [false];
+				};
+				missionnamespace setvariable [format ["Epoch_BuildingLootVars_%1",_selectedConfig],_BuildingLootVars];
+			};
+			_BuildingLootVars params ["_DoSpawn","_lootType","_EpochLootChance","_limit","_GroundSpawnChance","_MinGroundContainers","_MaxGroundContainers","_possibleLoots","_lootpositions"];
+			if (_DoSpawn) then {
+				_possibleLoots = +_possibleLoots;
+				_lootpositions = +_lootpositions;
+				_buildingLoot = [];
+				if ((random 100) < _EpochLootChance) then {
+					_buildingLoot = [_building,"EpochLoot",[]];
 					if !(_possibleLoots isEqualTo []) then {
+						_lootLimit = (round random _limit) max 1;
 						for "_i" from 1 to _lootLimit do {
 							_possibleCount = count _possibleLoots;
 							if (_possibleCount > 0) then {
@@ -309,23 +341,12 @@ _lootBubble = {
 					};
 				}
 				else {
-					if ((random 100) < (getNumber (_config >> "GroundSpawnChance"))) then {
+					if ((random 100) < _GroundSpawnChance) then {
 						_buildingLoot = [_building,"GroundLoot",[]];
-						_MinGroundContainers = getNumber (_config >> "MinGroundContainers");
-						_MaxGroundContainers = getNumber (_config >> "MaxGroundContainers");
-						_lootType = getText(_config >> "lootType");
-						_loots = getArray(_config >> "loottypes");
-						_positions = [];
-						{
-							_x params ["_posName","_class","_randomColor"];
-							if !((tolower _posName) in ["cabinetpos","toolrackpos"]) then {
-								_positions = _positions + getArray (_config >> _posName);
-							};
-						} forEach _loots;
-						if !(_positions isEqualTo []) then {
+						if !(_lootpositions isEqualTo []) then {
 							for "_i" from 1 to (_MinGroundContainers + (round (random (_MaxGroundContainers - _MinGroundContainers)))) do {
-								if ((count _positions) > 0) then {
-									_position = _positions deleteat (floor (random (count _positions)));
+								if ((count _lootpositions) > 0) then {
+									_position = _lootpositions deleteat (floor (random (count _lootpositions)));
 									_position params ["_m2WPos","_relDir"];
 									_pos = _building modelToWorld _m2WPos;
 									_pos vectoradd [0,0,0.1];
@@ -342,7 +363,8 @@ _lootBubble = {
 					_LootsArray pushback _buildingLoot;
 				};
 			};
-		} foreach _objects;	
+		} foreach _objects;
+//		systemchat format ["Spawned Loot in %1 Buildings", count _LootsArray];
 		if !(_LootsArray isEqualTo []) then {
 			[player,Epoch_personalToken,_LootsArray] remoteExec ["EPOCH_server_spawnLoot",2];
 		};
