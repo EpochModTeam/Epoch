@@ -26,7 +26,7 @@ forceRestartTime      = 14400; 			// 4 hour restarts
 		}, 
 		// { 1800, "PaydayEvent", 0, 2},
 		// { 1200, "MessageServer", 0, 2},
-		{ 30, "FastNights", 0 , 2, -1, {48,4} ,{"VR"}},			// TimeMulti Nighttime = 48 / TimeMulti Daytime = 4
+		{ 120, "FastNights", 0 , 2, -1, {48,4} ,{"VR"}},			// TimeMulti Nighttime = 48 / TimeMulti Daytime = 4
 		{ 1200, "HeliCrash", 0 , 2, -1, {} ,{"VR"}},
 		{ 2700, "AirDrop", 0 , 2, -1, {} ,{"VR"}},
 		{ 2400, "EarthQuake", 0 , 2, -1, {} ,{"VR"}},
