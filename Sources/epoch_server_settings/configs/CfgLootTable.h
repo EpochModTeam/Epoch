@@ -1782,64 +1782,77 @@ class CfgLootTable
 	class Backpacks_Low_Base
 	{
 		items[] = {
-				{ { "Assault_Pack_Epoch", "backpack" }, 1 },
-				{ { "Patrol_Pack_Epoch", "backpack" }, 1 },
-				{ { "CZ_VestPouch_Epoch", "backpack" }, 1 }
+				{ { "B_ViperLightHarness_blk_F", "backpack" }, 2 },		// 260
+				{ { "B_ViperLightHarness_ghex_F", "backpack" }, 2 },	// 260
+				{ { "B_ViperLightHarness_hex_F", "backpack" }, 2 },		// 260
+				{ { "B_ViperLightHarness_khk_F", "backpack" }, 2 },		// 260
+				{ { "B_ViperLightHarness_oli_F", "backpack" }, 2 },		// 260
+
+				{ { "Assault_Pack_Epoch", "backpack" }, 1 },			// 300
+				{ { "B_ViperHarness_blk_F", "backpack" }, 1 },			// 300
+				{ { "B_ViperHarness_ghex_F", "backpack" }, 1 },			// 300
+				{ { "B_ViperHarness_hex_F", "backpack" }, 1 },			// 300
+				{ { "B_ViperHarness_khk_F", "backpack" }, 1 },			// 300
+				{ { "B_ViperHarness_oli_F", "backpack" }, 1 },			// 300
+				{ { "Patrol_Pack_Epoch", "backpack" }, 1 },				// 300
+				{ { "TK_RPG_Backpack_Epoch", "backpack" }, 1 },			// 300
+
+				{ { "CZ_VestPouch_Epoch", "backpack" }, 3 }				// 340
 		};
 	};
 	class Backpacks_High_Base
 	{
 		items[] = {
-				{ { "B_AssaultPack_cbr", "backpack" }, 5 },
-				{ { "B_AssaultPack_dgtl", "backpack" }, 5 },
-				{ { "B_AssaultPack_khk", "backpack" }, 5 },
-				{ { "B_AssaultPack_mcamo", "backpack" }, 5 },
-				{ { "B_AssaultPack_ocamo", "backpack" }, 5 },
-				{ { "B_AssaultPack_rgr", "backpack" }, 5 },
-				{ { "B_AssaultPack_sgg", "backpack" }, 5 },
-				{ { "B_AssaultPack_blk", "backpack" }, 5 },
-				{ { "B_AssaultPack_tna_F", "backpack" }, 5 },
+				{ { "B_AssaultPack_cbr", "backpack" }, 5 },				// 360
+				{ { "B_AssaultPack_dgtl", "backpack" }, 5 },			// 360
+				{ { "B_AssaultPack_khk", "backpack" }, 5 },				// 360
+				{ { "B_AssaultPack_mcamo", "backpack" }, 5 },			// 360
+				{ { "B_AssaultPack_ocamo", "backpack" }, 5 },			// 360
+				{ { "B_AssaultPack_rgr", "backpack" }, 5 },				// 360
+				{ { "B_AssaultPack_sgg", "backpack" }, 5 },				// 360
+				{ { "B_AssaultPack_blk", "backpack" }, 5 },				// 360
+				{ { "B_AssaultPack_tna_F", "backpack" }, 5 },			// 360
 
-				{ { "B_FieldPack_blk", "backpack" }, 4 },
-				{ { "B_FieldPack_cbr", "backpack" }, 4 },
-				{ { "B_FieldPack_khk", "backpack" }, 4 },
-				{ { "B_FieldPack_ocamo", "backpack" }, 4 },
-				{ { "B_FieldPack_oli", "backpack" }, 4 },
-				{ { "B_FieldPack_oucamo", "backpack" }, 4 },
+				{ { "B_FieldPack_blk", "backpack" }, 4 },				// 400
+				{ { "B_FieldPack_cbr", "backpack" }, 4 },				// 400
+				{ { "B_FieldPack_khk", "backpack" }, 4 },				// 400
+				{ { "B_FieldPack_ocamo", "backpack" }, 4 },				// 400
+				{ { "B_FieldPack_oli", "backpack" }, 4 },				// 400
+				{ { "B_FieldPack_oucamo", "backpack" }, 4 },			// 400
+				{ { "civil_assault_pack_Epoch", "backpack" }, 4 },		// 400
 
-				{ { "B_Kitbag_cbr", "backpack" }, 2 },
-				{ { "B_Kitbag_mcamo", "backpack" }, 2 },
-				{ { "B_Kitbag_rgr", "backpack" }, 2 },
-				{ { "B_Kitbag_sgg", "backpack" }, 2 },
+				{ { "S_Gunbag_Epoch", "backpack" }, 4 },				// 420
 
-				{ { "B_Parachute", "backpack" }, 1 },
+				{ { "smallbackpack_red_epoch", "backpack" }, 4 },		// 460
+				{ { "smallbackpack_green_epoch", "backpack" }, 4 },		// 460
+				{ { "smallbackpack_teal_epoch", "backpack" }, 4 },		// 460
+				{ { "smallbackpack_pink_epoch", "backpack" }, 4 },		// 460
 
-				{ { "B_TacticalPack_blk", "backpack" }, 2 },
-				{ { "B_TacticalPack_mcamo", "backpack" }, 2 },
-				{ { "B_TacticalPack_ocamo", "backpack" }, 2 },
-				{ { "B_TacticalPack_oli", "backpack" }, 2 },
-				{ { "B_TacticalPack_rgr", "backpack" }, 2 },
+				{ { "B_TacticalPack_blk", "backpack" }, 2 },			// 480
+				{ { "B_TacticalPack_mcamo", "backpack" }, 2 },			// 480
+				{ { "B_TacticalPack_ocamo", "backpack" }, 2 },			// 480
+				{ { "B_TacticalPack_oli", "backpack" }, 2 },			// 480
+				{ { "B_TacticalPack_rgr", "backpack" }, 2 },			// 480
+				{ { "ALICE_Pack_Epoch", "backpack" }, 2 },				// 480
 
-				{ { "smallbackpack_red_epoch", "backpack" }, 4 },
-				{ { "smallbackpack_green_epoch", "backpack" }, 4 },
-				{ { "smallbackpack_teal_epoch", "backpack" }, 4 },
-				{ { "smallbackpack_pink_epoch", "backpack" }, 4 },
+				{ { "US_Backpack_Epoch", "backpack" }, 2 },				// 500
 
-				{ { "TK_RPG_Backpack_Epoch", "backpack" }, 4 },
-				{ { "civil_assault_pack_Epoch", "backpack" }, 3 },
-				{ { "S_Gunbag_Epoch", "backpack" }, 3 },
-				{ { "ALICE_Pack_Epoch", "backpack" }, 2 },
-				{ { "US_Backpack_Epoch", "backpack" }, 2 },
-				{ { "CZ_Backpack_Epoch", "backpack" }, 1 },
-				{ { "L_Gunbag_Epoch", "backpack" }, 1 },
+				{ { "B_Kitbag_cbr", "backpack" }, 2 },					// 520
+				{ { "B_Kitbag_mcamo", "backpack" }, 2 },				// 520
+				{ { "B_Kitbag_rgr", "backpack" }, 2 },					// 520
+				{ { "B_Kitbag_sgg", "backpack" }, 2 },					// 520
+				{ { "CZ_Backpack_Epoch", "backpack" }, 1 },				// 520
+
+				{ { "B_Carryall_cbr", "backpack" }, 1 },				// 550
+				{ { "B_Carryall_khk", "backpack" }, 1 },				// 550
+				{ { "B_Carryall_mcamo", "backpack" }, 1 },				// 550
+				{ { "B_Carryall_ocamo", "backpack" }, 1 },				// 550
+				{ { "B_Carryall_oli", "backpack" }, 1 },				// 550
+				{ { "B_Carryall_oucamo", "backpack" }, 1 },				// 550
 				
-
-				{ { "B_Carryall_cbr", "backpack" }, 1 },
-				{ { "B_Carryall_khk", "backpack" }, 1 },
-				{ { "B_Carryall_mcamo", "backpack" }, 1 },
-				{ { "B_Carryall_ocamo", "backpack" }, 1 },
-				{ { "B_Carryall_oli", "backpack" }, 1 },
-				{ { "B_Carryall_oucamo", "backpack" }, 1 }
+				{ { "L_Gunbag_Epoch", "backpack" }, 3 },				// 580
+				
+				{ { "B_Parachute", "backpack" }, 1 }
 		};
 	};
 	class Backpacks_UAV
