@@ -17,6 +17,7 @@ class CfgEpochClient
     epochVersion = "1.3.2";
     ArmAVersion = 176;
 	debug = "true";  // true = enable extra rpt debug lines, false to disable
+	ForceGender = "";	// Force Players to spawn as "Male" or "Female"
 
 	UseOldRevive = "false";		// Revive / Heal Player has been changed to use "HandleDamage" Eventhandler. If scripts are breaking it for you, set it to true (not recommended!)
 	UnconsciousChance = 30;			// Change in percent to get unconscious by a hit with an Axe / Sledge / Sword

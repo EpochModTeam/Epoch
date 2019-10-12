@@ -1295,7 +1295,12 @@ class FSM
                 {
                         name = "Open_Gender_Selection";
                         itemno = 78;
-                        init = /*%FSM<STATEINIT""">*/"createdialog ""SelectGender"";"/*%FSM</STATEINIT""">*/;
+                        init = /*%FSM<STATEINIT""">*/"_forcegender = [""CfgEpochClient"", ""ForceGender"", """"] call EPOCH_fnc_returnConfigEntryV2;" \n
+                         "switch (tolower _forcegender) do {" \n
+                         "	case ""male"": {EPOCH_PlayerIsMale = true;};" \n
+                         "	case ""female"": {EPOCH_PlayerIsMale = false;};" \n
+                         "	default {createdialog ""SelectGender""}" \n
+                         "};"/*%FSM</STATEINIT""">*/;
                         precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
                         class Links
                         {
