@@ -29,7 +29,7 @@ class CfgPainting {
 	{
 		UseArmaDefaultColors = "true";									// Use also all availabe default colours from Arma (for this Vehicle Class)
 		class Green
-		{3
+		{
 			ColorName = "Green";
 			iconcolor[] = {0,1,0,1};
 			textures[] = {
