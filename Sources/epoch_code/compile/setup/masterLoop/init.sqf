@@ -262,7 +262,7 @@ _lootBubble = {
 			if (count _LootedBuildings > 300) then {
 				_LootedBuildings deleteat 0;
 			};
-			_building setvariable ["Epoch_LastLootCheck",diag_ticktime];
+//			_building setvariable ["Epoch_LastLootCheck",diag_ticktime];
 			_selectedConfig = typeOf _building;
 			if (_selectedConfig isEqualTo "") then {
 				(getModelInfo _building) params [["_modelName",""]];
@@ -272,7 +272,7 @@ _lootBubble = {
 			};
 			_BuildingLootVars = missionnamespace getvariable [format ["Epoch_BuildingLootVars_%1",_selectedConfig],[]];
 			if (_BuildingLootVars isEqualTo []) then {
-				if (_foreachindex > 10) exitwith {		// Do not store more than 10 Building Types in one check
+				if (_foreachindex > 10) exitwith {		// Do not store / check more than 10 Building Types in one check
 					_BuildingLootVars = [false];
 				};
 				_config = _masterConfig >> _selectedConfig;

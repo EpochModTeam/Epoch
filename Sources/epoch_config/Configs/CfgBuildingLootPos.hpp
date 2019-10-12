@@ -30,7 +30,6 @@ class CfgBuildingLootPos
         shoeboxPos[] = {};
 		toiletPos[] = {};
 		kitchenSinkPos[] = {};
-        lootBias = 40;
 		lootTypes[] = {{"shelfPos","Shelf_EPOCH",false},{"fridgePos","Fridge_EPOCH",false},{"bedPos","Bed_EPOCH",false},{"couchPos","Couch_EPOCH",false},{"wardrobePos","wardrobe_epoch",false},{"cookerPos","cooker_epoch",false},{"chairPos",{"Chair_EPOCH","ChairRed_EPOCH"},false},{"filingPos","Filing_epoch",false},{"pelicanPos","Pelican_EPOCH",false},{"tablePos","Table_EPOCH",false},{"lockerPos","Locker_EPOCH",false},{"toolRackPos","ToolRack_EPOCH",false},{"shoeboxPos","Shoebox_EPOCH",false},{"palletPos","Tarp_EPOCH",false},{"freezerPos","Freezer_EPOCH",false},{"cabinetPos","Cabinet_EPOCH",false},{"toiletPos","toilet_epoch",false},{"kitchenSinkPos","KitchenSink_epoch",false}};
 
 		EpochLootChance = 15;		// 15% of this Building Types will hold default Epoch Loot
@@ -2929,7 +2928,6 @@ class CfgBuildingLootPos
     class ferrisWheel_EPOCH : Default
     {
 		lootType = "civ";
-        lootBias = 50;
         palletPos[] = {{{2,2,-10},322.16},{{-2,-2,-10},232.16}};
         shoeboxPos[] = {{{-3.33862,-0.988281,-10},312.382}};
         pelicanPos[] = {{{-0.840332,1.09473,-10},269.861}};
@@ -2938,7 +2936,6 @@ class CfgBuildingLootPos
     {
 		lootType = "mil";
         limit = 1;
-        lootBias = 50;
         shelfPos[] = {{{-1,-1,-10},178.014}};
         chairPos[] = {{{1,1,-10},152.678}};
         filingPos[] = {{{-1,0,-10},173.701}};
@@ -5792,7 +5789,6 @@ class CfgBuildingLootPos
 	};
 	class bunker_epoch : Default {
 		lootType = "civ";
-		lootBias = 75;
 	    shelfPos[] = {
 	        { {-6.09766,-2.83032,0.188561}, 269 }
 	    };
@@ -5830,7 +5826,6 @@ class CfgBuildingLootPos
 	class bunker_epoch_01 : Default
 	{
 		lootType = "civ";
-		lootBias = 75;
         bedPos[] =      {{{-5.6062,-4.66162,0.198561},0}};
         wardrobePos[] = {{{-4.96973,-1.5188,0.198561},0}};
         cookerPos[] =   {{{-2.53882,3.17383,0.198561},0.999984}};
@@ -5843,7 +5838,6 @@ class CfgBuildingLootPos
     class bunker_epoch_02 : Default
 	{
 		lootType = "civ";
-		lootBias = 75;
         filingPos[] =  {{{-4.68335,6.02905,0.198561}, 0 }};
         pelicanPos[] = {{{3.39038,4.75586,0.998561},106},{{3.44043,-5.27368,1.09856},187}};
         tablePos[] =   {{{-5.69214,-5.26318,0.198561},270}};
@@ -5852,14 +5846,12 @@ class CfgBuildingLootPos
     class bunker_epoch_03 : Default
     {
 		lootType = "civ";
-		lootBias = 75;
         palletPos[] =  {{{5.12939,-4.6543,0.198561},280},{{-5.00098,4.79419,0.198561},280},{{-4.95093,-4.89502,0.198561},280},{{4.92627,5.02051,0.198561},280}};
         freezerPos[] = {{{0.429932,-0.184326,0.198561},280}};
 	};
     class bunker_epoch_04 : Default
 	{
 		lootType = "civ";
-		lootBias = 75;
         shelfPos[] =    {{{5.03784,6.09985,0.198561},358}};
         couchPos[] =    {{{5.24194,-4.54272,0.198561},358}};
         toolRackPos[] = {{{-6.33521,-2.39136,0.198561},269}};
@@ -5868,13 +5860,11 @@ class CfgBuildingLootPos
     class bunker_epoch_05 : Default
 	{
 		lootType = "civ";
-		lootBias = 75;
         toolRackPos[] = {{{-6.34375,-4.08228,0.198561},269 },{{4.22607,6.44775,0.198561},358}};
     };
     class bunker_epoch_06 : Default
 	{
 		lootType = "civ";
-		lootBias = 75;
         bedPos[] =     {{{0.781494,-0.343262,0.398561},357}};
         couchPos[] =   {{{4.94385,-4.66699,0.398561},0.999985}};
         chairPos[] =   {{{5.50708,5.47949,0.198561},40}};
@@ -5884,7 +5874,6 @@ class CfgBuildingLootPos
     class bunker_epoch_07 : Default
 	{
 		lootType = "civ";
-		lootBias = 75;
         fridgePos[] =  {{{-5.98901,5.21826,0.198561},271}};
         couchPos[] =   {{{4.22314,4.99194,0.198561},271}};
         pelicanPos[] = {{{-1.77954,-0.48291,0.0985613},71}};
@@ -5894,7 +5883,6 @@ class CfgBuildingLootPos
     class bunker_epoch_08 : Default
 	{
 		lootType = "civ";
-		lootBias = 75;
         pelicanPos[] = {{{5.34814,-5.12524,0.0985613},157}};
         tablePos[] =   {{{5.72852,4.86255,0.0985613},90}};
         palletPos[] =  {{{-1.03052,-1.6283,0.0985613},90},{{-5.45703,5.45093,0.0985613},90}};
@@ -5902,7 +5890,6 @@ class CfgBuildingLootPos
     class bunker_epoch_09 : Default
 	{
 		lootType = "civ";
-		lootBias = 75;
         filingPos[] =   {{{-0.427002,-3.22974,0.198561},270}};
         lockerPos[] =   {{{3.94238,3.28931,0.198561},0}};
         toolRackPos[] = {{{-4.68579,2.68604,0.198561},90}};
@@ -5911,7 +5898,6 @@ class CfgBuildingLootPos
     class bunker_epoch_10 : Default
     {
 		lootType = "civ";
-		lootBias = 75;
         filingPos[] =  {{{5.95313,-5.95898,0.198561},93}};
         pelicanPos[] = {{{1.65479,0.0246582,0.198561},93}};
         shoeboxPos[] = {{{-3.18604,-5.94482,0.198561},360}};
@@ -5921,13 +5907,11 @@ class CfgBuildingLootPos
     class bunker_epoch_11 : Default
 	{
 		lootType = "civ";
-		lootBias = 75;
         palletPos[] = {{{-0.422363,-0.419922,0.198561},90},{{1.23438,-3.04443,0.198561},90},{{2.97192,1.48828,0.198561},90},{{-1.42578,3.52393,0.198561},90},{{-4.94702,-1.37012,0.198561},90}};
     };
     class bunker_epoch_12 : Default
 	{
 		lootType = "civ";
-		lootBias = 75;
         cookerPos[] = {{{-0.17749,3.62891,0.198561},0}};
         chairPos[] =  {{{-2.82349,3.24341,0.198561},319}};
         tablePos[] =  {{{-3.12524,-0.625488,0.198561},270}};
@@ -5937,7 +5921,6 @@ class CfgBuildingLootPos
     class bunker_epoch_13 : Default
 	{
 		lootType = "civ";
-		lootBias = 75;
         wardrobePos[] = {{{-5.40405,3.79126,0.0153623},180}};
         cookerPos[] =   {{{3.54663,4.09839,0.215362},180}};
         chairPos[] =    {{{0.483887,-1.7981,0.215362},276}};
@@ -5947,7 +5930,6 @@ class CfgBuildingLootPos
     class bunker_epoch_14 : Default
 	{
 		lootType = "civ";
-		lootBias = 75;
         fridgePos[] = {{{3.50195,-3.10852,0.232163},93}};
         cookerPos[] = {{{5.59717,5.83398,0.232163},359}};
         filingPos[] = {{{-5.47656,2.58411,0.232163},359}};
@@ -5956,7 +5938,6 @@ class CfgBuildingLootPos
     class bunker_epoch_15 : Default
 	{
 		lootType = "civ";
-		lootBias = 75;
         fridgePos[] = {{{5.34229,-1.59033,0.198561},180}};
         chairPos[] = {{{2.95605,2.72632,0.198561},313}};
         filingPos[] = {{{-4.2688,3.32031,0.198561},313}};
