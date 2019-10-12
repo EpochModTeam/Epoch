@@ -8,7 +8,7 @@ All changes for [Arma 3](https://arma3.com/) [Epoch Mod](https://epochmod.com) a
    - Unconscious players can be woken up
       - by a MultiGun with Heal Player attachment
       - after a random timer (60-180 seconds)
-- Paint Garages (with map markers) around the map for painting Vehicles
+- Paint Garages (with optional map markers) around the map for painting Vehicles
    - Park your Vehicle in / on the Garage and hold Space (DynaMenu) on the Terminal
    - Costs: 500 Krypto (Configurable by Admins)
    - https://plays.tv/video/5d5d721191c8f06d14
@@ -26,6 +26,7 @@ All changes for [Arma 3](https://arma3.com/) [Epoch Mod](https://epochmod.com) a
 - UAV Backpacks - Assemble and then use via DynaMenu (SpaceMenu)
 - Animated Heli Crash (with scattered loot)
    - https://plays.tv/video/5d8a717407926fbfc2
+- Some Chinese translations (thx to @CHL198011)
 
 ### Fixed
 - Players could instant get killed on contact with new placed BaseBuilding Parts
@@ -54,6 +55,8 @@ All changes for [Arma 3](https://arma3.com/) [Epoch Mod](https://epochmod.com) a
 - Reworked Looting function (Epoch furnitures + additional ground Loot)
 
 ### Server Owners
+- Added an option to force the Gender for Players on Spawn / Respawn with "ForceGender" in cfgEpochClient.hpp
+- Added the FastNights Epoch Event by default to epochconfig.hpp
 - Added Compatibility to Lythium and Livonia Map
 - Added a MultiMap compatibility
    - Make it possible to run also not official supported maps
