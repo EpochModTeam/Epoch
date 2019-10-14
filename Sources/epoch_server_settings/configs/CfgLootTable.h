@@ -253,52 +253,52 @@ class CfgLootTable
 	class HeadgearArmored
 	{
 		items[] = {
-				{ { "H_1_EPOCH", "item" }, 1 },
-				{ { "H_2_EPOCH", "item" }, 1 },
-				{ { "H_3_EPOCH", "item" }, 1 },
-				{ { "H_4_EPOCH", "item" }, 1 },
-				{ { "H_5_EPOCH", "item" }, 1 },
-				{ { "H_6_EPOCH", "item" }, 1 },
-				{ { "H_7_EPOCH", "item" }, 1 },
-				{ { "H_8_EPOCH", "item" }, 1 },
-				{ { "H_9_EPOCH", "item" }, 1 },
-				{ { "H_10_EPOCH", "item" }, 1 },
-				{ { "H_12_EPOCH", "item" }, 1 },
-				{ { "H_13_EPOCH", "item" }, 1 },
-				{ { "H_14_EPOCH", "item" }, 1 },
-				{ { "H_15_EPOCH", "item" }, 1 },
-				{ { "H_16_EPOCH", "item" }, 1 },
-				{ { "H_17_EPOCH", "item" }, 1 },
-				{ { "H_18_EPOCH", "item" }, 1 },
-				{ { "H_19_EPOCH", "item" }, 1 },
-				{ { "H_20_EPOCH", "item" }, 1 },
-				{ { "H_21_EPOCH", "item" }, 1 },
-				{ { "H_22_EPOCH", "item" }, 1 },
-				{ { "H_23_EPOCH", "item" }, 1 },
-				{ { "H_24_EPOCH", "item" }, 1 },
-				{ { "H_25_EPOCH", "item" }, 1 },
-				{ { "H_26_EPOCH", "item" }, 1 },
-				{ { "H_27_EPOCH", "item" }, 1 },
-				{ { "H_29_EPOCH", "item" }, 1 },
-				{ { "H_30_EPOCH", "item" }, 1 },
-				{ { "H_31_EPOCH", "item" }, 1 },
-				{ { "H_32_EPOCH", "item" }, 1 },
-				{ { "H_33_EPOCH", "item" }, 1 },
-				{ { "H_35_EPOCH", "item" }, 1 },
-				{ { "H_36_EPOCH", "item" }, 1 },
-				{ { "H_37_EPOCH", "item" }, 1 },
-				{ { "H_38_EPOCH", "item" }, 1 },
-				{ { "H_93_EPOCH", "item" }, 1 },
-				{ { "H_94_EPOCH", "item" }, 1 },
-				{ { "H_95_EPOCH", "item" }, 1 },
-				{ { "H_96_EPOCH", "item" }, 1 },
-				{ { "H_97_EPOCH", "item" }, 1 },
-				{ { "H_98_EPOCH", "item" }, 1 },
-				{ { "H_99_EPOCH", "item" }, 1 },
-				{ { "H_100_EPOCH", "item" }, 1 },
-				{ { "H_101_EPOCH", "item" }, 1 },
-				{ { "H_102_EPOCH", "item" }, 1 },
-				{ { "H_103_EPOCH", "item" }, 1 }
+				{ { "H_1_EPOCH", "item" }, 2 },
+				{ { "H_2_EPOCH", "item" }, 2 },
+				{ { "H_3_EPOCH", "item" }, 2 },
+				{ { "H_4_EPOCH", "item" }, 2 },
+				{ { "H_5_EPOCH", "item" }, 2 },
+				{ { "H_6_EPOCH", "item" }, 2 },
+				{ { "H_7_EPOCH", "item" }, 2 },
+				{ { "H_8_EPOCH", "item" }, 2 },
+				{ { "H_9_EPOCH", "item" }, 2 },
+				{ { "H_10_EPOCH", "item" }, 2 },
+				{ { "H_12_EPOCH", "item" }, 2 },
+				{ { "H_13_EPOCH", "item" }, 2 },
+				{ { "H_14_EPOCH", "item" }, 2 },
+				{ { "H_15_EPOCH", "item" }, 2 },
+				{ { "H_16_EPOCH", "item" }, 2 },
+				{ { "H_17_EPOCH", "item" }, 2 },
+				{ { "H_18_EPOCH", "item" }, 2 },
+				{ { "H_19_EPOCH", "item" }, 2 },
+				{ { "H_20_EPOCH", "item" }, 2 },
+				{ { "H_21_EPOCH", "item" }, 2 },
+				{ { "H_22_EPOCH", "item" }, 2 },
+				{ { "H_23_EPOCH", "item" }, 2 },
+				{ { "H_24_EPOCH", "item" }, 2 },
+				{ { "H_25_EPOCH", "item" }, 2 },
+				{ { "H_26_EPOCH", "item" }, 2 },
+				{ { "H_27_EPOCH", "item" }, 2 },
+				{ { "H_29_EPOCH", "item" }, 2 },
+				{ { "H_30_EPOCH", "item" }, 2 },
+				{ { "H_31_EPOCH", "item" }, 2 },
+				{ { "H_32_EPOCH", "item" }, 2 },
+				{ { "H_33_EPOCH", "item" }, 2 },
+				{ { "H_35_EPOCH", "item" }, 2 },
+				{ { "H_36_EPOCH", "item" }, 2 },
+				{ { "H_37_EPOCH", "item" }, 2 },
+				{ { "H_38_EPOCH", "item" }, 2 },
+				{ { "H_93_EPOCH", "item" }, 1 },		// Race Hemlet
+				{ { "H_94_EPOCH", "item" }, 1 },		// Race Hemlet
+				{ { "H_95_EPOCH", "item" }, 1 },		// Race Hemlet
+				{ { "H_96_EPOCH", "item" }, 1 },		// Race Hemlet
+				{ { "H_97_EPOCH", "item" }, 1 },		// Race Hemlet
+				{ { "H_98_EPOCH", "item" }, 1 },		// Race Hemlet
+				{ { "H_99_EPOCH", "item" }, 1 },		// Race Hemlet
+				{ { "H_100_EPOCH", "item" }, 1 },		// Race Hemlet
+				{ { "H_101_EPOCH", "item" }, 1 },		// Race Hemlet
+				{ { "H_102_EPOCH", "item" }, 1 },		// Race Hemlet
+				{ { "H_103_EPOCH", "item" }, 1 }		// Race Hemlet
 		};
 	};
 	class Primitive
@@ -510,7 +510,7 @@ class CfgLootTable
 				{ { "ItemWaterPurificationTablets", "magazine" }, 5 },
 				{ { "HeatPack", "magazine" }, 1 },
 				{ { "ColdPack", "magazine" }, 1 },
-				{ { "Towelette", "magazine" }, 5 }
+				{ { "Towelette", "magazine" }, 8 }
 		};
 	};
 	class PaintCans
@@ -1350,12 +1350,12 @@ class CfgLootTable
 	class Machinegun_Vanilla
 	{
 		items[] = {
-				{ { "LMG_Zafir_F", "weapon" }, 1 },
+				{ { "LMG_Zafir_F", "weapon" }, 2 },
 
-				{ { "arifle_MX_SW_F", "weapon" }, 2 },
-				{ { "arifle_MX_SW_Black_F", "weapon" }, 1 },
+				{ { "arifle_MX_SW_F", "weapon" }, 4 },
+				{ { "arifle_MX_SW_Black_F", "weapon" }, 2 },
 
-				{ { "LMG_Mk200_F", "weapon" }, 3 },
+				{ { "LMG_Mk200_F", "weapon" }, 6 },
 
 				{ { "m249_EPOCH", "weapon" }, 1 },
 				{ { "m249Tan_EPOCH", "weapon" }, 1 }

@@ -105,10 +105,10 @@ class CfgMainTable
 				{ "Uniforms_Female_Mil", 1 },
 				{ "Vests_Low", 5 },
 				{ "Vests_High", 1 },
-				{ "BackPacks_Low", 5 },
-				{ "BackPacks_High", 1 },
-				{ "HeadgearNoArmor", 10 },
-				{ "HeadgearArmored", 1 },
+				{ "BackPacks_Low", 6 },
+				{ "BackPacks_High", 2 },
+				{ "HeadgearNoArmor", 8 },
+				{ "HeadgearArmored", 2 },
 				{ "Primitive", 20 },
 				{ "BuildingItems", 10 },
 				{ "BuildingKits", 1 },
@@ -157,8 +157,8 @@ class CfgMainTable
 				{ "Uniforms_Female_Mil", 3 },
 				{ "Vests_Low", 1 },
 				{ "Vests_High", 5 },
-				{ "BackPacks_Low", 1 },
-				{ "BackPacks_High", 5 },
+				{ "BackPacks_Low", 2 },
+				{ "BackPacks_High", 6 },
 				{ "HeadgearNoArmor", 1 },
 				{ "HeadgearArmored", 8 },
 				{ "Primitive", 10 },
@@ -766,12 +766,12 @@ class CfgMainTable
 		LootMax = 3;
 		tables[] = {
 				{ "Pistols", 10 },
-				{ "Scopes", 10 },
-				{ "Muzzles", 10 },
+				{ "Scopes", 8 },
+				{ "Muzzles", 8 },
 				{ "Machinegun", 10 },
 				{ "Rifle", 21 },
 				{ "SniperRifle", 15 },
-				{ "ThrowExplosive", 13 },
+				{ "ThrowExplosive", 8 },
 				{ "HighExplosives", 13 }
 		};
 	};
