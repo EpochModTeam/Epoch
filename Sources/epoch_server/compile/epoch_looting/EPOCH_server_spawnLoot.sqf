@@ -38,7 +38,6 @@ _masterConfig = getmissionconfig "CfgBuildingLootPos";
 							_item setvariable ["Epoch_ParentBuilding",_building];
 							_buildingLoot pushback _item;
 							_item setDir _dir;
-							_item setowner (owner _player);			// switch owner for better simulations on looting
 							_privateDir pushback [_item,_dir];
 							if (surfaceIsWater _pos) then {
 								_item setPosASL _pos;
@@ -76,5 +75,8 @@ _masterConfig = getmissionconfig "CfgBuildingLootPos";
 	};
 } foreach _LootsArray;
 if !(_privateDir isEqualTo []) then {
+	{
+		(_x select 0) setowner (owner _player);			// switch owner for better simulations on looting
+	} foreach _privateDir;
 	_privateDir remoteexec ['Epoch_fnc_SetFinalDir',_player]; 
 };
