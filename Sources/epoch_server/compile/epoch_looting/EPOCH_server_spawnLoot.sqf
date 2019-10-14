@@ -14,13 +14,13 @@
 */
 
 private [	"_masterConfig","_building","_buildingLoot","_selectedConfig","_config","_EpochLootChance","_cfgBaseBuilding","_loots","_lootLimit","_possibleLoots","_posName","_positions","_possibleCount","_randomIndex","_selectedLoot",
-			"_pos","_dir","_item","_color","_GroundSpawnChance","_MinGroundContainers","_MaxGroundContainers","_lootType"
+			"_pos","_dir","_item","_color","_GroundSpawnChance","_MinGroundContainers","_MaxGroundContainers","_lootType","_privateDir"
 ];
 
 params [["_player",objNull,[objNull]],["_token","",[""]],["_LootsArray",[]]];
 
 if !([_player, _token] call EPOCH_server_getPToken) exitWith{};
-
+_privateDir = [];
 _masterConfig = getmissionconfig "CfgBuildingLootPos";
 {
 	_x params [["_Building",objnull],["_LootType",""],["_buildingLootArray",[]]];
@@ -38,6 +38,8 @@ _masterConfig = getmissionconfig "CfgBuildingLootPos";
 							_item setvariable ["Epoch_ParentBuilding",_building];
 							_buildingLoot pushback _item;
 							_item setDir _dir;
+							_item setowner (owner _player);			// switch owner for better simulations on looting
+							_privateDir pushback [_item,_dir];
 							if (surfaceIsWater _pos) then {
 								_item setPosASL _pos;
 							} 
@@ -73,3 +75,6 @@ _masterConfig = getmissionconfig "CfgBuildingLootPos";
 		};
 	};
 } foreach _LootsArray;
+if !(_privateDir isEqualTo []) then {
+	_privateDir remoteexec ['Epoch_fnc_SetFinalDir',_player]; 
+};

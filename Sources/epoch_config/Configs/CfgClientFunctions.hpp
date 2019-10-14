@@ -175,6 +175,7 @@ class CfgClientFunctions
 			class fnc_createLocalMarkerSet {};
 			class fnc_deleteLocalMarkerSet {};
 			class fnc_AnimateScheduled {};
+			class fnc_SetFinalDir {};
 		};
 		class environment
 		{
