@@ -136,9 +136,8 @@ EPOCH_TopStats = [];
 						_name = "Unknown";
 						_array = (['PlayerData', _UID] call EPOCH_fnc_server_hiveGETRANGE) param [1,[]];
 						if !(_array isequalto []) then {
-							_name = _array select 0;
+							_newstats2 pushback [_value,_UID,_array select 0];
 						};
-						_newstats2 pushback [_value,_UID,_name];
 					};
 				} foreach (_TopStatsDb select _foreachindex);
 				EPOCH_TopStats pushback _newstats2;
