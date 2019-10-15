@@ -349,7 +349,7 @@ _lootBubble = {
 									_position = _lootpositions deleteat (floor (random (count _lootpositions)));
 									_position params ["_m2WPos","_relDir"];
 									_pos = _building modelToWorld _m2WPos;
-									_pos vectoradd [0,0,0.1];
+									_pos = _pos vectoradd [0,0,0.02];
 									if (_pos select 2 < 0) then {
 										_pos set[2, 0];
 									};

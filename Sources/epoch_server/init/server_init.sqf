@@ -171,6 +171,7 @@ for "_i" from 0 to 9 do {
 };
 
 UseCustomTextures = ([_serverSettingsConfig, "UseCustomTextures", false] call EPOCH_fnc_returnConfigEntry);
+Epoch_UseLootHelper = ([_serverSettingsConfig, "UseLootHelper", false] call EPOCH_fnc_returnConfigEntry);
 
 //Execute Server Functions
 diag_log "Epoch: Loading buildings";

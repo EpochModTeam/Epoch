@@ -14,12 +14,13 @@
 */
 
 private [	"_masterConfig","_building","_buildingLoot","_selectedConfig","_config","_EpochLootChance","_cfgBaseBuilding","_loots","_lootLimit","_possibleLoots","_posName","_positions","_possibleCount","_randomIndex","_selectedLoot",
-			"_pos","_dir","_item","_color","_GroundSpawnChance","_MinGroundContainers","_MaxGroundContainers","_lootType","_privateDir"
+			"_pos","_dir","_item","_color","_GroundSpawnChance","_MinGroundContainers","_MaxGroundContainers","_lootType","_privateDir","_GroundClass"
 ];
 
 params [["_player",objNull,[objNull]],["_token","",[""]],["_LootsArray",[]]];
 
 if !([_player, _token] call EPOCH_server_getPToken) exitWith{};
+_GroundClass = if (Epoch_UseLootHelper) then {"Epoch_LootHolder_Sphere"} else {"Epoch_LootHolder"};
 _privateDir = [];
 _masterConfig = getmissionconfig "CfgBuildingLootPos";
 {
@@ -54,7 +55,7 @@ _masterConfig = getmissionconfig "CfgBuildingLootPos";
 				case "GroundLoot": {
 					{
 						_x params ["_lootType","_pos"];
-						_item = createVehicle ["Epoch_LootHolder", _pos, [], 0, "CAN_COLLIDE"];
+						_item = createVehicle [_GroundClass, _pos, [], 0, "CAN_COLLIDE"];
 						_buildingLoot pushback _item;
 						if (surfaceIsWater _pos) then {
 							_item setPosASL _pos;
