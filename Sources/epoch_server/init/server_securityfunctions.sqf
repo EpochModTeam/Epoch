@@ -2150,6 +2150,7 @@ _skn_admincode = compileFinal ("
 	waitUntil {
 		if (diag_tickTime-_time>1) exitWith {true};
 		if ((ctrlPosition _map) isEqualTo [0.709388 * safezoneW + safezoneX,0.28836 * safezoneH + safezoneY,-0.00312413 * safezoneW,0.486548 * safezoneH]) exitWith {_map ctrlShow false;true};
+		false
 	};
 };
 "+_skn_hackerLog+" = {
