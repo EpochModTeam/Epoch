@@ -97,17 +97,21 @@ All changes for [Arma 3](https://arma3.com/) [Epoch Mod](https://epochmod.com) a
       - tranq_dart_mag -> Knockout
 - If you run Infistar lower then v260 (not published for now), you have to change this inside your Infistar files!
 	- A3AH:
-		- Search for: "_addCaseHDMG = 0;"
-		- add a new line behind it with: "_addCaseHDMG = player addEventHandler ['HandleDamage',(['CfgEpochClient', 'HandleDamage', ''] call EPOCH_fnc_returnConfigEntryV2)];"
+		- 1
+			- Search for: "_addCaseHDMG = 0;"
+			- add a new line behind it with: "_addCaseHDMG = player addEventHandler ['HandleDamage',(['CfgEpochClient', 'HandleDamage', ''] call EPOCH_fnc_returnConfigEntryV2)];"
+		
+		- 2.
+			- Search for: "if(_addCaseHDMG == _roundRandomNumberHDMG)then"
+			- change it to: "if(_addCaseHDMG == (_roundRandomNumberHDMG+1))then"
 
-		- Search for: "if(_addCaseHDMG == _roundRandomNumberHDMG)then"
-		- change it to: "if(_addCaseHDMG == (_roundRandomNumberHDMG+1))then"
-
-		- Search for: "player addEventHandler ['HandleDamage',''];"
-		- change it to: "player addEventHandler ['HandleDamage',(['CfgEpochClient', 'HandleDamage', ''] call EPOCH_fnc_returnConfigEntryV2)];"
+		- 3.
+			- Search for: "player addEventHandler ['HandleDamage',''];"
+			- change it to: "player addEventHandler ['HandleDamage',(['CfgEpochClient', 'HandleDamage', ''] call EPOCH_fnc_returnConfigEntryV2)];"
 	- A3AT:
-		- Search for: "player addEventHandler ['HandleDamage',{}];"
-		- replace it with: "if (infiSTAR_MOD == 'Epoch') then {player addEventHandler ['HandleDamage',(['CfgEpochClient', 'HandleDamage', ''] call EPOCH_fnc_returnConfigEntryV2)];}else {player addEventHandler ['HandleDamage',{}];};"
+		- 1.
+			- Search for: "player addEventHandler ['HandleDamage',{}];"
+			- replace it with: "if (infiSTAR_MOD == 'Epoch') then {player addEventHandler ['HandleDamage',(['CfgEpochClient', 'HandleDamage', ''] call EPOCH_fnc_returnConfigEntryV2)];}else {player addEventHandler ['HandleDamage',{}];};"
 
 ## [1.3.1.0] - 2019-03-28
 ### Added
