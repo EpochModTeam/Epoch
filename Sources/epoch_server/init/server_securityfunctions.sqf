@@ -497,8 +497,8 @@ for "_i" from 1 to 3 do {
 	if ("SPAWNLOOT" in _case) then {
 		_temp = _temp + ",['  Loot Buildings (25m)', 25, "+_skn_spawnLoot+", '0', []]";
 	};
-	_temp = _temp + ",['  Disconnect yourself', [], { (findDisplay 46) closeDisplay 0 }, '0', []]";
-	_temp = _temp + ",['  Switch Day / Night', [], "+_skn_daynight+", '0', []]";
+	_temp = _temp + ",['  Skip +6 hours', [], "+_skn_daynight+", '0', []]";
+	_temp = _temp + ",['  Disconnect yourself', [], { (findDisplay 46) closeDisplay 0 }, '0', [0.859,0.094,0.094,1]]";
 	if ("BANPANNEL" in _case) then {
 		_temp = _temp + ",['Ban Menu',[],'','1',[]]
 			,['  BattlEye Ban - Custom Ban Reason',[],"+_skn_customBanreason+",'4',[]]
@@ -2259,7 +2259,7 @@ _skn_admincode = compileFinal ("
 	};
 };
 "+_skn_daynight+" = {
-	[111,12] call "+_skn_adminRequest_PVC+";
+	[111,6] call "+_skn_adminRequest_PVC+";
 };
 "+_skn_customBanreason+" = {
 	disableSerialization;
