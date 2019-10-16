@@ -270,12 +270,14 @@ if (_staticDateTime isEqualto []) then {
 };
 if (_dateChanged) then {
     setDate _date;
+/*
     //add 1 min to be 100% correct
     _date set [4, (_date select 4) + 1];
     _date spawn {
         uiSleep 60;
         setDate _this;
     };
+*/
 };
 
 _config = 'CfgServicePoint' call EPOCH_returnConfig;
