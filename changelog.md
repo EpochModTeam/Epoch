@@ -30,7 +30,6 @@ All changes for [Arma 3](https://arma3.com/) [Epoch Mod](https://epochmod.com) a
 
 ### Fixed
 - Players could instant get killed on contact with new placed BaseBuilding Parts
-   - Unfortunately this will bring back some delayed accurate position on swap building
 - Players Glasses (Goggles) were not correctly added on login / revive
 - Some Building Parts where falling down on build (also when snapped correctly)
 - Texture for Solar Generator / Charger was broken
