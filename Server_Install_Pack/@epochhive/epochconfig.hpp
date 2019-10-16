@@ -213,6 +213,7 @@ forceRestartTime      = 14400; 			// 4 hour restarts
 	expiresVehicle = "604800";  		// expiration date in seconds for vehicles
 	expiresAIdata = "604800";  			// expiration date in seconds for NPC Trader inventory
 	expiresCommunityStats = "7776000";	// expiration date in seconds for players community stats
+	expiresPlayerTopStats = "604800";	// expiration date in seconds for players listed in TopStats - remove inactive players from TopStats, but will get in again on next login
 
 // Admin Features
 	hiveAdminCmdExec = "false";			// true = enables extra (To Be Released) feature to allow execution of code via hive.

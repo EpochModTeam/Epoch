@@ -56,6 +56,7 @@ private _configArray = [
     ["expiresVehicle", "604800"],
     ["expiresAIdata", "604800"],
     ["expiresCommunityStats", "7776000"],
+    ["expiresPlayerTopStats", "604800"],
     ["hiveAdminCmdExec", false],
     ["hiveAdminSavePlayerList", true],
     ["hiveAdminCmdTime", 5],
@@ -123,6 +124,8 @@ _TopStatsVarsDb = (['CommunityStats', '0_TopStatsVars'] call EPOCH_fnc_server_hi
 _TopStatsDb = (['CommunityStats', '0_TopStats'] call EPOCH_fnc_server_hiveGETRANGE) param [1,[]];
 EPOCH_TopStatsVars = (["CfgEpochClient", "TopStatsDialogEntries", []] call EPOCH_fnc_returnConfigEntryV2) apply {_x param [0,""]};
 EPOCH_TopStats = [];
+_EPOCH_expiresCommunityStats = call compile EPOCH_expiresCommunityStats;
+_EPOCH_expiresPlayerTopStats = call compile EPOCH_expiresPlayerTopStats;
 {
 	_added1 = false;
 	if (count _TopStatsVarsDb >= _foreachindex) then {
@@ -131,12 +134,10 @@ EPOCH_TopStats = [];
 				_newstats2 = [];
 				{
 					_x params ["_value","_UID","_name"];
-					_communityStats = ((["CommunityStats", _UID] call EPOCH_fnc_server_hiveGETRANGE) param [1,[]]) param [0,[]];
+					(['CommunityStats', _UID] call EPOCH_fnc_server_hiveGETTTL) params ["","_communityStats","_ttl"];
 					if !(_communityStats isequalto []) then {
-						_name = "Unknown";
-						_array = (['PlayerData', _UID] call EPOCH_fnc_server_hiveGETRANGE) param [1,[]];
-						if !(_array isequalto []) then {
-							_newstats2 pushback [_value,_UID,_array select 0];
+						if (_ttl > ((_EPOCH_expiresCommunityStats - _EPOCH_expiresPlayerTopStats) max 0)) then {
+							_newstats2 pushback [_value,_UID,_name];
 						};
 					};
 				} foreach (_TopStatsDb select _foreachindex);
