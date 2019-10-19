@@ -65,7 +65,9 @@ if (_playerObj != _killer) then {
 	if(_playerIsHero)then{_playerKarmaAdj = abs((-_playerKarma) * 0.025)};
 	_deathType = 0;
 	if!(_killerUID isEqualTo "")then{
-		[_killer, "Murders", 1, true] call EPOCH_server_updatePlayerStats;
+		if !((group _playerObj) isEqualTo (group _killer)) then {
+			[_killer, "Murders", 1, true] call EPOCH_server_updatePlayerStats;
+		};
 		
 		// find killer's Karma status
 		_killerCStats = _killer getVariable["COMMUNITY_STATS", EPOCH_defaultStatVars];

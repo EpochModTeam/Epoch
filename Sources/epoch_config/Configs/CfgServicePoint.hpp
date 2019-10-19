@@ -45,18 +45,55 @@ class CfgServicePoint {
 							};
 	};
 	class Tanoa {
-		ServicePoints[] =	{	// Array of coords for ServicePoints
-/*
-								{2157.79,3477.65,0},
-								{11731.5,3125.95,0},
-								{7008.93,7582.59,0},
-								{2326.28,13167.9,0},
-								{11805.8,13100.6,0},
-
-								{5525.8,10345.2,0},
-								{11916,2383.88,0},
-								{13562.4,12139.5,0}
-*/								
+		ServicePoints[] =	{
+								{
+									{2157.79,3477.65,0},					// Pos
+									40,										// max distance
+									{"Landvehicle","Ship","AIR","Tank"},	// Vehicle Types for SP
+									"Service Point"							// Marker Text
+								},
+								{
+									{11731.5,3125.95,0},					// Pos
+									40,										// max distance
+									{"Landvehicle","Ship","AIR","Tank"},	// Vehicle Types for SP
+									"Service Point"							// Marker Text
+								},
+								{
+									{7008.93,7582.59,0},					// Pos
+									40,										// max distance
+									{"Landvehicle","Ship","AIR","Tank"},	// Vehicle Types for SP
+									"Service Point"							// Marker Text
+								},
+								{
+									{2326.28,13167.9,0},					// Pos
+									40,										// max distance
+									{"Landvehicle","Ship","AIR","Tank"},	// Vehicle Types for SP
+									"Service Point"							// Marker Text
+								},
+								{
+									{11805.8,13100.6,0},					// Pos
+									40,										// max distance
+									{"Landvehicle","Ship","AIR","Tank"},	// Vehicle Types for SP
+									"Service Point"							// Marker Text
+								},
+								{
+									{5525.8,10345.2,0},						// Pos
+									40,										// max distance
+									{"Landvehicle","Ship","AIR","Tank"},	// Vehicle Types for SP
+									"Service Point"							// Marker Text
+								},
+								{
+									{11916,2383.88,0},						// Pos
+									40,										// max distance
+									{"Landvehicle","Ship","AIR","Tank"},	// Vehicle Types for SP
+									"Service Point"							// Marker Text
+								},
+								{
+									{13562.4,12139.5,0},						// Pos
+									40,										// max distance
+									{"Landvehicle","Ship","AIR","Tank"},	// Vehicle Types for SP
+									"Service Point"							// Marker Text
+								}
 							};
 	};
 	class Chernarus {	// Array of coords for ServicePoints
@@ -147,6 +184,41 @@ class CfgServicePoint {
 				{"200Rnd_762x51_Belt",{0},3,200}
 			};
 		};
+		class I_LT_01_cannon_F {
+			MagsTurrets[] = {
+				{"SmokeLauncherMag",{0},2,50},
+				{"200Rnd_762x51_Belt_Yellow",{0},1,300}
+			};
+		};
+		class I_LT_01_scout_F {
+			MagsTurrets[] = {
+				{"SmokeLauncherMag",{0},2,50}
+			};
+		};
+		class I_C_Offroad_02_LMG_F {
+			MagsTurrets[] = {
+				{"200Rnd_556x45_Box_Tracer_F",{0},3,250}
+			};
+		};
+		class I_MRAP_03_hmg_F {
+			MagsTurrets[] = {
+				{"500Rnd_127x99_mag_Tracer_Red",{0},3,1500},
+				{"200Rnd_127x99_mag_Tracer_Red",{0},3,600},
+				{"SmokeLauncherMag",{1},2,50}
+			};
+		};
+		class O_MRAP_02_EPOCH1 {
+			MagsTurrets[] = {
+				{"SmokeLauncherMag",{-1},2,50}
+			};
+		};
+		class B_Heli_Transport_01_F {
+			MagsTurrets[] = {
+				{"168Rnd_CMFlare_Chaff_Magazine",{-1},1,150},
+				{"2000Rnd_65x39_Belt_Tracer_Red",{1},1,800,1250},
+				{"2000Rnd_65x39_Belt_Tracer_Red",{2},1,800,1250}
+			};
+		};
 		class B_G_Offroad_01_armed_F {
 			MagsTurrets[] = {
 				{"100Rnd_127x99_mag_Tracer_Yellow",{0},4,200}
@@ -192,7 +264,7 @@ class CfgServicePoint {
 		};
 		class B_Heli_Light_01_armed_F {
 			MagsTurrets[] = {
-				{"5000Rnd_762x51_Belt",{-1},1,1600}
+				{"5000Rnd_762x51_Belt",{-1},1,1600,2000}
 			};
 		};
 		class B_Heli_Light_01_armed_EPOCH {

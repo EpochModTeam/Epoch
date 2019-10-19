@@ -73,6 +73,14 @@ if ((count _position) == 2) then{
 			_plantCount = (floor(random(3)))+5;
 			_scatter = 20;
 		};
+		case "HempPlant_EPOCH": {
+			_plantCount = (floor(random(2)))+1;
+			_scatter = 20;
+		};
+		case "SunflowerPlant_EPOCH": {
+			_plantCount = (floor(random(2)))+1;
+			_scatter = 20;
+		};
 	};
 
 	_plants = [];

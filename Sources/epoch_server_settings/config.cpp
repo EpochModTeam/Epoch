@@ -126,7 +126,7 @@ class CfgEpoch
 		plantDecayTime = 1200; //Half this time results in decayMarkerColor marker
 		plantDecayMarkerColor = "ColorBrown";
 		plantCompromisedColor = "ColorRed";
-		availablePlants[] = {"Goldenseal_EPOCH", "Goldenseal_EPOCH", "Goldenseal_EPOCH", "Poppy_EPOCH", "Pumpkin_EPOCH"};
+		availablePlants[] = {"Goldenseal_EPOCH", "Goldenseal_EPOCH", "Goldenseal_EPOCH", "Poppy_EPOCH", "Poppy_EPOCH", "Pumpkin_EPOCH", "Pumpkin_EPOCH", "HempPlant_EPOCH","SunflowerPlant_EPOCH"};
 
 		// Carnival and Loot Box Spawner
 		debugCarnivalSpawner = 0;

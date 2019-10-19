@@ -1299,7 +1299,7 @@ class FSM
                          "switch (tolower _forcegender) do {" \n
                          "	case ""male"": {EPOCH_PlayerIsMale = true;};" \n
                          "	case ""female"": {EPOCH_PlayerIsMale = false;};" \n
-                         "	default {createdialog ""SelectGender""}" \n
+                         "	default {createdialog ""SelectGender"";}" \n
                          "};"/*%FSM</STATEINIT""">*/;
                         precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
                         class Links

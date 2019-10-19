@@ -4,6 +4,9 @@ waitUntil {!isNull (findDisplay 46) && (!isNil "EPOCH_loadingScreenDone")};
 // load favBar
 'load' spawn epoch_favBar_draw;
 
+// Switch to 3rd person (if possible)
+vehicle player switchCamera 'EXTERNAL';
+
 // force update within 15 seconds
 EPOCH_forceUpdate = false;
 _forceUpdate = false;

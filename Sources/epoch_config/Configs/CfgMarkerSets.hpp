@@ -221,4 +221,9 @@ class CfgMarkerSets
             {"","ICON","EpochHeli2","ColorYellow",1,{0.5,0.5}}
 		};
 	};
+	class Medical {
+		markerArray[] = {
+			{"","ICON","o_med","",1,{1,1}}
+		};
+	};
 };

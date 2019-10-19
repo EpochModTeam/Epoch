@@ -207,6 +207,7 @@ class CfgItemSort
 			"U_C_ConstructionCoverall_Vrana_F",
 			"U_C_ConstructionCoverall_Black_F",
 			"U_C_ConstructionCoverall_Blue_F",
+			"U_I_CombatUniform",
 			"U_I_CombatUniform_shortsleeve",
 			"U_I_pilotCoveralls",
 			"U_I_HeliPilotCoveralls",
@@ -264,11 +265,13 @@ class CfgItemSort
 			"V_TacChestrig_oli_F",
 			"V_TacChestrig_cbr_F",
 			"V_PlateCarrierSpec_tna_F",
+			"V_PlateCarrierSpec_mtp",
 			"V_PlateCarrierSpec_blk",
 			"V_HarnessO_ghex_F",
 			"V_HarnessOGL_ghex_F",
 			"V_PlateCarroer2_tna_F",
-			"V_PlateCarrierGL_tna_F"
+			"V_PlateCarrierGL_tna_F",
+			"V_PlateCarrier2_blk"
 		};
 
 		Backpacks[] = {
@@ -468,6 +471,8 @@ class CfgItemSort
 
 			// Headgear Apex
 			"H_HelmetLeaderO_ghex_F",
+			"H_HelmetLeaderO_oucamo",
+			"H_HelmetLeaderO_ocamo",
 			"H_HelmetCrew_O_ghex_F",
 			"H_HelmetO_ghex_F",
 			"H_Helmet_Skate",
@@ -477,7 +482,11 @@ class CfgItemSort
 			"H_MilCap_tna_F",
 			"H_MilCap_ghex_F",
 			"H_Booniehat_tna_F",
-			"H_HelmetB_Light_tna_F"
+			"H_HelmetB_Light_tna_F",
+			"H_HelmetSpecO_ocamo",
+			"H_HelmetSpecO_blk",
+			"H_HelmetO_oucamo",
+			"H_HelmetO_ocamo"
 		};
 
 		Equipment[] = {
@@ -485,6 +494,8 @@ class CfgItemSort
 			"Laserdesignator",
 			"ItemCompass",
 			"ItemGPS",
+			"ItemLaptop",
+			"ItemLaptop_wpn",
 			"ItemGeigerCounter_EPOCH",
 			"ItemWatch",
 			"NVG_EPOCH",
@@ -648,6 +659,8 @@ class CfgItemSort
 			// Apex
 			"LMG_03_F",
 
+			"arifle_CTARS_blk_F",
+			"arifle_CTARS_hex_F",
 			// Launcher
 			"launch_I_Titan_F",
 			"launch_B_Titan_short_F",
@@ -1181,7 +1194,9 @@ class CfgItemSort
 			"ItemComboLock",
 			"ItemPipe",
 			"ItemBulb",
-			"SmeltingTools_EPOCH"
+			"SmeltingTools_EPOCH",
+			"Kit_IG_Box_s",
+			"Kit_IG_Box_l"
 		};
 
 		Items[] = {
@@ -1289,6 +1304,8 @@ class CfgItemSort
 			"hoverboard_epoch_cargo",
 			"MBK_01_EPOCH",
 			"ebike_epoch",								// Motorcycle
+			"C_Kart_01_black_F",
+			"C_Quadbike_01_F",
 			"C_Offroad_01_EPOCH",						// Offroader
 			"C_Offroad_01_EPOCH1",
 			"C_Offroad_01_EPOCH2",
@@ -1428,6 +1445,8 @@ class CfgItemSort
 			"B_MRAP_01_hmg_F",
 			"O_MRAP_02_hmg_F",
 			"I_MRAP_03_hmg_F",
+			"I_LT_01_scout_F",
+			"I_LT_01_cannon_F",
 			
 			// Orange DLC
 			"I_G_Van_02_transport_F",					/* Van Transport (Orange DLC) */
@@ -1437,6 +1456,15 @@ class CfgItemSort
 			"I_G_Van_02_vehicle_F",						/* Van Transport (Orange DLC) */
 			"O_G_Van_02_vehicle_F",						/* Van Transport (Orange DLC) */
 			"B_G_Van_02_vehicle_F",						/* Van Transport (Orange DLC) */
+			
+			"I_G_Van_02_transport_EPOCH",				/* Van Transport (Orange DLC) */
+			"O_G_Van_02_transport_EPOCH",				/* Van Transport (Orange DLC) */
+			"B_G_Van_02_transport_EPOCH",				/* Van Transport (Orange DLC) */
+			"I_G_Van_02_vehicle_EPOCH",					/* Van Transport (Orange DLC) */
+			"O_G_Van_02_vehicle_EPOCH",					/* Van Transport (Orange DLC) */
+			"B_G_Van_02_vehicle_EPOCH",					/* Van Transport (Orange DLC) */
+			"B_GEN_Van_02_transport_EPOCH",				/* Van Transport (Orange DLC) */
+
 			// Apex
 			"I_C_Offroad_02_unarmed_F",
 			"I_C_Offroad_02_unarmed_brown_F",
@@ -1449,6 +1477,8 @@ class CfgItemSort
 			"C_Offroad_02_unarmed_white_F",
 			"C_Offroad_02_unarmed_red_F",
 
+			"C_IDAP_Offroad_02_unarmed_F",
+			"I_C_Offroad_02_LMG_F",
 			"B_LSV_01_unarmed_F",
 			"B_LSV_01_unarmed_olive_F",
 			"B_LSV_01_unarmed_sand_F",
@@ -1500,6 +1530,7 @@ class CfgItemSort
 			"O_Heli_Light_02_unarmed_EPOCH",
 			"I_Heli_light_03_unarmed_EPOCH",
 			"I_Heli_Transport_02_EPOCH",
+			"C_IDAP_Heli_Transport_02_F",
 			"B_Heli_Transport_03_unarmed_green_F",
 			"B_Heli_Transport_03_unarmed_EPOCH",
 			"O_Heli_Transport_04_EPOCH",
@@ -1521,6 +1552,7 @@ class CfgItemSort
 
 			"B_Heli_Light_01_armed_F",
 			"B_Heli_Transport_01_EPOCH",
+			"B_Heli_Transport_01_F",
 			"B_Heli_Transport_03_black_F",
 			"O_Heli_Light_02_v2_F",
 			"I_Heli_light_03_F",
