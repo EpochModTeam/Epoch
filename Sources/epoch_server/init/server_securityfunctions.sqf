@@ -371,7 +371,7 @@ for "_i" from 1 to 3 do {
 		};
 		if ("MAP-TELEPORT" in _case) then {
 			_temp = _temp + "
-				,['  Ctrl+Click Map', [], {"+_skn_tg_mapTeleport+"=!"+_skn_tg_mapTeleport+";['Map to Teleport', if ("+_skn_tg_mapTeleport+") then[{2}, { 1 }]] call "+_skn_adminLog_PVC+" },'2',[]]
+				,['  Alt+Click Map', [], {"+_skn_tg_mapTeleport+"=!"+_skn_tg_mapTeleport+";['Map to Teleport', if ("+_skn_tg_mapTeleport+") then[{2}, { 1 }]] call "+_skn_adminLog_PVC+" },'2',[]]
 			";
 		};
 	};
@@ -510,11 +510,12 @@ for "_i" from 1 to 3 do {
 
 	_temp = _temp + "
 		,['Key Binds',[],'','1',[]]
-		,['  5 Key - Teleport In Front',[],'','1',[]]
 		,['  4 Key - Fly Up',[],'','1',[]]
+		,['  5 Key - Teleport In Front',[],'','1',[]]
 		,['  F2 - Cancel Spectating',[],'','1',[]]
 		,['  F5 - Delete Target',[],'','1',[]]
 		,['  7 - (Un)Lock Target',[],'','1',[]]
+		,['  ALT + Left MB - Teleport on Map',[],'','1',[]]
 		];
 	";
 	if (_i == 1) then {
@@ -1306,7 +1307,7 @@ _skn_admincode = compileFinal ("
 	uiNamespace setVariable['ESP_mainMap', findDisplay 12 displayCtrl 51];
 	uiNamespace setVariable['ESP_adminMap', findDisplay -1337 displayCtrl 7];
 	(findDisplay 46) displayAddEventHandler ['KeyDown','_this call "+_skn_AdminKeyDown+"'];
-	((findDisplay 12) displayCtrl 51) ctrlAddEventHandler ['MouseButtonDown', 'if (_this select 5) then {_this call "+_skn_mapTeleport+"}'];
+	((findDisplay 12) displayCtrl 51) ctrlAddEventHandler ['MouseButtonDown', 'if (_this select 6) then {_this call "+_skn_mapTeleport+"}'];
 
 	{
 		(uiNamespace getVariable _x) ctrlRemoveAllEventHandlers 'Draw';
@@ -1471,7 +1472,7 @@ _skn_admincode = compileFinal ("
 		(5 call "+_skn_getCtrl+") ctrlSetEventHandler ['LBDblClick', '_this call "+_skn_fnc_Spec+"'];
 		(5 call "+_skn_getCtrl+") ctrlSetEventHandler ['LBSelChanged', '_this call "+_skn_fnc_Zoom+"'];
 		(6 call "+_skn_getCtrl+") ctrlSetEventHandler ['LBDblClick', '_this call "+_skn_dbClickMainMenu+"'];
-		(7 call "+_skn_getCtrl+") ctrlSetEventHandler ['MouseButtonDown', 'if (_this select 5) then {_this call "+_skn_mapTeleport+"}'];
+		(7 call "+_skn_getCtrl+") ctrlSetEventHandler ['MouseButtonDown', 'if (_this select 6) then {_this call "+_skn_mapTeleport+"}'];
 		if (call "+_skn_removespawnMenu+") then {uiSleep 0.4};
 
 		call "+_skn_Update_AdminButtons+";
@@ -2039,6 +2040,7 @@ _skn_admincode = compileFinal ("
 				};
 			} foreach skn_vests;
 		};
+		_ctrl lbSetCurSel 0;
 	};
 	"+_skn_FillPlayerMenu+" = {
 		_ctrl = 5 call "+_skn_getCtrl+";
@@ -2046,47 +2048,32 @@ _skn_admincode = compileFinal ("
 
 		_sorted = [];
 		_unsorted = allPlayers;
+		_tmp = [];
 
 		_buttonRange = 10 call "+_skn_getCtrl+";
 		_buttonRange ctrlSetText 'Range';
 		_buttonAlphabetically = 11 call "+_skn_getCtrl+";
 		_buttonAlphabetically ctrlSetText 'Alphabet';
 
-		if ("+_skn_tg_sortOrder+" == 'Range') then {
-			_pos = getPosATL vehicle player;
-			{
-				_temp = _x;
-				{
-					if ((getPosATL _x distance _pos) < (getPosATL _temp distance _pos)) exitWith {
-						_unsorted = _unsorted - [_x];
-						_sorted pushBack _x;
-					_temp = _x;
-				};
-			}forEach _unsorted;
-		}forEach _unsorted;
+	if ("+_skn_tg_sortOrder+" == 'Range') then {
+		_pos = getPosATL vehicle player;
+		{
+			_tmp pushback [_x distance _pos, _x];
+		} forEach _unsorted;
 		_buttonRange ctrlSetTextColor [1, 0, 0, 1];
 		_buttonAlphabetically ctrlSetTextColor [1, 1, 1, 1];
 	};
 	if ("+_skn_tg_sortOrder+" == 'Alphabetically') then {
-		_unsortedName = [];
 		{
-			_unsortedName pushBack (name _x);
+			_tmp pushBack [name _x, _x],;
 		}forEach _unsorted;
-		_alphabetically = _unsortedName;
-		_alphabetically sort true;
-		{
-			{
-				if (name _x == (_alphabetically select 0)) exitWith {
-					_alphabetically = _alphabetically - [_alphabetically select 0];
-					_unsorted = _unsorted - [_x];
-					_sorted pushBack _x;
-				};
-			}forEach _unsorted;
-		}forEach _unsorted;
-
 		_buttonAlphabetically ctrlSetTextColor [1, 0, 0, 1];
 		_buttonRange ctrlSetTextColor [1, 1, 1, 1];
 	};
+	_tmp sort true;
+	{
+		_sorted pushback (_x select 1);
+	} foreach _tmp;
 	if (_sorted isEqualTo []) then {_sorted = [player]};
 	_skn_fnc_addPlayerToList = {
 		_player = _this select 0;

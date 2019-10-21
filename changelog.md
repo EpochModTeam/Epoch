@@ -79,6 +79,7 @@ All changes for [Arma 3](https://arma3.com/) [Epoch Mod](https://epochmod.com) a
 - Players playtimes are now shown in the Playerlist in Adminmenu
    - https://cdn.discordapp.com/attachments/474595539107971072/613059969943601208/unknown.png
 - Added a function to jump up for Admins in Adminmenu
+- Admin Teleport on mapclick now use ALT instead of CTRL (prevent creating Linemarkers)
 - Added an option "EnablePhysicsOnBuild" to cfgEpochClient.hpp to disable physics while Building
 - Changed syntax in cfgServicePoints to allow inherits from other Vehicle Classes
    - Some more infos can be found here: https://epochmod.com/forum/topic/34454-repair-rearming-script/?do=findComment&comment=307310
