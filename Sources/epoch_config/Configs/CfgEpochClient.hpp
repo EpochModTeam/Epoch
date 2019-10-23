@@ -290,7 +290,7 @@ class CfgEpochClient
     GetOutMan = "_this call EPOCH_getOutMan;_this call Epoch_custom_EH_GetOutMan";
 	SeatSwitchedMan = "_this call EPOCH_custom_EH_SeatSwitchedMan";
 	FiredNear = "_this call EPOCH_custom_EH_FiredNear";
-	WeaponAssembled = "clearItemCargoGlobal (_this select 1);if ((_this select 1) isKindOf 'UAV_01_base_F' || (_this select 1) isKindOf 'UAV_06_base_F') then {['UAV assembled - Connect it with DynaMenu (Space)',5] call Epoch_Message}";
+	WeaponAssembled = "clearItemCargoGlobal (_this select 1);(_this select 1) removeWeaponTurret ['Laserdesignator_mounted',[0]]; if ((_this select 1) isKindOf 'UAV_01_base_F' || (_this select 1) isKindOf 'UAV_06_base_F') then {['UAV assembled - Connect it with DynaMenu (Space)',5] call Epoch_Message}";
     // suppress these units from spawning near Jammer or Traders
     nonJammerAI[] = {"B_Heli_Transport_01_F","PHANTOM","EPOCH_Sapper_F","Epoch_SapperG_F","Epoch_SapperB_F","I_UAV_01_F","EPOCH_RyanZombie_1"};
     nonTraderAI[] = {"B_Heli_Transport_01_F","PHANTOM","EPOCH_Sapper_F","Epoch_SapperG_F","Epoch_SapperB_F","I_UAV_01_F","Epoch_Cloak_F","GreatWhite_F","EPOCH_RyanZombie_1"};
