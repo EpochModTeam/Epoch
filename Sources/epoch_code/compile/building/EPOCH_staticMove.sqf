@@ -39,7 +39,7 @@ if (_item == "") exitWith{ EPOCH_target = objNull; };
 
 _playerEnergyKeyFinal = "EPOCH_playerEnergy";
 if !(isNil "_playerEnergyKey") then {_playerEnergyKeyFinal = _playerEnergyKey};
-_playerEnergy = missionNamespace getVariable [_playerEnergyKeyFinal,[]];
+_playerEnergy = missionNamespace getVariable [_playerEnergyKeyFinal,0];
 
 if (_playerEnergy <= 0) exitWith{
 	["Need Energy", 5] call Epoch_message;

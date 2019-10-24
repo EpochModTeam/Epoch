@@ -34,7 +34,7 @@ _tapDiag = _playerDeathScreen;
 
 _playerAliveTimeKeyFinal = "EPOCH_playerAliveTime";
 if !(isNil "_playerAliveTimeKey") then {_playerAliveTimeKeyFinal = _playerAliveTimeKey};
-_playerAliveTime = missionNamespace getVariable [_playerAliveTimeKeyFinal,[]];
+_playerAliveTime = missionNamespace getVariable [_playerAliveTimeKeyFinal,0];
 
 _doRevenge = ((getNumber(_config >> "playerDisableRevenge") isEqualTo 0) && _playerAliveTime >= _playerRevengeMinAliveTime);
 
