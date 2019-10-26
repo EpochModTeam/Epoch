@@ -140,9 +140,9 @@ for "_i" from 0 to _this do {
 					_ammoObj setposworld _pos;
 				}
 				else {
-					_ammoObj setposATL _location;
+					_ammoObj setposATL _pos;
 				};
-					_ammoObj setVectorDirAndUp _vectordirup;
+				_ammoObj setVectorDirAndUp _vectordirup;
 				_baseObj setVariable ["EPOCH_TRAP_OBJ",_ammoObj];
 				_baseObj addEventHandler ["Explosion", {(_this select 0) setDamage 1}];
 			};
