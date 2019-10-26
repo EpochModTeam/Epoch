@@ -36,8 +36,8 @@ for "_i" from 1 to _maxVehicleLimit do {
 
 	_vehHiveKey = format ["%1:%2", call EPOCH_fn_InstanceID,_i];
 	(["Vehicle", _vehHiveKey] call EPOCH_fnc_server_hiveGETRANGE) params [["_status",0],["_arr",[]]];
-	if (_arr isEqualTo []) exitwith {};
 	if (_status isEqualTo 1 && _arr isEqualType []) then {
+		if (_arr isEqualTo []) exitwith {};
 		_arrNum = count _arr;
 
 		// New Upgrade System adds to DB array, check and correct older saved vehicles
