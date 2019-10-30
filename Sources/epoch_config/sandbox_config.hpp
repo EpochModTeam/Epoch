@@ -51,6 +51,8 @@ wreckRemovalMaxTime = 360;
 
 disableRandomization[] = {"All"};
 
+unsafeCVL = 1; // Allows createVehicleLocal to be executed in Multiplayer
+
 showHUD[] =
 {
 	true, 	// Scripted HUD (same as showHUD command)
