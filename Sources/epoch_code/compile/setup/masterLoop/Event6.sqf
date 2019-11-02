@@ -21,3 +21,4 @@ diag_log format["DEBUG: _spawnUnits %1",_spawnUnits];
 if !(_spawnUnits isEqualTo[]) then{
 	(selectRandom _spawnUnits) call EPOCH_unitSpawn;
 };
+_UpdateTopStats = true;

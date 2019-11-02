@@ -49,19 +49,7 @@ if !(_bpack isequalto "") then {
 			}
 			else {
 				if ((_x select 0) isequaltype []) then {
-					_x params ["_arr","_cnt"];
-					_type = _arr deleteat 0;
-					_container addWeaponcargoglobal [_type,_cnt];
-					{
-						if !(_x isequalto "" || _x isequalto []) then {
-							if (_x isequaltype []) then {
-								_container addMagazineAmmoCargo [_x select 0,1,_x select 1];
-							}
-							else {
-								_container addItemCargoGlobal [_x,1];
-							};
-						};
-					} foreach _arr;
+					_container addWeaponWithAttachmentsCargoGlobal _x;
 				}
 				else {
 					_x params [["_type",""],["_cnt",1]];

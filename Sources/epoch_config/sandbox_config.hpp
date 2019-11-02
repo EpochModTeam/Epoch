@@ -51,6 +51,8 @@ wreckRemovalMaxTime = 360;
 
 disableRandomization[] = {"All"};
 
+unsafeCVL = 1; // Allows createVehicleLocal to be executed in Multiplayer
+
 showHUD[] =
 {
 	true, 	// Scripted HUD (same as showHUD command)
@@ -73,6 +75,7 @@ showHUD[] =
 #include "Configs\cfgPricing.hpp"
 #include "Configs\CfgDynamicHUD.hpp"
 #include "Configs\CfgEPad.hpp"
+#include "Configs\CfgPainting.hpp"
 
 #include "Configs\CfgEpochClient.hpp"
 

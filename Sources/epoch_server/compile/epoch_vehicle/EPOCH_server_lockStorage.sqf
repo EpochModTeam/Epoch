@@ -59,17 +59,17 @@ if (getNumber(_cfgBaseBuilding >> _type >> "isSecureStorage") == 1) then {
 			};
 		};
 	};
-	_msg = "You are not the owner";
+	_msg = ["You are not the owner",5];
 	if (_LockStateChanged) then {
 		if (_locked) then {
 			EPOCH_saveStorQueue pushBackUnique _unit;
-			_msg = "Storage Locked";
+			_msg = ["Storage Locked",5,[[1,0,0,0.2],[1,1,1,1]]];
 		}
 		else {
-			_msg = "Storage Unlocked";
+			_msg = ["Storage Unlocked",5,[[0,1,0,0.2],[1,1,1,1]]];
 		};
 	};
 	if (_VehLockMessages) then {
-		[_msg,5] remoteExec ["Epoch_Message",_player];
+		_msg remoteExec ["Epoch_Message",_player];
 	};
 };

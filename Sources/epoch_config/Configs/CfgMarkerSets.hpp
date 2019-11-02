@@ -112,6 +112,11 @@ class CfgMarkerSets
             {"","ICON","EpochService","ColorWhite",1,{0.9,0.9},0,"'Service Point'"}
         };
 	};
+	class PaintGarage {
+        markerArray[] = {
+            {"","ICON","EpochPaint","ColorBlue",0.5,{0.1,0.1},0}
+        };
+	};
 	class Radiation {
         markerArray[] = {
             {"","ICON","EpochActive_Triangle","ColorYellow",1,{0.7,0.7}},
@@ -211,9 +216,14 @@ class CfgMarkerSets
 	};
 	class HeliCrash {
 		markerArray[] = {
-            {"","ICON","EpochActive_Circle","ColorOrange",1,{0.6,0.6}},
+            {"","ICON","EpochActive_Circle","ColorYellow",1,{0.6,0.6}},
             {"","ICON","EpochBG_Circle","ColorWhite",0.15,{0.6,0.6}},
-            {"","ICON","EpochHeli2","ColorOrange",1,{0.5,0.5}}
+            {"","ICON","EpochHeli2","ColorYellow",1,{0.5,0.5}}
+		};
+	};
+	class Medical {
+		markerArray[] = {
+			{"","ICON","o_med","",1,{1,1}}
 		};
 	};
 };

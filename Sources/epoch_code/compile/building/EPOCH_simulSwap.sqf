@@ -36,7 +36,7 @@ _isSnap = false;
 
 _playerEnergyKeyFinal = "EPOCH_playerEnergy";
 if !(isNil "_playerEnergyKey") then {_playerEnergyKeyFinal = _playerEnergyKey};
-_playerEnergy = missionNamespace getVariable [_playerEnergyKeyFinal,[]];
+_playerEnergy = missionNamespace getVariable [_playerEnergyKeyFinal,0];
 
 if (_playerEnergy <= 0) exitWith {
 	["Need Energy", 5] call Epoch_message;
@@ -110,7 +110,7 @@ if (isText(_simulClassConfig)) then {
 	EPOCH_Z_OFFSET = _offset select 2;
 	_lastCheckTime = diag_tickTime;
 	while {EPOCH_target == _currentTarget} do {
-		_playerEnergy = missionNamespace getVariable [_playerEnergyKeyFinal,[]];
+		_playerEnergy = missionNamespace getVariable [_playerEnergyKeyFinal,0];
 		if (_playerEnergy <= 0) exitWith { EPOCH_target = objNull; };
 		_rejectMove = false;
 		if ((diag_tickTime - _lastCheckTime) > 10) then {

@@ -38,34 +38,11 @@ params [["_vehicle",objnull],["_items",[]]];
 			// Weapon cargo
 			case 0: {
 				if (_x isEqualType []) then {
-					if ((count _x) >= 4) then {
-						_vehicle addWeaponCargoGlobal[_x deleteAt 0, 1];
-						_attachments = [];
-						_wMags = false;
-						_wMagsArray = [];
-						// suppressor, laser, optics, magazines(array), bipods
-						{
-							// magazines
-							if (_x isEqualType []) then{
-								_wMags = true;
-								_wMagsArray = _x;
-							} else {
-								// attachments
-								if (_x != "") then{
-									_attachments pushBack _x;
-								};
-							};
-						} forEach _x;
-						// add all attachments to vehicle
-						// TODO replace with adding attachments directly to gun (Arma feature dependant)
-						{
-							_vehicle addItemCargoGlobal[_x, 1];
-						} forEach _attachments;
-						if (_wMags) then{
-							if (_wMagsArray isEqualType [] && (count _wMagsArray) >= 2) then{
-								_vehicle addMagazineAmmoCargo[_wMagsArray select 0, 1, _wMagsArray select 1];
-							};
-						};
+					if ((count _x) == 2) then {
+						_vehicle addWeaponWithAttachmentsCargoGlobal _x;
+					}
+					else {
+						_vehicle addWeaponWithAttachmentsCargoGlobal [_x,1];
 					};
 				};
 			};

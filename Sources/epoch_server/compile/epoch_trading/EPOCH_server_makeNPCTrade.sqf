@@ -334,6 +334,12 @@ if (_slot != -1) then {
 			_current_crypto remoteExec ['EPOCH_effectCrypto',_player];
 			_vars set[_cIndex, _current_crypto];
 			_player setVariable["VARS", _vars];
+			
+			// Update Player Stats
+			_kIndex = EPOCH_communityStats find "NPCTrades";
+			if (_kIndex > -1) then {
+				[_player, "NPCTrades", 1, true] call EPOCH_server_updatePlayerStats;
+			};
 		};
 	};
 

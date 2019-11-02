@@ -53,6 +53,26 @@ _checkConfigs = {
 			_cfg = "CfgBaseBuilding" call EPOCH_returnConfig;
 			(_cfg >> dyna_cursorTargetType)
 		};
+		case "PaintGarage":
+		{
+			private _garagevehs = nearestobjects [dyna_cursorTarget,["LandVehicle","AIR"],10];
+			if (_garagevehs isEqualTo []) exitwith {
+				["No Paintable Vehicle found in Garage",5] call Epoch_message;
+				(_cfg >> _selfOrTarget)
+			};
+			private _cfgtmp = "CfgPainting" call EPOCH_returnConfig;
+			_garageveh = _garagevehs select 0;
+			private _isclass = isclass (_cfgtmp >> (typeof _garageveh));
+			if (!_isclass && (("true" configClasses (configFile >> "CfgVehicles" >> (typeof _garageveh) >> "TextureSources")) isEqualTo [])) exitwith {
+				["No Paintable Vehicle found in Garage",5] call Epoch_message;
+				(_cfg >> _selfOrTarget)
+			};
+			dyna_Paintobj = _garageveh;
+			if (_isclass) exitwith {
+				(_cfgtmp >> (typeof _garageveh))
+			};
+				(_cfgtmp >> "DefaultVehicle")
+		};
 		case "":
 		{
 			(_cfg >> _selfOrTarget)
@@ -97,6 +117,56 @@ _checkConfigs = {
 			} forEach (getArray (_config >> "upgradeBuilding"));
 
 
+		};
+		case "PaintGarage":
+		{
+			if !(isClass _config) exitWith {_in = "";};
+			private _usedefaultcolors = tolower (gettext (_config >> "UseArmaDefaultColors"));
+			_icon = gettext (_config >> "icon");
+			if (_usedefaultcolors isEqualTo "true") then {
+				{
+					private _textures = getarray (_x >> "textures");
+					_tooltip = gettext (_x >> "displayName");
+					_iconcolor = [1,1,1,1];
+					{
+						if ((tolower _tooltip) find (_x select 0) > -1) exitwith {
+							_iconcolor = _x select 1;
+						};
+					} foreach [
+						["red",[1,0,0,1]],
+						["green",[0,1,0,1]],
+						["blue",[0,0,1,1]],
+						["yellow",[1,1,0,1]],
+						["white",[1,1,1,1]],
+						["black",[0,0,0,1]],
+						["grey",[0.5, 0.5, 0.5, 1]],
+						["orange",[1, 0.9, 0, 1]],
+						["hex",[0.74, 0.72, 0.42, 1]],
+						["sand",[1, 0.9, 0.8, 1]],
+						["olive",[0.33, 0.42, 0.185, 1]]
+					];
+					_action = format ["[dyna_cursorTarget,dyna_Paintobj,%1] call EPOCH_vehicle_Paintgarage; true call Epoch_dynamicMenuCleanup;",_textures];
+					_buttonSettings pushBack [
+						_icon,
+						_tooltip,
+						_action,
+						_iconcolor
+					];
+				} foreach ("true" configClasses (configFile >> "CfgVehicles" >> (typeof dyna_Paintobj) >> "TextureSources"));
+			};
+			{
+				_tooltip = gettext (_x >> "ColorName");
+				_iconcolor = getarray (_x >> "iconcolor");
+				private _textures = getarray (_x >> "textures");
+				if (_textures isEqualTo []) exitwith {_in = "";};
+				_action = format ["[dyna_cursorTarget,dyna_Paintobj,%1] call EPOCH_vehicle_Paintgarage; true call Epoch_dynamicMenuCleanup;",_textures];
+				_buttonSettings pushBack [
+					_icon,
+					_tooltip,
+					_action,
+					_iconcolor
+				];
+			} forEach (configProperties [_config, "isClass _x",true]);
 		};
 		default
 		{

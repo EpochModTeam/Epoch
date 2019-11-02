@@ -153,9 +153,26 @@ if !(isNull EPOCH_lastNPCtradeTarget) then {
 								lnbSetValue [_TraderItemsBox, [_id,0], _rounds];
 								lnbSetPicture [_TraderItemsBox, [_id,0], _item call EPOCH_itemPicture];
 								if !(_tooltip isequalto "") then {
-									lbSetTooltip [_TraderItemsBox, _id*3, _tooltip];
 									lnbSetColor [_TraderItemsBox,[_id,2],[1,(_rounds/_maxrnd),0,1]];
 								};
+								_description = "";
+								{
+									_description = gettext (configfile >> _x >> _item >> "descriptionShort");
+									if !(_description isEqualTo "") exitwith {
+										{
+											while {_description find (_x select 0) > -1} do {
+												_remove = _description find (_x select 0);
+												_description = (_description select [0,_remove]) + "\n" + (_description select [(_remove+(_x select 1))]); 
+											};
+										if !(_tooltip isEqualTo "") then {
+											_tooltip = _tooltip + "\n";
+										};
+										} foreach [["<br />",6],["<br/>",5]];
+										
+									};
+								} foreach ["cfgmagazines","cfgweapons","cfgvehicles"];
+								_tooltip = _tooltip + _description;
+								lbSetTooltip [_TraderItemsBox, _id*3, _tooltip];
 							};
 						};
 					};

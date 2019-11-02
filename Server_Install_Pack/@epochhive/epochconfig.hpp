@@ -5,14 +5,17 @@ forceRestartTime      = 14400; 			// 4 hour restarts
 	StaticDateTime[] 	= {}; 			// {0,0,0,8,0} would forces the server to start at 8am each time it is started while allowing the year, month and day to stay real time. Any values left at 0 will result in no change.
 	timeDifference 		= 0; 			// Server uses real time this will allow you to offset just the hour.
 	timeMultiplier 		= 4; 			// Sets a time multiplier for in-game time. The command range is now capped at 0.1 - 120 to avoid performance problems.
-	lootMultiplier 		= 0.5; 			// 1 = max loot bias. This controls how much loot can payout per Epoch loot container.
+
+// Loot (Check CfgBuildingLootPos.hpp in mission file for more settings)
+	lootMultiplier 		= 1; 			// 1 = normal loot multiplier. This controls how much loot can payout per loot container.
+	UseLootHelper		= "true";		// GroundLoot will get a visible sphere for better loot identification
 
 // Events
 	WeatherChances[] = {
-		0.5,							// Sun
-		0.3,							// Mid
-		0.1,							// Rain
-		0.1								// Rain+
+		0.7,							// Sun
+		0.2,							// Mid
+		0.05,							// Rain
+		0.05							// Rain+
 	};
 	events[] = {
 		{
@@ -26,6 +29,8 @@ forceRestartTime      = 14400; 			// 4 hour restarts
 		}, 
 		// { 1800, "PaydayEvent", 0, 2},
 		// { 1200, "MessageServer", 0, 2},
+		{ 120, "FastNights", 0 , 2, -1, {48,4} ,{"VR"}},			// TimeMulti Nighttime = 48 / TimeMulti Daytime = 4
+		{ 1200, "HeliCrash", 0 , 2, -1, {} ,{"VR"}},
 		{ 2700, "AirDrop", 0 , 2, -1, {} ,{"VR"}},
 		{ 2400, "EarthQuake", 0 , 2, -1, {} ,{"VR"}},
 		{ 2700, "Satellite", 0 , 2, -1, {} ,{"VR"}},
@@ -68,6 +73,8 @@ forceRestartTime      = 14400; 			// 4 hour restarts
 		""  							// "NVG_EPOCH" or "radiation_mask_epoch"
 	};
 
+	UseCustomTextures = "false";		// if true, Vehicles and Building parts textures will be saved and loaded to the DB (Paintshop)
+
 // vehicles - Max vehicle slots is calculated from per vehicle limits below. Warning! Higher the number lower the performance.
 	immuneIfStartInBase = "true";			// Protect vehicles from damage in bases until first unlocked after restart
 	ReservedVehSlots = 50;				// Reserved Vehicle Slots (only needed, if you manually spawn in additional Vehicles - AdminTool / Blackmarket...)
@@ -84,6 +91,8 @@ forceRestartTime      = 14400; 			// 4 hour restarts
 		{"200Rnd_40mm_G_belt",{0}}
 	};
 	disableVehicleTIE = "true";
+	ReplaceCarService = "true";		// Replace all "Land_CarService_F" with "paintshop" on the Map on Server Start
+	PaintShopIcons = "false";		// Create MapIcons for PaintShops
 
 // BaseBuilding
 	StorageSlotsLimit 	= 1500; 		// Max storage slots allowed. Warning! Higher the number lower performance.
@@ -144,10 +153,26 @@ forceRestartTime      = 14400; 			// 4 hour restarts
 
 // Traders
 	taxRate = 0.1; 						// controls the price increase for purchases
+/*
 	starterTraderItems[] = { 			// Starter Items for fresh spawned trader first array is classnames second is quantity.
 		{"ItemSodaBurst","meatballs_epoch","MortarBucket","CinderBlocks","VehicleRepair","CircuitParts","ItemCorrugated","PartPlankPack","ItemRock","ItemRope","ItemStick"},
 		{5,5,5,5,5,5,5,5,5,5,5}
 	};
+*/
+	starterTraderItems[] = { 			// Starter Items for fresh spawned trader (old / above variant is also still working!)
+		{"ItemSodaBurst",5},
+		{"meatballs_epoch",5},
+		{"MortarBucket",5},
+		{"CinderBlocks",5},
+		{"VehicleRepair",5},
+		{"CircuitParts",5},
+		{"ItemCorrugated",5},
+		{"PartPlankPack",5},
+		{"ItemRock",5},
+		{"ItemRope",5},
+		{"ItemStick",5}
+	};
+
 	NPCSlotsLimit = 30; 				// Max number of traders static or dynamic. Warning! Higher the number lower performance.
 	forceStaticTraders = "true"; 		// disables traders moving from work to home
 	TraderGodMode = "false";			// If true, Trader can not be killed by Players
@@ -182,13 +207,15 @@ forceRestartTime      = 14400; 			// 4 hour restarts
 	DEBUG_VEH = "false"; 				// DEBUG ONLY used to debug spawing of vehicles
 
 // Hive Related
-	vehicleLockTime = "1800"; 			// Controls how many seconds it takes to allow another person/group to unlock vehicle.
+	vehicleLockTime = "1800"; 			// Controls how many seconds it takes to allow another person/group to unlock vehicle (outside your own PlotPole Range).
+	vehicleLockTimeHome = "259200";		// Controls how many seconds it takes to allow another person/group to unlock vehicle (inside your own PlotPole Range).
 	expiresBuilding = "604800";  		// expiration date in seconds for buildings
 	expiresPlayer = "2592000";  		// expiration date in seconds for players
 	expiresBank = "7776000";  			// expiration date in seconds for players bank
 	expiresVehicle = "604800";  		// expiration date in seconds for vehicles
 	expiresAIdata = "604800";  			// expiration date in seconds for NPC Trader inventory
 	expiresCommunityStats = "7776000";	// expiration date in seconds for players community stats
+	expiresPlayerTopStats = "604800";	// expiration date in seconds for players listed in TopStats - remove inactive players from TopStats, but will get in again on next login
 
 // Admin Features
 	hiveAdminCmdExec = "false";			// true = enables extra (To Be Released) feature to allow execution of code via hive.

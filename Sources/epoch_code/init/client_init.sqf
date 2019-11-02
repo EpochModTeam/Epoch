@@ -89,6 +89,9 @@ EPOCH_maxBuildingHeight = ["CfgEpochClient", "maxBuildingHeight", 100] call EPOC
 EPOCH_MaxBuildingTilt = ["CfgEpochClient", "MaxBuildingTilt", 180] call EPOCH_fnc_returnConfigEntryV2;
 Epoch_NuisanceMulti = ["CfgEpochClient", "NuisanceMulti", 0.5] call EPOCH_fnc_returnConfigEntryV2;
 
+// Use Eventhandler "Fired" on Reviver instead of Eventhandler "HandeDamage" on Client to be revived for Heal / Revive Player
+EPOCH_OldRevive = ["CfgEpochClient", "UseOldRevive", false] call EPOCH_fnc_returnConfigEntryV2;
+
 //ON INIT and RESPAWN
 call EPOCH_clientInit;
 

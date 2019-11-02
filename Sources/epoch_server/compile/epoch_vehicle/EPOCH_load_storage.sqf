@@ -49,30 +49,12 @@ for "_i" from 1 to _maxStorageLimit do {
 			if !(_inventory isEqualType []) then { _inventory = []; };
 
 			_worldspace = _arr select 1;
-			_wsCount = count _worldspace;
-
-			// new worldspace format
-			if (_wsCount == 3) then {
-				_location = _worldspace deleteAt 0;
-				_dir = _worldspace;
-			} else {
-				_dir = _worldspace select 0;
-				_location = _worldspace select 1;
-			};
+			_worldspace params ["_pos","_vectordir","_vectorup",["_useworld",false]];
+			_vectordirup = [_vectordir,_vectorup];
 
 			// increased position precision
-			if (count _location == 2) then{
-				_location = (_location select 0) vectorAdd(_location select 1);
-			};
-
-			// set to ground if only x,y
-			if (count _location == 2) then {
-				_location set [2, 0];
-			};
-
- 			// try to recover from negitive z
-			if ((_location select 2) < 0) then {
-				_location set [2, 0];
+			if (count _pos == 2) then{
+				_pos = (_pos select 0) vectorAdd(_pos select 1);
 			};
 
 			_vehicle = createVehicle[_class, [0,0,0], [], 0, "CAN_COLLIDE"];
@@ -96,18 +78,17 @@ for "_i" from 1 to _maxStorageLimit do {
 				};
 			};
 
-			if (_dir isEqualType []) then {
-				_vehicle setposATL _location;
-				_vehicle setVectorDirAndUp _dir;
-			} else {
-				_vehicle setposATL _location;
-				_vehicle setDir _dir;
+			if (_useworld) then {
+				_vehicle setposworld _pos;
+			}
+			else {
+				_vehicle setposATL _pos;
 			};
+
+			_vehicle setVectorDirAndUp _vectordirup;
 
 			// temp set damage to mark for maint
 			_vehicle setDamage 0.01;
-
-
 
 			_vehicle setVariable ["STORAGE_SLOT", str(_i), true];
 
@@ -162,7 +143,7 @@ for "_i" from 1 to _maxStorageLimit do {
 			};
 
 			if (EPOCH_DEBUG_VEH) then {
-				_marker = createMarker [str(_location) , _location];
+				_marker = createMarker [str(_pos) , _pos];
 				_marker setMarkerShape "ICON";
 				_marker setMarkerType "mil_dot";
 				_marker setMarkerText _class;

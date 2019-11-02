@@ -45,18 +45,55 @@ class CfgServicePoint {
 							};
 	};
 	class Tanoa {
-		ServicePoints[] =	{	// Array of coords for ServicePoints
-/*
-								{2157.79,3477.65,0},
-								{11731.5,3125.95,0},
-								{7008.93,7582.59,0},
-								{2326.28,13167.9,0},
-								{11805.8,13100.6,0},
-
-								{5525.8,10345.2,0},
-								{11916,2383.88,0},
-								{13562.4,12139.5,0}
-*/								
+		ServicePoints[] =	{
+								{
+									{2157.79,3477.65,0},					// Pos
+									40,										// max distance
+									{"Landvehicle","Ship","AIR","Tank"},	// Vehicle Types for SP
+									"Service Point"							// Marker Text
+								},
+								{
+									{11731.5,3125.95,0},					// Pos
+									40,										// max distance
+									{"Landvehicle","Ship","AIR","Tank"},	// Vehicle Types for SP
+									"Service Point"							// Marker Text
+								},
+								{
+									{7008.93,7582.59,0},					// Pos
+									40,										// max distance
+									{"Landvehicle","Ship","AIR","Tank"},	// Vehicle Types for SP
+									"Service Point"							// Marker Text
+								},
+								{
+									{2326.28,13167.9,0},					// Pos
+									40,										// max distance
+									{"Landvehicle","Ship","AIR","Tank"},	// Vehicle Types for SP
+									"Service Point"							// Marker Text
+								},
+								{
+									{11805.8,13100.6,0},					// Pos
+									40,										// max distance
+									{"Landvehicle","Ship","AIR","Tank"},	// Vehicle Types for SP
+									"Service Point"							// Marker Text
+								},
+								{
+									{5525.8,10345.2,0},						// Pos
+									40,										// max distance
+									{"Landvehicle","Ship","AIR","Tank"},	// Vehicle Types for SP
+									"Service Point"							// Marker Text
+								},
+								{
+									{11916,2383.88,0},						// Pos
+									40,										// max distance
+									{"Landvehicle","Ship","AIR","Tank"},	// Vehicle Types for SP
+									"Service Point"							// Marker Text
+								},
+								{
+									{13562.4,12139.5,0},						// Pos
+									40,										// max distance
+									{"Landvehicle","Ship","AIR","Tank"},	// Vehicle Types for SP
+									"Service Point"							// Marker Text
+								}
 							};
 	};
 	class Chernarus {	// Array of coords for ServicePoints
@@ -98,262 +135,229 @@ class CfgServicePoint {
 		{"Landvehicle",0}
 	};
 	/* Get all Weapons and Turrets with "magazinesAllTurrets vehicle" -> https://community.bistudio.com/wiki/magazinesAllTurrets */
-	VehiclesAndAmmo[] = {
+	class VehiclesAndAmmo {
 /*
-		{
-			"typeof vehicle",
-			{
-				{"Ammoclass",{Turretpath},MaxMagsCount,PricePerMag},
-				{"Ammoclass",{Turretpath},MaxMagsCount,PricePerMag}
-			}
-		},
+		class VehicleType {
+			MagsTurrets[] = {
+				{"Ammoclass",{Turretpath},MaxMagsCount,PricePerMag,Bullets per mag (optional, if you want to reduce bullets per mag)},
+				{"Ammoclass",{Turretpath},MaxMagsCount,PricePerMag,Bullets per mag (optional, if you want to reduce bullets per mag)}
+			};
+		};
 */
 
-		{
-			"a2_ch47f_armed_EPOCH",
-			{
+		class a2_ch47f_armed_EPOCH {
+			MagsTurrets[] = {
 				{"200Rnd_65x39_Belt",{1},3,200},
 				{"200Rnd_65x39_Belt",{2},3,200}
-			}
-		},
-		{
-			"a2_ch47f_armed_plus_EPOCH",
-			{
+			};
+		};
+		class a2_ch47f_armed_plus_EPOCH {
+			MagsTurrets[] = {
 				{"200Rnd_762x51_Belt",{0},3,200},
 				{"200Rnd_762x51_Belt",{1},3,200}
-			}
-		},
-		{
-			"uh1h_armed_EPOCH",
-			{
+			};
+		};
+		class uh1h_armed_EPOCH {
+			MagsTurrets[] = {
 				{"200Rnd_65x39_Belt",{1},3,200},
 				{"200Rnd_65x39_Belt",{2},3,200}
-			}
-		},
-		{
-			"uh1h_armed_plus_EPOCH",
-			{
+			};
+		};
+		class uh1h_armed_plus_EPOCH {
+			MagsTurrets[] = {
 				{"200Rnd_762x51_Belt",{0},3,200},
 				{"200Rnd_762x51_Belt",{1},3,200}
-			}
-		},
-		{
-			"C_Heli_Light_01_armed_EPOCH",
-			{
+			};
+		};
+		class C_Heli_Light_01_armed_EPOCH {
+			MagsTurrets[] = {
 				{"200Rnd_65x39_Belt",{-1},3,200}
-			}
-		},
-		{
-			"C_Heli_Light_01_armed_plus_EPOCH",
-			{
+			};
+		};
+		class C_Heli_Light_01_armed_plus_EPOCH {
+			MagsTurrets[] = {
 				{"200Rnd_762x51_Belt",{-1},3,200}
-			}
-		},
-		{
-			"A2_SUV_armed_EPOCH",
-			{
+			};
+		};
+		class A2_SUV_armed_EPOCH {
+			MagsTurrets[] = {
 				{"200Rnd_762x51_Belt",{0},3,200}
-			}
-		},
-		{
-			"B_G_Offroad_01_armed_F",
-			{
+			};
+		};
+		class I_LT_01_cannon_F {
+			MagsTurrets[] = {
+				{"SmokeLauncherMag",{0},2,50},
+				{"200Rnd_762x51_Belt_Yellow",{0},1,300}
+			};
+		};
+		class I_LT_01_scout_F {
+			MagsTurrets[] = {
+				{"SmokeLauncherMag",{0},2,50}
+			};
+		};
+		class I_C_Offroad_02_LMG_F {
+			MagsTurrets[] = {
+				{"200Rnd_556x45_Box_Tracer_F",{0},3,250}
+			};
+		};
+		class I_MRAP_03_hmg_F {
+			MagsTurrets[] = {
+				{"500Rnd_127x99_mag_Tracer_Red",{0},3,1500},
+				{"200Rnd_127x99_mag_Tracer_Red",{0},3,600},
+				{"SmokeLauncherMag",{1},2,50}
+			};
+		};
+		class O_MRAP_02_EPOCH1 {
+			MagsTurrets[] = {
+				{"SmokeLauncherMag",{-1},2,50}
+			};
+		};
+		class B_Heli_Transport_01_F {
+			MagsTurrets[] = {
+				{"168Rnd_CMFlare_Chaff_Magazine",{-1},1,150},
+				{"2000Rnd_65x39_Belt_Tracer_Red",{1},1,800,1250},
+				{"2000Rnd_65x39_Belt_Tracer_Red",{2},1,800,1250}
+			};
+		};
+		class B_G_Offroad_01_armed_F {
+			MagsTurrets[] = {
 				{"100Rnd_127x99_mag_Tracer_Yellow",{0},4,200}
-			}
-		},
-		{
-			"O_G_Offroad_01_armed_F",
-			{
-				{"100Rnd_127x99_mag_Tracer_Yellow",{0},4,200}
-			}
-		},
-		{
-			"I_G_Offroad_01_armed_F",
-			{
-				{"100Rnd_127x99_mag_Tracer_Yellow",{0},4,200}
-			}
-		},
-		{
-			"I_MRAP_03",
-			{
+			};
+		};
+		class O_G_Offroad_01_armed_F : B_G_Offroad_01_armed_F {};
+		class I_G_Offroad_01_armed_F : B_G_Offroad_01_armed_F {};
+		class B_G_Offroad_01_armed_EPOCH : B_G_Offroad_01_armed_F {};
+		class B_G_Offroad_01_armed_EPOCH1 : B_G_Offroad_01_armed_F {};
+		class B_G_Offroad_01_armed_EPOCH2 : B_G_Offroad_01_armed_F {};
+		class B_G_Offroad_01_armed_EPOCH3 : B_G_Offroad_01_armed_F {};
+		class B_G_Offroad_01_armed_EPOCH4 : B_G_Offroad_01_armed_F {};
+		class I_MRAP_03 {
+			MagsTurrets[] = {
 				{"SmokeLauncherMag",{0},1,150}
-			}
-		},
-		{
-			"I_MRAP_03_EPOCH",
-			{
-			}
-		},
-		{
-			"O_MRAP_02_F",
-			{
+			};
+		};
+		class I_MRAP_03_EPOCH {
+			MagsTurrets[] = {
+			};
+		};
+		class O_MRAP_02_F {
+			MagsTurrets[] = {
 				{"SmokeLauncherMag",{-1},1,150}
-			}
-		},
-		{
-			"B_LSV_01_armed_olive_F",
-			{
+			};
+		};
+		class B_LSV_01_armed_olive_F {
+			MagsTurrets[] = {
 				{"100Rnd_127x99_mag_Tracer_Red",{0},3,200},
 				{"130Rnd_338_Mag",{1},3,260}
-			}
-		},
-		{
-			"B_LSV_01_armed_black_F",
-			{
-				{"100Rnd_127x99_mag_Tracer_Red",{0},3,200},
-				{"130Rnd_338_Mag",{1},3,260}
-			}
-		},
-		{
-			"O_T_LSV_02_armed_black_F",
-			{
+			};
+		};
+		class B_LSV_01_armed_black_F : B_LSV_01_armed_olive_F {};
+		class O_T_LSV_02_armed_black_F {
+			MagsTurrets[] = {
 				{"500Rnd_65x39_Belt_Tracer_Green_Splash",{0},3,500}
-			}
-		},
-		{
-			"O_T_LSV_02_armed_ghex_F",
-			{
-				{"500Rnd_65x39_Belt_Tracer_Green_Splash",{0},3,500}
-			}
-		},
-		{
-			"B_SDV_01_EPOCH",
-			{
-			}
-		},
-		{
-			"B_Heli_Light_01_armed_F",
-			{
-				{"5000Rnd_762x51_Belt",{-1},1,1600}
-			}
-		},
-		{
-			"O_Heli_Light_02_unarmed_EPOCH",
-			{
+			};
+		};
+		class O_T_LSV_02_armed_ghex_F : O_T_LSV_02_armed_black_F {};
+		class B_SDV_01_EPOCH {
+			MagsTurrets[] = {
+			};
+		};
+		class B_Heli_Light_01_armed_F {
+			MagsTurrets[] = {
+				{"5000Rnd_762x51_Belt",{-1},1,1600,2000}
+			};
+		};
+		class B_Heli_Light_01_armed_EPOCH {
+			MagsTurrets[] = {
+				{"1000Rnd_762x51_Belt",{-1},1,1200}
+			};
+		};
+		class O_Heli_Light_02_unarmed_EPOCH {
+			MagsTurrets[] = {
 				{"168Rnd_CMFlare_Chaff_Magazine",{-1},1,150}
-			}
-		},
-		{
-			"O_Heli_Light_02_v2_F",
-			{
+			};
+		};
+		class O_Heli_Light_02_v2_F {
+			MagsTurrets[] = {
 				{"2000Rnd_65x39_Belt_Tracer_Green_Splash",{-1},1,1200},
 				{"168Rnd_CMFlare_Chaff_Magazine",{-1},1,150}
-			}
-		},
-		{
-			"B_Heli_Transport_01_EPOCH",
-			{
+			};
+		};
+		class B_Heli_Transport_01_EPOCH {
+			MagsTurrets[] = {
 				{"168Rnd_CMFlare_Chaff_Magazine",{-1},1,150},
 				{"2000Rnd_65x39_Belt_Tracer_Red",{1},1,1200},
 				{"2000Rnd_65x39_Belt_Tracer_Red",{2},1,1200}
-			}
-		},
-		{
-			"I_Heli_Transport_02_F",
-			{
+			};
+		};
+		class B_Heli_Transport_01_camo_EPOCH : B_Heli_Transport_01_EPOCH {};
+		class I_Heli_Transport_02_F {
+			MagsTurrets[] = {
 				{"168Rnd_CMFlare_Chaff_Magazine",{-1},1,150}
-			}
-		},
-		{
-			"I_Heli_Transport_02_EPOCH",
-			{
-				{"168Rnd_CMFlare_Chaff_Magazine",{-1},1,150}
-			}
-		},
-		{
-			"B_Heli_Transport_03_F",
-			{
+			};
+		};
+		class I_Heli_Transport_02_EPOCH : I_Heli_Transport_02_F {};
+		class B_Heli_Transport_03_F {
+			MagsTurrets[] = {
 				{"168Rnd_CMFlare_Chaff_Magazine",{-1},1,150},
 				{"2000Rnd_65x39_Belt_Tracer_Red",{1},1,1200},
 				{"2000Rnd_65x39_Belt_Tracer_Red",{2},1,1200}
-			}
-		},
-		{
-			"B_Heli_Transport_03_black_F",
-			{
-				{"168Rnd_CMFlare_Chaff_Magazine",{-1},1,150},
-				{"2000Rnd_65x39_Belt_Tracer_Red",{1},1,1200},
-				{"2000Rnd_65x39_Belt_Tracer_Red",{2},1,1200}
-			}
-		},
-		{
-			"B_Heli_Transport_03_unarmed_EPOCH",
-			{
+			};
+		};
+		class B_Heli_Transport_03_black_F : B_Heli_Transport_03_F {};
+		class B_Heli_Transport_03_unarmed_EPOCH {
+			MagsTurrets[] = {
 				{"168Rnd_CMFlare_Chaff_Magazine",{-1},1,150}
-			}
-		},
-		{
-			"I_Heli_light_03_unarmed_EPOCH",
-			{
+			};
+		};
+		class I_Heli_light_03_unarmed_EPOCH {
+			MagsTurrets[] = {
 				{"168Rnd_CMFlare_Chaff_Magazine",{-1},1,150}
-			}
-		},
-		{
-			"B_T_VTOL_01_vehicle_blue_F",
-			{
+			};
+		};
+		class O_Heli_Transport_04_box_EPOCH {
+			MagsTurrets[] = {
+				{"168Rnd_CMFlare_Chaff_Magazine",{-1},1,150}
+			};
+		};
+		class O_Heli_Transport_04_bench_EPOCH : O_Heli_Transport_04_box_EPOCH {};
+		class O_Heli_Transport_04_covered_EPOCH : O_Heli_Transport_04_box_EPOCH {};
+		class O_Heli_Transport_04_EPOCH : O_Heli_Transport_04_box_EPOCH {};
+		class B_T_VTOL_01_vehicle_blue_F {
+			MagsTurrets[] = {
 				{"240Rnd_CMFlare_Chaff_Magazine",{-1},1,150}
-			}
-		},
-		{
-			"B_T_VTOL_01_infantry_olive_F",
-			{
-				{"240Rnd_CMFlare_Chaff_Magazine",{-1},1,150}
-			}
-		},
-		{
-			"B_T_VTOL_01_infantry_blue_F",
-			{
-				{"240Rnd_CMFlare_Chaff_Magazine",{-1},1,150}
-			}
-		},
-		{
-			"O_T_VTOL_02_vehicle_F",
-			{
+			};
+		};
+		class B_T_VTOL_01_infantry_olive_F : B_T_VTOL_01_vehicle_blue_F {};
+		class B_T_VTOL_01_infantry_blue_F : B_T_VTOL_01_vehicle_blue_F {};
+		class O_T_VTOL_02_vehicle_F {
+			MagsTurrets[] = {
 				{"168Rnd_CMFlare_Chaff_Magazine",{-1},1,150}
-			}
-		},
-		{
-			"O_T_VTOL_02_vehicle_grey_F",
-			{
-				{"168Rnd_CMFlare_Chaff_Magazine",{-1},1,150}
-			}
-		},
-		{
-			"O_T_VTOL_02_infantry_F",
-			{
-				{"168Rnd_CMFlare_Chaff_Magazine",{-1},1,150}
-			}
-		},
-		{
-			"B_Heli_Attack_01_F",
-			{
+			};
+		};
+		class O_T_VTOL_02_vehicle_grey_F : O_T_VTOL_02_vehicle_F {};
+		class O_T_VTOL_02_infantry_F : O_T_VTOL_02_vehicle_F {};
+		class B_Heli_Attack_01_F {
+			MagsTurrets[] = {
 				{"240Rnd_CMFlare_Chaff_Magazine",{-1},1,150}
-			}
-		},
-		{
-			"O_Heli_Attack_02_black_F",
-			{
+			};
+		};
+		class O_Heli_Attack_02_black_F {
+			MagsTurrets[] = {
 				{"192Rnd_CMFlare_Chaff_Magazine",{-1},1,150}
-			}
-		},
-		{
-			"O_Heli_Attack_02_F",
-			{
-				{"192Rnd_CMFlare_Chaff_Magazine",{-1},1,150}
-			}
-		},
-		{
-			"O_Boat_Armed_01_hmg_F",
-			{
+			};
+		};
+		class O_Heli_Attack_02_F : O_Heli_Attack_02_black_F {};
+		class O_Boat_Armed_01_hmg_F {
+			MagsTurrets[] = {
 				{"SmokeLauncherMag_boat",{-1},1,100},
 				{"200Rnd_127x99_mag_Tracer_Green",{1},3,300}
-			}
-		},
-		{
-            "mosquito_epoch_armedG",
-            {
+			};
+		};
+		class mosquito_epoch_armedG {
+			MagsTurrets[] = {
                 {"3Rnd_MosquitoGrenade",{-1},1,60}
-            }
-        }
+			};
+        };
 	};
 };

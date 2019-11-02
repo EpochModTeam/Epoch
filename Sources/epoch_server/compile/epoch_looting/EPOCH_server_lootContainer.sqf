@@ -24,7 +24,12 @@ if (_player distance _object > 20) exitWith{};
 
 if !(_object in EPOCH_cleanupQueue) then {
 
-	EPOCH_cleanupQueue pushBack _object;
+	[_player,"LootedObjs",1,true] call EPOCH_server_updatePlayerStats;
+	
+	_parent = _object getvariable ["Epoch_ParentBuilding",ObjNull];
+	if (isnull _parent) then {
+		EPOCH_cleanupQueue pushBack _object;
+	};
 
 	_type = typeOf _object;
 
@@ -44,6 +49,11 @@ if !(_object in EPOCH_cleanupQueue) then {
 			_object = createVehicle [_class, _pos, [], 0.0, "CAN_COLLIDE"];
 			_object setDir _dir;
 			_object setPosATL _pos;
+			if !(isNull _parent) then {
+				_ParentLoots = _parent getvariable ["Epoch_BuildingLoot",[]];
+				_ParentLoots pushback _object;
+				_parent setvariable ["Epoch_BuildingLoot",_ParentLoots];
+			};
 		};
 
 		[_object, _type] call EPOCH_serverLootObject;
@@ -52,7 +62,7 @@ if !(_object in EPOCH_cleanupQueue) then {
 			[_object, {player action["Gear", _this]}] remoteExec ["call", _player];
 		};
 	} else {
-		[_object, "Food"] call EPOCH_serverLootObject;
+		[_object, "Default"] call EPOCH_serverLootObject;
 		// force player to open gear on this object.
 		[_object, {player action["Gear", _this]}] remoteExec ["call", _player];
 	};

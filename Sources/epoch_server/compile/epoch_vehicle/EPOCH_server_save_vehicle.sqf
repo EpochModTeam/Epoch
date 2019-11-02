@@ -31,7 +31,13 @@ if (!isNull _vehicle) then {
 
 		_colorSlot = _vehicle getVariable ["VEHICLE_TEXTURE",0];
 		_baseType = _vehicle getVariable ["VEHICLE_BASECLASS",""];
-		_VAL = [typeOf _vehicle,[getposworld _vehicle,vectordir _vehicle,vectorup _vehicle,true],damage _vehicle,_hitpoints,fuel _vehicle,_inventory,[true,magazinesAllTurrets _vehicle],_colorSlot,_baseType, getPlateNumber _vehicle];
+
+		_Textures = [];
+		if (missionnamespace getvariable ["UseCustomTextures",false] || _colorSlot isEqualTo -1) then {
+			_Textures = getObjectTextures _vehicle;
+		};
+
+		_VAL = [typeOf _vehicle,[getposworld _vehicle,vectordir _vehicle,vectorup _vehicle,true],damage _vehicle,_hitpoints,fuel _vehicle,_inventory,[true,magazinesAllTurrets _vehicle],_colorSlot,_baseType, getPlateNumber _vehicle, _Textures];
 		["Vehicle", _vehHiveKey, EPOCH_expiresVehicle, _VAL] call EPOCH_fnc_server_hiveSETEX;
 	};
 };

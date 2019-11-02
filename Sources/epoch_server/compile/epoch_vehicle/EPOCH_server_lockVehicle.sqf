@@ -13,7 +13,7 @@
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server/compile/epoch_vehicle/EPOCH_server_lockVehicle.sqf
 */
 //[[[cog import generate_private_arrays ]]]
-private ["_VehLockMessages","_msg","_crew","_driver","_isLocked","_lockOwner","_lockedOwner","_logic","_playerGroup","_playerUID","_response","_vehLockHiveKey","_vehSlot"];
+private ["_VehLockMessages","_msg","_crew","_driver","_isLocked","_lockOwner","_lockedOwner","_logic","_playerGroup","_playerUID","_response","_vehLockHiveKey","_vehSlot","_nearhome"];
 //[[[end]]]
 params [
     ["_vehicle",objNull,[objNull]],
@@ -38,6 +38,7 @@ if (_playerGroup != "") then {
 };
 
 _lockedOwner = "-1";
+_nearhome = false;
 _vehSlot = _vehicle getVariable["VEHICLE_SLOT", "ABORT"];
 _vehLockHiveKey = format["%1:%2", (call EPOCH_fn_InstanceID), _vehSlot];
 if (_vehSlot != "ABORT") then {
@@ -82,7 +83,8 @@ if (_logic) then {
 
 	if (_value) then {
 		if !(_vehSlot isequalto "ABORT") then {
-			["VehicleLock", _vehLockHiveKey, EPOCH_vehicleLockTime, [_lockOwner]] call EPOCH_fnc_server_hiveSETEX;
+			_nearhome = {(_x getVariable["BUILD_OWNER", "-1"]) in [_lockOwner] && {((_vehicle distance _x) < (getnumber (missionconfigfile >> "CfgEpochClient" >> "CfgJammers" >> (typeof _x) >> "buildingJammerRange")))}} count Epoch_PlotPoles > 0;
+			["VehicleLock", _vehLockHiveKey, if (_nearhome) then {EPOCH_vehicleLockTimeHome} else {EPOCH_vehicleLockTime}, [_lockOwner]] call EPOCH_fnc_server_hiveSETEX;
 		}
 		else {
 			_vehicle setvariable ["EPOCH_LockedOwner",_lockOwner];
@@ -102,8 +104,21 @@ if (_logic) then {
 		[_vehicle, _value] remoteExec ['EPOCH_client_lockVehicle',_vehicle];
 	};
 	if (_VehLockMessages) then {
-		_msg = if (_value) then {"Vehicle Locked"} else {"Vehicle unlocked"};
-		[_msg,5] remoteExec ["Epoch_Message",_player];
+		if (_value) then {
+			_msg = format ["Vehicle Locked for %1 ",
+				if (_nearhome && {(call compile EPOCH_vehicleLockTimeHome) > (call compile EPOCH_vehicleLockTime)}) then {
+					(((call compile EPOCH_vehicleLockTimeHome)/60/60) toFixed 1) + " hours - Base Lock"
+				} 
+				else {
+					(((call compile EPOCH_vehicleLockTime)/60/60) toFixed 1) + " hours"
+				}
+			];
+			[_msg,10,[[1,0,0,0.2],[1,1,1,1]]] remoteExec ["Epoch_Message",_player];
+		}
+		else {
+			_msg = "Vehicle unlocked";
+			[_msg,10,[[0,1,0,0.2],[1,1,1,1]]] remoteExec ["Epoch_Message",_player];
+		};
 	};
 }
 else {

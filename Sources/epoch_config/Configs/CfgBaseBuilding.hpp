@@ -177,7 +177,7 @@ class CfgBaseBuilding
         removeParts[] = {{"KitSolarGen",1}};
         powerCapacity = 10;
         powerType = 1;
-        GhostPreview = "SolarGen_EPOCH";
+        GhostPreview = "SolarGen_Ghost_EPOCH";
         staticClass = "SolarGen_EPOCH";
         simulClass = "SolarGen_SIM_EPOCH";
     };
@@ -185,6 +185,7 @@ class CfgBaseBuilding
     {
         removeParts[] = {};
     };
+    class SolarGen_Ghost_EPOCH : SolarGen_SIM_EPOCH {};
     class PlotPole_EPOCH : Default
     {
         upgradeBuilding[] = {{"PlotPole_M_EPOCH",{{"ItemCorrugatedLg",5},{"EnergyPackLg",2},{"CircuitParts",3},{"ItemBattery",3},{"ItemPipe",1}}}};
@@ -1425,7 +1426,7 @@ class CfgBaseBuilding
         limitNearby = 2;
         isSecureStorage = 1;
     };
-    class Safe_s_SIM_EPOCH : Safe_EPOCH
+    class Safe_s_SIM_EPOCH : Safe_s_EPOCH
     {
         returnOnPack[] = {};
     };

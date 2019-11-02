@@ -24,7 +24,7 @@ if (getNumber(_cfgEpoch >> "shipwreckLootEnabled") isEqualTo 1) then {
 	if(_total isEqualTo 0)exitWith{if(_debug)then{diag_log "EPOCHDebug: no shipwrecks allowed"}};
 	// Load shipwrecks and custom locations
 	_worldSize = worldSize/2;
-	_shipwrecks = nearestTerrainObjects [ [_worldSize, _worldSize], ["SHIPWRECK"], _worldSize];
+	_shipwrecks = (nearestTerrainObjects [ [_worldSize, _worldSize], ["SHIPWRECK"], _worldSize]) select {surfaceiswater (getpos _x)} ;
 	_customLocs = getArray(_cfgEpoch >> "shipwreckCustomLocs");
 	_customWrecks = getArray(_cfgEpoch >> "shipwreckCustomWrecks");
 	_totalCustomLocs = count(_customLocs);

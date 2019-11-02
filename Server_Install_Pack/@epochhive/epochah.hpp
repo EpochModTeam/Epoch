@@ -69,6 +69,7 @@ adminMenu_cryptoCfg[] = {2500,1000,500,100,50,-1000};
 //You can find the Key Codes here: https://community.bistudio.com/wiki/DIK_KeyCodes#F1..15
 adminMenu_menuKey = 0x3B;
 adminMenu_infrontTeleport = 0x06;
+adminMenu_JumpUp = 0x05;
 
 /*
 AH CONFIG README

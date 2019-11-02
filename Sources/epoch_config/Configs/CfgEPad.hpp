@@ -113,6 +113,17 @@ class e_pad_config
 				ToggleVar = "EPOCH_AutoEarplug";
 				ToggleAble = "true";
 			};
+			class PublicStats {
+				ButtonText = "";
+				Description = "Public Stats";
+				icon = "x\addons\a3_epoch_code\Data\UI\epad\ServerStats.paa";
+				color[] = {1,0,0,1};
+				colortoggled[] = {0,1,0,1};
+				action = "EPOCH_totalPublicStats = if (EPOCH_MyStatsPublic) then {0} else {1};EPOCH_forceUpdateNow = true";
+				Tooltip = "Enable / Disable your Stats in Server Stats";
+				ToggleVar = "EPOCH_MyStatsPublic";
+				ToggleAble = "true";
+			};
 			class Reset {
 				ButtonText = "Reset";
 				Description = "Reset Settings";
@@ -282,6 +293,30 @@ class e_pad_config
 			colortoggled[] = {0,1,0,1};
 			action = "[] spawn {_confirm = ['Are you sure to kill yourself?','Suicide!',true,true] call BIS_fnc_guiMessage;if (_confirm) then {while {dialog} do {closedialog 0};disableUserInput true;Player playAction 'GestureSuicide';uisleep 3;Player setdamage 1;disableUserInput false;};};";
 			Tooltip = "Kill yourself to respawn";
+			ToggleVar = "";
+			ToggleAble = "false";
+		};
+		class PlayerStats
+		{
+			ButtonText = "";
+			Description = "Player Statistic";
+			icon = "x\addons\a3_epoch_code\Data\UI\epad\PlayerStats.paa";
+			color[] = {0,0,1,1};
+			colortoggled[] = {0,1,0,1};
+			action = "if (isnull (finddisplay -1200)) then {createdialog 'PlayerStatsDialog'};";
+			Tooltip = "Player Statistic";
+			ToggleVar = "";
+			ToggleAble = "false";
+		};
+		class ServerStats
+		{
+			ButtonText = "";
+			Description = "Server Statistic";
+			icon = "x\addons\a3_epoch_code\Data\UI\epad\ServerStats.paa";
+			color[] = {0,0,1,1};
+			colortoggled[] = {0,1,0,1};
+			action = "if (isnull (finddisplay -1200)) then {createdialog 'ServerStatsDialog'};";
+			Tooltip = "Server Statistic";
 			ToggleVar = "";
 			ToggleAble = "false";
 		};

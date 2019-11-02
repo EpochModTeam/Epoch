@@ -154,7 +154,8 @@ if (isClass _epochWorldPath) then {
 };
 epoch_centerMarkerPosition = getMarkerPos "center";
 if (epoch_centerMarkerPosition isEqualTo [0,0,0]) then {
-    diag_log "Epoch: Error cannot find center marker!";
+    diag_log "Epoch: Error cannot find center marker! - default used instead";
+	epoch_centerMarkerPosition = [worldSize / 2, worldsize / 2, 0];
 };
 EPOCH_dynamicVehicleArea = _worldSize / 2;
 
@@ -168,6 +169,9 @@ for "_i" from 0 to 9 do {
     _index = radioChannelCreate[_channelColor, _channelTXT, "%UNIT_NAME", []];
     EPOCH_customChannels pushBack _index;
 };
+
+UseCustomTextures = ([_serverSettingsConfig, "UseCustomTextures", false] call EPOCH_fnc_returnConfigEntry);
+Epoch_UseLootHelper = ([_serverSettingsConfig, "UseLootHelper", false] call EPOCH_fnc_returnConfigEntry);
 
 //Execute Server Functions
 diag_log "Epoch: Loading buildings";
@@ -183,6 +187,20 @@ EPOCH_NPCSlotsLimit call EPOCH_server_loadTraders;
 diag_log "Epoch: Spawning NPC traders";
 call EPOCH_server_spawnTraders;
 publicvariable "EPOCH_Traders";
+
+if (([_serverSettingsConfig, "ReplaceCarService", false] call EPOCH_fnc_returnConfigEntry)) then {
+	{
+		private _shop = "paintshop" createvehicle (getpos _x);
+		_shop setposatl ((getposatl _x) vectorAdd [0,0,0.1]);
+		_shop setVectorDirAndUp [VectorDir _x, VectorUp _x];
+		_x HideobjectGlobal true;
+	} foreach (epoch_centerMarkerPosition nearObjects ["Land_CarService_F", EPOCH_dynamicVehicleArea]);
+};
+if (([_serverSettingsConfig, "PaintShopIcons", false] call EPOCH_fnc_returnConfigEntry)) then {
+	{
+		_markers = ["PaintGarage", (getpos _x)] call EPOCH_server_createGlobalMarkerSet;
+	} foreach (allmissionobjects "paintshop");
+};
 
 diag_log "Epoch: Loading vehicles";
 // Vehicle slot limit set to total of all allowed limits
@@ -252,12 +270,14 @@ if (_staticDateTime isEqualto []) then {
 };
 if (_dateChanged) then {
     setDate _date;
+/*
     //add 1 min to be 100% correct
     _date set [4, (_date select 4) + 1];
     _date spawn {
         uiSleep 60;
         setDate _this;
     };
+*/
 };
 
 _config = 'CfgServicePoint' call EPOCH_returnConfig;

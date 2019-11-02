@@ -1,0 +1,57 @@
+Instruction:
+You can run this code in Multiplayer on a Server or in Editor.
+If running in editor, make sure you have loaded the Epoch mission to have access to the current Loot Configs.
+In Multiplayer on a Server, you are able to work in a group. The Variables are broadcasted, so several players can define parallel the Positions. 
+1. Run the whole codes (copy/paste) within "saveLootPositions_v2_Codes.sqf" on all clients, who want to work on the LootBuilder. This code will:
+	- Add MapMarkers for all Building Types without defined Loot Positions
+	- Add the needed Display Eventhandlers to Place loot and save it.
+2. Do your work - There are 2 procedures how you can work:
+	1. 
+		- Jump between random buildings with not defined Loot with F11
+		- The Building you are at is automatically defined as your Loot Building.
+		- Choose and place your Loot (see next chapter) or if no Loot is needed here, skip this Building with F9 (Marker will be removed)
+		- Switch to the next random Building with F11...
+	2.
+		- Move to a Mapmarker where you want to define the Loot
+		- Look on the Building and press Enter to select the Building (a hint should come up with the defined Building)
+		- Choose and place your Loot (see next chapter) or if no Loot is needed here, skip this Building with F9 (Marker will be removed)
+		- You can now travel to the next not defined Building and repeat the above procedure
+	Choose and place Loot:
+		- Choose a LootContainer for positioning with Home/End (Pos1/End)
+		- Move the LootContainer to the wanted Position with the numbers on Numpad 
+			- Num8 -> Move LootContainer Fwd
+			- Num2 -> Move LootContainer Back
+			- Num4 -> Move LootContainer left
+			- Num6 -> Move LootContainer right
+			- Num7 -> Rotate LootContainer counter clockwise
+			- Num9 -> Rotate LootContainer Clockwise
+			- PageUp -> Lift LootContainer
+			- PageDown -> Lower LootContainer
+		- Save this LootContainer to the Building type with Space Bar
+		- The MapMarker for this Building should now get removed automatically
+		- Choose the next Loot Container with Pos1/End and repeat the procedure
+	Shortcuts Overwiew:
+		- LootPositioning:
+			- ENTER -> Select a Building
+			- F9 -> Remove Marker for selected Building (without defining Loot Positions)
+			- home (pos1) -> Select (switch to) next LootContainer
+			- end -> Select (switch to) previous Loot Container
+			- ESC -> Abort (Remove LootContainer)
+			- Num8 -> Move LootContainer Fwd
+			- Num2 -> Move LootContainer Back
+			- Num4 -> Move LootContainer left
+			- Num6 -> Move LootContainer right
+			- Num7 -> Rotate LootContainer counter clockwise
+			- Num9 -> Rotate LootContainer Clockwise
+			- PageUp -> Lift LootContainer
+			- PageDown -> Lower LootContainer
+			- ctrl -> Speed up movement for LootContainer
+			- Space Bar -> Save LootContainer to current BuildingType
+		- Player Movement
+			- F11 -> teleport to next undefined Marker
+			- 4 -> Fly Up (to get faster in higher Buildings for example)
+			- 5 -> Teleport 10m infront (in case you are stucked or want to move faster)
+			- CTRL + Mouseclick (on Map) -> Teleport to cursor position
+3. 	Export the config entries by running the code within saveLootPositions_v2_ExportConfig.sqf 
+	- If in Editor, the config should be in your clipboard. 
+	- If on a Server, read out the Variable "LootarrayStr" (only one CLient have to run it to get the String)

@@ -13,12 +13,13 @@
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server/compile/epoch_player/EPOCH_server_revivePlayer.sqf
 */
 //[[[cog import generate_private_arrays ]]]
-private ["_loadabs","_loadout","_CorpseCrypto","_PlayerCrypto","_attachments","_cIndex","_class","_currwh","_deleteprimary","_deletesecondary","_dir","_droppedPrimary","_droppedSecondary","_droppedWeapons","_equipped","_group","_garbage","_location","_newPlyr","_playerGroup","_playerUID","_token","_type","_vars","_wMags","_wMagsArray","_weapon","_wh","_kIndex","_reviver","_reviverCStats","_reviverKarma","_reviverKarmaAdj"];
+private ["_caller","_loadabs","_loadout","_CorpseCrypto","_PlayerCrypto","_attachments","_cIndex","_class","_currwh","_deleteprimary","_deletesecondary","_dir","_droppedPrimary","_droppedSecondary","_droppedWeapons","_equipped","_group","_garbage","_location","_newPlyr","_playerGroup","_playerUID","_token","_type","_vars","_wMags","_wMagsArray","_weapon","_wh","_kIndex","_reviver","_reviverCStats","_reviverKarma","_reviverKarmaAdj"];
 //[[[end]]]
 params ["_player","_reviver",["_token","",[""]] ];
-
-if !([_reviver, _token] call EPOCH_server_getPToken) exitWith{};
+_caller = if (remoteExecutedOwner == (owner _reviver)) then {_reviver} else {_player};
+if !([_caller, _token] call EPOCH_server_getPToken) exitWith{};
 if (isNull _player) exitWith{};
+if !(isplayer _reviver) exitWith{};
 if (_player distance _reviver > 20) exitWith{};
 
 if (!local _player) then {
@@ -117,6 +118,7 @@ if (!local _player) then {
 				_newPlyr setVariable ["GROUP", _playerGroup];
 				_newPlyr setVariable ["REVIVE", false];
 				_newPlyr setVariable ["SERVER_VARS",_player getVariable ["SERVER_VARS",[]]];
+				_newPlyr setVariable ["EPOCH_playerPlayTime",_player getvariable ["EPOCH_playerPlayTime",0],true];
 
 				// _player playActionNow "Die";
 
@@ -156,6 +158,7 @@ if (!local _player) then {
 					_vars set[_cIndex, _PlayerCrypto];
 					_newPlyr setVariable['VARS', _vars];
 				};
+				_newPlyr setvariable ["COMMUNITY_STATS",_player getVariable["COMMUNITY_STATS", EPOCH_defaultStatVars]];
 
 				// send to player
 				[_newPlyr, _token, _loadabs] remoteExec ['EPOCH_clientRevive',_player];

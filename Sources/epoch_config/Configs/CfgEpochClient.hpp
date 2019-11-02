@@ -14,9 +14,15 @@
 /*[[[cog from arma_config_tools import *; json_to_arma()]]]*/
 class CfgEpochClient
 {
-    epochVersion = "1.3.1";
+    epochVersion = "1.3.2";
     ArmAVersion = 176;
 	debug = "true";  // true = enable extra rpt debug lines, false to disable
+	ForceGender = "";	// Force Players to spawn as "Male" or "Female"
+	RemoveLaserfromUAV = "true";	// remove LaserDesignator from assembled UAV's
+
+	UseOldRevive = "false";		// Revive / Heal Player has been changed to use "HandleDamage" Eventhandler. If scripts are breaking it for you, set it to true (not recommended!)
+	UnconsciousChance = 30;			// Change in percent to get unconscious by a hit with an Axe / Sledge / Sword
+	UnconsciousTime[] = {60,180};	// Min / Max time for unconscious after you got a hit from a non lethal weapon / Axe / Sledge / Sword
 
 	antagonistRngChance = 100; // increase number to reduce chances and reduce to increase. Default 100
 	NuisanceMulti = 0.5;		// Multi for Nuisance increase on shooting - higher Nuisance effect at least antagonist spawn change. (0-1, default 0.5)
@@ -32,7 +38,7 @@ class CfgEpochClient
 	
     baseHungerLoss = 2; // increase number to speed up rate of Hunger loss
     baseThirstLoss = 2; // increase number to speed up rate of Thirst loss
-	accelerateHTALoss = "true"; // use server's time acceleration to increase the rate of Hunger, Thirst and Alcohol loss
+	accelerateHTALoss = "false"; // use server's time acceleration to increase the rate of Hunger, Thirst and Alcohol loss
 
     buildingNearbyMilitary = 0; //1 to allow building nearby
     buildingNearbyMilitaryRange = 300; //Define radius of blocked area
@@ -47,6 +53,7 @@ class CfgEpochClient
     maxBuildingHeight = 100;		// Max Height, building is allowed.
     splitCountLimits = 0;			//1 = distinguish buildingCountLimit from storageCountLimit (ex.: buildingCountLimit=100, storageCountLimit=100 >> you can build 100 baseparts AND additional 100 storage objects like safes, lockboxes...)
 	MaxBuildingTilt = 180;			// Max degrees players can tilt building elements
+	EnablePhysicsOnBuild = "true";	// Building parts need Snap (hold) points to not fall on the ground while building
 	
 	class CfgJammers {
 		class PlotPole_EPOCH 					// Jammer Classname
@@ -192,14 +199,80 @@ class CfgEpochClient
 		{"TraderMissions",0,{}},
 		{"AIKills",0,{}},
 		{"AntagonistKills",0,{}},
-		{"ZombieKills",0,{}}
+		{"ZombieKills",0,{}},
+		{"WalkDist",0,{}},
+		{"MaxAliveTime",0,{}},
+		{"NPCTrades",0,{}},
+		{"PlayTime",0,{}},
+		{"LootedObjs",0,{}},
+		{"CraftedItems",0,{}},
+		{"ConnectCount",0,{}},
+		{"BuildingsSet",0,{}},
+		{"AIDeaths",0,{}},
+		{"PublicStats",1,{}}	// DO not change this! Players can disable it within the E-Pad by themself!
 	};
+	PlayerStatsDialogEntries[] = {
+/*
+		{
+			{"CommunityVariable","DisplayName","ExtraCalculation"}
+		},
+*/
+		{
+			{"ConnectCount","Times connected"},
+			{"PlayTime","Playtime (hours)","%1/3600 toFixed 2"},
+			{"MaxAliveTime","Max Alivetime (hours)","%1/3600 toFixed 2"},
+			{"WalkDist","Distance Walked (Km)","%1/1000 toFixed 2"}
+		},
+		{
+			{"LootedObjs","Objects Looted"},
+			{"NPCTrades","Trades at Trader"},
+			{"BuildingsSet","Placed Buildings"},
+			{"CraftedItems","Crafted Items"}
+		},
+		{
+			{"Karma","Karma","round %1"},
+			{"Revives","Player Revived"},
+			{"TraderMissions","Tradermissions"}
+		},
+		{
+			{"Murders","Player Kills"},
+			{"AIKills","AI Kills"},
+			{"AntagonistKills","Antagonist Kills"},
+			{"ZombieKills","Zombie Kills"}
+		},
+		{
+			{"Deaths","Deaths by Player"},
+			{"AIDeaths","Deaths by AI"},
+			{"Suicides","Suicides"}
+		},
+		{
+			{"","K/D PvP","(Epoch_totalMurders/(Epoch_totalDeaths max 1)) toFixed 1"},
+			{"","K/D PvE","(Epoch_totalAIKills/(Epoch_totalAIDeaths max 1)) toFixed 1"}
+		}
+	};
+	TopStatsDialogEntries[] = {
+/*
+		{"CommunityVariable","DisplayName","ExtraCalculation"},
+*/
+		{"PlayTime","Playtime (hours)","%1/3600 toFixed 2"},
+		{"MaxAliveTime","Max Alivetime (hours)","%1/3600 toFixed 2"},
+		{"WalkDist","Distance Walked (Km)","%1/1000 toFixed 2"},
+		{"LootedObjs","Objects Looted"},
+		{"NPCTrades","Trades at Trader"},
+		{"BuildingsSet","Placed Buildings"},
+		{"CraftedItems","Crafted Items"},
+		{"Karma","Karma","round %1"},
+		{"Murders","Player Kills"},
+		{"AIKills","AI Kills"},
+		{"Deaths","Deaths by Player"},
+		{"AIDeaths","Deaths by AI"}
+	};	
     group_upgrade_lvl[] = {4,"1000",6,"1500",8,"2000",10,"2500",12,"3000",14,"3500",16,"4000",32,"8000",64,"16000"}; // controls max group limit and cost
     // Event handler code
     displayAddEventHandler[] = {"keyDown","keyUp"};
     keyDown = "(_this call EPOCH_KeyDown)";
     keyUp = "(_this call EPOCH_KeyUp)";
-    addEventHandler[] = {"Respawn","Put","Take","InventoryClosed","InventoryOpened","FiredMan","Killed","HandleRating","HandleScore","GetInMan","GetOutMan","Hit","SeatSwitchedMan","FiredNear"};
+    addEventHandler[] = {"Respawn","Put","Take","InventoryClosed","InventoryOpened","FiredMan","Killed","HandleRating","HandleScore","HandleDamage","GetInMan","GetOutMan","Hit","SeatSwitchedMan","FiredNear","WeaponAssembled"};
     Respawn = "(_this select 0) call EPOCH_clientRespawn";
     Put = "(_this select 1) call EPOCH_interact;_this call EPOCH_PutHandler;_this call Epoch_custom_EH_Put";
     Take = "(_this select 1) call EPOCH_interact;_this call EPOCH_UnisexCheck;_this call Epoch_custom_EH_Take";
@@ -209,7 +282,7 @@ class CfgEpochClient
     Killed = "_this call EPOCH_fnc_playerDeath;_this call Epoch_custom_EH_Killed";
     HandleRating = "0";
 	HandleScore = "";
-    HandleDamage = "";
+    HandleDamage = "_this call EPOCH_HandleDamage;_this call EPOCH_custom_EH_HandleDamage";
     HandleHeal = "";
     Dammaged = "";
     Hit = "_this call EPOCH_custom_EH_Hit";
@@ -218,6 +291,7 @@ class CfgEpochClient
     GetOutMan = "_this call EPOCH_getOutMan;_this call Epoch_custom_EH_GetOutMan";
 	SeatSwitchedMan = "_this call EPOCH_custom_EH_SeatSwitchedMan";
 	FiredNear = "_this call EPOCH_custom_EH_FiredNear";
+	WeaponAssembled = "clearItemCargoGlobal (_this select 1);if (['CfgEpochClient','RemoveLaserfromUAV',true] call EPOCH_fnc_returnConfigEntryV2) then {(_this select 1) removeWeaponTurret ['Laserdesignator_mounted',[0]]}; if ((_this select 1) isKindOf 'UAV_01_base_F' || (_this select 1) isKindOf 'UAV_06_base_F') then {['UAV assembled - Connect it with DynaMenu (Space)',5] call Epoch_Message}";
     // suppress these units from spawning near Jammer or Traders
     nonJammerAI[] = {"B_Heli_Transport_01_F","PHANTOM","EPOCH_Sapper_F","Epoch_SapperG_F","Epoch_SapperB_F","I_UAV_01_F","EPOCH_RyanZombie_1"};
     nonTraderAI[] = {"B_Heli_Transport_01_F","PHANTOM","EPOCH_Sapper_F","Epoch_SapperG_F","Epoch_SapperB_F","I_UAV_01_F","Epoch_Cloak_F","GreatWhite_F","EPOCH_RyanZombie_1"};
@@ -295,6 +369,32 @@ class CfgEpochClient
 		{"HitBWheel",0.33,0.91,"",""}
 	};
 
+/*	// Lower difficult VehicleRepairs example	
+	VehicleRepairs[] = {												// {Hitpoint, dmg to repair, dmg to replace, mat to repair, mat to replace}
+		{"HitHull",0.33,0.66,"ItemScraps","ItemCorrugated"},
+		{"HitBody",0.33,1,"ItemScraps","ItemCorrugated"},
+		{"HitEngine",0.33,0.91,"VehicleRepair","VehicleRepair"},
+		{"glass",0.33,1,"ItemGlass","ItemGlass"},
+		{"HitFuel",0.1,0.66,"ItemDuctTape","ItemDuctTape"},
+		{"HitHRotor",0.33,1,"ItemCorrugated","ItemCorrugated"},
+		{"HitVRotor",0.33,1,"ItemCorrugated","ItemCorrugated"},
+		{"HitWinch",0.33,0.91,"ItemCables","ItemCables"},
+		{"HitAvionics",0.33,0.91,"CircuitParts","CircuitParts"},
+		// Wheels - Do not change the order (front to back wheels) here!
+		{"HitLFWheel",0.33,1,"VehicleRepair","VehicleRepair"},
+		{"HitRFWheel",0.33,1,"VehicleRepair","VehicleRepair"},
+		{"HitLF2Wheel",0.33,1,"VehicleRepair","VehicleRepair"},
+		{"HitRF2Wheel",0.33,1,"VehicleRepair","VehicleRepair"},
+		{"HitLMWheel",0.33,1,"VehicleRepair","VehicleRepair"},
+		{"HitRMWheel",0.33,1,"VehicleRepair","VehicleRepair"},
+		{"HitLBWheel",0.33,1,"VehicleRepair","VehicleRepair"},
+		{"HitRBWheel",0.33,1,"VehicleRepair","VehicleRepair"},
+		// Mountainbike wheels
+		{"HitFWheel",0.33,0.91,"",""},
+		{"HitBWheel",0.33,0.91,"",""}
+	};
+*/
+
     // include configs
     #include "CfgEpochClient\Altis.hpp"
     #include "CfgEpochClient\australia.hpp"
@@ -302,6 +402,7 @@ class CfgEpochClient
     #include "CfgEpochClient\Chernarus_Summer.hpp"
     #include "CfgEpochClient\Chernarus.hpp"
 	#include "CfgEpochClient\ChernarusRedux.hpp"
+    #include "CfgEpochClient\Enoch.hpp"
     #include "CfgEpochClient\Esseker.hpp"
     #include "CfgEpochClient\ProvingGrounds_PMC.hpp"
     #include "CfgEpochClient\Sara_dbe1.hpp"
@@ -330,6 +431,8 @@ class CfgEpochSoldier
     maxReloadSpeed = 0.5;
     maxCommanding = 0.4;
     maxGeneral = 0.4;
+	minspawndist = 120;
+	maxspawndist = 200;
 };
 class CfgEpochSapper
 {

@@ -47,15 +47,28 @@ _loadBaseTemplateConfig = {
 // load map config
 _config = configFile >> "CfgEpoch";
 _configWorld = _config >> worldname;
+if !(isclass _configWorld) then {
+	_configWorld = _config >> "Default";
+};
 
 _debugBox = getText(_configWorld >> "debugBoxClass"); // debugBoxClass = "" to disable
 if !(_debugBox isEqualTo "") then {
 	_debugLocation = getMarkerPos "respawn_west";
 	_debugLocation set[2, 0];
+	if (_debugLocation isEqualTo [0,0,0]) then {
+		_debugLocation set [2, 10];
+	};
 	_debug = createVehicle[_debugBox, _debugLocation, [], 0, "CAN_COLLIDE"];
 	_debug setposATL _debugLocation;
 	_protection = createVehicle["ProtectionZone_Invisible_F", _debugLocation, [], 0, "CAN_COLLIDE"];
 	_protection setposATL _debugLocation;
+	if (_debugLocation distance2d [0,0,0] < 10) then {
+		_debug setvectorup [0,0,1];
+		if (surfaceiswater _debugLocation) then {
+			_debug setposASL _debugLocation;
+			_protection setposASL _debugLocation;
+		};
+	};
 	_cloneClasses = getArray(_configWorld >> "cloneClasses");
 	if !(_cloneClasses isEqualTo []) then {
 		for "_i" from 1 to 4 do {
@@ -132,6 +145,20 @@ if !(_debugBox isEqualTo "") then {
 	if (_pos isEqualType "") then {
 		_markerName = _pos;
 		_pos = getMarkerPos _markerName;
+		if (_pos isEqualTo [0,0,0]) then {
+			for "_i" from 0 to 10 do {
+				_pos = switch _markerName do {
+					case "north": {[epoch_centerMarkerPosition vectorAdd [0,worldsize/3,0], 0, worldsize/8, 5, 0, 0.1] call BIS_fnc_findSafePos};
+					case "south": {[epoch_centerMarkerPosition vectorAdd [0,-worldsize/3,0], 0, worldsize/8, 5, 0, 0.1] call BIS_fnc_findSafePos};
+					case "east": {[epoch_centerMarkerPosition vectorAdd [worldsize/3,0,0], 0, worldsize/8, 5, 0, 0.1] call BIS_fnc_findSafePos};
+					case "west": {[epoch_centerMarkerPosition vectorAdd [-worldsize/3,0,0], 0, worldsize/8, 5, 0, 0.1] call BIS_fnc_findSafePos};
+					default {[epoch_centerMarkerPosition, 0, worldsize/8, 5, 0, 0.1] call BIS_fnc_findSafePos};
+				};
+				if (count _pos == 2) exitwith {
+					_pos pushback 0;
+				};
+			};
+		};
 		["ProtectionZone_Invisible_F",_markerName,_pos,_class] call _loadBaseTemplateConfig;
 	} else {
 		_pro2 = createVehicle ["ProtectionZone_Invisible_F", _pos, [], 0, "CAN_COLLIDE"];

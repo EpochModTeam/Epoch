@@ -1,7 +1,7 @@
 /*%FSM<COMPILE "C:\Program Files (x86)\Steam\steamapps\common\Arma 3 Tools\FSMEditor\scriptedFSM.cfg, Server Monitor">*/
 /*%FSM<HEAD>*/
 /*
-item0[] = {"Init",0,250,600.000000,-575.000000,700.000000,-525.000000,0.000000,"Init"};
+item0[] = {"Init",0,4346,600.000000,-575.000000,700.000000,-525.000000,0.000000,"Init"};
 item1[] = {"_",8,218,600.000000,-500.000000,700.000000,-450.000000,0.000000,""};
 item2[] = {"Process",2,250,600.000000,-350.000000,700.000000,-300.000000,0.000000,"Process"};
 item3[] = {"Vehicle_and_Player",4,218,750.986694,-310.854675,850.986694,-260.854675,1.000000,"" \n "Vehicle and Player" \n "Checks"};
@@ -13,8 +13,9 @@ item8[] = {"Save_Vehicles",4,218,450.000000,-300.000000,550.000000,-250.000000,4
 item9[] = {"Cleanup_Handler",4,218,750.000000,-450.000000,850.000000,-400.000000,8.000000,"Cleanup" \n "Handler"};
 item10[] = {"Server_FPS",4,218,746.045227,-248.683014,846.045227,-198.683014,0.000000,"Server FPS"};
 item11[] = {"Forced_Restart",4,218,684.856567,-214.145233,784.856567,-164.145233,0.000000,"Forced" \n "Restart"};
-item12[] = {"Events_Monitor",4,4314,516.730896,-213.251221,616.730896,-163.251221,0.000000,"Events" \n "Monitor"};
+item12[] = {"Events_Monitor",4,218,516.730896,-213.251221,616.730896,-163.251221,0.000000,"Events" \n "Monitor"};
 item13[] = {"_",-1,250,532.894043,-183.108612,548.753357,-175.178955,0.000000,""};
+item14[] = {"Loot_Cleanup",4,218,419.174591,-226.325470,519.174561,-176.325470,8.000000,"Loot" \n "Cleanup"};
 version=1;
 class LayoutItems
 {
@@ -40,18 +41,20 @@ link8[] = {2,9};
 link9[] = {2,10};
 link10[] = {2,11};
 link11[] = {2,12};
-link12[] = {3,2};
-link13[] = {4,2};
-link14[] = {5,2};
-link15[] = {6,2};
-link16[] = {7,2};
-link17[] = {8,2};
-link18[] = {9,2};
-link19[] = {10,2};
-link20[] = {11,2};
-link21[] = {12,2};
-globals[] = {0.000000,0,0,0,0,640,480,1,6,6316128,1,275.180084,1161.319580,208.497711,-659.879456,896,844,1};
-window[] = {2,-1,-1,-32000,-32000,984,224,1516,224,3,918};
+link12[] = {2,14};
+link13[] = {3,2};
+link14[] = {4,2};
+link15[] = {5,2};
+link16[] = {6,2};
+link17[] = {7,2};
+link18[] = {8,2};
+link19[] = {9,2};
+link20[] = {10,2};
+link21[] = {11,2};
+link22[] = {12,2};
+link23[] = {14,2};
+globals[] = {0.000000,0,0,0,0,640,480,1,7,6316128,1,275.180084,1161.319580,208.497711,-659.879456,900,884,1};
+window[] = {2,-1,-1,-1,-1,942,182,1474,182,3,918};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -109,6 +112,7 @@ class FSM
                          "_lastWeatherChange = diag_tickTime;" \n
                          "_lastObjectCleanup = diag_tickTime;" \n
                          "_lastObjectCleanup1 = diag_tickTime;" \n
+                         "_lastLootCleanup = diag_ticktime;" \n
                          "" \n
                          "_pvehTime = diag_tickTime;" \n
                          "_forcedrestartTimer = diag_tickTime;" \n
@@ -183,6 +187,21 @@ class FSM
                          "        };" \n
                          "    };" \n
                          "};" \n
+                         "" \n
+                         "_cleanLoot = {" \n
+                         "	if ((_this getvariable [""Epoch_LootCleanup"",diag_ticktime]) > diag_ticktime) exitwith {" \n
+                         "		Epoch_LootedBuildings pushBackUnique _this;" \n
+                         "	};" \n
+                         "	if !((_this nearEntities [[""Epoch_Male_F"", ""Epoch_Female_F""], 50]) isEqualTo []) exitwith {" \n
+                         "		Epoch_LootedBuildings pushBackUnique _this;" \n
+                         "	};" \n
+                         "	_Loots = _this getvariable [""Epoch_BuildingLoot"",[]];" \n
+                         "	{" \n
+                         "		deletevehicle _x;" \n
+                         "	} foreach _Loots;" \n
+                         "	_this setvariable [""Epoch_BuildingLoot"",nil];" \n
+                         "	_this setvariable [""Epoch_LootCleanup"",nil];" \n
+                         "};" \n
                          ""/*%FSM</STATEINIT""">*/;
                         precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
                         class Links
@@ -231,20 +250,20 @@ class FSM
                                          ""/*%FSM</ACTION""">*/;
                                 };
                                 /*%FSM</LINK>*/
-                                /*%FSM<LINK "Cleanup_Handler">*/
-                                class Cleanup_Handler
+                                /*%FSM<LINK "Loot_Cleanup">*/
+                                class Loot_Cleanup
                                 {
-                                        itemno = 9;
+                                        itemno = 14;
                                         priority = 8.000000;
                                         to="Process";
                                         precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-                                        condition=/*%FSM<CONDITION""">*/"((diag_tickTime - _lastObjectCleanup) > 300)"/*%FSM</CONDITION""">*/;
-                                        action=/*%FSM<ACTION""">*/"_lastObjectCleanup = diag_tickTime;" \n
-                                         "" \n
-                                         "// TODO need better way allMissionObjects is not performant" \n
-                                         "if (_cleanupItems isEqualTo []) then {" \n
-                                         "	_cleanupItems = allMissionObjects ""groundWeaponHolder"" + entities ""WeaponHolderSimulated"";" \n
-                                         "};"/*%FSM</ACTION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"((diag_tickTime - _lastLootCleanup) > 0.5)"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/"" \n
+                                         "_lastLootCleanup = diag_tickTime;" \n
+                                         "if !(Epoch_LootedBuildings isEqualTo []) then {" \n
+                                         "	(Epoch_LootedBuildings deleteAt 0) call _cleanLoot;" \n
+                                         "};" \n
+                                         ""/*%FSM</ACTION""">*/;
                                 };
                                 /*%FSM</LINK>*/
                                 /*%FSM<LINK "Cleanup">*/
@@ -262,6 +281,22 @@ class FSM
                                          "};" \n
                                          "if !(EPOCH_cleanupQueue isEqualTo []) then {" \n
                                          "	(EPOCH_cleanupQueue deleteAt 0) call _cleanIt2;" \n
+                                         "};"/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "Cleanup_Handler">*/
+                                class Cleanup_Handler
+                                {
+                                        itemno = 9;
+                                        priority = 8.000000;
+                                        to="Process";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"((diag_tickTime - _lastObjectCleanup) > 300)"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/"_lastObjectCleanup = diag_tickTime;" \n
+                                         "" \n
+                                         "// TODO need better way allMissionObjects is not performant" \n
+                                         "if (_cleanupItems isEqualTo []) then {" \n
+                                         "	_cleanupItems = allMissionObjects ""groundWeaponHolder"" + entities ""WeaponHolderSimulated"";" \n
                                          "};"/*%FSM</ACTION""">*/;
                                 };
                                 /*%FSM</LINK>*/
@@ -351,29 +386,6 @@ class FSM
                                          "" \n
                                          "}forEach allPlayers;" \n
                                          "_players = _playersTemp;" \n
-                                         ""/*%FSM</ACTION""">*/;
-                                };
-                                /*%FSM</LINK>*/
-                                /*%FSM<LINK "Server_FPS">*/
-                                class Server_FPS
-                                {
-                                        itemno = 10;
-                                        priority = 0.000000;
-                                        to="Process";
-                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-                                        condition=/*%FSM<CONDITION""">*/"((diag_tickTime - _serverFpsTime) > 30) && _serverFPSCheckFine"/*%FSM</CONDITION""">*/;
-                                        action=/*%FSM<ACTION""">*/"_serverFpsTime = diag_tickTime;" \n
-                                         "" \n
-                                         "if (_oldFPS isEqualTo EPOCH_diag_fps) then {" \n
-                                         "	_currentFPS = round(diag_fps);" \n
-                                         "	if !(_oldFPS isEqualTo _currentFPS) then {" \n
-                                         "		missionNamespace setVariable [""EPOCH_diag_fps"",_currentFPS,true];" \n
-                                         "		_oldFPS = _currentFPS;" \n
-                                         "	};" \n
-                                         "} else {" \n
-                                         "	missionNamespace setVariable [""EPOCH_diag_fps"", compileFinal """",true];" \n
-                                         "	_serverFPSCheckFine = false;" \n
-                                         "};" \n
                                          ""/*%FSM</ACTION""">*/;
                                 };
                                 /*%FSM</LINK>*/
@@ -498,6 +510,29 @@ class FSM
                                          "} forEach _events2Check;" \n
                                          "// remove expired events" \n
                                          "_events2Check = _newEventsArray;"/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "Server_FPS">*/
+                                class Server_FPS
+                                {
+                                        itemno = 10;
+                                        priority = 0.000000;
+                                        to="Process";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"((diag_tickTime - _serverFpsTime) > 30) && _serverFPSCheckFine"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/"_serverFpsTime = diag_tickTime;" \n
+                                         "" \n
+                                         "if (_oldFPS isEqualTo EPOCH_diag_fps) then {" \n
+                                         "	_currentFPS = round(diag_fps);" \n
+                                         "	if !(_oldFPS isEqualTo _currentFPS) then {" \n
+                                         "		missionNamespace setVariable [""EPOCH_diag_fps"",_currentFPS,true];" \n
+                                         "		_oldFPS = _currentFPS;" \n
+                                         "	};" \n
+                                         "} else {" \n
+                                         "	missionNamespace setVariable [""EPOCH_diag_fps"", compileFinal """",true];" \n
+                                         "	_serverFPSCheckFine = false;" \n
+                                         "};" \n
+                                         ""/*%FSM</ACTION""">*/;
                                 };
                                 /*%FSM</LINK>*/
                                 /*%FSM<LINK "Events_Manager">*/

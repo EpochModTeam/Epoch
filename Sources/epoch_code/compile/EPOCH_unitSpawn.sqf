@@ -13,7 +13,7 @@
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_code/compile/EPOCH_unitSpawn.sqf
 */
 //[[[cog import generate_private_arrays ]]]
-private ["_aiskill","_arrSkills","_arrUnits","_arrVals","_bomb","_config","_currentLimit","_disableAI","_driver","_grp","_index","_jammers","_loop","_minAISkill","_missionConfig","_nonJammer","_nonTrader","_nonTraderAIRange","_playerSpawnArray","_playerSpawnArrayKeyFinal","_pos","_restricted","_sapperHndl","_sapperNum","_spawnLimit","_targetPos","_unit","_units"];
+private ["_aiskill","_arrSkills","_arrUnits","_arrVals","_bomb","_config","_currentLimit","_disableAI","_driver","_grp","_index","_jammers","_loop","_minspawndist","_maxspawndist","_minAISkill","_missionConfig","_nonJammer","_nonTrader","_nonTraderAIRange","_playerSpawnArray","_playerSpawnArrayKeyFinal","_pos","_restricted","_sapperHndl","_sapperNum","_spawnLimit","_targetPos","_unit","_units"];
 //[[[end]]]
 params ["_unitClass",["_trgt",player],["_doVariable",false],["_unitCount",1],["_extraData",[]] ];
 
@@ -159,14 +159,16 @@ switch _unitClass do {
 	};
     case "I_Soldier_EPOCH": {
         _extraData params [["_pos",[]],["_copter",objnull]];
+		_missionConfig = getMissionConfig "CfgEpochSoldier";
+		_minspawndist = getNumber (_missionConfig >> "minspawndist");
+		_maxspawndist = getNumber (_missionConfig >> "maxspawndist");
         if (_pos isEqualTo []) then {
-            _pos = [_targetPos,80,150,1,true] call EPOCH_fnc_findSafePos;
+            _pos = [_targetPos,_minspawndist,_maxspawndist,1,true] call EPOCH_fnc_findSafePos;
         };
         _pos set [2,0];
 		_grp = createGroup [RESISTANCE, true];
 		_grp setBehaviour "COMBAT";
 		_grp setCombatMode "RED";
-		_missionConfig = getMissionConfig "CfgEpochSoldier";
         _minAISkill = getNumber (_missionConfig >> "minAISkill");
         _arrUnits = getArray (_missionConfig >> "unitTypes");
         _arrSkills = ["aimingAccuracy","aimingShake","aimingSpeed","endurance","spotDistance","spotTime","courage","reloadSpeed","commanding","general"];

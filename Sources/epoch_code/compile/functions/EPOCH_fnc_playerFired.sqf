@@ -41,6 +41,7 @@ switch true do {
 				_attachments = handgunItems player;
 				_heal = false;
 				if (_cursorTarget isKindOf "Man") then {
+					if !(missionnamespace getvariable ["EPOCH_OldRevive",false]) exitwith {};
 					if ("Heal_EPOCH" in _attachments) then {
 						_heal = true;
 					};
@@ -74,6 +75,9 @@ switch true do {
 					}forEach((getAllHitPointsDamage _cursorTarget) param[2,[]]);
 					if (_highestDMG > 0) then {
 						_newDMG = ((_highestDMG - 0.5) max 0);
+						if (_cursorTarget iskindof "MAN") then {
+							_newDMG = ((_highestDMG - 1) max 0); 
+						};
 						["Partially healed / repaired",5] call epoch_message;
 						if (local _cursorTarget) then {
 							[_cursorTarget,[[_currentHIT,_newDMG]]] call EPOCH_client_repairVehicle;

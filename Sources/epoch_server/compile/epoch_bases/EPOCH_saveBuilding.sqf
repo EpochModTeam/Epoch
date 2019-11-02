@@ -22,13 +22,19 @@ if !(isNull _this) then {
 		_cfgBaseBuilding = 'CfgBaseBuilding' call EPOCH_returnConfig;
 		_this setDamage 0;
 		_class = typeOf _this;
-		_worldspace = [(getposATL _this call EPOCH_precisionPos), vectordir _this, vectorup _this];
+		_worldspace = [getposworld _this, vectordir _this, vectorup _this, true];
 		_objHiveKey = format["%1:%2", (call EPOCH_fn_InstanceID), _objSlot];
 		_animPhases = [];
 		{
 			_animPhases pushBack (_this animationPhase _x)
 		} foreach (getArray(_cfgBaseBuilding >> _class >> "persistAnimations"));
-		_VAL = [_class, _worldspace, _this getVariable["EPOCH_secureStorage", "-1"], _this getVariable["BUILD_OWNER", "-1"], _this getVariable["TEXTURE_SLOT", 0], _animPhases];
+
+		_Textures = [];
+		if (missionnamespace getvariable ["UseCustomTextures",false]) then {
+			_Textures = getObjectTextures _this;
+		};
+
+		_VAL = [_class, _worldspace, _this getVariable["EPOCH_secureStorage", "-1"], _this getVariable["BUILD_OWNER", "-1"], _this getVariable["TEXTURE_SLOT", 0], _animPhases, _Textures];
 		["Building", _objHiveKey, EPOCH_expiresBuilding, _VAL] call EPOCH_fnc_server_hiveSETEX;
 		_return = true;
 	};

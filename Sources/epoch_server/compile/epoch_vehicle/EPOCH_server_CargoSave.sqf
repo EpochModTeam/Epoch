@@ -25,9 +25,9 @@
 
 
 private [
-	"_wepsItemsCargo","_magsAmmoCargo","_containers","_allContainers","_cargo","_magsAmmoCargox","_wepsItemsCargox","_magsAmmoCargoMinimized","_cargoIndex","_wepsItemsCargoNormalized","_selectedWeaponComponents","_selectedWeapon",
-	"_weaponComponents","_weapon","_newComponents","_inventory","_ItemCargo","_ItemCargox"];
-params [["_vehicle",objnull],["_unpack",true]];
+	"_wepsItemsCargo","_magsAmmoCargo","_containers","_allContainers","_cargo","_magsAmmoCargox","_wepsItemsCargox","_magsAmmoCargoMinimized","_cargoIndex",
+	"_inventory","_ItemCargo","_ItemCargox"];
+params [["_vehicle",objnull],["_unpack",false]];
 // may not be needed but should prevent <null> in DB.
 _wepsItemsCargo = weaponsItemsCargo _vehicle;
 if (isNil "_wepsItemsCargo") then {
@@ -81,29 +81,8 @@ _magsAmmoCargoMinimized = [[],[]];
 	(_magsAmmoCargoMinimized select 1) pushBack (_x select 1);
 } forEach _magsAmmoCargo;
 
-// convert and normalize
-_wepsItemsCargoNormalized = [];
-{
-	_selectedWeaponComponents = _x;
-	_selectedWeapon = _selectedWeaponComponents deleteAt 0;
-	// find actual weapon components - todo this BIS call maybe slow
-	_weaponComponents = _selectedWeapon call BIS_fnc_weaponComponents;
-	// base weapon (without attachments)
-	_weapon = _weaponComponents deleteAt 0;
-	_newComponents = [];
-	{
-		// remove attachments that are already linked via config
-		if (_x isEqualType "" && {(tolower _x) in _weaponComponents}) then {
-			_newComponents pushBack "";
-		} else {
-			_newComponents pushBack _x;
-		};
-	} forEach _selectedWeaponComponents;
-	_wepsItemsCargoNormalized pushBack ([_selectedWeapon] + _newComponents);
-} forEach _wepsItemsCargo;
-
 _inventory = [
-	_wepsItemsCargoNormalized,
+	_wepsItemsCargo,
 	_magsAmmoCargoMinimized,
 	getBackpackCargo _vehicle,
 	_ItemCargo,

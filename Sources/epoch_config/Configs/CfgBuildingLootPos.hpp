@@ -1,8 +1,22 @@
 /*[[[cog from arma_config_tools import *; json_to_arma()]]]*/
 class CfgBuildingLootPos
 {
+	LootCleanupTime = 300;		// Loot Cleanup = 300s (if no players are around)
+
     class Default
     {
+/*
+		LootTypes:
+			civ				// Food / Drink / common clothings
+			mil				// Food / Drink / Mil Clothings / Weapons / Magazines
+			church			// ???
+			medical			// FAK / Defibrillator / morphine...
+			workshop		// Repairs / Tools / Metal ...
+			industrial		// Cinder / Mortar / Metal / Tools...
+			market			// Food / Drink
+			construction	// BaseBuilding parts
+*/
+		lootType = "civ";
         fridgePos[] = {};
         shelfPos[] = {};
         pelicanPos[] = {};
@@ -16,14 +30,18 @@ class CfgBuildingLootPos
         shoeboxPos[] = {};
 		toiletPos[] = {};
 		kitchenSinkPos[] = {};
-        lootBias = 40;
-        limit = 3;
-        lootType = "normal";
-        normal[] = {{"shelfPos","Shelf_EPOCH",true},{"fridgePos","Fridge_EPOCH",true},{"bedPos","Bed_EPOCH",false},{"couchPos","Couch_EPOCH",false},{"wardrobePos","wardrobe_epoch",false},{"cookerPos","cooker_epoch",false},{"chairPos",{"Chair_EPOCH","ChairRed_EPOCH"},true},{"filingPos","Filing_epoch",true},{"pelicanPos","Pelican_EPOCH",false},{"tablePos","Table_EPOCH",false},{"lockerPos","Locker_EPOCH",false},{"toolRackPos","ToolRack_EPOCH",false},{"shoeboxPos","Shoebox_EPOCH",false},{"palletPos","Tarp_EPOCH",false},{"freezerPos","Freezer_EPOCH",false},{"cabinetPos","Cabinet_EPOCH",false},{"toiletPos","toilet_epoch",false},{"kitchenSinkPos","KitchenSink_epoch",false}};
-        mil[] = {{"shelfPos","Shelf_EPOCH",true},{"fridgePos","Fridge_EPOCH",true},{"bedPos","Bunk_EPOCH",false},{"couchPos","Couch_EPOCH",false},{"wardrobePos","wardrobe_epoch",false},{"cookerPos","cooker_epoch",false},{"chairPos",{"Chair_EPOCH","ChairRed_EPOCH"},true},{"filingPos","Filing_epoch",true},{"pelicanPos","Pelican_EPOCH",false},{"tablePos","Table_EPOCH",false},{"lockerPos","Locker_EPOCH",false},{"toolRackPos","ToolRack_EPOCH",false},{"shoeboxPos","Shoebox_EPOCH",false},{"palletPos","Tarp_EPOCH",false},{"freezerPos","Freezer_EPOCH",false},{"cabinetPos","Cabinet_EPOCH",false},{"toiletPos","toilet_epoch",false},{"kitchenSinkPos","KitchenSink_epoch",false}};
-    };
+		lootTypes[] = {{"shelfPos","Shelf_EPOCH",false},{"fridgePos","Fridge_EPOCH",false},{"bedPos","Bed_EPOCH",false},{"couchPos","Couch_EPOCH",false},{"wardrobePos","wardrobe_epoch",false},{"cookerPos","cooker_epoch",false},{"chairPos",{"Chair_EPOCH","ChairRed_EPOCH"},false},{"filingPos","Filing_epoch",false},{"pelicanPos","Pelican_EPOCH",false},{"tablePos","Table_EPOCH",false},{"lockerPos","Locker_EPOCH",false},{"toolRackPos","ToolRack_EPOCH",false},{"shoeboxPos","Shoebox_EPOCH",false},{"palletPos","Tarp_EPOCH",false},{"freezerPos","Freezer_EPOCH",false},{"cabinetPos","Cabinet_EPOCH",false},{"toiletPos","toilet_epoch",false},{"kitchenSinkPos","KitchenSink_epoch",false}};
+
+		EpochLootChance = 15;		// 15% of this Building Types will hold default Epoch Loot
+		limit = 3;					// Max 3 Furnitures will spawn in this Building type
+
+		GroundSpawnChance = 50;		// 50% Chance for Ground Loot, if no Epoch Loot will spawn
+		MinGroundContainers = 1;	// If Groundloot, min 1 Weaponholder will spawn in this building
+		MaxGroundContainers = 2;	// If Groundloot, max 2 Weaponholder will spawn in this building
+	};
     class Land_Kiosk_redburger_F : Default
     {
+		lootType = "market";
         fridgePos[] = {{{1.64453,1.43945,-2.897},89.9032}};
         cookerPos[] = {{{1.57813,-0.261719,-2.89732},90.9244}};
         filingPos[] = {{{-1.65625,1.67773,-2.89687},272.463}};
@@ -32,6 +50,7 @@ class CfgBuildingLootPos
     };
     class Land_Kiosk_blueking_F : Default
     {
+		lootType = "market";
         fridgePos[] = {{{-1.56055,1.67383,-1.79198},0.076973}};
         cookerPos[] = {{{-1.62109,-0.296875,-1.79261},269.732}};
         filingPos[] = {{{1.82031,0.972656,-1.75876},91.8},{{1.82031,1.55664,-1.75876},91.8}};
@@ -40,6 +59,7 @@ class CfgBuildingLootPos
     };
     class Land_Kiosk_gyros_F : Default
     {
+		lootType = "market";
         fridgePos[] = {{{1.64258,0.197266,-2.0025},89.8823}};
         cookerPos[] = {{{1.5,1.62305,-2.0029},89.3177}};
         filingPos[] = {{{-1.52344,1.62109,-2.00235},296.665}};
@@ -49,6 +69,7 @@ class CfgBuildingLootPos
     };
     class Land_Kiosk_papers_F : Default
     {
+		lootType = "market";
         shelfPos[] = {{{1.36523,1.79492,-2.0024},1.00576}};
         chairPos[] = {{{-1.47852,1.27148,-1.96894},306.8}};
         filingPos[] = {{{1.69336,0.0625,-2.0024},86.0276},{{-1.68164,-0.347656,-2.00241},266.904},{{1.71484,-0.404297,-2.0024},90.176}};
@@ -57,7 +78,7 @@ class CfgBuildingLootPos
     class Land_Research_HQ_F : Default
     {
         limit = 5;
-        lootType = "mil";
+		lootType = "industrial";
         shelfPos[] = {{{0.380859,4.1875,-3.29264},2.04878},{{-1.03125,-6.27734,-3.17222},181.183},{{8.52148,3.01367,-3.17222},90.053}};
         fridgePos[] = {{{5.52148,6.21094,-3.17237},0.0829086}};
         bedPos[] = {{{0.450195,0.876953,-3.29266},0}};
@@ -74,7 +95,7 @@ class CfgBuildingLootPos
     };
     class Land_Research_house_V1_F : Default
     {
-        lootType = "mil";
+		lootType = "industrial";
         shelfPos[] = {{{0.408203,3.9668,0.00387025},0.47818},{{-2.37891,3.47461,0.0038693},272.048}};
         fridgePos[] = {{{2.17383,1.02539,-0.132167},91.4155}};
         filingPos[] = {{{-2.18359,2.4082,0.00388861},270},{{-0.384766,3.89453,0.00388622},10.991}};
@@ -87,7 +108,7 @@ class CfgBuildingLootPos
     class Land_spp_Tower_F : Default
     {
         limit = 5;
-        lootType = "mil";
+		lootType = "industrial";
         shelfPos[] = {{{2.79297,-1.28906,-14.9882},88.9351},{{-2.72266,-2.93164,-24.3965},179.88}};
         bedPos[] = {{{-1.89648,-0.994141,10.1607},93.8027}};
         couchPos[] = {{{1.39258,-2.8418,-14.9885},89.9995}};
@@ -106,7 +127,10 @@ class CfgBuildingLootPos
     class Land_MilOffices_V1_F : Default
     {
         limit = 6;
-        lootType = "mil";
+		lootType = "mil";
+		GroundSpawnChance = 80;
+		MinGroundContainers = 3;
+		MaxGroundContainers = 6;
         shelfPos[] = {{{5.89844,0.773438,-2.89318},269.647},{{6.08203,-0.435547,-2.89318},0.742516},{{-4.00781,-5.64648,-2.89318},180.694},{{7.26367,-2.26563,-2.89318},267.774},{{8.74219,-5.70313,-2.89318},178.843},{{5.89063,9.54297,-2.89318},270.185},{{-5.83789,11.2949,-2.89318},359.547},{{-13.8574,-5.7207,-2.89318},179.686},{{-16.1719,-0.859375,-2.89318},358.847},{{-16.9512,0.576172,-2.89318},268.745},{{-16.3457,11.2871,-2.89318},0.686188}};
         fridgePos[] = {{{6.43945,-3.44531,-2.89318},89.5034},{{6.60547,4.67578,-2.89318},180.413},{{-10.707,-5.51563,-2.89318},178.591}};
         bedPos[] = {{{13.5332,5.33789,-2.8932},95.0654}};
@@ -126,6 +150,10 @@ class CfgBuildingLootPos
     };
     class Land_Airport_Tower_F : Default
     {
+		lootType = "mil";
+		GroundSpawnChance = 80;
+		MinGroundContainers = 3;
+		MaxGroundContainers = 6;
         shelfPos[] = {{{1.00195,4.2207,-10.4679},90},{{2.09375,-5.83984,-1.46719},136.235}};
         fridgePos[] = {{{-3.19922,-5.58789,-1.46735},223.518}};
         chairPos[] = {{{0.740234,-0.0332031,-1.46723},3.7747},{{2.19141,-1.23438,-1.46718},54.1489}};
@@ -138,6 +166,7 @@ class CfgBuildingLootPos
     };
     class Land_Slum_House01_F : Default
     {
+		lootType = "workshop";
         chairPos[] = {{{1.20313,1.6582,-1.07285},36.9507}};
         filingPos[] = {{{0.351563,2.05469,-1.08115},8.25228}};
         pelicanPos[] = {{{1.4668,2.32031,1.60821},184.525}};
@@ -147,6 +176,7 @@ class CfgBuildingLootPos
     };
     class Land_Slum_House02_F : Default
     {
+		lootType = "workshop";
         shelfPos[] = {{{2.52148,3.48438,-0.824517},359.959}};
         couchPos[] = {{{2.14844,0.236328,-0.824545},0.0984116}};
         chairPos[] = {{{1.15234,3.20508,-0.824523},352.052}};
@@ -155,6 +185,7 @@ class CfgBuildingLootPos
     };
     class Land_Slum_House03_F : Default
     {
+		lootType = "workshop";
         bedPos[] = {{{0.166016,0.230469,-1.07675},95}};
         chairPos[] = {{{-1.99414,2.25586,-1.07675},335}};
         filingPos[] = {{{3.98633,-0.507813,-1.07675},95}};
@@ -164,6 +195,7 @@ class CfgBuildingLootPos
     };
     class Land_cargo_house_slum_F : Default
     {
+		lootType = "workshop";
         shelfPos[] = {{{-0.891602,-1.20117,-0.38667},181.006}};
         bedPos[] = {{{-3.16504,-0.253906,-0.386693},276.075}};
         chairPos[] = {{{0.650391,-0.734375,-0.383496},90.6667}};
@@ -171,6 +203,7 @@ class CfgBuildingLootPos
     };
     class Land_FuelStation_Build_F : Default
     {
+		lootType = "market";
         shelfPos[] = {{{0.415039,1.52734,-1.36232},0.956482}};
         filingPos[] = {{{-2.31543,-1.1582,-1.3623},259.317}};
         pelicanPos[] = {{{-2.79199,0.658203,2.11388},86.4283}};
@@ -179,6 +212,7 @@ class CfgBuildingLootPos
     };
     class Land_Factory_Main_F : Default
     {
+		lootType = "industrial";
         shelfPos[] = {{{-3.72852,3.85742,-6.35809},178.041},{{5.62012,-9.38477,2.34198},89.9969},{{-6.9209,10.8223,-6.32809},95.4476},{{-10.208,14.8887,-6.32809},1.97624}};
         fridgePos[] = {{{-1.76074,8.24805,-6.35806},94.2797}};
         couchPos[] = {{{-2.44629,5.73047,-6.35812},2.06058},{{-3.50684,16.8828,-6.41408},90.0061}};
@@ -193,7 +227,7 @@ class CfgBuildingLootPos
     class Land_Airport_right_F : Default
     {
         limit = 5;
-        lootType = "mil";
+		lootType = "mil";
         shelfPos[] = {{{-4.19922,-2.1543,-1.76375},359.705},{{-4.57422,2.20514,-1.76375},270.932},{{5.27734,-5.37885,-1.76368},357.591},{{-15.0703,-7.48627,-6.76375},89.4887},{{-14.4297,-11.0059,-6.76375},270.174},{{-15.1445,-10.3417,-6.76375},89.1635},{{-23.3359,-3.69916,-6.76375},358.136},{{-21.1838,14.7402,-6.77192},359.554}};
         fridgePos[] = {{{-2.48633,3.61719,-1.76375},0.951996},{{-15.4355,13.5039,-6.76375},90.2176}};
         bedPos[] = {{{-3.82446,-10.3633,-1.76377},184.477}};
@@ -214,7 +248,7 @@ class CfgBuildingLootPos
     };
     class Land_Airport_center_F : Default
     {
-        lootType = "mil";
+		lootType = "mil";
         shelfPos[] = {{{11.7051,7.16016,-2.74629},359.37}};
         couchPos[] = {{{-4.50391,-7.57422,1.62245},88.2815},{{11.8594,-11.0684,-2.74632},2.03362}};
         chairPos[] = {{{-12.3184,6.87109,-2.74437},280.834},{{-12.2793,-14.4258,-2.7463},272.565}};
@@ -227,7 +261,7 @@ class CfgBuildingLootPos
     class Land_Airport_left_F : Default
     {
         limit = 5;
-        lootType = "mil";
+		lootType = "mil";
         shelfPos[] = {{{3.91211,-1.41797,-1.76377},184.071},{{-1.94336,-5.52148,-1.76367},0.193413},{{-5.31641,-4.6875,-6.76368},179.512},{{6.14258,13.9648,-6.76367},268.974},{{15.1094,-8.04102,-6.76375},270.202},{{15.6563,-14.7227,-6.76375},180.679},{{16.9883,14.7461,-6.76375},359.573}};
         fridgePos[] = {{{1.42773,3.67578,-1.76375},359.297},{{15.7793,-2.51563,-6.76374},178.661}};
         bedPos[] = {{{-4.95898,-6.73047,-1.76377},179.773}};
@@ -248,7 +282,7 @@ class CfgBuildingLootPos
     class Land_Hangar_F : Default
     {
         limit = 5;
-        lootType = "mil";
+		lootType = "mil";
         shelfPos[] = {{{-14.3125,1.24023,-5.40771},270.363},{{-14.2754,6.36328,-5.4077},269.988},{{-14.5117,-19.8359,-5.4077},268.904},{{8.80469,23.3691,-5.4077},359.987},{{13.6602,-21.0078,-5.40769},180.14}};
         couchPos[] = {{{11.9082,22.3652,-5.40773},267.453}};
         chairPos[] = {{{-14.3223,-5.03906,-5.40451},270.026}};
@@ -261,6 +295,7 @@ class CfgBuildingLootPos
     };
     class Land_CarService_F : Default
     {
+		lootType = "workshop";
         shelfPos[] = {{{-5.08594,-0.996094,-1.28249},271.675},{{4.69141,5.75781,-1.28248},88.5845},{{-0.40625,7.68945,-1.28235},89.3095},{{0.767578,8.21289,-1.28248},358.72}};
         fridgePos[] = {{{1.85352,8.18359,-1.28246},358.017}};
         couchPos[] = {{{3.74219,0.666016,-1.2825},2.03191}};
@@ -276,7 +311,10 @@ class CfgBuildingLootPos
     class Land_Cargo_Tower_V1_F : Default
     {
         limit = 5;
-        lootType = "mil";
+		lootType = "mil";
+		GroundSpawnChance = 80;
+		MinGroundContainers = 3;
+		MaxGroundContainers = 6;
         shelfPos[] = {{{0.552734,-1.625,5.05352},178.136},{{-5.64844,-0.777344,-0.146542},268.528},{{3.00781,5.08984,-0.14654},0.118889},{{5.29297,-4.09766,2.45352},181.726},{{5.87109,3.71094,-0.146542},90.215}};
         fridgePos[] = {{{-4.76172,6.00391,2.58955},0.860298}};
         bedPos[] = {{{-1.06836,-2.64844,2.45344},1.62634},{{-1.98633,-5.37109,2.58947},90.633}};
@@ -304,7 +342,7 @@ class CfgBuildingLootPos
 	class Land_Cargo_Tower_V4_F : Land_Cargo_Tower_V1_F { };
     class Land_Cargo_Patrol_V1_F : Default
     {
-        lootType = "mil";
+		lootType = "mil";
         shelfPos[] = {{{2.61914,0.96875,-0.789934},90}};
         filingPos[] = {{{0.0117188,-0.283203,-0.585847},1.42631}};
         pelicanPos[] = {{{2.00977,-1.52344,-0.585956},133.857}};
@@ -315,7 +353,7 @@ class CfgBuildingLootPos
 	class Land_Cargo_Patrol_V4_F : Land_Cargo_Patrol_V1_F { };
     class Land_Medevac_house_V1_F : Default
     {
-        lootType = "mil";
+		lootType = "medical";
         shelfPos[] = {{{-2.61328,1.0918,-0.132166},268.449}};
         fridgePos[] = {{{1.60156,3.75977,0.00387168},355.287}};
         filingPos[] = {{{0.804688,3.71875,0.0038867},7.82585},{{-0.345703,3.80273,0.00388789},352.697},{{0.230469,3.85742,0.00388765},358.782}};
@@ -327,7 +365,7 @@ class CfgBuildingLootPos
     class Land_Medevac_HQ_V1_F : Default
     {
         limit = 5;
-        lootType = "mil";
+		lootType = "medical";
         shelfPos[] = {{{2.64648,-5.00391,-3.29263},179.273},{{2.29688,5.35156,-3.17222},270.045},{{-3.0918,-6.20117,-3.17222},179.371},{{7.07422,5.46094,-3.17222},89.2793}};
         fridgePos[] = {{{0.632813,-6.04492,-3.17222},175.967}};
         bedPos[] = {{{-2.65625,3.33594,-3.29266},272.831}};
@@ -343,7 +381,7 @@ class CfgBuildingLootPos
     class Land_Cargo_HQ_V1_F : Default
     {
         limit = 4;
-        lootType = "mil";
+		lootType = "mil";
         shelfPos[] = {{{0.302734,4.1875,-3.2987},357.597},{{-4.12695,-4.01367,-3.2987},270.059},{{2.70313,-5.11328,-3.2987},177.669}};
         fridgePos[] = {{{2.61328,5.1543,-3.17829},267.807}};
         bedPos[] = {{{-2.7832,3.32227,-3.29873},275.975}};
@@ -362,7 +400,7 @@ class CfgBuildingLootPos
 	class Land_Cargo_HQ_V4_F : Land_Cargo_HQ_V1_F { };
     class Land_Cargo_House_V1_F : Default
     {
-        lootType = "mil";
+		lootType = "mil";
         shelfPos[] = {{{2.3457,3.13867,0.0138698},90}};
         fridgePos[] = {{{-2.57031,1.02148,-0.122166},267.298}};
         chairPos[] = {{{1.95898,1.5293,-0.122179},85.5595},{{-1.5293,2.88867,0.0138509},322.238}};
@@ -377,6 +415,7 @@ class CfgBuildingLootPos
 	class Land_Cargo_House_V4_F : Land_Cargo_House_V1_F {};
     class Land_dp_smallFactory_F : Default
     {
+		lootType = "industrial";
         shelfPos[] = {{{-1.50586,4.79297,-1.87129},180.159}};
         pelicanPos[] = {{{0.976563,3.16797,2.601},97.492}};
         palletPos[] = {{{10.5059,3.17969,1.18859},1.99997}};
@@ -384,6 +423,7 @@ class CfgBuildingLootPos
     };
     class Land_i_Garage_V2_F : Default
     {
+		lootType = "workshop";
         shelfPos[] = {{{4.90039,-1.19922,-0.123899},88.7339}};
         fridgePos[] = {{{4.73438,0.322266,-0.123898},87.5145}};
         chairPos[] = {{{0.949219,-2.05469,-0.124453},180.041},{{0.75,2.23828,-0.120063},0.105392}};
@@ -396,7 +436,7 @@ class CfgBuildingLootPos
     class Land_u_Barracks_V2_F : Default
     {
         limit = 6;
-        lootType = "mil";
+		lootType = "mil";
         shelfPos[] = {{{-2.01953,3.59766,1.40866},86.5322},{{-1.18555,4.4082,1.40866},267.099},{{5.37695,-2.42773,-1.92432},268.209},{{-6.13281,2.58594,-1.92432},177.59},{{5.46289,3.92578,1.40866},274.739},{{7.93555,-0.273438,1.40866},358.598},{{8.07617,-0.306641,-1.92432},358.744},{{8.76172,2.60547,-1.92432},177.537},{{-9.86914,3.00391,-1.92432},269.405},{{-10.7129,3.96875,-1.92432},83.8923},{{-12.1953,-0.359375,1.40871},357.971},{{-14.7266,2.57813,1.40876},181.364},{{-16.127,-0.359375,-1.92432},357.877}};
         fridgePos[] = {{{5.38867,-2.61719,1.40864},268.987},{{-10.6797,-1.86133,1.40864},89.0169},{{10.7656,4.75586,-1.92426},91.9329}};
         bedPos[] = {{{0.00390625,3.40234,-1.92435},91.4153},{{3.58984,-1.56055,1.40863},1.31381},{{9.80469,3.27344,1.40863},97.6807},{{-11.7617,-1.10547,-1.92435},269.367}};
@@ -415,7 +455,10 @@ class CfgBuildingLootPos
     class Land_i_Barracks_V2_F : Default
     {
         limit = 6;
-        lootType = "mil";
+		lootType = "mil";
+		GroundSpawnChance = 80;
+		MinGroundContainers = 4;
+		MaxGroundContainers = 8;
         shelfPos[] = {{{-3.91406,4.36816,0.579132},0.755371},{{-7.16211,-2.42676,3.91308},90},{{-7.08789,-3.69434,0.579177},88.7136},{{7.91797,2.16504,0.579097},93.2098},{{8.86719,2.98145,0.579103},265.996},{{12.2988,1.54297,3.91308},180.227}};
         fridgePos[] = {{{-13.209,-3.86133,0.579104},267.951},{{-13.1953,-3.96875,3.91308},266.429}};
         bedPos[] = {{{3.25391,2.82422,0.579081},181.072},{{7.13086,-3.10645,0.579082},359.996},{{10.2598,-2.19531,3.91306},274.345},{{-12.0977,2.37695,3.91306},91.0109},{{-12.6543,3.00977,0.579082},184.452}};
@@ -431,8 +474,10 @@ class CfgBuildingLootPos
         cabinetPos[] = {{{-6.55322,-2.76904,5.30856},0}};
 		toiletPos[] = {{{7.95508,-4.15625,3.93497},89.2524},{{-7.26758,-1.44727,0.537991},47.6757}};
 	};
+    class Land_i_Barracks_V1_F : Land_i_Barracks_V2_F {};
     class Land_i_Garage_V2_dam_F : Default
     {
+		lootType = "workshop";
         toolRackPos[] = {{{5.12695,-2.06641,-0.159975},90}};
         shoeboxPos[] = {{{-0.900391,1.64063,-0.159975},220}};
         palletPos[] = {{{1.32031,0.759766,-0.159975},170}};
@@ -462,7 +507,7 @@ class CfgBuildingLootPos
     };
     class Land_Airport_Tower_dam_F : Default
     {
-        lootType = "mil";
+		lootType = "mil";
         shelfPos[] = {{{1.78906,1.90234,0.798989},0}};
         filingPos[] = {{{-2.93359,-3.1582,0.812261},229}};
         pelicanPos[] = {{{0.587891,8.4043,3.79912},9.99995}};
@@ -470,7 +515,6 @@ class CfgBuildingLootPos
         shoeboxPos[] = {{{2.2793,-5.125,0.798989},9.99995}};
         cabinetPos[] = {{{-0.714844,2.58203,-6.82513},270}};
     };
-    class Land_i_Barracks_V1_F : Land_i_Barracks_V2_F {};
     class Land_d_Windmill01_F : Default
     {
         pelicanPos[] = {{{-0.800781,0.158203,0.943356},133}};
@@ -479,6 +523,7 @@ class CfgBuildingLootPos
     };
     class Land_u_Shed_Ind_F : Default
     {
+		lootType = "industrial";
         shelfPos[] = {{{-5.90234,-1.64453,-1.45137},179.958},{{-0.0195313,8.39648,-1.43504},6.50078}};
         chairPos[] = {{{-6.70703,1.93359,-1.43049},357.957}};
         filingPos[] = {{{-4.83203,2.18359,-1.43498},3.3181},{{6.72266,-1.33984,-1.43502},208.603}};
@@ -488,6 +533,7 @@ class CfgBuildingLootPos
     };
     class Land_i_Shed_Ind_F : Default
     {
+		lootType = "industrial";
         shelfPos[] = {{{3.75781,-1.39844,-1.43597},178.598},{{-6.29688,-1.64844,-1.43597},180.042},{{-1.85938,8.64844,-1.43597},1.254},{{15.8086,5.01367,-1.43592},90.0259}};
         fridgePos[] = {{{-4.0918,2.25391,-1.43614},269.878}};
         couchPos[] = {{{0.0527344,3.64453,-1.43621},214.408}};
@@ -503,7 +549,7 @@ class CfgBuildingLootPos
     };
     class Land_BagBunker_Large_F : Default
     {
-        lootType = "mil";
+		lootType = "mil";
         shelfPos[] = {{{0.0820313,-0.914063,-0.766759},269.689},{{-3.85156,-1.18555,-0.76676},272.369}};
         couchPos[] = {{{2.64648,-3.39258,-0.766787},87.3199}};
         filingPos[] = {{{1.02148,1.80078,-0.766742},359.841},{{-1.57031,1.58008,-0.766741},359.563}};
@@ -514,7 +560,7 @@ class CfgBuildingLootPos
 	class Land_BagBunker_01_large_green_F : Land_BagBunker_Large_F {};
     class Land_BagBunker_Tower_F : Default
     {
-        lootType = "mil";
+		lootType = "mil";
         pelicanPos[] = {{{-1.95508,-0.0195313,-0.90682},269.117},{{-0.703125,-2.67383,0.543192},212.824}};
         shoeboxPos[] = {{{2.37891,-1.93555,-0.873341},0}};
         palletPos[] = {{{-0.732422,2.07617,-2.17334},348},{{-0.771484,-2.21094,-2.17334},0}};
@@ -604,7 +650,7 @@ class CfgBuildingLootPos
     class Land_Hospital_side1_F : Default
     {
         limit = 5;
-        lootType = "mil";
+		lootType = "medical";
         shelfPos[] = {{{-5.40039,2.9082,-7.91957},2.14935},{{-6.25,-7.61719,-7.92645},270.854},{{2.96484,10.916,7.44774},359.647},{{9.71289,-6.21289,-7.92565},87.4192}};
         fridgePos[] = {{{-2.66797,-11.2949,-7.92739},179.351}};
         bedPos[] = {{{-0.912109,-3.25195,-7.92176},91.7708},{{4.10547,-3.19141,-7.92099},89.6996},{{-0.625,-5.79688,-7.92326},266.29}};
@@ -623,7 +669,7 @@ class CfgBuildingLootPos
     class Land_Hospital_side2_F : Default
     {
         limit = 5;
-        lootType = "mil";
+		lootType = "medical";
         shelfPos[] = {{{4.34766,-10.8809,-8.13902},179.22},{{-5.95703,-10.9258,-8.13085},178.43},{{15.5547,-1.91211,-8.13092},359.336}};
         fridgePos[] = {{{-8.25586,-8.94922,-8.13093},267.631}};
         couchPos[] = {{{-7.19336,1.38867,-8.13095},179.136}};
@@ -639,7 +685,7 @@ class CfgBuildingLootPos
     class Land_Hospital_main_F : Default
     {
         limit = 5;
-        lootType = "mil";
+		lootType = "medical";
         shelfPos[] = {{{14.3516,-2.75781,-8.04017},90.0092},{{14.4102,-10.8027,-8.04031},88.6201},{{6.71875,-18.9082,7.32756},88.904}};
         chairPos[] = {{{-10.5098,-12.3008,-8.04206},272.027},{{4.49805,19.1055,-8.03925},359.681},{{6.66016,19.1504,-8.0383},356.209},{{0.691406,-20.6602,-8.03756},178.007},{{9.58594,19.1191,-8.03699},359.114},{{5.51953,-20.6738,-8.03836},179.692}};
         pelicanPos[] = {{{5.98242,-6.33008,7.32735},22.9554},{{10.6816,0.878906,-7.01696},300.456}};
@@ -672,6 +718,8 @@ class CfgBuildingLootPos
     };
     class Land_Church_01_V1_F : Default
     {
+		lootType = "church";
+		GroundSpawnChance = 80;
         wardrobePos[] = {{{4.5957,5.27051,-6.49416},180.222}};
         chairPos[] = {{{5.29492,-5.31055,-6.49177},10.1886}};
         pelicanPos[] = {{{-5.17969,5.49414,-5.52077},284.503}};
@@ -681,6 +729,7 @@ class CfgBuildingLootPos
     class Land_Church_01_V2_F : Land_Church_01_V1_F {};
     class Land_Castle_01_tower_F : Default
     {
+		lootType = "mil";
         shelfPos[] = {{{2.58398,2.0791,-9.50637},85.6591}};
         couchPos[] = {{{-1.63281,-1.07617,-9.50639},183.524}};
         chairPos[] = {{{-2.01953,-1.68555,7.91612},225.648}};
@@ -689,6 +738,7 @@ class CfgBuildingLootPos
     };
     class Land_dp_bigTank_F : Default
     {
+		lootType = "industrial";
         pelicanPos[] = {{{0.326172,-0.174805,3.57153},253.033}};
         palletPos[] = {{{-2.50781,-3.73828,3.60099},180},{{-2.02734,4.60449,3.60099},238}};
     };
@@ -746,6 +796,8 @@ class CfgBuildingLootPos
     class Land_i_House_Small_02_c_yellow_F : Land_i_House_Small_02_b_whiteblue_F {};
     class Land_Chapel_V1_F : Default
     {
+		lootType = "church";
+		GroundSpawnChance = 80;
         wardrobePos[] = {{{6.00195,-3.92969,-2.83485},179.372},{{6.51758,3.87891,-2.83486},0.951279}};
         chairPos[] = {{{-5.87305,-3.24414,-2.83491},100.36}};
         pelicanPos[] = {{{6.86914,0.0175781,-2.63492},267.468}};
@@ -757,6 +809,8 @@ class CfgBuildingLootPos
     class Land_Chapel_V2_F : Land_Chapel_V1_F {};
     class Land_Chapel_Small_V1_F : Default
     {
+		lootType = "church";
+		GroundSpawnChance = 80;
         chairPos[] = {{{3.26953,0.988281,-0.894284},95.6997}};
         pelicanPos[] = {{{1.88379,-1,-0.54896},269.755}};
         shoeboxPos[] = {{{-0.423828,-1.18945,-0.9293},272.97}};
@@ -764,6 +818,8 @@ class CfgBuildingLootPos
     };
     class Land_Chapel_Small_V2_F : Default
     {
+		lootType = "church";
+		GroundSpawnChance = 80;
         chairPos[] = {{{1.81445,1.00391,-0.894289},263.639},{{1.86621,-1.23633,-0.894289},264.855}};
         pelicanPos[] = {{{-0.228516,-0.994141,-0.54997},264.521}};
         tablePos[] = {{{3.75586,-0.105469,-0.894377},89.9709}};
@@ -771,6 +827,7 @@ class CfgBuildingLootPos
     };
     class Land_Unfinished_Building_02_F : Default
     {
+		lootType = "construction";
         shelfPos[] = {{{-3.17188,-1.88086,0.949918},269.1},{{5.81641,1.0918,-2.52319},89.9583},{{5.91406,0.357422,0.950038},90.0202},{{-7.89746,0.162109,0.949969},268.502}};
         bedPos[] = {{{-4.95898,3.81641,0.949724},2.84769}};
         couchPos[] = {{{-0.923828,-4.65039,0.949726},89.1011},{{-6.69727,1.0293,-2.52443},191.658}};
@@ -783,6 +840,7 @@ class CfgBuildingLootPos
     };
     class Land_Unfinished_Building_01_F : Default
     {
+		lootType = "construction";
         shelfPos[] = {{{1.72168,-2.44336,1.17171},270.818},{{-4.88184,2.35938,1.17171},269.023},{{-3.98438,6.07227,-2.33344},359.657}};
         pelicanPos[] = {{{-0.557617,5.36523,4.46878},7.08017},{{-1.00684,5.38867,-2.33351},80.4785}};
         toolRackPos[] = {{{-5.13184,4.25,1.1717},270.006}};
@@ -792,6 +850,7 @@ class CfgBuildingLootPos
     };
     class Land_i_Garage_V1_F : Default
     {
+		lootType = "workshop";
         shelfPos[] = {{{-1.55078,2.56055,-0.123878},2.39618},{{1.91309,2.57422,-0.123676},359.724}};
         fridgePos[] = {{{2.73438,-2.17188,-0.123873},182.516},{{4.35547,-1.73828,-0.123592},152.206}};
         cookerPos[] = {{{0.046875,-2.07031,-0.124327},178.265},{{4.73438,-0.0839844,-0.124328},90}};
@@ -1127,7 +1186,11 @@ class CfgBuildingLootPos
     };
     class Land_WIP_F : Default
     {
+		lootType = "construction";
         limit = 6;
+		GroundSpawnChance = 80;
+		MinGroundContainers = 4;
+		MaxGroundContainers = 8;
         shelfPos[] = {{{-0.957031,-4.42969,12.2029},358.087},{{-0.919922,-5.26563,0.396693},178.896},{{-2.20313,5.43164,0.323569},1.17821},{{2.03516,-6.10938,0.397176},14.9686},{{5.12598,-5.45313,8.32229},181.318},{{-6.88477,5.69922,8.33006},356.041},{{-6.33203,9.34375,4.2993},267.673},{{-5.47656,-11.3945,0.348352},178.537},{{-13.2139,1.17383,0.390545},90.2068},{{-13.2334,-2.94336,4.2993},86.318},{{14.3809,6.43945,4.29953},181.218},{{-9.65625,-12.791,12.2983},180.234},{{-12.9834,-10.2734,0.319984},89.2757}};
         fridgePos[] = {{{-3.39063,-7.63477,0.37021},91.2212}};
         bedPos[] = {{{6.81055,9.57617,0.352686},180.055}};
@@ -1144,29 +1207,34 @@ class CfgBuildingLootPos
 	};
     class Land_i_Addon_03mid_V1_F : Default
     {
+		lootType = "market";
         couchPos[] = {{{-3.33203,0.30957,-0.0338135},176.588}};
         pelicanPos[] = {{{3.95313,1.0918,-0.0338745},101.571}};
         palletPos[] = {{{0.703125,-0.210938,-0.000281334},15}};
     };
     class Land_i_Addon_03_V1_F : Default
     {
+		lootType = "market";
         chairPos[] = {{{2.5,-0.929688,-0.0765305},346.611},{{-2.61914,-1.03125,-0.0765266},17.8128}};
         palletPos[] = {{{3.56641,2.50391,-0.0765305},344},{{-3.58594,2.75,-0.0765305},15}};
     };
     class Land_i_Addon_04_V1_F : Default
     {
+		lootType = "market";
         chairPos[] = {{{-3.78711,-1.16211,0.050499},21.1258}};
         pelicanPos[] = {{{-2.04883,0.263672,0.0532227},215.663}};
         palletPos[] = {{{-0.130859,2.37695,0.050499},344}};
     };
     class Land_LightHouse_F : Default
     {
+		lootType = "industrial";
         chairPos[] = {{{1.64063,-3.0918,-11.1061},121.303}};
         pelicanPos[] = {{{-0.318359,-3.61328,8.12647},220.41},{{0.697266,-4.32227,-11.1665},248.695}};
         shoeboxPos[] = {{{-0.214844,-4.24609,-11.1689},225.43},{{1.87109,-4.14453,8.13151},344}};
     };
     class Land_GH_Gazebo_F : Default
     {
+		lootType = "mil";
         shelfPos[] = {{{-5.49609,-1.95898,-1.76052},180.195}};
         bedPos[] = {{{6.02734,1.77734,-1.76616},1.01784}};
         couchPos[] = {{{-5.99219,1.83398,-1.76616},175.953}};
@@ -1177,6 +1245,7 @@ class CfgBuildingLootPos
     };
     class Land_GH_MainBuilding_right_F : Default
     {
+		lootType = "mil";
         shelfPos[] = {{{1.30273,-7.28516,-1.06903},104.132}};
         fridgePos[] = {{{3.30859,1.99219,-5.50915},196.553},{{0.769531,-6.8125,3.37646},185.624},{{1.35352,-11.4238,3.83718},14.2214},{{-14.1602,5.25781,-1.06901},244.418}};
         bedPos[] = {{{-1.76758,1.86133,3.37644},290.999},{{-4.86328,1.69727,3.37644},18.4142},{{-1.08398,5.9043,-1.06907},197.348},{{6.74609,-1.57813,3.37643},24.4042},{{-3.48242,6.48047,-1.06907},21.0007},{{7.32031,1.24609,-1.06908},25.1119},{{-2.52734,10.3438,-5.50922},20.4328},{{8.82813,7.0293,-5.50922},26.5858},{{-10.5645,8.5625,-1.06908},24.9801},{{-13.9043,3.83008,3.37644},196.357},{{-12.2109,10.7422,-5.50922},201.181}};
@@ -1194,6 +1263,7 @@ class CfgBuildingLootPos
     };
 	class Land_GH_MainBuilding_middle_F : Default
     {
+		lootType = "mil";
         shelfPos[] = {{{2.69238,3.21484,-8.37759},179.858},{{-5.88867,0.726563,-3.91598},105.411},{{5.24609,11.0605,-3.91652},270.656},{{-15.541,-6.12305,0.521439},14.5104},{{14.248,-9.52734,0.521439},256.088}};
         fridgePos[] = {{{-15.1309,-2.81836,0.521437},13.9473}};
         couchPos[] = {{{-13.6484,-0.876953,4.97235},195.253}};
@@ -1209,6 +1279,7 @@ class CfgBuildingLootPos
     };
     class Land_GH_MainBuilding_left_F : Default
     {
+		lootType = "mil";
         shelfPos[] = {{{-1.02734,-7.3623,-1.06904},255.179},{{-8.17188,1.39258,-1.06893},255.243}};
         fridgePos[] = {{{0.386719,-6.67578,3.37653},165.302},{{-6.97656,-0.431641,-1.06901},172.301},{{11.0391,-3.58008,3.37646},160.127}};
         bedPos[] = {{{-1.83594,-0.640625,3.37644},165.641},{{-1.66797,-1.12305,-1.06908},167.488},{{-4.0625,8.01367,-5.50922},163.408},{{0.40625,9.14844,-5.50922},345.918},{{9.70313,1.55859,3.37644},345.36},{{8.6582,6.32422,-5.50922},165.048},{{8.26172,7.47852,-1.06907},348.908},{{-8.69336,7.13867,-5.50922},165.97},{{14.4043,2.89258,3.37643},345.42}};
@@ -1226,7 +1297,7 @@ class CfgBuildingLootPos
     class Land_GH_House_2_F : Default
     {
         limit = 4;
-        lootType = "mil";
+		lootType = "mil";
         shelfPos[] = {{{-3.61914,-1.67969,-0.301109},359.443},{{4.32227,-6.37305,-0.301155},91.0395}};
         fridgePos[] = {{{-4.25,-5.02637,-0.301128},269.6}};
         bedPos[] = {{{-1.24805,-4.87793,-0.301178},5.78317}};
@@ -1239,7 +1310,7 @@ class CfgBuildingLootPos
     };
     class Land_GH_House_1_F : Default
     {
-        lootType = "mil";
+		lootType = "mil";
         fridgePos[] = {{{-4.17383,-2.11719,1.37387},356.381}};
         shelfPos[] = {{{3.35352,1.26758,-2.12615},0.862475},{{-3.58203,-1.93359,-2.12615},1.86357}};
         pelicanPos[] = {{{-3.33398,0.990234,-2.12616},359.887}};
@@ -1252,6 +1323,7 @@ class CfgBuildingLootPos
     };
     class Land_Stadium_p9_F : Default
     {
+		lootType = "mil";
         shelfPos[] = {{{-0.947266,-2.85645,0.260189},177.78},{{-3.80273,-1.29102,3.35416},268.338}};
         fridgePos[] = {{{-3.57031,-2.56543,0.270462},268.533}};
         couchPos[] = {{{-1.27344,2.86328,3.35296},92.8845}};
@@ -1282,6 +1354,7 @@ class CfgBuildingLootPos
     };
     class Land_Barn_W_02 : Default
     {
+		lootType = "industrial";
         fridgePos[] = {{{4.66504,5.95215,-2.34131},73.4104}};
         shelfPos[] = {{{3.54199,-6.98242,-2.3354},180.843}};
         pelicanPos[] = {{{-4.61279,1.50342,1.06024},189.27}};
@@ -1294,11 +1367,13 @@ class CfgBuildingLootPos
     };
     class Land_Shed_W01 : Default
     {
+		lootType = "workshop";
         chairPos[] = {{{-1.21777,0.42627,-1.44093},66.292}};
         toolRackPos[] = {{{2.47363,-0.0288086,-1.31694},269.634}};
     };
     class Land_A_Castle_Bergfrit : Default
     {
+		lootType = "mil";
         shelfPos[] = {{{-0.993164,2.89014,-2.8378},356.361},{{1.80957,4.87695,8.74091},358.335}};
         pelicanPos[] = {{{-3.03516,-5.00195,16.8296},195.125}};
         couchPos[] = {{{2.07031,-1.73779,-2.85995},359.982}};
@@ -1308,6 +1383,7 @@ class CfgBuildingLootPos
     };
     class Land_Shed_wooden : Default
     {
+		lootType = "workshop";
         shelfPos[] = {{{0.172363,-1.19922,-1.31766},189.191}};
         filingPos[] = {{{-1.19043,1.20996,-1.31787},273.29}};
         shoeboxPos[] = {{{-0.77002,-1.16211,-1.31796},0}};
@@ -1339,6 +1415,7 @@ class CfgBuildingLootPos
     };
     class Land_Misc_deerstand : Default
     {
+		lootType = "mil";
         pelicanPos[] = {{{0.587158,-0.0830078,1.05899},94.5891}};
         shoeboxPos[] = {{{-0.863037,-0.864258,1.05893},355.986}};
     };
@@ -1361,6 +1438,7 @@ class CfgBuildingLootPos
     };
     class Land_Hut06 : Default
     {
+		lootType = "workshop";
         chairPos[] = {{{0.739502,2.50977,-1.58963},76.0347}};
         filingPos[] = {{{-0.806396,2.76465,-1.61115},322.16}};
         shoeboxPos[] = {{{-1.33862,-0.988281,-1.82275},312.382}};
@@ -1368,6 +1446,7 @@ class CfgBuildingLootPos
     };
     class Land_A_FuelStation_Build : Default
     {
+		lootType = "market";
         shelfPos[] = {{{0.511719,1.52344,-1.6008},359.975}};
         filingPos[] = {{{2.38086,1.33203,-1.60098},29.5354}};
         pelicanPos[] = {{{0.268066,1.60449,1.51318},196.822}};
@@ -1392,6 +1471,7 @@ class CfgBuildingLootPos
     };
     class Land_Ind_Garage01 : Default
     {
+		lootType = "workshop";
         shelfPos[] = {{{0.32373,3.56543,-1.25259},357.258}};
         fridgePos[] = {{{2.79932,1.31641,-1.26077},84.1437}};
         filingPos[] = {{{-1.06348,3.40234,-1.25024},351.15}};
@@ -1432,6 +1512,7 @@ class CfgBuildingLootPos
     };
     class Land_Ind_Workshop01_04 : Default
     {
+		lootType = "workshop";
         shelfPos[] = {{{1.25928,-3.33008,-1.55847},27.2942}};
         filingPos[] = {{{-2.01318,-3.40186,-1.55435},293.278}};
         tablePos[] = {{{-1.75049,-5.65186,-1.55209},271.116}};
@@ -1442,11 +1523,13 @@ class CfgBuildingLootPos
     };
     class Land_Ind_TankBig : Default
     {
+		lootType = "industrial";
         pelicanPos[] = {{{-6.74146,1.74805,5.31989},321.741}};
         palletPos[] = {{{0.539551,2.4082,5.36334},25},{{-3.41626,-2.57813,5.36334},340.1}};
     };
     class Land_Ind_Workshop01_L : Default
     {
+		lootType = "workshop";
         shelfPos[] = {{{1.93359,-1.50195,-1.33884},358.185},{{-0.805664,3.11865,-1.33203},181.507}};
         filingPos[] = {{{0.609375,-3.6875,-1.33704},245.604}};
         tablePos[] = {{{3.36523,-5.01807,-1.3364},176.426}};
@@ -1456,6 +1539,7 @@ class CfgBuildingLootPos
     };
     class Land_Ind_Vysypka : Default
     {
+		lootType = "industrial";
         shelfPos[] = {{{2.80957,4.73828,-5.03592},90.1414}};
         fridgePos[] = {{{-4.28125,27.6045,-5.04321},357.803}};
         couchPos[] = {{{-3.60791,1.55469,4.09406},183},{{4.81934,-11.9766,-5.03705},184.375}};
@@ -1470,6 +1554,7 @@ class CfgBuildingLootPos
     };
     class Land_Tovarna2 : Default
     {
+		lootType = "industrial";
         shelfPos[] = {{{-0.157715,8.94824,-5.58551},359.048},{{-8.91797,8.95117,-2.25754},359.07}};
         fridgePos[] = {{{-8.09814,6.00781,-5.58575},93.4298},{{-7.38135,7.14648,1.59531},270.644}};
         couchPos[] = {{{-12.2339,6.00293,1.64017},192.359}};
@@ -1486,11 +1571,13 @@ class CfgBuildingLootPos
     };
     class Land_Rail_House_01 : Default
     {
+		lootType = "industrial";
         lockerPos[] = {{{1.89893,2.44336,-1.30908},183.214}};
         palletPos[] = {{{-3.34912,3.12109,-1.27396},183}};
     };
     class Land_Ind_Pec_03b : Default
     {
+		lootType = "industrial";
         couchPos[] = {{{3.66602,-4.47949,5.7338},181.985}};
         chairPos[] = {{{4.10938,-1.91309,5.73383},287.772},{{3.68262,-6.99902,5.73383},247.919}};
         pelicanPos[] = {{{2.27197,-4.89648,5.73383},89.1607}};
@@ -1509,6 +1596,7 @@ class CfgBuildingLootPos
     };
     class Land_A_Hospital : Default
     {
+		lootType = "medical";
         shelfPos[] = {{{-7.99219,-2.12891,-7.36588},268.792}};
         couchPos[] = {{{-14.5566,1.18652,3.26541},321.707}};
         chairPos[] = {{{-12.1943,-1.09375,3.26541},77.6588}};
@@ -1558,7 +1646,7 @@ class CfgBuildingLootPos
     class Land_Hangar_2 : Default
     {
         limit = 5;
-        lootType = "mil";
+		lootType = "mil";
         shelfPos[] = {{{1.82813,-9.84717,-2.58939},181.468},{{5.83984,11.563,-2.58939},358.914},{{14.6816,-1.41748,-2.59756},90.4656},{{-14.6836,1.73828,-2.58939},269.242}};
         fridgePos[] = {{{12.8926,11.2778,-2.59778},3.16315}};
         couchPos[] = {{{1.27832,10.2305,-2.58963},273.856}};
@@ -1585,6 +1673,7 @@ class CfgBuildingLootPos
     };
     class Land_a_stationhouse : Default
     {
+		lootType = "mil";
         shelfPos[] = {{{0.554688,-4.70068,-9.49698},272.253},{{-0.933594,-5.35596,4.38522},27.5935},{{-0.828125,-8.54004,-4.67508},110.344},{{-1.08203,-8.95215,4.38516},185.611},{{-4.35742,-8.55957,-0.0701904},262.53},{{6.66406,-7.6665,-9.49698},181.745},{{19.1992,-5.00488,-9.49698},88.5043}};
         fridgePos[] = {{{0.871094,-1.74805,-9.49701},271.521}};
         couchPos[] = {{{-10.5244,-3.94482,-0.534332},278.335}};
@@ -1600,7 +1689,7 @@ class CfgBuildingLootPos
     class Land_Mil_ControlTower : Default
     {
         limit = 5;
-        lootType = "mil";
+		lootType = "mil";
         shelfPos[] = {{{1.49512,2.23389,-1.09485},268.083},{{9.91406,3.22559,-9.65488},179.209}};
         fridgePos[] = {{{9.67773,5.91309,-9.65503},83.7454}};
         chairPos[] = {{{7.19434,-1.62061,2.92548},262.144}};
@@ -1612,6 +1701,7 @@ class CfgBuildingLootPos
     };
     class Land_Ind_Workshop01_01 : Default
     {
+		lootType = "workshop";
         shelfPos[] = {{{0.558594,-3.47168,-1.3168},176.163}};
         fridgePos[] = {{{2.12305,-1.83838,-1.315},94.8075}};
         filingPos[] = {{{-1.55566,-0.881836,-1.3237},271.559}};
@@ -1622,6 +1712,7 @@ class CfgBuildingLootPos
     };
     class Land_Shed_Ind02 : Default
     {
+		lootType = "industrial";
         shelfPos[] = {{{-0.442383,-9.33105,-4.6525},178.364}};
         fridgePos[] = {{{4.19824,10.2627,-4.6524},7.46219}};
         bedPos[] = {{{2.77148,2.2832,-4.6524},95.4069}};
@@ -1639,7 +1730,7 @@ class CfgBuildingLootPos
     class Land_Mil_Barracks_i : Default
     {
         limit = 5;
-        lootType = "mil";
+		lootType = "mil";
         shelfPos[] = {{{0.902344,-2.39502,-1.12442},238.007},{{0.548828,2.81006,-1.12292},1.08441},{{-9.37012,2.427,-1.12442},268.201}};
         filingPos[] = {{{6.55566,2.81738,-1.12451},92.1856}};
         pelicanPos[] = {{{-2.24316,-1.36963,-1.12463},263.64},{{4.36621,-1.57617,-0.137878},258.932},{{-5.0752,-2.4939,-1.12466},183.946},{{-8.75977,-0.048584,-1.12463},327.595}};
@@ -1649,7 +1740,7 @@ class CfgBuildingLootPos
     class Land_Ss_hangar : Default
     {
         limit = 5;
-        lootType = "mil";
+		lootType = "mil";
         shelfPos[] = {{{14.2314,-8.46289,-5.89868},173.905},{{14.3447,19.8936,-5.8782},357.293},{{13.5869,-20.874,-5.89853},180.148}};
         fridgePos[] = {{{14.1895,12.5049,-5.96277},147.17}};
         bedPos[] = {{{14.1436,21.6729,-5.89896},7.74948}};
@@ -1666,15 +1757,18 @@ class CfgBuildingLootPos
     };
     class Land_Ind_IlluminantTower : Default
     {
+		lootType = "mil";
         pelicanPos[] = {{{-0.791992,-0.320313,10.3249},212.76}};
         palletPos[] = {{{-0.012207,0.503906,-9.74222},360}};
     };
     class Land_Vez : Default
     {
+		lootType = "mil";
         shoeboxPos[] = {{{0.286133,0.867188,1.36356},1.99998}};
     };
     class Land_Hlidac_budka : Default
     {
+		lootType = "mil";
         shelfPos[] = {{{0.84668,0.125977,-0.809265},172.613}};
         filingPos[] = {{{0.0673828,2.31836,-0.809967},357.487},{{2.76709,2.25684,-0.809967},4.6116}};
         tablePos[] = {{{-2.32129,1.41016,-0.810028},279.786}};
@@ -1683,6 +1777,7 @@ class CfgBuildingLootPos
     };
     class Land_A_GeneralStore_01a : Default
     {
+		lootType = "market";
         shelfPos[] = {{{-2.68848,-5.06152,-1.22772},178.035},{{-8.81641,1.98926,-1.22772},270.025},{{9.85986,1.51953,-1.22772},179.333},{{-5.52783,9.13184,-1.22772},1.40732}};
         fridgePos[] = {{{-5.12402,-0.585938,-1.20645},180},{{-6.17725,-0.568359,-1.20645},180},{{5.68555,-4.8418,-1.20645},188}};
         cookerPos[] = {{{7.99414,-0.348633,-1.22836},89.6747}};
@@ -1697,6 +1792,7 @@ class CfgBuildingLootPos
     };
     class Land_A_GeneralStore_01 : Default
     {
+		lootType = "market";
         shelfPos[] = {{{6.03076,-5.04883,-1.22775},359.162},{{12.563,5.48535,-1.22772},0.496719},{{13.5098,-7.02734,-1.22775},88.7328}};
         fridgePos[] = {{{-9.77979,-1.54102,-1.22797},269.735},{{-9.80176,-4.10938,-1.22797},269.049},{{8.25488,-9.58496,-1.23712},0.202225}};
         couchPos[] = {{{-0.619629,-10.2949,-1.23727},270.908}};
@@ -1712,6 +1808,7 @@ class CfgBuildingLootPos
     };
     class Land_A_Office01 : Default
     {
+		lootType = "mil";
         shelfPos[] = {{{4.0542,2.89648,-4.55417},178.477},{{-1.47119,4.86328,0.44574},0.16153},{{10.6284,-3.50879,-2.0542},92.1019},{{11.4131,-4.21387,-4.5542},270.255}};
         fridgePos[] = {{{-0.907715,5.50684,-2.05441},272.559}};
         couchPos[] = {{{-7.35449,4.9502,-4.55441},189.687}};
@@ -1743,6 +1840,7 @@ class CfgBuildingLootPos
     };
     class Land_Barn_W_01 : Default
     {
+		lootType = "industrial";
         shelfPos[] = {{{6.55371,-5.96289,-2.65878},88.4798},{{-6.56934,-7.53516,-2.65848},265.499},{{-4.05664,19.6274,-2.66928},0.626892}};
         couchPos[] = {{{5.04297,-17.8179,-2.65564},48.1573}};
         chairPos[] = {{{6.02441,-15.0469,-2.65741},70.2096},{{2.39844,-19.5591,-2.65125},198.607}};
@@ -1754,6 +1852,8 @@ class CfgBuildingLootPos
     };
     class Land_Church_03 : Default
     {
+		lootType = "church";
+		GroundSpawnChance = 80;
         shelfPos[] = {{{-8.8877,4.48535,-14.3282},270.093}};
         wardrobePos[] = {{{-3.39648,7.18848,-14.3284},272.593}};
         chairPos[] = {{{-8.41113,-4.42725,-14.3249},235.951}};
@@ -1764,6 +1864,7 @@ class CfgBuildingLootPos
     };
     class Land_Stodola_open : Default
     {
+		lootType = "industrial";
         shelfPos[] = {{{2.08691,-3.11719,-4.14142},89.2592}};
         fridgePos[] = {{{1.88672,-6.01465,-4.13022},119.538}};
         couchPos[] = {{{-3.63477,-0.27832,-4.13867},190.732}};
@@ -1775,6 +1876,7 @@ class CfgBuildingLootPos
     };
     class Land_Stodola_old_open : Default
     {
+		lootType = "industrial";
         shelfPos[] = {{{4.81055,2.76367,-5.10672},359.199},{{-3.54004,7.10645,-1.01971},270.013}};
         bedPos[] = {{{-2.76221,8.75,-5.10696},179.304}};
         couchPos[] = {{{0.687988,-8.36133,-5.10693},4.33433}};
@@ -1789,6 +1891,7 @@ class CfgBuildingLootPos
     };
     class Land_Farm_Cowshed_a : Default
     {
+		lootType = "industrial";
         shelfPos[] = {{{9.65234,4.23633,-3.1138},359.83}};
         bedPos[] = {{{7.85938,-5.01221,-3.11404},274.383}};
         wardrobePos[] = {{{10.21,-4.81543,-3.11401},71.5758}};
@@ -1801,6 +1904,7 @@ class CfgBuildingLootPos
     };
     class Land_Farm_Cowshed_b : Default
     {
+		lootType = "industrial";
         shelfPos[] = {{{-9.05615,-3.76465,-3.12729},178.703}};
         couchPos[] = {{{-9.82813,2.41113,-3.1275},296.045}};
         chairPos[] = {{{8.15674,-3.28955,-3.1275},182.81}};
@@ -1809,12 +1913,14 @@ class CfgBuildingLootPos
     };
     class Land_Farm_Cowshed_c : Default
     {
+		lootType = "industrial";
         shelfPos[] = {{{-2.79785,3.14209,-3.15216},295.449}};
         filingPos[] = {{{-2.97998,-4.05469,-3.15222},179.983}};
         palletPos[] = {{{2.44531,2.57227,-3.14557},0.00511169}};
     };
     class Land_Barn_Metal : Default
     {
+		lootType = "industrial";
         shelfPos[] = {{{0.265625,-14.7627,-5.46832},89.0258}};
         fridgePos[] = {{{10.749,-15.9448,-5.46857},39.8741}};
         bedPos[] = {{{-9.12109,21.7661,-5.46857},175.889}};
@@ -1832,7 +1938,7 @@ class CfgBuildingLootPos
     };
     class Land_A_TVTower_Base : Default
     {
-        lootType = "mil";
+		lootType = "mil";
         shelfPos[] = {{{-0.569824,-2.05078,-2.25824},91.0596}};
         filingPos[] = {{{-2.6377,-4.59082,-2.26028},188.775}};
         pelicanPos[] = {{{4.38086,-0.0766602,1.15182},274.734}};
@@ -1841,13 +1947,14 @@ class CfgBuildingLootPos
     };
     class Land_Mil_Guardhouse : Default
     {
+		lootType = "mil";
         shelfPos[] = {{{-2.07324,2.70703,-1.69559},89.8322}};
         pelicanPos[] = {{{-2.46729,0.0585938,-1.69565},113.271}};
         shoeboxPos[] = {{{5.75781,1.48828,-10},202}};
     };
     class Land_Mil_House : Default
     {
-        lootType = "mil";
+		lootType = "mil";
         shelfPos[] = {{{12.2617,0.839355,-5.67438},181.266}};
         fridgePos[] = {{{15.2783,4.78369,-5.67462},52.5764}};
         pelicanPos[] = {{{-1.56152,6.73584,-1.87274},179.391}};
@@ -1865,7 +1972,7 @@ class CfgBuildingLootPos
     class Land_Mil_hangar_EP1 : Default
     {
         limit = 5;
-        lootType = "mil";
+		lootType = "mil";
         shelfPos[] = {{{13.5302,-21.2354,-5.37346},179},{{-14.126,-21.2681,-5.37346},179}};
         bedPos[] = {{{14.0624,22.0742,-5.3957},7}};
         couchPos[] = {{{11.0576,22.5513,-5.3945},277}};
@@ -1880,7 +1987,7 @@ class CfgBuildingLootPos
     class Land_Mil_ControlTower_EP1 : Default
     {
         limit = 5;
-        lootType = "mil";
+		lootType = "mil";
         shelfPos[] = {{{3.03467,2.64453,-1.16014},0},{{3.44043,3.19238,-5.52014},180},{{10.312,5.80469,-9.65014},90.8}};
         chairPos[] = {{{7.3042,-1.58887,2.98985},270}};
         filingPos[] = {{{1.48389,2.47754,-1.08014},350},{{2.1123,2.47852,-1.08014},0},{{4.2417,3.28027,-5.52014},180},{{-0.137207,6.33496,-9.65014},270.8}};
@@ -1967,6 +2074,8 @@ class CfgBuildingLootPos
     };
     class Land_A_Mosque_small_1_EP1 : Default
     {
+		lootType = "church";
+		GroundSpawnChance = 80;
         couchPos[] = {{{6.44385,2.74609,-2.0341},2}};
         chairPos[] = {{{1.59668,-1.55762,-1.7141},357},{{3.95605,-1.53418,-1.7141},2}};
         pelicanPos[] = {{{1.90137,4.70996,-1.2041},357}};
@@ -1975,6 +2084,8 @@ class CfgBuildingLootPos
     };
     class Land_A_Mosque_small_2_EP1 : Default
     {
+		lootType = "church";
+		GroundSpawnChance = 80;
         tablePos[] = {{{-0.952637,2.83398,-2.48343},"1.52588e-005"}};
         toolRackPos[] = {{{-0.880371,-3.7002,-2.37343},"1.52588e-005"}};
         shoeboxPos[] = {{{0.770508,-3.40137,-1.69343},"1.52588e-005"},{{-2.49805,-3.33887,-1.69343},"1.52588e-005"}};
@@ -2051,6 +2162,7 @@ class CfgBuildingLootPos
     };
     class Land_House_C_1_EP1 : Default
     {
+		lootType = "market";
         shelfPos[] = {{{-4.81006,1.55078,-0.937073},0}};
         fridgePos[] = {{{-8.3042,-0.625977,-0.937073},270}};
         cookerPos[] = {{{-8.23047,0.216797,-0.937073},270}};
@@ -2065,6 +2177,7 @@ class CfgBuildingLootPos
     };
     class Land_A_Minaret_Porto_EP1 : Default
     {
+		lootType = "mil";
         chairPos[] = {{{1.95752,0.271484,9.38245},349}};
         pelicanPos[] = {{{2.31885,1.9375,6.58245},229},{{3.31494,-0.510742,-3.39755},113}};
         shoeboxPos[] = {{{2.27197,-2.94531,9.39245},349}};
@@ -2091,6 +2204,7 @@ class CfgBuildingLootPos
     };
     class Land_House_C_1_v2_EP1 : Default
     {
+		lootType = "market";
         fridgePos[] = {{{-8.29102,0.782227,-1.35837},270}};
         couchPos[] = {{{4.57666,-1.00195,3.16163},270},{{-5.02783,2.07422,-1.38837},270}};
         cookerPos[] = {{{-2.74414,1.1748,-1.38837},90}};
@@ -2167,30 +2281,31 @@ class CfgBuildingLootPos
     };
     class Land_Mil_Guardhouse_EP1 : Default
     {
-        lootType = "mil";
+		lootType = "mil";
         shelfPos[] = {{{-2.9021,-0.569336,-1.69236},180}};
         shoeboxPos[] = {{{-2.94189,3.83496,-1.69236},180}};
     };
     class Land_Mil_House_EP1 : Default
     {
-        lootType = "mil";
+		lootType = "mil";
         toolRackPos[] = {{{10.4844,2.79492,-5.67967},270}};
         palletPos[] = {{{12.9678,2.14258,-5.67967},180},{{13.7964,4.08594,-5.67967},220}};
     };
     class Land_Mil_Repair_center_EP1 : Default
     {
-        lootType = "mil";
+		lootType = "mil";
         toolRackPos[] = {{{3.14893,3.31836,-2.52654},270}};
         palletPos[] = {{{-2.75195,0.446289,-1.52654},180},{{-2.63037,3.28516,-1.52654},270}};
     };
     class Land_Misc_Cargo1Ao_EP1 : Default
     {
+		lootType = "workshop";
         palletPos[] = {{{0.109863,-0.517578,-1.05425},180},{{0.0776367,2.01465,-1.05425},180}};
     };
     class Land_Mil_Barracks_i_EP1 : Default
     {
         limit = 5;
-        lootType = "mil";
+		lootType = "mil";
         pelicanPos[] = {{{-0.560303,-1.47656,0.0566254},88},{{2.65845,-1.47168,-0.743378},108},{{-3.68701,-1.2627,0.0566254},100},{{-7.04419,-1.5918,-0.743378},100}};
         lockerPos[] = {{{0.652588,-1.77637,-1.10338},270},{{-5.80908,-1.9834,-1.10338},270},{{-9.33643,-2.05957,-1.10338},270}};
         toolRackPos[] = {{{-9.41846,2.02148,-1.10338},270}};
@@ -2203,6 +2318,7 @@ class CfgBuildingLootPos
     };
     class Land_Ind_Oil_Tower_EP1 : Default
     {
+		lootType = "industrial";
         couchPos[] = {{{3.39233,-5.47461,3.74753},270}};
         pelicanPos[] = {{{3.07495,-2.38086,16.4475},270}};
         toolRackPos[] = {{{-1.66919,0.807617,-13.0425},270}};
@@ -2214,6 +2330,7 @@ class CfgBuildingLootPos
     };
     class Land_fortified_nest_big_EP1 : Default
     {
+		lootType = "mil";
         shelfPos[] = {{{-0.359375,-0.337891,-0.721558},95}};
         couchPos[] = {{{1.25781,-0.414063,-0.721558},185}};
         pelicanPos[] = {{{-1.12036,0.962891,-0.721558},85}};
@@ -2283,16 +2400,20 @@ class CfgBuildingLootPos
     };
     class Land_Fort_Watchtower_EP1 : Default
     {
+		lootType = "mil";
         pelicanPos[] = {{{-0.390137,0.0634766,0.56675},144}};
         shoeboxPos[] = {{{-1.28271,2.67969,-2.21325},360}};
         palletPos[] = {{{-0.77832,-2.00293,-2.20325},144}};
     };
     class Land_Misc_Cargo1Bo_EP1 : Default
     {
+		lootType = "workshop";
         palletPos[] = {{{0.0737305,-0.0507813,-1.06068},184},{{0.0981445,-1.95898,-1.06068},184},{{-0.0107422,1.99707,-1.06068},184}};
     };
     class Land_A_Minaret_EP1 : Default
     {
+		lootType = "church";
+		GroundSpawnChance = 80;
         pelicanPos[] = {{{-1.50244,-0.742188,5.06781},123.5}};
     };
     class Land_bo_HouseV2_04_Interier : Land_HouseV2_04_interier {};
@@ -2346,6 +2467,7 @@ class CfgBuildingLootPos
     };
     class Land_TTowerBig_2_F : Default
     {
+		lootType = "mil";
         pelicanPos[] = {{{1.03027,1.00903,0.757229},41}};
     };
     class Land_bo_Sara_domek_sedy : Default
@@ -2424,30 +2546,37 @@ class CfgBuildingLootPos
     };
     class Land_TTowerBig_1_F : Default
     {
+		lootType = "mil";
         pelicanPos[] = {{{0.920898,0.00317383,2.89364},270}};
     };
     class Land_u_Addon_01_V1_F : Default
     {
+		lootType = "workshop";
         shoeboxPos[] = {{{5.52515,0.521484,-0.014668},270}};
         palletPos[] = {{{-0.227783,0.866699,-0.0246677},270}};
 		toiletPos[] = {{{5.40527,3.62695,-0.0114021},45.604}};
     };
     class Land_SlideCastle_F : Default
     {
+		lootType = "church";
+		GroundSpawnChance = 80;
         shoeboxPos[] = {{{0.0908203,2.18799,-1.94149},193}};
         palletPos[] = {{{-0.841309,-3.05469,-10},193}};
     };
     class Land_Shed_Big_F : Default
     {
+		lootType = "industrial";
         palletPos[] = {{{6.66553,4.03369,-10},177},{{-7.18652,-10.4651,-10},177},{{-5.99561,11.2573,-10},177}};
     };
     class Land_Radar_F : Default
     {
+		lootType = "mil";
         pelicanPos[] = {{{9.36694,4.97949,-4.86368},247}};
         shoeboxPos[] = {{{-9.92847,-8.72461,-4.86368},44}};
     };
     class Land_ReservoirTower_F : Default
     {
+		lootType = "industrial";
         pelicanPos[] = {{{-1.41553,1.15063,-1.81942},130}};
         shoeboxPos[] = {{{-3.8374,1.81421,-1.81942},320}};
         palletPos[] = {{{0.737793,-3.30981,-1.80942},250}};
@@ -2460,7 +2589,7 @@ class CfgBuildingLootPos
     };
     class Land_Cargo_HQ_V1_ruins_F : Default
     {
-        lootType = "mil";
+		lootType = "mil";
         filingPos[] = {{{0.798828,-3.87012,-1.28783},250}};
         pelicanPos[] = {{{-4.96582,-4.61182,1.13217},250}};
         lockerPos[] = {{{-5.49561,-3.40796,-1.28783},270}};
@@ -2468,16 +2597,19 @@ class CfgBuildingLootPos
     class Land_Cargo_HQ_V3_derelict_F : Land_Cargo_HQ_V1_ruins_F {};
     class Land_cmp_Tower_F : Default
     {
+		lootType = "industrial";
         palletPos[] = {{{0.0551758,1.01294,-7.64906},250}};
         toiletPos[] = {{{-2.81934,1.84961,-8.20222},89.4642}};
     };
     class Land_Crane_F : Default
     {
+		lootType = "construction";
         pelicanPos[] = {{{-7.11475,-1.31665,5.74081},90}};
         shoeboxPos[] = {{{-6.86523,1.83765,5.74081},230}};
     };
     class Land_WIP_ruins_F : Default
     {
+		lootType = "construction";
         shelfPos[] = {{{2.08887,-10.4897,-1.32377},180.2},{{-17.3643,-11.3889,2.47623},2}};
         pelicanPos[] = {{{16.8608,-8.03442,0.106226},266}};
         shoeboxPos[] = {{{3.64453,7.38965,0.126227},350}};
@@ -2485,6 +2617,7 @@ class CfgBuildingLootPos
     };
     class Land_i_Stone_HouseBig_V2_dam_F : Default
     {
+		lootType = "civ";
         fridgePos[] = {{{-3.23608,-3.12744,-1.70506},220}};
         bedPos[] = {{{-2.40332,0.169434,1.17494},180}};
         wardrobePos[] = {{{2.80518,-3.146,1.17494},170}};
@@ -2493,6 +2626,7 @@ class CfgBuildingLootPos
     };
     class Land_u_House_Big_02_V1_dam_F : Default
     {
+		lootType = "civ";
         shelfPos[] = {{{3.21387,-1.56421,-2.44914},90}};
         fridgePos[] = {{{-3.24658,-3.44507,-2.44914},260}};
         couchPos[] = {{{3.49512,0.929443,-2.44234},90.0046}};
@@ -2507,11 +2641,13 @@ class CfgBuildingLootPos
     };
     class Land_Cargo_HQ_V2_ruins_F : Default
     {
+		lootType = "mil";
         shelfPos[] = {{{-5.3606,-5.2832,-1.15784},270}};
         pelicanPos[] = {{{3.18213,-3.80811,-1.30784},160}};
     };
     class Land_i_Stone_HouseSmall_V1_dam_F : Default
     {
+		lootType = "civ";
         couchPos[] = {{{-6.25098,1.86572,-0.594842},270}};
         filingPos[] = {{{8.93213,-2.67773,-0.594842},176}};
         pelicanPos[] = {{{-8.89941,-2.2583,-0.644842},260}};
@@ -2522,15 +2658,18 @@ class CfgBuildingLootPos
     class Land_i_Stone_HouseSmall_V3_dam_F : Land_i_Stone_HouseSmall_V1_dam_F {};
     class Land_cmp_Shed_dam_F : Default
     {
+		lootType = "workshop";
         palletPos[] = {{{0.482422,-2.13721,-3.10882},329},{{-3.94287,1.30518,-3.10882},260}};
     };
     class Land_Cargo_Tower_V1_ruins_F : Default
     {
+		lootType = "mil";
         pelicanPos[] = {{{3.30298,3.41357,-1.80046},329}};
     };
     class Land_Cargo_Tower_V3_derelict_F : Land_Cargo_Tower_V1_ruins_F {};
     class Land_dp_mainFactory_F : Default
     {
+		lootType = "industrial";
         shelfPos[] = {{{12.6934,-1.76367,-4.24943},359.454},{{13.9473,5.0918,-4.24943},88.7339},{{19.9414,1.03125,-7.43432},269.954},{{19.9355,-2.62891,-7.43443},271.718}};
         pelicanPos[] = {{{-2.5332,1.13477,1.24025},333.827},{{-11.8926,-2.99023,-4.39045},104.689},{{7.52734,-16.5059,-0.257848},243.576}};
         toolRackPos[] = {{{14.1328,0.527344,-4.33314},90.5367}};
@@ -2538,12 +2677,15 @@ class CfgBuildingLootPos
     };
     class Land_i_Windmill01_F : Default
     {
+		lootType = "church";
+		GroundSpawnChance = 80;
         pelicanPos[] = {{{-0.910156,1.28125,-3.54742},289.979}};
         tablePos[] = {{{0.111328,-1.23047,-3.50127},181.768}};
         toiletPos[] = {{{1.53125,2.11719,-3.56387},-305.513}};
     };
     class Land_d_House_Big_01_V1_F : Default
     {
+		lootType = "civ";
         fridgePos[] = {{{-5.62891,6.35156,-2.19721},269.825}};
         shelfPos[] = {{{-0.492188,1.82031,1.22279},163.832},{{0.046875,5.28125,-2.19721},359.157},{{2.66797,8.1875,-2.19721},122.214}};
         pelicanPos[] = {{{0.826172,0.384766,4.54293},312.651}};
@@ -2557,6 +2699,7 @@ class CfgBuildingLootPos
     };
     class Land_Sara_hasic_zbroj : Default
     {
+		lootType = "workshop";
         fridgePos[] = {{{2.29688,-2.56055,-2.67931},181.134}};
         shelfPos[] = {{{-3.21436,2.60376,-2.67923},3.40094}};
         couchPos[] = {{{0.914063,1.76172,-2.67932},266.479}};
@@ -2570,6 +2713,7 @@ class CfgBuildingLootPos
     };
     class Land_Sara_domek_zluty : Default
     {
+		lootType = "civ";
         fridgePos[] = {{{2.29858,3.92969,-2.46014},0.136902}};
         shelfPos[] = {{{7.44385,1.58789,-2.45992},97.2181}};
         wardrobePos[] = {{{-2.31445,-3.1958,-2.4576},90.1546}};
@@ -2585,6 +2729,7 @@ class CfgBuildingLootPos
     };
     class Land_Misc_PowerStation : Default
     {
+		lootType = "construction";
         shelfPos[] = {{{3.3877,-0.776367,-1.29452},268.884}};
         lockerPos[] = {{{3.64697,-4.25073,-1.29468},270.752}};
         toolRackPos[] = {{{3.20557,5.78613,-1.33632},269.596}};
@@ -2592,10 +2737,12 @@ class CfgBuildingLootPos
     };
     class Land_A_CraneCon : Default
     {
+		lootType = "construction";
         pelicanPos[] = {{{-7.55273,1.50537,5.76163},28.6669}};
     };
     class Land_A_BuildingWIP : Default
     {
+		lootType = "construction";
         limit = 6;
         fridgePos[] = {{{2.03711,11.1831,-6.49124},305.356},{{-3.37573,12.2183,1.48757},305.492},{{-24.4121,7.55957,-2.55824},228.742}};
         shelfPos[] = {{{-5.80249,-5.0332,-2.55812},356.037},{{12.1133,-4.3042,-6.54318},179.13},{{-21.0371,1.47168,-6.46016},178.598}};
@@ -2614,6 +2761,7 @@ class CfgBuildingLootPos
     };
     class Land_A_MunicipalOffice : Default
     {
+		lootType = "civ";
         pelicanPos[] = {{{3.55029,-5.18726,-0.195372},283.895}};
         chairPos[] = {{{4.35693,-5.59839,-18.4382},65.3313},{{-4.6333,-5.60132,-18.4559},295.001}};
         tablePos[] = {{{-3.02002,-7.53784,-18.4554},177.998}};
@@ -2621,6 +2769,7 @@ class CfgBuildingLootPos
     };
     class Land_Ind_Pec_01 : Default
     {
+		lootType = "industrial";
         fridgePos[] = {{{-2.46875,-0.492676,-3.98998},359.611}};
         shelfPos[] = {{{2.24902,-2.04834,-17.6013},177.989},{{-7.08789,-0.345215,-3.98975},359.84},{{5.65918,-7.55225,-17.6013},271.929},{{-7.43311,-7.98193,6.06143},181.606},{{-4.87256,-11.603,-17.6013},87.6155}};
         pelicanPos[] = {{{-4.57373,-7.05566,15.777},275.886}};
@@ -2633,6 +2782,7 @@ class CfgBuildingLootPos
     };
     class Land_Ind_SiloVelke_01 : Default
     {
+		lootType = "industrial";
         shelfPos[] = {{{0.950195,-2.19312,-5.47868},269.46},{{1.01416,5.71167,11.865},268.444},{{-11.5195,2.36597,11.865},357.551}};
         pelicanPos[] = {{{1.54297,-3.29761,24.2848},69.2792}};
         filingPos[] = {{{0.224121,-0.709229,11.8648},98.1473}};
@@ -2642,6 +2792,7 @@ class CfgBuildingLootPos
     };
     class Land_Ind_Expedice_1 : Default
     {
+		lootType = "industrial";
         shelfPos[] = {{{1.92285,-0.303223,-5.71009},178.232},{{0.276855,12.5483,-3.51293},203.944}};
         pelicanPos[] = {{{-0.432617,10.3877,9.68375},299.993},{{5.82813,-18.415,-5.78366},292.046}};
         chairPos[] = {{{9.70801,-12.1228,-5.78367},325.934}};
@@ -2654,18 +2805,23 @@ class CfgBuildingLootPos
     };
     class Land_Repair_center : Default
     {
+		lootType = "workshop";
         shelfPos[] = {{{-2.13965,2.55408,-1.55488},88.8949}};
     };
     class Land_Church_01 : Default
     {
+		lootType = "church";
+		GroundSpawnChance = 80;
         chairPos[] = {{{-6.88208,0.851563,-4.24353},6.01111}};
     };
     class Land_NAV_Lighthouse2 : Default
     {
+		lootType = "civ";
         shoeboxPos[] = {{{-0.019043,1.00098,2.39268},0.452068}};
     };
     class Land_A_Castle_Gate : Default
     {
+		lootType = "civ";
         fridgePos[] = {{{7.84082,4.31982,-2.93036},21.3658}};
         bedPos[] = {{{7.11719,0.841797,-2.94727},93.608}};
         cookerPos[] = {{{4.0166,4.29834,-2.97534},0.0874265}};
@@ -2676,15 +2832,18 @@ class CfgBuildingLootPos
     };
     class Land_A_Castle_Donjon : Default
     {
+		lootType = "civ";
         pelicanPos[] = {{{2.69727,-2.01953,12.4763},148.853}};
         tablePos[] = {{{-1.54395,5.67383,12.4445},0.407131}};
     };
     class Land_A_Castle_Stairs_A : Default
     {
+		lootType = "civ";
         shelfPos[] = {{{6.63232,2.28223,0.998962},356.642}};
     };
     class Land_Ind_Quarry : Default
     {
+		lootType = "construction";
         fridgePos[] = {{{-3.92188,-16.6865,-7.50379},222.564}};
         shelfPos[] = {{{-5.69775,-2.96875,-7.5061},89.9894},{{-0.436035,-9.52051,-7.50609},358.647},{{-4.89355,-8.41016,5.26832},178.014}};
         pelicanPos[] = {{{-5.05762,-3.05859,5.26825},270.152}};
@@ -2700,6 +2859,7 @@ class CfgBuildingLootPos
     };
     class Land_Barrack2 : Default
     {
+		lootType = "mil";
         shelfPos[] = {{{-1.14063,5.67578,-0.714874},359.937}};
         pelicanPos[] = {{{0.917969,1.40234,0.507111},62.1253}};
         chairPos[] = {{{1.83398,-2.77344,-0.720093},121.012}};
@@ -2709,6 +2869,7 @@ class CfgBuildingLootPos
     };
     class Land_Ind_Mlyn_01 : Default
     {
+		lootType = "industrial";
         shelfPos[] = {{{-1.02686,8.37012,-7.73514},84.5525}};
         pelicanPos[] = {{{-6.94873,2.21094,9.19446},187.886}};
         couchPos[] = {{{-7.31543,7.59277,-20.8141},0}};
@@ -2719,10 +2880,12 @@ class CfgBuildingLootPos
     };
     class Land_wagon_box : Default
     {
+		lootType = "construction";
         palletPos[] = {{{0.342285,-0.0380859,-0.80304},0},{{0.271973,2.38574,-0.80304},354.097},{{0.399414,-2.41504,-0.803101},0}};
     };
     class CampEast_EP1 : Default
     {
+		lootType = "mil";
         shelfPos[] = {{{-1.97852,2.84473,-1.35312},308.338},{{-1.98438,-3.44043,-1.35312},205.956}};
         pelicanPos[] = {{{-2.32422,0.889648,-1.35324},274.054}};
         bedPos[] = {{{1.50342,1.74512,-1.35336},6.52914},{{1.42969,-2.29004,-1.35336},0.577024}};
@@ -2730,6 +2893,7 @@ class CfgBuildingLootPos
     };
     class Land_Barrack2_EP1 : Default
     {
+		lootType = "mil";
         fridgePos[] = {{{1.29102,-3.15332,-0.720306},178.283}};
         shelfPos[] = {{{-0.526855,5.5127,-0.714996},357.779}};
         pelicanPos[] = {{{1.26465,3.2002,-0.319916},355.705}};
@@ -2740,6 +2904,7 @@ class CfgBuildingLootPos
     };
     class Land_Hlidac_Budka_EP1 : Default
     {
+		lootType = "mil";
         shelfPos[] = {{{1.20264,0.0732422,-0.809814},179.636}};
         filingPos[] = {{{2.69629,2.27246,-0.809937},21.4708}};
         tablePos[] = {{{-2.5376,1.29883,-0.810028},271.096}};
@@ -2748,6 +2913,7 @@ class CfgBuildingLootPos
     };
     class Land_HouseV_2L : Default
     {
+		lootType = "civ";
         shelfPos[] = {{{4.29199,2.60913,-3.95322},7.9453}};
         filingPos[] = {{{4.08594,1.27734,-3.9534},243.743}};
         shoeboxPos[] = {{{-3.90137,-3.46313,-4.01404},65.2182}};
@@ -2755,20 +2921,21 @@ class CfgBuildingLootPos
     };
     class Land_Shed_M02 : Default
     {
+		lootType = "civ";
         shoeboxPos[] = {{{1.05371,0.0397949,-1.03354},83.8544}};
         palletPos[] = {{{-0.0595703,-2.57153,-10},122.62}};
     };
     class ferrisWheel_EPOCH : Default
     {
-        lootBias = 50;
+		lootType = "civ";
         palletPos[] = {{{2,2,-10},322.16},{{-2,-2,-10},232.16}};
         shoeboxPos[] = {{{-3.33862,-0.988281,-10},312.382}};
         pelicanPos[] = {{{-0.840332,1.09473,-10},269.861}};
     };
     class Carnival_Tent : Default
     {
+		lootType = "mil";
         limit = 1;
-        lootBias = 50;
         shelfPos[] = {{{-1,-1,-10},178.014}};
         chairPos[] = {{{1,1,-10},152.678}};
         filingPos[] = {{{-1,0,-10},173.701}};
@@ -2778,11 +2945,13 @@ class CfgBuildingLootPos
     };
     class Land_Majak_v_celku : Default
     {
+		lootType = "market";
         pelicanPos[] = {{{0.640625,-5.32837,3.73342},87}};
         shoeboxPos[] = {{{0.935059,-6.73767,-6.0666},168}};
     };
     class Land_Kamenolom_budova : Default
     {
+		lootType = "industrial";
         lockerPos[] = {{{5.28259,8.6792,-7.4996},270}};
         toolRackPos[] = {{{4.55896,5.77637,-7.4996},270}};
         shoeboxPos[] = {{{-5.70508,11.5742,-7.4996},294}};
@@ -2790,24 +2959,29 @@ class CfgBuildingLootPos
     };
     class Land_pila : Default
     {
+		lootType = "construction";
         palletPos[] = {{{4.11987,-10.7354,-10},358}};
     };
     class Land_vez_ropa : Default
     {
+		lootType = "industrial";
         shoeboxPos[] = {{{1.22119,-3.17627,-2.08988},40}};
     };
     class Land_Telek1 : Default
     {
+		lootType = "mil";
         pelicanPos[] = {{{-1.76807,0.981689,-7.46783},294}};
     };
     class Land_Hut02 : Default
     {
+		lootType = "civ";
         couchPos[] = {{{-0.0549316,2.4751,-0.375967},269}};
         chairPos[] = {{{-0.932617,-1.18945,-0.375967},224}};
         shoeboxPos[] = {{{1.15332,0.0302734,1.73403},224}};
     };
     class Land_Hotel : Default
     {
+		lootType = "market";
         shelfPos[] = {{{1.78857,13.251,-7.75587},270},{{1.77783,15.3574,-7.75587},270},{{-10.7646,-15.3672,-0.742306},90}};
         fridgePos[] = {{{5.14795,18.9282,-7.75587},0}};
         bedPos[] = {{{2.94043,-11.6416,-4.28587},270},{{-11.6963,-3.02222,2.7677},0},{{12.1147,2.66748,2.7377},92},{{-12.1445,-2.65576,-0.742306},273},{{-17.7935,-2.72681,-4.28587},270},{{11.6216,17.6189,-0.742306},183},{{18.0103,-11.6978,2.7677},272}};
@@ -2827,11 +3001,13 @@ class CfgBuildingLootPos
     };
     class Land_Hut01 : Default
     {
+		lootType = "civ";
         bedPos[] = {{{-0.136719,1.94006,-0.456257},184}};
         tablePos[] = {{{-0.213867,-1.56018,-0.456257},180}};
     };
     class Land_Hut04 : Default
     {
+		lootType = "civ";
         chairPos[] = {{{-1.01709,-1.63196,-0.44096},190}};
         toolRackPos[] = {{{1.63916,0.498535,-1.33096},270}};
         shoeboxPos[] = {{{1.31445,3.20374,-0.44096},30}};
@@ -2840,6 +3016,8 @@ class CfgBuildingLootPos
     };
     class Land_Kostel_mexico : Default
     {
+		lootType = "church";
+		GroundSpawnChance = 80;
         chairPos[] = {{{-6.86377,-7.20459,-2.7923},200}};
         pelicanPos[] = {{{6.55908,-4.72803,-2.7923},9.99996}};
         tablePos[] = {{{-6.50439,-4.60132,-2.7923},359}};
@@ -2847,10 +3025,12 @@ class CfgBuildingLootPos
     };
     class Land_Watertower1 : Default
     {
+		lootType = "construction";
         shoeboxPos[] = {{{-7.45605,1.86682,5.2103},101.7}};
     };
     class Land_Army_hut3_long : Default
     {
+		lootType = "mil";
         shelfPos[] = {{{-3.35315,-4.39209,-1.27432},271}};
         filingPos[] = {{{1.96436,-3.27832,-1.27432},34}};
         pelicanPos[] = {{{0.996826,4.99609,-0.914318},9.99997}};
@@ -2860,6 +3040,7 @@ class CfgBuildingLootPos
     };
     class Land_Garaz_s_tankem : Default
     {
+		lootType = "mil";
         pelicanPos[] = {{{3.15186,4.26843,-1.70066},329}};
         toolRackPos[] = {{{6.14355,5.57983,-2.70066},359}};
         palletPos[] = {{{-3.16113,4.19702,-2.50066},181},{{5.40088,1.94946,-2.50066},181},{{-6.79199,3.48682,-2.50066},181}};
@@ -2867,11 +3048,13 @@ class CfgBuildingLootPos
     };
     class Land_Ammostore2 : Default
     {
+		lootType = "mil";
         shelfPos[] = {{{2.84912,1.64783,-2.42861},90}};
         palletPos[] = {{{-1.95752,1.25012,-2.42861},359}};
     };
     class Land_Vysilac_budova : Default
     {
+		lootType = "market";
         shelfPos[] = {{{-2.104,-4.41748,-6.5729},270},{{5.21436,-5.04321,0.417093},182},{{-8.69434,8.19604,-6.5929},359},{{-1.92578,15.3926,-6.58291},0},{{9.07471,-13.5862,-3.0929},180}};
         fridgePos[] = {{{-11.7583,-8.78931,-3.09291},268}};
         bedPos[] = {{{-0.967285,-6.52271,0.427094},272},{{-7.28223,-12.6365,-3.0929},100}};
@@ -2891,6 +3074,7 @@ class CfgBuildingLootPos
     };
     class Land_Army_hut_int : Default
     {
+		lootType = "mil";
         filingPos[] = {{{-2.10864,-4.15771,-1.32744},0}};
         pelicanPos[] = {{{2.05151,-1.40674,-0.157444},14.2}};
         lockerPos[] = {{{3.01929,-5.78467,-1.32744},90}};
@@ -2899,6 +3083,7 @@ class CfgBuildingLootPos
     };
     class Land_Ss_hangard : Default
     {
+		lootType = "mil";
         shelfPos[] = {{{7.96484,23.6194,-5.85834},360},{{13.9126,-21.1853,-5.86834},180}};
         lockerPos[] = {{{-9.27832,23.4492,-5.85834},360}};
         palletPos[] = {{{12.5146,-0.696777,-5.85834},270},{{-13.4209,10.2603,-5.85834},90}};
@@ -2906,6 +3091,7 @@ class CfgBuildingLootPos
     };
     class Land_Army_hut2 : Default
     {
+		lootType = "mil";
         couchPos[] = {{{-0.26416,-4.94482,-1.32744},270}};
         filingPos[] = {{{3.11523,-6.30835,-1.32744},180}};
         pelicanPos[] = {{{-1.24707,0.845947,-0.147443},340}};
@@ -2913,12 +3099,14 @@ class CfgBuildingLootPos
     };
     class Land_Letistni_hala : Default
     {
+		lootType = "mil";
         pelicanPos[] = {{{-0.218994,-0.153809,-1.67213},130}};
         shoeboxPos[] = {{{1.33838,-4.40283,-8.27213},290}};
         palletPos[] = {{{4.95361,6.68408,-8.27213},270}};
     };
     class Land_Army_hut3_long_int : Default
     {
+		lootType = "mil";
         shelfPos[] = {{{-0.243164,-2.62061,-1.23305},180},{{-3.44531,-4.89258,-1.23305},270}};
         filingPos[] = {{{0.609375,-3.22754,-1.23305},0.0999832},{{1.30493,-3.27246,-1.23305},20.1}};
         pelicanPos[] = {{{-0.883057,0.716797,-0.303053},356}};
@@ -2927,10 +3115,12 @@ class CfgBuildingLootPos
     };
     class Land_Vysilac_FM : Default
     {
+		lootType = "mil";
         pelicanPos[] = {{{0.807861,-0.467285,8.35913},290}};
     };
     class Land_Dum_mesto_in : Default
     {
+		lootType = "civ";
         shelfPos[] = {{{-3.18652,2.92676,-4.26343},180}};
         bedPos[] = {{{5.36743,-1.99609,-4.27343},6.00002},{{4.38062,4.47559,-4.27343},182}};
         couchPos[] = {{{1.6665,-2.45313,-1.27343},90},{{-4.39233,4.57129,-1.27343},270}};
@@ -2942,11 +3132,13 @@ class CfgBuildingLootPos
     };
     class Land_Hospital : Default
     {
+		lootType = "mil";
         palletPos[] = {{{-2.96191,5.99878,-10},180}};
         cabinetPos[] = {{{-6.74365,5.39355,-0.194811},90}};
     };
     class Land_Army_hut2_int : Default
     {
+		lootType = "mil";
         shelfPos[] = {{{3.22949,0.0185547,-0.945215},90}};
         filingPos[] = {{{3.07861,-1.13037,-0.945215},79},{{3.13208,-1.79688,-0.945215},89}};
         pelicanPos[] = {{{-1.51001,0.575684,-0.00521517},270}};
@@ -2954,10 +3146,12 @@ class CfgBuildingLootPos
     };
     class Land_Army_hut_storrage : Default
     {
+		lootType = "construction";
         palletPos[] = {{{0.295654,-4.19238,-10},119}};
     };
     class Land_House_y : Default
     {
+		lootType = "civ";
         bedPos[] = {{{-1.7063,-2.56055,-1.40579},273}};
         couchPos[] = {{{2.24292,3.52246,-1.40579},273}};
         wardrobePos[] = {{{-4.69897,-3.54785,-1.40579},210}};
@@ -2967,11 +3161,13 @@ class CfgBuildingLootPos
     };
     class Land_Dum_istan4_big : Default
     {
+		lootType = "civ";
         chairPos[] = {{{6.23877,4.94141,-10.3016},180}};
         shoeboxPos[] = {{{2.96289,-2.02026,-7.35158},40}};
     };
     class Land_Afbarabizna : Default
     {
+		lootType = "civ";
         bedPos[] = {{{5.90576,1.92358,-4.24116},280}};
         couchPos[] = {{{-2.80127,-3.64136,-4.24116},90}};
         wardrobePos[] = {{{-2.44092,2.52905,-4.24116},90}};
@@ -2981,35 +3177,42 @@ class CfgBuildingLootPos
     };
     class Land_Dum_istan2b : Default
     {
+		lootType = "civ";
         shelfPos[] = {{{-4.30664,2.29395,-2.33272},270}};
         toolRackPos[] = {{{-0.512695,-1.37354,0.50728},0}};
         palletPos[] = {{{-2.64063,-4.08057,3.80728},210},{{-5.76074,2.11768,3.80728},175}};
     };
     class Land_Garaz_bez_tanku : Default
     {
+		lootType = "mil";
         palletPos[] = {{{0.391602,1.3457,3.43286},319}};
     };
     class Land_Dum_istan4_detaily1 : Default
     {
+		lootType = "civ";
         chairPos[] = {{{6.41577,4.99414,-7.29889},190}};
     };
     class Land_Dum_istan3 : Default
     {
+		lootType = "civ";
         chairPos[] = {{{3.82861,-0.674072,0.592234},360}};
         tablePos[] = {{{-2.27588,-0.626587,0.592234},360}};
         palletPos[] = {{{9.90527,0.953369,0.592234},190}};
     };
     class Land_ZalChata : Default
     {
+		lootType = "market";
         couchPos[] = {{{-1.87109,-2.04102,-0.545453},270}};
         tablePos[] = {{{2.46045,-1.78198,-0.545453},90}};
     };
     class Land_Hlaska : Default
     {
+		lootType = "mil";
         pelicanPos[] = {{{-0.694336,0.777344,3.79217},310}};
     };
     class Land_Budova4 : Default
     {
+		lootType = "mil";
         shelfPos[] = {{{-7.06836,0.593262,-1.89329},360}};
         cookerPos[] = {{{-2.40625,-1.25439,-1.89329},271}};
         chairPos[] = {{{4.11328,0.133789,-1.89329},30},{{-7.25757,1.59717,-1.89329},248}};
@@ -3018,20 +3221,24 @@ class CfgBuildingLootPos
     };
     class Land_Sara_domek_hospoda : Default
     {
+		lootType = "civ";
         lockerPos[] = {{{-3.9082,-2.99487,-2.75601},360}};
         palletPos[] = {{{5.21143,-4.41309,-2.75601},360}};
     };
     class Land_Dum_istan3_hromada : Default
     {
+		lootType = "civ";
         shelfPos[] = {{{0.774414,-1.74438,-3.2448},90}};
         toolRackPos[] = {{{-0.35791,-4.48926,-3.44481},180}};
     };
     class Land_Vysilac_FM2 : Default
     {
+		lootType = "mil";
         pelicanPos[] = {{{-0.713379,2.47485,8.35913},280}};
     };
     class Land_Dum_istan3_pumpa : Default
     {
+		lootType = "civ";
         chairPos[] = {{{3.86157,-0.495605,1.48562},130}};
         shoeboxPos[] = {{{-2.74524,3.34277,-1.86439},280}};
         palletPos[] = {{{-1.52124,2.41992,1.48562},170}};
@@ -3040,28 +3247,33 @@ class CfgBuildingLootPos
     };
     class Land_Dum_istan2 : Default
     {
+		lootType = "civ";
         lockerPos[] = {{{-0.614258,-1.77734,0.807278},0}};
         palletPos[] = {{{6.19629,-1.01221,0.807278},280},{{-6.34631,2.2417,3.80728},280}};
     };
     class Land_Budova5 : Default
     {
+		lootType = "civ";
         shelfPos[] = {{{-1.78809,0.231201,-1.98003},90}};
         shoeboxPos[] = {{{-1.9873,4.33667,-1.70003},40}};
     };
     class Land_Strazni_vez : Default
     {
+		lootType = "mil";
         filingPos[] = {{{0.351074,0.225098,1.41236},90}};
         pelicanPos[] = {{{1.96533,0.918213,-0.617641},90}};
         shoeboxPos[] = {{{-1.87012,-1.2937,2.00236},240}};
     };
     class Land_Hut_old02 : Default
     {
+		lootType = "workshop";
         toolRackPos[] = {{{-4.69629,-3.26221,-3.04598},270}};
         shoeboxPos[] = {{{-3.69946,1.27148,-2.07598},200}};
         palletPos[] = {{{5.62891,-1.17334,-10},70},{{4.64526,-7.61523,-10},70},{{-7.48999,8.30762,-10},70}};
     };
     class Land_Cihlovej_Dum_mini : Default
     {
+		lootType = "civ";
         chairPos[] = {{{-1.37402,2.89819,-2.87115},60}};
         filingPos[] = {{{3.11719,0.488281,-2.87115},90}};
         shoeboxPos[] = {{{2.89404,-1.75195,-1.92115},110}};
@@ -3069,6 +3281,7 @@ class CfgBuildingLootPos
     };
     class Land_Panelak3 : Default
     {
+		lootType = "civ";
         limit = 6;
         shelfPos[] = {{{-3.97217,-0.323242,1.84827},90},{{4.33447,-2.9873,12.6483},92.1},{{4.81592,3.16943,7.24828},180},{{-4.30518,-3.88232,-6.24173},269},{{4.30908,-4.78418,4.54827},90}};
         fridgePos[] = {{{1.94727,4.65381,-6.24173},269},{{-4.23584,3.40967,-3.55173},189},{{4.93555,3.34619,4.54827},180},{{-7.32764,4.82227,1.84827},270}};
@@ -3085,6 +3298,7 @@ class CfgBuildingLootPos
     };
     class Land_Hruzdum : Default
     {
+		lootType = "civ";
         shelfPos[] = {{{3.03223,1.95996,1.60511},90}};
         fridgePos[] = {{{-2.85986,2.07886,-4.7049},270}};
         bedPos[] = {{{2.19727,3.07666,-1.1649},0}};
@@ -3095,6 +3309,7 @@ class CfgBuildingLootPos
     };
     class Land_Dum_istan3_hromada2 : Default
     {
+		lootType = "civ";
         shelfPos[] = {{{1.12891,-2.01318,-1.28126},91}};
         filingPos[] = {{{-0.769043,5.94043,-1.28126},0.999985}};
         toolRackPos[] = {{{6.09668,0.60791,1.98874},180}};
@@ -3104,6 +3319,7 @@ class CfgBuildingLootPos
     };
     class Land_Sara_Domek_sedy : Default
     {
+		lootType = "civ";
         couchPos[] = {{{1.28503,1.28613,-2.13815},180}};
         tablePos[] = {{{-3.38293,1.57959,-2.13815},180}};
         shoeboxPos[] = {{{-4.06616,0.482422,-1.61815},80}};
@@ -3111,25 +3327,30 @@ class CfgBuildingLootPos
     };
     class Land_Sara_domek_podhradi_1 : Default
     {
+		lootType = "civ";
         palletPos[] = {{{6,-3.56006,-2.76341},180}};
     };
     class Land_Posed : Default
     {
+		lootType = "mil";
         shoeboxPos[] = {{{0.740234,-0.162109,0.828706},90}};
     };
     class Land_Sara_stodola : Default
     {
+		lootType = "workshop";
         chairPos[] = {{{-5.00146,4.23291,-2.23894},300}};
         toolRackPos[] = {{{-2.65381,-2.55664,-2.63894},180}};
         palletPos[] = {{{4.77759,3.48389,-2.23894},275}};
     };
     class Land_Benzina_schnell : Default
     {
+		lootType = "market";
         shelfPos[] = {{{0.369141,2.5376,-2.15264},0.0300293}};
         shoeboxPos[] = {{{-1.08154,-3.79395,-2.15264},206}};
     };
     class Land_Budova3 : Default
     {
+		lootType = "mil";
         shelfPos[] = {{{-1.59082,3.19653,-1.89183},0}};
         filingPos[] = {{{-3.70996,2.74585,-1.89183},270}};
         pelicanPos[] = {{{-1.58691,0.295898,-1.20183},265}};
@@ -3138,16 +3359,19 @@ class CfgBuildingLootPos
     };
     class Land_Zastavka_jih : Default
     {
+		lootType = "civ";
         shoeboxPos[] = {{{0.58252,1.18994,-1.22299},20}};
     };
     class Land_Dulni_bs : Default
     {
+		lootType = "civ";
         filingPos[] = {{{3.20361,-0.208252,-1.70513},20}};
         tablePos[] = {{{-0.914063,-2.57251,-1.70513},260}};
         toolRackPos[] = {{{3.61035,1.94409,-1.70513},89.9999}};
     };
     class Land_Dum_zboreny : Default
     {
+		lootType = "civ";
         shelfPos[] = {{{-5.97119,-5.16162,1.35662},185}};
         couchPos[] = {{{-1.97168,-3.46924,-2.32337},170}};
         chairPos[] = {{{0.477539,4.96338,-2.32337},50}};
@@ -3157,15 +3381,19 @@ class CfgBuildingLootPos
     };
     class Land_Kostelik : Default
     {
+		lootType = "church";
+		GroundSpawnChance = 80;
         shoeboxPos[] = {{{0.538574,-4.71631,-5.03529},30}};
     };
     class Land_Garaz : Default
     {
+		lootType = "workshop";
         palletPos[] = {{{-5.4248,5.82739,-10},180}};
         cabinetPos[] = {{{-7.83203,0.581055,0.0568509},180}};
     };
     class Land_Helfenburk : Default
     {
+		lootType = "civ";
         shelfPos[] = {{{1.08789,1.6875,4.33816},0}};
         bedPos[] = {{{-3.31738,-4.37256,0.278163},180}};
         couchPos[] = {{{1.61719,-0.11084,-3.00184},350}};
@@ -3177,15 +3405,18 @@ class CfgBuildingLootPos
     };
     class Land_Sara_stodola2 : Default
     {
+		lootType = "workshop";
         toolRackPos[] = {{{-2.20386,-3.52246,-2.11083},180}};
         palletPos[] = {{{-3.30347,2.7832,-2.11083},80}};
     };
     class Land_Leseni4x : Default
     {
+		lootType = "construction";
         shoeboxPos[] = {{{-1.26904,0.478027,2.78},340}};
     };
     class Land_Sara_zluty_statek_in : Default
     {
+		lootType = "civ";
         fridgePos[] = {{{5.948,6.13428,-2.88701},360}};
         bedPos[] = {{{0.041748,1.02148,-2.86701},3.09999},{{-9.00073,0.931641,-2.88701},177}};
         couchPos[] = {{{-3.89038,4.39063,-2.86701},183.1}};
@@ -3196,6 +3427,7 @@ class CfgBuildingLootPos
     };
     class Land_Dum_rasovna : Default
     {
+		lootType = "civ";
         fridgePos[] = {{{-1.79639,-2.43652,-2.66723},267}};
         couchPos[] = {{{2.77344,3.13867,-2.72723},0}};
         wardrobePos[] = {{{0.265625,0.027832,0.232774},261}};
@@ -3205,6 +3437,7 @@ class CfgBuildingLootPos
     };
     class Land_Deutshe_mini : Default
     {
+		lootType = "civ";
         fridgePos[] = {{{-0.330566,-0.274902,-2.75343},90}};
         couchPos[] = {{{3.67529,1.58252,-2.75343},0}};
         cookerPos[] = {{{-4.53369,-2.98145,-2.75343},180}};
@@ -3214,6 +3447,7 @@ class CfgBuildingLootPos
     };
     class Land_Dum_mesto2 : Default
     {
+		lootType = "civ";
         shelfPos[] = {{{-2.41553,0.267822,-4.34935},178}};
         bedPos[] = {{{-2.0835,-1.28027,-0.949347},277}};
         couchPos[] = {{{-2.37158,-1.62183,-4.34935},260},{{1.73291,-7.04468,-0.949347},90}};
@@ -3225,15 +3459,18 @@ class CfgBuildingLootPos
     };
     class Land_Hospoda_mesto : Default
     {
+		lootType = "civ";
         fridgePos[] = {{{0.446289,-6.14355,-5.18829},270}};
         shoeboxPos[] = {{{4.28125,-1.48926,-4.19829},70}};
     };
     class Land_Kulna : Default
     {
+		lootType = "workshop";
         toolRackPos[] = {{{-1.10547,0.367188,-1.41632},270}};
     };
     class Land_Bouda2_vnitrek : Default
     {
+		lootType = "workshop";
         shelfPos[] = {{{2.62158,-2.62305,-0.623022},180}};
         lockerPos[] = {{{-3.52686,-1.87842,-0.623022},270}};
         toolRackPos[] = {{{-2.71094,2.9502,-0.623022},360}};
@@ -3241,31 +3478,37 @@ class CfgBuildingLootPos
     };
     class Land_Ind_SawMillPen : Default
     {
+		lootType = "construction";
         palletPos[] = {{{3.70117,2.6554,-10},270.892},{{-3.36426,-7.48914,-10},270.892},{{-3.96729,7.4613,-10},270.892}};
     };
     class Land_Shed_W4 : Default
     {
+		lootType = "workshop";
         toolRackPos[] = {{{-1.92188,-4.54932,-1.41301},0.999992}};
         palletPos[] = {{{2.05127,-5.70166,-10},0.999992}};
     };
     class Land_HouseV_1T : Default
     {
+		lootType = "civ";
         chairPos[] = {{{2.17749,-2.29297,-10},310}};
         shoeboxPos[] = {{{3.49792,-1.50391,-3.08958},15}};
     };
     class Land_HouseV_3I4 : Default
     {
+		lootType = "civ";
         shoeboxPos[] = {{{5.41113,2.55908,-2.58653},243}};
         freezerPos[] = {{{-3.21484,4.77051,-10},180}};
     };
     class Land_HouseV_2I : Default
     {
+		lootType = "civ";
         shelfPos[] = {{{-5.50256,2.2085,-3.05727},90}};
         lockerPos[] = {{{-5.73291,-4.91406,-3.05727},90}};
         shoeboxPos[] = {{{6.59167,2.9624,-10},40}};
     };
     class Land_HouseV2_03 : Default
     {
+		lootType = "industrial";
         shelfPos[] = {{{-17.604,2.24219,-5.86916},89},{{18.0801,-0.203613,-5.48916},270}};
         chairPos[] = {{{1.61133,-8.67456,-5.57916},89}};
         toolRackPos[] = {{{-17.3164,0.101318,-6.01916},90}};
@@ -3276,27 +3519,32 @@ class CfgBuildingLootPos
     };
     class Land_Dum_olezlina : Default
     {
+		lootType = "civ";
         couchPos[] = {{{1.20703,-5.45386,-10},272.2}};
         chairPos[] = {{{2.76367,4.53845,-10},173.2}};
         tablePos[] = {{{-1.27197,4.57642,-10},183.2}};
     };
     class Land_Ind_Expedice_2 : Default
     {
+		lootType = "industrial";
         palletPos[] = {{{2.56006,0.650269,-10},302.2},{{-8.99365,0.00256348,-10},302.2}};
     };
     class Land_IndPipe2_bigBuild2_L : Default
     {
+		lootType = "industrial";
         shoeboxPos[] = {{{4.82397,-1.97314,2.59579},277.3}};
         palletPos[] = {{{6.57422,2.44775,-10},335.2}};
         cabinetPos[] = {{{5.01245,1.12354,3.51578},271.2}};
     };
     class Land_IndPipe2_big_18ladder : Default
     {
+		lootType = "industrial";
         shoeboxPos[] = {{{0.830566,-3,2.61729},278.5}};
         palletPos[] = {{{0.762207,7.46484,-10},328.5}};
     };
     class Land_Ind_Expedice_3 : Default
     {
+		lootType = "industrial";
         shelfPos[] = {{{0.996826,-17.7642,2.20826},90}};
         toolRackPos[] = {{{6.52441,5.72363,-4.44174},91}};
         shoeboxPos[] = {{{2.94495,-5.69189,2.10826},249}};
@@ -3305,41 +3553,49 @@ class CfgBuildingLootPos
     };
     class Land_houseV_2T1 : Default
     {
+		lootType = "civ";
         chairPos[] = {{{5.18408,3.88074,-10},200}};
         tablePos[] = {{{6.86133,3.73376,-10},180}};
         freezerPos[] = {{{5.07959,-3.24548,-10},270}};
     };
     class Land_IndPipe2_bigBuild1_R : Default
     {
+		lootType = "industrial";
         shoeboxPos[] = {{{-0.633301,3.0249,-3.68421},290}};
     };
     class Land_Misc_Cargo1Bo : Default
     {
+		lootType = "construction";
         palletPos[] = {{{0.352051,0.725342,-1.09068},266}};
     };
     class Land_Ind_MalyKomin : Default
     {
+		lootType = "industrial";
         pelicanPos[] = {{{-0.880371,-0.432007,-7.73271},82}};
         shoeboxPos[] = {{{1.27539,-3.78528,-16.5427},113}};
         palletPos[] = {{{0.413574,-2.14258,-20},185}};
     };
     class Land_Misc_Cargo1Ao : Default
     {
+		lootType = "construction";
         shelfPos[] = {{{0.100098,2.87891,-1.07068},360}};
         palletPos[] = {{{-0.231934,-0.652344,-1.07068},360}};
     };
     class Land_Misc_GContainer_Big : Default
     {
+		lootType = "construction";
         palletPos[] = {{{-2.28296,-0.679688,0.504925},21}};
     };
     class Land_HouseV_3I1 : Default
     {
+		lootType = "civ";
         chairPos[] = {{{1.64844,-2.47266,-10},330}};
         tablePos[] = {{{3.09497,-1.99512,-10},0}};
         shoeboxPos[] = {{{5.26025,-1.45947,-2.08637},340}};
     };
     class Land_Ind_Stack_Big : Default
     {
+		lootType = "industrial";
         pelicanPos[] = {{{-3.30188,4.6333,-6.00286},100}};
         shoeboxPos[] = {{{-3.06494,0.469727,-23.2595},320},{{2.18286,-3.10352,-28.5202},190.1}};
         palletPos[] = {{{-1.29297,-0.548828,-23.2395},177.1},{{-3.23267,-1.17725,-28.5751},360},{{3.37927,-5.10156,-28.5051},360}};
@@ -3347,10 +3603,12 @@ class CfgBuildingLootPos
     };
     class Land_Dum_mesto3 : Default
     {
+		lootType = "civ";
         palletPos[] = {{{-5.93799,1.10693,-10},177.1}};
     };
     class Land_Sara_domek_vilka : Default
     {
+		lootType = "civ";
         fridgePos[] = {{{-4.55078,-1.19714,-4.15991},74.1}};
         cookerPos[] = {{{-0.371094,8.04688,-4.15991},324.1}};
         chairPos[] = {{{2.96777,4.70288,-4.15991},198.1},{{4.87744,4.50684,-4.15991},168.1}};
@@ -3358,6 +3616,7 @@ class CfgBuildingLootPos
     };
     class Land_MBG_Killhouse_4 : Default
     {
+		lootType = "civ";
         limit = 5;
         shelfPos[] = {{{-1.86426,0.823242,-3.84317},0}};
         fridgePos[] = {{{-1.54175,2.74219,-3.84317},75}};
@@ -3376,6 +3635,7 @@ class CfgBuildingLootPos
     };
     class Land_MBG_Warehouse : Default
     {
+		lootType = "civ";
         limit = 5;
         shelfPos[] = {{{-11.0225,19.5303,-6.14345},0},{{22.1719,4.58838,-6.14345},90},{{11.9806,19.5259,-6.14345},0}};
         fridgePos[] = {{{17.2281,-11.791,-2.84345},260},{{21.8842,-9.31396,-6.14345},86}};
@@ -3393,6 +3653,7 @@ class CfgBuildingLootPos
     };
     class Land_Nav_Boathouse : Default
     {
+		lootType = "workshop";
         shelfPos[] = {{{-6.1333,-0.567383,3.73588},270},{{6.16504,7.45251,3.73588},90}};
         pelicanPos[] = {{{4.60059,7.36157,6.27056},20}};
         toolRackPos[] = {{{-3.38867,7.96362,3.54426},0}};
@@ -3401,6 +3662,7 @@ class CfgBuildingLootPos
     };
     class Land_aif_tovarna1 : Default
     {
+		lootType = "civ";
         shelfPos[] = {{{-1.34839,4.19336,-6.33},360},{{4.6626,1.58105,2.39782},91},{{4.83521,6.05713,-6.33},89.9999},{{-7.95361,4.19141,2.39782},0},{{-11.9773,-9.18115,2.39782},180}};
         chairPos[] = {{{-12.5784,6.91992,-6.33},290}};
         filingPos[] = {{{4.43481,-6.05469,2.39782},71},{{-1.50903,9.71191,-6.33},20},{{-12.8018,5.06689,-6.33},260}};
@@ -3413,17 +3675,20 @@ class CfgBuildingLootPos
     };
     class Land_Ind_Workshop01_02 : Default
     {
+		lootType = "workshop";
         shelfPos[] = {{{-0.240723,-1.29358,-1.42703},170}};
         filingPos[] = {{{1.89063,1.82556,-1.42703},90}};
         toolRackPos[] = {{{2.23242,-0.662842,-1.42837},90}};
     };
     class Land_Dum_mesto2l : Default
     {
+		lootType = "civ";
         couchPos[] = {{{0.45459,-6.61829,-10},275}};
         freezerPos[] = {{{-5.65674,3.06665,-10},70}};
     };
     class Land_HouseV2_03B : Default
     {
+		lootType = "civ";
         fridgePos[] = {{{0.340332,11.325,-10},149}};
         chairPos[] = {{{-0.225586,-8.89624,-5.52124},350}};
         filingPos[] = {{{-7.57422,3.46326,-5.52124},19}};
@@ -3431,12 +3696,14 @@ class CfgBuildingLootPos
     };
     class Land_Ind_SawMill : Default
     {
+		lootType = "construction";
         shelfPos[] = {{{10.2842,6.57764,-10},353}};
         toolRackPos[] = {{{-1.59766,-9.85474,-5.83539},0}};
         palletPos[] = {{{0.612305,-14.6431,-10},289},{{4.40283,16.1758,-10},259}};
     };
     class Land_MBG_Killhouse_3 : Default
     {
+		lootType = "civ";
         shelfPos[] = {{{3.38831,-2.70947,-2.84856},180},{{-3.40912,-2.7085,-2.84856},180},{{13.5056,3.15479,0.45144},90}};
         fridgePos[] = {{{-0.447632,1.98047,-2.84856},90}};
         bedPos[] = {{{-5.17578,0.581543,0.45144},275}};
@@ -3448,6 +3715,7 @@ class CfgBuildingLootPos
     };
     class Land_MBG_Killhouse_2 : Default
     {
+		lootType = "civ";
         shelfPos[] = {{{-3.25293,5.17078,0.501439},90},{{7.54932,3.19135,-2.79856},90}};
         fridgePos[] = {{{-1.98389,5.94983,-2.79856},357}};
         bedPos[] = {{{-1.12451,0.444519,-2.79856},277}};
@@ -3462,14 +3730,17 @@ class CfgBuildingLootPos
     };
     class Land_A_Castle_Wall2_30 : Default
     {
+		lootType = "civ";
         shoeboxPos[] = {{{-0.252197,-0.444336,-4.59615},348}};
     };
     class Land_water_tank : Default
     {
+		lootType = "market";
         shoeboxPos[] = {{{-1.70618,0.626465,-4.34336},160}};
     };
     class Land_aif_zluty_statek_in : Default
     {
+		lootType = "civ";
         fridgePos[] = {{{6.42834,-0.214355,-2.88675},180}};
         bedPos[] = {{{0.214722,0.946289,-2.88675},7},{{-6.51392,5.06982,-2.88675},11}};
         couchPos[] = {{{-0.917725,5.39258,-2.88675},277}};
@@ -3482,6 +3753,7 @@ class CfgBuildingLootPos
     };
     class land_mbg_brickhouse_01 : Default
     {
+		lootType = "civ";
         fridgePos[] = {{{-1.50415,-2.7251,-3.35652},180}};
         bedPos[] = {{{4.7439,3.46289,-0.0515051},274}};
         couchPos[] = {{{-6.37341,-1.02637,-0.0515051},184}};
@@ -3495,6 +3767,7 @@ class CfgBuildingLootPos
     };
     class Land_aif_hotel : Default
     {
+		lootType = "civ";
         limit = 6;
         shelfPos[] = {{{-2.01904,1.21753,2.74082},0},{{3.21387,-0.964844,-7.74672},180}};
         fridgePos[] = {{{2.17969,18.8186,-7.74672},350}};
@@ -3513,10 +3786,12 @@ class CfgBuildingLootPos
     };
     class Land_Shed_M03 : Default
     {
+		lootType = "workshop";
         palletPos[] = {{{2.21582,-0.074707,-10},70}};
     };
     class Land_Cihlovej_Dum_in : Default
     {
+		lootType = "civ";
         bedPos[] = {{{-2.44727,-1.3855,-1.81472},183}};
         chairPos[] = {{{2.34375,2.92859,-5.27588},72}};
         filingPos[] = {{{2.63818,-2.45959,-5.27588},102}};
@@ -3525,11 +3800,13 @@ class CfgBuildingLootPos
     };
     class Land_HouseV_3I3 : Default
     {
+		lootType = "civ";
         chairPos[] = {{{4.33728,2.4126,-1.88408},165}};
         shoeboxPos[] = {{{0.844849,2.4624,-1.58408},165}};
     };
     class Land_MBG_Killhouse_1 : Default
     {
+		lootType = "civ";
         shelfPos[] = {{{-3.85999,6.52588,-2.04856},360}};
         bedPos[] = {{{1.46289,1.53906,-2.04856},180}};
         couchPos[] = {{{-2.58972,-1.76123,-2.04856},270}};
@@ -3540,31 +3817,38 @@ class CfgBuildingLootPos
     };
     class Land_HouseV_3I2 : Default
     {
+		lootType = "civ";
         filingPos[] = {{{3.73364,2.27148,-1.9779},191}};
     };
     class Land_Misc_Scaffolding : Default
     {
+		lootType = "construction";
         shoeboxPos[] = {{{-0.0925293,3.95947,0.467445},250}};
         palletPos[] = {{{0.372559,6.46924,3.4257},281}};
     };
     class Land_Sara_domek_ruina : Default
     {
+		lootType = "civ";
         shelfPos[] = {{{3.26025,-2.89648,-1.60027},357}};
     };
     class Land_HouseBlock_C4 : Default
     {
+		lootType = "civ";
         fridgePos[] = {{{-1.29639,5.63232,-10},173}};
     };
     class Land_HouseBlock_C5 : Default
     {
+		lootType = "civ";
         couchPos[] = {{{1.61163,6.7124,-10},92}};
     };
     class Land_HouseBlock_B5 : Default
     {
+		lootType = "civ";
         couchPos[] = {{{-0.353027,-7.00562,-10},272}};
     };
     class Land_House_C_4_EP1 : Default
     {
+		lootType = "civ";
         limit = 5;
         shelfPos[] = {{{-0.529297,2.29675,-0.350365},270},{{-4.1626,2.0033,-0.278609},180},{{-5.98877,0.867432,-3.48355},270}};
         bedPos[] = {{{0.202148,-5.34204,-0.278609},90}};
@@ -3579,33 +3863,39 @@ class CfgBuildingLootPos
     };
     class Land_HouseBlock_B3 : Default
     {
+		lootType = "civ";
         shelfPos[] = {{{0.977112,5.03223,-6.95459},176}};
         couchPos[] = {{{-2.69189,-5.72021,-10},256}};
     };
     class Land_HouseBlock_B2 : Default
     {
+		lootType = "civ";
         wardrobePos[] = {{{-1.12988,4.83972,-7.27931},179}};
         chairPos[] = {{{-0.0283203,-5.26733,-10},9.99996}};
     };
     class Land_HouseBlock_B6 : Default
     {
+		lootType = "civ";
         shelfPos[] = {{{3.57837,-4.77539,-7.30174},354.38}};
         palletPos[] = {{{-4.55292,0.697754,-10},354.38}};
     };
     class Land_HouseV2_01B : Default
     {
+		lootType = "civ";
         fridgePos[] = {{{-4.15396,-2.19238,-5.19199},354.38}};
         chairPos[] = {{{-3.01724,-2.3877,-5.19199},20}};
         shoeboxPos[] = {{{6.00101,6.36084,-5.77199},356}};
     };
     class Land_HouseBlock_C1 : Default
     {
+		lootType = "civ";
         fridgePos[] = {{{8.41409,-7.08496,-15},342}};
         couchPos[] = {{{-2.88599,-8.50488,-15},256}};
         cookerPos[] = {{{7.3176,-7.18994,-15},9.99996}};
     };
     class Land_HouseBlock_B1 : Default
     {
+		lootType = "civ";
         chairPos[] = {{{-5.48889,-5.64307,-10},0}};
         filingPos[] = {{{2.84558,-4.92969,-7.23419},291}};
         shoeboxPos[] = {{{-3.95349,4.85449,-7.26419},349}};
@@ -3613,6 +3903,7 @@ class CfgBuildingLootPos
     };
     class Land_HouseBlock_A1 : Default
     {
+		lootType = "civ";
         shelfPos[] = {{{-5.13318,2.14697,-8.80562},270}};
         filingPos[] = {{{-2.80725,3.32373,-8.80562},20},{{-2.76782,4.09473,-8.80562},170}};
         toolRackPos[] = {{{-5.45435,-2.15137,-8.81038},272}};
@@ -3622,11 +3913,13 @@ class CfgBuildingLootPos
     };
     class Land_HouseBlock_D1 : Default
     {
+		lootType = "civ";
         fridgePos[] = {{{-10.333,7.138,-15},70}};
         couchPos[] = {{{6.07764,2.52066,-15},100}};
     };
     class Land_MBG_GER_HUS_4 : Default
     {
+		lootType = "civ";
         shelfPos[] = {{{2.47705,-5.36951,-3.11289},270}};
         fridgePos[] = {{{2.51025,7.40857,-3.11289},0}};
         bedPos[] = {{{-4.52637,6.51978,-0.112886},267},{{-5.04541,-6.17224,-3.11289},178},{{4.93701,-6.63196,-0.112886},90}};
@@ -3641,22 +3934,26 @@ class CfgBuildingLootPos
     };
     class Land_HouseBlock_C3 : Default
     {
+		lootType = "civ";
         couchPos[] = {{{8.56396,-6.36353,-10},260}};
         chairPos[] = {{{-2.9165,-5.31055,-10},30}};
         filingPos[] = {{{7.23682,-4.99268,-10},320}};
     };
     class Land_HouseBlock_A2 : Default
     {
+		lootType = "civ";
         wardrobePos[] = {{{6.57715,-5.71594,-10},130}};
         freezerPos[] = {{{-1.35742,5.68097,-10},180}};
     };
     class Land_HouseBlock_D2 : Default
     {
+		lootType = "civ";
         couchPos[] = {{{6.18115,2.78662,-10},100}};
         chairPos[] = {{{-10.6704,6.06445,-10},100}};
     };
     class Land_House_C_10_EP1 : Default
     {
+		lootType = "civ";
         shelfPos[] = {{{-3.12988,-4.56921,-4.19121},180},{{3.58984,6.86169,-4.19121},90}};
         fridgePos[] = {{{-3.30225,-0.637085,-0.868872},328}};
         bedPos[] = {{{-0.0175781,4.55432,-0.868872},281.2}};
@@ -3670,15 +3967,19 @@ class CfgBuildingLootPos
     };
     class Land_kolotoc : Default
     {
+		lootType = "church";
+		GroundSpawnChance = 80;
         shoeboxPos[] = {{{0.141174,1.16504,-0.410941},9.99998}};
     };
     class Land_HouseBlock_C2 : Default
     {
+		lootType = "civ";
         fridgePos[] = {{{4.46484,-5.28906,-10},30}};
         couchPos[] = {{{4.70374,5.6416,-10},266}};
     };
     class land_mbg_apartments_big_04 : Default
     {
+		lootType = "civ";
         limit = 4;
         shelfPos[] = {{{-2.9585,-0.955566,-3.19898},173},{{3.57837,-1.02734,-0.150979},180},{{3.9978,-0.992188,2.89702},180}};
         bedPos[] = {{{-9.82959,-0.0673828,-3.19898},100},{{-10.2119,0.567383,-0.177418},180}};
@@ -3695,10 +3996,12 @@ class CfgBuildingLootPos
     };
     class Land_Misc_WaterStation : Default
     {
+		lootType = "workshop";
         shelfPos[] = {{{0.0671387,1.83984,-10},173}};
     };
     class Land_MBG_GER_RHUS_5 : Default
     {
+		lootType = "civ";
         fridgePos[] = {{{1.31772,0.522949,-3.36569},0}};
         bedPos[] = {{{2.74927,-3.38574,-0.46569},9.99997}};
         chairPos[] = {{{3.08368,1.9248,-0.46569},139},{{-0.0794067,-3.91016,-0.46569},140}};
@@ -3710,19 +4013,23 @@ class CfgBuildingLootPos
     };
     class Land_HouseV2_05 : Default
     {
+		lootType = "civ";
         shoeboxPos[] = {{{5.45065,6.88379,-2.57005},208}};
     };
     class land_mbg_apartments_big_01 : Default
     {
+		lootType = "civ";
         palletPos[] = {{{-3.00781,8.74561,-10},158},{{-11.1992,-8.0249,-10},158}};
         freezerPos[] = {{{10.4133,-5.31006,-10},278}};
     };
     class Land_BoatSmall_1 : Default
     {
+		lootType = "market";
         shoeboxPos[] = {{{-1.17236,0.257324,-0.19216},278}};
     };
     class Land_Dum_zboreny_total : Default
     {
+		lootType = "civ";
         shelfPos[] = {{{-4.31104,-3.87012,-2.10433},183}};
         fridgePos[] = {{{-6.14893,3.69727,-2.30266},291}};
         pelicanPos[] = {{{-5.89111,-1.60559,-2.22433},320}};
@@ -3731,6 +4038,8 @@ class CfgBuildingLootPos
     };
     class Land_Kostel : Default
     {
+		lootType = "church";
+		GroundSpawnChance = 80;
         chairPos[] = {{{0.496826,11.0215,-10},160},{{-3.49121,10.9878,-10},200}};
         pelicanPos[] = {{{2.78882,-4.64307,-0.905101},291}};
         tablePos[] = {{{5.80811,-5.58105,-7.39957},90}};
@@ -3739,6 +4048,7 @@ class CfgBuildingLootPos
     };
     class Land_A_Villa_EP1 : Default
     {
+		lootType = "market";
         shelfPos[] = {{{6.8761,-2.54785,-5.06721},317},{{6.68848,-4.10059,-1.4844},225},{{-9.68689,13.8384,-1.4844},270}};
         fridgePos[] = {{{-10.4589,14.2017,-5.06718},89.9999}};
         bedPos[] = {{{-12.4541,15.0962,-1.4844},263}};
@@ -3756,6 +4066,7 @@ class CfgBuildingLootPos
     };
     class Land_Budova4_in : Default
     {
+		lootType = "mil";
         shelfPos[] = {{{5.09131,-2.0423,-1.88723},271}};
         lockerPos[] = {{{3.58789,0.436401,-1.88723},0},{{-7.48047,-0.331573,-1.88723},270}};
         freezerPos[] = {{{-2.17871,-1.00378,-1.88723},270}};
@@ -3763,15 +4074,18 @@ class CfgBuildingLootPos
     };
     class Land_IndPipe2_bigL_L : Default
     {
+		lootType = "industrial";
         shoeboxPos[] = {{{2.09375,0.110107,2.35397},291}};
         palletPos[] = {{{1.0293,1.03619,-10},271}};
     };
     class Land_Ind_Pec_03 : Default
     {
+		lootType = "industrial";
         palletPos[] = {{{6.75684,8.00562,5.76025},241},{{-0.73877,-14.9221,5.76025},241},{{-0.92041,28.9746,-10},241},{{2.30664,28.96,-10},291}};
     };
     class Land_Ind_Coltan_Main_EP1 : Default
     {
+		lootType = "industrial";
         shelfPos[] = {{{-5.92969,5.66821,-6.33167},269},{{3.69141,-9.02808,2.36833},360}};
         fridgePos[] = {{{-1.7417,4.53882,-6.33167},159},{{1.76172,16.2727,-6.38044},269}};
         bedPos[] = {{{-8.33154,14.0818,-6.33167},279}};
@@ -3782,10 +4096,12 @@ class CfgBuildingLootPos
     };
     class Land_Ind_Coltan_Hopper_EP1 : Default
     {
+		lootType = "industrial";
         palletPos[] = {{{-6.04028,2.71875,-10},20},{{-7.45544,-2.55322,-10},20}};
     };
     class Land_MBG_GER_ESTATE_2 : Default
     {
+		lootType = "civ";
         shelfPos[] = {{{-8.05347,-1.2915,-2.13187},0},{{-7.92065,7.40771,-2.13187},0}};
         bedPos[] = {{{6.95532,2.45801,-2.13187},91}};
         wardrobePos[] = {{{8.39294,6.43848,-2.13187},91}};
@@ -3798,6 +4114,7 @@ class CfgBuildingLootPos
     };
     class Land_MBG_GER_PUB_2 : Default
     {
+		lootType = "civ";
         shelfPos[] = {{{-4.05316,-3.28418,-3.53085},360},{{6.86914,1.62793,-0.63085},92}};
         fridgePos[] = {{{1.51306,-5.58105,-0.63085},260.9},{{-4.91891,-5.62695,-3.53085},260}};
         bedPos[] = {{{0.0693359,-4.604,-0.63085},4.99999},{{-6.31366,-4.5,-0.63085},180.9}};
@@ -3812,16 +4129,19 @@ class CfgBuildingLootPos
     };
     class Land_Ind_Workshop01_03 : Default
     {
+		lootType = "workshop";
         couchPos[] = {{{-4.22607,5.11304,-10},9.99994}};
         toolRackPos[] = {{{2.14209,5.14417,-10},270}};
         palletPos[] = {{{2.76123,2.96393,-10},92}};
     };
     class Land_Misc_CargoMarket1a_EP1 : Default
     {
+		lootType = "construction";
         palletPos[] = {{{-0.335938,0.247559,-1.09225},0.999969}};
     };
     class Land_MBG_Shoothouse_1 : Default
     {
+		lootType = "civ";
         shelfPos[] = {{{3.51654,-4.01367,-10},91},{{-6.10056,-6.15576,-10},91},{{-6.10904,8.58838,-10},91},{{2.50723,-11.3667,-10},89.9999}};
         lockerPos[] = {{{-1.94846,-3.58203,-10},270},{{4.3497,-5.66357,-10},270}};
         toolRackPos[] = {{{2.98065,-12.1196,-10},270}};
@@ -3830,60 +4150,73 @@ class CfgBuildingLootPos
     };
     class Land_Leseni2x : Default
     {
+		lootType = "construction";
         palletPos[] = {{{1.20996,-0.502167,2.53943},90}};
     };
     class Land_Dum_m2 : Default
     {
+		lootType = "civ";
         couchPos[] = {{{5.08594,-1.34013,-10},187}};
     };
     class Land_HouseBlock_A1_2 : Default
     {
+		lootType = "civ";
         tablePos[] = {{{1.74243,-5.99609,-10},358.7}};
         freezerPos[] = {{{-3.3717,4.82324,-10},178.7}};
     };
     class Land_NAV_Lighthouse : Default
     {
+		lootType = "civ";
         pelicanPos[] = {{{0.00567627,0.585449,2.41912},358.7}};
         shoeboxPos[] = {{{-0.940475,0.0913086,2.41912},119}};
         cabinetPos[] = {{{1.13704,0.220215,3.71912},169}};
     };
     class Land_Shed_M01 : Default
     {
+		lootType = "workshop";
         palletPos[] = {{{0.0229492,-2.33105,-10},79}};
     };
     class Land_Shed_W02 : Default
     {
+		lootType = "workshop";
         shoeboxPos[] = {{{0.397461,1.90643,-10},27.9}};
         palletPos[] = {{{-2.88184,-1.12543,-10},78.9}};
     };
     class Land_Church_05R : Default
     {
+		lootType = "church";
+		GroundSpawnChance = 80;
         shoeboxPos[] = {{{5.39331,-2.63574,-7.79367},29.2}};
         palletPos[] = {{{2.36743,1.75586,-10},29.2},{{-5.8103,-3.146,-10},29.2}};
     };
     class Land_ruin_01_PMC : Default
     {
+		lootType = "civ";
         shelfPos[] = {{{-2.24683,-1.05225,-10},90}};
         shoeboxPos[] = {{{1.12671,-1.27295,-1.66045},211}};
         palletPos[] = {{{-2.88745,3.02246,-10},350}};
     };
     class Land_HouseBlock_A2_1 : Default
     {
+		lootType = "civ";
         fridgePos[] = {{{6.68213,-7.26056,-10},350}};
         couchPos[] = {{{-5.15771,-8.06102,-10},280}};
         chairPos[] = {{{-3.80029,5.38539,-10},180}};
     };
     class Land_Domek_rosa : Default
     {
+		lootType = "civ";
         shoeboxPos[] = {{{-0.412292,-0.805176,-0.559804},338}};
         palletPos[] = {{{3.70493,-1.59424,-2.9398},268}};
     };
     class Land_Bouda1 : Default
     {
+		lootType = "civ";
         couchPos[] = {{{-0.012207,-4.4745,-10},298}};
     };
     class land_mbg_brickhouse_03 : Default
     {
+		lootType = "civ";
         shelfPos[] = {{{-0.250488,4.27344,-3.35652},0},{{-3.31836,-2.92065,-0.0515051},180}};
         fridgePos[] = {{{-2.45117,-2.75293,-3.35652},179}};
         bedPos[] = {{{4.44482,3.44922,-0.0515051},270},{{-6.09619,3.35376,-0.0515051},275}};
@@ -3896,10 +4229,12 @@ class CfgBuildingLootPos
     };
     class Land_Bouda_plech : Default
     {
+		lootType = "workshop";
         palletPos[] = {{{-2.23486,-1.0083,-10},80}};
     };
     class Land_MBG_GER_RHUS_2 : Default
     {
+		lootType = "civ";
         shelfPos[] = {{{-2.44727,1.24646,-0.46569},180}};
         bedPos[] = {{{2.875,-3.38776,-0.46569},5}};
         wardrobePos[] = {{{-3.15674,-3.58008,-0.46569},270}};
@@ -3910,6 +4245,7 @@ class CfgBuildingLootPos
     };
     class Land_MBG_GER_RHUS_1 : Default
     {
+		lootType = "civ";
         shelfPos[] = {{{-3.42041,-4.16129,-0.46569},270}};
         bedPos[] = {{{1.7832,-3.45392,-0.46569},180}};
         couchPos[] = {{{0.847656,3.81868,-3.36569},270}};
@@ -3923,6 +4259,7 @@ class CfgBuildingLootPos
     };
     class Land_MBG_Garage_Single_B : Default
     {
+		lootType = "civ";
         shelfPos[] = {{{1.33057,2.46407,-1.03965},93}};
         toolRackPos[] = {{{-0.0200195,4.94061,-1.03965},0}};
         palletPos[] = {{{0.687012,-0.168655,-1.03965},0}};
@@ -3930,46 +4267,54 @@ class CfgBuildingLootPos
     };
     class Land_HouseV_1I2 : Default
     {
+		lootType = "civ";
         shoeboxPos[] = {{{0.898926,-4.11658,-2.13146},173.3}};
         palletPos[] = {{{-3.77148,2.52997,-10},93}};
     };
     class Land_aif_watertower1 : Default
     {
+		lootType = "civ";
         shoeboxPos[] = {{{1.72733,-6.55859,5.73532},173.3}};
         palletPos[] = {{{0.909271,-3.15381,-15},173.3},{{-3.96057,2.70068,-15},133.3}};
     };
     class Land_Statek_hl_bud : Default
     {
+		lootType = "civ";
         palletPos[] = {{{4.10547,-1.79297,-10},83.3}};
     };
     class Land_Bouda3 : Default
     {
+		lootType = "workshop";
         toolRackPos[] = {{{-2.41064,5.97437,-1.45074},179.3}};
         palletPos[] = {{{1.45117,7.1987,-10},83.3}};
     };
     class Land_A_statue01 : Default
     {
+		lootType = "church";
+		GroundSpawnChance = 80;
         shoeboxPos[] = {{{3.37878,-1.41357,-3.63275},229.3}};
     };
     class Land_Sara_domek_kovarna : Default
     {
+		lootType = "civ";
         palletPos[] = {{{-0.236816,-2.17114,-10},229.3}};
     };
     class Land_Deutshe : Default
     {
+		lootType = "civ";
         couchPos[] = {{{1.84131,-4.97192,-10},278.3}};
         palletPos[] = {{{3.19287,4.59619,-10},278.3}};
     };
     class Land_Mil_Barracks_L : Default
     {
-        lootType = "mil";
+		lootType = "mil";
         shelfPos[] = {{{4.73779,-3.8208,-10},360}};
         palletPos[] = {{{-0.483887,-5.11853,-10},278.3}};
         cabinetPos[] = {{{-5.58984,-6.97742,-0.713811},90}};
     };
     class Land_aif_strazni_vez : Default
     {
-        lootType = "mil";
+		lootType = "civ";
         shelfPos[] = {{{-2.6069,2.20605,1.36157},360}};
         filingPos[] = {{{0.636078,0.397461,1.37157},88}};
         pelicanPos[] = {{{-2.29019,-1.51074,2.17157},188}};
@@ -3978,12 +4323,14 @@ class CfgBuildingLootPos
     };
     class Land_Kostel3 : Default
     {
+		lootType = "church";
+		GroundSpawnChance = 80;
         chairPos[] = {{{1.94531,-18.4124,-20},0},{{-1.82422,-18.4531,-20},0}};
         palletPos[] = {{{0.0703125,-18.7371,-20},326}};
     };
     class Land_MBG_ATC_Tower : Default
     {
-        lootType = "mil";
+		lootType = "civ";
         shelfPos[] = {{{3.8811,-2.78125,-16.4103},180}};
         pelicanPos[] = {{{-0.196533,-0.67041,-16.4003},155}};
         lockerPos[] = {{{-1.41992,2.0293,-16.4103},270}};
@@ -3992,7 +4339,7 @@ class CfgBuildingLootPos
     class Land_MBG_ATC_Base : Default
     {
         limit = 6;
-        lootType = "mil";
+		lootType = "civ";
         shelfPos[] = {{{-4.58923,-6.30957,-1.21875},270},{{8.33435,7.93652,-1.21875},360}};
         fridgePos[] = {{{5.06311,7.65332,-1.21875},360}};
         bedPos[] = {{{-6.13977,2.90088,-1.21875},93},{{-6.40222,6.91113,-1.21875},269},{{-10.0922,2.88623,-1.21875},93},{{-10.1464,6.9502,-1.21875},272}};
@@ -4009,11 +4356,13 @@ class CfgBuildingLootPos
     };
     class Land_aif_hlaska : Default
     {
+		lootType = "civ";
         pelicanPos[] = {{{0.518555,0.951172,3.77092},20}};
         shoeboxPos[] = {{{-1.21997,1.3916,3.77092},330}};
     };
     class Land_aif_kasarna_prujezd : Default
     {
+		lootType = "civ";
         fridgePos[] = {{{-1.87207,-5.42041,-10},203}};
         couchPos[] = {{{-1.28711,0.697754,-10},180}};
         chairPos[] = {{{1.7793,-2.47705,-10},80}};
@@ -4022,23 +4371,26 @@ class CfgBuildingLootPos
     };
     class Land_aif_kasarna : Default
     {
+		lootType = "civ";
         fridgePos[] = {{{6.28735,6.86768,-10},283}};
         chairPos[] = {{{-5.68335,7.20654,-10},150}};
     };
     class Land_Mil_Barracks : Default
     {
-        lootType = "mil";
+		lootType = "mil";
         shelfPos[] = {{{7.75757,0.689941,-10},255}};
         lockerPos[] = {{{7.98438,-3.22949,-10},270}};
     };
     class Land_aif_heavyf : Default
     {
+		lootType = "civ";
         shelfPos[] = {{{-2.21436,-3.38354,-10},90}};
         toolRackPos[] = {{{2.01367,-3.74207,-2.59567},270}};
         palletPos[] = {{{6.42236,-2.81116,-10},255},{{-6.47559,-3.13904,-10},255}};
     };
     class Land_aif_hotel_bio : Default
     {
+		lootType = "civ";
         limit = 8;
         shelfPos[] = {{{-0.945801,1.20837,-0.835111},360},{{-1.18018,1.21466,-4.68552},360},{{5.24561,7.17981,6.86919},359},{{1.38525,10.7076,-8.52153},92}};
         fridgePos[] = {{{2.31836,18.8252,-8.52153},360}};
@@ -4058,6 +4410,7 @@ class CfgBuildingLootPos
     };
     class Land_HouseV2_04_interier_dam : Default
     {
+		lootType = "civ";
         shelfPos[] = {{{-1.0961,7.00293,-5.73945},80}};
         fridgePos[] = {{{-5.70474,7.09326,-5.73945},0}};
         chairPos[] = {{{7.43518,-1.67822,-5.74071},140.1}};
@@ -4068,36 +4421,41 @@ class CfgBuildingLootPos
     };
     class Land_HouseV_2L_dam : Default
     {
+		lootType = "civ";
         palletPos[] = {{{-4.81445,-3.99951,-10},140.1}};
         freezerPos[] = {{{4.23047,1.68066,-3.73519},275.1}};
     };
     class Land_Fort_Watchtower : Default
     {
-        lootType = "mil";
+		lootType = "mil";
         pelicanPos[] = {{{-0.750977,-2.12439,0.569636},272.1}};
         shoeboxPos[] = {{{1.39111,-0.204773,0.569636},40}};
         cabinetPos[] = {{{-1.53955,-3.06702,-0.911802},310}};
     };
     class Land_HouseV2_03B_dam : Default
     {
+		lootType = "industrial";
         shoeboxPos[] = {{{7.83521,1.49268,-5.49836},300}};
         palletPos[] = {{{-9.08447,5.85425,-10},310},{{-0.0769043,11.9158,-10},300}};
         freezerPos[] = {{{-0.0297852,-8.93701,-5.49836},330}};
     };
     class Land_HouseV2_01B_dam : Default
     {
+		lootType = "civ";
         fridgePos[] = {{{-2.76465,-3.13916,-5.18055},307}};
         shoeboxPos[] = {{{10.9111,1.31543,-5.05055},354}};
         palletPos[] = {{{-5.00537,-5.25879,-10},300}};
     };
     class Land_HouseV2_01A_dam : Default
     {
+		lootType = "civ";
         shelfPos[] = {{{-3.57343,-3.66699,-5.61922},280}};
         fridgePos[] = {{{-2.3588,-3.0498,-5.67922},310}};
         shoeboxPos[] = {{{-0.700592,-4.10352,-5.61922},110}};
     };
     class Land_HouseV2_03_dam : Default
     {
+		lootType = "industrial";
         fridgePos[] = {{{17.887,1.09375,-5.46772},240}};
         chairPos[] = {{{9.93018,-8.91309,-5.52772},340}};
         filingPos[] = {{{1.70801,-8.61255,-5.52772},100}};
@@ -4106,26 +4464,32 @@ class CfgBuildingLootPos
     };
     class Land_Ind_Pec_02 : Default
     {
+		lootType = "industrial";
         shelfPos[] = {{{5.99683,22.4492,-10},178}};
         palletPos[] = {{{2.5166,23.4175,-10},190},{{-3.7019,23.6973,-10},190}};
     };
     class Land_Dam_ConcP_20 : Default
     {
+		lootType = "industrial";
         palletPos[] = {{{-0.468918,5.73633,2.20513},148}};
     };
     class Land_Kostel_trosky : Default
     {
+		lootType = "church";
+		GroundSpawnChance = 80;
         tablePos[] = {{{-2.23486,11.4375,-10},288}};
         shoeboxPos[] = {{{-5.37256,0.178711,-10},238}};
         palletPos[] = {{{1.39673,11.1606,-10},148}};
     };
     class Land_HouseV_1I3 : Default
     {
+		lootType = "civ";
         shoeboxPos[] = {{{2.06543,-0.958252,-2.29444},238}};
         palletPos[] = {{{2.80225,0.54541,-10},287}};
     };
     class Land_Slum_01_F : Default
     {
+		lootType = "workshop";
         shelfPos[] = {{{5.25391,1.71436,0.658049},84.7501}};
         fridgePos[] = {{{5.03906,-1.99072,0.658049},176.525}};
         bedPos[] = {{{1.07031,1.3623,0.658049},269.404}};
@@ -4136,6 +4500,7 @@ class CfgBuildingLootPos
     };
     class Land_Shed_03_F : Default
     {
+		lootType = "workshop";
         shelfPos[] = {{{-2.01563,-0.980957,-0.751299},269.311}};
         toolRackPos[] = {{{2.14844,2.00049,-0.751299},0.999977}};
         shoeboxPos[] = {{{0.509766,1.26611,0.0687008},45.1}};
@@ -4143,6 +4508,7 @@ class CfgBuildingLootPos
     };
     class Land_Slum_02_F : Default
     {
+		lootType = "civ";
         bedPos[] = {{{1.22852,-3.61572,0.172568},90.4497}};
         couchPos[] = {{{1.55273,3.08984,0.172568},357.823}};
         chairPos[] = {{{-2.19727,4.18018,0.172568},330.547}};
@@ -4151,6 +4517,7 @@ class CfgBuildingLootPos
     };
     class Land_House_Native_02_F : Default
     {
+		lootType = "civ";
         bedPos[] = {{{0.9375,1.75684,-2.37989},272.018},{{-3.10547,-1.17676,-2.39065},181.605}};
         couchPos[] = {{{-0.34375,-0.958984,-9.34442},88.1513},{{-0.556641,-1.53369,-2.39481},93.8058}};
         chairPos[] = {{{1.99609,-2.19531,-2.40153},124.93}};
@@ -4158,6 +4525,7 @@ class CfgBuildingLootPos
     };
     class Land_House_Small_03_F : Default
     {
+		lootType = "civ";
         shelfPos[] = {{{-1.22559,4.9668,-1.32402},0}};
         fridgePos[] = {{{-3.01465,-1.84375,-1.32402},173}};
         bedPos[] = {{{-3.58789,3.50586,-1.32402},360}};
@@ -4170,6 +4538,7 @@ class CfgBuildingLootPos
     };
     class Land_House_Native_01_F : Default
     {
+		lootType = "civ";
         shelfPos[] = {{{-0.728516,-2.77393,-3.09498},179.287}};
         bedPos[] = {{{0.015625,2.1377,-3.09498},267.599}};
         couchPos[] = {{{2.50391,-1.8877,-3.09498},89.2346}};
@@ -4178,6 +4547,7 @@ class CfgBuildingLootPos
     };
     class Land_Shed_05_F : Default
     {
+		lootType = "civ";
         shelfPos[] = {{{0.584961,-2.53516,-0.917485},179},{{2.10938,-2.5376,-0.885151},180}};
         toolRackPos[] = {{{-2.91504,0.525391,-1.18515},271}};
         shoeboxPos[] = {{{2.6543,1.2959,-0.917485},179}};
@@ -4185,20 +4555,24 @@ class CfgBuildingLootPos
     };
     class Land_Shed_04_F : Default
     {
+		lootType = "medical";
         shoeboxPos[] = {{{-0.276367,0.746094,-0.730756},20}};
     };
     class Land_Addon_05_F : Default
     {
+		lootType = "workshop";
         shoeboxPos[] = {{{-2.1875,-8.24023,-1.5455},20}};
         palletPos[] = {{{3.5293,-9.71973,-10},350}};
         cabinetPos[] = {{{0.197266,8.04199,-0.245499},270}};
     };
     class Land_Shed_06_F : Default
     {
+		lootType = "construction";
         palletPos[] = {{{0.900391,-3.4082,-10},150},{{3.21875,3.33691,-10},240}};
     };
     class Land_House_Small_04_F : Default
     {
+		lootType = "civ";
         fridgePos[] = {{{0.599609,3.83398,-0.817202},88}};
         couchPos[] = {{{-1.0459,-3.00391,-0.879978},170}};
         wardrobePos[] = {{{2.64111,-0.519531,-0.879978},349}};
@@ -4209,6 +4583,7 @@ class CfgBuildingLootPos
     };
     class Land_House_Small_01_F : Default
     {
+		lootType = "civ";
         fridgePos[] = {{{1.35645,1.26563,-0.711113},270}};
         bedPos[] = {{{-0.301758,2.41602,-0.711113},0},{{-5.28613,2.12988,-0.711113},181}};
         couchPos[] = {{{5.02441,-1.78613,-0.711113},3}};
@@ -4223,12 +4598,14 @@ class CfgBuildingLootPos
     };
     class Land_Shop_Town_04_F : Default
     {
+		lootType = "market";
         filingPos[] = {{{-2.57227,7.74902,-2.47962},160}};
         tablePos[] = {{{-0.00585938,-5.6123,-2.43639},7.00001}};
         shoeboxPos[] = {{{3.9082,-5.51563,-2.43639},30}};
     };
     class Land_Shop_Town_01_F : Default
     {
+		lootType = "market";
         shelfPos[] = {{{-0.230469,3.29053,-3.27726},90}};
         fridgePos[] = {{{-4.0918,5.69189,-3.27726},0}};
         couchPos[] = {{{-3.29492,-2.98584,-3.27726},180}};
@@ -4240,6 +4617,7 @@ class CfgBuildingLootPos
     };
     class Land_House_Small_05_F : Default
     {
+		lootType = "civ";
         bedPos[] = {{{-2.17871,4.17773,-1.08628},270}};
         couchPos[] = {{{-2.03711,-0.123047,-1.08628},90}};
         wardrobePos[] = {{{1.28809,2.62012,-1.08628},96}};
@@ -4247,14 +4625,17 @@ class CfgBuildingLootPos
     };
     class Land_Slum_05_F : Default
     {
+		lootType = "civ";
         shoeboxPos[] = {{{-0.156738,-4.78711,0.0666714},340}};
     };
     class Land_WaterTower_01_F : Default
     {
+		lootType = "civ";
         shoeboxPos[] = {{{0.326172,0.492188,3.83657},343}};
     };
     class Land_Shed_02_F : Default
     {
+		lootType = "market";
         shelfPos[] = {{{-1.08301,-0.931641,-0.853716},184}};
         shoeboxPos[] = {{{1.39258,-0.668945,-0.853716},134}};
         palletPos[] = {{{0.96582,1.17871,-0.853716},360}};
@@ -4262,6 +4643,7 @@ class CfgBuildingLootPos
     };
     class Land_House_Small_06_F : Default
     {
+		lootType = "civ";
         shelfPos[] = {{{-1.25879,-5.12598,-1.00433},180}};
         bedPos[] = {{{1.31641,-3.91016,-1.00433},0.999985}};
         couchPos[] = {{{-2.30176,0.980469,-1.00433},270}};
@@ -4272,12 +4654,14 @@ class CfgBuildingLootPos
     };
     class Land_Shop_Town_02_F : Default
     {
+		lootType = "market";
         shoeboxPos[] = {{{-5.40625,6.30664,-2.15892},100}};
         palletPos[] = {{{-2.86523,-4.47754,-2.14134},100}};
         freezerPos[] = {{{1.40332,-3.96875,-2.14405},7}};
     };
     class Land_House_Small_02_F : Default
     {
+		lootType = "civ";
         fridgePos[] = {{{-3.88184,5.76367,-0.748837},359}};
         bedPos[] = {{{-0.28125,-4.79785,-0.748837},0},{{-3.46777,-4.79102,-0.748837},180}};
         couchPos[] = {{{-0.484375,2.29688,-0.748837},0}};
@@ -4289,12 +4673,14 @@ class CfgBuildingLootPos
     };
     class Land_Shed_01_F : Default
     {
+		lootType = "civ";
         filingPos[] = {{{1.42285,1.47559,-0.931513},350}};
         freezerPos[] = {{{-1.77344,1.41309,-0.931513},9.99995}};
         cabinetPos[] = {{{0.115234,1.83984,0.21385},90}};
     };
     class Land_Shop_Town_03_F : Default
     {
+		lootType = "market";
         shelfPos[] = {{{0.864258,0.563477,-3.12776},0},{{2.90137,0.589844,-3.12776},0},{{-6.33594,-2.21094,-3.12776},270},{{-6.39063,-4.15137,-3.12776},270}};
         fridgePos[] = {{{5.53223,7.76563,-3.12776},0}};
         couchPos[] = {{{0.0869141,-4.16504,-3.12776},180}};
@@ -4311,18 +4697,22 @@ class CfgBuildingLootPos
     };
     class Land_Addon_03_F : Default
     {
+		lootType = "market";
         palletPos[] = {{{-1.4248,-6.35352,-10},129}};
     };
     class Land_MetalShelter_01_F : Default
     {
+		lootType = "construction";
         palletPos[] = {{{1.09033,-3.78711,-10},219},{{-0.870117,5.29102,-10},129}};
     };
     class Land_MetalShelter_02_F : Default
     {
+		lootType = "construction";
         palletPos[] = {{{3.93555,-1.65918,-10},169},{{-0.0859375,7.17285,-10},169}};
     };
     class Land_Slum_03_F : Default
     {
+		lootType = "civ";
         shelfPos[] = {{{0.338867,6.85938,-0.651794},87}};
         fridgePos[] = {{{-0.0244141,-1.3252,-0.651794},180}};
         bedPos[] = {{{-0.658203,3.54785,-0.651794},0}};
@@ -4337,6 +4727,7 @@ class CfgBuildingLootPos
     };
     class Land_Supermarket_01_F : Default
     {
+		lootType = "market";
         limit = 6;
         shelfPos[] = {{{7.64648,9.40625,-1.50003},90},{{-5.44336,11.3174,-1.50003},270}};
         fridgePos[] = {{{7.4541,8.25293,-1.50003},90}};
@@ -4349,11 +4740,13 @@ class CfgBuildingLootPos
     };
     class Land_Shop_City_04_F : Default
     {
+		lootType = "market";
         shoeboxPos[] = {{{-0.371094,-9.38672,-3.86604},340}};
         palletPos[] = {{{8.04004,2.60254,-10},360}};
     };
     class Land_Addon_04_F : Default
     {
+		lootType = "market";
         shelfPos[] = {{{-0.568359,-1.52441,0.313654},180}};
         fridgePos[] = {{{-1.32617,-7.26465,0.295511},180}};
         couchPos[] = {{{-2.7666,0.267578,0.313654},180}};
@@ -4365,6 +4758,7 @@ class CfgBuildingLootPos
     };
     class Land_House_Big_05_F : Default
     {
+		lootType = "civ";
         chairPos[] = {{{-4.15723,4.97559,-1.51147},160},{{-9.0625,-5.37061,-1.51147},250}};
         filingPos[] = {{{4.51758,4.67822,-1.11731},260}};
         shoeboxPos[] = {{{2.64258,-4.01025,-1.51147},250},{{-2.81543,6.1792,-1.51147},260}};
@@ -4372,6 +4766,7 @@ class CfgBuildingLootPos
     };
     class Land_Shop_City_07_F : Default
     {
+		lootType = "market";
         filingPos[] = {{{0.467773,1.75781,0.0203753},187}};
         pelicanPos[] = {{{3.10742,-6.49805,3.61298},110}};
         shoeboxPos[] = {{{-4.28418,3.27246,3.61298},110},{{-2.88184,-7.625,-2.9677},7.00001}};
@@ -4379,11 +4774,13 @@ class CfgBuildingLootPos
     };
     class Land_Addon_01_F : Default
     {
+		lootType = "civ";
         chairPos[] = {{{-0.0292969,-2.26465,-1.18165},0}};
         shoeboxPos[] = {{{-0.220703,2,-1.18165},197}};
     };
     class Land_House_Big_03_F : Default
     {
+		lootType = "civ";
         shelfPos[] = {{{3.06348,-0.749023,-3.17077},358}};
         fridgePos[] = {{{1.45996,3.63086,-3.18166},358}};
         bedPos[] = {{{3.14551,3.02051,-0.0877934},268}};
@@ -4399,6 +4796,7 @@ class CfgBuildingLootPos
     };
     class Land_House_Big_01_F : Default
     {
+		lootType = "civ";
         fridgePos[] = {{{0.23584,5.61719,-1.02038},360}};
         couchPos[] = {{{0.98584,0.580078,-1.02038},180}};
         wardrobePos[] = {{{7.31494,2.14844,-1.02038},93}};
@@ -4410,6 +4808,7 @@ class CfgBuildingLootPos
     };
     class Land_Hotel_02_F : Default
     {
+		lootType = "civ";
         bedPos[] = {{{3.78418,-0.498047,0.221087},90},{{3.76855,2.49609,0.221087},270}};
         chairPos[] = {{{-8.21875,-1.00781,0.0842772},225},{{-9.95703,-1.77148,-3.41891},90},{{-1.83398,15.1475,-3.40639},360}};
         filingPos[] = {{{6.56641,-2.00391,-3.42002},181}};
@@ -4422,10 +4821,12 @@ class CfgBuildingLootPos
     };
     class Land_Slum_04_F : Default
     {
+		lootType = "civ";
         shoeboxPos[] = {{{4.09277,2.27441,0.0612197},257}};
     };
     class Land_GarageShelter_01_F : Default
     {
+		lootType = "civ";
         couchPos[] = {{{-1.33691,-0.69043,-1.26478},360}};
         tablePos[] = {{{-3.50391,3.37988,-1.26478},357}};
         toolRackPos[] = {{{-4.56738,0.189453,-1.26478},272}};
@@ -4435,11 +4836,14 @@ class CfgBuildingLootPos
     };
     class Land_Church_03_F : Default
     {
+		lootType = "church";
+		GroundSpawnChance = 80;
         chairPos[] = {{{7.31055,-5.0791,-7.20663},282}};
         shoeboxPos[] = {{{7.10645,-6.07715,-7.20654},220}};
     };
     class Land_Shed_07_F : Default
     {
+		lootType = "workshop";
         shelfPos[] = {{{-4.88574,1.10059,-10},267}};
         lockerPos[] = {{{-4.56445,-1.59277,-10},265}};
         toolRackPos[] = {{{-1.2002,-2.32715,-10},175}};
@@ -4447,6 +4851,7 @@ class CfgBuildingLootPos
     };
     class Land_School_01_F : Default
     {
+		lootType = "civ";
         shelfPos[] = {{{4.15234,-0.0341797,-1.27842},90},{{14.5557,3.80078,-1.27842},90}};
         fridgePos[] = {{{-3.97363,-0.359375,-1.27842},270}};
         bedPos[] = {{{5.70605,-1.58789,-1.27842},177}};
@@ -4463,6 +4868,7 @@ class CfgBuildingLootPos
     };
     class Land_Temple_Native_01_F : Default
     {
+		lootType = "civ";
         shelfPos[] = {{{3.4541,0.648438,-5.94443},90}};
         couchPos[] = {{{2.37207,3.21094,-5.94443},0}};
         chairPos[] = {{{-3.0791,4.45801,-5.94443},310}};
@@ -4471,6 +4877,7 @@ class CfgBuildingLootPos
     };
     class Land_Shop_City_06_F : Default
     {
+		lootType = "market";
         wardrobePos[] = {{{-6.61328,0.117188,-4.06814},259}};
         chairPos[] = {{{-5.58203,2.58203,-0.322272},230}};
         filingPos[] = {{{-6.78125,1.59766,-4.06819},280},{{8.04297,3.90674,-0.322294},90}};
@@ -4483,6 +4890,7 @@ class CfgBuildingLootPos
     };
     class Land_Shop_Town_05_F : Default
     {
+		lootType = "market";
         shelfPos[] = {{{0.0429688,-5.08594,-2.70736},356}};
         chairPos[] = {{{-4.22852,-5.55566,-2.77661},40}};
         filingPos[] = {{{4.31934,-5.24805,-2.70736},310}};
@@ -4490,6 +4898,7 @@ class CfgBuildingLootPos
     };
     class Land_Shop_City_03_F : Default
     {
+		lootType = "market";
         shelfPos[] = {{{6.98975,-2.47461,-4.96662},90}};
         fridgePos[] = {{{0.209473,-2.37695,-4.6728},273}};
         couchPos[] = {{{3.53662,0.644531,-4.96672},0}};
@@ -4499,12 +4908,15 @@ class CfgBuildingLootPos
     };
     class Land_Church_01_F : Default
     {
+		lootType = "church";
+		GroundSpawnChance = 80;
         chairPos[] = {{{-1.61426,15.6572,-10.5169},190}};
         shoeboxPos[] = {{{-7.59375,-1.33301,-9.98111},120}};
         freezerPos[] = {{{7.74609,1.15723,-9.98111},270}};
     };
     class Land_Warehouse_03_F : Default
     {
+		lootType = "workshop";
         shelfPos[] = {{{8.17676,1.42285,0.150167},90},{{6.45313,5.35156,-2.37297},0},{{-10.8906,-4.6582,-2.37297},270}};
         lockerPos[] = {{{6.87402,5.19043,0.150167},0}};
         toolRackPos[] = {{{5.27441,4.51074,-2.37297},89}};
@@ -4515,6 +4927,7 @@ class CfgBuildingLootPos
     };
     class Land_House_Big_04_F : Default
     {
+		lootType = "civ";
         bedPos[] = {{{-5.24219,1.9375,0.267768},91}};
         couchPos[] = {{{2.4834,2.03711,0.265382},89},{{3.07227,-2.52051,-3.00084},270}};
         wardrobePos[] = {{{-2.32129,1.14453,0.266175},181}};
@@ -4525,6 +4938,7 @@ class CfgBuildingLootPos
     };
     class Land_Shop_City_02_F : Default
     {
+		lootType = "market";
         shelfPos[] = {{{0.958984,-2.36719,-4.38168},270},{{0.954102,-4.19531,-4.38123},270},{{8.28809,-5.41211,-4.37245},90}};
         fridgePos[] = {{{-10.2744,-2.09766,-4.34924},3}};
         couchPos[] = {{{2.97266,-7.19531,-4.37758},108}};
@@ -4540,6 +4954,7 @@ class CfgBuildingLootPos
     };
     class Land_Shop_City_01_F : Default
     {
+		lootType = "market";
         bedPos[] = {{{1.64746,3.81543,-4.95041},226}};
         couchPos[] = {{{5.36328,4.43457,-4.95041},270}};
         wardrobePos[] = {{{0.811523,-0.87207,-4.95041},0}};
@@ -4550,6 +4965,7 @@ class CfgBuildingLootPos
     };
     class Land_Hotel_01_F : Default
     {
+		lootType = "civ";
         limit = 6;
         shelfPos[] = {{{-0.0751953,-0.589844,-1.57032},90}};
         bedPos[] = {{{3.67285,-2.13672,4.51435},270},{{-4.98633,-2.0625,4.51435},270}};
@@ -4563,6 +4979,7 @@ class CfgBuildingLootPos
     };
     class Land_FuelStation_01_shop_F : Default
     {
+		lootType = "market";
         shelfPos[] = {{{-5.38574,2.01367,-2.01301},273},{{-5.38574,3.31836,-2.01301},269}};
         chairPos[] = {{{1.80371,-4.5957,-2.01301},122}};
         filingPos[] = {{{-5.16309,0.28125,-2.01301},275},{{-5.17676,4.62695,-2.01301},270}};
@@ -4574,6 +4991,7 @@ class CfgBuildingLootPos
     };
     class Land_FuelStation_01_workshop_F : Default
     {
+		lootType = "workshop";
         shelfPos[] = {{{-5.50488,2.46582,-2.35666},269},{{-5.50781,-2.78809,-2.35666},269}};
         filingPos[] = {{{-5.28809,3.89063,-2.35666},269}};
         lockerPos[] = {{{2.71387,4.0293,-2.35666},359}};
@@ -4584,6 +5002,7 @@ class CfgBuildingLootPos
     };
     class Land_FuelStation_02_workshop_F : Default
     {
+		lootType = "workshop";
         shelfPos[] = {{{-5.18164,7.65918,-1.2675},270}};
         chairPos[] = {{{4.39941,-1.01563,-1.2675},110},{{4.35449,4.03906,-1.2675},83}};
         filingPos[] = {{{4.56738,8.05664,-1.2675},0}};
@@ -4595,12 +5014,13 @@ class CfgBuildingLootPos
     };
     class Land_Mausoleum_01_F : Default
     {
+		lootType = "civ";
         shoeboxPos[] = {{{-1.93823,-1.89551,-1.9543},114.315}};
         palletPos[] = {{{-0.547119,1.19141,-1.9543},114.315}};
     };
     class Land_Barracks_01_grey_F : Default
     {
-        lootType = "mil";
+		lootType = "mil";
         limit = 6;
         shelfPos[] = {{{-2.03589,-3.18555,0.518449},0},{{1.44531,3.97949,0.518449},90},{{2.10278,-3.72656,0.518448},270},{{-7.10156,-1.87695,0.518449},89.4737},{{-7.10596,2.8125,0.518449},90},{{8.07251,3.89014,3.85143},92},{{8.72681,3.58398,0.518449},270},{{8.74683,-3.81934,0.518448},270}};
         fridgePos[] = {{{-13.2495,-3.90918,0.518448},267},{{-13.2495,-4.00391,3.85143},268}};
@@ -4621,12 +5041,15 @@ class CfgBuildingLootPos
     class Land_Barracks_01_camo_F : Land_Barracks_01_grey_F {};
     class Land_Church_02_F : Default
     {
+		lootType = "church";
+		GroundSpawnChance = 80;
         chairPos[] = {{{0.820313,-15.8745,-3.31618},360},{{-0.789795,-15.8867,-3.31618},360}};
         shoeboxPos[] = {{{3.60547,-15.7925,-2.38721},330},{{-3.66235,18.7886,-3.1444},162}};
         palletPos[] = {{{-5.76733,-11.1523,-10},162}};
     };
     class Land_SCF_01_warehouse_F : Default
     {
+		lootType = "construction";
         shelfPos[] = {{{-8.89941,17.1563,-4.61258},90}};
         shoeboxPos[] = {{{0.47168,-6.45068,3.87006},349},{{15.7676,15.7952,-4.58326},240}};
         palletPos[] = {{{4.05469,-12.293,-4.57731},360},{{9.12354,-12.5586,-4.57731},40},{{-10.6152,15.0613,-4.61258},40}};
@@ -4634,11 +5057,12 @@ class CfgBuildingLootPos
     };
     class Land_Shed_Small_F : Default
     {
+		lootType = "construction";
         palletPos[] = {{{-2.91113,-10.7017,-10},81},{{4.06006,10.9492,-10},349}};
     };
     class Land_GuardHouse_01_F : Default
     {
-        lootType = "mil";
+		lootType = "mil";
         shelfPos[] = {{{-2.41455,-2.44482,-1.02058},270}};
         bedPos[] = {{{0.998047,-3.93896,-1.02058},90}};
         pelicanPos[] = {{{1.69629,0.259277,0.00792408},9.99997}};
@@ -4648,6 +5072,7 @@ class CfgBuildingLootPos
     };
     class Land_Airport_01_controlTower_F : Default
     {
+		lootType = "mil";
         filingPos[] = {{{-1.57251,2.68604,4.65874},350}};
         pelicanPos[] = {{{0.608643,0.954102,8.11717},111}};
         shoeboxPos[] = {{{-0.823242,-0.911133,5.58527},220}};
@@ -4655,6 +5080,7 @@ class CfgBuildingLootPos
     };
     class Land_Airport_01_terminal_F : Default
     {
+		lootType = "mil";
         shelfPos[] = {{{-8.92432,3.9043,-4.02355},180}};
         tablePos[] = {{{6.97095,8.64941,-4.05115},360},{{-15.301,1.44824,-4.03527},270}};
         lockerPos[] = {{{-3.4248,2.5918,-4.02355},270}};
@@ -4666,10 +5092,12 @@ class CfgBuildingLootPos
     };
     class Land_dp_smallTank_F : Default
     {
+		lootType = "industrial";
         shoeboxPos[] = {{{-2.18872,0.745605,5.52527},360}};
     };
     class Land_House_Big_02_F : Default
     {
+		lootType = "civ";
         shelfPos[] = {{{-6.26172,7.39502,-1.45192},271.405}};
         fridgePos[] = {{{-4.95996,-0.250977,-1.45192},92.4045}};
         couchPos[] = {{{-4.02734,8.32373,-1.45192},266}};
@@ -4685,22 +5113,26 @@ class CfgBuildingLootPos
     };
     class Land_DPP_01_waterCooler_F : Default
     {
+		lootType = "industrial";
         shoeboxPos[] = {{{3.26855,1.49414,-1.96692},200}};
         palletPos[] = {{{0.692383,1.22388,-10},200},{{-1.78516,-2.64307,-10},200}};
     };
     class Land_DPP_01_smallFactory_F : Default
     {
+		lootType = "construction";
         shelfPos[] = {{{0.342773,4.88306,-10},180}};
         shoeboxPos[] = {{{-10.8447,1.93359,3.08963},320}};
         palletPos[] = {{{-1.5752,5.64551,-10},190}};
     };
     class Land_GantryCrane_01_F : Default
     {
+		lootType = "construction";
         pelicanPos[] = {{{-0.723633,1.46777,9.01571},120}};
         shoeboxPos[] = {{{1.89746,-0.496094,9.39161},220}};
     };
     class Land_MobileCrane_01_F : Default
     {
+		lootType = "construction";
         shelfPos[] = {{{10.7402,-2.49805,-19.0618},91}};
         lockerPos[] = {{{10.5547,2.62158,-19.065},90}};
         shoeboxPos[] = {{{7.84961,-3.33984,-8.30899},300}};
@@ -4709,16 +5141,19 @@ class CfgBuildingLootPos
     class Land_MobileCrane_01_hook_F : Land_MobileCrane_01_F {};
     class Land_SCF_01_shed_F : Default
     {
+		lootType = "construction";
         palletPos[] = {{{9.55371,0.875,-10},270},{{-9.4187,-14.084,-10},270}};
     };
     class Land_Shop_City_05_F : Default
     {
+		lootType = "market";
         couchPos[] = {{{-0.138672,-10.7393,-7.28326},274}};
         shoeboxPos[] = {{{1.63086,13.9697,-7.02897},190.8}};
         palletPos[] = {{{-9.44238,15.4424,-10},190.8}};
     };
     class Land_MultistoryBuilding_01_F : Default
     {
+		lootType = "market";
         shelfPos[] = {{{15.0352,5.12891,-21.0171},360}};
         lockerPos[] = {{{10.4814,-13.9253,-21.0171},179.8}};
         toolRackPos[] = {{{9.27246,-3.62622,-21.0171},269}};
@@ -4728,6 +5163,7 @@ class CfgBuildingLootPos
     };
     class Land_MultistoryBuilding_03_F : Default
     {
+		lootType = "market";
         shelfPos[] = {{{-1.05566,4.97437,-26},100}};
         chairPos[] = {{{-6.9209,-1.37549,-24.2517},100}};
         filingPos[] = {{{-1.14063,4.07007,-26},100}};
@@ -4738,6 +5174,7 @@ class CfgBuildingLootPos
     };
     class Land_MultistoryBuilding_04_F : Default
     {
+		lootType = "civ";
         shelfPos[] = {{{-8.16956,9.50293,-36.322},100}};
         chairPos[] = {{{3.35938,-9.11426,-36.322},340},{{-8.71216,-6.77441,-36.322},110}};
         filingPos[] = {{{-8.41406,-4.76172,-36.322},160}};
@@ -4747,6 +5184,8 @@ class CfgBuildingLootPos
     };
     class Land_Cathedral_01_F : Default
     {
+		lootType = "church";
+		GroundSpawnChance = 80;
         chairPos[] = {{{-7.57324,-0.583008,-9.39412},43}};
         tablePos[] = {{{0.451172,-12.4187,-7.82105},13}};
         shoeboxPos[] = {{{-9.78125,-9.85229,-9.39412},43}};
@@ -4754,12 +5193,14 @@ class CfgBuildingLootPos
     };
     class Land_Airport_01_hangar_F : Default
     {
+		lootType = "workshop";
         shelfPos[] = {{{14.9707,4.25635,-3},81},{{-3.5625,15.9639,-3},1},{{-8.81055,15.979,-3},1}};
         toolRackPos[] = {{{12.5303,-10.4146,-2.62908},181}};
         palletPos[] = {{{-13.75,-8.90918,-3},191},{{-14.0654,14.2466,-3},84}};
     };
     class Land_Airport_02_controlTower_F : Default
     {
+		lootType = "mil";
         shelfPos[] = {{{-0.619141,0.914063,-10.799},359}};
         filingPos[] = {{{0.871582,2.76172,2.18546},183},{{-0.985352,2.78906,2.18546},181}};
         pelicanPos[] = {{{1.77051,5.9082,3.09551},53}};
@@ -4769,6 +5210,7 @@ class CfgBuildingLootPos
     };
     class Land_Airport_02_terminal_F : Default
     {
+		lootType = "civ";
         chairPos[] = {{{10.875,-2.83594,-1.4043},90}};
         tablePos[] = {{{10.9907,-0.375,-1.4043},90}};
         lockerPos[] = {{{4.18457,2.45215,-1.40867},270},{{4.19165,4.24609,-1.40868},270}};
@@ -4778,6 +5220,7 @@ class CfgBuildingLootPos
     };
     class Land_Airport_02_hangar_right_F : Default
     {
+		lootType = "workshop";
         shelfPos[] = {{{5.99121,9.65039,-7.25818},90},{{6.23975,-14.0654,-7.72174},90},{{9.82324,-12.6621,-7.71869},179}};
         lockerPos[] = {{{6.06519,-17.5381,-7.72373},90}};
         toolRackPos[] = {{{12.8186,-7.41309,-7.25818},90}};
@@ -4786,11 +5229,13 @@ class CfgBuildingLootPos
     };
     class Land_Airport_02_hangar_left_F : Default
     {
+		lootType = "construction";
         shelfPos[] = {{{-12.5098,-8.36523,-7.24053},272},{{6.09326,20.5518,-7.25266},0},{{-5.78027,-23.7773,-1.23606},272}};
         shoeboxPos[] = {{{-4.53125,20.251,-1.24107},144}};
     };
     class Land_DPP_01_mainFactory_F : Default
     {
+		lootType = "industrial";
         shelfPos[] = {{{12.4868,5.71582,-4.25747},360}};
         toolRackPos[] = {{{11.915,-0.972656,-10.5492},272}};
         shoeboxPos[] = {{{12.3447,6.52246,-5.56747},50}};
@@ -4798,11 +5243,13 @@ class CfgBuildingLootPos
     };
     class Land_CombineHarvester_01_wreck_F : Default
     {
+		lootType = "industrial";
         shoeboxPos[] = {{{1.24243,-1.62891,0.0273294},272}};
         palletPos[] = {{{2.77905,1.94629,-1.88333},272}};
     };
     class Land_SCF_01_generalBuilding_F : Default
     {
+		lootType = "industrial";
         shelfPos[] = {{{1.65527,-13.3105,-4.84338},360},{{-5.47607,-13.2764,-0.342323},360},{{-1.80737,-22.2637,-4.84338},170}};
         toolRackPos[] = {{{-4.11987,-13.1016,-4.84338},1.99998}};
         shoeboxPos[] = {{{-2.5481,-22.7988,9.69048},122}};
@@ -4810,33 +5257,39 @@ class CfgBuildingLootPos
     };
     class Land_SCF_01_washer_F : Default
     {
+		lootType = "industrial";
         shelfPos[] = {{{5.99902,1.37305,2.18735},180},{{-3.38672,6.87158,-1.80765},180}};
         shoeboxPos[] = {{{-1.32813,2.7832,2.18735},159}};
         palletPos[] = {{{-0.738281,4.4375,3.22431},180},{{3.9248,7.34766,-1.76456},360}};
     };
     class Land_SCF_01_shredder_F : Default
     {
+		lootType = "industrial";
         shoeboxPos[] = {{{1.08203,-6.02979,-1.39866},229}};
         palletPos[] = {{{-0.345703,-5.55029,-1.39866},159}};
     };
     class Land_SCF_01_clarifier_F : Default
     {
+		lootType = "industrial";
         shelfPos[] = {{{4.23633,-5.50244,-2.00547},270}};
         shoeboxPos[] = {{{-1.63477,1.06299,8.53659},215}};
         palletPos[] = {{{3.67383,-3.10547,-10},240},{{-5.26855,-2.09424,-10},240}};
     };
     class Land_SCF_01_feeder_F : Default
     {
+		lootType = "industrial";
         shoeboxPos[] = {{{-0.84668,8.46875,-3.38788},240}};
         palletPos[] = {{{-2.33984,15.1572,-2.61678},240}};
     };
     class Land_SCF_01_chimney_F : Default
     {
+		lootType = "industrial";
         pelicanPos[] = {{{-2.99512,-3.04297,24.3271},200}};
         shoeboxPos[] = {{{0.0537109,1.75391,24.3271},200}};
     };
     class Land_SCF_01_boilerBuilding_F : Default
     {
+		lootType = "industrial";
         shelfPos[] = {{{22.2256,1.09546,-8.65179},90},{{22.4199,2.60059,-17.6125},270},{{-1.29102,23.6138,-13.1725},90}};
         toolRackPos[] = {{{14.8506,-0.107178,-17.8281},180}};
         shoeboxPos[] = {{{10.8652,14.1597,-17.8272},350}};
@@ -4845,58 +5298,69 @@ class CfgBuildingLootPos
     };
     class Land_SCF_01_crystallizer_F : Default
     {
+		lootType = "industrial";
         shelfPos[] = {{{5.98633,5.46533,-0.536706},360},{{-8.78906,-0.0581055,-0.536711},180}};
         shoeboxPos[] = {{{8.37891,5.93506,-2.93731},230}};
         palletPos[] = {{{1.06738,0.640137,-0.536709},360},{{-3.97168,0.850098,4.92104},350}};
     };
     class Land_SCF_01_crystallizerTowers_F : Default
     {
+		lootType = "industrial";
         shelfPos[] = {{{1.4541,-0.650879,-7.24714},360}};
         shoeboxPos[] = {{{-4.73145,1.5752,12.2733},140}};
         palletPos[] = {{{-0.708008,-0.354492,-7.24714},270}};
     };
     class Land_Radar_Small_F : Default
     {
+		lootType = "mil";
         shelfPos[] = {{{0.581055,3.92749,-10},200}};
         palletPos[] = {{{-4.85449,-0.675781,-10},169}};
     };
     class Land_MiningShovel_01_abandoned_F : Default
     {
+		lootType = "construction";
         shelfPos[] = {{{3.3916,-2.8252,-0.647353},70}};
         shoeboxPos[] = {{{-0.786133,-7.95947,3.74709},139}};
         palletPos[] = {{{-2.4502,-4.36426,-0.484981},179},{{-0.444336,-9.64648,-0.484981},149}};
     };
     class Land_SM_01_reservoirTower_F : Default
     {
+		lootType = "construction";
         shelfPos[] = {{{-0.0371094,1.45996,-1.95632},180}};
         shoeboxPos[] = {{{-3.44531,-2.54688,-1.98985},211}};
         palletPos[] = {{{0.893555,-3.41504,-1.98556},251}};
     };
     class Land_HaulTruck_01_abandoned_F : Default
     {
+		lootType = "construction";
         shoeboxPos[] = {{{-0.0493164,-3.35742,1.27724},151}};
         palletPos[] = {{{-1.08545,-5.21582,1.27749},181}};
     };
     class Land_Warehouse_01_F : Default
     {
+		lootType = "workshop";
         shelfPos[] = {{{5.69727,-20.2239,-10},360}};
         palletPos[] = {{{2.49023,-21.2285,-10},161},{{-1.92578,21.6052,-10},161}};
     };
     class Land_Warehouse_02_F : Default
     {
+		lootType = "industrial";
         shelfPos[] = {{{8.18945,-11.0618,-3.96959},360}};
         palletPos[] = {{{-1.94727,-11.8555,-3.96959},360},{{11.3662,-11.8032,-3.96959},360}};
     };
     class Land_SM_01_shelter_narrow_F : Default
     {
+		lootType = "construction";
         palletPos[] = {{{-2.53125,11.0098,-10},360},{{4.07813,-10.8501,-10},360}};
     };
     class Land_SM_01_shelter_wide_F : Default
     {
+		lootType = "construction";
         palletPos[] = {{{-7.67676,5.47681,-10},360},{{7.57324,-6.09155,-10},360}};
     };
     class Land_SM_01_shed_unfinished_F : Default
     {
+		lootType = "industrial";
         shelfPos[] = {{{-3.42773,8.58179,-1.648},350}};
         filingPos[] = {{{-4.98242,-1.33374,-1.648},100}};
         shoeboxPos[] = {{{-4.00879,1.89185,-1.648},80}};
@@ -4904,12 +5368,14 @@ class CfgBuildingLootPos
     };
     class Land_SY_01_reclaimer_F : Default
     {
+		lootType = "industrial";
         shelfPos[] = {{{-14.377,5.68848,-2.27833},360}};
         shoeboxPos[] = {{{-11.6846,1.34912,-2.27688},220}};
         palletPos[] = {{{-15.2012,-1.79639,-10},220}};
     };
     class Land_SM_01_shed_F : Default
     {
+		lootType = "industrial";
         shelfPos[] = {{{-5.92969,-1.72266,-1.60012},180},{{9.05469,-1.71729,-1.60012},180},{{8.64551,8.68945,-1.60012},0}};
         toolRackPos[] = {{{-1.58496,8.8877,-1.60012},0}};
         shoeboxPos[] = {{{-6.93652,2.11621,-1.60012},140}};
@@ -4919,6 +5385,7 @@ class CfgBuildingLootPos
     };
     class Land_i_House_Small_03_V1_dam_F : Default
 	{
+		lootType = "civ";
       tablePos[] =   {{{3.97192,-5.14429,-0.399977},184.648}};
       shoeboxPos[] = {{{1.03833,1.97803,-0.399977},359.648}};
       KitchenSinkPos[] = {{{-4.81128,2.74316,-0.399977},269.648}};
@@ -4926,26 +5393,35 @@ class CfgBuildingLootPos
     };
     class Land_u_House_Small_02_V1_dam_F : Default
 	{
+		lootType = "civ";
       chairPos[] = {{{2.06104,-0.303467,-1.07093},273.648}};
       tablePos[] = {{{6.60864,-2.21667,-1.07093},179.648}};
     };
     class Land_i_House_Small_02_V3_dam_F : Default
 	{
+		lootType = "civ";
       couchPos[] = {{{6.16943,-1.03198,-0.925534},4.99999}};
     };
     class Land_i_House_Small_02_V2_dam_F : Default
 	{
+		lootType = "civ";
       bedPos[] = {{{6.95679,-0.921143,-0.999897},358}};
       toolRackPos[] = {{{0.935547,0.244019,-1.04277},88}};
     };
     class Land_i_House_Small_02_V1_dam_F : Default
 	{
+		lootType = "civ";
       shoeboxPos[] = {{{2.6355,-2.07544,-0.927456},88}};
       freezerPos[] = {{{7.27197,-1.90771,-0.927456},88}};
       KitchenSinkPos[] = {{{7.29883,1.40063,-0.927456},90}};
     };
     class Land_i_Barracks_V1_dam_F : Default
 	{
+        limit = 6;
+		lootType = "mil";
+		GroundSpawnChance = 80;
+		MinGroundContainers = 4;
+		MaxGroundContainers = 8;
       shelfPos[] = {{{-13.2607,1.86938,3.88759},264}};
       chairPos[] = {{{7.35889,-3.00977,0.487596},88},{{-7.59131,3.71997,0.487596},88}};
       filingPos[] = {{{-7.45801,-2.66504,0.487596},88},{{-6.35718,-5.19971,3.85143},264},{{-13.4155,-3.57056,3.85143},264}};
@@ -4957,6 +5433,7 @@ class CfgBuildingLootPos
 
     class Land_TentHangar_V1_F : Default
 	{
+		lootType = "mil";
       couchPos[] = { {{8.67236,-3.95703,-4.10237},356}};
       lockerPos[] = { {{-9.604,1.47412,-4.10237},264}};
       palletPos[] = {{{-7.19678,-5.23047,-4.10237},356},{{8.93481,6.54126,-4.0674},356}};
@@ -4965,17 +5442,20 @@ class CfgBuildingLootPos
 
     class Land_Dome_Big_F : Default
 	{
+		lootType = "mil";
       chairPos[] = {{{16.2844,15.4109,-10.1997},356},{{-13.9492,-19.0752,-10.1997},216}};
       pelicanPos[] = {{{21.5835,-2.73999,-10.1997},356}};
       palletPos[] = {{{-5.73926,-1.4939,-10.1997},356},{{3.42236,10.5425,-10.1997},356},{{-8.70752,20.2468,-10.1997},356}};
     };
     class Land_Dome_Small_F : Default
 	{
+		lootType = "mil";
       chairPos[] = {{{2.98877,12.7253,-6.98321},329},{{-4.11328,-12.5012,-6.98321},216}};
       palletPos[] = {{{-1.65088,1.33276,-6.98321},329},{{10.731,-0.450806,-6.94824},329}};
     };
     class Land_GH_MainBuilding_entry_F : Default
 	{
+		lootType = "market";
       palletPos[] = {{{-2.0636,-18.1663,-0.128474},329}};
     };
 
@@ -4998,12 +5478,14 @@ class CfgBuildingLootPos
     class Land_u_House_Small_01_V1_dam_F : Land_i_House_Small_01_V1_F {};
 
 	class Land_spp_Transformer_F : Default {
+		lootType = "workshop";
 	    palletPos[] = {
 	        { {-2.33301,-1.54736,-10}, 126.752 }
 	    };
 	};
 
 	class Land_Pier_addon : Default {
+		lootType = "construction";
 	    shoeboxPos[] = {
 	        { {-3.15479,-1.13086,-0.577168}, 303.465 }
 	    };
@@ -5012,6 +5494,7 @@ class CfgBuildingLootPos
 	    };
 	};
 	class Land_Barn_01_grey_F : Default {
+		lootType = "workshop";
 	    shelfPos[] = {
 	        { {-8.36279,2.08594,-0.802982}, 270 },
 	        { {8.39307,2.12988,-0.796082}, 89 },
@@ -5037,6 +5520,7 @@ class CfgBuildingLootPos
 	class Land_Barn_01_brown_F : Land_Barn_01_grey_F {};
 
 	class Land_Metal_Shed_F : Default {
+		lootType = "workshop";
 	    toolRackPos[] = {
 	        { {-2.18555,-3.85742,-1.23042}, 179 }
 	    };
@@ -5049,6 +5533,7 @@ class CfgBuildingLootPos
 	    };
 	};
 	class Land_Shed_08_brown_F : Default {
+		lootType = "civ";
 	    bedPos[] = {
 	        { {-2.29199,-1.36182,-1.00694}, 9.99997 }
 	    };
@@ -5071,6 +5556,7 @@ class CfgBuildingLootPos
 	class Land_Shed_08_grey_F : Land_Shed_08_brown_F {};
 
 	class Land_Stone_Shed_V1_ruins_F : Default {
+		lootType = "civ";
 	    shoeboxPos[] = {
 	        { {3.69434,2.58398,1.25675}, 190 }
 	    };
@@ -5079,11 +5565,13 @@ class CfgBuildingLootPos
 	    };
 	};
 	class Land_Grave_rocks_F : Default {
+		lootType = "civ";
 	    shoeboxPos[] = {
 	        { {0.675781,-0.0419922,0.158855}, 182.9 }
 	    };
 	};
 	class Land_TBox_F : Default {
+		lootType = "civ";
 	    shoeboxPos[] = {
 	        { {-0.991211,1.70605,-10}, 0.999985 }
 	    };
@@ -5092,6 +5580,7 @@ class CfgBuildingLootPos
 	    };
 	};
 	class Land_Supermarket_01_malden_F : Default {
+		lootType = "market";
 	    shelfPos[] = {
 	        { {-2.60059,10.2754,-1.50662}, 89.154 },
 	        { {7.64258,11.6714,-1.50955}, 89.154 }
@@ -5129,6 +5618,7 @@ class CfgBuildingLootPos
 	    };
 	};
 	class Land_fs_roof_F : Default {
+		lootType = "market";
 	    shoeboxPos[] = {
 	        { {-2.50488,0.224609,-2.1651}, 313 }
 	    };
@@ -5168,6 +5658,7 @@ class CfgBuildingLootPos
 	    };
 	};
 	class Land_i_Garage_V1_dam_F : Default {
+		lootType = "workshop";
 	    shelfPos[] = {
 	        { {-3.66797,-3.03369,-0.145458}, 192 }
 	    };
@@ -5182,6 +5673,7 @@ class CfgBuildingLootPos
 	    };
 	};
 	class Land_Stone_HouseBig_V1_ruins_F : Default {
+		lootType = "civ";
 	    shoeboxPos[] = {
 	        { {2.78027,1.70898,0.916737}, 210 }
 	    };
@@ -5190,6 +5682,7 @@ class CfgBuildingLootPos
 	    };
 	};
 	class Land_Stone_HouseSmall_V1_ruins_F : Default {
+		lootType = "civ";
 	    shelfPos[] = {
 	        { {0.160156,-1.12891,0.57814}, 90 }
 	    };
@@ -5215,6 +5708,8 @@ class CfgBuildingLootPos
 	    };
 	};
 	class Land_Carousel_01_F : Default {
+		lootType = "church";
+		GroundSpawnChance = 80;
 	    shoeboxPos[] = {
 	        { {0.105469,0.0498047,0.479246}, 93.2 }
 	    };
@@ -5234,7 +5729,7 @@ class CfgBuildingLootPos
 	    };
 	};
 	class Land_ReservoirTank_01_military_F : Default {
-		lootType = "mil";
+		lootType = "industrial";
 	    shelfPos[] = {
 	        { {2.38135,-0.182617,-12.8069}, 269 }
 	    };
@@ -5261,17 +5756,20 @@ class CfgBuildingLootPos
 	    };
 	};
 	class Land_cmp_Shed_F : Default {
+		lootType = "workshop";
 	    palletPos[] = {
 	        { {-5.33643,-0.695313,-10}, 107.5 },
 	        { {-4.94482,2.17676,-10}, 67.5 }
 	    };
 	};
 	class Land_ReservoirTank_V1_F : Default {
+		lootType = "industrial";
 	    shelfPos[] = {
 	        { {2.39355,-0.24707,-12.7961}, 259.5 }
 	    };
 	};
 	class Land_Unfinished_Building_01_noLadder_F : Default {
+		lootType = "construction";
 	    shelfPos[] = {
 	        { {-4.89355,5.66748,1.16652}, 271 },
 	        { {-4.18066,6.06885,-2.34162}, 359.5 }
@@ -5289,24 +5787,8 @@ class CfgBuildingLootPos
 	        { {-1.02344,5.35107,-2.32672}, 360 }
 	    };
 	};
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 	class bunker_epoch : Default {
-		lootBias = 75;
+		lootType = "civ";
 	    shelfPos[] = {
 	        { {-6.09766,-2.83032,0.188561}, 269 }
 	    };
@@ -5343,7 +5825,7 @@ class CfgBuildingLootPos
 	};
 	class bunker_epoch_01 : Default
 	{
-		lootBias = 75;
+		lootType = "civ";
         bedPos[] =      {{{-5.6062,-4.66162,0.198561},0}};
         wardrobePos[] = {{{-4.96973,-1.5188,0.198561},0}};
         cookerPos[] =   {{{-2.53882,3.17383,0.198561},0.999984}};
@@ -5355,7 +5837,7 @@ class CfgBuildingLootPos
     };
     class bunker_epoch_02 : Default
 	{
-		lootBias = 75;
+		lootType = "civ";
         filingPos[] =  {{{-4.68335,6.02905,0.198561}, 0 }};
         pelicanPos[] = {{{3.39038,4.75586,0.998561},106},{{3.44043,-5.27368,1.09856},187}};
         tablePos[] =   {{{-5.69214,-5.26318,0.198561},270}};
@@ -5363,13 +5845,13 @@ class CfgBuildingLootPos
     };
     class bunker_epoch_03 : Default
     {
-		lootBias = 75;
+		lootType = "civ";
         palletPos[] =  {{{5.12939,-4.6543,0.198561},280},{{-5.00098,4.79419,0.198561},280},{{-4.95093,-4.89502,0.198561},280},{{4.92627,5.02051,0.198561},280}};
         freezerPos[] = {{{0.429932,-0.184326,0.198561},280}};
 	};
     class bunker_epoch_04 : Default
 	{
-		lootBias = 75;
+		lootType = "civ";
         shelfPos[] =    {{{5.03784,6.09985,0.198561},358}};
         couchPos[] =    {{{5.24194,-4.54272,0.198561},358}};
         toolRackPos[] = {{{-6.33521,-2.39136,0.198561},269}};
@@ -5377,12 +5859,12 @@ class CfgBuildingLootPos
     };
     class bunker_epoch_05 : Default
 	{
-		lootBias = 75;
+		lootType = "civ";
         toolRackPos[] = {{{-6.34375,-4.08228,0.198561},269 },{{4.22607,6.44775,0.198561},358}};
     };
     class bunker_epoch_06 : Default
 	{
-		lootBias = 75;
+		lootType = "civ";
         bedPos[] =     {{{0.781494,-0.343262,0.398561},357}};
         couchPos[] =   {{{4.94385,-4.66699,0.398561},0.999985}};
         chairPos[] =   {{{5.50708,5.47949,0.198561},40}};
@@ -5391,7 +5873,7 @@ class CfgBuildingLootPos
     };
     class bunker_epoch_07 : Default
 	{
-		lootBias = 75;
+		lootType = "civ";
         fridgePos[] =  {{{-5.98901,5.21826,0.198561},271}};
         couchPos[] =   {{{4.22314,4.99194,0.198561},271}};
         pelicanPos[] = {{{-1.77954,-0.48291,0.0985613},71}};
@@ -5400,14 +5882,14 @@ class CfgBuildingLootPos
     };
     class bunker_epoch_08 : Default
 	{
-		lootBias = 75;
+		lootType = "civ";
         pelicanPos[] = {{{5.34814,-5.12524,0.0985613},157}};
         tablePos[] =   {{{5.72852,4.86255,0.0985613},90}};
         palletPos[] =  {{{-1.03052,-1.6283,0.0985613},90},{{-5.45703,5.45093,0.0985613},90}};
     };
     class bunker_epoch_09 : Default
 	{
-		lootBias = 75;
+		lootType = "civ";
         filingPos[] =   {{{-0.427002,-3.22974,0.198561},270}};
         lockerPos[] =   {{{3.94238,3.28931,0.198561},0}};
         toolRackPos[] = {{{-4.68579,2.68604,0.198561},90}};
@@ -5415,7 +5897,7 @@ class CfgBuildingLootPos
     };
     class bunker_epoch_10 : Default
     {
-		lootBias = 75;
+		lootType = "civ";
         filingPos[] =  {{{5.95313,-5.95898,0.198561},93}};
         pelicanPos[] = {{{1.65479,0.0246582,0.198561},93}};
         shoeboxPos[] = {{{-3.18604,-5.94482,0.198561},360}};
@@ -5424,12 +5906,12 @@ class CfgBuildingLootPos
     };
     class bunker_epoch_11 : Default
 	{
-		lootBias = 75;
+		lootType = "civ";
         palletPos[] = {{{-0.422363,-0.419922,0.198561},90},{{1.23438,-3.04443,0.198561},90},{{2.97192,1.48828,0.198561},90},{{-1.42578,3.52393,0.198561},90},{{-4.94702,-1.37012,0.198561},90}};
     };
     class bunker_epoch_12 : Default
 	{
-		lootBias = 75;
+		lootType = "civ";
         cookerPos[] = {{{-0.17749,3.62891,0.198561},0}};
         chairPos[] =  {{{-2.82349,3.24341,0.198561},319}};
         tablePos[] =  {{{-3.12524,-0.625488,0.198561},270}};
@@ -5438,7 +5920,7 @@ class CfgBuildingLootPos
     };
     class bunker_epoch_13 : Default
 	{
-		lootBias = 75;
+		lootType = "civ";
         wardrobePos[] = {{{-5.40405,3.79126,0.0153623},180}};
         cookerPos[] =   {{{3.54663,4.09839,0.215362},180}};
         chairPos[] =    {{{0.483887,-1.7981,0.215362},276}};
@@ -5447,7 +5929,7 @@ class CfgBuildingLootPos
     };
     class bunker_epoch_14 : Default
 	{
-		lootBias = 75;
+		lootType = "civ";
         fridgePos[] = {{{3.50195,-3.10852,0.232163},93}};
         cookerPos[] = {{{5.59717,5.83398,0.232163},359}};
         filingPos[] = {{{-5.47656,2.58411,0.232163},359}};
@@ -5455,7 +5937,7 @@ class CfgBuildingLootPos
     };
     class bunker_epoch_15 : Default
 	{
-		lootBias = 75;
+		lootType = "civ";
         fridgePos[] = {{{5.34229,-1.59033,0.198561},180}};
         chairPos[] = {{{2.95605,2.72632,0.198561},313}};
         filingPos[] = {{{-4.2688,3.32031,0.198561},313}};
@@ -5477,6 +5959,1559 @@ class CfgBuildingLootPos
     class bunker_epoch_13_p3d : bunker_epoch_13 {};
     class bunker_epoch_14_p3d : bunker_epoch_14 {};
     class bunker_epoch_15_p3d : bunker_epoch_15 {};
+
+	class Land_d_HouseV_3I3 : Default 
+	{ 
+		lootType = "civ";
+		shelfPos[] = {{{-4.81348,0.700195,-1.52695},0.296967}}; 
+		couchPos[] = {{{-0.298828,-2.36719,-1.52693},90.0049}}; 
+		fridgePos[] = {{{-3.82813,0.592773,-1.52695},0.29689}}; 
+		chairPos[] = {{{-3.66211,-2.86328,-1.52695},185.797}}; 
+	}; 
+	class Land_SZ_Mil_Barracks_L : Default 
+	{ 
+		lootType = "mil";
+		kitchenSinkPos[] = {{{-5.2334,6.62598,-1.96698},0.02771}}; 
+		fridgePos[] = {{{-5.72266,1.19824,-1.96698},-179.973}}; 
+		cabinetPos[] = {{{-2.0166,-4.04932,-0.667297},-177.973}}; 
+		lockerPos[] = {{{-1.33887,5.82373,-1.96814},-89.9719}}; 
+		tablePos[] = {{{4.17188,4.5874,-1.96921},90.0277}}; 
+		pelicanPos[] = {{{6.02441,3.68262,-1.97244},-35.4722}}; 
+		couchPos[] = {{{-0.398438,-1.81543,-1.96698},-268.472}}; 
+	}; 
+	class Land_Shed_sz_W4 : Default 
+	{ 
+		lootType = "civ";
+		toolRackPos[] = {{{-2.70313,0.858398,-1.63881},269.83}}; 
+		lockerPos[] = {{{1.5752,4.73633,-1.27228},-0.442887}}; 
+		tablePos[] = {{{2.68164,3.15527,-1.27229},91.3292}}; 
+		palletPos[] = {{{-0.487305,0.932617,-1.27228},-6.1706}}; 
+	}; 
+	class Land_cm_HouseV_1I3 : Default 
+	{ 
+		lootType = "civ";
+		tablePos[] = {{{-2.76855,7.29004,-2.10747},-89.934}}; 
+		fridgePos[] = {{{1.14063,0.15918,-2.10748},90.0472}}; 
+		filingPos[] = {{{1.16699,6.16602,-2.10747},89.9739}}; 
+		chairPos[] = {{{-2.47754,1.34863,-2.10748},-61.9694}}; 
+	};
+	class Land_Smokestack_01_F : Default 
+	{ 
+		lootType = "industrial";
+		pelicanPos[] = {{{-3.85254,0.112305,-23.2495},-53.7602}}; 
+		shoeboxPos[] = {{{-3.94434,-1.8418,-23.2495},45.7387}}; 
+		cabinetPos[] = {{{-0.857422,0.136719,-27.5659},-0.260666}}; 
+		palletPos[] = {{{2.43555,-5.02832,-28.526},-91.26}}; 
+		filingPos[] = {{{-0.540039,-1.84082,-28.5581},229.24}}; 
+	}; 
+	class Land_Smokestack_01_factory_F : Land_Smokestack_01_F {};
+	class Land_Church_04_damaged_F : Default 
+	{ 
+		lootType = "church";
+		GroundSpawnChance = 80;
+		cabinetPos[] = {{{4.91113,-7.05615,-12.5271},0.14975}}; 
+		toolRackPos[] = {{{-7.78784,3.01611,-13.862},90.0666}}; 
+		shelfPos[] = {{{-7.83765,0.891602,-13.6092},89.0666}}; 
+	}; 
+	class Land_Church_04_yellow_damaged_F : Land_Church_04_damaged_F {};
+	class Land_Church_04_small_yellow_damaged_F : Land_Church_04_damaged_F {};
+	class Land_Church_04_small_white_damaged_F : Land_Church_04_damaged_F {};
+	class Land_Shed_09_F : Default 
+	{ 
+		lootType = "workshop";
+		toiletPos[] = {{{2.00146,2.98535,-1.41129},-315.669}}; 
+		pelicanPos[] = {{{0.23877,2.59375,-1.46129},-46.1707}}; 
+		toolRackPos[] = {{{-0.552734,2.35107,-1.91927},-269.67}}; 
+	}; 
+	class Land_House_1B01_F : Default 
+	{ 
+		lootType = "market";
+		couchPos[] = {{{0.86499,0.695801,-2.80663},-90.0494}}; 
+		tablePos[] = {{{0.953125,-5.54199,-2.80664},-180.519}}; 
+		chairPos[] = {{{7.30835,-5.22607,-2.80663},-225.032},{{4.34155,10.2681,-2.80675},-47.0484}}; 
+		bedPos[] = {{{1.98657,10.2769,-2.8064},92.9529}}; 
+		wardrobePos[] = {{{-2.64233,8.43506,-2.80664},-90.5564}}; 
+		filingPos[] = {{{-2.64355,10.7119,-2.80666},-44.0572}}; 
+		pelicanPos[] = {{{7.20337,10.2881,-2.80673},45.8273}}; 
+		lockerPos[] = {{{7.0481,6.85059,-2.80664},-179.597}}; 
+		shoeboxPos[] = {{{-2.31958,5.80664,-2.80663},-221.547}}; 
+		cookerPos[] = {{{4.74585,-1.78613,-2.80766},0.403931}}; 
+		freezerPos[] = {{{5.80786,-1.73584,-2.80663},-0.0349731}}; 
+		kitchenSinkPos[] = {{{7.68921,-3.7417,-2.80663},90.47}}; 
+	}; 
+	class Land_Chapel_02_yellow_F : Default 
+	{ 
+		lootType = "church";
+		GroundSpawnChance = 80;
+		cabinetPos[] = {{{-1.06836,-0.708008,-1.4879},89.4143}}; 
+		pelicanPos[] = {{{-0.199219,1.28516,-2.51678},316.913}}; 
+		filingPos[] = {{{1.03906,2.28174,-2.5547},-0.0845299}}; 
+		shoeboxPos[] = {{{0.789551,0.824219,-2.48792},212.416}}; 
+		toolRackPos[] = {{{1.8606,1.22266,-2.95108},270.933}}; 
+	}; 
+	class Land_Chapel_02_white_F : Land_Chapel_02_yellow_F {};
+	class Land_Chapel_02_yellow_damaged_F : Land_Chapel_02_yellow_F {};
+	class Land_FuelStation_03_shop_F : Default 
+	{ 
+		lootType = "market";
+		lockerPos[] = {{{-1.84961,1.02539,-1.57671},1.28944}}; 
+		tablePos[] = {{{2.25464,-0.902344,-1.57668},90.2886}}; 
+		freezerPos[] = {{{-1.82568,-1.51758,-1.57671},-180.212}}; 
+		cabinetPos[] = {{{2.33936,1.36133,-0.276505},89.7886}}; 
+	}; 
+	class Land_GarageRow_01_large_F : Default 
+	{ 
+		lootType = "workshop";
+		pelicanPos[] = {{{-12.7754,0.143066,3.69107},-91.3877}}; 
+		tablePos[] = {{{-6.89807,5.85205,-3.32645},-0.386032}}; 
+		lockerPos[] = {{{12.168,1.73682,-3.32645},89.6139}}; 
+		chairPos[] = {{{8.08386,5.69434,-3.32645},1.61395}}; 
+		couchPos[] = {{{1.4563,5.13135,-3.32645},-89.8876}}; 
+		toolRackPos[] = {{{-12.5472,-2.13721,-3.47641},-89.8878}}; 
+		filingPos[] = {{{-12.2186,1.09277,-3.32645},-90.3878}}; 
+		cabinetPos[] = {{{-6.18091,-5.33691,-2.02676},-91.3877}}; 
+		palletPos[] = {{{-2.6864,3.99707,-3.32645},-245.386}}; 
+		kitchenSinkPos[] = {{{12.1683,-1.36621,-3.32645},89.6139}}; 
+	}; 
+	class Land_Shed_12_F : Default 
+	{ 
+		lootType = "workshop";
+		cabinetPos[] = {{{-0.875488,-0.69458,0.298676},89.7889}}; 
+		toolRackPos[] = {{{-1.06445,1.06958,-0.944687},-90.2117}}; 
+	}; 
+	class Land_House_1W10_F : Default 
+	{ 
+		lootType = "civ";
+		kitchenSinkPos[] = {{{-4.35547,-0.287109,-1.4537},-0.159882}}; 
+		freezerPos[] = {{{-4.93384,-1.95313,-1.45369},270.683}}; 
+		cookerPos[] = {{{-4.9751,-3.41748,-1.45689},269.683}}; 
+		bedPos[] = {{{1.10498,-3.30615,-1.45255},90.8387}}; 
+		wardrobePos[] = {{{-1.23364,-3.78418,-1.4857},180.183}}; 
+		tablePos[] = {{{-0.847412,-0.310547,-1.4537},-0.159828}}; 
+		shoeboxPos[] = {{{-3.9314,-3.80371,-1.45369},47.682}}; 
+		pelicanPos[] = {{{-2.71704,-3.77441,-1.45369},180.183}}; 
+		cabinetPos[] = {{{2.38623,-1.4541,-0.153625},180.34}}; 
+	}; 
+	class Land_Rail_Station_Big_F : Default 
+	{ 
+		lootType = "market";
+		palletPos[] = {{{8.69043,-5.82666,-5.02811},-163.207},{{-8.27905,-5.1748,-5.02811},-163.207}}; 
+		filingPos[] = {{{1.75342,-3.58057,-4.96406},126.792}}; 
+		tablePos[] = {{{-4.32031,5.62744,-4.96406},0.294312}}; 
+		shelfPos[] = {{{-5.42163,-2.83496,-4.96406},-89.2075}}; 
+		couchPos[] = {{{-4.43823,0.895996,-4.96406},180.793}}; 
+		cabinetPos[] = {{{2.37891,-2.43262,-3.61406},-89.7075}}; 
+		toolRackPos[] = {{{6.77271,0.475098,-5.17811},-89.2076}}; 
+		lockerPos[] = {{{-1.8772,-4.78174,-5.11692},0.794418}}; 
+	}; 
+	class Land_WaterStation_01_F : Default 
+	{ 
+		lootType = "workshop";
+		filingPos[] = {{{-0.799805,-3.80859,-1.02364},-180.988}}; 
+		shoeboxPos[] = {{{0.854004,-1.7085,-0.956985},-275.487}}; 
+		pelicanPos[] = {{{-0.958984,-1.96631,-1.03856},-90.0663}}; 
+		cabinetPos[] = {{{1.19824,-0.435547,0.261826},-90.1751}}; 
+		palletPos[] = {{{2.79736,-1.07813,-1.05971},-275.487}}; 
+	}; 
+	class Land_Workshop_04_grey_F : Default 
+	{ 
+		lootType = "workshop";
+		palletPos[] = {{{3.71191,2.05664,-1.3481},-129.82}}; 
+		shoeboxPos[] = {{{-1.58203,-3.60181,-1.21138},126.18}}; 
+		toolRackPos[] = {{{-2.19922,-6.13208,-1.49811},-89.3201}}; 
+		toiletPos[] = {{{1.7793,-3.14331,-1.20331},44.6818}}; 
+		tablePos[] = {{{-1.74365,4.18774,-1.14809},-89.8201}}; 
+		freezerPos[] = {{{0.625977,4.88916,-1.20992},0.178787}}; 
+	}; 
+	class Land_Workshop_04_F : Land_Workshop_04_grey_F {};
+	class Land_VillageStore_01_F : Default 
+	{ 
+		lootType = "market";
+		freezerPos[] = {{{6.79028,4.87305,-1.84027},-0.881443}}; 
+		fridgePos[] = {{{5.4541,4.91992,-1.84027},-0.38583}}; 
+		tablePos[] = {{{6.73389,-1.2334,-1.84027},180.117}}; 
+		cabinetPos[] = {{{3.29614,-1.67822,-0.590195},270.116}}; 
+		kitchenSinkPos[] = {{{7.22266,7.97119,-1.91063},90.6016}}; 
+		lockerPos[] = {{{5.92017,5.95361,-1.84027},180.604}}; 
+		palletPos[] = {{{4.69922,1.54736,-1.84027},-44.3842}}; 
+		shoeboxPos[] = {{{1.88989,-1.07227,-1.84027},-44.3842}}; 
+		pelicanPos[] = {{{7.26782,1.74072,-1.84027},90.113}}; 
+		filingPos[] = {{{4.18018,5.854,-1.80515},180.602}}; 
+		couchPos[] = {{{2.31177,2.08447,-1.84027},180.617}}; 
+	}; 
+	class Land_CementWorks_01_brick_F : Default 
+	{ 
+		lootType = "industrial";
+		toiletPos[] = {{{-8.85742,-15.9517,-4.53337},-49.5696}}; 
+		pelicanPos[] = {{{-8.37256,-17.896,-4.53339},-151.569},{{0.511719,9.00122,5.6887},-72.0694}}; 
+		toolRackPos[] = {{{-3.27832,-25.6899,-4.7834},-90.0692},{{17.1133,-25.3362,-4.7834},89.9313}}; 
+		lockerPos[] = {{{16.6748,-18.9382,-4.53339},89.9312}}; 
+		palletPos[] = {{{9.10303,-13.8306,-4.53339},-151.569},{{6.85547,-3.6106,-4.53339},-151.569},{{7.67383,6.50708,-4.53339},-151.569},{{13.9785,8.10156,5.6887},-151.569}}; 
+		tablePos[] = {{{17.2324,5.23047,-4.53338},89.9312},{{-2.77539,8.87427,-4.53338},-92.5692}}; 
+		couchPos[] = {{{-2.11914,-1.54199,-4.53339},177.931}}; 
+		shoeboxPos[] = {{{6.38623,-20.0698,5.6887},-151.569}}; 
+		cabinetPos[] = {{{6.37207,1.15723,-3.1333},181.931}}; 
+		freezerPos[] = {{{-0.0229492,19.4111,-4.5337},-90.5692}}; 
+		chairPos[] = {{{7.8335,19.8928,-4.53381},42.4292}}; 
+	};	
+	class Land_Church_04_red_F : Default 
+	{ 
+		lootType = "church";
+		GroundSpawnChance = 80;
+		pelicanPos[] = {{{-0.180664,7.99805,2.77977},-0.163963},{{-2.75879,7.98389,2.77977},-0.163849}}; 
+		shelfPos[] = {{{0.730469,3.70898,-9.92351},90.834}}; 
+		cabinetPos[] = {{{-2.37109,7.37305,-12.3228},-2.16383}}; 
+		palletPos[] = {{{-0.655273,5.38525,-13.7358},-91.6633}}; 
+		shoeboxPos[] = {{{-1.94336,5.31299,-9.92351},-91.6633}}; 
+	};
+	class Land_Church_04_small_F : Land_Church_04_red_F {};
+	class Land_Church_04_yellow_F : Land_Church_04_red_F {};
+	class Land_Church_04_white_red_F : Land_Church_04_red_F {};
+	class Land_Church_04_small_white_F : Land_Church_04_red_F {};
+	class Land_GuardBox_01_brown_F : Default 
+	{ 
+		lootType = "church";
+		GroundSpawnChance = 80;
+		toiletPos[] = {{{0.520508,-1.46533,-0.867691},134.262}}; 
+		pelicanPos[] = {{{-0.458252,-0.527344,-0.916962},270.183}}; 
+		shoeboxPos[] = {{{0.724121,-0.551758,-0.817841},269.683}}; 
+	}; 
+	class Land_GuardBox_01_smooth_F : Land_GuardBox_01_brown_F {};
+	class Land_GuardHouse_02_grey_F : Default 
+	{ 
+		lootType = "mil";
+		toiletPos[] = {{{0.530762,1.94946,-1.55855},180.265}}; 
+		lockerPos[] = {{{4.25732,-0.460938,-1.55855},180.265}}; 
+		shelfPos[] = {{{4.80078,3.34204,-1.55855},88.7647}}; 
+		couchPos[] = {{{3.96338,-2.50537,-1.55855},0.265289}}; 
+		tablePos[] = {{{-2.32422,-2.70117,-1.55855},-90.2348}}; 
+		filingPos[] = {{{2.31396,-3.53906,-1.55855},180.265}}; 
+		shoeboxPos[] = {{{0.577637,-3.58545,-1.55855},-129.235}}; 
+		cabinetPos[] = {{{-2.30127,-0.740967,-0.25264},-91.2348}}; 
+	}; 
+	class Land_Sawmill_01_F : Default 
+	{ 
+		lootType = "construction";
+		palletPos[] = {{{-1.31445,12.4966,-5.05673},-323.324}}; 
+		shoeboxPos[] = {{{-1.49316,0.804199,-5.00999},-323.324}}; 
+		toolRackPos[] = {{{7.6875,2.58228,-5.19531},-268.324}}; 
+		tablePos[] = {{{11.2813,12.8384,-5.63091},-270.825}}; 
+		pelicanPos[] = {{{-2.37695,16.2117,-5.06169},-50.8244}}; 
+		filingPos[] = {{{7.40234,8.24512,-5.01089},-269.325}}; 
+		chairPos[] = {{{6.75537,16.1868,-5.06514},-314.824}}; 
+		lockerPos[] = {{{7.30859,-6.07617,-5.04123},-269.325}}; 
+	}; 
+	class Land_Church_05_F : Default 
+	{ 
+		lootType = "church";
+		GroundSpawnChance = 80;
+		pelicanPos[] = {{{-4.74219,-2.08838,-4.05009},90.6838}}; 
+		couchPos[] = {{{-3.06445,-1.69189,-6.08238},179.184}}; 
+		filingPos[] = {{{-3.86523,1.11963,-6.08408},-54.3171}}; 
+		cabinetPos[] = {{{2.87988,-2.92236,-4.68581},-88.8166}}; 
+		shoeboxPos[] = {{{2.78906,5.44019,-6.08701},142.184}}; 
+		tablePos[] = {{{7.08838,-0.0402832,-5.78513},89.1831}}; 
+		palletPos[] = {{{1.09863,-0.217041,-6.09041},-144.816}}; 
+	}; 
+	class Land_House_2W04_F : Default 
+	{ 
+		lootType = "civ";
+		bedPos[] = {{{4.89355,2.66895,-0.82222},-179.858}}; 
+		wardrobePos[] = {{{7.17432,6.73779,-0.823486},0.725708}}; 
+		couchPos[] = {{{0.817383,2.31836,-0.823502},-179.302}}; 
+		tablePos[] = {{{3.50977,2.2998,-0.823517},89.642}}; 
+		filingPos[] = {{{0.0368652,-0.246094,-0.823502},-132.746},{{-4.89526,4.19385,-5.14581},-37.2732}}; 
+		cookerPos[] = {{{3.58398,4.43457,-0.823578},-0.267136}}; 
+		fridgePos[] = {{{2.55493,4.47363,-0.823502},0.233124}}; 
+		shoeboxPos[] = {{{-5.00391,5.0498,-0.823502},139.746}}; 
+		toolRackPos[] = {{{8.47168,6.36328,-5.90211},-90.2751}}; 
+	}; 
+	class Land_MobileRadar_01_radar_F : Default 
+	{ 
+		lootType = "mil";
+		pelicanPos[] = {{{0.191406,-7.94824,-0.746536},180.498}}; 
+		shoeboxPos[] = {{{-2.61279,-6.15039,-0.746536},0}}; 
+		palletPos[] = {{{2.73291,-7.55664,-6.71332},41.9999}}; 
+	}; 
+	class Land_House_1W08_F : Default 
+	{ 
+		lootType = "civ";
+		freezerPos[] = {{{-4.72461,3.90063,-1.89905},-0.362625}}; 
+		couchPos[] = {{{-0.335449,-0.528564,-1.87782},90.1365}}; 
+		tablePos[] = {{{-0.118652,3.87354,-1.87782},-0.864044}}; 
+		wardrobePos[] = {{{4.14941,3.45117,-1.87782},90.6361}}; 
+		filingPos[] = {{{4.22461,1.05811,-1.87782},90.6367}}; 
+		chairPos[] = {{{6.19043,3.6438,-1.86476},27.1356}}; 
+		cabinetPos[] = {{{-3.3877,1.12085,-0.527756},2.13582}}; 
+	}; 
+	class Land_Workshop_05_F : Default 
+	{ 
+		lootType = "workshop";
+		palletPos[] = {{{4.70068,-2.08936,-1.24338},-44.7541}}; 
+		toolRackPos[] = {{{2.02686,1.84668,-1.6434},269.746}}; 
+		tablePos[] = {{{-2.20142,5.646,-1.35411},269.746}}; 
+		filingPos[] = {{{1.42456,6.33154,-1.39339},90.2453}}; 
+		shelfPos[] = {{{2.13135,0.059082,-1.24338},0.245869}}; 
+		kitchenSinkPos[] = {{{4.12231,-3.72803,-1.24069},180.246}}; 
+	}; 
+	class Land_Workshop_05_grey_F : Land_Workshop_05_F {};
+	class Land_Cowshed_01_B_F : Default 
+	{ 
+		lootType = "construction";
+		palletPos[] = {{{-10.5615,-1.86426,-3.09298},-235.172},{{10.3689,1.96289,-3.09298},-235.172}}; 
+		couchPos[] = {{{29.9736,-5.90723,-3.09307},0.828293}}; 
+		pelicanPos[] = {{{18.376,-6.79785,-3.0808},-141.672}}; 
+		shelfPos[] = {{{8.03052,-3.71777,-3.09298},-178.172}}; 
+		fridgePos[] = {{{30.1987,-3.58789,-3.09307},-179.172}}; 
+		kitchenSinkPos[] = {{{28.1211,-3.57129,-3.09307},-179.672}}; 
+		freezerPos[] = {{{24.8489,-3.57031,-3.09307},-180.172}}; 
+		cookerPos[] = {{{26.3438,-3.53711,-3.09307},-179.672}}; 
+		toolRackPos[] = {{{-18.4255,2.52051,-3.19304},-90.6732}}; 
+		lockerPos[] = {{{-12.3315,3.71973,-3.09303},0.328125}}; 
+		shoeboxPos[] = {{{-4.4939,3.13379,-3.04298},-235.172}}; 
+		toiletPos[] = {{{17.6943,4.80371,-3.09307},-123.672}}; 
+		cabinetPos[] = {{{20.4338,6.75977,-1.74299},88.828}}; 
+	}; 
+	class Land_GuardBox_01_green_F : Default 
+	{ 
+		lootType = "civ";
+		pelicanPos[] = {{{-0.584961,-0.571533,-0.90152},-89.3778}}; 
+		shoeboxPos[] = {{{0.584473,-1.52368,-0.842361},-28.3778},{{-0.115234,-1.4856,-0.846786},-327.878}}; 
+	}; 
+	class Land_HouseRuin_Small_01_F : Default 
+	{ 
+		lootType = "civ";
+		palletPos[] = {{{-1.03271,2.87109,-2.12854},-95.5178}}; 
+		toiletPos[] = {{{-6.51465,-3.77393,-2.16118},226.482}}; 
+		shoeboxPos[] = {{{-5.77783,3.84668,-1.94525},145.482}}; 
+	};	
+	class Land_Barracks_04_F : Default 
+	{ 
+		lootType = "mil";
+		shelfPos[] = {{{-7.57324,8.41895,-1.96904},-0.0976563},{{1.44971,4.60962,-1.97171},-269.598}}; 
+		shoeboxPos[] = {{{-5.31689,8.22046,-1.9678},-127.098},{{7.87256,2.1062,-1.97305},-53.597}}; 
+		cabinetPos[] = {{{-8.13428,2.98169,-0.717667},-0.0976563},{{-5.1499,-4.36963,-0.620117},-90.6139}}; 
+		bedPos[] = {{{-4.09229,6.87402,-1.97017},0.401611}}; 
+		tablePos[] = {{{-4.37842,3.30981,-1.96783},-91.102}}; 
+		lockerPos[] = {{{-1.13916,6.56982,-1.96992},-90.0991},{{-2.11768,7.19604,-1.96967},-270.099}}; 
+		chairPos[] = {{{0.777832,7.71655,-1.96989},32.4025}}; 
+		filingPos[] = {{{-1.19287,1.9834,-1.968},-141.098}}; 
+		freezerPos[] = {{{2.21338,7.1853,-1.97078},-90.0974}}; 
+		kitchenSinkPos[] = {{{2.23682,5.57031,-1.97212},-89.5974}}; 
+		cookerPos[] = {{{2.25342,4.21289,-1.96783},-90.0971}}; 
+		pelicanPos[] = {{{7.63428,7.73877,-1.97166},-322.097}}; 
+		toolRackPos[] = {{{-8.14453,-1.62354,-2.12061},-90.5985}}; 
+		palletPos[] = {{{-5.72217,-2.27588,-1.97034},37.8858}}; 
+		couchPos[] = {{{-6.98438,5.25073,-1.96916},-179.098}}; 
+		toiletPos[] = {{{5.55762,3.20435,-1.97597},-90.0963}}; 
+	};	
+	class Land_Mine_01_warehouse_F : Default 
+	{ 
+		lootType = "industrial";
+		toolRackPos[] = {{{-6.64038,13.2808,-6.61807},90.9994}}; 
+		lockerPos[] = {{{-7.87573,10.5029,-6.30167},180}}; 
+		tablePos[] = {{{-8.86548,14.6792,-6.30167},-0.500267}}; 
+		pelicanPos[] = {{{-10.0859,12.8818,-6.40167},-73.5},{{-1.75317,-12.6953,2.31833},-90},{{-2.44189,5.53564,3.78516},91.7993}}; 
+		cabinetPos[] = {{{-10.8323,12.0835,-5.00159},0.49968}}; 
+		freezerPos[] = {{{-5.74927,4.45654,-6.33167},-90}}; 
+		palletPos[] = {{{-3.28442,5.87256,-6.33167},-90},{{-4.99316,-13.5034,2.31833},-90}}; 
+		filingPos[] = {{{-2.0083,8.84717,-6.4406},-0.000190735}}; 
+		shelfPos[] = {{{-3.34399,8.94434,-6.45025},-0.000183105}}; 
+		shoeboxPos[] = {{{7.91479,15.5498,4.84833},152}}; 
+	}; 
+	class Land_CoalPlant_01_MainBuilding_F : Default 
+	{ 
+		lootType = "industrial";
+		shoeboxPos[] = {{{16.8926,-1.39087,-13.864},149.816}}; 
+		pelicanPos[] = {{{6.9873,-2.71777,-1.87692},-147.685}}; 
+		cabinetPos[] = {{{9.78027,0.779053,-0.476944},180.316},{{-3.48242,17.2822,-11.5774},181.316}}; 
+		toiletPos[] = {{{-2.59766,18.2539,-12.9275},-90.6845}}; 
+		lockerPos[] = {{{2.16406,16.3853,-12.8775},90.2633}}; 
+		toolRackPos[] = {{{-13.9619,17.5903,-13.1275},-90.6832}}; 
+		tablePos[] = {{{-3.66992,18.7744,-12.8775},90.8156}}; 
+		fridgePos[] = {{{-13.3125,15.6213,-12.8775},179.816}}; 
+		freezerPos[] = {{{-4.58594,15.4504,-12.8775},180.816}}; 
+	}; 
+	class Land_HealthCenter_01_F : Default 
+	{ 
+		lootType = "medical";
+		bedPos[] = {{{-12.2559,-2.20117,-2.86598},272.129}}; 
+		kitchenSinkPos[] = {{{-10.875,-4.92285,-2.86598},181.629},{{-8.08643,-4.48096,-2.91599},270.629}}; 
+		couchPos[] = {{{-7.2085,3.75684,-2.86598},0.629086},{{0.963379,3.25635,-2.866},181.129}}; 
+		tablePos[] = {{{-8.70386,3.70947,-2.86598},269.629}}; 
+		lockerPos[] = {{{-12.5215,2.16309,-2.86598},181.129}}; 
+		cabinetPos[] = {{{-8.71777,1.8667,-1.61591},270.129},{{-10.8899,-1.47461,-1.5159},90.1284}}; 
+		chairPos[] = {{{-12.8921,5.11182,-2.86598},299.129},{{4.979,4.99902,-2.86598},40.6289}}; 
+		freezerPos[] = {{{-7.8728,-1.80957,-2.86598},0.128933}}; 
+		fridgePos[] = {{{-6.64868,-1.76709,-2.86598},0.129078}}; 
+		cookerPos[] = {{{-4.53369,-4.56445,-2.86598},91.1285}}; 
+		toiletPos[] = {{{-4.96118,5.45459,-2.86598},0.129047}}; 
+		pelicanPos[] = {{{-1.11987,-4.50293,-2.866},134.128}}; 
+		filingPos[] = {{{-3.61841,-4.92822,-2.86598},207.129}}; 
+		shelfPos[] = {{{2.96655,5.59766,-2.86598},0.629318}}; 
+	}; 
+	class Land_Radar_01_HQ_F : Default 
+	{ 
+		lootType = "mil";
+		palletPos[] = {{{-7.44141,-3.88794,3.82829},29.4453},{{-1.2666,-6.1958,-0.187286},-330.549},{{-3.03125,-5.88452,-4.20287},-330.549}}; 
+		toolRackPos[] = {{{-0.270508,0.19458,-0.437302},-269.049},{{4.07715,-7.06421,-0.437302},0.951385},{{-6.01465,6.70605,-5.25632},-89.0484}}; 
+		lockerPos[] = {{{-5.49707,2.48877,-0.187286},-90.0483},{{-6.9209,3.82495,-4.20287},0.451385}}; 
+		tablePos[] = {{{-9.9248,3.7251,-0.187286},-0.0486145},{{5.7002,-5.1106,-0.187286},-270.049}}; 
+		kitchenSinkPos[] = {{{-6.47949,0.129395,-0.187286},-270.549}}; 
+		freezerPos[] = {{{-6.53613,2.00977,-0.187286},-271.049},{{5.38379,-7.42188,-4.20287},-0.0486145}}; 
+		pelicanPos[] = {{{-10,-10.2607,-0.237289},-128.049},{{-10.001,-10.3684,-4.25286},-143.048},{{5.24609,-2.25024,-4.20287},-218.049},{{-4.04785,7.97729,-5.05773},0.951447}}; 
+		filingPos[] = {{{-10.5771,-7.37476,-0.187286},-39.0486}}; 
+		bedPos[] = {{{4.70605,-2.37061,-0.187286},-270.049}}; 
+		wardrobePos[] = {{{0.43457,-0.38501,-0.187286},-90.0489}}; 
+		couchPos[] = {{{1.19238,1.98486,-0.187286},-179.049},{{-9.67188,0.241699,-4.20287},-180.046}}; 
+		shelfPos[] = {{{5.62109,3.76318,-0.187286},-324.549},{{-3.14551,3.63696,-4.20287},-318.549}}; 
+		cabinetPos[] = {{{-6.46582,-3.06201,-2.90279},-89.5546},{{-6.13965,-7.30566,-2.75278},-1.05576}}; 
+		chairPos[] = {{{-1.64258,3.32031,-4.20287},-42.5486}}; 
+		fridgePos[] = {{{1.81543,3.86523,-4.20287},-0.0486145}}; 
+		shoeboxPos[] = {{{5.51172,-10.5527,-4.20287},-51.5489}}; 
+	}; 
+	class Land_House_1W05_F : Default 
+	{ 
+		lootType = "civ";
+		bedPos[] = {{{-1.50488,0.31543,-0.827423},0.236744}}; 
+		tablePos[] = {{{0.0864258,0.803711,-0.827652},89.2363}}; 
+		kitchenSinkPos[] = {{{4.15747,-2.13184,-0.827652},180.236}}; 
+		cookerPos[] = {{{2.83057,-2.11328,-0.827652},180.236}}; 
+		couchPos[] = {{{1.87622,0.977539,-0.827652},180.737}}; 
+		wardrobePos[] = {{{0.71167,-2.16699,-0.827652},180.237}}; 
+		cabinetPos[] = {{{2.02026,3.85938,0.422424},89.7357}}; 
+		shelfPos[] = {{{5.14429,-0.163086,-0.827652},89.7364}}; 
+		toolRackPos[] = {{{4.21533,-4.25684,-3.41901},-0.763229}}; 
+	}; 
+	class Land_HouseRuin_Big_03_half_F : Default 
+	{ 
+		lootType = "civ";
+		filingPos[] = {{{-0.285156,1.41211,-1.82099},0.350769}}; 
+		shoeboxPos[] = {{{2.94922,0.61084,-1.80632},-281.649}}; 
+		palletPos[] = {{{2.82422,-1.65576,-1.80488},-281.649}}; 
+		tablePos[] = {{{2.25146,-6.16553,-1.80585},0.134644}}; 
+		toiletPos[] = {{{-1.61572,-8.20898,-1.77151},-180.151}}; 
+	}; 
+	class Land_GuardHouse_02_F : Default 
+	{ 
+		lootType = "mil";
+		toiletPos[] = {{{4.68799,3.46875,-1.55853},37.275}}; 
+		shelfPos[] = {{{4.38721,-1.24805,-1.55853},-1.22449}}; 
+		tablePos[] = {{{-2.36816,-2.60938,-1.55853},-90.2251}}; 
+		pelicanPos[] = {{{4.13965,-2.97461,-1.60853},-236.725}}; 
+		lockerPos[] = {{{3.27148,-0.418945,-1.55853},-180.225}}; 
+		cabinetPos[] = {{{-2.88672,-0.74707,-0.33535},-89.7253}}; 
+		toolRackPos[] = {{{-1.65918,2.50879,-1.83279},89.7752}}; 
+		shoeboxPos[] = {{{0.638672,2.62109,-1.55853},-236.725}}; 
+	}; 
+	class Land_Workshop_02_grey_F : Default 
+	{ 
+		lootType = "workshop";
+		toolRackPos[] = {{{2.23291,-0.620605,-1.68878},90.0223}}; 
+		tablePos[] = {{{1.38086,-1.07764,-1.38876},180.022}}; 
+		lockerPos[] = {{{-1.76489,-0.750977,-1.38721},270.022}}; 
+		shoeboxPos[] = {{{-0.117188,-0.0244141,-1.32866},-39.4778}}; 
+		filingPos[] = {{{1.83643,1.72363,-1.32912},49.5219}}; 
+		cabinetPos[] = {{{-1.18335,1.97168,-0.0212402},90.0218}}; 
+	}; 
+	class Land_Workshop_02_F : Land_Workshop_02_grey_F {};
+	class Land_Camp_House_01_brown_F : Default 
+	{ 
+		lootType = "civ";
+		freezerPos[] = {{{-2.50635,1.896,-1.40231},-180.087}}; 
+		shelfPos[] = {{{3.13232,2.21753,-1.40231},-270.055}}; 
+		bedPos[] = {{{1.97119,6.09253,-1.40132},-270.055}}; 
+		wardrobePos[] = {{{-2.19287,6.45654,-1.40231},0.892761}}; 
+		tablePos[] = {{{-2.70166,4.24585,-1.40231},-90.107}}; 
+		shoeboxPos[] = {{{-2.35498,0.133545,-1.40231},-312.587}}; 
+		chairPos[] = {{{2.10889,0.353027,-1.4023},47.3957}}; 
+	}; 
+	class Land_HouseRuin_Small_02_F : Default 
+	{ 
+		lootType = "civ";
+		chairPos[] = {{{-2.37109,0.603027,-2.38702},45.1045}}; 
+		filingPos[] = {{{-1.9292,-2.13525,-2.4726},93.1027},{{-5.92041,0.928711,1.2378},322.605}}; 
+		tablePos[] = {{{0.0834961,4.98828,-2.47259},0.0993376}}; 
+		shoeboxPos[] = {{{-0.238281,-4.47852,-2.4726},350.603}}; 
+		lockerPos[] = {{{-1.99609,-2.05713,1.23779},90.1044}}; 
+		palletPos[] = {{{3.75928,-1.27588,1.23781},325.104}}; 
+		cabinetPos[] = {{{-1.0752,0.0302734,-1.0225},0.604628}}; 
+	};
+	class Land_DeerStand_02_F : Default 
+	{ 
+		lootType = "church";
+		GroundSpawnChance = 80;
+		shoeboxPos[] = {{{-0.896973,-2.44574,0.913559},40.3256}}; 
+		tablePos[] = {{{0.841797,-1.71057,0.913559},90.8252}}; 
+		cabinetPos[] = {{{-0.0998535,-2.72882,1.6136},270.326}}; 
+		filingPos[] = {{{0.0373535,-0.813416,0.913574},8.38382}}; 
+	};
+	class Land_DPP_01_mainFactory_old_F : Land_DPP_01_mainFactory_F {};
+	class Land_House_1W12_F : Default 
+	{ 
+		lootType = "civ";
+		bedPos[] = {{{3.93481,-5.5625,-2.51158},0.435066}}; 
+		wardrobePos[] = {{{2.34229,-4.5293,-2.51157},-0.0650311}}; 
+		couchPos[] = {{{0.430908,-7.41309,-2.51156},180.433}}; 
+		tablePos[] = {{{3.11792,-8.34375,-2.51157},179.935},{{5.104,-3.47363,-2.51156},179.935}}; 
+		kitchenSinkPos[] = {{{3.19604,-0.246094,-2.51156},0.434435}}; 
+		cookerPos[] = {{{4.46753,-0.285156,-2.51159},-0.0655537}}; 
+		fridgePos[] = {{{5.34595,-0.238281,-2.51156},-0.0655537}}; 
+		shelfPos[] = {{{8.20947,-3.2002,-2.51156},89.9348}}; 
+		filingPos[] = {{{5.52051,3.5625,-2.51156},317.935}}; 
+		shoeboxPos[] = {{{5.57495,0.945313,-2.51156},43.9344}}; 
+		cabinetPos[] = {{{2.48828,-1.38477,-1.11147},0.435066}}; 
+	}; 
+	class Land_Radar_01_kitchen_F : Default 
+	{ 
+		lootType = "industrial";
+		filingPos[] = {{{-7.39111,6.64453,-3.95175},266.547}}; 
+		lockerPos[] = {{{7.86035,6.63672,-3.95175},89.5467}}; 
+		tablePos[] = {{{3.77295,-1.2793,-3.95175},178.047}}; 
+		toiletPos[] = {{{6.23438,-6.13379,-3.95175},270.54},{{5.3042,-7.45117,-3.95177},90.5453}}; 
+		shelfPos[] = {{{-2.70459,-1.54688,-3.95175},179.047}}; 
+		couchPos[] = {{{-6.53857,11.8789,-3.95175},181.547}}; 
+		pelicanPos[] = {{{-3.88721,14.2256,-3.95175},34.547}}; 
+		shoeboxPos[] = {{{5.25684,11.2539,-3.95175},-47.9528}}; 
+		kitchenSinkPos[] = {{{-3.24121,-5.50098,-3.95175},89.546}}; 
+		toolRackPos[] = {{{6.61963,12.1797,-4.05176},1.04707}}; 
+		palletPos[] = {{{0.132324,3.66113,-3.95175},-47.9528}}; 
+		cabinetPos[] = {{{-0.236816,12.0449,-2.70168},90.0467}}; 
+	};	
+	class Land_House_1W03_F : Default 
+	{ 
+		lootType = "civ";
+		couchPos[] = {{{-0.76001,1.29492,-2.32535},-0.189102}}; 
+		kitchenSinkPos[] = {{{-3.09741,4.31055,-2.32535},0.316422}}; 
+		fridgePos[] = {{{-1.80664,4.30762,-2.32535},0.849014}}; 
+		cabinetPos[] = {{{-0.857422,-2.00098,-1.12527},-90.1892}}; 
+		tablePos[] = {{{-3.51611,0.738281,-2.32535},-90.1786}}; 
+		bedPos[] = {{{1.50342,-3.87793,-2.32539},0.311554}}; 
+		wardrobePos[] = {{{1.44336,-7.9873,-2.32535},-179.664}}; 
+		chairPos[] = {{{-3.30371,-7.6543,-2.32533},-138.701}}; 
+		filingPos[] = {{{-1.53369,-8.08496,-2.32535},-179.649}}; 
+		shoeboxPos[] = {{{-0.870605,-5.82422,-2.32535},-57.6647}}; 
+		shelfPos[] = {{{-3.83716,-5.22559,-2.32535},-90.1894}}; 
+	}; 
+	class Land_House_2B03_F : Default 
+	{ 
+		lootType = "industrial";
+		bedPos[] = {{{1.86328,-2.61621,-2.21303},1.59668}}; 
+		wardrobePos[] = {{{-2.46484,-5.36987,-2.21303},-89.9033}}; 
+		couchPos[] = {{{-0.20166,-6.50928,-2.21303},-269.904}}; 
+		chairPos[] = {{{-2.07178,-1.86426,-2.21303},-46.9034}}; 
+		shoeboxPos[] = {{{1.43701,-5.35718,-2.21303},-52.4033}}; 
+		palletPos[] = {{{0.60791,3.18872,-2.21303},-329.903}}; 
+		toolRackPos[] = {{{2.61963,6.29761,-5.66862},0.0966187}}; 
+		lockerPos[] = {{{3.55908,0.46167,-5.46861},-269.403}}; 
+		cabinetPos[] = {{{1.18604,6.97998,-4.2059},-178.904}}; 
+		tablePos[] = {{{-3.60791,2.69702,-5.46861},-90.403}}; 
+		pelicanPos[] = {{{0.276367,7.26123,-5.50598},-0.403381}}; 
+	}; 
+	class Land_Barracks_05_F : Default 
+	{ 
+		lootType = "mil";
+		filingPos[] = {{{-1.51025,-2.98779,-1.90714},-131.369},{{-5.12256,0.363281,-1.90713},47.1315}}; 
+		pelicanPos[] = {{{1.67578,-2.33447,-1.90713},141.132}}; 
+		tablePos[] = {{{2.4541,-0.556152,-1.90712},90.6328},{{-6.89355,-2.87793,-1.90713},-181.37}}; 
+		toolRackPos[] = {{{-2.11328,-1.77979,-2.35715},89.6317}}; 
+		lockerPos[] = {{{-9.21191,-2.37988,-1.90713},-89.8704}}; 
+		shelfPos[] = {{{-4.79102,-2.03467,-1.90713},89.6299}}; 
+		cabinetPos[] = {{{3.24902,-0.102051,-0.5811},0.132095}}; 
+		freezerPos[] = {{{-3.40234,-2.90918,-1.90714},-179.368}}; 
+	}; 
+	class Land_HouseRuin_Big_01_half_F : Default 
+	{ 
+		lootType = "civ";
+		shelfPos[] = {{{-1.97949,-7.73999,-0.61953},180.202}}; 
+		couchPos[] = {{{0.330078,-6.82983,-0.605919},89.7021}}; 
+		palletPos[] = {{{0.654297,-0.979004,-0.61953},245.201}}; 
+		shoeboxPos[] = {{{-2.52734,7.0188,-0.641991},124.18}}; 
+		toolRackPos[] = {{{0.308594,3.39526,-1.11288},179.701}}; 
+		tablePos[] = {{{-3.15137,-3.96606,-0.603508},-89.7984}}; 
+		cabinetPos[] = {{{-1.35156,2.89185,0.830559},90.7011}}; 
+	}; 
+	class Land_IndustrialShed_01_F : Default 
+	{ 
+		lootType = "workshop";
+		pelicanPos[] = {{{-3.73022,-9.72266,-1.33955},-179.865}}; 
+		palletPos[] = {{{0.201172,4.75293,-4.62936},-215.364},{{0.32959,-4.02051,-4.62936},-215.359}}; 
+		couchPos[] = {{{2.97168,9.01367,-4.62936},-89.8639}}; 
+		filingPos[] = {{{4.8252,3.73926,-4.62936},89.1364}}; 
+		chairPos[] = {{{-3.42993,1.50098,-4.62936},-90.3639}}; 
+		tablePos[] = {{{4.66479,-1.73584,-4.62936},90.1365}}; 
+		shoeboxPos[] = {{{-3.23926,-7.21191,-4.62935},65.1365}}; 
+	}; 
+	class Land_Rail_Warehouse_Small_F : Default 
+	{ 
+		lootType = "construction";
+		toolRackPos[] = {{{0.867188,3.06445,-1.65653},-0.343735}}; 
+		lockerPos[] = {{{7.3584,0.245361,-1.35654},89.656}}; 
+		palletPos[] = {{{2.38965,0.318604,-1.35654},-156.844}}; 
+		tablePos[] = {{{-0.176758,-2.16089,-1.35654},180.156}}; 
+		shelfPos[] = {{{5.58984,-2.4458,-1.35654},179.156}}; 
+		filingPos[] = {{{-1.60449,2.63892,-1.35654},-42.3443}}; 
+		shoeboxPos[] = {{{6.16895,2.22461,-1.35654},-156.844}}; 
+	}; 
+	class Land_House_2W02_F : Default 
+	{ 
+		lootType = "civ";
+		lockerPos[] = {{{8.26245,-2.01172,-1.29372},-179.593}}; 
+		chairPos[] = {{{5.63354,-1.72656,-1.29372},-149.096},{{0.497314,-3.39844,-4.04601},-94.0974}}; 
+		bedPos[] = {{{2.25171,-1.78906,-1.29372},-178.097}}; 
+		wardrobePos[] = {{{4.53442,-1.11328,-1.29372},89.9038}}; 
+		tablePos[] = {{{8.59448,2.43457,-1.29372},89.9038},{{1.20142,-1.34473,-4.046},-90.594}}; 
+		couchPos[] = {{{5.67554,-2.68945,-4.04601},-0.0961609}}; 
+		kitchenSinkPos[] = {{{5.80127,1.92871,-4.04601},-0.0961609}}; 
+		fridgePos[] = {{{4.52075,1.9541,-4.04601},-0.596161}}; 
+		filingPos[] = {{{-0.488037,-1.9834,-4.046},-180.094}}; 
+		shoeboxPos[] = {{{6.87524,3.76074,-1.29372},-144.596}}; 
+	}; 
+	class Land_Barn_03_large_F : Default 
+	{ 
+		lootType = "construction";
+		toolRackPos[] = {{{6.61719,-16.4053,-2.74434},-269.74},{{-6.8667,17.2676,-2.80023},-89.2434}}; 
+		couchPos[] = {{{5.51953,-9.6123,-2.64548},0.256897}}; 
+		shelfPos[] = {{{6.48975,-2.69922,-2.64665},-269.744}}; 
+		filingPos[] = {{{6.37305,3.93848,-2.64786},-269.744}}; 
+		tablePos[] = {{{6.11621,10.0693,-2.59874},-269.744}}; 
+		palletPos[] = {{{-0.0932617,-7.35107,-2.64671},-333.744},{{1.1958,6.01904,-2.64749},-333.744},{{-4.70313,-16.9983,-2.64497},-333.742}}; 
+		lockerPos[] = {{{-6.5083,10.1785,-2.64897},-90.2434}}; 
+		chairPos[] = {{{-6.32617,3.60254,-2.64784},-89.2435}}; 
+		pelicanPos[] = {{{0.800781,-1.2168,-2.64641},-333.744}}; 
+		freezerPos[] = {{{-6.47705,-3.26514,-2.64664},-89.7435}}; 
+		cabinetPos[] = {{{-6.87207,-7.88037,-1.39577},0.256409}}; 
+	}; 
+	class Land_Chapel_02_white_damaged_F : Default 
+	{ 
+		lootType = "church";
+		GroundSpawnChance = 80;
+		cabinetPos[] = {{{0.052002,2.60254,-0.223801},88.0755}}; 
+		shoeboxPos[] = {{{-0.791992,1.43945,-1.7845},-236.925}}; 
+		pelicanPos[] = {{{0.629883,1.46484,-1.83058},34.0754}}; 
+	}; 
+	class Land_Barn_04_F : Default 
+	{ 
+		lootType = "construction";
+		lockerPos[] = {{{9.65771,-6.89404,-5.42911},-269.83}}; 
+		tablePos[] = {{{9.59326,-12.1714,-5.42911},-270.33}}; 
+		freezerPos[] = {{{9.69189,-17.8008,-5.42911},-270.83}}; 
+		couchPos[] = {{{7.27979,-24.9019,-5.42912},-269.83},{{6.70459,21.9866,-5.42911},-89.3298}}; 
+		toolRackPos[] = {{{-2.85596,-26.1216,-5.67912},-179.325}}; 
+		kitchenSinkPos[] = {{{-11.0654,-23.2974,-5.42912},-90.3378}}; 
+		shelfPos[] = {{{-11.2788,-12.4233,-5.42909},-90.3299}}; 
+		chairPos[] = {{{-10.897,9.86206,-5.42911},-90.3299}}; 
+		filingPos[] = {{{-11.147,20.0383,-5.42911},-90.3299}}; 
+		bedPos[] = {{{9.32568,9.59277,-5.42911},1.16998}}; 
+		palletPos[] = {{{-0.682617,13.0063,-5.42911},-320.83},{{-0.995605,1.47925,-5.42911},-320.83},{{-0.950684,-10.4038,-5.42911},-320.83}}; 
+		cabinetPos[] = {{{-0.469727,-3.85327,-4.02902},0.169983},{{-0.882324,7.05762,-4.02902},-180.33}}; 
+		pelicanPos[] = {{{-1.21729,-6.91553,-5.42911},-320.83}}; 
+	}; 
+	class Land_HouseRuin_Big_03_F : Default 
+	{ 
+		lootType = "civ";
+		lockerPos[] = {{{-0.298828,1.43628,-0.563751},-1.6514}}; 
+		tablePos[] = {{{2.71484,-7.93481,-0.528076},-181.152},{{-2.49902,-5.8208,-4.53437},-180.152}}; 
+		cabinetPos[] = {{{-0.124023,-5.51294,0.739464},-89.651}}; 
+		palletPos[] = {{{1.77832,-1.35889,-0.541603},-296.151}}; 
+		pelicanPos[] = {{{2.84375,3.90625,-0.622795},-235.151}}; 
+		freezerPos[] = {{{3.6123,-2.46631,-4.53437},-0.151398}}; 
+		shoeboxPos[] = {{{0.601563,-3.89233,-4.53437},-296.151}}; 
+		toolRackPos[] = {{{-0.152344,1.61084,-4.69476},-0.151398}}; 
+	}; 
+	class Land_House_2W05_F : Default 
+	{ 
+		lootType = "civ";
+		shelfPos[] = {{{-1.31348,-3.78125,-0.614944},90.1683}}; 
+		tablePos[] = {{{-3.20996,-4.66699,-0.61496},180.169},{{-7.2373,-3.7417,-0.614944},269.19}}; 
+		bedPos[] = {{{-5.18945,-3.71338,-0.615128},180.669}}; 
+		wardrobePos[] = {{{-6.86035,0.986816,-0.614944},-0.331471}}; 
+		palletPos[] = {{{-6.17773,3.14014,-3.39426},318.807}}; 
+		chairPos[] = {{{-2.69922,4.47168,-3.39426},139.168}}; 
+		kitchenSinkPos[] = {{{-6.83887,0.984375,-3.32794},0.168529}}; 
+		cookerPos[] = {{{-5.56934,0.970703,-3.3284},0.168528}}; 
+		freezerPos[] = {{{-1.58105,0.523438,-3.32794},89.6683}}; 
+		lockerPos[] = {{{2.5,-4.72559,-3.32794},180.183}}; 
+		shoeboxPos[] = {{{2.23535,-1.84131,-3.32794},227.669}}; 
+		cabinetPos[] = {{{-4.52832,1.78467,-2.12309},269.169}}; 
+		filingPos[] = {{{-7.31055,-4.76025,-3.32794},220.189}}; 
+		couchPos[] = {{{-5.05664,-3.95459,-3.32794},89.6918}}; 
+	}; 
+	class Land_ServiceHangar_01_R_F : Default 
+	{ 
+		lootType = "workshop";
+		bedPos[] = {{{-8.82129,13.5615,0.101723},1.86125}}; 
+		couchPos[] = {{{1.35547,13.8799,0.10144},-89.6406}}; 
+		filingPos[] = {{{8.84619,14.7227,0.10144},-0.139984}}; 
+		chairPos[] = {{{19.1294,5.94238,0.10144},57.3598}}; 
+		palletPos[] = {{{-0.0253906,4.54102,0.10144},135.353}}; 
+		freezerPos[] = {{{-9.18848,-21.7852,0.10144},-89.6406}}; 
+		kitchenSinkPos[] = {{{-9.18311,-10.0264,0.10144},-90.1407}}; 
+		toolRackPos[] = {{{20.3262,-10.2637,-0.198578},90.3598}}; 
+		pelicanPos[] = {{{-8.63672,14.2441,3.2434},-37.1392}}; 
+	}; 
+	class Land_ServiceHangar_01_L_F : Default 
+	{ 
+		lootType = "mil";
+		tablePos[] = {{{19.8408,-0.854492,0.10144},89.8598},{{-3.48633,-6.07422,0.151443},89.8598}}; 
+		toolRackPos[] = {{{16.2842,-14.498,0.00143433},-178.64}}; 
+		lockerPos[] = {{{-4.4834,-2.72949,0.10144},-0.140579}}; 
+		couchPos[] = {{{-8.46973,-5.95215,0.10144},-180.14}}; 
+		cabinetPos[] = {{{-3.10645,-7.71289,1.25152},-180.14}}; 
+		palletPos[] = {{{6.44043,-2.83496,0.10144},-224.64},{{1.59961,9.62305,0.10144},-224.64}}; 
+		pelicanPos[] = {{{-4.42285,-7.98926,3.2434},-224.64}}; 
+		freezerPos[] = {{{-3.47998,-3.26855,3.2434},89.3598}}; 
+		kitchenSinkPos[] = {{{-6.60205,-2.74707,3.2434},-0.139893}}; 
+		filingPos[] = {{{-9.30469,10.9053,0.10144},-90.1401}}; 
+		shoeboxPos[] = {{{-6.11035,0.168945,0.10144},36.3598}}; 
+		shelfPos[] = {{{-9.36572,0.804688,0.10144},-90.6408}}; 
+	}; 
+	class Land_House_1W09_F : Default 
+	{ 
+		lootType = "civ";
+		bedPos[] = {{{-5.75293,-3.6355,-1.95078},-89.992}}; 
+		wardrobePos[] = {{{-0.455078,-2.76147,-1.95308},89.9418}}; 
+		tablePos[] = {{{-5.05762,-0.39917,-1.95308},-0.0493622},{{-4.22949,0.766113,-1.95308},179.951}}; 
+		couchPos[] = {{{-3.87598,3.30054,-1.95306},-88.5532}}; 
+		kitchenSinkPos[] = {{{-1.0498,4.04663,-1.95308},0.0102386}}; 
+		shelfPos[] = {{{-6.34277,0.527588,-1.95308},180.451}}; 
+		fridgePos[] = {{{0.643555,4.08569,-1.95308},-1.03757}}; 
+		cabinetPos[] = {{{-0.199219,1.18066,-0.653},179.991}}; 
+	};	
+	class Land_i_Shed_Ind_old_F : Land_i_Shed_Ind_F {};
+	class Land_House_1W11_F : Default 
+	{ 
+		lootType = "civ";
+		chairPos[] = {{{-6.56348,-4.94678,-2.82291},125.298}}; 
+		kitchenSinkPos[] = {{{-4.26074,-1.10059,-2.63437},-90.2121}}; 
+		cookerPos[] = {{{-4.23242,-2.32324,-2.63535},-89.7121}}; 
+		fridgePos[] = {{{-4.26172,-3.20313,-2.63483},-90.7024}}; 
+		couchPos[] = {{{1.51855,-1.4209,-2.63501},-89.7433}}; 
+		tablePos[] = {{{1.86035,-5.79834,-2.63776},179.757}}; 
+		filingPos[] = {{{-4.33887,-5.80518,-2.63535},-90.1906}}; 
+		shelfPos[] = {{{-2.21582,-0.454834,-2.63448},-0.229721}}; 
+	}; 
+	class Land_Bunker_02_double_F : Default 
+	{ 
+		lootType = "mil";
+		pelicanPos[] = {{{0.244141,1.23438,-1.0304},0.391693}}; 
+		shoeboxPos[] = {{{-1.68115,-0.110352,-1.003},-85.1081}}; 
+	}; 
+	class Land_ChurchRuin_01_F : Default 
+	{ 
+		lootType = "civ";
+		toolRackPos[] = {{{3.11914,9.71777,-4.80076},-270.589}}; 
+		pelicanPos[] = {{{-1.94141,6.78662,3.36325},-124.089}}; 
+		tablePos[] = {{{1.98047,13.0469,3.37797},-310.089}}; 
+		shoeboxPos[] = {{{1.55762,10.1948,3.38235},-52.0876}}; 
+		filingPos[] = {{{-2.36426,13.0542,-4.75348},-42.0814}}; 
+	}; 
+	class Land_Radar_01_antenna_base_F : Default 
+	{ 
+		lootType = "mil";
+		couchPos[] = {{{12.3984,-6.6084,-2.80344},91.4998}}; 
+		tablePos[] = {{{11.5742,-0.556152,-2.80344},0},{{11.3271,2.91089,0.91214},270},{{-5.354,-5.59375,-2.80344},270}}; 
+		cabinetPos[] = {{{15.04,2.47559,-1.60373},178.499}}; 
+		kitchenSinkPos[] = {{{14.7104,7.146,-2.80344},89.4997},{{-1.38916,-7.43359,-2.80344},179.999}}; 
+		freezerPos[] = {{{12.3062,4.57568,-2.80344},179.499},{{1.3374,-2.45532,-2.80344},0}}; 
+		filingPos[] = {{{9.8374,9.08032,-2.80344},298.5},{{9.28223,8.64697,0.91214},270.5}}; 
+		palletPos[] = {{{5.95947,-4.19141,-2.80344},0},{{-12.7056,0.493164,-3.58148},0}}; 
+		chairPos[] = {{{4.47119,8.6228,-2.80344},0},{{14.4839,8.72168,0.91214},52.4999}}; 
+		pelicanPos[] = {{{5.93896,7.9231,0.91214},0},{{-10.0767,-5.8999,0.91214},250.5}}; 
+		bedPos[] = {{{13.6646,-4.34521,0.91214},91.4998}}; 
+		wardrobePos[] = {{{9.38037,-5.86157,0.91214},270.5}}; 
+		toiletPos[] = {{{14.5366,-2.77368,0.91214},129}}; 
+		toolRackPos[] = {{{6.88965,-7.75659,0.412262},180.501}}; 
+		shoeboxPos[] = {{{-7.0498,-5.88892,0.91214},0}}; 
+		lockerPos[] = {{{2.16211,-5.36938,0.91214},89.9998}}; 
+	}; 
+	class Land_Barracks_02_F : Default 
+	{ 
+		lootType = "mil";
+		bedPos[] = {{{-7.14502,-2.94336,-1.69466},179.861},{{-3.91992,-3,-1.69458},180.361},{{-0.823242,-2.97656,-1.69458},179.861},{{2.42285,-3.00195,-1.69451},180.36}}; 
+		lockerPos[] = {{{-5.61523,3.95898,-1.69442},-1.13996},{{0.778809,3.97168,-1.69442},-0.139748}}; 
+		pelicanPos[] = {{{-2.67236,3.05078,-1.69442},-54.6392}}; 
+		couchPos[] = {{{-8.85254,2.11719,-1.69441},180.36}}; 
+		chairPos[] = {{{4.37158,3.60352,-1.69442},51.8602}}; 
+		shoeboxPos[] = {{{-2.34229,-3.26074,-1.69442},-0.639492}}; 
+	};	
+	class Land_House_1W07_F : Default 
+	{ 
+		lootType = "civ";
+		bedPos[] = {{{-4.49951,-4.56738,-3.0888},270.459}}; 
+		wardrobePos[] = {{{0.74292,-6.35938,-3.0888},89.9583}}; 
+		tablePos[] = {{{-2.31177,-7.79688,-3.0888},179.959},{{-7.02124,-0.893555,-3.0888},269.959}}; 
+		chairPos[] = {{{-5.16357,-7.55566,-3.0888},218.959}}; 
+		kitchenSinkPos[] = {{{1.74707,0.276367,-3.0888},269.959}}; 
+		cookerPos[] = {{{1.76929,1.57324,-3.0888},269.959}}; 
+		shelfPos[] = {{{1.61548,2.87207,-3.0888},270.459}}; 
+		lockerPos[] = {{{5.55713,-3.02832,-3.0888},179.458}}; 
+		couchPos[] = {{{-1.4563,0.137695,-3.0888},0.458786}}; 
+		filingPos[] = {{{-6.63892,3.31152,-3.0888},0.958698}}; 
+	}; 
+	class Land_Caravan_01_rust_F : Default 
+	{ 
+		lootType = "civ";
+		filingPos[] = {{{-0.486816,4.37793,0.127487},-34.7552}}; 
+		chairPos[] = {{{0.625244,4.11426,0.127472},32.2445}}; 
+		shoeboxPos[] = {{{-0.400391,2.91211,0.127472},120.244}}; 
+		pelicanPos[] = {{{0.701172,1.00879,0.127457},81.2444}}; 
+		cabinetPos[] = {{{-0.584473,-2.14258,0.626373},87.7648}}; 
+	}; 
+	class Land_Caravan_01_green_F : Land_Caravan_01_rust_F {};
+	class Land_Workshop_01_grey_F : Default 
+	{ 
+		lootType = "workshop";
+		toolRackPos[] = {{{3.61719,-5.99658,-1.32436},179.757}}; 
+		lockerPos[] = {{{0.861328,-0.762451,-0.92437},270.257}}; 
+		tablePos[] = {{{4.36963,-3.40991,-0.92437},90.2567}}; 
+		palletPos[] = {{{1.94678,-3.24048,-0.92437},-81.2434}}; 
+		filingPos[] = {{{0.710938,-5.68384,-0.924368},269.742}}; 
+		freezerPos[] = {{{4.44385,-1.05884,-1.06803},89.757}}; 
+	}; 
+	class Land_Workshop_01_F : Land_Workshop_01_grey_F {};
+	class Land_GuardTower_01_F : Default 
+	{ 
+		lootType = "mil";
+		pelicanPos[] = {{{-0.831787,-5.53809,5.15538},269.518}}; 
+		shoeboxPos[] = {{{0.747803,-5.30566,5.15538},316.018}}; 
+	};	
+	class Land_Shed_10_F : Default 
+	{ 
+		lootType = "workshop";
+		chairPos[] = {{{3.27002,-1.91553,-0.0551071},134.086}}; 
+		shelfPos[] = {{{0.726074,1.1333,-0.0225372},0.0866686}}; 
+		shoeboxPos[] = {{{3.38086,0.840332,-0.0225372},225.087}}; 
+	}; 
+	class Land_House_1W02_F : Default 
+	{ 
+		lootType = "civ";
+		bedPos[] = {{{3.77148,2.33789,-2.12524},1.68378}}; 
+		wardrobePos[] = {{{5.02881,-0.820313,-2.12385},90.162}}; 
+		kitchenSinkPos[] = {{{0.736572,2.91016,-2.12385},90.1843}}; 
+		cookerPos[] = {{{0.704346,1.64551,-2.12462},90.207}}; 
+		shelfPos[] = {{{-1.13184,1.79688,-2.1237},-90.2927}}; 
+		chairPos[] = {{{-2.92407,-0.946289,-2.12376},114.694}}; 
+		cabinetPos[] = {{{0.165283,-1.62695,-0.973625},-90.2936}}; 
+	}; 
+	class Land_House_1W01_F : Default 
+	{ 
+		lootType = "civ";
+		bedPos[] = {{{-3.89453,1.14844,-2.84573},181.144}}; 
+		wardrobePos[] = {{{-1.96582,4.72363,-2.84727},90.1434}}; 
+		couchPos[] = {{{1.53223,4.3623,-2.84727},270.65}}; 
+		tablePos[] = {{{2.8772,0.212891,-2.84727},179.164}}; 
+		cabinetPos[] = {{{-1.18311,1.69629,-1.5972},-0.856155}}; 
+		lockerPos[] = {{{4.3623,4.71582,-2.89729},89.6738}}; 
+	}; 
+	class Land_ControlTower_02_F : Default 
+	{ 
+		lootType = "mil";
+		pelicanPos[] = {{{9.23242,4.7627,-9.63004},58.8888},{{9.84766,-5.00781,-1.10828},124.837}}; 
+		lockerPos[] = {{{3.4043,2.37793,-5.51505},179.858}}; 
+		tablePos[] = {{{1.63086,-2.09277,-1.07005},-90.1634}}; 
+		palletPos[] = {{{5.34961,-0.560547,-1.07005},-134.663}}; 
+		shelfPos[] = {{{7.81445,2.52246,-1.07005},90.3363}}; 
+		shoeboxPos[] = {{{1.77539,1.2583,-1.07005},129.343}}; 
+		toolRackPos[] = {{{4.60352,5.68457,-9.68005},-0.142899}}; 
+	};	
+	class Land_Factory_02_F : Default 
+	{ 
+		lootType = "industrial";
+		pelicanPos[] = {{{4.77148,3.78674,-2.50323},-340.495},{{-5.40137,7.4989,-5.84854},-340.495}}; 
+		lockerPos[] = {{{2.54004,1.96313,-2.50323},-89.4948},{{-3.91748,-4.43384,-5.84854},-179.996}}; 
+		shelfPos[] = {{{2.33594,3.79004,-2.50323},-88.9948}}; 
+		shoeboxPos[] = {{{11.2412,1.84375,-2.50323},19.4722},{{-12.6543,-4.28516,-5.84854},-340.495}}; 
+		kitchenSinkPos[] = {{{16.3535,-2.60022,-5.62325},-270.995}}; 
+		freezerPos[] = {{{12.3574,-7.1051,-5.62325},-179.996}}; 
+		cookerPos[] = {{{16.2813,-1.02344,-5.6234},-270.995}}; 
+		filingPos[] = {{{13.4897,-7.18726,-5.62325},-179.996},{{-11.5054,7.85706,-5.84854},1.00513}}; 
+		chairPos[] = {{{16.0889,-6.85327,-5.62325},-217.995}}; 
+		couchPos[] = {{{10.6484,9.73706,-5.62325},-89.4948}}; 
+		tablePos[] = {{{9.77148,5.59167,-5.62325},-179.527},{{16.3013,9.93445,-5.62325},-269.495}}; 
+		cabinetPos[] = {{{11.3755,5.16455,-4.37317},-90.5278},{{-0.737305,7.80701,-4.44846},-270.995}}; 
+		wardrobePos[] = {{{2.51367,9.72485,-5.62325},-89.4948}}; 
+		bedPos[] = {{{15.9473,6.50366,-5.62328},-179.495}}; 
+		palletPos[] = {{{0.132813,-2.46411,-5.84854},-340.495},{{-7.88623,1.7937,-5.84854},-340.495}}; 
+		toolRackPos[] = {{{-16.5967,8.18335,-6.04855},0.505127}}; 
+	}; 
+	class Land_Shed_11_F : Default 
+	{ 
+		lootType = "workshop";
+		toolRackPos[] = {{{-2.35547,2.03149,-1.29939},-88.997}}; 
+		palletPos[] = {{{1.41113,2.03857,-0.849365},177.504}}; 
+		freezerPos[] = {{{-1.27051,2.97754,-1.10617},0.00376892}}; 
+	}; 
+	class Land_Bunker_02_right_F : Default 
+	{ 
+		lootType = "mil";
+		pelicanPos[] = {{{0.1875,2.24805,-0.961281},19.4685}}; 
+		shoeboxPos[] = {{{-1.62109,0.246094,-1.00896},35.9576}}; 
+		cabinetPos[] = {{{-0.521973,-2.32422,-0.0083847},269.458}}; 
+	}; 
+	class Land_Shed_14_F : Default 
+	{ 
+		lootType = "workshop";
+		freezerPos[] = {{{1.66895,6.17188,-1.30997},0.157471}}; 
+		palletPos[] = {{{0.0820313,2.45996,-1.11643},-266.36}}; 
+		lockerPos[] = {{{-1.86865,6.15576,-1.30997},0.182068}}; 
+		tablePos[] = {{{-2.42871,-0.796875,-1.30997},-89.861}}; 
+		toolRackPos[] = {{{2.82031,-0.160645,-1.50999},89.6398}}; 
+	}; 
+	class Land_Barn_02_F : Default 
+	{ 
+		lootType = "construction";
+		palletPos[] = {{{-0.366211,3.23218,-4.10243},-288.175},{{0.453125,-2.06738,-4.0704},-288.156}}; 
+		shelfPos[] = {{{3.25,3.354,-4.15953},-270.133}}; 
+		couchPos[] = {{{-2.09375,5.99463,-4.08443},-90.183}}; 
+		toolRackPos[] = {{{3.51563,-3.01416,-4.35194},-269.634}}; 
+		cabinetPos[] = {{{-3.55957,-2.25562,-2.76266},-0.180115}}; 
+	};	
+	class Land_HouseRuin_Big_01_F : Default 
+	{ 
+		lootType = "civ";
+		tablePos[] = {{{2.71362,-4.10742,0.330879},90.1419},{{-3.50098,-0.0878906,-3.11034},269.642}}; 
+		palletPos[] = {{{-0.291016,-3.37793,0.322571},-26.8577}}; 
+		shelfPos[] = {{{-3.76929,-4.45313,0.33387},270.142}}; 
+		toiletPos[] = {{{2.7605,6.82324,-3.09427},55.6776}}; 
+		couchPos[] = {{{1.27441,-5.17578,-3.11034},89.1424}}; 
+		cabinetPos[] = {{{3.03735,-3.35254,-1.83951},180.643}}; 
+		kitchenSinkPos[] = {{{2.77271,-0.563477,-3.11034},89.6463}}; 
+	}; 
+	class Land_Barracks_03_F : Default 
+	{ 
+		lootType = "mil";
+		toiletPos[] = {{{3.28223,-2.69019,-1.07727},-179.033}}; 
+		pelicanPos[] = {{{2.74512,-1.82617,-1.17728},-91.0325},{{-3.02246,-2.50293,-1.09151},-179.534}}; 
+		bedPos[] = {{{0.894531,-1.50366,-1.08547},-179.534},{{-5.55371,-1.57056,-1.06706},-179.534}}; 
+		tablePos[] = {{{-0.942383,-1.93018,-1.08244},-90.533},{{-8.47754,-1.48267,-1.06882},-270.033}}; 
+		lockerPos[] = {{{-1.95508,-1.48999,-1.09029},-269.533}}; 
+		shelfPos[] = {{{-4.34668,-2.06982,-1.09193},-90.033},{{-4.35449,-0.899902,-1.0918},-89.0331},{{-7.62793,-0.998291,-1.09929},-89.5328}}; 
+		filingPos[] = {{{-7.49707,-2.69092,-1.08459},-179.534}}; 
+		couchPos[] = {{{-10.3174,-1.37451,-1.06348},-179.534}}; 
+		cabinetPos[] = {{{-11.3691,2.3894,0.0229187},0.466827}}; 
+	}; 
+	class Land_Greenhouse_01_F : Default 
+	{ 
+		lootType = "market";
+		pelicanPos[] = {{{1.38184,-1.11597,-1.2021},-218.53}}; 
+		shoeboxPos[] = {{{1.30762,0.99585,-1.10204},-143.558},{{-0.261719,-1.10986,-1.11098},-5.5575}}; 
+		toiletPos[] = {{{-1.37012,-1.40601,-1.11688},-130.056}}; 
+		filingPos[] = {{{-1.53809,1.37207,-1.1145},-0.0551453}}; 
+	}; 
+	class Land_House_1W13_F : Default 
+	{ 
+		lootType = "civ";
+		couchPos[] = {{{2.82178,-2.4292,-1.42491},-269.743}}; 
+		tablePos[] = {{{2.9707,1.64551,-1.4249},0.230408}}; 
+		kitchenSinkPos[] = {{{-1.66357,0.3125,-1.42491},-89.7654}}; 
+		cookerPos[] = {{{-1.61719,1.59033,-1.42483},-88.7654}}; 
+		shelfPos[] = {{{-1.82861,-2.85352,-1.42491},-89.2636}}; 
+		wardrobePos[] = {{{-0.154297,-3.18994,-1.42491},-180.244}}; 
+	}; 
+	class Land_House_1W06_F : Default 
+	{ 
+		lootType = "civ";
+		couchPos[] = {{{3.8833,-0.937988,-0.617851},-0.210716}}; 
+		tablePos[] = {{{0.94873,-1.02539,-0.617859},269.789}}; 
+		kitchenSinkPos[] = {{{-0.55957,-1.58057,-0.617851},180.29}}; 
+		cookerPos[] = {{{-1.84619,-1.5542,-0.617813},179.789}}; 
+		wardrobePos[] = {{{3.22949,1.87061,-0.617844},-0.210715}}; 
+		chairPos[] = {{{-1.83984,1.50195,-0.617859},304.789}}; 
+		filingPos[] = {{{-2.29248,0.0263672,-0.617851},268.789}}; 
+	}; 
+	class Land_PoliceStation_01_F : Default 
+	{ 
+		lootType = "mil";
+		couchPos[] = {{{-3.15186,6.17236,-6.01849},-91.0753},{{-7.55225,-2.94141,-6.01849},-270.075}}; 
+		lockerPos[] = {{{-3.40918,4.36377,-6.01849},-180.576},{{-8.02832,-0.467773,-6.01849},0.924713},{{3.29297,5.20459,-2.42599},-270.076},{{-8.46387,-0.496094,-2.42599},-0.0753479},{{-6.36084,2.92285,-2.42599},-269.575}}; 
+		bedPos[] = {{{2.30127,-1.14917,-6.01851},-270.076}}; 
+		toiletPos[] = {{{-1.31299,-3.15625,-6.01849},-91.0753}}; 
+		shelfPos[] = {{{2.88525,-3.95435,-6.01849},-180.076}}; 
+		pelicanPos[] = {{{-9.15967,-1.78271,-6.01849},-85.0756},{{0.751953,-3.70776,-6.01849},-176.576},{{2.42969,-2.9707,-2.42599},-245.576},{{-8.20068,-1.86377,-2.42599},-346.075},{{1.12793,-1.88696,1.29904},-346.075}}; 
+		toolRackPos[] = {{{-3.11719,5.78394,-2.72601},-89.5753}}; 
+		chairPos[] = {{{3.01465,0.766357,-2.42599},-212.576}}; 
+		filingPos[] = {{{-3.97412,-3.84961,-2.42599},-179.576}}; 
+		tablePos[] = {{{-7.64209,-3.63232,-2.42599},-180.576},{{-9.35938,2.35889,-2.42599},-90.0753}}; 
+		cookerPos[] = {{{-4.23633,6.94287,-2.42599},-0.0753479}}; 
+		kitchenSinkPos[] = {{{-5.62061,6.94238,-2.42599},0.424652}}; 
+		freezerPos[] = {{{-4.18945,4.36499,-2.42599},-180.076}}; 
+		cabinetPos[] = {{{-9.23975,4.09326,-1.32593},-89.0753},{{-5.31592,2.45313,-4.86842},-331.575}}; 
+		palletPos[] = {{{-7.56445,-1.92358,1.3029},-346.075}}; 
+		shoeboxPos[] = {{{-3.7876,2.24512,-6.01849},-139.075}}; 
+	}; 
+	class Land_GarageOffice_01_F : Default 
+	{ 
+		lootType = "church";
+		GroundSpawnChance = 80;
+		couchPos[] = {{{1.75049,-0.380859,-0.183746},0.519867}}; 
+		shelfPos[] = {{{-3.05811,-2.5188,-0.171722},-89.9799}}; 
+		cookerPos[] = {{{0.220703,4.89185,-0.174271},-269.98}}; 
+		kitchenSinkPos[] = {{{0.211426,3.63257,-0.174583},-269.48}}; 
+		tablePos[] = {{{0.149414,-0.473145,-0.18483},-89.9798}}; 
+		pelicanPos[] = {{{-2.74268,-0.020752,-0.221611},-87.98}}; 
+		cabinetPos[] = {{{0.175293,-0.500732,-2.15131},-270.48}}; 
+		freezerPos[] = {{{-2.58643,7.76587,-3.30138},-0.480133}}; 
+		lockerPos[] = {{{0.239258,2.6311,-3.30138},-269.98},{{0.235352,4.91821,-3.30138},-269.98}}; 
+		toiletPos[] = {{{2.49316,5.94385,-3.30138},-180.481}}; 
+		toolRackPos[] = {{{-3.31543,-1.90015,-3.5514},-89.4799}}; 
+	}; 
+	class Land_Highway_Pillar_01_garage_F : Default 
+	{ 
+		lootType = "market";
+		palletPos[] = {{{7.42529,-0.921875,-1.58904},-88.6555},{{-2.94067,-0.0556641,-1.58801},-88.6555}}; 
+		toolRackPos[] = {{{1.18872,-4.0127,-1.88803},179.845}}; 
+		lockerPos[] = {{{-10.0974,-3.58789,-1.58801},179.344}}; 
+		tablePos[] = {{{-10.2996,3.47852,-1.58801},-0.655655}}; 
+		couchPos[] = {{{1.57764,2.79834,-1.58801},-88.6555}}; 
+		shelfPos[] = {{{9.07886,3.73779,-1.62517},0.344383}}; 
+		filingPos[] = {{{8.94751,-3.68457,-1.59908},179.345}}; 
+		chairPos[] = {{{11.4331,-3.27734,-1.6667},149.837}}; 
+		cabinetPos[] = {{{-11.8745,-2.44385,-0.187927},-0.155655}}; 
+	}; 
+	class Land_CementWorks_01_grey_F : Default 
+	{ 
+		lootType = "industrial";
+		palletPos[] = {{{6.53955,-4.06738,-4.73653},-90.766},{{6.27124,-17.311,-4.73653},-90.766}}; 
+		couchPos[] = {{{14.5706,-26.3574,-3.71281},89.2332},{{-7.74463,-19.7749,-4.534},91.2346}}; 
+		filingPos[] = {{{16.564,-12.9858,-3.71281},90.2333}}; 
+		shelfPos[] = {{{16.6221,-3.22168,-3.71281},89.7346}}; 
+		toolRackPos[] = {{{11.0874,11.9121,-3.86282},0.233772}}; 
+		kitchenSinkPos[] = {{{-3.12231,9.40479,-3.71281},-90.266}}; 
+		lockerPos[] = {{{-3.03418,-0.790527,-3.71281},-90.266}}; 
+		tablePos[] = {{{-3.05444,-23.9165,-3.71281},268.734}}; 
+		pelicanPos[] = {{{-10.1396,-11.4214,-4.534},0.733795},{{-4.71704,-10.7114,-3.36369},4.23367}}; 
+		fridgePos[] = {{{-11.3994,-19.9097,-4.534},268.734}}; 
+		wardrobePos[] = {{{-6.7583,-15.8589,-4.534},0.233711}}; 
+		cabinetPos[] = {{{-3.40845,-12.7163,-2.36272},-0.766167},{{6.46265,20.5615,-3.28393},89.7344}}; 
+		chairPos[] = {{{0.242188,12.8872,-4.534},224.234}}; 
+	}; 
+	class Land_PowerStation_01_F : Default 
+	{ 
+		lootType = "construction";
+		lockerPos[] = {{{-0.839355,-4.53955,-1.7851},179.988}}; 
+		tablePos[] = {{{1.64258,8.07861,-1.72589},269.988}}; 
+		shelfPos[] = {{{1.42285,5.83203,-1.78592},270.988}}; 
+		pelicanPos[] = {{{3.44092,8.71436,-1.72589},7.48788}}; 
+		cabinetPos[] = {{{1.479,1.04297,-0.382019},90.9874}}; 
+		toolRackPos[] = {{{-2.31665,-0.399902,-1.98593},269.988}}; 
+		palletPos[] = {{{-0.500244,-0.503906,-1.78592},-61.512}}; 
+		shoeboxPos[] = {{{3.85718,5.16602,-1.72589},254.988}}; 
+	}; 
+	class Land_Bunker_02_left_F : Default 
+	{ 
+		lootType = "mil";
+		pelicanPos[] = {{{1.44727,1.85986,-1.0587},62.3032}}; 
+		shoeboxPos[] = {{{-0.818359,1.69824,-1.01776},128.246}}; 
+		cabinetPos[] = {{{0.539063,-2.31299,0.184326},-89.7069}}; 
+		filingPos[] = {{{0.489258,2.66113,-1.01313},0.745316}}; 
+	}; 
+	class Land_House_2B01_F : Default 
+	{ 
+		lootType = "civ";
+		bedPos[] = {{{-4.08936,1.82129,-1.02167},-179.566}}; 
+		wardrobePos[] = {{{-1.89941,0.77832,-1.02174},-179.566}}; 
+		couchPos[] = {{{-1.09766,3.85449,-1.02175},-90.5664},{{-4.21021,2.81738,-4.18092},-179.566}}; 
+		tablePos[] = {{{2.10107,3.39844,-1.02175},90.4341}}; 
+		chairPos[] = {{{2.24121,-4.33496,-4.18091},-228.066},{{2.21338,4.24219,-4.18091},44.9341}}; 
+		kitchenSinkPos[] = {{{-1.57202,4.62207,-4.18092},-0.0657196}}; 
+		cookerPos[] = {{{-0.276123,4.60547,-4.18089},-0.0657654}}; 
+		lockerPos[] = {{{-0.854248,0.728516,-4.18091},-181.066}}; 
+	}; 
+	class Land_House_1W04_F : Default 
+	{ 
+		lootType = "civ";
+		couchPos[] = {{{-3.68579,-3.39844,-2.54919},180.234}}; 
+		tablePos[] = {{{0.655273,-2.75391,-2.54329},89.7325}}; 
+		lockerPos[] = {{{-2.10522,-5.10156,-2.53055},180.234}}; 
+		kitchenSinkPos[] = {{{-2.29834,-0.980469,-2.54666},0.233856}}; 
+		wardrobePos[] = {{{-1.41406,3.66699,-2.52145},269.72}}; 
+		chairPos[] = {{{0.458252,4.24219,-2.52029},37.2206}}; 
+	}; 
+	class Land_Workshop_03_grey_F : Default 
+	{ 
+		lootType = "workshop";
+		toolRackPos[] = {{{0.0566406,-6.19873,-1.24748},-179.698}}; 
+		tablePos[] = {{{-1.81299,-4.50195,-1.04747},-90.1982}}; 
+		shelfPos[] = {{{2.11426,-4.84229,-1.04745},90.8183}}; 
+		palletPos[] = {{{0.359375,-1.59277,-1.04746},161.822}}; 
+		shoeboxPos[] = {{{1.74219,5.53906,-1.04746},-129.177}}; 
+		lockerPos[] = {{{-1.90234,2.62451,-1.04746},-89.6777}}; 
+	};	
+	class Land_Workshop_03_F : Land_Workshop_03_grey_F {};
+	class Land_HouseRuin_Big_02_F : Default 
+	{ 
+		lootType = "civ";
+		shelfPos[] = {{{6.74023,0.929199,-4.42252},89.3896}}; 
+		filingPos[] = {{{6.68115,-0.158691,-4.42761},89.3881},{{-4.74707,5.76611,-4.42098},-91.6118}}; 
+		palletPos[] = {{{-1.38184,3.41406,-0.977882},259.388}}; 
+		wardrobePos[] = {{{1.5293,-3.14648,-0.975777},-90.6115}}; 
+		couchPos[] = {{{-0.475586,-2.24561,-0.98893},-0.11174}}; 
+		bedPos[] = {{{-4.08887,5.01074,-0.975815},0.888222}}; 
+		lockerPos[] = {{{-0.105469,-0.0297852,-0.972176},179.889}}; 
+		shoeboxPos[] = {{{4.33008,-4.39453,-0.977615},-58.6115}}; 
+		kitchenSinkPos[] = {{{1.3623,2.82178,-4.44192},89.8891}}; 
+		cookerPos[] = {{{1.34424,4.17139,-4.44385},90.388}}; 
+		chairPos[] = {{{-4.46191,-2.14355,-4.42997},-87.1115}}; 
+		tablePos[] = {{{1.85254,-4.85205,-4.42535},179.389}}; 
+	}; 
+	class Land_GarageRow_01_small_F : Default 
+	{ 
+		lootType = "workshop";
+		toolRackPos[] = {{{4.92188,-5.86914,-1.74255},180.534}}; 
+		lockerPos[] = {{{2.9043,-4.10034,-1.54256},-90.4661},{{-2.01855,-1.76538,-1.54256},-89.9661}}; 
+		tablePos[] = {{{6.83984,-0.0495605,-1.54256},90.5342},{{1.87207,-1.37012,-1.54532},90.0342}}; 
+		palletPos[] = {{{4.85205,-2.34839,-1.54256},-138.466},{{-0.117188,-2.44287,-1.50449},-138.466},{{-4.97803,-2.87158,-1.49532},-138.466}}; 
+		filingPos[] = {{{2.83203,0.46167,-1.54256},-88.9661},{{-6.93848,-5.42432,-1.54256},-138.466}}; 
+		chairPos[] = {{{-1.75,-5.23706,-1.54256},-138.466}}; 
+		cabinetPos[] = {{{-2.45166,2.27979,-0.343201},-88.9661}}; 
+		freezerPos[] = {{{-3.35107,-5.45679,-1.54256},180.034}}; 
+		kitchenSinkPos[] = {{{-2.90088,-0.171631,-1.54256},90.0344}}; 
+		wardrobePos[] = {{{-6.92773,-0.768066,-1.54256},-89.9661}}; 
+	}; 
+	class Land_House_2W01_F : Default 
+	{ 
+		lootType = "civ";
+		tablePos[] = {{{-1.06348,2.77466,0.105896},-0.076416},{{6.82813,-0.0712891,-3.14696},-270.577}}; 
+		filingPos[] = {{{-4.18555,1.41528,0.0607452},-89.5763}}; 
+		lockerPos[] = {{{0.275391,-2.5105,0.0251923},-270.075},{{3.59082,3.18433,-3.11324},-270.081}}; 
+		chairPos[] = {{{5.06348,2.13989,-3.07117},-47.0773}}; 
+		bedPos[] = {{{-6.26855,-2.04492,-3.18494},-179.577}}; 
+		wardrobePos[] = {{{-5.93066,1.30469,-3.06514},-0.0764465}}; 
+		kitchenSinkPos[] = {{{0.291016,3.85889,-3.06082},-0.0761719}}; 
+		cookerPos[] = {{{1.54688,3.82617,-3.0894},-0.0761719}}; 
+	};	
+	class Land_Barn_03_small_F : Default 
+	{ 
+		lootType = "construction";
+		palletPos[] = {{{-2.09692,3.25928,-2.16884},139.228},{{-2.43408,-1.32227,-2.16716},-220.715}}; 
+		toolRackPos[] = {{{2.32593,7.7915,-2.31886},0.756821}}; 
+		couchPos[] = {{{-6.76855,5.20361,-2.16875},-179.772}}; 
+		shelfPos[] = {{{-7.729,-4.66602,-2.16466},-90.7158}}; 
+		lockerPos[] = {{{3.61865,-4.36182,-2.1647},89.7846}}; 
+		tablePos[] = {{{3.55518,-0.0561523,-2.16646},90.2799}}; 
+		filingPos[] = {{{0.0568848,-6.67822,-2.16609},-180.197}}; 
+		cabinetPos[] = {{{-4.8728,7.36865,-0.816971},89.2283}}; 
+		freezerPos[] = {{{2.11328,-6.52881,-2.1655},-179.697}}; 
+		chairPos[] = {{{-7.10986,2.56836,-2.1666},-64.716}}; 
+		pelicanPos[] = {{{-6.79028,-0.341309,-2.16678},-90.2158}}; 
+		shoeboxPos[] = {{{3.42236,6.23877,-2.16731},-118.744}}; 
+	}; 
+	class Land_Barracks_06_F : Default 
+	{ 
+		lootType = "mil";
+		bedPos[] = {{{-9.2019,-5.37305,-0.915131},90.029},{{-9.17188,-8.44336,-0.915131},90.529},{{-6.76636,2.75195,-4.98214},0.191055}}; 
+		wardrobePos[] = {{{-13.2871,-4.95898,-0.911583},-0.807312}}; 
+		couchPos[] = {{{-13.0933,-8.05762,-0.911575},90.1924},{{-9.14307,-5.74023,-4.9816},-90.3074}}; 
+		tablePos[] = {{{-14.771,-6.38867,-0.911575},-89.8695},{{-9.14282,-8.80859,-4.98159},-179.971},{{-14.7239,-2.69336,-4.9816},-89.8696}}; 
+		pelicanPos[] = {{{-8.34106,-6.92676,-0.911575},90.0289},{{-0.622803,-2.53613,-0.911583},90.6957},{{-8.23413,-7.15625,-4.9816},90.529},{{-7.2793,-1.5752,-4.9816},30.6963}}; 
+		lockerPos[] = {{{-13.6138,-3.9707,-0.911575},-180.369},{{-1.70581,-3.97266,-0.911575},-179.804},{{-14.8486,-8.47949,-4.9816},-89.9526},{{-1.54492,-3.97949,-4.98159},-179.304}}; 
+		shelfPos[] = {{{-1.76855,-1.01367,-0.911591},-0.303497},{{-3.92944,3.21094,-4.9816},90.1913}}; 
+		shoeboxPos[] = {{{-14.7749,-1.26758,-0.911583},117.69}}; 
+		kitchenSinkPos[] = {{{-14.324,-4.99023,-4.9816},0.131134}}; 
+		cabinetPos[] = {{{-0.73584,3.77734,-3.63152},90.1905}}; 
+		toiletPos[] = {{{-6.91187,-0.320313,-4.9816},-180.81}}; 
+	}; 
+	class Land_GuardHouse_03_F : Default 
+	{ 
+		lootType = "mil";
+		chairPos[] = {{{-2.26367,2.08008,-1.00266},91.1298},{{0.675781,2.01318,-1.00266},159.129}}; 
+		pelicanPos[] = {{{-2.12305,-1.82617,-1.05267},89.6282}}; 
+		filingPos[] = {{{-0.966309,2.94141,-1.00266},0.129105}}; 
+		shelfPos[] = {{{2.97021,2.56445,-1.00266},89.6286}}; 
+		tablePos[] = {{{-0.886719,-2.14648,-1.00266},-90.8717}}; 
+		cabinetPos[] = {{{-1.2749,0.503906,0.197411},0.62912}}; 
+		lockerPos[] = {{{2.81787,-0.0595703,-1.00266},90.1286}}; 
+		kitchenSinkPos[] = {{{1.37207,-2.79297,-1.00266},-179.871}}; 
+	}; 
+	class Land_Rail_Station_Small_F : Default 
+	{ 
+		lootType = "market";
+		cabinetPos[] = {{{0.333984,2.12402,0.0295739},-89.8441}}; 
+		palletPos[] = {{{3.33887,2.97656,-1.28266},-272.844}}; 
+		chairPos[] = {{{-4.91016,2.77051,-1.28266},-145.345}}; 
+		filingPos[] = {{{1.62109,2.32275,-1.28266},-180.345}}; 
+		shelfPos[] = {{{-3.1543,2.2832,-1.28266},-179.845}}; 
+		shoeboxPos[] = {{{-1.76172,2.46582,-1.28266},22.6561}}; 
+	}; 
+	class Land_House_2W03_F : Default 
+	{ 
+		lootType = "civ";
+		couchPos[] = {{{-7.39209,3.51855,-0.777275},-90.3317}}; 
+		wardrobePos[] = {{{-9.03809,0.668945,-0.777275},-90.327}}; 
+		tablePos[] = {{{-7.09033,-0.612305,-0.777275},-180.33},{{-3.05762,6.38477,-0.777275},-0.331787}}; 
+		chairPos[] = {{{-2.03149,-0.393555,-0.777283},128.668},{{-4.70972,4.16602,-0.777275},-148.832}}; 
+		lockerPos[] = {{{-1.72534,2.20996,-0.777275},89.6683}}; 
+		shelfPos[] = {{{-3.37695,3.00098,-5.55786},-90.3314}}; 
+		cabinetPos[] = {{{-1.11426,3.20996,-4.28495},-179.832}}; 
+		shoeboxPos[] = {{{-4.31836,-0.355469,-0.777283},-198.332}}; 
+	}; 
+	class Land_House_2B04_F : Default 
+	{ 
+		lootType = "civ";
+		toolRackPos[] = {{{-7.58398,-1.81934,-6.42257},-179.951}}; 
+		kitchenSinkPos[] = {{{7.85449,3.12354,-5.73982},-269.951}}; 
+		cookerPos[] = {{{7.84473,1.86792,-5.74133},-270.451}}; 
+		couchPos[] = {{{-4.1709,6.4082,-5.73988},-89.9508}}; 
+		bedPos[] = {{{-4.64941,3.09619,-5.73837},-89.4508}}; 
+		wardrobePos[] = {{{-0.875,3.03857,-5.73898},-269.951}}; 
+		chairPos[] = {{{-1.27344,6.85327,-5.7393},42.5491}}; 
+		filingPos[] = {{{0.189453,7.27612,-5.73981},0.0490723}}; 
+		shelfPos[] = {{{3.0293,7.37451,-5.73965},0.0490723}}; 
+		lockerPos[] = {{{3.0752,2.6687,-5.7383},-179.951}}; 
+		tablePos[] = {{{0.99707,2.77051,-5.73849},-179.951},{{7.83789,0.147217,-5.73951},-270.951}}; 
+		fridgePos[] = {{{7.43555,-2.16162,-5.7401},-179.951}}; 
+		shoeboxPos[] = {{{7.43555,6.33887,-5.73995},-148.95}}; 
+	}; 
+	class Land_House_2B02_F : Default 
+	{ 
+		lootType = "civ";
+		tablePos[] = {{{-2.50684,1.43042,-5.53069},-270.129},{{8.7373,2.7605,-5.53069},-270.629},{{-1.06445,0.996826,-5.53069},-90.6284}}; 
+		couchPos[] = {{{-7.95215,1.70117,-5.5307},-179.628}}; 
+		wardrobePos[] = {{{-5.82324,-2.01099,-5.5307},-180.129},{{2.37549,6.13647,-5.53069},-89.6285},{{2.35889,1.37598,-5.53069},-90.1283}}; 
+		filingPos[] = {{{-8.74463,6.9043,-5.53069},-44.6286}}; 
+		chairPos[] = {{{-2.82568,6.55176,-5.53069},-316.129}}; 
+		bedPos[] = {{{7.81738,-1.52417,-5.53069},-269.629},{{7.81348,6.4729,-5.53229},-270.129}}; 
+		pelicanPos[] = {{{8.64063,0.549316,-5.53069},-270.129}}; 
+		shoeboxPos[] = {{{8.45117,4.78198,-5.53069},-104.628}}; 
+		fridgePos[] = {{{-6.1543,6.9729,-5.53069},-0.128632}}; 
+	}; 
+	class Land_ControlTower_01_F : Default 
+	{ 
+		lootType = "mil";
+		shelfPos[] = {{{2.6731,0.078125,-7.51663},-0.2612},{{-1.31934,1.95215,4.83337},-90.11}}; 
+		lockerPos[] = {{{2.03345,-3.02637,-7.50383},-179.761},{{2.40063,-0.172852,-4.41663},-0.260986}}; 
+		pelicanPos[] = {{{-0.978027,-2.66602,-7.56664},-147.889},{{2.57715,-2.46777,-1.36663},117.239},{{-2.66968,-4.14844,4.83339},-139.389},{{4.30811,4.20996,4.83339},45.2928}}; 
+		chairPos[] = {{{0.895508,-2.10742,-4.41663},-1.7612}}; 
+		filingPos[] = {{{3.07935,-0.104492,-1.31663},39.2737}}; 
+		cabinetPos[] = {{{0.61792,-0.139648,-0.166565},89.7387}}; 
+		tablePos[] = {{{0.177979,-2.9209,-1.32538},-179.889},{{-1.46436,-2.11621,1.78336},-90.261}}; 
+		kitchenSinkPos[] = {{{-1.07788,-2.14258,4.83339},-90.2618}}; 
+		wardrobePos[] = {{{2.29834,-0.0820313,1.78336},0.238892}}; 
+		couchPos[] = {{{1.22559,-2.25684,1.78084},90.2387}}; 
+	};	
+	class Land_MedicalTent_01_MTP_closed_F : Default {
+		lootType = "medical";
+	    cabinetPos[] = {
+	        { {3.22852,-4.89453,-0.273125}, 90.4999 }
+	    };
+	    palletPos[] = {
+	        { {-1.8418,6.03711,-1.37312}, -180 }
+	    };
+	    pelicanPos[] = {
+	        { {3.63867,5.79297,-1.37312}, 151 }
+	    };
+        filingPos[] = {
+			{ {-3.22852,5.39063,-1.37312},-177.5}
+		};
+	    shelfPos[] = {
+	        { {1.72656,5.28125,-1.37312}, 177.5 }
+	    };
+	    tablePos[] = {
+	        { {1.95117,-5.4375,-1.37312}, 0.997818 }
+	    };
+	    shoeboxPos[] = {
+	        { {-3.79688,-5.55273,-1.37312}, 26.4985 }
+	    };
+	    lockerPos[] = {
+	        { {-1.98242,-5.46484,-1.37312}, -0.50238 }
+	    };
+	};
+	class Land_MedicalTent_01_white_generic_closed_F : Land_MedicalTent_01_MTP_closed_F {};
+	class Land_Destroyer_01_interior_03_F : Default {
+		lootType = "mil";
+		pelicanPos[] = {
+			{{4.13281,5.0293,7.92066},221.501},
+			{{-3.83008,10.5586,12.5327},140.998}
+		};
+		shelfPos[] = {
+			{{5.23242,19.8281,7.92066},270},
+			{{0.853516,3.68945,7.92063},0},
+			{{-3.94336,18.082,7.92066},0}
+		};
+		toolRackPos[] = {
+			{{13.4238,4.00586,7.92066},180.998},
+			{{-0.09375,16.5313,12.5327},0},
+			{{-1.74805,-20.9961,10.9124},270.5}
+		};
+		lockerPos[] = {
+			{{2.18555,19.8027,7.92065},89.9993}
+		};
+		cabinetPos[] = {
+			{{2.43555,12.3809,9.17067},89.4992},
+			{{-1.46094,-6.10352,9.22061},269},
+			{{-3.78906,18.1934,13.8826},90.4993}
+		};
+		filingPos[] = {
+			{{6.38477,-20.7461,11.0124},90.4993}
+		};
+		palletPos[] = {
+			{{-5.04102,5.96094,7.92066},311.5}
+		};
+	};
+	class Land_Destroyer_01_interior_04_F : default {
+		lootType = "mil";
+		palletPos[] = {
+			{{-3.80469,-18.1543,9.45211},19.5}
+		};
+		lockerPos[] = {
+			{{-9.33008,-3.1875,9.45211},269}
+		};
+		cabinetPos[] = {
+			{{-12.3613,9,10.7877},181.502}
+		};
+		couchPos[] = {
+			{{9.12109,-7.80273,9.45211},0}
+		};
+		tablePos[] = {
+			{{-9.54688,2.30664,9.45211},271}
+		};
+		pelicanPos[] = {
+			{{0.792969,-18.1191,9.45211},134.999}
+		};
+	};
+	class Land_Destroyer_01_hull_05_F : default {
+		lootType = "mil";
+		pelicanPos[] = {
+			{{10.6133,-7.68359,9.41183},135.499}
+		};
+		shelfPos[] = {
+			{{-14.0059,-12.582,9.41053},270}
+		};
+		shoeboxPos[] = {
+			{{8.24609,7.9043,9.41428},0}
+		};
+		palletPos[] = {
+			{{-8.55469,7.73438,9.41408},313.5}
+		};
+	};
+	class Land_Destroyer_01_hull_04_F : default {
+		lootType = "mil";
+		palletPos[] = {
+			{{12.1348,16.5391,9.41681},298},
+			{{-10.293,-18.6426,15.8783},0}
+		};
+		cabinetPos[] = {
+			{{-11.7148,14.7813,11.1646},273}
+		};
+		shoeboxPos[] = {
+			{{-13.3887,19.9199,9.42394},119.999}
+		};
+		toolRackPos[] = {
+			{{10.5352,-21.9043,15.8851},180.498}
+		};
+		pelicanPos[] = {
+			{{-12.2969,7.88672,15.8848},0}
+		};
+	};
+	class Land_Destroyer_01_hull_02_F : default {
+		lootType = "mil";
+		pelicanPos[] = {
+			{{-8.58008,-0.689453,11.098},48.9998}
+		};
+		palletPos[] = {
+			{{5.62695,-7.89258,11.1432},0}
+		};
+		shoeboxPos[] = {
+			{{-5.11133,-7.58203,11.1409},0}
+		};
+	};
+	class Land_Destroyer_01_hull_01_F : default {
+		lootType = "mil";
+		pelicanPos[] = {
+			{{0.193359,6.27539,12.6386},175.998}
+		};
+		palletPos[] = {
+			{{0.373047,-3.39648,12.9917},0}
+		};
+	};
+	class Land_Destroyer_01_interior_02_F : default {
+		lootType = "mil";
+		toolRackPos[] = {
+			{{3.2207,20.8301,11.0089},0}
+		};
+		filingPos[] = {
+			{{-1.3125,15.375,11.0056},267.5}
+		};
+		cabinetPos[] = {
+			{{-4.3457,6.91211,12.3288},86.9993}
+		};
+		freezerPos[] = {
+			{{6.98242,5.68945,11.0288},42.9998}
+		};
+		pelicanPos[] = {
+			{{-0.810547,20.3691,11.0063},0},
+			{{-0.630859,1.68164,19.842},180.502}
+		};
+		lockerPos[] = {
+			{{2.90234,14.2813,17.4492},178.002}
+		};
+		couchPos[] = {
+			{{-0.902344,9.8418,19.842},270}
+		};
+		shelfPos[] = {
+			{{-5.49414,10.8086,19.842},0}
+		};
+		Bunk_EPOCH[] = {
+			{{2.26172,10.2285,19.842},268.5}
+		};
+		cookerPos[] = {
+			{{-3.17578,10.4668,19.842},0}
+		};
+	};
+	class Land_Carrier_01_island_02_F : default {
+		lootType = "mil";
+		cabinetPos[] = {
+			{{0.611328,3.0332,0.0348701},271},
+			{{-3.81445,-0.130859,-0.215851},0}
+		};
+		pelicanPos[] = {
+			{{-2.41406,1.12305,-1.41662},304.5}
+		};
+		filingPos[] = {
+			{{5.75,7.49609,-1.3651},90.9992}
+		};
+		palletPos[] = {
+			{{-1.94531,9.57031,-1.41511},340.5}
+		};
+		shelfPos[] = {
+			{{2.99414,-3.69727,1.95266},0}
+		};
+		lockerPos[] = {
+			{{-3.35547,8.1543,-1.41511},269.5}
+		};
+	};
+	class Land_Carrier_01_island_01_F : default {
+		lootType = "mil";
+		palletPos[] = {
+			{{-5.11914,-11.9375,10.167},306},
+			{{7.2832,2.30078,7.3132},360}
+		};
+		pelicanPos[] = {
+			{{-6,-3.02344,10.1717},272},
+		};
+		shoeboxPos[] = {
+			{{6.56641,-2.1875,7.31347},88.9993},
+			{{-6.40039,-4.75195,10.1776},33.9998}
+		};
+	};
+	class Land_Carrier_01_hull_06_2_F : default {
+		lootType = "mil";
+		pelicanPos[] = {
+			{{-19.5,-13.6426,16.9168},233.999}
+		};
+		shoeboxPos[] = {
+			{{-20.0527,-2.68164,16.9168},128.001}
+		};
+		palletPos[] = {
+			{{-5.65625,-14.5137,18.5299},317.5},
+			{{21.9355,19.0313,18.5299},0}
+		};
+		toolRackPos[] = {
+			{{-17.7988,-11.9844,16.4168},89.9994}
+		};
+		cabinetPos[] = {
+			{{-19.4395,-1.5957,17.7168},36.9997}
+		};
+	};
+	class Land_Carrier_01_hull_09_2_F : default {
+		lootType = "mil";
+		palletPos[] = {
+			{{-12.6211,-18.5371,18.5435},0},
+			{{-14.873,13.2324,14.9902},0}
+		};
+		shoeboxPos[] = {
+			{{-16.6367,5.70508,18.5435},140.999},
+			{{-7.92578,7.97656,14.9903},0}
+		};
+		pelicanPos[] = {
+			{{-16.1504,7.82617,14.9402},201.002}
+		};
+		cabinetPos[] = {
+			{{-5.81445,9.43555,16.1402},178.498}
+		};
+	};
+	class Land_Carrier_01_hull_09_1_F : default {
+		lootType = "mil";
+		toolRackPos[] = {
+			{{-6.11133,-4.94336,14.4722},269.003}
+		};
+		pelicanPos[] = {
+			{{10.1172,-6.33398,14.7225},145.999}
+		};
+		palletPos[] = {
+			{{15.416,-19.0977,18.5144},0}
+		};
+		toiletPos[] = {
+			{{-5.42773,-6.78516,14.7162},218.001}
+		};
+		shoeboxPos[] = {
+			{{-5.67969,15.0645,14.7232},0},
+			{{5.49414,9.64453,14.7231},0}
+		};
+	};
+	class Land_Carrier_01_hull_05_1_F : default {
+		lootType = "mil";
+		toolRackPos[] = {
+			{{16.709,15.1426,14.5248},271}
+		};
+		pelicanPos[] = {
+			{{19.7637,14.9316,14.4186},90.5004}
+		};
+		lockerPos[] = {
+			{{17.8789,18.4805,11.5793},180.002}
+		};
+		shoeboxPos[] = {
+			{{22.8203,17.6484,14.4248},268.5}
+		};
+		cabinetPos[] = {
+			{{16.7988,10.0332,18.2292},0}
+		};
+		palletPos[] = {
+			{{19.1387,-16.4199,18.5495},0}
+		};
+	};
+	class Land_Carrier_01_hull_03_2_F : default {
+		lootType = "mil";
+		shelfPos[] = {
+			{{-6.72461,-4.2168,14.4014},85.4992}
+		};
+		pelicanPos[] = {
+			{{-8.25195,-12.3477,13.1341},0}
+		};
+		palletPos[] = {
+			{{-14.0117,3.96875,14.4014},0}
+		};
+		shoeboxPos[] = {
+			{{-14.2852,-4.03516,14.4014},0},
+			{{-12.832,18.7402,18.5309},0}
+		};
+		cabinetPos[] = {
+			{{-8.32617,6.69336,18.2137},144.501}
+		};
+		tablePos[] = {
+			{{-6.88086,-21.4336,16.9161},263.499}
+		};
+	};
+	class Land_Carrier_01_hull_03_1_F : default {
+		lootType = "mil";
+		shoeboxPos[] = {
+			{{8.94727,7.35156,16.9285},0},
+			{{4.54688,-19.4023,11.687},0}
+		};
+		tablePos[] = {
+			{{7.26953,-19.5352,16.9288},94.9993}
+		};
+		pelicanPos[] = {
+			{{5.69531,-8.48438,11.687},319.5}
+		};
+		palletPos[] = {
+			{{9.51953,-10.3203,11.687},0}
+		};
+		toolRackPos[] = {
+			{{5.93164,-5.24219,14.3667},274.5}
+		};
+	};	
 };
 
 /*[[[end]]]*/

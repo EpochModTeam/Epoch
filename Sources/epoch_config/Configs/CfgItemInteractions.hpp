@@ -501,7 +501,7 @@ class CfgItemInteractions
     };
     class KitSolarGen : Item_Build_base
     {
-        buildClass = "SolarGen_SIM_EPOCH";
+        buildClass = "SolarGen_EPOCH";
     };
     class KitPlotPole : Item_Build_base
     {

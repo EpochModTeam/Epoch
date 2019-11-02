@@ -308,6 +308,14 @@ class CfgObjectInteractions
     class EPOCH_RyanZombie_3_S : EPOCH_RyanZombie_1 {};
     class EPOCH_RyanZombie_4_S : EPOCH_RyanZombie_1 {};
     class EPOCH_RyanZombie_5_S : EPOCH_RyanZombie_1 {};
+    class IG_Box_s : Default
+    {
+        interactMode = 4;
+    };
+    class IG_Box_l : Default
+    {
+        interactMode = 4;
+    };
 };
 
 /*[[[end]]]*/

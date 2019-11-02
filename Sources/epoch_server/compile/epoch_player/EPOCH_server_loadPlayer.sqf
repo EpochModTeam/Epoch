@@ -138,6 +138,12 @@ if (!isNull _player) then {
 			// normal respawn location
 			_location = getMarkerPos "respawn_west";
 			_location set[2, 0];
+			if (_location isEqualTo [0,0,0]) then {
+				_location set [2, 10];
+				if (surfaceiswater _location) then {
+					_location = asltoatl _location;
+				};
+			};
 			if (_newLocation isEqualType [] && {(count _newLocation) == 3}) then {
 				_CheckLocation = _newLocation;
 				if (surfaceiswater _newLocation) then {
@@ -177,8 +183,16 @@ if (!isNull _player) then {
 		if (isNull _group) then {
 			_group = createGroup [west, true];
 		};
-
-		_newPlyr = _group createUnit[_class, getMarkerPos "respawn_west", [], 0, "CAN_COLLIDE"];
+		_spawnpos = getMarkerPos "respawn_west";
+		_spawnpos set[2, 0];
+		if (_spawnpos isEqualTo [0,0,0]) then {
+			_spawnpos set [2, 10];
+			if (surfaceiswater _spawnpos) then {
+				_spawnpos = asltoatl _spawnpos;
+			};
+		};
+		_newPlyr = _group createUnit[_class, _spawnpos, [], 0, "CAN_COLLIDE"];
+		_newPlyr setposatl _spawnpos;
 		_newPlyr hideobjectglobal true;
 		if !(isNull _newPlyr) then {
 
@@ -243,6 +257,28 @@ if (!isNull _player) then {
 				// load community stats
 				_communityStatsArray = ["CommunityStats", _playerUID] call EPOCH_fnc_server_hiveGETRANGE;
 				_communityStats = (_communityStatsArray param [1,[]]) param [0,[]];
+				if (_communityStats isEqualTo []) then {
+					_communityStats = EPOCH_defaultStatVars;
+				};
+				if (count _communityStats < EPOCH_communityStatsCount) then {
+					{
+						private _check = _communityStats select _foreachindex;
+						if (isnil '_check') then {
+							_communityStats pushback _x;
+						};
+					} foreach EPOCH_defaultStatVars;
+				};
+				_Index = EPOCH_communityStats find "ConnectCount";
+				if (_Index > -1) then {
+					_currentStat = _communityStats select _Index;
+					_communityStats set[_Index, _currentStat + 1];
+				};
+				_Index = EPOCH_communityStats find "PlayTime";
+				if (_Index > -1) then {
+					_currentStat = _communityStats select _Index;
+					_newPlyr setVariable["EPOCH_playerPlayTime", _currentStat, true];
+				};
+				
 				_newPlyr setVariable["COMMUNITY_STATS", _communityStats];
 
 				// Flag new body as ready for use.

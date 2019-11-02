@@ -68,7 +68,9 @@ if (isText _staticClassConfig) then {
 			if (isDamageAllowed _storageObj) then {		// Only needed, if damage is allowed
 				_storageObj call EPOCH_server_storageInit;
 			};
+			[_player,"BuildingsSet",1,true] call EPOCH_server_updatePlayerStats;
 			diag_log format["Epoch: STORAGE: %1 created storage %2 at %3 with slot %4", _playerUID, _staticClass, _vehiclePos, _slot];
+			[[_storageObj,[vectordir _storageObj, vectorup _storageObj]]] remoteexec ['Epoch_fnc_SetFinalDir',_player];
 		};
 
 	} else {
@@ -111,6 +113,8 @@ if (isText _staticClassConfig) then {
 					publicvariable "EPOCH_Plotpoles";
 				};				
 				_newVehicle call EPOCH_saveBuilding;
+				[_player,"BuildingsSet",1,true] call EPOCH_server_updatePlayerStats;
+				[[_newVehicle,[vectordir _newVehicle, vectorup _newVehicle]]] remoteexec ['Epoch_fnc_SetFinalDir',_player];
 			};
 
 		} else {

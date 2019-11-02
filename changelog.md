@@ -1,6 +1,118 @@
 # Change Log
 All changes for [Arma 3](https://arma3.com/) [Epoch Mod](https://epochmod.com) are listed in this changelog.
 
+## [1.3.2.0] - 2019-11-02
+### Added
+- Non Lethal Weapons
+   - Make opponents unconscious with special weapons
+   - Unconscious players can be woken up
+      - by a MultiGun with Heal Player attachment
+      - after a random timer (60-180 seconds)
+- Paint Garages (with optional map markers) around the map for painting Vehicles
+   - Park your Vehicle in / on the Garage and hold Space (DynaMenu) on the Terminal
+   - Costs: 500 Krypto (Configurable by Admins)
+   - https://plays.tv/video/5d5d721191c8f06d14
+- Player / Server Statistics (within the E-Pad)
+   - Times connected / Playtime (hours) / Max Alivetime (hours) / Distance Walked (Km)
+   - Objects Looted / Trades at Trader / Placed Buildings / Crafted Items
+   - Karma / Player Revived / Tradermissions
+   - Player Kills / AI Kills / Antagonist Kills / Zombie Kills
+   - Deaths by Player / Deaths by AI / Suicides
+   - K/D PvP / K/D PvE
+   - https://plays.tv/video/5d5d716b0b171855fe
+- Hint in Inventory for Heal / Revive / Repair to be used as MultiGun Attachment 
+- Item description to Trader items
+   - https://cdn.discordapp.com/attachments/474595539107971072/622554669830373399/unknown.png
+- UAV Backpacks - Assemble and then use via DynaMenu (SpaceMenu)
+- Animated Heli Crash (with scattered loot)
+   - https://plays.tv/video/5d8a717407926fbfc2
+- Some Chinese translations (thx to @CHL198011)
+
+### Fixed
+- Players could instant get killed on contact with new placed BaseBuilding Parts
+- Players Glasses (Goggles) were not correctly added on login / revive
+- Some Building Parts where falling down on build (also when snapped correctly)
+- Texture for Solar Generator / Charger was broken
+
+### Changed
+- Weapon attachments are no longer dismounted within containers on restarts
+- Clothings (BackPacks / Vests / Uniforms) in storages will no longer get unpacked on restarts
+- Vehicle / Storage Lock
+   - Colorized Vehicle / Storage Lock messages
+   - Hint how long your Vehicle will stay locked on lock
+   - Vehicles locked inside your own PlotPole-Range have now a longer Locktime
+      - Inside your PlotPole-Range: 3 days
+      - Outside your PlotPole-Range: 30 minutes
+   - https://plays.tv/video/5d5d71d2137413ba08
+- Increased UAV sounds
+- Changed Taru / Huron / Mohawk Door Sounds (more decent sound)
+- changed unarmed jump animation
+- UAV-Support (AI's) will now spawn a bit more away from your Position
+- Changed / Fixed some Epoch asset models
+- Reduced Rain by default
+- Hunger / Thirst / Alcohol loss no longer depends on time multiplier by default
+- Reworked Looting function (Epoch furnitures + additional ground Loot)
+
+### Server Owners
+- Added an option to force the Gender for Players on Spawn / Respawn with "ForceGender" in cfgEpochClient.hpp
+- Added the FastNights Epoch Event by default to epochconfig.hpp
+- Added Compatibility to Lythium and Livonia Map
+- Added a MultiMap compatibility
+   - Make it possible to run also not official supported maps
+   - Use the mission.sqm within the epoch._ChangeMe folder
+   - Spawn (Debug-Box) is set to [0,0] and spawn positions are random created on restarts
+- Custom Textures (e.g. from Paintshop) can now be saved to the Database
+   - set "UseCustomTextures" in epochconfig.hpp to "true"
+   - force saving Vehicles after painting by:
+      - Client side Scripts: _vehicle call EPOCH_interact;
+      - Server side Scripts: _vehicle call EPOCH_server_save_vehicle;
+- To adjust the new BaseLock-Time, use "vehicleLockTimeHome" in epochconfig.hpp
+- Configs for the Painting Garage (available colors / Costs) can be found in CfgPainting.hpp
+- SetUnitLoadout has been replaced by an Epoch function.
+   - To simply strip and reload Inventory, use "call EPOCH_ReloadLoadout";
+- Player Login Mass-Check
+   - Another fix to prevent login issues
+   - If you still have issues, make sure these positions are very close in your mission.sqm:
+      - respawn_east
+      - respawn_west
+      - all VirtualMan_EPOCH Entities
+- Players playtimes are now shown in the Playerlist in Adminmenu
+   - https://cdn.discordapp.com/attachments/474595539107971072/613059969943601208/unknown.png
+- Added a function to jump up for Admins in Adminmenu
+- Admin Teleport on mapclick now use ALT instead of CTRL (prevent creating Linemarkers)
+- Added an option "EnablePhysicsOnBuild" to cfgEpochClient.hpp to disable physics while Building
+- Changed syntax in cfgServicePoints to allow inherits from other Vehicle Classes
+   - Some more infos can be found here: https://epochmod.com/forum/topic/34454-repair-rearming-script/?do=findComment&comment=307310
+- Added a config for the already available FastNight Event to epochconfig.hpp
+- New Weapons + Mags:
+   - pvcrifle_01_F
+      - NL_pvc_bb_mag -> Knockout
+   - nl_Shotgun
+      - NL_shot_bb_mag -> Knockout
+   - nl_auto_xbow
+      - xbow_mag_bolt -> Kill
+      - xbow_mag_tranq -> Knockout
+      - xbow_mag_exp -> small explosion -> Kill
+   - hgun_Pistol_tranq_01
+      - tranq_dart_mag -> Knockout
+- If you run Infistar lower then v260 (not published for now), you have to change this inside your Infistar files!
+	- A3AH:
+		- 1
+			- Search for: "_addCaseHDMG = 0;"
+			- add a new line behind it with: "_addCaseHDMG = player addEventHandler ['HandleDamage',(['CfgEpochClient', 'HandleDamage', ''] call EPOCH_fnc_returnConfigEntryV2)];"
+		
+		- 2
+			- Search for: "if(_addCaseHDMG == _roundRandomNumberHDMG)then"
+			- change it to: "if(_addCaseHDMG == (_roundRandomNumberHDMG+1))then"
+
+		- 3
+			- Search for: "player addEventHandler ['HandleDamage',''];"
+			- change it to: "player addEventHandler ['HandleDamage',(['CfgEpochClient', 'HandleDamage', ''] call EPOCH_fnc_returnConfigEntryV2)];"
+	- A3AT:
+		- 1
+			- Search for: "player addEventHandler ['HandleDamage',{}];"
+			- replace it with: "if (infiSTAR_MOD == 'Epoch') then {player addEventHandler ['HandleDamage',(['CfgEpochClient', 'HandleDamage', ''] call EPOCH_fnc_returnConfigEntryV2)];}else {player addEventHandler ['HandleDamage',{}];};"
+
 ## [1.3.1.0] - 2019-03-28
 ### Added
 - Upgradeable PlotPoles (S/M/L/XL/XXL) with different Range / Limits

@@ -2386,6 +2386,32 @@ class CfgPricing
         price = 2;
         tax = 0.9;
     };
+
+    class NL_pvc_bb_mag 
+    {
+        price = 20;
+    };
+    class NL_shot_bb_mag 
+    {
+        price = 20;
+    };
+    class xbow_mag_bolt 
+    {
+        price = 20;
+    };
+    class xbow_mag_tranq 
+    {
+        price = 20;
+    };
+    class xbow_mag_exp 
+    {
+        price = 20;
+    };
+    class tranq_dart_mag
+    {
+        price = 5;
+    };
+
     class UGL_FlareWhite_F
     {
         price = 2;
@@ -2433,6 +2459,10 @@ class CfgPricing
     class 1Rnd_SmokeOrange_Grenade_shell
     {
         price = 4;
+    };
+    class 1Rnd_HE_Grenade_shell
+    {
+        price = 3;
     };
     class 3Rnd_HE_Grenade_shell
     {
@@ -2621,6 +2651,23 @@ class CfgPricing
     class AKM_EPOCH
     {
         price = 100;
+    };
+
+    class pvcrifle_01_F
+    {
+        price = 100;
+    };
+    class nl_Shotgun
+    {
+        price = 100;
+    };
+    class nl_auto_xbow
+    {
+        price = 100;
+    };
+    class hgun_Pistol_tranq_01
+    {
+        price = 20;
     };
 	
 	// A2 Weapons
@@ -3732,10 +3779,6 @@ class CfgPricing
         price = 22;
     };
     class smallbackpack_pink_epoch
-    {
-        price = 22;
-    };
-    class I_UAV_01_backpack_F
     {
         price = 22;
     };
@@ -6402,7 +6445,13 @@ class CfgPricing
 	class US_Backpack_Epoch					{  price = 40; };
 	class CZ_Backpack_Epoch					{  price = 40; };
 	class L_Gunbag_Epoch					{  price = 40; };
-    // MAD ARMA
+	
+	class I_UAV_01_backpack_F 				{  price = 40; };
+	class C_IDAP_UAV_06_backpack_F			{  price = 40; };
+	class C_IDAP_UAV_06_antimine_backpack_F {  price = 40; };
+	class B_UAV_06_medical_backpack_F		{  price = 40; };
+
+		// MAD ARMA
     class revolver01                        { price = 55; };
     class VG_sawed_off_01                   { price = 120; };
     class Devastator_01                     { price = 180; };

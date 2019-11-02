@@ -28,7 +28,7 @@ if !(false call EPOCH_crafting_checkResources) exitWith {};
 //craft button
 [] spawn {
 
-	private ["_GiveBackRounds","_TotalroundsIn","_TotalMaxRoundsIn","_roundsCheck","_maxMagrnd","_maxMagRndTmp","_roundsCheckTmp","_magsammosearched","_craftReturn","_needBench","_craftCount","_fnc_UILock","_itemCraftTime","_selection","_craftItem","_item","_itemName","_itemCraftTime","_itemRecipeItems","_itemType","_nearbyReq","_hasNearby","_canCraft","_wH","_nearByHolder","_wHPos"];
+	private ["_GiveBackRounds","_TotalroundsIn","_TotalMaxRoundsIn","_roundsCheck","_maxMagrnd","_maxMagRndTmp","_roundsCheckTmp","_magsammosearched","_craftReturn","_needBench","_craftCount","_fnc_UILock","_itemCraftTime","_selection","_craftItem","_item","_itemName","_itemCraftTime","_itemRecipeItems","_itemType","_nearbyReq","_hasNearby","_canCraft","_wH","_nearByHolder","_wHPos","_craftedcount"];
 	disableSerialization;
 
 	_fnc_UILock = {
@@ -55,6 +55,8 @@ if !(false call EPOCH_crafting_checkResources) exitWith {};
 	_craftReturn = _craftItem param [16,[]];
 	
 	_BulletCalculateOnCraft = ["CfgEpochClient", "BulletCalculateOnCraft", false] call EPOCH_fnc_returnConfigEntryV2;
+	
+	_craftedcount = 0;
 
 	for "_c" from 1 to rmx_var_craftQTYOut do {
 		false call _fnc_UILock;
@@ -131,6 +133,10 @@ if !(false call EPOCH_crafting_checkResources) exitWith {};
 		} forEach _craftReturn;
 
 		call EPOCH_crafting_LB_click;
+		_craftedcount = _craftedcount + 1;
+	};
+	if (_craftedcount > 0) then {
+		["CraftedItems",_craftedcount,true] call EPOCH_client_updatePlayerStat;
 	};
 	call EPOCH_crafting_LB_defaults;
 	true call _fnc_UILock;

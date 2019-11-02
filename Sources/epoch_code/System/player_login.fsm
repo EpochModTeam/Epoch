@@ -602,6 +602,7 @@ class FSM
                         itemno = 27;
                         init = /*%FSM<STATEINIT""">*/"_ply = player;" \n
                          "_group = group player;" \n
+                         "_goggles = goggles _playerObject;" \n
                          "" \n
                          "selectPlayer _playerObject;" \n
                          "" \n
@@ -896,7 +897,12 @@ class FSM
                 {
                         name = "Setup_EH_s_and_H";
                         itemno = 50;
-                        init = /*%FSM<STATEINIT""">*/"{" \n
+                        init = /*%FSM<STATEINIT""">*/"" \n
+                         "if (!_newChar || !(_goggles isEqualTo """")) then {" \n
+                         "	removeGoggles player;" \n
+                         "	player addGoggles _goggles" \n
+                         "};" \n
+                         "{" \n
                          "	player addEventHandler [_x,([""CfgEpochClient"", _x, """"] call EPOCH_fnc_returnConfigEntryV2)];" \n
                          "} forEach ([""CfgEpochClient"", ""addEventHandler"", []] call EPOCH_fnc_returnConfigEntryV2);" \n
                          "" \n
@@ -1076,7 +1082,7 @@ class FSM
                                          "if (_playerCheck) then {" \n
                                          "    _PlayerPosCheck = !((_playerObject getVariable [""FinalDest"",[]]) isequalto []);" \n
                                          "    if (_PlayerPosCheck) then {" \n
-                                         "        _playerCheckMass = ((_loadabs toFixed 2) isEqualTo ((loadabs _playerObject) toFixed 2));" \n
+                                         "        _playerCheckMass = ((abs(_loadabs - (loadabs _playerObject))) < 1);" \n
                                          "        if (_playerCheckMass) then {" \n
                                          "            _state = true;" \n
                                          "        };" \n
@@ -1289,7 +1295,12 @@ class FSM
                 {
                         name = "Open_Gender_Selection";
                         itemno = 78;
-                        init = /*%FSM<STATEINIT""">*/"createdialog ""SelectGender"";"/*%FSM</STATEINIT""">*/;
+                        init = /*%FSM<STATEINIT""">*/"_forcegender = [""CfgEpochClient"", ""ForceGender"", """"] call EPOCH_fnc_returnConfigEntryV2;" \n
+                         "switch (tolower _forcegender) do {" \n
+                         "	case ""male"": {EPOCH_PlayerIsMale = true;};" \n
+                         "	case ""female"": {EPOCH_PlayerIsMale = false;};" \n
+                         "	default {createdialog ""SelectGender"";}" \n
+                         "};"/*%FSM</STATEINIT""">*/;
                         precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
                         class Links
                         {

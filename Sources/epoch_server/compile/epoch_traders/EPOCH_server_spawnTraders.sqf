@@ -22,6 +22,9 @@ _serverSettingsConfig = configFile >> "CfgEpochServer";
 _TraderGodMode = [_serverSettingsConfig, "TraderGodMode", false] call EPOCH_fnc_returnConfigEntry;
 _spawnCount = count EPOCH_TraderSlots;
 _config = (configFile >> "CfgEpoch" >> worldName);
+if !(isclass _config) then {
+	_config = (configFile >> "CfgEpoch" >> "Default");
+};
 _aiTables = getArray(_config >> "traderUniforms");
 _acceptableBlds = getArray(_config >> "traderBlds");
 _TraderMinDistance = getnumber(_config >> "TraderMinDistance");

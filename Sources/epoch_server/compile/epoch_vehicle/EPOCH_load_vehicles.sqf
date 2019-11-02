@@ -13,12 +13,12 @@
 	https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server/compile/epoch_vehicle/EPOCH_load_vehicles.sqf
 */
 //[[[cog import generate_private_arrays ]]]
-private ["_actualHitpoints","_allHitpoints","_allVehicles","_allowDamage","_arr","_arrNum","_availableColorsConfig","_cfgEpochVehicles","_check","_class","_colors","_count","_dataFormat","_dataFormatCount","_diag","_disableVehicleTIE","_dmg","_found","_immuneIfStartInBase","_jammerOwner","_jammers","_location","_lockedOwner","_marker","_nearestJammer","_removemagazinesturret","_removeweapons","_response","_selections","_serverSettingsConfig","_textureSelectionIndex","_textures","_vehHiveKey","_vehLockHiveKey","_vehicle","_vehicleDynamicSimulationSystem","_vehicleSlotIndex"];
+private ["_actualHitpoints","_allHitpoints","_allVehicles","_allowDamage","_arrNum","_availableColorsConfig","_cfgEpochVehicles","_check","_class","_colors","_count","_dataFormat","_dataFormatCount","_diag","_disableVehicleTIE","_dmg","_found","_immuneIfStartInBase","_jammerOwner","_jammers","_location","_lockedOwner","_marker","_nearestJammer","_removemagazinesturret","_removeweapons","_response","_selections","_serverSettingsConfig","_textureSelectionIndex","_textures","_vehHiveKey","_vehLockHiveKey","_vehicle","_vehicleDynamicSimulationSystem","_vehicleSlotIndex"];
 //[[[end]]]
 params [["_maxVehicleLimit",0]];
 
 _diag = diag_tickTime;
-_dataFormat = ["", [], 0, [], 0, [], [], 0, "", ""];
+_dataFormat = ["", [], 0, [], 0, [], [], 0, "", "", []];
 _dataFormatCount = count _dataFormat;
 EPOCH_VehicleSlots = [];
 _allVehicles = [];
@@ -35,10 +35,9 @@ for "_i" from 1 to _maxVehicleLimit do {
 	_vehicleSlotIndex = EPOCH_VehicleSlots pushBack str(_i);
 
 	_vehHiveKey = format ["%1:%2", call EPOCH_fn_InstanceID,_i];
-	_response = ["Vehicle", _vehHiveKey] call EPOCH_fnc_server_hiveGETRANGE;
-
-	if ((_response select 0) == 1 && (_response select 1) isEqualType []) then {
-		_arr = _response select 1;
+	(["Vehicle", _vehHiveKey] call EPOCH_fnc_server_hiveGETRANGE) params [["_status",0],["_arr",[]]];
+	if (_status isEqualTo 1 && _arr isEqualType []) then {
+		if (_arr isEqualTo []) exitwith {};
 		_arrNum = count _arr;
 
 		// New Upgrade System adds to DB array, check and correct older saved vehicles
@@ -60,7 +59,7 @@ for "_i" from 1 to _maxVehicleLimit do {
 				if !((_arr select _forEachIndex) isEqualType _x) then {_arr set[_forEachIndex, _x]};
 			} forEach _dataFormat;
 
-			_arr params ["_class","_worldspace","_damage","_hitpoints","_fuel","_inventory","_ammo","_color","_baseClass",["_plateNumber",""]];
+			_arr params ["_class","_worldspace","_damage","_hitpoints","_fuel","_inventory","_ammo","_color","_baseClass",["_plateNumber",""],["_Textures",[]]];
 
 			if (_class != "" && _damage < 1) then {
 				// remove location from worldspace and set to new var
@@ -121,21 +120,29 @@ for "_i" from 1 to _maxVehicleLimit do {
 						// set fuel level
 						_vehicle setFuel _fuel;
 						// apply persistent textures
-						_cfgEpochVehicles = 'CfgEpochVehicles' call EPOCH_returnConfig;
-						_availableColorsConfig = (_cfgEpochVehicles >> _class >> "availableColors");
-						if (isArray(_availableColorsConfig)) then {
-							_colors = getArray(_availableColorsConfig);
-							_textureSelectionIndex = (_cfgEpochVehicles >> _class >> "textureSelectionIndex");
-							_selections = if (isArray(_textureSelectionIndex)) then { getArray(_textureSelectionIndex) } else { [0] };
-							_count = (count _colors) - 1;
+						if (((missionnamespace getvariable ["UseCustomTextures",false]) || _color isEqualTo -1) && {!(_Textures isEqualTo [])}) then {
 							{
-								_textures = _colors select 0;
-								if (_count >= _forEachIndex) then {
-									_textures = _colors select _forEachIndex;
-								};
-								_vehicle setObjectTextureGlobal [_x, _textures  select _color];
-							} forEach _selections;
+								_vehicle setobjecttextureglobal [_foreachindex,_x];
+							} foreach _Textures;
 							_vehicle setVariable ["VEHICLE_TEXTURE", _color];
+						}
+						else {
+							_cfgEpochVehicles = 'CfgEpochVehicles' call EPOCH_returnConfig;
+							_availableColorsConfig = (_cfgEpochVehicles >> _class >> "availableColors");
+							if (isArray(_availableColorsConfig)) then {
+								_colors = getArray(_availableColorsConfig);
+								_textureSelectionIndex = (_cfgEpochVehicles >> _class >> "textureSelectionIndex");
+								_selections = if (isArray(_textureSelectionIndex)) then { getArray(_textureSelectionIndex) } else { [0] };
+								_count = (count _colors) - 1;
+								{
+									_textures = _colors select 0;
+									if (_count >= _forEachIndex) then {
+										_textures = _colors select _forEachIndex;
+									};
+									_vehicle setObjectTextureGlobal [_x, _textures  select _color];
+								} forEach _selections;
+								_vehicle setVariable ["VEHICLE_TEXTURE", _color];
+							};
 						};
 						if !(_baseClass isequalto "") then {
 							_vehicle setvariable ["VEHICLE_BASECLASS",_baseClass];
@@ -241,10 +248,10 @@ for "_i" from 1 to _maxVehicleLimit do {
 			};
 		};
 	} else {
-		diag_log format["DEBUG: invalid vehicle data: %1",_response];
+		diag_log format["DEBUG: invalid vehicle data: %1 - %2",_status,_arr];
 	};
 };
 // add all spawned vehicles to remains collector.
 addToRemainsCollector _allVehicles;
-diag_log format ["Epoch: Vehicle SPAWN TIMER %1, LOADED %2 VEHICLES", diag_tickTime - _diag, count _allVehicles];
+diag_log format ["Epoch: Loaded %1 Vehicles in %2 seconds - Free Slots: %3", count _allVehicles, diag_tickTime - _diag, _maxVehicleLimit - count _allVehicles];
 true

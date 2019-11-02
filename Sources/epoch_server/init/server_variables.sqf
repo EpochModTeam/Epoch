@@ -25,6 +25,7 @@ EPOCH_staticTraderLocations = [];
 EPOCH_staticNPCTraderPos = [];
 EPOCH_traderStoredVehicles = [];
 EPOCH_traderStoredVehiclesCnt = [];
+Epoch_LootedBuildings = [];
 
 private _configArray = [
 	["serverRestart", false],
@@ -40,6 +41,7 @@ private _configArray = [
     ["showShippingContainers", true],
     ["cloneCost", 100],
     ["vehicleLockTime", "1800"],
+    ["vehicleLockTimeHome", "259200"],
     ["antagonistChancePDeath", 0.33],
     ["taxRate", 0.1],
     ["starterTraderItems", [[], []]],
@@ -54,6 +56,7 @@ private _configArray = [
     ["expiresVehicle", "604800"],
     ["expiresAIdata", "604800"],
     ["expiresCommunityStats", "7776000"],
+    ["expiresPlayerTopStats", "604800"],
     ["hiveAdminCmdExec", false],
     ["hiveAdminSavePlayerList", true],
     ["hiveAdminCmdTime", 5],
@@ -89,6 +92,21 @@ private _serverSettingsConfig = configFile >> "CfgEpochServer";
     missionNamespace setVariable[format["EPOCH_%1", _x select 0], _varData];
 }forEach _configArray;
 
+// Convert Starter Trader items from alternative syntax
+if (count EPOCH_starterTraderItems == 0) then {
+	EPOCH_starterTraderItems = [[],[]];
+};
+if ((EPOCH_starterTraderItems select 0) isEqualTypeArray ["",0]) then {
+	private _EPOCH_starterTraderItems = [[],[]];
+	{
+		if (_x isEqualTypeArray ["",0]) then {
+			(_EPOCH_starterTraderItems select 0) pushback (_x select 0);
+			(_EPOCH_starterTraderItems select 1) pushback (_x select 1);
+		};
+	} foreach EPOCH_starterTraderItems;
+	EPOCH_starterTraderItems = _EPOCH_starterTraderItems;
+};
+
 // Convert Starter Trader Magazines from mags to rounds
 {
 	_maxrnd = 1;
@@ -100,3 +118,57 @@ private _serverSettingsConfig = configFile >> "CfgEpochServer";
 		(EPOCH_starterTraderItems select 1) set [_foreachindex, _currentStock];
 	};
 } foreach (EPOCH_starterTraderItems select 0);
+
+// Load / Build Top-Statistics
+_TopStatsVarsDb = (['CommunityStats', '0_TopStatsVars'] call EPOCH_fnc_server_hiveGETRANGE) param [1,[]];
+_TopStatsDb = (['CommunityStats', '0_TopStats'] call EPOCH_fnc_server_hiveGETRANGE) param [1,[]];
+EPOCH_TopStatsVars = (["CfgEpochClient", "TopStatsDialogEntries", []] call EPOCH_fnc_returnConfigEntryV2) apply {_x param [0,""]};
+EPOCH_TopStats = [];
+_EPOCH_expiresCommunityStats = call compile EPOCH_expiresCommunityStats;
+_EPOCH_expiresPlayerTopStats = call compile EPOCH_expiresPlayerTopStats;
+{
+	_added1 = false;
+	if (count _TopStatsVarsDb >= _foreachindex) then {
+		if (_x isEqualTo (_TopStatsVarsDb select _foreachindex)) then {
+			if (count _TopStatsDb >= _foreachindex) then {
+				_newstats2 = [];
+				{
+					_x params ["_value","_UID","_name"];
+					(['CommunityStats', _UID] call EPOCH_fnc_server_hiveGETTTL) params ["","_communityStats","_ttl"];
+					if !(_communityStats isequalto []) then {
+						if (_ttl > ((_EPOCH_expiresCommunityStats - _EPOCH_expiresPlayerTopStats) max 0)) then {
+							_newstats2 pushback [_value,_UID,_name];
+						};
+					};
+				} foreach (_TopStatsDb select _foreachindex);
+				EPOCH_TopStats pushback _newstats2;
+				_added1 = true;
+			};
+		};
+	};
+	if (!_added1) then {
+		EPOCH_TopStats pushback [];
+	};
+} foreach EPOCH_TopStatsVars;
+if !(EPOCH_TopStatsVars isEqualTo _TopStatsVarsDb) then {
+	["CommunityStats", "0_TopStatsVars", EPOCH_expiresCommunityStats, EPOCH_TopStatsVars] call EPOCH_fnc_server_hiveSETEX;
+};
+publicvariable "EPOCH_TopStats";
+publicvariable "EPOCH_TopStatsVars";
+
+Epoch_LootCleanupTime = getNumber ((getmissionconfig "CfgBuildingLootPos") >> "LootCleanupTime");
+if (Epoch_LootCleanupTime == 0) then {
+	Epoch_LootCleanupTime = 300;
+};
+
+Epoch_LootContainers = [];
+{
+	_x params ["","_class",""];
+	if (_class isEqualType []) then {
+		Epoch_LootContainers = Epoch_LootContainers + _class;
+	}
+	else {
+		Epoch_LootContainers pushback _class;
+	};
+} forEach (getArray (missionConfigFile >> "CfgBuildingLootPos" >> "Default" >> "lootTypes"));
+Epoch_LootContainers = compilefinal (str Epoch_LootContainers);

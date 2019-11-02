@@ -12,7 +12,7 @@
     Github:
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server/init/server_securityfunctions.sqf
 */
-private ["_skn_unlock","_skn_adminMenuUnlock","_code","_functionName","_remoteExecClientStr","_onLoad","_onUnload","_skn_blockedSpawnMenuUID","_temp","_skn_adminMenuOwner","_case","_skn_adminMenuHigh","_skn_adminMenuLow","_config","_debugClass","_cfg_systemDebug","_skn_systemDebug1","_skn_systemDebug2","_skn_systemDebug3","_skn_systemDebug4","_skn_systemDebug5","_cfg_remoteExecClient","_remoteExecClient_NAMES","_cfg_limits","_skn_playerCryptoLimit","_cfg_learning","_skn_trustedUsers","_str_learningModeCheck","_cfg_quality","_skn_perfMode","_skn_viewDistance","_skn_viewDistanceObects","_skn_terrainGrid","_cfg_blacklistConfig","_skn_badDisplaysArray","_skn_badAnimations","_cfg_variablesConfig","_skn_badVarCheckArray","_skn_nilVarCheckArray","_skn_commandMenuArray","_skn_addEHConfig","_skn_displayAddEHChecks","_skn_addEHArray","_serverSettingsConfig","_skn_enableAntihack","_skn_check_addons","_checkFiles","_skn_check_files","_skn_whitelist_cfgPatches","_skn_adminsOwner","_skn_adminsHigh","_skn_adminsLow","_banReasons","_skn_banReason","_antihack_banDuration","_epoch_banReasons","_kickReasons","_epoch_kickReason","_epoch_kickReasons","_ownerSettings","_skn_adminMenuOwnerSetting","_adminSettings","_skn_adminMenuHighSetting","_lowSettings","_skn_adminMenuLowSetting","_skn_adminMenuMenuKey","_skn_adminMenuInfrontTeleport","_skn_adminMenuBanReasons","_skn_adminMenuCryproCfg","_skn_cfgPatchesCfg","_skn_PVSPrefix","_rndVAR_Count","_skn_rndVA","_skn_PVC_INDEX","_skn_AH_rndVarVehicle","_skn_AH_rndVarPlayer","_skn_AH_rndVarAHInitCheck","_skn_AH_Init","_skn_AH_Code","_skn_AH_Code_CA","_skn_AH_Code_CB","_skn_AH_Ban","_skn_AH_rndVar","_skn_doKickBan","_skn_pv_hackerLog","_skn_pv_adminLog","_skn_server_adminLog","_skn_doAdminRequest","_skn_doAdminLog","_skn_doTokenAuth","_skn_antiTeleportPVC","_skn_Admin_Code","_skn_Admin_Init","_skn_adminRequest_PVC","_skn_adminLog_PVC","_skn_adminLog","_skn_AdminKeyDown","_skn_AdminMenu_Init","_skn_getCtrl","_skn_fnc_Spec","_skn_Update_AdminButtons","_skn_mainMenuCfg","_skn_FillMainMenu","_skn_FillPlayerMenu","_skn_switchMainMenu","_skn_dbClickMainMenu","_skn_spawnMenu","_skn_spawnSpawnMenu","_skn_removespawnMenu","_skn_fillSpawnMenu","_skn_hackerLog","_skn_switchTable","_skn_daynight","_skn_customBanreason","_skn_flipVehicle","_skn_freeCam","_skn_delete","_skn_deleteMenu","_skn_deleteNow","_skn_doBan","_skn_mapTeleport","_skn_old_esp","_skn_hideAdmin","_skn_old_espMap","_skn_infrontTP","_skn_esp","_skn_godMode","_skn_repairVehicle","_skn_spawnLoot","_skn_mapLootArray","_skn_mapAnimalArray","_skn_mapAIArray","_skn_mapBasesArray","_skn_tg_Spec","_skn_tg_sortOrder","_skn_tg_toggle","_skn_tg_BanPlayer","_skn_tg_delete","_skn_tg_mapTeleport","_skn_tg_spawnTyp","_skn_tg_limitSpawn","_skn_tg_old_espMap","_skn_tg_old_esp","_skn_tg_hideAdmin","_skn_tg_infrontTP","_skn_tg_godMode","_skn_tg_map_player","_skn_tg_map_corpse","_skn_tg_map_loot","_skn_tg_map_animals","_skn_tg_map_vehicle","_skn_tg_map_ai","_skn_tg_map_trader","_skn_tg_map_basebuilding","_skn_t1","_skn_t2","_skn_t3","_skn_t4","_skn_t5","_skn_AH_rndVarAHInitCheckToken","_stringInArray","_displaysArray","_displays","_cfg_displayArray","_skn_adminUIDArray","_skn_adminNAMEArray","_skn_tempuid","_skn_spawnPointCenter","_centerDistance","_sknBanANDSleep","_sknBanANDSleepQuick","_sknPatches","_skn_addonCheckCode","_skn_fileCheckCode","_sknAddActionCheck","_skn_code_ban","_skn_code_init","_skn_code_antihack","_skn_admincode","_skn_admininit","_configs"];
+private ["_skn_unlock","_skn_adminMenuUnlock","_code","_functionName","_remoteExecClientStr","_onLoad","_onUnload","_skn_blockedSpawnMenuUID","_temp","_skn_adminMenuOwner","_case","_skn_adminMenuHigh","_skn_adminMenuLow","_config","_debugClass","_cfg_systemDebug","_skn_systemDebug1","_skn_systemDebug2","_skn_systemDebug3","_skn_systemDebug4","_skn_systemDebug5","_cfg_remoteExecClient","_remoteExecClient_NAMES","_cfg_limits","_skn_playerCryptoLimit","_cfg_learning","_skn_trustedUsers","_str_learningModeCheck","_cfg_quality","_skn_perfMode","_skn_viewDistance","_skn_viewDistanceObects","_skn_terrainGrid","_cfg_blacklistConfig","_skn_badDisplaysArray","_skn_badAnimations","_cfg_variablesConfig","_skn_badVarCheckArray","_skn_nilVarCheckArray","_skn_commandMenuArray","_skn_addEHConfig","_skn_displayAddEHChecks","_skn_addEHArray","_serverSettingsConfig","_skn_enableAntihack","_skn_check_addons","_checkFiles","_skn_check_files","_skn_whitelist_cfgPatches","_skn_adminsOwner","_skn_adminsHigh","_skn_adminsLow","_banReasons","_skn_banReason","_antihack_banDuration","_epoch_banReasons","_kickReasons","_epoch_kickReason","_epoch_kickReasons","_ownerSettings","_skn_adminMenuOwnerSetting","_adminSettings","_skn_adminMenuHighSetting","_lowSettings","_skn_adminMenuLowSetting","_skn_adminMenuMenuKey","_skn_adminMenuInfrontTeleport","_skn_adminMenuJumpUp","_skn_adminMenuBanReasons","_skn_adminMenuCryproCfg","_skn_cfgPatchesCfg","_skn_PVSPrefix","_rndVAR_Count","_skn_rndVA","_skn_PVC_INDEX","_skn_AH_rndVarVehicle","_skn_AH_rndVarPlayer","_skn_AH_rndVarAHInitCheck","_skn_AH_Init","_skn_AH_Code","_skn_AH_Code_CA","_skn_AH_Code_CB","_skn_AH_Ban","_skn_AH_rndVar","_skn_doKickBan","_skn_pv_hackerLog","_skn_pv_adminLog","_skn_server_adminLog","_skn_doAdminRequest","_skn_doAdminLog","_skn_doTokenAuth","_skn_antiTeleportPVC","_skn_Admin_Code","_skn_Admin_Init","_skn_adminRequest_PVC","_skn_adminLog_PVC","_skn_adminLog","_skn_AdminKeyDown","_skn_AdminMenu_Init","_skn_getCtrl","_skn_fnc_Spec","_skn_fnc_Zoom","_skn_Update_AdminButtons","_skn_mainMenuCfg","_skn_FillMainMenu","_skn_FillPlayerMenu","_skn_switchMainMenu","_skn_dbClickMainMenu","_skn_spawnMenu","_skn_spawnSpawnMenu","_skn_removespawnMenu","_skn_fillSpawnMenu","_skn_hackerLog","_skn_switchTable","_skn_daynight","_skn_customBanreason","_skn_flipVehicle","_skn_freeCam","_skn_delete","_skn_deleteMenu","_skn_deleteNow","_skn_doBan","_skn_mapTeleport","_skn_old_esp","_skn_hideAdmin","_skn_old_espMap","_skn_infrontTP","_skn_jumpUp","_skn_esp","_skn_godMode","_skn_repairVehicle","_skn_spawnLoot","_skn_mapLootArray","_skn_mapAnimalArray","_skn_mapAIArray","_skn_mapBasesArray","_skn_tg_Spec","_skn_tg_sortOrder","_skn_tg_toggle","_skn_tg_BanPlayer","_skn_tg_delete","_skn_tg_mapTeleport","_skn_tg_spawnTyp","_skn_tg_limitSpawn","_skn_tg_old_espMap","_skn_tg_old_esp","_skn_tg_hideAdmin","_skn_tg_infrontTP","_skn_tg_jumpUp","_skn_tg_godMode","_skn_tg_map_player","_skn_tg_map_corpse","_skn_tg_map_loot","_skn_tg_map_animals","_skn_tg_map_vehicle","_skn_tg_map_ai","_skn_tg_map_trader","_skn_tg_map_basebuilding","_skn_t1","_skn_t2","_skn_t3","_skn_t4","_skn_t5","_skn_AH_rndVarAHInitCheckToken","_stringInArray","_displaysArray","_displays","_cfg_displayArray","_skn_adminUIDArray","_skn_adminNAMEArray","_skn_tempuid","_skn_spawnPointCenter","_centerDistance","_sknBanANDSleep","_sknBanANDSleepQuick","_sknPatches","_skn_addonCheckCode","_skn_fileCheckCode","_sknAddActionCheck","_skn_code_ban","_skn_code_init","_skn_code_antihack","_skn_admincode","_skn_admininit","_configs"];
 
 _config = (configFile >> "CfgSecConf");
 if (isClass _config) then {diag_log "Loading config..."};
@@ -94,6 +94,7 @@ _lowSettings = ["PLAYER-TELEPORT","MAP-TELEPORT","TARGET-HEAL"];
 _skn_adminMenuLowSetting = [_serverSettingsConfig, "adminMenu_LowSetting", _lowSettings] call EPOCH_fnc_returnConfigEntry;
 _skn_adminMenuMenuKey = [_serverSettingsConfig, "adminMenu_menuKey", 0x3B] call EPOCH_fnc_returnConfigEntry;
 _skn_adminMenuInfrontTeleport = [_serverSettingsConfig, "adminMenu_infrontTeleport", 0x06] call EPOCH_fnc_returnConfigEntry;
+_skn_adminMenuJumpUp = [_serverSettingsConfig, "adminMenu_JumpUp", 0x05] call EPOCH_fnc_returnConfigEntry;
 _skn_adminMenuUnlock = [_serverSettingsConfig, "adminMenu_unlock", 0x08] call EPOCH_fnc_returnConfigEntry;
 _skn_adminMenuBanReasons = [_serverSettingsConfig, "adminMenu_BanReasons", ["Traderzone","Hacking","Glitch","Combat Log"]] call EPOCH_fnc_returnConfigEntry;
 _skn_adminMenuCryproCfg = [_serverSettingsConfig, "adminMenu_cryptoCfg", [2500,1000,500,100,50,-1000]] call EPOCH_fnc_returnConfigEntry;
@@ -186,6 +187,7 @@ _skn_AdminKeyDown		= _skn_rndVA deleteAt 0;
 _skn_AdminMenu_Init	  = _skn_rndVA deleteAt 0;
 _skn_getCtrl			 = _skn_rndVA deleteAt 0;
 _skn_fnc_Spec			= _skn_rndVA deleteAt 0;
+_skn_fnc_Zoom 			= _skn_rndVA deleteAt 0;
 _skn_Update_AdminButtons = _skn_rndVA deleteAt 0;
 _skn_mainMenuCfg		 = _skn_rndVA deleteAt 0;
 _skn_FillMainMenu		= _skn_rndVA deleteAt 0;
@@ -211,6 +213,7 @@ _skn_old_esp			 = _skn_rndVA deleteAt 0;
 _skn_hideAdmin		   = _skn_rndVA deleteAt 0;
 _skn_old_espMap		  = _skn_rndVA deleteAt 0;
 _skn_infrontTP		   = _skn_rndVA deleteAt 0;
+_skn_jumpUp = _skn_rndVA deleteAt 0;
 _skn_unlock		   = _skn_rndVA deleteAt 0;
 _skn_esp				 = _skn_rndVA deleteAt 0;
 _skn_godMode			 = _skn_rndVA deleteAt 0;
@@ -234,6 +237,7 @@ _skn_tg_old_espMap  = _skn_rndVA deleteAt 0;
 _skn_tg_old_esp	 = _skn_rndVA deleteAt 0;
 _skn_tg_hideAdmin   = _skn_rndVA deleteAt 0;
 _skn_tg_infrontTP   = _skn_rndVA deleteAt 0;
+_skn_tg_jumpUp =  _skn_rndVA deleteAt 0;
 _skn_tg_godMode	 = _skn_rndVA deleteAt 0;
 
 _skn_tg_map_player	   = _skn_rndVA deleteAt 0;
@@ -362,11 +366,12 @@ for "_i" from 1 to 3 do {
 		if ("INFRONT-TELEPORT" in _case) then {
 			_temp = _temp + "
 				,['  In Front', [], {"+_skn_tg_infrontTP+" = !"+_skn_tg_infrontTP+"},'2',[]]
+				,['  Jump Up', [], {"+_skn_tg_jumpUp+" = !"+_skn_tg_jumpUp+"},'2',[]]
 			";
 		};
 		if ("MAP-TELEPORT" in _case) then {
 			_temp = _temp + "
-				,['  Ctrl+Click Map', [], {"+_skn_tg_mapTeleport+"=!"+_skn_tg_mapTeleport+";['Map to Teleport', if ("+_skn_tg_mapTeleport+") then[{2}, { 1 }]] call "+_skn_adminLog_PVC+" },'2',[]]
+				,['  Alt+Click Map', [], {"+_skn_tg_mapTeleport+"=!"+_skn_tg_mapTeleport+";['Map to Teleport', if ("+_skn_tg_mapTeleport+") then[{2}, { 1 }]] call "+_skn_adminLog_PVC+" },'2',[]]
 			";
 		};
 	};
@@ -492,8 +497,8 @@ for "_i" from 1 to 3 do {
 	if ("SPAWNLOOT" in _case) then {
 		_temp = _temp + ",['  Loot Buildings (25m)', 25, "+_skn_spawnLoot+", '0', []]";
 	};
-	_temp = _temp + ",['  Disconnect yourself', [], { (findDisplay 46) closeDisplay 0 }, '0', []]";
-	_temp = _temp + ",['  Switch Day / Night', [], "+_skn_daynight+", '0', []]";
+	_temp = _temp + ",['  Skip +6 hours', [], "+_skn_daynight+", '0', []]";
+	_temp = _temp + ",['  Disconnect yourself', [], { (findDisplay 46) closeDisplay 0 }, '0', [0.859,0.094,0.094,1]]";
 	if ("BANPANNEL" in _case) then {
 		_temp = _temp + ",['Ban Menu',[],'','1',[]]
 			,['  BattlEye Ban - Custom Ban Reason',[],"+_skn_customBanreason+",'4',[]]
@@ -505,10 +510,12 @@ for "_i" from 1 to 3 do {
 
 	_temp = _temp + "
 		,['Key Binds',[],'','1',[]]
+		,['  4 Key - Fly Up',[],'','1',[]]
 		,['  5 Key - Teleport In Front',[],'','1',[]]
 		,['  F2 - Cancel Spectating',[],'','1',[]]
 		,['  F5 - Delete Target',[],'','1',[]]
 		,['  7 - (Un)Lock Target',[],'','1',[]]
+		,['  ALT + Left MB - Teleport on Map',[],'','1',[]]
 		];
 	";
 	if (_i == 1) then {
@@ -1279,9 +1286,10 @@ _skn_admincode = compileFinal ("
 	"+_skn_tg_old_esp+" = false;
 	"+_skn_tg_godMode+" = false;
 	"+_skn_tg_old_espMap+" = false;
-	"+_skn_tg_spawnTyp+" = 64;
+	"+_skn_tg_spawnTyp+" = 6000;
 	"+_skn_tg_hideAdmin+" = false;
 	"+_skn_tg_infrontTP+" = false;
+	"+_skn_tg_jumpUp+" = false;
 
 	"+_skn_tg_map_player+" = false;
 	"+_skn_tg_map_corpse+" = false;
@@ -1299,7 +1307,7 @@ _skn_admincode = compileFinal ("
 	uiNamespace setVariable['ESP_mainMap', findDisplay 12 displayCtrl 51];
 	uiNamespace setVariable['ESP_adminMap', findDisplay -1337 displayCtrl 7];
 	(findDisplay 46) displayAddEventHandler ['KeyDown','_this call "+_skn_AdminKeyDown+"'];
-	((findDisplay 12) displayCtrl 51) ctrlAddEventHandler ['MouseButtonDown', 'if (_this select 5) then {_this call "+_skn_mapTeleport+"}'];
+	((findDisplay 12) displayCtrl 51) ctrlAddEventHandler ['MouseButtonDown', 'if (_this select 6) then {_this call "+_skn_mapTeleport+"}'];
 
 	{
 		(uiNamespace getVariable _x) ctrlRemoveAllEventHandlers 'Draw';
@@ -1310,15 +1318,15 @@ _skn_admincode = compileFinal ("
 			};
 			_display = _this select 0;
 			if ("+_skn_tg_map_player+") then {
-				_size = (0.5/ctrlMapScale _display) max 20;
+				_size = (0.75/ctrlMapScale _display) max 20;
 				{
 					_display drawIcon [
-						getText (configFile >> 'CfgVehicles' >> typeOf _x >> 'Icon'), _x call _getDmgColor, visiblePosition _x, _size, _size, getDir _x, name _x
+						getText (configFile >> 'CfgVehicles' >> typeOf _x >> 'Icon'), [1,0,0,1], visiblePosition _x, _size, _size, getDir _x, name _x
 					];
 				}forEach (allPlayers select {alive _x});
 			};
 			if ("+_skn_tg_map_corpse+") then {
-				_size = (1/ctrlMapScale _display) max 20;
+				_size = (0.75/ctrlMapScale _display) max 20;
 				{
 					if (!isNull _x) then {
 						_color = [1,1,1,1];
@@ -1348,7 +1356,7 @@ _skn_admincode = compileFinal ("
 				{
 					if (alive _x) then {
 						_display drawIcon [
-							getText (configFile >> 'CfgVehicles' >> typeOf _x >> 'Icon'), _x call _getDmgColor, visiblePosition _x, _size, _size, getDir _x,
+							getText (configFile >> 'CfgVehicles' >> typeOf _x >> 'Icon'), [1,1,0,1], visiblePosition _x, _size, _size, getDir _x,
 							getText (configFile >> 'CfgVehicles' >> typeOf _x >> 'displayName')
 						];
 					};
@@ -1360,7 +1368,7 @@ _skn_admincode = compileFinal ("
 					if((_x isKindOf 'LandVehicle') || (_x isKindOf 'Ship') || (_x isKindOf 'Air') || (_x isKindOf 'Tank'))then{
 						if (alive _x) then {
 							_display drawIcon [
-								getText (configFile >> 'CfgVehicles' >> typeOf _x >> 'Icon'), _x call _getDmgColor, visiblePosition _x, _size, _size, getDir _x,
+								getText (configFile >> 'CfgVehicles' >> typeOf _x >> 'Icon'), [0,1,1,1], visiblePosition _x, _size, _size, getDir _x,
 								getText (configFile >> 'CfgVehicles' >> typeOf _x >> 'displayName')
 							];
 						};
@@ -1368,24 +1376,24 @@ _skn_admincode = compileFinal ("
 				}forEach vehicles;
 			};
 			if ("+_skn_tg_map_ai+") then {
-				_size = (0.5/ctrlMapScale _display) max 20;
+				_size = (0.75/ctrlMapScale _display) max 20;
 				{
 					if (alive _x) then {
 						_display drawIcon [
-							getText (configFile >> 'CfgVehicles' >> typeOf _x >> 'Icon'), _x call _getDmgColor, visiblePosition _x, _size, _size, getDir _x,
+							getText (configFile >> 'CfgVehicles' >> typeOf _x >> 'Icon'), [0.5,0.5,0.5,1], visiblePosition _x, _size, _size, getDir _x,
 							getText (configFile >> 'CfgVehicles' >> typeOf _x >> 'displayName')
 						];
 					};
 				}forEach "+_skn_mapAIArray+";
 			};
 			if ("+_skn_tg_map_trader+") then {
-				_size = (0.5/ctrlMapScale _display) max 20;
+				_size = (0.75/ctrlMapScale _display) max 20;
 				{
 					_agent = agent _x;
 					_typeOf = typeOf _agent;
 					if!(_typeOf in ['Sheep_random_EPOCH','Goat_random_EPOCH','Snake_random_EPOCH','Snake2_random_EPOCH','Hen_random_EPOCH','Cock_random_EPOCH','Fin_random_EPOCH','Alsatian_random_EPOCH','Rabbit_EPOCH'])then{
 						_display drawIcon [
-							getText (configFile >> 'CfgVehicles' >> _typeOf >> 'Icon'), _agent call _getDmgColor, visiblePosition _agent, _size, _size, getDir _agent,
+							getText (configFile >> 'CfgVehicles' >> _typeOf >> 'Icon'), [0,1,0,1], visiblePosition _agent, _size, _size, getDir _agent,
 							getText (configFile >> 'CfgVehicles' >> _typeOf >> 'displayName')
 						];
 					};
@@ -1446,6 +1454,7 @@ _skn_admincode = compileFinal ("
 		if (_keyDown == "+str _skn_adminMenuMenuKey+") then {call "+_skn_AdminMenu_Init+"};
 		if (_keyDown == 0x3C) then {if (cameraOn != vehicle player) then { vehicle player switchCamera 'External' } };
 		if (_keyDown == "+str _skn_adminMenuInfrontTeleport+") then {call "+_skn_infrontTP+"};
+		if (_keyDown == "+str _skn_adminMenuJumpUp+") then {call "+_skn_jumpUp+"};
 		if (_keyDown == 0x3F) then {call "+_skn_delete+"};
 		if (_keyDown == "+str _skn_adminMenuUnlock+") then {call "+_skn_unlock+"};
 	};
@@ -1461,8 +1470,9 @@ _skn_admincode = compileFinal ("
 		(1 call "+_skn_getCtrl+") ctrlSetText format['Players %1 of %2',count allPlayers,playersNumber civilian];
 		(2 call "+_skn_getCtrl+") ctrlSetText format['Epoch Mod Admin Menu by Skaronator.com - Server Uptime: %1h %2min', _hours, _minutes];
 		(5 call "+_skn_getCtrl+") ctrlSetEventHandler ['LBDblClick', '_this call "+_skn_fnc_Spec+"'];
+		(5 call "+_skn_getCtrl+") ctrlSetEventHandler ['LBSelChanged', '_this call "+_skn_fnc_Zoom+"'];
 		(6 call "+_skn_getCtrl+") ctrlSetEventHandler ['LBDblClick', '_this call "+_skn_dbClickMainMenu+"'];
-		(7 call "+_skn_getCtrl+") ctrlSetEventHandler ['MouseButtonDown', 'if (_this select 5) then {_this call "+_skn_mapTeleport+"}'];
+		(7 call "+_skn_getCtrl+") ctrlSetEventHandler ['MouseButtonDown', 'if (_this select 6) then {_this call "+_skn_mapTeleport+"}'];
 		if (call "+_skn_removespawnMenu+") then {uiSleep 0.4};
 
 		call "+_skn_Update_AdminButtons+";
@@ -1645,6 +1655,16 @@ _skn_admincode = compileFinal ("
 		if (!isPlayer _player) exitWith {};
 		cutText ['F2 To Cancel!','PLAIN DOWN',1];
 		vehicle _player switchCamera 'External';
+	};
+	"+_skn_fnc_Zoom+" = {
+		_player = objectFromNetId (_this select 0 lbData (_this select 1));
+		if (isNull _player) exitWith {};
+		if (!isPlayer _player) exitWith {};
+		{
+			ctrlMapAnimClear _x;
+			_x ctrlMapAnimAdd [1,0.075,getpos _player];
+			ctrlMapAnimCommit _x;
+		} foreach [((findDisplay 12) displayCtrl 51),(7 call "+_skn_getCtrl+")];
 	};
 	"+_skn_mainMenuCfg+" = {"+_skn_adminMenuLow+"};
 	if (getPlayerUID player in "+str _skn_adminsOwner+") then {
@@ -2020,6 +2040,7 @@ _skn_admincode = compileFinal ("
 				};
 			} foreach skn_vests;
 		};
+		_ctrl lbSetCurSel 0;
 	};
 	"+_skn_FillPlayerMenu+" = {
 		_ctrl = 5 call "+_skn_getCtrl+";
@@ -2027,51 +2048,36 @@ _skn_admincode = compileFinal ("
 
 		_sorted = [];
 		_unsorted = allPlayers;
+		_tmp = [];
 
 		_buttonRange = 10 call "+_skn_getCtrl+";
 		_buttonRange ctrlSetText 'Range';
 		_buttonAlphabetically = 11 call "+_skn_getCtrl+";
 		_buttonAlphabetically ctrlSetText 'Alphabet';
 
-		if ("+_skn_tg_sortOrder+" == 'Range') then {
-			_pos = getPosATL vehicle player;
-			{
-				_temp = _x;
-				{
-					if ((getPosATL _x distance _pos) < (getPosATL _temp distance _pos)) exitWith {
-						_unsorted = _unsorted - [_x];
-						_sorted pushBack _x;
-					_temp = _x;
-				};
-			}forEach _unsorted;
-		}forEach _unsorted;
+	if ("+_skn_tg_sortOrder+" == 'Range') then {
+		_pos = getPosATL vehicle player;
+		{
+			_tmp pushback [_x distance _pos, _x];
+		} forEach _unsorted;
 		_buttonRange ctrlSetTextColor [1, 0, 0, 1];
 		_buttonAlphabetically ctrlSetTextColor [1, 1, 1, 1];
 	};
 	if ("+_skn_tg_sortOrder+" == 'Alphabetically') then {
-		_unsortedName = [];
 		{
-			_unsortedName pushBack (name _x);
+			_tmp pushBack [name _x, _x],;
 		}forEach _unsorted;
-		_alphabetically = _unsortedName;
-		_alphabetically sort true;
-		{
-			{
-				if (name _x == (_alphabetically select 0)) exitWith {
-					_alphabetically = _alphabetically - [_alphabetically select 0];
-					_unsorted = _unsorted - [_x];
-					_sorted pushBack _x;
-				};
-			}forEach _unsorted;
-		}forEach _unsorted;
-
 		_buttonAlphabetically ctrlSetTextColor [1, 0, 0, 1];
 		_buttonRange ctrlSetTextColor [1, 1, 1, 1];
 	};
+	_tmp sort true;
+	{
+		_sorted pushback (_x select 1);
+	} foreach _tmp;
 	if (_sorted isEqualTo []) then {_sorted = [player]};
 	_skn_fnc_addPlayerToList = {
 		_player = _this select 0;
-		_index = _ctrl lbAdd format ['%1', name _player];
+		_index = _ctrl lbAdd format ['%1', format ['%1 [%2 h]',name _player,((_player getvariable ['EPOCH_playerPlayTime',0])/60/60) toFixed 1]];
 		_ctrl lbSetData [_index, netId _player];
 		_ctrl lbSetColor [_index, _this select 1];
 		if (vehicle _player == _player) then {
@@ -2131,6 +2137,7 @@ _skn_admincode = compileFinal ("
 	waitUntil {
 		if (diag_tickTime-_time>1) exitWith {true};
 		if ((ctrlPosition _map) isEqualTo [0.709388 * safezoneW + safezoneX,0.28836 * safezoneH + safezoneY,-0.00312413 * safezoneW,0.486548 * safezoneH]) exitWith {_map ctrlShow false;true};
+		false
 	};
 };
 "+_skn_hackerLog+" = {
@@ -2209,12 +2216,23 @@ _skn_admincode = compileFinal ("
 				_distance = 50;
 				_pos = [(_pos select 0)+_distance*sin(_dir),(_pos select 1)+_distance*cos(_dir),((getpos _object) select 2)+100];
 			} else {
-				_pos = [(_pos select 0)+_distance*sin(_dir),(_pos select 1)+_distance*cos(_dir),0];
-				if (surfaceIsWater _pos) then {_pos set [2,2]};
+				_pos = [(_pos select 0)+_distance*sin(_dir),(_pos select 1)+_distance*cos(_dir),_pos select 2];
+				if (surfaceIsWater _pos) then {_pos set [2,(getPosASL _object) select 2]};
 			};
 			if (surfaceIsWater _pos) then [{vehicle player setPosASL _pos},{vehicle player setPosATL _pos}];
 		} else {
 			cutText ['You can just Teleport Infront when you are not inside of a Vehicle!','PLAIN DOWN'];
+		};
+	};
+};
+"+_skn_jumpUp+" = {
+	if ("+_skn_tg_jumpUp+") then {
+		if (vehicle player == player) then {
+			_skn_velo = velocity player;
+			_skn_velo set [2,10];
+			player setVelocity _skn_velo;
+		} else {
+			cutText ['You can just Jump up when you are not inside of a Vehicle!','PLAIN DOWN'];
 		};
 	};
 };
@@ -2228,7 +2246,7 @@ _skn_admincode = compileFinal ("
 	};
 };
 "+_skn_daynight+" = {
-	[111,12] call "+_skn_adminRequest_PVC+";
+	[111,6] call "+_skn_adminRequest_PVC+";
 };
 "+_skn_customBanreason+" = {
 	disableSerialization;

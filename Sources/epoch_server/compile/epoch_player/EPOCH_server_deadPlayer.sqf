@@ -63,9 +63,11 @@ if (_playerObj != _killer) then {
 	if(_playerIsNeutral)then{_playerKarmaAdj = abs((-_playerKarma) * 0.03)};
 	if(_playerIsBandit)then{_playerKarmaAdj = abs((-_playerKarma) * 0.055)};
 	if(_playerIsHero)then{_playerKarmaAdj = abs((-_playerKarma) * 0.025)};
-
+	_deathType = 0;
 	if!(_killerUID isEqualTo "")then{
-		[_killer, "Murders", 1, true] call EPOCH_server_updatePlayerStats;
+		if !((group _playerObj) isEqualTo (group _killer)) then {
+			[_killer, "Murders", 1, true] call EPOCH_server_updatePlayerStats;
+		};
 		
 		// find killer's Karma status
 		_killerCStats = _killer getVariable["COMMUNITY_STATS", EPOCH_defaultStatVars];
@@ -89,18 +91,21 @@ if (_playerObj != _killer) then {
 			if(_playerIsHero)then{_killerKarmaAdj = abs((-_killerKarma) * 0.25) + _playerKarmaAdj};
 		};
 		[_killer, "Karma", _killerKarmaAdj, true] call EPOCH_server_updatePlayerStats;
+		_deathType = 1;
 	};
-	_deathType = 1;
 };
 
 switch(_deathType)do{
 	case 666: {
-		[_playerObj, "Suicides", 1] call EPOCH_server_updatePlayerStats;
-		[_playerObj, "Karma", _playerKarmaAdj] call EPOCH_server_updatePlayerStats;
+		[_playerObj, "Suicides", 1, true] call EPOCH_server_updatePlayerStats;
+		[_playerObj, "Karma", _playerKarmaAdj, true] call EPOCH_server_updatePlayerStats;
 	};
 	case 1: {
-		[_playerObj, "Deaths", 1] call EPOCH_server_updatePlayerStats;
-		[_playerObj, "Karma", _playerKarmaAdj] call EPOCH_server_updatePlayerStats;
+		[_playerObj, "Deaths", 1, true] call EPOCH_server_updatePlayerStats;
+		[_playerObj, "Karma", _playerKarmaAdj, true] call EPOCH_server_updatePlayerStats;
+	};
+	case 0: {
+		[_playerObj, "AIDeaths", 1, true] call EPOCH_server_updatePlayerStats;
 	};
 };
 _defaultVars = call EPOCH_defaultVars_SEPXVar;
@@ -113,6 +118,11 @@ if (_current_crypto > 0) then{
 	_playerObj setVariable["Crypto", _current_crypto, true];
 	diag_log format["Epoch: ADMIN: Crypto added to dead body for %1 with %2 at %3", getPlayerUID _playerObj, _current_crypto, _pos];
 };
+
+// save community stats (skipped in EPOCH_server_savePlayer for dead Players)
+_stats = _playerObj getVariable["COMMUNITY_STATS", EPOCH_defaultStatVars];
+["CommunityStats", _playerUID, EPOCH_expiresCommunityStats, [_stats]] call EPOCH_fnc_server_hiveSETEX;
+[_playerObj,_stats] call EPOCH_server_UpdateTopStats;
 
 [_playerObj, _defaultVars] call EPOCH_server_savePlayer;
 

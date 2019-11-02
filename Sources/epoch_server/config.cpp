@@ -54,6 +54,7 @@ class CfgServerFunctions
 			class server_knockDownTree {};
 			class server_mineRocks {};
 			class server_lootAnimal {};
+			class server_spawnLoot {};
 		};
 		class epoch_player {
             class fnc_addItemToX {};
@@ -109,6 +110,7 @@ class CfgServerFunctions
 			class server_CargoSave {};
 			class server_CargoFill {};
 			class server_removemagoritemcargo {};
+			class server_PaintVehicle {};
 		};
 		class epoch_server {
 			class precisionPos {};
@@ -130,6 +132,7 @@ class CfgServerFunctions
 			class server_isNearChecks {};
 			class server_DefuseBomb {};
 			class server_PutCrypto {};
+			class server_UpdateTopStats{};
 		};
 		class epoch_missions {
 			class Server_createObject {};
@@ -149,7 +152,7 @@ class CfgServerFunctions
 };
 class CfgServerVersion
 {
-	client = "1.3.1";
-	config = "1.3.1";
+	client = "1.3.2";
+	config = "1.3.2";
 	hive = "0.6.0.0";
 };

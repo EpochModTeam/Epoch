@@ -39,7 +39,7 @@ if (_item == "") exitWith{ EPOCH_target = objNull; };
 
 _playerEnergyKeyFinal = "EPOCH_playerEnergy";
 if !(isNil "_playerEnergyKey") then {_playerEnergyKeyFinal = _playerEnergyKey};
-_playerEnergy = missionNamespace getVariable [_playerEnergyKeyFinal,[]];
+_playerEnergy = missionNamespace getVariable [_playerEnergyKeyFinal,0];
 
 if (_playerEnergy <= 0) exitWith{
 	["Need Energy", 5] call Epoch_message;
@@ -52,6 +52,7 @@ EPOCH_simulSwap_Lock = true;
 _objType = typeOf _object;
 _cfgBaseBuilding = 'CfgBaseBuilding' call EPOCH_returnConfig;
 _class = getText(_cfgBaseBuilding >> _objType >> "GhostPreview");
+_EnablePhysicsOnBuild = ["CfgEpochClient", "EnablePhysicsOnBuild", true] call EPOCH_fnc_returnConfigEntryV2;
 
 if (_class != "") then {
 	_energyCost = getNumber(_cfgBaseBuilding >> _objType >> "energyCost");
@@ -404,7 +405,7 @@ if (_class != "") then {
 		// remove item here
 		if (([player, _item] call BIS_fnc_invRemove) == 1) then {
 
-			if (_stabilityCheck && !isTouchingGround _currentTarget) then {
+			if (_stabilityCheck && !isTouchingGround _currentTarget && _EnablePhysicsOnBuild) then {
 
 				_offsetZPos = [_currentPos select 0, _currentPos select 1, (_currentPos select 2) - 0.5];
 				if !(terrainIntersect[_currentPos, _offsetZPos]) then {

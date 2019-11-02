@@ -39,6 +39,7 @@ if (alive _object) then {
 
 	_config = (configFile >> "CfgMainTable" >> _payout);
 	if (isClass _config) then {
+		[_player,"LootedObjs",1,true] call EPOCH_server_updatePlayerStats;
 		if (random 1 < getNumber(_config >> "chance")) then {
 			[_item, _payout] call EPOCH_serverLootObject;
 			// force player to open gear on this object.

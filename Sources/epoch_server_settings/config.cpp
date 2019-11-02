@@ -20,7 +20,7 @@ class CfgPatches {
 		units[] = {};
 		weapons[] = {};
 		requiredVersion = 0.1;
-		epochVersion = "1.3.1";
+		epochVersion = "1.3.2";
 		requiredAddons[] = {};
 		#include "build.hpp"
 	};
@@ -51,7 +51,7 @@ class CfgEpoch
 {
 	class Default
 	{
-		worldSize = 12000;
+//		worldSize = 12000;
 		vehicleSpawnTypes[] = {
 			{"FlatAreaCity",1},
 			{"FlatAreaCitySmall",1},
@@ -84,7 +84,16 @@ class CfgEpoch
 		traderblockblds[] = {"pier","bridge","fireescape","medevac_house","pillboxbunker","containerine"};		// If a building include this chars in the classname (tolower!!!) they will be blocked for Traders
 		
 		// Debug Box 
-		telePos[] = {};
+		telePos[] = {
+		// N [-0.286865,8.17383,-10.3098, 0]
+		// S [-0.415527,-7.05298,-10.3098, 180]
+		// E [13.5127,0.410156,-10.3098, 90]
+		// W [-14.4316,0.112793,-10.3098, -90]
+			{ "TP_Booth_n_EPOCH", { -0.286865,8.17383,-10.3098, 0}, "", "north" }, // Trader city 1
+			{ "TP_Booth_s_EPOCH", { -0.415527,-7.05298,-10.3098, 180}, "", "south" }, // Trader city 2
+			{ "TP_Booth_w_EPOCH", { -14.4316, 0.112793, -10.3098, -90}, "", "west" }, // Trader city 3
+			{ "TP_Booth_e_EPOCH", { 13.5127, 0.410156, -10.3098, 90}, "", "east" } // Trader city 4
+		};
 		lightPos[] = {
 			{-16.623,-8.50195,-10.5417},
 			{15.0352,-9.08594,-10.5417}
@@ -117,7 +126,7 @@ class CfgEpoch
 		plantDecayTime = 1200; //Half this time results in decayMarkerColor marker
 		plantDecayMarkerColor = "ColorBrown";
 		plantCompromisedColor = "ColorRed";
-		availablePlants[] = {"Goldenseal_EPOCH", "Goldenseal_EPOCH", "Goldenseal_EPOCH", "Poppy_EPOCH", "Pumpkin_EPOCH"};
+		availablePlants[] = {"Goldenseal_EPOCH", "Goldenseal_EPOCH", "Goldenseal_EPOCH", "Poppy_EPOCH", "Poppy_EPOCH", "Pumpkin_EPOCH", "Pumpkin_EPOCH", "HempPlant_EPOCH","SunflowerPlant_EPOCH"};
 
 		// Carnival and Loot Box Spawner
 		debugCarnivalSpawner = 0;
@@ -174,9 +183,10 @@ class CfgEpoch
 		showHeliCrashMarkers = 1;
 		maxSpawnedHeliCrashes = 4;
 		distFromOtherHeliCrashes = 2000;
+		HeliCrashDecayTime = 2400;
 		heliCrashDecayMarkerColor = "ColorBrown"; // decay changes icon (_markers select 2)
 		heliCrashCompromisedColor = "ColorRed"; // compromised changes active surround (_markers select 0)
-		availableHeliCrashes[] = {"Land_Wreck_Heli_Attack_01_F","Land_Wreck_Heli_Attack_02_F"};
+		availableHeliCrashes[] = {{"O_Heli_Attack_02_F","Land_Wreck_Heli_Attack_02_F"},{"B_Heli_Attack_01_F","Land_Wreck_Heli_Attack_01_F"}};
 		heliCrashCustomLocs[] = {};
 		
 		propsPos[] = {
@@ -202,15 +212,15 @@ class CfgEpoch
 		    {"C_Hatchback_01_EPOCH",10},
 		    {"C_Hatchback_02_EPOCH",10},
 		    {"C_SUV_01_EPOCH",10},
-		    {"C_Rubberboat_EPOCH",5},
-		    {"C_Rubberboat_02_EPOCH",5},
-		    {"C_Rubberboat_03_EPOCH",5},
-		    {"C_Rubberboat_04_EPOCH",5},
+		    {"C_Rubberboat_EPOCH",2},
+		    {"C_Rubberboat_02_EPOCH",2},
+		    {"C_Rubberboat_03_EPOCH",2},
+		    {"C_Rubberboat_04_EPOCH",2},
 		    {"C_Van_01_box_EPOCH",8},
 		    {"C_Van_01_transport_EPOCH",9},
-		    {"C_Boat_Civil_01_EPOCH",5},
-		    {"C_Boat_Civil_01_police_EPOCH",5},
-		    {"C_Boat_Civil_01_rescue_EPOCH",5},
+		    {"C_Boat_Civil_01_EPOCH",2},
+		    {"C_Boat_Civil_01_police_EPOCH",2},
+		    {"C_Boat_Civil_01_rescue_EPOCH",2},
 		    {"B_Heli_Light_01_EPOCH",2},
 		    {"B_SDV_01_EPOCH",2},
 		    {"B_MRAP_01_EPOCH",3},
@@ -231,7 +241,7 @@ class CfgEpoch
 		    {"O_Heli_Transport_04_box_EPOCH",1},
 		    {"O_Heli_Transport_04_covered_EPOCH",1},
 		    {"B_Heli_Transport_03_unarmed_EPOCH",1},
-		    {"jetski_epoch",7},
+		    {"jetski_epoch",2},
 		    {"MBK_01_EPOCH",2},
 		    {"hoverboard_epoch_1",1},
 		    {"hoverboard_epoch_cargo",1},
@@ -281,7 +291,7 @@ class CfgEpoch
 		    {"C_Rubberboat_04_EPOCH",2},
 		    {"C_Van_01_box_EPOCH",4},
 		    {"C_Van_01_transport_EPOCH",4},
-		    {"C_Boat_Civil_01_EPOCH",5},
+		    {"C_Boat_Civil_01_EPOCH",2},
 		    {"C_Boat_Civil_01_police_EPOCH",2},
 		    {"C_Boat_Civil_01_rescue_EPOCH",2},
 		    {"B_Heli_Light_01_EPOCH",2},
@@ -304,7 +314,7 @@ class CfgEpoch
 		    {"O_Heli_Transport_04_box_EPOCH",1},
 		    {"O_Heli_Transport_04_covered_EPOCH",1},
 		    {"B_Heli_Transport_03_unarmed_EPOCH",1},
-		    {"jetski_epoch",3},
+		    {"jetski_epoch",2},
 		    {"K01",1},
 		    {"K02",1},
 		    {"K03",1},
@@ -393,7 +403,7 @@ class CfgEpoch
             {"plymouth_rock_1",5},
             {"warrig_black",5},
             {"nux_car_1",10},
-            {"interceptor_1",5},
+            {"interceptor_1",5}
 		};
         allowedVehiclesList_MADCUP[] = {
             {"jetski_epoch",3},
@@ -427,7 +437,7 @@ class CfgEpoch
 			{"CUP_C_Golf4_white_Civ",1},
 			{"CUP_C_Golf4_whiteblood_Civ",1},
 			{"CUP_C_Golf4_yellow_Civ",1},
-			{"CUP_C_Octavia_CIV",1},
+			{"CUP_C_Octavia_CIV",1}
 		};
 	};
 	#include "configs\maps\bornholm.h"
@@ -461,5 +471,6 @@ class CfgEpoch
     #include "configs\maps\lingor3.h"
     #include "configs\maps\Panthera3.h"
     #include "configs\maps\Winthera3.h"
-    
+	#include "configs\maps\lythium.h"
+	#include "configs\maps\Enoch.h"
 };

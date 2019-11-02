@@ -22,6 +22,14 @@ class build_upgrade
 	tooltipcode = "format['Upgrade %1',getText(configFile >> 'CfgVehicles' >> (typeof dyna_cursorTarget) >> 'displayName')]";
 	class special {}; //uses external config, hardcoded
 };
+class PaintGarage
+{
+	condition = "(dyna_cursortargettype isEqualTo 'paintshop' && {player distance2d (dyna_cursorTarget modelToWorld (dyna_cursorTarget selectionPosition 'action1')) < 1.5}) || dyna_cursortargettype in ['Add other Buildings here']";
+	action = "";
+	icon = "x\addons\a3_epoch_code\Data\UI\buttons\Paint.paa";
+	tooltip = "Paint Garage";
+	class special {}; //uses external config, hardcoded
+};
 class build_remove
 {
 	condition = "dyna_buildMode select 1";
@@ -131,14 +139,14 @@ class lock_lockbox
 };
 class unlock_safe
 {
-	condition = "(dyna_cursorTargetType in ['Safe_EPOCH','SafeProxy_EPOCH','GunSafe_EPOCH']) && (dyna_cursorTarget getVariable ['EPOCH_Locked',false])";
+	condition = "(dyna_cursorTargetType in ['Safe_EPOCH','Safe_s_EPOCH','SafeProxy_EPOCH','GunSafe_EPOCH']) && (dyna_cursorTarget getVariable ['EPOCH_Locked',false])";
 	action = "dyna_cursorTarget call Epoch_secureStorageHandler";
 	icon = "x\addons\a3_epoch_code\Data\UI\buttons\pad_can_unlock.paa";
 	tooltip = "Unlock Safe";
 };
 class lock_safe
 {
-	condition = "(dyna_cursorTargetType in ['Safe_EPOCH','SafeProxy_EPOCH','GunSafe_EPOCH']) && !(dyna_cursorTarget getVariable ['EPOCH_Locked',false])";
+	condition = "(dyna_cursorTargetType in ['Safe_EPOCH','Safe_s_EPOCH','SafeProxy_EPOCH','GunSafe_EPOCH']) && !(dyna_cursorTarget getVariable ['EPOCH_Locked',false])";
 	action = "dyna_cursorTarget call Epoch_secureStorageHandler";
 	icon = "x\addons\a3_epoch_code\Data\UI\buttons\pad_cannot_lock.paa";
 	tooltip = "Lock Safe";
@@ -154,7 +162,7 @@ class pack_lockbox
 };
 class pack_safe
 {
-	condition = "(dyna_cursorTargetType in ['Safe_EPOCH','SafeProxy_EPOCH','GunSafe_EPOCH']) && (dyna_cursorTarget getVariable ['EPOCH_Locked',false])";
+	condition = "(dyna_cursorTargetType in ['Safe_EPOCH','Safe_s_EPOCH','SafeProxy_EPOCH','GunSafe_EPOCH']) && (dyna_cursorTarget getVariable ['EPOCH_Locked',false])";
 	action = "[dyna_cursorTarget,player,Epoch_personalToken] remoteExec ['EPOCH_server_packStorage',2];";
 	icon = "x\addons\a3_epoch_code\Data\UI\buttons\build_pack.paa";
 	tooltip = "Pack Safe";
@@ -596,7 +604,7 @@ class BaseCam
 class ConnectUAV
 {
 	condition = "(dyna_cursorTarget iskindof 'UAV_01_base_F' || dyna_cursorTarget iskindof 'UAV_06_base_F') && alive dyna_cursorTarget";
-	action = "if ({_x in (assigneditems player)} count ['B_UavTerminal','O_UavTerminal','I_UavTerminal','C_UavTerminal'] > 0) then {dyna_cursorTarget spawn {_unit = _this;if (isnull (driver _unit)) then {_plyr = player;_grp = createGroup side _plyr;_driver = _grp createUnit[""I_UAV_AI"", position _unit, [], 0, ""CAN_COLLIDE""];_driver moveInAny _unit;uisleep 0.5;};player action [""SwitchToUAVDriver"", _unit];};}else {['You need an UAV-Terminal to connect',5] call epoch_message;};";
+	action = "if (missionnamespace getvariable ['insafezone',false]) exitwith {['Not allowed in Safe Zones',5] call Epoch_Message};if !({_x in (assigneditems player)} count ['B_UavTerminal','O_UavTerminal','I_UavTerminal','C_UavTerminal'] > 0) exitwith {['You need an UAV-Terminal to connect',5] call epoch_message;}; dyna_cursorTarget spawn {_unit = _this;if (isnull (driver _unit)) then {_plyr = player;_grp = createGroup side _plyr;_driver = _grp createUnit[""I_UAV_AI"", position _unit, [], 0, ""CAN_COLLIDE""];_driver moveInAny _unit;uisleep 0.5;};player action [""SwitchToUAVDriver"", _unit];_unit setvariable ['Ignatz_UavOwner',name player,true];};";
 	icon = "x\addons\a3_epoch_code\Data\UI\buttons\epoch_UAV.paa";
 	tooltip = "Connect to UAV";
 };
