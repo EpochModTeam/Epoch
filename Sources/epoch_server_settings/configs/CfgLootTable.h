@@ -1773,10 +1773,7 @@ class CfgLootTable
 		items[] = {
 				{ { "V_TacChestrig_grn_F", "item" }, 1 },
 				{ { "V_TacChestrig_oli_F", "item" }, 1 },
-				{ { "V_TacChestrig_cbr_F", "item" }, 1 },
-				{ { "V_TacChestrig_grn_F", "item" }, 1 },
-				{ { "V_TacChestrig_grn_F", "item" }, 1 },
-				{ { "V_TacChestrig_grn_F", "item" }, 1 }
+				{ { "V_TacChestrig_cbr_F", "item" }, 1 }
 		};
 	};
 	class Backpacks_Low_Base
