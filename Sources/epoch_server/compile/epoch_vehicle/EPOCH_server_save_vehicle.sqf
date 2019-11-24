@@ -37,7 +37,7 @@ if (!isNull _vehicle) then {
 			_Textures = getObjectTextures _vehicle;
 		};
 
-		_VAL = [typeOf _vehicle,[getposworld _vehicle,vectordir _vehicle,vectorup _vehicle,true],damage _vehicle,_hitpoints,fuel _vehicle,_inventory,[true,magazinesAllTurrets _vehicle],_colorSlot,_baseType, getPlateNumber _vehicle, _Textures];
+		_VAL = [typeOf _vehicle,[getposworld _vehicle call EPOCH_precisionPos,vectordir _vehicle,vectorup _vehicle,true],damage _vehicle,_hitpoints,fuel _vehicle,_inventory,[true,magazinesAllTurrets _vehicle],_colorSlot,_baseType, getPlateNumber _vehicle, _Textures];
 		["Vehicle", _vehHiveKey, EPOCH_expiresVehicle, _VAL] call EPOCH_fnc_server_hiveSETEX;
 	};
 };

@@ -32,7 +32,7 @@ if (!isNull _vehicle) then {
 		_colorSlot = _vehicle getVariable ["STORAGE_TEXTURE",0];
 		_storageOwners = _vehicle getVariable["STORAGE_OWNERS",[]];
 		_locked = if (_vehicle getVariable["EPOCH_Locked", true]) then {1} else {-1};
-		_worldspace = [getposworld _vehicle, vectordir _vehicle, vectorup _vehicle, true];
+		_worldspace = [getposworld _vehicle call EPOCH_precisionPos, vectordir _vehicle, vectorup _vehicle, true];
 
 		_VAL = [_class, _worldspace, _damage, _inventory, _colorSlot, _storageOwners, _locked];
 		["Storage", _vehHiveKey, EPOCH_expiresBuilding, _VAL] call EPOCH_fnc_server_hiveSETEX;
