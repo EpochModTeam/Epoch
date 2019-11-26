@@ -34,7 +34,7 @@ Starting a FAQ here. Can get expanded later
 	     - GroundSpawnChance
 		 - MinGroundContainers
 		 - MaxGroundContainers
-      - @epochhove\addons\epoch_server_settings\configs\CfgMainTable.h -> Change the Loot for each Container / Buildingtype
+      - @epochhive\addons\epoch_server_settings\configs\CfgMainTable.h -> Change the Loot for each Container / Buildingtype
          - lootMin
          - lootMax
 - I have added an item to the loot, but it will not spawn (rpt log say "have no price")
