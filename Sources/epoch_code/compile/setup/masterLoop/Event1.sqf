@@ -172,7 +172,11 @@ if (EPOCH_debugMode) then {
 			if (_x == "Temp") then {
 				_customVars = _customVars + format["<t size='1.15' font='puristaLight' align='left'>%1: </t><t size='1.15' font='puristaLight' align='right'>%2°F | %3°C</t><br/>", _x,_val,_val call EPOCH_convertTemp];
 			} else {
-				_customVars = _customVars + format["<t size='1.15' font='puristaLight' align='left'>%1: </t><t size='1.15' font='puristaLight' align='right'>%2</t><br/>", _x,_val];
+				if (_x == "Crypto") then {
+					_customVars = _customVars + format["<t size='1.15' font='puristaLight' align='left'>%1: </t><t size='1.15' font='puristaLight' align='right'>%2</t><br/>", _x,Epoch_PlayerCrypto];
+				} else {
+					_customVars = _customVars + format["<t size='1.15' font='puristaLight' align='left'>%1: </t><t size='1.15' font='puristaLight' align='right'>%2</t><br/>", _x,_val];
+				};
 			};
 		}
 	}forEach _customVarNames;
