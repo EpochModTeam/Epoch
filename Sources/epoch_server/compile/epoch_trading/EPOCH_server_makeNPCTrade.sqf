@@ -91,8 +91,7 @@ if (_slot != -1) then {
 						removeFromRemainsCollector [_vehicle];
 						deleteVehicle _vehicle;
 						_vehHiveKey = format["%1:%2", (call EPOCH_fn_InstanceID), _vehSlot];
-						_VAL = [];
-						["Vehicle", _vehHiveKey, _VAL] call EPOCH_fnc_server_hiveSET;
+						["Vehicle", _vehHiveKey] call EPOCH_fnc_server_hiveDEL;
 						EPOCH_VehicleSlots pushBack _vehSlot;
 						missionNamespace setVariable ['EPOCH_VehicleSlotCount', count EPOCH_VehicleSlots, true];
 					};
