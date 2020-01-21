@@ -186,8 +186,9 @@ class CfgServicePoint {
 		};
 		class I_LT_01_cannon_F {
 			MagsTurrets[] = {
-				{"SmokeLauncherMag",{0},2,50},
-				{"200Rnd_762x51_Belt_Yellow",{0},1,300}
+				{"SmokeLauncherMag",{0},1,50},
+//				{"60Rnd_20mm_HE_shells",{0},60,4,9999999},
+				{"200Rnd_762x51_Belt_Yellow",{0},4,300}
 			};
 		};
 		class I_LT_01_scout_F {
@@ -202,14 +203,8 @@ class CfgServicePoint {
 		};
 		class I_MRAP_03_hmg_F {
 			MagsTurrets[] = {
-				{"500Rnd_127x99_mag_Tracer_Red",{0},3,1500},
 				{"200Rnd_127x99_mag_Tracer_Red",{0},3,600},
 				{"SmokeLauncherMag",{1},2,50}
-			};
-		};
-		class O_MRAP_02_EPOCH1 {
-			MagsTurrets[] = {
-				{"SmokeLauncherMag",{-1},2,50}
 			};
 		};
 		class B_Heli_Transport_01_F {
@@ -231,20 +226,26 @@ class CfgServicePoint {
 		class B_G_Offroad_01_armed_EPOCH2 : B_G_Offroad_01_armed_F {};
 		class B_G_Offroad_01_armed_EPOCH3 : B_G_Offroad_01_armed_F {};
 		class B_G_Offroad_01_armed_EPOCH4 : B_G_Offroad_01_armed_F {};
-		class I_MRAP_03 {
-			MagsTurrets[] = {
-				{"SmokeLauncherMag",{0},1,150}
-			};
-		};
-		class I_MRAP_03_EPOCH {
-			MagsTurrets[] = {
-			};
-		};
 		class O_MRAP_02_F {
 			MagsTurrets[] = {
-				{"SmokeLauncherMag",{-1},1,150}
+				{"SmokeLauncherMag",{-1},1,50}
 			};
 		};
+		class O_MRAP_02_EPOCH1 : O_MRAP_02_F {};
+		class O_MRAP_02_EPOCH2 : O_MRAP_02_F {};
+		class O_MRAP_02_EPOCH3 : O_MRAP_02_F {};
+		class O_MRAP_02_EPOCH4 : O_MRAP_02_F {};
+		class I_MRAP_03 {
+			MagsTurrets[] = {
+//				{"Laserbatteries",{0},1,1.0002e+007,2},
+				{"SmokeLauncherMag",{0},1,50}
+			};
+		};
+		class I_MRAP_03_EPOCH : I_MRAP_03 {};
+		class I_MRAP_03_EPOCH1 : I_MRAP_03 {};
+		class I_MRAP_03_EPOCH2 : I_MRAP_03 {};
+		class I_MRAP_03_EPOCH3 : I_MRAP_03 {};
+		class I_MRAP_03_EPOCH4 : I_MRAP_03 {};
 		class B_LSV_01_armed_olive_F {
 			MagsTurrets[] = {
 				{"100Rnd_127x99_mag_Tracer_Red",{0},3,200},
@@ -297,6 +298,7 @@ class CfgServicePoint {
 			};
 		};
 		class I_Heli_Transport_02_EPOCH : I_Heli_Transport_02_F {};
+		class C_IDAP_Heli_Transport_02_F : I_Heli_Transport_02_F {};
 		class B_Heli_Transport_03_F {
 			MagsTurrets[] = {
 				{"168Rnd_CMFlare_Chaff_Magazine",{-1},1,150},
