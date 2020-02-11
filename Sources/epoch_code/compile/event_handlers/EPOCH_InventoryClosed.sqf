@@ -17,3 +17,6 @@ if !(EPOCH_arr_interactedObjs isEqualTo[]) then {
 	[EPOCH_arr_interactedObjs] remoteExec['EPOCH_server_save_vehicles', 2];
 	EPOCH_arr_interactedObjs = [];
 };
+if !(player == Vehicle Player) then {
+	call EPOCH_ReloadLoadout;
+};

@@ -89,3 +89,26 @@ if (_woman == 1) then {
 		};
 	};
 };
+
+_tocheckfor = switch _item do {
+	case (uniform player): {uniformcontainer player};
+	case (vest player): {vestcontainer player};
+	case (backpack player): {backpackcontainer player};
+	default {objnull};
+};
+if (!isnull _tocheckfor) then {
+	{
+		_target = _x;
+		_subcontainers = everyContainer _target;
+		{
+			_subcontainer = _x;
+			if (_tocheckfor == (_subcontainer select 1)) then {
+				switch _item do {
+					case (uniform player): {removeUniform player;};
+					case (vest player): {removeVest player;};
+					case (backpack player): {removeBackpack player;};
+				};
+			};
+		} foreach _subcontainers;
+	} foreach (nearestobjects [player,['WeaponHolder','WeaponHolderSimulated','MAN','Landvehicle','SHIP','AIR','ReammoBox_F'],10]);
+};
