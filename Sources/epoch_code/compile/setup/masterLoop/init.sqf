@@ -239,8 +239,10 @@ _PlayTimeTimer = diag_ticktime;
 _UpdateTopStats = false;
 EPOCH_MyStatsPublic = !((missionnamespace getvariable ["EPOCH_totalPublicStats",1]) isEqualTo 0);
 
+_LastLootCall = diag_ticktime - 30;
 _lootBubble = {
 	private["_jammer", "_others", "_objects", "_nearObjects", "_building", "_lootDist", "_lootLoc", "_playerPos", "_distanceTraveled","_AddBias","_dir","_minlootdist","_maxlootdist"];
+	if (diag_ticktime - _LastLootCall < 12) exitwith {};
 	if (!alive player) exitwith {};
 	if (speed vehicle player > 30) exitwith {};
 	_playerPos = getPosATL vehicle player;
@@ -369,6 +371,7 @@ _lootBubble = {
 		} foreach _objects;
 //		systemchat format ["Spawned Loot in %1 Buildings", count _LootsArray];
 		if !(_LootsArray isEqualTo []) then {
+			_LastLootCall = diag_Ticktime;
 			[player,Epoch_personalToken,_LootsArray] remoteExec ["EPOCH_server_spawnLoot",2];
 		};
 	};
