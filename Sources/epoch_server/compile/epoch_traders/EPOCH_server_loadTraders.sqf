@@ -42,6 +42,8 @@ _TraderDeco = [_serverSettingsConfig, "TraderDeco", true] call EPOCH_fnc_returnC
 _WinterDeco = (Epoch_ServerRealtime select 1) == 12 && (Epoch_ServerRealtime select 2) > 20 && _TraderDeco;
 _HelloweenDeco = (((Epoch_ServerRealtime select 1) == 10 && (Epoch_ServerRealtime select 2) >= 24) || ((Epoch_ServerRealtime select 1) == 11 && (Epoch_ServerRealtime select 2) <= 3)) && _TraderDeco;
 
+_StoredVehiclesTmp = [];
+
 _TraderInit = {
 	_this allowdamage !_TraderGodMode;
 	_this setDir _dir;
@@ -95,34 +97,8 @@ _TraderItemsClean = {
 			}
 			else {
 				if (_item isKindOf "Air" || _item isKindOf "Ship" || _item isKindOf "LandVehicle" || _item isKindOf "Tank") then {
-					_newstock = 0;
 					for "_k" from 1 to _currentStock do {
-						if (EPOCH_storedVehicleCount < _storedVehicleLimit) then {
-							_newstock = _newstock + 1;
-							EPOCH_storedVehicleCount = EPOCH_storedVehicleCount + 1;
-							if !(_item in EPOCH_traderStoredVehicles) then {
-								EPOCH_traderStoredVehicles pushBack _item;
-								EPOCH_traderStoredVehiclesCnt pushBack 1;
-							} 
-							else {
-								_indexStock = EPOCH_traderStoredVehicles find _item;
-								if (_indexStock != -1) then {
-									_existingStock = EPOCH_traderStoredVehiclesCnt select _indexStock;
-									EPOCH_traderStoredVehiclesCnt set [_indexStock, (_existingStock + 1)];
-								};
-							};
-						};
-					};
-					if !(_newstock == _currentStock) then {
-						_arrchanged = true;
-						if (_newstock > 0) then {
-//							diag_log format ["EPOCH_DEBUG: TraderSlot: %1 | Changed stock of %2 from Trader | _currentStock: %3 | _newstock: %4 | EPOCH_storedVehicleCount: %5 | _storedVehicleLimit: %6",_i,str _item,_currentStock,_newstock,EPOCH_storedVehicleCount,_storedVehicleLimit];
-							(_arr select 1) set [_idx,_newstock];
-						}
-						else {
-//							diag_log format ["EPOCH_DEBUG: TraderSlot: %1 | Removed %2 from Trader | EPOCH_storedVehicleCount: %3 | _storedVehicleLimit: %4",_i,str _item,EPOCH_storedVehicleCount,_storedVehicleLimit];
-							_delete = true;
-						};
+						_StoredVehiclesTmp pushback [_i,_item];
 					};
 				};
 			};
@@ -234,4 +210,47 @@ for "_i" from 0 to (_maxTraderLimit-1) do {
 		};
 	};
 };
+
+// Remove random overloaded Vehicles from Traders
+for "_i" from 1 to ((count _StoredVehiclesTmp) - _storedVehicleLimit) do {
+	_selected = _StoredVehiclesTmp deleteat (((round random (count _StoredVehiclesTmp))-1) max 0);
+	_selected params ["_AiSlot","_Item"];
+	{
+		if ((_x getvariable ["AI_SLOT",-1]) isEqualTo _AiSlot) exitwith {
+			_arr = _x getVariable ["AI_ITEMS", [[],[]]];
+			_arr params ["_itemsarr","_cntarray"];
+			_idx = _itemsarr find _Item;
+			if (_idx > -1) then {
+				if ((_cntarray select _idx) > 1) then {
+					_cntarray set [_idx,(_cntarray select _idx) - 1];				
+				}
+				else {
+					_itemsarr deleteat _idx;
+					_cntarray deleteat _idx;
+				};
+				_x setVariable ["AI_ITEMS", _arr, true];
+				_objHiveKey = format ["%1:%2", (call EPOCH_fn_InstanceID), _AiSlot];
+				["AI_ITEMS", _objHiveKey, EPOCH_expiresAIdata, _arr] call EPOCH_fnc_server_hiveSETEX;
+			};			
+		};
+	} foreach EPOCH_Traders;
+};
+
+// Count all left over Vehicles in Trader Stock
+{
+	EPOCH_storedVehicleCount = EPOCH_storedVehicleCount + 1;
+	_x params ["","_item"];
+	if !(_item in EPOCH_traderStoredVehicles) then {
+		EPOCH_traderStoredVehicles pushBack _item;
+		EPOCH_traderStoredVehiclesCnt pushBack 1;
+	} 
+	else {
+		_indexStock = EPOCH_traderStoredVehicles find _item;
+		if (_indexStock != -1) then {
+			_existingStock = EPOCH_traderStoredVehiclesCnt select _indexStock;
+			EPOCH_traderStoredVehiclesCnt set [_indexStock, (_existingStock + 1)];
+		};
+	};
+} foreach _StoredVehiclesTmp;
+
 true
