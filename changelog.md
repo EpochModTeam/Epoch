@@ -1,6 +1,25 @@
 # Change Log
 All changes for [Arma 3](https://arma3.com/) [Epoch Mod](https://epochmod.com) are listed in this changelog.
 
+## [1.3.3.0] - 2020-xx-xx
+### Added
+- Some Dupe fixes
+
+### Fixed
+- In some Cases, Players were not able to use Binocular in cargo of Vehicles by using R3F or AdvSlingLoad
+- Player Krypto was not updated in Debug Monitor
+- Ground Loot now shows as "ground" instead of "crate" in inventory
+
+### Changed
+- Some cleanups for no longer needed scripts
+- Reduced Server calls for Loot Spawn (but not reduced Loot in general!)
+- Replaced Karma by AntagonistKills in Topstats (because Karma is currently broken a bit)
+- Better randomize left Vehicles in Traders (Do not only store Vehicles in Trader Slots order)
+
+### Server Owners
+- Reworked CfgServicePoint a bit (added Vehicles + smaller tweaks)
+- Cleaned up some scripts - more usage of already existing sub functions (EPOCH_server_CargoSave / EPOCH_server_CargoLoad)
+
 ## [1.3.2.0] - 2019-11-02
 ### Added
 - Non Lethal Weapons
