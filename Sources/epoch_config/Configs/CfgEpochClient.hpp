@@ -261,7 +261,7 @@ class CfgEpochClient
 		{"NPCTrades","Trades at Trader"},
 		{"BuildingsSet","Placed Buildings"},
 		{"CraftedItems","Crafted Items"},
-		{"Karma","Karma","round %1"},
+		{"AntagonistKills","Killed Antagonists"},
 		{"Murders","Player Kills"},
 		{"AIKills","AI Kills"},
 		{"Deaths","Deaths by Player"},
