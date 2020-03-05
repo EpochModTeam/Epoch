@@ -14,7 +14,7 @@
 /*[[[cog from arma_config_tools import *; json_to_arma()]]]*/
 class CfgEpochClient
 {
-    epochVersion = "1.3.2";
+    epochVersion = "1.3.3";
     ArmAVersion = 176;
 	debug = "true";  // true = enable extra rpt debug lines, false to disable
 	ForceGender = "";	// Force Players to spawn as "Male" or "Female"
