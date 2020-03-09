@@ -16,7 +16,7 @@ class CfgEpochClient
 {
     epochVersion = "1.3.3";
     ArmAVersion = 176;
-	debug = "true";  // true = enable extra rpt debug lines, false to disable
+	debug = "false";  // true = enable extra rpt debug lines, false to disable
 	ForceGender = "";	// Force Players to spawn as "Male" or "Female"
 	RemoveLaserfromUAV = "true";	// remove LaserDesignator from assembled UAV's
 	RemoveTIfromUAV = "true";		// remove Thermal from assembled UAV's
