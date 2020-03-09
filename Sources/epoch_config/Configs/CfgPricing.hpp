@@ -2568,6 +2568,10 @@ class CfgPricing
     {
         price = 150;
     };
+    class srifle_DMR_04_F
+    {
+        price = 150;
+    };
     class srifle_DMR_04_Tan_F
     {
         price = 150;
@@ -4193,6 +4197,58 @@ class CfgPricing
     class V_40_EPOCH
     {
         price = 5;
+    };
+    class V_Press_F
+    {
+        price = 5;
+    };
+    class V_PlateCarrier1_tna_F
+    {
+        price = 10;
+    };
+    class V_TacChestrig_grn_F
+    {
+        price = 10;
+    };
+    class V_TacChestrig_oli_F
+    {
+        price = 10;
+    };
+    class V_TacChestrig_cbr_F
+    {
+        price = 10;
+    };
+    class V_PlateCarrierSpec_tna_F
+    {
+        price = 10;
+    };
+    class V_PlateCarrierSpec_mtp
+    {
+        price = 10;
+    };
+    class V_PlateCarrierSpec_blk
+    {
+        price = 10;
+    };
+    class V_HarnessO_ghex_F
+    {
+        price = 10;
+    };
+    class V_HarnessOGL_ghex_F
+    {
+        price = 10;
+    };
+    class V_PlateCarroer2_tna_F
+    {
+        price = 10;
+    };
+    class V_PlateCarrierGL_tna_F
+    {
+        price = 10;
+    };
+    class V_PlateCarrier2_blk
+    {
+        price = 10;
     };
     class H_1_EPOCH
     {
