@@ -145,6 +145,16 @@ if (!isNull _player) then {
 				};
 			};
 			if (_newLocation isEqualType [] && {(count _newLocation) == 3}) then {
+
+				// Check for BaseKill and skip Base Spawn
+				Epoch_BaseSpawnSkips params ["_SpawnSkipUIDs","_SpawnSkipTimers"];
+				_SpawnSkipTime = 0;
+				_idx = _SpawnSkipUIDs find _playerUID;
+				if (_idx > -1) then {
+					_SpawnSkipTime = _SpawnSkipTimers select _idx;
+				};
+				if (_SpawnSkipTime > diag_ticktime) exitwith {};
+
 				_CheckLocation = _newLocation;
 				if (surfaceiswater _newLocation) then {
 					_CheckLocation = ATLToASL _newLocation;

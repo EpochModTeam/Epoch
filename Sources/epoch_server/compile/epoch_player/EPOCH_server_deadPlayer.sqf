@@ -15,7 +15,7 @@
 //[[[cog import generate_private_arrays ]]]
 private ["_bankBalance","_bankData","_cIndex","_current_crypto","_defaultVars","_playerName","_playerUID","_pos","_response","_triggerType","_vars","_killerUID","_deathType","_killerCommunityStats","_mIndex","_current_murders","_communityStats","_sIndex","_current_suicides","_dIndex","_current_deaths","_playerKarmaAdj","_killerKarmaAdj","_kIndex","_playerCStats","_playerKarma","_playerIsNeutral","_playerIsBandit","_playerIsHero","_killerCStats","_killerKarma","_karmaLimitsArray","_lowKarmaLevel1","_highKarmaLevel1"];
 //[[[end]]]
-params ["_playerObj","_killer","_playerName",["_token","",[""]] ];
+params ["_playerObj","_killer","_playerName",["_token","",[""]], ["_homekill",false]];
 
 // handle token check and isnull for _player
 if !([_playerObj, _token] call EPOCH_server_getPToken) exitWith{};
@@ -139,5 +139,22 @@ if (EPOCH_cloneCost > 0) then {
 
 		_bankBalance = _bankBalance - EPOCH_cloneCost;
 		["Bank", _playerUID, EPOCH_expiresBank, [_bankBalance]] call EPOCH_fnc_server_hiveSETEX;
+	};
+};
+
+// Check for BaseKill and skip Base Spawn for the next xxx seconds
+if (_homekill) then {
+	_SupressBaseSpawnOnHomekillTime = ["CfgEpochClient", "SupressBaseSpawnOnHomekillTime", 0] call EPOCH_fnc_returnConfigEntryV2;
+	if (isnil "Epoch_BaseSpawnSkips") then {
+		Epoch_BaseSpawnSkips = [[],[]];
+	};
+	Epoch_BaseSpawnSkips params ["_SpawnSkipUIDs","_SpawnSkipTimers"];
+	_idx = _SpawnSkipUIDs find _playerUID;
+	if (_idx > -1) then {
+		_SpawnSkipTimers set [_idx,diag_ticktime + _SupressBaseSpawnOnHomekillTime];
+	}
+	else {
+		_SpawnSkipUIDs pushback _playerUID;
+		_SpawnSkipTimers pushback (diag_ticktime + _SupressBaseSpawnOnHomekillTime);
 	};
 };

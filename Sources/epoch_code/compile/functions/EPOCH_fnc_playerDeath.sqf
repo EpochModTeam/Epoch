@@ -55,7 +55,32 @@ if(_deathMarkerON && ('ItemGPS' in (assignedItems _unit)))then{
 	profileNameSpace setVariable["EPOCHLastKnownDeath",getPos _unit];
 };
 
-[player,_killer,toArray profileName,Epoch_personalToken] remoteExec ["EPOCH_server_deadPlayer",2];
+// Check, if Player got killed by another Player (opponent) in his Base
+_homekill = false;
+if (_unit !=_killer) then {
+	if (isplayer _killer) then {
+		if !(_killer in (units (group Player))) then {
+			_SupressBaseSpawnOnHomekillTime = ["CfgEpochClient", "SupressBaseSpawnOnHomekillTime", 0] call EPOCH_fnc_returnConfigEntryV2;
+			if (_SupressBaseSpawnOnHomekillTime > 0) then {
+				_jammer = nearestObjects[player, call EPOCH_JammerClasses, ["CfgEpochClient", "minJammerDistance", 650] call EPOCH_fnc_returnConfigEntryV2];
+				if !(_jammer isEqualTo []) then {
+					_nearestJammer = _jammer select 0;
+					if ((_nearestJammer getVariable["BUILD_OWNER", "-1"]) in[getPlayerUID player, Epoch_my_GroupUID]) then {
+						_CfgEpochClient = 'CfgEpochClient' call EPOCH_returnConfig;
+						_JammerConfig = (_CfgEpochClient >> "CfgJammers" >> (typeof _nearestJammer));
+						_buildingJammerRange = getnumber (_JammerConfig >> "buildingJammerRange");
+						if (_unit distance _nearestJammer < _buildingJammerRange) then {
+							_homekill = true;
+							[format ["Base Spawn disabled for %1 minutes (killed in your Territory)",(_SupressBaseSpawnOnHomekillTime/60) tofixed 1],5] call Epoch_Message;
+						};
+					};
+				};
+			};
+		};
+	};
+};
+
+[player,_killer,toArray profileName,Epoch_personalToken,_homekill] remoteExec ["EPOCH_server_deadPlayer",2];
 
 // disable build mode
 EPOCH_buildMode = 0;

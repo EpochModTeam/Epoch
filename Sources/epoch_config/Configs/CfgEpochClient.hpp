@@ -41,6 +41,7 @@ class CfgEpochClient
     baseThirstLoss = 2; // increase number to speed up rate of Thirst loss
 	accelerateHTALoss = "false"; // use server's time acceleration to increase the rate of Hunger, Thirst and Alcohol loss
 
+	SupressBaseSpawnOnHomekillTime = 1200;	// Suppress Base Spawn for xxx seconds, when Player got Killed by an opponent in his own Territory 
     buildingNearbyMilitary = 0; //1 to allow building nearby
     buildingNearbyMilitaryRange = 300; //Define radius of blocked area
     buildingNearbyMilitaryClasses[] = {"Cargo_Tower_base_F","Cargo_HQ_base_F","Cargo_Patrol_base_F","Cargo_House_base_F"};
