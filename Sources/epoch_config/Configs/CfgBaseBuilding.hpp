@@ -638,7 +638,7 @@ class CfgBaseBuilding
         snapPointsPara[] = {"N","E","W","CAM"};
         allowedSnapPoints[] = {"N","S","E","W"};
 		// snap points for CinderWallHalf_EPOCH
-		N[] = {0,0,1.57378};
+		N[] = {0,0,1.53017};
 		E[] = {5.237,0,0};
 		W[] = {-5.237,0,0};
 		CAM[] = {0,-0.47,1.4};
