@@ -22,6 +22,9 @@ _canAutoRun = true;
 if !(alive player) exitwith {
 	false
 };
+if (lifeState player == "INCAPACITATED") exitwith {
+	false
+};
 /*
 if !(istouchingground player) exitwith {
 	false

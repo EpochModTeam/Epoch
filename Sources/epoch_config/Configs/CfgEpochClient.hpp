@@ -284,7 +284,7 @@ class CfgEpochClient
     Killed = "_this call EPOCH_fnc_playerDeath;_this call Epoch_custom_EH_Killed";
     HandleRating = "0";
 	HandleScore = "";
-    HandleDamage = "_this call EPOCH_HandleDamage;_this call EPOCH_custom_EH_HandleDamage";
+    HandleDamage = "_this call EPOCH_HandleDamage";
     HandleHeal = "";
     Dammaged = "";
     Hit = "_this call EPOCH_custom_EH_Hit";
