@@ -9,16 +9,19 @@ All changes for [Arma 3](https://arma3.com/) [Epoch Mod](https://epochmod.com) a
 - In some Cases, Players were not able to use Binocular in cargo of Vehicles by using R3F or AdvSlingLoad
 - Player Krypto was not updated in Debug Monitor
 - Ground Loot now shows as "ground" instead of "crate" in inventory
+- Snappoint for half cinder walls on top was not 100% correct
 
 ### Changed
 - Some cleanups for no longer needed scripts
 - Reduced Server calls for Loot Spawn (but not reduced Loot in general!)
 - Replaced Karma by AntagonistKills in Topstats (because Karma is currently broken a bit)
 - Better randomize left Vehicles in Traders (Do not only store Vehicles in Trader Slots order)
+- Removed Thermal from assembled UAVs (by default)
 
 ### Server Owners
 - Reworked CfgServicePoint a bit (added Vehicles + smaller tweaks)
 - Cleaned up some scripts - more usage of already existing sub functions (EPOCH_server_CargoSave / EPOCH_server_CargoLoad)
+- Option in cfgepochclient "SupressBaseSpawnOnHomekillTime" to prevent Base spawn for xxx seconds after BaseKill 
 
 ## [1.3.2.0] - 2019-11-02
 ### Added
