@@ -59,10 +59,10 @@ if (_sIndex > -1) then {
 	_currentStat = _playerStats select _sIndex;
 	//set the new stat value
 	if (_isTotal) then {
-		_playerStats set[_sIndex, _adjust];
+		_playerStats set[_sIndex, _adjust min 3.4028235e+37 max -3.4028235e+37];	// +/- 3.4028235e+38 is Epoch Extension limit!
 	}
 	else {
-		_playerStats set[_sIndex, _currentStat + _adjust];
+		_playerStats set[_sIndex, (_currentStat + _adjust) min 3.4028235e+37 max -3.4028235e+37];
 	};
 	//set the new stats array back onto this playerObj
 	_playerObj setVariable["COMMUNITY_STATS", _playerStats];
