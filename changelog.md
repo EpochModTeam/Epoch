@@ -22,6 +22,8 @@ All changes for [Arma 3](https://arma3.com/) [Epoch Mod](https://epochmod.com) a
 - Reworked CfgServicePoint a bit (added Vehicles + smaller tweaks)
 - Cleaned up some scripts - more usage of already existing sub functions (EPOCH_server_CargoSave / EPOCH_server_CargoLoad)
 - Option in cfgepochclient "SupressBaseSpawnOnHomekillTime" to prevent Base spawn for xxx seconds after BaseKill 
+- Karma variable is currently broken and caused community stats to not save correctly. 
+   -Community save should be fixed now. Karma is still WIP 
 
 ## [1.3.2.0] - 2019-11-02
 ### Added
