@@ -867,6 +867,7 @@ class CfgBaseBuilding
     class MetalTower_Ghost_EPOCH : MetalTower_SIM_EPOCH {};
 	class CinderTower_EPOCH : WoodTower_EPOCH
     {
+        upgradeBuilding[] = {};
         removeParts[] = {{"CinderBlocks",2},{"MortarBucket",2}};
         upgradeBuildingPart[] = {{"CinderBlocks",2},{"MortarBucket",2}};
         removeBuildingPart[] = {{"CinderBlocks",2}};
