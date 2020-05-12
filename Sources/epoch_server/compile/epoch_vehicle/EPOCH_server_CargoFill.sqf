@@ -25,6 +25,14 @@
 
 
 params [["_vehicle",objnull],["_items",[]]];
+private ["_subcontainersuffix"];
+_subcontainersuffix = [];
+
+clearweaponcargoglobal _vehicle;
+clearitemcargoglobal _vehicle;
+clearmagazinecargoglobal _vehicle;
+clearbackpackcargoglobal _vehicle;
+
 {
 	_objType = _forEachIndex;
 	_objTypes = _x;
@@ -78,26 +86,23 @@ params [["_vehicle",objnull],["_items",[]]];
 			};
 			// Sub-Containers
 			case 4: {
-				_type = _x select 0;
-				_subContainers = (everycontainer _vehicle) select {(_x select 0)  isequalto _type && magazinesAmmoCargo (_x select 1) isequalto [] && weaponsItemsCargo (_x select 1) isequalto []};
-				if !(_subContainers isequalto []) then {
-					_subContainer = _subContainers select 0 select 1;
-					[_subContainer,_x select 1] call EPOCH_server_CargoFill;
-				}
-				else {
-					if (_type isKindOf "Bag_Base") then {
-						_vehicle addBackpackCargoGlobal [_type, 1];
-					}
-					else {
-						_vehicle addItemCargoGlobal [_type, 1];
-					};
-					_subContainers = (everycontainer _vehicle) select {(_x select 0)  isequalto _type && magazinesAmmoCargo (_x select 1) isequalto [] && weaponsItemsCargo (_x select 1) isequalto []};
-					if !(_subContainers isequalto []) then {
-						_subContainer = _subContainers select 0 select 1;
-						[_subContainer,_x select 1] call EPOCH_server_CargoFill;
-					};
-				};
+				_subcontainersuffix pushback _x;
 			};
 		};
 	} forEach _objTypes;
 } forEach _items;
+_subContainers = (everycontainer _vehicle);
+{
+	clearweaponcargoglobal (_x select 1);
+	clearitemcargoglobal (_x select 1);
+	clearmagazinecargoglobal (_x select 1);
+	clearbackpackcargoglobal (_x select 1);
+} foreach _subContainers;
+{
+	_type = _x select 0;
+	_subContainers = (everycontainer _vehicle) select {(_x select 0) isequalto _type && magazinesAmmoCargo (_x select 1) isequalto [] && weaponsItemsCargo (_x select 1) isequalto []};
+	if !(_subContainers isequalto []) then {
+		_subContainer = _subContainers select 0 select 1;
+		[_subContainer,_x select 1] call EPOCH_server_CargoFill;
+	};
+} foreach _subcontainersuffix;

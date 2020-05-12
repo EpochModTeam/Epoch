@@ -56,6 +56,7 @@ class CfgEpochClient
     splitCountLimits = 0;			//1 = distinguish buildingCountLimit from storageCountLimit (ex.: buildingCountLimit=100, storageCountLimit=100 >> you can build 100 baseparts AND additional 100 storage objects like safes, lockboxes...)
 	MaxBuildingTilt = 180;			// Max degrees players can tilt building elements
 	EnablePhysicsOnBuild = "true";	// Building parts need Snap (hold) points to not fall on the ground while building
+	BaseCamOnlyHome = "true";		// set to false, to allow BaseCam usage outside Players PlotPole range (doubleclick on BaseCam Terminal in Inventory)
 	
 	class CfgJammers {
 		class PlotPole_EPOCH 					// Jammer Classname

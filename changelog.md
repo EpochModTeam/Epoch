@@ -23,7 +23,10 @@ All changes for [Arma 3](https://arma3.com/) [Epoch Mod](https://epochmod.com) a
 - Cleaned up some scripts - more usage of already existing sub functions (EPOCH_server_CargoSave / EPOCH_server_CargoLoad)
 - Option in cfgepochclient "SupressBaseSpawnOnHomekillTime" to prevent Base spawn for xxx seconds after BaseKill 
 - Karma variable is currently broken and caused community stats to not save correctly. 
-   -Community save should be fixed now. Karma is still WIP 
+   - Community save should be fixed now. Karma is still WIP
+- Added a Config "BaseCamOnlyHome" in cfgepochclient to allow Players to use Basecamterminal (from Inventory) outside their Base
+   - Picture get more and more noisy by distance
+- Fixed an issue, that new expansion Backpacks could get doubled on restarts
 
 ## [1.3.2.0] - 2019-11-02
 ### Added
