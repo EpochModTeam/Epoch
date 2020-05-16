@@ -28,10 +28,12 @@ params [["_vehicle",objnull],["_items",[]]];
 private ["_subcontainersuffix"];
 _subcontainersuffix = [];
 
-clearweaponcargoglobal _vehicle;
-clearitemcargoglobal _vehicle;
-clearmagazinecargoglobal _vehicle;
-clearbackpackcargoglobal _vehicle;
+if !(_vehicle iskindof "weaponholder") then {
+	clearweaponcargoglobal _vehicle;
+	clearitemcargoglobal _vehicle;
+	clearmagazinecargoglobal _vehicle;
+	clearbackpackcargoglobal _vehicle;
+};
 
 {
 	_objType = _forEachIndex;
