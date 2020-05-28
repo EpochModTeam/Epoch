@@ -4238,7 +4238,7 @@ class CfgPricing
     {
         price = 10;
     };
-    class V_PlateCarroer2_tna_F
+    class V_PlateCarrier2_tna_F
     {
         price = 10;
     };

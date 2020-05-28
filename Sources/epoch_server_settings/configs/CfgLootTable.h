@@ -838,7 +838,7 @@ class CfgLootTable
 	class Pistols_Vanilla
 	{
 		items[] = {
-				{ { "Hgun_Pistol_Signal_F", "weapon" }, 4 },
+				{ { "hgun_Pistol_Signal_F", "weapon" }, 4 },
 				{ { "MultiGun", "weapon" }, 5 },
 				{ { "hgun_Pistol_heavy_01_F", "weapon" }, 9 },
 				{ { "hgun_P07_F", "weapon" }, 10 },
@@ -1756,7 +1756,7 @@ class CfgLootTable
 				{ { "V_PlateCarrierSpec_blk", "item" }, 1 },
 				{ { "V_HarnessO_ghex_F", "item" }, 1 },
 				{ { "V_HarnessOGL_ghex_F", "item" }, 1 },
-				{ { "V_PlateCarroer2_tna_F", "item" }, 1 },
+				{ { "V_PlateCarrier2_tna_F", "item" }, 1 },
 				{ { "V_PlateCarrierGL_tna_F", "item" }, 1 }
 		};
 	};

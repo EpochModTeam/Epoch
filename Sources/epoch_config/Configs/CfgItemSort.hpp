@@ -269,7 +269,7 @@ class CfgItemSort
 			"V_PlateCarrierSpec_blk",
 			"V_HarnessO_ghex_F",
 			"V_HarnessOGL_ghex_F",
-			"V_PlateCarroer2_tna_F",
+			"V_PlateCarrier2_tna_F",
 			"V_PlateCarrierGL_tna_F",
 			"V_PlateCarrier2_blk"
 		};
