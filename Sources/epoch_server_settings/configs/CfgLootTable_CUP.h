@@ -838,7 +838,7 @@ class CfgLootTable_CUP
 	class Pistols_Vanilla
 	{
 		items[] = {
-				{ { "Hgun_Pistol_Signal_F", "weapon" }, 4 },
+				{ { "hgun_Pistol_Signal_F", "weapon" }, 4 },
 				{ { "MultiGun", "weapon" }, 5 },
 				{ { "hgun_Pistol_heavy_01_F", "weapon" }, 9 },
 				{ { "hgun_P07_F", "weapon" }, 10 },
