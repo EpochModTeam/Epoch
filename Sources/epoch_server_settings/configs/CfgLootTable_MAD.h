@@ -1575,7 +1575,13 @@ class CfgLootTable_MAD
 				{ { "U_C_ConstructionCoverall_Black_F", "item" }, 1 },
 				{ { "U_C_ConstructionCoverall_Blue_F", "item" }, 1 },
 				{ { "U_C_Paramedic_01_F", "item" }, 1 },
-				{ { "U_C_Mechanic_01_F", "item" }, 1 }
+				{ { "U_C_Mechanic_01_F", "item" }, 1 },
+				{ { "U_C_IDAP_Man_cargo_F", "item" }, 1 },
+				{ { "U_C_IDAP_Man_jeans_F", "item" }, 1 },
+				{ { "U_C_IDAP_Man_TeeShorts_F", "item" }, 1 },
+				{ { "U_C_IDAP_Man_Tee_F", "item" }, 1 },
+				{ { "U_C_IDAP_Man_casual_F", "item" }, 1 },
+				{ { "U_C_IDAP_Man_shorts_F", "item" }, 1 }
 		};
 	};
 	class Uniforms_Male_ApexDLC

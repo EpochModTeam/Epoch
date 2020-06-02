@@ -27,6 +27,13 @@ All changes for [Arma 3](https://arma3.com/) [Epoch Mod](https://epochmod.com) a
 - Added a Config "BaseCamOnlyHome" in cfgepochclient to allow Players to use Basecamterminal (from Inventory) outside their Base
    - Picture get more and more noisy by distance
 - Fixed an issue, that new expansion Backpacks could get doubled on restarts
+- Added some more IDAP-Uniforms that don't require the Orange-DLC:
+   - U_C_IDAP_Man_cargo_F
+   - U_C_IDAP_Man_jeans_F
+   - U_C_IDAP_Man_TeeShorts_F
+   - U_C_IDAP_Man_Tee_F
+   - U_C_IDAP_Man_casual_F
+   - U_C_IDAP_Man_shorts_F
 
 ## [1.3.2.0] - 2019-11-02
 ### Added
