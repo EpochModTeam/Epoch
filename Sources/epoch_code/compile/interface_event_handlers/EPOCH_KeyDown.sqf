@@ -290,9 +290,9 @@ if (_dikCode in (actionKeys "NightVision")) then {
 if(!_ctrl && (_dikCode in (actionKeys "HeliRopeAction")))then{
 	if (player == vehicle player) exitwith {};
 	_msg = "";
-	if(EPOCH_ArmaSlingLoad)then{
-		if (["CfgEpochClient", "ActionHookRope", true] call EPOCH_fnc_returnConfigEntryV2) then {
-			if(driver vehicle player isEqualTo player)then{
+	if(currentPilot vehicle player isEqualTo player)then{
+		if(EPOCH_ArmaSlingLoad)then{
+			if (["CfgEpochClient", "ActionHookRope", true] call EPOCH_fnc_returnConfigEntryV2) then {
 				_slung = ropeAttachedObjects vehicle player;
 				if(_slung isEqualTo [])then{
 					if!('ItemRope' in magazines player) then {
@@ -305,10 +305,10 @@ if(!_ctrl && (_dikCode in (actionKeys "HeliRopeAction")))then{
 					player addItem 'ItemRope';
 				};
 			};
+		}else{
+			_msg = "Hook/Unhook Malfunction, overrode by R3F or AdvSlingLoad";
+			_handled = true;
 		};
-	}else{
-		_msg = "Hook/Unhook Malfunction, overrode by R3F or AdvSlingLoad";
-		_handled = true;
 	};
 	if!(_msg isEqualTo "")then{
 		[_msg,5,[[0,0,0,0.2],[1,1,1,1]]] call Epoch_message_stack;

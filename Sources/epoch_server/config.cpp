@@ -95,7 +95,6 @@ class CfgServerFunctions
 			class server_save_killedStorage {};
 			class server_save_killedBuilding {};
 			class load_vehicles {};
-			class load_vehicles_old {};
 			class load_storage {};
 			class server_save_storage {};
 			class spawn_vehicles {};
@@ -152,7 +151,7 @@ class CfgServerFunctions
 };
 class CfgServerVersion
 {
-	client = "1.3.2";
-	config = "1.3.2";
+	client = "1.3.3";
+	config = "1.3.3";
 	hive = "0.6.0.0";
 };

@@ -61,7 +61,7 @@ _mycams spawn {
 		Epoch_CamFilmGrain = ppEffectCreate ["FilmGrain", 2000 + 25];
 	};
 	Epoch_CamFilmGrain ppEffectEnable true;
-	_intensity = ((player distance Epoch_ActiveCam) / 10000) min 1;
+	_intensity = ((player distance Epoch_ActiveCam) / 4000) min 1;
 	_sharpness = 1.25 - _intensity;
 	Epoch_CamFilmGrain ppEffectAdjust [_intensity,_sharpness,2.01,0.75,1.0,true];
 	Epoch_CamFilmGrain ppEffectCommit 0;
@@ -81,8 +81,11 @@ _mycams spawn {
 	_EpochCam camSetTarget _targetpos;
 	_EpochCam camCommit 0;
 	_dirs = [5,10,15,20,25,30,35,40,45,40,35,30,25,20,15,10,5,0,-5,-10,-15,-20,-25,-30,-35,-40,-45,-40,-35,-30,-25,-20,-15,-10,-5,0];
+	_GrainUpdateIntervall = 5;
+	_nextgrainupdate = diag_ticktime;
 	while {!isnull _display} do {
 		Epoch_CamAdjust params ["_dir","_height","_zoom"];
+		_playerdist = player distance Epoch_ActiveCam;
 		_AutoCam = Epoch_AutoCam; 
 		if !(_ActiveCam isequalto Epoch_ActiveCam) then {
 			_ActiveCam = Epoch_ActiveCam;
@@ -96,11 +99,14 @@ _mycams spawn {
 			_EpochCam cameraEffect ['internal', 'front'];
 			_EpochCam camCommit 0;
 			_targetheight = ((getposasl Epoch_ActiveCam) select 2)-50;
-			_intensity = ((player distance Epoch_ActiveCam) / 10000) min 1;
+			(_display displayctrl 1000) ctrlsettext format ["Cam %1",(_mycams find Epoch_ActiveCam) + 1];
+		};
+		if (_nextgrainupdate <= diag_ticktime) then {
+			_intensity = (_playerdist / 4000) min 1;
 			_sharpness = 1.25 - _intensity;
 			Epoch_CamFilmGrain ppEffectAdjust [_intensity,_sharpness,2.01,0.75,1.0,true];
-			Epoch_CamFilmGrain ppEffectCommit 0;
-			(_display displayctrl 1000) ctrlsettext format ["Cam %1",(_mycams find Epoch_ActiveCam) + 1];
+			Epoch_CamFilmGrain ppEffectCommit _GrainUpdateIntervall;
+			_nextgrainupdate = diag_ticktime + _GrainUpdateIntervall;
 		};
 		if !(Epoch_AutoCam) then {
 			_targetheight = ((_targetheight + _height) min 50) max -150;

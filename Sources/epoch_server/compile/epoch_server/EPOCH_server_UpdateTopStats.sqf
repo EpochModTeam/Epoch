@@ -24,7 +24,7 @@ if !((_playerUID isequalto '') || (_vars isequalto [])) then {
 	if !(_publicindex isequalto -1) then {
 		_makepublic = _vars select _publicindex;
 	};
-	_tempStats = EPOCH_TopStats;
+	_tempStats = +EPOCH_TopStats;
 	{
 		_ThisStatArr = _x;
 		_playerisin = false;
@@ -51,7 +51,9 @@ if !((_playerUID isequalto '') || (_vars isequalto [])) then {
 			};
 		};
 	} foreach _tempStats;
-	EPOCH_TopStats = _tempStats;
-	["CommunityStats", "0_TopStats", EPOCH_expiresCommunityStats, EPOCH_TopStats] call EPOCH_fnc_server_hiveSETEX;
-	publicvariable "EPOCH_TopStats";
+	if !(EPOCH_TopStats isEqualTo _tempStats) then {
+		EPOCH_TopStats = _tempStats;
+		["CommunityStats", "0_TopStats", EPOCH_expiresCommunityStats, EPOCH_TopStats] call EPOCH_fnc_server_hiveSETEX;
+		publicvariable "EPOCH_TopStats";
+	};
 };

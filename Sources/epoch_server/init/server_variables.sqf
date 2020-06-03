@@ -61,7 +61,6 @@ private _configArray = [
     ["hiveAdminSavePlayerList", true],
     ["hiveAdminCmdTime", 5],
     ["DEBUG_VEH", false],
-    ["useOldLoadVehicles", false],
     ["enableUnitTestOnStart", 0],
     ["forcedVehicleSpawnTable",""],
     ["forcedLootSpawnTable",""]

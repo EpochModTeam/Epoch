@@ -216,11 +216,7 @@ _vehicleSlotLimit = 0;
 {_vehicleSlotLimit = _vehicleSlotLimit + (_x select 1)} forEach _allowedVehiclesList;
 _ReservedVehSlots = [_serverSettingsConfig, "ReservedVehSlots", 50] call EPOCH_fnc_returnConfigEntry;
 _vehicleSlotLimit = _vehicleSlotLimit + _ReservedVehSlots;
-if (EPOCH_useOldLoadVehicles) then {
-    _vehicleSlotLimit call EPOCH_load_vehicles_old;
-} else {
-    _vehicleSlotLimit call EPOCH_load_vehicles;
-};
+_vehicleSlotLimit call EPOCH_load_vehicles;
 diag_log "Epoch: Spawning vehicles";
 _allowedVehiclesListArray = [];
 {

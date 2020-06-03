@@ -13,11 +13,16 @@
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_code/compile/EPOCH_HandleDamage.sqf
 */
 params ["_unit", "_selection", "_damage", "_source", "_projectile", "_hitIndex", "_instigator", "_hitPoint"];
+
+_this call EPOCH_custom_EH_HandleDamage;
+
 if !(_source isEqualTo _unit) then {
-	if ((missionnamespace getvariable ["EPOCH_HandleDamageTimeOut",diag_ticktime]) > diag_ticktime) exitwith {};	// prevent multiple actions here
-	EPOCH_HandleDamageTimeOut = diag_ticktime + 0.1;
+	if ((missionnamespace getvariable ["EPOCH_HandleDamageTimeOut",diag_ticktime]) - diag_ticktime > 5) exitwith {_damage = 1;};
 	switch _projectile do {
 		case "B_EnergyPack": {
+			_damage = 0;
+			if ((missionnamespace getvariable ["EPOCH_HandleDamageTimeOut",diag_ticktime]) > diag_ticktime) exitwith {};	// prevent multiple actions here
+			EPOCH_HandleDamageTimeOut = diag_ticktime + 0.1;
 			if (_source distance _unit > 10) exitwith {};
 			if !(missionnamespace getvariable ["EPOCH_OldRevive",false]) then {
 				_attachments = handgunItems _source;
@@ -58,6 +63,9 @@ if !(_source isEqualTo _unit) then {
 		case "bbag_pvc";
 		case "xbow_tranq";
 		case "tranq_dart": {
+			_damage = 0;
+			if ((missionnamespace getvariable ["EPOCH_HandleDamageTimeOut",diag_ticktime]) > diag_ticktime) exitwith {};	// prevent multiple actions here
+			EPOCH_HandleDamageTimeOut = diag_ticktime + 0.1;
 			if !(lifeState _unit == "INCAPACITATED") then {
 				EPOCH_HandleDamageTimeOut = diag_ticktime + 1;
 				_unit setUnconscious true;
@@ -69,6 +77,7 @@ if !(_source isEqualTo _unit) then {
 		case "B_Swing";
 		case "B_Stick";
 		case "B_Hatchet": {
+			if ((missionnamespace getvariable ["EPOCH_HandleDamageTimeOut",diag_ticktime]) > diag_ticktime) exitwith {};	// prevent multiple actions here
 			if !(lifeState _unit == "INCAPACITATED") then {
 				if ((random 100) < (["CfgEpochClient", "UnconsciousChance", 30] call EPOCH_fnc_returnConfigEntryV2)) then {
 					EPOCH_HandleDamageTimeOut = diag_ticktime + 1;

@@ -14,11 +14,12 @@
 /*[[[cog from arma_config_tools import *; json_to_arma()]]]*/
 class CfgEpochClient
 {
-    epochVersion = "1.3.2";
+    epochVersion = "1.3.3";
     ArmAVersion = 176;
-	debug = "true";  // true = enable extra rpt debug lines, false to disable
+	debug = "false";  // true = enable extra rpt debug lines, false to disable
 	ForceGender = "";	// Force Players to spawn as "Male" or "Female"
 	RemoveLaserfromUAV = "true";	// remove LaserDesignator from assembled UAV's
+	RemoveTIfromUAV = "true";		// remove Thermal from assembled UAV's
 
 	UseOldRevive = "false";		// Revive / Heal Player has been changed to use "HandleDamage" Eventhandler. If scripts are breaking it for you, set it to true (not recommended!)
 	UnconsciousChance = 30;			// Change in percent to get unconscious by a hit with an Axe / Sledge / Sword
@@ -40,6 +41,7 @@ class CfgEpochClient
     baseThirstLoss = 2; // increase number to speed up rate of Thirst loss
 	accelerateHTALoss = "false"; // use server's time acceleration to increase the rate of Hunger, Thirst and Alcohol loss
 
+	SupressBaseSpawnOnHomekillTime = 1200;	// Suppress Base Spawn for xxx seconds, when Player got Killed by an opponent in his own Territory 
     buildingNearbyMilitary = 0; //1 to allow building nearby
     buildingNearbyMilitaryRange = 300; //Define radius of blocked area
     buildingNearbyMilitaryClasses[] = {"Cargo_Tower_base_F","Cargo_HQ_base_F","Cargo_Patrol_base_F","Cargo_House_base_F"};
@@ -54,6 +56,7 @@ class CfgEpochClient
     splitCountLimits = 0;			//1 = distinguish buildingCountLimit from storageCountLimit (ex.: buildingCountLimit=100, storageCountLimit=100 >> you can build 100 baseparts AND additional 100 storage objects like safes, lockboxes...)
 	MaxBuildingTilt = 180;			// Max degrees players can tilt building elements
 	EnablePhysicsOnBuild = "true";	// Building parts need Snap (hold) points to not fall on the ground while building
+	BaseCamOnlyHome = "true";		// set to false, to allow BaseCam usage outside Players PlotPole range (doubleclick on BaseCam Terminal in Inventory)
 	
 	class CfgJammers {
 		class PlotPole_EPOCH 					// Jammer Classname
@@ -261,7 +264,7 @@ class CfgEpochClient
 		{"NPCTrades","Trades at Trader"},
 		{"BuildingsSet","Placed Buildings"},
 		{"CraftedItems","Crafted Items"},
-		{"Karma","Karma","round %1"},
+		{"AntagonistKills","Killed Antagonists"},
 		{"Murders","Player Kills"},
 		{"AIKills","AI Kills"},
 		{"Deaths","Deaths by Player"},
@@ -282,7 +285,7 @@ class CfgEpochClient
     Killed = "_this call EPOCH_fnc_playerDeath;_this call Epoch_custom_EH_Killed";
     HandleRating = "0";
 	HandleScore = "";
-    HandleDamage = "_this call EPOCH_HandleDamage;_this call EPOCH_custom_EH_HandleDamage";
+    HandleDamage = "_this call EPOCH_HandleDamage";
     HandleHeal = "";
     Dammaged = "";
     Hit = "_this call EPOCH_custom_EH_Hit";
@@ -291,7 +294,7 @@ class CfgEpochClient
     GetOutMan = "_this call EPOCH_getOutMan;_this call Epoch_custom_EH_GetOutMan";
 	SeatSwitchedMan = "_this call EPOCH_custom_EH_SeatSwitchedMan";
 	FiredNear = "_this call EPOCH_custom_EH_FiredNear";
-	WeaponAssembled = "clearItemCargoGlobal (_this select 1);if (['CfgEpochClient','RemoveLaserfromUAV',true] call EPOCH_fnc_returnConfigEntryV2) then {(_this select 1) removeWeaponTurret ['Laserdesignator_mounted',[0]]}; if ((_this select 1) isKindOf 'UAV_01_base_F' || (_this select 1) isKindOf 'UAV_06_base_F') then {['UAV assembled - Connect it with DynaMenu (Space)',5] call Epoch_Message}";
+	WeaponAssembled = "clearItemCargoGlobal (_this select 1);if (['CfgEpochClient','RemoveTIfromUAV',true] call EPOCH_fnc_returnConfigEntryV2) then {(_this select 1) disableTIEquipment true}; if (['CfgEpochClient','RemoveLaserfromUAV',true] call EPOCH_fnc_returnConfigEntryV2) then {(_this select 1) removeWeaponTurret ['Laserdesignator_mounted',[0]]}; if ((_this select 1) isKindOf 'UAV_01_base_F' || (_this select 1) isKindOf 'UAV_06_base_F') then {['UAV assembled - Connect it with DynaMenu (Space)',5] call Epoch_Message}";
     // suppress these units from spawning near Jammer or Traders
     nonJammerAI[] = {"B_Heli_Transport_01_F","PHANTOM","EPOCH_Sapper_F","Epoch_SapperG_F","Epoch_SapperB_F","I_UAV_01_F","EPOCH_RyanZombie_1"};
     nonTraderAI[] = {"B_Heli_Transport_01_F","PHANTOM","EPOCH_Sapper_F","Epoch_SapperG_F","Epoch_SapperB_F","I_UAV_01_F","Epoch_Cloak_F","GreatWhite_F","EPOCH_RyanZombie_1"};

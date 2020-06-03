@@ -838,7 +838,7 @@ class CfgLootTable_CUP
 	class Pistols_Vanilla
 	{
 		items[] = {
-				{ { "Hgun_Pistol_Signal_F", "weapon" }, 4 },
+				{ { "hgun_Pistol_Signal_F", "weapon" }, 4 },
 				{ { "MultiGun", "weapon" }, 5 },
 				{ { "hgun_Pistol_heavy_01_F", "weapon" }, 9 },
 				{ { "hgun_P07_F", "weapon" }, 10 },
@@ -1575,7 +1575,13 @@ class CfgLootTable_CUP
 				{ { "U_C_ConstructionCoverall_Black_F", "item" }, 1 },
 				{ { "U_C_ConstructionCoverall_Blue_F", "item" }, 1 },
 				{ { "U_C_Paramedic_01_F", "item" }, 1 },
-				{ { "U_C_Mechanic_01_F", "item" }, 1 }
+				{ { "U_C_Mechanic_01_F", "item" }, 1 },
+				{ { "U_C_IDAP_Man_cargo_F", "item" }, 1 },
+				{ { "U_C_IDAP_Man_jeans_F", "item" }, 1 },
+				{ { "U_C_IDAP_Man_TeeShorts_F", "item" }, 1 },
+				{ { "U_C_IDAP_Man_Tee_F", "item" }, 1 },
+				{ { "U_C_IDAP_Man_casual_F", "item" }, 1 },
+				{ { "U_C_IDAP_Man_shorts_F", "item" }, 1 }
 		};
 	};
 	class Uniforms_Male_ApexDLC
