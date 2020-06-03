@@ -1,7 +1,7 @@
 # Change Log
 All changes for [Arma 3](https://arma3.com/) [Epoch Mod](https://epochmod.com) are listed in this changelog.
 
-## [1.3.3.0] - 2020-05-xx
+## [1.3.3.0] - 2020-06-03
 ### Added
 - Some Dupe fixes
 
