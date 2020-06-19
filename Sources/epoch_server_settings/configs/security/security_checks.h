@@ -16,6 +16,11 @@ class CfgSecConf
 {
     debug = "false";
 
+	class limits
+	{
+		playerCrypto = 1000000;		// Players with more than this amount get automatically banned
+	};
+
     class vehicles {
         safeVehicles[] = {"I_UAV_01_F","B_Heli_Transport_01_F","Steerable_Parachute_F","NonSteerable_Parachute_F","Land_Camping_Light_F","container_epoch"};
     };
