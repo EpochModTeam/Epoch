@@ -120,9 +120,9 @@ diag_log "Epoch: Init Connect/Disconnect handlers";
 onPlayerConnected {}; // seems this is needed or addMissionEventHandler "PlayerConnected" does not work. as of A3 1.60
 addMissionEventHandler ["PlayerConnected", {
     params ["_id","_uid","_name","_jip","_owner"];
-    // TODO: diabled STEAMAPI - Vac ban check needs reworked.
-    // "epochserver" callExtension format["001|%1", _uid];
-    // diag_log format["playerConnected:%1", _this];
+	if !(missionNamespace getVariable ["EPOCH_SERVER_READY", false]) exitwith {
+		['kick',_uid,'Server not fully loaded - retry in a few seconds!'] call EPOCH_serverCommand
+	};
     ["PlayerData", _uid, EPOCH_expiresPlayer, [_name]] call EPOCH_fnc_server_hiveSETEX;
     ['Connected', [_uid, _name]] call EPOCH_fnc_server_hiveLog;
 }];
