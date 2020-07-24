@@ -25,6 +25,7 @@ if ((diag_tickTime - EPOCH_lastMineRocks) >= 2) then {
 		};
 
 		_objects = lineIntersectsWith[eyePos player, _currentPos, player, objNull, true];
+		reverse _objects;
 		_object = objNull;
 
 		_found = false;
