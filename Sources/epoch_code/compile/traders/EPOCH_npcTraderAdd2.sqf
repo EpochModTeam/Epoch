@@ -67,6 +67,10 @@ if !(isNull EPOCH_lastNPCtradeTarget) then {
 				};
 			};
 			if (_allowAdd) then {
+				_BlackMarketPurchaseMulti = ["CfgBlackMarket", "BlackMarketPurchaseMulti", 1] call EPOCH_fnc_returnConfigEntryV2;
+				_BlackMarketSellMulti = ["CfgBlackMarket", "BlackMarketSellMulti", 1] call EPOCH_fnc_returnConfigEntryV2;
+				_Blackmarket_SpecialPrices = ["CfgBlackMarket", "Blackmarket_SpecialPrices", []] call EPOCH_fnc_returnConfigEntryV2;
+			
 				_maxrnd = 1;
 				if ([_uiItem,"cfgMagazines"] call Epoch_fnc_isAny) then {
 					_maxrnd = getnumber (configfile >> "cfgMagazines" >> _uiItem >> "count");
@@ -138,6 +142,14 @@ if !(isNull EPOCH_lastNPCtradeTarget) then {
 						_itemTax = getNumber (_config >> _item >> "tax");
 						_tax = _worth * (EPOCH_taxRate + _itemTax);
 						_worth = ceil(_worth + _tax);
+						if (EPOCH_lastNPCtradeTarget getvariable ["Epoch_BlackMarketTrader",false]) then {
+							_worth = _worth * _BlackMarketPurchaseMulti;
+							{
+								if (_item isEqualTo (_x select 0)) exitwith {
+									_worth = _x select 2;
+								};
+							} foreach _Blackmarket_SpecialPrices;
+						};
 						_maxrnd = 1;
 						if ([_item,"cfgMagazines"] call Epoch_fnc_isAny) then {
 							_maxrnd = getnumber (configfile >> "cfgMagazines" >> _item >> "count");

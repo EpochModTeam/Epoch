@@ -182,11 +182,109 @@ call EPOCH_server_createTeleport;
 
 diag_log "Epoch: Loading NPC traders";
 EPOCH_Traders = [];
+EPOCH_StaticTraders = [];
+Epoch_DynamicTraders = [];
 EPOCH_NPCSlotsLimit call EPOCH_server_loadTraders;
 
 diag_log "Epoch: Spawning NPC traders";
 call EPOCH_server_spawnTraders;
 publicvariable "EPOCH_Traders";
+
+// Start Black Market Traders
+_StaticBlackMarketIdx = ["CfgBlackMarket", "StaticBlackMarketIdx", []] call EPOCH_fnc_returnConfigEntryV2;
+_BlackMarketTraderCount = ["CfgBlackMarket", "BlackMarketTraderCount", 0] call EPOCH_fnc_returnConfigEntryV2;
+_ShowBlackMarketTraders = ["CfgBlackMarket", "ShowBlackMarketTraders", true] call EPOCH_fnc_returnConfigEntryV2;
+_BlackMarketMarkerColor = ["CfgBlackMarket", "BlackMarketMarkerColor", "ColorRed"] call EPOCH_fnc_returnConfigEntryV2;
+_BlackMarketItemsCount = ["CfgBlackMarket", "BlackMarketItemsCount", 100] call EPOCH_fnc_returnConfigEntryV2;
+_BlackMarketUseLootList = ["CfgBlackMarket", "BlackMarketUseLootList", true] call EPOCH_fnc_returnConfigEntryV2;
+_BlackMarketExtraItems = ["CfgBlackMarket", "BlackMarketExtraItems", []] call EPOCH_fnc_returnConfigEntryV2;
+_Blackmarket_BlackList = ["CfgBlackMarket", "Blackmarket_BlackList", []] call EPOCH_fnc_returnConfigEntryV2;
+
+	// Start Calculate The Items for BlackMarkets
+	_lootTableIndex = if (EPOCH_modCUPVehiclesEnabled) then {if (EPOCH_mod_madArma_Enabled) then {3} else {1}} else {if (EPOCH_mod_madArma_Enabled) then {2} else {0}};
+	_lootTableClass = ["CfgLootTable","CfgLootTable_CUP","CfgLootTable_MAD","CfgLootTable_MADCUP"] select _lootTableIndex;
+	if !(EPOCH_forcedLootSpawnTable isEqualTo "") then {
+		_lootTableClass = EPOCH_forcedLootSpawnTable;
+	};
+	_AllowedSpawnItemList = [];
+	_PricingList = (missionConfigFile >> "CfgPricing") call BIS_fnc_getCfgSubClasses;
+	if (_BlackMarketUseLootList) then {
+		_noprice = [];
+		_fncadditems = {
+			_itemsarray = getarray (_this >> "items");
+			{
+				if !((_x select 1) isEqualTo 0) then {
+					if ((_x select 0 select 1) isequalto "CfgLootTable") then {
+						(configfile >> _lootTableClass >> (_x select 0 select 0)) call _fncadditems;
+					}
+					else {
+						if ((_x select 0 select 0) in _PricingList) then {
+							_AllowedSpawnItemList pushbackunique (_x select 0 select 0);
+						}
+						else {
+							if !((_x select 0 select 0) in _noprice) then {
+								diag_log format ["%1 is in your LootTable, but not have a price!!!",(_x select 0 select 0)];
+								_noprice pushback (_x select 0 select 0);
+							};
+						};
+					};
+				};
+			} foreach _itemsarray;
+		};
+		{
+			_tables = (getarray (_x >> "tables"));
+			{
+				_check = _x;
+				if !(_check isEqualType []) then {
+					_check = [_x];
+				};
+				(configfile >> _lootTableClass >> (_check select 0)) call _fncadditems;
+			} foreach _tables;
+		} foreach ("true" configclasses (configfile >> "CfgMainTable"));
+	};
+	_arrtmp = +_AllowedSpawnItemList;
+	_arrtmp = _arrtmp + (_BlackMarketExtraItems select {_x in _PricingList});
+	_arrtmp = _arrtmp - _Blackmarket_BlackList;
+	_arrcnttmp = [];
+	{
+		_arrcnttmp pushback _BlackMarketItemsCount;
+	} foreach _arrtmp;
+	// Convert Starter Trader Magazines from mags to rounds
+	{
+		_maxrnd = 1;
+		if ([_x,"cfgMagazines"] call Epoch_fnc_isAny) then {
+			_maxrnd = getnumber (configfile >> "cfgMagazines" >> _x >> "count");
+		};
+		if (_maxrnd > 1) then {
+			_currentStock = (_arrcnttmp select _foreachindex)*_maxrnd; 
+			_arrcnttmp set [_foreachindex, _currentStock];
+		};
+	} foreach _arrtmp;
+
+	// Check the spawned BlackMarket Traders and handle them
+	_BlackMarketTraders = [];
+	{
+		if (_foreachindex in _StaticBlackMarketIdx) then {
+			_BlackMarketTraders pushback _x;
+		};	
+	} foreach EPOCH_StaticTraders;
+	for "_i" from 1 to _BlackMarketTraderCount do {
+		if (count Epoch_DynamicTraders > 0) then {
+			_trader = selectrandom Epoch_DynamicTraders;
+			Epoch_DynamicTraders = Epoch_DynamicTraders - [_trader];
+			_BlackMarketTraders pushback _trader;
+		};
+	};
+
+	{
+		if (_ShowBlackMarketTraders) then {
+			_markers = ["StaticTrader",getpos _x,"BlackMarket Trader"] call EPOCH_server_createGlobalMarkerSet;
+			{_x setmarkercolor _BlackMarketMarkerColor;} foreach _markers;
+		};
+		_x setVariable ["AI_ITEMS", [_arrtmp,_arrcnttmp], true];
+		_x setvariable ["Epoch_BlackMarketTrader",true,true];
+	} foreach _BlackMarketTraders;
+// End Black Market Traders
 
 if (([_serverSettingsConfig, "ReplaceCarService", false] call EPOCH_fnc_returnConfigEntry)) then {
 	{
