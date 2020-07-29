@@ -278,7 +278,11 @@ _Blackmarket_BlackList = ["CfgBlackMarket", "Blackmarket_BlackList", []] call EP
 
 	{
 		if (_ShowBlackMarketTraders) then {
+			{
+				deletemarker _x;
+			} foreach (_x getVariable["MARKER_REF", []]);
 			_markers = ["StaticTrader",getpos _x,"BlackMarket Trader"] call EPOCH_server_createGlobalMarkerSet;
+			_x setVariable["MARKER_REF", _markers];
 			{_x setmarkercolor _BlackMarketMarkerColor;} foreach _markers;
 		};
 		_x setVariable ["AI_ITEMS", [_arrtmp,_arrcnttmp], true];
