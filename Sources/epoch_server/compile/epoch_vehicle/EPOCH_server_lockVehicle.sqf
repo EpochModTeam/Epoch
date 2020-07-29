@@ -13,7 +13,7 @@
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_server/compile/epoch_vehicle/EPOCH_server_lockVehicle.sqf
 */
 //[[[cog import generate_private_arrays ]]]
-private ["_VehLockMessages","_msg","_crew","_driver","_isLocked","_lockOwner","_lockedOwner","_logic","_playerGroup","_playerUID","_response","_vehLockHiveKey","_vehSlot","_nearhome"];
+private ["_VehLockMessages","_msg","_crew","_driver","_isLocked","_lockOwner","_lockedOwner","_logic","_playerGroup","_playerUID","_response","_vehLockHiveKey","_vehSlot","_nearhome","_lockArr"];
 //[[[end]]]
 params [
     ["_vehicle",objNull,[objNull]],
@@ -33,8 +33,10 @@ _playerUID = getPlayerUID _player;
 _playerGroup = _player getVariable["GROUP", ""];
 
 _lockOwner = _playerUID;
+_lockArr = [_playerUID];
 if (_playerGroup != "") then {
 	_lockOwner = _playerGroup;
+	_lockArr pushbackunique _playerGroup;
 };
 
 _lockedOwner = "-1";
@@ -68,14 +70,14 @@ _crew = [];
 _logic = if !(_crew isEqualTo []) then {
 	if (_player in _crew) then {
 		// allow unlock if player is the driver or is inside the vehicle with out a driver.
-		(_player isEqualTo _driver || isNull(_driver) || _lockedOwner == _lockOwner || !alive _driver)
+		(_player isEqualTo _driver || isNull(_driver) || _lockedOwner in _lockArr || !alive _driver)
 	} else {
 		// allow only if player is already the owner as they are not inside the occupied vehicle.
-		(_lockedOwner == _lockOwner)
+		(_lockedOwner in _lockArr)
 	};
 } else {
 	// vehicle has no crew, so allow only if: unlocked, is already the owner, vehicle has no owner.
-	(!_isLocked || _lockedOwner == _lockOwner || _lockedOwner == "-1")
+	(!_isLocked || _lockedOwner in _lockArr || _lockedOwner == "-1")
 };
 
 // Lockout mech
