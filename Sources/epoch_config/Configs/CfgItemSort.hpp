@@ -1063,7 +1063,7 @@ class CfgItemSort
 
 		Food[] = {
 			"ItemPowderMilk",
-			"ItemRicebox",
+			"ItemRiceBox",
 			"ItemCereals",
 			"Pumpkin",
 			"FoodBioMeat",
