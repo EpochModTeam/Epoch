@@ -18,10 +18,7 @@ private ["_Ignatz_SP_Array","_AmmoConfig","_VehiclesWithAmmo","_VehicleAmmo","_a
 //[[[end]]]
 Ignatz_Refuel = nil;
 Ignatz_Repair = nil;
-Ignatz_Rearm0 = nil;
-Ignatz_Rearm1 = nil;
-Ignatz_Rearm2 = nil;
-Ignatz_Rearm3 = nil;
+Ignatz_Rearm = [];
 
 params ["_myturret"];
 
@@ -106,8 +103,5 @@ if (player == driver _vehicle) then {
 	_actionTitle = [format['Repair %1',getText (configFile >> 'Cfgvehicles' >> typeOf _vehicle >> 'displayName')], _costs] call _fnc_actionTitle;
 	Ignatz_Repair = [_actionTitle,[_vehicle,[_costs, _repairTime]]];
 };
-if (count _Ignatz_SP_Array > 0) then {Ignatz_Rearm0 = _Ignatz_SP_Array select 0;};
-if (count _Ignatz_SP_Array > 1) then {Ignatz_Rearm1 = _Ignatz_SP_Array select 1;};
-if (count _Ignatz_SP_Array > 2) then {Ignatz_Rearm2 = _Ignatz_SP_Array select 2;};
-if (count _Ignatz_SP_Array > 3) then {Ignatz_Rearm3 = _Ignatz_SP_Array select 3;};
+Ignatz_Rearm = _Ignatz_SP_Array;
 true

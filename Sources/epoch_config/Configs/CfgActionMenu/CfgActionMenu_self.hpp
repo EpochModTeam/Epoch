@@ -150,24 +150,45 @@ class ServicePoint
 	};
 	class Rearm0
 	{
-		condition = "!isnil 'Ignatz_Rearm0'";
-		action = "(Ignatz_Rearm0 select 1) call EPOCH_SP_Rearm";
+		condition = "count Ignatz_Rearm > 0";
+		action = "(Ignatz_Rearm select 0 select 1) call EPOCH_SP_Rearm";
         icon = "x\addons\a3_epoch_code\Data\UI\buttons\Rearm.paa";
-		tooltipcode = "Ignatz_Rearm0 select 0";
+		tooltipcode = "Ignatz_Rearm select 0 select 0";
 	};
 	class Rearm1
 	{
-		condition = "!isnil 'Ignatz_Rearm1'";
-		action = "(Ignatz_Rearm1 select 1) call EPOCH_SP_Rearm";
+		condition = "count Ignatz_Rearm > 1";
+		action = "(Ignatz_Rearm select 1 select 1) call EPOCH_SP_Rearm";
         icon = "x\addons\a3_epoch_code\Data\UI\buttons\Rearm.paa";
-		tooltipcode = "Ignatz_Rearm1 select 0";
+		tooltipcode = "Ignatz_Rearm select 1 select 0";
 	};
 	class Rearm2
 	{
-		condition = "!isnil 'Ignatz_Rearm2'";
-		action = "(Ignatz_Rearm2 select 1) call EPOCH_SP_Rearm";
+		condition = "count Ignatz_Rearm > 2";
+		action = "(Ignatz_Rearm select 2 select 1) call EPOCH_SP_Rearm";
         icon = "x\addons\a3_epoch_code\Data\UI\buttons\Rearm.paa";
-		tooltipcode = "Ignatz_Rearm2 select 0";
+		tooltipcode = "Ignatz_Rearm select 2 select 0";
+	};
+	class Rearm3
+	{
+		condition = "count Ignatz_Rearm > 3";
+		action = "(Ignatz_Rearm select 3 select 1) call EPOCH_SP_Rearm";
+        icon = "x\addons\a3_epoch_code\Data\UI\buttons\Rearm.paa";
+		tooltipcode = "Ignatz_Rearm select 3 select 0";
+	};
+	class Rearm4
+	{
+		condition = "count Ignatz_Rearm > 4";
+		action = "(Ignatz_Rearm select 4 select 1) call EPOCH_SP_Rearm";
+        icon = "x\addons\a3_epoch_code\Data\UI\buttons\Rearm.paa";
+		tooltipcode = "Ignatz_Rearm select 4 select 0";
+	};
+	class Rearm5
+	{
+		condition = "count Ignatz_Rearm > 5";
+		action = "(Ignatz_Rearm select 5 select 1) call EPOCH_SP_Rearm";
+        icon = "x\addons\a3_epoch_code\Data\UI\buttons\Rearm.paa";
+		tooltipcode = "Ignatz_Rearm select 5 select 0";
 	};
 };
 class veh_Rearm1
