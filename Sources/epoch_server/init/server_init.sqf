@@ -192,7 +192,7 @@ publicvariable "EPOCH_Traders";
 
 // Start Black Market Traders
 _StaticBlackMarketIdx = ["CfgBlackMarket", "StaticBlackMarketIdx", []] call EPOCH_fnc_returnConfigEntryV2;
-_BlackMarketTraderCount = ["CfgBlackMarket", "BlackMarketTraderCount", 0] call EPOCH_fnc_returnConfigEntryV2;
+_BlackMarketTraderCount = ["CfgBlackMarket", "BlackMarketTraderCount", [0,0]] call EPOCH_fnc_returnConfigEntryV2;
 _ShowBlackMarketTraders = ["CfgBlackMarket", "ShowBlackMarketTraders", true] call EPOCH_fnc_returnConfigEntryV2;
 _BlackMarketMarkerColor = ["CfgBlackMarket", "BlackMarketMarkerColor", "ColorRed"] call EPOCH_fnc_returnConfigEntryV2;
 _BlackMarketItemsCount = ["CfgBlackMarket", "BlackMarketItemsCount", 100] call EPOCH_fnc_returnConfigEntryV2;
@@ -268,7 +268,8 @@ _Blackmarket_BlackList = ["CfgBlackMarket", "Blackmarket_BlackList", []] call EP
 			_BlackMarketTraders pushback _x;
 		};	
 	} foreach EPOCH_StaticTraders;
-	for "_i" from 1 to _BlackMarketTraderCount do {
+	_BlackMarketTraderCount params [["_minmarkets",0],["_maxmarkets",0]];
+	for "_i" from 1 to (round (_minmarkets + random (_maxmarkets - _minmarkets))) do {
 		if (count Epoch_DynamicTraders > 0) then {
 			_trader = selectrandom Epoch_DynamicTraders;
 			Epoch_DynamicTraders = Epoch_DynamicTraders - [_trader];

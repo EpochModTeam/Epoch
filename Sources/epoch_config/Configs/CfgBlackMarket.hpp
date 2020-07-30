@@ -4,7 +4,7 @@ class CfgBlackMarket
 													// will always get set to BlackMarkets
 													// Example: {0,2} will set the 1st and 3rd defined static trader as a BlackMarket
 
-	BlackMarketTraderCount 		= 2;				// 2 Random Traders will be set to BlackMarkets (change every Restart)
+	BlackMarketTraderCount[] 	= {1,2};			// {min,max} Random Traders will be set to BlackMarkets (change every Restart)
 	ShowBlackMarketTraders 		= "true";			// Show Marker for Blackmarket Traders?
 	BlackMarketMarkerColor		= "ColorRed";		// Marker color for Blackmarket Traders (if ShowBlackMarketTraders = "true")
 	BlackMarketPurchaseMulti	= 5;				// Multi on purchase on top of the default price
