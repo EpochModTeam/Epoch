@@ -247,7 +247,7 @@ if (_slot != -1) then {
 											if ((count _tmpposition) == 2) then {
 												_tmpposition set [2, 0];
 												if (surfaceIsWater _tmpposition) then {
-													_tmpposition = ATLtoASL _tmpposition;
+													_tmpposition = ASLtoATL _tmpposition;
 												};
 												_position = _tmpposition;
 											}
