@@ -65,6 +65,7 @@ _ZedSpawnCheck = {
 		if ({vehicle _target iskindof _x} count BlackListedVehicles > 0) exitwith {};
 		if (speed (vehicle _target) > 25) exitwith {};
 		if ({_x distance2d _target < 150} count (missionnamespace getvariable ["Epoch_Plotpoles",[]]) > 0) exitwith {};
+		if ({_x distance2d _target < 300} count NoZedAreas > 0) exitwith {};
 		_OverallZeds = (entities [["EPOCH_RyanZombie_1","RyanZombieCivilian_F"],[],true,false]);
 		_AliveZeds = _OverallZeds select {alive _x};
 		if ((count _AliveZeds) <= MaxOverallZeds) then {

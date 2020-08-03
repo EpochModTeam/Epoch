@@ -25,8 +25,8 @@ if !(isclass (configFile >> "CfgPatches" >> "Ryanzombies")) exitwith {};
 			_dir = direction _zombie;
 			_strength = _zombie call RZ_fnc_zombie_getHumanVelocityStrength;
 			[_target, [(_vel select 0) + (sin _dir * _strength), (_vel select 1) + (cos _dir * _strength), (_vel select 2) + random 1]] remoteExecCall ["fnc_RyanZombies_Velocity"];
+			[] remoteexec ['Epoch_ZedAttack',_target];
 		};
-		[] remoteexec ['Epoch_ZedAttack',_target]; 
 		sleep _attackSpeed;
 	};
 	RZ_fnc_zombie_checkForNewTarget =
