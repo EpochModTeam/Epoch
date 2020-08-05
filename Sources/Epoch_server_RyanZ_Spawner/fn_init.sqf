@@ -1,4 +1,6 @@
-if !(isclass (configFile >> "CfgPatches" >> "Ryanzombies")) exitwith {};
+if !(isclass (configFile >> "CfgPatches" >> "Ryanzombies")) exitwith {
+	diag_log "Epoch Debug: RyanZ Spawner skipped - RyanZombies seems to not run on this Server";
+};
 [] spawn {
 	waituntil {uisleep 1; !isnil "Ryanzombiesdamage" && !isnil "Ryanzombieshealth" && !isnil "Ryanzombieslimit" && !isnil "RZ_fnc_zombie_attackHuman" && !isnil "RZ_CrawlerAggressiveArray"};
 	uisleep 15;
@@ -193,4 +195,5 @@ if !(isclass (configFile >> "CfgPatches" >> "Ryanzombies")) exitwith {};
 			uisleep 0.5;
 		};
 	};
+	diag_log "Epoch Debug: RyanZ Spawner Started";
 };
