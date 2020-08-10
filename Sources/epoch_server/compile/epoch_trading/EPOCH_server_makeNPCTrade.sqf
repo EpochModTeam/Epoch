@@ -211,6 +211,14 @@ if (_slot != -1) then {
 												}
 											} forEach _helipad;
 										};
+										_blacklistpositions = [];
+										{
+											_blacklistpositions pushback [getposatl _x, 5];
+										} foreach (nearestobjects [_player,["Landvehicle","SHIP","AIR"],50]);
+										{
+											_x params ["_blacklistpos","_blacklistradius"];
+											_helipads = _helipads select {_x distance _blacklistpos > _blacklistradius};
+										} foreach _blacklistpositions;
 										if !(_helipads isEqualTo[]) then {
 											_foundSmoke = false;
 											{
@@ -237,12 +245,15 @@ if (_slot != -1) then {
 										}
 										else {
 											_tmpposition = [];
-											if (_item isKindOf "Ship") then {
-												_tmpposition = [_position, 20, 150, 5, 0, 1000, 1] call BIS_fnc_findSafePos;
-												_tmpposition = [_tmpposition, 0, 60, 10, 2, 1000, 0] call BIS_fnc_findSafePos;
-											}
-											else {
-												_tmpposition = [_position, 20, 120, 5, 0, 2000, 0] call BIS_fnc_findSafePos;
+											for "_i" from 1 to 5 do {
+												if (_item isKindOf "Ship") then {
+													_tmpposition = [_position, 20, 150, 5, 0, 1000, 1] call BIS_fnc_findSafePos;
+													_tmpposition = [_tmpposition, 0, 60, 10, 2, 1000, 0, _blacklistpositions] call BIS_fnc_findSafePos;
+												}
+												else {
+													_tmpposition = [_position, 20, 120, 5, 0, 2000, 0, _blacklistpositions] call BIS_fnc_findSafePos;
+												};
+												if ((count _tmpposition) == 2) exitwith {};
 											};
 											if ((count _tmpposition) == 2) then {
 												_tmpposition set [2, 0];
