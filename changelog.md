@@ -10,6 +10,7 @@ All changes for [Arma 3](https://arma3.com/) [Epoch Mod](https://epochmod.com) a
 ### Fixed
 - On farming wracks / cinder, sometimes the more far away object was looted instead of the nearest
 - Purchased Boats from Traders sometimes spawned damaged
+- In some cases, purchased Vehicles spawned on top of already existing vehicles -> crashed
 
 ### Changed
 
