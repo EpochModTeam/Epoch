@@ -24,11 +24,34 @@ _PlayerItemsBox = 41500;
 _PlayerItemsOutBox = 41501;
 _TraderItemsBox = 41503;
 _TraderItemsOutBox = 41502;
+_isPlayerFilter = (ctrlIDC _control == _PlayerFilerDropDown);
+_LbText = _control lbText _index;
 
 _config = 'CfgItemSort' call EPOCH_returnConfig;
 _MainCategoriearray = getarray (_config >> "MainCategories" >> "Classes");
 _FilterArray = [];
 if (_index != 0) then {
+	if (!_isPlayerFilter && _LbText in 
+		[
+			format ["Fits %1",(primaryweapon player) call EPOCH_itemDisplayName],
+			format ["Fits %1",(secondaryweapon player) call EPOCH_itemDisplayName],
+			format ["Fits %1",(handgunweapon player) call EPOCH_itemDisplayName]
+		]
+	) exitwith {
+		_CheckWpnClass = switch _LbText do {
+			case (format ["Fits %1",(primaryweapon player) call EPOCH_itemDisplayName]) : {primaryweapon player};
+			case (format ["Fits %1",(secondaryweapon player) call EPOCH_itemDisplayName]) : {secondaryweapon player};
+			case (format ["Fits %1",(handgunweapon player) call EPOCH_itemDisplayName]) : {handgunweapon player};
+		};
+		_possiblemags = getarray (configfile >> "CfgWeapons" >> _CheckWpnClass >> "magazines");
+		_possibleMuzzles = getarray (configfile >> "CfgWeapons" >> _CheckWpnClass >> "WeaponSlotsInfo" >> "MuzzleSlot" >> "compatibleItems");
+		_possibleScopes = getarray (configfile >> "CfgWeapons" >> _CheckWpnClass >> "WeaponSlotsInfo" >> "CowsSlot" >> "compatibleItems");
+		_possiblePointers = getarray (configfile >> "CfgWeapons" >> _CheckWpnClass >> "WeaponSlotsInfo" >> "PointerSlot" >> "compatibleItems");
+		_possibleUnderBarrel = getarray (configfile >> "CfgWeapons" >> _CheckWpnClass >> "WeaponSlotsInfo" >> "UnderBarrelSlot" >> "compatibleItems");
+		{
+			_FilterArray pushback (tolower _x);
+		} foreach (_possiblemags + _possibleMuzzles + _possibleScopes + _possiblePointers + _possibleUnderBarrel);
+	};
 	{
 		_MainCategorie = _x;
 		if (_index == (_MainCategorie select 0)) then {
@@ -45,7 +68,6 @@ if (_index != 0) then {
 if !(isNull EPOCH_lastNPCtradeTarget) then {
 	_slot = EPOCH_lastNPCtradeTarget getVariable["AI_SLOT", -1];
 	if (_slot != -1) then {
-		_isPlayerFilter = (ctrlIDC _control == _PlayerFilerDropDown);
 		if (_isPlayerFilter) then {
 			lbClear _PlayerItemsBox;
 			{

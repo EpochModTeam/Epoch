@@ -51,6 +51,18 @@ if (alive _target) then {
 			lbAdd [42100,_categorie];
 			lbAdd [42101,_categorie]
 		} forEach _MainCategoriearray;
+		if !(primaryweapon player isEqualTo "") then {
+			_idx = lbAdd [42101,format ["Fits %1",(primaryweapon player) call EPOCH_itemDisplayName]];
+			lbSetColor [42101, _idx, [1, 1, 0, 1]];
+		};
+		if !(secondaryweapon player isEqualTo "") then {
+			_idx = lbAdd [42101,format ["Fits %1",(secondaryweapon player) call EPOCH_itemDisplayName]];
+			lbSetColor [42101, _idx, [1, 1, 0, 1]];
+		};
+		if !(handgunweapon player isEqualTo "") then {
+			_idx = lbAdd [42101,format ["Fits %1",(handgunweapon player) call EPOCH_itemDisplayName]];
+			lbSetColor [42101, _idx, [1, 1, 0, 1]];
+		};
 		lbSetCurSel [42100, 0];
 		lbSetCurSel [42101, 0];
 	};

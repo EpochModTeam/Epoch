@@ -6,6 +6,7 @@ All changes for [Arma 3](https://arma3.com/) [Epoch Mod](https://epochmod.com) a
 - Clear message that the server is not fully loaded when Players login to early
 - Optional Black Market Traders
 - Build in RyanZ Zombiespawner (when RyanZ is enabled on the Server)
+- Trader Filter for useable items on currently equipped weapons
 
 ### Fixed
 - On farming wracks / cinder, sometimes the more far away object was looted instead of the nearest
