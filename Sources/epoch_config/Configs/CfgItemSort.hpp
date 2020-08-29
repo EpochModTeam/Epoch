@@ -1003,7 +1003,7 @@ class CfgItemSort
 			"muzzle_snds_H_snd_F",
 			"muzzle_snds_m_khk_F",
 			"muzzle_snds_m_snd_F",
-			"uzzle_snds_B_khk_F",
+			"muzzle_snds_B_khk_F",
 			"muzzle_snds_B_snd_F",
 			"muzzle_snds_65_TI_ghex_F",
 			"muzzle_snds_65_TI_blk_F",

@@ -2020,7 +2020,7 @@ class CfgLootTable_MADCUP
 		items[] = {
 				{ { "Gems", "CfgLootTable" }, 10 },
 				{ { "Throw", "CfgLootTable" }, 11 },
-				{ { "ThrowExplosive", "magazine" }, 12 },
+				{ { "ThrowExplosive", "CfgLootTable" }, 12 },
 				{ { "MiniGrenade", "magazine" }, 20 },
 				{ { "Medical", "CfgLootTable" }, 21 },
 				{ { "Venom_EPOCH", "magazine" }, 26 }
