@@ -1,7 +1,7 @@
 # Change Log
 All changes for [Arma 3](https://arma3.com/) [Epoch Mod](https://epochmod.com) are listed in this changelog.
 
-## [1.3.3.1] - 2020-xx-xx
+## [1.3.3.1] - 2020-09-01
 ### Added
 - Clear message that the server is not fully loaded when Players login to early
 - Optional Black Market Traders
