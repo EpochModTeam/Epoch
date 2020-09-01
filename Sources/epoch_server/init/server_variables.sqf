@@ -26,6 +26,7 @@ EPOCH_staticNPCTraderPos = [];
 EPOCH_traderStoredVehicles = [];
 EPOCH_traderStoredVehiclesCnt = [];
 Epoch_LootedBuildings = [];
+Epoch_BaseSpawnSkips = [[],[]];
 
 private _configArray = [
 	["serverRestart", false],

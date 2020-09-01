@@ -13,7 +13,7 @@
     https://github.com/EpochModTeam/Epoch/tree/release/Sources/epoch_code/compile/traders/EPOCH_startNPCTraderMenu.sqf
 */
 
-private ["_config","_MainCategoriearray","_target","_slot","_index","_ok","_categorie"];
+private ["_config","_MainCategoriearray","_target","_slot","_index","_ok","_categorie","_idx"];
 _config = 'CfgItemSort' call EPOCH_returnConfig;
 _MainCategoriearray = getarray (_config >> "MainCategories" >> "Classes");
 _target = cursorTarget;
@@ -46,12 +46,28 @@ if (alive _target) then {
 		if (!_ok) exitWith {};
 		9992 cutRsc["EpochGameUI2", "PLAIN", 2, false];
 		((uiNamespace getVariable "EPOCH_EpochGameUI2") displayCtrl 21208) ctrlSetText format["%1", EPOCH_playerCrypto];
+		_idx = 0;
+		if !(primaryweapon player isEqualTo "") then {
+			lbAdd [42101,format ["Fits your %1",(primaryweapon player) call EPOCH_itemDisplayName]];
+			lbSetColor [42101, _idx, [1, 1, 0, 1]];
+			_idx = _idx + 1;
+		};
+		if !(secondaryweapon player isEqualTo "") then {
+			lbAdd [42101,format ["Fits your %1",(secondaryweapon player) call EPOCH_itemDisplayName]];
+			lbSetColor [42101, _idx, [1, 1, 0, 1]];
+			_idx = _idx + 1;
+		};
+		if !(handgunweapon player isEqualTo "") then {
+			lbAdd [42101,format ["Fits your %1",(handgunweapon player) call EPOCH_itemDisplayName]];
+			lbSetColor [42101, _idx, [1, 1, 0, 1]];
+			_idx = _idx + 1;
+		};
 		{
-			_categorie = _x select 1;
+			_categorie = _x select 0;
 			lbAdd [42100,_categorie];
-			lbAdd [42101,_categorie]
+			lbAdd [42101,_categorie];
 		} forEach _MainCategoriearray;
 		lbSetCurSel [42100, 0];
-		lbSetCurSel [42101, 0];
+		lbSetCurSel [42101, _idx];
 	};
 };

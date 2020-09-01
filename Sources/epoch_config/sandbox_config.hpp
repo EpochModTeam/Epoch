@@ -66,6 +66,7 @@ showHUD[] =
 	true 	// Vehicle display panels
 };
 
+#include "Configs\CfgBlackMarket.hpp"
 #include "Configs\CfgServicePoint.hpp"
 #include "Configs\CfgItemSort.hpp"
 #include "Configs\CfgTraderMissions.hpp"

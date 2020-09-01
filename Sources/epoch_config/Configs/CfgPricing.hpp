@@ -2014,7 +2014,7 @@ class CfgPricing
     {
         price = 2;
     };
-    class ItemRicebox
+    class ItemRiceBox
     {
         price = 3;
     };
@@ -5985,7 +5985,7 @@ class CfgPricing
 	{
 	 price = 7;
 	};
-	class U_C_ConstructionCoverall_vrana_F
+	class U_C_ConstructionCoverall_Vrana_F
 	{
 	 price = 7;
 	};

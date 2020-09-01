@@ -159,6 +159,7 @@ for "_i" from 0 to (_maxTraderLimit-1) do {
 			_markers = ["StaticTrader",_pos] call EPOCH_server_createGlobalMarkerSet;
 			_agent setVariable["MARKER_REF", _markers];
 		};
+		EPOCH_StaticTraders pushback _agent;
 	} 
 	else {
 		// Spawn dynamic traders
@@ -200,6 +201,7 @@ for "_i" from 0 to (_maxTraderLimit-1) do {
 						_markers = ["DynamicTrader",_pos] call EPOCH_server_createGlobalMarkerSet;
 						_agent setVariable["MARKER_REF", _markers];
 					};
+					Epoch_DynamicTraders pushback _agent;
 				}
 				else {
 //					diag_log format ["EPOCH_DEBUG: TraderSlot: %1 | Supressed Trader Load - Too much items (%2) and will respawn",_i,count (_arr select 0)];

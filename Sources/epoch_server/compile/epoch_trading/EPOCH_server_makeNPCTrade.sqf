@@ -24,6 +24,10 @@ params ["_trader","_itemsIn","_itemsOut","_player",["_token","",[""]] ];
 _playerUID = getplayeruid _player;
 
 _EnableTempVehTrade = ["CfgEpochClient", "EnableTempVehTrade", false] call EPOCH_fnc_returnConfigEntryV2;
+_BlackMarketPurchaseMulti = ["CfgBlackMarket", "BlackMarketPurchaseMulti", 1] call EPOCH_fnc_returnConfigEntryV2;
+_BlackMarketSellMulti = ["CfgBlackMarket", "BlackMarketSellMulti", 1] call EPOCH_fnc_returnConfigEntryV2;
+_Blackmarket_SpecialPrices = ["CfgBlackMarket", "Blackmarket_SpecialPrices", []] call EPOCH_fnc_returnConfigEntryV2;
+
 _serverSettingsConfig = configFile >> "CfgEpochServer";
 _vehicleSold = false;
 _vehicleBought = false;
@@ -63,6 +67,14 @@ if (_slot != -1) then {
 		_x params ["_item","_itemQty"];
 		if (isClass (_config >> _item)) then {
 			_itemWorth = getNumber(_config >> _item >> "price");
+			if (_trader getvariable ["Epoch_BlackMarketTrader",false]) then {
+				_itemWorth = _itemWorth * _BlackMarketSellMulti;
+				{
+					if (_item isEqualTo (_x select 0)) exitwith {
+						_itemWorth = _x select 1;
+					};
+				} foreach _Blackmarket_SpecialPrices;
+			};
 			_maxrnd = 1;
 			if ([_item,"cfgMagazines"] call Epoch_fnc_isAny) then {
 				_maxrnd = getnumber (configfile >> "cfgMagazines" >> _item >> "count");
@@ -157,6 +169,14 @@ if (_slot != -1) then {
 				_itemTax = getNumber(_config >> _item >> "tax");
 				_tax = _itemWorth * (EPOCH_taxRate + _itemTax);
 				_itemWorth = ceil (_itemWorth + _tax);
+				if (_trader getvariable ["Epoch_BlackMarketTrader",false]) then {
+					_itemWorth = _itemWorth * _BlackMarketPurchaseMulti;
+					{
+						if (_item isEqualTo (_x select 0)) exitwith {
+							_itemWorth = _x select 2;
+						};
+					} foreach _Blackmarket_SpecialPrices;
+				};
 				_maxrnd = 1;
 				if ([_item,"cfgMagazines"] call Epoch_fnc_isAny) then {
 					_maxrnd = getnumber (configfile >> "cfgMagazines" >> _item >> "count");
@@ -191,6 +211,14 @@ if (_slot != -1) then {
 												}
 											} forEach _helipad;
 										};
+										_blacklistpositions = [];
+										{
+											_blacklistpositions pushback [getposatl _x, 5];
+										} foreach (nearestobjects [_player,["Landvehicle","SHIP","AIR"],50]);
+										{
+											_x params ["_blacklistpos","_blacklistradius"];
+											_helipads = _helipads select {_x distance _blacklistpos > _blacklistradius};
+										} foreach _blacklistpositions;
 										if !(_helipads isEqualTo[]) then {
 											_foundSmoke = false;
 											{
@@ -217,17 +245,20 @@ if (_slot != -1) then {
 										}
 										else {
 											_tmpposition = [];
-											if (_item isKindOf "Ship") then {
-												_tmpposition = [_position, 20, 150, 5, 0, 1000, 1] call BIS_fnc_findSafePos;
-												_tmpposition = [_tmpposition, 0, 60, 10, 2, 1000, 0] call BIS_fnc_findSafePos;
-											}
-											else {
-												_tmpposition = [_position, 20, 120, 5, 0, 2000, 0] call BIS_fnc_findSafePos;
+											for "_i" from 1 to 5 do {
+												if (_item isKindOf "Ship") then {
+													_tmpposition = [_position, 20, 150, 5, 0, 1000, 1] call BIS_fnc_findSafePos;
+													_tmpposition = [_tmpposition, 0, 60, 10, 2, 1000, 0, _blacklistpositions] call BIS_fnc_findSafePos;
+												}
+												else {
+													_tmpposition = [_position, 20, 120, 5, 0, 2000, 0, _blacklistpositions] call BIS_fnc_findSafePos;
+												};
+												if ((count _tmpposition) == 2) exitwith {};
 											};
 											if ((count _tmpposition) == 2) then {
 												_tmpposition set [2, 0];
 												if (surfaceIsWater _tmpposition) then {
-													_tmpposition = ATLtoASL _tmpposition;
+													_tmpposition = ASLtoATL _tmpposition;
 												};
 												_position = _tmpposition;
 											}
@@ -323,9 +354,11 @@ if (_slot != -1) then {
 	};
 	_tradeTotal = _tradeIn + _tradeOut;
 	if !(_returnIn isequalto [] && _returnOut isEqualTo []) then {
-		_trader setVariable["AI_ITEMS", [_itemClasses, _itemQtys], true];
-		_objHiveKey = format["%1:%2", (call EPOCH_fn_InstanceID), _slot];
-		["AI_ITEMS", _objHiveKey, EPOCH_expiresAIdata, [_itemClasses, _itemQtys]] call EPOCH_fnc_server_hiveSETEX;
+		if !(_trader getvariable ["Epoch_BlackMarketTrader",false]) then {
+			_trader setVariable["AI_ITEMS", [_itemClasses, _itemQtys], true];
+			_objHiveKey = format["%1:%2", (call EPOCH_fn_InstanceID), _slot];
+			["AI_ITEMS", _objHiveKey, EPOCH_expiresAIdata, [_itemClasses, _itemQtys]] call EPOCH_fnc_server_hiveSETEX;
+		};
 		if !(_tradeTotal isequalto 0) then {
 			_playerCryptoLimit = EPOCH_customVarLimits select _cIndex;
 			_playerCryptoLimit params ["_playerCryptoLimitMax","_playerCryptoLimitMin"];

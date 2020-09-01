@@ -1,6 +1,28 @@
 # Change Log
 All changes for [Arma 3](https://arma3.com/) [Epoch Mod](https://epochmod.com) are listed in this changelog.
 
+## [1.3.3.1] - 2020-09-01
+### Added
+- Clear message that the server is not fully loaded when Players login to early
+- Optional Black Market Traders
+- Build in RyanZ Zombiespawner (when RyanZ is enabled on the Server)
+- Trader Filter for useable items on currently equipped weapons
+
+### Fixed
+- On farming wracks / cinder, sometimes the more far away object was looted instead of the nearest
+- Purchased Boats from Traders sometimes spawned damaged
+- In some cases, purchased Vehicles spawned on top of already existing vehicles -> crashed
+
+### Changed
+
+### Server Owners
+- Added missing predefined variable "Epoch_BaseSpawnSkips" (no issues, just a rpt error)
+- Krypto Limit from 250000 to 1000000 to prevent unwanted bans
+- Some loot positions were not in correct syntax
+- Black Market Traders can be configured within CfgBlackMarket.hpp (within the mission file)
+- RyanZ Zombiespawner can be configured within epoch_server_RyanZ_Spawner.pbo (server side)
+   - To disable this spawner, you can remove this pbo from your Server
+
 ## [1.3.3.0] - 2020-06-03
 ### Added
 - Some Dupe fixes

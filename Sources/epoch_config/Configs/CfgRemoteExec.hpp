@@ -26,6 +26,10 @@ class CfgRemoteExec
     {
         mode = 1;
         jip = 0;
+		class Epoch_ZedSpawner {
+		  allowedTargets=2;
+		  jip = 0;
+		};
 		class EPOCH_server_spawnLoot
 		{
 		  allowedTargets=2;

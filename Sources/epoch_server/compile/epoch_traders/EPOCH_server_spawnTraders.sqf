@@ -120,6 +120,7 @@ for "_i" from 1 to _spawnCount do {
 					};
 					EPOCH_Traders pushback _agent;
 					_Traderblocks pushback [getpos _agent, _TraderMinDistance];
+					Epoch_DynamicTraders pushback _agent;
 				};
 			};
 		};

@@ -24,15 +24,38 @@ _PlayerItemsBox = 41500;
 _PlayerItemsOutBox = 41501;
 _TraderItemsBox = 41503;
 _TraderItemsOutBox = 41502;
+_isPlayerFilter = (ctrlIDC _control == _PlayerFilerDropDown);
+_LbText = _control lbText _index;
 
 _config = 'CfgItemSort' call EPOCH_returnConfig;
 _MainCategoriearray = getarray (_config >> "MainCategories" >> "Classes");
 _FilterArray = [];
-if (_index != 0) then {
+if !((tolower _LbText) isEqualTo "all") then {
+	if (!_isPlayerFilter && _LbText in 
+		[
+			format ["Fits your %1",(primaryweapon player) call EPOCH_itemDisplayName],
+			format ["Fits your %1",(secondaryweapon player) call EPOCH_itemDisplayName],
+			format ["Fits your %1",(handgunweapon player) call EPOCH_itemDisplayName]
+		]
+	) exitwith {
+		_CheckWpnClass = switch _LbText do {
+			case (format ["Fits your %1",(primaryweapon player) call EPOCH_itemDisplayName]) : {primaryweapon player};
+			case (format ["Fits your %1",(secondaryweapon player) call EPOCH_itemDisplayName]) : {secondaryweapon player};
+			case (format ["Fits your %1",(handgunweapon player) call EPOCH_itemDisplayName]) : {handgunweapon player};
+		};
+		_possiblemags = getarray (configfile >> "CfgWeapons" >> _CheckWpnClass >> "magazines");
+		_possibleMuzzles = getarray (configfile >> "CfgWeapons" >> _CheckWpnClass >> "WeaponSlotsInfo" >> "MuzzleSlot" >> "compatibleItems");
+		_possibleScopes = getarray (configfile >> "CfgWeapons" >> _CheckWpnClass >> "WeaponSlotsInfo" >> "CowsSlot" >> "compatibleItems");
+		_possiblePointers = getarray (configfile >> "CfgWeapons" >> _CheckWpnClass >> "WeaponSlotsInfo" >> "PointerSlot" >> "compatibleItems");
+		_possibleUnderBarrel = getarray (configfile >> "CfgWeapons" >> _CheckWpnClass >> "WeaponSlotsInfo" >> "UnderBarrelSlot" >> "compatibleItems");
+		{
+			_FilterArray pushback (tolower _x);
+		} foreach (_possiblemags + _possibleMuzzles + _possibleScopes + _possiblePointers + _possibleUnderBarrel);
+	};
 	{
 		_MainCategorie = _x;
-		if (_index == (_MainCategorie select 0)) then {
-			_subcategories = _MainCategorie select 2;
+		_MainCategorie params ["_category","_subcategories"];
+		if (_LbText isEqualTo _category) then {
 			{
 				_SubCategorieItems = getArray (_config >> "SubCatergories" >> _x);
 				{
@@ -45,7 +68,6 @@ if (_index != 0) then {
 if !(isNull EPOCH_lastNPCtradeTarget) then {
 	_slot = EPOCH_lastNPCtradeTarget getVariable["AI_SLOT", -1];
 	if (_slot != -1) then {
-		_isPlayerFilter = (ctrlIDC _control == _PlayerFilerDropDown);
 		if (_isPlayerFilter) then {
 			lbClear _PlayerItemsBox;
 			{
@@ -71,7 +93,7 @@ if !(isNull EPOCH_lastNPCtradeTarget) then {
 					if (_qty < 1) then {
 						_tooltip = format ["%1 rounds left in Magazine",_rounds];
 					};
-					if (_index == 0 || (tolower _item) in _FilterArray) then {
+					if ((tolower _LbText) isEqualTo "all" || (tolower _item) in _FilterArray) then {
 						_id = lbAdd [_PlayerItemsBox, (_item call EPOCH_itemDisplayName) + (if (_onHand) then {" (in Hand)"} else {""})];
 						lbSetData [_PlayerItemsBox, _id, _item];
 						lbSetValue [_PlayerItemsBox, _id, _rounds];
@@ -102,7 +124,7 @@ if !(isNull EPOCH_lastNPCtradeTarget) then {
 				{
 					if (local _x) then {
 						_type = typeOf _x;
-						if (_index == 0 || (tolower _type) in _FilterArray) then {
+						if ((tolower _LbText) isEqualTo "all" || (tolower _type) in _FilterArray) then {
 							_itemCount = { typeOf _x == _type } count _vehicles;
 							_itemOfferCount = { _x == _type } count _VehOfferArray;
 							if (_itemCount > _itemOfferCount) then {
@@ -133,7 +155,7 @@ if !(isNull EPOCH_lastNPCtradeTarget) then {
 				{
 					_x params ["_displayname","_item","_rounds"];
 					if !(_item isequalto "") then {
-						if (_index == 0 || (tolower _item) in _FilterArray) then {
+						if ((tolower _LbText) isEqualTo "all" || (tolower _item) in _FilterArray) then {
 							_maxrnd = 1;
 							_tooltip = "";
 							if ([_item,"cfgMagazines"] call Epoch_fnc_isAny) then {

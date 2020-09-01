@@ -5,14 +5,14 @@ class CfgItemSort
 	class MainCategories
 	{
 		classes[] = {
-			{0,"All",{}},
-			{1,"Clothings / Backpacks",{"Uniforms","Vests","HeadGear","Backpacks"}},
-			{2,"Weapons",{"Weapons","Handweapons"}},
-			{3,"Magazines / Attachments",{"Magazines","Attachments"}},
-			{4,"Equipment / Explosives",{"Equipment","Explosive","Hand"}},
-			{5,"Medical / Food",{"Medical","Food","Drink"}},
-			{6,"Items / Basebuilding",{"Basebuilding","Items"}},
-			{7,"Vehicles",{"Vehicles_Land","Vehicles_Air","Vehicles_Ship"}}
+			{"All",{}},		// Category "All" is hardcoded and do not need an array of subcategories!
+			{"Clothings / Backpacks",{"Uniforms","Vests","HeadGear","Backpacks"}},
+			{"Weapons",{"Weapons","Handweapons"}},
+			{"Magazines / Attachments",{"Magazines","Attachments"}},
+			{"Equipment / Explosives",{"Equipment","Explosive","Hand"}},
+			{"Medical / Food",{"Medical","Food","Drink"}},
+			{"Items / Basebuilding",{"Basebuilding","Items"}},
+			{"Vehicles",{"Vehicles_Land","Vehicles_Air","Vehicles_Ship"}}
 		};
 	};
 	class SubCatergories
@@ -1003,7 +1003,7 @@ class CfgItemSort
 			"muzzle_snds_H_snd_F",
 			"muzzle_snds_m_khk_F",
 			"muzzle_snds_m_snd_F",
-			"uzzle_snds_B_khk_F",
+			"muzzle_snds_B_khk_F",
 			"muzzle_snds_B_snd_F",
 			"muzzle_snds_65_TI_ghex_F",
 			"muzzle_snds_65_TI_blk_F",
@@ -1063,7 +1063,7 @@ class CfgItemSort
 
 		Food[] = {
 			"ItemPowderMilk",
-			"ItemRicebox",
+			"ItemRiceBox",
 			"ItemCereals",
 			"Pumpkin",
 			"FoodBioMeat",

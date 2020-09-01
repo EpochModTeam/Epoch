@@ -8,7 +8,7 @@ forceRestartTime      = 14400; 			// 4 hour restarts
 
 // Loot (Check CfgBuildingLootPos.hpp in mission file for more settings)
 	lootMultiplier 		= 1; 			// 1 = normal loot multiplier. This controls how much loot can payout per loot container.
-	UseLootHelper		= "true";		// GroundLoot will get a visible sphere for better loot identification
+	UseLootHelper		= "false";		// GroundLoot will get a visible sphere for better loot identification
 
 // Events
 	WeatherChances[] = {

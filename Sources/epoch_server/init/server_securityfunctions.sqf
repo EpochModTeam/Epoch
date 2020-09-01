@@ -30,7 +30,7 @@ _cfg_remoteExecClient = (_config >> "remoteExecClient");
 _remoteExecClient_NAMES = [_cfg_remoteExecClient, "functions", []] call EPOCH_fnc_returnConfigEntry;
 
 _cfg_limits = (_config >> "limits");
-_skn_playerCryptoLimit = [_cfg_limits, "playerCrypto", 250000] call EPOCH_fnc_returnConfigEntry;
+_skn_playerCryptoLimit = [_cfg_limits, "playerCrypto", 1000000] call EPOCH_fnc_returnConfigEntry;
 
 _cfg_learning		  = (_config >> "learning");
 _skn_trustedUsers	  = [_cfg_learning,"trustedUsers",[]] call EPOCH_fnc_returnConfigEntry;

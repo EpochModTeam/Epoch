@@ -471,7 +471,7 @@ class CfgLootTable_MADCUP
 				{ { "gyro_wrap_epoch", "magazine" }, 4 },
 				{ { "icecream_epoch", "magazine" }, 3 },
 				{ { "ItemPowderMilk", "magazine" }, 3 },
-				{ { "ItemRicebox", "magazine" }, 3 },
+				{ { "ItemRiceBox", "magazine" }, 3 },
 				{ { "ItemCereals", "magazine" }, 3 },
 				{ { "ItemVitamins", "magazine" }, 3 },
 				{ { "honey_epoch", "magazine" }, 5 },
@@ -1571,7 +1571,7 @@ class CfgLootTable_MADCUP
 	{
 		items[] = {
 				{ { "U_C_ConstructionCoverall_Red_F", "item" }, 1 },
-				{ { "U_C_ConstructionCoverall_vrana_F", "item" }, 1 },
+				{ { "U_C_ConstructionCoverall_Vrana_F", "item" }, 1 },
 				{ { "U_C_ConstructionCoverall_Black_F", "item" }, 1 },
 				{ { "U_C_ConstructionCoverall_Blue_F", "item" }, 1 },
 				{ { "U_C_Paramedic_01_F", "item" }, 1 },
@@ -2020,7 +2020,7 @@ class CfgLootTable_MADCUP
 		items[] = {
 				{ { "Gems", "CfgLootTable" }, 10 },
 				{ { "Throw", "CfgLootTable" }, 11 },
-				{ { "ThrowExplosive", "magazine" }, 12 },
+				{ { "ThrowExplosive", "CfgLootTable" }, 12 },
 				{ { "MiniGrenade", "magazine" }, 20 },
 				{ { "Medical", "CfgLootTable" }, 21 },
 				{ { "Venom_EPOCH", "magazine" }, 26 }
