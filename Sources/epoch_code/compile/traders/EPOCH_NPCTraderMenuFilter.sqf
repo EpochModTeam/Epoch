@@ -48,9 +48,14 @@ if !((tolower _LbText) isEqualTo "all") then {
 		_possibleScopes = getarray (configfile >> "CfgWeapons" >> _CheckWpnClass >> "WeaponSlotsInfo" >> "CowsSlot" >> "compatibleItems");
 		_possiblePointers = getarray (configfile >> "CfgWeapons" >> _CheckWpnClass >> "WeaponSlotsInfo" >> "PointerSlot" >> "compatibleItems");
 		_possibleUnderBarrel = getarray (configfile >> "CfgWeapons" >> _CheckWpnClass >> "WeaponSlotsInfo" >> "UnderBarrelSlot" >> "compatibleItems");
+		_possibleExtrMuzzlesStr = (getarray (configfile >> "CfgWeapons" >> _CheckWpnClass >> "muzzles")) param [1,""];
+		_possibleExtrMuzzles = [];
+		if !(_possibleExtrMuzzlesStr isEqualTo "") then {
+			_possibleExtrMuzzles = getarray (configfile >> "CfgWeapons" >> _CheckWpnClass >> _possibleExtrMuzzlesStr >> "magazines");
+		};
 		{
 			_FilterArray pushback (tolower _x);
-		} foreach (_possiblemags + _possibleMuzzles + _possibleScopes + _possiblePointers + _possibleUnderBarrel);
+		} foreach (_possiblemags + _possibleMuzzles + _possibleScopes + _possiblePointers + _possibleUnderBarrel + _possibleExtrMuzzles);
 	};
 	{
 		_MainCategorie = _x;
