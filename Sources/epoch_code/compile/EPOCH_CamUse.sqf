@@ -111,7 +111,7 @@ _mycams spawn {
 		if !(Epoch_AutoCam) then {
 			_targetheight = ((_targetheight + _height) min (((getposasl Epoch_ActiveCam) select 2)-50)) max -150;
 			_CamDir = ((_CamDir + _dir) max -45) min 45;
-			_CamFov = ((_CamFov + _zoom) min 1.25) max 0.35;
+			_CamFov = ((_CamFov + _zoom) min 1.25) max 0.15;
 		}
 		else {
 			_targetheight = ((getposasl Epoch_ActiveCam) select 2)-50;
