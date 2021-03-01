@@ -338,11 +338,11 @@ if (!isnull (finddisplay -1200) && !isnull Epoch_ActiveCam) then {
 		};
 		case Epoch_KB_BaseCamUp: {	/* Num 8 */
 			Epoch_AutoCam = false;
-			Epoch_CamAdjust = [0,8*_multi,0];
+			Epoch_CamAdjust = [0,10*_multi,0];
 		};
 		case Epoch_KB_BaseCamDown: {	/* Num 2 */
 			Epoch_AutoCam = false;
-			Epoch_CamAdjust = [0,-8*_multi,0];
+			Epoch_CamAdjust = [0,-10*_multi,0];
 		};
 		case Epoch_KB_BaseCamZoomOut: {	/* Num - */
 			Epoch_AutoCam = false;
