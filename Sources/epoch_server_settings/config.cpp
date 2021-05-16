@@ -473,4 +473,5 @@ class CfgEpoch
     #include "configs\maps\Winthera3.h"
 	#include "configs\maps\lythium.h"
 	#include "configs\maps\Enoch.h"
+	#include "configs\maps\Cam_Lao_Nam.h"
 };
