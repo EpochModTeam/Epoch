@@ -25,6 +25,9 @@ if !(isNull _object) then {
 	if (_classOverride != "") then {
 		_objectClass = _classOverride;
 	};
+	if ((_object isKindOf "RyanZombieC_man_1") || (_object isKindOf "RyanZombieB_Soldier_base_F")) then {
+		_objectClass = "EPOCH_RyanZombie_1";
+	};
 	deleteVehicle _object;
 	_item = createVehicle["groundWeaponHolder", [0,0,0], [], 0.0, "CAN_COLLIDE"];
 	if (_objectClass isequalto "GreatWhite_F") then {
