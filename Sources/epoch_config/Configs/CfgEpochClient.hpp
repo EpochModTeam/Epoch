@@ -402,6 +402,7 @@ class CfgEpochClient
     #include "CfgEpochClient\Altis.hpp"
     #include "CfgEpochClient\australia.hpp"
     #include "CfgEpochClient\Bornholm.hpp"
+    #include "CfgEpochClient\Cam_Lao_Nam.hpp"
     #include "CfgEpochClient\Chernarus_Summer.hpp"
     #include "CfgEpochClient\Chernarus.hpp"
 	#include "CfgEpochClient\ChernarusRedux.hpp"
