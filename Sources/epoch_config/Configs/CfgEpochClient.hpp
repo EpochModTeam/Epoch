@@ -24,6 +24,8 @@ class CfgEpochClient
 	RemoveLaserfromUAV = "true";				// remove LaserDesignator from assembled UAV's
 	RemoveTIfromUAV = "true";					// remove Thermal from assembled UAV's
 
+	bankTransferTime[] = {0.0006,1.2,0.06};
+
 	niteLight[] = {1,1.88,22}; 					// A "local" light in darkness above the Player {1 (Enable) / 0 (Disable), Brightness of light, Height of light above Player}
 												// Default: (Low Ambient): {1,1.88,22} | Twilight: {1,7.2,88} | Distant: {1,12.8,142}
 
@@ -39,9 +41,6 @@ class CfgEpochClient
 	playerLocationMarkerGPSOnly = 1; 			// Map marker toggle in map dyna menu with assigned GPS only
 	playerDeathMarkerGPSOnly = 1; 				// Map marker toggle in map dyna menu on death with assigned GPS only
 	mapOnZoomSetMarkerSize = 1; 				// When in map markers will change to larger size as player zooms in
-	bankTransferTime[] = {0.0006,1.2,0.06};
-	EnableTempVehTrade = "false";				// Enable selling of temp Vehicles (not handled by Epoch). Temp Vehicles will not be stored in Traders, but can be sold
-	BulletCalculateOnCraft = "true";			// Enable Bullet Calculation on Crafting - Example: If you craft a large EnergyPack with 3 half full EnergyPacks, you will only get a half filled large EnergyPack back
 
 // Radiation
 	outOfBoundsRadiation = 10; 					// how much rads per tick (10sec), when outside play area.
@@ -173,6 +172,7 @@ class CfgEpochClient
 
 	DefuseBombChance = 0.6;						// Chance for successfully defuse a bomb -> If fail, the bomb will explode
 	DisableDoorInteractForACE = "true";			// If true, Door-Interactions from ACE-Mod will be blocked (no effect, if ACE is not running)
+	BulletCalculateOnCraft = "true";			// Enable Bullet Calculation on Crafting - Example: If you craft a large EnergyPack with 3 half full EnergyPacks, you will only get a half filled large EnergyPack back
 
 // Interface
 	epochMessageBackgroundCol[] = {0,0,0,0.2};  // Epoch_message background color (format: {R,G,B,A})
@@ -315,6 +315,7 @@ class CfgEpochClient
 
 // Vehicle Settings
 	DisallowSellOnDamage = "false";		// Prevent from selling Vehicles with one or more fully damaged wheel or engine
+	EnableTempVehTrade = "false";		// Enable selling of temp Vehicles (spawned in manually / by 3rd party mods). Temp Vehicles will not be stored in Traders, but can be sold
 	MaxVehTradeDist = 30;				// Max distance where Players can sell Vehicles to Traders
 	UseAdvancedVehicleRepair = "true";	// Switch On / Off Advanced Vehicle Repair (Does not effect SuppressedCraftingItems !)
 	EnableRemoveParts = "true";			// Enable removing Tires / Engines from Vehicles
