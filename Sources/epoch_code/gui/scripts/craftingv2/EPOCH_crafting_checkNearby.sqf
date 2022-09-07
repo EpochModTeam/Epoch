@@ -22,7 +22,7 @@ switch (_type) do {
 	case 0:
 	{
 		private ["_test1","_test2","_find"];
-		_nearObjects = nearestObjects [player, [], _dist];
+		_nearObjects = nearestObjects [player, [], _dist] + nearestTerrainObjects [player, [], _dist];
 		_test1 = 0;
 		{
 			_test2 = _x;
@@ -39,7 +39,7 @@ switch (_type) do {
 	};
 	case 2:
 	{
-		_nearObjects = nearestObjects [player, [], _dist];
+		_nearObjects = nearestObjects [player, [], _dist] + nearestTerrainObjects [player, [], _dist];
 		_check = _check select 0;
 		_tmpResult = false;
 		{

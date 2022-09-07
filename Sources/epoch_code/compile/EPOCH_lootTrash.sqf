@@ -31,7 +31,7 @@ if (diag_tickTime - EPOCH_lastTrash > 2)  then {
 	_lootAnimalObj = objNull;
 	_bankTerminal = objNull;
 	_trashType = 0;
-	_objects = nearestObjects[player, [], 2];
+	_objects = nearestObjects[player, [], 2] + nearestTerrainObjects [player, [], 2];
 	{
 		_found = false;
 		_foundTerminal = false;
