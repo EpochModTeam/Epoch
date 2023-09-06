@@ -23,4 +23,5 @@
 	BOOL
 */
 params ["_item","_type"];
-(str(configFile >> _type >> _item) != "")
+// (str(configFile >> _type >> _item) != "")
+!isnull (configFile >> _type >> _item)
