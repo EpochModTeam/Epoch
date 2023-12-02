@@ -52,7 +52,9 @@ switch true do {
 					};
 				} else {
 					if ("Repair_EPOCH" in _attachments) then {
-						_heal = true;
+						if (_cursorTarget isKindOf "Landvehicle" || _cursorTarget isKindOf "SHIP" || _cursorTarget isKindOf "AIR") then {
+							_heal = true;
+						};
 					};
 				};
 				if (_heal) then {
