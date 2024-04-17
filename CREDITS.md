@@ -6,7 +6,7 @@
 
 #### Initial Developers
 * [Aaron Clark ([VB]AWOL)](http://epochmod.com): Concept, Code, Configs, Textures
-* [Kenneth Bente (Axle)](www.twitch.tv/axle): Tester, Models
+* [Kenneth Bente (Axle)](https://www.twitch.tv/axle): Tester, Models
 * [Sequisha](https://www.twitch.tv/sequisha): Models, Sounds, Textures
 * [Damian Clark ([VB]GREEN)](http://epochmod.com): Graphics
 * [Andrew Gregory (Axeman)](http://thefreezer.co.uk): AI Code
