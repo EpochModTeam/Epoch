@@ -48,7 +48,7 @@ PROFILES=${NAME}
 PIDFILE=${ARMA_DIR}/${PORT}.pid
 RUNFILE=${ARMA_DIR}/${PORT}.run
 LOGFILE=${LOG_DIR}/port_${PORT}.`date +%d.%m.%y_%H%M`.log
-SERVER=${ARMA_DIR}/arma3server
+SERVER=${ARMA_DIR}/arma3server_x64
 #=======================================================================
 ulimit -c 1000000
 
